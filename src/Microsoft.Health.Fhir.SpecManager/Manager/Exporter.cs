@@ -110,24 +110,28 @@ public abstract class Exporter
         }
 
         // create a copy of the FHIR information for use in this export
-        FhirVersionInfo info = sourceFhirInfo.CopyForExport(
-            exportLanguage.FhirPrimitiveTypeMap,
-            options.ExportList,
-            copyPrimitives: copyPrimitives,
-            copyComplexTypes: copyComplexTypes,
-            copyResources: copyResources,
-            copyExtensions: true,
-            copyProfiles: copyProfiles,
-            options.ExtensionUrls,
-            options.ExtensionElementPaths,
-            sourceServerInfo,
-            options.IncludeExperimental);
+        FhirVersionInfo info = new (
+            sourceFhirInfo,
+            new()
+            {
+                PrimitiveTypeMap = exportLanguage.FhirPrimitiveTypeMap,
+                ExportList = options.ExportList,
+                CopyPrimitives = copyPrimitives,
+                CopyComplexTypes = copyComplexTypes,
+                CopyResources = copyResources,
+                CopyExtensions = true,
+                CopyProfiles = copyProfiles,
+                ExtensionUrls = options.ExtensionUrls,
+                ExtensionElementPaths = options.ExtensionElementPaths,
+                ServerInfo = sourceServerInfo,
+                IncludeExperimental = options.IncludeExperimental,
+            });
 
         FhirServerInfo serverInfo = null;
 
         if (sourceServerInfo != null)
         {
-            serverInfo = sourceServerInfo.CopyForExport(info);
+            serverInfo = new FhirServerInfo(sourceServerInfo, info);
         }
 
         // perform our export
@@ -153,7 +157,7 @@ public abstract class Exporter
                 File.Delete(outputPath);
             }
 
-            // zip the files in the directory for download/output
+            // zip the files in the directory for downloead/output
             CreateZip(outputPath, tempDir);
 
             // tell the caller the file we wrote

@@ -61,21 +61,21 @@ public static class FhirPackageLoader
         return true;
     }
 
-    /// <summary>A FhirVersionInfo extension method that attempts to load packages.</summary>
-    /// <param name="fhirVersionInfo">  Information describing the fhir version.</param>
+    /// <summary>A FhirCoreInfo extension method that attempts to load packages.</summary>
+    /// <param name="FhirCoreInfo">  Information describing the fhir version.</param>
     /// <param name="packageDirectives">The package directives.</param>
     /// <param name="packagesLoaded">   [out] The packages loaded.</param>
     /// <param name="packagesFailed">   [out] The packages failed.</param>
     /// <returns>True if all packages loaded, false if one or more failed.</returns>
     public static bool TryLoadPackages(
-        this FhirVersionInfo fhirVersionInfo,
+        this FhirVersionInfo FhirCoreInfo,
         string[] packageDirectives,
         out List<string> packagesLoaded,
         out List<string> packagesFailed)
     {
-        if (fhirVersionInfo == null)
+        if (FhirCoreInfo == null)
         {
-            Console.WriteLine($"LoadPackage <<< {nameof(fhirVersionInfo)} is NULL, cannot load packages: {packageDirectives}!");
+            Console.WriteLine($"LoadPackage <<< {nameof(FhirCoreInfo)} is NULL, cannot load packages: {packageDirectives}!");
             packagesLoaded = null;
             packagesFailed = null;
             return false;
@@ -91,7 +91,7 @@ public static class FhirPackageLoader
 
         foreach (string packageDirective in packageDirectives)
         {
-            if (TryLoadPackage(fhirVersionInfo, packageDirective, out string loadedDirective))
+            if (TryLoadPackage(FhirCoreInfo, packageDirective, out string loadedDirective))
             {
                 packagesLoaded.Add(loadedDirective);
             }
@@ -105,19 +105,19 @@ public static class FhirPackageLoader
     }
 
     /// <summary>Loads a FHIR package (e.g., hl7.fhir.us.core-4.0.0).</summary>
-    /// <param name="fhirVersionInfo">       Information describing the fhir version.</param>
+    /// <param name="FhirCoreInfo">       Information describing the fhir version.</param>
     /// <param name="packageDirective">      Name of the package, may inlcude a version.</param>
     /// <param name="loadedPackageDirective">[out] The loaded package directive.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool TryLoadPackage(
-        this FhirVersionInfo fhirVersionInfo,
+        this FhirVersionInfo FhirCoreInfo,
         string packageDirective,
         out string loadedPackageDirective)
     {
         // sanity checks
-        if (fhirVersionInfo == null)
+        if (FhirCoreInfo == null)
         {
-            Console.WriteLine($"LoadPackage <<< {nameof(fhirVersionInfo)} is NULL, cannot load {packageDirective}!");
+            Console.WriteLine($"LoadPackage <<< {nameof(FhirCoreInfo)} is NULL, cannot load {packageDirective}!");
             loadedPackageDirective = string.Empty;
             return false;
         }
@@ -154,7 +154,7 @@ public static class FhirPackageLoader
             packageName = packageDirective;
         }
 
-        string versionedPackageDirectory = string.Empty;
+        string versionedPackageDirectory;
 
         // need to download if we don't have an explicit version that we have cached
         if (string.IsNullOrEmpty(packageVersion) ||
@@ -167,11 +167,11 @@ public static class FhirPackageLoader
             if (!FhirPackageDownloader.DownloadFhirPackage(
                 packageName,
                 ref packageVersion,
-                fhirVersionInfo.MajorVersion,
+                FhirCoreInfo.MajorVersion,
                 FhirManager.Current.FhirPackageDirectory,
                 out versionedPackageDirectory))
             {
-                Console.WriteLine($"LoadPackage <<< cannot downlaod package for {fhirVersionInfo.ReleaseName}: {packageDirective}!");
+                Console.WriteLine($"LoadPackage <<< cannot downlaod package for {FhirCoreInfo.ReleaseName}: {packageDirective}!");
                 loadedPackageDirective = string.Empty;
                 return false;
             }
@@ -186,33 +186,33 @@ public static class FhirPackageLoader
         Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
 
         // update our structure
-        fhirVersionInfo.VersionString = packageInfo.Version;
+        FhirCoreInfo.VersionString = packageInfo.Version;
 
         HashSet<string> processedFiles = new HashSet<string>();
 
         //// process Code Systems
-        //ProcessFileGroup(dir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
+        //ProcessFileGroup(dir, "CodeSystem", ref FhirCoreInfo, ref processedFiles);
 
         //// process Value Set expansions
-        //ProcessFileGroup(dir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+        //ProcessFileGroup(dir, "ValueSet", ref FhirCoreInfo, ref processedFiles);
 
         //// process structure definitions
-        //ProcessFileGroup(dir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
+        //ProcessFileGroup(dir, "StructureDefinition", ref FhirCoreInfo, ref processedFiles);
 
         //// process search parameters (adds to resources)
-        //ProcessFileGroup(dir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
+        //ProcessFileGroup(dir, "SearchParameter", ref FhirCoreInfo, ref processedFiles);
 
         //// process operations (adds to resources and version info (server level))
-        //ProcessFileGroup(dir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
+        //ProcessFileGroup(dir, "OperationDefinition", ref FhirCoreInfo, ref processedFiles);
 
-        //if (fhirVersionInfo.ConverterHasIssues(out int errorCount, out int warningCount))
+        //if (FhirCoreInfo.ConverterHasIssues(out int errorCount, out int warningCount))
         //{
         //    // make sure we cleared the last line
         //    Console.WriteLine($"LoadPackage <<< Loaded and Parsed {packageName}-{packageVersion}" +
         //        $" with {errorCount} errors" +
         //        $" and {warningCount} warnings" +
         //        $"{new string(' ', 100)}");
-        //    fhirVersionInfo.DisplayConverterIssues();
+        //    FhirCoreInfo.DisplayConverterIssues();
         //}
         //else
         //{
@@ -228,36 +228,36 @@ public static class FhirPackageLoader
     /// </summary>
     /// <param name="packageDir">     The package dir.</param>
     /// <param name="prefix">         The prefix.</param>
-    /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+    /// <param name="FhirCoreInfo">[in,out] Information describing the fhir version.</param>
     /// <param name="processedFiles"> [in,out] The processed files.</param>
     private static void ProcessFileGroup(
         string packageDir,
         string prefix,
-        ref FhirVersionInfo fhirVersionInfo,
+        ref FhirVersionInfo FhirCoreInfo,
         ref HashSet<string> processedFiles)
     {
         // get the files in this directory
         string[] files = Directory.GetFiles(packageDir, $"{prefix}*.json", SearchOption.TopDirectoryOnly);
 
         // process these files
-        ProcessPackageFiles(files, ref fhirVersionInfo, ref processedFiles);
+        ProcessPackageFiles(files, ref FhirCoreInfo, ref processedFiles);
     }
 
     /// <summary>Process the package files.</summary>
     /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
     /// <param name="files">          The files.</param>
-    /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+    /// <param name="FhirCoreInfo">[in,out] Information describing the fhir version.</param>
     /// <param name="processedFiles"> [in,out] The processed files.</param>
     private static void ProcessPackageFiles(
         string[] files,
-        ref FhirVersionInfo fhirVersionInfo,
+        ref FhirVersionInfo FhirCoreInfo,
         ref HashSet<string> processedFiles)
     {
         // traverse the files
         foreach (string filename in files)
         {
             // check for skipping file
-            if (fhirVersionInfo.ShouldSkipFile(Path.GetFileName(filename)))
+            if (FhirCoreInfo.ShouldSkipFile(Path.GetFileName(filename)))
             {
                 // skip this file
                 continue;
@@ -272,17 +272,17 @@ public static class FhirPackageLoader
             // attempt to load this file
             try
             {
-                Console.Write($"v{fhirVersionInfo.MajorVersion}: {shortName,-85}\r");
+                Console.Write($"v{FhirCoreInfo.MajorVersion}: {shortName,-85}\r");
 
                 // check for ignored types
-                if (fhirVersionInfo.ShouldIgnoreResource(resourceHint))
+                if (FhirCoreInfo.ShouldIgnoreResource(resourceHint))
                 {
                     // skip
                     continue;
                 }
 
                 // this should be listed in process types (validation check)
-                if (!fhirVersionInfo.ShouldProcessResource(resourceHint))
+                if (!FhirCoreInfo.ShouldProcessResource(resourceHint))
                 {
                     // type not found
                     Console.WriteLine($"\nProcessPackageFiles <<< Unhandled type: {shortName}");
@@ -301,7 +301,7 @@ public static class FhirPackageLoader
                 string contents = File.ReadAllText(filename);
 
                 // parse the file - note: using var here is siginificantly more performant than object
-                var resource = fhirVersionInfo.ParseResource(contents);
+                var resource = FhirCoreInfo.ParseResource(contents);
 
                 // check type matching
                 if (!resource.GetType().Name.Equals(resourceHint, StringComparison.Ordinal))
@@ -314,7 +314,7 @@ public static class FhirPackageLoader
                 }
 
                 // process this resource
-                fhirVersionInfo.ProcessResource(resource);
+                FhirCoreInfo.ProcessResource(resource);
             }
             catch (Exception ex)
             {

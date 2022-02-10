@@ -20,10 +20,10 @@ public interface IFhirConverter
 
     /// <summary>Attempts to process resource.</summary>
     /// <param name="resourceToParse">The resource object.</param>
-    /// <param name="fhirVersionInfo">Primitive types.</param>
+    /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>
     void ProcessResource(
         object resourceToParse,
-        FhirVersionInfo fhirVersionInfo);
+        IFhirInfo fhirVersionInfo);
 
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>
     /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>

@@ -13,24 +13,24 @@ public static class ConverterHelper
     /// <summary>Get a FHIR Converter for the specified major version.</summary>
     /// <param name="release">The release version.</param>
     /// <returns>An IFhirConverter.</returns>
-    public static IFhirConverter ConverterForVersion(FhirVersionInfo.FhirMajorRelease release)
+    public static IFhirConverter ConverterForVersion(FhirVersionInfo.FhirCoreVersion release)
     {
         // create our JSON converter
         switch (release)
         {
-            case FhirVersionInfo.FhirMajorRelease.DSTU2:
+            case FhirVersionInfo.FhirCoreVersion.DSTU2:
                 return new FromR2();
 
-            case FhirVersionInfo.FhirMajorRelease.STU3:
+            case FhirVersionInfo.FhirCoreVersion.STU3:
                 return new FromR3();
 
-            case FhirVersionInfo.FhirMajorRelease.R4:
+            case FhirVersionInfo.FhirCoreVersion.R4:
                 return new FromR4();
 
-            case FhirVersionInfo.FhirMajorRelease.R4B:
+            case FhirVersionInfo.FhirCoreVersion.R4B:
                 return new FromR4();
 
-            case FhirVersionInfo.FhirMajorRelease.R5:
+            case FhirVersionInfo.FhirCoreVersion.R5:
                 return new FromR5();
 
             default:

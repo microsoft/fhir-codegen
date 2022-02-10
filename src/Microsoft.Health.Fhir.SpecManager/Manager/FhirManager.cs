@@ -158,7 +158,15 @@ public class FhirManager
 #pragma warning restore CA2208 // Instantiate argument exceptions correctly
         }
 
-        GetLocalVersionInfo(
+        string versionInfoPath = Path.Combine();
+
+        if (!File.Exists(versionInfoPath))
+        {
+            throw new FileNotFoundException("Incomplete FHIR build, cannot find version information", versionInfoPath);
+        }
+
+        FhirPackageDownloader.ParseVersionInfoIni(
+            File.ReadAllText(versionInfoPath),
             out string fhirVersion,
             out string versionString,
             out string buildId,
@@ -176,72 +184,14 @@ public class FhirManager
         };
 
         // load the package
-        FhirSpecificationLoader.LoadLocalBuild(_localPublishDirectory, _fhirSpecDirectory, ref _localVersion, localLoadType, officialExpansionsOnly);
+        FhirSpecificationLoader.LoadLocalBuild(
+            _localPublishDirectory,
+            _fhirSpecDirectory,
+            ref _localVersion,
+            localLoadType,
+            officialExpansionsOnly);
 
         return _localVersion;
-    }
-
-    /// <summary>Gets local version information.</summary>
-    /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
-    /// <param name="fhirVersion">[out] The FHIR version.</param>
-    /// <param name="version">    [out] The version string (e.g., 4.0.1).</param>
-    /// <param name="buildId">    [out] Identifier for the build.</param>
-    /// <param name="buildDate">  [out] The build date.</param>
-    private void GetLocalVersionInfo(
-        out string fhirVersion,
-        out string version,
-        out string buildId,
-        out string buildDate)
-    {
-        string infoPath = Path.Combine(_localPublishDirectory, "version.info");
-
-        if (!File.Exists(infoPath))
-        {
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
-            throw new FileNotFoundException("Incomplete FHIR build, cannot find version information", infoPath);
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
-        }
-
-        IEnumerable<string> lines = File.ReadLines(infoPath);
-
-        fhirVersion = string.Empty;
-        version = string.Empty;
-        buildId = string.Empty;
-        buildDate = string.Empty;
-
-        foreach (string line in lines)
-        {
-            if (!line.Contains('=', StringComparison.Ordinal))
-            {
-                continue;
-            }
-
-            string[] kvp = line.Split('=');
-
-            if (kvp.Length != 2)
-            {
-                continue;
-            }
-
-            switch (kvp[0])
-            {
-                case "FhirVersion":
-                    fhirVersion = kvp[1];
-                    break;
-
-                case "version":
-                    version = kvp[1];
-                    break;
-
-                case "buildId":
-                    buildId = kvp[1];
-                    break;
-
-                case "date":
-                    buildDate = kvp[1];
-                    break;
-            }
-        }
     }
 
     /// <summary>Loads a cached.</summary>
@@ -291,18 +241,16 @@ public class FhirManager
     }
 
     /// <summary>Loads a published version of FHIR.</summary>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
-    ///  required range.</exception>
-    /// <exception cref="ArgumentException">          Thrown when one or more arguments have
-    ///  unsupported or illegal values.</exception>
+    /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
+    ///  illegal values.</exception>
     /// <param name="majorRelease">          The release of FHIR to load (e.g., DSTU2, R4B).</param>
-    /// <param name="version">              The specific version of FHIR to load, or 'latest' for
+    /// <param name="version">               The specific version of FHIR to load, or 'latest' for
     ///  highest known version.</param>
     /// <param name="offlineMode">           (Optional) True to allow, false to suppress the download.</param>
     /// <param name="officialExpansionsOnly">(Optional) True to official expansions only.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
+    /// <returns>The loaded FHIR fhir specification.</returns>
     public FhirVersionInfo LoadPublished(
-        FhirVersionInfo.FhirMajorRelease majorRelease,
+        FhirVersionInfo.FhirCoreVersion majorRelease,
         string version,
         bool offlineMode = false,
         bool officialExpansionsOnly = false)
@@ -360,6 +308,64 @@ public class FhirManager
         return info;
     }
 
+    /// <summary>Loads a CI build of FHIR.</summary>
+    /// <param name="branch">                The branch name.</param>
+    /// <param name="offlineMode">           (Optional) True to allow, false to suppress the download.</param>
+    /// <param name="officialExpansionsOnly">(Optional) True to official expansions only.</param>
+    /// <returns>The ci.</returns>
+    public FhirVersionInfo LoadCi(
+        string branch,
+        bool offlineMode = false,
+        bool officialExpansionsOnly = false)
+    {
+        string packageVersionInfoIni;
+
+        if (!FhirPackageDownloader.DownloadCiBuildInfo(
+                branch,
+                out FhirVersionInfo info,
+                out string versionInfoIni))
+        {
+            throw new ArgumentException($"Invalid branch: {branch}", nameof(branch));
+        }
+
+        // grab the packages we need - note that CI builds do NOT have examples
+        FindOrDownload(
+            info.ReleaseName,
+            info.BallotPrefix,
+            info.PackageName,
+            info.VersionString,
+            offlineMode,
+            ciBranch: branch,
+            buildId: info.BuildId);
+
+        packageVersionInfoIni = Path.Combine(
+            _fhirSpecDirectory,
+            $"{info.PackageName}-{info.VersionString}-version.info");
+
+        File.WriteAllText(packageVersionInfoIni, versionInfoIni);
+
+        FindOrDownload(
+            info.ReleaseName,
+            info.BallotPrefix,
+            info.ExpansionsPackageName,
+            info.VersionString,
+            offlineMode,
+            ciBranch: branch,
+            buildId: info.BuildId);
+
+        packageVersionInfoIni = Path.Combine(
+            _fhirSpecDirectory,
+            $"{info.ExpansionsPackageName}-{info.VersionString}-version.info");
+
+        File.WriteAllText(packageVersionInfoIni, versionInfoIni);
+
+        // load the package
+        FhirSpecificationLoader.LoadPackage(_fhirSpecDirectory, ref info, officialExpansionsOnly);
+
+        // return this record
+        return info;
+    }
+
     /// <summary>Searches for the first or download.</summary>
     /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
     ///  null.</exception>
@@ -372,13 +378,17 @@ public class FhirManager
     /// <param name="version">     The version string (e.g., 4.0.1).</param>
     /// <param name="offlineMode"> True to allow, false to suppress the download.</param>
     /// <param name="isOptional">  (Optional) True if is optional, false if not.</param>
+    /// <param name="ciBranch">    (Optional) The ci branch.</param>
+    /// <param name="buildId">     (Optional) Identifier for the build.</param>
     private void FindOrDownload(
         string releaseName,
         string ballotPrefix,
         string packageName,
         string version,
         bool offlineMode,
-        bool isOptional = false)
+        bool isOptional = false,
+        string ciBranch = "",
+        string buildId = "")
     {
         if (string.IsNullOrEmpty(packageName))
         {
@@ -390,12 +400,40 @@ public class FhirManager
             throw new ArgumentNullException(nameof(packageName));
         }
 
-        if (!FhirSpecificationLoader.TryFindPackage(
+        bool found = FhirSpecificationLoader.TryFindPackage(
             releaseName,
             packageName,
             version,
             _fhirSpecDirectory,
-            out _))
+            out string versionDirectory);
+
+        if (found && (!string.IsNullOrEmpty(buildId)))
+        {
+            string cachedVersionPath = Path.Combine(
+                _fhirSpecDirectory,
+                $"{packageName}-{version}-version.info");
+
+            if (!File.Exists(cachedVersionPath))
+            {
+                found = false;
+            }
+            else
+            {
+                FhirPackageDownloader.ParseVersionInfoIni(
+                    File.ReadAllText(cachedVersionPath),
+                    out _,
+                    out _,
+                    out string cachedBuildId,
+                    out _);
+
+                if (!cachedBuildId.Equals(buildId, StringComparison.OrdinalIgnoreCase))
+                {
+                    found = false;
+                }
+            }
+        }
+
+        if (!found)
         {
             if (offlineMode)
             {
@@ -420,7 +458,8 @@ public class FhirManager
                     ballotPrefix,
                     packageName,
                     version,
-                    _fhirSpecDirectory))
+                    _fhirSpecDirectory,
+                    ciBranch))
             {
                 if (isOptional)
                 {

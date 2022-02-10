@@ -36,11 +36,13 @@ public static class Program
     ///  or latest).</param>
     /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
     ///  or latest).</param>
-    /// <param name="loadR4B">                If FHIR R4 should be loaded, which version (e.g., 4.3.0-snapshot1
+    /// <param name="loadR4B">               If FHIR R4B should be loaded, which version (e.g., 4.3.0-snapshot1
     ///  or latest).</param>
-    /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
+    /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 5.0.0-snapshot1
     ///  or latest).</param>
-    /// <param name="loadFromCache">        If content should be loaded from the user's FHIR cache,
+    /// <param name="loadCi">                If a FHIR CI build should be loaded, which branch (e.g., master
+    ///  or R4B).</param>
+    /// <param name="loadFromCache">         If content should be loaded from the user's FHIR cache,
     ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
     /// <param name="languageOptions">       Language specific options, see documentation for more
     ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
@@ -71,6 +73,7 @@ public static class Program
         string loadR4 = "",
         string loadR4B = "",
         string loadR5 = "",
+        string loadCi = "",
         string loadFromCache = "",
         string languageOptions = "",
         bool officialExpansionsOnly = false,
@@ -136,23 +139,27 @@ public static class Program
             new Option<string>(
                 aliases: new string[] { "--load-r2", "--load-DSTU2" },
                 getDefaultValue: () => string.Empty,
-                "If FHIR version 2 (DSTU2) should be loaded, which version (e.g., 1.0.2 or latest)"),
+                "If FHIR DSTU2 should be loaded, which version (e.g., 1.0.2 or latest)"),
             new Option<string>(
                 aliases: new string[] { "--load-r3", "--load-STU3" },
                 getDefaultValue: () => string.Empty,
-                "If FHIR version 3 (STU3) should be loaded, which version (e.g., 3.0.2 or latest)"),
+                "If FHIR STU3 should be loaded, which version (e.g., 3.0.2 or latest)"),
             new Option<string>(
                 name: "--load-r4",
                 getDefaultValue: () => string.Empty,
-                "If FHIR version 4 (R4) should be loaded, which version (e.g., 4.0.1 or latest)"),
+                "If FHIR R4 should be loaded, which version (e.g., 4.0.1 or latest)"),
             new Option<string>(
                 name: "--load-r4b",
                 getDefaultValue: () => string.Empty,
-                "If FHIR version 4B (R4B) should be loaded, which version (e.g., 4.3.0-snapshot1 or latest)"),
+                "If FHIR R4B should be loaded, which version (e.g., 4.3.0-snapshot1 or latest)"),
             new Option<string>(
                 name: "--load-r5",
                 getDefaultValue: () => string.Empty,
-                "If FHIR version 5 (R5) should be loaded, which version (e.g., 5.0.0-snapshot1 or latest)"),
+                "If FHIR R5 should be loaded, which version (e.g., 5.0.0-snapshot1 or latest)"),
+            new Option<string>(
+                name: "--load-ci",
+                getDefaultValue: () => string.Empty,
+                "If a FHIR CI version should be loaded, which branch (e.g., master, R4B)"),
             new Option<string>(
                 name: "--load-from-cache",
                 getDefaultValue: () => string.Empty,
@@ -230,11 +237,13 @@ public static class Program
     ///  or latest).</param>
     /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
     ///  or latest).</param>
-    /// <param name="loadR4B">                If FHIR R4 should be loaded, which version (e.g., 4.3.0-snapshot1
+    /// <param name="loadR4B">               If FHIR R4B should be loaded, which version (e.g., 4.3.0-snapshot1
     ///  or latest).</param>
-    /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
+    /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 5.0.0-snapshot1
     ///  or latest).</param>
-    /// <param name="loadFromCache">        If content should be loaded from the user's FHIR cache,
+    /// <param name="loadCi">                If a FHIR CI build should be loaded, which branch (e.g., master
+    ///  or R4B).</param>
+    /// <param name="loadFromCache">         If content should be loaded from the user's FHIR cache,
     ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
     /// <param name="languageOptions">       Language specific options, see documentation for more
     ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
@@ -265,6 +274,7 @@ public static class Program
         string loadR4 = "",
         string loadR4B = "",
         string loadR5 = "",
+        string loadCi = "",
         string loadFromCache = "",
         string languageOptions = "",
         bool officialExpansionsOnly = false,
@@ -390,6 +400,7 @@ public static class Program
             string.IsNullOrEmpty(loadR4) &&
             string.IsNullOrEmpty(loadR4B) &&
             string.IsNullOrEmpty(loadR5) &&
+            string.IsNullOrEmpty(loadCi) &&
             string.IsNullOrEmpty(loadFromCache) &&
             string.IsNullOrEmpty(loadLocalFhirBuild))
         {
@@ -405,23 +416,23 @@ public static class Program
             {
                 switch (serverInfo.MajorVersion)
                 {
-                    case FhirVersionInfo.FhirMajorRelease.DSTU2:
+                    case FhirVersionInfo.FhirCoreVersion.DSTU2:
                         loadR2 = "latest";
                         break;
 
-                    case FhirVersionInfo.FhirMajorRelease.STU3:
+                    case FhirVersionInfo.FhirCoreVersion.STU3:
                         loadR3 = "latest";
                         break;
 
-                    case FhirVersionInfo.FhirMajorRelease.R4:
+                    case FhirVersionInfo.FhirCoreVersion.R4:
                         loadR4 = "latest";
                         break;
 
-                    case FhirVersionInfo.FhirMajorRelease.R4B:
+                    case FhirVersionInfo.FhirCoreVersion.R4B:
                         loadR4 = "latest";
                         break;
 
-                    case FhirVersionInfo.FhirMajorRelease.R5:
+                    case FhirVersionInfo.FhirCoreVersion.R5:
                         loadR5 = "latest";
                         break;
                 }
@@ -433,7 +444,7 @@ public static class Program
             fhirVersions.Add(
                 "DSTU2",
                 FhirManager.Current.LoadPublished(
-                    FhirVersionInfo.FhirMajorRelease.DSTU2,
+                    FhirVersionInfo.FhirCoreVersion.DSTU2,
                     loadR2,
                     offlineMode,
                     officialExpansionsOnly));
@@ -444,7 +455,7 @@ public static class Program
             fhirVersions.Add(
                 "STU3",
                 FhirManager.Current.LoadPublished(
-                    FhirVersionInfo.FhirMajorRelease.STU3,
+                    FhirVersionInfo.FhirCoreVersion.STU3,
                     loadR3,
                     offlineMode,
                     officialExpansionsOnly));
@@ -455,7 +466,7 @@ public static class Program
             fhirVersions.Add(
                 "R4",
                 FhirManager.Current.LoadPublished(
-                    FhirVersionInfo.FhirMajorRelease.R4,
+                    FhirVersionInfo.FhirCoreVersion.R4,
                     loadR4,
                     offlineMode,
                     officialExpansionsOnly));
@@ -466,7 +477,7 @@ public static class Program
             fhirVersions.Add(
                 "R4B",
                 FhirManager.Current.LoadPublished(
-                    FhirVersionInfo.FhirMajorRelease.R4B,
+                    FhirVersionInfo.FhirCoreVersion.R4B,
                     loadR4,
                     offlineMode,
                     officialExpansionsOnly));
@@ -477,10 +488,17 @@ public static class Program
             fhirVersions.Add(
                 "R5",
                 FhirManager.Current.LoadPublished(
-                    FhirVersionInfo.FhirMajorRelease.R5,
+                    FhirVersionInfo.FhirCoreVersion.R5,
                     loadR5,
                     offlineMode,
                     officialExpansionsOnly));
+        }
+
+        if (!string.IsNullOrEmpty(loadCi))
+        {
+            fhirVersions.Add(
+                "ci",
+                FhirManager.Current.LoadCi(loadCi, offlineMode, officialExpansionsOnly));
         }
 
         if (!string.IsNullOrEmpty(loadLocalFhirBuild))

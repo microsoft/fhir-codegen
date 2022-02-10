@@ -32,43 +32,48 @@ public static class FhirPackageDownloader
     /// <param name="packageName">      Name of the package.</param>
     /// <param name="version">          The version string (e.g., 4.0.1).</param>
     /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
+    /// <param name="ciBranch">         (Optional) The ci branch.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool DownloadFhirSpecification(
         string releaseName,
         string ballotPrefix,
         string packageName,
         string version,
-        string fhirSpecDirectory)
+        string fhirSpecDirectory,
+        string ciBranch = "")
     {
         bool loaded = false;
 
-        try
+        if (string.IsNullOrEmpty(ciBranch))
         {
-            Console.WriteLine($" <<< downloading FHIR specification via package: {packageName}:{version}");
-
-            // download from the package manager
-            loaded = FhirPackageDownloader.DownloadCoreSpecificationPackage(
-                releaseName,
-                packageName,
-                version,
-                fhirSpecDirectory);
-
-            if (loaded)
+            try
             {
-                return true;
+                Console.WriteLine($" <<< downloading FHIR specification via package: {packageName}:{version}");
+
+                // download from the package manager
+                loaded = FhirPackageDownloader.DownloadCoreSpecificationPackage(
+                    releaseName,
+                    packageName,
+                    version,
+                    fhirSpecDirectory);
+
+                if (loaded)
+                {
+                    return true;
+                }
             }
-        }
-        catch (HttpRequestException)
-        {
-            Console.WriteLine($"Failed to download Package: {packageName}:{version}");
-        }
-        catch (AggregateException)
-        {
-            Console.WriteLine($"Failed to download Published: {packageName}:{version}");
-        }
-        catch (System.Threading.Tasks.TaskCanceledException)
-        {
-            Console.WriteLine($"Failed to download Published: {packageName}:{version}");
+            catch (HttpRequestException)
+            {
+                Console.WriteLine($"Failed to download Package: {packageName}:{version}");
+            }
+            catch (AggregateException)
+            {
+                Console.WriteLine($"Failed to download Published: {packageName}:{version}");
+            }
+            catch (System.Threading.Tasks.TaskCanceledException)
+            {
+                Console.WriteLine($"Failed to download Published: {packageName}:{version}");
+            }
         }
 
         try
@@ -81,7 +86,8 @@ public static class FhirPackageDownloader
                 ballotPrefix,
                 packageName,
                 version,
-                fhirSpecDirectory);
+                fhirSpecDirectory,
+                ciBranch);
         }
         catch (HttpRequestException)
         {
@@ -277,7 +283,20 @@ public static class FhirPackageDownloader
         }
 
         // download and extract our package
-        return DownloadAndExtract(info.Versions[packageVersion].URL, packageName, packageVersion, packageDirectory);
+        if (DownloadAndExtract(info.Versions[packageVersion].URL, packageName, packageVersion, packageDirectory))
+        {
+            subDir = Path.Combine(versionedPackageDirectory, "package");
+
+            // use the cached version if we have one
+            if (Directory.Exists(subDir))
+            {
+                versionedPackageDirectory = subDir;
+            }
+
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>Downloads a published FHIR package.</summary>
@@ -337,18 +356,31 @@ public static class FhirPackageDownloader
     /// <param name="packageName">      Name of the package.</param>
     /// <param name="version">          The version string (e.g., 4.0.1).</param>
     /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
+    /// <param name="ciBranch">         The ci branch.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool DownloadPublishedSpecification(
         string releaseName,
         string ballotPrefix,
         string packageName,
         string version,
-        string fhirSpecDirectory)
+        string fhirSpecDirectory,
+        string ciBranch)
     {
         // build the url to this package
         string url;
 
-        if (string.IsNullOrEmpty(ballotPrefix))
+        if (!string.IsNullOrEmpty(ciBranch))
+        {
+            if (ciBranch.Equals("master", StringComparison.OrdinalIgnoreCase))
+            {
+                url = $"{BuildDownloadUrlBase}{packageName}.tgz";
+            }
+            else
+            {
+                url = $"{BuildDownloadUrlBase}branches/{ciBranch}/{packageName}.tgz";
+            }
+        }
+        else if (string.IsNullOrEmpty(ballotPrefix))
         {
             if ((!string.IsNullOrEmpty(version)) && (version.Length > 5))
             {
@@ -366,6 +398,120 @@ public static class FhirPackageDownloader
 
         // download and extract our package
         return DownloadAndExtract(new Uri(url), packageName, version, fhirSpecDirectory);
+    }
+
+    /// <summary>Downloads the ci specification.</summary>
+    /// <param name="branchName">    Name of the branch.</param>
+    /// <param name="fhirInfo">      [out] Information describing the FHIR.</param>
+    /// <param name="versionInfoIni">[out] The version information initialize.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool DownloadCiBuildInfo(
+        string branchName,
+        out FhirVersionInfo fhirInfo,
+        out string versionInfoIni)
+    {
+        Uri ciBaseUri = new Uri(BuildDownloadUrlBase);
+
+        Uri uri;
+        if (string.IsNullOrEmpty(branchName) || branchName.Equals("master", StringComparison.OrdinalIgnoreCase))
+        {
+            uri = new(ciBaseUri, "version.info");
+        }
+        else
+        {
+            uri = new(ciBaseUri, $"branches/{branchName}/version.info");
+        }
+
+        FhirVersionInfo.FhirCoreVersion sequenceVersion;
+
+        try
+        {
+            versionInfoIni = _httpClient.GetStringAsync(uri).Result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"DownloadCiSpecification <<< failed to download info file: {uri.AbsoluteUri}: {ex.Message}");
+            fhirInfo = null;
+            versionInfoIni = string.Empty;
+            return false;
+        }
+
+        ParseVersionInfoIni(
+            versionInfoIni,
+            out string fhirVersion,
+            out string versionString,
+            out string buildId,
+            out string buildDate);
+
+        try
+        {
+            sequenceVersion = FhirVersionInfo.MajorReleaseForVersion(versionString);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"DownloadCiSpecification <<< could not resolve version: {versionString}: {ex.Message}");
+            fhirInfo = null;
+            return false;
+        }
+
+        fhirInfo = new FhirVersionInfo(versionString, sequenceVersion, branchName, buildId);
+        return true;
+    }
+
+    /// <summary>Gets local version information.</summary>
+    /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
+    /// <param name="contents">   The contents.</param>
+    /// <param name="fhirVersion">[out] The FHIR version.</param>
+    /// <param name="version">    [out] The version string (e.g., 4.0.1).</param>
+    /// <param name="buildId">    [out] Identifier for the build.</param>
+    /// <param name="buildDate">  [out] The build date.</param>
+    internal static void ParseVersionInfoIni(
+        string contents,
+        out string fhirVersion,
+        out string version,
+        out string buildId,
+        out string buildDate)
+    {
+        IEnumerable<string> lines = contents.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+        fhirVersion = string.Empty;
+        version = string.Empty;
+        buildId = string.Empty;
+        buildDate = string.Empty;
+
+        foreach (string line in lines)
+        {
+            if (!line.Contains('=', StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            string[] kvp = line.Split('=');
+
+            if (kvp.Length != 2)
+            {
+                continue;
+            }
+
+            switch (kvp[0])
+            {
+                case "FhirVersion":
+                    fhirVersion = kvp[1];
+                    break;
+
+                case "version":
+                    version = kvp[1];
+                    break;
+
+                case "buildId":
+                    buildId = kvp[1];
+                    break;
+
+                case "date":
+                    buildDate = kvp[1];
+                    break;
+            }
+        }
     }
 
     /// <summary>Downloads the and extract.</summary>
@@ -393,7 +539,7 @@ public static class FhirPackageDownloader
 
             using (Stream fileStream = _httpClient.GetStreamAsync(uri).Result)
             using (Stream gzipStream = new GZipInputStream(fileStream))
-            using (TarArchive tar = TarArchive.CreateInputTarArchive(gzipStream))
+            using (TarArchive tar = TarArchive.CreateInputTarArchive(gzipStream, Encoding.ASCII))
             {
                 // extract
                 tar.ExtractContents(directory);
@@ -444,7 +590,7 @@ public static class FhirPackageDownloader
             // open the source file
             using (Stream fileStream = new FileStream(sourceFilename, FileMode.Open))
             using (Stream gzipStream = new GZipInputStream(fileStream))
-            using (TarArchive tar = TarArchive.CreateInputTarArchive(gzipStream))
+            using (TarArchive tar = TarArchive.CreateInputTarArchive(gzipStream, Encoding.ASCII))
             {
                 // extract
                 tar.ExtractContents(dir);
