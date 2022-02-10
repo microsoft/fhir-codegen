@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class UseContextCodes
   {
     /// <summary>
-    /// 
+    /// World
     /// </summary>
     public static readonly Coding World_ = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Africa
     /// </summary>
     public static readonly Coding Africa_ = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// South America
     /// </summary>
     public static readonly Coding SouthAmerica_ = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Oceania
     /// </summary>
     public static readonly Coding Oceania_ = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Western Africa
     /// </summary>
     public static readonly Coding WesternAfrica_ = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Central America
     /// </summary>
     public static readonly Coding CentralAmerica_ = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Eastern Africa
     /// </summary>
     public static readonly Coding EasternAfrica_ = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Northern Africa
     /// </summary>
     public static readonly Coding NorthernAfrica_ = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Middle Africa
     /// </summary>
     public static readonly Coding MiddleAfrica_ = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Southern Africa
     /// </summary>
     public static readonly Coding SouthernAfrica_ = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Americas
     /// </summary>
     public static readonly Coding Americas_ = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Northern America a/
     /// </summary>
     public static readonly Coding NorthernAmericaA_ = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Caribbean
     /// </summary>
     public static readonly Coding Caribbean_ = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Eastern Asia
     /// </summary>
     public static readonly Coding EasternAsia_ = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Southern Asia
     /// </summary>
     public static readonly Coding SouthernAsia_ = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// South-Eastern Asia
     /// </summary>
     public static readonly Coding SouthEasternAsia_ = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Southern Europe
     /// </summary>
     public static readonly Coding SouthernEurope_ = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Australia and New Zealand
     /// </summary>
     public static readonly Coding AustraliaAndNewZealand_ = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Melanesia
     /// </summary>
     public static readonly Coding Melanesia_ = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Micronesia
     /// </summary>
     public static readonly Coding Micronesia_ = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Polynesia
     /// </summary>
     public static readonly Coding Polynesia_ = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Percheron horse
     /// </summary>
     public static readonly Coding PercheronHorse_ = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quilonia ethiopica
     /// </summary>
     public static readonly Coding QuiloniaEthiopica_ = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bembrops gobioides
     /// </summary>
     public static readonly Coding BembropsGobioides_ = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pontinus rathbuni
     /// </summary>
     public static readonly Coding PontinusRathbuni_ = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemiurus
     /// </summary>
     public static readonly Coding Hemiurus_ = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nesotriatoma flavida
     /// </summary>
     public static readonly Coding NesotriatomaFlavida_ = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apogon townsendi
     /// </summary>
     public static readonly Coding ApogonTownsendi_ = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis atrocaudalis
     /// </summary>
     public static readonly Coding NotropisAtrocaudalis_ = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Varanus salvator
     /// </summary>
     public static readonly Coding VaranusSalvator_ = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Viking horse
     /// </summary>
     public static readonly Coding VikingHorse_ = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bembrops anatirostris
     /// </summary>
     public static readonly Coding BembropsAnatirostris_ = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ceratophyllus
     /// </summary>
     public static readonly Coding Ceratophyllus_ = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anarrhichthys ocellatus
     /// </summary>
     public static readonly Coding AnarrhichthysOcellatus_ = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tragelaphus angasi
     /// </summary>
     public static readonly Coding TragelaphusAngasi_ = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nealotus tripes
     /// </summary>
     public static readonly Coding NealotusTripes_ = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Triaenophorus
     /// </summary>
     public static readonly Coding Triaenophorus_ = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chrysolophus pictus
     /// </summary>
     public static readonly Coding ChrysolophusPictus_ = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Micrurus nigrocinctus
     /// </summary>
     public static readonly Coding MicrurusNigrocinctus_ = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhipicephalus sanguineus
     /// </summary>
     public static readonly Coding RhipicephalusSanguineus_ = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pongo pygmaeus
     /// </summary>
     public static readonly Coding PongoPygmaeus_ = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Black buffalo weaver
     /// </summary>
     public static readonly Coding BlackBuffaloWeaver_ = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bungarus flaviceps
     /// </summary>
     public static readonly Coding BungarusFlaviceps_ = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liopropoma mowbrayi
     /// </summary>
     public static readonly Coding LiopropomaMowbrayi_ = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gaigeria pachyscelis
     /// </summary>
     public static readonly Coding GaigeriaPachyscelis_ = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tetractinomyxon
     /// </summary>
     public static readonly Coding Tetractinomyxon_ = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trimeresurus tokarensis
     /// </summary>
     public static readonly Coding TrimeresurusTokarensis_ = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heterakis meleagridis
     /// </summary>
     public static readonly Coding HeterakisMeleagridis_ = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clydesdale horse
     /// </summary>
     public static readonly Coding ClydesdaleHorse_ = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Black-footed penguin
     /// </summary>
     public static readonly Coding BlackFootedPenguin_ = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles earlei
     /// </summary>
     public static readonly Coding AnophelesEarlei_ = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyclura cornuta
     /// </summary>
     public static readonly Coding CycluraCornuta_ = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percina squamata
     /// </summary>
     public static readonly Coding PercinaSquamata_ = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis scabriceps
     /// </summary>
     public static readonly Coding NotropisScabriceps_ = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles punctipennis
     /// </summary>
     public static readonly Coding AnophelesPunctipennis_ = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parafasciolopsis fasciolaemorpha
     /// </summary>
     public static readonly Coding ParafasciolopsisFasciolaemorpha_ = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serraniculus pumilio
     /// </summary>
     public static readonly Coding SerraniculusPumilio_ = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crax alector
     /// </summary>
     public static readonly Coding CraxAlector_ = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protospirura muricola
     /// </summary>
     public static readonly Coding ProtospiruraMuricola_ = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Selar crumenophthalmus
     /// </summary>
     public static readonly Coding SelarCrumenophthalmus_ = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Halichoeres bivittatus
     /// </summary>
     public static readonly Coding HalichoeresBivittatus_ = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Asia
     /// </summary>
     public static readonly Coding Asia_ = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// German longhaired pointer
     /// </summary>
     public static readonly Coding GermanLonghairedPointer_ = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central Asia
     /// </summary>
     public static readonly Coding CentralAsia_ = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Skrjabinagia dagestanica
     /// </summary>
     public static readonly Coding SkrjabinagiaDagestanica_ = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Western Asia
     /// </summary>
     public static readonly Coding WesternAsia_ = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Chirothrips
     /// </summary>
     public static readonly Coding Chirothrips_ = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Argas radiatus
     /// </summary>
     public static readonly Coding ArgasRadiatus_ = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eremichthys acros
     /// </summary>
     public static readonly Coding EremichthysAcros_ = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jack rabbit
     /// </summary>
     public static readonly Coding JackRabbit_ = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Verdin
     /// </summary>
     public static readonly Coding Verdin_ = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pan troglodytes
     /// </summary>
     public static readonly Coding PanTroglodytes_ = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Europe
     /// </summary>
     public static readonly Coding Europe_ = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Selene peruviana
     /// </summary>
     public static readonly Coding SelenePeruviana_ = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biomphalaria heliophila
     /// </summary>
     public static readonly Coding BiomphalariaHeliophila_ = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eastern Europe
     /// </summary>
     public static readonly Coding EasternEurope_ = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Triodontophorus tenuicollis
     /// </summary>
     public static readonly Coding TriodontophorusTenuicollis_ = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bedlington terrier
     /// </summary>
     public static readonly Coding BedlingtonTerrier_ = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Northern Europe
     /// </summary>
     public static readonly Coding NorthernEurope_ = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Ascarops
     /// </summary>
     public static readonly Coding Ascarops_ = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Old World vulture
     /// </summary>
     public static readonly Coding OldWorldVulture_ = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Western Europe
     /// </summary>
     public static readonly Coding WesternEurope_ = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Megalocottus platycephalus
     /// </summary>
     public static readonly Coding MegalocottusPlatycephalus_ = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indian darter
     /// </summary>
     public static readonly Coding IndianDarter_ = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis mekistocholas
     /// </summary>
     public static readonly Coding NotropisMekistocholas_ = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nematobibothroides
     /// </summary>
     public static readonly Coding Nematobibothroides_ = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arum frog
     /// </summary>
     public static readonly Coding ArumFrog_ = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gyrfalcon
     /// </summary>
     public static readonly Coding Gyrfalcon_ = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lungless salamander
     /// </summary>
     public static readonly Coding LunglessSalamander_ = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gadus macrocephalus
     /// </summary>
     public static readonly Coding GadusMacrocephalus_ = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cottus echinatus
     /// </summary>
     public static readonly Coding CottusEchinatus_ = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Megapode
     /// </summary>
     public static readonly Coding Megapode_ = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coryphopterus lipernes
     /// </summary>
     public static readonly Coding CoryphopterusLipernes_ = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Micrognathus crinitus
     /// </summary>
     public static readonly Coding MicrognathusCrinitus_ = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corallus
     /// </summary>
     public static readonly Coding Corallus_ = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Golden-crowned kinglet
     /// </summary>
     public static readonly Coding GoldenCrownedKinglet_ = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monkey-eating eagle
     /// </summary>
     public static readonly Coding MonkeyEatingEagle_ = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trakehner horse
     /// </summary>
     public static readonly Coding TrakehnerHorse_ = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neoechinorhynchus carpiodi
     /// </summary>
     public static readonly Coding NeoechinorhynchusCarpiodi_ = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acanthurus coeruleus
     /// </summary>
     public static readonly Coding AcanthurusCoeruleus_ = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rex
     /// </summary>
     public static readonly Coding Rex_ = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myrophis punctatus
     /// </summary>
     public static readonly Coding MyrophisPunctatus_ = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Opisthorchis felineus
     /// </summary>
     public static readonly Coding OpisthorchisFelineus_ = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anisotremus virginicus
     /// </summary>
     public static readonly Coding AnisotremusVirginicus_ = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gyraulus prashadi
     /// </summary>
     public static readonly Coding GyraulusPrashadi_ = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amblyopsis rosae
     /// </summary>
     public static readonly Coding AmblyopsisRosae_ = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Musca larvipara
     /// </summary>
     public static readonly Coding MuscaLarvipara_ = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis formosus
     /// </summary>
     public static readonly Coding NotropisFormosus_ = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromis cyaneus
     /// </summary>
     public static readonly Coding ChromisCyaneus_ = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clay-colored sparrow
     /// </summary>
     public static readonly Coding ClayColoredSparrow_ = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coryphaena hippurus
     /// </summary>
     public static readonly Coding CoryphaenaHippurus_ = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chickadee
     /// </summary>
     public static readonly Coding Chickadee_ = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis whipplei
     /// </summary>
     public static readonly Coding NotropisWhipplei_ = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retriever
     /// </summary>
     public static readonly Coding Retriever_ = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// House wren
     /// </summary>
     public static readonly Coding HouseWren_ = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cypselurus hubbsi
     /// </summary>
     public static readonly Coding CypselurusHubbsi_ = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oligopus claudei
     /// </summary>
     public static readonly Coding OligopusClaudei_ = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antennarius radiosus
     /// </summary>
     public static readonly Coding AntennariusRadiosus_ = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White turkey
     /// </summary>
     public static readonly Coding WhiteTurkey_ = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis blennius
     /// </summary>
     public static readonly Coding NotropisBlennius_ = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thunnus atlanticus
     /// </summary>
     public static readonly Coding ThunnusAtlanticus_ = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dachshund
     /// </summary>
     public static readonly Coding Dachshund_ = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// European edible frog
     /// </summary>
     public static readonly Coding EuropeanEdibleFrog_ = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heterakis indica
     /// </summary>
     public static readonly Coding HeterakisIndica_ = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mastigoproctus giganteus
     /// </summary>
     public static readonly Coding MastigoproctusGiganteus_ = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plover
     /// </summary>
     public static readonly Coding Plover_ = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Culicoides
     /// </summary>
     public static readonly Coding Culicoides_ = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bathygobius soporator
     /// </summary>
     public static readonly Coding BathygobiusSoporator_ = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microfilaria
     /// </summary>
     public static readonly Coding Microfilaria_ = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monodelphis
     /// </summary>
     public static readonly Coding Monodelphis_ = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dionda episcopa
     /// </summary>
     public static readonly Coding DiondaEpiscopa_ = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxorhynchites splendens
     /// </summary>
     public static readonly Coding ToxorhynchitesSplendens_ = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rambouillet sheep
     /// </summary>
     public static readonly Coding RambouilletSheep_ = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gnathostoma hispidum
     /// </summary>
     public static readonly Coding GnathostomaHispidum_ = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulex simulans
     /// </summary>
     public static readonly Coding PulexSimulans_ = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calotes
     /// </summary>
     public static readonly Coding Calotes_ = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cylicocyclus elongatus
     /// </summary>
     public static readonly Coding CylicocyclusElongatus_ = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canis aureus
     /// </summary>
     public static readonly Coding CanisAureus_ = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophidion holbrooki
     /// </summary>
     public static readonly Coding OphidionHolbrooki_ = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Estrilda caerulescens
     /// </summary>
     public static readonly Coding EstrildaCaerulescens_ = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cylicodontophorus euproctus
     /// </summary>
     public static readonly Coding CylicodontophorusEuproctus_ = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ectobius pallidus
     /// </summary>
     public static readonly Coding EctobiusPallidus_ = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moxostoma poecilurum
     /// </summary>
     public static readonly Coding MoxostomaPoecilurum_ = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zalophotrema
     /// </summary>
     public static readonly Coding Zalophotrema_ = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glossina fuscipes
     /// </summary>
     public static readonly Coding GlossinaFuscipes_ = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dicrocoelium hospes
     /// </summary>
     public static readonly Coding DicrocoeliumHospes_ = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hystrichis tricolor
     /// </summary>
     public static readonly Coding HystrichisTricolor_ = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marans chicken
     /// </summary>
     public static readonly Coding MaransChicken_ = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aedes luteocephalus
     /// </summary>
     public static readonly Coding AedesLuteocephalus_ = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caulolatilus princeps
     /// </summary>
     public static readonly Coding CaulolatilusPrinceps_ = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Syngnathus leptorhynchus
     /// </summary>
     public static readonly Coding SyngnathusLeptorhynchus_ = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menticirrhus americanus
     /// </summary>
     public static readonly Coding MenticirrhusAmericanus_ = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ginglymostoma cirratum
     /// </summary>
     public static readonly Coding GinglymostomaCirratum_ = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyprinodon nevadensis
     /// </summary>
     public static readonly Coding CyprinodonNevadensis_ = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accipiter gentilis
     /// </summary>
     public static readonly Coding AccipiterGentilis_ = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acuaria spiralis
     /// </summary>
     public static readonly Coding AcuariaSpiralis_ = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lycodes diapterus
     /// </summary>
     public static readonly Coding LycodesDiapterus_ = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Japanese chicken
     /// </summary>
     public static readonly Coding JapaneseChicken_ = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyrnea colini
     /// </summary>
     public static readonly Coding CyrneaColini_ = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gobionellus longicaudus
     /// </summary>
     public static readonly Coding GobionellusLongicaudus_ = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyclura
     /// </summary>
     public static readonly Coding Cyclura_ = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymnaea cubensis
     /// </summary>
     public static readonly Coding LymnaeaCubensis_ = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sebastolobus alascanus
     /// </summary>
     public static readonly Coding SebastolobusAlascanus_ = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iguana iguana
     /// </summary>
     public static readonly Coding IguanaIguana_ = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echinostoma malayanum
     /// </summary>
     public static readonly Coding EchinostomaMalayanum_ = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trogloglanis pattersoni
     /// </summary>
     public static readonly Coding TrogloglanisPattersoni_ = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nygmia phaeorrhoea
     /// </summary>
     public static readonly Coding NygmiaPhaeorrhoea_ = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acanthurus randalli
     /// </summary>
     public static readonly Coding AcanthurusRandalli_ = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lesser bird of paradise
     /// </summary>
     public static readonly Coding LesserBirdOfParadise_ = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Strongyloides cebus
     /// </summary>
     public static readonly Coding StrongyloidesCebus_ = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White peafowl
     /// </summary>
     public static readonly Coding WhitePeafowl_ = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hollardia meadi
     /// </summary>
     public static readonly Coding HollardiaMeadi_ = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gnathagnus egregius
     /// </summary>
     public static readonly Coding GnathagnusEgregius_ = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Viviparus javanicus
     /// </summary>
     public static readonly Coding ViviparusJavanicus_ = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lissemys
     /// </summary>
     public static readonly Coding Lissemys_ = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles hyrcanus sinensis
     /// </summary>
     public static readonly Coding AnophelesHyrcanusSinensis_ = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raja inornata
     /// </summary>
     public static readonly Coding RajaInornata_ = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiostrongylus mackerrasae
     /// </summary>
     public static readonly Coding AngiostrongylusMackerrasae_ = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eastern kingbird
     /// </summary>
     public static readonly Coding EasternKingbird_ = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trichuris
     /// </summary>
     public static readonly Coding Trichuris_ = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spotted-tailed dasyure
     /// </summary>
     public static readonly Coding SpottedTailedDasyure_ = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eastern mud snake
     /// </summary>
     public static readonly Coding EasternMudSnake_ = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bivitellobilharzia loxodontae
     /// </summary>
     public static readonly Coding BivitellobilharziaLoxodontae_ = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leiperenia
     /// </summary>
     public static readonly Coding Leiperenia_ = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indigo bunting
     /// </summary>
     public static readonly Coding IndigoBunting_ = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Golden-crested bowerbird
     /// </summary>
     public static readonly Coding GoldenCrestedBowerbird_ = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dermanyssus gallinae
     /// </summary>
     public static readonly Coding DermanyssusGallinae_ = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebotomus orientalis
     /// </summary>
     public static readonly Coding PhlebotomusOrientalis_ = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echinoparyphium dunni
     /// </summary>
     public static readonly Coding EchinoparyphiumDunni_ = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Goniocotes
     /// </summary>
     public static readonly Coding Goniocotes_ = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebotomus argentipes
     /// </summary>
     public static readonly Coding PhlebotomusArgentipes_ = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis candidus
     /// </summary>
     public static readonly Coding NotropisCandidus_ = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lycosa tarentula
     /// </summary>
     public static readonly Coding LycosaTarentula_ = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Triatoma maculata
     /// </summary>
     public static readonly Coding TriatomaMaculata_ = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bulinus (Bulinus) coulboisi
     /// </summary>
     public static readonly Coding BulinusBulinusCoulboisi_ = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tragelaphus euryceros
     /// </summary>
     public static readonly Coding TragelaphusEuryceros_ = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Concinnum ten
     /// </summary>
     public static readonly Coding ConcinnumTen_ = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microthoracius
     /// </summary>
     public static readonly Coding Microthoracius_ = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smooth newt
     /// </summary>
     public static readonly Coding SmoothNewt_ = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Noturus placidus
     /// </summary>
     public static readonly Coding NoturusPlacidus_ = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Holocentrus ascensionis
     /// </summary>
     public static readonly Coding HolocentrusAscensionis_ = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raillietina madagascariensis
     /// </summary>
     public static readonly Coding RaillietinaMadagascariensis_ = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liopropoma rubre
     /// </summary>
     public static readonly Coding LiopropomaRubre_ = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amia calva
     /// </summary>
     public static readonly Coding AmiaCalva_ = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antbird
     /// </summary>
     public static readonly Coding Antbird_ = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lizard
     /// </summary>
     public static readonly Coding Lizard_ = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lythrypnus nesiotes
     /// </summary>
     public static readonly Coding LythrypnusNesiotes_ = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bicaulus sagittatus
     /// </summary>
     public static readonly Coding BicaulusSagittatus_ = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oesophagostomum radiatum
     /// </summary>
     public static readonly Coding OesophagostomumRadiatum_ = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcottus sellaris
     /// </summary>
     public static readonly Coding MicrocottusSellaris_ = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hirundichthys affinis
     /// </summary>
     public static readonly Coding HirundichthysAffinis_ = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lepisosteus oculatus
     /// </summary>
     public static readonly Coding LepisosteusOculatus_ = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Taenia parva
     /// </summary>
     public static readonly Coding TaeniaParva_ = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hymenolepis fraterna
     /// </summary>
     public static readonly Coding HymenolepisFraterna_ = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pseudodiscus collinsi
     /// </summary>
     public static readonly Coding PseudodiscusCollinsi_ = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dorosoma petenense
     /// </summary>
     public static readonly Coding DorosomaPetenense_ = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scomber japonicus
     /// </summary>
     public static readonly Coding ScomberJaponicus_ = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cacique
     /// </summary>
     public static readonly Coding Cacique_ = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gobiosoma ginsburgi
     /// </summary>
     public static readonly Coding GobiosomaGinsburgi_ = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Makaira indica
     /// </summary>
     public static readonly Coding MakairaIndica_ = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Etheostoma fricksium
     /// </summary>
     public static readonly Coding EtheostomaFricksium_ = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ixodes rugosus
     /// </summary>
     public static readonly Coding IxodesRugosus_ = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mastophorus muris
     /// </summary>
     public static readonly Coding MastophorusMuris_ = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Martes zibellina
     /// </summary>
     public static readonly Coding MartesZibellina_ = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Miniature schnauzer
     /// </summary>
     public static readonly Coding MiniatureSchnauzer_ = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epicrates
     /// </summary>
     public static readonly Coding Epicrates_ = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malaclemys
     /// </summary>
     public static readonly Coding Malaclemys_ = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Strongylus equinus
     /// </summary>
     public static readonly Coding StrongylusEquinus_ = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles gambiae
     /// </summary>
     public static readonly Coding AnophelesGambiae_ = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis amabilis
     /// </summary>
     public static readonly Coding NotropisAmabilis_ = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echinorhynchus
     /// </summary>
     public static readonly Coding Echinorhynchus_ = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Romney marsh sheep
     /// </summary>
     public static readonly Coding RomneyMarshSheep_ = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cricket frog
     /// </summary>
     public static readonly Coding CricketFrog_ = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phoneutria
     /// </summary>
     public static readonly Coding Phoneutria_ = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyathostomum catinatum
     /// </summary>
     public static readonly Coding CyathostomumCatinatum_ = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Strongyloides cati
     /// </summary>
     public static readonly Coding StrongyloidesCati_ = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Noeschoengastia
     /// </summary>
     public static readonly Coding Noeschoengastia_ = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Membras martinica
     /// </summary>
     public static readonly Coding MembrasMartinica_ = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lycodes rossi
     /// </summary>
     public static readonly Coding LycodesRossi_ = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caranx bartholomaei
     /// </summary>
     public static readonly Coding CaranxBartholomaei_ = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hirundichthys rondeleti
     /// </summary>
     public static readonly Coding HirundichthysRondeleti_ = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Selene setapinnis
     /// </summary>
     public static readonly Coding SeleneSetapinnis_ = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Branta canadensis
     /// </summary>
     public static readonly Coding BrantaCanadensis_ = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis perpallidus
     /// </summary>
     public static readonly Coding NotropisPerpallidus_ = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles pattoni
     /// </summary>
     public static readonly Coding AnophelesPattoni_ = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Strongyloides canis
     /// </summary>
     public static readonly Coding StrongyloidesCanis_ = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhinichthys evermanni
     /// </summary>
     public static readonly Coding RhinichthysEvermanni_ = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lincoln red cattle
     /// </summary>
     public static readonly Coding LincolnRedCattle_ = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laughing gull
     /// </summary>
     public static readonly Coding LaughingGull_ = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Etheostoma neopterum
     /// </summary>
     public static readonly Coding EtheostomaNeopterum_ = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Opisthorchis noverca
     /// </summary>
     public static readonly Coding OpisthorchisNoverca_ = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haemonchus lawrenci
     /// </summary>
     public static readonly Coding HaemonchusLawrenci_ = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biomphalaria tenagophila
     /// </summary>
     public static readonly Coding BiomphalariaTenagophila_ = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duroc pig
     /// </summary>
     public static readonly Coding DurocPig_ = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trimeresurus monticola
     /// </summary>
     public static readonly Coding TrimeresurusMonticola_ = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schistosoma haematobium
     /// </summary>
     public static readonly Coding SchistosomaHaematobium_ = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sphyrna lewini
     /// </summary>
     public static readonly Coding SphyrnaLewini_ = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trichostrongylus skrjabini
     /// </summary>
     public static readonly Coding TrichostrongylusSkrjabini_ = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dandie dinmont terrier
     /// </summary>
     public static readonly Coding DandieDinmontTerrier_ = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Havana brown cat
     /// </summary>
     public static readonly Coding HavanaBrownCat_ = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ptychocheilus grandis
     /// </summary>
     public static readonly Coding PtychocheilusGrandis_ = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromis punctipinnis
     /// </summary>
     public static readonly Coding ChromisPunctipinnis_ = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fundulus lineolatus
     /// </summary>
     public static readonly Coding FundulusLineolatus_ = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Black-headed oriole
     /// </summary>
     public static readonly Coding BlackHeadedOriole_ = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chloroscombrus chrysurus
     /// </summary>
     public static readonly Coding ChloroscombrusChrysurus_ = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kaupichthys nuchalis
     /// </summary>
     public static readonly Coding KaupichthysNuchalis_ = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gurltia
     /// </summary>
     public static readonly Coding Gurltia_ = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Holocentrus bullisi
     /// </summary>
     public static readonly Coding HolocentrusBullisi_ = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fat dormouse
     /// </summary>
     public static readonly Coding FatDormouse_ = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thelazia bubalis
     /// </summary>
     public static readonly Coding ThelaziaBubalis_ = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rufous tinamou
     /// </summary>
     public static readonly Coding RufousTinamou_ = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red-billed chough
     /// </summary>
     public static readonly Coding RedBilledChough_ = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xererpes fucorum
     /// </summary>
     public static readonly Coding XererpesFucorum_ = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percina crassa
     /// </summary>
     public static readonly Coding PercinaCrassa_ = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raillietina echinobothridia
     /// </summary>
     public static readonly Coding RaillietinaEchinobothridia_ = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles grabhanii
     /// </summary>
     public static readonly Coding AnophelesGrabhanii_ = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Equetus lanceolatus
     /// </summary>
     public static readonly Coding EquetusLanceolatus_ = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Southdown sheep
     /// </summary>
     public static readonly Coding SouthdownSheep_ = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coryphopterus thrix
     /// </summary>
     public static readonly Coding CoryphopterusThrix_ = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coleonyx
     /// </summary>
     public static readonly Coding Coleonyx_ = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bitis
     /// </summary>
     public static readonly Coding Bitis_ = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles d'thali
     /// </summary>
     public static readonly Coding AnophelesDQuoteThali_ = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chaetodon sedentarius
     /// </summary>
     public static readonly Coding ChaetodonSedentarius_ = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pimephales promelas
     /// </summary>
     public static readonly Coding PimephalesPromelas_ = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brosmophycis marginata
     /// </summary>
     public static readonly Coding BrosmophycisMarginata_ = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Balinese cat
     /// </summary>
     public static readonly Coding BalineseCat_ = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Golden-rumped tinkerbird
     /// </summary>
     public static readonly Coding GoldenRumpedTinkerbird_ = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stenotomus caprinus
     /// </summary>
     public static readonly Coding StenotomusCaprinus_ = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis coccogenis
     /// </summary>
     public static readonly Coding NotropisCoccogenis_ = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Siberian huskie
     /// </summary>
     public static readonly Coding SiberianHuskie_ = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyprinus carpio
     /// </summary>
     public static readonly Coding CyprinusCarpio_ = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mycteroperca xenarcha
     /// </summary>
     public static readonly Coding MycteropercaXenarcha_ = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spring peeper
     /// </summary>
     public static readonly Coding SpringPeeper_ = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anisakis simplex
     /// </summary>
     public static readonly Coding AnisakisSimplex_ = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minivet
     /// </summary>
     public static readonly Coding Minivet_ = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydrosaurus
     /// </summary>
     public static readonly Coding Hydrosaurus_ = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anthias gordensis
     /// </summary>
     public static readonly Coding AnthiasGordensis_ = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Citharichthys cornutus
     /// </summary>
     public static readonly Coding CitharichthysCornutus_ = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Micrurus
     /// </summary>
     public static readonly Coding Micrurus_ = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxascaris leonina
     /// </summary>
     public static readonly Coding ToxascarisLeonina_ = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Catostomus commersoni
     /// </summary>
     public static readonly Coding CatostomusCommersoni_ = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anatrichosoma cynomolgi
     /// </summary>
     public static readonly Coding AnatrichosomaCynomolgi_ = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alopias superciliosus
     /// </summary>
     public static readonly Coding AlopiasSuperciliosus_ = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mansonia pertubans
     /// </summary>
     public static readonly Coding MansoniaPertubans_ = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis chrosomus
     /// </summary>
     public static readonly Coding NotropisChrosomus_ = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dracunculus medinensis
     /// </summary>
     public static readonly Coding DracunculusMedinensis_ = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enophrys bison
     /// </summary>
     public static readonly Coding EnophrysBison_ = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decapterus macarellus
     /// </summary>
     public static readonly Coding DecapterusMacarellus_ = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poecilia formosa
     /// </summary>
     public static readonly Coding PoeciliaFormosa_ = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schistosoma chestermani
     /// </summary>
     public static readonly Coding SchistosomaChestermani_ = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beltsville white turkey
     /// </summary>
     public static readonly Coding BeltsvilleWhiteTurkey_ = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophidion beani
     /// </summary>
     public static readonly Coding OphidionBeani_ = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gerrhonotus
     /// </summary>
     public static readonly Coding Gerrhonotus_ = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corucia zebrata
     /// </summary>
     public static readonly Coding CoruciaZebrata_ = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Musca amica
     /// </summary>
     public static readonly Coding MuscaAmica_ = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Airedale terrier
     /// </summary>
     public static readonly Coding AiredaleTerrier_ = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Melodious blackbird
     /// </summary>
     public static readonly Coding MelodiousBlackbird_ = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymnaea volutata
     /// </summary>
     public static readonly Coding LymnaeaVolutata_ = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spinetail
     /// </summary>
     public static readonly Coding Spinetail_ = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatrics
     /// </summary>
     public static readonly Coding Pediatrics_ = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric neurology
     /// </summary>
     public static readonly Coding PediatricNeurology_ = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Audiological medicine
     /// </summary>
     public static readonly Coding AudiologicalMedicine_ = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiology
     /// </summary>
     public static readonly Coding Cardiology_ = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical genetics
     /// </summary>
     public static readonly Coding ClinicalGenetics_ = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dermatology
     /// </summary>
     public static readonly Coding Dermatology_ = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endocrinology
     /// </summary>
     public static readonly Coding Endocrinology_ = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroenterology
     /// </summary>
     public static readonly Coding Gastroenterology_ = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nephrology
     /// </summary>
     public static readonly Coding Nephrology_ = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic medicine
     /// </summary>
     public static readonly Coding ThoracicMedicine_ = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurology
     /// </summary>
     public static readonly Coding Neurology_ = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical oncology
     /// </summary>
     public static readonly Coding MedicalOncology_ = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical pharmacology
     /// </summary>
     public static readonly Coding ClinicalPharmacology_ = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Northern shrike
     /// </summary>
     public static readonly Coding NorthernShrike_ = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical physiology
     /// </summary>
     public static readonly Coding ClinicalPhysiology_ = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rehabilitation - specialty
     /// </summary>
     public static readonly Coding RehabilitationSpecialty_ = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuclear medicine - specialty
     /// </summary>
     public static readonly Coding NuclearMedicineSpecialty_ = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General medicine
     /// </summary>
     public static readonly Coding GeneralMedicine_ = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical hematology
     /// </summary>
     public static readonly Coding ClinicalHematology_ = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical cytogenetics and molecular genetics
     /// </summary>
     public static readonly Coding ClinicalCytogeneticsAndMolecularGenetics_ = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical immunology/allergy
     /// </summary>
     public static readonly Coding ClinicalImmunologyAllergy_ = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palliative medicine
     /// </summary>
     public static readonly Coding PalliativeMedicine_ = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infectious diseases (specialty)
     /// </summary>
     public static readonly Coding InfectiousDiseasesSpecialty_ = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Genito-urinary medicine
     /// </summary>
     public static readonly Coding GenitoUrinaryMedicine_ = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical neuro-physiology
     /// </summary>
     public static readonly Coding ClinicalNeuroPhysiology_ = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rheumatology
     /// </summary>
     public static readonly Coding Rheumatology_ = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Geriatric medicine
     /// </summary>
     public static readonly Coding GeriatricMedicine_ = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental medicine specialties
     /// </summary>
     public static readonly Coding DentalMedicineSpecialties_ = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical ophthalmology
     /// </summary>
     public static readonly Coding MedicalOphthalmology_ = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Micrometrus aurora
     /// </summary>
     public static readonly Coding MicrometrusAurora_ = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blaberus craniifer
     /// </summary>
     public static readonly Coding BlaberusCraniifer_ = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manx
     /// </summary>
     public static readonly Coding Manx_ = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pony
     /// </summary>
     public static readonly Coding Pony_ = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pinzgauer cattle
     /// </summary>
     public static readonly Coding PinzgauerCattle_ = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cottus princeps
     /// </summary>
     public static readonly Coding CottusPrinceps_ = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Margaropus wileyi
     /// </summary>
     public static readonly Coding MargaropusWileyi_ = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hybopsis gracilis
     /// </summary>
     public static readonly Coding HybopsisGracilis_ = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physaloptera abbreviata
     /// </summary>
     public static readonly Coding PhysalopteraAbbreviata_ = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brama japonica
     /// </summary>
     public static readonly Coding BramaJaponica_ = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Somali cat
     /// </summary>
     public static readonly Coding SomaliCat_ = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Java wart snake
     /// </summary>
     public static readonly Coding JavaWartSnake_ = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cottus marginatus
     /// </summary>
     public static readonly Coding CottusMarginatus_ = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haemogamasus
     /// </summary>
     public static readonly Coding Haemogamasus_ = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Allergy - specialty
     /// </summary>
     public static readonly Coding AllergySpecialty_ = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Public health medicine
     /// </summary>
     public static readonly Coding PublicHealthMedicine_ = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemophilia - specialty
     /// </summary>
     public static readonly Coding HemophiliaSpecialty_ = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neonatology
     /// </summary>
     public static readonly Coding Neonatology_ = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Respite care - specialty
     /// </summary>
     public static readonly Coding RespiteCareSpecialty_ = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tropical medicine
     /// </summary>
     public static readonly Coding TropicalMedicine_ = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sleep studies - specialty
     /// </summary>
     public static readonly Coding SleepStudiesSpecialty_ = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric cardiology
     /// </summary>
     public static readonly Coding PediatricCardiology_ = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatology
     /// </summary>
     public static readonly Coding Hepatology_ = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetic medicine
     /// </summary>
     public static readonly Coding DiabeticMedicine_ = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Critical care medicine
     /// </summary>
     public static readonly Coding CriticalCareMedicine_ = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical immunology
     /// </summary>
     public static readonly Coding ClinicalImmunology_ = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notropis ariommus
     /// </summary>
     public static readonly Coding NotropisAriommus_ = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxicology
     /// </summary>
     public static readonly Coding Toxicology_ = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Preventive medicine
     /// </summary>
     public static readonly Coding PreventiveMedicine_ = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Military medicine
     /// </summary>
     public static readonly Coding MilitaryMedicine_ = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dive medicine
     /// </summary>
     public static readonly Coding DiveMedicine_ = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atheta occidentalis
     /// </summary>
     public static readonly Coding AthetaOccidentalis_ = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Micrurus surinamensis
     /// </summary>
     public static readonly Coding MicrurusSurinamensis_ = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles cruzii
     /// </summary>
     public static readonly Coding AnophelesCruzii_ = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pila conica
     /// </summary>
     public static readonly Coding PilaConica_ = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nymphalis
     /// </summary>
     public static readonly Coding Nymphalis_ = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteopathic manipulative medicine
     /// </summary>
     public static readonly Coding OsteopathicManipulativeMedicine_ = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hippoglossus hippoglossus
     /// </summary>
     public static readonly Coding HippoglossusHippoglossus_ = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diplozoon
     /// </summary>
     public static readonly Coding Diplozoon_ = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric otolaryngology
     /// </summary>
     public static readonly Coding PediatricOtolaryngology_ = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric oncology
     /// </summary>
     public static readonly Coding PediatricOncology_ = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric gastroenterology
     /// </summary>
     public static readonly Coding PediatricGastroenterology_ = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary medicine
     /// </summary>
     public static readonly Coding PulmonaryMedicine_ = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric immunology
     /// </summary>
     public static readonly Coding PediatricImmunology_ = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric hematology
     /// </summary>
     public static readonly Coding PediatricHematology_ = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric infectious diseases
     /// </summary>
     public static readonly Coding PediatricInfectiousDiseases_ = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Latin America and the Caribbean
     /// </summary>
     public static readonly Coding LatinAmericaAndTheCaribbean_ = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Urological oncology
     /// </summary>
     public static readonly Coding UrologicalOncology_ = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric pulmonology
     /// </summary>
     public static readonly Coding PediatricPulmonology_ = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal medicine
     /// </summary>
     public static readonly Coding InternalMedicine_ = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric intensive care
     /// </summary>
     public static readonly Coding PediatricIntensiveCare_ = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric nephrology
     /// </summary>
     public static readonly Coding PediatricNephrology_ = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric rheumatology
     /// </summary>
     public static readonly Coding PediatricRheumatology_ = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric endocrinology
     /// </summary>
     public static readonly Coding PediatricEndocrinology_ = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric neurology oncology
     /// </summary>
     public static readonly Coding PediatricNeurologyOncology_ = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family practice
     /// </summary>
     public static readonly Coding FamilyPractice_ = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric emergency medicine
     /// </summary>
     public static readonly Coding PediatricEmergencyMedicine_ = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric ophthalmology
     /// </summary>
     public static readonly Coding PediatricOphthalmology_ = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric bone marrow transplantation
     /// </summary>
     public static readonly Coding PediatricBoneMarrowTransplantation_ = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric genetics
     /// </summary>
     public static readonly Coding PediatricGenetics_ = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tetrameres confusa
     /// </summary>
     public static readonly Coding TetrameresConfusa_ = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baltimore oriole
     /// </summary>
     public static readonly Coding BaltimoreOriole_ = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diplostomum phoxini
     /// </summary>
     public static readonly Coding DiplostomumPhoxini_ = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhipicephalus decoloratus
     /// </summary>
     public static readonly Coding RhipicephalusDecoloratus_ = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oochoristica ratti
     /// </summary>
     public static readonly Coding OochoristicaRatti_ = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pomphorhynchus bulbocolli
     /// </summary>
     public static readonly Coding PomphorhynchusBulbocolli_ = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemitragus
     /// </summary>
     public static readonly Coding Hemitragus_ = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ailurus fulgens
     /// </summary>
     public static readonly Coding AilurusFulgens_ = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gadus ogac
     /// </summary>
     public static readonly Coding GadusOgac_ = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cichlasoma octofasciatum
     /// </summary>
     public static readonly Coding CichlasomaOctofasciatum_ = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trichuris sylvilagi
     /// </summary>
     public static readonly Coding TrichurisSylvilagi_ = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Etheostoma kanawhae
     /// </summary>
     public static readonly Coding EtheostomaKanawhae_ = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hexanchus griseus
     /// </summary>
     public static readonly Coding HexanchusGriseus_ = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Northern flat-head snake
     /// </summary>
     public static readonly Coding NorthernFlatHeadSnake_ = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoroughbred horse
     /// </summary>
     public static readonly Coding ThoroughbredHorse_ = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sebastes variegatus
     /// </summary>
     public static readonly Coding SebastesVariegatus_ = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Taenia antarctica
     /// </summary>
     public static readonly Coding TaeniaAntarctica_ = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capillaria megrelica
     /// </summary>
     public static readonly Coding CapillariaMegrelica_ = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aedes communis
     /// </summary>
     public static readonly Coding AedesCommunis_ = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cooperia spatulata
     /// </summary>
     public static readonly Coding CooperiaSpatulata_ = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ornithonyssus sylviarum
     /// </summary>
     public static readonly Coding OrnithonyssusSylviarum_ = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Porrocaecum aridae
     /// </summary>
     public static readonly Coding PorrocaecumAridae_ = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Noturus gyrinus
     /// </summary>
     public static readonly Coding NoturusGyrinus_ = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red-backed pelican
     /// </summary>
     public static readonly Coding RedBackedPelican_ = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eptatretus deani
     /// </summary>
     public static readonly Coding EptatretusDeani_ = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles pseudopunctipennis franciscanus
     /// </summary>
     public static readonly Coding AnophelesPseudopunctipennisFranciscanus_ = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pallasina barbata
     /// </summary>
     public static readonly Coding PallasinaBarbata_ = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heterodera
     /// </summary>
     public static readonly Coding Heterodera_ = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood and marrow transplantation
     /// </summary>
     public static readonly Coding BloodAndMarrowTransplantation_ = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lepomis gibbosus
     /// </summary>
     public static readonly Coding LepomisGibbosus_ = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Platybelone argalus
     /// </summary>
     public static readonly Coding PlatybeloneArgalus_ = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lichanura trivirgata
     /// </summary>
     public static readonly Coding LichanuraTrivirgata_ = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menidia menidia
     /// </summary>
     public static readonly Coding MenidiaMenidia_ = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aedes dorsalis
     /// </summary>
     public static readonly Coding AedesDorsalis_ = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anguilla anguilla
     /// </summary>
     public static readonly Coding AnguillaAnguilla_ = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shropshire sheep
     /// </summary>
     public static readonly Coding ShropshireSheep_ = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Standard platinum fox
     /// </summary>
     public static readonly Coding StandardPlatinumFox_ = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scorpaenodes caribbaeus
     /// </summary>
     public static readonly Coding ScorpaenodesCaribbaeus_ = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hybognathus hankinsoni
     /// </summary>
     public static readonly Coding HybognathusHankinsoni_ = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Petaurus
     /// </summary>
     public static readonly Coding Petaurus_ = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capillaria tuberculata
     /// </summary>
     public static readonly Coding CapillariaTuberculata_ = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parasimulium
     /// </summary>
     public static readonly Coding Parasimulium_ = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactophrys quadricornis
     /// </summary>
     public static readonly Coding LactophrysQuadricornis_ = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chrysomya chloropyga
     /// </summary>
     public static readonly Coding ChrysomyaChloropyga_ = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Francolin
     /// </summary>
     public static readonly Coding Francolin_ = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Careproctus melanurus
     /// </summary>
     public static readonly Coding CareproctusMelanurus_ = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ostertagia pinnata
     /// </summary>
     public static readonly Coding OstertagiaPinnata_ = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyalomma turnicum
     /// </summary>
     public static readonly Coding HyalommaTurnicum_ = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lepomis marginattus
     /// </summary>
     public static readonly Coding LepomisMarginattus_ = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Etheostoma simoterum
     /// </summary>
     public static readonly Coding EtheostomaSimoterum_ = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haemaphysalis longicornis
     /// </summary>
     public static readonly Coding HaemaphysalisLongicornis_ = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// River turtle
     /// </summary>
     public static readonly Coding RiverTurtle_ = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Auxis thazard
     /// </summary>
     public static readonly Coding AuxisThazard_ = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secretarybird
     /// </summary>
     public static readonly Coding Secretarybird_ = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leontopithecus rosalia
     /// </summary>
     public static readonly Coding LeontopithecusRosalia_ = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microphallus
     /// </summary>
     public static readonly Coding Microphallus_ = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trimeresurus elegans
     /// </summary>
     public static readonly Coding TrimeresurusElegans_ = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apogon lachneri
     /// </summary>
     public static readonly Coding ApogonLachneri_ = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Piedmontese cattle
     /// </summary>
     public static readonly Coding PiedmonteseCattle_ = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles minimus flavirostris
     /// </summary>
     public static readonly Coding AnophelesMinimusFlavirostris_ = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Common newt
     /// </summary>
     public static readonly Coding CommonNewt_ = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aquila chrysaetos
     /// </summary>
     public static readonly Coding AquilaChrysaetos_ = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boselaphus tragocamelus
     /// </summary>
     public static readonly Coding BoselaphusTragocamelus_ = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blue-headed pionus
     /// </summary>
     public static readonly Coding BlueHeadedPionus_ = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lycaon pictus
     /// </summary>
     public static readonly Coding LycaonPictus_ = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peruvian Paso horse
     /// </summary>
     public static readonly Coding PeruvianPasoHorse_ = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ixodes persulcatus
     /// </summary>
     public static readonly Coding IxodesPersulcatus_ = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epinephelus morio
     /// </summary>
     public static readonly Coding EpinephelusMorio_ = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grass warbler
     /// </summary>
     public static readonly Coding GrassWarbler_ = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Painted bunting
     /// </summary>
     public static readonly Coding PaintedBunting_ = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antennarius ocellatus
     /// </summary>
     public static readonly Coding AntennariusOcellatus_ = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phyllodactylus
     /// </summary>
     public static readonly Coding Phyllodactylus_ = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrips tabaci
     /// </summary>
     public static readonly Coding ThripsTabaci_ = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jordania zonope
     /// </summary>
     public static readonly Coding JordaniaZonope_ = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anisakid nematode
     /// </summary>
     public static readonly Coding AnisakidNematode_ = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspidogaster conchicola
     /// </summary>
     public static readonly Coding AspidogasterConchicola_ = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyalomma truncatum
     /// </summary>
     public static readonly Coding HyalommaTruncatum_ = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Standard poodle
     /// </summary>
     public static readonly Coding StandardPoodle_ = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scorpaena plumieri
     /// </summary>
     public static readonly Coding ScorpaenaPlumieri_ = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chlorophthalmus agassizi
     /// </summary>
     public static readonly Coding ChlorophthalmusAgassizi_ = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fayoumi chicken
     /// </summary>
     public static readonly Coding FayoumiChicken_ = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plectranthias garrupellus
     /// </summary>
     public static readonly Coding PlectranthiasGarrupellus_ = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Platycercus icterotis
     /// </summary>
     public static readonly Coding PlatycercusIcterotis_ = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gazella granti
     /// </summary>
     public static readonly Coding GazellaGranti_ = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whistler
     /// </summary>
     public static readonly Coding Whistler_ = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beetle larvae
     /// </summary>
     public static readonly Coding BeetleLarvae_ = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Montdale sheep
     /// </summary>
     public static readonly Coding MontdaleSheep_ = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles maculipennis messeae
     /// </summary>
     public static readonly Coding AnophelesMaculipennisMesseae_ = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxford sandy block pig
     /// </summary>
     public static readonly Coding OxfordSandyBlockPig_ = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lemur coronatus
     /// </summary>
     public static readonly Coding LemurCoronatus_ = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schistosoma japonicum
     /// </summary>
     public static readonly Coding SchistosomaJaponicum_ = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haemadipsa
     /// </summary>
     public static readonly Coding Haemadipsa_ = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gyraulus convexiusculus
     /// </summary>
     public static readonly Coding GyraulusConvexiusculus_ = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tragelaphus strepsiceros
     /// </summary>
     public static readonly Coding TragelaphusStrepsiceros_ = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bothrops
     /// </summary>
     public static readonly Coding Bothrops_ = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eopsetta jordani
     /// </summary>
     public static readonly Coding EopsettaJordani_ = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cottus asper
     /// </summary>
     public static readonly Coding CottusAsper_ = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Holacanthus ciliaris
     /// </summary>
     public static readonly Coding HolacanthusCiliaris_ = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prosthogonimus cuneatus
     /// </summary>
     public static readonly Coding ProsthogonimusCuneatus_ = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hurter's spadefoot toad
     /// </summary>
     public static readonly Coding HurterQuoteSSpadefootToad_ = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manchester terrier
     /// </summary>
     public static readonly Coding ManchesterTerrier_ = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paralichthys albigutta
     /// </summary>
     public static readonly Coding ParalichthysAlbigutta_ = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Santa Gertrudis cattle
     /// </summary>
     public static readonly Coding SantaGertrudisCattle_ = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhode Island red chicken
     /// </summary>
     public static readonly Coding RhodeIslandRedChicken_ = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dirofilaria corynodes
     /// </summary>
     public static readonly Coding DirofilariaCorynodes_ = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Symphurus urospilus
     /// </summary>
     public static readonly Coding SymphurusUrospilus_ = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haemonchus similis
     /// </summary>
     public static readonly Coding HaemonchusSimilis_ = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trichuris trichiura
     /// </summary>
     public static readonly Coding TrichurisTrichiura_ = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Weevil
     /// </summary>
     public static readonly Coding Weevil_ = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diphyllobothrium dalliae
     /// </summary>
     public static readonly Coding DiphyllobothriumDalliae_ = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuthatch
     /// </summary>
     public static readonly Coding Nuthatch_ = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stripe-headed creeper
     /// </summary>
     public static readonly Coding StripeHeadedCreeper_ = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sebastes mystinus
     /// </summary>
     public static readonly Coding SebastesMystinus_ = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// French alpine goat
     /// </summary>
     public static readonly Coding FrenchAlpineGoat_ = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cephenemyia
     /// </summary>
     public static readonly Coding Cephenemyia_ = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sarcoptes scabiei var. ovis
     /// </summary>
     public static readonly Coding SarcoptesScabieiVarOvis_ = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dendrobates
     /// </summary>
     public static readonly Coding Dendrobates_ = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heterandria formosa
     /// </summary>
     public static readonly Coding HeterandriaFormosa_ = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Avitellina chalmersi
     /// </summary>
     public static readonly Coding AvitellinaChalmersi_ = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Louisiana waterthrush
     /// </summary>
     public static readonly Coding LouisianaWaterthrush_ = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kingbird
     /// </summary>
     public static readonly Coding Kingbird_ = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Holanthias martinicensis
     /// </summary>
     public static readonly Coding HolanthiasMartinicensis_ = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Syngnathus pelagicus
     /// </summary>
     public static readonly Coding SyngnathusPelagicus_ = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ternidens
     /// </summary>
     public static readonly Coding Ternidens_ = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gnathophis catalinensis
     /// </summary>
     public static readonly Coding GnathophisCatalinensis_ = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Noddy
     /// </summary>
     public static readonly Coding Noddy_ = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Syphacia eutamii
     /// </summary>
     public static readonly Coding SyphaciaEutamii_ = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Euscorpius
     /// </summary>
     public static readonly Coding Euscorpius_ = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prionotus roseus
     /// </summary>
     public static readonly Coding PrionotusRoseus_ = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bathyagonus alascanus
     /// </summary>
     public static readonly Coding BathyagonusAlascanus_ = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cheilotrema saturnum
     /// </summary>
     public static readonly Coding CheilotremaSaturnum_ = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ornithodoros compactus
     /// </summary>
     public static readonly Coding OrnithodorosCompactus_ = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prophila
     /// </summary>
     public static readonly Coding Prophila_ = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physaloptera caucasica
     /// </summary>
     public static readonly Coding PhysalopteraCaucasica_ = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxyuranus
     /// </summary>
     public static readonly Coding Oxyuranus_ = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aulostomus maculatus
     /// </summary>
     public static readonly Coding AulostomusMaculatus_ = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chrysolophus amherstiae
     /// </summary>
     public static readonly Coding ChrysolophusAmherstiae_ = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pimephales vigilax
     /// </summary>
     public static readonly Coding PimephalesVigilax_ = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coregonus hoyi
     /// </summary>
     public static readonly Coding CoregonusHoyi_ = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spadefoot toad
     /// </summary>
     public static readonly Coding SpadefootToad_ = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lepomis gulosus
     /// </summary>
     public static readonly Coding LepomisGulosus_ = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Athesmia
     /// </summary>
     public static readonly Coding Athesmia_ = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Icelus spiniger
     /// </summary>
     public static readonly Coding IcelusSpiniger_ = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amphistichus koelzi
     /// </summary>
     public static readonly Coding AmphistichusKoelzi_ = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amphiuma
     /// </summary>
     public static readonly Coding Amphiuma_ = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bulinus (Physopsis) jousseaunsei
     /// </summary>
     public static readonly Coding BulinusPhysopsisJousseaunsei_ = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calamus arctifrons
     /// </summary>
     public static readonly Coding CalamusArctifrons_ = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bulinus (Bulinus) forskalii
     /// </summary>
     public static readonly Coding BulinusBulinusForskalii_ = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophionyssus naticis
     /// </summary>
     public static readonly Coding OphionyssusNaticis_ = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zebrina detrita
     /// </summary>
     public static readonly Coding ZebrinaDetrita_ = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capillaria brevipes
     /// </summary>
     public static readonly Coding CapillariaBrevipes_ = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pneumonyssus simicola
     /// </summary>
     public static readonly Coding PneumonyssusSimicola_ = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capillaria hepatica
     /// </summary>
     public static readonly Coding CapillariaHepatica_ = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Argas africolumbae
     /// </summary>
     public static readonly Coding ArgasAfricolumbae_ = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wirehaired vizsla
     /// </summary>
     public static readonly Coding WirehairedVizsla_ = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhinoestrus
     /// </summary>
     public static readonly Coding Rhinoestrus_ = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ambloplites ariommus
     /// </summary>
     public static readonly Coding AmbloplitesAriommus_ = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ornithonyssus
     /// </summary>
     public static readonly Coding Ornithonyssus_ = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemipteronotus splendens
     /// </summary>
     public static readonly Coding HemipteronotusSplendens_ = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dalmatian dog
     /// </summary>
     public static readonly Coding DalmatianDog_ = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ixodes pacificus
     /// </summary>
     public static readonly Coding IxodesPacificus_ = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oligocottus rubellio
     /// </summary>
     public static readonly Coding OligocottusRubellio_ = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vespa crabro
     /// </summary>
     public static readonly Coding VespaCrabro_ = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diplogonoporus grandis
     /// </summary>
     public static readonly Coding DiplogonoporusGrandis_ = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xenopsylla brasiliensis
     /// </summary>
     public static readonly Coding XenopsyllaBrasiliensis_ = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tree swallow
     /// </summary>
     public static readonly Coding TreeSwallow_ = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ornithobilharzia turkestanicum
     /// </summary>
     public static readonly Coding OrnithobilharziaTurkestanicum_ = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhinocricus latespagor
     /// </summary>
     public static readonly Coding RhinocricusLatespagor_ = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DK pig 33
     /// </summary>
     public static readonly Coding DKPig33_ = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Terrier
     /// </summary>
     public static readonly Coding Terrier_ = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-nosed snake
     /// </summary>
     public static readonly Coding LongNosedSnake_ = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jack Russell terrier dog breed
     /// </summary>
     public static readonly Coding JackRussellTerrierDogBreed_ = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meusse-Rhine-Ijssel cattle
     /// </summary>
     public static readonly Coding MeusseRhineIjsselCattle_ = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artediellus scaber
     /// </summary>
     public static readonly Coding ArtediellusScaber_ = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyanoliseus patagonus
     /// </summary>
     public static readonly Coding CyanoliseusPatagonus_ = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buthacus
     /// </summary>
     public static readonly Coding Buthacus_ = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rocky Mountain pika
     /// </summary>
     public static readonly Coding RockyMountainPika_ = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Taractichthys longipinnis
     /// </summary>
     public static readonly Coding TaractichthysLongipinnis_ = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White-cheeked laughing thrush
     /// </summary>
     public static readonly Coding WhiteCheekedLaughingThrush_ = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galiceno horse
     /// </summary>
     public static readonly Coding GalicenoHorse_ = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eurycea
     /// </summary>
     public static readonly Coding Eurycea_ = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Merluccius bilinearis
     /// </summary>
     public static readonly Coding MerlucciusBilinearis_ = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anarhichas lupus
     /// </summary>
     public static readonly Coding AnarhichasLupus_ = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trinectes maculatus
     /// </summary>
     public static readonly Coding TrinectesMaculatus_ = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prionotus ophryas
     /// </summary>
     public static readonly Coding PrionotusOphryas_ = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paragonimus africanus
     /// </summary>
     public static readonly Coding ParagonimusAfricanus_ = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sparisoma atomarium
     /// </summary>
     public static readonly Coding SparisomaAtomarium_ = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acronicta oblinata
     /// </summary>
     public static readonly Coding AcronictaOblinata_ = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isoparorchis
     /// </summary>
     public static readonly Coding Isoparorchis_ = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Platysaurus
     /// </summary>
     public static readonly Coding Platysaurus_ = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Musca sorbens
     /// </summary>
     public static readonly Coding MuscaSorbens_ = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leicester sheep
     /// </summary>
     public static readonly Coding LeicesterSheep_ = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apis cerana
     /// </summary>
     public static readonly Coding ApisCerana_ = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toucan barbet
     /// </summary>
     public static readonly Coding ToucanBarbet_ = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acanthemblemaria aspera
     /// </summary>
     public static readonly Coding AcanthemblemariaAspera_ = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Musca convexifrons
     /// </summary>
     public static readonly Coding MuscaConvexifrons_ = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arilus cristatus
     /// </summary>
     public static readonly Coding ArilusCristatus_ = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Culex pseudovishnui
     /// </summary>
     public static readonly Coding CulexPseudovishnui_ = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Armillifer armillatus
     /// </summary>
     public static readonly Coding ArmilliferArmillatus_ = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amphelikturus dendriticus
     /// </summary>
     public static readonly Coding AmphelikturusDendriticus_ = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epomidiostomum vogelsangi
     /// </summary>
     public static readonly Coding EpomidiostomumVogelsangi_ = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Latrodectus dahli
     /// </summary>
     public static readonly Coding LatrodectusDahli_ = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echis carinatus
     /// </summary>
     public static readonly Coding EchisCarinatus_ = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Knemidocoptes pilae
     /// </summary>
     public static readonly Coding KnemidocoptesPilae_ = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spilopsylla
     /// </summary>
     public static readonly Coding Spilopsylla_ = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scomberomorus regalis
     /// </summary>
     public static readonly Coding ScomberomorusRegalis_ = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enophrys diceraus
     /// </summary>
     public static readonly Coding EnophrysDiceraus_ = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diorchis
     /// </summary>
     public static readonly Coding Diorchis_ = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rosy-billed pochard
     /// </summary>
     public static readonly Coding RosyBilledPochard_ = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apogon pseudomaculatus
     /// </summary>
     public static readonly Coding ApogonPseudomaculatus_ = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acarus siro
     /// </summary>
     public static readonly Coding AcarusSiro_ = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corniger spinosus
     /// </summary>
     public static readonly Coding CornigerSpinosus_ = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leach's storm petrel
     /// </summary>
     public static readonly Coding LeachQuoteSStormPetrel_ = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ornithodoros crossi
     /// </summary>
     public static readonly Coding OrnithodorosCrossi_ = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ostertagia occidentalis
     /// </summary>
     public static readonly Coding OstertagiaOccidentalis_ = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lampetra richardsoni
     /// </summary>
     public static readonly Coding LampetraRichardsoni_ = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cylicostephanus calicatus
     /// </summary>
     public static readonly Coding CylicostephanusCalicatus_ = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polypera beringiana
     /// </summary>
     public static readonly Coding PolyperaBeringiana_ = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Argas persicus
     /// </summary>
     public static readonly Coding ArgasPersicus_ = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gibbonsia erythra
     /// </summary>
     public static readonly Coding GibbonsiaErythra_ = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pituophis
     /// </summary>
     public static readonly Coding Pituophis_ = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pygmy goat
     /// </summary>
     public static readonly Coding PygmyGoat_ = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles sundaicus
     /// </summary>
     public static readonly Coding AnophelesSundaicus_ = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Archigetes
     /// </summary>
     public static readonly Coding Archigetes_ = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bunostomum phlebotomum
     /// </summary>
     public static readonly Coding BunostomumPhlebotomum_ = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aerospace medicine
     /// </summary>
     public static readonly Coding AerospaceMedicine_ = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Regenerative medicine
     /// </summary>
     public static readonly Coding RegenerativeMedicine_ = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emblemaria bahamensis
     /// </summary>
     public static readonly Coding EmblemariaBahamensis_ = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mobula hypostoma
     /// </summary>
     public static readonly Coding MobulaHypostoma_ = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophichthus ophis
     /// </summary>
     public static readonly Coding OphichthusOphis_ = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Avitellina ratia
     /// </summary>
     public static readonly Coding AvitellinaRatia_ = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monodon monoceros
     /// </summary>
     public static readonly Coding MonodonMonoceros_ = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Helmetbird
     /// </summary>
     public static readonly Coding Helmetbird_ = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gobionellus stigmalophius
     /// </summary>
     public static readonly Coding GobionellusStigmalophius_ = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maxx rat
     /// </summary>
     public static readonly Coding MaxxRat_ = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// New Zealand white rabbit
     /// </summary>
     public static readonly Coding NewZealandWhiteRabbit_ = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Domesticated Japanese quail
     /// </summary>
     public static readonly Coding DomesticatedJapaneseQuail_ = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thaumetopoea processionea
     /// </summary>
     public static readonly Coding ThaumetopoeaProcessionea_ = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burrowing toad
     /// </summary>
     public static readonly Coding BurrowingToad_ = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hybognathus argyritis
     /// </summary>
     public static readonly Coding HybognathusArgyritis_ = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Couesius plumbeus
     /// </summary>
     public static readonly Coding CouesiusPlumbeus_ = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anopheles multicolor
     /// </summary>
     public static readonly Coding AnophelesMulticolor_ = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fundulus heteroclitus
     /// </summary>
     public static readonly Coding FundulusHeteroclitus_ = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Camelostrongylus mentulatus
     /// </summary>
     public static readonly Coding CamelostrongylusMentulatus_ = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Notocotylus attenuatus
     /// </summary>
     public static readonly Coding NotocotylusAttenuatus_ = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chirolophis ascanii
     /// </summary>
     public static readonly Coding ChirolophisAscanii_ = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ptychocheilus umpquae
     /// </summary>
     public static readonly Coding PtychocheilusUmpquae_ = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rainbow snake
     /// </summary>
     public static readonly Coding RainbowSnake_ = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scarus taeniopterus
     /// </summary>
     public static readonly Coding ScarusTaeniopterus_ = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brown Welsh cattle
     /// </summary>
     public static readonly Coding BrownWelshCattle_ = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nandayus nenday
     /// </summary>
     public static readonly Coding NandayusNenday_ = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Filicollis
     /// </summary>
     public static readonly Coding Filicollis_ = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trachinotus falcatus
     /// </summary>
     public static readonly Coding TrachinotusFalcatus_ = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haematosiphon
     /// </summary>
     public static readonly Coding Haematosiphon_ = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Andorra
     /// </summary>
     public static readonly Coding Andorra_ = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// United Arab Emirates (the)
     /// </summary>
     public static readonly Coding UnitedArabEmiratesThe_ = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Afghanistan
     /// </summary>
     public static readonly Coding Afghanistan_ = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Antigua and Barbuda
     /// </summary>
     public static readonly Coding AntiguaAndBarbuda_ = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Anguilla
     /// </summary>
     public static readonly Coding Anguilla_ = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Alaska
     /// </summary>
     public static readonly Coding Alaska_ = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Alabama
     /// </summary>
     public static readonly Coding Alabama_ = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Albania
     /// </summary>
     public static readonly Coding Albania_ = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Armenia
     /// </summary>
     public static readonly Coding Armenia_ = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Netherlands Antilles
     /// </summary>
     public static readonly Coding NetherlandsAntilles_ = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Angola
     /// </summary>
     public static readonly Coding Angola_ = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Antarctica
     /// </summary>
     public static readonly Coding Antarctica_ = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Arkansas
     /// </summary>
     public static readonly Coding Arkansas_ = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Argentina
     /// </summary>
     public static readonly Coding Argentina_ = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// American Samoa
     /// </summary>
     public static readonly Coding AmericanSamoa_ = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// American Samoa
     /// </summary>
     public static readonly Coding AmericanSamoa__2 = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Austria
     /// </summary>
     public static readonly Coding Austria_ = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Australia
     /// </summary>
     public static readonly Coding Australia_ = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Aruba
     /// </summary>
     public static readonly Coding Aruba_ = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Åland Islands
     /// </summary>
     public static readonly Coding AlandIslands_ = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Arizona
     /// </summary>
     public static readonly Coding Arizona_ = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Azerbaijan
     /// </summary>
     public static readonly Coding Azerbaijan_ = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bosnia and Herzegovina
     /// </summary>
     public static readonly Coding BosniaAndHerzegovina_ = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Barbados
     /// </summary>
     public static readonly Coding Barbados_ = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bangladesh
     /// </summary>
     public static readonly Coding Bangladesh_ = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Belgium
     /// </summary>
     public static readonly Coding Belgium_ = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Burkina Faso
     /// </summary>
     public static readonly Coding BurkinaFaso_ = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bulgaria
     /// </summary>
     public static readonly Coding Bulgaria_ = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bahrain
     /// </summary>
     public static readonly Coding Bahrain_ = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Burundi
     /// </summary>
     public static readonly Coding Burundi_ = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Benin
     /// </summary>
     public static readonly Coding Benin_ = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Barthélemy
     /// </summary>
     public static readonly Coding SaintBarthelemy_ = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bermuda
     /// </summary>
     public static readonly Coding Bermuda_ = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Brunei Darussalam
     /// </summary>
     public static readonly Coding BruneiDarussalam_ = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bolivia (Plurinational State of)
     /// </summary>
     public static readonly Coding BoliviaPlurinationalStateOf_ = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bonaire, Sint Eustatius and Saba
     /// </summary>
     public static readonly Coding BonaireSintEustatiusAndSaba_ = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Brazil
     /// </summary>
     public static readonly Coding Brazil_ = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bahamas (the)
     /// </summary>
     public static readonly Coding BahamasThe_ = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bhutan
     /// </summary>
     public static readonly Coding Bhutan_ = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Burma
     /// </summary>
     public static readonly Coding Burma_ = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bouvet Island
     /// </summary>
     public static readonly Coding BouvetIsland_ = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Botswana
     /// </summary>
     public static readonly Coding Botswana_ = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Belarus
     /// </summary>
     public static readonly Coding Belarus_ = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Belize
     /// </summary>
     public static readonly Coding Belize_ = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// California
     /// </summary>
     public static readonly Coding California_ = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Canada
     /// </summary>
     public static readonly Coding Canada_ = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cardiologist
     /// </summary>
     public static readonly Coding Cardiologist_practitioner_specialty = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/practitioner-specialty"
     };
     /// <summary>
-    /// 
+    /// Cocos (Keeling) Islands (the)
     /// </summary>
     public static readonly Coding CocosKeelingIslandsThe_ = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Congo (the Democratic Republic of the)
     /// </summary>
     public static readonly Coding CongoTheDemocraticRepublicOfThe_ = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Central African Republic (the)
     /// </summary>
     public static readonly Coding CentralAfricanRepublicThe_ = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Congo (the)
     /// </summary>
     public static readonly Coding CongoThe_ = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Switzerland
     /// </summary>
     public static readonly Coding Switzerland_ = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Côte d'Ivoire
     /// </summary>
     public static readonly Coding CoteDQuoteIvoire_ = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cook Islands (the)
     /// </summary>
     public static readonly Coding CookIslandsThe_ = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Chile
     /// </summary>
     public static readonly Coding Chile_ = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cameroon
     /// </summary>
     public static readonly Coding Cameroon_ = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// China
     /// </summary>
     public static readonly Coding China_ = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Colorado
     /// </summary>
     public static readonly Coding Colorado_ = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Colombia
     /// </summary>
     public static readonly Coding Colombia_ = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Costa Rica
     /// </summary>
     public static readonly Coding CostaRica_ = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Serbia and Montenegro
     /// </summary>
     public static readonly Coding SerbiaAndMontenegro_ = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Connecticut
     /// </summary>
     public static readonly Coding Connecticut_ = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Canton and Enderbury Islands
     /// </summary>
     public static readonly Coding CantonAndEnderburyIslands_ = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cuba
     /// </summary>
     public static readonly Coding Cuba_ = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cabo Verde
     /// </summary>
     public static readonly Coding CaboVerde_ = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Curaçao
     /// </summary>
     public static readonly Coding Curacao_ = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Christmas Island
     /// </summary>
     public static readonly Coding ChristmasIsland_ = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cyprus
     /// </summary>
     public static readonly Coding Cyprus_ = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Czech Republic (the)
     /// </summary>
     public static readonly Coding CzechRepublicThe_ = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// District of Columbia
     /// </summary>
     public static readonly Coding DistrictOfColumbia_ = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// German Democratic Republic
     /// </summary>
     public static readonly Coding GermanDemocraticRepublic_ = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Delaware
     /// </summary>
     public static readonly Coding Delaware_ = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Germany
     /// </summary>
     public static readonly Coding Germany_ = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Dentist
     /// </summary>
     public static readonly Coding Dentist_practitioner_specialty = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/practitioner-specialty"
     };
     /// <summary>
-    /// 
+    /// Dietary consultant
     /// </summary>
     public static readonly Coding DietaryConsultant_practitioner_specialty = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/practitioner-specialty"
     };
     /// <summary>
-    /// 
+    /// Djibouti
     /// </summary>
     public static readonly Coding Djibouti_ = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Denmark
     /// </summary>
     public static readonly Coding Denmark_ = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Dominica
     /// </summary>
     public static readonly Coding Dominica_ = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Dominican Republic (the)
     /// </summary>
     public static readonly Coding DominicanRepublicThe_ = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Dahomey
     /// </summary>
     public static readonly Coding Dahomey_ = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Algeria
     /// </summary>
     public static readonly Coding Algeria_ = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ecuador
     /// </summary>
     public static readonly Coding Ecuador_ = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Estonia
     /// </summary>
     public static readonly Coding Estonia_ = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Egypt
     /// </summary>
     public static readonly Coding Egypt_ = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Western Sahara*
     /// </summary>
     public static readonly Coding WesternSaharaAsterisk_ = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Eritrea
     /// </summary>
     public static readonly Coding Eritrea_ = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Spain
     /// </summary>
     public static readonly Coding Spain_ = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ethiopia
     /// </summary>
     public static readonly Coding Ethiopia_ = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Finland
     /// </summary>
     public static readonly Coding Finland_ = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Fiji
     /// </summary>
     public static readonly Coding Fiji_ = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Falkland Islands (the) [Malvinas]
     /// </summary>
     public static readonly Coding FalklandIslandsTheMalvinas_ = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Florida
     /// </summary>
     public static readonly Coding Florida_ = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Federated States of Micronesia
     /// </summary>
     public static readonly Coding FederatedStatesOfMicronesia_ = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Micronesia (Federated States of)
     /// </summary>
     public static readonly Coding MicronesiaFederatedStatesOf_ = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Faroe Islands (the)
     /// </summary>
     public static readonly Coding FaroeIslandsThe_ = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// French Southern and Antarctic Territories
     /// </summary>
     public static readonly Coding FrenchSouthernAndAntarcticTerritories_ = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// France
     /// </summary>
     public static readonly Coding France_ = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Georgia
     /// </summary>
     public static readonly Coding Georgia_ = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Gabon
     /// </summary>
     public static readonly Coding Gabon_ = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// United Kingdom of Great Britain and Northern Ireland (the)
     /// </summary>
     public static readonly Coding UnitedKingdomOfGreatBritainAndNorthernIrelandThe_ = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Grenada
     /// </summary>
     public static readonly Coding Grenada_ = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Georgia
     /// </summary>
     public static readonly Coding Georgia__2 = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// French Guiana
     /// </summary>
     public static readonly Coding FrenchGuiana_ = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guernsey
     /// </summary>
     public static readonly Coding Guernsey_ = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ghana
     /// </summary>
     public static readonly Coding Ghana_ = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Gibraltar
     /// </summary>
     public static readonly Coding Gibraltar_ = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Greenland
     /// </summary>
     public static readonly Coding Greenland_ = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Gambia (the)
     /// </summary>
     public static readonly Coding GambiaThe_ = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guinea
     /// </summary>
     public static readonly Coding Guinea_ = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guadeloupe
     /// </summary>
     public static readonly Coding Guadeloupe_ = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Equatorial Guinea
     /// </summary>
     public static readonly Coding EquatorialGuinea_ = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Greece
     /// </summary>
     public static readonly Coding Greece_ = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// South Georgia and the South Sandwich Islands
     /// </summary>
     public static readonly Coding SouthGeorgiaAndTheSouthSandwichIslands_ = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guatemala
     /// </summary>
     public static readonly Coding Guatemala_ = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guam
     /// </summary>
     public static readonly Coding Guam_ = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Guam
     /// </summary>
     public static readonly Coding Guam__2 = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guinea-Bissau
     /// </summary>
     public static readonly Coding GuineaBissau_ = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guyana
     /// </summary>
     public static readonly Coding Guyana_ = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Hawaii
     /// </summary>
     public static readonly Coding Hawaii_ = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Hong Kong
     /// </summary>
     public static readonly Coding HongKong_ = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Heard Island and McDonald Islands
     /// </summary>
     public static readonly Coding HeardIslandAndMcDonaldIslands_ = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Honduras
     /// </summary>
     public static readonly Coding Honduras_ = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Croatia
     /// </summary>
     public static readonly Coding Croatia_ = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Haiti
     /// </summary>
     public static readonly Coding Haiti_ = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Hungary
     /// </summary>
     public static readonly Coding Hungary_ = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Upper Volta
     /// </summary>
     public static readonly Coding UpperVolta_ = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Iowa
     /// </summary>
     public static readonly Coding Iowa_ = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Idaho
     /// </summary>
     public static readonly Coding Idaho_ = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Indonesia
     /// </summary>
     public static readonly Coding Indonesia_ = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ireland
     /// </summary>
     public static readonly Coding Ireland_ = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Illinois
     /// </summary>
     public static readonly Coding Illinois_ = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Israel
     /// </summary>
     public static readonly Coding Israel_ = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Isle of Man
     /// </summary>
     public static readonly Coding IsleOfMan_ = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Indiana
     /// </summary>
     public static readonly Coding Indiana_ = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// India
     /// </summary>
     public static readonly Coding India_ = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// British Indian Ocean Territory (the)
     /// </summary>
     public static readonly Coding BritishIndianOceanTerritoryThe_ = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Iraq
     /// </summary>
     public static readonly Coding Iraq_ = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Iran (Islamic Republic of)
     /// </summary>
     public static readonly Coding IranIslamicRepublicOf_ = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Iceland
     /// </summary>
     public static readonly Coding Iceland_ = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Italy
     /// </summary>
     public static readonly Coding Italy_ = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Jersey
     /// </summary>
     public static readonly Coding Jersey_ = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Jamaica
     /// </summary>
     public static readonly Coding Jamaica_ = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Jordan
     /// </summary>
     public static readonly Coding Jordan_ = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Japan
     /// </summary>
     public static readonly Coding Japan_ = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Johnston Island
     /// </summary>
     public static readonly Coding JohnstonIsland_ = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kenya
     /// </summary>
     public static readonly Coding Kenya_ = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kyrgyzstan
     /// </summary>
     public static readonly Coding Kyrgyzstan_ = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cambodia
     /// </summary>
     public static readonly Coding Cambodia_ = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kiribati
     /// </summary>
     public static readonly Coding Kiribati_ = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Comoros (the)
     /// </summary>
     public static readonly Coding ComorosThe_ = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Kitts and Nevis
     /// </summary>
     public static readonly Coding SaintKittsAndNevis_ = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Korea (the Democratic People's Republic of)
     /// </summary>
     public static readonly Coding KoreaTheDemocraticPeopleQuoteSRepublicOf_ = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Korea (the Republic of)
     /// </summary>
     public static readonly Coding KoreaTheRepublicOf_ = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kansas
     /// </summary>
     public static readonly Coding Kansas_ = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Kuwait
     /// </summary>
     public static readonly Coding Kuwait_ = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kentucky
     /// </summary>
     public static readonly Coding Kentucky_ = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Cayman Islands (the)
     /// </summary>
     public static readonly Coding CaymanIslandsThe_ = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kazakhstan
     /// </summary>
     public static readonly Coding Kazakhstan_ = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Louisiana
     /// </summary>
     public static readonly Coding Louisiana_ = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Lao People's Democratic Republic (the)
     /// </summary>
     public static readonly Coding LaoPeopleQuoteSDemocraticRepublicThe_ = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Lebanon
     /// </summary>
     public static readonly Coding Lebanon_ = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Lucia
     /// </summary>
     public static readonly Coding SaintLucia_ = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Liechtenstein
     /// </summary>
     public static readonly Coding Liechtenstein_ = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Sri Lanka
     /// </summary>
     public static readonly Coding SriLanka_ = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Liberia
     /// </summary>
     public static readonly Coding Liberia_ = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Lesotho
     /// </summary>
     public static readonly Coding Lesotho_ = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Lithuania
     /// </summary>
     public static readonly Coding Lithuania_ = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Luxembourg
     /// </summary>
     public static readonly Coding Luxembourg_ = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Latvia
     /// </summary>
     public static readonly Coding Latvia_ = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Libya
     /// </summary>
     public static readonly Coding Libya_ = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Massachusetts
     /// </summary>
     public static readonly Coding Massachusetts_ = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Morocco
     /// </summary>
     public static readonly Coding Morocco_ = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Monaco
     /// </summary>
     public static readonly Coding Monaco_ = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Maryland
     /// </summary>
     public static readonly Coding Maryland_ = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Moldova (the Republic of)
     /// </summary>
     public static readonly Coding MoldovaTheRepublicOf_ = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Maine
     /// </summary>
     public static readonly Coding Maine_ = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Montenegro
     /// </summary>
     public static readonly Coding Montenegro_ = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Martin (French part)
     /// </summary>
     public static readonly Coding SaintMartinFrenchPart_ = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Madagascar
     /// </summary>
     public static readonly Coding Madagascar_ = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Marshall Islands
     /// </summary>
     public static readonly Coding MarshallIslands_ = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Marshall Islands (the)
     /// </summary>
     public static readonly Coding MarshallIslandsThe_ = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Michigan
     /// </summary>
     public static readonly Coding Michigan_ = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Midway Islands
     /// </summary>
     public static readonly Coding MidwayIslands_ = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Midwife
     /// </summary>
     public static readonly Coding Midwife_practitioner_specialty = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/practitioner-specialty"
     };
     /// <summary>
-    /// 
+    /// Macedonia (the former Yugoslav Republic of)
     /// </summary>
     public static readonly Coding MacedoniaTheFormerYugoslavRepublicOf_ = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mali
     /// </summary>
     public static readonly Coding Mali_ = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Myanmar
     /// </summary>
     public static readonly Coding Myanmar_ = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Minnesota
     /// </summary>
     public static readonly Coding Minnesota_ = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Mongolia
     /// </summary>
     public static readonly Coding Mongolia_ = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Missouri
     /// </summary>
     public static readonly Coding Missouri_ = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Macao
     /// </summary>
     public static readonly Coding Macao_ = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Northern Mariana Islands
     /// </summary>
     public static readonly Coding NorthernMarianaIslands_ = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Northern Mariana Islands (the)
     /// </summary>
     public static readonly Coding NorthernMarianaIslandsThe_ = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Martinique
     /// </summary>
     public static readonly Coding Martinique_ = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mauritania
     /// </summary>
     public static readonly Coding Mauritania_ = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mississippi
     /// </summary>
     public static readonly Coding Mississippi_ = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Montserrat
     /// </summary>
     public static readonly Coding Montserrat_ = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Montana
     /// </summary>
     public static readonly Coding Montana_ = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Malta
     /// </summary>
     public static readonly Coding Malta_ = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mauritius
     /// </summary>
     public static readonly Coding Mauritius_ = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Maldives
     /// </summary>
     public static readonly Coding Maldives_ = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Malawi
     /// </summary>
     public static readonly Coding Malawi_ = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mexico
     /// </summary>
     public static readonly Coding Mexico_ = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Malaysia
     /// </summary>
     public static readonly Coding Malaysia_ = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mozambique
     /// </summary>
     public static readonly Coding Mozambique_ = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Namibia
     /// </summary>
     public static readonly Coding Namibia_ = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// North Carolina
     /// </summary>
     public static readonly Coding NorthCarolina_ = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// New Caledonia
     /// </summary>
     public static readonly Coding NewCaledonia_ = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// North Dakota
     /// </summary>
     public static readonly Coding NorthDakota_ = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Nebraska
     /// </summary>
     public static readonly Coding Nebraska_ = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Niger (the)
     /// </summary>
     public static readonly Coding NigerThe_ = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Norfolk Island
     /// </summary>
     public static readonly Coding NorfolkIsland_ = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Nigeria
     /// </summary>
     public static readonly Coding Nigeria_ = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// New Hampshire
     /// </summary>
     public static readonly Coding NewHampshire_ = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// New Hebrides
     /// </summary>
     public static readonly Coding NewHebrides_ = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Nicaragua
     /// </summary>
     public static readonly Coding Nicaragua_ = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// New Jersey
     /// </summary>
     public static readonly Coding NewJersey_ = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Netherlands (the)
     /// </summary>
     public static readonly Coding NetherlandsThe_ = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// New Mexico
     /// </summary>
     public static readonly Coding NewMexico_ = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Norway
     /// </summary>
     public static readonly Coding Norway_ = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Nepal
     /// </summary>
     public static readonly Coding Nepal_ = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Dronning Maud Land
     /// </summary>
     public static readonly Coding DronningMaudLand_ = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Nauru
     /// </summary>
     public static readonly Coding Nauru_ = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Neutral Zone
     /// </summary>
     public static readonly Coding NeutralZone_ = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Niue
     /// </summary>
     public static readonly Coding Niue_ = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Nevada
     /// </summary>
     public static readonly Coding Nevada_ = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// New York
     /// </summary>
     public static readonly Coding NewYork_ = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// New Zealand
     /// </summary>
     public static readonly Coding NewZealand_ = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ohio
     /// </summary>
     public static readonly Coding Ohio_ = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Oklahoma
     /// </summary>
     public static readonly Coding Oklahoma_ = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Oman
     /// </summary>
     public static readonly Coding Oman_ = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Oregon
     /// </summary>
     public static readonly Coding Oregon_ = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Pennsylvania
     /// </summary>
     public static readonly Coding Pennsylvania_ = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Panama
     /// </summary>
     public static readonly Coding Panama_ = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Pacific Islands (Trust Territory)
     /// </summary>
     public static readonly Coding PacificIslandsTrustTerritory_ = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Peru
     /// </summary>
     public static readonly Coding Peru_ = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// French Polynesia
     /// </summary>
     public static readonly Coding FrenchPolynesia_ = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Papua New Guinea
     /// </summary>
     public static readonly Coding PapuaNewGuinea_ = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Philippines (the)
     /// </summary>
     public static readonly Coding PhilippinesThe_ = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Pakistan
     /// </summary>
     public static readonly Coding Pakistan_ = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Poland
     /// </summary>
     public static readonly Coding Poland_ = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Pierre and Miquelon
     /// </summary>
     public static readonly Coding SaintPierreAndMiquelon_ = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Pitcairn
     /// </summary>
     public static readonly Coding Pitcairn_ = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Puerto Rico
     /// </summary>
     public static readonly Coding PuertoRico_ = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Puerto Rico
     /// </summary>
     public static readonly Coding PuertoRico__2 = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Palestine, State of
     /// </summary>
     public static readonly Coding PalestineStateOf_ = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Portugal
     /// </summary>
     public static readonly Coding Portugal_ = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// United States Miscellaneous Pacific Islands
     /// </summary>
     public static readonly Coding UnitedStatesMiscellaneousPacificIslands_ = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Palau
     /// </summary>
     public static readonly Coding Palau_ = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Palau
     /// </summary>
     public static readonly Coding Palau__2 = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Paraguay
     /// </summary>
     public static readonly Coding Paraguay_ = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Panama Canal Zone
     /// </summary>
     public static readonly Coding PanamaCanalZone_ = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Qatar
     /// </summary>
     public static readonly Coding Qatar_ = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Réunion
     /// </summary>
     public static readonly Coding Reunion_ = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Southern Rhodesia
     /// </summary>
     public static readonly Coding SouthernRhodesia_ = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Rhode Island
     /// </summary>
     public static readonly Coding RhodeIsland_ = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Romania
     /// </summary>
     public static readonly Coding Romania_ = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Serbia
     /// </summary>
     public static readonly Coding Serbia_ = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Russian Federation (the)
     /// </summary>
     public static readonly Coding RussianFederationThe_ = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Rwanda
     /// </summary>
     public static readonly Coding Rwanda_ = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saudi Arabia
     /// </summary>
     public static readonly Coding SaudiArabia_ = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Solomon Islands
     /// </summary>
     public static readonly Coding SolomonIslands_ = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// South Carolina
     /// </summary>
     public static readonly Coding SouthCarolina_ = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Seychelles
     /// </summary>
     public static readonly Coding Seychelles_ = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// South Dakota
     /// </summary>
     public static readonly Coding SouthDakota_ = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Sudan (the)
     /// </summary>
     public static readonly Coding SudanThe_ = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Sweden
     /// </summary>
     public static readonly Coding Sweden_ = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Singapore
     /// </summary>
     public static readonly Coding Singapore_ = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Helena, Ascension and Tristan da Cunha
     /// </summary>
     public static readonly Coding SaintHelenaAscensionAndTristanDaCunha_ = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Slovenia
     /// </summary>
     public static readonly Coding Slovenia_ = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Svalbard and Jan Mayen
     /// </summary>
     public static readonly Coding SvalbardAndJanMayen_ = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Slovakia
     /// </summary>
     public static readonly Coding Slovakia_ = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Sierra Leone
     /// </summary>
     public static readonly Coding SierraLeone_ = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// San Marino
     /// </summary>
     public static readonly Coding SanMarino_ = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Senegal
     /// </summary>
     public static readonly Coding Senegal_ = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Somalia
     /// </summary>
     public static readonly Coding Somalia_ = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Suriname
     /// </summary>
     public static readonly Coding Suriname_ = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// South Sudan
     /// </summary>
     public static readonly Coding SouthSudan_ = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Sao Tome and Principe
     /// </summary>
     public static readonly Coding SaoTomeAndPrincipe_ = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// USSR
     /// </summary>
     public static readonly Coding USSR_ = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// El Salvador
     /// </summary>
     public static readonly Coding ElSalvador_ = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Sint Maarten (Dutch part)
     /// </summary>
     public static readonly Coding SintMaartenDutchPart_ = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Syrian Arab Republic
     /// </summary>
     public static readonly Coding SyrianArabRepublic_ = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Systems architect
     /// </summary>
     public static readonly Coding SystemsArchitect_practitioner_specialty = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/practitioner-specialty"
     };
     /// <summary>
-    /// 
+    /// Swaziland
     /// </summary>
     public static readonly Coding Swaziland_ = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Turks and Caicos Islands (the)
     /// </summary>
     public static readonly Coding TurksAndCaicosIslandsThe_ = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Chad
     /// </summary>
     public static readonly Coding Chad_ = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// French Southern Territories (the)
     /// </summary>
     public static readonly Coding FrenchSouthernTerritoriesThe_ = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Togo
     /// </summary>
     public static readonly Coding Togo_ = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Thailand
     /// </summary>
     public static readonly Coding Thailand_ = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Tajikistan
     /// </summary>
     public static readonly Coding Tajikistan_ = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Tokelau
     /// </summary>
     public static readonly Coding Tokelau_ = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Timor-Leste
     /// </summary>
     public static readonly Coding TimorLeste_ = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Turkmenistan
     /// </summary>
     public static readonly Coding Turkmenistan_ = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Tennessee
     /// </summary>
     public static readonly Coding Tennessee_ = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Tunisia
     /// </summary>
     public static readonly Coding Tunisia_ = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Tonga
     /// </summary>
     public static readonly Coding Tonga_ = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// East Timor
     /// </summary>
     public static readonly Coding EastTimor_ = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Turkey
     /// </summary>
     public static readonly Coding Turkey_ = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Trinidad and Tobago
     /// </summary>
     public static readonly Coding TrinidadAndTobago_ = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Tuvalu
     /// </summary>
     public static readonly Coding Tuvalu_ = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Taiwan (Province of China)
     /// </summary>
     public static readonly Coding TaiwanProvinceOfChina_ = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Texas
     /// </summary>
     public static readonly Coding Texas_ = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Tanzania, United Republic of
     /// </summary>
     public static readonly Coding TanzaniaUnitedRepublicOf_ = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ukraine
     /// </summary>
     public static readonly Coding Ukraine_ = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Uganda
     /// </summary>
     public static readonly Coding Uganda_ = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// U.S. Minor Outlying Islands
     /// </summary>
     public static readonly Coding USMinorOutlyingIslands_ = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// United States
     /// </summary>
     public static readonly Coding UnitedStates_ = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// United States of America (the)
     /// </summary>
     public static readonly Coding UnitedStatesOfAmericaThe_ = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Utah
     /// </summary>
     public static readonly Coding Utah_ = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Uruguay
     /// </summary>
     public static readonly Coding Uruguay_ = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Uzbekistan
     /// </summary>
     public static readonly Coding Uzbekistan_ = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Virginia
     /// </summary>
     public static readonly Coding Virginia_ = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Holy See (the)
     /// </summary>
     public static readonly Coding HolySeeThe_ = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Vincent and the Grenadines
     /// </summary>
     public static readonly Coding SaintVincentAndTheGrenadines_ = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Viet-Nam, Democratic Republic of
     /// </summary>
     public static readonly Coding VietNamDemocraticRepublicOf_ = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Venezuela (Bolivarian Republic of)
     /// </summary>
     public static readonly Coding VenezuelaBolivarianRepublicOf_ = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Virgin Islands (British)
     /// </summary>
     public static readonly Coding VirginIslandsBritish_ = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Virgin Islands of the U.S.
     /// </summary>
     public static readonly Coding VirginIslandsOfTheUS_ = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Virgin Islands (U.S.)
     /// </summary>
     public static readonly Coding VirginIslandsUS_ = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Viet Nam
     /// </summary>
     public static readonly Coding VietNam_ = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Vermont
     /// </summary>
     public static readonly Coding Vermont_ = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Vanuatu
     /// </summary>
     public static readonly Coding Vanuatu_ = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Washington
     /// </summary>
     public static readonly Coding Washington_ = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Wallis and Futuna
     /// </summary>
     public static readonly Coding WallisAndFutuna_ = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Wisconsin
     /// </summary>
     public static readonly Coding Wisconsin_ = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Wake Island
     /// </summary>
     public static readonly Coding WakeIsland_ = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Samoa
     /// </summary>
     public static readonly Coding Samoa_ = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// West Virginia
     /// </summary>
     public static readonly Coding WestVirginia_ = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Wyoming
     /// </summary>
     public static readonly Coding Wyoming_ = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Yemen, Democratic
     /// </summary>
     public static readonly Coding YemenDemocratic_ = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Yemen
     /// </summary>
     public static readonly Coding Yemen_ = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mayotte
     /// </summary>
     public static readonly Coding Mayotte_ = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Yugoslavia
     /// </summary>
     public static readonly Coding Yugoslavia_ = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// South Africa
     /// </summary>
     public static readonly Coding SouthAfrica_ = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Zambia
     /// </summary>
     public static readonly Coding Zambia_ = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Zaire
     /// </summary>
     public static readonly Coding Zaire_ = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Zimbabwe
     /// </summary>
     public static readonly Coding Zimbabwe_ = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWorld_ = "001";
 
     /// <summary>
+    /// Literal for code: NONEWorld_
+    /// </summary>
+    public const string LiteralNONEWorld_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#001";
+
+    /// <summary>
     /// Literal for code: Africa_
     /// </summary>
     public const string LiteralAfrica_ = "002";
+
+    /// <summary>
+    /// Literal for code: NONEAfrica_
+    /// </summary>
+    public const string LiteralNONEAfrica_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#002";
 
     /// <summary>
     /// Literal for code: SouthAmerica_
@@ -9028,9 +9038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthAmerica_ = "005";
 
     /// <summary>
+    /// Literal for code: NONESouthAmerica_
+    /// </summary>
+    public const string LiteralNONESouthAmerica_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#005";
+
+    /// <summary>
     /// Literal for code: Oceania_
     /// </summary>
     public const string LiteralOceania_ = "009";
+
+    /// <summary>
+    /// Literal for code: NONEOceania_
+    /// </summary>
+    public const string LiteralNONEOceania_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#009";
 
     /// <summary>
     /// Literal for code: WesternAfrica_
@@ -9038,9 +9058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWesternAfrica_ = "011";
 
     /// <summary>
+    /// Literal for code: NONEWesternAfrica_
+    /// </summary>
+    public const string LiteralNONEWesternAfrica_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#011";
+
+    /// <summary>
     /// Literal for code: CentralAmerica_
     /// </summary>
     public const string LiteralCentralAmerica_ = "013";
+
+    /// <summary>
+    /// Literal for code: NONECentralAmerica_
+    /// </summary>
+    public const string LiteralNONECentralAmerica_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#013";
 
     /// <summary>
     /// Literal for code: EasternAfrica_
@@ -9048,9 +9078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEasternAfrica_ = "014";
 
     /// <summary>
+    /// Literal for code: NONEEasternAfrica_
+    /// </summary>
+    public const string LiteralNONEEasternAfrica_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#014";
+
+    /// <summary>
     /// Literal for code: NorthernAfrica_
     /// </summary>
     public const string LiteralNorthernAfrica_ = "015";
+
+    /// <summary>
+    /// Literal for code: NONENorthernAfrica_
+    /// </summary>
+    public const string LiteralNONENorthernAfrica_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#015";
 
     /// <summary>
     /// Literal for code: MiddleAfrica_
@@ -9058,9 +9098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMiddleAfrica_ = "017";
 
     /// <summary>
+    /// Literal for code: NONEMiddleAfrica_
+    /// </summary>
+    public const string LiteralNONEMiddleAfrica_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#017";
+
+    /// <summary>
     /// Literal for code: SouthernAfrica_
     /// </summary>
     public const string LiteralSouthernAfrica_ = "018";
+
+    /// <summary>
+    /// Literal for code: NONESouthernAfrica_
+    /// </summary>
+    public const string LiteralNONESouthernAfrica_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#018";
 
     /// <summary>
     /// Literal for code: Americas_
@@ -9068,9 +9118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmericas_ = "019";
 
     /// <summary>
+    /// Literal for code: NONEAmericas_
+    /// </summary>
+    public const string LiteralNONEAmericas_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#019";
+
+    /// <summary>
     /// Literal for code: NorthernAmericaA_
     /// </summary>
     public const string LiteralNorthernAmericaA_ = "021";
+
+    /// <summary>
+    /// Literal for code: NONENorthernAmericaA_
+    /// </summary>
+    public const string LiteralNONENorthernAmericaA_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#021";
 
     /// <summary>
     /// Literal for code: Caribbean_
@@ -9078,9 +9138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCaribbean_ = "029";
 
     /// <summary>
+    /// Literal for code: NONECaribbean_
+    /// </summary>
+    public const string LiteralNONECaribbean_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#029";
+
+    /// <summary>
     /// Literal for code: EasternAsia_
     /// </summary>
     public const string LiteralEasternAsia_ = "030";
+
+    /// <summary>
+    /// Literal for code: NONEEasternAsia_
+    /// </summary>
+    public const string LiteralNONEEasternAsia_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#030";
 
     /// <summary>
     /// Literal for code: SouthernAsia_
@@ -9088,9 +9158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthernAsia_ = "034";
 
     /// <summary>
+    /// Literal for code: NONESouthernAsia_
+    /// </summary>
+    public const string LiteralNONESouthernAsia_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#034";
+
+    /// <summary>
     /// Literal for code: SouthEasternAsia_
     /// </summary>
     public const string LiteralSouthEasternAsia_ = "035";
+
+    /// <summary>
+    /// Literal for code: NONESouthEasternAsia_
+    /// </summary>
+    public const string LiteralNONESouthEasternAsia_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#035";
 
     /// <summary>
     /// Literal for code: SouthernEurope_
@@ -9098,9 +9178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthernEurope_ = "039";
 
     /// <summary>
+    /// Literal for code: NONESouthernEurope_
+    /// </summary>
+    public const string LiteralNONESouthernEurope_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#039";
+
+    /// <summary>
     /// Literal for code: AustraliaAndNewZealand_
     /// </summary>
     public const string LiteralAustraliaAndNewZealand_ = "053";
+
+    /// <summary>
+    /// Literal for code: NONEAustraliaAndNewZealand_
+    /// </summary>
+    public const string LiteralNONEAustraliaAndNewZealand_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#053";
 
     /// <summary>
     /// Literal for code: Melanesia_
@@ -9108,9 +9198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMelanesia_ = "054";
 
     /// <summary>
+    /// Literal for code: NONEMelanesia_
+    /// </summary>
+    public const string LiteralNONEMelanesia_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#054";
+
+    /// <summary>
     /// Literal for code: Micronesia_
     /// </summary>
     public const string LiteralMicronesia_ = "057";
+
+    /// <summary>
+    /// Literal for code: NONEMicronesia_
+    /// </summary>
+    public const string LiteralNONEMicronesia_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#057";
 
     /// <summary>
     /// Literal for code: Polynesia_
@@ -9118,9 +9218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPolynesia_ = "061";
 
     /// <summary>
+    /// Literal for code: NONEPolynesia_
+    /// </summary>
+    public const string LiteralNONEPolynesia_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#061";
+
+    /// <summary>
     /// Literal for code: PercheronHorse_
     /// </summary>
     public const string LiteralPercheronHorse_ = "1006005";
+
+    /// <summary>
+    /// Literal for code: NONEPercheronHorse_
+    /// </summary>
+    public const string LiteralNONEPercheronHorse_ = "http://snomed.info/sct#1006005";
 
     /// <summary>
     /// Literal for code: QuiloniaEthiopica_
@@ -9128,9 +9238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralQuiloniaEthiopica_ = "101009";
 
     /// <summary>
+    /// Literal for code: NONEQuiloniaEthiopica_
+    /// </summary>
+    public const string LiteralNONEQuiloniaEthiopica_ = "http://snomed.info/sct#101009";
+
+    /// <summary>
     /// Literal for code: BembropsGobioides_
     /// </summary>
     public const string LiteralBembropsGobioides_ = "1014004";
+
+    /// <summary>
+    /// Literal for code: NONEBembropsGobioides_
+    /// </summary>
+    public const string LiteralNONEBembropsGobioides_ = "http://snomed.info/sct#1014004";
 
     /// <summary>
     /// Literal for code: PontinusRathbuni_
@@ -9138,9 +9258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPontinusRathbuni_ = "1053008";
 
     /// <summary>
+    /// Literal for code: NONEPontinusRathbuni_
+    /// </summary>
+    public const string LiteralNONEPontinusRathbuni_ = "http://snomed.info/sct#1053008";
+
+    /// <summary>
     /// Literal for code: Hemiurus_
     /// </summary>
     public const string LiteralHemiurus_ = "1064006";
+
+    /// <summary>
+    /// Literal for code: NONEHemiurus_
+    /// </summary>
+    public const string LiteralNONEHemiurus_ = "http://snomed.info/sct#1064006";
 
     /// <summary>
     /// Literal for code: NesotriatomaFlavida_
@@ -9148,9 +9278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNesotriatomaFlavida_ = "1067004";
 
     /// <summary>
+    /// Literal for code: NONENesotriatomaFlavida_
+    /// </summary>
+    public const string LiteralNONENesotriatomaFlavida_ = "http://snomed.info/sct#1067004";
+
+    /// <summary>
     /// Literal for code: ApogonTownsendi_
     /// </summary>
     public const string LiteralApogonTownsendi_ = "1082009";
+
+    /// <summary>
+    /// Literal for code: NONEApogonTownsendi_
+    /// </summary>
+    public const string LiteralNONEApogonTownsendi_ = "http://snomed.info/sct#1082009";
 
     /// <summary>
     /// Literal for code: NotropisAtrocaudalis_
@@ -9158,9 +9298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotropisAtrocaudalis_ = "1095004";
 
     /// <summary>
+    /// Literal for code: NONENotropisAtrocaudalis_
+    /// </summary>
+    public const string LiteralNONENotropisAtrocaudalis_ = "http://snomed.info/sct#1095004";
+
+    /// <summary>
     /// Literal for code: VaranusSalvator_
     /// </summary>
     public const string LiteralVaranusSalvator_ = "1109001";
+
+    /// <summary>
+    /// Literal for code: NONEVaranusSalvator_
+    /// </summary>
+    public const string LiteralNONEVaranusSalvator_ = "http://snomed.info/sct#1109001";
 
     /// <summary>
     /// Literal for code: VikingHorse_
@@ -9168,9 +9318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVikingHorse_ = "1118004";
 
     /// <summary>
+    /// Literal for code: NONEVikingHorse_
+    /// </summary>
+    public const string LiteralNONEVikingHorse_ = "http://snomed.info/sct#1118004";
+
+    /// <summary>
     /// Literal for code: BembropsAnatirostris_
     /// </summary>
     public const string LiteralBembropsAnatirostris_ = "112009";
+
+    /// <summary>
+    /// Literal for code: NONEBembropsAnatirostris_
+    /// </summary>
+    public const string LiteralNONEBembropsAnatirostris_ = "http://snomed.info/sct#112009";
 
     /// <summary>
     /// Literal for code: Ceratophyllus_
@@ -9178,9 +9338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCeratophyllus_ = "1142000";
 
     /// <summary>
+    /// Literal for code: NONECeratophyllus_
+    /// </summary>
+    public const string LiteralNONECeratophyllus_ = "http://snomed.info/sct#1142000";
+
+    /// <summary>
     /// Literal for code: AnarrhichthysOcellatus_
     /// </summary>
     public const string LiteralAnarrhichthysOcellatus_ = "1147006";
+
+    /// <summary>
+    /// Literal for code: NONEAnarrhichthysOcellatus_
+    /// </summary>
+    public const string LiteralNONEAnarrhichthysOcellatus_ = "http://snomed.info/sct#1147006";
 
     /// <summary>
     /// Literal for code: TragelaphusAngasi_
@@ -9188,9 +9358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTragelaphusAngasi_ = "1153006";
 
     /// <summary>
+    /// Literal for code: NONETragelaphusAngasi_
+    /// </summary>
+    public const string LiteralNONETragelaphusAngasi_ = "http://snomed.info/sct#1153006";
+
+    /// <summary>
     /// Literal for code: NealotusTripes_
     /// </summary>
     public const string LiteralNealotusTripes_ = "1154000";
+
+    /// <summary>
+    /// Literal for code: NONENealotusTripes_
+    /// </summary>
+    public const string LiteralNONENealotusTripes_ = "http://snomed.info/sct#1154000";
 
     /// <summary>
     /// Literal for code: Triaenophorus_
@@ -9198,9 +9378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTriaenophorus_ = "1158002";
 
     /// <summary>
+    /// Literal for code: NONETriaenophorus_
+    /// </summary>
+    public const string LiteralNONETriaenophorus_ = "http://snomed.info/sct#1158002";
+
+    /// <summary>
     /// Literal for code: ChrysolophusPictus_
     /// </summary>
     public const string LiteralChrysolophusPictus_ = "1161001";
+
+    /// <summary>
+    /// Literal for code: NONEChrysolophusPictus_
+    /// </summary>
+    public const string LiteralNONEChrysolophusPictus_ = "http://snomed.info/sct#1161001";
 
     /// <summary>
     /// Literal for code: MicrurusNigrocinctus_
@@ -9208,9 +9398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrurusNigrocinctus_ = "1162008";
 
     /// <summary>
+    /// Literal for code: NONEMicrurusNigrocinctus_
+    /// </summary>
+    public const string LiteralNONEMicrurusNigrocinctus_ = "http://snomed.info/sct#1162008";
+
+    /// <summary>
     /// Literal for code: RhipicephalusSanguineus_
     /// </summary>
     public const string LiteralRhipicephalusSanguineus_ = "117003";
+
+    /// <summary>
+    /// Literal for code: NONERhipicephalusSanguineus_
+    /// </summary>
+    public const string LiteralNONERhipicephalusSanguineus_ = "http://snomed.info/sct#117003";
 
     /// <summary>
     /// Literal for code: PongoPygmaeus_
@@ -9218,9 +9418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPongoPygmaeus_ = "1177000";
 
     /// <summary>
+    /// Literal for code: NONEPongoPygmaeus_
+    /// </summary>
+    public const string LiteralNONEPongoPygmaeus_ = "http://snomed.info/sct#1177000";
+
+    /// <summary>
     /// Literal for code: BlackBuffaloWeaver_
     /// </summary>
     public const string LiteralBlackBuffaloWeaver_ = "118008";
+
+    /// <summary>
+    /// Literal for code: NONEBlackBuffaloWeaver_
+    /// </summary>
+    public const string LiteralNONEBlackBuffaloWeaver_ = "http://snomed.info/sct#118008";
 
     /// <summary>
     /// Literal for code: BungarusFlaviceps_
@@ -9228,9 +9438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBungarusFlaviceps_ = "1191006";
 
     /// <summary>
+    /// Literal for code: NONEBungarusFlaviceps_
+    /// </summary>
+    public const string LiteralNONEBungarusFlaviceps_ = "http://snomed.info/sct#1191006";
+
+    /// <summary>
     /// Literal for code: LiopropomaMowbrayi_
     /// </summary>
     public const string LiteralLiopropomaMowbrayi_ = "1200006";
+
+    /// <summary>
+    /// Literal for code: NONELiopropomaMowbrayi_
+    /// </summary>
+    public const string LiteralNONELiopropomaMowbrayi_ = "http://snomed.info/sct#1200006";
 
     /// <summary>
     /// Literal for code: GaigeriaPachyscelis_
@@ -9238,9 +9458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGaigeriaPachyscelis_ = "1213000";
 
     /// <summary>
+    /// Literal for code: NONEGaigeriaPachyscelis_
+    /// </summary>
+    public const string LiteralNONEGaigeriaPachyscelis_ = "http://snomed.info/sct#1213000";
+
+    /// <summary>
     /// Literal for code: Tetractinomyxon_
     /// </summary>
     public const string LiteralTetractinomyxon_ = "1215007";
+
+    /// <summary>
+    /// Literal for code: NONETetractinomyxon_
+    /// </summary>
+    public const string LiteralNONETetractinomyxon_ = "http://snomed.info/sct#1215007";
 
     /// <summary>
     /// Literal for code: TrimeresurusTokarensis_
@@ -9248,9 +9478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTrimeresurusTokarensis_ = "1220007";
 
     /// <summary>
+    /// Literal for code: NONETrimeresurusTokarensis_
+    /// </summary>
+    public const string LiteralNONETrimeresurusTokarensis_ = "http://snomed.info/sct#1220007";
+
+    /// <summary>
     /// Literal for code: HeterakisMeleagridis_
     /// </summary>
     public const string LiteralHeterakisMeleagridis_ = "1242008";
+
+    /// <summary>
+    /// Literal for code: NONEHeterakisMeleagridis_
+    /// </summary>
+    public const string LiteralNONEHeterakisMeleagridis_ = "http://snomed.info/sct#1242008";
 
     /// <summary>
     /// Literal for code: ClydesdaleHorse_
@@ -9258,9 +9498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClydesdaleHorse_ = "1247002";
 
     /// <summary>
+    /// Literal for code: NONEClydesdaleHorse_
+    /// </summary>
+    public const string LiteralNONEClydesdaleHorse_ = "http://snomed.info/sct#1247002";
+
+    /// <summary>
     /// Literal for code: BlackFootedPenguin_
     /// </summary>
     public const string LiteralBlackFootedPenguin_ = "1254008";
+
+    /// <summary>
+    /// Literal for code: NONEBlackFootedPenguin_
+    /// </summary>
+    public const string LiteralNONEBlackFootedPenguin_ = "http://snomed.info/sct#1254008";
 
     /// <summary>
     /// Literal for code: AnophelesEarlei_
@@ -9268,9 +9518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnophelesEarlei_ = "1265003";
 
     /// <summary>
+    /// Literal for code: NONEAnophelesEarlei_
+    /// </summary>
+    public const string LiteralNONEAnophelesEarlei_ = "http://snomed.info/sct#1265003";
+
+    /// <summary>
     /// Literal for code: CycluraCornuta_
     /// </summary>
     public const string LiteralCycluraCornuta_ = "1268001";
+
+    /// <summary>
+    /// Literal for code: NONECycluraCornuta_
+    /// </summary>
+    public const string LiteralNONECycluraCornuta_ = "http://snomed.info/sct#1268001";
 
     /// <summary>
     /// Literal for code: PercinaSquamata_
@@ -9278,9 +9538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPercinaSquamata_ = "1270005";
 
     /// <summary>
+    /// Literal for code: NONEPercinaSquamata_
+    /// </summary>
+    public const string LiteralNONEPercinaSquamata_ = "http://snomed.info/sct#1270005";
+
+    /// <summary>
     /// Literal for code: NotropisScabriceps_
     /// </summary>
     public const string LiteralNotropisScabriceps_ = "1281008";
+
+    /// <summary>
+    /// Literal for code: NONENotropisScabriceps_
+    /// </summary>
+    public const string LiteralNONENotropisScabriceps_ = "http://snomed.info/sct#1281008";
 
     /// <summary>
     /// Literal for code: AnophelesPunctipennis_
@@ -9288,9 +9558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnophelesPunctipennis_ = "1288002";
 
     /// <summary>
+    /// Literal for code: NONEAnophelesPunctipennis_
+    /// </summary>
+    public const string LiteralNONEAnophelesPunctipennis_ = "http://snomed.info/sct#1288002";
+
+    /// <summary>
     /// Literal for code: ParafasciolopsisFasciolaemorpha_
     /// </summary>
     public const string LiteralParafasciolopsisFasciolaemorpha_ = "1303005";
+
+    /// <summary>
+    /// Literal for code: NONEParafasciolopsisFasciolaemorpha_
+    /// </summary>
+    public const string LiteralNONEParafasciolopsisFasciolaemorpha_ = "http://snomed.info/sct#1303005";
 
     /// <summary>
     /// Literal for code: SerraniculusPumilio_
@@ -9298,9 +9578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerraniculusPumilio_ = "132005";
 
     /// <summary>
+    /// Literal for code: NONESerraniculusPumilio_
+    /// </summary>
+    public const string LiteralNONESerraniculusPumilio_ = "http://snomed.info/sct#132005";
+
+    /// <summary>
     /// Literal for code: CraxAlector_
     /// </summary>
     public const string LiteralCraxAlector_ = "1330000";
+
+    /// <summary>
+    /// Literal for code: NONECraxAlector_
+    /// </summary>
+    public const string LiteralNONECraxAlector_ = "http://snomed.info/sct#1330000";
 
     /// <summary>
     /// Literal for code: ProtospiruraMuricola_
@@ -9308,9 +9598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProtospiruraMuricola_ = "1369006";
 
     /// <summary>
+    /// Literal for code: NONEProtospiruraMuricola_
+    /// </summary>
+    public const string LiteralNONEProtospiruraMuricola_ = "http://snomed.info/sct#1369006";
+
+    /// <summary>
     /// Literal for code: SelarCrumenophthalmus_
     /// </summary>
     public const string LiteralSelarCrumenophthalmus_ = "1382003";
+
+    /// <summary>
+    /// Literal for code: NONESelarCrumenophthalmus_
+    /// </summary>
+    public const string LiteralNONESelarCrumenophthalmus_ = "http://snomed.info/sct#1382003";
 
     /// <summary>
     /// Literal for code: HalichoeresBivittatus_
@@ -9318,9 +9618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHalichoeresBivittatus_ = "1392006";
 
     /// <summary>
+    /// Literal for code: NONEHalichoeresBivittatus_
+    /// </summary>
+    public const string LiteralNONEHalichoeresBivittatus_ = "http://snomed.info/sct#1392006";
+
+    /// <summary>
     /// Literal for code: Asia_
     /// </summary>
     public const string LiteralAsia_ = "142";
+
+    /// <summary>
+    /// Literal for code: NONEAsia_
+    /// </summary>
+    public const string LiteralNONEAsia_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#142";
 
     /// <summary>
     /// Literal for code: GermanLonghairedPointer_
@@ -9328,9 +9638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGermanLonghairedPointer_ = "1420005";
 
     /// <summary>
+    /// Literal for code: NONEGermanLonghairedPointer_
+    /// </summary>
+    public const string LiteralNONEGermanLonghairedPointer_ = "http://snomed.info/sct#1420005";
+
+    /// <summary>
     /// Literal for code: CentralAsia_
     /// </summary>
     public const string LiteralCentralAsia_ = "143";
+
+    /// <summary>
+    /// Literal for code: NONECentralAsia_
+    /// </summary>
+    public const string LiteralNONECentralAsia_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#143";
 
     /// <summary>
     /// Literal for code: SkrjabinagiaDagestanica_
@@ -9338,9 +9658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSkrjabinagiaDagestanica_ = "1446009";
 
     /// <summary>
+    /// Literal for code: NONESkrjabinagiaDagestanica_
+    /// </summary>
+    public const string LiteralNONESkrjabinagiaDagestanica_ = "http://snomed.info/sct#1446009";
+
+    /// <summary>
     /// Literal for code: WesternAsia_
     /// </summary>
     public const string LiteralWesternAsia_ = "145";
+
+    /// <summary>
+    /// Literal for code: NONEWesternAsia_
+    /// </summary>
+    public const string LiteralNONEWesternAsia_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#145";
 
     /// <summary>
     /// Literal for code: Chirothrips_
@@ -9348,9 +9678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChirothrips_ = "1452005";
 
     /// <summary>
+    /// Literal for code: NONEChirothrips_
+    /// </summary>
+    public const string LiteralNONEChirothrips_ = "http://snomed.info/sct#1452005";
+
+    /// <summary>
     /// Literal for code: ArgasRadiatus_
     /// </summary>
     public const string LiteralArgasRadiatus_ = "1460006";
+
+    /// <summary>
+    /// Literal for code: NONEArgasRadiatus_
+    /// </summary>
+    public const string LiteralNONEArgasRadiatus_ = "http://snomed.info/sct#1460006";
 
     /// <summary>
     /// Literal for code: EremichthysAcros_
@@ -9358,9 +9698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEremichthysAcros_ = "1461005";
 
     /// <summary>
+    /// Literal for code: NONEEremichthysAcros_
+    /// </summary>
+    public const string LiteralNONEEremichthysAcros_ = "http://snomed.info/sct#1461005";
+
+    /// <summary>
     /// Literal for code: JackRabbit_
     /// </summary>
     public const string LiteralJackRabbit_ = "1464002";
+
+    /// <summary>
+    /// Literal for code: NONEJackRabbit_
+    /// </summary>
+    public const string LiteralNONEJackRabbit_ = "http://snomed.info/sct#1464002";
 
     /// <summary>
     /// Literal for code: Verdin_
@@ -9368,9 +9718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVerdin_ = "1465001";
 
     /// <summary>
+    /// Literal for code: NONEVerdin_
+    /// </summary>
+    public const string LiteralNONEVerdin_ = "http://snomed.info/sct#1465001";
+
+    /// <summary>
     /// Literal for code: PanTroglodytes_
     /// </summary>
     public const string LiteralPanTroglodytes_ = "1480007";
+
+    /// <summary>
+    /// Literal for code: NONEPanTroglodytes_
+    /// </summary>
+    public const string LiteralNONEPanTroglodytes_ = "http://snomed.info/sct#1480007";
 
     /// <summary>
     /// Literal for code: Europe_
@@ -9378,9 +9738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEurope_ = "150";
 
     /// <summary>
+    /// Literal for code: NONEEurope_
+    /// </summary>
+    public const string LiteralNONEEurope_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#150";
+
+    /// <summary>
     /// Literal for code: SelenePeruviana_
     /// </summary>
     public const string LiteralSelenePeruviana_ = "1504003";
+
+    /// <summary>
+    /// Literal for code: NONESelenePeruviana_
+    /// </summary>
+    public const string LiteralNONESelenePeruviana_ = "http://snomed.info/sct#1504003";
 
     /// <summary>
     /// Literal for code: BiomphalariaHeliophila_
@@ -9388,9 +9758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiomphalariaHeliophila_ = "1509008";
 
     /// <summary>
+    /// Literal for code: NONEBiomphalariaHeliophila_
+    /// </summary>
+    public const string LiteralNONEBiomphalariaHeliophila_ = "http://snomed.info/sct#1509008";
+
+    /// <summary>
     /// Literal for code: EasternEurope_
     /// </summary>
     public const string LiteralEasternEurope_ = "151";
+
+    /// <summary>
+    /// Literal for code: NONEEasternEurope_
+    /// </summary>
+    public const string LiteralNONEEasternEurope_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#151";
 
     /// <summary>
     /// Literal for code: TriodontophorusTenuicollis_
@@ -9398,9 +9778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTriodontophorusTenuicollis_ = "1510003";
 
     /// <summary>
+    /// Literal for code: NONETriodontophorusTenuicollis_
+    /// </summary>
+    public const string LiteralNONETriodontophorusTenuicollis_ = "http://snomed.info/sct#1510003";
+
+    /// <summary>
     /// Literal for code: BedlingtonTerrier_
     /// </summary>
     public const string LiteralBedlingtonTerrier_ = "1514007";
+
+    /// <summary>
+    /// Literal for code: NONEBedlingtonTerrier_
+    /// </summary>
+    public const string LiteralNONEBedlingtonTerrier_ = "http://snomed.info/sct#1514007";
 
     /// <summary>
     /// Literal for code: NorthernEurope_
@@ -9408,9 +9798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorthernEurope_ = "154";
 
     /// <summary>
+    /// Literal for code: NONENorthernEurope_
+    /// </summary>
+    public const string LiteralNONENorthernEurope_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#154";
+
+    /// <summary>
     /// Literal for code: Ascarops_
     /// </summary>
     public const string LiteralAscarops_ = "1543004";
+
+    /// <summary>
+    /// Literal for code: NONEAscarops_
+    /// </summary>
+    public const string LiteralNONEAscarops_ = "http://snomed.info/sct#1543004";
 
     /// <summary>
     /// Literal for code: OldWorldVulture_
@@ -9418,9 +9818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOldWorldVulture_ = "1547003";
 
     /// <summary>
+    /// Literal for code: NONEOldWorldVulture_
+    /// </summary>
+    public const string LiteralNONEOldWorldVulture_ = "http://snomed.info/sct#1547003";
+
+    /// <summary>
     /// Literal for code: WesternEurope_
     /// </summary>
     public const string LiteralWesternEurope_ = "155";
+
+    /// <summary>
+    /// Literal for code: NONEWesternEurope_
+    /// </summary>
+    public const string LiteralNONEWesternEurope_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#155";
 
     /// <summary>
     /// Literal for code: MegalocottusPlatycephalus_
@@ -9428,9 +9838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMegalocottusPlatycephalus_ = "1564000";
 
     /// <summary>
+    /// Literal for code: NONEMegalocottusPlatycephalus_
+    /// </summary>
+    public const string LiteralNONEMegalocottusPlatycephalus_ = "http://snomed.info/sct#1564000";
+
+    /// <summary>
     /// Literal for code: IndianDarter_
     /// </summary>
     public const string LiteralIndianDarter_ = "1587008";
+
+    /// <summary>
+    /// Literal for code: NONEIndianDarter_
+    /// </summary>
+    public const string LiteralNONEIndianDarter_ = "http://snomed.info/sct#1587008";
 
     /// <summary>
     /// Literal for code: NotropisMekistocholas_
@@ -9438,9 +9858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotropisMekistocholas_ = "1618000";
 
     /// <summary>
+    /// Literal for code: NONENotropisMekistocholas_
+    /// </summary>
+    public const string LiteralNONENotropisMekistocholas_ = "http://snomed.info/sct#1618000";
+
+    /// <summary>
     /// Literal for code: Nematobibothroides_
     /// </summary>
     public const string LiteralNematobibothroides_ = "1625007";
+
+    /// <summary>
+    /// Literal for code: NONENematobibothroides_
+    /// </summary>
+    public const string LiteralNONENematobibothroides_ = "http://snomed.info/sct#1625007";
 
     /// <summary>
     /// Literal for code: ArumFrog_
@@ -9448,9 +9878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArumFrog_ = "1629001";
 
     /// <summary>
+    /// Literal for code: NONEArumFrog_
+    /// </summary>
+    public const string LiteralNONEArumFrog_ = "http://snomed.info/sct#1629001";
+
+    /// <summary>
     /// Literal for code: Gyrfalcon_
     /// </summary>
     public const string LiteralGyrfalcon_ = "1632003";
+
+    /// <summary>
+    /// Literal for code: NONEGyrfalcon_
+    /// </summary>
+    public const string LiteralNONEGyrfalcon_ = "http://snomed.info/sct#1632003";
 
     /// <summary>
     /// Literal for code: LunglessSalamander_
@@ -9458,9 +9898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLunglessSalamander_ = "1635001";
 
     /// <summary>
+    /// Literal for code: NONELunglessSalamander_
+    /// </summary>
+    public const string LiteralNONELunglessSalamander_ = "http://snomed.info/sct#1635001";
+
+    /// <summary>
     /// Literal for code: GadusMacrocephalus_
     /// </summary>
     public const string LiteralGadusMacrocephalus_ = "1665006";
+
+    /// <summary>
+    /// Literal for code: NONEGadusMacrocephalus_
+    /// </summary>
+    public const string LiteralNONEGadusMacrocephalus_ = "http://snomed.info/sct#1665006";
 
     /// <summary>
     /// Literal for code: CottusEchinatus_
@@ -9468,9 +9918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCottusEchinatus_ = "1688007";
 
     /// <summary>
+    /// Literal for code: NONECottusEchinatus_
+    /// </summary>
+    public const string LiteralNONECottusEchinatus_ = "http://snomed.info/sct#1688007";
+
+    /// <summary>
     /// Literal for code: Megapode_
     /// </summary>
     public const string LiteralMegapode_ = "1697006";
+
+    /// <summary>
+    /// Literal for code: NONEMegapode_
+    /// </summary>
+    public const string LiteralNONEMegapode_ = "http://snomed.info/sct#1697006";
 
     /// <summary>
     /// Literal for code: CoryphopterusLipernes_
@@ -9478,9 +9938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoryphopterusLipernes_ = "1700005";
 
     /// <summary>
+    /// Literal for code: NONECoryphopterusLipernes_
+    /// </summary>
+    public const string LiteralNONECoryphopterusLipernes_ = "http://snomed.info/sct#1700005";
+
+    /// <summary>
     /// Literal for code: MicrognathusCrinitus_
     /// </summary>
     public const string LiteralMicrognathusCrinitus_ = "173006";
+
+    /// <summary>
+    /// Literal for code: NONEMicrognathusCrinitus_
+    /// </summary>
+    public const string LiteralNONEMicrognathusCrinitus_ = "http://snomed.info/sct#173006";
 
     /// <summary>
     /// Literal for code: Corallus_
@@ -9488,9 +9958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCorallus_ = "1733000";
 
     /// <summary>
+    /// Literal for code: NONECorallus_
+    /// </summary>
+    public const string LiteralNONECorallus_ = "http://snomed.info/sct#1733000";
+
+    /// <summary>
     /// Literal for code: GoldenCrownedKinglet_
     /// </summary>
     public const string LiteralGoldenCrownedKinglet_ = "1751004";
+
+    /// <summary>
+    /// Literal for code: NONEGoldenCrownedKinglet_
+    /// </summary>
+    public const string LiteralNONEGoldenCrownedKinglet_ = "http://snomed.info/sct#1751004";
 
     /// <summary>
     /// Literal for code: MonkeyEatingEagle_
@@ -9498,9 +9978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMonkeyEatingEagle_ = "1783005";
 
     /// <summary>
+    /// Literal for code: NONEMonkeyEatingEagle_
+    /// </summary>
+    public const string LiteralNONEMonkeyEatingEagle_ = "http://snomed.info/sct#1783005";
+
+    /// <summary>
     /// Literal for code: TrakehnerHorse_
     /// </summary>
     public const string LiteralTrakehnerHorse_ = "1789009";
+
+    /// <summary>
+    /// Literal for code: NONETrakehnerHorse_
+    /// </summary>
+    public const string LiteralNONETrakehnerHorse_ = "http://snomed.info/sct#1789009";
 
     /// <summary>
     /// Literal for code: NeoechinorhynchusCarpiodi_
@@ -9508,9 +9998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeoechinorhynchusCarpiodi_ = "1790000";
 
     /// <summary>
+    /// Literal for code: NONENeoechinorhynchusCarpiodi_
+    /// </summary>
+    public const string LiteralNONENeoechinorhynchusCarpiodi_ = "http://snomed.info/sct#1790000";
+
+    /// <summary>
     /// Literal for code: AcanthurusCoeruleus_
     /// </summary>
     public const string LiteralAcanthurusCoeruleus_ = "1802008";
+
+    /// <summary>
+    /// Literal for code: NONEAcanthurusCoeruleus_
+    /// </summary>
+    public const string LiteralNONEAcanthurusCoeruleus_ = "http://snomed.info/sct#1802008";
 
     /// <summary>
     /// Literal for code: Rex_
@@ -9518,9 +10018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRex_ = "1809004";
 
     /// <summary>
+    /// Literal for code: NONERex_
+    /// </summary>
+    public const string LiteralNONERex_ = "http://snomed.info/sct#1809004";
+
+    /// <summary>
     /// Literal for code: MyrophisPunctatus_
     /// </summary>
     public const string LiteralMyrophisPunctatus_ = "1817007";
+
+    /// <summary>
+    /// Literal for code: NONEMyrophisPunctatus_
+    /// </summary>
+    public const string LiteralNONEMyrophisPunctatus_ = "http://snomed.info/sct#1817007";
 
     /// <summary>
     /// Literal for code: OpisthorchisFelineus_
@@ -9528,9 +10038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpisthorchisFelineus_ = "1846000";
 
     /// <summary>
+    /// Literal for code: NONEOpisthorchisFelineus_
+    /// </summary>
+    public const string LiteralNONEOpisthorchisFelineus_ = "http://snomed.info/sct#1846000";
+
+    /// <summary>
     /// Literal for code: AnisotremusVirginicus_
     /// </summary>
     public const string LiteralAnisotremusVirginicus_ = "1851006";
+
+    /// <summary>
+    /// Literal for code: NONEAnisotremusVirginicus_
+    /// </summary>
+    public const string LiteralNONEAnisotremusVirginicus_ = "http://snomed.info/sct#1851006";
 
     /// <summary>
     /// Literal for code: GyraulusPrashadi_
@@ -9538,9 +10058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGyraulusPrashadi_ = "1864007";
 
     /// <summary>
+    /// Literal for code: NONEGyraulusPrashadi_
+    /// </summary>
+    public const string LiteralNONEGyraulusPrashadi_ = "http://snomed.info/sct#1864007";
+
+    /// <summary>
     /// Literal for code: AmblyopsisRosae_
     /// </summary>
     public const string LiteralAmblyopsisRosae_ = "1867000";
+
+    /// <summary>
+    /// Literal for code: NONEAmblyopsisRosae_
+    /// </summary>
+    public const string LiteralNONEAmblyopsisRosae_ = "http://snomed.info/sct#1867000";
 
     /// <summary>
     /// Literal for code: MuscaLarvipara_
@@ -9548,9 +10078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMuscaLarvipara_ = "1873004";
 
     /// <summary>
+    /// Literal for code: NONEMuscaLarvipara_
+    /// </summary>
+    public const string LiteralNONEMuscaLarvipara_ = "http://snomed.info/sct#1873004";
+
+    /// <summary>
     /// Literal for code: NotropisFormosus_
     /// </summary>
     public const string LiteralNotropisFormosus_ = "1894001";
+
+    /// <summary>
+    /// Literal for code: NONENotropisFormosus_
+    /// </summary>
+    public const string LiteralNONENotropisFormosus_ = "http://snomed.info/sct#1894001";
 
     /// <summary>
     /// Literal for code: ChromisCyaneus_
@@ -9558,9 +10098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChromisCyaneus_ = "1900001";
 
     /// <summary>
+    /// Literal for code: NONEChromisCyaneus_
+    /// </summary>
+    public const string LiteralNONEChromisCyaneus_ = "http://snomed.info/sct#1900001";
+
+    /// <summary>
     /// Literal for code: ClayColoredSparrow_
     /// </summary>
     public const string LiteralClayColoredSparrow_ = "1920000";
+
+    /// <summary>
+    /// Literal for code: NONEClayColoredSparrow_
+    /// </summary>
+    public const string LiteralNONEClayColoredSparrow_ = "http://snomed.info/sct#1920000";
 
     /// <summary>
     /// Literal for code: CoryphaenaHippurus_
@@ -9568,9 +10118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoryphaenaHippurus_ = "1928007";
 
     /// <summary>
+    /// Literal for code: NONECoryphaenaHippurus_
+    /// </summary>
+    public const string LiteralNONECoryphaenaHippurus_ = "http://snomed.info/sct#1928007";
+
+    /// <summary>
     /// Literal for code: Chickadee_
     /// </summary>
     public const string LiteralChickadee_ = "1935004";
+
+    /// <summary>
+    /// Literal for code: NONEChickadee_
+    /// </summary>
+    public const string LiteralNONEChickadee_ = "http://snomed.info/sct#1935004";
 
     /// <summary>
     /// Literal for code: NotropisWhipplei_
@@ -9578,9 +10138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotropisWhipplei_ = "194009";
 
     /// <summary>
+    /// Literal for code: NONENotropisWhipplei_
+    /// </summary>
+    public const string LiteralNONENotropisWhipplei_ = "http://snomed.info/sct#194009";
+
+    /// <summary>
     /// Literal for code: Retriever_
     /// </summary>
     public const string LiteralRetriever_ = "1974006";
+
+    /// <summary>
+    /// Literal for code: NONERetriever_
+    /// </summary>
+    public const string LiteralNONERetriever_ = "http://snomed.info/sct#1974006";
 
     /// <summary>
     /// Literal for code: HouseWren_
@@ -9588,9 +10158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHouseWren_ = "1984007";
 
     /// <summary>
+    /// Literal for code: NONEHouseWren_
+    /// </summary>
+    public const string LiteralNONEHouseWren_ = "http://snomed.info/sct#1984007";
+
+    /// <summary>
     /// Literal for code: CypselurusHubbsi_
     /// </summary>
     public const string LiteralCypselurusHubbsi_ = "2005006";
+
+    /// <summary>
+    /// Literal for code: NONECypselurusHubbsi_
+    /// </summary>
+    public const string LiteralNONECypselurusHubbsi_ = "http://snomed.info/sct#2005006";
 
     /// <summary>
     /// Literal for code: OligopusClaudei_
@@ -9598,9 +10178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOligopusClaudei_ = "201002";
 
     /// <summary>
+    /// Literal for code: NONEOligopusClaudei_
+    /// </summary>
+    public const string LiteralNONEOligopusClaudei_ = "http://snomed.info/sct#201002";
+
+    /// <summary>
     /// Literal for code: AntennariusRadiosus_
     /// </summary>
     public const string LiteralAntennariusRadiosus_ = "2025005";
+
+    /// <summary>
+    /// Literal for code: NONEAntennariusRadiosus_
+    /// </summary>
+    public const string LiteralNONEAntennariusRadiosus_ = "http://snomed.info/sct#2025005";
 
     /// <summary>
     /// Literal for code: WhiteTurkey_
@@ -9608,9 +10198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWhiteTurkey_ = "2034000";
 
     /// <summary>
+    /// Literal for code: NONEWhiteTurkey_
+    /// </summary>
+    public const string LiteralNONEWhiteTurkey_ = "http://snomed.info/sct#2034000";
+
+    /// <summary>
     /// Literal for code: NotropisBlennius_
     /// </summary>
     public const string LiteralNotropisBlennius_ = "2035004";
+
+    /// <summary>
+    /// Literal for code: NONENotropisBlennius_
+    /// </summary>
+    public const string LiteralNONENotropisBlennius_ = "http://snomed.info/sct#2035004";
 
     /// <summary>
     /// Literal for code: ThunnusAtlanticus_
@@ -9618,9 +10218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThunnusAtlanticus_ = "2056002";
 
     /// <summary>
+    /// Literal for code: NONEThunnusAtlanticus_
+    /// </summary>
+    public const string LiteralNONEThunnusAtlanticus_ = "http://snomed.info/sct#2056002";
+
+    /// <summary>
     /// Literal for code: Dachshund_
     /// </summary>
     public const string LiteralDachshund_ = "2062007";
+
+    /// <summary>
+    /// Literal for code: NONEDachshund_
+    /// </summary>
+    public const string LiteralNONEDachshund_ = "http://snomed.info/sct#2062007";
 
     /// <summary>
     /// Literal for code: EuropeanEdibleFrog_
@@ -9628,9 +10238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEuropeanEdibleFrog_ = "207003";
 
     /// <summary>
+    /// Literal for code: NONEEuropeanEdibleFrog_
+    /// </summary>
+    public const string LiteralNONEEuropeanEdibleFrog_ = "http://snomed.info/sct#207003";
+
+    /// <summary>
     /// Literal for code: HeterakisIndica_
     /// </summary>
     public const string LiteralHeterakisIndica_ = "2074006";
+
+    /// <summary>
+    /// Literal for code: NONEHeterakisIndica_
+    /// </summary>
+    public const string LiteralNONEHeterakisIndica_ = "http://snomed.info/sct#2074006";
 
     /// <summary>
     /// Literal for code: MastigoproctusGiganteus_
@@ -9638,9 +10258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMastigoproctusGiganteus_ = "2086009";
 
     /// <summary>
+    /// Literal for code: NONEMastigoproctusGiganteus_
+    /// </summary>
+    public const string LiteralNONEMastigoproctusGiganteus_ = "http://snomed.info/sct#2086009";
+
+    /// <summary>
     /// Literal for code: Plover_
     /// </summary>
     public const string LiteralPlover_ = "209000";
+
+    /// <summary>
+    /// Literal for code: NONEPlover_
+    /// </summary>
+    public const string LiteralNONEPlover_ = "http://snomed.info/sct#209000";
 
     /// <summary>
     /// Literal for code: Culicoides_
@@ -9648,9 +10278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCulicoides_ = "2090006";
 
     /// <summary>
+    /// Literal for code: NONECulicoides_
+    /// </summary>
+    public const string LiteralNONECulicoides_ = "http://snomed.info/sct#2090006";
+
+    /// <summary>
     /// Literal for code: BathygobiusSoporator_
     /// </summary>
     public const string LiteralBathygobiusSoporator_ = "2093008";
+
+    /// <summary>
+    /// Literal for code: NONEBathygobiusSoporator_
+    /// </summary>
+    public const string LiteralNONEBathygobiusSoporator_ = "http://snomed.info/sct#2093008";
 
     /// <summary>
     /// Literal for code: Microfilaria_
@@ -9658,9 +10298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrofilaria_ = "2105009";
 
     /// <summary>
+    /// Literal for code: NONEMicrofilaria_
+    /// </summary>
+    public const string LiteralNONEMicrofilaria_ = "http://snomed.info/sct#2105009";
+
+    /// <summary>
     /// Literal for code: Monodelphis_
     /// </summary>
     public const string LiteralMonodelphis_ = "2106005";
+
+    /// <summary>
+    /// Literal for code: NONEMonodelphis_
+    /// </summary>
+    public const string LiteralNONEMonodelphis_ = "http://snomed.info/sct#2106005";
 
     /// <summary>
     /// Literal for code: DiondaEpiscopa_
@@ -9668,9 +10318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiondaEpiscopa_ = "2112000";
 
     /// <summary>
+    /// Literal for code: NONEDiondaEpiscopa_
+    /// </summary>
+    public const string LiteralNONEDiondaEpiscopa_ = "http://snomed.info/sct#2112000";
+
+    /// <summary>
     /// Literal for code: ToxorhynchitesSplendens_
     /// </summary>
     public const string LiteralToxorhynchitesSplendens_ = "2118001";
+
+    /// <summary>
+    /// Literal for code: NONEToxorhynchitesSplendens_
+    /// </summary>
+    public const string LiteralNONEToxorhynchitesSplendens_ = "http://snomed.info/sct#2118001";
 
     /// <summary>
     /// Literal for code: RambouilletSheep_
@@ -9678,9 +10338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRambouilletSheep_ = "2124007";
 
     /// <summary>
+    /// Literal for code: NONERambouilletSheep_
+    /// </summary>
+    public const string LiteralNONERambouilletSheep_ = "http://snomed.info/sct#2124007";
+
+    /// <summary>
     /// Literal for code: GnathostomaHispidum_
     /// </summary>
     public const string LiteralGnathostomaHispidum_ = "2135002";
+
+    /// <summary>
+    /// Literal for code: NONEGnathostomaHispidum_
+    /// </summary>
+    public const string LiteralNONEGnathostomaHispidum_ = "http://snomed.info/sct#2135002";
 
     /// <summary>
     /// Literal for code: PulexSimulans_
@@ -9688,9 +10358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulexSimulans_ = "2139008";
 
     /// <summary>
+    /// Literal for code: NONEPulexSimulans_
+    /// </summary>
+    public const string LiteralNONEPulexSimulans_ = "http://snomed.info/sct#2139008";
+
+    /// <summary>
     /// Literal for code: Calotes_
     /// </summary>
     public const string LiteralCalotes_ = "2146004";
+
+    /// <summary>
+    /// Literal for code: NONECalotes_
+    /// </summary>
+    public const string LiteralNONECalotes_ = "http://snomed.info/sct#2146004";
 
     /// <summary>
     /// Literal for code: CylicocyclusElongatus_
@@ -9698,9 +10378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCylicocyclusElongatus_ = "2155001";
 
     /// <summary>
+    /// Literal for code: NONECylicocyclusElongatus_
+    /// </summary>
+    public const string LiteralNONECylicocyclusElongatus_ = "http://snomed.info/sct#2155001";
+
+    /// <summary>
     /// Literal for code: CanisAureus_
     /// </summary>
     public const string LiteralCanisAureus_ = "2173003";
+
+    /// <summary>
+    /// Literal for code: NONECanisAureus_
+    /// </summary>
+    public const string LiteralNONECanisAureus_ = "http://snomed.info/sct#2173003";
 
     /// <summary>
     /// Literal for code: OphidionHolbrooki_
@@ -9708,9 +10398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOphidionHolbrooki_ = "218003";
 
     /// <summary>
+    /// Literal for code: NONEOphidionHolbrooki_
+    /// </summary>
+    public const string LiteralNONEOphidionHolbrooki_ = "http://snomed.info/sct#218003";
+
+    /// <summary>
     /// Literal for code: EstrildaCaerulescens_
     /// </summary>
     public const string LiteralEstrildaCaerulescens_ = "2187003";
+
+    /// <summary>
+    /// Literal for code: NONEEstrildaCaerulescens_
+    /// </summary>
+    public const string LiteralNONEEstrildaCaerulescens_ = "http://snomed.info/sct#2187003";
 
     /// <summary>
     /// Literal for code: CylicodontophorusEuproctus_
@@ -9718,9 +10418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCylicodontophorusEuproctus_ = "2200008";
 
     /// <summary>
+    /// Literal for code: NONECylicodontophorusEuproctus_
+    /// </summary>
+    public const string LiteralNONECylicodontophorusEuproctus_ = "http://snomed.info/sct#2200008";
+
+    /// <summary>
     /// Literal for code: EctobiusPallidus_
     /// </summary>
     public const string LiteralEctobiusPallidus_ = "2206002";
+
+    /// <summary>
+    /// Literal for code: NONEEctobiusPallidus_
+    /// </summary>
+    public const string LiteralNONEEctobiusPallidus_ = "http://snomed.info/sct#2206002";
 
     /// <summary>
     /// Literal for code: MoxostomaPoecilurum_
@@ -9728,9 +10438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMoxostomaPoecilurum_ = "2207006";
 
     /// <summary>
+    /// Literal for code: NONEMoxostomaPoecilurum_
+    /// </summary>
+    public const string LiteralNONEMoxostomaPoecilurum_ = "http://snomed.info/sct#2207006";
+
+    /// <summary>
     /// Literal for code: Zalophotrema_
     /// </summary>
     public const string LiteralZalophotrema_ = "2211000";
+
+    /// <summary>
+    /// Literal for code: NONEZalophotrema_
+    /// </summary>
+    public const string LiteralNONEZalophotrema_ = "http://snomed.info/sct#2211000";
 
     /// <summary>
     /// Literal for code: GlossinaFuscipes_
@@ -9738,9 +10458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGlossinaFuscipes_ = "2222001";
 
     /// <summary>
+    /// Literal for code: NONEGlossinaFuscipes_
+    /// </summary>
+    public const string LiteralNONEGlossinaFuscipes_ = "http://snomed.info/sct#2222001";
+
+    /// <summary>
     /// Literal for code: DicrocoeliumHospes_
     /// </summary>
     public const string LiteralDicrocoeliumHospes_ = "2223006";
+
+    /// <summary>
+    /// Literal for code: NONEDicrocoeliumHospes_
+    /// </summary>
+    public const string LiteralNONEDicrocoeliumHospes_ = "http://snomed.info/sct#2223006";
 
     /// <summary>
     /// Literal for code: HystrichisTricolor_
@@ -9748,9 +10478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHystrichisTricolor_ = "2230000";
 
     /// <summary>
+    /// Literal for code: NONEHystrichisTricolor_
+    /// </summary>
+    public const string LiteralNONEHystrichisTricolor_ = "http://snomed.info/sct#2230000";
+
+    /// <summary>
     /// Literal for code: MaransChicken_
     /// </summary>
     public const string LiteralMaransChicken_ = "2253004";
+
+    /// <summary>
+    /// Literal for code: NONEMaransChicken_
+    /// </summary>
+    public const string LiteralNONEMaransChicken_ = "http://snomed.info/sct#2253004";
 
     /// <summary>
     /// Literal for code: AedesLuteocephalus_
@@ -9758,9 +10498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAedesLuteocephalus_ = "226006";
 
     /// <summary>
+    /// Literal for code: NONEAedesLuteocephalus_
+    /// </summary>
+    public const string LiteralNONEAedesLuteocephalus_ = "http://snomed.info/sct#226006";
+
+    /// <summary>
     /// Literal for code: CaulolatilusPrinceps_
     /// </summary>
     public const string LiteralCaulolatilusPrinceps_ = "2265000";
+
+    /// <summary>
+    /// Literal for code: NONECaulolatilusPrinceps_
+    /// </summary>
+    public const string LiteralNONECaulolatilusPrinceps_ = "http://snomed.info/sct#2265000";
 
     /// <summary>
     /// Literal for code: SyngnathusLeptorhynchus_
@@ -9768,9 +10518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSyngnathusLeptorhynchus_ = "2269006";
 
     /// <summary>
+    /// Literal for code: NONESyngnathusLeptorhynchus_
+    /// </summary>
+    public const string LiteralNONESyngnathusLeptorhynchus_ = "http://snomed.info/sct#2269006";
+
+    /// <summary>
     /// Literal for code: MenticirrhusAmericanus_
     /// </summary>
     public const string LiteralMenticirrhusAmericanus_ = "2271006";
+
+    /// <summary>
+    /// Literal for code: NONEMenticirrhusAmericanus_
+    /// </summary>
+    public const string LiteralNONEMenticirrhusAmericanus_ = "http://snomed.info/sct#2271006";
 
     /// <summary>
     /// Literal for code: GinglymostomaCirratum_
@@ -9778,9 +10538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGinglymostomaCirratum_ = "2273009";
 
     /// <summary>
+    /// Literal for code: NONEGinglymostomaCirratum_
+    /// </summary>
+    public const string LiteralNONEGinglymostomaCirratum_ = "http://snomed.info/sct#2273009";
+
+    /// <summary>
     /// Literal for code: CyprinodonNevadensis_
     /// </summary>
     public const string LiteralCyprinodonNevadensis_ = "2274003";
+
+    /// <summary>
+    /// Literal for code: NONECyprinodonNevadensis_
+    /// </summary>
+    public const string LiteralNONECyprinodonNevadensis_ = "http://snomed.info/sct#2274003";
 
     /// <summary>
     /// Literal for code: AccipiterGentilis_
@@ -9788,9 +10558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAccipiterGentilis_ = "229004";
 
     /// <summary>
+    /// Literal for code: NONEAccipiterGentilis_
+    /// </summary>
+    public const string LiteralNONEAccipiterGentilis_ = "http://snomed.info/sct#229004";
+
+    /// <summary>
     /// Literal for code: AcuariaSpiralis_
     /// </summary>
     public const string LiteralAcuariaSpiralis_ = "2310001";
+
+    /// <summary>
+    /// Literal for code: NONEAcuariaSpiralis_
+    /// </summary>
+    public const string LiteralNONEAcuariaSpiralis_ = "http://snomed.info/sct#2310001";
 
     /// <summary>
     /// Literal for code: LycodesDiapterus_
@@ -9798,9 +10578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLycodesDiapterus_ = "2313004";
 
     /// <summary>
+    /// Literal for code: NONELycodesDiapterus_
+    /// </summary>
+    public const string LiteralNONELycodesDiapterus_ = "http://snomed.info/sct#2313004";
+
+    /// <summary>
     /// Literal for code: JapaneseChicken_
     /// </summary>
     public const string LiteralJapaneseChicken_ = "2333000";
+
+    /// <summary>
+    /// Literal for code: NONEJapaneseChicken_
+    /// </summary>
+    public const string LiteralNONEJapaneseChicken_ = "http://snomed.info/sct#2333000";
 
     /// <summary>
     /// Literal for code: CyrneaColini_
@@ -9808,9 +10598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCyrneaColini_ = "234000";
 
     /// <summary>
+    /// Literal for code: NONECyrneaColini_
+    /// </summary>
+    public const string LiteralNONECyrneaColini_ = "http://snomed.info/sct#234000";
+
+    /// <summary>
     /// Literal for code: GobionellusLongicaudus_
     /// </summary>
     public const string LiteralGobionellusLongicaudus_ = "2340004";
+
+    /// <summary>
+    /// Literal for code: NONEGobionellusLongicaudus_
+    /// </summary>
+    public const string LiteralNONEGobionellusLongicaudus_ = "http://snomed.info/sct#2340004";
 
     /// <summary>
     /// Literal for code: Cyclura_
@@ -9818,9 +10618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCyclura_ = "2350003";
 
     /// <summary>
+    /// Literal for code: NONECyclura_
+    /// </summary>
+    public const string LiteralNONECyclura_ = "http://snomed.info/sct#2350003";
+
+    /// <summary>
     /// Literal for code: LymnaeaCubensis_
     /// </summary>
     public const string LiteralLymnaeaCubensis_ = "2353001";
+
+    /// <summary>
+    /// Literal for code: NONELymnaeaCubensis_
+    /// </summary>
+    public const string LiteralNONELymnaeaCubensis_ = "http://snomed.info/sct#2353001";
 
     /// <summary>
     /// Literal for code: SebastolobusAlascanus_
@@ -9828,9 +10638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSebastolobusAlascanus_ = "2361006";
 
     /// <summary>
+    /// Literal for code: NONESebastolobusAlascanus_
+    /// </summary>
+    public const string LiteralNONESebastolobusAlascanus_ = "http://snomed.info/sct#2361006";
+
+    /// <summary>
     /// Literal for code: IguanaIguana_
     /// </summary>
     public const string LiteralIguanaIguana_ = "2378002";
+
+    /// <summary>
+    /// Literal for code: NONEIguanaIguana_
+    /// </summary>
+    public const string LiteralNONEIguanaIguana_ = "http://snomed.info/sct#2378002";
 
     /// <summary>
     /// Literal for code: EchinostomaMalayanum_
@@ -9838,9 +10658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchinostomaMalayanum_ = "2380008";
 
     /// <summary>
+    /// Literal for code: NONEEchinostomaMalayanum_
+    /// </summary>
+    public const string LiteralNONEEchinostomaMalayanum_ = "http://snomed.info/sct#2380008";
+
+    /// <summary>
     /// Literal for code: TrogloglanisPattersoni_
     /// </summary>
     public const string LiteralTrogloglanisPattersoni_ = "2394009";
+
+    /// <summary>
+    /// Literal for code: NONETrogloglanisPattersoni_
+    /// </summary>
+    public const string LiteralNONETrogloglanisPattersoni_ = "http://snomed.info/sct#2394009";
 
     /// <summary>
     /// Literal for code: NygmiaPhaeorrhoea_
@@ -9848,9 +10678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNygmiaPhaeorrhoea_ = "2417004";
 
     /// <summary>
+    /// Literal for code: NONENygmiaPhaeorrhoea_
+    /// </summary>
+    public const string LiteralNONENygmiaPhaeorrhoea_ = "http://snomed.info/sct#2417004";
+
+    /// <summary>
     /// Literal for code: AcanthurusRandalli_
     /// </summary>
     public const string LiteralAcanthurusRandalli_ = "2422004";
+
+    /// <summary>
+    /// Literal for code: NONEAcanthurusRandalli_
+    /// </summary>
+    public const string LiteralNONEAcanthurusRandalli_ = "http://snomed.info/sct#2422004";
 
     /// <summary>
     /// Literal for code: LesserBirdOfParadise_
@@ -9858,9 +10698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLesserBirdOfParadise_ = "2449004";
 
     /// <summary>
+    /// Literal for code: NONELesserBirdOfParadise_
+    /// </summary>
+    public const string LiteralNONELesserBirdOfParadise_ = "http://snomed.info/sct#2449004";
+
+    /// <summary>
     /// Literal for code: StrongyloidesCebus_
     /// </summary>
     public const string LiteralStrongyloidesCebus_ = "2479006";
+
+    /// <summary>
+    /// Literal for code: NONEStrongyloidesCebus_
+    /// </summary>
+    public const string LiteralNONEStrongyloidesCebus_ = "http://snomed.info/sct#2479006";
 
     /// <summary>
     /// Literal for code: WhitePeafowl_
@@ -9868,9 +10718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWhitePeafowl_ = "2485004";
 
     /// <summary>
+    /// Literal for code: NONEWhitePeafowl_
+    /// </summary>
+    public const string LiteralNONEWhitePeafowl_ = "http://snomed.info/sct#2485004";
+
+    /// <summary>
     /// Literal for code: HollardiaMeadi_
     /// </summary>
     public const string LiteralHollardiaMeadi_ = "2493004";
+
+    /// <summary>
+    /// Literal for code: NONEHollardiaMeadi_
+    /// </summary>
+    public const string LiteralNONEHollardiaMeadi_ = "http://snomed.info/sct#2493004";
 
     /// <summary>
     /// Literal for code: GnathagnusEgregius_
@@ -9878,9 +10738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGnathagnusEgregius_ = "2512008";
 
     /// <summary>
+    /// Literal for code: NONEGnathagnusEgregius_
+    /// </summary>
+    public const string LiteralNONEGnathagnusEgregius_ = "http://snomed.info/sct#2512008";
+
+    /// <summary>
     /// Literal for code: ViviparusJavanicus_
     /// </summary>
     public const string LiteralViviparusJavanicus_ = "2519004";
+
+    /// <summary>
+    /// Literal for code: NONEViviparusJavanicus_
+    /// </summary>
+    public const string LiteralNONEViviparusJavanicus_ = "http://snomed.info/sct#2519004";
 
     /// <summary>
     /// Literal for code: Lissemys_
@@ -9888,9 +10758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLissemys_ = "2525000";
 
     /// <summary>
+    /// Literal for code: NONELissemys_
+    /// </summary>
+    public const string LiteralNONELissemys_ = "http://snomed.info/sct#2525000";
+
+    /// <summary>
     /// Literal for code: AnophelesHyrcanusSinensis_
     /// </summary>
     public const string LiteralAnophelesHyrcanusSinensis_ = "2540003";
+
+    /// <summary>
+    /// Literal for code: NONEAnophelesHyrcanusSinensis_
+    /// </summary>
+    public const string LiteralNONEAnophelesHyrcanusSinensis_ = "http://snomed.info/sct#2540003";
 
     /// <summary>
     /// Literal for code: RajaInornata_
@@ -9898,9 +10778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRajaInornata_ = "2545008";
 
     /// <summary>
+    /// Literal for code: NONERajaInornata_
+    /// </summary>
+    public const string LiteralNONERajaInornata_ = "http://snomed.info/sct#2545008";
+
+    /// <summary>
     /// Literal for code: AngiostrongylusMackerrasae_
     /// </summary>
     public const string LiteralAngiostrongylusMackerrasae_ = "2551003";
+
+    /// <summary>
+    /// Literal for code: NONEAngiostrongylusMackerrasae_
+    /// </summary>
+    public const string LiteralNONEAngiostrongylusMackerrasae_ = "http://snomed.info/sct#2551003";
 
     /// <summary>
     /// Literal for code: EasternKingbird_
@@ -9908,9 +10798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEasternKingbird_ = "2561005";
 
     /// <summary>
+    /// Literal for code: NONEEasternKingbird_
+    /// </summary>
+    public const string LiteralNONEEasternKingbird_ = "http://snomed.info/sct#2561005";
+
+    /// <summary>
     /// Literal for code: Trichuris_
     /// </summary>
     public const string LiteralTrichuris_ = "2572000";
+
+    /// <summary>
+    /// Literal for code: NONETrichuris_
+    /// </summary>
+    public const string LiteralNONETrichuris_ = "http://snomed.info/sct#2572000";
 
     /// <summary>
     /// Literal for code: SpottedTailedDasyure_
@@ -9918,9 +10818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpottedTailedDasyure_ = "2578001";
 
     /// <summary>
+    /// Literal for code: NONESpottedTailedDasyure_
+    /// </summary>
+    public const string LiteralNONESpottedTailedDasyure_ = "http://snomed.info/sct#2578001";
+
+    /// <summary>
     /// Literal for code: EasternMudSnake_
     /// </summary>
     public const string LiteralEasternMudSnake_ = "2587005";
+
+    /// <summary>
+    /// Literal for code: NONEEasternMudSnake_
+    /// </summary>
+    public const string LiteralNONEEasternMudSnake_ = "http://snomed.info/sct#2587005";
 
     /// <summary>
     /// Literal for code: BivitellobilharziaLoxodontae_
@@ -9928,9 +10838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBivitellobilharziaLoxodontae_ = "2588000";
 
     /// <summary>
+    /// Literal for code: NONEBivitellobilharziaLoxodontae_
+    /// </summary>
+    public const string LiteralNONEBivitellobilharziaLoxodontae_ = "http://snomed.info/sct#2588000";
+
+    /// <summary>
     /// Literal for code: Leiperenia_
     /// </summary>
     public const string LiteralLeiperenia_ = "2590004";
+
+    /// <summary>
+    /// Literal for code: NONELeiperenia_
+    /// </summary>
+    public const string LiteralNONELeiperenia_ = "http://snomed.info/sct#2590004";
 
     /// <summary>
     /// Literal for code: IndigoBunting_
@@ -9938,9 +10858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndigoBunting_ = "260004";
 
     /// <summary>
+    /// Literal for code: NONEIndigoBunting_
+    /// </summary>
+    public const string LiteralNONEIndigoBunting_ = "http://snomed.info/sct#260004";
+
+    /// <summary>
     /// Literal for code: GoldenCrestedBowerbird_
     /// </summary>
     public const string LiteralGoldenCrestedBowerbird_ = "2604009";
+
+    /// <summary>
+    /// Literal for code: NONEGoldenCrestedBowerbird_
+    /// </summary>
+    public const string LiteralNONEGoldenCrestedBowerbird_ = "http://snomed.info/sct#2604009";
 
     /// <summary>
     /// Literal for code: DermanyssusGallinae_
@@ -9948,9 +10878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDermanyssusGallinae_ = "2605005";
 
     /// <summary>
+    /// Literal for code: NONEDermanyssusGallinae_
+    /// </summary>
+    public const string LiteralNONEDermanyssusGallinae_ = "http://snomed.info/sct#2605005";
+
+    /// <summary>
     /// Literal for code: PhlebotomusOrientalis_
     /// </summary>
     public const string LiteralPhlebotomusOrientalis_ = "2623002";
+
+    /// <summary>
+    /// Literal for code: NONEPhlebotomusOrientalis_
+    /// </summary>
+    public const string LiteralNONEPhlebotomusOrientalis_ = "http://snomed.info/sct#2623002";
 
     /// <summary>
     /// Literal for code: EchinoparyphiumDunni_
@@ -9958,9 +10898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchinoparyphiumDunni_ = "2627001";
 
     /// <summary>
+    /// Literal for code: NONEEchinoparyphiumDunni_
+    /// </summary>
+    public const string LiteralNONEEchinoparyphiumDunni_ = "http://snomed.info/sct#2627001";
+
+    /// <summary>
     /// Literal for code: Goniocotes_
     /// </summary>
     public const string LiteralGoniocotes_ = "2631007";
+
+    /// <summary>
+    /// Literal for code: NONEGoniocotes_
+    /// </summary>
+    public const string LiteralNONEGoniocotes_ = "http://snomed.info/sct#2631007";
 
     /// <summary>
     /// Literal for code: PhlebotomusArgentipes_
@@ -9968,9 +10918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhlebotomusArgentipes_ = "2633005";
 
     /// <summary>
+    /// Literal for code: NONEPhlebotomusArgentipes_
+    /// </summary>
+    public const string LiteralNONEPhlebotomusArgentipes_ = "http://snomed.info/sct#2633005";
+
+    /// <summary>
     /// Literal for code: NotropisCandidus_
     /// </summary>
     public const string LiteralNotropisCandidus_ = "2650007";
+
+    /// <summary>
+    /// Literal for code: NONENotropisCandidus_
+    /// </summary>
+    public const string LiteralNONENotropisCandidus_ = "http://snomed.info/sct#2650007";
 
     /// <summary>
     /// Literal for code: LycosaTarentula_
@@ -9978,9 +10938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLycosaTarentula_ = "268006";
 
     /// <summary>
+    /// Literal for code: NONELycosaTarentula_
+    /// </summary>
+    public const string LiteralNONELycosaTarentula_ = "http://snomed.info/sct#268006";
+
+    /// <summary>
     /// Literal for code: TriatomaMaculata_
     /// </summary>
     public const string LiteralTriatomaMaculata_ = "2684006";
+
+    /// <summary>
+    /// Literal for code: NONETriatomaMaculata_
+    /// </summary>
+    public const string LiteralNONETriatomaMaculata_ = "http://snomed.info/sct#2684006";
 
     /// <summary>
     /// Literal for code: BulinusBulinusCoulboisi_
@@ -9988,9 +10958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBulinusBulinusCoulboisi_ = "2711004";
 
     /// <summary>
+    /// Literal for code: NONEBulinusBulinusCoulboisi_
+    /// </summary>
+    public const string LiteralNONEBulinusBulinusCoulboisi_ = "http://snomed.info/sct#2711004";
+
+    /// <summary>
     /// Literal for code: TragelaphusEuryceros_
     /// </summary>
     public const string LiteralTragelaphusEuryceros_ = "2715008";
+
+    /// <summary>
+    /// Literal for code: NONETragelaphusEuryceros_
+    /// </summary>
+    public const string LiteralNONETragelaphusEuryceros_ = "http://snomed.info/sct#2715008";
 
     /// <summary>
     /// Literal for code: ConcinnumTen_
@@ -9998,9 +10978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConcinnumTen_ = "2723005";
 
     /// <summary>
+    /// Literal for code: NONEConcinnumTen_
+    /// </summary>
+    public const string LiteralNONEConcinnumTen_ = "http://snomed.info/sct#2723005";
+
+    /// <summary>
     /// Literal for code: Microthoracius_
     /// </summary>
     public const string LiteralMicrothoracius_ = "2727006";
+
+    /// <summary>
+    /// Literal for code: NONEMicrothoracius_
+    /// </summary>
+    public const string LiteralNONEMicrothoracius_ = "http://snomed.info/sct#2727006";
 
     /// <summary>
     /// Literal for code: SmoothNewt_
@@ -10008,9 +10998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSmoothNewt_ = "2747003";
 
     /// <summary>
+    /// Literal for code: NONESmoothNewt_
+    /// </summary>
+    public const string LiteralNONESmoothNewt_ = "http://snomed.info/sct#2747003";
+
+    /// <summary>
     /// Literal for code: NoturusPlacidus_
     /// </summary>
     public const string LiteralNoturusPlacidus_ = "275007";
+
+    /// <summary>
+    /// Literal for code: NONENoturusPlacidus_
+    /// </summary>
+    public const string LiteralNONENoturusPlacidus_ = "http://snomed.info/sct#275007";
 
     /// <summary>
     /// Literal for code: HolocentrusAscensionis_
@@ -10018,9 +11018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHolocentrusAscensionis_ = "2755005";
 
     /// <summary>
+    /// Literal for code: NONEHolocentrusAscensionis_
+    /// </summary>
+    public const string LiteralNONEHolocentrusAscensionis_ = "http://snomed.info/sct#2755005";
+
+    /// <summary>
     /// Literal for code: RaillietinaMadagascariensis_
     /// </summary>
     public const string LiteralRaillietinaMadagascariensis_ = "2756006";
+
+    /// <summary>
+    /// Literal for code: NONERaillietinaMadagascariensis_
+    /// </summary>
+    public const string LiteralNONERaillietinaMadagascariensis_ = "http://snomed.info/sct#2756006";
 
     /// <summary>
     /// Literal for code: LiopropomaRubre_
@@ -10028,9 +11038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiopropomaRubre_ = "2766003";
 
     /// <summary>
+    /// Literal for code: NONELiopropomaRubre_
+    /// </summary>
+    public const string LiteralNONELiopropomaRubre_ = "http://snomed.info/sct#2766003";
+
+    /// <summary>
     /// Literal for code: AmiaCalva_
     /// </summary>
     public const string LiteralAmiaCalva_ = "2768002";
+
+    /// <summary>
+    /// Literal for code: NONEAmiaCalva_
+    /// </summary>
+    public const string LiteralNONEAmiaCalva_ = "http://snomed.info/sct#2768002";
 
     /// <summary>
     /// Literal for code: Antbird_
@@ -10038,9 +11058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntbird_ = "277004";
 
     /// <summary>
+    /// Literal for code: NONEAntbird_
+    /// </summary>
+    public const string LiteralNONEAntbird_ = "http://snomed.info/sct#277004";
+
+    /// <summary>
     /// Literal for code: Lizard_
     /// </summary>
     public const string LiteralLizard_ = "2773008";
+
+    /// <summary>
+    /// Literal for code: NONELizard_
+    /// </summary>
+    public const string LiteralNONELizard_ = "http://snomed.info/sct#2773008";
 
     /// <summary>
     /// Literal for code: LythrypnusNesiotes_
@@ -10048,9 +11078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLythrypnusNesiotes_ = "2797004";
 
     /// <summary>
+    /// Literal for code: NONELythrypnusNesiotes_
+    /// </summary>
+    public const string LiteralNONELythrypnusNesiotes_ = "http://snomed.info/sct#2797004";
+
+    /// <summary>
     /// Literal for code: BicaulusSagittatus_
     /// </summary>
     public const string LiteralBicaulusSagittatus_ = "2798009";
+
+    /// <summary>
+    /// Literal for code: NONEBicaulusSagittatus_
+    /// </summary>
+    public const string LiteralNONEBicaulusSagittatus_ = "http://snomed.info/sct#2798009";
 
     /// <summary>
     /// Literal for code: OesophagostomumRadiatum_
@@ -10058,9 +11098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOesophagostomumRadiatum_ = "2800002";
 
     /// <summary>
+    /// Literal for code: NONEOesophagostomumRadiatum_
+    /// </summary>
+    public const string LiteralNONEOesophagostomumRadiatum_ = "http://snomed.info/sct#2800002";
+
+    /// <summary>
     /// Literal for code: MicrocottusSellaris_
     /// </summary>
     public const string LiteralMicrocottusSellaris_ = "2817009";
+
+    /// <summary>
+    /// Literal for code: NONEMicrocottusSellaris_
+    /// </summary>
+    public const string LiteralNONEMicrocottusSellaris_ = "http://snomed.info/sct#2817009";
 
     /// <summary>
     /// Literal for code: HirundichthysAffinis_
@@ -10068,9 +11118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHirundichthysAffinis_ = "2865005";
 
     /// <summary>
+    /// Literal for code: NONEHirundichthysAffinis_
+    /// </summary>
+    public const string LiteralNONEHirundichthysAffinis_ = "http://snomed.info/sct#2865005";
+
+    /// <summary>
     /// Literal for code: LepisosteusOculatus_
     /// </summary>
     public const string LiteralLepisosteusOculatus_ = "2873001";
+
+    /// <summary>
+    /// Literal for code: NONELepisosteusOculatus_
+    /// </summary>
+    public const string LiteralNONELepisosteusOculatus_ = "http://snomed.info/sct#2873001";
 
     /// <summary>
     /// Literal for code: TaeniaParva_
@@ -10078,9 +11138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTaeniaParva_ = "2874007";
 
     /// <summary>
+    /// Literal for code: NONETaeniaParva_
+    /// </summary>
+    public const string LiteralNONETaeniaParva_ = "http://snomed.info/sct#2874007";
+
+    /// <summary>
     /// Literal for code: HymenolepisFraterna_
     /// </summary>
     public const string LiteralHymenolepisFraterna_ = "2882007";
+
+    /// <summary>
+    /// Literal for code: NONEHymenolepisFraterna_
+    /// </summary>
+    public const string LiteralNONEHymenolepisFraterna_ = "http://snomed.info/sct#2882007";
 
     /// <summary>
     /// Literal for code: PseudodiscusCollinsi_
@@ -10088,9 +11158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPseudodiscusCollinsi_ = "2896001";
 
     /// <summary>
+    /// Literal for code: NONEPseudodiscusCollinsi_
+    /// </summary>
+    public const string LiteralNONEPseudodiscusCollinsi_ = "http://snomed.info/sct#2896001";
+
+    /// <summary>
     /// Literal for code: DorosomaPetenense_
     /// </summary>
     public const string LiteralDorosomaPetenense_ = "2921003";
+
+    /// <summary>
+    /// Literal for code: NONEDorosomaPetenense_
+    /// </summary>
+    public const string LiteralNONEDorosomaPetenense_ = "http://snomed.info/sct#2921003";
 
     /// <summary>
     /// Literal for code: ScomberJaponicus_
@@ -10098,9 +11178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScomberJaponicus_ = "2926008";
 
     /// <summary>
+    /// Literal for code: NONEScomberJaponicus_
+    /// </summary>
+    public const string LiteralNONEScomberJaponicus_ = "http://snomed.info/sct#2926008";
+
+    /// <summary>
     /// Literal for code: Cacique_
     /// </summary>
     public const string LiteralCacique_ = "2930006";
+
+    /// <summary>
+    /// Literal for code: NONECacique_
+    /// </summary>
+    public const string LiteralNONECacique_ = "http://snomed.info/sct#2930006";
 
     /// <summary>
     /// Literal for code: GobiosomaGinsburgi_
@@ -10108,9 +11198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGobiosomaGinsburgi_ = "2939007";
 
     /// <summary>
+    /// Literal for code: NONEGobiosomaGinsburgi_
+    /// </summary>
+    public const string LiteralNONEGobiosomaGinsburgi_ = "http://snomed.info/sct#2939007";
+
+    /// <summary>
     /// Literal for code: MakairaIndica_
     /// </summary>
     public const string LiteralMakairaIndica_ = "2976005";
+
+    /// <summary>
+    /// Literal for code: NONEMakairaIndica_
+    /// </summary>
+    public const string LiteralNONEMakairaIndica_ = "http://snomed.info/sct#2976005";
 
     /// <summary>
     /// Literal for code: EtheostomaFricksium_
@@ -10118,9 +11218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEtheostomaFricksium_ = "2983003";
 
     /// <summary>
+    /// Literal for code: NONEEtheostomaFricksium_
+    /// </summary>
+    public const string LiteralNONEEtheostomaFricksium_ = "http://snomed.info/sct#2983003";
+
+    /// <summary>
     /// Literal for code: IxodesRugosus_
     /// </summary>
     public const string LiteralIxodesRugosus_ = "2984009";
+
+    /// <summary>
+    /// Literal for code: NONEIxodesRugosus_
+    /// </summary>
+    public const string LiteralNONEIxodesRugosus_ = "http://snomed.info/sct#2984009";
 
     /// <summary>
     /// Literal for code: MastophorusMuris_
@@ -10128,9 +11238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMastophorusMuris_ = "2987002";
 
     /// <summary>
+    /// Literal for code: NONEMastophorusMuris_
+    /// </summary>
+    public const string LiteralNONEMastophorusMuris_ = "http://snomed.info/sct#2987002";
+
+    /// <summary>
     /// Literal for code: MartesZibellina_
     /// </summary>
     public const string LiteralMartesZibellina_ = "2997006";
+
+    /// <summary>
+    /// Literal for code: NONEMartesZibellina_
+    /// </summary>
+    public const string LiteralNONEMartesZibellina_ = "http://snomed.info/sct#2997006";
 
     /// <summary>
     /// Literal for code: MiniatureSchnauzer_
@@ -10138,9 +11258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMiniatureSchnauzer_ = "300004";
 
     /// <summary>
+    /// Literal for code: NONEMiniatureSchnauzer_
+    /// </summary>
+    public const string LiteralNONEMiniatureSchnauzer_ = "http://snomed.info/sct#300004";
+
+    /// <summary>
     /// Literal for code: Epicrates_
     /// </summary>
     public const string LiteralEpicrates_ = "3012009";
+
+    /// <summary>
+    /// Literal for code: NONEEpicrates_
+    /// </summary>
+    public const string LiteralNONEEpicrates_ = "http://snomed.info/sct#3012009";
 
     /// <summary>
     /// Literal for code: Malaclemys_
@@ -10148,9 +11278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMalaclemys_ = "305009";
 
     /// <summary>
+    /// Literal for code: NONEMalaclemys_
+    /// </summary>
+    public const string LiteralNONEMalaclemys_ = "http://snomed.info/sct#305009";
+
+    /// <summary>
     /// Literal for code: StrongylusEquinus_
     /// </summary>
     public const string LiteralStrongylusEquinus_ = "3064003";
+
+    /// <summary>
+    /// Literal for code: NONEStrongylusEquinus_
+    /// </summary>
+    public const string LiteralNONEStrongylusEquinus_ = "http://snomed.info/sct#3064003";
 
     /// <summary>
     /// Literal for code: AnophelesGambiae_
@@ -10158,9 +11298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnophelesGambiae_ = "3065002";
 
     /// <summary>
+    /// Literal for code: NONEAnophelesGambiae_
+    /// </summary>
+    public const string LiteralNONEAnophelesGambiae_ = "http://snomed.info/sct#3065002";
+
+    /// <summary>
     /// Literal for code: NotropisAmabilis_
     /// </summary>
     public const string LiteralNotropisAmabilis_ = "3069008";
+
+    /// <summary>
+    /// Literal for code: NONENotropisAmabilis_
+    /// </summary>
+    public const string LiteralNONENotropisAmabilis_ = "http://snomed.info/sct#3069008";
 
     /// <summary>
     /// Literal for code: Echinorhynchus_
@@ -10168,9 +11318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchinorhynchus_ = "3079005";
 
     /// <summary>
+    /// Literal for code: NONEEchinorhynchus_
+    /// </summary>
+    public const string LiteralNONEEchinorhynchus_ = "http://snomed.info/sct#3079005";
+
+    /// <summary>
     /// Literal for code: RomneyMarshSheep_
     /// </summary>
     public const string LiteralRomneyMarshSheep_ = "3099004";
+
+    /// <summary>
+    /// Literal for code: NONERomneyMarshSheep_
+    /// </summary>
+    public const string LiteralNONERomneyMarshSheep_ = "http://snomed.info/sct#3099004";
 
     /// <summary>
     /// Literal for code: CricketFrog_
@@ -10178,9 +11338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCricketFrog_ = "3106001";
 
     /// <summary>
+    /// Literal for code: NONECricketFrog_
+    /// </summary>
+    public const string LiteralNONECricketFrog_ = "http://snomed.info/sct#3106001";
+
+    /// <summary>
     /// Literal for code: Phoneutria_
     /// </summary>
     public const string LiteralPhoneutria_ = "3111004";
+
+    /// <summary>
+    /// Literal for code: NONEPhoneutria_
+    /// </summary>
+    public const string LiteralNONEPhoneutria_ = "http://snomed.info/sct#3111004";
 
     /// <summary>
     /// Literal for code: CyathostomumCatinatum_
@@ -10188,9 +11358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCyathostomumCatinatum_ = "3124004";
 
     /// <summary>
+    /// Literal for code: NONECyathostomumCatinatum_
+    /// </summary>
+    public const string LiteralNONECyathostomumCatinatum_ = "http://snomed.info/sct#3124004";
+
+    /// <summary>
     /// Literal for code: StrongyloidesCati_
     /// </summary>
     public const string LiteralStrongyloidesCati_ = "3132007";
+
+    /// <summary>
+    /// Literal for code: NONEStrongyloidesCati_
+    /// </summary>
+    public const string LiteralNONEStrongyloidesCati_ = "http://snomed.info/sct#3132007";
 
     /// <summary>
     /// Literal for code: Noeschoengastia_
@@ -10198,9 +11378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoeschoengastia_ = "3146007";
 
     /// <summary>
+    /// Literal for code: NONENoeschoengastia_
+    /// </summary>
+    public const string LiteralNONENoeschoengastia_ = "http://snomed.info/sct#3146007";
+
+    /// <summary>
     /// Literal for code: MembrasMartinica_
     /// </summary>
     public const string LiteralMembrasMartinica_ = "3147003";
+
+    /// <summary>
+    /// Literal for code: NONEMembrasMartinica_
+    /// </summary>
+    public const string LiteralNONEMembrasMartinica_ = "http://snomed.info/sct#3147003";
 
     /// <summary>
     /// Literal for code: LycodesRossi_
@@ -10208,9 +11398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLycodesRossi_ = "3152008";
 
     /// <summary>
+    /// Literal for code: NONELycodesRossi_
+    /// </summary>
+    public const string LiteralNONELycodesRossi_ = "http://snomed.info/sct#3152008";
+
+    /// <summary>
     /// Literal for code: CaranxBartholomaei_
     /// </summary>
     public const string LiteralCaranxBartholomaei_ = "3173008";
+
+    /// <summary>
+    /// Literal for code: NONECaranxBartholomaei_
+    /// </summary>
+    public const string LiteralNONECaranxBartholomaei_ = "http://snomed.info/sct#3173008";
 
     /// <summary>
     /// Literal for code: HirundichthysRondeleti_
@@ -10218,9 +11418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHirundichthysRondeleti_ = "3176000";
 
     /// <summary>
+    /// Literal for code: NONEHirundichthysRondeleti_
+    /// </summary>
+    public const string LiteralNONEHirundichthysRondeleti_ = "http://snomed.info/sct#3176000";
+
+    /// <summary>
     /// Literal for code: SeleneSetapinnis_
     /// </summary>
     public const string LiteralSeleneSetapinnis_ = "3179007";
+
+    /// <summary>
+    /// Literal for code: NONESeleneSetapinnis_
+    /// </summary>
+    public const string LiteralNONESeleneSetapinnis_ = "http://snomed.info/sct#3179007";
 
     /// <summary>
     /// Literal for code: BrantaCanadensis_
@@ -10228,9 +11438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrantaCanadensis_ = "3181009";
 
     /// <summary>
+    /// Literal for code: NONEBrantaCanadensis_
+    /// </summary>
+    public const string LiteralNONEBrantaCanadensis_ = "http://snomed.info/sct#3181009";
+
+    /// <summary>
     /// Literal for code: NotropisPerpallidus_
     /// </summary>
     public const string LiteralNotropisPerpallidus_ = "3195007";
+
+    /// <summary>
+    /// Literal for code: NONENotropisPerpallidus_
+    /// </summary>
+    public const string LiteralNONENotropisPerpallidus_ = "http://snomed.info/sct#3195007";
 
     /// <summary>
     /// Literal for code: AnophelesPattoni_
@@ -10238,9 +11458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnophelesPattoni_ = "3203001";
 
     /// <summary>
+    /// Literal for code: NONEAnophelesPattoni_
+    /// </summary>
+    public const string LiteralNONEAnophelesPattoni_ = "http://snomed.info/sct#3203001";
+
+    /// <summary>
     /// Literal for code: StrongyloidesCanis_
     /// </summary>
     public const string LiteralStrongyloidesCanis_ = "3206009";
+
+    /// <summary>
+    /// Literal for code: NONEStrongyloidesCanis_
+    /// </summary>
+    public const string LiteralNONEStrongyloidesCanis_ = "http://snomed.info/sct#3206009";
 
     /// <summary>
     /// Literal for code: RhinichthysEvermanni_
@@ -10248,9 +11478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRhinichthysEvermanni_ = "3213009";
 
     /// <summary>
+    /// Literal for code: NONERhinichthysEvermanni_
+    /// </summary>
+    public const string LiteralNONERhinichthysEvermanni_ = "http://snomed.info/sct#3213009";
+
+    /// <summary>
     /// Literal for code: LincolnRedCattle_
     /// </summary>
     public const string LiteralLincolnRedCattle_ = "3216001";
+
+    /// <summary>
+    /// Literal for code: NONELincolnRedCattle_
+    /// </summary>
+    public const string LiteralNONELincolnRedCattle_ = "http://snomed.info/sct#3216001";
 
     /// <summary>
     /// Literal for code: LaughingGull_
@@ -10258,9 +11498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLaughingGull_ = "3220002";
 
     /// <summary>
+    /// Literal for code: NONELaughingGull_
+    /// </summary>
+    public const string LiteralNONELaughingGull_ = "http://snomed.info/sct#3220002";
+
+    /// <summary>
     /// Literal for code: EtheostomaNeopterum_
     /// </summary>
     public const string LiteralEtheostomaNeopterum_ = "3231005";
+
+    /// <summary>
+    /// Literal for code: NONEEtheostomaNeopterum_
+    /// </summary>
+    public const string LiteralNONEEtheostomaNeopterum_ = "http://snomed.info/sct#3231005";
 
     /// <summary>
     /// Literal for code: OpisthorchisNoverca_
@@ -10268,9 +11518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpisthorchisNoverca_ = "3237009";
 
     /// <summary>
+    /// Literal for code: NONEOpisthorchisNoverca_
+    /// </summary>
+    public const string LiteralNONEOpisthorchisNoverca_ = "http://snomed.info/sct#3237009";
+
+    /// <summary>
     /// Literal for code: HaemonchusLawrenci_
     /// </summary>
     public const string LiteralHaemonchusLawrenci_ = "3240009";
+
+    /// <summary>
+    /// Literal for code: NONEHaemonchusLawrenci_
+    /// </summary>
+    public const string LiteralNONEHaemonchusLawrenci_ = "http://snomed.info/sct#3240009";
 
     /// <summary>
     /// Literal for code: BiomphalariaTenagophila_
@@ -10278,9 +11538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiomphalariaTenagophila_ = "3244000";
 
     /// <summary>
+    /// Literal for code: NONEBiomphalariaTenagophila_
+    /// </summary>
+    public const string LiteralNONEBiomphalariaTenagophila_ = "http://snomed.info/sct#3244000";
+
+    /// <summary>
     /// Literal for code: DurocPig_
     /// </summary>
     public const string LiteralDurocPig_ = "3260001";
+
+    /// <summary>
+    /// Literal for code: NONEDurocPig_
+    /// </summary>
+    public const string LiteralNONEDurocPig_ = "http://snomed.info/sct#3260001";
 
     /// <summary>
     /// Literal for code: TrimeresurusMonticola_
@@ -10288,9 +11558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTrimeresurusMonticola_ = "3284009";
 
     /// <summary>
+    /// Literal for code: NONETrimeresurusMonticola_
+    /// </summary>
+    public const string LiteralNONETrimeresurusMonticola_ = "http://snomed.info/sct#3284009";
+
+    /// <summary>
     /// Literal for code: SchistosomaHaematobium_
     /// </summary>
     public const string LiteralSchistosomaHaematobium_ = "3294004";
+
+    /// <summary>
+    /// Literal for code: NONESchistosomaHaematobium_
+    /// </summary>
+    public const string LiteralNONESchistosomaHaematobium_ = "http://snomed.info/sct#3294004";
 
     /// <summary>
     /// Literal for code: SphyrnaLewini_
@@ -10298,9 +11578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSphyrnaLewini_ = "332004";
 
     /// <summary>
+    /// Literal for code: NONESphyrnaLewini_
+    /// </summary>
+    public const string LiteralNONESphyrnaLewini_ = "http://snomed.info/sct#332004";
+
+    /// <summary>
     /// Literal for code: TrichostrongylusSkrjabini_
     /// </summary>
     public const string LiteralTrichostrongylusSkrjabini_ = "3329004";
+
+    /// <summary>
+    /// Literal for code: NONETrichostrongylusSkrjabini_
+    /// </summary>
+    public const string LiteralNONETrichostrongylusSkrjabini_ = "http://snomed.info/sct#3329004";
 
     /// <summary>
     /// Literal for code: DandieDinmontTerrier_
@@ -10308,9 +11598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDandieDinmontTerrier_ = "3347005";
 
     /// <summary>
+    /// Literal for code: NONEDandieDinmontTerrier_
+    /// </summary>
+    public const string LiteralNONEDandieDinmontTerrier_ = "http://snomed.info/sct#3347005";
+
+    /// <summary>
     /// Literal for code: HavanaBrownCat_
     /// </summary>
     public const string LiteralHavanaBrownCat_ = "3354004";
+
+    /// <summary>
+    /// Literal for code: NONEHavanaBrownCat_
+    /// </summary>
+    public const string LiteralNONEHavanaBrownCat_ = "http://snomed.info/sct#3354004";
 
     /// <summary>
     /// Literal for code: PtychocheilusGrandis_
@@ -10318,9 +11618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPtychocheilusGrandis_ = "3356002";
 
     /// <summary>
+    /// Literal for code: NONEPtychocheilusGrandis_
+    /// </summary>
+    public const string LiteralNONEPtychocheilusGrandis_ = "http://snomed.info/sct#3356002";
+
+    /// <summary>
     /// Literal for code: ChromisPunctipinnis_
     /// </summary>
     public const string LiteralChromisPunctipinnis_ = "3363002";
+
+    /// <summary>
+    /// Literal for code: NONEChromisPunctipinnis_
+    /// </summary>
+    public const string LiteralNONEChromisPunctipinnis_ = "http://snomed.info/sct#3363002";
 
     /// <summary>
     /// Literal for code: FundulusLineolatus_
@@ -10328,9 +11638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFundulusLineolatus_ = "3375007";
 
     /// <summary>
+    /// Literal for code: NONEFundulusLineolatus_
+    /// </summary>
+    public const string LiteralNONEFundulusLineolatus_ = "http://snomed.info/sct#3375007";
+
+    /// <summary>
     /// Literal for code: BlackHeadedOriole_
     /// </summary>
     public const string LiteralBlackHeadedOriole_ = "338000";
+
+    /// <summary>
+    /// Literal for code: NONEBlackHeadedOriole_
+    /// </summary>
+    public const string LiteralNONEBlackHeadedOriole_ = "http://snomed.info/sct#338000";
 
     /// <summary>
     /// Literal for code: ChloroscombrusChrysurus_
@@ -10338,9 +11658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChloroscombrusChrysurus_ = "3410009";
 
     /// <summary>
+    /// Literal for code: NONEChloroscombrusChrysurus_
+    /// </summary>
+    public const string LiteralNONEChloroscombrusChrysurus_ = "http://snomed.info/sct#3410009";
+
+    /// <summary>
     /// Literal for code: KaupichthysNuchalis_
     /// </summary>
     public const string LiteralKaupichthysNuchalis_ = "3412001";
+
+    /// <summary>
+    /// Literal for code: NONEKaupichthysNuchalis_
+    /// </summary>
+    public const string LiteralNONEKaupichthysNuchalis_ = "http://snomed.info/sct#3412001";
 
     /// <summary>
     /// Literal for code: Gurltia_
@@ -10348,9 +11678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGurltia_ = "3429003";
 
     /// <summary>
+    /// Literal for code: NONEGurltia_
+    /// </summary>
+    public const string LiteralNONEGurltia_ = "http://snomed.info/sct#3429003";
+
+    /// <summary>
     /// Literal for code: HolocentrusBullisi_
     /// </summary>
     public const string LiteralHolocentrusBullisi_ = "3433005";
+
+    /// <summary>
+    /// Literal for code: NONEHolocentrusBullisi_
+    /// </summary>
+    public const string LiteralNONEHolocentrusBullisi_ = "http://snomed.info/sct#3433005";
 
     /// <summary>
     /// Literal for code: FatDormouse_
@@ -10358,9 +11698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFatDormouse_ = "3435003";
 
     /// <summary>
+    /// Literal for code: NONEFatDormouse_
+    /// </summary>
+    public const string LiteralNONEFatDormouse_ = "http://snomed.info/sct#3435003";
+
+    /// <summary>
     /// Literal for code: ThelaziaBubalis_
     /// </summary>
     public const string LiteralThelaziaBubalis_ = "3454003";
+
+    /// <summary>
+    /// Literal for code: NONEThelaziaBubalis_
+    /// </summary>
+    public const string LiteralNONEThelaziaBubalis_ = "http://snomed.info/sct#3454003";
 
     /// <summary>
     /// Literal for code: RufousTinamou_
@@ -10368,9 +11718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRufousTinamou_ = "347008";
 
     /// <summary>
+    /// Literal for code: NONERufousTinamou_
+    /// </summary>
+    public const string LiteralNONERufousTinamou_ = "http://snomed.info/sct#347008";
+
+    /// <summary>
     /// Literal for code: RedBilledChough_
     /// </summary>
     public const string LiteralRedBilledChough_ = "3475006";
+
+    /// <summary>
+    /// Literal for code: NONERedBilledChough_
+    /// </summary>
+    public const string LiteralNONERedBilledChough_ = "http://snomed.info/sct#3475006";
 
     /// <summary>
     /// Literal for code: XererpesFucorum_
@@ -10378,9 +11738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXererpesFucorum_ = "3486008";
 
     /// <summary>
+    /// Literal for code: NONEXererpesFucorum_
+    /// </summary>
+    public const string LiteralNONEXererpesFucorum_ = "http://snomed.info/sct#3486008";
+
+    /// <summary>
     /// Literal for code: PercinaCrassa_
     /// </summary>
     public const string LiteralPercinaCrassa_ = "350006";
+
+    /// <summary>
+    /// Literal for code: NONEPercinaCrassa_
+    /// </summary>
+    public const string LiteralNONEPercinaCrassa_ = "http://snomed.info/sct#350006";
 
     /// <summary>
     /// Literal for code: RaillietinaEchinobothridia_
@@ -10388,9 +11758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRaillietinaEchinobothridia_ = "3510006";
 
     /// <summary>
+    /// Literal for code: NONERaillietinaEchinobothridia_
+    /// </summary>
+    public const string LiteralNONERaillietinaEchinobothridia_ = "http://snomed.info/sct#3510006";
+
+    /// <summary>
     /// Literal for code: AnophelesGrabhanii_
     /// </summary>
     public const string LiteralAnophelesGrabhanii_ = "3536004";
+
+    /// <summary>
+    /// Literal for code: NONEAnophelesGrabhanii_
+    /// </summary>
+    public const string LiteralNONEAnophelesGrabhanii_ = "http://snomed.info/sct#3536004";
 
     /// <summary>
     /// Literal for code: EquetusLanceolatus_
@@ -10398,9 +11778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEquetusLanceolatus_ = "3565005";
 
     /// <summary>
+    /// Literal for code: NONEEquetusLanceolatus_
+    /// </summary>
+    public const string LiteralNONEEquetusLanceolatus_ = "http://snomed.info/sct#3565005";
+
+    /// <summary>
     /// Literal for code: SouthdownSheep_
     /// </summary>
     public const string LiteralSouthdownSheep_ = "3566006";
+
+    /// <summary>
+    /// Literal for code: NONESouthdownSheep_
+    /// </summary>
+    public const string LiteralNONESouthdownSheep_ = "http://snomed.info/sct#3566006";
 
     /// <summary>
     /// Literal for code: CoryphopterusThrix_
@@ -10408,9 +11798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoryphopterusThrix_ = "3568007";
 
     /// <summary>
+    /// Literal for code: NONECoryphopterusThrix_
+    /// </summary>
+    public const string LiteralNONECoryphopterusThrix_ = "http://snomed.info/sct#3568007";
+
+    /// <summary>
     /// Literal for code: Coleonyx_
     /// </summary>
     public const string LiteralColeonyx_ = "3569004";
+
+    /// <summary>
+    /// Literal for code: NONEColeonyx_
+    /// </summary>
+    public const string LiteralNONEColeonyx_ = "http://snomed.info/sct#3569004";
 
     /// <summary>
     /// Literal for code: Bitis_
@@ -10418,9 +11818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBitis_ = "3574007";
 
     /// <summary>
+    /// Literal for code: NONEBitis_
+    /// </summary>
+    public const string LiteralNONEBitis_ = "http://snomed.info/sct#3574007";
+
+    /// <summary>
     /// Literal for code: AnophelesDQuoteThali_
     /// </summary>
     public const string LiteralAnophelesDQuoteThali_ = "3600006";
+
+    /// <summary>
+    /// Literal for code: NONEAnophelesDQuoteThali_
+    /// </summary>
+    public const string LiteralNONEAnophelesDQuoteThali_ = "http://snomed.info/sct#3600006";
 
     /// <summary>
     /// Literal for code: ChaetodonSedentarius_
@@ -10428,9 +11838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChaetodonSedentarius_ = "3613000";
 
     /// <summary>
+    /// Literal for code: NONEChaetodonSedentarius_
+    /// </summary>
+    public const string LiteralNONEChaetodonSedentarius_ = "http://snomed.info/sct#3613000";
+
+    /// <summary>
     /// Literal for code: PimephalesPromelas_
     /// </summary>
     public const string LiteralPimephalesPromelas_ = "3619001";
+
+    /// <summary>
+    /// Literal for code: NONEPimephalesPromelas_
+    /// </summary>
+    public const string LiteralNONEPimephalesPromelas_ = "http://snomed.info/sct#3619001";
 
     /// <summary>
     /// Literal for code: BrosmophycisMarginata_
@@ -10438,9 +11858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrosmophycisMarginata_ = "3632006";
 
     /// <summary>
+    /// Literal for code: NONEBrosmophycisMarginata_
+    /// </summary>
+    public const string LiteralNONEBrosmophycisMarginata_ = "http://snomed.info/sct#3632006";
+
+    /// <summary>
     /// Literal for code: BalineseCat_
     /// </summary>
     public const string LiteralBalineseCat_ = "3653002";
+
+    /// <summary>
+    /// Literal for code: NONEBalineseCat_
+    /// </summary>
+    public const string LiteralNONEBalineseCat_ = "http://snomed.info/sct#3653002";
 
     /// <summary>
     /// Literal for code: GoldenRumpedTinkerbird_
@@ -10448,9 +11878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGoldenRumpedTinkerbird_ = "3656005";
 
     /// <summary>
+    /// Literal for code: NONEGoldenRumpedTinkerbird_
+    /// </summary>
+    public const string LiteralNONEGoldenRumpedTinkerbird_ = "http://snomed.info/sct#3656005";
+
+    /// <summary>
     /// Literal for code: StenotomusCaprinus_
     /// </summary>
     public const string LiteralStenotomusCaprinus_ = "3668001";
+
+    /// <summary>
+    /// Literal for code: NONEStenotomusCaprinus_
+    /// </summary>
+    public const string LiteralNONEStenotomusCaprinus_ = "http://snomed.info/sct#3668001";
 
     /// <summary>
     /// Literal for code: NotropisCoccogenis_
@@ -10458,9 +11898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotropisCoccogenis_ = "3671009";
 
     /// <summary>
+    /// Literal for code: NONENotropisCoccogenis_
+    /// </summary>
+    public const string LiteralNONENotropisCoccogenis_ = "http://snomed.info/sct#3671009";
+
+    /// <summary>
     /// Literal for code: SiberianHuskie_
     /// </summary>
     public const string LiteralSiberianHuskie_ = "3674001";
+
+    /// <summary>
+    /// Literal for code: NONESiberianHuskie_
+    /// </summary>
+    public const string LiteralNONESiberianHuskie_ = "http://snomed.info/sct#3674001";
 
     /// <summary>
     /// Literal for code: CyprinusCarpio_
@@ -10468,9 +11918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCyprinusCarpio_ = "3676004";
 
     /// <summary>
+    /// Literal for code: NONECyprinusCarpio_
+    /// </summary>
+    public const string LiteralNONECyprinusCarpio_ = "http://snomed.info/sct#3676004";
+
+    /// <summary>
     /// Literal for code: MycteropercaXenarcha_
     /// </summary>
     public const string LiteralMycteropercaXenarcha_ = "3682001";
+
+    /// <summary>
+    /// Literal for code: NONEMycteropercaXenarcha_
+    /// </summary>
+    public const string LiteralNONEMycteropercaXenarcha_ = "http://snomed.info/sct#3682001";
 
     /// <summary>
     /// Literal for code: SpringPeeper_
@@ -10478,9 +11938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpringPeeper_ = "3685004";
 
     /// <summary>
+    /// Literal for code: NONESpringPeeper_
+    /// </summary>
+    public const string LiteralNONESpringPeeper_ = "http://snomed.info/sct#3685004";
+
+    /// <summary>
     /// Literal for code: AnisakisSimplex_
     /// </summary>
     public const string LiteralAnisakisSimplex_ = "3706005";
+
+    /// <summary>
+    /// Literal for code: NONEAnisakisSimplex_
+    /// </summary>
+    public const string LiteralNONEAnisakisSimplex_ = "http://snomed.info/sct#3706005";
 
     /// <summary>
     /// Literal for code: Minivet_
@@ -10488,9 +11958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMinivet_ = "3721004";
 
     /// <summary>
+    /// Literal for code: NONEMinivet_
+    /// </summary>
+    public const string LiteralNONEMinivet_ = "http://snomed.info/sct#3721004";
+
+    /// <summary>
     /// Literal for code: Hydrosaurus_
     /// </summary>
     public const string LiteralHydrosaurus_ = "3725008";
+
+    /// <summary>
+    /// Literal for code: NONEHydrosaurus_
+    /// </summary>
+    public const string LiteralNONEHydrosaurus_ = "http://snomed.info/sct#3725008";
 
     /// <summary>
     /// Literal for code: AnthiasGordensis_
@@ -10498,9 +11978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnthiasGordensis_ = "3732004";
 
     /// <summary>
+    /// Literal for code: NONEAnthiasGordensis_
+    /// </summary>
+    public const string LiteralNONEAnthiasGordensis_ = "http://snomed.info/sct#3732004";
+
+    /// <summary>
     /// Literal for code: CitharichthysCornutus_
     /// </summary>
     public const string LiteralCitharichthysCornutus_ = "3741009";
+
+    /// <summary>
+    /// Literal for code: NONECitharichthysCornutus_
+    /// </summary>
+    public const string LiteralNONECitharichthysCornutus_ = "http://snomed.info/sct#3741009";
 
     /// <summary>
     /// Literal for code: Micrurus_
@@ -10508,9 +11998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrurus_ = "376006";
 
     /// <summary>
+    /// Literal for code: NONEMicrurus_
+    /// </summary>
+    public const string LiteralNONEMicrurus_ = "http://snomed.info/sct#376006";
+
+    /// <summary>
     /// Literal for code: ToxascarisLeonina_
     /// </summary>
     public const string LiteralToxascarisLeonina_ = "3767004";
+
+    /// <summary>
+    /// Literal for code: NONEToxascarisLeonina_
+    /// </summary>
+    public const string LiteralNONEToxascarisLeonina_ = "http://snomed.info/sct#3767004";
 
     /// <summary>
     /// Literal for code: CatostomusCommersoni_
@@ -10518,9 +12018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatostomusCommersoni_ = "3782009";
 
     /// <summary>
+    /// Literal for code: NONECatostomusCommersoni_
+    /// </summary>
+    public const string LiteralNONECatostomusCommersoni_ = "http://snomed.info/sct#3782009";
+
+    /// <summary>
     /// Literal for code: AnatrichosomaCynomolgi_
     /// </summary>
     public const string LiteralAnatrichosomaCynomolgi_ = "3795004";
+
+    /// <summary>
+    /// Literal for code: NONEAnatrichosomaCynomolgi_
+    /// </summary>
+    public const string LiteralNONEAnatrichosomaCynomolgi_ = "http://snomed.info/sct#3795004";
 
     /// <summary>
     /// Literal for code: AlopiasSuperciliosus_
@@ -10528,9 +12038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlopiasSuperciliosus_ = "3809005";
 
     /// <summary>
+    /// Literal for code: NONEAlopiasSuperciliosus_
+    /// </summary>
+    public const string LiteralNONEAlopiasSuperciliosus_ = "http://snomed.info/sct#3809005";
+
+    /// <summary>
     /// Literal for code: MansoniaPertubans_
     /// </summary>
     public const string LiteralMansoniaPertubans_ = "381002";
+
+    /// <summary>
+    /// Literal for code: NONEMansoniaPertubans_
+    /// </summary>
+    public const string LiteralNONEMansoniaPertubans_ = "http://snomed.info/sct#381002";
 
     /// <summary>
     /// Literal for code: NotropisChrosomus_
@@ -10538,9 +12058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotropisChrosomus_ = "3817002";
 
     /// <summary>
+    /// Literal for code: NONENotropisChrosomus_
+    /// </summary>
+    public const string LiteralNONENotropisChrosomus_ = "http://snomed.info/sct#3817002";
+
+    /// <summary>
     /// Literal for code: DracunculusMedinensis_
     /// </summary>
     public const string LiteralDracunculusMedinensis_ = "3824001";
+
+    /// <summary>
+    /// Literal for code: NONEDracunculusMedinensis_
+    /// </summary>
+    public const string LiteralNONEDracunculusMedinensis_ = "http://snomed.info/sct#3824001";
 
     /// <summary>
     /// Literal for code: EnophrysBison_
@@ -10548,9 +12078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnophrysBison_ = "3856008";
 
     /// <summary>
+    /// Literal for code: NONEEnophrysBison_
+    /// </summary>
+    public const string LiteralNONEEnophrysBison_ = "http://snomed.info/sct#3856008";
+
+    /// <summary>
     /// Literal for code: DecapterusMacarellus_
     /// </summary>
     public const string LiteralDecapterusMacarellus_ = "3857004";
+
+    /// <summary>
+    /// Literal for code: NONEDecapterusMacarellus_
+    /// </summary>
+    public const string LiteralNONEDecapterusMacarellus_ = "http://snomed.info/sct#3857004";
 
     /// <summary>
     /// Literal for code: PoeciliaFormosa_
@@ -10558,9 +12098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPoeciliaFormosa_ = "386007";
 
     /// <summary>
+    /// Literal for code: NONEPoeciliaFormosa_
+    /// </summary>
+    public const string LiteralNONEPoeciliaFormosa_ = "http://snomed.info/sct#386007";
+
+    /// <summary>
     /// Literal for code: SchistosomaChestermani_
     /// </summary>
     public const string LiteralSchistosomaChestermani_ = "3871007";
+
+    /// <summary>
+    /// Literal for code: NONESchistosomaChestermani_
+    /// </summary>
+    public const string LiteralNONESchistosomaChestermani_ = "http://snomed.info/sct#3871007";
 
     /// <summary>
     /// Literal for code: BeltsvilleWhiteTurkey_
@@ -10568,9 +12118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBeltsvilleWhiteTurkey_ = "3872000";
 
     /// <summary>
+    /// Literal for code: NONEBeltsvilleWhiteTurkey_
+    /// </summary>
+    public const string LiteralNONEBeltsvilleWhiteTurkey_ = "http://snomed.info/sct#3872000";
+
+    /// <summary>
     /// Literal for code: OphidionBeani_
     /// </summary>
     public const string LiteralOphidionBeani_ = "390009";
+
+    /// <summary>
+    /// Literal for code: NONEOphidionBeani_
+    /// </summary>
+    public const string LiteralNONEOphidionBeani_ = "http://snomed.info/sct#390009";
 
     /// <summary>
     /// Literal for code: Gerrhonotus_
@@ -10578,9 +12138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGerrhonotus_ = "3905003";
 
     /// <summary>
+    /// Literal for code: NONEGerrhonotus_
+    /// </summary>
+    public const string LiteralNONEGerrhonotus_ = "http://snomed.info/sct#3905003";
+
+    /// <summary>
     /// Literal for code: CoruciaZebrata_
     /// </summary>
     public const string LiteralCoruciaZebrata_ = "3912007";
+
+    /// <summary>
+    /// Literal for code: NONECoruciaZebrata_
+    /// </summary>
+    public const string LiteralNONECoruciaZebrata_ = "http://snomed.info/sct#3912007";
 
     /// <summary>
     /// Literal for code: MuscaAmica_
@@ -10588,9 +12158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMuscaAmica_ = "3919003";
 
     /// <summary>
+    /// Literal for code: NONEMuscaAmica_
+    /// </summary>
+    public const string LiteralNONEMuscaAmica_ = "http://snomed.info/sct#3919003";
+
+    /// <summary>
     /// Literal for code: AiredaleTerrier_
     /// </summary>
     public const string LiteralAiredaleTerrier_ = "3921008";
+
+    /// <summary>
+    /// Literal for code: NONEAiredaleTerrier_
+    /// </summary>
+    public const string LiteralNONEAiredaleTerrier_ = "http://snomed.info/sct#3921008";
 
     /// <summary>
     /// Literal for code: MelodiousBlackbird_
@@ -10598,9 +12178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMelodiousBlackbird_ = "3933003";
 
     /// <summary>
+    /// Literal for code: NONEMelodiousBlackbird_
+    /// </summary>
+    public const string LiteralNONEMelodiousBlackbird_ = "http://snomed.info/sct#3933003";
+
+    /// <summary>
     /// Literal for code: LymnaeaVolutata_
     /// </summary>
     public const string LiteralLymnaeaVolutata_ = "3934009";
+
+    /// <summary>
+    /// Literal for code: NONELymnaeaVolutata_
+    /// </summary>
+    public const string LiteralNONELymnaeaVolutata_ = "http://snomed.info/sct#3934009";
 
     /// <summary>
     /// Literal for code: Spinetail_
@@ -10608,9 +12198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpinetail_ = "3940002";
 
     /// <summary>
+    /// Literal for code: NONESpinetail_
+    /// </summary>
+    public const string LiteralNONESpinetail_ = "http://snomed.info/sct#3940002";
+
+    /// <summary>
     /// Literal for code: Pediatrics_
     /// </summary>
     public const string LiteralPediatrics_ = "394537008";
+
+    /// <summary>
+    /// Literal for code: NONEPediatrics_
+    /// </summary>
+    public const string LiteralNONEPediatrics_ = "http://snomed.info/sct#394537008";
 
     /// <summary>
     /// Literal for code: PediatricNeurology_
@@ -10618,9 +12218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricNeurology_ = "394538003";
 
     /// <summary>
+    /// Literal for code: NONEPediatricNeurology_
+    /// </summary>
+    public const string LiteralNONEPediatricNeurology_ = "http://snomed.info/sct#394538003";
+
+    /// <summary>
     /// Literal for code: AudiologicalMedicine_
     /// </summary>
     public const string LiteralAudiologicalMedicine_ = "394578005";
+
+    /// <summary>
+    /// Literal for code: NONEAudiologicalMedicine_
+    /// </summary>
+    public const string LiteralNONEAudiologicalMedicine_ = "http://snomed.info/sct#394578005";
 
     /// <summary>
     /// Literal for code: Cardiology_
@@ -10628,9 +12238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCardiology_ = "394579002";
 
     /// <summary>
+    /// Literal for code: NONECardiology_
+    /// </summary>
+    public const string LiteralNONECardiology_ = "http://snomed.info/sct#394579002";
+
+    /// <summary>
     /// Literal for code: ClinicalGenetics_
     /// </summary>
     public const string LiteralClinicalGenetics_ = "394580004";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalGenetics_
+    /// </summary>
+    public const string LiteralNONEClinicalGenetics_ = "http://snomed.info/sct#394580004";
 
     /// <summary>
     /// Literal for code: Dermatology_
@@ -10638,9 +12258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDermatology_ = "394582007";
 
     /// <summary>
+    /// Literal for code: NONEDermatology_
+    /// </summary>
+    public const string LiteralNONEDermatology_ = "http://snomed.info/sct#394582007";
+
+    /// <summary>
     /// Literal for code: Endocrinology_
     /// </summary>
     public const string LiteralEndocrinology_ = "394583002";
+
+    /// <summary>
+    /// Literal for code: NONEEndocrinology_
+    /// </summary>
+    public const string LiteralNONEEndocrinology_ = "http://snomed.info/sct#394583002";
 
     /// <summary>
     /// Literal for code: Gastroenterology_
@@ -10648,9 +12278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGastroenterology_ = "394584008";
 
     /// <summary>
+    /// Literal for code: NONEGastroenterology_
+    /// </summary>
+    public const string LiteralNONEGastroenterology_ = "http://snomed.info/sct#394584008";
+
+    /// <summary>
     /// Literal for code: Nephrology_
     /// </summary>
     public const string LiteralNephrology_ = "394589003";
+
+    /// <summary>
+    /// Literal for code: NONENephrology_
+    /// </summary>
+    public const string LiteralNONENephrology_ = "http://snomed.info/sct#394589003";
 
     /// <summary>
     /// Literal for code: ThoracicMedicine_
@@ -10658,9 +12298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicMedicine_ = "394590007";
 
     /// <summary>
+    /// Literal for code: NONEThoracicMedicine_
+    /// </summary>
+    public const string LiteralNONEThoracicMedicine_ = "http://snomed.info/sct#394590007";
+
+    /// <summary>
     /// Literal for code: Neurology_
     /// </summary>
     public const string LiteralNeurology_ = "394591006";
+
+    /// <summary>
+    /// Literal for code: NONENeurology_
+    /// </summary>
+    public const string LiteralNONENeurology_ = "http://snomed.info/sct#394591006";
 
     /// <summary>
     /// Literal for code: MedicalOncology_
@@ -10668,9 +12318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicalOncology_ = "394593009";
 
     /// <summary>
+    /// Literal for code: NONEMedicalOncology_
+    /// </summary>
+    public const string LiteralNONEMedicalOncology_ = "http://snomed.info/sct#394593009";
+
+    /// <summary>
     /// Literal for code: ClinicalPharmacology_
     /// </summary>
     public const string LiteralClinicalPharmacology_ = "394600006";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalPharmacology_
+    /// </summary>
+    public const string LiteralNONEClinicalPharmacology_ = "http://snomed.info/sct#394600006";
 
     /// <summary>
     /// Literal for code: NorthernShrike_
@@ -10678,9 +12338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorthernShrike_ = "3946008";
 
     /// <summary>
+    /// Literal for code: NONENorthernShrike_
+    /// </summary>
+    public const string LiteralNONENorthernShrike_ = "http://snomed.info/sct#3946008";
+
+    /// <summary>
     /// Literal for code: ClinicalPhysiology_
     /// </summary>
     public const string LiteralClinicalPhysiology_ = "394601005";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalPhysiology_
+    /// </summary>
+    public const string LiteralNONEClinicalPhysiology_ = "http://snomed.info/sct#394601005";
 
     /// <summary>
     /// Literal for code: RehabilitationSpecialty_
@@ -10688,9 +12358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRehabilitationSpecialty_ = "394602003";
 
     /// <summary>
+    /// Literal for code: NONERehabilitationSpecialty_
+    /// </summary>
+    public const string LiteralNONERehabilitationSpecialty_ = "http://snomed.info/sct#394602003";
+
+    /// <summary>
     /// Literal for code: NuclearMedicineSpecialty_
     /// </summary>
     public const string LiteralNuclearMedicineSpecialty_ = "394649004";
+
+    /// <summary>
+    /// Literal for code: NONENuclearMedicineSpecialty_
+    /// </summary>
+    public const string LiteralNONENuclearMedicineSpecialty_ = "http://snomed.info/sct#394649004";
 
     /// <summary>
     /// Literal for code: GeneralMedicine_
@@ -10698,9 +12378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGeneralMedicine_ = "394802001";
 
     /// <summary>
+    /// Literal for code: NONEGeneralMedicine_
+    /// </summary>
+    public const string LiteralNONEGeneralMedicine_ = "http://snomed.info/sct#394802001";
+
+    /// <summary>
     /// Literal for code: ClinicalHematology_
     /// </summary>
     public const string LiteralClinicalHematology_ = "394803006";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalHematology_
+    /// </summary>
+    public const string LiteralNONEClinicalHematology_ = "http://snomed.info/sct#394803006";
 
     /// <summary>
     /// Literal for code: ClinicalCytogeneticsAndMolecularGenetics_
@@ -10708,9 +12398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClinicalCytogeneticsAndMolecularGenetics_ = "394804000";
 
     /// <summary>
+    /// Literal for code: NONEClinicalCytogeneticsAndMolecularGenetics_
+    /// </summary>
+    public const string LiteralNONEClinicalCytogeneticsAndMolecularGenetics_ = "http://snomed.info/sct#394804000";
+
+    /// <summary>
     /// Literal for code: ClinicalImmunologyAllergy_
     /// </summary>
     public const string LiteralClinicalImmunologyAllergy_ = "394805004";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalImmunologyAllergy_
+    /// </summary>
+    public const string LiteralNONEClinicalImmunologyAllergy_ = "http://snomed.info/sct#394805004";
 
     /// <summary>
     /// Literal for code: PalliativeMedicine_
@@ -10718,9 +12418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPalliativeMedicine_ = "394806003";
 
     /// <summary>
+    /// Literal for code: NONEPalliativeMedicine_
+    /// </summary>
+    public const string LiteralNONEPalliativeMedicine_ = "http://snomed.info/sct#394806003";
+
+    /// <summary>
     /// Literal for code: InfectiousDiseasesSpecialty_
     /// </summary>
     public const string LiteralInfectiousDiseasesSpecialty_ = "394807007";
+
+    /// <summary>
+    /// Literal for code: NONEInfectiousDiseasesSpecialty_
+    /// </summary>
+    public const string LiteralNONEInfectiousDiseasesSpecialty_ = "http://snomed.info/sct#394807007";
 
     /// <summary>
     /// Literal for code: GenitoUrinaryMedicine_
@@ -10728,9 +12438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGenitoUrinaryMedicine_ = "394808002";
 
     /// <summary>
+    /// Literal for code: NONEGenitoUrinaryMedicine_
+    /// </summary>
+    public const string LiteralNONEGenitoUrinaryMedicine_ = "http://snomed.info/sct#394808002";
+
+    /// <summary>
     /// Literal for code: ClinicalNeuroPhysiology_
     /// </summary>
     public const string LiteralClinicalNeuroPhysiology_ = "394809005";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalNeuroPhysiology_
+    /// </summary>
+    public const string LiteralNONEClinicalNeuroPhysiology_ = "http://snomed.info/sct#394809005";
 
     /// <summary>
     /// Literal for code: Rheumatology_
@@ -10738,9 +12458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRheumatology_ = "394810000";
 
     /// <summary>
+    /// Literal for code: NONERheumatology_
+    /// </summary>
+    public const string LiteralNONERheumatology_ = "http://snomed.info/sct#394810000";
+
+    /// <summary>
     /// Literal for code: GeriatricMedicine_
     /// </summary>
     public const string LiteralGeriatricMedicine_ = "394811001";
+
+    /// <summary>
+    /// Literal for code: NONEGeriatricMedicine_
+    /// </summary>
+    public const string LiteralNONEGeriatricMedicine_ = "http://snomed.info/sct#394811001";
 
     /// <summary>
     /// Literal for code: DentalMedicineSpecialties_
@@ -10748,9 +12478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDentalMedicineSpecialties_ = "394812008";
 
     /// <summary>
+    /// Literal for code: NONEDentalMedicineSpecialties_
+    /// </summary>
+    public const string LiteralNONEDentalMedicineSpecialties_ = "http://snomed.info/sct#394812008";
+
+    /// <summary>
     /// Literal for code: MedicalOphthalmology_
     /// </summary>
     public const string LiteralMedicalOphthalmology_ = "394813003";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalOphthalmology_
+    /// </summary>
+    public const string LiteralNONEMedicalOphthalmology_ = "http://snomed.info/sct#394813003";
 
     /// <summary>
     /// Literal for code: MicrometrusAurora_
@@ -10758,9 +12498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrometrusAurora_ = "3965000";
 
     /// <summary>
+    /// Literal for code: NONEMicrometrusAurora_
+    /// </summary>
+    public const string LiteralNONEMicrometrusAurora_ = "http://snomed.info/sct#3965000";
+
+    /// <summary>
     /// Literal for code: BlaberusCraniifer_
     /// </summary>
     public const string LiteralBlaberusCraniifer_ = "399005";
+
+    /// <summary>
+    /// Literal for code: NONEBlaberusCraniifer_
+    /// </summary>
+    public const string LiteralNONEBlaberusCraniifer_ = "http://snomed.info/sct#399005";
 
     /// <summary>
     /// Literal for code: Manx_
@@ -10768,9 +12518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralManx_ = "3995008";
 
     /// <summary>
+    /// Literal for code: NONEManx_
+    /// </summary>
+    public const string LiteralNONEManx_ = "http://snomed.info/sct#3995008";
+
+    /// <summary>
     /// Literal for code: Pony_
     /// </summary>
     public const string LiteralPony_ = "3997000";
+
+    /// <summary>
+    /// Literal for code: NONEPony_
+    /// </summary>
+    public const string LiteralNONEPony_ = "http://snomed.info/sct#3997000";
 
     /// <summary>
     /// Literal for code: PinzgauerCattle_
@@ -10778,9 +12538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPinzgauerCattle_ = "400003";
 
     /// <summary>
+    /// Literal for code: NONEPinzgauerCattle_
+    /// </summary>
+    public const string LiteralNONEPinzgauerCattle_ = "http://snomed.info/sct#400003";
+
+    /// <summary>
     /// Literal for code: CottusPrinceps_
     /// </summary>
     public const string LiteralCottusPrinceps_ = "4011008";
+
+    /// <summary>
+    /// Literal for code: NONECottusPrinceps_
+    /// </summary>
+    public const string LiteralNONECottusPrinceps_ = "http://snomed.info/sct#4011008";
 
     /// <summary>
     /// Literal for code: MargaropusWileyi_
@@ -10788,9 +12558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMargaropusWileyi_ = "4020004";
 
     /// <summary>
+    /// Literal for code: NONEMargaropusWileyi_
+    /// </summary>
+    public const string LiteralNONEMargaropusWileyi_ = "http://snomed.info/sct#4020004";
+
+    /// <summary>
     /// Literal for code: HybopsisGracilis_
     /// </summary>
     public const string LiteralHybopsisGracilis_ = "4031007";
+
+    /// <summary>
+    /// Literal for code: NONEHybopsisGracilis_
+    /// </summary>
+    public const string LiteralNONEHybopsisGracilis_ = "http://snomed.info/sct#4031007";
 
     /// <summary>
     /// Literal for code: PhysalopteraAbbreviata_
@@ -10798,9 +12578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysalopteraAbbreviata_ = "4033005";
 
     /// <summary>
+    /// Literal for code: NONEPhysalopteraAbbreviata_
+    /// </summary>
+    public const string LiteralNONEPhysalopteraAbbreviata_ = "http://snomed.info/sct#4033005";
+
+    /// <summary>
     /// Literal for code: BramaJaponica_
     /// </summary>
     public const string LiteralBramaJaponica_ = "404007";
+
+    /// <summary>
+    /// Literal for code: NONEBramaJaponica_
+    /// </summary>
+    public const string LiteralNONEBramaJaponica_ = "http://snomed.info/sct#404007";
 
     /// <summary>
     /// Literal for code: SomaliCat_
@@ -10808,9 +12598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSomaliCat_ = "4042003";
 
     /// <summary>
+    /// Literal for code: NONESomaliCat_
+    /// </summary>
+    public const string LiteralNONESomaliCat_ = "http://snomed.info/sct#4042003";
+
+    /// <summary>
     /// Literal for code: JavaWartSnake_
     /// </summary>
     public const string LiteralJavaWartSnake_ = "4049007";
+
+    /// <summary>
+    /// Literal for code: NONEJavaWartSnake_
+    /// </summary>
+    public const string LiteralNONEJavaWartSnake_ = "http://snomed.info/sct#4049007";
 
     /// <summary>
     /// Literal for code: CottusMarginatus_
@@ -10818,9 +12618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCottusMarginatus_ = "4050007";
 
     /// <summary>
+    /// Literal for code: NONECottusMarginatus_
+    /// </summary>
+    public const string LiteralNONECottusMarginatus_ = "http://snomed.info/sct#4050007";
+
+    /// <summary>
     /// Literal for code: Haemogamasus_
     /// </summary>
     public const string LiteralHaemogamasus_ = "4056001";
+
+    /// <summary>
+    /// Literal for code: NONEHaemogamasus_
+    /// </summary>
+    public const string LiteralNONEHaemogamasus_ = "http://snomed.info/sct#4056001";
 
     /// <summary>
     /// Literal for code: AllergySpecialty_
@@ -10828,9 +12638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAllergySpecialty_ = "408439002";
 
     /// <summary>
+    /// Literal for code: NONEAllergySpecialty_
+    /// </summary>
+    public const string LiteralNONEAllergySpecialty_ = "http://snomed.info/sct#408439002";
+
+    /// <summary>
     /// Literal for code: PublicHealthMedicine_
     /// </summary>
     public const string LiteralPublicHealthMedicine_ = "408440000";
+
+    /// <summary>
+    /// Literal for code: NONEPublicHealthMedicine_
+    /// </summary>
+    public const string LiteralNONEPublicHealthMedicine_ = "http://snomed.info/sct#408440000";
 
     /// <summary>
     /// Literal for code: HemophiliaSpecialty_
@@ -10838,9 +12658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHemophiliaSpecialty_ = "408442008";
 
     /// <summary>
+    /// Literal for code: NONEHemophiliaSpecialty_
+    /// </summary>
+    public const string LiteralNONEHemophiliaSpecialty_ = "http://snomed.info/sct#408442008";
+
+    /// <summary>
     /// Literal for code: Neonatology_
     /// </summary>
     public const string LiteralNeonatology_ = "408445005";
+
+    /// <summary>
+    /// Literal for code: NONENeonatology_
+    /// </summary>
+    public const string LiteralNONENeonatology_ = "http://snomed.info/sct#408445005";
 
     /// <summary>
     /// Literal for code: RespiteCareSpecialty_
@@ -10848,9 +12678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRespiteCareSpecialty_ = "408447002";
 
     /// <summary>
+    /// Literal for code: NONERespiteCareSpecialty_
+    /// </summary>
+    public const string LiteralNONERespiteCareSpecialty_ = "http://snomed.info/sct#408447002";
+
+    /// <summary>
     /// Literal for code: TropicalMedicine_
     /// </summary>
     public const string LiteralTropicalMedicine_ = "408448007";
+
+    /// <summary>
+    /// Literal for code: NONETropicalMedicine_
+    /// </summary>
+    public const string LiteralNONETropicalMedicine_ = "http://snomed.info/sct#408448007";
 
     /// <summary>
     /// Literal for code: SleepStudiesSpecialty_
@@ -10858,9 +12698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSleepStudiesSpecialty_ = "408450004";
 
     /// <summary>
+    /// Literal for code: NONESleepStudiesSpecialty_
+    /// </summary>
+    public const string LiteralNONESleepStudiesSpecialty_ = "http://snomed.info/sct#408450004";
+
+    /// <summary>
     /// Literal for code: PediatricCardiology_
     /// </summary>
     public const string LiteralPediatricCardiology_ = "408459003";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricCardiology_
+    /// </summary>
+    public const string LiteralNONEPediatricCardiology_ = "http://snomed.info/sct#408459003";
 
     /// <summary>
     /// Literal for code: Hepatology_
@@ -10868,9 +12718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHepatology_ = "408472002";
 
     /// <summary>
+    /// Literal for code: NONEHepatology_
+    /// </summary>
+    public const string LiteralNONEHepatology_ = "http://snomed.info/sct#408472002";
+
+    /// <summary>
     /// Literal for code: DiabeticMedicine_
     /// </summary>
     public const string LiteralDiabeticMedicine_ = "408475000";
+
+    /// <summary>
+    /// Literal for code: NONEDiabeticMedicine_
+    /// </summary>
+    public const string LiteralNONEDiabeticMedicine_ = "http://snomed.info/sct#408475000";
 
     /// <summary>
     /// Literal for code: CriticalCareMedicine_
@@ -10878,9 +12738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCriticalCareMedicine_ = "408478003";
 
     /// <summary>
+    /// Literal for code: NONECriticalCareMedicine_
+    /// </summary>
+    public const string LiteralNONECriticalCareMedicine_ = "http://snomed.info/sct#408478003";
+
+    /// <summary>
     /// Literal for code: ClinicalImmunology_
     /// </summary>
     public const string LiteralClinicalImmunology_ = "408480009";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalImmunology_
+    /// </summary>
+    public const string LiteralNONEClinicalImmunology_ = "http://snomed.info/sct#408480009";
 
     /// <summary>
     /// Literal for code: NotropisAriommus_
@@ -10888,9 +12758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotropisAriommus_ = "4095000";
 
     /// <summary>
+    /// Literal for code: NONENotropisAriommus_
+    /// </summary>
+    public const string LiteralNONENotropisAriommus_ = "http://snomed.info/sct#4095000";
+
+    /// <summary>
     /// Literal for code: Toxicology_
     /// </summary>
     public const string LiteralToxicology_ = "409967009";
+
+    /// <summary>
+    /// Literal for code: NONEToxicology_
+    /// </summary>
+    public const string LiteralNONEToxicology_ = "http://snomed.info/sct#409967009";
 
     /// <summary>
     /// Literal for code: PreventiveMedicine_
@@ -10898,9 +12778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPreventiveMedicine_ = "409968004";
 
     /// <summary>
+    /// Literal for code: NONEPreventiveMedicine_
+    /// </summary>
+    public const string LiteralNONEPreventiveMedicine_ = "http://snomed.info/sct#409968004";
+
+    /// <summary>
     /// Literal for code: MilitaryMedicine_
     /// </summary>
     public const string LiteralMilitaryMedicine_ = "410001006";
+
+    /// <summary>
+    /// Literal for code: NONEMilitaryMedicine_
+    /// </summary>
+    public const string LiteralNONEMilitaryMedicine_ = "http://snomed.info/sct#410001006";
 
     /// <summary>
     /// Literal for code: DiveMedicine_
@@ -10908,9 +12798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiveMedicine_ = "410005002";
 
     /// <summary>
+    /// Literal for code: NONEDiveMedicine_
+    /// </summary>
+    public const string LiteralNONEDiveMedicine_ = "http://snomed.info/sct#410005002";
+
+    /// <summary>
     /// Literal for code: AthetaOccidentalis_
     /// </summary>
     public const string LiteralAthetaOccidentalis_ = "410007";
+
+    /// <summary>
+    /// Literal for code: NONEAthetaOccidentalis_
+    /// </summary>
+    public const string LiteralNONEAthetaOccidentalis_ = "http://snomed.info/sct#410007";
 
     /// <summary>
     /// Literal for code: MicrurusSurinamensis_
@@ -10918,9 +12818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrurusSurinamensis_ = "4108005";
 
     /// <summary>
+    /// Literal for code: NONEMicrurusSurinamensis_
+    /// </summary>
+    public const string LiteralNONEMicrurusSurinamensis_ = "http://snomed.info/sct#4108005";
+
+    /// <summary>
     /// Literal for code: AnophelesCruzii_
     /// </summary>
     public const string LiteralAnophelesCruzii_ = "411006";
+
+    /// <summary>
+    /// Literal for code: NONEAnophelesCruzii_
+    /// </summary>
+    public const string LiteralNONEAnophelesCruzii_ = "http://snomed.info/sct#411006";
 
     /// <summary>
     /// Literal for code: PilaConica_
@@ -10928,9 +12838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPilaConica_ = "4123000";
 
     /// <summary>
+    /// Literal for code: NONEPilaConica_
+    /// </summary>
+    public const string LiteralNONEPilaConica_ = "http://snomed.info/sct#4123000";
+
+    /// <summary>
     /// Literal for code: Nymphalis_
     /// </summary>
     public const string LiteralNymphalis_ = "416001";
+
+    /// <summary>
+    /// Literal for code: NONENymphalis_
+    /// </summary>
+    public const string LiteralNONENymphalis_ = "http://snomed.info/sct#416001";
 
     /// <summary>
     /// Literal for code: OsteopathicManipulativeMedicine_
@@ -10938,9 +12858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOsteopathicManipulativeMedicine_ = "416304004";
 
     /// <summary>
+    /// Literal for code: NONEOsteopathicManipulativeMedicine_
+    /// </summary>
+    public const string LiteralNONEOsteopathicManipulativeMedicine_ = "http://snomed.info/sct#416304004";
+
+    /// <summary>
     /// Literal for code: HippoglossusHippoglossus_
     /// </summary>
     public const string LiteralHippoglossusHippoglossus_ = "4166007";
+
+    /// <summary>
+    /// Literal for code: NONEHippoglossusHippoglossus_
+    /// </summary>
+    public const string LiteralNONEHippoglossusHippoglossus_ = "http://snomed.info/sct#4166007";
 
     /// <summary>
     /// Literal for code: Diplozoon_
@@ -10948,9 +12878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiplozoon_ = "4171000";
 
     /// <summary>
+    /// Literal for code: NONEDiplozoon_
+    /// </summary>
+    public const string LiteralNONEDiplozoon_ = "http://snomed.info/sct#4171000";
+
+    /// <summary>
     /// Literal for code: PediatricOtolaryngology_
     /// </summary>
     public const string LiteralPediatricOtolaryngology_ = "417887005";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricOtolaryngology_
+    /// </summary>
+    public const string LiteralNONEPediatricOtolaryngology_ = "http://snomed.info/sct#417887005";
 
     /// <summary>
     /// Literal for code: PediatricOncology_
@@ -10958,9 +12898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricOncology_ = "418002000";
 
     /// <summary>
+    /// Literal for code: NONEPediatricOncology_
+    /// </summary>
+    public const string LiteralNONEPediatricOncology_ = "http://snomed.info/sct#418002000";
+
+    /// <summary>
     /// Literal for code: PediatricGastroenterology_
     /// </summary>
     public const string LiteralPediatricGastroenterology_ = "418058008";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricGastroenterology_
+    /// </summary>
+    public const string LiteralNONEPediatricGastroenterology_ = "http://snomed.info/sct#418058008";
 
     /// <summary>
     /// Literal for code: PulmonaryMedicine_
@@ -10968,9 +12918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulmonaryMedicine_ = "418112009";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryMedicine_
+    /// </summary>
+    public const string LiteralNONEPulmonaryMedicine_ = "http://snomed.info/sct#418112009";
+
+    /// <summary>
     /// Literal for code: PediatricImmunology_
     /// </summary>
     public const string LiteralPediatricImmunology_ = "418535003";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricImmunology_
+    /// </summary>
+    public const string LiteralNONEPediatricImmunology_ = "http://snomed.info/sct#418535003";
 
     /// <summary>
     /// Literal for code: PediatricHematology_
@@ -10978,9 +12938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricHematology_ = "418652005";
 
     /// <summary>
+    /// Literal for code: NONEPediatricHematology_
+    /// </summary>
+    public const string LiteralNONEPediatricHematology_ = "http://snomed.info/sct#418652005";
+
+    /// <summary>
     /// Literal for code: PediatricInfectiousDiseases_
     /// </summary>
     public const string LiteralPediatricInfectiousDiseases_ = "418862001";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricInfectiousDiseases_
+    /// </summary>
+    public const string LiteralNONEPediatricInfectiousDiseases_ = "http://snomed.info/sct#418862001";
 
     /// <summary>
     /// Literal for code: LatinAmericaAndTheCaribbean_
@@ -10988,9 +12958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLatinAmericaAndTheCaribbean_ = "419";
 
     /// <summary>
+    /// Literal for code: NONELatinAmericaAndTheCaribbean_
+    /// </summary>
+    public const string LiteralNONELatinAmericaAndTheCaribbean_ = "http://unstats.un.org/unsd/methods/m49/m49.htm#419";
+
+    /// <summary>
     /// Literal for code: UrologicalOncology_
     /// </summary>
     public const string LiteralUrologicalOncology_ = "419043006";
+
+    /// <summary>
+    /// Literal for code: NONEUrologicalOncology_
+    /// </summary>
+    public const string LiteralNONEUrologicalOncology_ = "http://snomed.info/sct#419043006";
 
     /// <summary>
     /// Literal for code: PediatricPulmonology_
@@ -10998,9 +12978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricPulmonology_ = "419170002";
 
     /// <summary>
+    /// Literal for code: NONEPediatricPulmonology_
+    /// </summary>
+    public const string LiteralNONEPediatricPulmonology_ = "http://snomed.info/sct#419170002";
+
+    /// <summary>
     /// Literal for code: InternalMedicine_
     /// </summary>
     public const string LiteralInternalMedicine_ = "419192003";
+
+    /// <summary>
+    /// Literal for code: NONEInternalMedicine_
+    /// </summary>
+    public const string LiteralNONEInternalMedicine_ = "http://snomed.info/sct#419192003";
 
     /// <summary>
     /// Literal for code: PediatricIntensiveCare_
@@ -11008,9 +12998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricIntensiveCare_ = "419215006";
 
     /// <summary>
+    /// Literal for code: NONEPediatricIntensiveCare_
+    /// </summary>
+    public const string LiteralNONEPediatricIntensiveCare_ = "http://snomed.info/sct#419215006";
+
+    /// <summary>
     /// Literal for code: PediatricNephrology_
     /// </summary>
     public const string LiteralPediatricNephrology_ = "419365004";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricNephrology_
+    /// </summary>
+    public const string LiteralNONEPediatricNephrology_ = "http://snomed.info/sct#419365004";
 
     /// <summary>
     /// Literal for code: PediatricRheumatology_
@@ -11018,9 +13018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricRheumatology_ = "419472004";
 
     /// <summary>
+    /// Literal for code: NONEPediatricRheumatology_
+    /// </summary>
+    public const string LiteralNONEPediatricRheumatology_ = "http://snomed.info/sct#419472004";
+
+    /// <summary>
     /// Literal for code: PediatricEndocrinology_
     /// </summary>
     public const string LiteralPediatricEndocrinology_ = "419610006";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricEndocrinology_
+    /// </summary>
+    public const string LiteralNONEPediatricEndocrinology_ = "http://snomed.info/sct#419610006";
 
     /// <summary>
     /// Literal for code: PediatricNeurologyOncology_
@@ -11028,9 +13038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricNeurologyOncology_ = "419677000";
 
     /// <summary>
+    /// Literal for code: NONEPediatricNeurologyOncology_
+    /// </summary>
+    public const string LiteralNONEPediatricNeurologyOncology_ = "http://snomed.info/sct#419677000";
+
+    /// <summary>
     /// Literal for code: FamilyPractice_
     /// </summary>
     public const string LiteralFamilyPractice_ = "419772000";
+
+    /// <summary>
+    /// Literal for code: NONEFamilyPractice_
+    /// </summary>
+    public const string LiteralNONEFamilyPractice_ = "http://snomed.info/sct#419772000";
 
     /// <summary>
     /// Literal for code: PediatricEmergencyMedicine_
@@ -11038,9 +13058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricEmergencyMedicine_ = "419917007";
 
     /// <summary>
+    /// Literal for code: NONEPediatricEmergencyMedicine_
+    /// </summary>
+    public const string LiteralNONEPediatricEmergencyMedicine_ = "http://snomed.info/sct#419917007";
+
+    /// <summary>
     /// Literal for code: PediatricOphthalmology_
     /// </summary>
     public const string LiteralPediatricOphthalmology_ = "419983000";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricOphthalmology_
+    /// </summary>
+    public const string LiteralNONEPediatricOphthalmology_ = "http://snomed.info/sct#419983000";
 
     /// <summary>
     /// Literal for code: PediatricBoneMarrowTransplantation_
@@ -11048,9 +13078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricBoneMarrowTransplantation_ = "420112009";
 
     /// <summary>
+    /// Literal for code: NONEPediatricBoneMarrowTransplantation_
+    /// </summary>
+    public const string LiteralNONEPediatricBoneMarrowTransplantation_ = "http://snomed.info/sct#420112009";
+
+    /// <summary>
     /// Literal for code: PediatricGenetics_
     /// </summary>
     public const string LiteralPediatricGenetics_ = "420208008";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricGenetics_
+    /// </summary>
+    public const string LiteralNONEPediatricGenetics_ = "http://snomed.info/sct#420208008";
 
     /// <summary>
     /// Literal for code: TetrameresConfusa_
@@ -11058,9 +13098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTetrameresConfusa_ = "4209008";
 
     /// <summary>
+    /// Literal for code: NONETetrameresConfusa_
+    /// </summary>
+    public const string LiteralNONETetrameresConfusa_ = "http://snomed.info/sct#4209008";
+
+    /// <summary>
     /// Literal for code: BaltimoreOriole_
     /// </summary>
     public const string LiteralBaltimoreOriole_ = "421003";
+
+    /// <summary>
+    /// Literal for code: NONEBaltimoreOriole_
+    /// </summary>
+    public const string LiteralNONEBaltimoreOriole_ = "http://snomed.info/sct#421003";
 
     /// <summary>
     /// Literal for code: DiplostomumPhoxini_
@@ -11068,9 +13118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiplostomumPhoxini_ = "4216009";
 
     /// <summary>
+    /// Literal for code: NONEDiplostomumPhoxini_
+    /// </summary>
+    public const string LiteralNONEDiplostomumPhoxini_ = "http://snomed.info/sct#4216009";
+
+    /// <summary>
     /// Literal for code: RhipicephalusDecoloratus_
     /// </summary>
     public const string LiteralRhipicephalusDecoloratus_ = "4228001";
+
+    /// <summary>
+    /// Literal for code: NONERhipicephalusDecoloratus_
+    /// </summary>
+    public const string LiteralNONERhipicephalusDecoloratus_ = "http://snomed.info/sct#4228001";
 
     /// <summary>
     /// Literal for code: OochoristicaRatti_
@@ -11078,9 +13138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOochoristicaRatti_ = "423000";
 
     /// <summary>
+    /// Literal for code: NONEOochoristicaRatti_
+    /// </summary>
+    public const string LiteralNONEOochoristicaRatti_ = "http://snomed.info/sct#423000";
+
+    /// <summary>
     /// Literal for code: PomphorhynchusBulbocolli_
     /// </summary>
     public const string LiteralPomphorhynchusBulbocolli_ = "4233002";
+
+    /// <summary>
+    /// Literal for code: NONEPomphorhynchusBulbocolli_
+    /// </summary>
+    public const string LiteralNONEPomphorhynchusBulbocolli_ = "http://snomed.info/sct#4233002";
 
     /// <summary>
     /// Literal for code: Hemitragus_
@@ -11088,9 +13158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHemitragus_ = "4236005";
 
     /// <summary>
+    /// Literal for code: NONEHemitragus_
+    /// </summary>
+    public const string LiteralNONEHemitragus_ = "http://snomed.info/sct#4236005";
+
+    /// <summary>
     /// Literal for code: AilurusFulgens_
     /// </summary>
     public const string LiteralAilurusFulgens_ = "4245006";
+
+    /// <summary>
+    /// Literal for code: NONEAilurusFulgens_
+    /// </summary>
+    public const string LiteralNONEAilurusFulgens_ = "http://snomed.info/sct#4245006";
 
     /// <summary>
     /// Literal for code: GadusOgac_
@@ -11098,9 +13178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGadusOgac_ = "4246007";
 
     /// <summary>
+    /// Literal for code: NONEGadusOgac_
+    /// </summary>
+    public const string LiteralNONEGadusOgac_ = "http://snomed.info/sct#4246007";
+
+    /// <summary>
     /// Literal for code: CichlasomaOctofasciatum_
     /// </summary>
     public const string LiteralCichlasomaOctofasciatum_ = "4250000";
+
+    /// <summary>
+    /// Literal for code: NONECichlasomaOctofasciatum_
+    /// </summary>
+    public const string LiteralNONECichlasomaOctofasciatum_ = "http://snomed.info/sct#4250000";
 
     /// <summary>
     /// Literal for code: TrichurisSylvilagi_
@@ -11108,9 +13198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTrichurisSylvilagi_ = "4261008";
 
     /// <summary>
+    /// Literal for code: NONETrichurisSylvilagi_
+    /// </summary>
+    public const string LiteralNONETrichurisSylvilagi_ = "http://snomed.info/sct#4261008";
+
+    /// <summary>
     /// Literal for code: EtheostomaKanawhae_
     /// </summary>
     public const string LiteralEtheostomaKanawhae_ = "4274002";
+
+    /// <summary>
+    /// Literal for code: NONEEtheostomaKanawhae_
+    /// </summary>
+    public const string LiteralNONEEtheostomaKanawhae_ = "http://snomed.info/sct#4274002";
 
     /// <summary>
     /// Literal for code: HexanchusGriseus_
@@ -11118,9 +13218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHexanchusGriseus_ = "4277009";
 
     /// <summary>
+    /// Literal for code: NONEHexanchusGriseus_
+    /// </summary>
+    public const string LiteralNONEHexanchusGriseus_ = "http://snomed.info/sct#4277009";
+
+    /// <summary>
     /// Literal for code: NorthernFlatHeadSnake_
     /// </summary>
     public const string LiteralNorthernFlatHeadSnake_ = "428009";
+
+    /// <summary>
+    /// Literal for code: NONENorthernFlatHeadSnake_
+    /// </summary>
+    public const string LiteralNONENorthernFlatHeadSnake_ = "http://snomed.info/sct#428009";
 
     /// <summary>
     /// Literal for code: ThoroughbredHorse_
@@ -11128,9 +13238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoroughbredHorse_ = "4288003";
 
     /// <summary>
+    /// Literal for code: NONEThoroughbredHorse_
+    /// </summary>
+    public const string LiteralNONEThoroughbredHorse_ = "http://snomed.info/sct#4288003";
+
+    /// <summary>
     /// Literal for code: SebastesVariegatus_
     /// </summary>
     public const string LiteralSebastesVariegatus_ = "4297004";
+
+    /// <summary>
+    /// Literal for code: NONESebastesVariegatus_
+    /// </summary>
+    public const string LiteralNONESebastesVariegatus_ = "http://snomed.info/sct#4297004";
 
     /// <summary>
     /// Literal for code: TaeniaAntarctica_
@@ -11138,9 +13258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTaeniaAntarctica_ = "4302001";
 
     /// <summary>
+    /// Literal for code: NONETaeniaAntarctica_
+    /// </summary>
+    public const string LiteralNONETaeniaAntarctica_ = "http://snomed.info/sct#4302001";
+
+    /// <summary>
     /// Literal for code: CapillariaMegrelica_
     /// </summary>
     public const string LiteralCapillariaMegrelica_ = "4309005";
+
+    /// <summary>
+    /// Literal for code: NONECapillariaMegrelica_
+    /// </summary>
+    public const string LiteralNONECapillariaMegrelica_ = "http://snomed.info/sct#4309005";
 
     /// <summary>
     /// Literal for code: AedesCommunis_
@@ -11148,9 +13278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAedesCommunis_ = "4315005";
 
     /// <summary>
+    /// Literal for code: NONEAedesCommunis_
+    /// </summary>
+    public const string LiteralNONEAedesCommunis_ = "http://snomed.info/sct#4315005";
+
+    /// <summary>
     /// Literal for code: CooperiaSpatulata_
     /// </summary>
     public const string LiteralCooperiaSpatulata_ = "4329006";
+
+    /// <summary>
+    /// Literal for code: NONECooperiaSpatulata_
+    /// </summary>
+    public const string LiteralNONECooperiaSpatulata_ = "http://snomed.info/sct#4329006";
 
     /// <summary>
     /// Literal for code: OrnithonyssusSylviarum_
@@ -11158,9 +13298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrnithonyssusSylviarum_ = "4366000";
 
     /// <summary>
+    /// Literal for code: NONEOrnithonyssusSylviarum_
+    /// </summary>
+    public const string LiteralNONEOrnithonyssusSylviarum_ = "http://snomed.info/sct#4366000";
+
+    /// <summary>
     /// Literal for code: PorrocaecumAridae_
     /// </summary>
     public const string LiteralPorrocaecumAridae_ = "4384003";
+
+    /// <summary>
+    /// Literal for code: NONEPorrocaecumAridae_
+    /// </summary>
+    public const string LiteralNONEPorrocaecumAridae_ = "http://snomed.info/sct#4384003";
 
     /// <summary>
     /// Literal for code: NoturusGyrinus_
@@ -11168,9 +13318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoturusGyrinus_ = "4395009";
 
     /// <summary>
+    /// Literal for code: NONENoturusGyrinus_
+    /// </summary>
+    public const string LiteralNONENoturusGyrinus_ = "http://snomed.info/sct#4395009";
+
+    /// <summary>
     /// Literal for code: RedBackedPelican_
     /// </summary>
     public const string LiteralRedBackedPelican_ = "4396005";
+
+    /// <summary>
+    /// Literal for code: NONERedBackedPelican_
+    /// </summary>
+    public const string LiteralNONERedBackedPelican_ = "http://snomed.info/sct#4396005";
 
     /// <summary>
     /// Literal for code: EptatretusDeani_
@@ -11178,9 +13338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEptatretusDeani_ = "4417003";
 
     /// <summary>
+    /// Literal for code: NONEEptatretusDeani_
+    /// </summary>
+    public const string LiteralNONEEptatretusDeani_ = "http://snomed.info/sct#4417003";
+
+    /// <summary>
     /// Literal for code: AnophelesPseudopunctipennisFranciscanus_
     /// </summary>
     public const string LiteralAnophelesPseudopunctipennisFranciscanus_ = "4431003";
+
+    /// <summary>
+    /// Literal for code: NONEAnophelesPseudopunctipennisFranciscanus_
+    /// </summary>
+    public const string LiteralNONEAnophelesPseudopunctipennisFranciscanus_ = "http://snomed.info/sct#4431003";
 
     /// <summary>
     /// Literal for code: PallasinaBarbata_
@@ -11188,9 +13358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPallasinaBarbata_ = "4446005";
 
     /// <summary>
+    /// Literal for code: NONEPallasinaBarbata_
+    /// </summary>
+    public const string LiteralNONEPallasinaBarbata_ = "http://snomed.info/sct#4446005";
+
+    /// <summary>
     /// Literal for code: Heterodera_
     /// </summary>
     public const string LiteralHeterodera_ = "4453001";
+
+    /// <summary>
+    /// Literal for code: NONEHeterodera_
+    /// </summary>
+    public const string LiteralNONEHeterodera_ = "http://snomed.info/sct#4453001";
 
     /// <summary>
     /// Literal for code: BloodAndMarrowTransplantation_
@@ -11198,9 +13378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodAndMarrowTransplantation_ = "445715009";
 
     /// <summary>
+    /// Literal for code: NONEBloodAndMarrowTransplantation_
+    /// </summary>
+    public const string LiteralNONEBloodAndMarrowTransplantation_ = "http://snomed.info/sct#445715009";
+
+    /// <summary>
     /// Literal for code: LepomisGibbosus_
     /// </summary>
     public const string LiteralLepomisGibbosus_ = "4482000";
+
+    /// <summary>
+    /// Literal for code: NONELepomisGibbosus_
+    /// </summary>
+    public const string LiteralNONELepomisGibbosus_ = "http://snomed.info/sct#4482000";
 
     /// <summary>
     /// Literal for code: PlatybeloneArgalus_
@@ -11208,9 +13398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlatybeloneArgalus_ = "4498007";
 
     /// <summary>
+    /// Literal for code: NONEPlatybeloneArgalus_
+    /// </summary>
+    public const string LiteralNONEPlatybeloneArgalus_ = "http://snomed.info/sct#4498007";
+
+    /// <summary>
     /// Literal for code: LichanuraTrivirgata_
     /// </summary>
     public const string LiteralLichanuraTrivirgata_ = "451009";
+
+    /// <summary>
+    /// Literal for code: NONELichanuraTrivirgata_
+    /// </summary>
+    public const string LiteralNONELichanuraTrivirgata_ = "http://snomed.info/sct#451009";
 
     /// <summary>
     /// Literal for code: MenidiaMenidia_
@@ -11218,9 +13418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMenidiaMenidia_ = "4514008";
 
     /// <summary>
+    /// Literal for code: NONEMenidiaMenidia_
+    /// </summary>
+    public const string LiteralNONEMenidiaMenidia_ = "http://snomed.info/sct#4514008";
+
+    /// <summary>
     /// Literal for code: AedesDorsalis_
     /// </summary>
     public const string LiteralAedesDorsalis_ = "453007";
+
+    /// <summary>
+    /// Literal for code: NONEAedesDorsalis_
+    /// </summary>
+    public const string LiteralNONEAedesDorsalis_ = "http://snomed.info/sct#453007";
 
     /// <summary>
     /// Literal for code: AnguillaAnguilla_
@@ -11228,9 +13438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnguillaAnguilla_ = "4571006";
 
     /// <summary>
+    /// Literal for code: NONEAnguillaAnguilla_
+    /// </summary>
+    public const string LiteralNONEAnguillaAnguilla_ = "http://snomed.info/sct#4571006";
+
+    /// <summary>
     /// Literal for code: ShropshireSheep_
     /// </summary>
     public const string LiteralShropshireSheep_ = "4574003";
+
+    /// <summary>
+    /// Literal for code: NONEShropshireSheep_
+    /// </summary>
+    public const string LiteralNONEShropshireSheep_ = "http://snomed.info/sct#4574003";
 
     /// <summary>
     /// Literal for code: StandardPlatinumFox_
@@ -11238,9 +13458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStandardPlatinumFox_ = "4595008";
 
     /// <summary>
+    /// Literal for code: NONEStandardPlatinumFox_
+    /// </summary>
+    public const string LiteralNONEStandardPlatinumFox_ = "http://snomed.info/sct#4595008";
+
+    /// <summary>
     /// Literal for code: ScorpaenodesCaribbaeus_
     /// </summary>
     public const string LiteralScorpaenodesCaribbaeus_ = "4597000";
+
+    /// <summary>
+    /// Literal for code: NONEScorpaenodesCaribbaeus_
+    /// </summary>
+    public const string LiteralNONEScorpaenodesCaribbaeus_ = "http://snomed.info/sct#4597000";
 
     /// <summary>
     /// Literal for code: HybognathusHankinsoni_
@@ -11248,9 +13478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHybognathusHankinsoni_ = "4599002";
 
     /// <summary>
+    /// Literal for code: NONEHybognathusHankinsoni_
+    /// </summary>
+    public const string LiteralNONEHybognathusHankinsoni_ = "http://snomed.info/sct#4599002";
+
+    /// <summary>
     /// Literal for code: Petaurus_
     /// </summary>
     public const string LiteralPetaurus_ = "4608006";
+
+    /// <summary>
+    /// Literal for code: NONEPetaurus_
+    /// </summary>
+    public const string LiteralNONEPetaurus_ = "http://snomed.info/sct#4608006";
 
     /// <summary>
     /// Literal for code: CapillariaTuberculata_
@@ -11258,9 +13498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCapillariaTuberculata_ = "4609003";
 
     /// <summary>
+    /// Literal for code: NONECapillariaTuberculata_
+    /// </summary>
+    public const string LiteralNONECapillariaTuberculata_ = "http://snomed.info/sct#4609003";
+
+    /// <summary>
     /// Literal for code: Parasimulium_
     /// </summary>
     public const string LiteralParasimulium_ = "4622006";
+
+    /// <summary>
+    /// Literal for code: NONEParasimulium_
+    /// </summary>
+    public const string LiteralNONEParasimulium_ = "http://snomed.info/sct#4622006";
 
     /// <summary>
     /// Literal for code: LactophrysQuadricornis_
@@ -11268,9 +13518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLactophrysQuadricornis_ = "4630007";
 
     /// <summary>
+    /// Literal for code: NONELactophrysQuadricornis_
+    /// </summary>
+    public const string LiteralNONELactophrysQuadricornis_ = "http://snomed.info/sct#4630007";
+
+    /// <summary>
     /// Literal for code: ChrysomyaChloropyga_
     /// </summary>
     public const string LiteralChrysomyaChloropyga_ = "4650006";
+
+    /// <summary>
+    /// Literal for code: NONEChrysomyaChloropyga_
+    /// </summary>
+    public const string LiteralNONEChrysomyaChloropyga_ = "http://snomed.info/sct#4650006";
 
     /// <summary>
     /// Literal for code: Francolin_
@@ -11278,9 +13538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFrancolin_ = "466007";
 
     /// <summary>
+    /// Literal for code: NONEFrancolin_
+    /// </summary>
+    public const string LiteralNONEFrancolin_ = "http://snomed.info/sct#466007";
+
+    /// <summary>
     /// Literal for code: CareproctusMelanurus_
     /// </summary>
     public const string LiteralCareproctusMelanurus_ = "4679004";
+
+    /// <summary>
+    /// Literal for code: NONECareproctusMelanurus_
+    /// </summary>
+    public const string LiteralNONECareproctusMelanurus_ = "http://snomed.info/sct#4679004";
 
     /// <summary>
     /// Literal for code: OstertagiaPinnata_
@@ -11288,9 +13558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOstertagiaPinnata_ = "4680001";
 
     /// <summary>
+    /// Literal for code: NONEOstertagiaPinnata_
+    /// </summary>
+    public const string LiteralNONEOstertagiaPinnata_ = "http://snomed.info/sct#4680001";
+
+    /// <summary>
     /// Literal for code: HyalommaTurnicum_
     /// </summary>
     public const string LiteralHyalommaTurnicum_ = "4682009";
+
+    /// <summary>
+    /// Literal for code: NONEHyalommaTurnicum_
+    /// </summary>
+    public const string LiteralNONEHyalommaTurnicum_ = "http://snomed.info/sct#4682009";
 
     /// <summary>
     /// Literal for code: LepomisMarginattus_
@@ -11298,9 +13578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLepomisMarginattus_ = "4726001";
 
     /// <summary>
+    /// Literal for code: NONELepomisMarginattus_
+    /// </summary>
+    public const string LiteralNONELepomisMarginattus_ = "http://snomed.info/sct#4726001";
+
+    /// <summary>
     /// Literal for code: EtheostomaSimoterum_
     /// </summary>
     public const string LiteralEtheostomaSimoterum_ = "4742008";
+
+    /// <summary>
+    /// Literal for code: NONEEtheostomaSimoterum_
+    /// </summary>
+    public const string LiteralNONEEtheostomaSimoterum_ = "http://snomed.info/sct#4742008";
 
     /// <summary>
     /// Literal for code: HaemaphysalisLongicornis_
@@ -11308,9 +13598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHaemaphysalisLongicornis_ = "4747002";
 
     /// <summary>
+    /// Literal for code: NONEHaemaphysalisLongicornis_
+    /// </summary>
+    public const string LiteralNONEHaemaphysalisLongicornis_ = "http://snomed.info/sct#4747002";
+
+    /// <summary>
     /// Literal for code: RiverTurtle_
     /// </summary>
     public const string LiteralRiverTurtle_ = "4767006";
+
+    /// <summary>
+    /// Literal for code: NONERiverTurtle_
+    /// </summary>
+    public const string LiteralNONERiverTurtle_ = "http://snomed.info/sct#4767006";
 
     /// <summary>
     /// Literal for code: AuxisThazard_
@@ -11318,9 +13618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAuxisThazard_ = "4781008";
 
     /// <summary>
+    /// Literal for code: NONEAuxisThazard_
+    /// </summary>
+    public const string LiteralNONEAuxisThazard_ = "http://snomed.info/sct#4781008";
+
+    /// <summary>
     /// Literal for code: Secretarybird_
     /// </summary>
     public const string LiteralSecretarybird_ = "4790001";
+
+    /// <summary>
+    /// Literal for code: NONESecretarybird_
+    /// </summary>
+    public const string LiteralNONESecretarybird_ = "http://snomed.info/sct#4790001";
 
     /// <summary>
     /// Literal for code: LeontopithecusRosalia_
@@ -11328,9 +13638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLeontopithecusRosalia_ = "4796007";
 
     /// <summary>
+    /// Literal for code: NONELeontopithecusRosalia_
+    /// </summary>
+    public const string LiteralNONELeontopithecusRosalia_ = "http://snomed.info/sct#4796007";
+
+    /// <summary>
     /// Literal for code: Microphallus_
     /// </summary>
     public const string LiteralMicrophallus_ = "4801002";
+
+    /// <summary>
+    /// Literal for code: NONEMicrophallus_
+    /// </summary>
+    public const string LiteralNONEMicrophallus_ = "http://snomed.info/sct#4801002";
 
     /// <summary>
     /// Literal for code: TrimeresurusElegans_
@@ -11338,9 +13658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTrimeresurusElegans_ = "4802009";
 
     /// <summary>
+    /// Literal for code: NONETrimeresurusElegans_
+    /// </summary>
+    public const string LiteralNONETrimeresurusElegans_ = "http://snomed.info/sct#4802009";
+
+    /// <summary>
     /// Literal for code: ApogonLachneri_
     /// </summary>
     public const string LiteralApogonLachneri_ = "4875007";
+
+    /// <summary>
+    /// Literal for code: NONEApogonLachneri_
+    /// </summary>
+    public const string LiteralNONEApogonLachneri_ = "http://snomed.info/sct#4875007";
 
     /// <summary>
     /// Literal for code: PiedmonteseCattle_
@@ -11348,9 +13678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPiedmonteseCattle_ = "4880003";
 
     /// <summary>
+    /// Literal for code: NONEPiedmonteseCattle_
+    /// </summary>
+    public const string LiteralNONEPiedmonteseCattle_ = "http://snomed.info/sct#4880003";
+
+    /// <summary>
     /// Literal for code: AnophelesMinimusFlavirostris_
     /// </summary>
     public const string LiteralAnophelesMinimusFlavirostris_ = "4883001";
+
+    /// <summary>
+    /// Literal for code: NONEAnophelesMinimusFlavirostris_
+    /// </summary>
+    public const string LiteralNONEAnophelesMinimusFlavirostris_ = "http://snomed.info/sct#4883001";
 
     /// <summary>
     /// Literal for code: CommonNewt_
@@ -11358,9 +13698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCommonNewt_ = "4893008";
 
     /// <summary>
+    /// Literal for code: NONECommonNewt_
+    /// </summary>
+    public const string LiteralNONECommonNewt_ = "http://snomed.info/sct#4893008";
+
+    /// <summary>
     /// Literal for code: AquilaChrysaetos_
     /// </summary>
     public const string LiteralAquilaChrysaetos_ = "4911005";
+
+    /// <summary>
+    /// Literal for code: NONEAquilaChrysaetos_
+    /// </summary>
+    public const string LiteralNONEAquilaChrysaetos_ = "http://snomed.info/sct#4911005";
 
     /// <summary>
     /// Literal for code: BoselaphusTragocamelus_
@@ -11368,9 +13718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoselaphusTragocamelus_ = "4912003";
 
     /// <summary>
+    /// Literal for code: NONEBoselaphusTragocamelus_
+    /// </summary>
+    public const string LiteralNONEBoselaphusTragocamelus_ = "http://snomed.info/sct#4912003";
+
+    /// <summary>
     /// Literal for code: BlueHeadedPionus_
     /// </summary>
     public const string LiteralBlueHeadedPionus_ = "4923004";
+
+    /// <summary>
+    /// Literal for code: NONEBlueHeadedPionus_
+    /// </summary>
+    public const string LiteralNONEBlueHeadedPionus_ = "http://snomed.info/sct#4923004";
 
     /// <summary>
     /// Literal for code: LycaonPictus_
@@ -11378,9 +13738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLycaonPictus_ = "4931009";
 
     /// <summary>
+    /// Literal for code: NONELycaonPictus_
+    /// </summary>
+    public const string LiteralNONELycaonPictus_ = "http://snomed.info/sct#4931009";
+
+    /// <summary>
     /// Literal for code: PeruvianPasoHorse_
     /// </summary>
     public const string LiteralPeruvianPasoHorse_ = "4960000";
+
+    /// <summary>
+    /// Literal for code: NONEPeruvianPasoHorse_
+    /// </summary>
+    public const string LiteralNONEPeruvianPasoHorse_ = "http://snomed.info/sct#4960000";
 
     /// <summary>
     /// Literal for code: IxodesPersulcatus_
@@ -11388,9 +13758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIxodesPersulcatus_ = "4971004";
 
     /// <summary>
+    /// Literal for code: NONEIxodesPersulcatus_
+    /// </summary>
+    public const string LiteralNONEIxodesPersulcatus_ = "http://snomed.info/sct#4971004";
+
+    /// <summary>
     /// Literal for code: EpinephelusMorio_
     /// </summary>
     public const string LiteralEpinephelusMorio_ = "4978005";
+
+    /// <summary>
+    /// Literal for code: NONEEpinephelusMorio_
+    /// </summary>
+    public const string LiteralNONEEpinephelusMorio_ = "http://snomed.info/sct#4978005";
 
     /// <summary>
     /// Literal for code: GrassWarbler_
@@ -11398,9 +13778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGrassWarbler_ = "4982007";
 
     /// <summary>
+    /// Literal for code: NONEGrassWarbler_
+    /// </summary>
+    public const string LiteralNONEGrassWarbler_ = "http://snomed.info/sct#4982007";
+
+    /// <summary>
     /// Literal for code: PaintedBunting_
     /// </summary>
     public const string LiteralPaintedBunting_ = "4988006";
+
+    /// <summary>
+    /// Literal for code: NONEPaintedBunting_
+    /// </summary>
+    public const string LiteralNONEPaintedBunting_ = "http://snomed.info/sct#4988006";
 
     /// <summary>
     /// Literal for code: AntennariusOcellatus_
@@ -11408,9 +13798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntennariusOcellatus_ = "4990007";
 
     /// <summary>
+    /// Literal for code: NONEAntennariusOcellatus_
+    /// </summary>
+    public const string LiteralNONEAntennariusOcellatus_ = "http://snomed.info/sct#4990007";
+
+    /// <summary>
     /// Literal for code: Phyllodactylus_
     /// </summary>
     public const string LiteralPhyllodactylus_ = "4991006";
+
+    /// <summary>
+    /// Literal for code: NONEPhyllodactylus_
+    /// </summary>
+    public const string LiteralNONEPhyllodactylus_ = "http://snomed.info/sct#4991006";
 
     /// <summary>
     /// Literal for code: ThripsTabaci_
@@ -11418,9 +13818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThripsTabaci_ = "5005003";
 
     /// <summary>
+    /// Literal for code: NONEThripsTabaci_
+    /// </summary>
+    public const string LiteralNONEThripsTabaci_ = "http://snomed.info/sct#5005003";
+
+    /// <summary>
     /// Literal for code: JordaniaZonope_
     /// </summary>
     public const string LiteralJordaniaZonope_ = "5011000";
+
+    /// <summary>
+    /// Literal for code: NONEJordaniaZonope_
+    /// </summary>
+    public const string LiteralNONEJordaniaZonope_ = "http://snomed.info/sct#5011000";
 
     /// <summary>
     /// Literal for code: AnisakidNematode_
@@ -11428,9 +13838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnisakidNematode_ = "5013002";
 
     /// <summary>
+    /// Literal for code: NONEAnisakidNematode_
+    /// </summary>
+    public const string LiteralNONEAnisakidNematode_ = "http://snomed.info/sct#5013002";
+
+    /// <summary>
     /// Literal for code: AspidogasterConchicola_
     /// </summary>
     public const string LiteralAspidogasterConchicola_ = "502008";
+
+    /// <summary>
+    /// Literal for code: NONEAspidogasterConchicola_
+    /// </summary>
+    public const string LiteralNONEAspidogasterConchicola_ = "http://snomed.info/sct#502008";
 
     /// <summary>
     /// Literal for code: HyalommaTruncatum_
@@ -11438,9 +13858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHyalommaTruncatum_ = "5058008";
 
     /// <summary>
+    /// Literal for code: NONEHyalommaTruncatum_
+    /// </summary>
+    public const string LiteralNONEHyalommaTruncatum_ = "http://snomed.info/sct#5058008";
+
+    /// <summary>
     /// Literal for code: StandardPoodle_
     /// </summary>
     public const string LiteralStandardPoodle_ = "507002";
+
+    /// <summary>
+    /// Literal for code: NONEStandardPoodle_
+    /// </summary>
+    public const string LiteralNONEStandardPoodle_ = "http://snomed.info/sct#507002";
 
     /// <summary>
     /// Literal for code: ScorpaenaPlumieri_
@@ -11448,9 +13878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScorpaenaPlumieri_ = "5107008";
 
     /// <summary>
+    /// Literal for code: NONEScorpaenaPlumieri_
+    /// </summary>
+    public const string LiteralNONEScorpaenaPlumieri_ = "http://snomed.info/sct#5107008";
+
+    /// <summary>
     /// Literal for code: ChlorophthalmusAgassizi_
     /// </summary>
     public const string LiteralChlorophthalmusAgassizi_ = "5111002";
+
+    /// <summary>
+    /// Literal for code: NONEChlorophthalmusAgassizi_
+    /// </summary>
+    public const string LiteralNONEChlorophthalmusAgassizi_ = "http://snomed.info/sct#5111002";
 
     /// <summary>
     /// Literal for code: FayoumiChicken_
@@ -11458,9 +13898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFayoumiChicken_ = "5114005";
 
     /// <summary>
+    /// Literal for code: NONEFayoumiChicken_
+    /// </summary>
+    public const string LiteralNONEFayoumiChicken_ = "http://snomed.info/sct#5114005";
+
+    /// <summary>
     /// Literal for code: PlectranthiasGarrupellus_
     /// </summary>
     public const string LiteralPlectranthiasGarrupellus_ = "5116007";
+
+    /// <summary>
+    /// Literal for code: NONEPlectranthiasGarrupellus_
+    /// </summary>
+    public const string LiteralNONEPlectranthiasGarrupellus_ = "http://snomed.info/sct#5116007";
 
     /// <summary>
     /// Literal for code: PlatycercusIcterotis_
@@ -11468,9 +13918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlatycercusIcterotis_ = "5129007";
 
     /// <summary>
+    /// Literal for code: NONEPlatycercusIcterotis_
+    /// </summary>
+    public const string LiteralNONEPlatycercusIcterotis_ = "http://snomed.info/sct#5129007";
+
+    /// <summary>
     /// Literal for code: GazellaGranti_
     /// </summary>
     public const string LiteralGazellaGranti_ = "5138009";
+
+    /// <summary>
+    /// Literal for code: NONEGazellaGranti_
+    /// </summary>
+    public const string LiteralNONEGazellaGranti_ = "http://snomed.info/sct#5138009";
 
     /// <summary>
     /// Literal for code: Whistler_
@@ -11478,9 +13938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWhistler_ = "5146005";
 
     /// <summary>
+    /// Literal for code: NONEWhistler_
+    /// </summary>
+    public const string LiteralNONEWhistler_ = "http://snomed.info/sct#5146005";
+
+    /// <summary>
     /// Literal for code: BeetleLarvae_
     /// </summary>
     public const string LiteralBeetleLarvae_ = "516003";
+
+    /// <summary>
+    /// Literal for code: NONEBeetleLarvae_
+    /// </summary>
+    public const string LiteralNONEBeetleLarvae_ = "http://snomed.info/sct#516003";
 
     /// <summary>
     /// Literal for code: MontdaleSheep_
@@ -11488,9 +13958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMontdaleSheep_ = "5164003";
 
     /// <summary>
+    /// Literal for code: NONEMontdaleSheep_
+    /// </summary>
+    public const string LiteralNONEMontdaleSheep_ = "http://snomed.info/sct#5164003";
+
+    /// <summary>
     /// Literal for code: AnophelesMaculipennisMesseae_
     /// </summary>
     public const string LiteralAnophelesMaculipennisMesseae_ = "5211009";
+
+    /// <summary>
+    /// Literal for code: NONEAnophelesMaculipennisMesseae_
+    /// </summary>
+    public const string LiteralNONEAnophelesMaculipennisMesseae_ = "http://snomed.info/sct#5211009";
 
     /// <summary>
     /// Literal for code: OxfordSandyBlockPig_
@@ -11498,9 +13978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOxfordSandyBlockPig_ = "5227002";
 
     /// <summary>
+    /// Literal for code: NONEOxfordSandyBlockPig_
+    /// </summary>
+    public const string LiteralNONEOxfordSandyBlockPig_ = "http://snomed.info/sct#5227002";
+
+    /// <summary>
     /// Literal for code: LemurCoronatus_
     /// </summary>
     public const string LiteralLemurCoronatus_ = "5238002";
+
+    /// <summary>
+    /// Literal for code: NONELemurCoronatus_
+    /// </summary>
+    public const string LiteralNONELemurCoronatus_ = "http://snomed.info/sct#5238002";
 
     /// <summary>
     /// Literal for code: SchistosomaJaponicum_
@@ -11508,9 +13998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSchistosomaJaponicum_ = "5249008";
 
     /// <summary>
+    /// Literal for code: NONESchistosomaJaponicum_
+    /// </summary>
+    public const string LiteralNONESchistosomaJaponicum_ = "http://snomed.info/sct#5249008";
+
+    /// <summary>
     /// Literal for code: Haemadipsa_
     /// </summary>
     public const string LiteralHaemadipsa_ = "5260004";
+
+    /// <summary>
+    /// Literal for code: NONEHaemadipsa_
+    /// </summary>
+    public const string LiteralNONEHaemadipsa_ = "http://snomed.info/sct#5260004";
 
     /// <summary>
     /// Literal for code: GyraulusConvexiusculus_
@@ -11518,9 +14018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGyraulusConvexiusculus_ = "5263002";
 
     /// <summary>
+    /// Literal for code: NONEGyraulusConvexiusculus_
+    /// </summary>
+    public const string LiteralNONEGyraulusConvexiusculus_ = "http://snomed.info/sct#5263002";
+
+    /// <summary>
     /// Literal for code: TragelaphusStrepsiceros_
     /// </summary>
     public const string LiteralTragelaphusStrepsiceros_ = "5265009";
+
+    /// <summary>
+    /// Literal for code: NONETragelaphusStrepsiceros_
+    /// </summary>
+    public const string LiteralNONETragelaphusStrepsiceros_ = "http://snomed.info/sct#5265009";
 
     /// <summary>
     /// Literal for code: Bothrops_
@@ -11528,9 +14038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBothrops_ = "5271003";
 
     /// <summary>
+    /// Literal for code: NONEBothrops_
+    /// </summary>
+    public const string LiteralNONEBothrops_ = "http://snomed.info/sct#5271003";
+
+    /// <summary>
     /// Literal for code: EopsettaJordani_
     /// </summary>
     public const string LiteralEopsettaJordani_ = "5278009";
+
+    /// <summary>
+    /// Literal for code: NONEEopsettaJordani_
+    /// </summary>
+    public const string LiteralNONEEopsettaJordani_ = "http://snomed.info/sct#5278009";
 
     /// <summary>
     /// Literal for code: CottusAsper_
@@ -11538,9 +14058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCottusAsper_ = "5281004";
 
     /// <summary>
+    /// Literal for code: NONECottusAsper_
+    /// </summary>
+    public const string LiteralNONECottusAsper_ = "http://snomed.info/sct#5281004";
+
+    /// <summary>
     /// Literal for code: HolacanthusCiliaris_
     /// </summary>
     public const string LiteralHolacanthusCiliaris_ = "5284007";
+
+    /// <summary>
+    /// Literal for code: NONEHolacanthusCiliaris_
+    /// </summary>
+    public const string LiteralNONEHolacanthusCiliaris_ = "http://snomed.info/sct#5284007";
 
     /// <summary>
     /// Literal for code: ProsthogonimusCuneatus_
@@ -11548,9 +14078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProsthogonimusCuneatus_ = "5293008";
 
     /// <summary>
+    /// Literal for code: NONEProsthogonimusCuneatus_
+    /// </summary>
+    public const string LiteralNONEProsthogonimusCuneatus_ = "http://snomed.info/sct#5293008";
+
+    /// <summary>
     /// Literal for code: HurterQuoteSSpadefootToad_
     /// </summary>
     public const string LiteralHurterQuoteSSpadefootToad_ = "5297009";
+
+    /// <summary>
+    /// Literal for code: NONEHurterQuoteSSpadefootToad_
+    /// </summary>
+    public const string LiteralNONEHurterQuoteSSpadefootToad_ = "http://snomed.info/sct#5297009";
 
     /// <summary>
     /// Literal for code: ManchesterTerrier_
@@ -11558,9 +14098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralManchesterTerrier_ = "5306005";
 
     /// <summary>
+    /// Literal for code: NONEManchesterTerrier_
+    /// </summary>
+    public const string LiteralNONEManchesterTerrier_ = "http://snomed.info/sct#5306005";
+
+    /// <summary>
     /// Literal for code: ParalichthysAlbigutta_
     /// </summary>
     public const string LiteralParalichthysAlbigutta_ = "5344001";
+
+    /// <summary>
+    /// Literal for code: NONEParalichthysAlbigutta_
+    /// </summary>
+    public const string LiteralNONEParalichthysAlbigutta_ = "http://snomed.info/sct#5344001";
 
     /// <summary>
     /// Literal for code: SantaGertrudisCattle_
@@ -11568,9 +14118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSantaGertrudisCattle_ = "5345000";
 
     /// <summary>
+    /// Literal for code: NONESantaGertrudisCattle_
+    /// </summary>
+    public const string LiteralNONESantaGertrudisCattle_ = "http://snomed.info/sct#5345000";
+
+    /// <summary>
     /// Literal for code: RhodeIslandRedChicken_
     /// </summary>
     public const string LiteralRhodeIslandRedChicken_ = "5350006";
+
+    /// <summary>
+    /// Literal for code: NONERhodeIslandRedChicken_
+    /// </summary>
+    public const string LiteralNONERhodeIslandRedChicken_ = "http://snomed.info/sct#5350006";
 
     /// <summary>
     /// Literal for code: DirofilariaCorynodes_
@@ -11578,9 +14138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDirofilariaCorynodes_ = "5355001";
 
     /// <summary>
+    /// Literal for code: NONEDirofilariaCorynodes_
+    /// </summary>
+    public const string LiteralNONEDirofilariaCorynodes_ = "http://snomed.info/sct#5355001";
+
+    /// <summary>
     /// Literal for code: SymphurusUrospilus_
     /// </summary>
     public const string LiteralSymphurusUrospilus_ = "5365007";
+
+    /// <summary>
+    /// Literal for code: NONESymphurusUrospilus_
+    /// </summary>
+    public const string LiteralNONESymphurusUrospilus_ = "http://snomed.info/sct#5365007";
 
     /// <summary>
     /// Literal for code: HaemonchusSimilis_
@@ -11588,9 +14158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHaemonchusSimilis_ = "537006";
 
     /// <summary>
+    /// Literal for code: NONEHaemonchusSimilis_
+    /// </summary>
+    public const string LiteralNONEHaemonchusSimilis_ = "http://snomed.info/sct#537006";
+
+    /// <summary>
     /// Literal for code: TrichurisTrichiura_
     /// </summary>
     public const string LiteralTrichurisTrichiura_ = "5378007";
+
+    /// <summary>
+    /// Literal for code: NONETrichurisTrichiura_
+    /// </summary>
+    public const string LiteralNONETrichurisTrichiura_ = "http://snomed.info/sct#5378007";
 
     /// <summary>
     /// Literal for code: Weevil_
@@ -11598,9 +14178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWeevil_ = "5390009";
 
     /// <summary>
+    /// Literal for code: NONEWeevil_
+    /// </summary>
+    public const string LiteralNONEWeevil_ = "http://snomed.info/sct#5390009";
+
+    /// <summary>
     /// Literal for code: DiphyllobothriumDalliae_
     /// </summary>
     public const string LiteralDiphyllobothriumDalliae_ = "5416001";
+
+    /// <summary>
+    /// Literal for code: NONEDiphyllobothriumDalliae_
+    /// </summary>
+    public const string LiteralNONEDiphyllobothriumDalliae_ = "http://snomed.info/sct#5416001";
 
     /// <summary>
     /// Literal for code: Nuthatch_
@@ -11608,9 +14198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNuthatch_ = "5424006";
 
     /// <summary>
+    /// Literal for code: NONENuthatch_
+    /// </summary>
+    public const string LiteralNONENuthatch_ = "http://snomed.info/sct#5424006";
+
+    /// <summary>
     /// Literal for code: StripeHeadedCreeper_
     /// </summary>
     public const string LiteralStripeHeadedCreeper_ = "5436000";
+
+    /// <summary>
+    /// Literal for code: NONEStripeHeadedCreeper_
+    /// </summary>
+    public const string LiteralNONEStripeHeadedCreeper_ = "http://snomed.info/sct#5436000";
 
     /// <summary>
     /// Literal for code: SebastesMystinus_
@@ -11618,9 +14218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSebastesMystinus_ = "5437009";
 
     /// <summary>
+    /// Literal for code: NONESebastesMystinus_
+    /// </summary>
+    public const string LiteralNONESebastesMystinus_ = "http://snomed.info/sct#5437009";
+
+    /// <summary>
     /// Literal for code: FrenchAlpineGoat_
     /// </summary>
     public const string LiteralFrenchAlpineGoat_ = "5438004";
+
+    /// <summary>
+    /// Literal for code: NONEFrenchAlpineGoat_
+    /// </summary>
+    public const string LiteralNONEFrenchAlpineGoat_ = "http://snomed.info/sct#5438004";
 
     /// <summary>
     /// Literal for code: Cephenemyia_
@@ -11628,9 +14238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCephenemyia_ = "5443006";
 
     /// <summary>
+    /// Literal for code: NONECephenemyia_
+    /// </summary>
+    public const string LiteralNONECephenemyia_ = "http://snomed.info/sct#5443006";
+
+    /// <summary>
     /// Literal for code: SarcoptesScabieiVarOvis_
     /// </summary>
     public const string LiteralSarcoptesScabieiVarOvis_ = "5445004";
+
+    /// <summary>
+    /// Literal for code: NONESarcoptesScabieiVarOvis_
+    /// </summary>
+    public const string LiteralNONESarcoptesScabieiVarOvis_ = "http://snomed.info/sct#5445004";
 
     /// <summary>
     /// Literal for code: Dendrobates_
@@ -11638,9 +14258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDendrobates_ = "5449005";
 
     /// <summary>
+    /// Literal for code: NONEDendrobates_
+    /// </summary>
+    public const string LiteralNONEDendrobates_ = "http://snomed.info/sct#5449005";
+
+    /// <summary>
     /// Literal for code: HeterandriaFormosa_
     /// </summary>
     public const string LiteralHeterandriaFormosa_ = "546000";
+
+    /// <summary>
+    /// Literal for code: NONEHeterandriaFormosa_
+    /// </summary>
+    public const string LiteralNONEHeterandriaFormosa_ = "http://snomed.info/sct#546000";
 
     /// <summary>
     /// Literal for code: AvitellinaChalmersi_
@@ -11648,9 +14278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAvitellinaChalmersi_ = "5466007";
 
     /// <summary>
+    /// Literal for code: NONEAvitellinaChalmersi_
+    /// </summary>
+    public const string LiteralNONEAvitellinaChalmersi_ = "http://snomed.info/sct#5466007";
+
+    /// <summary>
     /// Literal for code: LouisianaWaterthrush_
     /// </summary>
     public const string LiteralLouisianaWaterthrush_ = "5475009";
+
+    /// <summary>
+    /// Literal for code: NONELouisianaWaterthrush_
+    /// </summary>
+    public const string LiteralNONELouisianaWaterthrush_ = "http://snomed.info/sct#5475009";
 
     /// <summary>
     /// Literal for code: Kingbird_
@@ -11658,9 +14298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKingbird_ = "5522007";
 
     /// <summary>
+    /// Literal for code: NONEKingbird_
+    /// </summary>
+    public const string LiteralNONEKingbird_ = "http://snomed.info/sct#5522007";
+
+    /// <summary>
     /// Literal for code: HolanthiasMartinicensis_
     /// </summary>
     public const string LiteralHolanthiasMartinicensis_ = "5550007";
+
+    /// <summary>
+    /// Literal for code: NONEHolanthiasMartinicensis_
+    /// </summary>
+    public const string LiteralNONEHolanthiasMartinicensis_ = "http://snomed.info/sct#5550007";
 
     /// <summary>
     /// Literal for code: SyngnathusPelagicus_
@@ -11668,9 +14318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSyngnathusPelagicus_ = "5581003";
 
     /// <summary>
+    /// Literal for code: NONESyngnathusPelagicus_
+    /// </summary>
+    public const string LiteralNONESyngnathusPelagicus_ = "http://snomed.info/sct#5581003";
+
+    /// <summary>
     /// Literal for code: Ternidens_
     /// </summary>
     public const string LiteralTernidens_ = "5588009";
+
+    /// <summary>
+    /// Literal for code: NONETernidens_
+    /// </summary>
+    public const string LiteralNONETernidens_ = "http://snomed.info/sct#5588009";
 
     /// <summary>
     /// Literal for code: GnathophisCatalinensis_
@@ -11678,9 +14338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGnathophisCatalinensis_ = "5620005";
 
     /// <summary>
+    /// Literal for code: NONEGnathophisCatalinensis_
+    /// </summary>
+    public const string LiteralNONEGnathophisCatalinensis_ = "http://snomed.info/sct#5620005";
+
+    /// <summary>
     /// Literal for code: Noddy_
     /// </summary>
     public const string LiteralNoddy_ = "562006";
+
+    /// <summary>
+    /// Literal for code: NONENoddy_
+    /// </summary>
+    public const string LiteralNONENoddy_ = "http://snomed.info/sct#562006";
 
     /// <summary>
     /// Literal for code: SyphaciaEutamii_
@@ -11688,9 +14358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSyphaciaEutamii_ = "5630001";
 
     /// <summary>
+    /// Literal for code: NONESyphaciaEutamii_
+    /// </summary>
+    public const string LiteralNONESyphaciaEutamii_ = "http://snomed.info/sct#5630001";
+
+    /// <summary>
     /// Literal for code: Euscorpius_
     /// </summary>
     public const string LiteralEuscorpius_ = "5634005";
+
+    /// <summary>
+    /// Literal for code: NONEEuscorpius_
+    /// </summary>
+    public const string LiteralNONEEuscorpius_ = "http://snomed.info/sct#5634005";
 
     /// <summary>
     /// Literal for code: PrionotusRoseus_
@@ -11698,9 +14378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrionotusRoseus_ = "5635006";
 
     /// <summary>
+    /// Literal for code: NONEPrionotusRoseus_
+    /// </summary>
+    public const string LiteralNONEPrionotusRoseus_ = "http://snomed.info/sct#5635006";
+
+    /// <summary>
     /// Literal for code: BathyagonusAlascanus_
     /// </summary>
     public const string LiteralBathyagonusAlascanus_ = "564007";
+
+    /// <summary>
+    /// Literal for code: NONEBathyagonusAlascanus_
+    /// </summary>
+    public const string LiteralNONEBathyagonusAlascanus_ = "http://snomed.info/sct#564007";
 
     /// <summary>
     /// Literal for code: CheilotremaSaturnum_
@@ -11708,9 +14398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCheilotremaSaturnum_ = "5652005";
 
     /// <summary>
+    /// Literal for code: NONECheilotremaSaturnum_
+    /// </summary>
+    public const string LiteralNONECheilotremaSaturnum_ = "http://snomed.info/sct#5652005";
+
+    /// <summary>
     /// Literal for code: OrnithodorosCompactus_
     /// </summary>
     public const string LiteralOrnithodorosCompactus_ = "5654006";
+
+    /// <summary>
+    /// Literal for code: NONEOrnithodorosCompactus_
+    /// </summary>
+    public const string LiteralNONEOrnithodorosCompactus_ = "http://snomed.info/sct#5654006";
 
     /// <summary>
     /// Literal for code: Prophila_
@@ -11718,9 +14418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProphila_ = "5673005";
 
     /// <summary>
+    /// Literal for code: NONEProphila_
+    /// </summary>
+    public const string LiteralNONEProphila_ = "http://snomed.info/sct#5673005";
+
+    /// <summary>
     /// Literal for code: PhysalopteraCaucasica_
     /// </summary>
     public const string LiteralPhysalopteraCaucasica_ = "5674004";
+
+    /// <summary>
+    /// Literal for code: NONEPhysalopteraCaucasica_
+    /// </summary>
+    public const string LiteralNONEPhysalopteraCaucasica_ = "http://snomed.info/sct#5674004";
 
     /// <summary>
     /// Literal for code: Oxyuranus_
@@ -11728,9 +14438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOxyuranus_ = "5678001";
 
     /// <summary>
+    /// Literal for code: NONEOxyuranus_
+    /// </summary>
+    public const string LiteralNONEOxyuranus_ = "http://snomed.info/sct#5678001";
+
+    /// <summary>
     /// Literal for code: AulostomusMaculatus_
     /// </summary>
     public const string LiteralAulostomusMaculatus_ = "5680007";
+
+    /// <summary>
+    /// Literal for code: NONEAulostomusMaculatus_
+    /// </summary>
+    public const string LiteralNONEAulostomusMaculatus_ = "http://snomed.info/sct#5680007";
 
     /// <summary>
     /// Literal for code: ChrysolophusAmherstiae_
@@ -11738,9 +14458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChrysolophusAmherstiae_ = "5684003";
 
     /// <summary>
+    /// Literal for code: NONEChrysolophusAmherstiae_
+    /// </summary>
+    public const string LiteralNONEChrysolophusAmherstiae_ = "http://snomed.info/sct#5684003";
+
+    /// <summary>
     /// Literal for code: PimephalesVigilax_
     /// </summary>
     public const string LiteralPimephalesVigilax_ = "5698006";
+
+    /// <summary>
+    /// Literal for code: NONEPimephalesVigilax_
+    /// </summary>
+    public const string LiteralNONEPimephalesVigilax_ = "http://snomed.info/sct#5698006";
 
     /// <summary>
     /// Literal for code: CoregonusHoyi_
@@ -11748,9 +14478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoregonusHoyi_ = "5706008";
 
     /// <summary>
+    /// Literal for code: NONECoregonusHoyi_
+    /// </summary>
+    public const string LiteralNONECoregonusHoyi_ = "http://snomed.info/sct#5706008";
+
+    /// <summary>
     /// Literal for code: SpadefootToad_
     /// </summary>
     public const string LiteralSpadefootToad_ = "5707004";
+
+    /// <summary>
+    /// Literal for code: NONESpadefootToad_
+    /// </summary>
+    public const string LiteralNONESpadefootToad_ = "http://snomed.info/sct#5707004";
 
     /// <summary>
     /// Literal for code: LepomisGulosus_
@@ -11758,9 +14498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLepomisGulosus_ = "5711005";
 
     /// <summary>
+    /// Literal for code: NONELepomisGulosus_
+    /// </summary>
+    public const string LiteralNONELepomisGulosus_ = "http://snomed.info/sct#5711005";
+
+    /// <summary>
     /// Literal for code: Athesmia_
     /// </summary>
     public const string LiteralAthesmia_ = "572009";
+
+    /// <summary>
+    /// Literal for code: NONEAthesmia_
+    /// </summary>
+    public const string LiteralNONEAthesmia_ = "http://snomed.info/sct#572009";
 
     /// <summary>
     /// Literal for code: IcelusSpiniger_
@@ -11768,9 +14518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIcelusSpiniger_ = "5730005";
 
     /// <summary>
+    /// Literal for code: NONEIcelusSpiniger_
+    /// </summary>
+    public const string LiteralNONEIcelusSpiniger_ = "http://snomed.info/sct#5730005";
+
+    /// <summary>
     /// Literal for code: AmphistichusKoelzi_
     /// </summary>
     public const string LiteralAmphistichusKoelzi_ = "573004";
+
+    /// <summary>
+    /// Literal for code: NONEAmphistichusKoelzi_
+    /// </summary>
+    public const string LiteralNONEAmphistichusKoelzi_ = "http://snomed.info/sct#573004";
 
     /// <summary>
     /// Literal for code: Amphiuma_
@@ -11778,9 +14538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmphiuma_ = "5732002";
 
     /// <summary>
+    /// Literal for code: NONEAmphiuma_
+    /// </summary>
+    public const string LiteralNONEAmphiuma_ = "http://snomed.info/sct#5732002";
+
+    /// <summary>
     /// Literal for code: BulinusPhysopsisJousseaunsei_
     /// </summary>
     public const string LiteralBulinusPhysopsisJousseaunsei_ = "5735000";
+
+    /// <summary>
+    /// Literal for code: NONEBulinusPhysopsisJousseaunsei_
+    /// </summary>
+    public const string LiteralNONEBulinusPhysopsisJousseaunsei_ = "http://snomed.info/sct#5735000";
 
     /// <summary>
     /// Literal for code: CalamusArctifrons_
@@ -11788,9 +14558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCalamusArctifrons_ = "5749009";
 
     /// <summary>
+    /// Literal for code: NONECalamusArctifrons_
+    /// </summary>
+    public const string LiteralNONECalamusArctifrons_ = "http://snomed.info/sct#5749009";
+
+    /// <summary>
     /// Literal for code: BulinusBulinusForskalii_
     /// </summary>
     public const string LiteralBulinusBulinusForskalii_ = "5752001";
+
+    /// <summary>
+    /// Literal for code: NONEBulinusBulinusForskalii_
+    /// </summary>
+    public const string LiteralNONEBulinusBulinusForskalii_ = "http://snomed.info/sct#5752001";
 
     /// <summary>
     /// Literal for code: OphionyssusNaticis_
@@ -11798,9 +14578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOphionyssusNaticis_ = "5756003";
 
     /// <summary>
+    /// Literal for code: NONEOphionyssusNaticis_
+    /// </summary>
+    public const string LiteralNONEOphionyssusNaticis_ = "http://snomed.info/sct#5756003";
+
+    /// <summary>
     /// Literal for code: ZebrinaDetrita_
     /// </summary>
     public const string LiteralZebrinaDetrita_ = "5763003";
+
+    /// <summary>
+    /// Literal for code: NONEZebrinaDetrita_
+    /// </summary>
+    public const string LiteralNONEZebrinaDetrita_ = "http://snomed.info/sct#5763003";
 
     /// <summary>
     /// Literal for code: CapillariaBrevipes_
@@ -11808,9 +14598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCapillariaBrevipes_ = "5766006";
 
     /// <summary>
+    /// Literal for code: NONECapillariaBrevipes_
+    /// </summary>
+    public const string LiteralNONECapillariaBrevipes_ = "http://snomed.info/sct#5766006";
+
+    /// <summary>
     /// Literal for code: PneumonyssusSimicola_
     /// </summary>
     public const string LiteralPneumonyssusSimicola_ = "5773001";
+
+    /// <summary>
+    /// Literal for code: NONEPneumonyssusSimicola_
+    /// </summary>
+    public const string LiteralNONEPneumonyssusSimicola_ = "http://snomed.info/sct#5773001";
 
     /// <summary>
     /// Literal for code: CapillariaHepatica_
@@ -11818,9 +14618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCapillariaHepatica_ = "5782007";
 
     /// <summary>
+    /// Literal for code: NONECapillariaHepatica_
+    /// </summary>
+    public const string LiteralNONECapillariaHepatica_ = "http://snomed.info/sct#5782007";
+
+    /// <summary>
     /// Literal for code: ArgasAfricolumbae_
     /// </summary>
     public const string LiteralArgasAfricolumbae_ = "579000";
+
+    /// <summary>
+    /// Literal for code: NONEArgasAfricolumbae_
+    /// </summary>
+    public const string LiteralNONEArgasAfricolumbae_ = "http://snomed.info/sct#579000";
 
     /// <summary>
     /// Literal for code: WirehairedVizsla_
@@ -11828,9 +14638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWirehairedVizsla_ = "583000";
 
     /// <summary>
+    /// Literal for code: NONEWirehairedVizsla_
+    /// </summary>
+    public const string LiteralNONEWirehairedVizsla_ = "http://snomed.info/sct#583000";
+
+    /// <summary>
     /// Literal for code: Rhinoestrus_
     /// </summary>
     public const string LiteralRhinoestrus_ = "5833002";
+
+    /// <summary>
+    /// Literal for code: NONERhinoestrus_
+    /// </summary>
+    public const string LiteralNONERhinoestrus_ = "http://snomed.info/sct#5833002";
 
     /// <summary>
     /// Literal for code: AmbloplitesAriommus_
@@ -11838,9 +14658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmbloplitesAriommus_ = "5848008";
 
     /// <summary>
+    /// Literal for code: NONEAmbloplitesAriommus_
+    /// </summary>
+    public const string LiteralNONEAmbloplitesAriommus_ = "http://snomed.info/sct#5848008";
+
+    /// <summary>
     /// Literal for code: Ornithonyssus_
     /// </summary>
     public const string LiteralOrnithonyssus_ = "5891003";
+
+    /// <summary>
+    /// Literal for code: NONEOrnithonyssus_
+    /// </summary>
+    public const string LiteralNONEOrnithonyssus_ = "http://snomed.info/sct#5891003";
 
     /// <summary>
     /// Literal for code: HemipteronotusSplendens_
@@ -11848,9 +14678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHemipteronotusSplendens_ = "5904002";
 
     /// <summary>
+    /// Literal for code: NONEHemipteronotusSplendens_
+    /// </summary>
+    public const string LiteralNONEHemipteronotusSplendens_ = "http://snomed.info/sct#5904002";
+
+    /// <summary>
     /// Literal for code: DalmatianDog_
     /// </summary>
     public const string LiteralDalmatianDog_ = "5916008";
+
+    /// <summary>
+    /// Literal for code: NONEDalmatianDog_
+    /// </summary>
+    public const string LiteralNONEDalmatianDog_ = "http://snomed.info/sct#5916008";
 
     /// <summary>
     /// Literal for code: IxodesPacificus_
@@ -11858,9 +14698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIxodesPacificus_ = "592002";
 
     /// <summary>
+    /// Literal for code: NONEIxodesPacificus_
+    /// </summary>
+    public const string LiteralNONEIxodesPacificus_ = "http://snomed.info/sct#592002";
+
+    /// <summary>
     /// Literal for code: OligocottusRubellio_
     /// </summary>
     public const string LiteralOligocottusRubellio_ = "5970005";
+
+    /// <summary>
+    /// Literal for code: NONEOligocottusRubellio_
+    /// </summary>
+    public const string LiteralNONEOligocottusRubellio_ = "http://snomed.info/sct#5970005";
 
     /// <summary>
     /// Literal for code: VespaCrabro_
@@ -11868,9 +14718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVespaCrabro_ = "598003";
 
     /// <summary>
+    /// Literal for code: NONEVespaCrabro_
+    /// </summary>
+    public const string LiteralNONEVespaCrabro_ = "http://snomed.info/sct#598003";
+
+    /// <summary>
     /// Literal for code: DiplogonoporusGrandis_
     /// </summary>
     public const string LiteralDiplogonoporusGrandis_ = "5990001";
+
+    /// <summary>
+    /// Literal for code: NONEDiplogonoporusGrandis_
+    /// </summary>
+    public const string LiteralNONEDiplogonoporusGrandis_ = "http://snomed.info/sct#5990001";
 
     /// <summary>
     /// Literal for code: XenopsyllaBrasiliensis_
@@ -11878,9 +14738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXenopsyllaBrasiliensis_ = "6017005";
 
     /// <summary>
+    /// Literal for code: NONEXenopsyllaBrasiliensis_
+    /// </summary>
+    public const string LiteralNONEXenopsyllaBrasiliensis_ = "http://snomed.info/sct#6017005";
+
+    /// <summary>
     /// Literal for code: TreeSwallow_
     /// </summary>
     public const string LiteralTreeSwallow_ = "6018000";
+
+    /// <summary>
+    /// Literal for code: NONETreeSwallow_
+    /// </summary>
+    public const string LiteralNONETreeSwallow_ = "http://snomed.info/sct#6018000";
 
     /// <summary>
     /// Literal for code: OrnithobilharziaTurkestanicum_
@@ -11888,9 +14758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrnithobilharziaTurkestanicum_ = "6037009";
 
     /// <summary>
+    /// Literal for code: NONEOrnithobilharziaTurkestanicum_
+    /// </summary>
+    public const string LiteralNONEOrnithobilharziaTurkestanicum_ = "http://snomed.info/sct#6037009";
+
+    /// <summary>
     /// Literal for code: RhinocricusLatespagor_
     /// </summary>
     public const string LiteralRhinocricusLatespagor_ = "6039007";
+
+    /// <summary>
+    /// Literal for code: NONERhinocricusLatespagor_
+    /// </summary>
+    public const string LiteralNONERhinocricusLatespagor_ = "http://snomed.info/sct#6039007";
 
     /// <summary>
     /// Literal for code: DKPig33_
@@ -11898,9 +14778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDKPig33_ = "6053007";
 
     /// <summary>
+    /// Literal for code: NONEDKPig33_
+    /// </summary>
+    public const string LiteralNONEDKPig33_ = "http://snomed.info/sct#6053007";
+
+    /// <summary>
     /// Literal for code: Terrier_
     /// </summary>
     public const string LiteralTerrier_ = "606003";
+
+    /// <summary>
+    /// Literal for code: NONETerrier_
+    /// </summary>
+    public const string LiteralNONETerrier_ = "http://snomed.info/sct#606003";
 
     /// <summary>
     /// Literal for code: LongNosedSnake_
@@ -11908,9 +14798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLongNosedSnake_ = "6094004";
 
     /// <summary>
+    /// Literal for code: NONELongNosedSnake_
+    /// </summary>
+    public const string LiteralNONELongNosedSnake_ = "http://snomed.info/sct#6094004";
+
+    /// <summary>
     /// Literal for code: JackRussellTerrierDogBreed_
     /// </summary>
     public const string LiteralJackRussellTerrierDogBreed_ = "6103004";
+
+    /// <summary>
+    /// Literal for code: NONEJackRussellTerrierDogBreed_
+    /// </summary>
+    public const string LiteralNONEJackRussellTerrierDogBreed_ = "http://snomed.info/sct#6103004";
 
     /// <summary>
     /// Literal for code: MeusseRhineIjsselCattle_
@@ -11918,9 +14818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMeusseRhineIjsselCattle_ = "6112002";
 
     /// <summary>
+    /// Literal for code: NONEMeusseRhineIjsselCattle_
+    /// </summary>
+    public const string LiteralNONEMeusseRhineIjsselCattle_ = "http://snomed.info/sct#6112002";
+
+    /// <summary>
     /// Literal for code: ArtediellusScaber_
     /// </summary>
     public const string LiteralArtediellusScaber_ = "6114001";
+
+    /// <summary>
+    /// Literal for code: NONEArtediellusScaber_
+    /// </summary>
+    public const string LiteralNONEArtediellusScaber_ = "http://snomed.info/sct#6114001";
 
     /// <summary>
     /// Literal for code: CyanoliseusPatagonus_
@@ -11928,9 +14838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCyanoliseusPatagonus_ = "6144003";
 
     /// <summary>
+    /// Literal for code: NONECyanoliseusPatagonus_
+    /// </summary>
+    public const string LiteralNONECyanoliseusPatagonus_ = "http://snomed.info/sct#6144003";
+
+    /// <summary>
     /// Literal for code: Buthacus_
     /// </summary>
     public const string LiteralButhacus_ = "6152000";
+
+    /// <summary>
+    /// Literal for code: NONEButhacus_
+    /// </summary>
+    public const string LiteralNONEButhacus_ = "http://snomed.info/sct#6152000";
 
     /// <summary>
     /// Literal for code: RockyMountainPika_
@@ -11938,9 +14858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRockyMountainPika_ = "6167001";
 
     /// <summary>
+    /// Literal for code: NONERockyMountainPika_
+    /// </summary>
+    public const string LiteralNONERockyMountainPika_ = "http://snomed.info/sct#6167001";
+
+    /// <summary>
     /// Literal for code: TaractichthysLongipinnis_
     /// </summary>
     public const string LiteralTaractichthysLongipinnis_ = "6173000";
+
+    /// <summary>
+    /// Literal for code: NONETaractichthysLongipinnis_
+    /// </summary>
+    public const string LiteralNONETaractichthysLongipinnis_ = "http://snomed.info/sct#6173000";
 
     /// <summary>
     /// Literal for code: WhiteCheekedLaughingThrush_
@@ -11948,9 +14878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWhiteCheekedLaughingThrush_ = "6196000";
 
     /// <summary>
+    /// Literal for code: NONEWhiteCheekedLaughingThrush_
+    /// </summary>
+    public const string LiteralNONEWhiteCheekedLaughingThrush_ = "http://snomed.info/sct#6196000";
+
+    /// <summary>
     /// Literal for code: GalicenoHorse_
     /// </summary>
     public const string LiteralGalicenoHorse_ = "6220006";
+
+    /// <summary>
+    /// Literal for code: NONEGalicenoHorse_
+    /// </summary>
+    public const string LiteralNONEGalicenoHorse_ = "http://snomed.info/sct#6220006";
 
     /// <summary>
     /// Literal for code: Eurycea_
@@ -11958,9 +14898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEurycea_ = "6239001";
 
     /// <summary>
+    /// Literal for code: NONEEurycea_
+    /// </summary>
+    public const string LiteralNONEEurycea_ = "http://snomed.info/sct#6239001";
+
+    /// <summary>
     /// Literal for code: MerlucciusBilinearis_
     /// </summary>
     public const string LiteralMerlucciusBilinearis_ = "6278002";
+
+    /// <summary>
+    /// Literal for code: NONEMerlucciusBilinearis_
+    /// </summary>
+    public const string LiteralNONEMerlucciusBilinearis_ = "http://snomed.info/sct#6278002";
 
     /// <summary>
     /// Literal for code: AnarhichasLupus_
@@ -11968,9 +14918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnarhichasLupus_ = "6290000";
 
     /// <summary>
+    /// Literal for code: NONEAnarhichasLupus_
+    /// </summary>
+    public const string LiteralNONEAnarhichasLupus_ = "http://snomed.info/sct#6290000";
+
+    /// <summary>
     /// Literal for code: TrinectesMaculatus_
     /// </summary>
     public const string LiteralTrinectesMaculatus_ = "6311004";
+
+    /// <summary>
+    /// Literal for code: NONETrinectesMaculatus_
+    /// </summary>
+    public const string LiteralNONETrinectesMaculatus_ = "http://snomed.info/sct#6311004";
 
     /// <summary>
     /// Literal for code: PrionotusOphryas_
@@ -11978,9 +14938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrionotusOphryas_ = "6340001";
 
     /// <summary>
+    /// Literal for code: NONEPrionotusOphryas_
+    /// </summary>
+    public const string LiteralNONEPrionotusOphryas_ = "http://snomed.info/sct#6340001";
+
+    /// <summary>
     /// Literal for code: ParagonimusAfricanus_
     /// </summary>
     public const string LiteralParagonimusAfricanus_ = "6345006";
+
+    /// <summary>
+    /// Literal for code: NONEParagonimusAfricanus_
+    /// </summary>
+    public const string LiteralNONEParagonimusAfricanus_ = "http://snomed.info/sct#6345006";
 
     /// <summary>
     /// Literal for code: SparisomaAtomarium_
@@ -11988,9 +14958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSparisomaAtomarium_ = "6372003";
 
     /// <summary>
+    /// Literal for code: NONESparisomaAtomarium_
+    /// </summary>
+    public const string LiteralNONESparisomaAtomarium_ = "http://snomed.info/sct#6372003";
+
+    /// <summary>
     /// Literal for code: AcronictaOblinata_
     /// </summary>
     public const string LiteralAcronictaOblinata_ = "6376000";
+
+    /// <summary>
+    /// Literal for code: NONEAcronictaOblinata_
+    /// </summary>
+    public const string LiteralNONEAcronictaOblinata_ = "http://snomed.info/sct#6376000";
 
     /// <summary>
     /// Literal for code: Isoparorchis_
@@ -11998,9 +14978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIsoparorchis_ = "6407006";
 
     /// <summary>
+    /// Literal for code: NONEIsoparorchis_
+    /// </summary>
+    public const string LiteralNONEIsoparorchis_ = "http://snomed.info/sct#6407006";
+
+    /// <summary>
     /// Literal for code: Platysaurus_
     /// </summary>
     public const string LiteralPlatysaurus_ = "6418006";
+
+    /// <summary>
+    /// Literal for code: NONEPlatysaurus_
+    /// </summary>
+    public const string LiteralNONEPlatysaurus_ = "http://snomed.info/sct#6418006";
 
     /// <summary>
     /// Literal for code: MuscaSorbens_
@@ -12008,9 +14998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMuscaSorbens_ = "6420009";
 
     /// <summary>
+    /// Literal for code: NONEMuscaSorbens_
+    /// </summary>
+    public const string LiteralNONEMuscaSorbens_ = "http://snomed.info/sct#6420009";
+
+    /// <summary>
     /// Literal for code: LeicesterSheep_
     /// </summary>
     public const string LiteralLeicesterSheep_ = "6431001";
+
+    /// <summary>
+    /// Literal for code: NONELeicesterSheep_
+    /// </summary>
+    public const string LiteralNONELeicesterSheep_ = "http://snomed.info/sct#6431001";
 
     /// <summary>
     /// Literal for code: ApisCerana_
@@ -12018,9 +15018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralApisCerana_ = "6435005";
 
     /// <summary>
+    /// Literal for code: NONEApisCerana_
+    /// </summary>
+    public const string LiteralNONEApisCerana_ = "http://snomed.info/sct#6435005";
+
+    /// <summary>
     /// Literal for code: ToucanBarbet_
     /// </summary>
     public const string LiteralToucanBarbet_ = "644007";
+
+    /// <summary>
+    /// Literal for code: NONEToucanBarbet_
+    /// </summary>
+    public const string LiteralNONEToucanBarbet_ = "http://snomed.info/sct#644007";
 
     /// <summary>
     /// Literal for code: AcanthemblemariaAspera_
@@ -12028,9 +15038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcanthemblemariaAspera_ = "6447004";
 
     /// <summary>
+    /// Literal for code: NONEAcanthemblemariaAspera_
+    /// </summary>
+    public const string LiteralNONEAcanthemblemariaAspera_ = "http://snomed.info/sct#6447004";
+
+    /// <summary>
     /// Literal for code: MuscaConvexifrons_
     /// </summary>
     public const string LiteralMuscaConvexifrons_ = "6453004";
+
+    /// <summary>
+    /// Literal for code: NONEMuscaConvexifrons_
+    /// </summary>
+    public const string LiteralNONEMuscaConvexifrons_ = "http://snomed.info/sct#6453004";
 
     /// <summary>
     /// Literal for code: ArilusCristatus_
@@ -12038,9 +15058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArilusCristatus_ = "6482003";
 
     /// <summary>
+    /// Literal for code: NONEArilusCristatus_
+    /// </summary>
+    public const string LiteralNONEArilusCristatus_ = "http://snomed.info/sct#6482003";
+
+    /// <summary>
     /// Literal for code: CulexPseudovishnui_
     /// </summary>
     public const string LiteralCulexPseudovishnui_ = "6489007";
+
+    /// <summary>
+    /// Literal for code: NONECulexPseudovishnui_
+    /// </summary>
+    public const string LiteralNONECulexPseudovishnui_ = "http://snomed.info/sct#6489007";
 
     /// <summary>
     /// Literal for code: ArmilliferArmillatus_
@@ -12048,9 +15078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArmilliferArmillatus_ = "6498005";
 
     /// <summary>
+    /// Literal for code: NONEArmilliferArmillatus_
+    /// </summary>
+    public const string LiteralNONEArmilliferArmillatus_ = "http://snomed.info/sct#6498005";
+
+    /// <summary>
     /// Literal for code: AmphelikturusDendriticus_
     /// </summary>
     public const string LiteralAmphelikturusDendriticus_ = "6512005";
+
+    /// <summary>
+    /// Literal for code: NONEAmphelikturusDendriticus_
+    /// </summary>
+    public const string LiteralNONEAmphelikturusDendriticus_ = "http://snomed.info/sct#6512005";
 
     /// <summary>
     /// Literal for code: EpomidiostomumVogelsangi_
@@ -12058,9 +15098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEpomidiostomumVogelsangi_ = "6518009";
 
     /// <summary>
+    /// Literal for code: NONEEpomidiostomumVogelsangi_
+    /// </summary>
+    public const string LiteralNONEEpomidiostomumVogelsangi_ = "http://snomed.info/sct#6518009";
+
+    /// <summary>
     /// Literal for code: LatrodectusDahli_
     /// </summary>
     public const string LiteralLatrodectusDahli_ = "653000";
+
+    /// <summary>
+    /// Literal for code: NONELatrodectusDahli_
+    /// </summary>
+    public const string LiteralNONELatrodectusDahli_ = "http://snomed.info/sct#653000";
 
     /// <summary>
     /// Literal for code: EchisCarinatus_
@@ -12068,9 +15118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchisCarinatus_ = "6540000";
 
     /// <summary>
+    /// Literal for code: NONEEchisCarinatus_
+    /// </summary>
+    public const string LiteralNONEEchisCarinatus_ = "http://snomed.info/sct#6540000";
+
+    /// <summary>
     /// Literal for code: KnemidocoptesPilae_
     /// </summary>
     public const string LiteralKnemidocoptesPilae_ = "6549004";
+
+    /// <summary>
+    /// Literal for code: NONEKnemidocoptesPilae_
+    /// </summary>
+    public const string LiteralNONEKnemidocoptesPilae_ = "http://snomed.info/sct#6549004";
 
     /// <summary>
     /// Literal for code: Spilopsylla_
@@ -12078,9 +15138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpilopsylla_ = "6560008";
 
     /// <summary>
+    /// Literal for code: NONESpilopsylla_
+    /// </summary>
+    public const string LiteralNONESpilopsylla_ = "http://snomed.info/sct#6560008";
+
+    /// <summary>
     /// Literal for code: ScomberomorusRegalis_
     /// </summary>
     public const string LiteralScomberomorusRegalis_ = "6569009";
+
+    /// <summary>
+    /// Literal for code: NONEScomberomorusRegalis_
+    /// </summary>
+    public const string LiteralNONEScomberomorusRegalis_ = "http://snomed.info/sct#6569009";
 
     /// <summary>
     /// Literal for code: EnophrysDiceraus_
@@ -12088,9 +15158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnophrysDiceraus_ = "6581008";
 
     /// <summary>
+    /// Literal for code: NONEEnophrysDiceraus_
+    /// </summary>
+    public const string LiteralNONEEnophrysDiceraus_ = "http://snomed.info/sct#6581008";
+
+    /// <summary>
     /// Literal for code: Diorchis_
     /// </summary>
     public const string LiteralDiorchis_ = "6583006";
+
+    /// <summary>
+    /// Literal for code: NONEDiorchis_
+    /// </summary>
+    public const string LiteralNONEDiorchis_ = "http://snomed.info/sct#6583006";
 
     /// <summary>
     /// Literal for code: RosyBilledPochard_
@@ -12098,9 +15178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRosyBilledPochard_ = "6591002";
 
     /// <summary>
+    /// Literal for code: NONERosyBilledPochard_
+    /// </summary>
+    public const string LiteralNONERosyBilledPochard_ = "http://snomed.info/sct#6591002";
+
+    /// <summary>
     /// Literal for code: ApogonPseudomaculatus_
     /// </summary>
     public const string LiteralApogonPseudomaculatus_ = "6597003";
+
+    /// <summary>
+    /// Literal for code: NONEApogonPseudomaculatus_
+    /// </summary>
+    public const string LiteralNONEApogonPseudomaculatus_ = "http://snomed.info/sct#6597003";
 
     /// <summary>
     /// Literal for code: AcarusSiro_
@@ -12108,9 +15198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcarusSiro_ = "6610006";
 
     /// <summary>
+    /// Literal for code: NONEAcarusSiro_
+    /// </summary>
+    public const string LiteralNONEAcarusSiro_ = "http://snomed.info/sct#6610006";
+
+    /// <summary>
     /// Literal for code: CornigerSpinosus_
     /// </summary>
     public const string LiteralCornigerSpinosus_ = "6613008";
+
+    /// <summary>
+    /// Literal for code: NONECornigerSpinosus_
+    /// </summary>
+    public const string LiteralNONECornigerSpinosus_ = "http://snomed.info/sct#6613008";
 
     /// <summary>
     /// Literal for code: LeachQuoteSStormPetrel_
@@ -12118,9 +15218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLeachQuoteSStormPetrel_ = "6630005";
 
     /// <summary>
+    /// Literal for code: NONELeachQuoteSStormPetrel_
+    /// </summary>
+    public const string LiteralNONELeachQuoteSStormPetrel_ = "http://snomed.info/sct#6630005";
+
+    /// <summary>
     /// Literal for code: OrnithodorosCrossi_
     /// </summary>
     public const string LiteralOrnithodorosCrossi_ = "6632002";
+
+    /// <summary>
+    /// Literal for code: NONEOrnithodorosCrossi_
+    /// </summary>
+    public const string LiteralNONEOrnithodorosCrossi_ = "http://snomed.info/sct#6632002";
 
     /// <summary>
     /// Literal for code: OstertagiaOccidentalis_
@@ -12128,9 +15238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOstertagiaOccidentalis_ = "6638003";
 
     /// <summary>
+    /// Literal for code: NONEOstertagiaOccidentalis_
+    /// </summary>
+    public const string LiteralNONEOstertagiaOccidentalis_ = "http://snomed.info/sct#6638003";
+
+    /// <summary>
     /// Literal for code: LampetraRichardsoni_
     /// </summary>
     public const string LiteralLampetraRichardsoni_ = "6653006";
+
+    /// <summary>
+    /// Literal for code: NONELampetraRichardsoni_
+    /// </summary>
+    public const string LiteralNONELampetraRichardsoni_ = "http://snomed.info/sct#6653006";
 
     /// <summary>
     /// Literal for code: CylicostephanusCalicatus_
@@ -12138,9 +15258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCylicostephanusCalicatus_ = "6674007";
 
     /// <summary>
+    /// Literal for code: NONECylicostephanusCalicatus_
+    /// </summary>
+    public const string LiteralNONECylicostephanusCalicatus_ = "http://snomed.info/sct#6674007";
+
+    /// <summary>
     /// Literal for code: PolyperaBeringiana_
     /// </summary>
     public const string LiteralPolyperaBeringiana_ = "6683002";
+
+    /// <summary>
+    /// Literal for code: NONEPolyperaBeringiana_
+    /// </summary>
+    public const string LiteralNONEPolyperaBeringiana_ = "http://snomed.info/sct#6683002";
 
     /// <summary>
     /// Literal for code: ArgasPersicus_
@@ -12148,9 +15278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArgasPersicus_ = "6693009";
 
     /// <summary>
+    /// Literal for code: NONEArgasPersicus_
+    /// </summary>
+    public const string LiteralNONEArgasPersicus_ = "http://snomed.info/sct#6693009";
+
+    /// <summary>
     /// Literal for code: GibbonsiaErythra_
     /// </summary>
     public const string LiteralGibbonsiaErythra_ = "6697005";
+
+    /// <summary>
+    /// Literal for code: NONEGibbonsiaErythra_
+    /// </summary>
+    public const string LiteralNONEGibbonsiaErythra_ = "http://snomed.info/sct#6697005";
 
     /// <summary>
     /// Literal for code: Pituophis_
@@ -12158,9 +15298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPituophis_ = "679009";
 
     /// <summary>
+    /// Literal for code: NONEPituophis_
+    /// </summary>
+    public const string LiteralNONEPituophis_ = "http://snomed.info/sct#679009";
+
+    /// <summary>
     /// Literal for code: PygmyGoat_
     /// </summary>
     public const string LiteralPygmyGoat_ = "684003";
+
+    /// <summary>
+    /// Literal for code: NONEPygmyGoat_
+    /// </summary>
+    public const string LiteralNONEPygmyGoat_ = "http://snomed.info/sct#684003";
 
     /// <summary>
     /// Literal for code: AnophelesSundaicus_
@@ -12168,9 +15318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnophelesSundaicus_ = "689008";
 
     /// <summary>
+    /// Literal for code: NONEAnophelesSundaicus_
+    /// </summary>
+    public const string LiteralNONEAnophelesSundaicus_ = "http://snomed.info/sct#689008";
+
+    /// <summary>
     /// Literal for code: Archigetes_
     /// </summary>
     public const string LiteralArchigetes_ = "706008";
+
+    /// <summary>
+    /// Literal for code: NONEArchigetes_
+    /// </summary>
+    public const string LiteralNONEArchigetes_ = "http://snomed.info/sct#706008";
 
     /// <summary>
     /// Literal for code: BunostomumPhlebotomum_
@@ -12178,9 +15338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBunostomumPhlebotomum_ = "708009";
 
     /// <summary>
+    /// Literal for code: NONEBunostomumPhlebotomum_
+    /// </summary>
+    public const string LiteralNONEBunostomumPhlebotomum_ = "http://snomed.info/sct#708009";
+
+    /// <summary>
     /// Literal for code: AerospaceMedicine_
     /// </summary>
     public const string LiteralAerospaceMedicine_ = "715184008";
+
+    /// <summary>
+    /// Literal for code: NONEAerospaceMedicine_
+    /// </summary>
+    public const string LiteralNONEAerospaceMedicine_ = "http://snomed.info/sct#715184008";
 
     /// <summary>
     /// Literal for code: RegenerativeMedicine_
@@ -12188,9 +15358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRegenerativeMedicine_ = "718359001";
 
     /// <summary>
+    /// Literal for code: NONERegenerativeMedicine_
+    /// </summary>
+    public const string LiteralNONERegenerativeMedicine_ = "http://snomed.info/sct#718359001";
+
+    /// <summary>
     /// Literal for code: EmblemariaBahamensis_
     /// </summary>
     public const string LiteralEmblemariaBahamensis_ = "719007";
+
+    /// <summary>
+    /// Literal for code: NONEEmblemariaBahamensis_
+    /// </summary>
+    public const string LiteralNONEEmblemariaBahamensis_ = "http://snomed.info/sct#719007";
 
     /// <summary>
     /// Literal for code: MobulaHypostoma_
@@ -12198,9 +15378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMobulaHypostoma_ = "725006";
 
     /// <summary>
+    /// Literal for code: NONEMobulaHypostoma_
+    /// </summary>
+    public const string LiteralNONEMobulaHypostoma_ = "http://snomed.info/sct#725006";
+
+    /// <summary>
     /// Literal for code: OphichthusOphis_
     /// </summary>
     public const string LiteralOphichthusOphis_ = "740008";
+
+    /// <summary>
+    /// Literal for code: NONEOphichthusOphis_
+    /// </summary>
+    public const string LiteralNONEOphichthusOphis_ = "http://snomed.info/sct#740008";
 
     /// <summary>
     /// Literal for code: AvitellinaRatia_
@@ -12208,9 +15398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAvitellinaRatia_ = "744004";
 
     /// <summary>
+    /// Literal for code: NONEAvitellinaRatia_
+    /// </summary>
+    public const string LiteralNONEAvitellinaRatia_ = "http://snomed.info/sct#744004";
+
+    /// <summary>
     /// Literal for code: MonodonMonoceros_
     /// </summary>
     public const string LiteralMonodonMonoceros_ = "763003";
+
+    /// <summary>
+    /// Literal for code: NONEMonodonMonoceros_
+    /// </summary>
+    public const string LiteralNONEMonodonMonoceros_ = "http://snomed.info/sct#763003";
 
     /// <summary>
     /// Literal for code: Helmetbird_
@@ -12218,9 +15418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHelmetbird_ = "769004";
 
     /// <summary>
+    /// Literal for code: NONEHelmetbird_
+    /// </summary>
+    public const string LiteralNONEHelmetbird_ = "http://snomed.info/sct#769004";
+
+    /// <summary>
     /// Literal for code: GobionellusStigmalophius_
     /// </summary>
     public const string LiteralGobionellusStigmalophius_ = "778005";
+
+    /// <summary>
+    /// Literal for code: NONEGobionellusStigmalophius_
+    /// </summary>
+    public const string LiteralNONEGobionellusStigmalophius_ = "http://snomed.info/sct#778005";
 
     /// <summary>
     /// Literal for code: MaxxRat_
@@ -12228,9 +15438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMaxxRat_ = "782007";
 
     /// <summary>
+    /// Literal for code: NONEMaxxRat_
+    /// </summary>
+    public const string LiteralNONEMaxxRat_ = "http://snomed.info/sct#782007";
+
+    /// <summary>
     /// Literal for code: NewZealandWhiteRabbit_
     /// </summary>
     public const string LiteralNewZealandWhiteRabbit_ = "797005";
+
+    /// <summary>
+    /// Literal for code: NONENewZealandWhiteRabbit_
+    /// </summary>
+    public const string LiteralNONENewZealandWhiteRabbit_ = "http://snomed.info/sct#797005";
 
     /// <summary>
     /// Literal for code: DomesticatedJapaneseQuail_
@@ -12238,9 +15458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDomesticatedJapaneseQuail_ = "833002";
 
     /// <summary>
+    /// Literal for code: NONEDomesticatedJapaneseQuail_
+    /// </summary>
+    public const string LiteralNONEDomesticatedJapaneseQuail_ = "http://snomed.info/sct#833002";
+
+    /// <summary>
     /// Literal for code: ThaumetopoeaProcessionea_
     /// </summary>
     public const string LiteralThaumetopoeaProcessionea_ = "846007";
+
+    /// <summary>
+    /// Literal for code: NONEThaumetopoeaProcessionea_
+    /// </summary>
+    public const string LiteralNONEThaumetopoeaProcessionea_ = "http://snomed.info/sct#846007";
 
     /// <summary>
     /// Literal for code: BurrowingToad_
@@ -12248,9 +15478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBurrowingToad_ = "848008";
 
     /// <summary>
+    /// Literal for code: NONEBurrowingToad_
+    /// </summary>
+    public const string LiteralNONEBurrowingToad_ = "http://snomed.info/sct#848008";
+
+    /// <summary>
     /// Literal for code: HybognathusArgyritis_
     /// </summary>
     public const string LiteralHybognathusArgyritis_ = "854009";
+
+    /// <summary>
+    /// Literal for code: NONEHybognathusArgyritis_
+    /// </summary>
+    public const string LiteralNONEHybognathusArgyritis_ = "http://snomed.info/sct#854009";
 
     /// <summary>
     /// Literal for code: CouesiusPlumbeus_
@@ -12258,9 +15498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCouesiusPlumbeus_ = "861008";
 
     /// <summary>
+    /// Literal for code: NONECouesiusPlumbeus_
+    /// </summary>
+    public const string LiteralNONECouesiusPlumbeus_ = "http://snomed.info/sct#861008";
+
+    /// <summary>
     /// Literal for code: AnophelesMulticolor_
     /// </summary>
     public const string LiteralAnophelesMulticolor_ = "864000";
+
+    /// <summary>
+    /// Literal for code: NONEAnophelesMulticolor_
+    /// </summary>
+    public const string LiteralNONEAnophelesMulticolor_ = "http://snomed.info/sct#864000";
 
     /// <summary>
     /// Literal for code: FundulusHeteroclitus_
@@ -12268,9 +15518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFundulusHeteroclitus_ = "868002";
 
     /// <summary>
+    /// Literal for code: NONEFundulusHeteroclitus_
+    /// </summary>
+    public const string LiteralNONEFundulusHeteroclitus_ = "http://snomed.info/sct#868002";
+
+    /// <summary>
     /// Literal for code: CamelostrongylusMentulatus_
     /// </summary>
     public const string LiteralCamelostrongylusMentulatus_ = "869005";
+
+    /// <summary>
+    /// Literal for code: NONECamelostrongylusMentulatus_
+    /// </summary>
+    public const string LiteralNONECamelostrongylusMentulatus_ = "http://snomed.info/sct#869005";
 
     /// <summary>
     /// Literal for code: NotocotylusAttenuatus_
@@ -12278,9 +15538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotocotylusAttenuatus_ = "872003";
 
     /// <summary>
+    /// Literal for code: NONENotocotylusAttenuatus_
+    /// </summary>
+    public const string LiteralNONENotocotylusAttenuatus_ = "http://snomed.info/sct#872003";
+
+    /// <summary>
     /// Literal for code: ChirolophisAscanii_
     /// </summary>
     public const string LiteralChirolophisAscanii_ = "887008";
+
+    /// <summary>
+    /// Literal for code: NONEChirolophisAscanii_
+    /// </summary>
+    public const string LiteralNONEChirolophisAscanii_ = "http://snomed.info/sct#887008";
 
     /// <summary>
     /// Literal for code: PtychocheilusUmpquae_
@@ -12288,9 +15558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPtychocheilusUmpquae_ = "898009";
 
     /// <summary>
+    /// Literal for code: NONEPtychocheilusUmpquae_
+    /// </summary>
+    public const string LiteralNONEPtychocheilusUmpquae_ = "http://snomed.info/sct#898009";
+
+    /// <summary>
     /// Literal for code: RainbowSnake_
     /// </summary>
     public const string LiteralRainbowSnake_ = "927005";
+
+    /// <summary>
+    /// Literal for code: NONERainbowSnake_
+    /// </summary>
+    public const string LiteralNONERainbowSnake_ = "http://snomed.info/sct#927005";
 
     /// <summary>
     /// Literal for code: ScarusTaeniopterus_
@@ -12298,9 +15578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScarusTaeniopterus_ = "929008";
 
     /// <summary>
+    /// Literal for code: NONEScarusTaeniopterus_
+    /// </summary>
+    public const string LiteralNONEScarusTaeniopterus_ = "http://snomed.info/sct#929008";
+
+    /// <summary>
     /// Literal for code: BrownWelshCattle_
     /// </summary>
     public const string LiteralBrownWelshCattle_ = "944009";
+
+    /// <summary>
+    /// Literal for code: NONEBrownWelshCattle_
+    /// </summary>
+    public const string LiteralNONEBrownWelshCattle_ = "http://snomed.info/sct#944009";
 
     /// <summary>
     /// Literal for code: NandayusNenday_
@@ -12308,9 +15598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNandayusNenday_ = "946006";
 
     /// <summary>
+    /// Literal for code: NONENandayusNenday_
+    /// </summary>
+    public const string LiteralNONENandayusNenday_ = "http://snomed.info/sct#946006";
+
+    /// <summary>
     /// Literal for code: Filicollis_
     /// </summary>
     public const string LiteralFilicollis_ = "952007";
+
+    /// <summary>
+    /// Literal for code: NONEFilicollis_
+    /// </summary>
+    public const string LiteralNONEFilicollis_ = "http://snomed.info/sct#952007";
 
     /// <summary>
     /// Literal for code: TrachinotusFalcatus_
@@ -12318,9 +15618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTrachinotusFalcatus_ = "958006";
 
     /// <summary>
+    /// Literal for code: NONETrachinotusFalcatus_
+    /// </summary>
+    public const string LiteralNONETrachinotusFalcatus_ = "http://snomed.info/sct#958006";
+
+    /// <summary>
     /// Literal for code: Haematosiphon_
     /// </summary>
     public const string LiteralHaematosiphon_ = "997003";
+
+    /// <summary>
+    /// Literal for code: NONEHaematosiphon_
+    /// </summary>
+    public const string LiteralNONEHaematosiphon_ = "http://snomed.info/sct#997003";
 
     /// <summary>
     /// Literal for code: Andorra_
@@ -12328,9 +15638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAndorra_ = "AD";
 
     /// <summary>
+    /// Literal for code: NONEAndorra_
+    /// </summary>
+    public const string LiteralNONEAndorra_ = "urn:iso:std:iso:3166#AD";
+
+    /// <summary>
     /// Literal for code: UnitedArabEmiratesThe_
     /// </summary>
     public const string LiteralUnitedArabEmiratesThe_ = "AE";
+
+    /// <summary>
+    /// Literal for code: NONEUnitedArabEmiratesThe_
+    /// </summary>
+    public const string LiteralNONEUnitedArabEmiratesThe_ = "urn:iso:std:iso:3166#AE";
 
     /// <summary>
     /// Literal for code: Afghanistan_
@@ -12338,9 +15658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAfghanistan_ = "AF";
 
     /// <summary>
+    /// Literal for code: NONEAfghanistan_
+    /// </summary>
+    public const string LiteralNONEAfghanistan_ = "urn:iso:std:iso:3166#AF";
+
+    /// <summary>
     /// Literal for code: AntiguaAndBarbuda_
     /// </summary>
     public const string LiteralAntiguaAndBarbuda_ = "AG";
+
+    /// <summary>
+    /// Literal for code: NONEAntiguaAndBarbuda_
+    /// </summary>
+    public const string LiteralNONEAntiguaAndBarbuda_ = "urn:iso:std:iso:3166#AG";
 
     /// <summary>
     /// Literal for code: Anguilla_
@@ -12348,9 +15678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnguilla_ = "AI";
 
     /// <summary>
+    /// Literal for code: NONEAnguilla_
+    /// </summary>
+    public const string LiteralNONEAnguilla_ = "urn:iso:std:iso:3166#AI";
+
+    /// <summary>
     /// Literal for code: Alaska_
     /// </summary>
     public const string LiteralAlaska_ = "AK";
+
+    /// <summary>
+    /// Literal for code: NONEAlaska_
+    /// </summary>
+    public const string LiteralNONEAlaska_ = "https://www.usps.com/#AK";
 
     /// <summary>
     /// Literal for code: Alabama_
@@ -12358,9 +15698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlabama_ = "AL";
 
     /// <summary>
+    /// Literal for code: NONEAlabama_
+    /// </summary>
+    public const string LiteralNONEAlabama_ = "https://www.usps.com/#AL";
+
+    /// <summary>
     /// Literal for code: Albania_
     /// </summary>
     public const string LiteralAlbania_ = "AL";
+
+    /// <summary>
+    /// Literal for code: NONEAlbania_
+    /// </summary>
+    public const string LiteralNONEAlbania_ = "urn:iso:std:iso:3166#AL";
 
     /// <summary>
     /// Literal for code: Armenia_
@@ -12368,9 +15718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArmenia_ = "AM";
 
     /// <summary>
+    /// Literal for code: NONEArmenia_
+    /// </summary>
+    public const string LiteralNONEArmenia_ = "urn:iso:std:iso:3166#AM";
+
+    /// <summary>
     /// Literal for code: NetherlandsAntilles_
     /// </summary>
     public const string LiteralNetherlandsAntilles_ = "AN";
+
+    /// <summary>
+    /// Literal for code: NONENetherlandsAntilles_
+    /// </summary>
+    public const string LiteralNONENetherlandsAntilles_ = "urn:iso:std:iso:3166#AN";
 
     /// <summary>
     /// Literal for code: Angola_
@@ -12378,9 +15738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngola_ = "AO";
 
     /// <summary>
+    /// Literal for code: NONEAngola_
+    /// </summary>
+    public const string LiteralNONEAngola_ = "urn:iso:std:iso:3166#AO";
+
+    /// <summary>
     /// Literal for code: Antarctica_
     /// </summary>
     public const string LiteralAntarctica_ = "AQ";
+
+    /// <summary>
+    /// Literal for code: NONEAntarctica_
+    /// </summary>
+    public const string LiteralNONEAntarctica_ = "urn:iso:std:iso:3166#AQ";
 
     /// <summary>
     /// Literal for code: Arkansas_
@@ -12388,9 +15758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArkansas_ = "AR";
 
     /// <summary>
+    /// Literal for code: NONEArkansas_
+    /// </summary>
+    public const string LiteralNONEArkansas_ = "https://www.usps.com/#AR";
+
+    /// <summary>
     /// Literal for code: Argentina_
     /// </summary>
     public const string LiteralArgentina_ = "AR";
+
+    /// <summary>
+    /// Literal for code: NONEArgentina_
+    /// </summary>
+    public const string LiteralNONEArgentina_ = "urn:iso:std:iso:3166#AR";
 
     /// <summary>
     /// Literal for code: AmericanSamoa_
@@ -12398,9 +15778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmericanSamoa_ = "AS";
 
     /// <summary>
+    /// Literal for code: NONEAmericanSamoa_
+    /// </summary>
+    public const string LiteralNONEAmericanSamoa_ = "https://www.usps.com/#AS";
+
+    /// <summary>
     /// Literal for code: AmericanSamoa__2
     /// </summary>
     public const string LiteralAmericanSamoa__2 = "AS";
+
+    /// <summary>
+    /// Literal for code: NONEAmericanSamoa__2
+    /// </summary>
+    public const string LiteralNONEAmericanSamoa__2 = "urn:iso:std:iso:3166#AS";
 
     /// <summary>
     /// Literal for code: Austria_
@@ -12408,9 +15798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAustria_ = "AT";
 
     /// <summary>
+    /// Literal for code: NONEAustria_
+    /// </summary>
+    public const string LiteralNONEAustria_ = "urn:iso:std:iso:3166#AT";
+
+    /// <summary>
     /// Literal for code: Australia_
     /// </summary>
     public const string LiteralAustralia_ = "AU";
+
+    /// <summary>
+    /// Literal for code: NONEAustralia_
+    /// </summary>
+    public const string LiteralNONEAustralia_ = "urn:iso:std:iso:3166#AU";
 
     /// <summary>
     /// Literal for code: Aruba_
@@ -12418,9 +15818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAruba_ = "AW";
 
     /// <summary>
+    /// Literal for code: NONEAruba_
+    /// </summary>
+    public const string LiteralNONEAruba_ = "urn:iso:std:iso:3166#AW";
+
+    /// <summary>
     /// Literal for code: AlandIslands_
     /// </summary>
     public const string LiteralAlandIslands_ = "AX";
+
+    /// <summary>
+    /// Literal for code: NONEAlandIslands_
+    /// </summary>
+    public const string LiteralNONEAlandIslands_ = "urn:iso:std:iso:3166#AX";
 
     /// <summary>
     /// Literal for code: Arizona_
@@ -12428,9 +15838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArizona_ = "AZ";
 
     /// <summary>
+    /// Literal for code: NONEArizona_
+    /// </summary>
+    public const string LiteralNONEArizona_ = "https://www.usps.com/#AZ";
+
+    /// <summary>
     /// Literal for code: Azerbaijan_
     /// </summary>
     public const string LiteralAzerbaijan_ = "AZ";
+
+    /// <summary>
+    /// Literal for code: NONEAzerbaijan_
+    /// </summary>
+    public const string LiteralNONEAzerbaijan_ = "urn:iso:std:iso:3166#AZ";
 
     /// <summary>
     /// Literal for code: BosniaAndHerzegovina_
@@ -12438,9 +15858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBosniaAndHerzegovina_ = "BA";
 
     /// <summary>
+    /// Literal for code: NONEBosniaAndHerzegovina_
+    /// </summary>
+    public const string LiteralNONEBosniaAndHerzegovina_ = "urn:iso:std:iso:3166#BA";
+
+    /// <summary>
     /// Literal for code: Barbados_
     /// </summary>
     public const string LiteralBarbados_ = "BB";
+
+    /// <summary>
+    /// Literal for code: NONEBarbados_
+    /// </summary>
+    public const string LiteralNONEBarbados_ = "urn:iso:std:iso:3166#BB";
 
     /// <summary>
     /// Literal for code: Bangladesh_
@@ -12448,9 +15878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBangladesh_ = "BD";
 
     /// <summary>
+    /// Literal for code: NONEBangladesh_
+    /// </summary>
+    public const string LiteralNONEBangladesh_ = "urn:iso:std:iso:3166#BD";
+
+    /// <summary>
     /// Literal for code: Belgium_
     /// </summary>
     public const string LiteralBelgium_ = "BE";
+
+    /// <summary>
+    /// Literal for code: NONEBelgium_
+    /// </summary>
+    public const string LiteralNONEBelgium_ = "urn:iso:std:iso:3166#BE";
 
     /// <summary>
     /// Literal for code: BurkinaFaso_
@@ -12458,9 +15898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBurkinaFaso_ = "BF";
 
     /// <summary>
+    /// Literal for code: NONEBurkinaFaso_
+    /// </summary>
+    public const string LiteralNONEBurkinaFaso_ = "urn:iso:std:iso:3166#BF";
+
+    /// <summary>
     /// Literal for code: Bulgaria_
     /// </summary>
     public const string LiteralBulgaria_ = "BG";
+
+    /// <summary>
+    /// Literal for code: NONEBulgaria_
+    /// </summary>
+    public const string LiteralNONEBulgaria_ = "urn:iso:std:iso:3166#BG";
 
     /// <summary>
     /// Literal for code: Bahrain_
@@ -12468,9 +15918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBahrain_ = "BH";
 
     /// <summary>
+    /// Literal for code: NONEBahrain_
+    /// </summary>
+    public const string LiteralNONEBahrain_ = "urn:iso:std:iso:3166#BH";
+
+    /// <summary>
     /// Literal for code: Burundi_
     /// </summary>
     public const string LiteralBurundi_ = "BI";
+
+    /// <summary>
+    /// Literal for code: NONEBurundi_
+    /// </summary>
+    public const string LiteralNONEBurundi_ = "urn:iso:std:iso:3166#BI";
 
     /// <summary>
     /// Literal for code: Benin_
@@ -12478,9 +15938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBenin_ = "BJ";
 
     /// <summary>
+    /// Literal for code: NONEBenin_
+    /// </summary>
+    public const string LiteralNONEBenin_ = "urn:iso:std:iso:3166#BJ";
+
+    /// <summary>
     /// Literal for code: SaintBarthelemy_
     /// </summary>
     public const string LiteralSaintBarthelemy_ = "BL";
+
+    /// <summary>
+    /// Literal for code: NONESaintBarthelemy_
+    /// </summary>
+    public const string LiteralNONESaintBarthelemy_ = "urn:iso:std:iso:3166#BL";
 
     /// <summary>
     /// Literal for code: Bermuda_
@@ -12488,9 +15958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBermuda_ = "BM";
 
     /// <summary>
+    /// Literal for code: NONEBermuda_
+    /// </summary>
+    public const string LiteralNONEBermuda_ = "urn:iso:std:iso:3166#BM";
+
+    /// <summary>
     /// Literal for code: BruneiDarussalam_
     /// </summary>
     public const string LiteralBruneiDarussalam_ = "BN";
+
+    /// <summary>
+    /// Literal for code: NONEBruneiDarussalam_
+    /// </summary>
+    public const string LiteralNONEBruneiDarussalam_ = "urn:iso:std:iso:3166#BN";
 
     /// <summary>
     /// Literal for code: BoliviaPlurinationalStateOf_
@@ -12498,9 +15978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoliviaPlurinationalStateOf_ = "BO";
 
     /// <summary>
+    /// Literal for code: NONEBoliviaPlurinationalStateOf_
+    /// </summary>
+    public const string LiteralNONEBoliviaPlurinationalStateOf_ = "urn:iso:std:iso:3166#BO";
+
+    /// <summary>
     /// Literal for code: BonaireSintEustatiusAndSaba_
     /// </summary>
     public const string LiteralBonaireSintEustatiusAndSaba_ = "BQ";
+
+    /// <summary>
+    /// Literal for code: NONEBonaireSintEustatiusAndSaba_
+    /// </summary>
+    public const string LiteralNONEBonaireSintEustatiusAndSaba_ = "urn:iso:std:iso:3166#BQ";
 
     /// <summary>
     /// Literal for code: Brazil_
@@ -12508,9 +15998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrazil_ = "BR";
 
     /// <summary>
+    /// Literal for code: NONEBrazil_
+    /// </summary>
+    public const string LiteralNONEBrazil_ = "urn:iso:std:iso:3166#BR";
+
+    /// <summary>
     /// Literal for code: BahamasThe_
     /// </summary>
     public const string LiteralBahamasThe_ = "BS";
+
+    /// <summary>
+    /// Literal for code: NONEBahamasThe_
+    /// </summary>
+    public const string LiteralNONEBahamasThe_ = "urn:iso:std:iso:3166#BS";
 
     /// <summary>
     /// Literal for code: Bhutan_
@@ -12518,9 +16018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBhutan_ = "BT";
 
     /// <summary>
+    /// Literal for code: NONEBhutan_
+    /// </summary>
+    public const string LiteralNONEBhutan_ = "urn:iso:std:iso:3166#BT";
+
+    /// <summary>
     /// Literal for code: Burma_
     /// </summary>
     public const string LiteralBurma_ = "BU";
+
+    /// <summary>
+    /// Literal for code: NONEBurma_
+    /// </summary>
+    public const string LiteralNONEBurma_ = "urn:iso:std:iso:3166#BU";
 
     /// <summary>
     /// Literal for code: BouvetIsland_
@@ -12528,9 +16038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBouvetIsland_ = "BV";
 
     /// <summary>
+    /// Literal for code: NONEBouvetIsland_
+    /// </summary>
+    public const string LiteralNONEBouvetIsland_ = "urn:iso:std:iso:3166#BV";
+
+    /// <summary>
     /// Literal for code: Botswana_
     /// </summary>
     public const string LiteralBotswana_ = "BW";
+
+    /// <summary>
+    /// Literal for code: NONEBotswana_
+    /// </summary>
+    public const string LiteralNONEBotswana_ = "urn:iso:std:iso:3166#BW";
 
     /// <summary>
     /// Literal for code: Belarus_
@@ -12538,9 +16058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBelarus_ = "BY";
 
     /// <summary>
+    /// Literal for code: NONEBelarus_
+    /// </summary>
+    public const string LiteralNONEBelarus_ = "urn:iso:std:iso:3166#BY";
+
+    /// <summary>
     /// Literal for code: Belize_
     /// </summary>
     public const string LiteralBelize_ = "BZ";
+
+    /// <summary>
+    /// Literal for code: NONEBelize_
+    /// </summary>
+    public const string LiteralNONEBelize_ = "urn:iso:std:iso:3166#BZ";
 
     /// <summary>
     /// Literal for code: California_
@@ -12548,9 +16078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCalifornia_ = "CA";
 
     /// <summary>
+    /// Literal for code: NONECalifornia_
+    /// </summary>
+    public const string LiteralNONECalifornia_ = "https://www.usps.com/#CA";
+
+    /// <summary>
     /// Literal for code: Canada_
     /// </summary>
     public const string LiteralCanada_ = "CA";
+
+    /// <summary>
+    /// Literal for code: NONECanada_
+    /// </summary>
+    public const string LiteralNONECanada_ = "urn:iso:std:iso:3166#CA";
 
     /// <summary>
     /// Literal for code: Cardiologist_practitioner_specialty
@@ -12558,9 +16098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCardiologist_practitioner_specialty = "cardio";
 
     /// <summary>
+    /// Literal for code: PractitionerSpecialtyCardiologist_practitioner_specialty
+    /// </summary>
+    public const string LiteralPractitionerSpecialtyCardiologist_practitioner_specialty = "http://hl7.org/fhir/practitioner-specialty#cardio";
+
+    /// <summary>
     /// Literal for code: CocosKeelingIslandsThe_
     /// </summary>
     public const string LiteralCocosKeelingIslandsThe_ = "CC";
+
+    /// <summary>
+    /// Literal for code: NONECocosKeelingIslandsThe_
+    /// </summary>
+    public const string LiteralNONECocosKeelingIslandsThe_ = "urn:iso:std:iso:3166#CC";
 
     /// <summary>
     /// Literal for code: CongoTheDemocraticRepublicOfThe_
@@ -12568,9 +16118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCongoTheDemocraticRepublicOfThe_ = "CD";
 
     /// <summary>
+    /// Literal for code: NONECongoTheDemocraticRepublicOfThe_
+    /// </summary>
+    public const string LiteralNONECongoTheDemocraticRepublicOfThe_ = "urn:iso:std:iso:3166#CD";
+
+    /// <summary>
     /// Literal for code: CentralAfricanRepublicThe_
     /// </summary>
     public const string LiteralCentralAfricanRepublicThe_ = "CF";
+
+    /// <summary>
+    /// Literal for code: NONECentralAfricanRepublicThe_
+    /// </summary>
+    public const string LiteralNONECentralAfricanRepublicThe_ = "urn:iso:std:iso:3166#CF";
 
     /// <summary>
     /// Literal for code: CongoThe_
@@ -12578,9 +16138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCongoThe_ = "CG";
 
     /// <summary>
+    /// Literal for code: NONECongoThe_
+    /// </summary>
+    public const string LiteralNONECongoThe_ = "urn:iso:std:iso:3166#CG";
+
+    /// <summary>
     /// Literal for code: Switzerland_
     /// </summary>
     public const string LiteralSwitzerland_ = "CH";
+
+    /// <summary>
+    /// Literal for code: NONESwitzerland_
+    /// </summary>
+    public const string LiteralNONESwitzerland_ = "urn:iso:std:iso:3166#CH";
 
     /// <summary>
     /// Literal for code: CoteDQuoteIvoire_
@@ -12588,9 +16158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoteDQuoteIvoire_ = "CI";
 
     /// <summary>
+    /// Literal for code: NONECoteDQuoteIvoire_
+    /// </summary>
+    public const string LiteralNONECoteDQuoteIvoire_ = "urn:iso:std:iso:3166#CI";
+
+    /// <summary>
     /// Literal for code: CookIslandsThe_
     /// </summary>
     public const string LiteralCookIslandsThe_ = "CK";
+
+    /// <summary>
+    /// Literal for code: NONECookIslandsThe_
+    /// </summary>
+    public const string LiteralNONECookIslandsThe_ = "urn:iso:std:iso:3166#CK";
 
     /// <summary>
     /// Literal for code: Chile_
@@ -12598,9 +16178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChile_ = "CL";
 
     /// <summary>
+    /// Literal for code: NONEChile_
+    /// </summary>
+    public const string LiteralNONEChile_ = "urn:iso:std:iso:3166#CL";
+
+    /// <summary>
     /// Literal for code: Cameroon_
     /// </summary>
     public const string LiteralCameroon_ = "CM";
+
+    /// <summary>
+    /// Literal for code: NONECameroon_
+    /// </summary>
+    public const string LiteralNONECameroon_ = "urn:iso:std:iso:3166#CM";
 
     /// <summary>
     /// Literal for code: China_
@@ -12608,9 +16198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChina_ = "CN";
 
     /// <summary>
+    /// Literal for code: NONEChina_
+    /// </summary>
+    public const string LiteralNONEChina_ = "urn:iso:std:iso:3166#CN";
+
+    /// <summary>
     /// Literal for code: Colorado_
     /// </summary>
     public const string LiteralColorado_ = "CO";
+
+    /// <summary>
+    /// Literal for code: NONEColorado_
+    /// </summary>
+    public const string LiteralNONEColorado_ = "https://www.usps.com/#CO";
 
     /// <summary>
     /// Literal for code: Colombia_
@@ -12618,9 +16218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColombia_ = "CO";
 
     /// <summary>
+    /// Literal for code: NONEColombia_
+    /// </summary>
+    public const string LiteralNONEColombia_ = "urn:iso:std:iso:3166#CO";
+
+    /// <summary>
     /// Literal for code: CostaRica_
     /// </summary>
     public const string LiteralCostaRica_ = "CR";
+
+    /// <summary>
+    /// Literal for code: NONECostaRica_
+    /// </summary>
+    public const string LiteralNONECostaRica_ = "urn:iso:std:iso:3166#CR";
 
     /// <summary>
     /// Literal for code: SerbiaAndMontenegro_
@@ -12628,9 +16238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerbiaAndMontenegro_ = "CS";
 
     /// <summary>
+    /// Literal for code: NONESerbiaAndMontenegro_
+    /// </summary>
+    public const string LiteralNONESerbiaAndMontenegro_ = "urn:iso:std:iso:3166#CS";
+
+    /// <summary>
     /// Literal for code: Connecticut_
     /// </summary>
     public const string LiteralConnecticut_ = "CT";
+
+    /// <summary>
+    /// Literal for code: NONEConnecticut_
+    /// </summary>
+    public const string LiteralNONEConnecticut_ = "https://www.usps.com/#CT";
 
     /// <summary>
     /// Literal for code: CantonAndEnderburyIslands_
@@ -12638,9 +16258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCantonAndEnderburyIslands_ = "CT";
 
     /// <summary>
+    /// Literal for code: NONECantonAndEnderburyIslands_
+    /// </summary>
+    public const string LiteralNONECantonAndEnderburyIslands_ = "urn:iso:std:iso:3166#CT";
+
+    /// <summary>
     /// Literal for code: Cuba_
     /// </summary>
     public const string LiteralCuba_ = "CU";
+
+    /// <summary>
+    /// Literal for code: NONECuba_
+    /// </summary>
+    public const string LiteralNONECuba_ = "urn:iso:std:iso:3166#CU";
 
     /// <summary>
     /// Literal for code: CaboVerde_
@@ -12648,9 +16278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCaboVerde_ = "CV";
 
     /// <summary>
+    /// Literal for code: NONECaboVerde_
+    /// </summary>
+    public const string LiteralNONECaboVerde_ = "urn:iso:std:iso:3166#CV";
+
+    /// <summary>
     /// Literal for code: Curacao_
     /// </summary>
     public const string LiteralCuracao_ = "CW";
+
+    /// <summary>
+    /// Literal for code: NONECuracao_
+    /// </summary>
+    public const string LiteralNONECuracao_ = "urn:iso:std:iso:3166#CW";
 
     /// <summary>
     /// Literal for code: ChristmasIsland_
@@ -12658,9 +16298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChristmasIsland_ = "CX";
 
     /// <summary>
+    /// Literal for code: NONEChristmasIsland_
+    /// </summary>
+    public const string LiteralNONEChristmasIsland_ = "urn:iso:std:iso:3166#CX";
+
+    /// <summary>
     /// Literal for code: Cyprus_
     /// </summary>
     public const string LiteralCyprus_ = "CY";
+
+    /// <summary>
+    /// Literal for code: NONECyprus_
+    /// </summary>
+    public const string LiteralNONECyprus_ = "urn:iso:std:iso:3166#CY";
 
     /// <summary>
     /// Literal for code: CzechRepublicThe_
@@ -12668,9 +16318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCzechRepublicThe_ = "CZ";
 
     /// <summary>
+    /// Literal for code: NONECzechRepublicThe_
+    /// </summary>
+    public const string LiteralNONECzechRepublicThe_ = "urn:iso:std:iso:3166#CZ";
+
+    /// <summary>
     /// Literal for code: DistrictOfColumbia_
     /// </summary>
     public const string LiteralDistrictOfColumbia_ = "DC";
+
+    /// <summary>
+    /// Literal for code: NONEDistrictOfColumbia_
+    /// </summary>
+    public const string LiteralNONEDistrictOfColumbia_ = "https://www.usps.com/#DC";
 
     /// <summary>
     /// Literal for code: GermanDemocraticRepublic_
@@ -12678,9 +16338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGermanDemocraticRepublic_ = "DD";
 
     /// <summary>
+    /// Literal for code: NONEGermanDemocraticRepublic_
+    /// </summary>
+    public const string LiteralNONEGermanDemocraticRepublic_ = "urn:iso:std:iso:3166#DD";
+
+    /// <summary>
     /// Literal for code: Delaware_
     /// </summary>
     public const string LiteralDelaware_ = "DE";
+
+    /// <summary>
+    /// Literal for code: NONEDelaware_
+    /// </summary>
+    public const string LiteralNONEDelaware_ = "https://www.usps.com/#DE";
 
     /// <summary>
     /// Literal for code: Germany_
@@ -12688,9 +16358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGermany_ = "DE";
 
     /// <summary>
+    /// Literal for code: NONEGermany_
+    /// </summary>
+    public const string LiteralNONEGermany_ = "urn:iso:std:iso:3166#DE";
+
+    /// <summary>
     /// Literal for code: Dentist_practitioner_specialty
     /// </summary>
     public const string LiteralDentist_practitioner_specialty = "dent";
+
+    /// <summary>
+    /// Literal for code: PractitionerSpecialtyDentist_practitioner_specialty
+    /// </summary>
+    public const string LiteralPractitionerSpecialtyDentist_practitioner_specialty = "http://hl7.org/fhir/practitioner-specialty#dent";
 
     /// <summary>
     /// Literal for code: DietaryConsultant_practitioner_specialty
@@ -12698,9 +16378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDietaryConsultant_practitioner_specialty = "dietary";
 
     /// <summary>
+    /// Literal for code: PractitionerSpecialtyDietaryConsultant_practitioner_specialty
+    /// </summary>
+    public const string LiteralPractitionerSpecialtyDietaryConsultant_practitioner_specialty = "http://hl7.org/fhir/practitioner-specialty#dietary";
+
+    /// <summary>
     /// Literal for code: Djibouti_
     /// </summary>
     public const string LiteralDjibouti_ = "DJ";
+
+    /// <summary>
+    /// Literal for code: NONEDjibouti_
+    /// </summary>
+    public const string LiteralNONEDjibouti_ = "urn:iso:std:iso:3166#DJ";
 
     /// <summary>
     /// Literal for code: Denmark_
@@ -12708,9 +16398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDenmark_ = "DK";
 
     /// <summary>
+    /// Literal for code: NONEDenmark_
+    /// </summary>
+    public const string LiteralNONEDenmark_ = "urn:iso:std:iso:3166#DK";
+
+    /// <summary>
     /// Literal for code: Dominica_
     /// </summary>
     public const string LiteralDominica_ = "DM";
+
+    /// <summary>
+    /// Literal for code: NONEDominica_
+    /// </summary>
+    public const string LiteralNONEDominica_ = "urn:iso:std:iso:3166#DM";
 
     /// <summary>
     /// Literal for code: DominicanRepublicThe_
@@ -12718,9 +16418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDominicanRepublicThe_ = "DO";
 
     /// <summary>
+    /// Literal for code: NONEDominicanRepublicThe_
+    /// </summary>
+    public const string LiteralNONEDominicanRepublicThe_ = "urn:iso:std:iso:3166#DO";
+
+    /// <summary>
     /// Literal for code: Dahomey_
     /// </summary>
     public const string LiteralDahomey_ = "DY";
+
+    /// <summary>
+    /// Literal for code: NONEDahomey_
+    /// </summary>
+    public const string LiteralNONEDahomey_ = "urn:iso:std:iso:3166#DY";
 
     /// <summary>
     /// Literal for code: Algeria_
@@ -12728,9 +16438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlgeria_ = "DZ";
 
     /// <summary>
+    /// Literal for code: NONEAlgeria_
+    /// </summary>
+    public const string LiteralNONEAlgeria_ = "urn:iso:std:iso:3166#DZ";
+
+    /// <summary>
     /// Literal for code: Ecuador_
     /// </summary>
     public const string LiteralEcuador_ = "EC";
+
+    /// <summary>
+    /// Literal for code: NONEEcuador_
+    /// </summary>
+    public const string LiteralNONEEcuador_ = "urn:iso:std:iso:3166#EC";
 
     /// <summary>
     /// Literal for code: Estonia_
@@ -12738,9 +16458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEstonia_ = "EE";
 
     /// <summary>
+    /// Literal for code: NONEEstonia_
+    /// </summary>
+    public const string LiteralNONEEstonia_ = "urn:iso:std:iso:3166#EE";
+
+    /// <summary>
     /// Literal for code: Egypt_
     /// </summary>
     public const string LiteralEgypt_ = "EG";
+
+    /// <summary>
+    /// Literal for code: NONEEgypt_
+    /// </summary>
+    public const string LiteralNONEEgypt_ = "urn:iso:std:iso:3166#EG";
 
     /// <summary>
     /// Literal for code: WesternSaharaAsterisk_
@@ -12748,9 +16478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWesternSaharaAsterisk_ = "EH";
 
     /// <summary>
+    /// Literal for code: NONEWesternSaharaAsterisk_
+    /// </summary>
+    public const string LiteralNONEWesternSaharaAsterisk_ = "urn:iso:std:iso:3166#EH";
+
+    /// <summary>
     /// Literal for code: Eritrea_
     /// </summary>
     public const string LiteralEritrea_ = "ER";
+
+    /// <summary>
+    /// Literal for code: NONEEritrea_
+    /// </summary>
+    public const string LiteralNONEEritrea_ = "urn:iso:std:iso:3166#ER";
 
     /// <summary>
     /// Literal for code: Spain_
@@ -12758,9 +16498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpain_ = "ES";
 
     /// <summary>
+    /// Literal for code: NONESpain_
+    /// </summary>
+    public const string LiteralNONESpain_ = "urn:iso:std:iso:3166#ES";
+
+    /// <summary>
     /// Literal for code: Ethiopia_
     /// </summary>
     public const string LiteralEthiopia_ = "ET";
+
+    /// <summary>
+    /// Literal for code: NONEEthiopia_
+    /// </summary>
+    public const string LiteralNONEEthiopia_ = "urn:iso:std:iso:3166#ET";
 
     /// <summary>
     /// Literal for code: Finland_
@@ -12768,9 +16518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFinland_ = "FI";
 
     /// <summary>
+    /// Literal for code: NONEFinland_
+    /// </summary>
+    public const string LiteralNONEFinland_ = "urn:iso:std:iso:3166#FI";
+
+    /// <summary>
     /// Literal for code: Fiji_
     /// </summary>
     public const string LiteralFiji_ = "FJ";
+
+    /// <summary>
+    /// Literal for code: NONEFiji_
+    /// </summary>
+    public const string LiteralNONEFiji_ = "urn:iso:std:iso:3166#FJ";
 
     /// <summary>
     /// Literal for code: FalklandIslandsTheMalvinas_
@@ -12778,9 +16538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFalklandIslandsTheMalvinas_ = "FK";
 
     /// <summary>
+    /// Literal for code: NONEFalklandIslandsTheMalvinas_
+    /// </summary>
+    public const string LiteralNONEFalklandIslandsTheMalvinas_ = "urn:iso:std:iso:3166#FK";
+
+    /// <summary>
     /// Literal for code: Florida_
     /// </summary>
     public const string LiteralFlorida_ = "FL";
+
+    /// <summary>
+    /// Literal for code: NONEFlorida_
+    /// </summary>
+    public const string LiteralNONEFlorida_ = "https://www.usps.com/#FL";
 
     /// <summary>
     /// Literal for code: FederatedStatesOfMicronesia_
@@ -12788,9 +16558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFederatedStatesOfMicronesia_ = "FM";
 
     /// <summary>
+    /// Literal for code: NONEFederatedStatesOfMicronesia_
+    /// </summary>
+    public const string LiteralNONEFederatedStatesOfMicronesia_ = "https://www.usps.com/#FM";
+
+    /// <summary>
     /// Literal for code: MicronesiaFederatedStatesOf_
     /// </summary>
     public const string LiteralMicronesiaFederatedStatesOf_ = "FM";
+
+    /// <summary>
+    /// Literal for code: NONEMicronesiaFederatedStatesOf_
+    /// </summary>
+    public const string LiteralNONEMicronesiaFederatedStatesOf_ = "urn:iso:std:iso:3166#FM";
 
     /// <summary>
     /// Literal for code: FaroeIslandsThe_
@@ -12798,9 +16578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFaroeIslandsThe_ = "FO";
 
     /// <summary>
+    /// Literal for code: NONEFaroeIslandsThe_
+    /// </summary>
+    public const string LiteralNONEFaroeIslandsThe_ = "urn:iso:std:iso:3166#FO";
+
+    /// <summary>
     /// Literal for code: FrenchSouthernAndAntarcticTerritories_
     /// </summary>
     public const string LiteralFrenchSouthernAndAntarcticTerritories_ = "FQ";
+
+    /// <summary>
+    /// Literal for code: NONEFrenchSouthernAndAntarcticTerritories_
+    /// </summary>
+    public const string LiteralNONEFrenchSouthernAndAntarcticTerritories_ = "urn:iso:std:iso:3166#FQ";
 
     /// <summary>
     /// Literal for code: France_
@@ -12808,9 +16598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFrance_ = "FR";
 
     /// <summary>
+    /// Literal for code: NONEFrance_
+    /// </summary>
+    public const string LiteralNONEFrance_ = "urn:iso:std:iso:3166#FR";
+
+    /// <summary>
     /// Literal for code: Georgia_
     /// </summary>
     public const string LiteralGeorgia_ = "GA";
+
+    /// <summary>
+    /// Literal for code: NONEGeorgia_
+    /// </summary>
+    public const string LiteralNONEGeorgia_ = "https://www.usps.com/#GA";
 
     /// <summary>
     /// Literal for code: Gabon_
@@ -12818,9 +16618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGabon_ = "GA";
 
     /// <summary>
+    /// Literal for code: NONEGabon_
+    /// </summary>
+    public const string LiteralNONEGabon_ = "urn:iso:std:iso:3166#GA";
+
+    /// <summary>
     /// Literal for code: UnitedKingdomOfGreatBritainAndNorthernIrelandThe_
     /// </summary>
     public const string LiteralUnitedKingdomOfGreatBritainAndNorthernIrelandThe_ = "GB";
+
+    /// <summary>
+    /// Literal for code: NONEUnitedKingdomOfGreatBritainAndNorthernIrelandThe_
+    /// </summary>
+    public const string LiteralNONEUnitedKingdomOfGreatBritainAndNorthernIrelandThe_ = "urn:iso:std:iso:3166#GB";
 
     /// <summary>
     /// Literal for code: Grenada_
@@ -12828,9 +16638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGrenada_ = "GD";
 
     /// <summary>
+    /// Literal for code: NONEGrenada_
+    /// </summary>
+    public const string LiteralNONEGrenada_ = "urn:iso:std:iso:3166#GD";
+
+    /// <summary>
     /// Literal for code: Georgia__2
     /// </summary>
     public const string LiteralGeorgia__2 = "GE";
+
+    /// <summary>
+    /// Literal for code: NONEGeorgia__2
+    /// </summary>
+    public const string LiteralNONEGeorgia__2 = "urn:iso:std:iso:3166#GE";
 
     /// <summary>
     /// Literal for code: FrenchGuiana_
@@ -12838,9 +16658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFrenchGuiana_ = "GF";
 
     /// <summary>
+    /// Literal for code: NONEFrenchGuiana_
+    /// </summary>
+    public const string LiteralNONEFrenchGuiana_ = "urn:iso:std:iso:3166#GF";
+
+    /// <summary>
     /// Literal for code: Guernsey_
     /// </summary>
     public const string LiteralGuernsey_ = "GG";
+
+    /// <summary>
+    /// Literal for code: NONEGuernsey_
+    /// </summary>
+    public const string LiteralNONEGuernsey_ = "urn:iso:std:iso:3166#GG";
 
     /// <summary>
     /// Literal for code: Ghana_
@@ -12848,9 +16678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGhana_ = "GH";
 
     /// <summary>
+    /// Literal for code: NONEGhana_
+    /// </summary>
+    public const string LiteralNONEGhana_ = "urn:iso:std:iso:3166#GH";
+
+    /// <summary>
     /// Literal for code: Gibraltar_
     /// </summary>
     public const string LiteralGibraltar_ = "GI";
+
+    /// <summary>
+    /// Literal for code: NONEGibraltar_
+    /// </summary>
+    public const string LiteralNONEGibraltar_ = "urn:iso:std:iso:3166#GI";
 
     /// <summary>
     /// Literal for code: Greenland_
@@ -12858,9 +16698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGreenland_ = "GL";
 
     /// <summary>
+    /// Literal for code: NONEGreenland_
+    /// </summary>
+    public const string LiteralNONEGreenland_ = "urn:iso:std:iso:3166#GL";
+
+    /// <summary>
     /// Literal for code: GambiaThe_
     /// </summary>
     public const string LiteralGambiaThe_ = "GM";
+
+    /// <summary>
+    /// Literal for code: NONEGambiaThe_
+    /// </summary>
+    public const string LiteralNONEGambiaThe_ = "urn:iso:std:iso:3166#GM";
 
     /// <summary>
     /// Literal for code: Guinea_
@@ -12868,9 +16718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuinea_ = "GN";
 
     /// <summary>
+    /// Literal for code: NONEGuinea_
+    /// </summary>
+    public const string LiteralNONEGuinea_ = "urn:iso:std:iso:3166#GN";
+
+    /// <summary>
     /// Literal for code: Guadeloupe_
     /// </summary>
     public const string LiteralGuadeloupe_ = "GP";
+
+    /// <summary>
+    /// Literal for code: NONEGuadeloupe_
+    /// </summary>
+    public const string LiteralNONEGuadeloupe_ = "urn:iso:std:iso:3166#GP";
 
     /// <summary>
     /// Literal for code: EquatorialGuinea_
@@ -12878,9 +16738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEquatorialGuinea_ = "GQ";
 
     /// <summary>
+    /// Literal for code: NONEEquatorialGuinea_
+    /// </summary>
+    public const string LiteralNONEEquatorialGuinea_ = "urn:iso:std:iso:3166#GQ";
+
+    /// <summary>
     /// Literal for code: Greece_
     /// </summary>
     public const string LiteralGreece_ = "GR";
+
+    /// <summary>
+    /// Literal for code: NONEGreece_
+    /// </summary>
+    public const string LiteralNONEGreece_ = "urn:iso:std:iso:3166#GR";
 
     /// <summary>
     /// Literal for code: SouthGeorgiaAndTheSouthSandwichIslands_
@@ -12888,9 +16758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthGeorgiaAndTheSouthSandwichIslands_ = "GS";
 
     /// <summary>
+    /// Literal for code: NONESouthGeorgiaAndTheSouthSandwichIslands_
+    /// </summary>
+    public const string LiteralNONESouthGeorgiaAndTheSouthSandwichIslands_ = "urn:iso:std:iso:3166#GS";
+
+    /// <summary>
     /// Literal for code: Guatemala_
     /// </summary>
     public const string LiteralGuatemala_ = "GT";
+
+    /// <summary>
+    /// Literal for code: NONEGuatemala_
+    /// </summary>
+    public const string LiteralNONEGuatemala_ = "urn:iso:std:iso:3166#GT";
 
     /// <summary>
     /// Literal for code: Guam_
@@ -12898,9 +16778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuam_ = "GU";
 
     /// <summary>
+    /// Literal for code: NONEGuam_
+    /// </summary>
+    public const string LiteralNONEGuam_ = "https://www.usps.com/#GU";
+
+    /// <summary>
     /// Literal for code: Guam__2
     /// </summary>
     public const string LiteralGuam__2 = "GU";
+
+    /// <summary>
+    /// Literal for code: NONEGuam__2
+    /// </summary>
+    public const string LiteralNONEGuam__2 = "urn:iso:std:iso:3166#GU";
 
     /// <summary>
     /// Literal for code: GuineaBissau_
@@ -12908,9 +16798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuineaBissau_ = "GW";
 
     /// <summary>
+    /// Literal for code: NONEGuineaBissau_
+    /// </summary>
+    public const string LiteralNONEGuineaBissau_ = "urn:iso:std:iso:3166#GW";
+
+    /// <summary>
     /// Literal for code: Guyana_
     /// </summary>
     public const string LiteralGuyana_ = "GY";
+
+    /// <summary>
+    /// Literal for code: NONEGuyana_
+    /// </summary>
+    public const string LiteralNONEGuyana_ = "urn:iso:std:iso:3166#GY";
 
     /// <summary>
     /// Literal for code: Hawaii_
@@ -12918,9 +16818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHawaii_ = "HI";
 
     /// <summary>
+    /// Literal for code: NONEHawaii_
+    /// </summary>
+    public const string LiteralNONEHawaii_ = "https://www.usps.com/#HI";
+
+    /// <summary>
     /// Literal for code: HongKong_
     /// </summary>
     public const string LiteralHongKong_ = "HK";
+
+    /// <summary>
+    /// Literal for code: NONEHongKong_
+    /// </summary>
+    public const string LiteralNONEHongKong_ = "urn:iso:std:iso:3166#HK";
 
     /// <summary>
     /// Literal for code: HeardIslandAndMcDonaldIslands_
@@ -12928,9 +16838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeardIslandAndMcDonaldIslands_ = "HM";
 
     /// <summary>
+    /// Literal for code: NONEHeardIslandAndMcDonaldIslands_
+    /// </summary>
+    public const string LiteralNONEHeardIslandAndMcDonaldIslands_ = "urn:iso:std:iso:3166#HM";
+
+    /// <summary>
     /// Literal for code: Honduras_
     /// </summary>
     public const string LiteralHonduras_ = "HN";
+
+    /// <summary>
+    /// Literal for code: NONEHonduras_
+    /// </summary>
+    public const string LiteralNONEHonduras_ = "urn:iso:std:iso:3166#HN";
 
     /// <summary>
     /// Literal for code: Croatia_
@@ -12938,9 +16858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCroatia_ = "HR";
 
     /// <summary>
+    /// Literal for code: NONECroatia_
+    /// </summary>
+    public const string LiteralNONECroatia_ = "urn:iso:std:iso:3166#HR";
+
+    /// <summary>
     /// Literal for code: Haiti_
     /// </summary>
     public const string LiteralHaiti_ = "HT";
+
+    /// <summary>
+    /// Literal for code: NONEHaiti_
+    /// </summary>
+    public const string LiteralNONEHaiti_ = "urn:iso:std:iso:3166#HT";
 
     /// <summary>
     /// Literal for code: Hungary_
@@ -12948,9 +16878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHungary_ = "HU";
 
     /// <summary>
+    /// Literal for code: NONEHungary_
+    /// </summary>
+    public const string LiteralNONEHungary_ = "urn:iso:std:iso:3166#HU";
+
+    /// <summary>
     /// Literal for code: UpperVolta_
     /// </summary>
     public const string LiteralUpperVolta_ = "HV";
+
+    /// <summary>
+    /// Literal for code: NONEUpperVolta_
+    /// </summary>
+    public const string LiteralNONEUpperVolta_ = "urn:iso:std:iso:3166#HV";
 
     /// <summary>
     /// Literal for code: Iowa_
@@ -12958,9 +16898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIowa_ = "IA";
 
     /// <summary>
+    /// Literal for code: NONEIowa_
+    /// </summary>
+    public const string LiteralNONEIowa_ = "https://www.usps.com/#IA";
+
+    /// <summary>
     /// Literal for code: Idaho_
     /// </summary>
     public const string LiteralIdaho_ = "ID";
+
+    /// <summary>
+    /// Literal for code: NONEIdaho_
+    /// </summary>
+    public const string LiteralNONEIdaho_ = "https://www.usps.com/#ID";
 
     /// <summary>
     /// Literal for code: Indonesia_
@@ -12968,9 +16918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndonesia_ = "ID";
 
     /// <summary>
+    /// Literal for code: NONEIndonesia_
+    /// </summary>
+    public const string LiteralNONEIndonesia_ = "urn:iso:std:iso:3166#ID";
+
+    /// <summary>
     /// Literal for code: Ireland_
     /// </summary>
     public const string LiteralIreland_ = "IE";
+
+    /// <summary>
+    /// Literal for code: NONEIreland_
+    /// </summary>
+    public const string LiteralNONEIreland_ = "urn:iso:std:iso:3166#IE";
 
     /// <summary>
     /// Literal for code: Illinois_
@@ -12978,9 +16938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIllinois_ = "IL";
 
     /// <summary>
+    /// Literal for code: NONEIllinois_
+    /// </summary>
+    public const string LiteralNONEIllinois_ = "https://www.usps.com/#IL";
+
+    /// <summary>
     /// Literal for code: Israel_
     /// </summary>
     public const string LiteralIsrael_ = "IL";
+
+    /// <summary>
+    /// Literal for code: NONEIsrael_
+    /// </summary>
+    public const string LiteralNONEIsrael_ = "urn:iso:std:iso:3166#IL";
 
     /// <summary>
     /// Literal for code: IsleOfMan_
@@ -12988,9 +16958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIsleOfMan_ = "IM";
 
     /// <summary>
+    /// Literal for code: NONEIsleOfMan_
+    /// </summary>
+    public const string LiteralNONEIsleOfMan_ = "urn:iso:std:iso:3166#IM";
+
+    /// <summary>
     /// Literal for code: Indiana_
     /// </summary>
     public const string LiteralIndiana_ = "IN";
+
+    /// <summary>
+    /// Literal for code: NONEIndiana_
+    /// </summary>
+    public const string LiteralNONEIndiana_ = "https://www.usps.com/#IN";
 
     /// <summary>
     /// Literal for code: India_
@@ -12998,9 +16978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndia_ = "IN";
 
     /// <summary>
+    /// Literal for code: NONEIndia_
+    /// </summary>
+    public const string LiteralNONEIndia_ = "urn:iso:std:iso:3166#IN";
+
+    /// <summary>
     /// Literal for code: BritishIndianOceanTerritoryThe_
     /// </summary>
     public const string LiteralBritishIndianOceanTerritoryThe_ = "IO";
+
+    /// <summary>
+    /// Literal for code: NONEBritishIndianOceanTerritoryThe_
+    /// </summary>
+    public const string LiteralNONEBritishIndianOceanTerritoryThe_ = "urn:iso:std:iso:3166#IO";
 
     /// <summary>
     /// Literal for code: Iraq_
@@ -13008,9 +16998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIraq_ = "IQ";
 
     /// <summary>
+    /// Literal for code: NONEIraq_
+    /// </summary>
+    public const string LiteralNONEIraq_ = "urn:iso:std:iso:3166#IQ";
+
+    /// <summary>
     /// Literal for code: IranIslamicRepublicOf_
     /// </summary>
     public const string LiteralIranIslamicRepublicOf_ = "IR";
+
+    /// <summary>
+    /// Literal for code: NONEIranIslamicRepublicOf_
+    /// </summary>
+    public const string LiteralNONEIranIslamicRepublicOf_ = "urn:iso:std:iso:3166#IR";
 
     /// <summary>
     /// Literal for code: Iceland_
@@ -13018,9 +17018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIceland_ = "IS";
 
     /// <summary>
+    /// Literal for code: NONEIceland_
+    /// </summary>
+    public const string LiteralNONEIceland_ = "urn:iso:std:iso:3166#IS";
+
+    /// <summary>
     /// Literal for code: Italy_
     /// </summary>
     public const string LiteralItaly_ = "IT";
+
+    /// <summary>
+    /// Literal for code: NONEItaly_
+    /// </summary>
+    public const string LiteralNONEItaly_ = "urn:iso:std:iso:3166#IT";
 
     /// <summary>
     /// Literal for code: Jersey_
@@ -13028,9 +17038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralJersey_ = "JE";
 
     /// <summary>
+    /// Literal for code: NONEJersey_
+    /// </summary>
+    public const string LiteralNONEJersey_ = "urn:iso:std:iso:3166#JE";
+
+    /// <summary>
     /// Literal for code: Jamaica_
     /// </summary>
     public const string LiteralJamaica_ = "JM";
+
+    /// <summary>
+    /// Literal for code: NONEJamaica_
+    /// </summary>
+    public const string LiteralNONEJamaica_ = "urn:iso:std:iso:3166#JM";
 
     /// <summary>
     /// Literal for code: Jordan_
@@ -13038,9 +17058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralJordan_ = "JO";
 
     /// <summary>
+    /// Literal for code: NONEJordan_
+    /// </summary>
+    public const string LiteralNONEJordan_ = "urn:iso:std:iso:3166#JO";
+
+    /// <summary>
     /// Literal for code: Japan_
     /// </summary>
     public const string LiteralJapan_ = "JP";
+
+    /// <summary>
+    /// Literal for code: NONEJapan_
+    /// </summary>
+    public const string LiteralNONEJapan_ = "urn:iso:std:iso:3166#JP";
 
     /// <summary>
     /// Literal for code: JohnstonIsland_
@@ -13048,9 +17078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralJohnstonIsland_ = "JT";
 
     /// <summary>
+    /// Literal for code: NONEJohnstonIsland_
+    /// </summary>
+    public const string LiteralNONEJohnstonIsland_ = "urn:iso:std:iso:3166#JT";
+
+    /// <summary>
     /// Literal for code: Kenya_
     /// </summary>
     public const string LiteralKenya_ = "KE";
+
+    /// <summary>
+    /// Literal for code: NONEKenya_
+    /// </summary>
+    public const string LiteralNONEKenya_ = "urn:iso:std:iso:3166#KE";
 
     /// <summary>
     /// Literal for code: Kyrgyzstan_
@@ -13058,9 +17098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKyrgyzstan_ = "KG";
 
     /// <summary>
+    /// Literal for code: NONEKyrgyzstan_
+    /// </summary>
+    public const string LiteralNONEKyrgyzstan_ = "urn:iso:std:iso:3166#KG";
+
+    /// <summary>
     /// Literal for code: Cambodia_
     /// </summary>
     public const string LiteralCambodia_ = "KH";
+
+    /// <summary>
+    /// Literal for code: NONECambodia_
+    /// </summary>
+    public const string LiteralNONECambodia_ = "urn:iso:std:iso:3166#KH";
 
     /// <summary>
     /// Literal for code: Kiribati_
@@ -13068,9 +17118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKiribati_ = "KI";
 
     /// <summary>
+    /// Literal for code: NONEKiribati_
+    /// </summary>
+    public const string LiteralNONEKiribati_ = "urn:iso:std:iso:3166#KI";
+
+    /// <summary>
     /// Literal for code: ComorosThe_
     /// </summary>
     public const string LiteralComorosThe_ = "KM";
+
+    /// <summary>
+    /// Literal for code: NONEComorosThe_
+    /// </summary>
+    public const string LiteralNONEComorosThe_ = "urn:iso:std:iso:3166#KM";
 
     /// <summary>
     /// Literal for code: SaintKittsAndNevis_
@@ -13078,9 +17138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaintKittsAndNevis_ = "KN";
 
     /// <summary>
+    /// Literal for code: NONESaintKittsAndNevis_
+    /// </summary>
+    public const string LiteralNONESaintKittsAndNevis_ = "urn:iso:std:iso:3166#KN";
+
+    /// <summary>
     /// Literal for code: KoreaTheDemocraticPeopleQuoteSRepublicOf_
     /// </summary>
     public const string LiteralKoreaTheDemocraticPeopleQuoteSRepublicOf_ = "KP";
+
+    /// <summary>
+    /// Literal for code: NONEKoreaTheDemocraticPeopleQuoteSRepublicOf_
+    /// </summary>
+    public const string LiteralNONEKoreaTheDemocraticPeopleQuoteSRepublicOf_ = "urn:iso:std:iso:3166#KP";
 
     /// <summary>
     /// Literal for code: KoreaTheRepublicOf_
@@ -13088,9 +17158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKoreaTheRepublicOf_ = "KR";
 
     /// <summary>
+    /// Literal for code: NONEKoreaTheRepublicOf_
+    /// </summary>
+    public const string LiteralNONEKoreaTheRepublicOf_ = "urn:iso:std:iso:3166#KR";
+
+    /// <summary>
     /// Literal for code: Kansas_
     /// </summary>
     public const string LiteralKansas_ = "KS";
+
+    /// <summary>
+    /// Literal for code: NONEKansas_
+    /// </summary>
+    public const string LiteralNONEKansas_ = "https://www.usps.com/#KS";
 
     /// <summary>
     /// Literal for code: Kuwait_
@@ -13098,9 +17178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKuwait_ = "KW";
 
     /// <summary>
+    /// Literal for code: NONEKuwait_
+    /// </summary>
+    public const string LiteralNONEKuwait_ = "urn:iso:std:iso:3166#KW";
+
+    /// <summary>
     /// Literal for code: Kentucky_
     /// </summary>
     public const string LiteralKentucky_ = "KY";
+
+    /// <summary>
+    /// Literal for code: NONEKentucky_
+    /// </summary>
+    public const string LiteralNONEKentucky_ = "https://www.usps.com/#KY";
 
     /// <summary>
     /// Literal for code: CaymanIslandsThe_
@@ -13108,9 +17198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCaymanIslandsThe_ = "KY";
 
     /// <summary>
+    /// Literal for code: NONECaymanIslandsThe_
+    /// </summary>
+    public const string LiteralNONECaymanIslandsThe_ = "urn:iso:std:iso:3166#KY";
+
+    /// <summary>
     /// Literal for code: Kazakhstan_
     /// </summary>
     public const string LiteralKazakhstan_ = "KZ";
+
+    /// <summary>
+    /// Literal for code: NONEKazakhstan_
+    /// </summary>
+    public const string LiteralNONEKazakhstan_ = "urn:iso:std:iso:3166#KZ";
 
     /// <summary>
     /// Literal for code: Louisiana_
@@ -13118,9 +17218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLouisiana_ = "LA";
 
     /// <summary>
+    /// Literal for code: NONELouisiana_
+    /// </summary>
+    public const string LiteralNONELouisiana_ = "https://www.usps.com/#LA";
+
+    /// <summary>
     /// Literal for code: LaoPeopleQuoteSDemocraticRepublicThe_
     /// </summary>
     public const string LiteralLaoPeopleQuoteSDemocraticRepublicThe_ = "LA";
+
+    /// <summary>
+    /// Literal for code: NONELaoPeopleQuoteSDemocraticRepublicThe_
+    /// </summary>
+    public const string LiteralNONELaoPeopleQuoteSDemocraticRepublicThe_ = "urn:iso:std:iso:3166#LA";
 
     /// <summary>
     /// Literal for code: Lebanon_
@@ -13128,9 +17238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLebanon_ = "LB";
 
     /// <summary>
+    /// Literal for code: NONELebanon_
+    /// </summary>
+    public const string LiteralNONELebanon_ = "urn:iso:std:iso:3166#LB";
+
+    /// <summary>
     /// Literal for code: SaintLucia_
     /// </summary>
     public const string LiteralSaintLucia_ = "LC";
+
+    /// <summary>
+    /// Literal for code: NONESaintLucia_
+    /// </summary>
+    public const string LiteralNONESaintLucia_ = "urn:iso:std:iso:3166#LC";
 
     /// <summary>
     /// Literal for code: Liechtenstein_
@@ -13138,9 +17258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiechtenstein_ = "LI";
 
     /// <summary>
+    /// Literal for code: NONELiechtenstein_
+    /// </summary>
+    public const string LiteralNONELiechtenstein_ = "urn:iso:std:iso:3166#LI";
+
+    /// <summary>
     /// Literal for code: SriLanka_
     /// </summary>
     public const string LiteralSriLanka_ = "LK";
+
+    /// <summary>
+    /// Literal for code: NONESriLanka_
+    /// </summary>
+    public const string LiteralNONESriLanka_ = "urn:iso:std:iso:3166#LK";
 
     /// <summary>
     /// Literal for code: Liberia_
@@ -13148,9 +17278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiberia_ = "LR";
 
     /// <summary>
+    /// Literal for code: NONELiberia_
+    /// </summary>
+    public const string LiteralNONELiberia_ = "urn:iso:std:iso:3166#LR";
+
+    /// <summary>
     /// Literal for code: Lesotho_
     /// </summary>
     public const string LiteralLesotho_ = "LS";
+
+    /// <summary>
+    /// Literal for code: NONELesotho_
+    /// </summary>
+    public const string LiteralNONELesotho_ = "urn:iso:std:iso:3166#LS";
 
     /// <summary>
     /// Literal for code: Lithuania_
@@ -13158,9 +17298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLithuania_ = "LT";
 
     /// <summary>
+    /// Literal for code: NONELithuania_
+    /// </summary>
+    public const string LiteralNONELithuania_ = "urn:iso:std:iso:3166#LT";
+
+    /// <summary>
     /// Literal for code: Luxembourg_
     /// </summary>
     public const string LiteralLuxembourg_ = "LU";
+
+    /// <summary>
+    /// Literal for code: NONELuxembourg_
+    /// </summary>
+    public const string LiteralNONELuxembourg_ = "urn:iso:std:iso:3166#LU";
 
     /// <summary>
     /// Literal for code: Latvia_
@@ -13168,9 +17318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLatvia_ = "LV";
 
     /// <summary>
+    /// Literal for code: NONELatvia_
+    /// </summary>
+    public const string LiteralNONELatvia_ = "urn:iso:std:iso:3166#LV";
+
+    /// <summary>
     /// Literal for code: Libya_
     /// </summary>
     public const string LiteralLibya_ = "LY";
+
+    /// <summary>
+    /// Literal for code: NONELibya_
+    /// </summary>
+    public const string LiteralNONELibya_ = "urn:iso:std:iso:3166#LY";
 
     /// <summary>
     /// Literal for code: Massachusetts_
@@ -13178,9 +17338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMassachusetts_ = "MA";
 
     /// <summary>
+    /// Literal for code: NONEMassachusetts_
+    /// </summary>
+    public const string LiteralNONEMassachusetts_ = "https://www.usps.com/#MA";
+
+    /// <summary>
     /// Literal for code: Morocco_
     /// </summary>
     public const string LiteralMorocco_ = "MA";
+
+    /// <summary>
+    /// Literal for code: NONEMorocco_
+    /// </summary>
+    public const string LiteralNONEMorocco_ = "urn:iso:std:iso:3166#MA";
 
     /// <summary>
     /// Literal for code: Monaco_
@@ -13188,9 +17358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMonaco_ = "MC";
 
     /// <summary>
+    /// Literal for code: NONEMonaco_
+    /// </summary>
+    public const string LiteralNONEMonaco_ = "urn:iso:std:iso:3166#MC";
+
+    /// <summary>
     /// Literal for code: Maryland_
     /// </summary>
     public const string LiteralMaryland_ = "MD";
+
+    /// <summary>
+    /// Literal for code: NONEMaryland_
+    /// </summary>
+    public const string LiteralNONEMaryland_ = "https://www.usps.com/#MD";
 
     /// <summary>
     /// Literal for code: MoldovaTheRepublicOf_
@@ -13198,9 +17378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMoldovaTheRepublicOf_ = "MD";
 
     /// <summary>
+    /// Literal for code: NONEMoldovaTheRepublicOf_
+    /// </summary>
+    public const string LiteralNONEMoldovaTheRepublicOf_ = "urn:iso:std:iso:3166#MD";
+
+    /// <summary>
     /// Literal for code: Maine_
     /// </summary>
     public const string LiteralMaine_ = "ME";
+
+    /// <summary>
+    /// Literal for code: NONEMaine_
+    /// </summary>
+    public const string LiteralNONEMaine_ = "https://www.usps.com/#ME";
 
     /// <summary>
     /// Literal for code: Montenegro_
@@ -13208,9 +17398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMontenegro_ = "ME";
 
     /// <summary>
+    /// Literal for code: NONEMontenegro_
+    /// </summary>
+    public const string LiteralNONEMontenegro_ = "urn:iso:std:iso:3166#ME";
+
+    /// <summary>
     /// Literal for code: SaintMartinFrenchPart_
     /// </summary>
     public const string LiteralSaintMartinFrenchPart_ = "MF";
+
+    /// <summary>
+    /// Literal for code: NONESaintMartinFrenchPart_
+    /// </summary>
+    public const string LiteralNONESaintMartinFrenchPart_ = "urn:iso:std:iso:3166#MF";
 
     /// <summary>
     /// Literal for code: Madagascar_
@@ -13218,9 +17418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMadagascar_ = "MG";
 
     /// <summary>
+    /// Literal for code: NONEMadagascar_
+    /// </summary>
+    public const string LiteralNONEMadagascar_ = "urn:iso:std:iso:3166#MG";
+
+    /// <summary>
     /// Literal for code: MarshallIslands_
     /// </summary>
     public const string LiteralMarshallIslands_ = "MH";
+
+    /// <summary>
+    /// Literal for code: NONEMarshallIslands_
+    /// </summary>
+    public const string LiteralNONEMarshallIslands_ = "https://www.usps.com/#MH";
 
     /// <summary>
     /// Literal for code: MarshallIslandsThe_
@@ -13228,9 +17438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMarshallIslandsThe_ = "MH";
 
     /// <summary>
+    /// Literal for code: NONEMarshallIslandsThe_
+    /// </summary>
+    public const string LiteralNONEMarshallIslandsThe_ = "urn:iso:std:iso:3166#MH";
+
+    /// <summary>
     /// Literal for code: Michigan_
     /// </summary>
     public const string LiteralMichigan_ = "MI";
+
+    /// <summary>
+    /// Literal for code: NONEMichigan_
+    /// </summary>
+    public const string LiteralNONEMichigan_ = "https://www.usps.com/#MI";
 
     /// <summary>
     /// Literal for code: MidwayIslands_
@@ -13238,9 +17458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMidwayIslands_ = "MI";
 
     /// <summary>
+    /// Literal for code: NONEMidwayIslands_
+    /// </summary>
+    public const string LiteralNONEMidwayIslands_ = "urn:iso:std:iso:3166#MI";
+
+    /// <summary>
     /// Literal for code: Midwife_practitioner_specialty
     /// </summary>
     public const string LiteralMidwife_practitioner_specialty = "midw";
+
+    /// <summary>
+    /// Literal for code: PractitionerSpecialtyMidwife_practitioner_specialty
+    /// </summary>
+    public const string LiteralPractitionerSpecialtyMidwife_practitioner_specialty = "http://hl7.org/fhir/practitioner-specialty#midw";
 
     /// <summary>
     /// Literal for code: MacedoniaTheFormerYugoslavRepublicOf_
@@ -13248,9 +17478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMacedoniaTheFormerYugoslavRepublicOf_ = "MK";
 
     /// <summary>
+    /// Literal for code: NONEMacedoniaTheFormerYugoslavRepublicOf_
+    /// </summary>
+    public const string LiteralNONEMacedoniaTheFormerYugoslavRepublicOf_ = "urn:iso:std:iso:3166#MK";
+
+    /// <summary>
     /// Literal for code: Mali_
     /// </summary>
     public const string LiteralMali_ = "ML";
+
+    /// <summary>
+    /// Literal for code: NONEMali_
+    /// </summary>
+    public const string LiteralNONEMali_ = "urn:iso:std:iso:3166#ML";
 
     /// <summary>
     /// Literal for code: Myanmar_
@@ -13258,9 +17498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMyanmar_ = "MM";
 
     /// <summary>
+    /// Literal for code: NONEMyanmar_
+    /// </summary>
+    public const string LiteralNONEMyanmar_ = "urn:iso:std:iso:3166#MM";
+
+    /// <summary>
     /// Literal for code: Minnesota_
     /// </summary>
     public const string LiteralMinnesota_ = "MN";
+
+    /// <summary>
+    /// Literal for code: NONEMinnesota_
+    /// </summary>
+    public const string LiteralNONEMinnesota_ = "https://www.usps.com/#MN";
 
     /// <summary>
     /// Literal for code: Mongolia_
@@ -13268,9 +17518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMongolia_ = "MN";
 
     /// <summary>
+    /// Literal for code: NONEMongolia_
+    /// </summary>
+    public const string LiteralNONEMongolia_ = "urn:iso:std:iso:3166#MN";
+
+    /// <summary>
     /// Literal for code: Missouri_
     /// </summary>
     public const string LiteralMissouri_ = "MO";
+
+    /// <summary>
+    /// Literal for code: NONEMissouri_
+    /// </summary>
+    public const string LiteralNONEMissouri_ = "https://www.usps.com/#MO";
 
     /// <summary>
     /// Literal for code: Macao_
@@ -13278,9 +17538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMacao_ = "MO";
 
     /// <summary>
+    /// Literal for code: NONEMacao_
+    /// </summary>
+    public const string LiteralNONEMacao_ = "urn:iso:std:iso:3166#MO";
+
+    /// <summary>
     /// Literal for code: NorthernMarianaIslands_
     /// </summary>
     public const string LiteralNorthernMarianaIslands_ = "MP";
+
+    /// <summary>
+    /// Literal for code: NONENorthernMarianaIslands_
+    /// </summary>
+    public const string LiteralNONENorthernMarianaIslands_ = "https://www.usps.com/#MP";
 
     /// <summary>
     /// Literal for code: NorthernMarianaIslandsThe_
@@ -13288,9 +17558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorthernMarianaIslandsThe_ = "MP";
 
     /// <summary>
+    /// Literal for code: NONENorthernMarianaIslandsThe_
+    /// </summary>
+    public const string LiteralNONENorthernMarianaIslandsThe_ = "urn:iso:std:iso:3166#MP";
+
+    /// <summary>
     /// Literal for code: Martinique_
     /// </summary>
     public const string LiteralMartinique_ = "MQ";
+
+    /// <summary>
+    /// Literal for code: NONEMartinique_
+    /// </summary>
+    public const string LiteralNONEMartinique_ = "urn:iso:std:iso:3166#MQ";
 
     /// <summary>
     /// Literal for code: Mauritania_
@@ -13298,9 +17578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMauritania_ = "MR";
 
     /// <summary>
+    /// Literal for code: NONEMauritania_
+    /// </summary>
+    public const string LiteralNONEMauritania_ = "urn:iso:std:iso:3166#MR";
+
+    /// <summary>
     /// Literal for code: Mississippi_
     /// </summary>
     public const string LiteralMississippi_ = "MS";
+
+    /// <summary>
+    /// Literal for code: NONEMississippi_
+    /// </summary>
+    public const string LiteralNONEMississippi_ = "https://www.usps.com/#MS";
 
     /// <summary>
     /// Literal for code: Montserrat_
@@ -13308,9 +17598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMontserrat_ = "MS";
 
     /// <summary>
+    /// Literal for code: NONEMontserrat_
+    /// </summary>
+    public const string LiteralNONEMontserrat_ = "urn:iso:std:iso:3166#MS";
+
+    /// <summary>
     /// Literal for code: Montana_
     /// </summary>
     public const string LiteralMontana_ = "MT";
+
+    /// <summary>
+    /// Literal for code: NONEMontana_
+    /// </summary>
+    public const string LiteralNONEMontana_ = "https://www.usps.com/#MT";
 
     /// <summary>
     /// Literal for code: Malta_
@@ -13318,9 +17618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMalta_ = "MT";
 
     /// <summary>
+    /// Literal for code: NONEMalta_
+    /// </summary>
+    public const string LiteralNONEMalta_ = "urn:iso:std:iso:3166#MT";
+
+    /// <summary>
     /// Literal for code: Mauritius_
     /// </summary>
     public const string LiteralMauritius_ = "MU";
+
+    /// <summary>
+    /// Literal for code: NONEMauritius_
+    /// </summary>
+    public const string LiteralNONEMauritius_ = "urn:iso:std:iso:3166#MU";
 
     /// <summary>
     /// Literal for code: Maldives_
@@ -13328,9 +17638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMaldives_ = "MV";
 
     /// <summary>
+    /// Literal for code: NONEMaldives_
+    /// </summary>
+    public const string LiteralNONEMaldives_ = "urn:iso:std:iso:3166#MV";
+
+    /// <summary>
     /// Literal for code: Malawi_
     /// </summary>
     public const string LiteralMalawi_ = "MW";
+
+    /// <summary>
+    /// Literal for code: NONEMalawi_
+    /// </summary>
+    public const string LiteralNONEMalawi_ = "urn:iso:std:iso:3166#MW";
 
     /// <summary>
     /// Literal for code: Mexico_
@@ -13338,9 +17658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMexico_ = "MX";
 
     /// <summary>
+    /// Literal for code: NONEMexico_
+    /// </summary>
+    public const string LiteralNONEMexico_ = "urn:iso:std:iso:3166#MX";
+
+    /// <summary>
     /// Literal for code: Malaysia_
     /// </summary>
     public const string LiteralMalaysia_ = "MY";
+
+    /// <summary>
+    /// Literal for code: NONEMalaysia_
+    /// </summary>
+    public const string LiteralNONEMalaysia_ = "urn:iso:std:iso:3166#MY";
 
     /// <summary>
     /// Literal for code: Mozambique_
@@ -13348,9 +17678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMozambique_ = "MZ";
 
     /// <summary>
+    /// Literal for code: NONEMozambique_
+    /// </summary>
+    public const string LiteralNONEMozambique_ = "urn:iso:std:iso:3166#MZ";
+
+    /// <summary>
     /// Literal for code: Namibia_
     /// </summary>
     public const string LiteralNamibia_ = "NA";
+
+    /// <summary>
+    /// Literal for code: NONENamibia_
+    /// </summary>
+    public const string LiteralNONENamibia_ = "urn:iso:std:iso:3166#NA";
 
     /// <summary>
     /// Literal for code: NorthCarolina_
@@ -13358,9 +17698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorthCarolina_ = "NC";
 
     /// <summary>
+    /// Literal for code: NONENorthCarolina_
+    /// </summary>
+    public const string LiteralNONENorthCarolina_ = "https://www.usps.com/#NC";
+
+    /// <summary>
     /// Literal for code: NewCaledonia_
     /// </summary>
     public const string LiteralNewCaledonia_ = "NC";
+
+    /// <summary>
+    /// Literal for code: NONENewCaledonia_
+    /// </summary>
+    public const string LiteralNONENewCaledonia_ = "urn:iso:std:iso:3166#NC";
 
     /// <summary>
     /// Literal for code: NorthDakota_
@@ -13368,9 +17718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorthDakota_ = "ND";
 
     /// <summary>
+    /// Literal for code: NONENorthDakota_
+    /// </summary>
+    public const string LiteralNONENorthDakota_ = "https://www.usps.com/#ND";
+
+    /// <summary>
     /// Literal for code: Nebraska_
     /// </summary>
     public const string LiteralNebraska_ = "NE";
+
+    /// <summary>
+    /// Literal for code: NONENebraska_
+    /// </summary>
+    public const string LiteralNONENebraska_ = "https://www.usps.com/#NE";
 
     /// <summary>
     /// Literal for code: NigerThe_
@@ -13378,9 +17738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNigerThe_ = "NE";
 
     /// <summary>
+    /// Literal for code: NONENigerThe_
+    /// </summary>
+    public const string LiteralNONENigerThe_ = "urn:iso:std:iso:3166#NE";
+
+    /// <summary>
     /// Literal for code: NorfolkIsland_
     /// </summary>
     public const string LiteralNorfolkIsland_ = "NF";
+
+    /// <summary>
+    /// Literal for code: NONENorfolkIsland_
+    /// </summary>
+    public const string LiteralNONENorfolkIsland_ = "urn:iso:std:iso:3166#NF";
 
     /// <summary>
     /// Literal for code: Nigeria_
@@ -13388,9 +17758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNigeria_ = "NG";
 
     /// <summary>
+    /// Literal for code: NONENigeria_
+    /// </summary>
+    public const string LiteralNONENigeria_ = "urn:iso:std:iso:3166#NG";
+
+    /// <summary>
     /// Literal for code: NewHampshire_
     /// </summary>
     public const string LiteralNewHampshire_ = "NH";
+
+    /// <summary>
+    /// Literal for code: NONENewHampshire_
+    /// </summary>
+    public const string LiteralNONENewHampshire_ = "https://www.usps.com/#NH";
 
     /// <summary>
     /// Literal for code: NewHebrides_
@@ -13398,9 +17778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNewHebrides_ = "NH";
 
     /// <summary>
+    /// Literal for code: NONENewHebrides_
+    /// </summary>
+    public const string LiteralNONENewHebrides_ = "urn:iso:std:iso:3166#NH";
+
+    /// <summary>
     /// Literal for code: Nicaragua_
     /// </summary>
     public const string LiteralNicaragua_ = "NI";
+
+    /// <summary>
+    /// Literal for code: NONENicaragua_
+    /// </summary>
+    public const string LiteralNONENicaragua_ = "urn:iso:std:iso:3166#NI";
 
     /// <summary>
     /// Literal for code: NewJersey_
@@ -13408,9 +17798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNewJersey_ = "NJ";
 
     /// <summary>
+    /// Literal for code: NONENewJersey_
+    /// </summary>
+    public const string LiteralNONENewJersey_ = "https://www.usps.com/#NJ";
+
+    /// <summary>
     /// Literal for code: NetherlandsThe_
     /// </summary>
     public const string LiteralNetherlandsThe_ = "NL";
+
+    /// <summary>
+    /// Literal for code: NONENetherlandsThe_
+    /// </summary>
+    public const string LiteralNONENetherlandsThe_ = "urn:iso:std:iso:3166#NL";
 
     /// <summary>
     /// Literal for code: NewMexico_
@@ -13418,9 +17818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNewMexico_ = "NM";
 
     /// <summary>
+    /// Literal for code: NONENewMexico_
+    /// </summary>
+    public const string LiteralNONENewMexico_ = "https://www.usps.com/#NM";
+
+    /// <summary>
     /// Literal for code: Norway_
     /// </summary>
     public const string LiteralNorway_ = "NO";
+
+    /// <summary>
+    /// Literal for code: NONENorway_
+    /// </summary>
+    public const string LiteralNONENorway_ = "urn:iso:std:iso:3166#NO";
 
     /// <summary>
     /// Literal for code: Nepal_
@@ -13428,9 +17838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNepal_ = "NP";
 
     /// <summary>
+    /// Literal for code: NONENepal_
+    /// </summary>
+    public const string LiteralNONENepal_ = "urn:iso:std:iso:3166#NP";
+
+    /// <summary>
     /// Literal for code: DronningMaudLand_
     /// </summary>
     public const string LiteralDronningMaudLand_ = "NQ";
+
+    /// <summary>
+    /// Literal for code: NONEDronningMaudLand_
+    /// </summary>
+    public const string LiteralNONEDronningMaudLand_ = "urn:iso:std:iso:3166#NQ";
 
     /// <summary>
     /// Literal for code: Nauru_
@@ -13438,9 +17858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNauru_ = "NR";
 
     /// <summary>
+    /// Literal for code: NONENauru_
+    /// </summary>
+    public const string LiteralNONENauru_ = "urn:iso:std:iso:3166#NR";
+
+    /// <summary>
     /// Literal for code: NeutralZone_
     /// </summary>
     public const string LiteralNeutralZone_ = "NT";
+
+    /// <summary>
+    /// Literal for code: NONENeutralZone_
+    /// </summary>
+    public const string LiteralNONENeutralZone_ = "urn:iso:std:iso:3166#NT";
 
     /// <summary>
     /// Literal for code: Niue_
@@ -13448,9 +17878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNiue_ = "NU";
 
     /// <summary>
+    /// Literal for code: NONENiue_
+    /// </summary>
+    public const string LiteralNONENiue_ = "urn:iso:std:iso:3166#NU";
+
+    /// <summary>
     /// Literal for code: Nevada_
     /// </summary>
     public const string LiteralNevada_ = "NV";
+
+    /// <summary>
+    /// Literal for code: NONENevada_
+    /// </summary>
+    public const string LiteralNONENevada_ = "https://www.usps.com/#NV";
 
     /// <summary>
     /// Literal for code: NewYork_
@@ -13458,9 +17898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNewYork_ = "NY";
 
     /// <summary>
+    /// Literal for code: NONENewYork_
+    /// </summary>
+    public const string LiteralNONENewYork_ = "https://www.usps.com/#NY";
+
+    /// <summary>
     /// Literal for code: NewZealand_
     /// </summary>
     public const string LiteralNewZealand_ = "NZ";
+
+    /// <summary>
+    /// Literal for code: NONENewZealand_
+    /// </summary>
+    public const string LiteralNONENewZealand_ = "urn:iso:std:iso:3166#NZ";
 
     /// <summary>
     /// Literal for code: Ohio_
@@ -13468,9 +17918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOhio_ = "OH";
 
     /// <summary>
+    /// Literal for code: NONEOhio_
+    /// </summary>
+    public const string LiteralNONEOhio_ = "https://www.usps.com/#OH";
+
+    /// <summary>
     /// Literal for code: Oklahoma_
     /// </summary>
     public const string LiteralOklahoma_ = "OK";
+
+    /// <summary>
+    /// Literal for code: NONEOklahoma_
+    /// </summary>
+    public const string LiteralNONEOklahoma_ = "https://www.usps.com/#OK";
 
     /// <summary>
     /// Literal for code: Oman_
@@ -13478,9 +17938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOman_ = "OM";
 
     /// <summary>
+    /// Literal for code: NONEOman_
+    /// </summary>
+    public const string LiteralNONEOman_ = "urn:iso:std:iso:3166#OM";
+
+    /// <summary>
     /// Literal for code: Oregon_
     /// </summary>
     public const string LiteralOregon_ = "OR";
+
+    /// <summary>
+    /// Literal for code: NONEOregon_
+    /// </summary>
+    public const string LiteralNONEOregon_ = "https://www.usps.com/#OR";
 
     /// <summary>
     /// Literal for code: Pennsylvania_
@@ -13488,9 +17958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPennsylvania_ = "PA";
 
     /// <summary>
+    /// Literal for code: NONEPennsylvania_
+    /// </summary>
+    public const string LiteralNONEPennsylvania_ = "https://www.usps.com/#PA";
+
+    /// <summary>
     /// Literal for code: Panama_
     /// </summary>
     public const string LiteralPanama_ = "PA";
+
+    /// <summary>
+    /// Literal for code: NONEPanama_
+    /// </summary>
+    public const string LiteralNONEPanama_ = "urn:iso:std:iso:3166#PA";
 
     /// <summary>
     /// Literal for code: PacificIslandsTrustTerritory_
@@ -13498,9 +17978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPacificIslandsTrustTerritory_ = "PC";
 
     /// <summary>
+    /// Literal for code: NONEPacificIslandsTrustTerritory_
+    /// </summary>
+    public const string LiteralNONEPacificIslandsTrustTerritory_ = "urn:iso:std:iso:3166#PC";
+
+    /// <summary>
     /// Literal for code: Peru_
     /// </summary>
     public const string LiteralPeru_ = "PE";
+
+    /// <summary>
+    /// Literal for code: NONEPeru_
+    /// </summary>
+    public const string LiteralNONEPeru_ = "urn:iso:std:iso:3166#PE";
 
     /// <summary>
     /// Literal for code: FrenchPolynesia_
@@ -13508,9 +17998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFrenchPolynesia_ = "PF";
 
     /// <summary>
+    /// Literal for code: NONEFrenchPolynesia_
+    /// </summary>
+    public const string LiteralNONEFrenchPolynesia_ = "urn:iso:std:iso:3166#PF";
+
+    /// <summary>
     /// Literal for code: PapuaNewGuinea_
     /// </summary>
     public const string LiteralPapuaNewGuinea_ = "PG";
+
+    /// <summary>
+    /// Literal for code: NONEPapuaNewGuinea_
+    /// </summary>
+    public const string LiteralNONEPapuaNewGuinea_ = "urn:iso:std:iso:3166#PG";
 
     /// <summary>
     /// Literal for code: PhilippinesThe_
@@ -13518,9 +18018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhilippinesThe_ = "PH";
 
     /// <summary>
+    /// Literal for code: NONEPhilippinesThe_
+    /// </summary>
+    public const string LiteralNONEPhilippinesThe_ = "urn:iso:std:iso:3166#PH";
+
+    /// <summary>
     /// Literal for code: Pakistan_
     /// </summary>
     public const string LiteralPakistan_ = "PK";
+
+    /// <summary>
+    /// Literal for code: NONEPakistan_
+    /// </summary>
+    public const string LiteralNONEPakistan_ = "urn:iso:std:iso:3166#PK";
 
     /// <summary>
     /// Literal for code: Poland_
@@ -13528,9 +18038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPoland_ = "PL";
 
     /// <summary>
+    /// Literal for code: NONEPoland_
+    /// </summary>
+    public const string LiteralNONEPoland_ = "urn:iso:std:iso:3166#PL";
+
+    /// <summary>
     /// Literal for code: SaintPierreAndMiquelon_
     /// </summary>
     public const string LiteralSaintPierreAndMiquelon_ = "PM";
+
+    /// <summary>
+    /// Literal for code: NONESaintPierreAndMiquelon_
+    /// </summary>
+    public const string LiteralNONESaintPierreAndMiquelon_ = "urn:iso:std:iso:3166#PM";
 
     /// <summary>
     /// Literal for code: Pitcairn_
@@ -13538,9 +18058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPitcairn_ = "PN";
 
     /// <summary>
+    /// Literal for code: NONEPitcairn_
+    /// </summary>
+    public const string LiteralNONEPitcairn_ = "urn:iso:std:iso:3166#PN";
+
+    /// <summary>
     /// Literal for code: PuertoRico_
     /// </summary>
     public const string LiteralPuertoRico_ = "PR";
+
+    /// <summary>
+    /// Literal for code: NONEPuertoRico_
+    /// </summary>
+    public const string LiteralNONEPuertoRico_ = "https://www.usps.com/#PR";
 
     /// <summary>
     /// Literal for code: PuertoRico__2
@@ -13548,9 +18078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPuertoRico__2 = "PR";
 
     /// <summary>
+    /// Literal for code: NONEPuertoRico__2
+    /// </summary>
+    public const string LiteralNONEPuertoRico__2 = "urn:iso:std:iso:3166#PR";
+
+    /// <summary>
     /// Literal for code: PalestineStateOf_
     /// </summary>
     public const string LiteralPalestineStateOf_ = "PS";
+
+    /// <summary>
+    /// Literal for code: NONEPalestineStateOf_
+    /// </summary>
+    public const string LiteralNONEPalestineStateOf_ = "urn:iso:std:iso:3166#PS";
 
     /// <summary>
     /// Literal for code: Portugal_
@@ -13558,9 +18098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPortugal_ = "PT";
 
     /// <summary>
+    /// Literal for code: NONEPortugal_
+    /// </summary>
+    public const string LiteralNONEPortugal_ = "urn:iso:std:iso:3166#PT";
+
+    /// <summary>
     /// Literal for code: UnitedStatesMiscellaneousPacificIslands_
     /// </summary>
     public const string LiteralUnitedStatesMiscellaneousPacificIslands_ = "PU";
+
+    /// <summary>
+    /// Literal for code: NONEUnitedStatesMiscellaneousPacificIslands_
+    /// </summary>
+    public const string LiteralNONEUnitedStatesMiscellaneousPacificIslands_ = "urn:iso:std:iso:3166#PU";
 
     /// <summary>
     /// Literal for code: Palau_
@@ -13568,9 +18118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPalau_ = "PW";
 
     /// <summary>
+    /// Literal for code: NONEPalau_
+    /// </summary>
+    public const string LiteralNONEPalau_ = "https://www.usps.com/#PW";
+
+    /// <summary>
     /// Literal for code: Palau__2
     /// </summary>
     public const string LiteralPalau__2 = "PW";
+
+    /// <summary>
+    /// Literal for code: NONEPalau__2
+    /// </summary>
+    public const string LiteralNONEPalau__2 = "urn:iso:std:iso:3166#PW";
 
     /// <summary>
     /// Literal for code: Paraguay_
@@ -13578,9 +18138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralParaguay_ = "PY";
 
     /// <summary>
+    /// Literal for code: NONEParaguay_
+    /// </summary>
+    public const string LiteralNONEParaguay_ = "urn:iso:std:iso:3166#PY";
+
+    /// <summary>
     /// Literal for code: PanamaCanalZone_
     /// </summary>
     public const string LiteralPanamaCanalZone_ = "PZ";
+
+    /// <summary>
+    /// Literal for code: NONEPanamaCanalZone_
+    /// </summary>
+    public const string LiteralNONEPanamaCanalZone_ = "urn:iso:std:iso:3166#PZ";
 
     /// <summary>
     /// Literal for code: Qatar_
@@ -13588,9 +18158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralQatar_ = "QA";
 
     /// <summary>
+    /// Literal for code: NONEQatar_
+    /// </summary>
+    public const string LiteralNONEQatar_ = "urn:iso:std:iso:3166#QA";
+
+    /// <summary>
     /// Literal for code: Reunion_
     /// </summary>
     public const string LiteralReunion_ = "RE";
+
+    /// <summary>
+    /// Literal for code: NONEReunion_
+    /// </summary>
+    public const string LiteralNONEReunion_ = "urn:iso:std:iso:3166#RE";
 
     /// <summary>
     /// Literal for code: SouthernRhodesia_
@@ -13598,9 +18178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthernRhodesia_ = "RH";
 
     /// <summary>
+    /// Literal for code: NONESouthernRhodesia_
+    /// </summary>
+    public const string LiteralNONESouthernRhodesia_ = "urn:iso:std:iso:3166#RH";
+
+    /// <summary>
     /// Literal for code: RhodeIsland_
     /// </summary>
     public const string LiteralRhodeIsland_ = "RI";
+
+    /// <summary>
+    /// Literal for code: NONERhodeIsland_
+    /// </summary>
+    public const string LiteralNONERhodeIsland_ = "https://www.usps.com/#RI";
 
     /// <summary>
     /// Literal for code: Romania_
@@ -13608,9 +18198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRomania_ = "RO";
 
     /// <summary>
+    /// Literal for code: NONERomania_
+    /// </summary>
+    public const string LiteralNONERomania_ = "urn:iso:std:iso:3166#RO";
+
+    /// <summary>
     /// Literal for code: Serbia_
     /// </summary>
     public const string LiteralSerbia_ = "RS";
+
+    /// <summary>
+    /// Literal for code: NONESerbia_
+    /// </summary>
+    public const string LiteralNONESerbia_ = "urn:iso:std:iso:3166#RS";
 
     /// <summary>
     /// Literal for code: RussianFederationThe_
@@ -13618,9 +18218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRussianFederationThe_ = "RU";
 
     /// <summary>
+    /// Literal for code: NONERussianFederationThe_
+    /// </summary>
+    public const string LiteralNONERussianFederationThe_ = "urn:iso:std:iso:3166#RU";
+
+    /// <summary>
     /// Literal for code: Rwanda_
     /// </summary>
     public const string LiteralRwanda_ = "RW";
+
+    /// <summary>
+    /// Literal for code: NONERwanda_
+    /// </summary>
+    public const string LiteralNONERwanda_ = "urn:iso:std:iso:3166#RW";
 
     /// <summary>
     /// Literal for code: SaudiArabia_
@@ -13628,9 +18238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaudiArabia_ = "SA";
 
     /// <summary>
+    /// Literal for code: NONESaudiArabia_
+    /// </summary>
+    public const string LiteralNONESaudiArabia_ = "urn:iso:std:iso:3166#SA";
+
+    /// <summary>
     /// Literal for code: SolomonIslands_
     /// </summary>
     public const string LiteralSolomonIslands_ = "SB";
+
+    /// <summary>
+    /// Literal for code: NONESolomonIslands_
+    /// </summary>
+    public const string LiteralNONESolomonIslands_ = "urn:iso:std:iso:3166#SB";
 
     /// <summary>
     /// Literal for code: SouthCarolina_
@@ -13638,9 +18258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthCarolina_ = "SC";
 
     /// <summary>
+    /// Literal for code: NONESouthCarolina_
+    /// </summary>
+    public const string LiteralNONESouthCarolina_ = "https://www.usps.com/#SC";
+
+    /// <summary>
     /// Literal for code: Seychelles_
     /// </summary>
     public const string LiteralSeychelles_ = "SC";
+
+    /// <summary>
+    /// Literal for code: NONESeychelles_
+    /// </summary>
+    public const string LiteralNONESeychelles_ = "urn:iso:std:iso:3166#SC";
 
     /// <summary>
     /// Literal for code: SouthDakota_
@@ -13648,9 +18278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthDakota_ = "SD";
 
     /// <summary>
+    /// Literal for code: NONESouthDakota_
+    /// </summary>
+    public const string LiteralNONESouthDakota_ = "https://www.usps.com/#SD";
+
+    /// <summary>
     /// Literal for code: SudanThe_
     /// </summary>
     public const string LiteralSudanThe_ = "SD";
+
+    /// <summary>
+    /// Literal for code: NONESudanThe_
+    /// </summary>
+    public const string LiteralNONESudanThe_ = "urn:iso:std:iso:3166#SD";
 
     /// <summary>
     /// Literal for code: Sweden_
@@ -13658,9 +18298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSweden_ = "SE";
 
     /// <summary>
+    /// Literal for code: NONESweden_
+    /// </summary>
+    public const string LiteralNONESweden_ = "urn:iso:std:iso:3166#SE";
+
+    /// <summary>
     /// Literal for code: Singapore_
     /// </summary>
     public const string LiteralSingapore_ = "SG";
+
+    /// <summary>
+    /// Literal for code: NONESingapore_
+    /// </summary>
+    public const string LiteralNONESingapore_ = "urn:iso:std:iso:3166#SG";
 
     /// <summary>
     /// Literal for code: SaintHelenaAscensionAndTristanDaCunha_
@@ -13668,9 +18318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaintHelenaAscensionAndTristanDaCunha_ = "SH";
 
     /// <summary>
+    /// Literal for code: NONESaintHelenaAscensionAndTristanDaCunha_
+    /// </summary>
+    public const string LiteralNONESaintHelenaAscensionAndTristanDaCunha_ = "urn:iso:std:iso:3166#SH";
+
+    /// <summary>
     /// Literal for code: Slovenia_
     /// </summary>
     public const string LiteralSlovenia_ = "SI";
+
+    /// <summary>
+    /// Literal for code: NONESlovenia_
+    /// </summary>
+    public const string LiteralNONESlovenia_ = "urn:iso:std:iso:3166#SI";
 
     /// <summary>
     /// Literal for code: SvalbardAndJanMayen_
@@ -13678,9 +18338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSvalbardAndJanMayen_ = "SJ";
 
     /// <summary>
+    /// Literal for code: NONESvalbardAndJanMayen_
+    /// </summary>
+    public const string LiteralNONESvalbardAndJanMayen_ = "urn:iso:std:iso:3166#SJ";
+
+    /// <summary>
     /// Literal for code: Slovakia_
     /// </summary>
     public const string LiteralSlovakia_ = "SK";
+
+    /// <summary>
+    /// Literal for code: NONESlovakia_
+    /// </summary>
+    public const string LiteralNONESlovakia_ = "urn:iso:std:iso:3166#SK";
 
     /// <summary>
     /// Literal for code: SierraLeone_
@@ -13688,9 +18358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSierraLeone_ = "SL";
 
     /// <summary>
+    /// Literal for code: NONESierraLeone_
+    /// </summary>
+    public const string LiteralNONESierraLeone_ = "urn:iso:std:iso:3166#SL";
+
+    /// <summary>
     /// Literal for code: SanMarino_
     /// </summary>
     public const string LiteralSanMarino_ = "SM";
+
+    /// <summary>
+    /// Literal for code: NONESanMarino_
+    /// </summary>
+    public const string LiteralNONESanMarino_ = "urn:iso:std:iso:3166#SM";
 
     /// <summary>
     /// Literal for code: Senegal_
@@ -13698,9 +18378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSenegal_ = "SN";
 
     /// <summary>
+    /// Literal for code: NONESenegal_
+    /// </summary>
+    public const string LiteralNONESenegal_ = "urn:iso:std:iso:3166#SN";
+
+    /// <summary>
     /// Literal for code: Somalia_
     /// </summary>
     public const string LiteralSomalia_ = "SO";
+
+    /// <summary>
+    /// Literal for code: NONESomalia_
+    /// </summary>
+    public const string LiteralNONESomalia_ = "urn:iso:std:iso:3166#SO";
 
     /// <summary>
     /// Literal for code: Suriname_
@@ -13708,9 +18398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSuriname_ = "SR";
 
     /// <summary>
+    /// Literal for code: NONESuriname_
+    /// </summary>
+    public const string LiteralNONESuriname_ = "urn:iso:std:iso:3166#SR";
+
+    /// <summary>
     /// Literal for code: SouthSudan_
     /// </summary>
     public const string LiteralSouthSudan_ = "SS";
+
+    /// <summary>
+    /// Literal for code: NONESouthSudan_
+    /// </summary>
+    public const string LiteralNONESouthSudan_ = "urn:iso:std:iso:3166#SS";
 
     /// <summary>
     /// Literal for code: SaoTomeAndPrincipe_
@@ -13718,9 +18418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaoTomeAndPrincipe_ = "ST";
 
     /// <summary>
+    /// Literal for code: NONESaoTomeAndPrincipe_
+    /// </summary>
+    public const string LiteralNONESaoTomeAndPrincipe_ = "urn:iso:std:iso:3166#ST";
+
+    /// <summary>
     /// Literal for code: USSR_
     /// </summary>
     public const string LiteralUSSR_ = "SU";
+
+    /// <summary>
+    /// Literal for code: NONEUSSR_
+    /// </summary>
+    public const string LiteralNONEUSSR_ = "urn:iso:std:iso:3166#SU";
 
     /// <summary>
     /// Literal for code: ElSalvador_
@@ -13728,9 +18438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElSalvador_ = "SV";
 
     /// <summary>
+    /// Literal for code: NONEElSalvador_
+    /// </summary>
+    public const string LiteralNONEElSalvador_ = "urn:iso:std:iso:3166#SV";
+
+    /// <summary>
     /// Literal for code: SintMaartenDutchPart_
     /// </summary>
     public const string LiteralSintMaartenDutchPart_ = "SX";
+
+    /// <summary>
+    /// Literal for code: NONESintMaartenDutchPart_
+    /// </summary>
+    public const string LiteralNONESintMaartenDutchPart_ = "urn:iso:std:iso:3166#SX";
 
     /// <summary>
     /// Literal for code: SyrianArabRepublic_
@@ -13738,9 +18458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSyrianArabRepublic_ = "SY";
 
     /// <summary>
+    /// Literal for code: NONESyrianArabRepublic_
+    /// </summary>
+    public const string LiteralNONESyrianArabRepublic_ = "urn:iso:std:iso:3166#SY";
+
+    /// <summary>
     /// Literal for code: SystemsArchitect_practitioner_specialty
     /// </summary>
     public const string LiteralSystemsArchitect_practitioner_specialty = "sysarch";
+
+    /// <summary>
+    /// Literal for code: PractitionerSpecialtySystemsArchitect_practitioner_specialty
+    /// </summary>
+    public const string LiteralPractitionerSpecialtySystemsArchitect_practitioner_specialty = "http://hl7.org/fhir/practitioner-specialty#sysarch";
 
     /// <summary>
     /// Literal for code: Swaziland_
@@ -13748,9 +18478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSwaziland_ = "SZ";
 
     /// <summary>
+    /// Literal for code: NONESwaziland_
+    /// </summary>
+    public const string LiteralNONESwaziland_ = "urn:iso:std:iso:3166#SZ";
+
+    /// <summary>
     /// Literal for code: TurksAndCaicosIslandsThe_
     /// </summary>
     public const string LiteralTurksAndCaicosIslandsThe_ = "TC";
+
+    /// <summary>
+    /// Literal for code: NONETurksAndCaicosIslandsThe_
+    /// </summary>
+    public const string LiteralNONETurksAndCaicosIslandsThe_ = "urn:iso:std:iso:3166#TC";
 
     /// <summary>
     /// Literal for code: Chad_
@@ -13758,9 +18498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChad_ = "TD";
 
     /// <summary>
+    /// Literal for code: NONEChad_
+    /// </summary>
+    public const string LiteralNONEChad_ = "urn:iso:std:iso:3166#TD";
+
+    /// <summary>
     /// Literal for code: FrenchSouthernTerritoriesThe_
     /// </summary>
     public const string LiteralFrenchSouthernTerritoriesThe_ = "TF";
+
+    /// <summary>
+    /// Literal for code: NONEFrenchSouthernTerritoriesThe_
+    /// </summary>
+    public const string LiteralNONEFrenchSouthernTerritoriesThe_ = "urn:iso:std:iso:3166#TF";
 
     /// <summary>
     /// Literal for code: Togo_
@@ -13768,9 +18518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTogo_ = "TG";
 
     /// <summary>
+    /// Literal for code: NONETogo_
+    /// </summary>
+    public const string LiteralNONETogo_ = "urn:iso:std:iso:3166#TG";
+
+    /// <summary>
     /// Literal for code: Thailand_
     /// </summary>
     public const string LiteralThailand_ = "TH";
+
+    /// <summary>
+    /// Literal for code: NONEThailand_
+    /// </summary>
+    public const string LiteralNONEThailand_ = "urn:iso:std:iso:3166#TH";
 
     /// <summary>
     /// Literal for code: Tajikistan_
@@ -13778,9 +18538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTajikistan_ = "TJ";
 
     /// <summary>
+    /// Literal for code: NONETajikistan_
+    /// </summary>
+    public const string LiteralNONETajikistan_ = "urn:iso:std:iso:3166#TJ";
+
+    /// <summary>
     /// Literal for code: Tokelau_
     /// </summary>
     public const string LiteralTokelau_ = "TK";
+
+    /// <summary>
+    /// Literal for code: NONETokelau_
+    /// </summary>
+    public const string LiteralNONETokelau_ = "urn:iso:std:iso:3166#TK";
 
     /// <summary>
     /// Literal for code: TimorLeste_
@@ -13788,9 +18558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTimorLeste_ = "TL";
 
     /// <summary>
+    /// Literal for code: NONETimorLeste_
+    /// </summary>
+    public const string LiteralNONETimorLeste_ = "urn:iso:std:iso:3166#TL";
+
+    /// <summary>
     /// Literal for code: Turkmenistan_
     /// </summary>
     public const string LiteralTurkmenistan_ = "TM";
+
+    /// <summary>
+    /// Literal for code: NONETurkmenistan_
+    /// </summary>
+    public const string LiteralNONETurkmenistan_ = "urn:iso:std:iso:3166#TM";
 
     /// <summary>
     /// Literal for code: Tennessee_
@@ -13798,9 +18578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTennessee_ = "TN";
 
     /// <summary>
+    /// Literal for code: NONETennessee_
+    /// </summary>
+    public const string LiteralNONETennessee_ = "https://www.usps.com/#TN";
+
+    /// <summary>
     /// Literal for code: Tunisia_
     /// </summary>
     public const string LiteralTunisia_ = "TN";
+
+    /// <summary>
+    /// Literal for code: NONETunisia_
+    /// </summary>
+    public const string LiteralNONETunisia_ = "urn:iso:std:iso:3166#TN";
 
     /// <summary>
     /// Literal for code: Tonga_
@@ -13808,9 +18598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTonga_ = "TO";
 
     /// <summary>
+    /// Literal for code: NONETonga_
+    /// </summary>
+    public const string LiteralNONETonga_ = "urn:iso:std:iso:3166#TO";
+
+    /// <summary>
     /// Literal for code: EastTimor_
     /// </summary>
     public const string LiteralEastTimor_ = "TP";
+
+    /// <summary>
+    /// Literal for code: NONEEastTimor_
+    /// </summary>
+    public const string LiteralNONEEastTimor_ = "urn:iso:std:iso:3166#TP";
 
     /// <summary>
     /// Literal for code: Turkey_
@@ -13818,9 +18618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTurkey_ = "TR";
 
     /// <summary>
+    /// Literal for code: NONETurkey_
+    /// </summary>
+    public const string LiteralNONETurkey_ = "urn:iso:std:iso:3166#TR";
+
+    /// <summary>
     /// Literal for code: TrinidadAndTobago_
     /// </summary>
     public const string LiteralTrinidadAndTobago_ = "TT";
+
+    /// <summary>
+    /// Literal for code: NONETrinidadAndTobago_
+    /// </summary>
+    public const string LiteralNONETrinidadAndTobago_ = "urn:iso:std:iso:3166#TT";
 
     /// <summary>
     /// Literal for code: Tuvalu_
@@ -13828,9 +18638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTuvalu_ = "TV";
 
     /// <summary>
+    /// Literal for code: NONETuvalu_
+    /// </summary>
+    public const string LiteralNONETuvalu_ = "urn:iso:std:iso:3166#TV";
+
+    /// <summary>
     /// Literal for code: TaiwanProvinceOfChina_
     /// </summary>
     public const string LiteralTaiwanProvinceOfChina_ = "TW";
+
+    /// <summary>
+    /// Literal for code: NONETaiwanProvinceOfChina_
+    /// </summary>
+    public const string LiteralNONETaiwanProvinceOfChina_ = "urn:iso:std:iso:3166#TW";
 
     /// <summary>
     /// Literal for code: Texas_
@@ -13838,9 +18658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTexas_ = "TX";
 
     /// <summary>
+    /// Literal for code: NONETexas_
+    /// </summary>
+    public const string LiteralNONETexas_ = "https://www.usps.com/#TX";
+
+    /// <summary>
     /// Literal for code: TanzaniaUnitedRepublicOf_
     /// </summary>
     public const string LiteralTanzaniaUnitedRepublicOf_ = "TZ";
+
+    /// <summary>
+    /// Literal for code: NONETanzaniaUnitedRepublicOf_
+    /// </summary>
+    public const string LiteralNONETanzaniaUnitedRepublicOf_ = "urn:iso:std:iso:3166#TZ";
 
     /// <summary>
     /// Literal for code: Ukraine_
@@ -13848,9 +18678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUkraine_ = "UA";
 
     /// <summary>
+    /// Literal for code: NONEUkraine_
+    /// </summary>
+    public const string LiteralNONEUkraine_ = "urn:iso:std:iso:3166#UA";
+
+    /// <summary>
     /// Literal for code: Uganda_
     /// </summary>
     public const string LiteralUganda_ = "UG";
+
+    /// <summary>
+    /// Literal for code: NONEUganda_
+    /// </summary>
+    public const string LiteralNONEUganda_ = "urn:iso:std:iso:3166#UG";
 
     /// <summary>
     /// Literal for code: USMinorOutlyingIslands_
@@ -13858,9 +18698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSMinorOutlyingIslands_ = "UM";
 
     /// <summary>
+    /// Literal for code: NONEUSMinorOutlyingIslands_
+    /// </summary>
+    public const string LiteralNONEUSMinorOutlyingIslands_ = "https://www.usps.com/#UM";
+
+    /// <summary>
     /// Literal for code: UnitedStates_
     /// </summary>
     public const string LiteralUnitedStates_ = "UM";
+
+    /// <summary>
+    /// Literal for code: NONEUnitedStates_
+    /// </summary>
+    public const string LiteralNONEUnitedStates_ = "urn:iso:std:iso:3166#UM";
 
     /// <summary>
     /// Literal for code: UnitedStatesOfAmericaThe_
@@ -13868,9 +18718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnitedStatesOfAmericaThe_ = "US";
 
     /// <summary>
+    /// Literal for code: NONEUnitedStatesOfAmericaThe_
+    /// </summary>
+    public const string LiteralNONEUnitedStatesOfAmericaThe_ = "urn:iso:std:iso:3166#US";
+
+    /// <summary>
     /// Literal for code: Utah_
     /// </summary>
     public const string LiteralUtah_ = "UT";
+
+    /// <summary>
+    /// Literal for code: NONEUtah_
+    /// </summary>
+    public const string LiteralNONEUtah_ = "https://www.usps.com/#UT";
 
     /// <summary>
     /// Literal for code: Uruguay_
@@ -13878,9 +18738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUruguay_ = "UY";
 
     /// <summary>
+    /// Literal for code: NONEUruguay_
+    /// </summary>
+    public const string LiteralNONEUruguay_ = "urn:iso:std:iso:3166#UY";
+
+    /// <summary>
     /// Literal for code: Uzbekistan_
     /// </summary>
     public const string LiteralUzbekistan_ = "UZ";
+
+    /// <summary>
+    /// Literal for code: NONEUzbekistan_
+    /// </summary>
+    public const string LiteralNONEUzbekistan_ = "urn:iso:std:iso:3166#UZ";
 
     /// <summary>
     /// Literal for code: Virginia_
@@ -13888,9 +18758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVirginia_ = "VA";
 
     /// <summary>
+    /// Literal for code: NONEVirginia_
+    /// </summary>
+    public const string LiteralNONEVirginia_ = "https://www.usps.com/#VA";
+
+    /// <summary>
     /// Literal for code: HolySeeThe_
     /// </summary>
     public const string LiteralHolySeeThe_ = "VA";
+
+    /// <summary>
+    /// Literal for code: NONEHolySeeThe_
+    /// </summary>
+    public const string LiteralNONEHolySeeThe_ = "urn:iso:std:iso:3166#VA";
 
     /// <summary>
     /// Literal for code: SaintVincentAndTheGrenadines_
@@ -13898,9 +18778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaintVincentAndTheGrenadines_ = "VC";
 
     /// <summary>
+    /// Literal for code: NONESaintVincentAndTheGrenadines_
+    /// </summary>
+    public const string LiteralNONESaintVincentAndTheGrenadines_ = "urn:iso:std:iso:3166#VC";
+
+    /// <summary>
     /// Literal for code: VietNamDemocraticRepublicOf_
     /// </summary>
     public const string LiteralVietNamDemocraticRepublicOf_ = "VD";
+
+    /// <summary>
+    /// Literal for code: NONEVietNamDemocraticRepublicOf_
+    /// </summary>
+    public const string LiteralNONEVietNamDemocraticRepublicOf_ = "urn:iso:std:iso:3166#VD";
 
     /// <summary>
     /// Literal for code: VenezuelaBolivarianRepublicOf_
@@ -13908,9 +18798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenezuelaBolivarianRepublicOf_ = "VE";
 
     /// <summary>
+    /// Literal for code: NONEVenezuelaBolivarianRepublicOf_
+    /// </summary>
+    public const string LiteralNONEVenezuelaBolivarianRepublicOf_ = "urn:iso:std:iso:3166#VE";
+
+    /// <summary>
     /// Literal for code: VirginIslandsBritish_
     /// </summary>
     public const string LiteralVirginIslandsBritish_ = "VG";
+
+    /// <summary>
+    /// Literal for code: NONEVirginIslandsBritish_
+    /// </summary>
+    public const string LiteralNONEVirginIslandsBritish_ = "urn:iso:std:iso:3166#VG";
 
     /// <summary>
     /// Literal for code: VirginIslandsOfTheUS_
@@ -13918,9 +18818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVirginIslandsOfTheUS_ = "VI";
 
     /// <summary>
+    /// Literal for code: NONEVirginIslandsOfTheUS_
+    /// </summary>
+    public const string LiteralNONEVirginIslandsOfTheUS_ = "https://www.usps.com/#VI";
+
+    /// <summary>
     /// Literal for code: VirginIslandsUS_
     /// </summary>
     public const string LiteralVirginIslandsUS_ = "VI";
+
+    /// <summary>
+    /// Literal for code: NONEVirginIslandsUS_
+    /// </summary>
+    public const string LiteralNONEVirginIslandsUS_ = "urn:iso:std:iso:3166#VI";
 
     /// <summary>
     /// Literal for code: VietNam_
@@ -13928,9 +18838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVietNam_ = "VN";
 
     /// <summary>
+    /// Literal for code: NONEVietNam_
+    /// </summary>
+    public const string LiteralNONEVietNam_ = "urn:iso:std:iso:3166#VN";
+
+    /// <summary>
     /// Literal for code: Vermont_
     /// </summary>
     public const string LiteralVermont_ = "VT";
+
+    /// <summary>
+    /// Literal for code: NONEVermont_
+    /// </summary>
+    public const string LiteralNONEVermont_ = "https://www.usps.com/#VT";
 
     /// <summary>
     /// Literal for code: Vanuatu_
@@ -13938,9 +18858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVanuatu_ = "VU";
 
     /// <summary>
+    /// Literal for code: NONEVanuatu_
+    /// </summary>
+    public const string LiteralNONEVanuatu_ = "urn:iso:std:iso:3166#VU";
+
+    /// <summary>
     /// Literal for code: Washington_
     /// </summary>
     public const string LiteralWashington_ = "WA";
+
+    /// <summary>
+    /// Literal for code: NONEWashington_
+    /// </summary>
+    public const string LiteralNONEWashington_ = "https://www.usps.com/#WA";
 
     /// <summary>
     /// Literal for code: WallisAndFutuna_
@@ -13948,9 +18878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWallisAndFutuna_ = "WF";
 
     /// <summary>
+    /// Literal for code: NONEWallisAndFutuna_
+    /// </summary>
+    public const string LiteralNONEWallisAndFutuna_ = "urn:iso:std:iso:3166#WF";
+
+    /// <summary>
     /// Literal for code: Wisconsin_
     /// </summary>
     public const string LiteralWisconsin_ = "WI";
+
+    /// <summary>
+    /// Literal for code: NONEWisconsin_
+    /// </summary>
+    public const string LiteralNONEWisconsin_ = "https://www.usps.com/#WI";
 
     /// <summary>
     /// Literal for code: WakeIsland_
@@ -13958,9 +18898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWakeIsland_ = "WK";
 
     /// <summary>
+    /// Literal for code: NONEWakeIsland_
+    /// </summary>
+    public const string LiteralNONEWakeIsland_ = "urn:iso:std:iso:3166#WK";
+
+    /// <summary>
     /// Literal for code: Samoa_
     /// </summary>
     public const string LiteralSamoa_ = "WS";
+
+    /// <summary>
+    /// Literal for code: NONESamoa_
+    /// </summary>
+    public const string LiteralNONESamoa_ = "urn:iso:std:iso:3166#WS";
 
     /// <summary>
     /// Literal for code: WestVirginia_
@@ -13968,9 +18918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWestVirginia_ = "WV";
 
     /// <summary>
+    /// Literal for code: NONEWestVirginia_
+    /// </summary>
+    public const string LiteralNONEWestVirginia_ = "https://www.usps.com/#WV";
+
+    /// <summary>
     /// Literal for code: Wyoming_
     /// </summary>
     public const string LiteralWyoming_ = "WY";
+
+    /// <summary>
+    /// Literal for code: NONEWyoming_
+    /// </summary>
+    public const string LiteralNONEWyoming_ = "https://www.usps.com/#WY";
 
     /// <summary>
     /// Literal for code: YemenDemocratic_
@@ -13978,9 +18938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralYemenDemocratic_ = "YD";
 
     /// <summary>
+    /// Literal for code: NONEYemenDemocratic_
+    /// </summary>
+    public const string LiteralNONEYemenDemocratic_ = "urn:iso:std:iso:3166#YD";
+
+    /// <summary>
     /// Literal for code: Yemen_
     /// </summary>
     public const string LiteralYemen_ = "YE";
+
+    /// <summary>
+    /// Literal for code: NONEYemen_
+    /// </summary>
+    public const string LiteralNONEYemen_ = "urn:iso:std:iso:3166#YE";
 
     /// <summary>
     /// Literal for code: Mayotte_
@@ -13988,9 +18958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMayotte_ = "YT";
 
     /// <summary>
+    /// Literal for code: NONEMayotte_
+    /// </summary>
+    public const string LiteralNONEMayotte_ = "urn:iso:std:iso:3166#YT";
+
+    /// <summary>
     /// Literal for code: Yugoslavia_
     /// </summary>
     public const string LiteralYugoslavia_ = "YU";
+
+    /// <summary>
+    /// Literal for code: NONEYugoslavia_
+    /// </summary>
+    public const string LiteralNONEYugoslavia_ = "urn:iso:std:iso:3166#YU";
 
     /// <summary>
     /// Literal for code: SouthAfrica_
@@ -13998,9 +18978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthAfrica_ = "ZA";
 
     /// <summary>
+    /// Literal for code: NONESouthAfrica_
+    /// </summary>
+    public const string LiteralNONESouthAfrica_ = "urn:iso:std:iso:3166#ZA";
+
+    /// <summary>
     /// Literal for code: Zambia_
     /// </summary>
     public const string LiteralZambia_ = "ZM";
+
+    /// <summary>
+    /// Literal for code: NONEZambia_
+    /// </summary>
+    public const string LiteralNONEZambia_ = "urn:iso:std:iso:3166#ZM";
 
     /// <summary>
     /// Literal for code: Zaire_
@@ -14008,8 +18998,2024 @@ namespace fhirCsR3.ValueSets
     public const string LiteralZaire_ = "ZR";
 
     /// <summary>
+    /// Literal for code: NONEZaire_
+    /// </summary>
+    public const string LiteralNONEZaire_ = "urn:iso:std:iso:3166#ZR";
+
+    /// <summary>
     /// Literal for code: Zimbabwe_
     /// </summary>
     public const string LiteralZimbabwe_ = "ZW";
+
+    /// <summary>
+    /// Literal for code: NONEZimbabwe_
+    /// </summary>
+    public const string LiteralNONEZimbabwe_ = "urn:iso:std:iso:3166#ZW";
+
+    /// <summary>
+    /// Dictionary for looking up UseContext Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "001", World_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#001", World_ }, 
+      { "002", Africa_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#002", Africa_ }, 
+      { "005", SouthAmerica_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#005", SouthAmerica_ }, 
+      { "009", Oceania_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#009", Oceania_ }, 
+      { "011", WesternAfrica_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#011", WesternAfrica_ }, 
+      { "013", CentralAmerica_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#013", CentralAmerica_ }, 
+      { "014", EasternAfrica_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#014", EasternAfrica_ }, 
+      { "015", NorthernAfrica_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#015", NorthernAfrica_ }, 
+      { "017", MiddleAfrica_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#017", MiddleAfrica_ }, 
+      { "018", SouthernAfrica_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#018", SouthernAfrica_ }, 
+      { "019", Americas_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#019", Americas_ }, 
+      { "021", NorthernAmericaA_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#021", NorthernAmericaA_ }, 
+      { "029", Caribbean_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#029", Caribbean_ }, 
+      { "030", EasternAsia_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#030", EasternAsia_ }, 
+      { "034", SouthernAsia_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#034", SouthernAsia_ }, 
+      { "035", SouthEasternAsia_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#035", SouthEasternAsia_ }, 
+      { "039", SouthernEurope_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#039", SouthernEurope_ }, 
+      { "053", AustraliaAndNewZealand_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#053", AustraliaAndNewZealand_ }, 
+      { "054", Melanesia_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#054", Melanesia_ }, 
+      { "057", Micronesia_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#057", Micronesia_ }, 
+      { "061", Polynesia_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#061", Polynesia_ }, 
+      { "1006005", PercheronHorse_ }, 
+      { "http://snomed.info/sct#1006005", PercheronHorse_ }, 
+      { "101009", QuiloniaEthiopica_ }, 
+      { "http://snomed.info/sct#101009", QuiloniaEthiopica_ }, 
+      { "1014004", BembropsGobioides_ }, 
+      { "http://snomed.info/sct#1014004", BembropsGobioides_ }, 
+      { "1053008", PontinusRathbuni_ }, 
+      { "http://snomed.info/sct#1053008", PontinusRathbuni_ }, 
+      { "1064006", Hemiurus_ }, 
+      { "http://snomed.info/sct#1064006", Hemiurus_ }, 
+      { "1067004", NesotriatomaFlavida_ }, 
+      { "http://snomed.info/sct#1067004", NesotriatomaFlavida_ }, 
+      { "1082009", ApogonTownsendi_ }, 
+      { "http://snomed.info/sct#1082009", ApogonTownsendi_ }, 
+      { "1095004", NotropisAtrocaudalis_ }, 
+      { "http://snomed.info/sct#1095004", NotropisAtrocaudalis_ }, 
+      { "1109001", VaranusSalvator_ }, 
+      { "http://snomed.info/sct#1109001", VaranusSalvator_ }, 
+      { "1118004", VikingHorse_ }, 
+      { "http://snomed.info/sct#1118004", VikingHorse_ }, 
+      { "112009", BembropsAnatirostris_ }, 
+      { "http://snomed.info/sct#112009", BembropsAnatirostris_ }, 
+      { "1142000", Ceratophyllus_ }, 
+      { "http://snomed.info/sct#1142000", Ceratophyllus_ }, 
+      { "1147006", AnarrhichthysOcellatus_ }, 
+      { "http://snomed.info/sct#1147006", AnarrhichthysOcellatus_ }, 
+      { "1153006", TragelaphusAngasi_ }, 
+      { "http://snomed.info/sct#1153006", TragelaphusAngasi_ }, 
+      { "1154000", NealotusTripes_ }, 
+      { "http://snomed.info/sct#1154000", NealotusTripes_ }, 
+      { "1158002", Triaenophorus_ }, 
+      { "http://snomed.info/sct#1158002", Triaenophorus_ }, 
+      { "1161001", ChrysolophusPictus_ }, 
+      { "http://snomed.info/sct#1161001", ChrysolophusPictus_ }, 
+      { "1162008", MicrurusNigrocinctus_ }, 
+      { "http://snomed.info/sct#1162008", MicrurusNigrocinctus_ }, 
+      { "117003", RhipicephalusSanguineus_ }, 
+      { "http://snomed.info/sct#117003", RhipicephalusSanguineus_ }, 
+      { "1177000", PongoPygmaeus_ }, 
+      { "http://snomed.info/sct#1177000", PongoPygmaeus_ }, 
+      { "118008", BlackBuffaloWeaver_ }, 
+      { "http://snomed.info/sct#118008", BlackBuffaloWeaver_ }, 
+      { "1191006", BungarusFlaviceps_ }, 
+      { "http://snomed.info/sct#1191006", BungarusFlaviceps_ }, 
+      { "1200006", LiopropomaMowbrayi_ }, 
+      { "http://snomed.info/sct#1200006", LiopropomaMowbrayi_ }, 
+      { "1213000", GaigeriaPachyscelis_ }, 
+      { "http://snomed.info/sct#1213000", GaigeriaPachyscelis_ }, 
+      { "1215007", Tetractinomyxon_ }, 
+      { "http://snomed.info/sct#1215007", Tetractinomyxon_ }, 
+      { "1220007", TrimeresurusTokarensis_ }, 
+      { "http://snomed.info/sct#1220007", TrimeresurusTokarensis_ }, 
+      { "1242008", HeterakisMeleagridis_ }, 
+      { "http://snomed.info/sct#1242008", HeterakisMeleagridis_ }, 
+      { "1247002", ClydesdaleHorse_ }, 
+      { "http://snomed.info/sct#1247002", ClydesdaleHorse_ }, 
+      { "1254008", BlackFootedPenguin_ }, 
+      { "http://snomed.info/sct#1254008", BlackFootedPenguin_ }, 
+      { "1265003", AnophelesEarlei_ }, 
+      { "http://snomed.info/sct#1265003", AnophelesEarlei_ }, 
+      { "1268001", CycluraCornuta_ }, 
+      { "http://snomed.info/sct#1268001", CycluraCornuta_ }, 
+      { "1270005", PercinaSquamata_ }, 
+      { "http://snomed.info/sct#1270005", PercinaSquamata_ }, 
+      { "1281008", NotropisScabriceps_ }, 
+      { "http://snomed.info/sct#1281008", NotropisScabriceps_ }, 
+      { "1288002", AnophelesPunctipennis_ }, 
+      { "http://snomed.info/sct#1288002", AnophelesPunctipennis_ }, 
+      { "1303005", ParafasciolopsisFasciolaemorpha_ }, 
+      { "http://snomed.info/sct#1303005", ParafasciolopsisFasciolaemorpha_ }, 
+      { "132005", SerraniculusPumilio_ }, 
+      { "http://snomed.info/sct#132005", SerraniculusPumilio_ }, 
+      { "1330000", CraxAlector_ }, 
+      { "http://snomed.info/sct#1330000", CraxAlector_ }, 
+      { "1369006", ProtospiruraMuricola_ }, 
+      { "http://snomed.info/sct#1369006", ProtospiruraMuricola_ }, 
+      { "1382003", SelarCrumenophthalmus_ }, 
+      { "http://snomed.info/sct#1382003", SelarCrumenophthalmus_ }, 
+      { "1392006", HalichoeresBivittatus_ }, 
+      { "http://snomed.info/sct#1392006", HalichoeresBivittatus_ }, 
+      { "142", Asia_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#142", Asia_ }, 
+      { "1420005", GermanLonghairedPointer_ }, 
+      { "http://snomed.info/sct#1420005", GermanLonghairedPointer_ }, 
+      { "143", CentralAsia_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#143", CentralAsia_ }, 
+      { "1446009", SkrjabinagiaDagestanica_ }, 
+      { "http://snomed.info/sct#1446009", SkrjabinagiaDagestanica_ }, 
+      { "145", WesternAsia_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#145", WesternAsia_ }, 
+      { "1452005", Chirothrips_ }, 
+      { "http://snomed.info/sct#1452005", Chirothrips_ }, 
+      { "1460006", ArgasRadiatus_ }, 
+      { "http://snomed.info/sct#1460006", ArgasRadiatus_ }, 
+      { "1461005", EremichthysAcros_ }, 
+      { "http://snomed.info/sct#1461005", EremichthysAcros_ }, 
+      { "1464002", JackRabbit_ }, 
+      { "http://snomed.info/sct#1464002", JackRabbit_ }, 
+      { "1465001", Verdin_ }, 
+      { "http://snomed.info/sct#1465001", Verdin_ }, 
+      { "1480007", PanTroglodytes_ }, 
+      { "http://snomed.info/sct#1480007", PanTroglodytes_ }, 
+      { "150", Europe_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#150", Europe_ }, 
+      { "1504003", SelenePeruviana_ }, 
+      { "http://snomed.info/sct#1504003", SelenePeruviana_ }, 
+      { "1509008", BiomphalariaHeliophila_ }, 
+      { "http://snomed.info/sct#1509008", BiomphalariaHeliophila_ }, 
+      { "151", EasternEurope_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#151", EasternEurope_ }, 
+      { "1510003", TriodontophorusTenuicollis_ }, 
+      { "http://snomed.info/sct#1510003", TriodontophorusTenuicollis_ }, 
+      { "1514007", BedlingtonTerrier_ }, 
+      { "http://snomed.info/sct#1514007", BedlingtonTerrier_ }, 
+      { "154", NorthernEurope_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#154", NorthernEurope_ }, 
+      { "1543004", Ascarops_ }, 
+      { "http://snomed.info/sct#1543004", Ascarops_ }, 
+      { "1547003", OldWorldVulture_ }, 
+      { "http://snomed.info/sct#1547003", OldWorldVulture_ }, 
+      { "155", WesternEurope_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#155", WesternEurope_ }, 
+      { "1564000", MegalocottusPlatycephalus_ }, 
+      { "http://snomed.info/sct#1564000", MegalocottusPlatycephalus_ }, 
+      { "1587008", IndianDarter_ }, 
+      { "http://snomed.info/sct#1587008", IndianDarter_ }, 
+      { "1618000", NotropisMekistocholas_ }, 
+      { "http://snomed.info/sct#1618000", NotropisMekistocholas_ }, 
+      { "1625007", Nematobibothroides_ }, 
+      { "http://snomed.info/sct#1625007", Nematobibothroides_ }, 
+      { "1629001", ArumFrog_ }, 
+      { "http://snomed.info/sct#1629001", ArumFrog_ }, 
+      { "1632003", Gyrfalcon_ }, 
+      { "http://snomed.info/sct#1632003", Gyrfalcon_ }, 
+      { "1635001", LunglessSalamander_ }, 
+      { "http://snomed.info/sct#1635001", LunglessSalamander_ }, 
+      { "1665006", GadusMacrocephalus_ }, 
+      { "http://snomed.info/sct#1665006", GadusMacrocephalus_ }, 
+      { "1688007", CottusEchinatus_ }, 
+      { "http://snomed.info/sct#1688007", CottusEchinatus_ }, 
+      { "1697006", Megapode_ }, 
+      { "http://snomed.info/sct#1697006", Megapode_ }, 
+      { "1700005", CoryphopterusLipernes_ }, 
+      { "http://snomed.info/sct#1700005", CoryphopterusLipernes_ }, 
+      { "173006", MicrognathusCrinitus_ }, 
+      { "http://snomed.info/sct#173006", MicrognathusCrinitus_ }, 
+      { "1733000", Corallus_ }, 
+      { "http://snomed.info/sct#1733000", Corallus_ }, 
+      { "1751004", GoldenCrownedKinglet_ }, 
+      { "http://snomed.info/sct#1751004", GoldenCrownedKinglet_ }, 
+      { "1783005", MonkeyEatingEagle_ }, 
+      { "http://snomed.info/sct#1783005", MonkeyEatingEagle_ }, 
+      { "1789009", TrakehnerHorse_ }, 
+      { "http://snomed.info/sct#1789009", TrakehnerHorse_ }, 
+      { "1790000", NeoechinorhynchusCarpiodi_ }, 
+      { "http://snomed.info/sct#1790000", NeoechinorhynchusCarpiodi_ }, 
+      { "1802008", AcanthurusCoeruleus_ }, 
+      { "http://snomed.info/sct#1802008", AcanthurusCoeruleus_ }, 
+      { "1809004", Rex_ }, 
+      { "http://snomed.info/sct#1809004", Rex_ }, 
+      { "1817007", MyrophisPunctatus_ }, 
+      { "http://snomed.info/sct#1817007", MyrophisPunctatus_ }, 
+      { "1846000", OpisthorchisFelineus_ }, 
+      { "http://snomed.info/sct#1846000", OpisthorchisFelineus_ }, 
+      { "1851006", AnisotremusVirginicus_ }, 
+      { "http://snomed.info/sct#1851006", AnisotremusVirginicus_ }, 
+      { "1864007", GyraulusPrashadi_ }, 
+      { "http://snomed.info/sct#1864007", GyraulusPrashadi_ }, 
+      { "1867000", AmblyopsisRosae_ }, 
+      { "http://snomed.info/sct#1867000", AmblyopsisRosae_ }, 
+      { "1873004", MuscaLarvipara_ }, 
+      { "http://snomed.info/sct#1873004", MuscaLarvipara_ }, 
+      { "1894001", NotropisFormosus_ }, 
+      { "http://snomed.info/sct#1894001", NotropisFormosus_ }, 
+      { "1900001", ChromisCyaneus_ }, 
+      { "http://snomed.info/sct#1900001", ChromisCyaneus_ }, 
+      { "1920000", ClayColoredSparrow_ }, 
+      { "http://snomed.info/sct#1920000", ClayColoredSparrow_ }, 
+      { "1928007", CoryphaenaHippurus_ }, 
+      { "http://snomed.info/sct#1928007", CoryphaenaHippurus_ }, 
+      { "1935004", Chickadee_ }, 
+      { "http://snomed.info/sct#1935004", Chickadee_ }, 
+      { "194009", NotropisWhipplei_ }, 
+      { "http://snomed.info/sct#194009", NotropisWhipplei_ }, 
+      { "1974006", Retriever_ }, 
+      { "http://snomed.info/sct#1974006", Retriever_ }, 
+      { "1984007", HouseWren_ }, 
+      { "http://snomed.info/sct#1984007", HouseWren_ }, 
+      { "2005006", CypselurusHubbsi_ }, 
+      { "http://snomed.info/sct#2005006", CypselurusHubbsi_ }, 
+      { "201002", OligopusClaudei_ }, 
+      { "http://snomed.info/sct#201002", OligopusClaudei_ }, 
+      { "2025005", AntennariusRadiosus_ }, 
+      { "http://snomed.info/sct#2025005", AntennariusRadiosus_ }, 
+      { "2034000", WhiteTurkey_ }, 
+      { "http://snomed.info/sct#2034000", WhiteTurkey_ }, 
+      { "2035004", NotropisBlennius_ }, 
+      { "http://snomed.info/sct#2035004", NotropisBlennius_ }, 
+      { "2056002", ThunnusAtlanticus_ }, 
+      { "http://snomed.info/sct#2056002", ThunnusAtlanticus_ }, 
+      { "2062007", Dachshund_ }, 
+      { "http://snomed.info/sct#2062007", Dachshund_ }, 
+      { "207003", EuropeanEdibleFrog_ }, 
+      { "http://snomed.info/sct#207003", EuropeanEdibleFrog_ }, 
+      { "2074006", HeterakisIndica_ }, 
+      { "http://snomed.info/sct#2074006", HeterakisIndica_ }, 
+      { "2086009", MastigoproctusGiganteus_ }, 
+      { "http://snomed.info/sct#2086009", MastigoproctusGiganteus_ }, 
+      { "209000", Plover_ }, 
+      { "http://snomed.info/sct#209000", Plover_ }, 
+      { "2090006", Culicoides_ }, 
+      { "http://snomed.info/sct#2090006", Culicoides_ }, 
+      { "2093008", BathygobiusSoporator_ }, 
+      { "http://snomed.info/sct#2093008", BathygobiusSoporator_ }, 
+      { "2105009", Microfilaria_ }, 
+      { "http://snomed.info/sct#2105009", Microfilaria_ }, 
+      { "2106005", Monodelphis_ }, 
+      { "http://snomed.info/sct#2106005", Monodelphis_ }, 
+      { "2112000", DiondaEpiscopa_ }, 
+      { "http://snomed.info/sct#2112000", DiondaEpiscopa_ }, 
+      { "2118001", ToxorhynchitesSplendens_ }, 
+      { "http://snomed.info/sct#2118001", ToxorhynchitesSplendens_ }, 
+      { "2124007", RambouilletSheep_ }, 
+      { "http://snomed.info/sct#2124007", RambouilletSheep_ }, 
+      { "2135002", GnathostomaHispidum_ }, 
+      { "http://snomed.info/sct#2135002", GnathostomaHispidum_ }, 
+      { "2139008", PulexSimulans_ }, 
+      { "http://snomed.info/sct#2139008", PulexSimulans_ }, 
+      { "2146004", Calotes_ }, 
+      { "http://snomed.info/sct#2146004", Calotes_ }, 
+      { "2155001", CylicocyclusElongatus_ }, 
+      { "http://snomed.info/sct#2155001", CylicocyclusElongatus_ }, 
+      { "2173003", CanisAureus_ }, 
+      { "http://snomed.info/sct#2173003", CanisAureus_ }, 
+      { "218003", OphidionHolbrooki_ }, 
+      { "http://snomed.info/sct#218003", OphidionHolbrooki_ }, 
+      { "2187003", EstrildaCaerulescens_ }, 
+      { "http://snomed.info/sct#2187003", EstrildaCaerulescens_ }, 
+      { "2200008", CylicodontophorusEuproctus_ }, 
+      { "http://snomed.info/sct#2200008", CylicodontophorusEuproctus_ }, 
+      { "2206002", EctobiusPallidus_ }, 
+      { "http://snomed.info/sct#2206002", EctobiusPallidus_ }, 
+      { "2207006", MoxostomaPoecilurum_ }, 
+      { "http://snomed.info/sct#2207006", MoxostomaPoecilurum_ }, 
+      { "2211000", Zalophotrema_ }, 
+      { "http://snomed.info/sct#2211000", Zalophotrema_ }, 
+      { "2222001", GlossinaFuscipes_ }, 
+      { "http://snomed.info/sct#2222001", GlossinaFuscipes_ }, 
+      { "2223006", DicrocoeliumHospes_ }, 
+      { "http://snomed.info/sct#2223006", DicrocoeliumHospes_ }, 
+      { "2230000", HystrichisTricolor_ }, 
+      { "http://snomed.info/sct#2230000", HystrichisTricolor_ }, 
+      { "2253004", MaransChicken_ }, 
+      { "http://snomed.info/sct#2253004", MaransChicken_ }, 
+      { "226006", AedesLuteocephalus_ }, 
+      { "http://snomed.info/sct#226006", AedesLuteocephalus_ }, 
+      { "2265000", CaulolatilusPrinceps_ }, 
+      { "http://snomed.info/sct#2265000", CaulolatilusPrinceps_ }, 
+      { "2269006", SyngnathusLeptorhynchus_ }, 
+      { "http://snomed.info/sct#2269006", SyngnathusLeptorhynchus_ }, 
+      { "2271006", MenticirrhusAmericanus_ }, 
+      { "http://snomed.info/sct#2271006", MenticirrhusAmericanus_ }, 
+      { "2273009", GinglymostomaCirratum_ }, 
+      { "http://snomed.info/sct#2273009", GinglymostomaCirratum_ }, 
+      { "2274003", CyprinodonNevadensis_ }, 
+      { "http://snomed.info/sct#2274003", CyprinodonNevadensis_ }, 
+      { "229004", AccipiterGentilis_ }, 
+      { "http://snomed.info/sct#229004", AccipiterGentilis_ }, 
+      { "2310001", AcuariaSpiralis_ }, 
+      { "http://snomed.info/sct#2310001", AcuariaSpiralis_ }, 
+      { "2313004", LycodesDiapterus_ }, 
+      { "http://snomed.info/sct#2313004", LycodesDiapterus_ }, 
+      { "2333000", JapaneseChicken_ }, 
+      { "http://snomed.info/sct#2333000", JapaneseChicken_ }, 
+      { "234000", CyrneaColini_ }, 
+      { "http://snomed.info/sct#234000", CyrneaColini_ }, 
+      { "2340004", GobionellusLongicaudus_ }, 
+      { "http://snomed.info/sct#2340004", GobionellusLongicaudus_ }, 
+      { "2350003", Cyclura_ }, 
+      { "http://snomed.info/sct#2350003", Cyclura_ }, 
+      { "2353001", LymnaeaCubensis_ }, 
+      { "http://snomed.info/sct#2353001", LymnaeaCubensis_ }, 
+      { "2361006", SebastolobusAlascanus_ }, 
+      { "http://snomed.info/sct#2361006", SebastolobusAlascanus_ }, 
+      { "2378002", IguanaIguana_ }, 
+      { "http://snomed.info/sct#2378002", IguanaIguana_ }, 
+      { "2380008", EchinostomaMalayanum_ }, 
+      { "http://snomed.info/sct#2380008", EchinostomaMalayanum_ }, 
+      { "2394009", TrogloglanisPattersoni_ }, 
+      { "http://snomed.info/sct#2394009", TrogloglanisPattersoni_ }, 
+      { "2417004", NygmiaPhaeorrhoea_ }, 
+      { "http://snomed.info/sct#2417004", NygmiaPhaeorrhoea_ }, 
+      { "2422004", AcanthurusRandalli_ }, 
+      { "http://snomed.info/sct#2422004", AcanthurusRandalli_ }, 
+      { "2449004", LesserBirdOfParadise_ }, 
+      { "http://snomed.info/sct#2449004", LesserBirdOfParadise_ }, 
+      { "2479006", StrongyloidesCebus_ }, 
+      { "http://snomed.info/sct#2479006", StrongyloidesCebus_ }, 
+      { "2485004", WhitePeafowl_ }, 
+      { "http://snomed.info/sct#2485004", WhitePeafowl_ }, 
+      { "2493004", HollardiaMeadi_ }, 
+      { "http://snomed.info/sct#2493004", HollardiaMeadi_ }, 
+      { "2512008", GnathagnusEgregius_ }, 
+      { "http://snomed.info/sct#2512008", GnathagnusEgregius_ }, 
+      { "2519004", ViviparusJavanicus_ }, 
+      { "http://snomed.info/sct#2519004", ViviparusJavanicus_ }, 
+      { "2525000", Lissemys_ }, 
+      { "http://snomed.info/sct#2525000", Lissemys_ }, 
+      { "2540003", AnophelesHyrcanusSinensis_ }, 
+      { "http://snomed.info/sct#2540003", AnophelesHyrcanusSinensis_ }, 
+      { "2545008", RajaInornata_ }, 
+      { "http://snomed.info/sct#2545008", RajaInornata_ }, 
+      { "2551003", AngiostrongylusMackerrasae_ }, 
+      { "http://snomed.info/sct#2551003", AngiostrongylusMackerrasae_ }, 
+      { "2561005", EasternKingbird_ }, 
+      { "http://snomed.info/sct#2561005", EasternKingbird_ }, 
+      { "2572000", Trichuris_ }, 
+      { "http://snomed.info/sct#2572000", Trichuris_ }, 
+      { "2578001", SpottedTailedDasyure_ }, 
+      { "http://snomed.info/sct#2578001", SpottedTailedDasyure_ }, 
+      { "2587005", EasternMudSnake_ }, 
+      { "http://snomed.info/sct#2587005", EasternMudSnake_ }, 
+      { "2588000", BivitellobilharziaLoxodontae_ }, 
+      { "http://snomed.info/sct#2588000", BivitellobilharziaLoxodontae_ }, 
+      { "2590004", Leiperenia_ }, 
+      { "http://snomed.info/sct#2590004", Leiperenia_ }, 
+      { "260004", IndigoBunting_ }, 
+      { "http://snomed.info/sct#260004", IndigoBunting_ }, 
+      { "2604009", GoldenCrestedBowerbird_ }, 
+      { "http://snomed.info/sct#2604009", GoldenCrestedBowerbird_ }, 
+      { "2605005", DermanyssusGallinae_ }, 
+      { "http://snomed.info/sct#2605005", DermanyssusGallinae_ }, 
+      { "2623002", PhlebotomusOrientalis_ }, 
+      { "http://snomed.info/sct#2623002", PhlebotomusOrientalis_ }, 
+      { "2627001", EchinoparyphiumDunni_ }, 
+      { "http://snomed.info/sct#2627001", EchinoparyphiumDunni_ }, 
+      { "2631007", Goniocotes_ }, 
+      { "http://snomed.info/sct#2631007", Goniocotes_ }, 
+      { "2633005", PhlebotomusArgentipes_ }, 
+      { "http://snomed.info/sct#2633005", PhlebotomusArgentipes_ }, 
+      { "2650007", NotropisCandidus_ }, 
+      { "http://snomed.info/sct#2650007", NotropisCandidus_ }, 
+      { "268006", LycosaTarentula_ }, 
+      { "http://snomed.info/sct#268006", LycosaTarentula_ }, 
+      { "2684006", TriatomaMaculata_ }, 
+      { "http://snomed.info/sct#2684006", TriatomaMaculata_ }, 
+      { "2711004", BulinusBulinusCoulboisi_ }, 
+      { "http://snomed.info/sct#2711004", BulinusBulinusCoulboisi_ }, 
+      { "2715008", TragelaphusEuryceros_ }, 
+      { "http://snomed.info/sct#2715008", TragelaphusEuryceros_ }, 
+      { "2723005", ConcinnumTen_ }, 
+      { "http://snomed.info/sct#2723005", ConcinnumTen_ }, 
+      { "2727006", Microthoracius_ }, 
+      { "http://snomed.info/sct#2727006", Microthoracius_ }, 
+      { "2747003", SmoothNewt_ }, 
+      { "http://snomed.info/sct#2747003", SmoothNewt_ }, 
+      { "275007", NoturusPlacidus_ }, 
+      { "http://snomed.info/sct#275007", NoturusPlacidus_ }, 
+      { "2755005", HolocentrusAscensionis_ }, 
+      { "http://snomed.info/sct#2755005", HolocentrusAscensionis_ }, 
+      { "2756006", RaillietinaMadagascariensis_ }, 
+      { "http://snomed.info/sct#2756006", RaillietinaMadagascariensis_ }, 
+      { "2766003", LiopropomaRubre_ }, 
+      { "http://snomed.info/sct#2766003", LiopropomaRubre_ }, 
+      { "2768002", AmiaCalva_ }, 
+      { "http://snomed.info/sct#2768002", AmiaCalva_ }, 
+      { "277004", Antbird_ }, 
+      { "http://snomed.info/sct#277004", Antbird_ }, 
+      { "2773008", Lizard_ }, 
+      { "http://snomed.info/sct#2773008", Lizard_ }, 
+      { "2797004", LythrypnusNesiotes_ }, 
+      { "http://snomed.info/sct#2797004", LythrypnusNesiotes_ }, 
+      { "2798009", BicaulusSagittatus_ }, 
+      { "http://snomed.info/sct#2798009", BicaulusSagittatus_ }, 
+      { "2800002", OesophagostomumRadiatum_ }, 
+      { "http://snomed.info/sct#2800002", OesophagostomumRadiatum_ }, 
+      { "2817009", MicrocottusSellaris_ }, 
+      { "http://snomed.info/sct#2817009", MicrocottusSellaris_ }, 
+      { "2865005", HirundichthysAffinis_ }, 
+      { "http://snomed.info/sct#2865005", HirundichthysAffinis_ }, 
+      { "2873001", LepisosteusOculatus_ }, 
+      { "http://snomed.info/sct#2873001", LepisosteusOculatus_ }, 
+      { "2874007", TaeniaParva_ }, 
+      { "http://snomed.info/sct#2874007", TaeniaParva_ }, 
+      { "2882007", HymenolepisFraterna_ }, 
+      { "http://snomed.info/sct#2882007", HymenolepisFraterna_ }, 
+      { "2896001", PseudodiscusCollinsi_ }, 
+      { "http://snomed.info/sct#2896001", PseudodiscusCollinsi_ }, 
+      { "2921003", DorosomaPetenense_ }, 
+      { "http://snomed.info/sct#2921003", DorosomaPetenense_ }, 
+      { "2926008", ScomberJaponicus_ }, 
+      { "http://snomed.info/sct#2926008", ScomberJaponicus_ }, 
+      { "2930006", Cacique_ }, 
+      { "http://snomed.info/sct#2930006", Cacique_ }, 
+      { "2939007", GobiosomaGinsburgi_ }, 
+      { "http://snomed.info/sct#2939007", GobiosomaGinsburgi_ }, 
+      { "2976005", MakairaIndica_ }, 
+      { "http://snomed.info/sct#2976005", MakairaIndica_ }, 
+      { "2983003", EtheostomaFricksium_ }, 
+      { "http://snomed.info/sct#2983003", EtheostomaFricksium_ }, 
+      { "2984009", IxodesRugosus_ }, 
+      { "http://snomed.info/sct#2984009", IxodesRugosus_ }, 
+      { "2987002", MastophorusMuris_ }, 
+      { "http://snomed.info/sct#2987002", MastophorusMuris_ }, 
+      { "2997006", MartesZibellina_ }, 
+      { "http://snomed.info/sct#2997006", MartesZibellina_ }, 
+      { "300004", MiniatureSchnauzer_ }, 
+      { "http://snomed.info/sct#300004", MiniatureSchnauzer_ }, 
+      { "3012009", Epicrates_ }, 
+      { "http://snomed.info/sct#3012009", Epicrates_ }, 
+      { "305009", Malaclemys_ }, 
+      { "http://snomed.info/sct#305009", Malaclemys_ }, 
+      { "3064003", StrongylusEquinus_ }, 
+      { "http://snomed.info/sct#3064003", StrongylusEquinus_ }, 
+      { "3065002", AnophelesGambiae_ }, 
+      { "http://snomed.info/sct#3065002", AnophelesGambiae_ }, 
+      { "3069008", NotropisAmabilis_ }, 
+      { "http://snomed.info/sct#3069008", NotropisAmabilis_ }, 
+      { "3079005", Echinorhynchus_ }, 
+      { "http://snomed.info/sct#3079005", Echinorhynchus_ }, 
+      { "3099004", RomneyMarshSheep_ }, 
+      { "http://snomed.info/sct#3099004", RomneyMarshSheep_ }, 
+      { "3106001", CricketFrog_ }, 
+      { "http://snomed.info/sct#3106001", CricketFrog_ }, 
+      { "3111004", Phoneutria_ }, 
+      { "http://snomed.info/sct#3111004", Phoneutria_ }, 
+      { "3124004", CyathostomumCatinatum_ }, 
+      { "http://snomed.info/sct#3124004", CyathostomumCatinatum_ }, 
+      { "3132007", StrongyloidesCati_ }, 
+      { "http://snomed.info/sct#3132007", StrongyloidesCati_ }, 
+      { "3146007", Noeschoengastia_ }, 
+      { "http://snomed.info/sct#3146007", Noeschoengastia_ }, 
+      { "3147003", MembrasMartinica_ }, 
+      { "http://snomed.info/sct#3147003", MembrasMartinica_ }, 
+      { "3152008", LycodesRossi_ }, 
+      { "http://snomed.info/sct#3152008", LycodesRossi_ }, 
+      { "3173008", CaranxBartholomaei_ }, 
+      { "http://snomed.info/sct#3173008", CaranxBartholomaei_ }, 
+      { "3176000", HirundichthysRondeleti_ }, 
+      { "http://snomed.info/sct#3176000", HirundichthysRondeleti_ }, 
+      { "3179007", SeleneSetapinnis_ }, 
+      { "http://snomed.info/sct#3179007", SeleneSetapinnis_ }, 
+      { "3181009", BrantaCanadensis_ }, 
+      { "http://snomed.info/sct#3181009", BrantaCanadensis_ }, 
+      { "3195007", NotropisPerpallidus_ }, 
+      { "http://snomed.info/sct#3195007", NotropisPerpallidus_ }, 
+      { "3203001", AnophelesPattoni_ }, 
+      { "http://snomed.info/sct#3203001", AnophelesPattoni_ }, 
+      { "3206009", StrongyloidesCanis_ }, 
+      { "http://snomed.info/sct#3206009", StrongyloidesCanis_ }, 
+      { "3213009", RhinichthysEvermanni_ }, 
+      { "http://snomed.info/sct#3213009", RhinichthysEvermanni_ }, 
+      { "3216001", LincolnRedCattle_ }, 
+      { "http://snomed.info/sct#3216001", LincolnRedCattle_ }, 
+      { "3220002", LaughingGull_ }, 
+      { "http://snomed.info/sct#3220002", LaughingGull_ }, 
+      { "3231005", EtheostomaNeopterum_ }, 
+      { "http://snomed.info/sct#3231005", EtheostomaNeopterum_ }, 
+      { "3237009", OpisthorchisNoverca_ }, 
+      { "http://snomed.info/sct#3237009", OpisthorchisNoverca_ }, 
+      { "3240009", HaemonchusLawrenci_ }, 
+      { "http://snomed.info/sct#3240009", HaemonchusLawrenci_ }, 
+      { "3244000", BiomphalariaTenagophila_ }, 
+      { "http://snomed.info/sct#3244000", BiomphalariaTenagophila_ }, 
+      { "3260001", DurocPig_ }, 
+      { "http://snomed.info/sct#3260001", DurocPig_ }, 
+      { "3284009", TrimeresurusMonticola_ }, 
+      { "http://snomed.info/sct#3284009", TrimeresurusMonticola_ }, 
+      { "3294004", SchistosomaHaematobium_ }, 
+      { "http://snomed.info/sct#3294004", SchistosomaHaematobium_ }, 
+      { "332004", SphyrnaLewini_ }, 
+      { "http://snomed.info/sct#332004", SphyrnaLewini_ }, 
+      { "3329004", TrichostrongylusSkrjabini_ }, 
+      { "http://snomed.info/sct#3329004", TrichostrongylusSkrjabini_ }, 
+      { "3347005", DandieDinmontTerrier_ }, 
+      { "http://snomed.info/sct#3347005", DandieDinmontTerrier_ }, 
+      { "3354004", HavanaBrownCat_ }, 
+      { "http://snomed.info/sct#3354004", HavanaBrownCat_ }, 
+      { "3356002", PtychocheilusGrandis_ }, 
+      { "http://snomed.info/sct#3356002", PtychocheilusGrandis_ }, 
+      { "3363002", ChromisPunctipinnis_ }, 
+      { "http://snomed.info/sct#3363002", ChromisPunctipinnis_ }, 
+      { "3375007", FundulusLineolatus_ }, 
+      { "http://snomed.info/sct#3375007", FundulusLineolatus_ }, 
+      { "338000", BlackHeadedOriole_ }, 
+      { "http://snomed.info/sct#338000", BlackHeadedOriole_ }, 
+      { "3410009", ChloroscombrusChrysurus_ }, 
+      { "http://snomed.info/sct#3410009", ChloroscombrusChrysurus_ }, 
+      { "3412001", KaupichthysNuchalis_ }, 
+      { "http://snomed.info/sct#3412001", KaupichthysNuchalis_ }, 
+      { "3429003", Gurltia_ }, 
+      { "http://snomed.info/sct#3429003", Gurltia_ }, 
+      { "3433005", HolocentrusBullisi_ }, 
+      { "http://snomed.info/sct#3433005", HolocentrusBullisi_ }, 
+      { "3435003", FatDormouse_ }, 
+      { "http://snomed.info/sct#3435003", FatDormouse_ }, 
+      { "3454003", ThelaziaBubalis_ }, 
+      { "http://snomed.info/sct#3454003", ThelaziaBubalis_ }, 
+      { "347008", RufousTinamou_ }, 
+      { "http://snomed.info/sct#347008", RufousTinamou_ }, 
+      { "3475006", RedBilledChough_ }, 
+      { "http://snomed.info/sct#3475006", RedBilledChough_ }, 
+      { "3486008", XererpesFucorum_ }, 
+      { "http://snomed.info/sct#3486008", XererpesFucorum_ }, 
+      { "350006", PercinaCrassa_ }, 
+      { "http://snomed.info/sct#350006", PercinaCrassa_ }, 
+      { "3510006", RaillietinaEchinobothridia_ }, 
+      { "http://snomed.info/sct#3510006", RaillietinaEchinobothridia_ }, 
+      { "3536004", AnophelesGrabhanii_ }, 
+      { "http://snomed.info/sct#3536004", AnophelesGrabhanii_ }, 
+      { "3565005", EquetusLanceolatus_ }, 
+      { "http://snomed.info/sct#3565005", EquetusLanceolatus_ }, 
+      { "3566006", SouthdownSheep_ }, 
+      { "http://snomed.info/sct#3566006", SouthdownSheep_ }, 
+      { "3568007", CoryphopterusThrix_ }, 
+      { "http://snomed.info/sct#3568007", CoryphopterusThrix_ }, 
+      { "3569004", Coleonyx_ }, 
+      { "http://snomed.info/sct#3569004", Coleonyx_ }, 
+      { "3574007", Bitis_ }, 
+      { "http://snomed.info/sct#3574007", Bitis_ }, 
+      { "3600006", AnophelesDQuoteThali_ }, 
+      { "http://snomed.info/sct#3600006", AnophelesDQuoteThali_ }, 
+      { "3613000", ChaetodonSedentarius_ }, 
+      { "http://snomed.info/sct#3613000", ChaetodonSedentarius_ }, 
+      { "3619001", PimephalesPromelas_ }, 
+      { "http://snomed.info/sct#3619001", PimephalesPromelas_ }, 
+      { "3632006", BrosmophycisMarginata_ }, 
+      { "http://snomed.info/sct#3632006", BrosmophycisMarginata_ }, 
+      { "3653002", BalineseCat_ }, 
+      { "http://snomed.info/sct#3653002", BalineseCat_ }, 
+      { "3656005", GoldenRumpedTinkerbird_ }, 
+      { "http://snomed.info/sct#3656005", GoldenRumpedTinkerbird_ }, 
+      { "3668001", StenotomusCaprinus_ }, 
+      { "http://snomed.info/sct#3668001", StenotomusCaprinus_ }, 
+      { "3671009", NotropisCoccogenis_ }, 
+      { "http://snomed.info/sct#3671009", NotropisCoccogenis_ }, 
+      { "3674001", SiberianHuskie_ }, 
+      { "http://snomed.info/sct#3674001", SiberianHuskie_ }, 
+      { "3676004", CyprinusCarpio_ }, 
+      { "http://snomed.info/sct#3676004", CyprinusCarpio_ }, 
+      { "3682001", MycteropercaXenarcha_ }, 
+      { "http://snomed.info/sct#3682001", MycteropercaXenarcha_ }, 
+      { "3685004", SpringPeeper_ }, 
+      { "http://snomed.info/sct#3685004", SpringPeeper_ }, 
+      { "3706005", AnisakisSimplex_ }, 
+      { "http://snomed.info/sct#3706005", AnisakisSimplex_ }, 
+      { "3721004", Minivet_ }, 
+      { "http://snomed.info/sct#3721004", Minivet_ }, 
+      { "3725008", Hydrosaurus_ }, 
+      { "http://snomed.info/sct#3725008", Hydrosaurus_ }, 
+      { "3732004", AnthiasGordensis_ }, 
+      { "http://snomed.info/sct#3732004", AnthiasGordensis_ }, 
+      { "3741009", CitharichthysCornutus_ }, 
+      { "http://snomed.info/sct#3741009", CitharichthysCornutus_ }, 
+      { "376006", Micrurus_ }, 
+      { "http://snomed.info/sct#376006", Micrurus_ }, 
+      { "3767004", ToxascarisLeonina_ }, 
+      { "http://snomed.info/sct#3767004", ToxascarisLeonina_ }, 
+      { "3782009", CatostomusCommersoni_ }, 
+      { "http://snomed.info/sct#3782009", CatostomusCommersoni_ }, 
+      { "3795004", AnatrichosomaCynomolgi_ }, 
+      { "http://snomed.info/sct#3795004", AnatrichosomaCynomolgi_ }, 
+      { "3809005", AlopiasSuperciliosus_ }, 
+      { "http://snomed.info/sct#3809005", AlopiasSuperciliosus_ }, 
+      { "381002", MansoniaPertubans_ }, 
+      { "http://snomed.info/sct#381002", MansoniaPertubans_ }, 
+      { "3817002", NotropisChrosomus_ }, 
+      { "http://snomed.info/sct#3817002", NotropisChrosomus_ }, 
+      { "3824001", DracunculusMedinensis_ }, 
+      { "http://snomed.info/sct#3824001", DracunculusMedinensis_ }, 
+      { "3856008", EnophrysBison_ }, 
+      { "http://snomed.info/sct#3856008", EnophrysBison_ }, 
+      { "3857004", DecapterusMacarellus_ }, 
+      { "http://snomed.info/sct#3857004", DecapterusMacarellus_ }, 
+      { "386007", PoeciliaFormosa_ }, 
+      { "http://snomed.info/sct#386007", PoeciliaFormosa_ }, 
+      { "3871007", SchistosomaChestermani_ }, 
+      { "http://snomed.info/sct#3871007", SchistosomaChestermani_ }, 
+      { "3872000", BeltsvilleWhiteTurkey_ }, 
+      { "http://snomed.info/sct#3872000", BeltsvilleWhiteTurkey_ }, 
+      { "390009", OphidionBeani_ }, 
+      { "http://snomed.info/sct#390009", OphidionBeani_ }, 
+      { "3905003", Gerrhonotus_ }, 
+      { "http://snomed.info/sct#3905003", Gerrhonotus_ }, 
+      { "3912007", CoruciaZebrata_ }, 
+      { "http://snomed.info/sct#3912007", CoruciaZebrata_ }, 
+      { "3919003", MuscaAmica_ }, 
+      { "http://snomed.info/sct#3919003", MuscaAmica_ }, 
+      { "3921008", AiredaleTerrier_ }, 
+      { "http://snomed.info/sct#3921008", AiredaleTerrier_ }, 
+      { "3933003", MelodiousBlackbird_ }, 
+      { "http://snomed.info/sct#3933003", MelodiousBlackbird_ }, 
+      { "3934009", LymnaeaVolutata_ }, 
+      { "http://snomed.info/sct#3934009", LymnaeaVolutata_ }, 
+      { "3940002", Spinetail_ }, 
+      { "http://snomed.info/sct#3940002", Spinetail_ }, 
+      { "394537008", Pediatrics_ }, 
+      { "http://snomed.info/sct#394537008", Pediatrics_ }, 
+      { "394538003", PediatricNeurology_ }, 
+      { "http://snomed.info/sct#394538003", PediatricNeurology_ }, 
+      { "394578005", AudiologicalMedicine_ }, 
+      { "http://snomed.info/sct#394578005", AudiologicalMedicine_ }, 
+      { "394579002", Cardiology_ }, 
+      { "http://snomed.info/sct#394579002", Cardiology_ }, 
+      { "394580004", ClinicalGenetics_ }, 
+      { "http://snomed.info/sct#394580004", ClinicalGenetics_ }, 
+      { "394582007", Dermatology_ }, 
+      { "http://snomed.info/sct#394582007", Dermatology_ }, 
+      { "394583002", Endocrinology_ }, 
+      { "http://snomed.info/sct#394583002", Endocrinology_ }, 
+      { "394584008", Gastroenterology_ }, 
+      { "http://snomed.info/sct#394584008", Gastroenterology_ }, 
+      { "394589003", Nephrology_ }, 
+      { "http://snomed.info/sct#394589003", Nephrology_ }, 
+      { "394590007", ThoracicMedicine_ }, 
+      { "http://snomed.info/sct#394590007", ThoracicMedicine_ }, 
+      { "394591006", Neurology_ }, 
+      { "http://snomed.info/sct#394591006", Neurology_ }, 
+      { "394593009", MedicalOncology_ }, 
+      { "http://snomed.info/sct#394593009", MedicalOncology_ }, 
+      { "394600006", ClinicalPharmacology_ }, 
+      { "http://snomed.info/sct#394600006", ClinicalPharmacology_ }, 
+      { "3946008", NorthernShrike_ }, 
+      { "http://snomed.info/sct#3946008", NorthernShrike_ }, 
+      { "394601005", ClinicalPhysiology_ }, 
+      { "http://snomed.info/sct#394601005", ClinicalPhysiology_ }, 
+      { "394602003", RehabilitationSpecialty_ }, 
+      { "http://snomed.info/sct#394602003", RehabilitationSpecialty_ }, 
+      { "394649004", NuclearMedicineSpecialty_ }, 
+      { "http://snomed.info/sct#394649004", NuclearMedicineSpecialty_ }, 
+      { "394802001", GeneralMedicine_ }, 
+      { "http://snomed.info/sct#394802001", GeneralMedicine_ }, 
+      { "394803006", ClinicalHematology_ }, 
+      { "http://snomed.info/sct#394803006", ClinicalHematology_ }, 
+      { "394804000", ClinicalCytogeneticsAndMolecularGenetics_ }, 
+      { "http://snomed.info/sct#394804000", ClinicalCytogeneticsAndMolecularGenetics_ }, 
+      { "394805004", ClinicalImmunologyAllergy_ }, 
+      { "http://snomed.info/sct#394805004", ClinicalImmunologyAllergy_ }, 
+      { "394806003", PalliativeMedicine_ }, 
+      { "http://snomed.info/sct#394806003", PalliativeMedicine_ }, 
+      { "394807007", InfectiousDiseasesSpecialty_ }, 
+      { "http://snomed.info/sct#394807007", InfectiousDiseasesSpecialty_ }, 
+      { "394808002", GenitoUrinaryMedicine_ }, 
+      { "http://snomed.info/sct#394808002", GenitoUrinaryMedicine_ }, 
+      { "394809005", ClinicalNeuroPhysiology_ }, 
+      { "http://snomed.info/sct#394809005", ClinicalNeuroPhysiology_ }, 
+      { "394810000", Rheumatology_ }, 
+      { "http://snomed.info/sct#394810000", Rheumatology_ }, 
+      { "394811001", GeriatricMedicine_ }, 
+      { "http://snomed.info/sct#394811001", GeriatricMedicine_ }, 
+      { "394812008", DentalMedicineSpecialties_ }, 
+      { "http://snomed.info/sct#394812008", DentalMedicineSpecialties_ }, 
+      { "394813003", MedicalOphthalmology_ }, 
+      { "http://snomed.info/sct#394813003", MedicalOphthalmology_ }, 
+      { "3965000", MicrometrusAurora_ }, 
+      { "http://snomed.info/sct#3965000", MicrometrusAurora_ }, 
+      { "399005", BlaberusCraniifer_ }, 
+      { "http://snomed.info/sct#399005", BlaberusCraniifer_ }, 
+      { "3995008", Manx_ }, 
+      { "http://snomed.info/sct#3995008", Manx_ }, 
+      { "3997000", Pony_ }, 
+      { "http://snomed.info/sct#3997000", Pony_ }, 
+      { "400003", PinzgauerCattle_ }, 
+      { "http://snomed.info/sct#400003", PinzgauerCattle_ }, 
+      { "4011008", CottusPrinceps_ }, 
+      { "http://snomed.info/sct#4011008", CottusPrinceps_ }, 
+      { "4020004", MargaropusWileyi_ }, 
+      { "http://snomed.info/sct#4020004", MargaropusWileyi_ }, 
+      { "4031007", HybopsisGracilis_ }, 
+      { "http://snomed.info/sct#4031007", HybopsisGracilis_ }, 
+      { "4033005", PhysalopteraAbbreviata_ }, 
+      { "http://snomed.info/sct#4033005", PhysalopteraAbbreviata_ }, 
+      { "404007", BramaJaponica_ }, 
+      { "http://snomed.info/sct#404007", BramaJaponica_ }, 
+      { "4042003", SomaliCat_ }, 
+      { "http://snomed.info/sct#4042003", SomaliCat_ }, 
+      { "4049007", JavaWartSnake_ }, 
+      { "http://snomed.info/sct#4049007", JavaWartSnake_ }, 
+      { "4050007", CottusMarginatus_ }, 
+      { "http://snomed.info/sct#4050007", CottusMarginatus_ }, 
+      { "4056001", Haemogamasus_ }, 
+      { "http://snomed.info/sct#4056001", Haemogamasus_ }, 
+      { "408439002", AllergySpecialty_ }, 
+      { "http://snomed.info/sct#408439002", AllergySpecialty_ }, 
+      { "408440000", PublicHealthMedicine_ }, 
+      { "http://snomed.info/sct#408440000", PublicHealthMedicine_ }, 
+      { "408442008", HemophiliaSpecialty_ }, 
+      { "http://snomed.info/sct#408442008", HemophiliaSpecialty_ }, 
+      { "408445005", Neonatology_ }, 
+      { "http://snomed.info/sct#408445005", Neonatology_ }, 
+      { "408447002", RespiteCareSpecialty_ }, 
+      { "http://snomed.info/sct#408447002", RespiteCareSpecialty_ }, 
+      { "408448007", TropicalMedicine_ }, 
+      { "http://snomed.info/sct#408448007", TropicalMedicine_ }, 
+      { "408450004", SleepStudiesSpecialty_ }, 
+      { "http://snomed.info/sct#408450004", SleepStudiesSpecialty_ }, 
+      { "408459003", PediatricCardiology_ }, 
+      { "http://snomed.info/sct#408459003", PediatricCardiology_ }, 
+      { "408472002", Hepatology_ }, 
+      { "http://snomed.info/sct#408472002", Hepatology_ }, 
+      { "408475000", DiabeticMedicine_ }, 
+      { "http://snomed.info/sct#408475000", DiabeticMedicine_ }, 
+      { "408478003", CriticalCareMedicine_ }, 
+      { "http://snomed.info/sct#408478003", CriticalCareMedicine_ }, 
+      { "408480009", ClinicalImmunology_ }, 
+      { "http://snomed.info/sct#408480009", ClinicalImmunology_ }, 
+      { "4095000", NotropisAriommus_ }, 
+      { "http://snomed.info/sct#4095000", NotropisAriommus_ }, 
+      { "409967009", Toxicology_ }, 
+      { "http://snomed.info/sct#409967009", Toxicology_ }, 
+      { "409968004", PreventiveMedicine_ }, 
+      { "http://snomed.info/sct#409968004", PreventiveMedicine_ }, 
+      { "410001006", MilitaryMedicine_ }, 
+      { "http://snomed.info/sct#410001006", MilitaryMedicine_ }, 
+      { "410005002", DiveMedicine_ }, 
+      { "http://snomed.info/sct#410005002", DiveMedicine_ }, 
+      { "410007", AthetaOccidentalis_ }, 
+      { "http://snomed.info/sct#410007", AthetaOccidentalis_ }, 
+      { "4108005", MicrurusSurinamensis_ }, 
+      { "http://snomed.info/sct#4108005", MicrurusSurinamensis_ }, 
+      { "411006", AnophelesCruzii_ }, 
+      { "http://snomed.info/sct#411006", AnophelesCruzii_ }, 
+      { "4123000", PilaConica_ }, 
+      { "http://snomed.info/sct#4123000", PilaConica_ }, 
+      { "416001", Nymphalis_ }, 
+      { "http://snomed.info/sct#416001", Nymphalis_ }, 
+      { "416304004", OsteopathicManipulativeMedicine_ }, 
+      { "http://snomed.info/sct#416304004", OsteopathicManipulativeMedicine_ }, 
+      { "4166007", HippoglossusHippoglossus_ }, 
+      { "http://snomed.info/sct#4166007", HippoglossusHippoglossus_ }, 
+      { "4171000", Diplozoon_ }, 
+      { "http://snomed.info/sct#4171000", Diplozoon_ }, 
+      { "417887005", PediatricOtolaryngology_ }, 
+      { "http://snomed.info/sct#417887005", PediatricOtolaryngology_ }, 
+      { "418002000", PediatricOncology_ }, 
+      { "http://snomed.info/sct#418002000", PediatricOncology_ }, 
+      { "418058008", PediatricGastroenterology_ }, 
+      { "http://snomed.info/sct#418058008", PediatricGastroenterology_ }, 
+      { "418112009", PulmonaryMedicine_ }, 
+      { "http://snomed.info/sct#418112009", PulmonaryMedicine_ }, 
+      { "418535003", PediatricImmunology_ }, 
+      { "http://snomed.info/sct#418535003", PediatricImmunology_ }, 
+      { "418652005", PediatricHematology_ }, 
+      { "http://snomed.info/sct#418652005", PediatricHematology_ }, 
+      { "418862001", PediatricInfectiousDiseases_ }, 
+      { "http://snomed.info/sct#418862001", PediatricInfectiousDiseases_ }, 
+      { "419", LatinAmericaAndTheCaribbean_ }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#419", LatinAmericaAndTheCaribbean_ }, 
+      { "419043006", UrologicalOncology_ }, 
+      { "http://snomed.info/sct#419043006", UrologicalOncology_ }, 
+      { "419170002", PediatricPulmonology_ }, 
+      { "http://snomed.info/sct#419170002", PediatricPulmonology_ }, 
+      { "419192003", InternalMedicine_ }, 
+      { "http://snomed.info/sct#419192003", InternalMedicine_ }, 
+      { "419215006", PediatricIntensiveCare_ }, 
+      { "http://snomed.info/sct#419215006", PediatricIntensiveCare_ }, 
+      { "419365004", PediatricNephrology_ }, 
+      { "http://snomed.info/sct#419365004", PediatricNephrology_ }, 
+      { "419472004", PediatricRheumatology_ }, 
+      { "http://snomed.info/sct#419472004", PediatricRheumatology_ }, 
+      { "419610006", PediatricEndocrinology_ }, 
+      { "http://snomed.info/sct#419610006", PediatricEndocrinology_ }, 
+      { "419677000", PediatricNeurologyOncology_ }, 
+      { "http://snomed.info/sct#419677000", PediatricNeurologyOncology_ }, 
+      { "419772000", FamilyPractice_ }, 
+      { "http://snomed.info/sct#419772000", FamilyPractice_ }, 
+      { "419917007", PediatricEmergencyMedicine_ }, 
+      { "http://snomed.info/sct#419917007", PediatricEmergencyMedicine_ }, 
+      { "419983000", PediatricOphthalmology_ }, 
+      { "http://snomed.info/sct#419983000", PediatricOphthalmology_ }, 
+      { "420112009", PediatricBoneMarrowTransplantation_ }, 
+      { "http://snomed.info/sct#420112009", PediatricBoneMarrowTransplantation_ }, 
+      { "420208008", PediatricGenetics_ }, 
+      { "http://snomed.info/sct#420208008", PediatricGenetics_ }, 
+      { "4209008", TetrameresConfusa_ }, 
+      { "http://snomed.info/sct#4209008", TetrameresConfusa_ }, 
+      { "421003", BaltimoreOriole_ }, 
+      { "http://snomed.info/sct#421003", BaltimoreOriole_ }, 
+      { "4216009", DiplostomumPhoxini_ }, 
+      { "http://snomed.info/sct#4216009", DiplostomumPhoxini_ }, 
+      { "4228001", RhipicephalusDecoloratus_ }, 
+      { "http://snomed.info/sct#4228001", RhipicephalusDecoloratus_ }, 
+      { "423000", OochoristicaRatti_ }, 
+      { "http://snomed.info/sct#423000", OochoristicaRatti_ }, 
+      { "4233002", PomphorhynchusBulbocolli_ }, 
+      { "http://snomed.info/sct#4233002", PomphorhynchusBulbocolli_ }, 
+      { "4236005", Hemitragus_ }, 
+      { "http://snomed.info/sct#4236005", Hemitragus_ }, 
+      { "4245006", AilurusFulgens_ }, 
+      { "http://snomed.info/sct#4245006", AilurusFulgens_ }, 
+      { "4246007", GadusOgac_ }, 
+      { "http://snomed.info/sct#4246007", GadusOgac_ }, 
+      { "4250000", CichlasomaOctofasciatum_ }, 
+      { "http://snomed.info/sct#4250000", CichlasomaOctofasciatum_ }, 
+      { "4261008", TrichurisSylvilagi_ }, 
+      { "http://snomed.info/sct#4261008", TrichurisSylvilagi_ }, 
+      { "4274002", EtheostomaKanawhae_ }, 
+      { "http://snomed.info/sct#4274002", EtheostomaKanawhae_ }, 
+      { "4277009", HexanchusGriseus_ }, 
+      { "http://snomed.info/sct#4277009", HexanchusGriseus_ }, 
+      { "428009", NorthernFlatHeadSnake_ }, 
+      { "http://snomed.info/sct#428009", NorthernFlatHeadSnake_ }, 
+      { "4288003", ThoroughbredHorse_ }, 
+      { "http://snomed.info/sct#4288003", ThoroughbredHorse_ }, 
+      { "4297004", SebastesVariegatus_ }, 
+      { "http://snomed.info/sct#4297004", SebastesVariegatus_ }, 
+      { "4302001", TaeniaAntarctica_ }, 
+      { "http://snomed.info/sct#4302001", TaeniaAntarctica_ }, 
+      { "4309005", CapillariaMegrelica_ }, 
+      { "http://snomed.info/sct#4309005", CapillariaMegrelica_ }, 
+      { "4315005", AedesCommunis_ }, 
+      { "http://snomed.info/sct#4315005", AedesCommunis_ }, 
+      { "4329006", CooperiaSpatulata_ }, 
+      { "http://snomed.info/sct#4329006", CooperiaSpatulata_ }, 
+      { "4366000", OrnithonyssusSylviarum_ }, 
+      { "http://snomed.info/sct#4366000", OrnithonyssusSylviarum_ }, 
+      { "4384003", PorrocaecumAridae_ }, 
+      { "http://snomed.info/sct#4384003", PorrocaecumAridae_ }, 
+      { "4395009", NoturusGyrinus_ }, 
+      { "http://snomed.info/sct#4395009", NoturusGyrinus_ }, 
+      { "4396005", RedBackedPelican_ }, 
+      { "http://snomed.info/sct#4396005", RedBackedPelican_ }, 
+      { "4417003", EptatretusDeani_ }, 
+      { "http://snomed.info/sct#4417003", EptatretusDeani_ }, 
+      { "4431003", AnophelesPseudopunctipennisFranciscanus_ }, 
+      { "http://snomed.info/sct#4431003", AnophelesPseudopunctipennisFranciscanus_ }, 
+      { "4446005", PallasinaBarbata_ }, 
+      { "http://snomed.info/sct#4446005", PallasinaBarbata_ }, 
+      { "4453001", Heterodera_ }, 
+      { "http://snomed.info/sct#4453001", Heterodera_ }, 
+      { "445715009", BloodAndMarrowTransplantation_ }, 
+      { "http://snomed.info/sct#445715009", BloodAndMarrowTransplantation_ }, 
+      { "4482000", LepomisGibbosus_ }, 
+      { "http://snomed.info/sct#4482000", LepomisGibbosus_ }, 
+      { "4498007", PlatybeloneArgalus_ }, 
+      { "http://snomed.info/sct#4498007", PlatybeloneArgalus_ }, 
+      { "451009", LichanuraTrivirgata_ }, 
+      { "http://snomed.info/sct#451009", LichanuraTrivirgata_ }, 
+      { "4514008", MenidiaMenidia_ }, 
+      { "http://snomed.info/sct#4514008", MenidiaMenidia_ }, 
+      { "453007", AedesDorsalis_ }, 
+      { "http://snomed.info/sct#453007", AedesDorsalis_ }, 
+      { "4571006", AnguillaAnguilla_ }, 
+      { "http://snomed.info/sct#4571006", AnguillaAnguilla_ }, 
+      { "4574003", ShropshireSheep_ }, 
+      { "http://snomed.info/sct#4574003", ShropshireSheep_ }, 
+      { "4595008", StandardPlatinumFox_ }, 
+      { "http://snomed.info/sct#4595008", StandardPlatinumFox_ }, 
+      { "4597000", ScorpaenodesCaribbaeus_ }, 
+      { "http://snomed.info/sct#4597000", ScorpaenodesCaribbaeus_ }, 
+      { "4599002", HybognathusHankinsoni_ }, 
+      { "http://snomed.info/sct#4599002", HybognathusHankinsoni_ }, 
+      { "4608006", Petaurus_ }, 
+      { "http://snomed.info/sct#4608006", Petaurus_ }, 
+      { "4609003", CapillariaTuberculata_ }, 
+      { "http://snomed.info/sct#4609003", CapillariaTuberculata_ }, 
+      { "4622006", Parasimulium_ }, 
+      { "http://snomed.info/sct#4622006", Parasimulium_ }, 
+      { "4630007", LactophrysQuadricornis_ }, 
+      { "http://snomed.info/sct#4630007", LactophrysQuadricornis_ }, 
+      { "4650006", ChrysomyaChloropyga_ }, 
+      { "http://snomed.info/sct#4650006", ChrysomyaChloropyga_ }, 
+      { "466007", Francolin_ }, 
+      { "http://snomed.info/sct#466007", Francolin_ }, 
+      { "4679004", CareproctusMelanurus_ }, 
+      { "http://snomed.info/sct#4679004", CareproctusMelanurus_ }, 
+      { "4680001", OstertagiaPinnata_ }, 
+      { "http://snomed.info/sct#4680001", OstertagiaPinnata_ }, 
+      { "4682009", HyalommaTurnicum_ }, 
+      { "http://snomed.info/sct#4682009", HyalommaTurnicum_ }, 
+      { "4726001", LepomisMarginattus_ }, 
+      { "http://snomed.info/sct#4726001", LepomisMarginattus_ }, 
+      { "4742008", EtheostomaSimoterum_ }, 
+      { "http://snomed.info/sct#4742008", EtheostomaSimoterum_ }, 
+      { "4747002", HaemaphysalisLongicornis_ }, 
+      { "http://snomed.info/sct#4747002", HaemaphysalisLongicornis_ }, 
+      { "4767006", RiverTurtle_ }, 
+      { "http://snomed.info/sct#4767006", RiverTurtle_ }, 
+      { "4781008", AuxisThazard_ }, 
+      { "http://snomed.info/sct#4781008", AuxisThazard_ }, 
+      { "4790001", Secretarybird_ }, 
+      { "http://snomed.info/sct#4790001", Secretarybird_ }, 
+      { "4796007", LeontopithecusRosalia_ }, 
+      { "http://snomed.info/sct#4796007", LeontopithecusRosalia_ }, 
+      { "4801002", Microphallus_ }, 
+      { "http://snomed.info/sct#4801002", Microphallus_ }, 
+      { "4802009", TrimeresurusElegans_ }, 
+      { "http://snomed.info/sct#4802009", TrimeresurusElegans_ }, 
+      { "4875007", ApogonLachneri_ }, 
+      { "http://snomed.info/sct#4875007", ApogonLachneri_ }, 
+      { "4880003", PiedmonteseCattle_ }, 
+      { "http://snomed.info/sct#4880003", PiedmonteseCattle_ }, 
+      { "4883001", AnophelesMinimusFlavirostris_ }, 
+      { "http://snomed.info/sct#4883001", AnophelesMinimusFlavirostris_ }, 
+      { "4893008", CommonNewt_ }, 
+      { "http://snomed.info/sct#4893008", CommonNewt_ }, 
+      { "4911005", AquilaChrysaetos_ }, 
+      { "http://snomed.info/sct#4911005", AquilaChrysaetos_ }, 
+      { "4912003", BoselaphusTragocamelus_ }, 
+      { "http://snomed.info/sct#4912003", BoselaphusTragocamelus_ }, 
+      { "4923004", BlueHeadedPionus_ }, 
+      { "http://snomed.info/sct#4923004", BlueHeadedPionus_ }, 
+      { "4931009", LycaonPictus_ }, 
+      { "http://snomed.info/sct#4931009", LycaonPictus_ }, 
+      { "4960000", PeruvianPasoHorse_ }, 
+      { "http://snomed.info/sct#4960000", PeruvianPasoHorse_ }, 
+      { "4971004", IxodesPersulcatus_ }, 
+      { "http://snomed.info/sct#4971004", IxodesPersulcatus_ }, 
+      { "4978005", EpinephelusMorio_ }, 
+      { "http://snomed.info/sct#4978005", EpinephelusMorio_ }, 
+      { "4982007", GrassWarbler_ }, 
+      { "http://snomed.info/sct#4982007", GrassWarbler_ }, 
+      { "4988006", PaintedBunting_ }, 
+      { "http://snomed.info/sct#4988006", PaintedBunting_ }, 
+      { "4990007", AntennariusOcellatus_ }, 
+      { "http://snomed.info/sct#4990007", AntennariusOcellatus_ }, 
+      { "4991006", Phyllodactylus_ }, 
+      { "http://snomed.info/sct#4991006", Phyllodactylus_ }, 
+      { "5005003", ThripsTabaci_ }, 
+      { "http://snomed.info/sct#5005003", ThripsTabaci_ }, 
+      { "5011000", JordaniaZonope_ }, 
+      { "http://snomed.info/sct#5011000", JordaniaZonope_ }, 
+      { "5013002", AnisakidNematode_ }, 
+      { "http://snomed.info/sct#5013002", AnisakidNematode_ }, 
+      { "502008", AspidogasterConchicola_ }, 
+      { "http://snomed.info/sct#502008", AspidogasterConchicola_ }, 
+      { "5058008", HyalommaTruncatum_ }, 
+      { "http://snomed.info/sct#5058008", HyalommaTruncatum_ }, 
+      { "507002", StandardPoodle_ }, 
+      { "http://snomed.info/sct#507002", StandardPoodle_ }, 
+      { "5107008", ScorpaenaPlumieri_ }, 
+      { "http://snomed.info/sct#5107008", ScorpaenaPlumieri_ }, 
+      { "5111002", ChlorophthalmusAgassizi_ }, 
+      { "http://snomed.info/sct#5111002", ChlorophthalmusAgassizi_ }, 
+      { "5114005", FayoumiChicken_ }, 
+      { "http://snomed.info/sct#5114005", FayoumiChicken_ }, 
+      { "5116007", PlectranthiasGarrupellus_ }, 
+      { "http://snomed.info/sct#5116007", PlectranthiasGarrupellus_ }, 
+      { "5129007", PlatycercusIcterotis_ }, 
+      { "http://snomed.info/sct#5129007", PlatycercusIcterotis_ }, 
+      { "5138009", GazellaGranti_ }, 
+      { "http://snomed.info/sct#5138009", GazellaGranti_ }, 
+      { "5146005", Whistler_ }, 
+      { "http://snomed.info/sct#5146005", Whistler_ }, 
+      { "516003", BeetleLarvae_ }, 
+      { "http://snomed.info/sct#516003", BeetleLarvae_ }, 
+      { "5164003", MontdaleSheep_ }, 
+      { "http://snomed.info/sct#5164003", MontdaleSheep_ }, 
+      { "5211009", AnophelesMaculipennisMesseae_ }, 
+      { "http://snomed.info/sct#5211009", AnophelesMaculipennisMesseae_ }, 
+      { "5227002", OxfordSandyBlockPig_ }, 
+      { "http://snomed.info/sct#5227002", OxfordSandyBlockPig_ }, 
+      { "5238002", LemurCoronatus_ }, 
+      { "http://snomed.info/sct#5238002", LemurCoronatus_ }, 
+      { "5249008", SchistosomaJaponicum_ }, 
+      { "http://snomed.info/sct#5249008", SchistosomaJaponicum_ }, 
+      { "5260004", Haemadipsa_ }, 
+      { "http://snomed.info/sct#5260004", Haemadipsa_ }, 
+      { "5263002", GyraulusConvexiusculus_ }, 
+      { "http://snomed.info/sct#5263002", GyraulusConvexiusculus_ }, 
+      { "5265009", TragelaphusStrepsiceros_ }, 
+      { "http://snomed.info/sct#5265009", TragelaphusStrepsiceros_ }, 
+      { "5271003", Bothrops_ }, 
+      { "http://snomed.info/sct#5271003", Bothrops_ }, 
+      { "5278009", EopsettaJordani_ }, 
+      { "http://snomed.info/sct#5278009", EopsettaJordani_ }, 
+      { "5281004", CottusAsper_ }, 
+      { "http://snomed.info/sct#5281004", CottusAsper_ }, 
+      { "5284007", HolacanthusCiliaris_ }, 
+      { "http://snomed.info/sct#5284007", HolacanthusCiliaris_ }, 
+      { "5293008", ProsthogonimusCuneatus_ }, 
+      { "http://snomed.info/sct#5293008", ProsthogonimusCuneatus_ }, 
+      { "5297009", HurterQuoteSSpadefootToad_ }, 
+      { "http://snomed.info/sct#5297009", HurterQuoteSSpadefootToad_ }, 
+      { "5306005", ManchesterTerrier_ }, 
+      { "http://snomed.info/sct#5306005", ManchesterTerrier_ }, 
+      { "5344001", ParalichthysAlbigutta_ }, 
+      { "http://snomed.info/sct#5344001", ParalichthysAlbigutta_ }, 
+      { "5345000", SantaGertrudisCattle_ }, 
+      { "http://snomed.info/sct#5345000", SantaGertrudisCattle_ }, 
+      { "5350006", RhodeIslandRedChicken_ }, 
+      { "http://snomed.info/sct#5350006", RhodeIslandRedChicken_ }, 
+      { "5355001", DirofilariaCorynodes_ }, 
+      { "http://snomed.info/sct#5355001", DirofilariaCorynodes_ }, 
+      { "5365007", SymphurusUrospilus_ }, 
+      { "http://snomed.info/sct#5365007", SymphurusUrospilus_ }, 
+      { "537006", HaemonchusSimilis_ }, 
+      { "http://snomed.info/sct#537006", HaemonchusSimilis_ }, 
+      { "5378007", TrichurisTrichiura_ }, 
+      { "http://snomed.info/sct#5378007", TrichurisTrichiura_ }, 
+      { "5390009", Weevil_ }, 
+      { "http://snomed.info/sct#5390009", Weevil_ }, 
+      { "5416001", DiphyllobothriumDalliae_ }, 
+      { "http://snomed.info/sct#5416001", DiphyllobothriumDalliae_ }, 
+      { "5424006", Nuthatch_ }, 
+      { "http://snomed.info/sct#5424006", Nuthatch_ }, 
+      { "5436000", StripeHeadedCreeper_ }, 
+      { "http://snomed.info/sct#5436000", StripeHeadedCreeper_ }, 
+      { "5437009", SebastesMystinus_ }, 
+      { "http://snomed.info/sct#5437009", SebastesMystinus_ }, 
+      { "5438004", FrenchAlpineGoat_ }, 
+      { "http://snomed.info/sct#5438004", FrenchAlpineGoat_ }, 
+      { "5443006", Cephenemyia_ }, 
+      { "http://snomed.info/sct#5443006", Cephenemyia_ }, 
+      { "5445004", SarcoptesScabieiVarOvis_ }, 
+      { "http://snomed.info/sct#5445004", SarcoptesScabieiVarOvis_ }, 
+      { "5449005", Dendrobates_ }, 
+      { "http://snomed.info/sct#5449005", Dendrobates_ }, 
+      { "546000", HeterandriaFormosa_ }, 
+      { "http://snomed.info/sct#546000", HeterandriaFormosa_ }, 
+      { "5466007", AvitellinaChalmersi_ }, 
+      { "http://snomed.info/sct#5466007", AvitellinaChalmersi_ }, 
+      { "5475009", LouisianaWaterthrush_ }, 
+      { "http://snomed.info/sct#5475009", LouisianaWaterthrush_ }, 
+      { "5522007", Kingbird_ }, 
+      { "http://snomed.info/sct#5522007", Kingbird_ }, 
+      { "5550007", HolanthiasMartinicensis_ }, 
+      { "http://snomed.info/sct#5550007", HolanthiasMartinicensis_ }, 
+      { "5581003", SyngnathusPelagicus_ }, 
+      { "http://snomed.info/sct#5581003", SyngnathusPelagicus_ }, 
+      { "5588009", Ternidens_ }, 
+      { "http://snomed.info/sct#5588009", Ternidens_ }, 
+      { "5620005", GnathophisCatalinensis_ }, 
+      { "http://snomed.info/sct#5620005", GnathophisCatalinensis_ }, 
+      { "562006", Noddy_ }, 
+      { "http://snomed.info/sct#562006", Noddy_ }, 
+      { "5630001", SyphaciaEutamii_ }, 
+      { "http://snomed.info/sct#5630001", SyphaciaEutamii_ }, 
+      { "5634005", Euscorpius_ }, 
+      { "http://snomed.info/sct#5634005", Euscorpius_ }, 
+      { "5635006", PrionotusRoseus_ }, 
+      { "http://snomed.info/sct#5635006", PrionotusRoseus_ }, 
+      { "564007", BathyagonusAlascanus_ }, 
+      { "http://snomed.info/sct#564007", BathyagonusAlascanus_ }, 
+      { "5652005", CheilotremaSaturnum_ }, 
+      { "http://snomed.info/sct#5652005", CheilotremaSaturnum_ }, 
+      { "5654006", OrnithodorosCompactus_ }, 
+      { "http://snomed.info/sct#5654006", OrnithodorosCompactus_ }, 
+      { "5673005", Prophila_ }, 
+      { "http://snomed.info/sct#5673005", Prophila_ }, 
+      { "5674004", PhysalopteraCaucasica_ }, 
+      { "http://snomed.info/sct#5674004", PhysalopteraCaucasica_ }, 
+      { "5678001", Oxyuranus_ }, 
+      { "http://snomed.info/sct#5678001", Oxyuranus_ }, 
+      { "5680007", AulostomusMaculatus_ }, 
+      { "http://snomed.info/sct#5680007", AulostomusMaculatus_ }, 
+      { "5684003", ChrysolophusAmherstiae_ }, 
+      { "http://snomed.info/sct#5684003", ChrysolophusAmherstiae_ }, 
+      { "5698006", PimephalesVigilax_ }, 
+      { "http://snomed.info/sct#5698006", PimephalesVigilax_ }, 
+      { "5706008", CoregonusHoyi_ }, 
+      { "http://snomed.info/sct#5706008", CoregonusHoyi_ }, 
+      { "5707004", SpadefootToad_ }, 
+      { "http://snomed.info/sct#5707004", SpadefootToad_ }, 
+      { "5711005", LepomisGulosus_ }, 
+      { "http://snomed.info/sct#5711005", LepomisGulosus_ }, 
+      { "572009", Athesmia_ }, 
+      { "http://snomed.info/sct#572009", Athesmia_ }, 
+      { "5730005", IcelusSpiniger_ }, 
+      { "http://snomed.info/sct#5730005", IcelusSpiniger_ }, 
+      { "573004", AmphistichusKoelzi_ }, 
+      { "http://snomed.info/sct#573004", AmphistichusKoelzi_ }, 
+      { "5732002", Amphiuma_ }, 
+      { "http://snomed.info/sct#5732002", Amphiuma_ }, 
+      { "5735000", BulinusPhysopsisJousseaunsei_ }, 
+      { "http://snomed.info/sct#5735000", BulinusPhysopsisJousseaunsei_ }, 
+      { "5749009", CalamusArctifrons_ }, 
+      { "http://snomed.info/sct#5749009", CalamusArctifrons_ }, 
+      { "5752001", BulinusBulinusForskalii_ }, 
+      { "http://snomed.info/sct#5752001", BulinusBulinusForskalii_ }, 
+      { "5756003", OphionyssusNaticis_ }, 
+      { "http://snomed.info/sct#5756003", OphionyssusNaticis_ }, 
+      { "5763003", ZebrinaDetrita_ }, 
+      { "http://snomed.info/sct#5763003", ZebrinaDetrita_ }, 
+      { "5766006", CapillariaBrevipes_ }, 
+      { "http://snomed.info/sct#5766006", CapillariaBrevipes_ }, 
+      { "5773001", PneumonyssusSimicola_ }, 
+      { "http://snomed.info/sct#5773001", PneumonyssusSimicola_ }, 
+      { "5782007", CapillariaHepatica_ }, 
+      { "http://snomed.info/sct#5782007", CapillariaHepatica_ }, 
+      { "579000", ArgasAfricolumbae_ }, 
+      { "http://snomed.info/sct#579000", ArgasAfricolumbae_ }, 
+      { "583000", WirehairedVizsla_ }, 
+      { "http://snomed.info/sct#583000", WirehairedVizsla_ }, 
+      { "5833002", Rhinoestrus_ }, 
+      { "http://snomed.info/sct#5833002", Rhinoestrus_ }, 
+      { "5848008", AmbloplitesAriommus_ }, 
+      { "http://snomed.info/sct#5848008", AmbloplitesAriommus_ }, 
+      { "5891003", Ornithonyssus_ }, 
+      { "http://snomed.info/sct#5891003", Ornithonyssus_ }, 
+      { "5904002", HemipteronotusSplendens_ }, 
+      { "http://snomed.info/sct#5904002", HemipteronotusSplendens_ }, 
+      { "5916008", DalmatianDog_ }, 
+      { "http://snomed.info/sct#5916008", DalmatianDog_ }, 
+      { "592002", IxodesPacificus_ }, 
+      { "http://snomed.info/sct#592002", IxodesPacificus_ }, 
+      { "5970005", OligocottusRubellio_ }, 
+      { "http://snomed.info/sct#5970005", OligocottusRubellio_ }, 
+      { "598003", VespaCrabro_ }, 
+      { "http://snomed.info/sct#598003", VespaCrabro_ }, 
+      { "5990001", DiplogonoporusGrandis_ }, 
+      { "http://snomed.info/sct#5990001", DiplogonoporusGrandis_ }, 
+      { "6017005", XenopsyllaBrasiliensis_ }, 
+      { "http://snomed.info/sct#6017005", XenopsyllaBrasiliensis_ }, 
+      { "6018000", TreeSwallow_ }, 
+      { "http://snomed.info/sct#6018000", TreeSwallow_ }, 
+      { "6037009", OrnithobilharziaTurkestanicum_ }, 
+      { "http://snomed.info/sct#6037009", OrnithobilharziaTurkestanicum_ }, 
+      { "6039007", RhinocricusLatespagor_ }, 
+      { "http://snomed.info/sct#6039007", RhinocricusLatespagor_ }, 
+      { "6053007", DKPig33_ }, 
+      { "http://snomed.info/sct#6053007", DKPig33_ }, 
+      { "606003", Terrier_ }, 
+      { "http://snomed.info/sct#606003", Terrier_ }, 
+      { "6094004", LongNosedSnake_ }, 
+      { "http://snomed.info/sct#6094004", LongNosedSnake_ }, 
+      { "6103004", JackRussellTerrierDogBreed_ }, 
+      { "http://snomed.info/sct#6103004", JackRussellTerrierDogBreed_ }, 
+      { "6112002", MeusseRhineIjsselCattle_ }, 
+      { "http://snomed.info/sct#6112002", MeusseRhineIjsselCattle_ }, 
+      { "6114001", ArtediellusScaber_ }, 
+      { "http://snomed.info/sct#6114001", ArtediellusScaber_ }, 
+      { "6144003", CyanoliseusPatagonus_ }, 
+      { "http://snomed.info/sct#6144003", CyanoliseusPatagonus_ }, 
+      { "6152000", Buthacus_ }, 
+      { "http://snomed.info/sct#6152000", Buthacus_ }, 
+      { "6167001", RockyMountainPika_ }, 
+      { "http://snomed.info/sct#6167001", RockyMountainPika_ }, 
+      { "6173000", TaractichthysLongipinnis_ }, 
+      { "http://snomed.info/sct#6173000", TaractichthysLongipinnis_ }, 
+      { "6196000", WhiteCheekedLaughingThrush_ }, 
+      { "http://snomed.info/sct#6196000", WhiteCheekedLaughingThrush_ }, 
+      { "6220006", GalicenoHorse_ }, 
+      { "http://snomed.info/sct#6220006", GalicenoHorse_ }, 
+      { "6239001", Eurycea_ }, 
+      { "http://snomed.info/sct#6239001", Eurycea_ }, 
+      { "6278002", MerlucciusBilinearis_ }, 
+      { "http://snomed.info/sct#6278002", MerlucciusBilinearis_ }, 
+      { "6290000", AnarhichasLupus_ }, 
+      { "http://snomed.info/sct#6290000", AnarhichasLupus_ }, 
+      { "6311004", TrinectesMaculatus_ }, 
+      { "http://snomed.info/sct#6311004", TrinectesMaculatus_ }, 
+      { "6340001", PrionotusOphryas_ }, 
+      { "http://snomed.info/sct#6340001", PrionotusOphryas_ }, 
+      { "6345006", ParagonimusAfricanus_ }, 
+      { "http://snomed.info/sct#6345006", ParagonimusAfricanus_ }, 
+      { "6372003", SparisomaAtomarium_ }, 
+      { "http://snomed.info/sct#6372003", SparisomaAtomarium_ }, 
+      { "6376000", AcronictaOblinata_ }, 
+      { "http://snomed.info/sct#6376000", AcronictaOblinata_ }, 
+      { "6407006", Isoparorchis_ }, 
+      { "http://snomed.info/sct#6407006", Isoparorchis_ }, 
+      { "6418006", Platysaurus_ }, 
+      { "http://snomed.info/sct#6418006", Platysaurus_ }, 
+      { "6420009", MuscaSorbens_ }, 
+      { "http://snomed.info/sct#6420009", MuscaSorbens_ }, 
+      { "6431001", LeicesterSheep_ }, 
+      { "http://snomed.info/sct#6431001", LeicesterSheep_ }, 
+      { "6435005", ApisCerana_ }, 
+      { "http://snomed.info/sct#6435005", ApisCerana_ }, 
+      { "644007", ToucanBarbet_ }, 
+      { "http://snomed.info/sct#644007", ToucanBarbet_ }, 
+      { "6447004", AcanthemblemariaAspera_ }, 
+      { "http://snomed.info/sct#6447004", AcanthemblemariaAspera_ }, 
+      { "6453004", MuscaConvexifrons_ }, 
+      { "http://snomed.info/sct#6453004", MuscaConvexifrons_ }, 
+      { "6482003", ArilusCristatus_ }, 
+      { "http://snomed.info/sct#6482003", ArilusCristatus_ }, 
+      { "6489007", CulexPseudovishnui_ }, 
+      { "http://snomed.info/sct#6489007", CulexPseudovishnui_ }, 
+      { "6498005", ArmilliferArmillatus_ }, 
+      { "http://snomed.info/sct#6498005", ArmilliferArmillatus_ }, 
+      { "6512005", AmphelikturusDendriticus_ }, 
+      { "http://snomed.info/sct#6512005", AmphelikturusDendriticus_ }, 
+      { "6518009", EpomidiostomumVogelsangi_ }, 
+      { "http://snomed.info/sct#6518009", EpomidiostomumVogelsangi_ }, 
+      { "653000", LatrodectusDahli_ }, 
+      { "http://snomed.info/sct#653000", LatrodectusDahli_ }, 
+      { "6540000", EchisCarinatus_ }, 
+      { "http://snomed.info/sct#6540000", EchisCarinatus_ }, 
+      { "6549004", KnemidocoptesPilae_ }, 
+      { "http://snomed.info/sct#6549004", KnemidocoptesPilae_ }, 
+      { "6560008", Spilopsylla_ }, 
+      { "http://snomed.info/sct#6560008", Spilopsylla_ }, 
+      { "6569009", ScomberomorusRegalis_ }, 
+      { "http://snomed.info/sct#6569009", ScomberomorusRegalis_ }, 
+      { "6581008", EnophrysDiceraus_ }, 
+      { "http://snomed.info/sct#6581008", EnophrysDiceraus_ }, 
+      { "6583006", Diorchis_ }, 
+      { "http://snomed.info/sct#6583006", Diorchis_ }, 
+      { "6591002", RosyBilledPochard_ }, 
+      { "http://snomed.info/sct#6591002", RosyBilledPochard_ }, 
+      { "6597003", ApogonPseudomaculatus_ }, 
+      { "http://snomed.info/sct#6597003", ApogonPseudomaculatus_ }, 
+      { "6610006", AcarusSiro_ }, 
+      { "http://snomed.info/sct#6610006", AcarusSiro_ }, 
+      { "6613008", CornigerSpinosus_ }, 
+      { "http://snomed.info/sct#6613008", CornigerSpinosus_ }, 
+      { "6630005", LeachQuoteSStormPetrel_ }, 
+      { "http://snomed.info/sct#6630005", LeachQuoteSStormPetrel_ }, 
+      { "6632002", OrnithodorosCrossi_ }, 
+      { "http://snomed.info/sct#6632002", OrnithodorosCrossi_ }, 
+      { "6638003", OstertagiaOccidentalis_ }, 
+      { "http://snomed.info/sct#6638003", OstertagiaOccidentalis_ }, 
+      { "6653006", LampetraRichardsoni_ }, 
+      { "http://snomed.info/sct#6653006", LampetraRichardsoni_ }, 
+      { "6674007", CylicostephanusCalicatus_ }, 
+      { "http://snomed.info/sct#6674007", CylicostephanusCalicatus_ }, 
+      { "6683002", PolyperaBeringiana_ }, 
+      { "http://snomed.info/sct#6683002", PolyperaBeringiana_ }, 
+      { "6693009", ArgasPersicus_ }, 
+      { "http://snomed.info/sct#6693009", ArgasPersicus_ }, 
+      { "6697005", GibbonsiaErythra_ }, 
+      { "http://snomed.info/sct#6697005", GibbonsiaErythra_ }, 
+      { "679009", Pituophis_ }, 
+      { "http://snomed.info/sct#679009", Pituophis_ }, 
+      { "684003", PygmyGoat_ }, 
+      { "http://snomed.info/sct#684003", PygmyGoat_ }, 
+      { "689008", AnophelesSundaicus_ }, 
+      { "http://snomed.info/sct#689008", AnophelesSundaicus_ }, 
+      { "706008", Archigetes_ }, 
+      { "http://snomed.info/sct#706008", Archigetes_ }, 
+      { "708009", BunostomumPhlebotomum_ }, 
+      { "http://snomed.info/sct#708009", BunostomumPhlebotomum_ }, 
+      { "715184008", AerospaceMedicine_ }, 
+      { "http://snomed.info/sct#715184008", AerospaceMedicine_ }, 
+      { "718359001", RegenerativeMedicine_ }, 
+      { "http://snomed.info/sct#718359001", RegenerativeMedicine_ }, 
+      { "719007", EmblemariaBahamensis_ }, 
+      { "http://snomed.info/sct#719007", EmblemariaBahamensis_ }, 
+      { "725006", MobulaHypostoma_ }, 
+      { "http://snomed.info/sct#725006", MobulaHypostoma_ }, 
+      { "740008", OphichthusOphis_ }, 
+      { "http://snomed.info/sct#740008", OphichthusOphis_ }, 
+      { "744004", AvitellinaRatia_ }, 
+      { "http://snomed.info/sct#744004", AvitellinaRatia_ }, 
+      { "763003", MonodonMonoceros_ }, 
+      { "http://snomed.info/sct#763003", MonodonMonoceros_ }, 
+      { "769004", Helmetbird_ }, 
+      { "http://snomed.info/sct#769004", Helmetbird_ }, 
+      { "778005", GobionellusStigmalophius_ }, 
+      { "http://snomed.info/sct#778005", GobionellusStigmalophius_ }, 
+      { "782007", MaxxRat_ }, 
+      { "http://snomed.info/sct#782007", MaxxRat_ }, 
+      { "797005", NewZealandWhiteRabbit_ }, 
+      { "http://snomed.info/sct#797005", NewZealandWhiteRabbit_ }, 
+      { "833002", DomesticatedJapaneseQuail_ }, 
+      { "http://snomed.info/sct#833002", DomesticatedJapaneseQuail_ }, 
+      { "846007", ThaumetopoeaProcessionea_ }, 
+      { "http://snomed.info/sct#846007", ThaumetopoeaProcessionea_ }, 
+      { "848008", BurrowingToad_ }, 
+      { "http://snomed.info/sct#848008", BurrowingToad_ }, 
+      { "854009", HybognathusArgyritis_ }, 
+      { "http://snomed.info/sct#854009", HybognathusArgyritis_ }, 
+      { "861008", CouesiusPlumbeus_ }, 
+      { "http://snomed.info/sct#861008", CouesiusPlumbeus_ }, 
+      { "864000", AnophelesMulticolor_ }, 
+      { "http://snomed.info/sct#864000", AnophelesMulticolor_ }, 
+      { "868002", FundulusHeteroclitus_ }, 
+      { "http://snomed.info/sct#868002", FundulusHeteroclitus_ }, 
+      { "869005", CamelostrongylusMentulatus_ }, 
+      { "http://snomed.info/sct#869005", CamelostrongylusMentulatus_ }, 
+      { "872003", NotocotylusAttenuatus_ }, 
+      { "http://snomed.info/sct#872003", NotocotylusAttenuatus_ }, 
+      { "887008", ChirolophisAscanii_ }, 
+      { "http://snomed.info/sct#887008", ChirolophisAscanii_ }, 
+      { "898009", PtychocheilusUmpquae_ }, 
+      { "http://snomed.info/sct#898009", PtychocheilusUmpquae_ }, 
+      { "927005", RainbowSnake_ }, 
+      { "http://snomed.info/sct#927005", RainbowSnake_ }, 
+      { "929008", ScarusTaeniopterus_ }, 
+      { "http://snomed.info/sct#929008", ScarusTaeniopterus_ }, 
+      { "944009", BrownWelshCattle_ }, 
+      { "http://snomed.info/sct#944009", BrownWelshCattle_ }, 
+      { "946006", NandayusNenday_ }, 
+      { "http://snomed.info/sct#946006", NandayusNenday_ }, 
+      { "952007", Filicollis_ }, 
+      { "http://snomed.info/sct#952007", Filicollis_ }, 
+      { "958006", TrachinotusFalcatus_ }, 
+      { "http://snomed.info/sct#958006", TrachinotusFalcatus_ }, 
+      { "997003", Haematosiphon_ }, 
+      { "http://snomed.info/sct#997003", Haematosiphon_ }, 
+      { "AD", Andorra_ }, 
+      { "urn:iso:std:iso:3166#AD", Andorra_ }, 
+      { "AE", UnitedArabEmiratesThe_ }, 
+      { "urn:iso:std:iso:3166#AE", UnitedArabEmiratesThe_ }, 
+      { "AF", Afghanistan_ }, 
+      { "urn:iso:std:iso:3166#AF", Afghanistan_ }, 
+      { "AG", AntiguaAndBarbuda_ }, 
+      { "urn:iso:std:iso:3166#AG", AntiguaAndBarbuda_ }, 
+      { "AI", Anguilla_ }, 
+      { "urn:iso:std:iso:3166#AI", Anguilla_ }, 
+      { "AK", Alaska_ }, 
+      { "https://www.usps.com/#AK", Alaska_ }, 
+      { "AL", Alabama_ }, 
+      { "https://www.usps.com/#AL", Alabama_ }, 
+      { "AL", Albania_ }, 
+      { "urn:iso:std:iso:3166#AL", Albania_ }, 
+      { "AM", Armenia_ }, 
+      { "urn:iso:std:iso:3166#AM", Armenia_ }, 
+      { "AN", NetherlandsAntilles_ }, 
+      { "urn:iso:std:iso:3166#AN", NetherlandsAntilles_ }, 
+      { "AO", Angola_ }, 
+      { "urn:iso:std:iso:3166#AO", Angola_ }, 
+      { "AQ", Antarctica_ }, 
+      { "urn:iso:std:iso:3166#AQ", Antarctica_ }, 
+      { "AR", Arkansas_ }, 
+      { "https://www.usps.com/#AR", Arkansas_ }, 
+      { "AR", Argentina_ }, 
+      { "urn:iso:std:iso:3166#AR", Argentina_ }, 
+      { "AS", AmericanSamoa_ }, 
+      { "https://www.usps.com/#AS", AmericanSamoa_ }, 
+      { "AS", AmericanSamoa__2 }, 
+      { "urn:iso:std:iso:3166#AS", AmericanSamoa__2 }, 
+      { "AT", Austria_ }, 
+      { "urn:iso:std:iso:3166#AT", Austria_ }, 
+      { "AU", Australia_ }, 
+      { "urn:iso:std:iso:3166#AU", Australia_ }, 
+      { "AW", Aruba_ }, 
+      { "urn:iso:std:iso:3166#AW", Aruba_ }, 
+      { "AX", AlandIslands_ }, 
+      { "urn:iso:std:iso:3166#AX", AlandIslands_ }, 
+      { "AZ", Arizona_ }, 
+      { "https://www.usps.com/#AZ", Arizona_ }, 
+      { "AZ", Azerbaijan_ }, 
+      { "urn:iso:std:iso:3166#AZ", Azerbaijan_ }, 
+      { "BA", BosniaAndHerzegovina_ }, 
+      { "urn:iso:std:iso:3166#BA", BosniaAndHerzegovina_ }, 
+      { "BB", Barbados_ }, 
+      { "urn:iso:std:iso:3166#BB", Barbados_ }, 
+      { "BD", Bangladesh_ }, 
+      { "urn:iso:std:iso:3166#BD", Bangladesh_ }, 
+      { "BE", Belgium_ }, 
+      { "urn:iso:std:iso:3166#BE", Belgium_ }, 
+      { "BF", BurkinaFaso_ }, 
+      { "urn:iso:std:iso:3166#BF", BurkinaFaso_ }, 
+      { "BG", Bulgaria_ }, 
+      { "urn:iso:std:iso:3166#BG", Bulgaria_ }, 
+      { "BH", Bahrain_ }, 
+      { "urn:iso:std:iso:3166#BH", Bahrain_ }, 
+      { "BI", Burundi_ }, 
+      { "urn:iso:std:iso:3166#BI", Burundi_ }, 
+      { "BJ", Benin_ }, 
+      { "urn:iso:std:iso:3166#BJ", Benin_ }, 
+      { "BL", SaintBarthelemy_ }, 
+      { "urn:iso:std:iso:3166#BL", SaintBarthelemy_ }, 
+      { "BM", Bermuda_ }, 
+      { "urn:iso:std:iso:3166#BM", Bermuda_ }, 
+      { "BN", BruneiDarussalam_ }, 
+      { "urn:iso:std:iso:3166#BN", BruneiDarussalam_ }, 
+      { "BO", BoliviaPlurinationalStateOf_ }, 
+      { "urn:iso:std:iso:3166#BO", BoliviaPlurinationalStateOf_ }, 
+      { "BQ", BonaireSintEustatiusAndSaba_ }, 
+      { "urn:iso:std:iso:3166#BQ", BonaireSintEustatiusAndSaba_ }, 
+      { "BR", Brazil_ }, 
+      { "urn:iso:std:iso:3166#BR", Brazil_ }, 
+      { "BS", BahamasThe_ }, 
+      { "urn:iso:std:iso:3166#BS", BahamasThe_ }, 
+      { "BT", Bhutan_ }, 
+      { "urn:iso:std:iso:3166#BT", Bhutan_ }, 
+      { "BU", Burma_ }, 
+      { "urn:iso:std:iso:3166#BU", Burma_ }, 
+      { "BV", BouvetIsland_ }, 
+      { "urn:iso:std:iso:3166#BV", BouvetIsland_ }, 
+      { "BW", Botswana_ }, 
+      { "urn:iso:std:iso:3166#BW", Botswana_ }, 
+      { "BY", Belarus_ }, 
+      { "urn:iso:std:iso:3166#BY", Belarus_ }, 
+      { "BZ", Belize_ }, 
+      { "urn:iso:std:iso:3166#BZ", Belize_ }, 
+      { "CA", California_ }, 
+      { "https://www.usps.com/#CA", California_ }, 
+      { "CA", Canada_ }, 
+      { "urn:iso:std:iso:3166#CA", Canada_ }, 
+      { "cardio", Cardiologist_practitioner_specialty }, 
+      { "http://hl7.org/fhir/practitioner-specialty#cardio", Cardiologist_practitioner_specialty }, 
+      { "CC", CocosKeelingIslandsThe_ }, 
+      { "urn:iso:std:iso:3166#CC", CocosKeelingIslandsThe_ }, 
+      { "CD", CongoTheDemocraticRepublicOfThe_ }, 
+      { "urn:iso:std:iso:3166#CD", CongoTheDemocraticRepublicOfThe_ }, 
+      { "CF", CentralAfricanRepublicThe_ }, 
+      { "urn:iso:std:iso:3166#CF", CentralAfricanRepublicThe_ }, 
+      { "CG", CongoThe_ }, 
+      { "urn:iso:std:iso:3166#CG", CongoThe_ }, 
+      { "CH", Switzerland_ }, 
+      { "urn:iso:std:iso:3166#CH", Switzerland_ }, 
+      { "CI", CoteDQuoteIvoire_ }, 
+      { "urn:iso:std:iso:3166#CI", CoteDQuoteIvoire_ }, 
+      { "CK", CookIslandsThe_ }, 
+      { "urn:iso:std:iso:3166#CK", CookIslandsThe_ }, 
+      { "CL", Chile_ }, 
+      { "urn:iso:std:iso:3166#CL", Chile_ }, 
+      { "CM", Cameroon_ }, 
+      { "urn:iso:std:iso:3166#CM", Cameroon_ }, 
+      { "CN", China_ }, 
+      { "urn:iso:std:iso:3166#CN", China_ }, 
+      { "CO", Colorado_ }, 
+      { "https://www.usps.com/#CO", Colorado_ }, 
+      { "CO", Colombia_ }, 
+      { "urn:iso:std:iso:3166#CO", Colombia_ }, 
+      { "CR", CostaRica_ }, 
+      { "urn:iso:std:iso:3166#CR", CostaRica_ }, 
+      { "CS", SerbiaAndMontenegro_ }, 
+      { "urn:iso:std:iso:3166#CS", SerbiaAndMontenegro_ }, 
+      { "CT", Connecticut_ }, 
+      { "https://www.usps.com/#CT", Connecticut_ }, 
+      { "CT", CantonAndEnderburyIslands_ }, 
+      { "urn:iso:std:iso:3166#CT", CantonAndEnderburyIslands_ }, 
+      { "CU", Cuba_ }, 
+      { "urn:iso:std:iso:3166#CU", Cuba_ }, 
+      { "CV", CaboVerde_ }, 
+      { "urn:iso:std:iso:3166#CV", CaboVerde_ }, 
+      { "CW", Curacao_ }, 
+      { "urn:iso:std:iso:3166#CW", Curacao_ }, 
+      { "CX", ChristmasIsland_ }, 
+      { "urn:iso:std:iso:3166#CX", ChristmasIsland_ }, 
+      { "CY", Cyprus_ }, 
+      { "urn:iso:std:iso:3166#CY", Cyprus_ }, 
+      { "CZ", CzechRepublicThe_ }, 
+      { "urn:iso:std:iso:3166#CZ", CzechRepublicThe_ }, 
+      { "DC", DistrictOfColumbia_ }, 
+      { "https://www.usps.com/#DC", DistrictOfColumbia_ }, 
+      { "DD", GermanDemocraticRepublic_ }, 
+      { "urn:iso:std:iso:3166#DD", GermanDemocraticRepublic_ }, 
+      { "DE", Delaware_ }, 
+      { "https://www.usps.com/#DE", Delaware_ }, 
+      { "DE", Germany_ }, 
+      { "urn:iso:std:iso:3166#DE", Germany_ }, 
+      { "dent", Dentist_practitioner_specialty }, 
+      { "http://hl7.org/fhir/practitioner-specialty#dent", Dentist_practitioner_specialty }, 
+      { "dietary", DietaryConsultant_practitioner_specialty }, 
+      { "http://hl7.org/fhir/practitioner-specialty#dietary", DietaryConsultant_practitioner_specialty }, 
+      { "DJ", Djibouti_ }, 
+      { "urn:iso:std:iso:3166#DJ", Djibouti_ }, 
+      { "DK", Denmark_ }, 
+      { "urn:iso:std:iso:3166#DK", Denmark_ }, 
+      { "DM", Dominica_ }, 
+      { "urn:iso:std:iso:3166#DM", Dominica_ }, 
+      { "DO", DominicanRepublicThe_ }, 
+      { "urn:iso:std:iso:3166#DO", DominicanRepublicThe_ }, 
+      { "DY", Dahomey_ }, 
+      { "urn:iso:std:iso:3166#DY", Dahomey_ }, 
+      { "DZ", Algeria_ }, 
+      { "urn:iso:std:iso:3166#DZ", Algeria_ }, 
+      { "EC", Ecuador_ }, 
+      { "urn:iso:std:iso:3166#EC", Ecuador_ }, 
+      { "EE", Estonia_ }, 
+      { "urn:iso:std:iso:3166#EE", Estonia_ }, 
+      { "EG", Egypt_ }, 
+      { "urn:iso:std:iso:3166#EG", Egypt_ }, 
+      { "EH", WesternSaharaAsterisk_ }, 
+      { "urn:iso:std:iso:3166#EH", WesternSaharaAsterisk_ }, 
+      { "ER", Eritrea_ }, 
+      { "urn:iso:std:iso:3166#ER", Eritrea_ }, 
+      { "ES", Spain_ }, 
+      { "urn:iso:std:iso:3166#ES", Spain_ }, 
+      { "ET", Ethiopia_ }, 
+      { "urn:iso:std:iso:3166#ET", Ethiopia_ }, 
+      { "FI", Finland_ }, 
+      { "urn:iso:std:iso:3166#FI", Finland_ }, 
+      { "FJ", Fiji_ }, 
+      { "urn:iso:std:iso:3166#FJ", Fiji_ }, 
+      { "FK", FalklandIslandsTheMalvinas_ }, 
+      { "urn:iso:std:iso:3166#FK", FalklandIslandsTheMalvinas_ }, 
+      { "FL", Florida_ }, 
+      { "https://www.usps.com/#FL", Florida_ }, 
+      { "FM", FederatedStatesOfMicronesia_ }, 
+      { "https://www.usps.com/#FM", FederatedStatesOfMicronesia_ }, 
+      { "FM", MicronesiaFederatedStatesOf_ }, 
+      { "urn:iso:std:iso:3166#FM", MicronesiaFederatedStatesOf_ }, 
+      { "FO", FaroeIslandsThe_ }, 
+      { "urn:iso:std:iso:3166#FO", FaroeIslandsThe_ }, 
+      { "FQ", FrenchSouthernAndAntarcticTerritories_ }, 
+      { "urn:iso:std:iso:3166#FQ", FrenchSouthernAndAntarcticTerritories_ }, 
+      { "FR", France_ }, 
+      { "urn:iso:std:iso:3166#FR", France_ }, 
+      { "GA", Georgia_ }, 
+      { "https://www.usps.com/#GA", Georgia_ }, 
+      { "GA", Gabon_ }, 
+      { "urn:iso:std:iso:3166#GA", Gabon_ }, 
+      { "GB", UnitedKingdomOfGreatBritainAndNorthernIrelandThe_ }, 
+      { "urn:iso:std:iso:3166#GB", UnitedKingdomOfGreatBritainAndNorthernIrelandThe_ }, 
+      { "GD", Grenada_ }, 
+      { "urn:iso:std:iso:3166#GD", Grenada_ }, 
+      { "GE", Georgia__2 }, 
+      { "urn:iso:std:iso:3166#GE", Georgia__2 }, 
+      { "GF", FrenchGuiana_ }, 
+      { "urn:iso:std:iso:3166#GF", FrenchGuiana_ }, 
+      { "GG", Guernsey_ }, 
+      { "urn:iso:std:iso:3166#GG", Guernsey_ }, 
+      { "GH", Ghana_ }, 
+      { "urn:iso:std:iso:3166#GH", Ghana_ }, 
+      { "GI", Gibraltar_ }, 
+      { "urn:iso:std:iso:3166#GI", Gibraltar_ }, 
+      { "GL", Greenland_ }, 
+      { "urn:iso:std:iso:3166#GL", Greenland_ }, 
+      { "GM", GambiaThe_ }, 
+      { "urn:iso:std:iso:3166#GM", GambiaThe_ }, 
+      { "GN", Guinea_ }, 
+      { "urn:iso:std:iso:3166#GN", Guinea_ }, 
+      { "GP", Guadeloupe_ }, 
+      { "urn:iso:std:iso:3166#GP", Guadeloupe_ }, 
+      { "GQ", EquatorialGuinea_ }, 
+      { "urn:iso:std:iso:3166#GQ", EquatorialGuinea_ }, 
+      { "GR", Greece_ }, 
+      { "urn:iso:std:iso:3166#GR", Greece_ }, 
+      { "GS", SouthGeorgiaAndTheSouthSandwichIslands_ }, 
+      { "urn:iso:std:iso:3166#GS", SouthGeorgiaAndTheSouthSandwichIslands_ }, 
+      { "GT", Guatemala_ }, 
+      { "urn:iso:std:iso:3166#GT", Guatemala_ }, 
+      { "GU", Guam_ }, 
+      { "https://www.usps.com/#GU", Guam_ }, 
+      { "GU", Guam__2 }, 
+      { "urn:iso:std:iso:3166#GU", Guam__2 }, 
+      { "GW", GuineaBissau_ }, 
+      { "urn:iso:std:iso:3166#GW", GuineaBissau_ }, 
+      { "GY", Guyana_ }, 
+      { "urn:iso:std:iso:3166#GY", Guyana_ }, 
+      { "HI", Hawaii_ }, 
+      { "https://www.usps.com/#HI", Hawaii_ }, 
+      { "HK", HongKong_ }, 
+      { "urn:iso:std:iso:3166#HK", HongKong_ }, 
+      { "HM", HeardIslandAndMcDonaldIslands_ }, 
+      { "urn:iso:std:iso:3166#HM", HeardIslandAndMcDonaldIslands_ }, 
+      { "HN", Honduras_ }, 
+      { "urn:iso:std:iso:3166#HN", Honduras_ }, 
+      { "HR", Croatia_ }, 
+      { "urn:iso:std:iso:3166#HR", Croatia_ }, 
+      { "HT", Haiti_ }, 
+      { "urn:iso:std:iso:3166#HT", Haiti_ }, 
+      { "HU", Hungary_ }, 
+      { "urn:iso:std:iso:3166#HU", Hungary_ }, 
+      { "HV", UpperVolta_ }, 
+      { "urn:iso:std:iso:3166#HV", UpperVolta_ }, 
+      { "IA", Iowa_ }, 
+      { "https://www.usps.com/#IA", Iowa_ }, 
+      { "ID", Idaho_ }, 
+      { "https://www.usps.com/#ID", Idaho_ }, 
+      { "ID", Indonesia_ }, 
+      { "urn:iso:std:iso:3166#ID", Indonesia_ }, 
+      { "IE", Ireland_ }, 
+      { "urn:iso:std:iso:3166#IE", Ireland_ }, 
+      { "IL", Illinois_ }, 
+      { "https://www.usps.com/#IL", Illinois_ }, 
+      { "IL", Israel_ }, 
+      { "urn:iso:std:iso:3166#IL", Israel_ }, 
+      { "IM", IsleOfMan_ }, 
+      { "urn:iso:std:iso:3166#IM", IsleOfMan_ }, 
+      { "IN", Indiana_ }, 
+      { "https://www.usps.com/#IN", Indiana_ }, 
+      { "IN", India_ }, 
+      { "urn:iso:std:iso:3166#IN", India_ }, 
+      { "IO", BritishIndianOceanTerritoryThe_ }, 
+      { "urn:iso:std:iso:3166#IO", BritishIndianOceanTerritoryThe_ }, 
+      { "IQ", Iraq_ }, 
+      { "urn:iso:std:iso:3166#IQ", Iraq_ }, 
+      { "IR", IranIslamicRepublicOf_ }, 
+      { "urn:iso:std:iso:3166#IR", IranIslamicRepublicOf_ }, 
+      { "IS", Iceland_ }, 
+      { "urn:iso:std:iso:3166#IS", Iceland_ }, 
+      { "IT", Italy_ }, 
+      { "urn:iso:std:iso:3166#IT", Italy_ }, 
+      { "JE", Jersey_ }, 
+      { "urn:iso:std:iso:3166#JE", Jersey_ }, 
+      { "JM", Jamaica_ }, 
+      { "urn:iso:std:iso:3166#JM", Jamaica_ }, 
+      { "JO", Jordan_ }, 
+      { "urn:iso:std:iso:3166#JO", Jordan_ }, 
+      { "JP", Japan_ }, 
+      { "urn:iso:std:iso:3166#JP", Japan_ }, 
+      { "JT", JohnstonIsland_ }, 
+      { "urn:iso:std:iso:3166#JT", JohnstonIsland_ }, 
+      { "KE", Kenya_ }, 
+      { "urn:iso:std:iso:3166#KE", Kenya_ }, 
+      { "KG", Kyrgyzstan_ }, 
+      { "urn:iso:std:iso:3166#KG", Kyrgyzstan_ }, 
+      { "KH", Cambodia_ }, 
+      { "urn:iso:std:iso:3166#KH", Cambodia_ }, 
+      { "KI", Kiribati_ }, 
+      { "urn:iso:std:iso:3166#KI", Kiribati_ }, 
+      { "KM", ComorosThe_ }, 
+      { "urn:iso:std:iso:3166#KM", ComorosThe_ }, 
+      { "KN", SaintKittsAndNevis_ }, 
+      { "urn:iso:std:iso:3166#KN", SaintKittsAndNevis_ }, 
+      { "KP", KoreaTheDemocraticPeopleQuoteSRepublicOf_ }, 
+      { "urn:iso:std:iso:3166#KP", KoreaTheDemocraticPeopleQuoteSRepublicOf_ }, 
+      { "KR", KoreaTheRepublicOf_ }, 
+      { "urn:iso:std:iso:3166#KR", KoreaTheRepublicOf_ }, 
+      { "KS", Kansas_ }, 
+      { "https://www.usps.com/#KS", Kansas_ }, 
+      { "KW", Kuwait_ }, 
+      { "urn:iso:std:iso:3166#KW", Kuwait_ }, 
+      { "KY", Kentucky_ }, 
+      { "https://www.usps.com/#KY", Kentucky_ }, 
+      { "KY", CaymanIslandsThe_ }, 
+      { "urn:iso:std:iso:3166#KY", CaymanIslandsThe_ }, 
+      { "KZ", Kazakhstan_ }, 
+      { "urn:iso:std:iso:3166#KZ", Kazakhstan_ }, 
+      { "LA", Louisiana_ }, 
+      { "https://www.usps.com/#LA", Louisiana_ }, 
+      { "LA", LaoPeopleQuoteSDemocraticRepublicThe_ }, 
+      { "urn:iso:std:iso:3166#LA", LaoPeopleQuoteSDemocraticRepublicThe_ }, 
+      { "LB", Lebanon_ }, 
+      { "urn:iso:std:iso:3166#LB", Lebanon_ }, 
+      { "LC", SaintLucia_ }, 
+      { "urn:iso:std:iso:3166#LC", SaintLucia_ }, 
+      { "LI", Liechtenstein_ }, 
+      { "urn:iso:std:iso:3166#LI", Liechtenstein_ }, 
+      { "LK", SriLanka_ }, 
+      { "urn:iso:std:iso:3166#LK", SriLanka_ }, 
+      { "LR", Liberia_ }, 
+      { "urn:iso:std:iso:3166#LR", Liberia_ }, 
+      { "LS", Lesotho_ }, 
+      { "urn:iso:std:iso:3166#LS", Lesotho_ }, 
+      { "LT", Lithuania_ }, 
+      { "urn:iso:std:iso:3166#LT", Lithuania_ }, 
+      { "LU", Luxembourg_ }, 
+      { "urn:iso:std:iso:3166#LU", Luxembourg_ }, 
+      { "LV", Latvia_ }, 
+      { "urn:iso:std:iso:3166#LV", Latvia_ }, 
+      { "LY", Libya_ }, 
+      { "urn:iso:std:iso:3166#LY", Libya_ }, 
+      { "MA", Massachusetts_ }, 
+      { "https://www.usps.com/#MA", Massachusetts_ }, 
+      { "MA", Morocco_ }, 
+      { "urn:iso:std:iso:3166#MA", Morocco_ }, 
+      { "MC", Monaco_ }, 
+      { "urn:iso:std:iso:3166#MC", Monaco_ }, 
+      { "MD", Maryland_ }, 
+      { "https://www.usps.com/#MD", Maryland_ }, 
+      { "MD", MoldovaTheRepublicOf_ }, 
+      { "urn:iso:std:iso:3166#MD", MoldovaTheRepublicOf_ }, 
+      { "ME", Maine_ }, 
+      { "https://www.usps.com/#ME", Maine_ }, 
+      { "ME", Montenegro_ }, 
+      { "urn:iso:std:iso:3166#ME", Montenegro_ }, 
+      { "MF", SaintMartinFrenchPart_ }, 
+      { "urn:iso:std:iso:3166#MF", SaintMartinFrenchPart_ }, 
+      { "MG", Madagascar_ }, 
+      { "urn:iso:std:iso:3166#MG", Madagascar_ }, 
+      { "MH", MarshallIslands_ }, 
+      { "https://www.usps.com/#MH", MarshallIslands_ }, 
+      { "MH", MarshallIslandsThe_ }, 
+      { "urn:iso:std:iso:3166#MH", MarshallIslandsThe_ }, 
+      { "MI", Michigan_ }, 
+      { "https://www.usps.com/#MI", Michigan_ }, 
+      { "MI", MidwayIslands_ }, 
+      { "urn:iso:std:iso:3166#MI", MidwayIslands_ }, 
+      { "midw", Midwife_practitioner_specialty }, 
+      { "http://hl7.org/fhir/practitioner-specialty#midw", Midwife_practitioner_specialty }, 
+      { "MK", MacedoniaTheFormerYugoslavRepublicOf_ }, 
+      { "urn:iso:std:iso:3166#MK", MacedoniaTheFormerYugoslavRepublicOf_ }, 
+      { "ML", Mali_ }, 
+      { "urn:iso:std:iso:3166#ML", Mali_ }, 
+      { "MM", Myanmar_ }, 
+      { "urn:iso:std:iso:3166#MM", Myanmar_ }, 
+      { "MN", Minnesota_ }, 
+      { "https://www.usps.com/#MN", Minnesota_ }, 
+      { "MN", Mongolia_ }, 
+      { "urn:iso:std:iso:3166#MN", Mongolia_ }, 
+      { "MO", Missouri_ }, 
+      { "https://www.usps.com/#MO", Missouri_ }, 
+      { "MO", Macao_ }, 
+      { "urn:iso:std:iso:3166#MO", Macao_ }, 
+      { "MP", NorthernMarianaIslands_ }, 
+      { "https://www.usps.com/#MP", NorthernMarianaIslands_ }, 
+      { "MP", NorthernMarianaIslandsThe_ }, 
+      { "urn:iso:std:iso:3166#MP", NorthernMarianaIslandsThe_ }, 
+      { "MQ", Martinique_ }, 
+      { "urn:iso:std:iso:3166#MQ", Martinique_ }, 
+      { "MR", Mauritania_ }, 
+      { "urn:iso:std:iso:3166#MR", Mauritania_ }, 
+      { "MS", Mississippi_ }, 
+      { "https://www.usps.com/#MS", Mississippi_ }, 
+      { "MS", Montserrat_ }, 
+      { "urn:iso:std:iso:3166#MS", Montserrat_ }, 
+      { "MT", Montana_ }, 
+      { "https://www.usps.com/#MT", Montana_ }, 
+      { "MT", Malta_ }, 
+      { "urn:iso:std:iso:3166#MT", Malta_ }, 
+      { "MU", Mauritius_ }, 
+      { "urn:iso:std:iso:3166#MU", Mauritius_ }, 
+      { "MV", Maldives_ }, 
+      { "urn:iso:std:iso:3166#MV", Maldives_ }, 
+      { "MW", Malawi_ }, 
+      { "urn:iso:std:iso:3166#MW", Malawi_ }, 
+      { "MX", Mexico_ }, 
+      { "urn:iso:std:iso:3166#MX", Mexico_ }, 
+      { "MY", Malaysia_ }, 
+      { "urn:iso:std:iso:3166#MY", Malaysia_ }, 
+      { "MZ", Mozambique_ }, 
+      { "urn:iso:std:iso:3166#MZ", Mozambique_ }, 
+      { "NA", Namibia_ }, 
+      { "urn:iso:std:iso:3166#NA", Namibia_ }, 
+      { "NC", NorthCarolina_ }, 
+      { "https://www.usps.com/#NC", NorthCarolina_ }, 
+      { "NC", NewCaledonia_ }, 
+      { "urn:iso:std:iso:3166#NC", NewCaledonia_ }, 
+      { "ND", NorthDakota_ }, 
+      { "https://www.usps.com/#ND", NorthDakota_ }, 
+      { "NE", Nebraska_ }, 
+      { "https://www.usps.com/#NE", Nebraska_ }, 
+      { "NE", NigerThe_ }, 
+      { "urn:iso:std:iso:3166#NE", NigerThe_ }, 
+      { "NF", NorfolkIsland_ }, 
+      { "urn:iso:std:iso:3166#NF", NorfolkIsland_ }, 
+      { "NG", Nigeria_ }, 
+      { "urn:iso:std:iso:3166#NG", Nigeria_ }, 
+      { "NH", NewHampshire_ }, 
+      { "https://www.usps.com/#NH", NewHampshire_ }, 
+      { "NH", NewHebrides_ }, 
+      { "urn:iso:std:iso:3166#NH", NewHebrides_ }, 
+      { "NI", Nicaragua_ }, 
+      { "urn:iso:std:iso:3166#NI", Nicaragua_ }, 
+      { "NJ", NewJersey_ }, 
+      { "https://www.usps.com/#NJ", NewJersey_ }, 
+      { "NL", NetherlandsThe_ }, 
+      { "urn:iso:std:iso:3166#NL", NetherlandsThe_ }, 
+      { "NM", NewMexico_ }, 
+      { "https://www.usps.com/#NM", NewMexico_ }, 
+      { "NO", Norway_ }, 
+      { "urn:iso:std:iso:3166#NO", Norway_ }, 
+      { "NP", Nepal_ }, 
+      { "urn:iso:std:iso:3166#NP", Nepal_ }, 
+      { "NQ", DronningMaudLand_ }, 
+      { "urn:iso:std:iso:3166#NQ", DronningMaudLand_ }, 
+      { "NR", Nauru_ }, 
+      { "urn:iso:std:iso:3166#NR", Nauru_ }, 
+      { "NT", NeutralZone_ }, 
+      { "urn:iso:std:iso:3166#NT", NeutralZone_ }, 
+      { "NU", Niue_ }, 
+      { "urn:iso:std:iso:3166#NU", Niue_ }, 
+      { "NV", Nevada_ }, 
+      { "https://www.usps.com/#NV", Nevada_ }, 
+      { "NY", NewYork_ }, 
+      { "https://www.usps.com/#NY", NewYork_ }, 
+      { "NZ", NewZealand_ }, 
+      { "urn:iso:std:iso:3166#NZ", NewZealand_ }, 
+      { "OH", Ohio_ }, 
+      { "https://www.usps.com/#OH", Ohio_ }, 
+      { "OK", Oklahoma_ }, 
+      { "https://www.usps.com/#OK", Oklahoma_ }, 
+      { "OM", Oman_ }, 
+      { "urn:iso:std:iso:3166#OM", Oman_ }, 
+      { "OR", Oregon_ }, 
+      { "https://www.usps.com/#OR", Oregon_ }, 
+      { "PA", Pennsylvania_ }, 
+      { "https://www.usps.com/#PA", Pennsylvania_ }, 
+      { "PA", Panama_ }, 
+      { "urn:iso:std:iso:3166#PA", Panama_ }, 
+      { "PC", PacificIslandsTrustTerritory_ }, 
+      { "urn:iso:std:iso:3166#PC", PacificIslandsTrustTerritory_ }, 
+      { "PE", Peru_ }, 
+      { "urn:iso:std:iso:3166#PE", Peru_ }, 
+      { "PF", FrenchPolynesia_ }, 
+      { "urn:iso:std:iso:3166#PF", FrenchPolynesia_ }, 
+      { "PG", PapuaNewGuinea_ }, 
+      { "urn:iso:std:iso:3166#PG", PapuaNewGuinea_ }, 
+      { "PH", PhilippinesThe_ }, 
+      { "urn:iso:std:iso:3166#PH", PhilippinesThe_ }, 
+      { "PK", Pakistan_ }, 
+      { "urn:iso:std:iso:3166#PK", Pakistan_ }, 
+      { "PL", Poland_ }, 
+      { "urn:iso:std:iso:3166#PL", Poland_ }, 
+      { "PM", SaintPierreAndMiquelon_ }, 
+      { "urn:iso:std:iso:3166#PM", SaintPierreAndMiquelon_ }, 
+      { "PN", Pitcairn_ }, 
+      { "urn:iso:std:iso:3166#PN", Pitcairn_ }, 
+      { "PR", PuertoRico_ }, 
+      { "https://www.usps.com/#PR", PuertoRico_ }, 
+      { "PR", PuertoRico__2 }, 
+      { "urn:iso:std:iso:3166#PR", PuertoRico__2 }, 
+      { "PS", PalestineStateOf_ }, 
+      { "urn:iso:std:iso:3166#PS", PalestineStateOf_ }, 
+      { "PT", Portugal_ }, 
+      { "urn:iso:std:iso:3166#PT", Portugal_ }, 
+      { "PU", UnitedStatesMiscellaneousPacificIslands_ }, 
+      { "urn:iso:std:iso:3166#PU", UnitedStatesMiscellaneousPacificIslands_ }, 
+      { "PW", Palau_ }, 
+      { "https://www.usps.com/#PW", Palau_ }, 
+      { "PW", Palau__2 }, 
+      { "urn:iso:std:iso:3166#PW", Palau__2 }, 
+      { "PY", Paraguay_ }, 
+      { "urn:iso:std:iso:3166#PY", Paraguay_ }, 
+      { "PZ", PanamaCanalZone_ }, 
+      { "urn:iso:std:iso:3166#PZ", PanamaCanalZone_ }, 
+      { "QA", Qatar_ }, 
+      { "urn:iso:std:iso:3166#QA", Qatar_ }, 
+      { "RE", Reunion_ }, 
+      { "urn:iso:std:iso:3166#RE", Reunion_ }, 
+      { "RH", SouthernRhodesia_ }, 
+      { "urn:iso:std:iso:3166#RH", SouthernRhodesia_ }, 
+      { "RI", RhodeIsland_ }, 
+      { "https://www.usps.com/#RI", RhodeIsland_ }, 
+      { "RO", Romania_ }, 
+      { "urn:iso:std:iso:3166#RO", Romania_ }, 
+      { "RS", Serbia_ }, 
+      { "urn:iso:std:iso:3166#RS", Serbia_ }, 
+      { "RU", RussianFederationThe_ }, 
+      { "urn:iso:std:iso:3166#RU", RussianFederationThe_ }, 
+      { "RW", Rwanda_ }, 
+      { "urn:iso:std:iso:3166#RW", Rwanda_ }, 
+      { "SA", SaudiArabia_ }, 
+      { "urn:iso:std:iso:3166#SA", SaudiArabia_ }, 
+      { "SB", SolomonIslands_ }, 
+      { "urn:iso:std:iso:3166#SB", SolomonIslands_ }, 
+      { "SC", SouthCarolina_ }, 
+      { "https://www.usps.com/#SC", SouthCarolina_ }, 
+      { "SC", Seychelles_ }, 
+      { "urn:iso:std:iso:3166#SC", Seychelles_ }, 
+      { "SD", SouthDakota_ }, 
+      { "https://www.usps.com/#SD", SouthDakota_ }, 
+      { "SD", SudanThe_ }, 
+      { "urn:iso:std:iso:3166#SD", SudanThe_ }, 
+      { "SE", Sweden_ }, 
+      { "urn:iso:std:iso:3166#SE", Sweden_ }, 
+      { "SG", Singapore_ }, 
+      { "urn:iso:std:iso:3166#SG", Singapore_ }, 
+      { "SH", SaintHelenaAscensionAndTristanDaCunha_ }, 
+      { "urn:iso:std:iso:3166#SH", SaintHelenaAscensionAndTristanDaCunha_ }, 
+      { "SI", Slovenia_ }, 
+      { "urn:iso:std:iso:3166#SI", Slovenia_ }, 
+      { "SJ", SvalbardAndJanMayen_ }, 
+      { "urn:iso:std:iso:3166#SJ", SvalbardAndJanMayen_ }, 
+      { "SK", Slovakia_ }, 
+      { "urn:iso:std:iso:3166#SK", Slovakia_ }, 
+      { "SL", SierraLeone_ }, 
+      { "urn:iso:std:iso:3166#SL", SierraLeone_ }, 
+      { "SM", SanMarino_ }, 
+      { "urn:iso:std:iso:3166#SM", SanMarino_ }, 
+      { "SN", Senegal_ }, 
+      { "urn:iso:std:iso:3166#SN", Senegal_ }, 
+      { "SO", Somalia_ }, 
+      { "urn:iso:std:iso:3166#SO", Somalia_ }, 
+      { "SR", Suriname_ }, 
+      { "urn:iso:std:iso:3166#SR", Suriname_ }, 
+      { "SS", SouthSudan_ }, 
+      { "urn:iso:std:iso:3166#SS", SouthSudan_ }, 
+      { "ST", SaoTomeAndPrincipe_ }, 
+      { "urn:iso:std:iso:3166#ST", SaoTomeAndPrincipe_ }, 
+      { "SU", USSR_ }, 
+      { "urn:iso:std:iso:3166#SU", USSR_ }, 
+      { "SV", ElSalvador_ }, 
+      { "urn:iso:std:iso:3166#SV", ElSalvador_ }, 
+      { "SX", SintMaartenDutchPart_ }, 
+      { "urn:iso:std:iso:3166#SX", SintMaartenDutchPart_ }, 
+      { "SY", SyrianArabRepublic_ }, 
+      { "urn:iso:std:iso:3166#SY", SyrianArabRepublic_ }, 
+      { "sysarch", SystemsArchitect_practitioner_specialty }, 
+      { "http://hl7.org/fhir/practitioner-specialty#sysarch", SystemsArchitect_practitioner_specialty }, 
+      { "SZ", Swaziland_ }, 
+      { "urn:iso:std:iso:3166#SZ", Swaziland_ }, 
+      { "TC", TurksAndCaicosIslandsThe_ }, 
+      { "urn:iso:std:iso:3166#TC", TurksAndCaicosIslandsThe_ }, 
+      { "TD", Chad_ }, 
+      { "urn:iso:std:iso:3166#TD", Chad_ }, 
+      { "TF", FrenchSouthernTerritoriesThe_ }, 
+      { "urn:iso:std:iso:3166#TF", FrenchSouthernTerritoriesThe_ }, 
+      { "TG", Togo_ }, 
+      { "urn:iso:std:iso:3166#TG", Togo_ }, 
+      { "TH", Thailand_ }, 
+      { "urn:iso:std:iso:3166#TH", Thailand_ }, 
+      { "TJ", Tajikistan_ }, 
+      { "urn:iso:std:iso:3166#TJ", Tajikistan_ }, 
+      { "TK", Tokelau_ }, 
+      { "urn:iso:std:iso:3166#TK", Tokelau_ }, 
+      { "TL", TimorLeste_ }, 
+      { "urn:iso:std:iso:3166#TL", TimorLeste_ }, 
+      { "TM", Turkmenistan_ }, 
+      { "urn:iso:std:iso:3166#TM", Turkmenistan_ }, 
+      { "TN", Tennessee_ }, 
+      { "https://www.usps.com/#TN", Tennessee_ }, 
+      { "TN", Tunisia_ }, 
+      { "urn:iso:std:iso:3166#TN", Tunisia_ }, 
+      { "TO", Tonga_ }, 
+      { "urn:iso:std:iso:3166#TO", Tonga_ }, 
+      { "TP", EastTimor_ }, 
+      { "urn:iso:std:iso:3166#TP", EastTimor_ }, 
+      { "TR", Turkey_ }, 
+      { "urn:iso:std:iso:3166#TR", Turkey_ }, 
+      { "TT", TrinidadAndTobago_ }, 
+      { "urn:iso:std:iso:3166#TT", TrinidadAndTobago_ }, 
+      { "TV", Tuvalu_ }, 
+      { "urn:iso:std:iso:3166#TV", Tuvalu_ }, 
+      { "TW", TaiwanProvinceOfChina_ }, 
+      { "urn:iso:std:iso:3166#TW", TaiwanProvinceOfChina_ }, 
+      { "TX", Texas_ }, 
+      { "https://www.usps.com/#TX", Texas_ }, 
+      { "TZ", TanzaniaUnitedRepublicOf_ }, 
+      { "urn:iso:std:iso:3166#TZ", TanzaniaUnitedRepublicOf_ }, 
+      { "UA", Ukraine_ }, 
+      { "urn:iso:std:iso:3166#UA", Ukraine_ }, 
+      { "UG", Uganda_ }, 
+      { "urn:iso:std:iso:3166#UG", Uganda_ }, 
+      { "UM", USMinorOutlyingIslands_ }, 
+      { "https://www.usps.com/#UM", USMinorOutlyingIslands_ }, 
+      { "UM", UnitedStates_ }, 
+      { "urn:iso:std:iso:3166#UM", UnitedStates_ }, 
+      { "US", UnitedStatesOfAmericaThe_ }, 
+      { "urn:iso:std:iso:3166#US", UnitedStatesOfAmericaThe_ }, 
+      { "UT", Utah_ }, 
+      { "https://www.usps.com/#UT", Utah_ }, 
+      { "UY", Uruguay_ }, 
+      { "urn:iso:std:iso:3166#UY", Uruguay_ }, 
+      { "UZ", Uzbekistan_ }, 
+      { "urn:iso:std:iso:3166#UZ", Uzbekistan_ }, 
+      { "VA", Virginia_ }, 
+      { "https://www.usps.com/#VA", Virginia_ }, 
+      { "VA", HolySeeThe_ }, 
+      { "urn:iso:std:iso:3166#VA", HolySeeThe_ }, 
+      { "VC", SaintVincentAndTheGrenadines_ }, 
+      { "urn:iso:std:iso:3166#VC", SaintVincentAndTheGrenadines_ }, 
+      { "VD", VietNamDemocraticRepublicOf_ }, 
+      { "urn:iso:std:iso:3166#VD", VietNamDemocraticRepublicOf_ }, 
+      { "VE", VenezuelaBolivarianRepublicOf_ }, 
+      { "urn:iso:std:iso:3166#VE", VenezuelaBolivarianRepublicOf_ }, 
+      { "VG", VirginIslandsBritish_ }, 
+      { "urn:iso:std:iso:3166#VG", VirginIslandsBritish_ }, 
+      { "VI", VirginIslandsOfTheUS_ }, 
+      { "https://www.usps.com/#VI", VirginIslandsOfTheUS_ }, 
+      { "VI", VirginIslandsUS_ }, 
+      { "urn:iso:std:iso:3166#VI", VirginIslandsUS_ }, 
+      { "VN", VietNam_ }, 
+      { "urn:iso:std:iso:3166#VN", VietNam_ }, 
+      { "VT", Vermont_ }, 
+      { "https://www.usps.com/#VT", Vermont_ }, 
+      { "VU", Vanuatu_ }, 
+      { "urn:iso:std:iso:3166#VU", Vanuatu_ }, 
+      { "WA", Washington_ }, 
+      { "https://www.usps.com/#WA", Washington_ }, 
+      { "WF", WallisAndFutuna_ }, 
+      { "urn:iso:std:iso:3166#WF", WallisAndFutuna_ }, 
+      { "WI", Wisconsin_ }, 
+      { "https://www.usps.com/#WI", Wisconsin_ }, 
+      { "WK", WakeIsland_ }, 
+      { "urn:iso:std:iso:3166#WK", WakeIsland_ }, 
+      { "WS", Samoa_ }, 
+      { "urn:iso:std:iso:3166#WS", Samoa_ }, 
+      { "WV", WestVirginia_ }, 
+      { "https://www.usps.com/#WV", WestVirginia_ }, 
+      { "WY", Wyoming_ }, 
+      { "https://www.usps.com/#WY", Wyoming_ }, 
+      { "YD", YemenDemocratic_ }, 
+      { "urn:iso:std:iso:3166#YD", YemenDemocratic_ }, 
+      { "YE", Yemen_ }, 
+      { "urn:iso:std:iso:3166#YE", Yemen_ }, 
+      { "YT", Mayotte_ }, 
+      { "urn:iso:std:iso:3166#YT", Mayotte_ }, 
+      { "YU", Yugoslavia_ }, 
+      { "urn:iso:std:iso:3166#YU", Yugoslavia_ }, 
+      { "ZA", SouthAfrica_ }, 
+      { "urn:iso:std:iso:3166#ZA", SouthAfrica_ }, 
+      { "ZM", Zambia_ }, 
+      { "urn:iso:std:iso:3166#ZM", Zambia_ }, 
+      { "ZR", Zaire_ }, 
+      { "urn:iso:std:iso:3166#ZR", Zaire_ }, 
+      { "ZW", Zimbabwe_ }, 
+      { "urn:iso:std:iso:3166#ZW", Zimbabwe_ }, 
+    };
   };
 }

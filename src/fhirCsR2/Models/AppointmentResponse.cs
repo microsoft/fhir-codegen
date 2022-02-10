@@ -319,5 +319,13 @@ namespace fhirCsR2.Models
     public const string IN_PROCESS = "in-process";
     public const string COMPLETED = "completed";
     public const string NEEDS_ACTION = "needs-action";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "accepted",
+      "declined",
+      "tentative",
+      "in-process",
+      "completed",
+      "needs-action",
+    };
   }
 }

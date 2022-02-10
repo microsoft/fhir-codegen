@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: PermissionStatusActive
+    /// </summary>
+    public const string LiteralPermissionStatusActive = "http://hl7.org/fhir/permission-status#active";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
+
+    /// <summary>
+    /// Literal for code: PermissionStatusDraft
+    /// </summary>
+    public const string LiteralPermissionStatusDraft = "http://hl7.org/fhir/permission-status#draft";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: PermissionStatusEnteredInError
+    /// </summary>
+    public const string LiteralPermissionStatusEnteredInError = "http://hl7.org/fhir/permission-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Rejected
     /// </summary>
     public const string LiteralRejected = "rejected";
+
+    /// <summary>
+    /// Literal for code: PermissionStatusRejected
+    /// </summary>
+    public const string LiteralPermissionStatusRejected = "http://hl7.org/fhir/permission-status#rejected";
+
+    /// <summary>
+    /// Dictionary for looking up PermissionStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/permission-status#active", Active }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/permission-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/permission-status#entered-in-error", EnteredInError }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/permission-status#rejected", Rejected }, 
+    };
   };
 }

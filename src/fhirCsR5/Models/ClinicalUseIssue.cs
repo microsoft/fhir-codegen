@@ -1341,5 +1341,12 @@ namespace fhirCsR5.Models
     public const string INTERACTION = "interaction";
     public const string UNDESIRABLE_EFFECT = "undesirable-effect";
     public const string WARNING = "warning";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "indication",
+      "contraindication",
+      "interaction",
+      "undesirable-effect",
+      "warning",
+    };
   }
 }

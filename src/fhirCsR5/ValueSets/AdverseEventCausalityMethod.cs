@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class AdverseEventCausalityMethodCodes
   {
     /// <summary>
-    /// 
+    /// Bayesian
     /// </summary>
     public static readonly Coding Bayesian = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-method"
     };
     /// <summary>
-    /// 
+    /// Checklist
     /// </summary>
     public static readonly Coding Checklist = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-method"
     };
     /// <summary>
-    /// 
+    /// Probability Scale
     /// </summary>
     public static readonly Coding ProbabilityScale = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBayesian = "bayesian";
 
     /// <summary>
+    /// Literal for code: AdverseEventCausalityMethodBayesian
+    /// </summary>
+    public const string LiteralAdverseEventCausalityMethodBayesian = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-method#bayesian";
+
+    /// <summary>
     /// Literal for code: Checklist
     /// </summary>
     public const string LiteralChecklist = "checklist";
 
     /// <summary>
+    /// Literal for code: AdverseEventCausalityMethodChecklist
+    /// </summary>
+    public const string LiteralAdverseEventCausalityMethodChecklist = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-method#checklist";
+
+    /// <summary>
     /// Literal for code: ProbabilityScale
     /// </summary>
     public const string LiteralProbabilityScale = "probability-scale";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCausalityMethodProbabilityScale
+    /// </summary>
+    public const string LiteralAdverseEventCausalityMethodProbabilityScale = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-method#probability-scale";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventCausalityMethod Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "bayesian", Bayesian }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-causality-method#bayesian", Bayesian }, 
+      { "checklist", Checklist }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-causality-method#checklist", Checklist }, 
+      { "probability-scale", ProbabilityScale }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-causality-method#probability-scale", ProbabilityScale }, 
+    };
   };
 }

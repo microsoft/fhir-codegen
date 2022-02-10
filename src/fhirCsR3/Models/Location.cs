@@ -657,6 +657,10 @@ namespace fhirCsR3.Models
   public static class LocationModeCodes {
     public const string INSTANCE = "instance";
     public const string KIND = "kind";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "instance",
+      "kind",
+    };
   }
   /// <summary>
   /// Code Values for the Location.status field
@@ -665,5 +669,10 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string SUSPENDED = "suspended";
     public const string INACTIVE = "inactive";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "suspended",
+      "inactive",
+    };
   }
 }

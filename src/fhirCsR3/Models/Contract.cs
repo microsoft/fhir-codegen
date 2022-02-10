@@ -2514,5 +2514,22 @@ namespace fhirCsR3.Models
     public const string REVOKED = "revoked";
     public const string RESOLVED = "resolved";
     public const string TERMINATED = "terminated";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "amended",
+      "appended",
+      "cancelled",
+      "disputed",
+      "entered-in-error",
+      "executable",
+      "executed",
+      "negotiable",
+      "offered",
+      "policy",
+      "rejected",
+      "renewed",
+      "revoked",
+      "resolved",
+      "terminated",
+    };
   }
 }

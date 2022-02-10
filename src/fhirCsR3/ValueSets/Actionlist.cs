@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCancelReverseOrNullify = "cancel";
 
     /// <summary>
+    /// Literal for code: ActionlistCancelReverseOrNullify
+    /// </summary>
+    public const string LiteralActionlistCancelReverseOrNullify = "http://hl7.org/fhir/actionlist#cancel";
+
+    /// <summary>
     /// Literal for code: Poll
     /// </summary>
     public const string LiteralPoll = "poll";
+
+    /// <summary>
+    /// Literal for code: ActionlistPoll
+    /// </summary>
+    public const string LiteralActionlistPoll = "http://hl7.org/fhir/actionlist#poll";
 
     /// <summary>
     /// Literal for code: ReProcess
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReProcess = "reprocess";
 
     /// <summary>
+    /// Literal for code: ActionlistReProcess
+    /// </summary>
+    public const string LiteralActionlistReProcess = "http://hl7.org/fhir/actionlist#reprocess";
+
+    /// <summary>
     /// Literal for code: StatusCheck
     /// </summary>
     public const string LiteralStatusCheck = "status";
+
+    /// <summary>
+    /// Literal for code: ActionlistStatusCheck
+    /// </summary>
+    public const string LiteralActionlistStatusCheck = "http://hl7.org/fhir/actionlist#status";
+
+    /// <summary>
+    /// Dictionary for looking up Actionlist Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cancel", CancelReverseOrNullify }, 
+      { "http://hl7.org/fhir/actionlist#cancel", CancelReverseOrNullify }, 
+      { "poll", Poll }, 
+      { "http://hl7.org/fhir/actionlist#poll", Poll }, 
+      { "reprocess", ReProcess }, 
+      { "http://hl7.org/fhir/actionlist#reprocess", ReProcess }, 
+      { "status", StatusCheck }, 
+      { "http://hl7.org/fhir/actionlist#status", StatusCheck }, 
+    };
   };
 }

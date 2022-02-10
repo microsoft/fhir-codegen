@@ -130,9 +130,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAC = "AC";
 
     /// <summary>
+    /// Literal for code: V3TimingEventAC
+    /// </summary>
+    public const string LiteralV3TimingEventAC = "http://hl7.org/fhir/v3/TimingEvent#AC";
+
+    /// <summary>
     /// Literal for code: ACD
     /// </summary>
     public const string LiteralACD = "ACD";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventACD
+    /// </summary>
+    public const string LiteralV3TimingEventACD = "http://hl7.org/fhir/v3/TimingEvent#ACD";
 
     /// <summary>
     /// Literal for code: ACM
@@ -140,9 +150,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralACM = "ACM";
 
     /// <summary>
+    /// Literal for code: V3TimingEventACM
+    /// </summary>
+    public const string LiteralV3TimingEventACM = "http://hl7.org/fhir/v3/TimingEvent#ACM";
+
+    /// <summary>
     /// Literal for code: ACV
     /// </summary>
     public const string LiteralACV = "ACV";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventACV
+    /// </summary>
+    public const string LiteralV3TimingEventACV = "http://hl7.org/fhir/v3/TimingEvent#ACV";
 
     /// <summary>
     /// Literal for code: C
@@ -150,9 +170,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralC = "C";
 
     /// <summary>
+    /// Literal for code: V3TimingEventC
+    /// </summary>
+    public const string LiteralV3TimingEventC = "http://hl7.org/fhir/v3/TimingEvent#C";
+
+    /// <summary>
     /// Literal for code: CD
     /// </summary>
     public const string LiteralCD = "CD";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventCD
+    /// </summary>
+    public const string LiteralV3TimingEventCD = "http://hl7.org/fhir/v3/TimingEvent#CD";
 
     /// <summary>
     /// Literal for code: CM
@@ -160,9 +190,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCM = "CM";
 
     /// <summary>
+    /// Literal for code: V3TimingEventCM
+    /// </summary>
+    public const string LiteralV3TimingEventCM = "http://hl7.org/fhir/v3/TimingEvent#CM";
+
+    /// <summary>
     /// Literal for code: CV
     /// </summary>
     public const string LiteralCV = "CV";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventCV
+    /// </summary>
+    public const string LiteralV3TimingEventCV = "http://hl7.org/fhir/v3/TimingEvent#CV";
 
     /// <summary>
     /// Literal for code: HS
@@ -170,9 +210,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralHS = "HS";
 
     /// <summary>
+    /// Literal for code: V3TimingEventHS
+    /// </summary>
+    public const string LiteralV3TimingEventHS = "http://hl7.org/fhir/v3/TimingEvent#HS";
+
+    /// <summary>
     /// Literal for code: PC
     /// </summary>
     public const string LiteralPC = "PC";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventPC
+    /// </summary>
+    public const string LiteralV3TimingEventPC = "http://hl7.org/fhir/v3/TimingEvent#PC";
 
     /// <summary>
     /// Literal for code: PCD
@@ -180,9 +230,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralPCD = "PCD";
 
     /// <summary>
+    /// Literal for code: V3TimingEventPCD
+    /// </summary>
+    public const string LiteralV3TimingEventPCD = "http://hl7.org/fhir/v3/TimingEvent#PCD";
+
+    /// <summary>
     /// Literal for code: PCM
     /// </summary>
     public const string LiteralPCM = "PCM";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventPCM
+    /// </summary>
+    public const string LiteralV3TimingEventPCM = "http://hl7.org/fhir/v3/TimingEvent#PCM";
 
     /// <summary>
     /// Literal for code: PCV
@@ -190,8 +250,52 @@ namespace fhirCsR2.ValueSets
     public const string LiteralPCV = "PCV";
 
     /// <summary>
+    /// Literal for code: V3TimingEventPCV
+    /// </summary>
+    public const string LiteralV3TimingEventPCV = "http://hl7.org/fhir/v3/TimingEvent#PCV";
+
+    /// <summary>
     /// Literal for code: WAKE
     /// </summary>
     public const string LiteralWAKE = "WAKE";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventWAKE
+    /// </summary>
+    public const string LiteralV3TimingEventWAKE = "http://hl7.org/fhir/v3/TimingEvent#WAKE";
+
+    /// <summary>
+    /// Dictionary for looking up EventTiming Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AC", AC }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#AC", AC }, 
+      { "ACD", ACD }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#ACD", ACD }, 
+      { "ACM", ACM }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#ACM", ACM }, 
+      { "ACV", ACV }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#ACV", ACV }, 
+      { "C", C }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#C", C }, 
+      { "CD", CD }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#CD", CD }, 
+      { "CM", CM }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#CM", CM }, 
+      { "CV", CV }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#CV", CV }, 
+      { "HS", HS }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#HS", HS }, 
+      { "PC", PC }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#PC", PC }, 
+      { "PCD", PCD }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#PCD", PCD }, 
+      { "PCM", PCM }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#PCM", PCM }, 
+      { "PCV", PCV }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#PCV", PCV }, 
+      { "WAKE", WAKE }, 
+      { "http://hl7.org/fhir/v3/TimingEvent#WAKE", WAKE }, 
+    };
   };
 }

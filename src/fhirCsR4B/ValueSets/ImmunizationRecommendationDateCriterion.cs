@@ -50,9 +50,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL309807 = "30980-7";
 
     /// <summary>
+    /// Literal for code: NONEVAL309807
+    /// </summary>
+    public const string LiteralNONEVAL309807 = "http://loinc.org#30980-7";
+
+    /// <summary>
     /// Literal for code: VAL309815
     /// </summary>
     public const string LiteralVAL309815 = "30981-5";
+
+    /// <summary>
+    /// Literal for code: NONEVAL309815
+    /// </summary>
+    public const string LiteralNONEVAL309815 = "http://loinc.org#30981-5";
 
     /// <summary>
     /// Literal for code: VAL597773
@@ -60,8 +70,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL597773 = "59777-3";
 
     /// <summary>
+    /// Literal for code: NONEVAL597773
+    /// </summary>
+    public const string LiteralNONEVAL597773 = "http://loinc.org#59777-3";
+
+    /// <summary>
     /// Literal for code: VAL597781
     /// </summary>
     public const string LiteralVAL597781 = "59778-1";
+
+    /// <summary>
+    /// Literal for code: NONEVAL597781
+    /// </summary>
+    public const string LiteralNONEVAL597781 = "http://loinc.org#59778-1";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationRecommendationDateCriterion Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "30980-7", VAL309807 }, 
+      { "http://loinc.org#30980-7", VAL309807 }, 
+      { "30981-5", VAL309815 }, 
+      { "http://loinc.org#30981-5", VAL309815 }, 
+      { "59777-3", VAL597773 }, 
+      { "http://loinc.org#59777-3", VAL597773 }, 
+      { "59778-1", VAL597781 }, 
+      { "http://loinc.org#59778-1", VAL597781 }, 
+    };
   };
 }

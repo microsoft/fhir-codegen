@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAllergy = "allergy";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceTypeAllergy
+    /// </summary>
+    public const string LiteralAllergyIntoleranceTypeAllergy = "http://hl7.org/fhir/allergy-intolerance-type#allergy";
+
+    /// <summary>
     /// Literal for code: Intolerance
     /// </summary>
     public const string LiteralIntolerance = "intolerance";
+
+    /// <summary>
+    /// Literal for code: AllergyIntoleranceTypeIntolerance
+    /// </summary>
+    public const string LiteralAllergyIntoleranceTypeIntolerance = "http://hl7.org/fhir/allergy-intolerance-type#intolerance";
+
+    /// <summary>
+    /// Dictionary for looking up AllergyIntoleranceType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "allergy", Allergy }, 
+      { "http://hl7.org/fhir/allergy-intolerance-type#allergy", Allergy }, 
+      { "intolerance", Intolerance }, 
+      { "http://hl7.org/fhir/allergy-intolerance-type#intolerance", Intolerance }, 
+    };
   };
 }

@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContactLens = "contact";
 
     /// <summary>
+    /// Literal for code: VisionProductContactLens
+    /// </summary>
+    public const string LiteralVisionProductContactLens = "http://hl7.org/fhir/ex-visionprescriptionproduct#contact";
+
+    /// <summary>
     /// Literal for code: Lens
     /// </summary>
     public const string LiteralLens = "lens";
+
+    /// <summary>
+    /// Literal for code: VisionProductLens
+    /// </summary>
+    public const string LiteralVisionProductLens = "http://hl7.org/fhir/ex-visionprescriptionproduct#lens";
+
+    /// <summary>
+    /// Dictionary for looking up VisionProduct Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "contact", ContactLens }, 
+      { "http://hl7.org/fhir/ex-visionprescriptionproduct#contact", ContactLens }, 
+      { "lens", Lens }, 
+      { "http://hl7.org/fhir/ex-visionprescriptionproduct#lens", Lens }, 
+    };
   };
 }

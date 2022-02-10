@@ -153,9 +153,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralASAP = "A";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityASAP
+    /// </summary>
+    public const string LiteralV3ActPriorityASAP = "http://hl7.org/fhir/v3/ActPriority#A";
+
+    /// <summary>
     /// Literal for code: CallbackResults
     /// </summary>
     public const string LiteralCallbackResults = "CR";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityCallbackResults
+    /// </summary>
+    public const string LiteralV3ActPriorityCallbackResults = "http://hl7.org/fhir/v3/ActPriority#CR";
 
     /// <summary>
     /// Literal for code: CallbackForScheduling
@@ -163,9 +173,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCallbackForScheduling = "CS";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityCallbackForScheduling
+    /// </summary>
+    public const string LiteralV3ActPriorityCallbackForScheduling = "http://hl7.org/fhir/v3/ActPriority#CS";
+
+    /// <summary>
     /// Literal for code: CallbackPlacerForScheduling
     /// </summary>
     public const string LiteralCallbackPlacerForScheduling = "CSP";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityCallbackPlacerForScheduling
+    /// </summary>
+    public const string LiteralV3ActPriorityCallbackPlacerForScheduling = "http://hl7.org/fhir/v3/ActPriority#CSP";
 
     /// <summary>
     /// Literal for code: ContactRecipientForScheduling
@@ -173,9 +193,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContactRecipientForScheduling = "CSR";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityContactRecipientForScheduling
+    /// </summary>
+    public const string LiteralV3ActPriorityContactRecipientForScheduling = "http://hl7.org/fhir/v3/ActPriority#CSR";
+
+    /// <summary>
     /// Literal for code: Elective
     /// </summary>
     public const string LiteralElective = "EL";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityElective
+    /// </summary>
+    public const string LiteralV3ActPriorityElective = "http://hl7.org/fhir/v3/ActPriority#EL";
 
     /// <summary>
     /// Literal for code: Emergency
@@ -183,9 +213,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmergency = "EM";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityEmergency
+    /// </summary>
+    public const string LiteralV3ActPriorityEmergency = "http://hl7.org/fhir/v3/ActPriority#EM";
+
+    /// <summary>
     /// Literal for code: Preop
     /// </summary>
     public const string LiteralPreop = "P";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityPreop
+    /// </summary>
+    public const string LiteralV3ActPriorityPreop = "http://hl7.org/fhir/v3/ActPriority#P";
 
     /// <summary>
     /// Literal for code: AsNeeded
@@ -193,9 +233,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAsNeeded = "PRN";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityAsNeeded
+    /// </summary>
+    public const string LiteralV3ActPriorityAsNeeded = "http://hl7.org/fhir/v3/ActPriority#PRN";
+
+    /// <summary>
     /// Literal for code: Routine
     /// </summary>
     public const string LiteralRoutine = "R";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityRoutine
+    /// </summary>
+    public const string LiteralV3ActPriorityRoutine = "http://hl7.org/fhir/v3/ActPriority#R";
 
     /// <summary>
     /// Literal for code: RushReporting
@@ -203,9 +253,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRushReporting = "RR";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityRushReporting
+    /// </summary>
+    public const string LiteralV3ActPriorityRushReporting = "http://hl7.org/fhir/v3/ActPriority#RR";
+
+    /// <summary>
     /// Literal for code: Stat
     /// </summary>
     public const string LiteralStat = "S";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityStat
+    /// </summary>
+    public const string LiteralV3ActPriorityStat = "http://hl7.org/fhir/v3/ActPriority#S";
 
     /// <summary>
     /// Literal for code: TimingCritical
@@ -213,13 +273,64 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTimingCritical = "T";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityTimingCritical
+    /// </summary>
+    public const string LiteralV3ActPriorityTimingCritical = "http://hl7.org/fhir/v3/ActPriority#T";
+
+    /// <summary>
     /// Literal for code: UseAsDirected
     /// </summary>
     public const string LiteralUseAsDirected = "UD";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityUseAsDirected
+    /// </summary>
+    public const string LiteralV3ActPriorityUseAsDirected = "http://hl7.org/fhir/v3/ActPriority#UD";
+
+    /// <summary>
     /// Literal for code: Urgent
     /// </summary>
     public const string LiteralUrgent = "UR";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityUrgent
+    /// </summary>
+    public const string LiteralV3ActPriorityUrgent = "http://hl7.org/fhir/v3/ActPriority#UR";
+
+    /// <summary>
+    /// Dictionary for looking up V3ActPriority Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "A", ASAP }, 
+      { "http://hl7.org/fhir/v3/ActPriority#A", ASAP }, 
+      { "CR", CallbackResults }, 
+      { "http://hl7.org/fhir/v3/ActPriority#CR", CallbackResults }, 
+      { "CS", CallbackForScheduling }, 
+      { "http://hl7.org/fhir/v3/ActPriority#CS", CallbackForScheduling }, 
+      { "CSP", CallbackPlacerForScheduling }, 
+      { "http://hl7.org/fhir/v3/ActPriority#CSP", CallbackPlacerForScheduling }, 
+      { "CSR", ContactRecipientForScheduling }, 
+      { "http://hl7.org/fhir/v3/ActPriority#CSR", ContactRecipientForScheduling }, 
+      { "EL", Elective }, 
+      { "http://hl7.org/fhir/v3/ActPriority#EL", Elective }, 
+      { "EM", Emergency }, 
+      { "http://hl7.org/fhir/v3/ActPriority#EM", Emergency }, 
+      { "P", Preop }, 
+      { "http://hl7.org/fhir/v3/ActPriority#P", Preop }, 
+      { "PRN", AsNeeded }, 
+      { "http://hl7.org/fhir/v3/ActPriority#PRN", AsNeeded }, 
+      { "R", Routine }, 
+      { "http://hl7.org/fhir/v3/ActPriority#R", Routine }, 
+      { "RR", RushReporting }, 
+      { "http://hl7.org/fhir/v3/ActPriority#RR", RushReporting }, 
+      { "S", Stat }, 
+      { "http://hl7.org/fhir/v3/ActPriority#S", Stat }, 
+      { "T", TimingCritical }, 
+      { "http://hl7.org/fhir/v3/ActPriority#T", TimingCritical }, 
+      { "UD", UseAsDirected }, 
+      { "http://hl7.org/fhir/v3/ActPriority#UD", UseAsDirected }, 
+      { "UR", Urgent }, 
+      { "http://hl7.org/fhir/v3/ActPriority#UR", Urgent }, 
+    };
   };
 }

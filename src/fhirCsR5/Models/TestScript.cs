@@ -22,6 +22,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int Index { get; set; }
     /// <summary>
+    /// Extension container element for Index
+    /// </summary>
+    public Element _Index { get; set; }
+    /// <summary>
     /// Must be a "sender"/"client" profile.
     /// </summary>
     public Coding Profile { get; set; }
@@ -37,6 +41,12 @@ namespace fhirCsR5.Models
       ((fhirCsR5.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteNumber("index", Index);
+
+      if (_Index != null)
+      {
+        writer.WritePropertyName("_index");
+        _Index.SerializeJson(writer, options);
+      }
 
       if (Profile != null)
       {
@@ -58,6 +68,11 @@ namespace fhirCsR5.Models
       {
         case "index":
           Index = reader.GetInt32();
+          break;
+
+        case "_index":
+          _Index = new fhirCsR5.Models.Element();
+          _Index.DeserializeJson(ref reader, options);
           break;
 
         case "profile":
@@ -108,6 +123,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int Index { get; set; }
     /// <summary>
+    /// Extension container element for Index
+    /// </summary>
+    public Element _Index { get; set; }
+    /// <summary>
     /// Must be a "receiver"/"server" profile.
     /// </summary>
     public Coding Profile { get; set; }
@@ -123,6 +142,12 @@ namespace fhirCsR5.Models
       ((fhirCsR5.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteNumber("index", Index);
+
+      if (_Index != null)
+      {
+        writer.WritePropertyName("_index");
+        _Index.SerializeJson(writer, options);
+      }
 
       if (Profile != null)
       {
@@ -144,6 +169,11 @@ namespace fhirCsR5.Models
       {
         case "index":
           Index = reader.GetInt32();
+          break;
+
+        case "_index":
+          _Index = new fhirCsR5.Models.Element();
+          _Index.DeserializeJson(ref reader, options);
           break;
 
         case "profile":
@@ -323,6 +353,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Destination { get; set; }
     /// <summary>
+    /// Extension container element for Destination
+    /// </summary>
+    public Element _Destination { get; set; }
+    /// <summary>
     /// Links to the FHIR specification that describes this interaction and the resources involved in more detail.
     /// </summary>
     public List<string> Link { get; set; }
@@ -335,13 +369,25 @@ namespace fhirCsR5.Models
     /// </summary>
     public List<int> Origin { get; set; }
     /// <summary>
+    /// Extension container element for Origin
+    /// </summary>
+    public List<Element> _Origin { get; set; }
+    /// <summary>
     /// Whether or not the test execution will require the given capabilities of the server in order for this test script to execute.
     /// </summary>
     public bool Required { get; set; }
     /// <summary>
+    /// Extension container element for Required
+    /// </summary>
+    public Element _Required { get; set; }
+    /// <summary>
     /// Whether or not the test execution will validate the given capabilities of the server in order for this test script to execute.
     /// </summary>
     public bool Validated { get; set; }
+    /// <summary>
+    /// Extension container element for Validated
+    /// </summary>
+    public Element _Validated { get; set; }
     /// <summary>
     /// Serialize to a JSON object
     /// </summary>
@@ -355,7 +401,19 @@ namespace fhirCsR5.Models
 
       writer.WriteBoolean("required", Required);
 
+      if (_Required != null)
+      {
+        writer.WritePropertyName("_required");
+        _Required.SerializeJson(writer, options);
+      }
+
       writer.WriteBoolean("validated", Validated);
+
+      if (_Validated != null)
+      {
+        writer.WritePropertyName("_validated");
+        _Validated.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Description))
       {
@@ -381,9 +439,28 @@ namespace fhirCsR5.Models
         writer.WriteEndArray();
       }
 
+      if ((_Origin != null) && (_Origin.Count != 0))
+      {
+        writer.WritePropertyName("_origin");
+        writer.WriteStartArray();
+
+        foreach (Element val_Origin in _Origin)
+        {
+          val_Origin.SerializeJson(writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if (Destination != null)
       {
         writer.WriteNumber("destination", (int)Destination!);
+      }
+
+      if (_Destination != null)
+      {
+        writer.WritePropertyName("_destination");
+        _Destination.SerializeJson(writer, options);
       }
 
       if ((Link != null) && (Link.Count != 0))
@@ -455,6 +532,11 @@ namespace fhirCsR5.Models
 
         case "destination":
           Destination = reader.GetInt32();
+          break;
+
+        case "_destination":
+          _Destination = new fhirCsR5.Models.Element();
+          _Destination.DeserializeJson(ref reader, options);
           break;
 
         case "link":
@@ -534,12 +616,49 @@ namespace fhirCsR5.Models
 
           break;
 
+        case "_origin":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          _Origin = new List<Element>();
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            fhirCsR5.Models.Element obj_Origin = new fhirCsR5.Models.Element();
+            obj_Origin.DeserializeJson(ref reader, options);
+            _Origin.Add(obj_Origin);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+          }
+
+          if (_Origin.Count == 0)
+          {
+            _Origin = null;
+          }
+
+          break;
+
         case "required":
           Required = reader.GetBoolean();
           break;
 
+        case "_required":
+          _Required = new fhirCsR5.Models.Element();
+          _Required.DeserializeJson(ref reader, options);
+          break;
+
         case "validated":
           Validated = reader.GetBoolean();
+          break;
+
+        case "_validated":
+          _Validated = new fhirCsR5.Models.Element();
+          _Validated.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -847,9 +966,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool Autocreate { get; set; }
     /// <summary>
+    /// Extension container element for Autocreate
+    /// </summary>
+    public Element _Autocreate { get; set; }
+    /// <summary>
     /// Whether or not to implicitly delete the fixture during teardown. If true, the fixture is automatically deleted on each server being tested during teardown, therefore no delete operation is required for this fixture in the TestScript.teardown section.
     /// </summary>
     public bool Autodelete { get; set; }
+    /// <summary>
+    /// Extension container element for Autodelete
+    /// </summary>
+    public Element _Autodelete { get; set; }
     /// <summary>
     /// See http://build.fhir.org/resourcelist.html for complete list of resource types.
     /// </summary>
@@ -867,7 +994,19 @@ namespace fhirCsR5.Models
 
       writer.WriteBoolean("autocreate", Autocreate);
 
+      if (_Autocreate != null)
+      {
+        writer.WritePropertyName("_autocreate");
+        _Autocreate.SerializeJson(writer, options);
+      }
+
       writer.WriteBoolean("autodelete", Autodelete);
+
+      if (_Autodelete != null)
+      {
+        writer.WritePropertyName("_autodelete");
+        _Autodelete.SerializeJson(writer, options);
+      }
 
       if (Resource != null)
       {
@@ -891,8 +1030,18 @@ namespace fhirCsR5.Models
           Autocreate = reader.GetBoolean();
           break;
 
+        case "_autocreate":
+          _Autocreate = new fhirCsR5.Models.Element();
+          _Autocreate.DeserializeJson(ref reader, options);
+          break;
+
         case "autodelete":
           Autodelete = reader.GetBoolean();
+          break;
+
+        case "_autodelete":
+          _Autodelete = new fhirCsR5.Models.Element();
+          _Autodelete.DeserializeJson(ref reader, options);
           break;
 
         case "resource":
@@ -1363,9 +1512,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Destination { get; set; }
     /// <summary>
+    /// Extension container element for Destination
+    /// </summary>
+    public Element _Destination { get; set; }
+    /// <summary>
     /// Whether or not to implicitly send the request url in encoded format. The default is true to match the standard RESTful client behavior. Set to false when communicating with a server that does not support encoded url paths.
     /// </summary>
     public bool EncodeRequestUrl { get; set; }
+    /// <summary>
+    /// Extension container element for EncodeRequestUrl
+    /// </summary>
+    public Element _EncodeRequestUrl { get; set; }
     /// <summary>
     /// This has no impact on the verification itself.
     /// </summary>
@@ -1386,6 +1543,10 @@ namespace fhirCsR5.Models
     /// If absent, test engine will send the message.  When present, test engine will not send the request message but will wait for the request message to be sent from this origin server.
     /// </summary>
     public int? Origin { get; set; }
+    /// <summary>
+    /// Extension container element for Origin
+    /// </summary>
+    public Element _Origin { get; set; }
     /// <summary>
     /// If "url" element is specified, then "targetId", "params", and "resource" elements will be ignored as "url" element will have everything needed for constructing the request url.  If "params" element is specified, then "targetId" element is ignored.  For FHIR operations that require a resource (e.g. "read" and "vread" operations), the "resource" element must be specified when "params" element is specified.  If "url" and "params" elements are absent, then the request url will be constructed from "targetId" fixture if present.  For "read" operation, the resource and id values will be extracted from "targetId" fixture and used to construct the url.  For "vread" and "history" operations, the versionId value will also be used.   Test engines would append whatever is specified for "params" to the URL after the resource type without tampering with the string (beyond encoding the URL for HTTP).  The "params" element does not correspond exactly to "search parameters".  Nor is it the "path".  It corresponds to the part of the URL that comes after the [type] (when "resource" element is specified); e.g. It corresponds to "/[id]/_history/[vid] {?_format=[mime-type]}" in the following operation: GET [base]/[type]/[id]/_history/[vid] {?_format=[mime-type]}  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before sending the request.
     /// </summary>
@@ -1527,7 +1688,19 @@ namespace fhirCsR5.Models
         writer.WriteNumber("destination", (int)Destination!);
       }
 
+      if (_Destination != null)
+      {
+        writer.WritePropertyName("_destination");
+        _Destination.SerializeJson(writer, options);
+      }
+
       writer.WriteBoolean("encodeRequestUrl", EncodeRequestUrl);
+
+      if (_EncodeRequestUrl != null)
+      {
+        writer.WritePropertyName("_encodeRequestUrl");
+        _EncodeRequestUrl.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Method))
       {
@@ -1543,6 +1716,12 @@ namespace fhirCsR5.Models
       if (Origin != null)
       {
         writer.WriteNumber("origin", (int)Origin!);
+      }
+
+      if (_Origin != null)
+      {
+        writer.WritePropertyName("_origin");
+        _Origin.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Params))
@@ -1667,8 +1846,18 @@ namespace fhirCsR5.Models
           Destination = reader.GetInt32();
           break;
 
+        case "_destination":
+          _Destination = new fhirCsR5.Models.Element();
+          _Destination.DeserializeJson(ref reader, options);
+          break;
+
         case "encodeRequestUrl":
           EncodeRequestUrl = reader.GetBoolean();
+          break;
+
+        case "_encodeRequestUrl":
+          _EncodeRequestUrl = new fhirCsR5.Models.Element();
+          _EncodeRequestUrl.DeserializeJson(ref reader, options);
           break;
 
         case "label":
@@ -1691,6 +1880,11 @@ namespace fhirCsR5.Models
 
         case "origin":
           Origin = reader.GetInt32();
+          break;
+
+        case "_origin":
+          _Origin = new fhirCsR5.Models.Element();
+          _Origin.DeserializeJson(ref reader, options);
           break;
 
         case "params":
@@ -1830,6 +2024,15 @@ namespace fhirCsR5.Models
     public const string POST = "post";
     public const string PUT = "put";
     public const string HEAD = "head";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "delete",
+      "get",
+      "options",
+      "patch",
+      "post",
+      "put",
+      "head",
+    };
   }
   /// <summary>
   /// In order to evaluate an assertion, the request, response, and results of the most recently executed operation must always be maintained by the test engine.
@@ -1921,6 +2124,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? NavigationLinks { get; set; }
     /// <summary>
+    /// Extension container element for NavigationLinks
+    /// </summary>
+    public Element _NavigationLinks { get; set; }
+    /// <summary>
     /// Operators are useful especially for negative testing.  If operator is not specified, then the "equals" operator is assumed; e.g. ```&lt;code&gt;   &lt;assert&gt;  &lt;operator value="in" /&gt;  &lt;responseCode value="200,201,204" /&gt;    &lt;/assert&gt;    &lt;assert&gt;  &lt;operator value="notEquals" /&gt;  &lt;response value="okay"/&gt;   &lt;/assert&gt;    &lt;assert&gt;  &lt;operator value="greaterThan" /&gt;    &lt;responseHeader&gt;     &lt;field value="Content-Length" /&gt;     &lt;value value="0" /&gt;    &lt;/responseHeader/&gt;   &lt;/assert&gt; &lt;/code&gt; ```.
     /// </summary>
     public string Operator { get; set; }
@@ -1989,6 +2196,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool StopTestOnFail { get; set; }
     /// <summary>
+    /// Extension container element for StopTestOnFail
+    /// </summary>
+    public Element _StopTestOnFail { get; set; }
+    /// <summary>
     /// The ID of a Profile fixture. Asserts that the response is valid according to the Profile specified by validateProfileId.
     /// </summary>
     public string ValidateProfileId { get; set; }
@@ -2008,6 +2219,10 @@ namespace fhirCsR5.Models
     /// If this element is specified and it is true, then assertion failures can be logged by test engine but should not stop the test script execution from proceeding.  There are likely cases where the spec is not clear on what should happen. If the spec says something is optional (maybe a response header for example), but a server doesn’t do it, we could choose to issue a warning.
     /// </summary>
     public bool WarningOnly { get; set; }
+    /// <summary>
+    /// Extension container element for WarningOnly
+    /// </summary>
+    public Element _WarningOnly { get; set; }
     /// <summary>
     /// Serialize to a JSON object
     /// </summary>
@@ -2134,6 +2349,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("navigationLinks", (bool)NavigationLinks!);
       }
 
+      if (_NavigationLinks != null)
+      {
+        writer.WritePropertyName("_navigationLinks");
+        _NavigationLinks.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Operator))
       {
         writer.WriteString("operator", (string)Operator!);
@@ -2224,6 +2445,12 @@ namespace fhirCsR5.Models
 
       writer.WriteBoolean("stopTestOnFail", StopTestOnFail);
 
+      if (_StopTestOnFail != null)
+      {
+        writer.WritePropertyName("_stopTestOnFail");
+        _StopTestOnFail.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ValidateProfileId))
       {
         writer.WriteString("validateProfileId", (string)ValidateProfileId!);
@@ -2247,6 +2474,12 @@ namespace fhirCsR5.Models
       }
 
       writer.WriteBoolean("warningOnly", WarningOnly);
+
+      if (_WarningOnly != null)
+      {
+        writer.WritePropertyName("_warningOnly");
+        _WarningOnly.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -2354,6 +2587,11 @@ namespace fhirCsR5.Models
           NavigationLinks = reader.GetBoolean();
           break;
 
+        case "_navigationLinks":
+          _NavigationLinks = new fhirCsR5.Models.Element();
+          _NavigationLinks.DeserializeJson(ref reader, options);
+          break;
+
         case "operator":
           Operator = reader.GetString();
           break;
@@ -2430,6 +2668,11 @@ namespace fhirCsR5.Models
           StopTestOnFail = reader.GetBoolean();
           break;
 
+        case "_stopTestOnFail":
+          _StopTestOnFail = new fhirCsR5.Models.Element();
+          _StopTestOnFail.DeserializeJson(ref reader, options);
+          break;
+
         case "validateProfileId":
           ValidateProfileId = reader.GetString();
           break;
@@ -2450,6 +2693,11 @@ namespace fhirCsR5.Models
 
         case "warningOnly":
           WarningOnly = reader.GetBoolean();
+          break;
+
+        case "_warningOnly":
+          _WarningOnly = new fhirCsR5.Models.Element();
+          _WarningOnly.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -2489,6 +2737,10 @@ namespace fhirCsR5.Models
   public static class TestScriptSetupActionAssertDirectionCodes {
     public const string RESPONSE = "response";
     public const string REQUEST = "request";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "response",
+      "request",
+    };
   }
   /// <summary>
   /// Code Values for the TestScript.setup.action.assert.operator field
@@ -2505,6 +2757,19 @@ namespace fhirCsR5.Models
     public const string CONTAINS = "contains";
     public const string NOTCONTAINS = "notContains";
     public const string EVAL = "eval";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "equals",
+      "notEquals",
+      "in",
+      "notIn",
+      "greaterThan",
+      "lessThan",
+      "empty",
+      "notEmpty",
+      "contains",
+      "notContains",
+      "eval",
+    };
   }
   /// <summary>
   /// Code Values for the TestScript.setup.action.assert.requestMethod field
@@ -2517,6 +2782,15 @@ namespace fhirCsR5.Models
     public const string POST = "post";
     public const string PUT = "put";
     public const string HEAD = "head";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "delete",
+      "get",
+      "options",
+      "patch",
+      "post",
+      "put",
+      "head",
+    };
   }
   /// <summary>
   /// Code Values for the TestScript.setup.action.assert.response field
@@ -2534,6 +2808,20 @@ namespace fhirCsR5.Models
     public const string GONE = "gone";
     public const string PRECONDITIONFAILED = "preconditionFailed";
     public const string UNPROCESSABLE = "unprocessable";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "okay",
+      "created",
+      "noContent",
+      "notModified",
+      "bad",
+      "forbidden",
+      "notFound",
+      "methodNotAllowed",
+      "conflict",
+      "gone",
+      "preconditionFailed",
+      "unprocessable",
+    };
   }
   /// <summary>
   /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
@@ -3198,6 +3486,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.
     /// </summary>
     public List<TestScriptFixture> Fixture { get; set; }
@@ -3391,6 +3683,12 @@ namespace fhirCsR5.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -3691,6 +3989,11 @@ namespace fhirCsR5.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "fixture":
@@ -4053,5 +4356,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

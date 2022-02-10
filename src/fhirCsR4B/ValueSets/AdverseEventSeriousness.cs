@@ -90,9 +90,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNonSerious = "Non-serious";
 
     /// <summary>
+    /// Literal for code: AdverseEventSeriousnessNonSerious
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessNonSerious = "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#Non-serious";
+
+    /// <summary>
     /// Literal for code: Serious
     /// </summary>
     public const string LiteralSerious = "Serious";
+
+    /// <summary>
+    /// Literal for code: AdverseEventSeriousnessSerious
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessSerious = "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#Serious";
 
     /// <summary>
     /// Literal for code: IsACongenitalAnomalyBirthDefect
@@ -100,9 +110,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIsACongenitalAnomalyBirthDefect = "SeriousIsBirthDefect";
 
     /// <summary>
+    /// Literal for code: AdverseEventSeriousnessIsACongenitalAnomalyBirthDefect
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessIsACongenitalAnomalyBirthDefect = "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousIsBirthDefect";
+
+    /// <summary>
     /// Literal for code: IsLifeThreatening
     /// </summary>
     public const string LiteralIsLifeThreatening = "SeriousIsLifeThreatening";
+
+    /// <summary>
+    /// Literal for code: AdverseEventSeriousnessIsLifeThreatening
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessIsLifeThreatening = "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousIsLifeThreatening";
 
     /// <summary>
     /// Literal for code: RequiresInterventionToPreventPermanentImpairment
@@ -110,9 +130,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRequiresInterventionToPreventPermanentImpairment = "SeriousRequiresPreventImpairment";
 
     /// <summary>
+    /// Literal for code: AdverseEventSeriousnessRequiresInterventionToPreventPermanentImpairment
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessRequiresInterventionToPreventPermanentImpairment = "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousRequiresPreventImpairment";
+
+    /// <summary>
     /// Literal for code: ResultsInDeath
     /// </summary>
     public const string LiteralResultsInDeath = "SeriousResultsInDeath";
+
+    /// <summary>
+    /// Literal for code: AdverseEventSeriousnessResultsInDeath
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessResultsInDeath = "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousResultsInDeath";
 
     /// <summary>
     /// Literal for code: ResultsInPersistentOrSignificantDisabilityIncapacity
@@ -120,8 +150,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralResultsInPersistentOrSignificantDisabilityIncapacity = "SeriousResultsInDisability";
 
     /// <summary>
+    /// Literal for code: AdverseEventSeriousnessResultsInPersistentOrSignificantDisabilityIncapacity
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessResultsInPersistentOrSignificantDisabilityIncapacity = "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousResultsInDisability";
+
+    /// <summary>
     /// Literal for code: RequiresOrProlongsInpatientHospitalization
     /// </summary>
     public const string LiteralRequiresOrProlongsInpatientHospitalization = "SeriousResultsInHospitalization";
+
+    /// <summary>
+    /// Literal for code: AdverseEventSeriousnessRequiresOrProlongsInpatientHospitalization
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessRequiresOrProlongsInpatientHospitalization = "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousResultsInHospitalization";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventSeriousness Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Non-serious", NonSerious }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#Non-serious", NonSerious }, 
+      { "Serious", Serious }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#Serious", Serious }, 
+      { "SeriousIsBirthDefect", IsACongenitalAnomalyBirthDefect }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousIsBirthDefect", IsACongenitalAnomalyBirthDefect }, 
+      { "SeriousIsLifeThreatening", IsLifeThreatening }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousIsLifeThreatening", IsLifeThreatening }, 
+      { "SeriousRequiresPreventImpairment", RequiresInterventionToPreventPermanentImpairment }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousRequiresPreventImpairment", RequiresInterventionToPreventPermanentImpairment }, 
+      { "SeriousResultsInDeath", ResultsInDeath }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousResultsInDeath", ResultsInDeath }, 
+      { "SeriousResultsInDisability", ResultsInPersistentOrSignificantDisabilityIncapacity }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousResultsInDisability", ResultsInPersistentOrSignificantDisabilityIncapacity }, 
+      { "SeriousResultsInHospitalization", RequiresOrProlongsInpatientHospitalization }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#SeriousResultsInHospitalization", RequiresOrProlongsInpatientHospitalization }, 
+    };
   };
 }

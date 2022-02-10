@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAuthor = "author";
 
     /// <summary>
+    /// Literal for code: ContributorTypeAuthor
+    /// </summary>
+    public const string LiteralContributorTypeAuthor = "http://hl7.org/fhir/contributor-type#author";
+
+    /// <summary>
     /// Literal for code: Editor
     /// </summary>
     public const string LiteralEditor = "editor";
+
+    /// <summary>
+    /// Literal for code: ContributorTypeEditor
+    /// </summary>
+    public const string LiteralContributorTypeEditor = "http://hl7.org/fhir/contributor-type#editor";
 
     /// <summary>
     /// Literal for code: Endorser
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEndorser = "endorser";
 
     /// <summary>
+    /// Literal for code: ContributorTypeEndorser
+    /// </summary>
+    public const string LiteralContributorTypeEndorser = "http://hl7.org/fhir/contributor-type#endorser";
+
+    /// <summary>
     /// Literal for code: Reviewer
     /// </summary>
     public const string LiteralReviewer = "reviewer";
+
+    /// <summary>
+    /// Literal for code: ContributorTypeReviewer
+    /// </summary>
+    public const string LiteralContributorTypeReviewer = "http://hl7.org/fhir/contributor-type#reviewer";
+
+    /// <summary>
+    /// Dictionary for looking up ContributorType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "author", Author }, 
+      { "http://hl7.org/fhir/contributor-type#author", Author }, 
+      { "editor", Editor }, 
+      { "http://hl7.org/fhir/contributor-type#editor", Editor }, 
+      { "endorser", Endorser }, 
+      { "http://hl7.org/fhir/contributor-type#endorser", Endorser }, 
+      { "reviewer", Reviewer }, 
+      { "http://hl7.org/fhir/contributor-type#reviewer", Reviewer }, 
+    };
   };
 }

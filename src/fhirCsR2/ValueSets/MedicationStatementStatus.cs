@@ -54,9 +54,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: MedicationStatementStatusActive
+    /// </summary>
+    public const string LiteralMedicationStatementStatusActive = "http://hl7.org/fhir/medication-statement-status#active";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementStatusCompleted
+    /// </summary>
+    public const string LiteralMedicationStatementStatusCompleted = "http://hl7.org/fhir/medication-statement-status#completed";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -64,8 +74,32 @@ namespace fhirCsR2.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: MedicationStatementStatusEnteredInError
+    /// </summary>
+    public const string LiteralMedicationStatementStatusEnteredInError = "http://hl7.org/fhir/medication-statement-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Intended
     /// </summary>
     public const string LiteralIntended = "intended";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementStatusIntended
+    /// </summary>
+    public const string LiteralMedicationStatementStatusIntended = "http://hl7.org/fhir/medication-statement-status#intended";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationStatementStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/medication-statement-status#active", Active }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/medication-statement-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/medication-statement-status#entered-in-error", EnteredInError }, 
+      { "intended", Intended }, 
+      { "http://hl7.org/fhir/medication-statement-status#intended", Intended }, 
+    };
   };
 }

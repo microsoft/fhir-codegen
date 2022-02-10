@@ -24,6 +24,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? Count { get; set; }
     /// <summary>
+    /// Extension container element for Count
+    /// </summary>
+    public Element _Count { get; set; }
+    /// <summary>
     /// This element refers to a List of subject level MeasureReport resources, one for each subject in this population.
     /// </summary>
     public Reference SubjectResults { get; set; }
@@ -47,6 +51,12 @@ namespace fhirCsR4B.Models
       if (Count != null)
       {
         writer.WriteNumber("count", (int)Count!);
+      }
+
+      if (_Count != null)
+      {
+        writer.WritePropertyName("_count");
+        _Count.SerializeJson(writer, options);
       }
 
       if (SubjectResults != null)
@@ -74,6 +84,11 @@ namespace fhirCsR4B.Models
 
         case "count":
           Count = reader.GetInt32();
+          break;
+
+        case "_count":
+          _Count = new fhirCsR4B.Models.Element();
+          _Count.DeserializeJson(ref reader, options);
           break;
 
         case "subjectResults":
@@ -215,6 +230,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? Count { get; set; }
     /// <summary>
+    /// Extension container element for Count
+    /// </summary>
+    public Element _Count { get; set; }
+    /// <summary>
     /// This element refers to a List of subject level MeasureReport resources, one for each subject in this population in this stratum.
     /// </summary>
     public Reference SubjectResults { get; set; }
@@ -238,6 +257,12 @@ namespace fhirCsR4B.Models
       if (Count != null)
       {
         writer.WriteNumber("count", (int)Count!);
+      }
+
+      if (_Count != null)
+      {
+        writer.WritePropertyName("_count");
+        _Count.SerializeJson(writer, options);
       }
 
       if (SubjectResults != null)
@@ -265,6 +290,11 @@ namespace fhirCsR4B.Models
 
         case "count":
           Count = reader.GetInt32();
+          break;
+
+        case "_count":
+          _Count = new fhirCsR4B.Models.Element();
+          _Count.DeserializeJson(ref reader, options);
           break;
 
         case "subjectResults":
@@ -1184,6 +1214,11 @@ namespace fhirCsR4B.Models
     public const string COMPLETE = "complete";
     public const string PENDING = "pending";
     public const string ERROR = "error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "complete",
+      "pending",
+      "error",
+    };
   }
   /// <summary>
   /// Code Values for the MeasureReport.type field
@@ -1193,5 +1228,11 @@ namespace fhirCsR4B.Models
     public const string SUBJECT_LIST = "subject-list";
     public const string SUMMARY = "summary";
     public const string DATA_COLLECTION = "data-collection";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "individual",
+      "subject-list",
+      "summary",
+      "data-collection",
+    };
   }
 }

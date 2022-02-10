@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBilling = "billing";
 
     /// <summary>
+    /// Literal for code: AccountBillingStatusBilling
+    /// </summary>
+    public const string LiteralAccountBillingStatusBilling = "http://hl7.org/fhir/account-billing-status#billing";
+
+    /// <summary>
     /// Literal for code: CareCompleteNotBilled
     /// </summary>
     public const string LiteralCareCompleteNotBilled = "carecomplete-notbilled";
+
+    /// <summary>
+    /// Literal for code: AccountBillingStatusCareCompleteNotBilled
+    /// </summary>
+    public const string LiteralAccountBillingStatusCareCompleteNotBilled = "http://hl7.org/fhir/account-billing-status#carecomplete-notbilled";
 
     /// <summary>
     /// Literal for code: ClosedBadDebt
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClosedBadDebt = "closed-baddebt";
 
     /// <summary>
+    /// Literal for code: AccountBillingStatusClosedBadDebt
+    /// </summary>
+    public const string LiteralAccountBillingStatusClosedBadDebt = "http://hl7.org/fhir/account-billing-status#closed-baddebt";
+
+    /// <summary>
     /// Literal for code: ClosedCombined
     /// </summary>
     public const string LiteralClosedCombined = "closed-combined";
+
+    /// <summary>
+    /// Literal for code: AccountBillingStatusClosedCombined
+    /// </summary>
+    public const string LiteralAccountBillingStatusClosedCombined = "http://hl7.org/fhir/account-billing-status#closed-combined";
 
     /// <summary>
     /// Literal for code: ClosedCompleted
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClosedCompleted = "closed-completed";
 
     /// <summary>
+    /// Literal for code: AccountBillingStatusClosedCompleted
+    /// </summary>
+    public const string LiteralAccountBillingStatusClosedCompleted = "http://hl7.org/fhir/account-billing-status#closed-completed";
+
+    /// <summary>
     /// Literal for code: ClosedVoided
     /// </summary>
     public const string LiteralClosedVoided = "closed-voided";
 
     /// <summary>
+    /// Literal for code: AccountBillingStatusClosedVoided
+    /// </summary>
+    public const string LiteralAccountBillingStatusClosedVoided = "http://hl7.org/fhir/account-billing-status#closed-voided";
+
+    /// <summary>
     /// Literal for code: Open
     /// </summary>
     public const string LiteralOpen = "open";
+
+    /// <summary>
+    /// Literal for code: AccountBillingStatusOpen
+    /// </summary>
+    public const string LiteralAccountBillingStatusOpen = "http://hl7.org/fhir/account-billing-status#open";
+
+    /// <summary>
+    /// Dictionary for looking up AccountBillingStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "billing", Billing }, 
+      { "http://hl7.org/fhir/account-billing-status#billing", Billing }, 
+      { "carecomplete-notbilled", CareCompleteNotBilled }, 
+      { "http://hl7.org/fhir/account-billing-status#carecomplete-notbilled", CareCompleteNotBilled }, 
+      { "closed-baddebt", ClosedBadDebt }, 
+      { "http://hl7.org/fhir/account-billing-status#closed-baddebt", ClosedBadDebt }, 
+      { "closed-combined", ClosedCombined }, 
+      { "http://hl7.org/fhir/account-billing-status#closed-combined", ClosedCombined }, 
+      { "closed-completed", ClosedCompleted }, 
+      { "http://hl7.org/fhir/account-billing-status#closed-completed", ClosedCompleted }, 
+      { "closed-voided", ClosedVoided }, 
+      { "http://hl7.org/fhir/account-billing-status#closed-voided", ClosedVoided }, 
+      { "open", Open }, 
+      { "http://hl7.org/fhir/account-billing-status#open", Open }, 
+    };
   };
 }

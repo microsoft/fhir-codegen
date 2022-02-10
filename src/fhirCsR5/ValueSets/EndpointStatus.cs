@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: EndpointStatusActive
+    /// </summary>
+    public const string LiteralEndpointStatusActive = "http://hl7.org/fhir/endpoint-status#active";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: EndpointStatusEnteredInError
+    /// </summary>
+    public const string LiteralEndpointStatusEnteredInError = "http://hl7.org/fhir/endpoint-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: Error
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralError = "error";
 
     /// <summary>
+    /// Literal for code: EndpointStatusError
+    /// </summary>
+    public const string LiteralEndpointStatusError = "http://hl7.org/fhir/endpoint-status#error";
+
+    /// <summary>
     /// Literal for code: Off
     /// </summary>
     public const string LiteralOff = "off";
+
+    /// <summary>
+    /// Literal for code: EndpointStatusOff
+    /// </summary>
+    public const string LiteralEndpointStatusOff = "http://hl7.org/fhir/endpoint-status#off";
 
     /// <summary>
     /// Literal for code: Suspended
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSuspended = "suspended";
 
     /// <summary>
+    /// Literal for code: EndpointStatusSuspended
+    /// </summary>
+    public const string LiteralEndpointStatusSuspended = "http://hl7.org/fhir/endpoint-status#suspended";
+
+    /// <summary>
     /// Literal for code: Test
     /// </summary>
     public const string LiteralTest = "test";
+
+    /// <summary>
+    /// Literal for code: EndpointStatusTest
+    /// </summary>
+    public const string LiteralEndpointStatusTest = "http://hl7.org/fhir/endpoint-status#test";
+
+    /// <summary>
+    /// Dictionary for looking up EndpointStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/endpoint-status#active", Active }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/endpoint-status#entered-in-error", EnteredInError }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/endpoint-status#error", Error }, 
+      { "off", Off }, 
+      { "http://hl7.org/fhir/endpoint-status#off", Off }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/endpoint-status#suspended", Suspended }, 
+      { "test", Test }, 
+      { "http://hl7.org/fhir/endpoint-status#test", Test }, 
+    };
   };
 }

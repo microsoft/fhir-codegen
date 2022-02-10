@@ -54,9 +54,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralEnvironment = "environment";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceCategoryEnvironment
+    /// </summary>
+    public const string LiteralAllergyIntoleranceCategoryEnvironment = "http://hl7.org/fhir/allergy-intolerance-category#environment";
+
+    /// <summary>
     /// Literal for code: Food
     /// </summary>
     public const string LiteralFood = "food";
+
+    /// <summary>
+    /// Literal for code: AllergyIntoleranceCategoryFood
+    /// </summary>
+    public const string LiteralAllergyIntoleranceCategoryFood = "http://hl7.org/fhir/allergy-intolerance-category#food";
 
     /// <summary>
     /// Literal for code: Medication
@@ -64,8 +74,32 @@ namespace fhirCsR2.ValueSets
     public const string LiteralMedication = "medication";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceCategoryMedication
+    /// </summary>
+    public const string LiteralAllergyIntoleranceCategoryMedication = "http://hl7.org/fhir/allergy-intolerance-category#medication";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
+
+    /// <summary>
+    /// Literal for code: AllergyIntoleranceCategoryOther
+    /// </summary>
+    public const string LiteralAllergyIntoleranceCategoryOther = "http://hl7.org/fhir/allergy-intolerance-category#other";
+
+    /// <summary>
+    /// Dictionary for looking up AllergyIntoleranceCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "environment", Environment }, 
+      { "http://hl7.org/fhir/allergy-intolerance-category#environment", Environment }, 
+      { "food", Food }, 
+      { "http://hl7.org/fhir/allergy-intolerance-category#food", Food }, 
+      { "medication", Medication }, 
+      { "http://hl7.org/fhir/allergy-intolerance-category#medication", Medication }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/allergy-intolerance-category#other", Other }, 
+    };
   };
 }

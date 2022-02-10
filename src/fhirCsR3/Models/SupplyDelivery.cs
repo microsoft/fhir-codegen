@@ -500,5 +500,11 @@ namespace fhirCsR3.Models
     public const string COMPLETED = "completed";
     public const string ABANDONED = "abandoned";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "in-progress",
+      "completed",
+      "abandoned",
+      "entered-in-error",
+    };
   }
 }

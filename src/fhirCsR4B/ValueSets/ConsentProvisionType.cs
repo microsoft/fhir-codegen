@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOptOut = "deny";
 
     /// <summary>
+    /// Literal for code: ConsentProvisionTypeOptOut
+    /// </summary>
+    public const string LiteralConsentProvisionTypeOptOut = "http://hl7.org/fhir/consent-provision-type#deny";
+
+    /// <summary>
     /// Literal for code: OptIn
     /// </summary>
     public const string LiteralOptIn = "permit";
+
+    /// <summary>
+    /// Literal for code: ConsentProvisionTypeOptIn
+    /// </summary>
+    public const string LiteralConsentProvisionTypeOptIn = "http://hl7.org/fhir/consent-provision-type#permit";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentProvisionType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "deny", OptOut }, 
+      { "http://hl7.org/fhir/consent-provision-type#deny", OptOut }, 
+      { "permit", OptIn }, 
+      { "http://hl7.org/fhir/consent-provision-type#permit", OptIn }, 
+    };
   };
 }

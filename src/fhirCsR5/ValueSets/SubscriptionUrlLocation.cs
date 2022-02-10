@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAll = "all";
 
     /// <summary>
+    /// Literal for code: SubscriptionUrlLocationAll
+    /// </summary>
+    public const string LiteralSubscriptionUrlLocationAll = "http://hl7.org/fhir/subscription-url-location#all";
+
+    /// <summary>
     /// Literal for code: FullUrl
     /// </summary>
     public const string LiteralFullUrl = "full-url";
+
+    /// <summary>
+    /// Literal for code: SubscriptionUrlLocationFullUrl
+    /// </summary>
+    public const string LiteralSubscriptionUrlLocationFullUrl = "http://hl7.org/fhir/subscription-url-location#full-url";
 
     /// <summary>
     /// Literal for code: None
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNone = "none";
 
     /// <summary>
+    /// Literal for code: SubscriptionUrlLocationNone
+    /// </summary>
+    public const string LiteralSubscriptionUrlLocationNone = "http://hl7.org/fhir/subscription-url-location#none";
+
+    /// <summary>
     /// Literal for code: RequestResponse
     /// </summary>
     public const string LiteralRequestResponse = "request-response";
+
+    /// <summary>
+    /// Literal for code: SubscriptionUrlLocationRequestResponse
+    /// </summary>
+    public const string LiteralSubscriptionUrlLocationRequestResponse = "http://hl7.org/fhir/subscription-url-location#request-response";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptionUrlLocation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "all", All }, 
+      { "http://hl7.org/fhir/subscription-url-location#all", All }, 
+      { "full-url", FullUrl }, 
+      { "http://hl7.org/fhir/subscription-url-location#full-url", FullUrl }, 
+      { "none", None }, 
+      { "http://hl7.org/fhir/subscription-url-location#none", None }, 
+      { "request-response", RequestResponse }, 
+      { "http://hl7.org/fhir/subscription-url-location#request-response", RequestResponse }, 
+    };
   };
 }

@@ -192,6 +192,15 @@ namespace fhirCsR4.Models
     public const string URL = "url";
     public const string SMS = "sms";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "phone",
+      "fax",
+      "email",
+      "pager",
+      "url",
+      "sms",
+      "other",
+    };
   }
   /// <summary>
   /// Code Values for the ContactPoint.use field
@@ -202,5 +211,12 @@ namespace fhirCsR4.Models
     public const string TEMP = "temp";
     public const string OLD = "old";
     public const string MOBILE = "mobile";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "home",
+      "work",
+      "temp",
+      "old",
+      "mobile",
+    };
   }
 }

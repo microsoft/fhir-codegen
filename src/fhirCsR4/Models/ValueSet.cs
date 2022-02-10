@@ -455,6 +455,17 @@ namespace fhirCsR4.Models
     public const string NOT_IN = "not-in";
     public const string GENERALIZES = "generalizes";
     public const string EXISTS = "exists";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "=",
+      "is-a",
+      "descendent-of",
+      "is-not-a",
+      "regex",
+      "in",
+      "not-in",
+      "generalizes",
+      "exists",
+    };
   }
   /// <summary>
   /// All the conditions in an include must be true. If a system is listed, all the codes from the system are listed. If one or more filters are listed, all of the filters must apply. If one or more value sets are listed, the codes must be in all the value sets. E.g. each include is 'include all the codes that meet all these conditions'.
@@ -760,6 +771,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Inactive { get; set; }
     /// <summary>
+    /// Extension container element for Inactive
+    /// </summary>
+    public Element _Inactive { get; set; }
+    /// <summary>
     /// All the conditions in an include must be true. If a system is listed, all the codes from the system are listed. If one or more filters are listed, all of the filters must apply. If one or more value sets are listed, the codes must be in all the value sets. E.g. each include is 'include all the codes that meet all these conditions'.
     /// </summary>
     public List<ValueSetComposeInclude> Include { get; set; }
@@ -796,6 +811,12 @@ namespace fhirCsR4.Models
       if (Inactive != null)
       {
         writer.WriteBoolean("inactive", (bool)Inactive!);
+      }
+
+      if (_Inactive != null)
+      {
+        writer.WritePropertyName("_inactive");
+        _Inactive.SerializeJson(writer, options);
       }
 
       if ((Include != null) && (Include.Count != 0))
@@ -865,6 +886,11 @@ namespace fhirCsR4.Models
 
         case "inactive":
           Inactive = reader.GetBoolean();
+          break;
+
+        case "_inactive":
+          _Inactive = new fhirCsR4.Models.Element();
+          _Inactive.DeserializeJson(ref reader, options);
           break;
 
         case "include":
@@ -960,9 +986,17 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// The value of the parameter.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// The value of the parameter.
     /// </summary>
@@ -1033,9 +1067,21 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (ValueDecimal != null)
@@ -1116,8 +1162,18 @@ namespace fhirCsR4.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR4.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR4.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueDecimal":
@@ -1197,6 +1253,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Abstract { get; set; }
     /// <summary>
+    /// Extension container element for Abstract
+    /// </summary>
+    public Element _Abstract { get; set; }
+    /// <summary>
     /// The code for this item in the expansion hierarchy. If this code is missing the entry in the hierarchy is a place holder (abstract) and does not represent a valid code in the value set.
     /// </summary>
     public string Code { get; set; }
@@ -1224,6 +1284,10 @@ namespace fhirCsR4.Models
     /// This should only have a value if the concept is inactive.
     /// </summary>
     public bool? Inactive { get; set; }
+    /// <summary>
+    /// Extension container element for Inactive
+    /// </summary>
+    public Element _Inactive { get; set; }
     /// <summary>
     /// An absolute URI which is the code system in which the code for this item in the expansion is defined.
     /// </summary>
@@ -1267,9 +1331,21 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("abstract", (bool)Abstract!);
       }
 
+      if (_Abstract != null)
+      {
+        writer.WritePropertyName("_abstract");
+        _Abstract.SerializeJson(writer, options);
+      }
+
       if (Inactive != null)
       {
         writer.WriteBoolean("inactive", (bool)Inactive!);
+      }
+
+      if (_Inactive != null)
+      {
+        writer.WritePropertyName("_inactive");
+        _Inactive.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Version))
@@ -1345,6 +1421,11 @@ namespace fhirCsR4.Models
       {
         case "abstract":
           Abstract = reader.GetBoolean();
+          break;
+
+        case "_abstract":
+          _Abstract = new fhirCsR4.Models.Element();
+          _Abstract.DeserializeJson(ref reader, options);
           break;
 
         case "code":
@@ -1423,6 +1504,11 @@ namespace fhirCsR4.Models
           Inactive = reader.GetBoolean();
           break;
 
+        case "_inactive":
+          _Inactive = new fhirCsR4.Models.Element();
+          _Inactive.DeserializeJson(ref reader, options);
+          break;
+
         case "system":
           System = reader.GetString();
           break;
@@ -1495,6 +1581,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public int? Offset { get; set; }
     /// <summary>
+    /// Extension container element for Offset
+    /// </summary>
+    public Element _Offset { get; set; }
+    /// <summary>
     /// The server decides which parameters to include here, but at a minimum, the list SHOULD include all of the parameters that affect the $expand operation. If the expansion will be persisted all of these parameters SHALL be included. If the codeSystem on the server has a specified version then this version SHALL be provided as a parameter in the expansion (note that not all code systems have a version).
     /// </summary>
     public List<ValueSetExpansionParameter> Parameter { get; set; }
@@ -1510,6 +1600,10 @@ namespace fhirCsR4.Models
     /// Paging only applies to flat expansions.
     /// </summary>
     public int? Total { get; set; }
+    /// <summary>
+    /// Extension container element for Total
+    /// </summary>
+    public Element _Total { get; set; }
     /// <summary>
     /// Serialize to a JSON object
     /// </summary>
@@ -1548,9 +1642,21 @@ namespace fhirCsR4.Models
         writer.WriteNumber("total", (int)Total!);
       }
 
+      if (_Total != null)
+      {
+        writer.WritePropertyName("_total");
+        _Total.SerializeJson(writer, options);
+      }
+
       if (Offset != null)
       {
         writer.WriteNumber("offset", (int)Offset!);
+      }
+
+      if (_Offset != null)
+      {
+        writer.WritePropertyName("_offset");
+        _Offset.SerializeJson(writer, options);
       }
 
       if ((Parameter != null) && (Parameter.Count != 0))
@@ -1631,6 +1737,11 @@ namespace fhirCsR4.Models
           Offset = reader.GetInt32();
           break;
 
+        case "_offset":
+          _Offset = new fhirCsR4.Models.Element();
+          _Offset.DeserializeJson(ref reader, options);
+          break;
+
         case "parameter":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1669,6 +1780,11 @@ namespace fhirCsR4.Models
 
         case "total":
           Total = reader.GetInt32();
+          break;
+
+        case "_total":
+          _Total = new fhirCsR4.Models.Element();
+          _Total.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -1753,6 +1869,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, and can then identify this value set outside of FHIR, where it is not possible to use the logical URI.
     /// </summary>
     public List<Identifier> Identifier { get; set; }
@@ -1760,6 +1880,10 @@ namespace fhirCsR4.Models
     /// Normally immutability is set to 'false', which is the default assumption if it is not populated.  Note that the implication is that if this is set to 'true', there may be only one ValueSet version for this definition. Immutability tends to be set to 'true' in one of two cases: - Where the value set, by the nature of its usage, cannot change.  For example "All specializations of ACT in ActClassCode" - Where there's no safe way to express the "Purpose" such that someone else could safely make changes to the value set definition. Source workflow control must guarantee that the same URI always yields the same definition.
     /// </summary>
     public bool? Immutable { get; set; }
+    /// <summary>
+    /// Extension container element for Immutable
+    /// </summary>
+    public Element _Immutable { get; set; }
     /// <summary>
     /// It may be possible for the value set to be used in jurisdictions other than those for which it was originally designed or intended.
     /// </summary>
@@ -1916,6 +2040,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("experimental", (bool)Experimental!);
       }
 
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Date))
       {
         writer.WriteString("date", (string)Date!);
@@ -1991,6 +2121,12 @@ namespace fhirCsR4.Models
       if (Immutable != null)
       {
         writer.WriteBoolean("immutable", (bool)Immutable!);
+      }
+
+      if (_Immutable != null)
+      {
+        writer.WritePropertyName("_immutable");
+        _Immutable.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Purpose))
@@ -2107,6 +2243,11 @@ namespace fhirCsR4.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR4.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "identifier":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -2136,6 +2277,11 @@ namespace fhirCsR4.Models
 
         case "immutable":
           Immutable = reader.GetBoolean();
+          break;
+
+        case "_immutable":
+          _Immutable = new fhirCsR4.Models.Element();
+          _Immutable.DeserializeJson(ref reader, options);
           break;
 
         case "jurisdiction":
@@ -2294,5 +2440,11 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

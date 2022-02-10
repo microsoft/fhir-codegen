@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientCare = "patient-care";
 
     /// <summary>
+    /// Literal for code: SupplyrequestReasonPatientCare
+    /// </summary>
+    public const string LiteralSupplyrequestReasonPatientCare = "http://terminology.hl7.org/CodeSystem/supplyrequest-reason#patient-care";
+
+    /// <summary>
     /// Literal for code: WardStock
     /// </summary>
     public const string LiteralWardStock = "ward-stock";
+
+    /// <summary>
+    /// Literal for code: SupplyrequestReasonWardStock
+    /// </summary>
+    public const string LiteralSupplyrequestReasonWardStock = "http://terminology.hl7.org/CodeSystem/supplyrequest-reason#ward-stock";
+
+    /// <summary>
+    /// Dictionary for looking up SupplyrequestReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "patient-care", PatientCare }, 
+      { "http://terminology.hl7.org/CodeSystem/supplyrequest-reason#patient-care", PatientCare }, 
+      { "ward-stock", WardStock }, 
+      { "http://terminology.hl7.org/CodeSystem/supplyrequest-reason#ward-stock", WardStock }, 
+    };
   };
 }

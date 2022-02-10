@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ServicePlaceCodes
   {
     /// <summary>
-    /// 
+    /// Pharmacy
     /// </summary>
     public static readonly Coding Pharmacy = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// School
     /// </summary>
     public static readonly Coding School = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Homeless Shelter
     /// </summary>
     public static readonly Coding HomelessShelter = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Indian Health Service Free-standing Facility
     /// </summary>
     public static readonly Coding IndianHealthServiceFreeStandingFacility = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Indian Health Service Provider-based Facility
     /// </summary>
     public static readonly Coding IndianHealthServiceProviderBasedFacility = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Tribal 638 Free-Standing Facility
     /// </summary>
     public static readonly Coding Tribal638FreeStandingFacility = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Tribal 638 Provider-Based Facility
     /// </summary>
     public static readonly Coding Tribal638ProviderBasedFacility = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Prison/Correctional Facility
     /// </summary>
     public static readonly Coding PrisonCorrectionalFacility = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Office
     /// </summary>
     public static readonly Coding Office = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Home
     /// </summary>
     public static readonly Coding Home = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Assisted Living Fa
     /// </summary>
     public static readonly Coding AssistedLivingFa = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Group Home
     /// </summary>
     public static readonly Coding GroupHome = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Mobile Unit
     /// </summary>
     public static readonly Coding MobileUnit = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Off Campus-Outpatient Hospital
     /// </summary>
     public static readonly Coding OffCampusOutpatientHospital = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Urgent Care Facility
     /// </summary>
     public static readonly Coding UrgentCareFacility = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Inpatient Hospital
     /// </summary>
     public static readonly Coding InpatientHospital = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-serviceplace"
     };
     /// <summary>
-    /// 
+    /// Ambulance—Land
     /// </summary>
     public static readonly Coding AmbulanceLand = new Coding
     {
@@ -171,9 +171,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPharmacy = "01";
 
     /// <summary>
+    /// Literal for code: ExServiceplacePharmacy
+    /// </summary>
+    public const string LiteralExServiceplacePharmacy = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#01";
+
+    /// <summary>
     /// Literal for code: School
     /// </summary>
     public const string LiteralSchool = "03";
+
+    /// <summary>
+    /// Literal for code: ExServiceplaceSchool
+    /// </summary>
+    public const string LiteralExServiceplaceSchool = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#03";
 
     /// <summary>
     /// Literal for code: HomelessShelter
@@ -181,9 +191,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHomelessShelter = "04";
 
     /// <summary>
+    /// Literal for code: ExServiceplaceHomelessShelter
+    /// </summary>
+    public const string LiteralExServiceplaceHomelessShelter = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#04";
+
+    /// <summary>
     /// Literal for code: IndianHealthServiceFreeStandingFacility
     /// </summary>
     public const string LiteralIndianHealthServiceFreeStandingFacility = "05";
+
+    /// <summary>
+    /// Literal for code: ExServiceplaceIndianHealthServiceFreeStandingFacility
+    /// </summary>
+    public const string LiteralExServiceplaceIndianHealthServiceFreeStandingFacility = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#05";
 
     /// <summary>
     /// Literal for code: IndianHealthServiceProviderBasedFacility
@@ -191,9 +211,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndianHealthServiceProviderBasedFacility = "06";
 
     /// <summary>
+    /// Literal for code: ExServiceplaceIndianHealthServiceProviderBasedFacility
+    /// </summary>
+    public const string LiteralExServiceplaceIndianHealthServiceProviderBasedFacility = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#06";
+
+    /// <summary>
     /// Literal for code: Tribal638FreeStandingFacility
     /// </summary>
     public const string LiteralTribal638FreeStandingFacility = "07";
+
+    /// <summary>
+    /// Literal for code: ExServiceplaceTribal638FreeStandingFacility
+    /// </summary>
+    public const string LiteralExServiceplaceTribal638FreeStandingFacility = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#07";
 
     /// <summary>
     /// Literal for code: Tribal638ProviderBasedFacility
@@ -201,9 +231,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTribal638ProviderBasedFacility = "08";
 
     /// <summary>
+    /// Literal for code: ExServiceplaceTribal638ProviderBasedFacility
+    /// </summary>
+    public const string LiteralExServiceplaceTribal638ProviderBasedFacility = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#08";
+
+    /// <summary>
     /// Literal for code: PrisonCorrectionalFacility
     /// </summary>
     public const string LiteralPrisonCorrectionalFacility = "09";
+
+    /// <summary>
+    /// Literal for code: ExServiceplacePrisonCorrectionalFacility
+    /// </summary>
+    public const string LiteralExServiceplacePrisonCorrectionalFacility = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#09";
 
     /// <summary>
     /// Literal for code: Office
@@ -211,9 +251,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOffice = "11";
 
     /// <summary>
+    /// Literal for code: ExServiceplaceOffice
+    /// </summary>
+    public const string LiteralExServiceplaceOffice = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#11";
+
+    /// <summary>
     /// Literal for code: Home
     /// </summary>
     public const string LiteralHome = "12";
+
+    /// <summary>
+    /// Literal for code: ExServiceplaceHome
+    /// </summary>
+    public const string LiteralExServiceplaceHome = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#12";
 
     /// <summary>
     /// Literal for code: AssistedLivingFa
@@ -221,9 +271,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAssistedLivingFa = "13";
 
     /// <summary>
+    /// Literal for code: ExServiceplaceAssistedLivingFa
+    /// </summary>
+    public const string LiteralExServiceplaceAssistedLivingFa = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#13";
+
+    /// <summary>
     /// Literal for code: GroupHome
     /// </summary>
     public const string LiteralGroupHome = "14";
+
+    /// <summary>
+    /// Literal for code: ExServiceplaceGroupHome
+    /// </summary>
+    public const string LiteralExServiceplaceGroupHome = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#14";
 
     /// <summary>
     /// Literal for code: MobileUnit
@@ -231,9 +291,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMobileUnit = "15";
 
     /// <summary>
+    /// Literal for code: ExServiceplaceMobileUnit
+    /// </summary>
+    public const string LiteralExServiceplaceMobileUnit = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#15";
+
+    /// <summary>
     /// Literal for code: OffCampusOutpatientHospital
     /// </summary>
     public const string LiteralOffCampusOutpatientHospital = "19";
+
+    /// <summary>
+    /// Literal for code: ExServiceplaceOffCampusOutpatientHospital
+    /// </summary>
+    public const string LiteralExServiceplaceOffCampusOutpatientHospital = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#19";
 
     /// <summary>
     /// Literal for code: UrgentCareFacility
@@ -241,13 +311,68 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUrgentCareFacility = "20";
 
     /// <summary>
+    /// Literal for code: ExServiceplaceUrgentCareFacility
+    /// </summary>
+    public const string LiteralExServiceplaceUrgentCareFacility = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#20";
+
+    /// <summary>
     /// Literal for code: InpatientHospital
     /// </summary>
     public const string LiteralInpatientHospital = "21";
 
     /// <summary>
+    /// Literal for code: ExServiceplaceInpatientHospital
+    /// </summary>
+    public const string LiteralExServiceplaceInpatientHospital = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#21";
+
+    /// <summary>
     /// Literal for code: AmbulanceLand
     /// </summary>
     public const string LiteralAmbulanceLand = "41";
+
+    /// <summary>
+    /// Literal for code: ExServiceplaceAmbulanceLand
+    /// </summary>
+    public const string LiteralExServiceplaceAmbulanceLand = "http://terminology.hl7.org/CodeSystem/ex-serviceplace#41";
+
+    /// <summary>
+    /// Dictionary for looking up ServicePlace Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "01", Pharmacy }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#01", Pharmacy }, 
+      { "03", School }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#03", School }, 
+      { "04", HomelessShelter }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#04", HomelessShelter }, 
+      { "05", IndianHealthServiceFreeStandingFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#05", IndianHealthServiceFreeStandingFacility }, 
+      { "06", IndianHealthServiceProviderBasedFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#06", IndianHealthServiceProviderBasedFacility }, 
+      { "07", Tribal638FreeStandingFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#07", Tribal638FreeStandingFacility }, 
+      { "08", Tribal638ProviderBasedFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#08", Tribal638ProviderBasedFacility }, 
+      { "09", PrisonCorrectionalFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#09", PrisonCorrectionalFacility }, 
+      { "11", Office }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#11", Office }, 
+      { "12", Home }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#12", Home }, 
+      { "13", AssistedLivingFa }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#13", AssistedLivingFa }, 
+      { "14", GroupHome }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#14", GroupHome }, 
+      { "15", MobileUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#15", MobileUnit }, 
+      { "19", OffCampusOutpatientHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#19", OffCampusOutpatientHospital }, 
+      { "20", UrgentCareFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#20", UrgentCareFacility }, 
+      { "21", InpatientHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#21", InpatientHospital }, 
+      { "41", AmbulanceLand }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-serviceplace#41", AmbulanceLand }, 
+    };
   };
 }

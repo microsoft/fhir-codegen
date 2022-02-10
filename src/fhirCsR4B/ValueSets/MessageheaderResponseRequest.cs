@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlways = "always";
 
     /// <summary>
+    /// Literal for code: MessageheaderResponseRequestAlways
+    /// </summary>
+    public const string LiteralMessageheaderResponseRequestAlways = "http://hl7.org/fhir/messageheader-response-request#always";
+
+    /// <summary>
     /// Literal for code: Never
     /// </summary>
     public const string LiteralNever = "never";
+
+    /// <summary>
+    /// Literal for code: MessageheaderResponseRequestNever
+    /// </summary>
+    public const string LiteralMessageheaderResponseRequestNever = "http://hl7.org/fhir/messageheader-response-request#never";
 
     /// <summary>
     /// Literal for code: ErrorRejectConditionsOnly
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralErrorRejectConditionsOnly = "on-error";
 
     /// <summary>
+    /// Literal for code: MessageheaderResponseRequestErrorRejectConditionsOnly
+    /// </summary>
+    public const string LiteralMessageheaderResponseRequestErrorRejectConditionsOnly = "http://hl7.org/fhir/messageheader-response-request#on-error";
+
+    /// <summary>
     /// Literal for code: SuccessfulCompletionOnly
     /// </summary>
     public const string LiteralSuccessfulCompletionOnly = "on-success";
+
+    /// <summary>
+    /// Literal for code: MessageheaderResponseRequestSuccessfulCompletionOnly
+    /// </summary>
+    public const string LiteralMessageheaderResponseRequestSuccessfulCompletionOnly = "http://hl7.org/fhir/messageheader-response-request#on-success";
+
+    /// <summary>
+    /// Dictionary for looking up MessageheaderResponseRequest Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "always", Always }, 
+      { "http://hl7.org/fhir/messageheader-response-request#always", Always }, 
+      { "never", Never }, 
+      { "http://hl7.org/fhir/messageheader-response-request#never", Never }, 
+      { "on-error", ErrorRejectConditionsOnly }, 
+      { "http://hl7.org/fhir/messageheader-response-request#on-error", ErrorRejectConditionsOnly }, 
+      { "on-success", SuccessfulCompletionOnly }, 
+      { "http://hl7.org/fhir/messageheader-response-request#on-success", SuccessfulCompletionOnly }, 
+    };
   };
 }

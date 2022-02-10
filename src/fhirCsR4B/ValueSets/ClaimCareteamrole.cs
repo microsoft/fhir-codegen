@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAssistingProvider = "assist";
 
     /// <summary>
+    /// Literal for code: ClaimCareteamroleAssistingProvider
+    /// </summary>
+    public const string LiteralClaimCareteamroleAssistingProvider = "http://terminology.hl7.org/CodeSystem/claimcareteamrole#assist";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
+
+    /// <summary>
+    /// Literal for code: ClaimCareteamroleOther
+    /// </summary>
+    public const string LiteralClaimCareteamroleOther = "http://terminology.hl7.org/CodeSystem/claimcareteamrole#other";
 
     /// <summary>
     /// Literal for code: PrimaryProvider
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrimaryProvider = "primary";
 
     /// <summary>
+    /// Literal for code: ClaimCareteamrolePrimaryProvider
+    /// </summary>
+    public const string LiteralClaimCareteamrolePrimaryProvider = "http://terminology.hl7.org/CodeSystem/claimcareteamrole#primary";
+
+    /// <summary>
     /// Literal for code: SupervisingProvider
     /// </summary>
     public const string LiteralSupervisingProvider = "supervisor";
+
+    /// <summary>
+    /// Literal for code: ClaimCareteamroleSupervisingProvider
+    /// </summary>
+    public const string LiteralClaimCareteamroleSupervisingProvider = "http://terminology.hl7.org/CodeSystem/claimcareteamrole#supervisor";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimCareteamrole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "assist", AssistingProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/claimcareteamrole#assist", AssistingProvider }, 
+      { "other", Other }, 
+      { "http://terminology.hl7.org/CodeSystem/claimcareteamrole#other", Other }, 
+      { "primary", PrimaryProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/claimcareteamrole#primary", PrimaryProvider }, 
+      { "supervisor", SupervisingProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/claimcareteamrole#supervisor", SupervisingProvider }, 
+    };
   };
 }

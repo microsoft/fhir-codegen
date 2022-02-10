@@ -530,5 +530,10 @@ namespace fhirCsR2.Models
     public const string AVAILABLE = "available";
     public const string NOT_AVAILABLE = "not-available";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "available",
+      "not-available",
+      "entered-in-error",
+    };
   }
 }

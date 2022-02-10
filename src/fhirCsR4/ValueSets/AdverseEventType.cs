@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class AdverseEventTypeCodes
   {
     /// <summary>
-    /// 
+    /// Religious discrimination
     /// </summary>
     public static readonly Coding ReligiousDiscrimination = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disease due to Nairovirus
     /// </summary>
     public static readonly Coding DiseaseDueToNairovirus = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apneic
     /// </summary>
     public static readonly Coding Apneic = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biliary esophagitis
     /// </summary>
     public static readonly Coding BiliaryEsophagitis = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wound of trachea without complication
     /// </summary>
     public static readonly Coding OpenWoundOfTracheaWithoutComplication = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic arthritis
     /// </summary>
     public static readonly Coding ThoracicArthritis = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mesenteric-portal fistula
     /// </summary>
     public static readonly Coding MesentericPortalFistula = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disacchariduria
     /// </summary>
     public static readonly Coding Disacchariduria = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colonospasm
     /// </summary>
     public static readonly Coding Colonospasm = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ureteritis glandularis
     /// </summary>
     public static readonly Coding UreteritisGlandularis = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyperplasia of islet alpha cells with gastrin excess
     /// </summary>
     public static readonly Coding HyperplasiaOfIsletAlphaCellsWithGastrinExcess = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stenosis of precerebral artery
     /// </summary>
     public static readonly Coding StenosisOfPrecerebralArtery = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Opisthorchiasis
     /// </summary>
     public static readonly Coding Opisthorchiasis = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Facial myokymia
     /// </summary>
     public static readonly Coding FacialMyokymia = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xeroderma pigmentosum group B
     /// </summary>
     public static readonly Coding XerodermaPigmentosumGroupB = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glucocorticoid-responsive primary hyperaldosteronism
     /// </summary>
     public static readonly Coding GlucocorticoidResponsivePrimaryHyperaldosteronism = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Septal infarction by EKG
     /// </summary>
     public static readonly Coding SeptalInfarctionByEKG = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macular retinal cyst
     /// </summary>
     public static readonly Coding MacularRetinalCyst = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vulval candidiasis
     /// </summary>
     public static readonly Coding VulvalCandidiasis = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital sepsis
     /// </summary>
     public static readonly Coding CongenitalSepsis = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anxiety disorder of childhood OR adolescence
     /// </summary>
     public static readonly Coding AnxietyDisorderOfChildhoodORAdolescence = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraerythrocytic parasitosis by Nuttallia
     /// </summary>
     public static readonly Coding IntraerythrocyticParasitosisByNuttallia = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Early latent syphilis, positive serology, negative cerebrospinal fluid, with relapse after treatment
     /// </summary>
     public static readonly Coding EarlyLatentSyphilisPositiveSerologyNegativeCerebrospinalFluidWithRelapseAfterTreatment = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female pattern alopecia
     /// </summary>
     public static readonly Coding FemalePatternAlopecia = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Normal sebaceous gland activity
     /// </summary>
     public static readonly Coding NormalSebaceousGlandActivity = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Degenerative disorder of eyelid
     /// </summary>
     public static readonly Coding DegenerativeDisorderOfEyelid = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic aggressive type B viral hepatitis
     /// </summary>
     public static readonly Coding ChronicAggressiveTypeBViralHepatitis = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postpartum period, 6 days
     /// </summary>
     public static readonly Coding PostpartumPeriod6Days = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Septicemia during labor
     /// </summary>
     public static readonly Coding SepticemiaDuringLabor = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Knee locking
     /// </summary>
     public static readonly Coding KneeLocking = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital valvular insufficiency
     /// </summary>
     public static readonly Coding CongenitalValvularInsufficiency = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muehrcke lines
     /// </summary>
     public static readonly Coding MuehrckeLines = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solar retinitis
     /// </summary>
     public static readonly Coding SolarRetinitis = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Confrontation (visual) test
     /// </summary>
     public static readonly Coding ConfrontationVisualTest = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermal hypesthesia
     /// </summary>
     public static readonly Coding ThermalHypesthesia = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Circumoral paresthesia
     /// </summary>
     public static readonly Coding CircumoralParesthesia = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DSD - Developmental speech disorder
     /// </summary>
     public static readonly Coding DSDDevelopmentalSpeechDisorder = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital microcheilia
     /// </summary>
     public static readonly Coding CongenitalMicrocheilia = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Constricted visual field
     /// </summary>
     public static readonly Coding ConstrictedVisualField = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin reaction negative
     /// </summary>
     public static readonly Coding SkinReactionNegative = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myocardial hypertrophy, determined by electrocardiogram
     /// </summary>
     public static readonly Coding MyocardialHypertrophyDeterminedByElectrocardiogram = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cavitary prostatitis
     /// </summary>
     public static readonly Coding CavitaryProstatitis = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Allotype
     /// </summary>
     public static readonly Coding Allotype = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glasgow coma scale, 10
     /// </summary>
     public static readonly Coding GlasgowComaScale10 = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Familial amyloid neuropathy, Finnish type
     /// </summary>
     public static readonly Coding FamilialAmyloidNeuropathyFinnishType = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disease condition determination, well controlled
     /// </summary>
     public static readonly Coding DiseaseConditionDeterminationWellControlled = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic bipolar II disorder, most recent episode major depressive
     /// </summary>
     public static readonly Coding ChronicBipolarIIDisorderMostRecentEpisodeMajorDepressive = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbuncle of heel
     /// </summary>
     public static readonly Coding CarbuncleOfHeel = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign essential hypertension
     /// </summary>
     public static readonly Coding BenignEssentialHypertension = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep third degree burn of forehead AND/OR cheek with loss of body part
     /// </summary>
     public static readonly Coding DeepThirdDegreeBurnOfForeheadANDORCheekWithLossOfBodyPart = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Optic disc glaucomatous atrophy
     /// </summary>
     public static readonly Coding OpticDiscGlaucomatousAtrophy = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroptosis
     /// </summary>
     public static readonly Coding Gastroptosis = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Juvenile dermatomyositis
     /// </summary>
     public static readonly Coding JuvenileDermatomyositis = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection by Strongyloides
     /// </summary>
     public static readonly Coding InfectionByStrongyloides = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Choroidal hemorrhage
     /// </summary>
     public static readonly Coding ChoroidalHemorrhage = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No diagnosis on Axis 1
     /// </summary>
     public static readonly Coding NoDiagnosisOnAxis1 = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital articular rigidity with myopathy
     /// </summary>
     public static readonly Coding CongenitalArticularRigidityWithMyopathy = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital anteversion of femoral neck
     /// </summary>
     public static readonly Coding CongenitalAnteversionOfFemoralNeck = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lying prone
     /// </summary>
     public static readonly Coding LyingProne = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schistosis
     /// </summary>
     public static readonly Coding Schistosis = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple fractures of ribs
     /// </summary>
     public static readonly Coding MultipleFracturesOfRibs = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injury of descending left colon without open wound into abdominal cavity
     /// </summary>
     public static readonly Coding InjuryOfDescendingLeftColonWithoutOpenWoundIntoAbdominalCavity = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spontaneous abortion with laceration of cervix
     /// </summary>
     public static readonly Coding SpontaneousAbortionWithLacerationOfCervix = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Knuckle pads, leuconychia and deafness
     /// </summary>
     public static readonly Coding KnucklePadsLeuconychiaAndDeafness = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isologous chimera
     /// </summary>
     public static readonly Coding IsologousChimera = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laryngeal perichondritis
     /// </summary>
     public static readonly Coding LaryngealPerichondritis = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visual acuity less than .02 (1/60, count fingers 1 meter) or visual field less than 5 degrees, but better than 5.
     /// </summary>
     public static readonly Coding VisualAcuityLessThan02160CountFingers1MeterOrVisualFieldLessThan5DegreesButBetterThan5 = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormal jaw closure
     /// </summary>
     public static readonly Coding AbnormalJawClosure = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin K deficiency coagulation disorder
     /// </summary>
     public static readonly Coding VitaminKDeficiencyCoagulationDisorder = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital absence of bile duct
     /// </summary>
     public static readonly Coding CongenitalAbsenceOfBileDuct = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homoiothermia
     /// </summary>
     public static readonly Coding Homoiothermia = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection by Cladosporium carrionii
     /// </summary>
     public static readonly Coding InfectionByCladosporiumCarrionii = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complication of reimplant
     /// </summary>
     public static readonly Coding ComplicationOfReimplant = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Impaired glucose tolerance associated with genetic syndrome
     /// </summary>
     public static readonly Coding ImpairedGlucoseToleranceAssociatedWithGeneticSyndrome = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injury of ovary without open wound into abdominal cavity
     /// </summary>
     public static readonly Coding InjuryOfOvaryWithoutOpenWoundIntoAbdominalCavity = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Post-translational genetic protein processing
     /// </summary>
     public static readonly Coding PostTranslationalGeneticProteinProcessing = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kanamycin poisoning
     /// </summary>
     public static readonly Coding KanamycinPoisoning = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conjugated visual deviation
     /// </summary>
     public static readonly Coding ConjugatedVisualDeviation = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peyronies disease
     /// </summary>
     public static readonly Coding PeyroniesDisease = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased hair growth
     /// </summary>
     public static readonly Coding DecreasedHairGrowth = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DTA - Deep transverse arrest
     /// </summary>
     public static readonly Coding DTADeepTransverseArrest = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hang nail
     /// </summary>
     public static readonly Coding HangNail = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iliac artery injury
     /// </summary>
     public static readonly Coding IliacArteryInjury = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calculus of common duct with obstruction
     /// </summary>
     public static readonly Coding CalculusOfCommonDuctWithObstruction = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leucocoria
     /// </summary>
     public static readonly Coding Leucocoria = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetal or neonatal effect of chronic maternal respiratory disease
     /// </summary>
     public static readonly Coding FetalOrNeonatalEffectOfChronicMaternalRespiratoryDisease = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injury of superior mesenteric artery
     /// </summary>
     public static readonly Coding InjuryOfSuperiorMesentericArtery = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open fracture of metacarpal bone(s)
     /// </summary>
     public static readonly Coding OpenFractureOfMetacarpalBoneS = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Unicornate uterus
     /// </summary>
     public static readonly Coding UnicornateUterus = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obsessive compulsive personality disorder
     /// </summary>
     public static readonly Coding ObsessiveCompulsivePersonalityDisorder = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supination-eversion injury of ankle
     /// </summary>
     public static readonly Coding SupinationEversionInjuryOfAnkle = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Agoraphobia without history of panic disorder with limited symptom attacks
     /// </summary>
     public static readonly Coding AgoraphobiaWithoutHistoryOfPanicDisorderWithLimitedSymptomAttacks = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hallucinogen induced mood disorder
     /// </summary>
     public static readonly Coding HallucinogenInducedMoodDisorder = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diffuse cholesteatosis of middle ear
     /// </summary>
     public static readonly Coding DiffuseCholesteatosisOfMiddleEar = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracranial hemorrhage
     /// </summary>
     public static readonly Coding IntracranialHemorrhage = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solanum nigrum poisoning
     /// </summary>
     public static readonly Coding SolanumNigrumPoisoning = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metabolic alkalosis
     /// </summary>
     public static readonly Coding MetabolicAlkalosis = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lenz-Majewski dysplasia
     /// </summary>
     public static readonly Coding LenzMajewskiDysplasia = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complication of ultrasound therapy
     /// </summary>
     public static readonly Coding ComplicationOfUltrasoundTherapy = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic pharyngitis
     /// </summary>
     public static readonly Coding ChronicPharyngitis = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frightened
     /// </summary>
     public static readonly Coding Frightened = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior subcapsular polar cataract
     /// </summary>
     public static readonly Coding AnteriorSubcapsularPolarCataract = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inflammation of lymphatics
     /// </summary>
     public static readonly Coding InflammationOfLymphatics = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypoplastic chondrodystrophy
     /// </summary>
     public static readonly Coding HypoplasticChondrodystrophy = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injury of prostate without open wound into abdominal cavity
     /// </summary>
     public static readonly Coding InjuryOfProstateWithoutOpenWoundIntoAbdominalCavity = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Necrotizing glomerulonephritis
     /// </summary>
     public static readonly Coding NecrotizingGlomerulonephritis = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraspinal abscess
     /// </summary>
     public static readonly Coding IntraspinalAbscess = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracranial hemorrhage following injury without open intracranial wound AND with prolonged loss of consciousness (more than 24 hours) without return to pre-existing level
     /// </summary>
     public static readonly Coding IntracranialHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithProlongedLossOfConsciousnessMoreThan24HoursWithoutReturnToPreExistingLevel = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Normal peripheral vision
     /// </summary>
     public static readonly Coding NormalPeripheralVision = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Icthyoparasitism
     /// </summary>
     public static readonly Coding Icthyoparasitism = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Miscarriage with urinary tract infection
     /// </summary>
     public static readonly Coding MiscarriageWithUrinaryTractInfection = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial foreign body of scrotum without major open wound but with infection
     /// </summary>
     public static readonly Coding SuperficialForeignBodyOfScrotumWithoutMajorOpenWoundButWithInfection = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypertensive heart AND renal disease complicating AND/OR reason for care during childbirth
     /// </summary>
     public static readonly Coding HypertensiveHeartANDRenalDiseaseComplicatingANDORReasonForCareDuringChildbirth = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Herpes labialis
     /// </summary>
     public static readonly Coding HerpesLabialis = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obliteration of lymphatic vessel
     /// </summary>
     public static readonly Coding ObliterationOfLymphaticVessel = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 20q partial trisomy syndrome
     /// </summary>
     public static readonly Coding VAL20qPartialTrisomySyndrome = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chalazion
     /// </summary>
     public static readonly Coding Chalazion = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orbital congestion
     /// </summary>
     public static readonly Coding OrbitalCongestion = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PONV - Postoperative nausea and vomiting
     /// </summary>
     public static readonly Coding PONVPostoperativeNauseaAndVomiting = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External hordeolum
     /// </summary>
     public static readonly Coding ExternalHordeolum = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital anomaly of large intestine
     /// </summary>
     public static readonly Coding CongenitalAnomalyOfLargeIntestine = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute endophthalmitis
     /// </summary>
     public static readonly Coding AcuteEndophthalmitis = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bipolar I disorder, single manic episode with postpartum onset
     /// </summary>
     public static readonly Coding BipolarIDisorderSingleManicEpisodeWithPostpartumOnset = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormal bladder continence
     /// </summary>
     public static readonly Coding AbnormalBladderContinence = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meningitis due to gonococcus
     /// </summary>
     public static readonly Coding MeningitisDueToGonococcus = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital stricture of bile duct
     /// </summary>
     public static readonly Coding CongenitalStrictureOfBileDuct = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gorham disease
     /// </summary>
     public static readonly Coding GorhamDisease = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Splenitis
     /// </summary>
     public static readonly Coding Splenitis = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital phlebectasia
     /// </summary>
     public static readonly Coding CongenitalPhlebectasia = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blister of buttock without infection
     /// </summary>
     public static readonly Coding BlisterOfButtockWithoutInfection = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical stage IV B
     /// </summary>
     public static readonly Coding ClinicalStageIVB = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blister of foot without infection
     /// </summary>
     public static readonly Coding BlisterOfFootWithoutInfection = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nitrofuran derivative poisoning
     /// </summary>
     public static readonly Coding NitrofuranDerivativePoisoning = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Viral pharyngitis
     /// </summary>
     public static readonly Coding ViralPharyngitis = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palsy of conjugate gaze
     /// </summary>
     public static readonly Coding PalsyOfConjugateGaze = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central nervous system malformation in foetus affecting obstetrical care
     /// </summary>
     public static readonly Coding CentralNervousSystemMalformationInFoetusAffectingObstetricalCare = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nodular tendinous disease of finger
     /// </summary>
     public static readonly Coding NodularTendinousDiseaseOfFinger = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Omphalocele with obstruction
     /// </summary>
     public static readonly Coding OmphaloceleWithObstruction = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open dislocation of knee
     /// </summary>
     public static readonly Coding OpenDislocationOfKnee = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteomyelitis of femur
     /// </summary>
     public static readonly Coding OsteomyelitisOfFemur = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clark melanoma level 4
     /// </summary>
     public static readonly Coding ClarkMelanomaLevel4 = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protein S deficiency
     /// </summary>
     public static readonly Coding ProteinSDeficiency = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic gastric ulcer without hemorrhage, without perforation AND without obstruction
     /// </summary>
     public static readonly Coding ChronicGastricUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heterosexual precocious puberty
     /// </summary>
     public static readonly Coding HeterosexualPrecociousPuberty = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Failed attempted termination of pregnancy with uremia
     /// </summary>
     public static readonly Coding FailedAttemptedTerminationOfPregnancyWithUremia = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infantile hemiplegia
     /// </summary>
     public static readonly Coding InfantileHemiplegia = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Macracanthorhynchus hirudinaceus
     /// </summary>
     public static readonly Coding InfectionCausedByMacracanthorhynchusHirudinaceus = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased capillary permeability
     /// </summary>
     public static readonly Coding IncreasedCapillaryPermeability = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Severe manic bipolar I disorder without psychotic features
     /// </summary>
     public static readonly Coding SevereManicBipolarIDisorderWithoutPsychoticFeatures = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormality of organs AND/OR soft tissues of pelvis affecting pregnancy
     /// </summary>
     public static readonly Coding AbnormalityOfOrgansANDORSoftTissuesOfPelvisAffectingPregnancy = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primaquine poisoning
     /// </summary>
     public static readonly Coding PrimaquinePoisoning = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphocytic pseudotumor of lung
     /// </summary>
     public static readonly Coding LymphocyticPseudotumorOfLung = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accident-prone
     /// </summary>
     public static readonly Coding AccidentProne = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Steroid-induced glaucoma
     /// </summary>
     public static readonly Coding SteroidInducedGlaucoma = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxic effect of phosdrin
     /// </summary>
     public static readonly Coding ToxicEffectOfPhosdrin = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed fracture clavicle, lateral end
     /// </summary>
     public static readonly Coding ClosedFractureClavicleLateralEnd = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor grade G2
     /// </summary>
     public static readonly Coding TumorGradeG2 = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Early fontanel closure
     /// </summary>
     public static readonly Coding EarlyFontanelClosure = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral hemiparesis
     /// </summary>
     public static readonly Coding CerebralHemiparesis = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sago spleen
     /// </summary>
     public static readonly Coding SagoSpleen = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meesman's epithelial corneal dystrophy
     /// </summary>
     public static readonly Coding MeesmanQuoteSEpithelialCornealDystrophy = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthritis associated with another disorder
     /// </summary>
     public static readonly Coding ArthritisAssociatedWithAnotherDisorder = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Typhlolithiasis
     /// </summary>
     public static readonly Coding Typhlolithiasis = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transitory amino acid metabolic disorder
     /// </summary>
     public static readonly Coding TransitoryAminoAcidMetabolicDisorder = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rat-bite fever
     /// </summary>
     public static readonly Coding RatBiteFever = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sedative, hypnotic AND/OR anxiolytic-induced anxiety disorder
     /// </summary>
     public static readonly Coding SedativeHypnoticANDORAnxiolyticInducedAnxietyDisorder = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accessory lobe of lung
     /// </summary>
     public static readonly Coding AccessoryLobeOfLung = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ulcer of bile duct
     /// </summary>
     public static readonly Coding UlcerOfBileDuct = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased leg circumference
     /// </summary>
     public static readonly Coding IncreasedLegCircumference = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed fracture of base of neck of femur
     /// </summary>
     public static readonly Coding ClosedFractureOfBaseOfNeckOfFemur = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open dislocation of clavicle
     /// </summary>
     public static readonly Coding OpenDislocationOfClavicle = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injury of ascending right colon without open wound into abdominal cavity
     /// </summary>
     public static readonly Coding InjuryOfAscendingRightColonWithoutOpenWoundIntoAbdominalCavity = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Photokeratitis
     /// </summary>
     public static readonly Coding Photokeratitis = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Guttate hypomelanosis
     /// </summary>
     public static readonly Coding GuttateHypomelanosis = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endometritis following molar AND/OR ectopic pregnancy
     /// </summary>
     public static readonly Coding EndometritisFollowingMolarANDOREctopicPregnancy = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urethral stricture due to schistosomiasis
     /// </summary>
     public static readonly Coding UrethralStrictureDueToSchistosomiasis = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Crenosoma
     /// </summary>
     public static readonly Coding InfectionCausedByCrenosoma = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture of vertebral column with spinal cord injury
     /// </summary>
     public static readonly Coding FractureOfVertebralColumnWithSpinalCordInjury = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrill
     /// </summary>
     public static readonly Coding Thrill = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipital fracture
     /// </summary>
     public static readonly Coding OccipitalFracture = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female hypererotism
     /// </summary>
     public static readonly Coding FemaleHypererotism = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Connation of teeth
     /// </summary>
     public static readonly Coding ConnationOfTeeth = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrombophlebitis of deep femoral vein
     /// </summary>
     public static readonly Coding ThrombophlebitisOfDeepFemoralVein = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supraorbital neuralgia
     /// </summary>
     public static readonly Coding SupraorbitalNeuralgia = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Healed coronary
     /// </summary>
     public static readonly Coding HealedCoronary = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biliary cirrhosis
     /// </summary>
     public static readonly Coding BiliaryCirrhosis = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stromal keratitis
     /// </summary>
     public static readonly Coding StromalKeratitis = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fisher syndrome
     /// </summary>
     public static readonly Coding FisherSyndrome = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracodidymus
     /// </summary>
     public static readonly Coding Thoracodidymus = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poisoning by sawfly larvae
     /// </summary>
     public static readonly Coding PoisoningBySawflyLarvae = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insulin biosynthesis defect
     /// </summary>
     public static readonly Coding InsulinBiosynthesisDefect = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RTA - Renal tubular acidosis
     /// </summary>
     public static readonly Coding RTARenalTubularAcidosis = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased molecular dissociation
     /// </summary>
     public static readonly Coding IncreasedMolecularDissociation = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malocclusion due to abnormal swallowing
     /// </summary>
     public static readonly Coding MalocclusionDueToAbnormalSwallowing = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// OFD II - Orofacial-digital syndrome II
     /// </summary>
     public static readonly Coding OFDIIOrofacialDigitalSyndromeII = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apraxia of dressing
     /// </summary>
     public static readonly Coding ApraxiaOfDressing = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Idiopathic corneal edema
     /// </summary>
     public static readonly Coding IdiopathicCornealEdema = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemorrhagic bronchopneumonia
     /// </summary>
     public static readonly Coding HemorrhagicBronchopneumonia = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Panic disorder with agoraphobia, severe agoraphobic avoidance AND mild panic attacks
     /// </summary>
     public static readonly Coding PanicDisorderWithAgoraphobiaSevereAgoraphobicAvoidanceANDMildPanicAttacks = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemoreceptor apnea
     /// </summary>
     public static readonly Coding ChemoreceptorApnea = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Impaired glucose tolerance associated with pancreatic disease
     /// </summary>
     public static readonly Coding ImpairedGlucoseToleranceAssociatedWithPancreaticDisease = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Allergic gastritis
     /// </summary>
     public static readonly Coding AllergicGastritis = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granuloma of lip
     /// </summary>
     public static readonly Coding GranulomaOfLip = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infestation caused by Gasterophilus hemorrhoidalis
     /// </summary>
     public static readonly Coding InfestationCausedByGasterophilusHemorrhoidalis = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcephalus
     /// </summary>
     public static readonly Coding Microcephalus = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autoimmune pancytopenia
     /// </summary>
     public static readonly Coding AutoimmunePancytopenia = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phacoanaphylactic endophthalmitis
     /// </summary>
     public static readonly Coding PhacoanaphylacticEndophthalmitis = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Necrosis of pancreas
     /// </summary>
     public static readonly Coding NecrosisOfPancreas = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orciprenaline poisoning
     /// </summary>
     public static readonly Coding OrciprenalinePoisoning = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Withdrawal arrhythmia
     /// </summary>
     public static readonly Coding WithdrawalArrhythmia = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paraparesis
     /// </summary>
     public static readonly Coding Paraparesis = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endophthalmitis
     /// </summary>
     public static readonly Coding Endophthalmitis = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poisoning caused by gaseous anesthetic
     /// </summary>
     public static readonly Coding PoisoningCausedByGaseousAnesthetic = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traumatic injury of sixth cranial nerve
     /// </summary>
     public static readonly Coding TraumaticInjuryOfSixthCranialNerve = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Developmental academic disorder
     /// </summary>
     public static readonly Coding DevelopmentalAcademicDisorder = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accessory nose
     /// </summary>
     public static readonly Coding AccessoryNose = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital rubella syndrome
     /// </summary>
     public static readonly Coding CongenitalRubellaSyndrome = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Stilesia globipunctata
     /// </summary>
     public static readonly Coding InfectionCausedByStilesiaGlobipunctata = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluid volume disorder
     /// </summary>
     public static readonly Coding FluidVolumeDisorder = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Impaired intestinal protein absorption
     /// </summary>
     public static readonly Coding ImpairedIntestinalProteinAbsorption = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rupture of iris sphincter
     /// </summary>
     public static readonly Coding RuptureOfIrisSphincter = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intercostal artery injury
     /// </summary>
     public static readonly Coding IntercostalArteryInjury = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased nutritional requirement
     /// </summary>
     public static readonly Coding IncreasedNutritionalRequirement = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Star figure at the macula
     /// </summary>
     public static readonly Coding StarFigureAtTheMacula = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ectopic breast tissue
     /// </summary>
     public static readonly Coding EctopicBreastTissue = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amsinckia species poisoning
     /// </summary>
     public static readonly Coding AmsinckiaSpeciesPoisoning = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autosomal hereditary disorder
     /// </summary>
     public static readonly Coding AutosomalHereditaryDisorder = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infestation caused by Psorergates ovis
     /// </summary>
     public static readonly Coding InfestationCausedByPsorergatesOvis = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// von Willebrand disease, type IIC
     /// </summary>
     public static readonly Coding VonWillebrandDiseaseTypeIIC = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Impairment level: better eye: severe impairment: lesser eye: near-total impairment
     /// </summary>
     public static readonly Coding ImpairmentLevelBetterEyeSevereImpairmentLesserEyeNearTotalImpairment = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital syphilitic hepatomegaly
     /// </summary>
     public static readonly Coding CongenitalSyphiliticHepatomegaly = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital absence of urethra
     /// </summary>
     public static readonly Coding CongenitalAbsenceOfUrethra = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteopetrosis
     /// </summary>
     public static readonly Coding Osteopetrosis = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign hypertensive renal disease
     /// </summary>
     public static readonly Coding BenignHypertensiveRenalDisease = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emotional AND/OR mental disease in mother complicating pregnancy, childbirth AND/OR puerperium
     /// </summary>
     public static readonly Coding EmotionalANDORMentalDiseaseInMotherComplicatingPregnancyChildbirthANDORPuerperium = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormal vascular flow
     /// </summary>
     public static readonly Coding AbnormalVascularFlow = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left-right confusion
     /// </summary>
     public static readonly Coding LeftRightConfusion = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Illegal abortion with endometritis
     /// </summary>
     public static readonly Coding IllegalAbortionWithEndometritis = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital deficiency of pigment of skin
     /// </summary>
     public static readonly Coding CongenitalDeficiencyOfPigmentOfSkin = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilated cardiomyopathy secondary to toxic reaction
     /// </summary>
     public static readonly Coding DilatedCardiomyopathySecondaryToToxicReaction = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Preauricular pit
     /// </summary>
     public static readonly Coding PreauricularPit = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Encephalartos species poisoning
     /// </summary>
     public static readonly Coding EncephalartosSpeciesPoisoning = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic polyarticular juvenile rheumatoid arthritis
     /// </summary>
     public static readonly Coding ChronicPolyarticularJuvenileRheumatoidArthritis = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PNH - Paroxysmal nocturnal hemoglobinuria
     /// </summary>
     public static readonly Coding PNHParoxysmalNocturnalHemoglobinuria = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Normal skin pH
     /// </summary>
     public static readonly Coding NormalSkinPH = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital absence of forearm only
     /// </summary>
     public static readonly Coding CongenitalAbsenceOfForearmOnly = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sedative, hypnotic AND/OR anxiolytic-induced psychotic disorder with delusions
     /// </summary>
     public static readonly Coding SedativeHypnoticANDORAnxiolyticInducedPsychoticDisorderWithDelusions = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxymetholone poisoning
     /// </summary>
     public static readonly Coding OxymetholonePoisoning = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Focal choroiditis
     /// </summary>
     public static readonly Coding FocalChoroiditis = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seromucinous otitis media
     /// </summary>
     public static readonly Coding SeromucinousOtitisMedia = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disease due to Filoviridae
     /// </summary>
     public static readonly Coding DiseaseDueToFiloviridae = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urhidrosis
     /// </summary>
     public static readonly Coding Urhidrosis = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Late effect of injury to nerve roots, spinal plexus AND/OR other nerves of trunk
     /// </summary>
     public static readonly Coding LateEffectOfInjuryToNerveRootsSpinalPlexusANDOROtherNervesOfTrunk = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burn of vagina AND/OR uterus
     /// </summary>
     public static readonly Coding BurnOfVaginaANDORUterus = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased lactation
     /// </summary>
     public static readonly Coding DecreasedLactation = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Normotensive
     /// </summary>
     public static readonly Coding Normotensive = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture of lunate
     /// </summary>
     public static readonly Coding FractureOfLunate = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilated cardiomyopathy secondary to metazoal myocarditis
     /// </summary>
     public static readonly Coding DilatedCardiomyopathySecondaryToMetazoalMyocarditis = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Erythema induratum
     /// </summary>
     public static readonly Coding ErythemaInduratum = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral edema
     /// </summary>
     public static readonly Coding CerebralEdema = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquired factor VII deficiency disease
     /// </summary>
     public static readonly Coding AcquiredFactorVIIDeficiencyDisease = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurogenic thoracic outlet syndrome
     /// </summary>
     public static readonly Coding NeurogenicThoracicOutletSyndrome = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eunuchoid gigantism
     /// </summary>
     public static readonly Coding EunuchoidGigantism = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alcoholic gastritis
     /// </summary>
     public static readonly Coding AlcoholicGastritis = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Late effect of injury to blood vessels of thorax, abdomen AND/OR pelvis
     /// </summary>
     public static readonly Coding LateEffectOfInjuryToBloodVesselsOfThoraxAbdomenANDORPelvis = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recurrent erosion syndrome
     /// </summary>
     public static readonly Coding RecurrentErosionSyndrome = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral loss of labyrinthine reactivity
     /// </summary>
     public static readonly Coding BilateralLossOfLabyrinthineReactivity = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conductive hearing loss of combined sites
     /// </summary>
     public static readonly Coding ConductiveHearingLossOfCombinedSites = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autosomal dominant optic atrophy
     /// </summary>
     public static readonly Coding AutosomalDominantOpticAtrophy = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastric ulcer with hemorrhage AND perforation but without obstruction
     /// </summary>
     public static readonly Coding GastricUlcerWithHemorrhageANDPerforationButWithoutObstruction = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burning sensation in eye
     /// </summary>
     public static readonly Coding BurningSensationInEye = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delusions
     /// </summary>
     public static readonly Coding Delusions = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurocutaneous melanosis sequence
     /// </summary>
     public static readonly Coding NeurocutaneousMelanosisSequence = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary nocardiosis
     /// </summary>
     public static readonly Coding PulmonaryNocardiosis = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pagets disease of bone
     /// </summary>
     public static readonly Coding PagetsDiseaseOfBone = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pharyngeal diverticulitis
     /// </summary>
     public static readonly Coding PharyngealDiverticulitis = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbon disulfide causing toxic effect
     /// </summary>
     public static readonly Coding CarbonDisulfideCausingToxicEffect = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep corneal vascularization
     /// </summary>
     public static readonly Coding DeepCornealVascularization = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reflex sympathetic dystrophy of upper extremity
     /// </summary>
     public static readonly Coding ReflexSympatheticDystrophyOfUpperExtremity = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anisomelia
     /// </summary>
     public static readonly Coding Anisomelia = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isolated somatotropin deficiency
     /// </summary>
     public static readonly Coding IsolatedSomatotropinDeficiency = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Cysticercus pisiformis
     /// </summary>
     public static readonly Coding InfectionCausedByCysticercusPisiformis = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intramembranous bone formation
     /// </summary>
     public static readonly Coding IntramembranousBoneFormation = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Weak cry
     /// </summary>
     public static readonly Coding WeakCry = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ethopropazine poisoning
     /// </summary>
     public static readonly Coding EthopropazinePoisoning = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disorder of adenoid
     /// </summary>
     public static readonly Coding DisorderOfAdenoid = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Edema of pharynx
     /// </summary>
     public static readonly Coding EdemaOfPharynx = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meconium in amniotic fluid noted before labor in liveborn infant
     /// </summary>
     public static readonly Coding MeconiumInAmnioticFluidNotedBeforeLaborInLivebornInfant = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diffuse pain
     /// </summary>
     public static readonly Coding DiffusePain = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wound of jaw with complication
     /// </summary>
     public static readonly Coding OpenWoundOfJawWithComplication = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// LSP - Left sacroposterior position
     /// </summary>
     public static readonly Coding LSPLeftSacroposteriorPosition = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anal intercourse
     /// </summary>
     public static readonly Coding AnalIntercourse = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased hormone production
     /// </summary>
     public static readonly Coding DecreasedHormoneProduction = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Contracaecum
     /// </summary>
     public static readonly Coding InfectionCausedByContracaecum = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delusion of persecution
     /// </summary>
     public static readonly Coding DelusionOfPersecution = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retinal hemangioblastomatosis
     /// </summary>
     public static readonly Coding RetinalHemangioblastomatosis = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic radiculitis
     /// </summary>
     public static readonly Coding ThoracicRadiculitis = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gallop rhythm
     /// </summary>
     public static readonly Coding GallopRhythm = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Halogen acne
     /// </summary>
     public static readonly Coding HalogenAcne = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PHN - Post-herpetic neuralgia
     /// </summary>
     public static readonly Coding PHNPostHerpeticNeuralgia = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Compensated metabolic alkalosis
     /// </summary>
     public static readonly Coding CompensatedMetabolicAlkalosis = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alcohol user
     /// </summary>
     public static readonly Coding AlcoholUser = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visceral epilepsy
     /// </summary>
     public static readonly Coding VisceralEpilepsy = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open posterior dislocation of distal end of femur
     /// </summary>
     public static readonly Coding OpenPosteriorDislocationOfDistalEndOfFemur = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquired deformity of pinna
     /// </summary>
     public static readonly Coding AcquiredDeformityOfPinna = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital anomaly of vena cava
     /// </summary>
     public static readonly Coding CongenitalAnomalyOfVenaCava = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nocturnal emission
     /// </summary>
     public static readonly Coding NocturnalEmission = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial injury of perineum without infection
     /// </summary>
     public static readonly Coding SuperficialInjuryOfPerineumWithoutInfection = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disability evaluation, disability 100%
     /// </summary>
     public static readonly Coding DisabilityEvaluationDisability100Percent = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute epiglottitis with obstruction
     /// </summary>
     public static readonly Coding AcuteEpiglottitisWithObstruction = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Selenium poisoning
     /// </summary>
     public static readonly Coding SeleniumPoisoning = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scintillating scotoma
     /// </summary>
     public static readonly Coding ScintillatingScotoma = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chimera
     /// </summary>
     public static readonly Coding Chimera = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor of body of uterus affecting pregnancy
     /// </summary>
     public static readonly Coding TumorOfBodyOfUterusAffectingPregnancy = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nerve plexus disorder
     /// </summary>
     public static readonly Coding NervePlexusDisorder = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Painful breathing -pleurodynia
     /// </summary>
     public static readonly Coding PainfulBreathingPleurodynia = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Previous pregnancies 6
     /// </summary>
     public static readonly Coding PreviousPregnancies6 = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-linked absence of thyroxine-binding globulin
     /// </summary>
     public static readonly Coding XLinkedAbsenceOfThyroxineBindingGlobulin = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypercalcemia due to hyperthyroidism
     /// </summary>
     public static readonly Coding HypercalcemiaDueToHyperthyroidism = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foreign body in nasopharynx
     /// </summary>
     public static readonly Coding ForeignBodyInNasopharynx = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primary hypotony of eye
     /// </summary>
     public static readonly Coding PrimaryHypotonyOfEye = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monovular twins
     /// </summary>
     public static readonly Coding MonovularTwins = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstetrical pulmonary fat embolism
     /// </summary>
     public static readonly Coding ObstetricalPulmonaryFatEmbolism = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Victim of homosexual aggression
     /// </summary>
     public static readonly Coding VictimOfHomosexualAggression = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lucio phenomenon
     /// </summary>
     public static readonly Coding LucioPhenomenon = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulsating exophthalmos
     /// </summary>
     public static readonly Coding PulsatingExophthalmos = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed fracture of upper end of forearm
     /// </summary>
     public static readonly Coding ClosedFractureOfUpperEndOfForearm = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iron dextran toxicity
     /// </summary>
     public static readonly Coding IronDextranToxicity = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Focal facial dermal dysplasia
     /// </summary>
     public static readonly Coding FocalFacialDermalDysplasia = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychosomatic factor in physical condition, psychological component of unknown degree
     /// </summary>
     public static readonly Coding PsychosomaticFactorInPhysicalConditionPsychologicalComponentOfUnknownDegree = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inguinal hernia with gangrene
     /// </summary>
     public static readonly Coding InguinalHerniaWithGangrene = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervertebral discitis
     /// </summary>
     public static readonly Coding IntervertebralDiscitis = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peripancreatic fat necrosis
     /// </summary>
     public static readonly Coding PeripancreaticFatNecrosis = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Silent alleles
     /// </summary>
     public static readonly Coding SilentAlleles = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reactive attachment disorder of infancy OR early childhood, inhibited type
     /// </summary>
     public static readonly Coding ReactiveAttachmentDisorderOfInfancyOREarlyChildhoodInhibitedType = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Unprotected intercourse
     /// </summary>
     public static readonly Coding UnprotectedIntercourse = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marriage annulment
     /// </summary>
     public static readonly Coding MarriageAnnulment = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sexual overexposure
     /// </summary>
     public static readonly Coding SexualOverexposure = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Moniliformis
     /// </summary>
     public static readonly Coding InfectionCausedByMoniliformis = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Genetic transduction
     /// </summary>
     public static readonly Coding GeneticTransduction = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rud syndrome
     /// </summary>
     public static readonly Coding RudSyndrome = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyper-beta-alaninemia
     /// </summary>
     public static readonly Coding HyperBetaAlaninemia = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Simple chronic pharyngitis
     /// </summary>
     public static readonly Coding SimpleChronicPharyngitis = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Late effect of dislocation
     /// </summary>
     public static readonly Coding LateEffectOfDislocation = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute hemorrhagic gastritis
     /// </summary>
     public static readonly Coding AcuteHemorrhagicGastritis = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monofascicular block
     /// </summary>
     public static readonly Coding MonofascicularBlock = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cellulitis of pectoral region
     /// </summary>
     public static readonly Coding CellulitisOfPectoralRegion = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Normal variation in translucency
     /// </summary>
     public static readonly Coding NormalVariationInTranslucency = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute gonococcal vulvovaginitis
     /// </summary>
     public static readonly Coding AcuteGonococcalVulvovaginitis = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Achondrogenesis
     /// </summary>
     public static readonly Coding Achondrogenesis = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant pyoderma
     /// </summary>
     public static readonly Coding MalignantPyoderma = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quinidine toxicity by electrocardiogram
     /// </summary>
     public static readonly Coding QuinidineToxicityByElectrocardiogram = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dependence syndrome
     /// </summary>
     public static readonly Coding DependenceSyndrome = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Motor simple partial status
     /// </summary>
     public static readonly Coding MotorSimplePartialStatus = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lumbosacral root lesion
     /// </summary>
     public static readonly Coding LumbosacralRootLesion = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polyester fume causing toxic effect
     /// </summary>
     public static readonly Coding PolyesterFumeCausingToxicEffect = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wound of forehead with complication
     /// </summary>
     public static readonly Coding OpenWoundOfForeheadWithComplication = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Third degree burn of multiple sites of upper limb
     /// </summary>
     public static readonly Coding ThirdDegreeBurnOfMultipleSitesOfUpperLimb = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Noninfectious jejunitis
     /// </summary>
     public static readonly Coding NoninfectiousJejunitis = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebrospinal fluid circulation disorder
     /// </summary>
     public static readonly Coding CerebrospinalFluidCirculationDisorder = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ascaridiasis
     /// </summary>
     public static readonly Coding Ascaridiasis = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Placenta circumvallata
     /// </summary>
     public static readonly Coding PlacentaCircumvallata = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iniencephaly
     /// </summary>
     public static readonly Coding Iniencephaly = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Purulent endocarditis
     /// </summary>
     public static readonly Coding PurulentEndocarditis = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydrogen sulfide poisoning
     /// </summary>
     public static readonly Coding HydrogenSulfidePoisoning = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetal rotation
     /// </summary>
     public static readonly Coding FetalRotation = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquired heterochromia of iris
     /// </summary>
     public static readonly Coding AcquiredHeterochromiaOfIris = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Onychomalacia
     /// </summary>
     public static readonly Coding Onychomalacia = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brain damage
     /// </summary>
     public static readonly Coding BrainDamage = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intra-abdominal abscess postprocedure
     /// </summary>
     public static readonly Coding IntraAbdominalAbscessPostprocedure = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passes no urine
     /// </summary>
     public static readonly Coding PassesNoUrine = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intermittent vertical squint
     /// </summary>
     public static readonly Coding IntermittentVerticalSquint = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial phlebitis
     /// </summary>
     public static readonly Coding SuperficialPhlebitis = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disorder of nutrition
     /// </summary>
     public static readonly Coding DisorderOfNutrition = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital cerebral arteriovenous aneurysm
     /// </summary>
     public static readonly Coding CongenitalCerebralArteriovenousAneurysm = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acalculia
     /// </summary>
     public static readonly Coding Acalculia = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Early onset dysthymia
     /// </summary>
     public static readonly Coding EarlyOnsetDysthymia = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinea capitis caused by Trichophyton
     /// </summary>
     public static readonly Coding TineaCapitisCausedByTrichophyton = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryptogenic sexual precocity
     /// </summary>
     public static readonly Coding CryptogenicSexualPrecocity = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone conduction better than air
     /// </summary>
     public static readonly Coding BoneConductionBetterThanAir = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salmonella pneumonia
     /// </summary>
     public static readonly Coding SalmonellaPneumonia = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Noninflammatory disorder of the female genital organs
     /// </summary>
     public static readonly Coding NoninflammatoryDisorderOfTheFemaleGenitalOrgans = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Viremia
     /// </summary>
     public static readonly Coding Viremia = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sycosis
     /// </summary>
     public static readonly Coding Sycosis = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Choroidal rupture
     /// </summary>
     public static readonly Coding ChoroidalRupture = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital absence of vena cava
     /// </summary>
     public static readonly Coding CongenitalAbsenceOfVenaCava = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ketosis
     /// </summary>
     public static readonly Coding Ketosis = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Compulsive buying
     /// </summary>
     public static readonly Coding CompulsiveBuying = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute purulent pericarditis
     /// </summary>
     public static readonly Coding AcutePurulentPericarditis = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disease of supporting structures of teeth
     /// </summary>
     public static readonly Coding DiseaseOfSupportingStructuresOfTeeth = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complex syndactyly of fingers
     /// </summary>
     public static readonly Coding ComplexSyndactylyOfFingers = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Athanasia trifurcata poisoning
     /// </summary>
     public static readonly Coding AthanasiaTrifurcataPoisoning = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acne rosacea, erythematous telangiectatic type
     /// </summary>
     public static readonly Coding AcneRosaceaErythematousTelangiectaticType = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trachoma
     /// </summary>
     public static readonly Coding Trachoma = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pseudoknuckle pad
     /// </summary>
     public static readonly Coding PseudoknucklePad = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clasp knife rigidity
     /// </summary>
     public static readonly Coding ClaspKnifeRigidity = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep third degree burn of multiple sites of lower limb
     /// </summary>
     public static readonly Coding DeepThirdDegreeBurnOfMultipleSitesOfLowerLimb = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Filigreed network of venous valves
     /// </summary>
     public static readonly Coding FiligreedNetworkOfVenousValves = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral degeneration in childhood
     /// </summary>
     public static readonly Coding CerebralDegenerationInChildhood = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pneumococcal pleurisy
     /// </summary>
     public static readonly Coding PneumococcalPleurisy = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute dacryoadenitis
     /// </summary>
     public static readonly Coding AcuteDacryoadenitis = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crush injury of shoulder region
     /// </summary>
     public static readonly Coding CrushInjuryOfShoulderRegion = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dubowitz syndrome
     /// </summary>
     public static readonly Coding DubowitzSyndrome = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemarthrosis of shoulder
     /// </summary>
     public static readonly Coding HemarthrosisOfShoulder = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boil of perineum
     /// </summary>
     public static readonly Coding BoilOfPerineum = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Graafian follicle cyst
     /// </summary>
     public static readonly Coding GraafianFollicleCyst = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic recurrent major depressive disorder
     /// </summary>
     public static readonly Coding ChronicRecurrentMajorDepressiveDisorder = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infected ulcer of skin
     /// </summary>
     public static readonly Coding InfectedUlcerOfSkin = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prepubertal periodontitis
     /// </summary>
     public static readonly Coding PrepubertalPeriodontitis = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Senter syndrome
     /// </summary>
     public static readonly Coding SenterSyndrome = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wound of finger without complication
     /// </summary>
     public static readonly Coding OpenWoundOfFingerWithoutComplication = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased blood erythrocyte volume
     /// </summary>
     public static readonly Coding DecreasedBloodErythrocyteVolume = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypercalcemia caused by a drug
     /// </summary>
     public static readonly Coding HypercalcemiaCausedByADrug = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical stage 4
     /// </summary>
     public static readonly Coding ClinicalStage4 = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blind hypertensive eye
     /// </summary>
     public static readonly Coding BlindHypertensiveEye = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed traumatic dislocation of elbow joint
     /// </summary>
     public static readonly Coding ClosedTraumaticDislocationOfElbowJoint = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Invalidism
     /// </summary>
     public static readonly Coding Invalidism = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Overflow proteinuria
     /// </summary>
     public static readonly Coding OverflowProteinuria = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palpatory proteinuria
     /// </summary>
     public static readonly Coding PalpatoryProteinuria = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coordinate convulsion
     /// </summary>
     public static readonly Coding CoordinateConvulsion = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonvenomous insect bite of axilla without infection
     /// </summary>
     public static readonly Coding NonvenomousInsectBiteOfAxillaWithoutInfection = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dominant dystrophic epidermolysis bullosa with absence of skin
     /// </summary>
     public static readonly Coding DominantDystrophicEpidermolysisBullosaWithAbsenceOfSkin = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myelophthisic anemia
     /// </summary>
     public static readonly Coding MyelophthisicAnemia = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute disease
     /// </summary>
     public static readonly Coding AcuteDisease = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Necrotizing enterocolitis
     /// </summary>
     public static readonly Coding NecrotizingEnterocolitis = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed pneumothorax
     /// </summary>
     public static readonly Coding ClosedPneumothorax = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Auditory recruitment
     /// </summary>
     public static readonly Coding AuditoryRecruitment = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Previous abnormality of glucose tolerance
     /// </summary>
     public static readonly Coding PreviousAbnormalityOfGlucoseTolerance = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heel pain
     /// </summary>
     public static readonly Coding HeelPain = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Honeycomb atrophy of face
     /// </summary>
     public static readonly Coding HoneycombAtrophyOfFace = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gouty proteinuria
     /// </summary>
     public static readonly Coding GoutyProteinuria = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital deformity of hip
     /// </summary>
     public static readonly Coding CongenitalDeformityOfHip = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrocalculous pancreatic diabetes
     /// </summary>
     public static readonly Coding FibrocalculousPancreaticDiabetes = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxytocin poisoning
     /// </summary>
     public static readonly Coding OxytocinPoisoning = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased stool caliber
     /// </summary>
     public static readonly Coding DecreasedStoolCaliber = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Joint crackle
     /// </summary>
     public static readonly Coding JointCrackle = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetal or neonatal effect of antibiotic transmitted via placenta and/or breast milk
     /// </summary>
     public static readonly Coding FetalOrNeonatalEffectOfAntibioticTransmittedViaPlacentaAndOrBreastMilk = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epidermolysis bullosa acquisita
     /// </summary>
     public static readonly Coding EpidermolysisBullosaAcquisita = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intra-articular loose body
     /// </summary>
     public static readonly Coding IntraArticularLooseBody = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Organic brain syndrome
     /// </summary>
     public static readonly Coding OrganicBrainSyndrome = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Miscarriage complicated by delayed and/or excessive hemorrhage
     /// </summary>
     public static readonly Coding MiscarriageComplicatedByDelayedAndOrExcessiveHemorrhage = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Temporomandibular dysplasia
     /// </summary>
     public static readonly Coding TemporomandibularDysplasia = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrojejunal ulcer without hemorrhage AND without perforation
     /// </summary>
     public static readonly Coding GastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epithelial ovarian tumor, International Federation of Gynecology and Obstetrics stage III
     /// </summary>
     public static readonly Coding EpithelialOvarianTumorInternationalFederationOfGynecologyAndObstetricsStageIII = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Impairment level: one eye: total impairment: other eye: not specified
     /// </summary>
     public static readonly Coding ImpairmentLevelOneEyeTotalImpairmentOtherEyeNotSpecified = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Senile myocarditis
     /// </summary>
     public static readonly Coding SenileMyocarditis = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phosmet poisoning
     /// </summary>
     public static readonly Coding PhosmetPoisoning = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Impaired psychomotor development
     /// </summary>
     public static readonly Coding ImpairedPsychomotorDevelopment = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic gastrojejunal ulcer with perforation
     /// </summary>
     public static readonly Coding ChronicGastrojejunalUlcerWithPerforation = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Prosthenorchis elegans
     /// </summary>
     public static readonly Coding InfectionCausedByProsthenorchisElegans = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alcoholic dementia
     /// </summary>
     public static readonly Coding AlcoholicDementia = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sexual pyromania
     /// </summary>
     public static readonly Coding SexualPyromania = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilated cardiomyopathy secondary to myotonic dystrophy
     /// </summary>
     public static readonly Coding DilatedCardiomyopathySecondaryToMyotonicDystrophy = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital vascular anomaly of eye
     /// </summary>
     public static readonly Coding CongenitalVascularAnomalyOfEye = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnesium sulfate poisoning
     /// </summary>
     public static readonly Coding MagnesiumSulfatePoisoning = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute myocardial infarction of basal-lateral wall
     /// </summary>
     public static readonly Coding AcuteMyocardialInfarctionOfBasalLateralWall = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abrasion and/or friction burn of gum without infection
     /// </summary>
     public static readonly Coding AbrasionAndOrFrictionBurnOfGumWithoutInfection = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital stenosis of nares
     /// </summary>
     public static readonly Coding CongenitalStenosisOfNares = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uhl disease
     /// </summary>
     public static readonly Coding UhlDisease = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyloric antral vascular ectasia
     /// </summary>
     public static readonly Coding PyloricAntralVascularEctasia = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemolytic anemia due to cardiac trauma
     /// </summary>
     public static readonly Coding HemolyticAnemiaDueToCardiacTrauma = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Butane causing toxic effect
     /// </summary>
     public static readonly Coding ButaneCausingToxicEffect = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Piblokto
     /// </summary>
     public static readonly Coding Piblokto = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open fracture of vault of skull with cerebral laceration AND/OR contusion
     /// </summary>
     public static readonly Coding OpenFractureOfVaultOfSkullWithCerebralLacerationANDORContusion = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Schistosoma incognitum
     /// </summary>
     public static readonly Coding InfectionCausedBySchistosomaIncognitum = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macular keratitis
     /// </summary>
     public static readonly Coding MacularKeratitis = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin A-responsive dermatosis
     /// </summary>
     public static readonly Coding VitaminAResponsiveDermatosis = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postpartum sepsis
     /// </summary>
     public static readonly Coding PostpartumSepsis = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spherophakia-brachymorphia syndrome
     /// </summary>
     public static readonly Coding SpherophakiaBrachymorphiaSyndrome = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anomaly of chromosome pair 10
     /// </summary>
     public static readonly Coding AnomalyOfChromosomePair10 = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immune thrombocytopenia
     /// </summary>
     public static readonly Coding ImmuneThrombocytopenia = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thought blocking
     /// </summary>
     public static readonly Coding ThoughtBlocking = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibromuscular dysplasia of renal artery
     /// </summary>
     public static readonly Coding FibromuscularDysplasiaOfRenalArtery = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Melnick-Fraser syndrome
     /// </summary>
     public static readonly Coding MelnickFraserSyndrome = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Altered blood passed per rectum
     /// </summary>
     public static readonly Coding AlteredBloodPassedPerRectum = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased lymphocyte life span
     /// </summary>
     public static readonly Coding DecreasedLymphocyteLifeSpan = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Male infertility
     /// </summary>
     public static readonly Coding MaleInfertility = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Discharge from penis
     /// </summary>
     public static readonly Coding DischargeFromPenis = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystic-bullous disease of the lung
     /// </summary>
     public static readonly Coding CysticBullousDiseaseOfTheLung = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transient hypothyroidism
     /// </summary>
     public static readonly Coding TransientHypothyroidism = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Bacteroides
     /// </summary>
     public static readonly Coding InfectionCausedByBacteroides = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nausea, vomiting and diarrhea
     /// </summary>
     public static readonly Coding NauseaVomitingAndDiarrhea = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EEG finding
     /// </summary>
     public static readonly Coding EEGFinding = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arterial occlusion
     /// </summary>
     public static readonly Coding ArterialOcclusion = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antiasthmatic poisoning
     /// </summary>
     public static readonly Coding AntiasthmaticPoisoning = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrabasal vesicular dermatitis
     /// </summary>
     public static readonly Coding IntrabasalVesicularDermatitis = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osmotic diarrhea
     /// </summary>
     public static readonly Coding OsmoticDiarrhea = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atopic cataract
     /// </summary>
     public static readonly Coding AtopicCataract = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic ulcerative pulpitis
     /// </summary>
     public static readonly Coding ChronicUlcerativePulpitis = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nevoid congenital alopecia
     /// </summary>
     public static readonly Coding NevoidCongenitalAlopecia = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-comitant strabismus
     /// </summary>
     public static readonly Coding NonComitantStrabismus = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute myringitis
     /// </summary>
     public static readonly Coding AcuteMyringitis = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occlusion of anterior spinal artery
     /// </summary>
     public static readonly Coding OcclusionOfAnteriorSpinalArtery = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvic organ injury without open wound into abdominal cavity
     /// </summary>
     public static readonly Coding PelvicOrganInjuryWithoutOpenWoundIntoAbdominalCavity = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aneurysm of conjunctiva
     /// </summary>
     public static readonly Coding AneurysmOfConjunctiva = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulsatile mass of abdomen
     /// </summary>
     public static readonly Coding PulsatileMassOfAbdomen = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complication following molar AND/OR ectopic pregnancy
     /// </summary>
     public static readonly Coding ComplicationFollowingMolarANDOREctopicPregnancy = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphocytic leukemoid reaction
     /// </summary>
     public static readonly Coding LymphocyticLeukemoidReaction = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paraffinoma of skin
     /// </summary>
     public static readonly Coding ParaffinomaOfSkin = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pigmentary pallidal degeneration
     /// </summary>
     public static readonly Coding PigmentaryPallidalDegeneration = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brain fag
     /// </summary>
     public static readonly Coding BrainFag = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injury of ear region
     /// </summary>
     public static readonly Coding InjuryOfEarRegion = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroid hemorrhage
     /// </summary>
     public static readonly Coding ThyroidHemorrhage = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital dilatation of esophagus
     /// </summary>
     public static readonly Coding CongenitalDilatationOfEsophagus = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Altered consciousness
     /// </summary>
     public static readonly Coding AlteredConsciousness = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solanum malacoxylon poisoning
     /// </summary>
     public static readonly Coding SolanumMalacoxylonPoisoning = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wound of ear drum without complication
     /// </summary>
     public static readonly Coding OpenWoundOfEarDrumWithoutComplication = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autoeczematization
     /// </summary>
     public static readonly Coding Autoeczematization = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penetration of eyeball with magnetic foreign body
     /// </summary>
     public static readonly Coding PenetrationOfEyeballWithMagneticForeignBody = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed anterior dislocation of elbow
     /// </summary>
     public static readonly Coding ClosedAnteriorDislocationOfElbow = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Normal gastric acidity
     /// </summary>
     public static readonly Coding NormalGastricAcidity = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute peptic ulcer without hemorrhage, without perforation AND without obstruction
     /// </summary>
     public static readonly Coding AcutePepticUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apoplectic pancreatitis
     /// </summary>
     public static readonly Coding ApoplecticPancreatitis = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonvenomous insect bite of cheek without infection
     /// </summary>
     public static readonly Coding NonvenomousInsectBiteOfCheekWithoutInfection = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone AND/OR joint disorder of pelvis in mother complicating pregnancy, childbirth AND/OR puerperium
     /// </summary>
     public static readonly Coding BoneANDORJointDisorderOfPelvisInMotherComplicatingPregnancyChildbirthANDORPuerperium = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute lymphangitis of umbilicus
     /// </summary>
     public static readonly Coding AcuteLymphangitisOfUmbilicus = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitreous prolapse
     /// </summary>
     public static readonly Coding VitreousProlapse = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poisoning caused by nitroglycerin
     /// </summary>
     public static readonly Coding PoisoningCausedByNitroglycerin = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute lymphangitis of thigh
     /// </summary>
     public static readonly Coding AcuteLymphangitisOfThigh = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Weak C phenotype
     /// </summary>
     public static readonly Coding WeakCPhenotype = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Widow
     /// </summary>
     public static readonly Coding Widow = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hormone-induced hypopituitarism
     /// </summary>
     public static readonly Coding HormoneInducedHypopituitarism = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ruvalcaba syndrome
     /// </summary>
     public static readonly Coding RuvalcabaSyndrome = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pearly penile papules
     /// </summary>
     public static readonly Coding PearlyPenilePapules = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonvenomous insect bite of gum without infection
     /// </summary>
     public static readonly Coding NonvenomousInsectBiteOfGumWithoutInfection = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disability evaluation, impairment, class 7
     /// </summary>
     public static readonly Coding DisabilityEvaluationImpairmentClass7 = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vomiting in infants AND/OR children
     /// </summary>
     public static readonly Coding VomitingInInfantsANDORChildren = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Induced malaria
     /// </summary>
     public static readonly Coding InducedMalaria = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial injury of lip with infection
     /// </summary>
     public static readonly Coding SuperficialInjuryOfLipWithInfection = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ventricular septal rupture
     /// </summary>
     public static readonly Coding VentricularSeptalRupture = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penile boil
     /// </summary>
     public static readonly Coding PenileBoil = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intron
     /// </summary>
     public static readonly Coding Intron = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secondary dysthymia early onset
     /// </summary>
     public static readonly Coding SecondaryDysthymiaEarlyOnset = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// AOM - Acute otitis media
     /// </summary>
     public static readonly Coding AOMAcuteOtitisMedia = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brain stem laceration with open intracranial wound AND loss of consciousness
     /// </summary>
     public static readonly Coding BrainStemLacerationWithOpenIntracranialWoundANDLossOfConsciousness = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infarction of ovary
     /// </summary>
     public static readonly Coding InfarctionOfOvary = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Déjà vu
     /// </summary>
     public static readonly Coding DejaVu = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// OE - Otitis externa
     /// </summary>
     public static readonly Coding OEOtitisExterna = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Citrullinemia, subacute type
     /// </summary>
     public static readonly Coding CitrullinemiaSubacuteType = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staphylococcal pleurisy
     /// </summary>
     public static readonly Coding StaphylococcalPleurisy = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Panic disorder with agoraphobia, agoraphobic avoidance in partial remission AND panic attacks in partial remission
     /// </summary>
     public static readonly Coding PanicDisorderWithAgoraphobiaAgoraphobicAvoidanceInPartialRemissionANDPanicAttacksInPartialRemission = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infertility of cervical origin
     /// </summary>
     public static readonly Coding InfertilityOfCervicalOrigin = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute adenoviral follicular conjunctivitis
     /// </summary>
     public static readonly Coding AcuteAdenoviralFollicularConjunctivitis = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrombophlebitis of intracranial venous sinus
     /// </summary>
     public static readonly Coding ThrombophlebitisOfIntracranialVenousSinus = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reactive hypoglycemia
     /// </summary>
     public static readonly Coding ReactiveHypoglycemia = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mood-congruent delusion
     /// </summary>
     public static readonly Coding MoodCongruentDelusion = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sprain of shoulder joint
     /// </summary>
     public static readonly Coding SprainOfShoulderJoint = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sacrocoxalgia
     /// </summary>
     public static readonly Coding Sacrocoxalgia = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical dilatation, 1cm
     /// </summary>
     public static readonly Coding CervicalDilatation1cm = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wound of ossicles without complication
     /// </summary>
     public static readonly Coding OpenWoundOfOssiclesWithoutComplication = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Invasive pulmonary aspergillosis
     /// </summary>
     public static readonly Coding InvasivePulmonaryAspergillosis = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open dislocation of sixth cervical vertebra
     /// </summary>
     public static readonly Coding OpenDislocationOfSixthCervicalVertebra = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mycotic disease
     /// </summary>
     public static readonly Coding MycoticDisease = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disease type AND/OR category unknown
     /// </summary>
     public static readonly Coding DiseaseTypeANDORCategoryUnknown = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed fracture of the radial shaft
     /// </summary>
     public static readonly Coding ClosedFractureOfTheRadialShaft = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tracheal ulcer
     /// </summary>
     public static readonly Coding TrachealUlcer = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Illegal termination of pregnancy with afibrinogenemia
     /// </summary>
     public static readonly Coding IllegalTerminationOfPregnancyWithAfibrinogenemia = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pericarditis
     /// </summary>
     public static readonly Coding Pericarditis = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphocyte disorder
     /// </summary>
     public static readonly Coding LymphocyteDisorder = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plaster ulcer
     /// </summary>
     public static readonly Coding PlasterUlcer = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dyschromia
     /// </summary>
     public static readonly Coding Dyschromia = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Strongyloides westeri
     /// </summary>
     public static readonly Coding InfectionCausedByStrongyloidesWesteri = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homeria species poisoning
     /// </summary>
     public static readonly Coding HomeriaSpeciesPoisoning = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Migratory osteolysis
     /// </summary>
     public static readonly Coding MigratoryOsteolysis = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Verumontanitis
     /// </summary>
     public static readonly Coding Verumontanitis = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stomatocytosis
     /// </summary>
     public static readonly Coding Stomatocytosis = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flat chest
     /// </summary>
     public static readonly Coding FlatChest = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behcet syndrome, vascular type
     /// </summary>
     public static readonly Coding BehcetSyndromeVascularType = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toad poisoning
     /// </summary>
     public static readonly Coding ToadPoisoning = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Terminal mood insomnia
     /// </summary>
     public static readonly Coding TerminalMoodInsomnia = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arc eye
     /// </summary>
     public static readonly Coding ArcEye = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Feeling of sand or foreign body in eye
     /// </summary>
     public static readonly Coding FeelingOfSandOrForeignBodyInEye = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient status determination, greatly improved
     /// </summary>
     public static readonly Coding PatientStatusDeterminationGreatlyImproved = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anisometropia
     /// </summary>
     public static readonly Coding Anisometropia = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed fracture of two ribs
     /// </summary>
     public static readonly Coding ClosedFractureOfTwoRibs = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amnestic syndrome
     /// </summary>
     public static readonly Coding AmnesticSyndrome = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipital headache
     /// </summary>
     public static readonly Coding OccipitalHeadache = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disease caused by Arenavirus
     /// </summary>
     public static readonly Coding DiseaseCausedByArenavirus = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bronchial compression
     /// </summary>
     public static readonly Coding BronchialCompression = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disorder of lymphatic vessel
     /// </summary>
     public static readonly Coding DisorderOfLymphaticVessel = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atrophic-hyperplastic gastritis
     /// </summary>
     public static readonly Coding AtrophicHyperplasticGastritis = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foreign body granuloma of skin
     /// </summary>
     public static readonly Coding ForeignBodyGranulomaOfSkin = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renal abscess
     /// </summary>
     public static readonly Coding RenalAbscess = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leukoplakia of penis
     /// </summary>
     public static readonly Coding LeukoplakiaOfPenis = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquired jerk nystagmus
     /// </summary>
     public static readonly Coding AcquiredJerkNystagmus = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open fracture of neck of metacarpal bone
     /// </summary>
     public static readonly Coding OpenFractureOfNeckOfMetacarpalBone = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxic labyrinthitis
     /// </summary>
     public static readonly Coding ToxicLabyrinthitis = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Idiopathic osteoporosis
     /// </summary>
     public static readonly Coding IdiopathicOsteoporosis = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pylorospasm
     /// </summary>
     public static readonly Coding Pylorospasm = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anti-common cold drug poisoning
     /// </summary>
     public static readonly Coding AntiCommonColdDrugPoisoning = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lichen ruber moniliformis
     /// </summary>
     public static readonly Coding LichenRuberMoniliformis = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dull chest pain
     /// </summary>
     public static readonly Coding DullChestPain = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pseudoptyalism
     /// </summary>
     public static readonly Coding Pseudoptyalism = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open fracture of astragalus
     /// </summary>
     public static readonly Coding OpenFractureOfAstragalus = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Auditory discrimination aphasia
     /// </summary>
     public static readonly Coding AuditoryDiscriminationAphasia = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Negative for tumor cells
     /// </summary>
     public static readonly Coding NegativeForTumorCells = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebitis following infusion, perfusion AND/OR transfusion
     /// </summary>
     public static readonly Coding PhlebitisFollowingInfusionPerfusionANDORTransfusion = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cadmium poisoning
     /// </summary>
     public static readonly Coding CadmiumPoisoning = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cercopithecus herpesvirus 1 disease
     /// </summary>
     public static readonly Coding CercopithecusHerpesvirus1Disease = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ABO incompatibility reaction
     /// </summary>
     public static readonly Coding ABOIncompatibilityReaction = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyanosis
     /// </summary>
     public static readonly Coding Cyanosis = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Faucial diphtheria
     /// </summary>
     public static readonly Coding FaucialDiphtheria = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open blow-out fracture orbit
     /// </summary>
     public static readonly Coding OpenBlowOutFractureOrbit = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heart rate fast
     /// </summary>
     public static readonly Coding HeartRateFast = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retained magnetic intraocular foreign body
     /// </summary>
     public static readonly Coding RetainedMagneticIntraocularForeignBody = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonglucosuric melituria
     /// </summary>
     public static readonly Coding NonglucosuricMelituria = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myotonia
     /// </summary>
     public static readonly Coding Myotonia = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Severe combined immunodeficiency (SCID) due to absent peripheral T cell maturation
     /// </summary>
     public static readonly Coding SevereCombinedImmunodeficiencySCIDDueToAbsentPeripheralTCellMaturation = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disorder of sebaceous gland
     /// </summary>
     public static readonly Coding DisorderOfSebaceousGland = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open fracture of T7-T12 level with spinal cord injury
     /// </summary>
     public static readonly Coding OpenFractureOfT7T12LevelWithSpinalCordInjury = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Finger agnosia
     /// </summary>
     public static readonly Coding FingerAgnosia = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic progressive non-hereditary chorea
     /// </summary>
     public static readonly Coding ChronicProgressiveNonHereditaryChorea = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myositis ossificans associated with dermato / polymyositis
     /// </summary>
     public static readonly Coding MyositisOssificansAssociatedWithDermatoPolymyositis = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep third degree burn of thumb
     /// </summary>
     public static readonly Coding DeepThirdDegreeBurnOfThumb = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Oesophagostomum dentatum
     /// </summary>
     public static readonly Coding InfectionCausedByOesophagostomumDentatum = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neonatal infective mastitis
     /// </summary>
     public static readonly Coding NeonatalInfectiveMastitis = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial thickness burn of thumb
     /// </summary>
     public static readonly Coding PartialThicknessBurnOfThumb = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spondylolisthesis, grade 4
     /// </summary>
     public static readonly Coding SpondylolisthesisGrade4 = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycine max poisoning
     /// </summary>
     public static readonly Coding GlycineMaxPoisoning = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burn of wrist
     /// </summary>
     public static readonly Coding BurnOfWrist = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postoperative esophagitis
     /// </summary>
     public static readonly Coding PostoperativeEsophagitis = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic peptic ulcer with perforation
     /// </summary>
     public static readonly Coding ChronicPepticUlcerWithPerforation = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary candidiasis
     /// </summary>
     public static readonly Coding PulmonaryCandidiasis = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Absent tendon reflex
     /// </summary>
     public static readonly Coding AbsentTendonReflex = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wound of ossicles with complication
     /// </summary>
     public static readonly Coding OpenWoundOfOssiclesWithComplication = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical lymphadenitis
     /// </summary>
     public static readonly Coding CervicalLymphadenitis = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gender identity disorder of adolescence, previously asexual
     /// </summary>
     public static readonly Coding GenderIdentityDisorderOfAdolescencePreviouslyAsexual = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonallopathic lesion of the arm
     /// </summary>
     public static readonly Coding NonallopathicLesionOfTheArm = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stenosis of retinal artery
     /// </summary>
     public static readonly Coding StenosisOfRetinalArtery = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abscess of thigh
     /// </summary>
     public static readonly Coding AbscessOfThigh = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infectious thyroiditis
     /// </summary>
     public static readonly Coding InfectiousThyroiditis = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peribronchial fibrosis of lung
     /// </summary>
     public static readonly Coding PeribronchialFibrosisOfLung = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disorder of synovium
     /// </summary>
     public static readonly Coding DisorderOfSynovium = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Restricted carbohydrate fat controlled diet
     /// </summary>
     public static readonly Coding RestrictedCarbohydrateFatControlledDiet = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Sanguinicola
     /// </summary>
     public static readonly Coding InfectionCausedBySanguinicola = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bipolar 1 disorder, single manic episode, full remission
     /// </summary>
     public static readonly Coding Bipolar1DisorderSingleManicEpisodeFullRemission = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrapsychic conflict
     /// </summary>
     public static readonly Coding IntrapsychicConflict = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute palmoplantar pustular psoriasis
     /// </summary>
     public static readonly Coding AcutePalmoplantarPustularPsoriasis = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enteromenia
     /// </summary>
     public static readonly Coding Enteromenia = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laceration extending into parenchyma of spleen with open wound into abdominal cavity
     /// </summary>
     public static readonly Coding LacerationExtendingIntoParenchymaOfSpleenWithOpenWoundIntoAbdominalCavity = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hair-splitting
     /// </summary>
     public static readonly Coding HairSplitting = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diastolic dysfunction
     /// </summary>
     public static readonly Coding DiastolicDysfunction = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brachial plexus disorder
     /// </summary>
     public static readonly Coding BrachialPlexusDisorder = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pancreatic acinar atrophy
     /// </summary>
     public static readonly Coding PancreaticAcinarAtrophy = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemorrhagic shock
     /// </summary>
     public static readonly Coding HemorrhagicShock = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mesenteric infarction
     /// </summary>
     public static readonly Coding MesentericInfarction = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral recurrent inguinal hernia
     /// </summary>
     public static readonly Coding BilateralRecurrentInguinalHernia = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased blood erythrocyte volume
     /// </summary>
     public static readonly Coding IncreasedBloodErythrocyteVolume = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed fracture trapezoid
     /// </summary>
     public static readonly Coding ClosedFractureTrapezoid = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Megaloblastic anemia due to pancreatic insufficiency
     /// </summary>
     public static readonly Coding MegaloblasticAnemiaDueToPancreaticInsufficiency = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lattice retinal degeneration
     /// </summary>
     public static readonly Coding LatticeRetinalDegeneration = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smallpox vaccine poisoning
     /// </summary>
     public static readonly Coding SmallpoxVaccinePoisoning = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blinking
     /// </summary>
     public static readonly Coding Blinking = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychogenic fugue
     /// </summary>
     public static readonly Coding PsychogenicFugue = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Syphilitic pericarditis
     /// </summary>
     public static readonly Coding SyphiliticPericarditis = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enteroenteric fistula
     /// </summary>
     public static readonly Coding EnteroentericFistula = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kernicterus due to isoimmunization
     /// </summary>
     public static readonly Coding KernicterusDueToIsoimmunization = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metabolic acidosis, normal anion gap, bicarbonate losses
     /// </summary>
     public static readonly Coding MetabolicAcidosisNormalAnionGapBicarbonateLosses = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial recent retinal detachment with single defect
     /// </summary>
     public static readonly Coding PartialRecentRetinalDetachmentWithSingleDefect = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute radiation disease
     /// </summary>
     public static readonly Coding AcuteRadiationDisease = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Demeton poisoning
     /// </summary>
     public static readonly Coding DemetonPoisoning = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abscess of hand
     /// </summary>
     public static readonly Coding AbscessOfHand = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal termination of pregnancy complicated by metabolic disorder
     /// </summary>
     public static readonly Coding LegalTerminationOfPregnancyComplicatedByMetabolicDisorder = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glossoptosis
     /// </summary>
     public static readonly Coding Glossoptosis = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Late effect of traumatic amputation
     /// </summary>
     public static readonly Coding LateEffectOfTraumaticAmputation = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute left-sided heart failure
     /// </summary>
     public static readonly Coding AcuteLeftSidedHeartFailure = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Coenurosis serialis
     /// </summary>
     public static readonly Coding InfectionCausedByCoenurosisSerialis = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Steryl-sulfate sulfohydrolase deficiency
     /// </summary>
     public static readonly Coding SterylSulfateSulfohydrolaseDeficiency = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macerated skin
     /// </summary>
     public static readonly Coding MaceratedSkin = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contusion, multiple sites of trunk
     /// </summary>
     public static readonly Coding ContusionMultipleSitesOfTrunk = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital absence of liver,total
     /// </summary>
     public static readonly Coding CongenitalAbsenceOfLiverTotal = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Overproduction of growth hormone
     /// </summary>
     public static readonly Coding OverproductionOfGrowthHormone = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteospermum species poisoning
     /// </summary>
     public static readonly Coding OsteospermumSpeciesPoisoning = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lethal glossopharyngeal defect
     /// </summary>
     public static readonly Coding LethalGlossopharyngealDefect = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hidromeiosis
     /// </summary>
     public static readonly Coding Hidromeiosis = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rolling hiatus hernia
     /// </summary>
     public static readonly Coding RollingHiatusHernia = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Academic problem
     /// </summary>
     public static readonly Coding AcademicProblem = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monocephalus tripus dibrachius
     /// </summary>
     public static readonly Coding MonocephalusTripusDibrachius = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heart valve disorder
     /// </summary>
     public static readonly Coding HeartValveDisorder = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrombophlebitis of torcular Herophili
     /// </summary>
     public static readonly Coding ThrombophlebitisOfTorcularHerophili = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Normal jugular venous pressure
     /// </summary>
     public static readonly Coding NormalJugularVenousPressure = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional dyspepsia
     /// </summary>
     public static readonly Coding FunctionalDyspepsia = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transverse deficiency of arm
     /// </summary>
     public static readonly Coding TransverseDeficiencyOfArm = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ischiatic hernia with gangrene
     /// </summary>
     public static readonly Coding IschiaticHerniaWithGangrene = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diffuse endocapillary proliferative glomerulonephritis
     /// </summary>
     public static readonly Coding DiffuseEndocapillaryProliferativeGlomerulonephritis = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital malformation of anterior chamber of eye
     /// </summary>
     public static readonly Coding CongenitalMalformationOfAnteriorChamberOfEye = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Degenerated eye
     /// </summary>
     public static readonly Coding DegeneratedEye = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroid goiter
     /// </summary>
     public static readonly Coding ThyroidGoiter = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormal presence of hemoglobin
     /// </summary>
     public static readonly Coding AbnormalPresenceOfHemoglobin = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Joint inflammation
     /// </summary>
     public static readonly Coding JointInflammation = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital eventration of right crus of diaphragm
     /// </summary>
     public static readonly Coding CongenitalEventrationOfRightCrusOfDiaphragm = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wound of thumbnail with tendon involvement
     /// </summary>
     public static readonly Coding OpenWoundOfThumbnailWithTendonInvolvement = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// VH - Viral hepatitis
     /// </summary>
     public static readonly Coding VHViralHepatitis = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyperlipoproteinemia
     /// </summary>
     public static readonly Coding Hyperlipoproteinemia = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sleep rhythm problem
     /// </summary>
     public static readonly Coding SleepRhythmProblem = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EC - Ejection click
     /// </summary>
     public static readonly Coding ECEjectionClick = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriospasm
     /// </summary>
     public static readonly Coding Arteriospasm = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contusion of labium
     /// </summary>
     public static readonly Coding ContusionOfLabium = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection by Trichuris
     /// </summary>
     public static readonly Coding InfectionByTrichuris = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dysplasia of vagina
     /// </summary>
     public static readonly Coding DysplasiaOfVagina = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PRP - Pityriasis rubra pilaris
     /// </summary>
     public static readonly Coding PRPPityriasisRubraPilaris = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Static ataxia
     /// </summary>
     public static readonly Coding StaticAtaxia = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injury of heart with open wound into thorax
     /// </summary>
     public static readonly Coding InjuryOfHeartWithOpenWoundIntoThorax = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Familial multiple factor deficiency syndrome, type V
     /// </summary>
     public static readonly Coding FamilialMultipleFactorDeficiencySyndromeTypeV = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral recurrent femoral hernia with gangrene
     /// </summary>
     public static readonly Coding BilateralRecurrentFemoralHerniaWithGangrene = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Expected bereavement due to life event
     /// </summary>
     public static readonly Coding ExpectedBereavementDueToLifeEvent = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Morquio syndrome
     /// </summary>
     public static readonly Coding MorquioSyndrome = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enamel pearls
     /// </summary>
     public static readonly Coding EnamelPearls = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periodontal cyst
     /// </summary>
     public static readonly Coding PeriodontalCyst = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Premature birth of identical twins, both stillborn
     /// </summary>
     public static readonly Coding PrematureBirthOfIdenticalTwinsBothStillborn = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crohn disease of rectum
     /// </summary>
     public static readonly Coding CrohnDiseaseOfRectum = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inner ear conductive hearing loss
     /// </summary>
     public static readonly Coding InnerEarConductiveHearingLoss = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal history finding relating to child
     /// </summary>
     public static readonly Coding LegalHistoryFindingRelatingToChild = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aneurysm of artery of neck
     /// </summary>
     public static readonly Coding AneurysmOfArteryOfNeck = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous emphysema
     /// </summary>
     public static readonly Coding SubcutaneousEmphysema = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Finding of passive range of hip extension
     /// </summary>
     public static readonly Coding FindingOfPassiveRangeOfHipExtension = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blister of cheek with infection
     /// </summary>
     public static readonly Coding BlisterOfCheekWithInfection = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duplication of intestine
     /// </summary>
     public static readonly Coding DuplicationOfIntestine = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secondary peripheral neuropathy
     /// </summary>
     public static readonly Coding SecondaryPeripheralNeuropathy = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disorder of pancreas
     /// </summary>
     public static readonly Coding DisorderOfPancreas = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Late effect of open wound of extremities without tendon injury
     /// </summary>
     public static readonly Coding LateEffectOfOpenWoundOfExtremitiesWithoutTendonInjury = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Melanuria
     /// </summary>
     public static readonly Coding Melanuria = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Failed attempted termination of pregnancy with acute necrosis of liver
     /// </summary>
     public static readonly Coding FailedAttemptedTerminationOfPregnancyWithAcuteNecrosisOfLiver = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ABO isoimmunization in pregnancy
     /// </summary>
     public static readonly Coding ABOIsoimmunizationInPregnancy = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital fecaliths
     /// </summary>
     public static readonly Coding CongenitalFecaliths = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neutropenic typhlitis
     /// </summary>
     public static readonly Coding NeutropenicTyphlitis = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed sensory-motor polyneuropathy
     /// </summary>
     public static readonly Coding MixedSensoryMotorPolyneuropathy = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non dose-related drug-induced neutropenia
     /// </summary>
     public static readonly Coding NonDoseRelatedDrugInducedNeutropenia = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed traumatic pneumothorax
     /// </summary>
     public static readonly Coding ClosedTraumaticPneumothorax = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infestation caused by Haematopinus
     /// </summary>
     public static readonly Coding InfestationCausedByHaematopinus = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coeur en sabot
     /// </summary>
     public static readonly Coding CoeurEnSabot = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injury of gastrointestinal tract with open wound into abdominal cavity
     /// </summary>
     public static readonly Coding InjuryOfGastrointestinalTractWithOpenWoundIntoAbdominalCavity = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mental disorder in childhood
     /// </summary>
     public static readonly Coding MentalDisorderInChildhood = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zika virus disease
     /// </summary>
     public static readonly Coding ZikaVirusDisease = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bacterial colony density, transparent
     /// </summary>
     public static readonly Coding BacterialColonyDensityTransparent = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-linked placental steryl-sulfatase deficiency
     /// </summary>
     public static readonly Coding XLinkedPlacentalSterylSulfataseDeficiency = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High oxygen affinity hemoglobin polycythemia
     /// </summary>
     public static readonly Coding HighOxygenAffinityHemoglobinPolycythemia = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Birth
     /// </summary>
     public static readonly Coding Birth = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proctitis
     /// </summary>
     public static readonly Coding Proctitis = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Idiopathic insomnia
     /// </summary>
     public static readonly Coding IdiopathicInsomnia = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep third degree burn of lower limb
     /// </summary>
     public static readonly Coding DeepThirdDegreeBurnOfLowerLimb = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// AIHA - Warm autoimmune hemolytic anemia
     /// </summary>
     public static readonly Coding AIHAWarmAutoimmuneHemolyticAnemia = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left axis deviation greater than -90 degrees by EKG
     /// </summary>
     public static readonly Coding LeftAxisDeviationGreaterThan90DegreesByEKG = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital absence of trachea
     /// </summary>
     public static readonly Coding CongenitalAbsenceOfTrachea = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Muellerius
     /// </summary>
     public static readonly Coding InfectionCausedByMuellerius = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute pyelitis without renal medullary necrosis
     /// </summary>
     public static readonly Coding AcutePyelitisWithoutRenalMedullaryNecrosis = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alphavirus disease
     /// </summary>
     public static readonly Coding AlphavirusDisease = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monster with cranial anomalies
     /// </summary>
     public static readonly Coding MonsterWithCranialAnomalies = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foetal tachycardia affecting management of mother
     /// </summary>
     public static readonly Coding FoetalTachycardiaAffectingManagementOfMother = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lower urinary tract infection
     /// </summary>
     public static readonly Coding LowerUrinaryTractInfection = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Empyema of mastoid
     /// </summary>
     public static readonly Coding EmpyemaOfMastoid = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased stratum corneum adhesiveness
     /// </summary>
     public static readonly Coding IncreasedStratumCorneumAdhesiveness = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vulvitis circumscripta plasmacellularis
     /// </summary>
     public static readonly Coding VulvitisCircumscriptaPlasmacellularis = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interstitial mastitis associated with childbirth
     /// </summary>
     public static readonly Coding InterstitialMastitisAssociatedWithChildbirth = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Le Dantec virus disease
     /// </summary>
     public static readonly Coding LeDantecVirusDisease = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myrotheciotoxicosis
     /// </summary>
     public static readonly Coding Myrotheciotoxicosis = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple vitamin deficiency disease
     /// </summary>
     public static readonly Coding MultipleVitaminDeficiencyDisease = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hassall-Henle bodies
     /// </summary>
     public static readonly Coding HassallHenleBodies = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital anomaly of macula
     /// </summary>
     public static readonly Coding CongenitalAnomalyOfMacula = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Degenerative spondylolisthesis
     /// </summary>
     public static readonly Coding DegenerativeSpondylolisthesis = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lumbosacral plexus lesion
     /// </summary>
     public static readonly Coding LumbosacralPlexusLesion = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Achillodynia
     /// </summary>
     public static readonly Coding Achillodynia = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anoxic brain damage during AND/OR resulting from a procedure
     /// </summary>
     public static readonly Coding AnoxicBrainDamageDuringANDORResultingFromAProcedure = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital hepatomegaly
     /// </summary>
     public static readonly Coding CongenitalHepatomegaly = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palinphrasia
     /// </summary>
     public static readonly Coding Palinphrasia = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peganum harmala poisoning
     /// </summary>
     public static readonly Coding PeganumHarmalaPoisoning = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tooth chattering
     /// </summary>
     public static readonly Coding ToothChattering = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Syphilitic myocarditis
     /// </summary>
     public static readonly Coding SyphiliticMyocarditis = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquired hydrocephalus
     /// </summary>
     public static readonly Coding AcquiredHydrocephalus = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meningococcemia
     /// </summary>
     public static readonly Coding Meningococcemia = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Food allergy diet
     /// </summary>
     public static readonly Coding FoodAllergyDiet = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonallopathic lesion of costovertebral region
     /// </summary>
     public static readonly Coding NonallopathicLesionOfCostovertebralRegion = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complex partial seizure
     /// </summary>
     public static readonly Coding ComplexPartialSeizure = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rotator cuff rupture
     /// </summary>
     public static readonly Coding RotatorCuffRupture = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infertile male syndrome
     /// </summary>
     public static readonly Coding InfertileMaleSyndrome = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arrested hydrocephalus
     /// </summary>
     public static readonly Coding ArrestedHydrocephalus = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bronchiolitis
     /// </summary>
     public static readonly Coding Bronchiolitis = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insect bite, nonvenomous, of vagina, infected
     /// </summary>
     public static readonly Coding InsectBiteNonvenomousOfVaginaInfected = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prostatic obstruction
     /// </summary>
     public static readonly Coding ProstaticObstruction = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Argyll-Robertson pupil
     /// </summary>
     public static readonly Coding ArgyllRobertsonPupil = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 11p partial monosomy syndrome
     /// </summary>
     public static readonly Coding VAL11pPartialMonosomySyndrome = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macrodactylia of toes
     /// </summary>
     public static readonly Coding MacrodactyliaOfToes = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscular asthenopia
     /// </summary>
     public static readonly Coding MuscularAsthenopia = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquired hypoprothrombinemia
     /// </summary>
     public static readonly Coding AcquiredHypoprothrombinemia = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital anomaly of upper respiratory system
     /// </summary>
     public static readonly Coding CongenitalAnomalyOfUpperRespiratorySystem = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tibial plateau chondromalacia
     /// </summary>
     public static readonly Coding TibialPlateauChondromalacia = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ehlers-Danlos syndrome, procollagen proteinase resistant
     /// </summary>
     public static readonly Coding EhlersDanlosSyndromeProcollagenProteinaseResistant = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tripartite placenta
     /// </summary>
     public static readonly Coding TripartitePlacenta = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infestation by Estrus
     /// </summary>
     public static readonly Coding InfestationByEstrus = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial recent retinal detachment with multiple defects
     /// </summary>
     public static readonly Coding PartialRecentRetinalDetachmentWithMultipleDefects = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Normal peak expiratory flow rate
     /// </summary>
     public static readonly Coding NormalPeakExpiratoryFlowRate = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Charcot-Marie-Tooth disease, type IC
     /// </summary>
     public static readonly Coding CharcotMarieToothDiseaseTypeIC = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital malformation of the endocrine glands
     /// </summary>
     public static readonly Coding CongenitalMalformationOfTheEndocrineGlands = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scaphoid head
     /// </summary>
     public static readonly Coding ScaphoidHead = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duplication of anus
     /// </summary>
     public static readonly Coding DuplicationOfAnus = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disability evaluation, impairment, class 5
     /// </summary>
     public static readonly Coding DisabilityEvaluationImpairmentClass5 = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 18p partial trisomy syndrome
     /// </summary>
     public static readonly Coding VAL18pPartialTrisomySyndrome = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed multiple fractures of both lower limbs
     /// </summary>
     public static readonly Coding ClosedMultipleFracturesOfBothLowerLimbs = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// OH - Ocular hypertension
     /// </summary>
     public static readonly Coding OHOcularHypertension = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parkinsonism caused by drug
     /// </summary>
     public static readonly Coding ParkinsonismCausedByDrug = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complication of infusion
     /// </summary>
     public static readonly Coding ComplicationOfInfusion = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal tuberculosis
     /// </summary>
     public static readonly Coding NasalTuberculosis = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phthisical eye
     /// </summary>
     public static readonly Coding PhthisicalEye = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic vulvitis
     /// </summary>
     public static readonly Coding ChronicVulvitis = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suppurative pulpitis
     /// </summary>
     public static readonly Coding SuppurativePulpitis = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rupture of aorta
     /// </summary>
     public static readonly Coding RuptureOfAorta = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Listeria infection
     /// </summary>
     public static readonly Coding ListeriaInfection = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 18q partial monosomy syndrome
     /// </summary>
     public static readonly Coding VAL18qPartialMonosomySyndrome = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urticaria neonatorum
     /// </summary>
     public static readonly Coding UrticariaNeonatorum = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Synovitis AND/OR tenosynovitis associated with another disease
     /// </summary>
     public static readonly Coding SynovitisANDORTenosynovitisAssociatedWithAnotherDisease = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poor peripheral circulation
     /// </summary>
     public static readonly Coding PoorPeripheralCirculation = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal eye sign
     /// </summary>
     public static readonly Coding InternalEyeSign = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sacral spinal cord injury without bone injury
     /// </summary>
     public static readonly Coding SacralSpinalCordInjuryWithoutBoneInjury = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial injury of ankle without infection
     /// </summary>
     public static readonly Coding SuperficialInjuryOfAnkleWithoutInfection = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebitis of superior sagittal sinus
     /// </summary>
     public static readonly Coding PhlebitisOfSuperiorSagittalSinus = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic pericoronitis
     /// </summary>
     public static readonly Coding ChronicPericoronitis = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic gastrojejunal ulcer without hemorrhage AND without perforation
     /// </summary>
     public static readonly Coding ChronicGastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed posterior dislocation of elbow
     /// </summary>
     public static readonly Coding ClosedPosteriorDislocationOfElbow = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conjugate gaze spasm
     /// </summary>
     public static readonly Coding ConjugateGazeSpasm = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial foreign body of axilla without major open wound but with infection
     /// </summary>
     public static readonly Coding SuperficialForeignBodyOfAxillaWithoutMajorOpenWoundButWithInfection = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mirizzi syndrome
     /// </summary>
     public static readonly Coding MirizziSyndrome = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chordee of penis
     /// </summary>
     public static readonly Coding ChordeeOfPenis = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isosexual precocious puberty
     /// </summary>
     public static readonly Coding IsosexualPrecociousPuberty = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep third degree burn of forearm
     /// </summary>
     public static readonly Coding DeepThirdDegreeBurnOfForearm = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autoimmune state
     /// </summary>
     public static readonly Coding AutoimmuneState = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cluster B personality disorder
     /// </summary>
     public static readonly Coding ClusterBPersonalityDisorder = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pregestational diabetes mellitus AND/OR impaired glucose tolerance, modified White class F
     /// </summary>
     public static readonly Coding PregestationalDiabetesMellitusANDORImpairedGlucoseToleranceModifiedWhiteClassF = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RSIS - Repetitive strain injury syndrome
     /// </summary>
     public static readonly Coding RSISRepetitiveStrainInjurySyndrome = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Third degree burn of wrist AND/OR hand
     /// </summary>
     public static readonly Coding ThirdDegreeBurnOfWristANDORHand = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypertrophy of scrotum
     /// </summary>
     public static readonly Coding HypertrophyOfScrotum = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acardiacus anceps
     /// </summary>
     public static readonly Coding AcardiacusAnceps = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myometritis
     /// </summary>
     public static readonly Coding Myometritis = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Factor V deficiency
     /// </summary>
     public static readonly Coding FactorVDeficiency = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subacute cystitis
     /// </summary>
     public static readonly Coding SubacuteCystitis = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 11q partial monosomy syndrome
     /// </summary>
     public static readonly Coding VAL11qPartialMonosomySyndrome = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subarachnoid hemorrhage following injury without open intracranial wound AND with concussion
     /// </summary>
     public static readonly Coding SubarachnoidHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithConcussion = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arnold nerve reflex cough syndrome
     /// </summary>
     public static readonly Coding ArnoldNerveReflexCoughSyndrome = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acrodermatitis chronica atrophicans
     /// </summary>
     public static readonly Coding AcrodermatitisChronicaAtrophicans = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open fracture of multiple sites of metacarpus
     /// </summary>
     public static readonly Coding OpenFractureOfMultipleSitesOfMetacarpus = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open dislocation of scapula
     /// </summary>
     public static readonly Coding OpenDislocationOfScapula = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gingival soft tissue recession
     /// </summary>
     public static readonly Coding GingivalSoftTissueRecession = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Early congenital syphilis
     /// </summary>
     public static readonly Coding EarlyCongenitalSyphilis = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of associations
     /// </summary>
     public static readonly Coding StructureOfAssociations = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hoover sign
     /// </summary>
     public static readonly Coding HooverSign = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormal composition of urine
     /// </summary>
     public static readonly Coding AbnormalCompositionOfUrine = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clubbing of nail
     /// </summary>
     public static readonly Coding ClubbingOfNail = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// TV - Congenital tricuspid valve abnormality
     /// </summary>
     public static readonly Coding TVCongenitalTricuspidValveAbnormality = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Verbal paraphasia
     /// </summary>
     public static readonly Coding VerbalParaphasia = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bronchospasm
     /// </summary>
     public static readonly Coding Bronchospasm = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic lithium nephrotoxicity
     /// </summary>
     public static readonly Coding ChronicLithiumNephrotoxicity = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial congenital duodenal obstruction
     /// </summary>
     public static readonly Coding PartialCongenitalDuodenalObstruction = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute hemorrhagic pancreatitis
     /// </summary>
     public static readonly Coding AcuteHemorrhagicPancreatitis = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Persistent hyperphenylalaninemia
     /// </summary>
     public static readonly Coding PersistentHyperphenylalaninemia = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exclamation point hair
     /// </summary>
     public static readonly Coding ExclamationPointHair = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital anomaly of male genital system
     /// </summary>
     public static readonly Coding CongenitalAnomalyOfMaleGenitalSystem = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Combined methylmalonic acidemia and homocystinuria due to defects in adenosylcobalamin and methylcobalamin synthesis
     /// </summary>
     public static readonly Coding CombinedMethylmalonicAcidemiaAndHomocystinuriaDueToDefectsInAdenosylcobalaminAndMethylcobalaminSynthesis = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retroperitoneal hernia with obstruction
     /// </summary>
     public static readonly Coding RetroperitonealHerniaWithObstruction = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Digital nerve injury
     /// </summary>
     public static readonly Coding DigitalNerveInjury = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infection caused by Setaria
     /// </summary>
     public static readonly Coding InfectionCausedBySetaria = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heerfordt syndrome
     /// </summary>
     public static readonly Coding HeerfordtSyndrome = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gangrenous ergotism
     /// </summary>
     public static readonly Coding GangrenousErgotism = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secondary hypopituitarism
     /// </summary>
     public static readonly Coding SecondaryHypopituitarism = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ten previous induced terminations of pregnancy
     /// </summary>
     public static readonly Coding TenPreviousInducedTerminationsOfPregnancy = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystocele affecting pregnancy
     /// </summary>
     public static readonly Coding CystoceleAffectingPregnancy = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BS - Bloom syndrome
     /// </summary>
     public static readonly Coding BSBloomSyndrome = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Axenfeld-Schurenberg syndrome
     /// </summary>
     public static readonly Coding AxenfeldSchurenbergSyndrome = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Severe bipolar disorder with psychotic features
     /// </summary>
     public static readonly Coding SevereBipolarDisorderWithPsychoticFeatures = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// TB - Urogenital tuberculosis
     /// </summary>
     public static readonly Coding TBUrogenitalTuberculosis = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Allergic headache
     /// </summary>
     public static readonly Coding AllergicHeadache = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Illegal termination of pregnancy with renal tubular necrosis
     /// </summary>
     public static readonly Coding IllegalTerminationOfPregnancyWithRenalTubularNecrosis = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complication of administrative procedure
     /// </summary>
     public static readonly Coding ComplicationOfAdministrativeProcedure = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indiana-Maryland type amyloid polyneuropathy
     /// </summary>
     public static readonly Coding IndianaMarylandTypeAmyloidPolyneuropathy = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rocio virus disease
     /// </summary>
     public static readonly Coding RocioVirusDisease = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spherophakia
     /// </summary>
     public static readonly Coding Spherophakia = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oppenheim gait
     /// </summary>
     public static readonly Coding OppenheimGait = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blanching of skin
     /// </summary>
     public static readonly Coding BlanchingOfSkin = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coach in sports activity accident
     /// </summary>
     public static readonly Coding CoachInSportsActivityAccident = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Migraine with aura
     /// </summary>
     public static readonly Coding MigraineWithAura = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Juvenile myopathy AND lactate acidosis
     /// </summary>
     public static readonly Coding JuvenileMyopathyANDLactateAcidosis = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple fractures of upper AND lower limbs
     /// </summary>
     public static readonly Coding MultipleFracturesOfUpperANDLowerLimbs = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormal gastric secretion regulation
     /// </summary>
     public static readonly Coding AbnormalGastricSecretionRegulation = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Syphilitic punched out ulcer
     /// </summary>
     public static readonly Coding SyphiliticPunchedOutUlcer = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ulcerative stomatitis
     /// </summary>
     public static readonly Coding UlcerativeStomatitis = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blister of groin without infection
     /// </summary>
     public static readonly Coding BlisterOfGroinWithoutInfection = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Squamous metaplasia of prostate gland
     /// </summary>
     public static readonly Coding SquamousMetaplasiaOfProstateGland = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Old laceration of pelvic floor muscle
     /// </summary>
     public static readonly Coding OldLacerationOfPelvicFloorMuscle = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitreous touch syndrome
     /// </summary>
     public static readonly Coding VitreousTouchSyndrome = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Graves' disease with pretibial myxedema AND with thyrotoxic crisis
     /// </summary>
     public static readonly Coding GravesQuoteDiseaseWithPretibialMyxedemaANDWithThyrotoxicCrisis = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute vascular insufficiency
     /// </summary>
     public static readonly Coding AcuteVascularInsufficiency = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibroid myocarditis
     /// </summary>
     public static readonly Coding FibroidMyocarditis = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Upper respiratory tract hypersensitivity reaction
     /// </summary>
     public static readonly Coding UpperRespiratoryTractHypersensitivityReaction = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed traumatic dislocation of third cervical vertebra
     /// </summary>
     public static readonly Coding ClosedTraumaticDislocationOfThirdCervicalVertebra = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Androgen-dependent hirsutism
     /// </summary>
     public static readonly Coding AndrogenDependentHirsutism = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foreign body in hypopharynx
     /// </summary>
     public static readonly Coding ForeignBodyInHypopharynx = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple aggregation
     /// </summary>
     public static readonly Coding MultipleAggregation = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital bent nose
     /// </summary>
     public static readonly Coding CongenitalBentNose = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spontaneous fetal evolution, Roederer's method
     /// </summary>
     public static readonly Coding SpontaneousFetalEvolutionRoedererQuoteSMethod = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glissonian cirrhosis
     /// </summary>
     public static readonly Coding GlissonianCirrhosis = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conjunctival argyrosis
     /// </summary>
     public static readonly Coding ConjunctivalArgyrosis = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypersecretion of calcitonin
     /// </summary>
     public static readonly Coding HypersecretionOfCalcitonin = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 13p partial trisomy syndrome
     /// </summary>
     public static readonly Coding VAL13pPartialTrisomySyndrome = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 2p partial trisomy syndrome
     /// </summary>
     public static readonly Coding VAL2pPartialTrisomySyndrome = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dicentra species poisoning
     /// </summary>
     public static readonly Coding DicentraSpeciesPoisoning = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nystagmus
     /// </summary>
     public static readonly Coding Nystagmus = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Habit disorder
     /// </summary>
     public static readonly Coding HabitDisorder = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contact dermatitis due to primrose
     /// </summary>
     public static readonly Coding ContactDermatitisDueToPrimrose = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital aneurysm of anterior communicating artery
     /// </summary>
     public static readonly Coding CongenitalAneurysmOfAnteriorCommunicatingArtery = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Premenstrual dysphoric disorder
     /// </summary>
     public static readonly Coding PremenstrualDysphoricDisorder = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Persistent pneumothorax
     /// </summary>
     public static readonly Coding PersistentPneumothorax = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyromania
     /// </summary>
     public static readonly Coding Pyromania = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ross river fever
     /// </summary>
     public static readonly Coding RossRiverFever = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased vital capacity
     /// </summary>
     public static readonly Coding DecreasedVitalCapacity = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spastic aphonia
     /// </summary>
     public static readonly Coding SpasticAphonia = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FRAXA - Fragile X syndrome
     /// </summary>
     public static readonly Coding FRAXAFragileXSyndrome = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstruction due to foreign body accidentally left in operative wound AND/OR body cavity during a procedure
     /// </summary>
     public static readonly Coding ObstructionDueToForeignBodyAccidentallyLeftInOperativeWoundANDORBodyCavityDuringAProcedure = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sensorimotor disorder of eyelid
     /// </summary>
     public static readonly Coding SensorimotorDisorderOfEyelid = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypercortisolism due to nonpituitary tumor
     /// </summary>
     public static readonly Coding HypercortisolismDueToNonpituitaryTumor = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transfusion reaction due to minor incompatibility
     /// </summary>
     public static readonly Coding TransfusionReactionDueToMinorIncompatibility = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saddle boil
     /// </summary>
     public static readonly Coding SaddleBoil = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injury of pneumogastric nerve
     /// </summary>
     public static readonly Coding InjuryOfPneumogastricNerve = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypertrophy of lip
     /// </summary>
     public static readonly Coding HypertrophyOfLip = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Idiopathic cyst of anterior chamber
     /// </summary>
     public static readonly Coding IdiopathicCystOfAnteriorChamber = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open fracture of distal end of ulna
     /// </summary>
     public static readonly Coding OpenFractureOfDistalEndOfUlna = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Root work
     /// </summary>
     public static readonly Coding RootWork = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gangrenous tonsillitis
     /// </summary>
     public static readonly Coding GangrenousTonsillitis = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormal fetal heart beat noted before labor in liveborn infant
     /// </summary>
     public static readonly Coding AbnormalFetalHeartBeatNotedBeforeLaborInLivebornInfant = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injury of colon without open wound into abdominal cavity
     /// </summary>
     public static readonly Coding InjuryOfColonWithoutOpenWoundIntoAbdominalCavity = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary embolism following molar AND/OR ectopic pregnancy
     /// </summary>
     public static readonly Coding PulmonaryEmbolismFollowingMolarANDOREctopicPregnancy = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed ovulation
     /// </summary>
     public static readonly Coding DelayedOvulation = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poisoning by antivaricose drug AND/OR sclerosing agent
     /// </summary>
     public static readonly Coding PoisoningByAntivaricoseDrugANDORSclerosingAgent = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Torsion of intestine
     /// </summary>
     public static readonly Coding TorsionOfIntestine = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrombosis complicating pregnancy AND/OR puerperium
     /// </summary>
     public static readonly Coding ThrombosisComplicatingPregnancyANDORPuerperium = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquired telangiectasia of small AND/OR large intestines
     /// </summary>
     public static readonly Coding AcquiredTelangiectasiaOfSmallANDORLargeIntestines = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult osteochondritis of spine
     /// </summary>
     public static readonly Coding AdultOsteochondritisOfSpine = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital adhesion of tongue
     /// </summary>
     public static readonly Coding CongenitalAdhesionOfTongue = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abrasion AND/OR friction burn of toe with infection
     /// </summary>
     public static readonly Coding AbrasionANDORFrictionBurnOfToeWithInfection = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nontraumatic rupture of urethra
     /// </summary>
     public static readonly Coding NontraumaticRuptureOfUrethra = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute bronchiolitis with obstruction
     /// </summary>
     public static readonly Coding AcuteBronchiolitisWithObstruction = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial foreign body of groin without major open wound but with infection
     /// </summary>
     public static readonly Coding SuperficialForeignBodyOfGroinWithoutMajorOpenWoundButWithInfection = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Opocephalus
     /// </summary>
     public static readonly Coding Opocephalus = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abscess of hip
     /// </summary>
     public static readonly Coding AbscessOfHip = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schistosoma mansoni infection
     /// </summary>
     public static readonly Coding SchistosomaMansoniInfection = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postgastrectomy phytobezoar
     /// </summary>
     public static readonly Coding PostgastrectomyPhytobezoar = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic rheumatic myopericarditis
     /// </summary>
     public static readonly Coding ChronicRheumaticMyopericarditis = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyst of uterus
     /// </summary>
     public static readonly Coding CystOfUterus = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wound of head with complication
     /// </summary>
     public static readonly Coding OpenWoundOfHeadWithComplication = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial arterial retinal occlusion
     /// </summary>
     public static readonly Coding PartialArterialRetinalOcclusion = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cestrum diurnum poisoning
     /// </summary>
     public static readonly Coding CestrumDiurnumPoisoning = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical stage I B
     /// </summary>
     public static readonly Coding ClinicalStageIB = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rheumatic mitral stenosis with regurgitation
     /// </summary>
     public static readonly Coding RheumaticMitralStenosisWithRegurgitation = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disease-related diet
     /// </summary>
     public static readonly Coding DiseaseRelatedDiet = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CJD - Creutzfeldt-Jakob disease
     /// </summary>
     public static readonly Coding CJDCreutzfeldtJakobDisease = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sigmoid colon ulcer
     /// </summary>
     public static readonly Coding SigmoidColonUlcer = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insect bite, nonvenomous, of foot, infected
     /// </summary>
     public static readonly Coding InsectBiteNonvenomousOfFootInfected = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pneumoconiosis due to silica
     /// </summary>
     public static readonly Coding PneumoconiosisDueToSilica = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flail motion
     /// </summary>
     public static readonly Coding FlailMotion = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ankle instability
     /// </summary>
     public static readonly Coding AnkleInstability = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Episcleritis
     /// </summary>
     public static readonly Coding Episcleritis = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Genetic recombination
     /// </summary>
     public static readonly Coding GeneticRecombination = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Third degree burn of multiple sites of lower limb
     /// </summary>
     public static readonly Coding ThirdDegreeBurnOfMultipleSitesOfLowerLimb = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial injury of axilla with infection
     /// </summary>
     public static readonly Coding SuperficialInjuryOfAxillaWithInfection = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Late congenital syphilis, latent (+ sero., - C.S.F., 2 years OR more)
     /// </summary>
     public static readonly Coding LateCongenitalSyphilisLatentPlusSeroCSF2YearsORMore = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moderate major depression
     /// </summary>
     public static readonly Coding ModerateMajorDepression = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chair-seated facing coital position
     /// </summary>
     public static readonly Coding ChairSeatedFacingCoitalPosition = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital absence of skull bone
     /// </summary>
     public static readonly Coding CongenitalAbsenceOfSkullBone = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consanguinity
     /// </summary>
     public static readonly Coding Consanguinity = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poliomyelomalacia
     /// </summary>
     public static readonly Coding Poliomyelomalacia = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Finding relating to behavior
     /// </summary>
     public static readonly Coding FindingRelatingToBehavior = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior mesenteric artery injury
     /// </summary>
     public static readonly Coding InferiorMesentericArteryInjury = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total cataract
     /// </summary>
     public static readonly Coding TotalCataract = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Erythema simplex
     /// </summary>
     public static readonly Coding ErythemaSimplex = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anemia due to chlorate
     /// </summary>
     public static readonly Coding AnemiaDueToChlorate = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyperalimentation formula for ileus
     /// </summary>
     public static readonly Coding HyperalimentationFormulaForIleus = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contracted pelvis
     /// </summary>
     public static readonly Coding ContractedPelvis = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Therapeutic diuresis
     /// </summary>
     public static readonly Coding TherapeuticDiuresis = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chalcosis of eye
     /// </summary>
     public static readonly Coding ChalcosisOfEye = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foetal or neonatal effect of maternal blood loss
     /// </summary>
     public static readonly Coding FoetalOrNeonatalEffectOfMaternalBloodLoss = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep third degree burn of elbow
     /// </summary>
     public static readonly Coding DeepThirdDegreeBurnOfElbow = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Axis I diagnosis
     /// </summary>
     public static readonly Coding AxisIDiagnosis = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chorioretinal infarction
     /// </summary>
     public static readonly Coding ChorioretinalInfarction = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pinard's sign
     /// </summary>
     public static readonly Coding PinardQuoteSSign = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial injury of interscapular region without infection
     /// </summary>
     public static readonly Coding SuperficialInjuryOfInterscapularRegionWithoutInfection = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pseudohomosexual state
     /// </summary>
     public static readonly Coding PseudohomosexualState = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Musculoskeletal disorder
     /// </summary>
     public static readonly Coding MusculoskeletalDisorder = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gestation period, 9 weeks
     /// </summary>
     public static readonly Coding GestationPeriod9Weeks = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flat affect
     /// </summary>
     public static readonly Coding FlatAffect = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thalassemia intermedia
     /// </summary>
     public static readonly Coding ThalassemiaIntermedia = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital retinal aneurysm
     /// </summary>
     public static readonly Coding CongenitalRetinalAneurysm = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renon-Delille syndrome
     /// </summary>
     public static readonly Coding RenonDelilleSyndrome = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Erythema nodosum, acute form
     /// </summary>
     public static readonly Coding ErythemaNodosumAcuteForm = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disability evaluation, disability 6%
     /// </summary>
     public static readonly Coding DisabilityEvaluationDisability6Percent = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wound of pharynx without complication
     /// </summary>
     public static readonly Coding OpenWoundOfPharynxWithoutComplication = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxic amblyopia
     /// </summary>
     public static readonly Coding ToxicAmblyopia = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anorectal agenesis
     /// </summary>
     public static readonly Coding AnorectalAgenesis = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic infantile eczema
     /// </summary>
     public static readonly Coding ChronicInfantileEczema = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemorrhagic proctitis
     /// </summary>
     public static readonly Coding HemorrhagicProctitis = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perirectal cellulitis
     /// </summary>
     public static readonly Coding PerirectalCellulitis = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cellulitis of temple region
     /// </summary>
     public static readonly Coding CellulitisOfTempleRegion = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wide QRS complex
     /// </summary>
     public static readonly Coding WideQRSComplex = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chagas' disease with heart involvement
     /// </summary>
     public static readonly Coding ChagasQuoteDiseaseWithHeartInvolvement = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReligiousDiscrimination = "1003002";
 
     /// <summary>
+    /// Literal for code: NONEReligiousDiscrimination
+    /// </summary>
+    public const string LiteralNONEReligiousDiscrimination = "http://snomed.info/sct#1003002";
+
+    /// <summary>
     /// Literal for code: DiseaseDueToNairovirus
     /// </summary>
     public const string LiteralDiseaseDueToNairovirus = "1020003";
+
+    /// <summary>
+    /// Literal for code: NONEDiseaseDueToNairovirus
+    /// </summary>
+    public const string LiteralNONEDiseaseDueToNairovirus = "http://snomed.info/sct#1020003";
 
     /// <summary>
     /// Literal for code: Apneic
@@ -9028,9 +9038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApneic = "1023001";
 
     /// <summary>
+    /// Literal for code: NONEApneic
+    /// </summary>
+    public const string LiteralNONEApneic = "http://snomed.info/sct#1023001";
+
+    /// <summary>
     /// Literal for code: BiliaryEsophagitis
     /// </summary>
     public const string LiteralBiliaryEsophagitis = "1027000";
+
+    /// <summary>
+    /// Literal for code: NONEBiliaryEsophagitis
+    /// </summary>
+    public const string LiteralNONEBiliaryEsophagitis = "http://snomed.info/sct#1027000";
 
     /// <summary>
     /// Literal for code: OpenWoundOfTracheaWithoutComplication
@@ -9038,9 +9058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenWoundOfTracheaWithoutComplication = "1031006";
 
     /// <summary>
+    /// Literal for code: NONEOpenWoundOfTracheaWithoutComplication
+    /// </summary>
+    public const string LiteralNONEOpenWoundOfTracheaWithoutComplication = "http://snomed.info/sct#1031006";
+
+    /// <summary>
     /// Literal for code: ThoracicArthritis
     /// </summary>
     public const string LiteralThoracicArthritis = "1033009";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicArthritis
+    /// </summary>
+    public const string LiteralNONEThoracicArthritis = "http://snomed.info/sct#1033009";
 
     /// <summary>
     /// Literal for code: MesentericPortalFistula
@@ -9048,9 +9078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMesentericPortalFistula = "1034003";
 
     /// <summary>
+    /// Literal for code: NONEMesentericPortalFistula
+    /// </summary>
+    public const string LiteralNONEMesentericPortalFistula = "http://snomed.info/sct#1034003";
+
+    /// <summary>
     /// Literal for code: Disacchariduria
     /// </summary>
     public const string LiteralDisacchariduria = "1038000";
+
+    /// <summary>
+    /// Literal for code: NONEDisacchariduria
+    /// </summary>
+    public const string LiteralNONEDisacchariduria = "http://snomed.info/sct#1038000";
 
     /// <summary>
     /// Literal for code: Colonospasm
@@ -9058,9 +9098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColonospasm = "1045000";
 
     /// <summary>
+    /// Literal for code: NONEColonospasm
+    /// </summary>
+    public const string LiteralNONEColonospasm = "http://snomed.info/sct#1045000";
+
+    /// <summary>
     /// Literal for code: UreteritisGlandularis
     /// </summary>
     public const string LiteralUreteritisGlandularis = "1046004";
+
+    /// <summary>
+    /// Literal for code: NONEUreteritisGlandularis
+    /// </summary>
+    public const string LiteralNONEUreteritisGlandularis = "http://snomed.info/sct#1046004";
 
     /// <summary>
     /// Literal for code: HyperplasiaOfIsletAlphaCellsWithGastrinExcess
@@ -9068,9 +9118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHyperplasiaOfIsletAlphaCellsWithGastrinExcess = "1051005";
 
     /// <summary>
+    /// Literal for code: NONEHyperplasiaOfIsletAlphaCellsWithGastrinExcess
+    /// </summary>
+    public const string LiteralNONEHyperplasiaOfIsletAlphaCellsWithGastrinExcess = "http://snomed.info/sct#1051005";
+
+    /// <summary>
     /// Literal for code: StenosisOfPrecerebralArtery
     /// </summary>
     public const string LiteralStenosisOfPrecerebralArtery = "1055001";
+
+    /// <summary>
+    /// Literal for code: NONEStenosisOfPrecerebralArtery
+    /// </summary>
+    public const string LiteralNONEStenosisOfPrecerebralArtery = "http://snomed.info/sct#1055001";
 
     /// <summary>
     /// Literal for code: Opisthorchiasis
@@ -9078,9 +9138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpisthorchiasis = "1059007";
 
     /// <summary>
+    /// Literal for code: NONEOpisthorchiasis
+    /// </summary>
+    public const string LiteralNONEOpisthorchiasis = "http://snomed.info/sct#1059007";
+
+    /// <summary>
     /// Literal for code: FacialMyokymia
     /// </summary>
     public const string LiteralFacialMyokymia = "1070000";
+
+    /// <summary>
+    /// Literal for code: NONEFacialMyokymia
+    /// </summary>
+    public const string LiteralNONEFacialMyokymia = "http://snomed.info/sct#1070000";
 
     /// <summary>
     /// Literal for code: XerodermaPigmentosumGroupB
@@ -9088,9 +9158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralXerodermaPigmentosumGroupB = "1073003";
 
     /// <summary>
+    /// Literal for code: NONEXerodermaPigmentosumGroupB
+    /// </summary>
+    public const string LiteralNONEXerodermaPigmentosumGroupB = "http://snomed.info/sct#1073003";
+
+    /// <summary>
     /// Literal for code: GlucocorticoidResponsivePrimaryHyperaldosteronism
     /// </summary>
     public const string LiteralGlucocorticoidResponsivePrimaryHyperaldosteronism = "1074009";
+
+    /// <summary>
+    /// Literal for code: NONEGlucocorticoidResponsivePrimaryHyperaldosteronism
+    /// </summary>
+    public const string LiteralNONEGlucocorticoidResponsivePrimaryHyperaldosteronism = "http://snomed.info/sct#1074009";
 
     /// <summary>
     /// Literal for code: SeptalInfarctionByEKG
@@ -9098,9 +9178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSeptalInfarctionByEKG = "1077002";
 
     /// <summary>
+    /// Literal for code: NONESeptalInfarctionByEKG
+    /// </summary>
+    public const string LiteralNONESeptalInfarctionByEKG = "http://snomed.info/sct#1077002";
+
+    /// <summary>
     /// Literal for code: MacularRetinalCyst
     /// </summary>
     public const string LiteralMacularRetinalCyst = "1079004";
+
+    /// <summary>
+    /// Literal for code: NONEMacularRetinalCyst
+    /// </summary>
+    public const string LiteralNONEMacularRetinalCyst = "http://snomed.info/sct#1079004";
 
     /// <summary>
     /// Literal for code: VulvalCandidiasis
@@ -9108,9 +9198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVulvalCandidiasis = "1085006";
 
     /// <summary>
+    /// Literal for code: NONEVulvalCandidiasis
+    /// </summary>
+    public const string LiteralNONEVulvalCandidiasis = "http://snomed.info/sct#1085006";
+
+    /// <summary>
     /// Literal for code: CongenitalSepsis
     /// </summary>
     public const string LiteralCongenitalSepsis = "1089000";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalSepsis
+    /// </summary>
+    public const string LiteralNONECongenitalSepsis = "http://snomed.info/sct#1089000";
 
     /// <summary>
     /// Literal for code: AnxietyDisorderOfChildhoodORAdolescence
@@ -9118,9 +9218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnxietyDisorderOfChildhoodORAdolescence = "109006";
 
     /// <summary>
+    /// Literal for code: NONEAnxietyDisorderOfChildhoodORAdolescence
+    /// </summary>
+    public const string LiteralNONEAnxietyDisorderOfChildhoodORAdolescence = "http://snomed.info/sct#109006";
+
+    /// <summary>
     /// Literal for code: IntraerythrocyticParasitosisByNuttallia
     /// </summary>
     public const string LiteralIntraerythrocyticParasitosisByNuttallia = "1102005";
+
+    /// <summary>
+    /// Literal for code: NONEIntraerythrocyticParasitosisByNuttallia
+    /// </summary>
+    public const string LiteralNONEIntraerythrocyticParasitosisByNuttallia = "http://snomed.info/sct#1102005";
 
     /// <summary>
     /// Literal for code: EarlyLatentSyphilisPositiveSerologyNegativeCerebrospinalFluidWithRelapseAfterTreatment
@@ -9128,9 +9238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarlyLatentSyphilisPositiveSerologyNegativeCerebrospinalFluidWithRelapseAfterTreatment = "1107004";
 
     /// <summary>
+    /// Literal for code: NONEEarlyLatentSyphilisPositiveSerologyNegativeCerebrospinalFluidWithRelapseAfterTreatment
+    /// </summary>
+    public const string LiteralNONEEarlyLatentSyphilisPositiveSerologyNegativeCerebrospinalFluidWithRelapseAfterTreatment = "http://snomed.info/sct#1107004";
+
+    /// <summary>
     /// Literal for code: FemalePatternAlopecia
     /// </summary>
     public const string LiteralFemalePatternAlopecia = "1108009";
+
+    /// <summary>
+    /// Literal for code: NONEFemalePatternAlopecia
+    /// </summary>
+    public const string LiteralNONEFemalePatternAlopecia = "http://snomed.info/sct#1108009";
 
     /// <summary>
     /// Literal for code: NormalSebaceousGlandActivity
@@ -9138,9 +9258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNormalSebaceousGlandActivity = "1111005";
 
     /// <summary>
+    /// Literal for code: NONENormalSebaceousGlandActivity
+    /// </summary>
+    public const string LiteralNONENormalSebaceousGlandActivity = "http://snomed.info/sct#1111005";
+
+    /// <summary>
     /// Literal for code: DegenerativeDisorderOfEyelid
     /// </summary>
     public const string LiteralDegenerativeDisorderOfEyelid = "1112003";
+
+    /// <summary>
+    /// Literal for code: NONEDegenerativeDisorderOfEyelid
+    /// </summary>
+    public const string LiteralNONEDegenerativeDisorderOfEyelid = "http://snomed.info/sct#1112003";
 
     /// <summary>
     /// Literal for code: ChronicAggressiveTypeBViralHepatitis
@@ -9148,9 +9278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicAggressiveTypeBViralHepatitis = "1116000";
 
     /// <summary>
+    /// Literal for code: NONEChronicAggressiveTypeBViralHepatitis
+    /// </summary>
+    public const string LiteralNONEChronicAggressiveTypeBViralHepatitis = "http://snomed.info/sct#1116000";
+
+    /// <summary>
     /// Literal for code: PostpartumPeriod6Days
     /// </summary>
     public const string LiteralPostpartumPeriod6Days = "1124005";
+
+    /// <summary>
+    /// Literal for code: NONEPostpartumPeriod6Days
+    /// </summary>
+    public const string LiteralNONEPostpartumPeriod6Days = "http://snomed.info/sct#1124005";
 
     /// <summary>
     /// Literal for code: SepticemiaDuringLabor
@@ -9158,9 +9298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSepticemiaDuringLabor = "1125006";
 
     /// <summary>
+    /// Literal for code: NONESepticemiaDuringLabor
+    /// </summary>
+    public const string LiteralNONESepticemiaDuringLabor = "http://snomed.info/sct#1125006";
+
+    /// <summary>
     /// Literal for code: KneeLocking
     /// </summary>
     public const string LiteralKneeLocking = "1126007";
+
+    /// <summary>
+    /// Literal for code: NONEKneeLocking
+    /// </summary>
+    public const string LiteralNONEKneeLocking = "http://snomed.info/sct#1126007";
 
     /// <summary>
     /// Literal for code: CongenitalValvularInsufficiency
@@ -9168,9 +9318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalValvularInsufficiency = "1131009";
 
     /// <summary>
+    /// Literal for code: NONECongenitalValvularInsufficiency
+    /// </summary>
+    public const string LiteralNONECongenitalValvularInsufficiency = "http://snomed.info/sct#1131009";
+
+    /// <summary>
     /// Literal for code: MuehrckeLines
     /// </summary>
     public const string LiteralMuehrckeLines = "1134001";
+
+    /// <summary>
+    /// Literal for code: NONEMuehrckeLines
+    /// </summary>
+    public const string LiteralNONEMuehrckeLines = "http://snomed.info/sct#1134001";
 
     /// <summary>
     /// Literal for code: SolarRetinitis
@@ -9178,9 +9338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSolarRetinitis = "1135000";
 
     /// <summary>
+    /// Literal for code: NONESolarRetinitis
+    /// </summary>
+    public const string LiteralNONESolarRetinitis = "http://snomed.info/sct#1135000";
+
+    /// <summary>
     /// Literal for code: ConfrontationVisualTest
     /// </summary>
     public const string LiteralConfrontationVisualTest = "1139006";
+
+    /// <summary>
+    /// Literal for code: NONEConfrontationVisualTest
+    /// </summary>
+    public const string LiteralNONEConfrontationVisualTest = "http://snomed.info/sct#1139006";
 
     /// <summary>
     /// Literal for code: ThermalHypesthesia
@@ -9188,9 +9358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThermalHypesthesia = "1140008";
 
     /// <summary>
+    /// Literal for code: NONEThermalHypesthesia
+    /// </summary>
+    public const string LiteralNONEThermalHypesthesia = "http://snomed.info/sct#1140008";
+
+    /// <summary>
     /// Literal for code: CircumoralParesthesia
     /// </summary>
     public const string LiteralCircumoralParesthesia = "1141007";
+
+    /// <summary>
+    /// Literal for code: NONECircumoralParesthesia
+    /// </summary>
+    public const string LiteralNONECircumoralParesthesia = "http://snomed.info/sct#1141007";
 
     /// <summary>
     /// Literal for code: DSDDevelopmentalSpeechDisorder
@@ -9198,9 +9378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDSDDevelopmentalSpeechDisorder = "1145003";
 
     /// <summary>
+    /// Literal for code: NONEDSDDevelopmentalSpeechDisorder
+    /// </summary>
+    public const string LiteralNONEDSDDevelopmentalSpeechDisorder = "http://snomed.info/sct#1145003";
+
+    /// <summary>
     /// Literal for code: CongenitalMicrocheilia
     /// </summary>
     public const string LiteralCongenitalMicrocheilia = "1150009";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalMicrocheilia
+    /// </summary>
+    public const string LiteralNONECongenitalMicrocheilia = "http://snomed.info/sct#1150009";
 
     /// <summary>
     /// Literal for code: ConstrictedVisualField
@@ -9208,9 +9398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConstrictedVisualField = "1151008";
 
     /// <summary>
+    /// Literal for code: NONEConstrictedVisualField
+    /// </summary>
+    public const string LiteralNONEConstrictedVisualField = "http://snomed.info/sct#1151008";
+
+    /// <summary>
     /// Literal for code: SkinReactionNegative
     /// </summary>
     public const string LiteralSkinReactionNegative = "1152001";
+
+    /// <summary>
+    /// Literal for code: NONESkinReactionNegative
+    /// </summary>
+    public const string LiteralNONESkinReactionNegative = "http://snomed.info/sct#1152001";
 
     /// <summary>
     /// Literal for code: MyocardialHypertrophyDeterminedByElectrocardiogram
@@ -9218,9 +9418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMyocardialHypertrophyDeterminedByElectrocardiogram = "1155004";
 
     /// <summary>
+    /// Literal for code: NONEMyocardialHypertrophyDeterminedByElectrocardiogram
+    /// </summary>
+    public const string LiteralNONEMyocardialHypertrophyDeterminedByElectrocardiogram = "http://snomed.info/sct#1155004";
+
+    /// <summary>
     /// Literal for code: CavitaryProstatitis
     /// </summary>
     public const string LiteralCavitaryProstatitis = "1156003";
+
+    /// <summary>
+    /// Literal for code: NONECavitaryProstatitis
+    /// </summary>
+    public const string LiteralNONECavitaryProstatitis = "http://snomed.info/sct#1156003";
 
     /// <summary>
     /// Literal for code: Allotype
@@ -9228,9 +9438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAllotype = "1168007";
 
     /// <summary>
+    /// Literal for code: NONEAllotype
+    /// </summary>
+    public const string LiteralNONEAllotype = "http://snomed.info/sct#1168007";
+
+    /// <summary>
     /// Literal for code: GlasgowComaScale10
     /// </summary>
     public const string LiteralGlasgowComaScale10 = "1184008";
+
+    /// <summary>
+    /// Literal for code: NONEGlasgowComaScale10
+    /// </summary>
+    public const string LiteralNONEGlasgowComaScale10 = "http://snomed.info/sct#1184008";
 
     /// <summary>
     /// Literal for code: FamilialAmyloidNeuropathyFinnishType
@@ -9238,9 +9458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFamilialAmyloidNeuropathyFinnishType = "1192004";
 
     /// <summary>
+    /// Literal for code: NONEFamilialAmyloidNeuropathyFinnishType
+    /// </summary>
+    public const string LiteralNONEFamilialAmyloidNeuropathyFinnishType = "http://snomed.info/sct#1192004";
+
+    /// <summary>
     /// Literal for code: DiseaseConditionDeterminationWellControlled
     /// </summary>
     public const string LiteralDiseaseConditionDeterminationWellControlled = "1194003";
+
+    /// <summary>
+    /// Literal for code: NONEDiseaseConditionDeterminationWellControlled
+    /// </summary>
+    public const string LiteralNONEDiseaseConditionDeterminationWellControlled = "http://snomed.info/sct#1194003";
 
     /// <summary>
     /// Literal for code: ChronicBipolarIIDisorderMostRecentEpisodeMajorDepressive
@@ -9248,9 +9478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicBipolarIIDisorderMostRecentEpisodeMajorDepressive = "1196001";
 
     /// <summary>
+    /// Literal for code: NONEChronicBipolarIIDisorderMostRecentEpisodeMajorDepressive
+    /// </summary>
+    public const string LiteralNONEChronicBipolarIIDisorderMostRecentEpisodeMajorDepressive = "http://snomed.info/sct#1196001";
+
+    /// <summary>
     /// Literal for code: CarbuncleOfHeel
     /// </summary>
     public const string LiteralCarbuncleOfHeel = "1197005";
+
+    /// <summary>
+    /// Literal for code: NONECarbuncleOfHeel
+    /// </summary>
+    public const string LiteralNONECarbuncleOfHeel = "http://snomed.info/sct#1197005";
 
     /// <summary>
     /// Literal for code: BenignEssentialHypertension
@@ -9258,9 +9498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBenignEssentialHypertension = "1201005";
 
     /// <summary>
+    /// Literal for code: NONEBenignEssentialHypertension
+    /// </summary>
+    public const string LiteralNONEBenignEssentialHypertension = "http://snomed.info/sct#1201005";
+
+    /// <summary>
     /// Literal for code: DeepThirdDegreeBurnOfForeheadANDORCheekWithLossOfBodyPart
     /// </summary>
     public const string LiteralDeepThirdDegreeBurnOfForeheadANDORCheekWithLossOfBodyPart = "1203008";
+
+    /// <summary>
+    /// Literal for code: NONEDeepThirdDegreeBurnOfForeheadANDORCheekWithLossOfBodyPart
+    /// </summary>
+    public const string LiteralNONEDeepThirdDegreeBurnOfForeheadANDORCheekWithLossOfBodyPart = "http://snomed.info/sct#1203008";
 
     /// <summary>
     /// Literal for code: OpticDiscGlaucomatousAtrophy
@@ -9268,9 +9518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpticDiscGlaucomatousAtrophy = "1207009";
 
     /// <summary>
+    /// Literal for code: NONEOpticDiscGlaucomatousAtrophy
+    /// </summary>
+    public const string LiteralNONEOpticDiscGlaucomatousAtrophy = "http://snomed.info/sct#1207009";
+
+    /// <summary>
     /// Literal for code: Gastroptosis
     /// </summary>
     public const string LiteralGastroptosis = "1208004";
+
+    /// <summary>
+    /// Literal for code: NONEGastroptosis
+    /// </summary>
+    public const string LiteralNONEGastroptosis = "http://snomed.info/sct#1208004";
 
     /// <summary>
     /// Literal for code: JuvenileDermatomyositis
@@ -9278,9 +9538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJuvenileDermatomyositis = "1212005";
 
     /// <summary>
+    /// Literal for code: NONEJuvenileDermatomyositis
+    /// </summary>
+    public const string LiteralNONEJuvenileDermatomyositis = "http://snomed.info/sct#1212005";
+
+    /// <summary>
     /// Literal for code: InfectionByStrongyloides
     /// </summary>
     public const string LiteralInfectionByStrongyloides = "1214006";
+
+    /// <summary>
+    /// Literal for code: NONEInfectionByStrongyloides
+    /// </summary>
+    public const string LiteralNONEInfectionByStrongyloides = "http://snomed.info/sct#1214006";
 
     /// <summary>
     /// Literal for code: ChoroidalHemorrhage
@@ -9288,9 +9558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChoroidalHemorrhage = "122003";
 
     /// <summary>
+    /// Literal for code: NONEChoroidalHemorrhage
+    /// </summary>
+    public const string LiteralNONEChoroidalHemorrhage = "http://snomed.info/sct#122003";
+
+    /// <summary>
     /// Literal for code: NoDiagnosisOnAxis1
     /// </summary>
     public const string LiteralNoDiagnosisOnAxis1 = "1230003";
+
+    /// <summary>
+    /// Literal for code: NONENoDiagnosisOnAxis1
+    /// </summary>
+    public const string LiteralNONENoDiagnosisOnAxis1 = "http://snomed.info/sct#1230003";
 
     /// <summary>
     /// Literal for code: CongenitalArticularRigidityWithMyopathy
@@ -9298,9 +9578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalArticularRigidityWithMyopathy = "1232006";
 
     /// <summary>
+    /// Literal for code: NONECongenitalArticularRigidityWithMyopathy
+    /// </summary>
+    public const string LiteralNONECongenitalArticularRigidityWithMyopathy = "http://snomed.info/sct#1232006";
+
+    /// <summary>
     /// Literal for code: CongenitalAnteversionOfFemoralNeck
     /// </summary>
     public const string LiteralCongenitalAnteversionOfFemoralNeck = "1239002";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalAnteversionOfFemoralNeck
+    /// </summary>
+    public const string LiteralNONECongenitalAnteversionOfFemoralNeck = "http://snomed.info/sct#1239002";
 
     /// <summary>
     /// Literal for code: LyingProne
@@ -9308,9 +9598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLyingProne = "1240000";
 
     /// <summary>
+    /// Literal for code: NONELyingProne
+    /// </summary>
+    public const string LiteralNONELyingProne = "http://snomed.info/sct#1240000";
+
+    /// <summary>
     /// Literal for code: Schistosis
     /// </summary>
     public const string LiteralSchistosis = "1259003";
+
+    /// <summary>
+    /// Literal for code: NONESchistosis
+    /// </summary>
+    public const string LiteralNONESchistosis = "http://snomed.info/sct#1259003";
 
     /// <summary>
     /// Literal for code: MultipleFracturesOfRibs
@@ -9318,9 +9618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultipleFracturesOfRibs = "1261007";
 
     /// <summary>
+    /// Literal for code: NONEMultipleFracturesOfRibs
+    /// </summary>
+    public const string LiteralNONEMultipleFracturesOfRibs = "http://snomed.info/sct#1261007";
+
+    /// <summary>
     /// Literal for code: InjuryOfDescendingLeftColonWithoutOpenWoundIntoAbdominalCavity
     /// </summary>
     public const string LiteralInjuryOfDescendingLeftColonWithoutOpenWoundIntoAbdominalCavity = "1264004";
+
+    /// <summary>
+    /// Literal for code: NONEInjuryOfDescendingLeftColonWithoutOpenWoundIntoAbdominalCavity
+    /// </summary>
+    public const string LiteralNONEInjuryOfDescendingLeftColonWithoutOpenWoundIntoAbdominalCavity = "http://snomed.info/sct#1264004";
 
     /// <summary>
     /// Literal for code: SpontaneousAbortionWithLacerationOfCervix
@@ -9328,9 +9638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpontaneousAbortionWithLacerationOfCervix = "127009";
 
     /// <summary>
+    /// Literal for code: NONESpontaneousAbortionWithLacerationOfCervix
+    /// </summary>
+    public const string LiteralNONESpontaneousAbortionWithLacerationOfCervix = "http://snomed.info/sct#127009";
+
+    /// <summary>
     /// Literal for code: KnucklePadsLeuconychiaAndDeafness
     /// </summary>
     public const string LiteralKnucklePadsLeuconychiaAndDeafness = "1271009";
+
+    /// <summary>
+    /// Literal for code: NONEKnucklePadsLeuconychiaAndDeafness
+    /// </summary>
+    public const string LiteralNONEKnucklePadsLeuconychiaAndDeafness = "http://snomed.info/sct#1271009";
 
     /// <summary>
     /// Literal for code: IsologousChimera
@@ -9338,9 +9658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIsologousChimera = "1280009";
 
     /// <summary>
+    /// Literal for code: NONEIsologousChimera
+    /// </summary>
+    public const string LiteralNONEIsologousChimera = "http://snomed.info/sct#1280009";
+
+    /// <summary>
     /// Literal for code: LaryngealPerichondritis
     /// </summary>
     public const string LiteralLaryngealPerichondritis = "1282001";
+
+    /// <summary>
+    /// Literal for code: NONELaryngealPerichondritis
+    /// </summary>
+    public const string LiteralNONELaryngealPerichondritis = "http://snomed.info/sct#1282001";
 
     /// <summary>
     /// Literal for code: VisualAcuityLessThan02160CountFingers1MeterOrVisualFieldLessThan5DegreesButBetterThan5
@@ -9348,9 +9678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVisualAcuityLessThan02160CountFingers1MeterOrVisualFieldLessThan5DegreesButBetterThan5 = "1283006";
 
     /// <summary>
+    /// Literal for code: NONEVisualAcuityLessThan02160CountFingers1MeterOrVisualFieldLessThan5DegreesButBetterThan5
+    /// </summary>
+    public const string LiteralNONEVisualAcuityLessThan02160CountFingers1MeterOrVisualFieldLessThan5DegreesButBetterThan5 = "http://snomed.info/sct#1283006";
+
+    /// <summary>
     /// Literal for code: AbnormalJawClosure
     /// </summary>
     public const string LiteralAbnormalJawClosure = "1284000";
+
+    /// <summary>
+    /// Literal for code: NONEAbnormalJawClosure
+    /// </summary>
+    public const string LiteralNONEAbnormalJawClosure = "http://snomed.info/sct#1284000";
 
     /// <summary>
     /// Literal for code: VitaminKDeficiencyCoagulationDisorder
@@ -9358,9 +9698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVitaminKDeficiencyCoagulationDisorder = "1286003";
 
     /// <summary>
+    /// Literal for code: NONEVitaminKDeficiencyCoagulationDisorder
+    /// </summary>
+    public const string LiteralNONEVitaminKDeficiencyCoagulationDisorder = "http://snomed.info/sct#1286003";
+
+    /// <summary>
     /// Literal for code: CongenitalAbsenceOfBileDuct
     /// </summary>
     public const string LiteralCongenitalAbsenceOfBileDuct = "1287007";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalAbsenceOfBileDuct
+    /// </summary>
+    public const string LiteralNONECongenitalAbsenceOfBileDuct = "http://snomed.info/sct#1287007";
 
     /// <summary>
     /// Literal for code: Homoiothermia
@@ -9368,9 +9718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHomoiothermia = "129007";
 
     /// <summary>
+    /// Literal for code: NONEHomoiothermia
+    /// </summary>
+    public const string LiteralNONEHomoiothermia = "http://snomed.info/sct#129007";
+
+    /// <summary>
     /// Literal for code: InfectionByCladosporiumCarrionii
     /// </summary>
     public const string LiteralInfectionByCladosporiumCarrionii = "1297003";
+
+    /// <summary>
+    /// Literal for code: NONEInfectionByCladosporiumCarrionii
+    /// </summary>
+    public const string LiteralNONEInfectionByCladosporiumCarrionii = "http://snomed.info/sct#1297003";
 
     /// <summary>
     /// Literal for code: ComplicationOfReimplant
@@ -9378,9 +9738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComplicationOfReimplant = "1308001";
 
     /// <summary>
+    /// Literal for code: NONEComplicationOfReimplant
+    /// </summary>
+    public const string LiteralNONEComplicationOfReimplant = "http://snomed.info/sct#1308001";
+
+    /// <summary>
     /// Literal for code: ImpairedGlucoseToleranceAssociatedWithGeneticSyndrome
     /// </summary>
     public const string LiteralImpairedGlucoseToleranceAssociatedWithGeneticSyndrome = "1310004";
+
+    /// <summary>
+    /// Literal for code: NONEImpairedGlucoseToleranceAssociatedWithGeneticSyndrome
+    /// </summary>
+    public const string LiteralNONEImpairedGlucoseToleranceAssociatedWithGeneticSyndrome = "http://snomed.info/sct#1310004";
 
     /// <summary>
     /// Literal for code: InjuryOfOvaryWithoutOpenWoundIntoAbdominalCavity
@@ -9388,9 +9758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjuryOfOvaryWithoutOpenWoundIntoAbdominalCavity = "1317001";
 
     /// <summary>
+    /// Literal for code: NONEInjuryOfOvaryWithoutOpenWoundIntoAbdominalCavity
+    /// </summary>
+    public const string LiteralNONEInjuryOfOvaryWithoutOpenWoundIntoAbdominalCavity = "http://snomed.info/sct#1317001";
+
+    /// <summary>
     /// Literal for code: PostTranslationalGeneticProteinProcessing
     /// </summary>
     public const string LiteralPostTranslationalGeneticProteinProcessing = "1318006";
+
+    /// <summary>
+    /// Literal for code: NONEPostTranslationalGeneticProteinProcessing
+    /// </summary>
+    public const string LiteralNONEPostTranslationalGeneticProteinProcessing = "http://snomed.info/sct#1318006";
 
     /// <summary>
     /// Literal for code: KanamycinPoisoning
@@ -9398,9 +9778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKanamycinPoisoning = "1323006";
 
     /// <summary>
+    /// Literal for code: NONEKanamycinPoisoning
+    /// </summary>
+    public const string LiteralNONEKanamycinPoisoning = "http://snomed.info/sct#1323006";
+
+    /// <summary>
     /// Literal for code: ConjugatedVisualDeviation
     /// </summary>
     public const string LiteralConjugatedVisualDeviation = "1332008";
+
+    /// <summary>
+    /// Literal for code: NONEConjugatedVisualDeviation
+    /// </summary>
+    public const string LiteralNONEConjugatedVisualDeviation = "http://snomed.info/sct#1332008";
 
     /// <summary>
     /// Literal for code: PeyroniesDisease
@@ -9408,9 +9798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeyroniesDisease = "1335005";
 
     /// <summary>
+    /// Literal for code: NONEPeyroniesDisease
+    /// </summary>
+    public const string LiteralNONEPeyroniesDisease = "http://snomed.info/sct#1335005";
+
+    /// <summary>
     /// Literal for code: DecreasedHairGrowth
     /// </summary>
     public const string LiteralDecreasedHairGrowth = "134006";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedHairGrowth
+    /// </summary>
+    public const string LiteralNONEDecreasedHairGrowth = "http://snomed.info/sct#134006";
 
     /// <summary>
     /// Literal for code: DTADeepTransverseArrest
@@ -9418,9 +9818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTADeepTransverseArrest = "1343000";
 
     /// <summary>
+    /// Literal for code: NONEDTADeepTransverseArrest
+    /// </summary>
+    public const string LiteralNONEDTADeepTransverseArrest = "http://snomed.info/sct#1343000";
+
+    /// <summary>
     /// Literal for code: HangNail
     /// </summary>
     public const string LiteralHangNail = "1345007";
+
+    /// <summary>
+    /// Literal for code: NONEHangNail
+    /// </summary>
+    public const string LiteralNONEHangNail = "http://snomed.info/sct#1345007";
 
     /// <summary>
     /// Literal for code: IliacArteryInjury
@@ -9428,9 +9838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIliacArteryInjury = "1351002";
 
     /// <summary>
+    /// Literal for code: NONEIliacArteryInjury
+    /// </summary>
+    public const string LiteralNONEIliacArteryInjury = "http://snomed.info/sct#1351002";
+
+    /// <summary>
     /// Literal for code: CalculusOfCommonDuctWithObstruction
     /// </summary>
     public const string LiteralCalculusOfCommonDuctWithObstruction = "1356007";
+
+    /// <summary>
+    /// Literal for code: NONECalculusOfCommonDuctWithObstruction
+    /// </summary>
+    public const string LiteralNONECalculusOfCommonDuctWithObstruction = "http://snomed.info/sct#1356007";
 
     /// <summary>
     /// Literal for code: Leucocoria
@@ -9438,9 +9858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeucocoria = "1361009";
 
     /// <summary>
+    /// Literal for code: NONELeucocoria
+    /// </summary>
+    public const string LiteralNONELeucocoria = "http://snomed.info/sct#1361009";
+
+    /// <summary>
     /// Literal for code: FetalOrNeonatalEffectOfChronicMaternalRespiratoryDisease
     /// </summary>
     public const string LiteralFetalOrNeonatalEffectOfChronicMaternalRespiratoryDisease = "1363007";
+
+    /// <summary>
+    /// Literal for code: NONEFetalOrNeonatalEffectOfChronicMaternalRespiratoryDisease
+    /// </summary>
+    public const string LiteralNONEFetalOrNeonatalEffectOfChronicMaternalRespiratoryDisease = "http://snomed.info/sct#1363007";
 
     /// <summary>
     /// Literal for code: InjuryOfSuperiorMesentericArtery
@@ -9448,9 +9878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjuryOfSuperiorMesentericArtery = "1367008";
 
     /// <summary>
+    /// Literal for code: NONEInjuryOfSuperiorMesentericArtery
+    /// </summary>
+    public const string LiteralNONEInjuryOfSuperiorMesentericArtery = "http://snomed.info/sct#1367008";
+
+    /// <summary>
     /// Literal for code: OpenFractureOfMetacarpalBoneS
     /// </summary>
     public const string LiteralOpenFractureOfMetacarpalBoneS = "1370007";
+
+    /// <summary>
+    /// Literal for code: NONEOpenFractureOfMetacarpalBoneS
+    /// </summary>
+    public const string LiteralNONEOpenFractureOfMetacarpalBoneS = "http://snomed.info/sct#1370007";
 
     /// <summary>
     /// Literal for code: UnicornateUterus
@@ -9458,9 +9898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnicornateUterus = "1372004";
 
     /// <summary>
+    /// Literal for code: NONEUnicornateUterus
+    /// </summary>
+    public const string LiteralNONEUnicornateUterus = "http://snomed.info/sct#1372004";
+
+    /// <summary>
     /// Literal for code: ObsessiveCompulsivePersonalityDisorder
     /// </summary>
     public const string LiteralObsessiveCompulsivePersonalityDisorder = "1376001";
+
+    /// <summary>
+    /// Literal for code: NONEObsessiveCompulsivePersonalityDisorder
+    /// </summary>
+    public const string LiteralNONEObsessiveCompulsivePersonalityDisorder = "http://snomed.info/sct#1376001";
 
     /// <summary>
     /// Literal for code: SupinationEversionInjuryOfAnkle
@@ -9468,9 +9918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSupinationEversionInjuryOfAnkle = "1378000";
 
     /// <summary>
+    /// Literal for code: NONESupinationEversionInjuryOfAnkle
+    /// </summary>
+    public const string LiteralNONESupinationEversionInjuryOfAnkle = "http://snomed.info/sct#1378000";
+
+    /// <summary>
     /// Literal for code: AgoraphobiaWithoutHistoryOfPanicDisorderWithLimitedSymptomAttacks
     /// </summary>
     public const string LiteralAgoraphobiaWithoutHistoryOfPanicDisorderWithLimitedSymptomAttacks = "1380006";
+
+    /// <summary>
+    /// Literal for code: NONEAgoraphobiaWithoutHistoryOfPanicDisorderWithLimitedSymptomAttacks
+    /// </summary>
+    public const string LiteralNONEAgoraphobiaWithoutHistoryOfPanicDisorderWithLimitedSymptomAttacks = "http://snomed.info/sct#1380006";
 
     /// <summary>
     /// Literal for code: HallucinogenInducedMoodDisorder
@@ -9478,9 +9938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHallucinogenInducedMoodDisorder = "1383008";
 
     /// <summary>
+    /// Literal for code: NONEHallucinogenInducedMoodDisorder
+    /// </summary>
+    public const string LiteralNONEHallucinogenInducedMoodDisorder = "http://snomed.info/sct#1383008";
+
+    /// <summary>
     /// Literal for code: DiffuseCholesteatosisOfMiddleEar
     /// </summary>
     public const string LiteralDiffuseCholesteatosisOfMiddleEar = "1384002";
+
+    /// <summary>
+    /// Literal for code: NONEDiffuseCholesteatosisOfMiddleEar
+    /// </summary>
+    public const string LiteralNONEDiffuseCholesteatosisOfMiddleEar = "http://snomed.info/sct#1384002";
 
     /// <summary>
     /// Literal for code: IntracranialHemorrhage
@@ -9488,9 +9958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracranialHemorrhage = "1386000";
 
     /// <summary>
+    /// Literal for code: NONEIntracranialHemorrhage
+    /// </summary>
+    public const string LiteralNONEIntracranialHemorrhage = "http://snomed.info/sct#1386000";
+
+    /// <summary>
     /// Literal for code: SolanumNigrumPoisoning
     /// </summary>
     public const string LiteralSolanumNigrumPoisoning = "1387009";
+
+    /// <summary>
+    /// Literal for code: NONESolanumNigrumPoisoning
+    /// </summary>
+    public const string LiteralNONESolanumNigrumPoisoning = "http://snomed.info/sct#1387009";
 
     /// <summary>
     /// Literal for code: MetabolicAlkalosis
@@ -9498,9 +9978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMetabolicAlkalosis = "1388004";
 
     /// <summary>
+    /// Literal for code: NONEMetabolicAlkalosis
+    /// </summary>
+    public const string LiteralNONEMetabolicAlkalosis = "http://snomed.info/sct#1388004";
+
+    /// <summary>
     /// Literal for code: LenzMajewskiDysplasia
     /// </summary>
     public const string LiteralLenzMajewskiDysplasia = "1393001";
+
+    /// <summary>
+    /// Literal for code: NONELenzMajewskiDysplasia
+    /// </summary>
+    public const string LiteralNONELenzMajewskiDysplasia = "http://snomed.info/sct#1393001";
 
     /// <summary>
     /// Literal for code: ComplicationOfUltrasoundTherapy
@@ -9508,9 +9998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComplicationOfUltrasoundTherapy = "1395008";
 
     /// <summary>
+    /// Literal for code: NONEComplicationOfUltrasoundTherapy
+    /// </summary>
+    public const string LiteralNONEComplicationOfUltrasoundTherapy = "http://snomed.info/sct#1395008";
+
+    /// <summary>
     /// Literal for code: ChronicPharyngitis
     /// </summary>
     public const string LiteralChronicPharyngitis = "140004";
+
+    /// <summary>
+    /// Literal for code: NONEChronicPharyngitis
+    /// </summary>
+    public const string LiteralNONEChronicPharyngitis = "http://snomed.info/sct#140004";
 
     /// <summary>
     /// Literal for code: Frightened
@@ -9518,9 +10018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFrightened = "1402001";
 
     /// <summary>
+    /// Literal for code: NONEFrightened
+    /// </summary>
+    public const string LiteralNONEFrightened = "http://snomed.info/sct#1402001";
+
+    /// <summary>
     /// Literal for code: AnteriorSubcapsularPolarCataract
     /// </summary>
     public const string LiteralAnteriorSubcapsularPolarCataract = "1412008";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorSubcapsularPolarCataract
+    /// </summary>
+    public const string LiteralNONEAnteriorSubcapsularPolarCataract = "http://snomed.info/sct#1412008";
 
     /// <summary>
     /// Literal for code: InflammationOfLymphatics
@@ -9528,9 +10038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInflammationOfLymphatics = "1415005";
 
     /// <summary>
+    /// Literal for code: NONEInflammationOfLymphatics
+    /// </summary>
+    public const string LiteralNONEInflammationOfLymphatics = "http://snomed.info/sct#1415005";
+
+    /// <summary>
     /// Literal for code: HypoplasticChondrodystrophy
     /// </summary>
     public const string LiteralHypoplasticChondrodystrophy = "1418007";
+
+    /// <summary>
+    /// Literal for code: NONEHypoplasticChondrodystrophy
+    /// </summary>
+    public const string LiteralNONEHypoplasticChondrodystrophy = "http://snomed.info/sct#1418007";
 
     /// <summary>
     /// Literal for code: InjuryOfProstateWithoutOpenWoundIntoAbdominalCavity
@@ -9538,9 +10058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjuryOfProstateWithoutOpenWoundIntoAbdominalCavity = "1419004";
 
     /// <summary>
+    /// Literal for code: NONEInjuryOfProstateWithoutOpenWoundIntoAbdominalCavity
+    /// </summary>
+    public const string LiteralNONEInjuryOfProstateWithoutOpenWoundIntoAbdominalCavity = "http://snomed.info/sct#1419004";
+
+    /// <summary>
     /// Literal for code: NecrotizingGlomerulonephritis
     /// </summary>
     public const string LiteralNecrotizingGlomerulonephritis = "1426004";
+
+    /// <summary>
+    /// Literal for code: NONENecrotizingGlomerulonephritis
+    /// </summary>
+    public const string LiteralNONENecrotizingGlomerulonephritis = "http://snomed.info/sct#1426004";
 
     /// <summary>
     /// Literal for code: IntraspinalAbscess
@@ -9548,9 +10078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraspinalAbscess = "1427008";
 
     /// <summary>
+    /// Literal for code: NONEIntraspinalAbscess
+    /// </summary>
+    public const string LiteralNONEIntraspinalAbscess = "http://snomed.info/sct#1427008";
+
+    /// <summary>
     /// Literal for code: IntracranialHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithProlongedLossOfConsciousnessMoreThan24HoursWithoutReturnToPreExistingLevel
     /// </summary>
     public const string LiteralIntracranialHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithProlongedLossOfConsciousnessMoreThan24HoursWithoutReturnToPreExistingLevel = "1430001";
+
+    /// <summary>
+    /// Literal for code: NONEIntracranialHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithProlongedLossOfConsciousnessMoreThan24HoursWithoutReturnToPreExistingLevel
+    /// </summary>
+    public const string LiteralNONEIntracranialHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithProlongedLossOfConsciousnessMoreThan24HoursWithoutReturnToPreExistingLevel = "http://snomed.info/sct#1430001";
 
     /// <summary>
     /// Literal for code: NormalPeripheralVision
@@ -9558,9 +10098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNormalPeripheralVision = "144008";
 
     /// <summary>
+    /// Literal for code: NONENormalPeripheralVision
+    /// </summary>
+    public const string LiteralNONENormalPeripheralVision = "http://snomed.info/sct#144008";
+
+    /// <summary>
     /// Literal for code: Icthyoparasitism
     /// </summary>
     public const string LiteralIcthyoparasitism = "1447000";
+
+    /// <summary>
+    /// Literal for code: NONEIcthyoparasitism
+    /// </summary>
+    public const string LiteralNONEIcthyoparasitism = "http://snomed.info/sct#1447000";
 
     /// <summary>
     /// Literal for code: MiscarriageWithUrinaryTractInfection
@@ -9568,9 +10118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMiscarriageWithUrinaryTractInfection = "1469007";
 
     /// <summary>
+    /// Literal for code: NONEMiscarriageWithUrinaryTractInfection
+    /// </summary>
+    public const string LiteralNONEMiscarriageWithUrinaryTractInfection = "http://snomed.info/sct#1469007";
+
+    /// <summary>
     /// Literal for code: SuperficialForeignBodyOfScrotumWithoutMajorOpenWoundButWithInfection
     /// </summary>
     public const string LiteralSuperficialForeignBodyOfScrotumWithoutMajorOpenWoundButWithInfection = "147001";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialForeignBodyOfScrotumWithoutMajorOpenWoundButWithInfection
+    /// </summary>
+    public const string LiteralNONESuperficialForeignBodyOfScrotumWithoutMajorOpenWoundButWithInfection = "http://snomed.info/sct#147001";
 
     /// <summary>
     /// Literal for code: HypertensiveHeartANDRenalDiseaseComplicatingANDORReasonForCareDuringChildbirth
@@ -9578,9 +10138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypertensiveHeartANDRenalDiseaseComplicatingANDORReasonForCareDuringChildbirth = "1474004";
 
     /// <summary>
+    /// Literal for code: NONEHypertensiveHeartANDRenalDiseaseComplicatingANDORReasonForCareDuringChildbirth
+    /// </summary>
+    public const string LiteralNONEHypertensiveHeartANDRenalDiseaseComplicatingANDORReasonForCareDuringChildbirth = "http://snomed.info/sct#1474004";
+
+    /// <summary>
     /// Literal for code: HerpesLabialis
     /// </summary>
     public const string LiteralHerpesLabialis = "1475003";
+
+    /// <summary>
+    /// Literal for code: NONEHerpesLabialis
+    /// </summary>
+    public const string LiteralNONEHerpesLabialis = "http://snomed.info/sct#1475003";
 
     /// <summary>
     /// Literal for code: ObliterationOfLymphaticVessel
@@ -9588,9 +10158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObliterationOfLymphaticVessel = "1478001";
 
     /// <summary>
+    /// Literal for code: NONEObliterationOfLymphaticVessel
+    /// </summary>
+    public const string LiteralNONEObliterationOfLymphaticVessel = "http://snomed.info/sct#1478001";
+
+    /// <summary>
     /// Literal for code: VAL20qPartialTrisomySyndrome
     /// </summary>
     public const string LiteralVAL20qPartialTrisomySyndrome = "1479009";
+
+    /// <summary>
+    /// Literal for code: NONEVAL20qPartialTrisomySyndrome
+    /// </summary>
+    public const string LiteralNONEVAL20qPartialTrisomySyndrome = "http://snomed.info/sct#1479009";
 
     /// <summary>
     /// Literal for code: Chalazion
@@ -9598,9 +10178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChalazion = "1482004";
 
     /// <summary>
+    /// Literal for code: NONEChalazion
+    /// </summary>
+    public const string LiteralNONEChalazion = "http://snomed.info/sct#1482004";
+
+    /// <summary>
     /// Literal for code: OrbitalCongestion
     /// </summary>
     public const string LiteralOrbitalCongestion = "1486001";
+
+    /// <summary>
+    /// Literal for code: NONEOrbitalCongestion
+    /// </summary>
+    public const string LiteralNONEOrbitalCongestion = "http://snomed.info/sct#1486001";
 
     /// <summary>
     /// Literal for code: PONVPostoperativeNauseaAndVomiting
@@ -9608,9 +10198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPONVPostoperativeNauseaAndVomiting = "1488000";
 
     /// <summary>
+    /// Literal for code: NONEPONVPostoperativeNauseaAndVomiting
+    /// </summary>
+    public const string LiteralNONEPONVPostoperativeNauseaAndVomiting = "http://snomed.info/sct#1488000";
+
+    /// <summary>
     /// Literal for code: ExternalHordeolum
     /// </summary>
     public const string LiteralExternalHordeolum = "1489008";
+
+    /// <summary>
+    /// Literal for code: NONEExternalHordeolum
+    /// </summary>
+    public const string LiteralNONEExternalHordeolum = "http://snomed.info/sct#1489008";
 
     /// <summary>
     /// Literal for code: CongenitalAnomalyOfLargeIntestine
@@ -9618,9 +10218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalAnomalyOfLargeIntestine = "1492007";
 
     /// <summary>
+    /// Literal for code: NONECongenitalAnomalyOfLargeIntestine
+    /// </summary>
+    public const string LiteralNONECongenitalAnomalyOfLargeIntestine = "http://snomed.info/sct#1492007";
+
+    /// <summary>
     /// Literal for code: AcuteEndophthalmitis
     /// </summary>
     public const string LiteralAcuteEndophthalmitis = "1493002";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteEndophthalmitis
+    /// </summary>
+    public const string LiteralNONEAcuteEndophthalmitis = "http://snomed.info/sct#1493002";
 
     /// <summary>
     /// Literal for code: BipolarIDisorderSingleManicEpisodeWithPostpartumOnset
@@ -9628,9 +10238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBipolarIDisorderSingleManicEpisodeWithPostpartumOnset = "1499003";
 
     /// <summary>
+    /// Literal for code: NONEBipolarIDisorderSingleManicEpisodeWithPostpartumOnset
+    /// </summary>
+    public const string LiteralNONEBipolarIDisorderSingleManicEpisodeWithPostpartumOnset = "http://snomed.info/sct#1499003";
+
+    /// <summary>
     /// Literal for code: AbnormalBladderContinence
     /// </summary>
     public const string LiteralAbnormalBladderContinence = "150003";
+
+    /// <summary>
+    /// Literal for code: NONEAbnormalBladderContinence
+    /// </summary>
+    public const string LiteralNONEAbnormalBladderContinence = "http://snomed.info/sct#150003";
 
     /// <summary>
     /// Literal for code: MeningitisDueToGonococcus
@@ -9638,9 +10258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningitisDueToGonococcus = "151004";
 
     /// <summary>
+    /// Literal for code: NONEMeningitisDueToGonococcus
+    /// </summary>
+    public const string LiteralNONEMeningitisDueToGonococcus = "http://snomed.info/sct#151004";
+
+    /// <summary>
     /// Literal for code: CongenitalStrictureOfBileDuct
     /// </summary>
     public const string LiteralCongenitalStrictureOfBileDuct = "1512006";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalStrictureOfBileDuct
+    /// </summary>
+    public const string LiteralNONECongenitalStrictureOfBileDuct = "http://snomed.info/sct#1512006";
 
     /// <summary>
     /// Literal for code: GorhamDisease
@@ -9648,9 +10278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGorhamDisease = "1515008";
 
     /// <summary>
+    /// Literal for code: NONEGorhamDisease
+    /// </summary>
+    public const string LiteralNONEGorhamDisease = "http://snomed.info/sct#1515008";
+
+    /// <summary>
     /// Literal for code: Splenitis
     /// </summary>
     public const string LiteralSplenitis = "1518005";
+
+    /// <summary>
+    /// Literal for code: NONESplenitis
+    /// </summary>
+    public const string LiteralNONESplenitis = "http://snomed.info/sct#1518005";
 
     /// <summary>
     /// Literal for code: CongenitalPhlebectasia
@@ -9658,9 +10298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalPhlebectasia = "1519002";
 
     /// <summary>
+    /// Literal for code: NONECongenitalPhlebectasia
+    /// </summary>
+    public const string LiteralNONECongenitalPhlebectasia = "http://snomed.info/sct#1519002";
+
+    /// <summary>
     /// Literal for code: BlisterOfButtockWithoutInfection
     /// </summary>
     public const string LiteralBlisterOfButtockWithoutInfection = "1521007";
+
+    /// <summary>
+    /// Literal for code: NONEBlisterOfButtockWithoutInfection
+    /// </summary>
+    public const string LiteralNONEBlisterOfButtockWithoutInfection = "http://snomed.info/sct#1521007";
 
     /// <summary>
     /// Literal for code: ClinicalStageIVB
@@ -9668,9 +10318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalStageIVB = "1523005";
 
     /// <summary>
+    /// Literal for code: NONEClinicalStageIVB
+    /// </summary>
+    public const string LiteralNONEClinicalStageIVB = "http://snomed.info/sct#1523005";
+
+    /// <summary>
     /// Literal for code: BlisterOfFootWithoutInfection
     /// </summary>
     public const string LiteralBlisterOfFootWithoutInfection = "1525003";
+
+    /// <summary>
+    /// Literal for code: NONEBlisterOfFootWithoutInfection
+    /// </summary>
+    public const string LiteralNONEBlisterOfFootWithoutInfection = "http://snomed.info/sct#1525003";
 
     /// <summary>
     /// Literal for code: NitrofuranDerivativePoisoning
@@ -9678,9 +10338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNitrofuranDerivativePoisoning = "1531000";
 
     /// <summary>
+    /// Literal for code: NONENitrofuranDerivativePoisoning
+    /// </summary>
+    public const string LiteralNONENitrofuranDerivativePoisoning = "http://snomed.info/sct#1531000";
+
+    /// <summary>
     /// Literal for code: ViralPharyngitis
     /// </summary>
     public const string LiteralViralPharyngitis = "1532007";
+
+    /// <summary>
+    /// Literal for code: NONEViralPharyngitis
+    /// </summary>
+    public const string LiteralNONEViralPharyngitis = "http://snomed.info/sct#1532007";
 
     /// <summary>
     /// Literal for code: PalsyOfConjugateGaze
@@ -9688,9 +10358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPalsyOfConjugateGaze = "1534008";
 
     /// <summary>
+    /// Literal for code: NONEPalsyOfConjugateGaze
+    /// </summary>
+    public const string LiteralNONEPalsyOfConjugateGaze = "http://snomed.info/sct#1534008";
+
+    /// <summary>
     /// Literal for code: CentralNervousSystemMalformationInFoetusAffectingObstetricalCare
     /// </summary>
     public const string LiteralCentralNervousSystemMalformationInFoetusAffectingObstetricalCare = "1538006";
+
+    /// <summary>
+    /// Literal for code: NONECentralNervousSystemMalformationInFoetusAffectingObstetricalCare
+    /// </summary>
+    public const string LiteralNONECentralNervousSystemMalformationInFoetusAffectingObstetricalCare = "http://snomed.info/sct#1538006";
 
     /// <summary>
     /// Literal for code: NodularTendinousDiseaseOfFinger
@@ -9698,9 +10378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNodularTendinousDiseaseOfFinger = "1539003";
 
     /// <summary>
+    /// Literal for code: NONENodularTendinousDiseaseOfFinger
+    /// </summary>
+    public const string LiteralNONENodularTendinousDiseaseOfFinger = "http://snomed.info/sct#1539003";
+
+    /// <summary>
     /// Literal for code: OmphaloceleWithObstruction
     /// </summary>
     public const string LiteralOmphaloceleWithObstruction = "1542009";
+
+    /// <summary>
+    /// Literal for code: NONEOmphaloceleWithObstruction
+    /// </summary>
+    public const string LiteralNONEOmphaloceleWithObstruction = "http://snomed.info/sct#1542009";
 
     /// <summary>
     /// Literal for code: OpenDislocationOfKnee
@@ -9708,9 +10398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenDislocationOfKnee = "1544005";
 
     /// <summary>
+    /// Literal for code: NONEOpenDislocationOfKnee
+    /// </summary>
+    public const string LiteralNONEOpenDislocationOfKnee = "http://snomed.info/sct#1544005";
+
+    /// <summary>
     /// Literal for code: OsteomyelitisOfFemur
     /// </summary>
     public const string LiteralOsteomyelitisOfFemur = "1551001";
+
+    /// <summary>
+    /// Literal for code: NONEOsteomyelitisOfFemur
+    /// </summary>
+    public const string LiteralNONEOsteomyelitisOfFemur = "http://snomed.info/sct#1551001";
 
     /// <summary>
     /// Literal for code: ClarkMelanomaLevel4
@@ -9718,9 +10418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClarkMelanomaLevel4 = "1556006";
 
     /// <summary>
+    /// Literal for code: NONEClarkMelanomaLevel4
+    /// </summary>
+    public const string LiteralNONEClarkMelanomaLevel4 = "http://snomed.info/sct#1556006";
+
+    /// <summary>
     /// Literal for code: ProteinSDeficiency
     /// </summary>
     public const string LiteralProteinSDeficiency = "1563006";
+
+    /// <summary>
+    /// Literal for code: NONEProteinSDeficiency
+    /// </summary>
+    public const string LiteralNONEProteinSDeficiency = "http://snomed.info/sct#1563006";
 
     /// <summary>
     /// Literal for code: ChronicGastricUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction
@@ -9728,9 +10438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicGastricUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction = "1567007";
 
     /// <summary>
+    /// Literal for code: NONEChronicGastricUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction
+    /// </summary>
+    public const string LiteralNONEChronicGastricUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction = "http://snomed.info/sct#1567007";
+
+    /// <summary>
     /// Literal for code: HeterosexualPrecociousPuberty
     /// </summary>
     public const string LiteralHeterosexualPrecociousPuberty = "1588003";
+
+    /// <summary>
+    /// Literal for code: NONEHeterosexualPrecociousPuberty
+    /// </summary>
+    public const string LiteralNONEHeterosexualPrecociousPuberty = "http://snomed.info/sct#1588003";
 
     /// <summary>
     /// Literal for code: FailedAttemptedTerminationOfPregnancyWithUremia
@@ -9738,9 +10458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFailedAttemptedTerminationOfPregnancyWithUremia = "1592005";
 
     /// <summary>
+    /// Literal for code: NONEFailedAttemptedTerminationOfPregnancyWithUremia
+    /// </summary>
+    public const string LiteralNONEFailedAttemptedTerminationOfPregnancyWithUremia = "http://snomed.info/sct#1592005";
+
+    /// <summary>
     /// Literal for code: InfantileHemiplegia
     /// </summary>
     public const string LiteralInfantileHemiplegia = "1593000";
+
+    /// <summary>
+    /// Literal for code: NONEInfantileHemiplegia
+    /// </summary>
+    public const string LiteralNONEInfantileHemiplegia = "http://snomed.info/sct#1593000";
 
     /// <summary>
     /// Literal for code: InfectionCausedByMacracanthorhynchusHirudinaceus
@@ -9748,9 +10478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionCausedByMacracanthorhynchusHirudinaceus = "1606009";
 
     /// <summary>
+    /// Literal for code: NONEInfectionCausedByMacracanthorhynchusHirudinaceus
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByMacracanthorhynchusHirudinaceus = "http://snomed.info/sct#1606009";
+
+    /// <summary>
     /// Literal for code: IncreasedCapillaryPermeability
     /// </summary>
     public const string LiteralIncreasedCapillaryPermeability = "1608005";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedCapillaryPermeability
+    /// </summary>
+    public const string LiteralNONEIncreasedCapillaryPermeability = "http://snomed.info/sct#1608005";
 
     /// <summary>
     /// Literal for code: SevereManicBipolarIDisorderWithoutPsychoticFeatures
@@ -9758,9 +10498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSevereManicBipolarIDisorderWithoutPsychoticFeatures = "162004";
 
     /// <summary>
+    /// Literal for code: NONESevereManicBipolarIDisorderWithoutPsychoticFeatures
+    /// </summary>
+    public const string LiteralNONESevereManicBipolarIDisorderWithoutPsychoticFeatures = "http://snomed.info/sct#162004";
+
+    /// <summary>
     /// Literal for code: AbnormalityOfOrgansANDORSoftTissuesOfPelvisAffectingPregnancy
     /// </summary>
     public const string LiteralAbnormalityOfOrgansANDORSoftTissuesOfPelvisAffectingPregnancy = "1639007";
+
+    /// <summary>
+    /// Literal for code: NONEAbnormalityOfOrgansANDORSoftTissuesOfPelvisAffectingPregnancy
+    /// </summary>
+    public const string LiteralNONEAbnormalityOfOrgansANDORSoftTissuesOfPelvisAffectingPregnancy = "http://snomed.info/sct#1639007";
 
     /// <summary>
     /// Literal for code: PrimaquinePoisoning
@@ -9768,9 +10518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrimaquinePoisoning = "1647007";
 
     /// <summary>
+    /// Literal for code: NONEPrimaquinePoisoning
+    /// </summary>
+    public const string LiteralNONEPrimaquinePoisoning = "http://snomed.info/sct#1647007";
+
+    /// <summary>
     /// Literal for code: LymphocyticPseudotumorOfLung
     /// </summary>
     public const string LiteralLymphocyticPseudotumorOfLung = "1648002";
+
+    /// <summary>
+    /// Literal for code: NONELymphocyticPseudotumorOfLung
+    /// </summary>
+    public const string LiteralNONELymphocyticPseudotumorOfLung = "http://snomed.info/sct#1648002";
 
     /// <summary>
     /// Literal for code: AccidentProne
@@ -9778,9 +10538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccidentProne = "165002";
 
     /// <summary>
+    /// Literal for code: NONEAccidentProne
+    /// </summary>
+    public const string LiteralNONEAccidentProne = "http://snomed.info/sct#165002";
+
+    /// <summary>
     /// Literal for code: SteroidInducedGlaucoma
     /// </summary>
     public const string LiteralSteroidInducedGlaucoma = "1654001";
+
+    /// <summary>
+    /// Literal for code: NONESteroidInducedGlaucoma
+    /// </summary>
+    public const string LiteralNONESteroidInducedGlaucoma = "http://snomed.info/sct#1654001";
 
     /// <summary>
     /// Literal for code: ToxicEffectOfPhosdrin
@@ -9788,9 +10558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralToxicEffectOfPhosdrin = "1657008";
 
     /// <summary>
+    /// Literal for code: NONEToxicEffectOfPhosdrin
+    /// </summary>
+    public const string LiteralNONEToxicEffectOfPhosdrin = "http://snomed.info/sct#1657008";
+
+    /// <summary>
     /// Literal for code: ClosedFractureClavicleLateralEnd
     /// </summary>
     public const string LiteralClosedFractureClavicleLateralEnd = "1658003";
+
+    /// <summary>
+    /// Literal for code: NONEClosedFractureClavicleLateralEnd
+    /// </summary>
+    public const string LiteralNONEClosedFractureClavicleLateralEnd = "http://snomed.info/sct#1658003";
 
     /// <summary>
     /// Literal for code: TumorGradeG2
@@ -9798,9 +10578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorGradeG2 = "1663004";
 
     /// <summary>
+    /// Literal for code: NONETumorGradeG2
+    /// </summary>
+    public const string LiteralNONETumorGradeG2 = "http://snomed.info/sct#1663004";
+
+    /// <summary>
     /// Literal for code: EarlyFontanelClosure
     /// </summary>
     public const string LiteralEarlyFontanelClosure = "1667003";
+
+    /// <summary>
+    /// Literal for code: NONEEarlyFontanelClosure
+    /// </summary>
+    public const string LiteralNONEEarlyFontanelClosure = "http://snomed.info/sct#1667003";
 
     /// <summary>
     /// Literal for code: CerebralHemiparesis
@@ -9808,9 +10598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCerebralHemiparesis = "1670004";
 
     /// <summary>
+    /// Literal for code: NONECerebralHemiparesis
+    /// </summary>
+    public const string LiteralNONECerebralHemiparesis = "http://snomed.info/sct#1670004";
+
+    /// <summary>
     /// Literal for code: SagoSpleen
     /// </summary>
     public const string LiteralSagoSpleen = "1671000";
+
+    /// <summary>
+    /// Literal for code: NONESagoSpleen
+    /// </summary>
+    public const string LiteralNONESagoSpleen = "http://snomed.info/sct#1671000";
 
     /// <summary>
     /// Literal for code: MeesmanQuoteSEpithelialCornealDystrophy
@@ -9818,9 +10618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeesmanQuoteSEpithelialCornealDystrophy = "1674008";
 
     /// <summary>
+    /// Literal for code: NONEMeesmanQuoteSEpithelialCornealDystrophy
+    /// </summary>
+    public const string LiteralNONEMeesmanQuoteSEpithelialCornealDystrophy = "http://snomed.info/sct#1674008";
+
+    /// <summary>
     /// Literal for code: ArthritisAssociatedWithAnotherDisorder
     /// </summary>
     public const string LiteralArthritisAssociatedWithAnotherDisorder = "1679003";
+
+    /// <summary>
+    /// Literal for code: NONEArthritisAssociatedWithAnotherDisorder
+    /// </summary>
+    public const string LiteralNONEArthritisAssociatedWithAnotherDisorder = "http://snomed.info/sct#1679003";
 
     /// <summary>
     /// Literal for code: Typhlolithiasis
@@ -9828,9 +10638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTyphlolithiasis = "168000";
 
     /// <summary>
+    /// Literal for code: NONETyphlolithiasis
+    /// </summary>
+    public const string LiteralNONETyphlolithiasis = "http://snomed.info/sct#168000";
+
+    /// <summary>
     /// Literal for code: TransitoryAminoAcidMetabolicDisorder
     /// </summary>
     public const string LiteralTransitoryAminoAcidMetabolicDisorder = "1682008";
+
+    /// <summary>
+    /// Literal for code: NONETransitoryAminoAcidMetabolicDisorder
+    /// </summary>
+    public const string LiteralNONETransitoryAminoAcidMetabolicDisorder = "http://snomed.info/sct#1682008";
 
     /// <summary>
     /// Literal for code: RatBiteFever
@@ -9838,9 +10658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRatBiteFever = "1685005";
 
     /// <summary>
+    /// Literal for code: NONERatBiteFever
+    /// </summary>
+    public const string LiteralNONERatBiteFever = "http://snomed.info/sct#1685005";
+
+    /// <summary>
     /// Literal for code: SedativeHypnoticANDORAnxiolyticInducedAnxietyDisorder
     /// </summary>
     public const string LiteralSedativeHypnoticANDORAnxiolyticInducedAnxietyDisorder = "1686006";
+
+    /// <summary>
+    /// Literal for code: NONESedativeHypnoticANDORAnxiolyticInducedAnxietyDisorder
+    /// </summary>
+    public const string LiteralNONESedativeHypnoticANDORAnxiolyticInducedAnxietyDisorder = "http://snomed.info/sct#1686006";
 
     /// <summary>
     /// Literal for code: AccessoryLobeOfLung
@@ -9848,9 +10678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccessoryLobeOfLung = "1694004";
 
     /// <summary>
+    /// Literal for code: NONEAccessoryLobeOfLung
+    /// </summary>
+    public const string LiteralNONEAccessoryLobeOfLung = "http://snomed.info/sct#1694004";
+
+    /// <summary>
     /// Literal for code: UlcerOfBileDuct
     /// </summary>
     public const string LiteralUlcerOfBileDuct = "1698001";
+
+    /// <summary>
+    /// Literal for code: NONEUlcerOfBileDuct
+    /// </summary>
+    public const string LiteralNONEUlcerOfBileDuct = "http://snomed.info/sct#1698001";
 
     /// <summary>
     /// Literal for code: IncreasedLegCircumference
@@ -9858,9 +10698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIncreasedLegCircumference = "1703007";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedLegCircumference
+    /// </summary>
+    public const string LiteralNONEIncreasedLegCircumference = "http://snomed.info/sct#1703007";
+
+    /// <summary>
     /// Literal for code: ClosedFractureOfBaseOfNeckOfFemur
     /// </summary>
     public const string LiteralClosedFractureOfBaseOfNeckOfFemur = "1705000";
+
+    /// <summary>
+    /// Literal for code: NONEClosedFractureOfBaseOfNeckOfFemur
+    /// </summary>
+    public const string LiteralNONEClosedFractureOfBaseOfNeckOfFemur = "http://snomed.info/sct#1705000";
 
     /// <summary>
     /// Literal for code: OpenDislocationOfClavicle
@@ -9868,9 +10718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenDislocationOfClavicle = "1708003";
 
     /// <summary>
+    /// Literal for code: NONEOpenDislocationOfClavicle
+    /// </summary>
+    public const string LiteralNONEOpenDislocationOfClavicle = "http://snomed.info/sct#1708003";
+
+    /// <summary>
     /// Literal for code: InjuryOfAscendingRightColonWithoutOpenWoundIntoAbdominalCavity
     /// </summary>
     public const string LiteralInjuryOfAscendingRightColonWithoutOpenWoundIntoAbdominalCavity = "171008";
+
+    /// <summary>
+    /// Literal for code: NONEInjuryOfAscendingRightColonWithoutOpenWoundIntoAbdominalCavity
+    /// </summary>
+    public const string LiteralNONEInjuryOfAscendingRightColonWithoutOpenWoundIntoAbdominalCavity = "http://snomed.info/sct#171008";
 
     /// <summary>
     /// Literal for code: Photokeratitis
@@ -9878,9 +10738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhotokeratitis = "1714005";
 
     /// <summary>
+    /// Literal for code: NONEPhotokeratitis
+    /// </summary>
+    public const string LiteralNONEPhotokeratitis = "http://snomed.info/sct#1714005";
+
+    /// <summary>
     /// Literal for code: GuttateHypomelanosis
     /// </summary>
     public const string LiteralGuttateHypomelanosis = "1717003";
+
+    /// <summary>
+    /// Literal for code: NONEGuttateHypomelanosis
+    /// </summary>
+    public const string LiteralNONEGuttateHypomelanosis = "http://snomed.info/sct#1717003";
 
     /// <summary>
     /// Literal for code: EndometritisFollowingMolarANDOREctopicPregnancy
@@ -9888,9 +10758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndometritisFollowingMolarANDOREctopicPregnancy = "172001";
 
     /// <summary>
+    /// Literal for code: NONEEndometritisFollowingMolarANDOREctopicPregnancy
+    /// </summary>
+    public const string LiteralNONEEndometritisFollowingMolarANDOREctopicPregnancy = "http://snomed.info/sct#172001";
+
+    /// <summary>
     /// Literal for code: UrethralStrictureDueToSchistosomiasis
     /// </summary>
     public const string LiteralUrethralStrictureDueToSchistosomiasis = "1723008";
+
+    /// <summary>
+    /// Literal for code: NONEUrethralStrictureDueToSchistosomiasis
+    /// </summary>
+    public const string LiteralNONEUrethralStrictureDueToSchistosomiasis = "http://snomed.info/sct#1723008";
 
     /// <summary>
     /// Literal for code: InfectionCausedByCrenosoma
@@ -9898,9 +10778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionCausedByCrenosoma = "1724002";
 
     /// <summary>
+    /// Literal for code: NONEInfectionCausedByCrenosoma
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByCrenosoma = "http://snomed.info/sct#1724002";
+
+    /// <summary>
     /// Literal for code: FractureOfVertebralColumnWithSpinalCordInjury
     /// </summary>
     public const string LiteralFractureOfVertebralColumnWithSpinalCordInjury = "1734006";
+
+    /// <summary>
+    /// Literal for code: NONEFractureOfVertebralColumnWithSpinalCordInjury
+    /// </summary>
+    public const string LiteralNONEFractureOfVertebralColumnWithSpinalCordInjury = "http://snomed.info/sct#1734006";
 
     /// <summary>
     /// Literal for code: Thrill
@@ -9908,9 +10798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThrill = "1735007";
 
     /// <summary>
+    /// Literal for code: NONEThrill
+    /// </summary>
+    public const string LiteralNONEThrill = "http://snomed.info/sct#1735007";
+
+    /// <summary>
     /// Literal for code: OccipitalFracture
     /// </summary>
     public const string LiteralOccipitalFracture = "1739001";
+
+    /// <summary>
+    /// Literal for code: NONEOccipitalFracture
+    /// </summary>
+    public const string LiteralNONEOccipitalFracture = "http://snomed.info/sct#1739001";
 
     /// <summary>
     /// Literal for code: FemaleHypererotism
@@ -9918,9 +10818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFemaleHypererotism = "1742007";
 
     /// <summary>
+    /// Literal for code: NONEFemaleHypererotism
+    /// </summary>
+    public const string LiteralNONEFemaleHypererotism = "http://snomed.info/sct#1742007";
+
+    /// <summary>
     /// Literal for code: ConnationOfTeeth
     /// </summary>
     public const string LiteralConnationOfTeeth = "1744008";
+
+    /// <summary>
+    /// Literal for code: NONEConnationOfTeeth
+    /// </summary>
+    public const string LiteralNONEConnationOfTeeth = "http://snomed.info/sct#1744008";
 
     /// <summary>
     /// Literal for code: ThrombophlebitisOfDeepFemoralVein
@@ -9928,9 +10838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThrombophlebitisOfDeepFemoralVein = "1748006";
 
     /// <summary>
+    /// Literal for code: NONEThrombophlebitisOfDeepFemoralVein
+    /// </summary>
+    public const string LiteralNONEThrombophlebitisOfDeepFemoralVein = "http://snomed.info/sct#1748006";
+
+    /// <summary>
     /// Literal for code: SupraorbitalNeuralgia
     /// </summary>
     public const string LiteralSupraorbitalNeuralgia = "175004";
+
+    /// <summary>
+    /// Literal for code: NONESupraorbitalNeuralgia
+    /// </summary>
+    public const string LiteralNONESupraorbitalNeuralgia = "http://snomed.info/sct#175004";
 
     /// <summary>
     /// Literal for code: HealedCoronary
@@ -9938,9 +10858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealedCoronary = "1755008";
 
     /// <summary>
+    /// Literal for code: NONEHealedCoronary
+    /// </summary>
+    public const string LiteralNONEHealedCoronary = "http://snomed.info/sct#1755008";
+
+    /// <summary>
     /// Literal for code: BiliaryCirrhosis
     /// </summary>
     public const string LiteralBiliaryCirrhosis = "1761006";
+
+    /// <summary>
+    /// Literal for code: NONEBiliaryCirrhosis
+    /// </summary>
+    public const string LiteralNONEBiliaryCirrhosis = "http://snomed.info/sct#1761006";
 
     /// <summary>
     /// Literal for code: StromalKeratitis
@@ -9948,9 +10878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStromalKeratitis = "1763009";
 
     /// <summary>
+    /// Literal for code: NONEStromalKeratitis
+    /// </summary>
+    public const string LiteralNONEStromalKeratitis = "http://snomed.info/sct#1763009";
+
+    /// <summary>
     /// Literal for code: FisherSyndrome
     /// </summary>
     public const string LiteralFisherSyndrome = "1767005";
+
+    /// <summary>
+    /// Literal for code: NONEFisherSyndrome
+    /// </summary>
+    public const string LiteralNONEFisherSyndrome = "http://snomed.info/sct#1767005";
 
     /// <summary>
     /// Literal for code: Thoracodidymus
@@ -9958,9 +10898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThoracodidymus = "1769008";
 
     /// <summary>
+    /// Literal for code: NONEThoracodidymus
+    /// </summary>
+    public const string LiteralNONEThoracodidymus = "http://snomed.info/sct#1769008";
+
+    /// <summary>
     /// Literal for code: PoisoningBySawflyLarvae
     /// </summary>
     public const string LiteralPoisoningBySawflyLarvae = "177007";
+
+    /// <summary>
+    /// Literal for code: NONEPoisoningBySawflyLarvae
+    /// </summary>
+    public const string LiteralNONEPoisoningBySawflyLarvae = "http://snomed.info/sct#177007";
 
     /// <summary>
     /// Literal for code: InsulinBiosynthesisDefect
@@ -9968,9 +10918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInsulinBiosynthesisDefect = "1771008";
 
     /// <summary>
+    /// Literal for code: NONEInsulinBiosynthesisDefect
+    /// </summary>
+    public const string LiteralNONEInsulinBiosynthesisDefect = "http://snomed.info/sct#1771008";
+
+    /// <summary>
     /// Literal for code: RTARenalTubularAcidosis
     /// </summary>
     public const string LiteralRTARenalTubularAcidosis = "1776003";
+
+    /// <summary>
+    /// Literal for code: NONERTARenalTubularAcidosis
+    /// </summary>
+    public const string LiteralNONERTARenalTubularAcidosis = "http://snomed.info/sct#1776003";
 
     /// <summary>
     /// Literal for code: IncreasedMolecularDissociation
@@ -9978,9 +10938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIncreasedMolecularDissociation = "1777007";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedMolecularDissociation
+    /// </summary>
+    public const string LiteralNONEIncreasedMolecularDissociation = "http://snomed.info/sct#1777007";
+
+    /// <summary>
     /// Literal for code: MalocclusionDueToAbnormalSwallowing
     /// </summary>
     public const string LiteralMalocclusionDueToAbnormalSwallowing = "1778002";
+
+    /// <summary>
+    /// Literal for code: NONEMalocclusionDueToAbnormalSwallowing
+    /// </summary>
+    public const string LiteralNONEMalocclusionDueToAbnormalSwallowing = "http://snomed.info/sct#1778002";
 
     /// <summary>
     /// Literal for code: OFDIIOrofacialDigitalSyndromeII
@@ -9988,9 +10958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOFDIIOrofacialDigitalSyndromeII = "1779005";
 
     /// <summary>
+    /// Literal for code: NONEOFDIIOrofacialDigitalSyndromeII
+    /// </summary>
+    public const string LiteralNONEOFDIIOrofacialDigitalSyndromeII = "http://snomed.info/sct#1779005";
+
+    /// <summary>
     /// Literal for code: ApraxiaOfDressing
     /// </summary>
     public const string LiteralApraxiaOfDressing = "179005";
+
+    /// <summary>
+    /// Literal for code: NONEApraxiaOfDressing
+    /// </summary>
+    public const string LiteralNONEApraxiaOfDressing = "http://snomed.info/sct#179005";
 
     /// <summary>
     /// Literal for code: IdiopathicCornealEdema
@@ -9998,9 +10978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIdiopathicCornealEdema = "1794009";
 
     /// <summary>
+    /// Literal for code: NONEIdiopathicCornealEdema
+    /// </summary>
+    public const string LiteralNONEIdiopathicCornealEdema = "http://snomed.info/sct#1794009";
+
+    /// <summary>
     /// Literal for code: HemorrhagicBronchopneumonia
     /// </summary>
     public const string LiteralHemorrhagicBronchopneumonia = "181007";
+
+    /// <summary>
+    /// Literal for code: NONEHemorrhagicBronchopneumonia
+    /// </summary>
+    public const string LiteralNONEHemorrhagicBronchopneumonia = "http://snomed.info/sct#181007";
 
     /// <summary>
     /// Literal for code: PanicDisorderWithAgoraphobiaSevereAgoraphobicAvoidanceANDMildPanicAttacks
@@ -10008,9 +10998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPanicDisorderWithAgoraphobiaSevereAgoraphobicAvoidanceANDMildPanicAttacks = "1816003";
 
     /// <summary>
+    /// Literal for code: NONEPanicDisorderWithAgoraphobiaSevereAgoraphobicAvoidanceANDMildPanicAttacks
+    /// </summary>
+    public const string LiteralNONEPanicDisorderWithAgoraphobiaSevereAgoraphobicAvoidanceANDMildPanicAttacks = "http://snomed.info/sct#1816003";
+
+    /// <summary>
     /// Literal for code: ChemoreceptorApnea
     /// </summary>
     public const string LiteralChemoreceptorApnea = "1821000";
+
+    /// <summary>
+    /// Literal for code: NONEChemoreceptorApnea
+    /// </summary>
+    public const string LiteralNONEChemoreceptorApnea = "http://snomed.info/sct#1821000";
 
     /// <summary>
     /// Literal for code: ImpairedGlucoseToleranceAssociatedWithPancreaticDisease
@@ -10018,9 +11018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImpairedGlucoseToleranceAssociatedWithPancreaticDisease = "1822007";
 
     /// <summary>
+    /// Literal for code: NONEImpairedGlucoseToleranceAssociatedWithPancreaticDisease
+    /// </summary>
+    public const string LiteralNONEImpairedGlucoseToleranceAssociatedWithPancreaticDisease = "http://snomed.info/sct#1822007";
+
+    /// <summary>
     /// Literal for code: AllergicGastritis
     /// </summary>
     public const string LiteralAllergicGastritis = "1824008";
+
+    /// <summary>
+    /// Literal for code: NONEAllergicGastritis
+    /// </summary>
+    public const string LiteralNONEAllergicGastritis = "http://snomed.info/sct#1824008";
 
     /// <summary>
     /// Literal for code: GranulomaOfLip
@@ -10028,9 +11038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGranulomaOfLip = "1826005";
 
     /// <summary>
+    /// Literal for code: NONEGranulomaOfLip
+    /// </summary>
+    public const string LiteralNONEGranulomaOfLip = "http://snomed.info/sct#1826005";
+
+    /// <summary>
     /// Literal for code: InfestationCausedByGasterophilusHemorrhoidalis
     /// </summary>
     public const string LiteralInfestationCausedByGasterophilusHemorrhoidalis = "1828006";
+
+    /// <summary>
+    /// Literal for code: NONEInfestationCausedByGasterophilusHemorrhoidalis
+    /// </summary>
+    public const string LiteralNONEInfestationCausedByGasterophilusHemorrhoidalis = "http://snomed.info/sct#1828006";
 
     /// <summary>
     /// Literal for code: Microcephalus
@@ -10038,9 +11058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicrocephalus = "1829003";
 
     /// <summary>
+    /// Literal for code: NONEMicrocephalus
+    /// </summary>
+    public const string LiteralNONEMicrocephalus = "http://snomed.info/sct#1829003";
+
+    /// <summary>
     /// Literal for code: AutoimmunePancytopenia
     /// </summary>
     public const string LiteralAutoimmunePancytopenia = "183005";
+
+    /// <summary>
+    /// Literal for code: NONEAutoimmunePancytopenia
+    /// </summary>
+    public const string LiteralNONEAutoimmunePancytopenia = "http://snomed.info/sct#183005";
 
     /// <summary>
     /// Literal for code: PhacoanaphylacticEndophthalmitis
@@ -10048,9 +11078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhacoanaphylacticEndophthalmitis = "1833005";
 
     /// <summary>
+    /// Literal for code: NONEPhacoanaphylacticEndophthalmitis
+    /// </summary>
+    public const string LiteralNONEPhacoanaphylacticEndophthalmitis = "http://snomed.info/sct#1833005";
+
+    /// <summary>
     /// Literal for code: NecrosisOfPancreas
     /// </summary>
     public const string LiteralNecrosisOfPancreas = "1835003";
+
+    /// <summary>
+    /// Literal for code: NONENecrosisOfPancreas
+    /// </summary>
+    public const string LiteralNONENecrosisOfPancreas = "http://snomed.info/sct#1835003";
 
     /// <summary>
     /// Literal for code: OrciprenalinePoisoning
@@ -10058,9 +11098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrciprenalinePoisoning = "1837006";
 
     /// <summary>
+    /// Literal for code: NONEOrciprenalinePoisoning
+    /// </summary>
+    public const string LiteralNONEOrciprenalinePoisoning = "http://snomed.info/sct#1837006";
+
+    /// <summary>
     /// Literal for code: WithdrawalArrhythmia
     /// </summary>
     public const string LiteralWithdrawalArrhythmia = "184004";
+
+    /// <summary>
+    /// Literal for code: NONEWithdrawalArrhythmia
+    /// </summary>
+    public const string LiteralNONEWithdrawalArrhythmia = "http://snomed.info/sct#184004";
 
     /// <summary>
     /// Literal for code: Paraparesis
@@ -10068,9 +11118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParaparesis = "1845001";
 
     /// <summary>
+    /// Literal for code: NONEParaparesis
+    /// </summary>
+    public const string LiteralNONEParaparesis = "http://snomed.info/sct#1845001";
+
+    /// <summary>
     /// Literal for code: Endophthalmitis
     /// </summary>
     public const string LiteralEndophthalmitis = "1847009";
+
+    /// <summary>
+    /// Literal for code: NONEEndophthalmitis
+    /// </summary>
+    public const string LiteralNONEEndophthalmitis = "http://snomed.info/sct#1847009";
 
     /// <summary>
     /// Literal for code: PoisoningCausedByGaseousAnesthetic
@@ -10078,9 +11138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPoisoningCausedByGaseousAnesthetic = "1848004";
 
     /// <summary>
+    /// Literal for code: NONEPoisoningCausedByGaseousAnesthetic
+    /// </summary>
+    public const string LiteralNONEPoisoningCausedByGaseousAnesthetic = "http://snomed.info/sct#1848004";
+
+    /// <summary>
     /// Literal for code: TraumaticInjuryOfSixthCranialNerve
     /// </summary>
     public const string LiteralTraumaticInjuryOfSixthCranialNerve = "1852004";
+
+    /// <summary>
+    /// Literal for code: NONETraumaticInjuryOfSixthCranialNerve
+    /// </summary>
+    public const string LiteralNONETraumaticInjuryOfSixthCranialNerve = "http://snomed.info/sct#1852004";
 
     /// <summary>
     /// Literal for code: DevelopmentalAcademicDisorder
@@ -10088,9 +11158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDevelopmentalAcademicDisorder = "1855002";
 
     /// <summary>
+    /// Literal for code: NONEDevelopmentalAcademicDisorder
+    /// </summary>
+    public const string LiteralNONEDevelopmentalAcademicDisorder = "http://snomed.info/sct#1855002";
+
+    /// <summary>
     /// Literal for code: AccessoryNose
     /// </summary>
     public const string LiteralAccessoryNose = "1856001";
+
+    /// <summary>
+    /// Literal for code: NONEAccessoryNose
+    /// </summary>
+    public const string LiteralNONEAccessoryNose = "http://snomed.info/sct#1856001";
 
     /// <summary>
     /// Literal for code: CongenitalRubellaSyndrome
@@ -10098,9 +11178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalRubellaSyndrome = "1857005";
 
     /// <summary>
+    /// Literal for code: NONECongenitalRubellaSyndrome
+    /// </summary>
+    public const string LiteralNONECongenitalRubellaSyndrome = "http://snomed.info/sct#1857005";
+
+    /// <summary>
     /// Literal for code: InfectionCausedByStilesiaGlobipunctata
     /// </summary>
     public const string LiteralInfectionCausedByStilesiaGlobipunctata = "1858000";
+
+    /// <summary>
+    /// Literal for code: NONEInfectionCausedByStilesiaGlobipunctata
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByStilesiaGlobipunctata = "http://snomed.info/sct#1858000";
 
     /// <summary>
     /// Literal for code: FluidVolumeDisorder
@@ -10108,9 +11198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFluidVolumeDisorder = "1860003";
 
     /// <summary>
+    /// Literal for code: NONEFluidVolumeDisorder
+    /// </summary>
+    public const string LiteralNONEFluidVolumeDisorder = "http://snomed.info/sct#1860003";
+
+    /// <summary>
     /// Literal for code: ImpairedIntestinalProteinAbsorption
     /// </summary>
     public const string LiteralImpairedIntestinalProteinAbsorption = "1865008";
+
+    /// <summary>
+    /// Literal for code: NONEImpairedIntestinalProteinAbsorption
+    /// </summary>
+    public const string LiteralNONEImpairedIntestinalProteinAbsorption = "http://snomed.info/sct#1865008";
 
     /// <summary>
     /// Literal for code: RuptureOfIrisSphincter
@@ -10118,9 +11218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRuptureOfIrisSphincter = "1869002";
 
     /// <summary>
+    /// Literal for code: NONERuptureOfIrisSphincter
+    /// </summary>
+    public const string LiteralNONERuptureOfIrisSphincter = "http://snomed.info/sct#1869002";
+
+    /// <summary>
     /// Literal for code: IntercostalArteryInjury
     /// </summary>
     public const string LiteralIntercostalArteryInjury = "188001";
+
+    /// <summary>
+    /// Literal for code: NONEIntercostalArteryInjury
+    /// </summary>
+    public const string LiteralNONEIntercostalArteryInjury = "http://snomed.info/sct#188001";
 
     /// <summary>
     /// Literal for code: IncreasedNutritionalRequirement
@@ -10128,9 +11238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIncreasedNutritionalRequirement = "1881003";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedNutritionalRequirement
+    /// </summary>
+    public const string LiteralNONEIncreasedNutritionalRequirement = "http://snomed.info/sct#1881003";
+
+    /// <summary>
     /// Literal for code: StarFigureAtTheMacula
     /// </summary>
     public const string LiteralStarFigureAtTheMacula = "1892002";
+
+    /// <summary>
+    /// Literal for code: NONEStarFigureAtTheMacula
+    /// </summary>
+    public const string LiteralNONEStarFigureAtTheMacula = "http://snomed.info/sct#1892002";
 
     /// <summary>
     /// Literal for code: EctopicBreastTissue
@@ -10138,9 +11258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEctopicBreastTissue = "1896004";
 
     /// <summary>
+    /// Literal for code: NONEEctopicBreastTissue
+    /// </summary>
+    public const string LiteralNONEEctopicBreastTissue = "http://snomed.info/sct#1896004";
+
+    /// <summary>
     /// Literal for code: AmsinckiaSpeciesPoisoning
     /// </summary>
     public const string LiteralAmsinckiaSpeciesPoisoning = "1897008";
+
+    /// <summary>
+    /// Literal for code: NONEAmsinckiaSpeciesPoisoning
+    /// </summary>
+    public const string LiteralNONEAmsinckiaSpeciesPoisoning = "http://snomed.info/sct#1897008";
 
     /// <summary>
     /// Literal for code: AutosomalHereditaryDisorder
@@ -10148,9 +11278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAutosomalHereditaryDisorder = "1899006";
 
     /// <summary>
+    /// Literal for code: NONEAutosomalHereditaryDisorder
+    /// </summary>
+    public const string LiteralNONEAutosomalHereditaryDisorder = "http://snomed.info/sct#1899006";
+
+    /// <summary>
     /// Literal for code: InfestationCausedByPsorergatesOvis
     /// </summary>
     public const string LiteralInfestationCausedByPsorergatesOvis = "1903004";
+
+    /// <summary>
+    /// Literal for code: NONEInfestationCausedByPsorergatesOvis
+    /// </summary>
+    public const string LiteralNONEInfestationCausedByPsorergatesOvis = "http://snomed.info/sct#1903004";
 
     /// <summary>
     /// Literal for code: VonWillebrandDiseaseTypeIIC
@@ -10158,9 +11298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVonWillebrandDiseaseTypeIIC = "1908008";
 
     /// <summary>
+    /// Literal for code: NONEVonWillebrandDiseaseTypeIIC
+    /// </summary>
+    public const string LiteralNONEVonWillebrandDiseaseTypeIIC = "http://snomed.info/sct#1908008";
+
+    /// <summary>
     /// Literal for code: ImpairmentLevelBetterEyeSevereImpairmentLesserEyeNearTotalImpairment
     /// </summary>
     public const string LiteralImpairmentLevelBetterEyeSevereImpairmentLesserEyeNearTotalImpairment = "1909000";
+
+    /// <summary>
+    /// Literal for code: NONEImpairmentLevelBetterEyeSevereImpairmentLesserEyeNearTotalImpairment
+    /// </summary>
+    public const string LiteralNONEImpairmentLevelBetterEyeSevereImpairmentLesserEyeNearTotalImpairment = "http://snomed.info/sct#1909000";
 
     /// <summary>
     /// Literal for code: CongenitalSyphiliticHepatomegaly
@@ -10168,9 +11318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalSyphiliticHepatomegaly = "192008";
 
     /// <summary>
+    /// Literal for code: NONECongenitalSyphiliticHepatomegaly
+    /// </summary>
+    public const string LiteralNONECongenitalSyphiliticHepatomegaly = "http://snomed.info/sct#192008";
+
+    /// <summary>
     /// Literal for code: CongenitalAbsenceOfUrethra
     /// </summary>
     public const string LiteralCongenitalAbsenceOfUrethra = "1922008";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalAbsenceOfUrethra
+    /// </summary>
+    public const string LiteralNONECongenitalAbsenceOfUrethra = "http://snomed.info/sct#1922008";
 
     /// <summary>
     /// Literal for code: Osteopetrosis
@@ -10178,9 +11338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOsteopetrosis = "1926006";
 
     /// <summary>
+    /// Literal for code: NONEOsteopetrosis
+    /// </summary>
+    public const string LiteralNONEOsteopetrosis = "http://snomed.info/sct#1926006";
+
+    /// <summary>
     /// Literal for code: BenignHypertensiveRenalDisease
     /// </summary>
     public const string LiteralBenignHypertensiveRenalDisease = "193003";
+
+    /// <summary>
+    /// Literal for code: NONEBenignHypertensiveRenalDisease
+    /// </summary>
+    public const string LiteralNONEBenignHypertensiveRenalDisease = "http://snomed.info/sct#193003";
 
     /// <summary>
     /// Literal for code: EmotionalANDORMentalDiseaseInMotherComplicatingPregnancyChildbirthANDORPuerperium
@@ -10188,9 +11358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmotionalANDORMentalDiseaseInMotherComplicatingPregnancyChildbirthANDORPuerperium = "1938002";
 
     /// <summary>
+    /// Literal for code: NONEEmotionalANDORMentalDiseaseInMotherComplicatingPregnancyChildbirthANDORPuerperium
+    /// </summary>
+    public const string LiteralNONEEmotionalANDORMentalDiseaseInMotherComplicatingPregnancyChildbirthANDORPuerperium = "http://snomed.info/sct#1938002";
+
+    /// <summary>
     /// Literal for code: AbnormalVascularFlow
     /// </summary>
     public const string LiteralAbnormalVascularFlow = "1939005";
+
+    /// <summary>
+    /// Literal for code: NONEAbnormalVascularFlow
+    /// </summary>
+    public const string LiteralNONEAbnormalVascularFlow = "http://snomed.info/sct#1939005";
 
     /// <summary>
     /// Literal for code: LeftRightConfusion
@@ -10198,9 +11378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeftRightConfusion = "1943009";
 
     /// <summary>
+    /// Literal for code: NONELeftRightConfusion
+    /// </summary>
+    public const string LiteralNONELeftRightConfusion = "http://snomed.info/sct#1943009";
+
+    /// <summary>
     /// Literal for code: IllegalAbortionWithEndometritis
     /// </summary>
     public const string LiteralIllegalAbortionWithEndometritis = "195005";
+
+    /// <summary>
+    /// Literal for code: NONEIllegalAbortionWithEndometritis
+    /// </summary>
+    public const string LiteralNONEIllegalAbortionWithEndometritis = "http://snomed.info/sct#195005";
 
     /// <summary>
     /// Literal for code: CongenitalDeficiencyOfPigmentOfSkin
@@ -10208,9 +11398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalDeficiencyOfPigmentOfSkin = "1953005";
 
     /// <summary>
+    /// Literal for code: NONECongenitalDeficiencyOfPigmentOfSkin
+    /// </summary>
+    public const string LiteralNONECongenitalDeficiencyOfPigmentOfSkin = "http://snomed.info/sct#1953005";
+
+    /// <summary>
     /// Literal for code: DilatedCardiomyopathySecondaryToToxicReaction
     /// </summary>
     public const string LiteralDilatedCardiomyopathySecondaryToToxicReaction = "1954004";
+
+    /// <summary>
+    /// Literal for code: NONEDilatedCardiomyopathySecondaryToToxicReaction
+    /// </summary>
+    public const string LiteralNONEDilatedCardiomyopathySecondaryToToxicReaction = "http://snomed.info/sct#1954004";
 
     /// <summary>
     /// Literal for code: PreauricularPit
@@ -10218,9 +11418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPreauricularPit = "1955003";
 
     /// <summary>
+    /// Literal for code: NONEPreauricularPit
+    /// </summary>
+    public const string LiteralNONEPreauricularPit = "http://snomed.info/sct#1955003";
+
+    /// <summary>
     /// Literal for code: EncephalartosSpeciesPoisoning
     /// </summary>
     public const string LiteralEncephalartosSpeciesPoisoning = "1959009";
+
+    /// <summary>
+    /// Literal for code: NONEEncephalartosSpeciesPoisoning
+    /// </summary>
+    public const string LiteralNONEEncephalartosSpeciesPoisoning = "http://snomed.info/sct#1959009";
 
     /// <summary>
     /// Literal for code: ChronicPolyarticularJuvenileRheumatoidArthritis
@@ -10228,9 +11438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicPolyarticularJuvenileRheumatoidArthritis = "1961000";
 
     /// <summary>
+    /// Literal for code: NONEChronicPolyarticularJuvenileRheumatoidArthritis
+    /// </summary>
+    public const string LiteralNONEChronicPolyarticularJuvenileRheumatoidArthritis = "http://snomed.info/sct#1961000";
+
+    /// <summary>
     /// Literal for code: PNHParoxysmalNocturnalHemoglobinuria
     /// </summary>
     public const string LiteralPNHParoxysmalNocturnalHemoglobinuria = "1963002";
+
+    /// <summary>
+    /// Literal for code: NONEPNHParoxysmalNocturnalHemoglobinuria
+    /// </summary>
+    public const string LiteralNONEPNHParoxysmalNocturnalHemoglobinuria = "http://snomed.info/sct#1963002";
 
     /// <summary>
     /// Literal for code: NormalSkinPH
@@ -10238,9 +11458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNormalSkinPH = "1965009";
 
     /// <summary>
+    /// Literal for code: NONENormalSkinPH
+    /// </summary>
+    public const string LiteralNONENormalSkinPH = "http://snomed.info/sct#1965009";
+
+    /// <summary>
     /// Literal for code: CongenitalAbsenceOfForearmOnly
     /// </summary>
     public const string LiteralCongenitalAbsenceOfForearmOnly = "1967001";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalAbsenceOfForearmOnly
+    /// </summary>
+    public const string LiteralNONECongenitalAbsenceOfForearmOnly = "http://snomed.info/sct#1967001";
 
     /// <summary>
     /// Literal for code: SedativeHypnoticANDORAnxiolyticInducedPsychoticDisorderWithDelusions
@@ -10248,9 +11478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSedativeHypnoticANDORAnxiolyticInducedPsychoticDisorderWithDelusions = "1973000";
 
     /// <summary>
+    /// Literal for code: NONESedativeHypnoticANDORAnxiolyticInducedPsychoticDisorderWithDelusions
+    /// </summary>
+    public const string LiteralNONESedativeHypnoticANDORAnxiolyticInducedPsychoticDisorderWithDelusions = "http://snomed.info/sct#1973000";
+
+    /// <summary>
     /// Literal for code: OxymetholonePoisoning
     /// </summary>
     public const string LiteralOxymetholonePoisoning = "1977004";
+
+    /// <summary>
+    /// Literal for code: NONEOxymetholonePoisoning
+    /// </summary>
+    public const string LiteralNONEOxymetholonePoisoning = "http://snomed.info/sct#1977004";
 
     /// <summary>
     /// Literal for code: FocalChoroiditis
@@ -10258,9 +11498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFocalChoroiditis = "1979001";
 
     /// <summary>
+    /// Literal for code: NONEFocalChoroiditis
+    /// </summary>
+    public const string LiteralNONEFocalChoroiditis = "http://snomed.info/sct#1979001";
+
+    /// <summary>
     /// Literal for code: SeromucinousOtitisMedia
     /// </summary>
     public const string LiteralSeromucinousOtitisMedia = "1980003";
+
+    /// <summary>
+    /// Literal for code: NONESeromucinousOtitisMedia
+    /// </summary>
+    public const string LiteralNONESeromucinousOtitisMedia = "http://snomed.info/sct#1980003";
 
     /// <summary>
     /// Literal for code: DiseaseDueToFiloviridae
@@ -10268,9 +11518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiseaseDueToFiloviridae = "198007";
 
     /// <summary>
+    /// Literal for code: NONEDiseaseDueToFiloviridae
+    /// </summary>
+    public const string LiteralNONEDiseaseDueToFiloviridae = "http://snomed.info/sct#198007";
+
+    /// <summary>
     /// Literal for code: Urhidrosis
     /// </summary>
     public const string LiteralUrhidrosis = "1981004";
+
+    /// <summary>
+    /// Literal for code: NONEUrhidrosis
+    /// </summary>
+    public const string LiteralNONEUrhidrosis = "http://snomed.info/sct#1981004";
 
     /// <summary>
     /// Literal for code: LateEffectOfInjuryToNerveRootsSpinalPlexusANDOROtherNervesOfTrunk
@@ -10278,9 +11538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateEffectOfInjuryToNerveRootsSpinalPlexusANDOROtherNervesOfTrunk = "1988005";
 
     /// <summary>
+    /// Literal for code: NONELateEffectOfInjuryToNerveRootsSpinalPlexusANDOROtherNervesOfTrunk
+    /// </summary>
+    public const string LiteralNONELateEffectOfInjuryToNerveRootsSpinalPlexusANDOROtherNervesOfTrunk = "http://snomed.info/sct#1988005";
+
+    /// <summary>
     /// Literal for code: BurnOfVaginaANDORUterus
     /// </summary>
     public const string LiteralBurnOfVaginaANDORUterus = "1989002";
+
+    /// <summary>
+    /// Literal for code: NONEBurnOfVaginaANDORUterus
+    /// </summary>
+    public const string LiteralNONEBurnOfVaginaANDORUterus = "http://snomed.info/sct#1989002";
 
     /// <summary>
     /// Literal for code: DecreasedLactation
@@ -10288,9 +11558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDecreasedLactation = "199004";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedLactation
+    /// </summary>
+    public const string LiteralNONEDecreasedLactation = "http://snomed.info/sct#199004";
+
+    /// <summary>
     /// Literal for code: Normotensive
     /// </summary>
     public const string LiteralNormotensive = "2004005";
+
+    /// <summary>
+    /// Literal for code: NONENormotensive
+    /// </summary>
+    public const string LiteralNONENormotensive = "http://snomed.info/sct#2004005";
 
     /// <summary>
     /// Literal for code: FractureOfLunate
@@ -10298,9 +11578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureOfLunate = "2012002";
 
     /// <summary>
+    /// Literal for code: NONEFractureOfLunate
+    /// </summary>
+    public const string LiteralNONEFractureOfLunate = "http://snomed.info/sct#2012002";
+
+    /// <summary>
     /// Literal for code: DilatedCardiomyopathySecondaryToMetazoalMyocarditis
     /// </summary>
     public const string LiteralDilatedCardiomyopathySecondaryToMetazoalMyocarditis = "2024009";
+
+    /// <summary>
+    /// Literal for code: NONEDilatedCardiomyopathySecondaryToMetazoalMyocarditis
+    /// </summary>
+    public const string LiteralNONEDilatedCardiomyopathySecondaryToMetazoalMyocarditis = "http://snomed.info/sct#2024009";
 
     /// <summary>
     /// Literal for code: ErythemaInduratum
@@ -10308,9 +11598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralErythemaInduratum = "2028007";
 
     /// <summary>
+    /// Literal for code: NONEErythemaInduratum
+    /// </summary>
+    public const string LiteralNONEErythemaInduratum = "http://snomed.info/sct#2028007";
+
+    /// <summary>
     /// Literal for code: CerebralEdema
     /// </summary>
     public const string LiteralCerebralEdema = "2032001";
+
+    /// <summary>
+    /// Literal for code: NONECerebralEdema
+    /// </summary>
+    public const string LiteralNONECerebralEdema = "http://snomed.info/sct#2032001";
 
     /// <summary>
     /// Literal for code: AcquiredFactorVIIDeficiencyDisease
@@ -10318,9 +11618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcquiredFactorVIIDeficiencyDisease = "2036003";
 
     /// <summary>
+    /// Literal for code: NONEAcquiredFactorVIIDeficiencyDisease
+    /// </summary>
+    public const string LiteralNONEAcquiredFactorVIIDeficiencyDisease = "http://snomed.info/sct#2036003";
+
+    /// <summary>
     /// Literal for code: NeurogenicThoracicOutletSyndrome
     /// </summary>
     public const string LiteralNeurogenicThoracicOutletSyndrome = "2040007";
+
+    /// <summary>
+    /// Literal for code: NONENeurogenicThoracicOutletSyndrome
+    /// </summary>
+    public const string LiteralNONENeurogenicThoracicOutletSyndrome = "http://snomed.info/sct#2040007";
 
     /// <summary>
     /// Literal for code: EunuchoidGigantism
@@ -10328,9 +11638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEunuchoidGigantism = "2041006";
 
     /// <summary>
+    /// Literal for code: NONEEunuchoidGigantism
+    /// </summary>
+    public const string LiteralNONEEunuchoidGigantism = "http://snomed.info/sct#2041006";
+
+    /// <summary>
     /// Literal for code: AlcoholicGastritis
     /// </summary>
     public const string LiteralAlcoholicGastritis = "2043009";
+
+    /// <summary>
+    /// Literal for code: NONEAlcoholicGastritis
+    /// </summary>
+    public const string LiteralNONEAlcoholicGastritis = "http://snomed.info/sct#2043009";
 
     /// <summary>
     /// Literal for code: LateEffectOfInjuryToBloodVesselsOfThoraxAbdomenANDORPelvis
@@ -10338,9 +11658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateEffectOfInjuryToBloodVesselsOfThoraxAbdomenANDORPelvis = "2053005";
 
     /// <summary>
+    /// Literal for code: NONELateEffectOfInjuryToBloodVesselsOfThoraxAbdomenANDORPelvis
+    /// </summary>
+    public const string LiteralNONELateEffectOfInjuryToBloodVesselsOfThoraxAbdomenANDORPelvis = "http://snomed.info/sct#2053005";
+
+    /// <summary>
     /// Literal for code: RecurrentErosionSyndrome
     /// </summary>
     public const string LiteralRecurrentErosionSyndrome = "2055003";
+
+    /// <summary>
+    /// Literal for code: NONERecurrentErosionSyndrome
+    /// </summary>
+    public const string LiteralNONERecurrentErosionSyndrome = "http://snomed.info/sct#2055003";
 
     /// <summary>
     /// Literal for code: BilateralLossOfLabyrinthineReactivity
@@ -10348,9 +11678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBilateralLossOfLabyrinthineReactivity = "2058001";
 
     /// <summary>
+    /// Literal for code: NONEBilateralLossOfLabyrinthineReactivity
+    /// </summary>
+    public const string LiteralNONEBilateralLossOfLabyrinthineReactivity = "http://snomed.info/sct#2058001";
+
+    /// <summary>
     /// Literal for code: ConductiveHearingLossOfCombinedSites
     /// </summary>
     public const string LiteralConductiveHearingLossOfCombinedSites = "2061000";
+
+    /// <summary>
+    /// Literal for code: NONEConductiveHearingLossOfCombinedSites
+    /// </summary>
+    public const string LiteralNONEConductiveHearingLossOfCombinedSites = "http://snomed.info/sct#2061000";
 
     /// <summary>
     /// Literal for code: AutosomalDominantOpticAtrophy
@@ -10358,9 +11698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAutosomalDominantOpticAtrophy = "2065009";
 
     /// <summary>
+    /// Literal for code: NONEAutosomalDominantOpticAtrophy
+    /// </summary>
+    public const string LiteralNONEAutosomalDominantOpticAtrophy = "http://snomed.info/sct#2065009";
+
+    /// <summary>
     /// Literal for code: GastricUlcerWithHemorrhageANDPerforationButWithoutObstruction
     /// </summary>
     public const string LiteralGastricUlcerWithHemorrhageANDPerforationButWithoutObstruction = "2066005";
+
+    /// <summary>
+    /// Literal for code: NONEGastricUlcerWithHemorrhageANDPerforationButWithoutObstruction
+    /// </summary>
+    public const string LiteralNONEGastricUlcerWithHemorrhageANDPerforationButWithoutObstruction = "http://snomed.info/sct#2066005";
 
     /// <summary>
     /// Literal for code: BurningSensationInEye
@@ -10368,9 +11718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBurningSensationInEye = "2070002";
 
     /// <summary>
+    /// Literal for code: NONEBurningSensationInEye
+    /// </summary>
+    public const string LiteralNONEBurningSensationInEye = "http://snomed.info/sct#2070002";
+
+    /// <summary>
     /// Literal for code: Delusions
     /// </summary>
     public const string LiteralDelusions = "2073000";
+
+    /// <summary>
+    /// Literal for code: NONEDelusions
+    /// </summary>
+    public const string LiteralNONEDelusions = "http://snomed.info/sct#2073000";
 
     /// <summary>
     /// Literal for code: NeurocutaneousMelanosisSequence
@@ -10378,9 +11738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeurocutaneousMelanosisSequence = "208008";
 
     /// <summary>
+    /// Literal for code: NONENeurocutaneousMelanosisSequence
+    /// </summary>
+    public const string LiteralNONENeurocutaneousMelanosisSequence = "http://snomed.info/sct#208008";
+
+    /// <summary>
     /// Literal for code: PulmonaryNocardiosis
     /// </summary>
     public const string LiteralPulmonaryNocardiosis = "2087000";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryNocardiosis
+    /// </summary>
+    public const string LiteralNONEPulmonaryNocardiosis = "http://snomed.info/sct#2087000";
 
     /// <summary>
     /// Literal for code: PagetsDiseaseOfBone
@@ -10388,9 +11758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPagetsDiseaseOfBone = "2089002";
 
     /// <summary>
+    /// Literal for code: NONEPagetsDiseaseOfBone
+    /// </summary>
+    public const string LiteralNONEPagetsDiseaseOfBone = "http://snomed.info/sct#2089002";
+
+    /// <summary>
     /// Literal for code: PharyngealDiverticulitis
     /// </summary>
     public const string LiteralPharyngealDiverticulitis = "2091005";
+
+    /// <summary>
+    /// Literal for code: NONEPharyngealDiverticulitis
+    /// </summary>
+    public const string LiteralNONEPharyngealDiverticulitis = "http://snomed.info/sct#2091005";
 
     /// <summary>
     /// Literal for code: CarbonDisulfideCausingToxicEffect
@@ -10398,9 +11778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCarbonDisulfideCausingToxicEffect = "2094002";
 
     /// <summary>
+    /// Literal for code: NONECarbonDisulfideCausingToxicEffect
+    /// </summary>
+    public const string LiteralNONECarbonDisulfideCausingToxicEffect = "http://snomed.info/sct#2094002";
+
+    /// <summary>
     /// Literal for code: DeepCornealVascularization
     /// </summary>
     public const string LiteralDeepCornealVascularization = "2102007";
+
+    /// <summary>
+    /// Literal for code: NONEDeepCornealVascularization
+    /// </summary>
+    public const string LiteralNONEDeepCornealVascularization = "http://snomed.info/sct#2102007";
 
     /// <summary>
     /// Literal for code: ReflexSympatheticDystrophyOfUpperExtremity
@@ -10408,9 +11798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReflexSympatheticDystrophyOfUpperExtremity = "2103002";
 
     /// <summary>
+    /// Literal for code: NONEReflexSympatheticDystrophyOfUpperExtremity
+    /// </summary>
+    public const string LiteralNONEReflexSympatheticDystrophyOfUpperExtremity = "http://snomed.info/sct#2103002";
+
+    /// <summary>
     /// Literal for code: Anisomelia
     /// </summary>
     public const string LiteralAnisomelia = "2107001";
+
+    /// <summary>
+    /// Literal for code: NONEAnisomelia
+    /// </summary>
+    public const string LiteralNONEAnisomelia = "http://snomed.info/sct#2107001";
 
     /// <summary>
     /// Literal for code: IsolatedSomatotropinDeficiency
@@ -10418,9 +11818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIsolatedSomatotropinDeficiency = "2109003";
 
     /// <summary>
+    /// Literal for code: NONEIsolatedSomatotropinDeficiency
+    /// </summary>
+    public const string LiteralNONEIsolatedSomatotropinDeficiency = "http://snomed.info/sct#2109003";
+
+    /// <summary>
     /// Literal for code: InfectionCausedByCysticercusPisiformis
     /// </summary>
     public const string LiteralInfectionCausedByCysticercusPisiformis = "2114004";
+
+    /// <summary>
+    /// Literal for code: NONEInfectionCausedByCysticercusPisiformis
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByCysticercusPisiformis = "http://snomed.info/sct#2114004";
 
     /// <summary>
     /// Literal for code: IntramembranousBoneFormation
@@ -10428,9 +11838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntramembranousBoneFormation = "2116002";
 
     /// <summary>
+    /// Literal for code: NONEIntramembranousBoneFormation
+    /// </summary>
+    public const string LiteralNONEIntramembranousBoneFormation = "http://snomed.info/sct#2116002";
+
+    /// <summary>
     /// Literal for code: WeakCry
     /// </summary>
     public const string LiteralWeakCry = "2120003";
+
+    /// <summary>
+    /// Literal for code: NONEWeakCry
+    /// </summary>
+    public const string LiteralNONEWeakCry = "http://snomed.info/sct#2120003";
 
     /// <summary>
     /// Literal for code: EthopropazinePoisoning
@@ -10438,9 +11858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEthopropazinePoisoning = "2121004";
 
     /// <summary>
+    /// Literal for code: NONEEthopropazinePoisoning
+    /// </summary>
+    public const string LiteralNONEEthopropazinePoisoning = "http://snomed.info/sct#2121004";
+
+    /// <summary>
     /// Literal for code: DisorderOfAdenoid
     /// </summary>
     public const string LiteralDisorderOfAdenoid = "2128005";
+
+    /// <summary>
+    /// Literal for code: NONEDisorderOfAdenoid
+    /// </summary>
+    public const string LiteralNONEDisorderOfAdenoid = "http://snomed.info/sct#2128005";
 
     /// <summary>
     /// Literal for code: EdemaOfPharynx
@@ -10448,9 +11878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEdemaOfPharynx = "2129002";
 
     /// <summary>
+    /// Literal for code: NONEEdemaOfPharynx
+    /// </summary>
+    public const string LiteralNONEEdemaOfPharynx = "http://snomed.info/sct#2129002";
+
+    /// <summary>
     /// Literal for code: MeconiumInAmnioticFluidNotedBeforeLaborInLivebornInfant
     /// </summary>
     public const string LiteralMeconiumInAmnioticFluidNotedBeforeLaborInLivebornInfant = "2132004";
+
+    /// <summary>
+    /// Literal for code: NONEMeconiumInAmnioticFluidNotedBeforeLaborInLivebornInfant
+    /// </summary>
+    public const string LiteralNONEMeconiumInAmnioticFluidNotedBeforeLaborInLivebornInfant = "http://snomed.info/sct#2132004";
 
     /// <summary>
     /// Literal for code: DiffusePain
@@ -10458,9 +11898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiffusePain = "2134003";
 
     /// <summary>
+    /// Literal for code: NONEDiffusePain
+    /// </summary>
+    public const string LiteralNONEDiffusePain = "http://snomed.info/sct#2134003";
+
+    /// <summary>
     /// Literal for code: OpenWoundOfJawWithComplication
     /// </summary>
     public const string LiteralOpenWoundOfJawWithComplication = "2136001";
+
+    /// <summary>
+    /// Literal for code: NONEOpenWoundOfJawWithComplication
+    /// </summary>
+    public const string LiteralNONEOpenWoundOfJawWithComplication = "http://snomed.info/sct#2136001";
 
     /// <summary>
     /// Literal for code: LSPLeftSacroposteriorPosition
@@ -10468,9 +11918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLSPLeftSacroposteriorPosition = "2138000";
 
     /// <summary>
+    /// Literal for code: NONELSPLeftSacroposteriorPosition
+    /// </summary>
+    public const string LiteralNONELSPLeftSacroposteriorPosition = "http://snomed.info/sct#2138000";
+
+    /// <summary>
     /// Literal for code: AnalIntercourse
     /// </summary>
     public const string LiteralAnalIntercourse = "2145000";
+
+    /// <summary>
+    /// Literal for code: NONEAnalIntercourse
+    /// </summary>
+    public const string LiteralNONEAnalIntercourse = "http://snomed.info/sct#2145000";
 
     /// <summary>
     /// Literal for code: DecreasedHormoneProduction
@@ -10478,9 +11938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDecreasedHormoneProduction = "2149006";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedHormoneProduction
+    /// </summary>
+    public const string LiteralNONEDecreasedHormoneProduction = "http://snomed.info/sct#2149006";
+
+    /// <summary>
     /// Literal for code: InfectionCausedByContracaecum
     /// </summary>
     public const string LiteralInfectionCausedByContracaecum = "2158004";
+
+    /// <summary>
+    /// Literal for code: NONEInfectionCausedByContracaecum
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByContracaecum = "http://snomed.info/sct#2158004";
 
     /// <summary>
     /// Literal for code: DelusionOfPersecution
@@ -10488,9 +11958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDelusionOfPersecution = "216004";
 
     /// <summary>
+    /// Literal for code: NONEDelusionOfPersecution
+    /// </summary>
+    public const string LiteralNONEDelusionOfPersecution = "http://snomed.info/sct#216004";
+
+    /// <summary>
     /// Literal for code: RetinalHemangioblastomatosis
     /// </summary>
     public const string LiteralRetinalHemangioblastomatosis = "2167004";
+
+    /// <summary>
+    /// Literal for code: NONERetinalHemangioblastomatosis
+    /// </summary>
+    public const string LiteralNONERetinalHemangioblastomatosis = "http://snomed.info/sct#2167004";
 
     /// <summary>
     /// Literal for code: ThoracicRadiculitis
@@ -10498,9 +11978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThoracicRadiculitis = "2169001";
 
     /// <summary>
+    /// Literal for code: NONEThoracicRadiculitis
+    /// </summary>
+    public const string LiteralNONEThoracicRadiculitis = "http://snomed.info/sct#2169001";
+
+    /// <summary>
     /// Literal for code: GallopRhythm
     /// </summary>
     public const string LiteralGallopRhythm = "2170000";
+
+    /// <summary>
+    /// Literal for code: NONEGallopRhythm
+    /// </summary>
+    public const string LiteralNONEGallopRhythm = "http://snomed.info/sct#2170000";
 
     /// <summary>
     /// Literal for code: HalogenAcne
@@ -10508,9 +11998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHalogenAcne = "2176006";
 
     /// <summary>
+    /// Literal for code: NONEHalogenAcne
+    /// </summary>
+    public const string LiteralNONEHalogenAcne = "http://snomed.info/sct#2176006";
+
+    /// <summary>
     /// Literal for code: PHNPostHerpeticNeuralgia
     /// </summary>
     public const string LiteralPHNPostHerpeticNeuralgia = "2177002";
+
+    /// <summary>
+    /// Literal for code: NONEPHNPostHerpeticNeuralgia
+    /// </summary>
+    public const string LiteralNONEPHNPostHerpeticNeuralgia = "http://snomed.info/sct#2177002";
 
     /// <summary>
     /// Literal for code: CompensatedMetabolicAlkalosis
@@ -10518,9 +12018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCompensatedMetabolicAlkalosis = "2186007";
 
     /// <summary>
+    /// Literal for code: NONECompensatedMetabolicAlkalosis
+    /// </summary>
+    public const string LiteralNONECompensatedMetabolicAlkalosis = "http://snomed.info/sct#2186007";
+
+    /// <summary>
     /// Literal for code: AlcoholUser
     /// </summary>
     public const string LiteralAlcoholUser = "219006";
+
+    /// <summary>
+    /// Literal for code: NONEAlcoholUser
+    /// </summary>
+    public const string LiteralNONEAlcoholUser = "http://snomed.info/sct#219006";
 
     /// <summary>
     /// Literal for code: VisceralEpilepsy
@@ -10528,9 +12038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVisceralEpilepsy = "2198002";
 
     /// <summary>
+    /// Literal for code: NONEVisceralEpilepsy
+    /// </summary>
+    public const string LiteralNONEVisceralEpilepsy = "http://snomed.info/sct#2198002";
+
+    /// <summary>
     /// Literal for code: OpenPosteriorDislocationOfDistalEndOfFemur
     /// </summary>
     public const string LiteralOpenPosteriorDislocationOfDistalEndOfFemur = "2202000";
+
+    /// <summary>
+    /// Literal for code: NONEOpenPosteriorDislocationOfDistalEndOfFemur
+    /// </summary>
+    public const string LiteralNONEOpenPosteriorDislocationOfDistalEndOfFemur = "http://snomed.info/sct#2202000";
 
     /// <summary>
     /// Literal for code: AcquiredDeformityOfPinna
@@ -10538,9 +12058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcquiredDeformityOfPinna = "2204004";
 
     /// <summary>
+    /// Literal for code: NONEAcquiredDeformityOfPinna
+    /// </summary>
+    public const string LiteralNONEAcquiredDeformityOfPinna = "http://snomed.info/sct#2204004";
+
+    /// <summary>
     /// Literal for code: CongenitalAnomalyOfVenaCava
     /// </summary>
     public const string LiteralCongenitalAnomalyOfVenaCava = "2213002";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalAnomalyOfVenaCava
+    /// </summary>
+    public const string LiteralNONECongenitalAnomalyOfVenaCava = "http://snomed.info/sct#2213002";
 
     /// <summary>
     /// Literal for code: NocturnalEmission
@@ -10548,9 +12078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNocturnalEmission = "2216005";
 
     /// <summary>
+    /// Literal for code: NONENocturnalEmission
+    /// </summary>
+    public const string LiteralNONENocturnalEmission = "http://snomed.info/sct#2216005";
+
+    /// <summary>
     /// Literal for code: SuperficialInjuryOfPerineumWithoutInfection
     /// </summary>
     public const string LiteralSuperficialInjuryOfPerineumWithoutInfection = "2217001";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialInjuryOfPerineumWithoutInfection
+    /// </summary>
+    public const string LiteralNONESuperficialInjuryOfPerineumWithoutInfection = "http://snomed.info/sct#2217001";
 
     /// <summary>
     /// Literal for code: DisabilityEvaluationDisability100Percent
@@ -10558,9 +12098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDisabilityEvaluationDisability100Percent = "2219003";
 
     /// <summary>
+    /// Literal for code: NONEDisabilityEvaluationDisability100Percent
+    /// </summary>
+    public const string LiteralNONEDisabilityEvaluationDisability100Percent = "http://snomed.info/sct#2219003";
+
+    /// <summary>
     /// Literal for code: AcuteEpiglottitisWithObstruction
     /// </summary>
     public const string LiteralAcuteEpiglottitisWithObstruction = "222008";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteEpiglottitisWithObstruction
+    /// </summary>
+    public const string LiteralNONEAcuteEpiglottitisWithObstruction = "http://snomed.info/sct#222008";
 
     /// <summary>
     /// Literal for code: SeleniumPoisoning
@@ -10568,9 +12118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSeleniumPoisoning = "2224000";
 
     /// <summary>
+    /// Literal for code: NONESeleniumPoisoning
+    /// </summary>
+    public const string LiteralNONESeleniumPoisoning = "http://snomed.info/sct#2224000";
+
+    /// <summary>
     /// Literal for code: ScintillatingScotoma
     /// </summary>
     public const string LiteralScintillatingScotoma = "2228002";
+
+    /// <summary>
+    /// Literal for code: NONEScintillatingScotoma
+    /// </summary>
+    public const string LiteralNONEScintillatingScotoma = "http://snomed.info/sct#2228002";
 
     /// <summary>
     /// Literal for code: Chimera
@@ -10578,9 +12138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChimera = "2229005";
 
     /// <summary>
+    /// Literal for code: NONEChimera
+    /// </summary>
+    public const string LiteralNONEChimera = "http://snomed.info/sct#2229005";
+
+    /// <summary>
     /// Literal for code: TumorOfBodyOfUterusAffectingPregnancy
     /// </summary>
     public const string LiteralTumorOfBodyOfUterusAffectingPregnancy = "223003";
+
+    /// <summary>
+    /// Literal for code: NONETumorOfBodyOfUterusAffectingPregnancy
+    /// </summary>
+    public const string LiteralNONETumorOfBodyOfUterusAffectingPregnancy = "http://snomed.info/sct#223003";
 
     /// <summary>
     /// Literal for code: NervePlexusDisorder
@@ -10588,9 +12158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNervePlexusDisorder = "2231001";
 
     /// <summary>
+    /// Literal for code: NONENervePlexusDisorder
+    /// </summary>
+    public const string LiteralNONENervePlexusDisorder = "http://snomed.info/sct#2231001";
+
+    /// <summary>
     /// Literal for code: PainfulBreathingPleurodynia
     /// </summary>
     public const string LiteralPainfulBreathingPleurodynia = "2237002";
+
+    /// <summary>
+    /// Literal for code: NONEPainfulBreathingPleurodynia
+    /// </summary>
+    public const string LiteralNONEPainfulBreathingPleurodynia = "http://snomed.info/sct#2237002";
 
     /// <summary>
     /// Literal for code: PreviousPregnancies6
@@ -10598,9 +12178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPreviousPregnancies6 = "2239004";
 
     /// <summary>
+    /// Literal for code: NONEPreviousPregnancies6
+    /// </summary>
+    public const string LiteralNONEPreviousPregnancies6 = "http://snomed.info/sct#2239004";
+
+    /// <summary>
     /// Literal for code: XLinkedAbsenceOfThyroxineBindingGlobulin
     /// </summary>
     public const string LiteralXLinkedAbsenceOfThyroxineBindingGlobulin = "2241003";
+
+    /// <summary>
+    /// Literal for code: NONEXLinkedAbsenceOfThyroxineBindingGlobulin
+    /// </summary>
+    public const string LiteralNONEXLinkedAbsenceOfThyroxineBindingGlobulin = "http://snomed.info/sct#2241003";
 
     /// <summary>
     /// Literal for code: HypercalcemiaDueToHyperthyroidism
@@ -10608,9 +12198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypercalcemiaDueToHyperthyroidism = "2243000";
 
     /// <summary>
+    /// Literal for code: NONEHypercalcemiaDueToHyperthyroidism
+    /// </summary>
+    public const string LiteralNONEHypercalcemiaDueToHyperthyroidism = "http://snomed.info/sct#2243000";
+
+    /// <summary>
     /// Literal for code: ForeignBodyInNasopharynx
     /// </summary>
     public const string LiteralForeignBodyInNasopharynx = "2245007";
+
+    /// <summary>
+    /// Literal for code: NONEForeignBodyInNasopharynx
+    /// </summary>
+    public const string LiteralNONEForeignBodyInNasopharynx = "http://snomed.info/sct#2245007";
 
     /// <summary>
     /// Literal for code: PrimaryHypotonyOfEye
@@ -10618,9 +12218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrimaryHypotonyOfEye = "2251002";
 
     /// <summary>
+    /// Literal for code: NONEPrimaryHypotonyOfEye
+    /// </summary>
+    public const string LiteralNONEPrimaryHypotonyOfEye = "http://snomed.info/sct#2251002";
+
+    /// <summary>
     /// Literal for code: MonovularTwins
     /// </summary>
     public const string LiteralMonovularTwins = "2256007";
+
+    /// <summary>
+    /// Literal for code: NONEMonovularTwins
+    /// </summary>
+    public const string LiteralNONEMonovularTwins = "http://snomed.info/sct#2256007";
 
     /// <summary>
     /// Literal for code: ObstetricalPulmonaryFatEmbolism
@@ -10628,9 +12238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObstetricalPulmonaryFatEmbolism = "2261009";
 
     /// <summary>
+    /// Literal for code: NONEObstetricalPulmonaryFatEmbolism
+    /// </summary>
+    public const string LiteralNONEObstetricalPulmonaryFatEmbolism = "http://snomed.info/sct#2261009";
+
+    /// <summary>
     /// Literal for code: VictimOfHomosexualAggression
     /// </summary>
     public const string LiteralVictimOfHomosexualAggression = "2268003";
+
+    /// <summary>
+    /// Literal for code: NONEVictimOfHomosexualAggression
+    /// </summary>
+    public const string LiteralNONEVictimOfHomosexualAggression = "http://snomed.info/sct#2268003";
 
     /// <summary>
     /// Literal for code: LucioPhenomenon
@@ -10638,9 +12258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLucioPhenomenon = "228007";
 
     /// <summary>
+    /// Literal for code: NONELucioPhenomenon
+    /// </summary>
+    public const string LiteralNONELucioPhenomenon = "http://snomed.info/sct#228007";
+
+    /// <summary>
     /// Literal for code: PulsatingExophthalmos
     /// </summary>
     public const string LiteralPulsatingExophthalmos = "2284002";
+
+    /// <summary>
+    /// Literal for code: NONEPulsatingExophthalmos
+    /// </summary>
+    public const string LiteralNONEPulsatingExophthalmos = "http://snomed.info/sct#2284002";
 
     /// <summary>
     /// Literal for code: ClosedFractureOfUpperEndOfForearm
@@ -10648,9 +12278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClosedFractureOfUpperEndOfForearm = "2295008";
 
     /// <summary>
+    /// Literal for code: NONEClosedFractureOfUpperEndOfForearm
+    /// </summary>
+    public const string LiteralNONEClosedFractureOfUpperEndOfForearm = "http://snomed.info/sct#2295008";
+
+    /// <summary>
     /// Literal for code: IronDextranToxicity
     /// </summary>
     public const string LiteralIronDextranToxicity = "2296009";
+
+    /// <summary>
+    /// Literal for code: NONEIronDextranToxicity
+    /// </summary>
+    public const string LiteralNONEIronDextranToxicity = "http://snomed.info/sct#2296009";
 
     /// <summary>
     /// Literal for code: FocalFacialDermalDysplasia
@@ -10658,9 +12298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFocalFacialDermalDysplasia = "2298005";
 
     /// <summary>
+    /// Literal for code: NONEFocalFacialDermalDysplasia
+    /// </summary>
+    public const string LiteralNONEFocalFacialDermalDysplasia = "http://snomed.info/sct#2298005";
+
+    /// <summary>
     /// Literal for code: PsychosomaticFactorInPhysicalConditionPsychologicalComponentOfUnknownDegree
     /// </summary>
     public const string LiteralPsychosomaticFactorInPhysicalConditionPsychologicalComponentOfUnknownDegree = "2301009";
+
+    /// <summary>
+    /// Literal for code: NONEPsychosomaticFactorInPhysicalConditionPsychologicalComponentOfUnknownDegree
+    /// </summary>
+    public const string LiteralNONEPsychosomaticFactorInPhysicalConditionPsychologicalComponentOfUnknownDegree = "http://snomed.info/sct#2301009";
 
     /// <summary>
     /// Literal for code: InguinalHerniaWithGangrene
@@ -10668,9 +12318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInguinalHerniaWithGangrene = "2303007";
 
     /// <summary>
+    /// Literal for code: NONEInguinalHerniaWithGangrene
+    /// </summary>
+    public const string LiteralNONEInguinalHerniaWithGangrene = "http://snomed.info/sct#2303007";
+
+    /// <summary>
     /// Literal for code: IntervertebralDiscitis
     /// </summary>
     public const string LiteralIntervertebralDiscitis = "2304001";
+
+    /// <summary>
+    /// Literal for code: NONEIntervertebralDiscitis
+    /// </summary>
+    public const string LiteralNONEIntervertebralDiscitis = "http://snomed.info/sct#2304001";
 
     /// <summary>
     /// Literal for code: PeripancreaticFatNecrosis
@@ -10678,9 +12338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeripancreaticFatNecrosis = "2307008";
 
     /// <summary>
+    /// Literal for code: NONEPeripancreaticFatNecrosis
+    /// </summary>
+    public const string LiteralNONEPeripancreaticFatNecrosis = "http://snomed.info/sct#2307008";
+
+    /// <summary>
     /// Literal for code: SilentAlleles
     /// </summary>
     public const string LiteralSilentAlleles = "2308003";
+
+    /// <summary>
+    /// Literal for code: NONESilentAlleles
+    /// </summary>
+    public const string LiteralNONESilentAlleles = "http://snomed.info/sct#2308003";
 
     /// <summary>
     /// Literal for code: ReactiveAttachmentDisorderOfInfancyOREarlyChildhoodInhibitedType
@@ -10688,9 +12358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReactiveAttachmentDisorderOfInfancyOREarlyChildhoodInhibitedType = "2312009";
 
     /// <summary>
+    /// Literal for code: NONEReactiveAttachmentDisorderOfInfancyOREarlyChildhoodInhibitedType
+    /// </summary>
+    public const string LiteralNONEReactiveAttachmentDisorderOfInfancyOREarlyChildhoodInhibitedType = "http://snomed.info/sct#2312009";
+
+    /// <summary>
     /// Literal for code: UnprotectedIntercourse
     /// </summary>
     public const string LiteralUnprotectedIntercourse = "2314005";
+
+    /// <summary>
+    /// Literal for code: NONEUnprotectedIntercourse
+    /// </summary>
+    public const string LiteralNONEUnprotectedIntercourse = "http://snomed.info/sct#2314005";
 
     /// <summary>
     /// Literal for code: MarriageAnnulment
@@ -10698,9 +12378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarriageAnnulment = "2326000";
 
     /// <summary>
+    /// Literal for code: NONEMarriageAnnulment
+    /// </summary>
+    public const string LiteralNONEMarriageAnnulment = "http://snomed.info/sct#2326000";
+
+    /// <summary>
     /// Literal for code: SexualOverexposure
     /// </summary>
     public const string LiteralSexualOverexposure = "2339001";
+
+    /// <summary>
+    /// Literal for code: NONESexualOverexposure
+    /// </summary>
+    public const string LiteralNONESexualOverexposure = "http://snomed.info/sct#2339001";
 
     /// <summary>
     /// Literal for code: InfectionCausedByMoniliformis
@@ -10708,9 +12398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionCausedByMoniliformis = "2341000";
 
     /// <summary>
+    /// Literal for code: NONEInfectionCausedByMoniliformis
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByMoniliformis = "http://snomed.info/sct#2341000";
+
+    /// <summary>
     /// Literal for code: GeneticTransduction
     /// </summary>
     public const string LiteralGeneticTransduction = "2351004";
+
+    /// <summary>
+    /// Literal for code: NONEGeneticTransduction
+    /// </summary>
+    public const string LiteralNONEGeneticTransduction = "http://snomed.info/sct#2351004";
 
     /// <summary>
     /// Literal for code: RudSyndrome
@@ -10718,9 +12418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRudSyndrome = "2355008";
 
     /// <summary>
+    /// Literal for code: NONERudSyndrome
+    /// </summary>
+    public const string LiteralNONERudSyndrome = "http://snomed.info/sct#2355008";
+
+    /// <summary>
     /// Literal for code: HyperBetaAlaninemia
     /// </summary>
     public const string LiteralHyperBetaAlaninemia = "2359002";
+
+    /// <summary>
+    /// Literal for code: NONEHyperBetaAlaninemia
+    /// </summary>
+    public const string LiteralNONEHyperBetaAlaninemia = "http://snomed.info/sct#2359002";
 
     /// <summary>
     /// Literal for code: SimpleChronicPharyngitis
@@ -10728,9 +12438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSimpleChronicPharyngitis = "2365002";
 
     /// <summary>
+    /// Literal for code: NONESimpleChronicPharyngitis
+    /// </summary>
+    public const string LiteralNONESimpleChronicPharyngitis = "http://snomed.info/sct#2365002";
+
+    /// <summary>
     /// Literal for code: LateEffectOfDislocation
     /// </summary>
     public const string LiteralLateEffectOfDislocation = "2366001";
+
+    /// <summary>
+    /// Literal for code: NONELateEffectOfDislocation
+    /// </summary>
+    public const string LiteralNONELateEffectOfDislocation = "http://snomed.info/sct#2366001";
 
     /// <summary>
     /// Literal for code: AcuteHemorrhagicGastritis
@@ -10738,9 +12458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteHemorrhagicGastritis = "2367005";
 
     /// <summary>
+    /// Literal for code: NONEAcuteHemorrhagicGastritis
+    /// </summary>
+    public const string LiteralNONEAcuteHemorrhagicGastritis = "http://snomed.info/sct#2367005";
+
+    /// <summary>
     /// Literal for code: MonofascicularBlock
     /// </summary>
     public const string LiteralMonofascicularBlock = "2374000";
+
+    /// <summary>
+    /// Literal for code: NONEMonofascicularBlock
+    /// </summary>
+    public const string LiteralNONEMonofascicularBlock = "http://snomed.info/sct#2374000";
 
     /// <summary>
     /// Literal for code: CellulitisOfPectoralRegion
@@ -10748,9 +12478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCellulitisOfPectoralRegion = "2385003";
 
     /// <summary>
+    /// Literal for code: NONECellulitisOfPectoralRegion
+    /// </summary>
+    public const string LiteralNONECellulitisOfPectoralRegion = "http://snomed.info/sct#2385003";
+
+    /// <summary>
     /// Literal for code: NormalVariationInTranslucency
     /// </summary>
     public const string LiteralNormalVariationInTranslucency = "2388001";
+
+    /// <summary>
+    /// Literal for code: NONENormalVariationInTranslucency
+    /// </summary>
+    public const string LiteralNONENormalVariationInTranslucency = "http://snomed.info/sct#2388001";
 
     /// <summary>
     /// Literal for code: AcuteGonococcalVulvovaginitis
@@ -10758,9 +12498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteGonococcalVulvovaginitis = "2390000";
 
     /// <summary>
+    /// Literal for code: NONEAcuteGonococcalVulvovaginitis
+    /// </summary>
+    public const string LiteralNONEAcuteGonococcalVulvovaginitis = "http://snomed.info/sct#2390000";
+
+    /// <summary>
     /// Literal for code: Achondrogenesis
     /// </summary>
     public const string LiteralAchondrogenesis = "2391001";
+
+    /// <summary>
+    /// Literal for code: NONEAchondrogenesis
+    /// </summary>
+    public const string LiteralNONEAchondrogenesis = "http://snomed.info/sct#2391001";
 
     /// <summary>
     /// Literal for code: MalignantPyoderma
@@ -10768,9 +12518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantPyoderma = "2396006";
 
     /// <summary>
+    /// Literal for code: NONEMalignantPyoderma
+    /// </summary>
+    public const string LiteralNONEMalignantPyoderma = "http://snomed.info/sct#2396006";
+
+    /// <summary>
     /// Literal for code: QuinidineToxicityByElectrocardiogram
     /// </summary>
     public const string LiteralQuinidineToxicityByElectrocardiogram = "2398007";
+
+    /// <summary>
+    /// Literal for code: NONEQuinidineToxicityByElectrocardiogram
+    /// </summary>
+    public const string LiteralNONEQuinidineToxicityByElectrocardiogram = "http://snomed.info/sct#2398007";
 
     /// <summary>
     /// Literal for code: DependenceSyndrome
@@ -10778,9 +12538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDependenceSyndrome = "2403008";
 
     /// <summary>
+    /// Literal for code: NONEDependenceSyndrome
+    /// </summary>
+    public const string LiteralNONEDependenceSyndrome = "http://snomed.info/sct#2403008";
+
+    /// <summary>
     /// Literal for code: MotorSimplePartialStatus
     /// </summary>
     public const string LiteralMotorSimplePartialStatus = "241006";
+
+    /// <summary>
+    /// Literal for code: NONEMotorSimplePartialStatus
+    /// </summary>
+    public const string LiteralNONEMotorSimplePartialStatus = "http://snomed.info/sct#241006";
 
     /// <summary>
     /// Literal for code: LumbosacralRootLesion
@@ -10788,9 +12558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLumbosacralRootLesion = "2415007";
 
     /// <summary>
+    /// Literal for code: NONELumbosacralRootLesion
+    /// </summary>
+    public const string LiteralNONELumbosacralRootLesion = "http://snomed.info/sct#2415007";
+
+    /// <summary>
     /// Literal for code: PolyesterFumeCausingToxicEffect
     /// </summary>
     public const string LiteralPolyesterFumeCausingToxicEffect = "2418009";
+
+    /// <summary>
+    /// Literal for code: NONEPolyesterFumeCausingToxicEffect
+    /// </summary>
+    public const string LiteralNONEPolyesterFumeCausingToxicEffect = "http://snomed.info/sct#2418009";
 
     /// <summary>
     /// Literal for code: OpenWoundOfForeheadWithComplication
@@ -10798,9 +12578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenWoundOfForeheadWithComplication = "2419001";
 
     /// <summary>
+    /// Literal for code: NONEOpenWoundOfForeheadWithComplication
+    /// </summary>
+    public const string LiteralNONEOpenWoundOfForeheadWithComplication = "http://snomed.info/sct#2419001";
+
+    /// <summary>
     /// Literal for code: ThirdDegreeBurnOfMultipleSitesOfUpperLimb
     /// </summary>
     public const string LiteralThirdDegreeBurnOfMultipleSitesOfUpperLimb = "2420007";
+
+    /// <summary>
+    /// Literal for code: NONEThirdDegreeBurnOfMultipleSitesOfUpperLimb
+    /// </summary>
+    public const string LiteralNONEThirdDegreeBurnOfMultipleSitesOfUpperLimb = "http://snomed.info/sct#2420007";
 
     /// <summary>
     /// Literal for code: NoninfectiousJejunitis
@@ -10808,9 +12598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNoninfectiousJejunitis = "242004";
 
     /// <summary>
+    /// Literal for code: NONENoninfectiousJejunitis
+    /// </summary>
+    public const string LiteralNONENoninfectiousJejunitis = "http://snomed.info/sct#242004";
+
+    /// <summary>
     /// Literal for code: CerebrospinalFluidCirculationDisorder
     /// </summary>
     public const string LiteralCerebrospinalFluidCirculationDisorder = "2432006";
+
+    /// <summary>
+    /// Literal for code: NONECerebrospinalFluidCirculationDisorder
+    /// </summary>
+    public const string LiteralNONECerebrospinalFluidCirculationDisorder = "http://snomed.info/sct#2432006";
 
     /// <summary>
     /// Literal for code: Ascaridiasis
@@ -10818,9 +12618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAscaridiasis = "2435008";
 
     /// <summary>
+    /// Literal for code: NONEAscaridiasis
+    /// </summary>
+    public const string LiteralNONEAscaridiasis = "http://snomed.info/sct#2435008";
+
+    /// <summary>
     /// Literal for code: PlacentaCircumvallata
     /// </summary>
     public const string LiteralPlacentaCircumvallata = "2437000";
+
+    /// <summary>
+    /// Literal for code: NONEPlacentaCircumvallata
+    /// </summary>
+    public const string LiteralNONEPlacentaCircumvallata = "http://snomed.info/sct#2437000";
 
     /// <summary>
     /// Literal for code: Iniencephaly
@@ -10828,9 +12638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIniencephaly = "2438005";
 
     /// <summary>
+    /// Literal for code: NONEIniencephaly
+    /// </summary>
+    public const string LiteralNONEIniencephaly = "http://snomed.info/sct#2438005";
+
+    /// <summary>
     /// Literal for code: PurulentEndocarditis
     /// </summary>
     public const string LiteralPurulentEndocarditis = "2439002";
+
+    /// <summary>
+    /// Literal for code: NONEPurulentEndocarditis
+    /// </summary>
+    public const string LiteralNONEPurulentEndocarditis = "http://snomed.info/sct#2439002";
 
     /// <summary>
     /// Literal for code: HydrogenSulfidePoisoning
@@ -10838,9 +12658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHydrogenSulfidePoisoning = "2443003";
 
     /// <summary>
+    /// Literal for code: NONEHydrogenSulfidePoisoning
+    /// </summary>
+    public const string LiteralNONEHydrogenSulfidePoisoning = "http://snomed.info/sct#2443003";
+
+    /// <summary>
     /// Literal for code: FetalRotation
     /// </summary>
     public const string LiteralFetalRotation = "2452007";
+
+    /// <summary>
+    /// Literal for code: NONEFetalRotation
+    /// </summary>
+    public const string LiteralNONEFetalRotation = "http://snomed.info/sct#2452007";
 
     /// <summary>
     /// Literal for code: AcquiredHeterochromiaOfIris
@@ -10848,9 +12678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcquiredHeterochromiaOfIris = "2463005";
 
     /// <summary>
+    /// Literal for code: NONEAcquiredHeterochromiaOfIris
+    /// </summary>
+    public const string LiteralNONEAcquiredHeterochromiaOfIris = "http://snomed.info/sct#2463005";
+
+    /// <summary>
     /// Literal for code: Onychomalacia
     /// </summary>
     public const string LiteralOnychomalacia = "2469009";
+
+    /// <summary>
+    /// Literal for code: NONEOnychomalacia
+    /// </summary>
+    public const string LiteralNONEOnychomalacia = "http://snomed.info/sct#2469009";
 
     /// <summary>
     /// Literal for code: BrainDamage
@@ -10858,9 +12698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBrainDamage = "2470005";
 
     /// <summary>
+    /// Literal for code: NONEBrainDamage
+    /// </summary>
+    public const string LiteralNONEBrainDamage = "http://snomed.info/sct#2470005";
+
+    /// <summary>
     /// Literal for code: IntraAbdominalAbscessPostprocedure
     /// </summary>
     public const string LiteralIntraAbdominalAbscessPostprocedure = "2471009";
+
+    /// <summary>
+    /// Literal for code: NONEIntraAbdominalAbscessPostprocedure
+    /// </summary>
+    public const string LiteralNONEIntraAbdominalAbscessPostprocedure = "http://snomed.info/sct#2471009";
 
     /// <summary>
     /// Literal for code: PassesNoUrine
@@ -10868,9 +12718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPassesNoUrine = "2472002";
 
     /// <summary>
+    /// Literal for code: NONEPassesNoUrine
+    /// </summary>
+    public const string LiteralNONEPassesNoUrine = "http://snomed.info/sct#2472002";
+
+    /// <summary>
     /// Literal for code: IntermittentVerticalSquint
     /// </summary>
     public const string LiteralIntermittentVerticalSquint = "2473007";
+
+    /// <summary>
+    /// Literal for code: NONEIntermittentVerticalSquint
+    /// </summary>
+    public const string LiteralNONEIntermittentVerticalSquint = "http://snomed.info/sct#2473007";
 
     /// <summary>
     /// Literal for code: SuperficialPhlebitis
@@ -10878,9 +12738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperficialPhlebitis = "2477008";
 
     /// <summary>
+    /// Literal for code: NONESuperficialPhlebitis
+    /// </summary>
+    public const string LiteralNONESuperficialPhlebitis = "http://snomed.info/sct#2477008";
+
+    /// <summary>
     /// Literal for code: DisorderOfNutrition
     /// </summary>
     public const string LiteralDisorderOfNutrition = "2492009";
+
+    /// <summary>
+    /// Literal for code: NONEDisorderOfNutrition
+    /// </summary>
+    public const string LiteralNONEDisorderOfNutrition = "http://snomed.info/sct#2492009";
 
     /// <summary>
     /// Literal for code: CongenitalCerebralArteriovenousAneurysm
@@ -10888,9 +12758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalCerebralArteriovenousAneurysm = "2495006";
 
     /// <summary>
+    /// Literal for code: NONECongenitalCerebralArteriovenousAneurysm
+    /// </summary>
+    public const string LiteralNONECongenitalCerebralArteriovenousAneurysm = "http://snomed.info/sct#2495006";
+
+    /// <summary>
     /// Literal for code: Acalculia
     /// </summary>
     public const string LiteralAcalculia = "2496007";
+
+    /// <summary>
+    /// Literal for code: NONEAcalculia
+    /// </summary>
+    public const string LiteralNONEAcalculia = "http://snomed.info/sct#2496007";
 
     /// <summary>
     /// Literal for code: EarlyOnsetDysthymia
@@ -10898,9 +12778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarlyOnsetDysthymia = "2506003";
 
     /// <summary>
+    /// Literal for code: NONEEarlyOnsetDysthymia
+    /// </summary>
+    public const string LiteralNONEEarlyOnsetDysthymia = "http://snomed.info/sct#2506003";
+
+    /// <summary>
     /// Literal for code: TineaCapitisCausedByTrichophyton
     /// </summary>
     public const string LiteralTineaCapitisCausedByTrichophyton = "2513003";
+
+    /// <summary>
+    /// Literal for code: NONETineaCapitisCausedByTrichophyton
+    /// </summary>
+    public const string LiteralNONETineaCapitisCausedByTrichophyton = "http://snomed.info/sct#2513003";
 
     /// <summary>
     /// Literal for code: CryptogenicSexualPrecocity
@@ -10908,9 +12798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCryptogenicSexualPrecocity = "2518007";
 
     /// <summary>
+    /// Literal for code: NONECryptogenicSexualPrecocity
+    /// </summary>
+    public const string LiteralNONECryptogenicSexualPrecocity = "http://snomed.info/sct#2518007";
+
+    /// <summary>
     /// Literal for code: BoneConductionBetterThanAir
     /// </summary>
     public const string LiteralBoneConductionBetterThanAir = "2521009";
+
+    /// <summary>
+    /// Literal for code: NONEBoneConductionBetterThanAir
+    /// </summary>
+    public const string LiteralNONEBoneConductionBetterThanAir = "http://snomed.info/sct#2521009";
 
     /// <summary>
     /// Literal for code: SalmonellaPneumonia
@@ -10918,9 +12818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSalmonellaPneumonia = "2523007";
 
     /// <summary>
+    /// Literal for code: NONESalmonellaPneumonia
+    /// </summary>
+    public const string LiteralNONESalmonellaPneumonia = "http://snomed.info/sct#2523007";
+
+    /// <summary>
     /// Literal for code: NoninflammatoryDisorderOfTheFemaleGenitalOrgans
     /// </summary>
     public const string LiteralNoninflammatoryDisorderOfTheFemaleGenitalOrgans = "2526004";
+
+    /// <summary>
+    /// Literal for code: NONENoninflammatoryDisorderOfTheFemaleGenitalOrgans
+    /// </summary>
+    public const string LiteralNONENoninflammatoryDisorderOfTheFemaleGenitalOrgans = "http://snomed.info/sct#2526004";
 
     /// <summary>
     /// Literal for code: Viremia
@@ -10928,9 +12838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralViremia = "2528003";
 
     /// <summary>
+    /// Literal for code: NONEViremia
+    /// </summary>
+    public const string LiteralNONEViremia = "http://snomed.info/sct#2528003";
+
+    /// <summary>
     /// Literal for code: Sycosis
     /// </summary>
     public const string LiteralSycosis = "253005";
+
+    /// <summary>
+    /// Literal for code: NONESycosis
+    /// </summary>
+    public const string LiteralNONESycosis = "http://snomed.info/sct#253005";
 
     /// <summary>
     /// Literal for code: ChoroidalRupture
@@ -10938,9 +12858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChoroidalRupture = "2532009";
 
     /// <summary>
+    /// Literal for code: NONEChoroidalRupture
+    /// </summary>
+    public const string LiteralNONEChoroidalRupture = "http://snomed.info/sct#2532009";
+
+    /// <summary>
     /// Literal for code: CongenitalAbsenceOfVenaCava
     /// </summary>
     public const string LiteralCongenitalAbsenceOfVenaCava = "2534005";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalAbsenceOfVenaCava
+    /// </summary>
+    public const string LiteralNONECongenitalAbsenceOfVenaCava = "http://snomed.info/sct#2534005";
 
     /// <summary>
     /// Literal for code: Ketosis
@@ -10948,9 +12878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKetosis = "2538008";
 
     /// <summary>
+    /// Literal for code: NONEKetosis
+    /// </summary>
+    public const string LiteralNONEKetosis = "http://snomed.info/sct#2538008";
+
+    /// <summary>
     /// Literal for code: CompulsiveBuying
     /// </summary>
     public const string LiteralCompulsiveBuying = "2541004";
+
+    /// <summary>
+    /// Literal for code: NONECompulsiveBuying
+    /// </summary>
+    public const string LiteralNONECompulsiveBuying = "http://snomed.info/sct#2541004";
 
     /// <summary>
     /// Literal for code: AcutePurulentPericarditis
@@ -10958,9 +12898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcutePurulentPericarditis = "2554006";
 
     /// <summary>
+    /// Literal for code: NONEAcutePurulentPericarditis
+    /// </summary>
+    public const string LiteralNONEAcutePurulentPericarditis = "http://snomed.info/sct#2554006";
+
+    /// <summary>
     /// Literal for code: DiseaseOfSupportingStructuresOfTeeth
     /// </summary>
     public const string LiteralDiseaseOfSupportingStructuresOfTeeth = "2556008";
+
+    /// <summary>
+    /// Literal for code: NONEDiseaseOfSupportingStructuresOfTeeth
+    /// </summary>
+    public const string LiteralNONEDiseaseOfSupportingStructuresOfTeeth = "http://snomed.info/sct#2556008";
 
     /// <summary>
     /// Literal for code: ComplexSyndactylyOfFingers
@@ -10968,9 +12918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComplexSyndactylyOfFingers = "2560006";
 
     /// <summary>
+    /// Literal for code: NONEComplexSyndactylyOfFingers
+    /// </summary>
+    public const string LiteralNONEComplexSyndactylyOfFingers = "http://snomed.info/sct#2560006";
+
+    /// <summary>
     /// Literal for code: AthanasiaTrifurcataPoisoning
     /// </summary>
     public const string LiteralAthanasiaTrifurcataPoisoning = "2562003";
+
+    /// <summary>
+    /// Literal for code: NONEAthanasiaTrifurcataPoisoning
+    /// </summary>
+    public const string LiteralNONEAthanasiaTrifurcataPoisoning = "http://snomed.info/sct#2562003";
 
     /// <summary>
     /// Literal for code: AcneRosaceaErythematousTelangiectaticType
@@ -10978,9 +12938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcneRosaceaErythematousTelangiectaticType = "257006";
 
     /// <summary>
+    /// Literal for code: NONEAcneRosaceaErythematousTelangiectaticType
+    /// </summary>
+    public const string LiteralNONEAcneRosaceaErythematousTelangiectaticType = "http://snomed.info/sct#257006";
+
+    /// <summary>
     /// Literal for code: Trachoma
     /// </summary>
     public const string LiteralTrachoma = "2576002";
+
+    /// <summary>
+    /// Literal for code: NONETrachoma
+    /// </summary>
+    public const string LiteralNONETrachoma = "http://snomed.info/sct#2576002";
 
     /// <summary>
     /// Literal for code: PseudoknucklePad
@@ -10988,9 +12958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPseudoknucklePad = "258001";
 
     /// <summary>
+    /// Literal for code: NONEPseudoknucklePad
+    /// </summary>
+    public const string LiteralNONEPseudoknucklePad = "http://snomed.info/sct#258001";
+
+    /// <summary>
     /// Literal for code: ClaspKnifeRigidity
     /// </summary>
     public const string LiteralClaspKnifeRigidity = "2581006";
+
+    /// <summary>
+    /// Literal for code: NONEClaspKnifeRigidity
+    /// </summary>
+    public const string LiteralNONEClaspKnifeRigidity = "http://snomed.info/sct#2581006";
 
     /// <summary>
     /// Literal for code: DeepThirdDegreeBurnOfMultipleSitesOfLowerLimb
@@ -10998,9 +12978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeepThirdDegreeBurnOfMultipleSitesOfLowerLimb = "2582004";
 
     /// <summary>
+    /// Literal for code: NONEDeepThirdDegreeBurnOfMultipleSitesOfLowerLimb
+    /// </summary>
+    public const string LiteralNONEDeepThirdDegreeBurnOfMultipleSitesOfLowerLimb = "http://snomed.info/sct#2582004";
+
+    /// <summary>
     /// Literal for code: FiligreedNetworkOfVenousValves
     /// </summary>
     public const string LiteralFiligreedNetworkOfVenousValves = "2583009";
+
+    /// <summary>
+    /// Literal for code: NONEFiligreedNetworkOfVenousValves
+    /// </summary>
+    public const string LiteralNONEFiligreedNetworkOfVenousValves = "http://snomed.info/sct#2583009";
 
     /// <summary>
     /// Literal for code: CerebralDegenerationInChildhood
@@ -11008,9 +12998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCerebralDegenerationInChildhood = "2584003";
 
     /// <summary>
+    /// Literal for code: NONECerebralDegenerationInChildhood
+    /// </summary>
+    public const string LiteralNONECerebralDegenerationInChildhood = "http://snomed.info/sct#2584003";
+
+    /// <summary>
     /// Literal for code: PneumococcalPleurisy
     /// </summary>
     public const string LiteralPneumococcalPleurisy = "2585002";
+
+    /// <summary>
+    /// Literal for code: NONEPneumococcalPleurisy
+    /// </summary>
+    public const string LiteralNONEPneumococcalPleurisy = "http://snomed.info/sct#2585002";
 
     /// <summary>
     /// Literal for code: AcuteDacryoadenitis
@@ -11018,9 +13018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteDacryoadenitis = "2589008";
 
     /// <summary>
+    /// Literal for code: NONEAcuteDacryoadenitis
+    /// </summary>
+    public const string LiteralNONEAcuteDacryoadenitis = "http://snomed.info/sct#2589008";
+
+    /// <summary>
     /// Literal for code: CrushInjuryOfShoulderRegion
     /// </summary>
     public const string LiteralCrushInjuryOfShoulderRegion = "2591000";
+
+    /// <summary>
+    /// Literal for code: NONECrushInjuryOfShoulderRegion
+    /// </summary>
+    public const string LiteralNONECrushInjuryOfShoulderRegion = "http://snomed.info/sct#2591000";
 
     /// <summary>
     /// Literal for code: DubowitzSyndrome
@@ -11028,9 +13038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDubowitzSyndrome = "2593002";
 
     /// <summary>
+    /// Literal for code: NONEDubowitzSyndrome
+    /// </summary>
+    public const string LiteralNONEDubowitzSyndrome = "http://snomed.info/sct#2593002";
+
+    /// <summary>
     /// Literal for code: HemarthrosisOfShoulder
     /// </summary>
     public const string LiteralHemarthrosisOfShoulder = "2602008";
+
+    /// <summary>
+    /// Literal for code: NONEHemarthrosisOfShoulder
+    /// </summary>
+    public const string LiteralNONEHemarthrosisOfShoulder = "http://snomed.info/sct#2602008";
 
     /// <summary>
     /// Literal for code: BoilOfPerineum
@@ -11038,9 +13058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoilOfPerineum = "2606006";
 
     /// <summary>
+    /// Literal for code: NONEBoilOfPerineum
+    /// </summary>
+    public const string LiteralNONEBoilOfPerineum = "http://snomed.info/sct#2606006";
+
+    /// <summary>
     /// Literal for code: GraafianFollicleCyst
     /// </summary>
     public const string LiteralGraafianFollicleCyst = "2615004";
+
+    /// <summary>
+    /// Literal for code: NONEGraafianFollicleCyst
+    /// </summary>
+    public const string LiteralNONEGraafianFollicleCyst = "http://snomed.info/sct#2615004";
 
     /// <summary>
     /// Literal for code: ChronicRecurrentMajorDepressiveDisorder
@@ -11048,9 +13078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicRecurrentMajorDepressiveDisorder = "2618002";
 
     /// <summary>
+    /// Literal for code: NONEChronicRecurrentMajorDepressiveDisorder
+    /// </summary>
+    public const string LiteralNONEChronicRecurrentMajorDepressiveDisorder = "http://snomed.info/sct#2618002";
+
+    /// <summary>
     /// Literal for code: InfectedUlcerOfSkin
     /// </summary>
     public const string LiteralInfectedUlcerOfSkin = "2622007";
+
+    /// <summary>
+    /// Literal for code: NONEInfectedUlcerOfSkin
+    /// </summary>
+    public const string LiteralNONEInfectedUlcerOfSkin = "http://snomed.info/sct#2622007";
 
     /// <summary>
     /// Literal for code: PrepubertalPeriodontitis
@@ -11058,9 +13098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrepubertalPeriodontitis = "2624008";
 
     /// <summary>
+    /// Literal for code: NONEPrepubertalPeriodontitis
+    /// </summary>
+    public const string LiteralNONEPrepubertalPeriodontitis = "http://snomed.info/sct#2624008";
+
+    /// <summary>
     /// Literal for code: SenterSyndrome
     /// </summary>
     public const string LiteralSenterSyndrome = "2625009";
+
+    /// <summary>
+    /// Literal for code: NONESenterSyndrome
+    /// </summary>
+    public const string LiteralNONESenterSyndrome = "http://snomed.info/sct#2625009";
 
     /// <summary>
     /// Literal for code: OpenWoundOfFingerWithoutComplication
@@ -11068,9 +13118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenWoundOfFingerWithoutComplication = "2630008";
 
     /// <summary>
+    /// Literal for code: NONEOpenWoundOfFingerWithoutComplication
+    /// </summary>
+    public const string LiteralNONEOpenWoundOfFingerWithoutComplication = "http://snomed.info/sct#2630008";
+
+    /// <summary>
     /// Literal for code: DecreasedBloodErythrocyteVolume
     /// </summary>
     public const string LiteralDecreasedBloodErythrocyteVolume = "2634004";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedBloodErythrocyteVolume
+    /// </summary>
+    public const string LiteralNONEDecreasedBloodErythrocyteVolume = "http://snomed.info/sct#2634004";
 
     /// <summary>
     /// Literal for code: HypercalcemiaCausedByADrug
@@ -11078,9 +13138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypercalcemiaCausedByADrug = "2638001";
 
     /// <summary>
+    /// Literal for code: NONEHypercalcemiaCausedByADrug
+    /// </summary>
+    public const string LiteralNONEHypercalcemiaCausedByADrug = "http://snomed.info/sct#2638001";
+
+    /// <summary>
     /// Literal for code: ClinicalStage4
     /// </summary>
     public const string LiteralClinicalStage4 = "2640006";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalStage4
+    /// </summary>
+    public const string LiteralNONEClinicalStage4 = "http://snomed.info/sct#2640006";
 
     /// <summary>
     /// Literal for code: BlindHypertensiveEye
@@ -11088,9 +13158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBlindHypertensiveEye = "264008";
 
     /// <summary>
+    /// Literal for code: NONEBlindHypertensiveEye
+    /// </summary>
+    public const string LiteralNONEBlindHypertensiveEye = "http://snomed.info/sct#264008";
+
+    /// <summary>
     /// Literal for code: ClosedTraumaticDislocationOfElbowJoint
     /// </summary>
     public const string LiteralClosedTraumaticDislocationOfElbowJoint = "2651006";
+
+    /// <summary>
+    /// Literal for code: NONEClosedTraumaticDislocationOfElbowJoint
+    /// </summary>
+    public const string LiteralNONEClosedTraumaticDislocationOfElbowJoint = "http://snomed.info/sct#2651006";
 
     /// <summary>
     /// Literal for code: Invalidism
@@ -11098,9 +13178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInvalidism = "2655002";
 
     /// <summary>
+    /// Literal for code: NONEInvalidism
+    /// </summary>
+    public const string LiteralNONEInvalidism = "http://snomed.info/sct#2655002";
+
+    /// <summary>
     /// Literal for code: OverflowProteinuria
     /// </summary>
     public const string LiteralOverflowProteinuria = "2657005";
+
+    /// <summary>
+    /// Literal for code: NONEOverflowProteinuria
+    /// </summary>
+    public const string LiteralNONEOverflowProteinuria = "http://snomed.info/sct#2657005";
 
     /// <summary>
     /// Literal for code: PalpatoryProteinuria
@@ -11108,9 +13198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPalpatoryProteinuria = "2663001";
 
     /// <summary>
+    /// Literal for code: NONEPalpatoryProteinuria
+    /// </summary>
+    public const string LiteralNONEPalpatoryProteinuria = "http://snomed.info/sct#2663001";
+
+    /// <summary>
     /// Literal for code: CoordinateConvulsion
     /// </summary>
     public const string LiteralCoordinateConvulsion = "2665008";
+
+    /// <summary>
+    /// Literal for code: NONECoordinateConvulsion
+    /// </summary>
+    public const string LiteralNONECoordinateConvulsion = "http://snomed.info/sct#2665008";
 
     /// <summary>
     /// Literal for code: NonvenomousInsectBiteOfAxillaWithoutInfection
@@ -11118,9 +13218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonvenomousInsectBiteOfAxillaWithoutInfection = "2683000";
 
     /// <summary>
+    /// Literal for code: NONENonvenomousInsectBiteOfAxillaWithoutInfection
+    /// </summary>
+    public const string LiteralNONENonvenomousInsectBiteOfAxillaWithoutInfection = "http://snomed.info/sct#2683000";
+
+    /// <summary>
     /// Literal for code: DominantDystrophicEpidermolysisBullosaWithAbsenceOfSkin
     /// </summary>
     public const string LiteralDominantDystrophicEpidermolysisBullosaWithAbsenceOfSkin = "2689001";
+
+    /// <summary>
+    /// Literal for code: NONEDominantDystrophicEpidermolysisBullosaWithAbsenceOfSkin
+    /// </summary>
+    public const string LiteralNONEDominantDystrophicEpidermolysisBullosaWithAbsenceOfSkin = "http://snomed.info/sct#2689001";
 
     /// <summary>
     /// Literal for code: MyelophthisicAnemia
@@ -11128,9 +13238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMyelophthisicAnemia = "2694001";
 
     /// <summary>
+    /// Literal for code: NONEMyelophthisicAnemia
+    /// </summary>
+    public const string LiteralNONEMyelophthisicAnemia = "http://snomed.info/sct#2694001";
+
+    /// <summary>
     /// Literal for code: AcuteDisease
     /// </summary>
     public const string LiteralAcuteDisease = "2704003";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteDisease
+    /// </summary>
+    public const string LiteralNONEAcuteDisease = "http://snomed.info/sct#2704003";
 
     /// <summary>
     /// Literal for code: NecrotizingEnterocolitis
@@ -11138,9 +13258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNecrotizingEnterocolitis = "2707005";
 
     /// <summary>
+    /// Literal for code: NONENecrotizingEnterocolitis
+    /// </summary>
+    public const string LiteralNONENecrotizingEnterocolitis = "http://snomed.info/sct#2707005";
+
+    /// <summary>
     /// Literal for code: ClosedPneumothorax
     /// </summary>
     public const string LiteralClosedPneumothorax = "2713001";
+
+    /// <summary>
+    /// Literal for code: NONEClosedPneumothorax
+    /// </summary>
+    public const string LiteralNONEClosedPneumothorax = "http://snomed.info/sct#2713001";
 
     /// <summary>
     /// Literal for code: AuditoryRecruitment
@@ -11148,9 +13278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAuditoryRecruitment = "2724004";
 
     /// <summary>
+    /// Literal for code: NONEAuditoryRecruitment
+    /// </summary>
+    public const string LiteralNONEAuditoryRecruitment = "http://snomed.info/sct#2724004";
+
+    /// <summary>
     /// Literal for code: PreviousAbnormalityOfGlucoseTolerance
     /// </summary>
     public const string LiteralPreviousAbnormalityOfGlucoseTolerance = "2725003";
+
+    /// <summary>
+    /// Literal for code: NONEPreviousAbnormalityOfGlucoseTolerance
+    /// </summary>
+    public const string LiteralNONEPreviousAbnormalityOfGlucoseTolerance = "http://snomed.info/sct#2725003";
 
     /// <summary>
     /// Literal for code: HeelPain
@@ -11158,9 +13298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHeelPain = "2733002";
 
     /// <summary>
+    /// Literal for code: NONEHeelPain
+    /// </summary>
+    public const string LiteralNONEHeelPain = "http://snomed.info/sct#2733002";
+
+    /// <summary>
     /// Literal for code: HoneycombAtrophyOfFace
     /// </summary>
     public const string LiteralHoneycombAtrophyOfFace = "2736005";
+
+    /// <summary>
+    /// Literal for code: NONEHoneycombAtrophyOfFace
+    /// </summary>
+    public const string LiteralNONEHoneycombAtrophyOfFace = "http://snomed.info/sct#2736005";
 
     /// <summary>
     /// Literal for code: GoutyProteinuria
@@ -11168,9 +13318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGoutyProteinuria = "2740001";
 
     /// <summary>
+    /// Literal for code: NONEGoutyProteinuria
+    /// </summary>
+    public const string LiteralNONEGoutyProteinuria = "http://snomed.info/sct#2740001";
+
+    /// <summary>
     /// Literal for code: CongenitalDeformityOfHip
     /// </summary>
     public const string LiteralCongenitalDeformityOfHip = "2749000";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalDeformityOfHip
+    /// </summary>
+    public const string LiteralNONECongenitalDeformityOfHip = "http://snomed.info/sct#2749000";
 
     /// <summary>
     /// Literal for code: FibrocalculousPancreaticDiabetes
@@ -11178,9 +13338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibrocalculousPancreaticDiabetes = "2751001";
 
     /// <summary>
+    /// Literal for code: NONEFibrocalculousPancreaticDiabetes
+    /// </summary>
+    public const string LiteralNONEFibrocalculousPancreaticDiabetes = "http://snomed.info/sct#2751001";
+
+    /// <summary>
     /// Literal for code: OxytocinPoisoning
     /// </summary>
     public const string LiteralOxytocinPoisoning = "276008";
+
+    /// <summary>
+    /// Literal for code: NONEOxytocinPoisoning
+    /// </summary>
+    public const string LiteralNONEOxytocinPoisoning = "http://snomed.info/sct#276008";
 
     /// <summary>
     /// Literal for code: DecreasedStoolCaliber
@@ -11188,9 +13358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDecreasedStoolCaliber = "2761008";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedStoolCaliber
+    /// </summary>
+    public const string LiteralNONEDecreasedStoolCaliber = "http://snomed.info/sct#2761008";
+
+    /// <summary>
     /// Literal for code: JointCrackle
     /// </summary>
     public const string LiteralJointCrackle = "2764000";
+
+    /// <summary>
+    /// Literal for code: NONEJointCrackle
+    /// </summary>
+    public const string LiteralNONEJointCrackle = "http://snomed.info/sct#2764000";
 
     /// <summary>
     /// Literal for code: FetalOrNeonatalEffectOfAntibioticTransmittedViaPlacentaAndOrBreastMilk
@@ -11198,9 +13378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFetalOrNeonatalEffectOfAntibioticTransmittedViaPlacentaAndOrBreastMilk = "2770006";
 
     /// <summary>
+    /// Literal for code: NONEFetalOrNeonatalEffectOfAntibioticTransmittedViaPlacentaAndOrBreastMilk
+    /// </summary>
+    public const string LiteralNONEFetalOrNeonatalEffectOfAntibioticTransmittedViaPlacentaAndOrBreastMilk = "http://snomed.info/sct#2770006";
+
+    /// <summary>
     /// Literal for code: EpidermolysisBullosaAcquisita
     /// </summary>
     public const string LiteralEpidermolysisBullosaAcquisita = "2772003";
+
+    /// <summary>
+    /// Literal for code: NONEEpidermolysisBullosaAcquisita
+    /// </summary>
+    public const string LiteralNONEEpidermolysisBullosaAcquisita = "http://snomed.info/sct#2772003";
 
     /// <summary>
     /// Literal for code: IntraArticularLooseBody
@@ -11208,9 +13398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraArticularLooseBody = "2775001";
 
     /// <summary>
+    /// Literal for code: NONEIntraArticularLooseBody
+    /// </summary>
+    public const string LiteralNONEIntraArticularLooseBody = "http://snomed.info/sct#2775001";
+
+    /// <summary>
     /// Literal for code: OrganicBrainSyndrome
     /// </summary>
     public const string LiteralOrganicBrainSyndrome = "2776000";
+
+    /// <summary>
+    /// Literal for code: NONEOrganicBrainSyndrome
+    /// </summary>
+    public const string LiteralNONEOrganicBrainSyndrome = "http://snomed.info/sct#2776000";
 
     /// <summary>
     /// Literal for code: MiscarriageComplicatedByDelayedAndOrExcessiveHemorrhage
@@ -11218,9 +13418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMiscarriageComplicatedByDelayedAndOrExcessiveHemorrhage = "2781009";
 
     /// <summary>
+    /// Literal for code: NONEMiscarriageComplicatedByDelayedAndOrExcessiveHemorrhage
+    /// </summary>
+    public const string LiteralNONEMiscarriageComplicatedByDelayedAndOrExcessiveHemorrhage = "http://snomed.info/sct#2781009";
+
+    /// <summary>
     /// Literal for code: TemporomandibularDysplasia
     /// </summary>
     public const string LiteralTemporomandibularDysplasia = "2782002";
+
+    /// <summary>
+    /// Literal for code: NONETemporomandibularDysplasia
+    /// </summary>
+    public const string LiteralNONETemporomandibularDysplasia = "http://snomed.info/sct#2782002";
 
     /// <summary>
     /// Literal for code: GastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation
@@ -11228,9 +13438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation = "2783007";
 
     /// <summary>
+    /// Literal for code: NONEGastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation
+    /// </summary>
+    public const string LiteralNONEGastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation = "http://snomed.info/sct#2783007";
+
+    /// <summary>
     /// Literal for code: EpithelialOvarianTumorInternationalFederationOfGynecologyAndObstetricsStageIII
     /// </summary>
     public const string LiteralEpithelialOvarianTumorInternationalFederationOfGynecologyAndObstetricsStageIII = "2786004";
+
+    /// <summary>
+    /// Literal for code: NONEEpithelialOvarianTumorInternationalFederationOfGynecologyAndObstetricsStageIII
+    /// </summary>
+    public const string LiteralNONEEpithelialOvarianTumorInternationalFederationOfGynecologyAndObstetricsStageIII = "http://snomed.info/sct#2786004";
 
     /// <summary>
     /// Literal for code: ImpairmentLevelOneEyeTotalImpairmentOtherEyeNotSpecified
@@ -11238,9 +13458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImpairmentLevelOneEyeTotalImpairmentOtherEyeNotSpecified = "2790002";
 
     /// <summary>
+    /// Literal for code: NONEImpairmentLevelOneEyeTotalImpairmentOtherEyeNotSpecified
+    /// </summary>
+    public const string LiteralNONEImpairmentLevelOneEyeTotalImpairmentOtherEyeNotSpecified = "http://snomed.info/sct#2790002";
+
+    /// <summary>
     /// Literal for code: SenileMyocarditis
     /// </summary>
     public const string LiteralSenileMyocarditis = "279001";
+
+    /// <summary>
+    /// Literal for code: NONESenileMyocarditis
+    /// </summary>
+    public const string LiteralNONESenileMyocarditis = "http://snomed.info/sct#279001";
 
     /// <summary>
     /// Literal for code: PhosmetPoisoning
@@ -11248,9 +13478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhosmetPoisoning = "2805007";
 
     /// <summary>
+    /// Literal for code: NONEPhosmetPoisoning
+    /// </summary>
+    public const string LiteralNONEPhosmetPoisoning = "http://snomed.info/sct#2805007";
+
+    /// <summary>
     /// Literal for code: ImpairedPsychomotorDevelopment
     /// </summary>
     public const string LiteralImpairedPsychomotorDevelopment = "2806008";
+
+    /// <summary>
+    /// Literal for code: NONEImpairedPsychomotorDevelopment
+    /// </summary>
+    public const string LiteralNONEImpairedPsychomotorDevelopment = "http://snomed.info/sct#2806008";
 
     /// <summary>
     /// Literal for code: ChronicGastrojejunalUlcerWithPerforation
@@ -11258,9 +13498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicGastrojejunalUlcerWithPerforation = "2807004";
 
     /// <summary>
+    /// Literal for code: NONEChronicGastrojejunalUlcerWithPerforation
+    /// </summary>
+    public const string LiteralNONEChronicGastrojejunalUlcerWithPerforation = "http://snomed.info/sct#2807004";
+
+    /// <summary>
     /// Literal for code: InfectionCausedByProsthenorchisElegans
     /// </summary>
     public const string LiteralInfectionCausedByProsthenorchisElegans = "2808009";
+
+    /// <summary>
+    /// Literal for code: NONEInfectionCausedByProsthenorchisElegans
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByProsthenorchisElegans = "http://snomed.info/sct#2808009";
 
     /// <summary>
     /// Literal for code: AlcoholicDementia
@@ -11268,9 +13518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlcoholicDementia = "281004";
 
     /// <summary>
+    /// Literal for code: NONEAlcoholicDementia
+    /// </summary>
+    public const string LiteralNONEAlcoholicDementia = "http://snomed.info/sct#281004";
+
+    /// <summary>
     /// Literal for code: SexualPyromania
     /// </summary>
     public const string LiteralSexualPyromania = "2815001";
+
+    /// <summary>
+    /// Literal for code: NONESexualPyromania
+    /// </summary>
+    public const string LiteralNONESexualPyromania = "http://snomed.info/sct#2815001";
 
     /// <summary>
     /// Literal for code: DilatedCardiomyopathySecondaryToMyotonicDystrophy
@@ -11278,9 +13538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDilatedCardiomyopathySecondaryToMyotonicDystrophy = "2816000";
 
     /// <summary>
+    /// Literal for code: NONEDilatedCardiomyopathySecondaryToMyotonicDystrophy
+    /// </summary>
+    public const string LiteralNONEDilatedCardiomyopathySecondaryToMyotonicDystrophy = "http://snomed.info/sct#2816000";
+
+    /// <summary>
     /// Literal for code: CongenitalVascularAnomalyOfEye
     /// </summary>
     public const string LiteralCongenitalVascularAnomalyOfEye = "2818004";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalVascularAnomalyOfEye
+    /// </summary>
+    public const string LiteralNONECongenitalVascularAnomalyOfEye = "http://snomed.info/sct#2818004";
 
     /// <summary>
     /// Literal for code: MagnesiumSulfatePoisoning
@@ -11288,9 +13558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMagnesiumSulfatePoisoning = "2819007";
 
     /// <summary>
+    /// Literal for code: NONEMagnesiumSulfatePoisoning
+    /// </summary>
+    public const string LiteralNONEMagnesiumSulfatePoisoning = "http://snomed.info/sct#2819007";
+
+    /// <summary>
     /// Literal for code: AcuteMyocardialInfarctionOfBasalLateralWall
     /// </summary>
     public const string LiteralAcuteMyocardialInfarctionOfBasalLateralWall = "282006";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteMyocardialInfarctionOfBasalLateralWall
+    /// </summary>
+    public const string LiteralNONEAcuteMyocardialInfarctionOfBasalLateralWall = "http://snomed.info/sct#282006";
 
     /// <summary>
     /// Literal for code: AbrasionAndOrFrictionBurnOfGumWithoutInfection
@@ -11298,9 +13578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbrasionAndOrFrictionBurnOfGumWithoutInfection = "2825006";
 
     /// <summary>
+    /// Literal for code: NONEAbrasionAndOrFrictionBurnOfGumWithoutInfection
+    /// </summary>
+    public const string LiteralNONEAbrasionAndOrFrictionBurnOfGumWithoutInfection = "http://snomed.info/sct#2825006";
+
+    /// <summary>
     /// Literal for code: CongenitalStenosisOfNares
     /// </summary>
     public const string LiteralCongenitalStenosisOfNares = "2828008";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalStenosisOfNares
+    /// </summary>
+    public const string LiteralNONECongenitalStenosisOfNares = "http://snomed.info/sct#2828008";
 
     /// <summary>
     /// Literal for code: UhlDisease
@@ -11308,9 +13598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUhlDisease = "2829000";
 
     /// <summary>
+    /// Literal for code: NONEUhlDisease
+    /// </summary>
+    public const string LiteralNONEUhlDisease = "http://snomed.info/sct#2829000";
+
+    /// <summary>
     /// Literal for code: PyloricAntralVascularEctasia
     /// </summary>
     public const string LiteralPyloricAntralVascularEctasia = "2831009";
+
+    /// <summary>
+    /// Literal for code: NONEPyloricAntralVascularEctasia
+    /// </summary>
+    public const string LiteralNONEPyloricAntralVascularEctasia = "http://snomed.info/sct#2831009";
 
     /// <summary>
     /// Literal for code: HemolyticAnemiaDueToCardiacTrauma
@@ -11318,9 +13618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHemolyticAnemiaDueToCardiacTrauma = "2835000";
 
     /// <summary>
+    /// Literal for code: NONEHemolyticAnemiaDueToCardiacTrauma
+    /// </summary>
+    public const string LiteralNONEHemolyticAnemiaDueToCardiacTrauma = "http://snomed.info/sct#2835000";
+
+    /// <summary>
     /// Literal for code: ButaneCausingToxicEffect
     /// </summary>
     public const string LiteralButaneCausingToxicEffect = "2836004";
+
+    /// <summary>
+    /// Literal for code: NONEButaneCausingToxicEffect
+    /// </summary>
+    public const string LiteralNONEButaneCausingToxicEffect = "http://snomed.info/sct#2836004";
 
     /// <summary>
     /// Literal for code: Piblokto
@@ -11328,9 +13638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPiblokto = "2838003";
 
     /// <summary>
+    /// Literal for code: NONEPiblokto
+    /// </summary>
+    public const string LiteralNONEPiblokto = "http://snomed.info/sct#2838003";
+
+    /// <summary>
     /// Literal for code: OpenFractureOfVaultOfSkullWithCerebralLacerationANDORContusion
     /// </summary>
     public const string LiteralOpenFractureOfVaultOfSkullWithCerebralLacerationANDORContusion = "2840008";
+
+    /// <summary>
+    /// Literal for code: NONEOpenFractureOfVaultOfSkullWithCerebralLacerationANDORContusion
+    /// </summary>
+    public const string LiteralNONEOpenFractureOfVaultOfSkullWithCerebralLacerationANDORContusion = "http://snomed.info/sct#2840008";
 
     /// <summary>
     /// Literal for code: InfectionCausedBySchistosomaIncognitum
@@ -11338,9 +13658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionCausedBySchistosomaIncognitum = "2850009";
 
     /// <summary>
+    /// Literal for code: NONEInfectionCausedBySchistosomaIncognitum
+    /// </summary>
+    public const string LiteralNONEInfectionCausedBySchistosomaIncognitum = "http://snomed.info/sct#2850009";
+
+    /// <summary>
     /// Literal for code: MacularKeratitis
     /// </summary>
     public const string LiteralMacularKeratitis = "2853006";
+
+    /// <summary>
+    /// Literal for code: NONEMacularKeratitis
+    /// </summary>
+    public const string LiteralNONEMacularKeratitis = "http://snomed.info/sct#2853006";
 
     /// <summary>
     /// Literal for code: VitaminAResponsiveDermatosis
@@ -11348,9 +13678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVitaminAResponsiveDermatosis = "2856003";
 
     /// <summary>
+    /// Literal for code: NONEVitaminAResponsiveDermatosis
+    /// </summary>
+    public const string LiteralNONEVitaminAResponsiveDermatosis = "http://snomed.info/sct#2856003";
+
+    /// <summary>
     /// Literal for code: PostpartumSepsis
     /// </summary>
     public const string LiteralPostpartumSepsis = "2858002";
+
+    /// <summary>
+    /// Literal for code: NONEPostpartumSepsis
+    /// </summary>
+    public const string LiteralNONEPostpartumSepsis = "http://snomed.info/sct#2858002";
 
     /// <summary>
     /// Literal for code: SpherophakiaBrachymorphiaSyndrome
@@ -11358,9 +13698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpherophakiaBrachymorphiaSyndrome = "2884008";
 
     /// <summary>
+    /// Literal for code: NONESpherophakiaBrachymorphiaSyndrome
+    /// </summary>
+    public const string LiteralNONESpherophakiaBrachymorphiaSyndrome = "http://snomed.info/sct#2884008";
+
+    /// <summary>
     /// Literal for code: AnomalyOfChromosomePair10
     /// </summary>
     public const string LiteralAnomalyOfChromosomePair10 = "2893009";
+
+    /// <summary>
+    /// Literal for code: NONEAnomalyOfChromosomePair10
+    /// </summary>
+    public const string LiteralNONEAnomalyOfChromosomePair10 = "http://snomed.info/sct#2893009";
 
     /// <summary>
     /// Literal for code: ImmuneThrombocytopenia
@@ -11368,9 +13718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmuneThrombocytopenia = "2897005";
 
     /// <summary>
+    /// Literal for code: NONEImmuneThrombocytopenia
+    /// </summary>
+    public const string LiteralNONEImmuneThrombocytopenia = "http://snomed.info/sct#2897005";
+
+    /// <summary>
     /// Literal for code: ThoughtBlocking
     /// </summary>
     public const string LiteralThoughtBlocking = "2899008";
+
+    /// <summary>
+    /// Literal for code: NONEThoughtBlocking
+    /// </summary>
+    public const string LiteralNONEThoughtBlocking = "http://snomed.info/sct#2899008";
 
     /// <summary>
     /// Literal for code: FibromuscularDysplasiaOfRenalArtery
@@ -11378,9 +13738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibromuscularDysplasiaOfRenalArtery = "2900003";
 
     /// <summary>
+    /// Literal for code: NONEFibromuscularDysplasiaOfRenalArtery
+    /// </summary>
+    public const string LiteralNONEFibromuscularDysplasiaOfRenalArtery = "http://snomed.info/sct#2900003";
+
+    /// <summary>
     /// Literal for code: MelnickFraserSyndrome
     /// </summary>
     public const string LiteralMelnickFraserSyndrome = "290006";
+
+    /// <summary>
+    /// Literal for code: NONEMelnickFraserSyndrome
+    /// </summary>
+    public const string LiteralNONEMelnickFraserSyndrome = "http://snomed.info/sct#290006";
 
     /// <summary>
     /// Literal for code: AlteredBloodPassedPerRectum
@@ -11388,9 +13758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlteredBloodPassedPerRectum = "2901004";
 
     /// <summary>
+    /// Literal for code: NONEAlteredBloodPassedPerRectum
+    /// </summary>
+    public const string LiteralNONEAlteredBloodPassedPerRectum = "http://snomed.info/sct#2901004";
+
+    /// <summary>
     /// Literal for code: DecreasedLymphocyteLifeSpan
     /// </summary>
     public const string LiteralDecreasedLymphocyteLifeSpan = "2902006";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedLymphocyteLifeSpan
+    /// </summary>
+    public const string LiteralNONEDecreasedLymphocyteLifeSpan = "http://snomed.info/sct#2902006";
 
     /// <summary>
     /// Literal for code: MaleInfertility
@@ -11398,9 +13778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaleInfertility = "2904007";
 
     /// <summary>
+    /// Literal for code: NONEMaleInfertility
+    /// </summary>
+    public const string LiteralNONEMaleInfertility = "http://snomed.info/sct#2904007";
+
+    /// <summary>
     /// Literal for code: DischargeFromPenis
     /// </summary>
     public const string LiteralDischargeFromPenis = "2910007";
+
+    /// <summary>
+    /// Literal for code: NONEDischargeFromPenis
+    /// </summary>
+    public const string LiteralNONEDischargeFromPenis = "http://snomed.info/sct#2910007";
 
     /// <summary>
     /// Literal for code: CysticBullousDiseaseOfTheLung
@@ -11408,9 +13798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCysticBullousDiseaseOfTheLung = "2912004";
 
     /// <summary>
+    /// Literal for code: NONECysticBullousDiseaseOfTheLung
+    /// </summary>
+    public const string LiteralNONECysticBullousDiseaseOfTheLung = "http://snomed.info/sct#2912004";
+
+    /// <summary>
     /// Literal for code: TransientHypothyroidism
     /// </summary>
     public const string LiteralTransientHypothyroidism = "2917005";
+
+    /// <summary>
+    /// Literal for code: NONETransientHypothyroidism
+    /// </summary>
+    public const string LiteralNONETransientHypothyroidism = "http://snomed.info/sct#2917005";
 
     /// <summary>
     /// Literal for code: InfectionCausedByBacteroides
@@ -11418,9 +13818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionCausedByBacteroides = "2918000";
 
     /// <summary>
+    /// Literal for code: NONEInfectionCausedByBacteroides
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByBacteroides = "http://snomed.info/sct#2918000";
+
+    /// <summary>
     /// Literal for code: NauseaVomitingAndDiarrhea
     /// </summary>
     public const string LiteralNauseaVomitingAndDiarrhea = "2919008";
+
+    /// <summary>
+    /// Literal for code: NONENauseaVomitingAndDiarrhea
+    /// </summary>
+    public const string LiteralNONENauseaVomitingAndDiarrhea = "http://snomed.info/sct#2919008";
 
     /// <summary>
     /// Literal for code: EEGFinding
@@ -11428,9 +13838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEEGFinding = "292003";
 
     /// <summary>
+    /// Literal for code: NONEEEGFinding
+    /// </summary>
+    public const string LiteralNONEEEGFinding = "http://snomed.info/sct#292003";
+
+    /// <summary>
     /// Literal for code: ArterialOcclusion
     /// </summary>
     public const string LiteralArterialOcclusion = "2929001";
+
+    /// <summary>
+    /// Literal for code: NONEArterialOcclusion
+    /// </summary>
+    public const string LiteralNONEArterialOcclusion = "http://snomed.info/sct#2929001";
 
     /// <summary>
     /// Literal for code: AntiasthmaticPoisoning
@@ -11438,9 +13858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAntiasthmaticPoisoning = "2935001";
 
     /// <summary>
+    /// Literal for code: NONEAntiasthmaticPoisoning
+    /// </summary>
+    public const string LiteralNONEAntiasthmaticPoisoning = "http://snomed.info/sct#2935001";
+
+    /// <summary>
     /// Literal for code: IntrabasalVesicularDermatitis
     /// </summary>
     public const string LiteralIntrabasalVesicularDermatitis = "2940009";
+
+    /// <summary>
+    /// Literal for code: NONEIntrabasalVesicularDermatitis
+    /// </summary>
+    public const string LiteralNONEIntrabasalVesicularDermatitis = "http://snomed.info/sct#2940009";
 
     /// <summary>
     /// Literal for code: OsmoticDiarrhea
@@ -11448,9 +13878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOsmoticDiarrhea = "2946003";
 
     /// <summary>
+    /// Literal for code: NONEOsmoticDiarrhea
+    /// </summary>
+    public const string LiteralNONEOsmoticDiarrhea = "http://snomed.info/sct#2946003";
+
+    /// <summary>
     /// Literal for code: AtopicCataract
     /// </summary>
     public const string LiteralAtopicCataract = "2951009";
+
+    /// <summary>
+    /// Literal for code: NONEAtopicCataract
+    /// </summary>
+    public const string LiteralNONEAtopicCataract = "http://snomed.info/sct#2951009";
 
     /// <summary>
     /// Literal for code: ChronicUlcerativePulpitis
@@ -11458,9 +13898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicUlcerativePulpitis = "2955000";
 
     /// <summary>
+    /// Literal for code: NONEChronicUlcerativePulpitis
+    /// </summary>
+    public const string LiteralNONEChronicUlcerativePulpitis = "http://snomed.info/sct#2955000";
+
+    /// <summary>
     /// Literal for code: NevoidCongenitalAlopecia
     /// </summary>
     public const string LiteralNevoidCongenitalAlopecia = "2965006";
+
+    /// <summary>
+    /// Literal for code: NONENevoidCongenitalAlopecia
+    /// </summary>
+    public const string LiteralNONENevoidCongenitalAlopecia = "http://snomed.info/sct#2965006";
 
     /// <summary>
     /// Literal for code: NonComitantStrabismus
@@ -11468,9 +13918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonComitantStrabismus = "2967003";
 
     /// <summary>
+    /// Literal for code: NONENonComitantStrabismus
+    /// </summary>
+    public const string LiteralNONENonComitantStrabismus = "http://snomed.info/sct#2967003";
+
+    /// <summary>
     /// Literal for code: AcuteMyringitis
     /// </summary>
     public const string LiteralAcuteMyringitis = "297009";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteMyringitis
+    /// </summary>
+    public const string LiteralNONEAcuteMyringitis = "http://snomed.info/sct#297009";
 
     /// <summary>
     /// Literal for code: OcclusionOfAnteriorSpinalArtery
@@ -11478,9 +13938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOcclusionOfAnteriorSpinalArtery = "2972007";
 
     /// <summary>
+    /// Literal for code: NONEOcclusionOfAnteriorSpinalArtery
+    /// </summary>
+    public const string LiteralNONEOcclusionOfAnteriorSpinalArtery = "http://snomed.info/sct#2972007";
+
+    /// <summary>
     /// Literal for code: PelvicOrganInjuryWithoutOpenWoundIntoAbdominalCavity
     /// </summary>
     public const string LiteralPelvicOrganInjuryWithoutOpenWoundIntoAbdominalCavity = "2973002";
+
+    /// <summary>
+    /// Literal for code: NONEPelvicOrganInjuryWithoutOpenWoundIntoAbdominalCavity
+    /// </summary>
+    public const string LiteralNONEPelvicOrganInjuryWithoutOpenWoundIntoAbdominalCavity = "http://snomed.info/sct#2973002";
 
     /// <summary>
     /// Literal for code: AneurysmOfConjunctiva
@@ -11488,9 +13958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAneurysmOfConjunctiva = "2978006";
 
     /// <summary>
+    /// Literal for code: NONEAneurysmOfConjunctiva
+    /// </summary>
+    public const string LiteralNONEAneurysmOfConjunctiva = "http://snomed.info/sct#2978006";
+
+    /// <summary>
     /// Literal for code: PulsatileMassOfAbdomen
     /// </summary>
     public const string LiteralPulsatileMassOfAbdomen = "2981001";
+
+    /// <summary>
+    /// Literal for code: NONEPulsatileMassOfAbdomen
+    /// </summary>
+    public const string LiteralNONEPulsatileMassOfAbdomen = "http://snomed.info/sct#2981001";
 
     /// <summary>
     /// Literal for code: ComplicationFollowingMolarANDOREctopicPregnancy
@@ -11498,9 +13978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComplicationFollowingMolarANDOREctopicPregnancy = "2989004";
 
     /// <summary>
+    /// Literal for code: NONEComplicationFollowingMolarANDOREctopicPregnancy
+    /// </summary>
+    public const string LiteralNONEComplicationFollowingMolarANDOREctopicPregnancy = "http://snomed.info/sct#2989004";
+
+    /// <summary>
     /// Literal for code: LymphocyticLeukemoidReaction
     /// </summary>
     public const string LiteralLymphocyticLeukemoidReaction = "2990008";
+
+    /// <summary>
+    /// Literal for code: NONELymphocyticLeukemoidReaction
+    /// </summary>
+    public const string LiteralNONELymphocyticLeukemoidReaction = "http://snomed.info/sct#2990008";
 
     /// <summary>
     /// Literal for code: ParaffinomaOfSkin
@@ -11508,9 +13998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParaffinomaOfSkin = "299007";
 
     /// <summary>
+    /// Literal for code: NONEParaffinomaOfSkin
+    /// </summary>
+    public const string LiteralNONEParaffinomaOfSkin = "http://snomed.info/sct#299007";
+
+    /// <summary>
     /// Literal for code: PigmentaryPallidalDegeneration
     /// </summary>
     public const string LiteralPigmentaryPallidalDegeneration = "2992000";
+
+    /// <summary>
+    /// Literal for code: NONEPigmentaryPallidalDegeneration
+    /// </summary>
+    public const string LiteralNONEPigmentaryPallidalDegeneration = "http://snomed.info/sct#2992000";
 
     /// <summary>
     /// Literal for code: BrainFag
@@ -11518,9 +14018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBrainFag = "2994004";
 
     /// <summary>
+    /// Literal for code: NONEBrainFag
+    /// </summary>
+    public const string LiteralNONEBrainFag = "http://snomed.info/sct#2994004";
+
+    /// <summary>
     /// Literal for code: InjuryOfEarRegion
     /// </summary>
     public const string LiteralInjuryOfEarRegion = "2999009";
+
+    /// <summary>
+    /// Literal for code: NONEInjuryOfEarRegion
+    /// </summary>
+    public const string LiteralNONEInjuryOfEarRegion = "http://snomed.info/sct#2999009";
 
     /// <summary>
     /// Literal for code: ThyroidHemorrhage
@@ -11528,9 +14038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThyroidHemorrhage = "3002002";
 
     /// <summary>
+    /// Literal for code: NONEThyroidHemorrhage
+    /// </summary>
+    public const string LiteralNONEThyroidHemorrhage = "http://snomed.info/sct#3002002";
+
+    /// <summary>
     /// Literal for code: CongenitalDilatationOfEsophagus
     /// </summary>
     public const string LiteralCongenitalDilatationOfEsophagus = "3004001";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalDilatationOfEsophagus
+    /// </summary>
+    public const string LiteralNONECongenitalDilatationOfEsophagus = "http://snomed.info/sct#3004001";
 
     /// <summary>
     /// Literal for code: AlteredConsciousness
@@ -11538,9 +14058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlteredConsciousness = "3006004";
 
     /// <summary>
+    /// Literal for code: NONEAlteredConsciousness
+    /// </summary>
+    public const string LiteralNONEAlteredConsciousness = "http://snomed.info/sct#3006004";
+
+    /// <summary>
     /// Literal for code: SolanumMalacoxylonPoisoning
     /// </summary>
     public const string LiteralSolanumMalacoxylonPoisoning = "3009006";
+
+    /// <summary>
+    /// Literal for code: NONESolanumMalacoxylonPoisoning
+    /// </summary>
+    public const string LiteralNONESolanumMalacoxylonPoisoning = "http://snomed.info/sct#3009006";
 
     /// <summary>
     /// Literal for code: OpenWoundOfEarDrumWithoutComplication
@@ -11548,9 +14078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenWoundOfEarDrumWithoutComplication = "3013004";
 
     /// <summary>
+    /// Literal for code: NONEOpenWoundOfEarDrumWithoutComplication
+    /// </summary>
+    public const string LiteralNONEOpenWoundOfEarDrumWithoutComplication = "http://snomed.info/sct#3013004";
+
+    /// <summary>
     /// Literal for code: Autoeczematization
     /// </summary>
     public const string LiteralAutoeczematization = "3014005";
+
+    /// <summary>
+    /// Literal for code: NONEAutoeczematization
+    /// </summary>
+    public const string LiteralNONEAutoeczematization = "http://snomed.info/sct#3014005";
 
     /// <summary>
     /// Literal for code: PenetrationOfEyeballWithMagneticForeignBody
@@ -11558,9 +14098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPenetrationOfEyeballWithMagneticForeignBody = "3018008";
 
     /// <summary>
+    /// Literal for code: NONEPenetrationOfEyeballWithMagneticForeignBody
+    /// </summary>
+    public const string LiteralNONEPenetrationOfEyeballWithMagneticForeignBody = "http://snomed.info/sct#3018008";
+
+    /// <summary>
     /// Literal for code: ClosedAnteriorDislocationOfElbow
     /// </summary>
     public const string LiteralClosedAnteriorDislocationOfElbow = "3019000";
+
+    /// <summary>
+    /// Literal for code: NONEClosedAnteriorDislocationOfElbow
+    /// </summary>
+    public const string LiteralNONEClosedAnteriorDislocationOfElbow = "http://snomed.info/sct#3019000";
 
     /// <summary>
     /// Literal for code: NormalGastricAcidity
@@ -11568,9 +14118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNormalGastricAcidity = "3021005";
 
     /// <summary>
+    /// Literal for code: NONENormalGastricAcidity
+    /// </summary>
+    public const string LiteralNONENormalGastricAcidity = "http://snomed.info/sct#3021005";
+
+    /// <summary>
     /// Literal for code: AcutePepticUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction
     /// </summary>
     public const string LiteralAcutePepticUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction = "3023008";
+
+    /// <summary>
+    /// Literal for code: NONEAcutePepticUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction
+    /// </summary>
+    public const string LiteralNONEAcutePepticUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction = "http://snomed.info/sct#3023008";
 
     /// <summary>
     /// Literal for code: ApoplecticPancreatitis
@@ -11578,9 +14138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApoplecticPancreatitis = "303002";
 
     /// <summary>
+    /// Literal for code: NONEApoplecticPancreatitis
+    /// </summary>
+    public const string LiteralNONEApoplecticPancreatitis = "http://snomed.info/sct#303002";
+
+    /// <summary>
     /// Literal for code: NonvenomousInsectBiteOfCheekWithoutInfection
     /// </summary>
     public const string LiteralNonvenomousInsectBiteOfCheekWithoutInfection = "3032005";
+
+    /// <summary>
+    /// Literal for code: NONENonvenomousInsectBiteOfCheekWithoutInfection
+    /// </summary>
+    public const string LiteralNONENonvenomousInsectBiteOfCheekWithoutInfection = "http://snomed.info/sct#3032005";
 
     /// <summary>
     /// Literal for code: BoneANDORJointDisorderOfPelvisInMotherComplicatingPregnancyChildbirthANDORPuerperium
@@ -11588,9 +14158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoneANDORJointDisorderOfPelvisInMotherComplicatingPregnancyChildbirthANDORPuerperium = "3033000";
 
     /// <summary>
+    /// Literal for code: NONEBoneANDORJointDisorderOfPelvisInMotherComplicatingPregnancyChildbirthANDORPuerperium
+    /// </summary>
+    public const string LiteralNONEBoneANDORJointDisorderOfPelvisInMotherComplicatingPregnancyChildbirthANDORPuerperium = "http://snomed.info/sct#3033000";
+
+    /// <summary>
     /// Literal for code: AcuteLymphangitisOfUmbilicus
     /// </summary>
     public const string LiteralAcuteLymphangitisOfUmbilicus = "3038009";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteLymphangitisOfUmbilicus
+    /// </summary>
+    public const string LiteralNONEAcuteLymphangitisOfUmbilicus = "http://snomed.info/sct#3038009";
 
     /// <summary>
     /// Literal for code: VitreousProlapse
@@ -11598,9 +14178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVitreousProlapse = "3044008";
 
     /// <summary>
+    /// Literal for code: NONEVitreousProlapse
+    /// </summary>
+    public const string LiteralNONEVitreousProlapse = "http://snomed.info/sct#3044008";
+
+    /// <summary>
     /// Literal for code: PoisoningCausedByNitroglycerin
     /// </summary>
     public const string LiteralPoisoningCausedByNitroglycerin = "3053001";
+
+    /// <summary>
+    /// Literal for code: NONEPoisoningCausedByNitroglycerin
+    /// </summary>
+    public const string LiteralNONEPoisoningCausedByNitroglycerin = "http://snomed.info/sct#3053001";
 
     /// <summary>
     /// Literal for code: AcuteLymphangitisOfThigh
@@ -11608,9 +14198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteLymphangitisOfThigh = "3059002";
 
     /// <summary>
+    /// Literal for code: NONEAcuteLymphangitisOfThigh
+    /// </summary>
+    public const string LiteralNONEAcuteLymphangitisOfThigh = "http://snomed.info/sct#3059002";
+
+    /// <summary>
     /// Literal for code: WeakCPhenotype
     /// </summary>
     public const string LiteralWeakCPhenotype = "3067005";
+
+    /// <summary>
+    /// Literal for code: NONEWeakCPhenotype
+    /// </summary>
+    public const string LiteralNONEWeakCPhenotype = "http://snomed.info/sct#3067005";
 
     /// <summary>
     /// Literal for code: Widow
@@ -11618,9 +14218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWidow = "3071008";
 
     /// <summary>
+    /// Literal for code: NONEWidow
+    /// </summary>
+    public const string LiteralNONEWidow = "http://snomed.info/sct#3071008";
+
+    /// <summary>
     /// Literal for code: HormoneInducedHypopituitarism
     /// </summary>
     public const string LiteralHormoneInducedHypopituitarism = "3072001";
+
+    /// <summary>
+    /// Literal for code: NONEHormoneInducedHypopituitarism
+    /// </summary>
+    public const string LiteralNONEHormoneInducedHypopituitarism = "http://snomed.info/sct#3072001";
 
     /// <summary>
     /// Literal for code: RuvalcabaSyndrome
@@ -11628,9 +14238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRuvalcabaSyndrome = "3073006";
 
     /// <summary>
+    /// Literal for code: NONERuvalcabaSyndrome
+    /// </summary>
+    public const string LiteralNONERuvalcabaSyndrome = "http://snomed.info/sct#3073006";
+
+    /// <summary>
     /// Literal for code: PearlyPenilePapules
     /// </summary>
     public const string LiteralPearlyPenilePapules = "308006";
+
+    /// <summary>
+    /// Literal for code: NONEPearlyPenilePapules
+    /// </summary>
+    public const string LiteralNONEPearlyPenilePapules = "http://snomed.info/sct#308006";
 
     /// <summary>
     /// Literal for code: NonvenomousInsectBiteOfGumWithoutInfection
@@ -11638,9 +14258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonvenomousInsectBiteOfGumWithoutInfection = "3084004";
 
     /// <summary>
+    /// Literal for code: NONENonvenomousInsectBiteOfGumWithoutInfection
+    /// </summary>
+    public const string LiteralNONENonvenomousInsectBiteOfGumWithoutInfection = "http://snomed.info/sct#3084004";
+
+    /// <summary>
     /// Literal for code: DisabilityEvaluationImpairmentClass7
     /// </summary>
     public const string LiteralDisabilityEvaluationImpairmentClass7 = "3089009";
+
+    /// <summary>
+    /// Literal for code: NONEDisabilityEvaluationImpairmentClass7
+    /// </summary>
+    public const string LiteralNONEDisabilityEvaluationImpairmentClass7 = "http://snomed.info/sct#3089009";
 
     /// <summary>
     /// Literal for code: VomitingInInfantsANDORChildren
@@ -11648,9 +14278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVomitingInInfantsANDORChildren = "3094009";
 
     /// <summary>
+    /// Literal for code: NONEVomitingInInfantsANDORChildren
+    /// </summary>
+    public const string LiteralNONEVomitingInInfantsANDORChildren = "http://snomed.info/sct#3094009";
+
+    /// <summary>
     /// Literal for code: InducedMalaria
     /// </summary>
     public const string LiteralInducedMalaria = "3095005";
+
+    /// <summary>
+    /// Literal for code: NONEInducedMalaria
+    /// </summary>
+    public const string LiteralNONEInducedMalaria = "http://snomed.info/sct#3095005";
 
     /// <summary>
     /// Literal for code: SuperficialInjuryOfLipWithInfection
@@ -11658,9 +14298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperficialInjuryOfLipWithInfection = "3097002";
 
     /// <summary>
+    /// Literal for code: NONESuperficialInjuryOfLipWithInfection
+    /// </summary>
+    public const string LiteralNONESuperficialInjuryOfLipWithInfection = "http://snomed.info/sct#3097002";
+
+    /// <summary>
     /// Literal for code: VentricularSeptalRupture
     /// </summary>
     public const string LiteralVentricularSeptalRupture = "3098007";
+
+    /// <summary>
+    /// Literal for code: NONEVentricularSeptalRupture
+    /// </summary>
+    public const string LiteralNONEVentricularSeptalRupture = "http://snomed.info/sct#3098007";
 
     /// <summary>
     /// Literal for code: PenileBoil
@@ -11668,9 +14318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPenileBoil = "310008";
 
     /// <summary>
+    /// Literal for code: NONEPenileBoil
+    /// </summary>
+    public const string LiteralNONEPenileBoil = "http://snomed.info/sct#310008";
+
+    /// <summary>
     /// Literal for code: Intron
     /// </summary>
     public const string LiteralIntron = "3105002";
+
+    /// <summary>
+    /// Literal for code: NONEIntron
+    /// </summary>
+    public const string LiteralNONEIntron = "http://snomed.info/sct#3105002";
 
     /// <summary>
     /// Literal for code: SecondaryDysthymiaEarlyOnset
@@ -11678,9 +14338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSecondaryDysthymiaEarlyOnset = "3109008";
 
     /// <summary>
+    /// Literal for code: NONESecondaryDysthymiaEarlyOnset
+    /// </summary>
+    public const string LiteralNONESecondaryDysthymiaEarlyOnset = "http://snomed.info/sct#3109008";
+
+    /// <summary>
     /// Literal for code: AOMAcuteOtitisMedia
     /// </summary>
     public const string LiteralAOMAcuteOtitisMedia = "3110003";
+
+    /// <summary>
+    /// Literal for code: NONEAOMAcuteOtitisMedia
+    /// </summary>
+    public const string LiteralNONEAOMAcuteOtitisMedia = "http://snomed.info/sct#3110003";
 
     /// <summary>
     /// Literal for code: BrainStemLacerationWithOpenIntracranialWoundANDLossOfConsciousness
@@ -11688,9 +14358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBrainStemLacerationWithOpenIntracranialWoundANDLossOfConsciousness = "3119002";
 
     /// <summary>
+    /// Literal for code: NONEBrainStemLacerationWithOpenIntracranialWoundANDLossOfConsciousness
+    /// </summary>
+    public const string LiteralNONEBrainStemLacerationWithOpenIntracranialWoundANDLossOfConsciousness = "http://snomed.info/sct#3119002";
+
+    /// <summary>
     /// Literal for code: InfarctionOfOvary
     /// </summary>
     public const string LiteralInfarctionOfOvary = "3129009";
+
+    /// <summary>
+    /// Literal for code: NONEInfarctionOfOvary
+    /// </summary>
+    public const string LiteralNONEInfarctionOfOvary = "http://snomed.info/sct#3129009";
 
     /// <summary>
     /// Literal for code: DejaVu
@@ -11698,9 +14378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDejaVu = "313005";
 
     /// <summary>
+    /// Literal for code: NONEDejaVu
+    /// </summary>
+    public const string LiteralNONEDejaVu = "http://snomed.info/sct#313005";
+
+    /// <summary>
     /// Literal for code: OEOtitisExterna
     /// </summary>
     public const string LiteralOEOtitisExterna = "3135009";
+
+    /// <summary>
+    /// Literal for code: NONEOEOtitisExterna
+    /// </summary>
+    public const string LiteralNONEOEOtitisExterna = "http://snomed.info/sct#3135009";
 
     /// <summary>
     /// Literal for code: CitrullinemiaSubacuteType
@@ -11708,9 +14398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCitrullinemiaSubacuteType = "3140001";
 
     /// <summary>
+    /// Literal for code: NONECitrullinemiaSubacuteType
+    /// </summary>
+    public const string LiteralNONECitrullinemiaSubacuteType = "http://snomed.info/sct#3140001";
+
+    /// <summary>
     /// Literal for code: StaphylococcalPleurisy
     /// </summary>
     public const string LiteralStaphylococcalPleurisy = "3144005";
+
+    /// <summary>
+    /// Literal for code: NONEStaphylococcalPleurisy
+    /// </summary>
+    public const string LiteralNONEStaphylococcalPleurisy = "http://snomed.info/sct#3144005";
 
     /// <summary>
     /// Literal for code: PanicDisorderWithAgoraphobiaAgoraphobicAvoidanceInPartialRemissionANDPanicAttacksInPartialRemission
@@ -11718,9 +14418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPanicDisorderWithAgoraphobiaAgoraphobicAvoidanceInPartialRemissionANDPanicAttacksInPartialRemission = "3158007";
 
     /// <summary>
+    /// Literal for code: NONEPanicDisorderWithAgoraphobiaAgoraphobicAvoidanceInPartialRemissionANDPanicAttacksInPartialRemission
+    /// </summary>
+    public const string LiteralNONEPanicDisorderWithAgoraphobiaAgoraphobicAvoidanceInPartialRemissionANDPanicAttacksInPartialRemission = "http://snomed.info/sct#3158007";
+
+    /// <summary>
     /// Literal for code: InfertilityOfCervicalOrigin
     /// </summary>
     public const string LiteralInfertilityOfCervicalOrigin = "3160009";
+
+    /// <summary>
+    /// Literal for code: NONEInfertilityOfCervicalOrigin
+    /// </summary>
+    public const string LiteralNONEInfertilityOfCervicalOrigin = "http://snomed.info/sct#3160009";
 
     /// <summary>
     /// Literal for code: AcuteAdenoviralFollicularConjunctivitis
@@ -11728,9 +14438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteAdenoviralFollicularConjunctivitis = "3163006";
 
     /// <summary>
+    /// Literal for code: NONEAcuteAdenoviralFollicularConjunctivitis
+    /// </summary>
+    public const string LiteralNONEAcuteAdenoviralFollicularConjunctivitis = "http://snomed.info/sct#3163006";
+
+    /// <summary>
     /// Literal for code: ThrombophlebitisOfIntracranialVenousSinus
     /// </summary>
     public const string LiteralThrombophlebitisOfIntracranialVenousSinus = "3168002";
+
+    /// <summary>
+    /// Literal for code: NONEThrombophlebitisOfIntracranialVenousSinus
+    /// </summary>
+    public const string LiteralNONEThrombophlebitisOfIntracranialVenousSinus = "http://snomed.info/sct#3168002";
 
     /// <summary>
     /// Literal for code: ReactiveHypoglycemia
@@ -11738,9 +14458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReactiveHypoglycemia = "317006";
 
     /// <summary>
+    /// Literal for code: NONEReactiveHypoglycemia
+    /// </summary>
+    public const string LiteralNONEReactiveHypoglycemia = "http://snomed.info/sct#317006";
+
+    /// <summary>
     /// Literal for code: MoodCongruentDelusion
     /// </summary>
     public const string LiteralMoodCongruentDelusion = "3185000";
+
+    /// <summary>
+    /// Literal for code: NONEMoodCongruentDelusion
+    /// </summary>
+    public const string LiteralNONEMoodCongruentDelusion = "http://snomed.info/sct#3185000";
 
     /// <summary>
     /// Literal for code: SprainOfShoulderJoint
@@ -11748,9 +14478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSprainOfShoulderJoint = "3199001";
 
     /// <summary>
+    /// Literal for code: NONESprainOfShoulderJoint
+    /// </summary>
+    public const string LiteralNONESprainOfShoulderJoint = "http://snomed.info/sct#3199001";
+
+    /// <summary>
     /// Literal for code: Sacrocoxalgia
     /// </summary>
     public const string LiteralSacrocoxalgia = "3200003";
+
+    /// <summary>
+    /// Literal for code: NONESacrocoxalgia
+    /// </summary>
+    public const string LiteralNONESacrocoxalgia = "http://snomed.info/sct#3200003";
 
     /// <summary>
     /// Literal for code: CervicalDilatation1cm
@@ -11758,9 +14498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCervicalDilatation1cm = "320003";
 
     /// <summary>
+    /// Literal for code: NONECervicalDilatation1cm
+    /// </summary>
+    public const string LiteralNONECervicalDilatation1cm = "http://snomed.info/sct#320003";
+
+    /// <summary>
     /// Literal for code: OpenWoundOfOssiclesWithoutComplication
     /// </summary>
     public const string LiteralOpenWoundOfOssiclesWithoutComplication = "3208005";
+
+    /// <summary>
+    /// Literal for code: NONEOpenWoundOfOssiclesWithoutComplication
+    /// </summary>
+    public const string LiteralNONEOpenWoundOfOssiclesWithoutComplication = "http://snomed.info/sct#3208005";
 
     /// <summary>
     /// Literal for code: InvasivePulmonaryAspergillosis
@@ -11768,9 +14518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInvasivePulmonaryAspergillosis = "3214003";
 
     /// <summary>
+    /// Literal for code: NONEInvasivePulmonaryAspergillosis
+    /// </summary>
+    public const string LiteralNONEInvasivePulmonaryAspergillosis = "http://snomed.info/sct#3214003";
+
+    /// <summary>
     /// Literal for code: OpenDislocationOfSixthCervicalVertebra
     /// </summary>
     public const string LiteralOpenDislocationOfSixthCervicalVertebra = "3217005";
+
+    /// <summary>
+    /// Literal for code: NONEOpenDislocationOfSixthCervicalVertebra
+    /// </summary>
+    public const string LiteralNONEOpenDislocationOfSixthCervicalVertebra = "http://snomed.info/sct#3217005";
 
     /// <summary>
     /// Literal for code: MycoticDisease
@@ -11778,9 +14538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMycoticDisease = "3218000";
 
     /// <summary>
+    /// Literal for code: NONEMycoticDisease
+    /// </summary>
+    public const string LiteralNONEMycoticDisease = "http://snomed.info/sct#3218000";
+
+    /// <summary>
     /// Literal for code: DiseaseTypeANDORCategoryUnknown
     /// </summary>
     public const string LiteralDiseaseTypeANDORCategoryUnknown = "3219008";
+
+    /// <summary>
+    /// Literal for code: NONEDiseaseTypeANDORCategoryUnknown
+    /// </summary>
+    public const string LiteralNONEDiseaseTypeANDORCategoryUnknown = "http://snomed.info/sct#3219008";
 
     /// <summary>
     /// Literal for code: ClosedFractureOfTheRadialShaft
@@ -11788,9 +14558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClosedFractureOfTheRadialShaft = "3228009";
 
     /// <summary>
+    /// Literal for code: NONEClosedFractureOfTheRadialShaft
+    /// </summary>
+    public const string LiteralNONEClosedFractureOfTheRadialShaft = "http://snomed.info/sct#3228009";
+
+    /// <summary>
     /// Literal for code: TrachealUlcer
     /// </summary>
     public const string LiteralTrachealUlcer = "3229001";
+
+    /// <summary>
+    /// Literal for code: NONETrachealUlcer
+    /// </summary>
+    public const string LiteralNONETrachealUlcer = "http://snomed.info/sct#3229001";
 
     /// <summary>
     /// Literal for code: IllegalTerminationOfPregnancyWithAfibrinogenemia
@@ -11798,9 +14578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIllegalTerminationOfPregnancyWithAfibrinogenemia = "3230006";
 
     /// <summary>
+    /// Literal for code: NONEIllegalTerminationOfPregnancyWithAfibrinogenemia
+    /// </summary>
+    public const string LiteralNONEIllegalTerminationOfPregnancyWithAfibrinogenemia = "http://snomed.info/sct#3230006";
+
+    /// <summary>
     /// Literal for code: Pericarditis
     /// </summary>
     public const string LiteralPericarditis = "3238004";
+
+    /// <summary>
+    /// Literal for code: NONEPericarditis
+    /// </summary>
+    public const string LiteralNONEPericarditis = "http://snomed.info/sct#3238004";
 
     /// <summary>
     /// Literal for code: LymphocyteDisorder
@@ -11808,9 +14598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphocyteDisorder = "3239007";
 
     /// <summary>
+    /// Literal for code: NONELymphocyteDisorder
+    /// </summary>
+    public const string LiteralNONELymphocyteDisorder = "http://snomed.info/sct#3239007";
+
+    /// <summary>
     /// Literal for code: PlasterUlcer
     /// </summary>
     public const string LiteralPlasterUlcer = "324007";
+
+    /// <summary>
+    /// Literal for code: NONEPlasterUlcer
+    /// </summary>
+    public const string LiteralNONEPlasterUlcer = "http://snomed.info/sct#324007";
 
     /// <summary>
     /// Literal for code: Dyschromia
@@ -11818,9 +14618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDyschromia = "3253007";
 
     /// <summary>
+    /// Literal for code: NONEDyschromia
+    /// </summary>
+    public const string LiteralNONEDyschromia = "http://snomed.info/sct#3253007";
+
+    /// <summary>
     /// Literal for code: InfectionCausedByStrongyloidesWesteri
     /// </summary>
     public const string LiteralInfectionCausedByStrongyloidesWesteri = "3254001";
+
+    /// <summary>
+    /// Literal for code: NONEInfectionCausedByStrongyloidesWesteri
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByStrongyloidesWesteri = "http://snomed.info/sct#3254001";
 
     /// <summary>
     /// Literal for code: HomeriaSpeciesPoisoning
@@ -11828,9 +14638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHomeriaSpeciesPoisoning = "3259006";
 
     /// <summary>
+    /// Literal for code: NONEHomeriaSpeciesPoisoning
+    /// </summary>
+    public const string LiteralNONEHomeriaSpeciesPoisoning = "http://snomed.info/sct#3259006";
+
+    /// <summary>
     /// Literal for code: MigratoryOsteolysis
     /// </summary>
     public const string LiteralMigratoryOsteolysis = "3261002";
+
+    /// <summary>
+    /// Literal for code: NONEMigratoryOsteolysis
+    /// </summary>
+    public const string LiteralNONEMigratoryOsteolysis = "http://snomed.info/sct#3261002";
 
     /// <summary>
     /// Literal for code: Verumontanitis
@@ -11838,9 +14658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVerumontanitis = "3263004";
 
     /// <summary>
+    /// Literal for code: NONEVerumontanitis
+    /// </summary>
+    public const string LiteralNONEVerumontanitis = "http://snomed.info/sct#3263004";
+
+    /// <summary>
     /// Literal for code: Stomatocytosis
     /// </summary>
     public const string LiteralStomatocytosis = "3272007";
+
+    /// <summary>
+    /// Literal for code: NONEStomatocytosis
+    /// </summary>
+    public const string LiteralNONEStomatocytosis = "http://snomed.info/sct#3272007";
 
     /// <summary>
     /// Literal for code: FlatChest
@@ -11848,9 +14678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFlatChest = "3274008";
 
     /// <summary>
+    /// Literal for code: NONEFlatChest
+    /// </summary>
+    public const string LiteralNONEFlatChest = "http://snomed.info/sct#3274008";
+
+    /// <summary>
     /// Literal for code: BehcetSyndromeVascularType
     /// </summary>
     public const string LiteralBehcetSyndromeVascularType = "3275009";
+
+    /// <summary>
+    /// Literal for code: NONEBehcetSyndromeVascularType
+    /// </summary>
+    public const string LiteralNONEBehcetSyndromeVascularType = "http://snomed.info/sct#3275009";
 
     /// <summary>
     /// Literal for code: ToadPoisoning
@@ -11858,9 +14698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralToadPoisoning = "3276005";
 
     /// <summary>
+    /// Literal for code: NONEToadPoisoning
+    /// </summary>
+    public const string LiteralNONEToadPoisoning = "http://snomed.info/sct#3276005";
+
+    /// <summary>
     /// Literal for code: TerminalMoodInsomnia
     /// </summary>
     public const string LiteralTerminalMoodInsomnia = "3277001";
+
+    /// <summary>
+    /// Literal for code: NONETerminalMoodInsomnia
+    /// </summary>
+    public const string LiteralNONETerminalMoodInsomnia = "http://snomed.info/sct#3277001";
 
     /// <summary>
     /// Literal for code: ArcEye
@@ -11868,9 +14718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArcEye = "3282008";
 
     /// <summary>
+    /// Literal for code: NONEArcEye
+    /// </summary>
+    public const string LiteralNONEArcEye = "http://snomed.info/sct#3282008";
+
+    /// <summary>
     /// Literal for code: FeelingOfSandOrForeignBodyInEye
     /// </summary>
     public const string LiteralFeelingOfSandOrForeignBodyInEye = "3283003";
+
+    /// <summary>
+    /// Literal for code: NONEFeelingOfSandOrForeignBodyInEye
+    /// </summary>
+    public const string LiteralNONEFeelingOfSandOrForeignBodyInEye = "http://snomed.info/sct#3283003";
 
     /// <summary>
     /// Literal for code: PatientStatusDeterminationGreatlyImproved
@@ -11878,9 +14738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientStatusDeterminationGreatlyImproved = "3286006";
 
     /// <summary>
+    /// Literal for code: NONEPatientStatusDeterminationGreatlyImproved
+    /// </summary>
+    public const string LiteralNONEPatientStatusDeterminationGreatlyImproved = "http://snomed.info/sct#3286006";
+
+    /// <summary>
     /// Literal for code: Anisometropia
     /// </summary>
     public const string LiteralAnisometropia = "3289004";
+
+    /// <summary>
+    /// Literal for code: NONEAnisometropia
+    /// </summary>
+    public const string LiteralNONEAnisometropia = "http://snomed.info/sct#3289004";
 
     /// <summary>
     /// Literal for code: ClosedFractureOfTwoRibs
@@ -11888,9 +14758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClosedFractureOfTwoRibs = "3291007";
 
     /// <summary>
+    /// Literal for code: NONEClosedFractureOfTwoRibs
+    /// </summary>
+    public const string LiteralNONEClosedFractureOfTwoRibs = "http://snomed.info/sct#3291007";
+
+    /// <summary>
     /// Literal for code: AmnesticSyndrome
     /// </summary>
     public const string LiteralAmnesticSyndrome = "3298001";
+
+    /// <summary>
+    /// Literal for code: NONEAmnesticSyndrome
+    /// </summary>
+    public const string LiteralNONEAmnesticSyndrome = "http://snomed.info/sct#3298001";
 
     /// <summary>
     /// Literal for code: OccipitalHeadache
@@ -11898,9 +14778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccipitalHeadache = "330007";
 
     /// <summary>
+    /// Literal for code: NONEOccipitalHeadache
+    /// </summary>
+    public const string LiteralNONEOccipitalHeadache = "http://snomed.info/sct#330007";
+
+    /// <summary>
     /// Literal for code: DiseaseCausedByArenavirus
     /// </summary>
     public const string LiteralDiseaseCausedByArenavirus = "3303004";
+
+    /// <summary>
+    /// Literal for code: NONEDiseaseCausedByArenavirus
+    /// </summary>
+    public const string LiteralNONEDiseaseCausedByArenavirus = "http://snomed.info/sct#3303004";
 
     /// <summary>
     /// Literal for code: BronchialCompression
@@ -11908,9 +14798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBronchialCompression = "3304005";
 
     /// <summary>
+    /// Literal for code: NONEBronchialCompression
+    /// </summary>
+    public const string LiteralNONEBronchialCompression = "http://snomed.info/sct#3304005";
+
+    /// <summary>
     /// Literal for code: DisorderOfLymphaticVessel
     /// </summary>
     public const string LiteralDisorderOfLymphaticVessel = "3305006";
+
+    /// <summary>
+    /// Literal for code: NONEDisorderOfLymphaticVessel
+    /// </summary>
+    public const string LiteralNONEDisorderOfLymphaticVessel = "http://snomed.info/sct#3305006";
 
     /// <summary>
     /// Literal for code: AtrophicHyperplasticGastritis
@@ -11918,9 +14818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtrophicHyperplasticGastritis = "3308008";
 
     /// <summary>
+    /// Literal for code: NONEAtrophicHyperplasticGastritis
+    /// </summary>
+    public const string LiteralNONEAtrophicHyperplasticGastritis = "http://snomed.info/sct#3308008";
+
+    /// <summary>
     /// Literal for code: ForeignBodyGranulomaOfSkin
     /// </summary>
     public const string LiteralForeignBodyGranulomaOfSkin = "3310005";
+
+    /// <summary>
+    /// Literal for code: NONEForeignBodyGranulomaOfSkin
+    /// </summary>
+    public const string LiteralNONEForeignBodyGranulomaOfSkin = "http://snomed.info/sct#3310005";
 
     /// <summary>
     /// Literal for code: RenalAbscess
@@ -11928,9 +14838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRenalAbscess = "3321001";
 
     /// <summary>
+    /// Literal for code: NONERenalAbscess
+    /// </summary>
+    public const string LiteralNONERenalAbscess = "http://snomed.info/sct#3321001";
+
+    /// <summary>
     /// Literal for code: LeukoplakiaOfPenis
     /// </summary>
     public const string LiteralLeukoplakiaOfPenis = "3323003";
+
+    /// <summary>
+    /// Literal for code: NONELeukoplakiaOfPenis
+    /// </summary>
+    public const string LiteralNONELeukoplakiaOfPenis = "http://snomed.info/sct#3323003";
 
     /// <summary>
     /// Literal for code: AcquiredJerkNystagmus
@@ -11938,9 +14858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcquiredJerkNystagmus = "3327002";
 
     /// <summary>
+    /// Literal for code: NONEAcquiredJerkNystagmus
+    /// </summary>
+    public const string LiteralNONEAcquiredJerkNystagmus = "http://snomed.info/sct#3327002";
+
+    /// <summary>
     /// Literal for code: OpenFractureOfNeckOfMetacarpalBone
     /// </summary>
     public const string LiteralOpenFractureOfNeckOfMetacarpalBone = "3331008";
+
+    /// <summary>
+    /// Literal for code: NONEOpenFractureOfNeckOfMetacarpalBone
+    /// </summary>
+    public const string LiteralNONEOpenFractureOfNeckOfMetacarpalBone = "http://snomed.info/sct#3331008";
 
     /// <summary>
     /// Literal for code: ToxicLabyrinthitis
@@ -11948,9 +14878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralToxicLabyrinthitis = "3344003";
 
     /// <summary>
+    /// Literal for code: NONEToxicLabyrinthitis
+    /// </summary>
+    public const string LiteralNONEToxicLabyrinthitis = "http://snomed.info/sct#3344003";
+
+    /// <summary>
     /// Literal for code: IdiopathicOsteoporosis
     /// </summary>
     public const string LiteralIdiopathicOsteoporosis = "3345002";
+
+    /// <summary>
+    /// Literal for code: NONEIdiopathicOsteoporosis
+    /// </summary>
+    public const string LiteralNONEIdiopathicOsteoporosis = "http://snomed.info/sct#3345002";
 
     /// <summary>
     /// Literal for code: Pylorospasm
@@ -11958,9 +14898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPylorospasm = "335002";
 
     /// <summary>
+    /// Literal for code: NONEPylorospasm
+    /// </summary>
+    public const string LiteralNONEPylorospasm = "http://snomed.info/sct#335002";
+
+    /// <summary>
     /// Literal for code: AntiCommonColdDrugPoisoning
     /// </summary>
     public const string LiteralAntiCommonColdDrugPoisoning = "3355003";
+
+    /// <summary>
+    /// Literal for code: NONEAntiCommonColdDrugPoisoning
+    /// </summary>
+    public const string LiteralNONEAntiCommonColdDrugPoisoning = "http://snomed.info/sct#3355003";
 
     /// <summary>
     /// Literal for code: LichenRuberMoniliformis
@@ -11968,9 +14918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLichenRuberMoniliformis = "3358001";
 
     /// <summary>
+    /// Literal for code: NONELichenRuberMoniliformis
+    /// </summary>
+    public const string LiteralNONELichenRuberMoniliformis = "http://snomed.info/sct#3358001";
+
+    /// <summary>
     /// Literal for code: DullChestPain
     /// </summary>
     public const string LiteralDullChestPain = "3368006";
+
+    /// <summary>
+    /// Literal for code: NONEDullChestPain
+    /// </summary>
+    public const string LiteralNONEDullChestPain = "http://snomed.info/sct#3368006";
 
     /// <summary>
     /// Literal for code: Pseudoptyalism
@@ -11978,9 +14938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPseudoptyalism = "3376008";
 
     /// <summary>
+    /// Literal for code: NONEPseudoptyalism
+    /// </summary>
+    public const string LiteralNONEPseudoptyalism = "http://snomed.info/sct#3376008";
+
+    /// <summary>
     /// Literal for code: OpenFractureOfAstragalus
     /// </summary>
     public const string LiteralOpenFractureOfAstragalus = "3381004";
+
+    /// <summary>
+    /// Literal for code: NONEOpenFractureOfAstragalus
+    /// </summary>
+    public const string LiteralNONEOpenFractureOfAstragalus = "http://snomed.info/sct#3381004";
 
     /// <summary>
     /// Literal for code: AuditoryDiscriminationAphasia
@@ -11988,9 +14958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAuditoryDiscriminationAphasia = "3387000";
 
     /// <summary>
+    /// Literal for code: NONEAuditoryDiscriminationAphasia
+    /// </summary>
+    public const string LiteralNONEAuditoryDiscriminationAphasia = "http://snomed.info/sct#3387000";
+
+    /// <summary>
     /// Literal for code: NegativeForTumorCells
     /// </summary>
     public const string LiteralNegativeForTumorCells = "3391005";
+
+    /// <summary>
+    /// Literal for code: NONENegativeForTumorCells
+    /// </summary>
+    public const string LiteralNONENegativeForTumorCells = "http://snomed.info/sct#3391005";
 
     /// <summary>
     /// Literal for code: PhlebitisFollowingInfusionPerfusionANDORTransfusion
@@ -11998,9 +14978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhlebitisFollowingInfusionPerfusionANDORTransfusion = "3393008";
 
     /// <summary>
+    /// Literal for code: NONEPhlebitisFollowingInfusionPerfusionANDORTransfusion
+    /// </summary>
+    public const string LiteralNONEPhlebitisFollowingInfusionPerfusionANDORTransfusion = "http://snomed.info/sct#3393008";
+
+    /// <summary>
     /// Literal for code: CadmiumPoisoning
     /// </summary>
     public const string LiteralCadmiumPoisoning = "3398004";
+
+    /// <summary>
+    /// Literal for code: NONECadmiumPoisoning
+    /// </summary>
+    public const string LiteralNONECadmiumPoisoning = "http://snomed.info/sct#3398004";
 
     /// <summary>
     /// Literal for code: CercopithecusHerpesvirus1Disease
@@ -12008,9 +14998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCercopithecusHerpesvirus1Disease = "3401001";
 
     /// <summary>
+    /// Literal for code: NONECercopithecusHerpesvirus1Disease
+    /// </summary>
+    public const string LiteralNONECercopithecusHerpesvirus1Disease = "http://snomed.info/sct#3401001";
+
+    /// <summary>
     /// Literal for code: ABOIncompatibilityReaction
     /// </summary>
     public const string LiteralABOIncompatibilityReaction = "341009";
+
+    /// <summary>
+    /// Literal for code: NONEABOIncompatibilityReaction
+    /// </summary>
+    public const string LiteralNONEABOIncompatibilityReaction = "http://snomed.info/sct#341009";
 
     /// <summary>
     /// Literal for code: Cyanosis
@@ -12018,9 +15018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCyanosis = "3415004";
 
     /// <summary>
+    /// Literal for code: NONECyanosis
+    /// </summary>
+    public const string LiteralNONECyanosis = "http://snomed.info/sct#3415004";
+
+    /// <summary>
     /// Literal for code: FaucialDiphtheria
     /// </summary>
     public const string LiteralFaucialDiphtheria = "3419005";
+
+    /// <summary>
+    /// Literal for code: NONEFaucialDiphtheria
+    /// </summary>
+    public const string LiteralNONEFaucialDiphtheria = "http://snomed.info/sct#3419005";
 
     /// <summary>
     /// Literal for code: OpenBlowOutFractureOrbit
@@ -12028,9 +15038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenBlowOutFractureOrbit = "3421000";
 
     /// <summary>
+    /// Literal for code: NONEOpenBlowOutFractureOrbit
+    /// </summary>
+    public const string LiteralNONEOpenBlowOutFractureOrbit = "http://snomed.info/sct#3421000";
+
+    /// <summary>
     /// Literal for code: HeartRateFast
     /// </summary>
     public const string LiteralHeartRateFast = "3424008";
+
+    /// <summary>
+    /// Literal for code: NONEHeartRateFast
+    /// </summary>
+    public const string LiteralNONEHeartRateFast = "http://snomed.info/sct#3424008";
 
     /// <summary>
     /// Literal for code: RetainedMagneticIntraocularForeignBody
@@ -12038,9 +15058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRetainedMagneticIntraocularForeignBody = "3426005";
 
     /// <summary>
+    /// Literal for code: NONERetainedMagneticIntraocularForeignBody
+    /// </summary>
+    public const string LiteralNONERetainedMagneticIntraocularForeignBody = "http://snomed.info/sct#3426005";
+
+    /// <summary>
     /// Literal for code: NonglucosuricMelituria
     /// </summary>
     public const string LiteralNonglucosuricMelituria = "3427001";
+
+    /// <summary>
+    /// Literal for code: NONENonglucosuricMelituria
+    /// </summary>
+    public const string LiteralNONENonglucosuricMelituria = "http://snomed.info/sct#3427001";
 
     /// <summary>
     /// Literal for code: Myotonia
@@ -12048,9 +15078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMyotonia = "3434004";
 
     /// <summary>
+    /// Literal for code: NONEMyotonia
+    /// </summary>
+    public const string LiteralNONEMyotonia = "http://snomed.info/sct#3434004";
+
+    /// <summary>
     /// Literal for code: SevereCombinedImmunodeficiencySCIDDueToAbsentPeripheralTCellMaturation
     /// </summary>
     public const string LiteralSevereCombinedImmunodeficiencySCIDDueToAbsentPeripheralTCellMaturation = "3439009";
+
+    /// <summary>
+    /// Literal for code: NONESevereCombinedImmunodeficiencySCIDDueToAbsentPeripheralTCellMaturation
+    /// </summary>
+    public const string LiteralNONESevereCombinedImmunodeficiencySCIDDueToAbsentPeripheralTCellMaturation = "http://snomed.info/sct#3439009";
 
     /// <summary>
     /// Literal for code: DisorderOfSebaceousGland
@@ -12058,9 +15098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDisorderOfSebaceousGland = "3441005";
 
     /// <summary>
+    /// Literal for code: NONEDisorderOfSebaceousGland
+    /// </summary>
+    public const string LiteralNONEDisorderOfSebaceousGland = "http://snomed.info/sct#3441005";
+
+    /// <summary>
     /// Literal for code: OpenFractureOfT7T12LevelWithSpinalCordInjury
     /// </summary>
     public const string LiteralOpenFractureOfT7T12LevelWithSpinalCordInjury = "3446000";
+
+    /// <summary>
+    /// Literal for code: NONEOpenFractureOfT7T12LevelWithSpinalCordInjury
+    /// </summary>
+    public const string LiteralNONEOpenFractureOfT7T12LevelWithSpinalCordInjury = "http://snomed.info/sct#3446000";
 
     /// <summary>
     /// Literal for code: FingerAgnosia
@@ -12068,9 +15118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFingerAgnosia = "3449007";
 
     /// <summary>
+    /// Literal for code: NONEFingerAgnosia
+    /// </summary>
+    public const string LiteralNONEFingerAgnosia = "http://snomed.info/sct#3449007";
+
+    /// <summary>
     /// Literal for code: ChronicProgressiveNonHereditaryChorea
     /// </summary>
     public const string LiteralChronicProgressiveNonHereditaryChorea = "3456001";
+
+    /// <summary>
+    /// Literal for code: NONEChronicProgressiveNonHereditaryChorea
+    /// </summary>
+    public const string LiteralNONEChronicProgressiveNonHereditaryChorea = "http://snomed.info/sct#3456001";
 
     /// <summary>
     /// Literal for code: MyositisOssificansAssociatedWithDermatoPolymyositis
@@ -12078,9 +15138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMyositisOssificansAssociatedWithDermatoPolymyositis = "3458000";
 
     /// <summary>
+    /// Literal for code: NONEMyositisOssificansAssociatedWithDermatoPolymyositis
+    /// </summary>
+    public const string LiteralNONEMyositisOssificansAssociatedWithDermatoPolymyositis = "http://snomed.info/sct#3458000";
+
+    /// <summary>
     /// Literal for code: DeepThirdDegreeBurnOfThumb
     /// </summary>
     public const string LiteralDeepThirdDegreeBurnOfThumb = "3461004";
+
+    /// <summary>
+    /// Literal for code: NONEDeepThirdDegreeBurnOfThumb
+    /// </summary>
+    public const string LiteralNONEDeepThirdDegreeBurnOfThumb = "http://snomed.info/sct#3461004";
 
     /// <summary>
     /// Literal for code: InfectionCausedByOesophagostomumDentatum
@@ -12088,9 +15158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionCausedByOesophagostomumDentatum = "3464007";
 
     /// <summary>
+    /// Literal for code: NONEInfectionCausedByOesophagostomumDentatum
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByOesophagostomumDentatum = "http://snomed.info/sct#3464007";
+
+    /// <summary>
     /// Literal for code: NeonatalInfectiveMastitis
     /// </summary>
     public const string LiteralNeonatalInfectiveMastitis = "3468005";
+
+    /// <summary>
+    /// Literal for code: NONENeonatalInfectiveMastitis
+    /// </summary>
+    public const string LiteralNONENeonatalInfectiveMastitis = "http://snomed.info/sct#3468005";
 
     /// <summary>
     /// Literal for code: PartialThicknessBurnOfThumb
@@ -12098,9 +15178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPartialThicknessBurnOfThumb = "3469002";
 
     /// <summary>
+    /// Literal for code: NONEPartialThicknessBurnOfThumb
+    /// </summary>
+    public const string LiteralNONEPartialThicknessBurnOfThumb = "http://snomed.info/sct#3469002";
+
+    /// <summary>
     /// Literal for code: SpondylolisthesisGrade4
     /// </summary>
     public const string LiteralSpondylolisthesisGrade4 = "3472009";
+
+    /// <summary>
+    /// Literal for code: NONESpondylolisthesisGrade4
+    /// </summary>
+    public const string LiteralNONESpondylolisthesisGrade4 = "http://snomed.info/sct#3472009";
 
     /// <summary>
     /// Literal for code: GlycineMaxPoisoning
@@ -12108,9 +15198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlycineMaxPoisoning = "3474005";
 
     /// <summary>
+    /// Literal for code: NONEGlycineMaxPoisoning
+    /// </summary>
+    public const string LiteralNONEGlycineMaxPoisoning = "http://snomed.info/sct#3474005";
+
+    /// <summary>
     /// Literal for code: BurnOfWrist
     /// </summary>
     public const string LiteralBurnOfWrist = "3480002";
+
+    /// <summary>
+    /// Literal for code: NONEBurnOfWrist
+    /// </summary>
+    public const string LiteralNONEBurnOfWrist = "http://snomed.info/sct#3480002";
 
     /// <summary>
     /// Literal for code: PostoperativeEsophagitis
@@ -12118,9 +15218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPostoperativeEsophagitis = "3482005";
 
     /// <summary>
+    /// Literal for code: NONEPostoperativeEsophagitis
+    /// </summary>
+    public const string LiteralNONEPostoperativeEsophagitis = "http://snomed.info/sct#3482005";
+
+    /// <summary>
     /// Literal for code: ChronicPepticUlcerWithPerforation
     /// </summary>
     public const string LiteralChronicPepticUlcerWithPerforation = "3483000";
+
+    /// <summary>
+    /// Literal for code: NONEChronicPepticUlcerWithPerforation
+    /// </summary>
+    public const string LiteralNONEChronicPepticUlcerWithPerforation = "http://snomed.info/sct#3483000";
 
     /// <summary>
     /// Literal for code: PulmonaryCandidiasis
@@ -12128,9 +15238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPulmonaryCandidiasis = "3487004";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryCandidiasis
+    /// </summary>
+    public const string LiteralNONEPulmonaryCandidiasis = "http://snomed.info/sct#3487004";
+
+    /// <summary>
     /// Literal for code: AbsentTendonReflex
     /// </summary>
     public const string LiteralAbsentTendonReflex = "349006";
+
+    /// <summary>
+    /// Literal for code: NONEAbsentTendonReflex
+    /// </summary>
+    public const string LiteralNONEAbsentTendonReflex = "http://snomed.info/sct#349006";
 
     /// <summary>
     /// Literal for code: OpenWoundOfOssiclesWithComplication
@@ -12138,9 +15258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenWoundOfOssiclesWithComplication = "3500002";
 
     /// <summary>
+    /// Literal for code: NONEOpenWoundOfOssiclesWithComplication
+    /// </summary>
+    public const string LiteralNONEOpenWoundOfOssiclesWithComplication = "http://snomed.info/sct#3500002";
+
+    /// <summary>
     /// Literal for code: CervicalLymphadenitis
     /// </summary>
     public const string LiteralCervicalLymphadenitis = "3502005";
+
+    /// <summary>
+    /// Literal for code: NONECervicalLymphadenitis
+    /// </summary>
+    public const string LiteralNONECervicalLymphadenitis = "http://snomed.info/sct#3502005";
 
     /// <summary>
     /// Literal for code: GenderIdentityDisorderOfAdolescencePreviouslyAsexual
@@ -12148,9 +15278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGenderIdentityDisorderOfAdolescencePreviouslyAsexual = "3503000";
 
     /// <summary>
+    /// Literal for code: NONEGenderIdentityDisorderOfAdolescencePreviouslyAsexual
+    /// </summary>
+    public const string LiteralNONEGenderIdentityDisorderOfAdolescencePreviouslyAsexual = "http://snomed.info/sct#3503000";
+
+    /// <summary>
     /// Literal for code: NonallopathicLesionOfTheArm
     /// </summary>
     public const string LiteralNonallopathicLesionOfTheArm = "3505007";
+
+    /// <summary>
+    /// Literal for code: NONENonallopathicLesionOfTheArm
+    /// </summary>
+    public const string LiteralNONENonallopathicLesionOfTheArm = "http://snomed.info/sct#3505007";
 
     /// <summary>
     /// Literal for code: StenosisOfRetinalArtery
@@ -12158,9 +15298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStenosisOfRetinalArtery = "3506008";
 
     /// <summary>
+    /// Literal for code: NONEStenosisOfRetinalArtery
+    /// </summary>
+    public const string LiteralNONEStenosisOfRetinalArtery = "http://snomed.info/sct#3506008";
+
+    /// <summary>
     /// Literal for code: AbscessOfThigh
     /// </summary>
     public const string LiteralAbscessOfThigh = "3507004";
+
+    /// <summary>
+    /// Literal for code: NONEAbscessOfThigh
+    /// </summary>
+    public const string LiteralNONEAbscessOfThigh = "http://snomed.info/sct#3507004";
 
     /// <summary>
     /// Literal for code: InfectiousThyroiditis
@@ -12168,9 +15318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectiousThyroiditis = "3511005";
 
     /// <summary>
+    /// Literal for code: NONEInfectiousThyroiditis
+    /// </summary>
+    public const string LiteralNONEInfectiousThyroiditis = "http://snomed.info/sct#3511005";
+
+    /// <summary>
     /// Literal for code: PeribronchialFibrosisOfLung
     /// </summary>
     public const string LiteralPeribronchialFibrosisOfLung = "3514002";
+
+    /// <summary>
+    /// Literal for code: NONEPeribronchialFibrosisOfLung
+    /// </summary>
+    public const string LiteralNONEPeribronchialFibrosisOfLung = "http://snomed.info/sct#3514002";
 
     /// <summary>
     /// Literal for code: DisorderOfSynovium
@@ -12178,9 +15338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDisorderOfSynovium = "3519007";
 
     /// <summary>
+    /// Literal for code: NONEDisorderOfSynovium
+    /// </summary>
+    public const string LiteralNONEDisorderOfSynovium = "http://snomed.info/sct#3519007";
+
+    /// <summary>
     /// Literal for code: RestrictedCarbohydrateFatControlledDiet
     /// </summary>
     public const string LiteralRestrictedCarbohydrateFatControlledDiet = "3528008";
+
+    /// <summary>
+    /// Literal for code: NONERestrictedCarbohydrateFatControlledDiet
+    /// </summary>
+    public const string LiteralNONERestrictedCarbohydrateFatControlledDiet = "http://snomed.info/sct#3528008";
 
     /// <summary>
     /// Literal for code: InfectionCausedBySanguinicola
@@ -12188,9 +15358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionCausedBySanguinicola = "3529000";
 
     /// <summary>
+    /// Literal for code: NONEInfectionCausedBySanguinicola
+    /// </summary>
+    public const string LiteralNONEInfectionCausedBySanguinicola = "http://snomed.info/sct#3529000";
+
+    /// <summary>
     /// Literal for code: Bipolar1DisorderSingleManicEpisodeFullRemission
     /// </summary>
     public const string LiteralBipolar1DisorderSingleManicEpisodeFullRemission = "3530005";
+
+    /// <summary>
+    /// Literal for code: NONEBipolar1DisorderSingleManicEpisodeFullRemission
+    /// </summary>
+    public const string LiteralNONEBipolar1DisorderSingleManicEpisodeFullRemission = "http://snomed.info/sct#3530005";
 
     /// <summary>
     /// Literal for code: IntrapsychicConflict
@@ -12198,9 +15378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntrapsychicConflict = "3531009";
 
     /// <summary>
+    /// Literal for code: NONEIntrapsychicConflict
+    /// </summary>
+    public const string LiteralNONEIntrapsychicConflict = "http://snomed.info/sct#3531009";
+
+    /// <summary>
     /// Literal for code: AcutePalmoplantarPustularPsoriasis
     /// </summary>
     public const string LiteralAcutePalmoplantarPustularPsoriasis = "3533007";
+
+    /// <summary>
+    /// Literal for code: NONEAcutePalmoplantarPustularPsoriasis
+    /// </summary>
+    public const string LiteralNONEAcutePalmoplantarPustularPsoriasis = "http://snomed.info/sct#3533007";
 
     /// <summary>
     /// Literal for code: Enteromenia
@@ -12208,9 +15398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEnteromenia = "3539006";
 
     /// <summary>
+    /// Literal for code: NONEEnteromenia
+    /// </summary>
+    public const string LiteralNONEEnteromenia = "http://snomed.info/sct#3539006";
+
+    /// <summary>
     /// Literal for code: LacerationExtendingIntoParenchymaOfSpleenWithOpenWoundIntoAbdominalCavity
     /// </summary>
     public const string LiteralLacerationExtendingIntoParenchymaOfSpleenWithOpenWoundIntoAbdominalCavity = "3542000";
+
+    /// <summary>
+    /// Literal for code: NONELacerationExtendingIntoParenchymaOfSpleenWithOpenWoundIntoAbdominalCavity
+    /// </summary>
+    public const string LiteralNONELacerationExtendingIntoParenchymaOfSpleenWithOpenWoundIntoAbdominalCavity = "http://snomed.info/sct#3542000";
 
     /// <summary>
     /// Literal for code: HairSplitting
@@ -12218,9 +15418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHairSplitting = "3544004";
 
     /// <summary>
+    /// Literal for code: NONEHairSplitting
+    /// </summary>
+    public const string LiteralNONEHairSplitting = "http://snomed.info/sct#3544004";
+
+    /// <summary>
     /// Literal for code: DiastolicDysfunction
     /// </summary>
     public const string LiteralDiastolicDysfunction = "3545003";
+
+    /// <summary>
+    /// Literal for code: NONEDiastolicDysfunction
+    /// </summary>
+    public const string LiteralNONEDiastolicDysfunction = "http://snomed.info/sct#3545003";
 
     /// <summary>
     /// Literal for code: BrachialPlexusDisorder
@@ -12228,9 +15438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBrachialPlexusDisorder = "3548001";
 
     /// <summary>
+    /// Literal for code: NONEBrachialPlexusDisorder
+    /// </summary>
+    public const string LiteralNONEBrachialPlexusDisorder = "http://snomed.info/sct#3548001";
+
+    /// <summary>
     /// Literal for code: PancreaticAcinarAtrophy
     /// </summary>
     public const string LiteralPancreaticAcinarAtrophy = "3549009";
+
+    /// <summary>
+    /// Literal for code: NONEPancreaticAcinarAtrophy
+    /// </summary>
+    public const string LiteralNONEPancreaticAcinarAtrophy = "http://snomed.info/sct#3549009";
 
     /// <summary>
     /// Literal for code: HemorrhagicShock
@@ -12238,9 +15458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHemorrhagicShock = "355001";
 
     /// <summary>
+    /// Literal for code: NONEHemorrhagicShock
+    /// </summary>
+    public const string LiteralNONEHemorrhagicShock = "http://snomed.info/sct#355001";
+
+    /// <summary>
     /// Literal for code: MesentericInfarction
     /// </summary>
     public const string LiteralMesentericInfarction = "3558002";
+
+    /// <summary>
+    /// Literal for code: NONEMesentericInfarction
+    /// </summary>
+    public const string LiteralNONEMesentericInfarction = "http://snomed.info/sct#3558002";
 
     /// <summary>
     /// Literal for code: BilateralRecurrentInguinalHernia
@@ -12248,9 +15478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBilateralRecurrentInguinalHernia = "3560000";
 
     /// <summary>
+    /// Literal for code: NONEBilateralRecurrentInguinalHernia
+    /// </summary>
+    public const string LiteralNONEBilateralRecurrentInguinalHernia = "http://snomed.info/sct#3560000";
+
+    /// <summary>
     /// Literal for code: IncreasedBloodErythrocyteVolume
     /// </summary>
     public const string LiteralIncreasedBloodErythrocyteVolume = "3570003";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedBloodErythrocyteVolume
+    /// </summary>
+    public const string LiteralNONEIncreasedBloodErythrocyteVolume = "http://snomed.info/sct#3570003";
 
     /// <summary>
     /// Literal for code: ClosedFractureTrapezoid
@@ -12258,9 +15498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClosedFractureTrapezoid = "357009";
 
     /// <summary>
+    /// Literal for code: NONEClosedFractureTrapezoid
+    /// </summary>
+    public const string LiteralNONEClosedFractureTrapezoid = "http://snomed.info/sct#357009";
+
+    /// <summary>
     /// Literal for code: MegaloblasticAnemiaDueToPancreaticInsufficiency
     /// </summary>
     public const string LiteralMegaloblasticAnemiaDueToPancreaticInsufficiency = "3571004";
+
+    /// <summary>
+    /// Literal for code: NONEMegaloblasticAnemiaDueToPancreaticInsufficiency
+    /// </summary>
+    public const string LiteralNONEMegaloblasticAnemiaDueToPancreaticInsufficiency = "http://snomed.info/sct#3571004";
 
     /// <summary>
     /// Literal for code: LatticeRetinalDegeneration
@@ -12268,9 +15518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLatticeRetinalDegeneration = "3577000";
 
     /// <summary>
+    /// Literal for code: NONELatticeRetinalDegeneration
+    /// </summary>
+    public const string LiteralNONELatticeRetinalDegeneration = "http://snomed.info/sct#3577000";
+
+    /// <summary>
     /// Literal for code: SmallpoxVaccinePoisoning
     /// </summary>
     public const string LiteralSmallpoxVaccinePoisoning = "358004";
+
+    /// <summary>
+    /// Literal for code: NONESmallpoxVaccinePoisoning
+    /// </summary>
+    public const string LiteralNONESmallpoxVaccinePoisoning = "http://snomed.info/sct#358004";
 
     /// <summary>
     /// Literal for code: Blinking
@@ -12278,9 +15538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBlinking = "3585009";
 
     /// <summary>
+    /// Literal for code: NONEBlinking
+    /// </summary>
+    public const string LiteralNONEBlinking = "http://snomed.info/sct#3585009";
+
+    /// <summary>
     /// Literal for code: PsychogenicFugue
     /// </summary>
     public const string LiteralPsychogenicFugue = "3586005";
+
+    /// <summary>
+    /// Literal for code: NONEPsychogenicFugue
+    /// </summary>
+    public const string LiteralNONEPsychogenicFugue = "http://snomed.info/sct#3586005";
 
     /// <summary>
     /// Literal for code: SyphiliticPericarditis
@@ -12288,9 +15558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSyphiliticPericarditis = "3589003";
 
     /// <summary>
+    /// Literal for code: NONESyphiliticPericarditis
+    /// </summary>
+    public const string LiteralNONESyphiliticPericarditis = "http://snomed.info/sct#3589003";
+
+    /// <summary>
     /// Literal for code: EnteroentericFistula
     /// </summary>
     public const string LiteralEnteroentericFistula = "3590007";
+
+    /// <summary>
+    /// Literal for code: NONEEnteroentericFistula
+    /// </summary>
+    public const string LiteralNONEEnteroentericFistula = "http://snomed.info/sct#3590007";
 
     /// <summary>
     /// Literal for code: KernicterusDueToIsoimmunization
@@ -12298,9 +15578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKernicterusDueToIsoimmunization = "359007";
 
     /// <summary>
+    /// Literal for code: NONEKernicterusDueToIsoimmunization
+    /// </summary>
+    public const string LiteralNONEKernicterusDueToIsoimmunization = "http://snomed.info/sct#359007";
+
+    /// <summary>
     /// Literal for code: MetabolicAcidosisNormalAnionGapBicarbonateLosses
     /// </summary>
     public const string LiteralMetabolicAcidosisNormalAnionGapBicarbonateLosses = "3591006";
+
+    /// <summary>
+    /// Literal for code: NONEMetabolicAcidosisNormalAnionGapBicarbonateLosses
+    /// </summary>
+    public const string LiteralNONEMetabolicAcidosisNormalAnionGapBicarbonateLosses = "http://snomed.info/sct#3591006";
 
     /// <summary>
     /// Literal for code: PartialRecentRetinalDetachmentWithSingleDefect
@@ -12308,9 +15598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPartialRecentRetinalDetachmentWithSingleDefect = "3598000";
 
     /// <summary>
+    /// Literal for code: NONEPartialRecentRetinalDetachmentWithSingleDefect
+    /// </summary>
+    public const string LiteralNONEPartialRecentRetinalDetachmentWithSingleDefect = "http://snomed.info/sct#3598000";
+
+    /// <summary>
     /// Literal for code: AcuteRadiationDisease
     /// </summary>
     public const string LiteralAcuteRadiationDisease = "360002";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteRadiationDisease
+    /// </summary>
+    public const string LiteralNONEAcuteRadiationDisease = "http://snomed.info/sct#360002";
 
     /// <summary>
     /// Literal for code: DemetonPoisoning
@@ -12318,9 +15618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDemetonPoisoning = "3611003";
 
     /// <summary>
+    /// Literal for code: NONEDemetonPoisoning
+    /// </summary>
+    public const string LiteralNONEDemetonPoisoning = "http://snomed.info/sct#3611003";
+
+    /// <summary>
     /// Literal for code: AbscessOfHand
     /// </summary>
     public const string LiteralAbscessOfHand = "3633001";
+
+    /// <summary>
+    /// Literal for code: NONEAbscessOfHand
+    /// </summary>
+    public const string LiteralNONEAbscessOfHand = "http://snomed.info/sct#3633001";
 
     /// <summary>
     /// Literal for code: LegalTerminationOfPregnancyComplicatedByMetabolicDisorder
@@ -12328,9 +15638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLegalTerminationOfPregnancyComplicatedByMetabolicDisorder = "3634007";
 
     /// <summary>
+    /// Literal for code: NONELegalTerminationOfPregnancyComplicatedByMetabolicDisorder
+    /// </summary>
+    public const string LiteralNONELegalTerminationOfPregnancyComplicatedByMetabolicDisorder = "http://snomed.info/sct#3634007";
+
+    /// <summary>
     /// Literal for code: Glossoptosis
     /// </summary>
     public const string LiteralGlossoptosis = "3639002";
+
+    /// <summary>
+    /// Literal for code: NONEGlossoptosis
+    /// </summary>
+    public const string LiteralNONEGlossoptosis = "http://snomed.info/sct#3639002";
 
     /// <summary>
     /// Literal for code: LateEffectOfTraumaticAmputation
@@ -12338,9 +15658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateEffectOfTraumaticAmputation = "3640000";
 
     /// <summary>
+    /// Literal for code: NONELateEffectOfTraumaticAmputation
+    /// </summary>
+    public const string LiteralNONELateEffectOfTraumaticAmputation = "http://snomed.info/sct#3640000";
+
+    /// <summary>
     /// Literal for code: AcuteLeftSidedHeartFailure
     /// </summary>
     public const string LiteralAcuteLeftSidedHeartFailure = "364006";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteLeftSidedHeartFailure
+    /// </summary>
+    public const string LiteralNONEAcuteLeftSidedHeartFailure = "http://snomed.info/sct#364006";
 
     /// <summary>
     /// Literal for code: InfectionCausedByCoenurosisSerialis
@@ -12348,9 +15678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionCausedByCoenurosisSerialis = "3641001";
 
     /// <summary>
+    /// Literal for code: NONEInfectionCausedByCoenurosisSerialis
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByCoenurosisSerialis = "http://snomed.info/sct#3641001";
+
+    /// <summary>
     /// Literal for code: SterylSulfateSulfohydrolaseDeficiency
     /// </summary>
     public const string LiteralSterylSulfateSulfohydrolaseDeficiency = "3642008";
+
+    /// <summary>
+    /// Literal for code: NONESterylSulfateSulfohydrolaseDeficiency
+    /// </summary>
+    public const string LiteralNONESterylSulfateSulfohydrolaseDeficiency = "http://snomed.info/sct#3642008";
 
     /// <summary>
     /// Literal for code: MaceratedSkin
@@ -12358,9 +15698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaceratedSkin = "3644009";
 
     /// <summary>
+    /// Literal for code: NONEMaceratedSkin
+    /// </summary>
+    public const string LiteralNONEMaceratedSkin = "http://snomed.info/sct#3644009";
+
+    /// <summary>
     /// Literal for code: ContusionMultipleSitesOfTrunk
     /// </summary>
     public const string LiteralContusionMultipleSitesOfTrunk = "3649004";
+
+    /// <summary>
+    /// Literal for code: NONEContusionMultipleSitesOfTrunk
+    /// </summary>
+    public const string LiteralNONEContusionMultipleSitesOfTrunk = "http://snomed.info/sct#3649004";
 
     /// <summary>
     /// Literal for code: CongenitalAbsenceOfLiverTotal
@@ -12368,9 +15718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalAbsenceOfLiverTotal = "3650004";
 
     /// <summary>
+    /// Literal for code: NONECongenitalAbsenceOfLiverTotal
+    /// </summary>
+    public const string LiteralNONECongenitalAbsenceOfLiverTotal = "http://snomed.info/sct#3650004";
+
+    /// <summary>
     /// Literal for code: OverproductionOfGrowthHormone
     /// </summary>
     public const string LiteralOverproductionOfGrowthHormone = "3652007";
+
+    /// <summary>
+    /// Literal for code: NONEOverproductionOfGrowthHormone
+    /// </summary>
+    public const string LiteralNONEOverproductionOfGrowthHormone = "http://snomed.info/sct#3652007";
 
     /// <summary>
     /// Literal for code: OsteospermumSpeciesPoisoning
@@ -12378,9 +15738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOsteospermumSpeciesPoisoning = "3657001";
 
     /// <summary>
+    /// Literal for code: NONEOsteospermumSpeciesPoisoning
+    /// </summary>
+    public const string LiteralNONEOsteospermumSpeciesPoisoning = "http://snomed.info/sct#3657001";
+
+    /// <summary>
     /// Literal for code: LethalGlossopharyngealDefect
     /// </summary>
     public const string LiteralLethalGlossopharyngealDefect = "3660008";
+
+    /// <summary>
+    /// Literal for code: NONELethalGlossopharyngealDefect
+    /// </summary>
+    public const string LiteralNONELethalGlossopharyngealDefect = "http://snomed.info/sct#3660008";
 
     /// <summary>
     /// Literal for code: Hidromeiosis
@@ -12388,9 +15758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHidromeiosis = "366008";
 
     /// <summary>
+    /// Literal for code: NONEHidromeiosis
+    /// </summary>
+    public const string LiteralNONEHidromeiosis = "http://snomed.info/sct#366008";
+
+    /// <summary>
     /// Literal for code: RollingHiatusHernia
     /// </summary>
     public const string LiteralRollingHiatusHernia = "3662000";
+
+    /// <summary>
+    /// Literal for code: NONERollingHiatusHernia
+    /// </summary>
+    public const string LiteralNONERollingHiatusHernia = "http://snomed.info/sct#3662000";
 
     /// <summary>
     /// Literal for code: AcademicProblem
@@ -12398,9 +15778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcademicProblem = "3677008";
 
     /// <summary>
+    /// Literal for code: NONEAcademicProblem
+    /// </summary>
+    public const string LiteralNONEAcademicProblem = "http://snomed.info/sct#3677008";
+
+    /// <summary>
     /// Literal for code: MonocephalusTripusDibrachius
     /// </summary>
     public const string LiteralMonocephalusTripusDibrachius = "3680009";
+
+    /// <summary>
+    /// Literal for code: NONEMonocephalusTripusDibrachius
+    /// </summary>
+    public const string LiteralNONEMonocephalusTripusDibrachius = "http://snomed.info/sct#3680009";
 
     /// <summary>
     /// Literal for code: HeartValveDisorder
@@ -12408,9 +15798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHeartValveDisorder = "368009";
 
     /// <summary>
+    /// Literal for code: NONEHeartValveDisorder
+    /// </summary>
+    public const string LiteralNONEHeartValveDisorder = "http://snomed.info/sct#368009";
+
+    /// <summary>
     /// Literal for code: ThrombophlebitisOfTorcularHerophili
     /// </summary>
     public const string LiteralThrombophlebitisOfTorcularHerophili = "3681008";
+
+    /// <summary>
+    /// Literal for code: NONEThrombophlebitisOfTorcularHerophili
+    /// </summary>
+    public const string LiteralNONEThrombophlebitisOfTorcularHerophili = "http://snomed.info/sct#3681008";
 
     /// <summary>
     /// Literal for code: NormalJugularVenousPressure
@@ -12418,9 +15818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNormalJugularVenousPressure = "369001";
 
     /// <summary>
+    /// Literal for code: NONENormalJugularVenousPressure
+    /// </summary>
+    public const string LiteralNONENormalJugularVenousPressure = "http://snomed.info/sct#369001";
+
+    /// <summary>
     /// Literal for code: FunctionalDyspepsia
     /// </summary>
     public const string LiteralFunctionalDyspepsia = "3696007";
+
+    /// <summary>
+    /// Literal for code: NONEFunctionalDyspepsia
+    /// </summary>
+    public const string LiteralNONEFunctionalDyspepsia = "http://snomed.info/sct#3696007";
 
     /// <summary>
     /// Literal for code: TransverseDeficiencyOfArm
@@ -12428,9 +15838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransverseDeficiencyOfArm = "3699000";
 
     /// <summary>
+    /// Literal for code: NONETransverseDeficiencyOfArm
+    /// </summary>
+    public const string LiteralNONETransverseDeficiencyOfArm = "http://snomed.info/sct#3699000";
+
+    /// <summary>
     /// Literal for code: IschiaticHerniaWithGangrene
     /// </summary>
     public const string LiteralIschiaticHerniaWithGangrene = "3703002";
+
+    /// <summary>
+    /// Literal for code: NONEIschiaticHerniaWithGangrene
+    /// </summary>
+    public const string LiteralNONEIschiaticHerniaWithGangrene = "http://snomed.info/sct#3703002";
 
     /// <summary>
     /// Literal for code: DiffuseEndocapillaryProliferativeGlomerulonephritis
@@ -12438,9 +15858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiffuseEndocapillaryProliferativeGlomerulonephritis = "3704008";
 
     /// <summary>
+    /// Literal for code: NONEDiffuseEndocapillaryProliferativeGlomerulonephritis
+    /// </summary>
+    public const string LiteralNONEDiffuseEndocapillaryProliferativeGlomerulonephritis = "http://snomed.info/sct#3704008";
+
+    /// <summary>
     /// Literal for code: CongenitalMalformationOfAnteriorChamberOfEye
     /// </summary>
     public const string LiteralCongenitalMalformationOfAnteriorChamberOfEye = "3705009";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalMalformationOfAnteriorChamberOfEye
+    /// </summary>
+    public const string LiteralNONECongenitalMalformationOfAnteriorChamberOfEye = "http://snomed.info/sct#3705009";
 
     /// <summary>
     /// Literal for code: DegeneratedEye
@@ -12448,9 +15878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDegeneratedEye = "3712000";
 
     /// <summary>
+    /// Literal for code: NONEDegeneratedEye
+    /// </summary>
+    public const string LiteralNONEDegeneratedEye = "http://snomed.info/sct#3712000";
+
+    /// <summary>
     /// Literal for code: ThyroidGoiter
     /// </summary>
     public const string LiteralThyroidGoiter = "3716002";
+
+    /// <summary>
+    /// Literal for code: NONEThyroidGoiter
+    /// </summary>
+    public const string LiteralNONEThyroidGoiter = "http://snomed.info/sct#3716002";
 
     /// <summary>
     /// Literal for code: AbnormalPresenceOfHemoglobin
@@ -12458,9 +15898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbnormalPresenceOfHemoglobin = "3720003";
 
     /// <summary>
+    /// Literal for code: NONEAbnormalPresenceOfHemoglobin
+    /// </summary>
+    public const string LiteralNONEAbnormalPresenceOfHemoglobin = "http://snomed.info/sct#3720003";
+
+    /// <summary>
     /// Literal for code: JointInflammation
     /// </summary>
     public const string LiteralJointInflammation = "3723001";
+
+    /// <summary>
+    /// Literal for code: NONEJointInflammation
+    /// </summary>
+    public const string LiteralNONEJointInflammation = "http://snomed.info/sct#3723001";
 
     /// <summary>
     /// Literal for code: CongenitalEventrationOfRightCrusOfDiaphragm
@@ -12468,9 +15918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalEventrationOfRightCrusOfDiaphragm = "3733009";
 
     /// <summary>
+    /// Literal for code: NONECongenitalEventrationOfRightCrusOfDiaphragm
+    /// </summary>
+    public const string LiteralNONECongenitalEventrationOfRightCrusOfDiaphragm = "http://snomed.info/sct#3733009";
+
+    /// <summary>
     /// Literal for code: OpenWoundOfThumbnailWithTendonInvolvement
     /// </summary>
     public const string LiteralOpenWoundOfThumbnailWithTendonInvolvement = "3736001";
+
+    /// <summary>
+    /// Literal for code: NONEOpenWoundOfThumbnailWithTendonInvolvement
+    /// </summary>
+    public const string LiteralNONEOpenWoundOfThumbnailWithTendonInvolvement = "http://snomed.info/sct#3736001";
 
     /// <summary>
     /// Literal for code: VHViralHepatitis
@@ -12478,9 +15938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVHViralHepatitis = "3738000";
 
     /// <summary>
+    /// Literal for code: NONEVHViralHepatitis
+    /// </summary>
+    public const string LiteralNONEVHViralHepatitis = "http://snomed.info/sct#3738000";
+
+    /// <summary>
     /// Literal for code: Hyperlipoproteinemia
     /// </summary>
     public const string LiteralHyperlipoproteinemia = "3744001";
+
+    /// <summary>
+    /// Literal for code: NONEHyperlipoproteinemia
+    /// </summary>
+    public const string LiteralNONEHyperlipoproteinemia = "http://snomed.info/sct#3744001";
 
     /// <summary>
     /// Literal for code: SleepRhythmProblem
@@ -12488,9 +15958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSleepRhythmProblem = "3745000";
 
     /// <summary>
+    /// Literal for code: NONESleepRhythmProblem
+    /// </summary>
+    public const string LiteralNONESleepRhythmProblem = "http://snomed.info/sct#3745000";
+
+    /// <summary>
     /// Literal for code: ECEjectionClick
     /// </summary>
     public const string LiteralECEjectionClick = "3747008";
+
+    /// <summary>
+    /// Literal for code: NONEECEjectionClick
+    /// </summary>
+    public const string LiteralNONEECEjectionClick = "http://snomed.info/sct#3747008";
 
     /// <summary>
     /// Literal for code: Arteriospasm
@@ -12498,9 +15978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArteriospasm = "3750006";
 
     /// <summary>
+    /// Literal for code: NONEArteriospasm
+    /// </summary>
+    public const string LiteralNONEArteriospasm = "http://snomed.info/sct#3750006";
+
+    /// <summary>
     /// Literal for code: ContusionOfLabium
     /// </summary>
     public const string LiteralContusionOfLabium = "3751005";
+
+    /// <summary>
+    /// Literal for code: NONEContusionOfLabium
+    /// </summary>
+    public const string LiteralNONEContusionOfLabium = "http://snomed.info/sct#3751005";
 
     /// <summary>
     /// Literal for code: InfectionByTrichuris
@@ -12508,9 +15998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionByTrichuris = "3752003";
 
     /// <summary>
+    /// Literal for code: NONEInfectionByTrichuris
+    /// </summary>
+    public const string LiteralNONEInfectionByTrichuris = "http://snomed.info/sct#3752003";
+
+    /// <summary>
     /// Literal for code: DysplasiaOfVagina
     /// </summary>
     public const string LiteralDysplasiaOfVagina = "3754002";
+
+    /// <summary>
+    /// Literal for code: NONEDysplasiaOfVagina
+    /// </summary>
+    public const string LiteralNONEDysplasiaOfVagina = "http://snomed.info/sct#3754002";
 
     /// <summary>
     /// Literal for code: PRPPityriasisRubraPilaris
@@ -12518,9 +16018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPRPPityriasisRubraPilaris = "3755001";
 
     /// <summary>
+    /// Literal for code: NONEPRPPityriasisRubraPilaris
+    /// </summary>
+    public const string LiteralNONEPRPPityriasisRubraPilaris = "http://snomed.info/sct#3755001";
+
+    /// <summary>
     /// Literal for code: StaticAtaxia
     /// </summary>
     public const string LiteralStaticAtaxia = "3756000";
+
+    /// <summary>
+    /// Literal for code: NONEStaticAtaxia
+    /// </summary>
+    public const string LiteralNONEStaticAtaxia = "http://snomed.info/sct#3756000";
 
     /// <summary>
     /// Literal for code: InjuryOfHeartWithOpenWoundIntoThorax
@@ -12528,9 +16038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjuryOfHeartWithOpenWoundIntoThorax = "3759007";
 
     /// <summary>
+    /// Literal for code: NONEInjuryOfHeartWithOpenWoundIntoThorax
+    /// </summary>
+    public const string LiteralNONEInjuryOfHeartWithOpenWoundIntoThorax = "http://snomed.info/sct#3759007";
+
+    /// <summary>
     /// Literal for code: FamilialMultipleFactorDeficiencySyndromeTypeV
     /// </summary>
     public const string LiteralFamilialMultipleFactorDeficiencySyndromeTypeV = "3760002";
+
+    /// <summary>
+    /// Literal for code: NONEFamilialMultipleFactorDeficiencySyndromeTypeV
+    /// </summary>
+    public const string LiteralNONEFamilialMultipleFactorDeficiencySyndromeTypeV = "http://snomed.info/sct#3760002";
 
     /// <summary>
     /// Literal for code: BilateralRecurrentFemoralHerniaWithGangrene
@@ -12538,9 +16058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBilateralRecurrentFemoralHerniaWithGangrene = "3762005";
 
     /// <summary>
+    /// Literal for code: NONEBilateralRecurrentFemoralHerniaWithGangrene
+    /// </summary>
+    public const string LiteralNONEBilateralRecurrentFemoralHerniaWithGangrene = "http://snomed.info/sct#3762005";
+
+    /// <summary>
     /// Literal for code: ExpectedBereavementDueToLifeEvent
     /// </summary>
     public const string LiteralExpectedBereavementDueToLifeEvent = "3763000";
+
+    /// <summary>
+    /// Literal for code: NONEExpectedBereavementDueToLifeEvent
+    /// </summary>
+    public const string LiteralNONEExpectedBereavementDueToLifeEvent = "http://snomed.info/sct#3763000";
 
     /// <summary>
     /// Literal for code: MorquioSyndrome
@@ -12548,9 +16078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMorquioSyndrome = "378007";
 
     /// <summary>
+    /// Literal for code: NONEMorquioSyndrome
+    /// </summary>
+    public const string LiteralNONEMorquioSyndrome = "http://snomed.info/sct#378007";
+
+    /// <summary>
     /// Literal for code: EnamelPearls
     /// </summary>
     public const string LiteralEnamelPearls = "3783004";
+
+    /// <summary>
+    /// Literal for code: NONEEnamelPearls
+    /// </summary>
+    public const string LiteralNONEEnamelPearls = "http://snomed.info/sct#3783004";
 
     /// <summary>
     /// Literal for code: PeriodontalCyst
@@ -12558,9 +16098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeriodontalCyst = "3797007";
 
     /// <summary>
+    /// Literal for code: NONEPeriodontalCyst
+    /// </summary>
+    public const string LiteralNONEPeriodontalCyst = "http://snomed.info/sct#3797007";
+
+    /// <summary>
     /// Literal for code: PrematureBirthOfIdenticalTwinsBothStillborn
     /// </summary>
     public const string LiteralPrematureBirthOfIdenticalTwinsBothStillborn = "3798002";
+
+    /// <summary>
+    /// Literal for code: NONEPrematureBirthOfIdenticalTwinsBothStillborn
+    /// </summary>
+    public const string LiteralNONEPrematureBirthOfIdenticalTwinsBothStillborn = "http://snomed.info/sct#3798002";
 
     /// <summary>
     /// Literal for code: CrohnDiseaseOfRectum
@@ -12568,9 +16118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCrohnDiseaseOfRectum = "3815005";
 
     /// <summary>
+    /// Literal for code: NONECrohnDiseaseOfRectum
+    /// </summary>
+    public const string LiteralNONECrohnDiseaseOfRectum = "http://snomed.info/sct#3815005";
+
+    /// <summary>
     /// Literal for code: InnerEarConductiveHearingLoss
     /// </summary>
     public const string LiteralInnerEarConductiveHearingLoss = "3820005";
+
+    /// <summary>
+    /// Literal for code: NONEInnerEarConductiveHearingLoss
+    /// </summary>
+    public const string LiteralNONEInnerEarConductiveHearingLoss = "http://snomed.info/sct#3820005";
 
     /// <summary>
     /// Literal for code: LegalHistoryFindingRelatingToChild
@@ -12578,9 +16138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLegalHistoryFindingRelatingToChild = "382009";
 
     /// <summary>
+    /// Literal for code: NONELegalHistoryFindingRelatingToChild
+    /// </summary>
+    public const string LiteralNONELegalHistoryFindingRelatingToChild = "http://snomed.info/sct#382009";
+
+    /// <summary>
     /// Literal for code: AneurysmOfArteryOfNeck
     /// </summary>
     public const string LiteralAneurysmOfArteryOfNeck = "3827008";
+
+    /// <summary>
+    /// Literal for code: NONEAneurysmOfArteryOfNeck
+    /// </summary>
+    public const string LiteralNONEAneurysmOfArteryOfNeck = "http://snomed.info/sct#3827008";
 
     /// <summary>
     /// Literal for code: SubcutaneousEmphysema
@@ -12588,9 +16158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousEmphysema = "3830001";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousEmphysema
+    /// </summary>
+    public const string LiteralNONESubcutaneousEmphysema = "http://snomed.info/sct#3830001";
+
+    /// <summary>
     /// Literal for code: FindingOfPassiveRangeOfHipExtension
     /// </summary>
     public const string LiteralFindingOfPassiveRangeOfHipExtension = "383004";
+
+    /// <summary>
+    /// Literal for code: NONEFindingOfPassiveRangeOfHipExtension
+    /// </summary>
+    public const string LiteralNONEFindingOfPassiveRangeOfHipExtension = "http://snomed.info/sct#383004";
 
     /// <summary>
     /// Literal for code: BlisterOfCheekWithInfection
@@ -12598,9 +16178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBlisterOfCheekWithInfection = "3841004";
 
     /// <summary>
+    /// Literal for code: NONEBlisterOfCheekWithInfection
+    /// </summary>
+    public const string LiteralNONEBlisterOfCheekWithInfection = "http://snomed.info/sct#3841004";
+
+    /// <summary>
     /// Literal for code: DuplicationOfIntestine
     /// </summary>
     public const string LiteralDuplicationOfIntestine = "3845008";
+
+    /// <summary>
+    /// Literal for code: NONEDuplicationOfIntestine
+    /// </summary>
+    public const string LiteralNONEDuplicationOfIntestine = "http://snomed.info/sct#3845008";
 
     /// <summary>
     /// Literal for code: SecondaryPeripheralNeuropathy
@@ -12608,9 +16198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSecondaryPeripheralNeuropathy = "385006";
 
     /// <summary>
+    /// Literal for code: NONESecondaryPeripheralNeuropathy
+    /// </summary>
+    public const string LiteralNONESecondaryPeripheralNeuropathy = "http://snomed.info/sct#385006";
+
+    /// <summary>
     /// Literal for code: DisorderOfPancreas
     /// </summary>
     public const string LiteralDisorderOfPancreas = "3855007";
+
+    /// <summary>
+    /// Literal for code: NONEDisorderOfPancreas
+    /// </summary>
+    public const string LiteralNONEDisorderOfPancreas = "http://snomed.info/sct#3855007";
 
     /// <summary>
     /// Literal for code: LateEffectOfOpenWoundOfExtremitiesWithoutTendonInjury
@@ -12618,9 +16218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateEffectOfOpenWoundOfExtremitiesWithoutTendonInjury = "3859001";
 
     /// <summary>
+    /// Literal for code: NONELateEffectOfOpenWoundOfExtremitiesWithoutTendonInjury
+    /// </summary>
+    public const string LiteralNONELateEffectOfOpenWoundOfExtremitiesWithoutTendonInjury = "http://snomed.info/sct#3859001";
+
+    /// <summary>
     /// Literal for code: Melanuria
     /// </summary>
     public const string LiteralMelanuria = "387003";
+
+    /// <summary>
+    /// Literal for code: NONEMelanuria
+    /// </summary>
+    public const string LiteralNONEMelanuria = "http://snomed.info/sct#387003";
 
     /// <summary>
     /// Literal for code: FailedAttemptedTerminationOfPregnancyWithAcuteNecrosisOfLiver
@@ -12628,9 +16238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFailedAttemptedTerminationOfPregnancyWithAcuteNecrosisOfLiver = "3873005";
 
     /// <summary>
+    /// Literal for code: NONEFailedAttemptedTerminationOfPregnancyWithAcuteNecrosisOfLiver
+    /// </summary>
+    public const string LiteralNONEFailedAttemptedTerminationOfPregnancyWithAcuteNecrosisOfLiver = "http://snomed.info/sct#3873005";
+
+    /// <summary>
     /// Literal for code: ABOIsoimmunizationInPregnancy
     /// </summary>
     public const string LiteralABOIsoimmunizationInPregnancy = "3885002";
+
+    /// <summary>
+    /// Literal for code: NONEABOIsoimmunizationInPregnancy
+    /// </summary>
+    public const string LiteralNONEABOIsoimmunizationInPregnancy = "http://snomed.info/sct#3885002";
 
     /// <summary>
     /// Literal for code: CongenitalFecaliths
@@ -12638,9 +16258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalFecaliths = "3886001";
 
     /// <summary>
+    /// Literal for code: NONECongenitalFecaliths
+    /// </summary>
+    public const string LiteralNONECongenitalFecaliths = "http://snomed.info/sct#3886001";
+
+    /// <summary>
     /// Literal for code: NeutropenicTyphlitis
     /// </summary>
     public const string LiteralNeutropenicTyphlitis = "3899003";
+
+    /// <summary>
+    /// Literal for code: NONENeutropenicTyphlitis
+    /// </summary>
+    public const string LiteralNONENeutropenicTyphlitis = "http://snomed.info/sct#3899003";
 
     /// <summary>
     /// Literal for code: MixedSensoryMotorPolyneuropathy
@@ -12648,9 +16278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMixedSensoryMotorPolyneuropathy = "3900008";
 
     /// <summary>
+    /// Literal for code: NONEMixedSensoryMotorPolyneuropathy
+    /// </summary>
+    public const string LiteralNONEMixedSensoryMotorPolyneuropathy = "http://snomed.info/sct#3900008";
+
+    /// <summary>
     /// Literal for code: NonDoseRelatedDrugInducedNeutropenia
     /// </summary>
     public const string LiteralNonDoseRelatedDrugInducedNeutropenia = "3902000";
+
+    /// <summary>
+    /// Literal for code: NONENonDoseRelatedDrugInducedNeutropenia
+    /// </summary>
+    public const string LiteralNONENonDoseRelatedDrugInducedNeutropenia = "http://snomed.info/sct#3902000";
 
     /// <summary>
     /// Literal for code: ClosedTraumaticPneumothorax
@@ -12658,9 +16298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClosedTraumaticPneumothorax = "3903005";
 
     /// <summary>
+    /// Literal for code: NONEClosedTraumaticPneumothorax
+    /// </summary>
+    public const string LiteralNONEClosedTraumaticPneumothorax = "http://snomed.info/sct#3903005";
+
+    /// <summary>
     /// Literal for code: InfestationCausedByHaematopinus
     /// </summary>
     public const string LiteralInfestationCausedByHaematopinus = "3908001";
+
+    /// <summary>
+    /// Literal for code: NONEInfestationCausedByHaematopinus
+    /// </summary>
+    public const string LiteralNONEInfestationCausedByHaematopinus = "http://snomed.info/sct#3908001";
 
     /// <summary>
     /// Literal for code: CoeurEnSabot
@@ -12668,9 +16318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoeurEnSabot = "3909009";
 
     /// <summary>
+    /// Literal for code: NONECoeurEnSabot
+    /// </summary>
+    public const string LiteralNONECoeurEnSabot = "http://snomed.info/sct#3909009";
+
+    /// <summary>
     /// Literal for code: InjuryOfGastrointestinalTractWithOpenWoundIntoAbdominalCavity
     /// </summary>
     public const string LiteralInjuryOfGastrointestinalTractWithOpenWoundIntoAbdominalCavity = "3913002";
+
+    /// <summary>
+    /// Literal for code: NONEInjuryOfGastrointestinalTractWithOpenWoundIntoAbdominalCavity
+    /// </summary>
+    public const string LiteralNONEInjuryOfGastrointestinalTractWithOpenWoundIntoAbdominalCavity = "http://snomed.info/sct#3913002";
 
     /// <summary>
     /// Literal for code: MentalDisorderInChildhood
@@ -12678,9 +16338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMentalDisorderInChildhood = "3914008";
 
     /// <summary>
+    /// Literal for code: NONEMentalDisorderInChildhood
+    /// </summary>
+    public const string LiteralNONEMentalDisorderInChildhood = "http://snomed.info/sct#3914008";
+
+    /// <summary>
     /// Literal for code: ZikaVirusDisease
     /// </summary>
     public const string LiteralZikaVirusDisease = "3928002";
+
+    /// <summary>
+    /// Literal for code: NONEZikaVirusDisease
+    /// </summary>
+    public const string LiteralNONEZikaVirusDisease = "http://snomed.info/sct#3928002";
 
     /// <summary>
     /// Literal for code: BacterialColonyDensityTransparent
@@ -12688,9 +16358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBacterialColonyDensityTransparent = "3939004";
 
     /// <summary>
+    /// Literal for code: NONEBacterialColonyDensityTransparent
+    /// </summary>
+    public const string LiteralNONEBacterialColonyDensityTransparent = "http://snomed.info/sct#3939004";
+
+    /// <summary>
     /// Literal for code: XLinkedPlacentalSterylSulfataseDeficiency
     /// </summary>
     public const string LiteralXLinkedPlacentalSterylSulfataseDeficiency = "3944006";
+
+    /// <summary>
+    /// Literal for code: NONEXLinkedPlacentalSterylSulfataseDeficiency
+    /// </summary>
+    public const string LiteralNONEXLinkedPlacentalSterylSulfataseDeficiency = "http://snomed.info/sct#3944006";
 
     /// <summary>
     /// Literal for code: HighOxygenAffinityHemoglobinPolycythemia
@@ -12698,9 +16378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHighOxygenAffinityHemoglobinPolycythemia = "3947004";
 
     /// <summary>
+    /// Literal for code: NONEHighOxygenAffinityHemoglobinPolycythemia
+    /// </summary>
+    public const string LiteralNONEHighOxygenAffinityHemoglobinPolycythemia = "http://snomed.info/sct#3947004";
+
+    /// <summary>
     /// Literal for code: Birth
     /// </summary>
     public const string LiteralBirth = "3950001";
+
+    /// <summary>
+    /// Literal for code: NONEBirth
+    /// </summary>
+    public const string LiteralNONEBirth = "http://snomed.info/sct#3950001";
 
     /// <summary>
     /// Literal for code: Proctitis
@@ -12708,9 +16398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProctitis = "3951002";
 
     /// <summary>
+    /// Literal for code: NONEProctitis
+    /// </summary>
+    public const string LiteralNONEProctitis = "http://snomed.info/sct#3951002";
+
+    /// <summary>
     /// Literal for code: IdiopathicInsomnia
     /// </summary>
     public const string LiteralIdiopathicInsomnia = "3972004";
+
+    /// <summary>
+    /// Literal for code: NONEIdiopathicInsomnia
+    /// </summary>
+    public const string LiteralNONEIdiopathicInsomnia = "http://snomed.info/sct#3972004";
 
     /// <summary>
     /// Literal for code: DeepThirdDegreeBurnOfLowerLimb
@@ -12718,9 +16418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeepThirdDegreeBurnOfLowerLimb = "3975002";
 
     /// <summary>
+    /// Literal for code: NONEDeepThirdDegreeBurnOfLowerLimb
+    /// </summary>
+    public const string LiteralNONEDeepThirdDegreeBurnOfLowerLimb = "http://snomed.info/sct#3975002";
+
+    /// <summary>
     /// Literal for code: AIHAWarmAutoimmuneHemolyticAnemia
     /// </summary>
     public const string LiteralAIHAWarmAutoimmuneHemolyticAnemia = "3978000";
+
+    /// <summary>
+    /// Literal for code: NONEAIHAWarmAutoimmuneHemolyticAnemia
+    /// </summary>
+    public const string LiteralNONEAIHAWarmAutoimmuneHemolyticAnemia = "http://snomed.info/sct#3978000";
 
     /// <summary>
     /// Literal for code: LeftAxisDeviationGreaterThan90DegreesByEKG
@@ -12728,9 +16438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeftAxisDeviationGreaterThan90DegreesByEKG = "398002";
 
     /// <summary>
+    /// Literal for code: NONELeftAxisDeviationGreaterThan90DegreesByEKG
+    /// </summary>
+    public const string LiteralNONELeftAxisDeviationGreaterThan90DegreesByEKG = "http://snomed.info/sct#398002";
+
+    /// <summary>
     /// Literal for code: CongenitalAbsenceOfTrachea
     /// </summary>
     public const string LiteralCongenitalAbsenceOfTrachea = "3987009";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalAbsenceOfTrachea
+    /// </summary>
+    public const string LiteralNONECongenitalAbsenceOfTrachea = "http://snomed.info/sct#3987009";
 
     /// <summary>
     /// Literal for code: InfectionCausedByMuellerius
@@ -12738,9 +16458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionCausedByMuellerius = "3993001";
 
     /// <summary>
+    /// Literal for code: NONEInfectionCausedByMuellerius
+    /// </summary>
+    public const string LiteralNONEInfectionCausedByMuellerius = "http://snomed.info/sct#3993001";
+
+    /// <summary>
     /// Literal for code: AcutePyelitisWithoutRenalMedullaryNecrosis
     /// </summary>
     public const string LiteralAcutePyelitisWithoutRenalMedullaryNecrosis = "3999002";
+
+    /// <summary>
+    /// Literal for code: NONEAcutePyelitisWithoutRenalMedullaryNecrosis
+    /// </summary>
+    public const string LiteralNONEAcutePyelitisWithoutRenalMedullaryNecrosis = "http://snomed.info/sct#3999002";
 
     /// <summary>
     /// Literal for code: AlphavirusDisease
@@ -12748,9 +16478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlphavirusDisease = "4003003";
 
     /// <summary>
+    /// Literal for code: NONEAlphavirusDisease
+    /// </summary>
+    public const string LiteralNONEAlphavirusDisease = "http://snomed.info/sct#4003003";
+
+    /// <summary>
     /// Literal for code: MonsterWithCranialAnomalies
     /// </summary>
     public const string LiteralMonsterWithCranialAnomalies = "4004009";
+
+    /// <summary>
+    /// Literal for code: NONEMonsterWithCranialAnomalies
+    /// </summary>
+    public const string LiteralNONEMonsterWithCranialAnomalies = "http://snomed.info/sct#4004009";
 
     /// <summary>
     /// Literal for code: FoetalTachycardiaAffectingManagementOfMother
@@ -12758,9 +16498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFoetalTachycardiaAffectingManagementOfMother = "4006006";
 
     /// <summary>
+    /// Literal for code: NONEFoetalTachycardiaAffectingManagementOfMother
+    /// </summary>
+    public const string LiteralNONEFoetalTachycardiaAffectingManagementOfMother = "http://snomed.info/sct#4006006";
+
+    /// <summary>
     /// Literal for code: LowerUrinaryTractInfection
     /// </summary>
     public const string LiteralLowerUrinaryTractInfection = "4009004";
+
+    /// <summary>
+    /// Literal for code: NONELowerUrinaryTractInfection
+    /// </summary>
+    public const string LiteralNONELowerUrinaryTractInfection = "http://snomed.info/sct#4009004";
 
     /// <summary>
     /// Literal for code: EmpyemaOfMastoid
@@ -12768,9 +16518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmpyemaOfMastoid = "4016003";
 
     /// <summary>
+    /// Literal for code: NONEEmpyemaOfMastoid
+    /// </summary>
+    public const string LiteralNONEEmpyemaOfMastoid = "http://snomed.info/sct#4016003";
+
+    /// <summary>
     /// Literal for code: IncreasedStratumCorneumAdhesiveness
     /// </summary>
     public const string LiteralIncreasedStratumCorneumAdhesiveness = "4017007";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedStratumCorneumAdhesiveness
+    /// </summary>
+    public const string LiteralNONEIncreasedStratumCorneumAdhesiveness = "http://snomed.info/sct#4017007";
 
     /// <summary>
     /// Literal for code: VulvitisCircumscriptaPlasmacellularis
@@ -12778,9 +16538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVulvitisCircumscriptaPlasmacellularis = "4022007";
 
     /// <summary>
+    /// Literal for code: NONEVulvitisCircumscriptaPlasmacellularis
+    /// </summary>
+    public const string LiteralNONEVulvitisCircumscriptaPlasmacellularis = "http://snomed.info/sct#4022007";
+
+    /// <summary>
     /// Literal for code: InterstitialMastitisAssociatedWithChildbirth
     /// </summary>
     public const string LiteralInterstitialMastitisAssociatedWithChildbirth = "4026005";
+
+    /// <summary>
+    /// Literal for code: NONEInterstitialMastitisAssociatedWithChildbirth
+    /// </summary>
+    public const string LiteralNONEInterstitialMastitisAssociatedWithChildbirth = "http://snomed.info/sct#4026005";
 
     /// <summary>
     /// Literal for code: LeDantecVirusDisease
@@ -12788,9 +16558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeDantecVirusDisease = "4030008";
 
     /// <summary>
+    /// Literal for code: NONELeDantecVirusDisease
+    /// </summary>
+    public const string LiteralNONELeDantecVirusDisease = "http://snomed.info/sct#4030008";
+
+    /// <summary>
     /// Literal for code: Myrotheciotoxicosis
     /// </summary>
     public const string LiteralMyrotheciotoxicosis = "4038001";
+
+    /// <summary>
+    /// Literal for code: NONEMyrotheciotoxicosis
+    /// </summary>
+    public const string LiteralNONEMyrotheciotoxicosis = "http://snomed.info/sct#4038001";
 
     /// <summary>
     /// Literal for code: MultipleVitaminDeficiencyDisease
@@ -12798,9 +16578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultipleVitaminDeficiencyDisease = "4039009";
 
     /// <summary>
+    /// Literal for code: NONEMultipleVitaminDeficiencyDisease
+    /// </summary>
+    public const string LiteralNONEMultipleVitaminDeficiencyDisease = "http://snomed.info/sct#4039009";
+
+    /// <summary>
     /// Literal for code: HassallHenleBodies
     /// </summary>
     public const string LiteralHassallHenleBodies = "4040006";
+
+    /// <summary>
+    /// Literal for code: NONEHassallHenleBodies
+    /// </summary>
+    public const string LiteralNONEHassallHenleBodies = "http://snomed.info/sct#4040006";
 
     /// <summary>
     /// Literal for code: CongenitalAnomalyOfMacula
@@ -12808,9 +16598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalAnomalyOfMacula = "4041005";
 
     /// <summary>
+    /// Literal for code: NONECongenitalAnomalyOfMacula
+    /// </summary>
+    public const string LiteralNONECongenitalAnomalyOfMacula = "http://snomed.info/sct#4041005";
+
+    /// <summary>
     /// Literal for code: DegenerativeSpondylolisthesis
     /// </summary>
     public const string LiteralDegenerativeSpondylolisthesis = "4046000";
+
+    /// <summary>
+    /// Literal for code: NONEDegenerativeSpondylolisthesis
+    /// </summary>
+    public const string LiteralNONEDegenerativeSpondylolisthesis = "http://snomed.info/sct#4046000";
 
     /// <summary>
     /// Literal for code: LumbosacralPlexusLesion
@@ -12818,9 +16618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLumbosacralPlexusLesion = "4062006";
 
     /// <summary>
+    /// Literal for code: NONELumbosacralPlexusLesion
+    /// </summary>
+    public const string LiteralNONELumbosacralPlexusLesion = "http://snomed.info/sct#4062006";
+
+    /// <summary>
     /// Literal for code: Achillodynia
     /// </summary>
     public const string LiteralAchillodynia = "4063001";
+
+    /// <summary>
+    /// Literal for code: NONEAchillodynia
+    /// </summary>
+    public const string LiteralNONEAchillodynia = "http://snomed.info/sct#4063001";
 
     /// <summary>
     /// Literal for code: AnoxicBrainDamageDuringANDORResultingFromAProcedure
@@ -12828,9 +16638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnoxicBrainDamageDuringANDORResultingFromAProcedure = "4069002";
 
     /// <summary>
+    /// Literal for code: NONEAnoxicBrainDamageDuringANDORResultingFromAProcedure
+    /// </summary>
+    public const string LiteralNONEAnoxicBrainDamageDuringANDORResultingFromAProcedure = "http://snomed.info/sct#4069002";
+
+    /// <summary>
     /// Literal for code: CongenitalHepatomegaly
     /// </summary>
     public const string LiteralCongenitalHepatomegaly = "407000";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalHepatomegaly
+    /// </summary>
+    public const string LiteralNONECongenitalHepatomegaly = "http://snomed.info/sct#407000";
 
     /// <summary>
     /// Literal for code: Palinphrasia
@@ -12838,9 +16658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPalinphrasia = "4070001";
 
     /// <summary>
+    /// Literal for code: NONEPalinphrasia
+    /// </summary>
+    public const string LiteralNONEPalinphrasia = "http://snomed.info/sct#4070001";
+
+    /// <summary>
     /// Literal for code: PeganumHarmalaPoisoning
     /// </summary>
     public const string LiteralPeganumHarmalaPoisoning = "4075006";
+
+    /// <summary>
+    /// Literal for code: NONEPeganumHarmalaPoisoning
+    /// </summary>
+    public const string LiteralNONEPeganumHarmalaPoisoning = "http://snomed.info/sct#4075006";
 
     /// <summary>
     /// Literal for code: ToothChattering
@@ -12848,9 +16678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralToothChattering = "408005";
 
     /// <summary>
+    /// Literal for code: NONEToothChattering
+    /// </summary>
+    public const string LiteralNONEToothChattering = "http://snomed.info/sct#408005";
+
+    /// <summary>
     /// Literal for code: SyphiliticMyocarditis
     /// </summary>
     public const string LiteralSyphiliticMyocarditis = "4082005";
+
+    /// <summary>
+    /// Literal for code: NONESyphiliticMyocarditis
+    /// </summary>
+    public const string LiteralNONESyphiliticMyocarditis = "http://snomed.info/sct#4082005";
 
     /// <summary>
     /// Literal for code: AcquiredHydrocephalus
@@ -12858,9 +16698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcquiredHydrocephalus = "4088009";
 
     /// <summary>
+    /// Literal for code: NONEAcquiredHydrocephalus
+    /// </summary>
+    public const string LiteralNONEAcquiredHydrocephalus = "http://snomed.info/sct#4088009";
+
+    /// <summary>
     /// Literal for code: Meningococcemia
     /// </summary>
     public const string LiteralMeningococcemia = "4089001";
+
+    /// <summary>
+    /// Literal for code: NONEMeningococcemia
+    /// </summary>
+    public const string LiteralNONEMeningococcemia = "http://snomed.info/sct#4089001";
 
     /// <summary>
     /// Literal for code: FoodAllergyDiet
@@ -12868,9 +16718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFoodAllergyDiet = "409002";
 
     /// <summary>
+    /// Literal for code: NONEFoodAllergyDiet
+    /// </summary>
+    public const string LiteralNONEFoodAllergyDiet = "http://snomed.info/sct#409002";
+
+    /// <summary>
     /// Literal for code: NonallopathicLesionOfCostovertebralRegion
     /// </summary>
     public const string LiteralNonallopathicLesionOfCostovertebralRegion = "4092002";
+
+    /// <summary>
+    /// Literal for code: NONENonallopathicLesionOfCostovertebralRegion
+    /// </summary>
+    public const string LiteralNONENonallopathicLesionOfCostovertebralRegion = "http://snomed.info/sct#4092002";
 
     /// <summary>
     /// Literal for code: ComplexPartialSeizure
@@ -12878,9 +16738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComplexPartialSeizure = "4103001";
 
     /// <summary>
+    /// Literal for code: NONEComplexPartialSeizure
+    /// </summary>
+    public const string LiteralNONEComplexPartialSeizure = "http://snomed.info/sct#4103001";
+
+    /// <summary>
     /// Literal for code: RotatorCuffRupture
     /// </summary>
     public const string LiteralRotatorCuffRupture = "4106009";
+
+    /// <summary>
+    /// Literal for code: NONERotatorCuffRupture
+    /// </summary>
+    public const string LiteralNONERotatorCuffRupture = "http://snomed.info/sct#4106009";
 
     /// <summary>
     /// Literal for code: InfertileMaleSyndrome
@@ -12888,9 +16758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfertileMaleSyndrome = "4107000";
 
     /// <summary>
+    /// Literal for code: NONEInfertileMaleSyndrome
+    /// </summary>
+    public const string LiteralNONEInfertileMaleSyndrome = "http://snomed.info/sct#4107000";
+
+    /// <summary>
     /// Literal for code: ArrestedHydrocephalus
     /// </summary>
     public const string LiteralArrestedHydrocephalus = "4113009";
+
+    /// <summary>
+    /// Literal for code: NONEArrestedHydrocephalus
+    /// </summary>
+    public const string LiteralNONEArrestedHydrocephalus = "http://snomed.info/sct#4113009";
 
     /// <summary>
     /// Literal for code: Bronchiolitis
@@ -12898,9 +16778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBronchiolitis = "4120002";
 
     /// <summary>
+    /// Literal for code: NONEBronchiolitis
+    /// </summary>
+    public const string LiteralNONEBronchiolitis = "http://snomed.info/sct#4120002";
+
+    /// <summary>
     /// Literal for code: InsectBiteNonvenomousOfVaginaInfected
     /// </summary>
     public const string LiteralInsectBiteNonvenomousOfVaginaInfected = "4124006";
+
+    /// <summary>
+    /// Literal for code: NONEInsectBiteNonvenomousOfVaginaInfected
+    /// </summary>
+    public const string LiteralNONEInsectBiteNonvenomousOfVaginaInfected = "http://snomed.info/sct#4124006";
 
     /// <summary>
     /// Literal for code: ProstaticObstruction
@@ -12908,9 +16798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProstaticObstruction = "4127004";
 
     /// <summary>
+    /// Literal for code: NONEProstaticObstruction
+    /// </summary>
+    public const string LiteralNONEProstaticObstruction = "http://snomed.info/sct#4127004";
+
+    /// <summary>
     /// Literal for code: ArgyllRobertsonPupil
     /// </summary>
     public const string LiteralArgyllRobertsonPupil = "4129001";
+
+    /// <summary>
+    /// Literal for code: NONEArgyllRobertsonPupil
+    /// </summary>
+    public const string LiteralNONEArgyllRobertsonPupil = "http://snomed.info/sct#4129001";
 
     /// <summary>
     /// Literal for code: VAL11pPartialMonosomySyndrome
@@ -12918,9 +16818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL11pPartialMonosomySyndrome = "4135001";
 
     /// <summary>
+    /// Literal for code: NONEVAL11pPartialMonosomySyndrome
+    /// </summary>
+    public const string LiteralNONEVAL11pPartialMonosomySyndrome = "http://snomed.info/sct#4135001";
+
+    /// <summary>
     /// Literal for code: MacrodactyliaOfToes
     /// </summary>
     public const string LiteralMacrodactyliaOfToes = "4136000";
+
+    /// <summary>
+    /// Literal for code: NONEMacrodactyliaOfToes
+    /// </summary>
+    public const string LiteralNONEMacrodactyliaOfToes = "http://snomed.info/sct#4136000";
 
     /// <summary>
     /// Literal for code: MuscularAsthenopia
@@ -12928,9 +16838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMuscularAsthenopia = "4142001";
 
     /// <summary>
+    /// Literal for code: NONEMuscularAsthenopia
+    /// </summary>
+    public const string LiteralNONEMuscularAsthenopia = "http://snomed.info/sct#4142001";
+
+    /// <summary>
     /// Literal for code: AcquiredHypoprothrombinemia
     /// </summary>
     public const string LiteralAcquiredHypoprothrombinemia = "4152002";
+
+    /// <summary>
+    /// Literal for code: NONEAcquiredHypoprothrombinemia
+    /// </summary>
+    public const string LiteralNONEAcquiredHypoprothrombinemia = "http://snomed.info/sct#4152002";
 
     /// <summary>
     /// Literal for code: CongenitalAnomalyOfUpperRespiratorySystem
@@ -12938,9 +16858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalAnomalyOfUpperRespiratorySystem = "4160001";
 
     /// <summary>
+    /// Literal for code: NONECongenitalAnomalyOfUpperRespiratorySystem
+    /// </summary>
+    public const string LiteralNONECongenitalAnomalyOfUpperRespiratorySystem = "http://snomed.info/sct#4160001";
+
+    /// <summary>
     /// Literal for code: TibialPlateauChondromalacia
     /// </summary>
     public const string LiteralTibialPlateauChondromalacia = "4168008";
+
+    /// <summary>
+    /// Literal for code: NONETibialPlateauChondromalacia
+    /// </summary>
+    public const string LiteralNONETibialPlateauChondromalacia = "http://snomed.info/sct#4168008";
 
     /// <summary>
     /// Literal for code: EhlersDanlosSyndromeProcollagenProteinaseResistant
@@ -12948,9 +16878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEhlersDanlosSyndromeProcollagenProteinaseResistant = "4170004";
 
     /// <summary>
+    /// Literal for code: NONEEhlersDanlosSyndromeProcollagenProteinaseResistant
+    /// </summary>
+    public const string LiteralNONEEhlersDanlosSyndromeProcollagenProteinaseResistant = "http://snomed.info/sct#4170004";
+
+    /// <summary>
     /// Literal for code: TripartitePlacenta
     /// </summary>
     public const string LiteralTripartitePlacenta = "4174008";
+
+    /// <summary>
+    /// Literal for code: NONETripartitePlacenta
+    /// </summary>
+    public const string LiteralNONETripartitePlacenta = "http://snomed.info/sct#4174008";
 
     /// <summary>
     /// Literal for code: InfestationByEstrus
@@ -12958,9 +16898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfestationByEstrus = "4175009";
 
     /// <summary>
+    /// Literal for code: NONEInfestationByEstrus
+    /// </summary>
+    public const string LiteralNONEInfestationByEstrus = "http://snomed.info/sct#4175009";
+
+    /// <summary>
     /// Literal for code: PartialRecentRetinalDetachmentWithMultipleDefects
     /// </summary>
     public const string LiteralPartialRecentRetinalDetachmentWithMultipleDefects = "4178006";
+
+    /// <summary>
+    /// Literal for code: NONEPartialRecentRetinalDetachmentWithMultipleDefects
+    /// </summary>
+    public const string LiteralNONEPartialRecentRetinalDetachmentWithMultipleDefects = "http://snomed.info/sct#4178006";
 
     /// <summary>
     /// Literal for code: NormalPeakExpiratoryFlowRate
@@ -12968,9 +16918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNormalPeakExpiratoryFlowRate = "4181001";
 
     /// <summary>
+    /// Literal for code: NONENormalPeakExpiratoryFlowRate
+    /// </summary>
+    public const string LiteralNONENormalPeakExpiratoryFlowRate = "http://snomed.info/sct#4181001";
+
+    /// <summary>
     /// Literal for code: CharcotMarieToothDiseaseTypeIC
     /// </summary>
     public const string LiteralCharcotMarieToothDiseaseTypeIC = "4183003";
+
+    /// <summary>
+    /// Literal for code: NONECharcotMarieToothDiseaseTypeIC
+    /// </summary>
+    public const string LiteralNONECharcotMarieToothDiseaseTypeIC = "http://snomed.info/sct#4183003";
 
     /// <summary>
     /// Literal for code: CongenitalMalformationOfTheEndocrineGlands
@@ -12978,9 +16938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalMalformationOfTheEndocrineGlands = "4184009";
 
     /// <summary>
+    /// Literal for code: NONECongenitalMalformationOfTheEndocrineGlands
+    /// </summary>
+    public const string LiteralNONECongenitalMalformationOfTheEndocrineGlands = "http://snomed.info/sct#4184009";
+
+    /// <summary>
     /// Literal for code: ScaphoidHead
     /// </summary>
     public const string LiteralScaphoidHead = "4191007";
+
+    /// <summary>
+    /// Literal for code: NONEScaphoidHead
+    /// </summary>
+    public const string LiteralNONEScaphoidHead = "http://snomed.info/sct#4191007";
 
     /// <summary>
     /// Literal for code: DuplicationOfAnus
@@ -12988,9 +16958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDuplicationOfAnus = "4195003";
 
     /// <summary>
+    /// Literal for code: NONEDuplicationOfAnus
+    /// </summary>
+    public const string LiteralNONEDuplicationOfAnus = "http://snomed.info/sct#4195003";
+
+    /// <summary>
     /// Literal for code: DisabilityEvaluationImpairmentClass5
     /// </summary>
     public const string LiteralDisabilityEvaluationImpairmentClass5 = "4197006";
+
+    /// <summary>
+    /// Literal for code: NONEDisabilityEvaluationImpairmentClass5
+    /// </summary>
+    public const string LiteralNONEDisabilityEvaluationImpairmentClass5 = "http://snomed.info/sct#4197006";
 
     /// <summary>
     /// Literal for code: VAL18pPartialTrisomySyndrome
@@ -12998,9 +16978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL18pPartialTrisomySyndrome = "4199009";
 
     /// <summary>
+    /// Literal for code: NONEVAL18pPartialTrisomySyndrome
+    /// </summary>
+    public const string LiteralNONEVAL18pPartialTrisomySyndrome = "http://snomed.info/sct#4199009";
+
+    /// <summary>
     /// Literal for code: ClosedMultipleFracturesOfBothLowerLimbs
     /// </summary>
     public const string LiteralClosedMultipleFracturesOfBothLowerLimbs = "4208000";
+
+    /// <summary>
+    /// Literal for code: NONEClosedMultipleFracturesOfBothLowerLimbs
+    /// </summary>
+    public const string LiteralNONEClosedMultipleFracturesOfBothLowerLimbs = "http://snomed.info/sct#4208000";
 
     /// <summary>
     /// Literal for code: OHOcularHypertension
@@ -13008,9 +16998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOHOcularHypertension = "4210003";
 
     /// <summary>
+    /// Literal for code: NONEOHOcularHypertension
+    /// </summary>
+    public const string LiteralNONEOHOcularHypertension = "http://snomed.info/sct#4210003";
+
+    /// <summary>
     /// Literal for code: ParkinsonismCausedByDrug
     /// </summary>
     public const string LiteralParkinsonismCausedByDrug = "4223005";
+
+    /// <summary>
+    /// Literal for code: NONEParkinsonismCausedByDrug
+    /// </summary>
+    public const string LiteralNONEParkinsonismCausedByDrug = "http://snomed.info/sct#4223005";
 
     /// <summary>
     /// Literal for code: ComplicationOfInfusion
@@ -13018,9 +17018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComplicationOfInfusion = "4224004";
 
     /// <summary>
+    /// Literal for code: NONEComplicationOfInfusion
+    /// </summary>
+    public const string LiteralNONEComplicationOfInfusion = "http://snomed.info/sct#4224004";
+
+    /// <summary>
     /// Literal for code: NasalTuberculosis
     /// </summary>
     public const string LiteralNasalTuberculosis = "4225003";
+
+    /// <summary>
+    /// Literal for code: NONENasalTuberculosis
+    /// </summary>
+    public const string LiteralNONENasalTuberculosis = "http://snomed.info/sct#4225003";
 
     /// <summary>
     /// Literal for code: PhthisicalEye
@@ -13028,9 +17038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhthisicalEye = "4229009";
 
     /// <summary>
+    /// Literal for code: NONEPhthisicalEye
+    /// </summary>
+    public const string LiteralNONEPhthisicalEye = "http://snomed.info/sct#4229009";
+
+    /// <summary>
     /// Literal for code: ChronicVulvitis
     /// </summary>
     public const string LiteralChronicVulvitis = "4232007";
+
+    /// <summary>
+    /// Literal for code: NONEChronicVulvitis
+    /// </summary>
+    public const string LiteralNONEChronicVulvitis = "http://snomed.info/sct#4232007";
 
     /// <summary>
     /// Literal for code: SuppurativePulpitis
@@ -13038,9 +17058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuppurativePulpitis = "4237001";
 
     /// <summary>
+    /// Literal for code: NONESuppurativePulpitis
+    /// </summary>
+    public const string LiteralNONESuppurativePulpitis = "http://snomed.info/sct#4237001";
+
+    /// <summary>
     /// Literal for code: RuptureOfAorta
     /// </summary>
     public const string LiteralRuptureOfAorta = "4240001";
+
+    /// <summary>
+    /// Literal for code: NONERuptureOfAorta
+    /// </summary>
+    public const string LiteralNONERuptureOfAorta = "http://snomed.info/sct#4240001";
 
     /// <summary>
     /// Literal for code: ListeriaInfection
@@ -13048,9 +17078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralListeriaInfection = "4241002";
 
     /// <summary>
+    /// Literal for code: NONEListeriaInfection
+    /// </summary>
+    public const string LiteralNONEListeriaInfection = "http://snomed.info/sct#4241002";
+
+    /// <summary>
     /// Literal for code: VAL18qPartialMonosomySyndrome
     /// </summary>
     public const string LiteralVAL18qPartialMonosomySyndrome = "4242009";
+
+    /// <summary>
+    /// Literal for code: NONEVAL18qPartialMonosomySyndrome
+    /// </summary>
+    public const string LiteralNONEVAL18qPartialMonosomySyndrome = "http://snomed.info/sct#4242009";
 
     /// <summary>
     /// Literal for code: UrticariaNeonatorum
@@ -13058,9 +17098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUrticariaNeonatorum = "4244005";
 
     /// <summary>
+    /// Literal for code: NONEUrticariaNeonatorum
+    /// </summary>
+    public const string LiteralNONEUrticariaNeonatorum = "http://snomed.info/sct#4244005";
+
+    /// <summary>
     /// Literal for code: SynovitisANDORTenosynovitisAssociatedWithAnotherDisease
     /// </summary>
     public const string LiteralSynovitisANDORTenosynovitisAssociatedWithAnotherDisease = "4248008";
+
+    /// <summary>
+    /// Literal for code: NONESynovitisANDORTenosynovitisAssociatedWithAnotherDisease
+    /// </summary>
+    public const string LiteralNONESynovitisANDORTenosynovitisAssociatedWithAnotherDisease = "http://snomed.info/sct#4248008";
 
     /// <summary>
     /// Literal for code: PoorPeripheralCirculation
@@ -13068,9 +17118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPoorPeripheralCirculation = "4249000";
 
     /// <summary>
+    /// Literal for code: NONEPoorPeripheralCirculation
+    /// </summary>
+    public const string LiteralNONEPoorPeripheralCirculation = "http://snomed.info/sct#4249000";
+
+    /// <summary>
     /// Literal for code: InternalEyeSign
     /// </summary>
     public const string LiteralInternalEyeSign = "4251001";
+
+    /// <summary>
+    /// Literal for code: NONEInternalEyeSign
+    /// </summary>
+    public const string LiteralNONEInternalEyeSign = "http://snomed.info/sct#4251001";
 
     /// <summary>
     /// Literal for code: SacralSpinalCordInjuryWithoutBoneInjury
@@ -13078,9 +17138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSacralSpinalCordInjuryWithoutBoneInjury = "4260009";
 
     /// <summary>
+    /// Literal for code: NONESacralSpinalCordInjuryWithoutBoneInjury
+    /// </summary>
+    public const string LiteralNONESacralSpinalCordInjuryWithoutBoneInjury = "http://snomed.info/sct#4260009";
+
+    /// <summary>
     /// Literal for code: SuperficialInjuryOfAnkleWithoutInfection
     /// </summary>
     public const string LiteralSuperficialInjuryOfAnkleWithoutInfection = "426008";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialInjuryOfAnkleWithoutInfection
+    /// </summary>
+    public const string LiteralNONESuperficialInjuryOfAnkleWithoutInfection = "http://snomed.info/sct#426008";
 
     /// <summary>
     /// Literal for code: PhlebitisOfSuperiorSagittalSinus
@@ -13088,9 +17158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhlebitisOfSuperiorSagittalSinus = "4262001";
 
     /// <summary>
+    /// Literal for code: NONEPhlebitisOfSuperiorSagittalSinus
+    /// </summary>
+    public const string LiteralNONEPhlebitisOfSuperiorSagittalSinus = "http://snomed.info/sct#4262001";
+
+    /// <summary>
     /// Literal for code: ChronicPericoronitis
     /// </summary>
     public const string LiteralChronicPericoronitis = "4264000";
+
+    /// <summary>
+    /// Literal for code: NONEChronicPericoronitis
+    /// </summary>
+    public const string LiteralNONEChronicPericoronitis = "http://snomed.info/sct#4264000";
 
     /// <summary>
     /// Literal for code: ChronicGastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation
@@ -13098,9 +17178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicGastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation = "4269005";
 
     /// <summary>
+    /// Literal for code: NONEChronicGastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation
+    /// </summary>
+    public const string LiteralNONEChronicGastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation = "http://snomed.info/sct#4269005";
+
+    /// <summary>
     /// Literal for code: ClosedPosteriorDislocationOfElbow
     /// </summary>
     public const string LiteralClosedPosteriorDislocationOfElbow = "4273008";
+
+    /// <summary>
+    /// Literal for code: NONEClosedPosteriorDislocationOfElbow
+    /// </summary>
+    public const string LiteralNONEClosedPosteriorDislocationOfElbow = "http://snomed.info/sct#4273008";
 
     /// <summary>
     /// Literal for code: ConjugateGazeSpasm
@@ -13108,9 +17198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConjugateGazeSpasm = "4275001";
 
     /// <summary>
+    /// Literal for code: NONEConjugateGazeSpasm
+    /// </summary>
+    public const string LiteralNONEConjugateGazeSpasm = "http://snomed.info/sct#4275001";
+
+    /// <summary>
     /// Literal for code: SuperficialForeignBodyOfAxillaWithoutMajorOpenWoundButWithInfection
     /// </summary>
     public const string LiteralSuperficialForeignBodyOfAxillaWithoutMajorOpenWoundButWithInfection = "4278004";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialForeignBodyOfAxillaWithoutMajorOpenWoundButWithInfection
+    /// </summary>
+    public const string LiteralNONESuperficialForeignBodyOfAxillaWithoutMajorOpenWoundButWithInfection = "http://snomed.info/sct#4278004";
 
     /// <summary>
     /// Literal for code: MirizziSyndrome
@@ -13118,9 +17218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMirizziSyndrome = "4283007";
 
     /// <summary>
+    /// Literal for code: NONEMirizziSyndrome
+    /// </summary>
+    public const string LiteralNONEMirizziSyndrome = "http://snomed.info/sct#4283007";
+
+    /// <summary>
     /// Literal for code: ChordeeOfPenis
     /// </summary>
     public const string LiteralChordeeOfPenis = "4287008";
+
+    /// <summary>
+    /// Literal for code: NONEChordeeOfPenis
+    /// </summary>
+    public const string LiteralNONEChordeeOfPenis = "http://snomed.info/sct#4287008";
 
     /// <summary>
     /// Literal for code: IsosexualPrecociousPuberty
@@ -13128,9 +17238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIsosexualPrecociousPuberty = "4294006";
 
     /// <summary>
+    /// Literal for code: NONEIsosexualPrecociousPuberty
+    /// </summary>
+    public const string LiteralNONEIsosexualPrecociousPuberty = "http://snomed.info/sct#4294006";
+
+    /// <summary>
     /// Literal for code: DeepThirdDegreeBurnOfForearm
     /// </summary>
     public const string LiteralDeepThirdDegreeBurnOfForearm = "4300009";
+
+    /// <summary>
+    /// Literal for code: NONEDeepThirdDegreeBurnOfForearm
+    /// </summary>
+    public const string LiteralNONEDeepThirdDegreeBurnOfForearm = "http://snomed.info/sct#4300009";
 
     /// <summary>
     /// Literal for code: AutoimmuneState
@@ -13138,9 +17258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAutoimmuneState = "4301008";
 
     /// <summary>
+    /// Literal for code: NONEAutoimmuneState
+    /// </summary>
+    public const string LiteralNONEAutoimmuneState = "http://snomed.info/sct#4301008";
+
+    /// <summary>
     /// Literal for code: ClusterBPersonalityDisorder
     /// </summary>
     public const string LiteralClusterBPersonalityDisorder = "4306003";
+
+    /// <summary>
+    /// Literal for code: NONEClusterBPersonalityDisorder
+    /// </summary>
+    public const string LiteralNONEClusterBPersonalityDisorder = "http://snomed.info/sct#4306003";
 
     /// <summary>
     /// Literal for code: PregestationalDiabetesMellitusANDORImpairedGlucoseToleranceModifiedWhiteClassF
@@ -13148,9 +17278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPregestationalDiabetesMellitusANDORImpairedGlucoseToleranceModifiedWhiteClassF = "4307007";
 
     /// <summary>
+    /// Literal for code: NONEPregestationalDiabetesMellitusANDORImpairedGlucoseToleranceModifiedWhiteClassF
+    /// </summary>
+    public const string LiteralNONEPregestationalDiabetesMellitusANDORImpairedGlucoseToleranceModifiedWhiteClassF = "http://snomed.info/sct#4307007";
+
+    /// <summary>
     /// Literal for code: RSISRepetitiveStrainInjurySyndrome
     /// </summary>
     public const string LiteralRSISRepetitiveStrainInjurySyndrome = "4308002";
+
+    /// <summary>
+    /// Literal for code: NONERSISRepetitiveStrainInjurySyndrome
+    /// </summary>
+    public const string LiteralNONERSISRepetitiveStrainInjurySyndrome = "http://snomed.info/sct#4308002";
 
     /// <summary>
     /// Literal for code: ThirdDegreeBurnOfWristANDORHand
@@ -13158,9 +17298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThirdDegreeBurnOfWristANDORHand = "4310000";
 
     /// <summary>
+    /// Literal for code: NONEThirdDegreeBurnOfWristANDORHand
+    /// </summary>
+    public const string LiteralNONEThirdDegreeBurnOfWristANDORHand = "http://snomed.info/sct#4310000";
+
+    /// <summary>
     /// Literal for code: HypertrophyOfScrotum
     /// </summary>
     public const string LiteralHypertrophyOfScrotum = "431005";
+
+    /// <summary>
+    /// Literal for code: NONEHypertrophyOfScrotum
+    /// </summary>
+    public const string LiteralNONEHypertrophyOfScrotum = "http://snomed.info/sct#431005";
 
     /// <summary>
     /// Literal for code: AcardiacusAnceps
@@ -13168,9 +17318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcardiacusAnceps = "4313003";
 
     /// <summary>
+    /// Literal for code: NONEAcardiacusAnceps
+    /// </summary>
+    public const string LiteralNONEAcardiacusAnceps = "http://snomed.info/sct#4313003";
+
+    /// <summary>
     /// Literal for code: Myometritis
     /// </summary>
     public const string LiteralMyometritis = "4316006";
+
+    /// <summary>
+    /// Literal for code: NONEMyometritis
+    /// </summary>
+    public const string LiteralNONEMyometritis = "http://snomed.info/sct#4316006";
 
     /// <summary>
     /// Literal for code: FactorVDeficiency
@@ -13178,9 +17338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFactorVDeficiency = "4320005";
 
     /// <summary>
+    /// Literal for code: NONEFactorVDeficiency
+    /// </summary>
+    public const string LiteralNONEFactorVDeficiency = "http://snomed.info/sct#4320005";
+
+    /// <summary>
     /// Literal for code: SubacuteCystitis
     /// </summary>
     public const string LiteralSubacuteCystitis = "4324001";
+
+    /// <summary>
+    /// Literal for code: NONESubacuteCystitis
+    /// </summary>
+    public const string LiteralNONESubacuteCystitis = "http://snomed.info/sct#4324001";
 
     /// <summary>
     /// Literal for code: VAL11qPartialMonosomySyndrome
@@ -13188,9 +17358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL11qPartialMonosomySyndrome = "4325000";
 
     /// <summary>
+    /// Literal for code: NONEVAL11qPartialMonosomySyndrome
+    /// </summary>
+    public const string LiteralNONEVAL11qPartialMonosomySyndrome = "http://snomed.info/sct#4325000";
+
+    /// <summary>
     /// Literal for code: SubarachnoidHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithConcussion
     /// </summary>
     public const string LiteralSubarachnoidHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithConcussion = "4332009";
+
+    /// <summary>
+    /// Literal for code: NONESubarachnoidHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithConcussion
+    /// </summary>
+    public const string LiteralNONESubarachnoidHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithConcussion = "http://snomed.info/sct#4332009";
 
     /// <summary>
     /// Literal for code: ArnoldNerveReflexCoughSyndrome
@@ -13198,9 +17378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArnoldNerveReflexCoughSyndrome = "4338008";
 
     /// <summary>
+    /// Literal for code: NONEArnoldNerveReflexCoughSyndrome
+    /// </summary>
+    public const string LiteralNONEArnoldNerveReflexCoughSyndrome = "http://snomed.info/sct#4338008";
+
+    /// <summary>
     /// Literal for code: AcrodermatitisChronicaAtrophicans
     /// </summary>
     public const string LiteralAcrodermatitisChronicaAtrophicans = "4340003";
+
+    /// <summary>
+    /// Literal for code: NONEAcrodermatitisChronicaAtrophicans
+    /// </summary>
+    public const string LiteralNONEAcrodermatitisChronicaAtrophicans = "http://snomed.info/sct#4340003";
 
     /// <summary>
     /// Literal for code: OpenFractureOfMultipleSitesOfMetacarpus
@@ -13208,9 +17398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenFractureOfMultipleSitesOfMetacarpus = "4349002";
 
     /// <summary>
+    /// Literal for code: NONEOpenFractureOfMultipleSitesOfMetacarpus
+    /// </summary>
+    public const string LiteralNONEOpenFractureOfMultipleSitesOfMetacarpus = "http://snomed.info/sct#4349002";
+
+    /// <summary>
     /// Literal for code: OpenDislocationOfScapula
     /// </summary>
     public const string LiteralOpenDislocationOfScapula = "4354006";
+
+    /// <summary>
+    /// Literal for code: NONEOpenDislocationOfScapula
+    /// </summary>
+    public const string LiteralNONEOpenDislocationOfScapula = "http://snomed.info/sct#4354006";
 
     /// <summary>
     /// Literal for code: GingivalSoftTissueRecession
@@ -13218,9 +17418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGingivalSoftTissueRecession = "4356008";
 
     /// <summary>
+    /// Literal for code: NONEGingivalSoftTissueRecession
+    /// </summary>
+    public const string LiteralNONEGingivalSoftTissueRecession = "http://snomed.info/sct#4356008";
+
+    /// <summary>
     /// Literal for code: EarlyCongenitalSyphilis
     /// </summary>
     public const string LiteralEarlyCongenitalSyphilis = "4359001";
+
+    /// <summary>
+    /// Literal for code: NONEEarlyCongenitalSyphilis
+    /// </summary>
+    public const string LiteralNONEEarlyCongenitalSyphilis = "http://snomed.info/sct#4359001";
 
     /// <summary>
     /// Literal for code: StructureOfAssociations
@@ -13228,9 +17438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfAssociations = "4364002";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfAssociations
+    /// </summary>
+    public const string LiteralNONEStructureOfAssociations = "http://snomed.info/sct#4364002";
+
+    /// <summary>
     /// Literal for code: HooverSign
     /// </summary>
     public const string LiteralHooverSign = "4367009";
+
+    /// <summary>
+    /// Literal for code: NONEHooverSign
+    /// </summary>
+    public const string LiteralNONEHooverSign = "http://snomed.info/sct#4367009";
 
     /// <summary>
     /// Literal for code: AbnormalCompositionOfUrine
@@ -13238,9 +17458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbnormalCompositionOfUrine = "437009";
 
     /// <summary>
+    /// Literal for code: NONEAbnormalCompositionOfUrine
+    /// </summary>
+    public const string LiteralNONEAbnormalCompositionOfUrine = "http://snomed.info/sct#437009";
+
+    /// <summary>
     /// Literal for code: ClubbingOfNail
     /// </summary>
     public const string LiteralClubbingOfNail = "4373005";
+
+    /// <summary>
+    /// Literal for code: NONEClubbingOfNail
+    /// </summary>
+    public const string LiteralNONEClubbingOfNail = "http://snomed.info/sct#4373005";
 
     /// <summary>
     /// Literal for code: TVCongenitalTricuspidValveAbnormality
@@ -13248,9 +17478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTVCongenitalTricuspidValveAbnormality = "4374004";
 
     /// <summary>
+    /// Literal for code: NONETVCongenitalTricuspidValveAbnormality
+    /// </summary>
+    public const string LiteralNONETVCongenitalTricuspidValveAbnormality = "http://snomed.info/sct#4374004";
+
+    /// <summary>
     /// Literal for code: VerbalParaphasia
     /// </summary>
     public const string LiteralVerbalParaphasia = "4381006";
+
+    /// <summary>
+    /// Literal for code: NONEVerbalParaphasia
+    /// </summary>
+    public const string LiteralNONEVerbalParaphasia = "http://snomed.info/sct#4381006";
 
     /// <summary>
     /// Literal for code: Bronchospasm
@@ -13258,9 +17498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBronchospasm = "4386001";
 
     /// <summary>
+    /// Literal for code: NONEBronchospasm
+    /// </summary>
+    public const string LiteralNONEBronchospasm = "http://snomed.info/sct#4386001";
+
+    /// <summary>
     /// Literal for code: ChronicLithiumNephrotoxicity
     /// </summary>
     public const string LiteralChronicLithiumNephrotoxicity = "4390004";
+
+    /// <summary>
+    /// Literal for code: NONEChronicLithiumNephrotoxicity
+    /// </summary>
+    public const string LiteralNONEChronicLithiumNephrotoxicity = "http://snomed.info/sct#4390004";
 
     /// <summary>
     /// Literal for code: PartialCongenitalDuodenalObstruction
@@ -13268,9 +17518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPartialCongenitalDuodenalObstruction = "4397001";
 
     /// <summary>
+    /// Literal for code: NONEPartialCongenitalDuodenalObstruction
+    /// </summary>
+    public const string LiteralNONEPartialCongenitalDuodenalObstruction = "http://snomed.info/sct#4397001";
+
+    /// <summary>
     /// Literal for code: AcuteHemorrhagicPancreatitis
     /// </summary>
     public const string LiteralAcuteHemorrhagicPancreatitis = "4399003";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteHemorrhagicPancreatitis
+    /// </summary>
+    public const string LiteralNONEAcuteHemorrhagicPancreatitis = "http://snomed.info/sct#4399003";
 
     /// <summary>
     /// Literal for code: PersistentHyperphenylalaninemia
@@ -13278,9 +17538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersistentHyperphenylalaninemia = "440009";
 
     /// <summary>
+    /// Literal for code: NONEPersistentHyperphenylalaninemia
+    /// </summary>
+    public const string LiteralNONEPersistentHyperphenylalaninemia = "http://snomed.info/sct#440009";
+
+    /// <summary>
     /// Literal for code: ExclamationPointHair
     /// </summary>
     public const string LiteralExclamationPointHair = "4403007";
+
+    /// <summary>
+    /// Literal for code: NONEExclamationPointHair
+    /// </summary>
+    public const string LiteralNONEExclamationPointHair = "http://snomed.info/sct#4403007";
 
     /// <summary>
     /// Literal for code: CongenitalAnomalyOfMaleGenitalSystem
@@ -13288,9 +17558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalAnomalyOfMaleGenitalSystem = "4406004";
 
     /// <summary>
+    /// Literal for code: NONECongenitalAnomalyOfMaleGenitalSystem
+    /// </summary>
+    public const string LiteralNONECongenitalAnomalyOfMaleGenitalSystem = "http://snomed.info/sct#4406004";
+
+    /// <summary>
     /// Literal for code: CombinedMethylmalonicAcidemiaAndHomocystinuriaDueToDefectsInAdenosylcobalaminAndMethylcobalaminSynthesis
     /// </summary>
     public const string LiteralCombinedMethylmalonicAcidemiaAndHomocystinuriaDueToDefectsInAdenosylcobalaminAndMethylcobalaminSynthesis = "4409006";
+
+    /// <summary>
+    /// Literal for code: NONECombinedMethylmalonicAcidemiaAndHomocystinuriaDueToDefectsInAdenosylcobalaminAndMethylcobalaminSynthesis
+    /// </summary>
+    public const string LiteralNONECombinedMethylmalonicAcidemiaAndHomocystinuriaDueToDefectsInAdenosylcobalaminAndMethylcobalaminSynthesis = "http://snomed.info/sct#4409006";
 
     /// <summary>
     /// Literal for code: RetroperitonealHerniaWithObstruction
@@ -13298,9 +17578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRetroperitonealHerniaWithObstruction = "4410001";
 
     /// <summary>
+    /// Literal for code: NONERetroperitonealHerniaWithObstruction
+    /// </summary>
+    public const string LiteralNONERetroperitonealHerniaWithObstruction = "http://snomed.info/sct#4410001";
+
+    /// <summary>
     /// Literal for code: DigitalNerveInjury
     /// </summary>
     public const string LiteralDigitalNerveInjury = "4412009";
+
+    /// <summary>
+    /// Literal for code: NONEDigitalNerveInjury
+    /// </summary>
+    public const string LiteralNONEDigitalNerveInjury = "http://snomed.info/sct#4412009";
 
     /// <summary>
     /// Literal for code: InfectionCausedBySetaria
@@ -13308,9 +17598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectionCausedBySetaria = "4414005";
 
     /// <summary>
+    /// Literal for code: NONEInfectionCausedBySetaria
+    /// </summary>
+    public const string LiteralNONEInfectionCausedBySetaria = "http://snomed.info/sct#4414005";
+
+    /// <summary>
     /// Literal for code: HeerfordtSyndrome
     /// </summary>
     public const string LiteralHeerfordtSyndrome = "4416007";
+
+    /// <summary>
+    /// Literal for code: NONEHeerfordtSyndrome
+    /// </summary>
+    public const string LiteralNONEHeerfordtSyndrome = "http://snomed.info/sct#4416007";
 
     /// <summary>
     /// Literal for code: GangrenousErgotism
@@ -13318,9 +17618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGangrenousErgotism = "4418008";
 
     /// <summary>
+    /// Literal for code: NONEGangrenousErgotism
+    /// </summary>
+    public const string LiteralNONEGangrenousErgotism = "http://snomed.info/sct#4418008";
+
+    /// <summary>
     /// Literal for code: SecondaryHypopituitarism
     /// </summary>
     public const string LiteralSecondaryHypopituitarism = "442001";
+
+    /// <summary>
+    /// Literal for code: NONESecondaryHypopituitarism
+    /// </summary>
+    public const string LiteralNONESecondaryHypopituitarism = "http://snomed.info/sct#442001";
 
     /// <summary>
     /// Literal for code: TenPreviousInducedTerminationsOfPregnancy
@@ -13328,9 +17638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTenPreviousInducedTerminationsOfPregnancy = "4426000";
 
     /// <summary>
+    /// Literal for code: NONETenPreviousInducedTerminationsOfPregnancy
+    /// </summary>
+    public const string LiteralNONETenPreviousInducedTerminationsOfPregnancy = "http://snomed.info/sct#4426000";
+
+    /// <summary>
     /// Literal for code: CystoceleAffectingPregnancy
     /// </summary>
     public const string LiteralCystoceleAffectingPregnancy = "443006";
+
+    /// <summary>
+    /// Literal for code: NONECystoceleAffectingPregnancy
+    /// </summary>
+    public const string LiteralNONECystoceleAffectingPregnancy = "http://snomed.info/sct#443006";
 
     /// <summary>
     /// Literal for code: BSBloomSyndrome
@@ -13338,9 +17658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBSBloomSyndrome = "4434006";
 
     /// <summary>
+    /// Literal for code: NONEBSBloomSyndrome
+    /// </summary>
+    public const string LiteralNONEBSBloomSyndrome = "http://snomed.info/sct#4434006";
+
+    /// <summary>
     /// Literal for code: AxenfeldSchurenbergSyndrome
     /// </summary>
     public const string LiteralAxenfeldSchurenbergSyndrome = "4439001";
+
+    /// <summary>
+    /// Literal for code: NONEAxenfeldSchurenbergSyndrome
+    /// </summary>
+    public const string LiteralNONEAxenfeldSchurenbergSyndrome = "http://snomed.info/sct#4439001";
 
     /// <summary>
     /// Literal for code: SevereBipolarDisorderWithPsychoticFeatures
@@ -13348,9 +17678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSevereBipolarDisorderWithPsychoticFeatures = "4441000";
 
     /// <summary>
+    /// Literal for code: NONESevereBipolarDisorderWithPsychoticFeatures
+    /// </summary>
+    public const string LiteralNONESevereBipolarDisorderWithPsychoticFeatures = "http://snomed.info/sct#4441000";
+
+    /// <summary>
     /// Literal for code: TBUrogenitalTuberculosis
     /// </summary>
     public const string LiteralTBUrogenitalTuberculosis = "4445009";
+
+    /// <summary>
+    /// Literal for code: NONETBUrogenitalTuberculosis
+    /// </summary>
+    public const string LiteralNONETBUrogenitalTuberculosis = "http://snomed.info/sct#4445009";
 
     /// <summary>
     /// Literal for code: AllergicHeadache
@@ -13358,9 +17698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAllergicHeadache = "4448006";
 
     /// <summary>
+    /// Literal for code: NONEAllergicHeadache
+    /// </summary>
+    public const string LiteralNONEAllergicHeadache = "http://snomed.info/sct#4448006";
+
+    /// <summary>
     /// Literal for code: IllegalTerminationOfPregnancyWithRenalTubularNecrosis
     /// </summary>
     public const string LiteralIllegalTerminationOfPregnancyWithRenalTubularNecrosis = "4451004";
+
+    /// <summary>
+    /// Literal for code: NONEIllegalTerminationOfPregnancyWithRenalTubularNecrosis
+    /// </summary>
+    public const string LiteralNONEIllegalTerminationOfPregnancyWithRenalTubularNecrosis = "http://snomed.info/sct#4451004";
 
     /// <summary>
     /// Literal for code: ComplicationOfAdministrativeProcedure
@@ -13368,9 +17718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComplicationOfAdministrativeProcedure = "4461006";
 
     /// <summary>
+    /// Literal for code: NONEComplicationOfAdministrativeProcedure
+    /// </summary>
+    public const string LiteralNONEComplicationOfAdministrativeProcedure = "http://snomed.info/sct#4461006";
+
+    /// <summary>
     /// Literal for code: IndianaMarylandTypeAmyloidPolyneuropathy
     /// </summary>
     public const string LiteralIndianaMarylandTypeAmyloidPolyneuropathy = "4463009";
+
+    /// <summary>
+    /// Literal for code: NONEIndianaMarylandTypeAmyloidPolyneuropathy
+    /// </summary>
+    public const string LiteralNONEIndianaMarylandTypeAmyloidPolyneuropathy = "http://snomed.info/sct#4463009";
 
     /// <summary>
     /// Literal for code: RocioVirusDisease
@@ -13378,9 +17738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRocioVirusDisease = "4464003";
 
     /// <summary>
+    /// Literal for code: NONERocioVirusDisease
+    /// </summary>
+    public const string LiteralNONERocioVirusDisease = "http://snomed.info/sct#4464003";
+
+    /// <summary>
     /// Literal for code: Spherophakia
     /// </summary>
     public const string LiteralSpherophakia = "4465002";
+
+    /// <summary>
+    /// Literal for code: NONESpherophakia
+    /// </summary>
+    public const string LiteralNONESpherophakia = "http://snomed.info/sct#4465002";
 
     /// <summary>
     /// Literal for code: OppenheimGait
@@ -13388,9 +17758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOppenheimGait = "4468000";
 
     /// <summary>
+    /// Literal for code: NONEOppenheimGait
+    /// </summary>
+    public const string LiteralNONEOppenheimGait = "http://snomed.info/sct#4468000";
+
+    /// <summary>
     /// Literal for code: BlanchingOfSkin
     /// </summary>
     public const string LiteralBlanchingOfSkin = "4470009";
+
+    /// <summary>
+    /// Literal for code: NONEBlanchingOfSkin
+    /// </summary>
+    public const string LiteralNONEBlanchingOfSkin = "http://snomed.info/sct#4470009";
 
     /// <summary>
     /// Literal for code: CoachInSportsActivityAccident
@@ -13398,9 +17778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoachInSportsActivityAccident = "447007";
 
     /// <summary>
+    /// Literal for code: NONECoachInSportsActivityAccident
+    /// </summary>
+    public const string LiteralNONECoachInSportsActivityAccident = "http://snomed.info/sct#447007";
+
+    /// <summary>
     /// Literal for code: MigraineWithAura
     /// </summary>
     public const string LiteralMigraineWithAura = "4473006";
+
+    /// <summary>
+    /// Literal for code: NONEMigraineWithAura
+    /// </summary>
+    public const string LiteralNONEMigraineWithAura = "http://snomed.info/sct#4473006";
 
     /// <summary>
     /// Literal for code: JuvenileMyopathyANDLactateAcidosis
@@ -13408,9 +17798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJuvenileMyopathyANDLactateAcidosis = "4477007";
 
     /// <summary>
+    /// Literal for code: NONEJuvenileMyopathyANDLactateAcidosis
+    /// </summary>
+    public const string LiteralNONEJuvenileMyopathyANDLactateAcidosis = "http://snomed.info/sct#4477007";
+
+    /// <summary>
     /// Literal for code: MultipleFracturesOfUpperANDLowerLimbs
     /// </summary>
     public const string LiteralMultipleFracturesOfUpperANDLowerLimbs = "4478002";
+
+    /// <summary>
+    /// Literal for code: NONEMultipleFracturesOfUpperANDLowerLimbs
+    /// </summary>
+    public const string LiteralNONEMultipleFracturesOfUpperANDLowerLimbs = "http://snomed.info/sct#4478002";
 
     /// <summary>
     /// Literal for code: AbnormalGastricSecretionRegulation
@@ -13418,9 +17818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbnormalGastricSecretionRegulation = "4481007";
 
     /// <summary>
+    /// Literal for code: NONEAbnormalGastricSecretionRegulation
+    /// </summary>
+    public const string LiteralNONEAbnormalGastricSecretionRegulation = "http://snomed.info/sct#4481007";
+
+    /// <summary>
     /// Literal for code: SyphiliticPunchedOutUlcer
     /// </summary>
     public const string LiteralSyphiliticPunchedOutUlcer = "4483005";
+
+    /// <summary>
+    /// Literal for code: NONESyphiliticPunchedOutUlcer
+    /// </summary>
+    public const string LiteralNONESyphiliticPunchedOutUlcer = "http://snomed.info/sct#4483005";
 
     /// <summary>
     /// Literal for code: UlcerativeStomatitis
@@ -13428,9 +17838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUlcerativeStomatitis = "450005";
 
     /// <summary>
+    /// Literal for code: NONEUlcerativeStomatitis
+    /// </summary>
+    public const string LiteralNONEUlcerativeStomatitis = "http://snomed.info/sct#450005";
+
+    /// <summary>
     /// Literal for code: BlisterOfGroinWithoutInfection
     /// </summary>
     public const string LiteralBlisterOfGroinWithoutInfection = "452002";
+
+    /// <summary>
+    /// Literal for code: NONEBlisterOfGroinWithoutInfection
+    /// </summary>
+    public const string LiteralNONEBlisterOfGroinWithoutInfection = "http://snomed.info/sct#452002";
 
     /// <summary>
     /// Literal for code: SquamousMetaplasiaOfProstateGland
@@ -13438,9 +17858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSquamousMetaplasiaOfProstateGland = "460001";
 
     /// <summary>
+    /// Literal for code: NONESquamousMetaplasiaOfProstateGland
+    /// </summary>
+    public const string LiteralNONESquamousMetaplasiaOfProstateGland = "http://snomed.info/sct#460001";
+
+    /// <summary>
     /// Literal for code: OldLacerationOfPelvicFloorMuscle
     /// </summary>
     public const string LiteralOldLacerationOfPelvicFloorMuscle = "467003";
+
+    /// <summary>
+    /// Literal for code: NONEOldLacerationOfPelvicFloorMuscle
+    /// </summary>
+    public const string LiteralNONEOldLacerationOfPelvicFloorMuscle = "http://snomed.info/sct#467003";
 
     /// <summary>
     /// Literal for code: VitreousTouchSyndrome
@@ -13448,9 +17878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVitreousTouchSyndrome = "470004";
 
     /// <summary>
+    /// Literal for code: NONEVitreousTouchSyndrome
+    /// </summary>
+    public const string LiteralNONEVitreousTouchSyndrome = "http://snomed.info/sct#470004";
+
+    /// <summary>
     /// Literal for code: GravesQuoteDiseaseWithPretibialMyxedemaANDWithThyrotoxicCrisis
     /// </summary>
     public const string LiteralGravesQuoteDiseaseWithPretibialMyxedemaANDWithThyrotoxicCrisis = "479003";
+
+    /// <summary>
+    /// Literal for code: NONEGravesQuoteDiseaseWithPretibialMyxedemaANDWithThyrotoxicCrisis
+    /// </summary>
+    public const string LiteralNONEGravesQuoteDiseaseWithPretibialMyxedemaANDWithThyrotoxicCrisis = "http://snomed.info/sct#479003";
 
     /// <summary>
     /// Literal for code: AcuteVascularInsufficiency
@@ -13458,9 +17898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteVascularInsufficiency = "486006";
 
     /// <summary>
+    /// Literal for code: NONEAcuteVascularInsufficiency
+    /// </summary>
+    public const string LiteralNONEAcuteVascularInsufficiency = "http://snomed.info/sct#486006";
+
+    /// <summary>
     /// Literal for code: FibroidMyocarditis
     /// </summary>
     public const string LiteralFibroidMyocarditis = "488007";
+
+    /// <summary>
+    /// Literal for code: NONEFibroidMyocarditis
+    /// </summary>
+    public const string LiteralNONEFibroidMyocarditis = "http://snomed.info/sct#488007";
 
     /// <summary>
     /// Literal for code: UpperRespiratoryTractHypersensitivityReaction
@@ -13468,9 +17918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUpperRespiratoryTractHypersensitivityReaction = "490008";
 
     /// <summary>
+    /// Literal for code: NONEUpperRespiratoryTractHypersensitivityReaction
+    /// </summary>
+    public const string LiteralNONEUpperRespiratoryTractHypersensitivityReaction = "http://snomed.info/sct#490008";
+
+    /// <summary>
     /// Literal for code: ClosedTraumaticDislocationOfThirdCervicalVertebra
     /// </summary>
     public const string LiteralClosedTraumaticDislocationOfThirdCervicalVertebra = "496002";
+
+    /// <summary>
+    /// Literal for code: NONEClosedTraumaticDislocationOfThirdCervicalVertebra
+    /// </summary>
+    public const string LiteralNONEClosedTraumaticDislocationOfThirdCervicalVertebra = "http://snomed.info/sct#496002";
 
     /// <summary>
     /// Literal for code: AndrogenDependentHirsutism
@@ -13478,9 +17938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAndrogenDependentHirsutism = "504009";
 
     /// <summary>
+    /// Literal for code: NONEAndrogenDependentHirsutism
+    /// </summary>
+    public const string LiteralNONEAndrogenDependentHirsutism = "http://snomed.info/sct#504009";
+
+    /// <summary>
     /// Literal for code: ForeignBodyInHypopharynx
     /// </summary>
     public const string LiteralForeignBodyInHypopharynx = "517007";
+
+    /// <summary>
+    /// Literal for code: NONEForeignBodyInHypopharynx
+    /// </summary>
+    public const string LiteralNONEForeignBodyInHypopharynx = "http://snomed.info/sct#517007";
 
     /// <summary>
     /// Literal for code: MultipleAggregation
@@ -13488,9 +17958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultipleAggregation = "518002";
 
     /// <summary>
+    /// Literal for code: NONEMultipleAggregation
+    /// </summary>
+    public const string LiteralNONEMultipleAggregation = "http://snomed.info/sct#518002";
+
+    /// <summary>
     /// Literal for code: CongenitalBentNose
     /// </summary>
     public const string LiteralCongenitalBentNose = "520004";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalBentNose
+    /// </summary>
+    public const string LiteralNONECongenitalBentNose = "http://snomed.info/sct#520004";
 
     /// <summary>
     /// Literal for code: SpontaneousFetalEvolutionRoedererQuoteSMethod
@@ -13498,9 +17978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpontaneousFetalEvolutionRoedererQuoteSMethod = "527001";
 
     /// <summary>
+    /// Literal for code: NONESpontaneousFetalEvolutionRoedererQuoteSMethod
+    /// </summary>
+    public const string LiteralNONESpontaneousFetalEvolutionRoedererQuoteSMethod = "http://snomed.info/sct#527001";
+
+    /// <summary>
     /// Literal for code: GlissonianCirrhosis
     /// </summary>
     public const string LiteralGlissonianCirrhosis = "536002";
+
+    /// <summary>
+    /// Literal for code: NONEGlissonianCirrhosis
+    /// </summary>
+    public const string LiteralNONEGlissonianCirrhosis = "http://snomed.info/sct#536002";
 
     /// <summary>
     /// Literal for code: ConjunctivalArgyrosis
@@ -13508,9 +17998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConjunctivalArgyrosis = "539009";
 
     /// <summary>
+    /// Literal for code: NONEConjunctivalArgyrosis
+    /// </summary>
+    public const string LiteralNONEConjunctivalArgyrosis = "http://snomed.info/sct#539009";
+
+    /// <summary>
     /// Literal for code: HypersecretionOfCalcitonin
     /// </summary>
     public const string LiteralHypersecretionOfCalcitonin = "547009";
+
+    /// <summary>
+    /// Literal for code: NONEHypersecretionOfCalcitonin
+    /// </summary>
+    public const string LiteralNONEHypersecretionOfCalcitonin = "http://snomed.info/sct#547009";
 
     /// <summary>
     /// Literal for code: VAL13pPartialTrisomySyndrome
@@ -13518,9 +18018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL13pPartialTrisomySyndrome = "548004";
 
     /// <summary>
+    /// Literal for code: NONEVAL13pPartialTrisomySyndrome
+    /// </summary>
+    public const string LiteralNONEVAL13pPartialTrisomySyndrome = "http://snomed.info/sct#548004";
+
+    /// <summary>
     /// Literal for code: VAL2pPartialTrisomySyndrome
     /// </summary>
     public const string LiteralVAL2pPartialTrisomySyndrome = "554003";
+
+    /// <summary>
+    /// Literal for code: NONEVAL2pPartialTrisomySyndrome
+    /// </summary>
+    public const string LiteralNONEVAL2pPartialTrisomySyndrome = "http://snomed.info/sct#554003";
 
     /// <summary>
     /// Literal for code: DicentraSpeciesPoisoning
@@ -13528,9 +18038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDicentraSpeciesPoisoning = "555002";
 
     /// <summary>
+    /// Literal for code: NONEDicentraSpeciesPoisoning
+    /// </summary>
+    public const string LiteralNONEDicentraSpeciesPoisoning = "http://snomed.info/sct#555002";
+
+    /// <summary>
     /// Literal for code: Nystagmus
     /// </summary>
     public const string LiteralNystagmus = "563001";
+
+    /// <summary>
+    /// Literal for code: NONENystagmus
+    /// </summary>
+    public const string LiteralNONENystagmus = "http://snomed.info/sct#563001";
 
     /// <summary>
     /// Literal for code: HabitDisorder
@@ -13538,9 +18058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHabitDisorder = "568005";
 
     /// <summary>
+    /// Literal for code: NONEHabitDisorder
+    /// </summary>
+    public const string LiteralNONEHabitDisorder = "http://snomed.info/sct#568005";
+
+    /// <summary>
     /// Literal for code: ContactDermatitisDueToPrimrose
     /// </summary>
     public const string LiteralContactDermatitisDueToPrimrose = "586008";
+
+    /// <summary>
+    /// Literal for code: NONEContactDermatitisDueToPrimrose
+    /// </summary>
+    public const string LiteralNONEContactDermatitisDueToPrimrose = "http://snomed.info/sct#586008";
 
     /// <summary>
     /// Literal for code: CongenitalAneurysmOfAnteriorCommunicatingArtery
@@ -13548,9 +18078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalAneurysmOfAnteriorCommunicatingArtery = "590005";
 
     /// <summary>
+    /// Literal for code: NONECongenitalAneurysmOfAnteriorCommunicatingArtery
+    /// </summary>
+    public const string LiteralNONECongenitalAneurysmOfAnteriorCommunicatingArtery = "http://snomed.info/sct#590005";
+
+    /// <summary>
     /// Literal for code: PremenstrualDysphoricDisorder
     /// </summary>
     public const string LiteralPremenstrualDysphoricDisorder = "596004";
+
+    /// <summary>
+    /// Literal for code: NONEPremenstrualDysphoricDisorder
+    /// </summary>
+    public const string LiteralNONEPremenstrualDysphoricDisorder = "http://snomed.info/sct#596004";
 
     /// <summary>
     /// Literal for code: PersistentPneumothorax
@@ -13558,9 +18098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersistentPneumothorax = "599006";
 
     /// <summary>
+    /// Literal for code: NONEPersistentPneumothorax
+    /// </summary>
+    public const string LiteralNONEPersistentPneumothorax = "http://snomed.info/sct#599006";
+
+    /// <summary>
     /// Literal for code: Pyromania
     /// </summary>
     public const string LiteralPyromania = "600009";
+
+    /// <summary>
+    /// Literal for code: NONEPyromania
+    /// </summary>
+    public const string LiteralNONEPyromania = "http://snomed.info/sct#600009";
 
     /// <summary>
     /// Literal for code: RossRiverFever
@@ -13568,9 +18118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRossRiverFever = "602001";
 
     /// <summary>
+    /// Literal for code: NONERossRiverFever
+    /// </summary>
+    public const string LiteralNONERossRiverFever = "http://snomed.info/sct#602001";
+
+    /// <summary>
     /// Literal for code: DecreasedVitalCapacity
     /// </summary>
     public const string LiteralDecreasedVitalCapacity = "607007";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedVitalCapacity
+    /// </summary>
+    public const string LiteralNONEDecreasedVitalCapacity = "http://snomed.info/sct#607007";
 
     /// <summary>
     /// Literal for code: SpasticAphonia
@@ -13578,9 +18138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpasticAphonia = "610000";
 
     /// <summary>
+    /// Literal for code: NONESpasticAphonia
+    /// </summary>
+    public const string LiteralNONESpasticAphonia = "http://snomed.info/sct#610000";
+
+    /// <summary>
     /// Literal for code: FRAXAFragileXSyndrome
     /// </summary>
     public const string LiteralFRAXAFragileXSyndrome = "613003";
+
+    /// <summary>
+    /// Literal for code: NONEFRAXAFragileXSyndrome
+    /// </summary>
+    public const string LiteralNONEFRAXAFragileXSyndrome = "http://snomed.info/sct#613003";
 
     /// <summary>
     /// Literal for code: ObstructionDueToForeignBodyAccidentallyLeftInOperativeWoundANDORBodyCavityDuringAProcedure
@@ -13588,9 +18158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObstructionDueToForeignBodyAccidentallyLeftInOperativeWoundANDORBodyCavityDuringAProcedure = "615005";
 
     /// <summary>
+    /// Literal for code: NONEObstructionDueToForeignBodyAccidentallyLeftInOperativeWoundANDORBodyCavityDuringAProcedure
+    /// </summary>
+    public const string LiteralNONEObstructionDueToForeignBodyAccidentallyLeftInOperativeWoundANDORBodyCavityDuringAProcedure = "http://snomed.info/sct#615005";
+
+    /// <summary>
     /// Literal for code: SensorimotorDisorderOfEyelid
     /// </summary>
     public const string LiteralSensorimotorDisorderOfEyelid = "616006";
+
+    /// <summary>
+    /// Literal for code: NONESensorimotorDisorderOfEyelid
+    /// </summary>
+    public const string LiteralNONESensorimotorDisorderOfEyelid = "http://snomed.info/sct#616006";
 
     /// <summary>
     /// Literal for code: HypercortisolismDueToNonpituitaryTumor
@@ -13598,9 +18178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypercortisolismDueToNonpituitaryTumor = "626004";
 
     /// <summary>
+    /// Literal for code: NONEHypercortisolismDueToNonpituitaryTumor
+    /// </summary>
+    public const string LiteralNONEHypercortisolismDueToNonpituitaryTumor = "http://snomed.info/sct#626004";
+
+    /// <summary>
     /// Literal for code: TransfusionReactionDueToMinorIncompatibility
     /// </summary>
     public const string LiteralTransfusionReactionDueToMinorIncompatibility = "631002";
+
+    /// <summary>
+    /// Literal for code: NONETransfusionReactionDueToMinorIncompatibility
+    /// </summary>
+    public const string LiteralNONETransfusionReactionDueToMinorIncompatibility = "http://snomed.info/sct#631002";
 
     /// <summary>
     /// Literal for code: SaddleBoil
@@ -13608,9 +18198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSaddleBoil = "634005";
 
     /// <summary>
+    /// Literal for code: NONESaddleBoil
+    /// </summary>
+    public const string LiteralNONESaddleBoil = "http://snomed.info/sct#634005";
+
+    /// <summary>
     /// Literal for code: InjuryOfPneumogastricNerve
     /// </summary>
     public const string LiteralInjuryOfPneumogastricNerve = "640003";
+
+    /// <summary>
+    /// Literal for code: NONEInjuryOfPneumogastricNerve
+    /// </summary>
+    public const string LiteralNONEInjuryOfPneumogastricNerve = "http://snomed.info/sct#640003";
 
     /// <summary>
     /// Literal for code: HypertrophyOfLip
@@ -13618,9 +18218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypertrophyOfLip = "643001";
 
     /// <summary>
+    /// Literal for code: NONEHypertrophyOfLip
+    /// </summary>
+    public const string LiteralNONEHypertrophyOfLip = "http://snomed.info/sct#643001";
+
+    /// <summary>
     /// Literal for code: IdiopathicCystOfAnteriorChamber
     /// </summary>
     public const string LiteralIdiopathicCystOfAnteriorChamber = "646009";
+
+    /// <summary>
+    /// Literal for code: NONEIdiopathicCystOfAnteriorChamber
+    /// </summary>
+    public const string LiteralNONEIdiopathicCystOfAnteriorChamber = "http://snomed.info/sct#646009";
 
     /// <summary>
     /// Literal for code: OpenFractureOfDistalEndOfUlna
@@ -13628,9 +18238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenFractureOfDistalEndOfUlna = "649002";
 
     /// <summary>
+    /// Literal for code: NONEOpenFractureOfDistalEndOfUlna
+    /// </summary>
+    public const string LiteralNONEOpenFractureOfDistalEndOfUlna = "http://snomed.info/sct#649002";
+
+    /// <summary>
     /// Literal for code: RootWork
     /// </summary>
     public const string LiteralRootWork = "651003";
+
+    /// <summary>
+    /// Literal for code: NONERootWork
+    /// </summary>
+    public const string LiteralNONERootWork = "http://snomed.info/sct#651003";
 
     /// <summary>
     /// Literal for code: GangrenousTonsillitis
@@ -13638,9 +18258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGangrenousTonsillitis = "652005";
 
     /// <summary>
+    /// Literal for code: NONEGangrenousTonsillitis
+    /// </summary>
+    public const string LiteralNONEGangrenousTonsillitis = "http://snomed.info/sct#652005";
+
+    /// <summary>
     /// Literal for code: AbnormalFetalHeartBeatNotedBeforeLaborInLivebornInfant
     /// </summary>
     public const string LiteralAbnormalFetalHeartBeatNotedBeforeLaborInLivebornInfant = "655007";
+
+    /// <summary>
+    /// Literal for code: NONEAbnormalFetalHeartBeatNotedBeforeLaborInLivebornInfant
+    /// </summary>
+    public const string LiteralNONEAbnormalFetalHeartBeatNotedBeforeLaborInLivebornInfant = "http://snomed.info/sct#655007";
 
     /// <summary>
     /// Literal for code: InjuryOfColonWithoutOpenWoundIntoAbdominalCavity
@@ -13648,9 +18278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjuryOfColonWithoutOpenWoundIntoAbdominalCavity = "658009";
 
     /// <summary>
+    /// Literal for code: NONEInjuryOfColonWithoutOpenWoundIntoAbdominalCavity
+    /// </summary>
+    public const string LiteralNONEInjuryOfColonWithoutOpenWoundIntoAbdominalCavity = "http://snomed.info/sct#658009";
+
+    /// <summary>
     /// Literal for code: PulmonaryEmbolismFollowingMolarANDOREctopicPregnancy
     /// </summary>
     public const string LiteralPulmonaryEmbolismFollowingMolarANDOREctopicPregnancy = "663008";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryEmbolismFollowingMolarANDOREctopicPregnancy
+    /// </summary>
+    public const string LiteralNONEPulmonaryEmbolismFollowingMolarANDOREctopicPregnancy = "http://snomed.info/sct#663008";
 
     /// <summary>
     /// Literal for code: DelayedOvulation
@@ -13658,9 +18298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDelayedOvulation = "664002";
 
     /// <summary>
+    /// Literal for code: NONEDelayedOvulation
+    /// </summary>
+    public const string LiteralNONEDelayedOvulation = "http://snomed.info/sct#664002";
+
+    /// <summary>
     /// Literal for code: PoisoningByAntivaricoseDrugANDORSclerosingAgent
     /// </summary>
     public const string LiteralPoisoningByAntivaricoseDrugANDORSclerosingAgent = "666000";
+
+    /// <summary>
+    /// Literal for code: NONEPoisoningByAntivaricoseDrugANDORSclerosingAgent
+    /// </summary>
+    public const string LiteralNONEPoisoningByAntivaricoseDrugANDORSclerosingAgent = "http://snomed.info/sct#666000";
 
     /// <summary>
     /// Literal for code: TorsionOfIntestine
@@ -13668,9 +18318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTorsionOfIntestine = "675003";
 
     /// <summary>
+    /// Literal for code: NONETorsionOfIntestine
+    /// </summary>
+    public const string LiteralNONETorsionOfIntestine = "http://snomed.info/sct#675003";
+
+    /// <summary>
     /// Literal for code: ThrombosisComplicatingPregnancyANDORPuerperium
     /// </summary>
     public const string LiteralThrombosisComplicatingPregnancyANDORPuerperium = "682004";
+
+    /// <summary>
+    /// Literal for code: NONEThrombosisComplicatingPregnancyANDORPuerperium
+    /// </summary>
+    public const string LiteralNONEThrombosisComplicatingPregnancyANDORPuerperium = "http://snomed.info/sct#682004";
 
     /// <summary>
     /// Literal for code: AcquiredTelangiectasiaOfSmallANDORLargeIntestines
@@ -13678,9 +18338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcquiredTelangiectasiaOfSmallANDORLargeIntestines = "685002";
 
     /// <summary>
+    /// Literal for code: NONEAcquiredTelangiectasiaOfSmallANDORLargeIntestines
+    /// </summary>
+    public const string LiteralNONEAcquiredTelangiectasiaOfSmallANDORLargeIntestines = "http://snomed.info/sct#685002";
+
+    /// <summary>
     /// Literal for code: AdultOsteochondritisOfSpine
     /// </summary>
     public const string LiteralAdultOsteochondritisOfSpine = "701003";
+
+    /// <summary>
+    /// Literal for code: NONEAdultOsteochondritisOfSpine
+    /// </summary>
+    public const string LiteralNONEAdultOsteochondritisOfSpine = "http://snomed.info/sct#701003";
 
     /// <summary>
     /// Literal for code: CongenitalAdhesionOfTongue
@@ -13688,9 +18358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalAdhesionOfTongue = "703000";
 
     /// <summary>
+    /// Literal for code: NONECongenitalAdhesionOfTongue
+    /// </summary>
+    public const string LiteralNONECongenitalAdhesionOfTongue = "http://snomed.info/sct#703000";
+
+    /// <summary>
     /// Literal for code: AbrasionANDORFrictionBurnOfToeWithInfection
     /// </summary>
     public const string LiteralAbrasionANDORFrictionBurnOfToeWithInfection = "714002";
+
+    /// <summary>
+    /// Literal for code: NONEAbrasionANDORFrictionBurnOfToeWithInfection
+    /// </summary>
+    public const string LiteralNONEAbrasionANDORFrictionBurnOfToeWithInfection = "http://snomed.info/sct#714002";
 
     /// <summary>
     /// Literal for code: NontraumaticRuptureOfUrethra
@@ -13698,9 +18378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNontraumaticRuptureOfUrethra = "715001";
 
     /// <summary>
+    /// Literal for code: NONENontraumaticRuptureOfUrethra
+    /// </summary>
+    public const string LiteralNONENontraumaticRuptureOfUrethra = "http://snomed.info/sct#715001";
+
+    /// <summary>
     /// Literal for code: AcuteBronchiolitisWithObstruction
     /// </summary>
     public const string LiteralAcuteBronchiolitisWithObstruction = "718004";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteBronchiolitisWithObstruction
+    /// </summary>
+    public const string LiteralNONEAcuteBronchiolitisWithObstruction = "http://snomed.info/sct#718004";
 
     /// <summary>
     /// Literal for code: SuperficialForeignBodyOfGroinWithoutMajorOpenWoundButWithInfection
@@ -13708,9 +18398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperficialForeignBodyOfGroinWithoutMajorOpenWoundButWithInfection = "733007";
 
     /// <summary>
+    /// Literal for code: NONESuperficialForeignBodyOfGroinWithoutMajorOpenWoundButWithInfection
+    /// </summary>
+    public const string LiteralNONESuperficialForeignBodyOfGroinWithoutMajorOpenWoundButWithInfection = "http://snomed.info/sct#733007";
+
+    /// <summary>
     /// Literal for code: Opocephalus
     /// </summary>
     public const string LiteralOpocephalus = "734001";
+
+    /// <summary>
+    /// Literal for code: NONEOpocephalus
+    /// </summary>
+    public const string LiteralNONEOpocephalus = "http://snomed.info/sct#734001";
 
     /// <summary>
     /// Literal for code: AbscessOfHip
@@ -13718,9 +18418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbscessOfHip = "736004";
 
     /// <summary>
+    /// Literal for code: NONEAbscessOfHip
+    /// </summary>
+    public const string LiteralNONEAbscessOfHip = "http://snomed.info/sct#736004";
+
+    /// <summary>
     /// Literal for code: SchistosomaMansoniInfection
     /// </summary>
     public const string LiteralSchistosomaMansoniInfection = "750009";
+
+    /// <summary>
+    /// Literal for code: NONESchistosomaMansoniInfection
+    /// </summary>
+    public const string LiteralNONESchistosomaMansoniInfection = "http://snomed.info/sct#750009";
 
     /// <summary>
     /// Literal for code: PostgastrectomyPhytobezoar
@@ -13728,9 +18438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPostgastrectomyPhytobezoar = "755004";
 
     /// <summary>
+    /// Literal for code: NONEPostgastrectomyPhytobezoar
+    /// </summary>
+    public const string LiteralNONEPostgastrectomyPhytobezoar = "http://snomed.info/sct#755004";
+
+    /// <summary>
     /// Literal for code: ChronicRheumaticMyopericarditis
     /// </summary>
     public const string LiteralChronicRheumaticMyopericarditis = "756003";
+
+    /// <summary>
+    /// Literal for code: NONEChronicRheumaticMyopericarditis
+    /// </summary>
+    public const string LiteralNONEChronicRheumaticMyopericarditis = "http://snomed.info/sct#756003";
 
     /// <summary>
     /// Literal for code: CystOfUterus
@@ -13738,9 +18458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCystOfUterus = "758002";
 
     /// <summary>
+    /// Literal for code: NONECystOfUterus
+    /// </summary>
+    public const string LiteralNONECystOfUterus = "http://snomed.info/sct#758002";
+
+    /// <summary>
     /// Literal for code: OpenWoundOfHeadWithComplication
     /// </summary>
     public const string LiteralOpenWoundOfHeadWithComplication = "775008";
+
+    /// <summary>
+    /// Literal for code: NONEOpenWoundOfHeadWithComplication
+    /// </summary>
+    public const string LiteralNONEOpenWoundOfHeadWithComplication = "http://snomed.info/sct#775008";
 
     /// <summary>
     /// Literal for code: PartialArterialRetinalOcclusion
@@ -13748,9 +18478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPartialArterialRetinalOcclusion = "776009";
 
     /// <summary>
+    /// Literal for code: NONEPartialArterialRetinalOcclusion
+    /// </summary>
+    public const string LiteralNONEPartialArterialRetinalOcclusion = "http://snomed.info/sct#776009";
+
+    /// <summary>
     /// Literal for code: CestrumDiurnumPoisoning
     /// </summary>
     public const string LiteralCestrumDiurnumPoisoning = "781000";
+
+    /// <summary>
+    /// Literal for code: NONECestrumDiurnumPoisoning
+    /// </summary>
+    public const string LiteralNONECestrumDiurnumPoisoning = "http://snomed.info/sct#781000";
 
     /// <summary>
     /// Literal for code: ClinicalStageIB
@@ -13758,9 +18498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalStageIB = "786005";
 
     /// <summary>
+    /// Literal for code: NONEClinicalStageIB
+    /// </summary>
+    public const string LiteralNONEClinicalStageIB = "http://snomed.info/sct#786005";
+
+    /// <summary>
     /// Literal for code: RheumaticMitralStenosisWithRegurgitation
     /// </summary>
     public const string LiteralRheumaticMitralStenosisWithRegurgitation = "787001";
+
+    /// <summary>
+    /// Literal for code: NONERheumaticMitralStenosisWithRegurgitation
+    /// </summary>
+    public const string LiteralNONERheumaticMitralStenosisWithRegurgitation = "http://snomed.info/sct#787001";
 
     /// <summary>
     /// Literal for code: DiseaseRelatedDiet
@@ -13768,9 +18518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiseaseRelatedDiet = "788006";
 
     /// <summary>
+    /// Literal for code: NONEDiseaseRelatedDiet
+    /// </summary>
+    public const string LiteralNONEDiseaseRelatedDiet = "http://snomed.info/sct#788006";
+
+    /// <summary>
     /// Literal for code: CJDCreutzfeldtJakobDisease
     /// </summary>
     public const string LiteralCJDCreutzfeldtJakobDisease = "792004";
+
+    /// <summary>
+    /// Literal for code: NONECJDCreutzfeldtJakobDisease
+    /// </summary>
+    public const string LiteralNONECJDCreutzfeldtJakobDisease = "http://snomed.info/sct#792004";
 
     /// <summary>
     /// Literal for code: SigmoidColonUlcer
@@ -13778,9 +18538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSigmoidColonUlcer = "799008";
 
     /// <summary>
+    /// Literal for code: NONESigmoidColonUlcer
+    /// </summary>
+    public const string LiteralNONESigmoidColonUlcer = "http://snomed.info/sct#799008";
+
+    /// <summary>
     /// Literal for code: InsectBiteNonvenomousOfFootInfected
     /// </summary>
     public const string LiteralInsectBiteNonvenomousOfFootInfected = "801006";
+
+    /// <summary>
+    /// Literal for code: NONEInsectBiteNonvenomousOfFootInfected
+    /// </summary>
+    public const string LiteralNONEInsectBiteNonvenomousOfFootInfected = "http://snomed.info/sct#801006";
 
     /// <summary>
     /// Literal for code: PneumoconiosisDueToSilica
@@ -13788,9 +18558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPneumoconiosisDueToSilica = "805002";
 
     /// <summary>
+    /// Literal for code: NONEPneumoconiosisDueToSilica
+    /// </summary>
+    public const string LiteralNONEPneumoconiosisDueToSilica = "http://snomed.info/sct#805002";
+
+    /// <summary>
     /// Literal for code: FlailMotion
     /// </summary>
     public const string LiteralFlailMotion = "811004";
+
+    /// <summary>
+    /// Literal for code: NONEFlailMotion
+    /// </summary>
+    public const string LiteralNONEFlailMotion = "http://snomed.info/sct#811004";
 
     /// <summary>
     /// Literal for code: AnkleInstability
@@ -13798,9 +18578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnkleInstability = "813001";
 
     /// <summary>
+    /// Literal for code: NONEAnkleInstability
+    /// </summary>
+    public const string LiteralNONEAnkleInstability = "http://snomed.info/sct#813001";
+
+    /// <summary>
     /// Literal for code: Episcleritis
     /// </summary>
     public const string LiteralEpiscleritis = "815008";
+
+    /// <summary>
+    /// Literal for code: NONEEpiscleritis
+    /// </summary>
+    public const string LiteralNONEEpiscleritis = "http://snomed.info/sct#815008";
 
     /// <summary>
     /// Literal for code: GeneticRecombination
@@ -13808,9 +18598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneticRecombination = "816009";
 
     /// <summary>
+    /// Literal for code: NONEGeneticRecombination
+    /// </summary>
+    public const string LiteralNONEGeneticRecombination = "http://snomed.info/sct#816009";
+
+    /// <summary>
     /// Literal for code: ThirdDegreeBurnOfMultipleSitesOfLowerLimb
     /// </summary>
     public const string LiteralThirdDegreeBurnOfMultipleSitesOfLowerLimb = "818005";
+
+    /// <summary>
+    /// Literal for code: NONEThirdDegreeBurnOfMultipleSitesOfLowerLimb
+    /// </summary>
+    public const string LiteralNONEThirdDegreeBurnOfMultipleSitesOfLowerLimb = "http://snomed.info/sct#818005";
 
     /// <summary>
     /// Literal for code: SuperficialInjuryOfAxillaWithInfection
@@ -13818,9 +18618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperficialInjuryOfAxillaWithInfection = "825003";
 
     /// <summary>
+    /// Literal for code: NONESuperficialInjuryOfAxillaWithInfection
+    /// </summary>
+    public const string LiteralNONESuperficialInjuryOfAxillaWithInfection = "http://snomed.info/sct#825003";
+
+    /// <summary>
     /// Literal for code: LateCongenitalSyphilisLatentPlusSeroCSF2YearsORMore
     /// </summary>
     public const string LiteralLateCongenitalSyphilisLatentPlusSeroCSF2YearsORMore = "827006";
+
+    /// <summary>
+    /// Literal for code: NONELateCongenitalSyphilisLatentPlusSeroCSF2YearsORMore
+    /// </summary>
+    public const string LiteralNONELateCongenitalSyphilisLatentPlusSeroCSF2YearsORMore = "http://snomed.info/sct#827006";
 
     /// <summary>
     /// Literal for code: ModerateMajorDepression
@@ -13828,9 +18638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralModerateMajorDepression = "832007";
 
     /// <summary>
+    /// Literal for code: NONEModerateMajorDepression
+    /// </summary>
+    public const string LiteralNONEModerateMajorDepression = "http://snomed.info/sct#832007";
+
+    /// <summary>
     /// Literal for code: ChairSeatedFacingCoitalPosition
     /// </summary>
     public const string LiteralChairSeatedFacingCoitalPosition = "834008";
+
+    /// <summary>
+    /// Literal for code: NONEChairSeatedFacingCoitalPosition
+    /// </summary>
+    public const string LiteralNONEChairSeatedFacingCoitalPosition = "http://snomed.info/sct#834008";
 
     /// <summary>
     /// Literal for code: CongenitalAbsenceOfSkullBone
@@ -13838,9 +18658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalAbsenceOfSkullBone = "841002";
 
     /// <summary>
+    /// Literal for code: NONECongenitalAbsenceOfSkullBone
+    /// </summary>
+    public const string LiteralNONECongenitalAbsenceOfSkullBone = "http://snomed.info/sct#841002";
+
+    /// <summary>
     /// Literal for code: Consanguinity
     /// </summary>
     public const string LiteralConsanguinity = "842009";
+
+    /// <summary>
+    /// Literal for code: NONEConsanguinity
+    /// </summary>
+    public const string LiteralNONEConsanguinity = "http://snomed.info/sct#842009";
 
     /// <summary>
     /// Literal for code: Poliomyelomalacia
@@ -13848,9 +18678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPoliomyelomalacia = "843004";
 
     /// <summary>
+    /// Literal for code: NONEPoliomyelomalacia
+    /// </summary>
+    public const string LiteralNONEPoliomyelomalacia = "http://snomed.info/sct#843004";
+
+    /// <summary>
     /// Literal for code: FindingRelatingToBehavior
     /// </summary>
     public const string LiteralFindingRelatingToBehavior = "844005";
+
+    /// <summary>
+    /// Literal for code: NONEFindingRelatingToBehavior
+    /// </summary>
+    public const string LiteralNONEFindingRelatingToBehavior = "http://snomed.info/sct#844005";
 
     /// <summary>
     /// Literal for code: InferiorMesentericArteryInjury
@@ -13858,9 +18698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInferiorMesentericArteryInjury = "845006";
 
     /// <summary>
+    /// Literal for code: NONEInferiorMesentericArteryInjury
+    /// </summary>
+    public const string LiteralNONEInferiorMesentericArteryInjury = "http://snomed.info/sct#845006";
+
+    /// <summary>
     /// Literal for code: TotalCataract
     /// </summary>
     public const string LiteralTotalCataract = "849000";
+
+    /// <summary>
+    /// Literal for code: NONETotalCataract
+    /// </summary>
+    public const string LiteralNONETotalCataract = "http://snomed.info/sct#849000";
 
     /// <summary>
     /// Literal for code: ErythemaSimplex
@@ -13868,9 +18718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralErythemaSimplex = "857002";
 
     /// <summary>
+    /// Literal for code: NONEErythemaSimplex
+    /// </summary>
+    public const string LiteralNONEErythemaSimplex = "http://snomed.info/sct#857002";
+
+    /// <summary>
     /// Literal for code: AnemiaDueToChlorate
     /// </summary>
     public const string LiteralAnemiaDueToChlorate = "862001";
+
+    /// <summary>
+    /// Literal for code: NONEAnemiaDueToChlorate
+    /// </summary>
+    public const string LiteralNONEAnemiaDueToChlorate = "http://snomed.info/sct#862001";
 
     /// <summary>
     /// Literal for code: HyperalimentationFormulaForIleus
@@ -13878,9 +18738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHyperalimentationFormulaForIleus = "865004";
 
     /// <summary>
+    /// Literal for code: NONEHyperalimentationFormulaForIleus
+    /// </summary>
+    public const string LiteralNONEHyperalimentationFormulaForIleus = "http://snomed.info/sct#865004";
+
+    /// <summary>
     /// Literal for code: ContractedPelvis
     /// </summary>
     public const string LiteralContractedPelvis = "871005";
+
+    /// <summary>
+    /// Literal for code: NONEContractedPelvis
+    /// </summary>
+    public const string LiteralNONEContractedPelvis = "http://snomed.info/sct#871005";
 
     /// <summary>
     /// Literal for code: TherapeuticDiuresis
@@ -13888,9 +18758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTherapeuticDiuresis = "874002";
 
     /// <summary>
+    /// Literal for code: NONETherapeuticDiuresis
+    /// </summary>
+    public const string LiteralNONETherapeuticDiuresis = "http://snomed.info/sct#874002";
+
+    /// <summary>
     /// Literal for code: ChalcosisOfEye
     /// </summary>
     public const string LiteralChalcosisOfEye = "875001";
+
+    /// <summary>
+    /// Literal for code: NONEChalcosisOfEye
+    /// </summary>
+    public const string LiteralNONEChalcosisOfEye = "http://snomed.info/sct#875001";
 
     /// <summary>
     /// Literal for code: FoetalOrNeonatalEffectOfMaternalBloodLoss
@@ -13898,9 +18778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFoetalOrNeonatalEffectOfMaternalBloodLoss = "888003";
 
     /// <summary>
+    /// Literal for code: NONEFoetalOrNeonatalEffectOfMaternalBloodLoss
+    /// </summary>
+    public const string LiteralNONEFoetalOrNeonatalEffectOfMaternalBloodLoss = "http://snomed.info/sct#888003";
+
+    /// <summary>
     /// Literal for code: DeepThirdDegreeBurnOfElbow
     /// </summary>
     public const string LiteralDeepThirdDegreeBurnOfElbow = "890002";
+
+    /// <summary>
+    /// Literal for code: NONEDeepThirdDegreeBurnOfElbow
+    /// </summary>
+    public const string LiteralNONEDeepThirdDegreeBurnOfElbow = "http://snomed.info/sct#890002";
 
     /// <summary>
     /// Literal for code: AxisIDiagnosis
@@ -13908,9 +18798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAxisIDiagnosis = "899001";
 
     /// <summary>
+    /// Literal for code: NONEAxisIDiagnosis
+    /// </summary>
+    public const string LiteralNONEAxisIDiagnosis = "http://snomed.info/sct#899001";
+
+    /// <summary>
     /// Literal for code: ChorioretinalInfarction
     /// </summary>
     public const string LiteralChorioretinalInfarction = "903008";
+
+    /// <summary>
+    /// Literal for code: NONEChorioretinalInfarction
+    /// </summary>
+    public const string LiteralNONEChorioretinalInfarction = "http://snomed.info/sct#903008";
 
     /// <summary>
     /// Literal for code: PinardQuoteSSign
@@ -13918,9 +18818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPinardQuoteSSign = "904002";
 
     /// <summary>
+    /// Literal for code: NONEPinardQuoteSSign
+    /// </summary>
+    public const string LiteralNONEPinardQuoteSSign = "http://snomed.info/sct#904002";
+
+    /// <summary>
     /// Literal for code: SuperficialInjuryOfInterscapularRegionWithoutInfection
     /// </summary>
     public const string LiteralSuperficialInjuryOfInterscapularRegionWithoutInfection = "908004";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialInjuryOfInterscapularRegionWithoutInfection
+    /// </summary>
+    public const string LiteralNONESuperficialInjuryOfInterscapularRegionWithoutInfection = "http://snomed.info/sct#908004";
 
     /// <summary>
     /// Literal for code: PseudohomosexualState
@@ -13928,9 +18838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPseudohomosexualState = "919001";
 
     /// <summary>
+    /// Literal for code: NONEPseudohomosexualState
+    /// </summary>
+    public const string LiteralNONEPseudohomosexualState = "http://snomed.info/sct#919001";
+
+    /// <summary>
     /// Literal for code: MusculoskeletalDisorder
     /// </summary>
     public const string LiteralMusculoskeletalDisorder = "928000";
+
+    /// <summary>
+    /// Literal for code: NONEMusculoskeletalDisorder
+    /// </summary>
+    public const string LiteralNONEMusculoskeletalDisorder = "http://snomed.info/sct#928000";
 
     /// <summary>
     /// Literal for code: GestationPeriod9Weeks
@@ -13938,9 +18858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGestationPeriod9Weeks = "931004";
 
     /// <summary>
+    /// Literal for code: NONEGestationPeriod9Weeks
+    /// </summary>
+    public const string LiteralNONEGestationPeriod9Weeks = "http://snomed.info/sct#931004";
+
+    /// <summary>
     /// Literal for code: FlatAffect
     /// </summary>
     public const string LiteralFlatAffect = "932006";
+
+    /// <summary>
+    /// Literal for code: NONEFlatAffect
+    /// </summary>
+    public const string LiteralNONEFlatAffect = "http://snomed.info/sct#932006";
 
     /// <summary>
     /// Literal for code: ThalassemiaIntermedia
@@ -13948,9 +18878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThalassemiaIntermedia = "934007";
 
     /// <summary>
+    /// Literal for code: NONEThalassemiaIntermedia
+    /// </summary>
+    public const string LiteralNONEThalassemiaIntermedia = "http://snomed.info/sct#934007";
+
+    /// <summary>
     /// Literal for code: CongenitalRetinalAneurysm
     /// </summary>
     public const string LiteralCongenitalRetinalAneurysm = "943003";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalRetinalAneurysm
+    /// </summary>
+    public const string LiteralNONECongenitalRetinalAneurysm = "http://snomed.info/sct#943003";
 
     /// <summary>
     /// Literal for code: RenonDelilleSyndrome
@@ -13958,9 +18898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRenonDelilleSyndrome = "954008";
 
     /// <summary>
+    /// Literal for code: NONERenonDelilleSyndrome
+    /// </summary>
+    public const string LiteralNONERenonDelilleSyndrome = "http://snomed.info/sct#954008";
+
+    /// <summary>
     /// Literal for code: ErythemaNodosumAcuteForm
     /// </summary>
     public const string LiteralErythemaNodosumAcuteForm = "961007";
+
+    /// <summary>
+    /// Literal for code: NONEErythemaNodosumAcuteForm
+    /// </summary>
+    public const string LiteralNONEErythemaNodosumAcuteForm = "http://snomed.info/sct#961007";
 
     /// <summary>
     /// Literal for code: DisabilityEvaluationDisability6Percent
@@ -13968,9 +18918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDisabilityEvaluationDisability6Percent = "962000";
 
     /// <summary>
+    /// Literal for code: NONEDisabilityEvaluationDisability6Percent
+    /// </summary>
+    public const string LiteralNONEDisabilityEvaluationDisability6Percent = "http://snomed.info/sct#962000";
+
+    /// <summary>
     /// Literal for code: OpenWoundOfPharynxWithoutComplication
     /// </summary>
     public const string LiteralOpenWoundOfPharynxWithoutComplication = "964004";
+
+    /// <summary>
+    /// Literal for code: NONEOpenWoundOfPharynxWithoutComplication
+    /// </summary>
+    public const string LiteralNONEOpenWoundOfPharynxWithoutComplication = "http://snomed.info/sct#964004";
 
     /// <summary>
     /// Literal for code: ToxicAmblyopia
@@ -13978,9 +18938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralToxicAmblyopia = "965003";
 
     /// <summary>
+    /// Literal for code: NONEToxicAmblyopia
+    /// </summary>
+    public const string LiteralNONEToxicAmblyopia = "http://snomed.info/sct#965003";
+
+    /// <summary>
     /// Literal for code: AnorectalAgenesis
     /// </summary>
     public const string LiteralAnorectalAgenesis = "975000";
+
+    /// <summary>
+    /// Literal for code: NONEAnorectalAgenesis
+    /// </summary>
+    public const string LiteralNONEAnorectalAgenesis = "http://snomed.info/sct#975000";
 
     /// <summary>
     /// Literal for code: ChronicInfantileEczema
@@ -13988,9 +18958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicInfantileEczema = "978003";
 
     /// <summary>
+    /// Literal for code: NONEChronicInfantileEczema
+    /// </summary>
+    public const string LiteralNONEChronicInfantileEczema = "http://snomed.info/sct#978003";
+
+    /// <summary>
     /// Literal for code: HemorrhagicProctitis
     /// </summary>
     public const string LiteralHemorrhagicProctitis = "981008";
+
+    /// <summary>
+    /// Literal for code: NONEHemorrhagicProctitis
+    /// </summary>
+    public const string LiteralNONEHemorrhagicProctitis = "http://snomed.info/sct#981008";
 
     /// <summary>
     /// Literal for code: PerirectalCellulitis
@@ -13998,9 +18978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPerirectalCellulitis = "984000";
 
     /// <summary>
+    /// Literal for code: NONEPerirectalCellulitis
+    /// </summary>
+    public const string LiteralNONEPerirectalCellulitis = "http://snomed.info/sct#984000";
+
+    /// <summary>
     /// Literal for code: CellulitisOfTempleRegion
     /// </summary>
     public const string LiteralCellulitisOfTempleRegion = "987007";
+
+    /// <summary>
+    /// Literal for code: NONECellulitisOfTempleRegion
+    /// </summary>
+    public const string LiteralNONECellulitisOfTempleRegion = "http://snomed.info/sct#987007";
 
     /// <summary>
     /// Literal for code: WideQRSComplex
@@ -14008,8 +18998,2024 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWideQRSComplex = "991002";
 
     /// <summary>
+    /// Literal for code: NONEWideQRSComplex
+    /// </summary>
+    public const string LiteralNONEWideQRSComplex = "http://snomed.info/sct#991002";
+
+    /// <summary>
     /// Literal for code: ChagasQuoteDiseaseWithHeartInvolvement
     /// </summary>
     public const string LiteralChagasQuoteDiseaseWithHeartInvolvement = "998008";
+
+    /// <summary>
+    /// Literal for code: NONEChagasQuoteDiseaseWithHeartInvolvement
+    /// </summary>
+    public const string LiteralNONEChagasQuoteDiseaseWithHeartInvolvement = "http://snomed.info/sct#998008";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1003002", ReligiousDiscrimination }, 
+      { "http://snomed.info/sct#1003002", ReligiousDiscrimination }, 
+      { "1020003", DiseaseDueToNairovirus }, 
+      { "http://snomed.info/sct#1020003", DiseaseDueToNairovirus }, 
+      { "1023001", Apneic }, 
+      { "http://snomed.info/sct#1023001", Apneic }, 
+      { "1027000", BiliaryEsophagitis }, 
+      { "http://snomed.info/sct#1027000", BiliaryEsophagitis }, 
+      { "1031006", OpenWoundOfTracheaWithoutComplication }, 
+      { "http://snomed.info/sct#1031006", OpenWoundOfTracheaWithoutComplication }, 
+      { "1033009", ThoracicArthritis }, 
+      { "http://snomed.info/sct#1033009", ThoracicArthritis }, 
+      { "1034003", MesentericPortalFistula }, 
+      { "http://snomed.info/sct#1034003", MesentericPortalFistula }, 
+      { "1038000", Disacchariduria }, 
+      { "http://snomed.info/sct#1038000", Disacchariduria }, 
+      { "1045000", Colonospasm }, 
+      { "http://snomed.info/sct#1045000", Colonospasm }, 
+      { "1046004", UreteritisGlandularis }, 
+      { "http://snomed.info/sct#1046004", UreteritisGlandularis }, 
+      { "1051005", HyperplasiaOfIsletAlphaCellsWithGastrinExcess }, 
+      { "http://snomed.info/sct#1051005", HyperplasiaOfIsletAlphaCellsWithGastrinExcess }, 
+      { "1055001", StenosisOfPrecerebralArtery }, 
+      { "http://snomed.info/sct#1055001", StenosisOfPrecerebralArtery }, 
+      { "1059007", Opisthorchiasis }, 
+      { "http://snomed.info/sct#1059007", Opisthorchiasis }, 
+      { "1070000", FacialMyokymia }, 
+      { "http://snomed.info/sct#1070000", FacialMyokymia }, 
+      { "1073003", XerodermaPigmentosumGroupB }, 
+      { "http://snomed.info/sct#1073003", XerodermaPigmentosumGroupB }, 
+      { "1074009", GlucocorticoidResponsivePrimaryHyperaldosteronism }, 
+      { "http://snomed.info/sct#1074009", GlucocorticoidResponsivePrimaryHyperaldosteronism }, 
+      { "1077002", SeptalInfarctionByEKG }, 
+      { "http://snomed.info/sct#1077002", SeptalInfarctionByEKG }, 
+      { "1079004", MacularRetinalCyst }, 
+      { "http://snomed.info/sct#1079004", MacularRetinalCyst }, 
+      { "1085006", VulvalCandidiasis }, 
+      { "http://snomed.info/sct#1085006", VulvalCandidiasis }, 
+      { "1089000", CongenitalSepsis }, 
+      { "http://snomed.info/sct#1089000", CongenitalSepsis }, 
+      { "109006", AnxietyDisorderOfChildhoodORAdolescence }, 
+      { "http://snomed.info/sct#109006", AnxietyDisorderOfChildhoodORAdolescence }, 
+      { "1102005", IntraerythrocyticParasitosisByNuttallia }, 
+      { "http://snomed.info/sct#1102005", IntraerythrocyticParasitosisByNuttallia }, 
+      { "1107004", EarlyLatentSyphilisPositiveSerologyNegativeCerebrospinalFluidWithRelapseAfterTreatment }, 
+      { "http://snomed.info/sct#1107004", EarlyLatentSyphilisPositiveSerologyNegativeCerebrospinalFluidWithRelapseAfterTreatment }, 
+      { "1108009", FemalePatternAlopecia }, 
+      { "http://snomed.info/sct#1108009", FemalePatternAlopecia }, 
+      { "1111005", NormalSebaceousGlandActivity }, 
+      { "http://snomed.info/sct#1111005", NormalSebaceousGlandActivity }, 
+      { "1112003", DegenerativeDisorderOfEyelid }, 
+      { "http://snomed.info/sct#1112003", DegenerativeDisorderOfEyelid }, 
+      { "1116000", ChronicAggressiveTypeBViralHepatitis }, 
+      { "http://snomed.info/sct#1116000", ChronicAggressiveTypeBViralHepatitis }, 
+      { "1124005", PostpartumPeriod6Days }, 
+      { "http://snomed.info/sct#1124005", PostpartumPeriod6Days }, 
+      { "1125006", SepticemiaDuringLabor }, 
+      { "http://snomed.info/sct#1125006", SepticemiaDuringLabor }, 
+      { "1126007", KneeLocking }, 
+      { "http://snomed.info/sct#1126007", KneeLocking }, 
+      { "1131009", CongenitalValvularInsufficiency }, 
+      { "http://snomed.info/sct#1131009", CongenitalValvularInsufficiency }, 
+      { "1134001", MuehrckeLines }, 
+      { "http://snomed.info/sct#1134001", MuehrckeLines }, 
+      { "1135000", SolarRetinitis }, 
+      { "http://snomed.info/sct#1135000", SolarRetinitis }, 
+      { "1139006", ConfrontationVisualTest }, 
+      { "http://snomed.info/sct#1139006", ConfrontationVisualTest }, 
+      { "1140008", ThermalHypesthesia }, 
+      { "http://snomed.info/sct#1140008", ThermalHypesthesia }, 
+      { "1141007", CircumoralParesthesia }, 
+      { "http://snomed.info/sct#1141007", CircumoralParesthesia }, 
+      { "1145003", DSDDevelopmentalSpeechDisorder }, 
+      { "http://snomed.info/sct#1145003", DSDDevelopmentalSpeechDisorder }, 
+      { "1150009", CongenitalMicrocheilia }, 
+      { "http://snomed.info/sct#1150009", CongenitalMicrocheilia }, 
+      { "1151008", ConstrictedVisualField }, 
+      { "http://snomed.info/sct#1151008", ConstrictedVisualField }, 
+      { "1152001", SkinReactionNegative }, 
+      { "http://snomed.info/sct#1152001", SkinReactionNegative }, 
+      { "1155004", MyocardialHypertrophyDeterminedByElectrocardiogram }, 
+      { "http://snomed.info/sct#1155004", MyocardialHypertrophyDeterminedByElectrocardiogram }, 
+      { "1156003", CavitaryProstatitis }, 
+      { "http://snomed.info/sct#1156003", CavitaryProstatitis }, 
+      { "1168007", Allotype }, 
+      { "http://snomed.info/sct#1168007", Allotype }, 
+      { "1184008", GlasgowComaScale10 }, 
+      { "http://snomed.info/sct#1184008", GlasgowComaScale10 }, 
+      { "1192004", FamilialAmyloidNeuropathyFinnishType }, 
+      { "http://snomed.info/sct#1192004", FamilialAmyloidNeuropathyFinnishType }, 
+      { "1194003", DiseaseConditionDeterminationWellControlled }, 
+      { "http://snomed.info/sct#1194003", DiseaseConditionDeterminationWellControlled }, 
+      { "1196001", ChronicBipolarIIDisorderMostRecentEpisodeMajorDepressive }, 
+      { "http://snomed.info/sct#1196001", ChronicBipolarIIDisorderMostRecentEpisodeMajorDepressive }, 
+      { "1197005", CarbuncleOfHeel }, 
+      { "http://snomed.info/sct#1197005", CarbuncleOfHeel }, 
+      { "1201005", BenignEssentialHypertension }, 
+      { "http://snomed.info/sct#1201005", BenignEssentialHypertension }, 
+      { "1203008", DeepThirdDegreeBurnOfForeheadANDORCheekWithLossOfBodyPart }, 
+      { "http://snomed.info/sct#1203008", DeepThirdDegreeBurnOfForeheadANDORCheekWithLossOfBodyPart }, 
+      { "1207009", OpticDiscGlaucomatousAtrophy }, 
+      { "http://snomed.info/sct#1207009", OpticDiscGlaucomatousAtrophy }, 
+      { "1208004", Gastroptosis }, 
+      { "http://snomed.info/sct#1208004", Gastroptosis }, 
+      { "1212005", JuvenileDermatomyositis }, 
+      { "http://snomed.info/sct#1212005", JuvenileDermatomyositis }, 
+      { "1214006", InfectionByStrongyloides }, 
+      { "http://snomed.info/sct#1214006", InfectionByStrongyloides }, 
+      { "122003", ChoroidalHemorrhage }, 
+      { "http://snomed.info/sct#122003", ChoroidalHemorrhage }, 
+      { "1230003", NoDiagnosisOnAxis1 }, 
+      { "http://snomed.info/sct#1230003", NoDiagnosisOnAxis1 }, 
+      { "1232006", CongenitalArticularRigidityWithMyopathy }, 
+      { "http://snomed.info/sct#1232006", CongenitalArticularRigidityWithMyopathy }, 
+      { "1239002", CongenitalAnteversionOfFemoralNeck }, 
+      { "http://snomed.info/sct#1239002", CongenitalAnteversionOfFemoralNeck }, 
+      { "1240000", LyingProne }, 
+      { "http://snomed.info/sct#1240000", LyingProne }, 
+      { "1259003", Schistosis }, 
+      { "http://snomed.info/sct#1259003", Schistosis }, 
+      { "1261007", MultipleFracturesOfRibs }, 
+      { "http://snomed.info/sct#1261007", MultipleFracturesOfRibs }, 
+      { "1264004", InjuryOfDescendingLeftColonWithoutOpenWoundIntoAbdominalCavity }, 
+      { "http://snomed.info/sct#1264004", InjuryOfDescendingLeftColonWithoutOpenWoundIntoAbdominalCavity }, 
+      { "127009", SpontaneousAbortionWithLacerationOfCervix }, 
+      { "http://snomed.info/sct#127009", SpontaneousAbortionWithLacerationOfCervix }, 
+      { "1271009", KnucklePadsLeuconychiaAndDeafness }, 
+      { "http://snomed.info/sct#1271009", KnucklePadsLeuconychiaAndDeafness }, 
+      { "1280009", IsologousChimera }, 
+      { "http://snomed.info/sct#1280009", IsologousChimera }, 
+      { "1282001", LaryngealPerichondritis }, 
+      { "http://snomed.info/sct#1282001", LaryngealPerichondritis }, 
+      { "1283006", VisualAcuityLessThan02160CountFingers1MeterOrVisualFieldLessThan5DegreesButBetterThan5 }, 
+      { "http://snomed.info/sct#1283006", VisualAcuityLessThan02160CountFingers1MeterOrVisualFieldLessThan5DegreesButBetterThan5 }, 
+      { "1284000", AbnormalJawClosure }, 
+      { "http://snomed.info/sct#1284000", AbnormalJawClosure }, 
+      { "1286003", VitaminKDeficiencyCoagulationDisorder }, 
+      { "http://snomed.info/sct#1286003", VitaminKDeficiencyCoagulationDisorder }, 
+      { "1287007", CongenitalAbsenceOfBileDuct }, 
+      { "http://snomed.info/sct#1287007", CongenitalAbsenceOfBileDuct }, 
+      { "129007", Homoiothermia }, 
+      { "http://snomed.info/sct#129007", Homoiothermia }, 
+      { "1297003", InfectionByCladosporiumCarrionii }, 
+      { "http://snomed.info/sct#1297003", InfectionByCladosporiumCarrionii }, 
+      { "1308001", ComplicationOfReimplant }, 
+      { "http://snomed.info/sct#1308001", ComplicationOfReimplant }, 
+      { "1310004", ImpairedGlucoseToleranceAssociatedWithGeneticSyndrome }, 
+      { "http://snomed.info/sct#1310004", ImpairedGlucoseToleranceAssociatedWithGeneticSyndrome }, 
+      { "1317001", InjuryOfOvaryWithoutOpenWoundIntoAbdominalCavity }, 
+      { "http://snomed.info/sct#1317001", InjuryOfOvaryWithoutOpenWoundIntoAbdominalCavity }, 
+      { "1318006", PostTranslationalGeneticProteinProcessing }, 
+      { "http://snomed.info/sct#1318006", PostTranslationalGeneticProteinProcessing }, 
+      { "1323006", KanamycinPoisoning }, 
+      { "http://snomed.info/sct#1323006", KanamycinPoisoning }, 
+      { "1332008", ConjugatedVisualDeviation }, 
+      { "http://snomed.info/sct#1332008", ConjugatedVisualDeviation }, 
+      { "1335005", PeyroniesDisease }, 
+      { "http://snomed.info/sct#1335005", PeyroniesDisease }, 
+      { "134006", DecreasedHairGrowth }, 
+      { "http://snomed.info/sct#134006", DecreasedHairGrowth }, 
+      { "1343000", DTADeepTransverseArrest }, 
+      { "http://snomed.info/sct#1343000", DTADeepTransverseArrest }, 
+      { "1345007", HangNail }, 
+      { "http://snomed.info/sct#1345007", HangNail }, 
+      { "1351002", IliacArteryInjury }, 
+      { "http://snomed.info/sct#1351002", IliacArteryInjury }, 
+      { "1356007", CalculusOfCommonDuctWithObstruction }, 
+      { "http://snomed.info/sct#1356007", CalculusOfCommonDuctWithObstruction }, 
+      { "1361009", Leucocoria }, 
+      { "http://snomed.info/sct#1361009", Leucocoria }, 
+      { "1363007", FetalOrNeonatalEffectOfChronicMaternalRespiratoryDisease }, 
+      { "http://snomed.info/sct#1363007", FetalOrNeonatalEffectOfChronicMaternalRespiratoryDisease }, 
+      { "1367008", InjuryOfSuperiorMesentericArtery }, 
+      { "http://snomed.info/sct#1367008", InjuryOfSuperiorMesentericArtery }, 
+      { "1370007", OpenFractureOfMetacarpalBoneS }, 
+      { "http://snomed.info/sct#1370007", OpenFractureOfMetacarpalBoneS }, 
+      { "1372004", UnicornateUterus }, 
+      { "http://snomed.info/sct#1372004", UnicornateUterus }, 
+      { "1376001", ObsessiveCompulsivePersonalityDisorder }, 
+      { "http://snomed.info/sct#1376001", ObsessiveCompulsivePersonalityDisorder }, 
+      { "1378000", SupinationEversionInjuryOfAnkle }, 
+      { "http://snomed.info/sct#1378000", SupinationEversionInjuryOfAnkle }, 
+      { "1380006", AgoraphobiaWithoutHistoryOfPanicDisorderWithLimitedSymptomAttacks }, 
+      { "http://snomed.info/sct#1380006", AgoraphobiaWithoutHistoryOfPanicDisorderWithLimitedSymptomAttacks }, 
+      { "1383008", HallucinogenInducedMoodDisorder }, 
+      { "http://snomed.info/sct#1383008", HallucinogenInducedMoodDisorder }, 
+      { "1384002", DiffuseCholesteatosisOfMiddleEar }, 
+      { "http://snomed.info/sct#1384002", DiffuseCholesteatosisOfMiddleEar }, 
+      { "1386000", IntracranialHemorrhage }, 
+      { "http://snomed.info/sct#1386000", IntracranialHemorrhage }, 
+      { "1387009", SolanumNigrumPoisoning }, 
+      { "http://snomed.info/sct#1387009", SolanumNigrumPoisoning }, 
+      { "1388004", MetabolicAlkalosis }, 
+      { "http://snomed.info/sct#1388004", MetabolicAlkalosis }, 
+      { "1393001", LenzMajewskiDysplasia }, 
+      { "http://snomed.info/sct#1393001", LenzMajewskiDysplasia }, 
+      { "1395008", ComplicationOfUltrasoundTherapy }, 
+      { "http://snomed.info/sct#1395008", ComplicationOfUltrasoundTherapy }, 
+      { "140004", ChronicPharyngitis }, 
+      { "http://snomed.info/sct#140004", ChronicPharyngitis }, 
+      { "1402001", Frightened }, 
+      { "http://snomed.info/sct#1402001", Frightened }, 
+      { "1412008", AnteriorSubcapsularPolarCataract }, 
+      { "http://snomed.info/sct#1412008", AnteriorSubcapsularPolarCataract }, 
+      { "1415005", InflammationOfLymphatics }, 
+      { "http://snomed.info/sct#1415005", InflammationOfLymphatics }, 
+      { "1418007", HypoplasticChondrodystrophy }, 
+      { "http://snomed.info/sct#1418007", HypoplasticChondrodystrophy }, 
+      { "1419004", InjuryOfProstateWithoutOpenWoundIntoAbdominalCavity }, 
+      { "http://snomed.info/sct#1419004", InjuryOfProstateWithoutOpenWoundIntoAbdominalCavity }, 
+      { "1426004", NecrotizingGlomerulonephritis }, 
+      { "http://snomed.info/sct#1426004", NecrotizingGlomerulonephritis }, 
+      { "1427008", IntraspinalAbscess }, 
+      { "http://snomed.info/sct#1427008", IntraspinalAbscess }, 
+      { "1430001", IntracranialHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithProlongedLossOfConsciousnessMoreThan24HoursWithoutReturnToPreExistingLevel }, 
+      { "http://snomed.info/sct#1430001", IntracranialHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithProlongedLossOfConsciousnessMoreThan24HoursWithoutReturnToPreExistingLevel }, 
+      { "144008", NormalPeripheralVision }, 
+      { "http://snomed.info/sct#144008", NormalPeripheralVision }, 
+      { "1447000", Icthyoparasitism }, 
+      { "http://snomed.info/sct#1447000", Icthyoparasitism }, 
+      { "1469007", MiscarriageWithUrinaryTractInfection }, 
+      { "http://snomed.info/sct#1469007", MiscarriageWithUrinaryTractInfection }, 
+      { "147001", SuperficialForeignBodyOfScrotumWithoutMajorOpenWoundButWithInfection }, 
+      { "http://snomed.info/sct#147001", SuperficialForeignBodyOfScrotumWithoutMajorOpenWoundButWithInfection }, 
+      { "1474004", HypertensiveHeartANDRenalDiseaseComplicatingANDORReasonForCareDuringChildbirth }, 
+      { "http://snomed.info/sct#1474004", HypertensiveHeartANDRenalDiseaseComplicatingANDORReasonForCareDuringChildbirth }, 
+      { "1475003", HerpesLabialis }, 
+      { "http://snomed.info/sct#1475003", HerpesLabialis }, 
+      { "1478001", ObliterationOfLymphaticVessel }, 
+      { "http://snomed.info/sct#1478001", ObliterationOfLymphaticVessel }, 
+      { "1479009", VAL20qPartialTrisomySyndrome }, 
+      { "http://snomed.info/sct#1479009", VAL20qPartialTrisomySyndrome }, 
+      { "1482004", Chalazion }, 
+      { "http://snomed.info/sct#1482004", Chalazion }, 
+      { "1486001", OrbitalCongestion }, 
+      { "http://snomed.info/sct#1486001", OrbitalCongestion }, 
+      { "1488000", PONVPostoperativeNauseaAndVomiting }, 
+      { "http://snomed.info/sct#1488000", PONVPostoperativeNauseaAndVomiting }, 
+      { "1489008", ExternalHordeolum }, 
+      { "http://snomed.info/sct#1489008", ExternalHordeolum }, 
+      { "1492007", CongenitalAnomalyOfLargeIntestine }, 
+      { "http://snomed.info/sct#1492007", CongenitalAnomalyOfLargeIntestine }, 
+      { "1493002", AcuteEndophthalmitis }, 
+      { "http://snomed.info/sct#1493002", AcuteEndophthalmitis }, 
+      { "1499003", BipolarIDisorderSingleManicEpisodeWithPostpartumOnset }, 
+      { "http://snomed.info/sct#1499003", BipolarIDisorderSingleManicEpisodeWithPostpartumOnset }, 
+      { "150003", AbnormalBladderContinence }, 
+      { "http://snomed.info/sct#150003", AbnormalBladderContinence }, 
+      { "151004", MeningitisDueToGonococcus }, 
+      { "http://snomed.info/sct#151004", MeningitisDueToGonococcus }, 
+      { "1512006", CongenitalStrictureOfBileDuct }, 
+      { "http://snomed.info/sct#1512006", CongenitalStrictureOfBileDuct }, 
+      { "1515008", GorhamDisease }, 
+      { "http://snomed.info/sct#1515008", GorhamDisease }, 
+      { "1518005", Splenitis }, 
+      { "http://snomed.info/sct#1518005", Splenitis }, 
+      { "1519002", CongenitalPhlebectasia }, 
+      { "http://snomed.info/sct#1519002", CongenitalPhlebectasia }, 
+      { "1521007", BlisterOfButtockWithoutInfection }, 
+      { "http://snomed.info/sct#1521007", BlisterOfButtockWithoutInfection }, 
+      { "1523005", ClinicalStageIVB }, 
+      { "http://snomed.info/sct#1523005", ClinicalStageIVB }, 
+      { "1525003", BlisterOfFootWithoutInfection }, 
+      { "http://snomed.info/sct#1525003", BlisterOfFootWithoutInfection }, 
+      { "1531000", NitrofuranDerivativePoisoning }, 
+      { "http://snomed.info/sct#1531000", NitrofuranDerivativePoisoning }, 
+      { "1532007", ViralPharyngitis }, 
+      { "http://snomed.info/sct#1532007", ViralPharyngitis }, 
+      { "1534008", PalsyOfConjugateGaze }, 
+      { "http://snomed.info/sct#1534008", PalsyOfConjugateGaze }, 
+      { "1538006", CentralNervousSystemMalformationInFoetusAffectingObstetricalCare }, 
+      { "http://snomed.info/sct#1538006", CentralNervousSystemMalformationInFoetusAffectingObstetricalCare }, 
+      { "1539003", NodularTendinousDiseaseOfFinger }, 
+      { "http://snomed.info/sct#1539003", NodularTendinousDiseaseOfFinger }, 
+      { "1542009", OmphaloceleWithObstruction }, 
+      { "http://snomed.info/sct#1542009", OmphaloceleWithObstruction }, 
+      { "1544005", OpenDislocationOfKnee }, 
+      { "http://snomed.info/sct#1544005", OpenDislocationOfKnee }, 
+      { "1551001", OsteomyelitisOfFemur }, 
+      { "http://snomed.info/sct#1551001", OsteomyelitisOfFemur }, 
+      { "1556006", ClarkMelanomaLevel4 }, 
+      { "http://snomed.info/sct#1556006", ClarkMelanomaLevel4 }, 
+      { "1563006", ProteinSDeficiency }, 
+      { "http://snomed.info/sct#1563006", ProteinSDeficiency }, 
+      { "1567007", ChronicGastricUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction }, 
+      { "http://snomed.info/sct#1567007", ChronicGastricUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction }, 
+      { "1588003", HeterosexualPrecociousPuberty }, 
+      { "http://snomed.info/sct#1588003", HeterosexualPrecociousPuberty }, 
+      { "1592005", FailedAttemptedTerminationOfPregnancyWithUremia }, 
+      { "http://snomed.info/sct#1592005", FailedAttemptedTerminationOfPregnancyWithUremia }, 
+      { "1593000", InfantileHemiplegia }, 
+      { "http://snomed.info/sct#1593000", InfantileHemiplegia }, 
+      { "1606009", InfectionCausedByMacracanthorhynchusHirudinaceus }, 
+      { "http://snomed.info/sct#1606009", InfectionCausedByMacracanthorhynchusHirudinaceus }, 
+      { "1608005", IncreasedCapillaryPermeability }, 
+      { "http://snomed.info/sct#1608005", IncreasedCapillaryPermeability }, 
+      { "162004", SevereManicBipolarIDisorderWithoutPsychoticFeatures }, 
+      { "http://snomed.info/sct#162004", SevereManicBipolarIDisorderWithoutPsychoticFeatures }, 
+      { "1639007", AbnormalityOfOrgansANDORSoftTissuesOfPelvisAffectingPregnancy }, 
+      { "http://snomed.info/sct#1639007", AbnormalityOfOrgansANDORSoftTissuesOfPelvisAffectingPregnancy }, 
+      { "1647007", PrimaquinePoisoning }, 
+      { "http://snomed.info/sct#1647007", PrimaquinePoisoning }, 
+      { "1648002", LymphocyticPseudotumorOfLung }, 
+      { "http://snomed.info/sct#1648002", LymphocyticPseudotumorOfLung }, 
+      { "165002", AccidentProne }, 
+      { "http://snomed.info/sct#165002", AccidentProne }, 
+      { "1654001", SteroidInducedGlaucoma }, 
+      { "http://snomed.info/sct#1654001", SteroidInducedGlaucoma }, 
+      { "1657008", ToxicEffectOfPhosdrin }, 
+      { "http://snomed.info/sct#1657008", ToxicEffectOfPhosdrin }, 
+      { "1658003", ClosedFractureClavicleLateralEnd }, 
+      { "http://snomed.info/sct#1658003", ClosedFractureClavicleLateralEnd }, 
+      { "1663004", TumorGradeG2 }, 
+      { "http://snomed.info/sct#1663004", TumorGradeG2 }, 
+      { "1667003", EarlyFontanelClosure }, 
+      { "http://snomed.info/sct#1667003", EarlyFontanelClosure }, 
+      { "1670004", CerebralHemiparesis }, 
+      { "http://snomed.info/sct#1670004", CerebralHemiparesis }, 
+      { "1671000", SagoSpleen }, 
+      { "http://snomed.info/sct#1671000", SagoSpleen }, 
+      { "1674008", MeesmanQuoteSEpithelialCornealDystrophy }, 
+      { "http://snomed.info/sct#1674008", MeesmanQuoteSEpithelialCornealDystrophy }, 
+      { "1679003", ArthritisAssociatedWithAnotherDisorder }, 
+      { "http://snomed.info/sct#1679003", ArthritisAssociatedWithAnotherDisorder }, 
+      { "168000", Typhlolithiasis }, 
+      { "http://snomed.info/sct#168000", Typhlolithiasis }, 
+      { "1682008", TransitoryAminoAcidMetabolicDisorder }, 
+      { "http://snomed.info/sct#1682008", TransitoryAminoAcidMetabolicDisorder }, 
+      { "1685005", RatBiteFever }, 
+      { "http://snomed.info/sct#1685005", RatBiteFever }, 
+      { "1686006", SedativeHypnoticANDORAnxiolyticInducedAnxietyDisorder }, 
+      { "http://snomed.info/sct#1686006", SedativeHypnoticANDORAnxiolyticInducedAnxietyDisorder }, 
+      { "1694004", AccessoryLobeOfLung }, 
+      { "http://snomed.info/sct#1694004", AccessoryLobeOfLung }, 
+      { "1698001", UlcerOfBileDuct }, 
+      { "http://snomed.info/sct#1698001", UlcerOfBileDuct }, 
+      { "1703007", IncreasedLegCircumference }, 
+      { "http://snomed.info/sct#1703007", IncreasedLegCircumference }, 
+      { "1705000", ClosedFractureOfBaseOfNeckOfFemur }, 
+      { "http://snomed.info/sct#1705000", ClosedFractureOfBaseOfNeckOfFemur }, 
+      { "1708003", OpenDislocationOfClavicle }, 
+      { "http://snomed.info/sct#1708003", OpenDislocationOfClavicle }, 
+      { "171008", InjuryOfAscendingRightColonWithoutOpenWoundIntoAbdominalCavity }, 
+      { "http://snomed.info/sct#171008", InjuryOfAscendingRightColonWithoutOpenWoundIntoAbdominalCavity }, 
+      { "1714005", Photokeratitis }, 
+      { "http://snomed.info/sct#1714005", Photokeratitis }, 
+      { "1717003", GuttateHypomelanosis }, 
+      { "http://snomed.info/sct#1717003", GuttateHypomelanosis }, 
+      { "172001", EndometritisFollowingMolarANDOREctopicPregnancy }, 
+      { "http://snomed.info/sct#172001", EndometritisFollowingMolarANDOREctopicPregnancy }, 
+      { "1723008", UrethralStrictureDueToSchistosomiasis }, 
+      { "http://snomed.info/sct#1723008", UrethralStrictureDueToSchistosomiasis }, 
+      { "1724002", InfectionCausedByCrenosoma }, 
+      { "http://snomed.info/sct#1724002", InfectionCausedByCrenosoma }, 
+      { "1734006", FractureOfVertebralColumnWithSpinalCordInjury }, 
+      { "http://snomed.info/sct#1734006", FractureOfVertebralColumnWithSpinalCordInjury }, 
+      { "1735007", Thrill }, 
+      { "http://snomed.info/sct#1735007", Thrill }, 
+      { "1739001", OccipitalFracture }, 
+      { "http://snomed.info/sct#1739001", OccipitalFracture }, 
+      { "1742007", FemaleHypererotism }, 
+      { "http://snomed.info/sct#1742007", FemaleHypererotism }, 
+      { "1744008", ConnationOfTeeth }, 
+      { "http://snomed.info/sct#1744008", ConnationOfTeeth }, 
+      { "1748006", ThrombophlebitisOfDeepFemoralVein }, 
+      { "http://snomed.info/sct#1748006", ThrombophlebitisOfDeepFemoralVein }, 
+      { "175004", SupraorbitalNeuralgia }, 
+      { "http://snomed.info/sct#175004", SupraorbitalNeuralgia }, 
+      { "1755008", HealedCoronary }, 
+      { "http://snomed.info/sct#1755008", HealedCoronary }, 
+      { "1761006", BiliaryCirrhosis }, 
+      { "http://snomed.info/sct#1761006", BiliaryCirrhosis }, 
+      { "1763009", StromalKeratitis }, 
+      { "http://snomed.info/sct#1763009", StromalKeratitis }, 
+      { "1767005", FisherSyndrome }, 
+      { "http://snomed.info/sct#1767005", FisherSyndrome }, 
+      { "1769008", Thoracodidymus }, 
+      { "http://snomed.info/sct#1769008", Thoracodidymus }, 
+      { "177007", PoisoningBySawflyLarvae }, 
+      { "http://snomed.info/sct#177007", PoisoningBySawflyLarvae }, 
+      { "1771008", InsulinBiosynthesisDefect }, 
+      { "http://snomed.info/sct#1771008", InsulinBiosynthesisDefect }, 
+      { "1776003", RTARenalTubularAcidosis }, 
+      { "http://snomed.info/sct#1776003", RTARenalTubularAcidosis }, 
+      { "1777007", IncreasedMolecularDissociation }, 
+      { "http://snomed.info/sct#1777007", IncreasedMolecularDissociation }, 
+      { "1778002", MalocclusionDueToAbnormalSwallowing }, 
+      { "http://snomed.info/sct#1778002", MalocclusionDueToAbnormalSwallowing }, 
+      { "1779005", OFDIIOrofacialDigitalSyndromeII }, 
+      { "http://snomed.info/sct#1779005", OFDIIOrofacialDigitalSyndromeII }, 
+      { "179005", ApraxiaOfDressing }, 
+      { "http://snomed.info/sct#179005", ApraxiaOfDressing }, 
+      { "1794009", IdiopathicCornealEdema }, 
+      { "http://snomed.info/sct#1794009", IdiopathicCornealEdema }, 
+      { "181007", HemorrhagicBronchopneumonia }, 
+      { "http://snomed.info/sct#181007", HemorrhagicBronchopneumonia }, 
+      { "1816003", PanicDisorderWithAgoraphobiaSevereAgoraphobicAvoidanceANDMildPanicAttacks }, 
+      { "http://snomed.info/sct#1816003", PanicDisorderWithAgoraphobiaSevereAgoraphobicAvoidanceANDMildPanicAttacks }, 
+      { "1821000", ChemoreceptorApnea }, 
+      { "http://snomed.info/sct#1821000", ChemoreceptorApnea }, 
+      { "1822007", ImpairedGlucoseToleranceAssociatedWithPancreaticDisease }, 
+      { "http://snomed.info/sct#1822007", ImpairedGlucoseToleranceAssociatedWithPancreaticDisease }, 
+      { "1824008", AllergicGastritis }, 
+      { "http://snomed.info/sct#1824008", AllergicGastritis }, 
+      { "1826005", GranulomaOfLip }, 
+      { "http://snomed.info/sct#1826005", GranulomaOfLip }, 
+      { "1828006", InfestationCausedByGasterophilusHemorrhoidalis }, 
+      { "http://snomed.info/sct#1828006", InfestationCausedByGasterophilusHemorrhoidalis }, 
+      { "1829003", Microcephalus }, 
+      { "http://snomed.info/sct#1829003", Microcephalus }, 
+      { "183005", AutoimmunePancytopenia }, 
+      { "http://snomed.info/sct#183005", AutoimmunePancytopenia }, 
+      { "1833005", PhacoanaphylacticEndophthalmitis }, 
+      { "http://snomed.info/sct#1833005", PhacoanaphylacticEndophthalmitis }, 
+      { "1835003", NecrosisOfPancreas }, 
+      { "http://snomed.info/sct#1835003", NecrosisOfPancreas }, 
+      { "1837006", OrciprenalinePoisoning }, 
+      { "http://snomed.info/sct#1837006", OrciprenalinePoisoning }, 
+      { "184004", WithdrawalArrhythmia }, 
+      { "http://snomed.info/sct#184004", WithdrawalArrhythmia }, 
+      { "1845001", Paraparesis }, 
+      { "http://snomed.info/sct#1845001", Paraparesis }, 
+      { "1847009", Endophthalmitis }, 
+      { "http://snomed.info/sct#1847009", Endophthalmitis }, 
+      { "1848004", PoisoningCausedByGaseousAnesthetic }, 
+      { "http://snomed.info/sct#1848004", PoisoningCausedByGaseousAnesthetic }, 
+      { "1852004", TraumaticInjuryOfSixthCranialNerve }, 
+      { "http://snomed.info/sct#1852004", TraumaticInjuryOfSixthCranialNerve }, 
+      { "1855002", DevelopmentalAcademicDisorder }, 
+      { "http://snomed.info/sct#1855002", DevelopmentalAcademicDisorder }, 
+      { "1856001", AccessoryNose }, 
+      { "http://snomed.info/sct#1856001", AccessoryNose }, 
+      { "1857005", CongenitalRubellaSyndrome }, 
+      { "http://snomed.info/sct#1857005", CongenitalRubellaSyndrome }, 
+      { "1858000", InfectionCausedByStilesiaGlobipunctata }, 
+      { "http://snomed.info/sct#1858000", InfectionCausedByStilesiaGlobipunctata }, 
+      { "1860003", FluidVolumeDisorder }, 
+      { "http://snomed.info/sct#1860003", FluidVolumeDisorder }, 
+      { "1865008", ImpairedIntestinalProteinAbsorption }, 
+      { "http://snomed.info/sct#1865008", ImpairedIntestinalProteinAbsorption }, 
+      { "1869002", RuptureOfIrisSphincter }, 
+      { "http://snomed.info/sct#1869002", RuptureOfIrisSphincter }, 
+      { "188001", IntercostalArteryInjury }, 
+      { "http://snomed.info/sct#188001", IntercostalArteryInjury }, 
+      { "1881003", IncreasedNutritionalRequirement }, 
+      { "http://snomed.info/sct#1881003", IncreasedNutritionalRequirement }, 
+      { "1892002", StarFigureAtTheMacula }, 
+      { "http://snomed.info/sct#1892002", StarFigureAtTheMacula }, 
+      { "1896004", EctopicBreastTissue }, 
+      { "http://snomed.info/sct#1896004", EctopicBreastTissue }, 
+      { "1897008", AmsinckiaSpeciesPoisoning }, 
+      { "http://snomed.info/sct#1897008", AmsinckiaSpeciesPoisoning }, 
+      { "1899006", AutosomalHereditaryDisorder }, 
+      { "http://snomed.info/sct#1899006", AutosomalHereditaryDisorder }, 
+      { "1903004", InfestationCausedByPsorergatesOvis }, 
+      { "http://snomed.info/sct#1903004", InfestationCausedByPsorergatesOvis }, 
+      { "1908008", VonWillebrandDiseaseTypeIIC }, 
+      { "http://snomed.info/sct#1908008", VonWillebrandDiseaseTypeIIC }, 
+      { "1909000", ImpairmentLevelBetterEyeSevereImpairmentLesserEyeNearTotalImpairment }, 
+      { "http://snomed.info/sct#1909000", ImpairmentLevelBetterEyeSevereImpairmentLesserEyeNearTotalImpairment }, 
+      { "192008", CongenitalSyphiliticHepatomegaly }, 
+      { "http://snomed.info/sct#192008", CongenitalSyphiliticHepatomegaly }, 
+      { "1922008", CongenitalAbsenceOfUrethra }, 
+      { "http://snomed.info/sct#1922008", CongenitalAbsenceOfUrethra }, 
+      { "1926006", Osteopetrosis }, 
+      { "http://snomed.info/sct#1926006", Osteopetrosis }, 
+      { "193003", BenignHypertensiveRenalDisease }, 
+      { "http://snomed.info/sct#193003", BenignHypertensiveRenalDisease }, 
+      { "1938002", EmotionalANDORMentalDiseaseInMotherComplicatingPregnancyChildbirthANDORPuerperium }, 
+      { "http://snomed.info/sct#1938002", EmotionalANDORMentalDiseaseInMotherComplicatingPregnancyChildbirthANDORPuerperium }, 
+      { "1939005", AbnormalVascularFlow }, 
+      { "http://snomed.info/sct#1939005", AbnormalVascularFlow }, 
+      { "1943009", LeftRightConfusion }, 
+      { "http://snomed.info/sct#1943009", LeftRightConfusion }, 
+      { "195005", IllegalAbortionWithEndometritis }, 
+      { "http://snomed.info/sct#195005", IllegalAbortionWithEndometritis }, 
+      { "1953005", CongenitalDeficiencyOfPigmentOfSkin }, 
+      { "http://snomed.info/sct#1953005", CongenitalDeficiencyOfPigmentOfSkin }, 
+      { "1954004", DilatedCardiomyopathySecondaryToToxicReaction }, 
+      { "http://snomed.info/sct#1954004", DilatedCardiomyopathySecondaryToToxicReaction }, 
+      { "1955003", PreauricularPit }, 
+      { "http://snomed.info/sct#1955003", PreauricularPit }, 
+      { "1959009", EncephalartosSpeciesPoisoning }, 
+      { "http://snomed.info/sct#1959009", EncephalartosSpeciesPoisoning }, 
+      { "1961000", ChronicPolyarticularJuvenileRheumatoidArthritis }, 
+      { "http://snomed.info/sct#1961000", ChronicPolyarticularJuvenileRheumatoidArthritis }, 
+      { "1963002", PNHParoxysmalNocturnalHemoglobinuria }, 
+      { "http://snomed.info/sct#1963002", PNHParoxysmalNocturnalHemoglobinuria }, 
+      { "1965009", NormalSkinPH }, 
+      { "http://snomed.info/sct#1965009", NormalSkinPH }, 
+      { "1967001", CongenitalAbsenceOfForearmOnly }, 
+      { "http://snomed.info/sct#1967001", CongenitalAbsenceOfForearmOnly }, 
+      { "1973000", SedativeHypnoticANDORAnxiolyticInducedPsychoticDisorderWithDelusions }, 
+      { "http://snomed.info/sct#1973000", SedativeHypnoticANDORAnxiolyticInducedPsychoticDisorderWithDelusions }, 
+      { "1977004", OxymetholonePoisoning }, 
+      { "http://snomed.info/sct#1977004", OxymetholonePoisoning }, 
+      { "1979001", FocalChoroiditis }, 
+      { "http://snomed.info/sct#1979001", FocalChoroiditis }, 
+      { "1980003", SeromucinousOtitisMedia }, 
+      { "http://snomed.info/sct#1980003", SeromucinousOtitisMedia }, 
+      { "198007", DiseaseDueToFiloviridae }, 
+      { "http://snomed.info/sct#198007", DiseaseDueToFiloviridae }, 
+      { "1981004", Urhidrosis }, 
+      { "http://snomed.info/sct#1981004", Urhidrosis }, 
+      { "1988005", LateEffectOfInjuryToNerveRootsSpinalPlexusANDOROtherNervesOfTrunk }, 
+      { "http://snomed.info/sct#1988005", LateEffectOfInjuryToNerveRootsSpinalPlexusANDOROtherNervesOfTrunk }, 
+      { "1989002", BurnOfVaginaANDORUterus }, 
+      { "http://snomed.info/sct#1989002", BurnOfVaginaANDORUterus }, 
+      { "199004", DecreasedLactation }, 
+      { "http://snomed.info/sct#199004", DecreasedLactation }, 
+      { "2004005", Normotensive }, 
+      { "http://snomed.info/sct#2004005", Normotensive }, 
+      { "2012002", FractureOfLunate }, 
+      { "http://snomed.info/sct#2012002", FractureOfLunate }, 
+      { "2024009", DilatedCardiomyopathySecondaryToMetazoalMyocarditis }, 
+      { "http://snomed.info/sct#2024009", DilatedCardiomyopathySecondaryToMetazoalMyocarditis }, 
+      { "2028007", ErythemaInduratum }, 
+      { "http://snomed.info/sct#2028007", ErythemaInduratum }, 
+      { "2032001", CerebralEdema }, 
+      { "http://snomed.info/sct#2032001", CerebralEdema }, 
+      { "2036003", AcquiredFactorVIIDeficiencyDisease }, 
+      { "http://snomed.info/sct#2036003", AcquiredFactorVIIDeficiencyDisease }, 
+      { "2040007", NeurogenicThoracicOutletSyndrome }, 
+      { "http://snomed.info/sct#2040007", NeurogenicThoracicOutletSyndrome }, 
+      { "2041006", EunuchoidGigantism }, 
+      { "http://snomed.info/sct#2041006", EunuchoidGigantism }, 
+      { "2043009", AlcoholicGastritis }, 
+      { "http://snomed.info/sct#2043009", AlcoholicGastritis }, 
+      { "2053005", LateEffectOfInjuryToBloodVesselsOfThoraxAbdomenANDORPelvis }, 
+      { "http://snomed.info/sct#2053005", LateEffectOfInjuryToBloodVesselsOfThoraxAbdomenANDORPelvis }, 
+      { "2055003", RecurrentErosionSyndrome }, 
+      { "http://snomed.info/sct#2055003", RecurrentErosionSyndrome }, 
+      { "2058001", BilateralLossOfLabyrinthineReactivity }, 
+      { "http://snomed.info/sct#2058001", BilateralLossOfLabyrinthineReactivity }, 
+      { "2061000", ConductiveHearingLossOfCombinedSites }, 
+      { "http://snomed.info/sct#2061000", ConductiveHearingLossOfCombinedSites }, 
+      { "2065009", AutosomalDominantOpticAtrophy }, 
+      { "http://snomed.info/sct#2065009", AutosomalDominantOpticAtrophy }, 
+      { "2066005", GastricUlcerWithHemorrhageANDPerforationButWithoutObstruction }, 
+      { "http://snomed.info/sct#2066005", GastricUlcerWithHemorrhageANDPerforationButWithoutObstruction }, 
+      { "2070002", BurningSensationInEye }, 
+      { "http://snomed.info/sct#2070002", BurningSensationInEye }, 
+      { "2073000", Delusions }, 
+      { "http://snomed.info/sct#2073000", Delusions }, 
+      { "208008", NeurocutaneousMelanosisSequence }, 
+      { "http://snomed.info/sct#208008", NeurocutaneousMelanosisSequence }, 
+      { "2087000", PulmonaryNocardiosis }, 
+      { "http://snomed.info/sct#2087000", PulmonaryNocardiosis }, 
+      { "2089002", PagetsDiseaseOfBone }, 
+      { "http://snomed.info/sct#2089002", PagetsDiseaseOfBone }, 
+      { "2091005", PharyngealDiverticulitis }, 
+      { "http://snomed.info/sct#2091005", PharyngealDiverticulitis }, 
+      { "2094002", CarbonDisulfideCausingToxicEffect }, 
+      { "http://snomed.info/sct#2094002", CarbonDisulfideCausingToxicEffect }, 
+      { "2102007", DeepCornealVascularization }, 
+      { "http://snomed.info/sct#2102007", DeepCornealVascularization }, 
+      { "2103002", ReflexSympatheticDystrophyOfUpperExtremity }, 
+      { "http://snomed.info/sct#2103002", ReflexSympatheticDystrophyOfUpperExtremity }, 
+      { "2107001", Anisomelia }, 
+      { "http://snomed.info/sct#2107001", Anisomelia }, 
+      { "2109003", IsolatedSomatotropinDeficiency }, 
+      { "http://snomed.info/sct#2109003", IsolatedSomatotropinDeficiency }, 
+      { "2114004", InfectionCausedByCysticercusPisiformis }, 
+      { "http://snomed.info/sct#2114004", InfectionCausedByCysticercusPisiformis }, 
+      { "2116002", IntramembranousBoneFormation }, 
+      { "http://snomed.info/sct#2116002", IntramembranousBoneFormation }, 
+      { "2120003", WeakCry }, 
+      { "http://snomed.info/sct#2120003", WeakCry }, 
+      { "2121004", EthopropazinePoisoning }, 
+      { "http://snomed.info/sct#2121004", EthopropazinePoisoning }, 
+      { "2128005", DisorderOfAdenoid }, 
+      { "http://snomed.info/sct#2128005", DisorderOfAdenoid }, 
+      { "2129002", EdemaOfPharynx }, 
+      { "http://snomed.info/sct#2129002", EdemaOfPharynx }, 
+      { "2132004", MeconiumInAmnioticFluidNotedBeforeLaborInLivebornInfant }, 
+      { "http://snomed.info/sct#2132004", MeconiumInAmnioticFluidNotedBeforeLaborInLivebornInfant }, 
+      { "2134003", DiffusePain }, 
+      { "http://snomed.info/sct#2134003", DiffusePain }, 
+      { "2136001", OpenWoundOfJawWithComplication }, 
+      { "http://snomed.info/sct#2136001", OpenWoundOfJawWithComplication }, 
+      { "2138000", LSPLeftSacroposteriorPosition }, 
+      { "http://snomed.info/sct#2138000", LSPLeftSacroposteriorPosition }, 
+      { "2145000", AnalIntercourse }, 
+      { "http://snomed.info/sct#2145000", AnalIntercourse }, 
+      { "2149006", DecreasedHormoneProduction }, 
+      { "http://snomed.info/sct#2149006", DecreasedHormoneProduction }, 
+      { "2158004", InfectionCausedByContracaecum }, 
+      { "http://snomed.info/sct#2158004", InfectionCausedByContracaecum }, 
+      { "216004", DelusionOfPersecution }, 
+      { "http://snomed.info/sct#216004", DelusionOfPersecution }, 
+      { "2167004", RetinalHemangioblastomatosis }, 
+      { "http://snomed.info/sct#2167004", RetinalHemangioblastomatosis }, 
+      { "2169001", ThoracicRadiculitis }, 
+      { "http://snomed.info/sct#2169001", ThoracicRadiculitis }, 
+      { "2170000", GallopRhythm }, 
+      { "http://snomed.info/sct#2170000", GallopRhythm }, 
+      { "2176006", HalogenAcne }, 
+      { "http://snomed.info/sct#2176006", HalogenAcne }, 
+      { "2177002", PHNPostHerpeticNeuralgia }, 
+      { "http://snomed.info/sct#2177002", PHNPostHerpeticNeuralgia }, 
+      { "2186007", CompensatedMetabolicAlkalosis }, 
+      { "http://snomed.info/sct#2186007", CompensatedMetabolicAlkalosis }, 
+      { "219006", AlcoholUser }, 
+      { "http://snomed.info/sct#219006", AlcoholUser }, 
+      { "2198002", VisceralEpilepsy }, 
+      { "http://snomed.info/sct#2198002", VisceralEpilepsy }, 
+      { "2202000", OpenPosteriorDislocationOfDistalEndOfFemur }, 
+      { "http://snomed.info/sct#2202000", OpenPosteriorDislocationOfDistalEndOfFemur }, 
+      { "2204004", AcquiredDeformityOfPinna }, 
+      { "http://snomed.info/sct#2204004", AcquiredDeformityOfPinna }, 
+      { "2213002", CongenitalAnomalyOfVenaCava }, 
+      { "http://snomed.info/sct#2213002", CongenitalAnomalyOfVenaCava }, 
+      { "2216005", NocturnalEmission }, 
+      { "http://snomed.info/sct#2216005", NocturnalEmission }, 
+      { "2217001", SuperficialInjuryOfPerineumWithoutInfection }, 
+      { "http://snomed.info/sct#2217001", SuperficialInjuryOfPerineumWithoutInfection }, 
+      { "2219003", DisabilityEvaluationDisability100Percent }, 
+      { "http://snomed.info/sct#2219003", DisabilityEvaluationDisability100Percent }, 
+      { "222008", AcuteEpiglottitisWithObstruction }, 
+      { "http://snomed.info/sct#222008", AcuteEpiglottitisWithObstruction }, 
+      { "2224000", SeleniumPoisoning }, 
+      { "http://snomed.info/sct#2224000", SeleniumPoisoning }, 
+      { "2228002", ScintillatingScotoma }, 
+      { "http://snomed.info/sct#2228002", ScintillatingScotoma }, 
+      { "2229005", Chimera }, 
+      { "http://snomed.info/sct#2229005", Chimera }, 
+      { "223003", TumorOfBodyOfUterusAffectingPregnancy }, 
+      { "http://snomed.info/sct#223003", TumorOfBodyOfUterusAffectingPregnancy }, 
+      { "2231001", NervePlexusDisorder }, 
+      { "http://snomed.info/sct#2231001", NervePlexusDisorder }, 
+      { "2237002", PainfulBreathingPleurodynia }, 
+      { "http://snomed.info/sct#2237002", PainfulBreathingPleurodynia }, 
+      { "2239004", PreviousPregnancies6 }, 
+      { "http://snomed.info/sct#2239004", PreviousPregnancies6 }, 
+      { "2241003", XLinkedAbsenceOfThyroxineBindingGlobulin }, 
+      { "http://snomed.info/sct#2241003", XLinkedAbsenceOfThyroxineBindingGlobulin }, 
+      { "2243000", HypercalcemiaDueToHyperthyroidism }, 
+      { "http://snomed.info/sct#2243000", HypercalcemiaDueToHyperthyroidism }, 
+      { "2245007", ForeignBodyInNasopharynx }, 
+      { "http://snomed.info/sct#2245007", ForeignBodyInNasopharynx }, 
+      { "2251002", PrimaryHypotonyOfEye }, 
+      { "http://snomed.info/sct#2251002", PrimaryHypotonyOfEye }, 
+      { "2256007", MonovularTwins }, 
+      { "http://snomed.info/sct#2256007", MonovularTwins }, 
+      { "2261009", ObstetricalPulmonaryFatEmbolism }, 
+      { "http://snomed.info/sct#2261009", ObstetricalPulmonaryFatEmbolism }, 
+      { "2268003", VictimOfHomosexualAggression }, 
+      { "http://snomed.info/sct#2268003", VictimOfHomosexualAggression }, 
+      { "228007", LucioPhenomenon }, 
+      { "http://snomed.info/sct#228007", LucioPhenomenon }, 
+      { "2284002", PulsatingExophthalmos }, 
+      { "http://snomed.info/sct#2284002", PulsatingExophthalmos }, 
+      { "2295008", ClosedFractureOfUpperEndOfForearm }, 
+      { "http://snomed.info/sct#2295008", ClosedFractureOfUpperEndOfForearm }, 
+      { "2296009", IronDextranToxicity }, 
+      { "http://snomed.info/sct#2296009", IronDextranToxicity }, 
+      { "2298005", FocalFacialDermalDysplasia }, 
+      { "http://snomed.info/sct#2298005", FocalFacialDermalDysplasia }, 
+      { "2301009", PsychosomaticFactorInPhysicalConditionPsychologicalComponentOfUnknownDegree }, 
+      { "http://snomed.info/sct#2301009", PsychosomaticFactorInPhysicalConditionPsychologicalComponentOfUnknownDegree }, 
+      { "2303007", InguinalHerniaWithGangrene }, 
+      { "http://snomed.info/sct#2303007", InguinalHerniaWithGangrene }, 
+      { "2304001", IntervertebralDiscitis }, 
+      { "http://snomed.info/sct#2304001", IntervertebralDiscitis }, 
+      { "2307008", PeripancreaticFatNecrosis }, 
+      { "http://snomed.info/sct#2307008", PeripancreaticFatNecrosis }, 
+      { "2308003", SilentAlleles }, 
+      { "http://snomed.info/sct#2308003", SilentAlleles }, 
+      { "2312009", ReactiveAttachmentDisorderOfInfancyOREarlyChildhoodInhibitedType }, 
+      { "http://snomed.info/sct#2312009", ReactiveAttachmentDisorderOfInfancyOREarlyChildhoodInhibitedType }, 
+      { "2314005", UnprotectedIntercourse }, 
+      { "http://snomed.info/sct#2314005", UnprotectedIntercourse }, 
+      { "2326000", MarriageAnnulment }, 
+      { "http://snomed.info/sct#2326000", MarriageAnnulment }, 
+      { "2339001", SexualOverexposure }, 
+      { "http://snomed.info/sct#2339001", SexualOverexposure }, 
+      { "2341000", InfectionCausedByMoniliformis }, 
+      { "http://snomed.info/sct#2341000", InfectionCausedByMoniliformis }, 
+      { "2351004", GeneticTransduction }, 
+      { "http://snomed.info/sct#2351004", GeneticTransduction }, 
+      { "2355008", RudSyndrome }, 
+      { "http://snomed.info/sct#2355008", RudSyndrome }, 
+      { "2359002", HyperBetaAlaninemia }, 
+      { "http://snomed.info/sct#2359002", HyperBetaAlaninemia }, 
+      { "2365002", SimpleChronicPharyngitis }, 
+      { "http://snomed.info/sct#2365002", SimpleChronicPharyngitis }, 
+      { "2366001", LateEffectOfDislocation }, 
+      { "http://snomed.info/sct#2366001", LateEffectOfDislocation }, 
+      { "2367005", AcuteHemorrhagicGastritis }, 
+      { "http://snomed.info/sct#2367005", AcuteHemorrhagicGastritis }, 
+      { "2374000", MonofascicularBlock }, 
+      { "http://snomed.info/sct#2374000", MonofascicularBlock }, 
+      { "2385003", CellulitisOfPectoralRegion }, 
+      { "http://snomed.info/sct#2385003", CellulitisOfPectoralRegion }, 
+      { "2388001", NormalVariationInTranslucency }, 
+      { "http://snomed.info/sct#2388001", NormalVariationInTranslucency }, 
+      { "2390000", AcuteGonococcalVulvovaginitis }, 
+      { "http://snomed.info/sct#2390000", AcuteGonococcalVulvovaginitis }, 
+      { "2391001", Achondrogenesis }, 
+      { "http://snomed.info/sct#2391001", Achondrogenesis }, 
+      { "2396006", MalignantPyoderma }, 
+      { "http://snomed.info/sct#2396006", MalignantPyoderma }, 
+      { "2398007", QuinidineToxicityByElectrocardiogram }, 
+      { "http://snomed.info/sct#2398007", QuinidineToxicityByElectrocardiogram }, 
+      { "2403008", DependenceSyndrome }, 
+      { "http://snomed.info/sct#2403008", DependenceSyndrome }, 
+      { "241006", MotorSimplePartialStatus }, 
+      { "http://snomed.info/sct#241006", MotorSimplePartialStatus }, 
+      { "2415007", LumbosacralRootLesion }, 
+      { "http://snomed.info/sct#2415007", LumbosacralRootLesion }, 
+      { "2418009", PolyesterFumeCausingToxicEffect }, 
+      { "http://snomed.info/sct#2418009", PolyesterFumeCausingToxicEffect }, 
+      { "2419001", OpenWoundOfForeheadWithComplication }, 
+      { "http://snomed.info/sct#2419001", OpenWoundOfForeheadWithComplication }, 
+      { "2420007", ThirdDegreeBurnOfMultipleSitesOfUpperLimb }, 
+      { "http://snomed.info/sct#2420007", ThirdDegreeBurnOfMultipleSitesOfUpperLimb }, 
+      { "242004", NoninfectiousJejunitis }, 
+      { "http://snomed.info/sct#242004", NoninfectiousJejunitis }, 
+      { "2432006", CerebrospinalFluidCirculationDisorder }, 
+      { "http://snomed.info/sct#2432006", CerebrospinalFluidCirculationDisorder }, 
+      { "2435008", Ascaridiasis }, 
+      { "http://snomed.info/sct#2435008", Ascaridiasis }, 
+      { "2437000", PlacentaCircumvallata }, 
+      { "http://snomed.info/sct#2437000", PlacentaCircumvallata }, 
+      { "2438005", Iniencephaly }, 
+      { "http://snomed.info/sct#2438005", Iniencephaly }, 
+      { "2439002", PurulentEndocarditis }, 
+      { "http://snomed.info/sct#2439002", PurulentEndocarditis }, 
+      { "2443003", HydrogenSulfidePoisoning }, 
+      { "http://snomed.info/sct#2443003", HydrogenSulfidePoisoning }, 
+      { "2452007", FetalRotation }, 
+      { "http://snomed.info/sct#2452007", FetalRotation }, 
+      { "2463005", AcquiredHeterochromiaOfIris }, 
+      { "http://snomed.info/sct#2463005", AcquiredHeterochromiaOfIris }, 
+      { "2469009", Onychomalacia }, 
+      { "http://snomed.info/sct#2469009", Onychomalacia }, 
+      { "2470005", BrainDamage }, 
+      { "http://snomed.info/sct#2470005", BrainDamage }, 
+      { "2471009", IntraAbdominalAbscessPostprocedure }, 
+      { "http://snomed.info/sct#2471009", IntraAbdominalAbscessPostprocedure }, 
+      { "2472002", PassesNoUrine }, 
+      { "http://snomed.info/sct#2472002", PassesNoUrine }, 
+      { "2473007", IntermittentVerticalSquint }, 
+      { "http://snomed.info/sct#2473007", IntermittentVerticalSquint }, 
+      { "2477008", SuperficialPhlebitis }, 
+      { "http://snomed.info/sct#2477008", SuperficialPhlebitis }, 
+      { "2492009", DisorderOfNutrition }, 
+      { "http://snomed.info/sct#2492009", DisorderOfNutrition }, 
+      { "2495006", CongenitalCerebralArteriovenousAneurysm }, 
+      { "http://snomed.info/sct#2495006", CongenitalCerebralArteriovenousAneurysm }, 
+      { "2496007", Acalculia }, 
+      { "http://snomed.info/sct#2496007", Acalculia }, 
+      { "2506003", EarlyOnsetDysthymia }, 
+      { "http://snomed.info/sct#2506003", EarlyOnsetDysthymia }, 
+      { "2513003", TineaCapitisCausedByTrichophyton }, 
+      { "http://snomed.info/sct#2513003", TineaCapitisCausedByTrichophyton }, 
+      { "2518007", CryptogenicSexualPrecocity }, 
+      { "http://snomed.info/sct#2518007", CryptogenicSexualPrecocity }, 
+      { "2521009", BoneConductionBetterThanAir }, 
+      { "http://snomed.info/sct#2521009", BoneConductionBetterThanAir }, 
+      { "2523007", SalmonellaPneumonia }, 
+      { "http://snomed.info/sct#2523007", SalmonellaPneumonia }, 
+      { "2526004", NoninflammatoryDisorderOfTheFemaleGenitalOrgans }, 
+      { "http://snomed.info/sct#2526004", NoninflammatoryDisorderOfTheFemaleGenitalOrgans }, 
+      { "2528003", Viremia }, 
+      { "http://snomed.info/sct#2528003", Viremia }, 
+      { "253005", Sycosis }, 
+      { "http://snomed.info/sct#253005", Sycosis }, 
+      { "2532009", ChoroidalRupture }, 
+      { "http://snomed.info/sct#2532009", ChoroidalRupture }, 
+      { "2534005", CongenitalAbsenceOfVenaCava }, 
+      { "http://snomed.info/sct#2534005", CongenitalAbsenceOfVenaCava }, 
+      { "2538008", Ketosis }, 
+      { "http://snomed.info/sct#2538008", Ketosis }, 
+      { "2541004", CompulsiveBuying }, 
+      { "http://snomed.info/sct#2541004", CompulsiveBuying }, 
+      { "2554006", AcutePurulentPericarditis }, 
+      { "http://snomed.info/sct#2554006", AcutePurulentPericarditis }, 
+      { "2556008", DiseaseOfSupportingStructuresOfTeeth }, 
+      { "http://snomed.info/sct#2556008", DiseaseOfSupportingStructuresOfTeeth }, 
+      { "2560006", ComplexSyndactylyOfFingers }, 
+      { "http://snomed.info/sct#2560006", ComplexSyndactylyOfFingers }, 
+      { "2562003", AthanasiaTrifurcataPoisoning }, 
+      { "http://snomed.info/sct#2562003", AthanasiaTrifurcataPoisoning }, 
+      { "257006", AcneRosaceaErythematousTelangiectaticType }, 
+      { "http://snomed.info/sct#257006", AcneRosaceaErythematousTelangiectaticType }, 
+      { "2576002", Trachoma }, 
+      { "http://snomed.info/sct#2576002", Trachoma }, 
+      { "258001", PseudoknucklePad }, 
+      { "http://snomed.info/sct#258001", PseudoknucklePad }, 
+      { "2581006", ClaspKnifeRigidity }, 
+      { "http://snomed.info/sct#2581006", ClaspKnifeRigidity }, 
+      { "2582004", DeepThirdDegreeBurnOfMultipleSitesOfLowerLimb }, 
+      { "http://snomed.info/sct#2582004", DeepThirdDegreeBurnOfMultipleSitesOfLowerLimb }, 
+      { "2583009", FiligreedNetworkOfVenousValves }, 
+      { "http://snomed.info/sct#2583009", FiligreedNetworkOfVenousValves }, 
+      { "2584003", CerebralDegenerationInChildhood }, 
+      { "http://snomed.info/sct#2584003", CerebralDegenerationInChildhood }, 
+      { "2585002", PneumococcalPleurisy }, 
+      { "http://snomed.info/sct#2585002", PneumococcalPleurisy }, 
+      { "2589008", AcuteDacryoadenitis }, 
+      { "http://snomed.info/sct#2589008", AcuteDacryoadenitis }, 
+      { "2591000", CrushInjuryOfShoulderRegion }, 
+      { "http://snomed.info/sct#2591000", CrushInjuryOfShoulderRegion }, 
+      { "2593002", DubowitzSyndrome }, 
+      { "http://snomed.info/sct#2593002", DubowitzSyndrome }, 
+      { "2602008", HemarthrosisOfShoulder }, 
+      { "http://snomed.info/sct#2602008", HemarthrosisOfShoulder }, 
+      { "2606006", BoilOfPerineum }, 
+      { "http://snomed.info/sct#2606006", BoilOfPerineum }, 
+      { "2615004", GraafianFollicleCyst }, 
+      { "http://snomed.info/sct#2615004", GraafianFollicleCyst }, 
+      { "2618002", ChronicRecurrentMajorDepressiveDisorder }, 
+      { "http://snomed.info/sct#2618002", ChronicRecurrentMajorDepressiveDisorder }, 
+      { "2622007", InfectedUlcerOfSkin }, 
+      { "http://snomed.info/sct#2622007", InfectedUlcerOfSkin }, 
+      { "2624008", PrepubertalPeriodontitis }, 
+      { "http://snomed.info/sct#2624008", PrepubertalPeriodontitis }, 
+      { "2625009", SenterSyndrome }, 
+      { "http://snomed.info/sct#2625009", SenterSyndrome }, 
+      { "2630008", OpenWoundOfFingerWithoutComplication }, 
+      { "http://snomed.info/sct#2630008", OpenWoundOfFingerWithoutComplication }, 
+      { "2634004", DecreasedBloodErythrocyteVolume }, 
+      { "http://snomed.info/sct#2634004", DecreasedBloodErythrocyteVolume }, 
+      { "2638001", HypercalcemiaCausedByADrug }, 
+      { "http://snomed.info/sct#2638001", HypercalcemiaCausedByADrug }, 
+      { "2640006", ClinicalStage4 }, 
+      { "http://snomed.info/sct#2640006", ClinicalStage4 }, 
+      { "264008", BlindHypertensiveEye }, 
+      { "http://snomed.info/sct#264008", BlindHypertensiveEye }, 
+      { "2651006", ClosedTraumaticDislocationOfElbowJoint }, 
+      { "http://snomed.info/sct#2651006", ClosedTraumaticDislocationOfElbowJoint }, 
+      { "2655002", Invalidism }, 
+      { "http://snomed.info/sct#2655002", Invalidism }, 
+      { "2657005", OverflowProteinuria }, 
+      { "http://snomed.info/sct#2657005", OverflowProteinuria }, 
+      { "2663001", PalpatoryProteinuria }, 
+      { "http://snomed.info/sct#2663001", PalpatoryProteinuria }, 
+      { "2665008", CoordinateConvulsion }, 
+      { "http://snomed.info/sct#2665008", CoordinateConvulsion }, 
+      { "2683000", NonvenomousInsectBiteOfAxillaWithoutInfection }, 
+      { "http://snomed.info/sct#2683000", NonvenomousInsectBiteOfAxillaWithoutInfection }, 
+      { "2689001", DominantDystrophicEpidermolysisBullosaWithAbsenceOfSkin }, 
+      { "http://snomed.info/sct#2689001", DominantDystrophicEpidermolysisBullosaWithAbsenceOfSkin }, 
+      { "2694001", MyelophthisicAnemia }, 
+      { "http://snomed.info/sct#2694001", MyelophthisicAnemia }, 
+      { "2704003", AcuteDisease }, 
+      { "http://snomed.info/sct#2704003", AcuteDisease }, 
+      { "2707005", NecrotizingEnterocolitis }, 
+      { "http://snomed.info/sct#2707005", NecrotizingEnterocolitis }, 
+      { "2713001", ClosedPneumothorax }, 
+      { "http://snomed.info/sct#2713001", ClosedPneumothorax }, 
+      { "2724004", AuditoryRecruitment }, 
+      { "http://snomed.info/sct#2724004", AuditoryRecruitment }, 
+      { "2725003", PreviousAbnormalityOfGlucoseTolerance }, 
+      { "http://snomed.info/sct#2725003", PreviousAbnormalityOfGlucoseTolerance }, 
+      { "2733002", HeelPain }, 
+      { "http://snomed.info/sct#2733002", HeelPain }, 
+      { "2736005", HoneycombAtrophyOfFace }, 
+      { "http://snomed.info/sct#2736005", HoneycombAtrophyOfFace }, 
+      { "2740001", GoutyProteinuria }, 
+      { "http://snomed.info/sct#2740001", GoutyProteinuria }, 
+      { "2749000", CongenitalDeformityOfHip }, 
+      { "http://snomed.info/sct#2749000", CongenitalDeformityOfHip }, 
+      { "2751001", FibrocalculousPancreaticDiabetes }, 
+      { "http://snomed.info/sct#2751001", FibrocalculousPancreaticDiabetes }, 
+      { "276008", OxytocinPoisoning }, 
+      { "http://snomed.info/sct#276008", OxytocinPoisoning }, 
+      { "2761008", DecreasedStoolCaliber }, 
+      { "http://snomed.info/sct#2761008", DecreasedStoolCaliber }, 
+      { "2764000", JointCrackle }, 
+      { "http://snomed.info/sct#2764000", JointCrackle }, 
+      { "2770006", FetalOrNeonatalEffectOfAntibioticTransmittedViaPlacentaAndOrBreastMilk }, 
+      { "http://snomed.info/sct#2770006", FetalOrNeonatalEffectOfAntibioticTransmittedViaPlacentaAndOrBreastMilk }, 
+      { "2772003", EpidermolysisBullosaAcquisita }, 
+      { "http://snomed.info/sct#2772003", EpidermolysisBullosaAcquisita }, 
+      { "2775001", IntraArticularLooseBody }, 
+      { "http://snomed.info/sct#2775001", IntraArticularLooseBody }, 
+      { "2776000", OrganicBrainSyndrome }, 
+      { "http://snomed.info/sct#2776000", OrganicBrainSyndrome }, 
+      { "2781009", MiscarriageComplicatedByDelayedAndOrExcessiveHemorrhage }, 
+      { "http://snomed.info/sct#2781009", MiscarriageComplicatedByDelayedAndOrExcessiveHemorrhage }, 
+      { "2782002", TemporomandibularDysplasia }, 
+      { "http://snomed.info/sct#2782002", TemporomandibularDysplasia }, 
+      { "2783007", GastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation }, 
+      { "http://snomed.info/sct#2783007", GastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation }, 
+      { "2786004", EpithelialOvarianTumorInternationalFederationOfGynecologyAndObstetricsStageIII }, 
+      { "http://snomed.info/sct#2786004", EpithelialOvarianTumorInternationalFederationOfGynecologyAndObstetricsStageIII }, 
+      { "2790002", ImpairmentLevelOneEyeTotalImpairmentOtherEyeNotSpecified }, 
+      { "http://snomed.info/sct#2790002", ImpairmentLevelOneEyeTotalImpairmentOtherEyeNotSpecified }, 
+      { "279001", SenileMyocarditis }, 
+      { "http://snomed.info/sct#279001", SenileMyocarditis }, 
+      { "2805007", PhosmetPoisoning }, 
+      { "http://snomed.info/sct#2805007", PhosmetPoisoning }, 
+      { "2806008", ImpairedPsychomotorDevelopment }, 
+      { "http://snomed.info/sct#2806008", ImpairedPsychomotorDevelopment }, 
+      { "2807004", ChronicGastrojejunalUlcerWithPerforation }, 
+      { "http://snomed.info/sct#2807004", ChronicGastrojejunalUlcerWithPerforation }, 
+      { "2808009", InfectionCausedByProsthenorchisElegans }, 
+      { "http://snomed.info/sct#2808009", InfectionCausedByProsthenorchisElegans }, 
+      { "281004", AlcoholicDementia }, 
+      { "http://snomed.info/sct#281004", AlcoholicDementia }, 
+      { "2815001", SexualPyromania }, 
+      { "http://snomed.info/sct#2815001", SexualPyromania }, 
+      { "2816000", DilatedCardiomyopathySecondaryToMyotonicDystrophy }, 
+      { "http://snomed.info/sct#2816000", DilatedCardiomyopathySecondaryToMyotonicDystrophy }, 
+      { "2818004", CongenitalVascularAnomalyOfEye }, 
+      { "http://snomed.info/sct#2818004", CongenitalVascularAnomalyOfEye }, 
+      { "2819007", MagnesiumSulfatePoisoning }, 
+      { "http://snomed.info/sct#2819007", MagnesiumSulfatePoisoning }, 
+      { "282006", AcuteMyocardialInfarctionOfBasalLateralWall }, 
+      { "http://snomed.info/sct#282006", AcuteMyocardialInfarctionOfBasalLateralWall }, 
+      { "2825006", AbrasionAndOrFrictionBurnOfGumWithoutInfection }, 
+      { "http://snomed.info/sct#2825006", AbrasionAndOrFrictionBurnOfGumWithoutInfection }, 
+      { "2828008", CongenitalStenosisOfNares }, 
+      { "http://snomed.info/sct#2828008", CongenitalStenosisOfNares }, 
+      { "2829000", UhlDisease }, 
+      { "http://snomed.info/sct#2829000", UhlDisease }, 
+      { "2831009", PyloricAntralVascularEctasia }, 
+      { "http://snomed.info/sct#2831009", PyloricAntralVascularEctasia }, 
+      { "2835000", HemolyticAnemiaDueToCardiacTrauma }, 
+      { "http://snomed.info/sct#2835000", HemolyticAnemiaDueToCardiacTrauma }, 
+      { "2836004", ButaneCausingToxicEffect }, 
+      { "http://snomed.info/sct#2836004", ButaneCausingToxicEffect }, 
+      { "2838003", Piblokto }, 
+      { "http://snomed.info/sct#2838003", Piblokto }, 
+      { "2840008", OpenFractureOfVaultOfSkullWithCerebralLacerationANDORContusion }, 
+      { "http://snomed.info/sct#2840008", OpenFractureOfVaultOfSkullWithCerebralLacerationANDORContusion }, 
+      { "2850009", InfectionCausedBySchistosomaIncognitum }, 
+      { "http://snomed.info/sct#2850009", InfectionCausedBySchistosomaIncognitum }, 
+      { "2853006", MacularKeratitis }, 
+      { "http://snomed.info/sct#2853006", MacularKeratitis }, 
+      { "2856003", VitaminAResponsiveDermatosis }, 
+      { "http://snomed.info/sct#2856003", VitaminAResponsiveDermatosis }, 
+      { "2858002", PostpartumSepsis }, 
+      { "http://snomed.info/sct#2858002", PostpartumSepsis }, 
+      { "2884008", SpherophakiaBrachymorphiaSyndrome }, 
+      { "http://snomed.info/sct#2884008", SpherophakiaBrachymorphiaSyndrome }, 
+      { "2893009", AnomalyOfChromosomePair10 }, 
+      { "http://snomed.info/sct#2893009", AnomalyOfChromosomePair10 }, 
+      { "2897005", ImmuneThrombocytopenia }, 
+      { "http://snomed.info/sct#2897005", ImmuneThrombocytopenia }, 
+      { "2899008", ThoughtBlocking }, 
+      { "http://snomed.info/sct#2899008", ThoughtBlocking }, 
+      { "2900003", FibromuscularDysplasiaOfRenalArtery }, 
+      { "http://snomed.info/sct#2900003", FibromuscularDysplasiaOfRenalArtery }, 
+      { "290006", MelnickFraserSyndrome }, 
+      { "http://snomed.info/sct#290006", MelnickFraserSyndrome }, 
+      { "2901004", AlteredBloodPassedPerRectum }, 
+      { "http://snomed.info/sct#2901004", AlteredBloodPassedPerRectum }, 
+      { "2902006", DecreasedLymphocyteLifeSpan }, 
+      { "http://snomed.info/sct#2902006", DecreasedLymphocyteLifeSpan }, 
+      { "2904007", MaleInfertility }, 
+      { "http://snomed.info/sct#2904007", MaleInfertility }, 
+      { "2910007", DischargeFromPenis }, 
+      { "http://snomed.info/sct#2910007", DischargeFromPenis }, 
+      { "2912004", CysticBullousDiseaseOfTheLung }, 
+      { "http://snomed.info/sct#2912004", CysticBullousDiseaseOfTheLung }, 
+      { "2917005", TransientHypothyroidism }, 
+      { "http://snomed.info/sct#2917005", TransientHypothyroidism }, 
+      { "2918000", InfectionCausedByBacteroides }, 
+      { "http://snomed.info/sct#2918000", InfectionCausedByBacteroides }, 
+      { "2919008", NauseaVomitingAndDiarrhea }, 
+      { "http://snomed.info/sct#2919008", NauseaVomitingAndDiarrhea }, 
+      { "292003", EEGFinding }, 
+      { "http://snomed.info/sct#292003", EEGFinding }, 
+      { "2929001", ArterialOcclusion }, 
+      { "http://snomed.info/sct#2929001", ArterialOcclusion }, 
+      { "2935001", AntiasthmaticPoisoning }, 
+      { "http://snomed.info/sct#2935001", AntiasthmaticPoisoning }, 
+      { "2940009", IntrabasalVesicularDermatitis }, 
+      { "http://snomed.info/sct#2940009", IntrabasalVesicularDermatitis }, 
+      { "2946003", OsmoticDiarrhea }, 
+      { "http://snomed.info/sct#2946003", OsmoticDiarrhea }, 
+      { "2951009", AtopicCataract }, 
+      { "http://snomed.info/sct#2951009", AtopicCataract }, 
+      { "2955000", ChronicUlcerativePulpitis }, 
+      { "http://snomed.info/sct#2955000", ChronicUlcerativePulpitis }, 
+      { "2965006", NevoidCongenitalAlopecia }, 
+      { "http://snomed.info/sct#2965006", NevoidCongenitalAlopecia }, 
+      { "2967003", NonComitantStrabismus }, 
+      { "http://snomed.info/sct#2967003", NonComitantStrabismus }, 
+      { "297009", AcuteMyringitis }, 
+      { "http://snomed.info/sct#297009", AcuteMyringitis }, 
+      { "2972007", OcclusionOfAnteriorSpinalArtery }, 
+      { "http://snomed.info/sct#2972007", OcclusionOfAnteriorSpinalArtery }, 
+      { "2973002", PelvicOrganInjuryWithoutOpenWoundIntoAbdominalCavity }, 
+      { "http://snomed.info/sct#2973002", PelvicOrganInjuryWithoutOpenWoundIntoAbdominalCavity }, 
+      { "2978006", AneurysmOfConjunctiva }, 
+      { "http://snomed.info/sct#2978006", AneurysmOfConjunctiva }, 
+      { "2981001", PulsatileMassOfAbdomen }, 
+      { "http://snomed.info/sct#2981001", PulsatileMassOfAbdomen }, 
+      { "2989004", ComplicationFollowingMolarANDOREctopicPregnancy }, 
+      { "http://snomed.info/sct#2989004", ComplicationFollowingMolarANDOREctopicPregnancy }, 
+      { "2990008", LymphocyticLeukemoidReaction }, 
+      { "http://snomed.info/sct#2990008", LymphocyticLeukemoidReaction }, 
+      { "299007", ParaffinomaOfSkin }, 
+      { "http://snomed.info/sct#299007", ParaffinomaOfSkin }, 
+      { "2992000", PigmentaryPallidalDegeneration }, 
+      { "http://snomed.info/sct#2992000", PigmentaryPallidalDegeneration }, 
+      { "2994004", BrainFag }, 
+      { "http://snomed.info/sct#2994004", BrainFag }, 
+      { "2999009", InjuryOfEarRegion }, 
+      { "http://snomed.info/sct#2999009", InjuryOfEarRegion }, 
+      { "3002002", ThyroidHemorrhage }, 
+      { "http://snomed.info/sct#3002002", ThyroidHemorrhage }, 
+      { "3004001", CongenitalDilatationOfEsophagus }, 
+      { "http://snomed.info/sct#3004001", CongenitalDilatationOfEsophagus }, 
+      { "3006004", AlteredConsciousness }, 
+      { "http://snomed.info/sct#3006004", AlteredConsciousness }, 
+      { "3009006", SolanumMalacoxylonPoisoning }, 
+      { "http://snomed.info/sct#3009006", SolanumMalacoxylonPoisoning }, 
+      { "3013004", OpenWoundOfEarDrumWithoutComplication }, 
+      { "http://snomed.info/sct#3013004", OpenWoundOfEarDrumWithoutComplication }, 
+      { "3014005", Autoeczematization }, 
+      { "http://snomed.info/sct#3014005", Autoeczematization }, 
+      { "3018008", PenetrationOfEyeballWithMagneticForeignBody }, 
+      { "http://snomed.info/sct#3018008", PenetrationOfEyeballWithMagneticForeignBody }, 
+      { "3019000", ClosedAnteriorDislocationOfElbow }, 
+      { "http://snomed.info/sct#3019000", ClosedAnteriorDislocationOfElbow }, 
+      { "3021005", NormalGastricAcidity }, 
+      { "http://snomed.info/sct#3021005", NormalGastricAcidity }, 
+      { "3023008", AcutePepticUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction }, 
+      { "http://snomed.info/sct#3023008", AcutePepticUlcerWithoutHemorrhageWithoutPerforationANDWithoutObstruction }, 
+      { "303002", ApoplecticPancreatitis }, 
+      { "http://snomed.info/sct#303002", ApoplecticPancreatitis }, 
+      { "3032005", NonvenomousInsectBiteOfCheekWithoutInfection }, 
+      { "http://snomed.info/sct#3032005", NonvenomousInsectBiteOfCheekWithoutInfection }, 
+      { "3033000", BoneANDORJointDisorderOfPelvisInMotherComplicatingPregnancyChildbirthANDORPuerperium }, 
+      { "http://snomed.info/sct#3033000", BoneANDORJointDisorderOfPelvisInMotherComplicatingPregnancyChildbirthANDORPuerperium }, 
+      { "3038009", AcuteLymphangitisOfUmbilicus }, 
+      { "http://snomed.info/sct#3038009", AcuteLymphangitisOfUmbilicus }, 
+      { "3044008", VitreousProlapse }, 
+      { "http://snomed.info/sct#3044008", VitreousProlapse }, 
+      { "3053001", PoisoningCausedByNitroglycerin }, 
+      { "http://snomed.info/sct#3053001", PoisoningCausedByNitroglycerin }, 
+      { "3059002", AcuteLymphangitisOfThigh }, 
+      { "http://snomed.info/sct#3059002", AcuteLymphangitisOfThigh }, 
+      { "3067005", WeakCPhenotype }, 
+      { "http://snomed.info/sct#3067005", WeakCPhenotype }, 
+      { "3071008", Widow }, 
+      { "http://snomed.info/sct#3071008", Widow }, 
+      { "3072001", HormoneInducedHypopituitarism }, 
+      { "http://snomed.info/sct#3072001", HormoneInducedHypopituitarism }, 
+      { "3073006", RuvalcabaSyndrome }, 
+      { "http://snomed.info/sct#3073006", RuvalcabaSyndrome }, 
+      { "308006", PearlyPenilePapules }, 
+      { "http://snomed.info/sct#308006", PearlyPenilePapules }, 
+      { "3084004", NonvenomousInsectBiteOfGumWithoutInfection }, 
+      { "http://snomed.info/sct#3084004", NonvenomousInsectBiteOfGumWithoutInfection }, 
+      { "3089009", DisabilityEvaluationImpairmentClass7 }, 
+      { "http://snomed.info/sct#3089009", DisabilityEvaluationImpairmentClass7 }, 
+      { "3094009", VomitingInInfantsANDORChildren }, 
+      { "http://snomed.info/sct#3094009", VomitingInInfantsANDORChildren }, 
+      { "3095005", InducedMalaria }, 
+      { "http://snomed.info/sct#3095005", InducedMalaria }, 
+      { "3097002", SuperficialInjuryOfLipWithInfection }, 
+      { "http://snomed.info/sct#3097002", SuperficialInjuryOfLipWithInfection }, 
+      { "3098007", VentricularSeptalRupture }, 
+      { "http://snomed.info/sct#3098007", VentricularSeptalRupture }, 
+      { "310008", PenileBoil }, 
+      { "http://snomed.info/sct#310008", PenileBoil }, 
+      { "3105002", Intron }, 
+      { "http://snomed.info/sct#3105002", Intron }, 
+      { "3109008", SecondaryDysthymiaEarlyOnset }, 
+      { "http://snomed.info/sct#3109008", SecondaryDysthymiaEarlyOnset }, 
+      { "3110003", AOMAcuteOtitisMedia }, 
+      { "http://snomed.info/sct#3110003", AOMAcuteOtitisMedia }, 
+      { "3119002", BrainStemLacerationWithOpenIntracranialWoundANDLossOfConsciousness }, 
+      { "http://snomed.info/sct#3119002", BrainStemLacerationWithOpenIntracranialWoundANDLossOfConsciousness }, 
+      { "3129009", InfarctionOfOvary }, 
+      { "http://snomed.info/sct#3129009", InfarctionOfOvary }, 
+      { "313005", DejaVu }, 
+      { "http://snomed.info/sct#313005", DejaVu }, 
+      { "3135009", OEOtitisExterna }, 
+      { "http://snomed.info/sct#3135009", OEOtitisExterna }, 
+      { "3140001", CitrullinemiaSubacuteType }, 
+      { "http://snomed.info/sct#3140001", CitrullinemiaSubacuteType }, 
+      { "3144005", StaphylococcalPleurisy }, 
+      { "http://snomed.info/sct#3144005", StaphylococcalPleurisy }, 
+      { "3158007", PanicDisorderWithAgoraphobiaAgoraphobicAvoidanceInPartialRemissionANDPanicAttacksInPartialRemission }, 
+      { "http://snomed.info/sct#3158007", PanicDisorderWithAgoraphobiaAgoraphobicAvoidanceInPartialRemissionANDPanicAttacksInPartialRemission }, 
+      { "3160009", InfertilityOfCervicalOrigin }, 
+      { "http://snomed.info/sct#3160009", InfertilityOfCervicalOrigin }, 
+      { "3163006", AcuteAdenoviralFollicularConjunctivitis }, 
+      { "http://snomed.info/sct#3163006", AcuteAdenoviralFollicularConjunctivitis }, 
+      { "3168002", ThrombophlebitisOfIntracranialVenousSinus }, 
+      { "http://snomed.info/sct#3168002", ThrombophlebitisOfIntracranialVenousSinus }, 
+      { "317006", ReactiveHypoglycemia }, 
+      { "http://snomed.info/sct#317006", ReactiveHypoglycemia }, 
+      { "3185000", MoodCongruentDelusion }, 
+      { "http://snomed.info/sct#3185000", MoodCongruentDelusion }, 
+      { "3199001", SprainOfShoulderJoint }, 
+      { "http://snomed.info/sct#3199001", SprainOfShoulderJoint }, 
+      { "3200003", Sacrocoxalgia }, 
+      { "http://snomed.info/sct#3200003", Sacrocoxalgia }, 
+      { "320003", CervicalDilatation1cm }, 
+      { "http://snomed.info/sct#320003", CervicalDilatation1cm }, 
+      { "3208005", OpenWoundOfOssiclesWithoutComplication }, 
+      { "http://snomed.info/sct#3208005", OpenWoundOfOssiclesWithoutComplication }, 
+      { "3214003", InvasivePulmonaryAspergillosis }, 
+      { "http://snomed.info/sct#3214003", InvasivePulmonaryAspergillosis }, 
+      { "3217005", OpenDislocationOfSixthCervicalVertebra }, 
+      { "http://snomed.info/sct#3217005", OpenDislocationOfSixthCervicalVertebra }, 
+      { "3218000", MycoticDisease }, 
+      { "http://snomed.info/sct#3218000", MycoticDisease }, 
+      { "3219008", DiseaseTypeANDORCategoryUnknown }, 
+      { "http://snomed.info/sct#3219008", DiseaseTypeANDORCategoryUnknown }, 
+      { "3228009", ClosedFractureOfTheRadialShaft }, 
+      { "http://snomed.info/sct#3228009", ClosedFractureOfTheRadialShaft }, 
+      { "3229001", TrachealUlcer }, 
+      { "http://snomed.info/sct#3229001", TrachealUlcer }, 
+      { "3230006", IllegalTerminationOfPregnancyWithAfibrinogenemia }, 
+      { "http://snomed.info/sct#3230006", IllegalTerminationOfPregnancyWithAfibrinogenemia }, 
+      { "3238004", Pericarditis }, 
+      { "http://snomed.info/sct#3238004", Pericarditis }, 
+      { "3239007", LymphocyteDisorder }, 
+      { "http://snomed.info/sct#3239007", LymphocyteDisorder }, 
+      { "324007", PlasterUlcer }, 
+      { "http://snomed.info/sct#324007", PlasterUlcer }, 
+      { "3253007", Dyschromia }, 
+      { "http://snomed.info/sct#3253007", Dyschromia }, 
+      { "3254001", InfectionCausedByStrongyloidesWesteri }, 
+      { "http://snomed.info/sct#3254001", InfectionCausedByStrongyloidesWesteri }, 
+      { "3259006", HomeriaSpeciesPoisoning }, 
+      { "http://snomed.info/sct#3259006", HomeriaSpeciesPoisoning }, 
+      { "3261002", MigratoryOsteolysis }, 
+      { "http://snomed.info/sct#3261002", MigratoryOsteolysis }, 
+      { "3263004", Verumontanitis }, 
+      { "http://snomed.info/sct#3263004", Verumontanitis }, 
+      { "3272007", Stomatocytosis }, 
+      { "http://snomed.info/sct#3272007", Stomatocytosis }, 
+      { "3274008", FlatChest }, 
+      { "http://snomed.info/sct#3274008", FlatChest }, 
+      { "3275009", BehcetSyndromeVascularType }, 
+      { "http://snomed.info/sct#3275009", BehcetSyndromeVascularType }, 
+      { "3276005", ToadPoisoning }, 
+      { "http://snomed.info/sct#3276005", ToadPoisoning }, 
+      { "3277001", TerminalMoodInsomnia }, 
+      { "http://snomed.info/sct#3277001", TerminalMoodInsomnia }, 
+      { "3282008", ArcEye }, 
+      { "http://snomed.info/sct#3282008", ArcEye }, 
+      { "3283003", FeelingOfSandOrForeignBodyInEye }, 
+      { "http://snomed.info/sct#3283003", FeelingOfSandOrForeignBodyInEye }, 
+      { "3286006", PatientStatusDeterminationGreatlyImproved }, 
+      { "http://snomed.info/sct#3286006", PatientStatusDeterminationGreatlyImproved }, 
+      { "3289004", Anisometropia }, 
+      { "http://snomed.info/sct#3289004", Anisometropia }, 
+      { "3291007", ClosedFractureOfTwoRibs }, 
+      { "http://snomed.info/sct#3291007", ClosedFractureOfTwoRibs }, 
+      { "3298001", AmnesticSyndrome }, 
+      { "http://snomed.info/sct#3298001", AmnesticSyndrome }, 
+      { "330007", OccipitalHeadache }, 
+      { "http://snomed.info/sct#330007", OccipitalHeadache }, 
+      { "3303004", DiseaseCausedByArenavirus }, 
+      { "http://snomed.info/sct#3303004", DiseaseCausedByArenavirus }, 
+      { "3304005", BronchialCompression }, 
+      { "http://snomed.info/sct#3304005", BronchialCompression }, 
+      { "3305006", DisorderOfLymphaticVessel }, 
+      { "http://snomed.info/sct#3305006", DisorderOfLymphaticVessel }, 
+      { "3308008", AtrophicHyperplasticGastritis }, 
+      { "http://snomed.info/sct#3308008", AtrophicHyperplasticGastritis }, 
+      { "3310005", ForeignBodyGranulomaOfSkin }, 
+      { "http://snomed.info/sct#3310005", ForeignBodyGranulomaOfSkin }, 
+      { "3321001", RenalAbscess }, 
+      { "http://snomed.info/sct#3321001", RenalAbscess }, 
+      { "3323003", LeukoplakiaOfPenis }, 
+      { "http://snomed.info/sct#3323003", LeukoplakiaOfPenis }, 
+      { "3327002", AcquiredJerkNystagmus }, 
+      { "http://snomed.info/sct#3327002", AcquiredJerkNystagmus }, 
+      { "3331008", OpenFractureOfNeckOfMetacarpalBone }, 
+      { "http://snomed.info/sct#3331008", OpenFractureOfNeckOfMetacarpalBone }, 
+      { "3344003", ToxicLabyrinthitis }, 
+      { "http://snomed.info/sct#3344003", ToxicLabyrinthitis }, 
+      { "3345002", IdiopathicOsteoporosis }, 
+      { "http://snomed.info/sct#3345002", IdiopathicOsteoporosis }, 
+      { "335002", Pylorospasm }, 
+      { "http://snomed.info/sct#335002", Pylorospasm }, 
+      { "3355003", AntiCommonColdDrugPoisoning }, 
+      { "http://snomed.info/sct#3355003", AntiCommonColdDrugPoisoning }, 
+      { "3358001", LichenRuberMoniliformis }, 
+      { "http://snomed.info/sct#3358001", LichenRuberMoniliformis }, 
+      { "3368006", DullChestPain }, 
+      { "http://snomed.info/sct#3368006", DullChestPain }, 
+      { "3376008", Pseudoptyalism }, 
+      { "http://snomed.info/sct#3376008", Pseudoptyalism }, 
+      { "3381004", OpenFractureOfAstragalus }, 
+      { "http://snomed.info/sct#3381004", OpenFractureOfAstragalus }, 
+      { "3387000", AuditoryDiscriminationAphasia }, 
+      { "http://snomed.info/sct#3387000", AuditoryDiscriminationAphasia }, 
+      { "3391005", NegativeForTumorCells }, 
+      { "http://snomed.info/sct#3391005", NegativeForTumorCells }, 
+      { "3393008", PhlebitisFollowingInfusionPerfusionANDORTransfusion }, 
+      { "http://snomed.info/sct#3393008", PhlebitisFollowingInfusionPerfusionANDORTransfusion }, 
+      { "3398004", CadmiumPoisoning }, 
+      { "http://snomed.info/sct#3398004", CadmiumPoisoning }, 
+      { "3401001", CercopithecusHerpesvirus1Disease }, 
+      { "http://snomed.info/sct#3401001", CercopithecusHerpesvirus1Disease }, 
+      { "341009", ABOIncompatibilityReaction }, 
+      { "http://snomed.info/sct#341009", ABOIncompatibilityReaction }, 
+      { "3415004", Cyanosis }, 
+      { "http://snomed.info/sct#3415004", Cyanosis }, 
+      { "3419005", FaucialDiphtheria }, 
+      { "http://snomed.info/sct#3419005", FaucialDiphtheria }, 
+      { "3421000", OpenBlowOutFractureOrbit }, 
+      { "http://snomed.info/sct#3421000", OpenBlowOutFractureOrbit }, 
+      { "3424008", HeartRateFast }, 
+      { "http://snomed.info/sct#3424008", HeartRateFast }, 
+      { "3426005", RetainedMagneticIntraocularForeignBody }, 
+      { "http://snomed.info/sct#3426005", RetainedMagneticIntraocularForeignBody }, 
+      { "3427001", NonglucosuricMelituria }, 
+      { "http://snomed.info/sct#3427001", NonglucosuricMelituria }, 
+      { "3434004", Myotonia }, 
+      { "http://snomed.info/sct#3434004", Myotonia }, 
+      { "3439009", SevereCombinedImmunodeficiencySCIDDueToAbsentPeripheralTCellMaturation }, 
+      { "http://snomed.info/sct#3439009", SevereCombinedImmunodeficiencySCIDDueToAbsentPeripheralTCellMaturation }, 
+      { "3441005", DisorderOfSebaceousGland }, 
+      { "http://snomed.info/sct#3441005", DisorderOfSebaceousGland }, 
+      { "3446000", OpenFractureOfT7T12LevelWithSpinalCordInjury }, 
+      { "http://snomed.info/sct#3446000", OpenFractureOfT7T12LevelWithSpinalCordInjury }, 
+      { "3449007", FingerAgnosia }, 
+      { "http://snomed.info/sct#3449007", FingerAgnosia }, 
+      { "3456001", ChronicProgressiveNonHereditaryChorea }, 
+      { "http://snomed.info/sct#3456001", ChronicProgressiveNonHereditaryChorea }, 
+      { "3458000", MyositisOssificansAssociatedWithDermatoPolymyositis }, 
+      { "http://snomed.info/sct#3458000", MyositisOssificansAssociatedWithDermatoPolymyositis }, 
+      { "3461004", DeepThirdDegreeBurnOfThumb }, 
+      { "http://snomed.info/sct#3461004", DeepThirdDegreeBurnOfThumb }, 
+      { "3464007", InfectionCausedByOesophagostomumDentatum }, 
+      { "http://snomed.info/sct#3464007", InfectionCausedByOesophagostomumDentatum }, 
+      { "3468005", NeonatalInfectiveMastitis }, 
+      { "http://snomed.info/sct#3468005", NeonatalInfectiveMastitis }, 
+      { "3469002", PartialThicknessBurnOfThumb }, 
+      { "http://snomed.info/sct#3469002", PartialThicknessBurnOfThumb }, 
+      { "3472009", SpondylolisthesisGrade4 }, 
+      { "http://snomed.info/sct#3472009", SpondylolisthesisGrade4 }, 
+      { "3474005", GlycineMaxPoisoning }, 
+      { "http://snomed.info/sct#3474005", GlycineMaxPoisoning }, 
+      { "3480002", BurnOfWrist }, 
+      { "http://snomed.info/sct#3480002", BurnOfWrist }, 
+      { "3482005", PostoperativeEsophagitis }, 
+      { "http://snomed.info/sct#3482005", PostoperativeEsophagitis }, 
+      { "3483000", ChronicPepticUlcerWithPerforation }, 
+      { "http://snomed.info/sct#3483000", ChronicPepticUlcerWithPerforation }, 
+      { "3487004", PulmonaryCandidiasis }, 
+      { "http://snomed.info/sct#3487004", PulmonaryCandidiasis }, 
+      { "349006", AbsentTendonReflex }, 
+      { "http://snomed.info/sct#349006", AbsentTendonReflex }, 
+      { "3500002", OpenWoundOfOssiclesWithComplication }, 
+      { "http://snomed.info/sct#3500002", OpenWoundOfOssiclesWithComplication }, 
+      { "3502005", CervicalLymphadenitis }, 
+      { "http://snomed.info/sct#3502005", CervicalLymphadenitis }, 
+      { "3503000", GenderIdentityDisorderOfAdolescencePreviouslyAsexual }, 
+      { "http://snomed.info/sct#3503000", GenderIdentityDisorderOfAdolescencePreviouslyAsexual }, 
+      { "3505007", NonallopathicLesionOfTheArm }, 
+      { "http://snomed.info/sct#3505007", NonallopathicLesionOfTheArm }, 
+      { "3506008", StenosisOfRetinalArtery }, 
+      { "http://snomed.info/sct#3506008", StenosisOfRetinalArtery }, 
+      { "3507004", AbscessOfThigh }, 
+      { "http://snomed.info/sct#3507004", AbscessOfThigh }, 
+      { "3511005", InfectiousThyroiditis }, 
+      { "http://snomed.info/sct#3511005", InfectiousThyroiditis }, 
+      { "3514002", PeribronchialFibrosisOfLung }, 
+      { "http://snomed.info/sct#3514002", PeribronchialFibrosisOfLung }, 
+      { "3519007", DisorderOfSynovium }, 
+      { "http://snomed.info/sct#3519007", DisorderOfSynovium }, 
+      { "3528008", RestrictedCarbohydrateFatControlledDiet }, 
+      { "http://snomed.info/sct#3528008", RestrictedCarbohydrateFatControlledDiet }, 
+      { "3529000", InfectionCausedBySanguinicola }, 
+      { "http://snomed.info/sct#3529000", InfectionCausedBySanguinicola }, 
+      { "3530005", Bipolar1DisorderSingleManicEpisodeFullRemission }, 
+      { "http://snomed.info/sct#3530005", Bipolar1DisorderSingleManicEpisodeFullRemission }, 
+      { "3531009", IntrapsychicConflict }, 
+      { "http://snomed.info/sct#3531009", IntrapsychicConflict }, 
+      { "3533007", AcutePalmoplantarPustularPsoriasis }, 
+      { "http://snomed.info/sct#3533007", AcutePalmoplantarPustularPsoriasis }, 
+      { "3539006", Enteromenia }, 
+      { "http://snomed.info/sct#3539006", Enteromenia }, 
+      { "3542000", LacerationExtendingIntoParenchymaOfSpleenWithOpenWoundIntoAbdominalCavity }, 
+      { "http://snomed.info/sct#3542000", LacerationExtendingIntoParenchymaOfSpleenWithOpenWoundIntoAbdominalCavity }, 
+      { "3544004", HairSplitting }, 
+      { "http://snomed.info/sct#3544004", HairSplitting }, 
+      { "3545003", DiastolicDysfunction }, 
+      { "http://snomed.info/sct#3545003", DiastolicDysfunction }, 
+      { "3548001", BrachialPlexusDisorder }, 
+      { "http://snomed.info/sct#3548001", BrachialPlexusDisorder }, 
+      { "3549009", PancreaticAcinarAtrophy }, 
+      { "http://snomed.info/sct#3549009", PancreaticAcinarAtrophy }, 
+      { "355001", HemorrhagicShock }, 
+      { "http://snomed.info/sct#355001", HemorrhagicShock }, 
+      { "3558002", MesentericInfarction }, 
+      { "http://snomed.info/sct#3558002", MesentericInfarction }, 
+      { "3560000", BilateralRecurrentInguinalHernia }, 
+      { "http://snomed.info/sct#3560000", BilateralRecurrentInguinalHernia }, 
+      { "3570003", IncreasedBloodErythrocyteVolume }, 
+      { "http://snomed.info/sct#3570003", IncreasedBloodErythrocyteVolume }, 
+      { "357009", ClosedFractureTrapezoid }, 
+      { "http://snomed.info/sct#357009", ClosedFractureTrapezoid }, 
+      { "3571004", MegaloblasticAnemiaDueToPancreaticInsufficiency }, 
+      { "http://snomed.info/sct#3571004", MegaloblasticAnemiaDueToPancreaticInsufficiency }, 
+      { "3577000", LatticeRetinalDegeneration }, 
+      { "http://snomed.info/sct#3577000", LatticeRetinalDegeneration }, 
+      { "358004", SmallpoxVaccinePoisoning }, 
+      { "http://snomed.info/sct#358004", SmallpoxVaccinePoisoning }, 
+      { "3585009", Blinking }, 
+      { "http://snomed.info/sct#3585009", Blinking }, 
+      { "3586005", PsychogenicFugue }, 
+      { "http://snomed.info/sct#3586005", PsychogenicFugue }, 
+      { "3589003", SyphiliticPericarditis }, 
+      { "http://snomed.info/sct#3589003", SyphiliticPericarditis }, 
+      { "3590007", EnteroentericFistula }, 
+      { "http://snomed.info/sct#3590007", EnteroentericFistula }, 
+      { "359007", KernicterusDueToIsoimmunization }, 
+      { "http://snomed.info/sct#359007", KernicterusDueToIsoimmunization }, 
+      { "3591006", MetabolicAcidosisNormalAnionGapBicarbonateLosses }, 
+      { "http://snomed.info/sct#3591006", MetabolicAcidosisNormalAnionGapBicarbonateLosses }, 
+      { "3598000", PartialRecentRetinalDetachmentWithSingleDefect }, 
+      { "http://snomed.info/sct#3598000", PartialRecentRetinalDetachmentWithSingleDefect }, 
+      { "360002", AcuteRadiationDisease }, 
+      { "http://snomed.info/sct#360002", AcuteRadiationDisease }, 
+      { "3611003", DemetonPoisoning }, 
+      { "http://snomed.info/sct#3611003", DemetonPoisoning }, 
+      { "3633001", AbscessOfHand }, 
+      { "http://snomed.info/sct#3633001", AbscessOfHand }, 
+      { "3634007", LegalTerminationOfPregnancyComplicatedByMetabolicDisorder }, 
+      { "http://snomed.info/sct#3634007", LegalTerminationOfPregnancyComplicatedByMetabolicDisorder }, 
+      { "3639002", Glossoptosis }, 
+      { "http://snomed.info/sct#3639002", Glossoptosis }, 
+      { "3640000", LateEffectOfTraumaticAmputation }, 
+      { "http://snomed.info/sct#3640000", LateEffectOfTraumaticAmputation }, 
+      { "364006", AcuteLeftSidedHeartFailure }, 
+      { "http://snomed.info/sct#364006", AcuteLeftSidedHeartFailure }, 
+      { "3641001", InfectionCausedByCoenurosisSerialis }, 
+      { "http://snomed.info/sct#3641001", InfectionCausedByCoenurosisSerialis }, 
+      { "3642008", SterylSulfateSulfohydrolaseDeficiency }, 
+      { "http://snomed.info/sct#3642008", SterylSulfateSulfohydrolaseDeficiency }, 
+      { "3644009", MaceratedSkin }, 
+      { "http://snomed.info/sct#3644009", MaceratedSkin }, 
+      { "3649004", ContusionMultipleSitesOfTrunk }, 
+      { "http://snomed.info/sct#3649004", ContusionMultipleSitesOfTrunk }, 
+      { "3650004", CongenitalAbsenceOfLiverTotal }, 
+      { "http://snomed.info/sct#3650004", CongenitalAbsenceOfLiverTotal }, 
+      { "3652007", OverproductionOfGrowthHormone }, 
+      { "http://snomed.info/sct#3652007", OverproductionOfGrowthHormone }, 
+      { "3657001", OsteospermumSpeciesPoisoning }, 
+      { "http://snomed.info/sct#3657001", OsteospermumSpeciesPoisoning }, 
+      { "3660008", LethalGlossopharyngealDefect }, 
+      { "http://snomed.info/sct#3660008", LethalGlossopharyngealDefect }, 
+      { "366008", Hidromeiosis }, 
+      { "http://snomed.info/sct#366008", Hidromeiosis }, 
+      { "3662000", RollingHiatusHernia }, 
+      { "http://snomed.info/sct#3662000", RollingHiatusHernia }, 
+      { "3677008", AcademicProblem }, 
+      { "http://snomed.info/sct#3677008", AcademicProblem }, 
+      { "3680009", MonocephalusTripusDibrachius }, 
+      { "http://snomed.info/sct#3680009", MonocephalusTripusDibrachius }, 
+      { "368009", HeartValveDisorder }, 
+      { "http://snomed.info/sct#368009", HeartValveDisorder }, 
+      { "3681008", ThrombophlebitisOfTorcularHerophili }, 
+      { "http://snomed.info/sct#3681008", ThrombophlebitisOfTorcularHerophili }, 
+      { "369001", NormalJugularVenousPressure }, 
+      { "http://snomed.info/sct#369001", NormalJugularVenousPressure }, 
+      { "3696007", FunctionalDyspepsia }, 
+      { "http://snomed.info/sct#3696007", FunctionalDyspepsia }, 
+      { "3699000", TransverseDeficiencyOfArm }, 
+      { "http://snomed.info/sct#3699000", TransverseDeficiencyOfArm }, 
+      { "3703002", IschiaticHerniaWithGangrene }, 
+      { "http://snomed.info/sct#3703002", IschiaticHerniaWithGangrene }, 
+      { "3704008", DiffuseEndocapillaryProliferativeGlomerulonephritis }, 
+      { "http://snomed.info/sct#3704008", DiffuseEndocapillaryProliferativeGlomerulonephritis }, 
+      { "3705009", CongenitalMalformationOfAnteriorChamberOfEye }, 
+      { "http://snomed.info/sct#3705009", CongenitalMalformationOfAnteriorChamberOfEye }, 
+      { "3712000", DegeneratedEye }, 
+      { "http://snomed.info/sct#3712000", DegeneratedEye }, 
+      { "3716002", ThyroidGoiter }, 
+      { "http://snomed.info/sct#3716002", ThyroidGoiter }, 
+      { "3720003", AbnormalPresenceOfHemoglobin }, 
+      { "http://snomed.info/sct#3720003", AbnormalPresenceOfHemoglobin }, 
+      { "3723001", JointInflammation }, 
+      { "http://snomed.info/sct#3723001", JointInflammation }, 
+      { "3733009", CongenitalEventrationOfRightCrusOfDiaphragm }, 
+      { "http://snomed.info/sct#3733009", CongenitalEventrationOfRightCrusOfDiaphragm }, 
+      { "3736001", OpenWoundOfThumbnailWithTendonInvolvement }, 
+      { "http://snomed.info/sct#3736001", OpenWoundOfThumbnailWithTendonInvolvement }, 
+      { "3738000", VHViralHepatitis }, 
+      { "http://snomed.info/sct#3738000", VHViralHepatitis }, 
+      { "3744001", Hyperlipoproteinemia }, 
+      { "http://snomed.info/sct#3744001", Hyperlipoproteinemia }, 
+      { "3745000", SleepRhythmProblem }, 
+      { "http://snomed.info/sct#3745000", SleepRhythmProblem }, 
+      { "3747008", ECEjectionClick }, 
+      { "http://snomed.info/sct#3747008", ECEjectionClick }, 
+      { "3750006", Arteriospasm }, 
+      { "http://snomed.info/sct#3750006", Arteriospasm }, 
+      { "3751005", ContusionOfLabium }, 
+      { "http://snomed.info/sct#3751005", ContusionOfLabium }, 
+      { "3752003", InfectionByTrichuris }, 
+      { "http://snomed.info/sct#3752003", InfectionByTrichuris }, 
+      { "3754002", DysplasiaOfVagina }, 
+      { "http://snomed.info/sct#3754002", DysplasiaOfVagina }, 
+      { "3755001", PRPPityriasisRubraPilaris }, 
+      { "http://snomed.info/sct#3755001", PRPPityriasisRubraPilaris }, 
+      { "3756000", StaticAtaxia }, 
+      { "http://snomed.info/sct#3756000", StaticAtaxia }, 
+      { "3759007", InjuryOfHeartWithOpenWoundIntoThorax }, 
+      { "http://snomed.info/sct#3759007", InjuryOfHeartWithOpenWoundIntoThorax }, 
+      { "3760002", FamilialMultipleFactorDeficiencySyndromeTypeV }, 
+      { "http://snomed.info/sct#3760002", FamilialMultipleFactorDeficiencySyndromeTypeV }, 
+      { "3762005", BilateralRecurrentFemoralHerniaWithGangrene }, 
+      { "http://snomed.info/sct#3762005", BilateralRecurrentFemoralHerniaWithGangrene }, 
+      { "3763000", ExpectedBereavementDueToLifeEvent }, 
+      { "http://snomed.info/sct#3763000", ExpectedBereavementDueToLifeEvent }, 
+      { "378007", MorquioSyndrome }, 
+      { "http://snomed.info/sct#378007", MorquioSyndrome }, 
+      { "3783004", EnamelPearls }, 
+      { "http://snomed.info/sct#3783004", EnamelPearls }, 
+      { "3797007", PeriodontalCyst }, 
+      { "http://snomed.info/sct#3797007", PeriodontalCyst }, 
+      { "3798002", PrematureBirthOfIdenticalTwinsBothStillborn }, 
+      { "http://snomed.info/sct#3798002", PrematureBirthOfIdenticalTwinsBothStillborn }, 
+      { "3815005", CrohnDiseaseOfRectum }, 
+      { "http://snomed.info/sct#3815005", CrohnDiseaseOfRectum }, 
+      { "3820005", InnerEarConductiveHearingLoss }, 
+      { "http://snomed.info/sct#3820005", InnerEarConductiveHearingLoss }, 
+      { "382009", LegalHistoryFindingRelatingToChild }, 
+      { "http://snomed.info/sct#382009", LegalHistoryFindingRelatingToChild }, 
+      { "3827008", AneurysmOfArteryOfNeck }, 
+      { "http://snomed.info/sct#3827008", AneurysmOfArteryOfNeck }, 
+      { "3830001", SubcutaneousEmphysema }, 
+      { "http://snomed.info/sct#3830001", SubcutaneousEmphysema }, 
+      { "383004", FindingOfPassiveRangeOfHipExtension }, 
+      { "http://snomed.info/sct#383004", FindingOfPassiveRangeOfHipExtension }, 
+      { "3841004", BlisterOfCheekWithInfection }, 
+      { "http://snomed.info/sct#3841004", BlisterOfCheekWithInfection }, 
+      { "3845008", DuplicationOfIntestine }, 
+      { "http://snomed.info/sct#3845008", DuplicationOfIntestine }, 
+      { "385006", SecondaryPeripheralNeuropathy }, 
+      { "http://snomed.info/sct#385006", SecondaryPeripheralNeuropathy }, 
+      { "3855007", DisorderOfPancreas }, 
+      { "http://snomed.info/sct#3855007", DisorderOfPancreas }, 
+      { "3859001", LateEffectOfOpenWoundOfExtremitiesWithoutTendonInjury }, 
+      { "http://snomed.info/sct#3859001", LateEffectOfOpenWoundOfExtremitiesWithoutTendonInjury }, 
+      { "387003", Melanuria }, 
+      { "http://snomed.info/sct#387003", Melanuria }, 
+      { "3873005", FailedAttemptedTerminationOfPregnancyWithAcuteNecrosisOfLiver }, 
+      { "http://snomed.info/sct#3873005", FailedAttemptedTerminationOfPregnancyWithAcuteNecrosisOfLiver }, 
+      { "3885002", ABOIsoimmunizationInPregnancy }, 
+      { "http://snomed.info/sct#3885002", ABOIsoimmunizationInPregnancy }, 
+      { "3886001", CongenitalFecaliths }, 
+      { "http://snomed.info/sct#3886001", CongenitalFecaliths }, 
+      { "3899003", NeutropenicTyphlitis }, 
+      { "http://snomed.info/sct#3899003", NeutropenicTyphlitis }, 
+      { "3900008", MixedSensoryMotorPolyneuropathy }, 
+      { "http://snomed.info/sct#3900008", MixedSensoryMotorPolyneuropathy }, 
+      { "3902000", NonDoseRelatedDrugInducedNeutropenia }, 
+      { "http://snomed.info/sct#3902000", NonDoseRelatedDrugInducedNeutropenia }, 
+      { "3903005", ClosedTraumaticPneumothorax }, 
+      { "http://snomed.info/sct#3903005", ClosedTraumaticPneumothorax }, 
+      { "3908001", InfestationCausedByHaematopinus }, 
+      { "http://snomed.info/sct#3908001", InfestationCausedByHaematopinus }, 
+      { "3909009", CoeurEnSabot }, 
+      { "http://snomed.info/sct#3909009", CoeurEnSabot }, 
+      { "3913002", InjuryOfGastrointestinalTractWithOpenWoundIntoAbdominalCavity }, 
+      { "http://snomed.info/sct#3913002", InjuryOfGastrointestinalTractWithOpenWoundIntoAbdominalCavity }, 
+      { "3914008", MentalDisorderInChildhood }, 
+      { "http://snomed.info/sct#3914008", MentalDisorderInChildhood }, 
+      { "3928002", ZikaVirusDisease }, 
+      { "http://snomed.info/sct#3928002", ZikaVirusDisease }, 
+      { "3939004", BacterialColonyDensityTransparent }, 
+      { "http://snomed.info/sct#3939004", BacterialColonyDensityTransparent }, 
+      { "3944006", XLinkedPlacentalSterylSulfataseDeficiency }, 
+      { "http://snomed.info/sct#3944006", XLinkedPlacentalSterylSulfataseDeficiency }, 
+      { "3947004", HighOxygenAffinityHemoglobinPolycythemia }, 
+      { "http://snomed.info/sct#3947004", HighOxygenAffinityHemoglobinPolycythemia }, 
+      { "3950001", Birth }, 
+      { "http://snomed.info/sct#3950001", Birth }, 
+      { "3951002", Proctitis }, 
+      { "http://snomed.info/sct#3951002", Proctitis }, 
+      { "3972004", IdiopathicInsomnia }, 
+      { "http://snomed.info/sct#3972004", IdiopathicInsomnia }, 
+      { "3975002", DeepThirdDegreeBurnOfLowerLimb }, 
+      { "http://snomed.info/sct#3975002", DeepThirdDegreeBurnOfLowerLimb }, 
+      { "3978000", AIHAWarmAutoimmuneHemolyticAnemia }, 
+      { "http://snomed.info/sct#3978000", AIHAWarmAutoimmuneHemolyticAnemia }, 
+      { "398002", LeftAxisDeviationGreaterThan90DegreesByEKG }, 
+      { "http://snomed.info/sct#398002", LeftAxisDeviationGreaterThan90DegreesByEKG }, 
+      { "3987009", CongenitalAbsenceOfTrachea }, 
+      { "http://snomed.info/sct#3987009", CongenitalAbsenceOfTrachea }, 
+      { "3993001", InfectionCausedByMuellerius }, 
+      { "http://snomed.info/sct#3993001", InfectionCausedByMuellerius }, 
+      { "3999002", AcutePyelitisWithoutRenalMedullaryNecrosis }, 
+      { "http://snomed.info/sct#3999002", AcutePyelitisWithoutRenalMedullaryNecrosis }, 
+      { "4003003", AlphavirusDisease }, 
+      { "http://snomed.info/sct#4003003", AlphavirusDisease }, 
+      { "4004009", MonsterWithCranialAnomalies }, 
+      { "http://snomed.info/sct#4004009", MonsterWithCranialAnomalies }, 
+      { "4006006", FoetalTachycardiaAffectingManagementOfMother }, 
+      { "http://snomed.info/sct#4006006", FoetalTachycardiaAffectingManagementOfMother }, 
+      { "4009004", LowerUrinaryTractInfection }, 
+      { "http://snomed.info/sct#4009004", LowerUrinaryTractInfection }, 
+      { "4016003", EmpyemaOfMastoid }, 
+      { "http://snomed.info/sct#4016003", EmpyemaOfMastoid }, 
+      { "4017007", IncreasedStratumCorneumAdhesiveness }, 
+      { "http://snomed.info/sct#4017007", IncreasedStratumCorneumAdhesiveness }, 
+      { "4022007", VulvitisCircumscriptaPlasmacellularis }, 
+      { "http://snomed.info/sct#4022007", VulvitisCircumscriptaPlasmacellularis }, 
+      { "4026005", InterstitialMastitisAssociatedWithChildbirth }, 
+      { "http://snomed.info/sct#4026005", InterstitialMastitisAssociatedWithChildbirth }, 
+      { "4030008", LeDantecVirusDisease }, 
+      { "http://snomed.info/sct#4030008", LeDantecVirusDisease }, 
+      { "4038001", Myrotheciotoxicosis }, 
+      { "http://snomed.info/sct#4038001", Myrotheciotoxicosis }, 
+      { "4039009", MultipleVitaminDeficiencyDisease }, 
+      { "http://snomed.info/sct#4039009", MultipleVitaminDeficiencyDisease }, 
+      { "4040006", HassallHenleBodies }, 
+      { "http://snomed.info/sct#4040006", HassallHenleBodies }, 
+      { "4041005", CongenitalAnomalyOfMacula }, 
+      { "http://snomed.info/sct#4041005", CongenitalAnomalyOfMacula }, 
+      { "4046000", DegenerativeSpondylolisthesis }, 
+      { "http://snomed.info/sct#4046000", DegenerativeSpondylolisthesis }, 
+      { "4062006", LumbosacralPlexusLesion }, 
+      { "http://snomed.info/sct#4062006", LumbosacralPlexusLesion }, 
+      { "4063001", Achillodynia }, 
+      { "http://snomed.info/sct#4063001", Achillodynia }, 
+      { "4069002", AnoxicBrainDamageDuringANDORResultingFromAProcedure }, 
+      { "http://snomed.info/sct#4069002", AnoxicBrainDamageDuringANDORResultingFromAProcedure }, 
+      { "407000", CongenitalHepatomegaly }, 
+      { "http://snomed.info/sct#407000", CongenitalHepatomegaly }, 
+      { "4070001", Palinphrasia }, 
+      { "http://snomed.info/sct#4070001", Palinphrasia }, 
+      { "4075006", PeganumHarmalaPoisoning }, 
+      { "http://snomed.info/sct#4075006", PeganumHarmalaPoisoning }, 
+      { "408005", ToothChattering }, 
+      { "http://snomed.info/sct#408005", ToothChattering }, 
+      { "4082005", SyphiliticMyocarditis }, 
+      { "http://snomed.info/sct#4082005", SyphiliticMyocarditis }, 
+      { "4088009", AcquiredHydrocephalus }, 
+      { "http://snomed.info/sct#4088009", AcquiredHydrocephalus }, 
+      { "4089001", Meningococcemia }, 
+      { "http://snomed.info/sct#4089001", Meningococcemia }, 
+      { "409002", FoodAllergyDiet }, 
+      { "http://snomed.info/sct#409002", FoodAllergyDiet }, 
+      { "4092002", NonallopathicLesionOfCostovertebralRegion }, 
+      { "http://snomed.info/sct#4092002", NonallopathicLesionOfCostovertebralRegion }, 
+      { "4103001", ComplexPartialSeizure }, 
+      { "http://snomed.info/sct#4103001", ComplexPartialSeizure }, 
+      { "4106009", RotatorCuffRupture }, 
+      { "http://snomed.info/sct#4106009", RotatorCuffRupture }, 
+      { "4107000", InfertileMaleSyndrome }, 
+      { "http://snomed.info/sct#4107000", InfertileMaleSyndrome }, 
+      { "4113009", ArrestedHydrocephalus }, 
+      { "http://snomed.info/sct#4113009", ArrestedHydrocephalus }, 
+      { "4120002", Bronchiolitis }, 
+      { "http://snomed.info/sct#4120002", Bronchiolitis }, 
+      { "4124006", InsectBiteNonvenomousOfVaginaInfected }, 
+      { "http://snomed.info/sct#4124006", InsectBiteNonvenomousOfVaginaInfected }, 
+      { "4127004", ProstaticObstruction }, 
+      { "http://snomed.info/sct#4127004", ProstaticObstruction }, 
+      { "4129001", ArgyllRobertsonPupil }, 
+      { "http://snomed.info/sct#4129001", ArgyllRobertsonPupil }, 
+      { "4135001", VAL11pPartialMonosomySyndrome }, 
+      { "http://snomed.info/sct#4135001", VAL11pPartialMonosomySyndrome }, 
+      { "4136000", MacrodactyliaOfToes }, 
+      { "http://snomed.info/sct#4136000", MacrodactyliaOfToes }, 
+      { "4142001", MuscularAsthenopia }, 
+      { "http://snomed.info/sct#4142001", MuscularAsthenopia }, 
+      { "4152002", AcquiredHypoprothrombinemia }, 
+      { "http://snomed.info/sct#4152002", AcquiredHypoprothrombinemia }, 
+      { "4160001", CongenitalAnomalyOfUpperRespiratorySystem }, 
+      { "http://snomed.info/sct#4160001", CongenitalAnomalyOfUpperRespiratorySystem }, 
+      { "4168008", TibialPlateauChondromalacia }, 
+      { "http://snomed.info/sct#4168008", TibialPlateauChondromalacia }, 
+      { "4170004", EhlersDanlosSyndromeProcollagenProteinaseResistant }, 
+      { "http://snomed.info/sct#4170004", EhlersDanlosSyndromeProcollagenProteinaseResistant }, 
+      { "4174008", TripartitePlacenta }, 
+      { "http://snomed.info/sct#4174008", TripartitePlacenta }, 
+      { "4175009", InfestationByEstrus }, 
+      { "http://snomed.info/sct#4175009", InfestationByEstrus }, 
+      { "4178006", PartialRecentRetinalDetachmentWithMultipleDefects }, 
+      { "http://snomed.info/sct#4178006", PartialRecentRetinalDetachmentWithMultipleDefects }, 
+      { "4181001", NormalPeakExpiratoryFlowRate }, 
+      { "http://snomed.info/sct#4181001", NormalPeakExpiratoryFlowRate }, 
+      { "4183003", CharcotMarieToothDiseaseTypeIC }, 
+      { "http://snomed.info/sct#4183003", CharcotMarieToothDiseaseTypeIC }, 
+      { "4184009", CongenitalMalformationOfTheEndocrineGlands }, 
+      { "http://snomed.info/sct#4184009", CongenitalMalformationOfTheEndocrineGlands }, 
+      { "4191007", ScaphoidHead }, 
+      { "http://snomed.info/sct#4191007", ScaphoidHead }, 
+      { "4195003", DuplicationOfAnus }, 
+      { "http://snomed.info/sct#4195003", DuplicationOfAnus }, 
+      { "4197006", DisabilityEvaluationImpairmentClass5 }, 
+      { "http://snomed.info/sct#4197006", DisabilityEvaluationImpairmentClass5 }, 
+      { "4199009", VAL18pPartialTrisomySyndrome }, 
+      { "http://snomed.info/sct#4199009", VAL18pPartialTrisomySyndrome }, 
+      { "4208000", ClosedMultipleFracturesOfBothLowerLimbs }, 
+      { "http://snomed.info/sct#4208000", ClosedMultipleFracturesOfBothLowerLimbs }, 
+      { "4210003", OHOcularHypertension }, 
+      { "http://snomed.info/sct#4210003", OHOcularHypertension }, 
+      { "4223005", ParkinsonismCausedByDrug }, 
+      { "http://snomed.info/sct#4223005", ParkinsonismCausedByDrug }, 
+      { "4224004", ComplicationOfInfusion }, 
+      { "http://snomed.info/sct#4224004", ComplicationOfInfusion }, 
+      { "4225003", NasalTuberculosis }, 
+      { "http://snomed.info/sct#4225003", NasalTuberculosis }, 
+      { "4229009", PhthisicalEye }, 
+      { "http://snomed.info/sct#4229009", PhthisicalEye }, 
+      { "4232007", ChronicVulvitis }, 
+      { "http://snomed.info/sct#4232007", ChronicVulvitis }, 
+      { "4237001", SuppurativePulpitis }, 
+      { "http://snomed.info/sct#4237001", SuppurativePulpitis }, 
+      { "4240001", RuptureOfAorta }, 
+      { "http://snomed.info/sct#4240001", RuptureOfAorta }, 
+      { "4241002", ListeriaInfection }, 
+      { "http://snomed.info/sct#4241002", ListeriaInfection }, 
+      { "4242009", VAL18qPartialMonosomySyndrome }, 
+      { "http://snomed.info/sct#4242009", VAL18qPartialMonosomySyndrome }, 
+      { "4244005", UrticariaNeonatorum }, 
+      { "http://snomed.info/sct#4244005", UrticariaNeonatorum }, 
+      { "4248008", SynovitisANDORTenosynovitisAssociatedWithAnotherDisease }, 
+      { "http://snomed.info/sct#4248008", SynovitisANDORTenosynovitisAssociatedWithAnotherDisease }, 
+      { "4249000", PoorPeripheralCirculation }, 
+      { "http://snomed.info/sct#4249000", PoorPeripheralCirculation }, 
+      { "4251001", InternalEyeSign }, 
+      { "http://snomed.info/sct#4251001", InternalEyeSign }, 
+      { "4260009", SacralSpinalCordInjuryWithoutBoneInjury }, 
+      { "http://snomed.info/sct#4260009", SacralSpinalCordInjuryWithoutBoneInjury }, 
+      { "426008", SuperficialInjuryOfAnkleWithoutInfection }, 
+      { "http://snomed.info/sct#426008", SuperficialInjuryOfAnkleWithoutInfection }, 
+      { "4262001", PhlebitisOfSuperiorSagittalSinus }, 
+      { "http://snomed.info/sct#4262001", PhlebitisOfSuperiorSagittalSinus }, 
+      { "4264000", ChronicPericoronitis }, 
+      { "http://snomed.info/sct#4264000", ChronicPericoronitis }, 
+      { "4269005", ChronicGastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation }, 
+      { "http://snomed.info/sct#4269005", ChronicGastrojejunalUlcerWithoutHemorrhageANDWithoutPerforation }, 
+      { "4273008", ClosedPosteriorDislocationOfElbow }, 
+      { "http://snomed.info/sct#4273008", ClosedPosteriorDislocationOfElbow }, 
+      { "4275001", ConjugateGazeSpasm }, 
+      { "http://snomed.info/sct#4275001", ConjugateGazeSpasm }, 
+      { "4278004", SuperficialForeignBodyOfAxillaWithoutMajorOpenWoundButWithInfection }, 
+      { "http://snomed.info/sct#4278004", SuperficialForeignBodyOfAxillaWithoutMajorOpenWoundButWithInfection }, 
+      { "4283007", MirizziSyndrome }, 
+      { "http://snomed.info/sct#4283007", MirizziSyndrome }, 
+      { "4287008", ChordeeOfPenis }, 
+      { "http://snomed.info/sct#4287008", ChordeeOfPenis }, 
+      { "4294006", IsosexualPrecociousPuberty }, 
+      { "http://snomed.info/sct#4294006", IsosexualPrecociousPuberty }, 
+      { "4300009", DeepThirdDegreeBurnOfForearm }, 
+      { "http://snomed.info/sct#4300009", DeepThirdDegreeBurnOfForearm }, 
+      { "4301008", AutoimmuneState }, 
+      { "http://snomed.info/sct#4301008", AutoimmuneState }, 
+      { "4306003", ClusterBPersonalityDisorder }, 
+      { "http://snomed.info/sct#4306003", ClusterBPersonalityDisorder }, 
+      { "4307007", PregestationalDiabetesMellitusANDORImpairedGlucoseToleranceModifiedWhiteClassF }, 
+      { "http://snomed.info/sct#4307007", PregestationalDiabetesMellitusANDORImpairedGlucoseToleranceModifiedWhiteClassF }, 
+      { "4308002", RSISRepetitiveStrainInjurySyndrome }, 
+      { "http://snomed.info/sct#4308002", RSISRepetitiveStrainInjurySyndrome }, 
+      { "4310000", ThirdDegreeBurnOfWristANDORHand }, 
+      { "http://snomed.info/sct#4310000", ThirdDegreeBurnOfWristANDORHand }, 
+      { "431005", HypertrophyOfScrotum }, 
+      { "http://snomed.info/sct#431005", HypertrophyOfScrotum }, 
+      { "4313003", AcardiacusAnceps }, 
+      { "http://snomed.info/sct#4313003", AcardiacusAnceps }, 
+      { "4316006", Myometritis }, 
+      { "http://snomed.info/sct#4316006", Myometritis }, 
+      { "4320005", FactorVDeficiency }, 
+      { "http://snomed.info/sct#4320005", FactorVDeficiency }, 
+      { "4324001", SubacuteCystitis }, 
+      { "http://snomed.info/sct#4324001", SubacuteCystitis }, 
+      { "4325000", VAL11qPartialMonosomySyndrome }, 
+      { "http://snomed.info/sct#4325000", VAL11qPartialMonosomySyndrome }, 
+      { "4332009", SubarachnoidHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithConcussion }, 
+      { "http://snomed.info/sct#4332009", SubarachnoidHemorrhageFollowingInjuryWithoutOpenIntracranialWoundANDWithConcussion }, 
+      { "4338008", ArnoldNerveReflexCoughSyndrome }, 
+      { "http://snomed.info/sct#4338008", ArnoldNerveReflexCoughSyndrome }, 
+      { "4340003", AcrodermatitisChronicaAtrophicans }, 
+      { "http://snomed.info/sct#4340003", AcrodermatitisChronicaAtrophicans }, 
+      { "4349002", OpenFractureOfMultipleSitesOfMetacarpus }, 
+      { "http://snomed.info/sct#4349002", OpenFractureOfMultipleSitesOfMetacarpus }, 
+      { "4354006", OpenDislocationOfScapula }, 
+      { "http://snomed.info/sct#4354006", OpenDislocationOfScapula }, 
+      { "4356008", GingivalSoftTissueRecession }, 
+      { "http://snomed.info/sct#4356008", GingivalSoftTissueRecession }, 
+      { "4359001", EarlyCongenitalSyphilis }, 
+      { "http://snomed.info/sct#4359001", EarlyCongenitalSyphilis }, 
+      { "4364002", StructureOfAssociations }, 
+      { "http://snomed.info/sct#4364002", StructureOfAssociations }, 
+      { "4367009", HooverSign }, 
+      { "http://snomed.info/sct#4367009", HooverSign }, 
+      { "437009", AbnormalCompositionOfUrine }, 
+      { "http://snomed.info/sct#437009", AbnormalCompositionOfUrine }, 
+      { "4373005", ClubbingOfNail }, 
+      { "http://snomed.info/sct#4373005", ClubbingOfNail }, 
+      { "4374004", TVCongenitalTricuspidValveAbnormality }, 
+      { "http://snomed.info/sct#4374004", TVCongenitalTricuspidValveAbnormality }, 
+      { "4381006", VerbalParaphasia }, 
+      { "http://snomed.info/sct#4381006", VerbalParaphasia }, 
+      { "4386001", Bronchospasm }, 
+      { "http://snomed.info/sct#4386001", Bronchospasm }, 
+      { "4390004", ChronicLithiumNephrotoxicity }, 
+      { "http://snomed.info/sct#4390004", ChronicLithiumNephrotoxicity }, 
+      { "4397001", PartialCongenitalDuodenalObstruction }, 
+      { "http://snomed.info/sct#4397001", PartialCongenitalDuodenalObstruction }, 
+      { "4399003", AcuteHemorrhagicPancreatitis }, 
+      { "http://snomed.info/sct#4399003", AcuteHemorrhagicPancreatitis }, 
+      { "440009", PersistentHyperphenylalaninemia }, 
+      { "http://snomed.info/sct#440009", PersistentHyperphenylalaninemia }, 
+      { "4403007", ExclamationPointHair }, 
+      { "http://snomed.info/sct#4403007", ExclamationPointHair }, 
+      { "4406004", CongenitalAnomalyOfMaleGenitalSystem }, 
+      { "http://snomed.info/sct#4406004", CongenitalAnomalyOfMaleGenitalSystem }, 
+      { "4409006", CombinedMethylmalonicAcidemiaAndHomocystinuriaDueToDefectsInAdenosylcobalaminAndMethylcobalaminSynthesis }, 
+      { "http://snomed.info/sct#4409006", CombinedMethylmalonicAcidemiaAndHomocystinuriaDueToDefectsInAdenosylcobalaminAndMethylcobalaminSynthesis }, 
+      { "4410001", RetroperitonealHerniaWithObstruction }, 
+      { "http://snomed.info/sct#4410001", RetroperitonealHerniaWithObstruction }, 
+      { "4412009", DigitalNerveInjury }, 
+      { "http://snomed.info/sct#4412009", DigitalNerveInjury }, 
+      { "4414005", InfectionCausedBySetaria }, 
+      { "http://snomed.info/sct#4414005", InfectionCausedBySetaria }, 
+      { "4416007", HeerfordtSyndrome }, 
+      { "http://snomed.info/sct#4416007", HeerfordtSyndrome }, 
+      { "4418008", GangrenousErgotism }, 
+      { "http://snomed.info/sct#4418008", GangrenousErgotism }, 
+      { "442001", SecondaryHypopituitarism }, 
+      { "http://snomed.info/sct#442001", SecondaryHypopituitarism }, 
+      { "4426000", TenPreviousInducedTerminationsOfPregnancy }, 
+      { "http://snomed.info/sct#4426000", TenPreviousInducedTerminationsOfPregnancy }, 
+      { "443006", CystoceleAffectingPregnancy }, 
+      { "http://snomed.info/sct#443006", CystoceleAffectingPregnancy }, 
+      { "4434006", BSBloomSyndrome }, 
+      { "http://snomed.info/sct#4434006", BSBloomSyndrome }, 
+      { "4439001", AxenfeldSchurenbergSyndrome }, 
+      { "http://snomed.info/sct#4439001", AxenfeldSchurenbergSyndrome }, 
+      { "4441000", SevereBipolarDisorderWithPsychoticFeatures }, 
+      { "http://snomed.info/sct#4441000", SevereBipolarDisorderWithPsychoticFeatures }, 
+      { "4445009", TBUrogenitalTuberculosis }, 
+      { "http://snomed.info/sct#4445009", TBUrogenitalTuberculosis }, 
+      { "4448006", AllergicHeadache }, 
+      { "http://snomed.info/sct#4448006", AllergicHeadache }, 
+      { "4451004", IllegalTerminationOfPregnancyWithRenalTubularNecrosis }, 
+      { "http://snomed.info/sct#4451004", IllegalTerminationOfPregnancyWithRenalTubularNecrosis }, 
+      { "4461006", ComplicationOfAdministrativeProcedure }, 
+      { "http://snomed.info/sct#4461006", ComplicationOfAdministrativeProcedure }, 
+      { "4463009", IndianaMarylandTypeAmyloidPolyneuropathy }, 
+      { "http://snomed.info/sct#4463009", IndianaMarylandTypeAmyloidPolyneuropathy }, 
+      { "4464003", RocioVirusDisease }, 
+      { "http://snomed.info/sct#4464003", RocioVirusDisease }, 
+      { "4465002", Spherophakia }, 
+      { "http://snomed.info/sct#4465002", Spherophakia }, 
+      { "4468000", OppenheimGait }, 
+      { "http://snomed.info/sct#4468000", OppenheimGait }, 
+      { "4470009", BlanchingOfSkin }, 
+      { "http://snomed.info/sct#4470009", BlanchingOfSkin }, 
+      { "447007", CoachInSportsActivityAccident }, 
+      { "http://snomed.info/sct#447007", CoachInSportsActivityAccident }, 
+      { "4473006", MigraineWithAura }, 
+      { "http://snomed.info/sct#4473006", MigraineWithAura }, 
+      { "4477007", JuvenileMyopathyANDLactateAcidosis }, 
+      { "http://snomed.info/sct#4477007", JuvenileMyopathyANDLactateAcidosis }, 
+      { "4478002", MultipleFracturesOfUpperANDLowerLimbs }, 
+      { "http://snomed.info/sct#4478002", MultipleFracturesOfUpperANDLowerLimbs }, 
+      { "4481007", AbnormalGastricSecretionRegulation }, 
+      { "http://snomed.info/sct#4481007", AbnormalGastricSecretionRegulation }, 
+      { "4483005", SyphiliticPunchedOutUlcer }, 
+      { "http://snomed.info/sct#4483005", SyphiliticPunchedOutUlcer }, 
+      { "450005", UlcerativeStomatitis }, 
+      { "http://snomed.info/sct#450005", UlcerativeStomatitis }, 
+      { "452002", BlisterOfGroinWithoutInfection }, 
+      { "http://snomed.info/sct#452002", BlisterOfGroinWithoutInfection }, 
+      { "460001", SquamousMetaplasiaOfProstateGland }, 
+      { "http://snomed.info/sct#460001", SquamousMetaplasiaOfProstateGland }, 
+      { "467003", OldLacerationOfPelvicFloorMuscle }, 
+      { "http://snomed.info/sct#467003", OldLacerationOfPelvicFloorMuscle }, 
+      { "470004", VitreousTouchSyndrome }, 
+      { "http://snomed.info/sct#470004", VitreousTouchSyndrome }, 
+      { "479003", GravesQuoteDiseaseWithPretibialMyxedemaANDWithThyrotoxicCrisis }, 
+      { "http://snomed.info/sct#479003", GravesQuoteDiseaseWithPretibialMyxedemaANDWithThyrotoxicCrisis }, 
+      { "486006", AcuteVascularInsufficiency }, 
+      { "http://snomed.info/sct#486006", AcuteVascularInsufficiency }, 
+      { "488007", FibroidMyocarditis }, 
+      { "http://snomed.info/sct#488007", FibroidMyocarditis }, 
+      { "490008", UpperRespiratoryTractHypersensitivityReaction }, 
+      { "http://snomed.info/sct#490008", UpperRespiratoryTractHypersensitivityReaction }, 
+      { "496002", ClosedTraumaticDislocationOfThirdCervicalVertebra }, 
+      { "http://snomed.info/sct#496002", ClosedTraumaticDislocationOfThirdCervicalVertebra }, 
+      { "504009", AndrogenDependentHirsutism }, 
+      { "http://snomed.info/sct#504009", AndrogenDependentHirsutism }, 
+      { "517007", ForeignBodyInHypopharynx }, 
+      { "http://snomed.info/sct#517007", ForeignBodyInHypopharynx }, 
+      { "518002", MultipleAggregation }, 
+      { "http://snomed.info/sct#518002", MultipleAggregation }, 
+      { "520004", CongenitalBentNose }, 
+      { "http://snomed.info/sct#520004", CongenitalBentNose }, 
+      { "527001", SpontaneousFetalEvolutionRoedererQuoteSMethod }, 
+      { "http://snomed.info/sct#527001", SpontaneousFetalEvolutionRoedererQuoteSMethod }, 
+      { "536002", GlissonianCirrhosis }, 
+      { "http://snomed.info/sct#536002", GlissonianCirrhosis }, 
+      { "539009", ConjunctivalArgyrosis }, 
+      { "http://snomed.info/sct#539009", ConjunctivalArgyrosis }, 
+      { "547009", HypersecretionOfCalcitonin }, 
+      { "http://snomed.info/sct#547009", HypersecretionOfCalcitonin }, 
+      { "548004", VAL13pPartialTrisomySyndrome }, 
+      { "http://snomed.info/sct#548004", VAL13pPartialTrisomySyndrome }, 
+      { "554003", VAL2pPartialTrisomySyndrome }, 
+      { "http://snomed.info/sct#554003", VAL2pPartialTrisomySyndrome }, 
+      { "555002", DicentraSpeciesPoisoning }, 
+      { "http://snomed.info/sct#555002", DicentraSpeciesPoisoning }, 
+      { "563001", Nystagmus }, 
+      { "http://snomed.info/sct#563001", Nystagmus }, 
+      { "568005", HabitDisorder }, 
+      { "http://snomed.info/sct#568005", HabitDisorder }, 
+      { "586008", ContactDermatitisDueToPrimrose }, 
+      { "http://snomed.info/sct#586008", ContactDermatitisDueToPrimrose }, 
+      { "590005", CongenitalAneurysmOfAnteriorCommunicatingArtery }, 
+      { "http://snomed.info/sct#590005", CongenitalAneurysmOfAnteriorCommunicatingArtery }, 
+      { "596004", PremenstrualDysphoricDisorder }, 
+      { "http://snomed.info/sct#596004", PremenstrualDysphoricDisorder }, 
+      { "599006", PersistentPneumothorax }, 
+      { "http://snomed.info/sct#599006", PersistentPneumothorax }, 
+      { "600009", Pyromania }, 
+      { "http://snomed.info/sct#600009", Pyromania }, 
+      { "602001", RossRiverFever }, 
+      { "http://snomed.info/sct#602001", RossRiverFever }, 
+      { "607007", DecreasedVitalCapacity }, 
+      { "http://snomed.info/sct#607007", DecreasedVitalCapacity }, 
+      { "610000", SpasticAphonia }, 
+      { "http://snomed.info/sct#610000", SpasticAphonia }, 
+      { "613003", FRAXAFragileXSyndrome }, 
+      { "http://snomed.info/sct#613003", FRAXAFragileXSyndrome }, 
+      { "615005", ObstructionDueToForeignBodyAccidentallyLeftInOperativeWoundANDORBodyCavityDuringAProcedure }, 
+      { "http://snomed.info/sct#615005", ObstructionDueToForeignBodyAccidentallyLeftInOperativeWoundANDORBodyCavityDuringAProcedure }, 
+      { "616006", SensorimotorDisorderOfEyelid }, 
+      { "http://snomed.info/sct#616006", SensorimotorDisorderOfEyelid }, 
+      { "626004", HypercortisolismDueToNonpituitaryTumor }, 
+      { "http://snomed.info/sct#626004", HypercortisolismDueToNonpituitaryTumor }, 
+      { "631002", TransfusionReactionDueToMinorIncompatibility }, 
+      { "http://snomed.info/sct#631002", TransfusionReactionDueToMinorIncompatibility }, 
+      { "634005", SaddleBoil }, 
+      { "http://snomed.info/sct#634005", SaddleBoil }, 
+      { "640003", InjuryOfPneumogastricNerve }, 
+      { "http://snomed.info/sct#640003", InjuryOfPneumogastricNerve }, 
+      { "643001", HypertrophyOfLip }, 
+      { "http://snomed.info/sct#643001", HypertrophyOfLip }, 
+      { "646009", IdiopathicCystOfAnteriorChamber }, 
+      { "http://snomed.info/sct#646009", IdiopathicCystOfAnteriorChamber }, 
+      { "649002", OpenFractureOfDistalEndOfUlna }, 
+      { "http://snomed.info/sct#649002", OpenFractureOfDistalEndOfUlna }, 
+      { "651003", RootWork }, 
+      { "http://snomed.info/sct#651003", RootWork }, 
+      { "652005", GangrenousTonsillitis }, 
+      { "http://snomed.info/sct#652005", GangrenousTonsillitis }, 
+      { "655007", AbnormalFetalHeartBeatNotedBeforeLaborInLivebornInfant }, 
+      { "http://snomed.info/sct#655007", AbnormalFetalHeartBeatNotedBeforeLaborInLivebornInfant }, 
+      { "658009", InjuryOfColonWithoutOpenWoundIntoAbdominalCavity }, 
+      { "http://snomed.info/sct#658009", InjuryOfColonWithoutOpenWoundIntoAbdominalCavity }, 
+      { "663008", PulmonaryEmbolismFollowingMolarANDOREctopicPregnancy }, 
+      { "http://snomed.info/sct#663008", PulmonaryEmbolismFollowingMolarANDOREctopicPregnancy }, 
+      { "664002", DelayedOvulation }, 
+      { "http://snomed.info/sct#664002", DelayedOvulation }, 
+      { "666000", PoisoningByAntivaricoseDrugANDORSclerosingAgent }, 
+      { "http://snomed.info/sct#666000", PoisoningByAntivaricoseDrugANDORSclerosingAgent }, 
+      { "675003", TorsionOfIntestine }, 
+      { "http://snomed.info/sct#675003", TorsionOfIntestine }, 
+      { "682004", ThrombosisComplicatingPregnancyANDORPuerperium }, 
+      { "http://snomed.info/sct#682004", ThrombosisComplicatingPregnancyANDORPuerperium }, 
+      { "685002", AcquiredTelangiectasiaOfSmallANDORLargeIntestines }, 
+      { "http://snomed.info/sct#685002", AcquiredTelangiectasiaOfSmallANDORLargeIntestines }, 
+      { "701003", AdultOsteochondritisOfSpine }, 
+      { "http://snomed.info/sct#701003", AdultOsteochondritisOfSpine }, 
+      { "703000", CongenitalAdhesionOfTongue }, 
+      { "http://snomed.info/sct#703000", CongenitalAdhesionOfTongue }, 
+      { "714002", AbrasionANDORFrictionBurnOfToeWithInfection }, 
+      { "http://snomed.info/sct#714002", AbrasionANDORFrictionBurnOfToeWithInfection }, 
+      { "715001", NontraumaticRuptureOfUrethra }, 
+      { "http://snomed.info/sct#715001", NontraumaticRuptureOfUrethra }, 
+      { "718004", AcuteBronchiolitisWithObstruction }, 
+      { "http://snomed.info/sct#718004", AcuteBronchiolitisWithObstruction }, 
+      { "733007", SuperficialForeignBodyOfGroinWithoutMajorOpenWoundButWithInfection }, 
+      { "http://snomed.info/sct#733007", SuperficialForeignBodyOfGroinWithoutMajorOpenWoundButWithInfection }, 
+      { "734001", Opocephalus }, 
+      { "http://snomed.info/sct#734001", Opocephalus }, 
+      { "736004", AbscessOfHip }, 
+      { "http://snomed.info/sct#736004", AbscessOfHip }, 
+      { "750009", SchistosomaMansoniInfection }, 
+      { "http://snomed.info/sct#750009", SchistosomaMansoniInfection }, 
+      { "755004", PostgastrectomyPhytobezoar }, 
+      { "http://snomed.info/sct#755004", PostgastrectomyPhytobezoar }, 
+      { "756003", ChronicRheumaticMyopericarditis }, 
+      { "http://snomed.info/sct#756003", ChronicRheumaticMyopericarditis }, 
+      { "758002", CystOfUterus }, 
+      { "http://snomed.info/sct#758002", CystOfUterus }, 
+      { "775008", OpenWoundOfHeadWithComplication }, 
+      { "http://snomed.info/sct#775008", OpenWoundOfHeadWithComplication }, 
+      { "776009", PartialArterialRetinalOcclusion }, 
+      { "http://snomed.info/sct#776009", PartialArterialRetinalOcclusion }, 
+      { "781000", CestrumDiurnumPoisoning }, 
+      { "http://snomed.info/sct#781000", CestrumDiurnumPoisoning }, 
+      { "786005", ClinicalStageIB }, 
+      { "http://snomed.info/sct#786005", ClinicalStageIB }, 
+      { "787001", RheumaticMitralStenosisWithRegurgitation }, 
+      { "http://snomed.info/sct#787001", RheumaticMitralStenosisWithRegurgitation }, 
+      { "788006", DiseaseRelatedDiet }, 
+      { "http://snomed.info/sct#788006", DiseaseRelatedDiet }, 
+      { "792004", CJDCreutzfeldtJakobDisease }, 
+      { "http://snomed.info/sct#792004", CJDCreutzfeldtJakobDisease }, 
+      { "799008", SigmoidColonUlcer }, 
+      { "http://snomed.info/sct#799008", SigmoidColonUlcer }, 
+      { "801006", InsectBiteNonvenomousOfFootInfected }, 
+      { "http://snomed.info/sct#801006", InsectBiteNonvenomousOfFootInfected }, 
+      { "805002", PneumoconiosisDueToSilica }, 
+      { "http://snomed.info/sct#805002", PneumoconiosisDueToSilica }, 
+      { "811004", FlailMotion }, 
+      { "http://snomed.info/sct#811004", FlailMotion }, 
+      { "813001", AnkleInstability }, 
+      { "http://snomed.info/sct#813001", AnkleInstability }, 
+      { "815008", Episcleritis }, 
+      { "http://snomed.info/sct#815008", Episcleritis }, 
+      { "816009", GeneticRecombination }, 
+      { "http://snomed.info/sct#816009", GeneticRecombination }, 
+      { "818005", ThirdDegreeBurnOfMultipleSitesOfLowerLimb }, 
+      { "http://snomed.info/sct#818005", ThirdDegreeBurnOfMultipleSitesOfLowerLimb }, 
+      { "825003", SuperficialInjuryOfAxillaWithInfection }, 
+      { "http://snomed.info/sct#825003", SuperficialInjuryOfAxillaWithInfection }, 
+      { "827006", LateCongenitalSyphilisLatentPlusSeroCSF2YearsORMore }, 
+      { "http://snomed.info/sct#827006", LateCongenitalSyphilisLatentPlusSeroCSF2YearsORMore }, 
+      { "832007", ModerateMajorDepression }, 
+      { "http://snomed.info/sct#832007", ModerateMajorDepression }, 
+      { "834008", ChairSeatedFacingCoitalPosition }, 
+      { "http://snomed.info/sct#834008", ChairSeatedFacingCoitalPosition }, 
+      { "841002", CongenitalAbsenceOfSkullBone }, 
+      { "http://snomed.info/sct#841002", CongenitalAbsenceOfSkullBone }, 
+      { "842009", Consanguinity }, 
+      { "http://snomed.info/sct#842009", Consanguinity }, 
+      { "843004", Poliomyelomalacia }, 
+      { "http://snomed.info/sct#843004", Poliomyelomalacia }, 
+      { "844005", FindingRelatingToBehavior }, 
+      { "http://snomed.info/sct#844005", FindingRelatingToBehavior }, 
+      { "845006", InferiorMesentericArteryInjury }, 
+      { "http://snomed.info/sct#845006", InferiorMesentericArteryInjury }, 
+      { "849000", TotalCataract }, 
+      { "http://snomed.info/sct#849000", TotalCataract }, 
+      { "857002", ErythemaSimplex }, 
+      { "http://snomed.info/sct#857002", ErythemaSimplex }, 
+      { "862001", AnemiaDueToChlorate }, 
+      { "http://snomed.info/sct#862001", AnemiaDueToChlorate }, 
+      { "865004", HyperalimentationFormulaForIleus }, 
+      { "http://snomed.info/sct#865004", HyperalimentationFormulaForIleus }, 
+      { "871005", ContractedPelvis }, 
+      { "http://snomed.info/sct#871005", ContractedPelvis }, 
+      { "874002", TherapeuticDiuresis }, 
+      { "http://snomed.info/sct#874002", TherapeuticDiuresis }, 
+      { "875001", ChalcosisOfEye }, 
+      { "http://snomed.info/sct#875001", ChalcosisOfEye }, 
+      { "888003", FoetalOrNeonatalEffectOfMaternalBloodLoss }, 
+      { "http://snomed.info/sct#888003", FoetalOrNeonatalEffectOfMaternalBloodLoss }, 
+      { "890002", DeepThirdDegreeBurnOfElbow }, 
+      { "http://snomed.info/sct#890002", DeepThirdDegreeBurnOfElbow }, 
+      { "899001", AxisIDiagnosis }, 
+      { "http://snomed.info/sct#899001", AxisIDiagnosis }, 
+      { "903008", ChorioretinalInfarction }, 
+      { "http://snomed.info/sct#903008", ChorioretinalInfarction }, 
+      { "904002", PinardQuoteSSign }, 
+      { "http://snomed.info/sct#904002", PinardQuoteSSign }, 
+      { "908004", SuperficialInjuryOfInterscapularRegionWithoutInfection }, 
+      { "http://snomed.info/sct#908004", SuperficialInjuryOfInterscapularRegionWithoutInfection }, 
+      { "919001", PseudohomosexualState }, 
+      { "http://snomed.info/sct#919001", PseudohomosexualState }, 
+      { "928000", MusculoskeletalDisorder }, 
+      { "http://snomed.info/sct#928000", MusculoskeletalDisorder }, 
+      { "931004", GestationPeriod9Weeks }, 
+      { "http://snomed.info/sct#931004", GestationPeriod9Weeks }, 
+      { "932006", FlatAffect }, 
+      { "http://snomed.info/sct#932006", FlatAffect }, 
+      { "934007", ThalassemiaIntermedia }, 
+      { "http://snomed.info/sct#934007", ThalassemiaIntermedia }, 
+      { "943003", CongenitalRetinalAneurysm }, 
+      { "http://snomed.info/sct#943003", CongenitalRetinalAneurysm }, 
+      { "954008", RenonDelilleSyndrome }, 
+      { "http://snomed.info/sct#954008", RenonDelilleSyndrome }, 
+      { "961007", ErythemaNodosumAcuteForm }, 
+      { "http://snomed.info/sct#961007", ErythemaNodosumAcuteForm }, 
+      { "962000", DisabilityEvaluationDisability6Percent }, 
+      { "http://snomed.info/sct#962000", DisabilityEvaluationDisability6Percent }, 
+      { "964004", OpenWoundOfPharynxWithoutComplication }, 
+      { "http://snomed.info/sct#964004", OpenWoundOfPharynxWithoutComplication }, 
+      { "965003", ToxicAmblyopia }, 
+      { "http://snomed.info/sct#965003", ToxicAmblyopia }, 
+      { "975000", AnorectalAgenesis }, 
+      { "http://snomed.info/sct#975000", AnorectalAgenesis }, 
+      { "978003", ChronicInfantileEczema }, 
+      { "http://snomed.info/sct#978003", ChronicInfantileEczema }, 
+      { "981008", HemorrhagicProctitis }, 
+      { "http://snomed.info/sct#981008", HemorrhagicProctitis }, 
+      { "984000", PerirectalCellulitis }, 
+      { "http://snomed.info/sct#984000", PerirectalCellulitis }, 
+      { "987007", CellulitisOfTempleRegion }, 
+      { "http://snomed.info/sct#987007", CellulitisOfTempleRegion }, 
+      { "991002", WideQRSComplex }, 
+      { "http://snomed.info/sct#991002", WideQRSComplex }, 
+      { "998008", ChagasQuoteDiseaseWithHeartInvolvement }, 
+      { "http://snomed.info/sct#998008", ChagasQuoteDiseaseWithHeartInvolvement }, 
+    };
   };
 }

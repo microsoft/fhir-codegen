@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbsent = "absent";
 
     /// <summary>
+    /// Literal for code: MessageReasonEncounterAbsent
+    /// </summary>
+    public const string LiteralMessageReasonEncounterAbsent = "http://hl7.org/fhir/message-reasons-encounter#absent";
+
+    /// <summary>
     /// Literal for code: Admit
     /// </summary>
     public const string LiteralAdmit = "admit";
+
+    /// <summary>
+    /// Literal for code: MessageReasonEncounterAdmit
+    /// </summary>
+    public const string LiteralMessageReasonEncounterAdmit = "http://hl7.org/fhir/message-reasons-encounter#admit";
 
     /// <summary>
     /// Literal for code: Discharge
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDischarge = "discharge";
 
     /// <summary>
+    /// Literal for code: MessageReasonEncounterDischarge
+    /// </summary>
+    public const string LiteralMessageReasonEncounterDischarge = "http://hl7.org/fhir/message-reasons-encounter#discharge";
+
+    /// <summary>
     /// Literal for code: Edit
     /// </summary>
     public const string LiteralEdit = "edit";
+
+    /// <summary>
+    /// Literal for code: MessageReasonEncounterEdit
+    /// </summary>
+    public const string LiteralMessageReasonEncounterEdit = "http://hl7.org/fhir/message-reasons-encounter#edit";
 
     /// <summary>
     /// Literal for code: Moved
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMoved = "moved";
 
     /// <summary>
+    /// Literal for code: MessageReasonEncounterMoved
+    /// </summary>
+    public const string LiteralMessageReasonEncounterMoved = "http://hl7.org/fhir/message-reasons-encounter#moved";
+
+    /// <summary>
     /// Literal for code: Returned
     /// </summary>
     public const string LiteralReturned = "return";
+
+    /// <summary>
+    /// Literal for code: MessageReasonEncounterReturned
+    /// </summary>
+    public const string LiteralMessageReasonEncounterReturned = "http://hl7.org/fhir/message-reasons-encounter#return";
+
+    /// <summary>
+    /// Dictionary for looking up MessageReasonEncounter Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "absent", Absent }, 
+      { "http://hl7.org/fhir/message-reasons-encounter#absent", Absent }, 
+      { "admit", Admit }, 
+      { "http://hl7.org/fhir/message-reasons-encounter#admit", Admit }, 
+      { "discharge", Discharge }, 
+      { "http://hl7.org/fhir/message-reasons-encounter#discharge", Discharge }, 
+      { "edit", Edit }, 
+      { "http://hl7.org/fhir/message-reasons-encounter#edit", Edit }, 
+      { "moved", Moved }, 
+      { "http://hl7.org/fhir/message-reasons-encounter#moved", Moved }, 
+      { "return", Returned }, 
+      { "http://hl7.org/fhir/message-reasons-encounter#return", Returned }, 
+    };
   };
 }

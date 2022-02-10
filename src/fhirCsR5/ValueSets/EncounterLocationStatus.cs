@@ -56,9 +56,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: EncounterLocationStatusActive
+    /// </summary>
+    public const string LiteralEncounterLocationStatusActive = "http://hl7.org/fhir/encounter-location-status#active";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: EncounterLocationStatusCompleted
+    /// </summary>
+    public const string LiteralEncounterLocationStatusCompleted = "http://hl7.org/fhir/encounter-location-status#completed";
 
     /// <summary>
     /// Literal for code: Planned
@@ -66,8 +76,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPlanned = "planned";
 
     /// <summary>
+    /// Literal for code: EncounterLocationStatusPlanned
+    /// </summary>
+    public const string LiteralEncounterLocationStatusPlanned = "http://hl7.org/fhir/encounter-location-status#planned";
+
+    /// <summary>
     /// Literal for code: Reserved
     /// </summary>
     public const string LiteralReserved = "reserved";
+
+    /// <summary>
+    /// Literal for code: EncounterLocationStatusReserved
+    /// </summary>
+    public const string LiteralEncounterLocationStatusReserved = "http://hl7.org/fhir/encounter-location-status#reserved";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterLocationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/encounter-location-status#active", Active }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/encounter-location-status#completed", Completed }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/encounter-location-status#planned", Planned }, 
+      { "reserved", Reserved }, 
+      { "http://hl7.org/fhir/encounter-location-status#reserved", Reserved }, 
+    };
   };
 }

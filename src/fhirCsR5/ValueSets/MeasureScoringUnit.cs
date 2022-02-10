@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class MeasureScoringUnitCodes
   {
     /// <summary>
-    /// 
+    /// per 1000 patient days
     /// </summary>
     public static readonly Coding Per1000PatientDays = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://unitsofmeasure.org"
     };
     /// <summary>
-    /// 
+    /// Default units
     /// </summary>
     public static readonly Coding DefaultUnits = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPer1000PatientDays = "/1000.d";
 
     /// <summary>
+    /// Literal for code: NONEPer1000PatientDays
+    /// </summary>
+    public const string LiteralNONEPer1000PatientDays = "http://unitsofmeasure.org#/1000.d";
+
+    /// <summary>
     /// Literal for code: DefaultUnits
     /// </summary>
     public const string LiteralDefaultUnits = "1";
+
+    /// <summary>
+    /// Literal for code: NONEDefaultUnits
+    /// </summary>
+    public const string LiteralNONEDefaultUnits = "http://unitsofmeasure.org#1";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureScoringUnit Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "/1000.d", Per1000PatientDays }, 
+      { "http://unitsofmeasure.org#/1000.d", Per1000PatientDays }, 
+      { "1", DefaultUnits }, 
+      { "http://unitsofmeasure.org#1", DefaultUnits }, 
+    };
   };
 }

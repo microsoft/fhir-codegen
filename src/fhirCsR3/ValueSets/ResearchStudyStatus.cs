@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: ResearchStudyStatusCompleted
+    /// </summary>
+    public const string LiteralResearchStudyStatusCompleted = "http://hl7.org/fhir/research-study-status#completed";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyStatusDraft
+    /// </summary>
+    public const string LiteralResearchStudyStatusDraft = "http://hl7.org/fhir/research-study-status#draft";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: ResearchStudyStatusEnteredInError
+    /// </summary>
+    public const string LiteralResearchStudyStatusEnteredInError = "http://hl7.org/fhir/research-study-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyStatusInProgress
+    /// </summary>
+    public const string LiteralResearchStudyStatusInProgress = "http://hl7.org/fhir/research-study-status#in-progress";
 
     /// <summary>
     /// Literal for code: Stopped
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStopped = "stopped";
 
     /// <summary>
+    /// Literal for code: ResearchStudyStatusStopped
+    /// </summary>
+    public const string LiteralResearchStudyStatusStopped = "http://hl7.org/fhir/research-study-status#stopped";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "suspended";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyStatusSuspended
+    /// </summary>
+    public const string LiteralResearchStudyStatusSuspended = "http://hl7.org/fhir/research-study-status#suspended";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchStudyStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/research-study-status#completed", Completed }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/research-study-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/research-study-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/research-study-status#in-progress", InProgress }, 
+      { "stopped", Stopped }, 
+      { "http://hl7.org/fhir/research-study-status#stopped", Stopped }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/research-study-status#suspended", Suspended }, 
+    };
   };
 }

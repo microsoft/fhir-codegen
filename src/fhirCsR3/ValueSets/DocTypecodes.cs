@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class DocTypecodesCodes
   {
     /// <summary>
-    /// 
+    /// Anesthesia records
     /// </summary>
     public static readonly Coding AnesthesiaRecords = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chemotherapy records
     /// </summary>
     public static readonly Coding ChemotherapyRecords = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Consult note
     /// </summary>
     public static readonly Coding ConsultNote = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician Discharge summary
     /// </summary>
     public static readonly Coding PhysicianDischargeSummary = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Provider-unspecifed, History and physical note
     /// </summary>
     public static readonly Coding ProviderUnspecifedHistoryAndPhysicalNote = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Physician Initial assessment note at First encounter
     /// </summary>
     public static readonly Coding DeprecatedPhysicianInitialAssessmentNoteAtFirstEncounter = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Physical therapy Initial assessment note at First encounter
     /// </summary>
     public static readonly Coding DeprecatedPhysicalTherapyInitialAssessmentNoteAtFirstEncounter = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Podiatry Initial assessment note at First encounter
     /// </summary>
     public static readonly Coding DeprecatedPodiatryInitialAssessmentNoteAtFirstEncounter = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Psychology Initial assessment note at First encounter
     /// </summary>
     public static readonly Coding DeprecatedPsychologyInitialAssessmentNoteAtFirstEncounter = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Social work Initial assessment note at First encounter
     /// </summary>
     public static readonly Coding DeprecatedSocialWorkInitialAssessmentNoteAtFirstEncounter = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Speech therapy Initial assessment note at First encounter
     /// </summary>
     public static readonly Coding DeprecatedSpeechTherapyInitialAssessmentNoteAtFirstEncounter = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Occupational therapy Initial assessment note at First encounter
     /// </summary>
     public static readonly Coding DeprecatedOccupationalTherapyInitialAssessmentNoteAtFirstEncounter = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Laboratory report
     /// </summary>
     public static readonly Coding LaboratoryReport = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Medical records
     /// </summary>
     public static readonly Coding MedicalRecords = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Provider-unspecified Operation note
     /// </summary>
     public static readonly Coding ProviderUnspecifiedOperationNote = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician Procedure note
     /// </summary>
     public static readonly Coding PhysicianProcedureNote = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Provider-unspecified Progress note
     /// </summary>
     public static readonly Coding ProviderUnspecifiedProgressNote = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Occupational therapy Progress note
     /// </summary>
     public static readonly Coding OccupationalTherapyProgressNote = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical therapy Progress note
     /// </summary>
     public static readonly Coding PhysicalTherapyProgressNote = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Podiatry Progress note
     /// </summary>
     public static readonly Coding PodiatryProgressNote = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Psychology Progress note
     /// </summary>
     public static readonly Coding PsychologyProgressNote = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Speech-language pathology Progress note
     /// </summary>
     public static readonly Coding SpeechLanguagePathologyProgressNote = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chiropractic Records total Encounter
     /// </summary>
     public static readonly Coding ChiropracticRecordsTotalEncounter = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical therapy Records total Encounter
     /// </summary>
     public static readonly Coding PhysicalTherapyRecordsTotalEncounter = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician Records total Encounter
     /// </summary>
     public static readonly Coding PhysicianRecordsTotalEncounter = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Podiatry Records total Encounter
     /// </summary>
     public static readonly Coding PodiatryRecordsTotalEncounter = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Psychology Records total Encounter
     /// </summary>
     public static readonly Coding PsychologyRecordsTotalEncounter = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Social service Records total Encounter
     /// </summary>
     public static readonly Coding SocialServiceRecordsTotalEncounter = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Speech therapy Records total Encounter
     /// </summary>
     public static readonly Coding SpeechTherapyRecordsTotalEncounter = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Occupational therapy Records total Encounter
     /// </summary>
     public static readonly Coding OccupationalTherapyRecordsTotalEncounter = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Cardiac echo study
     /// </summary>
     public static readonly Coding DeprecatedCardiacEchoStudy = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// EEG study
     /// </summary>
     public static readonly Coding EEGStudy = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// EKG Study
     /// </summary>
     public static readonly Coding EKGStudy = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Pelvis Fetus for pregnancy
     /// </summary>
     public static readonly Coding USPelvisFetusForPregnancy = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pathology study
     /// </summary>
     public static readonly Coding PathologyStudy = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Psychiatry study
     /// </summary>
     public static readonly Coding PsychiatryStudy = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Radiology Unspecified site and modality Study
     /// </summary>
     public static readonly Coding DeprecatedRadiologyUnspecifiedSiteAndModalityStudy = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical pathology study
     /// </summary>
     public static readonly Coding SurgicalPathologyStudy = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Temperature charts
     /// </summary>
     public static readonly Coding TemperatureCharts = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nurse Notes
     /// </summary>
     public static readonly Coding NurseNotes = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated CT Chest study
     /// </summary>
     public static readonly Coding DeprecatedCTChestStudy = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated CT Head study
     /// </summary>
     public static readonly Coding DeprecatedCTHeadStudy = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated CT Abdomen study
     /// </summary>
     public static readonly Coding DeprecatedCTAbdomenStudy = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated MRI Brain study
     /// </summary>
     public static readonly Coding DeprecatedMRIBrainStudy = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Provider-unspecified visit note
     /// </summary>
     public static readonly Coding DeprecatedProviderUnspecifiedVisitNote = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nursery records
     /// </summary>
     public static readonly Coding NurseryRecords = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Provider-unspecified ED Progress note
     /// </summary>
     public static readonly Coding ProviderUnspecifiedEDProgressNote = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Labor and delivery records
     /// </summary>
     public static readonly Coding LaborAndDeliveryRecords = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thyroid gland NM Study report
     /// </summary>
     public static readonly Coding ThyroidGlandNMStudyReport = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Psychiatric service attachment
     /// </summary>
     public static readonly Coding PsychiatricServiceAttachment = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician attending Progress note
     /// </summary>
     public static readonly Coding PhysicianAttendingProgressNote = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Occupational therapy Initial evaluation note
     /// </summary>
     public static readonly Coding OccupationalTherapyInitialEvaluationNote = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical therapy Initial evaluation note
     /// </summary>
     public static readonly Coding PhysicalTherapyInitialEvaluationNote = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician Initial evaluation note
     /// </summary>
     public static readonly Coding PhysicianInitialEvaluationNote = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Podiatry Initial evaluation note
     /// </summary>
     public static readonly Coding PodiatryInitialEvaluationNote = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Psychology Initial evaluation note
     /// </summary>
     public static readonly Coding PsychologyInitialEvaluationNote = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Social work Initial evaluation note
     /// </summary>
     public static readonly Coding SocialWorkInitialEvaluationNote = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Speech-language pathology Initial evaluation note
     /// </summary>
     public static readonly Coding SpeechLanguagePathologyInitialEvaluationNote = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Attending physician progress note
     /// </summary>
     public static readonly Coding DeprecatedAttendingPhysicianProgressNote = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Arthroscopy study
     /// </summary>
     public static readonly Coding ArthroscopyStudy = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Autopsy report
     /// </summary>
     public static readonly Coding AutopsyReport = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bronchoscopy study
     /// </summary>
     public static readonly Coding BronchoscopyStudy = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cardiac catheterization study
     /// </summary>
     public static readonly Coding CardiacCatheterizationStudy = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Colonoscopy Study
     /// </summary>
     public static readonly Coding ColonoscopyStudy = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated CT Unspecified system Study
     /// </summary>
     public static readonly Coding DeprecatedCTUnspecifiedSystemStudy = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Diagnostic imaging study
     /// </summary>
     public static readonly Coding DiagnosticImagingStudy = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Electromyogram study
     /// </summary>
     public static readonly Coding ElectromyogramStudy = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Electrophysiology study
     /// </summary>
     public static readonly Coding ElectrophysiologyStudy = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Endoscopy study
     /// </summary>
     public static readonly Coding EndoscopyStudy = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Exercise stress test study
     /// </summary>
     public static readonly Coding ExerciseStressTestStudy = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Flexible sigmoidoscopy study
     /// </summary>
     public static readonly Coding FlexibleSigmoidoscopyStudy = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Holter monitor study
     /// </summary>
     public static readonly Coding HolterMonitorStudy = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated MRI Unspecified site study
     /// </summary>
     public static readonly Coding DeprecatedMRIUnspecifiedSiteStudy = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// MR Spine study
     /// </summary>
     public static readonly Coding MRSpineStudy = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Nuclear medicine study
     /// </summary>
     public static readonly Coding DeprecatedNuclearMedicineStudy = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated PET scan Unspecified system Study
     /// </summary>
     public static readonly Coding DeprecatedPETScanUnspecifiedSystemStudy = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spirometry study
     /// </summary>
     public static readonly Coding SpirometryStudy = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated US Unspecified system Study
     /// </summary>
     public static readonly Coding DeprecatedUSUnspecifiedSystemStudy = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Provider-unspecified Transfer summary
     /// </summary>
     public static readonly Coding ProviderUnspecifiedTransferSummary = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Chiropractor Progress note
     /// </summary>
     public static readonly Coding DeprecatedChiropractorProgressNote = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician consulting Initial evaluation note
     /// </summary>
     public static readonly Coding PhysicianConsultingInitialEvaluationNote = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Nurse practitioner Progress note
     /// </summary>
     public static readonly Coding DeprecatedNursePractitionerProgressNote = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Podiatry visit note
     /// </summary>
     public static readonly Coding DeprecatedPodiatryVisitNote = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Psychology visit note
     /// </summary>
     public static readonly Coding DeprecatedPsychologyVisitNote = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Plan of care
     /// </summary>
     public static readonly Coding PlanOfCare = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Alcohol and/or substance abuse service attachment
     /// </summary>
     public static readonly Coding AlcoholAndOrSubstanceAbuseServiceAttachment = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cardiac service attachment
     /// </summary>
     public static readonly Coding CardiacServiceAttachment = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Medical social services attachment
     /// </summary>
     public static readonly Coding MedicalSocialServicesAttachment = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Occupational therapy service attachment
     /// </summary>
     public static readonly Coding OccupationalTherapyServiceAttachment = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cardiac stress study Procedure
     /// </summary>
     public static readonly Coding CardiacStressStudyProcedure = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hospital consultations Document
     /// </summary>
     public static readonly Coding HospitalConsultationsDocument = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Discharge summary
     /// </summary>
     public static readonly Coding DischargeSummary = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical therapy service attachment
     /// </summary>
     public static readonly Coding PhysicalTherapyServiceAttachment = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Respiratory therapy service attachment
     /// </summary>
     public static readonly Coding RespiratoryTherapyServiceAttachment = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Skilled nursing service attachment
     /// </summary>
     public static readonly Coding SkilledNursingServiceAttachment = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Retroperitoneum US
     /// </summary>
     public static readonly Coding RetroperitoneumUS = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen RUQ US
     /// </summary>
     public static readonly Coding AbdomenRUQUS = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdominal vessels MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding AbdominalVesselsMRAngiogramWContrastIV = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdominal vessels US.doppler
     /// </summary>
     public static readonly Coding AbdominalVesselsUSDoppler = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acetabulum X-ray
     /// </summary>
     public static readonly Coding AcetabulumXRay = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acromioclavicular Joint X-ray
     /// </summary>
     public static readonly Coding AcromioclavicularJointXRay = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for aspiration of amniotic fluid of Uterus
     /// </summary>
     public static readonly Coding USGuidanceForAspirationOfAmnioticFluidOfUterus = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle MR
     /// </summary>
     public static readonly Coding AnkleMR = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle MR WO and W contrast IV
     /// </summary>
     public static readonly Coding AnkleMRWOAndWContrastIV = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle X-ray 2 views
     /// </summary>
     public static readonly Coding AnkleXRay2Views = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle X-ray
     /// </summary>
     public static readonly Coding AnkleXRay = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Anus US
     /// </summary>
     public static readonly Coding AnusUS = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Aorta Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding AortaFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic Aorta CT
     /// </summary>
     public static readonly Coding ThoracicAortaCT = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic Aorta CT W contrast IV
     /// </summary>
     public static readonly Coding ThoracicAortaCTWContrastIV = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Aorta arch and Neck Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding AortaArchAndNeckFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Aorta US
     /// </summary>
     public static readonly Coding AortaUS = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Appendix US
     /// </summary>
     public static readonly Coding AppendixUS = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity vessels MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding UpperExtremityVesselsMRAngiogramWContrastIV = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity veins Fluoroscopic angiogram W contrast IV
     /// </summary>
     public static readonly Coding UpperExtremityVeinsFluoroscopicAngiogramWContrastIV = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// AV fistula Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding AVFistulaFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Stent Fluoroscopy W contrast intra stent
     /// </summary>
     public static readonly Coding StentFluoroscopyWContrastIntraStent = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Vessel intracranial Fluoroscopic angiogram Embolectomy W contrast IV
     /// </summary>
     public static readonly Coding VesselIntracranialFluoroscopicAngiogramEmbolectomyWContrastIV = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Artery Fluoroscopic angiogram Embolization W contrast IA
     /// </summary>
     public static readonly Coding ArteryFluoroscopicAngiogramEmbolizationWContrastIA = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of stent in Artery
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfStentInArtery = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen MR
     /// </summary>
     public static readonly Coding AbdomenMR = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen MR WO and W contrast IV
     /// </summary>
     public static readonly Coding AbdomenMRWOAndWContrastIV = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen US
     /// </summary>
     public static readonly Coding AbdomenUS = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for drainage of Abdomen
     /// </summary>
     public static readonly Coding USGuidanceForDrainageOfAbdomen = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP left lateral-decubitus portable
     /// </summary>
     public static readonly Coding AbdomenXRayAPLeftLateralDecubitusPortable = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP left lateral-decubitus
     /// </summary>
     public static readonly Coding AbdomenXRayAPLeftLateralDecubitus = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP (left lateral-decubitus and right lateral-decubitus)
     /// </summary>
     public static readonly Coding AbdomenXRayAPLeftLateralDecubitusAndRightLateralDecubitus = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP right lateral-decubitus
     /// </summary>
     public static readonly Coding AbdomenXRayAPRightLateralDecubitus = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP upright portable
     /// </summary>
     public static readonly Coding AbdomenXRayAPUprightPortable = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Retroperitoneum CT
     /// </summary>
     public static readonly Coding RetroperitoneumCT = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Abdomen&gt;Retroperitoneum CT W contrast
     /// </summary>
     public static readonly Coding DeprecatedAbdomenGreaterThanRetroperitoneumCTWContrast = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// AV fistula Fluoroscopic angiogram Atherectomy W contrast IV
     /// </summary>
     public static readonly Coding AVFistulaFluoroscopicAngiogramAtherectomyWContrastIV = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// AV shunt Fluoroscopic angiogram W contrast IV
     /// </summary>
     public static readonly Coding AVShuntFluoroscopicAngiogramWContrastIV = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for stone removal of Biliary duct common-- W contrast intra biliary duct
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForStoneRemovalOfBiliaryDuctCommonWContrastIntraBiliaryDuct = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Biliary ducts and Gallbladder NM for patency of biliary structures and ejection fraction W sincalide and W radionuclide IV
     /// </summary>
     public static readonly Coding BiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresAndEjectionFractionWSincalideAndWRadionuclideIV = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Biliary ducts and Gallbladder NM for patency of biliary structures W Tc-99m IV
     /// </summary>
     public static readonly Coding BiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresWTc99mIV = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Biliary ducts and Gallbladder X-ray W contrast IV
     /// </summary>
     public static readonly Coding BiliaryDuctsAndGallbladderXRayWContrastIV = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Biliary ducts and Gallbladder Fluoroscopy during surgery W contrast biliary duct
     /// </summary>
     public static readonly Coding BiliaryDuctsAndGallbladderFluoroscopyDuringSurgeryWContrastBiliaryDuct = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Biliary ducts and Gallbladder Fluoroscopy W contrast percutaneous transhepatic
     /// </summary>
     public static readonly Coding BiliaryDuctsAndGallbladderFluoroscopyWContrastPercutaneousTranshepatic = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Urinary bladder arteries Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding UrinaryBladderArteriesFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bone X-ray during surgery
     /// </summary>
     public static readonly Coding BoneXRayDuringSurgery = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bones SPECT
     /// </summary>
     public static readonly Coding BonesSPECT = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Long bones X-ray survey
     /// </summary>
     public static readonly Coding LongBonesXRaySurvey = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brachiocephalic artery Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding BrachiocephalicArteryFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brachial artery and Subclavian artery Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding BrachialArteryAndSubclavianArteryFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brachial plexus MR
     /// </summary>
     public static readonly Coding BrachialPlexusMR = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brachial plexus MR WO and W contrast IV
     /// </summary>
     public static readonly Coding BrachialPlexusMRWOAndWContrastIV = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic inlet vessels MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding ThoracicInletVesselsMRAngiogramWContrastIV = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for stereotactic biopsy of Head-- W contrast IV
     /// </summary>
     public static readonly Coding CTGuidanceForStereotacticBiopsyOfHeadWContrastIV = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brain MR W anesthesia
     /// </summary>
     public static readonly Coding BrainMRWAnesthesia = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brain MR WO and W contrast IV
     /// </summary>
     public static readonly Coding BrainMRWOAndWContrastIV = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brain MR WO and W contrast IV and W anesthesia
     /// </summary>
     public static readonly Coding BrainMRWOAndWContrastIVAndWAnesthesia = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brain MR W contrast IV
     /// </summary>
     public static readonly Coding BrainMRWContrastIV = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brain MR
     /// </summary>
     public static readonly Coding BrainMR = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brain NM brain death protocol W Tc-99m HMPAO IV
     /// </summary>
     public static readonly Coding BrainNMBrainDeathProtocolWTc99mHMPAOIV = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Head vessels MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding HeadVesselsMRAngiogramWContrastIV = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for aspiration of cyst of Breast
     /// </summary>
     public static readonly Coding MammogramGuidanceForAspirationOfCystOfBreast = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for needle localization of mass of Breast
     /// </summary>
     public static readonly Coding MammogramGuidanceForNeedleLocalizationOfMassOfBreast = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast specimen US
     /// </summary>
     public static readonly Coding BreastSpecimenUS = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast specimen Mammogram
     /// </summary>
     public static readonly Coding BreastSpecimenMammogram = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for aspiration of Breast
     /// </summary>
     public static readonly Coding MammogramGuidanceForAspirationOfBreast = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast US limited
     /// </summary>
     public static readonly Coding BreastUSLimited = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for needle localization of Breast
     /// </summary>
     public static readonly Coding USGuidanceForNeedleLocalizationOfBreast = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast US
     /// </summary>
     public static readonly Coding BreastUS = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for biopsy of Breast
     /// </summary>
     public static readonly Coding MammogramGuidanceForBiopsyOfBreast = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for stereotactic biopsy of Breast
     /// </summary>
     public static readonly Coding MammogramGuidanceForStereotacticBiopsyOfBreast = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast Mammogram diagnostic limited
     /// </summary>
     public static readonly Coding BreastMammogramDiagnosticLimited = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast Mammogram diagnostic
     /// </summary>
     public static readonly Coding BreastMammogramDiagnostic = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast Mammogram screening
     /// </summary>
     public static readonly Coding BreastMammogramScreening = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for core needle percutaneous biopsy of Breast
     /// </summary>
     public static readonly Coding MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreast = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast Mammogram limited
     /// </summary>
     public static readonly Coding BreastMammogramLimited = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Outpatient Consultation 2nd opinion
     /// </summary>
     public static readonly Coding OutpatientConsultation2ndOpinion = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Calcaneus X-ray
     /// </summary>
     public static readonly Coding DeprecatedCalcaneusXRay = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of catheter in artery in Central cardiovascular artery
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfCatheterInArteryInCentralCardiovascularArtery = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid artery extracranial Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding CarotidArteryExtracranialFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid artery intracranial Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding CarotidArteryIntracranialFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid arteries US
     /// </summary>
     public static readonly Coding CarotidArteriesUS = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid artery Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding CarotidArteryFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist X-ray
     /// </summary>
     public static readonly Coding WristXRay = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Catheter Fluoroscopy Patency check W contrast via catheter
     /// </summary>
     public static readonly Coding CatheterFluoroscopyPatencyCheckWContrastViaCatheter = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for percutaneous drainage of Unspecified body region
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForPercutaneousDrainageOfUnspecifiedBodyRegion = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Celiac artery Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding CeliacArteryFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for nerve block of Celiac plexus
     /// </summary>
     public static readonly Coding CTGuidanceForNerveBlockOfCeliacPlexus = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for change of central venous catheter in Vein-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinWContrastIV = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of central venous catheter in Vein-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinWContrastIV = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for reposition of central venous catheter in Vein-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinWContrastIV = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest CT
     /// </summary>
     public static readonly Coding ChestCT = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest CT W contrast IV
     /// </summary>
     public static readonly Coding ChestCTWContrastIV = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest MR
     /// </summary>
     public static readonly Coding ChestMR = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest US
     /// </summary>
     public static readonly Coding ChestUS = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region Fluoroscopy Central vein catheter placement check
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionFluoroscopyCentralVeinCatheterPlacementCheck = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray AP portable
     /// </summary>
     public static readonly Coding ChestXRayAPPortable = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray portable W inspiration and expiration
     /// </summary>
     public static readonly Coding ChestXRayPortableWInspirationAndExpiration = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray PA upright W inspiration and expiration
     /// </summary>
     public static readonly Coding ChestXRayPAUprightWInspirationAndExpiration = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray AP left lateral-decubitus portable
     /// </summary>
     public static readonly Coding ChestXRayAPLeftLateralDecubitusPortable = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray AP left lateral-decubitus
     /// </summary>
     public static readonly Coding ChestXRayAPLeftLateralDecubitus = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray left lateral upright portable
     /// </summary>
     public static readonly Coding ChestXRayLeftLateralUprightPortable = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray left lateral upright
     /// </summary>
     public static readonly Coding ChestXRayLeftLateralUpright = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray lordotic
     /// </summary>
     public static readonly Coding ChestXRayLordotic = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray left oblique portable
     /// </summary>
     public static readonly Coding ChestXRayLeftObliquePortable = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray AP and PA upright
     /// </summary>
     public static readonly Coding ChestXRayAPAndPAUpright = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray PA and lateral and right or-left oblique upright
     /// </summary>
     public static readonly Coding ChestXRayPAAndLateralAndRightOrLeftObliqueUpright = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray PA and lateral upright portable
     /// </summary>
     public static readonly Coding ChestXRayPAAndLateralUprightPortable = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray PA and right lateral and right oblique and left oblique upright portable
     /// </summary>
     public static readonly Coding ChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUprightPortable = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray PA and right lateral and right oblique and left oblique upright
     /// </summary>
     public static readonly Coding ChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUpright = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray PA and lateral upright
     /// </summary>
     public static readonly Coding ChestXRayPAAndLateralUpright = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray PA upright
     /// </summary>
     public static readonly Coding ChestXRayPAUpright = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray AP (right lateral-decubitus and left lateral-decubitus) portable
     /// </summary>
     public static readonly Coding ChestXRayAPRightLateralDecubitusAndLeftLateralDecubitusPortable = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray AP (right lateral-decubitus and left lateral-decubitus)
     /// </summary>
     public static readonly Coding ChestXRayAPRightLateralDecubitusAndLeftLateralDecubitus = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray right oblique and left oblique upright
     /// </summary>
     public static readonly Coding ChestXRayRightObliqueAndLeftObliqueUpright = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray AP right lateral-decubitus portable
     /// </summary>
     public static readonly Coding ChestXRayAPRightLateralDecubitusPortable = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray AP and AP right lateral-decubitus
     /// </summary>
     public static readonly Coding ChestXRayAPAndAPRightLateralDecubitus = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray AP and AP right lateral-decubitus portable
     /// </summary>
     public static readonly Coding ChestXRayAPAndAPRightLateralDecubitusPortable = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest Fluoroscopy Image intensifier during surgery
     /// </summary>
     public static readonly Coding ChestFluoroscopyImageIntensifierDuringSurgery = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest Fluoroscopy during surgery
     /// </summary>
     public static readonly Coding ChestFluoroscopyDuringSurgery = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest X-ray tomograph
     /// </summary>
     public static readonly Coding ChestXRayTomograph = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Aorta Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding AortaFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest vessels MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding ChestVesselsMRAngiogramWContrastIV = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic Aorta MR angiogram
     /// </summary>
     public static readonly Coding ThoracicAortaMRAngiogram = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pleural space Fluoroscopy W contrast intra pleural space
     /// </summary>
     public static readonly Coding PleuralSpaceFluoroscopyWContrastIntraPleuralSpace = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for aspiration of Pleural space
     /// </summary>
     public static readonly Coding USGuidanceForAspirationOfPleuralSpace = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cerebral cisterns NM W radionuclide IT
     /// </summary>
     public static readonly Coding CerebralCisternsNMWRadionuclideIT = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Clavicle X-ray
     /// </summary>
     public static readonly Coding ClavicleXRay = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sacrum and Coccyx X-ray
     /// </summary>
     public static readonly Coding SacrumAndCoccyxXRay = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Colon Fluoroscopy W air and barium contrast PR
     /// </summary>
     public static readonly Coding ColonFluoroscopyWAirAndBariumContrastPR = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Colon Fluoroscopy W contrast PR
     /// </summary>
     public static readonly Coding ColonFluoroscopyWContrastPR = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Colon Fluoroscopy transit Post solid contrast
     /// </summary>
     public static readonly Coding ColonFluoroscopyTransitPostSolidContrast = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Colon Fluoroscopy W water soluble contrast PR
     /// </summary>
     public static readonly Coding ColonFluoroscopyWWaterSolubleContrastPR = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for biopsy of cyst of Unspecified body region
     /// </summary>
     public static readonly Coding USGuidanceForBiopsyOfCystOfUnspecifiedBodyRegion = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for aspiration of cyst of Unspecified body region
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForAspirationOfCystOfUnspecifiedBodyRegion = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Diaphragm US for motion
     /// </summary>
     public static readonly Coding DiaphragmUSForMotion = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Duodenum Fluoroscopy W contrast PO and hypotonic agent per ng
     /// </summary>
     public static readonly Coding DuodenumFluoroscopyWContrastPOAndHypotonicAgentPerNg = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow MR
     /// </summary>
     public static readonly Coding ElbowMR = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ElbowMRWOAndWContrastIV = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow X-ray
     /// </summary>
     public static readonly Coding ElbowXRay = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis US transvaginal
     /// </summary>
     public static readonly Coding PelvisUSTransvaginal = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Esophagus Fluoroscopy W contrast PO
     /// </summary>
     public static readonly Coding EsophagusFluoroscopyWContrastPO = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Esophagus Fluoroscopy W gastrografin PO
     /// </summary>
     public static readonly Coding EsophagusFluoroscopyWGastrografinPO = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for dilation of Esophagus
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForDilationOfEsophagus = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Esophagus and Hypopharynx Fluoroscopy video W contrast PO during swallowing
     /// </summary>
     public static readonly Coding EsophagusAndHypopharynxFluoroscopyVideoWContrastPODuringSwallowing = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Esophagus and Hypopharynx Fluoroscopy video W liquid and paste contrast PO during swallowing
     /// </summary>
     public static readonly Coding EsophagusAndHypopharynxFluoroscopyVideoWLiquidAndPasteContrastPODuringSwallowing = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Esophagus+Stomach NM W Tc-99m SC PO
     /// </summary>
     public static readonly Coding EsophagusPlusStomachNMWTc99mSCPO = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extracranial vessels Fluoroscopic angiogram Embolectomy W contrast IA
     /// </summary>
     public static readonly Coding ExtracranialVesselsFluoroscopicAngiogramEmbolectomyWContrastIA = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peripheral veins Fluoroscopic angiogram W contrast IV
     /// </summary>
     public static readonly Coding PeripheralVeinsFluoroscopicAngiogramWContrastIV = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lower extremity X-ray
     /// </summary>
     public static readonly Coding LowerExtremityXRay = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lower Extremity Joint MR
     /// </summary>
     public static readonly Coding LowerExtremityJointMR = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity MR
     /// </summary>
     public static readonly Coding UpperExtremityMR = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity X-ray
     /// </summary>
     public static readonly Coding UpperExtremityXRay = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity CT
     /// </summary>
     public static readonly Coding ExtremityCT = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity CT W contrast IV
     /// </summary>
     public static readonly Coding ExtremityCTWContrastIV = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for drainage of Extremity
     /// </summary>
     public static readonly Coding USGuidanceForDrainageOfExtremity = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity US
     /// </summary>
     public static readonly Coding ExtremityUS = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Face MR WO and W contrast IV
     /// </summary>
     public static readonly Coding FaceMRWOAndWContrastIV = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Facial bones X-ray
     /// </summary>
     public static readonly Coding FacialBonesXRay = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Facial bones CT
     /// </summary>
     public static readonly Coding FacialBonesCT = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Facial bones CT W contrast IV
     /// </summary>
     public static readonly Coding FacialBonesCTWContrastIV = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Femoral artery Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding FemoralArteryFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Femoral artery Fluoroscopic angiogram runoff W contrast IA
     /// </summary>
     public static readonly Coding FemoralArteryFluoroscopicAngiogramRunoffWContrastIA = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Femur and Tibia X-ray for leg length
     /// </summary>
     public static readonly Coding FemurAndTibiaXRayForLegLength = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thigh MR
     /// </summary>
     public static readonly Coding ThighMR = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thigh MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ThighMRWOAndWContrastIV = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Femur X-ray
     /// </summary>
     public static readonly Coding FemurXRay = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Finger MR
     /// </summary>
     public static readonly Coding FingerMR = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Finger X-ray
     /// </summary>
     public static readonly Coding FingerXRay = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot MR
     /// </summary>
     public static readonly Coding FootMR = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot X-ray standing
     /// </summary>
     public static readonly Coding FootXRayStanding = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot X-ray
     /// </summary>
     public static readonly Coding FootXRay = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Forearm MR
     /// </summary>
     public static readonly Coding ForearmMR = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Gallbladder US
     /// </summary>
     public static readonly Coding GallbladderUS = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Gallbladder X-ray W contrast PO
     /// </summary>
     public static readonly Coding GallbladderXRayWContrastPO = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Gallbladder X-ray 48 hours post contrast PO
     /// </summary>
     public static readonly Coding GallbladderXRay48HoursPostContrastPO = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal tract NM for gastrointestinal bleeding W Tc-99m tagged RBC IV
     /// </summary>
     public static readonly Coding GastrointestinalTractNMForGastrointestinalBleedingWTc99mTaggedRBCIV = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal tract upper Fluoroscopy Single view W contrast PO
     /// </summary>
     public static readonly Coding GastrointestinalTractUpperFluoroscopySingleViewWContrastPO = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for placement of decompression tube in Gastrointestinal tract
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForPlacementOfDecompressionTubeInGastrointestinalTract = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ileal conduit X-ray Loopogram
     /// </summary>
     public static readonly Coding IlealConduitXRayLoopogram = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for transjugular biopsy of Liver-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForTransjugularBiopsyOfLiverWContrastIV = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Groin US
     /// </summary>
     public static readonly Coding GroinUS = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand MR
     /// </summary>
     public static readonly Coding HandMR = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand X-ray 2 views
     /// </summary>
     public static readonly Coding HandXRay2Views = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand X-ray 3 views
     /// </summary>
     public static readonly Coding HandXRay3Views = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand X-ray arthritis
     /// </summary>
     public static readonly Coding HandXRayArthritis = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist and Hand X-ray bone age
     /// </summary>
     public static readonly Coding WristAndHandXRayBoneAge = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Head CT
     /// </summary>
     public static readonly Coding HeadCT = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Head CT WO and W contrast IV
     /// </summary>
     public static readonly Coding HeadCTWOAndWContrastIV = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Head CT W contrast IV
     /// </summary>
     public static readonly Coding HeadCTWContrastIV = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Head CT perfusion
     /// </summary>
     public static readonly Coding HeadCTPerfusion = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Head CT perfusion WO and W contrast IV
     /// </summary>
     public static readonly Coding HeadCTPerfusionWOAndWContrastIV = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brain NM
     /// </summary>
     public static readonly Coding BrainNM = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Head US
     /// </summary>
     public static readonly Coding HeadUS = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Head US during surgery
     /// </summary>
     public static readonly Coding HeadUSDuringSurgery = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Head vessels US.doppler
     /// </summary>
     public static readonly Coding HeadVesselsUSDoppler = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cerebral cisterns CT W contrast IT
     /// </summary>
     public static readonly Coding CerebralCisternsCTWContrastIT = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Internal auditory canal and Posterior fossa MR
     /// </summary>
     public static readonly Coding InternalAuditoryCanalAndPosteriorFossaMR = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Internal auditory canal and Posterior fossa MR WO and W contrast IV
     /// </summary>
     public static readonly Coding InternalAuditoryCanalAndPosteriorFossaMRWOAndWContrastIV = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Petrous bone X-ray
     /// </summary>
     public static readonly Coding PetrousBoneXRay = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Head Sagittal Sinus MR
     /// </summary>
     public static readonly Coding DeprecatedHeadSagittalSinusMR = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Head Sagittal Sinus MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding DeprecatedHeadSagittalSinusMRAngiogramWContrastIV = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Heart MR
     /// </summary>
     public static readonly Coding HeartMR = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Heart NM at rest and W Tl-201 IV
     /// </summary>
     public static readonly Coding HeartNMAtRestAndWTl201IV = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Parathyroid gland NM W TI-201 subtraction Tc-99m IV
     /// </summary>
     public static readonly Coding ParathyroidGlandNMWTI201SubtractionTc99mIV = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Heart Fluoroscopy video
     /// </summary>
     public static readonly Coding HeartFluoroscopyVideo = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region CT W contrast IV
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionCTWContrastIV = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Administration of vasodilator into catheter of Vein
     /// </summary>
     public static readonly Coding AdministrationOfVasodilatorIntoCatheterOfVein = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for atherectomy of Vein-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForAtherectomyOfVeinWContrastIV = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of stent in Vein
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfStentInVein = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Coronary arteries CT fast
     /// </summary>
     public static readonly Coding DeprecatedCoronaryArteriesCTFast = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip US
     /// </summary>
     public static readonly Coding HipUS = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip X-ray Single view
     /// </summary>
     public static readonly Coding HipXRaySingleView = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip X-ray
     /// </summary>
     public static readonly Coding HipXRay = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding HipFluoroscopyArthrogram = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Humerus X-ray 2 views
     /// </summary>
     public static readonly Coding HumerusXRay2Views = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Iliac artery Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding IliacArteryFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Internal auditory canal X-ray tomograph
     /// </summary>
     public static readonly Coding InternalAuditoryCanalXRayTomograph = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for injection of Joint space
     /// </summary>
     public static readonly Coding CTGuidanceForInjectionOfJointSpace = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Joint NM W In-111 Intrajoint
     /// </summary>
     public static readonly Coding JointNMWIn111Intrajoint = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for aspiration of Joint space
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForAspirationOfJointSpace = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for biopsy of Kidney
     /// </summary>
     public static readonly Coding USGuidanceForBiopsyOfKidney = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney NM W radionuclide transplant scan
     /// </summary>
     public static readonly Coding KidneyNMWRadionuclideTransplantScan = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney NM
     /// </summary>
     public static readonly Coding KidneyNM = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney - bilateral X-ray 3 views serial WO and W contrast IV
     /// </summary>
     public static readonly Coding KidneyBilateralXRay3ViewsSerialWOAndWContrastIV = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for placement of percutaneous nephrostomy in Kidney - bilateral-- W contrast via tube
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForPlacementOfPercutaneousNephrostomyInKidneyBilateralWContrastViaTube = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney - bilateral Fluoroscopy W contrast via nephrostomy tube
     /// </summary>
     public static readonly Coding KidneyBilateralFluoroscopyWContrastViaNephrostomyTube = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for exchange of percutaneous nephrostomy tube of Kidney - bilateral-- W contrast
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForExchangeOfPercutaneousNephrostomyTubeOfKidneyBilateralWContrast = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for placement of percutaneous nephroureteral stent in Kidney - bilateral-- W contrast via stent
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForPlacementOfPercutaneousNephroureteralStentInKidneyBilateralWContrastViaStent = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney - bilateral Fluoroscopy Urodynamics
     /// </summary>
     public static readonly Coding KidneyBilateralFluoroscopyUrodynamics = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney - bilateral X-ray tomograph WO and W contrast IV
     /// </summary>
     public static readonly Coding KidneyBilateralXRayTomographWOAndWContrastIV = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney - bilateral X-ray tomograph WO contrast and 10M post contrast IV
     /// </summary>
     public static readonly Coding KidneyBilateralXRayTomographWOContrastAnd10MPostContrastIV = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney - bilateral X-ray W contrast IV
     /// </summary>
     public static readonly Coding KidneyBilateralXRayWContrastIV = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney - bilateral X-ray tomograph
     /// </summary>
     public static readonly Coding KidneyBilateralXRayTomograph = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney - bilateral X-ray tomograph W contrast IV
     /// </summary>
     public static readonly Coding KidneyBilateralXRayTomographWContrastIV = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP and AP left lateral-decubitus portable
     /// </summary>
     public static readonly Coding AbdomenXRayAPAndAPLeftLateralDecubitusPortable = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP and lateral portable
     /// </summary>
     public static readonly Coding AbdomenXRayAPAndLateralPortable = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP and lateral
     /// </summary>
     public static readonly Coding AbdomenXRayAPAndLateral = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP (supine and upright) portable
     /// </summary>
     public static readonly Coding AbdomenXRayAPSupineAndUprightPortable = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP and AP left lateral-decubitus
     /// </summary>
     public static readonly Coding AbdomenXRayAPAndAPLeftLateralDecubitus = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP and oblique prone
     /// </summary>
     public static readonly Coding AbdomenXRayAPAndObliqueProne = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP (supine and upright)
     /// </summary>
     public static readonly Coding AbdomenXRayAPSupineAndUpright = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen X-ray AP single view
     /// </summary>
     public static readonly Coding AbdomenXRayAPSingleView = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding KneeFluoroscopyArthrogram = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee X-ray Merchants
     /// </summary>
     public static readonly Coding KneeXRayMerchants = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee MR
     /// </summary>
     public static readonly Coding KneeMR = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee MR WO and W contrast IV
     /// </summary>
     public static readonly Coding KneeMRWOAndWContrastIV = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee NM
     /// </summary>
     public static readonly Coding KneeNM = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee X-ray AP and lateral standing
     /// </summary>
     public static readonly Coding KneeXRayAPAndLateralStanding = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee X-ray 2 views
     /// </summary>
     public static readonly Coding KneeXRay2Views = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee X-ray AP single view standing
     /// </summary>
     public static readonly Coding KneeXRayAPSingleViewStanding = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee X-ray AP and PA standing
     /// </summary>
     public static readonly Coding KneeXRayAPAndPAStanding = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee X-ray standing
     /// </summary>
     public static readonly Coding KneeXRayStanding = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for aspiration of Liver
     /// </summary>
     public static readonly Coding CTGuidanceForAspirationOfLiver = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for biopsy of Liver
     /// </summary>
     public static readonly Coding CTGuidanceForBiopsyOfLiver = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for core needle biopsy of Liver
     /// </summary>
     public static readonly Coding CTGuidanceForCoreNeedleBiopsyOfLiver = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Liver CT
     /// </summary>
     public static readonly Coding LiverCT = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Liver CT W contrast IV
     /// </summary>
     public static readonly Coding LiverCTWContrastIV = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for biopsy of Liver
     /// </summary>
     public static readonly Coding USGuidanceForBiopsyOfLiver = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Liver SPECT W Tc-99m IV
     /// </summary>
     public static readonly Coding LiverSPECTWTc99mIV = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Diaphragm and Liver US
     /// </summary>
     public static readonly Coding DiaphragmAndLiverUS = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Liver and Spleen NM W Tc-99m calcium colloid IV
     /// </summary>
     public static readonly Coding DeprecatedLiverAndSpleenNMWTc99mCalciumColloidIV = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lower leg vessels MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding LowerLegVesselsMRAngiogramWContrastIV = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lower leg MR
     /// </summary>
     public static readonly Coding LowerLegMR = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for aspiration of Lung
     /// </summary>
     public static readonly Coding CTGuidanceForAspirationOfLung = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for biopsy of Lung
     /// </summary>
     public static readonly Coding CTGuidanceForBiopsyOfLung = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lung NM portable
     /// </summary>
     public static readonly Coding LungNMPortable = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lung X-ray W contrast intrabronchial
     /// </summary>
     public static readonly Coding LungXRayWContrastIntrabronchial = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lymphatic vessels NM W radionuclide intra lymphatic
     /// </summary>
     public static readonly Coding LymphaticVesselsNMWRadionuclideIntraLymphatic = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lymphatics Fluoroscopy W contrast intra lymphatic
     /// </summary>
     public static readonly Coding LymphaticsFluoroscopyWContrastIntraLymphatic = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mandible X-ray tomograph panoramic
     /// </summary>
     public static readonly Coding MandibleXRayTomographPanoramic = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mandible X-ray
     /// </summary>
     public static readonly Coding MandibleXRay = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mastoid X-ray
     /// </summary>
     public static readonly Coding MastoidXRay = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Small bowel NM for Meckel's diverticulum W Tc-99m M04 IV
     /// </summary>
     public static readonly Coding SmallBowelNMForMeckelQuoteSDiverticulumWTc99mM04IV = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mesenteric artery Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding MesentericArteryFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mesenteric artery Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding MesentericArteryFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nasal bones X-ray
     /// </summary>
     public static readonly Coding NasalBonesXRay = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nasopharynx and Neck CT
     /// </summary>
     public static readonly Coding NasopharynxAndNeckCT = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nasopharynx and Neck CT W contrast IV
     /// </summary>
     public static readonly Coding NasopharynxAndNeckCTWContrastIV = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for aspiration of Neck
     /// </summary>
     public static readonly Coding CTGuidanceForAspirationOfNeck = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for biopsy of Neck
     /// </summary>
     public static readonly Coding CTGuidanceForBiopsyOfNeck = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Neck MR
     /// </summary>
     public static readonly Coding NeckMR = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Neck MR WO and W contrast IV
     /// </summary>
     public static readonly Coding NeckMRWOAndWContrastIV = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Neck MR W contrast IV
     /// </summary>
     public static readonly Coding NeckMRWContrastIV = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Neck US
     /// </summary>
     public static readonly Coding NeckUS = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Neck X-ray lateral
     /// </summary>
     public static readonly Coding NeckXRayLateral = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Neck vessels MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding NeckVesselsMRAngiogramWContrastIV = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Neck Fluoroscopy W contrast intra larynx
     /// </summary>
     public static readonly Coding NeckFluoroscopyWContrastIntraLarynx = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Optic foramen X-ray
     /// </summary>
     public static readonly Coding OpticForamenXRay = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Orbit - bilateral CT
     /// </summary>
     public static readonly Coding OrbitBilateralCT = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Orbit - bilateral CT WO and W contrast IV
     /// </summary>
     public static readonly Coding OrbitBilateralCTWOAndWContrastIV = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Orbit - bilateral CT W contrast IV
     /// </summary>
     public static readonly Coding OrbitBilateralCTWContrastIV = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Orbit - bilateral MR WO and W contrast IV
     /// </summary>
     public static readonly Coding OrbitBilateralMRWOAndWContrastIV = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Orbit - bilateral MR W contrast IV
     /// </summary>
     public static readonly Coding OrbitBilateralMRWContrastIV = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Eye+Orbit - bilateral US
     /// </summary>
     public static readonly Coding EyePlusOrbitBilateralUS = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Orbit - bilateral X-ray
     /// </summary>
     public static readonly Coding OrbitBilateralXRay = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oropharynx Fluoroscopy video
     /// </summary>
     public static readonly Coding OropharynxFluoroscopyVideo = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for aspiration of Pancreas
     /// </summary>
     public static readonly Coding CTGuidanceForAspirationOfPancreas = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pancreas CT
     /// </summary>
     public static readonly Coding PancreasCT = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pancreas CT W contrast IV
     /// </summary>
     public static readonly Coding PancreasCTWContrastIV = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pancreas US
     /// </summary>
     public static readonly Coding PancreasUS = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pancreatic artery Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding PancreaticArteryFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Patella X-ray 2 views
     /// </summary>
     public static readonly Coding PatellaXRay2Views = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Iliac artery Internal Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding IliacArteryInternalFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for aspiration of Pelvis
     /// </summary>
     public static readonly Coding CTGuidanceForAspirationOfPelvis = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for biopsy of Pelvis
     /// </summary>
     public static readonly Coding CTGuidanceForBiopsyOfPelvis = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis CT
     /// </summary>
     public static readonly Coding PelvisCT = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis CT W contrast IV
     /// </summary>
     public static readonly Coding PelvisCTWContrastIV = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis MR
     /// </summary>
     public static readonly Coding PelvisMR = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for drainage of Pelvis
     /// </summary>
     public static readonly Coding USGuidanceForDrainageOfPelvis = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis US
     /// </summary>
     public static readonly Coding PelvisUS = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis vessels US.doppler
     /// </summary>
     public static readonly Coding PelvisVesselsUSDoppler = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis X-ray pelvimetry
     /// </summary>
     public static readonly Coding PelvisXRayPelvimetry = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis and Hip MR
     /// </summary>
     public static readonly Coding PelvisAndHipMR = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis vessels MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding PelvisVesselsMRAngiogramWContrastIV = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peripheral arteries Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding PeripheralArteriesFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Peripheral vessel US.doppler Peripheral plane
     /// </summary>
     public static readonly Coding DeprecatedPeripheralVesselUSDopplerPeripheralPlane = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Head to Pelvis NM for shunt patency W Tc-99m DTPA IT
     /// </summary>
     public static readonly Coding HeadToPelvisNMForShuntPatencyWTc99mDTPAIT = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Petrous part of temporal bone CT
     /// </summary>
     public static readonly Coding PetrousPartOfTemporalBoneCT = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Petrous part of temporal bone CT W contrast IV
     /// </summary>
     public static readonly Coding PetrousPartOfTemporalBoneCTWContrastIV = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pituitary and Sella turcica MR WO and W contrast IV
     /// </summary>
     public static readonly Coding PituitaryAndSellaTurcicaMRWOAndWContrastIV = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pituitary and Sella turcica MR
     /// </summary>
     public static readonly Coding PituitaryAndSellaTurcicaMR = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Popliteal space US
     /// </summary>
     public static readonly Coding PoplitealSpaceUS = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Popliteal artery Fluoroscopic angiogram Percutaneous transluminal angioplasty of vessel W contrast IA
     /// </summary>
     public static readonly Coding PoplitealArteryFluoroscopicAngiogramPercutaneousTransluminalAngioplastyOfVesselWContrastIA = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for biopsy of Prostate
     /// </summary>
     public static readonly Coding USGuidanceForBiopsyOfProstate = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Prostate US
     /// </summary>
     public static readonly Coding ProstateUS = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated US Guidance for repair of Pseudoaneurysm/AV fistula
     /// </summary>
     public static readonly Coding DeprecatedUSGuidanceForRepairOfPseudoaneurysmAVFistula = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pulmonary arteries Fluoroscopic angiogram Embolectomy W contrast IA
     /// </summary>
     public static readonly Coding PulmonaryArteriesFluoroscopicAngiogramEmbolectomyWContrastIA = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pulmonary system NM ventilation and perfusion W Xe-133 IH and W Tc-99m MAA IV
     /// </summary>
     public static readonly Coding PulmonarySystemNMVentilationAndPerfusionWXe133IHAndWTc99mMAAIV = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pylorus US for Pyloric Stenosis
     /// </summary>
     public static readonly Coding PylorusUSForPyloricStenosis = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Radius and Ulna X-ray
     /// </summary>
     public static readonly Coding RadiusAndUlnaXRay = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Rectum US
     /// </summary>
     public static readonly Coding RectumUS = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Rectum Fluoroscopy post contrast PR during defecation
     /// </summary>
     public static readonly Coding RectumFluoroscopyPostContrastPRDuringDefecation = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Rectum and Urinary bladder Fluoroscopy W contrast PR and intra bladder during defecation and voiding
     /// </summary>
     public static readonly Coding RectumAndUrinaryBladderFluoroscopyWContrastPRAndIntraBladderDuringDefecationAndVoiding = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for drainage of Kidney
     /// </summary>
     public static readonly Coding USGuidanceForDrainageOfKidney = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ribs X-ray
     /// </summary>
     public static readonly Coding RibsXRay = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sacroiliac Joint X-ray
     /// </summary>
     public static readonly Coding SacroiliacJointXRay = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for injection of Sacroiliac Joint
     /// </summary>
     public static readonly Coding CTGuidanceForInjectionOfSacroiliacJoint = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Salivary gland Fluoroscopy W contrast intra salivary duct
     /// </summary>
     public static readonly Coding SalivaryGlandFluoroscopyWContrastIntraSalivaryDuct = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scapula X-ray
     /// </summary>
     public static readonly Coding ScapulaXRay = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pituitary and Sella turcica CT WO and W contrast IV
     /// </summary>
     public static readonly Coding PituitaryAndSellaTurcicaCTWOAndWContrastIV = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder MR
     /// </summary>
     public static readonly Coding ShoulderMR = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ShoulderMRWOAndWContrastIV = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder US
     /// </summary>
     public static readonly Coding ShoulderUS = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder X-ray 3 views
     /// </summary>
     public static readonly Coding ShoulderXRay3Views = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder X-ray
     /// </summary>
     public static readonly Coding ShoulderXRay = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding ShoulderFluoroscopyArthrogram = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shunt Fluoroscopy
     /// </summary>
     public static readonly Coding ShuntFluoroscopy = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sinus tract Fluoroscopy W contrast intra sinus tract
     /// </summary>
     public static readonly Coding SinusTractFluoroscopyWContrastIntraSinusTract = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sinuses CT limited
     /// </summary>
     public static readonly Coding SinusesCTLimited = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sinuses MR
     /// </summary>
     public static readonly Coding SinusesMR = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sinuses MR W contrast IV
     /// </summary>
     public static readonly Coding SinusesMRWContrastIV = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sinuses X-ray
     /// </summary>
     public static readonly Coding SinusesXRay = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Skull X-ray Single view
     /// </summary>
     public static readonly Coding SkullXRaySingleView = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Skull X-ray 3 views
     /// </summary>
     public static readonly Coding SkullXRay3Views = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Skull X-ray AP and lateral
     /// </summary>
     public static readonly Coding SkullXRayAPAndLateral = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Skull X-ray lateral
     /// </summary>
     public static readonly Coding SkullXRayLateral = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Skull X-ray Waters
     /// </summary>
     public static readonly Coding SkullXRayWaters = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Skull X-ray 5 views
     /// </summary>
     public static readonly Coding SkullXRay5Views = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Small bowel Fluoroscopy W positive contrast via enteroclysis tube
     /// </summary>
     public static readonly Coding SmallBowelFluoroscopyWPositiveContrastViaEnteroclysisTube = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Small bowel Fluoroscopy W contrast PO
     /// </summary>
     public static readonly Coding SmallBowelFluoroscopyWContrastPO = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spinal artery Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding SpinalArteryFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine US
     /// </summary>
     public static readonly Coding SpineUS = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine Fluoroscopy W contrast intradisc
     /// </summary>
     public static readonly Coding SpineFluoroscopyWContrastIntradisc = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine X-ray AP and lateral
     /// </summary>
     public static readonly Coding SpineXRayAPAndLateral = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine Thoracic and Lumbar X-ray scoliosis W flexion and W extension
     /// </summary>
     public static readonly Coding SpineThoracicAndLumbarXRayScoliosisWFlexionAndWExtension = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine Thoracic and Lumbar X-ray scoliosis
     /// </summary>
     public static readonly Coding SpineThoracicAndLumbarXRayScoliosis = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for injection of Spine facet joint
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForInjectionOfSpineFacetJoint = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine CT
     /// </summary>
     public static readonly Coding CervicalSpineCT = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine CT W contrast IV
     /// </summary>
     public static readonly Coding CervicalSpineCTWContrastIV = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine CT W contrast IT
     /// </summary>
     public static readonly Coding CervicalSpineCTWContrastIT = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine MR
     /// </summary>
     public static readonly Coding CervicalSpineMR = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine MR W anesthesia
     /// </summary>
     public static readonly Coding CervicalSpineMRWAnesthesia = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine MR WO and W contrast IV
     /// </summary>
     public static readonly Coding CervicalSpineMRWOAndWContrastIV = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine MR W contrast IV
     /// </summary>
     public static readonly Coding CervicalSpineMRWContrastIV = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine X-ray 5 views
     /// </summary>
     public static readonly Coding CervicalSpineXRay5Views = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine X-ray Single view
     /// </summary>
     public static readonly Coding CervicalSpineXRaySingleView = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine X-ray 3 views
     /// </summary>
     public static readonly Coding CervicalSpineXRay3Views = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine X-ray AP and lateral
     /// </summary>
     public static readonly Coding CervicalSpineXRayAPAndLateral = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine X-ray lateral
     /// </summary>
     public static readonly Coding CervicalSpineXRayLateral = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine X-ray Swimmers
     /// </summary>
     public static readonly Coding CervicalSpineXRaySwimmers = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine X-ray W flexion and W extension
     /// </summary>
     public static readonly Coding CervicalSpineXRayWFlexionAndWExtension = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine X-ray
     /// </summary>
     public static readonly Coding CervicalSpineXRay = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical spine Fluoroscopy W contrast IT
     /// </summary>
     public static readonly Coding CervicalSpineFluoroscopyWContrastIT = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine Cervical Odontoid and Cervical axis X-ray AP single view
     /// </summary>
     public static readonly Coding SpineCervicalOdontoidAndCervicalAxisXRayAPSingleView = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine CT
     /// </summary>
     public static readonly Coding LumbarSpineCT = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine CT W contrast IV
     /// </summary>
     public static readonly Coding LumbarSpineCTWContrastIV = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine CT W contrast IT
     /// </summary>
     public static readonly Coding LumbarSpineCTWContrastIT = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine MR WO and W contrast IV
     /// </summary>
     public static readonly Coding LumbarSpineMRWOAndWContrastIV = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine MR
     /// </summary>
     public static readonly Coding LumbarSpineMR = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine X-ray lateral
     /// </summary>
     public static readonly Coding LumbarSpineXRayLateral = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine X-ray AP and lateral
     /// </summary>
     public static readonly Coding LumbarSpineXRayAPAndLateral = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine X-ray W flexion and W extension
     /// </summary>
     public static readonly Coding LumbarSpineXRayWFlexionAndWExtension = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine X-ray
     /// </summary>
     public static readonly Coding LumbarSpineXRay = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for aspiration of Spine Lumbar Space
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForAspirationOfSpineLumbarSpace = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine Fluoroscopy W contrast IT
     /// </summary>
     public static readonly Coding LumbarSpineFluoroscopyWContrastIT = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine.lumbar and Sacroiliac joint - bilateral X-ray
     /// </summary>
     public static readonly Coding SpineLumbarAndSacroiliacJointBilateralXRay = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lumbar spine MR W anesthesia
     /// </summary>
     public static readonly Coding LumbarSpineMRWAnesthesia = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic spine CT
     /// </summary>
     public static readonly Coding ThoracicSpineCT = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic spine CT W contrast IV
     /// </summary>
     public static readonly Coding ThoracicSpineCTWContrastIV = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic spine MR
     /// </summary>
     public static readonly Coding ThoracicSpineMR = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic spine MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ThoracicSpineMRWOAndWContrastIV = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic spine MR W contrast IV
     /// </summary>
     public static readonly Coding ThoracicSpineMRWContrastIV = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic spine X-ray
     /// </summary>
     public static readonly Coding ThoracicSpineXRay = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine Thoracic and Lumbar X-ray 2 views
     /// </summary>
     public static readonly Coding SpineThoracicAndLumbarXRay2Views = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic spine Fluoroscopy W contrast IT
     /// </summary>
     public static readonly Coding ThoracicSpineFluoroscopyWContrastIT = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for biopsy of Spine
     /// </summary>
     public static readonly Coding CTGuidanceForBiopsyOfSpine = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine CT W contrast IV
     /// </summary>
     public static readonly Coding SpineCTWContrastIV = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spleen CT
     /// </summary>
     public static readonly Coding SpleenCT = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spleen CT WO and W contrast IV
     /// </summary>
     public static readonly Coding SpleenCTWOAndWContrastIV = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spleen US
     /// </summary>
     public static readonly Coding SpleenUS = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Splenic vein and Portal vein Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding SplenicVeinAndPortalVeinFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Splenic artery Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding SplenicArteryFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sternoclavicular Joints X-ray
     /// </summary>
     public static readonly Coding SternoclavicularJointsXRay = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sternum X-ray
     /// </summary>
     public static readonly Coding SternumXRay = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for placement of tube in Stomach
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForPlacementOfTubeInStomach = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for replacement of percutaneous gastrostomy in Stomach
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForReplacementOfPercutaneousGastrostomyInStomach = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Stomach NM for gastric emptying solid phase W Tc-99m SC PO
     /// </summary>
     public static readonly Coding StomachNMForGastricEmptyingSolidPhaseWTc99mSCPO = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Placement check of gastrostomy tube W contrast via GI tube
     /// </summary>
     public static readonly Coding PlacementCheckOfGastrostomyTubeWContrastViaGITube = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Temporomandibular joint MR
     /// </summary>
     public static readonly Coding TemporomandibularJointMR = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Temporomandibular joint X-ray
     /// </summary>
     public static readonly Coding TemporomandibularJointXRay = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scrotum and Testicle NM W Tc-99m pertechnetate IV
     /// </summary>
     public static readonly Coding ScrotumAndTesticleNMWTc99mPertechnetateIV = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scrotum and Testicle US
     /// </summary>
     public static readonly Coding ScrotumAndTesticleUS = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thigh vessels MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding ThighVesselsMRAngiogramWContrastIV = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Three vessels Fluoroscopic angiogram W contrast
     /// </summary>
     public static readonly Coding ThreeVesselsFluoroscopicAngiogramWContrast = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thumb X-ray
     /// </summary>
     public static readonly Coding ThumbXRay = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thyroid gland NM W I-131 IV
     /// </summary>
     public static readonly Coding ThyroidGlandNMWI131IV = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thyroid gland NM and uptake W I-131 IV
     /// </summary>
     public static readonly Coding ThyroidGlandNMAndUptakeWI131IV = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for biopsy of Thyroid gland
     /// </summary>
     public static readonly Coding USGuidanceForBiopsyOfThyroidGland = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thyroid gland US
     /// </summary>
     public static readonly Coding ThyroidGlandUS = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tibia and Fibula X-ray
     /// </summary>
     public static readonly Coding TibiaAndFibulaXRay = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tibial artery Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding TibialArteryFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toes X-ray
     /// </summary>
     public static readonly Coding ToesXRay = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Two vessels Fluoroscopic angiogram W contrast
     /// </summary>
     public static readonly Coding TwoVesselsFluoroscopicAngiogramWContrast = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper GI tract Replacement of percutaneous gastrojejunostomy
     /// </summary>
     public static readonly Coding UpperGITractReplacementOfPercutaneousGastrojejunostomy = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Urethra Fluoroscopy W contrast intra urethra
     /// </summary>
     public static readonly Coding UrethraFluoroscopyWContrastIntraUrethra = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Urinary bladder and Urethra Fluoroscopy W contrast intra bladder
     /// </summary>
     public static readonly Coding UrinaryBladderAndUrethraFluoroscopyWContrastIntraBladder = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Urinary bladder NM
     /// </summary>
     public static readonly Coding UrinaryBladderNM = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Urinary bladder US
     /// </summary>
     public static readonly Coding UrinaryBladderUS = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Urinary bladder and Urethra Fluoroscopy W contrast retrograde via urethra
     /// </summary>
     public static readonly Coding UrinaryBladderAndUrethraFluoroscopyWContrastRetrogradeViaUrethra = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Uterus and Fallopian tubes Fluoroscopy W contrast IU
     /// </summary>
     public static readonly Coding UterusAndFallopianTubesFluoroscopyWContrastIU = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Vein Fluoroscopic angiogram W contrast IV
     /// </summary>
     public static readonly Coding VeinFluoroscopicAngiogramWContrastIV = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of peripherally-inserted central venous catheter in Vein
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVein = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Vena cava Fluoroscopic angiogram W contrast IV
     /// </summary>
     public static readonly Coding VenaCavaFluoroscopicAngiogramWContrastIV = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of IVC filter in Inferior vena cava-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfIVCFilterInInferiorVenaCavaWContrastIV = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Guidance for placement of large bore central venous catheter in Vein
     /// </summary>
     public static readonly Coding GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVein = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of catheter for adminstration of thrombolytic in Vessel-- W contrast intravascular
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfCatheterForAdminstrationOfThrombolyticInVesselWContrastIntravascular = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of catheter for vasoconstrictor infusion in Vessels
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfCatheterForVasoconstrictorInfusionInVessels = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdominal Arteries Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding AbdominalArteriesFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bone NM
     /// </summary>
     public static readonly Coding BoneNM = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bone NM W In-111 tagged WBC IV
     /// </summary>
     public static readonly Coding BoneNMWIn111TaggedWBCIV = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist MR
     /// </summary>
     public static readonly Coding WristMR = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding WristFluoroscopyArthrogram = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist MR WO and W contrast IV
     /// </summary>
     public static readonly Coding WristMRWOAndWContrastIV = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist US
     /// </summary>
     public static readonly Coding WristUS = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region Courtesy consultation
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionCourtesyConsultation = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region CT limited
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionCTLimited = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Unspecified body region CT 3D
     /// </summary>
     public static readonly Coding DeprecatedUnspecifiedBodyRegionCT3D = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for aspiration or biopsy of Unspecified body region-- W contrast IV
     /// </summary>
     public static readonly Coding CTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegionWContrastIV = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for aspiration or biopsy of Unspecified body region
     /// </summary>
     public static readonly Coding CTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegion = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for aspiration of Unspecified body region
     /// </summary>
     public static readonly Coding CTGuidanceForAspirationOfUnspecifiedBodyRegion = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for biopsy of Unspecified body region
     /// </summary>
     public static readonly Coding CTGuidanceForBiopsyOfUnspecifiedBodyRegion = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region CT
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionCT = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region CT W anesthesia
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionCTWAnesthesia = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region CT W conscious sedation
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionCTWConsciousSedation = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Unspecified body region CT 3D sagittal and coronal disarticulation
     /// </summary>
     public static readonly Coding DeprecatedUnspecifiedBodyRegionCT3DSagittalAndCoronalDisarticulation = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Unspecified body region CT Multisectional sagittal
     /// </summary>
     public static readonly Coding DeprecatedUnspecifiedBodyRegionCTMultisectionalSagittal = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Unspecified body region CT sagittal and coronal
     /// </summary>
     public static readonly Coding DeprecatedUnspecifiedBodyRegionCTSagittalAndCoronal = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for radiosurgery of Unspecified body region
     /// </summary>
     public static readonly Coding CTGuidanceForRadiosurgeryOfUnspecifiedBodyRegion = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for radiosurgery of Unspecified body region-- W contrast IV
     /// </summary>
     public static readonly Coding CTGuidanceForRadiosurgeryOfUnspecifiedBodyRegionWContrastIV = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Unspecified body region MR additional sequence
     /// </summary>
     public static readonly Coding DeprecatedUnspecifiedBodyRegionMRAdditionalSequence = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region MR
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionMR = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region MR W conscious sedation
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionMRWConsciousSedation = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionMRAngiogramWContrastIV = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for biopsy of Unspecified body region
     /// </summary>
     public static readonly Coding USGuidanceForBiopsyOfUnspecifiedBodyRegion = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region US No charge
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionUSNoCharge = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region US
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionUS = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region X-ray Comparison view
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionXRayComparisonView = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Vessel Fluoroscopic angiogram Single view W contrast IA
     /// </summary>
     public static readonly Coding VesselFluoroscopicAngiogramSingleViewWContrastIA = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Vessel Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding VesselFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region Fluoroscopy 15 minutes
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionFluoroscopy15Minutes = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region Fluoroscopy 30 minutes
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionFluoroscopy30Minutes = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region Fluoroscopy 45 minutes
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionFluoroscopy45Minutes = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region Fluoroscopy 1 hour
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionFluoroscopy1Hour = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for biopsy of Unspecified body region
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForBiopsyOfUnspecifiedBodyRegion = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region Fluoroscopy during surgery
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionFluoroscopyDuringSurgery = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region X-ray tomograph
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionXRayTomograph = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Guidance for placement of infusion port in Unspecified body region
     /// </summary>
     public static readonly Coding GuidanceForPlacementOfInfusionPortInUnspecifiedBodyRegion = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Vessel Fluoroscopic angiogram Removal of foreign body from vascular space
     /// </summary>
     public static readonly Coding VesselFluoroscopicAngiogramRemovalOfForeignBodyFromVascularSpace = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Zygomatic arch X-ray
     /// </summary>
     public static readonly Coding ZygomaticArchXRay = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hepatic artery Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding HepaticArteryFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of catheter in Hepatic artery-- W contrast IA
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfCatheterInHepaticArteryWContrastIA = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for placement of stent in Intrahepatic portal system
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForPlacementOfStentInIntrahepaticPortalSystem = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kidney arteries Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding KidneyArteriesFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Renal vein - bilateral Fluoroscopic angiogram W contrast IV and W renin sampling
     /// </summary>
     public static readonly Coding RenalVeinBilateralFluoroscopicAngiogramWContrastIVAndWReninSampling = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Renal vessel Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding RenalVesselFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Vein - bilateral Fluoroscopic angiogram W contrast IV
     /// </summary>
     public static readonly Coding VeinBilateralFluoroscopicAngiogramWContrastIV = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Vein - left Fluoroscopic angiogram W contrast IV
     /// </summary>
     public static readonly Coding VeinLeftFluoroscopicAngiogramWContrastIV = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Vein - right Fluoroscopic angiogram W contrast IV
     /// </summary>
     public static readonly Coding VeinRightFluoroscopicAngiogramWContrastIV = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Salivary gland - bilateral Fluoroscopy W contrast intra salivary duct
     /// </summary>
     public static readonly Coding SalivaryGlandBilateralFluoroscopyWContrastIntraSalivaryDuct = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Salivary gland - left Fluoroscopy W contrast intra salivary duct
     /// </summary>
     public static readonly Coding SalivaryGlandLeftFluoroscopyWContrastIntraSalivaryDuct = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Salivary gland - right Fluoroscopy W contrast intra salivary duct
     /// </summary>
     public static readonly Coding SalivaryGlandRightFluoroscopyWContrastIntraSalivaryDuct = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - bilateral Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding HipBilateralFluoroscopyArthrogram = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - left Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding HipLeftFluoroscopyArthrogram = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - right Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding HipRightFluoroscopyArthrogram = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - bilateral Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding KneeBilateralFluoroscopyArthrogram = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - left Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding KneeLeftFluoroscopyArthrogram = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - right Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding KneeRightFluoroscopyArthrogram = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - bilateral Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding ShoulderBilateralFluoroscopyArthrogram = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - left Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding ShoulderLeftFluoroscopyArthrogram = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - right Fluoroscopy Arthrogram
     /// </summary>
     public static readonly Coding ShoulderRightFluoroscopyArthrogram = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid artery - bilateral Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding CarotidArteryBilateralFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid artery - left Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding CarotidArteryLeftFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid artery - right Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding CarotidArteryRightFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spinal artery - bilateral Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding SpinalArteryBilateralFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spinal artery - left Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding SpinalArteryLeftFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spinal artery - right Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding SpinalArteryRightFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - bilateral X-ray standing
     /// </summary>
     public static readonly Coding KneeBilateralXRayStanding = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - left X-ray standing
     /// </summary>
     public static readonly Coding KneeLeftXRayStanding = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - right X-ray standing
     /// </summary>
     public static readonly Coding KneeRightXRayStanding = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - bilateral NM
     /// </summary>
     public static readonly Coding KneeBilateralNM = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - left NM
     /// </summary>
     public static readonly Coding KneeLeftNM = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - right NM
     /// </summary>
     public static readonly Coding KneeRightNM = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scrotum and Testicle - bilateral NM W Tc-99m pertechnetate IV
     /// </summary>
     public static readonly Coding ScrotumAndTesticleBilateralNMWTc99mPertechnetateIV = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scrotum and Testicle - left NM W Tc-99m pertechnetate IV
     /// </summary>
     public static readonly Coding ScrotumAndTesticleLeftNMWTc99mPertechnetateIV = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scrotum and Testicle - right NM W Tc-99m pertechnetate IV
     /// </summary>
     public static readonly Coding ScrotumAndTesticleRightNMWTc99mPertechnetateIV = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot - bilateral X-ray standing
     /// </summary>
     public static readonly Coding FootBilateralXRayStanding = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot - left X-ray standing
     /// </summary>
     public static readonly Coding FootLeftXRayStanding = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot - right X-ray standing
     /// </summary>
     public static readonly Coding FootRightXRayStanding = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - bilateral X-ray
     /// </summary>
     public static readonly Coding AnkleBilateralXRay = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - left X-ray
     /// </summary>
     public static readonly Coding AnkleLeftXRay = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - right X-ray
     /// </summary>
     public static readonly Coding AnkleRightXRay = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Calcaneus - bilateral X-ray standing
     /// </summary>
     public static readonly Coding DeprecatedCalcaneusBilateralXRayStanding = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Calcaneus - left X-ray
     /// </summary>
     public static readonly Coding DeprecatedCalcaneusLeftXRay = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Calcaneus - right X-ray
     /// </summary>
     public static readonly Coding DeprecatedCalcaneusRightXRay = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Clavicle - bilateral X-ray
     /// </summary>
     public static readonly Coding ClavicleBilateralXRay = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Clavicle - left X-ray
     /// </summary>
     public static readonly Coding ClavicleLeftXRay = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Clavicle - right X-ray
     /// </summary>
     public static readonly Coding ClavicleRightXRay = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow - bilateral X-ray
     /// </summary>
     public static readonly Coding ElbowBilateralXRay = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow - left X-ray
     /// </summary>
     public static readonly Coding ElbowLeftXRay = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow - right X-ray
     /// </summary>
     public static readonly Coding ElbowRightXRay = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lower extremity - bilateral X-ray
     /// </summary>
     public static readonly Coding LowerExtremityBilateralXRay = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lower extremity - left X-ray
     /// </summary>
     public static readonly Coding LowerExtremityLeftXRay = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lower extremity - right X-ray
     /// </summary>
     public static readonly Coding LowerExtremityRightXRay = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity - bilateral X-ray
     /// </summary>
     public static readonly Coding UpperExtremityBilateralXRay = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity - left X-ray
     /// </summary>
     public static readonly Coding UpperExtremityLeftXRay = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity - right X-ray
     /// </summary>
     public static readonly Coding UpperExtremityRightXRay = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Femur - bilateral X-ray
     /// </summary>
     public static readonly Coding FemurBilateralXRay = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Femur - left X-ray
     /// </summary>
     public static readonly Coding FemurLeftXRay = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Femur - right X-ray
     /// </summary>
     public static readonly Coding FemurRightXRay = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Finger - bilateral X-ray
     /// </summary>
     public static readonly Coding FingerBilateralXRay = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Finger - left X-ray
     /// </summary>
     public static readonly Coding FingerLeftXRay = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Finger - right X-ray
     /// </summary>
     public static readonly Coding FingerRightXRay = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot - bilateral X-ray
     /// </summary>
     public static readonly Coding FootBilateralXRay = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot - left X-ray
     /// </summary>
     public static readonly Coding FootLeftXRay = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot - right X-ray
     /// </summary>
     public static readonly Coding FootRightXRay = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - bilateral X-ray
     /// </summary>
     public static readonly Coding HipBilateralXRay = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - left X-ray
     /// </summary>
     public static readonly Coding HipLeftXRay = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - right X-ray
     /// </summary>
     public static readonly Coding HipRightXRay = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acetabulum - bilateral X-ray
     /// </summary>
     public static readonly Coding AcetabulumBilateralXRay = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acetabulum - left X-ray
     /// </summary>
     public static readonly Coding AcetabulumLeftXRay = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acetabulum - right X-ray
     /// </summary>
     public static readonly Coding AcetabulumRightXRay = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acromioclavicular joint - bilateral X-ray
     /// </summary>
     public static readonly Coding AcromioclavicularJointBilateralXRay = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acromioclavicular joint - left X-ray
     /// </summary>
     public static readonly Coding AcromioclavicularJointLeftXRay = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acromioclavicular joint - right X-ray
     /// </summary>
     public static readonly Coding AcromioclavicularJointRightXRay = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mastoid - bilateral X-ray
     /// </summary>
     public static readonly Coding MastoidBilateralXRay = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mastoid - left X-ray
     /// </summary>
     public static readonly Coding MastoidLeftXRay = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mastoid - right X-ray
     /// </summary>
     public static readonly Coding MastoidRightXRay = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Optic foramen - bilateral X-ray
     /// </summary>
     public static readonly Coding OpticForamenBilateralXRay = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Optic foramen - left X-ray
     /// </summary>
     public static readonly Coding OpticForamenLeftXRay = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Optic foramen - right X-ray
     /// </summary>
     public static readonly Coding OpticForamenRightXRay = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Radius - bilateral and Ulna - bilateral X-ray
     /// </summary>
     public static readonly Coding RadiusBilateralAndUlnaBilateralXRay = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Radius - left and Ulna - left X-ray
     /// </summary>
     public static readonly Coding RadiusLeftAndUlnaLeftXRay = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Radius - right and Ulna - right X-ray
     /// </summary>
     public static readonly Coding RadiusRightAndUlnaRightXRay = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ribs - bilateral X-ray
     /// </summary>
     public static readonly Coding RibsBilateralXRay = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ribs - left X-ray
     /// </summary>
     public static readonly Coding RibsLeftXRay = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ribs - right X-ray
     /// </summary>
     public static readonly Coding RibsRightXRay = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scapula - bilateral X-ray
     /// </summary>
     public static readonly Coding ScapulaBilateralXRay = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scapula - left X-ray
     /// </summary>
     public static readonly Coding ScapulaLeftXRay = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scapula - right X-ray
     /// </summary>
     public static readonly Coding ScapulaRightXRay = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - bilateral X-ray
     /// </summary>
     public static readonly Coding ShoulderBilateralXRay = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - left X-ray
     /// </summary>
     public static readonly Coding ShoulderLeftXRay = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - right X-ray
     /// </summary>
     public static readonly Coding ShoulderRightXRay = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thumb - bilateral X-ray
     /// </summary>
     public static readonly Coding ThumbBilateralXRay = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thumb - left X-ray
     /// </summary>
     public static readonly Coding ThumbLeftXRay = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thumb - right X-ray
     /// </summary>
     public static readonly Coding ThumbRightXRay = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tibia - bilateral and Fibula - bilateral X-ray
     /// </summary>
     public static readonly Coding TibiaBilateralAndFibulaBilateralXRay = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tibia - left and Fibula - left X-ray
     /// </summary>
     public static readonly Coding TibiaLeftAndFibulaLeftXRay = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tibia - right and Fibula - right X-ray
     /// </summary>
     public static readonly Coding TibiaRightAndFibulaRightXRay = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toes - bilateral X-ray
     /// </summary>
     public static readonly Coding ToesBilateralXRay = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toes - left X-ray
     /// </summary>
     public static readonly Coding ToesLeftXRay = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toes - right X-ray
     /// </summary>
     public static readonly Coding ToesRightXRay = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - bilateral X-ray
     /// </summary>
     public static readonly Coding WristBilateralXRay = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - left X-ray
     /// </summary>
     public static readonly Coding WristLeftXRay = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - right X-ray
     /// </summary>
     public static readonly Coding WristRightXRay = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Zygomatic arch - bilateral X-ray
     /// </summary>
     public static readonly Coding ZygomaticArchBilateralXRay = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Zygomatic arch - left X-ray
     /// </summary>
     public static readonly Coding ZygomaticArchLeftXRay = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Zygomatic arch - right X-ray
     /// </summary>
     public static readonly Coding ZygomaticArchRightXRay = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - bilateral Mammogram screening
     /// </summary>
     public static readonly Coding BreastBilateralMammogramScreening = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - left Mammogram screening
     /// </summary>
     public static readonly Coding BreastLeftMammogramScreening = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - right Mammogram screening
     /// </summary>
     public static readonly Coding BreastRightMammogramScreening = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Femoral artery - bilateral Fluoroscopic angiogram runoff W contrast IA
     /// </summary>
     public static readonly Coding FemoralArteryBilateralFluoroscopicAngiogramRunoffWContrastIA = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Femoral artery - left Fluoroscopic angiogram runoff W contrast IA
     /// </summary>
     public static readonly Coding FemoralArteryLeftFluoroscopicAngiogramRunoffWContrastIA = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Femoral artery - right Fluoroscopic angiogram runoff W contrast IA
     /// </summary>
     public static readonly Coding FemoralArteryRightFluoroscopicAngiogramRunoffWContrastIA = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic inlet vessels - bilateral MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding ThoracicInletVesselsBilateralMRAngiogramWContrastIV = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic inlet vessels - left MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding ThoracicInletVesselsLeftMRAngiogramWContrastIV = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thoracic inlet vessels - right MR angiogram W contrast IV
     /// </summary>
     public static readonly Coding ThoracicInletVesselsRightMRAngiogramWContrastIV = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity - bilateral CT W contrast IV
     /// </summary>
     public static readonly Coding ExtremityBilateralCTWContrastIV = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity - left CT W contrast IV
     /// </summary>
     public static readonly Coding ExtremityLeftCTWContrastIV = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity - right CT W contrast IV
     /// </summary>
     public static readonly Coding ExtremityRightCTWContrastIV = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - bilateral MR WO and W contrast IV
     /// </summary>
     public static readonly Coding AnkleBilateralMRWOAndWContrastIV = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - left MR WO and W contrast IV
     /// </summary>
     public static readonly Coding AnkleLeftMRWOAndWContrastIV = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - right MR WO and W contrast IV
     /// </summary>
     public static readonly Coding AnkleRightMRWOAndWContrastIV = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brachial plexus - bilateral MR WO and W contrast IV
     /// </summary>
     public static readonly Coding BrachialPlexusBilateralMRWOAndWContrastIV = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brachial plexus - left MR WO and W contrast IV
     /// </summary>
     public static readonly Coding BrachialPlexusLeftMRWOAndWContrastIV = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brachial plexus - right MR WO and W contrast IV
     /// </summary>
     public static readonly Coding BrachialPlexusRightMRWOAndWContrastIV = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow - bilateral MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ElbowBilateralMRWOAndWContrastIV = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow - left MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ElbowLeftMRWOAndWContrastIV = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow - right MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ElbowRightMRWOAndWContrastIV = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thigh - bilateral MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ThighBilateralMRWOAndWContrastIV = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thigh - left MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ThighLeftMRWOAndWContrastIV = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thigh - right MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ThighRightMRWOAndWContrastIV = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - bilateral MR WO and W contrast IV
     /// </summary>
     public static readonly Coding KneeBilateralMRWOAndWContrastIV = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - left MR WO and W contrast IV
     /// </summary>
     public static readonly Coding KneeLeftMRWOAndWContrastIV = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - right MR WO and W contrast IV
     /// </summary>
     public static readonly Coding KneeRightMRWOAndWContrastIV = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - bilateral MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ShoulderBilateralMRWOAndWContrastIV = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - left MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ShoulderLeftMRWOAndWContrastIV = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - right MR WO and W contrast IV
     /// </summary>
     public static readonly Coding ShoulderRightMRWOAndWContrastIV = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - bilateral MR WO and W contrast IV
     /// </summary>
     public static readonly Coding WristBilateralMRWOAndWContrastIV = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - left MR WO and W contrast IV
     /// </summary>
     public static readonly Coding WristLeftMRWOAndWContrastIV = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - right MR WO and W contrast IV
     /// </summary>
     public static readonly Coding WristRightMRWOAndWContrastIV = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - bilateral MR
     /// </summary>
     public static readonly Coding AnkleBilateralMR = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - left MR
     /// </summary>
     public static readonly Coding AnkleLeftMR = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - right MR
     /// </summary>
     public static readonly Coding AnkleRightMR = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brachial plexus - bilateral MR
     /// </summary>
     public static readonly Coding BrachialPlexusBilateralMR = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brachial plexus - left MR
     /// </summary>
     public static readonly Coding BrachialPlexusLeftMR = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brachial plexus - right MR
     /// </summary>
     public static readonly Coding BrachialPlexusRightMR = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - bilateral US
     /// </summary>
     public static readonly Coding BreastBilateralUS = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - left US
     /// </summary>
     public static readonly Coding BreastLeftUS = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - right US
     /// </summary>
     public static readonly Coding BreastRightUS = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid arteries - bilateral US
     /// </summary>
     public static readonly Coding CarotidArteriesBilateralUS = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid arteries - left US
     /// </summary>
     public static readonly Coding CarotidArteriesLeftUS = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid arteries -right US
     /// </summary>
     public static readonly Coding CarotidArteriesRightUS = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow - bilateral MR
     /// </summary>
     public static readonly Coding ElbowBilateralMR = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow - left MR
     /// </summary>
     public static readonly Coding ElbowLeftMR = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Elbow - right MR
     /// </summary>
     public static readonly Coding ElbowRightMR = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity - bilateral US
     /// </summary>
     public static readonly Coding ExtremityBilateralUS = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity - bilateral CT
     /// </summary>
     public static readonly Coding ExtremityBilateralCT = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity - left US
     /// </summary>
     public static readonly Coding ExtremityLeftUS = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity - left CT
     /// </summary>
     public static readonly Coding ExtremityLeftCT = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lower extremity joint - bilateral MR
     /// </summary>
     public static readonly Coding LowerExtremityJointBilateralMR = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lower extremity joint - left MR
     /// </summary>
     public static readonly Coding LowerExtremityJointLeftMR = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lower extremity joint - right MR
     /// </summary>
     public static readonly Coding LowerExtremityJointRightMR = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity - right US
     /// </summary>
     public static readonly Coding ExtremityRightUS = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Extremity - right CT
     /// </summary>
     public static readonly Coding ExtremityRightCT = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity - bilateral MR
     /// </summary>
     public static readonly Coding UpperExtremityBilateralMR = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity - left MR
     /// </summary>
     public static readonly Coding UpperExtremityLeftMR = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity - right MR
     /// </summary>
     public static readonly Coding UpperExtremityRightMR = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thigh - bilateral MR
     /// </summary>
     public static readonly Coding ThighBilateralMR = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thigh - left MR
     /// </summary>
     public static readonly Coding ThighLeftMR = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thigh - right MR
     /// </summary>
     public static readonly Coding ThighRightMR = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Finger - bilateral MR
     /// </summary>
     public static readonly Coding FingerBilateralMR = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Finger - left MR
     /// </summary>
     public static readonly Coding FingerLeftMR = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Finger - right MR
     /// </summary>
     public static readonly Coding FingerRightMR = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot - bilateral MR
     /// </summary>
     public static readonly Coding FootBilateralMR = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot - left MR
     /// </summary>
     public static readonly Coding FootLeftMR = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Foot - right MR
     /// </summary>
     public static readonly Coding FootRightMR = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Forearm - bilateral MR
     /// </summary>
     public static readonly Coding ForearmBilateralMR = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Forearm - left MR
     /// </summary>
     public static readonly Coding ForearmLeftMR = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Forearm - right MR
     /// </summary>
     public static readonly Coding ForearmRightMR = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - bilateral MR
     /// </summary>
     public static readonly Coding HandBilateralMR = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - left MR
     /// </summary>
     public static readonly Coding HandLeftMR = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - right MR
     /// </summary>
     public static readonly Coding HandRightMR = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - bilateral US
     /// </summary>
     public static readonly Coding HipBilateralUS = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - left US
     /// </summary>
     public static readonly Coding HipLeftUS = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - right US
     /// </summary>
     public static readonly Coding HipRightUS = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Internal auditory canal - bilateral X-ray tomograph
     /// </summary>
     public static readonly Coding InternalAuditoryCanalBilateralXRayTomograph = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Internal auditory canal - left X-ray tomograph
     /// </summary>
     public static readonly Coding InternalAuditoryCanalLeftXRayTomograph = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Internal auditory canal - right X-ray tomograph
     /// </summary>
     public static readonly Coding InternalAuditoryCanalRightXRayTomograph = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - bilateral MR
     /// </summary>
     public static readonly Coding KneeBilateralMR = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - left MR
     /// </summary>
     public static readonly Coding KneeLeftMR = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - right MR
     /// </summary>
     public static readonly Coding KneeRightMR = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis and Hip - bilateral MR
     /// </summary>
     public static readonly Coding PelvisAndHipBilateralMR = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis and Hip - left MR
     /// </summary>
     public static readonly Coding PelvisAndHipLeftMR = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis and Hip - right MR
     /// </summary>
     public static readonly Coding PelvisAndHipRightMR = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Popliteal space - bilateral US
     /// </summary>
     public static readonly Coding PoplitealSpaceBilateralUS = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Popliteal space - left US
     /// </summary>
     public static readonly Coding PoplitealSpaceLeftUS = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Popliteal space - right US
     /// </summary>
     public static readonly Coding PoplitealSpaceRightUS = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - bilateral US
     /// </summary>
     public static readonly Coding ShoulderBilateralUS = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - bilateral MR
     /// </summary>
     public static readonly Coding ShoulderBilateralMR = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - left US
     /// </summary>
     public static readonly Coding ShoulderLeftUS = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - left MR
     /// </summary>
     public static readonly Coding ShoulderLeftMR = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - right US
     /// </summary>
     public static readonly Coding ShoulderRightUS = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - right MR
     /// </summary>
     public static readonly Coding ShoulderRightMR = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scrotum and Testicle - bilateral US
     /// </summary>
     public static readonly Coding ScrotumAndTesticleBilateralUS = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scrotum and Testicle - left US
     /// </summary>
     public static readonly Coding ScrotumAndTesticleLeftUS = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Scrotum and Testicle - right US
     /// </summary>
     public static readonly Coding ScrotumAndTesticleRightUS = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - bilateral MR
     /// </summary>
     public static readonly Coding WristBilateralMR = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - bilateral US
     /// </summary>
     public static readonly Coding WristBilateralUS = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - left MR
     /// </summary>
     public static readonly Coding WristLeftMR = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - left US
     /// </summary>
     public static readonly Coding WristLeftUS = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - right MR
     /// </summary>
     public static readonly Coding WristRightMR = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - right US
     /// </summary>
     public static readonly Coding WristRightUS = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - bilateral X-ray Merchants
     /// </summary>
     public static readonly Coding KneeBilateralXRayMerchants = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - left X-ray Merchants
     /// </summary>
     public static readonly Coding KneeLeftXRayMerchants = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - right X-ray Merchants
     /// </summary>
     public static readonly Coding KneeRightXRayMerchants = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - bilateral US limited
     /// </summary>
     public static readonly Coding BreastBilateralUSLimited = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - bilateral Mammogram limited
     /// </summary>
     public static readonly Coding BreastBilateralMammogramLimited = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - left US limited
     /// </summary>
     public static readonly Coding BreastLeftUSLimited = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - left Mammogram limited
     /// </summary>
     public static readonly Coding BreastLeftMammogramLimited = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - right US limited
     /// </summary>
     public static readonly Coding BreastRightUSLimited = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - right Mammogram limited
     /// </summary>
     public static readonly Coding BreastRightMammogramLimited = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for stereotactic biopsy of Breast - bilateral
     /// </summary>
     public static readonly Coding MammogramGuidanceForStereotacticBiopsyOfBreastBilateral = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for stereotactic biopsy of Breast - left
     /// </summary>
     public static readonly Coding MammogramGuidanceForStereotacticBiopsyOfBreastLeft = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for stereotactic biopsy of Breast - right
     /// </summary>
     public static readonly Coding MammogramGuidanceForStereotacticBiopsyOfBreastRight = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for reposition of central venous catheter in Vein - bilateral-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinBilateralWContrastIV = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for reposition of central venous catheter in Vein - left-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinLeftWContrastIV = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for reposition of central venous catheter in Vein - right-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinRightWContrastIV = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for atherectomy of Vein - bilateral-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForAtherectomyOfVeinBilateralWContrastIV = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for atherectomy of Vein - left-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForAtherectomyOfVeinLeftWContrastIV = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for atherectomy of Vein - right-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForAtherectomyOfVeinRightWContrastIV = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of stent in Vein - bilateral
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinBilateral = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of stent in Vein - left
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinLeft = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of stent in Vein - right
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinRight = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of peripherally-inserted central venous catheter in Vein - bilateral
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinBilateral = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of peripherally-inserted central venous catheter in Vein - left
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinLeft = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of peripherally-inserted central venous catheter in Vein - right
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinRight = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Guidance for placement of large bore central venous catheter in Vein - bilateral
     /// </summary>
     public static readonly Coding GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinBilateral = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Guidance for placement of large bore central venous catheter in Vein - left
     /// </summary>
     public static readonly Coding GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinLeft = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Guidance for placement of large bore central venous catheter in Vein - right
     /// </summary>
     public static readonly Coding GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinRight = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of central venous catheter in Vein - bilateral-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinBilateralWContrastIV = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of central venous catheter in Vein - left-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinLeftWContrastIV = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for placement of central venous catheter in Vein - right-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinRightWContrastIV = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for needle localization of Breast - bilateral
     /// </summary>
     public static readonly Coding USGuidanceForNeedleLocalizationOfBreastBilateral = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for needle localization of Breast - left
     /// </summary>
     public static readonly Coding USGuidanceForNeedleLocalizationOfBreastLeft = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for needle localization of mass of Breast - bilateral
     /// </summary>
     public static readonly Coding MammogramGuidanceForNeedleLocalizationOfMassOfBreastBilateral = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for needle localization of mass of Breast - left
     /// </summary>
     public static readonly Coding MammogramGuidanceForNeedleLocalizationOfMassOfBreastLeft = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for needle localization of mass of Breast - right
     /// </summary>
     public static readonly Coding MammogramGuidanceForNeedleLocalizationOfMassOfBreastRight = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for needle localization of Breast - right
     /// </summary>
     public static readonly Coding USGuidanceForNeedleLocalizationOfBreastRight = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for injection of Sacroiliac joint - bilateral
     /// </summary>
     public static readonly Coding CTGuidanceForInjectionOfSacroiliacJointBilateral = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for injection of Sacroiliac joint - left
     /// </summary>
     public static readonly Coding CTGuidanceForInjectionOfSacroiliacJointLeft = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for injection of Sacroiliac joint - right
     /// </summary>
     public static readonly Coding CTGuidanceForInjectionOfSacroiliacJointRight = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for injection of Spine facet joint - bilateral
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForInjectionOfSpineFacetJointBilateral = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for injection of Spine facet joint - left
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForInjectionOfSpineFacetJointLeft = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for injection of Spine facet joint - right
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForInjectionOfSpineFacetJointRight = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for drainage of Extremity - bilateral
     /// </summary>
     public static readonly Coding USGuidanceForDrainageOfExtremityBilateral = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for drainage of Extremity - left
     /// </summary>
     public static readonly Coding USGuidanceForDrainageOfExtremityLeft = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for drainage of Extremity - right
     /// </summary>
     public static readonly Coding USGuidanceForDrainageOfExtremityRight = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for drainage of Kidney - bilateral
     /// </summary>
     public static readonly Coding USGuidanceForDrainageOfKidneyBilateral = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for drainage of Kidney - left
     /// </summary>
     public static readonly Coding USGuidanceForDrainageOfKidneyLeft = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for drainage of Kidney - right
     /// </summary>
     public static readonly Coding USGuidanceForDrainageOfKidneyRight = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for change of central venous catheter in Vein - bilateral-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinBilateralWContrastIV = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for change of central venous catheter in Vein - left-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinLeftWContrastIV = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic angiogram Guidance for change of central venous catheter in Vein - right-- W contrast IV
     /// </summary>
     public static readonly Coding FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinRightWContrastIV = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for core needle percutaneous biopsy of Breast - bilateral
     /// </summary>
     public static readonly Coding MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastBilateral = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for core needle percutaneous biopsy of Breast - left
     /// </summary>
     public static readonly Coding MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastLeft = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for core needle percutaneous biopsy of Breast - right
     /// </summary>
     public static readonly Coding MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastRight = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for biopsy of Breast - bilateral
     /// </summary>
     public static readonly Coding MammogramGuidanceForBiopsyOfBreastBilateral = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for biopsy of Breast - left
     /// </summary>
     public static readonly Coding MammogramGuidanceForBiopsyOfBreastLeft = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for biopsy of Breast - right
     /// </summary>
     public static readonly Coding MammogramGuidanceForBiopsyOfBreastRight = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for biopsy of Kidney - bilateral
     /// </summary>
     public static readonly Coding USGuidanceForBiopsyOfKidneyBilateral = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for biopsy of Kidney - left
     /// </summary>
     public static readonly Coding USGuidanceForBiopsyOfKidneyLeft = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for biopsy of Kidney - right
     /// </summary>
     public static readonly Coding USGuidanceForBiopsyOfKidneyRight = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for aspiration of cyst of Breast - bilateral
     /// </summary>
     public static readonly Coding MammogramGuidanceForAspirationOfCystOfBreastBilateral = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for aspiration of cyst of Breast - left
     /// </summary>
     public static readonly Coding MammogramGuidanceForAspirationOfCystOfBreastLeft = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mammogram Guidance for aspiration of cyst of Breast - right
     /// </summary>
     public static readonly Coding MammogramGuidanceForAspirationOfCystOfBreastRight = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - bilateral Mammogram diagnostic
     /// </summary>
     public static readonly Coding BreastBilateralMammogramDiagnostic = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - left Mammogram diagnostic
     /// </summary>
     public static readonly Coding BreastLeftMammogramDiagnostic = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - right Mammogram diagnostic
     /// </summary>
     public static readonly Coding BreastRightMammogramDiagnostic = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - bilateral Mammogram diagnostic limited
     /// </summary>
     public static readonly Coding BreastBilateralMammogramDiagnosticLimited = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - left Mammogram diagnostic limited
     /// </summary>
     public static readonly Coding BreastLeftMammogramDiagnosticLimited = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breast - right Mammogram diagnostic limited
     /// </summary>
     public static readonly Coding BreastRightMammogramDiagnosticLimited = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - bilateral and Hand - bilateral X-ray bone age
     /// </summary>
     public static readonly Coding WristBilateralAndHandBilateralXRayBoneAge = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - left and Hand - left X-ray bone age
     /// </summary>
     public static readonly Coding WristLeftAndHandLeftXRayBoneAge = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wrist - right and Hand - right X-ray bone age
     /// </summary>
     public static readonly Coding WristRightAndHandRightXRayBoneAge = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - bilateral X-ray arthritis
     /// </summary>
     public static readonly Coding HandBilateralXRayArthritis = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - left X-ray arthritis
     /// </summary>
     public static readonly Coding HandLeftXRayArthritis = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - right X-ray arthritis
     /// </summary>
     public static readonly Coding HandRightXRayArthritis = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - bilateral X-ray AP single view standing
     /// </summary>
     public static readonly Coding KneeBilateralXRayAPSingleViewStanding = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - left X-ray AP single view standing
     /// </summary>
     public static readonly Coding KneeLeftXRayAPSingleViewStanding = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - right X-ray AP single view standing
     /// </summary>
     public static readonly Coding KneeRightXRayAPSingleViewStanding = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - bilateral X-ray AP and PA standing
     /// </summary>
     public static readonly Coding KneeBilateralXRayAPAndPAStanding = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - left X-ray AP and PA standing
     /// </summary>
     public static readonly Coding KneeLeftXRayAPAndPAStanding = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - right X-ray AP and PA standing
     /// </summary>
     public static readonly Coding KneeRightXRayAPAndPAStanding = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - bilateral X-ray AP and lateral standing
     /// </summary>
     public static readonly Coding KneeBilateralXRayAPAndLateralStanding = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - left X-ray AP and lateral standing
     /// </summary>
     public static readonly Coding KneeLeftXRayAPAndLateralStanding = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - right X-ray AP and lateral standing
     /// </summary>
     public static readonly Coding KneeRightXRayAPAndLateralStanding = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Brachiocephalic artery - left Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding DeprecatedBrachiocephalicArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Brachiocephalic artery - right Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding DeprecatedBrachiocephalicArteryRightFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Iliac artery - bilateral Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding IliacArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Iliac artery - left Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding IliacArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Iliac artery - right Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding IliacArteryRightFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tibial artery - bilateral Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding TibialArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tibial artery - left Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding TibialArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tibial artery - right Fluoroscopic angiogram Angioplasty W contrast IA
     /// </summary>
     public static readonly Coding TibialArteryRightFluoroscopicAngiogramAngioplastyWContrastIA = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Administration of vasodilator into catheter of Vein - bilateral
     /// </summary>
     public static readonly Coding AdministrationOfVasodilatorIntoCatheterOfVeinBilateral = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Administration of vasodilator into catheter of Vein - left
     /// </summary>
     public static readonly Coding AdministrationOfVasodilatorIntoCatheterOfVeinLeft = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Administration of vasodilator into catheter of Vein - right
     /// </summary>
     public static readonly Coding AdministrationOfVasodilatorIntoCatheterOfVeinRight = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - bilateral X-ray 3 views
     /// </summary>
     public static readonly Coding HandBilateralXRay3Views = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - left X-ray 3 views
     /// </summary>
     public static readonly Coding HandLeftXRay3Views = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - right X-ray 3 views
     /// </summary>
     public static readonly Coding HandRightXRay3Views = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - bilateral X-ray 3 views
     /// </summary>
     public static readonly Coding ShoulderBilateralXRay3Views = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - left X-ray 3 views
     /// </summary>
     public static readonly Coding ShoulderLeftXRay3Views = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Shoulder - right X-ray 3 views
     /// </summary>
     public static readonly Coding ShoulderRightXRay3Views = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - bilateral X-ray 2 views
     /// </summary>
     public static readonly Coding AnkleBilateralXRay2Views = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - left X-ray 2 views
     /// </summary>
     public static readonly Coding AnkleLeftXRay2Views = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ankle - right X-ray 2 views
     /// </summary>
     public static readonly Coding AnkleRightXRay2Views = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - bilateral X-ray 2 views
     /// </summary>
     public static readonly Coding HandBilateralXRay2Views = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - left X-ray 2 views
     /// </summary>
     public static readonly Coding HandLeftXRay2Views = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand - right X-ray 2 views
     /// </summary>
     public static readonly Coding HandRightXRay2Views = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Humerus - bilateral X-ray 2 views
     /// </summary>
     public static readonly Coding HumerusBilateralXRay2Views = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Humerus - left X-ray 2 views
     /// </summary>
     public static readonly Coding HumerusLeftXRay2Views = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Humerus - right X-ray 2 views
     /// </summary>
     public static readonly Coding HumerusRightXRay2Views = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - bilateral X-ray 2 views
     /// </summary>
     public static readonly Coding KneeBilateralXRay2Views = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - left X-ray 2 views
     /// </summary>
     public static readonly Coding KneeLeftXRay2Views = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee - right X-ray 2 views
     /// </summary>
     public static readonly Coding KneeRightXRay2Views = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Patella - bilateral X-ray 2 views
     /// </summary>
     public static readonly Coding PatellaBilateralXRay2Views = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Patella - left X-ray 2 views
     /// </summary>
     public static readonly Coding PatellaLeftXRay2Views = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Patella - right X-ray 2 views
     /// </summary>
     public static readonly Coding PatellaRightXRay2Views = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - bilateral X-ray Single view
     /// </summary>
     public static readonly Coding HipBilateralXRaySingleView = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - left X-ray Single view
     /// </summary>
     public static readonly Coding HipLeftXRaySingleView = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hip - right X-ray Single view
     /// </summary>
     public static readonly Coding HipRightXRaySingleView = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Cardiac echo, study
     /// </summary>
     public static readonly Coding DeprecatedCardiacEchoStudy_2 = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pelvis X-ray
     /// </summary>
     public static readonly Coding PelvisXRay = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Skull X-ray
     /// </summary>
     public static readonly Coding SkullXRay = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Knee X-ray
     /// </summary>
     public static readonly Coding KneeXRay = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine CT
     /// </summary>
     public static readonly Coding SpineCT = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Humerus X-ray
     /// </summary>
     public static readonly Coding HumerusXRay = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician Emergency department Note
     /// </summary>
     public static readonly Coding PhysicianEmergencyDepartmentNote = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician consulting Progress note
     /// </summary>
     public static readonly Coding PhysicianConsultingProgressNote = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Provider-unspecified Procedure note
     /// </summary>
     public static readonly Coding ProviderUnspecifiedProcedureNote = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Speech-language pathology Note
     /// </summary>
     public static readonly Coding SpeechLanguagePathologyNote = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Dentistry Initial evaluation note
     /// </summary>
     public static readonly Coding DentistryInitialEvaluationNote = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician, Operation note
     /// </summary>
     public static readonly Coding PhysicianOperationNote = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Discharge note
     /// </summary>
     public static readonly Coding DischargeNote = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nurse practitioner Progress note
     /// </summary>
     public static readonly Coding NursePractitionerProgressNote = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Joint MR
     /// </summary>
     public static readonly Coding JointMR = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Dentistry Procedure note
     /// </summary>
     public static readonly Coding DentistryProcedureNote = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Occupational therapy Note
     /// </summary>
     public static readonly Coding OccupationalTherapyNote = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical therapy Note
     /// </summary>
     public static readonly Coding PhysicalTherapyNote = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chiropractic medicine Progress note
     /// </summary>
     public static readonly Coding ChiropracticMedicineProgressNote = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chiropractic medicine Initial evaluation note
     /// </summary>
     public static readonly Coding ChiropracticMedicineInitialEvaluationNote = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hand X-ray
     /// </summary>
     public static readonly Coding HandXRay = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Dentist Operation note
     /// </summary>
     public static readonly Coding DentistOperationNote = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spine X-ray
     /// </summary>
     public static readonly Coding SpineXRay = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Liver US
     /// </summary>
     public static readonly Coding LiverUS = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Audiology study
     /// </summary>
     public static readonly Coding AudiologyStudy = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician Transfer note
     /// </summary>
     public static readonly Coding PhysicianTransferNote = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Dentistry Progress note
     /// </summary>
     public static readonly Coding DentistryProgressNote = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Dentistry Note
     /// </summary>
     public static readonly Coding DentistryNote = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nurse practitioner Initial evaluation note
     /// </summary>
     public static readonly Coding NursePractitionerInitialEvaluationNote = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nurse Discharge assessment
     /// </summary>
     public static readonly Coding NurseDischargeAssessment = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nurse Progress note
     /// </summary>
     public static readonly Coding NurseProgressNote = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Podiatry Operation note
     /// </summary>
     public static readonly Coding PodiatryOperationNote = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Podiatry Procedure note
     /// </summary>
     public static readonly Coding PodiatryProcedureNote = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician History and physical note
     /// </summary>
     public static readonly Coding PhysicianHistoryAndPhysicalNote = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Psychiatry Progress note
     /// </summary>
     public static readonly Coding PsychiatryProgressNote = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Psychiatry Note
     /// </summary>
     public static readonly Coding PsychiatryNote = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Perimetry study
     /// </summary>
     public static readonly Coding PerimetryStudy = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tonometry study
     /// </summary>
     public static readonly Coding TonometryStudy = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Visual acuity study
     /// </summary>
     public static readonly Coding VisualAcuityStudy = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Heterophoria study
     /// </summary>
     public static readonly Coding HeterophoriaStudy = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Polysomnography (sleep) study
     /// </summary>
     public static readonly Coding PolysomnographySleepStudy = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Psychiatry Initial evaluation note
     /// </summary>
     public static readonly Coding PsychiatryInitialEvaluationNote = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Provider-unspecified Initial assessment
     /// </summary>
     public static readonly Coding ProviderUnspecifiedInitialAssessment = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nurse Transfer note
     /// </summary>
     public static readonly Coding NurseTransferNote = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Social work Note
     /// </summary>
     public static readonly Coding SocialWorkNote = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician attending Initial evaluation note
     /// </summary>
     public static readonly Coding PhysicianAttendingInitialEvaluationNote = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physician attending Discharge summary
     /// </summary>
     public static readonly Coding PhysicianAttendingDischargeSummary = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Social work Progress note
     /// </summary>
     public static readonly Coding SocialWorkProgressNote = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Speech therapy service attachment
     /// </summary>
     public static readonly Coding SpeechTherapyServiceAttachment = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest CT WO contrast
     /// </summary>
     public static readonly Coding ChestCTWOContrast = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Eye ultrasound study
     /// </summary>
     public static readonly Coding EyeUltrasoundStudy = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Dialysis records
     /// </summary>
     public static readonly Coding DialysisRecords = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Neonatal intensive care records
     /// </summary>
     public static readonly Coding NeonatalIntensiveCareRecords = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Critical care records
     /// </summary>
     public static readonly Coding CriticalCareRecords = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Perioperative records
     /// </summary>
     public static readonly Coding PerioperativeRecords = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nurse Initial evaluation note
     /// </summary>
     public static readonly Coding NurseInitialEvaluationNote = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nystagmogram study
     /// </summary>
     public static readonly Coding NystagmogramStudy = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nerve conduction study
     /// </summary>
     public static readonly Coding NerveConductionStudy = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peritoneoscopy study
     /// </summary>
     public static readonly Coding PeritoneoscopyStudy = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Colposcopy study
     /// </summary>
     public static readonly Coding ColposcopyStudy = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Dentistry Discharge summary
     /// </summary>
     public static readonly Coding DentistryDischargeSummary = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for biopsy of Abdomen
     /// </summary>
     public static readonly Coding CTGuidanceForBiopsyOfAbdomen = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for fine needle aspiration of Abdomen
     /// </summary>
     public static readonly Coding CTGuidanceForFineNeedleAspirationOfAbdomen = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for fine needle aspiration of Liver
     /// </summary>
     public static readonly Coding CTGuidanceForFineNeedleAspirationOfLiver = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for biopsy of Pancreas
     /// </summary>
     public static readonly Coding CTGuidanceForBiopsyOfPancreas = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for fine needle aspiration of Pancreas
     /// </summary>
     public static readonly Coding CTGuidanceForFineNeedleAspirationOfPancreas = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for fine needle aspiration of Pelvis
     /// </summary>
     public static readonly Coding CTGuidanceForFineNeedleAspirationOfPelvis = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CT Guidance for biopsy of Kidney - bilateral
     /// </summary>
     public static readonly Coding CTGuidanceForBiopsyOfKidneyBilateral = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper extremity CT WO contrast
     /// </summary>
     public static readonly Coding UpperExtremityCTWOContrast = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for removal of foreign body of Unspecified body region
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForRemovalOfForeignBodyOfUnspecifiedBodyRegion = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy Guidance for procedure of Unspecified body region
     /// </summary>
     public static readonly Coding FluoroscopyGuidanceForProcedureOfUnspecifiedBodyRegion = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cerebral cisterns Fluoroscopy video W contrast
     /// </summary>
     public static readonly Coding CerebralCisternsFluoroscopyVideoWContrast = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest Fluoroscopy
     /// </summary>
     public static readonly Coding ChestFluoroscopy = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for needle biopsy of Unspecified body region
     /// </summary>
     public static readonly Coding USGuidanceForNeedleBiopsyOfUnspecifiedBodyRegion = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Unspecified body region US during surgery
     /// </summary>
     public static readonly Coding UnspecifiedBodyRegionUSDuringSurgery = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for injection of Thyroid gland
     /// </summary>
     public static readonly Coding USGuidanceForInjectionOfThyroidGland = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// US Guidance for aspiration of Pericardial space
     /// </summary>
     public static readonly Coding USGuidanceForAspirationOfPericardialSpace = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Abdomen US limited
     /// </summary>
     public static readonly Coding AbdomenUSLimited = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Uterus and Fallopian tubes US
     /// </summary>
     public static readonly Coding UterusAndFallopianTubesUS = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Liver US during surgery
     /// </summary>
     public static readonly Coding LiverUSDuringSurgery = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Epidural veins Fluoroscopic angiogram W contrast IV
     /// </summary>
     public static readonly Coding EpiduralVeinsFluoroscopicAngiogramWContrastIV = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid artery.external - bilateral Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding CarotidArteryExternalBilateralFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carotid artery.external Fluoroscopic angiogram W contrast IA
     /// </summary>
     public static readonly Coding CarotidArteryExternalFluoroscopicAngiogramWContrastIA = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnesthesiaRecords = "11485-0";
 
     /// <summary>
+    /// Literal for code: NONEAnesthesiaRecords
+    /// </summary>
+    public const string LiteralNONEAnesthesiaRecords = "http://loinc.org#11485-0";
+
+    /// <summary>
     /// Literal for code: ChemotherapyRecords
     /// </summary>
     public const string LiteralChemotherapyRecords = "11486-8";
+
+    /// <summary>
+    /// Literal for code: NONEChemotherapyRecords
+    /// </summary>
+    public const string LiteralNONEChemotherapyRecords = "http://loinc.org#11486-8";
 
     /// <summary>
     /// Literal for code: ConsultNote
@@ -9028,9 +9038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConsultNote = "11488-4";
 
     /// <summary>
+    /// Literal for code: NONEConsultNote
+    /// </summary>
+    public const string LiteralNONEConsultNote = "http://loinc.org#11488-4";
+
+    /// <summary>
     /// Literal for code: PhysicianDischargeSummary
     /// </summary>
     public const string LiteralPhysicianDischargeSummary = "11490-0";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicianDischargeSummary
+    /// </summary>
+    public const string LiteralNONEPhysicianDischargeSummary = "http://loinc.org#11490-0";
 
     /// <summary>
     /// Literal for code: ProviderUnspecifedHistoryAndPhysicalNote
@@ -9038,9 +9058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProviderUnspecifedHistoryAndPhysicalNote = "11492-6";
 
     /// <summary>
+    /// Literal for code: NONEProviderUnspecifedHistoryAndPhysicalNote
+    /// </summary>
+    public const string LiteralNONEProviderUnspecifedHistoryAndPhysicalNote = "http://loinc.org#11492-6";
+
+    /// <summary>
     /// Literal for code: DeprecatedPhysicianInitialAssessmentNoteAtFirstEncounter
     /// </summary>
     public const string LiteralDeprecatedPhysicianInitialAssessmentNoteAtFirstEncounter = "11494-2";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedPhysicianInitialAssessmentNoteAtFirstEncounter
+    /// </summary>
+    public const string LiteralNONEDeprecatedPhysicianInitialAssessmentNoteAtFirstEncounter = "http://loinc.org#11494-2";
 
     /// <summary>
     /// Literal for code: DeprecatedPhysicalTherapyInitialAssessmentNoteAtFirstEncounter
@@ -9048,9 +9078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedPhysicalTherapyInitialAssessmentNoteAtFirstEncounter = "11495-9";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedPhysicalTherapyInitialAssessmentNoteAtFirstEncounter
+    /// </summary>
+    public const string LiteralNONEDeprecatedPhysicalTherapyInitialAssessmentNoteAtFirstEncounter = "http://loinc.org#11495-9";
+
+    /// <summary>
     /// Literal for code: DeprecatedPodiatryInitialAssessmentNoteAtFirstEncounter
     /// </summary>
     public const string LiteralDeprecatedPodiatryInitialAssessmentNoteAtFirstEncounter = "11496-7";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedPodiatryInitialAssessmentNoteAtFirstEncounter
+    /// </summary>
+    public const string LiteralNONEDeprecatedPodiatryInitialAssessmentNoteAtFirstEncounter = "http://loinc.org#11496-7";
 
     /// <summary>
     /// Literal for code: DeprecatedPsychologyInitialAssessmentNoteAtFirstEncounter
@@ -9058,9 +9098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedPsychologyInitialAssessmentNoteAtFirstEncounter = "11497-5";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedPsychologyInitialAssessmentNoteAtFirstEncounter
+    /// </summary>
+    public const string LiteralNONEDeprecatedPsychologyInitialAssessmentNoteAtFirstEncounter = "http://loinc.org#11497-5";
+
+    /// <summary>
     /// Literal for code: DeprecatedSocialWorkInitialAssessmentNoteAtFirstEncounter
     /// </summary>
     public const string LiteralDeprecatedSocialWorkInitialAssessmentNoteAtFirstEncounter = "11498-3";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedSocialWorkInitialAssessmentNoteAtFirstEncounter
+    /// </summary>
+    public const string LiteralNONEDeprecatedSocialWorkInitialAssessmentNoteAtFirstEncounter = "http://loinc.org#11498-3";
 
     /// <summary>
     /// Literal for code: DeprecatedSpeechTherapyInitialAssessmentNoteAtFirstEncounter
@@ -9068,9 +9118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedSpeechTherapyInitialAssessmentNoteAtFirstEncounter = "11499-1";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedSpeechTherapyInitialAssessmentNoteAtFirstEncounter
+    /// </summary>
+    public const string LiteralNONEDeprecatedSpeechTherapyInitialAssessmentNoteAtFirstEncounter = "http://loinc.org#11499-1";
+
+    /// <summary>
     /// Literal for code: DeprecatedOccupationalTherapyInitialAssessmentNoteAtFirstEncounter
     /// </summary>
     public const string LiteralDeprecatedOccupationalTherapyInitialAssessmentNoteAtFirstEncounter = "11500-6";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedOccupationalTherapyInitialAssessmentNoteAtFirstEncounter
+    /// </summary>
+    public const string LiteralNONEDeprecatedOccupationalTherapyInitialAssessmentNoteAtFirstEncounter = "http://loinc.org#11500-6";
 
     /// <summary>
     /// Literal for code: LaboratoryReport
@@ -9078,9 +9138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLaboratoryReport = "11502-2";
 
     /// <summary>
+    /// Literal for code: NONELaboratoryReport
+    /// </summary>
+    public const string LiteralNONELaboratoryReport = "http://loinc.org#11502-2";
+
+    /// <summary>
     /// Literal for code: MedicalRecords
     /// </summary>
     public const string LiteralMedicalRecords = "11503-0";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalRecords
+    /// </summary>
+    public const string LiteralNONEMedicalRecords = "http://loinc.org#11503-0";
 
     /// <summary>
     /// Literal for code: ProviderUnspecifiedOperationNote
@@ -9088,9 +9158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProviderUnspecifiedOperationNote = "11504-8";
 
     /// <summary>
+    /// Literal for code: NONEProviderUnspecifiedOperationNote
+    /// </summary>
+    public const string LiteralNONEProviderUnspecifiedOperationNote = "http://loinc.org#11504-8";
+
+    /// <summary>
     /// Literal for code: PhysicianProcedureNote
     /// </summary>
     public const string LiteralPhysicianProcedureNote = "11505-5";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicianProcedureNote
+    /// </summary>
+    public const string LiteralNONEPhysicianProcedureNote = "http://loinc.org#11505-5";
 
     /// <summary>
     /// Literal for code: ProviderUnspecifiedProgressNote
@@ -9098,9 +9178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProviderUnspecifiedProgressNote = "11506-3";
 
     /// <summary>
+    /// Literal for code: NONEProviderUnspecifiedProgressNote
+    /// </summary>
+    public const string LiteralNONEProviderUnspecifiedProgressNote = "http://loinc.org#11506-3";
+
+    /// <summary>
     /// Literal for code: OccupationalTherapyProgressNote
     /// </summary>
     public const string LiteralOccupationalTherapyProgressNote = "11507-1";
+
+    /// <summary>
+    /// Literal for code: NONEOccupationalTherapyProgressNote
+    /// </summary>
+    public const string LiteralNONEOccupationalTherapyProgressNote = "http://loinc.org#11507-1";
 
     /// <summary>
     /// Literal for code: PhysicalTherapyProgressNote
@@ -9108,9 +9198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicalTherapyProgressNote = "11508-9";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalTherapyProgressNote
+    /// </summary>
+    public const string LiteralNONEPhysicalTherapyProgressNote = "http://loinc.org#11508-9";
+
+    /// <summary>
     /// Literal for code: PodiatryProgressNote
     /// </summary>
     public const string LiteralPodiatryProgressNote = "11509-7";
+
+    /// <summary>
+    /// Literal for code: NONEPodiatryProgressNote
+    /// </summary>
+    public const string LiteralNONEPodiatryProgressNote = "http://loinc.org#11509-7";
 
     /// <summary>
     /// Literal for code: PsychologyProgressNote
@@ -9118,9 +9218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPsychologyProgressNote = "11510-5";
 
     /// <summary>
+    /// Literal for code: NONEPsychologyProgressNote
+    /// </summary>
+    public const string LiteralNONEPsychologyProgressNote = "http://loinc.org#11510-5";
+
+    /// <summary>
     /// Literal for code: SpeechLanguagePathologyProgressNote
     /// </summary>
     public const string LiteralSpeechLanguagePathologyProgressNote = "11512-1";
+
+    /// <summary>
+    /// Literal for code: NONESpeechLanguagePathologyProgressNote
+    /// </summary>
+    public const string LiteralNONESpeechLanguagePathologyProgressNote = "http://loinc.org#11512-1";
 
     /// <summary>
     /// Literal for code: ChiropracticRecordsTotalEncounter
@@ -9128,9 +9238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChiropracticRecordsTotalEncounter = "11514-7";
 
     /// <summary>
+    /// Literal for code: NONEChiropracticRecordsTotalEncounter
+    /// </summary>
+    public const string LiteralNONEChiropracticRecordsTotalEncounter = "http://loinc.org#11514-7";
+
+    /// <summary>
     /// Literal for code: PhysicalTherapyRecordsTotalEncounter
     /// </summary>
     public const string LiteralPhysicalTherapyRecordsTotalEncounter = "11515-4";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalTherapyRecordsTotalEncounter
+    /// </summary>
+    public const string LiteralNONEPhysicalTherapyRecordsTotalEncounter = "http://loinc.org#11515-4";
 
     /// <summary>
     /// Literal for code: PhysicianRecordsTotalEncounter
@@ -9138,9 +9258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicianRecordsTotalEncounter = "11516-2";
 
     /// <summary>
+    /// Literal for code: NONEPhysicianRecordsTotalEncounter
+    /// </summary>
+    public const string LiteralNONEPhysicianRecordsTotalEncounter = "http://loinc.org#11516-2";
+
+    /// <summary>
     /// Literal for code: PodiatryRecordsTotalEncounter
     /// </summary>
     public const string LiteralPodiatryRecordsTotalEncounter = "11517-0";
+
+    /// <summary>
+    /// Literal for code: NONEPodiatryRecordsTotalEncounter
+    /// </summary>
+    public const string LiteralNONEPodiatryRecordsTotalEncounter = "http://loinc.org#11517-0";
 
     /// <summary>
     /// Literal for code: PsychologyRecordsTotalEncounter
@@ -9148,9 +9278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPsychologyRecordsTotalEncounter = "11518-8";
 
     /// <summary>
+    /// Literal for code: NONEPsychologyRecordsTotalEncounter
+    /// </summary>
+    public const string LiteralNONEPsychologyRecordsTotalEncounter = "http://loinc.org#11518-8";
+
+    /// <summary>
     /// Literal for code: SocialServiceRecordsTotalEncounter
     /// </summary>
     public const string LiteralSocialServiceRecordsTotalEncounter = "11519-6";
+
+    /// <summary>
+    /// Literal for code: NONESocialServiceRecordsTotalEncounter
+    /// </summary>
+    public const string LiteralNONESocialServiceRecordsTotalEncounter = "http://loinc.org#11519-6";
 
     /// <summary>
     /// Literal for code: SpeechTherapyRecordsTotalEncounter
@@ -9158,9 +9298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpeechTherapyRecordsTotalEncounter = "11520-4";
 
     /// <summary>
+    /// Literal for code: NONESpeechTherapyRecordsTotalEncounter
+    /// </summary>
+    public const string LiteralNONESpeechTherapyRecordsTotalEncounter = "http://loinc.org#11520-4";
+
+    /// <summary>
     /// Literal for code: OccupationalTherapyRecordsTotalEncounter
     /// </summary>
     public const string LiteralOccupationalTherapyRecordsTotalEncounter = "11521-2";
+
+    /// <summary>
+    /// Literal for code: NONEOccupationalTherapyRecordsTotalEncounter
+    /// </summary>
+    public const string LiteralNONEOccupationalTherapyRecordsTotalEncounter = "http://loinc.org#11521-2";
 
     /// <summary>
     /// Literal for code: DeprecatedCardiacEchoStudy
@@ -9168,9 +9318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedCardiacEchoStudy = "11522-0";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedCardiacEchoStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedCardiacEchoStudy = "http://loinc.org#11522-0";
+
+    /// <summary>
     /// Literal for code: EEGStudy
     /// </summary>
     public const string LiteralEEGStudy = "11523-8";
+
+    /// <summary>
+    /// Literal for code: NONEEEGStudy
+    /// </summary>
+    public const string LiteralNONEEEGStudy = "http://loinc.org#11523-8";
 
     /// <summary>
     /// Literal for code: EKGStudy
@@ -9178,9 +9338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEKGStudy = "11524-6";
 
     /// <summary>
+    /// Literal for code: NONEEKGStudy
+    /// </summary>
+    public const string LiteralNONEEKGStudy = "http://loinc.org#11524-6";
+
+    /// <summary>
     /// Literal for code: USPelvisFetusForPregnancy
     /// </summary>
     public const string LiteralUSPelvisFetusForPregnancy = "11525-3";
+
+    /// <summary>
+    /// Literal for code: NONEUSPelvisFetusForPregnancy
+    /// </summary>
+    public const string LiteralNONEUSPelvisFetusForPregnancy = "http://loinc.org#11525-3";
 
     /// <summary>
     /// Literal for code: PathologyStudy
@@ -9188,9 +9358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPathologyStudy = "11526-1";
 
     /// <summary>
+    /// Literal for code: NONEPathologyStudy
+    /// </summary>
+    public const string LiteralNONEPathologyStudy = "http://loinc.org#11526-1";
+
+    /// <summary>
     /// Literal for code: PsychiatryStudy
     /// </summary>
     public const string LiteralPsychiatryStudy = "11527-9";
+
+    /// <summary>
+    /// Literal for code: NONEPsychiatryStudy
+    /// </summary>
+    public const string LiteralNONEPsychiatryStudy = "http://loinc.org#11527-9";
 
     /// <summary>
     /// Literal for code: DeprecatedRadiologyUnspecifiedSiteAndModalityStudy
@@ -9198,9 +9378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedRadiologyUnspecifiedSiteAndModalityStudy = "11528-7";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedRadiologyUnspecifiedSiteAndModalityStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedRadiologyUnspecifiedSiteAndModalityStudy = "http://loinc.org#11528-7";
+
+    /// <summary>
     /// Literal for code: SurgicalPathologyStudy
     /// </summary>
     public const string LiteralSurgicalPathologyStudy = "11529-5";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalPathologyStudy
+    /// </summary>
+    public const string LiteralNONESurgicalPathologyStudy = "http://loinc.org#11529-5";
 
     /// <summary>
     /// Literal for code: TemperatureCharts
@@ -9208,9 +9398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTemperatureCharts = "11534-5";
 
     /// <summary>
+    /// Literal for code: NONETemperatureCharts
+    /// </summary>
+    public const string LiteralNONETemperatureCharts = "http://loinc.org#11534-5";
+
+    /// <summary>
     /// Literal for code: NurseNotes
     /// </summary>
     public const string LiteralNurseNotes = "11536-0";
+
+    /// <summary>
+    /// Literal for code: NONENurseNotes
+    /// </summary>
+    public const string LiteralNONENurseNotes = "http://loinc.org#11536-0";
 
     /// <summary>
     /// Literal for code: DeprecatedCTChestStudy
@@ -9218,9 +9418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedCTChestStudy = "11538-6";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedCTChestStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedCTChestStudy = "http://loinc.org#11538-6";
+
+    /// <summary>
     /// Literal for code: DeprecatedCTHeadStudy
     /// </summary>
     public const string LiteralDeprecatedCTHeadStudy = "11539-4";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedCTHeadStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedCTHeadStudy = "http://loinc.org#11539-4";
 
     /// <summary>
     /// Literal for code: DeprecatedCTAbdomenStudy
@@ -9228,9 +9438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedCTAbdomenStudy = "11540-2";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedCTAbdomenStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedCTAbdomenStudy = "http://loinc.org#11540-2";
+
+    /// <summary>
     /// Literal for code: DeprecatedMRIBrainStudy
     /// </summary>
     public const string LiteralDeprecatedMRIBrainStudy = "11541-0";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedMRIBrainStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedMRIBrainStudy = "http://loinc.org#11541-0";
 
     /// <summary>
     /// Literal for code: DeprecatedProviderUnspecifiedVisitNote
@@ -9238,9 +9458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedProviderUnspecifiedVisitNote = "11542-8";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedProviderUnspecifiedVisitNote
+    /// </summary>
+    public const string LiteralNONEDeprecatedProviderUnspecifiedVisitNote = "http://loinc.org#11542-8";
+
+    /// <summary>
     /// Literal for code: NurseryRecords
     /// </summary>
     public const string LiteralNurseryRecords = "11543-6";
+
+    /// <summary>
+    /// Literal for code: NONENurseryRecords
+    /// </summary>
+    public const string LiteralNONENurseryRecords = "http://loinc.org#11543-6";
 
     /// <summary>
     /// Literal for code: ProviderUnspecifiedEDProgressNote
@@ -9248,9 +9478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProviderUnspecifiedEDProgressNote = "15507-7";
 
     /// <summary>
+    /// Literal for code: NONEProviderUnspecifiedEDProgressNote
+    /// </summary>
+    public const string LiteralNONEProviderUnspecifiedEDProgressNote = "http://loinc.org#15507-7";
+
+    /// <summary>
     /// Literal for code: LaborAndDeliveryRecords
     /// </summary>
     public const string LiteralLaborAndDeliveryRecords = "15508-5";
+
+    /// <summary>
+    /// Literal for code: NONELaborAndDeliveryRecords
+    /// </summary>
+    public const string LiteralNONELaborAndDeliveryRecords = "http://loinc.org#15508-5";
 
     /// <summary>
     /// Literal for code: ThyroidGlandNMStudyReport
@@ -9258,9 +9498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThyroidGlandNMStudyReport = "17787-3";
 
     /// <summary>
+    /// Literal for code: NONEThyroidGlandNMStudyReport
+    /// </summary>
+    public const string LiteralNONEThyroidGlandNMStudyReport = "http://loinc.org#17787-3";
+
+    /// <summary>
     /// Literal for code: PsychiatricServiceAttachment
     /// </summary>
     public const string LiteralPsychiatricServiceAttachment = "18594-2";
+
+    /// <summary>
+    /// Literal for code: NONEPsychiatricServiceAttachment
+    /// </summary>
+    public const string LiteralNONEPsychiatricServiceAttachment = "http://loinc.org#18594-2";
 
     /// <summary>
     /// Literal for code: PhysicianAttendingProgressNote
@@ -9268,9 +9518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicianAttendingProgressNote = "18733-6";
 
     /// <summary>
+    /// Literal for code: NONEPhysicianAttendingProgressNote
+    /// </summary>
+    public const string LiteralNONEPhysicianAttendingProgressNote = "http://loinc.org#18733-6";
+
+    /// <summary>
     /// Literal for code: OccupationalTherapyInitialEvaluationNote
     /// </summary>
     public const string LiteralOccupationalTherapyInitialEvaluationNote = "18734-4";
+
+    /// <summary>
+    /// Literal for code: NONEOccupationalTherapyInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONEOccupationalTherapyInitialEvaluationNote = "http://loinc.org#18734-4";
 
     /// <summary>
     /// Literal for code: PhysicalTherapyInitialEvaluationNote
@@ -9278,9 +9538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicalTherapyInitialEvaluationNote = "18735-1";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalTherapyInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONEPhysicalTherapyInitialEvaluationNote = "http://loinc.org#18735-1";
+
+    /// <summary>
     /// Literal for code: PhysicianInitialEvaluationNote
     /// </summary>
     public const string LiteralPhysicianInitialEvaluationNote = "18736-9";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicianInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONEPhysicianInitialEvaluationNote = "http://loinc.org#18736-9";
 
     /// <summary>
     /// Literal for code: PodiatryInitialEvaluationNote
@@ -9288,9 +9558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPodiatryInitialEvaluationNote = "18737-7";
 
     /// <summary>
+    /// Literal for code: NONEPodiatryInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONEPodiatryInitialEvaluationNote = "http://loinc.org#18737-7";
+
+    /// <summary>
     /// Literal for code: PsychologyInitialEvaluationNote
     /// </summary>
     public const string LiteralPsychologyInitialEvaluationNote = "18738-5";
+
+    /// <summary>
+    /// Literal for code: NONEPsychologyInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONEPsychologyInitialEvaluationNote = "http://loinc.org#18738-5";
 
     /// <summary>
     /// Literal for code: SocialWorkInitialEvaluationNote
@@ -9298,9 +9578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSocialWorkInitialEvaluationNote = "18739-3";
 
     /// <summary>
+    /// Literal for code: NONESocialWorkInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONESocialWorkInitialEvaluationNote = "http://loinc.org#18739-3";
+
+    /// <summary>
     /// Literal for code: SpeechLanguagePathologyInitialEvaluationNote
     /// </summary>
     public const string LiteralSpeechLanguagePathologyInitialEvaluationNote = "18740-1";
+
+    /// <summary>
+    /// Literal for code: NONESpeechLanguagePathologyInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONESpeechLanguagePathologyInitialEvaluationNote = "http://loinc.org#18740-1";
 
     /// <summary>
     /// Literal for code: DeprecatedAttendingPhysicianProgressNote
@@ -9308,9 +9598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedAttendingPhysicianProgressNote = "18741-9";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedAttendingPhysicianProgressNote
+    /// </summary>
+    public const string LiteralNONEDeprecatedAttendingPhysicianProgressNote = "http://loinc.org#18741-9";
+
+    /// <summary>
     /// Literal for code: ArthroscopyStudy
     /// </summary>
     public const string LiteralArthroscopyStudy = "18742-7";
+
+    /// <summary>
+    /// Literal for code: NONEArthroscopyStudy
+    /// </summary>
+    public const string LiteralNONEArthroscopyStudy = "http://loinc.org#18742-7";
 
     /// <summary>
     /// Literal for code: AutopsyReport
@@ -9318,9 +9618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAutopsyReport = "18743-5";
 
     /// <summary>
+    /// Literal for code: NONEAutopsyReport
+    /// </summary>
+    public const string LiteralNONEAutopsyReport = "http://loinc.org#18743-5";
+
+    /// <summary>
     /// Literal for code: BronchoscopyStudy
     /// </summary>
     public const string LiteralBronchoscopyStudy = "18744-3";
+
+    /// <summary>
+    /// Literal for code: NONEBronchoscopyStudy
+    /// </summary>
+    public const string LiteralNONEBronchoscopyStudy = "http://loinc.org#18744-3";
 
     /// <summary>
     /// Literal for code: CardiacCatheterizationStudy
@@ -9328,9 +9638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCardiacCatheterizationStudy = "18745-0";
 
     /// <summary>
+    /// Literal for code: NONECardiacCatheterizationStudy
+    /// </summary>
+    public const string LiteralNONECardiacCatheterizationStudy = "http://loinc.org#18745-0";
+
+    /// <summary>
     /// Literal for code: ColonoscopyStudy
     /// </summary>
     public const string LiteralColonoscopyStudy = "18746-8";
+
+    /// <summary>
+    /// Literal for code: NONEColonoscopyStudy
+    /// </summary>
+    public const string LiteralNONEColonoscopyStudy = "http://loinc.org#18746-8";
 
     /// <summary>
     /// Literal for code: DeprecatedCTUnspecifiedSystemStudy
@@ -9338,9 +9658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedCTUnspecifiedSystemStudy = "18747-6";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedCTUnspecifiedSystemStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedCTUnspecifiedSystemStudy = "http://loinc.org#18747-6";
+
+    /// <summary>
     /// Literal for code: DiagnosticImagingStudy
     /// </summary>
     public const string LiteralDiagnosticImagingStudy = "18748-4";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticImagingStudy
+    /// </summary>
+    public const string LiteralNONEDiagnosticImagingStudy = "http://loinc.org#18748-4";
 
     /// <summary>
     /// Literal for code: ElectromyogramStudy
@@ -9348,9 +9678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElectromyogramStudy = "18749-2";
 
     /// <summary>
+    /// Literal for code: NONEElectromyogramStudy
+    /// </summary>
+    public const string LiteralNONEElectromyogramStudy = "http://loinc.org#18749-2";
+
+    /// <summary>
     /// Literal for code: ElectrophysiologyStudy
     /// </summary>
     public const string LiteralElectrophysiologyStudy = "18750-0";
+
+    /// <summary>
+    /// Literal for code: NONEElectrophysiologyStudy
+    /// </summary>
+    public const string LiteralNONEElectrophysiologyStudy = "http://loinc.org#18750-0";
 
     /// <summary>
     /// Literal for code: EndoscopyStudy
@@ -9358,9 +9698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndoscopyStudy = "18751-8";
 
     /// <summary>
+    /// Literal for code: NONEEndoscopyStudy
+    /// </summary>
+    public const string LiteralNONEEndoscopyStudy = "http://loinc.org#18751-8";
+
+    /// <summary>
     /// Literal for code: ExerciseStressTestStudy
     /// </summary>
     public const string LiteralExerciseStressTestStudy = "18752-6";
+
+    /// <summary>
+    /// Literal for code: NONEExerciseStressTestStudy
+    /// </summary>
+    public const string LiteralNONEExerciseStressTestStudy = "http://loinc.org#18752-6";
 
     /// <summary>
     /// Literal for code: FlexibleSigmoidoscopyStudy
@@ -9368,9 +9718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFlexibleSigmoidoscopyStudy = "18753-4";
 
     /// <summary>
+    /// Literal for code: NONEFlexibleSigmoidoscopyStudy
+    /// </summary>
+    public const string LiteralNONEFlexibleSigmoidoscopyStudy = "http://loinc.org#18753-4";
+
+    /// <summary>
     /// Literal for code: HolterMonitorStudy
     /// </summary>
     public const string LiteralHolterMonitorStudy = "18754-2";
+
+    /// <summary>
+    /// Literal for code: NONEHolterMonitorStudy
+    /// </summary>
+    public const string LiteralNONEHolterMonitorStudy = "http://loinc.org#18754-2";
 
     /// <summary>
     /// Literal for code: DeprecatedMRIUnspecifiedSiteStudy
@@ -9378,9 +9738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedMRIUnspecifiedSiteStudy = "18755-9";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedMRIUnspecifiedSiteStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedMRIUnspecifiedSiteStudy = "http://loinc.org#18755-9";
+
+    /// <summary>
     /// Literal for code: MRSpineStudy
     /// </summary>
     public const string LiteralMRSpineStudy = "18756-7";
+
+    /// <summary>
+    /// Literal for code: NONEMRSpineStudy
+    /// </summary>
+    public const string LiteralNONEMRSpineStudy = "http://loinc.org#18756-7";
 
     /// <summary>
     /// Literal for code: DeprecatedNuclearMedicineStudy
@@ -9388,9 +9758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedNuclearMedicineStudy = "18757-5";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedNuclearMedicineStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedNuclearMedicineStudy = "http://loinc.org#18757-5";
+
+    /// <summary>
     /// Literal for code: DeprecatedPETScanUnspecifiedSystemStudy
     /// </summary>
     public const string LiteralDeprecatedPETScanUnspecifiedSystemStudy = "18758-3";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedPETScanUnspecifiedSystemStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedPETScanUnspecifiedSystemStudy = "http://loinc.org#18758-3";
 
     /// <summary>
     /// Literal for code: SpirometryStudy
@@ -9398,9 +9778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpirometryStudy = "18759-1";
 
     /// <summary>
+    /// Literal for code: NONESpirometryStudy
+    /// </summary>
+    public const string LiteralNONESpirometryStudy = "http://loinc.org#18759-1";
+
+    /// <summary>
     /// Literal for code: DeprecatedUSUnspecifiedSystemStudy
     /// </summary>
     public const string LiteralDeprecatedUSUnspecifiedSystemStudy = "18760-9";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedUSUnspecifiedSystemStudy
+    /// </summary>
+    public const string LiteralNONEDeprecatedUSUnspecifiedSystemStudy = "http://loinc.org#18760-9";
 
     /// <summary>
     /// Literal for code: ProviderUnspecifiedTransferSummary
@@ -9408,9 +9798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProviderUnspecifiedTransferSummary = "18761-7";
 
     /// <summary>
+    /// Literal for code: NONEProviderUnspecifiedTransferSummary
+    /// </summary>
+    public const string LiteralNONEProviderUnspecifiedTransferSummary = "http://loinc.org#18761-7";
+
+    /// <summary>
     /// Literal for code: DeprecatedChiropractorProgressNote
     /// </summary>
     public const string LiteralDeprecatedChiropractorProgressNote = "18762-5";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedChiropractorProgressNote
+    /// </summary>
+    public const string LiteralNONEDeprecatedChiropractorProgressNote = "http://loinc.org#18762-5";
 
     /// <summary>
     /// Literal for code: PhysicianConsultingInitialEvaluationNote
@@ -9418,9 +9818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicianConsultingInitialEvaluationNote = "18763-3";
 
     /// <summary>
+    /// Literal for code: NONEPhysicianConsultingInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONEPhysicianConsultingInitialEvaluationNote = "http://loinc.org#18763-3";
+
+    /// <summary>
     /// Literal for code: DeprecatedNursePractitionerProgressNote
     /// </summary>
     public const string LiteralDeprecatedNursePractitionerProgressNote = "18764-1";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedNursePractitionerProgressNote
+    /// </summary>
+    public const string LiteralNONEDeprecatedNursePractitionerProgressNote = "http://loinc.org#18764-1";
 
     /// <summary>
     /// Literal for code: DeprecatedPodiatryVisitNote
@@ -9428,9 +9838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedPodiatryVisitNote = "18765-8";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedPodiatryVisitNote
+    /// </summary>
+    public const string LiteralNONEDeprecatedPodiatryVisitNote = "http://loinc.org#18765-8";
+
+    /// <summary>
     /// Literal for code: DeprecatedPsychologyVisitNote
     /// </summary>
     public const string LiteralDeprecatedPsychologyVisitNote = "18766-6";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedPsychologyVisitNote
+    /// </summary>
+    public const string LiteralNONEDeprecatedPsychologyVisitNote = "http://loinc.org#18766-6";
 
     /// <summary>
     /// Literal for code: PlanOfCare
@@ -9438,9 +9858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlanOfCare = "18776-5";
 
     /// <summary>
+    /// Literal for code: NONEPlanOfCare
+    /// </summary>
+    public const string LiteralNONEPlanOfCare = "http://loinc.org#18776-5";
+
+    /// <summary>
     /// Literal for code: AlcoholAndOrSubstanceAbuseServiceAttachment
     /// </summary>
     public const string LiteralAlcoholAndOrSubstanceAbuseServiceAttachment = "18823-5";
+
+    /// <summary>
+    /// Literal for code: NONEAlcoholAndOrSubstanceAbuseServiceAttachment
+    /// </summary>
+    public const string LiteralNONEAlcoholAndOrSubstanceAbuseServiceAttachment = "http://loinc.org#18823-5";
 
     /// <summary>
     /// Literal for code: CardiacServiceAttachment
@@ -9448,9 +9878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCardiacServiceAttachment = "18824-3";
 
     /// <summary>
+    /// Literal for code: NONECardiacServiceAttachment
+    /// </summary>
+    public const string LiteralNONECardiacServiceAttachment = "http://loinc.org#18824-3";
+
+    /// <summary>
     /// Literal for code: MedicalSocialServicesAttachment
     /// </summary>
     public const string LiteralMedicalSocialServicesAttachment = "18825-0";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalSocialServicesAttachment
+    /// </summary>
+    public const string LiteralNONEMedicalSocialServicesAttachment = "http://loinc.org#18825-0";
 
     /// <summary>
     /// Literal for code: OccupationalTherapyServiceAttachment
@@ -9458,9 +9898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOccupationalTherapyServiceAttachment = "18826-8";
 
     /// <summary>
+    /// Literal for code: NONEOccupationalTherapyServiceAttachment
+    /// </summary>
+    public const string LiteralNONEOccupationalTherapyServiceAttachment = "http://loinc.org#18826-8";
+
+    /// <summary>
     /// Literal for code: CardiacStressStudyProcedure
     /// </summary>
     public const string LiteralCardiacStressStudyProcedure = "18836-7";
+
+    /// <summary>
+    /// Literal for code: NONECardiacStressStudyProcedure
+    /// </summary>
+    public const string LiteralNONECardiacStressStudyProcedure = "http://loinc.org#18836-7";
 
     /// <summary>
     /// Literal for code: HospitalConsultationsDocument
@@ -9468,9 +9918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHospitalConsultationsDocument = "18841-7";
 
     /// <summary>
+    /// Literal for code: NONEHospitalConsultationsDocument
+    /// </summary>
+    public const string LiteralNONEHospitalConsultationsDocument = "http://loinc.org#18841-7";
+
+    /// <summary>
     /// Literal for code: DischargeSummary
     /// </summary>
     public const string LiteralDischargeSummary = "18842-5";
+
+    /// <summary>
+    /// Literal for code: NONEDischargeSummary
+    /// </summary>
+    public const string LiteralNONEDischargeSummary = "http://loinc.org#18842-5";
 
     /// <summary>
     /// Literal for code: PhysicalTherapyServiceAttachment
@@ -9478,9 +9938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicalTherapyServiceAttachment = "19002-5";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalTherapyServiceAttachment
+    /// </summary>
+    public const string LiteralNONEPhysicalTherapyServiceAttachment = "http://loinc.org#19002-5";
+
+    /// <summary>
     /// Literal for code: RespiratoryTherapyServiceAttachment
     /// </summary>
     public const string LiteralRespiratoryTherapyServiceAttachment = "19003-3";
+
+    /// <summary>
+    /// Literal for code: NONERespiratoryTherapyServiceAttachment
+    /// </summary>
+    public const string LiteralNONERespiratoryTherapyServiceAttachment = "http://loinc.org#19003-3";
 
     /// <summary>
     /// Literal for code: SkilledNursingServiceAttachment
@@ -9488,9 +9958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSkilledNursingServiceAttachment = "19004-1";
 
     /// <summary>
+    /// Literal for code: NONESkilledNursingServiceAttachment
+    /// </summary>
+    public const string LiteralNONESkilledNursingServiceAttachment = "http://loinc.org#19004-1";
+
+    /// <summary>
     /// Literal for code: RetroperitoneumUS
     /// </summary>
     public const string LiteralRetroperitoneumUS = "24531-6";
+
+    /// <summary>
+    /// Literal for code: NONERetroperitoneumUS
+    /// </summary>
+    public const string LiteralNONERetroperitoneumUS = "http://loinc.org#24531-6";
 
     /// <summary>
     /// Literal for code: AbdomenRUQUS
@@ -9498,9 +9978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenRUQUS = "24532-4";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenRUQUS
+    /// </summary>
+    public const string LiteralNONEAbdomenRUQUS = "http://loinc.org#24532-4";
+
+    /// <summary>
     /// Literal for code: AbdominalVesselsMRAngiogramWContrastIV
     /// </summary>
     public const string LiteralAbdominalVesselsMRAngiogramWContrastIV = "24533-2";
+
+    /// <summary>
+    /// Literal for code: NONEAbdominalVesselsMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEAbdominalVesselsMRAngiogramWContrastIV = "http://loinc.org#24533-2";
 
     /// <summary>
     /// Literal for code: AbdominalVesselsUSDoppler
@@ -9508,9 +9998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdominalVesselsUSDoppler = "24534-0";
 
     /// <summary>
+    /// Literal for code: NONEAbdominalVesselsUSDoppler
+    /// </summary>
+    public const string LiteralNONEAbdominalVesselsUSDoppler = "http://loinc.org#24534-0";
+
+    /// <summary>
     /// Literal for code: AcetabulumXRay
     /// </summary>
     public const string LiteralAcetabulumXRay = "24535-7";
+
+    /// <summary>
+    /// Literal for code: NONEAcetabulumXRay
+    /// </summary>
+    public const string LiteralNONEAcetabulumXRay = "http://loinc.org#24535-7";
 
     /// <summary>
     /// Literal for code: AcromioclavicularJointXRay
@@ -9518,9 +10018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcromioclavicularJointXRay = "24536-5";
 
     /// <summary>
+    /// Literal for code: NONEAcromioclavicularJointXRay
+    /// </summary>
+    public const string LiteralNONEAcromioclavicularJointXRay = "http://loinc.org#24536-5";
+
+    /// <summary>
     /// Literal for code: USGuidanceForAspirationOfAmnioticFluidOfUterus
     /// </summary>
     public const string LiteralUSGuidanceForAspirationOfAmnioticFluidOfUterus = "24537-3";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForAspirationOfAmnioticFluidOfUterus
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForAspirationOfAmnioticFluidOfUterus = "http://loinc.org#24537-3";
 
     /// <summary>
     /// Literal for code: AnkleMR
@@ -9528,9 +10038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnkleMR = "24538-1";
 
     /// <summary>
+    /// Literal for code: NONEAnkleMR
+    /// </summary>
+    public const string LiteralNONEAnkleMR = "http://loinc.org#24538-1";
+
+    /// <summary>
     /// Literal for code: AnkleMRWOAndWContrastIV
     /// </summary>
     public const string LiteralAnkleMRWOAndWContrastIV = "24539-9";
+
+    /// <summary>
+    /// Literal for code: NONEAnkleMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEAnkleMRWOAndWContrastIV = "http://loinc.org#24539-9";
 
     /// <summary>
     /// Literal for code: AnkleXRay2Views
@@ -9538,9 +10058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnkleXRay2Views = "24540-7";
 
     /// <summary>
+    /// Literal for code: NONEAnkleXRay2Views
+    /// </summary>
+    public const string LiteralNONEAnkleXRay2Views = "http://loinc.org#24540-7";
+
+    /// <summary>
     /// Literal for code: AnkleXRay
     /// </summary>
     public const string LiteralAnkleXRay = "24541-5";
+
+    /// <summary>
+    /// Literal for code: NONEAnkleXRay
+    /// </summary>
+    public const string LiteralNONEAnkleXRay = "http://loinc.org#24541-5";
 
     /// <summary>
     /// Literal for code: AnusUS
@@ -9548,9 +10078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnusUS = "24542-3";
 
     /// <summary>
+    /// Literal for code: NONEAnusUS
+    /// </summary>
+    public const string LiteralNONEAnusUS = "http://loinc.org#24542-3";
+
+    /// <summary>
     /// Literal for code: AortaFluoroscopicAngiogramAngioplastyWContrastIA
     /// </summary>
     public const string LiteralAortaFluoroscopicAngiogramAngioplastyWContrastIA = "24543-1";
+
+    /// <summary>
+    /// Literal for code: NONEAortaFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEAortaFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#24543-1";
 
     /// <summary>
     /// Literal for code: ThoracicAortaCT
@@ -9558,9 +10098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicAortaCT = "24544-9";
 
     /// <summary>
+    /// Literal for code: NONEThoracicAortaCT
+    /// </summary>
+    public const string LiteralNONEThoracicAortaCT = "http://loinc.org#24544-9";
+
+    /// <summary>
     /// Literal for code: ThoracicAortaCTWContrastIV
     /// </summary>
     public const string LiteralThoracicAortaCTWContrastIV = "24545-6";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicAortaCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEThoracicAortaCTWContrastIV = "http://loinc.org#24545-6";
 
     /// <summary>
     /// Literal for code: AortaArchAndNeckFluoroscopicAngiogramWContrastIA
@@ -9568,9 +10118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAortaArchAndNeckFluoroscopicAngiogramWContrastIA = "24546-4";
 
     /// <summary>
+    /// Literal for code: NONEAortaArchAndNeckFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEAortaArchAndNeckFluoroscopicAngiogramWContrastIA = "http://loinc.org#24546-4";
+
+    /// <summary>
     /// Literal for code: AortaUS
     /// </summary>
     public const string LiteralAortaUS = "24547-2";
+
+    /// <summary>
+    /// Literal for code: NONEAortaUS
+    /// </summary>
+    public const string LiteralNONEAortaUS = "http://loinc.org#24547-2";
 
     /// <summary>
     /// Literal for code: AppendixUS
@@ -9578,9 +10138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAppendixUS = "24548-0";
 
     /// <summary>
+    /// Literal for code: NONEAppendixUS
+    /// </summary>
+    public const string LiteralNONEAppendixUS = "http://loinc.org#24548-0";
+
+    /// <summary>
     /// Literal for code: UpperExtremityVesselsMRAngiogramWContrastIV
     /// </summary>
     public const string LiteralUpperExtremityVesselsMRAngiogramWContrastIV = "24549-8";
+
+    /// <summary>
+    /// Literal for code: NONEUpperExtremityVesselsMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEUpperExtremityVesselsMRAngiogramWContrastIV = "http://loinc.org#24549-8";
 
     /// <summary>
     /// Literal for code: UpperExtremityVeinsFluoroscopicAngiogramWContrastIV
@@ -9588,9 +10158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUpperExtremityVeinsFluoroscopicAngiogramWContrastIV = "24550-6";
 
     /// <summary>
+    /// Literal for code: NONEUpperExtremityVeinsFluoroscopicAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEUpperExtremityVeinsFluoroscopicAngiogramWContrastIV = "http://loinc.org#24550-6";
+
+    /// <summary>
     /// Literal for code: AVFistulaFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralAVFistulaFluoroscopicAngiogramWContrastIA = "24551-4";
+
+    /// <summary>
+    /// Literal for code: NONEAVFistulaFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEAVFistulaFluoroscopicAngiogramWContrastIA = "http://loinc.org#24551-4";
 
     /// <summary>
     /// Literal for code: StentFluoroscopyWContrastIntraStent
@@ -9598,9 +10178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStentFluoroscopyWContrastIntraStent = "24552-2";
 
     /// <summary>
+    /// Literal for code: NONEStentFluoroscopyWContrastIntraStent
+    /// </summary>
+    public const string LiteralNONEStentFluoroscopyWContrastIntraStent = "http://loinc.org#24552-2";
+
+    /// <summary>
     /// Literal for code: VesselIntracranialFluoroscopicAngiogramEmbolectomyWContrastIV
     /// </summary>
     public const string LiteralVesselIntracranialFluoroscopicAngiogramEmbolectomyWContrastIV = "24553-0";
+
+    /// <summary>
+    /// Literal for code: NONEVesselIntracranialFluoroscopicAngiogramEmbolectomyWContrastIV
+    /// </summary>
+    public const string LiteralNONEVesselIntracranialFluoroscopicAngiogramEmbolectomyWContrastIV = "http://loinc.org#24553-0";
 
     /// <summary>
     /// Literal for code: ArteryFluoroscopicAngiogramEmbolizationWContrastIA
@@ -9608,9 +10198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArteryFluoroscopicAngiogramEmbolizationWContrastIA = "24554-8";
 
     /// <summary>
+    /// Literal for code: NONEArteryFluoroscopicAngiogramEmbolizationWContrastIA
+    /// </summary>
+    public const string LiteralNONEArteryFluoroscopicAngiogramEmbolizationWContrastIA = "http://loinc.org#24554-8";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfStentInArtery
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfStentInArtery = "24555-5";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfStentInArtery
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfStentInArtery = "http://loinc.org#24555-5";
 
     /// <summary>
     /// Literal for code: AbdomenMR
@@ -9618,9 +10218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenMR = "24556-3";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenMR
+    /// </summary>
+    public const string LiteralNONEAbdomenMR = "http://loinc.org#24556-3";
+
+    /// <summary>
     /// Literal for code: AbdomenMRWOAndWContrastIV
     /// </summary>
     public const string LiteralAbdomenMRWOAndWContrastIV = "24557-1";
+
+    /// <summary>
+    /// Literal for code: NONEAbdomenMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEAbdomenMRWOAndWContrastIV = "http://loinc.org#24557-1";
 
     /// <summary>
     /// Literal for code: AbdomenUS
@@ -9628,9 +10238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenUS = "24558-9";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenUS
+    /// </summary>
+    public const string LiteralNONEAbdomenUS = "http://loinc.org#24558-9";
+
+    /// <summary>
     /// Literal for code: USGuidanceForDrainageOfAbdomen
     /// </summary>
     public const string LiteralUSGuidanceForDrainageOfAbdomen = "24559-7";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForDrainageOfAbdomen
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForDrainageOfAbdomen = "http://loinc.org#24559-7";
 
     /// <summary>
     /// Literal for code: AbdomenXRayAPLeftLateralDecubitusPortable
@@ -9638,9 +10258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenXRayAPLeftLateralDecubitusPortable = "24560-5";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPLeftLateralDecubitusPortable
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPLeftLateralDecubitusPortable = "http://loinc.org#24560-5";
+
+    /// <summary>
     /// Literal for code: AbdomenXRayAPLeftLateralDecubitus
     /// </summary>
     public const string LiteralAbdomenXRayAPLeftLateralDecubitus = "24561-3";
+
+    /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPLeftLateralDecubitus
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPLeftLateralDecubitus = "http://loinc.org#24561-3";
 
     /// <summary>
     /// Literal for code: AbdomenXRayAPLeftLateralDecubitusAndRightLateralDecubitus
@@ -9648,9 +10278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenXRayAPLeftLateralDecubitusAndRightLateralDecubitus = "24562-1";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPLeftLateralDecubitusAndRightLateralDecubitus
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPLeftLateralDecubitusAndRightLateralDecubitus = "http://loinc.org#24562-1";
+
+    /// <summary>
     /// Literal for code: AbdomenXRayAPRightLateralDecubitus
     /// </summary>
     public const string LiteralAbdomenXRayAPRightLateralDecubitus = "24563-9";
+
+    /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPRightLateralDecubitus
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPRightLateralDecubitus = "http://loinc.org#24563-9";
 
     /// <summary>
     /// Literal for code: AbdomenXRayAPUprightPortable
@@ -9658,9 +10298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenXRayAPUprightPortable = "24564-7";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPUprightPortable
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPUprightPortable = "http://loinc.org#24564-7";
+
+    /// <summary>
     /// Literal for code: RetroperitoneumCT
     /// </summary>
     public const string LiteralRetroperitoneumCT = "24566-2";
+
+    /// <summary>
+    /// Literal for code: NONERetroperitoneumCT
+    /// </summary>
+    public const string LiteralNONERetroperitoneumCT = "http://loinc.org#24566-2";
 
     /// <summary>
     /// Literal for code: DeprecatedAbdomenGreaterThanRetroperitoneumCTWContrast
@@ -9668,9 +10318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedAbdomenGreaterThanRetroperitoneumCTWContrast = "24567-0";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedAbdomenGreaterThanRetroperitoneumCTWContrast
+    /// </summary>
+    public const string LiteralNONEDeprecatedAbdomenGreaterThanRetroperitoneumCTWContrast = "http://loinc.org#24567-0";
+
+    /// <summary>
     /// Literal for code: AVFistulaFluoroscopicAngiogramAtherectomyWContrastIV
     /// </summary>
     public const string LiteralAVFistulaFluoroscopicAngiogramAtherectomyWContrastIV = "24568-8";
+
+    /// <summary>
+    /// Literal for code: NONEAVFistulaFluoroscopicAngiogramAtherectomyWContrastIV
+    /// </summary>
+    public const string LiteralNONEAVFistulaFluoroscopicAngiogramAtherectomyWContrastIV = "http://loinc.org#24568-8";
 
     /// <summary>
     /// Literal for code: AVShuntFluoroscopicAngiogramWContrastIV
@@ -9678,9 +10338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAVShuntFluoroscopicAngiogramWContrastIV = "24569-6";
 
     /// <summary>
+    /// Literal for code: NONEAVShuntFluoroscopicAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEAVShuntFluoroscopicAngiogramWContrastIV = "http://loinc.org#24569-6";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForStoneRemovalOfBiliaryDuctCommonWContrastIntraBiliaryDuct
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForStoneRemovalOfBiliaryDuctCommonWContrastIntraBiliaryDuct = "24570-4";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForStoneRemovalOfBiliaryDuctCommonWContrastIntraBiliaryDuct
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForStoneRemovalOfBiliaryDuctCommonWContrastIntraBiliaryDuct = "http://loinc.org#24570-4";
 
     /// <summary>
     /// Literal for code: BiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresAndEjectionFractionWSincalideAndWRadionuclideIV
@@ -9688,9 +10358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresAndEjectionFractionWSincalideAndWRadionuclideIV = "24571-2";
 
     /// <summary>
+    /// Literal for code: NONEBiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresAndEjectionFractionWSincalideAndWRadionuclideIV
+    /// </summary>
+    public const string LiteralNONEBiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresAndEjectionFractionWSincalideAndWRadionuclideIV = "http://loinc.org#24571-2";
+
+    /// <summary>
     /// Literal for code: BiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresWTc99mIV
     /// </summary>
     public const string LiteralBiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresWTc99mIV = "24572-0";
+
+    /// <summary>
+    /// Literal for code: NONEBiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresWTc99mIV
+    /// </summary>
+    public const string LiteralNONEBiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresWTc99mIV = "http://loinc.org#24572-0";
 
     /// <summary>
     /// Literal for code: BiliaryDuctsAndGallbladderXRayWContrastIV
@@ -9698,9 +10378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiliaryDuctsAndGallbladderXRayWContrastIV = "24573-8";
 
     /// <summary>
+    /// Literal for code: NONEBiliaryDuctsAndGallbladderXRayWContrastIV
+    /// </summary>
+    public const string LiteralNONEBiliaryDuctsAndGallbladderXRayWContrastIV = "http://loinc.org#24573-8";
+
+    /// <summary>
     /// Literal for code: BiliaryDuctsAndGallbladderFluoroscopyDuringSurgeryWContrastBiliaryDuct
     /// </summary>
     public const string LiteralBiliaryDuctsAndGallbladderFluoroscopyDuringSurgeryWContrastBiliaryDuct = "24574-6";
+
+    /// <summary>
+    /// Literal for code: NONEBiliaryDuctsAndGallbladderFluoroscopyDuringSurgeryWContrastBiliaryDuct
+    /// </summary>
+    public const string LiteralNONEBiliaryDuctsAndGallbladderFluoroscopyDuringSurgeryWContrastBiliaryDuct = "http://loinc.org#24574-6";
 
     /// <summary>
     /// Literal for code: BiliaryDuctsAndGallbladderFluoroscopyWContrastPercutaneousTranshepatic
@@ -9708,9 +10398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiliaryDuctsAndGallbladderFluoroscopyWContrastPercutaneousTranshepatic = "24575-3";
 
     /// <summary>
+    /// Literal for code: NONEBiliaryDuctsAndGallbladderFluoroscopyWContrastPercutaneousTranshepatic
+    /// </summary>
+    public const string LiteralNONEBiliaryDuctsAndGallbladderFluoroscopyWContrastPercutaneousTranshepatic = "http://loinc.org#24575-3";
+
+    /// <summary>
     /// Literal for code: UrinaryBladderArteriesFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralUrinaryBladderArteriesFluoroscopicAngiogramWContrastIA = "24576-1";
+
+    /// <summary>
+    /// Literal for code: NONEUrinaryBladderArteriesFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEUrinaryBladderArteriesFluoroscopicAngiogramWContrastIA = "http://loinc.org#24576-1";
 
     /// <summary>
     /// Literal for code: BoneXRayDuringSurgery
@@ -9718,9 +10418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoneXRayDuringSurgery = "24577-9";
 
     /// <summary>
+    /// Literal for code: NONEBoneXRayDuringSurgery
+    /// </summary>
+    public const string LiteralNONEBoneXRayDuringSurgery = "http://loinc.org#24577-9";
+
+    /// <summary>
     /// Literal for code: BonesSPECT
     /// </summary>
     public const string LiteralBonesSPECT = "24578-7";
+
+    /// <summary>
+    /// Literal for code: NONEBonesSPECT
+    /// </summary>
+    public const string LiteralNONEBonesSPECT = "http://loinc.org#24578-7";
 
     /// <summary>
     /// Literal for code: LongBonesXRaySurvey
@@ -9728,9 +10438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLongBonesXRaySurvey = "24579-5";
 
     /// <summary>
+    /// Literal for code: NONELongBonesXRaySurvey
+    /// </summary>
+    public const string LiteralNONELongBonesXRaySurvey = "http://loinc.org#24579-5";
+
+    /// <summary>
     /// Literal for code: BrachiocephalicArteryFluoroscopicAngiogramAngioplastyWContrastIA
     /// </summary>
     public const string LiteralBrachiocephalicArteryFluoroscopicAngiogramAngioplastyWContrastIA = "24580-3";
+
+    /// <summary>
+    /// Literal for code: NONEBrachiocephalicArteryFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEBrachiocephalicArteryFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#24580-3";
 
     /// <summary>
     /// Literal for code: BrachialArteryAndSubclavianArteryFluoroscopicAngiogramWContrastIA
@@ -9738,9 +10458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrachialArteryAndSubclavianArteryFluoroscopicAngiogramWContrastIA = "24581-1";
 
     /// <summary>
+    /// Literal for code: NONEBrachialArteryAndSubclavianArteryFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEBrachialArteryAndSubclavianArteryFluoroscopicAngiogramWContrastIA = "http://loinc.org#24581-1";
+
+    /// <summary>
     /// Literal for code: BrachialPlexusMR
     /// </summary>
     public const string LiteralBrachialPlexusMR = "24582-9";
+
+    /// <summary>
+    /// Literal for code: NONEBrachialPlexusMR
+    /// </summary>
+    public const string LiteralNONEBrachialPlexusMR = "http://loinc.org#24582-9";
 
     /// <summary>
     /// Literal for code: BrachialPlexusMRWOAndWContrastIV
@@ -9748,9 +10478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrachialPlexusMRWOAndWContrastIV = "24583-7";
 
     /// <summary>
+    /// Literal for code: NONEBrachialPlexusMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEBrachialPlexusMRWOAndWContrastIV = "http://loinc.org#24583-7";
+
+    /// <summary>
     /// Literal for code: ThoracicInletVesselsMRAngiogramWContrastIV
     /// </summary>
     public const string LiteralThoracicInletVesselsMRAngiogramWContrastIV = "24584-5";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicInletVesselsMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEThoracicInletVesselsMRAngiogramWContrastIV = "http://loinc.org#24584-5";
 
     /// <summary>
     /// Literal for code: CTGuidanceForStereotacticBiopsyOfHeadWContrastIV
@@ -9758,9 +10498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForStereotacticBiopsyOfHeadWContrastIV = "24585-2";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForStereotacticBiopsyOfHeadWContrastIV
+    /// </summary>
+    public const string LiteralNONECTGuidanceForStereotacticBiopsyOfHeadWContrastIV = "http://loinc.org#24585-2";
+
+    /// <summary>
     /// Literal for code: BrainMRWAnesthesia
     /// </summary>
     public const string LiteralBrainMRWAnesthesia = "24586-0";
+
+    /// <summary>
+    /// Literal for code: NONEBrainMRWAnesthesia
+    /// </summary>
+    public const string LiteralNONEBrainMRWAnesthesia = "http://loinc.org#24586-0";
 
     /// <summary>
     /// Literal for code: BrainMRWOAndWContrastIV
@@ -9768,9 +10518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrainMRWOAndWContrastIV = "24587-8";
 
     /// <summary>
+    /// Literal for code: NONEBrainMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEBrainMRWOAndWContrastIV = "http://loinc.org#24587-8";
+
+    /// <summary>
     /// Literal for code: BrainMRWOAndWContrastIVAndWAnesthesia
     /// </summary>
     public const string LiteralBrainMRWOAndWContrastIVAndWAnesthesia = "24588-6";
+
+    /// <summary>
+    /// Literal for code: NONEBrainMRWOAndWContrastIVAndWAnesthesia
+    /// </summary>
+    public const string LiteralNONEBrainMRWOAndWContrastIVAndWAnesthesia = "http://loinc.org#24588-6";
 
     /// <summary>
     /// Literal for code: BrainMRWContrastIV
@@ -9778,9 +10538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrainMRWContrastIV = "24589-4";
 
     /// <summary>
+    /// Literal for code: NONEBrainMRWContrastIV
+    /// </summary>
+    public const string LiteralNONEBrainMRWContrastIV = "http://loinc.org#24589-4";
+
+    /// <summary>
     /// Literal for code: BrainMR
     /// </summary>
     public const string LiteralBrainMR = "24590-2";
+
+    /// <summary>
+    /// Literal for code: NONEBrainMR
+    /// </summary>
+    public const string LiteralNONEBrainMR = "http://loinc.org#24590-2";
 
     /// <summary>
     /// Literal for code: BrainNMBrainDeathProtocolWTc99mHMPAOIV
@@ -9788,9 +10558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrainNMBrainDeathProtocolWTc99mHMPAOIV = "24591-0";
 
     /// <summary>
+    /// Literal for code: NONEBrainNMBrainDeathProtocolWTc99mHMPAOIV
+    /// </summary>
+    public const string LiteralNONEBrainNMBrainDeathProtocolWTc99mHMPAOIV = "http://loinc.org#24591-0";
+
+    /// <summary>
     /// Literal for code: HeadVesselsMRAngiogramWContrastIV
     /// </summary>
     public const string LiteralHeadVesselsMRAngiogramWContrastIV = "24593-6";
+
+    /// <summary>
+    /// Literal for code: NONEHeadVesselsMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEHeadVesselsMRAngiogramWContrastIV = "http://loinc.org#24593-6";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForAspirationOfCystOfBreast
@@ -9798,9 +10578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForAspirationOfCystOfBreast = "24594-4";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForAspirationOfCystOfBreast
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForAspirationOfCystOfBreast = "http://loinc.org#24594-4";
+
+    /// <summary>
     /// Literal for code: MammogramGuidanceForNeedleLocalizationOfMassOfBreast
     /// </summary>
     public const string LiteralMammogramGuidanceForNeedleLocalizationOfMassOfBreast = "24595-1";
+
+    /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForNeedleLocalizationOfMassOfBreast
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForNeedleLocalizationOfMassOfBreast = "http://loinc.org#24595-1";
 
     /// <summary>
     /// Literal for code: BreastSpecimenUS
@@ -9808,9 +10598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastSpecimenUS = "24596-9";
 
     /// <summary>
+    /// Literal for code: NONEBreastSpecimenUS
+    /// </summary>
+    public const string LiteralNONEBreastSpecimenUS = "http://loinc.org#24596-9";
+
+    /// <summary>
     /// Literal for code: BreastSpecimenMammogram
     /// </summary>
     public const string LiteralBreastSpecimenMammogram = "24597-7";
+
+    /// <summary>
+    /// Literal for code: NONEBreastSpecimenMammogram
+    /// </summary>
+    public const string LiteralNONEBreastSpecimenMammogram = "http://loinc.org#24597-7";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForAspirationOfBreast
@@ -9818,9 +10618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForAspirationOfBreast = "24598-5";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForAspirationOfBreast
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForAspirationOfBreast = "http://loinc.org#24598-5";
+
+    /// <summary>
     /// Literal for code: BreastUSLimited
     /// </summary>
     public const string LiteralBreastUSLimited = "24599-3";
+
+    /// <summary>
+    /// Literal for code: NONEBreastUSLimited
+    /// </summary>
+    public const string LiteralNONEBreastUSLimited = "http://loinc.org#24599-3";
 
     /// <summary>
     /// Literal for code: USGuidanceForNeedleLocalizationOfBreast
@@ -9828,9 +10638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForNeedleLocalizationOfBreast = "24600-9";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForNeedleLocalizationOfBreast
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForNeedleLocalizationOfBreast = "http://loinc.org#24600-9";
+
+    /// <summary>
     /// Literal for code: BreastUS
     /// </summary>
     public const string LiteralBreastUS = "24601-7";
+
+    /// <summary>
+    /// Literal for code: NONEBreastUS
+    /// </summary>
+    public const string LiteralNONEBreastUS = "http://loinc.org#24601-7";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForBiopsyOfBreast
@@ -9838,9 +10658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForBiopsyOfBreast = "24602-5";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForBiopsyOfBreast
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForBiopsyOfBreast = "http://loinc.org#24602-5";
+
+    /// <summary>
     /// Literal for code: MammogramGuidanceForStereotacticBiopsyOfBreast
     /// </summary>
     public const string LiteralMammogramGuidanceForStereotacticBiopsyOfBreast = "24603-3";
+
+    /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForStereotacticBiopsyOfBreast
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForStereotacticBiopsyOfBreast = "http://loinc.org#24603-3";
 
     /// <summary>
     /// Literal for code: BreastMammogramDiagnosticLimited
@@ -9848,9 +10678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastMammogramDiagnosticLimited = "24604-1";
 
     /// <summary>
+    /// Literal for code: NONEBreastMammogramDiagnosticLimited
+    /// </summary>
+    public const string LiteralNONEBreastMammogramDiagnosticLimited = "http://loinc.org#24604-1";
+
+    /// <summary>
     /// Literal for code: BreastMammogramDiagnostic
     /// </summary>
     public const string LiteralBreastMammogramDiagnostic = "24605-8";
+
+    /// <summary>
+    /// Literal for code: NONEBreastMammogramDiagnostic
+    /// </summary>
+    public const string LiteralNONEBreastMammogramDiagnostic = "http://loinc.org#24605-8";
 
     /// <summary>
     /// Literal for code: BreastMammogramScreening
@@ -9858,9 +10698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastMammogramScreening = "24606-6";
 
     /// <summary>
+    /// Literal for code: NONEBreastMammogramScreening
+    /// </summary>
+    public const string LiteralNONEBreastMammogramScreening = "http://loinc.org#24606-6";
+
+    /// <summary>
     /// Literal for code: MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreast
     /// </summary>
     public const string LiteralMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreast = "24609-0";
+
+    /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreast
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreast = "http://loinc.org#24609-0";
 
     /// <summary>
     /// Literal for code: BreastMammogramLimited
@@ -9868,9 +10718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastMammogramLimited = "24610-8";
 
     /// <summary>
+    /// Literal for code: NONEBreastMammogramLimited
+    /// </summary>
+    public const string LiteralNONEBreastMammogramLimited = "http://loinc.org#24610-8";
+
+    /// <summary>
     /// Literal for code: OutpatientConsultation2ndOpinion
     /// </summary>
     public const string LiteralOutpatientConsultation2ndOpinion = "24611-6";
+
+    /// <summary>
+    /// Literal for code: NONEOutpatientConsultation2ndOpinion
+    /// </summary>
+    public const string LiteralNONEOutpatientConsultation2ndOpinion = "http://loinc.org#24611-6";
 
     /// <summary>
     /// Literal for code: DeprecatedCalcaneusXRay
@@ -9878,9 +10738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedCalcaneusXRay = "24612-4";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedCalcaneusXRay
+    /// </summary>
+    public const string LiteralNONEDeprecatedCalcaneusXRay = "http://loinc.org#24612-4";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfCatheterInArteryInCentralCardiovascularArtery
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfCatheterInArteryInCentralCardiovascularArtery = "24613-2";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfCatheterInArteryInCentralCardiovascularArtery
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfCatheterInArteryInCentralCardiovascularArtery = "http://loinc.org#24613-2";
 
     /// <summary>
     /// Literal for code: CarotidArteryExtracranialFluoroscopicAngiogramAngioplastyWContrastIA
@@ -9888,9 +10758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCarotidArteryExtracranialFluoroscopicAngiogramAngioplastyWContrastIA = "24614-0";
 
     /// <summary>
+    /// Literal for code: NONECarotidArteryExtracranialFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONECarotidArteryExtracranialFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#24614-0";
+
+    /// <summary>
     /// Literal for code: CarotidArteryIntracranialFluoroscopicAngiogramAngioplastyWContrastIA
     /// </summary>
     public const string LiteralCarotidArteryIntracranialFluoroscopicAngiogramAngioplastyWContrastIA = "24615-7";
+
+    /// <summary>
+    /// Literal for code: NONECarotidArteryIntracranialFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONECarotidArteryIntracranialFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#24615-7";
 
     /// <summary>
     /// Literal for code: CarotidArteriesUS
@@ -9898,9 +10778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCarotidArteriesUS = "24616-5";
 
     /// <summary>
+    /// Literal for code: NONECarotidArteriesUS
+    /// </summary>
+    public const string LiteralNONECarotidArteriesUS = "http://loinc.org#24616-5";
+
+    /// <summary>
     /// Literal for code: CarotidArteryFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralCarotidArteryFluoroscopicAngiogramWContrastIA = "24617-3";
+
+    /// <summary>
+    /// Literal for code: NONECarotidArteryFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONECarotidArteryFluoroscopicAngiogramWContrastIA = "http://loinc.org#24617-3";
 
     /// <summary>
     /// Literal for code: WristXRay
@@ -9908,9 +10798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWristXRay = "24619-9";
 
     /// <summary>
+    /// Literal for code: NONEWristXRay
+    /// </summary>
+    public const string LiteralNONEWristXRay = "http://loinc.org#24619-9";
+
+    /// <summary>
     /// Literal for code: CatheterFluoroscopyPatencyCheckWContrastViaCatheter
     /// </summary>
     public const string LiteralCatheterFluoroscopyPatencyCheckWContrastViaCatheter = "24620-7";
+
+    /// <summary>
+    /// Literal for code: NONECatheterFluoroscopyPatencyCheckWContrastViaCatheter
+    /// </summary>
+    public const string LiteralNONECatheterFluoroscopyPatencyCheckWContrastViaCatheter = "http://loinc.org#24620-7";
 
     /// <summary>
     /// Literal for code: FluoroscopyGuidanceForPercutaneousDrainageOfUnspecifiedBodyRegion
@@ -9918,9 +10818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyGuidanceForPercutaneousDrainageOfUnspecifiedBodyRegion = "24621-5";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForPercutaneousDrainageOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForPercutaneousDrainageOfUnspecifiedBodyRegion = "http://loinc.org#24621-5";
+
+    /// <summary>
     /// Literal for code: CeliacArteryFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralCeliacArteryFluoroscopicAngiogramWContrastIA = "24622-3";
+
+    /// <summary>
+    /// Literal for code: NONECeliacArteryFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONECeliacArteryFluoroscopicAngiogramWContrastIA = "http://loinc.org#24622-3";
 
     /// <summary>
     /// Literal for code: CTGuidanceForNerveBlockOfCeliacPlexus
@@ -9928,9 +10838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForNerveBlockOfCeliacPlexus = "24623-1";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForNerveBlockOfCeliacPlexus
+    /// </summary>
+    public const string LiteralNONECTGuidanceForNerveBlockOfCeliacPlexus = "http://loinc.org#24623-1";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinWContrastIV
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinWContrastIV = "24624-9";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinWContrastIV = "http://loinc.org#24624-9";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinWContrastIV
@@ -9938,9 +10858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinWContrastIV = "24625-6";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinWContrastIV = "http://loinc.org#24625-6";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinWContrastIV
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinWContrastIV = "24626-4";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinWContrastIV = "http://loinc.org#24626-4";
 
     /// <summary>
     /// Literal for code: ChestCT
@@ -9948,9 +10878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestCT = "24627-2";
 
     /// <summary>
+    /// Literal for code: NONEChestCT
+    /// </summary>
+    public const string LiteralNONEChestCT = "http://loinc.org#24627-2";
+
+    /// <summary>
     /// Literal for code: ChestCTWContrastIV
     /// </summary>
     public const string LiteralChestCTWContrastIV = "24628-0";
+
+    /// <summary>
+    /// Literal for code: NONEChestCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEChestCTWContrastIV = "http://loinc.org#24628-0";
 
     /// <summary>
     /// Literal for code: ChestMR
@@ -9958,9 +10898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestMR = "24629-8";
 
     /// <summary>
+    /// Literal for code: NONEChestMR
+    /// </summary>
+    public const string LiteralNONEChestMR = "http://loinc.org#24629-8";
+
+    /// <summary>
     /// Literal for code: ChestUS
     /// </summary>
     public const string LiteralChestUS = "24630-6";
+
+    /// <summary>
+    /// Literal for code: NONEChestUS
+    /// </summary>
+    public const string LiteralNONEChestUS = "http://loinc.org#24630-6";
 
     /// <summary>
     /// Literal for code: UnspecifiedBodyRegionFluoroscopyCentralVeinCatheterPlacementCheck
@@ -9968,9 +10918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnspecifiedBodyRegionFluoroscopyCentralVeinCatheterPlacementCheck = "24631-4";
 
     /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionFluoroscopyCentralVeinCatheterPlacementCheck
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionFluoroscopyCentralVeinCatheterPlacementCheck = "http://loinc.org#24631-4";
+
+    /// <summary>
     /// Literal for code: ChestXRayAPPortable
     /// </summary>
     public const string LiteralChestXRayAPPortable = "24632-2";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayAPPortable
+    /// </summary>
+    public const string LiteralNONEChestXRayAPPortable = "http://loinc.org#24632-2";
 
     /// <summary>
     /// Literal for code: ChestXRayPortableWInspirationAndExpiration
@@ -9978,9 +10938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayPortableWInspirationAndExpiration = "24634-8";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayPortableWInspirationAndExpiration
+    /// </summary>
+    public const string LiteralNONEChestXRayPortableWInspirationAndExpiration = "http://loinc.org#24634-8";
+
+    /// <summary>
     /// Literal for code: ChestXRayPAUprightWInspirationAndExpiration
     /// </summary>
     public const string LiteralChestXRayPAUprightWInspirationAndExpiration = "24635-5";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayPAUprightWInspirationAndExpiration
+    /// </summary>
+    public const string LiteralNONEChestXRayPAUprightWInspirationAndExpiration = "http://loinc.org#24635-5";
 
     /// <summary>
     /// Literal for code: ChestXRayAPLeftLateralDecubitusPortable
@@ -9988,9 +10958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayAPLeftLateralDecubitusPortable = "24636-3";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayAPLeftLateralDecubitusPortable
+    /// </summary>
+    public const string LiteralNONEChestXRayAPLeftLateralDecubitusPortable = "http://loinc.org#24636-3";
+
+    /// <summary>
     /// Literal for code: ChestXRayAPLeftLateralDecubitus
     /// </summary>
     public const string LiteralChestXRayAPLeftLateralDecubitus = "24637-1";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayAPLeftLateralDecubitus
+    /// </summary>
+    public const string LiteralNONEChestXRayAPLeftLateralDecubitus = "http://loinc.org#24637-1";
 
     /// <summary>
     /// Literal for code: ChestXRayLeftLateralUprightPortable
@@ -9998,9 +10978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayLeftLateralUprightPortable = "24638-9";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayLeftLateralUprightPortable
+    /// </summary>
+    public const string LiteralNONEChestXRayLeftLateralUprightPortable = "http://loinc.org#24638-9";
+
+    /// <summary>
     /// Literal for code: ChestXRayLeftLateralUpright
     /// </summary>
     public const string LiteralChestXRayLeftLateralUpright = "24639-7";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayLeftLateralUpright
+    /// </summary>
+    public const string LiteralNONEChestXRayLeftLateralUpright = "http://loinc.org#24639-7";
 
     /// <summary>
     /// Literal for code: ChestXRayLordotic
@@ -10008,9 +10998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayLordotic = "24640-5";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayLordotic
+    /// </summary>
+    public const string LiteralNONEChestXRayLordotic = "http://loinc.org#24640-5";
+
+    /// <summary>
     /// Literal for code: ChestXRayLeftObliquePortable
     /// </summary>
     public const string LiteralChestXRayLeftObliquePortable = "24641-3";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayLeftObliquePortable
+    /// </summary>
+    public const string LiteralNONEChestXRayLeftObliquePortable = "http://loinc.org#24641-3";
 
     /// <summary>
     /// Literal for code: ChestXRayAPAndPAUpright
@@ -10018,9 +11018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayAPAndPAUpright = "24642-1";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayAPAndPAUpright
+    /// </summary>
+    public const string LiteralNONEChestXRayAPAndPAUpright = "http://loinc.org#24642-1";
+
+    /// <summary>
     /// Literal for code: ChestXRayPAAndLateralAndRightOrLeftObliqueUpright
     /// </summary>
     public const string LiteralChestXRayPAAndLateralAndRightOrLeftObliqueUpright = "24643-9";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayPAAndLateralAndRightOrLeftObliqueUpright
+    /// </summary>
+    public const string LiteralNONEChestXRayPAAndLateralAndRightOrLeftObliqueUpright = "http://loinc.org#24643-9";
 
     /// <summary>
     /// Literal for code: ChestXRayPAAndLateralUprightPortable
@@ -10028,9 +11038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayPAAndLateralUprightPortable = "24644-7";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayPAAndLateralUprightPortable
+    /// </summary>
+    public const string LiteralNONEChestXRayPAAndLateralUprightPortable = "http://loinc.org#24644-7";
+
+    /// <summary>
     /// Literal for code: ChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUprightPortable
     /// </summary>
     public const string LiteralChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUprightPortable = "24645-4";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUprightPortable
+    /// </summary>
+    public const string LiteralNONEChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUprightPortable = "http://loinc.org#24645-4";
 
     /// <summary>
     /// Literal for code: ChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUpright
@@ -10038,9 +11058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUpright = "24646-2";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUpright
+    /// </summary>
+    public const string LiteralNONEChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUpright = "http://loinc.org#24646-2";
+
+    /// <summary>
     /// Literal for code: ChestXRayPAAndLateralUpright
     /// </summary>
     public const string LiteralChestXRayPAAndLateralUpright = "24647-0";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayPAAndLateralUpright
+    /// </summary>
+    public const string LiteralNONEChestXRayPAAndLateralUpright = "http://loinc.org#24647-0";
 
     /// <summary>
     /// Literal for code: ChestXRayPAUpright
@@ -10048,9 +11078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayPAUpright = "24648-8";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayPAUpright
+    /// </summary>
+    public const string LiteralNONEChestXRayPAUpright = "http://loinc.org#24648-8";
+
+    /// <summary>
     /// Literal for code: ChestXRayAPRightLateralDecubitusAndLeftLateralDecubitusPortable
     /// </summary>
     public const string LiteralChestXRayAPRightLateralDecubitusAndLeftLateralDecubitusPortable = "24649-6";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayAPRightLateralDecubitusAndLeftLateralDecubitusPortable
+    /// </summary>
+    public const string LiteralNONEChestXRayAPRightLateralDecubitusAndLeftLateralDecubitusPortable = "http://loinc.org#24649-6";
 
     /// <summary>
     /// Literal for code: ChestXRayAPRightLateralDecubitusAndLeftLateralDecubitus
@@ -10058,9 +11098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayAPRightLateralDecubitusAndLeftLateralDecubitus = "24650-4";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayAPRightLateralDecubitusAndLeftLateralDecubitus
+    /// </summary>
+    public const string LiteralNONEChestXRayAPRightLateralDecubitusAndLeftLateralDecubitus = "http://loinc.org#24650-4";
+
+    /// <summary>
     /// Literal for code: ChestXRayRightObliqueAndLeftObliqueUpright
     /// </summary>
     public const string LiteralChestXRayRightObliqueAndLeftObliqueUpright = "24651-2";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayRightObliqueAndLeftObliqueUpright
+    /// </summary>
+    public const string LiteralNONEChestXRayRightObliqueAndLeftObliqueUpright = "http://loinc.org#24651-2";
 
     /// <summary>
     /// Literal for code: ChestXRayAPRightLateralDecubitusPortable
@@ -10068,9 +11118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayAPRightLateralDecubitusPortable = "24652-0";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayAPRightLateralDecubitusPortable
+    /// </summary>
+    public const string LiteralNONEChestXRayAPRightLateralDecubitusPortable = "http://loinc.org#24652-0";
+
+    /// <summary>
     /// Literal for code: ChestXRayAPAndAPRightLateralDecubitus
     /// </summary>
     public const string LiteralChestXRayAPAndAPRightLateralDecubitus = "24653-8";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayAPAndAPRightLateralDecubitus
+    /// </summary>
+    public const string LiteralNONEChestXRayAPAndAPRightLateralDecubitus = "http://loinc.org#24653-8";
 
     /// <summary>
     /// Literal for code: ChestXRayAPAndAPRightLateralDecubitusPortable
@@ -10078,9 +11138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestXRayAPAndAPRightLateralDecubitusPortable = "24654-6";
 
     /// <summary>
+    /// Literal for code: NONEChestXRayAPAndAPRightLateralDecubitusPortable
+    /// </summary>
+    public const string LiteralNONEChestXRayAPAndAPRightLateralDecubitusPortable = "http://loinc.org#24654-6";
+
+    /// <summary>
     /// Literal for code: ChestFluoroscopyImageIntensifierDuringSurgery
     /// </summary>
     public const string LiteralChestFluoroscopyImageIntensifierDuringSurgery = "24655-3";
+
+    /// <summary>
+    /// Literal for code: NONEChestFluoroscopyImageIntensifierDuringSurgery
+    /// </summary>
+    public const string LiteralNONEChestFluoroscopyImageIntensifierDuringSurgery = "http://loinc.org#24655-3";
 
     /// <summary>
     /// Literal for code: ChestFluoroscopyDuringSurgery
@@ -10088,9 +11158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestFluoroscopyDuringSurgery = "24656-1";
 
     /// <summary>
+    /// Literal for code: NONEChestFluoroscopyDuringSurgery
+    /// </summary>
+    public const string LiteralNONEChestFluoroscopyDuringSurgery = "http://loinc.org#24656-1";
+
+    /// <summary>
     /// Literal for code: ChestXRayTomograph
     /// </summary>
     public const string LiteralChestXRayTomograph = "24657-9";
+
+    /// <summary>
+    /// Literal for code: NONEChestXRayTomograph
+    /// </summary>
+    public const string LiteralNONEChestXRayTomograph = "http://loinc.org#24657-9";
 
     /// <summary>
     /// Literal for code: AortaFluoroscopicAngiogramWContrastIA
@@ -10098,9 +11178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAortaFluoroscopicAngiogramWContrastIA = "24658-7";
 
     /// <summary>
+    /// Literal for code: NONEAortaFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEAortaFluoroscopicAngiogramWContrastIA = "http://loinc.org#24658-7";
+
+    /// <summary>
     /// Literal for code: ChestVesselsMRAngiogramWContrastIV
     /// </summary>
     public const string LiteralChestVesselsMRAngiogramWContrastIV = "24659-5";
+
+    /// <summary>
+    /// Literal for code: NONEChestVesselsMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEChestVesselsMRAngiogramWContrastIV = "http://loinc.org#24659-5";
 
     /// <summary>
     /// Literal for code: ThoracicAortaMRAngiogram
@@ -10108,9 +11198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicAortaMRAngiogram = "24660-3";
 
     /// <summary>
+    /// Literal for code: NONEThoracicAortaMRAngiogram
+    /// </summary>
+    public const string LiteralNONEThoracicAortaMRAngiogram = "http://loinc.org#24660-3";
+
+    /// <summary>
     /// Literal for code: PleuralSpaceFluoroscopyWContrastIntraPleuralSpace
     /// </summary>
     public const string LiteralPleuralSpaceFluoroscopyWContrastIntraPleuralSpace = "24661-1";
+
+    /// <summary>
+    /// Literal for code: NONEPleuralSpaceFluoroscopyWContrastIntraPleuralSpace
+    /// </summary>
+    public const string LiteralNONEPleuralSpaceFluoroscopyWContrastIntraPleuralSpace = "http://loinc.org#24661-1";
 
     /// <summary>
     /// Literal for code: USGuidanceForAspirationOfPleuralSpace
@@ -10118,9 +11218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForAspirationOfPleuralSpace = "24662-9";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForAspirationOfPleuralSpace
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForAspirationOfPleuralSpace = "http://loinc.org#24662-9";
+
+    /// <summary>
     /// Literal for code: CerebralCisternsNMWRadionuclideIT
     /// </summary>
     public const string LiteralCerebralCisternsNMWRadionuclideIT = "24663-7";
+
+    /// <summary>
+    /// Literal for code: NONECerebralCisternsNMWRadionuclideIT
+    /// </summary>
+    public const string LiteralNONECerebralCisternsNMWRadionuclideIT = "http://loinc.org#24663-7";
 
     /// <summary>
     /// Literal for code: ClavicleXRay
@@ -10128,9 +11238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClavicleXRay = "24664-5";
 
     /// <summary>
+    /// Literal for code: NONEClavicleXRay
+    /// </summary>
+    public const string LiteralNONEClavicleXRay = "http://loinc.org#24664-5";
+
+    /// <summary>
     /// Literal for code: SacrumAndCoccyxXRay
     /// </summary>
     public const string LiteralSacrumAndCoccyxXRay = "24665-2";
+
+    /// <summary>
+    /// Literal for code: NONESacrumAndCoccyxXRay
+    /// </summary>
+    public const string LiteralNONESacrumAndCoccyxXRay = "http://loinc.org#24665-2";
 
     /// <summary>
     /// Literal for code: ColonFluoroscopyWAirAndBariumContrastPR
@@ -10138,9 +11258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColonFluoroscopyWAirAndBariumContrastPR = "24666-0";
 
     /// <summary>
+    /// Literal for code: NONEColonFluoroscopyWAirAndBariumContrastPR
+    /// </summary>
+    public const string LiteralNONEColonFluoroscopyWAirAndBariumContrastPR = "http://loinc.org#24666-0";
+
+    /// <summary>
     /// Literal for code: ColonFluoroscopyWContrastPR
     /// </summary>
     public const string LiteralColonFluoroscopyWContrastPR = "24667-8";
+
+    /// <summary>
+    /// Literal for code: NONEColonFluoroscopyWContrastPR
+    /// </summary>
+    public const string LiteralNONEColonFluoroscopyWContrastPR = "http://loinc.org#24667-8";
 
     /// <summary>
     /// Literal for code: ColonFluoroscopyTransitPostSolidContrast
@@ -10148,9 +11278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColonFluoroscopyTransitPostSolidContrast = "24668-6";
 
     /// <summary>
+    /// Literal for code: NONEColonFluoroscopyTransitPostSolidContrast
+    /// </summary>
+    public const string LiteralNONEColonFluoroscopyTransitPostSolidContrast = "http://loinc.org#24668-6";
+
+    /// <summary>
     /// Literal for code: ColonFluoroscopyWWaterSolubleContrastPR
     /// </summary>
     public const string LiteralColonFluoroscopyWWaterSolubleContrastPR = "24669-4";
+
+    /// <summary>
+    /// Literal for code: NONEColonFluoroscopyWWaterSolubleContrastPR
+    /// </summary>
+    public const string LiteralNONEColonFluoroscopyWWaterSolubleContrastPR = "http://loinc.org#24669-4";
 
     /// <summary>
     /// Literal for code: USGuidanceForBiopsyOfCystOfUnspecifiedBodyRegion
@@ -10158,9 +11298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForBiopsyOfCystOfUnspecifiedBodyRegion = "24670-2";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForBiopsyOfCystOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForBiopsyOfCystOfUnspecifiedBodyRegion = "http://loinc.org#24670-2";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForAspirationOfCystOfUnspecifiedBodyRegion
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForAspirationOfCystOfUnspecifiedBodyRegion = "24671-0";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForAspirationOfCystOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForAspirationOfCystOfUnspecifiedBodyRegion = "http://loinc.org#24671-0";
 
     /// <summary>
     /// Literal for code: DiaphragmUSForMotion
@@ -10168,9 +11318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiaphragmUSForMotion = "24672-8";
 
     /// <summary>
+    /// Literal for code: NONEDiaphragmUSForMotion
+    /// </summary>
+    public const string LiteralNONEDiaphragmUSForMotion = "http://loinc.org#24672-8";
+
+    /// <summary>
     /// Literal for code: DuodenumFluoroscopyWContrastPOAndHypotonicAgentPerNg
     /// </summary>
     public const string LiteralDuodenumFluoroscopyWContrastPOAndHypotonicAgentPerNg = "24673-6";
+
+    /// <summary>
+    /// Literal for code: NONEDuodenumFluoroscopyWContrastPOAndHypotonicAgentPerNg
+    /// </summary>
+    public const string LiteralNONEDuodenumFluoroscopyWContrastPOAndHypotonicAgentPerNg = "http://loinc.org#24673-6";
 
     /// <summary>
     /// Literal for code: ElbowMR
@@ -10178,9 +11338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElbowMR = "24674-4";
 
     /// <summary>
+    /// Literal for code: NONEElbowMR
+    /// </summary>
+    public const string LiteralNONEElbowMR = "http://loinc.org#24674-4";
+
+    /// <summary>
     /// Literal for code: ElbowMRWOAndWContrastIV
     /// </summary>
     public const string LiteralElbowMRWOAndWContrastIV = "24675-1";
+
+    /// <summary>
+    /// Literal for code: NONEElbowMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEElbowMRWOAndWContrastIV = "http://loinc.org#24675-1";
 
     /// <summary>
     /// Literal for code: ElbowXRay
@@ -10188,9 +11358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElbowXRay = "24676-9";
 
     /// <summary>
+    /// Literal for code: NONEElbowXRay
+    /// </summary>
+    public const string LiteralNONEElbowXRay = "http://loinc.org#24676-9";
+
+    /// <summary>
     /// Literal for code: PelvisUSTransvaginal
     /// </summary>
     public const string LiteralPelvisUSTransvaginal = "24677-7";
+
+    /// <summary>
+    /// Literal for code: NONEPelvisUSTransvaginal
+    /// </summary>
+    public const string LiteralNONEPelvisUSTransvaginal = "http://loinc.org#24677-7";
 
     /// <summary>
     /// Literal for code: EsophagusFluoroscopyWContrastPO
@@ -10198,9 +11378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEsophagusFluoroscopyWContrastPO = "24678-5";
 
     /// <summary>
+    /// Literal for code: NONEEsophagusFluoroscopyWContrastPO
+    /// </summary>
+    public const string LiteralNONEEsophagusFluoroscopyWContrastPO = "http://loinc.org#24678-5";
+
+    /// <summary>
     /// Literal for code: EsophagusFluoroscopyWGastrografinPO
     /// </summary>
     public const string LiteralEsophagusFluoroscopyWGastrografinPO = "24679-3";
+
+    /// <summary>
+    /// Literal for code: NONEEsophagusFluoroscopyWGastrografinPO
+    /// </summary>
+    public const string LiteralNONEEsophagusFluoroscopyWGastrografinPO = "http://loinc.org#24679-3";
 
     /// <summary>
     /// Literal for code: FluoroscopyGuidanceForDilationOfEsophagus
@@ -10208,9 +11398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyGuidanceForDilationOfEsophagus = "24680-1";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForDilationOfEsophagus
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForDilationOfEsophagus = "http://loinc.org#24680-1";
+
+    /// <summary>
     /// Literal for code: EsophagusAndHypopharynxFluoroscopyVideoWContrastPODuringSwallowing
     /// </summary>
     public const string LiteralEsophagusAndHypopharynxFluoroscopyVideoWContrastPODuringSwallowing = "24681-9";
+
+    /// <summary>
+    /// Literal for code: NONEEsophagusAndHypopharynxFluoroscopyVideoWContrastPODuringSwallowing
+    /// </summary>
+    public const string LiteralNONEEsophagusAndHypopharynxFluoroscopyVideoWContrastPODuringSwallowing = "http://loinc.org#24681-9";
 
     /// <summary>
     /// Literal for code: EsophagusAndHypopharynxFluoroscopyVideoWLiquidAndPasteContrastPODuringSwallowing
@@ -10218,9 +11418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEsophagusAndHypopharynxFluoroscopyVideoWLiquidAndPasteContrastPODuringSwallowing = "24682-7";
 
     /// <summary>
+    /// Literal for code: NONEEsophagusAndHypopharynxFluoroscopyVideoWLiquidAndPasteContrastPODuringSwallowing
+    /// </summary>
+    public const string LiteralNONEEsophagusAndHypopharynxFluoroscopyVideoWLiquidAndPasteContrastPODuringSwallowing = "http://loinc.org#24682-7";
+
+    /// <summary>
     /// Literal for code: EsophagusPlusStomachNMWTc99mSCPO
     /// </summary>
     public const string LiteralEsophagusPlusStomachNMWTc99mSCPO = "24683-5";
+
+    /// <summary>
+    /// Literal for code: NONEEsophagusPlusStomachNMWTc99mSCPO
+    /// </summary>
+    public const string LiteralNONEEsophagusPlusStomachNMWTc99mSCPO = "http://loinc.org#24683-5";
 
     /// <summary>
     /// Literal for code: ExtracranialVesselsFluoroscopicAngiogramEmbolectomyWContrastIA
@@ -10228,9 +11438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtracranialVesselsFluoroscopicAngiogramEmbolectomyWContrastIA = "24684-3";
 
     /// <summary>
+    /// Literal for code: NONEExtracranialVesselsFluoroscopicAngiogramEmbolectomyWContrastIA
+    /// </summary>
+    public const string LiteralNONEExtracranialVesselsFluoroscopicAngiogramEmbolectomyWContrastIA = "http://loinc.org#24684-3";
+
+    /// <summary>
     /// Literal for code: PeripheralVeinsFluoroscopicAngiogramWContrastIV
     /// </summary>
     public const string LiteralPeripheralVeinsFluoroscopicAngiogramWContrastIV = "24685-0";
+
+    /// <summary>
+    /// Literal for code: NONEPeripheralVeinsFluoroscopicAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEPeripheralVeinsFluoroscopicAngiogramWContrastIV = "http://loinc.org#24685-0";
 
     /// <summary>
     /// Literal for code: LowerExtremityXRay
@@ -10238,9 +11458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLowerExtremityXRay = "24686-8";
 
     /// <summary>
+    /// Literal for code: NONELowerExtremityXRay
+    /// </summary>
+    public const string LiteralNONELowerExtremityXRay = "http://loinc.org#24686-8";
+
+    /// <summary>
     /// Literal for code: LowerExtremityJointMR
     /// </summary>
     public const string LiteralLowerExtremityJointMR = "24687-6";
+
+    /// <summary>
+    /// Literal for code: NONELowerExtremityJointMR
+    /// </summary>
+    public const string LiteralNONELowerExtremityJointMR = "http://loinc.org#24687-6";
 
     /// <summary>
     /// Literal for code: UpperExtremityMR
@@ -10248,9 +11478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUpperExtremityMR = "24688-4";
 
     /// <summary>
+    /// Literal for code: NONEUpperExtremityMR
+    /// </summary>
+    public const string LiteralNONEUpperExtremityMR = "http://loinc.org#24688-4";
+
+    /// <summary>
     /// Literal for code: UpperExtremityXRay
     /// </summary>
     public const string LiteralUpperExtremityXRay = "24689-2";
+
+    /// <summary>
+    /// Literal for code: NONEUpperExtremityXRay
+    /// </summary>
+    public const string LiteralNONEUpperExtremityXRay = "http://loinc.org#24689-2";
 
     /// <summary>
     /// Literal for code: ExtremityCT
@@ -10258,9 +11498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtremityCT = "24690-0";
 
     /// <summary>
+    /// Literal for code: NONEExtremityCT
+    /// </summary>
+    public const string LiteralNONEExtremityCT = "http://loinc.org#24690-0";
+
+    /// <summary>
     /// Literal for code: ExtremityCTWContrastIV
     /// </summary>
     public const string LiteralExtremityCTWContrastIV = "24691-8";
+
+    /// <summary>
+    /// Literal for code: NONEExtremityCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEExtremityCTWContrastIV = "http://loinc.org#24691-8";
 
     /// <summary>
     /// Literal for code: USGuidanceForDrainageOfExtremity
@@ -10268,9 +11518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForDrainageOfExtremity = "24692-6";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForDrainageOfExtremity
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForDrainageOfExtremity = "http://loinc.org#24692-6";
+
+    /// <summary>
     /// Literal for code: ExtremityUS
     /// </summary>
     public const string LiteralExtremityUS = "24693-4";
+
+    /// <summary>
+    /// Literal for code: NONEExtremityUS
+    /// </summary>
+    public const string LiteralNONEExtremityUS = "http://loinc.org#24693-4";
 
     /// <summary>
     /// Literal for code: FaceMRWOAndWContrastIV
@@ -10278,9 +11538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFaceMRWOAndWContrastIV = "24694-2";
 
     /// <summary>
+    /// Literal for code: NONEFaceMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEFaceMRWOAndWContrastIV = "http://loinc.org#24694-2";
+
+    /// <summary>
     /// Literal for code: FacialBonesXRay
     /// </summary>
     public const string LiteralFacialBonesXRay = "24695-9";
+
+    /// <summary>
+    /// Literal for code: NONEFacialBonesXRay
+    /// </summary>
+    public const string LiteralNONEFacialBonesXRay = "http://loinc.org#24695-9";
 
     /// <summary>
     /// Literal for code: FacialBonesCT
@@ -10288,9 +11558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFacialBonesCT = "24696-7";
 
     /// <summary>
+    /// Literal for code: NONEFacialBonesCT
+    /// </summary>
+    public const string LiteralNONEFacialBonesCT = "http://loinc.org#24696-7";
+
+    /// <summary>
     /// Literal for code: FacialBonesCTWContrastIV
     /// </summary>
     public const string LiteralFacialBonesCTWContrastIV = "24697-5";
+
+    /// <summary>
+    /// Literal for code: NONEFacialBonesCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEFacialBonesCTWContrastIV = "http://loinc.org#24697-5";
 
     /// <summary>
     /// Literal for code: FemoralArteryFluoroscopicAngiogramAngioplastyWContrastIA
@@ -10298,9 +11578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFemoralArteryFluoroscopicAngiogramAngioplastyWContrastIA = "24698-3";
 
     /// <summary>
+    /// Literal for code: NONEFemoralArteryFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEFemoralArteryFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#24698-3";
+
+    /// <summary>
     /// Literal for code: FemoralArteryFluoroscopicAngiogramRunoffWContrastIA
     /// </summary>
     public const string LiteralFemoralArteryFluoroscopicAngiogramRunoffWContrastIA = "24699-1";
+
+    /// <summary>
+    /// Literal for code: NONEFemoralArteryFluoroscopicAngiogramRunoffWContrastIA
+    /// </summary>
+    public const string LiteralNONEFemoralArteryFluoroscopicAngiogramRunoffWContrastIA = "http://loinc.org#24699-1";
 
     /// <summary>
     /// Literal for code: FemurAndTibiaXRayForLegLength
@@ -10308,9 +11598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFemurAndTibiaXRayForLegLength = "24700-7";
 
     /// <summary>
+    /// Literal for code: NONEFemurAndTibiaXRayForLegLength
+    /// </summary>
+    public const string LiteralNONEFemurAndTibiaXRayForLegLength = "http://loinc.org#24700-7";
+
+    /// <summary>
     /// Literal for code: ThighMR
     /// </summary>
     public const string LiteralThighMR = "24702-3";
+
+    /// <summary>
+    /// Literal for code: NONEThighMR
+    /// </summary>
+    public const string LiteralNONEThighMR = "http://loinc.org#24702-3";
 
     /// <summary>
     /// Literal for code: ThighMRWOAndWContrastIV
@@ -10318,9 +11618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThighMRWOAndWContrastIV = "24703-1";
 
     /// <summary>
+    /// Literal for code: NONEThighMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEThighMRWOAndWContrastIV = "http://loinc.org#24703-1";
+
+    /// <summary>
     /// Literal for code: FemurXRay
     /// </summary>
     public const string LiteralFemurXRay = "24704-9";
+
+    /// <summary>
+    /// Literal for code: NONEFemurXRay
+    /// </summary>
+    public const string LiteralNONEFemurXRay = "http://loinc.org#24704-9";
 
     /// <summary>
     /// Literal for code: FingerMR
@@ -10328,9 +11638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFingerMR = "24705-6";
 
     /// <summary>
+    /// Literal for code: NONEFingerMR
+    /// </summary>
+    public const string LiteralNONEFingerMR = "http://loinc.org#24705-6";
+
+    /// <summary>
     /// Literal for code: FingerXRay
     /// </summary>
     public const string LiteralFingerXRay = "24706-4";
+
+    /// <summary>
+    /// Literal for code: NONEFingerXRay
+    /// </summary>
+    public const string LiteralNONEFingerXRay = "http://loinc.org#24706-4";
 
     /// <summary>
     /// Literal for code: FootMR
@@ -10338,9 +11658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFootMR = "24707-2";
 
     /// <summary>
+    /// Literal for code: NONEFootMR
+    /// </summary>
+    public const string LiteralNONEFootMR = "http://loinc.org#24707-2";
+
+    /// <summary>
     /// Literal for code: FootXRayStanding
     /// </summary>
     public const string LiteralFootXRayStanding = "24708-0";
+
+    /// <summary>
+    /// Literal for code: NONEFootXRayStanding
+    /// </summary>
+    public const string LiteralNONEFootXRayStanding = "http://loinc.org#24708-0";
 
     /// <summary>
     /// Literal for code: FootXRay
@@ -10348,9 +11678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFootXRay = "24709-8";
 
     /// <summary>
+    /// Literal for code: NONEFootXRay
+    /// </summary>
+    public const string LiteralNONEFootXRay = "http://loinc.org#24709-8";
+
+    /// <summary>
     /// Literal for code: ForearmMR
     /// </summary>
     public const string LiteralForearmMR = "24710-6";
+
+    /// <summary>
+    /// Literal for code: NONEForearmMR
+    /// </summary>
+    public const string LiteralNONEForearmMR = "http://loinc.org#24710-6";
 
     /// <summary>
     /// Literal for code: GallbladderUS
@@ -10358,9 +11698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGallbladderUS = "24711-4";
 
     /// <summary>
+    /// Literal for code: NONEGallbladderUS
+    /// </summary>
+    public const string LiteralNONEGallbladderUS = "http://loinc.org#24711-4";
+
+    /// <summary>
     /// Literal for code: GallbladderXRayWContrastPO
     /// </summary>
     public const string LiteralGallbladderXRayWContrastPO = "24712-2";
+
+    /// <summary>
+    /// Literal for code: NONEGallbladderXRayWContrastPO
+    /// </summary>
+    public const string LiteralNONEGallbladderXRayWContrastPO = "http://loinc.org#24712-2";
 
     /// <summary>
     /// Literal for code: GallbladderXRay48HoursPostContrastPO
@@ -10368,9 +11718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGallbladderXRay48HoursPostContrastPO = "24713-0";
 
     /// <summary>
+    /// Literal for code: NONEGallbladderXRay48HoursPostContrastPO
+    /// </summary>
+    public const string LiteralNONEGallbladderXRay48HoursPostContrastPO = "http://loinc.org#24713-0";
+
+    /// <summary>
     /// Literal for code: GastrointestinalTractNMForGastrointestinalBleedingWTc99mTaggedRBCIV
     /// </summary>
     public const string LiteralGastrointestinalTractNMForGastrointestinalBleedingWTc99mTaggedRBCIV = "24714-8";
+
+    /// <summary>
+    /// Literal for code: NONEGastrointestinalTractNMForGastrointestinalBleedingWTc99mTaggedRBCIV
+    /// </summary>
+    public const string LiteralNONEGastrointestinalTractNMForGastrointestinalBleedingWTc99mTaggedRBCIV = "http://loinc.org#24714-8";
 
     /// <summary>
     /// Literal for code: GastrointestinalTractUpperFluoroscopySingleViewWContrastPO
@@ -10378,9 +11738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGastrointestinalTractUpperFluoroscopySingleViewWContrastPO = "24715-5";
 
     /// <summary>
+    /// Literal for code: NONEGastrointestinalTractUpperFluoroscopySingleViewWContrastPO
+    /// </summary>
+    public const string LiteralNONEGastrointestinalTractUpperFluoroscopySingleViewWContrastPO = "http://loinc.org#24715-5";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForPlacementOfDecompressionTubeInGastrointestinalTract
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForPlacementOfDecompressionTubeInGastrointestinalTract = "24716-3";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForPlacementOfDecompressionTubeInGastrointestinalTract
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForPlacementOfDecompressionTubeInGastrointestinalTract = "http://loinc.org#24716-3";
 
     /// <summary>
     /// Literal for code: IlealConduitXRayLoopogram
@@ -10388,9 +11758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIlealConduitXRayLoopogram = "24717-1";
 
     /// <summary>
+    /// Literal for code: NONEIlealConduitXRayLoopogram
+    /// </summary>
+    public const string LiteralNONEIlealConduitXRayLoopogram = "http://loinc.org#24717-1";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForTransjugularBiopsyOfLiverWContrastIV
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForTransjugularBiopsyOfLiverWContrastIV = "24718-9";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForTransjugularBiopsyOfLiverWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForTransjugularBiopsyOfLiverWContrastIV = "http://loinc.org#24718-9";
 
     /// <summary>
     /// Literal for code: GroinUS
@@ -10398,9 +11778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGroinUS = "24719-7";
 
     /// <summary>
+    /// Literal for code: NONEGroinUS
+    /// </summary>
+    public const string LiteralNONEGroinUS = "http://loinc.org#24719-7";
+
+    /// <summary>
     /// Literal for code: HandMR
     /// </summary>
     public const string LiteralHandMR = "24720-5";
+
+    /// <summary>
+    /// Literal for code: NONEHandMR
+    /// </summary>
+    public const string LiteralNONEHandMR = "http://loinc.org#24720-5";
 
     /// <summary>
     /// Literal for code: HandXRay2Views
@@ -10408,9 +11798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandXRay2Views = "24721-3";
 
     /// <summary>
+    /// Literal for code: NONEHandXRay2Views
+    /// </summary>
+    public const string LiteralNONEHandXRay2Views = "http://loinc.org#24721-3";
+
+    /// <summary>
     /// Literal for code: HandXRay3Views
     /// </summary>
     public const string LiteralHandXRay3Views = "24722-1";
+
+    /// <summary>
+    /// Literal for code: NONEHandXRay3Views
+    /// </summary>
+    public const string LiteralNONEHandXRay3Views = "http://loinc.org#24722-1";
 
     /// <summary>
     /// Literal for code: HandXRayArthritis
@@ -10418,9 +11818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandXRayArthritis = "24723-9";
 
     /// <summary>
+    /// Literal for code: NONEHandXRayArthritis
+    /// </summary>
+    public const string LiteralNONEHandXRayArthritis = "http://loinc.org#24723-9";
+
+    /// <summary>
     /// Literal for code: WristAndHandXRayBoneAge
     /// </summary>
     public const string LiteralWristAndHandXRayBoneAge = "24724-7";
+
+    /// <summary>
+    /// Literal for code: NONEWristAndHandXRayBoneAge
+    /// </summary>
+    public const string LiteralNONEWristAndHandXRayBoneAge = "http://loinc.org#24724-7";
 
     /// <summary>
     /// Literal for code: HeadCT
@@ -10428,9 +11838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeadCT = "24725-4";
 
     /// <summary>
+    /// Literal for code: NONEHeadCT
+    /// </summary>
+    public const string LiteralNONEHeadCT = "http://loinc.org#24725-4";
+
+    /// <summary>
     /// Literal for code: HeadCTWOAndWContrastIV
     /// </summary>
     public const string LiteralHeadCTWOAndWContrastIV = "24726-2";
+
+    /// <summary>
+    /// Literal for code: NONEHeadCTWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEHeadCTWOAndWContrastIV = "http://loinc.org#24726-2";
 
     /// <summary>
     /// Literal for code: HeadCTWContrastIV
@@ -10438,9 +11858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeadCTWContrastIV = "24727-0";
 
     /// <summary>
+    /// Literal for code: NONEHeadCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEHeadCTWContrastIV = "http://loinc.org#24727-0";
+
+    /// <summary>
     /// Literal for code: HeadCTPerfusion
     /// </summary>
     public const string LiteralHeadCTPerfusion = "24728-8";
+
+    /// <summary>
+    /// Literal for code: NONEHeadCTPerfusion
+    /// </summary>
+    public const string LiteralNONEHeadCTPerfusion = "http://loinc.org#24728-8";
 
     /// <summary>
     /// Literal for code: HeadCTPerfusionWOAndWContrastIV
@@ -10448,9 +11878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeadCTPerfusionWOAndWContrastIV = "24729-6";
 
     /// <summary>
+    /// Literal for code: NONEHeadCTPerfusionWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEHeadCTPerfusionWOAndWContrastIV = "http://loinc.org#24729-6";
+
+    /// <summary>
     /// Literal for code: BrainNM
     /// </summary>
     public const string LiteralBrainNM = "24730-4";
+
+    /// <summary>
+    /// Literal for code: NONEBrainNM
+    /// </summary>
+    public const string LiteralNONEBrainNM = "http://loinc.org#24730-4";
 
     /// <summary>
     /// Literal for code: HeadUS
@@ -10458,9 +11898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeadUS = "24731-2";
 
     /// <summary>
+    /// Literal for code: NONEHeadUS
+    /// </summary>
+    public const string LiteralNONEHeadUS = "http://loinc.org#24731-2";
+
+    /// <summary>
     /// Literal for code: HeadUSDuringSurgery
     /// </summary>
     public const string LiteralHeadUSDuringSurgery = "24732-0";
+
+    /// <summary>
+    /// Literal for code: NONEHeadUSDuringSurgery
+    /// </summary>
+    public const string LiteralNONEHeadUSDuringSurgery = "http://loinc.org#24732-0";
 
     /// <summary>
     /// Literal for code: HeadVesselsUSDoppler
@@ -10468,9 +11918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeadVesselsUSDoppler = "24733-8";
 
     /// <summary>
+    /// Literal for code: NONEHeadVesselsUSDoppler
+    /// </summary>
+    public const string LiteralNONEHeadVesselsUSDoppler = "http://loinc.org#24733-8";
+
+    /// <summary>
     /// Literal for code: CerebralCisternsCTWContrastIT
     /// </summary>
     public const string LiteralCerebralCisternsCTWContrastIT = "24734-6";
+
+    /// <summary>
+    /// Literal for code: NONECerebralCisternsCTWContrastIT
+    /// </summary>
+    public const string LiteralNONECerebralCisternsCTWContrastIT = "http://loinc.org#24734-6";
 
     /// <summary>
     /// Literal for code: InternalAuditoryCanalAndPosteriorFossaMR
@@ -10478,9 +11938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInternalAuditoryCanalAndPosteriorFossaMR = "24735-3";
 
     /// <summary>
+    /// Literal for code: NONEInternalAuditoryCanalAndPosteriorFossaMR
+    /// </summary>
+    public const string LiteralNONEInternalAuditoryCanalAndPosteriorFossaMR = "http://loinc.org#24735-3";
+
+    /// <summary>
     /// Literal for code: InternalAuditoryCanalAndPosteriorFossaMRWOAndWContrastIV
     /// </summary>
     public const string LiteralInternalAuditoryCanalAndPosteriorFossaMRWOAndWContrastIV = "24740-3";
+
+    /// <summary>
+    /// Literal for code: NONEInternalAuditoryCanalAndPosteriorFossaMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEInternalAuditoryCanalAndPosteriorFossaMRWOAndWContrastIV = "http://loinc.org#24740-3";
 
     /// <summary>
     /// Literal for code: PetrousBoneXRay
@@ -10488,9 +11958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPetrousBoneXRay = "24745-2";
 
     /// <summary>
+    /// Literal for code: NONEPetrousBoneXRay
+    /// </summary>
+    public const string LiteralNONEPetrousBoneXRay = "http://loinc.org#24745-2";
+
+    /// <summary>
     /// Literal for code: DeprecatedHeadSagittalSinusMR
     /// </summary>
     public const string LiteralDeprecatedHeadSagittalSinusMR = "24746-0";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedHeadSagittalSinusMR
+    /// </summary>
+    public const string LiteralNONEDeprecatedHeadSagittalSinusMR = "http://loinc.org#24746-0";
 
     /// <summary>
     /// Literal for code: DeprecatedHeadSagittalSinusMRAngiogramWContrastIV
@@ -10498,9 +11978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedHeadSagittalSinusMRAngiogramWContrastIV = "24747-8";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedHeadSagittalSinusMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEDeprecatedHeadSagittalSinusMRAngiogramWContrastIV = "http://loinc.org#24747-8";
+
+    /// <summary>
     /// Literal for code: HeartMR
     /// </summary>
     public const string LiteralHeartMR = "24748-6";
+
+    /// <summary>
+    /// Literal for code: NONEHeartMR
+    /// </summary>
+    public const string LiteralNONEHeartMR = "http://loinc.org#24748-6";
 
     /// <summary>
     /// Literal for code: HeartNMAtRestAndWTl201IV
@@ -10508,9 +11998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeartNMAtRestAndWTl201IV = "24750-2";
 
     /// <summary>
+    /// Literal for code: NONEHeartNMAtRestAndWTl201IV
+    /// </summary>
+    public const string LiteralNONEHeartNMAtRestAndWTl201IV = "http://loinc.org#24750-2";
+
+    /// <summary>
     /// Literal for code: ParathyroidGlandNMWTI201SubtractionTc99mIV
     /// </summary>
     public const string LiteralParathyroidGlandNMWTI201SubtractionTc99mIV = "24751-0";
+
+    /// <summary>
+    /// Literal for code: NONEParathyroidGlandNMWTI201SubtractionTc99mIV
+    /// </summary>
+    public const string LiteralNONEParathyroidGlandNMWTI201SubtractionTc99mIV = "http://loinc.org#24751-0";
 
     /// <summary>
     /// Literal for code: HeartFluoroscopyVideo
@@ -10518,9 +12018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeartFluoroscopyVideo = "24752-8";
 
     /// <summary>
+    /// Literal for code: NONEHeartFluoroscopyVideo
+    /// </summary>
+    public const string LiteralNONEHeartFluoroscopyVideo = "http://loinc.org#24752-8";
+
+    /// <summary>
     /// Literal for code: UnspecifiedBodyRegionCTWContrastIV
     /// </summary>
     public const string LiteralUnspecifiedBodyRegionCTWContrastIV = "24753-6";
+
+    /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionCTWContrastIV = "http://loinc.org#24753-6";
 
     /// <summary>
     /// Literal for code: AdministrationOfVasodilatorIntoCatheterOfVein
@@ -10528,9 +12038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdministrationOfVasodilatorIntoCatheterOfVein = "24754-4";
 
     /// <summary>
+    /// Literal for code: NONEAdministrationOfVasodilatorIntoCatheterOfVein
+    /// </summary>
+    public const string LiteralNONEAdministrationOfVasodilatorIntoCatheterOfVein = "http://loinc.org#24754-4";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForAtherectomyOfVeinWContrastIV
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForAtherectomyOfVeinWContrastIV = "24755-1";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForAtherectomyOfVeinWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForAtherectomyOfVeinWContrastIV = "http://loinc.org#24755-1";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfStentInVein
@@ -10538,9 +12058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfStentInVein = "24756-9";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfStentInVein
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfStentInVein = "http://loinc.org#24756-9";
+
+    /// <summary>
     /// Literal for code: DeprecatedCoronaryArteriesCTFast
     /// </summary>
     public const string LiteralDeprecatedCoronaryArteriesCTFast = "24757-7";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedCoronaryArteriesCTFast
+    /// </summary>
+    public const string LiteralNONEDeprecatedCoronaryArteriesCTFast = "http://loinc.org#24757-7";
 
     /// <summary>
     /// Literal for code: HipUS
@@ -10548,9 +12078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHipUS = "24760-1";
 
     /// <summary>
+    /// Literal for code: NONEHipUS
+    /// </summary>
+    public const string LiteralNONEHipUS = "http://loinc.org#24760-1";
+
+    /// <summary>
     /// Literal for code: HipXRaySingleView
     /// </summary>
     public const string LiteralHipXRaySingleView = "24761-9";
+
+    /// <summary>
+    /// Literal for code: NONEHipXRaySingleView
+    /// </summary>
+    public const string LiteralNONEHipXRaySingleView = "http://loinc.org#24761-9";
 
     /// <summary>
     /// Literal for code: HipXRay
@@ -10558,9 +12098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHipXRay = "24762-7";
 
     /// <summary>
+    /// Literal for code: NONEHipXRay
+    /// </summary>
+    public const string LiteralNONEHipXRay = "http://loinc.org#24762-7";
+
+    /// <summary>
     /// Literal for code: HipFluoroscopyArthrogram
     /// </summary>
     public const string LiteralHipFluoroscopyArthrogram = "24764-3";
+
+    /// <summary>
+    /// Literal for code: NONEHipFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEHipFluoroscopyArthrogram = "http://loinc.org#24764-3";
 
     /// <summary>
     /// Literal for code: HumerusXRay2Views
@@ -10568,9 +12118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHumerusXRay2Views = "24765-0";
 
     /// <summary>
+    /// Literal for code: NONEHumerusXRay2Views
+    /// </summary>
+    public const string LiteralNONEHumerusXRay2Views = "http://loinc.org#24765-0";
+
+    /// <summary>
     /// Literal for code: IliacArteryFluoroscopicAngiogramAngioplastyWContrastIA
     /// </summary>
     public const string LiteralIliacArteryFluoroscopicAngiogramAngioplastyWContrastIA = "24766-8";
+
+    /// <summary>
+    /// Literal for code: NONEIliacArteryFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEIliacArteryFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#24766-8";
 
     /// <summary>
     /// Literal for code: InternalAuditoryCanalXRayTomograph
@@ -10578,9 +12138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInternalAuditoryCanalXRayTomograph = "24767-6";
 
     /// <summary>
+    /// Literal for code: NONEInternalAuditoryCanalXRayTomograph
+    /// </summary>
+    public const string LiteralNONEInternalAuditoryCanalXRayTomograph = "http://loinc.org#24767-6";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForInjectionOfJointSpace
     /// </summary>
     public const string LiteralCTGuidanceForInjectionOfJointSpace = "24769-2";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForInjectionOfJointSpace
+    /// </summary>
+    public const string LiteralNONECTGuidanceForInjectionOfJointSpace = "http://loinc.org#24769-2";
 
     /// <summary>
     /// Literal for code: JointNMWIn111Intrajoint
@@ -10588,9 +12158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralJointNMWIn111Intrajoint = "24770-0";
 
     /// <summary>
+    /// Literal for code: NONEJointNMWIn111Intrajoint
+    /// </summary>
+    public const string LiteralNONEJointNMWIn111Intrajoint = "http://loinc.org#24770-0";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForAspirationOfJointSpace
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForAspirationOfJointSpace = "24771-8";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForAspirationOfJointSpace
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForAspirationOfJointSpace = "http://loinc.org#24771-8";
 
     /// <summary>
     /// Literal for code: USGuidanceForBiopsyOfKidney
@@ -10598,9 +12178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForBiopsyOfKidney = "24772-6";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForBiopsyOfKidney
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForBiopsyOfKidney = "http://loinc.org#24772-6";
+
+    /// <summary>
     /// Literal for code: KidneyNMWRadionuclideTransplantScan
     /// </summary>
     public const string LiteralKidneyNMWRadionuclideTransplantScan = "24773-4";
+
+    /// <summary>
+    /// Literal for code: NONEKidneyNMWRadionuclideTransplantScan
+    /// </summary>
+    public const string LiteralNONEKidneyNMWRadionuclideTransplantScan = "http://loinc.org#24773-4";
 
     /// <summary>
     /// Literal for code: KidneyNM
@@ -10608,9 +12198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKidneyNM = "24776-7";
 
     /// <summary>
+    /// Literal for code: NONEKidneyNM
+    /// </summary>
+    public const string LiteralNONEKidneyNM = "http://loinc.org#24776-7";
+
+    /// <summary>
     /// Literal for code: KidneyBilateralXRay3ViewsSerialWOAndWContrastIV
     /// </summary>
     public const string LiteralKidneyBilateralXRay3ViewsSerialWOAndWContrastIV = "24778-3";
+
+    /// <summary>
+    /// Literal for code: NONEKidneyBilateralXRay3ViewsSerialWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEKidneyBilateralXRay3ViewsSerialWOAndWContrastIV = "http://loinc.org#24778-3";
 
     /// <summary>
     /// Literal for code: FluoroscopyGuidanceForPlacementOfPercutaneousNephrostomyInKidneyBilateralWContrastViaTube
@@ -10618,9 +12218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyGuidanceForPlacementOfPercutaneousNephrostomyInKidneyBilateralWContrastViaTube = "24779-1";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForPlacementOfPercutaneousNephrostomyInKidneyBilateralWContrastViaTube
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForPlacementOfPercutaneousNephrostomyInKidneyBilateralWContrastViaTube = "http://loinc.org#24779-1";
+
+    /// <summary>
     /// Literal for code: KidneyBilateralFluoroscopyWContrastViaNephrostomyTube
     /// </summary>
     public const string LiteralKidneyBilateralFluoroscopyWContrastViaNephrostomyTube = "24780-9";
+
+    /// <summary>
+    /// Literal for code: NONEKidneyBilateralFluoroscopyWContrastViaNephrostomyTube
+    /// </summary>
+    public const string LiteralNONEKidneyBilateralFluoroscopyWContrastViaNephrostomyTube = "http://loinc.org#24780-9";
 
     /// <summary>
     /// Literal for code: FluoroscopyGuidanceForExchangeOfPercutaneousNephrostomyTubeOfKidneyBilateralWContrast
@@ -10628,9 +12238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyGuidanceForExchangeOfPercutaneousNephrostomyTubeOfKidneyBilateralWContrast = "24781-7";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForExchangeOfPercutaneousNephrostomyTubeOfKidneyBilateralWContrast
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForExchangeOfPercutaneousNephrostomyTubeOfKidneyBilateralWContrast = "http://loinc.org#24781-7";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForPlacementOfPercutaneousNephroureteralStentInKidneyBilateralWContrastViaStent
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForPlacementOfPercutaneousNephroureteralStentInKidneyBilateralWContrastViaStent = "24782-5";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForPlacementOfPercutaneousNephroureteralStentInKidneyBilateralWContrastViaStent
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForPlacementOfPercutaneousNephroureteralStentInKidneyBilateralWContrastViaStent = "http://loinc.org#24782-5";
 
     /// <summary>
     /// Literal for code: KidneyBilateralFluoroscopyUrodynamics
@@ -10638,9 +12258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKidneyBilateralFluoroscopyUrodynamics = "24783-3";
 
     /// <summary>
+    /// Literal for code: NONEKidneyBilateralFluoroscopyUrodynamics
+    /// </summary>
+    public const string LiteralNONEKidneyBilateralFluoroscopyUrodynamics = "http://loinc.org#24783-3";
+
+    /// <summary>
     /// Literal for code: KidneyBilateralXRayTomographWOAndWContrastIV
     /// </summary>
     public const string LiteralKidneyBilateralXRayTomographWOAndWContrastIV = "24784-1";
+
+    /// <summary>
+    /// Literal for code: NONEKidneyBilateralXRayTomographWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEKidneyBilateralXRayTomographWOAndWContrastIV = "http://loinc.org#24784-1";
 
     /// <summary>
     /// Literal for code: KidneyBilateralXRayTomographWOContrastAnd10MPostContrastIV
@@ -10648,9 +12278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKidneyBilateralXRayTomographWOContrastAnd10MPostContrastIV = "24787-4";
 
     /// <summary>
+    /// Literal for code: NONEKidneyBilateralXRayTomographWOContrastAnd10MPostContrastIV
+    /// </summary>
+    public const string LiteralNONEKidneyBilateralXRayTomographWOContrastAnd10MPostContrastIV = "http://loinc.org#24787-4";
+
+    /// <summary>
     /// Literal for code: KidneyBilateralXRayWContrastIV
     /// </summary>
     public const string LiteralKidneyBilateralXRayWContrastIV = "24788-2";
+
+    /// <summary>
+    /// Literal for code: NONEKidneyBilateralXRayWContrastIV
+    /// </summary>
+    public const string LiteralNONEKidneyBilateralXRayWContrastIV = "http://loinc.org#24788-2";
 
     /// <summary>
     /// Literal for code: KidneyBilateralXRayTomograph
@@ -10658,9 +12298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKidneyBilateralXRayTomograph = "24789-0";
 
     /// <summary>
+    /// Literal for code: NONEKidneyBilateralXRayTomograph
+    /// </summary>
+    public const string LiteralNONEKidneyBilateralXRayTomograph = "http://loinc.org#24789-0";
+
+    /// <summary>
     /// Literal for code: KidneyBilateralXRayTomographWContrastIV
     /// </summary>
     public const string LiteralKidneyBilateralXRayTomographWContrastIV = "24790-8";
+
+    /// <summary>
+    /// Literal for code: NONEKidneyBilateralXRayTomographWContrastIV
+    /// </summary>
+    public const string LiteralNONEKidneyBilateralXRayTomographWContrastIV = "http://loinc.org#24790-8";
 
     /// <summary>
     /// Literal for code: AbdomenXRayAPAndAPLeftLateralDecubitusPortable
@@ -10668,9 +12318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenXRayAPAndAPLeftLateralDecubitusPortable = "24792-4";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPAndAPLeftLateralDecubitusPortable
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPAndAPLeftLateralDecubitusPortable = "http://loinc.org#24792-4";
+
+    /// <summary>
     /// Literal for code: AbdomenXRayAPAndLateralPortable
     /// </summary>
     public const string LiteralAbdomenXRayAPAndLateralPortable = "24793-2";
+
+    /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPAndLateralPortable
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPAndLateralPortable = "http://loinc.org#24793-2";
 
     /// <summary>
     /// Literal for code: AbdomenXRayAPAndLateral
@@ -10678,9 +12338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenXRayAPAndLateral = "24794-0";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPAndLateral
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPAndLateral = "http://loinc.org#24794-0";
+
+    /// <summary>
     /// Literal for code: AbdomenXRayAPSupineAndUprightPortable
     /// </summary>
     public const string LiteralAbdomenXRayAPSupineAndUprightPortable = "24795-7";
+
+    /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPSupineAndUprightPortable
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPSupineAndUprightPortable = "http://loinc.org#24795-7";
 
     /// <summary>
     /// Literal for code: AbdomenXRayAPAndAPLeftLateralDecubitus
@@ -10688,9 +12358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenXRayAPAndAPLeftLateralDecubitus = "24796-5";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPAndAPLeftLateralDecubitus
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPAndAPLeftLateralDecubitus = "http://loinc.org#24796-5";
+
+    /// <summary>
     /// Literal for code: AbdomenXRayAPAndObliqueProne
     /// </summary>
     public const string LiteralAbdomenXRayAPAndObliqueProne = "24797-3";
+
+    /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPAndObliqueProne
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPAndObliqueProne = "http://loinc.org#24797-3";
 
     /// <summary>
     /// Literal for code: AbdomenXRayAPSupineAndUpright
@@ -10698,9 +12378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenXRayAPSupineAndUpright = "24798-1";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPSupineAndUpright
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPSupineAndUpright = "http://loinc.org#24798-1";
+
+    /// <summary>
     /// Literal for code: AbdomenXRayAPSingleView
     /// </summary>
     public const string LiteralAbdomenXRayAPSingleView = "24799-9";
+
+    /// <summary>
+    /// Literal for code: NONEAbdomenXRayAPSingleView
+    /// </summary>
+    public const string LiteralNONEAbdomenXRayAPSingleView = "http://loinc.org#24799-9";
 
     /// <summary>
     /// Literal for code: KneeFluoroscopyArthrogram
@@ -10708,9 +12398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeFluoroscopyArthrogram = "24800-5";
 
     /// <summary>
+    /// Literal for code: NONEKneeFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEKneeFluoroscopyArthrogram = "http://loinc.org#24800-5";
+
+    /// <summary>
     /// Literal for code: KneeXRayMerchants
     /// </summary>
     public const string LiteralKneeXRayMerchants = "24801-3";
+
+    /// <summary>
+    /// Literal for code: NONEKneeXRayMerchants
+    /// </summary>
+    public const string LiteralNONEKneeXRayMerchants = "http://loinc.org#24801-3";
 
     /// <summary>
     /// Literal for code: KneeMR
@@ -10718,9 +12418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeMR = "24802-1";
 
     /// <summary>
+    /// Literal for code: NONEKneeMR
+    /// </summary>
+    public const string LiteralNONEKneeMR = "http://loinc.org#24802-1";
+
+    /// <summary>
     /// Literal for code: KneeMRWOAndWContrastIV
     /// </summary>
     public const string LiteralKneeMRWOAndWContrastIV = "24803-9";
+
+    /// <summary>
+    /// Literal for code: NONEKneeMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEKneeMRWOAndWContrastIV = "http://loinc.org#24803-9";
 
     /// <summary>
     /// Literal for code: KneeNM
@@ -10728,9 +12438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeNM = "24804-7";
 
     /// <summary>
+    /// Literal for code: NONEKneeNM
+    /// </summary>
+    public const string LiteralNONEKneeNM = "http://loinc.org#24804-7";
+
+    /// <summary>
     /// Literal for code: KneeXRayAPAndLateralStanding
     /// </summary>
     public const string LiteralKneeXRayAPAndLateralStanding = "24805-4";
+
+    /// <summary>
+    /// Literal for code: NONEKneeXRayAPAndLateralStanding
+    /// </summary>
+    public const string LiteralNONEKneeXRayAPAndLateralStanding = "http://loinc.org#24805-4";
 
     /// <summary>
     /// Literal for code: KneeXRay2Views
@@ -10738,9 +12458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeXRay2Views = "24806-2";
 
     /// <summary>
+    /// Literal for code: NONEKneeXRay2Views
+    /// </summary>
+    public const string LiteralNONEKneeXRay2Views = "http://loinc.org#24806-2";
+
+    /// <summary>
     /// Literal for code: KneeXRayAPSingleViewStanding
     /// </summary>
     public const string LiteralKneeXRayAPSingleViewStanding = "24807-0";
+
+    /// <summary>
+    /// Literal for code: NONEKneeXRayAPSingleViewStanding
+    /// </summary>
+    public const string LiteralNONEKneeXRayAPSingleViewStanding = "http://loinc.org#24807-0";
 
     /// <summary>
     /// Literal for code: KneeXRayAPAndPAStanding
@@ -10748,9 +12478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeXRayAPAndPAStanding = "24808-8";
 
     /// <summary>
+    /// Literal for code: NONEKneeXRayAPAndPAStanding
+    /// </summary>
+    public const string LiteralNONEKneeXRayAPAndPAStanding = "http://loinc.org#24808-8";
+
+    /// <summary>
     /// Literal for code: KneeXRayStanding
     /// </summary>
     public const string LiteralKneeXRayStanding = "24809-6";
+
+    /// <summary>
+    /// Literal for code: NONEKneeXRayStanding
+    /// </summary>
+    public const string LiteralNONEKneeXRayStanding = "http://loinc.org#24809-6";
 
     /// <summary>
     /// Literal for code: CTGuidanceForAspirationOfLiver
@@ -10758,9 +12498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForAspirationOfLiver = "24811-2";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForAspirationOfLiver
+    /// </summary>
+    public const string LiteralNONECTGuidanceForAspirationOfLiver = "http://loinc.org#24811-2";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForBiopsyOfLiver
     /// </summary>
     public const string LiteralCTGuidanceForBiopsyOfLiver = "24812-0";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForBiopsyOfLiver
+    /// </summary>
+    public const string LiteralNONECTGuidanceForBiopsyOfLiver = "http://loinc.org#24812-0";
 
     /// <summary>
     /// Literal for code: CTGuidanceForCoreNeedleBiopsyOfLiver
@@ -10768,9 +12518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForCoreNeedleBiopsyOfLiver = "24813-8";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForCoreNeedleBiopsyOfLiver
+    /// </summary>
+    public const string LiteralNONECTGuidanceForCoreNeedleBiopsyOfLiver = "http://loinc.org#24813-8";
+
+    /// <summary>
     /// Literal for code: LiverCT
     /// </summary>
     public const string LiteralLiverCT = "24814-6";
+
+    /// <summary>
+    /// Literal for code: NONELiverCT
+    /// </summary>
+    public const string LiteralNONELiverCT = "http://loinc.org#24814-6";
 
     /// <summary>
     /// Literal for code: LiverCTWContrastIV
@@ -10778,9 +12538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiverCTWContrastIV = "24815-3";
 
     /// <summary>
+    /// Literal for code: NONELiverCTWContrastIV
+    /// </summary>
+    public const string LiteralNONELiverCTWContrastIV = "http://loinc.org#24815-3";
+
+    /// <summary>
     /// Literal for code: USGuidanceForBiopsyOfLiver
     /// </summary>
     public const string LiteralUSGuidanceForBiopsyOfLiver = "24816-1";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForBiopsyOfLiver
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForBiopsyOfLiver = "http://loinc.org#24816-1";
 
     /// <summary>
     /// Literal for code: LiverSPECTWTc99mIV
@@ -10788,9 +12558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiverSPECTWTc99mIV = "24817-9";
 
     /// <summary>
+    /// Literal for code: NONELiverSPECTWTc99mIV
+    /// </summary>
+    public const string LiteralNONELiverSPECTWTc99mIV = "http://loinc.org#24817-9";
+
+    /// <summary>
     /// Literal for code: DiaphragmAndLiverUS
     /// </summary>
     public const string LiteralDiaphragmAndLiverUS = "24818-7";
+
+    /// <summary>
+    /// Literal for code: NONEDiaphragmAndLiverUS
+    /// </summary>
+    public const string LiteralNONEDiaphragmAndLiverUS = "http://loinc.org#24818-7";
 
     /// <summary>
     /// Literal for code: DeprecatedLiverAndSpleenNMWTc99mCalciumColloidIV
@@ -10798,9 +12578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedLiverAndSpleenNMWTc99mCalciumColloidIV = "24819-5";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedLiverAndSpleenNMWTc99mCalciumColloidIV
+    /// </summary>
+    public const string LiteralNONEDeprecatedLiverAndSpleenNMWTc99mCalciumColloidIV = "http://loinc.org#24819-5";
+
+    /// <summary>
     /// Literal for code: LowerLegVesselsMRAngiogramWContrastIV
     /// </summary>
     public const string LiteralLowerLegVesselsMRAngiogramWContrastIV = "24820-3";
+
+    /// <summary>
+    /// Literal for code: NONELowerLegVesselsMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONELowerLegVesselsMRAngiogramWContrastIV = "http://loinc.org#24820-3";
 
     /// <summary>
     /// Literal for code: LowerLegMR
@@ -10808,9 +12598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLowerLegMR = "24821-1";
 
     /// <summary>
+    /// Literal for code: NONELowerLegMR
+    /// </summary>
+    public const string LiteralNONELowerLegMR = "http://loinc.org#24821-1";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForAspirationOfLung
     /// </summary>
     public const string LiteralCTGuidanceForAspirationOfLung = "24822-9";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForAspirationOfLung
+    /// </summary>
+    public const string LiteralNONECTGuidanceForAspirationOfLung = "http://loinc.org#24822-9";
 
     /// <summary>
     /// Literal for code: CTGuidanceForBiopsyOfLung
@@ -10818,9 +12618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForBiopsyOfLung = "24823-7";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForBiopsyOfLung
+    /// </summary>
+    public const string LiteralNONECTGuidanceForBiopsyOfLung = "http://loinc.org#24823-7";
+
+    /// <summary>
     /// Literal for code: LungNMPortable
     /// </summary>
     public const string LiteralLungNMPortable = "24824-5";
+
+    /// <summary>
+    /// Literal for code: NONELungNMPortable
+    /// </summary>
+    public const string LiteralNONELungNMPortable = "http://loinc.org#24824-5";
 
     /// <summary>
     /// Literal for code: LungXRayWContrastIntrabronchial
@@ -10828,9 +12638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLungXRayWContrastIntrabronchial = "24825-2";
 
     /// <summary>
+    /// Literal for code: NONELungXRayWContrastIntrabronchial
+    /// </summary>
+    public const string LiteralNONELungXRayWContrastIntrabronchial = "http://loinc.org#24825-2";
+
+    /// <summary>
     /// Literal for code: LymphaticVesselsNMWRadionuclideIntraLymphatic
     /// </summary>
     public const string LiteralLymphaticVesselsNMWRadionuclideIntraLymphatic = "24826-0";
+
+    /// <summary>
+    /// Literal for code: NONELymphaticVesselsNMWRadionuclideIntraLymphatic
+    /// </summary>
+    public const string LiteralNONELymphaticVesselsNMWRadionuclideIntraLymphatic = "http://loinc.org#24826-0";
 
     /// <summary>
     /// Literal for code: LymphaticsFluoroscopyWContrastIntraLymphatic
@@ -10838,9 +12658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLymphaticsFluoroscopyWContrastIntraLymphatic = "24827-8";
 
     /// <summary>
+    /// Literal for code: NONELymphaticsFluoroscopyWContrastIntraLymphatic
+    /// </summary>
+    public const string LiteralNONELymphaticsFluoroscopyWContrastIntraLymphatic = "http://loinc.org#24827-8";
+
+    /// <summary>
     /// Literal for code: MandibleXRayTomographPanoramic
     /// </summary>
     public const string LiteralMandibleXRayTomographPanoramic = "24828-6";
+
+    /// <summary>
+    /// Literal for code: NONEMandibleXRayTomographPanoramic
+    /// </summary>
+    public const string LiteralNONEMandibleXRayTomographPanoramic = "http://loinc.org#24828-6";
 
     /// <summary>
     /// Literal for code: MandibleXRay
@@ -10848,9 +12678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMandibleXRay = "24829-4";
 
     /// <summary>
+    /// Literal for code: NONEMandibleXRay
+    /// </summary>
+    public const string LiteralNONEMandibleXRay = "http://loinc.org#24829-4";
+
+    /// <summary>
     /// Literal for code: MastoidXRay
     /// </summary>
     public const string LiteralMastoidXRay = "24830-2";
+
+    /// <summary>
+    /// Literal for code: NONEMastoidXRay
+    /// </summary>
+    public const string LiteralNONEMastoidXRay = "http://loinc.org#24830-2";
 
     /// <summary>
     /// Literal for code: SmallBowelNMForMeckelQuoteSDiverticulumWTc99mM04IV
@@ -10858,9 +12698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSmallBowelNMForMeckelQuoteSDiverticulumWTc99mM04IV = "24831-0";
 
     /// <summary>
+    /// Literal for code: NONESmallBowelNMForMeckelQuoteSDiverticulumWTc99mM04IV
+    /// </summary>
+    public const string LiteralNONESmallBowelNMForMeckelQuoteSDiverticulumWTc99mM04IV = "http://loinc.org#24831-0";
+
+    /// <summary>
     /// Literal for code: MesentericArteryFluoroscopicAngiogramAngioplastyWContrastIA
     /// </summary>
     public const string LiteralMesentericArteryFluoroscopicAngiogramAngioplastyWContrastIA = "24832-8";
+
+    /// <summary>
+    /// Literal for code: NONEMesentericArteryFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEMesentericArteryFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#24832-8";
 
     /// <summary>
     /// Literal for code: MesentericArteryFluoroscopicAngiogramWContrastIA
@@ -10868,9 +12718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMesentericArteryFluoroscopicAngiogramWContrastIA = "24833-6";
 
     /// <summary>
+    /// Literal for code: NONEMesentericArteryFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEMesentericArteryFluoroscopicAngiogramWContrastIA = "http://loinc.org#24833-6";
+
+    /// <summary>
     /// Literal for code: NasalBonesXRay
     /// </summary>
     public const string LiteralNasalBonesXRay = "24834-4";
+
+    /// <summary>
+    /// Literal for code: NONENasalBonesXRay
+    /// </summary>
+    public const string LiteralNONENasalBonesXRay = "http://loinc.org#24834-4";
 
     /// <summary>
     /// Literal for code: NasopharynxAndNeckCT
@@ -10878,9 +12738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNasopharynxAndNeckCT = "24835-1";
 
     /// <summary>
+    /// Literal for code: NONENasopharynxAndNeckCT
+    /// </summary>
+    public const string LiteralNONENasopharynxAndNeckCT = "http://loinc.org#24835-1";
+
+    /// <summary>
     /// Literal for code: NasopharynxAndNeckCTWContrastIV
     /// </summary>
     public const string LiteralNasopharynxAndNeckCTWContrastIV = "24836-9";
+
+    /// <summary>
+    /// Literal for code: NONENasopharynxAndNeckCTWContrastIV
+    /// </summary>
+    public const string LiteralNONENasopharynxAndNeckCTWContrastIV = "http://loinc.org#24836-9";
 
     /// <summary>
     /// Literal for code: CTGuidanceForAspirationOfNeck
@@ -10888,9 +12758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForAspirationOfNeck = "24837-7";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForAspirationOfNeck
+    /// </summary>
+    public const string LiteralNONECTGuidanceForAspirationOfNeck = "http://loinc.org#24837-7";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForBiopsyOfNeck
     /// </summary>
     public const string LiteralCTGuidanceForBiopsyOfNeck = "24838-5";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForBiopsyOfNeck
+    /// </summary>
+    public const string LiteralNONECTGuidanceForBiopsyOfNeck = "http://loinc.org#24838-5";
 
     /// <summary>
     /// Literal for code: NeckMR
@@ -10898,9 +12778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeckMR = "24839-3";
 
     /// <summary>
+    /// Literal for code: NONENeckMR
+    /// </summary>
+    public const string LiteralNONENeckMR = "http://loinc.org#24839-3";
+
+    /// <summary>
     /// Literal for code: NeckMRWOAndWContrastIV
     /// </summary>
     public const string LiteralNeckMRWOAndWContrastIV = "24840-1";
+
+    /// <summary>
+    /// Literal for code: NONENeckMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONENeckMRWOAndWContrastIV = "http://loinc.org#24840-1";
 
     /// <summary>
     /// Literal for code: NeckMRWContrastIV
@@ -10908,9 +12798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeckMRWContrastIV = "24841-9";
 
     /// <summary>
+    /// Literal for code: NONENeckMRWContrastIV
+    /// </summary>
+    public const string LiteralNONENeckMRWContrastIV = "http://loinc.org#24841-9";
+
+    /// <summary>
     /// Literal for code: NeckUS
     /// </summary>
     public const string LiteralNeckUS = "24842-7";
+
+    /// <summary>
+    /// Literal for code: NONENeckUS
+    /// </summary>
+    public const string LiteralNONENeckUS = "http://loinc.org#24842-7";
 
     /// <summary>
     /// Literal for code: NeckXRayLateral
@@ -10918,9 +12818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeckXRayLateral = "24843-5";
 
     /// <summary>
+    /// Literal for code: NONENeckXRayLateral
+    /// </summary>
+    public const string LiteralNONENeckXRayLateral = "http://loinc.org#24843-5";
+
+    /// <summary>
     /// Literal for code: NeckVesselsMRAngiogramWContrastIV
     /// </summary>
     public const string LiteralNeckVesselsMRAngiogramWContrastIV = "24844-3";
+
+    /// <summary>
+    /// Literal for code: NONENeckVesselsMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONENeckVesselsMRAngiogramWContrastIV = "http://loinc.org#24844-3";
 
     /// <summary>
     /// Literal for code: NeckFluoroscopyWContrastIntraLarynx
@@ -10928,9 +12838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeckFluoroscopyWContrastIntraLarynx = "24845-0";
 
     /// <summary>
+    /// Literal for code: NONENeckFluoroscopyWContrastIntraLarynx
+    /// </summary>
+    public const string LiteralNONENeckFluoroscopyWContrastIntraLarynx = "http://loinc.org#24845-0";
+
+    /// <summary>
     /// Literal for code: OpticForamenXRay
     /// </summary>
     public const string LiteralOpticForamenXRay = "24846-8";
+
+    /// <summary>
+    /// Literal for code: NONEOpticForamenXRay
+    /// </summary>
+    public const string LiteralNONEOpticForamenXRay = "http://loinc.org#24846-8";
 
     /// <summary>
     /// Literal for code: OrbitBilateralCT
@@ -10938,9 +12858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrbitBilateralCT = "24848-4";
 
     /// <summary>
+    /// Literal for code: NONEOrbitBilateralCT
+    /// </summary>
+    public const string LiteralNONEOrbitBilateralCT = "http://loinc.org#24848-4";
+
+    /// <summary>
     /// Literal for code: OrbitBilateralCTWOAndWContrastIV
     /// </summary>
     public const string LiteralOrbitBilateralCTWOAndWContrastIV = "24849-2";
+
+    /// <summary>
+    /// Literal for code: NONEOrbitBilateralCTWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEOrbitBilateralCTWOAndWContrastIV = "http://loinc.org#24849-2";
 
     /// <summary>
     /// Literal for code: OrbitBilateralCTWContrastIV
@@ -10948,9 +12878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrbitBilateralCTWContrastIV = "24850-0";
 
     /// <summary>
+    /// Literal for code: NONEOrbitBilateralCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEOrbitBilateralCTWContrastIV = "http://loinc.org#24850-0";
+
+    /// <summary>
     /// Literal for code: OrbitBilateralMRWOAndWContrastIV
     /// </summary>
     public const string LiteralOrbitBilateralMRWOAndWContrastIV = "24851-8";
+
+    /// <summary>
+    /// Literal for code: NONEOrbitBilateralMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEOrbitBilateralMRWOAndWContrastIV = "http://loinc.org#24851-8";
 
     /// <summary>
     /// Literal for code: OrbitBilateralMRWContrastIV
@@ -10958,9 +12898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrbitBilateralMRWContrastIV = "24852-6";
 
     /// <summary>
+    /// Literal for code: NONEOrbitBilateralMRWContrastIV
+    /// </summary>
+    public const string LiteralNONEOrbitBilateralMRWContrastIV = "http://loinc.org#24852-6";
+
+    /// <summary>
     /// Literal for code: EyePlusOrbitBilateralUS
     /// </summary>
     public const string LiteralEyePlusOrbitBilateralUS = "24853-4";
+
+    /// <summary>
+    /// Literal for code: NONEEyePlusOrbitBilateralUS
+    /// </summary>
+    public const string LiteralNONEEyePlusOrbitBilateralUS = "http://loinc.org#24853-4";
 
     /// <summary>
     /// Literal for code: OrbitBilateralXRay
@@ -10968,9 +12918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrbitBilateralXRay = "24854-2";
 
     /// <summary>
+    /// Literal for code: NONEOrbitBilateralXRay
+    /// </summary>
+    public const string LiteralNONEOrbitBilateralXRay = "http://loinc.org#24854-2";
+
+    /// <summary>
     /// Literal for code: OropharynxFluoroscopyVideo
     /// </summary>
     public const string LiteralOropharynxFluoroscopyVideo = "24855-9";
+
+    /// <summary>
+    /// Literal for code: NONEOropharynxFluoroscopyVideo
+    /// </summary>
+    public const string LiteralNONEOropharynxFluoroscopyVideo = "http://loinc.org#24855-9";
 
     /// <summary>
     /// Literal for code: CTGuidanceForAspirationOfPancreas
@@ -10978,9 +12938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForAspirationOfPancreas = "24856-7";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForAspirationOfPancreas
+    /// </summary>
+    public const string LiteralNONECTGuidanceForAspirationOfPancreas = "http://loinc.org#24856-7";
+
+    /// <summary>
     /// Literal for code: PancreasCT
     /// </summary>
     public const string LiteralPancreasCT = "24857-5";
+
+    /// <summary>
+    /// Literal for code: NONEPancreasCT
+    /// </summary>
+    public const string LiteralNONEPancreasCT = "http://loinc.org#24857-5";
 
     /// <summary>
     /// Literal for code: PancreasCTWContrastIV
@@ -10988,9 +12958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPancreasCTWContrastIV = "24858-3";
 
     /// <summary>
+    /// Literal for code: NONEPancreasCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEPancreasCTWContrastIV = "http://loinc.org#24858-3";
+
+    /// <summary>
     /// Literal for code: PancreasUS
     /// </summary>
     public const string LiteralPancreasUS = "24859-1";
+
+    /// <summary>
+    /// Literal for code: NONEPancreasUS
+    /// </summary>
+    public const string LiteralNONEPancreasUS = "http://loinc.org#24859-1";
 
     /// <summary>
     /// Literal for code: PancreaticArteryFluoroscopicAngiogramWContrastIA
@@ -10998,9 +12978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPancreaticArteryFluoroscopicAngiogramWContrastIA = "24860-9";
 
     /// <summary>
+    /// Literal for code: NONEPancreaticArteryFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEPancreaticArteryFluoroscopicAngiogramWContrastIA = "http://loinc.org#24860-9";
+
+    /// <summary>
     /// Literal for code: PatellaXRay2Views
     /// </summary>
     public const string LiteralPatellaXRay2Views = "24861-7";
+
+    /// <summary>
+    /// Literal for code: NONEPatellaXRay2Views
+    /// </summary>
+    public const string LiteralNONEPatellaXRay2Views = "http://loinc.org#24861-7";
 
     /// <summary>
     /// Literal for code: IliacArteryInternalFluoroscopicAngiogramWContrastIA
@@ -11008,9 +12998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIliacArteryInternalFluoroscopicAngiogramWContrastIA = "24862-5";
 
     /// <summary>
+    /// Literal for code: NONEIliacArteryInternalFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEIliacArteryInternalFluoroscopicAngiogramWContrastIA = "http://loinc.org#24862-5";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForAspirationOfPelvis
     /// </summary>
     public const string LiteralCTGuidanceForAspirationOfPelvis = "24863-3";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForAspirationOfPelvis
+    /// </summary>
+    public const string LiteralNONECTGuidanceForAspirationOfPelvis = "http://loinc.org#24863-3";
 
     /// <summary>
     /// Literal for code: CTGuidanceForBiopsyOfPelvis
@@ -11018,9 +13018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForBiopsyOfPelvis = "24864-1";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForBiopsyOfPelvis
+    /// </summary>
+    public const string LiteralNONECTGuidanceForBiopsyOfPelvis = "http://loinc.org#24864-1";
+
+    /// <summary>
     /// Literal for code: PelvisCT
     /// </summary>
     public const string LiteralPelvisCT = "24865-8";
+
+    /// <summary>
+    /// Literal for code: NONEPelvisCT
+    /// </summary>
+    public const string LiteralNONEPelvisCT = "http://loinc.org#24865-8";
 
     /// <summary>
     /// Literal for code: PelvisCTWContrastIV
@@ -11028,9 +13038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPelvisCTWContrastIV = "24866-6";
 
     /// <summary>
+    /// Literal for code: NONEPelvisCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEPelvisCTWContrastIV = "http://loinc.org#24866-6";
+
+    /// <summary>
     /// Literal for code: PelvisMR
     /// </summary>
     public const string LiteralPelvisMR = "24867-4";
+
+    /// <summary>
+    /// Literal for code: NONEPelvisMR
+    /// </summary>
+    public const string LiteralNONEPelvisMR = "http://loinc.org#24867-4";
 
     /// <summary>
     /// Literal for code: USGuidanceForDrainageOfPelvis
@@ -11038,9 +13058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForDrainageOfPelvis = "24868-2";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForDrainageOfPelvis
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForDrainageOfPelvis = "http://loinc.org#24868-2";
+
+    /// <summary>
     /// Literal for code: PelvisUS
     /// </summary>
     public const string LiteralPelvisUS = "24869-0";
+
+    /// <summary>
+    /// Literal for code: NONEPelvisUS
+    /// </summary>
+    public const string LiteralNONEPelvisUS = "http://loinc.org#24869-0";
 
     /// <summary>
     /// Literal for code: PelvisVesselsUSDoppler
@@ -11048,9 +13078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPelvisVesselsUSDoppler = "24870-8";
 
     /// <summary>
+    /// Literal for code: NONEPelvisVesselsUSDoppler
+    /// </summary>
+    public const string LiteralNONEPelvisVesselsUSDoppler = "http://loinc.org#24870-8";
+
+    /// <summary>
     /// Literal for code: PelvisXRayPelvimetry
     /// </summary>
     public const string LiteralPelvisXRayPelvimetry = "24871-6";
+
+    /// <summary>
+    /// Literal for code: NONEPelvisXRayPelvimetry
+    /// </summary>
+    public const string LiteralNONEPelvisXRayPelvimetry = "http://loinc.org#24871-6";
 
     /// <summary>
     /// Literal for code: PelvisAndHipMR
@@ -11058,9 +13098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPelvisAndHipMR = "24872-4";
 
     /// <summary>
+    /// Literal for code: NONEPelvisAndHipMR
+    /// </summary>
+    public const string LiteralNONEPelvisAndHipMR = "http://loinc.org#24872-4";
+
+    /// <summary>
     /// Literal for code: PelvisVesselsMRAngiogramWContrastIV
     /// </summary>
     public const string LiteralPelvisVesselsMRAngiogramWContrastIV = "24873-2";
+
+    /// <summary>
+    /// Literal for code: NONEPelvisVesselsMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEPelvisVesselsMRAngiogramWContrastIV = "http://loinc.org#24873-2";
 
     /// <summary>
     /// Literal for code: PeripheralArteriesFluoroscopicAngiogramWContrastIA
@@ -11068,9 +13118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPeripheralArteriesFluoroscopicAngiogramWContrastIA = "24874-0";
 
     /// <summary>
+    /// Literal for code: NONEPeripheralArteriesFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEPeripheralArteriesFluoroscopicAngiogramWContrastIA = "http://loinc.org#24874-0";
+
+    /// <summary>
     /// Literal for code: DeprecatedPeripheralVesselUSDopplerPeripheralPlane
     /// </summary>
     public const string LiteralDeprecatedPeripheralVesselUSDopplerPeripheralPlane = "24875-7";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedPeripheralVesselUSDopplerPeripheralPlane
+    /// </summary>
+    public const string LiteralNONEDeprecatedPeripheralVesselUSDopplerPeripheralPlane = "http://loinc.org#24875-7";
 
     /// <summary>
     /// Literal for code: HeadToPelvisNMForShuntPatencyWTc99mDTPAIT
@@ -11078,9 +13138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeadToPelvisNMForShuntPatencyWTc99mDTPAIT = "24876-5";
 
     /// <summary>
+    /// Literal for code: NONEHeadToPelvisNMForShuntPatencyWTc99mDTPAIT
+    /// </summary>
+    public const string LiteralNONEHeadToPelvisNMForShuntPatencyWTc99mDTPAIT = "http://loinc.org#24876-5";
+
+    /// <summary>
     /// Literal for code: PetrousPartOfTemporalBoneCT
     /// </summary>
     public const string LiteralPetrousPartOfTemporalBoneCT = "24877-3";
+
+    /// <summary>
+    /// Literal for code: NONEPetrousPartOfTemporalBoneCT
+    /// </summary>
+    public const string LiteralNONEPetrousPartOfTemporalBoneCT = "http://loinc.org#24877-3";
 
     /// <summary>
     /// Literal for code: PetrousPartOfTemporalBoneCTWContrastIV
@@ -11088,9 +13158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPetrousPartOfTemporalBoneCTWContrastIV = "24878-1";
 
     /// <summary>
+    /// Literal for code: NONEPetrousPartOfTemporalBoneCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEPetrousPartOfTemporalBoneCTWContrastIV = "http://loinc.org#24878-1";
+
+    /// <summary>
     /// Literal for code: PituitaryAndSellaTurcicaMRWOAndWContrastIV
     /// </summary>
     public const string LiteralPituitaryAndSellaTurcicaMRWOAndWContrastIV = "24879-9";
+
+    /// <summary>
+    /// Literal for code: NONEPituitaryAndSellaTurcicaMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEPituitaryAndSellaTurcicaMRWOAndWContrastIV = "http://loinc.org#24879-9";
 
     /// <summary>
     /// Literal for code: PituitaryAndSellaTurcicaMR
@@ -11098,9 +13178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPituitaryAndSellaTurcicaMR = "24880-7";
 
     /// <summary>
+    /// Literal for code: NONEPituitaryAndSellaTurcicaMR
+    /// </summary>
+    public const string LiteralNONEPituitaryAndSellaTurcicaMR = "http://loinc.org#24880-7";
+
+    /// <summary>
     /// Literal for code: PoplitealSpaceUS
     /// </summary>
     public const string LiteralPoplitealSpaceUS = "24881-5";
+
+    /// <summary>
+    /// Literal for code: NONEPoplitealSpaceUS
+    /// </summary>
+    public const string LiteralNONEPoplitealSpaceUS = "http://loinc.org#24881-5";
 
     /// <summary>
     /// Literal for code: PoplitealArteryFluoroscopicAngiogramPercutaneousTransluminalAngioplastyOfVesselWContrastIA
@@ -11108,9 +13198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPoplitealArteryFluoroscopicAngiogramPercutaneousTransluminalAngioplastyOfVesselWContrastIA = "24882-3";
 
     /// <summary>
+    /// Literal for code: NONEPoplitealArteryFluoroscopicAngiogramPercutaneousTransluminalAngioplastyOfVesselWContrastIA
+    /// </summary>
+    public const string LiteralNONEPoplitealArteryFluoroscopicAngiogramPercutaneousTransluminalAngioplastyOfVesselWContrastIA = "http://loinc.org#24882-3";
+
+    /// <summary>
     /// Literal for code: USGuidanceForBiopsyOfProstate
     /// </summary>
     public const string LiteralUSGuidanceForBiopsyOfProstate = "24883-1";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForBiopsyOfProstate
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForBiopsyOfProstate = "http://loinc.org#24883-1";
 
     /// <summary>
     /// Literal for code: ProstateUS
@@ -11118,9 +13218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProstateUS = "24884-9";
 
     /// <summary>
+    /// Literal for code: NONEProstateUS
+    /// </summary>
+    public const string LiteralNONEProstateUS = "http://loinc.org#24884-9";
+
+    /// <summary>
     /// Literal for code: DeprecatedUSGuidanceForRepairOfPseudoaneurysmAVFistula
     /// </summary>
     public const string LiteralDeprecatedUSGuidanceForRepairOfPseudoaneurysmAVFistula = "24885-6";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedUSGuidanceForRepairOfPseudoaneurysmAVFistula
+    /// </summary>
+    public const string LiteralNONEDeprecatedUSGuidanceForRepairOfPseudoaneurysmAVFistula = "http://loinc.org#24885-6";
 
     /// <summary>
     /// Literal for code: PulmonaryArteriesFluoroscopicAngiogramEmbolectomyWContrastIA
@@ -11128,9 +13238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulmonaryArteriesFluoroscopicAngiogramEmbolectomyWContrastIA = "24887-2";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryArteriesFluoroscopicAngiogramEmbolectomyWContrastIA
+    /// </summary>
+    public const string LiteralNONEPulmonaryArteriesFluoroscopicAngiogramEmbolectomyWContrastIA = "http://loinc.org#24887-2";
+
+    /// <summary>
     /// Literal for code: PulmonarySystemNMVentilationAndPerfusionWXe133IHAndWTc99mMAAIV
     /// </summary>
     public const string LiteralPulmonarySystemNMVentilationAndPerfusionWXe133IHAndWTc99mMAAIV = "24888-0";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonarySystemNMVentilationAndPerfusionWXe133IHAndWTc99mMAAIV
+    /// </summary>
+    public const string LiteralNONEPulmonarySystemNMVentilationAndPerfusionWXe133IHAndWTc99mMAAIV = "http://loinc.org#24888-0";
 
     /// <summary>
     /// Literal for code: PylorusUSForPyloricStenosis
@@ -11138,9 +13258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPylorusUSForPyloricStenosis = "24889-8";
 
     /// <summary>
+    /// Literal for code: NONEPylorusUSForPyloricStenosis
+    /// </summary>
+    public const string LiteralNONEPylorusUSForPyloricStenosis = "http://loinc.org#24889-8";
+
+    /// <summary>
     /// Literal for code: RadiusAndUlnaXRay
     /// </summary>
     public const string LiteralRadiusAndUlnaXRay = "24891-4";
+
+    /// <summary>
+    /// Literal for code: NONERadiusAndUlnaXRay
+    /// </summary>
+    public const string LiteralNONERadiusAndUlnaXRay = "http://loinc.org#24891-4";
 
     /// <summary>
     /// Literal for code: RectumUS
@@ -11148,9 +13278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRectumUS = "24892-2";
 
     /// <summary>
+    /// Literal for code: NONERectumUS
+    /// </summary>
+    public const string LiteralNONERectumUS = "http://loinc.org#24892-2";
+
+    /// <summary>
     /// Literal for code: RectumFluoroscopyPostContrastPRDuringDefecation
     /// </summary>
     public const string LiteralRectumFluoroscopyPostContrastPRDuringDefecation = "24893-0";
+
+    /// <summary>
+    /// Literal for code: NONERectumFluoroscopyPostContrastPRDuringDefecation
+    /// </summary>
+    public const string LiteralNONERectumFluoroscopyPostContrastPRDuringDefecation = "http://loinc.org#24893-0";
 
     /// <summary>
     /// Literal for code: RectumAndUrinaryBladderFluoroscopyWContrastPRAndIntraBladderDuringDefecationAndVoiding
@@ -11158,9 +13298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRectumAndUrinaryBladderFluoroscopyWContrastPRAndIntraBladderDuringDefecationAndVoiding = "24894-8";
 
     /// <summary>
+    /// Literal for code: NONERectumAndUrinaryBladderFluoroscopyWContrastPRAndIntraBladderDuringDefecationAndVoiding
+    /// </summary>
+    public const string LiteralNONERectumAndUrinaryBladderFluoroscopyWContrastPRAndIntraBladderDuringDefecationAndVoiding = "http://loinc.org#24894-8";
+
+    /// <summary>
     /// Literal for code: USGuidanceForDrainageOfKidney
     /// </summary>
     public const string LiteralUSGuidanceForDrainageOfKidney = "24896-3";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForDrainageOfKidney
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForDrainageOfKidney = "http://loinc.org#24896-3";
 
     /// <summary>
     /// Literal for code: RibsXRay
@@ -11168,9 +13318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRibsXRay = "24899-7";
 
     /// <summary>
+    /// Literal for code: NONERibsXRay
+    /// </summary>
+    public const string LiteralNONERibsXRay = "http://loinc.org#24899-7";
+
+    /// <summary>
     /// Literal for code: SacroiliacJointXRay
     /// </summary>
     public const string LiteralSacroiliacJointXRay = "24900-3";
+
+    /// <summary>
+    /// Literal for code: NONESacroiliacJointXRay
+    /// </summary>
+    public const string LiteralNONESacroiliacJointXRay = "http://loinc.org#24900-3";
 
     /// <summary>
     /// Literal for code: CTGuidanceForInjectionOfSacroiliacJoint
@@ -11178,9 +13338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForInjectionOfSacroiliacJoint = "24901-1";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForInjectionOfSacroiliacJoint
+    /// </summary>
+    public const string LiteralNONECTGuidanceForInjectionOfSacroiliacJoint = "http://loinc.org#24901-1";
+
+    /// <summary>
     /// Literal for code: SalivaryGlandFluoroscopyWContrastIntraSalivaryDuct
     /// </summary>
     public const string LiteralSalivaryGlandFluoroscopyWContrastIntraSalivaryDuct = "24902-9";
+
+    /// <summary>
+    /// Literal for code: NONESalivaryGlandFluoroscopyWContrastIntraSalivaryDuct
+    /// </summary>
+    public const string LiteralNONESalivaryGlandFluoroscopyWContrastIntraSalivaryDuct = "http://loinc.org#24902-9";
 
     /// <summary>
     /// Literal for code: ScapulaXRay
@@ -11188,9 +13358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScapulaXRay = "24903-7";
 
     /// <summary>
+    /// Literal for code: NONEScapulaXRay
+    /// </summary>
+    public const string LiteralNONEScapulaXRay = "http://loinc.org#24903-7";
+
+    /// <summary>
     /// Literal for code: PituitaryAndSellaTurcicaCTWOAndWContrastIV
     /// </summary>
     public const string LiteralPituitaryAndSellaTurcicaCTWOAndWContrastIV = "24904-5";
+
+    /// <summary>
+    /// Literal for code: NONEPituitaryAndSellaTurcicaCTWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEPituitaryAndSellaTurcicaCTWOAndWContrastIV = "http://loinc.org#24904-5";
 
     /// <summary>
     /// Literal for code: ShoulderMR
@@ -11198,9 +13378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderMR = "24905-2";
 
     /// <summary>
+    /// Literal for code: NONEShoulderMR
+    /// </summary>
+    public const string LiteralNONEShoulderMR = "http://loinc.org#24905-2";
+
+    /// <summary>
     /// Literal for code: ShoulderMRWOAndWContrastIV
     /// </summary>
     public const string LiteralShoulderMRWOAndWContrastIV = "24906-0";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEShoulderMRWOAndWContrastIV = "http://loinc.org#24906-0";
 
     /// <summary>
     /// Literal for code: ShoulderUS
@@ -11208,9 +13398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderUS = "24907-8";
 
     /// <summary>
+    /// Literal for code: NONEShoulderUS
+    /// </summary>
+    public const string LiteralNONEShoulderUS = "http://loinc.org#24907-8";
+
+    /// <summary>
     /// Literal for code: ShoulderXRay3Views
     /// </summary>
     public const string LiteralShoulderXRay3Views = "24908-6";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderXRay3Views
+    /// </summary>
+    public const string LiteralNONEShoulderXRay3Views = "http://loinc.org#24908-6";
 
     /// <summary>
     /// Literal for code: ShoulderXRay
@@ -11218,9 +13418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderXRay = "24909-4";
 
     /// <summary>
+    /// Literal for code: NONEShoulderXRay
+    /// </summary>
+    public const string LiteralNONEShoulderXRay = "http://loinc.org#24909-4";
+
+    /// <summary>
     /// Literal for code: ShoulderFluoroscopyArthrogram
     /// </summary>
     public const string LiteralShoulderFluoroscopyArthrogram = "24910-2";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEShoulderFluoroscopyArthrogram = "http://loinc.org#24910-2";
 
     /// <summary>
     /// Literal for code: ShuntFluoroscopy
@@ -11228,9 +13438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShuntFluoroscopy = "24911-0";
 
     /// <summary>
+    /// Literal for code: NONEShuntFluoroscopy
+    /// </summary>
+    public const string LiteralNONEShuntFluoroscopy = "http://loinc.org#24911-0";
+
+    /// <summary>
     /// Literal for code: SinusTractFluoroscopyWContrastIntraSinusTract
     /// </summary>
     public const string LiteralSinusTractFluoroscopyWContrastIntraSinusTract = "24912-8";
+
+    /// <summary>
+    /// Literal for code: NONESinusTractFluoroscopyWContrastIntraSinusTract
+    /// </summary>
+    public const string LiteralNONESinusTractFluoroscopyWContrastIntraSinusTract = "http://loinc.org#24912-8";
 
     /// <summary>
     /// Literal for code: SinusesCTLimited
@@ -11238,9 +13458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSinusesCTLimited = "24913-6";
 
     /// <summary>
+    /// Literal for code: NONESinusesCTLimited
+    /// </summary>
+    public const string LiteralNONESinusesCTLimited = "http://loinc.org#24913-6";
+
+    /// <summary>
     /// Literal for code: SinusesMR
     /// </summary>
     public const string LiteralSinusesMR = "24914-4";
+
+    /// <summary>
+    /// Literal for code: NONESinusesMR
+    /// </summary>
+    public const string LiteralNONESinusesMR = "http://loinc.org#24914-4";
 
     /// <summary>
     /// Literal for code: SinusesMRWContrastIV
@@ -11248,9 +13478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSinusesMRWContrastIV = "24915-1";
 
     /// <summary>
+    /// Literal for code: NONESinusesMRWContrastIV
+    /// </summary>
+    public const string LiteralNONESinusesMRWContrastIV = "http://loinc.org#24915-1";
+
+    /// <summary>
     /// Literal for code: SinusesXRay
     /// </summary>
     public const string LiteralSinusesXRay = "24916-9";
+
+    /// <summary>
+    /// Literal for code: NONESinusesXRay
+    /// </summary>
+    public const string LiteralNONESinusesXRay = "http://loinc.org#24916-9";
 
     /// <summary>
     /// Literal for code: SkullXRaySingleView
@@ -11258,9 +13498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSkullXRaySingleView = "24917-7";
 
     /// <summary>
+    /// Literal for code: NONESkullXRaySingleView
+    /// </summary>
+    public const string LiteralNONESkullXRaySingleView = "http://loinc.org#24917-7";
+
+    /// <summary>
     /// Literal for code: SkullXRay3Views
     /// </summary>
     public const string LiteralSkullXRay3Views = "24918-5";
+
+    /// <summary>
+    /// Literal for code: NONESkullXRay3Views
+    /// </summary>
+    public const string LiteralNONESkullXRay3Views = "http://loinc.org#24918-5";
 
     /// <summary>
     /// Literal for code: SkullXRayAPAndLateral
@@ -11268,9 +13518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSkullXRayAPAndLateral = "24919-3";
 
     /// <summary>
+    /// Literal for code: NONESkullXRayAPAndLateral
+    /// </summary>
+    public const string LiteralNONESkullXRayAPAndLateral = "http://loinc.org#24919-3";
+
+    /// <summary>
     /// Literal for code: SkullXRayLateral
     /// </summary>
     public const string LiteralSkullXRayLateral = "24920-1";
+
+    /// <summary>
+    /// Literal for code: NONESkullXRayLateral
+    /// </summary>
+    public const string LiteralNONESkullXRayLateral = "http://loinc.org#24920-1";
 
     /// <summary>
     /// Literal for code: SkullXRayWaters
@@ -11278,9 +13538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSkullXRayWaters = "24921-9";
 
     /// <summary>
+    /// Literal for code: NONESkullXRayWaters
+    /// </summary>
+    public const string LiteralNONESkullXRayWaters = "http://loinc.org#24921-9";
+
+    /// <summary>
     /// Literal for code: SkullXRay5Views
     /// </summary>
     public const string LiteralSkullXRay5Views = "24922-7";
+
+    /// <summary>
+    /// Literal for code: NONESkullXRay5Views
+    /// </summary>
+    public const string LiteralNONESkullXRay5Views = "http://loinc.org#24922-7";
 
     /// <summary>
     /// Literal for code: SmallBowelFluoroscopyWPositiveContrastViaEnteroclysisTube
@@ -11288,9 +13558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSmallBowelFluoroscopyWPositiveContrastViaEnteroclysisTube = "24923-5";
 
     /// <summary>
+    /// Literal for code: NONESmallBowelFluoroscopyWPositiveContrastViaEnteroclysisTube
+    /// </summary>
+    public const string LiteralNONESmallBowelFluoroscopyWPositiveContrastViaEnteroclysisTube = "http://loinc.org#24923-5";
+
+    /// <summary>
     /// Literal for code: SmallBowelFluoroscopyWContrastPO
     /// </summary>
     public const string LiteralSmallBowelFluoroscopyWContrastPO = "24924-3";
+
+    /// <summary>
+    /// Literal for code: NONESmallBowelFluoroscopyWContrastPO
+    /// </summary>
+    public const string LiteralNONESmallBowelFluoroscopyWContrastPO = "http://loinc.org#24924-3";
 
     /// <summary>
     /// Literal for code: SpinalArteryFluoroscopicAngiogramWContrastIA
@@ -11298,9 +13578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpinalArteryFluoroscopicAngiogramWContrastIA = "24925-0";
 
     /// <summary>
+    /// Literal for code: NONESpinalArteryFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONESpinalArteryFluoroscopicAngiogramWContrastIA = "http://loinc.org#24925-0";
+
+    /// <summary>
     /// Literal for code: SpineUS
     /// </summary>
     public const string LiteralSpineUS = "24926-8";
+
+    /// <summary>
+    /// Literal for code: NONESpineUS
+    /// </summary>
+    public const string LiteralNONESpineUS = "http://loinc.org#24926-8";
 
     /// <summary>
     /// Literal for code: SpineFluoroscopyWContrastIntradisc
@@ -11308,9 +13598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpineFluoroscopyWContrastIntradisc = "24927-6";
 
     /// <summary>
+    /// Literal for code: NONESpineFluoroscopyWContrastIntradisc
+    /// </summary>
+    public const string LiteralNONESpineFluoroscopyWContrastIntradisc = "http://loinc.org#24927-6";
+
+    /// <summary>
     /// Literal for code: SpineXRayAPAndLateral
     /// </summary>
     public const string LiteralSpineXRayAPAndLateral = "24928-4";
+
+    /// <summary>
+    /// Literal for code: NONESpineXRayAPAndLateral
+    /// </summary>
+    public const string LiteralNONESpineXRayAPAndLateral = "http://loinc.org#24928-4";
 
     /// <summary>
     /// Literal for code: SpineThoracicAndLumbarXRayScoliosisWFlexionAndWExtension
@@ -11318,9 +13618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpineThoracicAndLumbarXRayScoliosisWFlexionAndWExtension = "24929-2";
 
     /// <summary>
+    /// Literal for code: NONESpineThoracicAndLumbarXRayScoliosisWFlexionAndWExtension
+    /// </summary>
+    public const string LiteralNONESpineThoracicAndLumbarXRayScoliosisWFlexionAndWExtension = "http://loinc.org#24929-2";
+
+    /// <summary>
     /// Literal for code: SpineThoracicAndLumbarXRayScoliosis
     /// </summary>
     public const string LiteralSpineThoracicAndLumbarXRayScoliosis = "24930-0";
+
+    /// <summary>
+    /// Literal for code: NONESpineThoracicAndLumbarXRayScoliosis
+    /// </summary>
+    public const string LiteralNONESpineThoracicAndLumbarXRayScoliosis = "http://loinc.org#24930-0";
 
     /// <summary>
     /// Literal for code: FluoroscopyGuidanceForInjectionOfSpineFacetJoint
@@ -11328,9 +13638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyGuidanceForInjectionOfSpineFacetJoint = "24931-8";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForInjectionOfSpineFacetJoint
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForInjectionOfSpineFacetJoint = "http://loinc.org#24931-8";
+
+    /// <summary>
     /// Literal for code: CervicalSpineCT
     /// </summary>
     public const string LiteralCervicalSpineCT = "24932-6";
+
+    /// <summary>
+    /// Literal for code: NONECervicalSpineCT
+    /// </summary>
+    public const string LiteralNONECervicalSpineCT = "http://loinc.org#24932-6";
 
     /// <summary>
     /// Literal for code: CervicalSpineCTWContrastIV
@@ -11338,9 +13658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalSpineCTWContrastIV = "24933-4";
 
     /// <summary>
+    /// Literal for code: NONECervicalSpineCTWContrastIV
+    /// </summary>
+    public const string LiteralNONECervicalSpineCTWContrastIV = "http://loinc.org#24933-4";
+
+    /// <summary>
     /// Literal for code: CervicalSpineCTWContrastIT
     /// </summary>
     public const string LiteralCervicalSpineCTWContrastIT = "24934-2";
+
+    /// <summary>
+    /// Literal for code: NONECervicalSpineCTWContrastIT
+    /// </summary>
+    public const string LiteralNONECervicalSpineCTWContrastIT = "http://loinc.org#24934-2";
 
     /// <summary>
     /// Literal for code: CervicalSpineMR
@@ -11348,9 +13678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalSpineMR = "24935-9";
 
     /// <summary>
+    /// Literal for code: NONECervicalSpineMR
+    /// </summary>
+    public const string LiteralNONECervicalSpineMR = "http://loinc.org#24935-9";
+
+    /// <summary>
     /// Literal for code: CervicalSpineMRWAnesthesia
     /// </summary>
     public const string LiteralCervicalSpineMRWAnesthesia = "24936-7";
+
+    /// <summary>
+    /// Literal for code: NONECervicalSpineMRWAnesthesia
+    /// </summary>
+    public const string LiteralNONECervicalSpineMRWAnesthesia = "http://loinc.org#24936-7";
 
     /// <summary>
     /// Literal for code: CervicalSpineMRWOAndWContrastIV
@@ -11358,9 +13698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalSpineMRWOAndWContrastIV = "24937-5";
 
     /// <summary>
+    /// Literal for code: NONECervicalSpineMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONECervicalSpineMRWOAndWContrastIV = "http://loinc.org#24937-5";
+
+    /// <summary>
     /// Literal for code: CervicalSpineMRWContrastIV
     /// </summary>
     public const string LiteralCervicalSpineMRWContrastIV = "24938-3";
+
+    /// <summary>
+    /// Literal for code: NONECervicalSpineMRWContrastIV
+    /// </summary>
+    public const string LiteralNONECervicalSpineMRWContrastIV = "http://loinc.org#24938-3";
 
     /// <summary>
     /// Literal for code: CervicalSpineXRay5Views
@@ -11368,9 +13718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalSpineXRay5Views = "24939-1";
 
     /// <summary>
+    /// Literal for code: NONECervicalSpineXRay5Views
+    /// </summary>
+    public const string LiteralNONECervicalSpineXRay5Views = "http://loinc.org#24939-1";
+
+    /// <summary>
     /// Literal for code: CervicalSpineXRaySingleView
     /// </summary>
     public const string LiteralCervicalSpineXRaySingleView = "24940-9";
+
+    /// <summary>
+    /// Literal for code: NONECervicalSpineXRaySingleView
+    /// </summary>
+    public const string LiteralNONECervicalSpineXRaySingleView = "http://loinc.org#24940-9";
 
     /// <summary>
     /// Literal for code: CervicalSpineXRay3Views
@@ -11378,9 +13738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalSpineXRay3Views = "24941-7";
 
     /// <summary>
+    /// Literal for code: NONECervicalSpineXRay3Views
+    /// </summary>
+    public const string LiteralNONECervicalSpineXRay3Views = "http://loinc.org#24941-7";
+
+    /// <summary>
     /// Literal for code: CervicalSpineXRayAPAndLateral
     /// </summary>
     public const string LiteralCervicalSpineXRayAPAndLateral = "24942-5";
+
+    /// <summary>
+    /// Literal for code: NONECervicalSpineXRayAPAndLateral
+    /// </summary>
+    public const string LiteralNONECervicalSpineXRayAPAndLateral = "http://loinc.org#24942-5";
 
     /// <summary>
     /// Literal for code: CervicalSpineXRayLateral
@@ -11388,9 +13758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalSpineXRayLateral = "24943-3";
 
     /// <summary>
+    /// Literal for code: NONECervicalSpineXRayLateral
+    /// </summary>
+    public const string LiteralNONECervicalSpineXRayLateral = "http://loinc.org#24943-3";
+
+    /// <summary>
     /// Literal for code: CervicalSpineXRaySwimmers
     /// </summary>
     public const string LiteralCervicalSpineXRaySwimmers = "24944-1";
+
+    /// <summary>
+    /// Literal for code: NONECervicalSpineXRaySwimmers
+    /// </summary>
+    public const string LiteralNONECervicalSpineXRaySwimmers = "http://loinc.org#24944-1";
 
     /// <summary>
     /// Literal for code: CervicalSpineXRayWFlexionAndWExtension
@@ -11398,9 +13778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalSpineXRayWFlexionAndWExtension = "24945-8";
 
     /// <summary>
+    /// Literal for code: NONECervicalSpineXRayWFlexionAndWExtension
+    /// </summary>
+    public const string LiteralNONECervicalSpineXRayWFlexionAndWExtension = "http://loinc.org#24945-8";
+
+    /// <summary>
     /// Literal for code: CervicalSpineXRay
     /// </summary>
     public const string LiteralCervicalSpineXRay = "24946-6";
+
+    /// <summary>
+    /// Literal for code: NONECervicalSpineXRay
+    /// </summary>
+    public const string LiteralNONECervicalSpineXRay = "http://loinc.org#24946-6";
 
     /// <summary>
     /// Literal for code: CervicalSpineFluoroscopyWContrastIT
@@ -11408,9 +13798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalSpineFluoroscopyWContrastIT = "24947-4";
 
     /// <summary>
+    /// Literal for code: NONECervicalSpineFluoroscopyWContrastIT
+    /// </summary>
+    public const string LiteralNONECervicalSpineFluoroscopyWContrastIT = "http://loinc.org#24947-4";
+
+    /// <summary>
     /// Literal for code: SpineCervicalOdontoidAndCervicalAxisXRayAPSingleView
     /// </summary>
     public const string LiteralSpineCervicalOdontoidAndCervicalAxisXRayAPSingleView = "24948-2";
+
+    /// <summary>
+    /// Literal for code: NONESpineCervicalOdontoidAndCervicalAxisXRayAPSingleView
+    /// </summary>
+    public const string LiteralNONESpineCervicalOdontoidAndCervicalAxisXRayAPSingleView = "http://loinc.org#24948-2";
 
     /// <summary>
     /// Literal for code: LumbarSpineCT
@@ -11418,9 +13818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLumbarSpineCT = "24963-1";
 
     /// <summary>
+    /// Literal for code: NONELumbarSpineCT
+    /// </summary>
+    public const string LiteralNONELumbarSpineCT = "http://loinc.org#24963-1";
+
+    /// <summary>
     /// Literal for code: LumbarSpineCTWContrastIV
     /// </summary>
     public const string LiteralLumbarSpineCTWContrastIV = "24964-9";
+
+    /// <summary>
+    /// Literal for code: NONELumbarSpineCTWContrastIV
+    /// </summary>
+    public const string LiteralNONELumbarSpineCTWContrastIV = "http://loinc.org#24964-9";
 
     /// <summary>
     /// Literal for code: LumbarSpineCTWContrastIT
@@ -11428,9 +13838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLumbarSpineCTWContrastIT = "24965-6";
 
     /// <summary>
+    /// Literal for code: NONELumbarSpineCTWContrastIT
+    /// </summary>
+    public const string LiteralNONELumbarSpineCTWContrastIT = "http://loinc.org#24965-6";
+
+    /// <summary>
     /// Literal for code: LumbarSpineMRWOAndWContrastIV
     /// </summary>
     public const string LiteralLumbarSpineMRWOAndWContrastIV = "24967-2";
+
+    /// <summary>
+    /// Literal for code: NONELumbarSpineMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONELumbarSpineMRWOAndWContrastIV = "http://loinc.org#24967-2";
 
     /// <summary>
     /// Literal for code: LumbarSpineMR
@@ -11438,9 +13858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLumbarSpineMR = "24968-0";
 
     /// <summary>
+    /// Literal for code: NONELumbarSpineMR
+    /// </summary>
+    public const string LiteralNONELumbarSpineMR = "http://loinc.org#24968-0";
+
+    /// <summary>
     /// Literal for code: LumbarSpineXRayLateral
     /// </summary>
     public const string LiteralLumbarSpineXRayLateral = "24969-8";
+
+    /// <summary>
+    /// Literal for code: NONELumbarSpineXRayLateral
+    /// </summary>
+    public const string LiteralNONELumbarSpineXRayLateral = "http://loinc.org#24969-8";
 
     /// <summary>
     /// Literal for code: LumbarSpineXRayAPAndLateral
@@ -11448,9 +13878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLumbarSpineXRayAPAndLateral = "24970-6";
 
     /// <summary>
+    /// Literal for code: NONELumbarSpineXRayAPAndLateral
+    /// </summary>
+    public const string LiteralNONELumbarSpineXRayAPAndLateral = "http://loinc.org#24970-6";
+
+    /// <summary>
     /// Literal for code: LumbarSpineXRayWFlexionAndWExtension
     /// </summary>
     public const string LiteralLumbarSpineXRayWFlexionAndWExtension = "24971-4";
+
+    /// <summary>
+    /// Literal for code: NONELumbarSpineXRayWFlexionAndWExtension
+    /// </summary>
+    public const string LiteralNONELumbarSpineXRayWFlexionAndWExtension = "http://loinc.org#24971-4";
 
     /// <summary>
     /// Literal for code: LumbarSpineXRay
@@ -11458,9 +13898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLumbarSpineXRay = "24972-2";
 
     /// <summary>
+    /// Literal for code: NONELumbarSpineXRay
+    /// </summary>
+    public const string LiteralNONELumbarSpineXRay = "http://loinc.org#24972-2";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForAspirationOfSpineLumbarSpace
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForAspirationOfSpineLumbarSpace = "24973-0";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForAspirationOfSpineLumbarSpace
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForAspirationOfSpineLumbarSpace = "http://loinc.org#24973-0";
 
     /// <summary>
     /// Literal for code: LumbarSpineFluoroscopyWContrastIT
@@ -11468,9 +13918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLumbarSpineFluoroscopyWContrastIT = "24974-8";
 
     /// <summary>
+    /// Literal for code: NONELumbarSpineFluoroscopyWContrastIT
+    /// </summary>
+    public const string LiteralNONELumbarSpineFluoroscopyWContrastIT = "http://loinc.org#24974-8";
+
+    /// <summary>
     /// Literal for code: SpineLumbarAndSacroiliacJointBilateralXRay
     /// </summary>
     public const string LiteralSpineLumbarAndSacroiliacJointBilateralXRay = "24975-5";
+
+    /// <summary>
+    /// Literal for code: NONESpineLumbarAndSacroiliacJointBilateralXRay
+    /// </summary>
+    public const string LiteralNONESpineLumbarAndSacroiliacJointBilateralXRay = "http://loinc.org#24975-5";
 
     /// <summary>
     /// Literal for code: LumbarSpineMRWAnesthesia
@@ -11478,9 +13938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLumbarSpineMRWAnesthesia = "24977-1";
 
     /// <summary>
+    /// Literal for code: NONELumbarSpineMRWAnesthesia
+    /// </summary>
+    public const string LiteralNONELumbarSpineMRWAnesthesia = "http://loinc.org#24977-1";
+
+    /// <summary>
     /// Literal for code: ThoracicSpineCT
     /// </summary>
     public const string LiteralThoracicSpineCT = "24978-9";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicSpineCT
+    /// </summary>
+    public const string LiteralNONEThoracicSpineCT = "http://loinc.org#24978-9";
 
     /// <summary>
     /// Literal for code: ThoracicSpineCTWContrastIV
@@ -11488,9 +13958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicSpineCTWContrastIV = "24979-7";
 
     /// <summary>
+    /// Literal for code: NONEThoracicSpineCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEThoracicSpineCTWContrastIV = "http://loinc.org#24979-7";
+
+    /// <summary>
     /// Literal for code: ThoracicSpineMR
     /// </summary>
     public const string LiteralThoracicSpineMR = "24980-5";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicSpineMR
+    /// </summary>
+    public const string LiteralNONEThoracicSpineMR = "http://loinc.org#24980-5";
 
     /// <summary>
     /// Literal for code: ThoracicSpineMRWOAndWContrastIV
@@ -11498,9 +13978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicSpineMRWOAndWContrastIV = "24981-3";
 
     /// <summary>
+    /// Literal for code: NONEThoracicSpineMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEThoracicSpineMRWOAndWContrastIV = "http://loinc.org#24981-3";
+
+    /// <summary>
     /// Literal for code: ThoracicSpineMRWContrastIV
     /// </summary>
     public const string LiteralThoracicSpineMRWContrastIV = "24982-1";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicSpineMRWContrastIV
+    /// </summary>
+    public const string LiteralNONEThoracicSpineMRWContrastIV = "http://loinc.org#24982-1";
 
     /// <summary>
     /// Literal for code: ThoracicSpineXRay
@@ -11508,9 +13998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicSpineXRay = "24983-9";
 
     /// <summary>
+    /// Literal for code: NONEThoracicSpineXRay
+    /// </summary>
+    public const string LiteralNONEThoracicSpineXRay = "http://loinc.org#24983-9";
+
+    /// <summary>
     /// Literal for code: SpineThoracicAndLumbarXRay2Views
     /// </summary>
     public const string LiteralSpineThoracicAndLumbarXRay2Views = "24984-7";
+
+    /// <summary>
+    /// Literal for code: NONESpineThoracicAndLumbarXRay2Views
+    /// </summary>
+    public const string LiteralNONESpineThoracicAndLumbarXRay2Views = "http://loinc.org#24984-7";
 
     /// <summary>
     /// Literal for code: ThoracicSpineFluoroscopyWContrastIT
@@ -11518,9 +14018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicSpineFluoroscopyWContrastIT = "24985-4";
 
     /// <summary>
+    /// Literal for code: NONEThoracicSpineFluoroscopyWContrastIT
+    /// </summary>
+    public const string LiteralNONEThoracicSpineFluoroscopyWContrastIT = "http://loinc.org#24985-4";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForBiopsyOfSpine
     /// </summary>
     public const string LiteralCTGuidanceForBiopsyOfSpine = "24986-2";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForBiopsyOfSpine
+    /// </summary>
+    public const string LiteralNONECTGuidanceForBiopsyOfSpine = "http://loinc.org#24986-2";
 
     /// <summary>
     /// Literal for code: SpineCTWContrastIV
@@ -11528,9 +14038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpineCTWContrastIV = "24987-0";
 
     /// <summary>
+    /// Literal for code: NONESpineCTWContrastIV
+    /// </summary>
+    public const string LiteralNONESpineCTWContrastIV = "http://loinc.org#24987-0";
+
+    /// <summary>
     /// Literal for code: SpleenCT
     /// </summary>
     public const string LiteralSpleenCT = "24988-8";
+
+    /// <summary>
+    /// Literal for code: NONESpleenCT
+    /// </summary>
+    public const string LiteralNONESpleenCT = "http://loinc.org#24988-8";
 
     /// <summary>
     /// Literal for code: SpleenCTWOAndWContrastIV
@@ -11538,9 +14058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpleenCTWOAndWContrastIV = "24989-6";
 
     /// <summary>
+    /// Literal for code: NONESpleenCTWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONESpleenCTWOAndWContrastIV = "http://loinc.org#24989-6";
+
+    /// <summary>
     /// Literal for code: SpleenUS
     /// </summary>
     public const string LiteralSpleenUS = "24990-4";
+
+    /// <summary>
+    /// Literal for code: NONESpleenUS
+    /// </summary>
+    public const string LiteralNONESpleenUS = "http://loinc.org#24990-4";
 
     /// <summary>
     /// Literal for code: SplenicVeinAndPortalVeinFluoroscopicAngiogramWContrastIA
@@ -11548,9 +14078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSplenicVeinAndPortalVeinFluoroscopicAngiogramWContrastIA = "24991-2";
 
     /// <summary>
+    /// Literal for code: NONESplenicVeinAndPortalVeinFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONESplenicVeinAndPortalVeinFluoroscopicAngiogramWContrastIA = "http://loinc.org#24991-2";
+
+    /// <summary>
     /// Literal for code: SplenicArteryFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralSplenicArteryFluoroscopicAngiogramWContrastIA = "24992-0";
+
+    /// <summary>
+    /// Literal for code: NONESplenicArteryFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONESplenicArteryFluoroscopicAngiogramWContrastIA = "http://loinc.org#24992-0";
 
     /// <summary>
     /// Literal for code: SternoclavicularJointsXRay
@@ -11558,9 +14098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSternoclavicularJointsXRay = "24993-8";
 
     /// <summary>
+    /// Literal for code: NONESternoclavicularJointsXRay
+    /// </summary>
+    public const string LiteralNONESternoclavicularJointsXRay = "http://loinc.org#24993-8";
+
+    /// <summary>
     /// Literal for code: SternumXRay
     /// </summary>
     public const string LiteralSternumXRay = "24994-6";
+
+    /// <summary>
+    /// Literal for code: NONESternumXRay
+    /// </summary>
+    public const string LiteralNONESternumXRay = "http://loinc.org#24994-6";
 
     /// <summary>
     /// Literal for code: FluoroscopyGuidanceForPlacementOfTubeInStomach
@@ -11568,9 +14118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyGuidanceForPlacementOfTubeInStomach = "24995-3";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForPlacementOfTubeInStomach
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForPlacementOfTubeInStomach = "http://loinc.org#24995-3";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForReplacementOfPercutaneousGastrostomyInStomach
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForReplacementOfPercutaneousGastrostomyInStomach = "24996-1";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForReplacementOfPercutaneousGastrostomyInStomach
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForReplacementOfPercutaneousGastrostomyInStomach = "http://loinc.org#24996-1";
 
     /// <summary>
     /// Literal for code: StomachNMForGastricEmptyingSolidPhaseWTc99mSCPO
@@ -11578,9 +14138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStomachNMForGastricEmptyingSolidPhaseWTc99mSCPO = "24997-9";
 
     /// <summary>
+    /// Literal for code: NONEStomachNMForGastricEmptyingSolidPhaseWTc99mSCPO
+    /// </summary>
+    public const string LiteralNONEStomachNMForGastricEmptyingSolidPhaseWTc99mSCPO = "http://loinc.org#24997-9";
+
+    /// <summary>
     /// Literal for code: PlacementCheckOfGastrostomyTubeWContrastViaGITube
     /// </summary>
     public const string LiteralPlacementCheckOfGastrostomyTubeWContrastViaGITube = "24998-7";
+
+    /// <summary>
+    /// Literal for code: NONEPlacementCheckOfGastrostomyTubeWContrastViaGITube
+    /// </summary>
+    public const string LiteralNONEPlacementCheckOfGastrostomyTubeWContrastViaGITube = "http://loinc.org#24998-7";
 
     /// <summary>
     /// Literal for code: TemporomandibularJointMR
@@ -11588,9 +14158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTemporomandibularJointMR = "24999-5";
 
     /// <summary>
+    /// Literal for code: NONETemporomandibularJointMR
+    /// </summary>
+    public const string LiteralNONETemporomandibularJointMR = "http://loinc.org#24999-5";
+
+    /// <summary>
     /// Literal for code: TemporomandibularJointXRay
     /// </summary>
     public const string LiteralTemporomandibularJointXRay = "25000-1";
+
+    /// <summary>
+    /// Literal for code: NONETemporomandibularJointXRay
+    /// </summary>
+    public const string LiteralNONETemporomandibularJointXRay = "http://loinc.org#25000-1";
 
     /// <summary>
     /// Literal for code: ScrotumAndTesticleNMWTc99mPertechnetateIV
@@ -11598,9 +14178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScrotumAndTesticleNMWTc99mPertechnetateIV = "25001-9";
 
     /// <summary>
+    /// Literal for code: NONEScrotumAndTesticleNMWTc99mPertechnetateIV
+    /// </summary>
+    public const string LiteralNONEScrotumAndTesticleNMWTc99mPertechnetateIV = "http://loinc.org#25001-9";
+
+    /// <summary>
     /// Literal for code: ScrotumAndTesticleUS
     /// </summary>
     public const string LiteralScrotumAndTesticleUS = "25002-7";
+
+    /// <summary>
+    /// Literal for code: NONEScrotumAndTesticleUS
+    /// </summary>
+    public const string LiteralNONEScrotumAndTesticleUS = "http://loinc.org#25002-7";
 
     /// <summary>
     /// Literal for code: ThighVesselsMRAngiogramWContrastIV
@@ -11608,9 +14198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThighVesselsMRAngiogramWContrastIV = "25003-5";
 
     /// <summary>
+    /// Literal for code: NONEThighVesselsMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEThighVesselsMRAngiogramWContrastIV = "http://loinc.org#25003-5";
+
+    /// <summary>
     /// Literal for code: ThreeVesselsFluoroscopicAngiogramWContrast
     /// </summary>
     public const string LiteralThreeVesselsFluoroscopicAngiogramWContrast = "25005-0";
+
+    /// <summary>
+    /// Literal for code: NONEThreeVesselsFluoroscopicAngiogramWContrast
+    /// </summary>
+    public const string LiteralNONEThreeVesselsFluoroscopicAngiogramWContrast = "http://loinc.org#25005-0";
 
     /// <summary>
     /// Literal for code: ThumbXRay
@@ -11618,9 +14218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThumbXRay = "25006-8";
 
     /// <summary>
+    /// Literal for code: NONEThumbXRay
+    /// </summary>
+    public const string LiteralNONEThumbXRay = "http://loinc.org#25006-8";
+
+    /// <summary>
     /// Literal for code: ThyroidGlandNMWI131IV
     /// </summary>
     public const string LiteralThyroidGlandNMWI131IV = "25007-6";
+
+    /// <summary>
+    /// Literal for code: NONEThyroidGlandNMWI131IV
+    /// </summary>
+    public const string LiteralNONEThyroidGlandNMWI131IV = "http://loinc.org#25007-6";
 
     /// <summary>
     /// Literal for code: ThyroidGlandNMAndUptakeWI131IV
@@ -11628,9 +14238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThyroidGlandNMAndUptakeWI131IV = "25008-4";
 
     /// <summary>
+    /// Literal for code: NONEThyroidGlandNMAndUptakeWI131IV
+    /// </summary>
+    public const string LiteralNONEThyroidGlandNMAndUptakeWI131IV = "http://loinc.org#25008-4";
+
+    /// <summary>
     /// Literal for code: USGuidanceForBiopsyOfThyroidGland
     /// </summary>
     public const string LiteralUSGuidanceForBiopsyOfThyroidGland = "25009-2";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForBiopsyOfThyroidGland
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForBiopsyOfThyroidGland = "http://loinc.org#25009-2";
 
     /// <summary>
     /// Literal for code: ThyroidGlandUS
@@ -11638,9 +14258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThyroidGlandUS = "25010-0";
 
     /// <summary>
+    /// Literal for code: NONEThyroidGlandUS
+    /// </summary>
+    public const string LiteralNONEThyroidGlandUS = "http://loinc.org#25010-0";
+
+    /// <summary>
     /// Literal for code: TibiaAndFibulaXRay
     /// </summary>
     public const string LiteralTibiaAndFibulaXRay = "25011-8";
+
+    /// <summary>
+    /// Literal for code: NONETibiaAndFibulaXRay
+    /// </summary>
+    public const string LiteralNONETibiaAndFibulaXRay = "http://loinc.org#25011-8";
 
     /// <summary>
     /// Literal for code: TibialArteryFluoroscopicAngiogramAngioplastyWContrastIA
@@ -11648,9 +14278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTibialArteryFluoroscopicAngiogramAngioplastyWContrastIA = "25012-6";
 
     /// <summary>
+    /// Literal for code: NONETibialArteryFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONETibialArteryFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#25012-6";
+
+    /// <summary>
     /// Literal for code: ToesXRay
     /// </summary>
     public const string LiteralToesXRay = "25013-4";
+
+    /// <summary>
+    /// Literal for code: NONEToesXRay
+    /// </summary>
+    public const string LiteralNONEToesXRay = "http://loinc.org#25013-4";
 
     /// <summary>
     /// Literal for code: TwoVesselsFluoroscopicAngiogramWContrast
@@ -11658,9 +14298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTwoVesselsFluoroscopicAngiogramWContrast = "25014-2";
 
     /// <summary>
+    /// Literal for code: NONETwoVesselsFluoroscopicAngiogramWContrast
+    /// </summary>
+    public const string LiteralNONETwoVesselsFluoroscopicAngiogramWContrast = "http://loinc.org#25014-2";
+
+    /// <summary>
     /// Literal for code: UpperGITractReplacementOfPercutaneousGastrojejunostomy
     /// </summary>
     public const string LiteralUpperGITractReplacementOfPercutaneousGastrojejunostomy = "25015-9";
+
+    /// <summary>
+    /// Literal for code: NONEUpperGITractReplacementOfPercutaneousGastrojejunostomy
+    /// </summary>
+    public const string LiteralNONEUpperGITractReplacementOfPercutaneousGastrojejunostomy = "http://loinc.org#25015-9";
 
     /// <summary>
     /// Literal for code: UrethraFluoroscopyWContrastIntraUrethra
@@ -11668,9 +14318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrethraFluoroscopyWContrastIntraUrethra = "25016-7";
 
     /// <summary>
+    /// Literal for code: NONEUrethraFluoroscopyWContrastIntraUrethra
+    /// </summary>
+    public const string LiteralNONEUrethraFluoroscopyWContrastIntraUrethra = "http://loinc.org#25016-7";
+
+    /// <summary>
     /// Literal for code: UrinaryBladderAndUrethraFluoroscopyWContrastIntraBladder
     /// </summary>
     public const string LiteralUrinaryBladderAndUrethraFluoroscopyWContrastIntraBladder = "25017-5";
+
+    /// <summary>
+    /// Literal for code: NONEUrinaryBladderAndUrethraFluoroscopyWContrastIntraBladder
+    /// </summary>
+    public const string LiteralNONEUrinaryBladderAndUrethraFluoroscopyWContrastIntraBladder = "http://loinc.org#25017-5";
 
     /// <summary>
     /// Literal for code: UrinaryBladderNM
@@ -11678,9 +14338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrinaryBladderNM = "25018-3";
 
     /// <summary>
+    /// Literal for code: NONEUrinaryBladderNM
+    /// </summary>
+    public const string LiteralNONEUrinaryBladderNM = "http://loinc.org#25018-3";
+
+    /// <summary>
     /// Literal for code: UrinaryBladderUS
     /// </summary>
     public const string LiteralUrinaryBladderUS = "25019-1";
+
+    /// <summary>
+    /// Literal for code: NONEUrinaryBladderUS
+    /// </summary>
+    public const string LiteralNONEUrinaryBladderUS = "http://loinc.org#25019-1";
 
     /// <summary>
     /// Literal for code: UrinaryBladderAndUrethraFluoroscopyWContrastRetrogradeViaUrethra
@@ -11688,9 +14358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrinaryBladderAndUrethraFluoroscopyWContrastRetrogradeViaUrethra = "25020-9";
 
     /// <summary>
+    /// Literal for code: NONEUrinaryBladderAndUrethraFluoroscopyWContrastRetrogradeViaUrethra
+    /// </summary>
+    public const string LiteralNONEUrinaryBladderAndUrethraFluoroscopyWContrastRetrogradeViaUrethra = "http://loinc.org#25020-9";
+
+    /// <summary>
     /// Literal for code: UterusAndFallopianTubesFluoroscopyWContrastIU
     /// </summary>
     public const string LiteralUterusAndFallopianTubesFluoroscopyWContrastIU = "25022-5";
+
+    /// <summary>
+    /// Literal for code: NONEUterusAndFallopianTubesFluoroscopyWContrastIU
+    /// </summary>
+    public const string LiteralNONEUterusAndFallopianTubesFluoroscopyWContrastIU = "http://loinc.org#25022-5";
 
     /// <summary>
     /// Literal for code: VeinFluoroscopicAngiogramWContrastIV
@@ -11698,9 +14378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVeinFluoroscopicAngiogramWContrastIV = "25023-3";
 
     /// <summary>
+    /// Literal for code: NONEVeinFluoroscopicAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEVeinFluoroscopicAngiogramWContrastIV = "http://loinc.org#25023-3";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVein
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVein = "25024-1";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVein
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVein = "http://loinc.org#25024-1";
 
     /// <summary>
     /// Literal for code: VenaCavaFluoroscopicAngiogramWContrastIV
@@ -11708,9 +14398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenaCavaFluoroscopicAngiogramWContrastIV = "25025-8";
 
     /// <summary>
+    /// Literal for code: NONEVenaCavaFluoroscopicAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEVenaCavaFluoroscopicAngiogramWContrastIV = "http://loinc.org#25025-8";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfIVCFilterInInferiorVenaCavaWContrastIV
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfIVCFilterInInferiorVenaCavaWContrastIV = "25026-6";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfIVCFilterInInferiorVenaCavaWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfIVCFilterInInferiorVenaCavaWContrastIV = "http://loinc.org#25026-6";
 
     /// <summary>
     /// Literal for code: GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVein
@@ -11718,9 +14418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVein = "25027-4";
 
     /// <summary>
+    /// Literal for code: NONEGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVein
+    /// </summary>
+    public const string LiteralNONEGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVein = "http://loinc.org#25027-4";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfCatheterForAdminstrationOfThrombolyticInVesselWContrastIntravascular
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfCatheterForAdminstrationOfThrombolyticInVesselWContrastIntravascular = "25028-2";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfCatheterForAdminstrationOfThrombolyticInVesselWContrastIntravascular
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfCatheterForAdminstrationOfThrombolyticInVesselWContrastIntravascular = "http://loinc.org#25028-2";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfCatheterForVasoconstrictorInfusionInVessels
@@ -11728,9 +14438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfCatheterForVasoconstrictorInfusionInVessels = "25029-0";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfCatheterForVasoconstrictorInfusionInVessels
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfCatheterForVasoconstrictorInfusionInVessels = "http://loinc.org#25029-0";
+
+    /// <summary>
     /// Literal for code: AbdominalArteriesFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralAbdominalArteriesFluoroscopicAngiogramWContrastIA = "25030-8";
+
+    /// <summary>
+    /// Literal for code: NONEAbdominalArteriesFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEAbdominalArteriesFluoroscopicAngiogramWContrastIA = "http://loinc.org#25030-8";
 
     /// <summary>
     /// Literal for code: BoneNM
@@ -11738,9 +14458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoneNM = "25031-6";
 
     /// <summary>
+    /// Literal for code: NONEBoneNM
+    /// </summary>
+    public const string LiteralNONEBoneNM = "http://loinc.org#25031-6";
+
+    /// <summary>
     /// Literal for code: BoneNMWIn111TaggedWBCIV
     /// </summary>
     public const string LiteralBoneNMWIn111TaggedWBCIV = "25032-4";
+
+    /// <summary>
+    /// Literal for code: NONEBoneNMWIn111TaggedWBCIV
+    /// </summary>
+    public const string LiteralNONEBoneNMWIn111TaggedWBCIV = "http://loinc.org#25032-4";
 
     /// <summary>
     /// Literal for code: WristMR
@@ -11748,9 +14478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWristMR = "25033-2";
 
     /// <summary>
+    /// Literal for code: NONEWristMR
+    /// </summary>
+    public const string LiteralNONEWristMR = "http://loinc.org#25033-2";
+
+    /// <summary>
     /// Literal for code: WristFluoroscopyArthrogram
     /// </summary>
     public const string LiteralWristFluoroscopyArthrogram = "25034-0";
+
+    /// <summary>
+    /// Literal for code: NONEWristFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEWristFluoroscopyArthrogram = "http://loinc.org#25034-0";
 
     /// <summary>
     /// Literal for code: WristMRWOAndWContrastIV
@@ -11758,9 +14498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWristMRWOAndWContrastIV = "25035-7";
 
     /// <summary>
+    /// Literal for code: NONEWristMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEWristMRWOAndWContrastIV = "http://loinc.org#25035-7";
+
+    /// <summary>
     /// Literal for code: WristUS
     /// </summary>
     public const string LiteralWristUS = "25036-5";
+
+    /// <summary>
+    /// Literal for code: NONEWristUS
+    /// </summary>
+    public const string LiteralNONEWristUS = "http://loinc.org#25036-5";
 
     /// <summary>
     /// Literal for code: UnspecifiedBodyRegionCourtesyConsultation
@@ -11768,9 +14518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnspecifiedBodyRegionCourtesyConsultation = "25038-1";
 
     /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionCourtesyConsultation
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionCourtesyConsultation = "http://loinc.org#25038-1";
+
+    /// <summary>
     /// Literal for code: UnspecifiedBodyRegionCTLimited
     /// </summary>
     public const string LiteralUnspecifiedBodyRegionCTLimited = "25039-9";
+
+    /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionCTLimited
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionCTLimited = "http://loinc.org#25039-9";
 
     /// <summary>
     /// Literal for code: DeprecatedUnspecifiedBodyRegionCT3D
@@ -11778,9 +14538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedUnspecifiedBodyRegionCT3D = "25040-7";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedUnspecifiedBodyRegionCT3D
+    /// </summary>
+    public const string LiteralNONEDeprecatedUnspecifiedBodyRegionCT3D = "http://loinc.org#25040-7";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegionWContrastIV
     /// </summary>
     public const string LiteralCTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegionWContrastIV = "25041-5";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegionWContrastIV
+    /// </summary>
+    public const string LiteralNONECTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegionWContrastIV = "http://loinc.org#25041-5";
 
     /// <summary>
     /// Literal for code: CTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegion
@@ -11788,9 +14558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegion = "25042-3";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONECTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegion = "http://loinc.org#25042-3";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForAspirationOfUnspecifiedBodyRegion
     /// </summary>
     public const string LiteralCTGuidanceForAspirationOfUnspecifiedBodyRegion = "25043-1";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForAspirationOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONECTGuidanceForAspirationOfUnspecifiedBodyRegion = "http://loinc.org#25043-1";
 
     /// <summary>
     /// Literal for code: CTGuidanceForBiopsyOfUnspecifiedBodyRegion
@@ -11798,9 +14578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForBiopsyOfUnspecifiedBodyRegion = "25044-9";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForBiopsyOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONECTGuidanceForBiopsyOfUnspecifiedBodyRegion = "http://loinc.org#25044-9";
+
+    /// <summary>
     /// Literal for code: UnspecifiedBodyRegionCT
     /// </summary>
     public const string LiteralUnspecifiedBodyRegionCT = "25045-6";
+
+    /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionCT
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionCT = "http://loinc.org#25045-6";
 
     /// <summary>
     /// Literal for code: UnspecifiedBodyRegionCTWAnesthesia
@@ -11808,9 +14598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnspecifiedBodyRegionCTWAnesthesia = "25046-4";
 
     /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionCTWAnesthesia
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionCTWAnesthesia = "http://loinc.org#25046-4";
+
+    /// <summary>
     /// Literal for code: UnspecifiedBodyRegionCTWConsciousSedation
     /// </summary>
     public const string LiteralUnspecifiedBodyRegionCTWConsciousSedation = "25047-2";
+
+    /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionCTWConsciousSedation
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionCTWConsciousSedation = "http://loinc.org#25047-2";
 
     /// <summary>
     /// Literal for code: DeprecatedUnspecifiedBodyRegionCT3DSagittalAndCoronalDisarticulation
@@ -11818,9 +14618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedUnspecifiedBodyRegionCT3DSagittalAndCoronalDisarticulation = "25050-6";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedUnspecifiedBodyRegionCT3DSagittalAndCoronalDisarticulation
+    /// </summary>
+    public const string LiteralNONEDeprecatedUnspecifiedBodyRegionCT3DSagittalAndCoronalDisarticulation = "http://loinc.org#25050-6";
+
+    /// <summary>
     /// Literal for code: DeprecatedUnspecifiedBodyRegionCTMultisectionalSagittal
     /// </summary>
     public const string LiteralDeprecatedUnspecifiedBodyRegionCTMultisectionalSagittal = "25051-4";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedUnspecifiedBodyRegionCTMultisectionalSagittal
+    /// </summary>
+    public const string LiteralNONEDeprecatedUnspecifiedBodyRegionCTMultisectionalSagittal = "http://loinc.org#25051-4";
 
     /// <summary>
     /// Literal for code: DeprecatedUnspecifiedBodyRegionCTSagittalAndCoronal
@@ -11828,9 +14638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedUnspecifiedBodyRegionCTSagittalAndCoronal = "25052-2";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedUnspecifiedBodyRegionCTSagittalAndCoronal
+    /// </summary>
+    public const string LiteralNONEDeprecatedUnspecifiedBodyRegionCTSagittalAndCoronal = "http://loinc.org#25052-2";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForRadiosurgeryOfUnspecifiedBodyRegion
     /// </summary>
     public const string LiteralCTGuidanceForRadiosurgeryOfUnspecifiedBodyRegion = "25053-0";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForRadiosurgeryOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONECTGuidanceForRadiosurgeryOfUnspecifiedBodyRegion = "http://loinc.org#25053-0";
 
     /// <summary>
     /// Literal for code: CTGuidanceForRadiosurgeryOfUnspecifiedBodyRegionWContrastIV
@@ -11838,9 +14658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForRadiosurgeryOfUnspecifiedBodyRegionWContrastIV = "25054-8";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForRadiosurgeryOfUnspecifiedBodyRegionWContrastIV
+    /// </summary>
+    public const string LiteralNONECTGuidanceForRadiosurgeryOfUnspecifiedBodyRegionWContrastIV = "http://loinc.org#25054-8";
+
+    /// <summary>
     /// Literal for code: DeprecatedUnspecifiedBodyRegionMRAdditionalSequence
     /// </summary>
     public const string LiteralDeprecatedUnspecifiedBodyRegionMRAdditionalSequence = "25055-5";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedUnspecifiedBodyRegionMRAdditionalSequence
+    /// </summary>
+    public const string LiteralNONEDeprecatedUnspecifiedBodyRegionMRAdditionalSequence = "http://loinc.org#25055-5";
 
     /// <summary>
     /// Literal for code: UnspecifiedBodyRegionMR
@@ -11848,9 +14678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnspecifiedBodyRegionMR = "25056-3";
 
     /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionMR
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionMR = "http://loinc.org#25056-3";
+
+    /// <summary>
     /// Literal for code: UnspecifiedBodyRegionMRWConsciousSedation
     /// </summary>
     public const string LiteralUnspecifiedBodyRegionMRWConsciousSedation = "25057-1";
+
+    /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionMRWConsciousSedation
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionMRWConsciousSedation = "http://loinc.org#25057-1";
 
     /// <summary>
     /// Literal for code: UnspecifiedBodyRegionMRAngiogramWContrastIV
@@ -11858,9 +14698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnspecifiedBodyRegionMRAngiogramWContrastIV = "25058-9";
 
     /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionMRAngiogramWContrastIV = "http://loinc.org#25058-9";
+
+    /// <summary>
     /// Literal for code: USGuidanceForBiopsyOfUnspecifiedBodyRegion
     /// </summary>
     public const string LiteralUSGuidanceForBiopsyOfUnspecifiedBodyRegion = "25059-7";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForBiopsyOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForBiopsyOfUnspecifiedBodyRegion = "http://loinc.org#25059-7";
 
     /// <summary>
     /// Literal for code: UnspecifiedBodyRegionUSNoCharge
@@ -11868,9 +14718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnspecifiedBodyRegionUSNoCharge = "25060-5";
 
     /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionUSNoCharge
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionUSNoCharge = "http://loinc.org#25060-5";
+
+    /// <summary>
     /// Literal for code: UnspecifiedBodyRegionUS
     /// </summary>
     public const string LiteralUnspecifiedBodyRegionUS = "25061-3";
+
+    /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionUS
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionUS = "http://loinc.org#25061-3";
 
     /// <summary>
     /// Literal for code: UnspecifiedBodyRegionXRayComparisonView
@@ -11878,9 +14738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnspecifiedBodyRegionXRayComparisonView = "25062-1";
 
     /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionXRayComparisonView
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionXRayComparisonView = "http://loinc.org#25062-1";
+
+    /// <summary>
     /// Literal for code: VesselFluoroscopicAngiogramSingleViewWContrastIA
     /// </summary>
     public const string LiteralVesselFluoroscopicAngiogramSingleViewWContrastIA = "25063-9";
+
+    /// <summary>
+    /// Literal for code: NONEVesselFluoroscopicAngiogramSingleViewWContrastIA
+    /// </summary>
+    public const string LiteralNONEVesselFluoroscopicAngiogramSingleViewWContrastIA = "http://loinc.org#25063-9";
 
     /// <summary>
     /// Literal for code: VesselFluoroscopicAngiogramAngioplastyWContrastIA
@@ -11888,9 +14758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVesselFluoroscopicAngiogramAngioplastyWContrastIA = "25064-7";
 
     /// <summary>
+    /// Literal for code: NONEVesselFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEVesselFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#25064-7";
+
+    /// <summary>
     /// Literal for code: UnspecifiedBodyRegionFluoroscopy15Minutes
     /// </summary>
     public const string LiteralUnspecifiedBodyRegionFluoroscopy15Minutes = "25065-4";
+
+    /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionFluoroscopy15Minutes
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionFluoroscopy15Minutes = "http://loinc.org#25065-4";
 
     /// <summary>
     /// Literal for code: UnspecifiedBodyRegionFluoroscopy30Minutes
@@ -11898,9 +14778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnspecifiedBodyRegionFluoroscopy30Minutes = "25066-2";
 
     /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionFluoroscopy30Minutes
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionFluoroscopy30Minutes = "http://loinc.org#25066-2";
+
+    /// <summary>
     /// Literal for code: UnspecifiedBodyRegionFluoroscopy45Minutes
     /// </summary>
     public const string LiteralUnspecifiedBodyRegionFluoroscopy45Minutes = "25067-0";
+
+    /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionFluoroscopy45Minutes
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionFluoroscopy45Minutes = "http://loinc.org#25067-0";
 
     /// <summary>
     /// Literal for code: UnspecifiedBodyRegionFluoroscopy1Hour
@@ -11908,9 +14798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnspecifiedBodyRegionFluoroscopy1Hour = "25068-8";
 
     /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionFluoroscopy1Hour
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionFluoroscopy1Hour = "http://loinc.org#25068-8";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForBiopsyOfUnspecifiedBodyRegion
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForBiopsyOfUnspecifiedBodyRegion = "25069-6";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForBiopsyOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForBiopsyOfUnspecifiedBodyRegion = "http://loinc.org#25069-6";
 
     /// <summary>
     /// Literal for code: UnspecifiedBodyRegionFluoroscopyDuringSurgery
@@ -11918,9 +14818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnspecifiedBodyRegionFluoroscopyDuringSurgery = "25070-4";
 
     /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionFluoroscopyDuringSurgery
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionFluoroscopyDuringSurgery = "http://loinc.org#25070-4";
+
+    /// <summary>
     /// Literal for code: UnspecifiedBodyRegionXRayTomograph
     /// </summary>
     public const string LiteralUnspecifiedBodyRegionXRayTomograph = "25071-2";
+
+    /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionXRayTomograph
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionXRayTomograph = "http://loinc.org#25071-2";
 
     /// <summary>
     /// Literal for code: GuidanceForPlacementOfInfusionPortInUnspecifiedBodyRegion
@@ -11928,9 +14838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuidanceForPlacementOfInfusionPortInUnspecifiedBodyRegion = "25072-0";
 
     /// <summary>
+    /// Literal for code: NONEGuidanceForPlacementOfInfusionPortInUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONEGuidanceForPlacementOfInfusionPortInUnspecifiedBodyRegion = "http://loinc.org#25072-0";
+
+    /// <summary>
     /// Literal for code: VesselFluoroscopicAngiogramRemovalOfForeignBodyFromVascularSpace
     /// </summary>
     public const string LiteralVesselFluoroscopicAngiogramRemovalOfForeignBodyFromVascularSpace = "25073-8";
+
+    /// <summary>
+    /// Literal for code: NONEVesselFluoroscopicAngiogramRemovalOfForeignBodyFromVascularSpace
+    /// </summary>
+    public const string LiteralNONEVesselFluoroscopicAngiogramRemovalOfForeignBodyFromVascularSpace = "http://loinc.org#25073-8";
 
     /// <summary>
     /// Literal for code: ZygomaticArchXRay
@@ -11938,9 +14858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralZygomaticArchXRay = "25074-6";
 
     /// <summary>
+    /// Literal for code: NONEZygomaticArchXRay
+    /// </summary>
+    public const string LiteralNONEZygomaticArchXRay = "http://loinc.org#25074-6";
+
+    /// <summary>
     /// Literal for code: HepaticArteryFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralHepaticArteryFluoroscopicAngiogramWContrastIA = "25076-1";
+
+    /// <summary>
+    /// Literal for code: NONEHepaticArteryFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEHepaticArteryFluoroscopicAngiogramWContrastIA = "http://loinc.org#25076-1";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfCatheterInHepaticArteryWContrastIA
@@ -11948,9 +14878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfCatheterInHepaticArteryWContrastIA = "25077-9";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfCatheterInHepaticArteryWContrastIA
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfCatheterInHepaticArteryWContrastIA = "http://loinc.org#25077-9";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForPlacementOfStentInIntrahepaticPortalSystem
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForPlacementOfStentInIntrahepaticPortalSystem = "25078-7";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForPlacementOfStentInIntrahepaticPortalSystem
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForPlacementOfStentInIntrahepaticPortalSystem = "http://loinc.org#25078-7";
 
     /// <summary>
     /// Literal for code: KidneyArteriesFluoroscopicAngiogramWContrastIA
@@ -11958,9 +14898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKidneyArteriesFluoroscopicAngiogramWContrastIA = "25079-5";
 
     /// <summary>
+    /// Literal for code: NONEKidneyArteriesFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONEKidneyArteriesFluoroscopicAngiogramWContrastIA = "http://loinc.org#25079-5";
+
+    /// <summary>
     /// Literal for code: RenalVeinBilateralFluoroscopicAngiogramWContrastIVAndWReninSampling
     /// </summary>
     public const string LiteralRenalVeinBilateralFluoroscopicAngiogramWContrastIVAndWReninSampling = "25080-3";
+
+    /// <summary>
+    /// Literal for code: NONERenalVeinBilateralFluoroscopicAngiogramWContrastIVAndWReninSampling
+    /// </summary>
+    public const string LiteralNONERenalVeinBilateralFluoroscopicAngiogramWContrastIVAndWReninSampling = "http://loinc.org#25080-3";
 
     /// <summary>
     /// Literal for code: RenalVesselFluoroscopicAngiogramAngioplastyWContrastIA
@@ -11968,9 +14918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRenalVesselFluoroscopicAngiogramAngioplastyWContrastIA = "25081-1";
 
     /// <summary>
+    /// Literal for code: NONERenalVesselFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONERenalVesselFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#25081-1";
+
+    /// <summary>
     /// Literal for code: VeinBilateralFluoroscopicAngiogramWContrastIV
     /// </summary>
     public const string LiteralVeinBilateralFluoroscopicAngiogramWContrastIV = "26064-6";
+
+    /// <summary>
+    /// Literal for code: NONEVeinBilateralFluoroscopicAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEVeinBilateralFluoroscopicAngiogramWContrastIV = "http://loinc.org#26064-6";
 
     /// <summary>
     /// Literal for code: VeinLeftFluoroscopicAngiogramWContrastIV
@@ -11978,9 +14938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVeinLeftFluoroscopicAngiogramWContrastIV = "26065-3";
 
     /// <summary>
+    /// Literal for code: NONEVeinLeftFluoroscopicAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEVeinLeftFluoroscopicAngiogramWContrastIV = "http://loinc.org#26065-3";
+
+    /// <summary>
     /// Literal for code: VeinRightFluoroscopicAngiogramWContrastIV
     /// </summary>
     public const string LiteralVeinRightFluoroscopicAngiogramWContrastIV = "26066-1";
+
+    /// <summary>
+    /// Literal for code: NONEVeinRightFluoroscopicAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEVeinRightFluoroscopicAngiogramWContrastIV = "http://loinc.org#26066-1";
 
     /// <summary>
     /// Literal for code: SalivaryGlandBilateralFluoroscopyWContrastIntraSalivaryDuct
@@ -11988,9 +14958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSalivaryGlandBilateralFluoroscopyWContrastIntraSalivaryDuct = "26067-9";
 
     /// <summary>
+    /// Literal for code: NONESalivaryGlandBilateralFluoroscopyWContrastIntraSalivaryDuct
+    /// </summary>
+    public const string LiteralNONESalivaryGlandBilateralFluoroscopyWContrastIntraSalivaryDuct = "http://loinc.org#26067-9";
+
+    /// <summary>
     /// Literal for code: SalivaryGlandLeftFluoroscopyWContrastIntraSalivaryDuct
     /// </summary>
     public const string LiteralSalivaryGlandLeftFluoroscopyWContrastIntraSalivaryDuct = "26068-7";
+
+    /// <summary>
+    /// Literal for code: NONESalivaryGlandLeftFluoroscopyWContrastIntraSalivaryDuct
+    /// </summary>
+    public const string LiteralNONESalivaryGlandLeftFluoroscopyWContrastIntraSalivaryDuct = "http://loinc.org#26068-7";
 
     /// <summary>
     /// Literal for code: SalivaryGlandRightFluoroscopyWContrastIntraSalivaryDuct
@@ -11998,9 +14978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSalivaryGlandRightFluoroscopyWContrastIntraSalivaryDuct = "26069-5";
 
     /// <summary>
+    /// Literal for code: NONESalivaryGlandRightFluoroscopyWContrastIntraSalivaryDuct
+    /// </summary>
+    public const string LiteralNONESalivaryGlandRightFluoroscopyWContrastIntraSalivaryDuct = "http://loinc.org#26069-5";
+
+    /// <summary>
     /// Literal for code: HipBilateralFluoroscopyArthrogram
     /// </summary>
     public const string LiteralHipBilateralFluoroscopyArthrogram = "26070-3";
+
+    /// <summary>
+    /// Literal for code: NONEHipBilateralFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEHipBilateralFluoroscopyArthrogram = "http://loinc.org#26070-3";
 
     /// <summary>
     /// Literal for code: HipLeftFluoroscopyArthrogram
@@ -12008,9 +14998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHipLeftFluoroscopyArthrogram = "26071-1";
 
     /// <summary>
+    /// Literal for code: NONEHipLeftFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEHipLeftFluoroscopyArthrogram = "http://loinc.org#26071-1";
+
+    /// <summary>
     /// Literal for code: HipRightFluoroscopyArthrogram
     /// </summary>
     public const string LiteralHipRightFluoroscopyArthrogram = "26072-9";
+
+    /// <summary>
+    /// Literal for code: NONEHipRightFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEHipRightFluoroscopyArthrogram = "http://loinc.org#26072-9";
 
     /// <summary>
     /// Literal for code: KneeBilateralFluoroscopyArthrogram
@@ -12018,9 +15018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeBilateralFluoroscopyArthrogram = "26073-7";
 
     /// <summary>
+    /// Literal for code: NONEKneeBilateralFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEKneeBilateralFluoroscopyArthrogram = "http://loinc.org#26073-7";
+
+    /// <summary>
     /// Literal for code: KneeLeftFluoroscopyArthrogram
     /// </summary>
     public const string LiteralKneeLeftFluoroscopyArthrogram = "26074-5";
+
+    /// <summary>
+    /// Literal for code: NONEKneeLeftFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEKneeLeftFluoroscopyArthrogram = "http://loinc.org#26074-5";
 
     /// <summary>
     /// Literal for code: KneeRightFluoroscopyArthrogram
@@ -12028,9 +15038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeRightFluoroscopyArthrogram = "26075-2";
 
     /// <summary>
+    /// Literal for code: NONEKneeRightFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEKneeRightFluoroscopyArthrogram = "http://loinc.org#26075-2";
+
+    /// <summary>
     /// Literal for code: ShoulderBilateralFluoroscopyArthrogram
     /// </summary>
     public const string LiteralShoulderBilateralFluoroscopyArthrogram = "26076-0";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderBilateralFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEShoulderBilateralFluoroscopyArthrogram = "http://loinc.org#26076-0";
 
     /// <summary>
     /// Literal for code: ShoulderLeftFluoroscopyArthrogram
@@ -12038,9 +15058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderLeftFluoroscopyArthrogram = "26077-8";
 
     /// <summary>
+    /// Literal for code: NONEShoulderLeftFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEShoulderLeftFluoroscopyArthrogram = "http://loinc.org#26077-8";
+
+    /// <summary>
     /// Literal for code: ShoulderRightFluoroscopyArthrogram
     /// </summary>
     public const string LiteralShoulderRightFluoroscopyArthrogram = "26078-6";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderRightFluoroscopyArthrogram
+    /// </summary>
+    public const string LiteralNONEShoulderRightFluoroscopyArthrogram = "http://loinc.org#26078-6";
 
     /// <summary>
     /// Literal for code: CarotidArteryBilateralFluoroscopicAngiogramWContrastIA
@@ -12048,9 +15078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCarotidArteryBilateralFluoroscopicAngiogramWContrastIA = "26079-4";
 
     /// <summary>
+    /// Literal for code: NONECarotidArteryBilateralFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONECarotidArteryBilateralFluoroscopicAngiogramWContrastIA = "http://loinc.org#26079-4";
+
+    /// <summary>
     /// Literal for code: CarotidArteryLeftFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralCarotidArteryLeftFluoroscopicAngiogramWContrastIA = "26080-2";
+
+    /// <summary>
+    /// Literal for code: NONECarotidArteryLeftFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONECarotidArteryLeftFluoroscopicAngiogramWContrastIA = "http://loinc.org#26080-2";
 
     /// <summary>
     /// Literal for code: CarotidArteryRightFluoroscopicAngiogramWContrastIA
@@ -12058,9 +15098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCarotidArteryRightFluoroscopicAngiogramWContrastIA = "26081-0";
 
     /// <summary>
+    /// Literal for code: NONECarotidArteryRightFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONECarotidArteryRightFluoroscopicAngiogramWContrastIA = "http://loinc.org#26081-0";
+
+    /// <summary>
     /// Literal for code: SpinalArteryBilateralFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralSpinalArteryBilateralFluoroscopicAngiogramWContrastIA = "26082-8";
+
+    /// <summary>
+    /// Literal for code: NONESpinalArteryBilateralFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONESpinalArteryBilateralFluoroscopicAngiogramWContrastIA = "http://loinc.org#26082-8";
 
     /// <summary>
     /// Literal for code: SpinalArteryLeftFluoroscopicAngiogramWContrastIA
@@ -12068,9 +15118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpinalArteryLeftFluoroscopicAngiogramWContrastIA = "26083-6";
 
     /// <summary>
+    /// Literal for code: NONESpinalArteryLeftFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONESpinalArteryLeftFluoroscopicAngiogramWContrastIA = "http://loinc.org#26083-6";
+
+    /// <summary>
     /// Literal for code: SpinalArteryRightFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralSpinalArteryRightFluoroscopicAngiogramWContrastIA = "26084-4";
+
+    /// <summary>
+    /// Literal for code: NONESpinalArteryRightFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONESpinalArteryRightFluoroscopicAngiogramWContrastIA = "http://loinc.org#26084-4";
 
     /// <summary>
     /// Literal for code: KneeBilateralXRayStanding
@@ -12078,9 +15138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeBilateralXRayStanding = "26085-1";
 
     /// <summary>
+    /// Literal for code: NONEKneeBilateralXRayStanding
+    /// </summary>
+    public const string LiteralNONEKneeBilateralXRayStanding = "http://loinc.org#26085-1";
+
+    /// <summary>
     /// Literal for code: KneeLeftXRayStanding
     /// </summary>
     public const string LiteralKneeLeftXRayStanding = "26086-9";
+
+    /// <summary>
+    /// Literal for code: NONEKneeLeftXRayStanding
+    /// </summary>
+    public const string LiteralNONEKneeLeftXRayStanding = "http://loinc.org#26086-9";
 
     /// <summary>
     /// Literal for code: KneeRightXRayStanding
@@ -12088,9 +15158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeRightXRayStanding = "26087-7";
 
     /// <summary>
+    /// Literal for code: NONEKneeRightXRayStanding
+    /// </summary>
+    public const string LiteralNONEKneeRightXRayStanding = "http://loinc.org#26087-7";
+
+    /// <summary>
     /// Literal for code: KneeBilateralNM
     /// </summary>
     public const string LiteralKneeBilateralNM = "26088-5";
+
+    /// <summary>
+    /// Literal for code: NONEKneeBilateralNM
+    /// </summary>
+    public const string LiteralNONEKneeBilateralNM = "http://loinc.org#26088-5";
 
     /// <summary>
     /// Literal for code: KneeLeftNM
@@ -12098,9 +15178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeLeftNM = "26089-3";
 
     /// <summary>
+    /// Literal for code: NONEKneeLeftNM
+    /// </summary>
+    public const string LiteralNONEKneeLeftNM = "http://loinc.org#26089-3";
+
+    /// <summary>
     /// Literal for code: KneeRightNM
     /// </summary>
     public const string LiteralKneeRightNM = "26090-1";
+
+    /// <summary>
+    /// Literal for code: NONEKneeRightNM
+    /// </summary>
+    public const string LiteralNONEKneeRightNM = "http://loinc.org#26090-1";
 
     /// <summary>
     /// Literal for code: ScrotumAndTesticleBilateralNMWTc99mPertechnetateIV
@@ -12108,9 +15198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScrotumAndTesticleBilateralNMWTc99mPertechnetateIV = "26091-9";
 
     /// <summary>
+    /// Literal for code: NONEScrotumAndTesticleBilateralNMWTc99mPertechnetateIV
+    /// </summary>
+    public const string LiteralNONEScrotumAndTesticleBilateralNMWTc99mPertechnetateIV = "http://loinc.org#26091-9";
+
+    /// <summary>
     /// Literal for code: ScrotumAndTesticleLeftNMWTc99mPertechnetateIV
     /// </summary>
     public const string LiteralScrotumAndTesticleLeftNMWTc99mPertechnetateIV = "26092-7";
+
+    /// <summary>
+    /// Literal for code: NONEScrotumAndTesticleLeftNMWTc99mPertechnetateIV
+    /// </summary>
+    public const string LiteralNONEScrotumAndTesticleLeftNMWTc99mPertechnetateIV = "http://loinc.org#26092-7";
 
     /// <summary>
     /// Literal for code: ScrotumAndTesticleRightNMWTc99mPertechnetateIV
@@ -12118,9 +15218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScrotumAndTesticleRightNMWTc99mPertechnetateIV = "26093-5";
 
     /// <summary>
+    /// Literal for code: NONEScrotumAndTesticleRightNMWTc99mPertechnetateIV
+    /// </summary>
+    public const string LiteralNONEScrotumAndTesticleRightNMWTc99mPertechnetateIV = "http://loinc.org#26093-5";
+
+    /// <summary>
     /// Literal for code: FootBilateralXRayStanding
     /// </summary>
     public const string LiteralFootBilateralXRayStanding = "26094-3";
+
+    /// <summary>
+    /// Literal for code: NONEFootBilateralXRayStanding
+    /// </summary>
+    public const string LiteralNONEFootBilateralXRayStanding = "http://loinc.org#26094-3";
 
     /// <summary>
     /// Literal for code: FootLeftXRayStanding
@@ -12128,9 +15238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFootLeftXRayStanding = "26095-0";
 
     /// <summary>
+    /// Literal for code: NONEFootLeftXRayStanding
+    /// </summary>
+    public const string LiteralNONEFootLeftXRayStanding = "http://loinc.org#26095-0";
+
+    /// <summary>
     /// Literal for code: FootRightXRayStanding
     /// </summary>
     public const string LiteralFootRightXRayStanding = "26096-8";
+
+    /// <summary>
+    /// Literal for code: NONEFootRightXRayStanding
+    /// </summary>
+    public const string LiteralNONEFootRightXRayStanding = "http://loinc.org#26096-8";
 
     /// <summary>
     /// Literal for code: AnkleBilateralXRay
@@ -12138,9 +15258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnkleBilateralXRay = "26097-6";
 
     /// <summary>
+    /// Literal for code: NONEAnkleBilateralXRay
+    /// </summary>
+    public const string LiteralNONEAnkleBilateralXRay = "http://loinc.org#26097-6";
+
+    /// <summary>
     /// Literal for code: AnkleLeftXRay
     /// </summary>
     public const string LiteralAnkleLeftXRay = "26098-4";
+
+    /// <summary>
+    /// Literal for code: NONEAnkleLeftXRay
+    /// </summary>
+    public const string LiteralNONEAnkleLeftXRay = "http://loinc.org#26098-4";
 
     /// <summary>
     /// Literal for code: AnkleRightXRay
@@ -12148,9 +15278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnkleRightXRay = "26099-2";
 
     /// <summary>
+    /// Literal for code: NONEAnkleRightXRay
+    /// </summary>
+    public const string LiteralNONEAnkleRightXRay = "http://loinc.org#26099-2";
+
+    /// <summary>
     /// Literal for code: DeprecatedCalcaneusBilateralXRayStanding
     /// </summary>
     public const string LiteralDeprecatedCalcaneusBilateralXRayStanding = "26100-8";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedCalcaneusBilateralXRayStanding
+    /// </summary>
+    public const string LiteralNONEDeprecatedCalcaneusBilateralXRayStanding = "http://loinc.org#26100-8";
 
     /// <summary>
     /// Literal for code: DeprecatedCalcaneusLeftXRay
@@ -12158,9 +15298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedCalcaneusLeftXRay = "26101-6";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedCalcaneusLeftXRay
+    /// </summary>
+    public const string LiteralNONEDeprecatedCalcaneusLeftXRay = "http://loinc.org#26101-6";
+
+    /// <summary>
     /// Literal for code: DeprecatedCalcaneusRightXRay
     /// </summary>
     public const string LiteralDeprecatedCalcaneusRightXRay = "26102-4";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedCalcaneusRightXRay
+    /// </summary>
+    public const string LiteralNONEDeprecatedCalcaneusRightXRay = "http://loinc.org#26102-4";
 
     /// <summary>
     /// Literal for code: ClavicleBilateralXRay
@@ -12168,9 +15318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClavicleBilateralXRay = "26106-5";
 
     /// <summary>
+    /// Literal for code: NONEClavicleBilateralXRay
+    /// </summary>
+    public const string LiteralNONEClavicleBilateralXRay = "http://loinc.org#26106-5";
+
+    /// <summary>
     /// Literal for code: ClavicleLeftXRay
     /// </summary>
     public const string LiteralClavicleLeftXRay = "26107-3";
+
+    /// <summary>
+    /// Literal for code: NONEClavicleLeftXRay
+    /// </summary>
+    public const string LiteralNONEClavicleLeftXRay = "http://loinc.org#26107-3";
 
     /// <summary>
     /// Literal for code: ClavicleRightXRay
@@ -12178,9 +15338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClavicleRightXRay = "26108-1";
 
     /// <summary>
+    /// Literal for code: NONEClavicleRightXRay
+    /// </summary>
+    public const string LiteralNONEClavicleRightXRay = "http://loinc.org#26108-1";
+
+    /// <summary>
     /// Literal for code: ElbowBilateralXRay
     /// </summary>
     public const string LiteralElbowBilateralXRay = "26109-9";
+
+    /// <summary>
+    /// Literal for code: NONEElbowBilateralXRay
+    /// </summary>
+    public const string LiteralNONEElbowBilateralXRay = "http://loinc.org#26109-9";
 
     /// <summary>
     /// Literal for code: ElbowLeftXRay
@@ -12188,9 +15358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElbowLeftXRay = "26110-7";
 
     /// <summary>
+    /// Literal for code: NONEElbowLeftXRay
+    /// </summary>
+    public const string LiteralNONEElbowLeftXRay = "http://loinc.org#26110-7";
+
+    /// <summary>
     /// Literal for code: ElbowRightXRay
     /// </summary>
     public const string LiteralElbowRightXRay = "26111-5";
+
+    /// <summary>
+    /// Literal for code: NONEElbowRightXRay
+    /// </summary>
+    public const string LiteralNONEElbowRightXRay = "http://loinc.org#26111-5";
 
     /// <summary>
     /// Literal for code: LowerExtremityBilateralXRay
@@ -12198,9 +15378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLowerExtremityBilateralXRay = "26112-3";
 
     /// <summary>
+    /// Literal for code: NONELowerExtremityBilateralXRay
+    /// </summary>
+    public const string LiteralNONELowerExtremityBilateralXRay = "http://loinc.org#26112-3";
+
+    /// <summary>
     /// Literal for code: LowerExtremityLeftXRay
     /// </summary>
     public const string LiteralLowerExtremityLeftXRay = "26113-1";
+
+    /// <summary>
+    /// Literal for code: NONELowerExtremityLeftXRay
+    /// </summary>
+    public const string LiteralNONELowerExtremityLeftXRay = "http://loinc.org#26113-1";
 
     /// <summary>
     /// Literal for code: LowerExtremityRightXRay
@@ -12208,9 +15398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLowerExtremityRightXRay = "26114-9";
 
     /// <summary>
+    /// Literal for code: NONELowerExtremityRightXRay
+    /// </summary>
+    public const string LiteralNONELowerExtremityRightXRay = "http://loinc.org#26114-9";
+
+    /// <summary>
     /// Literal for code: UpperExtremityBilateralXRay
     /// </summary>
     public const string LiteralUpperExtremityBilateralXRay = "26115-6";
+
+    /// <summary>
+    /// Literal for code: NONEUpperExtremityBilateralXRay
+    /// </summary>
+    public const string LiteralNONEUpperExtremityBilateralXRay = "http://loinc.org#26115-6";
 
     /// <summary>
     /// Literal for code: UpperExtremityLeftXRay
@@ -12218,9 +15418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUpperExtremityLeftXRay = "26116-4";
 
     /// <summary>
+    /// Literal for code: NONEUpperExtremityLeftXRay
+    /// </summary>
+    public const string LiteralNONEUpperExtremityLeftXRay = "http://loinc.org#26116-4";
+
+    /// <summary>
     /// Literal for code: UpperExtremityRightXRay
     /// </summary>
     public const string LiteralUpperExtremityRightXRay = "26117-2";
+
+    /// <summary>
+    /// Literal for code: NONEUpperExtremityRightXRay
+    /// </summary>
+    public const string LiteralNONEUpperExtremityRightXRay = "http://loinc.org#26117-2";
 
     /// <summary>
     /// Literal for code: FemurBilateralXRay
@@ -12228,9 +15438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFemurBilateralXRay = "26118-0";
 
     /// <summary>
+    /// Literal for code: NONEFemurBilateralXRay
+    /// </summary>
+    public const string LiteralNONEFemurBilateralXRay = "http://loinc.org#26118-0";
+
+    /// <summary>
     /// Literal for code: FemurLeftXRay
     /// </summary>
     public const string LiteralFemurLeftXRay = "26120-6";
+
+    /// <summary>
+    /// Literal for code: NONEFemurLeftXRay
+    /// </summary>
+    public const string LiteralNONEFemurLeftXRay = "http://loinc.org#26120-6";
 
     /// <summary>
     /// Literal for code: FemurRightXRay
@@ -12238,9 +15458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFemurRightXRay = "26122-2";
 
     /// <summary>
+    /// Literal for code: NONEFemurRightXRay
+    /// </summary>
+    public const string LiteralNONEFemurRightXRay = "http://loinc.org#26122-2";
+
+    /// <summary>
     /// Literal for code: FingerBilateralXRay
     /// </summary>
     public const string LiteralFingerBilateralXRay = "26124-8";
+
+    /// <summary>
+    /// Literal for code: NONEFingerBilateralXRay
+    /// </summary>
+    public const string LiteralNONEFingerBilateralXRay = "http://loinc.org#26124-8";
 
     /// <summary>
     /// Literal for code: FingerLeftXRay
@@ -12248,9 +15478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFingerLeftXRay = "26125-5";
 
     /// <summary>
+    /// Literal for code: NONEFingerLeftXRay
+    /// </summary>
+    public const string LiteralNONEFingerLeftXRay = "http://loinc.org#26125-5";
+
+    /// <summary>
     /// Literal for code: FingerRightXRay
     /// </summary>
     public const string LiteralFingerRightXRay = "26126-3";
+
+    /// <summary>
+    /// Literal for code: NONEFingerRightXRay
+    /// </summary>
+    public const string LiteralNONEFingerRightXRay = "http://loinc.org#26126-3";
 
     /// <summary>
     /// Literal for code: FootBilateralXRay
@@ -12258,9 +15498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFootBilateralXRay = "26127-1";
 
     /// <summary>
+    /// Literal for code: NONEFootBilateralXRay
+    /// </summary>
+    public const string LiteralNONEFootBilateralXRay = "http://loinc.org#26127-1";
+
+    /// <summary>
     /// Literal for code: FootLeftXRay
     /// </summary>
     public const string LiteralFootLeftXRay = "26128-9";
+
+    /// <summary>
+    /// Literal for code: NONEFootLeftXRay
+    /// </summary>
+    public const string LiteralNONEFootLeftXRay = "http://loinc.org#26128-9";
 
     /// <summary>
     /// Literal for code: FootRightXRay
@@ -12268,9 +15518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFootRightXRay = "26129-7";
 
     /// <summary>
+    /// Literal for code: NONEFootRightXRay
+    /// </summary>
+    public const string LiteralNONEFootRightXRay = "http://loinc.org#26129-7";
+
+    /// <summary>
     /// Literal for code: HipBilateralXRay
     /// </summary>
     public const string LiteralHipBilateralXRay = "26130-5";
+
+    /// <summary>
+    /// Literal for code: NONEHipBilateralXRay
+    /// </summary>
+    public const string LiteralNONEHipBilateralXRay = "http://loinc.org#26130-5";
 
     /// <summary>
     /// Literal for code: HipLeftXRay
@@ -12278,9 +15538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHipLeftXRay = "26131-3";
 
     /// <summary>
+    /// Literal for code: NONEHipLeftXRay
+    /// </summary>
+    public const string LiteralNONEHipLeftXRay = "http://loinc.org#26131-3";
+
+    /// <summary>
     /// Literal for code: HipRightXRay
     /// </summary>
     public const string LiteralHipRightXRay = "26132-1";
+
+    /// <summary>
+    /// Literal for code: NONEHipRightXRay
+    /// </summary>
+    public const string LiteralNONEHipRightXRay = "http://loinc.org#26132-1";
 
     /// <summary>
     /// Literal for code: AcetabulumBilateralXRay
@@ -12288,9 +15558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcetabulumBilateralXRay = "26133-9";
 
     /// <summary>
+    /// Literal for code: NONEAcetabulumBilateralXRay
+    /// </summary>
+    public const string LiteralNONEAcetabulumBilateralXRay = "http://loinc.org#26133-9";
+
+    /// <summary>
     /// Literal for code: AcetabulumLeftXRay
     /// </summary>
     public const string LiteralAcetabulumLeftXRay = "26134-7";
+
+    /// <summary>
+    /// Literal for code: NONEAcetabulumLeftXRay
+    /// </summary>
+    public const string LiteralNONEAcetabulumLeftXRay = "http://loinc.org#26134-7";
 
     /// <summary>
     /// Literal for code: AcetabulumRightXRay
@@ -12298,9 +15578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcetabulumRightXRay = "26135-4";
 
     /// <summary>
+    /// Literal for code: NONEAcetabulumRightXRay
+    /// </summary>
+    public const string LiteralNONEAcetabulumRightXRay = "http://loinc.org#26135-4";
+
+    /// <summary>
     /// Literal for code: AcromioclavicularJointBilateralXRay
     /// </summary>
     public const string LiteralAcromioclavicularJointBilateralXRay = "26136-2";
+
+    /// <summary>
+    /// Literal for code: NONEAcromioclavicularJointBilateralXRay
+    /// </summary>
+    public const string LiteralNONEAcromioclavicularJointBilateralXRay = "http://loinc.org#26136-2";
 
     /// <summary>
     /// Literal for code: AcromioclavicularJointLeftXRay
@@ -12308,9 +15598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcromioclavicularJointLeftXRay = "26137-0";
 
     /// <summary>
+    /// Literal for code: NONEAcromioclavicularJointLeftXRay
+    /// </summary>
+    public const string LiteralNONEAcromioclavicularJointLeftXRay = "http://loinc.org#26137-0";
+
+    /// <summary>
     /// Literal for code: AcromioclavicularJointRightXRay
     /// </summary>
     public const string LiteralAcromioclavicularJointRightXRay = "26138-8";
+
+    /// <summary>
+    /// Literal for code: NONEAcromioclavicularJointRightXRay
+    /// </summary>
+    public const string LiteralNONEAcromioclavicularJointRightXRay = "http://loinc.org#26138-8";
 
     /// <summary>
     /// Literal for code: MastoidBilateralXRay
@@ -12318,9 +15618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMastoidBilateralXRay = "26139-6";
 
     /// <summary>
+    /// Literal for code: NONEMastoidBilateralXRay
+    /// </summary>
+    public const string LiteralNONEMastoidBilateralXRay = "http://loinc.org#26139-6";
+
+    /// <summary>
     /// Literal for code: MastoidLeftXRay
     /// </summary>
     public const string LiteralMastoidLeftXRay = "26140-4";
+
+    /// <summary>
+    /// Literal for code: NONEMastoidLeftXRay
+    /// </summary>
+    public const string LiteralNONEMastoidLeftXRay = "http://loinc.org#26140-4";
 
     /// <summary>
     /// Literal for code: MastoidRightXRay
@@ -12328,9 +15638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMastoidRightXRay = "26141-2";
 
     /// <summary>
+    /// Literal for code: NONEMastoidRightXRay
+    /// </summary>
+    public const string LiteralNONEMastoidRightXRay = "http://loinc.org#26141-2";
+
+    /// <summary>
     /// Literal for code: OpticForamenBilateralXRay
     /// </summary>
     public const string LiteralOpticForamenBilateralXRay = "26142-0";
+
+    /// <summary>
+    /// Literal for code: NONEOpticForamenBilateralXRay
+    /// </summary>
+    public const string LiteralNONEOpticForamenBilateralXRay = "http://loinc.org#26142-0";
 
     /// <summary>
     /// Literal for code: OpticForamenLeftXRay
@@ -12338,9 +15658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpticForamenLeftXRay = "26143-8";
 
     /// <summary>
+    /// Literal for code: NONEOpticForamenLeftXRay
+    /// </summary>
+    public const string LiteralNONEOpticForamenLeftXRay = "http://loinc.org#26143-8";
+
+    /// <summary>
     /// Literal for code: OpticForamenRightXRay
     /// </summary>
     public const string LiteralOpticForamenRightXRay = "26144-6";
+
+    /// <summary>
+    /// Literal for code: NONEOpticForamenRightXRay
+    /// </summary>
+    public const string LiteralNONEOpticForamenRightXRay = "http://loinc.org#26144-6";
 
     /// <summary>
     /// Literal for code: RadiusBilateralAndUlnaBilateralXRay
@@ -12348,9 +15678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiusBilateralAndUlnaBilateralXRay = "26146-1";
 
     /// <summary>
+    /// Literal for code: NONERadiusBilateralAndUlnaBilateralXRay
+    /// </summary>
+    public const string LiteralNONERadiusBilateralAndUlnaBilateralXRay = "http://loinc.org#26146-1";
+
+    /// <summary>
     /// Literal for code: RadiusLeftAndUlnaLeftXRay
     /// </summary>
     public const string LiteralRadiusLeftAndUlnaLeftXRay = "26148-7";
+
+    /// <summary>
+    /// Literal for code: NONERadiusLeftAndUlnaLeftXRay
+    /// </summary>
+    public const string LiteralNONERadiusLeftAndUlnaLeftXRay = "http://loinc.org#26148-7";
 
     /// <summary>
     /// Literal for code: RadiusRightAndUlnaRightXRay
@@ -12358,9 +15698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiusRightAndUlnaRightXRay = "26150-3";
 
     /// <summary>
+    /// Literal for code: NONERadiusRightAndUlnaRightXRay
+    /// </summary>
+    public const string LiteralNONERadiusRightAndUlnaRightXRay = "http://loinc.org#26150-3";
+
+    /// <summary>
     /// Literal for code: RibsBilateralXRay
     /// </summary>
     public const string LiteralRibsBilateralXRay = "26151-1";
+
+    /// <summary>
+    /// Literal for code: NONERibsBilateralXRay
+    /// </summary>
+    public const string LiteralNONERibsBilateralXRay = "http://loinc.org#26151-1";
 
     /// <summary>
     /// Literal for code: RibsLeftXRay
@@ -12368,9 +15718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRibsLeftXRay = "26152-9";
 
     /// <summary>
+    /// Literal for code: NONERibsLeftXRay
+    /// </summary>
+    public const string LiteralNONERibsLeftXRay = "http://loinc.org#26152-9";
+
+    /// <summary>
     /// Literal for code: RibsRightXRay
     /// </summary>
     public const string LiteralRibsRightXRay = "26153-7";
+
+    /// <summary>
+    /// Literal for code: NONERibsRightXRay
+    /// </summary>
+    public const string LiteralNONERibsRightXRay = "http://loinc.org#26153-7";
 
     /// <summary>
     /// Literal for code: ScapulaBilateralXRay
@@ -12378,9 +15738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScapulaBilateralXRay = "26154-5";
 
     /// <summary>
+    /// Literal for code: NONEScapulaBilateralXRay
+    /// </summary>
+    public const string LiteralNONEScapulaBilateralXRay = "http://loinc.org#26154-5";
+
+    /// <summary>
     /// Literal for code: ScapulaLeftXRay
     /// </summary>
     public const string LiteralScapulaLeftXRay = "26155-2";
+
+    /// <summary>
+    /// Literal for code: NONEScapulaLeftXRay
+    /// </summary>
+    public const string LiteralNONEScapulaLeftXRay = "http://loinc.org#26155-2";
 
     /// <summary>
     /// Literal for code: ScapulaRightXRay
@@ -12388,9 +15758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScapulaRightXRay = "26156-0";
 
     /// <summary>
+    /// Literal for code: NONEScapulaRightXRay
+    /// </summary>
+    public const string LiteralNONEScapulaRightXRay = "http://loinc.org#26156-0";
+
+    /// <summary>
     /// Literal for code: ShoulderBilateralXRay
     /// </summary>
     public const string LiteralShoulderBilateralXRay = "26157-8";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderBilateralXRay
+    /// </summary>
+    public const string LiteralNONEShoulderBilateralXRay = "http://loinc.org#26157-8";
 
     /// <summary>
     /// Literal for code: ShoulderLeftXRay
@@ -12398,9 +15778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderLeftXRay = "26158-6";
 
     /// <summary>
+    /// Literal for code: NONEShoulderLeftXRay
+    /// </summary>
+    public const string LiteralNONEShoulderLeftXRay = "http://loinc.org#26158-6";
+
+    /// <summary>
     /// Literal for code: ShoulderRightXRay
     /// </summary>
     public const string LiteralShoulderRightXRay = "26159-4";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderRightXRay
+    /// </summary>
+    public const string LiteralNONEShoulderRightXRay = "http://loinc.org#26159-4";
 
     /// <summary>
     /// Literal for code: ThumbBilateralXRay
@@ -12408,9 +15798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThumbBilateralXRay = "26160-2";
 
     /// <summary>
+    /// Literal for code: NONEThumbBilateralXRay
+    /// </summary>
+    public const string LiteralNONEThumbBilateralXRay = "http://loinc.org#26160-2";
+
+    /// <summary>
     /// Literal for code: ThumbLeftXRay
     /// </summary>
     public const string LiteralThumbLeftXRay = "26161-0";
+
+    /// <summary>
+    /// Literal for code: NONEThumbLeftXRay
+    /// </summary>
+    public const string LiteralNONEThumbLeftXRay = "http://loinc.org#26161-0";
 
     /// <summary>
     /// Literal for code: ThumbRightXRay
@@ -12418,9 +15818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThumbRightXRay = "26162-8";
 
     /// <summary>
+    /// Literal for code: NONEThumbRightXRay
+    /// </summary>
+    public const string LiteralNONEThumbRightXRay = "http://loinc.org#26162-8";
+
+    /// <summary>
     /// Literal for code: TibiaBilateralAndFibulaBilateralXRay
     /// </summary>
     public const string LiteralTibiaBilateralAndFibulaBilateralXRay = "26163-6";
+
+    /// <summary>
+    /// Literal for code: NONETibiaBilateralAndFibulaBilateralXRay
+    /// </summary>
+    public const string LiteralNONETibiaBilateralAndFibulaBilateralXRay = "http://loinc.org#26163-6";
 
     /// <summary>
     /// Literal for code: TibiaLeftAndFibulaLeftXRay
@@ -12428,9 +15838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTibiaLeftAndFibulaLeftXRay = "26164-4";
 
     /// <summary>
+    /// Literal for code: NONETibiaLeftAndFibulaLeftXRay
+    /// </summary>
+    public const string LiteralNONETibiaLeftAndFibulaLeftXRay = "http://loinc.org#26164-4";
+
+    /// <summary>
     /// Literal for code: TibiaRightAndFibulaRightXRay
     /// </summary>
     public const string LiteralTibiaRightAndFibulaRightXRay = "26165-1";
+
+    /// <summary>
+    /// Literal for code: NONETibiaRightAndFibulaRightXRay
+    /// </summary>
+    public const string LiteralNONETibiaRightAndFibulaRightXRay = "http://loinc.org#26165-1";
 
     /// <summary>
     /// Literal for code: ToesBilateralXRay
@@ -12438,9 +15858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralToesBilateralXRay = "26166-9";
 
     /// <summary>
+    /// Literal for code: NONEToesBilateralXRay
+    /// </summary>
+    public const string LiteralNONEToesBilateralXRay = "http://loinc.org#26166-9";
+
+    /// <summary>
     /// Literal for code: ToesLeftXRay
     /// </summary>
     public const string LiteralToesLeftXRay = "26167-7";
+
+    /// <summary>
+    /// Literal for code: NONEToesLeftXRay
+    /// </summary>
+    public const string LiteralNONEToesLeftXRay = "http://loinc.org#26167-7";
 
     /// <summary>
     /// Literal for code: ToesRightXRay
@@ -12448,9 +15878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralToesRightXRay = "26168-5";
 
     /// <summary>
+    /// Literal for code: NONEToesRightXRay
+    /// </summary>
+    public const string LiteralNONEToesRightXRay = "http://loinc.org#26168-5";
+
+    /// <summary>
     /// Literal for code: WristBilateralXRay
     /// </summary>
     public const string LiteralWristBilateralXRay = "26169-3";
+
+    /// <summary>
+    /// Literal for code: NONEWristBilateralXRay
+    /// </summary>
+    public const string LiteralNONEWristBilateralXRay = "http://loinc.org#26169-3";
 
     /// <summary>
     /// Literal for code: WristLeftXRay
@@ -12458,9 +15898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWristLeftXRay = "26170-1";
 
     /// <summary>
+    /// Literal for code: NONEWristLeftXRay
+    /// </summary>
+    public const string LiteralNONEWristLeftXRay = "http://loinc.org#26170-1";
+
+    /// <summary>
     /// Literal for code: WristRightXRay
     /// </summary>
     public const string LiteralWristRightXRay = "26171-9";
+
+    /// <summary>
+    /// Literal for code: NONEWristRightXRay
+    /// </summary>
+    public const string LiteralNONEWristRightXRay = "http://loinc.org#26171-9";
 
     /// <summary>
     /// Literal for code: ZygomaticArchBilateralXRay
@@ -12468,9 +15918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralZygomaticArchBilateralXRay = "26172-7";
 
     /// <summary>
+    /// Literal for code: NONEZygomaticArchBilateralXRay
+    /// </summary>
+    public const string LiteralNONEZygomaticArchBilateralXRay = "http://loinc.org#26172-7";
+
+    /// <summary>
     /// Literal for code: ZygomaticArchLeftXRay
     /// </summary>
     public const string LiteralZygomaticArchLeftXRay = "26173-5";
+
+    /// <summary>
+    /// Literal for code: NONEZygomaticArchLeftXRay
+    /// </summary>
+    public const string LiteralNONEZygomaticArchLeftXRay = "http://loinc.org#26173-5";
 
     /// <summary>
     /// Literal for code: ZygomaticArchRightXRay
@@ -12478,9 +15938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralZygomaticArchRightXRay = "26174-3";
 
     /// <summary>
+    /// Literal for code: NONEZygomaticArchRightXRay
+    /// </summary>
+    public const string LiteralNONEZygomaticArchRightXRay = "http://loinc.org#26174-3";
+
+    /// <summary>
     /// Literal for code: BreastBilateralMammogramScreening
     /// </summary>
     public const string LiteralBreastBilateralMammogramScreening = "26175-0";
+
+    /// <summary>
+    /// Literal for code: NONEBreastBilateralMammogramScreening
+    /// </summary>
+    public const string LiteralNONEBreastBilateralMammogramScreening = "http://loinc.org#26175-0";
 
     /// <summary>
     /// Literal for code: BreastLeftMammogramScreening
@@ -12488,9 +15958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastLeftMammogramScreening = "26176-8";
 
     /// <summary>
+    /// Literal for code: NONEBreastLeftMammogramScreening
+    /// </summary>
+    public const string LiteralNONEBreastLeftMammogramScreening = "http://loinc.org#26176-8";
+
+    /// <summary>
     /// Literal for code: BreastRightMammogramScreening
     /// </summary>
     public const string LiteralBreastRightMammogramScreening = "26177-6";
+
+    /// <summary>
+    /// Literal for code: NONEBreastRightMammogramScreening
+    /// </summary>
+    public const string LiteralNONEBreastRightMammogramScreening = "http://loinc.org#26177-6";
 
     /// <summary>
     /// Literal for code: FemoralArteryBilateralFluoroscopicAngiogramRunoffWContrastIA
@@ -12498,9 +15978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFemoralArteryBilateralFluoroscopicAngiogramRunoffWContrastIA = "26178-4";
 
     /// <summary>
+    /// Literal for code: NONEFemoralArteryBilateralFluoroscopicAngiogramRunoffWContrastIA
+    /// </summary>
+    public const string LiteralNONEFemoralArteryBilateralFluoroscopicAngiogramRunoffWContrastIA = "http://loinc.org#26178-4";
+
+    /// <summary>
     /// Literal for code: FemoralArteryLeftFluoroscopicAngiogramRunoffWContrastIA
     /// </summary>
     public const string LiteralFemoralArteryLeftFluoroscopicAngiogramRunoffWContrastIA = "26179-2";
+
+    /// <summary>
+    /// Literal for code: NONEFemoralArteryLeftFluoroscopicAngiogramRunoffWContrastIA
+    /// </summary>
+    public const string LiteralNONEFemoralArteryLeftFluoroscopicAngiogramRunoffWContrastIA = "http://loinc.org#26179-2";
 
     /// <summary>
     /// Literal for code: FemoralArteryRightFluoroscopicAngiogramRunoffWContrastIA
@@ -12508,9 +15998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFemoralArteryRightFluoroscopicAngiogramRunoffWContrastIA = "26180-0";
 
     /// <summary>
+    /// Literal for code: NONEFemoralArteryRightFluoroscopicAngiogramRunoffWContrastIA
+    /// </summary>
+    public const string LiteralNONEFemoralArteryRightFluoroscopicAngiogramRunoffWContrastIA = "http://loinc.org#26180-0";
+
+    /// <summary>
     /// Literal for code: ThoracicInletVesselsBilateralMRAngiogramWContrastIV
     /// </summary>
     public const string LiteralThoracicInletVesselsBilateralMRAngiogramWContrastIV = "26181-8";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicInletVesselsBilateralMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEThoracicInletVesselsBilateralMRAngiogramWContrastIV = "http://loinc.org#26181-8";
 
     /// <summary>
     /// Literal for code: ThoracicInletVesselsLeftMRAngiogramWContrastIV
@@ -12518,9 +16018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicInletVesselsLeftMRAngiogramWContrastIV = "26182-6";
 
     /// <summary>
+    /// Literal for code: NONEThoracicInletVesselsLeftMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEThoracicInletVesselsLeftMRAngiogramWContrastIV = "http://loinc.org#26182-6";
+
+    /// <summary>
     /// Literal for code: ThoracicInletVesselsRightMRAngiogramWContrastIV
     /// </summary>
     public const string LiteralThoracicInletVesselsRightMRAngiogramWContrastIV = "26183-4";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicInletVesselsRightMRAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEThoracicInletVesselsRightMRAngiogramWContrastIV = "http://loinc.org#26183-4";
 
     /// <summary>
     /// Literal for code: ExtremityBilateralCTWContrastIV
@@ -12528,9 +16038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtremityBilateralCTWContrastIV = "26184-2";
 
     /// <summary>
+    /// Literal for code: NONEExtremityBilateralCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEExtremityBilateralCTWContrastIV = "http://loinc.org#26184-2";
+
+    /// <summary>
     /// Literal for code: ExtremityLeftCTWContrastIV
     /// </summary>
     public const string LiteralExtremityLeftCTWContrastIV = "26185-9";
+
+    /// <summary>
+    /// Literal for code: NONEExtremityLeftCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEExtremityLeftCTWContrastIV = "http://loinc.org#26185-9";
 
     /// <summary>
     /// Literal for code: ExtremityRightCTWContrastIV
@@ -12538,9 +16058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtremityRightCTWContrastIV = "26186-7";
 
     /// <summary>
+    /// Literal for code: NONEExtremityRightCTWContrastIV
+    /// </summary>
+    public const string LiteralNONEExtremityRightCTWContrastIV = "http://loinc.org#26186-7";
+
+    /// <summary>
     /// Literal for code: AnkleBilateralMRWOAndWContrastIV
     /// </summary>
     public const string LiteralAnkleBilateralMRWOAndWContrastIV = "26187-5";
+
+    /// <summary>
+    /// Literal for code: NONEAnkleBilateralMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEAnkleBilateralMRWOAndWContrastIV = "http://loinc.org#26187-5";
 
     /// <summary>
     /// Literal for code: AnkleLeftMRWOAndWContrastIV
@@ -12548,9 +16078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnkleLeftMRWOAndWContrastIV = "26188-3";
 
     /// <summary>
+    /// Literal for code: NONEAnkleLeftMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEAnkleLeftMRWOAndWContrastIV = "http://loinc.org#26188-3";
+
+    /// <summary>
     /// Literal for code: AnkleRightMRWOAndWContrastIV
     /// </summary>
     public const string LiteralAnkleRightMRWOAndWContrastIV = "26189-1";
+
+    /// <summary>
+    /// Literal for code: NONEAnkleRightMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEAnkleRightMRWOAndWContrastIV = "http://loinc.org#26189-1";
 
     /// <summary>
     /// Literal for code: BrachialPlexusBilateralMRWOAndWContrastIV
@@ -12558,9 +16098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrachialPlexusBilateralMRWOAndWContrastIV = "26190-9";
 
     /// <summary>
+    /// Literal for code: NONEBrachialPlexusBilateralMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEBrachialPlexusBilateralMRWOAndWContrastIV = "http://loinc.org#26190-9";
+
+    /// <summary>
     /// Literal for code: BrachialPlexusLeftMRWOAndWContrastIV
     /// </summary>
     public const string LiteralBrachialPlexusLeftMRWOAndWContrastIV = "26191-7";
+
+    /// <summary>
+    /// Literal for code: NONEBrachialPlexusLeftMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEBrachialPlexusLeftMRWOAndWContrastIV = "http://loinc.org#26191-7";
 
     /// <summary>
     /// Literal for code: BrachialPlexusRightMRWOAndWContrastIV
@@ -12568,9 +16118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrachialPlexusRightMRWOAndWContrastIV = "26192-5";
 
     /// <summary>
+    /// Literal for code: NONEBrachialPlexusRightMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEBrachialPlexusRightMRWOAndWContrastIV = "http://loinc.org#26192-5";
+
+    /// <summary>
     /// Literal for code: ElbowBilateralMRWOAndWContrastIV
     /// </summary>
     public const string LiteralElbowBilateralMRWOAndWContrastIV = "26193-3";
+
+    /// <summary>
+    /// Literal for code: NONEElbowBilateralMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEElbowBilateralMRWOAndWContrastIV = "http://loinc.org#26193-3";
 
     /// <summary>
     /// Literal for code: ElbowLeftMRWOAndWContrastIV
@@ -12578,9 +16138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElbowLeftMRWOAndWContrastIV = "26194-1";
 
     /// <summary>
+    /// Literal for code: NONEElbowLeftMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEElbowLeftMRWOAndWContrastIV = "http://loinc.org#26194-1";
+
+    /// <summary>
     /// Literal for code: ElbowRightMRWOAndWContrastIV
     /// </summary>
     public const string LiteralElbowRightMRWOAndWContrastIV = "26195-8";
+
+    /// <summary>
+    /// Literal for code: NONEElbowRightMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEElbowRightMRWOAndWContrastIV = "http://loinc.org#26195-8";
 
     /// <summary>
     /// Literal for code: ThighBilateralMRWOAndWContrastIV
@@ -12588,9 +16158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThighBilateralMRWOAndWContrastIV = "26196-6";
 
     /// <summary>
+    /// Literal for code: NONEThighBilateralMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEThighBilateralMRWOAndWContrastIV = "http://loinc.org#26196-6";
+
+    /// <summary>
     /// Literal for code: ThighLeftMRWOAndWContrastIV
     /// </summary>
     public const string LiteralThighLeftMRWOAndWContrastIV = "26197-4";
+
+    /// <summary>
+    /// Literal for code: NONEThighLeftMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEThighLeftMRWOAndWContrastIV = "http://loinc.org#26197-4";
 
     /// <summary>
     /// Literal for code: ThighRightMRWOAndWContrastIV
@@ -12598,9 +16178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThighRightMRWOAndWContrastIV = "26198-2";
 
     /// <summary>
+    /// Literal for code: NONEThighRightMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEThighRightMRWOAndWContrastIV = "http://loinc.org#26198-2";
+
+    /// <summary>
     /// Literal for code: KneeBilateralMRWOAndWContrastIV
     /// </summary>
     public const string LiteralKneeBilateralMRWOAndWContrastIV = "26199-0";
+
+    /// <summary>
+    /// Literal for code: NONEKneeBilateralMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEKneeBilateralMRWOAndWContrastIV = "http://loinc.org#26199-0";
 
     /// <summary>
     /// Literal for code: KneeLeftMRWOAndWContrastIV
@@ -12608,9 +16198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeLeftMRWOAndWContrastIV = "26200-6";
 
     /// <summary>
+    /// Literal for code: NONEKneeLeftMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEKneeLeftMRWOAndWContrastIV = "http://loinc.org#26200-6";
+
+    /// <summary>
     /// Literal for code: KneeRightMRWOAndWContrastIV
     /// </summary>
     public const string LiteralKneeRightMRWOAndWContrastIV = "26201-4";
+
+    /// <summary>
+    /// Literal for code: NONEKneeRightMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEKneeRightMRWOAndWContrastIV = "http://loinc.org#26201-4";
 
     /// <summary>
     /// Literal for code: ShoulderBilateralMRWOAndWContrastIV
@@ -12618,9 +16218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderBilateralMRWOAndWContrastIV = "26202-2";
 
     /// <summary>
+    /// Literal for code: NONEShoulderBilateralMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEShoulderBilateralMRWOAndWContrastIV = "http://loinc.org#26202-2";
+
+    /// <summary>
     /// Literal for code: ShoulderLeftMRWOAndWContrastIV
     /// </summary>
     public const string LiteralShoulderLeftMRWOAndWContrastIV = "26203-0";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderLeftMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEShoulderLeftMRWOAndWContrastIV = "http://loinc.org#26203-0";
 
     /// <summary>
     /// Literal for code: ShoulderRightMRWOAndWContrastIV
@@ -12628,9 +16238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderRightMRWOAndWContrastIV = "26204-8";
 
     /// <summary>
+    /// Literal for code: NONEShoulderRightMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEShoulderRightMRWOAndWContrastIV = "http://loinc.org#26204-8";
+
+    /// <summary>
     /// Literal for code: WristBilateralMRWOAndWContrastIV
     /// </summary>
     public const string LiteralWristBilateralMRWOAndWContrastIV = "26205-5";
+
+    /// <summary>
+    /// Literal for code: NONEWristBilateralMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEWristBilateralMRWOAndWContrastIV = "http://loinc.org#26205-5";
 
     /// <summary>
     /// Literal for code: WristLeftMRWOAndWContrastIV
@@ -12638,9 +16258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWristLeftMRWOAndWContrastIV = "26206-3";
 
     /// <summary>
+    /// Literal for code: NONEWristLeftMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEWristLeftMRWOAndWContrastIV = "http://loinc.org#26206-3";
+
+    /// <summary>
     /// Literal for code: WristRightMRWOAndWContrastIV
     /// </summary>
     public const string LiteralWristRightMRWOAndWContrastIV = "26207-1";
+
+    /// <summary>
+    /// Literal for code: NONEWristRightMRWOAndWContrastIV
+    /// </summary>
+    public const string LiteralNONEWristRightMRWOAndWContrastIV = "http://loinc.org#26207-1";
 
     /// <summary>
     /// Literal for code: AnkleBilateralMR
@@ -12648,9 +16278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnkleBilateralMR = "26208-9";
 
     /// <summary>
+    /// Literal for code: NONEAnkleBilateralMR
+    /// </summary>
+    public const string LiteralNONEAnkleBilateralMR = "http://loinc.org#26208-9";
+
+    /// <summary>
     /// Literal for code: AnkleLeftMR
     /// </summary>
     public const string LiteralAnkleLeftMR = "26209-7";
+
+    /// <summary>
+    /// Literal for code: NONEAnkleLeftMR
+    /// </summary>
+    public const string LiteralNONEAnkleLeftMR = "http://loinc.org#26209-7";
 
     /// <summary>
     /// Literal for code: AnkleRightMR
@@ -12658,9 +16298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnkleRightMR = "26210-5";
 
     /// <summary>
+    /// Literal for code: NONEAnkleRightMR
+    /// </summary>
+    public const string LiteralNONEAnkleRightMR = "http://loinc.org#26210-5";
+
+    /// <summary>
     /// Literal for code: BrachialPlexusBilateralMR
     /// </summary>
     public const string LiteralBrachialPlexusBilateralMR = "26211-3";
+
+    /// <summary>
+    /// Literal for code: NONEBrachialPlexusBilateralMR
+    /// </summary>
+    public const string LiteralNONEBrachialPlexusBilateralMR = "http://loinc.org#26211-3";
 
     /// <summary>
     /// Literal for code: BrachialPlexusLeftMR
@@ -12668,9 +16318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrachialPlexusLeftMR = "26212-1";
 
     /// <summary>
+    /// Literal for code: NONEBrachialPlexusLeftMR
+    /// </summary>
+    public const string LiteralNONEBrachialPlexusLeftMR = "http://loinc.org#26212-1";
+
+    /// <summary>
     /// Literal for code: BrachialPlexusRightMR
     /// </summary>
     public const string LiteralBrachialPlexusRightMR = "26213-9";
+
+    /// <summary>
+    /// Literal for code: NONEBrachialPlexusRightMR
+    /// </summary>
+    public const string LiteralNONEBrachialPlexusRightMR = "http://loinc.org#26213-9";
 
     /// <summary>
     /// Literal for code: BreastBilateralUS
@@ -12678,9 +16338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastBilateralUS = "26214-7";
 
     /// <summary>
+    /// Literal for code: NONEBreastBilateralUS
+    /// </summary>
+    public const string LiteralNONEBreastBilateralUS = "http://loinc.org#26214-7";
+
+    /// <summary>
     /// Literal for code: BreastLeftUS
     /// </summary>
     public const string LiteralBreastLeftUS = "26215-4";
+
+    /// <summary>
+    /// Literal for code: NONEBreastLeftUS
+    /// </summary>
+    public const string LiteralNONEBreastLeftUS = "http://loinc.org#26215-4";
 
     /// <summary>
     /// Literal for code: BreastRightUS
@@ -12688,9 +16358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastRightUS = "26216-2";
 
     /// <summary>
+    /// Literal for code: NONEBreastRightUS
+    /// </summary>
+    public const string LiteralNONEBreastRightUS = "http://loinc.org#26216-2";
+
+    /// <summary>
     /// Literal for code: CarotidArteriesBilateralUS
     /// </summary>
     public const string LiteralCarotidArteriesBilateralUS = "26217-0";
+
+    /// <summary>
+    /// Literal for code: NONECarotidArteriesBilateralUS
+    /// </summary>
+    public const string LiteralNONECarotidArteriesBilateralUS = "http://loinc.org#26217-0";
 
     /// <summary>
     /// Literal for code: CarotidArteriesLeftUS
@@ -12698,9 +16378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCarotidArteriesLeftUS = "26218-8";
 
     /// <summary>
+    /// Literal for code: NONECarotidArteriesLeftUS
+    /// </summary>
+    public const string LiteralNONECarotidArteriesLeftUS = "http://loinc.org#26218-8";
+
+    /// <summary>
     /// Literal for code: CarotidArteriesRightUS
     /// </summary>
     public const string LiteralCarotidArteriesRightUS = "26219-6";
+
+    /// <summary>
+    /// Literal for code: NONECarotidArteriesRightUS
+    /// </summary>
+    public const string LiteralNONECarotidArteriesRightUS = "http://loinc.org#26219-6";
 
     /// <summary>
     /// Literal for code: ElbowBilateralMR
@@ -12708,9 +16398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElbowBilateralMR = "26220-4";
 
     /// <summary>
+    /// Literal for code: NONEElbowBilateralMR
+    /// </summary>
+    public const string LiteralNONEElbowBilateralMR = "http://loinc.org#26220-4";
+
+    /// <summary>
     /// Literal for code: ElbowLeftMR
     /// </summary>
     public const string LiteralElbowLeftMR = "26221-2";
+
+    /// <summary>
+    /// Literal for code: NONEElbowLeftMR
+    /// </summary>
+    public const string LiteralNONEElbowLeftMR = "http://loinc.org#26221-2";
 
     /// <summary>
     /// Literal for code: ElbowRightMR
@@ -12718,9 +16418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElbowRightMR = "26222-0";
 
     /// <summary>
+    /// Literal for code: NONEElbowRightMR
+    /// </summary>
+    public const string LiteralNONEElbowRightMR = "http://loinc.org#26222-0";
+
+    /// <summary>
     /// Literal for code: ExtremityBilateralUS
     /// </summary>
     public const string LiteralExtremityBilateralUS = "26223-8";
+
+    /// <summary>
+    /// Literal for code: NONEExtremityBilateralUS
+    /// </summary>
+    public const string LiteralNONEExtremityBilateralUS = "http://loinc.org#26223-8";
 
     /// <summary>
     /// Literal for code: ExtremityBilateralCT
@@ -12728,9 +16438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtremityBilateralCT = "26224-6";
 
     /// <summary>
+    /// Literal for code: NONEExtremityBilateralCT
+    /// </summary>
+    public const string LiteralNONEExtremityBilateralCT = "http://loinc.org#26224-6";
+
+    /// <summary>
     /// Literal for code: ExtremityLeftUS
     /// </summary>
     public const string LiteralExtremityLeftUS = "26225-3";
+
+    /// <summary>
+    /// Literal for code: NONEExtremityLeftUS
+    /// </summary>
+    public const string LiteralNONEExtremityLeftUS = "http://loinc.org#26225-3";
 
     /// <summary>
     /// Literal for code: ExtremityLeftCT
@@ -12738,9 +16458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtremityLeftCT = "26226-1";
 
     /// <summary>
+    /// Literal for code: NONEExtremityLeftCT
+    /// </summary>
+    public const string LiteralNONEExtremityLeftCT = "http://loinc.org#26226-1";
+
+    /// <summary>
     /// Literal for code: LowerExtremityJointBilateralMR
     /// </summary>
     public const string LiteralLowerExtremityJointBilateralMR = "26227-9";
+
+    /// <summary>
+    /// Literal for code: NONELowerExtremityJointBilateralMR
+    /// </summary>
+    public const string LiteralNONELowerExtremityJointBilateralMR = "http://loinc.org#26227-9";
 
     /// <summary>
     /// Literal for code: LowerExtremityJointLeftMR
@@ -12748,9 +16478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLowerExtremityJointLeftMR = "26228-7";
 
     /// <summary>
+    /// Literal for code: NONELowerExtremityJointLeftMR
+    /// </summary>
+    public const string LiteralNONELowerExtremityJointLeftMR = "http://loinc.org#26228-7";
+
+    /// <summary>
     /// Literal for code: LowerExtremityJointRightMR
     /// </summary>
     public const string LiteralLowerExtremityJointRightMR = "26229-5";
+
+    /// <summary>
+    /// Literal for code: NONELowerExtremityJointRightMR
+    /// </summary>
+    public const string LiteralNONELowerExtremityJointRightMR = "http://loinc.org#26229-5";
 
     /// <summary>
     /// Literal for code: ExtremityRightUS
@@ -12758,9 +16498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtremityRightUS = "26230-3";
 
     /// <summary>
+    /// Literal for code: NONEExtremityRightUS
+    /// </summary>
+    public const string LiteralNONEExtremityRightUS = "http://loinc.org#26230-3";
+
+    /// <summary>
     /// Literal for code: ExtremityRightCT
     /// </summary>
     public const string LiteralExtremityRightCT = "26231-1";
+
+    /// <summary>
+    /// Literal for code: NONEExtremityRightCT
+    /// </summary>
+    public const string LiteralNONEExtremityRightCT = "http://loinc.org#26231-1";
 
     /// <summary>
     /// Literal for code: UpperExtremityBilateralMR
@@ -12768,9 +16518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUpperExtremityBilateralMR = "26232-9";
 
     /// <summary>
+    /// Literal for code: NONEUpperExtremityBilateralMR
+    /// </summary>
+    public const string LiteralNONEUpperExtremityBilateralMR = "http://loinc.org#26232-9";
+
+    /// <summary>
     /// Literal for code: UpperExtremityLeftMR
     /// </summary>
     public const string LiteralUpperExtremityLeftMR = "26233-7";
+
+    /// <summary>
+    /// Literal for code: NONEUpperExtremityLeftMR
+    /// </summary>
+    public const string LiteralNONEUpperExtremityLeftMR = "http://loinc.org#26233-7";
 
     /// <summary>
     /// Literal for code: UpperExtremityRightMR
@@ -12778,9 +16538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUpperExtremityRightMR = "26234-5";
 
     /// <summary>
+    /// Literal for code: NONEUpperExtremityRightMR
+    /// </summary>
+    public const string LiteralNONEUpperExtremityRightMR = "http://loinc.org#26234-5";
+
+    /// <summary>
     /// Literal for code: ThighBilateralMR
     /// </summary>
     public const string LiteralThighBilateralMR = "26235-2";
+
+    /// <summary>
+    /// Literal for code: NONEThighBilateralMR
+    /// </summary>
+    public const string LiteralNONEThighBilateralMR = "http://loinc.org#26235-2";
 
     /// <summary>
     /// Literal for code: ThighLeftMR
@@ -12788,9 +16558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThighLeftMR = "26236-0";
 
     /// <summary>
+    /// Literal for code: NONEThighLeftMR
+    /// </summary>
+    public const string LiteralNONEThighLeftMR = "http://loinc.org#26236-0";
+
+    /// <summary>
     /// Literal for code: ThighRightMR
     /// </summary>
     public const string LiteralThighRightMR = "26237-8";
+
+    /// <summary>
+    /// Literal for code: NONEThighRightMR
+    /// </summary>
+    public const string LiteralNONEThighRightMR = "http://loinc.org#26237-8";
 
     /// <summary>
     /// Literal for code: FingerBilateralMR
@@ -12798,9 +16578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFingerBilateralMR = "26238-6";
 
     /// <summary>
+    /// Literal for code: NONEFingerBilateralMR
+    /// </summary>
+    public const string LiteralNONEFingerBilateralMR = "http://loinc.org#26238-6";
+
+    /// <summary>
     /// Literal for code: FingerLeftMR
     /// </summary>
     public const string LiteralFingerLeftMR = "26239-4";
+
+    /// <summary>
+    /// Literal for code: NONEFingerLeftMR
+    /// </summary>
+    public const string LiteralNONEFingerLeftMR = "http://loinc.org#26239-4";
 
     /// <summary>
     /// Literal for code: FingerRightMR
@@ -12808,9 +16598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFingerRightMR = "26240-2";
 
     /// <summary>
+    /// Literal for code: NONEFingerRightMR
+    /// </summary>
+    public const string LiteralNONEFingerRightMR = "http://loinc.org#26240-2";
+
+    /// <summary>
     /// Literal for code: FootBilateralMR
     /// </summary>
     public const string LiteralFootBilateralMR = "26241-0";
+
+    /// <summary>
+    /// Literal for code: NONEFootBilateralMR
+    /// </summary>
+    public const string LiteralNONEFootBilateralMR = "http://loinc.org#26241-0";
 
     /// <summary>
     /// Literal for code: FootLeftMR
@@ -12818,9 +16618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFootLeftMR = "26242-8";
 
     /// <summary>
+    /// Literal for code: NONEFootLeftMR
+    /// </summary>
+    public const string LiteralNONEFootLeftMR = "http://loinc.org#26242-8";
+
+    /// <summary>
     /// Literal for code: FootRightMR
     /// </summary>
     public const string LiteralFootRightMR = "26243-6";
+
+    /// <summary>
+    /// Literal for code: NONEFootRightMR
+    /// </summary>
+    public const string LiteralNONEFootRightMR = "http://loinc.org#26243-6";
 
     /// <summary>
     /// Literal for code: ForearmBilateralMR
@@ -12828,9 +16638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralForearmBilateralMR = "26244-4";
 
     /// <summary>
+    /// Literal for code: NONEForearmBilateralMR
+    /// </summary>
+    public const string LiteralNONEForearmBilateralMR = "http://loinc.org#26244-4";
+
+    /// <summary>
     /// Literal for code: ForearmLeftMR
     /// </summary>
     public const string LiteralForearmLeftMR = "26245-1";
+
+    /// <summary>
+    /// Literal for code: NONEForearmLeftMR
+    /// </summary>
+    public const string LiteralNONEForearmLeftMR = "http://loinc.org#26245-1";
 
     /// <summary>
     /// Literal for code: ForearmRightMR
@@ -12838,9 +16658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralForearmRightMR = "26246-9";
 
     /// <summary>
+    /// Literal for code: NONEForearmRightMR
+    /// </summary>
+    public const string LiteralNONEForearmRightMR = "http://loinc.org#26246-9";
+
+    /// <summary>
     /// Literal for code: HandBilateralMR
     /// </summary>
     public const string LiteralHandBilateralMR = "26247-7";
+
+    /// <summary>
+    /// Literal for code: NONEHandBilateralMR
+    /// </summary>
+    public const string LiteralNONEHandBilateralMR = "http://loinc.org#26247-7";
 
     /// <summary>
     /// Literal for code: HandLeftMR
@@ -12848,9 +16678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandLeftMR = "26248-5";
 
     /// <summary>
+    /// Literal for code: NONEHandLeftMR
+    /// </summary>
+    public const string LiteralNONEHandLeftMR = "http://loinc.org#26248-5";
+
+    /// <summary>
     /// Literal for code: HandRightMR
     /// </summary>
     public const string LiteralHandRightMR = "26249-3";
+
+    /// <summary>
+    /// Literal for code: NONEHandRightMR
+    /// </summary>
+    public const string LiteralNONEHandRightMR = "http://loinc.org#26249-3";
 
     /// <summary>
     /// Literal for code: HipBilateralUS
@@ -12858,9 +16698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHipBilateralUS = "26250-1";
 
     /// <summary>
+    /// Literal for code: NONEHipBilateralUS
+    /// </summary>
+    public const string LiteralNONEHipBilateralUS = "http://loinc.org#26250-1";
+
+    /// <summary>
     /// Literal for code: HipLeftUS
     /// </summary>
     public const string LiteralHipLeftUS = "26251-9";
+
+    /// <summary>
+    /// Literal for code: NONEHipLeftUS
+    /// </summary>
+    public const string LiteralNONEHipLeftUS = "http://loinc.org#26251-9";
 
     /// <summary>
     /// Literal for code: HipRightUS
@@ -12868,9 +16718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHipRightUS = "26252-7";
 
     /// <summary>
+    /// Literal for code: NONEHipRightUS
+    /// </summary>
+    public const string LiteralNONEHipRightUS = "http://loinc.org#26252-7";
+
+    /// <summary>
     /// Literal for code: InternalAuditoryCanalBilateralXRayTomograph
     /// </summary>
     public const string LiteralInternalAuditoryCanalBilateralXRayTomograph = "26253-5";
+
+    /// <summary>
+    /// Literal for code: NONEInternalAuditoryCanalBilateralXRayTomograph
+    /// </summary>
+    public const string LiteralNONEInternalAuditoryCanalBilateralXRayTomograph = "http://loinc.org#26253-5";
 
     /// <summary>
     /// Literal for code: InternalAuditoryCanalLeftXRayTomograph
@@ -12878,9 +16738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInternalAuditoryCanalLeftXRayTomograph = "26254-3";
 
     /// <summary>
+    /// Literal for code: NONEInternalAuditoryCanalLeftXRayTomograph
+    /// </summary>
+    public const string LiteralNONEInternalAuditoryCanalLeftXRayTomograph = "http://loinc.org#26254-3";
+
+    /// <summary>
     /// Literal for code: InternalAuditoryCanalRightXRayTomograph
     /// </summary>
     public const string LiteralInternalAuditoryCanalRightXRayTomograph = "26255-0";
+
+    /// <summary>
+    /// Literal for code: NONEInternalAuditoryCanalRightXRayTomograph
+    /// </summary>
+    public const string LiteralNONEInternalAuditoryCanalRightXRayTomograph = "http://loinc.org#26255-0";
 
     /// <summary>
     /// Literal for code: KneeBilateralMR
@@ -12888,9 +16758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeBilateralMR = "26256-8";
 
     /// <summary>
+    /// Literal for code: NONEKneeBilateralMR
+    /// </summary>
+    public const string LiteralNONEKneeBilateralMR = "http://loinc.org#26256-8";
+
+    /// <summary>
     /// Literal for code: KneeLeftMR
     /// </summary>
     public const string LiteralKneeLeftMR = "26257-6";
+
+    /// <summary>
+    /// Literal for code: NONEKneeLeftMR
+    /// </summary>
+    public const string LiteralNONEKneeLeftMR = "http://loinc.org#26257-6";
 
     /// <summary>
     /// Literal for code: KneeRightMR
@@ -12898,9 +16778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeRightMR = "26258-4";
 
     /// <summary>
+    /// Literal for code: NONEKneeRightMR
+    /// </summary>
+    public const string LiteralNONEKneeRightMR = "http://loinc.org#26258-4";
+
+    /// <summary>
     /// Literal for code: PelvisAndHipBilateralMR
     /// </summary>
     public const string LiteralPelvisAndHipBilateralMR = "26259-2";
+
+    /// <summary>
+    /// Literal for code: NONEPelvisAndHipBilateralMR
+    /// </summary>
+    public const string LiteralNONEPelvisAndHipBilateralMR = "http://loinc.org#26259-2";
 
     /// <summary>
     /// Literal for code: PelvisAndHipLeftMR
@@ -12908,9 +16798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPelvisAndHipLeftMR = "26260-0";
 
     /// <summary>
+    /// Literal for code: NONEPelvisAndHipLeftMR
+    /// </summary>
+    public const string LiteralNONEPelvisAndHipLeftMR = "http://loinc.org#26260-0";
+
+    /// <summary>
     /// Literal for code: PelvisAndHipRightMR
     /// </summary>
     public const string LiteralPelvisAndHipRightMR = "26261-8";
+
+    /// <summary>
+    /// Literal for code: NONEPelvisAndHipRightMR
+    /// </summary>
+    public const string LiteralNONEPelvisAndHipRightMR = "http://loinc.org#26261-8";
 
     /// <summary>
     /// Literal for code: PoplitealSpaceBilateralUS
@@ -12918,9 +16818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPoplitealSpaceBilateralUS = "26262-6";
 
     /// <summary>
+    /// Literal for code: NONEPoplitealSpaceBilateralUS
+    /// </summary>
+    public const string LiteralNONEPoplitealSpaceBilateralUS = "http://loinc.org#26262-6";
+
+    /// <summary>
     /// Literal for code: PoplitealSpaceLeftUS
     /// </summary>
     public const string LiteralPoplitealSpaceLeftUS = "26263-4";
+
+    /// <summary>
+    /// Literal for code: NONEPoplitealSpaceLeftUS
+    /// </summary>
+    public const string LiteralNONEPoplitealSpaceLeftUS = "http://loinc.org#26263-4";
 
     /// <summary>
     /// Literal for code: PoplitealSpaceRightUS
@@ -12928,9 +16838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPoplitealSpaceRightUS = "26264-2";
 
     /// <summary>
+    /// Literal for code: NONEPoplitealSpaceRightUS
+    /// </summary>
+    public const string LiteralNONEPoplitealSpaceRightUS = "http://loinc.org#26264-2";
+
+    /// <summary>
     /// Literal for code: ShoulderBilateralUS
     /// </summary>
     public const string LiteralShoulderBilateralUS = "26265-9";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderBilateralUS
+    /// </summary>
+    public const string LiteralNONEShoulderBilateralUS = "http://loinc.org#26265-9";
 
     /// <summary>
     /// Literal for code: ShoulderBilateralMR
@@ -12938,9 +16858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderBilateralMR = "26266-7";
 
     /// <summary>
+    /// Literal for code: NONEShoulderBilateralMR
+    /// </summary>
+    public const string LiteralNONEShoulderBilateralMR = "http://loinc.org#26266-7";
+
+    /// <summary>
     /// Literal for code: ShoulderLeftUS
     /// </summary>
     public const string LiteralShoulderLeftUS = "26267-5";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderLeftUS
+    /// </summary>
+    public const string LiteralNONEShoulderLeftUS = "http://loinc.org#26267-5";
 
     /// <summary>
     /// Literal for code: ShoulderLeftMR
@@ -12948,9 +16878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderLeftMR = "26268-3";
 
     /// <summary>
+    /// Literal for code: NONEShoulderLeftMR
+    /// </summary>
+    public const string LiteralNONEShoulderLeftMR = "http://loinc.org#26268-3";
+
+    /// <summary>
     /// Literal for code: ShoulderRightUS
     /// </summary>
     public const string LiteralShoulderRightUS = "26269-1";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderRightUS
+    /// </summary>
+    public const string LiteralNONEShoulderRightUS = "http://loinc.org#26269-1";
 
     /// <summary>
     /// Literal for code: ShoulderRightMR
@@ -12958,9 +16898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderRightMR = "26270-9";
 
     /// <summary>
+    /// Literal for code: NONEShoulderRightMR
+    /// </summary>
+    public const string LiteralNONEShoulderRightMR = "http://loinc.org#26270-9";
+
+    /// <summary>
     /// Literal for code: ScrotumAndTesticleBilateralUS
     /// </summary>
     public const string LiteralScrotumAndTesticleBilateralUS = "26271-7";
+
+    /// <summary>
+    /// Literal for code: NONEScrotumAndTesticleBilateralUS
+    /// </summary>
+    public const string LiteralNONEScrotumAndTesticleBilateralUS = "http://loinc.org#26271-7";
 
     /// <summary>
     /// Literal for code: ScrotumAndTesticleLeftUS
@@ -12968,9 +16918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScrotumAndTesticleLeftUS = "26272-5";
 
     /// <summary>
+    /// Literal for code: NONEScrotumAndTesticleLeftUS
+    /// </summary>
+    public const string LiteralNONEScrotumAndTesticleLeftUS = "http://loinc.org#26272-5";
+
+    /// <summary>
     /// Literal for code: ScrotumAndTesticleRightUS
     /// </summary>
     public const string LiteralScrotumAndTesticleRightUS = "26273-3";
+
+    /// <summary>
+    /// Literal for code: NONEScrotumAndTesticleRightUS
+    /// </summary>
+    public const string LiteralNONEScrotumAndTesticleRightUS = "http://loinc.org#26273-3";
 
     /// <summary>
     /// Literal for code: WristBilateralMR
@@ -12978,9 +16938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWristBilateralMR = "26277-4";
 
     /// <summary>
+    /// Literal for code: NONEWristBilateralMR
+    /// </summary>
+    public const string LiteralNONEWristBilateralMR = "http://loinc.org#26277-4";
+
+    /// <summary>
     /// Literal for code: WristBilateralUS
     /// </summary>
     public const string LiteralWristBilateralUS = "26278-2";
+
+    /// <summary>
+    /// Literal for code: NONEWristBilateralUS
+    /// </summary>
+    public const string LiteralNONEWristBilateralUS = "http://loinc.org#26278-2";
 
     /// <summary>
     /// Literal for code: WristLeftMR
@@ -12988,9 +16958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWristLeftMR = "26279-0";
 
     /// <summary>
+    /// Literal for code: NONEWristLeftMR
+    /// </summary>
+    public const string LiteralNONEWristLeftMR = "http://loinc.org#26279-0";
+
+    /// <summary>
     /// Literal for code: WristLeftUS
     /// </summary>
     public const string LiteralWristLeftUS = "26280-8";
+
+    /// <summary>
+    /// Literal for code: NONEWristLeftUS
+    /// </summary>
+    public const string LiteralNONEWristLeftUS = "http://loinc.org#26280-8";
 
     /// <summary>
     /// Literal for code: WristRightMR
@@ -12998,9 +16978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWristRightMR = "26281-6";
 
     /// <summary>
+    /// Literal for code: NONEWristRightMR
+    /// </summary>
+    public const string LiteralNONEWristRightMR = "http://loinc.org#26281-6";
+
+    /// <summary>
     /// Literal for code: WristRightUS
     /// </summary>
     public const string LiteralWristRightUS = "26282-4";
+
+    /// <summary>
+    /// Literal for code: NONEWristRightUS
+    /// </summary>
+    public const string LiteralNONEWristRightUS = "http://loinc.org#26282-4";
 
     /// <summary>
     /// Literal for code: KneeBilateralXRayMerchants
@@ -13008,9 +16998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeBilateralXRayMerchants = "26283-2";
 
     /// <summary>
+    /// Literal for code: NONEKneeBilateralXRayMerchants
+    /// </summary>
+    public const string LiteralNONEKneeBilateralXRayMerchants = "http://loinc.org#26283-2";
+
+    /// <summary>
     /// Literal for code: KneeLeftXRayMerchants
     /// </summary>
     public const string LiteralKneeLeftXRayMerchants = "26284-0";
+
+    /// <summary>
+    /// Literal for code: NONEKneeLeftXRayMerchants
+    /// </summary>
+    public const string LiteralNONEKneeLeftXRayMerchants = "http://loinc.org#26284-0";
 
     /// <summary>
     /// Literal for code: KneeRightXRayMerchants
@@ -13018,9 +17018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeRightXRayMerchants = "26285-7";
 
     /// <summary>
+    /// Literal for code: NONEKneeRightXRayMerchants
+    /// </summary>
+    public const string LiteralNONEKneeRightXRayMerchants = "http://loinc.org#26285-7";
+
+    /// <summary>
     /// Literal for code: BreastBilateralUSLimited
     /// </summary>
     public const string LiteralBreastBilateralUSLimited = "26286-5";
+
+    /// <summary>
+    /// Literal for code: NONEBreastBilateralUSLimited
+    /// </summary>
+    public const string LiteralNONEBreastBilateralUSLimited = "http://loinc.org#26286-5";
 
     /// <summary>
     /// Literal for code: BreastBilateralMammogramLimited
@@ -13028,9 +17038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastBilateralMammogramLimited = "26287-3";
 
     /// <summary>
+    /// Literal for code: NONEBreastBilateralMammogramLimited
+    /// </summary>
+    public const string LiteralNONEBreastBilateralMammogramLimited = "http://loinc.org#26287-3";
+
+    /// <summary>
     /// Literal for code: BreastLeftUSLimited
     /// </summary>
     public const string LiteralBreastLeftUSLimited = "26288-1";
+
+    /// <summary>
+    /// Literal for code: NONEBreastLeftUSLimited
+    /// </summary>
+    public const string LiteralNONEBreastLeftUSLimited = "http://loinc.org#26288-1";
 
     /// <summary>
     /// Literal for code: BreastLeftMammogramLimited
@@ -13038,9 +17058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastLeftMammogramLimited = "26289-9";
 
     /// <summary>
+    /// Literal for code: NONEBreastLeftMammogramLimited
+    /// </summary>
+    public const string LiteralNONEBreastLeftMammogramLimited = "http://loinc.org#26289-9";
+
+    /// <summary>
     /// Literal for code: BreastRightUSLimited
     /// </summary>
     public const string LiteralBreastRightUSLimited = "26290-7";
+
+    /// <summary>
+    /// Literal for code: NONEBreastRightUSLimited
+    /// </summary>
+    public const string LiteralNONEBreastRightUSLimited = "http://loinc.org#26290-7";
 
     /// <summary>
     /// Literal for code: BreastRightMammogramLimited
@@ -13048,9 +17078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastRightMammogramLimited = "26291-5";
 
     /// <summary>
+    /// Literal for code: NONEBreastRightMammogramLimited
+    /// </summary>
+    public const string LiteralNONEBreastRightMammogramLimited = "http://loinc.org#26291-5";
+
+    /// <summary>
     /// Literal for code: MammogramGuidanceForStereotacticBiopsyOfBreastBilateral
     /// </summary>
     public const string LiteralMammogramGuidanceForStereotacticBiopsyOfBreastBilateral = "26292-3";
+
+    /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForStereotacticBiopsyOfBreastBilateral
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForStereotacticBiopsyOfBreastBilateral = "http://loinc.org#26292-3";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForStereotacticBiopsyOfBreastLeft
@@ -13058,9 +17098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForStereotacticBiopsyOfBreastLeft = "26293-1";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForStereotacticBiopsyOfBreastLeft
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForStereotacticBiopsyOfBreastLeft = "http://loinc.org#26293-1";
+
+    /// <summary>
     /// Literal for code: MammogramGuidanceForStereotacticBiopsyOfBreastRight
     /// </summary>
     public const string LiteralMammogramGuidanceForStereotacticBiopsyOfBreastRight = "26294-9";
+
+    /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForStereotacticBiopsyOfBreastRight
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForStereotacticBiopsyOfBreastRight = "http://loinc.org#26294-9";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinBilateralWContrastIV
@@ -13068,9 +17118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinBilateralWContrastIV = "26295-6";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinBilateralWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinBilateralWContrastIV = "http://loinc.org#26295-6";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinLeftWContrastIV
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinLeftWContrastIV = "26296-4";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinLeftWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinLeftWContrastIV = "http://loinc.org#26296-4";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinRightWContrastIV
@@ -13078,9 +17138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinRightWContrastIV = "26297-2";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinRightWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinRightWContrastIV = "http://loinc.org#26297-2";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForAtherectomyOfVeinBilateralWContrastIV
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForAtherectomyOfVeinBilateralWContrastIV = "26298-0";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForAtherectomyOfVeinBilateralWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForAtherectomyOfVeinBilateralWContrastIV = "http://loinc.org#26298-0";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForAtherectomyOfVeinLeftWContrastIV
@@ -13088,9 +17158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForAtherectomyOfVeinLeftWContrastIV = "26299-8";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForAtherectomyOfVeinLeftWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForAtherectomyOfVeinLeftWContrastIV = "http://loinc.org#26299-8";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForAtherectomyOfVeinRightWContrastIV
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForAtherectomyOfVeinRightWContrastIV = "26300-4";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForAtherectomyOfVeinRightWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForAtherectomyOfVeinRightWContrastIV = "http://loinc.org#26300-4";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinBilateral
@@ -13098,9 +17178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfStentInVeinBilateral = "26301-2";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfStentInVeinBilateral
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfStentInVeinBilateral = "http://loinc.org#26301-2";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinLeft
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfStentInVeinLeft = "26302-0";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfStentInVeinLeft
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfStentInVeinLeft = "http://loinc.org#26302-0";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinRight
@@ -13108,9 +17198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfStentInVeinRight = "26303-8";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfStentInVeinRight
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfStentInVeinRight = "http://loinc.org#26303-8";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinBilateral
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinBilateral = "26304-6";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinBilateral
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinBilateral = "http://loinc.org#26304-6";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinLeft
@@ -13118,9 +17218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinLeft = "26305-3";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinLeft
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinLeft = "http://loinc.org#26305-3";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinRight
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinRight = "26306-1";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinRight
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinRight = "http://loinc.org#26306-1";
 
     /// <summary>
     /// Literal for code: GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinBilateral
@@ -13128,9 +17238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinBilateral = "26307-9";
 
     /// <summary>
+    /// Literal for code: NONEGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinBilateral
+    /// </summary>
+    public const string LiteralNONEGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinBilateral = "http://loinc.org#26307-9";
+
+    /// <summary>
     /// Literal for code: GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinLeft
     /// </summary>
     public const string LiteralGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinLeft = "26308-7";
+
+    /// <summary>
+    /// Literal for code: NONEGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinLeft
+    /// </summary>
+    public const string LiteralNONEGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinLeft = "http://loinc.org#26308-7";
 
     /// <summary>
     /// Literal for code: GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinRight
@@ -13138,9 +17258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinRight = "26309-5";
 
     /// <summary>
+    /// Literal for code: NONEGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinRight
+    /// </summary>
+    public const string LiteralNONEGuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinRight = "http://loinc.org#26309-5";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinBilateralWContrastIV
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinBilateralWContrastIV = "26310-3";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinBilateralWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinBilateralWContrastIV = "http://loinc.org#26310-3";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinLeftWContrastIV
@@ -13148,9 +17278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinLeftWContrastIV = "26311-1";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinLeftWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinLeftWContrastIV = "http://loinc.org#26311-1";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinRightWContrastIV
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinRightWContrastIV = "26312-9";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinRightWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinRightWContrastIV = "http://loinc.org#26312-9";
 
     /// <summary>
     /// Literal for code: USGuidanceForNeedleLocalizationOfBreastBilateral
@@ -13158,9 +17298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForNeedleLocalizationOfBreastBilateral = "26313-7";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForNeedleLocalizationOfBreastBilateral
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForNeedleLocalizationOfBreastBilateral = "http://loinc.org#26313-7";
+
+    /// <summary>
     /// Literal for code: USGuidanceForNeedleLocalizationOfBreastLeft
     /// </summary>
     public const string LiteralUSGuidanceForNeedleLocalizationOfBreastLeft = "26314-5";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForNeedleLocalizationOfBreastLeft
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForNeedleLocalizationOfBreastLeft = "http://loinc.org#26314-5";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForNeedleLocalizationOfMassOfBreastBilateral
@@ -13168,9 +17318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForNeedleLocalizationOfMassOfBreastBilateral = "26315-2";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForNeedleLocalizationOfMassOfBreastBilateral
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForNeedleLocalizationOfMassOfBreastBilateral = "http://loinc.org#26315-2";
+
+    /// <summary>
     /// Literal for code: MammogramGuidanceForNeedleLocalizationOfMassOfBreastLeft
     /// </summary>
     public const string LiteralMammogramGuidanceForNeedleLocalizationOfMassOfBreastLeft = "26316-0";
+
+    /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForNeedleLocalizationOfMassOfBreastLeft
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForNeedleLocalizationOfMassOfBreastLeft = "http://loinc.org#26316-0";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForNeedleLocalizationOfMassOfBreastRight
@@ -13178,9 +17338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForNeedleLocalizationOfMassOfBreastRight = "26317-8";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForNeedleLocalizationOfMassOfBreastRight
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForNeedleLocalizationOfMassOfBreastRight = "http://loinc.org#26317-8";
+
+    /// <summary>
     /// Literal for code: USGuidanceForNeedleLocalizationOfBreastRight
     /// </summary>
     public const string LiteralUSGuidanceForNeedleLocalizationOfBreastRight = "26318-6";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForNeedleLocalizationOfBreastRight
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForNeedleLocalizationOfBreastRight = "http://loinc.org#26318-6";
 
     /// <summary>
     /// Literal for code: CTGuidanceForInjectionOfSacroiliacJointBilateral
@@ -13188,9 +17358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForInjectionOfSacroiliacJointBilateral = "26319-4";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForInjectionOfSacroiliacJointBilateral
+    /// </summary>
+    public const string LiteralNONECTGuidanceForInjectionOfSacroiliacJointBilateral = "http://loinc.org#26319-4";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForInjectionOfSacroiliacJointLeft
     /// </summary>
     public const string LiteralCTGuidanceForInjectionOfSacroiliacJointLeft = "26320-2";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForInjectionOfSacroiliacJointLeft
+    /// </summary>
+    public const string LiteralNONECTGuidanceForInjectionOfSacroiliacJointLeft = "http://loinc.org#26320-2";
 
     /// <summary>
     /// Literal for code: CTGuidanceForInjectionOfSacroiliacJointRight
@@ -13198,9 +17378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForInjectionOfSacroiliacJointRight = "26321-0";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForInjectionOfSacroiliacJointRight
+    /// </summary>
+    public const string LiteralNONECTGuidanceForInjectionOfSacroiliacJointRight = "http://loinc.org#26321-0";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForInjectionOfSpineFacetJointBilateral
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForInjectionOfSpineFacetJointBilateral = "26322-8";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForInjectionOfSpineFacetJointBilateral
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForInjectionOfSpineFacetJointBilateral = "http://loinc.org#26322-8";
 
     /// <summary>
     /// Literal for code: FluoroscopyGuidanceForInjectionOfSpineFacetJointLeft
@@ -13208,9 +17398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyGuidanceForInjectionOfSpineFacetJointLeft = "26323-6";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForInjectionOfSpineFacetJointLeft
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForInjectionOfSpineFacetJointLeft = "http://loinc.org#26323-6";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForInjectionOfSpineFacetJointRight
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForInjectionOfSpineFacetJointRight = "26324-4";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForInjectionOfSpineFacetJointRight
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForInjectionOfSpineFacetJointRight = "http://loinc.org#26324-4";
 
     /// <summary>
     /// Literal for code: USGuidanceForDrainageOfExtremityBilateral
@@ -13218,9 +17418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForDrainageOfExtremityBilateral = "26325-1";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForDrainageOfExtremityBilateral
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForDrainageOfExtremityBilateral = "http://loinc.org#26325-1";
+
+    /// <summary>
     /// Literal for code: USGuidanceForDrainageOfExtremityLeft
     /// </summary>
     public const string LiteralUSGuidanceForDrainageOfExtremityLeft = "26326-9";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForDrainageOfExtremityLeft
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForDrainageOfExtremityLeft = "http://loinc.org#26326-9";
 
     /// <summary>
     /// Literal for code: USGuidanceForDrainageOfExtremityRight
@@ -13228,9 +17438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForDrainageOfExtremityRight = "26327-7";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForDrainageOfExtremityRight
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForDrainageOfExtremityRight = "http://loinc.org#26327-7";
+
+    /// <summary>
     /// Literal for code: USGuidanceForDrainageOfKidneyBilateral
     /// </summary>
     public const string LiteralUSGuidanceForDrainageOfKidneyBilateral = "26328-5";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForDrainageOfKidneyBilateral
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForDrainageOfKidneyBilateral = "http://loinc.org#26328-5";
 
     /// <summary>
     /// Literal for code: USGuidanceForDrainageOfKidneyLeft
@@ -13238,9 +17458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForDrainageOfKidneyLeft = "26329-3";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForDrainageOfKidneyLeft
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForDrainageOfKidneyLeft = "http://loinc.org#26329-3";
+
+    /// <summary>
     /// Literal for code: USGuidanceForDrainageOfKidneyRight
     /// </summary>
     public const string LiteralUSGuidanceForDrainageOfKidneyRight = "26330-1";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForDrainageOfKidneyRight
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForDrainageOfKidneyRight = "http://loinc.org#26330-1";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinBilateralWContrastIV
@@ -13248,9 +17478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinBilateralWContrastIV = "26331-9";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinBilateralWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinBilateralWContrastIV = "http://loinc.org#26331-9";
+
+    /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinLeftWContrastIV
     /// </summary>
     public const string LiteralFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinLeftWContrastIV = "26332-7";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinLeftWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinLeftWContrastIV = "http://loinc.org#26332-7";
 
     /// <summary>
     /// Literal for code: FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinRightWContrastIV
@@ -13258,9 +17498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinRightWContrastIV = "26333-5";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinRightWContrastIV
+    /// </summary>
+    public const string LiteralNONEFluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinRightWContrastIV = "http://loinc.org#26333-5";
+
+    /// <summary>
     /// Literal for code: MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastBilateral
     /// </summary>
     public const string LiteralMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastBilateral = "26334-3";
+
+    /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastBilateral
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastBilateral = "http://loinc.org#26334-3";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastLeft
@@ -13268,9 +17518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastLeft = "26335-0";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastLeft
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastLeft = "http://loinc.org#26335-0";
+
+    /// <summary>
     /// Literal for code: MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastRight
     /// </summary>
     public const string LiteralMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastRight = "26336-8";
+
+    /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastRight
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastRight = "http://loinc.org#26336-8";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForBiopsyOfBreastBilateral
@@ -13278,9 +17538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForBiopsyOfBreastBilateral = "26337-6";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForBiopsyOfBreastBilateral
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForBiopsyOfBreastBilateral = "http://loinc.org#26337-6";
+
+    /// <summary>
     /// Literal for code: MammogramGuidanceForBiopsyOfBreastLeft
     /// </summary>
     public const string LiteralMammogramGuidanceForBiopsyOfBreastLeft = "26338-4";
+
+    /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForBiopsyOfBreastLeft
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForBiopsyOfBreastLeft = "http://loinc.org#26338-4";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForBiopsyOfBreastRight
@@ -13288,9 +17558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForBiopsyOfBreastRight = "26339-2";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForBiopsyOfBreastRight
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForBiopsyOfBreastRight = "http://loinc.org#26339-2";
+
+    /// <summary>
     /// Literal for code: USGuidanceForBiopsyOfKidneyBilateral
     /// </summary>
     public const string LiteralUSGuidanceForBiopsyOfKidneyBilateral = "26340-0";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForBiopsyOfKidneyBilateral
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForBiopsyOfKidneyBilateral = "http://loinc.org#26340-0";
 
     /// <summary>
     /// Literal for code: USGuidanceForBiopsyOfKidneyLeft
@@ -13298,9 +17578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForBiopsyOfKidneyLeft = "26341-8";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForBiopsyOfKidneyLeft
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForBiopsyOfKidneyLeft = "http://loinc.org#26341-8";
+
+    /// <summary>
     /// Literal for code: USGuidanceForBiopsyOfKidneyRight
     /// </summary>
     public const string LiteralUSGuidanceForBiopsyOfKidneyRight = "26342-6";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForBiopsyOfKidneyRight
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForBiopsyOfKidneyRight = "http://loinc.org#26342-6";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForAspirationOfCystOfBreastBilateral
@@ -13308,9 +17598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForAspirationOfCystOfBreastBilateral = "26343-4";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForAspirationOfCystOfBreastBilateral
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForAspirationOfCystOfBreastBilateral = "http://loinc.org#26343-4";
+
+    /// <summary>
     /// Literal for code: MammogramGuidanceForAspirationOfCystOfBreastLeft
     /// </summary>
     public const string LiteralMammogramGuidanceForAspirationOfCystOfBreastLeft = "26344-2";
+
+    /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForAspirationOfCystOfBreastLeft
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForAspirationOfCystOfBreastLeft = "http://loinc.org#26344-2";
 
     /// <summary>
     /// Literal for code: MammogramGuidanceForAspirationOfCystOfBreastRight
@@ -13318,9 +17618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammogramGuidanceForAspirationOfCystOfBreastRight = "26345-9";
 
     /// <summary>
+    /// Literal for code: NONEMammogramGuidanceForAspirationOfCystOfBreastRight
+    /// </summary>
+    public const string LiteralNONEMammogramGuidanceForAspirationOfCystOfBreastRight = "http://loinc.org#26345-9";
+
+    /// <summary>
     /// Literal for code: BreastBilateralMammogramDiagnostic
     /// </summary>
     public const string LiteralBreastBilateralMammogramDiagnostic = "26346-7";
+
+    /// <summary>
+    /// Literal for code: NONEBreastBilateralMammogramDiagnostic
+    /// </summary>
+    public const string LiteralNONEBreastBilateralMammogramDiagnostic = "http://loinc.org#26346-7";
 
     /// <summary>
     /// Literal for code: BreastLeftMammogramDiagnostic
@@ -13328,9 +17638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastLeftMammogramDiagnostic = "26347-5";
 
     /// <summary>
+    /// Literal for code: NONEBreastLeftMammogramDiagnostic
+    /// </summary>
+    public const string LiteralNONEBreastLeftMammogramDiagnostic = "http://loinc.org#26347-5";
+
+    /// <summary>
     /// Literal for code: BreastRightMammogramDiagnostic
     /// </summary>
     public const string LiteralBreastRightMammogramDiagnostic = "26348-3";
+
+    /// <summary>
+    /// Literal for code: NONEBreastRightMammogramDiagnostic
+    /// </summary>
+    public const string LiteralNONEBreastRightMammogramDiagnostic = "http://loinc.org#26348-3";
 
     /// <summary>
     /// Literal for code: BreastBilateralMammogramDiagnosticLimited
@@ -13338,9 +17658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastBilateralMammogramDiagnosticLimited = "26349-1";
 
     /// <summary>
+    /// Literal for code: NONEBreastBilateralMammogramDiagnosticLimited
+    /// </summary>
+    public const string LiteralNONEBreastBilateralMammogramDiagnosticLimited = "http://loinc.org#26349-1";
+
+    /// <summary>
     /// Literal for code: BreastLeftMammogramDiagnosticLimited
     /// </summary>
     public const string LiteralBreastLeftMammogramDiagnosticLimited = "26350-9";
+
+    /// <summary>
+    /// Literal for code: NONEBreastLeftMammogramDiagnosticLimited
+    /// </summary>
+    public const string LiteralNONEBreastLeftMammogramDiagnosticLimited = "http://loinc.org#26350-9";
 
     /// <summary>
     /// Literal for code: BreastRightMammogramDiagnosticLimited
@@ -13348,9 +17678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastRightMammogramDiagnosticLimited = "26351-7";
 
     /// <summary>
+    /// Literal for code: NONEBreastRightMammogramDiagnosticLimited
+    /// </summary>
+    public const string LiteralNONEBreastRightMammogramDiagnosticLimited = "http://loinc.org#26351-7";
+
+    /// <summary>
     /// Literal for code: WristBilateralAndHandBilateralXRayBoneAge
     /// </summary>
     public const string LiteralWristBilateralAndHandBilateralXRayBoneAge = "26352-5";
+
+    /// <summary>
+    /// Literal for code: NONEWristBilateralAndHandBilateralXRayBoneAge
+    /// </summary>
+    public const string LiteralNONEWristBilateralAndHandBilateralXRayBoneAge = "http://loinc.org#26352-5";
 
     /// <summary>
     /// Literal for code: WristLeftAndHandLeftXRayBoneAge
@@ -13358,9 +17698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWristLeftAndHandLeftXRayBoneAge = "26353-3";
 
     /// <summary>
+    /// Literal for code: NONEWristLeftAndHandLeftXRayBoneAge
+    /// </summary>
+    public const string LiteralNONEWristLeftAndHandLeftXRayBoneAge = "http://loinc.org#26353-3";
+
+    /// <summary>
     /// Literal for code: WristRightAndHandRightXRayBoneAge
     /// </summary>
     public const string LiteralWristRightAndHandRightXRayBoneAge = "26354-1";
+
+    /// <summary>
+    /// Literal for code: NONEWristRightAndHandRightXRayBoneAge
+    /// </summary>
+    public const string LiteralNONEWristRightAndHandRightXRayBoneAge = "http://loinc.org#26354-1";
 
     /// <summary>
     /// Literal for code: HandBilateralXRayArthritis
@@ -13368,9 +17718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandBilateralXRayArthritis = "26355-8";
 
     /// <summary>
+    /// Literal for code: NONEHandBilateralXRayArthritis
+    /// </summary>
+    public const string LiteralNONEHandBilateralXRayArthritis = "http://loinc.org#26355-8";
+
+    /// <summary>
     /// Literal for code: HandLeftXRayArthritis
     /// </summary>
     public const string LiteralHandLeftXRayArthritis = "26356-6";
+
+    /// <summary>
+    /// Literal for code: NONEHandLeftXRayArthritis
+    /// </summary>
+    public const string LiteralNONEHandLeftXRayArthritis = "http://loinc.org#26356-6";
 
     /// <summary>
     /// Literal for code: HandRightXRayArthritis
@@ -13378,9 +17738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandRightXRayArthritis = "26357-4";
 
     /// <summary>
+    /// Literal for code: NONEHandRightXRayArthritis
+    /// </summary>
+    public const string LiteralNONEHandRightXRayArthritis = "http://loinc.org#26357-4";
+
+    /// <summary>
     /// Literal for code: KneeBilateralXRayAPSingleViewStanding
     /// </summary>
     public const string LiteralKneeBilateralXRayAPSingleViewStanding = "26358-2";
+
+    /// <summary>
+    /// Literal for code: NONEKneeBilateralXRayAPSingleViewStanding
+    /// </summary>
+    public const string LiteralNONEKneeBilateralXRayAPSingleViewStanding = "http://loinc.org#26358-2";
 
     /// <summary>
     /// Literal for code: KneeLeftXRayAPSingleViewStanding
@@ -13388,9 +17758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeLeftXRayAPSingleViewStanding = "26359-0";
 
     /// <summary>
+    /// Literal for code: NONEKneeLeftXRayAPSingleViewStanding
+    /// </summary>
+    public const string LiteralNONEKneeLeftXRayAPSingleViewStanding = "http://loinc.org#26359-0";
+
+    /// <summary>
     /// Literal for code: KneeRightXRayAPSingleViewStanding
     /// </summary>
     public const string LiteralKneeRightXRayAPSingleViewStanding = "26360-8";
+
+    /// <summary>
+    /// Literal for code: NONEKneeRightXRayAPSingleViewStanding
+    /// </summary>
+    public const string LiteralNONEKneeRightXRayAPSingleViewStanding = "http://loinc.org#26360-8";
 
     /// <summary>
     /// Literal for code: KneeBilateralXRayAPAndPAStanding
@@ -13398,9 +17778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeBilateralXRayAPAndPAStanding = "26361-6";
 
     /// <summary>
+    /// Literal for code: NONEKneeBilateralXRayAPAndPAStanding
+    /// </summary>
+    public const string LiteralNONEKneeBilateralXRayAPAndPAStanding = "http://loinc.org#26361-6";
+
+    /// <summary>
     /// Literal for code: KneeLeftXRayAPAndPAStanding
     /// </summary>
     public const string LiteralKneeLeftXRayAPAndPAStanding = "26362-4";
+
+    /// <summary>
+    /// Literal for code: NONEKneeLeftXRayAPAndPAStanding
+    /// </summary>
+    public const string LiteralNONEKneeLeftXRayAPAndPAStanding = "http://loinc.org#26362-4";
 
     /// <summary>
     /// Literal for code: KneeRightXRayAPAndPAStanding
@@ -13408,9 +17798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeRightXRayAPAndPAStanding = "26363-2";
 
     /// <summary>
+    /// Literal for code: NONEKneeRightXRayAPAndPAStanding
+    /// </summary>
+    public const string LiteralNONEKneeRightXRayAPAndPAStanding = "http://loinc.org#26363-2";
+
+    /// <summary>
     /// Literal for code: KneeBilateralXRayAPAndLateralStanding
     /// </summary>
     public const string LiteralKneeBilateralXRayAPAndLateralStanding = "26364-0";
+
+    /// <summary>
+    /// Literal for code: NONEKneeBilateralXRayAPAndLateralStanding
+    /// </summary>
+    public const string LiteralNONEKneeBilateralXRayAPAndLateralStanding = "http://loinc.org#26364-0";
 
     /// <summary>
     /// Literal for code: KneeLeftXRayAPAndLateralStanding
@@ -13418,9 +17818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeLeftXRayAPAndLateralStanding = "26365-7";
 
     /// <summary>
+    /// Literal for code: NONEKneeLeftXRayAPAndLateralStanding
+    /// </summary>
+    public const string LiteralNONEKneeLeftXRayAPAndLateralStanding = "http://loinc.org#26365-7";
+
+    /// <summary>
     /// Literal for code: KneeRightXRayAPAndLateralStanding
     /// </summary>
     public const string LiteralKneeRightXRayAPAndLateralStanding = "26366-5";
+
+    /// <summary>
+    /// Literal for code: NONEKneeRightXRayAPAndLateralStanding
+    /// </summary>
+    public const string LiteralNONEKneeRightXRayAPAndLateralStanding = "http://loinc.org#26366-5";
 
     /// <summary>
     /// Literal for code: DeprecatedBrachiocephalicArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA
@@ -13428,9 +17838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeprecatedBrachiocephalicArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA = "26368-1";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedBrachiocephalicArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEDeprecatedBrachiocephalicArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#26368-1";
+
+    /// <summary>
     /// Literal for code: DeprecatedBrachiocephalicArteryRightFluoroscopicAngiogramAngioplastyWContrastIA
     /// </summary>
     public const string LiteralDeprecatedBrachiocephalicArteryRightFluoroscopicAngiogramAngioplastyWContrastIA = "26369-9";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedBrachiocephalicArteryRightFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEDeprecatedBrachiocephalicArteryRightFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#26369-9";
 
     /// <summary>
     /// Literal for code: IliacArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA
@@ -13438,9 +17858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIliacArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA = "26370-7";
 
     /// <summary>
+    /// Literal for code: NONEIliacArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEIliacArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#26370-7";
+
+    /// <summary>
     /// Literal for code: IliacArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA
     /// </summary>
     public const string LiteralIliacArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA = "26371-5";
+
+    /// <summary>
+    /// Literal for code: NONEIliacArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEIliacArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#26371-5";
 
     /// <summary>
     /// Literal for code: IliacArteryRightFluoroscopicAngiogramAngioplastyWContrastIA
@@ -13448,9 +17878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIliacArteryRightFluoroscopicAngiogramAngioplastyWContrastIA = "26372-3";
 
     /// <summary>
+    /// Literal for code: NONEIliacArteryRightFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONEIliacArteryRightFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#26372-3";
+
+    /// <summary>
     /// Literal for code: TibialArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA
     /// </summary>
     public const string LiteralTibialArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA = "26373-1";
+
+    /// <summary>
+    /// Literal for code: NONETibialArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONETibialArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#26373-1";
 
     /// <summary>
     /// Literal for code: TibialArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA
@@ -13458,9 +17898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTibialArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA = "26374-9";
 
     /// <summary>
+    /// Literal for code: NONETibialArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONETibialArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#26374-9";
+
+    /// <summary>
     /// Literal for code: TibialArteryRightFluoroscopicAngiogramAngioplastyWContrastIA
     /// </summary>
     public const string LiteralTibialArteryRightFluoroscopicAngiogramAngioplastyWContrastIA = "26375-6";
+
+    /// <summary>
+    /// Literal for code: NONETibialArteryRightFluoroscopicAngiogramAngioplastyWContrastIA
+    /// </summary>
+    public const string LiteralNONETibialArteryRightFluoroscopicAngiogramAngioplastyWContrastIA = "http://loinc.org#26375-6";
 
     /// <summary>
     /// Literal for code: AdministrationOfVasodilatorIntoCatheterOfVeinBilateral
@@ -13468,9 +17918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdministrationOfVasodilatorIntoCatheterOfVeinBilateral = "26376-4";
 
     /// <summary>
+    /// Literal for code: NONEAdministrationOfVasodilatorIntoCatheterOfVeinBilateral
+    /// </summary>
+    public const string LiteralNONEAdministrationOfVasodilatorIntoCatheterOfVeinBilateral = "http://loinc.org#26376-4";
+
+    /// <summary>
     /// Literal for code: AdministrationOfVasodilatorIntoCatheterOfVeinLeft
     /// </summary>
     public const string LiteralAdministrationOfVasodilatorIntoCatheterOfVeinLeft = "26377-2";
+
+    /// <summary>
+    /// Literal for code: NONEAdministrationOfVasodilatorIntoCatheterOfVeinLeft
+    /// </summary>
+    public const string LiteralNONEAdministrationOfVasodilatorIntoCatheterOfVeinLeft = "http://loinc.org#26377-2";
 
     /// <summary>
     /// Literal for code: AdministrationOfVasodilatorIntoCatheterOfVeinRight
@@ -13478,9 +17938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdministrationOfVasodilatorIntoCatheterOfVeinRight = "26378-0";
 
     /// <summary>
+    /// Literal for code: NONEAdministrationOfVasodilatorIntoCatheterOfVeinRight
+    /// </summary>
+    public const string LiteralNONEAdministrationOfVasodilatorIntoCatheterOfVeinRight = "http://loinc.org#26378-0";
+
+    /// <summary>
     /// Literal for code: HandBilateralXRay3Views
     /// </summary>
     public const string LiteralHandBilateralXRay3Views = "26379-8";
+
+    /// <summary>
+    /// Literal for code: NONEHandBilateralXRay3Views
+    /// </summary>
+    public const string LiteralNONEHandBilateralXRay3Views = "http://loinc.org#26379-8";
 
     /// <summary>
     /// Literal for code: HandLeftXRay3Views
@@ -13488,9 +17958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandLeftXRay3Views = "26380-6";
 
     /// <summary>
+    /// Literal for code: NONEHandLeftXRay3Views
+    /// </summary>
+    public const string LiteralNONEHandLeftXRay3Views = "http://loinc.org#26380-6";
+
+    /// <summary>
     /// Literal for code: HandRightXRay3Views
     /// </summary>
     public const string LiteralHandRightXRay3Views = "26381-4";
+
+    /// <summary>
+    /// Literal for code: NONEHandRightXRay3Views
+    /// </summary>
+    public const string LiteralNONEHandRightXRay3Views = "http://loinc.org#26381-4";
 
     /// <summary>
     /// Literal for code: ShoulderBilateralXRay3Views
@@ -13498,9 +17978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderBilateralXRay3Views = "26382-2";
 
     /// <summary>
+    /// Literal for code: NONEShoulderBilateralXRay3Views
+    /// </summary>
+    public const string LiteralNONEShoulderBilateralXRay3Views = "http://loinc.org#26382-2";
+
+    /// <summary>
     /// Literal for code: ShoulderLeftXRay3Views
     /// </summary>
     public const string LiteralShoulderLeftXRay3Views = "26383-0";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderLeftXRay3Views
+    /// </summary>
+    public const string LiteralNONEShoulderLeftXRay3Views = "http://loinc.org#26383-0";
 
     /// <summary>
     /// Literal for code: ShoulderRightXRay3Views
@@ -13508,9 +17998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShoulderRightXRay3Views = "26384-8";
 
     /// <summary>
+    /// Literal for code: NONEShoulderRightXRay3Views
+    /// </summary>
+    public const string LiteralNONEShoulderRightXRay3Views = "http://loinc.org#26384-8";
+
+    /// <summary>
     /// Literal for code: AnkleBilateralXRay2Views
     /// </summary>
     public const string LiteralAnkleBilateralXRay2Views = "26385-5";
+
+    /// <summary>
+    /// Literal for code: NONEAnkleBilateralXRay2Views
+    /// </summary>
+    public const string LiteralNONEAnkleBilateralXRay2Views = "http://loinc.org#26385-5";
 
     /// <summary>
     /// Literal for code: AnkleLeftXRay2Views
@@ -13518,9 +18018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnkleLeftXRay2Views = "26386-3";
 
     /// <summary>
+    /// Literal for code: NONEAnkleLeftXRay2Views
+    /// </summary>
+    public const string LiteralNONEAnkleLeftXRay2Views = "http://loinc.org#26386-3";
+
+    /// <summary>
     /// Literal for code: AnkleRightXRay2Views
     /// </summary>
     public const string LiteralAnkleRightXRay2Views = "26387-1";
+
+    /// <summary>
+    /// Literal for code: NONEAnkleRightXRay2Views
+    /// </summary>
+    public const string LiteralNONEAnkleRightXRay2Views = "http://loinc.org#26387-1";
 
     /// <summary>
     /// Literal for code: HandBilateralXRay2Views
@@ -13528,9 +18038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandBilateralXRay2Views = "26388-9";
 
     /// <summary>
+    /// Literal for code: NONEHandBilateralXRay2Views
+    /// </summary>
+    public const string LiteralNONEHandBilateralXRay2Views = "http://loinc.org#26388-9";
+
+    /// <summary>
     /// Literal for code: HandLeftXRay2Views
     /// </summary>
     public const string LiteralHandLeftXRay2Views = "26389-7";
+
+    /// <summary>
+    /// Literal for code: NONEHandLeftXRay2Views
+    /// </summary>
+    public const string LiteralNONEHandLeftXRay2Views = "http://loinc.org#26389-7";
 
     /// <summary>
     /// Literal for code: HandRightXRay2Views
@@ -13538,9 +18058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandRightXRay2Views = "26390-5";
 
     /// <summary>
+    /// Literal for code: NONEHandRightXRay2Views
+    /// </summary>
+    public const string LiteralNONEHandRightXRay2Views = "http://loinc.org#26390-5";
+
+    /// <summary>
     /// Literal for code: HumerusBilateralXRay2Views
     /// </summary>
     public const string LiteralHumerusBilateralXRay2Views = "26391-3";
+
+    /// <summary>
+    /// Literal for code: NONEHumerusBilateralXRay2Views
+    /// </summary>
+    public const string LiteralNONEHumerusBilateralXRay2Views = "http://loinc.org#26391-3";
 
     /// <summary>
     /// Literal for code: HumerusLeftXRay2Views
@@ -13548,9 +18078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHumerusLeftXRay2Views = "26392-1";
 
     /// <summary>
+    /// Literal for code: NONEHumerusLeftXRay2Views
+    /// </summary>
+    public const string LiteralNONEHumerusLeftXRay2Views = "http://loinc.org#26392-1";
+
+    /// <summary>
     /// Literal for code: HumerusRightXRay2Views
     /// </summary>
     public const string LiteralHumerusRightXRay2Views = "26393-9";
+
+    /// <summary>
+    /// Literal for code: NONEHumerusRightXRay2Views
+    /// </summary>
+    public const string LiteralNONEHumerusRightXRay2Views = "http://loinc.org#26393-9";
 
     /// <summary>
     /// Literal for code: KneeBilateralXRay2Views
@@ -13558,9 +18098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeBilateralXRay2Views = "26394-7";
 
     /// <summary>
+    /// Literal for code: NONEKneeBilateralXRay2Views
+    /// </summary>
+    public const string LiteralNONEKneeBilateralXRay2Views = "http://loinc.org#26394-7";
+
+    /// <summary>
     /// Literal for code: KneeLeftXRay2Views
     /// </summary>
     public const string LiteralKneeLeftXRay2Views = "26395-4";
+
+    /// <summary>
+    /// Literal for code: NONEKneeLeftXRay2Views
+    /// </summary>
+    public const string LiteralNONEKneeLeftXRay2Views = "http://loinc.org#26395-4";
 
     /// <summary>
     /// Literal for code: KneeRightXRay2Views
@@ -13568,9 +18118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeRightXRay2Views = "26396-2";
 
     /// <summary>
+    /// Literal for code: NONEKneeRightXRay2Views
+    /// </summary>
+    public const string LiteralNONEKneeRightXRay2Views = "http://loinc.org#26396-2";
+
+    /// <summary>
     /// Literal for code: PatellaBilateralXRay2Views
     /// </summary>
     public const string LiteralPatellaBilateralXRay2Views = "26397-0";
+
+    /// <summary>
+    /// Literal for code: NONEPatellaBilateralXRay2Views
+    /// </summary>
+    public const string LiteralNONEPatellaBilateralXRay2Views = "http://loinc.org#26397-0";
 
     /// <summary>
     /// Literal for code: PatellaLeftXRay2Views
@@ -13578,9 +18138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatellaLeftXRay2Views = "26398-8";
 
     /// <summary>
+    /// Literal for code: NONEPatellaLeftXRay2Views
+    /// </summary>
+    public const string LiteralNONEPatellaLeftXRay2Views = "http://loinc.org#26398-8";
+
+    /// <summary>
     /// Literal for code: PatellaRightXRay2Views
     /// </summary>
     public const string LiteralPatellaRightXRay2Views = "26399-6";
+
+    /// <summary>
+    /// Literal for code: NONEPatellaRightXRay2Views
+    /// </summary>
+    public const string LiteralNONEPatellaRightXRay2Views = "http://loinc.org#26399-6";
 
     /// <summary>
     /// Literal for code: HipBilateralXRaySingleView
@@ -13588,9 +18158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHipBilateralXRaySingleView = "26400-2";
 
     /// <summary>
+    /// Literal for code: NONEHipBilateralXRaySingleView
+    /// </summary>
+    public const string LiteralNONEHipBilateralXRaySingleView = "http://loinc.org#26400-2";
+
+    /// <summary>
     /// Literal for code: HipLeftXRaySingleView
     /// </summary>
     public const string LiteralHipLeftXRaySingleView = "26401-0";
+
+    /// <summary>
+    /// Literal for code: NONEHipLeftXRaySingleView
+    /// </summary>
+    public const string LiteralNONEHipLeftXRaySingleView = "http://loinc.org#26401-0";
 
     /// <summary>
     /// Literal for code: HipRightXRaySingleView
@@ -13598,9 +18178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHipRightXRaySingleView = "26402-8";
 
     /// <summary>
+    /// Literal for code: NONEHipRightXRaySingleView
+    /// </summary>
+    public const string LiteralNONEHipRightXRaySingleView = "http://loinc.org#26402-8";
+
+    /// <summary>
     /// Literal for code: DeprecatedCardiacEchoStudy_2
     /// </summary>
     public const string LiteralDeprecatedCardiacEchoStudy_2 = "28032-1";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedCardiacEchoStudy_2
+    /// </summary>
+    public const string LiteralNONEDeprecatedCardiacEchoStudy_2 = "http://loinc.org#28032-1";
 
     /// <summary>
     /// Literal for code: PelvisXRay
@@ -13608,9 +18198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPelvisXRay = "28561-9";
 
     /// <summary>
+    /// Literal for code: NONEPelvisXRay
+    /// </summary>
+    public const string LiteralNONEPelvisXRay = "http://loinc.org#28561-9";
+
+    /// <summary>
     /// Literal for code: SkullXRay
     /// </summary>
     public const string LiteralSkullXRay = "28564-3";
+
+    /// <summary>
+    /// Literal for code: NONESkullXRay
+    /// </summary>
+    public const string LiteralNONESkullXRay = "http://loinc.org#28564-3";
 
     /// <summary>
     /// Literal for code: KneeXRay
@@ -13618,9 +18218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeXRay = "28565-0";
 
     /// <summary>
+    /// Literal for code: NONEKneeXRay
+    /// </summary>
+    public const string LiteralNONEKneeXRay = "http://loinc.org#28565-0";
+
+    /// <summary>
     /// Literal for code: SpineCT
     /// </summary>
     public const string LiteralSpineCT = "28566-8";
+
+    /// <summary>
+    /// Literal for code: NONESpineCT
+    /// </summary>
+    public const string LiteralNONESpineCT = "http://loinc.org#28566-8";
 
     /// <summary>
     /// Literal for code: HumerusXRay
@@ -13628,9 +18238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHumerusXRay = "28567-6";
 
     /// <summary>
+    /// Literal for code: NONEHumerusXRay
+    /// </summary>
+    public const string LiteralNONEHumerusXRay = "http://loinc.org#28567-6";
+
+    /// <summary>
     /// Literal for code: PhysicianEmergencyDepartmentNote
     /// </summary>
     public const string LiteralPhysicianEmergencyDepartmentNote = "28568-4";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicianEmergencyDepartmentNote
+    /// </summary>
+    public const string LiteralNONEPhysicianEmergencyDepartmentNote = "http://loinc.org#28568-4";
 
     /// <summary>
     /// Literal for code: PhysicianConsultingProgressNote
@@ -13638,9 +18258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicianConsultingProgressNote = "28569-2";
 
     /// <summary>
+    /// Literal for code: NONEPhysicianConsultingProgressNote
+    /// </summary>
+    public const string LiteralNONEPhysicianConsultingProgressNote = "http://loinc.org#28569-2";
+
+    /// <summary>
     /// Literal for code: ProviderUnspecifiedProcedureNote
     /// </summary>
     public const string LiteralProviderUnspecifiedProcedureNote = "28570-0";
+
+    /// <summary>
+    /// Literal for code: NONEProviderUnspecifiedProcedureNote
+    /// </summary>
+    public const string LiteralNONEProviderUnspecifiedProcedureNote = "http://loinc.org#28570-0";
 
     /// <summary>
     /// Literal for code: SpeechLanguagePathologyNote
@@ -13648,9 +18278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpeechLanguagePathologyNote = "28571-8";
 
     /// <summary>
+    /// Literal for code: NONESpeechLanguagePathologyNote
+    /// </summary>
+    public const string LiteralNONESpeechLanguagePathologyNote = "http://loinc.org#28571-8";
+
+    /// <summary>
     /// Literal for code: DentistryInitialEvaluationNote
     /// </summary>
     public const string LiteralDentistryInitialEvaluationNote = "28572-6";
+
+    /// <summary>
+    /// Literal for code: NONEDentistryInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONEDentistryInitialEvaluationNote = "http://loinc.org#28572-6";
 
     /// <summary>
     /// Literal for code: PhysicianOperationNote
@@ -13658,9 +18298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicianOperationNote = "28573-4";
 
     /// <summary>
+    /// Literal for code: NONEPhysicianOperationNote
+    /// </summary>
+    public const string LiteralNONEPhysicianOperationNote = "http://loinc.org#28573-4";
+
+    /// <summary>
     /// Literal for code: DischargeNote
     /// </summary>
     public const string LiteralDischargeNote = "28574-2";
+
+    /// <summary>
+    /// Literal for code: NONEDischargeNote
+    /// </summary>
+    public const string LiteralNONEDischargeNote = "http://loinc.org#28574-2";
 
     /// <summary>
     /// Literal for code: NursePractitionerProgressNote
@@ -13668,9 +18318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNursePractitionerProgressNote = "28575-9";
 
     /// <summary>
+    /// Literal for code: NONENursePractitionerProgressNote
+    /// </summary>
+    public const string LiteralNONENursePractitionerProgressNote = "http://loinc.org#28575-9";
+
+    /// <summary>
     /// Literal for code: JointMR
     /// </summary>
     public const string LiteralJointMR = "28576-7";
+
+    /// <summary>
+    /// Literal for code: NONEJointMR
+    /// </summary>
+    public const string LiteralNONEJointMR = "http://loinc.org#28576-7";
 
     /// <summary>
     /// Literal for code: DentistryProcedureNote
@@ -13678,9 +18338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDentistryProcedureNote = "28577-5";
 
     /// <summary>
+    /// Literal for code: NONEDentistryProcedureNote
+    /// </summary>
+    public const string LiteralNONEDentistryProcedureNote = "http://loinc.org#28577-5";
+
+    /// <summary>
     /// Literal for code: OccupationalTherapyNote
     /// </summary>
     public const string LiteralOccupationalTherapyNote = "28578-3";
+
+    /// <summary>
+    /// Literal for code: NONEOccupationalTherapyNote
+    /// </summary>
+    public const string LiteralNONEOccupationalTherapyNote = "http://loinc.org#28578-3";
 
     /// <summary>
     /// Literal for code: PhysicalTherapyNote
@@ -13688,9 +18358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicalTherapyNote = "28579-1";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalTherapyNote
+    /// </summary>
+    public const string LiteralNONEPhysicalTherapyNote = "http://loinc.org#28579-1";
+
+    /// <summary>
     /// Literal for code: ChiropracticMedicineProgressNote
     /// </summary>
     public const string LiteralChiropracticMedicineProgressNote = "28580-9";
+
+    /// <summary>
+    /// Literal for code: NONEChiropracticMedicineProgressNote
+    /// </summary>
+    public const string LiteralNONEChiropracticMedicineProgressNote = "http://loinc.org#28580-9";
 
     /// <summary>
     /// Literal for code: ChiropracticMedicineInitialEvaluationNote
@@ -13698,9 +18378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChiropracticMedicineInitialEvaluationNote = "28581-7";
 
     /// <summary>
+    /// Literal for code: NONEChiropracticMedicineInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONEChiropracticMedicineInitialEvaluationNote = "http://loinc.org#28581-7";
+
+    /// <summary>
     /// Literal for code: HandXRay
     /// </summary>
     public const string LiteralHandXRay = "28582-5";
+
+    /// <summary>
+    /// Literal for code: NONEHandXRay
+    /// </summary>
+    public const string LiteralNONEHandXRay = "http://loinc.org#28582-5";
 
     /// <summary>
     /// Literal for code: DentistOperationNote
@@ -13708,9 +18398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDentistOperationNote = "28583-3";
 
     /// <summary>
+    /// Literal for code: NONEDentistOperationNote
+    /// </summary>
+    public const string LiteralNONEDentistOperationNote = "http://loinc.org#28583-3";
+
+    /// <summary>
     /// Literal for code: SpineXRay
     /// </summary>
     public const string LiteralSpineXRay = "28613-8";
+
+    /// <summary>
+    /// Literal for code: NONESpineXRay
+    /// </summary>
+    public const string LiteralNONESpineXRay = "http://loinc.org#28613-8";
 
     /// <summary>
     /// Literal for code: LiverUS
@@ -13718,9 +18418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiverUS = "28614-6";
 
     /// <summary>
+    /// Literal for code: NONELiverUS
+    /// </summary>
+    public const string LiteralNONELiverUS = "http://loinc.org#28614-6";
+
+    /// <summary>
     /// Literal for code: AudiologyStudy
     /// </summary>
     public const string LiteralAudiologyStudy = "28615-3";
+
+    /// <summary>
+    /// Literal for code: NONEAudiologyStudy
+    /// </summary>
+    public const string LiteralNONEAudiologyStudy = "http://loinc.org#28615-3";
 
     /// <summary>
     /// Literal for code: PhysicianTransferNote
@@ -13728,9 +18438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicianTransferNote = "28616-1";
 
     /// <summary>
+    /// Literal for code: NONEPhysicianTransferNote
+    /// </summary>
+    public const string LiteralNONEPhysicianTransferNote = "http://loinc.org#28616-1";
+
+    /// <summary>
     /// Literal for code: DentistryProgressNote
     /// </summary>
     public const string LiteralDentistryProgressNote = "28617-9";
+
+    /// <summary>
+    /// Literal for code: NONEDentistryProgressNote
+    /// </summary>
+    public const string LiteralNONEDentistryProgressNote = "http://loinc.org#28617-9";
 
     /// <summary>
     /// Literal for code: DentistryNote
@@ -13738,9 +18458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDentistryNote = "28618-7";
 
     /// <summary>
+    /// Literal for code: NONEDentistryNote
+    /// </summary>
+    public const string LiteralNONEDentistryNote = "http://loinc.org#28618-7";
+
+    /// <summary>
     /// Literal for code: NursePractitionerInitialEvaluationNote
     /// </summary>
     public const string LiteralNursePractitionerInitialEvaluationNote = "28621-1";
+
+    /// <summary>
+    /// Literal for code: NONENursePractitionerInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONENursePractitionerInitialEvaluationNote = "http://loinc.org#28621-1";
 
     /// <summary>
     /// Literal for code: NurseDischargeAssessment
@@ -13748,9 +18478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNurseDischargeAssessment = "28622-9";
 
     /// <summary>
+    /// Literal for code: NONENurseDischargeAssessment
+    /// </summary>
+    public const string LiteralNONENurseDischargeAssessment = "http://loinc.org#28622-9";
+
+    /// <summary>
     /// Literal for code: NurseProgressNote
     /// </summary>
     public const string LiteralNurseProgressNote = "28623-7";
+
+    /// <summary>
+    /// Literal for code: NONENurseProgressNote
+    /// </summary>
+    public const string LiteralNONENurseProgressNote = "http://loinc.org#28623-7";
 
     /// <summary>
     /// Literal for code: PodiatryOperationNote
@@ -13758,9 +18498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPodiatryOperationNote = "28624-5";
 
     /// <summary>
+    /// Literal for code: NONEPodiatryOperationNote
+    /// </summary>
+    public const string LiteralNONEPodiatryOperationNote = "http://loinc.org#28624-5";
+
+    /// <summary>
     /// Literal for code: PodiatryProcedureNote
     /// </summary>
     public const string LiteralPodiatryProcedureNote = "28625-2";
+
+    /// <summary>
+    /// Literal for code: NONEPodiatryProcedureNote
+    /// </summary>
+    public const string LiteralNONEPodiatryProcedureNote = "http://loinc.org#28625-2";
 
     /// <summary>
     /// Literal for code: PhysicianHistoryAndPhysicalNote
@@ -13768,9 +18518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicianHistoryAndPhysicalNote = "28626-0";
 
     /// <summary>
+    /// Literal for code: NONEPhysicianHistoryAndPhysicalNote
+    /// </summary>
+    public const string LiteralNONEPhysicianHistoryAndPhysicalNote = "http://loinc.org#28626-0";
+
+    /// <summary>
     /// Literal for code: PsychiatryProgressNote
     /// </summary>
     public const string LiteralPsychiatryProgressNote = "28627-8";
+
+    /// <summary>
+    /// Literal for code: NONEPsychiatryProgressNote
+    /// </summary>
+    public const string LiteralNONEPsychiatryProgressNote = "http://loinc.org#28627-8";
 
     /// <summary>
     /// Literal for code: PsychiatryNote
@@ -13778,9 +18538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPsychiatryNote = "28628-6";
 
     /// <summary>
+    /// Literal for code: NONEPsychiatryNote
+    /// </summary>
+    public const string LiteralNONEPsychiatryNote = "http://loinc.org#28628-6";
+
+    /// <summary>
     /// Literal for code: PerimetryStudy
     /// </summary>
     public const string LiteralPerimetryStudy = "28629-4";
+
+    /// <summary>
+    /// Literal for code: NONEPerimetryStudy
+    /// </summary>
+    public const string LiteralNONEPerimetryStudy = "http://loinc.org#28629-4";
 
     /// <summary>
     /// Literal for code: TonometryStudy
@@ -13788,9 +18558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTonometryStudy = "28630-2";
 
     /// <summary>
+    /// Literal for code: NONETonometryStudy
+    /// </summary>
+    public const string LiteralNONETonometryStudy = "http://loinc.org#28630-2";
+
+    /// <summary>
     /// Literal for code: VisualAcuityStudy
     /// </summary>
     public const string LiteralVisualAcuityStudy = "28631-0";
+
+    /// <summary>
+    /// Literal for code: NONEVisualAcuityStudy
+    /// </summary>
+    public const string LiteralNONEVisualAcuityStudy = "http://loinc.org#28631-0";
 
     /// <summary>
     /// Literal for code: HeterophoriaStudy
@@ -13798,9 +18578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeterophoriaStudy = "28632-8";
 
     /// <summary>
+    /// Literal for code: NONEHeterophoriaStudy
+    /// </summary>
+    public const string LiteralNONEHeterophoriaStudy = "http://loinc.org#28632-8";
+
+    /// <summary>
     /// Literal for code: PolysomnographySleepStudy
     /// </summary>
     public const string LiteralPolysomnographySleepStudy = "28633-6";
+
+    /// <summary>
+    /// Literal for code: NONEPolysomnographySleepStudy
+    /// </summary>
+    public const string LiteralNONEPolysomnographySleepStudy = "http://loinc.org#28633-6";
 
     /// <summary>
     /// Literal for code: PsychiatryInitialEvaluationNote
@@ -13808,9 +18598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPsychiatryInitialEvaluationNote = "28635-1";
 
     /// <summary>
+    /// Literal for code: NONEPsychiatryInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONEPsychiatryInitialEvaluationNote = "http://loinc.org#28635-1";
+
+    /// <summary>
     /// Literal for code: ProviderUnspecifiedInitialAssessment
     /// </summary>
     public const string LiteralProviderUnspecifiedInitialAssessment = "28636-9";
+
+    /// <summary>
+    /// Literal for code: NONEProviderUnspecifiedInitialAssessment
+    /// </summary>
+    public const string LiteralNONEProviderUnspecifiedInitialAssessment = "http://loinc.org#28636-9";
 
     /// <summary>
     /// Literal for code: NurseTransferNote
@@ -13818,9 +18618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNurseTransferNote = "28651-8";
 
     /// <summary>
+    /// Literal for code: NONENurseTransferNote
+    /// </summary>
+    public const string LiteralNONENurseTransferNote = "http://loinc.org#28651-8";
+
+    /// <summary>
     /// Literal for code: SocialWorkNote
     /// </summary>
     public const string LiteralSocialWorkNote = "28653-4";
+
+    /// <summary>
+    /// Literal for code: NONESocialWorkNote
+    /// </summary>
+    public const string LiteralNONESocialWorkNote = "http://loinc.org#28653-4";
 
     /// <summary>
     /// Literal for code: PhysicianAttendingInitialEvaluationNote
@@ -13828,9 +18638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicianAttendingInitialEvaluationNote = "28654-2";
 
     /// <summary>
+    /// Literal for code: NONEPhysicianAttendingInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONEPhysicianAttendingInitialEvaluationNote = "http://loinc.org#28654-2";
+
+    /// <summary>
     /// Literal for code: PhysicianAttendingDischargeSummary
     /// </summary>
     public const string LiteralPhysicianAttendingDischargeSummary = "28655-9";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicianAttendingDischargeSummary
+    /// </summary>
+    public const string LiteralNONEPhysicianAttendingDischargeSummary = "http://loinc.org#28655-9";
 
     /// <summary>
     /// Literal for code: SocialWorkProgressNote
@@ -13838,9 +18658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSocialWorkProgressNote = "28656-7";
 
     /// <summary>
+    /// Literal for code: NONESocialWorkProgressNote
+    /// </summary>
+    public const string LiteralNONESocialWorkProgressNote = "http://loinc.org#28656-7";
+
+    /// <summary>
     /// Literal for code: SpeechTherapyServiceAttachment
     /// </summary>
     public const string LiteralSpeechTherapyServiceAttachment = "29206-0";
+
+    /// <summary>
+    /// Literal for code: NONESpeechTherapyServiceAttachment
+    /// </summary>
+    public const string LiteralNONESpeechTherapyServiceAttachment = "http://loinc.org#29206-0";
 
     /// <summary>
     /// Literal for code: ChestCTWOContrast
@@ -13848,9 +18678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestCTWOContrast = "29252-4";
 
     /// <summary>
+    /// Literal for code: NONEChestCTWOContrast
+    /// </summary>
+    public const string LiteralNONEChestCTWOContrast = "http://loinc.org#29252-4";
+
+    /// <summary>
     /// Literal for code: EyeUltrasoundStudy
     /// </summary>
     public const string LiteralEyeUltrasoundStudy = "29272-2";
+
+    /// <summary>
+    /// Literal for code: NONEEyeUltrasoundStudy
+    /// </summary>
+    public const string LiteralNONEEyeUltrasoundStudy = "http://loinc.org#29272-2";
 
     /// <summary>
     /// Literal for code: DialysisRecords
@@ -13858,9 +18698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDialysisRecords = "29749-9";
 
     /// <summary>
+    /// Literal for code: NONEDialysisRecords
+    /// </summary>
+    public const string LiteralNONEDialysisRecords = "http://loinc.org#29749-9";
+
+    /// <summary>
     /// Literal for code: NeonatalIntensiveCareRecords
     /// </summary>
     public const string LiteralNeonatalIntensiveCareRecords = "29750-7";
+
+    /// <summary>
+    /// Literal for code: NONENeonatalIntensiveCareRecords
+    /// </summary>
+    public const string LiteralNONENeonatalIntensiveCareRecords = "http://loinc.org#29750-7";
 
     /// <summary>
     /// Literal for code: CriticalCareRecords
@@ -13868,9 +18718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCriticalCareRecords = "29751-5";
 
     /// <summary>
+    /// Literal for code: NONECriticalCareRecords
+    /// </summary>
+    public const string LiteralNONECriticalCareRecords = "http://loinc.org#29751-5";
+
+    /// <summary>
     /// Literal for code: PerioperativeRecords
     /// </summary>
     public const string LiteralPerioperativeRecords = "29752-3";
+
+    /// <summary>
+    /// Literal for code: NONEPerioperativeRecords
+    /// </summary>
+    public const string LiteralNONEPerioperativeRecords = "http://loinc.org#29752-3";
 
     /// <summary>
     /// Literal for code: NurseInitialEvaluationNote
@@ -13878,9 +18738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNurseInitialEvaluationNote = "29753-1";
 
     /// <summary>
+    /// Literal for code: NONENurseInitialEvaluationNote
+    /// </summary>
+    public const string LiteralNONENurseInitialEvaluationNote = "http://loinc.org#29753-1";
+
+    /// <summary>
     /// Literal for code: NystagmogramStudy
     /// </summary>
     public const string LiteralNystagmogramStudy = "29754-9";
+
+    /// <summary>
+    /// Literal for code: NONENystagmogramStudy
+    /// </summary>
+    public const string LiteralNONENystagmogramStudy = "http://loinc.org#29754-9";
 
     /// <summary>
     /// Literal for code: NerveConductionStudy
@@ -13888,9 +18758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNerveConductionStudy = "29755-6";
 
     /// <summary>
+    /// Literal for code: NONENerveConductionStudy
+    /// </summary>
+    public const string LiteralNONENerveConductionStudy = "http://loinc.org#29755-6";
+
+    /// <summary>
     /// Literal for code: PeritoneoscopyStudy
     /// </summary>
     public const string LiteralPeritoneoscopyStudy = "29756-4";
+
+    /// <summary>
+    /// Literal for code: NONEPeritoneoscopyStudy
+    /// </summary>
+    public const string LiteralNONEPeritoneoscopyStudy = "http://loinc.org#29756-4";
 
     /// <summary>
     /// Literal for code: ColposcopyStudy
@@ -13898,9 +18778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColposcopyStudy = "29757-2";
 
     /// <summary>
+    /// Literal for code: NONEColposcopyStudy
+    /// </summary>
+    public const string LiteralNONEColposcopyStudy = "http://loinc.org#29757-2";
+
+    /// <summary>
     /// Literal for code: DentistryDischargeSummary
     /// </summary>
     public const string LiteralDentistryDischargeSummary = "29761-4";
+
+    /// <summary>
+    /// Literal for code: NONEDentistryDischargeSummary
+    /// </summary>
+    public const string LiteralNONEDentistryDischargeSummary = "http://loinc.org#29761-4";
 
     /// <summary>
     /// Literal for code: CTGuidanceForBiopsyOfAbdomen
@@ -13908,9 +18798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForBiopsyOfAbdomen = "30601-9";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForBiopsyOfAbdomen
+    /// </summary>
+    public const string LiteralNONECTGuidanceForBiopsyOfAbdomen = "http://loinc.org#30601-9";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForFineNeedleAspirationOfAbdomen
     /// </summary>
     public const string LiteralCTGuidanceForFineNeedleAspirationOfAbdomen = "30602-7";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForFineNeedleAspirationOfAbdomen
+    /// </summary>
+    public const string LiteralNONECTGuidanceForFineNeedleAspirationOfAbdomen = "http://loinc.org#30602-7";
 
     /// <summary>
     /// Literal for code: CTGuidanceForFineNeedleAspirationOfLiver
@@ -13918,9 +18818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForFineNeedleAspirationOfLiver = "30603-5";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForFineNeedleAspirationOfLiver
+    /// </summary>
+    public const string LiteralNONECTGuidanceForFineNeedleAspirationOfLiver = "http://loinc.org#30603-5";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForBiopsyOfPancreas
     /// </summary>
     public const string LiteralCTGuidanceForBiopsyOfPancreas = "30604-3";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForBiopsyOfPancreas
+    /// </summary>
+    public const string LiteralNONECTGuidanceForBiopsyOfPancreas = "http://loinc.org#30604-3";
 
     /// <summary>
     /// Literal for code: CTGuidanceForFineNeedleAspirationOfPancreas
@@ -13928,9 +18838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForFineNeedleAspirationOfPancreas = "30605-0";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForFineNeedleAspirationOfPancreas
+    /// </summary>
+    public const string LiteralNONECTGuidanceForFineNeedleAspirationOfPancreas = "http://loinc.org#30605-0";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForFineNeedleAspirationOfPelvis
     /// </summary>
     public const string LiteralCTGuidanceForFineNeedleAspirationOfPelvis = "30606-8";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForFineNeedleAspirationOfPelvis
+    /// </summary>
+    public const string LiteralNONECTGuidanceForFineNeedleAspirationOfPelvis = "http://loinc.org#30606-8";
 
     /// <summary>
     /// Literal for code: CTGuidanceForBiopsyOfKidneyBilateral
@@ -13938,9 +18858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForBiopsyOfKidneyBilateral = "30607-6";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForBiopsyOfKidneyBilateral
+    /// </summary>
+    public const string LiteralNONECTGuidanceForBiopsyOfKidneyBilateral = "http://loinc.org#30607-6";
+
+    /// <summary>
     /// Literal for code: UpperExtremityCTWOContrast
     /// </summary>
     public const string LiteralUpperExtremityCTWOContrast = "30627-4";
+
+    /// <summary>
+    /// Literal for code: NONEUpperExtremityCTWOContrast
+    /// </summary>
+    public const string LiteralNONEUpperExtremityCTWOContrast = "http://loinc.org#30627-4";
 
     /// <summary>
     /// Literal for code: FluoroscopyGuidanceForRemovalOfForeignBodyOfUnspecifiedBodyRegion
@@ -13948,9 +18878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyGuidanceForRemovalOfForeignBodyOfUnspecifiedBodyRegion = "30628-2";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForRemovalOfForeignBodyOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForRemovalOfForeignBodyOfUnspecifiedBodyRegion = "http://loinc.org#30628-2";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGuidanceForProcedureOfUnspecifiedBodyRegion
     /// </summary>
     public const string LiteralFluoroscopyGuidanceForProcedureOfUnspecifiedBodyRegion = "30629-0";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGuidanceForProcedureOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGuidanceForProcedureOfUnspecifiedBodyRegion = "http://loinc.org#30629-0";
 
     /// <summary>
     /// Literal for code: CerebralCisternsFluoroscopyVideoWContrast
@@ -13958,9 +18898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebralCisternsFluoroscopyVideoWContrast = "30630-8";
 
     /// <summary>
+    /// Literal for code: NONECerebralCisternsFluoroscopyVideoWContrast
+    /// </summary>
+    public const string LiteralNONECerebralCisternsFluoroscopyVideoWContrast = "http://loinc.org#30630-8";
+
+    /// <summary>
     /// Literal for code: ChestFluoroscopy
     /// </summary>
     public const string LiteralChestFluoroscopy = "30631-6";
+
+    /// <summary>
+    /// Literal for code: NONEChestFluoroscopy
+    /// </summary>
+    public const string LiteralNONEChestFluoroscopy = "http://loinc.org#30631-6";
 
     /// <summary>
     /// Literal for code: USGuidanceForNeedleBiopsyOfUnspecifiedBodyRegion
@@ -13968,9 +18918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForNeedleBiopsyOfUnspecifiedBodyRegion = "30700-9";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForNeedleBiopsyOfUnspecifiedBodyRegion
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForNeedleBiopsyOfUnspecifiedBodyRegion = "http://loinc.org#30700-9";
+
+    /// <summary>
     /// Literal for code: UnspecifiedBodyRegionUSDuringSurgery
     /// </summary>
     public const string LiteralUnspecifiedBodyRegionUSDuringSurgery = "30701-7";
+
+    /// <summary>
+    /// Literal for code: NONEUnspecifiedBodyRegionUSDuringSurgery
+    /// </summary>
+    public const string LiteralNONEUnspecifiedBodyRegionUSDuringSurgery = "http://loinc.org#30701-7";
 
     /// <summary>
     /// Literal for code: USGuidanceForInjectionOfThyroidGland
@@ -13978,9 +18938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSGuidanceForInjectionOfThyroidGland = "30702-5";
 
     /// <summary>
+    /// Literal for code: NONEUSGuidanceForInjectionOfThyroidGland
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForInjectionOfThyroidGland = "http://loinc.org#30702-5";
+
+    /// <summary>
     /// Literal for code: USGuidanceForAspirationOfPericardialSpace
     /// </summary>
     public const string LiteralUSGuidanceForAspirationOfPericardialSpace = "30703-3";
+
+    /// <summary>
+    /// Literal for code: NONEUSGuidanceForAspirationOfPericardialSpace
+    /// </summary>
+    public const string LiteralNONEUSGuidanceForAspirationOfPericardialSpace = "http://loinc.org#30703-3";
 
     /// <summary>
     /// Literal for code: AbdomenUSLimited
@@ -13988,9 +18958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdomenUSLimited = "30704-1";
 
     /// <summary>
+    /// Literal for code: NONEAbdomenUSLimited
+    /// </summary>
+    public const string LiteralNONEAbdomenUSLimited = "http://loinc.org#30704-1";
+
+    /// <summary>
     /// Literal for code: UterusAndFallopianTubesUS
     /// </summary>
     public const string LiteralUterusAndFallopianTubesUS = "30705-8";
+
+    /// <summary>
+    /// Literal for code: NONEUterusAndFallopianTubesUS
+    /// </summary>
+    public const string LiteralNONEUterusAndFallopianTubesUS = "http://loinc.org#30705-8";
 
     /// <summary>
     /// Literal for code: LiverUSDuringSurgery
@@ -13998,9 +18978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiverUSDuringSurgery = "30706-6";
 
     /// <summary>
+    /// Literal for code: NONELiverUSDuringSurgery
+    /// </summary>
+    public const string LiteralNONELiverUSDuringSurgery = "http://loinc.org#30706-6";
+
+    /// <summary>
     /// Literal for code: EpiduralVeinsFluoroscopicAngiogramWContrastIV
     /// </summary>
     public const string LiteralEpiduralVeinsFluoroscopicAngiogramWContrastIV = "30819-7";
+
+    /// <summary>
+    /// Literal for code: NONEEpiduralVeinsFluoroscopicAngiogramWContrastIV
+    /// </summary>
+    public const string LiteralNONEEpiduralVeinsFluoroscopicAngiogramWContrastIV = "http://loinc.org#30819-7";
 
     /// <summary>
     /// Literal for code: CarotidArteryExternalBilateralFluoroscopicAngiogramWContrastIA
@@ -14008,8 +18998,2024 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCarotidArteryExternalBilateralFluoroscopicAngiogramWContrastIA = "30820-5";
 
     /// <summary>
+    /// Literal for code: NONECarotidArteryExternalBilateralFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONECarotidArteryExternalBilateralFluoroscopicAngiogramWContrastIA = "http://loinc.org#30820-5";
+
+    /// <summary>
     /// Literal for code: CarotidArteryExternalFluoroscopicAngiogramWContrastIA
     /// </summary>
     public const string LiteralCarotidArteryExternalFluoroscopicAngiogramWContrastIA = "30821-3";
+
+    /// <summary>
+    /// Literal for code: NONECarotidArteryExternalFluoroscopicAngiogramWContrastIA
+    /// </summary>
+    public const string LiteralNONECarotidArteryExternalFluoroscopicAngiogramWContrastIA = "http://loinc.org#30821-3";
+
+    /// <summary>
+    /// Dictionary for looking up DocTypecodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "11485-0", AnesthesiaRecords }, 
+      { "http://loinc.org#11485-0", AnesthesiaRecords }, 
+      { "11486-8", ChemotherapyRecords }, 
+      { "http://loinc.org#11486-8", ChemotherapyRecords }, 
+      { "11488-4", ConsultNote }, 
+      { "http://loinc.org#11488-4", ConsultNote }, 
+      { "11490-0", PhysicianDischargeSummary }, 
+      { "http://loinc.org#11490-0", PhysicianDischargeSummary }, 
+      { "11492-6", ProviderUnspecifedHistoryAndPhysicalNote }, 
+      { "http://loinc.org#11492-6", ProviderUnspecifedHistoryAndPhysicalNote }, 
+      { "11494-2", DeprecatedPhysicianInitialAssessmentNoteAtFirstEncounter }, 
+      { "http://loinc.org#11494-2", DeprecatedPhysicianInitialAssessmentNoteAtFirstEncounter }, 
+      { "11495-9", DeprecatedPhysicalTherapyInitialAssessmentNoteAtFirstEncounter }, 
+      { "http://loinc.org#11495-9", DeprecatedPhysicalTherapyInitialAssessmentNoteAtFirstEncounter }, 
+      { "11496-7", DeprecatedPodiatryInitialAssessmentNoteAtFirstEncounter }, 
+      { "http://loinc.org#11496-7", DeprecatedPodiatryInitialAssessmentNoteAtFirstEncounter }, 
+      { "11497-5", DeprecatedPsychologyInitialAssessmentNoteAtFirstEncounter }, 
+      { "http://loinc.org#11497-5", DeprecatedPsychologyInitialAssessmentNoteAtFirstEncounter }, 
+      { "11498-3", DeprecatedSocialWorkInitialAssessmentNoteAtFirstEncounter }, 
+      { "http://loinc.org#11498-3", DeprecatedSocialWorkInitialAssessmentNoteAtFirstEncounter }, 
+      { "11499-1", DeprecatedSpeechTherapyInitialAssessmentNoteAtFirstEncounter }, 
+      { "http://loinc.org#11499-1", DeprecatedSpeechTherapyInitialAssessmentNoteAtFirstEncounter }, 
+      { "11500-6", DeprecatedOccupationalTherapyInitialAssessmentNoteAtFirstEncounter }, 
+      { "http://loinc.org#11500-6", DeprecatedOccupationalTherapyInitialAssessmentNoteAtFirstEncounter }, 
+      { "11502-2", LaboratoryReport }, 
+      { "http://loinc.org#11502-2", LaboratoryReport }, 
+      { "11503-0", MedicalRecords }, 
+      { "http://loinc.org#11503-0", MedicalRecords }, 
+      { "11504-8", ProviderUnspecifiedOperationNote }, 
+      { "http://loinc.org#11504-8", ProviderUnspecifiedOperationNote }, 
+      { "11505-5", PhysicianProcedureNote }, 
+      { "http://loinc.org#11505-5", PhysicianProcedureNote }, 
+      { "11506-3", ProviderUnspecifiedProgressNote }, 
+      { "http://loinc.org#11506-3", ProviderUnspecifiedProgressNote }, 
+      { "11507-1", OccupationalTherapyProgressNote }, 
+      { "http://loinc.org#11507-1", OccupationalTherapyProgressNote }, 
+      { "11508-9", PhysicalTherapyProgressNote }, 
+      { "http://loinc.org#11508-9", PhysicalTherapyProgressNote }, 
+      { "11509-7", PodiatryProgressNote }, 
+      { "http://loinc.org#11509-7", PodiatryProgressNote }, 
+      { "11510-5", PsychologyProgressNote }, 
+      { "http://loinc.org#11510-5", PsychologyProgressNote }, 
+      { "11512-1", SpeechLanguagePathologyProgressNote }, 
+      { "http://loinc.org#11512-1", SpeechLanguagePathologyProgressNote }, 
+      { "11514-7", ChiropracticRecordsTotalEncounter }, 
+      { "http://loinc.org#11514-7", ChiropracticRecordsTotalEncounter }, 
+      { "11515-4", PhysicalTherapyRecordsTotalEncounter }, 
+      { "http://loinc.org#11515-4", PhysicalTherapyRecordsTotalEncounter }, 
+      { "11516-2", PhysicianRecordsTotalEncounter }, 
+      { "http://loinc.org#11516-2", PhysicianRecordsTotalEncounter }, 
+      { "11517-0", PodiatryRecordsTotalEncounter }, 
+      { "http://loinc.org#11517-0", PodiatryRecordsTotalEncounter }, 
+      { "11518-8", PsychologyRecordsTotalEncounter }, 
+      { "http://loinc.org#11518-8", PsychologyRecordsTotalEncounter }, 
+      { "11519-6", SocialServiceRecordsTotalEncounter }, 
+      { "http://loinc.org#11519-6", SocialServiceRecordsTotalEncounter }, 
+      { "11520-4", SpeechTherapyRecordsTotalEncounter }, 
+      { "http://loinc.org#11520-4", SpeechTherapyRecordsTotalEncounter }, 
+      { "11521-2", OccupationalTherapyRecordsTotalEncounter }, 
+      { "http://loinc.org#11521-2", OccupationalTherapyRecordsTotalEncounter }, 
+      { "11522-0", DeprecatedCardiacEchoStudy }, 
+      { "http://loinc.org#11522-0", DeprecatedCardiacEchoStudy }, 
+      { "11523-8", EEGStudy }, 
+      { "http://loinc.org#11523-8", EEGStudy }, 
+      { "11524-6", EKGStudy }, 
+      { "http://loinc.org#11524-6", EKGStudy }, 
+      { "11525-3", USPelvisFetusForPregnancy }, 
+      { "http://loinc.org#11525-3", USPelvisFetusForPregnancy }, 
+      { "11526-1", PathologyStudy }, 
+      { "http://loinc.org#11526-1", PathologyStudy }, 
+      { "11527-9", PsychiatryStudy }, 
+      { "http://loinc.org#11527-9", PsychiatryStudy }, 
+      { "11528-7", DeprecatedRadiologyUnspecifiedSiteAndModalityStudy }, 
+      { "http://loinc.org#11528-7", DeprecatedRadiologyUnspecifiedSiteAndModalityStudy }, 
+      { "11529-5", SurgicalPathologyStudy }, 
+      { "http://loinc.org#11529-5", SurgicalPathologyStudy }, 
+      { "11534-5", TemperatureCharts }, 
+      { "http://loinc.org#11534-5", TemperatureCharts }, 
+      { "11536-0", NurseNotes }, 
+      { "http://loinc.org#11536-0", NurseNotes }, 
+      { "11538-6", DeprecatedCTChestStudy }, 
+      { "http://loinc.org#11538-6", DeprecatedCTChestStudy }, 
+      { "11539-4", DeprecatedCTHeadStudy }, 
+      { "http://loinc.org#11539-4", DeprecatedCTHeadStudy }, 
+      { "11540-2", DeprecatedCTAbdomenStudy }, 
+      { "http://loinc.org#11540-2", DeprecatedCTAbdomenStudy }, 
+      { "11541-0", DeprecatedMRIBrainStudy }, 
+      { "http://loinc.org#11541-0", DeprecatedMRIBrainStudy }, 
+      { "11542-8", DeprecatedProviderUnspecifiedVisitNote }, 
+      { "http://loinc.org#11542-8", DeprecatedProviderUnspecifiedVisitNote }, 
+      { "11543-6", NurseryRecords }, 
+      { "http://loinc.org#11543-6", NurseryRecords }, 
+      { "15507-7", ProviderUnspecifiedEDProgressNote }, 
+      { "http://loinc.org#15507-7", ProviderUnspecifiedEDProgressNote }, 
+      { "15508-5", LaborAndDeliveryRecords }, 
+      { "http://loinc.org#15508-5", LaborAndDeliveryRecords }, 
+      { "17787-3", ThyroidGlandNMStudyReport }, 
+      { "http://loinc.org#17787-3", ThyroidGlandNMStudyReport }, 
+      { "18594-2", PsychiatricServiceAttachment }, 
+      { "http://loinc.org#18594-2", PsychiatricServiceAttachment }, 
+      { "18733-6", PhysicianAttendingProgressNote }, 
+      { "http://loinc.org#18733-6", PhysicianAttendingProgressNote }, 
+      { "18734-4", OccupationalTherapyInitialEvaluationNote }, 
+      { "http://loinc.org#18734-4", OccupationalTherapyInitialEvaluationNote }, 
+      { "18735-1", PhysicalTherapyInitialEvaluationNote }, 
+      { "http://loinc.org#18735-1", PhysicalTherapyInitialEvaluationNote }, 
+      { "18736-9", PhysicianInitialEvaluationNote }, 
+      { "http://loinc.org#18736-9", PhysicianInitialEvaluationNote }, 
+      { "18737-7", PodiatryInitialEvaluationNote }, 
+      { "http://loinc.org#18737-7", PodiatryInitialEvaluationNote }, 
+      { "18738-5", PsychologyInitialEvaluationNote }, 
+      { "http://loinc.org#18738-5", PsychologyInitialEvaluationNote }, 
+      { "18739-3", SocialWorkInitialEvaluationNote }, 
+      { "http://loinc.org#18739-3", SocialWorkInitialEvaluationNote }, 
+      { "18740-1", SpeechLanguagePathologyInitialEvaluationNote }, 
+      { "http://loinc.org#18740-1", SpeechLanguagePathologyInitialEvaluationNote }, 
+      { "18741-9", DeprecatedAttendingPhysicianProgressNote }, 
+      { "http://loinc.org#18741-9", DeprecatedAttendingPhysicianProgressNote }, 
+      { "18742-7", ArthroscopyStudy }, 
+      { "http://loinc.org#18742-7", ArthroscopyStudy }, 
+      { "18743-5", AutopsyReport }, 
+      { "http://loinc.org#18743-5", AutopsyReport }, 
+      { "18744-3", BronchoscopyStudy }, 
+      { "http://loinc.org#18744-3", BronchoscopyStudy }, 
+      { "18745-0", CardiacCatheterizationStudy }, 
+      { "http://loinc.org#18745-0", CardiacCatheterizationStudy }, 
+      { "18746-8", ColonoscopyStudy }, 
+      { "http://loinc.org#18746-8", ColonoscopyStudy }, 
+      { "18747-6", DeprecatedCTUnspecifiedSystemStudy }, 
+      { "http://loinc.org#18747-6", DeprecatedCTUnspecifiedSystemStudy }, 
+      { "18748-4", DiagnosticImagingStudy }, 
+      { "http://loinc.org#18748-4", DiagnosticImagingStudy }, 
+      { "18749-2", ElectromyogramStudy }, 
+      { "http://loinc.org#18749-2", ElectromyogramStudy }, 
+      { "18750-0", ElectrophysiologyStudy }, 
+      { "http://loinc.org#18750-0", ElectrophysiologyStudy }, 
+      { "18751-8", EndoscopyStudy }, 
+      { "http://loinc.org#18751-8", EndoscopyStudy }, 
+      { "18752-6", ExerciseStressTestStudy }, 
+      { "http://loinc.org#18752-6", ExerciseStressTestStudy }, 
+      { "18753-4", FlexibleSigmoidoscopyStudy }, 
+      { "http://loinc.org#18753-4", FlexibleSigmoidoscopyStudy }, 
+      { "18754-2", HolterMonitorStudy }, 
+      { "http://loinc.org#18754-2", HolterMonitorStudy }, 
+      { "18755-9", DeprecatedMRIUnspecifiedSiteStudy }, 
+      { "http://loinc.org#18755-9", DeprecatedMRIUnspecifiedSiteStudy }, 
+      { "18756-7", MRSpineStudy }, 
+      { "http://loinc.org#18756-7", MRSpineStudy }, 
+      { "18757-5", DeprecatedNuclearMedicineStudy }, 
+      { "http://loinc.org#18757-5", DeprecatedNuclearMedicineStudy }, 
+      { "18758-3", DeprecatedPETScanUnspecifiedSystemStudy }, 
+      { "http://loinc.org#18758-3", DeprecatedPETScanUnspecifiedSystemStudy }, 
+      { "18759-1", SpirometryStudy }, 
+      { "http://loinc.org#18759-1", SpirometryStudy }, 
+      { "18760-9", DeprecatedUSUnspecifiedSystemStudy }, 
+      { "http://loinc.org#18760-9", DeprecatedUSUnspecifiedSystemStudy }, 
+      { "18761-7", ProviderUnspecifiedTransferSummary }, 
+      { "http://loinc.org#18761-7", ProviderUnspecifiedTransferSummary }, 
+      { "18762-5", DeprecatedChiropractorProgressNote }, 
+      { "http://loinc.org#18762-5", DeprecatedChiropractorProgressNote }, 
+      { "18763-3", PhysicianConsultingInitialEvaluationNote }, 
+      { "http://loinc.org#18763-3", PhysicianConsultingInitialEvaluationNote }, 
+      { "18764-1", DeprecatedNursePractitionerProgressNote }, 
+      { "http://loinc.org#18764-1", DeprecatedNursePractitionerProgressNote }, 
+      { "18765-8", DeprecatedPodiatryVisitNote }, 
+      { "http://loinc.org#18765-8", DeprecatedPodiatryVisitNote }, 
+      { "18766-6", DeprecatedPsychologyVisitNote }, 
+      { "http://loinc.org#18766-6", DeprecatedPsychologyVisitNote }, 
+      { "18776-5", PlanOfCare }, 
+      { "http://loinc.org#18776-5", PlanOfCare }, 
+      { "18823-5", AlcoholAndOrSubstanceAbuseServiceAttachment }, 
+      { "http://loinc.org#18823-5", AlcoholAndOrSubstanceAbuseServiceAttachment }, 
+      { "18824-3", CardiacServiceAttachment }, 
+      { "http://loinc.org#18824-3", CardiacServiceAttachment }, 
+      { "18825-0", MedicalSocialServicesAttachment }, 
+      { "http://loinc.org#18825-0", MedicalSocialServicesAttachment }, 
+      { "18826-8", OccupationalTherapyServiceAttachment }, 
+      { "http://loinc.org#18826-8", OccupationalTherapyServiceAttachment }, 
+      { "18836-7", CardiacStressStudyProcedure }, 
+      { "http://loinc.org#18836-7", CardiacStressStudyProcedure }, 
+      { "18841-7", HospitalConsultationsDocument }, 
+      { "http://loinc.org#18841-7", HospitalConsultationsDocument }, 
+      { "18842-5", DischargeSummary }, 
+      { "http://loinc.org#18842-5", DischargeSummary }, 
+      { "19002-5", PhysicalTherapyServiceAttachment }, 
+      { "http://loinc.org#19002-5", PhysicalTherapyServiceAttachment }, 
+      { "19003-3", RespiratoryTherapyServiceAttachment }, 
+      { "http://loinc.org#19003-3", RespiratoryTherapyServiceAttachment }, 
+      { "19004-1", SkilledNursingServiceAttachment }, 
+      { "http://loinc.org#19004-1", SkilledNursingServiceAttachment }, 
+      { "24531-6", RetroperitoneumUS }, 
+      { "http://loinc.org#24531-6", RetroperitoneumUS }, 
+      { "24532-4", AbdomenRUQUS }, 
+      { "http://loinc.org#24532-4", AbdomenRUQUS }, 
+      { "24533-2", AbdominalVesselsMRAngiogramWContrastIV }, 
+      { "http://loinc.org#24533-2", AbdominalVesselsMRAngiogramWContrastIV }, 
+      { "24534-0", AbdominalVesselsUSDoppler }, 
+      { "http://loinc.org#24534-0", AbdominalVesselsUSDoppler }, 
+      { "24535-7", AcetabulumXRay }, 
+      { "http://loinc.org#24535-7", AcetabulumXRay }, 
+      { "24536-5", AcromioclavicularJointXRay }, 
+      { "http://loinc.org#24536-5", AcromioclavicularJointXRay }, 
+      { "24537-3", USGuidanceForAspirationOfAmnioticFluidOfUterus }, 
+      { "http://loinc.org#24537-3", USGuidanceForAspirationOfAmnioticFluidOfUterus }, 
+      { "24538-1", AnkleMR }, 
+      { "http://loinc.org#24538-1", AnkleMR }, 
+      { "24539-9", AnkleMRWOAndWContrastIV }, 
+      { "http://loinc.org#24539-9", AnkleMRWOAndWContrastIV }, 
+      { "24540-7", AnkleXRay2Views }, 
+      { "http://loinc.org#24540-7", AnkleXRay2Views }, 
+      { "24541-5", AnkleXRay }, 
+      { "http://loinc.org#24541-5", AnkleXRay }, 
+      { "24542-3", AnusUS }, 
+      { "http://loinc.org#24542-3", AnusUS }, 
+      { "24543-1", AortaFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#24543-1", AortaFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "24544-9", ThoracicAortaCT }, 
+      { "http://loinc.org#24544-9", ThoracicAortaCT }, 
+      { "24545-6", ThoracicAortaCTWContrastIV }, 
+      { "http://loinc.org#24545-6", ThoracicAortaCTWContrastIV }, 
+      { "24546-4", AortaArchAndNeckFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24546-4", AortaArchAndNeckFluoroscopicAngiogramWContrastIA }, 
+      { "24547-2", AortaUS }, 
+      { "http://loinc.org#24547-2", AortaUS }, 
+      { "24548-0", AppendixUS }, 
+      { "http://loinc.org#24548-0", AppendixUS }, 
+      { "24549-8", UpperExtremityVesselsMRAngiogramWContrastIV }, 
+      { "http://loinc.org#24549-8", UpperExtremityVesselsMRAngiogramWContrastIV }, 
+      { "24550-6", UpperExtremityVeinsFluoroscopicAngiogramWContrastIV }, 
+      { "http://loinc.org#24550-6", UpperExtremityVeinsFluoroscopicAngiogramWContrastIV }, 
+      { "24551-4", AVFistulaFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24551-4", AVFistulaFluoroscopicAngiogramWContrastIA }, 
+      { "24552-2", StentFluoroscopyWContrastIntraStent }, 
+      { "http://loinc.org#24552-2", StentFluoroscopyWContrastIntraStent }, 
+      { "24553-0", VesselIntracranialFluoroscopicAngiogramEmbolectomyWContrastIV }, 
+      { "http://loinc.org#24553-0", VesselIntracranialFluoroscopicAngiogramEmbolectomyWContrastIV }, 
+      { "24554-8", ArteryFluoroscopicAngiogramEmbolizationWContrastIA }, 
+      { "http://loinc.org#24554-8", ArteryFluoroscopicAngiogramEmbolizationWContrastIA }, 
+      { "24555-5", FluoroscopicAngiogramGuidanceForPlacementOfStentInArtery }, 
+      { "http://loinc.org#24555-5", FluoroscopicAngiogramGuidanceForPlacementOfStentInArtery }, 
+      { "24556-3", AbdomenMR }, 
+      { "http://loinc.org#24556-3", AbdomenMR }, 
+      { "24557-1", AbdomenMRWOAndWContrastIV }, 
+      { "http://loinc.org#24557-1", AbdomenMRWOAndWContrastIV }, 
+      { "24558-9", AbdomenUS }, 
+      { "http://loinc.org#24558-9", AbdomenUS }, 
+      { "24559-7", USGuidanceForDrainageOfAbdomen }, 
+      { "http://loinc.org#24559-7", USGuidanceForDrainageOfAbdomen }, 
+      { "24560-5", AbdomenXRayAPLeftLateralDecubitusPortable }, 
+      { "http://loinc.org#24560-5", AbdomenXRayAPLeftLateralDecubitusPortable }, 
+      { "24561-3", AbdomenXRayAPLeftLateralDecubitus }, 
+      { "http://loinc.org#24561-3", AbdomenXRayAPLeftLateralDecubitus }, 
+      { "24562-1", AbdomenXRayAPLeftLateralDecubitusAndRightLateralDecubitus }, 
+      { "http://loinc.org#24562-1", AbdomenXRayAPLeftLateralDecubitusAndRightLateralDecubitus }, 
+      { "24563-9", AbdomenXRayAPRightLateralDecubitus }, 
+      { "http://loinc.org#24563-9", AbdomenXRayAPRightLateralDecubitus }, 
+      { "24564-7", AbdomenXRayAPUprightPortable }, 
+      { "http://loinc.org#24564-7", AbdomenXRayAPUprightPortable }, 
+      { "24566-2", RetroperitoneumCT }, 
+      { "http://loinc.org#24566-2", RetroperitoneumCT }, 
+      { "24567-0", DeprecatedAbdomenGreaterThanRetroperitoneumCTWContrast }, 
+      { "http://loinc.org#24567-0", DeprecatedAbdomenGreaterThanRetroperitoneumCTWContrast }, 
+      { "24568-8", AVFistulaFluoroscopicAngiogramAtherectomyWContrastIV }, 
+      { "http://loinc.org#24568-8", AVFistulaFluoroscopicAngiogramAtherectomyWContrastIV }, 
+      { "24569-6", AVShuntFluoroscopicAngiogramWContrastIV }, 
+      { "http://loinc.org#24569-6", AVShuntFluoroscopicAngiogramWContrastIV }, 
+      { "24570-4", FluoroscopyGuidanceForStoneRemovalOfBiliaryDuctCommonWContrastIntraBiliaryDuct }, 
+      { "http://loinc.org#24570-4", FluoroscopyGuidanceForStoneRemovalOfBiliaryDuctCommonWContrastIntraBiliaryDuct }, 
+      { "24571-2", BiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresAndEjectionFractionWSincalideAndWRadionuclideIV }, 
+      { "http://loinc.org#24571-2", BiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresAndEjectionFractionWSincalideAndWRadionuclideIV }, 
+      { "24572-0", BiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresWTc99mIV }, 
+      { "http://loinc.org#24572-0", BiliaryDuctsAndGallbladderNMForPatencyOfBiliaryStructuresWTc99mIV }, 
+      { "24573-8", BiliaryDuctsAndGallbladderXRayWContrastIV }, 
+      { "http://loinc.org#24573-8", BiliaryDuctsAndGallbladderXRayWContrastIV }, 
+      { "24574-6", BiliaryDuctsAndGallbladderFluoroscopyDuringSurgeryWContrastBiliaryDuct }, 
+      { "http://loinc.org#24574-6", BiliaryDuctsAndGallbladderFluoroscopyDuringSurgeryWContrastBiliaryDuct }, 
+      { "24575-3", BiliaryDuctsAndGallbladderFluoroscopyWContrastPercutaneousTranshepatic }, 
+      { "http://loinc.org#24575-3", BiliaryDuctsAndGallbladderFluoroscopyWContrastPercutaneousTranshepatic }, 
+      { "24576-1", UrinaryBladderArteriesFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24576-1", UrinaryBladderArteriesFluoroscopicAngiogramWContrastIA }, 
+      { "24577-9", BoneXRayDuringSurgery }, 
+      { "http://loinc.org#24577-9", BoneXRayDuringSurgery }, 
+      { "24578-7", BonesSPECT }, 
+      { "http://loinc.org#24578-7", BonesSPECT }, 
+      { "24579-5", LongBonesXRaySurvey }, 
+      { "http://loinc.org#24579-5", LongBonesXRaySurvey }, 
+      { "24580-3", BrachiocephalicArteryFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#24580-3", BrachiocephalicArteryFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "24581-1", BrachialArteryAndSubclavianArteryFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24581-1", BrachialArteryAndSubclavianArteryFluoroscopicAngiogramWContrastIA }, 
+      { "24582-9", BrachialPlexusMR }, 
+      { "http://loinc.org#24582-9", BrachialPlexusMR }, 
+      { "24583-7", BrachialPlexusMRWOAndWContrastIV }, 
+      { "http://loinc.org#24583-7", BrachialPlexusMRWOAndWContrastIV }, 
+      { "24584-5", ThoracicInletVesselsMRAngiogramWContrastIV }, 
+      { "http://loinc.org#24584-5", ThoracicInletVesselsMRAngiogramWContrastIV }, 
+      { "24585-2", CTGuidanceForStereotacticBiopsyOfHeadWContrastIV }, 
+      { "http://loinc.org#24585-2", CTGuidanceForStereotacticBiopsyOfHeadWContrastIV }, 
+      { "24586-0", BrainMRWAnesthesia }, 
+      { "http://loinc.org#24586-0", BrainMRWAnesthesia }, 
+      { "24587-8", BrainMRWOAndWContrastIV }, 
+      { "http://loinc.org#24587-8", BrainMRWOAndWContrastIV }, 
+      { "24588-6", BrainMRWOAndWContrastIVAndWAnesthesia }, 
+      { "http://loinc.org#24588-6", BrainMRWOAndWContrastIVAndWAnesthesia }, 
+      { "24589-4", BrainMRWContrastIV }, 
+      { "http://loinc.org#24589-4", BrainMRWContrastIV }, 
+      { "24590-2", BrainMR }, 
+      { "http://loinc.org#24590-2", BrainMR }, 
+      { "24591-0", BrainNMBrainDeathProtocolWTc99mHMPAOIV }, 
+      { "http://loinc.org#24591-0", BrainNMBrainDeathProtocolWTc99mHMPAOIV }, 
+      { "24593-6", HeadVesselsMRAngiogramWContrastIV }, 
+      { "http://loinc.org#24593-6", HeadVesselsMRAngiogramWContrastIV }, 
+      { "24594-4", MammogramGuidanceForAspirationOfCystOfBreast }, 
+      { "http://loinc.org#24594-4", MammogramGuidanceForAspirationOfCystOfBreast }, 
+      { "24595-1", MammogramGuidanceForNeedleLocalizationOfMassOfBreast }, 
+      { "http://loinc.org#24595-1", MammogramGuidanceForNeedleLocalizationOfMassOfBreast }, 
+      { "24596-9", BreastSpecimenUS }, 
+      { "http://loinc.org#24596-9", BreastSpecimenUS }, 
+      { "24597-7", BreastSpecimenMammogram }, 
+      { "http://loinc.org#24597-7", BreastSpecimenMammogram }, 
+      { "24598-5", MammogramGuidanceForAspirationOfBreast }, 
+      { "http://loinc.org#24598-5", MammogramGuidanceForAspirationOfBreast }, 
+      { "24599-3", BreastUSLimited }, 
+      { "http://loinc.org#24599-3", BreastUSLimited }, 
+      { "24600-9", USGuidanceForNeedleLocalizationOfBreast }, 
+      { "http://loinc.org#24600-9", USGuidanceForNeedleLocalizationOfBreast }, 
+      { "24601-7", BreastUS }, 
+      { "http://loinc.org#24601-7", BreastUS }, 
+      { "24602-5", MammogramGuidanceForBiopsyOfBreast }, 
+      { "http://loinc.org#24602-5", MammogramGuidanceForBiopsyOfBreast }, 
+      { "24603-3", MammogramGuidanceForStereotacticBiopsyOfBreast }, 
+      { "http://loinc.org#24603-3", MammogramGuidanceForStereotacticBiopsyOfBreast }, 
+      { "24604-1", BreastMammogramDiagnosticLimited }, 
+      { "http://loinc.org#24604-1", BreastMammogramDiagnosticLimited }, 
+      { "24605-8", BreastMammogramDiagnostic }, 
+      { "http://loinc.org#24605-8", BreastMammogramDiagnostic }, 
+      { "24606-6", BreastMammogramScreening }, 
+      { "http://loinc.org#24606-6", BreastMammogramScreening }, 
+      { "24609-0", MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreast }, 
+      { "http://loinc.org#24609-0", MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreast }, 
+      { "24610-8", BreastMammogramLimited }, 
+      { "http://loinc.org#24610-8", BreastMammogramLimited }, 
+      { "24611-6", OutpatientConsultation2ndOpinion }, 
+      { "http://loinc.org#24611-6", OutpatientConsultation2ndOpinion }, 
+      { "24612-4", DeprecatedCalcaneusXRay }, 
+      { "http://loinc.org#24612-4", DeprecatedCalcaneusXRay }, 
+      { "24613-2", FluoroscopicAngiogramGuidanceForPlacementOfCatheterInArteryInCentralCardiovascularArtery }, 
+      { "http://loinc.org#24613-2", FluoroscopicAngiogramGuidanceForPlacementOfCatheterInArteryInCentralCardiovascularArtery }, 
+      { "24614-0", CarotidArteryExtracranialFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#24614-0", CarotidArteryExtracranialFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "24615-7", CarotidArteryIntracranialFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#24615-7", CarotidArteryIntracranialFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "24616-5", CarotidArteriesUS }, 
+      { "http://loinc.org#24616-5", CarotidArteriesUS }, 
+      { "24617-3", CarotidArteryFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24617-3", CarotidArteryFluoroscopicAngiogramWContrastIA }, 
+      { "24619-9", WristXRay }, 
+      { "http://loinc.org#24619-9", WristXRay }, 
+      { "24620-7", CatheterFluoroscopyPatencyCheckWContrastViaCatheter }, 
+      { "http://loinc.org#24620-7", CatheterFluoroscopyPatencyCheckWContrastViaCatheter }, 
+      { "24621-5", FluoroscopyGuidanceForPercutaneousDrainageOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#24621-5", FluoroscopyGuidanceForPercutaneousDrainageOfUnspecifiedBodyRegion }, 
+      { "24622-3", CeliacArteryFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24622-3", CeliacArteryFluoroscopicAngiogramWContrastIA }, 
+      { "24623-1", CTGuidanceForNerveBlockOfCeliacPlexus }, 
+      { "http://loinc.org#24623-1", CTGuidanceForNerveBlockOfCeliacPlexus }, 
+      { "24624-9", FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinWContrastIV }, 
+      { "http://loinc.org#24624-9", FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinWContrastIV }, 
+      { "24625-6", FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinWContrastIV }, 
+      { "http://loinc.org#24625-6", FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinWContrastIV }, 
+      { "24626-4", FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinWContrastIV }, 
+      { "http://loinc.org#24626-4", FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinWContrastIV }, 
+      { "24627-2", ChestCT }, 
+      { "http://loinc.org#24627-2", ChestCT }, 
+      { "24628-0", ChestCTWContrastIV }, 
+      { "http://loinc.org#24628-0", ChestCTWContrastIV }, 
+      { "24629-8", ChestMR }, 
+      { "http://loinc.org#24629-8", ChestMR }, 
+      { "24630-6", ChestUS }, 
+      { "http://loinc.org#24630-6", ChestUS }, 
+      { "24631-4", UnspecifiedBodyRegionFluoroscopyCentralVeinCatheterPlacementCheck }, 
+      { "http://loinc.org#24631-4", UnspecifiedBodyRegionFluoroscopyCentralVeinCatheterPlacementCheck }, 
+      { "24632-2", ChestXRayAPPortable }, 
+      { "http://loinc.org#24632-2", ChestXRayAPPortable }, 
+      { "24634-8", ChestXRayPortableWInspirationAndExpiration }, 
+      { "http://loinc.org#24634-8", ChestXRayPortableWInspirationAndExpiration }, 
+      { "24635-5", ChestXRayPAUprightWInspirationAndExpiration }, 
+      { "http://loinc.org#24635-5", ChestXRayPAUprightWInspirationAndExpiration }, 
+      { "24636-3", ChestXRayAPLeftLateralDecubitusPortable }, 
+      { "http://loinc.org#24636-3", ChestXRayAPLeftLateralDecubitusPortable }, 
+      { "24637-1", ChestXRayAPLeftLateralDecubitus }, 
+      { "http://loinc.org#24637-1", ChestXRayAPLeftLateralDecubitus }, 
+      { "24638-9", ChestXRayLeftLateralUprightPortable }, 
+      { "http://loinc.org#24638-9", ChestXRayLeftLateralUprightPortable }, 
+      { "24639-7", ChestXRayLeftLateralUpright }, 
+      { "http://loinc.org#24639-7", ChestXRayLeftLateralUpright }, 
+      { "24640-5", ChestXRayLordotic }, 
+      { "http://loinc.org#24640-5", ChestXRayLordotic }, 
+      { "24641-3", ChestXRayLeftObliquePortable }, 
+      { "http://loinc.org#24641-3", ChestXRayLeftObliquePortable }, 
+      { "24642-1", ChestXRayAPAndPAUpright }, 
+      { "http://loinc.org#24642-1", ChestXRayAPAndPAUpright }, 
+      { "24643-9", ChestXRayPAAndLateralAndRightOrLeftObliqueUpright }, 
+      { "http://loinc.org#24643-9", ChestXRayPAAndLateralAndRightOrLeftObliqueUpright }, 
+      { "24644-7", ChestXRayPAAndLateralUprightPortable }, 
+      { "http://loinc.org#24644-7", ChestXRayPAAndLateralUprightPortable }, 
+      { "24645-4", ChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUprightPortable }, 
+      { "http://loinc.org#24645-4", ChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUprightPortable }, 
+      { "24646-2", ChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUpright }, 
+      { "http://loinc.org#24646-2", ChestXRayPAAndRightLateralAndRightObliqueAndLeftObliqueUpright }, 
+      { "24647-0", ChestXRayPAAndLateralUpright }, 
+      { "http://loinc.org#24647-0", ChestXRayPAAndLateralUpright }, 
+      { "24648-8", ChestXRayPAUpright }, 
+      { "http://loinc.org#24648-8", ChestXRayPAUpright }, 
+      { "24649-6", ChestXRayAPRightLateralDecubitusAndLeftLateralDecubitusPortable }, 
+      { "http://loinc.org#24649-6", ChestXRayAPRightLateralDecubitusAndLeftLateralDecubitusPortable }, 
+      { "24650-4", ChestXRayAPRightLateralDecubitusAndLeftLateralDecubitus }, 
+      { "http://loinc.org#24650-4", ChestXRayAPRightLateralDecubitusAndLeftLateralDecubitus }, 
+      { "24651-2", ChestXRayRightObliqueAndLeftObliqueUpright }, 
+      { "http://loinc.org#24651-2", ChestXRayRightObliqueAndLeftObliqueUpright }, 
+      { "24652-0", ChestXRayAPRightLateralDecubitusPortable }, 
+      { "http://loinc.org#24652-0", ChestXRayAPRightLateralDecubitusPortable }, 
+      { "24653-8", ChestXRayAPAndAPRightLateralDecubitus }, 
+      { "http://loinc.org#24653-8", ChestXRayAPAndAPRightLateralDecubitus }, 
+      { "24654-6", ChestXRayAPAndAPRightLateralDecubitusPortable }, 
+      { "http://loinc.org#24654-6", ChestXRayAPAndAPRightLateralDecubitusPortable }, 
+      { "24655-3", ChestFluoroscopyImageIntensifierDuringSurgery }, 
+      { "http://loinc.org#24655-3", ChestFluoroscopyImageIntensifierDuringSurgery }, 
+      { "24656-1", ChestFluoroscopyDuringSurgery }, 
+      { "http://loinc.org#24656-1", ChestFluoroscopyDuringSurgery }, 
+      { "24657-9", ChestXRayTomograph }, 
+      { "http://loinc.org#24657-9", ChestXRayTomograph }, 
+      { "24658-7", AortaFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24658-7", AortaFluoroscopicAngiogramWContrastIA }, 
+      { "24659-5", ChestVesselsMRAngiogramWContrastIV }, 
+      { "http://loinc.org#24659-5", ChestVesselsMRAngiogramWContrastIV }, 
+      { "24660-3", ThoracicAortaMRAngiogram }, 
+      { "http://loinc.org#24660-3", ThoracicAortaMRAngiogram }, 
+      { "24661-1", PleuralSpaceFluoroscopyWContrastIntraPleuralSpace }, 
+      { "http://loinc.org#24661-1", PleuralSpaceFluoroscopyWContrastIntraPleuralSpace }, 
+      { "24662-9", USGuidanceForAspirationOfPleuralSpace }, 
+      { "http://loinc.org#24662-9", USGuidanceForAspirationOfPleuralSpace }, 
+      { "24663-7", CerebralCisternsNMWRadionuclideIT }, 
+      { "http://loinc.org#24663-7", CerebralCisternsNMWRadionuclideIT }, 
+      { "24664-5", ClavicleXRay }, 
+      { "http://loinc.org#24664-5", ClavicleXRay }, 
+      { "24665-2", SacrumAndCoccyxXRay }, 
+      { "http://loinc.org#24665-2", SacrumAndCoccyxXRay }, 
+      { "24666-0", ColonFluoroscopyWAirAndBariumContrastPR }, 
+      { "http://loinc.org#24666-0", ColonFluoroscopyWAirAndBariumContrastPR }, 
+      { "24667-8", ColonFluoroscopyWContrastPR }, 
+      { "http://loinc.org#24667-8", ColonFluoroscopyWContrastPR }, 
+      { "24668-6", ColonFluoroscopyTransitPostSolidContrast }, 
+      { "http://loinc.org#24668-6", ColonFluoroscopyTransitPostSolidContrast }, 
+      { "24669-4", ColonFluoroscopyWWaterSolubleContrastPR }, 
+      { "http://loinc.org#24669-4", ColonFluoroscopyWWaterSolubleContrastPR }, 
+      { "24670-2", USGuidanceForBiopsyOfCystOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#24670-2", USGuidanceForBiopsyOfCystOfUnspecifiedBodyRegion }, 
+      { "24671-0", FluoroscopyGuidanceForAspirationOfCystOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#24671-0", FluoroscopyGuidanceForAspirationOfCystOfUnspecifiedBodyRegion }, 
+      { "24672-8", DiaphragmUSForMotion }, 
+      { "http://loinc.org#24672-8", DiaphragmUSForMotion }, 
+      { "24673-6", DuodenumFluoroscopyWContrastPOAndHypotonicAgentPerNg }, 
+      { "http://loinc.org#24673-6", DuodenumFluoroscopyWContrastPOAndHypotonicAgentPerNg }, 
+      { "24674-4", ElbowMR }, 
+      { "http://loinc.org#24674-4", ElbowMR }, 
+      { "24675-1", ElbowMRWOAndWContrastIV }, 
+      { "http://loinc.org#24675-1", ElbowMRWOAndWContrastIV }, 
+      { "24676-9", ElbowXRay }, 
+      { "http://loinc.org#24676-9", ElbowXRay }, 
+      { "24677-7", PelvisUSTransvaginal }, 
+      { "http://loinc.org#24677-7", PelvisUSTransvaginal }, 
+      { "24678-5", EsophagusFluoroscopyWContrastPO }, 
+      { "http://loinc.org#24678-5", EsophagusFluoroscopyWContrastPO }, 
+      { "24679-3", EsophagusFluoroscopyWGastrografinPO }, 
+      { "http://loinc.org#24679-3", EsophagusFluoroscopyWGastrografinPO }, 
+      { "24680-1", FluoroscopyGuidanceForDilationOfEsophagus }, 
+      { "http://loinc.org#24680-1", FluoroscopyGuidanceForDilationOfEsophagus }, 
+      { "24681-9", EsophagusAndHypopharynxFluoroscopyVideoWContrastPODuringSwallowing }, 
+      { "http://loinc.org#24681-9", EsophagusAndHypopharynxFluoroscopyVideoWContrastPODuringSwallowing }, 
+      { "24682-7", EsophagusAndHypopharynxFluoroscopyVideoWLiquidAndPasteContrastPODuringSwallowing }, 
+      { "http://loinc.org#24682-7", EsophagusAndHypopharynxFluoroscopyVideoWLiquidAndPasteContrastPODuringSwallowing }, 
+      { "24683-5", EsophagusPlusStomachNMWTc99mSCPO }, 
+      { "http://loinc.org#24683-5", EsophagusPlusStomachNMWTc99mSCPO }, 
+      { "24684-3", ExtracranialVesselsFluoroscopicAngiogramEmbolectomyWContrastIA }, 
+      { "http://loinc.org#24684-3", ExtracranialVesselsFluoroscopicAngiogramEmbolectomyWContrastIA }, 
+      { "24685-0", PeripheralVeinsFluoroscopicAngiogramWContrastIV }, 
+      { "http://loinc.org#24685-0", PeripheralVeinsFluoroscopicAngiogramWContrastIV }, 
+      { "24686-8", LowerExtremityXRay }, 
+      { "http://loinc.org#24686-8", LowerExtremityXRay }, 
+      { "24687-6", LowerExtremityJointMR }, 
+      { "http://loinc.org#24687-6", LowerExtremityJointMR }, 
+      { "24688-4", UpperExtremityMR }, 
+      { "http://loinc.org#24688-4", UpperExtremityMR }, 
+      { "24689-2", UpperExtremityXRay }, 
+      { "http://loinc.org#24689-2", UpperExtremityXRay }, 
+      { "24690-0", ExtremityCT }, 
+      { "http://loinc.org#24690-0", ExtremityCT }, 
+      { "24691-8", ExtremityCTWContrastIV }, 
+      { "http://loinc.org#24691-8", ExtremityCTWContrastIV }, 
+      { "24692-6", USGuidanceForDrainageOfExtremity }, 
+      { "http://loinc.org#24692-6", USGuidanceForDrainageOfExtremity }, 
+      { "24693-4", ExtremityUS }, 
+      { "http://loinc.org#24693-4", ExtremityUS }, 
+      { "24694-2", FaceMRWOAndWContrastIV }, 
+      { "http://loinc.org#24694-2", FaceMRWOAndWContrastIV }, 
+      { "24695-9", FacialBonesXRay }, 
+      { "http://loinc.org#24695-9", FacialBonesXRay }, 
+      { "24696-7", FacialBonesCT }, 
+      { "http://loinc.org#24696-7", FacialBonesCT }, 
+      { "24697-5", FacialBonesCTWContrastIV }, 
+      { "http://loinc.org#24697-5", FacialBonesCTWContrastIV }, 
+      { "24698-3", FemoralArteryFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#24698-3", FemoralArteryFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "24699-1", FemoralArteryFluoroscopicAngiogramRunoffWContrastIA }, 
+      { "http://loinc.org#24699-1", FemoralArteryFluoroscopicAngiogramRunoffWContrastIA }, 
+      { "24700-7", FemurAndTibiaXRayForLegLength }, 
+      { "http://loinc.org#24700-7", FemurAndTibiaXRayForLegLength }, 
+      { "24702-3", ThighMR }, 
+      { "http://loinc.org#24702-3", ThighMR }, 
+      { "24703-1", ThighMRWOAndWContrastIV }, 
+      { "http://loinc.org#24703-1", ThighMRWOAndWContrastIV }, 
+      { "24704-9", FemurXRay }, 
+      { "http://loinc.org#24704-9", FemurXRay }, 
+      { "24705-6", FingerMR }, 
+      { "http://loinc.org#24705-6", FingerMR }, 
+      { "24706-4", FingerXRay }, 
+      { "http://loinc.org#24706-4", FingerXRay }, 
+      { "24707-2", FootMR }, 
+      { "http://loinc.org#24707-2", FootMR }, 
+      { "24708-0", FootXRayStanding }, 
+      { "http://loinc.org#24708-0", FootXRayStanding }, 
+      { "24709-8", FootXRay }, 
+      { "http://loinc.org#24709-8", FootXRay }, 
+      { "24710-6", ForearmMR }, 
+      { "http://loinc.org#24710-6", ForearmMR }, 
+      { "24711-4", GallbladderUS }, 
+      { "http://loinc.org#24711-4", GallbladderUS }, 
+      { "24712-2", GallbladderXRayWContrastPO }, 
+      { "http://loinc.org#24712-2", GallbladderXRayWContrastPO }, 
+      { "24713-0", GallbladderXRay48HoursPostContrastPO }, 
+      { "http://loinc.org#24713-0", GallbladderXRay48HoursPostContrastPO }, 
+      { "24714-8", GastrointestinalTractNMForGastrointestinalBleedingWTc99mTaggedRBCIV }, 
+      { "http://loinc.org#24714-8", GastrointestinalTractNMForGastrointestinalBleedingWTc99mTaggedRBCIV }, 
+      { "24715-5", GastrointestinalTractUpperFluoroscopySingleViewWContrastPO }, 
+      { "http://loinc.org#24715-5", GastrointestinalTractUpperFluoroscopySingleViewWContrastPO }, 
+      { "24716-3", FluoroscopyGuidanceForPlacementOfDecompressionTubeInGastrointestinalTract }, 
+      { "http://loinc.org#24716-3", FluoroscopyGuidanceForPlacementOfDecompressionTubeInGastrointestinalTract }, 
+      { "24717-1", IlealConduitXRayLoopogram }, 
+      { "http://loinc.org#24717-1", IlealConduitXRayLoopogram }, 
+      { "24718-9", FluoroscopyGuidanceForTransjugularBiopsyOfLiverWContrastIV }, 
+      { "http://loinc.org#24718-9", FluoroscopyGuidanceForTransjugularBiopsyOfLiverWContrastIV }, 
+      { "24719-7", GroinUS }, 
+      { "http://loinc.org#24719-7", GroinUS }, 
+      { "24720-5", HandMR }, 
+      { "http://loinc.org#24720-5", HandMR }, 
+      { "24721-3", HandXRay2Views }, 
+      { "http://loinc.org#24721-3", HandXRay2Views }, 
+      { "24722-1", HandXRay3Views }, 
+      { "http://loinc.org#24722-1", HandXRay3Views }, 
+      { "24723-9", HandXRayArthritis }, 
+      { "http://loinc.org#24723-9", HandXRayArthritis }, 
+      { "24724-7", WristAndHandXRayBoneAge }, 
+      { "http://loinc.org#24724-7", WristAndHandXRayBoneAge }, 
+      { "24725-4", HeadCT }, 
+      { "http://loinc.org#24725-4", HeadCT }, 
+      { "24726-2", HeadCTWOAndWContrastIV }, 
+      { "http://loinc.org#24726-2", HeadCTWOAndWContrastIV }, 
+      { "24727-0", HeadCTWContrastIV }, 
+      { "http://loinc.org#24727-0", HeadCTWContrastIV }, 
+      { "24728-8", HeadCTPerfusion }, 
+      { "http://loinc.org#24728-8", HeadCTPerfusion }, 
+      { "24729-6", HeadCTPerfusionWOAndWContrastIV }, 
+      { "http://loinc.org#24729-6", HeadCTPerfusionWOAndWContrastIV }, 
+      { "24730-4", BrainNM }, 
+      { "http://loinc.org#24730-4", BrainNM }, 
+      { "24731-2", HeadUS }, 
+      { "http://loinc.org#24731-2", HeadUS }, 
+      { "24732-0", HeadUSDuringSurgery }, 
+      { "http://loinc.org#24732-0", HeadUSDuringSurgery }, 
+      { "24733-8", HeadVesselsUSDoppler }, 
+      { "http://loinc.org#24733-8", HeadVesselsUSDoppler }, 
+      { "24734-6", CerebralCisternsCTWContrastIT }, 
+      { "http://loinc.org#24734-6", CerebralCisternsCTWContrastIT }, 
+      { "24735-3", InternalAuditoryCanalAndPosteriorFossaMR }, 
+      { "http://loinc.org#24735-3", InternalAuditoryCanalAndPosteriorFossaMR }, 
+      { "24740-3", InternalAuditoryCanalAndPosteriorFossaMRWOAndWContrastIV }, 
+      { "http://loinc.org#24740-3", InternalAuditoryCanalAndPosteriorFossaMRWOAndWContrastIV }, 
+      { "24745-2", PetrousBoneXRay }, 
+      { "http://loinc.org#24745-2", PetrousBoneXRay }, 
+      { "24746-0", DeprecatedHeadSagittalSinusMR }, 
+      { "http://loinc.org#24746-0", DeprecatedHeadSagittalSinusMR }, 
+      { "24747-8", DeprecatedHeadSagittalSinusMRAngiogramWContrastIV }, 
+      { "http://loinc.org#24747-8", DeprecatedHeadSagittalSinusMRAngiogramWContrastIV }, 
+      { "24748-6", HeartMR }, 
+      { "http://loinc.org#24748-6", HeartMR }, 
+      { "24750-2", HeartNMAtRestAndWTl201IV }, 
+      { "http://loinc.org#24750-2", HeartNMAtRestAndWTl201IV }, 
+      { "24751-0", ParathyroidGlandNMWTI201SubtractionTc99mIV }, 
+      { "http://loinc.org#24751-0", ParathyroidGlandNMWTI201SubtractionTc99mIV }, 
+      { "24752-8", HeartFluoroscopyVideo }, 
+      { "http://loinc.org#24752-8", HeartFluoroscopyVideo }, 
+      { "24753-6", UnspecifiedBodyRegionCTWContrastIV }, 
+      { "http://loinc.org#24753-6", UnspecifiedBodyRegionCTWContrastIV }, 
+      { "24754-4", AdministrationOfVasodilatorIntoCatheterOfVein }, 
+      { "http://loinc.org#24754-4", AdministrationOfVasodilatorIntoCatheterOfVein }, 
+      { "24755-1", FluoroscopicAngiogramGuidanceForAtherectomyOfVeinWContrastIV }, 
+      { "http://loinc.org#24755-1", FluoroscopicAngiogramGuidanceForAtherectomyOfVeinWContrastIV }, 
+      { "24756-9", FluoroscopicAngiogramGuidanceForPlacementOfStentInVein }, 
+      { "http://loinc.org#24756-9", FluoroscopicAngiogramGuidanceForPlacementOfStentInVein }, 
+      { "24757-7", DeprecatedCoronaryArteriesCTFast }, 
+      { "http://loinc.org#24757-7", DeprecatedCoronaryArteriesCTFast }, 
+      { "24760-1", HipUS }, 
+      { "http://loinc.org#24760-1", HipUS }, 
+      { "24761-9", HipXRaySingleView }, 
+      { "http://loinc.org#24761-9", HipXRaySingleView }, 
+      { "24762-7", HipXRay }, 
+      { "http://loinc.org#24762-7", HipXRay }, 
+      { "24764-3", HipFluoroscopyArthrogram }, 
+      { "http://loinc.org#24764-3", HipFluoroscopyArthrogram }, 
+      { "24765-0", HumerusXRay2Views }, 
+      { "http://loinc.org#24765-0", HumerusXRay2Views }, 
+      { "24766-8", IliacArteryFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#24766-8", IliacArteryFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "24767-6", InternalAuditoryCanalXRayTomograph }, 
+      { "http://loinc.org#24767-6", InternalAuditoryCanalXRayTomograph }, 
+      { "24769-2", CTGuidanceForInjectionOfJointSpace }, 
+      { "http://loinc.org#24769-2", CTGuidanceForInjectionOfJointSpace }, 
+      { "24770-0", JointNMWIn111Intrajoint }, 
+      { "http://loinc.org#24770-0", JointNMWIn111Intrajoint }, 
+      { "24771-8", FluoroscopyGuidanceForAspirationOfJointSpace }, 
+      { "http://loinc.org#24771-8", FluoroscopyGuidanceForAspirationOfJointSpace }, 
+      { "24772-6", USGuidanceForBiopsyOfKidney }, 
+      { "http://loinc.org#24772-6", USGuidanceForBiopsyOfKidney }, 
+      { "24773-4", KidneyNMWRadionuclideTransplantScan }, 
+      { "http://loinc.org#24773-4", KidneyNMWRadionuclideTransplantScan }, 
+      { "24776-7", KidneyNM }, 
+      { "http://loinc.org#24776-7", KidneyNM }, 
+      { "24778-3", KidneyBilateralXRay3ViewsSerialWOAndWContrastIV }, 
+      { "http://loinc.org#24778-3", KidneyBilateralXRay3ViewsSerialWOAndWContrastIV }, 
+      { "24779-1", FluoroscopyGuidanceForPlacementOfPercutaneousNephrostomyInKidneyBilateralWContrastViaTube }, 
+      { "http://loinc.org#24779-1", FluoroscopyGuidanceForPlacementOfPercutaneousNephrostomyInKidneyBilateralWContrastViaTube }, 
+      { "24780-9", KidneyBilateralFluoroscopyWContrastViaNephrostomyTube }, 
+      { "http://loinc.org#24780-9", KidneyBilateralFluoroscopyWContrastViaNephrostomyTube }, 
+      { "24781-7", FluoroscopyGuidanceForExchangeOfPercutaneousNephrostomyTubeOfKidneyBilateralWContrast }, 
+      { "http://loinc.org#24781-7", FluoroscopyGuidanceForExchangeOfPercutaneousNephrostomyTubeOfKidneyBilateralWContrast }, 
+      { "24782-5", FluoroscopyGuidanceForPlacementOfPercutaneousNephroureteralStentInKidneyBilateralWContrastViaStent }, 
+      { "http://loinc.org#24782-5", FluoroscopyGuidanceForPlacementOfPercutaneousNephroureteralStentInKidneyBilateralWContrastViaStent }, 
+      { "24783-3", KidneyBilateralFluoroscopyUrodynamics }, 
+      { "http://loinc.org#24783-3", KidneyBilateralFluoroscopyUrodynamics }, 
+      { "24784-1", KidneyBilateralXRayTomographWOAndWContrastIV }, 
+      { "http://loinc.org#24784-1", KidneyBilateralXRayTomographWOAndWContrastIV }, 
+      { "24787-4", KidneyBilateralXRayTomographWOContrastAnd10MPostContrastIV }, 
+      { "http://loinc.org#24787-4", KidneyBilateralXRayTomographWOContrastAnd10MPostContrastIV }, 
+      { "24788-2", KidneyBilateralXRayWContrastIV }, 
+      { "http://loinc.org#24788-2", KidneyBilateralXRayWContrastIV }, 
+      { "24789-0", KidneyBilateralXRayTomograph }, 
+      { "http://loinc.org#24789-0", KidneyBilateralXRayTomograph }, 
+      { "24790-8", KidneyBilateralXRayTomographWContrastIV }, 
+      { "http://loinc.org#24790-8", KidneyBilateralXRayTomographWContrastIV }, 
+      { "24792-4", AbdomenXRayAPAndAPLeftLateralDecubitusPortable }, 
+      { "http://loinc.org#24792-4", AbdomenXRayAPAndAPLeftLateralDecubitusPortable }, 
+      { "24793-2", AbdomenXRayAPAndLateralPortable }, 
+      { "http://loinc.org#24793-2", AbdomenXRayAPAndLateralPortable }, 
+      { "24794-0", AbdomenXRayAPAndLateral }, 
+      { "http://loinc.org#24794-0", AbdomenXRayAPAndLateral }, 
+      { "24795-7", AbdomenXRayAPSupineAndUprightPortable }, 
+      { "http://loinc.org#24795-7", AbdomenXRayAPSupineAndUprightPortable }, 
+      { "24796-5", AbdomenXRayAPAndAPLeftLateralDecubitus }, 
+      { "http://loinc.org#24796-5", AbdomenXRayAPAndAPLeftLateralDecubitus }, 
+      { "24797-3", AbdomenXRayAPAndObliqueProne }, 
+      { "http://loinc.org#24797-3", AbdomenXRayAPAndObliqueProne }, 
+      { "24798-1", AbdomenXRayAPSupineAndUpright }, 
+      { "http://loinc.org#24798-1", AbdomenXRayAPSupineAndUpright }, 
+      { "24799-9", AbdomenXRayAPSingleView }, 
+      { "http://loinc.org#24799-9", AbdomenXRayAPSingleView }, 
+      { "24800-5", KneeFluoroscopyArthrogram }, 
+      { "http://loinc.org#24800-5", KneeFluoroscopyArthrogram }, 
+      { "24801-3", KneeXRayMerchants }, 
+      { "http://loinc.org#24801-3", KneeXRayMerchants }, 
+      { "24802-1", KneeMR }, 
+      { "http://loinc.org#24802-1", KneeMR }, 
+      { "24803-9", KneeMRWOAndWContrastIV }, 
+      { "http://loinc.org#24803-9", KneeMRWOAndWContrastIV }, 
+      { "24804-7", KneeNM }, 
+      { "http://loinc.org#24804-7", KneeNM }, 
+      { "24805-4", KneeXRayAPAndLateralStanding }, 
+      { "http://loinc.org#24805-4", KneeXRayAPAndLateralStanding }, 
+      { "24806-2", KneeXRay2Views }, 
+      { "http://loinc.org#24806-2", KneeXRay2Views }, 
+      { "24807-0", KneeXRayAPSingleViewStanding }, 
+      { "http://loinc.org#24807-0", KneeXRayAPSingleViewStanding }, 
+      { "24808-8", KneeXRayAPAndPAStanding }, 
+      { "http://loinc.org#24808-8", KneeXRayAPAndPAStanding }, 
+      { "24809-6", KneeXRayStanding }, 
+      { "http://loinc.org#24809-6", KneeXRayStanding }, 
+      { "24811-2", CTGuidanceForAspirationOfLiver }, 
+      { "http://loinc.org#24811-2", CTGuidanceForAspirationOfLiver }, 
+      { "24812-0", CTGuidanceForBiopsyOfLiver }, 
+      { "http://loinc.org#24812-0", CTGuidanceForBiopsyOfLiver }, 
+      { "24813-8", CTGuidanceForCoreNeedleBiopsyOfLiver }, 
+      { "http://loinc.org#24813-8", CTGuidanceForCoreNeedleBiopsyOfLiver }, 
+      { "24814-6", LiverCT }, 
+      { "http://loinc.org#24814-6", LiverCT }, 
+      { "24815-3", LiverCTWContrastIV }, 
+      { "http://loinc.org#24815-3", LiverCTWContrastIV }, 
+      { "24816-1", USGuidanceForBiopsyOfLiver }, 
+      { "http://loinc.org#24816-1", USGuidanceForBiopsyOfLiver }, 
+      { "24817-9", LiverSPECTWTc99mIV }, 
+      { "http://loinc.org#24817-9", LiverSPECTWTc99mIV }, 
+      { "24818-7", DiaphragmAndLiverUS }, 
+      { "http://loinc.org#24818-7", DiaphragmAndLiverUS }, 
+      { "24819-5", DeprecatedLiverAndSpleenNMWTc99mCalciumColloidIV }, 
+      { "http://loinc.org#24819-5", DeprecatedLiverAndSpleenNMWTc99mCalciumColloidIV }, 
+      { "24820-3", LowerLegVesselsMRAngiogramWContrastIV }, 
+      { "http://loinc.org#24820-3", LowerLegVesselsMRAngiogramWContrastIV }, 
+      { "24821-1", LowerLegMR }, 
+      { "http://loinc.org#24821-1", LowerLegMR }, 
+      { "24822-9", CTGuidanceForAspirationOfLung }, 
+      { "http://loinc.org#24822-9", CTGuidanceForAspirationOfLung }, 
+      { "24823-7", CTGuidanceForBiopsyOfLung }, 
+      { "http://loinc.org#24823-7", CTGuidanceForBiopsyOfLung }, 
+      { "24824-5", LungNMPortable }, 
+      { "http://loinc.org#24824-5", LungNMPortable }, 
+      { "24825-2", LungXRayWContrastIntrabronchial }, 
+      { "http://loinc.org#24825-2", LungXRayWContrastIntrabronchial }, 
+      { "24826-0", LymphaticVesselsNMWRadionuclideIntraLymphatic }, 
+      { "http://loinc.org#24826-0", LymphaticVesselsNMWRadionuclideIntraLymphatic }, 
+      { "24827-8", LymphaticsFluoroscopyWContrastIntraLymphatic }, 
+      { "http://loinc.org#24827-8", LymphaticsFluoroscopyWContrastIntraLymphatic }, 
+      { "24828-6", MandibleXRayTomographPanoramic }, 
+      { "http://loinc.org#24828-6", MandibleXRayTomographPanoramic }, 
+      { "24829-4", MandibleXRay }, 
+      { "http://loinc.org#24829-4", MandibleXRay }, 
+      { "24830-2", MastoidXRay }, 
+      { "http://loinc.org#24830-2", MastoidXRay }, 
+      { "24831-0", SmallBowelNMForMeckelQuoteSDiverticulumWTc99mM04IV }, 
+      { "http://loinc.org#24831-0", SmallBowelNMForMeckelQuoteSDiverticulumWTc99mM04IV }, 
+      { "24832-8", MesentericArteryFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#24832-8", MesentericArteryFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "24833-6", MesentericArteryFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24833-6", MesentericArteryFluoroscopicAngiogramWContrastIA }, 
+      { "24834-4", NasalBonesXRay }, 
+      { "http://loinc.org#24834-4", NasalBonesXRay }, 
+      { "24835-1", NasopharynxAndNeckCT }, 
+      { "http://loinc.org#24835-1", NasopharynxAndNeckCT }, 
+      { "24836-9", NasopharynxAndNeckCTWContrastIV }, 
+      { "http://loinc.org#24836-9", NasopharynxAndNeckCTWContrastIV }, 
+      { "24837-7", CTGuidanceForAspirationOfNeck }, 
+      { "http://loinc.org#24837-7", CTGuidanceForAspirationOfNeck }, 
+      { "24838-5", CTGuidanceForBiopsyOfNeck }, 
+      { "http://loinc.org#24838-5", CTGuidanceForBiopsyOfNeck }, 
+      { "24839-3", NeckMR }, 
+      { "http://loinc.org#24839-3", NeckMR }, 
+      { "24840-1", NeckMRWOAndWContrastIV }, 
+      { "http://loinc.org#24840-1", NeckMRWOAndWContrastIV }, 
+      { "24841-9", NeckMRWContrastIV }, 
+      { "http://loinc.org#24841-9", NeckMRWContrastIV }, 
+      { "24842-7", NeckUS }, 
+      { "http://loinc.org#24842-7", NeckUS }, 
+      { "24843-5", NeckXRayLateral }, 
+      { "http://loinc.org#24843-5", NeckXRayLateral }, 
+      { "24844-3", NeckVesselsMRAngiogramWContrastIV }, 
+      { "http://loinc.org#24844-3", NeckVesselsMRAngiogramWContrastIV }, 
+      { "24845-0", NeckFluoroscopyWContrastIntraLarynx }, 
+      { "http://loinc.org#24845-0", NeckFluoroscopyWContrastIntraLarynx }, 
+      { "24846-8", OpticForamenXRay }, 
+      { "http://loinc.org#24846-8", OpticForamenXRay }, 
+      { "24848-4", OrbitBilateralCT }, 
+      { "http://loinc.org#24848-4", OrbitBilateralCT }, 
+      { "24849-2", OrbitBilateralCTWOAndWContrastIV }, 
+      { "http://loinc.org#24849-2", OrbitBilateralCTWOAndWContrastIV }, 
+      { "24850-0", OrbitBilateralCTWContrastIV }, 
+      { "http://loinc.org#24850-0", OrbitBilateralCTWContrastIV }, 
+      { "24851-8", OrbitBilateralMRWOAndWContrastIV }, 
+      { "http://loinc.org#24851-8", OrbitBilateralMRWOAndWContrastIV }, 
+      { "24852-6", OrbitBilateralMRWContrastIV }, 
+      { "http://loinc.org#24852-6", OrbitBilateralMRWContrastIV }, 
+      { "24853-4", EyePlusOrbitBilateralUS }, 
+      { "http://loinc.org#24853-4", EyePlusOrbitBilateralUS }, 
+      { "24854-2", OrbitBilateralXRay }, 
+      { "http://loinc.org#24854-2", OrbitBilateralXRay }, 
+      { "24855-9", OropharynxFluoroscopyVideo }, 
+      { "http://loinc.org#24855-9", OropharynxFluoroscopyVideo }, 
+      { "24856-7", CTGuidanceForAspirationOfPancreas }, 
+      { "http://loinc.org#24856-7", CTGuidanceForAspirationOfPancreas }, 
+      { "24857-5", PancreasCT }, 
+      { "http://loinc.org#24857-5", PancreasCT }, 
+      { "24858-3", PancreasCTWContrastIV }, 
+      { "http://loinc.org#24858-3", PancreasCTWContrastIV }, 
+      { "24859-1", PancreasUS }, 
+      { "http://loinc.org#24859-1", PancreasUS }, 
+      { "24860-9", PancreaticArteryFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24860-9", PancreaticArteryFluoroscopicAngiogramWContrastIA }, 
+      { "24861-7", PatellaXRay2Views }, 
+      { "http://loinc.org#24861-7", PatellaXRay2Views }, 
+      { "24862-5", IliacArteryInternalFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24862-5", IliacArteryInternalFluoroscopicAngiogramWContrastIA }, 
+      { "24863-3", CTGuidanceForAspirationOfPelvis }, 
+      { "http://loinc.org#24863-3", CTGuidanceForAspirationOfPelvis }, 
+      { "24864-1", CTGuidanceForBiopsyOfPelvis }, 
+      { "http://loinc.org#24864-1", CTGuidanceForBiopsyOfPelvis }, 
+      { "24865-8", PelvisCT }, 
+      { "http://loinc.org#24865-8", PelvisCT }, 
+      { "24866-6", PelvisCTWContrastIV }, 
+      { "http://loinc.org#24866-6", PelvisCTWContrastIV }, 
+      { "24867-4", PelvisMR }, 
+      { "http://loinc.org#24867-4", PelvisMR }, 
+      { "24868-2", USGuidanceForDrainageOfPelvis }, 
+      { "http://loinc.org#24868-2", USGuidanceForDrainageOfPelvis }, 
+      { "24869-0", PelvisUS }, 
+      { "http://loinc.org#24869-0", PelvisUS }, 
+      { "24870-8", PelvisVesselsUSDoppler }, 
+      { "http://loinc.org#24870-8", PelvisVesselsUSDoppler }, 
+      { "24871-6", PelvisXRayPelvimetry }, 
+      { "http://loinc.org#24871-6", PelvisXRayPelvimetry }, 
+      { "24872-4", PelvisAndHipMR }, 
+      { "http://loinc.org#24872-4", PelvisAndHipMR }, 
+      { "24873-2", PelvisVesselsMRAngiogramWContrastIV }, 
+      { "http://loinc.org#24873-2", PelvisVesselsMRAngiogramWContrastIV }, 
+      { "24874-0", PeripheralArteriesFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24874-0", PeripheralArteriesFluoroscopicAngiogramWContrastIA }, 
+      { "24875-7", DeprecatedPeripheralVesselUSDopplerPeripheralPlane }, 
+      { "http://loinc.org#24875-7", DeprecatedPeripheralVesselUSDopplerPeripheralPlane }, 
+      { "24876-5", HeadToPelvisNMForShuntPatencyWTc99mDTPAIT }, 
+      { "http://loinc.org#24876-5", HeadToPelvisNMForShuntPatencyWTc99mDTPAIT }, 
+      { "24877-3", PetrousPartOfTemporalBoneCT }, 
+      { "http://loinc.org#24877-3", PetrousPartOfTemporalBoneCT }, 
+      { "24878-1", PetrousPartOfTemporalBoneCTWContrastIV }, 
+      { "http://loinc.org#24878-1", PetrousPartOfTemporalBoneCTWContrastIV }, 
+      { "24879-9", PituitaryAndSellaTurcicaMRWOAndWContrastIV }, 
+      { "http://loinc.org#24879-9", PituitaryAndSellaTurcicaMRWOAndWContrastIV }, 
+      { "24880-7", PituitaryAndSellaTurcicaMR }, 
+      { "http://loinc.org#24880-7", PituitaryAndSellaTurcicaMR }, 
+      { "24881-5", PoplitealSpaceUS }, 
+      { "http://loinc.org#24881-5", PoplitealSpaceUS }, 
+      { "24882-3", PoplitealArteryFluoroscopicAngiogramPercutaneousTransluminalAngioplastyOfVesselWContrastIA }, 
+      { "http://loinc.org#24882-3", PoplitealArteryFluoroscopicAngiogramPercutaneousTransluminalAngioplastyOfVesselWContrastIA }, 
+      { "24883-1", USGuidanceForBiopsyOfProstate }, 
+      { "http://loinc.org#24883-1", USGuidanceForBiopsyOfProstate }, 
+      { "24884-9", ProstateUS }, 
+      { "http://loinc.org#24884-9", ProstateUS }, 
+      { "24885-6", DeprecatedUSGuidanceForRepairOfPseudoaneurysmAVFistula }, 
+      { "http://loinc.org#24885-6", DeprecatedUSGuidanceForRepairOfPseudoaneurysmAVFistula }, 
+      { "24887-2", PulmonaryArteriesFluoroscopicAngiogramEmbolectomyWContrastIA }, 
+      { "http://loinc.org#24887-2", PulmonaryArteriesFluoroscopicAngiogramEmbolectomyWContrastIA }, 
+      { "24888-0", PulmonarySystemNMVentilationAndPerfusionWXe133IHAndWTc99mMAAIV }, 
+      { "http://loinc.org#24888-0", PulmonarySystemNMVentilationAndPerfusionWXe133IHAndWTc99mMAAIV }, 
+      { "24889-8", PylorusUSForPyloricStenosis }, 
+      { "http://loinc.org#24889-8", PylorusUSForPyloricStenosis }, 
+      { "24891-4", RadiusAndUlnaXRay }, 
+      { "http://loinc.org#24891-4", RadiusAndUlnaXRay }, 
+      { "24892-2", RectumUS }, 
+      { "http://loinc.org#24892-2", RectumUS }, 
+      { "24893-0", RectumFluoroscopyPostContrastPRDuringDefecation }, 
+      { "http://loinc.org#24893-0", RectumFluoroscopyPostContrastPRDuringDefecation }, 
+      { "24894-8", RectumAndUrinaryBladderFluoroscopyWContrastPRAndIntraBladderDuringDefecationAndVoiding }, 
+      { "http://loinc.org#24894-8", RectumAndUrinaryBladderFluoroscopyWContrastPRAndIntraBladderDuringDefecationAndVoiding }, 
+      { "24896-3", USGuidanceForDrainageOfKidney }, 
+      { "http://loinc.org#24896-3", USGuidanceForDrainageOfKidney }, 
+      { "24899-7", RibsXRay }, 
+      { "http://loinc.org#24899-7", RibsXRay }, 
+      { "24900-3", SacroiliacJointXRay }, 
+      { "http://loinc.org#24900-3", SacroiliacJointXRay }, 
+      { "24901-1", CTGuidanceForInjectionOfSacroiliacJoint }, 
+      { "http://loinc.org#24901-1", CTGuidanceForInjectionOfSacroiliacJoint }, 
+      { "24902-9", SalivaryGlandFluoroscopyWContrastIntraSalivaryDuct }, 
+      { "http://loinc.org#24902-9", SalivaryGlandFluoroscopyWContrastIntraSalivaryDuct }, 
+      { "24903-7", ScapulaXRay }, 
+      { "http://loinc.org#24903-7", ScapulaXRay }, 
+      { "24904-5", PituitaryAndSellaTurcicaCTWOAndWContrastIV }, 
+      { "http://loinc.org#24904-5", PituitaryAndSellaTurcicaCTWOAndWContrastIV }, 
+      { "24905-2", ShoulderMR }, 
+      { "http://loinc.org#24905-2", ShoulderMR }, 
+      { "24906-0", ShoulderMRWOAndWContrastIV }, 
+      { "http://loinc.org#24906-0", ShoulderMRWOAndWContrastIV }, 
+      { "24907-8", ShoulderUS }, 
+      { "http://loinc.org#24907-8", ShoulderUS }, 
+      { "24908-6", ShoulderXRay3Views }, 
+      { "http://loinc.org#24908-6", ShoulderXRay3Views }, 
+      { "24909-4", ShoulderXRay }, 
+      { "http://loinc.org#24909-4", ShoulderXRay }, 
+      { "24910-2", ShoulderFluoroscopyArthrogram }, 
+      { "http://loinc.org#24910-2", ShoulderFluoroscopyArthrogram }, 
+      { "24911-0", ShuntFluoroscopy }, 
+      { "http://loinc.org#24911-0", ShuntFluoroscopy }, 
+      { "24912-8", SinusTractFluoroscopyWContrastIntraSinusTract }, 
+      { "http://loinc.org#24912-8", SinusTractFluoroscopyWContrastIntraSinusTract }, 
+      { "24913-6", SinusesCTLimited }, 
+      { "http://loinc.org#24913-6", SinusesCTLimited }, 
+      { "24914-4", SinusesMR }, 
+      { "http://loinc.org#24914-4", SinusesMR }, 
+      { "24915-1", SinusesMRWContrastIV }, 
+      { "http://loinc.org#24915-1", SinusesMRWContrastIV }, 
+      { "24916-9", SinusesXRay }, 
+      { "http://loinc.org#24916-9", SinusesXRay }, 
+      { "24917-7", SkullXRaySingleView }, 
+      { "http://loinc.org#24917-7", SkullXRaySingleView }, 
+      { "24918-5", SkullXRay3Views }, 
+      { "http://loinc.org#24918-5", SkullXRay3Views }, 
+      { "24919-3", SkullXRayAPAndLateral }, 
+      { "http://loinc.org#24919-3", SkullXRayAPAndLateral }, 
+      { "24920-1", SkullXRayLateral }, 
+      { "http://loinc.org#24920-1", SkullXRayLateral }, 
+      { "24921-9", SkullXRayWaters }, 
+      { "http://loinc.org#24921-9", SkullXRayWaters }, 
+      { "24922-7", SkullXRay5Views }, 
+      { "http://loinc.org#24922-7", SkullXRay5Views }, 
+      { "24923-5", SmallBowelFluoroscopyWPositiveContrastViaEnteroclysisTube }, 
+      { "http://loinc.org#24923-5", SmallBowelFluoroscopyWPositiveContrastViaEnteroclysisTube }, 
+      { "24924-3", SmallBowelFluoroscopyWContrastPO }, 
+      { "http://loinc.org#24924-3", SmallBowelFluoroscopyWContrastPO }, 
+      { "24925-0", SpinalArteryFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24925-0", SpinalArteryFluoroscopicAngiogramWContrastIA }, 
+      { "24926-8", SpineUS }, 
+      { "http://loinc.org#24926-8", SpineUS }, 
+      { "24927-6", SpineFluoroscopyWContrastIntradisc }, 
+      { "http://loinc.org#24927-6", SpineFluoroscopyWContrastIntradisc }, 
+      { "24928-4", SpineXRayAPAndLateral }, 
+      { "http://loinc.org#24928-4", SpineXRayAPAndLateral }, 
+      { "24929-2", SpineThoracicAndLumbarXRayScoliosisWFlexionAndWExtension }, 
+      { "http://loinc.org#24929-2", SpineThoracicAndLumbarXRayScoliosisWFlexionAndWExtension }, 
+      { "24930-0", SpineThoracicAndLumbarXRayScoliosis }, 
+      { "http://loinc.org#24930-0", SpineThoracicAndLumbarXRayScoliosis }, 
+      { "24931-8", FluoroscopyGuidanceForInjectionOfSpineFacetJoint }, 
+      { "http://loinc.org#24931-8", FluoroscopyGuidanceForInjectionOfSpineFacetJoint }, 
+      { "24932-6", CervicalSpineCT }, 
+      { "http://loinc.org#24932-6", CervicalSpineCT }, 
+      { "24933-4", CervicalSpineCTWContrastIV }, 
+      { "http://loinc.org#24933-4", CervicalSpineCTWContrastIV }, 
+      { "24934-2", CervicalSpineCTWContrastIT }, 
+      { "http://loinc.org#24934-2", CervicalSpineCTWContrastIT }, 
+      { "24935-9", CervicalSpineMR }, 
+      { "http://loinc.org#24935-9", CervicalSpineMR }, 
+      { "24936-7", CervicalSpineMRWAnesthesia }, 
+      { "http://loinc.org#24936-7", CervicalSpineMRWAnesthesia }, 
+      { "24937-5", CervicalSpineMRWOAndWContrastIV }, 
+      { "http://loinc.org#24937-5", CervicalSpineMRWOAndWContrastIV }, 
+      { "24938-3", CervicalSpineMRWContrastIV }, 
+      { "http://loinc.org#24938-3", CervicalSpineMRWContrastIV }, 
+      { "24939-1", CervicalSpineXRay5Views }, 
+      { "http://loinc.org#24939-1", CervicalSpineXRay5Views }, 
+      { "24940-9", CervicalSpineXRaySingleView }, 
+      { "http://loinc.org#24940-9", CervicalSpineXRaySingleView }, 
+      { "24941-7", CervicalSpineXRay3Views }, 
+      { "http://loinc.org#24941-7", CervicalSpineXRay3Views }, 
+      { "24942-5", CervicalSpineXRayAPAndLateral }, 
+      { "http://loinc.org#24942-5", CervicalSpineXRayAPAndLateral }, 
+      { "24943-3", CervicalSpineXRayLateral }, 
+      { "http://loinc.org#24943-3", CervicalSpineXRayLateral }, 
+      { "24944-1", CervicalSpineXRaySwimmers }, 
+      { "http://loinc.org#24944-1", CervicalSpineXRaySwimmers }, 
+      { "24945-8", CervicalSpineXRayWFlexionAndWExtension }, 
+      { "http://loinc.org#24945-8", CervicalSpineXRayWFlexionAndWExtension }, 
+      { "24946-6", CervicalSpineXRay }, 
+      { "http://loinc.org#24946-6", CervicalSpineXRay }, 
+      { "24947-4", CervicalSpineFluoroscopyWContrastIT }, 
+      { "http://loinc.org#24947-4", CervicalSpineFluoroscopyWContrastIT }, 
+      { "24948-2", SpineCervicalOdontoidAndCervicalAxisXRayAPSingleView }, 
+      { "http://loinc.org#24948-2", SpineCervicalOdontoidAndCervicalAxisXRayAPSingleView }, 
+      { "24963-1", LumbarSpineCT }, 
+      { "http://loinc.org#24963-1", LumbarSpineCT }, 
+      { "24964-9", LumbarSpineCTWContrastIV }, 
+      { "http://loinc.org#24964-9", LumbarSpineCTWContrastIV }, 
+      { "24965-6", LumbarSpineCTWContrastIT }, 
+      { "http://loinc.org#24965-6", LumbarSpineCTWContrastIT }, 
+      { "24967-2", LumbarSpineMRWOAndWContrastIV }, 
+      { "http://loinc.org#24967-2", LumbarSpineMRWOAndWContrastIV }, 
+      { "24968-0", LumbarSpineMR }, 
+      { "http://loinc.org#24968-0", LumbarSpineMR }, 
+      { "24969-8", LumbarSpineXRayLateral }, 
+      { "http://loinc.org#24969-8", LumbarSpineXRayLateral }, 
+      { "24970-6", LumbarSpineXRayAPAndLateral }, 
+      { "http://loinc.org#24970-6", LumbarSpineXRayAPAndLateral }, 
+      { "24971-4", LumbarSpineXRayWFlexionAndWExtension }, 
+      { "http://loinc.org#24971-4", LumbarSpineXRayWFlexionAndWExtension }, 
+      { "24972-2", LumbarSpineXRay }, 
+      { "http://loinc.org#24972-2", LumbarSpineXRay }, 
+      { "24973-0", FluoroscopyGuidanceForAspirationOfSpineLumbarSpace }, 
+      { "http://loinc.org#24973-0", FluoroscopyGuidanceForAspirationOfSpineLumbarSpace }, 
+      { "24974-8", LumbarSpineFluoroscopyWContrastIT }, 
+      { "http://loinc.org#24974-8", LumbarSpineFluoroscopyWContrastIT }, 
+      { "24975-5", SpineLumbarAndSacroiliacJointBilateralXRay }, 
+      { "http://loinc.org#24975-5", SpineLumbarAndSacroiliacJointBilateralXRay }, 
+      { "24977-1", LumbarSpineMRWAnesthesia }, 
+      { "http://loinc.org#24977-1", LumbarSpineMRWAnesthesia }, 
+      { "24978-9", ThoracicSpineCT }, 
+      { "http://loinc.org#24978-9", ThoracicSpineCT }, 
+      { "24979-7", ThoracicSpineCTWContrastIV }, 
+      { "http://loinc.org#24979-7", ThoracicSpineCTWContrastIV }, 
+      { "24980-5", ThoracicSpineMR }, 
+      { "http://loinc.org#24980-5", ThoracicSpineMR }, 
+      { "24981-3", ThoracicSpineMRWOAndWContrastIV }, 
+      { "http://loinc.org#24981-3", ThoracicSpineMRWOAndWContrastIV }, 
+      { "24982-1", ThoracicSpineMRWContrastIV }, 
+      { "http://loinc.org#24982-1", ThoracicSpineMRWContrastIV }, 
+      { "24983-9", ThoracicSpineXRay }, 
+      { "http://loinc.org#24983-9", ThoracicSpineXRay }, 
+      { "24984-7", SpineThoracicAndLumbarXRay2Views }, 
+      { "http://loinc.org#24984-7", SpineThoracicAndLumbarXRay2Views }, 
+      { "24985-4", ThoracicSpineFluoroscopyWContrastIT }, 
+      { "http://loinc.org#24985-4", ThoracicSpineFluoroscopyWContrastIT }, 
+      { "24986-2", CTGuidanceForBiopsyOfSpine }, 
+      { "http://loinc.org#24986-2", CTGuidanceForBiopsyOfSpine }, 
+      { "24987-0", SpineCTWContrastIV }, 
+      { "http://loinc.org#24987-0", SpineCTWContrastIV }, 
+      { "24988-8", SpleenCT }, 
+      { "http://loinc.org#24988-8", SpleenCT }, 
+      { "24989-6", SpleenCTWOAndWContrastIV }, 
+      { "http://loinc.org#24989-6", SpleenCTWOAndWContrastIV }, 
+      { "24990-4", SpleenUS }, 
+      { "http://loinc.org#24990-4", SpleenUS }, 
+      { "24991-2", SplenicVeinAndPortalVeinFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24991-2", SplenicVeinAndPortalVeinFluoroscopicAngiogramWContrastIA }, 
+      { "24992-0", SplenicArteryFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#24992-0", SplenicArteryFluoroscopicAngiogramWContrastIA }, 
+      { "24993-8", SternoclavicularJointsXRay }, 
+      { "http://loinc.org#24993-8", SternoclavicularJointsXRay }, 
+      { "24994-6", SternumXRay }, 
+      { "http://loinc.org#24994-6", SternumXRay }, 
+      { "24995-3", FluoroscopyGuidanceForPlacementOfTubeInStomach }, 
+      { "http://loinc.org#24995-3", FluoroscopyGuidanceForPlacementOfTubeInStomach }, 
+      { "24996-1", FluoroscopyGuidanceForReplacementOfPercutaneousGastrostomyInStomach }, 
+      { "http://loinc.org#24996-1", FluoroscopyGuidanceForReplacementOfPercutaneousGastrostomyInStomach }, 
+      { "24997-9", StomachNMForGastricEmptyingSolidPhaseWTc99mSCPO }, 
+      { "http://loinc.org#24997-9", StomachNMForGastricEmptyingSolidPhaseWTc99mSCPO }, 
+      { "24998-7", PlacementCheckOfGastrostomyTubeWContrastViaGITube }, 
+      { "http://loinc.org#24998-7", PlacementCheckOfGastrostomyTubeWContrastViaGITube }, 
+      { "24999-5", TemporomandibularJointMR }, 
+      { "http://loinc.org#24999-5", TemporomandibularJointMR }, 
+      { "25000-1", TemporomandibularJointXRay }, 
+      { "http://loinc.org#25000-1", TemporomandibularJointXRay }, 
+      { "25001-9", ScrotumAndTesticleNMWTc99mPertechnetateIV }, 
+      { "http://loinc.org#25001-9", ScrotumAndTesticleNMWTc99mPertechnetateIV }, 
+      { "25002-7", ScrotumAndTesticleUS }, 
+      { "http://loinc.org#25002-7", ScrotumAndTesticleUS }, 
+      { "25003-5", ThighVesselsMRAngiogramWContrastIV }, 
+      { "http://loinc.org#25003-5", ThighVesselsMRAngiogramWContrastIV }, 
+      { "25005-0", ThreeVesselsFluoroscopicAngiogramWContrast }, 
+      { "http://loinc.org#25005-0", ThreeVesselsFluoroscopicAngiogramWContrast }, 
+      { "25006-8", ThumbXRay }, 
+      { "http://loinc.org#25006-8", ThumbXRay }, 
+      { "25007-6", ThyroidGlandNMWI131IV }, 
+      { "http://loinc.org#25007-6", ThyroidGlandNMWI131IV }, 
+      { "25008-4", ThyroidGlandNMAndUptakeWI131IV }, 
+      { "http://loinc.org#25008-4", ThyroidGlandNMAndUptakeWI131IV }, 
+      { "25009-2", USGuidanceForBiopsyOfThyroidGland }, 
+      { "http://loinc.org#25009-2", USGuidanceForBiopsyOfThyroidGland }, 
+      { "25010-0", ThyroidGlandUS }, 
+      { "http://loinc.org#25010-0", ThyroidGlandUS }, 
+      { "25011-8", TibiaAndFibulaXRay }, 
+      { "http://loinc.org#25011-8", TibiaAndFibulaXRay }, 
+      { "25012-6", TibialArteryFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#25012-6", TibialArteryFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "25013-4", ToesXRay }, 
+      { "http://loinc.org#25013-4", ToesXRay }, 
+      { "25014-2", TwoVesselsFluoroscopicAngiogramWContrast }, 
+      { "http://loinc.org#25014-2", TwoVesselsFluoroscopicAngiogramWContrast }, 
+      { "25015-9", UpperGITractReplacementOfPercutaneousGastrojejunostomy }, 
+      { "http://loinc.org#25015-9", UpperGITractReplacementOfPercutaneousGastrojejunostomy }, 
+      { "25016-7", UrethraFluoroscopyWContrastIntraUrethra }, 
+      { "http://loinc.org#25016-7", UrethraFluoroscopyWContrastIntraUrethra }, 
+      { "25017-5", UrinaryBladderAndUrethraFluoroscopyWContrastIntraBladder }, 
+      { "http://loinc.org#25017-5", UrinaryBladderAndUrethraFluoroscopyWContrastIntraBladder }, 
+      { "25018-3", UrinaryBladderNM }, 
+      { "http://loinc.org#25018-3", UrinaryBladderNM }, 
+      { "25019-1", UrinaryBladderUS }, 
+      { "http://loinc.org#25019-1", UrinaryBladderUS }, 
+      { "25020-9", UrinaryBladderAndUrethraFluoroscopyWContrastRetrogradeViaUrethra }, 
+      { "http://loinc.org#25020-9", UrinaryBladderAndUrethraFluoroscopyWContrastRetrogradeViaUrethra }, 
+      { "25022-5", UterusAndFallopianTubesFluoroscopyWContrastIU }, 
+      { "http://loinc.org#25022-5", UterusAndFallopianTubesFluoroscopyWContrastIU }, 
+      { "25023-3", VeinFluoroscopicAngiogramWContrastIV }, 
+      { "http://loinc.org#25023-3", VeinFluoroscopicAngiogramWContrastIV }, 
+      { "25024-1", FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVein }, 
+      { "http://loinc.org#25024-1", FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVein }, 
+      { "25025-8", VenaCavaFluoroscopicAngiogramWContrastIV }, 
+      { "http://loinc.org#25025-8", VenaCavaFluoroscopicAngiogramWContrastIV }, 
+      { "25026-6", FluoroscopicAngiogramGuidanceForPlacementOfIVCFilterInInferiorVenaCavaWContrastIV }, 
+      { "http://loinc.org#25026-6", FluoroscopicAngiogramGuidanceForPlacementOfIVCFilterInInferiorVenaCavaWContrastIV }, 
+      { "25027-4", GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVein }, 
+      { "http://loinc.org#25027-4", GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVein }, 
+      { "25028-2", FluoroscopicAngiogramGuidanceForPlacementOfCatheterForAdminstrationOfThrombolyticInVesselWContrastIntravascular }, 
+      { "http://loinc.org#25028-2", FluoroscopicAngiogramGuidanceForPlacementOfCatheterForAdminstrationOfThrombolyticInVesselWContrastIntravascular }, 
+      { "25029-0", FluoroscopicAngiogramGuidanceForPlacementOfCatheterForVasoconstrictorInfusionInVessels }, 
+      { "http://loinc.org#25029-0", FluoroscopicAngiogramGuidanceForPlacementOfCatheterForVasoconstrictorInfusionInVessels }, 
+      { "25030-8", AbdominalArteriesFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#25030-8", AbdominalArteriesFluoroscopicAngiogramWContrastIA }, 
+      { "25031-6", BoneNM }, 
+      { "http://loinc.org#25031-6", BoneNM }, 
+      { "25032-4", BoneNMWIn111TaggedWBCIV }, 
+      { "http://loinc.org#25032-4", BoneNMWIn111TaggedWBCIV }, 
+      { "25033-2", WristMR }, 
+      { "http://loinc.org#25033-2", WristMR }, 
+      { "25034-0", WristFluoroscopyArthrogram }, 
+      { "http://loinc.org#25034-0", WristFluoroscopyArthrogram }, 
+      { "25035-7", WristMRWOAndWContrastIV }, 
+      { "http://loinc.org#25035-7", WristMRWOAndWContrastIV }, 
+      { "25036-5", WristUS }, 
+      { "http://loinc.org#25036-5", WristUS }, 
+      { "25038-1", UnspecifiedBodyRegionCourtesyConsultation }, 
+      { "http://loinc.org#25038-1", UnspecifiedBodyRegionCourtesyConsultation }, 
+      { "25039-9", UnspecifiedBodyRegionCTLimited }, 
+      { "http://loinc.org#25039-9", UnspecifiedBodyRegionCTLimited }, 
+      { "25040-7", DeprecatedUnspecifiedBodyRegionCT3D }, 
+      { "http://loinc.org#25040-7", DeprecatedUnspecifiedBodyRegionCT3D }, 
+      { "25041-5", CTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegionWContrastIV }, 
+      { "http://loinc.org#25041-5", CTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegionWContrastIV }, 
+      { "25042-3", CTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#25042-3", CTGuidanceForAspirationOrBiopsyOfUnspecifiedBodyRegion }, 
+      { "25043-1", CTGuidanceForAspirationOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#25043-1", CTGuidanceForAspirationOfUnspecifiedBodyRegion }, 
+      { "25044-9", CTGuidanceForBiopsyOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#25044-9", CTGuidanceForBiopsyOfUnspecifiedBodyRegion }, 
+      { "25045-6", UnspecifiedBodyRegionCT }, 
+      { "http://loinc.org#25045-6", UnspecifiedBodyRegionCT }, 
+      { "25046-4", UnspecifiedBodyRegionCTWAnesthesia }, 
+      { "http://loinc.org#25046-4", UnspecifiedBodyRegionCTWAnesthesia }, 
+      { "25047-2", UnspecifiedBodyRegionCTWConsciousSedation }, 
+      { "http://loinc.org#25047-2", UnspecifiedBodyRegionCTWConsciousSedation }, 
+      { "25050-6", DeprecatedUnspecifiedBodyRegionCT3DSagittalAndCoronalDisarticulation }, 
+      { "http://loinc.org#25050-6", DeprecatedUnspecifiedBodyRegionCT3DSagittalAndCoronalDisarticulation }, 
+      { "25051-4", DeprecatedUnspecifiedBodyRegionCTMultisectionalSagittal }, 
+      { "http://loinc.org#25051-4", DeprecatedUnspecifiedBodyRegionCTMultisectionalSagittal }, 
+      { "25052-2", DeprecatedUnspecifiedBodyRegionCTSagittalAndCoronal }, 
+      { "http://loinc.org#25052-2", DeprecatedUnspecifiedBodyRegionCTSagittalAndCoronal }, 
+      { "25053-0", CTGuidanceForRadiosurgeryOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#25053-0", CTGuidanceForRadiosurgeryOfUnspecifiedBodyRegion }, 
+      { "25054-8", CTGuidanceForRadiosurgeryOfUnspecifiedBodyRegionWContrastIV }, 
+      { "http://loinc.org#25054-8", CTGuidanceForRadiosurgeryOfUnspecifiedBodyRegionWContrastIV }, 
+      { "25055-5", DeprecatedUnspecifiedBodyRegionMRAdditionalSequence }, 
+      { "http://loinc.org#25055-5", DeprecatedUnspecifiedBodyRegionMRAdditionalSequence }, 
+      { "25056-3", UnspecifiedBodyRegionMR }, 
+      { "http://loinc.org#25056-3", UnspecifiedBodyRegionMR }, 
+      { "25057-1", UnspecifiedBodyRegionMRWConsciousSedation }, 
+      { "http://loinc.org#25057-1", UnspecifiedBodyRegionMRWConsciousSedation }, 
+      { "25058-9", UnspecifiedBodyRegionMRAngiogramWContrastIV }, 
+      { "http://loinc.org#25058-9", UnspecifiedBodyRegionMRAngiogramWContrastIV }, 
+      { "25059-7", USGuidanceForBiopsyOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#25059-7", USGuidanceForBiopsyOfUnspecifiedBodyRegion }, 
+      { "25060-5", UnspecifiedBodyRegionUSNoCharge }, 
+      { "http://loinc.org#25060-5", UnspecifiedBodyRegionUSNoCharge }, 
+      { "25061-3", UnspecifiedBodyRegionUS }, 
+      { "http://loinc.org#25061-3", UnspecifiedBodyRegionUS }, 
+      { "25062-1", UnspecifiedBodyRegionXRayComparisonView }, 
+      { "http://loinc.org#25062-1", UnspecifiedBodyRegionXRayComparisonView }, 
+      { "25063-9", VesselFluoroscopicAngiogramSingleViewWContrastIA }, 
+      { "http://loinc.org#25063-9", VesselFluoroscopicAngiogramSingleViewWContrastIA }, 
+      { "25064-7", VesselFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#25064-7", VesselFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "25065-4", UnspecifiedBodyRegionFluoroscopy15Minutes }, 
+      { "http://loinc.org#25065-4", UnspecifiedBodyRegionFluoroscopy15Minutes }, 
+      { "25066-2", UnspecifiedBodyRegionFluoroscopy30Minutes }, 
+      { "http://loinc.org#25066-2", UnspecifiedBodyRegionFluoroscopy30Minutes }, 
+      { "25067-0", UnspecifiedBodyRegionFluoroscopy45Minutes }, 
+      { "http://loinc.org#25067-0", UnspecifiedBodyRegionFluoroscopy45Minutes }, 
+      { "25068-8", UnspecifiedBodyRegionFluoroscopy1Hour }, 
+      { "http://loinc.org#25068-8", UnspecifiedBodyRegionFluoroscopy1Hour }, 
+      { "25069-6", FluoroscopyGuidanceForBiopsyOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#25069-6", FluoroscopyGuidanceForBiopsyOfUnspecifiedBodyRegion }, 
+      { "25070-4", UnspecifiedBodyRegionFluoroscopyDuringSurgery }, 
+      { "http://loinc.org#25070-4", UnspecifiedBodyRegionFluoroscopyDuringSurgery }, 
+      { "25071-2", UnspecifiedBodyRegionXRayTomograph }, 
+      { "http://loinc.org#25071-2", UnspecifiedBodyRegionXRayTomograph }, 
+      { "25072-0", GuidanceForPlacementOfInfusionPortInUnspecifiedBodyRegion }, 
+      { "http://loinc.org#25072-0", GuidanceForPlacementOfInfusionPortInUnspecifiedBodyRegion }, 
+      { "25073-8", VesselFluoroscopicAngiogramRemovalOfForeignBodyFromVascularSpace }, 
+      { "http://loinc.org#25073-8", VesselFluoroscopicAngiogramRemovalOfForeignBodyFromVascularSpace }, 
+      { "25074-6", ZygomaticArchXRay }, 
+      { "http://loinc.org#25074-6", ZygomaticArchXRay }, 
+      { "25076-1", HepaticArteryFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#25076-1", HepaticArteryFluoroscopicAngiogramWContrastIA }, 
+      { "25077-9", FluoroscopicAngiogramGuidanceForPlacementOfCatheterInHepaticArteryWContrastIA }, 
+      { "http://loinc.org#25077-9", FluoroscopicAngiogramGuidanceForPlacementOfCatheterInHepaticArteryWContrastIA }, 
+      { "25078-7", FluoroscopyGuidanceForPlacementOfStentInIntrahepaticPortalSystem }, 
+      { "http://loinc.org#25078-7", FluoroscopyGuidanceForPlacementOfStentInIntrahepaticPortalSystem }, 
+      { "25079-5", KidneyArteriesFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#25079-5", KidneyArteriesFluoroscopicAngiogramWContrastIA }, 
+      { "25080-3", RenalVeinBilateralFluoroscopicAngiogramWContrastIVAndWReninSampling }, 
+      { "http://loinc.org#25080-3", RenalVeinBilateralFluoroscopicAngiogramWContrastIVAndWReninSampling }, 
+      { "25081-1", RenalVesselFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#25081-1", RenalVesselFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "26064-6", VeinBilateralFluoroscopicAngiogramWContrastIV }, 
+      { "http://loinc.org#26064-6", VeinBilateralFluoroscopicAngiogramWContrastIV }, 
+      { "26065-3", VeinLeftFluoroscopicAngiogramWContrastIV }, 
+      { "http://loinc.org#26065-3", VeinLeftFluoroscopicAngiogramWContrastIV }, 
+      { "26066-1", VeinRightFluoroscopicAngiogramWContrastIV }, 
+      { "http://loinc.org#26066-1", VeinRightFluoroscopicAngiogramWContrastIV }, 
+      { "26067-9", SalivaryGlandBilateralFluoroscopyWContrastIntraSalivaryDuct }, 
+      { "http://loinc.org#26067-9", SalivaryGlandBilateralFluoroscopyWContrastIntraSalivaryDuct }, 
+      { "26068-7", SalivaryGlandLeftFluoroscopyWContrastIntraSalivaryDuct }, 
+      { "http://loinc.org#26068-7", SalivaryGlandLeftFluoroscopyWContrastIntraSalivaryDuct }, 
+      { "26069-5", SalivaryGlandRightFluoroscopyWContrastIntraSalivaryDuct }, 
+      { "http://loinc.org#26069-5", SalivaryGlandRightFluoroscopyWContrastIntraSalivaryDuct }, 
+      { "26070-3", HipBilateralFluoroscopyArthrogram }, 
+      { "http://loinc.org#26070-3", HipBilateralFluoroscopyArthrogram }, 
+      { "26071-1", HipLeftFluoroscopyArthrogram }, 
+      { "http://loinc.org#26071-1", HipLeftFluoroscopyArthrogram }, 
+      { "26072-9", HipRightFluoroscopyArthrogram }, 
+      { "http://loinc.org#26072-9", HipRightFluoroscopyArthrogram }, 
+      { "26073-7", KneeBilateralFluoroscopyArthrogram }, 
+      { "http://loinc.org#26073-7", KneeBilateralFluoroscopyArthrogram }, 
+      { "26074-5", KneeLeftFluoroscopyArthrogram }, 
+      { "http://loinc.org#26074-5", KneeLeftFluoroscopyArthrogram }, 
+      { "26075-2", KneeRightFluoroscopyArthrogram }, 
+      { "http://loinc.org#26075-2", KneeRightFluoroscopyArthrogram }, 
+      { "26076-0", ShoulderBilateralFluoroscopyArthrogram }, 
+      { "http://loinc.org#26076-0", ShoulderBilateralFluoroscopyArthrogram }, 
+      { "26077-8", ShoulderLeftFluoroscopyArthrogram }, 
+      { "http://loinc.org#26077-8", ShoulderLeftFluoroscopyArthrogram }, 
+      { "26078-6", ShoulderRightFluoroscopyArthrogram }, 
+      { "http://loinc.org#26078-6", ShoulderRightFluoroscopyArthrogram }, 
+      { "26079-4", CarotidArteryBilateralFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#26079-4", CarotidArteryBilateralFluoroscopicAngiogramWContrastIA }, 
+      { "26080-2", CarotidArteryLeftFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#26080-2", CarotidArteryLeftFluoroscopicAngiogramWContrastIA }, 
+      { "26081-0", CarotidArteryRightFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#26081-0", CarotidArteryRightFluoroscopicAngiogramWContrastIA }, 
+      { "26082-8", SpinalArteryBilateralFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#26082-8", SpinalArteryBilateralFluoroscopicAngiogramWContrastIA }, 
+      { "26083-6", SpinalArteryLeftFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#26083-6", SpinalArteryLeftFluoroscopicAngiogramWContrastIA }, 
+      { "26084-4", SpinalArteryRightFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#26084-4", SpinalArteryRightFluoroscopicAngiogramWContrastIA }, 
+      { "26085-1", KneeBilateralXRayStanding }, 
+      { "http://loinc.org#26085-1", KneeBilateralXRayStanding }, 
+      { "26086-9", KneeLeftXRayStanding }, 
+      { "http://loinc.org#26086-9", KneeLeftXRayStanding }, 
+      { "26087-7", KneeRightXRayStanding }, 
+      { "http://loinc.org#26087-7", KneeRightXRayStanding }, 
+      { "26088-5", KneeBilateralNM }, 
+      { "http://loinc.org#26088-5", KneeBilateralNM }, 
+      { "26089-3", KneeLeftNM }, 
+      { "http://loinc.org#26089-3", KneeLeftNM }, 
+      { "26090-1", KneeRightNM }, 
+      { "http://loinc.org#26090-1", KneeRightNM }, 
+      { "26091-9", ScrotumAndTesticleBilateralNMWTc99mPertechnetateIV }, 
+      { "http://loinc.org#26091-9", ScrotumAndTesticleBilateralNMWTc99mPertechnetateIV }, 
+      { "26092-7", ScrotumAndTesticleLeftNMWTc99mPertechnetateIV }, 
+      { "http://loinc.org#26092-7", ScrotumAndTesticleLeftNMWTc99mPertechnetateIV }, 
+      { "26093-5", ScrotumAndTesticleRightNMWTc99mPertechnetateIV }, 
+      { "http://loinc.org#26093-5", ScrotumAndTesticleRightNMWTc99mPertechnetateIV }, 
+      { "26094-3", FootBilateralXRayStanding }, 
+      { "http://loinc.org#26094-3", FootBilateralXRayStanding }, 
+      { "26095-0", FootLeftXRayStanding }, 
+      { "http://loinc.org#26095-0", FootLeftXRayStanding }, 
+      { "26096-8", FootRightXRayStanding }, 
+      { "http://loinc.org#26096-8", FootRightXRayStanding }, 
+      { "26097-6", AnkleBilateralXRay }, 
+      { "http://loinc.org#26097-6", AnkleBilateralXRay }, 
+      { "26098-4", AnkleLeftXRay }, 
+      { "http://loinc.org#26098-4", AnkleLeftXRay }, 
+      { "26099-2", AnkleRightXRay }, 
+      { "http://loinc.org#26099-2", AnkleRightXRay }, 
+      { "26100-8", DeprecatedCalcaneusBilateralXRayStanding }, 
+      { "http://loinc.org#26100-8", DeprecatedCalcaneusBilateralXRayStanding }, 
+      { "26101-6", DeprecatedCalcaneusLeftXRay }, 
+      { "http://loinc.org#26101-6", DeprecatedCalcaneusLeftXRay }, 
+      { "26102-4", DeprecatedCalcaneusRightXRay }, 
+      { "http://loinc.org#26102-4", DeprecatedCalcaneusRightXRay }, 
+      { "26106-5", ClavicleBilateralXRay }, 
+      { "http://loinc.org#26106-5", ClavicleBilateralXRay }, 
+      { "26107-3", ClavicleLeftXRay }, 
+      { "http://loinc.org#26107-3", ClavicleLeftXRay }, 
+      { "26108-1", ClavicleRightXRay }, 
+      { "http://loinc.org#26108-1", ClavicleRightXRay }, 
+      { "26109-9", ElbowBilateralXRay }, 
+      { "http://loinc.org#26109-9", ElbowBilateralXRay }, 
+      { "26110-7", ElbowLeftXRay }, 
+      { "http://loinc.org#26110-7", ElbowLeftXRay }, 
+      { "26111-5", ElbowRightXRay }, 
+      { "http://loinc.org#26111-5", ElbowRightXRay }, 
+      { "26112-3", LowerExtremityBilateralXRay }, 
+      { "http://loinc.org#26112-3", LowerExtremityBilateralXRay }, 
+      { "26113-1", LowerExtremityLeftXRay }, 
+      { "http://loinc.org#26113-1", LowerExtremityLeftXRay }, 
+      { "26114-9", LowerExtremityRightXRay }, 
+      { "http://loinc.org#26114-9", LowerExtremityRightXRay }, 
+      { "26115-6", UpperExtremityBilateralXRay }, 
+      { "http://loinc.org#26115-6", UpperExtremityBilateralXRay }, 
+      { "26116-4", UpperExtremityLeftXRay }, 
+      { "http://loinc.org#26116-4", UpperExtremityLeftXRay }, 
+      { "26117-2", UpperExtremityRightXRay }, 
+      { "http://loinc.org#26117-2", UpperExtremityRightXRay }, 
+      { "26118-0", FemurBilateralXRay }, 
+      { "http://loinc.org#26118-0", FemurBilateralXRay }, 
+      { "26120-6", FemurLeftXRay }, 
+      { "http://loinc.org#26120-6", FemurLeftXRay }, 
+      { "26122-2", FemurRightXRay }, 
+      { "http://loinc.org#26122-2", FemurRightXRay }, 
+      { "26124-8", FingerBilateralXRay }, 
+      { "http://loinc.org#26124-8", FingerBilateralXRay }, 
+      { "26125-5", FingerLeftXRay }, 
+      { "http://loinc.org#26125-5", FingerLeftXRay }, 
+      { "26126-3", FingerRightXRay }, 
+      { "http://loinc.org#26126-3", FingerRightXRay }, 
+      { "26127-1", FootBilateralXRay }, 
+      { "http://loinc.org#26127-1", FootBilateralXRay }, 
+      { "26128-9", FootLeftXRay }, 
+      { "http://loinc.org#26128-9", FootLeftXRay }, 
+      { "26129-7", FootRightXRay }, 
+      { "http://loinc.org#26129-7", FootRightXRay }, 
+      { "26130-5", HipBilateralXRay }, 
+      { "http://loinc.org#26130-5", HipBilateralXRay }, 
+      { "26131-3", HipLeftXRay }, 
+      { "http://loinc.org#26131-3", HipLeftXRay }, 
+      { "26132-1", HipRightXRay }, 
+      { "http://loinc.org#26132-1", HipRightXRay }, 
+      { "26133-9", AcetabulumBilateralXRay }, 
+      { "http://loinc.org#26133-9", AcetabulumBilateralXRay }, 
+      { "26134-7", AcetabulumLeftXRay }, 
+      { "http://loinc.org#26134-7", AcetabulumLeftXRay }, 
+      { "26135-4", AcetabulumRightXRay }, 
+      { "http://loinc.org#26135-4", AcetabulumRightXRay }, 
+      { "26136-2", AcromioclavicularJointBilateralXRay }, 
+      { "http://loinc.org#26136-2", AcromioclavicularJointBilateralXRay }, 
+      { "26137-0", AcromioclavicularJointLeftXRay }, 
+      { "http://loinc.org#26137-0", AcromioclavicularJointLeftXRay }, 
+      { "26138-8", AcromioclavicularJointRightXRay }, 
+      { "http://loinc.org#26138-8", AcromioclavicularJointRightXRay }, 
+      { "26139-6", MastoidBilateralXRay }, 
+      { "http://loinc.org#26139-6", MastoidBilateralXRay }, 
+      { "26140-4", MastoidLeftXRay }, 
+      { "http://loinc.org#26140-4", MastoidLeftXRay }, 
+      { "26141-2", MastoidRightXRay }, 
+      { "http://loinc.org#26141-2", MastoidRightXRay }, 
+      { "26142-0", OpticForamenBilateralXRay }, 
+      { "http://loinc.org#26142-0", OpticForamenBilateralXRay }, 
+      { "26143-8", OpticForamenLeftXRay }, 
+      { "http://loinc.org#26143-8", OpticForamenLeftXRay }, 
+      { "26144-6", OpticForamenRightXRay }, 
+      { "http://loinc.org#26144-6", OpticForamenRightXRay }, 
+      { "26146-1", RadiusBilateralAndUlnaBilateralXRay }, 
+      { "http://loinc.org#26146-1", RadiusBilateralAndUlnaBilateralXRay }, 
+      { "26148-7", RadiusLeftAndUlnaLeftXRay }, 
+      { "http://loinc.org#26148-7", RadiusLeftAndUlnaLeftXRay }, 
+      { "26150-3", RadiusRightAndUlnaRightXRay }, 
+      { "http://loinc.org#26150-3", RadiusRightAndUlnaRightXRay }, 
+      { "26151-1", RibsBilateralXRay }, 
+      { "http://loinc.org#26151-1", RibsBilateralXRay }, 
+      { "26152-9", RibsLeftXRay }, 
+      { "http://loinc.org#26152-9", RibsLeftXRay }, 
+      { "26153-7", RibsRightXRay }, 
+      { "http://loinc.org#26153-7", RibsRightXRay }, 
+      { "26154-5", ScapulaBilateralXRay }, 
+      { "http://loinc.org#26154-5", ScapulaBilateralXRay }, 
+      { "26155-2", ScapulaLeftXRay }, 
+      { "http://loinc.org#26155-2", ScapulaLeftXRay }, 
+      { "26156-0", ScapulaRightXRay }, 
+      { "http://loinc.org#26156-0", ScapulaRightXRay }, 
+      { "26157-8", ShoulderBilateralXRay }, 
+      { "http://loinc.org#26157-8", ShoulderBilateralXRay }, 
+      { "26158-6", ShoulderLeftXRay }, 
+      { "http://loinc.org#26158-6", ShoulderLeftXRay }, 
+      { "26159-4", ShoulderRightXRay }, 
+      { "http://loinc.org#26159-4", ShoulderRightXRay }, 
+      { "26160-2", ThumbBilateralXRay }, 
+      { "http://loinc.org#26160-2", ThumbBilateralXRay }, 
+      { "26161-0", ThumbLeftXRay }, 
+      { "http://loinc.org#26161-0", ThumbLeftXRay }, 
+      { "26162-8", ThumbRightXRay }, 
+      { "http://loinc.org#26162-8", ThumbRightXRay }, 
+      { "26163-6", TibiaBilateralAndFibulaBilateralXRay }, 
+      { "http://loinc.org#26163-6", TibiaBilateralAndFibulaBilateralXRay }, 
+      { "26164-4", TibiaLeftAndFibulaLeftXRay }, 
+      { "http://loinc.org#26164-4", TibiaLeftAndFibulaLeftXRay }, 
+      { "26165-1", TibiaRightAndFibulaRightXRay }, 
+      { "http://loinc.org#26165-1", TibiaRightAndFibulaRightXRay }, 
+      { "26166-9", ToesBilateralXRay }, 
+      { "http://loinc.org#26166-9", ToesBilateralXRay }, 
+      { "26167-7", ToesLeftXRay }, 
+      { "http://loinc.org#26167-7", ToesLeftXRay }, 
+      { "26168-5", ToesRightXRay }, 
+      { "http://loinc.org#26168-5", ToesRightXRay }, 
+      { "26169-3", WristBilateralXRay }, 
+      { "http://loinc.org#26169-3", WristBilateralXRay }, 
+      { "26170-1", WristLeftXRay }, 
+      { "http://loinc.org#26170-1", WristLeftXRay }, 
+      { "26171-9", WristRightXRay }, 
+      { "http://loinc.org#26171-9", WristRightXRay }, 
+      { "26172-7", ZygomaticArchBilateralXRay }, 
+      { "http://loinc.org#26172-7", ZygomaticArchBilateralXRay }, 
+      { "26173-5", ZygomaticArchLeftXRay }, 
+      { "http://loinc.org#26173-5", ZygomaticArchLeftXRay }, 
+      { "26174-3", ZygomaticArchRightXRay }, 
+      { "http://loinc.org#26174-3", ZygomaticArchRightXRay }, 
+      { "26175-0", BreastBilateralMammogramScreening }, 
+      { "http://loinc.org#26175-0", BreastBilateralMammogramScreening }, 
+      { "26176-8", BreastLeftMammogramScreening }, 
+      { "http://loinc.org#26176-8", BreastLeftMammogramScreening }, 
+      { "26177-6", BreastRightMammogramScreening }, 
+      { "http://loinc.org#26177-6", BreastRightMammogramScreening }, 
+      { "26178-4", FemoralArteryBilateralFluoroscopicAngiogramRunoffWContrastIA }, 
+      { "http://loinc.org#26178-4", FemoralArteryBilateralFluoroscopicAngiogramRunoffWContrastIA }, 
+      { "26179-2", FemoralArteryLeftFluoroscopicAngiogramRunoffWContrastIA }, 
+      { "http://loinc.org#26179-2", FemoralArteryLeftFluoroscopicAngiogramRunoffWContrastIA }, 
+      { "26180-0", FemoralArteryRightFluoroscopicAngiogramRunoffWContrastIA }, 
+      { "http://loinc.org#26180-0", FemoralArteryRightFluoroscopicAngiogramRunoffWContrastIA }, 
+      { "26181-8", ThoracicInletVesselsBilateralMRAngiogramWContrastIV }, 
+      { "http://loinc.org#26181-8", ThoracicInletVesselsBilateralMRAngiogramWContrastIV }, 
+      { "26182-6", ThoracicInletVesselsLeftMRAngiogramWContrastIV }, 
+      { "http://loinc.org#26182-6", ThoracicInletVesselsLeftMRAngiogramWContrastIV }, 
+      { "26183-4", ThoracicInletVesselsRightMRAngiogramWContrastIV }, 
+      { "http://loinc.org#26183-4", ThoracicInletVesselsRightMRAngiogramWContrastIV }, 
+      { "26184-2", ExtremityBilateralCTWContrastIV }, 
+      { "http://loinc.org#26184-2", ExtremityBilateralCTWContrastIV }, 
+      { "26185-9", ExtremityLeftCTWContrastIV }, 
+      { "http://loinc.org#26185-9", ExtremityLeftCTWContrastIV }, 
+      { "26186-7", ExtremityRightCTWContrastIV }, 
+      { "http://loinc.org#26186-7", ExtremityRightCTWContrastIV }, 
+      { "26187-5", AnkleBilateralMRWOAndWContrastIV }, 
+      { "http://loinc.org#26187-5", AnkleBilateralMRWOAndWContrastIV }, 
+      { "26188-3", AnkleLeftMRWOAndWContrastIV }, 
+      { "http://loinc.org#26188-3", AnkleLeftMRWOAndWContrastIV }, 
+      { "26189-1", AnkleRightMRWOAndWContrastIV }, 
+      { "http://loinc.org#26189-1", AnkleRightMRWOAndWContrastIV }, 
+      { "26190-9", BrachialPlexusBilateralMRWOAndWContrastIV }, 
+      { "http://loinc.org#26190-9", BrachialPlexusBilateralMRWOAndWContrastIV }, 
+      { "26191-7", BrachialPlexusLeftMRWOAndWContrastIV }, 
+      { "http://loinc.org#26191-7", BrachialPlexusLeftMRWOAndWContrastIV }, 
+      { "26192-5", BrachialPlexusRightMRWOAndWContrastIV }, 
+      { "http://loinc.org#26192-5", BrachialPlexusRightMRWOAndWContrastIV }, 
+      { "26193-3", ElbowBilateralMRWOAndWContrastIV }, 
+      { "http://loinc.org#26193-3", ElbowBilateralMRWOAndWContrastIV }, 
+      { "26194-1", ElbowLeftMRWOAndWContrastIV }, 
+      { "http://loinc.org#26194-1", ElbowLeftMRWOAndWContrastIV }, 
+      { "26195-8", ElbowRightMRWOAndWContrastIV }, 
+      { "http://loinc.org#26195-8", ElbowRightMRWOAndWContrastIV }, 
+      { "26196-6", ThighBilateralMRWOAndWContrastIV }, 
+      { "http://loinc.org#26196-6", ThighBilateralMRWOAndWContrastIV }, 
+      { "26197-4", ThighLeftMRWOAndWContrastIV }, 
+      { "http://loinc.org#26197-4", ThighLeftMRWOAndWContrastIV }, 
+      { "26198-2", ThighRightMRWOAndWContrastIV }, 
+      { "http://loinc.org#26198-2", ThighRightMRWOAndWContrastIV }, 
+      { "26199-0", KneeBilateralMRWOAndWContrastIV }, 
+      { "http://loinc.org#26199-0", KneeBilateralMRWOAndWContrastIV }, 
+      { "26200-6", KneeLeftMRWOAndWContrastIV }, 
+      { "http://loinc.org#26200-6", KneeLeftMRWOAndWContrastIV }, 
+      { "26201-4", KneeRightMRWOAndWContrastIV }, 
+      { "http://loinc.org#26201-4", KneeRightMRWOAndWContrastIV }, 
+      { "26202-2", ShoulderBilateralMRWOAndWContrastIV }, 
+      { "http://loinc.org#26202-2", ShoulderBilateralMRWOAndWContrastIV }, 
+      { "26203-0", ShoulderLeftMRWOAndWContrastIV }, 
+      { "http://loinc.org#26203-0", ShoulderLeftMRWOAndWContrastIV }, 
+      { "26204-8", ShoulderRightMRWOAndWContrastIV }, 
+      { "http://loinc.org#26204-8", ShoulderRightMRWOAndWContrastIV }, 
+      { "26205-5", WristBilateralMRWOAndWContrastIV }, 
+      { "http://loinc.org#26205-5", WristBilateralMRWOAndWContrastIV }, 
+      { "26206-3", WristLeftMRWOAndWContrastIV }, 
+      { "http://loinc.org#26206-3", WristLeftMRWOAndWContrastIV }, 
+      { "26207-1", WristRightMRWOAndWContrastIV }, 
+      { "http://loinc.org#26207-1", WristRightMRWOAndWContrastIV }, 
+      { "26208-9", AnkleBilateralMR }, 
+      { "http://loinc.org#26208-9", AnkleBilateralMR }, 
+      { "26209-7", AnkleLeftMR }, 
+      { "http://loinc.org#26209-7", AnkleLeftMR }, 
+      { "26210-5", AnkleRightMR }, 
+      { "http://loinc.org#26210-5", AnkleRightMR }, 
+      { "26211-3", BrachialPlexusBilateralMR }, 
+      { "http://loinc.org#26211-3", BrachialPlexusBilateralMR }, 
+      { "26212-1", BrachialPlexusLeftMR }, 
+      { "http://loinc.org#26212-1", BrachialPlexusLeftMR }, 
+      { "26213-9", BrachialPlexusRightMR }, 
+      { "http://loinc.org#26213-9", BrachialPlexusRightMR }, 
+      { "26214-7", BreastBilateralUS }, 
+      { "http://loinc.org#26214-7", BreastBilateralUS }, 
+      { "26215-4", BreastLeftUS }, 
+      { "http://loinc.org#26215-4", BreastLeftUS }, 
+      { "26216-2", BreastRightUS }, 
+      { "http://loinc.org#26216-2", BreastRightUS }, 
+      { "26217-0", CarotidArteriesBilateralUS }, 
+      { "http://loinc.org#26217-0", CarotidArteriesBilateralUS }, 
+      { "26218-8", CarotidArteriesLeftUS }, 
+      { "http://loinc.org#26218-8", CarotidArteriesLeftUS }, 
+      { "26219-6", CarotidArteriesRightUS }, 
+      { "http://loinc.org#26219-6", CarotidArteriesRightUS }, 
+      { "26220-4", ElbowBilateralMR }, 
+      { "http://loinc.org#26220-4", ElbowBilateralMR }, 
+      { "26221-2", ElbowLeftMR }, 
+      { "http://loinc.org#26221-2", ElbowLeftMR }, 
+      { "26222-0", ElbowRightMR }, 
+      { "http://loinc.org#26222-0", ElbowRightMR }, 
+      { "26223-8", ExtremityBilateralUS }, 
+      { "http://loinc.org#26223-8", ExtremityBilateralUS }, 
+      { "26224-6", ExtremityBilateralCT }, 
+      { "http://loinc.org#26224-6", ExtremityBilateralCT }, 
+      { "26225-3", ExtremityLeftUS }, 
+      { "http://loinc.org#26225-3", ExtremityLeftUS }, 
+      { "26226-1", ExtremityLeftCT }, 
+      { "http://loinc.org#26226-1", ExtremityLeftCT }, 
+      { "26227-9", LowerExtremityJointBilateralMR }, 
+      { "http://loinc.org#26227-9", LowerExtremityJointBilateralMR }, 
+      { "26228-7", LowerExtremityJointLeftMR }, 
+      { "http://loinc.org#26228-7", LowerExtremityJointLeftMR }, 
+      { "26229-5", LowerExtremityJointRightMR }, 
+      { "http://loinc.org#26229-5", LowerExtremityJointRightMR }, 
+      { "26230-3", ExtremityRightUS }, 
+      { "http://loinc.org#26230-3", ExtremityRightUS }, 
+      { "26231-1", ExtremityRightCT }, 
+      { "http://loinc.org#26231-1", ExtremityRightCT }, 
+      { "26232-9", UpperExtremityBilateralMR }, 
+      { "http://loinc.org#26232-9", UpperExtremityBilateralMR }, 
+      { "26233-7", UpperExtremityLeftMR }, 
+      { "http://loinc.org#26233-7", UpperExtremityLeftMR }, 
+      { "26234-5", UpperExtremityRightMR }, 
+      { "http://loinc.org#26234-5", UpperExtremityRightMR }, 
+      { "26235-2", ThighBilateralMR }, 
+      { "http://loinc.org#26235-2", ThighBilateralMR }, 
+      { "26236-0", ThighLeftMR }, 
+      { "http://loinc.org#26236-0", ThighLeftMR }, 
+      { "26237-8", ThighRightMR }, 
+      { "http://loinc.org#26237-8", ThighRightMR }, 
+      { "26238-6", FingerBilateralMR }, 
+      { "http://loinc.org#26238-6", FingerBilateralMR }, 
+      { "26239-4", FingerLeftMR }, 
+      { "http://loinc.org#26239-4", FingerLeftMR }, 
+      { "26240-2", FingerRightMR }, 
+      { "http://loinc.org#26240-2", FingerRightMR }, 
+      { "26241-0", FootBilateralMR }, 
+      { "http://loinc.org#26241-0", FootBilateralMR }, 
+      { "26242-8", FootLeftMR }, 
+      { "http://loinc.org#26242-8", FootLeftMR }, 
+      { "26243-6", FootRightMR }, 
+      { "http://loinc.org#26243-6", FootRightMR }, 
+      { "26244-4", ForearmBilateralMR }, 
+      { "http://loinc.org#26244-4", ForearmBilateralMR }, 
+      { "26245-1", ForearmLeftMR }, 
+      { "http://loinc.org#26245-1", ForearmLeftMR }, 
+      { "26246-9", ForearmRightMR }, 
+      { "http://loinc.org#26246-9", ForearmRightMR }, 
+      { "26247-7", HandBilateralMR }, 
+      { "http://loinc.org#26247-7", HandBilateralMR }, 
+      { "26248-5", HandLeftMR }, 
+      { "http://loinc.org#26248-5", HandLeftMR }, 
+      { "26249-3", HandRightMR }, 
+      { "http://loinc.org#26249-3", HandRightMR }, 
+      { "26250-1", HipBilateralUS }, 
+      { "http://loinc.org#26250-1", HipBilateralUS }, 
+      { "26251-9", HipLeftUS }, 
+      { "http://loinc.org#26251-9", HipLeftUS }, 
+      { "26252-7", HipRightUS }, 
+      { "http://loinc.org#26252-7", HipRightUS }, 
+      { "26253-5", InternalAuditoryCanalBilateralXRayTomograph }, 
+      { "http://loinc.org#26253-5", InternalAuditoryCanalBilateralXRayTomograph }, 
+      { "26254-3", InternalAuditoryCanalLeftXRayTomograph }, 
+      { "http://loinc.org#26254-3", InternalAuditoryCanalLeftXRayTomograph }, 
+      { "26255-0", InternalAuditoryCanalRightXRayTomograph }, 
+      { "http://loinc.org#26255-0", InternalAuditoryCanalRightXRayTomograph }, 
+      { "26256-8", KneeBilateralMR }, 
+      { "http://loinc.org#26256-8", KneeBilateralMR }, 
+      { "26257-6", KneeLeftMR }, 
+      { "http://loinc.org#26257-6", KneeLeftMR }, 
+      { "26258-4", KneeRightMR }, 
+      { "http://loinc.org#26258-4", KneeRightMR }, 
+      { "26259-2", PelvisAndHipBilateralMR }, 
+      { "http://loinc.org#26259-2", PelvisAndHipBilateralMR }, 
+      { "26260-0", PelvisAndHipLeftMR }, 
+      { "http://loinc.org#26260-0", PelvisAndHipLeftMR }, 
+      { "26261-8", PelvisAndHipRightMR }, 
+      { "http://loinc.org#26261-8", PelvisAndHipRightMR }, 
+      { "26262-6", PoplitealSpaceBilateralUS }, 
+      { "http://loinc.org#26262-6", PoplitealSpaceBilateralUS }, 
+      { "26263-4", PoplitealSpaceLeftUS }, 
+      { "http://loinc.org#26263-4", PoplitealSpaceLeftUS }, 
+      { "26264-2", PoplitealSpaceRightUS }, 
+      { "http://loinc.org#26264-2", PoplitealSpaceRightUS }, 
+      { "26265-9", ShoulderBilateralUS }, 
+      { "http://loinc.org#26265-9", ShoulderBilateralUS }, 
+      { "26266-7", ShoulderBilateralMR }, 
+      { "http://loinc.org#26266-7", ShoulderBilateralMR }, 
+      { "26267-5", ShoulderLeftUS }, 
+      { "http://loinc.org#26267-5", ShoulderLeftUS }, 
+      { "26268-3", ShoulderLeftMR }, 
+      { "http://loinc.org#26268-3", ShoulderLeftMR }, 
+      { "26269-1", ShoulderRightUS }, 
+      { "http://loinc.org#26269-1", ShoulderRightUS }, 
+      { "26270-9", ShoulderRightMR }, 
+      { "http://loinc.org#26270-9", ShoulderRightMR }, 
+      { "26271-7", ScrotumAndTesticleBilateralUS }, 
+      { "http://loinc.org#26271-7", ScrotumAndTesticleBilateralUS }, 
+      { "26272-5", ScrotumAndTesticleLeftUS }, 
+      { "http://loinc.org#26272-5", ScrotumAndTesticleLeftUS }, 
+      { "26273-3", ScrotumAndTesticleRightUS }, 
+      { "http://loinc.org#26273-3", ScrotumAndTesticleRightUS }, 
+      { "26277-4", WristBilateralMR }, 
+      { "http://loinc.org#26277-4", WristBilateralMR }, 
+      { "26278-2", WristBilateralUS }, 
+      { "http://loinc.org#26278-2", WristBilateralUS }, 
+      { "26279-0", WristLeftMR }, 
+      { "http://loinc.org#26279-0", WristLeftMR }, 
+      { "26280-8", WristLeftUS }, 
+      { "http://loinc.org#26280-8", WristLeftUS }, 
+      { "26281-6", WristRightMR }, 
+      { "http://loinc.org#26281-6", WristRightMR }, 
+      { "26282-4", WristRightUS }, 
+      { "http://loinc.org#26282-4", WristRightUS }, 
+      { "26283-2", KneeBilateralXRayMerchants }, 
+      { "http://loinc.org#26283-2", KneeBilateralXRayMerchants }, 
+      { "26284-0", KneeLeftXRayMerchants }, 
+      { "http://loinc.org#26284-0", KneeLeftXRayMerchants }, 
+      { "26285-7", KneeRightXRayMerchants }, 
+      { "http://loinc.org#26285-7", KneeRightXRayMerchants }, 
+      { "26286-5", BreastBilateralUSLimited }, 
+      { "http://loinc.org#26286-5", BreastBilateralUSLimited }, 
+      { "26287-3", BreastBilateralMammogramLimited }, 
+      { "http://loinc.org#26287-3", BreastBilateralMammogramLimited }, 
+      { "26288-1", BreastLeftUSLimited }, 
+      { "http://loinc.org#26288-1", BreastLeftUSLimited }, 
+      { "26289-9", BreastLeftMammogramLimited }, 
+      { "http://loinc.org#26289-9", BreastLeftMammogramLimited }, 
+      { "26290-7", BreastRightUSLimited }, 
+      { "http://loinc.org#26290-7", BreastRightUSLimited }, 
+      { "26291-5", BreastRightMammogramLimited }, 
+      { "http://loinc.org#26291-5", BreastRightMammogramLimited }, 
+      { "26292-3", MammogramGuidanceForStereotacticBiopsyOfBreastBilateral }, 
+      { "http://loinc.org#26292-3", MammogramGuidanceForStereotacticBiopsyOfBreastBilateral }, 
+      { "26293-1", MammogramGuidanceForStereotacticBiopsyOfBreastLeft }, 
+      { "http://loinc.org#26293-1", MammogramGuidanceForStereotacticBiopsyOfBreastLeft }, 
+      { "26294-9", MammogramGuidanceForStereotacticBiopsyOfBreastRight }, 
+      { "http://loinc.org#26294-9", MammogramGuidanceForStereotacticBiopsyOfBreastRight }, 
+      { "26295-6", FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinBilateralWContrastIV }, 
+      { "http://loinc.org#26295-6", FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinBilateralWContrastIV }, 
+      { "26296-4", FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinLeftWContrastIV }, 
+      { "http://loinc.org#26296-4", FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinLeftWContrastIV }, 
+      { "26297-2", FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinRightWContrastIV }, 
+      { "http://loinc.org#26297-2", FluoroscopicAngiogramGuidanceForRepositionOfCentralVenousCatheterInVeinRightWContrastIV }, 
+      { "26298-0", FluoroscopicAngiogramGuidanceForAtherectomyOfVeinBilateralWContrastIV }, 
+      { "http://loinc.org#26298-0", FluoroscopicAngiogramGuidanceForAtherectomyOfVeinBilateralWContrastIV }, 
+      { "26299-8", FluoroscopicAngiogramGuidanceForAtherectomyOfVeinLeftWContrastIV }, 
+      { "http://loinc.org#26299-8", FluoroscopicAngiogramGuidanceForAtherectomyOfVeinLeftWContrastIV }, 
+      { "26300-4", FluoroscopicAngiogramGuidanceForAtherectomyOfVeinRightWContrastIV }, 
+      { "http://loinc.org#26300-4", FluoroscopicAngiogramGuidanceForAtherectomyOfVeinRightWContrastIV }, 
+      { "26301-2", FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinBilateral }, 
+      { "http://loinc.org#26301-2", FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinBilateral }, 
+      { "26302-0", FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinLeft }, 
+      { "http://loinc.org#26302-0", FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinLeft }, 
+      { "26303-8", FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinRight }, 
+      { "http://loinc.org#26303-8", FluoroscopicAngiogramGuidanceForPlacementOfStentInVeinRight }, 
+      { "26304-6", FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinBilateral }, 
+      { "http://loinc.org#26304-6", FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinBilateral }, 
+      { "26305-3", FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinLeft }, 
+      { "http://loinc.org#26305-3", FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinLeft }, 
+      { "26306-1", FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinRight }, 
+      { "http://loinc.org#26306-1", FluoroscopicAngiogramGuidanceForPlacementOfPeripherallyInsertedCentralVenousCatheterInVeinRight }, 
+      { "26307-9", GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinBilateral }, 
+      { "http://loinc.org#26307-9", GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinBilateral }, 
+      { "26308-7", GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinLeft }, 
+      { "http://loinc.org#26308-7", GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinLeft }, 
+      { "26309-5", GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinRight }, 
+      { "http://loinc.org#26309-5", GuidanceForPlacementOfLargeBoreCentralVenousCatheterInVeinRight }, 
+      { "26310-3", FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinBilateralWContrastIV }, 
+      { "http://loinc.org#26310-3", FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinBilateralWContrastIV }, 
+      { "26311-1", FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinLeftWContrastIV }, 
+      { "http://loinc.org#26311-1", FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinLeftWContrastIV }, 
+      { "26312-9", FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinRightWContrastIV }, 
+      { "http://loinc.org#26312-9", FluoroscopicAngiogramGuidanceForPlacementOfCentralVenousCatheterInVeinRightWContrastIV }, 
+      { "26313-7", USGuidanceForNeedleLocalizationOfBreastBilateral }, 
+      { "http://loinc.org#26313-7", USGuidanceForNeedleLocalizationOfBreastBilateral }, 
+      { "26314-5", USGuidanceForNeedleLocalizationOfBreastLeft }, 
+      { "http://loinc.org#26314-5", USGuidanceForNeedleLocalizationOfBreastLeft }, 
+      { "26315-2", MammogramGuidanceForNeedleLocalizationOfMassOfBreastBilateral }, 
+      { "http://loinc.org#26315-2", MammogramGuidanceForNeedleLocalizationOfMassOfBreastBilateral }, 
+      { "26316-0", MammogramGuidanceForNeedleLocalizationOfMassOfBreastLeft }, 
+      { "http://loinc.org#26316-0", MammogramGuidanceForNeedleLocalizationOfMassOfBreastLeft }, 
+      { "26317-8", MammogramGuidanceForNeedleLocalizationOfMassOfBreastRight }, 
+      { "http://loinc.org#26317-8", MammogramGuidanceForNeedleLocalizationOfMassOfBreastRight }, 
+      { "26318-6", USGuidanceForNeedleLocalizationOfBreastRight }, 
+      { "http://loinc.org#26318-6", USGuidanceForNeedleLocalizationOfBreastRight }, 
+      { "26319-4", CTGuidanceForInjectionOfSacroiliacJointBilateral }, 
+      { "http://loinc.org#26319-4", CTGuidanceForInjectionOfSacroiliacJointBilateral }, 
+      { "26320-2", CTGuidanceForInjectionOfSacroiliacJointLeft }, 
+      { "http://loinc.org#26320-2", CTGuidanceForInjectionOfSacroiliacJointLeft }, 
+      { "26321-0", CTGuidanceForInjectionOfSacroiliacJointRight }, 
+      { "http://loinc.org#26321-0", CTGuidanceForInjectionOfSacroiliacJointRight }, 
+      { "26322-8", FluoroscopyGuidanceForInjectionOfSpineFacetJointBilateral }, 
+      { "http://loinc.org#26322-8", FluoroscopyGuidanceForInjectionOfSpineFacetJointBilateral }, 
+      { "26323-6", FluoroscopyGuidanceForInjectionOfSpineFacetJointLeft }, 
+      { "http://loinc.org#26323-6", FluoroscopyGuidanceForInjectionOfSpineFacetJointLeft }, 
+      { "26324-4", FluoroscopyGuidanceForInjectionOfSpineFacetJointRight }, 
+      { "http://loinc.org#26324-4", FluoroscopyGuidanceForInjectionOfSpineFacetJointRight }, 
+      { "26325-1", USGuidanceForDrainageOfExtremityBilateral }, 
+      { "http://loinc.org#26325-1", USGuidanceForDrainageOfExtremityBilateral }, 
+      { "26326-9", USGuidanceForDrainageOfExtremityLeft }, 
+      { "http://loinc.org#26326-9", USGuidanceForDrainageOfExtremityLeft }, 
+      { "26327-7", USGuidanceForDrainageOfExtremityRight }, 
+      { "http://loinc.org#26327-7", USGuidanceForDrainageOfExtremityRight }, 
+      { "26328-5", USGuidanceForDrainageOfKidneyBilateral }, 
+      { "http://loinc.org#26328-5", USGuidanceForDrainageOfKidneyBilateral }, 
+      { "26329-3", USGuidanceForDrainageOfKidneyLeft }, 
+      { "http://loinc.org#26329-3", USGuidanceForDrainageOfKidneyLeft }, 
+      { "26330-1", USGuidanceForDrainageOfKidneyRight }, 
+      { "http://loinc.org#26330-1", USGuidanceForDrainageOfKidneyRight }, 
+      { "26331-9", FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinBilateralWContrastIV }, 
+      { "http://loinc.org#26331-9", FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinBilateralWContrastIV }, 
+      { "26332-7", FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinLeftWContrastIV }, 
+      { "http://loinc.org#26332-7", FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinLeftWContrastIV }, 
+      { "26333-5", FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinRightWContrastIV }, 
+      { "http://loinc.org#26333-5", FluoroscopicAngiogramGuidanceForChangeOfCentralVenousCatheterInVeinRightWContrastIV }, 
+      { "26334-3", MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastBilateral }, 
+      { "http://loinc.org#26334-3", MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastBilateral }, 
+      { "26335-0", MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastLeft }, 
+      { "http://loinc.org#26335-0", MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastLeft }, 
+      { "26336-8", MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastRight }, 
+      { "http://loinc.org#26336-8", MammogramGuidanceForCoreNeedlePercutaneousBiopsyOfBreastRight }, 
+      { "26337-6", MammogramGuidanceForBiopsyOfBreastBilateral }, 
+      { "http://loinc.org#26337-6", MammogramGuidanceForBiopsyOfBreastBilateral }, 
+      { "26338-4", MammogramGuidanceForBiopsyOfBreastLeft }, 
+      { "http://loinc.org#26338-4", MammogramGuidanceForBiopsyOfBreastLeft }, 
+      { "26339-2", MammogramGuidanceForBiopsyOfBreastRight }, 
+      { "http://loinc.org#26339-2", MammogramGuidanceForBiopsyOfBreastRight }, 
+      { "26340-0", USGuidanceForBiopsyOfKidneyBilateral }, 
+      { "http://loinc.org#26340-0", USGuidanceForBiopsyOfKidneyBilateral }, 
+      { "26341-8", USGuidanceForBiopsyOfKidneyLeft }, 
+      { "http://loinc.org#26341-8", USGuidanceForBiopsyOfKidneyLeft }, 
+      { "26342-6", USGuidanceForBiopsyOfKidneyRight }, 
+      { "http://loinc.org#26342-6", USGuidanceForBiopsyOfKidneyRight }, 
+      { "26343-4", MammogramGuidanceForAspirationOfCystOfBreastBilateral }, 
+      { "http://loinc.org#26343-4", MammogramGuidanceForAspirationOfCystOfBreastBilateral }, 
+      { "26344-2", MammogramGuidanceForAspirationOfCystOfBreastLeft }, 
+      { "http://loinc.org#26344-2", MammogramGuidanceForAspirationOfCystOfBreastLeft }, 
+      { "26345-9", MammogramGuidanceForAspirationOfCystOfBreastRight }, 
+      { "http://loinc.org#26345-9", MammogramGuidanceForAspirationOfCystOfBreastRight }, 
+      { "26346-7", BreastBilateralMammogramDiagnostic }, 
+      { "http://loinc.org#26346-7", BreastBilateralMammogramDiagnostic }, 
+      { "26347-5", BreastLeftMammogramDiagnostic }, 
+      { "http://loinc.org#26347-5", BreastLeftMammogramDiagnostic }, 
+      { "26348-3", BreastRightMammogramDiagnostic }, 
+      { "http://loinc.org#26348-3", BreastRightMammogramDiagnostic }, 
+      { "26349-1", BreastBilateralMammogramDiagnosticLimited }, 
+      { "http://loinc.org#26349-1", BreastBilateralMammogramDiagnosticLimited }, 
+      { "26350-9", BreastLeftMammogramDiagnosticLimited }, 
+      { "http://loinc.org#26350-9", BreastLeftMammogramDiagnosticLimited }, 
+      { "26351-7", BreastRightMammogramDiagnosticLimited }, 
+      { "http://loinc.org#26351-7", BreastRightMammogramDiagnosticLimited }, 
+      { "26352-5", WristBilateralAndHandBilateralXRayBoneAge }, 
+      { "http://loinc.org#26352-5", WristBilateralAndHandBilateralXRayBoneAge }, 
+      { "26353-3", WristLeftAndHandLeftXRayBoneAge }, 
+      { "http://loinc.org#26353-3", WristLeftAndHandLeftXRayBoneAge }, 
+      { "26354-1", WristRightAndHandRightXRayBoneAge }, 
+      { "http://loinc.org#26354-1", WristRightAndHandRightXRayBoneAge }, 
+      { "26355-8", HandBilateralXRayArthritis }, 
+      { "http://loinc.org#26355-8", HandBilateralXRayArthritis }, 
+      { "26356-6", HandLeftXRayArthritis }, 
+      { "http://loinc.org#26356-6", HandLeftXRayArthritis }, 
+      { "26357-4", HandRightXRayArthritis }, 
+      { "http://loinc.org#26357-4", HandRightXRayArthritis }, 
+      { "26358-2", KneeBilateralXRayAPSingleViewStanding }, 
+      { "http://loinc.org#26358-2", KneeBilateralXRayAPSingleViewStanding }, 
+      { "26359-0", KneeLeftXRayAPSingleViewStanding }, 
+      { "http://loinc.org#26359-0", KneeLeftXRayAPSingleViewStanding }, 
+      { "26360-8", KneeRightXRayAPSingleViewStanding }, 
+      { "http://loinc.org#26360-8", KneeRightXRayAPSingleViewStanding }, 
+      { "26361-6", KneeBilateralXRayAPAndPAStanding }, 
+      { "http://loinc.org#26361-6", KneeBilateralXRayAPAndPAStanding }, 
+      { "26362-4", KneeLeftXRayAPAndPAStanding }, 
+      { "http://loinc.org#26362-4", KneeLeftXRayAPAndPAStanding }, 
+      { "26363-2", KneeRightXRayAPAndPAStanding }, 
+      { "http://loinc.org#26363-2", KneeRightXRayAPAndPAStanding }, 
+      { "26364-0", KneeBilateralXRayAPAndLateralStanding }, 
+      { "http://loinc.org#26364-0", KneeBilateralXRayAPAndLateralStanding }, 
+      { "26365-7", KneeLeftXRayAPAndLateralStanding }, 
+      { "http://loinc.org#26365-7", KneeLeftXRayAPAndLateralStanding }, 
+      { "26366-5", KneeRightXRayAPAndLateralStanding }, 
+      { "http://loinc.org#26366-5", KneeRightXRayAPAndLateralStanding }, 
+      { "26368-1", DeprecatedBrachiocephalicArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#26368-1", DeprecatedBrachiocephalicArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "26369-9", DeprecatedBrachiocephalicArteryRightFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#26369-9", DeprecatedBrachiocephalicArteryRightFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "26370-7", IliacArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#26370-7", IliacArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "26371-5", IliacArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#26371-5", IliacArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "26372-3", IliacArteryRightFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#26372-3", IliacArteryRightFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "26373-1", TibialArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#26373-1", TibialArteryBilateralFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "26374-9", TibialArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#26374-9", TibialArteryLeftFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "26375-6", TibialArteryRightFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "http://loinc.org#26375-6", TibialArteryRightFluoroscopicAngiogramAngioplastyWContrastIA }, 
+      { "26376-4", AdministrationOfVasodilatorIntoCatheterOfVeinBilateral }, 
+      { "http://loinc.org#26376-4", AdministrationOfVasodilatorIntoCatheterOfVeinBilateral }, 
+      { "26377-2", AdministrationOfVasodilatorIntoCatheterOfVeinLeft }, 
+      { "http://loinc.org#26377-2", AdministrationOfVasodilatorIntoCatheterOfVeinLeft }, 
+      { "26378-0", AdministrationOfVasodilatorIntoCatheterOfVeinRight }, 
+      { "http://loinc.org#26378-0", AdministrationOfVasodilatorIntoCatheterOfVeinRight }, 
+      { "26379-8", HandBilateralXRay3Views }, 
+      { "http://loinc.org#26379-8", HandBilateralXRay3Views }, 
+      { "26380-6", HandLeftXRay3Views }, 
+      { "http://loinc.org#26380-6", HandLeftXRay3Views }, 
+      { "26381-4", HandRightXRay3Views }, 
+      { "http://loinc.org#26381-4", HandRightXRay3Views }, 
+      { "26382-2", ShoulderBilateralXRay3Views }, 
+      { "http://loinc.org#26382-2", ShoulderBilateralXRay3Views }, 
+      { "26383-0", ShoulderLeftXRay3Views }, 
+      { "http://loinc.org#26383-0", ShoulderLeftXRay3Views }, 
+      { "26384-8", ShoulderRightXRay3Views }, 
+      { "http://loinc.org#26384-8", ShoulderRightXRay3Views }, 
+      { "26385-5", AnkleBilateralXRay2Views }, 
+      { "http://loinc.org#26385-5", AnkleBilateralXRay2Views }, 
+      { "26386-3", AnkleLeftXRay2Views }, 
+      { "http://loinc.org#26386-3", AnkleLeftXRay2Views }, 
+      { "26387-1", AnkleRightXRay2Views }, 
+      { "http://loinc.org#26387-1", AnkleRightXRay2Views }, 
+      { "26388-9", HandBilateralXRay2Views }, 
+      { "http://loinc.org#26388-9", HandBilateralXRay2Views }, 
+      { "26389-7", HandLeftXRay2Views }, 
+      { "http://loinc.org#26389-7", HandLeftXRay2Views }, 
+      { "26390-5", HandRightXRay2Views }, 
+      { "http://loinc.org#26390-5", HandRightXRay2Views }, 
+      { "26391-3", HumerusBilateralXRay2Views }, 
+      { "http://loinc.org#26391-3", HumerusBilateralXRay2Views }, 
+      { "26392-1", HumerusLeftXRay2Views }, 
+      { "http://loinc.org#26392-1", HumerusLeftXRay2Views }, 
+      { "26393-9", HumerusRightXRay2Views }, 
+      { "http://loinc.org#26393-9", HumerusRightXRay2Views }, 
+      { "26394-7", KneeBilateralXRay2Views }, 
+      { "http://loinc.org#26394-7", KneeBilateralXRay2Views }, 
+      { "26395-4", KneeLeftXRay2Views }, 
+      { "http://loinc.org#26395-4", KneeLeftXRay2Views }, 
+      { "26396-2", KneeRightXRay2Views }, 
+      { "http://loinc.org#26396-2", KneeRightXRay2Views }, 
+      { "26397-0", PatellaBilateralXRay2Views }, 
+      { "http://loinc.org#26397-0", PatellaBilateralXRay2Views }, 
+      { "26398-8", PatellaLeftXRay2Views }, 
+      { "http://loinc.org#26398-8", PatellaLeftXRay2Views }, 
+      { "26399-6", PatellaRightXRay2Views }, 
+      { "http://loinc.org#26399-6", PatellaRightXRay2Views }, 
+      { "26400-2", HipBilateralXRaySingleView }, 
+      { "http://loinc.org#26400-2", HipBilateralXRaySingleView }, 
+      { "26401-0", HipLeftXRaySingleView }, 
+      { "http://loinc.org#26401-0", HipLeftXRaySingleView }, 
+      { "26402-8", HipRightXRaySingleView }, 
+      { "http://loinc.org#26402-8", HipRightXRaySingleView }, 
+      { "28032-1", DeprecatedCardiacEchoStudy_2 }, 
+      { "http://loinc.org#28032-1", DeprecatedCardiacEchoStudy_2 }, 
+      { "28561-9", PelvisXRay }, 
+      { "http://loinc.org#28561-9", PelvisXRay }, 
+      { "28564-3", SkullXRay }, 
+      { "http://loinc.org#28564-3", SkullXRay }, 
+      { "28565-0", KneeXRay }, 
+      { "http://loinc.org#28565-0", KneeXRay }, 
+      { "28566-8", SpineCT }, 
+      { "http://loinc.org#28566-8", SpineCT }, 
+      { "28567-6", HumerusXRay }, 
+      { "http://loinc.org#28567-6", HumerusXRay }, 
+      { "28568-4", PhysicianEmergencyDepartmentNote }, 
+      { "http://loinc.org#28568-4", PhysicianEmergencyDepartmentNote }, 
+      { "28569-2", PhysicianConsultingProgressNote }, 
+      { "http://loinc.org#28569-2", PhysicianConsultingProgressNote }, 
+      { "28570-0", ProviderUnspecifiedProcedureNote }, 
+      { "http://loinc.org#28570-0", ProviderUnspecifiedProcedureNote }, 
+      { "28571-8", SpeechLanguagePathologyNote }, 
+      { "http://loinc.org#28571-8", SpeechLanguagePathologyNote }, 
+      { "28572-6", DentistryInitialEvaluationNote }, 
+      { "http://loinc.org#28572-6", DentistryInitialEvaluationNote }, 
+      { "28573-4", PhysicianOperationNote }, 
+      { "http://loinc.org#28573-4", PhysicianOperationNote }, 
+      { "28574-2", DischargeNote }, 
+      { "http://loinc.org#28574-2", DischargeNote }, 
+      { "28575-9", NursePractitionerProgressNote }, 
+      { "http://loinc.org#28575-9", NursePractitionerProgressNote }, 
+      { "28576-7", JointMR }, 
+      { "http://loinc.org#28576-7", JointMR }, 
+      { "28577-5", DentistryProcedureNote }, 
+      { "http://loinc.org#28577-5", DentistryProcedureNote }, 
+      { "28578-3", OccupationalTherapyNote }, 
+      { "http://loinc.org#28578-3", OccupationalTherapyNote }, 
+      { "28579-1", PhysicalTherapyNote }, 
+      { "http://loinc.org#28579-1", PhysicalTherapyNote }, 
+      { "28580-9", ChiropracticMedicineProgressNote }, 
+      { "http://loinc.org#28580-9", ChiropracticMedicineProgressNote }, 
+      { "28581-7", ChiropracticMedicineInitialEvaluationNote }, 
+      { "http://loinc.org#28581-7", ChiropracticMedicineInitialEvaluationNote }, 
+      { "28582-5", HandXRay }, 
+      { "http://loinc.org#28582-5", HandXRay }, 
+      { "28583-3", DentistOperationNote }, 
+      { "http://loinc.org#28583-3", DentistOperationNote }, 
+      { "28613-8", SpineXRay }, 
+      { "http://loinc.org#28613-8", SpineXRay }, 
+      { "28614-6", LiverUS }, 
+      { "http://loinc.org#28614-6", LiverUS }, 
+      { "28615-3", AudiologyStudy }, 
+      { "http://loinc.org#28615-3", AudiologyStudy }, 
+      { "28616-1", PhysicianTransferNote }, 
+      { "http://loinc.org#28616-1", PhysicianTransferNote }, 
+      { "28617-9", DentistryProgressNote }, 
+      { "http://loinc.org#28617-9", DentistryProgressNote }, 
+      { "28618-7", DentistryNote }, 
+      { "http://loinc.org#28618-7", DentistryNote }, 
+      { "28621-1", NursePractitionerInitialEvaluationNote }, 
+      { "http://loinc.org#28621-1", NursePractitionerInitialEvaluationNote }, 
+      { "28622-9", NurseDischargeAssessment }, 
+      { "http://loinc.org#28622-9", NurseDischargeAssessment }, 
+      { "28623-7", NurseProgressNote }, 
+      { "http://loinc.org#28623-7", NurseProgressNote }, 
+      { "28624-5", PodiatryOperationNote }, 
+      { "http://loinc.org#28624-5", PodiatryOperationNote }, 
+      { "28625-2", PodiatryProcedureNote }, 
+      { "http://loinc.org#28625-2", PodiatryProcedureNote }, 
+      { "28626-0", PhysicianHistoryAndPhysicalNote }, 
+      { "http://loinc.org#28626-0", PhysicianHistoryAndPhysicalNote }, 
+      { "28627-8", PsychiatryProgressNote }, 
+      { "http://loinc.org#28627-8", PsychiatryProgressNote }, 
+      { "28628-6", PsychiatryNote }, 
+      { "http://loinc.org#28628-6", PsychiatryNote }, 
+      { "28629-4", PerimetryStudy }, 
+      { "http://loinc.org#28629-4", PerimetryStudy }, 
+      { "28630-2", TonometryStudy }, 
+      { "http://loinc.org#28630-2", TonometryStudy }, 
+      { "28631-0", VisualAcuityStudy }, 
+      { "http://loinc.org#28631-0", VisualAcuityStudy }, 
+      { "28632-8", HeterophoriaStudy }, 
+      { "http://loinc.org#28632-8", HeterophoriaStudy }, 
+      { "28633-6", PolysomnographySleepStudy }, 
+      { "http://loinc.org#28633-6", PolysomnographySleepStudy }, 
+      { "28635-1", PsychiatryInitialEvaluationNote }, 
+      { "http://loinc.org#28635-1", PsychiatryInitialEvaluationNote }, 
+      { "28636-9", ProviderUnspecifiedInitialAssessment }, 
+      { "http://loinc.org#28636-9", ProviderUnspecifiedInitialAssessment }, 
+      { "28651-8", NurseTransferNote }, 
+      { "http://loinc.org#28651-8", NurseTransferNote }, 
+      { "28653-4", SocialWorkNote }, 
+      { "http://loinc.org#28653-4", SocialWorkNote }, 
+      { "28654-2", PhysicianAttendingInitialEvaluationNote }, 
+      { "http://loinc.org#28654-2", PhysicianAttendingInitialEvaluationNote }, 
+      { "28655-9", PhysicianAttendingDischargeSummary }, 
+      { "http://loinc.org#28655-9", PhysicianAttendingDischargeSummary }, 
+      { "28656-7", SocialWorkProgressNote }, 
+      { "http://loinc.org#28656-7", SocialWorkProgressNote }, 
+      { "29206-0", SpeechTherapyServiceAttachment }, 
+      { "http://loinc.org#29206-0", SpeechTherapyServiceAttachment }, 
+      { "29252-4", ChestCTWOContrast }, 
+      { "http://loinc.org#29252-4", ChestCTWOContrast }, 
+      { "29272-2", EyeUltrasoundStudy }, 
+      { "http://loinc.org#29272-2", EyeUltrasoundStudy }, 
+      { "29749-9", DialysisRecords }, 
+      { "http://loinc.org#29749-9", DialysisRecords }, 
+      { "29750-7", NeonatalIntensiveCareRecords }, 
+      { "http://loinc.org#29750-7", NeonatalIntensiveCareRecords }, 
+      { "29751-5", CriticalCareRecords }, 
+      { "http://loinc.org#29751-5", CriticalCareRecords }, 
+      { "29752-3", PerioperativeRecords }, 
+      { "http://loinc.org#29752-3", PerioperativeRecords }, 
+      { "29753-1", NurseInitialEvaluationNote }, 
+      { "http://loinc.org#29753-1", NurseInitialEvaluationNote }, 
+      { "29754-9", NystagmogramStudy }, 
+      { "http://loinc.org#29754-9", NystagmogramStudy }, 
+      { "29755-6", NerveConductionStudy }, 
+      { "http://loinc.org#29755-6", NerveConductionStudy }, 
+      { "29756-4", PeritoneoscopyStudy }, 
+      { "http://loinc.org#29756-4", PeritoneoscopyStudy }, 
+      { "29757-2", ColposcopyStudy }, 
+      { "http://loinc.org#29757-2", ColposcopyStudy }, 
+      { "29761-4", DentistryDischargeSummary }, 
+      { "http://loinc.org#29761-4", DentistryDischargeSummary }, 
+      { "30601-9", CTGuidanceForBiopsyOfAbdomen }, 
+      { "http://loinc.org#30601-9", CTGuidanceForBiopsyOfAbdomen }, 
+      { "30602-7", CTGuidanceForFineNeedleAspirationOfAbdomen }, 
+      { "http://loinc.org#30602-7", CTGuidanceForFineNeedleAspirationOfAbdomen }, 
+      { "30603-5", CTGuidanceForFineNeedleAspirationOfLiver }, 
+      { "http://loinc.org#30603-5", CTGuidanceForFineNeedleAspirationOfLiver }, 
+      { "30604-3", CTGuidanceForBiopsyOfPancreas }, 
+      { "http://loinc.org#30604-3", CTGuidanceForBiopsyOfPancreas }, 
+      { "30605-0", CTGuidanceForFineNeedleAspirationOfPancreas }, 
+      { "http://loinc.org#30605-0", CTGuidanceForFineNeedleAspirationOfPancreas }, 
+      { "30606-8", CTGuidanceForFineNeedleAspirationOfPelvis }, 
+      { "http://loinc.org#30606-8", CTGuidanceForFineNeedleAspirationOfPelvis }, 
+      { "30607-6", CTGuidanceForBiopsyOfKidneyBilateral }, 
+      { "http://loinc.org#30607-6", CTGuidanceForBiopsyOfKidneyBilateral }, 
+      { "30627-4", UpperExtremityCTWOContrast }, 
+      { "http://loinc.org#30627-4", UpperExtremityCTWOContrast }, 
+      { "30628-2", FluoroscopyGuidanceForRemovalOfForeignBodyOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#30628-2", FluoroscopyGuidanceForRemovalOfForeignBodyOfUnspecifiedBodyRegion }, 
+      { "30629-0", FluoroscopyGuidanceForProcedureOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#30629-0", FluoroscopyGuidanceForProcedureOfUnspecifiedBodyRegion }, 
+      { "30630-8", CerebralCisternsFluoroscopyVideoWContrast }, 
+      { "http://loinc.org#30630-8", CerebralCisternsFluoroscopyVideoWContrast }, 
+      { "30631-6", ChestFluoroscopy }, 
+      { "http://loinc.org#30631-6", ChestFluoroscopy }, 
+      { "30700-9", USGuidanceForNeedleBiopsyOfUnspecifiedBodyRegion }, 
+      { "http://loinc.org#30700-9", USGuidanceForNeedleBiopsyOfUnspecifiedBodyRegion }, 
+      { "30701-7", UnspecifiedBodyRegionUSDuringSurgery }, 
+      { "http://loinc.org#30701-7", UnspecifiedBodyRegionUSDuringSurgery }, 
+      { "30702-5", USGuidanceForInjectionOfThyroidGland }, 
+      { "http://loinc.org#30702-5", USGuidanceForInjectionOfThyroidGland }, 
+      { "30703-3", USGuidanceForAspirationOfPericardialSpace }, 
+      { "http://loinc.org#30703-3", USGuidanceForAspirationOfPericardialSpace }, 
+      { "30704-1", AbdomenUSLimited }, 
+      { "http://loinc.org#30704-1", AbdomenUSLimited }, 
+      { "30705-8", UterusAndFallopianTubesUS }, 
+      { "http://loinc.org#30705-8", UterusAndFallopianTubesUS }, 
+      { "30706-6", LiverUSDuringSurgery }, 
+      { "http://loinc.org#30706-6", LiverUSDuringSurgery }, 
+      { "30819-7", EpiduralVeinsFluoroscopicAngiogramWContrastIV }, 
+      { "http://loinc.org#30819-7", EpiduralVeinsFluoroscopicAngiogramWContrastIV }, 
+      { "30820-5", CarotidArteryExternalBilateralFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#30820-5", CarotidArteryExternalBilateralFluoroscopicAngiogramWContrastIA }, 
+      { "30821-3", CarotidArteryExternalFluoroscopicAngiogramWContrastIA }, 
+      { "http://loinc.org#30821-3", CarotidArteryExternalFluoroscopicAngiogramWContrastIA }, 
+    };
   };
 }

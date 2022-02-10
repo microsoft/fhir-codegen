@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOptional = "optional";
 
     /// <summary>
+    /// Literal for code: TestscriptScopeConformanceCodesOptional
+    /// </summary>
+    public const string LiteralTestscriptScopeConformanceCodesOptional = "http://terminology.hl7.org/CodeSystem/testscript-scope-conformance-codes#optional";
+
+    /// <summary>
     /// Literal for code: Required
     /// </summary>
     public const string LiteralRequired = "required";
+
+    /// <summary>
+    /// Literal for code: TestscriptScopeConformanceCodesRequired
+    /// </summary>
+    public const string LiteralTestscriptScopeConformanceCodesRequired = "http://terminology.hl7.org/CodeSystem/testscript-scope-conformance-codes#required";
+
+    /// <summary>
+    /// Dictionary for looking up TestscriptScopeConformanceCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "optional", Optional }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-scope-conformance-codes#optional", Optional }, 
+      { "required", Required }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-scope-conformance-codes#required", Required }, 
+    };
   };
 }

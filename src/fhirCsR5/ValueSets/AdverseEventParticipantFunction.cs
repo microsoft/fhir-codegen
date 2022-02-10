@@ -50,9 +50,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAUT = "AUT";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeAUT
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAUT = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#AUT";
+
+    /// <summary>
     /// Literal for code: INF
     /// </summary>
     public const string LiteralINF = "INF";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeINF
+    /// </summary>
+    public const string LiteralV3ParticipationTypeINF = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#INF";
 
     /// <summary>
     /// Literal for code: PART
@@ -60,8 +70,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPART = "PART";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypePART
+    /// </summary>
+    public const string LiteralV3ParticipationTypePART = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PART";
+
+    /// <summary>
     /// Literal for code: WIT
     /// </summary>
     public const string LiteralWIT = "WIT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeWIT
+    /// </summary>
+    public const string LiteralV3ParticipationTypeWIT = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#WIT";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventParticipantFunction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AUT", AUT }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#AUT", AUT }, 
+      { "INF", INF }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#INF", INF }, 
+      { "PART", PART }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PART", PART }, 
+      { "WIT", WIT }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#WIT", WIT }, 
+    };
   };
 }

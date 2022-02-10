@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExists = "exists";
 
     /// <summary>
+    /// Literal for code: DiscriminatorTypeExists
+    /// </summary>
+    public const string LiteralDiscriminatorTypeExists = "http://hl7.org/fhir/discriminator-type#exists";
+
+    /// <summary>
     /// Literal for code: Pattern
     /// </summary>
     public const string LiteralPattern = "pattern";
+
+    /// <summary>
+    /// Literal for code: DiscriminatorTypePattern
+    /// </summary>
+    public const string LiteralDiscriminatorTypePattern = "http://hl7.org/fhir/discriminator-type#pattern";
 
     /// <summary>
     /// Literal for code: Profile
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProfile = "profile";
 
     /// <summary>
+    /// Literal for code: DiscriminatorTypeProfile
+    /// </summary>
+    public const string LiteralDiscriminatorTypeProfile = "http://hl7.org/fhir/discriminator-type#profile";
+
+    /// <summary>
     /// Literal for code: Type
     /// </summary>
     public const string LiteralType = "type";
 
     /// <summary>
+    /// Literal for code: DiscriminatorTypeType
+    /// </summary>
+    public const string LiteralDiscriminatorTypeType = "http://hl7.org/fhir/discriminator-type#type";
+
+    /// <summary>
     /// Literal for code: Value
     /// </summary>
     public const string LiteralValue = "value";
+
+    /// <summary>
+    /// Literal for code: DiscriminatorTypeValue
+    /// </summary>
+    public const string LiteralDiscriminatorTypeValue = "http://hl7.org/fhir/discriminator-type#value";
+
+    /// <summary>
+    /// Dictionary for looking up DiscriminatorType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "exists", Exists }, 
+      { "http://hl7.org/fhir/discriminator-type#exists", Exists }, 
+      { "pattern", Pattern }, 
+      { "http://hl7.org/fhir/discriminator-type#pattern", Pattern }, 
+      { "profile", Profile }, 
+      { "http://hl7.org/fhir/discriminator-type#profile", Profile }, 
+      { "type", Type }, 
+      { "http://hl7.org/fhir/discriminator-type#type", Type }, 
+      { "value", Value }, 
+      { "http://hl7.org/fhir/discriminator-type#value", Value }, 
+    };
   };
 }

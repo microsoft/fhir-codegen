@@ -160,6 +160,11 @@ namespace fhirCsR3.Models
     public const string VAL_DEFAULT = "default";
     public const string CHECK = "check";
     public const string VAL_OVERRIDE = "override";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "default",
+      "check",
+      "override",
+    };
   }
   /// <summary>
   /// When a system is excluded, and this makes a material difference to the expansion, the exclusion SHALL  be noted in the expansion parameters using a parameter 'excluded'.
@@ -789,6 +794,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? ActiveOnly { get; set; }
     /// <summary>
+    /// Extension container element for ActiveOnly
+    /// </summary>
+    public Element _ActiveOnly { get; set; }
+    /// <summary>
     /// May be a web site, an email address, a telephone number, etc.
     /// </summary>
     public List<ContactDetail> Contact { get; set; }
@@ -829,17 +838,33 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? ExcludeNested { get; set; }
     /// <summary>
+    /// Extension container element for ExcludeNested
+    /// </summary>
+    public Element _ExcludeNested { get; set; }
+    /// <summary>
     /// Codes which cannot be used in user interfaces will be excluded if excludeNotForUI is present and has a value of "true".
     /// </summary>
     public bool? ExcludeNotForUI { get; set; }
+    /// <summary>
+    /// Extension container element for ExcludeNotForUI
+    /// </summary>
+    public Element _ExcludeNotForUI { get; set; }
     /// <summary>
     /// Post coordinated codes are excluded if excludePostCoordinated is present and has a value of "true".
     /// </summary>
     public bool? ExcludePostCoordinated { get; set; }
     /// <summary>
+    /// Extension container element for ExcludePostCoordinated
+    /// </summary>
+    public Element _ExcludePostCoordinated { get; set; }
+    /// <summary>
     /// Allows filtering of expansion profile that are appropriate for use vs. not. This is labeled as "Is Modifier" because applications should not use an experimental expansion profile in production.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// Fix use of a particular code system to a particular version.
     /// </summary>
@@ -853,9 +878,17 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? IncludeDefinition { get; set; }
     /// <summary>
+    /// Extension container element for IncludeDefinition
+    /// </summary>
+    public Element _IncludeDefinition { get; set; }
+    /// <summary>
     /// ExpansionProfile.designation.include and ExpansionProfile.designation.exclude are only evaluated if includeDesignations is present and set to "true". If includeDesignations is present with a value of "true" and both ExpansionProfile.designation.include and ExpansionProfile.designation.exclude are absent, then all designations are returned in the expansion.
     /// </summary>
     public bool? IncludeDesignations { get; set; }
+    /// <summary>
+    /// Extension container element for IncludeDesignations
+    /// </summary>
+    public Element _IncludeDesignations { get; set; }
     /// <summary>
     /// It may be possible for the expansion profile to be used in jurisdictions other than those for which it was originally designed or intended.
     /// </summary>
@@ -864,6 +897,10 @@ namespace fhirCsR3.Models
     /// This field overides the default behaviour (which is to return an error). This does not apply to expansions which are unbounded. Clients SHALL process the extension [http://hl7.org/fhir/StructureDefinition/valueset-toocostly](extension-valueset-toocostly.html) correctly if limitedExpansion = true.
     /// </summary>
     public bool? LimitedExpansion { get; set; }
+    /// <summary>
+    /// Extension container element for LimitedExpansion
+    /// </summary>
+    public Element _LimitedExpansion { get; set; }
     /// <summary>
     /// The name is not expected to be globally unique. The name should be a simple alpha-numeric type name to ensure that it is computable friendly.
     /// </summary>
@@ -981,6 +1018,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("experimental", (bool)Experimental!);
       }
 
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Date))
       {
         writer.WriteString("date", (string)Date!);
@@ -1077,6 +1120,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("includeDesignations", (bool)IncludeDesignations!);
       }
 
+      if (_IncludeDesignations != null)
+      {
+        writer.WritePropertyName("_includeDesignations");
+        _IncludeDesignations.SerializeJson(writer, options);
+      }
+
       if (Designation != null)
       {
         writer.WritePropertyName("designation");
@@ -1088,9 +1137,21 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("includeDefinition", (bool)IncludeDefinition!);
       }
 
+      if (_IncludeDefinition != null)
+      {
+        writer.WritePropertyName("_includeDefinition");
+        _IncludeDefinition.SerializeJson(writer, options);
+      }
+
       if (ActiveOnly != null)
       {
         writer.WriteBoolean("activeOnly", (bool)ActiveOnly!);
+      }
+
+      if (_ActiveOnly != null)
+      {
+        writer.WritePropertyName("_activeOnly");
+        _ActiveOnly.SerializeJson(writer, options);
       }
 
       if (ExcludeNested != null)
@@ -1098,14 +1159,32 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("excludeNested", (bool)ExcludeNested!);
       }
 
+      if (_ExcludeNested != null)
+      {
+        writer.WritePropertyName("_excludeNested");
+        _ExcludeNested.SerializeJson(writer, options);
+      }
+
       if (ExcludeNotForUI != null)
       {
         writer.WriteBoolean("excludeNotForUI", (bool)ExcludeNotForUI!);
       }
 
+      if (_ExcludeNotForUI != null)
+      {
+        writer.WritePropertyName("_excludeNotForUI");
+        _ExcludeNotForUI.SerializeJson(writer, options);
+      }
+
       if (ExcludePostCoordinated != null)
       {
         writer.WriteBoolean("excludePostCoordinated", (bool)ExcludePostCoordinated!);
+      }
+
+      if (_ExcludePostCoordinated != null)
+      {
+        writer.WritePropertyName("_excludePostCoordinated");
+        _ExcludePostCoordinated.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(DisplayLanguage))
@@ -1124,6 +1203,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("limitedExpansion", (bool)LimitedExpansion!);
       }
 
+      if (_LimitedExpansion != null)
+      {
+        writer.WritePropertyName("_limitedExpansion");
+        _LimitedExpansion.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -1138,6 +1223,11 @@ namespace fhirCsR3.Models
       {
         case "activeOnly":
           ActiveOnly = reader.GetBoolean();
+          break;
+
+        case "_activeOnly":
+          _ActiveOnly = new fhirCsR3.Models.Element();
+          _ActiveOnly.DeserializeJson(ref reader, options);
           break;
 
         case "contact":
@@ -1208,16 +1298,36 @@ namespace fhirCsR3.Models
           ExcludeNested = reader.GetBoolean();
           break;
 
+        case "_excludeNested":
+          _ExcludeNested = new fhirCsR3.Models.Element();
+          _ExcludeNested.DeserializeJson(ref reader, options);
+          break;
+
         case "excludeNotForUI":
           ExcludeNotForUI = reader.GetBoolean();
+          break;
+
+        case "_excludeNotForUI":
+          _ExcludeNotForUI = new fhirCsR3.Models.Element();
+          _ExcludeNotForUI.DeserializeJson(ref reader, options);
           break;
 
         case "excludePostCoordinated":
           ExcludePostCoordinated = reader.GetBoolean();
           break;
 
+        case "_excludePostCoordinated":
+          _ExcludePostCoordinated = new fhirCsR3.Models.Element();
+          _ExcludePostCoordinated.DeserializeJson(ref reader, options);
+          break;
+
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "fixedVersion":
@@ -1256,8 +1366,18 @@ namespace fhirCsR3.Models
           IncludeDefinition = reader.GetBoolean();
           break;
 
+        case "_includeDefinition":
+          _IncludeDefinition = new fhirCsR3.Models.Element();
+          _IncludeDefinition.DeserializeJson(ref reader, options);
+          break;
+
         case "includeDesignations":
           IncludeDesignations = reader.GetBoolean();
+          break;
+
+        case "_includeDesignations":
+          _IncludeDesignations = new fhirCsR3.Models.Element();
+          _IncludeDesignations.DeserializeJson(ref reader, options);
           break;
 
         case "jurisdiction":
@@ -1289,6 +1409,11 @@ namespace fhirCsR3.Models
 
         case "limitedExpansion":
           LimitedExpansion = reader.GetBoolean();
+          break;
+
+        case "_limitedExpansion":
+          _LimitedExpansion = new fhirCsR3.Models.Element();
+          _LimitedExpansion.DeserializeJson(ref reader, options);
           break;
 
         case "name":
@@ -1402,5 +1527,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

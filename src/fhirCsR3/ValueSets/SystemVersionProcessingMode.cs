@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCheckValueSetVersion = "check";
 
     /// <summary>
+    /// Literal for code: SystemVersionProcessingModeCheckValueSetVersion
+    /// </summary>
+    public const string LiteralSystemVersionProcessingModeCheckValueSetVersion = "http://hl7.org/fhir/system-version-processing-mode#check";
+
+    /// <summary>
     /// Literal for code: DefaultVersion
     /// </summary>
     public const string LiteralDefaultVersion = "default";
 
     /// <summary>
+    /// Literal for code: SystemVersionProcessingModeDefaultVersion
+    /// </summary>
+    public const string LiteralSystemVersionProcessingModeDefaultVersion = "http://hl7.org/fhir/system-version-processing-mode#default";
+
+    /// <summary>
     /// Literal for code: OverrideValueSetVersion
     /// </summary>
     public const string LiteralOverrideValueSetVersion = "override";
+
+    /// <summary>
+    /// Literal for code: SystemVersionProcessingModeOverrideValueSetVersion
+    /// </summary>
+    public const string LiteralSystemVersionProcessingModeOverrideValueSetVersion = "http://hl7.org/fhir/system-version-processing-mode#override";
+
+    /// <summary>
+    /// Dictionary for looking up SystemVersionProcessingMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "check", CheckValueSetVersion }, 
+      { "http://hl7.org/fhir/system-version-processing-mode#check", CheckValueSetVersion }, 
+      { "default", DefaultVersion }, 
+      { "http://hl7.org/fhir/system-version-processing-mode#default", DefaultVersion }, 
+      { "override", OverrideValueSetVersion }, 
+      { "http://hl7.org/fhir/system-version-processing-mode#override", OverrideValueSetVersion }, 
+    };
   };
 }

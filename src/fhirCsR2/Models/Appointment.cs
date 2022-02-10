@@ -191,6 +191,11 @@ namespace fhirCsR2.Models
     public const string REQUIRED = "required";
     public const string OPTIONAL = "optional";
     public const string INFORMATION_ONLY = "information-only";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "required",
+      "optional",
+      "information-only",
+    };
   }
   /// <summary>
   /// Code Values for the Appointment.participant.status field
@@ -200,6 +205,12 @@ namespace fhirCsR2.Models
     public const string DECLINED = "declined";
     public const string TENTATIVE = "tentative";
     public const string NEEDS_ACTION = "needs-action";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "accepted",
+      "declined",
+      "tentative",
+      "needs-action",
+    };
   }
   /// <summary>
   /// A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
@@ -609,5 +620,14 @@ namespace fhirCsR2.Models
     public const string FULFILLED = "fulfilled";
     public const string CANCELLED = "cancelled";
     public const string NOSHOW = "noshow";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "pending",
+      "booked",
+      "arrived",
+      "fulfilled",
+      "cancelled",
+      "noshow",
+    };
   }
 }

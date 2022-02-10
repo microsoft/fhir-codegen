@@ -119,6 +119,11 @@ namespace fhirCsR5.Models
     public const string APPLICABILITY = "applicability";
     public const string START = "start";
     public const string STOP = "stop";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "applicability",
+      "start",
+      "stop",
+    };
   }
   /// <summary>
   /// A relationship to another action such as "before" or "30-60 minutes after start of".
@@ -278,6 +283,17 @@ namespace fhirCsR5.Models
     public const string AFTER_START = "after-start";
     public const string AFTER = "after";
     public const string AFTER_END = "after-end";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "before-start",
+      "before",
+      "before-end",
+      "concurrent-with-start",
+      "concurrent",
+      "concurrent-with-end",
+      "after-start",
+      "after",
+      "after-end",
+    };
   }
   /// <summary>
   /// Because request groups represent potential options for performing activities, some specific participants may still be unknown, so this element allows for both definitional participants (in the same way they are specified in ActivityDefinition and PlanDefinition resources) as well as identifying specific participants when they are known.
@@ -440,6 +456,18 @@ namespace fhirCsR5.Models
     public const string PRACTITIONER = "practitioner";
     public const string PRACTITIONERROLE = "practitionerrole";
     public const string RELATEDPERSON = "relatedperson";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "careteam",
+      "device",
+      "group",
+      "healthcareservice",
+      "location",
+      "organization",
+      "patient",
+      "practitioner",
+      "practitionerrole",
+      "relatedperson",
+    };
   }
   /// <summary>
   /// The actions, if any, produced by the evaluation of the artifact.
@@ -1270,6 +1298,10 @@ namespace fhirCsR5.Models
   public static class RequestGroupActionCardinalityBehaviorCodes {
     public const string SINGLE = "single";
     public const string MULTIPLE = "multiple";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "single",
+      "multiple",
+    };
   }
   /// <summary>
   /// Code Values for the RequestGroup.action.groupingBehavior field
@@ -1278,6 +1310,11 @@ namespace fhirCsR5.Models
     public const string VISUAL_GROUP = "visual-group";
     public const string LOGICAL_GROUP = "logical-group";
     public const string SENTENCE_GROUP = "sentence-group";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "visual-group",
+      "logical-group",
+      "sentence-group",
+    };
   }
   /// <summary>
   /// Code Values for the RequestGroup.action.precheckBehavior field
@@ -1285,6 +1322,10 @@ namespace fhirCsR5.Models
   public static class RequestGroupActionPrecheckBehaviorCodes {
     public const string YES = "yes";
     public const string NO = "no";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "yes",
+      "no",
+    };
   }
   /// <summary>
   /// Code Values for the RequestGroup.action.priority field
@@ -1294,6 +1335,12 @@ namespace fhirCsR5.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the RequestGroup.action.requiredBehavior field
@@ -1302,6 +1349,11 @@ namespace fhirCsR5.Models
     public const string MUST = "must";
     public const string COULD = "could";
     public const string MUST_UNLESS_DOCUMENTED = "must-unless-documented";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "must",
+      "could",
+      "must-unless-documented",
+    };
   }
   /// <summary>
   /// Code Values for the RequestGroup.action.selectionBehavior field
@@ -1313,6 +1365,14 @@ namespace fhirCsR5.Models
     public const string EXACTLY_ONE = "exactly-one";
     public const string AT_MOST_ONE = "at-most-one";
     public const string ONE_OR_MORE = "one-or-more";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "any",
+      "all",
+      "all-or-none",
+      "exactly-one",
+      "at-most-one",
+      "one-or-more",
+    };
   }
   /// <summary>
   /// A group of related requests that can be used to capture intended activities that have inter-dependencies such as "give this medication after that one".
@@ -2063,6 +2123,17 @@ namespace fhirCsR5.Models
     public const string FILLER_ORDER = "filler-order";
     public const string INSTANCE_ORDER = "instance-order";
     public const string OPTION = "option";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "directive",
+      "order",
+      "original-order",
+      "reflex-order",
+      "filler-order",
+      "instance-order",
+      "option",
+    };
   }
   /// <summary>
   /// Code Values for the RequestGroup.priority field
@@ -2072,6 +2143,12 @@ namespace fhirCsR5.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the RequestGroup.status field
@@ -2084,5 +2161,14 @@ namespace fhirCsR5.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "on-hold",
+      "revoked",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

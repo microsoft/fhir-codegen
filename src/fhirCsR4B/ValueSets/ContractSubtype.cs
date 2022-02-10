@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class ContractSubtypeCodes
   {
     /// <summary>
-    /// 
+    /// Disclosure-CA
     /// </summary>
     public static readonly Coding DisclosureCA = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsubtypecodes"
     };
     /// <summary>
-    /// 
+    /// Disclosure-US
     /// </summary>
     public static readonly Coding DisclosureUS = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDisclosureCA = "disclosure-ca";
 
     /// <summary>
+    /// Literal for code: ContractsubtypecodesDisclosureCA
+    /// </summary>
+    public const string LiteralContractsubtypecodesDisclosureCA = "http://terminology.hl7.org/CodeSystem/contractsubtypecodes#disclosure-ca";
+
+    /// <summary>
     /// Literal for code: DisclosureUS
     /// </summary>
     public const string LiteralDisclosureUS = "disclosure-us";
+
+    /// <summary>
+    /// Literal for code: ContractsubtypecodesDisclosureUS
+    /// </summary>
+    public const string LiteralContractsubtypecodesDisclosureUS = "http://terminology.hl7.org/CodeSystem/contractsubtypecodes#disclosure-us";
+
+    /// <summary>
+    /// Dictionary for looking up ContractSubtype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "disclosure-ca", DisclosureCA }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsubtypecodes#disclosure-ca", DisclosureCA }, 
+      { "disclosure-us", DisclosureUS }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsubtypecodes#disclosure-us", DisclosureUS }, 
+    };
   };
 }

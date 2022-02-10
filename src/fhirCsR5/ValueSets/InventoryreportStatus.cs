@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: InventoryreportStatusActive
+    /// </summary>
+    public const string LiteralInventoryreportStatusActive = "http://hl7.org/fhir/inventoryreport-status#active";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
+
+    /// <summary>
+    /// Literal for code: InventoryreportStatusDraft
+    /// </summary>
+    public const string LiteralInventoryreportStatusDraft = "http://hl7.org/fhir/inventoryreport-status#draft";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: InventoryreportStatusEnteredInError
+    /// </summary>
+    public const string LiteralInventoryreportStatusEnteredInError = "http://hl7.org/fhir/inventoryreport-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Requested
     /// </summary>
     public const string LiteralRequested = "requested";
+
+    /// <summary>
+    /// Literal for code: InventoryreportStatusRequested
+    /// </summary>
+    public const string LiteralInventoryreportStatusRequested = "http://hl7.org/fhir/inventoryreport-status#requested";
+
+    /// <summary>
+    /// Dictionary for looking up InventoryreportStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/inventoryreport-status#active", Active }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/inventoryreport-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/inventoryreport-status#entered-in-error", EnteredInError }, 
+      { "requested", Requested }, 
+      { "http://hl7.org/fhir/inventoryreport-status#requested", Requested }, 
+    };
   };
 }

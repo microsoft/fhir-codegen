@@ -162,9 +162,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralACSN = "ACSN";
 
     /// <summary>
+    /// Literal for code: V20203ACSN
+    /// </summary>
+    public const string LiteralV20203ACSN = "http://terminology.hl7.org/CodeSystem/v2-0203#ACSN";
+
+    /// <summary>
     /// Literal for code: BRN
     /// </summary>
     public const string LiteralBRN = "BRN";
+
+    /// <summary>
+    /// Literal for code: V20203BRN
+    /// </summary>
+    public const string LiteralV20203BRN = "http://terminology.hl7.org/CodeSystem/v2-0203#BRN";
 
     /// <summary>
     /// Literal for code: DL
@@ -172,9 +182,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDL = "DL";
 
     /// <summary>
+    /// Literal for code: V20203DL
+    /// </summary>
+    public const string LiteralV20203DL = "http://terminology.hl7.org/CodeSystem/v2-0203#DL";
+
+    /// <summary>
     /// Literal for code: DR
     /// </summary>
     public const string LiteralDR = "DR";
+
+    /// <summary>
+    /// Literal for code: V20203DR
+    /// </summary>
+    public const string LiteralV20203DR = "http://terminology.hl7.org/CodeSystem/v2-0203#DR";
 
     /// <summary>
     /// Literal for code: EN
@@ -182,9 +202,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEN = "EN";
 
     /// <summary>
+    /// Literal for code: V20203EN
+    /// </summary>
+    public const string LiteralV20203EN = "http://terminology.hl7.org/CodeSystem/v2-0203#EN";
+
+    /// <summary>
     /// Literal for code: FILL
     /// </summary>
     public const string LiteralFILL = "FILL";
+
+    /// <summary>
+    /// Literal for code: V20203FILL
+    /// </summary>
+    public const string LiteralV20203FILL = "http://terminology.hl7.org/CodeSystem/v2-0203#FILL";
 
     /// <summary>
     /// Literal for code: JHN
@@ -192,9 +222,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJHN = "JHN";
 
     /// <summary>
+    /// Literal for code: V20203JHN
+    /// </summary>
+    public const string LiteralV20203JHN = "http://terminology.hl7.org/CodeSystem/v2-0203#JHN";
+
+    /// <summary>
     /// Literal for code: MCN
     /// </summary>
     public const string LiteralMCN = "MCN";
+
+    /// <summary>
+    /// Literal for code: V20203MCN
+    /// </summary>
+    public const string LiteralV20203MCN = "http://terminology.hl7.org/CodeSystem/v2-0203#MCN";
 
     /// <summary>
     /// Literal for code: MD
@@ -202,9 +242,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMD = "MD";
 
     /// <summary>
+    /// Literal for code: V20203MD
+    /// </summary>
+    public const string LiteralV20203MD = "http://terminology.hl7.org/CodeSystem/v2-0203#MD";
+
+    /// <summary>
     /// Literal for code: MR
     /// </summary>
     public const string LiteralMR = "MR";
+
+    /// <summary>
+    /// Literal for code: V20203MR
+    /// </summary>
+    public const string LiteralV20203MR = "http://terminology.hl7.org/CodeSystem/v2-0203#MR";
 
     /// <summary>
     /// Literal for code: NIIP
@@ -212,9 +262,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNIIP = "NIIP";
 
     /// <summary>
+    /// Literal for code: V20203NIIP
+    /// </summary>
+    public const string LiteralV20203NIIP = "http://terminology.hl7.org/CodeSystem/v2-0203#NIIP";
+
+    /// <summary>
     /// Literal for code: PLAC
     /// </summary>
     public const string LiteralPLAC = "PLAC";
+
+    /// <summary>
+    /// Literal for code: V20203PLAC
+    /// </summary>
+    public const string LiteralV20203PLAC = "http://terminology.hl7.org/CodeSystem/v2-0203#PLAC";
 
     /// <summary>
     /// Literal for code: PPN
@@ -222,9 +282,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPPN = "PPN";
 
     /// <summary>
+    /// Literal for code: V20203PPN
+    /// </summary>
+    public const string LiteralV20203PPN = "http://terminology.hl7.org/CodeSystem/v2-0203#PPN";
+
+    /// <summary>
     /// Literal for code: PRN
     /// </summary>
     public const string LiteralPRN = "PRN";
+
+    /// <summary>
+    /// Literal for code: V20203PRN
+    /// </summary>
+    public const string LiteralV20203PRN = "http://terminology.hl7.org/CodeSystem/v2-0203#PRN";
 
     /// <summary>
     /// Literal for code: SB
@@ -232,9 +302,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSB = "SB";
 
     /// <summary>
+    /// Literal for code: V20203SB
+    /// </summary>
+    public const string LiteralV20203SB = "http://terminology.hl7.org/CodeSystem/v2-0203#SB";
+
+    /// <summary>
     /// Literal for code: SNO
     /// </summary>
     public const string LiteralSNO = "SNO";
+
+    /// <summary>
+    /// Literal for code: V20203SNO
+    /// </summary>
+    public const string LiteralV20203SNO = "http://terminology.hl7.org/CodeSystem/v2-0203#SNO";
 
     /// <summary>
     /// Literal for code: TAX
@@ -242,8 +322,60 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTAX = "TAX";
 
     /// <summary>
+    /// Literal for code: V20203TAX
+    /// </summary>
+    public const string LiteralV20203TAX = "http://terminology.hl7.org/CodeSystem/v2-0203#TAX";
+
+    /// <summary>
     /// Literal for code: UDI
     /// </summary>
     public const string LiteralUDI = "UDI";
+
+    /// <summary>
+    /// Literal for code: V20203UDI
+    /// </summary>
+    public const string LiteralV20203UDI = "http://terminology.hl7.org/CodeSystem/v2-0203#UDI";
+
+    /// <summary>
+    /// Dictionary for looking up IdentifierType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ACSN", ACSN }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#ACSN", ACSN }, 
+      { "BRN", BRN }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#BRN", BRN }, 
+      { "DL", DL }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#DL", DL }, 
+      { "DR", DR }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#DR", DR }, 
+      { "EN", EN }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#EN", EN }, 
+      { "FILL", FILL }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#FILL", FILL }, 
+      { "JHN", JHN }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#JHN", JHN }, 
+      { "MCN", MCN }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#MCN", MCN }, 
+      { "MD", MD }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#MD", MD }, 
+      { "MR", MR }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#MR", MR }, 
+      { "NIIP", NIIP }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#NIIP", NIIP }, 
+      { "PLAC", PLAC }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#PLAC", PLAC }, 
+      { "PPN", PPN }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#PPN", PPN }, 
+      { "PRN", PRN }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#PRN", PRN }, 
+      { "SB", SB }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#SB", SB }, 
+      { "SNO", SNO }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#SNO", SNO }, 
+      { "TAX", TAX }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#TAX", TAX }, 
+      { "UDI", UDI }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#UDI", UDI }, 
+    };
   };
 }

@@ -1835,9 +1835,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActUSPrivacyLaw_v3_ActUSPrivacyLaw = "_ActUSPrivacyLaw";
 
     /// <summary>
+    /// Literal for code: V3ActUSPrivacyLawActUSPrivacyLaw_v3_ActUSPrivacyLaw
+    /// </summary>
+    public const string LiteralV3ActUSPrivacyLawActUSPrivacyLaw_v3_ActUSPrivacyLaw = "http://hl7.org/fhir/v3/ActUSPrivacyLaw#_ActUSPrivacyLaw";
+
+    /// <summary>
     /// Literal for code: VAL42CFRPart2_v3_ActUSPrivacyLaw
     /// </summary>
     public const string LiteralVAL42CFRPart2_v3_ActUSPrivacyLaw = "42CFRPart2";
+
+    /// <summary>
+    /// Literal for code: V3ActUSPrivacyLawVAL42CFRPart2_v3_ActUSPrivacyLaw
+    /// </summary>
+    public const string LiteralV3ActUSPrivacyLawVAL42CFRPart2_v3_ActUSPrivacyLaw = "http://hl7.org/fhir/v3/ActUSPrivacyLaw#42CFRPart2";
 
     /// <summary>
     /// Literal for code: Abstracted_v3_ObservationValue
@@ -1845,9 +1855,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbstracted_v3_ObservationValue = "ABSTRED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAbstracted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueAbstracted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#ABSTRED";
+
+    /// <summary>
     /// Literal for code: AdolescentInformationSensitivity_v3_ActCode
     /// </summary>
     public const string LiteralAdolescentInformationSensitivity_v3_ActCode = "ADOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAdolescentInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAdolescentInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ADOL";
 
     /// <summary>
     /// Literal for code: Aggregated_v3_ObservationValue
@@ -1855,9 +1875,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAggregated_v3_ObservationValue = "AGGRED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAggregated_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueAggregated_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#AGGRED";
+
+    /// <summary>
     /// Literal for code: Anonymize_v3_ActCode
     /// </summary>
     public const string LiteralAnonymize_v3_ActCode = "ANONY";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAnonymize_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAnonymize_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ANONY";
 
     /// <summary>
     /// Literal for code: Anonymized_v3_ObservationValue
@@ -1865,9 +1895,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnonymized_v3_ObservationValue = "ANONYED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAnonymized_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueAnonymized_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#ANONYED";
+
+    /// <summary>
     /// Literal for code: AccountingOfDisclosure_v3_ActCode
     /// </summary>
     public const string LiteralAccountingOfDisclosure_v3_ActCode = "AOD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAccountingOfDisclosure_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAccountingOfDisclosure_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#AOD";
 
     /// <summary>
     /// Literal for code: Audit_v3_ActCode
@@ -1875,9 +1915,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAudit_v3_ActCode = "AUDIT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAudit_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAudit_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#AUDIT";
+
+    /// <summary>
     /// Literal for code: AuditTrail_v3_ActCode
     /// </summary>
     public const string LiteralAuditTrail_v3_ActCode = "AUDTR";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAuditTrail_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAuditTrail_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#AUDTR";
 
     /// <summary>
     /// Literal for code: BusinessInformationSensitivity_v3_ActCode
@@ -1885,9 +1935,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBusinessInformationSensitivity_v3_ActCode = "B";
 
     /// <summary>
+    /// Literal for code: V3ActCodeBusinessInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeBusinessInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#B";
+
+    /// <summary>
     /// Literal for code: CareManagement_v3_ActReason
     /// </summary>
     public const string LiteralCareManagement_v3_ActReason = "CAREMGT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonCareManagement_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonCareManagement_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#CAREMGT";
 
     /// <summary>
     /// Literal for code: CelebrityInformationSensitivity_v3_ActCode
@@ -1895,9 +1955,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCelebrityInformationSensitivity_v3_ActCode = "CEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCelebrityInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeCelebrityInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CEL";
+
+    /// <summary>
     /// Literal for code: ClinicianAsserted_v3_ObservationValue
     /// </summary>
     public const string LiteralClinicianAsserted_v3_ObservationValue = "CLINAST";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueClinicianAsserted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueClinicianAsserted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#CLINAST";
 
     /// <summary>
     /// Literal for code: ClinicianReported_v3_ObservationValue
@@ -1905,9 +1975,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClinicianReported_v3_ObservationValue = "CLINRPT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueClinicianReported_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueClinicianReported_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#CLINRPT";
+
+    /// <summary>
     /// Literal for code: ClinicalTrialResearch_v3_ActReason
     /// </summary>
     public const string LiteralClinicalTrialResearch_v3_ActReason = "CLINTRCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrialResearch_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrialResearch_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#CLINTRCH";
 
     /// <summary>
     /// Literal for code: ClinicalTrial_v3_ActReason
@@ -1915,9 +1995,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClinicalTrial_v3_ActReason = "CLINTRL";
 
     /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrial_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrial_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#CLINTRL";
+
+    /// <summary>
     /// Literal for code: ClaimAttachment_v3_ActReason
     /// </summary>
     public const string LiteralClaimAttachment_v3_ActReason = "CLMATTCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonClaimAttachment_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonClaimAttachment_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#CLMATTCH";
 
     /// <summary>
     /// Literal for code: CommonRule_v3_ActUSPrivacyLaw
@@ -1925,9 +2015,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCommonRule_v3_ActUSPrivacyLaw = "CommonRule";
 
     /// <summary>
+    /// Literal for code: V3ActUSPrivacyLawCommonRule_v3_ActUSPrivacyLaw
+    /// </summary>
+    public const string LiteralV3ActUSPrivacyLawCommonRule_v3_ActUSPrivacyLaw = "http://hl7.org/fhir/v3/ActUSPrivacyLaw#CommonRule";
+
+    /// <summary>
     /// Literal for code: Compartment_v3_ActCode
     /// </summary>
     public const string LiteralCompartment_v3_ActCode = "COMPT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCompartment_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeCompartment_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#COMPT";
 
     /// <summary>
     /// Literal for code: CoverageAuthorization_v3_ActReason
@@ -1935,9 +2035,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoverageAuthorization_v3_ActReason = "COVAUTH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonCoverageAuthorization_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageAuthorization_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#COVAUTH";
+
+    /// <summary>
     /// Literal for code: CoverageUnderPolicyOrProgram_v3_ActReason
     /// </summary>
     public const string LiteralCoverageUnderPolicyOrProgram_v3_ActReason = "COVERAGE";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonCoverageUnderPolicyOrProgram_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageUnderPolicyOrProgram_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#COVERAGE";
 
     /// <summary>
     /// Literal for code: ComplyWithConfidentialityCode_v3_ActCode
@@ -1945,9 +2055,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplyWithConfidentialityCode_v3_ActCode = "CPLYCC";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplyWithConfidentialityCode_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithConfidentialityCode_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYCC";
+
+    /// <summary>
     /// Literal for code: ComplyWithConsentDirective_v3_ActCode
     /// </summary>
     public const string LiteralComplyWithConsentDirective_v3_ActCode = "CPLYCD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeComplyWithConsentDirective_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithConsentDirective_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYCD";
 
     /// <summary>
     /// Literal for code: ComplyWithJurisdictionalPrivacyPolicy_v3_ActCode
@@ -1955,9 +2075,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplyWithJurisdictionalPrivacyPolicy_v3_ActCode = "CPLYJPP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplyWithJurisdictionalPrivacyPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithJurisdictionalPrivacyPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYJPP";
+
+    /// <summary>
     /// Literal for code: ComplyWithOrganizationalPrivacyPolicy_v3_ActCode
     /// </summary>
     public const string LiteralComplyWithOrganizationalPrivacyPolicy_v3_ActCode = "CPLYOPP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeComplyWithOrganizationalPrivacyPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithOrganizationalPrivacyPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYOPP";
 
     /// <summary>
     /// Literal for code: ComplyWithOrganizationalSecurityPolicy_v3_ActCode
@@ -1965,9 +2095,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplyWithOrganizationalSecurityPolicy_v3_ActCode = "CPLYOSP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplyWithOrganizationalSecurityPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithOrganizationalSecurityPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYOSP";
+
+    /// <summary>
     /// Literal for code: ComplyWithPolicy_v3_ActCode
     /// </summary>
     public const string LiteralComplyWithPolicy_v3_ActCode = "CPLYPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeComplyWithPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYPOL";
 
     /// <summary>
     /// Literal for code: CryptographicHashFunction_v3_ObservationValue
@@ -1975,9 +2115,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCryptographicHashFunction_v3_ObservationValue = "CRYTOHASH";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueCryptographicHashFunction_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueCryptographicHashFunction_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#CRYTOHASH";
+
+    /// <summary>
     /// Literal for code: DeclassifySecurityLabel_v3_ActCode
     /// </summary>
     public const string LiteralDeclassifySecurityLabel_v3_ActCode = "DECLASSIFYLABEL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDeclassifySecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDeclassifySecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DECLASSIFYLABEL";
 
     /// <summary>
     /// Literal for code: Deidentify_v3_ActCode
@@ -1985,9 +2135,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeidentify_v3_ActCode = "DEID";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDeidentify_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDeidentify_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DEID";
+
+    /// <summary>
     /// Literal for code: DeleteAfterUse_v3_ActCode
     /// </summary>
     public const string LiteralDeleteAfterUse_v3_ActCode = "DELAU";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDeleteAfterUse_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDeleteAfterUse_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DELAU";
 
     /// <summary>
     /// Literal for code: AllDemographicInformationSensitivity_v3_ActCode
@@ -1995,9 +2155,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAllDemographicInformationSensitivity_v3_ActCode = "DEMO";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAllDemographicInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAllDemographicInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DEMO";
+
+    /// <summary>
     /// Literal for code: DeviceAsserted_v3_ObservationValue
     /// </summary>
     public const string LiteralDeviceAsserted_v3_ObservationValue = "DEVAST";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDeviceAsserted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueDeviceAsserted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#DEVAST";
 
     /// <summary>
     /// Literal for code: DeviceReported_v3_ObservationValue
@@ -2005,9 +2175,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeviceReported_v3_ObservationValue = "DEVRPT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueDeviceReported_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueDeviceReported_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#DEVRPT";
+
+    /// <summary>
     /// Literal for code: DiagnosisInformationSensitivity_v3_ActCode
     /// </summary>
     public const string LiteralDiagnosisInformationSensitivity_v3_ActCode = "DIA";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDiagnosisInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDiagnosisInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DIA";
 
     /// <summary>
     /// Literal for code: DigitalSignature_v3_ObservationValue
@@ -2015,9 +2195,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDigitalSignature_v3_ObservationValue = "DIGSIG";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueDigitalSignature_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueDigitalSignature_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#DIGSIG";
+
+    /// <summary>
     /// Literal for code: Disaster_v3_ActReason
     /// </summary>
     public const string LiteralDisaster_v3_ActReason = "DISASTER";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDisaster_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonDisaster_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#DISASTER";
 
     /// <summary>
     /// Literal for code: DateOfBirthInformationSensitivity_v3_ActCode
@@ -2025,9 +2215,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDateOfBirthInformationSensitivity_v3_ActCode = "DOB";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDateOfBirthInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDateOfBirthInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DOB";
+
+    /// <summary>
     /// Literal for code: Donation_v3_ActReason
     /// </summary>
     public const string LiteralDonation_v3_ActReason = "DONAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDonation_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonDonation_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#DONAT";
 
     /// <summary>
     /// Literal for code: DowngradeSecurityLabel_v3_ActCode
@@ -2035,9 +2235,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDowngradeSecurityLabel_v3_ActCode = "DOWNGRDLABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDowngradeSecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDowngradeSecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DOWNGRDLABEL";
+
+    /// <summary>
     /// Literal for code: DrugInformationSensitivity_v3_ActCode
     /// </summary>
     public const string LiteralDrugInformationSensitivity_v3_ActCode = "DRGIS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDrugInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDrugInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DRGIS";
 
     /// <summary>
     /// Literal for code: DeriveSecurityLabel_v3_ActCode
@@ -2045,9 +2255,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeriveSecurityLabel_v3_ActCode = "DRIVLABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDeriveSecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDeriveSecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DRIVLABEL";
+
+    /// <summary>
     /// Literal for code: EligibilityDetermination_v3_ActReason
     /// </summary>
     public const string LiteralEligibilityDetermination_v3_ActReason = "ELIGDTRM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEligibilityDetermination_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonEligibilityDetermination_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#ELIGDTRM";
 
     /// <summary>
     /// Literal for code: EligibilityVerification_v3_ActReason
@@ -2055,9 +2275,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEligibilityVerification_v3_ActReason = "ELIGVER";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEligibilityVerification_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonEligibilityVerification_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#ELIGVER";
+
+    /// <summary>
     /// Literal for code: EmployeeInformationSensitivity_v3_ActCode
     /// </summary>
     public const string LiteralEmployeeInformationSensitivity_v3_ActCode = "EMP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEmployeeInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEmployeeInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#EMP";
 
     /// <summary>
     /// Literal for code: EmployerInformationSensitivity_v3_ActCode
@@ -2065,9 +2295,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmployerInformationSensitivity_v3_ActCode = "EMPL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEmployerInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEmployerInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#EMPL";
+
+    /// <summary>
     /// Literal for code: Encrypt_v3_ActCode
     /// </summary>
     public const string LiteralEncrypt_v3_ActCode = "ENCRYPT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEncrypt_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEncrypt_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ENCRYPT";
 
     /// <summary>
     /// Literal for code: EncryptAtRest_v3_ActCode
@@ -2075,9 +2315,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEncryptAtRest_v3_ActCode = "ENCRYPTR";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEncryptAtRest_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEncryptAtRest_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ENCRYPTR";
+
+    /// <summary>
     /// Literal for code: EncryptInTransit_v3_ActCode
     /// </summary>
     public const string LiteralEncryptInTransit_v3_ActCode = "ENCRYPTT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEncryptInTransit_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEncryptInTransit_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ENCRYPTT";
 
     /// <summary>
     /// Literal for code: EncryptInUse_v3_ActCode
@@ -2085,9 +2335,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEncryptInUse_v3_ActCode = "ENCRYPTU";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEncryptInUse_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEncryptInUse_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ENCRYPTU";
+
+    /// <summary>
     /// Literal for code: Enrollment_v3_ActReason
     /// </summary>
     public const string LiteralEnrollment_v3_ActReason = "ENROLLM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEnrollment_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonEnrollment_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#ENROLLM";
 
     /// <summary>
     /// Literal for code: SubstanceAbuseInformationSensitivity_v3_ActCode
@@ -2095,9 +2355,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSubstanceAbuseInformationSensitivity_v3_ActCode = "ETH";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSubstanceAbuseInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSubstanceAbuseInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ETH";
+
+    /// <summary>
     /// Literal for code: EmergencyTreatment_v3_ActReason
     /// </summary>
     public const string LiteralEmergencyTreatment_v3_ActReason = "ETREAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEmergencyTreatment_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonEmergencyTreatment_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#ETREAT";
 
     /// <summary>
     /// Literal for code: FamilyRequested_v3_ActReason
@@ -2105,9 +2375,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFamilyRequested_v3_ActReason = "FAMRQT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonFamilyRequested_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonFamilyRequested_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#FAMRQT";
+
+    /// <summary>
     /// Literal for code: Fraud_v3_ActReason
     /// </summary>
     public const string LiteralFraud_v3_ActReason = "FRAUD";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonFraud_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonFraud_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#FRAUD";
 
     /// <summary>
     /// Literal for code: GeneticDiseaseInformationSensitivity_v3_ActCode
@@ -2115,9 +2395,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGeneticDiseaseInformationSensitivity_v3_ActCode = "GDIS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeGeneticDiseaseInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeGeneticDiseaseInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#GDIS";
+
+    /// <summary>
     /// Literal for code: GenderAndSexualOrientationInformationSensitivity_v3_ActCode
     /// </summary>
     public const string LiteralGenderAndSexualOrientationInformationSensitivity_v3_ActCode = "GENDER";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeGenderAndSexualOrientationInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeGenderAndSexualOrientationInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#GENDER";
 
     /// <summary>
     /// Literal for code: Government_v3_ActReason
@@ -2125,9 +2415,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGovernment_v3_ActReason = "GOV";
 
     /// <summary>
+    /// Literal for code: V3ActReasonGovernment_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonGovernment_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#GOV";
+
+    /// <summary>
     /// Literal for code: HealthAccreditation_v3_ActReason
     /// </summary>
     public const string LiteralHealthAccreditation_v3_ActReason = "HACCRED";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthAccreditation_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonHealthAccreditation_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HACCRED";
 
     /// <summary>
     /// Literal for code: HealthCompliance_v3_ActReason
@@ -2135,9 +2435,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthCompliance_v3_ActReason = "HCOMPL";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthCompliance_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonHealthCompliance_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HCOMPL";
+
+    /// <summary>
     /// Literal for code: HealthcareProfessionalAsserted_v3_ObservationValue
     /// </summary>
     public const string LiteralHealthcareProfessionalAsserted_v3_ObservationValue = "HCPAST";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHealthcareProfessionalAsserted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueHealthcareProfessionalAsserted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#HCPAST";
 
     /// <summary>
     /// Literal for code: HealthcareProfessionalReported_v3_ObservationValue
@@ -2145,9 +2455,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthcareProfessionalReported_v3_ObservationValue = "HCPRPT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueHealthcareProfessionalReported_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueHealthcareProfessionalReported_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#HCPRPT";
+
+    /// <summary>
     /// Literal for code: Decedent_v3_ActReason
     /// </summary>
     public const string LiteralDecedent_v3_ActReason = "HDECD";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDecedent_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonDecedent_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HDECD";
 
     /// <summary>
     /// Literal for code: Directory_v3_ActReason
@@ -2155,9 +2475,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDirectory_v3_ActReason = "HDIRECT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonDirectory_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonDirectory_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HDIRECT";
+
+    /// <summary>
     /// Literal for code: HIPAANoticeOfPrivacyPractices_v3_ActUSPrivacyLaw
     /// </summary>
     public const string LiteralHIPAANoticeOfPrivacyPractices_v3_ActUSPrivacyLaw = "HIPAANOPP";
+
+    /// <summary>
+    /// Literal for code: V3ActUSPrivacyLawHIPAANoticeOfPrivacyPractices_v3_ActUSPrivacyLaw
+    /// </summary>
+    public const string LiteralV3ActUSPrivacyLawHIPAANoticeOfPrivacyPractices_v3_ActUSPrivacyLaw = "http://hl7.org/fhir/v3/ActUSPrivacyLaw#HIPAANOPP";
 
     /// <summary>
     /// Literal for code: HIPAAPsychotherapyNotes_v3_ActUSPrivacyLaw
@@ -2165,9 +2495,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHIPAAPsychotherapyNotes_v3_ActUSPrivacyLaw = "HIPAAPsyNotes";
 
     /// <summary>
+    /// Literal for code: V3ActUSPrivacyLawHIPAAPsychotherapyNotes_v3_ActUSPrivacyLaw
+    /// </summary>
+    public const string LiteralV3ActUSPrivacyLawHIPAAPsychotherapyNotes_v3_ActUSPrivacyLaw = "http://hl7.org/fhir/v3/ActUSPrivacyLaw#HIPAAPsyNotes";
+
+    /// <summary>
     /// Literal for code: HIPAASelfPay_v3_ActUSPrivacyLaw
     /// </summary>
     public const string LiteralHIPAASelfPay_v3_ActUSPrivacyLaw = "HIPAASelfPay";
+
+    /// <summary>
+    /// Literal for code: V3ActUSPrivacyLawHIPAASelfPay_v3_ActUSPrivacyLaw
+    /// </summary>
+    public const string LiteralV3ActUSPrivacyLawHIPAASelfPay_v3_ActUSPrivacyLaw = "http://hl7.org/fhir/v3/ActUSPrivacyLaw#HIPAASelfPay";
 
     /// <summary>
     /// Literal for code: HIVAIDSInformationSensitivity_v3_ActCode
@@ -2175,9 +2515,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHIVAIDSInformationSensitivity_v3_ActCode = "HIV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHIVAIDSInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeHIVAIDSInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#HIV";
+
+    /// <summary>
     /// Literal for code: Legal_v3_ActReason
     /// </summary>
     public const string LiteralLegal_v3_ActReason = "HLEGAL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonLegal_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonLegal_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HLEGAL";
 
     /// <summary>
     /// Literal for code: HealthcareMarketing_v3_ActReason
@@ -2185,9 +2535,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthcareMarketing_v3_ActReason = "HMARKT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthcareMarketing_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareMarketing_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HMARKT";
+
+    /// <summary>
     /// Literal for code: HealthcareOperations_v3_ActReason
     /// </summary>
     public const string LiteralHealthcareOperations_v3_ActReason = "HOPERAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthcareOperations_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareOperations_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HOPERAT";
 
     /// <summary>
     /// Literal for code: HealthOutcomeMeasure_v3_ActReason
@@ -2195,9 +2555,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthOutcomeMeasure_v3_ActReason = "HOUTCOMS";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthOutcomeMeasure_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonHealthOutcomeMeasure_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HOUTCOMS";
+
+    /// <summary>
     /// Literal for code: HealthcarePayment_v3_ActReason
     /// </summary>
     public const string LiteralHealthcarePayment_v3_ActReason = "HPAYMT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthcarePayment_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcarePayment_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HPAYMT";
 
     /// <summary>
     /// Literal for code: HealthProgramReporting_v3_ActReason
@@ -2205,9 +2575,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthProgramReporting_v3_ActReason = "HPRGRP";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthProgramReporting_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonHealthProgramReporting_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HPRGRP";
+
+    /// <summary>
     /// Literal for code: HealthQualityImprovement_v3_ActReason
     /// </summary>
     public const string LiteralHealthQualityImprovement_v3_ActReason = "HQUALIMP";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthQualityImprovement_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonHealthQualityImprovement_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HQUALIMP";
 
     /// <summary>
     /// Literal for code: HumanResourceCompartment_v3_ActCode
@@ -2215,9 +2595,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHumanResourceCompartment_v3_ActCode = "HRCOMPT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHumanResourceCompartment_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeHumanResourceCompartment_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#HRCOMPT";
+
+    /// <summary>
     /// Literal for code: HighlyReliable_v3_ObservationValue
     /// </summary>
     public const string LiteralHighlyReliable_v3_ObservationValue = "HRELIABLE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHighlyReliable_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueHighlyReliable_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#HRELIABLE";
 
     /// <summary>
     /// Literal for code: HealthcareResearch_v3_ActReason
@@ -2225,9 +2615,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthcareResearch_v3_ActReason = "HRESCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthcareResearch_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareResearch_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HRESCH";
+
+    /// <summary>
     /// Literal for code: HealthSystemAdministration_v3_ActReason
     /// </summary>
     public const string LiteralHealthSystemAdministration_v3_ActReason = "HSYSADMIN";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthSystemAdministration_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonHealthSystemAdministration_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#HSYSADMIN";
 
     /// <summary>
     /// Literal for code: HumanApproval_v3_ActCode
@@ -2235,9 +2635,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHumanApproval_v3_ActCode = "HUAPRV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHumanApproval_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeHumanApproval_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#HUAPRV";
+
+    /// <summary>
     /// Literal for code: Low_v3_Confidentiality
     /// </summary>
     public const string LiteralLow_v3_Confidentiality = "L";
+
+    /// <summary>
+    /// Literal for code: V3ConfidentialityLow_v3_Confidentiality
+    /// </summary>
+    public const string LiteralV3ConfidentialityLow_v3_Confidentiality = "http://hl7.org/fhir/v3/Confidentiality#L";
 
     /// <summary>
     /// Literal for code: AssignSecurityLabel_v3_ActCode
@@ -2245,9 +2655,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAssignSecurityLabel_v3_ActCode = "LABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAssignSecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAssignSecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#LABEL";
+
+    /// <summary>
     /// Literal for code: LivingArrangementInformationSensitivity_v3_ActCode
     /// </summary>
     public const string LiteralLivingArrangementInformationSensitivity_v3_ActCode = "LIVARG";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeLivingArrangementInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeLivingArrangementInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#LIVARG";
 
     /// <summary>
     /// Literal for code: LocationInformationSensitivity_v3_ActCode
@@ -2255,9 +2675,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLocationInformationSensitivity_v3_ActCode = "LOCIS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeLocationInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeLocationInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#LOCIS";
+
+    /// <summary>
     /// Literal for code: Moderate_v3_Confidentiality
     /// </summary>
     public const string LiteralModerate_v3_Confidentiality = "M";
+
+    /// <summary>
+    /// Literal for code: V3ConfidentialityModerate_v3_Confidentiality
+    /// </summary>
+    public const string LiteralV3ConfidentialityModerate_v3_Confidentiality = "http://hl7.org/fhir/v3/Confidentiality#M";
 
     /// <summary>
     /// Literal for code: Mapped_v3_ObservationValue
@@ -2265,9 +2695,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMapped_v3_ObservationValue = "MAPPED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMapped_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueMapped_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#MAPPED";
+
+    /// <summary>
     /// Literal for code: MaritalStatusInformationSensitivity_v3_ActCode
     /// </summary>
     public const string LiteralMaritalStatusInformationSensitivity_v3_ActCode = "MARST";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMaritalStatusInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeMaritalStatusInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#MARST";
 
     /// <summary>
     /// Literal for code: Mask_v3_ActCode
@@ -2275,9 +2715,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMask_v3_ActCode = "MASK";
 
     /// <summary>
+    /// Literal for code: V3ActCodeMask_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeMask_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#MASK";
+
+    /// <summary>
     /// Literal for code: Masked_v3_ObservationValue
     /// </summary>
     public const string LiteralMasked_v3_ObservationValue = "MASKED";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueMasked_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueMasked_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#MASKED";
 
     /// <summary>
     /// Literal for code: MemberAdministration_v3_ActReason
@@ -2285,9 +2735,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMemberAdministration_v3_ActReason = "MEMADMIN";
 
     /// <summary>
+    /// Literal for code: V3ActReasonMemberAdministration_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonMemberAdministration_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#MEMADMIN";
+
+    /// <summary>
     /// Literal for code: MinimumNecessary_v3_ActCode
     /// </summary>
     public const string LiteralMinimumNecessary_v3_ActCode = "MINEC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMinimumNecessary_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeMinimumNecessary_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#MINEC";
 
     /// <summary>
     /// Literal for code: Normal_v3_Confidentiality
@@ -2295,9 +2755,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNormal_v3_Confidentiality = "N";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityNormal_v3_Confidentiality
+    /// </summary>
+    public const string LiteralV3ConfidentialityNormal_v3_Confidentiality = "http://hl7.org/fhir/v3/Confidentiality#N";
+
+    /// <summary>
     /// Literal for code: NoDisclosureWithoutSubjectAuthorization_v3_ActCode
     /// </summary>
     public const string LiteralNoDisclosureWithoutSubjectAuthorization_v3_ActCode = "NOAUTH";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutSubjectAuthorization_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutSubjectAuthorization_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NOAUTH";
 
     /// <summary>
     /// Literal for code: NoCollection_v3_ActCode
@@ -2305,9 +2775,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoCollection_v3_ActCode = "NOCOLLECT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoCollection_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoCollection_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NOCOLLECT";
+
+    /// <summary>
     /// Literal for code: NoDisclosureWithoutConsentDirective_v3_ActCode
     /// </summary>
     public const string LiteralNoDisclosureWithoutConsentDirective_v3_ActCode = "NODSCLCD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutConsentDirective_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutConsentDirective_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NODSCLCD";
 
     /// <summary>
     /// Literal for code: NoDisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode
@@ -2315,9 +2795,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoDisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode = "NODSCLCDS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NODSCLCDS";
+
+    /// <summary>
     /// Literal for code: NoIntegration_v3_ActCode
     /// </summary>
     public const string LiteralNoIntegration_v3_ActCode = "NOINTEGRATE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoIntegration_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoIntegration_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NOINTEGRATE";
 
     /// <summary>
     /// Literal for code: NoUnlistedEntityDisclosure_v3_ActCode
@@ -2325,9 +2815,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoUnlistedEntityDisclosure_v3_ActCode = "NOLIST";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoUnlistedEntityDisclosure_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoUnlistedEntityDisclosure_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NOLIST";
+
+    /// <summary>
     /// Literal for code: NoDisclosureWithoutMOU_v3_ActCode
     /// </summary>
     public const string LiteralNoDisclosureWithoutMOU_v3_ActCode = "NOMOU";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutMOU_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutMOU_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NOMOU";
 
     /// <summary>
     /// Literal for code: NoDisclosureWithoutOrganizationalAuthorization_v3_ActCode
@@ -2335,9 +2835,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoDisclosureWithoutOrganizationalAuthorization_v3_ActCode = "NOORGPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutOrganizationalAuthorization_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutOrganizationalAuthorization_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NOORGPOL";
+
+    /// <summary>
     /// Literal for code: NoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization_v3_ActCode
     /// </summary>
     public const string LiteralNoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization_v3_ActCode = "NOPAT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NOPAT";
 
     /// <summary>
     /// Literal for code: NoCollectionBeyondPurposeOfUse_v3_ActCode
@@ -2345,9 +2855,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoCollectionBeyondPurposeOfUse_v3_ActCode = "NOPERSISTP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoCollectionBeyondPurposeOfUse_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoCollectionBeyondPurposeOfUse_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NOPERSISTP";
+
+    /// <summary>
     /// Literal for code: NoRedisclosureWithoutConsentDirective_v3_ActCode
     /// </summary>
     public const string LiteralNoRedisclosureWithoutConsentDirective_v3_ActCode = "NORDSCLCD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoRedisclosureWithoutConsentDirective_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoRedisclosureWithoutConsentDirective_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NORDSCLCD";
 
     /// <summary>
     /// Literal for code: NoRedisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode
@@ -2355,9 +2875,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoRedisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode = "NORDSCLCDS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoRedisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoRedisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NORDSCLCDS";
+
+    /// <summary>
     /// Literal for code: NoDisclosureWithoutJurisdictionalAuthorization_v3_ActCode
     /// </summary>
     public const string LiteralNoDisclosureWithoutJurisdictionalAuthorization_v3_ActCode = "NORDSCLW";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutJurisdictionalAuthorization_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutJurisdictionalAuthorization_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NORDSCLW";
 
     /// <summary>
     /// Literal for code: NoRelinking_v3_ActCode
@@ -2365,9 +2895,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoRelinking_v3_ActCode = "NORELINK";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoRelinking_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoRelinking_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NORELINK";
+
+    /// <summary>
     /// Literal for code: NoReuseBeyondPurposeOfUse_v3_ActCode
     /// </summary>
     public const string LiteralNoReuseBeyondPurposeOfUse_v3_ActCode = "NOREUSE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoReuseBeyondPurposeOfUse_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoReuseBeyondPurposeOfUse_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NOREUSE";
 
     /// <summary>
     /// Literal for code: NoUnauthorizedVIPDisclosure_v3_ActCode
@@ -2375,9 +2915,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoUnauthorizedVIPDisclosure_v3_ActCode = "NOVIP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoUnauthorizedVIPDisclosure_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoUnauthorizedVIPDisclosure_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#NOVIP";
+
+    /// <summary>
     /// Literal for code: ObligationPolicy_v3_ActCode
     /// </summary>
     public const string LiteralObligationPolicy_v3_ActCode = "ObligationPolicy";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeObligationPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeObligationPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ObligationPolicy";
 
     /// <summary>
     /// Literal for code: NoDisclosureWithoutOriginatorAuthorization_v3_ActCode
@@ -2385,9 +2935,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoDisclosureWithoutOriginatorAuthorization_v3_ActCode = "ORCON";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutOriginatorAuthorization_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutOriginatorAuthorization_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ORCON";
+
+    /// <summary>
     /// Literal for code: PatientAcquaintanceAsserted_v3_ObservationValue
     /// </summary>
     public const string LiteralPatientAcquaintanceAsserted_v3_ObservationValue = "PACQAST";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePatientAcquaintanceAsserted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValuePatientAcquaintanceAsserted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#PACQAST";
 
     /// <summary>
     /// Literal for code: PatientAcquaintanceReported_v3_ObservationValue
@@ -2395,9 +2955,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientAcquaintanceReported_v3_ObservationValue = "PACQRPT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValuePatientAcquaintanceReported_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValuePatientAcquaintanceReported_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#PACQRPT";
+
+    /// <summary>
     /// Literal for code: PatientAdministration_v3_ActReason
     /// </summary>
     public const string LiteralPatientAdministration_v3_ActReason = "PATADMIN";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientAdministration_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonPatientAdministration_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#PATADMIN";
 
     /// <summary>
     /// Literal for code: PatientAsserted_v3_ObservationValue
@@ -2405,9 +2975,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientAsserted_v3_ObservationValue = "PATAST";
 
     /// <summary>
+    /// Literal for code: V3ObservationValuePatientAsserted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValuePatientAsserted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#PATAST";
+
+    /// <summary>
     /// Literal for code: PatientReported_v3_ObservationValue
     /// </summary>
     public const string LiteralPatientReported_v3_ObservationValue = "PATRPT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePatientReported_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValuePatientReported_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#PATRPT";
 
     /// <summary>
     /// Literal for code: PatientRequested_v3_ActReason
@@ -2415,9 +2995,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientRequested_v3_ActReason = "PATRQT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPatientRequested_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonPatientRequested_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#PATRQT";
+
+    /// <summary>
     /// Literal for code: PatientSafety_v3_ActReason
     /// </summary>
     public const string LiteralPatientSafety_v3_ActReason = "PATSFTY";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientSafety_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonPatientSafety_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#PATSFTY";
 
     /// <summary>
     /// Literal for code: PayerAsserted_v3_ObservationValue
@@ -2425,9 +3015,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPayerAsserted_v3_ObservationValue = "PAYAST";
 
     /// <summary>
+    /// Literal for code: V3ObservationValuePayerAsserted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValuePayerAsserted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#PAYAST";
+
+    /// <summary>
     /// Literal for code: PayerReported_v3_ObservationValue
     /// </summary>
     public const string LiteralPayerReported_v3_ObservationValue = "PAYRPT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePayerReported_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValuePayerReported_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#PAYRPT";
 
     /// <summary>
     /// Literal for code: PatientDefaultSensitivity_v3_ActCode
@@ -2435,9 +3035,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientDefaultSensitivity_v3_ActCode = "PDS";
 
     /// <summary>
+    /// Literal for code: V3ActCodePatientDefaultSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePatientDefaultSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PDS";
+
+    /// <summary>
     /// Literal for code: PerformanceMeasure_v3_ActReason
     /// </summary>
     public const string LiteralPerformanceMeasure_v3_ActReason = "PERFMSR";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPerformanceMeasure_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonPerformanceMeasure_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#PERFMSR";
 
     /// <summary>
     /// Literal for code: PersistSecurityLabel_v3_ActCode
@@ -2445,9 +3055,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPersistSecurityLabel_v3_ActCode = "PERSISTLABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodePersistSecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePersistSecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PERSISTLABEL";
+
+    /// <summary>
     /// Literal for code: PopulationHealth_v3_ActReason
     /// </summary>
     public const string LiteralPopulationHealth_v3_ActReason = "POPHLTH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPopulationHealth_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonPopulationHealth_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#POPHLTH";
 
     /// <summary>
     /// Literal for code: PrivacyMark_v3_ActCode
@@ -2455,9 +3075,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivacyMark_v3_ActCode = "PRIVMARK";
 
     /// <summary>
+    /// Literal for code: V3ActCodePrivacyMark_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePrivacyMark_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PRIVMARK";
+
+    /// <summary>
     /// Literal for code: ProfessionalAsserted_v3_ObservationValue
     /// </summary>
     public const string LiteralProfessionalAsserted_v3_ObservationValue = "PROAST";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueProfessionalAsserted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueProfessionalAsserted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#PROAST";
 
     /// <summary>
     /// Literal for code: ProfessionalReported_v3_ObservationValue
@@ -2465,9 +3095,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProfessionalReported_v3_ObservationValue = "PRORPT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueProfessionalReported_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueProfessionalReported_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#PRORPT";
+
+    /// <summary>
     /// Literal for code: PatientRequestedSensitivity_v3_ActCode
     /// </summary>
     public const string LiteralPatientRequestedSensitivity_v3_ActCode = "PRS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePatientRequestedSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePatientRequestedSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PRS";
 
     /// <summary>
     /// Literal for code: Pseudonymize_v3_ActCode
@@ -2475,9 +3115,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPseudonymize_v3_ActCode = "PSEUD";
 
     /// <summary>
+    /// Literal for code: V3ActCodePseudonymize_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePseudonymize_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PSEUD";
+
+    /// <summary>
     /// Literal for code: Pseudonymized_v3_ObservationValue
     /// </summary>
     public const string LiteralPseudonymized_v3_ObservationValue = "PSEUDED";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePseudonymized_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValuePseudonymized_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#PSEUDED";
 
     /// <summary>
     /// Literal for code: PsychiatryInformationSensitivity_v3_ActCode
@@ -2485,9 +3135,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPsychiatryInformationSensitivity_v3_ActCode = "PSY";
 
     /// <summary>
+    /// Literal for code: V3ActCodePsychiatryInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePsychiatryInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PSY";
+
+    /// <summary>
     /// Literal for code: PublicHealth_v3_ActReason
     /// </summary>
     public const string LiteralPublicHealth_v3_ActReason = "PUBHLTH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPublicHealth_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonPublicHealth_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#PUBHLTH";
 
     /// <summary>
     /// Literal for code: PurposeOfUse_v3_ActReason
@@ -2495,9 +3155,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPurposeOfUse_v3_ActReason = "PurposeOfUse";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPurposeOfUse_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonPurposeOfUse_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#PurposeOfUse";
+
+    /// <summary>
     /// Literal for code: PowerOfAttorney_v3_ActReason
     /// </summary>
     public const string LiteralPowerOfAttorney_v3_ActReason = "PWATRNY";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPowerOfAttorney_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonPowerOfAttorney_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#PWATRNY";
 
     /// <summary>
     /// Literal for code: Restricted_v3_Confidentiality
@@ -2505,9 +3175,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRestricted_v3_Confidentiality = "R";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityRestricted_v3_Confidentiality
+    /// </summary>
+    public const string LiteralV3ConfidentialityRestricted_v3_Confidentiality = "http://hl7.org/fhir/v3/Confidentiality#R";
+
+    /// <summary>
     /// Literal for code: RaceInformationSensitivity_v3_ActCode
     /// </summary>
     public const string LiteralRaceInformationSensitivity_v3_ActCode = "RACE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRaceInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeRaceInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#RACE";
 
     /// <summary>
     /// Literal for code: RecordsManagement_v3_ActReason
@@ -2515,9 +3195,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRecordsManagement_v3_ActReason = "RECORDMGT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonRecordsManagement_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonRecordsManagement_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#RECORDMGT";
+
+    /// <summary>
     /// Literal for code: Redact_v3_ActCode
     /// </summary>
     public const string LiteralRedact_v3_ActCode = "REDACT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRedact_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeRedact_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#REDACT";
 
     /// <summary>
     /// Literal for code: Redacted_v3_ObservationValue
@@ -2525,9 +3215,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRedacted_v3_ObservationValue = "REDACTED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueRedacted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueRedacted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#REDACTED";
+
+    /// <summary>
     /// Literal for code: RefrainPolicy_v3_ActCode
     /// </summary>
     public const string LiteralRefrainPolicy_v3_ActCode = "RefrainPolicy";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRefrainPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeRefrainPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#RefrainPolicy";
 
     /// <summary>
     /// Literal for code: ReligionInformationSensitivity_v3_ActCode
@@ -2535,9 +3235,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReligionInformationSensitivity_v3_ActCode = "REL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeReligionInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeReligionInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#REL";
+
+    /// <summary>
     /// Literal for code: Reliable_v3_ObservationValue
     /// </summary>
     public const string LiteralReliable_v3_ObservationValue = "RELIABLE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueReliable_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueReliable_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#RELIABLE";
 
     /// <summary>
     /// Literal for code: RemittanceAdvice_v3_ActReason
@@ -2545,9 +3255,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemittanceAdvice_v3_ActReason = "REMITADV";
 
     /// <summary>
+    /// Literal for code: V3ActReasonRemittanceAdvice_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonRemittanceAdvice_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#REMITADV";
+
+    /// <summary>
     /// Literal for code: ResearchProjectCompartment_v3_ActCode
     /// </summary>
     public const string LiteralResearchProjectCompartment_v3_ActCode = "RESCOMPT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeResearchProjectCompartment_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeResearchProjectCompartment_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#RESCOMPT";
 
     /// <summary>
     /// Literal for code: RecordsManagementCompartment_v3_ActCode
@@ -2555,9 +3275,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRecordsManagementCompartment_v3_ActCode = "RMGTCOMPT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRecordsManagementCompartment_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeRecordsManagementCompartment_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#RMGTCOMPT";
+
+    /// <summary>
     /// Literal for code: SickleCellAnemia_v3_ActCode
     /// </summary>
     public const string LiteralSickleCellAnemia_v3_ActCode = "SCA";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSickleCellAnemia_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSickleCellAnemia_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SCA";
 
     /// <summary>
     /// Literal for code: SubstituteDecisionMakerAsserted_v3_ObservationValue
@@ -2565,9 +3295,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSubstituteDecisionMakerAsserted_v3_ObservationValue = "SDMAST";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSubstituteDecisionMakerAsserted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueSubstituteDecisionMakerAsserted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#SDMAST";
+
+    /// <summary>
     /// Literal for code: SubstituteDecisionMakerReported_v3_ObservationValue
     /// </summary>
     public const string LiteralSubstituteDecisionMakerReported_v3_ObservationValue = "SDMRPT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSubstituteDecisionMakerReported_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueSubstituteDecisionMakerReported_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#SDMRPT";
 
     /// <summary>
     /// Literal for code: SexualAssaultAbuseOrDomesticViolenceInformationSensitivity_v3_ActCode
@@ -2575,9 +3315,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSexualAssaultAbuseOrDomesticViolenceInformationSensitivity_v3_ActCode = "SDV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSexualAssaultAbuseOrDomesticViolenceInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSexualAssaultAbuseOrDomesticViolenceInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SDV";
+
+    /// <summary>
     /// Literal for code: SecurityPolicy_v3_ActCode
     /// </summary>
     public const string LiteralSecurityPolicy_v3_ActCode = "SecurityPolicy";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSecurityPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSecurityPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SecurityPolicy";
 
     /// <summary>
     /// Literal for code: SexualityAndReproductiveHealthInformationSensitivity_v3_ActCode
@@ -2585,9 +3335,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSexualityAndReproductiveHealthInformationSensitivity_v3_ActCode = "SEX";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSexualityAndReproductiveHealthInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSexualityAndReproductiveHealthInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SEX";
+
+    /// <summary>
     /// Literal for code: SickleCell_v3_ActCode
     /// </summary>
     public const string LiteralSickleCell_v3_ActCode = "SICKLE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSickleCell_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSickleCell_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SICKLE";
 
     /// <summary>
     /// Literal for code: SocialServicesSensitivity_v3_ActCode
@@ -2595,9 +3355,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSocialServicesSensitivity_v3_ActCode = "SOC";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSocialServicesSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSocialServicesSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SOC";
+
+    /// <summary>
     /// Literal for code: SensitiveServiceProviderInformationSensitivity_v3_ActCode
     /// </summary>
     public const string LiteralSensitiveServiceProviderInformationSensitivity_v3_ActCode = "SSP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSensitiveServiceProviderInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSensitiveServiceProviderInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SSP";
 
     /// <summary>
     /// Literal for code: SexuallyTransmittedDiseaseInformationSensitivity_v3_ActCode
@@ -2605,9 +3375,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSexuallyTransmittedDiseaseInformationSensitivity_v3_ActCode = "STD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSexuallyTransmittedDiseaseInformationSensitivity_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSexuallyTransmittedDiseaseInformationSensitivity_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#STD";
+
+    /// <summary>
     /// Literal for code: Subsetted_v3_ObservationValue
     /// </summary>
     public const string LiteralSubsetted_v3_ObservationValue = "SUBSETTED";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSubsetted_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueSubsetted_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#SUBSETTED";
 
     /// <summary>
     /// Literal for code: SupportNetwork_v3_ActReason
@@ -2615,9 +3395,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSupportNetwork_v3_ActReason = "SUPNWK";
 
     /// <summary>
+    /// Literal for code: V3ActReasonSupportNetwork_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonSupportNetwork_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#SUPNWK";
+
+    /// <summary>
     /// Literal for code: SyntacticTransform_v3_ObservationValue
     /// </summary>
     public const string LiteralSyntacticTransform_v3_ObservationValue = "SYNTAC";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSyntacticTransform_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueSyntacticTransform_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#SYNTAC";
 
     /// <summary>
     /// Literal for code: Taboo_v3_ActCode
@@ -2625,9 +3415,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTaboo_v3_ActCode = "TBOO";
 
     /// <summary>
+    /// Literal for code: V3ActCodeTaboo_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeTaboo_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#TBOO";
+
+    /// <summary>
     /// Literal for code: Threat_v3_ActReason
     /// </summary>
     public const string LiteralThreat_v3_ActReason = "THREAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonThreat_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonThreat_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#THREAT";
 
     /// <summary>
     /// Literal for code: Title38Section7332_v3_ActUSPrivacyLaw
@@ -2635,9 +3435,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTitle38Section7332_v3_ActUSPrivacyLaw = "Title38Section7332";
 
     /// <summary>
+    /// Literal for code: V3ActUSPrivacyLawTitle38Section7332_v3_ActUSPrivacyLaw
+    /// </summary>
+    public const string LiteralV3ActUSPrivacyLawTitle38Section7332_v3_ActUSPrivacyLaw = "http://hl7.org/fhir/v3/ActUSPrivacyLaw#Title38Section7332";
+
+    /// <summary>
     /// Literal for code: Training_v3_ActReason
     /// </summary>
     public const string LiteralTraining_v3_ActReason = "TRAIN";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonTraining_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonTraining_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#TRAIN";
 
     /// <summary>
     /// Literal for code: Treatment_v3_ActReason
@@ -2645,9 +3455,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTreatment_v3_ActReason = "TREAT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonTreatment_v3_ActReason
+    /// </summary>
+    public const string LiteralV3ActReasonTreatment_v3_ActReason = "http://hl7.org/fhir/v3/ActReason#TREAT";
+
+    /// <summary>
     /// Literal for code: Translated_v3_ObservationValue
     /// </summary>
     public const string LiteralTranslated_v3_ObservationValue = "TRSLT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueTranslated_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueTranslated_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#TRSLT";
 
     /// <summary>
     /// Literal for code: Unrestricted_v3_Confidentiality
@@ -2655,9 +3475,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnrestricted_v3_Confidentiality = "U";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityUnrestricted_v3_Confidentiality
+    /// </summary>
+    public const string LiteralV3ConfidentialityUnrestricted_v3_Confidentiality = "http://hl7.org/fhir/v3/Confidentiality#U";
+
+    /// <summary>
     /// Literal for code: UncertainReliability_v3_ObservationValue
     /// </summary>
     public const string LiteralUncertainReliability_v3_ObservationValue = "UNCERTREL";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueUncertainReliability_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueUncertainReliability_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#UNCERTREL";
 
     /// <summary>
     /// Literal for code: Unreliable_v3_ObservationValue
@@ -2665,9 +3495,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnreliable_v3_ObservationValue = "UNRELIABLE";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueUnreliable_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueUnreliable_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#UNRELIABLE";
+
+    /// <summary>
     /// Literal for code: UpgradeSecurityLabel_v3_ActCode
     /// </summary>
     public const string LiteralUpgradeSecurityLabel_v3_ActCode = "UPGRDLABEL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeUpgradeSecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeUpgradeSecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#UPGRDLABEL";
 
     /// <summary>
     /// Literal for code: VeryRestricted_v3_Confidentiality
@@ -2675,8 +3515,364 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVeryRestricted_v3_Confidentiality = "V";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityVeryRestricted_v3_Confidentiality
+    /// </summary>
+    public const string LiteralV3ConfidentialityVeryRestricted_v3_Confidentiality = "http://hl7.org/fhir/v3/Confidentiality#V";
+
+    /// <summary>
     /// Literal for code: Versioned_v3_ObservationValue
     /// </summary>
     public const string LiteralVersioned_v3_ObservationValue = "VERSIONED";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueVersioned_v3_ObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueVersioned_v3_ObservationValue = "http://hl7.org/fhir/v3/ObservationValue#VERSIONED";
+
+    /// <summary>
+    /// Dictionary for looking up SecurityLabels Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ActUSPrivacyLaw", ActUSPrivacyLaw_v3_ActUSPrivacyLaw }, 
+      { "http://hl7.org/fhir/v3/ActUSPrivacyLaw#_ActUSPrivacyLaw", ActUSPrivacyLaw_v3_ActUSPrivacyLaw }, 
+      { "42CFRPart2", VAL42CFRPart2_v3_ActUSPrivacyLaw }, 
+      { "http://hl7.org/fhir/v3/ActUSPrivacyLaw#42CFRPart2", VAL42CFRPart2_v3_ActUSPrivacyLaw }, 
+      { "ABSTRED", Abstracted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#ABSTRED", Abstracted_v3_ObservationValue }, 
+      { "ADOL", AdolescentInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ADOL", AdolescentInformationSensitivity_v3_ActCode }, 
+      { "AGGRED", Aggregated_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#AGGRED", Aggregated_v3_ObservationValue }, 
+      { "ANONY", Anonymize_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ANONY", Anonymize_v3_ActCode }, 
+      { "ANONYED", Anonymized_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#ANONYED", Anonymized_v3_ObservationValue }, 
+      { "AOD", AccountingOfDisclosure_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#AOD", AccountingOfDisclosure_v3_ActCode }, 
+      { "AUDIT", Audit_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#AUDIT", Audit_v3_ActCode }, 
+      { "AUDTR", AuditTrail_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#AUDTR", AuditTrail_v3_ActCode }, 
+      { "B", BusinessInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#B", BusinessInformationSensitivity_v3_ActCode }, 
+      { "CAREMGT", CareManagement_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#CAREMGT", CareManagement_v3_ActReason }, 
+      { "CEL", CelebrityInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CEL", CelebrityInformationSensitivity_v3_ActCode }, 
+      { "CLINAST", ClinicianAsserted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#CLINAST", ClinicianAsserted_v3_ObservationValue }, 
+      { "CLINRPT", ClinicianReported_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#CLINRPT", ClinicianReported_v3_ObservationValue }, 
+      { "CLINTRCH", ClinicalTrialResearch_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#CLINTRCH", ClinicalTrialResearch_v3_ActReason }, 
+      { "CLINTRL", ClinicalTrial_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#CLINTRL", ClinicalTrial_v3_ActReason }, 
+      { "CLMATTCH", ClaimAttachment_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#CLMATTCH", ClaimAttachment_v3_ActReason }, 
+      { "CommonRule", CommonRule_v3_ActUSPrivacyLaw }, 
+      { "http://hl7.org/fhir/v3/ActUSPrivacyLaw#CommonRule", CommonRule_v3_ActUSPrivacyLaw }, 
+      { "COMPT", Compartment_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#COMPT", Compartment_v3_ActCode }, 
+      { "COVAUTH", CoverageAuthorization_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#COVAUTH", CoverageAuthorization_v3_ActReason }, 
+      { "COVERAGE", CoverageUnderPolicyOrProgram_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#COVERAGE", CoverageUnderPolicyOrProgram_v3_ActReason }, 
+      { "CPLYCC", ComplyWithConfidentialityCode_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYCC", ComplyWithConfidentialityCode_v3_ActCode }, 
+      { "CPLYCD", ComplyWithConsentDirective_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYCD", ComplyWithConsentDirective_v3_ActCode }, 
+      { "CPLYJPP", ComplyWithJurisdictionalPrivacyPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYJPP", ComplyWithJurisdictionalPrivacyPolicy_v3_ActCode }, 
+      { "CPLYOPP", ComplyWithOrganizationalPrivacyPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYOPP", ComplyWithOrganizationalPrivacyPolicy_v3_ActCode }, 
+      { "CPLYOSP", ComplyWithOrganizationalSecurityPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYOSP", ComplyWithOrganizationalSecurityPolicy_v3_ActCode }, 
+      { "CPLYPOL", ComplyWithPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYPOL", ComplyWithPolicy_v3_ActCode }, 
+      { "CRYTOHASH", CryptographicHashFunction_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#CRYTOHASH", CryptographicHashFunction_v3_ObservationValue }, 
+      { "DECLASSIFYLABEL", DeclassifySecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DECLASSIFYLABEL", DeclassifySecurityLabel_v3_ActCode }, 
+      { "DEID", Deidentify_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DEID", Deidentify_v3_ActCode }, 
+      { "DELAU", DeleteAfterUse_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DELAU", DeleteAfterUse_v3_ActCode }, 
+      { "DEMO", AllDemographicInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DEMO", AllDemographicInformationSensitivity_v3_ActCode }, 
+      { "DEVAST", DeviceAsserted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#DEVAST", DeviceAsserted_v3_ObservationValue }, 
+      { "DEVRPT", DeviceReported_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#DEVRPT", DeviceReported_v3_ObservationValue }, 
+      { "DIA", DiagnosisInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DIA", DiagnosisInformationSensitivity_v3_ActCode }, 
+      { "DIGSIG", DigitalSignature_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#DIGSIG", DigitalSignature_v3_ObservationValue }, 
+      { "DISASTER", Disaster_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#DISASTER", Disaster_v3_ActReason }, 
+      { "DOB", DateOfBirthInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DOB", DateOfBirthInformationSensitivity_v3_ActCode }, 
+      { "DONAT", Donation_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#DONAT", Donation_v3_ActReason }, 
+      { "DOWNGRDLABEL", DowngradeSecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DOWNGRDLABEL", DowngradeSecurityLabel_v3_ActCode }, 
+      { "DRGIS", DrugInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DRGIS", DrugInformationSensitivity_v3_ActCode }, 
+      { "DRIVLABEL", DeriveSecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DRIVLABEL", DeriveSecurityLabel_v3_ActCode }, 
+      { "ELIGDTRM", EligibilityDetermination_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#ELIGDTRM", EligibilityDetermination_v3_ActReason }, 
+      { "ELIGVER", EligibilityVerification_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#ELIGVER", EligibilityVerification_v3_ActReason }, 
+      { "EMP", EmployeeInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#EMP", EmployeeInformationSensitivity_v3_ActCode }, 
+      { "EMPL", EmployerInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#EMPL", EmployerInformationSensitivity_v3_ActCode }, 
+      { "ENCRYPT", Encrypt_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ENCRYPT", Encrypt_v3_ActCode }, 
+      { "ENCRYPTR", EncryptAtRest_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ENCRYPTR", EncryptAtRest_v3_ActCode }, 
+      { "ENCRYPTT", EncryptInTransit_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ENCRYPTT", EncryptInTransit_v3_ActCode }, 
+      { "ENCRYPTU", EncryptInUse_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ENCRYPTU", EncryptInUse_v3_ActCode }, 
+      { "ENROLLM", Enrollment_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#ENROLLM", Enrollment_v3_ActReason }, 
+      { "ETH", SubstanceAbuseInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ETH", SubstanceAbuseInformationSensitivity_v3_ActCode }, 
+      { "ETREAT", EmergencyTreatment_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#ETREAT", EmergencyTreatment_v3_ActReason }, 
+      { "FAMRQT", FamilyRequested_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#FAMRQT", FamilyRequested_v3_ActReason }, 
+      { "FRAUD", Fraud_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#FRAUD", Fraud_v3_ActReason }, 
+      { "GDIS", GeneticDiseaseInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#GDIS", GeneticDiseaseInformationSensitivity_v3_ActCode }, 
+      { "GENDER", GenderAndSexualOrientationInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#GENDER", GenderAndSexualOrientationInformationSensitivity_v3_ActCode }, 
+      { "GOV", Government_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#GOV", Government_v3_ActReason }, 
+      { "HACCRED", HealthAccreditation_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HACCRED", HealthAccreditation_v3_ActReason }, 
+      { "HCOMPL", HealthCompliance_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HCOMPL", HealthCompliance_v3_ActReason }, 
+      { "HCPAST", HealthcareProfessionalAsserted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#HCPAST", HealthcareProfessionalAsserted_v3_ObservationValue }, 
+      { "HCPRPT", HealthcareProfessionalReported_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#HCPRPT", HealthcareProfessionalReported_v3_ObservationValue }, 
+      { "HDECD", Decedent_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HDECD", Decedent_v3_ActReason }, 
+      { "HDIRECT", Directory_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HDIRECT", Directory_v3_ActReason }, 
+      { "HIPAANOPP", HIPAANoticeOfPrivacyPractices_v3_ActUSPrivacyLaw }, 
+      { "http://hl7.org/fhir/v3/ActUSPrivacyLaw#HIPAANOPP", HIPAANoticeOfPrivacyPractices_v3_ActUSPrivacyLaw }, 
+      { "HIPAAPsyNotes", HIPAAPsychotherapyNotes_v3_ActUSPrivacyLaw }, 
+      { "http://hl7.org/fhir/v3/ActUSPrivacyLaw#HIPAAPsyNotes", HIPAAPsychotherapyNotes_v3_ActUSPrivacyLaw }, 
+      { "HIPAASelfPay", HIPAASelfPay_v3_ActUSPrivacyLaw }, 
+      { "http://hl7.org/fhir/v3/ActUSPrivacyLaw#HIPAASelfPay", HIPAASelfPay_v3_ActUSPrivacyLaw }, 
+      { "HIV", HIVAIDSInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#HIV", HIVAIDSInformationSensitivity_v3_ActCode }, 
+      { "HLEGAL", Legal_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HLEGAL", Legal_v3_ActReason }, 
+      { "HMARKT", HealthcareMarketing_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HMARKT", HealthcareMarketing_v3_ActReason }, 
+      { "HOPERAT", HealthcareOperations_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HOPERAT", HealthcareOperations_v3_ActReason }, 
+      { "HOUTCOMS", HealthOutcomeMeasure_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HOUTCOMS", HealthOutcomeMeasure_v3_ActReason }, 
+      { "HPAYMT", HealthcarePayment_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HPAYMT", HealthcarePayment_v3_ActReason }, 
+      { "HPRGRP", HealthProgramReporting_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HPRGRP", HealthProgramReporting_v3_ActReason }, 
+      { "HQUALIMP", HealthQualityImprovement_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HQUALIMP", HealthQualityImprovement_v3_ActReason }, 
+      { "HRCOMPT", HumanResourceCompartment_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#HRCOMPT", HumanResourceCompartment_v3_ActCode }, 
+      { "HRELIABLE", HighlyReliable_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#HRELIABLE", HighlyReliable_v3_ObservationValue }, 
+      { "HRESCH", HealthcareResearch_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HRESCH", HealthcareResearch_v3_ActReason }, 
+      { "HSYSADMIN", HealthSystemAdministration_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#HSYSADMIN", HealthSystemAdministration_v3_ActReason }, 
+      { "HUAPRV", HumanApproval_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#HUAPRV", HumanApproval_v3_ActCode }, 
+      { "L", Low_v3_Confidentiality }, 
+      { "http://hl7.org/fhir/v3/Confidentiality#L", Low_v3_Confidentiality }, 
+      { "LABEL", AssignSecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#LABEL", AssignSecurityLabel_v3_ActCode }, 
+      { "LIVARG", LivingArrangementInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#LIVARG", LivingArrangementInformationSensitivity_v3_ActCode }, 
+      { "LOCIS", LocationInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#LOCIS", LocationInformationSensitivity_v3_ActCode }, 
+      { "M", Moderate_v3_Confidentiality }, 
+      { "http://hl7.org/fhir/v3/Confidentiality#M", Moderate_v3_Confidentiality }, 
+      { "MAPPED", Mapped_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#MAPPED", Mapped_v3_ObservationValue }, 
+      { "MARST", MaritalStatusInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#MARST", MaritalStatusInformationSensitivity_v3_ActCode }, 
+      { "MASK", Mask_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#MASK", Mask_v3_ActCode }, 
+      { "MASKED", Masked_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#MASKED", Masked_v3_ObservationValue }, 
+      { "MEMADMIN", MemberAdministration_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#MEMADMIN", MemberAdministration_v3_ActReason }, 
+      { "MINEC", MinimumNecessary_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#MINEC", MinimumNecessary_v3_ActCode }, 
+      { "N", Normal_v3_Confidentiality }, 
+      { "http://hl7.org/fhir/v3/Confidentiality#N", Normal_v3_Confidentiality }, 
+      { "NOAUTH", NoDisclosureWithoutSubjectAuthorization_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOAUTH", NoDisclosureWithoutSubjectAuthorization_v3_ActCode }, 
+      { "NOCOLLECT", NoCollection_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOCOLLECT", NoCollection_v3_ActCode }, 
+      { "NODSCLCD", NoDisclosureWithoutConsentDirective_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NODSCLCD", NoDisclosureWithoutConsentDirective_v3_ActCode }, 
+      { "NODSCLCDS", NoDisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NODSCLCDS", NoDisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode }, 
+      { "NOINTEGRATE", NoIntegration_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOINTEGRATE", NoIntegration_v3_ActCode }, 
+      { "NOLIST", NoUnlistedEntityDisclosure_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOLIST", NoUnlistedEntityDisclosure_v3_ActCode }, 
+      { "NOMOU", NoDisclosureWithoutMOU_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOMOU", NoDisclosureWithoutMOU_v3_ActCode }, 
+      { "NOORGPOL", NoDisclosureWithoutOrganizationalAuthorization_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOORGPOL", NoDisclosureWithoutOrganizationalAuthorization_v3_ActCode }, 
+      { "NOPAT", NoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOPAT", NoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization_v3_ActCode }, 
+      { "NOPERSISTP", NoCollectionBeyondPurposeOfUse_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOPERSISTP", NoCollectionBeyondPurposeOfUse_v3_ActCode }, 
+      { "NORDSCLCD", NoRedisclosureWithoutConsentDirective_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NORDSCLCD", NoRedisclosureWithoutConsentDirective_v3_ActCode }, 
+      { "NORDSCLCDS", NoRedisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NORDSCLCDS", NoRedisclosureWithoutInformationSubjectQuoteSConsentDirective_v3_ActCode }, 
+      { "NORDSCLW", NoDisclosureWithoutJurisdictionalAuthorization_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NORDSCLW", NoDisclosureWithoutJurisdictionalAuthorization_v3_ActCode }, 
+      { "NORELINK", NoRelinking_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NORELINK", NoRelinking_v3_ActCode }, 
+      { "NOREUSE", NoReuseBeyondPurposeOfUse_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOREUSE", NoReuseBeyondPurposeOfUse_v3_ActCode }, 
+      { "NOVIP", NoUnauthorizedVIPDisclosure_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOVIP", NoUnauthorizedVIPDisclosure_v3_ActCode }, 
+      { "ObligationPolicy", ObligationPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ObligationPolicy", ObligationPolicy_v3_ActCode }, 
+      { "ORCON", NoDisclosureWithoutOriginatorAuthorization_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ORCON", NoDisclosureWithoutOriginatorAuthorization_v3_ActCode }, 
+      { "PACQAST", PatientAcquaintanceAsserted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#PACQAST", PatientAcquaintanceAsserted_v3_ObservationValue }, 
+      { "PACQRPT", PatientAcquaintanceReported_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#PACQRPT", PatientAcquaintanceReported_v3_ObservationValue }, 
+      { "PATADMIN", PatientAdministration_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#PATADMIN", PatientAdministration_v3_ActReason }, 
+      { "PATAST", PatientAsserted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#PATAST", PatientAsserted_v3_ObservationValue }, 
+      { "PATRPT", PatientReported_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#PATRPT", PatientReported_v3_ObservationValue }, 
+      { "PATRQT", PatientRequested_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#PATRQT", PatientRequested_v3_ActReason }, 
+      { "PATSFTY", PatientSafety_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#PATSFTY", PatientSafety_v3_ActReason }, 
+      { "PAYAST", PayerAsserted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#PAYAST", PayerAsserted_v3_ObservationValue }, 
+      { "PAYRPT", PayerReported_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#PAYRPT", PayerReported_v3_ObservationValue }, 
+      { "PDS", PatientDefaultSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PDS", PatientDefaultSensitivity_v3_ActCode }, 
+      { "PERFMSR", PerformanceMeasure_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#PERFMSR", PerformanceMeasure_v3_ActReason }, 
+      { "PERSISTLABEL", PersistSecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PERSISTLABEL", PersistSecurityLabel_v3_ActCode }, 
+      { "POPHLTH", PopulationHealth_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#POPHLTH", PopulationHealth_v3_ActReason }, 
+      { "PRIVMARK", PrivacyMark_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PRIVMARK", PrivacyMark_v3_ActCode }, 
+      { "PROAST", ProfessionalAsserted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#PROAST", ProfessionalAsserted_v3_ObservationValue }, 
+      { "PRORPT", ProfessionalReported_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#PRORPT", ProfessionalReported_v3_ObservationValue }, 
+      { "PRS", PatientRequestedSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PRS", PatientRequestedSensitivity_v3_ActCode }, 
+      { "PSEUD", Pseudonymize_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PSEUD", Pseudonymize_v3_ActCode }, 
+      { "PSEUDED", Pseudonymized_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#PSEUDED", Pseudonymized_v3_ObservationValue }, 
+      { "PSY", PsychiatryInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PSY", PsychiatryInformationSensitivity_v3_ActCode }, 
+      { "PUBHLTH", PublicHealth_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#PUBHLTH", PublicHealth_v3_ActReason }, 
+      { "PurposeOfUse", PurposeOfUse_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#PurposeOfUse", PurposeOfUse_v3_ActReason }, 
+      { "PWATRNY", PowerOfAttorney_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#PWATRNY", PowerOfAttorney_v3_ActReason }, 
+      { "R", Restricted_v3_Confidentiality }, 
+      { "http://hl7.org/fhir/v3/Confidentiality#R", Restricted_v3_Confidentiality }, 
+      { "RACE", RaceInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#RACE", RaceInformationSensitivity_v3_ActCode }, 
+      { "RECORDMGT", RecordsManagement_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#RECORDMGT", RecordsManagement_v3_ActReason }, 
+      { "REDACT", Redact_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#REDACT", Redact_v3_ActCode }, 
+      { "REDACTED", Redacted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#REDACTED", Redacted_v3_ObservationValue }, 
+      { "RefrainPolicy", RefrainPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#RefrainPolicy", RefrainPolicy_v3_ActCode }, 
+      { "REL", ReligionInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#REL", ReligionInformationSensitivity_v3_ActCode }, 
+      { "RELIABLE", Reliable_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#RELIABLE", Reliable_v3_ObservationValue }, 
+      { "REMITADV", RemittanceAdvice_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#REMITADV", RemittanceAdvice_v3_ActReason }, 
+      { "RESCOMPT", ResearchProjectCompartment_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#RESCOMPT", ResearchProjectCompartment_v3_ActCode }, 
+      { "RMGTCOMPT", RecordsManagementCompartment_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#RMGTCOMPT", RecordsManagementCompartment_v3_ActCode }, 
+      { "SCA", SickleCellAnemia_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SCA", SickleCellAnemia_v3_ActCode }, 
+      { "SDMAST", SubstituteDecisionMakerAsserted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#SDMAST", SubstituteDecisionMakerAsserted_v3_ObservationValue }, 
+      { "SDMRPT", SubstituteDecisionMakerReported_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#SDMRPT", SubstituteDecisionMakerReported_v3_ObservationValue }, 
+      { "SDV", SexualAssaultAbuseOrDomesticViolenceInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SDV", SexualAssaultAbuseOrDomesticViolenceInformationSensitivity_v3_ActCode }, 
+      { "SecurityPolicy", SecurityPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SecurityPolicy", SecurityPolicy_v3_ActCode }, 
+      { "SEX", SexualityAndReproductiveHealthInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SEX", SexualityAndReproductiveHealthInformationSensitivity_v3_ActCode }, 
+      { "SICKLE", SickleCell_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SICKLE", SickleCell_v3_ActCode }, 
+      { "SOC", SocialServicesSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SOC", SocialServicesSensitivity_v3_ActCode }, 
+      { "SSP", SensitiveServiceProviderInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SSP", SensitiveServiceProviderInformationSensitivity_v3_ActCode }, 
+      { "STD", SexuallyTransmittedDiseaseInformationSensitivity_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#STD", SexuallyTransmittedDiseaseInformationSensitivity_v3_ActCode }, 
+      { "SUBSETTED", Subsetted_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#SUBSETTED", Subsetted_v3_ObservationValue }, 
+      { "SUPNWK", SupportNetwork_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#SUPNWK", SupportNetwork_v3_ActReason }, 
+      { "SYNTAC", SyntacticTransform_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#SYNTAC", SyntacticTransform_v3_ObservationValue }, 
+      { "TBOO", Taboo_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#TBOO", Taboo_v3_ActCode }, 
+      { "THREAT", Threat_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#THREAT", Threat_v3_ActReason }, 
+      { "Title38Section7332", Title38Section7332_v3_ActUSPrivacyLaw }, 
+      { "http://hl7.org/fhir/v3/ActUSPrivacyLaw#Title38Section7332", Title38Section7332_v3_ActUSPrivacyLaw }, 
+      { "TRAIN", Training_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#TRAIN", Training_v3_ActReason }, 
+      { "TREAT", Treatment_v3_ActReason }, 
+      { "http://hl7.org/fhir/v3/ActReason#TREAT", Treatment_v3_ActReason }, 
+      { "TRSLT", Translated_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#TRSLT", Translated_v3_ObservationValue }, 
+      { "U", Unrestricted_v3_Confidentiality }, 
+      { "http://hl7.org/fhir/v3/Confidentiality#U", Unrestricted_v3_Confidentiality }, 
+      { "UNCERTREL", UncertainReliability_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#UNCERTREL", UncertainReliability_v3_ObservationValue }, 
+      { "UNRELIABLE", Unreliable_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#UNRELIABLE", Unreliable_v3_ObservationValue }, 
+      { "UPGRDLABEL", UpgradeSecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#UPGRDLABEL", UpgradeSecurityLabel_v3_ActCode }, 
+      { "V", VeryRestricted_v3_Confidentiality }, 
+      { "http://hl7.org/fhir/v3/Confidentiality#V", VeryRestricted_v3_Confidentiality }, 
+      { "VERSIONED", Versioned_v3_ObservationValue }, 
+      { "http://hl7.org/fhir/v3/ObservationValue#VERSIONED", Versioned_v3_ObservationValue }, 
+    };
   };
 }

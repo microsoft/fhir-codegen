@@ -860,6 +860,11 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+    };
   }
   /// <summary>
   /// Code Values for the DataElement.stringency field
@@ -871,5 +876,13 @@ namespace fhirCsR2.Models
     public const string CONVERTABLE = "convertable";
     public const string SCALEABLE = "scaleable";
     public const string FLEXIBLE = "flexible";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "comparable",
+      "fully-specified",
+      "equivalent",
+      "convertable",
+      "scaleable",
+      "flexible",
+    };
   }
 }
