@@ -45,6 +45,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="modifiesParent">   If this element hides a field of its parent.</param>
         /// <param name="bindingStrength">  Strength of binding: required|extensible|preferred|example.</param>
         /// <param name="valueSet">         URL of the value set bound to this element.</param>
+        /// <param name="fWmapping">        Five 'Ws' mapping value.</param>
         public FhirElement(
             string id,
             string path,
@@ -68,7 +69,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             bool isInherited,
             bool modifiesParent,
             string bindingStrength,
-            string valueSet)
+            string valueSet,
+            List<string> fWmapping)
             : base(
                 id,
                 path,
@@ -164,6 +166,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 ValueSetBindingStrength = bindingStrength.ToFhirEnum<ElementDefinitionBindingStrength>();
             }
+
+            FiveWs = fWmapping;
         }
 
         /// <summary>Values that represent element definition binding strengths.</summary>
@@ -273,6 +277,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets a value indicating whether this object is optional.</summary>
         public bool IsOptional => CardinalityMin == 0;
+
+        /// <summary>Gets the five Ws mapping list for the current element.</summary>
+        public List<string> FiveWs { get; }
 
         /// <summary>Maximum cardinality.</summary>
         /// <param name="max">The maximum.</param>
@@ -397,7 +404,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 IsInherited,
                 ModifiesParent,
                 BindingStrength,
-                ValueSet);
+                ValueSet,
+                FiveWs);
 
             // check for base type name
             if (!string.IsNullOrEmpty(BaseTypeName))
@@ -433,7 +441,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 (!string.IsNullOrEmpty(ValueSet)))
             {
                 string url;
-                int barIndex = ValueSet.IndexOf('|');
+                int barIndex = ValueSet.IndexOf('|', StringComparison.Ordinal);
 
                 if (barIndex > 0)
                 {
@@ -485,9 +493,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             if ((_elementTypes != null) && (_elementTypes.Count > 0))
             {
-                if (baseName.Contains("[x]"))
+                if (baseName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
                 {
-                    baseName = baseName.Replace("[x]", string.Empty);
+                    baseName = baseName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
                     isChoice = true;
                 }
 
