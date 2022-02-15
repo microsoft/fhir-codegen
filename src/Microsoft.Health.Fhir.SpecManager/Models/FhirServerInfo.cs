@@ -11,7 +11,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models;
 public class FhirServerInfo
 {
     private readonly List<SystemRestfulInteraction> _serverInteractions;
-    private readonly FhirVersionInfo.FhirCoreVersion _fhirMajorVersion;
+    private readonly FhirPackageCommon.FhirSequence _fhirMajorVersion;
 
     /// <summary>Initializes a new instance of the <see cref="FhirServerInfo"/> class.</summary>
     /// <param name="serverInteractions">       The server interaction flags.</param>
@@ -41,7 +41,7 @@ public class FhirServerInfo
         Url = url;
         FhirVersion = fhirVersion;
 
-        _fhirMajorVersion = FhirVersionInfo.MajorReleaseForVersion(fhirVersion);
+        _fhirMajorVersion = FhirPackageCommon.MajorReleaseForVersion(fhirVersion);
 
         SoftwareName = softwareName;
         SoftwareVersion = softwareVersion;
@@ -97,7 +97,7 @@ public class FhirServerInfo
         }
         else
         {
-            _fhirMajorVersion = FhirVersionInfo.MajorReleaseForVersion(fhirVersion);
+            _fhirMajorVersion = FhirPackageCommon.MajorReleaseForVersion(fhirVersion);
         }
 
         SoftwareName = softwareName;
@@ -194,7 +194,7 @@ public class FhirServerInfo
     public string FhirVersion { get; }
 
     /// <summary>Gets the major version.</summary>
-    public FhirVersionInfo.FhirCoreVersion MajorVersion => _fhirMajorVersion;
+    public FhirPackageCommon.FhirSequence MajorVersion => _fhirMajorVersion;
 
     /// <summary>Gets the FHIR Server software name.</summary>
     public string SoftwareName { get; }

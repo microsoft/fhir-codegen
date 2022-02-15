@@ -5,234 +5,76 @@
 
 using System.IO;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using Microsoft.Health.Fhir.SpecManager.PackageManager;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
 /// <summary>A FHIR package loader (e.g., hl7.fhir.us.core).</summary>
 public static class FhirPackageLoader
 {
-    /// <summary>Attempts to find a FHIRpackage.</summary>
-    /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-    /// <param name="packageName">     Name of the package.</param>
-    /// <param name="version">         The version.</param>
-    /// <param name="packageDirectory">Pathname of the package directory.</param>
-    /// <param name="versionDirectory">[out] Pathname of the version directory.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    private static bool TryFindPackage(
-        string packageName,
-        string version,
-        string packageDirectory,
-        out string versionDirectory)
+    /// <summary>Loads.</summary>
+    /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
+    ///  null.</exception>
+    /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
+    ///  present.</exception>
+    /// <param name="directive">  The directive.</param>
+    /// <param name="directory">  Pathname of the directory.</param>
+    /// <param name="packageInfo">[out] The information.</param>
+    public static void Load(
+        string directive,
+        string directory,
+        out FhirVersionInfo packageInfo)
     {
-        versionDirectory = null;
-
-        if (string.IsNullOrEmpty(packageDirectory))
+        if (string.IsNullOrEmpty(directive))
         {
-            throw new ArgumentNullException(nameof(packageDirectory));
+            throw new ArgumentNullException(nameof(directive));
         }
 
-        if (string.IsNullOrEmpty(packageName))
+        if (string.IsNullOrEmpty(directory))
         {
-            throw new ArgumentNullException(nameof(packageName));
+            throw new ArgumentNullException(nameof(directory));
         }
 
-        // TODO(ginoc): need to search for unversioned packages, check against fhir versions, etc.
+        string contentDirectory = Path.Combine(directory, "package");
 
-        // check for finding the directory
-        string packageDir = Path.Combine(
-            packageDirectory,
-            $"{packageName}-{version}",
-            "package");
-
-        if (!Directory.Exists(packageDir))
+        if (!Directory.Exists(contentDirectory))
         {
-            // check for NPM installed version
-            packageDir = Path.Combine(packageDirectory, "node_modules", packageName);
-
-            if (!Directory.Exists(packageDir))
-            {
-                Console.WriteLine($"Cannot find {packageName} version {version} in {packageDirectory}");
-                return false;
-            }
+            throw new DirectoryNotFoundException($"Missing package content directory: {contentDirectory}");
         }
 
-        // set our directory
-        versionDirectory = packageDir;
-        return true;
-    }
-
-    /// <summary>A fhirCoreInfo extension method that attempts to load packages.</summary>
-    /// <param name="fhirCoreInfo">  Information describing the fhir version.</param>
-    /// <param name="packageDirectives">The package directives.</param>
-    /// <param name="packagesLoaded">   [out] The packages loaded.</param>
-    /// <param name="packagesFailed">   [out] The packages failed.</param>
-    /// <returns>True if all packages loaded, false if one or more failed.</returns>
-    public static bool TryLoadPackages(
-        this FhirVersionInfo fhirCoreInfo,
-        string[] packageDirectives,
-        out List<FhirGuideInfo> packagesLoaded,
-        out List<string> packagesFailed)
-    {
-        if (fhirCoreInfo == null)
-        {
-            Console.WriteLine($"LoadPackage <<< {nameof(fhirCoreInfo)} is NULL, cannot load packages: {packageDirectives}!");
-            packagesLoaded = null;
-            packagesFailed = null;
-            return false;
-        }
-
-        packagesLoaded = new ();
-        packagesFailed = new ();
-
-        if ((packageDirectives == null) || (packageDirectives.Length == 0))
-        {
-            return true;
-        }
-
-        foreach (string packageDirective in packageDirectives)
-        {
-            if (TryLoadPackage(
-                    fhirCoreInfo,
-                    packageDirective,
-                    out string loadedDirective,
-                    out FhirGuideInfo ig))
-            {
-                packagesLoaded.Add(ig);
-            }
-            else
-            {
-                packagesFailed.Add(packageDirective);
-            }
-        }
-
-        return true;
-    }
-
-    /// <summary>Loads a FHIR package (e.g., hl7.fhir.us.core-4.0.0).</summary>
-    /// <param name="fhirCoreInfo">          Information describing the fhir version.</param>
-    /// <param name="packageDirective">      Name of the package, may inlcude a version.</param>
-    /// <param name="loadedPackageDirective">[out] The loaded package directive.</param>
-    /// <param name="igInfo">                [out] Information describing the ig.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    public static bool TryLoadPackage(
-        this FhirVersionInfo fhirCoreInfo,
-        string packageDirective,
-        out string loadedPackageDirective,
-        out FhirGuideInfo igInfo)
-    {
-        // sanity checks
-        if (fhirCoreInfo == null)
-        {
-            Console.WriteLine($"LoadPackage <<< {nameof(fhirCoreInfo)} is NULL, cannot load {packageDirective}!");
-            loadedPackageDirective = string.Empty;
-            igInfo = null;
-            return false;
-        }
-
-        if (string.IsNullOrEmpty(packageDirective))
-        {
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
-            Console.WriteLine($"LoadPackage <<< {nameof(packageDirective)} is required!");
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
-            loadedPackageDirective = string.Empty;
-            igInfo = null;
-            return false;
-        }
-
-        string packageName = string.Empty;
-        string packageVersion = string.Empty;
-
-        if (packageDirective.Contains('-', StringComparison.Ordinal))
-        {
-            string[] parts = packageDirective.Split('-');
-
-            if (parts.Length != 2)
-            {
-                Console.WriteLine($"LoadPackage <<< unable to parse package directive: {packageDirective}!");
-                loadedPackageDirective = string.Empty;
-                igInfo = null;
-                return false;
-            }
-
-            packageName = parts[0];
-            packageVersion = parts[1];
-        }
-        else
-        {
-            // need to get package info from the registry
-            packageName = packageDirective;
-        }
-
-        string versionedPackageDirectory;
-
-        // need to download if we don't have an explicit version that we have cached
-        if (string.IsNullOrEmpty(packageVersion) ||
-            (!TryFindPackage(
-                packageName,
-                packageVersion,
-                FhirManager.Current.FhirPackageDirectory,
-                out versionedPackageDirectory)))
-        {
-            if (!FhirPackageDownloader.DownloadFhirPackage(
-                packageName,
-                ref packageVersion,
-                fhirCoreInfo.MajorVersion,
-                FhirManager.Current.FhirPackageDirectory,
-                out versionedPackageDirectory))
-            {
-                Console.WriteLine($"LoadPackage <<< cannot downlaod package for {fhirCoreInfo.ReleaseName}: {packageDirective}!");
-                loadedPackageDirective = string.Empty;
-                igInfo = null;
-                return false;
-            }
-        }
-
-        loadedPackageDirective = packageName + "-" + packageVersion;
-
-        // load package info
-        FhirPackage packageInfo = FhirPackage.Load(versionedPackageDirectory);
-
-        // tell the user what's going on
-        Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
-
-        // create our structure
-        igInfo = new FhirGuideInfo(fhirCoreInfo, packageInfo);
+        packageInfo = new FhirVersionInfo(directory);
 
         HashSet<string> processedFiles = new HashSet<string>();
 
-
-
         // process Code Systems
-        ProcessFileGroup(versionedPackageDirectory, "CodeSystem", igInfo, processedFiles);
+        ProcessFileGroup(contentDirectory, "CodeSystem", packageInfo, processedFiles);
 
         // process Value Set expansions
-        ProcessFileGroup(versionedPackageDirectory, "ValueSet", igInfo, processedFiles);
+        ProcessFileGroup(contentDirectory, "ValueSet", packageInfo, processedFiles);
 
         // process structure definitions
-        ProcessFileGroup(versionedPackageDirectory, "StructureDefinition", igInfo, processedFiles);
+        ProcessFileGroup(contentDirectory, "StructureDefinition", packageInfo, processedFiles);
 
         // process search parameters (adds to resources)
-        ProcessFileGroup(versionedPackageDirectory, "SearchParameter", igInfo, processedFiles);
+        ProcessFileGroup(contentDirectory, "SearchParameter", packageInfo, processedFiles);
 
         // process operations (adds to resources and version info (server level))
-        ProcessFileGroup(versionedPackageDirectory, "OperationDefinition", igInfo, processedFiles);
+        ProcessFileGroup(contentDirectory, "OperationDefinition", packageInfo, processedFiles);
 
-        if (fhirCoreInfo.ConverterHasIssues(out int errorCount, out int warningCount))
+        if (packageInfo.ConverterHasIssues(out int errorCount, out int warningCount))
         {
             // make sure we cleared the last line
-            Console.WriteLine($"TryLoadPackage <<< Loaded and Parsed {packageName}-{packageVersion}" +
+            Console.WriteLine($"LoadCached <<< Loaded and Parsed {directive}" +
                 $" with {errorCount} errors" +
                 $" and {warningCount} warnings" +
                 $"{new string(' ', 100)}");
-            fhirCoreInfo.DisplayConverterIssues();
+            packageInfo.DisplayConverterIssues();
         }
         else
         {
             // make sure we cleared the last line
-            Console.WriteLine($"TryLoadPackage <<< Loaded and Parsed {packageName}-{packageVersion}{new string(' ', 100)}");
+            Console.WriteLine($"LoadCached <<< Loaded and Parsed {directive}{new string(' ', 100)}");
         }
-
-        return true;
     }
 
     /// <summary>
@@ -245,7 +87,7 @@ public static class FhirPackageLoader
     private static void ProcessFileGroup(
         string packageDir,
         string prefix,
-        IFhirInfo fhirCoreInfo,
+        IPackageImportable fhirCoreInfo,
         HashSet<string> processedFiles)
     {
         // get the files in this directory
@@ -262,7 +104,7 @@ public static class FhirPackageLoader
     /// <param name="processedFiles">The processed files.</param>
     private static void ProcessPackageFiles(
         string[] files,
-        IFhirInfo fhirInfo,
+        IPackageImportable fhirInfo,
         HashSet<string> processedFiles)
     {
         // traverse the files
@@ -284,7 +126,7 @@ public static class FhirPackageLoader
             // attempt to load this file
             try
             {
-                Console.Write($"{fhirInfo.MajorVersionEnum}: {shortName,-85}\r");
+                Console.Write($"{fhirInfo.FhirMajorVersion}: {shortName,-85}\r");
 
                 // check for ignored types
                 if (fhirInfo.ShouldIgnoreResource(resourceHint))

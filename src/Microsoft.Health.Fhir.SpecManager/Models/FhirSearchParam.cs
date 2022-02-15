@@ -70,6 +70,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
         }
 
+        /// <summary>Values that represent search magic parameters.</summary>
+        public enum ParameterGrouping
+        {
+            /// <summary>An enum constant representing all resource option.</summary>
+            Global,
+
+            /// <summary>An enum constant representing the search result option.</summary>
+            Result,
+
+            /// <summary>An enum constant representing all interaction option.</summary>
+            Interaction,
+        }
+
         /// <summary>Gets the identifier.</summary>
         /// <value>The identifier.</value>
         public string Id { get; }

@@ -1,4 +1,4 @@
-﻿// <copyright file="IFhirInfo.cs" company="Microsoft Corporation">
+﻿// <copyright file="IPackageImportable.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -7,54 +7,27 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
-/// <summary>Interface for FHIR package information.</summary>
-public interface IFhirInfo
+/// <summary>Interface for package importable.</summary>
+public interface IPackageImportable
 {
+    /// <summary>Gets or sets the type of the package group.</summary>
+    public FhirPackageCommon.FhirPackageType PackageType { get; set; }
+
+    /// <summary>Gets or sets the package details.</summary>
+    public NpmPackageDetails PackageDetails { get; set; }
+
     /// <summary>Gets or sets the FHIR major release, by enum.</summary>
-    public FhirVersionInfo.FhirCoreVersion MajorVersionEnum { get; set; }
+    public FhirPackageCommon.FhirSequence FhirMajorVersion { get; set; }
 
     /// <summary>Gets or sets the major version.</summary>
-    [Obsolete("R4B made major versions as integers tricky, use the MajorVersionEnum", false)]
+    [Obsolete("R4B made major versions as integers tricky, use the FhirMajorVersion", false)]
     public int MajorVersion { get; set; }
-
-    /// <summary>Gets or sets the name of the package release.</summary>
-    public string ReleaseName { get; set; }
 
     /// <summary>Gets or sets the name of the package.</summary>
     public string PackageName { get; set; }
 
-    /// <summary>Gets or sets the name of the examples package.</summary>
-    public string ExamplesPackageName { get; set; }
-
-    /// <summary>Gets or sets the name of the expansions package.</summary>
-    public string ExpansionsPackageName { get; set; }
-
     /// <summary>Gets or sets the version string.</summary>
     public string VersionString { get; set; }
-
-    /// <summary>Gets or sets the ballot prefix (e.g., 2021Jan).</summary>
-    public string BallotPrefix { get; set; }
-
-    /// <summary>Gets or sets a value indicating whether this object is development build.</summary>
-    public bool IsDevBuild { get; set; }
-
-    /// <summary>Gets or sets the development branch.</summary>
-    public string DevBranch { get; set; }
-
-    /// <summary>Gets or sets the identifier of the build.</summary>
-    public string BuildId { get; set; }
-
-    /// <summary>Gets or sets a value indicating whether this object is local build.</summary>
-    public bool IsLocalBuild { get; set; }
-
-    /// <summary>Gets or sets the pathname of the local directory.</summary>
-    public string LocalDirectory { get; set; }
-
-    /// <summary>Gets or sets a value indicating whether this object is on disk.</summary>
-    public bool IsOnDisk { get; set; }
-
-    /// <summary>Gets or sets the Date/Time of the last downloaded.</summary>
-    public DateTime? LastDownloaded { get; set; }
 
     /// <summary>Gets a dictionary with the known primitive types for this version of FHIR.</summary>
     public Dictionary<string, FhirPrimitive> PrimitiveTypes { get; }
@@ -94,6 +67,56 @@ public interface IFhirInfo
 
     /// <summary>Gets search parameters defined for all interactions.</summary>
     public Dictionary<string, FhirSearchParam> AllInteractionParameters { get; }
+
+    /// <summary>Attempts to get explicit name a string from the given string.</summary>
+    /// <param name="path">        Full pathname of the file.</param>
+    /// <param name="explicitName">[out] Name of the explicit.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetExplicitName(string path, out string explicitName);
+
+    /// <summary>Attempts to get value set a FhirValueSet from the given string.</summary>
+    /// <param name="urlOrKey">The URL or key.</param>
+    /// <param name="vs">      [out] The vs.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetValueSet(string urlOrKey, out FhirValueSet vs);
+
+
+
+
+
+
+    /// <summary>Gets or sets the name of the package release.</summary>
+    public string ReleaseName { get; set; }
+
+    /// <summary>Gets or sets the name of the examples package.</summary>
+    public string ExamplesPackageName { get; set; }
+
+    /// <summary>Gets or sets the name of the expansions package.</summary>
+    public string ExpansionsPackageName { get; set; }
+
+    /// <summary>Gets or sets the ballot prefix (e.g., 2021Jan).</summary>
+    public string BallotPrefix { get; set; }
+
+    /// <summary>Gets or sets a value indicating whether this object is development build.</summary>
+    public bool IsDevBuild { get; set; }
+
+    /// <summary>Gets or sets the development branch.</summary>
+    public string DevBranch { get; set; }
+
+    /// <summary>Gets or sets the identifier of the build.</summary>
+    public string BuildId { get; set; }
+
+    /// <summary>Gets or sets a value indicating whether this object is local build.</summary>
+    public bool IsLocalBuild { get; set; }
+
+    /// <summary>Gets or sets the pathname of the local directory.</summary>
+    public string LocalDirectory { get; set; }
+
+    /// <summary>Gets or sets a value indicating whether this object is on disk.</summary>
+    public bool IsOnDisk { get; set; }
+
+    /// <summary>Gets or sets the Date/Time of the last downloaded.</summary>
+    public DateTime? LastDownloaded { get; set; }
 
     /// <summary>Gets the node info by path dictionary.</summary>
     public Dictionary<string, FhirNodeInfo> NodeByPath { get; }
@@ -139,7 +162,7 @@ public interface IFhirInfo
     /// <param name="searchMagicType">Type of the search magic.</param>
     /// <param name="name">           The name.</param>
     /// <param name="parameterType">  Type of the parameter.</param>
-    public void AddVersionedParam(FhirInfoBase.SearchMagicParameter searchMagicType, string name, string parameterType);
+    public void AddVersionedParam(FhirSearchParam.ParameterGrouping searchMagicType, string name, string parameterType);
 
     /// <summary>Determines if we can converter has issues.</summary>
     /// <param name="errorCount">  [out] Number of errors.</param>
@@ -184,21 +207,10 @@ public interface IFhirInfo
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool ShouldSkipFile(string filename);
 
-    /// <summary>Attempts to get explicit name a string from the given string.</summary>
-    /// <param name="path">        Full pathname of the file.</param>
-    /// <param name="explicitName">[out] Name of the explicit.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    public bool TryGetExplicitName(string path, out string explicitName);
-
     /// <summary>Attempts to get node information a FhirNodeInfo from the given string.</summary>
     /// <param name="path">Full pathname of the file.</param>
     /// <param name="node">[out] The node.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetNodeInfo(string path, out FhirNodeInfo node);
 
-    /// <summary>Attempts to get value set a FhirValueSet from the given string.</summary>
-    /// <param name="urlOrKey">The URL or key.</param>
-    /// <param name="vs">      [out] The vs.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    public bool TryGetValueSet(string urlOrKey, out FhirValueSet vs);
 }

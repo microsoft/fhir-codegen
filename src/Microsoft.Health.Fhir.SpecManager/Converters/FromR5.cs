@@ -85,7 +85,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private static void ProcessValueSet(
             fhirModels.ValueSet vs,
-            IFhirInfo fhirVersionInfo)
+            IPackageImportable fhirVersionInfo)
         {
             if (string.IsNullOrEmpty(vs.Status))
             {
@@ -400,7 +400,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private static void ProcessCodeSystem(
             fhirModels.CodeSystem cs,
-            IFhirInfo fhirVersionInfo)
+            IPackageImportable fhirVersionInfo)
         {
             // TODO: Patch for 4.6.0
             if (string.IsNullOrEmpty(cs.Status))
@@ -525,7 +525,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private void ProcessOperation(
             fhirModels.OperationDefinition op,
-            IFhirInfo fhirVersionInfo)
+            IPackageImportable fhirVersionInfo)
         {
             // ignore retired
             if (op.Status.Equals("retired", StringComparison.Ordinal))
@@ -575,7 +575,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private void ProcessSearchParam(
             fhirModels.SearchParameter sp,
-            IFhirInfo fhirVersionInfo)
+            IPackageImportable fhirVersionInfo)
         {
             // ignore retired
             if (sp.Status.Equals("retired", StringComparison.Ordinal))
@@ -635,7 +635,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private void ProcessStructureDef(
             fhirModels.StructureDefinition sd,
-            IFhirInfo fhirVersionInfo)
+            IPackageImportable fhirVersionInfo)
         {
             // ignore retired
             if (sd.Status == "retired")
@@ -677,7 +677,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private static void ProcessDataTypePrimitive(
             fhirModels.StructureDefinition sd,
-            IFhirInfo fhirVersionInfo)
+            IPackageImportable fhirVersionInfo)
         {
             string regex = string.Empty;
             string descriptionShort = sd.Description;
@@ -906,7 +906,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="definitionComplexType">Type of structure definition we are parsing.</param>
         private static void ProcessComplex(
             fhirModels.StructureDefinition sd,
-            IFhirInfo fhirVersionInfo,
+            IPackageImportable fhirVersionInfo,
             FhirComplex.FhirComplexType definitionComplexType)
         {
             if ((sd.Snapshot == null) || (sd.Snapshot.Element == null))
@@ -1348,7 +1348,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         void IFhirConverter.ProcessResource(
             object resourceToParse,
-            IFhirInfo fhirVersionInfo)
+            IPackageImportable fhirVersionInfo)
         {
             try
             {

@@ -205,7 +205,7 @@ public static class FhirPackageDownloader
         string versionInfoJson = response.Content.ReadAsStringAsync().Result;
 
         // deserialize our version info
-        Models.PackagesVersionInfo info = JsonConvert.DeserializeObject<Models.PackagesVersionInfo>(versionInfoJson);
+        Models.RegistryPackageInfo info = JsonConvert.DeserializeObject<Models.RegistryPackageInfo>(versionInfoJson);
 
         // make sure we match
         if (info.Name != packageName)
@@ -327,7 +327,7 @@ public static class FhirPackageDownloader
         string versionInfoJson = response.Content.ReadAsStringAsync().Result;
 
         // deserialize our version info
-        Models.PackagesVersionInfo info = JsonConvert.DeserializeObject<Models.PackagesVersionInfo>(versionInfoJson);
+        Models.RegistryPackageInfo info = JsonConvert.DeserializeObject<Models.RegistryPackageInfo>(versionInfoJson);
 
         // make sure we match
         if (info.Name != packageName)
@@ -422,7 +422,7 @@ public static class FhirPackageDownloader
             uri = new(ciBaseUri, $"branches/{branchName}/version.info");
         }
 
-        FhirVersionInfo.FhirCoreVersion sequenceVersion;
+        FhirPackageCommon.FhirSequence sequenceVersion;
 
         try
         {
@@ -458,61 +458,6 @@ public static class FhirPackageDownloader
         return true;
     }
 
-    /// <summary>Gets local version information.</summary>
-    /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
-    /// <param name="contents">   The contents.</param>
-    /// <param name="fhirVersion">[out] The FHIR version.</param>
-    /// <param name="version">    [out] The version string (e.g., 4.0.1).</param>
-    /// <param name="buildId">    [out] Identifier for the build.</param>
-    /// <param name="buildDate">  [out] The build date.</param>
-    internal static void ParseVersionInfoIni(
-        string contents,
-        out string fhirVersion,
-        out string version,
-        out string buildId,
-        out string buildDate)
-    {
-        IEnumerable<string> lines = contents.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-        fhirVersion = string.Empty;
-        version = string.Empty;
-        buildId = string.Empty;
-        buildDate = string.Empty;
-
-        foreach (string line in lines)
-        {
-            if (!line.Contains('=', StringComparison.Ordinal))
-            {
-                continue;
-            }
-
-            string[] kvp = line.Split('=');
-
-            if (kvp.Length != 2)
-            {
-                continue;
-            }
-
-            switch (kvp[0])
-            {
-                case "FhirVersion":
-                    fhirVersion = kvp[1];
-                    break;
-
-                case "version":
-                    version = kvp[1];
-                    break;
-
-                case "buildId":
-                    buildId = kvp[1];
-                    break;
-
-                case "date":
-                    buildDate = kvp[1];
-                    break;
-            }
-        }
-    }
 
     /// <summary>Downloads the and extract.</summary>
     /// <param name="uri">          URI of the resource.</param>
@@ -529,7 +474,7 @@ public static class FhirPackageDownloader
         try
         {
             // build our extraction directory name
-            string directory = Path.Combine(specDirectory, $"{packageName}-{version}");
+            string directory = Path.Combine(specDirectory, $"{packageName}#{version}");
 
             // make sure our destination directory exists
             if (!Directory.Exists(directory))
@@ -549,7 +494,7 @@ public static class FhirPackageDownloader
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"DownloadAndExtract <<< failed to download package: {packageName}-{version}: {ex.Message}");
+            Console.WriteLine($"DownloadAndExtract <<< failed to download package: {packageName}#{version}: {ex.Message}");
             throw;
         }
     }
@@ -572,7 +517,7 @@ public static class FhirPackageDownloader
         try
         {
             // build our extraction directory name
-            dir = Path.Combine(specDirectory, $"local-{packageName}-{version}");
+            dir = Path.Combine(specDirectory, $"local-{packageName}#{version}");
 
             // make sure our destination directory exists
             if (!Directory.Exists(dir))
@@ -600,7 +545,7 @@ public static class FhirPackageDownloader
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"CopyAndExtract <<< failed to copy package: {packageName}-{version}: {ex.Message}");
+            Console.WriteLine($"CopyAndExtract <<< failed to copy package: {packageName}#{version}: {ex.Message}");
             throw;
         }
     }

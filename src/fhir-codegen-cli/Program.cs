@@ -8,9 +8,12 @@ using System.CommandLine.Builder;
 using System.CommandLine.NamingConventionBinder;
 using System.Diagnostics;
 using System.IO;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using Microsoft.Health.Fhir.SpecManager.PackageManager;
 
 namespace FhirCodegenCli;
 
@@ -319,7 +322,9 @@ public static class Program
 
         if (string.IsNullOrEmpty(packageDirectory))
         {
-            fhirSpecDirectory = FindRelativeDir(currentFilePath, "fhirPackages", "FHIR Package");
+            packageDirectory = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                ".fhir");
         }
 
         if (string.IsNullOrEmpty(outputPath))
@@ -379,8 +384,8 @@ public static class Program
         // start timing
         Stopwatch timingWatch = Stopwatch.StartNew();
 
-        // initialize the FHIR version manager with our requested directories
-        FhirManager.Init(fhirSpecDirectory, fhirPublishDirectory, packageDirectory);
+        FhirCacheService.Init(packageDirectory);
+        FhirManager.Init();
 
         Dictionary<string, FhirVersionInfo> fhirVersions = new ();
 
@@ -416,23 +421,23 @@ public static class Program
             {
                 switch (serverInfo.MajorVersion)
                 {
-                    case FhirVersionInfo.FhirCoreVersion.DSTU2:
+                    case FhirPackageCommon.FhirSequence.DSTU2:
                         loadR2 = "latest";
                         break;
 
-                    case FhirVersionInfo.FhirCoreVersion.STU3:
+                    case FhirPackageCommon.FhirSequence.STU3:
                         loadR3 = "latest";
                         break;
 
-                    case FhirVersionInfo.FhirCoreVersion.R4:
+                    case FhirPackageCommon.FhirSequence.R4:
                         loadR4 = "latest";
                         break;
 
-                    case FhirVersionInfo.FhirCoreVersion.R4B:
+                    case FhirPackageCommon.FhirSequence.R4B:
                         loadR4 = "latest";
                         break;
 
-                    case FhirVersionInfo.FhirCoreVersion.R5:
+                    case FhirPackageCommon.FhirSequence.R5:
                         loadR5 = "latest";
                         break;
                 }
@@ -443,87 +448,92 @@ public static class Program
         {
             fhirVersions.Add(
                 "DSTU2",
-                FhirManager.Current.LoadPublished(
-                    FhirVersionInfo.FhirCoreVersion.DSTU2,
+                FhirManager.Current.LoadFhirCore(
+                    FhirPackageCommon.FhirSequence.DSTU2,
                     loadR2,
                     offlineMode,
-                    officialExpansionsOnly));
+                    officialExpansionsOnly,
+                    loadCi));
         }
 
         if (!string.IsNullOrEmpty(loadR3))
         {
             fhirVersions.Add(
                 "STU3",
-                FhirManager.Current.LoadPublished(
-                    FhirVersionInfo.FhirCoreVersion.STU3,
+                FhirManager.Current.LoadFhirCore(
+                    FhirPackageCommon.FhirSequence.STU3,
                     loadR3,
                     offlineMode,
-                    officialExpansionsOnly));
+                    officialExpansionsOnly,
+                    loadCi));
         }
 
         if (!string.IsNullOrEmpty(loadR4))
         {
             fhirVersions.Add(
                 "R4",
-                FhirManager.Current.LoadPublished(
-                    FhirVersionInfo.FhirCoreVersion.R4,
+                FhirManager.Current.LoadFhirCore(
+                    FhirPackageCommon.FhirSequence.R4,
                     loadR4,
                     offlineMode,
-                    officialExpansionsOnly));
+                    officialExpansionsOnly,
+                    loadCi));
         }
 
         if (!string.IsNullOrEmpty(loadR4B))
         {
             fhirVersions.Add(
                 "R4B",
-                FhirManager.Current.LoadPublished(
-                    FhirVersionInfo.FhirCoreVersion.R4B,
-                    loadR4,
+                FhirManager.Current.LoadFhirCore(
+                    FhirPackageCommon.FhirSequence.R4B,
+                    loadR4B,
                     offlineMode,
-                    officialExpansionsOnly));
+                    officialExpansionsOnly,
+                    loadCi));
         }
 
         if (!string.IsNullOrEmpty(loadR5))
         {
             fhirVersions.Add(
                 "R5",
-                FhirManager.Current.LoadPublished(
-                    FhirVersionInfo.FhirCoreVersion.R5,
+                FhirManager.Current.LoadFhirCore(
+                    FhirPackageCommon.FhirSequence.R5,
                     loadR5,
                     offlineMode,
-                    officialExpansionsOnly));
+                    officialExpansionsOnly,
+                    loadCi));
         }
 
-        if (!string.IsNullOrEmpty(loadCi))
-        {
-            fhirVersions.Add(
-                "ci",
-                FhirManager.Current.LoadCi(loadCi, offlineMode, officialExpansionsOnly));
-        }
+        //if (!string.IsNullOrEmpty(loadCi))
+        //{
+        //    fhirVersions.Add(
+        //        "ci",
+        //        FhirManager.Current.LoadCi(loadCi, offlineMode, officialExpansionsOnly));
+        //}
 
-        if (!string.IsNullOrEmpty(loadLocalFhirBuild))
-        {
-            fhirVersions.Add(
-                "local",
-                FhirManager.Current.LoadLocal(loadLocalFhirBuild, officialExpansionsOnly));
-        }
+        //if (!string.IsNullOrEmpty(loadLocalFhirBuild))
+        //{
+        //    fhirVersions.Add(
+        //        "local",
+        //        FhirManager.Current.LoadLocal(loadLocalFhirBuild, officialExpansionsOnly));
+        //}
 
-        if (!string.IsNullOrEmpty(loadFromCache))
-        {
-            string[] directives = loadFromCache.Split('|');
+        //if (!string.IsNullOrEmpty(loadFromCache))
+        //{
+        //    string[] directives = loadFromCache.Split('|');
 
-            foreach (string directive in directives)
-            {
-                FhirVersionInfo info = FhirManager.Current.LoadCached(directive, officialExpansionsOnly);
+        //    foreach (string directive in directives)
+        //    {
+        //        FhirVersionInfo info = FhirManager.Current.LoadCached(directive, officialExpansionsOnly);
 
-                if (info == null)
-                {
-                    continue;
-                }
+        //        if (info == null)
+        //        {
+        //            continue;
+        //        }
 
-                fhirVersions.Add(info.ReleaseName, info);
-            }
-        }
+        //        fhirVersions.Add(info.ReleaseName, info);
+        //    }
+        //}
 
         if (fhirVersions.Count > 1)
         {
@@ -535,25 +545,29 @@ public static class Program
         {
             string[] packageDirectives = packages.Split('|');
 
-            foreach (FhirVersionInfo info in fhirVersions.Values)
-            {
-                info.TryLoadPackages(
-                    packageDirectives,
-                    out List<FhirGuideInfo> guidesLoaded,
-                    out List<string> packagesFailed);
+            IEnumerable<FhirVersionInfo> packageInfos = FhirManager.Current.LoadPackages(
+                packageDirectives,
+                offlineMode);
 
-                foreach (FhirGuideInfo guide in guidesLoaded)
-                {
-                    Console.WriteLine(
-                        $" <<< FHIR {info.VersionString}:" +
-                        $" Loaded package: {guide.PackageInfo.Name}:{guide.PackageInfo.Version}");
-                }
+            //foreach (FhirVersionInfo info in fhirVersions.Values)
+            //{
+            //    info.TryLoadPackages(
+            //        packageDirectives,
+            //        out List<FhirGuideInfo> guidesLoaded,
+            //        out List<string> packagesFailed);
 
-                foreach (string package in packagesFailed)
-                {
-                    Console.WriteLine($" <<< FHIR {info.VersionString}: FAILED to load package: {package}");
-                }
-            }
+            //    foreach (FhirGuideInfo guide in guidesLoaded)
+            //    {
+            //        Console.WriteLine(
+            //            $" <<< FHIR {info.VersionString}:" +
+            //            $" Loaded package: {guide.PackageInfo.Name}:{guide.PackageInfo.Version}");
+            //    }
+
+            //    foreach (string package in packagesFailed)
+            //    {
+            //        Console.WriteLine($" <<< FHIR {info.VersionString}: FAILED to load package: {package}");
+            //    }
+            //}
         }
 
         // done loading

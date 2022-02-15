@@ -1,9 +1,7 @@
-﻿// -------------------------------------------------------------------------------------------------
-// <copyright file="IFhirConverter.cs" company="Microsoft Corporation">
+﻿// <copyright file="IFhirConverter.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-// -------------------------------------------------------------------------------------------------
 
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -23,7 +21,7 @@ public interface IFhirConverter
     /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>
     void ProcessResource(
         object resourceToParse,
-        IFhirInfo fhirVersionInfo);
+        IPackageImportable fhirVersionInfo);
 
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>
     /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
