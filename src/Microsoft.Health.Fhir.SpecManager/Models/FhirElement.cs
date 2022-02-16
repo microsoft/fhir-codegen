@@ -8,7 +8,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Extensions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
@@ -46,7 +45,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="modifiesParent">   If this element hides a field of its parent.</param>
         /// <param name="bindingStrength">  Strength of binding: required|extensible|preferred|example.</param>
         /// <param name="valueSet">         URL of the value set bound to this element.</param>
-        /// <param name="fWmapping">        Five 'Ws' mapping value.</param>
+        /// <param name="fiveWs">        Five 'Ws' mapping value.</param>
         public FhirElement(
             string id,
             string path,
@@ -71,7 +70,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             bool modifiesParent,
             string bindingStrength,
             string valueSet,
-            List<string> fWmapping)
+            string fiveWs)
             : base(
                 id,
                 path,
@@ -143,7 +142,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             IsModifier = isModifier == true;
-            IsSummary = (isSummary == true) || IsModifier;
+            IsSummary = isSummary == true;
 
             DefaultFieldName = defaultFieldName;
             DefaultFieldValue = defaultFieldValue;
@@ -168,7 +167,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 ValueSetBindingStrength = bindingStrength.ToFhirEnum<ElementDefinitionBindingStrength>();
             }
 
-            FiveWs = fWmapping;
+            FiveWs = fiveWs;
         }
 
         /// <summary>Values that represent element definition binding strengths.</summary>
@@ -280,7 +279,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public bool IsOptional => CardinalityMin == 0;
 
         /// <summary>Gets the five Ws mapping list for the current element.</summary>
-        public List<string> FiveWs { get; }
+        public string FiveWs { get; }
 
         /// <summary>Maximum cardinality.</summary>
         /// <param name="max">The maximum.</param>

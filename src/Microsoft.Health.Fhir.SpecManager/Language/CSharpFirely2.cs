@@ -933,6 +933,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteChildren(exportedElements);
             WriteNamedChildren(exportedElements);
 
+            WriteIDictionarySupport(exportedElements, isResource ? complex.Name : null);
+
             // close class
             CloseScope();
         }
@@ -961,6 +963,133 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return baseTypeName;
+        }
+
+        private void WriteIDictionarySupport(IEnumerable<WrittenElementInfo> exportedElements, string resourceName)
+        {
+            WriteDictionaryTryGetValue(exportedElements, resourceName);
+            WriteDictionaryPairs(exportedElements, resourceName);
+        }
+
+
+        private string NullCheck(WrittenElementInfo info) => info.ExportedName + (!info.IsList ? " is not null" : "?.Any() == true");
+
+        private void WriteDictionaryPairs(IEnumerable<WrittenElementInfo> exportedElements, string resourceName)
+        {
+            if (!exportedElements.Any())
+            {
+                return;
+            }
+
+            _writer.WriteLineIndented("protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()");
+            OpenScope();
+
+            // [EK20210802] Removed generation of "resourceType" after design discussions.
+            //if (resourceName == "Resource")
+            //    _writer.WriteLineIndented($"yield return new KeyValuePair<string,object>(\"resourceType\",TypeName);");
+
+            _writer.WriteLineIndented("foreach (var kvp in base.GetElementPairs()) yield return kvp;");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                // [EK20210802] Removed generation of suffixed choice elements after design discussions.
+                //string elementProp = info.IsChoice ?
+                //    $"ElementName.AddSuffixToElementName(\"{info.FhirElementName}\", {info.ExportedName})"
+                //    : $"\"{info.FhirElementName}\"";
+                string elementProp = $"\"{info.FhirElementName}\"";
+                _writer.WriteLineIndented($"if ({NullCheck(info)}) yield return new " +
+                    $"KeyValuePair<string,object>({elementProp},{info.ExportedName});");
+            }
+
+            CloseScope();
+        }
+
+        private void WriteDictionaryTryGetValue(IEnumerable<WrittenElementInfo> exportedElements, string resourceName)
+        {
+            // Don't override anything if there are no additional elements.
+            if (!exportedElements.Any())
+            {
+                return;
+            }
+
+            _writer.WriteLineIndented("protected override bool TryGetValue(string key, out object value)");
+            OpenScope();
+
+            // switch
+            _writer.WriteLineIndented("switch (key)");
+            OpenScope();
+
+            // [EK20210802] Removed generation of "resourceType" after design discussions.
+            //if (resourceName == "Resource")
+            //{
+            //    _writer.WriteLineIndented($"case \"resourceType\":");
+            //    _writer.IncreaseIndent();
+            //    _writer.WriteLineIndented("value = TypeName;");
+            //    _writer.WriteLineIndented("return true;");
+            //    _writer.DecreaseIndent();
+            //}
+
+            // [EK20210802] Removed generation of suffixed choice elements after design discussions.
+            //bool hasChoices = false;
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                _writer.WriteLineIndented($"case \"{info.FhirElementName}\":");
+                _writer.IncreaseIndent();
+
+                _writer.WriteLineIndented($"value = {info.ExportedName};");
+                _writer.WriteLineIndented($"return {NullCheck(info)};");
+
+                _writer.DecreaseIndent();
+
+                //hasChoices |= info.IsChoice;
+            }
+
+            _writer.WriteLineIndented("default:");
+            _writer.IncreaseIndent();
+            writeBaseTryGetValue();
+
+            // [EK20210802] Removed generation of suffixed choice elements after design discussions.
+            //if (!hasChoices)
+            //    writeBaseTryGetValue();
+            //else
+            //    _writer.WriteLineIndented("return choiceMatches(out value);");
+
+            _writer.DecreaseIndent();
+
+            // end switch
+            CloseScope(includeSemicolon: true);
+
+            // [EK20210802] Removed generation of suffixed choice elements after design discussions.
+            //if (hasChoices)
+            //{
+            //    // write a matches for prefixes of element names for choice elements
+            //    _writer.WriteLineIndented("bool choiceMatches(out object value)");
+            //    OpenScope();
+
+            //    bool needElse = false;
+
+            //    foreach (WrittenElementInfo info in exportedElements.Where(i => i.IsChoice))
+            //    {
+            //        _writer.WriteLineIndented($"{(needElse ? "else if" : "if")} (key.StartsWith(\"{info.FhirElementName}\"))");
+            //        needElse = true;
+            //        _writer.OpenScope();
+
+            //        _writer.WriteLineIndented($"value = {info.ExportedName};");
+            //        _writer.WriteIndented($"return {NullCheck(info)} && ");
+            //        _writer.WriteLine($"ElementName.HasCorrectSuffix(key, \"{info.FhirElementName}\", {info.ExportedName}.TypeName);");
+
+            //        _writer.CloseScope();
+            //    }
+
+            //    writeBaseTryGetValue();
+
+            //    CloseScope();
+            //}
+
+            // end function
+            CloseScope();
+
+            void writeBaseTryGetValue() => _writer.WriteLineIndented("return base.TryGetValue(key, out value);");
         }
 
         /// <summary>Writes the children of this item.</summary>
@@ -1249,6 +1378,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIsExactly(exportName, exportedElements);
                 WriteChildren(exportedElements);
                 WriteNamedChildren(exportedElements);
+                WriteIDictionarySupport(exportedElements, isResource ? complex.Name : null);
             }
 
             // close class
@@ -1507,6 +1637,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 element,
                 subset,
                 out string summary,
+                out string isModifier,
                 out string choice,
                 out string allowedTypes,
                 out string resourceReferences);
@@ -1515,19 +1646,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (_exportFiveWs)
             {
-                if ((element.FiveWs == null) || (element.FiveWs.Count == 0))
+                if (string.IsNullOrEmpty(element.FiveWs))
                 {
-                    fiveWs = " , FiveWs= new string[] {}";
+                    fiveWs = " , FiveWs=\"\"";
                 }
                 else
                 {
-                    fiveWs = " , FiveWs= new string[] {" +
-                        string.Join(",", element.FiveWs.Select(fwMapping => $"\"{fwMapping}\"")) +
-                        "}";
+                    fiveWs = $" , FiveWs=\"{element.FiveWs}\"";
                 }
             }
 
-            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs})]");
+            /* Exceptions:
+            *  o OperationOutcome.issue.severity does not have `IsModifier` anymore since R4. 
+            */
+
+            if (element.Path == "OperationOutcome.issue.severity")
+            {
+                _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, IsModifier=true, Order={GetOrder(element)}{choice}{fiveWs})]");
+                _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs}, Since=FhirRelease.R4)]");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs})]");
+            }
 
             if (hasDefinedEnum)
             {
@@ -1606,6 +1747,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         ExportedName = $"{pascal}{matchTrailer}Element",
                         ExportedType = codeLiteral,
                         IsList = false,
+                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                     });
 
                 _writer.WriteLineIndented($"public {codeLiteral} {pascal}{matchTrailer}Element");
@@ -1627,6 +1769,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         ExportedName = $"{pascal}{matchTrailer}Element",
                         ExportedType = $"List<{codeLiteral}>",
                         IsList = true,
+                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                     });
 
                 _writer.WriteLineIndented($"public List<{codeLiteral}> {pascal}{matchTrailer}Element");
@@ -1717,6 +1860,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 element,
                 subset,
                 out string summary,
+                out string isModifier,
                 out string choice,
                 out string allowedTypes,
                 out string resourceReferences);
@@ -1725,15 +1869,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (_exportFiveWs)
             {
-                if ((element.FiveWs == null) || (element.FiveWs.Count == 0))
+                if (string.IsNullOrEmpty(element.FiveWs))
                 {
-                    fiveWs = " , FiveWs= new string[] {}";
+                    fiveWs = " , FiveWs=\"\"";
                 }
                 else
                 {
-                    fiveWs = " , FiveWs= new string[] {" +
-                        string.Join(",", element.FiveWs.Select(fwMapping => $"\"{fwMapping}\"")) +
-                        "}";
+                    fiveWs = $" , FiveWs=\"{element.FiveWs}\"";
                 }
             }
 
@@ -1743,17 +1885,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              *
              * If we start to include more classes like this, we might need to
              * automate this, by scanning differences between 3/4/5/6/7 etc.. */
+            string BuildExceptionElementAttribute(string versionString = null)
+            {
+                var prefix = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
+                if (versionString is { })
+                {
+                    prefix += $", Since=FhirRelease.{versionString}";
+                }
+
+                prefix += ")]";
+                return prefix;
+            }
+
             if (element.Path == "Meta.source")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs}, Since=FhirRelease.R4)]");
+                _writer.WriteLineIndented(BuildExceptionElementAttribute("R4"));
             }
             else if (element.Path == "Reference.type")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs}, Since=FhirRelease.R4)]");
+                _writer.WriteLineIndented(BuildExceptionElementAttribute("R4"));
             }
             else
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs})]");
+                _writer.WriteLineIndented(BuildExceptionElementAttribute());
             }
 
             if (element.Path == "Meta.profile")
@@ -1872,6 +2026,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         ExportedName = $"{pascal}{elementTag}",
                         ExportedType = $"{Namespace}.{type}",
                         IsList = false,
+                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                     });
 
                 _writer.WriteLineIndented($"public {Namespace}.{type} {pascal}{elementTag}");
@@ -1893,6 +2048,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         ExportedName = $"{pascal}{elementTag}",
                         ExportedType = $"List<{Namespace}.{type}>",
                         IsList = true,
+                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                     });
 
                 _writer.WriteLineIndented($"public List<{Namespace}.{type}> {pascal}{elementTag}");
@@ -2038,6 +2194,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirElement element,
             GenSubset subset,
             out string summary,
+            out string isModifier,
             out string choice,
             out string allowedTypes,
             out string resourceReferences)
@@ -2046,6 +2203,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             allowedTypes = string.Empty;
             resourceReferences = string.Empty;
             summary = element.IsSummary ? ", InSummary=true" : string.Empty;
+            isModifier = element.IsModifier ? ", IsModifier=true" : string.Empty;
 
             bool inCommon = subset.HasFlag(GenSubset.Common);
 
@@ -2327,12 +2485,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 /* Generate validator for simple string-based values that have a regex to validate them.
                  * Skip validator for some types for which we have more performant, hand-written validators.
                  */
-                if (!string.IsNullOrEmpty(primitive.ValidationRegEx) &&
-                    exportName != "FhirString" && exportName != "FhirUri" && exportName != "Markdown")
-                {
-                    _writer.WriteLineIndented("public static bool IsValidValue(string value) => Regex.IsMatch(value, \"^\" + PATTERN + \"$\", RegexOptions.Singleline);");
-                    _writer.WriteLine(string.Empty);
-                }
+                //if (!string.IsNullOrEmpty(primitive.ValidationRegEx) &&
+                //    exportName != "FhirString" && exportName != "FhirUri" && exportName != "Markdown")
+                //{
+                //    _writer.WriteLineIndented("public static bool IsValidValue(string value) => Regex.IsMatch(value, \"^\" + PATTERN + \"$\", RegexOptions.Singleline);");
+                //    _writer.WriteLine(string.Empty);
+                //}
 
                 // close class
                 CloseScope();
@@ -2575,6 +2733,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             internal string ExportedName;
             internal string ExportedType;
             internal bool IsList;
+            internal bool IsChoice;
         }
 
         /// <summary>Information about the written model.</summary>
@@ -2586,3 +2745,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
     }
 }
+
+
