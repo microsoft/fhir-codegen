@@ -1,14 +1,9 @@
-﻿// -------------------------------------------------------------------------------------------------
-// <copyright file="FromR4.cs" company="Microsoft Corporation">
+﻿// <copyright file="FromR4.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-// -------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using fhirModels = fhirCsR4.Models;
@@ -235,12 +230,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             // add our code system
             fhirVersionInfo.AddValueSet(valueSet);
-
-            if ((valueSet.Expansion == null) &&
-                (!IsExpandable(includes)))
-            {
-                _warnings.Add($"ValueSet {vs.Name} ({vs.Id}): Unexpandable Value Set in core specification!");
-            }
         }
 
         /// <summary>Query if 'includes' is expandable.</summary>
@@ -1092,8 +1081,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 int loc = element.ContentReference.IndexOf('#', StringComparison.Ordinal);
                                 elementType = element.ContentReference.Substring(loc + 1);
 
-                                _warnings.Add($"Complex: {sd.Name} ({sd.Id}): New format ContentReference: {element.Id}: {element.ContentReference}");
-
+                                //_warnings.Add($"Complex: {sd.Name} ({sd.Id}): New format ContentReference: {element.Id}: {element.ContentReference}");
                             }
                             else if (element.ContentReference[0] == '#')
                             {
@@ -1160,6 +1148,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 .Select(x => x.Map).ToList();
 
                         string fiveWs = ((fwMapping != null) && fwMapping.Any()) ? fwMapping[0] : string.Empty;
+
+                        if (parent.Elements.ContainsKey(path))
+                        {
+                            _errors.Add($"Complex {sd.Name} snapshot error ({path}): Repeated snapshot: {parent.Elements[path].Id} & {id}");
+                            continue;
+                        }
 
                         // add this field to the parent type
                         parent.Elements.Add(

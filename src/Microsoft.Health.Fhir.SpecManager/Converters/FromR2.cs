@@ -1,14 +1,9 @@
-﻿// -------------------------------------------------------------------------------------------------
-// <copyright file="FromR2.cs" company="Microsoft Corporation">
+﻿// <copyright file="FromR2.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-// -------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using fhirModels = fhirCsR2.Models;
@@ -1186,7 +1181,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         true,
                                         true,
                                         string.Empty,
-                                        string.Empty, null));
+                                        string.Empty,
+                                        null));
                             }
 
                             // check for implicit slicing definition

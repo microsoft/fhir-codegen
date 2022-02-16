@@ -262,7 +262,7 @@
         },
         "igTest": {
             "commandName": "Project",
-            "commandLineArgs": "--packages hl7.fhir.us.core --export-types \"primitive|complex|resource\" --output-path ..\\..\\generated\\IG\\ --load-r4 latest --language Info --official-expansions-only true",
+            "commandLineArgs": "-p hl7.fhir.us.core --output-path ..\\..\\generated\\IG\\ --language Info --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }

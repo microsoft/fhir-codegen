@@ -1,22 +1,12 @@
-﻿// -------------------------------------------------------------------------------------------------
-// <copyright file="FromR3.cs" company="Microsoft Corporation">
+﻿// <copyright file="FromR3.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-// -------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-//using System.Text;
-////using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
-//using Newtonsoft.Json;
 using fhirModels = fhirCsR3.Models;
-//using fhirModels = Microsoft.Health.Fhir.SpecManager.fhir.r3;
-//using fhirModels = Microsoft.Health.Fhir.SpecManager.fhir.r3.Models;
 using fhirSerialization = fhirCsR3.Serialization;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
@@ -27,9 +17,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         private const string ExtensionComment = "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.";
         private const string ExtensionDefinition = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.";
         private const string ExtensionShort = "Additional content defined by implementations";
-
-        /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
-        //private JsonConverter _jsonConverter;
 
         /// <summary>The errors.</summary>
         private List<string> _errors;
@@ -42,7 +29,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// </summary>
         public FromR3()
         {
-            //_jsonConverter = new fhirModels.ResourceConverter();
             _errors = new List<string>();
             _warnings = new List<string>();
         }
@@ -229,12 +215,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             // add our code system
             fhirVersionInfo.AddValueSet(valueSet);
-
-            if ((valueSet.Expansion == null) &&
-                (!IsExpandable(includes)))
-            {
-                _warnings.Add($"ValueSet {vs.Name} ({vs.Id}): Unexpandable Value Set in core specification!");
-            }
         }
 
         /// <summary>Query if 'includes' is expandable.</summary>
@@ -578,7 +558,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Process the structure definition.</summary>
         /// <param name="sd">             The structure definition to parse.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        private static void ProcessStructureDef(
+        private void ProcessStructureDef(
             fhirModels.StructureDefinition sd,
             IPackageImportable fhirVersionInfo)
         {
@@ -859,7 +839,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="sd">                   The structure definition to parse.</param>
         /// <param name="fhirVersionInfo">      FHIR Version information.</param>
         /// <param name="definitionComplexType">Type of structure definition we are parsing.</param>
-        private static void ProcessComplex(
+        private void ProcessComplex(
             fhirModels.StructureDefinition sd,
             IPackageImportable fhirVersionInfo,
             FhirComplex.FhirComplexType definitionComplexType)
@@ -1135,6 +1115,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 .Select(x => x.Map).ToList();
 
                         string fiveWs = ((fwMapping != null) && fwMapping.Any()) ? fwMapping[0] : string.Empty;
+
+                        if (parent.Elements.ContainsKey(path))
+                        {
+                            _errors.Add($"Complex {sd.Name} snapshot error ({path}): Repeated snapshot: {parent.Elements[path].Id} & {id}");
+                            continue;
+                        }
 
                         // add this field to the parent type
                         parent.Elements.Add(
