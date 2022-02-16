@@ -1160,10 +1160,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         List<string> fwMapping = element.Mapping?.Where(x =>
                             (x != null) &&
                             x.Identity.Equals("w5", StringComparison.OrdinalIgnoreCase) &&
-                            (!x.Map.Equals("FiveWs.subject[x]", StringComparison.OrdinalIgnoreCase)))?
+                            x.Map.StartsWith("FiveWs", StringComparison.Ordinal) &&
+                            (!x.Map.Equals("FiveWs.subject[x]", StringComparison.Ordinal)))?
                                 .Select(x => x.Map).ToList();
 
-                        string fiveWs = fwMapping.Any() ? fwMapping[0] : string.Empty;
+                        string fiveWs = ((fwMapping != null) && fwMapping.Any()) ? fwMapping[0] : string.Empty;
 
                         // add this field to the parent type
                         parent.Elements.Add(
