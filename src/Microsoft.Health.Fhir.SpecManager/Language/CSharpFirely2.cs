@@ -1646,15 +1646,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (_exportFiveWs)
             {
-                if ((element.FiveWs == null) || (element.FiveWs.Count == 0))
+                if (string.IsNullOrEmpty(element.FiveWs))
                 {
-                    fiveWs = " , FiveWs= new string[] {}";
+                    fiveWs = " , FiveWs=\"\"";
                 }
                 else
                 {
-                    fiveWs = " , FiveWs= new string[] {" +
-                        string.Join(",", element.FiveWs.Select(fwMapping => $"\"{fwMapping}\"")) +
-                        "}";
+                    fiveWs = $" , FiveWs=\"{element.FiveWs}\"";
                 }
             }
 
@@ -1871,15 +1869,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (_exportFiveWs)
             {
-                if ((element.FiveWs == null) || (element.FiveWs.Count == 0))
+                if (string.IsNullOrEmpty(element.FiveWs))
                 {
-                    fiveWs = " , FiveWs= new string[] {}";
+                    fiveWs = " , FiveWs=\"\"";
                 }
                 else
                 {
-                    fiveWs = " , FiveWs= new string[] {" +
-                        string.Join(",", element.FiveWs.Select(fwMapping => $"\"{fwMapping}\"")) +
-                        "}";
+                    fiveWs = $" , FiveWs=\"{element.FiveWs}\"";
                 }
             }
 
