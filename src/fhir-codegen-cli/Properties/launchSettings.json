@@ -132,22 +132,22 @@
         },
         "Firely 2.x R4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r4 4.0.1 --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 2.x R4B": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r4 4.1.0 --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r4 4.3.0-snapshot1 --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 2.x R5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r5 4.6.0 --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r5 5.0.0-snapshot1 --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 2.x Common": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\common\\src\\Hl7.Fhir.Support.Poco\\Model --load-r5 4.6.0 --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --language-options CSharpFirely2|subset=common --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\common\\src\\Hl7.Fhir.Support.Poco\\Model --load-r5 5.0.0-snapshot1 --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --language-options CSharpFirely2|subset=common --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "FirelyAll": {
