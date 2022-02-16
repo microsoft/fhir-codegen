@@ -11,13 +11,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager;
 public interface IPackageExportable
 {
     /// <summary>Gets the type of the package group.</summary>
-    public FhirPackageCommon.FhirPackageType PackageType { get; }
+    public FhirPackageCommon.FhirPackageTypeEnum PackageType { get; }
 
     /// <summary>Gets the package details.</summary>
     public NpmPackageDetails PackageDetails { get; }
 
     /// <summary>Gets  the FHIR major release, by enum.</summary>
-    public FhirPackageCommon.FhirSequence FhirMajorVersion { get; }
+    public FhirPackageCommon.FhirSequenceEnum FhirSequence { get; }
 
     /// <summary>Gets the major version.</summary>
     [Obsolete("R4B made major versions as integers tricky, use the FhirMajorVersion", false)]

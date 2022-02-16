@@ -18,7 +18,7 @@ public static class FhirPackageCommon
     public const string UrlFhirType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type";
 
     /// <summary>Values that represent FHIR package types.</summary>
-    public enum FhirPackageType
+    public enum FhirPackageTypeEnum
     {
         /// <summary>An enum constant representing an unknown package type.</summary>
         Unknown,
@@ -31,7 +31,7 @@ public static class FhirPackageCommon
     }
 
     /// <summary>Values that represent FHIR major releases.</summary>
-    public enum FhirSequence : int
+    public enum FhirSequenceEnum : int
     {
         /// <summary>An enum constant representing the DSTU2 option.</summary>
         DSTU2,
@@ -51,7 +51,7 @@ public static class FhirPackageCommon
 
     /// <summary>Information about the published release.</summary>
     private readonly record struct PublishedReleaseInformation(
-        FhirSequence Major,
+        FhirSequenceEnum Major,
         DateOnly PublicationDate,
         string Version,
         string Description,
@@ -60,16 +60,16 @@ public static class FhirPackageCommon
     /// <summary>The FHIR releases.</summary>
     private static List<PublishedReleaseInformation> _fhirReleases = new()
     {
-        new (FhirSequence.DSTU2, new DateOnly(2015, 10, 24), "1.0.2",           "DSTU2 Release with 1 technical errata"),
-        new (FhirSequence.STU3,  new DateOnly(2019, 10, 24), "3.0.2",           "STU3 Release with 2 technical errata"),
-        new (FhirSequence.R4,    new DateOnly(2019, 10, 30), "4.0.1",           "R4 Release with 1 technical errata"),
-        new (FhirSequence.R4B,   new DateOnly(2021, 03, 11), "4.1.0",           "R4B Ballot #1", "2021Mar"),
-        new (FhirSequence.R4B,   new DateOnly(2021, 12, 20), "4.3.0-snapshot1", "R4B January 2022 Connectathon"),
-        new (FhirSequence.R5,    new DateOnly(2019, 12, 31), "4.2.0",           "R5 Preview #1", "2020Feb"),
-        new (FhirSequence.R5,    new DateOnly(2020, 05, 04), "4.4.0",           "R5 Preview #2", "2020May"),
-        new (FhirSequence.R5,    new DateOnly(2020, 08, 20), "4.5.0",           "R5 Preview #3", "2020Sep"),
-        new (FhirSequence.R5,    new DateOnly(2021, 04, 15), "4.6.0",           "R5 Draft Ballot", "2021May"),
-        new (FhirSequence.R5,    new DateOnly(2021, 12, 19), "5.0.0-snapshot1", "R5 January 2022 Connectathon"),
+        new (FhirSequenceEnum.DSTU2, new DateOnly(2015, 10, 24), "1.0.2",           "DSTU2 Release with 1 technical errata"),
+        new (FhirSequenceEnum.STU3,  new DateOnly(2019, 10, 24), "3.0.2",           "STU3 Release with 2 technical errata"),
+        new (FhirSequenceEnum.R4,    new DateOnly(2019, 10, 30), "4.0.1",           "R4 Release with 1 technical errata"),
+        new (FhirSequenceEnum.R4B,   new DateOnly(2021, 03, 11), "4.1.0",           "R4B Ballot #1", "2021Mar"),
+        new (FhirSequenceEnum.R4B,   new DateOnly(2021, 12, 20), "4.3.0-snapshot1", "R4B January 2022 Connectathon"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2019, 12, 31), "4.2.0",           "R5 Preview #1", "2020Feb"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2020, 05, 04), "4.4.0",           "R5 Preview #2", "2020May"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2020, 08, 20), "4.5.0",           "R5 Preview #3", "2020Sep"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2021, 04, 15), "4.6.0",           "R5 Draft Ballot", "2021May"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2021, 12, 19), "5.0.0-snapshot1", "R5 January 2022 Connectathon"),
     };
 
     /// <summary>(Immutable) The ballot URL changeover date.</summary>
@@ -79,19 +79,19 @@ public static class FhirPackageCommon
     private static Dictionary<string, PublishedReleaseInformation> _fhirReleasesByVersion;
 
     /// <summary>The latest version by release.</summary>
-    private static Dictionary<FhirSequence, string> _latestVersionByRelease;
+    private static Dictionary<FhirSequenceEnum, string> _latestVersionByRelease;
 
     /// <summary>The package base by release.</summary>
-    private static Dictionary<FhirSequence, string> _packageBaseByRelease;
+    private static Dictionary<FhirSequenceEnum, string> _packageBaseByRelease;
 
     /// <summary>List of names of the core packages.</summary>
-    private static Dictionary<string, FhirSequence> _corePackagesAndReleases;
+    private static Dictionary<string, FhirSequenceEnum> _corePackagesAndReleases;
 
     /// <summary>Types of resources to process, by FHIR version.</summary>
-    private static Dictionary<FhirSequence, HashSet<string>> _versionResourcesToProcess = new()
+    private static Dictionary<FhirSequenceEnum, HashSet<string>> _versionResourcesToProcess = new()
     {
         {
-            FhirSequence.DSTU2,
+            FhirSequenceEnum.DSTU2,
             new()
             {
                 "OperationDefinition",
@@ -101,20 +101,7 @@ public static class FhirPackageCommon
             }
         },
         {
-            FhirSequence.STU3,
-            new()
-            {
-                "CapabilityStatement",
-                "CodeSystem",
-                "NamingSystem",
-                "OperationDefinition",
-                "SearchParameter",
-                "StructureDefinition",
-                "ValueSet",
-            }
-        },
-        {
-            FhirSequence.R4,
+            FhirSequenceEnum.STU3,
             new()
             {
                 "CapabilityStatement",
@@ -127,7 +114,7 @@ public static class FhirPackageCommon
             }
         },
         {
-            FhirSequence.R4B,
+            FhirSequenceEnum.R4,
             new()
             {
                 "CapabilityStatement",
@@ -140,7 +127,20 @@ public static class FhirPackageCommon
             }
         },
         {
-            FhirSequence.R5,
+            FhirSequenceEnum.R4B,
+            new()
+            {
+                "CapabilityStatement",
+                "CodeSystem",
+                "NamingSystem",
+                "OperationDefinition",
+                "SearchParameter",
+                "StructureDefinition",
+                "ValueSet",
+            }
+        },
+        {
+            FhirSequenceEnum.R5,
             new()
             {
                 "CapabilityStatement",
@@ -155,10 +155,10 @@ public static class FhirPackageCommon
     };
 
     /// <summary>Types of resources to ignore, by FHIR version.</summary>
-    private static Dictionary<FhirSequence, HashSet<string>> _versionResourcesToIgnore = new()
+    private static Dictionary<FhirSequenceEnum, HashSet<string>> _versionResourcesToIgnore = new()
     {
         {
-            FhirSequence.DSTU2,
+            FhirSequenceEnum.DSTU2,
             new()
             {
                 "Conformance",
@@ -168,7 +168,7 @@ public static class FhirPackageCommon
             }
         },
         {
-            FhirSequence.STU3,
+            FhirSequenceEnum.STU3,
             new()
             {
                 "CompartmentDefinition",
@@ -178,7 +178,7 @@ public static class FhirPackageCommon
             }
         },
         {
-            FhirSequence.R4,
+            FhirSequenceEnum.R4,
             new()
             {
                 "CompartmentDefinition",
@@ -187,7 +187,7 @@ public static class FhirPackageCommon
             }
         },
         {
-            FhirSequence.R4B,
+            FhirSequenceEnum.R4B,
             new()
             {
                 "CompartmentDefinition",
@@ -196,7 +196,7 @@ public static class FhirPackageCommon
             }
         },
         {
-            FhirSequence.R5,
+            FhirSequenceEnum.R5,
             new()
             {
                 "CompartmentDefinition",
@@ -207,18 +207,18 @@ public static class FhirPackageCommon
     };
 
     /// <summary>The version files to ignore.</summary>
-    private static Dictionary<FhirSequence, HashSet<string>> _versionFilesToIgnore = new()
+    private static Dictionary<FhirSequenceEnum, HashSet<string>> _versionFilesToIgnore = new()
     {
         {
-            FhirSequence.DSTU2,
+            FhirSequenceEnum.DSTU2,
             new()
         },
         {
-            FhirSequence.STU3,
+            FhirSequenceEnum.STU3,
             new()
         },
         {
-            FhirSequence.R4,
+            FhirSequenceEnum.R4,
             new()
             {
                 //"ValueSet-cpt-all.json",
@@ -226,11 +226,11 @@ public static class FhirPackageCommon
             }
         },
         {
-            FhirSequence.R4B,
+            FhirSequenceEnum.R4B,
             new()
         },
         {
-            FhirSequence.R5,
+            FhirSequenceEnum.R5,
             new()
         },
     };
@@ -261,24 +261,29 @@ public static class FhirPackageCommon
         _packageBaseByRelease = new();
         _corePackagesAndReleases = new();
 
-        foreach (FhirSequence sequence in (FhirSequence[])Enum.GetValues(typeof(FhirSequence)))
+        foreach (FhirSequenceEnum sequence in (FhirSequenceEnum[])Enum.GetValues(typeof(FhirSequenceEnum)))
         {
             switch (sequence)
             {
-                case FhirSequence.DSTU2:
+                case FhirSequenceEnum.DSTU2:
                     _packageBaseByRelease.Add(sequence, "hl7.fhir.r2");
                     _corePackagesAndReleases.Add("hl7.fhir.r2.core", sequence);
+                    _corePackagesAndReleases.Add("hl7.fhir.r2.expansions", sequence);
                     break;
 
-                case FhirSequence.STU3:
+                case FhirSequenceEnum.STU3:
                     _packageBaseByRelease.Add(sequence, "hl7.fhir.r3");
                     _corePackagesAndReleases.Add("hl7.fhir.r3.core", sequence);
+                    _corePackagesAndReleases.Add("hl7.fhir.r3.expansions", sequence);
                     break;
 
                 default:
                     _packageBaseByRelease.Add(sequence, "hl7.fhir." + sequence.ToString().ToLowerInvariant());
                     _corePackagesAndReleases.Add(
                         $"hl7.fhir.{sequence.ToString().ToLowerInvariant()}.core",
+                        sequence);
+                    _corePackagesAndReleases.Add(
+                        $"hl7.fhir.{sequence.ToString().ToLowerInvariant()}.expansions",
                         sequence);
                     break;
             }
@@ -322,6 +327,12 @@ public static class FhirPackageCommon
     /// <returns>True if the package represents a FHIR Core package, false if it is not.</returns>
     public static bool PackageIsFhirCore(string packageName)
     {
+        if (packageName.Contains('#'))
+        {
+            string name = packageName.Substring(0, packageName.IndexOf('#'));
+            return _corePackagesAndReleases.ContainsKey(name);
+        }
+
         return _corePackagesAndReleases.ContainsKey(packageName);
     }
 
@@ -331,22 +342,40 @@ public static class FhirPackageCommon
     /// <param name="packageName">Name of the package.</param>
     /// <param name="sequence">   [out] The sequence.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public static bool TryGetReleaseByPackage(string packageName, out FhirSequence sequence)
+    public static bool TryGetReleaseByPackage(string packageName, out FhirSequenceEnum sequence)
     {
-        if (_corePackagesAndReleases.ContainsKey(packageName))
+        string name;
+
+        if (packageName.Contains('#'))
         {
-            sequence = _corePackagesAndReleases[packageName];
+            name = packageName.Substring(0, packageName.IndexOf('#'));
+        }
+        else
+        {
+            name = packageName;
+        }
+
+        name = name.ToLowerInvariant();
+
+        if (!name.EndsWith(".core", StringComparison.Ordinal))
+        {
+            name = name + ".core";
+        }
+
+        if (_corePackagesAndReleases.ContainsKey(name))
+        {
+            sequence = _corePackagesAndReleases[name];
             return true;
         }
 
-        sequence = FhirSequence.DSTU2;
+        sequence = FhirSequenceEnum.DSTU2;
         return false;
     }
 
     /// <summary>Package base for release.</summary>
     /// <param name="major">The major.</param>
     /// <returns>A string.</returns>
-    public static string PackageBaseForRelease(FhirSequence major)
+    public static string PackageBaseForRelease(FhirSequenceEnum major)
     {
         return _packageBaseByRelease[major];
     }
@@ -354,7 +383,7 @@ public static class FhirPackageCommon
     /// <summary>Latest version for release.</summary>
     /// <param name="major">The major.</param>
     /// <returns>The current highest release number for a sequence.</returns>
-    public static string LatestVersionForRelease(FhirSequence major)
+    public static string LatestVersionForRelease(FhirSequenceEnum major)
     {
         return _latestVersionByRelease[major];
     }
@@ -383,21 +412,21 @@ public static class FhirPackageCommon
     /// <summary>Major for release.</summary>
     /// <param name="release">The release.</param>
     /// <returns>The sequence release number for a FHIR release (e.g., 2 for DSTU2).</returns>
-    public static int MajorIntForVersion(FhirSequence release)
+    public static int MajorIntForVersion(FhirSequenceEnum release)
     {
         switch (release)
         {
-            case FhirSequence.DSTU2:
+            case FhirSequenceEnum.DSTU2:
                 return 2;
 
-            case FhirSequence.STU3:
+            case FhirSequenceEnum.STU3:
                 return 3;
 
-            case FhirSequence.R4:
-            case FhirSequence.R4B:
+            case FhirSequenceEnum.R4:
+            case FhirSequenceEnum.R4B:
                 return 4;
 
-            case FhirSequence.R5:
+            case FhirSequenceEnum.R5:
                 return 5;
         }
 
@@ -411,7 +440,7 @@ public static class FhirPackageCommon
     ///  required range.</exception>
     /// <param name="version">The version string.</param>
     /// <returns>The FhirMajorRelease that should be used for the specified version.</returns>
-    public static FhirSequence MajorReleaseForVersion(string version)
+    public static FhirSequenceEnum MajorReleaseForVersion(string version)
     {
         if (string.IsNullOrEmpty(version))
         {
@@ -434,19 +463,19 @@ public static class FhirPackageCommon
             case "1":
             case "2.0":
             case "2":
-                return FhirSequence.DSTU2;
+                return FhirSequenceEnum.DSTU2;
 
             case "3.0":
             case "3":
-                return FhirSequence.STU3;
+                return FhirSequenceEnum.STU3;
 
             case "4":
             case "4.0":
-                return FhirSequence.R4;
+                return FhirSequenceEnum.R4;
 
             case "4.1":
             case "4.3":
-                return FhirSequence.R4B;
+                return FhirSequenceEnum.R4B;
 
             case "4.2":
             case "4.4":
@@ -454,7 +483,7 @@ public static class FhirPackageCommon
             case "4.6":
             case "5.0":
             case "5":
-                return FhirSequence.R5;
+                return FhirSequenceEnum.R5;
         }
 
         throw new ArgumentOutOfRangeException($"Unknown FHIR version: {version}");
@@ -464,7 +493,7 @@ public static class FhirPackageCommon
     /// <param name="release">     The release.</param>
     /// <param name="resourceName">Name of the resource.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public static bool ShouldProcessResource(FhirSequence release, string resourceName)
+    public static bool ShouldProcessResource(FhirSequenceEnum release, string resourceName)
     {
         if (_versionResourcesToProcess[release].Contains(resourceName))
         {
@@ -478,7 +507,7 @@ public static class FhirPackageCommon
     /// <param name="release">     The release.</param>
     /// <param name="resourceName">Name of the resource.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public static bool ShouldIgnoreResource(FhirSequence release, string resourceName)
+    public static bool ShouldIgnoreResource(FhirSequenceEnum release, string resourceName)
     {
         if (_versionResourcesToIgnore[release].Contains(resourceName))
         {
@@ -492,7 +521,7 @@ public static class FhirPackageCommon
     /// <param name="release"> The release.</param>
     /// <param name="filename">Filename of the file.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public static bool ShouldSkipFile(FhirSequence release, string filename)
+    public static bool ShouldSkipFile(FhirSequenceEnum release, string filename)
     {
         if (_versionFilesToIgnore[release].Contains(filename))
         {
@@ -501,5 +530,4 @@ public static class FhirPackageCommon
 
         return false;
     }
-
 }

@@ -96,9 +96,9 @@ public abstract class FhirSpecificationLoader
     /// <param name="info">[in,out] The information.</param>
     private static void AddSearchMagicParameters(IPackageImportable info)
     {
-        switch (info.FhirMajorVersion)
+        switch (info.FhirSequence)
         {
-            case FhirPackageCommon.FhirSequence.DSTU2:
+            case FhirPackageCommon.FhirSequenceEnum.DSTU2:
                 info.AddVersionedParam(FhirSearchParam.ParameterGrouping.Global, "_content", "string");
                 info.AddVersionedParam(FhirSearchParam.ParameterGrouping.Global, "_list", "string");
 
@@ -114,7 +114,7 @@ public abstract class FhirSpecificationLoader
                 info.AddVersionedParam(FhirSearchParam.ParameterGrouping.Interaction, "_format", "string");
                 break;
 
-            case FhirPackageCommon.FhirSequence.STU3:
+            case FhirPackageCommon.FhirSequenceEnum.STU3:
                 info.AddVersionedParam(FhirSearchParam.ParameterGrouping.Global, "_text", "string");
                 info.AddVersionedParam(FhirSearchParam.ParameterGrouping.Global, "_content", "string");
                 info.AddVersionedParam(FhirSearchParam.ParameterGrouping.Global, "_list", "string");
@@ -134,9 +134,9 @@ public abstract class FhirSpecificationLoader
 
                 break;
 
-            case FhirPackageCommon.FhirSequence.R4:
-            case FhirPackageCommon.FhirSequence.R4B:
-            case FhirPackageCommon.FhirSequence.R5:
+            case FhirPackageCommon.FhirSequenceEnum.R4:
+            case FhirPackageCommon.FhirSequenceEnum.R4B:
+            case FhirPackageCommon.FhirSequenceEnum.R5:
             default:
                 info.AddVersionedParam(FhirSearchParam.ParameterGrouping.Global, "_text", "string");
                 info.AddVersionedParam(FhirSearchParam.ParameterGrouping.Global, "_content", "string");
@@ -210,7 +210,7 @@ public abstract class FhirSpecificationLoader
             // attempt to load this file
             try
             {
-                Console.Write($"{packageInfo.FhirMajorVersion}: {shortName,-85}\r");
+                Console.Write($"{packageInfo.FhirSequence}: {shortName,-85}\r");
 
                 // check for ignored types
                 if (packageInfo.ShouldIgnoreResource(resourceHint))

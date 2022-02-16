@@ -7,37 +7,37 @@
         },
         "r2": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r3": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 4.0.1 --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r4b": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B.txt --load-R4B latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B.txt --load-R4B latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r4b-ci": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B_CI.txt --load-ci R4B --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B_CI.txt -p hl7.fhir.r4b#current --ci-branch R4B --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "localInfo": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-local-fhir-build current --official-expansions-only true --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated --load-local-fhir-build current --official-expansions-only true --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "ts2": {

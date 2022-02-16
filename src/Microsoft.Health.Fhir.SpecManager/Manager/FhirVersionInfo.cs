@@ -92,7 +92,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     public FhirVersionInfo(FhirVersionInfo source, PackageCopyOptions options)
         : this()
     {
-        _fhirConverter = ConverterHelper.ConverterForVersion(source.FhirMajorVersion);
+        _fhirConverter = ConverterHelper.ConverterForVersion(source.FhirSequence);
 
 #pragma warning disable CS0618 // Type or member is obsolete
         MajorVersion = source.MajorVersion;
@@ -503,10 +503,10 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     }
 
     /// <summary>Gets or sets the type of the package group.</summary>
-    public FhirPackageCommon.FhirPackageType PackageType { get; set; }
+    public FhirPackageCommon.FhirPackageTypeEnum PackageType { get; set; }
 
     /// <summary>Gets or sets the major version.</summary>
-    public FhirPackageCommon.FhirSequence FhirMajorVersion { get; set; }
+    public FhirPackageCommon.FhirSequenceEnum FhirSequence { get; set; }
 
     /// <summary>Gets or sets the package details.</summary>
     public NpmPackageDetails PackageDetails { get; set; }
@@ -920,11 +920,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     {
         switch (PackageType)
         {
-            case FhirPackageCommon.FhirPackageType.Core:
-                return FhirPackageCommon.ShouldProcessResource(FhirMajorVersion, resourceName);
+            case FhirPackageCommon.FhirPackageTypeEnum.Core:
+                return FhirPackageCommon.ShouldProcessResource(FhirSequence, resourceName);
 
-            case FhirPackageCommon.FhirPackageType.Unknown:
-            case FhirPackageCommon.FhirPackageType.IG:
+            case FhirPackageCommon.FhirPackageTypeEnum.Unknown:
+            case FhirPackageCommon.FhirPackageTypeEnum.IG:
             default:
                 return true;
         }
@@ -937,11 +937,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     {
         switch (PackageType)
         {
-            case FhirPackageCommon.FhirPackageType.Core:
-                return FhirPackageCommon.ShouldIgnoreResource(FhirMajorVersion, resourceName);
+            case FhirPackageCommon.FhirPackageTypeEnum.Core:
+                return FhirPackageCommon.ShouldIgnoreResource(FhirSequence, resourceName);
 
-            case FhirPackageCommon.FhirPackageType.Unknown:
-            case FhirPackageCommon.FhirPackageType.IG:
+            case FhirPackageCommon.FhirPackageTypeEnum.Unknown:
+            case FhirPackageCommon.FhirPackageTypeEnum.IG:
             default:
                 return false;
         }
@@ -959,11 +959,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
         switch (PackageType)
         {
-            case FhirPackageCommon.FhirPackageType.Core:
-                return FhirPackageCommon.ShouldSkipFile(FhirMajorVersion, filename);
+            case FhirPackageCommon.FhirPackageTypeEnum.Core:
+                return FhirPackageCommon.ShouldSkipFile(FhirSequence, filename);
 
-            case FhirPackageCommon.FhirPackageType.Unknown:
-            case FhirPackageCommon.FhirPackageType.IG:
+            case FhirPackageCommon.FhirPackageTypeEnum.Unknown:
+            case FhirPackageCommon.FhirPackageTypeEnum.IG:
             default:
                 return false;
         }
@@ -1177,12 +1177,12 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     {
         NpmPackageDetails details = PackageDetails;
 
-        if (!FhirPackageCommon.TryGetReleaseByPackage(details.Name, out FhirPackageCommon.FhirSequence sequence))
+        if (!FhirPackageCommon.TryGetReleaseByPackage(details.Name, out FhirPackageCommon.FhirSequenceEnum sequence))
         {
             throw new Exception($"Could not determine the FHIR sequence for package: {details.Name}#{details.Version}");
         }
 
-        FhirMajorVersion = sequence;
+        FhirSequence = sequence;
         _fhirConverter = ConverterHelper.ConverterForVersion(sequence);
 
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -1207,7 +1207,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
 
         PackageName = details.Name;
-        PackageType = FhirPackageCommon.FhirPackageType.Core;
+        PackageType = FhirPackageCommon.FhirPackageTypeEnum.Core;
 
         ExamplesPackageName = details.Name.Replace(".core", ".examples", StringComparison.Ordinal);
         ExpansionsPackageName = details.Name.Replace(".core", ".expansions", StringComparison.Ordinal);
@@ -1258,7 +1258,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     {
         NpmPackageDetails details = PackageDetails;
 
-        FhirPackageCommon.FhirSequence sequence = FhirPackageCommon.FhirSequence.R4;
+        FhirPackageCommon.FhirSequenceEnum sequence = FhirPackageCommon.FhirSequenceEnum.R4;
         bool foundSequence = false;
 
         if ((details.FhirVersions != null) && details.FhirVersions.Any())
@@ -1284,7 +1284,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             Console.WriteLine($"Warning could not determine FHIR version of {directive}, assuming R4 for parsing...");
         }
 
-        FhirMajorVersion = sequence;
+        FhirSequence = sequence;
         _fhirConverter = ConverterHelper.ConverterForVersion(sequence);
 
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -1293,7 +1293,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         ReleaseName = sequence.ToString();
 
         PackageName = details.Name;
-        PackageType = FhirPackageCommon.FhirPackageType.IG;
+        PackageType = FhirPackageCommon.FhirPackageTypeEnum.IG;
         VersionString = details.Version;
 
         // TODO(ginoc): verify from here down - should not make any difference because of cache manager and can probably be removed

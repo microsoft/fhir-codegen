@@ -43,10 +43,6 @@ public static class Program
     ///  or latest).</param>
     /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 5.0.0-snapshot1
     ///  or latest).</param>
-    /// <param name="loadCi">                If a FHIR CI build should be loaded, which branch (e.g., master
-    ///  or R4B).</param>
-    /// <param name="loadFromCache">         If content should be loaded from the user's FHIR cache,
-    ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
     /// <param name="languageOptions">       Language specific options, see documentation for more
     ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
     /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
@@ -60,10 +56,9 @@ public static class Program
     /// <param name="extensionSupport">      The level of extensions to include
     ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
     /// <param name="languageHelp">          Display languages and their options.</param>
-    /// <param name="fhirPublishDirectory">  The full path to a local FHIR build publish directory (.../publish).</param>
-    /// <param name="loadLocalFhirBuild">    "latest" to copy from a local FHIR build directory, "current" to use a previous copy (default: not present).</param>
-    /// <param name="packageDirectory">  The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
-    /// <param name="packages">'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0).</param>
+    /// <param name="packageDirectory">      The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
+    /// <param name="packages">              '|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core#4.0.0).</param>
+    /// <param name="ciBranch">              If loading from the CI server, the name of the branch to use.</param>
     public delegate void ProcessDelegate(
         string fhirSpecDirectory = "",
         string outputPath = "",
@@ -76,8 +71,6 @@ public static class Program
         string loadR4 = "",
         string loadR4B = "",
         string loadR5 = "",
-        string loadCi = "",
-        string loadFromCache = "",
         string languageOptions = "",
         bool officialExpansionsOnly = false,
         string fhirServerUrl = "",
@@ -85,10 +78,9 @@ public static class Program
         string exportTypes = "",
         string extensionSupport = "",
         bool languageHelp = false,
-        string fhirPublishDirectory = "",
-        string loadLocalFhirBuild = "",
         string packageDirectory = "",
-        string packages = "");
+        string packages = "",
+        string ciBranch = "");
 
     /// <summary>Main entry-point for this application.</summary>
     /// <param name="args">An array of command-line argument strings.</param>
@@ -160,14 +152,6 @@ public static class Program
                 getDefaultValue: () => string.Empty,
                 "If FHIR R5 should be loaded, which version (e.g., 5.0.0-snapshot1 or latest)"),
             new Option<string>(
-                name: "--load-ci",
-                getDefaultValue: () => string.Empty,
-                "If a FHIR CI version should be loaded, which branch (e.g., master, R4B)"),
-            new Option<string>(
-                name: "--load-from-cache",
-                getDefaultValue: () => string.Empty,
-                "If content should be loaded from the user's FHIR cache, pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0)"),
-            new Option<string>(
                 aliases: new string[] { "--language-options", "--opts" },
                 getDefaultValue: () => string.Empty,
                 "Language specific options, see documentation for more details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo."),
@@ -196,21 +180,17 @@ public static class Program
                 getDefaultValue: () => false,
                 "Display languages and their options."),
             new Option<string>(
-                aliases: new string[] { "--fhir-publish-directory", "-d" },
-                getDefaultValue: () => string.Empty,
-                "The full path to a local FHIR build publish directory (.../publish)."),
-            new Option<string>(
-                aliases: new string[] { "--load-local-fhir-build", "--local" },
-                getDefaultValue: () => string.Empty,
-                "'latest' to copy from a local FHIR build directory, 'current' to use a previous copy (default: none)."),
-            new Option<string>(
-                aliases: new string[] { "--package-directory", "-p" },
+                name: "--package-directory",
                 getDefaultValue: () => string.Empty,
                 "The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages))."),
             new Option<string>(
-                name: "--packages",
+                aliases: new string[] { "--packages", "-p" },
                 getDefaultValue: () => string.Empty,
-                "'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0)."),
+                "'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core#4.0.0)."),
+            new Option<string>(
+                name: "--ci-branch",
+                getDefaultValue: () => string.Empty,
+                "If loading from the CI server, the name of the branch to use.."),
         };
 
         rootCommand.Description = "Command-line utility for processing the FHIR specification into other computer languages.";
@@ -244,10 +224,6 @@ public static class Program
     ///  or latest).</param>
     /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 5.0.0-snapshot1
     ///  or latest).</param>
-    /// <param name="loadCi">                If a FHIR CI build should be loaded, which branch (e.g., master
-    ///  or R4B).</param>
-    /// <param name="loadFromCache">         If content should be loaded from the user's FHIR cache,
-    ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
     /// <param name="languageOptions">       Language specific options, see documentation for more
     ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
     /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
@@ -261,10 +237,9 @@ public static class Program
     /// <param name="extensionSupport">      The level of extensions to include
     ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
     /// <param name="languageHelp">          Display languages and their options.</param>
-    /// <param name="fhirPublishDirectory">  The full path to a local FHIR build publish directory (.../publish).</param>
-    /// <param name="loadLocalFhirBuild">    "latest" to copy from a local FHIR build directory, "current" to use a previous copy (default: not present).</param>
-    /// <param name="packageDirectory">  The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
-    /// <param name="packages">'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0).</param>
+    /// <param name="packageDirectory">      The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
+    /// <param name="packages">              '|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core#4.0.0).</param>
+    /// <param name="ciBranch">              If loading from the CI server, the name of the branch to use.</param>
     public static void Process(
         string fhirSpecDirectory = "",
         string outputPath = "",
@@ -277,8 +252,6 @@ public static class Program
         string loadR4 = "",
         string loadR4B = "",
         string loadR5 = "",
-        string loadCi = "",
-        string loadFromCache = "",
         string languageOptions = "",
         bool officialExpansionsOnly = false,
         string fhirServerUrl = "",
@@ -286,10 +259,9 @@ public static class Program
         string exportTypes = "",
         string extensionSupport = "",
         bool languageHelp = false,
-        string fhirPublishDirectory = "",
-        string loadLocalFhirBuild = "",
         string packageDirectory = "",
-        string packages = "")
+        string packages = "",
+        string ciBranch = "")
     {
         if (languageHelp)
         {
@@ -306,18 +278,6 @@ public static class Program
         if (string.IsNullOrEmpty(fhirSpecDirectory))
         {
             fhirSpecDirectory = FindRelativeDir(currentFilePath, "fhirVersions", "FHIR Core Specification");
-        }
-
-        if (!string.IsNullOrEmpty(loadLocalFhirBuild))
-        {
-            if (string.IsNullOrEmpty(fhirPublishDirectory))
-            {
-                fhirPublishDirectory = Path.Combine(currentFilePath, "..", "..", "..", "..", "..", "..", "fhir", "publish");
-            }
-        }
-        else
-        {
-            fhirPublishDirectory = string.Empty;
         }
 
         if (string.IsNullOrEmpty(packageDirectory))
@@ -387,7 +347,7 @@ public static class Program
         FhirCacheService.Init(packageDirectory);
         FhirManager.Init();
 
-        Dictionary<string, FhirVersionInfo> fhirVersions = new ();
+        List<string> directives = new();
 
         FhirServerInfo serverInfo = null;
 
@@ -405,9 +365,7 @@ public static class Program
             string.IsNullOrEmpty(loadR4) &&
             string.IsNullOrEmpty(loadR4B) &&
             string.IsNullOrEmpty(loadR5) &&
-            string.IsNullOrEmpty(loadCi) &&
-            string.IsNullOrEmpty(loadFromCache) &&
-            string.IsNullOrEmpty(loadLocalFhirBuild))
+            string.IsNullOrEmpty(packages))
         {
             if (serverInfo == null)
             {
@@ -421,23 +379,23 @@ public static class Program
             {
                 switch (serverInfo.MajorVersion)
                 {
-                    case FhirPackageCommon.FhirSequence.DSTU2:
+                    case FhirPackageCommon.FhirSequenceEnum.DSTU2:
                         loadR2 = "latest";
                         break;
 
-                    case FhirPackageCommon.FhirSequence.STU3:
+                    case FhirPackageCommon.FhirSequenceEnum.STU3:
                         loadR3 = "latest";
                         break;
 
-                    case FhirPackageCommon.FhirSequence.R4:
+                    case FhirPackageCommon.FhirSequenceEnum.R4:
                         loadR4 = "latest";
                         break;
 
-                    case FhirPackageCommon.FhirSequence.R4B:
+                    case FhirPackageCommon.FhirSequenceEnum.R4B:
                         loadR4 = "latest";
                         break;
 
-                    case FhirPackageCommon.FhirSequence.R5:
+                    case FhirPackageCommon.FhirSequenceEnum.R5:
                         loadR5 = "latest";
                         break;
                 }
@@ -446,128 +404,63 @@ public static class Program
 
         if (!string.IsNullOrEmpty(loadR2))
         {
-            fhirVersions.Add(
-                "DSTU2",
-                FhirManager.Current.LoadFhirCore(
-                    FhirPackageCommon.FhirSequence.DSTU2,
-                    loadR2,
-                    offlineMode,
-                    officialExpansionsOnly,
-                    loadCi));
+            directives.Add(
+                FhirPackageCommon.PackageBaseForRelease(FhirPackageCommon.FhirSequenceEnum.DSTU2) +
+                ".core#" +
+                loadR2);
         }
 
         if (!string.IsNullOrEmpty(loadR3))
         {
-            fhirVersions.Add(
-                "STU3",
-                FhirManager.Current.LoadFhirCore(
-                    FhirPackageCommon.FhirSequence.STU3,
-                    loadR3,
-                    offlineMode,
-                    officialExpansionsOnly,
-                    loadCi));
+            directives.Add(
+                FhirPackageCommon.PackageBaseForRelease(FhirPackageCommon.FhirSequenceEnum.STU3) +
+                ".core#" +
+                loadR3);
         }
 
         if (!string.IsNullOrEmpty(loadR4))
         {
-            fhirVersions.Add(
-                "R4",
-                FhirManager.Current.LoadFhirCore(
-                    FhirPackageCommon.FhirSequence.R4,
-                    loadR4,
-                    offlineMode,
-                    officialExpansionsOnly,
-                    loadCi));
+            directives.Add(
+                FhirPackageCommon.PackageBaseForRelease(FhirPackageCommon.FhirSequenceEnum.R4) +
+                ".core#" +
+                loadR4);
         }
 
         if (!string.IsNullOrEmpty(loadR4B))
         {
-            fhirVersions.Add(
-                "R4B",
-                FhirManager.Current.LoadFhirCore(
-                    FhirPackageCommon.FhirSequence.R4B,
-                    loadR4B,
-                    offlineMode,
-                    officialExpansionsOnly,
-                    loadCi));
+            directives.Add(
+                FhirPackageCommon.PackageBaseForRelease(FhirPackageCommon.FhirSequenceEnum.R4B) +
+                ".core#" +
+                loadR4B);
         }
 
         if (!string.IsNullOrEmpty(loadR5))
         {
-            fhirVersions.Add(
-                "R5",
-                FhirManager.Current.LoadFhirCore(
-                    FhirPackageCommon.FhirSequence.R5,
-                    loadR5,
-                    offlineMode,
-                    officialExpansionsOnly,
-                    loadCi));
+            directives.Add(
+                FhirPackageCommon.PackageBaseForRelease(FhirPackageCommon.FhirSequenceEnum.R5) +
+                ".core#" +
+                loadR5);
         }
 
-        //if (!string.IsNullOrEmpty(loadCi))
-        //{
-        //    fhirVersions.Add(
-        //        "ci",
-        //        FhirManager.Current.LoadCi(loadCi, offlineMode, officialExpansionsOnly));
-        //}
-
-        //if (!string.IsNullOrEmpty(loadLocalFhirBuild))
-        //{
-        //    fhirVersions.Add(
-        //        "local",
-        //        FhirManager.Current.LoadLocal(loadLocalFhirBuild, officialExpansionsOnly));
-        //}
-
-        //if (!string.IsNullOrEmpty(loadFromCache))
-        //{
-        //    string[] directives = loadFromCache.Split('|');
-
-        //    foreach (string directive in directives)
-        //    {
-        //        FhirVersionInfo info = FhirManager.Current.LoadCached(directive, officialExpansionsOnly);
-
-        //        if (info == null)
-        //        {
-        //            continue;
-        //        }
-
-        //        fhirVersions.Add(info.ReleaseName, info);
-        //    }
-        //}
-
-        if (fhirVersions.Count > 1)
-        {
-            isBatch = true;
-        }
-
-        // check for packages / profiles
         if (!string.IsNullOrEmpty(packages))
         {
-            string[] packageDirectives = packages.Split('|');
+            directives.AddRange(packages.Split('|', StringSplitOptions.RemoveEmptyEntries));
+        }
 
-            IEnumerable<FhirVersionInfo> packageInfos = FhirManager.Current.LoadPackages(
-                packageDirectives,
-                offlineMode);
+        FhirManager.Current.LoadPackages(
+                directives,
+                offlineMode,
+                officialExpansionsOnly,
+                true,
+                false,
+                ciBranch,
+                out List<string> failedPackageDirectives);
 
-            //foreach (FhirVersionInfo info in fhirVersions.Values)
-            //{
-            //    info.TryLoadPackages(
-            //        packageDirectives,
-            //        out List<FhirGuideInfo> guidesLoaded,
-            //        out List<string> packagesFailed);
+        List<FhirVersionInfo> fhirCorePackages = FhirManager.Current.GetLoadedCorePackages();
 
-            //    foreach (FhirGuideInfo guide in guidesLoaded)
-            //    {
-            //        Console.WriteLine(
-            //            $" <<< FHIR {info.VersionString}:" +
-            //            $" Loaded package: {guide.PackageInfo.Name}:{guide.PackageInfo.Version}");
-            //    }
-
-            //    foreach (string package in packagesFailed)
-            //    {
-            //        Console.WriteLine($" <<< FHIR {info.VersionString}: FAILED to load package: {package}");
-            //    }
-            //}
+        if (fhirCorePackages.Count > 1)
+        {
+            isBatch = true;
         }
 
         // done loading
@@ -575,7 +468,7 @@ public static class Program
 
         if (string.IsNullOrEmpty(outputPath) && (verbose == true))
         {
-            foreach (FhirVersionInfo info in fhirVersions.Values)
+            foreach (FhirVersionInfo info in fhirCorePackages)
             {
                 DumpFhirVersion(Console.Out, info);
             }
@@ -631,7 +524,7 @@ public static class Program
                     fhirServerUrl,
                     includeExperimental);
 
-                foreach (FhirVersionInfo info in fhirVersions.Values)
+                foreach (FhirVersionInfo info in fhirCorePackages)
                 {
                     filesWritten.AddRange(Exporter.Export(info, serverInfo, lang, options, outputPath, isBatch));
                 }

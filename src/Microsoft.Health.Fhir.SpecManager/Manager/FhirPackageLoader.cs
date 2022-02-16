@@ -126,7 +126,7 @@ public static class FhirPackageLoader
             // attempt to load this file
             try
             {
-                Console.Write($"{fhirInfo.FhirMajorVersion}: {shortName,-85}\r");
+                Console.Write($"{fhirInfo.FhirSequence}: {shortName,-85}\r");
 
                 // check for ignored types
                 if (fhirInfo.ShouldIgnoreResource(resourceHint))

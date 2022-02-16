@@ -13,24 +13,24 @@ public static class ConverterHelper
     /// <summary>Get a FHIR Converter for the specified major version.</summary>
     /// <param name="release">The release version.</param>
     /// <returns>An IFhirConverter.</returns>
-    public static IFhirConverter ConverterForVersion(FhirPackageCommon.FhirSequence release)
+    public static IFhirConverter ConverterForVersion(FhirPackageCommon.FhirSequenceEnum release)
     {
         // create our JSON converter
         switch (release)
         {
-            case FhirPackageCommon.FhirSequence.DSTU2:
+            case FhirPackageCommon.FhirSequenceEnum.DSTU2:
                 return new FromR2();
 
-            case FhirPackageCommon.FhirSequence.STU3:
+            case FhirPackageCommon.FhirSequenceEnum.STU3:
                 return new FromR3();
 
-            case FhirPackageCommon.FhirSequence.R4:
+            case FhirPackageCommon.FhirSequenceEnum.R4:
                 return new FromR4();
 
-            case FhirPackageCommon.FhirSequence.R4B:
+            case FhirPackageCommon.FhirSequenceEnum.R4B:
                 return new FromR4();
 
-            case FhirPackageCommon.FhirSequence.R5:
+            case FhirPackageCommon.FhirSequenceEnum.R5:
                 return new FromR5();
 
             default:

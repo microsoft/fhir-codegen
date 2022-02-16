@@ -208,7 +208,7 @@ public class FhirCacheService : IDisposable
     {
         foreach (Uri registryUri in PackageRegistryUris)
         {
-            Uri uri = new Uri(registryUri, $"{name}/{version}");
+            Uri uri = new Uri(registryUri, $"{name}/{version}/");
             directory = Path.Combine(_cachePackageDirectory, $"{name}#{version}");
 
             if (TryDownloadAndExtract(uri, directory, $"{name}#{version}"))
@@ -387,7 +387,7 @@ public class FhirCacheService : IDisposable
             case "":
                 if (name.Contains("r4b", StringComparison.OrdinalIgnoreCase))
                 {
-                    branchUri = new Uri(FhirCiUri, $"branches/R4B");
+                    branchUri = new Uri(FhirCiUri, $"branches/R4B/");
                 }
                 else
                 {
@@ -397,7 +397,7 @@ public class FhirCacheService : IDisposable
                 break;
 
             default:
-                branchUri = new Uri(FhirCiUri, $"branches/${branchName}");
+                branchUri = new Uri(FhirCiUri, $"branches/{branchName}/");
                 break;
         }
 
