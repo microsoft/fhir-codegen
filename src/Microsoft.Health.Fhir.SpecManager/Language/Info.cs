@@ -484,9 +484,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             string fiveWs = string.Empty;
 
-            if ((element.FiveWs != null) && (element.FiveWs.Count != 0))
+            if (!string.IsNullOrEmpty(element.FiveWs))
             {
-                fiveWs = " (W5: " + string.Join(',', element.FiveWs) + ")";
+                fiveWs = " (W5: " + element.FiveWs + ")";
             }
 
             _writer.WriteLineIndented(
