@@ -68,23 +68,6 @@ public interface IPackageImportable
     /// <summary>Gets search parameters defined for all interactions.</summary>
     public Dictionary<string, FhirSearchParam> AllInteractionParameters { get; }
 
-    /// <summary>Attempts to get explicit name a string from the given string.</summary>
-    /// <param name="path">        Full pathname of the file.</param>
-    /// <param name="explicitName">[out] Name of the explicit.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    public bool TryGetExplicitName(string path, out string explicitName);
-
-    /// <summary>Attempts to get value set a FhirValueSet from the given string.</summary>
-    /// <param name="urlOrKey">The URL or key.</param>
-    /// <param name="vs">      [out] The vs.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    public bool TryGetValueSet(string urlOrKey, out FhirValueSet vs);
-
-
-
-
-
-
     /// <summary>Gets or sets the name of the package release.</summary>
     public string ReleaseName { get; set; }
 
@@ -213,4 +196,15 @@ public interface IPackageImportable
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetNodeInfo(string path, out FhirNodeInfo node);
 
+    /// <summary>Attempts to get explicit name a string from the given string.</summary>
+    /// <param name="path">        Full pathname of the file.</param>
+    /// <param name="explicitName">[out] Name of the explicit.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetExplicitName(string path, out string explicitName);
+
+    /// <summary>Attempts to get value set a FhirValueSet from the given string.</summary>
+    /// <param name="urlOrKey">The URL or key.</param>
+    /// <param name="vs">      [out] The vs.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetValueSet(string urlOrKey, out FhirValueSet vs);
 }

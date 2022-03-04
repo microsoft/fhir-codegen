@@ -467,7 +467,6 @@ public sealed class TypeScript2 : ILanguage
 
             WriteFooter();
         }
-
     }
 
     /// <summary>Writes a model module.</summary>
@@ -554,7 +553,6 @@ public sealed class TypeScript2 : ILanguage
 
             WriteFooter();
         }
-
     }
 
     /// <summary>Writes the FHIR resource factory.</summary>
@@ -1355,11 +1353,6 @@ public sealed class TypeScript2 : ILanguage
         foreach (KeyValuePair<string, string> fieldAndType in fieldsAndTypes)
         {
             type = fieldAndType.Value.Replace("|unknown", string.Empty);
-
-            //if ((typeName == "BundleEntry") && (fieldAndType.Key.Contains("resource", StringComparison.OrdinalIgnoreCase)))
-            //{
-            //    Console.Write("");
-            //}
 
             isOptional = fieldAndType.Key.EndsWith('?');
             isArray = type.EndsWith(']');

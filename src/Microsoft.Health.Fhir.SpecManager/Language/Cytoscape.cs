@@ -115,7 +115,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             Dictionary<string, CytoElement> elementDict = BuildNodes();
 
             // create a filename for writing
-            string filename = Path.Combine(exportDirectory, $"{_languageName}_R{info.MajorVersion}.json");
+            string filename = Path.Combine(exportDirectory, $"{_languageName}_{info.FhirSequence}.json");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (StreamWriter writer = new StreamWriter(stream))
@@ -130,11 +130,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private Dictionary<string, CytoElement> BuildNodes()
         {
             Dictionary<string, CytoElement> elements = new Dictionary<string, CytoElement>();
-
-            //foreach (FhirPrimitive primitive in _info.PrimitiveTypes.Values)
-            //{
-            //    AddPrimitive(elements, primitive);
-            //}
 
             foreach (FhirComplex dataType in _info.ComplexTypes.Values)
             {

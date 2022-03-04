@@ -213,7 +213,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 vs.Version = "0";
                 _warnings.Add($"ValueSet {vs.Name} ({vs.Id}): No Version present");
-                //throw new Exception($"Cannot index ValueSet: {vs.Url} version: {vs.Version}");
             }
 
             FhirValueSet valueSet = new FhirValueSet(
@@ -1081,7 +1080,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 int loc = element.ContentReference.IndexOf('#', StringComparison.Ordinal);
                                 elementType = element.ContentReference.Substring(loc + 1);
 
-                                //_warnings.Add($"Complex: {sd.Name} ({sd.Id}): New format ContentReference: {element.Id}: {element.ContentReference}");
+                                // _warnings.Add($"Complex: {sd.Name} ({sd.Id}): New format ContentReference: {element.Id}: {element.ContentReference}");
                             }
                             else if (element.ContentReference[0] == '#')
                             {

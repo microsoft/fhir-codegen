@@ -912,7 +912,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     {
                         if (context.Type != "element")
                         {
-                            //throw new ArgumentException($"Invalid extension context type: {context.Type}");
+                            // throw new ArgumentException($"Invalid extension context type: {context.Type}");
                             _errors.Add($"StructureDefinition {sd.Name} ({sd.Id}) unhandled context type: {context.Type}");
                             return;
                         }

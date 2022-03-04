@@ -1878,11 +1878,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 string fhirCombinedName = elementInfo.FhirElementName + char.ToUpperInvariant(kvp.Key[0]) + kvp.Key.Substring(1);
 
-                if (elementInfo.IsList)
-                {
-                    Console.Write("");
-                }
-
                 switch (kvp.Value)
                 {
                     case "Resource":

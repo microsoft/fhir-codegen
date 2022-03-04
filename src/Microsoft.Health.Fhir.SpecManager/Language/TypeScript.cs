@@ -2,6 +2,7 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -222,7 +223,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             // create a filename for writing (single file for now)
-            string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.ts");
+            string filename = Path.Combine(exportDirectory, $"{info.FhirSequence}.ts");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -510,7 +511,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
                 string typeName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
 
-                //if (ShouldSupportGenerics(complex.Path))
                 if (_genericsAndTypeHints.ContainsKey(complex.Path))
                 {
                     _writer.WriteLineIndented(
@@ -733,7 +733,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString};");
                     }
                 }
-                //else if (ShouldSupportGenerics(element.Path))
                 else if (_genericsAndTypeHints.ContainsKey(element.Path))
                 {
                     GenericTypeHintInfo typeHint = _genericsAndTypeHints[element.Path];
@@ -751,8 +750,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             $"{kvp.Key}{optionalFlagString}:" +
                             $" {_genericsAndTypeHints[element.Path].Alias}{arrayFlagString};");
                     }
-
-                    //_writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}<T>{arrayFlagString};");
                 }
                 else if (kvp.Value.Equals("Resource", StringComparison.Ordinal))
                 {

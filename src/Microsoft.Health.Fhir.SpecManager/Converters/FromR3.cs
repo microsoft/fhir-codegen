@@ -1266,12 +1266,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             try
             {
                 // try to parse this JSON into a resource object
-                // return JsonConvert.DeserializeObject<fhirModels.Resource>(json, _jsonConverter);
-                // return JsonSerializer.Deserialize<fhirModels.Resource>(json);
                 return System.Text.Json.JsonSerializer.Deserialize<fhirModels.Resource>(
                     json,
                     fhirSerialization.FhirSerializerOptions.Compact);
-
             }
             catch (Exception ex)
             {

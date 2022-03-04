@@ -119,7 +119,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _options = options;
 
             // create a filename for writing (single file for now)
-            string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.txt");
+            string filename = Path.Combine(exportDirectory, $"Info_{info.FhirSequence}.txt");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))

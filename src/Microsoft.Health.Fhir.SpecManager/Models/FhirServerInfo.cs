@@ -3,10 +3,11 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using Microsoft.Health.Fhir.SpecManager.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models;
+
 /// <summary>A FHIR server.</summary>
 public class FhirServerInfo
 {

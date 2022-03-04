@@ -288,7 +288,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _exportedCodes = new HashSet<string>();
 
             // create a filename for writing (single file for now)
-            string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.cs");
+            string filename = Path.Combine(exportDirectory, $"{info.FhirSequence}.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))

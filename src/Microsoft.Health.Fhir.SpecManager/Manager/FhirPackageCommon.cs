@@ -220,10 +220,6 @@ public static class FhirPackageCommon
         {
             FhirSequenceEnum.R4,
             new()
-            {
-                //"ValueSet-cpt-all.json",
-                //"ValueSet-example-filter.json",
-            }
         },
         {
             FhirSequenceEnum.R4B,

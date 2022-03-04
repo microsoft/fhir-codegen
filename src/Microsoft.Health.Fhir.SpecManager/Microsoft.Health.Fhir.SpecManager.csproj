@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Version>1.0.2</Version>
+    <Version>2.0.0-beta01</Version>
     <AssemblyVersion>$(PackageVersion)</AssemblyVersion>
     <FileVersion>$(PackageVersion)</FileVersion>
   </PropertyGroup>
@@ -49,6 +49,7 @@
     <ProjectReference Include="..\fhirCsR4B\fhirCsR4B.csproj" />
     <ProjectReference Include="..\fhirCsR4\fhirCsR4.csproj" />
     <ProjectReference Include="..\fhirCsR5\fhirCsR5.csproj" />
+    <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
   </ItemGroup>
 
   <ItemGroup>

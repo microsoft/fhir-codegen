@@ -512,7 +512,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     public NpmPackageDetails PackageDetails { get; set; }
 
     /// <summary>Gets or sets the name of the release.</summary>
-    [Obsolete("R4B made major versions as integers tricky, use the FhirMajorVersion", false)]
+    [Obsolete("R4B made major versions as integers tricky, use FhirSequence", false)]
     public int MajorVersion { get; set; }
 
     /// <summary>Gets or sets the name of the package release.</summary>
@@ -1235,7 +1235,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             directive.EndsWith("dev", StringComparison.OrdinalIgnoreCase))
         {
             IsDevBuild = true;
-            DevBranch = "";
+            DevBranch = string.Empty;
             BuildId = details.BuildDate;
         }
         else
@@ -1302,7 +1302,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             directive.EndsWith("dev", StringComparison.OrdinalIgnoreCase))
         {
             IsDevBuild = true;
-            DevBranch = "";
+            DevBranch = string.Empty;
             BuildId = details.BuildDate;
         }
         else
@@ -1317,5 +1317,4 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         IsOnDisk = true;
         LastDownloaded = null;
     }
-
 }

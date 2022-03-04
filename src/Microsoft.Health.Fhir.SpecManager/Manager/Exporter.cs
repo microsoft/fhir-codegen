@@ -189,11 +189,11 @@ public abstract class Exporter
 
         if (info.IsDevBuild)
         {
-            langVersionString = $"local_{exportLanguage.LanguageName}_R{info.MajorVersion}_{info.ReleaseName}";
+            langVersionString = $"local_{exportLanguage.LanguageName}_{info.FhirSequence}_{info.ReleaseName}";
         }
         else
         {
-            langVersionString = $"{exportLanguage.LanguageName}_R{info.MajorVersion}";
+            langVersionString = $"{exportLanguage.LanguageName}_{info.FhirSequence}";
         }
 
         if (exportedFiles.Length == 1)

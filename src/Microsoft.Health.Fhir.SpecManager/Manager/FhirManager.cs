@@ -74,6 +74,23 @@ public class FhirManager : IDisposable
         return packages;
     }
 
+    /// <summary>Gets the loaded core packages in this collection.</summary>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process the loaded core packages in this
+    /// collection.
+    /// </returns>
+    public List<FhirVersionInfo> GetLoadedPackages()
+    {
+        List<FhirVersionInfo> packages = new();
+
+        foreach ((string directive, FhirPackageCommon.FhirPackageTypeEnum type) in _directivePackageTypes)
+        {
+            packages.Add(_loadedInfoByDirective[directive]);
+        }
+
+        return packages;
+    }
+
     /// <summary>Loads FHIR core packages.</summary>
     /// <param name="sequence">              The sequence.</param>
     /// <param name="version">               The specific version of FHIR to load, or 'latest' for
