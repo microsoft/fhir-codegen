@@ -84,6 +84,9 @@ public class NpmPackageDetails
     [JsonPropertyName("original-version")]
     public string OriginalVersion { get; set; }
 
+    /// <summary>Gets or sets a value indicating whether this object is loaded.</summary>
+    public bool IsLoaded { get; set; }
+
     /// <summary>Attempts to load FHIR NPM package information from the given directory.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
     /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
@@ -128,7 +131,18 @@ public class NpmPackageDetails
         // attempt to parse
         try
         {
-            return JsonSerializer.Deserialize<NpmPackageDetails>(packageContents);
+            NpmPackageDetails details = JsonSerializer.Deserialize<NpmPackageDetails>(packageContents);
+
+            if (details.FhirVersionList == null)
+            {
+                details.FhirVersionList = details.FhirVersions;
+            }
+            else if (details.FhirVersions == null)
+            {
+                details.FhirVersions = details.FhirVersionList;
+            }
+
+            return details;
         }
         catch (JsonException)
         {
@@ -151,7 +165,19 @@ public class NpmPackageDetails
         // attempt to parse
         try
         {
-            return JsonSerializer.Deserialize<NpmPackageDetails>(contents);
+            NpmPackageDetails details = JsonSerializer.Deserialize<NpmPackageDetails>(contents);
+
+            if (details.FhirVersionList == null)
+            {
+                details.FhirVersionList = details.FhirVersions;
+            }
+            else if (details.FhirVersions == null)
+            {
+                details.FhirVersions = details.FhirVersionList;
+            }
+
+            return details;
+
         }
         catch (JsonException)
         {

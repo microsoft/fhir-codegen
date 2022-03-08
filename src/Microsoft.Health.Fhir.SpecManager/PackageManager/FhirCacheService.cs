@@ -48,17 +48,6 @@ public class FhirCacheService : IDisposable
     /// <summary>The singleton.</summary>
     private static FhirCacheService _singleton;
 
-    /// <summary>Gets the current singleton.</summary>
-    public static FhirCacheService Current => _singleton;
-
-    /// <summary>Information about the package cache.</summary>
-    private readonly record struct PackageCacheRecord(
-        string PackageName,
-        string Version,
-        string DownloadDateTime,
-        long PackageSize,
-        NpmPackageDetails Details);
-
     /// <summary>The package records, by directive.</summary>
     private Dictionary<string, PackageCacheRecord> _packagesByDirective;
 
@@ -106,6 +95,12 @@ public class FhirCacheService : IDisposable
 
         SynchronizeCache();
     }
+
+    /// <summary>Gets the current singleton.</summary>
+    public static FhirCacheService Current => _singleton;
+
+    /// <summary>Gets the packages by directive.</summary>
+    public Dictionary<string, PackageCacheRecord> PackagesByDirective => _packagesByDirective;
 
     /// <summary>Initializes the FhirCacheService.</summary>
     /// <param name="cacheDirectory">Pathname of the cache directory.</param>
@@ -498,6 +493,16 @@ public class FhirCacheService : IDisposable
         return TryDownloadAndExtract(uri, directory, $"{name}#{version}");
     }
 
+    /// <summary>Gets the cached packages in this collection.</summary>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process the cached packages in this
+    /// collection.
+    /// </returns>
+    public IEnumerable<NpmPackageDetails> GetCachedPackages()
+    {
+        return _packagesByDirective.Select(kvp => kvp.Value.Details).ToArray();
+    }
+
     /// <summary>Query if 'name' has cached version.</summary>
     /// <param name="name">     The name.</param>
     /// <param name="version">  [out] The version string (e.g., 4.0.1).</param>
@@ -783,6 +788,53 @@ public class FhirCacheService : IDisposable
         Console.WriteLine($" << cache contains {_packagesByDirective.Count} packges");
     }
 
+    /// <summary>Updates the package state.</summary>
+    /// <param name="directive">      The directive.</param>
+    /// <param name="resolvedName">   Name of the resolved.</param>
+    /// <param name="resolvedVersion">The resolved version.</param>
+    /// <param name="toState">        State of to.</param>
+    public void UpdatePackageState(
+        string directive,
+        string resolvedName,
+        string resolvedVersion,
+        PackageLoadStateEnum toState)
+    {
+        if (!_packagesByDirective.ContainsKey(directive))
+        {
+            _packagesByDirective.Add(directive, new()
+            {
+                CacheDirective = directive,
+                PackageState = toState,
+            });
+        }
+
+        _packagesByDirective[directive] = _packagesByDirective[directive] with
+        {
+            PackageState = toState,
+            PackageName = string.IsNullOrEmpty(resolvedName) ? _packagesByDirective[directive].PackageName : resolvedName,
+            Version = string.IsNullOrEmpty(resolvedVersion) ? _packagesByDirective[directive].Version : resolvedVersion,
+        };
+    }
+
+    /// <summary>
+    /// Attempts to get a package state, returning a default value rather than throwing an exception
+    /// if it fails.
+    /// </summary>
+    /// <param name="directive">The directive.</param>
+    /// <param name="state">    [out] The state.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetPackageState(string directive, out PackageLoadStateEnum state)
+    {
+        if (!_packagesByDirective.ContainsKey(directive))
+        {
+            state = PackageLoadStateEnum.Unknown;
+            return false;
+        }
+
+        state = _packagesByDirective[directive].PackageState;
+        return true;
+    }
+
     /// <summary>Process the synchronize.</summary>
     /// <param name="data">        The data.</param>
     /// <param name="directive">   The directive.</param>
@@ -843,14 +895,16 @@ public class FhirCacheService : IDisposable
             return;
         }
 
-        _packagesByDirective.Add(
-            directive,
-            new PackageCacheRecord(
+        PackageCacheRecord record = new(
+                directive,
+                PackageLoadStateEnum.NotLoaded,
                 name,
                 version,
                 packageDate,
                 size,
-                versionInfo));
+                versionInfo);
+
+        _packagesByDirective[directive] = record;
 
         if (!_versionsByName.ContainsKey(name))
         {

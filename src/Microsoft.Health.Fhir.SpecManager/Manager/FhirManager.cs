@@ -29,6 +29,12 @@ public class FhirManager : IDisposable
     /// <summary>The packages loaded as dependency.</summary>
     private HashSet<string> _loadedAsDependency;
 
+    /// <summary>The load directive to version.</summary>
+    private Dictionary<string, string> _loadDirectiveToVersion;
+
+    /// <summary>Manager for load lock object.</summary>
+    private object _managerLoadLockObject;
+
     /// <summary>
     /// Prevents a default instance of the <see cref="FhirManager"/> class from being created.
     /// </summary>
@@ -39,6 +45,8 @@ public class FhirManager : IDisposable
         _loadedByRequest = new();
         _loadedAsDependency = new();
         _directivePackageTypes = new();
+        _loadDirectiveToVersion = new();
+        _managerLoadLockObject = new();
     }
 
     /// <summary>Gets the current.</summary>
@@ -89,6 +97,14 @@ public class FhirManager : IDisposable
         }
 
         return packages;
+    }
+
+    /// <summary>Query if 'directive' is loaded.</summary>
+    /// <param name="directive">The directive.</param>
+    /// <returns>True if loaded, false if not.</returns>
+    public bool IsLoaded(string directive)
+    {
+        return _directivePackageTypes.ContainsKey(directive) || _loadDirectiveToVersion.ContainsKey(directive);
     }
 
     /// <summary>Loads FHIR core packages.</summary>
@@ -143,20 +159,24 @@ public class FhirManager : IDisposable
         FhirVersionInfo info = new FhirVersionInfo(corePackageDirectory);
 
         // load the package
-        FhirSpecificationLoader.Load(
-            info,
-            corePackageDirectory,
-            expansionsDirectory,
-            officialExpansionsOnly);
+        lock (_managerLoadLockObject)
+        {
+            FhirSpecificationLoader.Load(
+                info,
+                corePackageDirectory,
+                expansionsDirectory,
+                officialExpansionsOnly);
+        }
 
         return info;
     }
 
     /// <summary>Track loaded package.</summary>
-    /// <param name="info">     The information.</param>
-    /// <param name="wasRequested">True if requested.</param>
-    /// <param name="isCore">   True if is core, false if not.</param>
-    private void TrackLoadedPackage(FhirVersionInfo info, bool wasRequested, bool isCore)
+    /// <param name="loadDirective">The load directive.</param>
+    /// <param name="info">         The information.</param>
+    /// <param name="wasRequested"> True if requested.</param>
+    /// <param name="isCore">       True if is core, false if not.</param>
+    private void TrackLoadedPackage(string loadDirective, FhirVersionInfo info, bool wasRequested, bool isCore)
     {
         string directive = info.PackageName + "#" + info.VersionString;
 
@@ -171,6 +191,7 @@ public class FhirManager : IDisposable
         if (wasRequested)
         {
             _loadedByRequest.Add(directive);
+            _loadDirectiveToVersion.Add(loadDirective, directive);
         }
         else
         {
@@ -180,10 +201,29 @@ public class FhirManager : IDisposable
         if (isCore)
         {
             _directivePackageTypes.Add(directive, FhirPackageCommon.FhirPackageTypeEnum.Core);
+            _directivePackageTypes.Add(directive.Replace(".core", ".expansions"), FhirPackageCommon.FhirPackageTypeEnum.Core);
+
+            FhirCacheService.Current.UpdatePackageState(
+                loadDirective,
+                info.PackageName,
+                info.VersionString,
+                PackageLoadStateEnum.Loaded);
+
+            FhirCacheService.Current.UpdatePackageState(
+                directive.Replace(".core", ".expansions"),
+                info.PackageName,
+                info.VersionString,
+                PackageLoadStateEnum.Loaded);
         }
         else
         {
             _directivePackageTypes.Add(directive, FhirPackageCommon.FhirPackageTypeEnum.IG);
+
+            FhirCacheService.Current.UpdatePackageState(
+                loadDirective,
+                info.PackageName,
+                info.VersionString,
+                PackageLoadStateEnum.Loaded);
         }
     }
 
@@ -215,8 +255,12 @@ public class FhirManager : IDisposable
                 continue;
             }
 
+            FhirCacheService.Current.UpdatePackageState(directive, string.Empty, string.Empty, PackageLoadStateEnum.InProgress);
+
             FhirVersionInfo info;
-            bool isCore = FhirPackageCommon.TryGetReleaseByPackage(directive, out FhirPackageCommon.FhirSequenceEnum release);
+            bool isCore = FhirPackageCommon.TryGetReleaseByPackage(
+                directive,
+                out FhirPackageCommon.FhirSequenceEnum release);
 
             if (isCore)
             {
@@ -249,7 +293,10 @@ public class FhirManager : IDisposable
                     continue;
                 }
 
-                FhirPackageLoader.Load(directive, directory, out info);
+                lock (_managerLoadLockObject)
+                {
+                    FhirPackageLoader.Load(directive, directory, out info);
+                }
             }
 
             if (info == null)
@@ -259,7 +306,7 @@ public class FhirManager : IDisposable
             else
             {
                 Console.WriteLine($"Loaded {directive} as {info.PackageName} version {info.VersionString}");
-                TrackLoadedPackage(info, true, isCore);
+                TrackLoadedPackage(directive, info, true, isCore);
 
                 if (loadDependencies &&
                     (info.PackageDetails != null) &&
