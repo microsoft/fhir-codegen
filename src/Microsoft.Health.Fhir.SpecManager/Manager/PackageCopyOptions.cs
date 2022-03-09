@@ -14,20 +14,26 @@ public class PackageCopyOptions
     /// <summary>Gets or sets a list of exports.</summary>
     public IEnumerable<string> ExportList { get; set; } = new List<string>();
 
-    /// <summary>Gets or sets a value indicating whether the copy primitives.</summary>
+    /// <summary>Gets or sets a value indicating whether to copy primitives.</summary>
     public bool CopyPrimitives { get; set; } = true;
 
-    /// <summary>Gets or sets a value indicating whether the copy complex types.</summary>
+    /// <summary>Gets or sets a value indicating whether to copy complex types.</summary>
     public bool CopyComplexTypes { get; set; } = true;
 
-    /// <summary>Gets or sets a value indicating whether the copy resources.</summary>
+    /// <summary>Gets or sets a value indicating whether to copy resources.</summary>
     public bool CopyResources { get; set; } = true;
 
-    /// <summary>Gets or sets a value indicating whether the copy extensions.</summary>
+    /// <summary>Gets or sets a value indicating whether to copy extensions.</summary>
     public bool CopyExtensions { get; set; } = true;
 
-    /// <summary>Gets or sets a value indicating whether the copy profiles.</summary>
+    /// <summary>Gets or sets a value indicating whether to copy profiles.</summary>
     public bool CopyProfiles { get; set; } = true;
+
+    /// <summary>Gets or sets a value indicating whether to copy search parameters.</summary>
+    public bool CopySearchParameters { get; set; } = true;
+
+    /// <summary>Gets or sets a value indicating whether to copy operations.</summary>
+    public bool CopyOperations { get; set; } = true;
 
     /// <summary>Gets or sets the extension urls.</summary>
     public HashSet<string> ExtensionUrls { get; set; } = null;

@@ -3,7 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 

@@ -5,12 +5,8 @@
 
 using System.IO;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using IniParser.Model;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Health.Fhir.SpecManager.Manager;
-using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.PackageManager;
 

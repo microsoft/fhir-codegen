@@ -13,7 +13,7 @@ using Microsoft.Health.Fhir.SpecManager.PackageManager;
 namespace FhirCodeGenWeb.Server.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class FhirManagerController : ControllerBase
 {
     /// <summary>(Immutable) The logger.</summary>
@@ -36,14 +36,13 @@ public class FhirManagerController : ControllerBase
     }
 
     [HttpGet("package")]
-    public IEnumerable<PackageCacheRecord> GetPackageRecords()
+    public IActionResult GetPackageRecord([FromQuery] string? packageName, [FromQuery] string? version)
     {
-        return FhirCacheService.Current.PackagesByDirective.Values.ToArray();
-    }
+        if (string.IsNullOrEmpty(packageName))
+        {
+            return Ok(FhirCacheService.Current.PackagesByDirective.Values.ToArray());
+        }
 
-    [HttpGet("package/record")]
-    public IActionResult GetPackageRecord([FromQuery] string packageName, [FromQuery] string version)
-    {
         string directive = packageName + "#" + version;
 
         if (!FhirCacheService.Current.PackagesByDirective.ContainsKey(directive))
@@ -54,7 +53,7 @@ public class FhirManagerController : ControllerBase
         return Ok(FhirCacheService.Current.PackagesByDirective[directive]);
     }
 
-    [HttpGet("package/artifacts")]
+    [HttpGet("package/artifactIndex")]
     public IActionResult GetPackageArtifacts([FromQuery] string packageName, [FromQuery] string version)
     {
         string directive = packageName + "#" + version;
@@ -88,7 +87,7 @@ public class FhirManagerController : ControllerBase
             return NotFound();
         }
 
-        return Ok(info.BuildArtifactRecord());
+        return Ok(info.BuildArtifactRecords());
     }
 
     [HttpPost("package/load")]

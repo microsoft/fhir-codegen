@@ -1,6 +1,8 @@
 ﻿@page "/"
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject FhirCodeGenWeb.Client.Services.IPackageIndexService PackageService
 @implements IDisposable
 
 <PageTitle>FHIR Cache</PageTitle>
@@ -25,11 +27,12 @@ else
         <button class="btn btn-outline-secondary" type="button" @onclick="@(() => LoadPackage(directiveToLoad))">Add</button>
     </div>
     </p>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>State</th>
-                <th>Package</th>
+                <th>Cache Directive</th>
+                <th>Package Name</th>
                 <th>Version</th>
                 <th>FHIR Version</th>
                 <th>Title</th>
@@ -42,8 +45,9 @@ else
                     @switch (record.PackageState)
                     {
                         case PackageLoadStateEnum.Loaded:
-                            
-                            <td><NavLink class="button nav-link" href=@BrowseLinkForDirective(record.CacheDirective)>Browse..</NavLink></td>
+
+                            <td><button type="button" @onclick="() => NavToBrowsePackage(record.CacheDirective)">Browse</button></td>
+                            @*<td><NavLink class="button nav-link" href=@BrowseLinkForDirective(record.CacheDirective)>Browse..</NavLink></td>*@
                             break;
 
                         case PackageLoadStateEnum.Parsed:
@@ -59,8 +63,9 @@ else
                             <td><button type="button" @onclick="() => LoadPackage(record.CacheDirective)">Load</button></td>
                             break;
                     }
-                    <td>@record.PackageName</td>
-                    <td>@record.Version</td>
+                    <td>@record.CacheDirective</td>
+                    <td>@record.Details.Name</td>
+                    <td>@record.Details.Version</td>
                     <td>@string.Join(',', record.Details.FhirVersionList)</td>
                     <td>@record.Details.Title</td>
                 </tr>
@@ -84,16 +89,42 @@ else
         loaded = true;
     }
 
+    /// <summary>Navigation to browse package.</summary>
+    /// <param name="directive">The directive.</param>
+    private void NavToBrowsePackage(string directive)
+    {
+        Console.WriteLine($"Browsing to directive: {directive}");
+        string[] components = directive.Split('#');
+
+        if (components.Length > 1)
+        {
+            NavigationManager.NavigateTo($"/package?packageName={components[0]}&version={components[1]}");
+            return;
+        }
+
+        NavigationManager.NavigateTo($"/package?packageName={components[0]}");
+    }
+
+    /// <summary>Browse link for directive.</summary>
+    /// <param name="directive">The directive.</param>
+    /// <returns>A string.</returns>
     private string BrowseLinkForDirective(string directive)
     {
-        return $"/browse?directive={directive}";
+        string[] components = directive.Split('#');
+
+        if (components.Length == 2)
+        {
+            return $"/package?packageName={components[0]}&version={components[1]}";
+        }
+
+        return $"/package?name={components[0]}";
     }
 
     /// <summary>Updates the packages and status.</summary>
     /// <returns>An asynchronous result.</returns>
     async Task UpdatePackagesAndStatus()
     {
-        IEnumerable<PackageCacheRecord>? packages = await Http.GetFromJsonAsync<IEnumerable<PackageCacheRecord>>("FhirManager/package");
+        IEnumerable<PackageCacheRecord>? packages = await Http.GetFromJsonAsync<IEnumerable<PackageCacheRecord>>("api/FhirManager/package");
         if (packages != null)
         {
             foreach (PackageCacheRecord package in packages)
@@ -135,7 +166,7 @@ else
     /// <param name="directive">The directive.</param>
     async void LoadPackage(string directive)
     {
-        HttpResponseMessage response = await Http.PostAsJsonAsync("FhirManager/package/load", directive);
+        HttpResponseMessage response = await Http.PostAsJsonAsync("api/FhirManager/package/load", directive);
 
         if (response.IsSuccessStatusCode)
         {

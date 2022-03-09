@@ -28,9 +28,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     private Dictionary<string, FhirComplex> _profilesById;
     private Dictionary<string, Dictionary<string, FhirComplex>> _profilesByBaseType;
     private Dictionary<string, FhirOperation> _systemOperations;
+    private Dictionary<string, FhirOperation> _operationsByUrl;
     private Dictionary<string, FhirSearchParam> _globalSearchParameters;
     private Dictionary<string, FhirSearchParam> _searchResultParameters;
     private Dictionary<string, FhirSearchParam> _allInteractionParameters;
+    private Dictionary<string, FhirSearchParam> _searchParamsByUrl;
     private Dictionary<string, FhirCodeSystem> _codeSystemsByUrl;
     private Dictionary<string, FhirValueSetCollection> _valueSetsByUrl;
     private Dictionary<string, FhirNodeInfo> _nodeInfoByPath;
@@ -41,20 +43,22 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     public FhirVersionInfo()
     {
         // create our info dictionaries
-        _primitiveTypesByName = new Dictionary<string, FhirPrimitive>();
-        _complexTypesByName = new Dictionary<string, FhirComplex>();
-        _resourcesByName = new Dictionary<string, FhirComplex>();
-        _extensionsByUrl = new Dictionary<string, FhirComplex>();
-        _extensionsByPath = new Dictionary<string, Dictionary<string, FhirComplex>>();
-        _profilesById = new Dictionary<string, FhirComplex>();
-        _profilesByBaseType = new Dictionary<string, Dictionary<string, FhirComplex>>();
-        _systemOperations = new Dictionary<string, FhirOperation>();
-        _globalSearchParameters = new Dictionary<string, FhirSearchParam>();
-        _searchResultParameters = new Dictionary<string, FhirSearchParam>();
-        _allInteractionParameters = new Dictionary<string, FhirSearchParam>();
-        _codeSystemsByUrl = new Dictionary<string, FhirCodeSystem>();
-        _valueSetsByUrl = new Dictionary<string, FhirValueSetCollection>();
-        _nodeInfoByPath = new Dictionary<string, FhirNodeInfo>();
+        _primitiveTypesByName = new();
+        _complexTypesByName = new();
+        _resourcesByName = new();
+        _extensionsByUrl = new();
+        _extensionsByPath = new();
+        _profilesById = new();
+        _profilesByBaseType = new();
+        _systemOperations = new();
+        _operationsByUrl = new();
+        _globalSearchParameters = new();
+        _searchResultParameters = new();
+        _allInteractionParameters = new();
+        _searchParamsByUrl = new();
+        _codeSystemsByUrl = new();
+        _valueSetsByUrl = new();
+        _nodeInfoByPath = new();
     }
 
     /// <summary>Initializes a new instance of the <see cref="FhirVersionInfo"/> class.</summary>
@@ -326,6 +330,22 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
                     AddProfile(node);
                 }
+            }
+        }
+
+        if (options.CopySearchParameters)
+        {
+            foreach (FhirSearchParam sp in source._searchParamsByUrl.Values)
+            {
+                AddSearchParameter((FhirSearchParam)sp.Clone());
+            }
+        }
+
+        if (options.CopyOperations)
+        {
+            foreach (FhirOperation op in source._operationsByUrl.Values)
+            {
+                AddOperation((FhirOperation)op.Clone());
             }
         }
 
@@ -656,6 +676,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <param name="searchParam">The search parameter.</param>
     public void AddSearchParameter(FhirSearchParam searchParam)
     {
+        if (!_searchParamsByUrl.ContainsKey(searchParam.URL.ToString()))
+        {
+            _searchParamsByUrl.Add(searchParam.URL.ToString(), searchParam);
+        }
+
         // traverse resources in the search parameter
         foreach (string resourceName in searchParam.ResourceTypes)
         {
@@ -685,6 +710,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <param name="operation">The operation.</param>
     public void AddOperation(FhirOperation operation)
     {
+        if (!_operationsByUrl.ContainsKey(operation.URL.ToString()))
+        {
+            _operationsByUrl.Add(operation.URL.ToString(), operation);
+        }
+
         // check for system level operation
         if (operation.DefinedOnSystem)
         {
@@ -1039,11 +1069,13 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             return;
         }
 
+        string url = $"http://hl7.org/fhir/{ReleaseName}/search.html#{name.Substring(1)}";
+
         dict.Add(
             name,
             new FhirSearchParam(
                 name,
-                new Uri($"http://hl7.org/fhir/{ReleaseName}/search.html#{name.Substring(1)}"),
+                new Uri(url),
                 VersionString,
                 name,
                 $"Filter search by {name}",
@@ -1057,6 +1089,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 string.Empty,
                 string.Empty,
                 string.Empty));
+
+        if (!_searchParamsByUrl.ContainsKey(url))
+        {
+            _searchParamsByUrl.Add(url, dict[name]);
+        }
     }
 
     /// <summary>Adds a complex to export set.</summary>
@@ -1318,40 +1355,170 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         LastDownloaded = null;
     }
 
-    /// <summary>Builds artifact record.</summary>
+    /// <summary>Builds artifact records.</summary>
     /// <returns>The FhirPackageArtifacts.</returns>
-    public FhirPackageArtifacts BuildArtifactRecord()
+    public Dictionary<FhirArtifactClassEnum, IEnumerable<FhirArtifactRecord>> BuildArtifactRecords()
     {
-        HashSet<string> searchParameters = new();
+        Dictionary<FhirArtifactClassEnum, IEnumerable<FhirArtifactRecord>> index = new();
 
-        foreach (string key in _searchResultParameters.Keys)
+        List<FhirArtifactRecord> records = new();
+
+        foreach (FhirPrimitive obj in _primitiveTypesByName.Values)
         {
-            searchParameters.Add(key);
+            records.Add(new()
+            {
+                ArtifactClass = FhirArtifactClassEnum.PrimitiveType,
+                Id = obj.Id,
+                Url = obj.URL,
+                DefinitionResourceType = "StructureDefinition",
+            });
         }
 
-        foreach (string key in _allInteractionParameters.Keys)
+        if (records.Any())
         {
-            searchParameters.Add(key);
+            index.Add(FhirArtifactClassEnum.PrimitiveType, records.ToArray());
+            records.Clear();
         }
 
-        foreach (string key in _globalSearchParameters.Keys)
+        foreach (FhirComplex obj in _complexTypesByName.Values)
         {
-            searchParameters.Add(key);
+            records.Add(new()
+            {
+                ArtifactClass = FhirArtifactClassEnum.ComplexType,
+                Id = obj.Id,
+                Url = obj.URL,
+                DefinitionResourceType = "StructureDefinition",
+            });
         }
 
-        FhirPackageArtifacts artifacts = new()
+        if (records.Any())
         {
-            PrimitiveTypes = _primitiveTypesByName.Keys.ToHashSet(),
-            ComplexTypes = _complexTypesByName.Keys.ToHashSet(),
-            Resources = _resourcesByName.Keys.ToHashSet(),
-            ExtensionUrls = _extensionsByUrl.Keys.ToHashSet(),
-            Operations = _systemOperations.Keys.ToHashSet(),
-            SearchParameterUrls = searchParameters,
-            CodeSystems = _codeSystemsByUrl.Keys.ToHashSet(),
-            ValueSets = _valueSetsByUrl.Keys.ToHashSet(),
-            Profiles = _profilesById.Keys.ToHashSet(),
-        };
+            index.Add(FhirArtifactClassEnum.ComplexType, records.ToArray());
+            records.Clear();
+        }
 
-        return artifacts;
+        foreach (FhirComplex obj in _resourcesByName.Values)
+        {
+            records.Add(new()
+            {
+                ArtifactClass = FhirArtifactClassEnum.Resource,
+                Id = obj.Id,
+                Url = obj.URL,
+                DefinitionResourceType = "StructureDefinition",
+            });
+        }
+
+        if (records.Any())
+        {
+            index.Add(FhirArtifactClassEnum.Resource, records.ToArray());
+            records.Clear();
+        }
+
+        foreach (FhirComplex obj in _extensionsByUrl.Values)
+        {
+            records.Add(new()
+            {
+                ArtifactClass = FhirArtifactClassEnum.Extension,
+                Id = obj.Id,
+                Url = obj.URL,
+                DefinitionResourceType = "StructureDefinition",
+            });
+        }
+
+        if (records.Any())
+        {
+            index.Add(FhirArtifactClassEnum.Extension, records.ToArray());
+            records.Clear();
+        }
+
+        foreach (FhirOperation obj in _operationsByUrl.Values)
+        {
+            records.Add(new()
+            {
+                ArtifactClass = FhirArtifactClassEnum.Operation,
+                Id = obj.Id,
+                Url = obj.URL,
+                DefinitionResourceType = "OperationDefinition",
+            });
+        }
+
+        if (records.Any())
+        {
+            index.Add(FhirArtifactClassEnum.Operation, records.ToArray());
+            records.Clear();
+        }
+
+        foreach (FhirSearchParam obj in _searchParamsByUrl.Values)
+        {
+            records.Add(new()
+            {
+                ArtifactClass = FhirArtifactClassEnum.SearchParameter,
+                Id = obj.Id,
+                Url = obj.URL,
+                DefinitionResourceType = "SearchParameter",
+            });
+        }
+
+        if (records.Any())
+        {
+            index.Add(FhirArtifactClassEnum.SearchParameter, records.ToArray());
+            records.Clear();
+        }
+
+        foreach (FhirCodeSystem obj in _codeSystemsByUrl.Values)
+        {
+            records.Add(new()
+            {
+                ArtifactClass = FhirArtifactClassEnum.CodeSystem,
+                Id = obj.Id,
+                Url = new Uri(obj.URL),
+                DefinitionResourceType = "CodeSystem",
+            });
+        }
+
+        if (records.Any())
+        {
+            index.Add(FhirArtifactClassEnum.CodeSystem, records.ToArray());
+            records.Clear();
+        }
+
+        foreach (FhirValueSetCollection collection in _valueSetsByUrl.Values)
+        {
+            foreach (FhirValueSet obj in collection.ValueSetsByVersion.Values)
+            {
+                records.Add(new()
+                {
+                    ArtifactClass = FhirArtifactClassEnum.ValueSet,
+                    Id = obj.Id,
+                    Url = new Uri(obj.URL),
+                    DefinitionResourceType = "ValueSet",
+                });
+            }
+        }
+
+        if (records.Any())
+        {
+            index.Add(FhirArtifactClassEnum.ValueSet, records.ToArray());
+            records.Clear();
+        }
+
+        foreach (FhirComplex obj in _profilesById.Values)
+        {
+            records.Add(new()
+            {
+                ArtifactClass = FhirArtifactClassEnum.Profile,
+                Id = obj.Id,
+                Url = obj.URL,
+                DefinitionResourceType = "StructureDefinition",
+            });
+        }
+
+        if (records.Any())
+        {
+            index.Add(FhirArtifactClassEnum.Profile, records.ToArray());
+            records.Clear();
+        }
+
+        return index;
     }
 }

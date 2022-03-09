@@ -1,4 +1,4 @@
-﻿@page "/browse"
+﻿@page "/package"
 
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @inject HttpClient Http
@@ -17,22 +17,23 @@ else
 {
     <p><em>Loading...</em></p>
 }
-else if (string.IsNullOrEmpty(Directive))
+else if (string.IsNullOrEmpty(PackageName))
 {
     <p><em>This page requires a package name and version, please select...</em></p>
 }
-else if (packageArtifacts != null)
+else if (packageArtifacts.Any())
 {
     <p>
-        <button type="button" class=@GetButtonClass(showCodeSystems) @onclick="() => ToggleShowState(ref showCodeSystems)">Code Systems</button>
-        <button type="button" class=@GetButtonClass(showComplexTypes) @onclick="() => ToggleShowState(ref showComplexTypes)">Complex Types</button>
-        <button type="button" class=@GetButtonClass(showExtensions) @onclick="() => ToggleShowState(ref showExtensions)">Extensions</button>
-        <button type="button" class=@GetButtonClass(showOperations) @onclick="() => ToggleShowState(ref showOperations)">Operations</button>
-        <button type="button" class=@GetButtonClass(showPrimitives) @onclick="() => ToggleShowState(ref showPrimitives)">Primitive Types</button>
-        <button type="button" class=@GetButtonClass(showProfiles) @onclick="() => ToggleShowState(ref showProfiles)">Profiles</button>
-        <button type="button" class=@GetButtonClass(showResources) @onclick="() => ToggleShowState(ref showResources)">Resources</button>
-        <button type="button" class=@GetButtonClass(showSearchParameters) @onclick="() => ToggleShowState(ref showSearchParameters)">Search Parameters</button>
-        <button type="button" class=@GetButtonClass(showValueSets) @onclick="() => ToggleShowState(ref showValueSets)">Value Sets</button>
+        @foreach((FhirArtifactClassEnum classEnum, bool visible) in showArtifactClass)
+        {
+            <button
+                type="button"
+                class=@GetButtonClass(visible)
+                @onclick="() => ToggleShowState(classEnum)"
+                >
+                @classEnum.ToString()
+            </button>
+        }
     </p>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Filter</span>
@@ -45,17 +46,22 @@ else if (packageArtifacts != null)
             @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredArtifacts(e?.Value?.ToString() ?? "")))"
             />
     </div>
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>Class</th>
-                <th>Artifact</th>
+                <th class="col-md-2">Artifact Type</th>
+                <th class="col-md-2">Id</th>
+                <th class="col-md-4">Url</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ((string artifactClass, string artifactName) in filteredArtifacts)
+            @foreach (FhirArtifactRecord artifactRecord in filteredArtifacts)
             {
-                <tr><td>@artifactClass</td><td>@artifactName</td></tr>
+                <tr>
+                    <td>@artifactRecord.ArtifactClass.ToString()</td>
+                    <td>@artifactRecord.Id</td>
+                    <td>@artifactRecord.Url</td>
+                </tr>
             }
         </tbody>
     </table>
@@ -70,33 +76,29 @@ else
 
     private string packageHeaderText = "";
 
-    private bool showPrimitives = false;
-    private bool showComplexTypes = false;
-    private bool showResources = true;
-    private bool showExtensions = false;
-    private bool showOperations = false;
-    private bool showSearchParameters = false;
-    private bool showCodeSystems = false;
-    private bool showValueSets = false;
-    private bool showProfiles = false;
+    private List<FhirArtifactRecord> filteredArtifacts = new();
 
-    private IEnumerable<KeyValuePair<string,string>> filteredArtifacts = new KeyValuePair<string,string>[0];
-
-    private FhirPackageArtifacts? packageArtifacts = null;
+    private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new();
+    private Dictionary<FhirArtifactClassEnum, IEnumerable<FhirArtifactRecord>> packageArtifacts = new();
 
     /// <summary>Specifies the filter.</summary>
     private string artifactFilterText = "";
 
-    /// <summary>Gets or sets the cache directive.</summary>
+    /// <summary>Gets or sets the package name.</summary>
     [Parameter]
-    [SupplyParameterFromQuery(Name = "directive")]
-    public string Directive { get; set; } = "";
+    [SupplyParameterFromQuery(Name = "packageName")]
+    public string PackageName { get; set; } = "";
+
+    /// <summary>Gets or sets the package version.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "version")]
+    public string Version { get; set; } = "";
 
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
     protected override async Task OnInitializedAsync()
     {
-        if (string.IsNullOrEmpty(Directive))
+        if (string.IsNullOrEmpty(PackageName))
         {
             loaded = true;
             return;
@@ -107,10 +109,10 @@ else
     }
 
     /// <summary>Toggle show state.</summary>
-    /// <param name="toggle">[in,out] True to toggle.</param>
-    private void ToggleShowState(ref bool toggle)
+    /// <param name="classEnum">The class enum.</param>
+    private void ToggleShowState(FhirArtifactClassEnum classEnum)
     {
-        toggle = !toggle;
+        showArtifactClass[classEnum] = !showArtifactClass[classEnum];
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText));
     }
 
@@ -118,11 +120,29 @@ else
     /// <param name="appliedFilter">A filter specifying the applied.</param>
     private async void RebuildFilteredArtifacts(string appliedFilter = "")
     {
+        foreach (FhirArtifactClassEnum classEnum in packageArtifacts.Keys)
+        {
+            if (!showArtifactClass.ContainsKey(classEnum))
+            {
+                switch (classEnum)
+                {
+                    case FhirArtifactClassEnum.Resource:
+                        showArtifactClass.Add(classEnum, true);
+                        break;
+
+                    default:
+                        showArtifactClass.Add(classEnum, false);
+                        break;
+
+                }
+            }
+        }
+
         artifactFilterText = appliedFilter;
 
         if (packageArtifacts == null)
         {
-            filteredArtifacts = new KeyValuePair<string,string>[0];
+            filteredArtifacts = new();
 
             // manually flag state has changed in case we are in a callback / async context
             await InvokeAsync(() => StateHasChanged());
@@ -130,20 +150,15 @@ else
             return;
         }
 
-        List<KeyValuePair<string,string>> artifacts = new();
+        List<FhirArtifactRecord> artifacts = new();
 
-        AppendFilteredArtifacts(showCodeSystems, appliedFilter, ref artifacts, "Code System", packageArtifacts.CodeSystems);
-        AppendFilteredArtifacts(showComplexTypes, appliedFilter, ref artifacts, "Complex Type", packageArtifacts.ComplexTypes);
-        AppendFilteredArtifacts(showExtensions, appliedFilter, ref artifacts, "Extension", packageArtifacts.ExtensionUrls);
-        AppendFilteredArtifacts(showOperations, appliedFilter, ref artifacts, "Operation", packageArtifacts.Operations);
-        AppendFilteredArtifacts(showPrimitives, appliedFilter, ref artifacts, "Primitive Type", packageArtifacts.PrimitiveTypes);
-        AppendFilteredArtifacts(showProfiles, appliedFilter, ref artifacts, "Profile", packageArtifacts.Profiles);
-        AppendFilteredArtifacts(showResources, appliedFilter, ref artifacts, "Resource", packageArtifacts.Resources);
-        AppendFilteredArtifacts(showSearchParameters, appliedFilter, ref artifacts, "Search Parameter", packageArtifacts.SearchParameterUrls);
-        AppendFilteredArtifacts(showValueSets, appliedFilter, ref artifacts, "Value Set", packageArtifacts.ValueSets);
+        foreach ((FhirArtifactClassEnum classEnum, IEnumerable<FhirArtifactRecord> records) in packageArtifacts)
+        {
+            AppendFilteredArtifacts(classEnum, appliedFilter, ref artifacts, records);
+        }
 
-        artifacts.Sort((a, b) => a.Value.CompareTo(b.Value));
-        filteredArtifacts = artifacts.ToArray();
+        artifacts.Sort((a, b) => a.Id.CompareTo(b.Id));
+        filteredArtifacts = artifacts;
 
         // manually flag state has changed in case we are in a callback / async context
         await InvokeAsync(() => StateHasChanged());
@@ -157,26 +172,26 @@ else
     /// <param name="data">     The data.</param>
     [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
     private void AppendFilteredArtifacts(
-        bool include,
+        FhirArtifactClassEnum classEnum,
         string filter,
-        ref List<KeyValuePair<string,string>> artifacts,
-        string dataClass,
-        HashSet<string> data)
+        ref List<FhirArtifactRecord> artifacts,
+        IEnumerable<FhirArtifactRecord> data)
     {
-        if (!include)
+        if (showArtifactClass[classEnum] != true)
         {
             return;
         }
 
         if (string.IsNullOrEmpty(filter))
         {
-            artifacts.AddRange(data.Select(v => new KeyValuePair<string, string>(dataClass, v)));
+            artifacts.AddRange(data);
         }
         else
         {
-            artifacts.AddRange(data
-                .Where(v => v.Contains(filter, StringComparison.OrdinalIgnoreCase))
-                .Select(v => new KeyValuePair<string, string>(dataClass,v)));
+            artifacts.AddRange(
+                data.Where(record =>
+                    (record.Id.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
+                    (record.Url.ToString().Contains(filter, StringComparison.OrdinalIgnoreCase)))));
         }
     }
 
@@ -187,20 +202,18 @@ else
     {
         if (enabled)
         {
-            return "btn btn-primary";
+            return "btn btn-primary m-1";
         }
 
-        return "btn btn-outline-primary";
+        return "btn btn-outline-primary m-1";
     }
 
     /// <summary>Updates the package information.</summary>
     /// <returns>An asynchronous result.</returns>
     async Task UpdatePackageInfo()
     {
-        string[] components = Directive.Split('#');
-
         PackageCacheRecord? response = await Http.GetFromJsonAsync<PackageCacheRecord>(
-            $"FhirManager/package/record?packageName={components[0]}&version={components[1]}");
+            $"api/FhirManager/package?packageName={PackageName}&version={Version}");
         if (response != null)
         {
             PackageCacheRecord package = (PackageCacheRecord)response;
@@ -216,10 +229,15 @@ else
                 packageHeaderText = $"{package.CacheDirective} - {package.PackageState}";
             }
 
-            packageArtifacts = await Http.GetFromJsonAsync<FhirPackageArtifacts>(
-                $"FhirManager/package/artifacts?packageName={components[0]}&version={components[1]}");
+            Dictionary<FhirArtifactClassEnum, IEnumerable<FhirArtifactRecord>>? returnedArtifacts =
+                await Http.GetFromJsonAsync<Dictionary<FhirArtifactClassEnum, IEnumerable<FhirArtifactRecord>>>(
+                    $"api/FhirManager/package/artifactIndex?packageName={PackageName}&version={Version}");
 
-            RebuildFilteredArtifacts();
+            if (returnedArtifacts != null)
+            {
+                packageArtifacts = returnedArtifacts;
+                RebuildFilteredArtifacts();
+            }
         }
     }
 
