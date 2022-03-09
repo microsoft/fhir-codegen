@@ -1317,4 +1317,41 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         IsOnDisk = true;
         LastDownloaded = null;
     }
+
+    /// <summary>Builds artifact record.</summary>
+    /// <returns>The FhirPackageArtifacts.</returns>
+    public FhirPackageArtifacts BuildArtifactRecord()
+    {
+        HashSet<string> searchParameters = new();
+
+        foreach (string key in _searchResultParameters.Keys)
+        {
+            searchParameters.Add(key);
+        }
+
+        foreach (string key in _allInteractionParameters.Keys)
+        {
+            searchParameters.Add(key);
+        }
+
+        foreach (string key in _globalSearchParameters.Keys)
+        {
+            searchParameters.Add(key);
+        }
+
+        FhirPackageArtifacts artifacts = new()
+        {
+            PrimitiveTypes = _primitiveTypesByName.Keys.ToHashSet(),
+            ComplexTypes = _complexTypesByName.Keys.ToHashSet(),
+            Resources = _resourcesByName.Keys.ToHashSet(),
+            ExtensionUrls = _extensionsByUrl.Keys.ToHashSet(),
+            Operations = _systemOperations.Keys.ToHashSet(),
+            SearchParameterUrls = searchParameters,
+            CodeSystems = _codeSystemsByUrl.Keys.ToHashSet(),
+            ValueSets = _valueSetsByUrl.Keys.ToHashSet(),
+            Profiles = _profilesById.Keys.ToHashSet(),
+        };
+
+        return artifacts;
+    }
 }

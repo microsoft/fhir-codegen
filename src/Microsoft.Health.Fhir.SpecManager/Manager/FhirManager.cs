@@ -99,6 +99,22 @@ public class FhirManager : IDisposable
         return packages;
     }
 
+    /// <summary>Attempts to get loaded a FhirVersionInfo from the given string.</summary>
+    /// <param name="directive">The directive.</param>
+    /// <param name="info">     [out] The information.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetLoaded(string directive, out FhirVersionInfo info)
+    {
+        if (!_loadedInfoByDirective.ContainsKey(directive))
+        {
+            info = null;
+            return false;
+        }
+
+        info = _loadedInfoByDirective[directive];
+        return true;
+    }
+
     /// <summary>Query if 'directive' is loaded.</summary>
     /// <param name="directive">The directive.</param>
     /// <returns>True if loaded, false if not.</returns>

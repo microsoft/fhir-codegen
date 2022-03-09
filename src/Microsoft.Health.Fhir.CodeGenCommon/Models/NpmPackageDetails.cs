@@ -84,9 +84,6 @@ public class NpmPackageDetails
     [JsonPropertyName("original-version")]
     public string OriginalVersion { get; set; }
 
-    /// <summary>Gets or sets a value indicating whether this object is loaded.</summary>
-    public bool IsLoaded { get; set; }
-
     /// <summary>Attempts to load FHIR NPM package information from the given directory.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
     /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>

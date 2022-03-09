@@ -35,26 +35,63 @@ public class FhirManagerController : ControllerBase
         _fhirManagerService = fhirManagerService;
     }
 
-    [HttpGet("LoadedPackageDetails")]
-    public IEnumerable<NpmPackageDetails> LoadedPackageDetails()
-    {
-        IEnumerable<NpmPackageDetails> packages = FhirCacheService.Current.GetCachedPackages();
-
-        foreach (NpmPackageDetails package in packages)
-        {
-            package.IsLoaded = FhirManager.Current.IsLoaded($"{package.Name}#{package.Version}");
-        }
-
-        return packages;
-    }
-
-    [HttpGet("Package")]
+    [HttpGet("package")]
     public IEnumerable<PackageCacheRecord> GetPackageRecords()
     {
         return FhirCacheService.Current.PackagesByDirective.Values.ToArray();
     }
 
-    [HttpPost("PackageLoadRequest")]
+    [HttpGet("package/record")]
+    public IActionResult GetPackageRecord([FromQuery] string packageName, [FromQuery] string version)
+    {
+        string directive = packageName + "#" + version;
+
+        if (!FhirCacheService.Current.PackagesByDirective.ContainsKey(directive))
+        {
+            return NotFound();
+        }
+
+        return Ok(FhirCacheService.Current.PackagesByDirective[directive]);
+    }
+
+    [HttpGet("package/artifacts")]
+    public IActionResult GetPackageArtifacts([FromQuery] string packageName, [FromQuery] string version)
+    {
+        string directive = packageName + "#" + version;
+
+        if (!FhirCacheService.Current.PackagesByDirective.ContainsKey(directive))
+        {
+            _logger.LogInformation($"FhirManagerController.GetPackageArtifacts <<< requested directive not found: {directive}");
+            return NotFound();
+        }
+
+        if (FhirCacheService.Current.PackagesByDirective[directive].PackageState != PackageLoadStateEnum.Loaded)
+        {
+            _logger.LogInformation($"FhirManagerController.GetPackageArtifacts <<< package not loaded: {directive}");
+            return NotFound();
+        }
+
+        string resolvedDirective =
+            FhirCacheService.Current.PackagesByDirective[directive].PackageName +
+            "#" +
+            FhirCacheService.Current.PackagesByDirective[directive].Version;
+
+        if (!FhirManager.Current.IsLoaded(resolvedDirective))
+        {
+            _logger.LogInformation($"FhirManagerController.GetPackageArtifacts <<< resolved package not loaded: {resolvedDirective}");
+            return NotFound();
+        }
+
+        if (!FhirManager.Current.TryGetLoaded(resolvedDirective, out FhirVersionInfo info))
+        {
+            _logger.LogInformation($"FhirManagerController.GetPackageArtifacts <<< failed to retrieve resolved package: {resolvedDirective}");
+            return NotFound();
+        }
+
+        return Ok(info.BuildArtifactRecord());
+    }
+
+    [HttpPost("package/load")]
     public PackageLoadStateEnum LoadPackage([FromBody] string directive)
     {
         _fhirManagerService.RequestPackageLoad(
@@ -64,7 +101,7 @@ public class FhirManagerController : ControllerBase
         return state;
     }
 
-    [HttpGet("PackageLoadStatus")]
+    [HttpGet("package/load")]
     public PackageLoadStateEnum GetLoadStatus([FromQuery] string directive)
     {
         return _fhirManagerService.StateForRequest(directive);

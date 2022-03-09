@@ -3,9 +3,8 @@
 @inject HttpClient Http
 @implements IDisposable
 
-<PageTitle>Index</PageTitle>
-
-<h1>Content Information</h1>
+<PageTitle>FHIR Cache</PageTitle>
+<h3>Local FHIR Cache</h3>
 
 @if (!loaded)
 {
@@ -13,6 +12,19 @@
 }
 else
 {
+    <p>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Package Directive</span>
+        <input
+            type="text"
+            placeholder="Package Directive"
+            aria-label="Package Directive"
+            aria-describedby="basic-addon1"
+            @bind="directiveToLoad"
+            />
+        <button class="btn btn-outline-secondary" type="button" @onclick="@(() => LoadPackage(directiveToLoad))">Add</button>
+    </div>
+    </p>
     <table class="table">
         <thead>
             <tr>
@@ -30,7 +42,8 @@ else
                     @switch (record.PackageState)
                     {
                         case PackageLoadStateEnum.Loaded:
-                            <td>✅</td>
+                            
+                            <td><NavLink class="button nav-link" href=@BrowseLinkForDirective(record.CacheDirective)>Browse..</NavLink></td>
                             break;
 
                         case PackageLoadStateEnum.Parsed:
@@ -58,21 +71,29 @@ else
 
 @code {
     private bool loaded = false;
+    private string directiveToLoad = string.Empty;
     private Dictionary<string, PackageCacheRecord> packageRecords = new();
 
     private System.Threading.Timer? timer = null;
 
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
     protected override async Task OnInitializedAsync()
     {
         await UpdatePackagesAndStatus();
         loaded = true;
     }
 
+    private string BrowseLinkForDirective(string directive)
+    {
+        return $"/browse?directive={directive}";
+    }
+
     /// <summary>Updates the packages and status.</summary>
     /// <returns>An asynchronous result.</returns>
     async Task UpdatePackagesAndStatus()
     {
-        IEnumerable<PackageCacheRecord>? packages = await Http.GetFromJsonAsync<IEnumerable<PackageCacheRecord>>("FhirManager/Package");
+        IEnumerable<PackageCacheRecord>? packages = await Http.GetFromJsonAsync<IEnumerable<PackageCacheRecord>>("FhirManager/package");
         if (packages != null)
         {
             foreach (PackageCacheRecord package in packages)
@@ -114,13 +135,13 @@ else
     /// <param name="directive">The directive.</param>
     async void LoadPackage(string directive)
     {
-        HttpResponseMessage response = await Http.PostAsJsonAsync("FhirManager/PackageLoadRequest", directive);
+        HttpResponseMessage response = await Http.PostAsJsonAsync("FhirManager/package/load", directive);
 
         if (response.IsSuccessStatusCode)
         {
             PackageLoadStateEnum? state = await response.Content.ReadFromJsonAsync<PackageLoadStateEnum>();
 
-            if (state != null)
+            if ((state != null) && (packageRecords.ContainsKey(directive)))
             {
                 packageRecords[directive] = packageRecords[directive] with
                 {

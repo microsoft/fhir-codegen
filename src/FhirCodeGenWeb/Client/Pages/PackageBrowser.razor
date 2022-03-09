@@ -1,0 +1,227 @@
+﻿@page "/browse"
+
+@using Microsoft.Health.Fhir.CodeGenCommon.Models;
+@inject HttpClient Http
+
+<PageTitle>Package Browser</PageTitle>
+@if (string.IsNullOrEmpty(packageHeaderText))
+{
+    <h3>FHIR Package Browser</h3>
+}
+else
+{
+    <h3>FHIR Package Browser : @packageHeaderText</h3>
+}
+
+@if (!loaded)
+{
+    <p><em>Loading...</em></p>
+}
+else if (string.IsNullOrEmpty(Directive))
+{
+    <p><em>This page requires a package name and version, please select...</em></p>
+}
+else if (packageArtifacts != null)
+{
+    <p>
+        <button type="button" class=@GetButtonClass(showCodeSystems) @onclick="() => ToggleShowState(ref showCodeSystems)">Code Systems</button>
+        <button type="button" class=@GetButtonClass(showComplexTypes) @onclick="() => ToggleShowState(ref showComplexTypes)">Complex Types</button>
+        <button type="button" class=@GetButtonClass(showExtensions) @onclick="() => ToggleShowState(ref showExtensions)">Extensions</button>
+        <button type="button" class=@GetButtonClass(showOperations) @onclick="() => ToggleShowState(ref showOperations)">Operations</button>
+        <button type="button" class=@GetButtonClass(showPrimitives) @onclick="() => ToggleShowState(ref showPrimitives)">Primitive Types</button>
+        <button type="button" class=@GetButtonClass(showProfiles) @onclick="() => ToggleShowState(ref showProfiles)">Profiles</button>
+        <button type="button" class=@GetButtonClass(showResources) @onclick="() => ToggleShowState(ref showResources)">Resources</button>
+        <button type="button" class=@GetButtonClass(showSearchParameters) @onclick="() => ToggleShowState(ref showSearchParameters)">Search Parameters</button>
+        <button type="button" class=@GetButtonClass(showValueSets) @onclick="() => ToggleShowState(ref showValueSets)">Value Sets</button>
+    </p>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Filter</span>
+        <input
+            type="text"
+            placeholder="Filter"
+            aria-label="Filter"
+            aria-describedby="basic-addon1"
+            @bind-value="artifactFilterText"
+            @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredArtifacts(e?.Value?.ToString() ?? "")))"
+            />
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Class</th>
+                <th>Artifact</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ((string artifactClass, string artifactName) in filteredArtifacts)
+            {
+                <tr><td>@artifactClass</td><td>@artifactName</td></tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p><em>No artifacts found...</em></p>
+}
+
+@code {
+    private bool loaded = false;
+
+    private string packageHeaderText = "";
+
+    private bool showPrimitives = false;
+    private bool showComplexTypes = false;
+    private bool showResources = true;
+    private bool showExtensions = false;
+    private bool showOperations = false;
+    private bool showSearchParameters = false;
+    private bool showCodeSystems = false;
+    private bool showValueSets = false;
+    private bool showProfiles = false;
+
+    private IEnumerable<KeyValuePair<string,string>> filteredArtifacts = new KeyValuePair<string,string>[0];
+
+    private FhirPackageArtifacts? packageArtifacts = null;
+
+    /// <summary>Specifies the filter.</summary>
+    private string artifactFilterText = "";
+
+    /// <summary>Gets or sets the cache directive.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "directive")]
+    public string Directive { get; set; } = "";
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override async Task OnInitializedAsync()
+    {
+        if (string.IsNullOrEmpty(Directive))
+        {
+            loaded = true;
+            return;
+        }
+
+        await UpdatePackageInfo();
+        loaded = true;
+    }
+
+    /// <summary>Toggle show state.</summary>
+    /// <param name="toggle">[in,out] True to toggle.</param>
+    private void ToggleShowState(ref bool toggle)
+    {
+        toggle = !toggle;
+        InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText));
+    }
+
+    /// <summary>Rebuild artifacts.</summary>
+    /// <param name="appliedFilter">A filter specifying the applied.</param>
+    private async void RebuildFilteredArtifacts(string appliedFilter = "")
+    {
+        artifactFilterText = appliedFilter;
+
+        if (packageArtifacts == null)
+        {
+            filteredArtifacts = new KeyValuePair<string,string>[0];
+
+            // manually flag state has changed in case we are in a callback / async context
+            await InvokeAsync(() => StateHasChanged());
+
+            return;
+        }
+
+        List<KeyValuePair<string,string>> artifacts = new();
+
+        AppendFilteredArtifacts(showCodeSystems, appliedFilter, ref artifacts, "Code System", packageArtifacts.CodeSystems);
+        AppendFilteredArtifacts(showComplexTypes, appliedFilter, ref artifacts, "Complex Type", packageArtifacts.ComplexTypes);
+        AppendFilteredArtifacts(showExtensions, appliedFilter, ref artifacts, "Extension", packageArtifacts.ExtensionUrls);
+        AppendFilteredArtifacts(showOperations, appliedFilter, ref artifacts, "Operation", packageArtifacts.Operations);
+        AppendFilteredArtifacts(showPrimitives, appliedFilter, ref artifacts, "Primitive Type", packageArtifacts.PrimitiveTypes);
+        AppendFilteredArtifacts(showProfiles, appliedFilter, ref artifacts, "Profile", packageArtifacts.Profiles);
+        AppendFilteredArtifacts(showResources, appliedFilter, ref artifacts, "Resource", packageArtifacts.Resources);
+        AppendFilteredArtifacts(showSearchParameters, appliedFilter, ref artifacts, "Search Parameter", packageArtifacts.SearchParameterUrls);
+        AppendFilteredArtifacts(showValueSets, appliedFilter, ref artifacts, "Value Set", packageArtifacts.ValueSets);
+
+        artifacts.Sort((a, b) => a.Value.CompareTo(b.Value));
+        filteredArtifacts = artifacts.ToArray();
+
+        // manually flag state has changed in case we are in a callback / async context
+        await InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Appends a filtered artifacts.</summary>
+    /// <param name="include">  True to include, false to exclude.</param>
+    /// <param name="filter">   Specifies the filter.</param>
+    /// <param name="artifacts">[in,out] The artifacts.</param>
+    /// <param name="dataClass">The data class.</param>
+    /// <param name="data">     The data.</param>
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    private void AppendFilteredArtifacts(
+        bool include,
+        string filter,
+        ref List<KeyValuePair<string,string>> artifacts,
+        string dataClass,
+        HashSet<string> data)
+    {
+        if (!include)
+        {
+            return;
+        }
+
+        if (string.IsNullOrEmpty(filter))
+        {
+            artifacts.AddRange(data.Select(v => new KeyValuePair<string, string>(dataClass, v)));
+        }
+        else
+        {
+            artifacts.AddRange(data
+                .Where(v => v.Contains(filter, StringComparison.OrdinalIgnoreCase))
+                .Select(v => new KeyValuePair<string, string>(dataClass,v)));
+        }
+    }
+
+    /// <summary>Gets button class.</summary>
+    /// <param name="enabled">True to enable, false to disable.</param>
+    /// <returns>The button class.</returns>
+    private string GetButtonClass(bool enabled)
+    {
+        if (enabled)
+        {
+            return "btn btn-primary";
+        }
+
+        return "btn btn-outline-primary";
+    }
+
+    /// <summary>Updates the package information.</summary>
+    /// <returns>An asynchronous result.</returns>
+    async Task UpdatePackageInfo()
+    {
+        string[] components = Directive.Split('#');
+
+        PackageCacheRecord? response = await Http.GetFromJsonAsync<PackageCacheRecord>(
+            $"FhirManager/package/record?packageName={components[0]}&version={components[1]}");
+        if (response != null)
+        {
+            PackageCacheRecord package = (PackageCacheRecord)response;
+
+            if (package.Details != null)
+            {
+                packageHeaderText =
+                    $"{package.CacheDirective} {package.PackageState} :" +
+                    $" ({package.Details.Name}#{package.Details.Version} for FHIR {string.Join(',', package.Details.FhirVersionList)})";
+            }
+            else
+            {
+                packageHeaderText = $"{package.CacheDirective} - {package.PackageState}";
+            }
+
+            packageArtifacts = await Http.GetFromJsonAsync<FhirPackageArtifacts>(
+                $"FhirManager/package/artifacts?packageName={components[0]}&version={components[1]}");
+
+            RebuildFilteredArtifacts();
+        }
+    }
+
+
+}
