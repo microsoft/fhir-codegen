@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using Microsoft.AspNetCore.Components;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 namespace FhirCodeGenWeb.Client.Services;
@@ -13,8 +14,16 @@ public interface IPackageIndexService
     /// <summary>Gets or sets the package records.</summary>
     Dictionary<string, PackageCacheRecord> PackageRecords { get; set; }
 
+    /// <summary>Updates the packages and status.</summary>
+    /// <returns>An asynchronous result.</returns>
+    Task UpdatePackagesAndStatusAsync();
+
+    /// <summary>Loads a package.</summary>
+    /// <param name="directive">The directive.</param>
+    void LoadPackageAsync(string directive);
+    
     /// <summary>Occurs when On Changed.</summary>
-    event EventHandler<EventArgs> OnChanged;
+    event EventHandler<EventArgs>? OnChanged;
 
     /// <summary>State has changed.</summary>
     void StateHasChanged();

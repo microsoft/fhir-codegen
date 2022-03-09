@@ -1,9 +1,9 @@
 ﻿@page "/"
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
+@using FhirCodeGenWeb.Client.Services;
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
-@inject FhirCodeGenWeb.Client.Services.IPackageIndexService PackageService
-@implements IDisposable
+@inject IPackageIndexService PackageService
 
 <PageTitle>FHIR Cache</PageTitle>
 <h3>Local FHIR Cache</h3>
@@ -24,7 +24,7 @@ else
             aria-describedby="basic-addon1"
             @bind="directiveToLoad"
             />
-        <button class="btn btn-outline-secondary" type="button" @onclick="@(() => LoadPackage(directiveToLoad))">Add</button>
+        <button class="btn btn-outline-secondary" type="button" @onclick="@(() => ButtonLoadPackageClicked(directiveToLoad))">Add</button>
     </div>
     </p>
     <table class="table table-striped">
@@ -39,7 +39,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (PackageCacheRecord record in packageRecords.Values)
+            @foreach (PackageCacheRecord record in PackageService.PackageRecords.Values)
             {
                 <tr>
                     @switch (record.PackageState)
@@ -47,7 +47,6 @@ else
                         case PackageLoadStateEnum.Loaded:
 
                             <td><button type="button" @onclick="() => NavToBrowsePackage(record.CacheDirective)">Browse</button></td>
-                            @*<td><NavLink class="button nav-link" href=@BrowseLinkForDirective(record.CacheDirective)>Browse..</NavLink></td>*@
                             break;
 
                         case PackageLoadStateEnum.Parsed:
@@ -60,7 +59,7 @@ else
                             break;
 
                         default:
-                            <td><button type="button" @onclick="() => LoadPackage(record.CacheDirective)">Load</button></td>
+                            <td><button type="button" @onclick="() => ButtonLoadPackageClicked(record.CacheDirective)">Load</button></td>
                             break;
                     }
                     <td>@record.CacheDirective</td>
@@ -77,23 +76,28 @@ else
 @code {
     private bool loaded = false;
     private string directiveToLoad = string.Empty;
-    private Dictionary<string, PackageCacheRecord> packageRecords = new();
-
-    private System.Threading.Timer? timer = null;
 
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
     protected override async Task OnInitializedAsync()
     {
-        await UpdatePackagesAndStatus();
+        PackageService.OnChanged += PackageServiceChanged;
+        await PackageService.UpdatePackagesAndStatusAsync();
         loaded = true;
+    }
+
+    /// <summary>Handles the package service changed event.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Event information to send to registered event handlers.</param>
+    private void PackageServiceChanged(object? sender, EventArgs e)
+    {
+        InvokeAsync(() => StateHasChanged());
     }
 
     /// <summary>Navigation to browse package.</summary>
     /// <param name="directive">The directive.</param>
     private void NavToBrowsePackage(string directive)
     {
-        Console.WriteLine($"Browsing to directive: {directive}");
         string[] components = directive.Split('#');
 
         if (components.Length > 1)
@@ -105,115 +109,10 @@ else
         NavigationManager.NavigateTo($"/package?packageName={components[0]}");
     }
 
-    /// <summary>Browse link for directive.</summary>
-    /// <param name="directive">The directive.</param>
-    /// <returns>A string.</returns>
-    private string BrowseLinkForDirective(string directive)
-    {
-        string[] components = directive.Split('#');
-
-        if (components.Length == 2)
-        {
-            return $"/package?packageName={components[0]}&version={components[1]}";
-        }
-
-        return $"/package?name={components[0]}";
-    }
-
-    /// <summary>Updates the packages and status.</summary>
-    /// <returns>An asynchronous result.</returns>
-    async Task UpdatePackagesAndStatus()
-    {
-        IEnumerable<PackageCacheRecord>? packages = await Http.GetFromJsonAsync<IEnumerable<PackageCacheRecord>>("api/FhirManager/package");
-        if (packages != null)
-        {
-            foreach (PackageCacheRecord package in packages)
-            {
-                if (!packageRecords.ContainsKey(package.CacheDirective))
-                {
-                    packageRecords.Add(package.CacheDirective, package);
-                    continue;
-                }
-
-                if (packageRecords[package.CacheDirective].PackageState != package.PackageState)
-                {
-                    packageRecords[package.CacheDirective] = package;
-                    continue;
-                }
-            }
-
-            // manually flag state has changed in case we are in a callback / async context
-            await InvokeAsync(() => StateHasChanged());
-        }
-    }
-
     /// <summary>Button load package clicked.</summary>
     /// <param name="directive">The directive.</param>
     void ButtonLoadPackageClicked(string directive)
     {
-        packageRecords[directive] = packageRecords[directive] with
-        {
-            PackageState = PackageLoadStateEnum.Queued,
-        };
-
-        // flag that we have changed data so the app refreshes
-        StateHasChanged();
-
-        Task.Run(() => LoadPackage(directive));
-    }
-
-    /// <summary>Loads a package.</summary>
-    /// <param name="directive">The directive.</param>
-    async void LoadPackage(string directive)
-    {
-        HttpResponseMessage response = await Http.PostAsJsonAsync("api/FhirManager/package/load", directive);
-
-        if (response.IsSuccessStatusCode)
-        {
-            PackageLoadStateEnum? state = await response.Content.ReadFromJsonAsync<PackageLoadStateEnum>();
-
-            if ((state != null) && (packageRecords.ContainsKey(directive)))
-            {
-                packageRecords[directive] = packageRecords[directive] with
-                {
-                    PackageState = (PackageLoadStateEnum)state,
-                };
-
-                // in async callback, flag that we have changed data so the app refreshes
-                await InvokeAsync(() => StateHasChanged());
-            }
-
-            if (timer == null)
-            {
-                timer = new(async _ =>
-                {
-                    await InvokeAsync(() => UpdatePackagesAndStatus());
-
-                    bool shouldContinue = false;
-
-                    foreach (PackageCacheRecord packageRecord in packageRecords.Values)
-                    {
-                        if ((packageRecord.PackageState == PackageLoadStateEnum.Unknown) ||
-                            (packageRecord.PackageState == PackageLoadStateEnum.Queued) ||
-                            (packageRecord.PackageState == PackageLoadStateEnum.InProgress))
-                        {
-                            shouldContinue = true;
-                            break;
-                        }
-                    }
-
-                    if (!shouldContinue)
-                    {
-                        timer?.Dispose();
-                        timer = null;
-                    }
-                }, null, 0, 1000);
-            }
-        }
-    }
-
-    public void Dispose()
-    {
-        timer?.Dispose();
+        Task.Run(() => PackageService.LoadPackageAsync(directive));
     }
 }

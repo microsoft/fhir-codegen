@@ -9,6 +9,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-builder.Services.AddSingleton<IPackageIndexService, PackageIndexService>();
+builder.Services.AddScoped<IPackageIndexService, PackageIndexService>();
+//builder.Services.AddSingleton<IPackageIndexService, PackageIndexService>();
 
 await builder.Build().RunAsync();

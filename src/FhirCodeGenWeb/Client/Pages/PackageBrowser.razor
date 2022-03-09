@@ -2,6 +2,7 @@
 
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @inject HttpClient Http
+@inject NavigationManager NavigationManager
 
 <PageTitle>Package Browser</PageTitle>
 @if (string.IsNullOrEmpty(packageHeaderText))
@@ -31,7 +32,7 @@ else if (packageArtifacts.Any())
                 class=@GetButtonClass(visible)
                 @onclick="() => ToggleShowState(classEnum)"
                 >
-                @classEnum.ToString()
+                @classEnum.ToString() (@packageArtifacts[classEnum].Count())
             </button>
         }
     </p>
