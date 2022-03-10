@@ -1,6 +1,7 @@
 ﻿@using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @using FhirCodeGenWeb.Client.Services;
-@inject IPackageIndexService PackageService
+@inject IClientPackageService PackageService
+@implements IDisposable
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
@@ -27,7 +28,8 @@
 
             <div class="nav-item px-3">
                 <NavLink class="nav-link" href="@LinkForPackage(record.Details.Name, record.Details.Version)" Match="NavLinkMatch.All">
-                    <span class="oi oi-box" aria-hidden="true"></span> @string.Format("{0}#{1}",record.Details.Name, record.Details.Version)
+                    <span class="oi oi-box" aria-hidden="true"></span>
+                    <span class="text-nowrap overflow-hidden">@string.Format("{0}#{1}",record.Details.Name, record.Details.Version)</span>
                 </NavLink>
             </div>
         }
@@ -50,7 +52,7 @@
     /// <returns>A string.</returns>
     private string LinkForPackage(string name, string version)
     {
-        return $"/package?packageName={name}&version={version}";
+        return $"/browsePackage?packageName={name}&version={version}";
     }
 
     /// <summary>Executes the initialized asynchronous action.</summary>
@@ -59,6 +61,15 @@
     {
         base.OnInitialized();
         PackageService.OnChanged += PackageServiceChanged;
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        PackageService.OnChanged -= PackageServiceChanged;
     }
 
     /// <summary>Handles the package service changed event.</summary>

@@ -1,4 +1,4 @@
-﻿// <copyright file="PackageIndexService.cs" company="Microsoft Corporation">
+﻿// <copyright file="ClientPackageService.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -9,7 +9,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 namespace FhirCodeGenWeb.Client.Services;
 
 /// <summary>A service for accessing package indexes information.</summary>
-public class PackageIndexService : IPackageIndexService
+public class ClientPackageService : IClientPackageService
 {
     /// <summary>The package records.</summary>
     private Dictionary<string, PackageCacheRecord> _packageRecords = new();
@@ -27,10 +27,10 @@ public class PackageIndexService : IPackageIndexService
     private System.Threading.Timer? timer = null;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PackageIndexService"/> class.
+    /// Initializes a new instance of the <see cref="ClientPackageService"/> class.
     /// </summary>
     /// <param name="http">The HTTP.</param>
-    public PackageIndexService(HttpClient http)
+    public ClientPackageService(HttpClient http)
     {
         _httpClient = http;
     }
@@ -39,7 +39,9 @@ public class PackageIndexService : IPackageIndexService
     /// <returns>An asynchronous result.</returns>
     public async Task UpdatePackagesAndStatusAsync()
     {
-        IEnumerable<PackageCacheRecord>? packages = await _httpClient.GetFromJsonAsync<IEnumerable<PackageCacheRecord>>("api/FhirManager/package");
+        IEnumerable<PackageCacheRecord>? packages =
+            await _httpClient.GetFromJsonAsync<IEnumerable<PackageCacheRecord>>(
+                "api/FhirManager/package/manifest");
         if (packages != null)
         {
             foreach (PackageCacheRecord package in packages)
@@ -63,25 +65,40 @@ public class PackageIndexService : IPackageIndexService
     }
 
     /// <summary>Loads a package.</summary>
-    /// <param name="directive">The directive.</param>
-    public async void LoadPackageAsync(string directive)
+    /// <param name="cacheDirective">The cache directive for the package to load.</param>
+    public async void LoadPackageAsync(string cacheDirective)
     {
-        _packageRecords[directive] = _packageRecords[directive] with
+        string[] directiveComponents = cacheDirective.Split('#');
+
+        if (directiveComponents.Length != 2)
+        {
+            throw new ArgumentException($"Invalid directive: {cacheDirective}", nameof(cacheDirective));
+        }
+
+        _packageRecords[cacheDirective] = _packageRecords[cacheDirective] with
         {
             PackageState = PackageLoadStateEnum.Queued,
         };
 
         StateHasChanged();
 
-        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/FhirManager/package/load", directive);
+        HttpRequestMessage request = new HttpRequestMessage(
+            HttpMethod.Post,
+            $"api/FhirManager/package/loadRequest/{directiveComponents[0]}/version/{directiveComponents[1]}");
+
+        HttpResponseMessage response = await _httpClient.SendAsync(request);
+
+        //HttpResponseMessage response = await _httpClient.PostAsJsonAsync(
+        //    "api/FhirManager/package/loadRequest",
+        //    null);
 
         if (response.IsSuccessStatusCode)
         {
             PackageLoadStateEnum? state = await response.Content.ReadFromJsonAsync<PackageLoadStateEnum>();
 
-            if ((state != null) && (_packageRecords.ContainsKey(directive)))
+            if ((state != null) && (_packageRecords.ContainsKey(cacheDirective)))
             {
-                _packageRecords[directive] = _packageRecords[directive] with
+                _packageRecords[cacheDirective] = _packageRecords[cacheDirective] with
                 {
                     PackageState = (PackageLoadStateEnum)state,
                 };

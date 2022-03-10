@@ -1,8 +1,9 @@
-﻿@page "/package"
+﻿@page "/browsePackage"
 
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
+@implements IDisposable
 
 <PageTitle>Package Browser</PageTitle>
 @if (string.IsNullOrEmpty(packageHeaderText))
@@ -69,7 +70,7 @@ else if (packageArtifacts.Any())
 }
 else
 {
-    <p><em>No artifacts found...</em></p>
+    <p><em>This package contains no supported artifacts.</em></p>
 }
 
 @code {
@@ -99,6 +100,8 @@ else
     /// <returns>An asynchronous result.</returns>
     protected override async Task OnInitializedAsync()
     {
+        NavigationManager.LocationChanged += HandleLocationChanged;
+
         if (string.IsNullOrEmpty(PackageName))
         {
             loaded = true;
@@ -106,7 +109,29 @@ else
         }
 
         await UpdatePackageInfo();
-        loaded = true;
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
+    }
+
+    /// <summary>Handles the location changed.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Location changed event information.</param>
+    private async void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        loaded = false;
+
+        // manually flag state has changed in case we are in a callback / async context
+        await InvokeAsync(() => StateHasChanged());
+
+        // reload our package info
+        await UpdatePackageInfo();
     }
 
     /// <summary>Toggle show state.</summary>
@@ -117,24 +142,38 @@ else
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText));
     }
 
-    /// <summary>Rebuild artifacts.</summary>
-    /// <param name="appliedFilter">A filter specifying the applied.</param>
-    private async void RebuildFilteredArtifacts(string appliedFilter = "")
+    /// <summary>Rebuild filtered artifacts.</summary>
+    /// <param name="appliedFilter">            (Optional) A filter specifying the applied.</param>
+    /// <param name="checkShownArtifactClasses">(Optional) True to check show artifact classes.</param>
+    private async void RebuildFilteredArtifacts(
+        string appliedFilter = "",
+        bool checkShownArtifactClasses = false)
     {
-        foreach (FhirArtifactClassEnum classEnum in packageArtifacts.Keys)
+        if (checkShownArtifactClasses)
         {
-            if (!showArtifactClass.ContainsKey(classEnum))
+            foreach (FhirArtifactClassEnum classEnum in packageArtifacts.Keys)
             {
-                switch (classEnum)
+                if (!showArtifactClass.ContainsKey(classEnum))
                 {
-                    case FhirArtifactClassEnum.Resource:
-                        showArtifactClass.Add(classEnum, true);
-                        break;
+                    switch (classEnum)
+                    {
+                        case FhirArtifactClassEnum.Resource:
+                            showArtifactClass.Add(classEnum, true);
+                            break;
 
-                    default:
-                        showArtifactClass.Add(classEnum, false);
-                        break;
+                        default:
+                            showArtifactClass.Add(classEnum, false);
+                            break;
 
+                    }
+                }
+            }
+
+            foreach (FhirArtifactClassEnum classEnum in showArtifactClass.Keys)
+            {
+                if (!packageArtifacts.ContainsKey(classEnum))
+                {
+                    showArtifactClass.Remove(classEnum);
                 }
             }
         }
@@ -160,6 +199,11 @@ else
 
         artifacts.Sort((a, b) => a.Id.CompareTo(b.Id));
         filteredArtifacts = artifacts;
+
+        if (!loaded)
+        {
+            loaded = true;
+        }
 
         // manually flag state has changed in case we are in a callback / async context
         await InvokeAsync(() => StateHasChanged());
@@ -214,7 +258,7 @@ else
     async Task UpdatePackageInfo()
     {
         PackageCacheRecord? response = await Http.GetFromJsonAsync<PackageCacheRecord>(
-            $"api/FhirManager/package?packageName={PackageName}&version={Version}");
+            $"api/FhirManager/package/manifest/{PackageName}/version/{Version}");
         if (response != null)
         {
             PackageCacheRecord package = (PackageCacheRecord)response;
@@ -222,23 +266,29 @@ else
             if (package.Details != null)
             {
                 packageHeaderText =
-                    $"{package.CacheDirective} {package.PackageState} :" +
-                    $" ({package.Details.Name}#{package.Details.Version} for FHIR {string.Join(',', package.Details.FhirVersionList)})";
+                    $"{package.PackageState} package " +
+                    $" {package.Details.Name}#{package.Details.Version} (FHIR {string.Join(',', package.Details.FhirVersionList)})";
             }
             else
             {
-                packageHeaderText = $"{package.CacheDirective} - {package.PackageState}";
+                packageHeaderText = $"{package.PackageState} package {package.CacheDirective}";
             }
 
             Dictionary<FhirArtifactClassEnum, IEnumerable<FhirArtifactRecord>>? returnedArtifacts =
                 await Http.GetFromJsonAsync<Dictionary<FhirArtifactClassEnum, IEnumerable<FhirArtifactRecord>>>(
-                    $"api/FhirManager/package/artifactIndex?packageName={PackageName}&version={Version}");
+                    $"api/FhirManager/package/artifactIndex/{PackageName}/version/{Version}");
 
             if (returnedArtifacts != null)
             {
                 packageArtifacts = returnedArtifacts;
-                RebuildFilteredArtifacts();
+                RebuildFilteredArtifacts(artifactFilterText, true);
             }
+        }
+        else if (!loaded)
+        {
+            loaded = true;
+            showArtifactClass.Clear();
+            await InvokeAsync(() => StateHasChanged());
         }
     }
 

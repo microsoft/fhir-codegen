@@ -38,21 +38,6 @@ public class PackageManagerApiService : IDisposable, IHostedService
         // initialize the internal FHIR Manager
         FhirCacheService.Init(packageDirectory);
         FhirManager.Init();
-
-        //List<string> packageDirectives = new()
-        //{
-        //    "hl7.fhir.r4.core#latest",
-        //};
-
-        //// load FHIR versions
-        //FhirManager.Current.LoadPackages(
-        //    packageDirectives,
-        //    false,
-        //    true,
-        //    true,
-        //    false,
-        //    string.Empty,
-        //    out List<string> failedPackages);
     }
 
     /// <summary>Request package load.</summary>

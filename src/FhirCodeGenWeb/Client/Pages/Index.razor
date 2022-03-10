@@ -3,7 +3,7 @@
 @using FhirCodeGenWeb.Client.Services;
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
-@inject IPackageIndexService PackageService
+@inject IClientPackageService PackageService
 
 <PageTitle>FHIR Cache</PageTitle>
 <h3>Local FHIR Cache</h3>
@@ -30,12 +30,11 @@ else
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>State</th>
+                <th></th>
                 <th>Cache Directive</th>
-                <th>Package Name</th>
-                <th>Version</th>
                 <th>FHIR Version</th>
                 <th>Title</th>
+                <th>Dependencies</th>
             </tr>
         </thead>
         <tbody>
@@ -63,10 +62,9 @@ else
                             break;
                     }
                     <td>@record.CacheDirective</td>
-                    <td>@record.Details.Name</td>
-                    <td>@record.Details.Version</td>
-                    <td>@string.Join(',', record.Details.FhirVersionList)</td>
+                    <td>@string.Join(',', record.Details.FhirVersions)</td>
                     <td>@record.Details.Title</td>
+                    <td>@DependenciesForPackage(record)</td>
                 </tr>
             }
         </tbody>
@@ -102,11 +100,11 @@ else
 
         if (components.Length > 1)
         {
-            NavigationManager.NavigateTo($"/package?packageName={components[0]}&version={components[1]}");
+            NavigationManager.NavigateTo($"/browsePackage?packageName={components[0]}&version={components[1]}");
             return;
         }
 
-        NavigationManager.NavigateTo($"/package?packageName={components[0]}");
+        NavigationManager.NavigateTo($"/browsePackage?packageName={components[0]}");
     }
 
     /// <summary>Button load package clicked.</summary>
@@ -114,5 +112,18 @@ else
     void ButtonLoadPackageClicked(string directive)
     {
         Task.Run(() => PackageService.LoadPackageAsync(directive));
+    }
+
+    /// <summary>Dependencies for package.</summary>
+    /// <param name="record">The record.</param>
+    /// <returns>A string.</returns>
+    string DependenciesForPackage(PackageCacheRecord record)
+    {
+        if (record.Details?.Dependencies?.Any() != true)
+        {
+            return string.Empty;
+        }
+
+        return string.Join(", ", record.Details.Dependencies.Select((KeyValuePair<string, string> kvp) => $"{kvp.Key}#{kvp.Value}"));
     }
 }

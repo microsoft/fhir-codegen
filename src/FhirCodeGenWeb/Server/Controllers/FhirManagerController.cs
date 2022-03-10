@@ -5,6 +5,7 @@
 
 
 using FhirCodeGenWeb.Server.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
@@ -35,14 +36,15 @@ public class FhirManagerController : ControllerBase
         _fhirManagerService = fhirManagerService;
     }
 
-    [HttpGet("package")]
-    public IActionResult GetPackageRecord([FromQuery] string? packageName, [FromQuery] string? version)
+    [HttpGet("package/manifest")]
+    public IActionResult GetAllPackageManifests()
     {
-        if (string.IsNullOrEmpty(packageName))
-        {
-            return Ok(FhirCacheService.Current.PackagesByDirective.Values.ToArray());
-        }
+        return Ok(FhirCacheService.Current.PackagesByDirective.Values.ToArray());
+    }
 
+    [HttpGet("package/manifest/{packageName}/version/{version}")]
+    public IActionResult GetPackageManifest([FromRoute] string packageName, [FromRoute] string version)
+    {
         string directive = packageName + "#" + version;
 
         if (!FhirCacheService.Current.PackagesByDirective.ContainsKey(directive))
@@ -53,8 +55,8 @@ public class FhirManagerController : ControllerBase
         return Ok(FhirCacheService.Current.PackagesByDirective[directive]);
     }
 
-    [HttpGet("package/artifactIndex")]
-    public IActionResult GetPackageArtifacts([FromQuery] string packageName, [FromQuery] string version)
+    [HttpGet("package/artifactIndex/{packageName}/version/{version}")]
+    public IActionResult GetPackageArtifacts([FromRoute] string packageName, [FromRoute] string version)
     {
         string directive = packageName + "#" + version;
 
@@ -90,19 +92,40 @@ public class FhirManagerController : ControllerBase
         return Ok(info.BuildArtifactRecords());
     }
 
-    [HttpPost("package/load")]
-    public PackageLoadStateEnum LoadPackage([FromBody] string directive)
+    /// <summary>(An Action that handles HTTP POST requests) loads a package.</summary>
+    /// <param name="packageName">Name of the package.</param>
+    /// <param name="version">    The version.</param>
+    /// <returns>The package.</returns>
+    [HttpPost("package/loadRequest/{packageName}/version/{version}/")]
+    public IActionResult LoadPackage(
+        [FromRoute] string packageName,
+        [FromRoute] string version)
     {
+        string cacheDirective = packageName + "#" + version;
+
         _fhirManagerService.RequestPackageLoad(
-            directive,
+            cacheDirective,
             out PackageLoadStateEnum state);
 
-        return state;
+        return Accepted(state);
     }
 
-    [HttpGet("package/load")]
-    public PackageLoadStateEnum GetLoadStatus([FromQuery] string directive)
+    /// <summary>(An Action that handles HTTP GET requests) gets package load status.</summary>
+    /// <param name="packageName">Name of the package.</param>
+    /// <param name="version">    The version.</param>
+    /// <returns>The package load status.</returns>
+    [HttpGet("package/loadRequest/{packageName}/version/{version}/")]
+    public IActionResult GetPackageLoadStatus(
+        [FromRoute] string packageName,
+        [FromRoute] string version)
     {
-        return _fhirManagerService.StateForRequest(directive);
+        string cacheDirective = packageName + "#" + version;
+
+        if (!FhirCacheService.Current.PackagesByDirective.ContainsKey(cacheDirective))
+        {
+            return NotFound();
+        }
+
+        return Ok(_fhirManagerService.StateForRequest(cacheDirective));
     }
 }
