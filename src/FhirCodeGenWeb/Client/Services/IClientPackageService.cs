@@ -12,7 +12,7 @@ namespace FhirCodeGenWeb.Client.Services;
 public interface IClientPackageService
 {
     /// <summary>Gets or sets the package records.</summary>
-    Dictionary<string, PackageCacheRecord> PackageRecords { get; set; }
+    Dictionary<string, PackageCacheRecord> PackageRecords { get; }
 
     /// <summary>Updates the packages and status.</summary>
     /// <returns>An asynchronous result.</returns>

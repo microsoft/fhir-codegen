@@ -1,8 +1,7 @@
-﻿// <copyright file="FhirManagerController.cs" company="Microsoft Corporation">
+﻿// <copyright file="PackageController.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-
 
 using FhirCodeGenWeb.Server.Services;
 using Microsoft.AspNetCore.Http;
@@ -15,34 +14,34 @@ namespace FhirCodeGenWeb.Server.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class FhirManagerController : ControllerBase
+public class PackageController : ControllerBase
 {
     /// <summary>(Immutable) The logger.</summary>
-    private readonly ILogger<FhirManagerController> _logger;
+    private readonly ILogger<PackageController> _logger;
 
     /// <summary>(Immutable) The FHIR manager service.</summary>
-    private readonly PackageManagerApiService _fhirManagerService;
+    private readonly PackageManagerApiService _packageApiService;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FhirManagerController"/> class.
+    /// Initializes a new instance of the <see cref="PackageController"/> class.
     /// </summary>
     /// <param name="logger">            (Immutable) The logger.</param>
-    /// <param name="fhirManagerService">(Immutable) The FHIR manager service.</param>
-    public FhirManagerController(
-        ILogger<FhirManagerController> logger,
-        PackageManagerApiService fhirManagerService)
+    /// <param name="packageApiService">(Immutable) The FHIR manager service.</param>
+    public PackageController(
+        ILogger<PackageController> logger,
+        PackageManagerApiService packageApiService)
     {
         _logger = logger;
-        _fhirManagerService = fhirManagerService;
+        _packageApiService = packageApiService;
     }
 
-    [HttpGet("package/manifest")]
+    [HttpGet("")]
     public IActionResult GetAllPackageManifests()
     {
         return Ok(FhirCacheService.Current.PackagesByDirective.Values.ToArray());
     }
 
-    [HttpGet("package/manifest/{packageName}/version/{version}")]
+    [HttpGet("{packageName}/{version}/manifest")]
     public IActionResult GetPackageManifest([FromRoute] string packageName, [FromRoute] string version)
     {
         string directive = packageName + "#" + version;
@@ -55,20 +54,20 @@ public class FhirManagerController : ControllerBase
         return Ok(FhirCacheService.Current.PackagesByDirective[directive]);
     }
 
-    [HttpGet("package/artifactIndex/{packageName}/version/{version}")]
+    [HttpGet("{packageName}/{version}/artifactIndex")]
     public IActionResult GetPackageArtifacts([FromRoute] string packageName, [FromRoute] string version)
     {
         string directive = packageName + "#" + version;
 
         if (!FhirCacheService.Current.PackagesByDirective.ContainsKey(directive))
         {
-            _logger.LogInformation($"FhirManagerController.GetPackageArtifacts <<< requested directive not found: {directive}");
+            _logger.LogInformation($"PackageController.GetPackageArtifacts <<< requested directive not found: {directive}");
             return NotFound();
         }
 
         if (FhirCacheService.Current.PackagesByDirective[directive].PackageState != PackageLoadStateEnum.Loaded)
         {
-            _logger.LogInformation($"FhirManagerController.GetPackageArtifacts <<< package not loaded: {directive}");
+            _logger.LogInformation($"PackageController.GetPackageArtifacts <<< package not loaded: {directive}");
             return NotFound();
         }
 
@@ -79,13 +78,13 @@ public class FhirManagerController : ControllerBase
 
         if (!FhirManager.Current.IsLoaded(resolvedDirective))
         {
-            _logger.LogInformation($"FhirManagerController.GetPackageArtifacts <<< resolved package not loaded: {resolvedDirective}");
+            _logger.LogInformation($"PackageController.GetPackageArtifacts <<< resolved package not loaded: {resolvedDirective}");
             return NotFound();
         }
 
         if (!FhirManager.Current.TryGetLoaded(resolvedDirective, out FhirVersionInfo info))
         {
-            _logger.LogInformation($"FhirManagerController.GetPackageArtifacts <<< failed to retrieve resolved package: {resolvedDirective}");
+            _logger.LogInformation($"PackageController.GetPackageArtifacts <<< failed to retrieve resolved package: {resolvedDirective}");
             return NotFound();
         }
 
@@ -96,14 +95,14 @@ public class FhirManagerController : ControllerBase
     /// <param name="packageName">Name of the package.</param>
     /// <param name="version">    The version.</param>
     /// <returns>The package.</returns>
-    [HttpPost("package/loadRequest/{packageName}/version/{version}/")]
+    [HttpPost("{packageName}/{version}/loadRequest")]
     public IActionResult LoadPackage(
         [FromRoute] string packageName,
         [FromRoute] string version)
     {
         string cacheDirective = packageName + "#" + version;
 
-        _fhirManagerService.RequestPackageLoad(
+        _packageApiService.RequestPackageLoad(
             cacheDirective,
             out PackageLoadStateEnum state);
 
@@ -114,7 +113,7 @@ public class FhirManagerController : ControllerBase
     /// <param name="packageName">Name of the package.</param>
     /// <param name="version">    The version.</param>
     /// <returns>The package load status.</returns>
-    [HttpGet("package/loadRequest/{packageName}/version/{version}/")]
+    [HttpGet("{packageName}/{version}/loadRequest")]
     public IActionResult GetPackageLoadStatus(
         [FromRoute] string packageName,
         [FromRoute] string version)
@@ -126,6 +125,6 @@ public class FhirManagerController : ControllerBase
             return NotFound();
         }
 
-        return Ok(_fhirManagerService.StateForRequest(cacheDirective));
+        return Ok(_packageApiService.StateForRequest(cacheDirective));
     }
 }

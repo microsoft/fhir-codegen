@@ -15,7 +15,7 @@ public class ClientPackageService : IClientPackageService
     private Dictionary<string, PackageCacheRecord> _packageRecords = new();
 
     /// <summary>Gets or sets the package records.</summary>
-    public Dictionary<string, PackageCacheRecord> PackageRecords { get => _packageRecords; set => _packageRecords = value; }
+    public Dictionary<string, PackageCacheRecord> PackageRecords { get => _packageRecords; }
 
     /// <summary>Occurs when On Changed.</summary>
     public event EventHandler<EventArgs>? OnChanged;
@@ -41,7 +41,7 @@ public class ClientPackageService : IClientPackageService
     {
         IEnumerable<PackageCacheRecord>? packages =
             await _httpClient.GetFromJsonAsync<IEnumerable<PackageCacheRecord>>(
-                "api/FhirManager/package/manifest");
+                "api/package");
         if (packages != null)
         {
             foreach (PackageCacheRecord package in packages)
@@ -84,7 +84,7 @@ public class ClientPackageService : IClientPackageService
 
         HttpRequestMessage request = new HttpRequestMessage(
             HttpMethod.Post,
-            $"api/FhirManager/package/loadRequest/{directiveComponents[0]}/version/{directiveComponents[1]}");
+            $"api/package/{directiveComponents[0]}/{directiveComponents[1]}/loadRequest");
 
         HttpResponseMessage response = await _httpClient.SendAsync(request);
 

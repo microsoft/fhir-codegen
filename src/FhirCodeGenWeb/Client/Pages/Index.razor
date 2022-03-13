@@ -4,6 +4,7 @@
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 @inject IClientPackageService PackageService
+@implements IDisposable
 
 <PageTitle>FHIR Cache</PageTitle>
 <h3>Local FHIR Cache</h3>
@@ -83,6 +84,16 @@ else
         await PackageService.UpdatePackagesAndStatusAsync();
         loaded = true;
     }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        PackageService.OnChanged -= PackageServiceChanged;
+    }
+
 
     /// <summary>Handles the package service changed event.</summary>
     /// <param name="sender">The sender.</param>

@@ -40,13 +40,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhirCsR4B", "src\fhirCsR4B\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhirCsR5", "src\fhirCsR5\fhirCsR5.csproj", "{F2A5A856-D4C3-4750-8E66-234D7BB0EE7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.CodeGenCommon", "src\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj", "{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeGenCommon", "src\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj", "{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FhirCodeGenWeb.Server", "src\FhirCodeGenWeb\Server\FhirCodeGenWeb.Server.csproj", "{E690DA26-7BEE-427E-B101-9FF83FFB106F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FhirCodeGenWeb.Server", "src\FhirCodeGenWeb\Server\FhirCodeGenWeb.Server.csproj", "{E690DA26-7BEE-427E-B101-9FF83FFB106F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FhirCodeGenWeb.Client", "src\FhirCodeGenWeb\Client\FhirCodeGenWeb.Client.csproj", "{AE0600EC-2E13-4569-A748-77774F20B40E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FhirCodeGenWeb.Client", "src\FhirCodeGenWeb\Client\FhirCodeGenWeb.Client.csproj", "{AE0600EC-2E13-4569-A748-77774F20B40E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FhirCodeGenWeb.Shared", "src\FhirCodeGenWeb\Shared\FhirCodeGenWeb.Shared.csproj", "{B63E3D4F-186B-4C17-BA94-BC976775094E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FhirCodeGenWeb.Shared", "src\FhirCodeGenWeb\Shared\FhirCodeGenWeb.Shared.csproj", "{B63E3D4F-186B-4C17-BA94-BC976775094E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
