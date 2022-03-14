@@ -144,19 +144,20 @@ public class FhirElementType
     /// <param name="name">          The code.</param>
     /// <param name="type">          The type.</param>
     /// <param name="url">           The URL.</param>
-    /// <param name="targetProfiles">The target profiles.</param>
+    /// <param name="profiles">      The target profiles.</param>
     /// <param name="typeProfiles">  The type profiles.</param>
-    private FhirElementType(
+    [System.Text.Json.Serialization.JsonConstructor]
+    public FhirElementType(
         string name,
         string type,
         Uri url,
-        Dictionary<string, FhirElementProfile> targetProfiles,
+        Dictionary<string, FhirElementProfile> profiles,
         Dictionary<string, FhirElementProfile> typeProfiles)
     {
         Name = name;
         Type = type;
         URL = url;
-        _targetProfiles = targetProfiles;
+        _targetProfiles = profiles;
         _typeProfiles = typeProfiles;
     }
 

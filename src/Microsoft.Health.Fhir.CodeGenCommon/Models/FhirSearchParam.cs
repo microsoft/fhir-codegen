@@ -28,6 +28,7 @@ public class FhirSearchParam : ICloneable
     /// <param name="xpath">         The xpath.</param>
     /// <param name="xpathUsage">    The xpath usage.</param>
     /// <param name="expression">    The expression.</param>
+    [System.Text.Json.Serialization.JsonConstructor]
     public FhirSearchParam(
         string id,
         Uri url,

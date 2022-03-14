@@ -31,6 +31,7 @@ public class FhirElementProfile
     /// </summary>
     /// <param name="name">The name.</param>
     /// <param name="url"> The URL.</param>
+    [System.Text.Json.Serialization.JsonConstructor]
     public FhirElementProfile(
         string name,
         Uri url)

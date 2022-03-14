@@ -54,13 +54,13 @@ public class FhirComplex : FhirTypeBase
             comment,
             validationRegEx)
     {
-        _components = new Dictionary<string, FhirComplex>();
-        _elements = new Dictionary<string, FhirElement>();
-        _searchParameters = new Dictionary<string, FhirSearchParam>();
-        _typeOperations = new Dictionary<string, FhirOperation>();
-        _instanceOperations = new Dictionary<string, FhirOperation>();
-        _constraints = new List<FhirConstraint>();
-        _contextElements = new ();
+        _components = new();
+        _elements = new();
+        _searchParameters = new();
+        _typeOperations = new();
+        _instanceOperations = new();
+        _constraints = new();
+        _contextElements = new();
         SliceName = string.Empty;
         ExplicitName = explicitName;
     }
@@ -146,6 +146,58 @@ public class FhirComplex : FhirTypeBase
             validationRegEx)
     {
         BaseTypeName = baseTypeName;
+    }
+
+
+    /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
+    [System.Text.Json.Serialization.JsonConstructor]
+    public FhirComplex(
+        string id,
+        string path,
+        string name,
+        string explicitName,
+        Uri url,
+        string standardStatus,
+        bool isExperimental,
+        string baseTypeName,
+        string shortDescription,
+        string purpose,
+        string comment,
+        string validationRegEx,
+        bool isAbstract,
+        bool isPlaceholder,
+        string sliceName,
+        Dictionary<string, FhirElement> elements,
+        Dictionary<string, FhirComplex> components,
+        Dictionary<string, FhirSearchParam> searchParameters,
+        Dictionary<string, FhirOperation> typeOperations,
+        Dictionary<string, FhirOperation> instanceOperations,
+        List<string> contextElements,
+        List<FhirConstraint> constraints)
+    : this(
+        id,
+        path,
+        explicitName,
+        url,
+        standardStatus,
+        isExperimental,
+        shortDescription,
+        purpose,
+        comment,
+        validationRegEx,
+        baseTypeName)
+    {
+        IsAbstract = isAbstract;
+        IsPlaceholder = isPlaceholder;
+        SliceName = sliceName;
+
+        _elements = elements ?? new();
+        _components = components ?? new();
+        _searchParameters = searchParameters ?? new();
+        _typeOperations = typeOperations ?? new();
+        _instanceOperations = instanceOperations ?? new();
+        _contextElements = contextElements ?? new();
+        _constraints = constraints ?? new();
     }
 
     /// <summary>Values that represent fhir complex types.</summary>

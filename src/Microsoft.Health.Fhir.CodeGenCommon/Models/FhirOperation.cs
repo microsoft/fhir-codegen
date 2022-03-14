@@ -26,6 +26,7 @@ public class FhirOperation : ICloneable
     /// <param name="resourceTypes">    A list of types of the resources.</param>
     /// <param name="parameters">       The allowed parameters to this operation.</param>
     /// <param name="isExperimental">   True if is experimental, false if not.</param>
+    [System.Text.Json.Serialization.JsonConstructor]
     public FhirOperation(
         string id,
         Uri url,
@@ -37,7 +38,7 @@ public class FhirOperation : ICloneable
         bool definedOnInstance,
         string code,
         string comment,
-        IEnumerable<string> resourceTypes,
+        List<string> resourceTypes,
         List<FhirParameter> parameters,
         bool isExperimental)
     {

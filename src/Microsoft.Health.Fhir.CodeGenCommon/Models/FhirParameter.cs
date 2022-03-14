@@ -49,6 +49,33 @@ public class FhirParameter
         }
     }
 
+    /// <summary>Initializes a new instance of the <see cref="FhirParameter"/> class.</summary>
+    /// <param name="name">         The name.</param>
+    /// <param name="use">          The use.</param>
+    /// <param name="min">          The minimum value.</param>
+    /// <param name="max">          The maximum value.</param>
+    /// <param name="documentation">The documentation.</param>
+    /// <param name="valueType">    The type.</param>
+    /// <param name="fieldOrder">   The field order.</param>
+    [System.Text.Json.Serialization.JsonConstructor]
+    public FhirParameter(
+        string name,
+        string use,
+        int min,
+        int? max,
+        string documentation,
+        string valueType,
+        int fieldOrder)
+    {
+        Name = name;
+        Use = use;
+        Min = min;
+        Documentation = documentation;
+        ValueType = valueType;
+        FieldOrder = fieldOrder;
+        Max = max;
+    }
+
     /// <summary>Gets the name.</summary>
     /// <value>The name.</value>
     public string Name { get; }

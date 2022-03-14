@@ -63,7 +63,12 @@ else if (packageArtifacts.Any())
             {
                 <tr>
                     <td>@artifactRecord.ArtifactClass.ToString()</td>
-                    <td>@artifactRecord.Id</td>
+                    <td>
+                        <NavLink class="nav-link" href="@LinkForArtifact(artifactRecord)">
+                            @artifactRecord.Id
+                        </NavLink>
+                    </td>
+                    @*<td>@artifactRecord.Id</td>*@
                     <td>@artifactRecord.Url</td>
                 </tr>
             }
@@ -141,13 +146,16 @@ else
     /// <param name="e">     Location changed event information.</param>
     private async void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
     {
-        loaded = false;
+        if (e.Location.ToLowerInvariant().Contains("/browsePackage"))
+        {
+            loaded = false;
 
-        // manually flag state has changed in case we are in a callback / async context
-        await InvokeAsync(() => StateHasChanged());
+            // manually flag state has changed in case we are in a callback / async context
+            await InvokeAsync(() => StateHasChanged());
 
-        // reload our artifact index
-        await ArtifactService.UpdateArtifactsAsync(PackageName, Version);
+            // reload our artifact index
+            await ArtifactService.UpdateArtifactsAsync(PackageName, Version);
+        }
     }
 
     /// <summary>Toggle show state.</summary>
@@ -253,6 +261,11 @@ else
                     (record.Id.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
                     (record.Url.ToString().Contains(filter, StringComparison.OrdinalIgnoreCase)))));
         }
+    }
+
+    private string LinkForArtifact(FhirArtifactRecord record)
+    {
+        return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&id={record.Id}";
     }
 
     /// <summary>Gets button class.</summary>

@@ -168,6 +168,75 @@ public class FhirElement : FhirTypeBase
         FiveWs = fiveWs;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirElement"/> class.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonConstructor]
+    public FhirElement(
+        string id,
+        string path,
+        string explicitName,
+        Uri url,
+        int fieldOrder,
+        string shortDescription,
+        string purpose,
+        string comment,
+        string validationRegEx,
+        string baseTypeName,
+        int cardinalityMin,
+        int cardinalityMax,
+        bool isInherited,
+        bool modifiesParent,
+        bool hidesParent,
+        bool isModifier,
+        bool isSummary,
+        string codesName,
+        List<string> codes,
+        string valueSet,
+        string bindingStrength,
+        ElementDefinitionBindingStrength? valueSetBindingStrength,
+        Dictionary<string, FhirElementType> elementTypes,
+        string defaultFieldName,
+        object defaultFieldValue,
+        Dictionary<string, FhirSlicing> slicing,
+        string fixedFieldName,
+        object fixedFieldValue,
+        string fiveWs)
+        : base(
+            id,
+            path,
+            url,
+            string.Empty,
+            false,
+            shortDescription,
+            purpose,
+            comment,
+            validationRegEx,
+            baseTypeName)
+    {
+        ExplicitName = explicitName;
+        FieldOrder = fieldOrder;
+        CardinalityMin = cardinalityMin;
+        CardinalityMax = cardinalityMax;
+        IsInherited = isInherited;
+        ModifiesParent = modifiesParent;
+        HidesParent = hidesParent;
+        IsModifier = isModifier;
+        IsSummary = isSummary;
+        CodesName = codesName;
+        _codes = codes ?? new();
+        ValueSet = valueSet;
+        BindingStrength = bindingStrength;
+        ValueSetBindingStrength = valueSetBindingStrength;
+        _elementTypes = elementTypes ?? new();
+        DefaultFieldName = defaultFieldName;
+        DefaultFieldValue = defaultFieldValue;
+        _slicing = slicing ?? new();
+        FixedFieldName = fixedFieldName;
+        FixedFieldValue = fixedFieldValue;
+        FiveWs = fiveWs;
+    }
+
     /// <summary>Values that represent element definition binding strengths.</summary>
     public enum ElementDefinitionBindingStrength : int
     {
@@ -192,8 +261,6 @@ public class FhirElement : FhirTypeBase
     public string ExplicitName { get; }
 
     /// <summary>Gets the cardinality minimum.</summary>
-    ///
-    /// <value>The cardinality minimum.</value>
     public int CardinalityMin { get; }
 
     /// <summary>Gets the cardinality maximum, -1 for unbounded (e.g., *).</summary>

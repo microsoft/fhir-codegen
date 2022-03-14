@@ -1,0 +1,110 @@
+﻿@using Microsoft.Health.Fhir.CodeGenCommon.Models
+
+@if (IncludeTableWrapper == true)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-2">Element</th>
+                <th class="col-md-1">Type</th>
+                <th class="col-md-1">Card.</th>
+                <th class="col-md-3">Short</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ObjectToDisplay != null)
+            {
+                @foreach(FhirElement element in ObjectToDisplay.Elements.Values)
+                {
+                    <tr>
+                        <td>@element.Id</td>
+                        @if (!string.IsNullOrEmpty(element.BaseTypeName))
+                        {
+                            <td>@element.BaseTypeName</td>
+                        }
+                        else
+                        {
+                            <td>@string.Join(", ", element.ElementTypes.Values.Select(et => et.Name))</td>
+                        }
+                        <td>@element.FhirCardinality</td>
+                        <td>@element.ShortDescription</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4">
+                            <div>
+                                @if (element.IsSummary)
+                                {
+                                    <p>In Summary</p>
+                                }
+                                <p>@element.Comment</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    if ((!string.IsNullOrEmpty(element.BaseTypeName)) &&
+                        (ObjectToDisplay.Components.ContainsKey(element.BaseTypeName)))
+                    {
+                        <FhirComplexTable
+                            ObjectToDisplay=@ObjectToDisplay.Components[element.BaseTypeName]
+                            IncludeTableWrapper=false />
+                    }
+                }
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    @if (ObjectToDisplay != null)
+    {
+        @foreach(FhirElement element in ObjectToDisplay.Elements.Values)
+        {
+            <tr>
+                <td>@element.Id</td>
+                @if (!string.IsNullOrEmpty(element.BaseTypeName))
+                {
+                    <td>@element.BaseTypeName</td>
+                }
+                else
+                {
+                    <td>@string.Join(", ", element.ElementTypes.Values.Select(et => et.Name))</td>
+                }
+                <td>@element.FhirCardinality</td>
+                <td>@element.ShortDescription</td>
+            </tr>
+
+            <tr>
+                <td colspan="4">
+                    <div>
+                        @if (element.IsSummary)
+                        {
+                            <p>In Summary</p>
+                        }
+                        <p>@element.Comment</p>
+                    </div>
+                </td>
+            </tr>
+
+            if ((!string.IsNullOrEmpty(element.BaseTypeName)) &&
+                (ObjectToDisplay.Components.ContainsKey(element.BaseTypeName)))
+            {
+                <FhirComplexTable
+                    ObjectToDisplay=@ObjectToDisplay.Components[element.BaseTypeName]
+                    IncludeTableWrapper=false />
+            }
+        }
+    }
+}
+
+@code {
+    /// <summary>Gets or sets the object to display.</summary>
+    [Parameter]
+    public FhirComplex? ObjectToDisplay { get; set; } = null;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the table wrapper should be included.
+    /// </summary>
+    [Parameter]
+    public bool IncludeTableWrapper { get; set; } = true;
+}
