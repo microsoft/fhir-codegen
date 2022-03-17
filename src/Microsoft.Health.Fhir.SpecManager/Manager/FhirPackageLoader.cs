@@ -12,6 +12,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager;
 /// <summary>A FHIR package loader (e.g., hl7.fhir.us.core).</summary>
 public static class FhirPackageLoader
 {
+    /// <summary>(Immutable) The definitional resource types to load.</summary>
+    public static readonly string[] DefinitionalResourceTypesToLoad = new string[]
+    {
+        "CodeSystem",
+        "ValueSet",
+        "StructureDefinition",
+        "SearchParameter",
+        "OperationDefinition",
+    };
+
     /// <summary>Loads.</summary>
     /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
     ///  null.</exception>

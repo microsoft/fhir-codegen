@@ -871,6 +871,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     sd.Id,
                     sd.Name,
                     string.Empty,
+                    sd.Type,
                     new Uri(sd.Url),
                     sd.Status,
                     sd.Experimental == true,

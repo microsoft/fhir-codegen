@@ -1,0 +1,191 @@
+﻿@using FhirCodeGenBlazor.Models
+@using FhirCodeGenBlazor.Services
+@using Microsoft.Health.Fhir.CodeGenCommon.Models
+@inject ISpecManagerWebService SpecService
+
+@if (ObjectToDisplay != null)
+{
+    @foreach(FhirElement element in ObjectToDisplay.Elements.Values)
+    {
+        <tr class="table-active">
+            <td class="fw-bold">@ElementName(element)</td>
+            <td>
+                @if (element.IsModifier)
+                {
+                    <span data-bs-toggle="tooltip" title="Modifier Element">⁈ </span>
+                }
+
+                @if (element.IsSummary)
+                {
+                    <span data-bs-toggle="tooltip" title="Included in Summary">∑ </span>
+                }
+            </td>
+            <td class="text-wrap">@GetElementTypeString(element)</td>
+            <td>@element.FhirCardinality</td>
+            <td>@element.ShortDescription</td>
+        </tr>
+
+        <tr>
+            <td colspan="5">
+                <div class="small">
+                    <p>@element.Comment</p>
+
+                    @if (!string.IsNullOrEmpty(element.ValueSet))
+                    {
+                        <p>Bound to: @element.ValueSet (@element.ValueSetBindingStrength)</p>
+                    }
+
+                    @if (!string.IsNullOrEmpty(element.ValidationRegEx))
+                    {
+                        <p>Validation RegEx: @element.ValidationRegEx</p>
+                    }
+                </div>
+            </td>
+        </tr>
+
+        @if (CanDrillDown(element, out string name))
+        {
+            if (ObjectToDisplay.Components.ContainsKey(name))
+            {
+                <FhirComplexTableRows
+                    ObjectToDisplay=@ObjectToDisplay.Components[name]
+                    ParentNamePrefix=@NameForChildren(element)
+                    ExpandToDepth=@ExpandToDepth
+                    Depth=@Depth
+                    />
+            }
+            else if ((Depth < ExpandToDepth) &&
+                     (SpecService[directive].TryGetArtifact(name, out object artifact, out FhirArtifactClassEnum artifactClass)) &&
+                     (artifact != null))
+            {
+                switch (artifact)
+                {
+                    case FhirComplex complex:
+                        <FhirComplexTableRows
+                            ObjectToDisplay=@complex
+                            ParentNamePrefix=@NameForChildren(element)
+                            ExpandToDepth=@ExpandToDepth
+                            Depth=@(Depth + 1)
+                            />
+                        break;
+                }
+            }
+        }
+    }
+}
+
+@code {
+    /// <summary>Gets or sets the package and version provider.</summary>
+    [CascadingParameter]
+    public IPackageVersionProvider? PackageAndVersionProvider { get; set; } = null;
+
+    /// <summary>Gets or sets the object to display.</summary>
+    [Parameter]
+    public FhirComplex? ObjectToDisplay { get; set; } = null;
+
+    /// <summary>Gets or sets the parent name prefix.</summary>
+    [Parameter]
+    public string ParentNamePrefix { get; set; } = string.Empty;
+
+    /// <summary>Gets or sets the depth of the expand to.</summary>
+    [Parameter]
+    public int ExpandToDepth { get; set; } = 0;
+
+    /// <summary>Gets or sets the depth.</summary>
+    [Parameter]
+    public int Depth { get; set; } = 0;
+
+    /// <summary>The directive.</summary>
+    private string directive = string.Empty;
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        if (PackageAndVersionProvider != null)
+        {
+            directive = PackageAndVersionProvider.PackageName + "#" + PackageAndVersionProvider.Version;
+        }
+    }
+
+    /// <summary>Element name.</summary>
+    /// <param name="element">The element.</param>
+    /// <returns>A string.</returns>
+    private string ElementName(FhirElement element)
+    {
+        if (!string.IsNullOrEmpty(element.ExplicitName))
+        {
+            return ParentNamePrefix + "." + element.ExplicitName;
+        }
+
+        return ParentNamePrefix + "." + element.Name;
+    }
+
+    /// <summary>Name for children.</summary>
+    /// <param name="element">The element.</param>
+    /// <returns>A string.</returns>
+    private string NameForChildren(FhirElement element)
+    {
+        if (element.CardinalityMax != 1)
+        {
+            return ElementName(element) + "[]";
+        }
+
+        return ElementName(element);
+    }
+
+    /// <summary>Determine if we can drill down.</summary>
+    /// <param name="element">The element.</param>
+    /// <param name="name">   [out] The name.</param>
+    /// <returns>True if we can drill down, false if not.</returns>
+    private bool CanDrillDown(FhirElement element, out string name)
+    {
+        if (!string.IsNullOrEmpty(element.BaseTypeName))
+        {
+            name = element.BaseTypeName;
+            return true;
+        }
+
+        if (element.ElementTypes.Count == 1)
+        {
+            name = element.ElementTypes.Values.First().Name;
+            return true;
+        }
+
+        name = string.Empty;
+        return false;
+    }
+
+    /// <summary>Links for artifact.</summary>
+    /// <param name="record">The record.</param>
+    /// <returns>A string.</returns>
+    private string LinkForArtifact(FhirArtifactRecord record)
+    {
+        return $"/viewArtifact/?packageName={PackageAndVersionProvider?.PackageName}&version={PackageAndVersionProvider?.Version}&id={record.Id}";
+    }
+
+    /// <summary>Gets element type string.</summary>
+    /// <param name="element">The element.</param>
+    /// <returns>The element type string.</returns>
+    private string GetElementTypeString(FhirElement element)
+    {
+        if (element.BaseTypeName.Equals(element.Id, StringComparison.Ordinal))
+        {
+            return "BackboneElement";
+        }
+
+        if (!string.IsNullOrEmpty(element.BaseTypeName))
+        {
+            return element.BaseTypeName;
+        }
+
+        return string.Join(
+            ", ",
+            element.ElementTypes.Values.Select(
+                et => et.Profiles.Any()
+                    ? $"{et.Name}( {string.Join(" | ", et.Profiles.Values.Select(p => p.Name))} )"
+                    : et.Name));
+    }
+}

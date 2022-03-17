@@ -3,10 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>FHIR Slicing information.</summary>
@@ -113,6 +109,38 @@ public class FhirSlicing
         {
             _slicesByName.Add(slice.SliceName, slice);
         }
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirSlicing"/> class.
+    /// </summary>
+    /// <param name="definedById">       The identifier of the defined by.</param>
+    /// <param name="definedByUrl">      The defined by URL.</param>
+    /// <param name="description">       The description.</param>
+    /// <param name="isOrdered">         True if ordered, false if not.</param>
+    /// <param name="fieldOrder">        The field order.</param>
+    /// <param name="slicingRules">      Rules associated with this slicing group.</param>
+    /// <param name="discriminatorRules">The discriminator rules for this slicing group.</param>
+    /// <param name="slices">            The slices.</param>
+    [System.Text.Json.Serialization.JsonConstructor]
+    public FhirSlicing(
+        string definedById,
+        Uri definedByUrl,
+        string description,
+        bool isOrdered,
+        int fieldOrder,
+        FhirSlicingRule slicingRules,
+        Dictionary<string, FhirSliceDiscriminatorRule> discriminatorRules,
+        List<FhirComplex> slices)
+    {
+        DefinedById = definedById;
+        DefinedByUrl = definedByUrl;
+        Description = description;
+        IsOrdered = isOrdered;
+        FieldOrder = fieldOrder;
+        SlicingRules = slicingRules;
+        _rules = discriminatorRules;
+        _slices = slices;
     }
 
     /// <summary>Values that represent how slices are interpreted when evaluating an instance.</summary>

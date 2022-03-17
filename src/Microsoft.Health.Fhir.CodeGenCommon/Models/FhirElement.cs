@@ -3,9 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -401,14 +398,14 @@ public class FhirElement : FhirTypeBase
                 Id,
                 Path,
                 ExplicitName,
+                BaseTypeName,
                 URL,
                 StandardStatus,
                 false,
                 ShortDescription,
                 Purpose,
                 Comment,
-                ValidationRegEx,
-                BaseTypeName);
+                ValidationRegEx);
         slice.SliceName = sliceName;
 
         // create a new complex type from the property

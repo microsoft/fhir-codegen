@@ -1,0 +1,81 @@
+﻿@using Microsoft.Health.Fhir.CodeGenCommon.Models;
+@using FhirCodeGenBlazor.Services;
+@inject IPackageManagerWebService PackageService
+@implements IDisposable
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">FhirCodeGenWeb</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> FHIR Cache
+            </NavLink>
+        </div>
+        @foreach (PackageCacheRecord record in PackageService.Values)
+        {
+            if (record.PackageState != PackageLoadStateEnum.Loaded)
+            {
+                continue;
+            }
+
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="@LinkForPackage(record.Details.Name, record.Details.Version)" Match="NavLinkMatch.All">
+                    <span class="oi oi-box" aria-hidden="true"></span>
+                    <span class="text-truncate">@string.Format("{0}#{1}",record.Details.Name, record.Details.Version)</span>
+                </NavLink>
+            </div>
+        }
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    /// <summary>Links for package.</summary>
+    /// <param name="name">   The name.</param>
+    /// <param name="version">The version.</param>
+    /// <returns>A string.</returns>
+    private string LinkForPackage(string name, string version)
+    {
+        return $"/browsePackage?packageName={name}&version={version}";
+    }
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        PackageService.OnChanged += PackageServiceChanged;
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        PackageService.OnChanged -= PackageServiceChanged;
+    }
+
+    /// <summary>Handles the package service changed event.</summary>
+    /// <param name="e">Event information to send to registered event handlers.</param>
+    private void PackageServiceChanged(object? sender, EventArgs e)
+    {
+        InvokeAsync(() => StateHasChanged());
+    }
+}

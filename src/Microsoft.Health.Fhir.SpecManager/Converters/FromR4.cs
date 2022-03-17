@@ -894,11 +894,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     definition = sd.Snapshot.Element[0].Definition;
                 }
 
+                //if (sd.Url == "http://hl7.org/fhir/StructureDefinition/bp")
+                //{
+                //    Console.Write("");
+                //}
+
                 // create a new complex type object for this type or resource
                 FhirComplex complex = new FhirComplex(
                     sd.Id,
                     sd.Name,
                     string.Empty,
+                    sd.Type,
                     new Uri(sd.Url),
                     sd.Status,
                     sd.Experimental == true,
@@ -912,7 +918,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // check for a base definition
                 if (!string.IsNullOrEmpty(sd.BaseDefinition))
                 {
-                    complex.BaseTypeName = sd.BaseDefinition.Substring(sd.BaseDefinition.LastIndexOf('/') + 1);
+                    if (sd.BaseDefinition.StartsWith("http://hl7.org/fhir/StructureDefinition/"))
+                    {
+                        complex.BaseTypeName = sd.BaseDefinition.Substring(40);
+                    }
+                    else
+                    {
+                        complex.BaseTypeName = sd.BaseDefinition;
+                    }
                 }
                 else
                 {

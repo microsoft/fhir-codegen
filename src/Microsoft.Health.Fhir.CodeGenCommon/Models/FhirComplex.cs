@@ -25,6 +25,7 @@ public class FhirComplex : FhirTypeBase
     /// <param name="id">              The id of this resource/datatype/extension.</param>
     /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
     /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
+    /// <param name="baseTypeName">    Base type of this complex structure, if provided.</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="standardStatus">  The standard status.</param>
     /// <param name="isExperimental">  If this complex resource is flagged as experimental.</param>
@@ -36,6 +37,7 @@ public class FhirComplex : FhirTypeBase
         string id,
         string path,
         string explicitName,
+        string baseTypeName,
         Uri url,
         string standardStatus,
         bool isExperimental,
@@ -52,7 +54,8 @@ public class FhirComplex : FhirTypeBase
             shortDescription,
             purpose,
             comment,
-            validationRegEx)
+            validationRegEx,
+            baseTypeName)
     {
         _components = new();
         _elements = new();
@@ -71,6 +74,7 @@ public class FhirComplex : FhirTypeBase
     /// <param name="id">              The id of this resource/data type/extension.</param>
     /// <param name="path">            The dot-notation path to this resource/data type/extension.</param>
     /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
+    /// <param name="baseTypeName">    Base type name for this complex structure, if provided.</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="standardStatus">  The standard status.</param>
     /// <param name="isExperimental">  If this complex type is marked experimental.</param>
@@ -84,6 +88,7 @@ public class FhirComplex : FhirTypeBase
         string id,
         string path,
         string explicitName,
+        string baseTypeName,
         Uri url,
         string standardStatus,
         bool isExperimental,
@@ -97,6 +102,7 @@ public class FhirComplex : FhirTypeBase
             id,
             path,
             explicitName,
+            baseTypeName,
             url,
             standardStatus,
             isExperimental,
@@ -108,46 +114,6 @@ public class FhirComplex : FhirTypeBase
         _contextElements = contextElements;
         IsAbstract = isAbstract;
     }
-
-    /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
-    /// <param name="id">              The id of this resource/datatype/extension.</param>
-    /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
-    /// <param name="url">             URL of the resource.</param>
-    /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
-    /// <param name="standardStatus">  The standard status.</param>
-    /// <param name="isExperimental">  If this complex structure is considered experimental.</param>
-    /// <param name="shortDescription">Information describing the short.</param>
-    /// <param name="purpose">         The purpose.</param>
-    /// <param name="comment">         The comment.</param>
-    /// <param name="validationRegEx"> The validation RegEx.</param>
-    /// <param name="baseTypeName">    Name of the base type.</param>
-    public FhirComplex(
-        string id,
-        string path,
-        string explicitName,
-        Uri url,
-        string standardStatus,
-        bool isExperimental,
-        string shortDescription,
-        string purpose,
-        string comment,
-        string validationRegEx,
-        string baseTypeName)
-        : this(
-            id,
-            path,
-            explicitName,
-            url,
-            standardStatus,
-            isExperimental,
-            shortDescription,
-            purpose,
-            comment,
-            validationRegEx)
-    {
-        BaseTypeName = baseTypeName;
-    }
-
 
     /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
     [System.Text.Json.Serialization.JsonConstructor]
@@ -178,14 +144,14 @@ public class FhirComplex : FhirTypeBase
         id,
         path,
         explicitName,
+        baseTypeName,
         url,
         standardStatus,
         isExperimental,
         shortDescription,
         purpose,
         comment,
-        validationRegEx,
-        baseTypeName)
+        validationRegEx)
     {
         IsAbstract = isAbstract;
         IsPlaceholder = isPlaceholder;
@@ -337,14 +303,14 @@ public class FhirComplex : FhirTypeBase
                 property.Id,
                 property.Path,
                 property.ExplicitName,
+                elementType,
                 property.URL,
                 property.StandardStatus,
                 property.IsExperimental,
                 property.ShortDescription,
                 property.Purpose,
                 property.Comment,
-                property.ValidationRegEx,
-                elementType));
+                property.ValidationRegEx));
 
         // change the element to point at the new area
         _elements[path].BaseTypeName = property.Path;
@@ -609,6 +575,7 @@ public class FhirComplex : FhirTypeBase
                 Id,
                 Path,
                 ExplicitName,
+                BaseTypeName,
                 URL,
                 StandardStatus,
                 IsExperimental,

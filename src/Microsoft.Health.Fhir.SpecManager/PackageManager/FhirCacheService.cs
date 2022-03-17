@@ -50,6 +50,9 @@ public class FhirCacheService : IDisposable
     /// <summary>Package versions, by package name.</summary>
     private Dictionary<string, List<string>> _versionsByName;
 
+    /// <summary>Occurs when On Changed.</summary>
+    public event EventHandler<EventArgs> OnChanged;
+
     /// <summary>
     /// Prevents a default instance of the <see cref="FhirCacheService"/> class from being created.
     /// </summary>
@@ -810,6 +813,8 @@ public class FhirCacheService : IDisposable
             PackageName = string.IsNullOrEmpty(resolvedName) ? _packagesByDirective[directive].PackageName : resolvedName,
             Version = string.IsNullOrEmpty(resolvedVersion) ? _packagesByDirective[directive].Version : resolvedVersion,
         };
+
+        StateHasChanged();
     }
 
     /// <summary>
@@ -1017,5 +1022,16 @@ public class FhirCacheService : IDisposable
         // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
         Dispose(disposing: true);
         GC.SuppressFinalize(this);
+    }
+
+    /// <summary>State has changed.</summary>
+    public void StateHasChanged()
+    {
+        EventHandler<EventArgs> handler = OnChanged;
+
+        if (handler != null)
+        {
+            handler(this, new());
+        }
     }
 }

@@ -52,6 +52,9 @@ public class FhirManager : IDisposable
     /// <summary>Gets the current.</summary>
     public static FhirManager Current => _singleton;
 
+    /// <summary>Gets the information by directive.</summary>
+    public Dictionary<string, FhirVersionInfo> InfoByDirective => _loadedInfoByDirective;
+
     /// <summary>Initializes the FhirManager.</summary>
     public static void Init()
     {

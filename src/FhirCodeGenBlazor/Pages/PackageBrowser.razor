@@ -1,0 +1,267 @@
+﻿@page "/browsePackage"
+
+@using FhirCodeGenBlazor.Models;
+@using FhirCodeGenBlazor.Services;
+@using Microsoft.Health.Fhir.CodeGenCommon.Models;
+@inject NavigationManager NavigationManager
+@inject ISpecManagerWebService SpecService
+@implements IDisposable
+
+<PageTitle>Package Browser</PageTitle>
+@if (string.IsNullOrEmpty(additionalHeaderText))
+{
+    <h3>FHIR Package Browser</h3>
+}
+else
+{
+    <h3>FHIR Package Browser : @additionalHeaderText</h3>
+}
+
+@if (string.IsNullOrEmpty(directive))
+{
+    <p><em>This page requires a package name and version, please select...</em></p>
+}
+else if (SpecService[directive].ArtifactRecordsByClass.Any())
+{
+    <p>
+        @foreach((FhirArtifactClassEnum classEnum, bool visible) in showArtifactClass)
+        {
+            <button
+                type="button"
+                class=@GetButtonClass(visible)
+                @onclick="() => ToggleShowState(classEnum)"
+                >
+                @classEnum.ToString() (@SpecService[directive].ArtifactRecordsByClass[classEnum].Count())
+            </button>
+        }
+    </p>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Filter</span>
+        <input
+            type="text"
+            placeholder="Filter"
+            aria-label="Filter"
+            aria-describedby="basic-addon1"
+            @bind-value="artifactFilterText"
+            @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredArtifacts(e?.Value?.ToString() ?? "")))"
+            />
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-2">Artifact Type</th>
+                <th class="col-md-2">Id</th>
+                <th class="col-md-4">Url</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (FhirArtifactRecord artifactRecord in filteredArtifacts)
+            {
+                <tr>
+                    <td>@artifactRecord.ArtifactClass.ToString()</td>
+                    <td>
+                        <NavLink class="nav-link" href="@LinkForArtifact(artifactRecord)">
+                            @artifactRecord.Id
+                        </NavLink>
+                    </td>
+                    @*<td>@artifactRecord.Id</td>*@
+                    <td>@artifactRecord.Url</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p><em>This package contains no supported artifacts.</em></p>
+}
+
+@code {
+    private string additionalHeaderText = "";
+
+    private List<FhirArtifactRecord> filteredArtifacts = new();
+
+    private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new();
+
+    /// <summary>Specifies the filter.</summary>
+    private string artifactFilterText = "";
+
+    /// <summary>Gets or sets the package name.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "packageName")]
+    public string PackageName { get; set; } = "";
+
+    /// <summary>Gets or sets the package version.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "version")]
+    public string Version { get; set; } = "";
+
+    /// <summary>The directive.</summary>
+    private string directive = string.Empty;
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        directive = PackageName + "#" + Version;
+        NavigationManager.LocationChanged += HandleLocationChanged;
+
+        Task.Run(() => RebuildFilteredArtifacts(string.Empty, true));
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
+    }
+
+    /// <summary>Artifacts updated.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Artifact index changed event information.</param>
+    private void ArtifactsUpdated(object? sender, ArtifactIndexChangedEventArgs e)
+    {
+        if ((e.PackageName == PackageName) && (e.Version == Version))
+        {
+            RebuildFilteredArtifacts(artifactFilterText, true);
+        }
+    }
+
+    /// <summary>Handles the location changed.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Location changed event information.</param>
+    private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        if (e.Location.ToLowerInvariant().Contains("/browsepackage"))
+        {
+            directive = PackageName + "#" + Version;
+
+            Task.Run(() => RebuildFilteredArtifacts(artifactFilterText, true));
+        }
+    }
+
+    /// <summary>Toggle show state.</summary>
+    /// <param name="classEnum">The class enum.</param>
+    private void ToggleShowState(FhirArtifactClassEnum classEnum)
+    {
+        showArtifactClass[classEnum] = !showArtifactClass[classEnum];
+        InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText));
+    }
+
+    /// <summary>Rebuild filtered artifacts.</summary>
+    /// <param name="appliedFilter">            (Optional) A filter specifying the applied.</param>
+    /// <param name="checkShownArtifactClasses">(Optional) True to check show artifact classes.</param>
+    private async void RebuildFilteredArtifacts(
+        string appliedFilter = "",
+        bool checkShownArtifactClasses = false)
+    {
+        if (checkShownArtifactClasses)
+        {
+            foreach (FhirArtifactClassEnum classEnum in SpecService[directive].ArtifactRecordsByClass.Keys)
+            {
+                if (!showArtifactClass.ContainsKey(classEnum))
+                {
+                    switch (classEnum)
+                    {
+                        case FhirArtifactClassEnum.Resource:
+                            showArtifactClass.Add(classEnum, true);
+                            break;
+
+                        default:
+                            showArtifactClass.Add(classEnum, false);
+                            break;
+                    }
+                }
+            }
+
+            foreach (FhirArtifactClassEnum classEnum in showArtifactClass.Keys)
+            {
+                if (!SpecService[directive].ArtifactRecordsByClass.ContainsKey(classEnum))
+                {
+                    showArtifactClass.Remove(classEnum);
+                }
+            }
+        }
+
+        artifactFilterText = appliedFilter;
+
+        if (SpecService[directive].ArtifactRecordsByClass == null)
+        {
+            filteredArtifacts = new();
+
+            // manually flag state has changed in case we are in a callback / async context
+            await InvokeAsync(() => StateHasChanged());
+
+            return;
+        }
+
+        List<FhirArtifactRecord> artifacts = new();
+
+        foreach ((FhirArtifactClassEnum classEnum, IEnumerable<FhirArtifactRecord> records) in SpecService[directive].ArtifactRecordsByClass)
+        {
+            AppendFilteredArtifacts(classEnum, appliedFilter, ref artifacts, records);
+        }
+
+        artifacts.Sort((a, b) => a.Id.CompareTo(b.Id));
+        filteredArtifacts = artifacts;
+
+        // manually flag state has changed in case we are in a callback / async context
+        await InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Appends a filtered artifacts.</summary>
+    /// <param name="include">  True to include, false to exclude.</param>
+    /// <param name="filter">   Specifies the filter.</param>
+    /// <param name="artifacts">[in,out] The artifacts.</param>
+    /// <param name="dataClass">The data class.</param>
+    /// <param name="data">     The data.</param>
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    private void AppendFilteredArtifacts(
+        FhirArtifactClassEnum classEnum,
+        string filter,
+        ref List<FhirArtifactRecord> artifacts,
+        IEnumerable<FhirArtifactRecord> data)
+    {
+        if (showArtifactClass[classEnum] != true)
+        {
+            return;
+        }
+
+        if (string.IsNullOrEmpty(filter))
+        {
+            artifacts.AddRange(data);
+        }
+        else
+        {
+            artifacts.AddRange(
+                data.Where(record =>
+                    (record.Id.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
+                    (record.Url.ToString().Contains(filter, StringComparison.OrdinalIgnoreCase)))));
+        }
+    }
+
+    /// <summary>Links for artifact.</summary>
+    /// <param name="record">The record.</param>
+    /// <returns>A string.</returns>
+    private string LinkForArtifact(FhirArtifactRecord record)
+    {
+        return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&url={record.Url}";
+    }
+
+    /// <summary>Gets button class.</summary>
+    /// <param name="enabled">True to enable, false to disable.</param>
+    /// <returns>The button class.</returns>
+    private string GetButtonClass(bool enabled)
+    {
+        if (enabled)
+        {
+            return "btn btn-primary m-1";
+        }
+
+        return "btn btn-outline-primary m-1";
+    }
+}

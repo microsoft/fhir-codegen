@@ -3,10 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A fhir slice discriminator rule.</summary>
@@ -53,13 +49,14 @@ public class FhirSliceDiscriminatorRule
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirSliceDiscriminatorRule"/> class.
     /// </summary>
-    /// <param name="type">The type.</param>
+    /// <param name="discriminatorType">The type.</param>
     /// <param name="path">The full pathname of the file.</param>
+    [System.Text.Json.Serialization.JsonConstructor]
     public FhirSliceDiscriminatorRule(
-        FhirSliceDiscriminatorType type,
+        FhirSliceDiscriminatorType discriminatorType,
         string path)
     {
-        DiscriminatorType = type;
+        DiscriminatorType = discriminatorType;
         Path = path;
     }
 
