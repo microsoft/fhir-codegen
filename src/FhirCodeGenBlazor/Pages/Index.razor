@@ -62,8 +62,8 @@ else
                             break;
                     }
                     <td>@record.CacheDirective</td>
-                    <td>@string.Join(',', record.Details.FhirVersions)</td>
-                    <td>@record.Details.Title</td>
+                    <td>@string.Join(',', record.Details?.FhirVersions ?? new string[0])</td>
+                    <td>@record.Details?.Title</td>
                     <td>@DependenciesForPackage(record)</td>
                 </tr>
             }

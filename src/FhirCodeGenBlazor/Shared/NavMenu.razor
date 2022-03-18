@@ -21,7 +21,8 @@
         </div>
         @foreach (PackageCacheRecord record in PackageService.Values)
         {
-            if (record.PackageState != PackageLoadStateEnum.Loaded)
+            if ((record.PackageState != PackageLoadStateEnum.Loaded) ||
+                (record.Details == null))
             {
                 continue;
             }

@@ -278,7 +278,7 @@ public class FhirCacheService : IDisposable
 
             data["package-sizes"].AddKey(directive, size.ToString());
 
-            parser.WriteFile(_iniFilePath, data);
+            SaveIniData(_iniFilePath, data);
         }
         else
         {
@@ -781,7 +781,7 @@ public class FhirCacheService : IDisposable
 
         if (modified)
         {
-            parser.WriteFile(_iniFilePath, data);
+            SaveIniData(_iniFilePath, data);
         }
 
         Console.WriteLine($" << cache contains {_packagesByDirective.Count} packges");
@@ -974,8 +974,6 @@ public class FhirCacheService : IDisposable
     /// <summary>Creates empty cache initialize.</summary>
     private void CreateEmptyCacheIni()
     {
-        IniParser.FileIniDataParser parser = new();
-
         IniData data = new();
 
         data.Sections.Add(new SectionData("cache"));
@@ -989,7 +987,28 @@ public class FhirCacheService : IDisposable
 
         data.Sections.Add(new SectionData("package-sizes"));
 
-        parser.WriteFile(_iniFilePath, data);
+        SaveIniData(_iniFilePath, data);
+    }
+
+    /// <summary>Saves an initialize data.</summary>
+    /// <param name="destinationPath">Full pathname of the destination file.</param>
+    /// <param name="data">           The data.</param>
+    private void SaveIniData(string destinationPath, IniData data)
+    {
+        IniParser.FileIniDataParser parser = new();
+
+        IniParser.Model.Configuration.IniParserConfiguration config = new()
+        {
+            NewLineStr = "\r\n",
+        };
+
+        IniParser.Model.Formatting.DefaultIniDataFormatter formatter = new(config);
+
+        using (FileStream fs = new FileStream(destinationPath, FileMode.Create))
+        using (StreamWriter writer = new StreamWriter(fs))
+        {
+            parser.WriteData(writer, data, formatter);
+        }
     }
 
     /// <summary>
