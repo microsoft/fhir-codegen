@@ -666,10 +666,12 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
     /// <summary>Resolve in dictionary.</summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="token">The ID or URL of the artifact.</param>
-    /// <param name="dict"> The dictionary.</param>
+    /// <param name="token">             The ID or URL of the artifact.</param>
+    /// <param name="dict">              The dictionary.</param>
     /// <returns>An object.</returns>
-    private object ResolveInDict<T>(string token, Dictionary<string, T> dict)
+    private object ResolveInDict<T>(
+        string token,
+        Dictionary<string, T> dict)
     {
         if (dict.ContainsKey(token))
         {
@@ -701,11 +703,18 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     }
 
     /// <summary>Attempts to get artifact.</summary>
-    /// <param name="token">        The ID or URL of the artifact.</param>
-    /// <param name="artifact">     [out] The artifact.</param>
-    /// <param name="artifactClass">[out] The artifact class enum.</param>
+    /// <param name="token">             The ID or URL of the artifact.</param>
+    /// <param name="artifact">          [out] The artifact.</param>
+    /// <param name="artifactClass">     [out] The artifact class enum.</param>
+    /// <param name="resolvedPackage">   [out] The resolved package.</param>
+    /// <param name="resolveParentLinks">(Optional) True to resolve parent links.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public bool TryGetArtifact(string token, out object artifact, out FhirArtifactClassEnum artifactClass)
+    public bool TryGetArtifact(
+        string token,
+        out object artifact,
+        out FhirArtifactClassEnum artifactClass,
+        out string resolvedPackage,
+        bool resolveParentLinks = true)
     {
         artifactClass = GetArtifactClass(token);
         switch (artifactClass)
@@ -713,65 +722,210 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             case FhirArtifactClassEnum.PrimitiveType:
                 {
                     artifact = ResolveInDict(token, _primitiveTypesByName);
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
                     return artifact != null;
                 }
 
             case FhirArtifactClassEnum.ComplexType:
                 {
                     artifact = ResolveInDict(token, _complexTypesByName);
-                    return artifact != null;
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    FhirComplex current = (FhirComplex)artifact;
+
+                    if (resolveParentLinks &&
+                        (!string.IsNullOrEmpty(current.BaseTypeName)) &&
+                        (!current.BaseTypeName.Equals(current.Name, StringComparison.Ordinal)) &&
+                        (current.Parent == null) &&
+                        TryGetArtifact(
+                            current.BaseTypeName,
+                            out object parent,
+                            out FhirArtifactClassEnum parentClass,
+                            out string parentResolvedDirective,
+                            true))
+                    {
+                        ((FhirComplex)artifact).Parent = (FhirComplex)parent;
+                        ((FhirComplex)artifact).ParentArtifactClass = parentClass;
+                        ((FhirComplex)artifact).ResolvedParentDirective = parentResolvedDirective;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
                 }
 
             case FhirArtifactClassEnum.Resource:
                 {
                     artifact = ResolveInDict(token, _resourcesByName);
-                    return artifact != null;
+
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    FhirComplex current = (FhirComplex)artifact;
+
+                    if (resolveParentLinks &&
+                        (!string.IsNullOrEmpty(current.BaseTypeName)) &&
+                        (!current.BaseTypeName.Equals(current.Name, StringComparison.Ordinal)) &&
+                        (current.Parent == null) &&
+                        TryGetArtifact(
+                            current.BaseTypeName,
+                            out object parent,
+                            out FhirArtifactClassEnum parentClass,
+                            out string parentResolvedDirective,
+                            true))
+                    {
+                        ((FhirComplex)artifact).Parent = (FhirComplex)parent;
+                        ((FhirComplex)artifact).ParentArtifactClass = parentClass;
+                        ((FhirComplex)artifact).ResolvedParentDirective = parentResolvedDirective;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
                 }
 
             case FhirArtifactClassEnum.Extension:
                 {
                     artifact = ResolveInDict(token, _extensionsByUrl);
-                    return artifact != null;
+
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
                 }
 
             case FhirArtifactClassEnum.Operation:
                 {
                     artifact = ResolveInDict(token, _operationsByUrl);
-                    return artifact != null;
+
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
                 }
 
             case FhirArtifactClassEnum.SearchParameter:
                 {
                     artifact = ResolveInDict(token, _searchParamsByUrl);
-                    return artifact != null;
+
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
                 }
 
             case FhirArtifactClassEnum.CodeSystem:
                 {
                     artifact = ResolveInDict(token, _searchParamsByUrl);
-                    return artifact != null;
+
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
                 }
 
             case FhirArtifactClassEnum.ValueSet:
                 {
                     FhirValueSetCollection collection = (FhirValueSetCollection)ResolveInDict(token, _valueSetsByUrl);
-                    if (collection == null)
+                    if ((collection == null) ||
+                        (collection.ValueSetsByVersion == null) ||
+                        (!collection.ValueSetsByVersion.Any()))
                     {
                         artifact = null;
+                        resolvedPackage = string.Empty;
                         return false;
                     }
 
                     artifact = collection.ValueSetsByVersion.First();
-                    return artifact != null;
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
                 }
 
             case FhirArtifactClassEnum.Profile:
                 {
                     artifact = ResolveInDict(token, _profilesByUrl);
-                    return artifact != null;
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    FhirComplex current = (FhirComplex)artifact;
+
+                    if (resolveParentLinks &&
+                        (!string.IsNullOrEmpty(current.BaseTypeName)) &&
+                        (!current.BaseTypeName.Equals(current.Name, StringComparison.Ordinal)) &&
+                        (current.Parent == null) &&
+                        TryGetArtifact(
+                            current.BaseTypeName,
+                            out object parent,
+                            out FhirArtifactClassEnum parentClass,
+                            out string parentResolvedDirective,
+                            true))
+                    {
+                        ((FhirComplex)artifact).Parent = (FhirComplex)parent;
+                        ((FhirComplex)artifact).ParentArtifactClass = parentClass;
+                        ((FhirComplex)artifact).ResolvedParentDirective = parentResolvedDirective;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
                 }
 
             case FhirArtifactClassEnum.Unknown:
+                {
+                    if ((PackageDetails == null) ||
+                        (PackageDetails.Dependencies == null) ||
+                        (!PackageDetails.Dependencies.Any()))
+                    {
+                        artifact = null;
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    // check dependencies
+                    foreach ((string packageName, string version) in PackageDetails.Dependencies)
+                    {
+                        string directive = packageName + "#" + version;
+
+                        if (FhirManager.Current.InfoByDirective.ContainsKey(directive))
+                        {
+                            return FhirManager.Current.InfoByDirective[directive].TryGetArtifact(
+                                token,
+                                out artifact,
+                                out artifactClass,
+                                out resolvedPackage,
+                                resolveParentLinks);
+                        }
+                    }
+
+                    artifact = null;
+                    resolvedPackage = string.Empty;
+                    return false;
+                }
+
             case FhirArtifactClassEnum.CapabilityStatement:
             case FhirArtifactClassEnum.Compartment:
             case FhirArtifactClassEnum.ConceptMap:
@@ -781,6 +935,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             default:
                 {
                     artifact = null;
+                    resolvedPackage = string.Empty;
                     return false;
                 }
         }

@@ -7,8 +7,19 @@
 {
     @foreach(FhirElement element in ObjectToDisplay.Elements.Values)
     {
-        <tr class="table-active">
-            <td class="fw-bold">@ElementName(element)</td>
+        <tr class="@GetTrClass()">
+            @if (!string.IsNullOrEmpty(element.FixedFieldName))
+            {
+                <td>
+                    <span class="fw-bold">@ElementName(element)</span><br/>
+                    <span class="font-monospace">@element.FixedFieldName</span> of:<br/>
+                    &nbsp;<span class="font-monospace">@element.FixedFieldValue</span>
+                </td>
+            }
+            else
+            {
+                <td class="fw-bold">@ElementName(element)</td>
+            }
             <td>
                 @if (element.IsModifier)
                 {
@@ -25,23 +36,65 @@
             <td>@element.ShortDescription</td>
         </tr>
 
-        <tr>
-            <td colspan="5">
-                <div class="small">
-                    <p>@element.Comment</p>
+        @if (ShowDetails)
+        {
+            <tr>
+                <td colspan="5">
+                    <div class="small">
+                        <p>@element.Comment</p>
 
-                    @if (!string.IsNullOrEmpty(element.ValueSet))
-                    {
-                        <p>Bound to: @element.ValueSet (@element.ValueSetBindingStrength)</p>
-                    }
+                        @if (!string.IsNullOrEmpty(element.ValueSet))
+                        {
+                            <p>Bound to: @element.ValueSet (@element.ValueSetBindingStrength)</p>
+                        }
 
-                    @if (!string.IsNullOrEmpty(element.ValidationRegEx))
-                    {
-                        <p>Validation RegEx: @element.ValidationRegEx</p>
-                    }
-                </div>
-            </td>
-        </tr>
+                        @if (!string.IsNullOrEmpty(element.ValidationRegEx))
+                        {
+                            <p>Validation RegEx: @element.ValidationRegEx</p>
+                        }
+
+                        @if (element.Slicing.Any())
+                        {
+                            @foreach(FhirSlicing slicing in element.Slicing.Values)
+                            {
+                                <p>
+                                    <strong>Slice:</strong> <span>@slicing.DefinedByUrl</span>,
+                                    <span>@(slicing.IsOrdered ? "Ordered" : "Unordered")</span>,
+                                    <span>@string.Join(", ", slicing.DiscriminatorRules.Values.Select(dr => $"{dr.DiscriminatorTypeName}:{dr.Path}"))</span>
+                                </p>
+
+                                @if (slicing.Slices.Any())
+                                {
+                                    <table class="table table-bordered border-primary table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-md-2">Element</th>
+                                                <th class="col-md-1">Flags</th>
+                                                <th class="col-md-1">Type</th>
+                                                <th class="col-md-1">Card.</th>
+                                                <th class="col-md-3">Short</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (FhirComplex slice in slicing.Slices)
+                                            {
+                                                <FhirComplexTableRows
+                                                    ObjectToDisplay=@slice
+                                                    ParentNamePrefix=@string.Format("{0}:{1}", @ElementName(element), slice.SliceName)
+                                                    ExpandToDepth=@ExpandToDepth
+                                                    Depth=@Depth
+                                                    ShowDetails=@ShowDetails
+                                                    />
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                            }
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
 
         @if (CanDrillDown(element, out string name))
         {
@@ -52,10 +105,15 @@
                     ParentNamePrefix=@NameForChildren(element)
                     ExpandToDepth=@ExpandToDepth
                     Depth=@Depth
+                    ShowDetails=@ShowDetails
                     />
             }
             else if ((Depth < ExpandToDepth) &&
-                     (SpecService[directive].TryGetArtifact(name, out object artifact, out FhirArtifactClassEnum artifactClass)) &&
+                     (SpecService[directive].TryGetArtifact(
+                        name,
+                        out object artifact,
+                        out FhirArtifactClassEnum artifactClass,
+                        out _)) &&
                      (artifact != null))
             {
                 switch (artifact)
@@ -66,6 +124,7 @@
                             ParentNamePrefix=@NameForChildren(element)
                             ExpandToDepth=@ExpandToDepth
                             Depth=@(Depth + 1)
+                            ShowDetails=@ShowDetails
                             />
                         break;
                 }
@@ -95,6 +154,10 @@
     [Parameter]
     public int Depth { get; set; } = 0;
 
+    /// <summary>Gets or sets a value indicating whether the details is shown.</summary>
+    [Parameter]
+    public bool ShowDetails { get; set; } = true;
+
     /// <summary>The directive.</summary>
     private string directive = string.Empty;
 
@@ -108,6 +171,18 @@
         {
             directive = PackageAndVersionProvider.PackageName + "#" + PackageAndVersionProvider.Version;
         }
+    }
+
+    /// <summary>Gets tr class.</summary>
+    /// <returns>The tr class.</returns>
+    private string GetTrClass()
+    {
+        if (ShowDetails)
+        {
+            return "table-active";
+        }
+
+        return string.Empty;
     }
 
     /// <summary>Element name.</summary>

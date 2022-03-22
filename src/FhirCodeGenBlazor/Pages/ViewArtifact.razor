@@ -135,7 +135,11 @@ else
         fhirOperation = null;
         fhirSearchParameter = null;
 
-        if (!SpecService[directive].TryGetArtifact(Id, out object obj, out fhirArtifactClass))
+        if (!SpecService[directive].TryGetArtifact(
+                Id,
+                out object obj,
+                out fhirArtifactClass,
+                out _))
         {
             headerText = $"Unresolved artifact: {Id} from {PackageName}#{Version}!";
             return;

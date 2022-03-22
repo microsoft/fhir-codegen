@@ -66,6 +66,9 @@ public class FhirComplex : FhirTypeBase
         _contextElements = new();
         SliceName = string.Empty;
         ExplicitName = explicitName;
+        Parent = null;
+        ParentArtifactClass = FhirArtifactClassEnum.Unknown;
+        ResolvedParentDirective = string.Empty;
     }
 
     /// <summary>
@@ -164,6 +167,9 @@ public class FhirComplex : FhirTypeBase
         _instanceOperations = instanceOperations ?? new();
         _contextElements = contextElements ?? new();
         _constraints = constraints ?? new();
+        Parent = null;
+        ParentArtifactClass = FhirArtifactClassEnum.Unknown;
+        ResolvedParentDirective = string.Empty;
     }
 
     /// <summary>Values that represent fhir complex types.</summary>
@@ -191,6 +197,15 @@ public class FhirComplex : FhirTypeBase
     /// <summary>Gets or sets a value indicating whether this object is placeholder.</summary>
     /// <value>True if this object is placeholder, false if not.</value>
     public bool IsPlaceholder { get; set; }
+
+    /// <summary>Gets or sets the parent.</summary>
+    public FhirComplex Parent { get; set; }
+
+    /// <summary>Gets or sets the parent artifact class.</summary>
+    public FhirArtifactClassEnum ParentArtifactClass { get; set; }
+
+    /// <summary>Gets or sets the resolved parent directive.</summary>
+    public string ResolvedParentDirective { get; set; }
 
     /// <summary>Gets or sets the name of the slice.</summary>
     /// <value>The name of the slice.</value>

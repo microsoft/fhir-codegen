@@ -3,13 +3,22 @@
 <PageTitle>FhirCodeGenBlazor</PageTitle>
 
 <div class="page">
-    <div class="sidebar">
+    <div id="collapsableNav" class="@NavMenuCssClass">
         <NavMenu />
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        <div class="container-fluid ps-3 bg-dark">
+            <div class="row">
+                <div class="col text-start text-light mt-2">
+                    <h3>@PageHeader</h3>
+                </div>
+                <div class="col text-end mt-2">
+                    <button title="Navigation menu" class="text-end navbar-toggler text-light" @onclick="() => ToggleNavMenu()">
+                        <span class="oi oi-menu"></span>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <article class="content px-4">
@@ -17,3 +26,17 @@
         </article>
     </main>
 </div>
+
+@code {
+
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "sidebar collapse-horizontal collapse" : "sidebar collapse-horizontal";
+
+    public string PageHeader { get; set; } = "FHIR Code Generator UI - Blazor Server Version";
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

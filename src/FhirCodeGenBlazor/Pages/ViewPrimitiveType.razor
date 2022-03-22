@@ -113,7 +113,11 @@ else
 
         fhirPrimitive = null;
 
-        if (!SpecService[directive].TryGetArtifact(Url, out object obj, out FhirArtifactClassEnum fhirArtifactClass))
+        if (!SpecService[directive].TryGetArtifact(
+                Url,
+                out object obj,
+                out FhirArtifactClassEnum fhirArtifactClass,
+                out _))
         {
             headerText = $"Unresolved artifact: {Url} from {PackageName}#{Version}!";
             return;

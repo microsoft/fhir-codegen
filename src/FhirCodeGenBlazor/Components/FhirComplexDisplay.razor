@@ -1,4 +1,5 @@
-﻿@using Microsoft.Health.Fhir.CodeGenCommon.Models
+﻿@using FhirCodeGenBlazor.Models
+@using Microsoft.Health.Fhir.CodeGenCommon.Models
 
 @if (ObjectToDisplay != null)
 {
@@ -6,7 +7,21 @@
         <ArtifactPropRowString Name="Id" Value="@ObjectToDisplay.Id"/>
         <ArtifactPropRowString Name="Name" Value="@ObjectToDisplay.Name"/>
         <ArtifactPropRowString Name="Path" Value="@ObjectToDisplay.Path"/>
-        <ArtifactPropRowString Name="Base Type" Value="@ObjectToDisplay.BaseTypeName"/>
+        <tr>
+            <td><strong>Hierarchy</strong></td>
+            <td>
+                @foreach(ComplexInfo ci in hierarchy)
+                {
+                    <button
+                        class="@GetButtonClass(ci.Complex)"
+                        type="button"
+                        @onclick="() => SetTableObject(ci.Complex)"
+                        >@ci.Complex.Name (@ci.ComplexArtifactClass)
+                    </button>
+                }
+            </td>
+        </tr>
+
         <ArtifactPropRowString Name="URL" Value="@ObjectToDisplay.URL.ToString()"/>
         <ArtifactPropRowString Name="Standard Status" Value="@ObjectToDisplay.StandardStatus"/>
         <ArtifactPropRowString Name="Short Description" Value="@ObjectToDisplay.ShortDescription"/>
@@ -19,11 +34,16 @@
     <label for="switchToggleExpansion" class="form-label">Expand into types</label>
 </div>
 
+<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="switchToggleDetails" @bind="showDetailedInfo" />
+    <label for="switchToggleDetails" class="form-label">Show Element Details</label>
+</div>
+
 @*<label for="expansionRange" class="form-label">Expand across types (@expandToDepth steps)</label>
 <input type="range" class="form-range" id="expansionRange" min="0" max="3" step="1" @bind="expandToDepth" />
 *@
 <div class="table-responsive">
-    <table class="table table-hover">
+    <table class="@GetTableClass()">
         <thead>
             <tr>
                 <th class="col-md-2">Element</th>
@@ -35,15 +55,20 @@
         </thead>
         <tbody>
             <FhirComplexTableRows
-                ObjectToDisplay=@ObjectToDisplay
+                ObjectToDisplay=@tableObject
                 ParentNamePrefix=@GetBaseDisplayName()
                 ExpandToDepth=@(expandAcrossTypes ? 1 : 0)
+                ShowDetails=@showDetailedInfo
                 />
         </tbody>
     </table>
 </div>
 
 @code {
+    /// <summary>Gets or sets the package and version provider.</summary>
+    [CascadingParameter]
+    public IPackageVersionProvider? PackageAndVersionProvider { get; set; } = null;
+
     /// <summary>Gets or sets the object to display.</summary>
     [Parameter]
     public FhirComplex? ObjectToDisplay { get; set; } = null;
@@ -53,22 +78,145 @@
     public FhirArtifactClassEnum ArtifactClass { get; set; } = FhirArtifactClassEnum.Unknown;
 
     /// <summary>Gets or sets a value indicating whether the expand across types.</summary>
-    public bool expandAcrossTypes { get; set; } = false;
+    private bool expandAcrossTypes { get; set; } = false;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the detailed information is shown.
+    /// </summary>
+    private bool showDetailedInfo { get; set; } = true;
+
+    /// <summary>The table object.</summary>
+    private FhirComplex? tableObject { get; set; } = null; 
+
+    /// <summary>Information about a FHIR complex structure.</summary>
+    private readonly record struct ComplexInfo(
+        FhirComplex Complex,
+        FhirArtifactClassEnum ComplexArtifactClass,
+        string ResolvedPackage
+    );
+
+    /// <summary>The hierarchy.</summary>
+    private List<ComplexInfo> hierarchy = new();
+
+    /// <summary>Executes the initialized action.</summary>
+    protected override void OnInitialized()
+    {
+        tableObject = ObjectToDisplay;
+
+        if (ObjectToDisplay != null)
+        {
+            hierarchy.Add(new ComplexInfo()
+                {
+                    Complex = ObjectToDisplay,
+                    ComplexArtifactClass = ArtifactClass,
+                    ResolvedPackage = (PackageAndVersionProvider?.PackageName ?? "") + "#" + (PackageAndVersionProvider?.Version ?? "")
+                });
+
+            AddParentToHierarchy(ObjectToDisplay);
+        }
+
+        base.OnInitialized();
+    }
+
+    private string GetTableClass()
+    {
+        if (showDetailedInfo)
+        {
+            return "table table-hover";
+        }
+
+        return "table table-hover table-striped";
+    }
+
+    /// <summary>Gets button class.</summary>
+    /// <param name="complex">The complex.</param>
+    /// <returns>The button class.</returns>
+    private string GetButtonClass(FhirComplex complex)
+    {
+        if (complex == null)
+        {
+            return "hidden";
+        }
+
+        if (complex == tableObject)
+        {
+            return "btn btn-primary m-1";
+        }
+
+        return "btn btn-outline-primary m-1";
+    }
+
+    /// <summary>Sets table object.</summary>
+    /// <param name="complex">The complex.</param>
+    private void SetTableObject(FhirComplex complex)
+    {
+        tableObject = complex;
+    }
+
+    /// <summary>Adds a parent to hierarchy.</summary>
+    /// <param name="obj">The object.</param>
+    private void AddParentToHierarchy(FhirComplex obj)
+    {
+        if (obj == null)
+        {
+            return;
+        }
+
+        if (obj.Parent != null)
+        {
+            hierarchy.Add(new ComplexInfo()
+                {
+                    Complex = obj.Parent,
+                    ComplexArtifactClass = obj.ParentArtifactClass,
+                    ResolvedPackage = obj.ResolvedParentDirective,
+                });
+
+            AddParentToHierarchy(obj.Parent);
+        }
+    }
+
+    /// <summary>Parent for complex.</summary>
+    /// <param name="complex">The complex.</param>
+    /// <returns>A string.</returns>
+    private string NameAndParents(FhirComplex complex)
+    {
+        if (complex.Parent != null)
+        {
+            return $"{complex.Name}::{NameAndParents(complex.Parent)}";
+        }
+
+        return complex.Name;
+    }
 
     /// <summary>Gets base display name.</summary>
     /// <returns>The base display name.</returns>
     private string GetBaseDisplayName()
     {
-        if (ObjectToDisplay == null)
+        if (tableObject == null)
         {
             return string.Empty;
         }
 
-        if (ArtifactClass == FhirArtifactClassEnum.Profile)
+        bool found = false;
+        foreach (ComplexInfo ci in hierarchy)
         {
-            return $"({ObjectToDisplay.Id}) {ObjectToDisplay.BaseTypeName}";
+            if (!found)
+            {
+                if (ci.Complex.Name != tableObject.Name)
+                {
+                    continue;
+                }
+
+                found = true;
+            }
+
+            if ((ci.ComplexArtifactClass == FhirArtifactClassEnum.Resource) ||
+                (ci.ComplexArtifactClass == FhirArtifactClassEnum.ComplexType))
+            {
+                return ci.Complex.Name;
+            }
         }
 
-        return ObjectToDisplay.Name;
+        return tableObject.Name;
     }
 }
