@@ -1,5 +1,6 @@
 ﻿@using FhirCodeGenBlazor.Models
 @using FhirCodeGenBlazor.Services
+@using Markdig
 @using Microsoft.Health.Fhir.CodeGenCommon.Models
 @inject ISpecManagerWebService SpecService
 
@@ -10,10 +11,10 @@
         <tr class="@GetTrClass()">
             @if (!string.IsNullOrEmpty(element.FixedFieldName))
             {
-                <td>
-                    <span class="fw-bold">@ElementName(element)</span><br/>
-                    <span class="font-monospace">@element.FixedFieldName</span> of:<br/>
-                    &nbsp;<span class="font-monospace">@element.FixedFieldValue</span>
+                <td class="fw-bold">
+                    <span>@ElementName(element)</span><br/>
+                    &nbsp;<span class="text-danger">*</span> fixed to:
+                    <span class="font-monospace bg-dark bg-opacity-50 text-light p-1">@element.FixedFieldValue</span>
                 </td>
             }
             else
@@ -41,7 +42,7 @@
             <tr>
                 <td colspan="5">
                     <div class="small">
-                        <p>@element.Comment</p>
+                        @(new MarkupString(Markdown.ToHtml(element.Comment)))
 
                         @if (!string.IsNullOrEmpty(element.ValueSet))
                         {
@@ -59,7 +60,14 @@
                             {
                                 <p>
                                     <strong>Slice:</strong> <span>@slicing.DefinedByUrl</span>,
-                                    <span>@(slicing.IsOrdered ? "Ordered" : "Unordered")</span>,
+                                    @if (slicing.IsOrdered)
+                                    {
+                                        <span>Ordered: Slice @slicing.FieldOrder ,</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Unordered, </span>
+                                    }
                                     <span>@string.Join(", ", slicing.DiscriminatorRules.Values.Select(dr => $"{dr.DiscriminatorTypeName}:{dr.Path}"))</span>
                                 </p>
 
@@ -220,12 +228,26 @@
         if (!string.IsNullOrEmpty(element.BaseTypeName))
         {
             name = element.BaseTypeName;
+
+            if (name.Equals("Extension", StringComparison.Ordinal))
+            {
+                name = string.Empty;
+                return false;
+            }
+
             return true;
         }
 
         if (element.ElementTypes.Count == 1)
         {
             name = element.ElementTypes.Values.First().Name;
+
+            if (name.Equals("Extension", StringComparison.Ordinal))
+            {
+                name = string.Empty;
+                return false;
+            }
+
             return true;
         }
 

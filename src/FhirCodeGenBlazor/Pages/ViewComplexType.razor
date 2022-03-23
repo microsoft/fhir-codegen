@@ -29,6 +29,10 @@ else
 @code {
     private string headerText = "";
 
+    /// <summary>Gets or sets the navigation tracker.</summary>
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
     /// <summary>Gets or sets the package name.</summary>
     [Parameter]
     [SupplyParameterFromQuery(Name = "packageName")]
@@ -56,6 +60,7 @@ else
     {
         base.OnInitialized();
 
+        NavTracker?.NotifyNav(Url, $"view/complextype?packageName={PackageName}&version={Version}&url={Url}", 2);
         NavManager.LocationChanged += HandleLocationChanged;
 
         if (string.IsNullOrEmpty(PackageName))
@@ -74,6 +79,7 @@ else
     {
         if (e.Location.ToLowerInvariant().Contains("/view/complextype"))
         {
+            NavTracker?.NotifyNav(Url, $"view/complextype?packageName={PackageName}&version={Version}&url={Url}", 2);
             directive = PackageName + "#" + Version;
             GetObject();
 

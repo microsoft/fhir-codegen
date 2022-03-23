@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using FhirCodeGenBlazor.Models
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @using FhirCodeGenBlazor.Services;
 @inject NavigationManager NavigationManager
@@ -72,6 +73,10 @@ else
 }
 
 @code {
+    /// <summary>Gets or sets the navigation tracker.</summary>
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
     private bool loaded = false;
     private string directiveToLoad = string.Empty;
 
@@ -81,6 +86,7 @@ else
     {
         base.OnInitialized();
 
+        NavTracker?.NotifyNav("FHIR Cache", "", 0);
         PackageService.OnChanged += PackageServiceChanged;
         loaded = true;
     }

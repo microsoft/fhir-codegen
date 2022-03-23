@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.28.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\fhirCsR2\fhirCsR2.csproj" />
     <ProjectReference Include="..\fhirCsR3\fhirCsR3.csproj" />
     <ProjectReference Include="..\fhirCsR4B\fhirCsR4B.csproj" />
