@@ -8,6 +8,11 @@
 {
     @foreach(FhirElement element in ObjectToDisplay.Elements.Values)
     {
+        @if (ShowDifferentialOnly && (!element.InDifferential))
+        {
+            continue;
+        }
+
         <tr class="@GetTrClass()">
             @if (!string.IsNullOrEmpty(element.FixedFieldName))
             {
@@ -29,7 +34,7 @@
 
                 @if (element.IsModifier)
                 {
-                    <span data-bs-toggle="tooltip" title="Modifier Element">⁈ </span>
+                    <span data-bs-toggle="tooltip" title="@(element.IsModifierReason ?? "Modifier Element")">⁈ </span>
                 }
 
                 @if (element.IsSummary)
@@ -39,7 +44,9 @@
             </td>
             <td class="text-wrap">@GetElementTypeString(element)</td>
             <td>@element.FhirCardinality</td>
-            <td>@element.ShortDescription</td>
+            <td>
+                @element.ShortDescription
+            </td>
         </tr>
 
         @if (ShowDetails)
@@ -47,20 +54,24 @@
             <tr>
                 <td colspan="5">
                     <div class="small">
+                        <strong>Definition:</strong><p>@element.Purpose</p>
+
+                        <strong>Comments:</strong>
                         @(new MarkupString(Markdown.ToHtml(element.Comment)))
 
                         @if (!string.IsNullOrEmpty(element.ValueSet))
                         {
-                            <p>Bound to: @element.ValueSet (@element.ValueSetBindingStrength)</p>
+                            <p><strong>Bound to:</strong> @element.ValueSet (@element.ValueSetBindingStrength)</p>
                         }
 
                         @if (!string.IsNullOrEmpty(element.ValidationRegEx))
                         {
-                            <p>Validation RegEx: @element.ValidationRegEx</p>
+                            <p><strong>Validation RegEx:</strong> @element.ValidationRegEx</p>
                         }
 
                         @if (element.Slicing.Any())
                         {
+                            <strong>Slicing:</strong>
                             @foreach(FhirSlicing slicing in element.Slicing.Values)
                             {
                                 <p>
@@ -76,7 +87,7 @@
                                     <span>@string.Join(", ", slicing.DiscriminatorRules.Values.Select(dr => $"{dr.DiscriminatorTypeName}:{dr.Path}"))</span>
                                 </p>
 
-                                @if (slicing.Slices.Any())
+                                @if (slicing.Slices.Any() && ((!ShowDifferentialOnly) || slicing.HasDifferentialSlices))
                                 {
                                     <table class="table table-bordered border-primary table-hover">
                                         <thead>
@@ -97,6 +108,7 @@
                                                     ExpandToDepth=@ExpandToDepth
                                                     Depth=@Depth
                                                     ShowDetails=@ShowDetails
+                                                    ShowDifferentialOnly=@ShowDifferentialOnly
                                                     />
                                             }
                                         </tbody>
@@ -119,6 +131,7 @@
                     ExpandToDepth=@ExpandToDepth
                     Depth=@Depth
                     ShowDetails=@ShowDetails
+                    ShowDifferentialOnly=@ShowDifferentialOnly
                     />
             }
             else if ((Depth < ExpandToDepth) &&
@@ -138,6 +151,7 @@
                             ExpandToDepth=@ExpandToDepth
                             Depth=@(Depth + 1)
                             ShowDetails=@ShowDetails
+                            ShowDifferentialOnly=@ShowDifferentialOnly
                             />
                         break;
                 }
@@ -170,6 +184,10 @@
     /// <summary>Gets or sets a value indicating whether the details is shown.</summary>
     [Parameter]
     public bool ShowDetails { get; set; } = true;
+
+    /// <summary>Gets or sets a value indicating whether the changes only is shown.</summary>
+    [Parameter]
+    public bool ShowDifferentialOnly { get; set; } = false;
 
     /// <summary>The directive.</summary>
     private string directive = string.Empty;

@@ -12,6 +12,7 @@ public class FhirElement : FhirTypeBase
 {
     private readonly Dictionary<string, FhirSlicing> _slicing;
     private Dictionary<string, FhirElementType> _elementTypes;
+    private bool _inDifferential;
     private List<string> _codes;
 
     /// <summary>
@@ -23,7 +24,7 @@ public class FhirElement : FhirTypeBase
     /// <param name="url">              URL of this element (if present).</param>
     /// <param name="fieldOrder">       The field order.</param>
     /// <param name="shortDescription"> Information describing the short.</param>
-    /// <param name="purpose">       The definition.</param>
+    /// <param name="purpose">          The purpose of this element.</param>
     /// <param name="comment">          The comment.</param>
     /// <param name="validationRegEx">  The validation RegEx.</param>
     /// <param name="baseTypeName">     Name of the base type.</param>
@@ -57,6 +58,7 @@ public class FhirElement : FhirTypeBase
         int cardinalityMin,
         string cardinalityMax,
         bool? isModifier,
+        string isModifierReason,
         bool? isSummary,
         bool? isMustSupport,
         string defaultFieldName,
@@ -139,8 +141,10 @@ public class FhirElement : FhirTypeBase
         }
 
         IsModifier = isModifier == true;
+        IsModifierReason = isModifierReason;
         IsSummary = isSummary == true;
         IsMustSupport = isMustSupport == true;
+        _inDifferential = false;
 
         DefaultFieldName = defaultFieldName;
         DefaultFieldValue = defaultFieldValue;
@@ -189,6 +193,7 @@ public class FhirElement : FhirTypeBase
         bool modifiesParent,
         bool hidesParent,
         bool isModifier,
+        string isModifierReason,
         bool isSummary,
         bool isMustSupport,
         string codesName,
@@ -202,7 +207,8 @@ public class FhirElement : FhirTypeBase
         Dictionary<string, FhirSlicing> slicing,
         string fixedFieldName,
         object fixedFieldValue,
-        string fiveWs)
+        string fiveWs,
+        bool inDifferential)
         : base(
             id,
             path,
@@ -223,6 +229,7 @@ public class FhirElement : FhirTypeBase
         ModifiesParent = modifiesParent;
         HidesParent = hidesParent;
         IsModifier = isModifier;
+        IsModifierReason = isModifierReason;
         IsSummary = isSummary;
         IsMustSupport = isMustSupport;
         CodesName = codesName;
@@ -237,6 +244,7 @@ public class FhirElement : FhirTypeBase
         FixedFieldName = fixedFieldName;
         FixedFieldValue = fixedFieldValue;
         FiveWs = fiveWs;
+        _inDifferential = inDifferential;
     }
 
     /// <summary>Values that represent element definition binding strengths.</summary>
@@ -299,6 +307,9 @@ public class FhirElement : FhirTypeBase
     /// <summary>Gets a value indicating whether this object is modifier.</summary>
     public bool IsModifier { get; }
 
+    /// <summary>Gets the is modifier reason.</summary>
+    public string IsModifierReason { get; }
+
     /// <summary>Gets a value indicating whether this object is summary.</summary>
     public bool IsSummary { get; }
 
@@ -350,6 +361,14 @@ public class FhirElement : FhirTypeBase
 
     /// <summary>Gets the five Ws mapping list for the current element.</summary>
     public string FiveWs { get; }
+
+    /// <summary>True if this element appears in the differential.</summary>
+    public bool InDifferential => _inDifferential;
+
+    public void SetInDifferential()
+    {
+        _inDifferential = true;
+    }
 
     /// <summary>Maximum cardinality.</summary>
     /// <param name="max">The maximum.</param>
@@ -466,6 +485,7 @@ public class FhirElement : FhirTypeBase
             CardinalityMin,
             CardinalityMax == -1 ? "*" : $"{CardinalityMax}",
             IsModifier,
+            IsModifierReason,
             IsSummary,
             IsMustSupport,
             DefaultFieldName,

@@ -9,26 +9,19 @@
 @implements IDisposable
 @implements IPackageVersionProvider
 
-<PageTitle>View Primitive Data Type</PageTitle>
-@if (string.IsNullOrEmpty(headerText))
+@if (fhirPrimitive == null)
 {
-    <h3>FHIR Primitive Data Type Viewer</h3>
+    <PageTitle>FHIR Primitive</PageTitle>    
 }
 else
 {
-    <h3>@headerText</h3>
-}
-
-@if (fhirPrimitive != null)
-{
+    <PageTitle>@fhirPrimitive.Name</PageTitle>    
     <CascadingValue Value="this">
         <FhirPrimitiveDisplay ObjectToDisplay=@fhirPrimitive/>
     </CascadingValue>
 }
 
 @code {
-    private string headerText = "";
-
     /// <summary>Gets or sets the navigation tracker.</summary>
     [CascadingParameter]
     public INavTracker? NavTracker { get; set; } = null;
@@ -125,18 +118,17 @@ else
                 out FhirArtifactClassEnum fhirArtifactClass,
                 out _))
         {
-            headerText = $"Unresolved artifact: {Url} from {PackageName}#{Version}!";
+            Console.WriteLine($"Unresolved artifact: {Url} from {PackageName}#{Version}!");
             return;
         }
 
         if (fhirArtifactClass != FhirArtifactClassEnum.PrimitiveType)
         {
-            headerText = $"Incorrect artifact type: {Url} from {PackageName}#{Version} came back as {fhirArtifactClass}!";
+            Console.WriteLine($"Incorrect artifact type: {Url} from {PackageName}#{Version} came back as {fhirArtifactClass}!");
             return;
         }
 
         fhirPrimitive = (FhirPrimitive)obj;
-        headerText = $"{fhirArtifactClass} - {fhirPrimitive.Name ?? fhirPrimitive.Id} ({PackageName}#{Version})";
 
         // manually flag state has changed in case we are in a callback / async context
         InvokeAsync(() => StateHasChanged());

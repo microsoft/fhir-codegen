@@ -39,6 +39,11 @@
     <label for="switchToggleDetails" class="form-label">Show Element Details</label>
 </div>
 
+<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="switchDifferentialOnly" @bind="showDifferentialOnly" />
+    <label for="switchDifferentialOnly" class="form-label">Show Differential Only</label>
+</div>
+
 @*<label for="expansionRange" class="form-label">Expand across types (@expandToDepth steps)</label>
 <input type="range" class="form-range" id="expansionRange" min="0" max="3" step="1" @bind="expandToDepth" />
 *@
@@ -59,6 +64,7 @@
                 ParentNamePrefix=@GetBaseDisplayName()
                 ExpandToDepth=@(expandAcrossTypes ? 1 : 0)
                 ShowDetails=@showDetailedInfo
+                ShowDifferentialOnly=@showDifferentialOnly
                 />
         </tbody>
     </table>
@@ -84,6 +90,9 @@
     /// Gets or sets a value indicating whether the detailed information is shown.
     /// </summary>
     private bool showDetailedInfo { get; set; } = true;
+
+    /// <summary>Gets or sets a value indicating whether the changes only is shown.</summary>
+    private bool showDifferentialOnly { get; set; } = false;
 
     /// <summary>The table object.</summary>
     private FhirComplex? tableObject { get; set; } = null; 

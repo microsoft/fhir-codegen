@@ -9,26 +9,19 @@
 @implements IDisposable
 @implements IPackageVersionProvider
 
-<PageTitle>View Complex Data Type</PageTitle>
-@if (string.IsNullOrEmpty(headerText))
+@if (fhirComplex == null)
 {
-    <h3>FHIR Complex Data Type Viewer</h3>
+    <PageTitle>FHIR Complex Type</PageTitle>
 }
 else
 {
-    <h3>@headerText</h3>
-}
-
-@if (fhirComplex != null)
-{
+    <PageTitle>@fhirComplex.Name</PageTitle>
     <CascadingValue Value="this">
         <FhirComplexDisplay ObjectToDisplay=@fhirComplex ArtifactClass=@FhirArtifactClassEnum.ComplexType />
     </CascadingValue>
 }
 
 @code {
-    private string headerText = "";
-
     /// <summary>Gets or sets the navigation tracker.</summary>
     [CascadingParameter]
     public INavTracker? NavTracker { get; set; } = null;
@@ -125,18 +118,17 @@ else
                 out FhirArtifactClassEnum fhirArtifactClass,
                 out _))
         {
-            headerText = $"Unresolved artifact: {Url} from {PackageName}#{Version}!";
+            Console.WriteLine($"Unresolved artifact: {Url} from {PackageName}#{Version}!");
             return;
         }
 
         if (fhirArtifactClass != FhirArtifactClassEnum.ComplexType)
         {
-            headerText = $"Incorrect artifact type: {Url} from {PackageName}#{Version} came back as {fhirArtifactClass}!";
+            Console.WriteLine($"Incorrect artifact type: {Url} from {PackageName}#{Version} came back as {fhirArtifactClass}!");
             return;
         }
 
         fhirComplex = (FhirComplex)obj;
-        headerText = $"{fhirArtifactClass} - {fhirComplex.ExplicitName ?? fhirComplex.Id} ({PackageName}#{Version})";
 
         // manually flag state has changed in case we are in a callback / async context
         InvokeAsync(() => StateHasChanged());

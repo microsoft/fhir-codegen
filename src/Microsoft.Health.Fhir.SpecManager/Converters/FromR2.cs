@@ -1174,6 +1174,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         0,
                                         "*",
                                         element.IsModifier,
+                                        string.Empty,
                                         element.IsSummary,
                                         element.MustSupport,
                                         string.Empty,
@@ -1355,6 +1356,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                     (int)(element.Min ?? 0),
                                     element.Max,
                                     element.IsModifier,
+                                    string.Empty,
                                     element.IsSummary,
                                     element.MustSupport,
                                     defaultName,
@@ -1478,6 +1480,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             0,
                             "*",
                             false,
+                            string.Empty,
                             false,
                             false,
                             string.Empty,
@@ -1489,6 +1492,65 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             string.Empty,
                             string.Empty,
                             null));
+                }
+
+                if ((sd.Differential != null) &&
+                    (sd.Differential.Element != null) &&
+                    (sd.Differential.Element.Count > 0))
+                {
+                    // look for additional constraints
+                    if ((sd.Differential.Element[0].Constraint != null) &&
+                        (sd.Differential.Element[0].Constraint.Count > 0))
+                    {
+                        foreach (fhirModels.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
+                        {
+                            bool isBestPractice = false;
+                            string explanation = string.Empty;
+
+                            if (con.Extension != null)
+                            {
+                                foreach (fhirModels.Extension ext in con.Extension)
+                                {
+                                    switch (ext.Url)
+                                    {
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
+                                            isBestPractice = ext.ValueBoolean == true;
+                                            break;
+
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
+                                            if (!string.IsNullOrEmpty(ext.ValueMarkdown))
+                                            {
+                                                explanation = ext.ValueMarkdown;
+                                            }
+                                            else
+                                            {
+                                                explanation = ext.ValueString;
+                                            }
+
+                                            break;
+                                    }
+                                }
+                            }
+
+                            complex.AddConstraint(new FhirConstraint(
+                                con.Key,
+                                con.Severity,
+                                con.Human,
+                                string.Empty,
+                                con.Xpath,
+                                isBestPractice,
+                                explanation));
+                        }
+                    }
+
+                    // traverse all elements to flag proper 'differential' tags on elements
+                    foreach (fhirModels.ElementDefinition dif in sd.Differential.Element)
+                    {
+                        if (complex.Elements.ContainsKey(dif.Path))
+                        {
+                            complex.Elements[dif.Path].SetInDifferential();
+                        }
+                    }
                 }
 
                 switch (definitionComplexType)

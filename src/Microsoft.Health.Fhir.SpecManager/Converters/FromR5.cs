@@ -1039,6 +1039,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         0,
                                         "*",
                                         element.IsModifier,
+                                        element.IsModifierReason,
                                         element.IsSummary,
                                         element.MustSupport,
                                         string.Empty,
@@ -1136,6 +1137,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         bool isInherited = false;
                         bool modifiesParent = true;
 
+                        if (!element.Path.StartsWith(complex.Name, StringComparison.Ordinal))
+                        {
+                            isInherited = true;
+                        }
+
                         if (element.Base != null)
                         {
                             if (element.Base.Path != element.Path)
@@ -1205,6 +1211,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 (int)(element.Min ?? 0),
                                 element.Max,
                                 element.IsModifier,
+                                element.IsModifierReason,
                                 element.IsSummary,
                                 element.MustSupport,
                                 defaultName,
@@ -1254,48 +1261,68 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 if ((sd.Differential != null) &&
                     (sd.Differential.Element != null) &&
-                    (sd.Differential.Element.Count > 0) &&
-                    (sd.Differential.Element[0].Constraint != null) &&
-                    (sd.Differential.Element[0].Constraint.Count > 0))
+                    (sd.Differential.Element.Count > 0))
                 {
-                    foreach (fhirModels.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
+                    // look for additional constraints
+                    if ((sd.Differential.Element[0].Constraint != null) &&
+                        (sd.Differential.Element[0].Constraint.Count > 0))
                     {
-                        bool isBestPractice = false;
-                        string explanation = string.Empty;
-
-                        if (con.Extension != null)
+                        foreach (fhirModels.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
                         {
-                            foreach (fhirModels.Extension ext in con.Extension)
+                            bool isBestPractice = false;
+                            string explanation = string.Empty;
+
+                            if (con.Extension != null)
                             {
-                                switch (ext.Url)
+                                foreach (fhirModels.Extension ext in con.Extension)
                                 {
-                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
-                                        isBestPractice = ext.ValueBoolean == true;
-                                        break;
+                                    switch (ext.Url)
+                                    {
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
+                                            isBestPractice = ext.ValueBoolean == true;
+                                            break;
 
-                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
-                                        if (!string.IsNullOrEmpty(ext.ValueMarkdown))
-                                        {
-                                            explanation = ext.ValueMarkdown;
-                                        }
-                                        else
-                                        {
-                                            explanation = ext.ValueString;
-                                        }
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
+                                            if (!string.IsNullOrEmpty(ext.ValueMarkdown))
+                                            {
+                                                explanation = ext.ValueMarkdown;
+                                            }
+                                            else
+                                            {
+                                                explanation = ext.ValueString;
+                                            }
 
-                                        break;
+                                            break;
+                                    }
                                 }
                             }
-                        }
 
-                        complex.AddConstraint(new FhirConstraint(
-                            con.Key,
-                            con.Severity,
-                            con.Human,
-                            con.Expression,
-                            con.Xpath,
-                            isBestPractice,
-                            explanation));
+                            complex.AddConstraint(new FhirConstraint(
+                                con.Key,
+                                con.Severity,
+                                con.Human,
+                                con.Expression,
+                                con.Xpath,
+                                isBestPractice,
+                                explanation));
+                        }
+                    }
+
+                    // traverse all elements to flag proper 'differential' tags on elements
+                    foreach (fhirModels.ElementDefinition dif in sd.Differential.Element)
+                    {
+                        if (complex.Elements.ContainsKey(dif.Path))
+                        {
+                            complex.Elements[dif.Path].SetInDifferential();
+
+                            if ((!string.IsNullOrEmpty(dif.SliceName)) &&
+                                (complex.Elements[dif.Path].Slicing != null) &&
+                                complex.Elements[dif.Path].Slicing.ContainsKey(sd.Url) &&
+                                complex.Elements[dif.Path].Slicing[sd.Url].HasSlice(dif.SliceName))
+                            {
+                                complex.Elements[dif.Path].Slicing[sd.Url].SetInDifferential(dif.SliceName);
+                            }
+                        }
                     }
                 }
 

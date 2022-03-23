@@ -11,6 +11,7 @@ public class FhirSlicing
     private readonly Dictionary<string, FhirSliceDiscriminatorRule> _rules;
     private readonly List<FhirComplex> _slices;
     private readonly Dictionary<string, FhirComplex> _slicesByName;
+    private readonly HashSet<string> _slicesInDifferential;
 
     /// <summary>Initializes a new instance of the <see cref="FhirSlicing"/> class.</summary>
     /// <exception cref="ArgumentException">    Thrown when one or more arguments have unsupported or
@@ -61,24 +62,26 @@ public class FhirSlicing
             throw new ArgumentNullException(nameof(discriminatorRules));
         }
 
-        _rules = new Dictionary<string, FhirSliceDiscriminatorRule>();
+        _rules = new();
         foreach (FhirSliceDiscriminatorRule discriminator in discriminatorRules)
         {
             _rules.Add(discriminator.Path, discriminator);
         }
 
-        _slices = new List<FhirComplex>();
-        _slicesByName = new Dictionary<string, FhirComplex>();
+        _slices = new();
+        _slicesByName = new();
+        _slicesInDifferential = new();
     }
 
     /// <summary>Initializes a new instance of the <see cref="FhirSlicing"/> class.</summary>
-    /// <param name="definedById">       The identifier of the defined by.</param>
-    /// <param name="definedByUrl">      The defined by URL.</param>
-    /// <param name="description">       The description.</param>
-    /// <param name="isOrdered">         True if ordered, false if not.</param>
-    /// <param name="slicingRules">      Rules associated with this slicing group.</param>
-    /// <param name="discriminatorRules">The discriminator rules for this slicing group.</param>
-    /// <param name="slices">            The slices.</param>
+    /// <param name="definedById">         The identifier of the defined by.</param>
+    /// <param name="definedByUrl">        The defined by URL.</param>
+    /// <param name="description">         The description.</param>
+    /// <param name="isOrdered">           True if ordered, false if not.</param>
+    /// <param name="slicingRules">        Rules associated with this slicing group.</param>
+    /// <param name="discriminatorRules">  The discriminator rules for this slicing group.</param>
+    /// <param name="slices">              The slices.</param>
+    /// <param name="slicesInDifferential">The slices in differential.</param>
     public FhirSlicing(
         string definedById,
         Uri definedByUrl,
@@ -86,7 +89,8 @@ public class FhirSlicing
         bool isOrdered,
         FhirSlicingRule slicingRules,
         Dictionary<string, FhirSliceDiscriminatorRule> discriminatorRules,
-        List<FhirComplex> slices)
+        List<FhirComplex> slices,
+        HashSet<string> slicesInDifferential)
     {
         DefinedById = definedById;
         DefinedByUrl = definedByUrl;
@@ -109,19 +113,24 @@ public class FhirSlicing
         {
             _slicesByName.Add(slice.SliceName, slice);
         }
+
+        _slicesInDifferential = new();
+        foreach (string name in slicesInDifferential)
+        {
+            _slicesInDifferential.Add(name);
+        }
     }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirSlicing"/> class.
-    /// </summary>
-    /// <param name="definedById">       The identifier of the defined by.</param>
-    /// <param name="definedByUrl">      The defined by URL.</param>
-    /// <param name="description">       The description.</param>
-    /// <param name="isOrdered">         True if ordered, false if not.</param>
-    /// <param name="fieldOrder">        The field order.</param>
-    /// <param name="slicingRules">      Rules associated with this slicing group.</param>
-    /// <param name="discriminatorRules">The discriminator rules for this slicing group.</param>
-    /// <param name="slices">            The slices.</param>
+    /// <summary>Initializes a new instance of the <see cref="FhirSlicing"/> class.</summary>
+    /// <param name="definedById">         The identifier of the defined by.</param>
+    /// <param name="definedByUrl">        The defined by URL.</param>
+    /// <param name="description">         The description.</param>
+    /// <param name="isOrdered">           True if ordered, false if not.</param>
+    /// <param name="fieldOrder">          The field order.</param>
+    /// <param name="slicingRules">        Rules associated with this slicing group.</param>
+    /// <param name="discriminatorRules">  The discriminator rules for this slicing group.</param>
+    /// <param name="slices">              The slices.</param>
+    /// <param name="slicesInDifferential">The slices in differential.</param>
     [System.Text.Json.Serialization.JsonConstructor]
     public FhirSlicing(
         string definedById,
@@ -131,7 +140,8 @@ public class FhirSlicing
         int fieldOrder,
         FhirSlicingRule slicingRules,
         Dictionary<string, FhirSliceDiscriminatorRule> discriminatorRules,
-        List<FhirComplex> slices)
+        List<FhirComplex> slices,
+        HashSet<string> slicesInDifferential)
     {
         DefinedById = definedById;
         DefinedByUrl = definedByUrl;
@@ -141,6 +151,7 @@ public class FhirSlicing
         SlicingRules = slicingRules;
         _rules = discriminatorRules;
         _slices = slices;
+        _slicesInDifferential = slicesInDifferential;
     }
 
     /// <summary>Values that represent how slices are interpreted when evaluating an instance.</summary>
@@ -192,6 +203,9 @@ public class FhirSlicing
     /// <value>The slices.</value>
     public List<FhirComplex> Slices => _slices;
 
+    /// <summary>Gets a value indicating whether this object has differential slices.</summary>
+    public bool HasDifferentialSlices => _slicesInDifferential.Any();
+
     /// <summary>Indexer to get slices based on name.</summary>
     /// <param name="sliceName">Name of the slice.</param>
     /// <returns>The indexed item.</returns>
@@ -214,6 +228,31 @@ public class FhirSlicing
     public bool HasSlice(string name)
     {
         return _slicesByName.ContainsKey(name);
+    }
+
+    /// <summary>Query if 'name' is slice in differential.</summary>
+    /// <param name="name">The name.</param>
+    /// <returns>True if slice in differential, false if not.</returns>
+    public bool IsSliceInDifferential(string name)
+    {
+        return _slicesInDifferential.Contains(name);
+    }
+
+    /// <summary>Sets in differential.</summary>
+    /// <param name="sliceName">Name of the slice.</param>
+    public void SetInDifferential(string sliceName)
+    {
+        _slicesInDifferential.Add(sliceName);
+
+        if (_slicesByName.ContainsKey(sliceName) &&
+            (_slicesByName[sliceName].Elements != null) &&
+            _slicesByName[sliceName].Elements.Any())
+        {
+            foreach (FhirElement element in _slicesByName[sliceName].Elements.Values)
+            {
+                element.SetInDifferential();
+            }
+        }
     }
 
     /// <summary>Adds a slice.</summary>
@@ -266,6 +305,7 @@ public class FhirSlicing
             IsOrdered,
             SlicingRules,
             rules,
-            slices);
+            slices,
+            _slicesInDifferential);
     }
 }

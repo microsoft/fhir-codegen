@@ -82,7 +82,7 @@ public class FhirComplex : FhirTypeBase
     /// <param name="standardStatus">  The standard status.</param>
     /// <param name="isExperimental">  If this complex type is marked experimental.</param>
     /// <param name="shortDescription">Information describing the short.</param>
-    /// <param name="purpose">         The purpose.</param>
+    /// <param name="purpose">         The definition.</param>
     /// <param name="comment">         The comment.</param>
     /// <param name="validationRegEx"> The validation RegEx.</param>
     /// <param name="contextElements"> The context elements.</param>
