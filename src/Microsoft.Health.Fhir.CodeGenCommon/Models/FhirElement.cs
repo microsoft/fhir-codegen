@@ -32,6 +32,7 @@ public class FhirElement : FhirTypeBase
     /// <param name="cardinalityMax">   The cardinality maximum.</param>
     /// <param name="isModifier">       If this element modifies the meaning of its parent.</param>
     /// <param name="isSummary">        If this element should be included in summaries.</param>
+    /// <param name="isMustSupport">    If this element is marked as 'must support'.</param>
     /// <param name="defaultFieldName"> Name of a default field, e.g., defaultUri, defaultCode.</param>
     /// <param name="defaultFieldValue">Value of a default field.</param>
     /// <param name="fixedFieldName">   Name of a fixed field, e.g., fixedUri, fixedCode.</param>
@@ -57,6 +58,7 @@ public class FhirElement : FhirTypeBase
         string cardinalityMax,
         bool? isModifier,
         bool? isSummary,
+        bool? isMustSupport,
         string defaultFieldName,
         object defaultFieldValue,
         string fixedFieldName,
@@ -138,6 +140,7 @@ public class FhirElement : FhirTypeBase
 
         IsModifier = isModifier == true;
         IsSummary = isSummary == true;
+        IsMustSupport = isMustSupport == true;
 
         DefaultFieldName = defaultFieldName;
         DefaultFieldValue = defaultFieldValue;
@@ -187,6 +190,7 @@ public class FhirElement : FhirTypeBase
         bool hidesParent,
         bool isModifier,
         bool isSummary,
+        bool isMustSupport,
         string codesName,
         List<string> codes,
         string valueSet,
@@ -220,6 +224,7 @@ public class FhirElement : FhirTypeBase
         HidesParent = hidesParent;
         IsModifier = isModifier;
         IsSummary = isSummary;
+        IsMustSupport = isMustSupport;
         CodesName = codesName;
         _codes = codes ?? new();
         ValueSet = valueSet;
@@ -296,6 +301,9 @@ public class FhirElement : FhirTypeBase
 
     /// <summary>Gets a value indicating whether this object is summary.</summary>
     public bool IsSummary { get; }
+
+    /// <summary>Gets a value indicating whether this object is must support.</summary>
+    public bool IsMustSupport { get; }
 
     /// <summary>Gets the field order.</summary>
     public int FieldOrder { get; }
@@ -459,6 +467,7 @@ public class FhirElement : FhirTypeBase
             CardinalityMax == -1 ? "*" : $"{CardinalityMax}",
             IsModifier,
             IsSummary,
+            IsMustSupport,
             DefaultFieldName,
             DefaultFieldValue,
             FixedFieldName,

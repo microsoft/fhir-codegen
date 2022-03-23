@@ -22,6 +22,11 @@
                 <td class="fw-bold">@ElementName(element)</td>
             }
             <td>
+                @if (element.IsMustSupport)
+                {
+                    <span data-bs-toggle="tooltip" title="Must Support">Ⓜ️ </span>
+                }
+
                 @if (element.IsModifier)
                 {
                     <span data-bs-toggle="tooltip" title="Modifier Element">⁈ </span>
