@@ -1,4 +1,4 @@
-﻿@page "/browsePackage"
+﻿@page "/view/package"
 
 @using FhirCodeGenBlazor.Models;
 @using FhirCodeGenBlazor.Services;
@@ -102,7 +102,7 @@ else
 
         directive = PackageName + "#" + Version;
 
-        NavTracker?.NotifyNav(directive, $"browsePackage?packageName={PackageName}&version={Version}", 1);
+        NavTracker?.NotifyNav(directive, $"view/package?packageName={PackageName}&version={Version}", 1);
         NavigationManager.LocationChanged += HandleLocationChanged;
 
         Task.Run(() => RebuildFilteredArtifacts(string.Empty, true));
@@ -133,11 +133,11 @@ else
     /// <param name="e">     Location changed event information.</param>
     private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
     {
-        if (e.Location.ToLowerInvariant().Contains("/browsepackage"))
+        if (e.Location.ToLowerInvariant().Contains("/view/package"))
         {
             directive = PackageName + "#" + Version;
 
-            NavTracker?.NotifyNav(directive, $"browsePackage?packageName={PackageName}&version={Version}", 1);
+            NavTracker?.NotifyNav(directive, $"view/package?packageName={PackageName}&version={Version}", 1);
 
             Task.Run(() => RebuildFilteredArtifacts(artifactFilterText, true));
         }

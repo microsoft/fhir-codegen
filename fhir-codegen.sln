@@ -42,7 +42,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhirCsR5", "src\fhirCsR5\fh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeGenCommon", "src\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj", "{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FhirCodeGenBlazor", "src\FhirCodeGenBlazor\FhirCodeGenBlazor.csproj", "{F91764FD-EE86-4FBC-951F-819361ABCA4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FhirCodeGenBlazor", "src\FhirCodeGenBlazor\FhirCodeGenBlazor.csproj", "{F91764FD-EE86-4FBC-951F-819361ABCA4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

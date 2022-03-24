@@ -408,6 +408,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             foreach (KeyValuePair<string, FhirOperation> kvp in source._systemOperations)
             {
+                if (_systemOperations.ContainsKey(kvp.Key))
+                {
+                    continue;
+                }
+
                 _systemOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
             }
         }
@@ -451,6 +456,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             foreach (KeyValuePair<string, FhirSearchParam> kvp in source._globalSearchParameters)
             {
+                if (_globalSearchParameters.ContainsKey(kvp.Key))
+                {
+                    continue;
+                }
+
                 if ((!options.IncludeExperimental) && kvp.Value.IsExperimental)
                 {
                     continue;
@@ -472,6 +482,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
         foreach (KeyValuePair<string, FhirSearchParam> kvp in source._searchResultParameters)
         {
+            if (_searchResultParameters.ContainsKey(kvp.Key))
+            {
+                continue;
+            }
+
             if ((!options.IncludeExperimental) && kvp.Value.IsExperimental)
             {
                 continue;
@@ -482,6 +497,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
         foreach (KeyValuePair<string, FhirSearchParam> kvp in source._allInteractionParameters)
         {
+            if (_allInteractionParameters.ContainsKey(kvp.Key))
+            {
+                continue;
+            }
+
             if ((!options.IncludeExperimental) && kvp.Value.IsExperimental)
             {
                 continue;
@@ -1057,27 +1077,30 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         });
 
         // traverse resources in the search parameter
-        foreach (string resourceName in searchParam.ResourceTypes)
+        if (searchParam.ResourceTypes != null)
         {
-            // check for search parameters on 'Resource', means they are global
-            if (resourceName.Equals("Resource", StringComparison.Ordinal))
+            foreach (string resourceName in searchParam.ResourceTypes)
             {
-                // add to global
-                if (!_globalSearchParameters.ContainsKey(searchParam.Code))
+                // check for search parameters on 'Resource', means they are global
+                if (resourceName.Equals("Resource", StringComparison.Ordinal))
                 {
-                    _globalSearchParameters.Add(searchParam.Code, searchParam);
+                    // add to global
+                    if (!_globalSearchParameters.ContainsKey(searchParam.Code))
+                    {
+                        _globalSearchParameters.Add(searchParam.Code, searchParam);
+                    }
+
+                    continue;
                 }
 
-                continue;
-            }
+                // check for having this resource
+                if (!_resourcesByName.ContainsKey(resourceName))
+                {
+                    continue;
+                }
 
-            // check for having this resource
-            if (!_resourcesByName.ContainsKey(resourceName))
-            {
-                continue;
+                _resourcesByName[resourceName].AddSearchParameter(searchParam);
             }
-
-            _resourcesByName[resourceName].AddSearchParameter(searchParam);
         }
     }
 

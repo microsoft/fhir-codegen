@@ -45,7 +45,7 @@ public class SpecManagerWebService : IDisposable, IHostedService, ISpecManagerWe
         FhirManager.Current.InfoByDirective[key];
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FhirManager"/> class.
+    /// Initializes a new instance of the <see cref="SpecManagerWebService"/> class.
     /// </summary>
     public SpecManagerWebService()
     {

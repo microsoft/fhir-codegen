@@ -46,11 +46,28 @@ else
                     {
                         case PackageLoadStateEnum.Loaded:
 
-                            <td><button type="button" @onclick="() => NavToBrowsePackage(record.CacheDirective)">Browse</button></td>
+                            <td>
+                                <button
+                                    type="button"
+                                    @onclick="() => NavToViewPackage(record.CacheDirective)"
+                                    data-bs-toggle="tooltip"
+                                    title="View Package"
+                                    >
+                                    <span class="oi oi-eye"></span>
+                                </button>
+                                <button
+                                    type="button"
+                                    @onclick="() => NavToExportPackage(record.CacheDirective)"
+                                    data-bs-toggle="tooltip"
+                                    title="Export Package"
+                                    >
+                                    <span class="oi oi-arrow-thick-right"></span>
+                                </button>
+                            </td>
                             break;
 
                         case PackageLoadStateEnum.Parsed:
-                            <td>✔️</td>
+                            <td><span class="oi oi-check"></span></td>
                             break;
 
                         case PackageLoadStateEnum.Queued:
@@ -110,17 +127,32 @@ else
 
     /// <summary>Navigation to browse package.</summary>
     /// <param name="directive">The directive.</param>
-    private void NavToBrowsePackage(string directive)
+    private void NavToViewPackage(string directive)
     {
         string[] components = directive.Split('#');
 
         if (components.Length > 1)
         {
-            NavigationManager.NavigateTo($"/browsePackage?packageName={components[0]}&version={components[1]}");
+            NavigationManager.NavigateTo($"/view/package?packageName={components[0]}&version={components[1]}");
             return;
         }
 
-        NavigationManager.NavigateTo($"/browsePackage?packageName={components[0]}");
+        NavigationManager.NavigateTo($"/view/package?packageName={components[0]}");
+    }
+
+    /// <summary>Navigation to export package.</summary>
+    /// <param name="directive">The directive.</param>
+    private void NavToExportPackage(string directive)
+    {
+        string[] components = directive.Split('#');
+
+        if (components.Length > 1)
+        {
+            NavigationManager.NavigateTo($"/export/package?packageName={components[0]}&version={components[1]}");
+            return;
+        }
+
+        NavigationManager.NavigateTo($"/export/package?packageName={components[0]}");
     }
 
     /// <summary>Button load package clicked.</summary>
