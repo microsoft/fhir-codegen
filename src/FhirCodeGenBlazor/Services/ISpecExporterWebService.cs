@@ -18,10 +18,11 @@ public interface ISpecExporterWebService
     /// <returns>The languages by name.</returns>
     Dictionary<string, ILanguage> GetExportLanguages();
 
-    /// <summary>Gets export language.</summary>
-    /// <param name="name">The name.</param>
-    /// <returns>The export language.</returns>
-    ILanguage? GetExportLanguage(string name);
+    /// <summary>Attempts to get export language an ILanguage? from the given string.</summary>
+    /// <param name="name"> The name.</param>
+    /// <param name="iLang">[out] Language interface or null.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    bool TryGetExportLanguage(string name, out ILanguage? iLang);
 
     /// <summary>Request export.</summary>
     /// <param name="info">          The loaded FHIR package information.</param>

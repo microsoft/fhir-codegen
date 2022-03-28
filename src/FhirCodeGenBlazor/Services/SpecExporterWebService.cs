@@ -62,17 +62,22 @@ public class SpecExporterWebService : IDisposable, IHostedService, ISpecExporter
         return languages;
     }
 
-    /// <summary>Gets export language.</summary>
-    /// <param name="name">The name.</param>
-    /// <returns>The export language.</returns>
-    public ILanguage? GetExportLanguage(string name)
+    /// <summary>Attempts to get export language an ILanguage? from the given string.</summary>
+    /// <param name="name"> The name.</param>
+    /// <param name="iLang">[out] Language interface or null.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetExportLanguage(string name, out ILanguage? iLang)
     {
-        foreach (ILanguage lang in LanguageHelper.GetLanguages(name))
+        List<ILanguage> languages = LanguageHelper.GetLanguages(name);
+
+        if (languages.Any())
         {
-            return lang;
+            iLang = languages[0];
+            return true;
         }
 
-        return null;
+        iLang = null;
+        return false;
     }
 
 

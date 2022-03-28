@@ -57,6 +57,14 @@ else
                                 </button>
                                 <button
                                     type="button"
+                                    @onclick="() => NavToPackageElements(record.CacheDirective)"
+                                    data-bs-toggle="tooltip"
+                                    title="Package Elements"
+                                    >
+                                    <span class="oi oi-box"></span>
+                                </button>
+                                <button
+                                    type="button"
                                     @onclick="() => NavToExportPackage(record.CacheDirective)"
                                     data-bs-toggle="tooltip"
                                     title="Export Package"
@@ -123,6 +131,22 @@ else
     private void PackageServiceChanged(object? sender, EventArgs e)
     {
         InvokeAsync(() => StateHasChanged());
+    }
+
+    
+    /// <summary>Navigation to browse package.</summary>
+    /// <param name="directive">The directive.</param>
+    private void NavToPackageElements(string directive)
+    {
+        string[] components = directive.Split('#');
+
+        if (components.Length > 1)
+        {
+            NavigationManager.NavigateTo($"/view/package/elements?packageName={components[0]}&version={components[1]}");
+            return;
+        }
+
+        NavigationManager.NavigateTo($"/view/package/elements?packageName={components[0]}");
     }
 
     /// <summary>Navigation to browse package.</summary>

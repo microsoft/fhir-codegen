@@ -1,0 +1,350 @@
+﻿@page "/view/package/elements"
+
+@using FhirCodeGenBlazor.Models;
+@using FhirCodeGenBlazor.Services;
+@using Microsoft.Health.Fhir.CodeGenCommon.Models;
+@using Markdig
+@using System.Text.RegularExpressions
+@inject NavigationManager NavigationManager
+@inject ISpecManagerWebService SpecService
+@implements IDisposable
+@implements IPackageVersionProvider
+
+@if (string.IsNullOrEmpty(directive))
+{
+    <PageTitle>FHIR Element Search</PageTitle>
+    <p><em>This page requires a package name and version, please select...</em></p>
+}
+else if (SpecService[directive].ArtifactRecordsByClass.Any())
+{
+    <PageTitle>@directive</PageTitle>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="switchToggleDetails" @bind="showDetailedInfo" />
+        <label for="switchToggleDetails" class="form-label">Show Element Details</label>
+    </div>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="switchToggleRegex" @bind="filterIsRegex" />
+        <label for="switchToggleRegex" class="form-label">Use RegEx</label>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Element Filter</span>
+        <input
+            type="text"
+            placeholder="Filter"
+            aria-label="Filter"
+            aria-describedby="basic-addon1"
+            @bind-value="elementFilterText"
+            @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredElements(e?.Value?.ToString() ?? "")))"
+            />
+        <span class="ms-2 mt-2">@filteredElements.Count elements found</span>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-2">Element</th>
+                <th class="col-md-1">Flags</th>
+                <th class="col-md-1">Type</th>
+                <th class="col-md-1">Card.</th>
+                <th class="col-md-3">Short</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (FhirElement element in filteredElements)
+            {
+                <tr class="@GetTrClass()">
+                    @if (!string.IsNullOrEmpty(element.FixedFieldName))
+                    {
+                        <td class="fw-bold">
+                            <span>@element.Path</span><br/>
+                            &nbsp;<span class="text-danger">*</span> fixed to:
+                            <span class="font-monospace bg-dark bg-opacity-50 text-light p-1">@element.FixedFieldValue</span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="fw-bold">@element.Path</td>
+                    }
+                    <td>
+                        @if (element.IsMustSupport)
+                        {
+                            <span data-bs-toggle="tooltip" title="Must Support">Ⓜ️ </span>
+                        }
+
+                        @if (element.IsModifier)
+                        {
+                            <span data-bs-toggle="tooltip" title="@(element.IsModifierReason ?? "Modifier Element")">⁈ </span>
+                        }
+
+                        @if (element.IsSummary)
+                        {
+                            <span data-bs-toggle="tooltip" title="Included in Summary">∑ </span>
+                        }
+                    </td>
+                    <td class="text-wrap">@GetElementTypeString(element)</td>
+                    <td>@element.FhirCardinality</td>
+                    <td>
+                        @element.ShortDescription
+                    </td>
+                </tr>
+
+                @if (showDetailedInfo)
+                {
+                    <tr>
+                        <td colspan="5">
+                            <div class="small">
+                                <strong>Definition:</strong><p>@element.Purpose</p>
+
+                                <strong>Comments:</strong>
+                                @(new MarkupString(Markdown.ToHtml(element.Comment)))
+
+                                @if (!string.IsNullOrEmpty(element.ValueSet))
+                                {
+                                    <p><strong>Bound to:</strong> @element.ValueSet (@element.ValueSetBindingStrength)</p>
+                                }
+
+                                @if (!string.IsNullOrEmpty(element.ValidationRegEx))
+                                {
+                                    <p><strong>Validation RegEx:</strong> @element.ValidationRegEx</p>
+                                }
+
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <PageTitle>@directive</PageTitle>
+    <p><em>This package contains no supported artifacts.</em></p>
+}
+
+@code {
+    private List<FhirElement> filteredElements = new();
+
+    /// <summary>Specifies the filter.</summary>
+    private string elementFilterText = "";
+
+    /// <summary>True if filter is RegEx.</summary>
+    private bool filterIsRegex = false;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the detailed information is shown.
+    /// </summary>
+    private bool showDetailedInfo { get; set; } = true;
+
+    /// <summary>Gets or sets the navigation tracker.</summary>
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
+    /// <summary>Gets or sets the package name.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "packageName")]
+    public string PackageName { get; set; } = "";
+
+    /// <summary>Gets or sets the package version.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "version")]
+    public string Version { get; set; } = "";
+
+    /// <summary>The directive.</summary>
+    private string directive = string.Empty;
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        directive = PackageName + "#" + Version;
+
+        NavTracker?.NotifyNav(directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
+        NavigationManager.LocationChanged += HandleLocationChanged;
+
+        Task.Run(() => RebuildFilteredElements(string.Empty));
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
+    }
+
+    /// <summary>Gets tr class.</summary>
+    /// <returns>The tr class.</returns>
+    private string GetTrClass()
+    {
+        if (showDetailedInfo)
+        {
+            return "table-active";
+        }
+
+        return string.Empty;
+    }
+
+    /// <summary>Gets element type string.</summary>
+    /// <param name="element">The element.</param>
+    /// <returns>The element type string.</returns>
+    private string GetElementTypeString(FhirElement element)
+    {
+        if (element.BaseTypeName.Equals(element.Id, StringComparison.Ordinal))
+        {
+            return "BackboneElement";
+        }
+
+        if (!string.IsNullOrEmpty(element.BaseTypeName))
+        {
+            return element.BaseTypeName;
+        }
+
+        return string.Join(
+            ", ",
+            element.ElementTypes.Values.Select(
+                et => et.Profiles.Any()
+                    ? $"{et.Name}( {string.Join(" | ", et.Profiles.Values.Select(p => p.Name))} )"
+                    : et.Name));
+    }
+
+    /// <summary>Artifacts updated.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Artifact index changed event information.</param>
+    private void ArtifactsUpdated(object? sender, ArtifactIndexChangedEventArgs e)
+    {
+        if ((e.PackageName == PackageName) && (e.Version == Version))
+        {
+            RebuildFilteredElements(elementFilterText);
+        }
+    }
+
+    /// <summary>Handles the location changed.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Location changed event information.</param>
+    private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        if (e.Location.ToLowerInvariant().Contains("/view/package/elements"))
+        {
+            directive = PackageName + "#" + Version;
+
+            NavTracker?.NotifyNav(directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
+
+            Task.Run(() => RebuildFilteredElements(elementFilterText));
+        }
+    }
+
+    /// <summary>Adds the elements from complex.</summary>
+    /// <param name="filter">  Specifies the filter.</param>
+    /// <param name="complex"> The complex.</param>
+    /// <param name="elements">The elements.</param>
+    private void AddElementsFromComplex(
+        string filter,
+        FhirComplex complex,
+        List<FhirElement> elements)
+    {
+        foreach (FhirComplex component in complex.Components.Values)
+        {
+            AddElementsFromComplex(filter, component, elements);
+        }
+
+        foreach (FhirElement element in complex.Elements.Values)
+        {
+            if (element.Name.Contains(filter, StringComparison.OrdinalIgnoreCase))
+            {
+                elements.Add(element);
+            }
+        }
+    }
+
+    /// <summary>Adds the elements from complex.</summary>
+    /// <param name="expression">  Specifies the filter.</param>
+    /// <param name="complex"> The complex.</param>
+    /// <param name="elements">The elements.</param>
+    private void AddElementsFromComplex(
+        Regex expression,
+        FhirComplex complex,
+        List<FhirElement> elements)
+    {
+        foreach (FhirComplex component in complex.Components.Values)
+        {
+            AddElementsFromComplex(expression, component, elements);
+        }
+
+        foreach (FhirElement element in complex.Elements.Values)
+        {
+            if (expression.IsMatch(element.Name))
+            {
+                elements.Add(element);
+            }
+        }
+    }
+
+    /// <summary>Rebuild filtered artifacts.</summary>
+    /// <param name="appliedFilter">            (Optional) A filter specifying the applied.</param>
+    private async void RebuildFilteredElements(
+        string appliedFilter = "")
+    {
+        elementFilterText = appliedFilter;
+
+        if (appliedFilter.Length < 3)
+        {
+            filteredElements.Clear();
+            return;
+        }
+
+        List<FhirElement> filtered = new();
+
+        if (filterIsRegex)
+        {
+            try
+            {
+                Regex expression = new(appliedFilter);
+
+                // search through complex data types
+                foreach (FhirComplex complex in SpecService[directive].ComplexTypes.Values)
+                {
+                    AddElementsFromComplex(expression, complex, filtered);
+                }
+
+                foreach (FhirComplex complex in SpecService[directive].Resources.Values)
+                {
+                    AddElementsFromComplex(expression, complex, filtered);
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+        else
+        {
+            // search through complex data types
+            foreach (FhirComplex complex in SpecService[directive].ComplexTypes.Values)
+            {
+                AddElementsFromComplex(appliedFilter, complex, filtered);
+            }
+
+            foreach (FhirComplex complex in SpecService[directive].Resources.Values)
+            {
+                AddElementsFromComplex(appliedFilter, complex, filtered);
+            }
+        }
+
+        filtered.Sort((a, b) => a.Path.CompareTo(b.Id));
+        filteredElements = filtered;
+
+        // manually flag state has changed in case we are in a callback / async context
+        await InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Links for artifact.</summary>
+    /// <param name="record">The record.</param>
+    /// <returns>A string.</returns>
+    private string LinkForArtifact(FhirArtifactRecord record)
+    {
+        return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&url={record.Url}";
+    }
+}

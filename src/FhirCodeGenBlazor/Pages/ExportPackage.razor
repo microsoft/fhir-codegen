@@ -2,12 +2,14 @@
 
 @using FhirCodeGenBlazor.Models;
 @using FhirCodeGenBlazor.Services;
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @using Microsoft.Health.Fhir.SpecManager.Language
 @using Microsoft.Health.Fhir.SpecManager.Manager
 @inject NavigationManager NavigationManager
 @inject ISpecManagerWebService SpecService
 @inject ISpecExporterWebService ExportService
+@inject ProtectedLocalStorage BrowserStore
 @implements IDisposable
 
 @if ((string.IsNullOrEmpty(directive)) || (info == null))
@@ -103,7 +105,7 @@ else if (info.ArtifactRecordsByClass.Any())
 
             @if (showLanguageDetails == true)
             {
-                <select class="form-select" aria-label="Select Language" @onchange="LanguageChanged">
+                <select class="form-select" aria-label="Select Language" @bind="selectedLanguage">
                     <option selected value="">Select a language</option>
                     @foreach (string name in ExportService.GetExportLanguages().Keys)
                     {
@@ -222,6 +224,23 @@ else
     /// <summary>Gets or sets the full pathname of the export directory file.</summary>
     private string exportDirectoryPath { get; set; } = string.Empty;
 
+    /// <summary>The selected language.</summary>
+    private string _selectedLanguage = string.Empty;
+
+    /// <summary>Gets or sets the selected language.</summary>
+    private string selectedLanguage
+    {
+        get
+        {
+            return _selectedLanguage;
+        }
+        set
+        {
+            _selectedLanguage = value;
+            InvokeAsync(() => UpdateLanguage(value));
+        }
+    }
+
     /// <summary>
     /// Gets or sets a value indicating whether the in progress should be exported.
     /// </summary>
@@ -244,6 +263,33 @@ else
 
         NavTracker?.NotifyNav(directive, $"export/package?packageName={PackageName}&version={Version}", 1);
         NavigationManager.LocationChanged += HandleLocationChanged;
+    }
+
+    /// <summary>Executes the after render asynchronous action.</summary>
+    /// <param name="firstRender">True to first render.</param>
+    /// <returns>An asynchronous result.</returns>
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            InvokeAsync(TryUpdateLanguageAsync);
+        }
+
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    /// <summary>Try update language asynchronous.</summary>
+    /// <returns>An asynchronous result that yields the try update language.</returns>
+    async Task<bool> TryUpdateLanguageAsync()
+    {
+        var readResult = await BrowserStore.GetAsync<string>("last_export_language");
+        if (readResult.Success)
+        {
+            selectedLanguage = readResult.Value ?? string.Empty;
+            //UpdateLanguage(readResult.Value ?? string.Empty);
+        }
+
+        return true;
     }
 
     /// <summary>Starts an export.</summary>
@@ -270,6 +316,14 @@ else
         {
             uiMessage = "*** An export path is required! ***";
             return;
+        }
+
+        BrowserStore.SetAsync("last_export_language", language.LanguageName);
+        BrowserStore.SetAsync($"path_{directive}_{language.LanguageName}", exportDirectoryPath);
+
+        foreach ((string option, string value) in languageOptions)
+        {
+            BrowserStore.SetAsync($"{directive}_{language.LanguageName}_{option}", value);
         }
 
         ExporterOptions options = new(
@@ -303,7 +357,7 @@ else
     {
         if (exportTask.IsCompletedSuccessfully)
         {
-            uiMessage = "Export complete!";
+            uiMessage = $"Export complete: {DateTime.Now.ToString()}";
             exportInProgress = false;
             InvokeAsync(() => StateHasChanged());
             return;
@@ -320,7 +374,7 @@ else
     /// <returns>The identifier for language option.</returns>
     string GetIdForLanguageOption(string option)
     {
-        return "input" + option;
+        return "input_" + option;
     }
 
     /// <summary>Gets export button class.</summary>
@@ -338,28 +392,41 @@ else
         return shown ? "oi oi-caret-bottom" : "oi oi-caret-top";
     }
 
-    /// <summary>Language changed.</summary>
-    /// <param name="e">Change event information.</param>
-    void LanguageChanged(ChangeEventArgs e)
+    /// <summary>Updates the language described by name.</summary>
+    /// <param name="name">The name.</param>
+    private async void UpdateLanguage(string name)
     {
-        string name = e.Value?.ToString() ?? string.Empty;
-
         if (string.IsNullOrEmpty(name))
         {
             language = null;
             return;
         }
 
-        language = ExportService.GetExportLanguage(name);
+        language = null;
         languageOptions.Clear();
 
-        if (language != null)
+        if (ExportService.TryGetExportLanguage(name, out ILanguage? iLang) &&
+            (iLang != null))
         {
-            foreach (string option in language.LanguageOptions.Keys)
+            foreach (string option in iLang.LanguageOptions.Keys)
             {
-                languageOptions.Add(option, string.Empty);
+                ProtectedBrowserStorageResult<string> optReadResult = await
+                    BrowserStore.GetAsync<string>($"{directive}_{iLang.LanguageName}_{option}");
+
+                languageOptions.Add(option, optReadResult.Value ?? string.Empty);
             }
+
+            ProtectedBrowserStorageResult<string> readResult = await
+                BrowserStore.GetAsync<string>($"path_{directive}_{iLang.LanguageName}");
+            if (readResult.Success)
+            {
+                exportDirectoryPath = readResult.Value ?? exportDirectoryPath;
+            }
+
+            language = iLang;
         }
+
+        await InvokeAsync(() => StateHasChanged());
     }
 
     /// <summary>

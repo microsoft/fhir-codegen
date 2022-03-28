@@ -199,6 +199,12 @@ public class FhirManager : IDisposable
     {
         string directive = info.PackageName + "#" + info.VersionString;
 
+        if ((!loadDirective.Equals(directive, StringComparison.OrdinalIgnoreCase)) &&
+            (!_loadedInfoByDirective.ContainsKey(loadDirective)))
+        {
+            _loadedInfoByDirective.Add(loadDirective, info);
+        }
+
         if (_loadedInfoByDirective.ContainsKey(directive))
         {
             Console.WriteLine($"WARNING: Attempt to load already loaded package: {directive}");
