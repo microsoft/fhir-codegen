@@ -50,9 +50,6 @@ public class FhirCacheService : IDisposable
     /// <summary>Package versions, by package name.</summary>
     private Dictionary<string, List<string>> _versionsByName;
 
-    /// <summary>Occurs when On Changed.</summary>
-    public event EventHandler<EventArgs> OnChanged;
-
     /// <summary>
     /// Prevents a default instance of the <see cref="FhirCacheService"/> class from being created.
     /// </summary>
@@ -94,6 +91,9 @@ public class FhirCacheService : IDisposable
 
         SynchronizeCache();
     }
+
+    /// <summary>Occurs when On Changed.</summary>
+    public event EventHandler<EventArgs> OnChanged;
 
     /// <summary>Gets the current singleton.</summary>
     public static FhirCacheService Current => _singleton;
@@ -462,6 +462,7 @@ public class FhirCacheService : IDisposable
             catch (Exception ex)
             {
                 Console.WriteLine($"TryDownloadCoreViaCI <<< failed to compare local to CI, forcing download ({ex.Message})");
+                return false;
             }
         }
 

@@ -199,34 +199,28 @@ public class FhirManager : IDisposable
     {
         string directive = info.PackageName + "#" + info.VersionString;
 
-        if ((!loadDirective.Equals(directive, StringComparison.OrdinalIgnoreCase)) &&
-            (!_loadedInfoByDirective.ContainsKey(loadDirective)))
+        if (_loadedInfoByDirective.ContainsKey(loadDirective))
         {
-            _loadedInfoByDirective.Add(loadDirective, info);
-        }
-
-        if (_loadedInfoByDirective.ContainsKey(directive))
-        {
-            Console.WriteLine($"WARNING: Attempt to load already loaded package: {directive}");
+            Console.WriteLine($"WARNING: Attempt to load already loaded package: {loadDirective}");
             return;
         }
 
-        _loadedInfoByDirective.Add(directive, info);
+        _loadedInfoByDirective.Add(loadDirective, info);
 
         if (wasRequested)
         {
-            _loadedByRequest.Add(directive);
+            _loadedByRequest.Add(loadDirective);
             _loadDirectiveToVersion.Add(loadDirective, directive);
         }
         else
         {
-            _loadedAsDependency.Add(directive);
+            _loadedAsDependency.Add(loadDirective);
         }
 
         if (isCore)
         {
-            _directivePackageTypes.Add(directive, FhirPackageCommon.FhirPackageTypeEnum.Core);
-            _directivePackageTypes.Add(directive.Replace(".core", ".expansions"), FhirPackageCommon.FhirPackageTypeEnum.Core);
+            _directivePackageTypes.Add(loadDirective, FhirPackageCommon.FhirPackageTypeEnum.Core);
+            _directivePackageTypes.Add(loadDirective.Replace(".core", ".expansions"), FhirPackageCommon.FhirPackageTypeEnum.Core);
 
             FhirCacheService.Current.UpdatePackageState(
                 loadDirective,
@@ -235,14 +229,14 @@ public class FhirManager : IDisposable
                 PackageLoadStateEnum.Loaded);
 
             FhirCacheService.Current.UpdatePackageState(
-                directive.Replace(".core", ".expansions"),
+                loadDirective.Replace(".core", ".expansions"),
                 info.PackageName,
                 info.VersionString,
                 PackageLoadStateEnum.Loaded);
         }
         else
         {
-            _directivePackageTypes.Add(directive, FhirPackageCommon.FhirPackageTypeEnum.IG);
+            _directivePackageTypes.Add(loadDirective, FhirPackageCommon.FhirPackageTypeEnum.IG);
 
             FhirCacheService.Current.UpdatePackageState(
                 loadDirective,

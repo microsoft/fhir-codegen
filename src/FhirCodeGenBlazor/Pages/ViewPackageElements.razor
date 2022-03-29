@@ -49,41 +49,38 @@ else if (SpecService[directive].ArtifactRecordsByClass.Any())
             </tr>
         </thead>
         <tbody>
-            @foreach (FhirElement element in filteredElements)
+            @foreach (ElementRecord rec in filteredElements)
             {
                 <tr class="@GetTrClass()">
-                    @if (!string.IsNullOrEmpty(element.FixedFieldName))
-                    {
-                        <td class="fw-bold">
-                            <span>@element.Path</span><br/>
-                            &nbsp;<span class="text-danger">*</span> fixed to:
-                            <span class="font-monospace bg-dark bg-opacity-50 text-light p-1">@element.FixedFieldValue</span>
-                        </td>
-                    }
-                    else
-                    {
-                        <td class="fw-bold">@element.Path</td>
-                    }
                     <td>
-                        @if (element.IsMustSupport)
+                        <span class="fw-bold">@rec.Element.Path</span><br/>
+                        <span class="fst-italic">Defined by @rec.DefinedByClass:</span> <span class="fw-bold">@rec.RootComplex.Path</span>
+                        @if (!string.IsNullOrEmpty(rec.Element.FixedFieldName))
+                        {
+                            <span class="text-danger">&nbsp;*</span><span>fixed to:</span>
+                            <span class="font-monospace bg-dark bg-opacity-50 text-light p-1">@rec.Element.FixedFieldValue</span>
+                        }
+                    </td>
+                    <td>
+                        @if (rec.Element.IsMustSupport)
                         {
                             <span data-bs-toggle="tooltip" title="Must Support">Ⓜ️ </span>
                         }
 
-                        @if (element.IsModifier)
+                        @if (rec.Element.IsModifier)
                         {
-                            <span data-bs-toggle="tooltip" title="@(element.IsModifierReason ?? "Modifier Element")">⁈ </span>
+                            <span data-bs-toggle="tooltip" title="@(rec.Element.IsModifierReason ?? "Modifier Element")">⁈ </span>
                         }
 
-                        @if (element.IsSummary)
+                        @if (rec.Element.IsSummary)
                         {
                             <span data-bs-toggle="tooltip" title="Included in Summary">∑ </span>
                         }
                     </td>
-                    <td class="text-wrap">@GetElementTypeString(element)</td>
-                    <td>@element.FhirCardinality</td>
+                    <td class="text-wrap">@GetElementTypeString(rec.Element)</td>
+                    <td>@rec.Element.FhirCardinality</td>
                     <td>
-                        @element.ShortDescription
+                        @rec.Element.ShortDescription
                     </td>
                 </tr>
 
@@ -92,19 +89,19 @@ else if (SpecService[directive].ArtifactRecordsByClass.Any())
                     <tr>
                         <td colspan="5">
                             <div class="small">
-                                <strong>Definition:</strong><p>@element.Purpose</p>
+                                <strong>Definition:</strong><p>@rec.Element.Purpose</p>
 
                                 <strong>Comments:</strong>
-                                @(new MarkupString(Markdown.ToHtml(element.Comment)))
+                                @(new MarkupString(Markdown.ToHtml(rec.Element.Comment)))
 
-                                @if (!string.IsNullOrEmpty(element.ValueSet))
+                                @if (!string.IsNullOrEmpty(rec.Element.ValueSet))
                                 {
-                                    <p><strong>Bound to:</strong> @element.ValueSet (@element.ValueSetBindingStrength)</p>
+                                    <p><strong>Bound to:</strong> @rec.Element.ValueSet (@rec.Element.ValueSetBindingStrength)</p>
                                 }
 
-                                @if (!string.IsNullOrEmpty(element.ValidationRegEx))
+                                @if (!string.IsNullOrEmpty(rec.Element.ValidationRegEx))
                                 {
-                                    <p><strong>Validation RegEx:</strong> @element.ValidationRegEx</p>
+                                    <p><strong>Validation RegEx:</strong> @rec.Element.ValidationRegEx</p>
                                 }
 
                             </div>
@@ -122,8 +119,6 @@ else
 }
 
 @code {
-    private List<FhirElement> filteredElements = new();
-
     /// <summary>Specifies the filter.</summary>
     private string elementFilterText = "";
 
@@ -151,6 +146,15 @@ else
 
     /// <summary>The directive.</summary>
     private string directive = string.Empty;
+
+    /// <summary>Information about the element.</summary>
+    private readonly record struct ElementRecord(
+        FhirArtifactClassEnum DefinedByClass,
+        FhirComplex RootComplex,
+        FhirElement Element);
+
+    private List<ElementRecord> filteredElements = new();
+
 
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
@@ -237,47 +241,61 @@ else
     }
 
     /// <summary>Adds the elements from complex.</summary>
-    /// <param name="filter">  Specifies the filter.</param>
-    /// <param name="complex"> The complex.</param>
-    /// <param name="elements">The elements.</param>
+    /// <param name="filter">       Specifies the filter.</param>
+    /// <param name="complex">      The complex.</param>
+    /// <param name="elements">     The elements.</param>
+    /// <param name="rootComplex">  The root complex.</param>
+    /// <param name="artifactClass">The artifact class.</param>
     private void AddElementsFromComplex(
         string filter,
         FhirComplex complex,
-        List<FhirElement> elements)
+        List<ElementRecord> elements,
+        FhirComplex rootComplex,
+        FhirArtifactClassEnum artifactClass)
     {
         foreach (FhirComplex component in complex.Components.Values)
         {
-            AddElementsFromComplex(filter, component, elements);
+            AddElementsFromComplex(filter, component, elements, rootComplex, artifactClass);
         }
 
         foreach (FhirElement element in complex.Elements.Values)
         {
             if (element.Name.Contains(filter, StringComparison.OrdinalIgnoreCase))
             {
-                elements.Add(element);
+                elements.Add(new ElementRecord(
+                    artifactClass,
+                    rootComplex,
+                    element));
             }
         }
     }
 
     /// <summary>Adds the elements from complex.</summary>
-    /// <param name="expression">  Specifies the filter.</param>
-    /// <param name="complex"> The complex.</param>
-    /// <param name="elements">The elements.</param>
+    /// <param name="expression">   The expression.</param>
+    /// <param name="complex">      The complex.</param>
+    /// <param name="elements">     The elements.</param>
+    /// <param name="rootComplex">  The root complex.</param>
+    /// <param name="artifactClass">The artifact class.</param>
     private void AddElementsFromComplex(
         Regex expression,
         FhirComplex complex,
-        List<FhirElement> elements)
+        List<ElementRecord> elements,
+        FhirComplex rootComplex,
+        FhirArtifactClassEnum artifactClass)
     {
         foreach (FhirComplex component in complex.Components.Values)
         {
-            AddElementsFromComplex(expression, component, elements);
+            AddElementsFromComplex(expression, component, elements, rootComplex, artifactClass);
         }
 
         foreach (FhirElement element in complex.Elements.Values)
         {
             if (expression.IsMatch(element.Name))
             {
-                elements.Add(element);
+                elements.Add(new ElementRecord(
+                    artifactClass,
+                    rootComplex,
+                    element));
             }
         }
     }
@@ -295,7 +313,7 @@ else
             return;
         }
 
-        List<FhirElement> filtered = new();
+        List<ElementRecord> filtered = new();
 
         if (filterIsRegex)
         {
@@ -306,12 +324,17 @@ else
                 // search through complex data types
                 foreach (FhirComplex complex in SpecService[directive].ComplexTypes.Values)
                 {
-                    AddElementsFromComplex(expression, complex, filtered);
+                    AddElementsFromComplex(expression, complex, filtered, complex, FhirArtifactClassEnum.ComplexType);
                 }
 
                 foreach (FhirComplex complex in SpecService[directive].Resources.Values)
                 {
-                    AddElementsFromComplex(expression, complex, filtered);
+                    AddElementsFromComplex(expression, complex, filtered, complex, FhirArtifactClassEnum.Resource);
+                }
+
+                foreach (FhirComplex complex in SpecService[directive].Profiles.Values)
+                {
+                    AddElementsFromComplex(expression, complex, filtered, complex, FhirArtifactClassEnum.Profile);
                 }
             }
             catch (Exception)
@@ -324,16 +347,21 @@ else
             // search through complex data types
             foreach (FhirComplex complex in SpecService[directive].ComplexTypes.Values)
             {
-                AddElementsFromComplex(appliedFilter, complex, filtered);
+                AddElementsFromComplex(appliedFilter, complex, filtered, complex, FhirArtifactClassEnum.ComplexType);
             }
 
             foreach (FhirComplex complex in SpecService[directive].Resources.Values)
             {
-                AddElementsFromComplex(appliedFilter, complex, filtered);
+                AddElementsFromComplex(appliedFilter, complex, filtered, complex, FhirArtifactClassEnum.Resource);
+            }
+
+            foreach (FhirComplex complex in SpecService[directive].Profiles.Values)
+            {
+                AddElementsFromComplex(appliedFilter, complex, filtered, complex, FhirArtifactClassEnum.Profile);
             }
         }
 
-        filtered.Sort((a, b) => a.Path.CompareTo(b.Id));
+        filtered.Sort((a, b) => a.Element.Path.CompareTo(b.Element.Path));
         filteredElements = filtered;
 
         // manually flag state has changed in case we are in a callback / async context
