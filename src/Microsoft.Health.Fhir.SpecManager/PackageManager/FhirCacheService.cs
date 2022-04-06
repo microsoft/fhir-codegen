@@ -205,8 +205,12 @@ public class FhirCacheService : IDisposable
             Uri uri = new Uri(registryUri, $"{name}/{version}/");
             directory = Path.Combine(_cachePackageDirectory, $"{name}#{version}");
 
-            if (TryDownloadAndExtract(uri, directory, $"{name}#{version}"))
+            string directive = name + "#" + version;
+
+            if (TryDownloadAndExtract(uri, directory, directive))
             {
+                UpdatePackageCacheIndex(directive, directory);
+
                 return true;
             }
         }
@@ -239,11 +243,61 @@ public class FhirCacheService : IDisposable
     /// <param name="directive">The directive.</param>
     /// <param name="directory">[out] Pathname of the directory.</param>
     /// <param name="iniData">  (Optional) Information describing the initialize.</param>
-    private void UpdateCachePackageIni(
+    private void UpdatePackageCacheIndex(
         string directive,
         string directory,
         IniData iniData = null)
     {
+        string[] components = directive.Split('#');
+        string name = components[0];
+        string directiveVersion = components.Length > 1 ? components[1] : "current";
+
+        if (!Directory.Exists(directory))
+        {
+            if (iniData == null)
+            {
+                IniParser.FileIniDataParser parser = new();
+
+                IniData data = parser.ReadFile(_iniFilePath);
+
+                if (data["packages"].ContainsKey(directive))
+                {
+                    data["packages"].RemoveKey(directive);
+                }
+
+                if (data["package-sizes"].ContainsKey(directive))
+                {
+                    data["package-sizes"].RemoveKey(directive);
+                }
+
+                SaveIniData(_iniFilePath, data);
+            }
+            else
+            {
+                if (iniData["packages"].ContainsKey(directive))
+                {
+                    iniData["packages"].RemoveKey(directive);
+                }
+
+                if (iniData["package-sizes"].ContainsKey(directive))
+                {
+                    iniData["package-sizes"].RemoveKey(directive);
+                }
+            }
+
+            if (_packagesByDirective.ContainsKey(directive))
+            {
+                _packagesByDirective.Remove(directive);
+            }
+
+            if (_versionsByName.ContainsKey(name))
+            {
+                _versionsByName[name] = _versionsByName[name].Where((v) => !v.Equals(directiveVersion)).ToList();
+            }
+
+            return;
+        }
+
         long size = GetDirectorySize(directory);
         string packageDate = DateTime.Now.ToString("yyyyMMddHHmmss");
 
@@ -255,6 +309,27 @@ public class FhirCacheService : IDisposable
             if (!string.IsNullOrEmpty(npmDetails.BuildDate))
             {
                 packageDate = npmDetails.BuildDate;
+            }
+
+            PackageCacheRecord record = new(
+                directive,
+                PackageLoadStateEnum.NotLoaded,
+                name,
+                npmDetails.Version,
+                packageDate,
+                size,
+                npmDetails);
+
+            _packagesByDirective[directive] = record;
+
+            if (!_versionsByName.ContainsKey(name))
+            {
+                _versionsByName.Add(name, new());
+            }
+
+            if (!_versionsByName[name].Contains(npmDetails.Version))
+            {
+                _versionsByName[name].Add(npmDetails.Version);
             }
         }
 
@@ -298,6 +373,48 @@ public class FhirCacheService : IDisposable
         }
     }
 
+    /// <summary>Deletes the package described by packageDirective.</summary>
+    /// <param name="packageDirective">The package directive.</param>
+    public void DeletePackage(string packageDirective)
+    {
+        string directory = Path.Combine(_cachePackageDirectory, packageDirective);
+
+        if (!Directory.Exists(directory))
+        {
+            return;
+        }
+
+        try
+        {
+            Directory.Delete(directory, true);
+
+            UpdatePackageCacheIndex(packageDirective, directory);
+
+            //if (_packagesByDirective.ContainsKey(packageDirective))
+            //{
+            //    _packagesByDirective.Remove(packageDirective);
+            //}
+
+            //string[] components = packageDirective.Split('#');
+            //string name = packageDirective.Split('#')[0];
+            //string version = (components.Length > 1) ? components[1] : string.Empty;
+
+            //if ((!string.IsNullOrEmpty(version)) &&
+            //    _versionsByName.ContainsKey(name))
+            //{
+            //    _versionsByName[name] = _versionsByName[name].Where((v) => !v.Equals(version)).ToList();
+            //}
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"DeletePackage <<< caught exception: {ex.Message}");
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($" <<< {ex.InnerException.Message}");
+            }
+        }
+    }
+
     /// <summary>Attempts to download and extract a string from the given URI.</summary>
     /// <param name="uri">             URI of the resource.</param>
     /// <param name="directory">       [out] Pathname of the directory.</param>
@@ -325,7 +442,7 @@ public class FhirCacheService : IDisposable
                 tar.ExtractContents(directory, false);
             }
 
-            UpdateCachePackageIni(packageDirective, directory);
+            UpdatePackageCacheIndex(packageDirective, directory);
 
             return true;
         }
@@ -346,17 +463,33 @@ public class FhirCacheService : IDisposable
     /// <param name="branchName">Name of the branch.</param>
     /// <param name="directory"> [out] Pathname of the directory.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryDownloadViaCI(
+    public bool TryDownloadViaCI(
         string name,
         string branchName,
         out string directory)
     {
+        string directive = name + "#current";
+
         if (FhirPackageCommon.PackageIsFhirCore(name))
         {
-            return TryDownloadCoreViaCI(name, branchName, out directory);
+            if (TryDownloadCoreViaCI(name, branchName, out directory))
+            {
+                UpdatePackageCacheIndex(directive, directory);
+
+                return true;
+            }
+
+            return false;
         }
 
-        return TryDownloadGuideViaCI(name, branchName, out directory);
+        if (TryDownloadGuideViaCI(name, branchName, out directory))
+        {
+            UpdatePackageCacheIndex(directive, directory);
+
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>Attempts to download core via ci a string from the given string.</summary>
@@ -364,11 +497,16 @@ public class FhirCacheService : IDisposable
     /// <param name="branchName">Name of the branch.</param>
     /// <param name="directory"> [out] Pathname of the directory.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryDownloadCoreViaCI(
+    public bool TryDownloadCoreViaCI(
         string name,
         string branchName,
         out string directory)
     {
+        if (branchName.StartsWith("branches/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(9);
+        }
+
         Uri branchUri;
 
         switch (branchName.ToLowerInvariant())
@@ -431,16 +569,197 @@ public class FhirCacheService : IDisposable
     }
 
     /// <summary>Attempts to download guide via ci a string from the given string.</summary>
+    /// <param name="branchName">Name of the branch.</param>
+    /// <param name="name">      [out] The name.</param>
+    /// <param name="directory"> [out] Pathname of the directory.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryDownloadGuideViaCI(
+        string branchName,
+        out string name,
+        out string directory)
+    {
+        if (branchName.StartsWith("ig/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(3);
+        }
+
+        try
+        {
+            Uri versionInfoUri = new Uri(FhirCiUri, $"ig/{branchName}/package.manifest.json");
+            string contents = _httpClient.GetStringAsync(versionInfoUri).Result;
+
+            NpmPackageDetails ciNpm = NpmPackageDetails.Parse(contents);
+
+            name = ciNpm.Name;
+            directory = Path.Combine(_cachePackageDirectory, $"{ciNpm.Name}#current");
+
+            string localNpmFilename = Path.Combine(directory, "package", "package.json");
+
+            if (File.Exists(localNpmFilename))
+            {
+                NpmPackageDetails cachedNpm = NpmPackageDetails.Load(localNpmFilename);
+
+                if (cachedNpm.BuildDate.CompareTo(ciNpm.BuildDate) <= 0)
+                {
+                    return true;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"TryDownloadCoreViaCI <<< failed to compare local to CI, forcing download ({ex.Message})");
+            name = string.Empty;
+            directory = string.Empty;
+            return false;
+        }
+
+        Uri uri = new Uri(FhirCiUri, $"ig/{branchName}/package.tgz");
+
+        return TryDownloadAndExtract(uri, directory, $"{name}#current");
+    }
+
+    /// <summary>
+    /// Attempts to get guide ci package details the NpmPackageDetails from the given string.
+    /// </summary>
+    /// <param name="branchName">Name of the branch.</param>
+    /// <param name="details">   [out] The details.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetGuideCiPackageDetails(string branchName, out NpmPackageDetails details)
+    {
+        if (branchName.StartsWith("ig/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(3);
+        }
+
+        try
+        {
+            Uri versionInfoUri = new Uri(FhirCiUri, $"ig/{branchName}/package.manifest.json");
+
+            string contents = _httpClient.GetStringAsync(versionInfoUri).Result;
+
+            details = NpmPackageDetails.Parse(contents);
+
+            if (details.URL == null)
+            {
+                details.URL = new Uri(FhirCiUri, $"ig/{branchName}");
+            }
+
+            if (string.IsNullOrEmpty(details.Title))
+            {
+                details.Title = $"FHIR IG: {details.Name}";
+            }
+
+            if (string.IsNullOrEmpty(details.Description))
+            {
+                details.Description = $"CI Build from branch {branchName}, current as of: {DateTime.Now}";
+            }
+
+            if (string.IsNullOrEmpty(details.PackageType))
+            {
+                details.PackageType = "ig";
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"TryGetGuideCiPackageDetails <<< failed to find CI IG ({ex.Message})");
+        }
+
+        details = null;
+        return false;
+    }
+
+    /// <summary>Attempts to get core ci package details.</summary>
+    /// <param name="branchName">Name of the branch.</param>
+    /// <param name="details">   [out] The details.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetCoreCiPackageDetails(
+        string branchName,
+        out NpmPackageDetails details)
+    {
+        if (branchName.StartsWith("branches/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(9);
+        }
+
+        Uri branchUri = null;
+
+        switch (branchName.ToLowerInvariant())
+        {
+            case "master":
+            case "main":
+            case "":
+                branchUri = FhirCiUri;
+                break;
+
+            case "r4b":
+                branchUri = new Uri(FhirCiUri, $"branches/R4B/");
+                break;
+
+            default:
+                branchUri = new Uri(FhirCiUri, $"branches/{branchName}/");
+                break;
+        }
+
+        try
+        {
+            Uri versionInfoUri = new Uri(branchUri, "version.info");
+            string contents = _httpClient.GetStringAsync(versionInfoUri).Result;
+
+            ParseVersionInfoIni(
+                contents,
+                out string fhirVersion,
+                out string version,
+                out string buildId,
+                out string buildDate);
+
+            FhirPackageCommon.FhirSequenceEnum sequence = FhirPackageCommon.MajorReleaseForVersion(version);
+
+            string corePackageName = FhirPackageCommon.PackageBaseForRelease(sequence) + ".core";
+
+            details = new NpmPackageDetails()
+            {
+                Name = corePackageName,
+                Version = version,
+                BuildDate = buildDate,
+                FhirVersionList = new string[1] { version },
+                FhirVersions = new string[1] { version },
+                PackageType = "core",
+                ToolsVersion = 3M,
+                URL = branchUri,
+                Title = $"FHIR {sequence}: {fhirVersion}",
+                Description = $"CI Build from branch {branchName}, current as of: {DateTime.Now}",
+                Dependencies = new(),
+            };
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"TryDownloadCoreViaCI <<< failed to compare local to CI, forcing download ({ex.Message})");
+        }
+
+        details = null;
+        return false;
+    }
+
+    /// <summary>Attempts to download guide via ci a string from the given string.</summary>
     /// <param name="name">      The name.</param>
     /// <param name="branchName">Name of the branch.</param>
     /// <param name="directory"> [out] Pathname of the directory.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryDownloadGuideViaCI(
+    public bool TryDownloadGuideViaCI(
         string name,
         string branchName,
         out string directory)
     {
         directory = Path.Combine(_cachePackageDirectory, $"{name}#current");
+
+        if (branchName.StartsWith("ig/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(3);
+        }
 
         string localNpmFilename = Path.Combine(directory, "package", "package.json");
         if (File.Exists(localNpmFilename))
@@ -450,6 +769,7 @@ public class FhirCacheService : IDisposable
                 NpmPackageDetails cachedNpm = NpmPackageDetails.Load(localNpmFilename);
 
                 Uri versionInfoUri = new Uri(FhirCiUri, $"ig/{branchName}/package.manifest.json");
+
                 string contents = _httpClient.GetStringAsync(versionInfoUri).Result;
 
                 NpmPackageDetails ciNpm = NpmPackageDetails.Parse(contents);
@@ -487,10 +807,18 @@ public class FhirCacheService : IDisposable
             return false;
         }
 
-        Uri uri = new Uri(FhirPublishedUri, $"{relative}/{name}.tgz");
-        directory = Path.Combine(_cachePackageDirectory, $"{name}#{version}");
+        string directive = name + "#" + version;
 
-        return TryDownloadAndExtract(uri, directory, $"{name}#{version}");
+        Uri uri = new Uri(FhirPublishedUri, $"{relative}/{name}.tgz");
+        directory = Path.Combine(_cachePackageDirectory, directive);
+
+        if (TryDownloadAndExtract(uri, directory, directive))
+        {
+            UpdatePackageCacheIndex(directive, directory);
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>Gets the cached packages in this collection.</summary>
@@ -651,7 +979,7 @@ public class FhirCacheService : IDisposable
     /// <param name="packageName">Name of the package.</param>
     /// <param name="manifests">  [out] The manifest.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryGetPackageManifests(string packageName, out IEnumerable<RegistryPackageManifest> manifests)
+    public bool TryGetPackageManifests(string packageName, out IEnumerable<RegistryPackageManifest> manifests)
     {
         List<RegistryPackageManifest> manifestList = new();
 
@@ -774,7 +1102,7 @@ public class FhirCacheService : IDisposable
             if (!data["packages"].ContainsKey(directive))
             {
                 Console.WriteLine($" <<< adding {directive} to ini");
-                UpdateCachePackageIni(directive, directory, data);
+                UpdatePackageCacheIndex(directive, directory, data);
                 modified = true;
                 ProcessSync(data, directive, data["packages"][directive], out _);
             }

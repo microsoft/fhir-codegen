@@ -126,6 +126,26 @@ public class FhirManager : IDisposable
         return _directivePackageTypes.ContainsKey(directive) || _loadDirectiveToVersion.ContainsKey(directive);
     }
 
+    /// <summary>Unload package.</summary>
+    /// <param name="directive">The directive.</param>
+    public void UnloadPackage(string directive)
+    {
+        if (_loadedInfoByDirective.ContainsKey(directive))
+        {
+            _loadedInfoByDirective.Remove(directive);
+        }
+
+        if (_directivePackageTypes.ContainsKey(directive))
+        {
+            _directivePackageTypes.Remove(directive);
+        }
+
+        if (_loadDirectiveToVersion.ContainsKey(directive))
+        {
+            _loadDirectiveToVersion.Remove(directive);
+        }
+    }
+
     /// <summary>Loads FHIR core packages.</summary>
     /// <param name="sequence">              The sequence.</param>
     /// <param name="version">               The specific version of FHIR to load, or 'latest' for

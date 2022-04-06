@@ -1,0 +1,365 @@
+﻿@page "/addpackage/"
+@using FhirCodeGenBlazor.Models
+@using Microsoft.Health.Fhir.CodeGenCommon.Models;
+@using FhirCodeGenBlazor.Services;
+@using Microsoft.Health.Fhir.SpecManager.PackageManager
+@inject IPackageManagerWebService PackageService
+@implements IDisposable
+
+<PageTitle>Add Package To Cache</PageTitle>
+<h4>Find And Download Package</h4>
+
+<select class="form-select m-2" aria-label="Select Package Type" @bind="selectedPackageType">
+    <option selected value="released">Released Package</option>
+    <option value="ig">CI: Implementation Guide</option>
+    <option value="core">CI: FHIR Core</option>
+</select>
+
+@switch (selectedPackageType)
+{
+    case "released":
+        <div class="input-group m-2">
+            <span class="input-group-text" id="basic-addon1">Released Package Name</span>
+            <input
+                type="text"
+                placeholder="Package Name"
+                aria-label="Package Name"
+                aria-describedby="basic-addon1"
+                @bind="packageName"
+                />
+            <button class="btn btn-outline-secondary" type="button" @onclick="(() => LookupReleasedPackage())">Lookup</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-1"></th>
+                        <th class="col-md-1">Directive</th>
+                        <th class="col-md-2">Package</th>
+                        <th class="col-md-1">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (RegistryPackageManifest.VersionInfo version in releaseVersions)
+                    {
+                        <tr>
+                            @switch (GetPackageState(version))
+                            {
+                                case PackageLoadStateEnum.Queued:
+                                case PackageLoadStateEnum.InProgress:
+                                    <td><div class="spinner-border"></div></td>
+                                break;
+
+                                case PackageLoadStateEnum.Unknown:
+                                    <td><button class="btn btn-primary btn-sm m-2" type="button" @onclick="@(() => RequestReleasedDownload(version))">Download</button></td>
+                                break;
+
+                                case PackageLoadStateEnum.NotLoaded:
+                                case PackageLoadStateEnum.Loaded:
+                                case PackageLoadStateEnum.Parsed:
+                                default:
+                                    <td><button class="btn btn-danger btn-sm m-2" type="button" @onclick="@(() => RequestDelete(version))">Delete Local</button></td>
+                                break;
+                            }
+                            <td>@GetVersionDirective(version)</td>
+                            <td>@version.URL</td>
+                            <td>@version.Date</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        break;
+
+    case "ig":
+    case "core":
+        <div class="input-group m-2">
+            <span class="input-group-text" id="label-branchname">CI Branch Name</span>
+            <input
+                type="text"
+                placeholder="CI Branch Name"
+                aria-label="CI Branch Name"
+                aria-describedby="label-branchname"
+                @bind="ciBranch"
+                />
+            <button class="btn btn-outline-secondary" type="button" @onclick="@(() => LookupCiBuild())">Lookup</button>
+        </div>
+
+        if (ciPackage != null)
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>@ciPackage.Name</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td>
+                        <td>@ciPackage.Version</td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>@ciPackage.URL</td>
+                    </tr>
+                    <tr>
+                        <td>Build Date</td>
+                        <td>@ciPackage.BuildDate</td>
+                    </tr>
+                    <tr>
+                        <td>Title</td>
+                        <td>@ciPackage.Title</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>@ciPackage.Description</td>
+                    </tr>
+                    <tr>
+                        <td>FHIR Versions</td>
+                        <td>@string.Join(", ", ciPackage.FhirVersions)</td>
+                    </tr>
+                    <tr>
+                        <td>Dependencies</td>
+                        <td>@string.Join(", ", ciPackage.Dependencies.Select((k,v) => $"{k}#{v}"))</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            @if (IsCiLocal())
+            {
+                <button class="btn btn-danger btn-sm m-2" type="button" @onclick="@(() => RequestCiDelete())">Download</button>
+            }
+
+
+            @switch (GetCiPackageState())
+            {
+                case PackageLoadStateEnum.Queued:
+                case PackageLoadStateEnum.InProgress:
+                    <div class="spinner-border m-2"></div>
+                break;
+
+                case PackageLoadStateEnum.Unknown:
+                case PackageLoadStateEnum.NotLoaded:
+                case PackageLoadStateEnum.Loaded:
+                case PackageLoadStateEnum.Parsed:
+                default:
+                    <button class="btn btn-danger btn-sm m-2" type="button" @onclick="@(() => RequestCiDownload())">Download</button>
+                break;
+            }
+        }
+        break;
+}
+
+
+@code {
+    /// <summary>Name of the package.</summary>
+    private string packageName = string.Empty;
+
+    /// <summary>The ci branch.</summary>
+    private string ciBranch = string.Empty;
+
+    /// <summary>The selected language.</summary>
+    private string selectedPackageType = "released";
+
+    /// <summary>The release versions.</summary>
+    private IEnumerable<RegistryPackageManifest.VersionInfo> releaseVersions = new RegistryPackageManifest.VersionInfo[0];
+
+    /// <summary>The CI package.</summary>
+    private NpmPackageDetails? ciPackage = null;
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        PackageService.OnChanged += PackageServiceChanged;
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        PackageService.OnChanged -= PackageServiceChanged;
+    }
+
+    /// <summary>Handles the package service changed event.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Event information to send to registered event handlers.</param>
+    private void PackageServiceChanged(object? sender, EventArgs e)
+    {
+        InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Query if this object is ci local.</summary>
+    /// <returns>True if ci local, false if not.</returns>
+    private bool IsCiLocal()
+    {
+        if (ciPackage == null)
+        {
+            return false;
+        }
+
+        string directive = ciPackage.Name + "#current";
+
+        if (PackageService.ContainsKey(directive))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>Gets package state.</summary>
+    /// <param name="versionInfo">Information describing the version.</param>
+    /// <returns>The package state.</returns>
+    private PackageLoadStateEnum GetPackageState(RegistryPackageManifest.VersionInfo versionInfo)
+    {
+        string directive = versionInfo.Name + "#" + versionInfo.Version;
+
+        if (PackageService.ContainsKey(directive))
+        {
+            return PackageService[directive].PackageState;
+        }
+
+        return PackageLoadStateEnum.Unknown;
+    }
+
+    /// <summary>Gets ci package state.</summary>
+    /// <returns>The ci package state.</returns>
+    private PackageLoadStateEnum GetCiPackageState()
+    {
+        if (ciPackage == null)
+        {
+            return PackageLoadStateEnum.Unknown;
+        }
+
+        string directive = ciPackage.Name + "#current";
+
+        if (PackageService.ContainsKey(directive))
+        {
+            return PackageService[directive].PackageState;
+        }
+
+        return PackageLoadStateEnum.Unknown;
+    }
+
+    /// <summary>Request version download.</summary>
+    /// <param name="versionInfo">Information describing the version.</param>
+    private void RequestCiDownload()
+    {
+        if (ciPackage == null)
+        {
+            return;
+        }
+
+        string directive = ciPackage.Name + "#current";
+
+        PackageService.RequestDownload(directive, ciBranch, out _);
+    }
+
+    /// <summary>Request version download.</summary>
+    /// <param name="versionInfo">Information describing the version.</param>
+    private void RequestReleasedDownload(RegistryPackageManifest.VersionInfo versionInfo)
+    {
+        string directive = versionInfo.Name + "#" + versionInfo.Version;
+
+        PackageService.RequestDownload(directive, string.Empty, out _);
+    }
+
+    /// <summary>Request delete.</summary>
+    /// <param name="versionInfo">Information describing the version.</param>
+    private void RequestCiDelete()
+    {
+        if (ciPackage == null)
+        {
+            return;
+        }
+
+        string directive = ciPackage.Name + "#current";
+
+        PackageService.DeletePackage(directive);
+    }
+
+    /// <summary>Request delete.</summary>
+    /// <param name="versionInfo">Information describing the version.</param>
+    private void RequestDelete(RegistryPackageManifest.VersionInfo versionInfo)
+    {
+        string directive = versionInfo.Name + "#" + versionInfo.Version;
+
+        PackageService.DeletePackage(directive);
+    }
+
+    /// <summary>Gets a directive.</summary>
+    /// <param name="versionInfo">Information describing the version.</param>
+    /// <returns>The directive.</returns>
+    private string GetVersionDirective(RegistryPackageManifest.VersionInfo versionInfo)
+    {
+        return versionInfo.Name + "#" + versionInfo.Version;
+    }
+
+    /// <summary>Looks up a given key to find its associated released package.</summary>
+    private void LookupReleasedPackage()
+    {
+        bool success = PackageService.TryGetRegistryManifests(packageName, out IEnumerable<RegistryPackageManifest> manifests);
+
+        if (!success)
+        {
+            if (releaseVersions.Any())
+            {
+                releaseVersions = new RegistryPackageManifest.VersionInfo[0];
+            }
+
+            return;
+        }
+
+        List<RegistryPackageManifest.VersionInfo> registryVersions = new();
+
+        foreach (RegistryPackageManifest manifest in manifests)
+        {
+            if ((manifest.Versions == null) ||
+                (!manifest.Versions.Any()))
+            {
+                continue;
+            }
+
+            registryVersions.AddRange(manifest.Versions.Values);
+        }
+
+        registryVersions.Sort((a, b) => b.Version.CompareTo(a.Version));
+        releaseVersions = registryVersions.ToArray();
+    }
+
+    /// <summary>Looks up a given key to find its associated ci build.</summary>
+    private void LookupCiBuild()
+    {
+        bool success = false;
+        NpmPackageDetails details;
+
+        if (selectedPackageType == "ig")
+        {
+            success = PackageService.TryGetGuideCiPackageDetails(ciBranch, out details);
+        }
+        else
+        {
+            success = PackageService.TryGetCoreCiPackageDetails(ciBranch, out details);
+        }
+
+        if (success)
+        {
+            ciPackage = details;
+        }
+        else
+        {
+            ciPackage = null;
+        }
+    }
+}

@@ -16,17 +16,7 @@
 else
 {
     <p>
-    <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">Package Directive</span>
-        <input
-            type="text"
-            placeholder="Package Directive"
-            aria-label="Package Directive"
-            aria-describedby="basic-addon1"
-            @bind="directiveToLoad"
-            />
-        <button class="btn btn-outline-secondary" type="button" @onclick="@(() => ButtonLoadPackageClicked(directiveToLoad))">Add</button>
-    </div>
+    <button class="btn btn-outline-secondary" type="button" @onclick="@(() => NavToAddPackage())">Add Packages</button>
     </p>
     <table class="table table-striped">
         <thead>
@@ -39,7 +29,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (PackageCacheRecord record in PackageService.Values)
+            @foreach (PackageCacheRecord record in PackageService.Values.OrderBy(r => r.CacheDirective))
             {
                 <tr>
                     @switch (record.PackageState)
@@ -133,7 +123,12 @@ else
         InvokeAsync(() => StateHasChanged());
     }
 
-    
+    /// <summary>Navigation to add package.</summary>
+    private void NavToAddPackage()
+    {
+        NavigationManager.NavigateTo("/addpackage");
+    }
+
     /// <summary>Navigation to browse package.</summary>
     /// <param name="directive">The directive.</param>
     private void NavToPackageElements(string directive)

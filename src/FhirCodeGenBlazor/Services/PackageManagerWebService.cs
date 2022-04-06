@@ -83,6 +83,35 @@ public class PackageManagerWebService : IDisposable, IHostedService, IPackageMan
         StateHasChanged();
     }
 
+    /// <summary>Request download.</summary>
+    /// <param name="directive">   The directive.</param>
+    /// <param name="branchName">  Name of the branch.</param>
+    /// <param name="requestState">[out] State of the request.</param>
+    public void RequestDownload(string directive, string branchName, out PackageLoadStateEnum requestState)
+    {
+        if (FhirCacheService.Current.TryGetPackageState(directive, out PackageLoadStateEnum state))
+        {
+            switch (state)
+            {
+                case PackageLoadStateEnum.Queued:
+                case PackageLoadStateEnum.InProgress:
+                case PackageLoadStateEnum.Loaded:
+                case PackageLoadStateEnum.Parsed:
+                    requestState = state;
+                    return;
+
+                case PackageLoadStateEnum.Unknown:
+                case PackageLoadStateEnum.NotLoaded:
+                case PackageLoadStateEnum.Failed:
+                default:
+                    break;
+            }
+        }
+
+        requestState = PackageLoadStateEnum.Queued;
+        Task.Run(() => DownloadDirectiveTask(directive, branchName));
+    }
+
     /// <summary>Request package load.</summary>
     /// <param name="directive">The directive.</param>
     /// <param name="requestId">[out] Identifier for the request.</param>
@@ -169,6 +198,55 @@ public class PackageManagerWebService : IDisposable, IHostedService, IPackageMan
         return true;
     }
 
+    /// <summary>
+    /// Attempts to get package manifests an IEnumerable&lt;RegistryPackageManifest&gt; from the
+    /// given string.
+    /// </summary>
+    /// <param name="packageName">Name of the package.</param>
+    /// <param name="manifests">  [out] The manifests.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetRegistryManifests(string packageName, out IEnumerable<RegistryPackageManifest> manifests)
+    {
+        return FhirCacheService.Current.TryGetPackageManifests(packageName, out manifests);
+    }
+
+    /// <summary>
+    /// Attempts to get core ci package details the NpmPackageDetails from the given string.
+    /// </summary>
+    /// <param name="branchName">Name of the branch.</param>
+    /// <param name="details">   [out] The details.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetCoreCiPackageDetails(string branchName, out NpmPackageDetails details)
+    {
+        return FhirCacheService.Current.TryGetCoreCiPackageDetails(branchName, out details);
+    }
+
+    /// <summary>
+    /// Attempts to get guide ci package details the NpmPackageDetails from the given string.
+    /// </summary>
+    /// <param name="branchName">Name of the branch.</param>
+    /// <param name="details">   [out] The details.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetGuideCiPackageDetails(string branchName, out NpmPackageDetails details)
+    {
+        return FhirCacheService.Current.TryGetGuideCiPackageDetails(branchName, out details);
+    }
+
+    /// <summary>Task to download a package based on directive.</summary>
+    /// <param name="directive"> The directive.</param>
+    /// <param name="branchName">Name of the branch.</param>
+    /// <returns>An asynchronous result.</returns>
+    private Task DownloadDirectiveTask(string directive, string branchName)
+    {
+        FhirCacheService.Current.FindOrDownload(directive, out _, false, branchName);
+
+        // notify something has been downloaded
+        StateHasChanged();
+
+        return Task.CompletedTask;
+    }
+
+
     /// <summary>Loads directive task.</summary>
     /// <param name="directive">The directive.</param>
     /// <param name="requestId">[out] Identifier for the request.</param>
@@ -189,6 +267,21 @@ public class PackageManagerWebService : IDisposable, IHostedService, IPackageMan
         StateHasChanged();
 
         return Task.CompletedTask;
+    }
+
+    /// <summary>Deletes the package described by directive.</summary>
+    /// <param name="directive">The directive.</param>
+    public void DeletePackage(string directive)
+    {
+        if (FhirManager.Current.IsLoaded(directive))
+        {
+            FhirManager.Current.UnloadPackage(directive);
+        }
+
+        FhirCacheService.Current.DeletePackage(directive);
+
+        // notify something has been deleted
+        StateHasChanged();
     }
 
     /// <summary>State has changed.</summary>

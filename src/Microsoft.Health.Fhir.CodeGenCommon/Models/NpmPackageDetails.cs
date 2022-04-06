@@ -31,6 +31,10 @@ public class NpmPackageDetails
     [JsonPropertyName("fhirVersions")]
     public IEnumerable<string> FhirVersions { get; set; }
 
+    /// <summary>Gets or sets the FHIR version.</summary>
+    [JsonPropertyName("fhirVersion")]
+    public string FhirVersion { get; set; }
+
     /// <summary>Gets or sets the type of the package.</summary>
     [JsonPropertyName("type")]
     public string PackageType { get; set; }
@@ -124,26 +128,7 @@ public class NpmPackageDetails
         // load the file
         string packageContents = File.ReadAllText(packageFilename);
 
-        // attempt to parse
-        try
-        {
-            NpmPackageDetails details = JsonSerializer.Deserialize<NpmPackageDetails>(packageContents);
-
-            if (details.FhirVersionList == null)
-            {
-                details.FhirVersionList = details.FhirVersions;
-            }
-            else if (details.FhirVersions == null)
-            {
-                details.FhirVersions = details.FhirVersionList;
-            }
-
-            return details;
-        }
-        catch (JsonException)
-        {
-            throw;
-        }
+        return Parse(packageContents);
     }
 
     /// <summary>Parses.</summary>
@@ -163,13 +148,49 @@ public class NpmPackageDetails
         {
             NpmPackageDetails details = JsonSerializer.Deserialize<NpmPackageDetails>(contents);
 
+            if (!string.IsNullOrEmpty(details.FhirVersion))
+            {
+                if (details.FhirVersion.StartsWith('['))
+                {
+                    details.FhirVersion = details.FhirVersion.Substring(1, details.FhirVersion.Length - 2);
+                }
+            }
+
             if (details.FhirVersionList == null)
             {
-                details.FhirVersionList = details.FhirVersions;
+                if (details.FhirVersions != null)
+                {
+                    details.FhirVersionList = details.FhirVersions;
+                }
+                else if (!string.IsNullOrEmpty(details.FhirVersion))
+                {
+                    details.FhirVersionList = new string[1] { details.FhirVersion };
+                }
+                else
+                {
+                    details.FhirVersionList = new string[0];
+                }
             }
-            else if (details.FhirVersions == null)
+
+            if (details.FhirVersions == null)
             {
-                details.FhirVersions = details.FhirVersionList;
+                if (details.FhirVersionList != null)
+                {
+                    details.FhirVersions = details.FhirVersionList;
+                }
+                else if (!string.IsNullOrEmpty(details.FhirVersion))
+                {
+                    details.FhirVersions = new string[1] { details.FhirVersion };
+                }
+                else
+                {
+                    details.FhirVersions = new string[0];
+                }
+            }
+
+            if (details.Dependencies == null)
+            {
+                details.Dependencies = new();
             }
 
             return details;
