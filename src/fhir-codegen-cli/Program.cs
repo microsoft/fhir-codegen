@@ -60,6 +60,7 @@ public static class Program
     /// <param name="packageDirectory">      The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
     /// <param name="packages">              '|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core#4.0.0).</param>
     /// <param name="ciBranch">              If loading from the CI server, the name of the branch to use.</param>
+    /// <param name="languageInputDir">      The full path to a local directory to pass additional content to languages.</param>
     public delegate void ProcessDelegate(
         string fhirSpecDirectory = "",
         string outputPath = "",
@@ -81,7 +82,8 @@ public static class Program
         bool languageHelp = false,
         string packageDirectory = "",
         string packages = "",
-        string ciBranch = "");
+        string ciBranch = "",
+        string languageInputDir = "");
 
     /// <summary>Main entry-point for this application.</summary>
     /// <param name="args">An array of command-line argument strings.</param>
@@ -191,7 +193,11 @@ public static class Program
             new Option<string>(
                 name: "--ci-branch",
                 getDefaultValue: () => string.Empty,
-                "If loading from the CI server, the name of the branch to use.."),
+                "If loading from the CI server, the name of the branch to use."),
+            new Option<string>(
+                name: "--language-input-dir",
+                getDefaultValue: () => string.Empty,
+                "The full path to a local directory to pass additional content to languages."),
         };
 
         rootCommand.Description = "Command-line utility for processing the FHIR specification into other computer languages.";
@@ -241,6 +247,7 @@ public static class Program
     /// <param name="packageDirectory">      The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
     /// <param name="packages">              '|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core#4.0.0).</param>
     /// <param name="ciBranch">              If loading from the CI server, the name of the branch to use.</param>
+    /// <param name="languageInputDir">      The full path to a local directory to pass additional content to languages.</param>
     public static void Process(
         string fhirSpecDirectory = "",
         string outputPath = "",
@@ -262,7 +269,8 @@ public static class Program
         bool languageHelp = false,
         string packageDirectory = "",
         string packages = "",
-        string ciBranch = "")
+        string ciBranch = "",
+        string languageInputDir = "")
     {
         if (languageHelp)
         {
@@ -296,6 +304,11 @@ public static class Program
         if (string.IsNullOrEmpty(language))
         {
             language = "Info|TypeScript|CSharpBasic";
+        }
+
+        if (string.IsNullOrEmpty(languageInputDir))
+        {
+            languageInputDir = FindRelativeDir(currentFilePath, "languageInput", "Language input", false);
         }
 
         exportTypes ??= string.Empty;
@@ -523,7 +536,8 @@ public static class Program
                     null,
                     languageOptsByLang[lang.LanguageName],
                     fhirServerUrl,
-                    includeExperimental);
+                    includeExperimental,
+                    languageInputDir);
 
                 foreach (FhirVersionInfo info in fhirCorePackages)
                 {
@@ -546,14 +560,16 @@ public static class Program
     /// <summary>Searches for the FHIR specification directory.</summary>
     /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
     ///  present.</exception>
-    /// <param name="startingDir">The starting dir.</param>
-    /// <param name="dirName">    The name of the directory we are searching for.</param>
-    /// <param name="directoryType">  The directory type (error hint).</param>
+    /// <param name="startingDir">   The starting dir.</param>
+    /// <param name="dirName">       The name of the directory we are searching for.</param>
+    /// <param name="directoryType"> The directory type (error hint).</param>
+    /// <param name="thowIfNotFound">(Optional) True to thow if not found.</param>
     /// <returns>The found FHIR directory.</returns>
     public static string FindRelativeDir(
         string startingDir,
         string dirName,
-        string directoryType)
+        string directoryType,
+        bool thowIfNotFound = true)
     {
         string currentDir = Path.GetDirectoryName(AppContext.BaseDirectory);
         string testDir = Path.Combine(currentDir, dirName);
@@ -564,7 +580,12 @@ public static class Program
 
             if (currentDir == Path.GetPathRoot(currentDir))
             {
-                throw new DirectoryNotFoundException($"Could not find directory type: {directoryType} from: {startingDir}!");
+                if (thowIfNotFound)
+                {
+                    throw new DirectoryNotFoundException($"Could not find directory type: {directoryType} from: {startingDir}!");
+                }
+
+                return string.Empty;
             }
 
             testDir = Path.Combine(currentDir, dirName);

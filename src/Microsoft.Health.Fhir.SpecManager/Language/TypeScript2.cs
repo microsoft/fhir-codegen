@@ -2,11 +2,8 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-using System;
-using System.Collections.Generic;
+
 using System.IO;
-using System.Linq;
-using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -296,6 +293,14 @@ public sealed class TypeScript2 : ILanguage
             if (!Directory.Exists(_directoryValueSets))
             {
                 Directory.CreateDirectory(_directoryValueSets);
+            }
+        }
+
+        if (options.SupportFiles.StaticFiles.Any())
+        {
+            foreach (LanguageSupportFiles.SupportFileRec fileRec in options.SupportFiles.StaticFiles)
+            {
+                File.Copy(fileRec.Filename, Path.Combine(exportDirectory, fileRec.RelativeFilename));
             }
         }
 
@@ -1148,6 +1153,28 @@ public sealed class TypeScript2 : ILanguage
             fieldsAndTypes,
             resourceNameForValidation);
 
+        string contents;
+
+        if (_options.SupportFiles.TryGetInputForKey(complex.Name, out contents))
+        {
+            sbClassOpt.Write(contents);
+            sbClassStrict.Write(contents);
+            sbInterfaceOpt.Write(contents);
+            sbInterfaceStrict.Write(contents);
+        }
+
+        if (_options.SupportFiles.TryGetInputForKey("Class" + complex.Name, out contents))
+        {
+            sbClassOpt.Write(contents);
+            sbClassStrict.Write(contents);
+        }
+
+        if (_options.SupportFiles.TryGetInputForKey("Interface" + complex.Name, out contents))
+        {
+            sbInterfaceOpt.Write(contents);
+            sbInterfaceStrict.Write(contents);
+        }
+
         // close interface (type)
         sbInterfaceStrict.CloseScope();
         sbInterfaceOpt.CloseScope();
@@ -1346,7 +1373,16 @@ public sealed class TypeScript2 : ILanguage
 
         // HasRequired - open
         WriteIndentedComment(sbHasRequired, $"Check if the current {typeName} contains all required elements.");
-        sbHasRequired.WriteLineIndented("checkRequiredElements():string[] {");
+
+        if (hasParent)
+        {
+            sbHasRequired.WriteLineIndented("override checkRequiredElements():string[] {");
+        }
+        else
+        {
+            sbHasRequired.WriteLineIndented("checkRequiredElements():string[] {");
+        }
+
         sbHasRequired.IncreaseIndent();
         sbHasRequired.WriteLineIndented("var missingElements:string[] = [];");
 

@@ -79,7 +79,10 @@ public class FhirManager : IDisposable
                 continue;
             }
 
-            packages.Add(_loadedInfoByDirective[directive]);
+            if (_loadedInfoByDirective.ContainsKey(directive))
+            {
+                packages.Add(_loadedInfoByDirective[directive]);
+            }
         }
 
         return packages;

@@ -134,6 +134,9 @@ public abstract class Exporter
             serverInfo = new FhirServerInfo(sourceServerInfo, info);
         }
 
+        // update language input files depending on the version of FHIR we are using
+        options.SupportFiles.TryLoad(info.FhirSequence);
+
         // perform our export
         exportLanguage.Export(
             info,

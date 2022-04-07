@@ -23,9 +23,9 @@ public class ExporterOptions
     /// <param name="languageOptions">        Options for controlling the language.</param>
     /// <param name="fhirServerUrl">          FHIR Server URL to pull a CapabilityStatement (or
     ///  Conformance) from.  Requires application/fhir+json.</param>
-    /// <param name="serverInfo">             Information describing the server (if specified).</param>
     /// <param name="includeExperimental">    A value indicating whether structures marked experimental
     ///  should be included.</param>
+    /// <param name="languageInputDir">       The language input dir.</param>
     public ExporterOptions(
         string languageName,
         IEnumerable<string> exportList,
@@ -35,7 +35,8 @@ public class ExporterOptions
         IEnumerable<string> extensionElementPaths,
         Dictionary<string, string> languageOptions,
         string fhirServerUrl,
-        bool includeExperimental)
+        bool includeExperimental,
+        string languageInputDir)
     {
         LanguageName = languageName;
         ExportList = exportList;
@@ -78,6 +79,11 @@ public class ExporterOptions
 
         ServerUrl = fhirServerUrl;
         IncludeExperimental = includeExperimental;
+
+        if (!string.IsNullOrEmpty(languageInputDir))
+        {
+            SupportFiles = new Language.LanguageSupportFiles(languageInputDir, languageName);
+        }
     }
 
     /// <summary>Values that represent FHIR export class types.</summary>
@@ -172,6 +178,9 @@ public class ExporterOptions
 
     /// <summary>Gets a value indicating whether structures marked experimental should be included.</summary>
     public bool IncludeExperimental { get; }
+
+    /// <summary>Gets the language input.</summary>
+    public Language.LanguageSupportFiles SupportFiles { get; }
 
     /// <summary>Gets a language parameter.</summary>
     /// <param name="field">       The field.</param>

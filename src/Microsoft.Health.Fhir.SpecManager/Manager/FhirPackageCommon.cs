@@ -448,31 +448,49 @@ public static class FhirPackageCommon
             return _fhirReleasesByVersion[version].Major;
         }
 
-        string vShort = version.Length > 2
-            ? version.Substring(0, 3)
-            : version.Substring(0, 1);
+        string val;
+
+        if (version.Contains('.'))
+        {
+            val = version.Length > 2
+                ? version.Substring(0, 3)
+                : version.Substring(0, 1);
+        }
+        else
+        {
+            val = version;
+        }
 
         // fallback to guessing
-        switch (vShort)
+        switch (val)
         {
+            case "DSTU2":
+            case "STU2":
+            case "R2":
             case "1.0":
             case "1":
             case "2.0":
             case "2":
                 return FhirSequenceEnum.DSTU2;
 
+            case "STU3":
+            case "R3":
             case "3.0":
             case "3":
                 return FhirSequenceEnum.STU3;
 
+            case "R4":
             case "4":
             case "4.0":
                 return FhirSequenceEnum.R4;
 
+            case "R4B":
+            case "4B":
             case "4.1":
             case "4.3":
                 return FhirSequenceEnum.R4B;
 
+            case "R5":
             case "4.2":
             case "4.4":
             case "4.5":
