@@ -853,7 +853,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
             case FhirArtifactClassEnum.CodeSystem:
                 {
-                    artifact = ResolveInDict(token, _searchParamsByUrl);
+                    artifact = ResolveInDict(token, _codeSystemsByUrl);
 
                     if (artifact == null)
                     {
@@ -1309,6 +1309,15 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 _extensionsByPath[elementPath].Add(url, _extensionsByUrl[url]);
             }
         }
+
+        _artifactClassByUrl.Add(extension.URL.OriginalString, FhirArtifactClassEnum.Extension);
+        _artifactsByClass[FhirArtifactClassEnum.Extension].Add(new()
+        {
+            ArtifactClass = FhirArtifactClassEnum.Extension,
+            Id = extension.Id,
+            Url = extension.URL,
+            DefinitionResourceType = "Extension",
+        });
     }
 
     /// <summary>Query if 'key' is a known complex data type.</summary>
