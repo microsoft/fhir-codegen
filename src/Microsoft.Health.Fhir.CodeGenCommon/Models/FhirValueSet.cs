@@ -401,7 +401,7 @@ public class FhirValueSet : ICloneable
         HashSet<string> inclusionSet = null;
         HashSet<string> exclusionSet = null;
         int maxRecusrions = -1;
-        List<KeyValuePair<string, string>> filterProperties = new List<KeyValuePair<string, string>>();
+        List<string> filterProperties = new();
 
         foreach (FhirValueSetFilter filter in filters)
         {
@@ -497,7 +497,7 @@ public class FhirValueSet : ICloneable
                 default:
                     if (filter.Operation == "=")
                     {
-                        filterProperties.Add(new KeyValuePair<string, string>(filter.Property, filter.Value));
+                        filterProperties.Add(filter.Property + ":" + filter.Value);
 
                         includeSelf = true;
                         includeChildren = true;
@@ -574,7 +574,7 @@ public class FhirValueSet : ICloneable
         HashSet<string> inclusionSet,
         HashSet<string> exclusionSet,
         int maxRecursions = -1,
-        List<KeyValuePair<string, string>> filterProperties = null)
+        List<string> filterProperties = null)
     {
         if ((!string.IsNullOrEmpty(exclusionKey)) &&
             (node.Concept.Code == exclusionKey))
@@ -679,7 +679,7 @@ public class FhirValueSet : ICloneable
         HashSet<string> inclusionSet,
         HashSet<string> exclusionSet,
         int maxRecursions = -1,
-        List<KeyValuePair<string, string>> filterProperties = null)
+        List<string> filterProperties = null)
     {
         if ((!string.IsNullOrEmpty(exclusionKey)) &&
             (node.Concept != null) &&

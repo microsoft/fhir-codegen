@@ -449,6 +449,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 AddConceptTree(cs.System, id, cs.Concept, ref root, ref nodeLookup);
             }
 
+            Dictionary<string, FhirCodeSystem.FilterDefinition> filters = new();
+            Dictionary<string, FhirCodeSystem.PropertyDefinition> properties = new();
+
             FhirCodeSystem codeSystem = new FhirCodeSystem(
                 string.Empty,
                 cs.Id,
@@ -459,7 +462,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 string.Empty,
                 string.Empty,
                 root,
-                nodeLookup);
+                nodeLookup,
+                filters,
+                properties);
 
             // add our code system
             fhirVersionInfo.AddCodeSystem(codeSystem);
@@ -1060,6 +1065,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         string path = element.Path ?? element.Id;
                         Dictionary<string, FhirElementType> elementTypes = null;
                         string elementType = string.Empty;
+                        bool isRootElement = false;
 
                         // split the id into component parts
                         string[] idComponents = id.Split('.');
@@ -1075,7 +1081,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 complex.AddContextElement(pathComponents[0]);
                             }
 
-                            continue;
+                            // parse as root element
+                            isRootElement = true;
                         }
 
                         // check for having slicing
@@ -1144,10 +1151,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 out string field,
                                 out string sliceName))
                         {
-                            // throw new InvalidDataException($"Could not find parent for {element.Path}!");
-                            // should load later
-                            // TODO: figure out a way to verify all dependencies loaded
-                            continue;
+                            if (isRootElement)
+                            {
+                                parent = complex;
+                                field = string.Empty;
+                                sliceName = string.Empty;
+                            }
+                            else
+                            {
+                                // throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                                // should load later
+                                // TODO: figure out a way to verify all dependencies loaded
+                                continue;
+                            }
                         }
 
                         // check for needing to add a slice to an element
@@ -1335,39 +1351,44 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                         string fiveWs = ((fwMapping != null) && fwMapping.Any()) ? fwMapping[0] : string.Empty;
 
+                        FhirElement fhirElement = new FhirElement(
+                            id,
+                            path,
+                            explicitName,
+                            null,
+                            parent.Elements.Count,
+                            element.Short,
+                            element.Definition,
+                            element.Requirements,
+                            string.Empty,
+                            elementType,
+                            elementTypes,
+                            (int)(element.Min ?? 0),
+                            element.Max,
+                            element.IsModifier,
+                            string.Empty,
+                            element.IsSummary,
+                            element.MustSupport,
+                            defaultName,
+                            defaultValue,
+                            fixedName,
+                            fixedValue,
+                            isInherited,
+                            modifiesParent,
+                            bindingStrength,
+                            valueSet,
+                            fiveWs);
+
+                        if (isRootElement)
+                        {
+                            parent.AddRootElement(fhirElement);
+                        }
+
                         // elements can repeat in R2 due to the way slicing was done
-                        if (!parent.Elements.ContainsKey(path))
+                        else if (!parent.Elements.ContainsKey(path))
                         {
                             // add this field to the parent type
-                            parent.Elements.Add(
-                                path,
-                                new FhirElement(
-                                    id,
-                                    path,
-                                    explicitName,
-                                    null,
-                                    parent.Elements.Count,
-                                    element.Short,
-                                    element.Definition,
-                                    element.Requirements,
-                                    string.Empty,
-                                    elementType,
-                                    elementTypes,
-                                    (int)(element.Min ?? 0),
-                                    element.Max,
-                                    element.IsModifier,
-                                    string.Empty,
-                                    element.IsSummary,
-                                    element.MustSupport,
-                                    defaultName,
-                                    defaultValue,
-                                    fixedName,
-                                    fixedValue,
-                                    isInherited,
-                                    modifiesParent,
-                                    bindingStrength,
-                                    valueSet,
-                                    fiveWs));
+                            parent.Elements.Add(path, fhirElement);
                         }
 
                         if (element.Slicing != null)

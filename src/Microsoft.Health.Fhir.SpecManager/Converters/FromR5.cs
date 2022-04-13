@@ -263,7 +263,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return false;
         }
 
-        /// <summary>Adds the contains to 'ec'.</summary>
+        /// <summary>Adds a set of contains clauses to a value set expansion.</summary>
         /// <param name="contains">[in,out] The contains.</param>
         /// <param name="ec">      The ec.</param>
         private static void AddContains(ref List<FhirConcept> contains, fhirModels.ValueSetExpansionContains ec)
@@ -273,7 +273,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 contains = new List<FhirConcept>();
             }
 
-            List<KeyValuePair<string, string>> properties = new List<KeyValuePair<string, string>>();
+            FhirConcept fhirConcept = new FhirConcept(
+                ec.System,
+                ec.Code,
+                ec.Display,
+                ec.Version,
+                string.Empty,
+                string.Empty);
 
             if (ec.Property != null)
             {
@@ -286,11 +292,50 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                     if (!string.IsNullOrEmpty(prop.ValueCode))
                     {
-                        properties.Add(new KeyValuePair<string, string>(prop.Code, prop.ValueCode));
+                        fhirConcept.AddProperty(prop.Code, prop.ValueCode, prop.ValueCode);
+                        continue;
                     }
-                    else if (!string.IsNullOrEmpty(prop.ValueString))
+
+                    if (prop.ValueCoding != null)
                     {
-                        properties.Add(new KeyValuePair<string, string>(prop.Code, prop.ValueString));
+                        fhirConcept.AddProperty(
+                            prop.Code,
+                            prop.ValueCoding,
+                            FhirConcept.GetCanonical(
+                                prop.ValueCoding.System,
+                                prop.ValueCoding.Code,
+                                prop.ValueCoding.Version));
+                        continue;
+                    }
+
+                    if (!string.IsNullOrEmpty(prop.ValueString))
+                    {
+                        fhirConcept.AddProperty(prop.Code, prop.ValueString, prop.ValueString);
+                        continue;
+                    }
+
+                    if (prop.ValueInteger != null)
+                    {
+                        fhirConcept.AddProperty(prop.Code, prop.ValueInteger, prop.ValueInteger?.ToString() ?? string.Empty);
+                        continue;
+                    }
+
+                    if (prop.ValueBoolean != null)
+                    {
+                        fhirConcept.AddProperty(prop.Code, prop.ValueBoolean, prop.ValueBoolean?.ToString() ?? string.Empty);
+                        continue;
+                    }
+
+                    if (!string.IsNullOrEmpty(prop.ValueDateTime))
+                    {
+                        fhirConcept.AddProperty(prop.Code, prop.ValueDateTime, prop.ValueDateTime);
+                        continue;
+                    }
+
+                    if (prop.ValueDecimal != null)
+                    {
+                        fhirConcept.AddProperty(prop.Code, prop.ValueDecimal, prop.ValueDecimal?.ToString() ?? string.Empty);
+                        continue;
                     }
                 }
             }
@@ -299,14 +344,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             if ((!string.IsNullOrEmpty(ec.System)) ||
                 (!string.IsNullOrEmpty(ec.Code)))
             {
-                contains.Add(new FhirConcept(
-                    ec.System,
-                    ec.Code,
-                    ec.Display,
-                    ec.Version,
-                    string.Empty,
-                    string.Empty,
-                    properties));
+                contains.Add(fhirConcept);
             }
 
             if ((ec.Contains != null) && (ec.Contains.Count > 0))
@@ -384,7 +422,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Process the code system.</summary>
         /// <param name="cs">             The create struct.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        private static void ProcessCodeSystem(
+        private void ProcessCodeSystem(
             fhirModels.CodeSystem cs,
             IPackageImportable fhirVersionInfo)
         {
@@ -401,12 +439,50 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
+            Dictionary<string, FhirCodeSystem.FilterDefinition> filters = new();
+
+            if (cs.Filter != null)
+            {
+                foreach (fhirModels.CodeSystemFilter filter in cs.Filter)
+                {
+                    filters.Add(
+                        filter.Code,
+                        new(
+                            filter.Code,
+                            filter.Description,
+                            filter.Operator,
+                            filter.Value));
+                }
+            }
+
+            Dictionary<string, FhirCodeSystem.PropertyDefinition> properties = new();
+
+            if (cs.Property != null)
+            {
+                foreach (fhirModels.CodeSystemProperty prop in cs.Property)
+                {
+                    if (properties.ContainsKey(prop.Code))
+                    {
+                        _warnings.Add($"CodeSystem {cs.Name} ({cs.Id}): Duplicate proprety found: {prop.Code}");
+                        continue;
+                    }
+
+                    properties.Add(
+                        prop.Code,
+                        new(
+                            prop.Code,
+                            prop.Uri,
+                            prop.Description,
+                            FhirCodeSystem.PropertyTypeFromValue(prop.Type)));
+                }
+            }
+
             Dictionary<string, FhirConceptTreeNode> nodeLookup = new Dictionary<string, FhirConceptTreeNode>();
             FhirConceptTreeNode root = new FhirConceptTreeNode(null, null);
 
             if (cs.Concept != null)
             {
-                AddConceptTree(cs.Url, cs.Id, cs.Concept, ref root, ref nodeLookup);
+                AddConceptTree(cs.Url, cs.Id, cs.Concept, root, nodeLookup, properties);
             }
 
             FhirCodeSystem codeSystem = new FhirCodeSystem(
@@ -419,24 +495,123 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 cs.Description,
                 cs.Content,
                 root,
-                nodeLookup);
+                nodeLookup,
+                filters,
+                properties);
 
             // add our code system
             fhirVersionInfo.AddCodeSystem(codeSystem);
         }
 
+        /// <summary>Attempts to build internal concept from FHIR.</summary>
+        /// <param name="codeSystemUrl">      URL of the code system.</param>
+        /// <param name="codeSystemId">       Id of the code system.</param>
+        /// <param name="concept">            The concept.</param>
+        /// <param name="propertyDefinitions">The property definitions.</param>
+        /// <param name="fhirConcept">        [out] The FHIR concept.</param>
+        /// <param name="nodeLookup">         (Optional) The node lookup.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private bool TryBuildInternalConceptFromFhir(
+            string codeSystemUrl,
+            string codeSystemId,
+            fhirModels.CodeSystemConcept concept,
+            Dictionary<string, FhirCodeSystem.PropertyDefinition> propertyDefinitions,
+            out FhirConcept fhirConcept,
+            Dictionary<string, FhirConceptTreeNode> nodeLookup = null)
+        {
+            if (string.IsNullOrEmpty(concept.Code))
+            {
+                fhirConcept = null;
+                return false;
+            }
+
+            if ((nodeLookup != null) &&
+                nodeLookup.ContainsKey(concept.Code))
+            {
+                fhirConcept = null;
+                return false;
+            }
+
+            fhirConcept = new FhirConcept(
+                codeSystemUrl,
+                concept.Code,
+                concept.Display,
+                string.Empty,
+                concept.Definition,
+                codeSystemId);
+
+            if (concept.Property != null)
+            {
+                foreach (fhirModels.CodeSystemConceptProperty prop in concept.Property)
+                {
+                    if (string.IsNullOrEmpty(prop.Code) ||
+                        (!propertyDefinitions.ContainsKey(prop.Code)))
+                    {
+                        continue;
+                    }
+
+                    if ((prop.Code == "status") && (prop.ValueCode == "deprecated"))
+                    {
+                        fhirConcept = null;
+                        return false;
+                    }
+
+                    switch (propertyDefinitions[prop.Code].PropType)
+                    {
+                        case FhirCodeSystem.PropertyTypeEnum.Code:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueCode, prop.ValueCode);
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.Coding:
+                            fhirConcept.AddProperty(
+                                prop.Code,
+                                prop.ValueCoding,
+                                FhirConcept.GetCanonical(
+                                    prop.ValueCoding.System,
+                                    prop.ValueCoding.Code,
+                                    prop.ValueCoding.Version));
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.String:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueString, prop.ValueString);
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.Integer:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueInteger, prop.ValueInteger?.ToString() ?? string.Empty);
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.Boolean:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueBoolean, prop.ValueBoolean?.ToString() ?? string.Empty);
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.DateTime:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueDateTime, prop.ValueDateTime);
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.Decimal:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueDecimal, prop.ValueDecimal?.ToString() ?? string.Empty);
+                            break;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         /// <summary>Adds a concept tree to 'concepts'.</summary>
-        /// <param name="codeSystemUrl">URL of the code system.</param>
-        /// <param name="codeSystemId"> Id of the code system.</param>
-        /// <param name="concepts">     The concept.</param>
-        /// <param name="parent">       [in,out] The parent.</param>
-        /// <param name="nodeLookup">   [in,out] The node lookup.</param>
-        private static void AddConceptTree(
+        /// <param name="codeSystemUrl">      URL of the code system.</param>
+        /// <param name="codeSystemId">       Id of the code system.</param>
+        /// <param name="concepts">           The concept.</param>
+        /// <param name="parent">             The parent.</param>
+        /// <param name="nodeLookup">         The node lookup.</param>
+        /// <param name="propertyDefinitions">The property definitions.</param>
+        private void AddConceptTree(
             string codeSystemUrl,
             string codeSystemId,
             List<fhirModels.CodeSystemConcept> concepts,
-            ref FhirConceptTreeNode parent,
-            ref Dictionary<string, FhirConceptTreeNode> nodeLookup)
+            FhirConceptTreeNode parent,
+            Dictionary<string, FhirConceptTreeNode> nodeLookup,
+            Dictionary<string, FhirCodeSystem.PropertyDefinition> propertyDefinitions)
         {
             if ((concepts == null) ||
                 (concepts.Count == 0) ||
@@ -449,60 +624,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             foreach (fhirModels.CodeSystemConcept concept in concepts)
             {
-                if (concept.Property != null)
-                {
-                    bool deprecated = false;
-                    foreach (fhirModels.CodeSystemConceptProperty prop in concept.Property)
-                    {
-                        if (string.IsNullOrEmpty(prop.Code))
-                        {
-                            continue;
-                        }
-
-                        if ((prop.Code == "status") && (prop.ValueCode == "deprecated"))
-                        {
-                            deprecated = true;
-                            break;
-                        }
-
-                        if (!string.IsNullOrEmpty(prop.ValueCode))
-                        {
-                            properties.Add(new KeyValuePair<string, string>(prop.Code, prop.ValueCode));
-                        }
-                        else if (!string.IsNullOrEmpty(prop.ValueString))
-                        {
-                            properties.Add(new KeyValuePair<string, string>(prop.Code, prop.ValueString));
-                        }
-                    }
-
-                    if (deprecated)
-                    {
-                        // do not add this node or any children
-                        continue;
-                    }
-                }
-
-                if (string.IsNullOrEmpty(concept.Code) || nodeLookup.ContainsKey(concept.Code))
-                {
-                    continue;
-                }
-
-                FhirConceptTreeNode node = parent.AddChild(
-                    new FhirConcept(
+                if (TryBuildInternalConceptFromFhir(
                         codeSystemUrl,
-                        concept.Code,
-                        concept.Display,
-                        string.Empty,
-                        concept.Definition,
                         codeSystemId,
-                        properties));
-
-                if (concept.Concept != null)
+                        concept,
+                        propertyDefinitions,
+                        out FhirConcept fhirConcept,
+                        nodeLookup))
                 {
-                    AddConceptTree(codeSystemUrl, codeSystemId, concept.Concept, ref node, ref nodeLookup);
-                }
+                    FhirConceptTreeNode node = parent.AddChild(fhirConcept);
 
-                nodeLookup.Add(concept.Code, node);
+                    if (concept.Concept != null)
+                    {
+                        AddConceptTree(codeSystemUrl, codeSystemId, concept.Concept, node, nodeLookup, propertyDefinitions);
+                    }
+
+                    nodeLookup.Add(concept.Code, node);
+                }
             }
         }
 
@@ -982,6 +1120,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         Dictionary<string, FhirElementType> elementTypes = null;
                         string elementType = string.Empty;
                         string regex = string.Empty;
+                        bool isRootElement = false;
 
                         // split the id into component parts
                         string[] idComponents = id.Split('.');
@@ -997,7 +1136,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 complex.AddContextElement(pathComponents[0]);
                             }
 
-                            continue;
+                            // parse as root element
+                            isRootElement = true;
                         }
 
                         // get the parent container and our field name
@@ -1009,10 +1149,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 out string field,
                                 out string sliceName))
                         {
-                            // throw new InvalidDataException($"Could not find parent for {element.Path}!");
-                            // should load later
-                            // TODO: figure out a way to verify all dependencies loaded
-                            continue;
+                            if (isRootElement)
+                            {
+                                parent = complex;
+                                field = string.Empty;
+                                sliceName = string.Empty;
+                            }
+                            else
+                            {
+                                // throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                                // should load later
+                                // TODO: figure out a way to verify all dependencies loaded
+                                continue;
+                            }
                         }
 
                         // check for needing to add a slice to an element
@@ -1193,36 +1342,43 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             continue;
                         }
 
-                        // add this field to the parent type
-                        parent.Elements.Add(
+                        FhirElement fhirElement = new FhirElement(
+                            id,
                             path,
-                            new FhirElement(
-                                id,
-                                path,
-                                explicitName,
-                                null,
-                                parent.Elements.Count,
-                                element.Short,
-                                element.Definition,
-                                element.Comment,
-                                regex,
-                                elementType,
-                                elementTypes,
-                                (int)(element.Min ?? 0),
-                                element.Max,
-                                element.IsModifier,
-                                element.IsModifierReason,
-                                element.IsSummary,
-                                element.MustSupport,
-                                defaultName,
-                                defaultValue,
-                                fixedName,
-                                fixedValue,
-                                isInherited,
-                                modifiesParent,
-                                bindingStrength,
-                                valueSet,
-                                fiveWs));
+                            explicitName,
+                            null,
+                            parent.Elements.Count,
+                            element.Short,
+                            element.Definition,
+                            element.Comment,
+                            regex,
+                            elementType,
+                            elementTypes,
+                            (int)(element.Min ?? 0),
+                            element.Max,
+                            element.IsModifier,
+                            element.IsModifierReason,
+                            element.IsSummary,
+                            element.MustSupport,
+                            defaultName,
+                            defaultValue,
+                            fixedName,
+                            fixedValue,
+                            isInherited,
+                            modifiesParent,
+                            bindingStrength,
+                            valueSet,
+                            fiveWs);
+
+                        if (isRootElement)
+                        {
+                            parent.AddRootElement(fhirElement);
+                        }
+                        else
+                        {
+                            // add this field to the parent type
+                            parent.Elements.Add(path, fhirElement);
+                        }
 
                         if (element.Slicing != null)
                         {

@@ -7,12 +7,12 @@
         },
         "r2": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R2.txt --load-r2 latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r3": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R3.txt --load-r3 latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r4": {

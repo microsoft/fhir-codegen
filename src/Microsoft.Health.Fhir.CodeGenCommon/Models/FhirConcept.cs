@@ -12,8 +12,10 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 /// <summary>A fhir triplet.</summary>
 public class FhirConcept : ICloneable
 {
+    private Dictionary<string, List<object>> _properties = new();
+
     /// <summary>The properties and values.</summary>
-    private HashSet<string> _propertiesAndValues = null;
+    private HashSet<string> _propertyKeyValueHash = new();
 
     /// <summary>Initializes a new instance of the <see cref="FhirConcept"/> class.</summary>
     /// <param name="system">    The system.</param>
@@ -59,14 +61,18 @@ public class FhirConcept : ICloneable
         }
     }
 
-    /// <summary>Initializes a new instance of the <see cref="FhirConcept"/> class.</summary>
-    /// <param name="system">         The system.</param>
-    /// <param name="code">           The code.</param>
-    /// <param name="display">        The display.</param>
-    /// <param name="version">        The version.</param>
-    /// <param name="definition">     The definition.</param>
-    /// <param name="systemLocalName">The name of the system.</param>
-    /// <param name="properties">     The properties.</param>
+    /// <summary>
+    /// Initializes a new instance of the Microsoft.Health.Fhir.CodeGenCommon.Models.FhirConcept
+    /// class.
+    /// </summary>
+    /// <param name="system">              The system.</param>
+    /// <param name="code">                The code.</param>
+    /// <param name="display">             The display.</param>
+    /// <param name="version">             The version.</param>
+    /// <param name="definition">          The definition.</param>
+    /// <param name="systemLocalName">     The name of the system.</param>
+    /// <param name="properties">          The properties.</param>
+    /// <param name="propertyKeyValueHash">The properties and values.</param>
     public FhirConcept(
         string system,
         string code,
@@ -74,28 +80,24 @@ public class FhirConcept : ICloneable
         string version,
         string definition,
         string systemLocalName,
-        List<KeyValuePair<string, string>> properties)
-        : this(
-            system,
-            code,
-            display,
-            version,
-            definition,
-            systemLocalName)
+        Dictionary<string, List<object>> properties,
+        HashSet<string> propertyKeyValueHash)
+        :this(
+             system,
+             code,
+             display,
+             version,
+             definition,
+             systemLocalName)
     {
-        if ((properties != null) && (properties.Count > 0))
+        foreach ((string propCode, List<object> propValues) in properties)
         {
-            _propertiesAndValues = new HashSet<string>();
+            _properties.Add(propCode, propValues.Select(obj => obj).ToList());
+        }
 
-            foreach (KeyValuePair<string, string> kvp in properties)
-            {
-                string combined = kvp.Key + ":" + kvp.Value;
-
-                if (!_propertiesAndValues.Contains(combined))
-                {
-                    _propertiesAndValues.Add(combined);
-                }
-            }
+        foreach (string hash in propertyKeyValueHash)
+        {
+            _propertyKeyValueHash.Add(hash);
         }
     }
 
@@ -229,29 +231,53 @@ public class FhirConcept : ICloneable
     /// <returns>A copy of this object.</returns>
     public object Clone()
     {
-        return new FhirConcept(System, Code, Display, Version, Definition, SystemLocalName);
+        return new FhirConcept(
+            System,
+            Code,
+            Display,
+            Version,
+            Definition,
+            SystemLocalName,
+            _properties,
+            _propertyKeyValueHash);
+    }
+
+    /// <summary>Adds a property.</summary>
+    /// <param name="code">              The code.</param>
+    /// <param name="value">             The value.</param>
+    /// <param name="canonicalizedValue">The canonicalized version of the value (for matching).</param>
+    public void AddProperty(
+        string code,
+        object value,
+        string canonicalizedValue)
+    {
+        if (!_properties.ContainsKey(code))
+        {
+            _properties.Add(code, new());
+        }
+
+        _properties[code].Add(value);
+        _propertyKeyValueHash.Add(code + ":" + canonicalizedValue);
     }
 
     /// <summary>Matches properties.</summary>
-    /// <param name="properties">The properties.</param>
+    /// <param name="propertyHashes">The properties.</param>
     /// <returns>True if matches properties, false if not.</returns>
-    public bool MatchesProperties(List<KeyValuePair<string, string>> properties)
+    public bool MatchesProperties(List<string> propertyHashes)
     {
-        if (properties == null)
+        if ((propertyHashes == null) || (!propertyHashes.Any()))
         {
             return true;
         }
 
-        if (_propertiesAndValues == null)
+        if ((_propertyKeyValueHash == null) || (!_propertyKeyValueHash.Any()))
         {
             return false;
         }
 
-        foreach (KeyValuePair<string, string> kvp in properties)
+        foreach (string hash in propertyHashes)
         {
-            string combined = kvp.Key + ":" + kvp.Value;
-
-            if (!_propertiesAndValues.Contains(combined))
+            if (!_propertyKeyValueHash.Contains(hash))
             {
                 return false;
             }
@@ -266,13 +292,57 @@ public class FhirConcept : ICloneable
     /// <returns>True if this concept matches, false if not.</returns>
     public bool HasProperty(string propertyName, string propertyValue)
     {
-        if (_propertiesAndValues == null)
+        if (_propertyKeyValueHash == null)
         {
             return false;
         }
 
         string combined = propertyName + ":" + propertyValue;
 
-        return _propertiesAndValues.Contains(combined);
+        return _propertyKeyValueHash.Contains(combined);
+    }
+
+    /// <summary>Gets property hash.</summary>
+    /// <param name="valueSystem"> The value system.</param>
+    /// <param name="valueCode">   The value code.</param>
+    /// <param name="valueVersion">The value version.</param>
+    /// <returns>The property hash.</returns>
+    public static string GetCanonical(
+        string valueSystem,
+        string valueCode,
+        string valueVersion)
+    {
+        string value = string.Empty;
+
+        if (!string.IsNullOrEmpty(valueSystem))
+        {
+            value = value + valueSystem;
+        }
+
+        if (!string.IsNullOrEmpty(valueCode))
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                value = valueCode;
+            }
+            else
+            {
+                value = value + "#" + valueCode;
+            }
+        }
+
+        if (!string.IsNullOrEmpty(valueVersion))
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                value = valueVersion;
+            }
+            else
+            {
+                value = value + "|" + valueVersion;
+            }
+        }
+
+        return value;
     }
 }

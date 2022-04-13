@@ -14,6 +14,7 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 public class FhirComplex : FhirTypeBase
 {
     private Dictionary<string, FhirComplex> _components;
+    private FhirElement _rootElement;
     private Dictionary<string, FhirElement> _elements;
     private Dictionary<string, FhirSearchParam> _searchParameters;
     private Dictionary<string, FhirOperation> _typeOperations;
@@ -58,6 +59,7 @@ public class FhirComplex : FhirTypeBase
             baseTypeName)
     {
         _components = new();
+        _rootElement = null;
         _elements = new();
         _searchParameters = new();
         _typeOperations = new();
@@ -136,6 +138,7 @@ public class FhirComplex : FhirTypeBase
         bool isAbstract,
         bool isPlaceholder,
         string sliceName,
+        FhirElement rootElement,
         Dictionary<string, FhirElement> elements,
         Dictionary<string, FhirComplex> components,
         Dictionary<string, FhirSearchParam> searchParameters,
@@ -160,6 +163,7 @@ public class FhirComplex : FhirTypeBase
         IsPlaceholder = isPlaceholder;
         SliceName = sliceName;
 
+        _rootElement = rootElement;
         _elements = elements ?? new();
         _components = components ?? new();
         _searchParameters = searchParameters ?? new();
@@ -210,6 +214,9 @@ public class FhirComplex : FhirTypeBase
     /// <summary>Gets or sets the name of the slice.</summary>
     /// <value>The name of the slice.</value>
     public string SliceName { get; set; }
+
+    /// <summary>Gets the root element.</summary>
+    public FhirElement RootElement { get => _rootElement; }
 
     /// <summary>Gets the elements.</summary>
     /// <value>The elements.</value>
@@ -277,6 +284,13 @@ public class FhirComplex : FhirTypeBase
                 _instanceOperations.Add(operation.Code, operation);
             }
         }
+    }
+
+    /// <summary>Adds a root element.</summary>
+    /// <param name="element">The element.</param>
+    public void AddRootElement(FhirElement element)
+    {
+        _rootElement = element;
     }
 
     /// <summary>Adds a context element.</summary>
@@ -600,6 +614,8 @@ public class FhirComplex : FhirTypeBase
                 ValidationRegEx,
                 ContextElements,
                 IsAbstract);
+
+        complex._rootElement = _rootElement;
 
         if (!string.IsNullOrEmpty(SliceName))
         {

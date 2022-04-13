@@ -107,6 +107,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         : this()
     {
         _fhirConverter = ConverterHelper.ConverterForVersion(source.FhirSequence);
+        FhirSequence = source.FhirSequence;
 
         CanonicalUrl = source.CanonicalUrl;
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -1067,14 +1068,19 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
 
         Uri url = searchParam.URL ?? new Uri(CanonicalUrl, "SearchParameter/" + searchParam.Id);
-        _artifactClassByUrl.Add(url.ToString(), FhirArtifactClassEnum.SearchParameter);
-        _artifactsByClass[FhirArtifactClassEnum.SearchParameter].Add(new()
+
+        // duplicate URLs are present in STU3
+        if (!_artifactClassByUrl.ContainsKey(url.ToString()))
         {
-            ArtifactClass = FhirArtifactClassEnum.SearchParameter,
-            Id = searchParam.Id,
-            Url = url,
-            DefinitionResourceType = "SearchParameter",
-        });
+            _artifactClassByUrl.Add(url.ToString(), FhirArtifactClassEnum.SearchParameter);
+            _artifactsByClass[FhirArtifactClassEnum.SearchParameter].Add(new()
+            {
+                ArtifactClass = FhirArtifactClassEnum.SearchParameter,
+                Id = searchParam.Id,
+                Url = url,
+                DefinitionResourceType = "SearchParameter",
+            });
+        }
 
         // traverse resources in the search parameter
         if (searchParam.ResourceTypes != null)

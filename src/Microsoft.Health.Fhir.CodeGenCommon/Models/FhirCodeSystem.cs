@@ -12,11 +12,57 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 /// <summary>A fhir code system.</summary>
 public class FhirCodeSystem
 {
-    /// <summary>The root concept.</summary>
-    private readonly FhirConceptTreeNode _rootConcept;
+    /// <summary>A code system filter.</summary>
+    public readonly record struct FilterDefinition(
+        string Code,
+        string Description,
+        IEnumerable<string> Operator,
+        string Value);
 
-    /// <summary>The concepts, by code.</summary>
+    /// <summary>Values that represent property type enums.</summary>
+    public enum PropertyTypeEnum
+    {
+        Code,
+        Coding,
+        String,
+        Integer,
+        Boolean,
+        DateTime,
+        Decimal,
+    }
+
+    /// <summary>Property type from value.</summary>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
+    ///  required range.</exception>
+    /// <param name="value">The value.</param>
+    /// <returns>A PropertyTypeEnum.</returns>
+    public static PropertyTypeEnum PropertyTypeFromValue(string value)
+    {
+        switch (value.ToLowerInvariant())
+        {
+            case "code":     return PropertyTypeEnum.Code;
+            case "coding":   return PropertyTypeEnum.Coding;
+            case "string":   return PropertyTypeEnum.String;
+            case "integer":  return PropertyTypeEnum.Integer;
+            case "boolean":  return PropertyTypeEnum.Boolean;
+            case "datetime": return PropertyTypeEnum.DateTime;
+            case "decimal":  return PropertyTypeEnum.Decimal;
+        }
+
+        throw new ArgumentOutOfRangeException($"Invalid PropertyTypeEnum source: {value}");
+    }
+
+    /// <summary>A code system property.</summary>
+    public readonly record struct PropertyDefinition(
+        string Code,
+        string PropUri,
+        string Description,
+        PropertyTypeEnum PropType);
+
+    private readonly FhirConceptTreeNode _rootConcept;
     private readonly Dictionary<string, FhirConceptTreeNode> _conceptLookup;
+    private readonly Dictionary<string, FilterDefinition> _filters;
+    private readonly Dictionary<string, PropertyDefinition> _properties;
 
     /// <summary>Initializes a new instance of the <see cref="FhirCodeSystem"/> class.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
@@ -30,6 +76,8 @@ public class FhirCodeSystem
     /// <param name="content">       The content.</param>
     /// <param name="rootConcept">   The root concept.</param>
     /// <param name="conceptLookup"> The concept lookup.</param>
+    /// <param name="filters">       The filters.</param>
+    /// <param name="properties">    The properties.</param>
     public FhirCodeSystem(
         string name,
         string id,
@@ -40,7 +88,9 @@ public class FhirCodeSystem
         string description,
         string content,
         FhirConceptTreeNode rootConcept,
-        Dictionary<string, FhirConceptTreeNode> conceptLookup)
+        Dictionary<string, FhirConceptTreeNode> conceptLookup,
+        Dictionary<string, FilterDefinition> filters,
+        Dictionary<string, PropertyDefinition> properties)
     {
         if (url == null)
         {
@@ -57,6 +107,8 @@ public class FhirCodeSystem
         Content = content;
         _rootConcept = rootConcept;
         _conceptLookup = conceptLookup;
+        _filters = filters;
+        _properties = properties;
     }
 
     /// <summary>Gets the name.</summary>
@@ -98,6 +150,12 @@ public class FhirCodeSystem
     /// <summary>Gets the concepts (by code).</summary>
     /// <value>The concepts (by code).</value>
     public Dictionary<string, FhirConceptTreeNode> ConceptLookup => _conceptLookup;
+
+    /// <summary>Gets the filters.</summary>
+    public Dictionary<string, FilterDefinition> Filters => _filters;
+
+    /// <summary>Gets the properties.</summary>
+    public Dictionary<string, PropertyDefinition> Properties => _properties;
 
     /// <summary>Indexer to get slices based on name.</summary>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
