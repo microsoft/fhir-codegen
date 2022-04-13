@@ -877,7 +877,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         return false;
                     }
 
-                    artifact = collection.ValueSetsByVersion.First();
+                    artifact = collection.ValueSetsByVersion.First().Value;
 
                     resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
                     return true;

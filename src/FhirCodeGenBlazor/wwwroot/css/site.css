@@ -34,6 +34,14 @@ a, .btn-link {
     color: red;
 }
 
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;

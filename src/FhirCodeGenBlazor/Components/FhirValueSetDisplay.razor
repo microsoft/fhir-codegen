@@ -1,0 +1,214 @@
+﻿@using FhirCodeGenBlazor.Models
+@using Microsoft.Health.Fhir.CodeGenCommon.Models
+
+@if (ObjectToDisplay != null)
+{
+    <ArtifactPropTemplate>
+        <ArtifactPropRowString Name="Id" Value="@ObjectToDisplay.Id"/>
+        <ArtifactPropRowString Name="Name" Value="@ObjectToDisplay.Name"/>
+        <ArtifactPropRowString Name="Title" Value="@ObjectToDisplay.Title"/>
+        <ArtifactPropRowString Name="URL" Value="@ObjectToDisplay.URL"/>
+        <ArtifactPropRowString Name="Version" Value="@ObjectToDisplay.Version"/>
+        <ArtifactPropRowString Name="Standard Status" Value="@ObjectToDisplay.StandardStatus"/>
+        <ArtifactPropRowString Name="Short Description" Value="@ObjectToDisplay.Description"/>
+    </ArtifactPropTemplate>
+}
+
+@*<label for="expansionRange" class="form-label">Expand across types (@expandToDepth steps)</label>
+<input type="range" class="form-range" id="expansionRange" min="0" max="3" step="1" @bind="expandToDepth" />
+*@
+<div class="table-responsive">
+	@if (ObjectToDisplay?.Concepts != null)
+	{
+    <table class="@GetTableClass()">
+        <thead>
+            <tr>
+                <th class="col-md-1">Code</th>
+                <th class="col-md-1">Display</th>
+                <th class="col-md-2">System</th>
+            </tr>
+        </thead>
+        <tbody>
+		@foreach (FhirConcept item in ObjectToDisplay.Concepts)
+		{
+			<tr class="table-active">
+				<td class="fw-bold">
+					<span>@item.Code</span><br/>
+				</td>
+				<td class="text-wrap">@item.Display</td>
+				<td class="text-wrap">@item.System</td>
+			</tr>
+		}
+        </tbody>
+    </table>
+	}
+
+	@if (ObjectToDisplay?.ComposeIncludes != null)
+	{
+	<h2>Include:</h2>
+	<FhirValueSetCompositionTable ObjectToDisplay=@ObjectToDisplay?.ComposeIncludes/>
+	}
+
+	@if (ObjectToDisplay?.ComposeExcludes != null)
+	{
+	<h2>Exclude:</h2>
+	<FhirValueSetCompositionTable ObjectToDisplay=@ObjectToDisplay?.ComposeExcludes/>
+	}
+
+</div>
+
+@code {
+    /// <summary>Gets or sets the package and version provider.</summary>
+    [CascadingParameter]
+    public IPackageVersionProvider? PackageAndVersionProvider { get; set; } = null;
+
+    /// <summary>Gets or sets the object to display.</summary>
+    [Parameter]
+    public FhirValueSet? ObjectToDisplay { get; set; } = null;
+
+    /// <summary>Gets or sets a value indicating whether the expand across types.</summary>
+    private bool expandAcrossTypes { get; set; } = false;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the detailed information is shown.
+    /// </summary>
+    private bool showDetailedInfo { get; set; } = true;
+
+    /// <summary>Gets or sets a value indicating whether the changes only is shown.</summary>
+    private bool showDifferentialOnly { get; set; } = false;
+
+    /// <summary>The table object.</summary>
+    private FhirValueSet? tableObject { get; set; } = null;
+
+    /// <summary>Information about a FHIR complex structure.</summary>
+    private readonly record struct ComplexInfo(
+        FhirValueSet Complex,
+        FhirArtifactClassEnum ComplexArtifactClass,
+        string ResolvedPackage
+    );
+
+    /// <summary>The hierarchy.</summary>
+    private List<ComplexInfo> hierarchy = new();
+
+    /// <summary>Executes the initialized action.</summary>
+    protected override void OnInitialized()
+    {
+        tableObject = ObjectToDisplay;
+
+        if (ObjectToDisplay != null)
+        {
+            hierarchy.Add(new ComplexInfo()
+                {
+                    Complex = ObjectToDisplay,
+                    ComplexArtifactClass = FhirArtifactClassEnum.ValueSet,
+                    ResolvedPackage = (PackageAndVersionProvider?.PackageName ?? "") + "#" + (PackageAndVersionProvider?.Version ?? "")
+                });
+
+            AddParentToHierarchy(ObjectToDisplay);
+        }
+
+        base.OnInitialized();
+    }
+
+    private string GetTableClass()
+    {
+        if (showDetailedInfo)
+        {
+            return "table table-hover";
+        }
+
+        return "table table-hover table-striped";
+    }
+
+    /// <summary>Gets button class.</summary>
+    /// <param name="complex">The complex.</param>
+    /// <returns>The button class.</returns>
+    private string GetButtonClass(FhirValueSet complex)
+    {
+        if (complex == null)
+        {
+            return "hidden";
+        }
+
+        if (complex == tableObject)
+        {
+            return "btn btn-primary m-1";
+        }
+
+        return "btn btn-outline-primary m-1";
+    }
+
+    /// <summary>Sets table object.</summary>
+    /// <param name="complex">The complex.</param>
+    private void SetTableObject(FhirValueSet complex)
+    {
+        tableObject = complex;
+    }
+
+    /// <summary>Adds a parent to hierarchy.</summary>
+    /// <param name="obj">The object.</param>
+    private void AddParentToHierarchy(FhirValueSet obj)
+    {
+        if (obj == null)
+        {
+            return;
+        }
+
+    //    if (obj.Parent != null)
+    //    {
+    //        hierarchy.Add(new ComplexInfo()
+    //            {
+    //                Complex = obj.Parent,
+    //                ComplexArtifactClass = obj.ParentArtifactClass,
+    //                ResolvedPackage = obj.ResolvedParentDirective,
+    //            });
+
+    //        AddParentToHierarchy(obj.Parent);
+    //    }
+    }
+
+    /// <summary>Parent for complex.</summary>
+    /// <param name="complex">The complex.</param>
+    /// <returns>A string.</returns>
+    private string NameAndParents(FhirComplex complex)
+    {
+        if (complex.Parent != null)
+        {
+            return $"{complex.Name}::{NameAndParents(complex.Parent)}";
+        }
+
+        return complex.Name;
+    }
+
+    /// <summary>Gets base display name.</summary>
+    /// <returns>The base display name.</returns>
+    private string GetBaseDisplayName()
+    {
+        if (tableObject == null)
+        {
+            return string.Empty;
+        }
+
+        bool found = false;
+        foreach (ComplexInfo ci in hierarchy)
+        {
+            if (!found)
+            {
+                if (ci.Complex.Name != tableObject.Name)
+                {
+                    continue;
+                }
+
+                found = true;
+            }
+
+            if ((ci.ComplexArtifactClass == FhirArtifactClassEnum.Resource) ||
+                (ci.ComplexArtifactClass == FhirArtifactClassEnum.ComplexType))
+            {
+                return ci.Complex.Name;
+            }
+        }
+
+        return tableObject.Name;
+    }
+}
