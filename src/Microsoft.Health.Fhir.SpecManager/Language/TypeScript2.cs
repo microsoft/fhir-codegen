@@ -109,6 +109,12 @@ public sealed class TypeScript2 : ILanguage
     /// <summary>The single file export extension - requires directory export.</summary>
     private const string _singleFileExportExtension = null;
 
+    /// <summary>(Immutable) Source extension.</summary>
+    private const string _sourceExtension = ".ts";
+
+    /// <summary>(Immutable) The interface extension.</summary>
+    private const string _interfaceExtension = ".ts";
+
     /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
     private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
     {
@@ -331,7 +337,7 @@ public sealed class TypeScript2 : ILanguage
         string exportDirectory)
     {
         // create a filename for writing
-        string filename = Path.Combine(exportDirectory, "index.ts");
+        string filename = Path.Combine(exportDirectory, $"index{_sourceExtension}");
 
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -367,7 +373,7 @@ public sealed class TypeScript2 : ILanguage
         List<string> exportedValueSets)
     {
         // create a filename for writing
-        string filename = Path.Combine(exportDirectory, "valuesets.ts");
+        string filename = Path.Combine(exportDirectory, $"valuesets{_sourceExtension}");
 
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -402,7 +408,7 @@ public sealed class TypeScript2 : ILanguage
         Dictionary<string, List<string>> interfaceExports)
     {
         // create a filename for writing
-        string filename = Path.Combine(exportDirectory, "strictinterfaces.d.ts");
+        string filename = Path.Combine(exportDirectory, $"strictinterfaces{_interfaceExtension}");
 
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -438,7 +444,7 @@ public sealed class TypeScript2 : ILanguage
         }
 
         // create a filename for writing
-        filename = Path.Combine(exportDirectory, "optionalinterfaces.d.ts");
+        filename = Path.Combine(exportDirectory, $"optionalinterfaces{_interfaceExtension}");
 
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -482,7 +488,7 @@ public sealed class TypeScript2 : ILanguage
         Dictionary<string, List<string>> classExports)
     {
         // create a filename for writing
-        string filename = Path.Combine(exportDirectory, "strictmodels.ts");
+        string filename = Path.Combine(exportDirectory, $"strictmodels{_sourceExtension}");
 
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -521,7 +527,7 @@ public sealed class TypeScript2 : ILanguage
         }
 
         // create a filename for writing
-        filename = Path.Combine(exportDirectory, "optionalmodels.ts");
+        filename = Path.Combine(exportDirectory, $"optionalmodels{_sourceExtension}");
 
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -666,7 +672,7 @@ public sealed class TypeScript2 : ILanguage
                 exportedNames.Add(vsName);
 
                 // create a filename for writing
-                string filename = Path.Combine(_directoryValueSets, $"{vsName}.ts");
+                string filename = Path.Combine(_directoryValueSets, $"{vsName}{_sourceExtension}");
 
                 using (FileStream stream = new FileStream(filename, FileMode.Create))
                 using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -844,7 +850,7 @@ public sealed class TypeScript2 : ILanguage
             interfaceModules.Add("I" + complex.NameCapitalized, interfaceExports);
 
             // create a filename for writing
-            filename = Path.Combine(_dirModelsStrict, $"{complex.NameCapitalized}.ts");
+            filename = Path.Combine(_dirModelsStrict, $"{complex.NameCapitalized}{_sourceExtension}");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -862,7 +868,7 @@ public sealed class TypeScript2 : ILanguage
             }
 
             // create a filename for writing
-            filename = Path.Combine(_dirModelsOpt, $"{complex.NameCapitalized}.ts");
+            filename = Path.Combine(_dirModelsOpt, $"{complex.NameCapitalized}{_sourceExtension}");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -880,7 +886,7 @@ public sealed class TypeScript2 : ILanguage
             }
 
             // create a filename for writing
-            filename = Path.Combine(_dirInterfacesStrict, $"I{complex.NameCapitalized}.d.ts");
+            filename = Path.Combine(_dirInterfacesStrict, $"I{complex.NameCapitalized}{_interfaceExtension}");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -897,7 +903,7 @@ public sealed class TypeScript2 : ILanguage
             }
 
             // create a filename for writing
-            filename = Path.Combine(_dirInterfacesOpt, $"I{complex.NameCapitalized}.d.ts");
+            filename = Path.Combine(_dirInterfacesOpt, $"I{complex.NameCapitalized}{_interfaceExtension}");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
