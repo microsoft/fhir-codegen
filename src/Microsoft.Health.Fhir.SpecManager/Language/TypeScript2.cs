@@ -76,11 +76,17 @@ public sealed class TypeScript2 : ILanguage
     /// <summary>The namespace interfaces.</summary>
     private string _namespaceInterfaces;
 
+    /// <summary>The dir models.</summary>
+    private string _dirModels;
+
     /// <summary>Pathname of the strict model directory.</summary>
     private string _dirModelsStrict;
 
     /// <summary>Pathname of the optional model directory.</summary>
     private string _dirModelsOpt;
+
+    /// <summary>The dir interfaces.</summary>
+    private string _dirInterfaces;
 
     /// <summary>Pathname of the strict interface directory.</summary>
     private string _dirInterfacesStrict;
@@ -147,12 +153,13 @@ public sealed class TypeScript2 : ILanguage
 
     /// <summary>Gets the reserved words.</summary>
     /// <value>The reserved words.</value>
-    private static readonly HashSet<string> _reservedWords = new ()
+    private static readonly HashSet<string> _reservedWords = new (StringComparer.Ordinal)
     {
         "const",
         "enum",
         "export",
         "interface",
+        "Element",
     };
 
     /// <summary>The generics and type hints.</summary>
@@ -229,6 +236,7 @@ public sealed class TypeScript2 : ILanguage
     List<ExporterOptions.FhirExportClassType> ILanguage.OptionalExportClassTypes => new List<ExporterOptions.FhirExportClassType>()
     {
         ExporterOptions.FhirExportClassType.Enum,
+        ExporterOptions.FhirExportClassType.Profile,
     };
 
     /// <summary>Gets language-specific options and their descriptions.</summary>
@@ -269,29 +277,41 @@ public sealed class TypeScript2 : ILanguage
         _exportedResourceNamesAndTypes = new Dictionary<string, string>();
         _exportedCodes = new HashSet<string>();
 
-        _dirModelsStrict = Path.Combine(exportDirectory, "StrictModels");
-        if (!Directory.Exists(_dirModelsStrict))
+        _dirModels = Path.Combine(exportDirectory, "Models");
+        if (!Directory.Exists(_dirModels))
         {
-            Directory.CreateDirectory(_dirModelsStrict);
+            Directory.CreateDirectory(_dirModels);
         }
 
-        _dirModelsOpt = Path.Combine(exportDirectory, "OptionalModels");
-        if (!Directory.Exists(_dirModelsOpt))
+        //_dirModelsStrict = Path.Combine(exportDirectory, "StrictModels");
+        //if (!Directory.Exists(_dirModelsStrict))
+        //{
+        //    Directory.CreateDirectory(_dirModelsStrict);
+        //}
+
+        //_dirModelsOpt = Path.Combine(exportDirectory, "OptionalModels");
+        //if (!Directory.Exists(_dirModelsOpt))
+        //{
+        //    Directory.CreateDirectory(_dirModelsOpt);
+        //}
+
+        _dirInterfaces = Path.Combine(exportDirectory, "Interfaces");
+        if (!Directory.Exists(_dirInterfaces))
         {
-            Directory.CreateDirectory(_dirModelsOpt);
+            Directory.CreateDirectory(_dirInterfaces);
         }
 
-        _dirInterfacesStrict = Path.Combine(exportDirectory, "StrictInterfaces");
-        if (!Directory.Exists(_dirInterfacesStrict))
-        {
-            Directory.CreateDirectory(_dirInterfacesStrict);
-        }
+        //_dirInterfacesStrict = Path.Combine(exportDirectory, "StrictInterfaces");
+        //if (!Directory.Exists(_dirInterfacesStrict))
+        //{
+        //    Directory.CreateDirectory(_dirInterfacesStrict);
+        //}
 
-        _dirInterfacesOpt = Path.Combine(exportDirectory, "OptionalInterfaces");
-        if (!Directory.Exists(_dirInterfacesOpt))
-        {
-            Directory.CreateDirectory(_dirInterfacesOpt);
-        }
+        //_dirInterfacesOpt = Path.Combine(exportDirectory, "OptionalInterfaces");
+        //if (!Directory.Exists(_dirInterfacesOpt))
+        //{
+        //    Directory.CreateDirectory(_dirInterfacesOpt);
+        //}
 
         _directoryValueSets = Path.Combine(exportDirectory, "ValueSets");
         if (_exportEnums)
@@ -319,22 +339,24 @@ public sealed class TypeScript2 : ILanguage
         WriteInterfaceModules(exportDirectory, interfaceExports);
         WriteModelModules(exportDirectory, classExports);
 
+        List<string> exportedValueSets = new();
+
         if (_exportEnums)
         {
-            List<string> exportedValueSets = new ();
-
             WriteValueSets(_info.ValueSetsByUrl.Values, ref exportedValueSets);
-
             WriteValueSetModule(exportDirectory, exportedValueSets);
         }
 
-        WriteIndexModule(exportDirectory);
+        WriteIndexModule(exportDirectory, interfaceExports, classExports, exportedValueSets);
     }
 
     /// <summary>Writes an index module.</summary>
     /// <param name="exportDirectory">Directory to write files.</param>
     private void WriteIndexModule(
-        string exportDirectory)
+        string exportDirectory,
+        Dictionary<string, List<string>> interfaceExports,
+        Dictionary<string, List<string>> classExports,
+        List<string> exportedValueSets)
     {
         // create a filename for writing
         string filename = Path.Combine(exportDirectory, $"index{_sourceExtension}");
@@ -346,19 +368,88 @@ public sealed class TypeScript2 : ILanguage
 
             WriteHeader(true, false, false);
 
-            _writer.WriteLineIndented("import * as StrictInterfaces from './strictinterfaces';");
-            _writer.WriteLineIndented("import * as OptionalInterfaces from './optionalinterfaces';");
-            _writer.WriteLineIndented("import * as StrictModels from './strictmodels';");
-            _writer.WriteLineIndented("import * as OptionalModels from './optionalmodels';");
+            //foreach (KeyValuePair<string, List<string>> moduleAndExports in interfaceExports)
+            //{
+            //    _writer.WriteLineIndented(
+            //        $"import {{" +
+            //        $" {string.Join(", ", moduleAndExports.Value)}" +
+            //        $" }}" +
+            //        $" from './Interfaces/{moduleAndExports.Key}';");
+            //}
+
+            //_writer.WriteLine();
+            //WriteExpandedResourceInterfaceBinding(true);
+            //_writer.WriteLine();
+
+            //foreach (KeyValuePair<string, List<string>> moduleAndExports in classExports)
+            //{
+            //    _writer.WriteLineIndented(
+            //        $"import {{" +
+            //        $" {string.Join(", ", moduleAndExports.Value)}" +
+            //        $" }}" +
+            //        $" from './Models/{moduleAndExports.Key}';");
+            //}
+
+            //_writer.WriteLine();
+            //WriteExpandedResourceInterfaceBinding(false);
+            //_writer.WriteLine();
+            //WriteFhirResourceFactory();
+            //_writer.WriteLine();
+
+            //if (_exportEnums)
+            //{
+            //    foreach (string exportedSet in exportedValueSets)
+            //    {
+            //        _writer.WriteLineIndented($"import {{ {exportedSet} }} from './ValueSets/{exportedSet}'");
+            //    }
+            //}
+
+            //_writer.OpenScope("export {");
+
+            //foreach (List<string> exports in interfaceExports.Values)
+            //{
+            //    _writer.WriteLineIndented(string.Join(", ", exports) + ",");
+            //}
+
+            //_writer.WriteLineIndented("IFhirResource,");
+
+            //foreach (List<string> exports in classExports.Values)
+            //{
+            //    _writer.WriteLineIndented(string.Join(", ", exports) + ",");
+            //}
+
+            //_writer.WriteLineIndented("type FhirResource,");
+            //_writer.WriteLineIndented("FhirResourceFactory,");
+            //_writer.WriteLineIndented("FhirResourceFactoryStrict,");
+
+            //if (_exportEnums)
+            //{
+            //    foreach (string exportedSet in exportedValueSets)
+            //    {
+            //        _writer.WriteLineIndented(exportedSet + ",");
+            //    }
+            //}
+
+            //_writer.CloseScope();
+
+            _writer.WriteLineIndented("import * as Interfaces from './interfaces';");
+            _writer.WriteLineIndented("import * as Models from './models';");
+
+            //_writer.WriteLineIndented("import * as StrictInterfaces from './strictinterfaces';");
+            //_writer.WriteLineIndented("import * as OptionalInterfaces from './optionalinterfaces';");
+            //_writer.WriteLineIndented("import * as StrictModels from './strictmodels';");
+            //_writer.WriteLineIndented("import * as OptionalModels from './optionalmodels';");
 
             if (_exportEnums)
             {
                 _writer.WriteLineIndented("import * as ValueSets from './valuesets';");
-                _writer.WriteLineIndented("export { StrictInterfaces, OptionalInterfaces, StrictModels, OptionalModels, ValueSets };");
+                //_writer.WriteLineIndented("export { StrictInterfaces, OptionalInterfaces, StrictModels, OptionalModels, ValueSets };");
+                _writer.WriteLineIndented("export { Interfaces, Models, ValueSets };");
             }
             else
             {
-                _writer.WriteLineIndented("export { StrictInterfaces, OptionalInterfaces, StrictModels, OptionalModels };");
+                //_writer.WriteLineIndented("export { StrictInterfaces, OptionalInterfaces, StrictModels, OptionalModels };");
+                _writer.WriteLineIndented("export { Interfaces, Models };");
             }
 
             WriteFooter();
@@ -408,7 +499,7 @@ public sealed class TypeScript2 : ILanguage
         Dictionary<string, List<string>> interfaceExports)
     {
         // create a filename for writing
-        string filename = Path.Combine(exportDirectory, $"strictinterfaces{_interfaceExtension}");
+        string filename = Path.Combine(exportDirectory, $"interfaces{_interfaceExtension}");
 
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -423,7 +514,7 @@ public sealed class TypeScript2 : ILanguage
                     $"import {{" +
                     $" {string.Join(", ", moduleAndExports.Value)}" +
                     $" }}" +
-                    $" from './StrictInterfaces/{moduleAndExports.Key}';");
+                    $" from './Interfaces/{moduleAndExports.Key}';");
             }
 
             _writer.WriteLine();
@@ -443,41 +534,77 @@ public sealed class TypeScript2 : ILanguage
             WriteFooter();
         }
 
-        // create a filename for writing
-        filename = Path.Combine(exportDirectory, $"optionalinterfaces{_interfaceExtension}");
+        //// create a filename for writing
+        //string filename = Path.Combine(exportDirectory, $"strictinterfaces{_interfaceExtension}");
 
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            _writer = writer;
+        //using (FileStream stream = new FileStream(filename, FileMode.Create))
+        //using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        //{
+        //    _writer = writer;
 
-            WriteHeader(true, false, false);
+        //    WriteHeader(true, false, false);
 
-            foreach (KeyValuePair<string, List<string>> moduleAndExports in interfaceExports)
-            {
-                _writer.WriteLineIndented(
-                    $"import {{" +
-                    $" {string.Join(", ", moduleAndExports.Value)}" +
-                    $" }}" +
-                    $" from './OptionalInterfaces/{moduleAndExports.Key}';");
-            }
+        //    foreach (KeyValuePair<string, List<string>> moduleAndExports in interfaceExports)
+        //    {
+        //        _writer.WriteLineIndented(
+        //            $"import {{" +
+        //            $" {string.Join(", ", moduleAndExports.Value)}" +
+        //            $" }}" +
+        //            $" from './StrictInterfaces/{moduleAndExports.Key}';");
+        //    }
 
-            _writer.WriteLine();
-            WriteExpandedResourceInterfaceBinding(true);
-            _writer.WriteLine();
+        //    _writer.WriteLine();
+        //    WriteExpandedResourceInterfaceBinding(true);
+        //    _writer.WriteLine();
 
-            _writer.OpenScope("export {");
+        //    _writer.OpenScope("export {");
 
-            foreach (List<string> exports in interfaceExports.Values)
-            {
-                _writer.WriteLineIndented(string.Join(", ", exports) + ",");
-            }
+        //    foreach (List<string> exports in interfaceExports.Values)
+        //    {
+        //        _writer.WriteLineIndented(string.Join(", ", exports) + ",");
+        //    }
 
-            _writer.WriteLineIndented("IFhirResource,");
-            _writer.CloseScope();
+        //    _writer.WriteLineIndented("IFhirResource,");
+        //    _writer.CloseScope();
 
-            WriteFooter();
-        }
+        //    WriteFooter();
+        //}
+
+        //// create a filename for writing
+        //filename = Path.Combine(exportDirectory, $"optionalinterfaces{_interfaceExtension}");
+
+        //using (FileStream stream = new FileStream(filename, FileMode.Create))
+        //using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        //{
+        //    _writer = writer;
+
+        //    WriteHeader(true, false, false);
+
+        //    foreach (KeyValuePair<string, List<string>> moduleAndExports in interfaceExports)
+        //    {
+        //        _writer.WriteLineIndented(
+        //            $"import {{" +
+        //            $" {string.Join(", ", moduleAndExports.Value)}" +
+        //            $" }}" +
+        //            $" from './OptionalInterfaces/{moduleAndExports.Key}';");
+        //    }
+
+        //    _writer.WriteLine();
+        //    WriteExpandedResourceInterfaceBinding(true);
+        //    _writer.WriteLine();
+
+        //    _writer.OpenScope("export {");
+
+        //    foreach (List<string> exports in interfaceExports.Values)
+        //    {
+        //        _writer.WriteLineIndented(string.Join(", ", exports) + ",");
+        //    }
+
+        //    _writer.WriteLineIndented("IFhirResource,");
+        //    _writer.CloseScope();
+
+        //    WriteFooter();
+        //}
     }
 
     /// <summary>Writes a model module.</summary>
@@ -488,7 +615,7 @@ public sealed class TypeScript2 : ILanguage
         Dictionary<string, List<string>> classExports)
     {
         // create a filename for writing
-        string filename = Path.Combine(exportDirectory, $"strictmodels{_sourceExtension}");
+        string filename = Path.Combine(exportDirectory, $"models{_sourceExtension}");
 
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -503,7 +630,7 @@ public sealed class TypeScript2 : ILanguage
                     $"import {{" +
                     $" {string.Join(", ", moduleAndExports.Value)}" +
                     $" }}" +
-                    $" from './StrictModels/{moduleAndExports.Key}';");
+                    $" from './Models/{moduleAndExports.Key}';");
             }
 
             _writer.WriteLine();
@@ -521,49 +648,89 @@ public sealed class TypeScript2 : ILanguage
 
             _writer.WriteLineIndented("type FhirResource,");
             _writer.WriteLineIndented("FhirResourceFactory,");
+            _writer.WriteLineIndented("FhirResourceFactoryStrict,");
             _writer.CloseScope();
 
             WriteFooter();
         }
 
-        // create a filename for writing
-        filename = Path.Combine(exportDirectory, $"optionalmodels{_sourceExtension}");
+        //// create a filename for writing
+        //string filename = Path.Combine(exportDirectory, $"strictmodels{_sourceExtension}");
 
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            _writer = writer;
+        //using (FileStream stream = new FileStream(filename, FileMode.Create))
+        //using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        //{
+        //    _writer = writer;
 
-            WriteHeader(true, false, false);
+        //    WriteHeader(true, false, false);
 
-            foreach (KeyValuePair<string, List<string>> moduleAndExports in classExports)
-            {
-                _writer.WriteLineIndented(
-                    $"import {{" +
-                    $" {string.Join(", ", moduleAndExports.Value)}" +
-                    $" }}" +
-                    $" from './OptionalModels/{moduleAndExports.Key}';");
-            }
+        //    foreach (KeyValuePair<string, List<string>> moduleAndExports in classExports)
+        //    {
+        //        _writer.WriteLineIndented(
+        //            $"import {{" +
+        //            $" {string.Join(", ", moduleAndExports.Value)}" +
+        //            $" }}" +
+        //            $" from './StrictModels/{moduleAndExports.Key}';");
+        //    }
 
-            _writer.WriteLine();
-            WriteExpandedResourceInterfaceBinding(false);
-            _writer.WriteLine();
-            WriteFhirResourceFactory();
-            _writer.WriteLine();
+        //    _writer.WriteLine();
+        //    WriteExpandedResourceInterfaceBinding(false);
+        //    _writer.WriteLine();
+        //    WriteFhirResourceFactory();
+        //    _writer.WriteLine();
 
-            _writer.OpenScope("export {");
+        //    _writer.OpenScope("export {");
 
-            foreach (List<string> exports in classExports.Values)
-            {
-                _writer.WriteLineIndented(string.Join(", ", exports) + ",");
-            }
+        //    foreach (List<string> exports in classExports.Values)
+        //    {
+        //        _writer.WriteLineIndented(string.Join(", ", exports) + ",");
+        //    }
 
-            _writer.WriteLineIndented("type FhirResource,");
-            _writer.WriteLineIndented("FhirResourceFactory,");
-            _writer.CloseScope();
+        //    _writer.WriteLineIndented("type FhirResource,");
+        //    _writer.WriteLineIndented("FhirResourceFactory,");
+        //    _writer.CloseScope();
 
-            WriteFooter();
-        }
+        //    WriteFooter();
+        //}
+
+        //// create a filename for writing
+        //filename = Path.Combine(exportDirectory, $"optionalmodels{_sourceExtension}");
+
+        //using (FileStream stream = new FileStream(filename, FileMode.Create))
+        //using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        //{
+        //    _writer = writer;
+
+        //    WriteHeader(true, false, false);
+
+        //    foreach (KeyValuePair<string, List<string>> moduleAndExports in classExports)
+        //    {
+        //        _writer.WriteLineIndented(
+        //            $"import {{" +
+        //            $" {string.Join(", ", moduleAndExports.Value)}" +
+        //            $" }}" +
+        //            $" from './OptionalModels/{moduleAndExports.Key}';");
+        //    }
+
+        //    _writer.WriteLine();
+        //    WriteExpandedResourceInterfaceBinding(false);
+        //    _writer.WriteLine();
+        //    WriteFhirResourceFactory();
+        //    _writer.WriteLine();
+
+        //    _writer.OpenScope("export {");
+
+        //    foreach (List<string> exports in classExports.Values)
+        //    {
+        //        _writer.WriteLineIndented(string.Join(", ", exports) + ",");
+        //    }
+
+        //    _writer.WriteLineIndented("type FhirResource,");
+        //    _writer.WriteLineIndented("FhirResourceFactory,");
+        //    _writer.CloseScope();
+
+        //    WriteFooter();
+        //}
     }
 
     /// <summary>Writes the FHIR resource factory.</summary>
@@ -574,9 +741,8 @@ public sealed class TypeScript2 : ILanguage
             return;
         }
 
-        WriteIndentedComment("Factory creator for FHIR Resources");
-
         // function open
+        WriteIndentedComment("Factory creator for FHIR Resources");
         _writer.WriteLineIndented("function FhirResourceFactory(source:any) : FhirResource|null {");
         _writer.IncreaseIndent();
 
@@ -586,7 +752,7 @@ public sealed class TypeScript2 : ILanguage
 
         foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
         {
-            _writer.WriteLineIndented($"case \"{kvp.Key}\": return new {kvp.Value}(source);");
+            _writer.WriteLineIndented($"case \"{kvp.Key}\": return {kvp.Value}.FactoryCreate(source);");
         }
 
         _writer.WriteLineIndented("default: return null;");
@@ -596,6 +762,50 @@ public sealed class TypeScript2 : ILanguage
 
         // function close
         _writer.CloseScope();
+
+        // function open
+        WriteIndentedComment("Factory creator for strict FHIR Resources");
+        _writer.WriteLineIndented("function FhirResourceFactoryStrict(source:any) : FhirResource|null {");
+        _writer.IncreaseIndent();
+
+        // switch open
+        _writer.WriteLineIndented("switch (source[\"resourceType\"]) {");
+        _writer.IncreaseIndent();
+
+        foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
+        {
+            _writer.WriteLineIndented($"case \"{kvp.Key}\": return {kvp.Value}.FactoryCreateStrict(source);");
+        }
+
+        _writer.WriteLineIndented("default: return null;");
+
+        // switch close
+        _writer.CloseScope();
+
+        // function close
+        _writer.CloseScope();
+
+        //// function open
+        //WriteIndentedComment("Factory creator for FHIR Resources");
+        //_writer.WriteLineIndented("function FhirResourceFactory(source:any) : FhirResource|null {");
+        //_writer.IncreaseIndent();
+
+        //// switch open
+        //_writer.WriteLineIndented("switch (source[\"resourceType\"]) {");
+        //_writer.IncreaseIndent();
+
+        //foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
+        //{
+        //    _writer.WriteLineIndented($"case \"{kvp.Key}\": return new {kvp.Value}(source);");
+        //}
+
+        //_writer.WriteLineIndented("default: return null;");
+
+        //// switch close
+        //_writer.CloseScope();
+
+        //// function close
+        //_writer.CloseScope();
     }
 
     /// <summary>Writes the expanded resource interface binding.</summary>
@@ -663,6 +873,8 @@ public sealed class TypeScript2 : ILanguage
                 string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
                 vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
 
+                vsName = vsName + "ValueSet";
+
                 if (exportedNames.Contains(vsName))
                 {
                     Console.WriteLine($"Duplicate export name: {vsName} ({vs.Key})");
@@ -681,7 +893,7 @@ public sealed class TypeScript2 : ILanguage
 
                     WriteHeader(true, false, false);
 
-                    _writer.WriteLineIndented($"import {{ Coding }} from '../strictmodels'");
+                    _writer.WriteLineIndented($"import {{ Coding }} from '../models'");
 
                     WriteValueSet(
                         vs,
@@ -812,6 +1024,88 @@ public sealed class TypeScript2 : ILanguage
     /// <param name="classModules">    The modules and exports.</param>
     /// <param name="isResource">      (Optional) True if is resource, false if not.</param>
     private void WriteComplexes(
+        IEnumerable<FhirComplex> complexes,
+        Dictionary<string, List<string>> interfaceModules,
+        Dictionary<string, List<string>> classModules,
+        bool isResource = false)
+    {
+        string filename;
+
+        List<string> classExports;
+        List<string> interfaceExports;
+
+        ExportStringBuilder sbInterface;
+        ExportStringBuilder sbClass;
+
+        foreach (FhirComplex complex in complexes)
+        {
+            interfaceExports = new();
+            classExports = new();
+            sbInterface = new();
+            sbClass = new();
+
+            BuildComplexOutput(
+                complex,
+                isResource,
+                interfaceExports,
+                classExports,
+                sbInterface,
+                sbClass);
+
+            string name = FhirUtils.ToConvention(
+                complex.Name,
+                string.Empty,
+                FhirTypeBase.NamingConvention.PascalCase,
+                false,
+                string.Empty,
+                _reservedWords);
+
+            classModules.Add(name, classExports);
+            interfaceModules.Add("I" + name, interfaceExports);
+
+            // create a filename for writing
+            filename = Path.Combine(_dirModels, $"{name}{_sourceExtension}");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteHeader(false, true, false);
+
+                _writer.WriteLineIndented($"import * as {_namespaceModels} from '../models'");
+                _writer.WriteLineIndented($"import * as {_namespaceInterfaces} from '../interfaces'");
+
+                _writer.Write(sbClass.ToString());
+
+                WriteFooter();
+            }
+
+            // create a filename for writing
+            filename = Path.Combine(_dirInterfaces, $"I{name}{_interfaceExtension}");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteHeader(false, true, false);
+
+                _writer.WriteLineIndented($"import * as {_namespaceInterfaces} from '../interfaces'");
+
+                _writer.Write(sbInterface.ToString());
+
+                WriteFooter();
+            }
+        }
+    }
+
+    /// <summary>Writes the complexes.</summary>
+    /// <param name="complexes">       The complexes.</param>
+    /// <param name="interfaceModules">The interface modules.</param>
+    /// <param name="classModules">    The modules and exports.</param>
+    /// <param name="isResource">      (Optional) True if is resource, false if not.</param>
+    private void WriteComplexesBy4(
         IEnumerable<FhirComplex> complexes,
         Dictionary<string, List<string>> interfaceModules,
         Dictionary<string, List<string>> classModules,
@@ -972,7 +1266,7 @@ public sealed class TypeScript2 : ILanguage
         if (string.IsNullOrEmpty(complex.BaseTypeName) ||
             complex.Name.Equals("Element", StringComparison.Ordinal))
         {
-            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, _reservedWords);
             baseClassName = string.Empty;
 
             sbInterfaceStrict.WriteLineIndented($"export interface I{nameForExport} {{");
@@ -982,7 +1276,7 @@ public sealed class TypeScript2 : ILanguage
         }
         else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
         {
-            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
+            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
             baseClassName = string.Empty;
 
             sbInterfaceStrict.WriteLineIndented($"export interface I{nameForExport} {{");
@@ -992,8 +1286,8 @@ public sealed class TypeScript2 : ILanguage
         }
         else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
         {
-            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
-            baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
+            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
+            baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
 
             if (_genericsAndTypeHints.ContainsKey(complex.Path))
             {
@@ -1040,8 +1334,8 @@ public sealed class TypeScript2 : ILanguage
         }
         else
         {
-            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
-            baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
+            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
+            baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
 
             if (_genericsAndTypeHints.ContainsKey(complex.Path))
             {
@@ -1201,6 +1495,204 @@ public sealed class TypeScript2 : ILanguage
         }
     }
 
+    /// <summary>Writes a complex.</summary>
+    /// <param name="complex">         The complex.</param>
+    /// <param name="isResource">      True if is resource, false if not.</param>
+    /// <param name="interfaceExports">The exports.</param>
+    /// <param name="classExports">    The class exports.</param>
+    /// <param name="sbInterface">     The interface.</param>
+    /// <param name="sbClass">         The string builder for class functions.</param>
+    private void BuildComplexOutput(
+        FhirComplex complex,
+        bool isResource,
+        List<string> interfaceExports,
+        List<string> classExports,
+        ExportStringBuilder sbInterface,
+        ExportStringBuilder sbClass)
+    {
+        // check for nested components
+        if (complex.Components != null)
+        {
+            foreach (FhirComplex component in complex.Components.Values)
+            {
+                BuildComplexOutput(
+                    component,
+                    false,
+                    interfaceExports,
+                    classExports,
+                    sbInterface,
+                    sbClass);
+            }
+        }
+
+        if (!string.IsNullOrEmpty(complex.Comment))
+        {
+            WriteIndentedComment(sbInterface, complex.Comment);
+            WriteIndentedComment(sbClass, complex.Comment);
+        }
+
+        string nameForExport;
+        string baseClassName;
+        string resourceNameForValidation = string.Empty;
+
+        if (string.IsNullOrEmpty(complex.BaseTypeName) ||
+            complex.Name.Equals("Element", StringComparison.Ordinal))
+        {
+            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, _reservedWords);
+            baseClassName = string.Empty;
+
+            sbInterface.WriteLineIndented($"export interface I{nameForExport} {{");
+            sbClass.WriteLineIndented($"export class {nameForExport} implements {_namespaceInterfaces}.I{nameForExport} {{");
+        }
+        else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
+        {
+            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
+            baseClassName = string.Empty;
+
+            sbInterface.WriteLineIndented($"export interface I{nameForExport} {{");
+            sbClass.WriteLineIndented($"export class {nameForExport} implements {_namespaceInterfaces}.I{nameForExport} {{");
+        }
+        else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
+        {
+            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
+            baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
+
+            if (_genericsAndTypeHints.ContainsKey(complex.Path))
+            {
+                sbInterface.WriteLineIndented(
+                    $"export interface" +
+                    $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInterfaces}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                    $" extends {_namespaceInterfaces}.I{baseClassName} {{");
+
+                sbClass.WriteLineIndented(
+                    $"export class" +
+                    $" {nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceModels}.{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                    $" extends {_namespaceModels}.{baseClassName} {{");
+            }
+            else
+            {
+                sbInterface.WriteLineIndented(
+                    $"export interface I{nameForExport}" +
+                    $" extends {_namespaceInterfaces}.I{baseClassName} {{");
+
+                sbClass.WriteLineIndented(
+                    $"export class {nameForExport}" +
+                    $" extends {_namespaceModels}.{baseClassName}" +
+                    $" implements {_namespaceInterfaces}.I{nameForExport} {{");
+            }
+        }
+        else
+        {
+            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
+            baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
+
+            if (_genericsAndTypeHints.ContainsKey(complex.Path))
+            {
+                sbInterface.WriteLineIndented(
+                    $"export interface" +
+                    $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInterfaces}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                    $" extends {_namespaceInterfaces}.I{baseClassName} {{");
+
+                sbClass.WriteLineIndented(
+                    $"export class" +
+                    $" {nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceModels}.{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                    $" extends {_namespaceModels}.{baseClassName}" +
+                    $" implements {_namespaceInterfaces}.I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias}> {{");
+            }
+            else
+            {
+                sbInterface.WriteLineIndented(
+                    $"export interface I{nameForExport}" +
+                    $" extends {_namespaceInterfaces}.I{baseClassName} {{");
+
+                sbClass.WriteLineIndented(
+                    $"export class {nameForExport}" +
+                    $" extends {_namespaceModels}.{baseClassName}" +
+                    $" implements {_namespaceInterfaces}.I{nameForExport} {{");
+            }
+        }
+
+        interfaceExports.Add("I" + nameForExport);
+        classExports.Add(nameForExport);
+
+        sbInterface.IncreaseIndent();
+        sbClass.IncreaseIndent();
+
+        if (isResource)
+        {
+            if (nameForExport == "Resource")
+            {
+                WriteIndentedComment(sbInterface, "Resource Type Name");
+                sbInterface.WriteLineIndented($"readonly resourceType: string;");
+
+                WriteIndentedComment(sbClass, "Resource Type Name");
+                sbClass.WriteLineIndented($"readonly resourceType: string = 'Resource';");
+            }
+            else if (ShouldWriteResourceName(nameForExport))
+            {
+                _exportedResourceNamesAndTypes.Add(complex.Name, complex.Name);
+
+                WriteIndentedComment(sbInterface, "Resource Type Name");
+                sbInterface.WriteLineIndented($"readonly resourceType: \"{complex.Name}\";");
+
+                WriteIndentedComment(sbClass, "Resource Type Name");
+                sbClass.WriteLineIndented($"readonly resourceType = \"{complex.Name}\";");
+
+                resourceNameForValidation = complex.Name;
+            }
+        }
+
+        // build elements
+        BuildElements(
+            complex,
+            sbInterface,
+            sbClass,
+            out List<FhirElement> elementsWithCodes,
+            out List<KeyValuePair<string, string>> fieldsAndTypes);
+
+        // build class functions for models
+        BuildClassFunctions(
+            sbClass,
+            nameForExport,
+            complex.Path,
+            !string.IsNullOrEmpty(baseClassName),
+            fieldsAndTypes,
+            resourceNameForValidation);
+
+        string contents;
+
+        if (_options.SupportFiles.TryGetInputForKey(complex.Name, out contents))
+        {
+            sbInterface.Write(contents);
+            sbClass.Write(contents);
+        }
+
+        if (_options.SupportFiles.TryGetInputForKey("Class" + complex.Name, out contents))
+        {
+            sbClass.Write(contents);
+        }
+
+        if (_options.SupportFiles.TryGetInputForKey("Interface" + complex.Name, out contents))
+        {
+            sbInterface.Write(contents);
+        }
+
+        // close interface (type)
+        sbInterface.CloseScope();
+        sbClass.CloseScope();
+
+        if (_exportEnums)
+        {
+            foreach (FhirElement element in elementsWithCodes)
+            {
+                BuildCode(
+                    element,
+                    sbInterface,
+                    sbClass);
+            }
+        }
+    }
+
     /// <summary>Writes a constructor.</summary>
     /// <exception cref="`">Thrown when a ` error condition occurs.</exception>
     /// <param name="sbClassStrict">            The class.</param>
@@ -1327,6 +1819,281 @@ public sealed class TypeScript2 : ILanguage
         sbConstructorStrict.CloseScope();
 
         sbClassStrict.Append(sbConstructorStrict);
+    }
+
+    /// <summary>Writes a constructor.</summary>
+    /// <exception cref="`">Thrown when a ` error condition occurs.</exception>
+    /// <param name="sbClass">                  The string builder for class functions.</param>
+    /// <param name="typeName">                 Name of the type.</param>
+    /// <param name="complexPath">              Path to the current complex element.</param>
+    /// <param name="hasParent">                True if has parent, false if not.</param>
+    /// <param name="fieldsAndTypes">           List of types of the fields ands.</param>
+    /// <param name="resourceNameForValidation">The resource name for validation.</param>
+    private void BuildClassFunctions(
+        ExportStringBuilder sbClass,
+        string typeName,
+        string complexPath,
+        bool hasParent,
+        List<KeyValuePair<string, string>> fieldsAndTypes,
+        string resourceNameForValidation)
+    {
+        bool isOptional;
+        bool isArray;
+        string name;
+        string type;
+
+        ExportStringBuilder sbOptional = new();
+        ExportStringBuilder sbStrict = new();
+        ExportStringBuilder sbHasRequired = new();
+
+        sbOptional.SetIndent(sbClass.Indentation);
+        sbStrict.SetIndent(sbClass.Indentation);
+        sbHasRequired.SetIndent(sbClass.Indentation);
+
+        // Optional Create - open
+        WriteIndentedComment(
+            sbOptional,
+            $"Factory function to create a {typeName} from an object that MAY NOT contain all required elements.");
+
+        if (_genericsAndTypeHints.ContainsKey(complexPath))
+        {
+            sbOptional.WriteLineIndented(
+                $"static override FactoryCreate" +
+                $"<{_genericsAndTypeHints[complexPath].Alias} = {_namespaceModels}.{_genericsAndTypeHints[complexPath].GenericHint}>" +
+                $"(source:Partial<{_namespaceInterfaces}.I{typeName}>)" +
+                $":{typeName}<{_genericsAndTypeHints[complexPath].Alias}> {{");
+            sbOptional.IncreaseIndent();
+            sbOptional.WriteLineIndented(
+                $"var dest:Partial<{typeName}<{_genericsAndTypeHints[complexPath].Alias}>>" +
+                $" = super.FactoryCreate(source) as " +
+                $"Partial<{typeName}<{_genericsAndTypeHints[complexPath].Alias}>>;");
+        }
+        else if (hasParent)
+        {
+            sbOptional.WriteLineIndented(
+                $"static override FactoryCreate(source:Partial<{_namespaceInterfaces}.I{typeName}>)" +
+                $":{typeName} {{");
+            sbOptional.IncreaseIndent();
+            sbOptional.WriteLineIndented($"var dest:Partial<{typeName}> = super.FactoryCreate(source) as Partial<{typeName}>;");
+        }
+        else
+        {
+            sbOptional.WriteLineIndented(
+                $"static FactoryCreate(source:Partial<{_namespaceInterfaces}.I{typeName}>)" +
+                $":{typeName} {{");
+            sbOptional.IncreaseIndent();
+            sbOptional.WriteLineIndented($"var dest:{typeName} = new {typeName}();");
+        }
+
+        if (!string.IsNullOrEmpty(resourceNameForValidation))
+        {
+            sbOptional.WriteLineIndented(
+                $"if ((source['resourceType'] !== \"{resourceNameForValidation}\") || (source['resourceType'] !== undefined))" +
+                $" {{ throw 'Invalid resourceType for a {resourceNameForValidation}'; }}");
+        }
+
+        // HasRequired - open
+        WriteIndentedComment(sbHasRequired, $"Check if the current {typeName} contains all required elements.");
+
+        if (hasParent)
+        {
+            sbHasRequired.WriteLineIndented("override checkRequiredElements():string[] {");
+        }
+        else
+        {
+            sbHasRequired.WriteLineIndented("checkRequiredElements():string[] {");
+        }
+
+        sbHasRequired.IncreaseIndent();
+        sbHasRequired.WriteLineIndented("var missingElements:string[] = [];");
+
+        foreach (KeyValuePair<string, string> fieldAndType in fieldsAndTypes)
+        {
+            type = fieldAndType.Value.Replace("|unknown", string.Empty);
+
+            isOptional = fieldAndType.Key.EndsWith('?');
+            isArray = type.EndsWith(']');
+
+            if (isOptional)
+            {
+                name = fieldAndType.Key.Substring(0, fieldAndType.Key.Length - 1);
+            }
+            else
+            {
+                name = fieldAndType.Key;
+            }
+
+            if (isArray)
+            {
+                // remove array syntax from type
+                string value = type.Substring(0, type.Length - 2);
+
+                if (value.Equals($"{_namespaceModels}.FhirResource", StringComparison.Ordinal))
+                {
+                    sbOptional.WriteLineIndented($"if (source[\"{name}\"] !== undefined) {{");
+                    sbOptional.IncreaseIndent();
+                    sbOptional.WriteLineIndented($"dest.{name} = [];");
+                    sbOptional.WriteLineIndented($"source.{name}.forEach((x) => {{");
+                    sbOptional.IncreaseIndent();
+                    sbOptional.WriteLineIndented($"var r = {_namespaceModels}.FhirResourceFactory(x);");
+                    sbOptional.WriteLineIndented($"if (r) {{ dest.{name}!.push(r); }}");
+                    sbOptional.CloseScope("});");
+                    sbOptional.CloseScope();
+                }
+                else if (_genericTypeHints.Contains(type))
+                {
+                    //sbOptional.WriteLineIndented(
+                    //    $"// REMOVE? if (source[\"{name}\"] !== undefined)" +
+                    //    $" {{ dest.{name} = source.{name}.map((x) => new {value}(x)); }}");
+
+                    if (value.Contains('<'))
+                    {
+                        sbOptional.WriteLineIndented(
+                            $"if (source[\"{name}\"] !== undefined)" +
+                            $" {{ dest.{name} = source.{name}.map(" +
+                            $"(x) => {value.Substring(0, value.IndexOf('<'))}.FactoryCreate<{_genericsAndTypeHints[complexPath].Alias}>(x));" +
+                            $" }}");
+                    }
+                    else
+                    {
+                        sbOptional.WriteLineIndented(
+                            $"if (source[\"{name}\"] !== undefined)" +
+                            $" {{ dest.{name} = source.{name}.map(" +
+                            $"(x) => {value}.FactoryCreate<{_genericsAndTypeHints[complexPath].Alias}>(x));" +
+                            $" }}");
+                    }
+                }
+                else if (!type.StartsWith(_namespaceModels))
+                {
+                    sbOptional.WriteLineIndented(
+                        $"if (source[\"{name}\"] !== undefined)" +
+                        $" {{ dest.{name} = source.{name}.map(" +
+                        $"(x) => (x));" +
+                        $" }}");
+                }
+                else
+                {
+                    //sbOptional.WriteLineIndented(
+                    //    $"// REMOVE? if (source[\"{name}\"] !== undefined)" +
+                    //    $" {{ dest.{name} = source.{name}.map((x) => new {value}(x)); }}");
+
+                    string interfaceHint = value.Replace($"{_namespaceModels}.", $"{_namespaceInterfaces}.I", StringComparison.Ordinal);
+
+                    sbOptional.WriteLineIndented(
+                        $"if (source[\"{name}\"] !== undefined)" +
+                        $" {{ dest.{name} = source.{name}.map(" +
+                        $"(x:Partial<{interfaceHint}>) => {value}.FactoryCreate(x));" +
+                        $" }}");
+                }
+
+                if (!isOptional)
+                {
+                    sbHasRequired.WriteLineIndented(
+                        $"if ((this[\"{name}\"] === undefined) ||" +
+                        $" (this[\"{name}\"].length === 0))" +
+                        $" {{ missingElements.push(\"{name}\"); }}");
+                }
+            }
+            else
+            {
+                if (type.Equals($"{_namespaceModels}.FhirResource", StringComparison.Ordinal))
+                {
+                    sbOptional.WriteLineIndented(
+                        $"if (source[\"{name}\"] !== undefined)" +
+                        $" {{ dest.{name} = ({_namespaceModels}.FhirResourceFactory(source.{name}) ?? undefined); }}");
+                }
+                else if (_genericTypeHints.Contains(type))
+                {
+                    sbOptional.WriteLineIndented(
+                        $"if (source[\"{name}\"] !== undefined)" +
+                        $" {{ dest.{name} = ({_namespaceModels}.FhirResourceFactory(source.{name}) ?? undefined)" +
+                        $" as unknown as {type}|undefined; }}");
+                }
+                else if (!type.StartsWith(_namespaceModels))
+                {
+                    sbOptional.WriteLineIndented(
+                        $"if (source[\"{name}\"] !== undefined)" +
+                        $" {{ dest.{name} = source.{name}; }}");
+                }
+                else
+                {
+                    //sbOptional.WriteLineIndented(
+                    //    $"// REMOVE? if (source[\"{name}\"] !== undefined)" +
+                    //    $" {{ dest.{name} = new {type}(source.{name}); }}");
+
+                    sbOptional.WriteLineIndented(
+                        $"if (source[\"{name}\"] !== undefined)" +
+                        $" {{ dest.{name} = {type}.FactoryCreate(source.{name}); }}");
+                }
+
+                if (!isOptional)
+                {
+                    sbHasRequired.WriteLineIndented(
+                        $"if (this[\"{name}\"] === undefined)" +
+                        $" {{ missingElements.push(\"{name}\"); }}");
+                }
+            }
+        }
+
+        if (_genericsAndTypeHints.ContainsKey(complexPath))
+        {
+            sbOptional.WriteLineIndented($"return dest as {typeName}<{_genericsAndTypeHints[complexPath].Alias}>");
+        }
+        else if (hasParent)
+        {
+            sbOptional.WriteLineIndented($"return dest as {typeName};");
+        }
+        else
+        {
+            sbOptional.WriteLineIndented("return dest;");
+        }
+
+        // Optional Create - close
+        sbOptional.CloseScope();
+
+        // HasRequired - check parent
+        if (hasParent)
+        {
+            sbHasRequired.WriteLineIndented("var parentMissing:string[] = super.checkRequiredElements();");
+            sbHasRequired.WriteLineIndented("missingElements.push(...parentMissing);");
+        }
+
+        // HasRequired - close
+        sbHasRequired.WriteLineIndented("return missingElements;");
+        sbHasRequired.CloseScope();
+
+        // Strict Create - open
+        WriteIndentedComment(
+            sbStrict,
+            $"Factory function to create a {typeName} from an object that MUST contain all required elements.");
+
+        if (hasParent)
+        {
+            sbStrict.WriteLineIndented(
+                $"static override FactoryCreateStrict(source:{_namespaceInterfaces}.I{typeName})" +
+                $":{typeName} {{");
+        }
+        else
+        {
+            sbStrict.WriteLineIndented(
+                $"static FactoryCreateStrict(source:{_namespaceInterfaces}.I{typeName})" +
+                $":{typeName} {{");
+        }
+
+        sbStrict.IncreaseIndent();
+        sbStrict.WriteLineIndented($"var dest:{typeName} = this.FactoryCreate(source);");
+        sbStrict.WriteLineIndented("var missingElements:string[] = dest.checkRequiredElements();");
+        sbStrict.WriteLineIndented("if (missingElements.length !== 0) {");
+        sbStrict.WriteLineIndented($"throw `{typeName} is missing elements: ${{missingElements.join(\", \")}}`");
+        sbStrict.WriteLineIndented(" }");
+        sbStrict.WriteLineIndented($"return dest;");
+
+        // Strict Create - close
+        sbStrict.CloseScope();
+
+        sbClass.Append(sbOptional);
+        sbClass.Append(sbHasRequired);
+        sbClass.Append(sbStrict);
     }
 
     /// <summary>Writes a constructor.</summary>
@@ -1586,6 +2353,70 @@ public sealed class TypeScript2 : ILanguage
     }
 
     /// <summary>Writes a code.</summary>
+    /// <param name="element">    The element.</param>
+    /// <param name="sbInterface">The interface.</param>
+    /// <param name="sbClass">    The string builder for class functions.</param>
+    private void BuildCode(
+        FhirElement element,
+        ExportStringBuilder sbInterface,
+        ExportStringBuilder sbClass)
+    {
+        string codeName = FhirUtils.ToConvention(
+            $"{element.Path}",
+            string.Empty,
+            FhirTypeBase.NamingConvention.PascalCase);
+
+        if (codeName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
+        {
+            codeName = codeName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
+        }
+
+        codeName += "Enum";
+
+        if (_exportedCodes.Contains(codeName))
+        {
+            return;
+        }
+
+        _exportedCodes.Add(codeName);
+
+        WriteIndentedComment(
+            $"Code Values for the {element.Path} field",
+            sbInterface,
+            sbClass);
+
+        sbInterface.WriteLineIndented($"export enum {codeName} {{");
+        sbInterface.IncreaseIndent();
+
+        sbClass.WriteLineIndented($"export enum {codeName} {{");
+        sbClass.IncreaseIndent();
+
+        if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+        {
+            foreach (FhirConcept concept in vs.Concepts)
+            {
+                FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
+
+                sbInterface.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+                sbClass.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+            }
+        }
+        else
+        {
+            foreach (string code in element.Codes)
+            {
+                FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
+
+                sbInterface.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+                sbClass.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+            }
+        }
+
+        sbInterface.CloseScope();
+        sbClass.CloseScope();
+    }
+
+    /// <summary>Writes a code.</summary>
     /// <param name="element">          The element.</param>
     /// <param name="sbInterfaceStrict">The strict interface.</param>
     /// <param name="sbInterfaceOpt">   The optinal interface.</param>
@@ -1686,6 +2517,44 @@ public sealed class TypeScript2 : ILanguage
 
     /// <summary>Writes the elements.</summary>
     /// <param name="complex">          The complex.</param>
+    /// <param name="sbInterface">      The interface.</param>
+    /// <param name="sbClass">          The string builder for class functions.</param>
+    /// <param name="elementsWithCodes">[out] The elements with codes.</param>
+    /// <param name="fieldsAndTypes">   [out] List of types of the fields ands.</param>
+    private void BuildElements(
+        FhirComplex complex,
+        ExportStringBuilder sbInterface,
+        ExportStringBuilder sbClass,
+        out List<FhirElement> elementsWithCodes,
+        out List<KeyValuePair<string, string>> fieldsAndTypes)
+    {
+        elementsWithCodes = new();
+
+        fieldsAndTypes = new();
+
+        foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.Name))
+        {
+            if (element.IsInherited)
+            {
+                continue;
+            }
+
+            BuildElement(
+                complex,
+                element,
+                sbInterface,
+                sbClass,
+                ref fieldsAndTypes);
+
+            if ((element.Codes != null) && (element.Codes.Count > 0))
+            {
+                elementsWithCodes.Add(element);
+            }
+        }
+    }
+
+    /// <summary>Writes the elements.</summary>
+    /// <param name="complex">          The complex.</param>
     /// <param name="sbInterfaceStrict">The interface.</param>
     /// <param name="sbInterfaceOpt">   The optinal interface.</param>
     /// <param name="sbClassStrict">    The class.</param>
@@ -1724,6 +2593,157 @@ public sealed class TypeScript2 : ILanguage
             if ((element.Codes != null) && (element.Codes.Count > 0))
             {
                 elementsWithCodes.Add(element);
+            }
+        }
+    }
+
+    /// <summary>Writes an element.</summary>
+    /// <param name="complex">       The complex.</param>
+    /// <param name="element">       The element.</param>
+    /// <param name="sbInterface">   The interface.</param>
+    /// <param name="sbClass">       The string builder for class functions.</param>
+    /// <param name="fieldsAndTypes">[in,out] List of field names and types.</param>
+    private void BuildElement(
+        FhirComplex complex,
+        FhirElement element,
+        ExportStringBuilder sbInterface,
+        ExportStringBuilder sbClass,
+        ref List<KeyValuePair<string, string>> fieldsAndTypes)
+    {
+        bool isOptional = false;
+        string optFlag = "?";
+        string optType = "|undefined";
+        string strictFlag = string.Empty;
+        string strictType = string.Empty;
+        string arrayFlagString = element.IsArray ? "[]" : string.Empty;
+
+        Dictionary<string, string> values = element.NamesAndTypesForExport(
+            FhirTypeBase.NamingConvention.CamelCase,
+            FhirTypeBase.NamingConvention.PascalCase,
+            false,
+            string.Empty,
+            complex.Components.ContainsKey(element.Path));
+
+        if (element.IsOptional || (values.Count > 1))
+        {
+            isOptional = true;
+            strictFlag = optFlag;
+            strictType = optType;
+        }
+
+        foreach (KeyValuePair<string, string> kvp in values)
+        {
+            if (!string.IsNullOrEmpty(element.Comment))
+            {
+                WriteIndentedComment(element.Comment, sbInterface, sbClass);
+            }
+
+            KeyValuePair<string, string> nameAndType;
+
+            // Use generated enum for codes when required strength
+            // EXCLUDE the MIME type value set - those should be bound to strings
+            if (element.Codes != null
+                    && element.Codes.Any()
+                    && !string.IsNullOrEmpty(element.ValueSet)
+                    && !string.IsNullOrEmpty(element.BindingStrength)
+                    && string.Equals(element.BindingStrength, "required", StringComparison.Ordinal)
+                    && (element.ValueSet != "http://www.rfc-editor.org/bcp/bcp13.txt")
+                    && (!element.ValueSet.StartsWith("http://hl7.org/fhir/ValueSet/mimetypes", StringComparison.Ordinal)))
+            {
+                if (_exportEnums)
+                {
+                    // If we are building enum, reference
+                    string codeName = FhirUtils.ToConvention(
+                        $"{element.Path}.Enum",
+                        string.Empty,
+                        FhirTypeBase.NamingConvention.PascalCase);
+
+                    nameAndType = new(kvp.Key, $"{codeName}{arrayFlagString}");
+                }
+                else if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+                {
+                    // use the full expansion
+                    nameAndType = new(
+                        kvp.Key,
+                        $"({string.Join("|", vs.Concepts.Select(c => $"\"{c.Code}\""))}){arrayFlagString}");
+                }
+                else
+                {
+                    // otherwise, inline the required codes
+                    nameAndType = new(
+                        kvp.Key,
+                        $"({string.Join("|", element.Codes.Select(c => $"\"{c}\""))}){arrayFlagString}");
+                }
+            }
+            else if (_genericsAndTypeHints.ContainsKey(element.Path))
+            {
+                GenericTypeHintInfo typeHint = _genericsAndTypeHints[element.Path];
+
+                if (typeHint.IncludeBase)
+                {
+                    nameAndType = new(
+                        kvp.Key,
+                        $"{kvp.Value}<{_genericsAndTypeHints[element.Path].Alias}>{arrayFlagString}");
+                }
+                else
+                {
+                    nameAndType = new(
+                        kvp.Key,
+                        $"{_genericsAndTypeHints[element.Path].Alias}{arrayFlagString}");
+                }
+            }
+            else if (kvp.Value.Equals("Resource", StringComparison.Ordinal))
+            {
+                nameAndType = new(kvp.Key, $"{_namespaceModels}.FhirResource{arrayFlagString}");
+            }
+            else if (_primitiveTypeMap.ContainsKey(kvp.Value))
+            {
+                nameAndType = new(kvp.Key, $"{kvp.Value}{arrayFlagString}");
+            }
+            else if (_info.ExcludedKeys.Contains(kvp.Value))
+            {
+                nameAndType = new(kvp.Key, $"any{arrayFlagString}");
+            }
+            else
+            {
+                nameAndType = new(kvp.Key, $"{_namespaceModels}.{kvp.Value}{arrayFlagString}");
+            }
+
+            // TODO(gino): interface probably needs to check for sub-type being interface too...
+            if (nameAndType.Value.Contains(_namespaceModels))
+            {
+                string replacement = nameAndType.Value.Replace(_namespaceModels + ".", _namespaceInterfaces + ".I");
+
+                sbInterface.WriteLineIndented($"{nameAndType.Key}{strictFlag}: {replacement}{strictType};");
+            }
+            else if (nameAndType.Value.Contains('<', StringComparison.Ordinal))
+            {
+                sbInterface.WriteLineIndented($"{nameAndType.Key}{strictFlag}: I{nameAndType.Value}{strictType};");
+            }
+            else
+            {
+                sbInterface.WriteLineIndented($"{nameAndType.Key}{strictFlag}: {nameAndType.Value}{strictType};");
+            }
+
+            sbClass.WriteLineIndented($"public {nameAndType.Key}{strictFlag}: {nameAndType.Value}{strictType};");
+
+            if (isOptional)
+            {
+                fieldsAndTypes.Add(new(nameAndType.Key + strictFlag, nameAndType.Value));
+            }
+            else
+            {
+                fieldsAndTypes.Add(nameAndType);
+            }
+
+            if (RequiresExtension(kvp.Value))
+            {
+                sbInterface.WriteLineIndented($"_{kvp.Key}?: {_namespaceInterfaces}.IFhirElement{arrayFlagString}|undefined;");
+                sbClass.WriteLineIndented($"public _{kvp.Key}?: {_namespaceModels}.FhirElement{arrayFlagString}|undefined;");
+
+                fieldsAndTypes.Add(new(
+                    $"_{kvp.Key}?",
+                    $"{_namespaceModels}.FhirElement{arrayFlagString}"));
             }
         }
     }
@@ -1873,14 +2893,14 @@ public sealed class TypeScript2 : ILanguage
 
             if (RequiresExtension(kvp.Value))
             {
-                sbInterfaceStrict.WriteLineIndented($"_{kvp.Key}?: {_namespaceInterfaces}.IElement{arrayFlagString}|undefined;");
-                sbInterfaceOpt.WriteLineIndented($"_{kvp.Key}?: {_namespaceInterfaces}.IElement{arrayFlagString}|undefined;");
-                sbClassStrict.WriteLineIndented($"_{kvp.Key}?: {_namespaceModels}.Element{arrayFlagString}|undefined;");
-                sbClassOpt.WriteLineIndented($"_{kvp.Key}?: {_namespaceModels}.Element{arrayFlagString}|undefined;");
+                sbInterfaceStrict.WriteLineIndented($"_{kvp.Key}?: {_namespaceInterfaces}.IFhirElement{arrayFlagString}|undefined;");
+                sbInterfaceOpt.WriteLineIndented($"_{kvp.Key}?: {_namespaceInterfaces}.IFhirElement{arrayFlagString}|undefined;");
+                sbClassStrict.WriteLineIndented($"_{kvp.Key}?: {_namespaceModels}.FhirElement{arrayFlagString}|undefined;");
+                sbClassOpt.WriteLineIndented($"_{kvp.Key}?: {_namespaceModels}.FhirElement{arrayFlagString}|undefined;");
 
                 fieldsAndTypes.Add(new (
                     $"_{kvp.Key}?",
-                    $"{_namespaceModels}.Element{arrayFlagString}"));
+                    $"{_namespaceModels}.FhirElement{arrayFlagString}"));
             }
         }
     }

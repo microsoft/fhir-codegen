@@ -39,6 +39,8 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     private Dictionary<FhirArtifactClassEnum, List<FhirArtifactRecord>> _artifactsByClass;
     private Dictionary<string, FhirArtifactClassEnum> _artifactClassByUrl;
 
+    private HashSet<string> _excludedKeys;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class.
     /// </summary>
@@ -62,6 +64,8 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         _valueSetsByUrl = new();
         _nodeInfoByPath = new();
         _artifactClassByUrl = new();
+
+        _excludedKeys = new();
 
         _artifactsByClass = new();
         foreach (FhirArtifactClassEnum artifactClass in (FhirArtifactClassEnum[])Enum.GetValues(typeof(FhirArtifactClassEnum)))
@@ -133,13 +137,14 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         bool restrictResources = false;
 
         HashSet<string> exportSet = new();
+        _excludedKeys = new();
 
         // figure out all the the dependencies we need to include based on requests
         if (options.ExportList != null)
         {
             foreach (string path in options.ExportList)
             {
-                AddToExportSet(path, ref exportSet);
+                AddToExportSet(path, exportSet, source);
             }
 
             if (exportSet.Count > 0)
@@ -154,7 +159,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             foreach (FhirServerResourceInfo resource in options.ServerInfo.ResourceInteractions.Values)
             {
-                AddToExportSet(resource.ResourceType, ref exportSet);
+                AddToExportSet(resource.ResourceType, exportSet, source);
             }
 
             if (exportSet.Count > 0)
@@ -162,7 +167,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 restrictResources = true;
 
                 // make sure Bundle is included so we can search, etc.
-                AddToExportSet("Bundle", ref exportSet);
+                AddToExportSet("Bundle", exportSet, source);
             }
         }
 
@@ -176,6 +181,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 // check for restricting output
                 if (restrictOutput && (!exportSet.Contains(kvp.Key)))
                 {
+                    _excludedKeys.Add(kvp.Key);
                     continue;
                 }
 
@@ -184,6 +190,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     (!options.IncludeExperimental) &&
                     kvp.Value.IsExperimental)
                 {
+                    _excludedKeys.Add(kvp.Key);
                     continue;
                 }
 
@@ -211,6 +218,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 // check for restricting output
                 if (restrictOutput && (!exportSet.Contains(kvp.Key)))
                 {
+                    _excludedKeys.Add(kvp.Key);
                     continue;
                 }
 
@@ -219,6 +227,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     (!options.IncludeExperimental) &&
                     kvp.Value.IsExperimental)
                 {
+                    _excludedKeys.Add(kvp.Key);
                     continue;
                 }
 
@@ -252,11 +261,13 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 // check for restricting output
                 if (restrictOutput && (!exportSet.Contains(kvp.Key)))
                 {
+                    _excludedKeys.Add(kvp.Key);
                     continue;
                 }
 
                 if (restrictResources && (!exportSet.Contains(kvp.Key)))
                 {
+                    _excludedKeys.Add(kvp.Key);
                     continue;
                 }
 
@@ -265,6 +276,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     (!options.IncludeExperimental) &&
                     kvp.Value.IsExperimental)
                 {
+                    _excludedKeys.Add(kvp.Key);
                     continue;
                 }
 
@@ -318,11 +330,19 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
         if (options.CopyProfiles)
         {
-            foreach (FhirComplex profile in source._profilesByUrl.Values)
+            foreach ((string profileFor, Dictionary<string, FhirComplex> profiles) in source._profilesByBaseType)
             {
-                if (_resourcesByName.ContainsKey(profile.BaseTypeName) ||
-                    _complexTypesByName.ContainsKey(profile.BaseTypeName) ||
-                    _primitiveTypesByName.ContainsKey(profile.BaseTypeName))
+                if (restrictOutput && (!exportSet.Contains(profileFor)))
+                {
+                    continue;
+                }
+
+                if (restrictResources && (!exportSet.Contains(profileFor)))
+                {
+                    continue;
+                }
+
+                foreach (FhirComplex profile in profiles.Values)
                 {
                     FhirComplex node = profile.DeepCopy(
                         options.PrimitiveTypeMap,
@@ -347,17 +367,57 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
         if (options.CopySearchParameters)
         {
-            foreach (FhirSearchParam sp in source._searchParamsByUrl.Values)
+            if (restrictOutput || restrictResources)
             {
-                AddSearchParameter((FhirSearchParam)sp.Clone());
+                foreach (FhirSearchParam sp in source._searchParamsByUrl.Values)
+                {
+                    if ((sp.ResourceTypes == null) || (!sp.ResourceTypes.Any()))
+                    {
+                        AddSearchParameter((FhirSearchParam)sp.Clone());
+                        continue;
+                    }
+
+                    foreach (string spBaseType in sp.ResourceTypes)
+                    {
+                        if (exportSet.Contains(spBaseType))
+                        {
+                            AddSearchParameter((FhirSearchParam)sp.Clone());
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (FhirSearchParam sp in source._searchParamsByUrl.Values)
+                {
+                    AddSearchParameter((FhirSearchParam)sp.Clone());
+                }
             }
         }
 
         if (options.CopyOperations)
         {
-            foreach (FhirOperation op in source._operationsByUrl.Values)
+            if (restrictOutput || restrictResources)
             {
-                AddOperation((FhirOperation)op.Clone());
+                foreach (FhirOperation op in source._operationsByUrl.Values)
+                {
+                    foreach (string opBaseType in op.ResourceTypes)
+                    {
+                        if (exportSet.Contains(opBaseType))
+                        {
+                            AddOperation((FhirOperation)op.Clone());
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (FhirOperation op in source._operationsByUrl.Values)
+                {
+                    AddOperation((FhirOperation)op.Clone());
+                }
             }
         }
 
@@ -511,11 +571,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             _allInteractionParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
         }
 
-        foreach (KeyValuePair<string, FhirValueSetCollection> collectionKvp in source._valueSetsByUrl)
+        foreach ((string vsUrl, FhirValueSetCollection vsCollection) in source._valueSetsByUrl)
         {
-            foreach (KeyValuePair<string, FhirValueSet> versionKvp in collectionKvp.Value.ValueSetsByVersion)
+            foreach ((string vsVersion, FhirValueSet valueSet) in vsCollection.ValueSetsByVersion)
             {
-                string key = $"{collectionKvp.Key}|{versionKvp.Key}";
+                string key = $"{vsUrl}|{vsVersion}";
 
                 if (HasValueSet(key))
                 {
@@ -523,33 +583,37 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 }
 
                 // check for restricted output and not seeing this valueSet
-                if (restrictOutput &&
-                    (!valueSetReferences.ContainsKey(collectionKvp.Key)))
+                if (restrictOutput)
+                {
+                    if ((!valueSetReferences.ContainsKey(vsUrl)) &&
+                        (!exportSet.Contains(vsUrl)) &&
+                        (!exportSet.Contains(key)))
+                    {
+                        continue;
+                    }
+                }
+
+                valueSet.Resolve(source._codeSystemsByUrl);
+
+                if ((valueSet.Concepts == null) ||
+                    (valueSet.Concepts.Count == 0))
                 {
                     continue;
                 }
 
-                versionKvp.Value.Resolve(source._codeSystemsByUrl);
-
-                if ((versionKvp.Value.Concepts == null) ||
-                    (versionKvp.Value.Concepts.Count == 0))
+                if (!_valueSetsByUrl.ContainsKey(vsUrl))
                 {
-                    continue;
+                    _valueSetsByUrl.Add(vsUrl, new FhirValueSetCollection(vsUrl));
                 }
 
-                if (!_valueSetsByUrl.ContainsKey(collectionKvp.Key))
+                FhirValueSet vs = (FhirValueSet)valueSet.Clone();
+
+                if (valueSetReferences.ContainsKey(vsUrl))
                 {
-                    _valueSetsByUrl.Add(collectionKvp.Key, new FhirValueSetCollection(collectionKvp.Key));
+                    vs.SetReferences(valueSetReferences[vsUrl]);
                 }
 
-                FhirValueSet vs = (FhirValueSet)versionKvp.Value.Clone();
-
-                if (valueSetReferences.ContainsKey(collectionKvp.Key))
-                {
-                    vs.SetReferences(valueSetReferences[collectionKvp.Key]);
-                }
-
-                _valueSetsByUrl[collectionKvp.Key].AddValueSet(vs);
+                _valueSetsByUrl[vsUrl].AddValueSet(vs);
             }
         }
     }
@@ -662,6 +726,9 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
     /// <summary>Gets URL of the artifact class by.</summary>
     public Dictionary<string, FhirArtifactClassEnum> ArtifactClassByUrl => _artifactClassByUrl;
+
+    /// <summary>Gets the excluded keys.</summary>
+    public HashSet<string> ExcludedKeys => _excludedKeys;
 
     /// <summary>Gets artifact class.</summary>
     /// <param name="token">The ID or URL of the artifact.</param>
@@ -1539,12 +1606,14 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
     /// <summary>Adds a complex to export set.</summary>
     /// <param name="complex">   The complex.</param>
-    /// <param name="set">       [in,out] The set.</param>
+    /// <param name="set">       The set.</param>
     /// <param name="isResource">True if is resource, false if not.</param>
+    /// <param name="source">    Source for the.</param>
     internal void AddComplexToExportSet(
         FhirComplex complex,
-        ref HashSet<string> set,
-        bool isResource)
+        HashSet<string> set,
+        bool isResource,
+        FhirVersionInfo source)
     {
         // add this item
         set.Add(complex.Name);
@@ -1553,7 +1622,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         if (!string.IsNullOrEmpty(complex.BaseTypeName))
         {
             // add the parent
-            AddToExportSet(complex.BaseTypeName, ref set);
+            AddToExportSet(complex.BaseTypeName, set, source);
 
             if (isResource)
             {
@@ -1563,7 +1632,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 {
                     case "CanonicalResource":
                     case "MetadataResource":
-                        AddToExportSet("DomainResource", ref set);
+                        AddToExportSet("DomainResource", set, source);
                         break;
                 }
             }
@@ -1574,10 +1643,15 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             foreach (KeyValuePair<string, FhirElement> kvp in complex.Elements)
             {
+                if (kvp.Key.Equals("Extension.value[x]", StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
                 if (!string.IsNullOrEmpty(kvp.Value.BaseTypeName))
                 {
                     // add the element type
-                    AddToExportSet(kvp.Value.BaseTypeName, ref set);
+                    AddToExportSet(kvp.Value.BaseTypeName, set, source);
                 }
 
                 if (kvp.Value.ElementTypes != null)
@@ -1585,15 +1659,21 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     foreach (FhirElementType elementType in kvp.Value.ElementTypes.Values)
                     {
                         // add the element type
-                        AddToExportSet(elementType.Name, ref set);
+                        AddToExportSet(elementType.Name, set, source);
 
-                        if (elementType.Profiles != null)
-                        {
-                            foreach (FhirElementProfile profile in elementType.Profiles.Values)
-                            {
-                                AddToExportSet(profile.Name, ref set);
-                            }
-                        }
+                        // TODO: figure out if this is actually desired
+                        //if (elementType.Profiles != null)
+                        //{
+                        //    if (elementType.Profiles.Count > 1)
+                        //    {
+                        //        Console.Write("");
+                        //    }
+
+                        //    foreach (FhirElementProfile profile in elementType.Profiles.Values)
+                        //    {
+                        //        AddToExportSet(profile.Name, set, source);
+                        //    }
+                        //}
                     }
                 }
             }
@@ -1601,7 +1681,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
         if (complex.Components != null)
         {
-            if (_complexTypesByName.ContainsKey("BackboneElement") &&
+            if (source._complexTypesByName.ContainsKey("BackboneElement") &&
                 (!set.Contains("BackboneElement")))
             {
                 set.Add("BackboneElement");
@@ -1609,15 +1689,16 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
             foreach (FhirComplex component in complex.Components.Values)
             {
-                AddComplexToExportSet(component, ref set, false);
+                AddComplexToExportSet(component, set, false, source);
             }
         }
     }
 
     /// <summary>Recursively adds a resource or type to the export set.</summary>
-    /// <param name="name">The name.</param>
-    /// <param name="set"> [in,out] The set.</param>
-    internal void AddToExportSet(string name, ref HashSet<string> set)
+    /// <param name="name">  The name.</param>
+    /// <param name="set">   The set.</param>
+    /// <param name="source">(Optional) Source for the.</param>
+    internal void AddToExportSet(string name, HashSet<string> set, FhirVersionInfo source)
     {
         // if we've already added this, we're done
         if (set.Contains(name))
@@ -1626,7 +1707,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
 
         // check for primitive
-        if (_primitiveTypesByName.ContainsKey(name))
+        if (source._primitiveTypesByName.ContainsKey(name))
         {
             // add this item
             set.Add(name);
@@ -1636,15 +1717,15 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
 
         // check for this being a type
-        if (_complexTypesByName.ContainsKey(name))
+        if (source._complexTypesByName.ContainsKey(name))
         {
-            AddComplexToExportSet(_complexTypesByName[name], ref set, false);
+            AddComplexToExportSet(source._complexTypesByName[name], set, false, source);
         }
 
         // check for this being a resource
-        if (_resourcesByName.ContainsKey(name))
+        if (source._resourcesByName.ContainsKey(name))
         {
-            AddComplexToExportSet(_resourcesByName[name], ref set, true);
+            AddComplexToExportSet(source._resourcesByName[name], set, true, source);
         }
     }
 

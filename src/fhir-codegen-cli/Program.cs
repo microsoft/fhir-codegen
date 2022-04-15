@@ -549,12 +549,12 @@ public static class Program
         // done
         long totalMS = timingWatch.ElapsedMilliseconds;
 
-        Console.WriteLine($"Done! Loading: {loadMS / 1000.0}s, Total: {totalMS / 1000.0}s");
-
         foreach (string file in filesWritten)
         {
             Console.WriteLine($"+ {file}");
         }
+
+        Console.WriteLine($"Done! Loading: {loadMS / 1000.0}s, Total: {totalMS / 1000.0}s");
     }
 
     /// <summary>Searches for the FHIR specification directory.</summary>

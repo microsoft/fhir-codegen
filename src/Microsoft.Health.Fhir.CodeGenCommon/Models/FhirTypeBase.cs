@@ -303,19 +303,19 @@ public class FhirTypeBase
         return output;
     }
 
-    /// <summary>Type for export.</summary>
-    /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
-    ///  illegal values.</exception>
-    /// <param name="convention">            The convention.</param>
-    /// <param name="primitiveTypeMap">           The base type map.</param>
-    /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
-    /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
-    /// <returns>A string.</returns>
-    public string TypeForExport(
+     /// <summary>Type for export.</summary>
+     /// <param name="convention">            The convention.</param>
+     /// <param name="primitiveTypeMap">      The base type map.</param>
+     /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
+     /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
+     /// <param name="reservedWords">         (Optional) The reserved words.</param>
+     /// <returns>A string.</returns>
+     public string TypeForExport(
         NamingConvention convention,
         Dictionary<string, string> primitiveTypeMap,
         bool concatenatePath = false,
-        string concatenationDelimiter = "")
+        string concatenationDelimiter = "",
+        HashSet<string> reservedWords = null)
     {
         if ((primitiveTypeMap != null) &&
             primitiveTypeMap.ContainsKey(_baseTypeName))
@@ -323,19 +323,31 @@ public class FhirTypeBase
             return primitiveTypeMap[_baseTypeName];
         }
 
-        string type = FhirUtils.ToConvention(_baseTypeName, _path, convention, concatenatePath, concatenationDelimiter);
+        string baseType = _baseTypeName;
 
         // Resources cannot inherit patterns, but they are listed that way today
         // see https://chat.fhir.org/#narrow/stream/179177-conformance/topic/Inheritance.20and.20Cardinality.20Changes
-        switch (type)
+        switch (_baseTypeName)
         {
             case "CanonicalResource":
             case "MetadataResource":
-                return "DomainResource";
+                baseType = "DomainResource";
+                break;
 
             default:
-                return type;
+                baseType = _baseTypeName;
+                break;
         }
+
+        string type = FhirUtils.ToConvention(
+            baseType,
+            _path,
+            convention,
+            concatenatePath,
+            concatenationDelimiter,
+            reservedWords);
+
+        return type;
     }
 
     /// <summary>Converts this object to a requested naming convention.</summary>
@@ -344,11 +356,13 @@ public class FhirTypeBase
     /// <param name="convention">            The convention.</param>
     /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
     /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
+    /// <param name="reservedWords">         (Optional) The reserved words.</param>
     /// <returns>A string.</returns>
     public string NameForExport(
         NamingConvention convention,
         bool concatenatePath = false,
-        string concatenationDelimiter = "")
+        string concatenationDelimiter = "",
+        HashSet<string> reservedWords = null)
     {
         if (string.IsNullOrEmpty(_name))
         {
@@ -368,49 +382,148 @@ public class FhirTypeBase
         switch (convention)
         {
             case NamingConvention.FhirDotNotation:
-                return _path;
+                {
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(_path))
+                    {
+                        return _path + "Fhir";
+                    }
+
+                    return _path;
+                }
 
             case NamingConvention.PascalDotNotation:
                 {
                     string[] components = ToPascal(_path.Split('.'));
-                    return string.Join(".", components);
+                    string value = string.Join(".", components);
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        components[components.Length - 1] =
+                            "Fhir" + components[components.Length - 1];
+
+                        return string.Join(".", components);
+                    }
+
+                    return value;
                 }
 
             case NamingConvention.PascalCase:
-                if (concatenatePath)
                 {
-                    string[] components = ToPascal(_path.Split('.'));
-                    return string.Join(concatenationDelimiter, components);
-                }
+                    if (concatenatePath)
+                    {
+                        string[] components = ToPascal(_path.Split('.'));
+                        string value = string.Join(concatenationDelimiter, components);
 
-                return _nameCapitalized;
+                        if ((reservedWords != null) &&
+                            reservedWords.Contains(value))
+                        {
+                            components[components.Length - 1] =
+                                "Fhir" + components[components.Length - 1];
+
+                            return string.Join(concatenationDelimiter, components);
+                        }
+
+                        return value;
+                    }
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(_nameCapitalized))
+                    {
+                        return "Fhir" + _nameCapitalized;
+                    }
+
+                    return _nameCapitalized;
+                }
 
             case NamingConvention.CamelCase:
-                if (concatenatePath)
                 {
-                    string[] components = ToCamel(_path.Split('.'));
-                    return string.Join(concatenationDelimiter, components);
-                }
+                    string value;
 
-                return ToCamel(_name);
+                    if (concatenatePath)
+                    {
+                        string[] components = ToCamel(_path.Split('.'));
+                        value = string.Join(concatenationDelimiter, components);
+
+                        if ((reservedWords != null) &&
+                            reservedWords.Contains(value))
+                        {
+                            components[components.Length - 1] =
+                                "fhir" + ToPascal(components[components.Length - 1]);
+
+                            return string.Join(concatenationDelimiter, components);
+                        }
+                    }
+
+                    value = ToCamel(_name);
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        return "fhir" + _nameCapitalized;
+                    }
+
+                    return value;
+                }
 
             case NamingConvention.UpperCase:
-                if (concatenatePath)
                 {
-                    string[] components = ToUpperInvariant(_path.Split('.'));
-                    return string.Join(concatenationDelimiter, components);
-                }
+                    string value;
 
-                return _name.ToUpperInvariant();
+                    if (concatenatePath)
+                    {
+                        string[] components = ToUpperInvariant(_path.Split('.'));
+                        value = string.Join(concatenationDelimiter, components);
+
+                        if ((reservedWords != null) &&
+                            reservedWords.Contains(value))
+                        {
+                            components[components.Length - 1] = "FHIR" + components[components.Length - 1];
+
+                            return string.Join(concatenationDelimiter, components);
+                        }
+                    }
+
+                    value = _name.ToUpperInvariant();
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        return "FHIR" + value;
+                    }
+
+                    return value;
+                }
 
             case NamingConvention.LowerCase:
-                if (concatenatePath)
                 {
-                    string[] components = ToLowerInvariant(_path.Split('.'));
-                    return string.Join(concatenationDelimiter, components);
-                }
+                    string value;
 
-                return _name.ToLowerInvariant();
+                    if (concatenatePath)
+                    {
+                        string[] components = ToLowerInvariant(_path.Split('.'));
+                        value = string.Join(concatenationDelimiter, components);
+
+                        if ((reservedWords != null) &&
+                            reservedWords.Contains(value))
+                        {
+                            components[components.Length - 1] = "fhir" + components[components.Length - 1];
+
+                            return string.Join(concatenationDelimiter, components);
+                        }
+                    }
+
+                    value = _name.ToLowerInvariant();
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        return "fhir" + value;
+                    }
+
+                    return value;
+                }
 
             case NamingConvention.None:
             default:

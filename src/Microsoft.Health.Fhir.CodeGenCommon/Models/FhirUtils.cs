@@ -31,13 +31,15 @@ public abstract class FhirUtils
     /// <param name="convention">            The convention.</param>
     /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
     /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
+    /// <param name="reservedWords">         (Optional) The reserved words.</param>
     /// <returns>The given data converted to a string.</returns>
     public static string ToConvention(
         string name,
         string path,
         NamingConvention convention,
         bool concatenatePath = false,
-        string concatenationDelimiter = "")
+        string concatenationDelimiter = "",
+        HashSet<string> reservedWords = null)
     {
         string value = name;
 
@@ -54,36 +56,104 @@ public abstract class FhirUtils
         switch (convention)
         {
             case NamingConvention.FhirDotNotation:
-                return value;
+                {
+                    if ((reservedWords != null) && reservedWords.Contains(value))
+                    {
+                        int i = value.LastIndexOf('.');
+                        if (i == -1)
+                        {
+                            value = "Fhir" + value;
+                        }
+                        else
+                        {
+                            value = value.Substring(0, i + 1) + "Fhir" + value.Substring(i + 1);
+                        }
+                    }
+
+                    return value;
+                }
 
             case NamingConvention.PascalDotNotation:
                 {
                     string[] components = ToPascal(value.Split('.'));
-                    return string.Join(".", components);
+                    value = string.Join(".", components);
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        components[components.Length - 1] =
+                            "Fhir" + components[components.Length - 1];
+
+                        return string.Join(".", components);
+                    }
+
+                    return value;
                 }
 
             case NamingConvention.PascalCase:
                 {
                     string[] components = ToPascal(value.Split('.'));
-                    return string.Join(concatenationDelimiter, components);
+                    value = string.Join(concatenationDelimiter, components);
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        components[components.Length - 1] =
+                            "Fhir" + components[components.Length - 1];
+
+                        return string.Join(concatenationDelimiter, components);
+                    }
+
+                    return value;
                 }
 
             case NamingConvention.CamelCase:
                 {
                     string[] components = ToCamel(value.Split('.'));
-                    return string.Join(concatenationDelimiter, components);
+                    value = string.Join(concatenationDelimiter, components);
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        components[components.Length - 1] =
+                            "fhir" + ToPascal(components[components.Length - 1]);
+
+                        return string.Join(concatenationDelimiter, components);
+                    }
+
+                    return value;
                 }
 
             case NamingConvention.UpperCase:
                 {
                     string[] components = ToUpperInvariant(value.Split('.'));
-                    return string.Join(concatenationDelimiter, components);
+                    value = string.Join(concatenationDelimiter, components);
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        components[components.Length - 1] = "FHIR" + components[components.Length - 1];
+
+                        return string.Join(concatenationDelimiter, components);
+                    }
+
+                    return value;
                 }
 
             case NamingConvention.LowerCase:
                 {
                     string[] components = ToLowerInvariant(value.Split('.'));
-                    return string.Join(concatenationDelimiter, components);
+                    value = string.Join(concatenationDelimiter, components);
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        components[components.Length - 1] = "fhir" + components[components.Length - 1];
+
+                        return string.Join(concatenationDelimiter, components);
+                    }
+
+                    return value;
                 }
 
             case NamingConvention.None:

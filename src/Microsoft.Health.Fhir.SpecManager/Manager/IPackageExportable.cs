@@ -68,6 +68,9 @@ public interface IPackageExportable
     /// <summary>Gets search parameters defined for all interactions.</summary>
     public Dictionary<string, FhirSearchParam> AllInteractionParameters { get; }
 
+    /// <summary>Gets the excluded keys.</summary>
+    public HashSet<string> ExcludedKeys { get; }
+
     /// <summary>Attempts to get explicit name a string from the given string.</summary>
     /// <param name="path">        Full pathname of the file.</param>
     /// <param name="explicitName">[out] Name of the explicit.</param>
