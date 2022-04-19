@@ -5,4 +5,11 @@ TODO
 
 # Building
 
-tsc --module es6 --lib es6 index.ts --declaration --declarationMap --esModuleInterop -outdir ../build/
+
+`tsc --build`
+
+# Installing
+
+While this repo is the temp home:
+
+`npm install git+https://github.com/GinoCanessa/FhirTypeScriptOddsAndEnds.git`

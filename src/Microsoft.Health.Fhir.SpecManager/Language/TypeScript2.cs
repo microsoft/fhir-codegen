@@ -481,8 +481,8 @@ public sealed class TypeScript2 : ILanguage
             _writer.WriteLineIndented("type IFhirResource,");
 
             _writer.WriteLineIndented("type FhirResource,");
-            _writer.WriteLineIndented("FhirResourceFactory,");
-            _writer.WriteLineIndented("FhirResourceFactoryStrict,");
+            _writer.WriteLineIndented("fhirResourceFactory,");
+            _writer.WriteLineIndented("fhirResourceFactoryStrict,");
 
             _writer.CloseScope();
 
@@ -567,7 +567,7 @@ public sealed class TypeScript2 : ILanguage
 
         // function open
         WriteIndentedComment("Factory creator for FHIR Resources");
-        _writer.WriteLineIndented("function FhirResourceFactory(source:any) : FhirResource|null {");
+        _writer.WriteLineIndented("function fhirResourceFactory(source:any) : FhirResource|null {");
         _writer.IncreaseIndent();
 
         // switch open
@@ -589,7 +589,7 @@ public sealed class TypeScript2 : ILanguage
 
         // function open
         WriteIndentedComment("Factory creator for strict FHIR Resources");
-        _writer.WriteLineIndented("function FhirResourceFactoryStrict(source:any) : FhirResource|null {");
+        _writer.WriteLineIndented("function fhirResourceFactoryStrict(source:any) : FhirResource|null {");
         _writer.IncreaseIndent();
 
         // switch open
@@ -598,7 +598,7 @@ public sealed class TypeScript2 : ILanguage
 
         foreach ((string fhir, ExportedComplex complex) in _exportedResources)
         {
-            _writer.WriteLineIndented($"case \"{fhir}\": return {complex.ExportedName}.FromStrict(source);");
+            _writer.WriteLineIndented($"case \"{fhir}\": return {complex.ExportedName}.fromStrict(source);");
         }
 
         _writer.WriteLineIndented("default: return null;");
@@ -608,28 +608,6 @@ public sealed class TypeScript2 : ILanguage
 
         // function close
         _writer.CloseScope();
-
-        //// function open
-        //WriteIndentedComment("Factory creator for FHIR Resources");
-        //_writer.WriteLineIndented("function FhirResourceFactory(source:any) : FhirResource|null {");
-        //_writer.IncreaseIndent();
-
-        //// switch open
-        //_writer.WriteLineIndented("switch (source[\"resourceType\"]) {");
-        //_writer.IncreaseIndent();
-
-        //foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
-        //{
-        //    _writer.WriteLineIndented($"case \"{kvp.Key}\": return new {kvp.Value}(source);");
-        //}
-
-        //_writer.WriteLineIndented("default: return null;");
-
-        //// switch close
-        //_writer.CloseScope();
-
-        //// function close
-        //_writer.CloseScope();
     }
 
     /// <summary>Writes the expanded resource interface binding.</summary>
@@ -823,7 +801,7 @@ public sealed class TypeScript2 : ILanguage
                 WriteIndentedComment(concept.Definition);
             }
 
-            _writer.WriteLineIndented($"{constName}: Coding.FromStrict({{");
+            _writer.WriteLineIndented($"{constName}: new Coding({{");
             _writer.IncreaseIndent();
 
             _writer.WriteLineIndented($"code: \"{codeValue}\",");
@@ -1257,11 +1235,11 @@ public sealed class TypeScript2 : ILanguage
 
         if (hasParent)
         {
-            sbHasRequired.WriteLineIndented("override CheckRequiredElements():string[] {");
+            sbHasRequired.WriteLineIndented("override checkRequiredElements():string[] {");
         }
         else
         {
-            sbHasRequired.WriteLineIndented("CheckRequiredElements():string[] {");
+            sbHasRequired.WriteLineIndented("checkRequiredElements():string[] {");
         }
 
         sbHasRequired.IncreaseIndent();
@@ -1297,7 +1275,7 @@ public sealed class TypeScript2 : ILanguage
                     sbConstructor.WriteLineIndented($"this.{name} = [];");
                     sbConstructor.WriteLineIndented($"source.{name}.forEach((x) => {{");
                     sbConstructor.IncreaseIndent();
-                    sbConstructor.WriteLineIndented($"var r = {_namespaceInternal}.FhirResourceFactory(x);");
+                    sbConstructor.WriteLineIndented($"var r = {_namespaceInternal}.fhirResourceFactory(x);");
                     sbConstructor.WriteLineIndented($"if (r) {{ this.{name}!.push(r); }}");
                     sbConstructor.CloseScope("});");
                     sbConstructor.CloseScope();
@@ -1345,13 +1323,13 @@ public sealed class TypeScript2 : ILanguage
                 {
                     sbConstructor.WriteLineIndented(
                         $"if (source[\"{name}\"])" +
-                        $" {{ this.{name} = ({_namespaceInternal}.FhirResourceFactory(source.{name}) ?? undefined); }}");
+                        $" {{ this.{name} = ({_namespaceInternal}.fhirResourceFactory(source.{name}) ?? undefined); }}");
                 }
                 else if (_genericTypeHints.Contains(type))
                 {
                     sbConstructor.WriteLineIndented(
                         $"if (source[\"{name}\"])" +
-                        $" {{ this.{name} = ({_namespaceInternal}.FhirResourceFactory(source.{name}) ?? undefined)" +
+                        $" {{ this.{name} = ({_namespaceInternal}.fhirResourceFactory(source.{name}) ?? undefined)" +
                         $" as unknown as {type}|undefined; }}");
                 }
                 else if (!type.StartsWith(_namespaceInternal))
@@ -1384,7 +1362,7 @@ public sealed class TypeScript2 : ILanguage
         // HasRequired - check parent
         if (hasParent)
         {
-            sbHasRequired.WriteLineIndented("var parentMissing:string[] = super.CheckRequiredElements();");
+            sbHasRequired.WriteLineIndented("var parentMissing:string[] = super.checkRequiredElements();");
             sbHasRequired.WriteLineIndented("missingElements.push(...parentMissing);");
         }
 
@@ -1400,19 +1378,19 @@ public sealed class TypeScript2 : ILanguage
         if (hasParent)
         {
             sbStrict.WriteLineIndented(
-                $"static override FromStrict(source:{_namespaceInternal}.I{typeName})" +
+                $"static override fromStrict(source:{_namespaceInternal}.I{typeName})" +
                 $":{typeName} {{");
         }
         else
         {
             sbStrict.WriteLineIndented(
-                $"static FromStrict(source:{_namespaceInternal}.I{typeName})" +
+                $"static fromStrict(source:{_namespaceInternal}.I{typeName})" +
                 $":{typeName} {{");
         }
 
         sbStrict.IncreaseIndent();
         sbStrict.WriteLineIndented($"var dest:{typeName} = new {typeName}(source);");
-        sbStrict.WriteLineIndented("var missingElements:string[] = dest.CheckRequiredElements();");
+        sbStrict.WriteLineIndented("var missingElements:string[] = dest.checkRequiredElements();");
         sbStrict.WriteLineIndented($"if (missingElements.length !== 0) {{ throw `{typeName} is missing elements: ${{missingElements.join(\", \")}}` }}");
         sbStrict.WriteLineIndented($"return dest;");
 

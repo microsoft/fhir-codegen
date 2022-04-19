@@ -2,7 +2,7 @@
   /**
    * Create a reference from an existing resource
    */
-   static FromResource(source:fhir.IResource, baseUrl:string=''):Reference {
+   static fromResource(source:fhir.IResource, baseUrl:string=''):Reference {
     if (baseUrl.endsWith('/')) {
       return new Reference({
         type: source.resourceType,
