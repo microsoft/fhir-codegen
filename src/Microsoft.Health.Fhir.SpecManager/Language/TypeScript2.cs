@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.IO;
+using System.Runtime.Serialization;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -76,17 +77,33 @@ public sealed class TypeScript2 : ILanguage
     /// <summary>The dir models.</summary>
     private string _dirModels;
 
-    /// <summary>The dir interfaces.</summary>
-    private string _dirInterfaces;
-
     /// <summary>Pathname of the value set directory.</summary>
     private string _directoryValueSets;
 
-    /// <summary>List of types of the exported resource names and types.</summary>
-    private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
+    /// <summary>(Immutable) True to export interfaces as types.</summary>
+    private static bool _exportInterfacesAsTypes = true;
 
-    /// <summary>The exported codes.</summary>
-    private HashSet<string> _exportedCodes = new HashSet<string>();
+    private readonly record struct ExportedPrimitive(
+        string FhirName,
+        string ExportedName,
+        string FileKey);
+
+    private record struct ExportedComplex(
+        string FhirName,
+        string ExportedName,
+        string ExportedParentName,
+        string FileKey,
+        List<string> ExportedBackbones,
+        HashSet<string> ExportedEnums);
+
+    /// <summary>The exported primitives.</summary>
+    private Dictionary<string, ExportedPrimitive> _exportedPrimitives = new();
+
+    /// <summary>List of types of the exported complexes.</summary>
+    private Dictionary<string, ExportedComplex> _exportedComplexTypes = new();
+
+    /// <summary>The exported resources.</summary>
+    private Dictionary<string, ExportedComplex> _exportedResources = new();
 
     /// <summary>The currently in-use text writer.</summary>
     private ExportStreamWriter _writer;
@@ -138,7 +155,7 @@ public sealed class TypeScript2 : ILanguage
 
     /// <summary>Gets the reserved words.</summary>
     /// <value>The reserved words.</value>
-    private static readonly HashSet<string> _reservedWords = new (StringComparer.Ordinal)
+    private static readonly HashSet<string> _reservedWords = new(StringComparer.Ordinal)
     {
         "const",
         "enum",
@@ -148,39 +165,39 @@ public sealed class TypeScript2 : ILanguage
     };
 
     /// <summary>The generics and type hints.</summary>
-    private static readonly Dictionary<string, GenericTypeHintInfo> _genericsAndTypeHints = new ()
+    private static readonly Dictionary<string, GenericTypeHintInfo> _genericsAndTypeHints = new()
     {
-        {
-            "Bundle",
-            new GenericTypeHintInfo()
-            {
-                Alias = "BundleContentType",
-                GenericHint = "FhirResource",
-                IncludeBase = true,
-            }
-        },
-        {
-            "Bundle.entry",
-            new GenericTypeHintInfo()
-            {
-                Alias = "BundleContentType",
-                GenericHint = "FhirResource",
-                IncludeBase = true,
-            }
-        },
-        {
-            "Bundle.entry.resource",
-            new GenericTypeHintInfo()
-            {
-                Alias = "BundleContentType",
-                GenericHint = string.Empty,
-                IncludeBase = false,
-            }
-        },
+        //{
+        //    "Bundle",
+        //    new GenericTypeHintInfo()
+        //    {
+        //        Alias = "BundleContentType",
+        //        GenericHint = "FhirResource",
+        //        IncludeBase = true,
+        //    }
+        //},
+        //{
+        //    "Bundle.entry",
+        //    new GenericTypeHintInfo()
+        //    {
+        //        Alias = "BundleContentType",
+        //        GenericHint = "FhirResource",
+        //        IncludeBase = true,
+        //    }
+        //},
+        //{
+        //    "Bundle.entry.resource",
+        //    new GenericTypeHintInfo()
+        //    {
+        //        Alias = "BundleContentType",
+        //        GenericHint = string.Empty,
+        //        IncludeBase = false,
+        //    }
+        //},
     };
 
     /// <summary>(Immutable) The Set of all known generic types (needed for casting).</summary>
-    private static readonly HashSet<string> _genericTypeHints = new ()
+    private static readonly HashSet<string> _genericTypeHints = new()
     {
         "FhirResource",
         "BundleContentType",
@@ -258,8 +275,8 @@ public sealed class TypeScript2 : ILanguage
         // _namespace = options.GetParam("namespace", $"fhirR{info.MajorVersion}");
         _namespaceInternal = "fhir";
 
-        _exportedResourceNamesAndTypes = new Dictionary<string, string>();
-        _exportedCodes = new HashSet<string>();
+        _exportedComplexTypes = new();
+        _exportedResources = new();
 
         _dirModels = Path.Combine(exportDirectory, "fhir");
         if (!Directory.Exists(_dirModels))
@@ -284,17 +301,10 @@ public sealed class TypeScript2 : ILanguage
             }
         }
 
-        Dictionary<string, List<string>> classExports = new ();
-        Dictionary<string, List<string>> interfaceExports = new ();
-        Dictionary<string, List<string>> codeExports = new();
+        WriteComplexes(_info.ComplexTypes.Values, FhirArtifactClassEnum.ComplexType);
+        WriteComplexes(_info.Resources.Values, FhirArtifactClassEnum.Resource);
 
-        WriteComplexes(_info.ComplexTypes.Values, interfaceExports, classExports, codeExports, false);
-        WriteComplexes(_info.Resources.Values, interfaceExports, classExports, codeExports, true);
-
-        WriteFhirExportModule(exportDirectory, interfaceExports, classExports, codeExports);
-
-        //WriteInterfaceModules(exportDirectory, interfaceExports);
-        //WriteModelModules(exportDirectory, classExports);
+        WriteFhirExportModule(exportDirectory);
 
         List<string> exportedValueSets = new();
 
@@ -304,19 +314,108 @@ public sealed class TypeScript2 : ILanguage
             WriteValueSetModule(exportDirectory, exportedValueSets);
         }
 
-        WriteIndexModule(exportDirectory, interfaceExports, classExports, exportedValueSets);
+        WriteIndexModule(exportDirectory);
+    }
+
+    /// <summary>Gets sorted files and tokens.</summary>
+    /// <returns>The sorted files and tokens.</returns>
+    private List<(string File, List<string> Tokens, List<string> Annotated)> GetSortedFilesAndTokens()
+    {
+        List<(string File, List<string> Tokens, List<string> Annotated)> sortedItems = new();
+        HashSet<string> usedKeys = new();
+
+        foreach (ExportedPrimitive item in _exportedPrimitives.Values)
+        {
+            if (usedKeys.Contains(item.ExportedName))
+            {
+                continue;
+            }
+
+            sortedItems.Add((
+                item.FileKey,
+                new List<string>() { item.ExportedName },
+                new List<string>() { "type " + item.ExportedName }));
+        }
+
+        foreach (ExportedComplex item in _exportedComplexTypes.Values)
+        {
+            if (usedKeys.Contains(item.ExportedName))
+            {
+                continue;
+            }
+
+            AddComplexForExport(item, sortedItems, usedKeys);
+        }
+
+        foreach (ExportedComplex item in _exportedResources.Values)
+        {
+            if (usedKeys.Contains(item.ExportedName))
+            {
+                continue;
+            }
+
+            AddComplexForExport(item, sortedItems, usedKeys);
+        }
+
+        return sortedItems;
+    }
+
+    /// <summary>Adds a complex for export.</summary>
+    /// <param name="item">       The item.</param>
+    /// <param name="sortedItems">The sorted items.</param>
+    /// <param name="usedKeys">   The used keys.</param>
+    private void AddComplexForExport(
+        ExportedComplex item,
+        List<(string File, List<string> Tokens, List<string> Annotated)> sortedItems,
+        HashSet<string> usedKeys)
+    {
+        if ((!string.IsNullOrEmpty(item.ExportedParentName)) &&
+            (!usedKeys.Contains(item.ExportedParentName)))
+        {
+            if (_exportedComplexTypes.ContainsKey(item.ExportedParentName))
+            {
+                AddComplexForExport(
+                    _exportedComplexTypes[item.ExportedParentName],
+                    sortedItems,
+                    usedKeys);
+            }
+
+            if (_exportedResources.ContainsKey(item.ExportedParentName))
+            {
+                AddComplexForExport(
+                    _exportedResources[item.ExportedParentName],
+                    sortedItems,
+                    usedKeys);
+            }
+        }
+
+        List<string> artifacts = new();
+        List<string> annotated = new();
+
+        artifacts.Add("I" + item.ExportedName);
+        annotated.Add("type I" + item.ExportedName);
+
+        artifacts.AddRange(item.ExportedBackbones.Select((k) => "I" + k));
+        annotated.AddRange(item.ExportedBackbones.Select((k) => "type I" + k));
+
+        artifacts.Add(item.ExportedName);
+        annotated.Add(item.ExportedName);
+
+        artifacts.AddRange(item.ExportedBackbones);
+        annotated.AddRange(item.ExportedBackbones);
+
+        artifacts.AddRange(item.ExportedEnums);
+        //annotated.AddRange(item.ExportedEnums.Select((k) => "type " + k));
+        annotated.AddRange(item.ExportedEnums);
+
+        sortedItems.Add((item.FileKey, artifacts, annotated));
+        usedKeys.Add(item.ExportedName);
     }
 
     /// <summary>Writes a FHIR export module.</summary>
-    /// <param name="exportDirectory"> Directory to write files.</param>
-    /// <param name="interfaceExports">The interface modules and exports.</param>
-    /// <param name="classExports">    The class modules and exports.</param>
-    /// <param name="codeExports">     The code exports.</param>
+    /// <param name="exportDirectory">Directory to write files.</param>
     private void WriteFhirExportModule(
-        string exportDirectory,
-        Dictionary<string, List<string>> interfaceExports,
-        Dictionary<string, List<string>> classExports,
-        Dictionary<string, List<string>> codeExports)
+        string exportDirectory)
     {
         // create a filename for writing
         string filename = Path.Combine(exportDirectory, $"fhir{_interfaceExtension}");
@@ -328,67 +427,56 @@ public sealed class TypeScript2 : ILanguage
 
             WriteHeader(true, false, false);
 
-            IEnumerable<string> fhirFiles = interfaceExports.Keys.Union(classExports.Keys).Union(codeExports.Keys);
+            // JS requires that we export in a resolved dependency order.
+            List<(string File, List<string> Tokens, List<string> Annotated)> sortedFilesAndTokens = GetSortedFilesAndTokens();
 
-            foreach (string fhirKey in fhirFiles)
+            foreach ((string exportFile, List<string> tokens, List<string> _) in sortedFilesAndTokens)
             {
-                List<string> tokens = new();
-
-                if (interfaceExports.ContainsKey(fhirKey))
-                {
-                    tokens.AddRange(interfaceExports[fhirKey]);
-                }
-
-                if (classExports.ContainsKey(fhirKey))
-                {
-                    tokens.AddRange(classExports[fhirKey]);
-                }
-
-                if (codeExports.ContainsKey(fhirKey))
-                {
-                    tokens.AddRange(codeExports[fhirKey]);
-                }
-
                 _writer.WriteLineIndented(
                     $"import {{" +
                     $" {string.Join(", ", tokens)}" +
                     $" }}" +
-                    $" from './fhir/{fhirKey}';");
+                    $" from './fhir/{exportFile}';");
             }
 
             _writer.WriteLine();
-            WriteExpandedResourceInterfaceBinding(true);
+            WriteExpandedResourceBinding(true);
             _writer.WriteLine();
 
             _writer.WriteLine();
-            WriteExpandedResourceInterfaceBinding(false);
+            WriteExpandedResourceBinding(false);
             _writer.WriteLine();
             WriteFhirResourceFactory();
             _writer.WriteLine();
 
             _writer.OpenScope("export {");
 
-            foreach (string fhirKey in fhirFiles)
+            foreach ((string _, List<string> _, List<string> annotated) in sortedFilesAndTokens)
             {
-                List<string> tokens = new();
-
-                if (interfaceExports.ContainsKey(fhirKey))
-                {
-                    tokens.AddRange(interfaceExports[fhirKey].Select((i) => "type " + i));
-                }
-
-                if (classExports.ContainsKey(fhirKey))
-                {
-                    tokens.AddRange(classExports[fhirKey]);
-                }
-
-                if (codeExports.ContainsKey(fhirKey))
-                {
-                    tokens.AddRange(codeExports[fhirKey]);
-                }
-
-                _writer.WriteLineIndented(string.Join(", ", tokens) + ", ");
+                _writer.WriteLineIndented(string.Join(", ", annotated) + ", ");
             }
+
+            //foreach (string fhirKey in fhirFiles)
+            //{
+            //    List<string> tokens = new();
+
+            //    if (interfaceExports.ContainsKey(fhirKey))
+            //    {
+            //        tokens.AddRange(interfaceExports[fhirKey].Select((i) => "type " + i));
+            //    }
+
+            //    if (classExports.ContainsKey(fhirKey))
+            //    {
+            //        tokens.AddRange(classExports[fhirKey]);
+            //    }
+
+            //    if (codeExports.ContainsKey(fhirKey))
+            //    {
+            //        tokens.AddRange(codeExports[fhirKey]);
+            //    }
+
+            //    _writer.WriteLineIndented(string.Join(", ", tokens) + ", ");
+            //}
 
             _writer.WriteLineIndented("type IFhirResource,");
 
@@ -405,10 +493,7 @@ public sealed class TypeScript2 : ILanguage
     /// <summary>Writes an index module.</summary>
     /// <param name="exportDirectory">Directory to write files.</param>
     private void WriteIndexModule(
-        string exportDirectory,
-        Dictionary<string, List<string>> interfaceExports,
-        Dictionary<string, List<string>> classExports,
-        List<string> exportedValueSets)
+        string exportDirectory)
     {
         // create a filename for writing
         string filename = Path.Combine(exportDirectory, $"index{_sourceExtension}");
@@ -471,252 +556,11 @@ public sealed class TypeScript2 : ILanguage
         }
     }
 
-    /// <summary>Writes a model module.</summary>
-    /// <param name="exportDirectory">  Directory to write files.</param>
-    /// <param name="interfaceExports">The modules and exports.</param>
-    private void WriteInterfaceModules(
-        string exportDirectory,
-        Dictionary<string, List<string>> interfaceExports)
-    {
-        // create a filename for writing
-        string filename = Path.Combine(exportDirectory, $"interfaces{_interfaceExtension}");
-
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            _writer = writer;
-
-            WriteHeader(true, false, false);
-
-            foreach (KeyValuePair<string, List<string>> moduleAndExports in interfaceExports)
-            {
-                _writer.WriteLineIndented(
-                    $"import {{" +
-                    $" {string.Join(", ", moduleAndExports.Value)}" +
-                    $" }}" +
-                    $" from './Interfaces/{moduleAndExports.Key}';");
-            }
-
-            _writer.WriteLine();
-            WriteExpandedResourceInterfaceBinding(true);
-            _writer.WriteLine();
-
-            _writer.OpenScope("export {");
-
-            foreach (List<string> exports in interfaceExports.Values)
-            {
-                _writer.WriteLineIndented(string.Join(", ", exports) + ",");
-            }
-
-            _writer.WriteLineIndented("IFhirResource,");
-            _writer.CloseScope();
-
-            WriteFooter();
-        }
-
-        //// create a filename for writing
-        //string filename = Path.Combine(exportDirectory, $"strictinterfaces{_interfaceExtension}");
-
-        //using (FileStream stream = new FileStream(filename, FileMode.Create))
-        //using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        //{
-        //    _writer = writer;
-
-        //    WriteHeader(true, false, false);
-
-        //    foreach (KeyValuePair<string, List<string>> moduleAndExports in interfaceExports)
-        //    {
-        //        _writer.WriteLineIndented(
-        //            $"import {{" +
-        //            $" {string.Join(", ", moduleAndExports.Value)}" +
-        //            $" }}" +
-        //            $" from './StrictInterfaces/{moduleAndExports.Key}';");
-        //    }
-
-        //    _writer.WriteLine();
-        //    WriteExpandedResourceInterfaceBinding(true);
-        //    _writer.WriteLine();
-
-        //    _writer.OpenScope("export {");
-
-        //    foreach (List<string> exports in interfaceExports.Values)
-        //    {
-        //        _writer.WriteLineIndented(string.Join(", ", exports) + ",");
-        //    }
-
-        //    _writer.WriteLineIndented("IFhirResource,");
-        //    _writer.CloseScope();
-
-        //    WriteFooter();
-        //}
-
-        //// create a filename for writing
-        //filename = Path.Combine(exportDirectory, $"optionalinterfaces{_interfaceExtension}");
-
-        //using (FileStream stream = new FileStream(filename, FileMode.Create))
-        //using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        //{
-        //    _writer = writer;
-
-        //    WriteHeader(true, false, false);
-
-        //    foreach (KeyValuePair<string, List<string>> moduleAndExports in interfaceExports)
-        //    {
-        //        _writer.WriteLineIndented(
-        //            $"import {{" +
-        //            $" {string.Join(", ", moduleAndExports.Value)}" +
-        //            $" }}" +
-        //            $" from './OptionalInterfaces/{moduleAndExports.Key}';");
-        //    }
-
-        //    _writer.WriteLine();
-        //    WriteExpandedResourceInterfaceBinding(true);
-        //    _writer.WriteLine();
-
-        //    _writer.OpenScope("export {");
-
-        //    foreach (List<string> exports in interfaceExports.Values)
-        //    {
-        //        _writer.WriteLineIndented(string.Join(", ", exports) + ",");
-        //    }
-
-        //    _writer.WriteLineIndented("IFhirResource,");
-        //    _writer.CloseScope();
-
-        //    WriteFooter();
-        //}
-    }
-
-    /// <summary>Writes a model module.</summary>
-    /// <param name="exportDirectory">  Directory to write files.</param>
-    /// <param name="classExports">The modules and exports.</param>
-    private void WriteModelModules(
-        string exportDirectory,
-        Dictionary<string, List<string>> classExports)
-    {
-        // create a filename for writing
-        string filename = Path.Combine(exportDirectory, $"models{_sourceExtension}");
-
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            _writer = writer;
-
-            WriteHeader(true, false, false);
-
-            foreach (KeyValuePair<string, List<string>> moduleAndExports in classExports)
-            {
-                _writer.WriteLineIndented(
-                    $"import {{" +
-                    $" {string.Join(", ", moduleAndExports.Value)}" +
-                    $" }}" +
-                    $" from './Models/{moduleAndExports.Key}';");
-            }
-
-            _writer.WriteLine();
-            WriteExpandedResourceInterfaceBinding(false);
-            _writer.WriteLine();
-            WriteFhirResourceFactory();
-            _writer.WriteLine();
-
-            _writer.OpenScope("export {");
-
-            foreach (List<string> exports in classExports.Values)
-            {
-                _writer.WriteLineIndented(string.Join(", ", exports) + ",");
-            }
-
-            _writer.WriteLineIndented("type FhirResource,");
-            _writer.WriteLineIndented("FhirResourceFactory,");
-            _writer.WriteLineIndented("FhirResourceFactoryStrict,");
-            _writer.CloseScope();
-
-            WriteFooter();
-        }
-
-        //// create a filename for writing
-        //string filename = Path.Combine(exportDirectory, $"strictmodels{_sourceExtension}");
-
-        //using (FileStream stream = new FileStream(filename, FileMode.Create))
-        //using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        //{
-        //    _writer = writer;
-
-        //    WriteHeader(true, false, false);
-
-        //    foreach (KeyValuePair<string, List<string>> moduleAndExports in classExports)
-        //    {
-        //        _writer.WriteLineIndented(
-        //            $"import {{" +
-        //            $" {string.Join(", ", moduleAndExports.Value)}" +
-        //            $" }}" +
-        //            $" from './StrictModels/{moduleAndExports.Key}';");
-        //    }
-
-        //    _writer.WriteLine();
-        //    WriteExpandedResourceInterfaceBinding(false);
-        //    _writer.WriteLine();
-        //    WriteFhirResourceFactory();
-        //    _writer.WriteLine();
-
-        //    _writer.OpenScope("export {");
-
-        //    foreach (List<string> exports in classExports.Values)
-        //    {
-        //        _writer.WriteLineIndented(string.Join(", ", exports) + ",");
-        //    }
-
-        //    _writer.WriteLineIndented("type FhirResource,");
-        //    _writer.WriteLineIndented("FhirResourceFactory,");
-        //    _writer.CloseScope();
-
-        //    WriteFooter();
-        //}
-
-        //// create a filename for writing
-        //filename = Path.Combine(exportDirectory, $"optionalmodels{_sourceExtension}");
-
-        //using (FileStream stream = new FileStream(filename, FileMode.Create))
-        //using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        //{
-        //    _writer = writer;
-
-        //    WriteHeader(true, false, false);
-
-        //    foreach (KeyValuePair<string, List<string>> moduleAndExports in classExports)
-        //    {
-        //        _writer.WriteLineIndented(
-        //            $"import {{" +
-        //            $" {string.Join(", ", moduleAndExports.Value)}" +
-        //            $" }}" +
-        //            $" from './OptionalModels/{moduleAndExports.Key}';");
-        //    }
-
-        //    _writer.WriteLine();
-        //    WriteExpandedResourceInterfaceBinding(false);
-        //    _writer.WriteLine();
-        //    WriteFhirResourceFactory();
-        //    _writer.WriteLine();
-
-        //    _writer.OpenScope("export {");
-
-        //    foreach (List<string> exports in classExports.Values)
-        //    {
-        //        _writer.WriteLineIndented(string.Join(", ", exports) + ",");
-        //    }
-
-        //    _writer.WriteLineIndented("type FhirResource,");
-        //    _writer.WriteLineIndented("FhirResourceFactory,");
-        //    _writer.CloseScope();
-
-        //    WriteFooter();
-        //}
-    }
-
     /// <summary>Writes the FHIR resource factory.</summary>
+    /// <param name="exportedResourceByFhirType">Dictionary mapping FHIR Resources to exported TypeScript types/classes/interfaces.</param>
     private void WriteFhirResourceFactory()
     {
-        if (_exportedResourceNamesAndTypes.Count == 0)
+        if (_exportedResources.Count == 0)
         {
             return;
         }
@@ -730,9 +574,9 @@ public sealed class TypeScript2 : ILanguage
         _writer.WriteLineIndented("switch (source[\"resourceType\"]) {");
         _writer.IncreaseIndent();
 
-        foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
+        foreach ((string fhir, ExportedComplex complex) in _exportedResources)
         {
-            _writer.WriteLineIndented($"case \"{kvp.Key}\": return {kvp.Value}.FactoryCreate(source);");
+            _writer.WriteLineIndented($"case \"{fhir}\": return new {complex.ExportedName}(source);");
         }
 
         _writer.WriteLineIndented("default: return null;");
@@ -752,9 +596,9 @@ public sealed class TypeScript2 : ILanguage
         _writer.WriteLineIndented("switch (source[\"resourceType\"]) {");
         _writer.IncreaseIndent();
 
-        foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
+        foreach ((string fhir, ExportedComplex complex) in _exportedResources)
         {
-            _writer.WriteLineIndented($"case \"{kvp.Key}\": return {kvp.Value}.FactoryCreateStrict(source);");
+            _writer.WriteLineIndented($"case \"{fhir}\": return {complex.ExportedName}.FromStrict(source);");
         }
 
         _writer.WriteLineIndented("default: return null;");
@@ -790,9 +634,9 @@ public sealed class TypeScript2 : ILanguage
 
     /// <summary>Writes the expanded resource interface binding.</summary>
     /// <param name="exportAsInterfaces">True to export interfaces.</param>
-    private void WriteExpandedResourceInterfaceBinding(bool exportAsInterfaces)
+    private void WriteExpandedResourceBinding(bool exportAsInterfaces)
     {
-        if (_exportedResourceNamesAndTypes.Count == 0)
+        if (_exportedResources.Count == 0)
         {
             return;
         }
@@ -801,9 +645,9 @@ public sealed class TypeScript2 : ILanguage
 
         WriteIndentedComment("Resource binding for generic use.");
 
-        if (_exportedResourceNamesAndTypes.Count == 1)
+        if (_exportedResources.Count == 1)
         {
-            _writer.WriteLineIndented($"type {prefix}FhirResource = {prefix}{_exportedResourceNamesAndTypes.Keys.First()};");
+            _writer.WriteLineIndented($"type {prefix}FhirResource = {prefix}{_exportedResources.Keys.First()};");
             return;
         }
 
@@ -811,25 +655,28 @@ public sealed class TypeScript2 : ILanguage
 
         _writer.IncreaseIndent();
 
-        int index = 0;
-        int last = _exportedResourceNamesAndTypes.Count - 1;
-        foreach (string exportedName in _exportedResourceNamesAndTypes.Keys)
-        {
-            if (index == 0)
-            {
-                _writer.WriteLineIndented(prefix + exportedName);
-            }
-            else if (index == last)
-            {
-                _writer.WriteLineIndented("|" + prefix + exportedName + ";");
-            }
-            else
-            {
-                _writer.WriteLineIndented("|" + prefix + exportedName);
-            }
+        string delim = new string(_writer.IndentationChar, _writer.Indentation) + "\n|";
+        _writer.WriteLine(string.Join(delim, _exportedResources.Values.Select((complex) => prefix + complex.ExportedName)) + ";");
 
-            index++;
-        }
+        //int index = 0;
+        //int last = exportedResourceByFhirType.Count - 1;
+        //foreach (string exportedName in exportedResourceByFhirType.Keys)
+        //{
+        //    if (index == 0)
+        //    {
+        //        _writer.WriteLineIndented(prefix + exportedName);
+        //    }
+        //    else if (index == last)
+        //    {
+        //        _writer.WriteLineIndented("|" + prefix + exportedName + ";");
+        //    }
+        //    else
+        //    {
+        //        _writer.WriteLineIndented("|" + prefix + exportedName);
+        //    }
+
+        //    index++;
+        //}
 
         _writer.DecreaseIndent();
     }
@@ -976,7 +823,7 @@ public sealed class TypeScript2 : ILanguage
                 WriteIndentedComment(concept.Definition);
             }
 
-            _writer.WriteLineIndented($"{constName}: Coding.FactoryCreateStrict({{");
+            _writer.WriteLineIndented($"{constName}: Coding.FromStrict({{");
             _writer.IncreaseIndent();
 
             _writer.WriteLineIndented($"code: \"{codeValue}\",");
@@ -999,23 +846,13 @@ public sealed class TypeScript2 : ILanguage
     }
 
     /// <summary>Writes the complexes.</summary>
-    /// <param name="complexes">       The complexes.</param>
-    /// <param name="interfaceModules">The interface modules.</param>
-    /// <param name="classModules">    The modules and exports.</param>
-    /// <param name="codeModules">     The code modules.</param>
-    /// <param name="isResource">      (Optional) True if is resource, false if not.</param>
+    /// <param name="complexes">        The complexes.</param>
+    /// <param name="fhirArtifactClass">The FHIR artifact class.</param>
     private void WriteComplexes(
         IEnumerable<FhirComplex> complexes,
-        Dictionary<string, List<string>> interfaceModules,
-        Dictionary<string, List<string>> classModules,
-        Dictionary<string, List<string>> codeModules,
-        bool isResource = false)
+        FhirArtifactClassEnum fhirArtifactClass)
     {
         string filename;
-
-        List<string> classExports;
-        List<string> interfaceExports;
-        List<string> codeExports;
 
         ExportStringBuilder sbInterface;
         ExportStringBuilder sbClass;
@@ -1023,22 +860,9 @@ public sealed class TypeScript2 : ILanguage
 
         foreach (FhirComplex complex in complexes)
         {
-            interfaceExports = new();
-            classExports = new();
-            codeExports = new();
             sbInterface = new();
             sbClass = new();
             sbCodes = new();
-
-            BuildComplexOutput(
-                complex,
-                isResource,
-                interfaceExports,
-                classExports,
-                codeExports,
-                sbInterface,
-                sbClass,
-                sbCodes);
 
             string name = FhirUtils.ToConvention(
                 complex.Name,
@@ -1048,9 +872,36 @@ public sealed class TypeScript2 : ILanguage
                 string.Empty,
                 _reservedWords);
 
-            codeModules.Add(name, codeExports);
-            classModules.Add(name, classExports);
-            interfaceModules.Add(name, interfaceExports);
+            ExportedComplex exportedComplex = new ExportedComplex()
+            {
+                FhirName = complex.Name,
+                ExportedBackbones = new(),
+                ExportedEnums = new(),
+                FileKey = name,
+            };
+
+            BuildComplexOutput(
+                complex,
+                fhirArtifactClass,
+                sbInterface,
+                sbClass,
+                sbCodes,
+                ref exportedComplex);
+
+            switch (fhirArtifactClass)
+            {
+                case FhirArtifactClassEnum.Resource:
+                    _exportedResources.Add(exportedComplex.ExportedName, exportedComplex);
+                    break;
+
+                case FhirArtifactClassEnum.ComplexType:
+                    _exportedComplexTypes.Add(exportedComplex.ExportedName, exportedComplex);
+                    break;
+            }
+
+            //codeModules.Add(name, codeExports);
+            //classModules.Add(name, classExports);
+            //interfaceModules.Add(name, interfaceExports);
 
             // create a filename for writing
             filename = Path.Combine(_dirModels, $"{name}{_sourceExtension}");
@@ -1074,37 +925,33 @@ public sealed class TypeScript2 : ILanguage
     }
 
     /// <summary>Writes a complex.</summary>
-    /// <param name="complex">         The complex.</param>
-    /// <param name="isResource">      True if is resource, false if not.</param>
-    /// <param name="interfaceExports">The exports.</param>
-    /// <param name="classExports">    The class exports.</param>
-    /// <param name="sbInterface">     The string builder for interfaces.</param>
-    /// <param name="sbClass">         The string builder for classes.</param>
-    /// <param name="sbCodes">         The string builder codes.</param>
+    /// <param name="complex">          The complex.</param>
+    /// <param name="fhirArtifactClass">The FHIR artifact class.</param>
+    /// <param name="sbInterface">      The string builder for interfaces.</param>
+    /// <param name="sbClass">          The string builder for classes.</param>
+    /// <param name="sbCodes">          The string builder codes.</param>
+    /// <param name="exportedInfo">     [in,out] Information describing the exported.</param>
     private void BuildComplexOutput(
         FhirComplex complex,
-        bool isResource,
-        List<string> interfaceExports,
-        List<string> classExports,
-        List<string> codeExports,
+        FhirArtifactClassEnum fhirArtifactClass,
         ExportStringBuilder sbInterface,
         ExportStringBuilder sbClass,
-        ExportStringBuilder sbCodes)
+        ExportStringBuilder sbCodes,
+        ref ExportedComplex exportedInfo)
     {
         // check for nested components
         if (complex.Components != null)
         {
             foreach (FhirComplex component in complex.Components.Values)
             {
+                // use Unknown for backbone types
                 BuildComplexOutput(
                     component,
-                    false,
-                    interfaceExports,
-                    classExports,
-                    codeExports,
+                    FhirArtifactClassEnum.Unknown,
                     sbInterface,
                     sbClass,
-                    sbCodes);
+                    sbCodes,
+                    ref exportedInfo);
             }
         }
 
@@ -1124,7 +971,15 @@ public sealed class TypeScript2 : ILanguage
             nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, _reservedWords);
             baseClassName = string.Empty;
 
-            sbInterface.WriteLineIndented($"export interface I{nameForExport} {{");
+            if (_exportInterfacesAsTypes)
+            {
+                sbInterface.WriteLineIndented($"export type I{nameForExport} = {{");
+            }
+            else
+            {
+                sbInterface.WriteLineIndented($"export interface I{nameForExport} {{");
+            }
+
             sbClass.WriteLineIndented($"export class {nameForExport} implements {_namespaceInternal}.I{nameForExport} {{");
         }
         else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
@@ -1132,7 +987,15 @@ public sealed class TypeScript2 : ILanguage
             nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
             baseClassName = string.Empty;
 
-            sbInterface.WriteLineIndented($"export interface I{nameForExport} {{");
+            if (_exportInterfacesAsTypes)
+            {
+                sbInterface.WriteLineIndented($"export type I{nameForExport} = {{");
+            }
+            else
+            {
+                sbInterface.WriteLineIndented($"export interface I{nameForExport} {{");
+            }
+
             sbClass.WriteLineIndented($"export class {nameForExport} implements {_namespaceInternal}.I{nameForExport} {{");
         }
         else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
@@ -1142,10 +1005,20 @@ public sealed class TypeScript2 : ILanguage
 
             if (_genericsAndTypeHints.ContainsKey(complex.Path))
             {
-                sbInterface.WriteLineIndented(
-                    $"export interface" +
-                    $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
-                    $" extends {_namespaceInternal}.I{baseClassName} {{");
+                if (_exportInterfacesAsTypes)
+                {
+                    sbInterface.WriteLineIndented(
+                        $"export type" +
+                        $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                        $" = {_namespaceInternal}.I{baseClassName} & {{");
+                }
+                else
+                {
+                    sbInterface.WriteLineIndented(
+                        $"export interface" +
+                        $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                        $" extends {_namespaceInternal}.I{baseClassName} {{");
+                }
 
                 sbClass.WriteLineIndented(
                     $"export class" +
@@ -1154,9 +1027,18 @@ public sealed class TypeScript2 : ILanguage
             }
             else
             {
-                sbInterface.WriteLineIndented(
-                    $"export interface I{nameForExport}" +
-                    $" extends {_namespaceInternal}.I{baseClassName} {{");
+                if (_exportInterfacesAsTypes)
+                {
+                    sbInterface.WriteLineIndented(
+                        $"export type I{nameForExport}" +
+                        $" = {_namespaceInternal}.I{baseClassName} & {{");
+                }
+                else
+                {
+                    sbInterface.WriteLineIndented(
+                        $"export interface I{nameForExport}" +
+                        $" extends {_namespaceInternal}.I{baseClassName} {{");
+                }
 
                 sbClass.WriteLineIndented(
                     $"export class {nameForExport}" +
@@ -1171,10 +1053,20 @@ public sealed class TypeScript2 : ILanguage
 
             if (_genericsAndTypeHints.ContainsKey(complex.Path))
             {
-                sbInterface.WriteLineIndented(
-                    $"export interface" +
-                    $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
-                    $" extends {_namespaceInternal}.I{baseClassName} {{");
+                if (_exportInterfacesAsTypes)
+                {
+                    sbInterface.WriteLineIndented(
+                        $"export type" +
+                        $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                        $" = {_namespaceInternal}.I{baseClassName} & {{");
+                }
+                else
+                {
+                    sbInterface.WriteLineIndented(
+                        $"export interface" +
+                        $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                        $" extends {_namespaceInternal}.I{baseClassName} {{");
+                }
 
                 sbClass.WriteLineIndented(
                     $"export class" +
@@ -1184,9 +1076,18 @@ public sealed class TypeScript2 : ILanguage
             }
             else
             {
-                sbInterface.WriteLineIndented(
-                    $"export interface I{nameForExport}" +
-                    $" extends {_namespaceInternal}.I{baseClassName} {{");
+                if (_exportInterfacesAsTypes)
+                {
+                    sbInterface.WriteLineIndented(
+                        $"export type I{nameForExport}" +
+                        $" = {_namespaceInternal}.I{baseClassName} & {{");
+                }
+                else
+                {
+                    sbInterface.WriteLineIndented(
+                        $"export interface I{nameForExport}" +
+                        $" extends {_namespaceInternal}.I{baseClassName} = {{");
+                }
 
                 sbClass.WriteLineIndented(
                     $"export class {nameForExport}" +
@@ -1195,34 +1096,54 @@ public sealed class TypeScript2 : ILanguage
             }
         }
 
-        interfaceExports.Add("I" + nameForExport);
-        classExports.Add(nameForExport);
-
         sbInterface.IncreaseIndent();
         sbClass.IncreaseIndent();
 
-        if (isResource)
+        switch (fhirArtifactClass)
         {
-            if (nameForExport == "Resource")
-            {
-                WriteIndentedComment(sbInterface, "Resource Type Name");
-                sbInterface.WriteLineIndented($"readonly resourceType: string;");
+            case FhirArtifactClassEnum.Resource:
+                if (nameForExport == "Resource")
+                {
+                    //_artifactFhirToExportDict[FhirArtifactClassEnum.Resource].Add("Resource", "Resource");
 
-                WriteIndentedComment(sbClass, "Resource Type Name");
-                sbClass.WriteLineIndented($"readonly resourceType: string = 'Resource';");
-            }
-            else if (ShouldWriteResourceName(nameForExport))
-            {
-                _exportedResourceNamesAndTypes.Add(complex.Name, complex.Name);
+                    WriteIndentedComment(sbInterface, "Resource Type Name");
+                    sbInterface.WriteLineIndented($"resourceType: string;");
 
-                WriteIndentedComment(sbInterface, "Resource Type Name");
-                sbInterface.WriteLineIndented($"readonly resourceType: \"{complex.Name}\";");
+                    WriteIndentedComment(sbClass, "Resource Type Name");
+                    //sbClass.WriteLineIndented($"public readonly resourceType: string = 'Resource';");
+                    sbClass.WriteLineIndented($"public resourceType: string;");
+                }
+                else if (ShouldWriteResourceName(nameForExport))
+                {
+                    //_artifactFhirToExportDict[FhirArtifactClassEnum.Resource].Add(complex.Name, complex.Name);
 
-                WriteIndentedComment(sbClass, "Resource Type Name");
-                sbClass.WriteLineIndented($"readonly resourceType = \"{complex.Name}\";");
+                    WriteIndentedComment(sbInterface, "Resource Type Name");
+                    sbInterface.WriteLineIndented($"resourceType: \"{complex.Name}\";");
 
-                resourceNameForValidation = complex.Name;
-            }
+                    WriteIndentedComment(sbClass, "Resource Type Name");
+                    //sbClass.WriteLineIndented($"public override readonly resourceType = \"{complex.Name}\";");
+                    sbClass.WriteLineIndented($"public override resourceType: \"{complex.Name}\";");
+
+                    resourceNameForValidation = complex.Name;
+                }
+
+                exportedInfo.ExportedName = nameForExport;
+                exportedInfo.ExportedParentName = baseClassName;
+
+                break;
+
+            case FhirArtifactClassEnum.ComplexType:
+
+                exportedInfo.ExportedName = nameForExport;
+                exportedInfo.ExportedParentName = baseClassName;
+
+                break;
+
+            case FhirArtifactClassEnum.Unknown:
+
+                exportedInfo.ExportedBackbones.Add(nameForExport);
+
+                break;
         }
 
         // build elements
@@ -1239,6 +1160,7 @@ public sealed class TypeScript2 : ILanguage
             nameForExport,
             complex.Path,
             !string.IsNullOrEmpty(baseClassName),
+            fhirArtifactClass,
             fieldsAndTypes,
             resourceNameForValidation);
 
@@ -1262,7 +1184,7 @@ public sealed class TypeScript2 : ILanguage
         {
             foreach (FhirElement element in elementsWithCodes)
             {
-                BuildCode(element, sbCodes, codeExports);
+                BuildCode(element, sbCodes, ref exportedInfo);
             }
         }
     }
@@ -1273,6 +1195,7 @@ public sealed class TypeScript2 : ILanguage
     /// <param name="typeName">                 Name of the type.</param>
     /// <param name="complexPath">              Path to the current complex element.</param>
     /// <param name="hasParent">                True if has parent, false if not.</param>
+    /// <param name="fhirArtifactClass">        The FHIR artifact class.</param>
     /// <param name="fieldsAndTypes">           List of types of the fields ands.</param>
     /// <param name="resourceNameForValidation">The resource name for validation.</param>
     private void BuildClassFunctions(
@@ -1280,6 +1203,7 @@ public sealed class TypeScript2 : ILanguage
         string typeName,
         string complexPath,
         bool hasParent,
+        FhirArtifactClassEnum fhirArtifactClass,
         List<KeyValuePair<string, string>> fieldsAndTypes,
         string resourceNameForValidation)
     {
@@ -1301,55 +1225,31 @@ public sealed class TypeScript2 : ILanguage
         // Constructor open
         WriteIndentedComment(
             sbConstructor,
-            $"Default constructor for {typeName} - initializes required elements to null.");
-
-        sbConstructor.WriteLineIndented("constructor() {");
-        sbConstructor.IncreaseIndent();
-        if (hasParent)
-        {
-            sbConstructor.WriteLineIndented("super();");
-        }
-
-        // Optional Create - open
-        WriteIndentedComment(
-            sbOptional,
-            $"Factory function to create a {typeName} from an object that MAY NOT contain all required elements.");
+            $"Default constructor for {typeName} - initializes any required elements to null if a value is not provided.");
 
         if (_genericsAndTypeHints.ContainsKey(complexPath))
         {
-            sbOptional.WriteLineIndented(
-                $"static override FactoryCreate" +
-                $"<{_genericsAndTypeHints[complexPath].Alias} = {_namespaceInternal}.{_genericsAndTypeHints[complexPath].GenericHint}>" +
-                $"(source:Partial<{_namespaceInternal}.I{typeName}>)" +
-                $":{typeName}<{_genericsAndTypeHints[complexPath].Alias}> {{");
-            sbOptional.IncreaseIndent();
-            sbOptional.WriteLineIndented(
-                $"var dest:Partial<{typeName}<{_genericsAndTypeHints[complexPath].Alias}>>" +
-                $" = super.FactoryCreate(source) as " +
-                $"Partial<{typeName}<{_genericsAndTypeHints[complexPath].Alias}>>;");
+            sbConstructor.WriteLineIndented(
+                $"constructor" +
+                $"(source:Partial<{_namespaceInternal}.I{typeName}> = {{}}) {{");
+            sbConstructor.IncreaseIndent();
+            sbConstructor.WriteLineIndented("super(source);");
         }
         else if (hasParent)
         {
-            sbOptional.WriteLineIndented(
-                $"static override FactoryCreate(source:Partial<{_namespaceInternal}.I{typeName}>)" +
-                $":{typeName} {{");
-            sbOptional.IncreaseIndent();
-            sbOptional.WriteLineIndented($"var dest:Partial<{typeName}> = super.FactoryCreate(source) as Partial<{typeName}>;");
+            sbConstructor.WriteLineIndented($"constructor(source:Partial<{_namespaceInternal}.I{typeName}> = {{}}) {{");
+            sbConstructor.IncreaseIndent();
+            sbConstructor.WriteLineIndented("super(source);");
         }
         else
         {
-            sbOptional.WriteLineIndented(
-                $"static FactoryCreate(source:Partial<{_namespaceInternal}.I{typeName}>)" +
-                $":{typeName} {{");
-            sbOptional.IncreaseIndent();
-            sbOptional.WriteLineIndented($"var dest:{typeName} = new {typeName}();");
+            sbConstructor.WriteLineIndented($"constructor(source:Partial<{_namespaceInternal}.I{typeName}> = {{}}) {{");
+            sbConstructor.IncreaseIndent();
         }
 
-        if (!string.IsNullOrEmpty(resourceNameForValidation))
+        if (fhirArtifactClass == FhirArtifactClassEnum.Resource)
         {
-            sbOptional.WriteLineIndented(
-                $"if ((source['resourceType'] !== \"{resourceNameForValidation}\") || (source['resourceType'] !== undefined))" +
-                $" {{ throw 'Invalid resourceType for a {resourceNameForValidation}'; }}");
+            sbConstructor.WriteLineIndented($"this.resourceType = '{complexPath}';");
         }
 
         // HasRequired - open
@@ -1357,11 +1257,11 @@ public sealed class TypeScript2 : ILanguage
 
         if (hasParent)
         {
-            sbHasRequired.WriteLineIndented("override checkRequiredElements():string[] {");
+            sbHasRequired.WriteLineIndented("override CheckRequiredElements():string[] {");
         }
         else
         {
-            sbHasRequired.WriteLineIndented("checkRequiredElements():string[] {");
+            sbHasRequired.WriteLineIndented("CheckRequiredElements():string[] {");
         }
 
         sbHasRequired.IncreaseIndent();
@@ -1392,100 +1292,79 @@ public sealed class TypeScript2 : ILanguage
 
                 if (value.Equals($"{_namespaceInternal}.FhirResource", StringComparison.Ordinal))
                 {
-                    sbOptional.WriteLineIndented($"if (source[\"{name}\"] !== undefined) {{");
-                    sbOptional.IncreaseIndent();
-                    sbOptional.WriteLineIndented($"dest.{name} = [];");
-                    sbOptional.WriteLineIndented($"source.{name}.forEach((x) => {{");
-                    sbOptional.IncreaseIndent();
-                    sbOptional.WriteLineIndented($"var r = {_namespaceInternal}.FhirResourceFactory(x);");
-                    sbOptional.WriteLineIndented($"if (r) {{ dest.{name}!.push(r); }}");
-                    sbOptional.CloseScope("});");
-                    sbOptional.CloseScope();
+                    sbConstructor.WriteLineIndented($"if (source[\"{name}\"]) {{");
+                    sbConstructor.IncreaseIndent();
+                    sbConstructor.WriteLineIndented($"this.{name} = [];");
+                    sbConstructor.WriteLineIndented($"source.{name}.forEach((x) => {{");
+                    sbConstructor.IncreaseIndent();
+                    sbConstructor.WriteLineIndented($"var r = {_namespaceInternal}.FhirResourceFactory(x);");
+                    sbConstructor.WriteLineIndented($"if (r) {{ this.{name}!.push(r); }}");
+                    sbConstructor.CloseScope("});");
+                    sbConstructor.CloseScope();
                 }
                 else if (_genericTypeHints.Contains(type))
                 {
-                    //sbOptional.WriteLineIndented(
-                    //    $"// REMOVE? if (source[\"{name}\"] !== undefined)" +
-                    //    $" {{ dest.{name} = source.{name}.map((x) => new {value}(x)); }}");
-
-                    if (value.Contains('<'))
-                    {
-                        sbOptional.WriteLineIndented(
-                            $"if (source[\"{name}\"] !== undefined)" +
-                            $" {{ dest.{name} = source.{name}.map(" +
-                            $"(x) => {value.Substring(0, value.IndexOf('<'))}.FactoryCreate<{_genericsAndTypeHints[complexPath].Alias}>(x));" +
-                            $" }}");
-                    }
-                    else
-                    {
-                        sbOptional.WriteLineIndented(
-                            $"if (source[\"{name}\"] !== undefined)" +
-                            $" {{ dest.{name} = source.{name}.map(" +
-                            $"(x) => {value}.FactoryCreate<{_genericsAndTypeHints[complexPath].Alias}>(x));" +
-                            $" }}");
-                    }
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"])" +
+                        $" {{ this.{name} = source.{name}.map(" +
+                        $"(x) => new {value}(x));" +
+                        $" }}");
                 }
                 else if (!type.StartsWith(_namespaceInternal))
                 {
-                    sbOptional.WriteLineIndented(
-                        $"if (source[\"{name}\"] !== undefined)" +
-                        $" {{ dest.{name} = source.{name}.map(" +
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"])" +
+                        $" {{ this.{name} = source.{name}.map(" +
                         $"(x) => (x));" +
                         $" }}");
                 }
                 else
                 {
-                    //sbOptional.WriteLineIndented(
-                    //    $"// REMOVE? if (source[\"{name}\"] !== undefined)" +
-                    //    $" {{ dest.{name} = source.{name}.map((x) => new {value}(x)); }}");
-
                     string interfaceHint = value.Insert(_namespaceInternal.Length + 1, "I");
 
-                    sbOptional.WriteLineIndented(
-                        $"if (source[\"{name}\"] !== undefined)" +
-                        $" {{ dest.{name} = source.{name}.map(" +
-                        $"(x:Partial<{interfaceHint}>) => {value}.FactoryCreate(x));" +
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"])" +
+                        $" {{ this.{name} = source.{name}.map(" +
+                        $"(x:Partial<{interfaceHint}>) => new {value}(x));" +
                         $" }}");
                 }
 
                 if (!isOptional)
                 {
                     sbHasRequired.WriteLineIndented(
-                        $"if ((this[\"{name}\"] === undefined) ||" +
+                        $"if ((!this[\"{name}\"]) ||" +
                         $" (this[\"{name}\"].length === 0))" +
                         $" {{ missingElements.push(\"{name}\"); }}");
+
+                    sbConstructor.WriteLineIndented($"if (this.{name} === undefined) {{ this.{name} = null }}");
                 }
             }
             else
             {
                 if (type.Equals($"{_namespaceInternal}.FhirResource", StringComparison.Ordinal))
                 {
-                    sbOptional.WriteLineIndented(
-                        $"if (source[\"{name}\"] !== undefined)" +
-                        $" {{ dest.{name} = ({_namespaceInternal}.FhirResourceFactory(source.{name}) ?? undefined); }}");
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"])" +
+                        $" {{ this.{name} = ({_namespaceInternal}.FhirResourceFactory(source.{name}) ?? undefined); }}");
                 }
                 else if (_genericTypeHints.Contains(type))
                 {
-                    sbOptional.WriteLineIndented(
-                        $"if (source[\"{name}\"] !== undefined)" +
-                        $" {{ dest.{name} = ({_namespaceInternal}.FhirResourceFactory(source.{name}) ?? undefined)" +
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"])" +
+                        $" {{ this.{name} = ({_namespaceInternal}.FhirResourceFactory(source.{name}) ?? undefined)" +
                         $" as unknown as {type}|undefined; }}");
                 }
                 else if (!type.StartsWith(_namespaceInternal))
                 {
-                    sbOptional.WriteLineIndented(
-                        $"if (source[\"{name}\"] !== undefined)" +
-                        $" {{ dest.{name} = source.{name}; }}");
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"])" +
+                        $" {{ this.{name} = source.{name}; }}");
                 }
                 else
                 {
-                    //sbOptional.WriteLineIndented(
-                    //    $"// REMOVE? if (source[\"{name}\"] !== undefined)" +
-                    //    $" {{ dest.{name} = new {type}(source.{name}); }}");
-
-                    sbOptional.WriteLineIndented(
-                        $"if (source[\"{name}\"] !== undefined)" +
-                        $" {{ dest.{name} = {type}.FactoryCreate(source.{name}!); }}");
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"])" +
+                        $" {{ this.{name} = new {type}(source.{name}!); }}");
                 }
 
                 if (!isOptional)
@@ -1493,25 +1372,11 @@ public sealed class TypeScript2 : ILanguage
                     sbHasRequired.WriteLineIndented(
                         $"if (this[\"{name}\"] === undefined)" +
                         $" {{ missingElements.push(\"{name}\"); }}");
+
+                    sbConstructor.WriteLineIndented($"if (this.{name} === undefined) {{ this.{name} = null }}");
                 }
             }
         }
-
-        if (_genericsAndTypeHints.ContainsKey(complexPath))
-        {
-            sbOptional.WriteLineIndented($"return dest as {typeName}<{_genericsAndTypeHints[complexPath].Alias}>");
-        }
-        else if (hasParent)
-        {
-            sbOptional.WriteLineIndented($"return dest as {typeName};");
-        }
-        else
-        {
-            sbOptional.WriteLineIndented("return dest;");
-        }
-
-        // Optional Create - close
-        sbOptional.CloseScope();
 
         // constructor - close
         sbConstructor.CloseScope();
@@ -1519,7 +1384,7 @@ public sealed class TypeScript2 : ILanguage
         // HasRequired - check parent
         if (hasParent)
         {
-            sbHasRequired.WriteLineIndented("var parentMissing:string[] = super.checkRequiredElements();");
+            sbHasRequired.WriteLineIndented("var parentMissing:string[] = super.CheckRequiredElements();");
             sbHasRequired.WriteLineIndented("missingElements.push(...parentMissing);");
         }
 
@@ -1535,22 +1400,20 @@ public sealed class TypeScript2 : ILanguage
         if (hasParent)
         {
             sbStrict.WriteLineIndented(
-                $"static override FactoryCreateStrict(source:{_namespaceInternal}.I{typeName})" +
+                $"static override FromStrict(source:{_namespaceInternal}.I{typeName})" +
                 $":{typeName} {{");
         }
         else
         {
             sbStrict.WriteLineIndented(
-                $"static FactoryCreateStrict(source:{_namespaceInternal}.I{typeName})" +
+                $"static FromStrict(source:{_namespaceInternal}.I{typeName})" +
                 $":{typeName} {{");
         }
 
         sbStrict.IncreaseIndent();
-        sbStrict.WriteLineIndented($"var dest:{typeName} = this.FactoryCreate(source);");
-        sbStrict.WriteLineIndented("var missingElements:string[] = dest.checkRequiredElements();");
-        sbStrict.WriteLineIndented("if (missingElements.length !== 0) {");
-        sbStrict.WriteLineIndented($"throw `{typeName} is missing elements: ${{missingElements.join(\", \")}}`");
-        sbStrict.WriteLineIndented(" }");
+        sbStrict.WriteLineIndented($"var dest:{typeName} = new {typeName}(source);");
+        sbStrict.WriteLineIndented("var missingElements:string[] = dest.CheckRequiredElements();");
+        sbStrict.WriteLineIndented($"if (missingElements.length !== 0) {{ throw `{typeName} is missing elements: ${{missingElements.join(\", \")}}` }}");
         sbStrict.WriteLineIndented($"return dest;");
 
         // Strict Create - close
@@ -1563,13 +1426,13 @@ public sealed class TypeScript2 : ILanguage
     }
 
     /// <summary>Writes a code.</summary>
-    /// <param name="element">      The element.</param>
-    /// <param name="sb">           The string builder to write content into.</param>
-    /// <param name="exportedCodes">The exported codes.</param>
+    /// <param name="element">        The element.</param>
+    /// <param name="sb">             The string builder to write content into.</param>
+    /// <param name="exportedComplex">[in,out] The exported complex.</param>
     private void BuildCode(
         FhirElement element,
         ExportStringBuilder sb,
-        List<string> exportedCodes)
+        ref ExportedComplex exportedComplex)
     {
         string codeName = FhirUtils.ToConvention(
             $"{element.Path}",
@@ -1583,13 +1446,13 @@ public sealed class TypeScript2 : ILanguage
 
         codeName += "Enum";
 
-        if (_exportedCodes.Contains(codeName))
+        if (exportedComplex.ExportedEnums.Contains(codeName))
         {
+            // TODO: does this need to be file local?
             return;
         }
 
-        exportedCodes.Add(codeName);
-        _exportedCodes.Add(codeName);
+        exportedComplex.ExportedEnums.Add(codeName);
 
         WriteIndentedComment(sb, $"Code Values for the {element.Path} field");
 
@@ -1629,7 +1492,8 @@ public sealed class TypeScript2 : ILanguage
         ExportStringBuilder sbInterfaceStrict,
         ExportStringBuilder sbInterfaceOpt,
         ExportStringBuilder sbClassStrict,
-        ExportStringBuilder sbClassOpt)
+        ExportStringBuilder sbClassOpt,
+        ref ExportedComplex exportedComplex)
     {
         string codeName = FhirUtils.ToConvention(
             $"{element.Path}",
@@ -1643,12 +1507,13 @@ public sealed class TypeScript2 : ILanguage
 
         codeName += "Enum";
 
-        if (_exportedCodes.Contains(codeName))
+        if (exportedComplex.ExportedEnums.Contains(codeName))
         {
+            // TODO: does this need to be file local?
             return;
         }
 
-        _exportedCodes.Add(codeName);
+        exportedComplex.ExportedEnums.Add(codeName);
 
         WriteIndentedComment(
             $"Code Values for the {element.Path} field",

@@ -142,6 +142,11 @@ public class FhirCacheService : IDisposable
 
         if (version.Equals("dev", StringComparison.OrdinalIgnoreCase))
         {
+            if (TryDownloadCoreViaCI(name, branchName, out directory))
+            {
+                return true;
+            }
+
             // resolve dev (local only) version or fail
             if (!HasCachedVersion(name, version, out directory))
             {

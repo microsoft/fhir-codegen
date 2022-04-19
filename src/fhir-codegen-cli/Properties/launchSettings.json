@@ -252,7 +252,7 @@
         },
         "ts2r4": {
             "commandName": "Project",
-            "commandLineArgs": "--export-keys Patient|Encounter|Observation --output-path ..\\..\\temp\\ts2r4\\src --load-r4 latest --language TypeScript2 --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\temp\\ts2r4\\src --load-r4 latest --language TypeScript2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "firelyJsonTest": {

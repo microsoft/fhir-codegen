@@ -2,7 +2,7 @@
 /**
  * Convert a HumanName into a displayable string
  */
-toDisplay(familyFirst:boolean = true, includeAnnotations:boolean = false):string {
+ToDisplay(familyFirst:boolean = true, includeAnnotations:boolean = false):string {
   if ((this.text) && (this.text.length > 0)) {
     return this.text;
   }
