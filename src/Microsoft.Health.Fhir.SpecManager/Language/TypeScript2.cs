@@ -1771,53 +1771,6 @@ public sealed class TypeScript2 : ILanguage
         return false;
     }
 
-    /// <summary>Query if 'typeName' is nullable.</summary>
-    /// <param name="typeName">Name of the type.</param>
-    /// <returns>True if nullable, false if not.</returns>
-    private static bool IsNullable(string typeName)
-    {
-        // nullable reference types are not allowed in current C#
-        switch (typeName)
-        {
-            case "bool":
-            case "decimal":
-            case "DateTime":
-            case "int":
-            case "uint":
-            case "long":
-            case "Guid":
-                return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>Tests requires null.</summary>
-    /// <param name="typeName">         Name of the type.</param>
-    /// <param name="flaggedAsOptional">True to flagged as optional.</param>
-    /// <returns>True if the test passes, false if the test fails.</returns>
-    private static bool RequiresNullTest(string typeName, bool flaggedAsOptional)
-    {
-        // nullable reference types are not allowed in current C#
-        switch (typeName)
-        {
-            case "string":
-                return false;
-
-            case "bool":
-            case "byte[]":
-            case "decimal":
-            case "DateTime":
-            case "int":
-            case "uint":
-            case "long":
-            case "Guid":
-                return flaggedAsOptional;
-        }
-
-        return true;
-    }
-
     /// <summary>Writes a header.</summary>
     /// <param name="isValueSet">     True if this is the header for a ValueSet.</param>
     /// <param name="isModel">        True if this is the header for a Model.</param>
