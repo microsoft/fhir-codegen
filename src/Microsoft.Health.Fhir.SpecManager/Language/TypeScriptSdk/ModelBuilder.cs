@@ -24,20 +24,22 @@ public class ModelBuilder
         string ValidationRegEx,
         bool isOptional,
         bool isArray,
-        bool hasCodeEnum);
+        bool hasReferencedValueSet,
+        string ValueSetExportName,
+        FhirElement.ElementDefinitionBindingStrength? BoundValueSetStrength);
 
-    /// <summary>An export code enum value.</summary>
-    public readonly record struct ExportCodeEnumValue(
-        string CodeName,
-        string CodeValue,
-        string Comment);
+    ///// <summary>An export code enum value.</summary>
+    //public readonly record struct ExportCodeEnumValue(
+    //    string CodeName,
+    //    string CodeValue,
+    //    string Comment);
 
-    /// <summary>An export code enum.</summary>
-    public readonly record struct ExportCodeEnum(
-        string FhirSourcePath,
-        string ExportName,
-        string FhirValueSet,
-        List<ExportCodeEnumValue> CodeValues);
+    ///// <summary>An export code enum.</summary>
+    //public readonly record struct ExportCodeEnum(
+    //    string FhirSourcePath,
+    //    string ExportName,
+    //    string FhirValueSet,
+    //    List<ExportCodeEnumValue> CodeValues);
 
     /// <summary>An export complex.</summary>
     public readonly record struct ExportComplex(
@@ -48,9 +50,11 @@ public class ModelBuilder
         string ExportType,
         string ExportInterfaceType,
         string ExportComment,
+        FhirArtifactClassEnum ArtifactClass,
         List<ExportComplex> Backbones,
         List<ExportElement> Elements,
-        Dictionary<string, ExportCodeEnum> CodesByExportName);
+        List<string> ReferencedValueSetExportNames);
+        //Dictionary<string, ExportCodeEnum> CodesByExportName);
 
     /// <summary>An export value set coding.</summary>
     public readonly record struct ExportValueSetCoding(
@@ -305,22 +309,25 @@ public class ModelBuilder
             tokens.AddRange(TokensFromComplex(backbone));
         }
 
-        tokens.AddRange(complex.CodesByExportName.Keys.Select((code) => new ExportTokenInfo(code, false)));
+        //tokens.AddRange(complex.CodesByExportName.Keys.Select((code) => new ExportTokenInfo(code, false)));
 
         return tokens;
     }
 
     /// <summary>Creates export complex from a FHIR complex.</summary>
-    /// <param name="fhirComplex">          The FHIR complex.</param>
-    /// <param name="backbones">            The backbones.</param>
-    /// <param name="elements">             The elements.</param>
-    /// <param name="codeEnumsByExportName">The code enums.</param>
+    /// <param name="fhirComplex">                  The FHIR complex.</param>
+    /// <param name="fhirArtifactClass">            The FHIR artifact class.</param>
+    /// <param name="backbones">                    The backbones.</param>
+    /// <param name="elements">                     The elements.</param>
+    /// <param name="referencedValueSetExportNames">[out] List of names of referenced value sets
+    ///  exports.</param>
     /// <returns>The new export complex.</returns>
     private ExportComplex ExportForFhirComplex(
         FhirComplex fhirComplex,
+        FhirArtifactClassEnum fhirArtifactClass,
         List<ExportComplex> backbones,
         List<ExportElement> elements,
-        Dictionary<string, ExportCodeEnum> codeEnumsByExportName)
+        List<string> referencedValueSetExportNames)
     {
         string exportName;
         string exportType;
@@ -360,16 +367,18 @@ public class ModelBuilder
             exportType,
             exportInterfaceType,
             fhirComplex.Comment,
+            fhirArtifactClass,
             backbones,
             elements,
-            codeEnumsByExportName);
+            referencedValueSetExportNames);
     }
 
     /// <summary>Element requires code enum.</summary>
     /// <param name="fhirElement">The FHIR element.</param>
+    /// <param name="vs">         The vs.</param>
     /// <param name="codeName">   [out] Name of the code.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private static bool ElementRequiresCodeEnum(FhirElement fhirElement, out string codeName)
+    private bool ElementRequiresCodeEnum(FhirElement fhirElement, FhirValueSet vs, out string codeName)
     {
         // Use generated enum for codes when required strength
         // EXCLUDE the MIME type value set - those should be bound to strings
@@ -381,10 +390,17 @@ public class ModelBuilder
             (fhirElement.ValueSet != "http://www.rfc-editor.org/bcp/bcp13.txt") &&
             (!fhirElement.ValueSet.StartsWith("http://hl7.org/fhir/ValueSet/mimetypes", StringComparison.Ordinal)))
         {
-            codeName = FhirUtils.ToConvention(
-                $"{fhirElement.Path}.Enum",
-                string.Empty,
-                FhirTypeBase.NamingConvention.PascalCase);
+            if (vs != null)
+            {
+                codeName = GetValueSetExportName(vs) + "Enum";
+            }
+            else
+            {
+                codeName = FhirUtils.ToConvention(
+                    $"{fhirElement.Path}.Enum",
+                    string.Empty,
+                    FhirTypeBase.NamingConvention.PascalCase);
+            }
 
             return true;
         }
@@ -393,73 +409,75 @@ public class ModelBuilder
         return false;
     }
 
-    /// <summary>Export code from element.</summary>
-    /// <param name="fhirElement">The FHIR element.</param>
-    /// <returns>An ExportCodeEnum.</returns>
-    private ExportCodeEnum ExportCodeFromElement(FhirElement fhirElement)
-    {
-        List<ExportCodeEnumValue> codeValues = new();
+    ///// <summary>Export code from element.</summary>
+    ///// <param name="fhirElement">The FHIR element.</param>
+    ///// <param name="vs">         (Optional) The vs.</param>
+    ///// <returns>An ExportCodeEnum.</returns>
+    //private ExportCodeEnum ExportCodeFromElement(FhirElement fhirElement, FhirValueSet vs = null)
+    //{
+    //    List<ExportCodeEnumValue> codeValues = new();
 
-        string codeName = FhirUtils.ToConvention(
-            $"{fhirElement.Path}",
-            string.Empty,
-            FhirTypeBase.NamingConvention.PascalCase);
+    //    string codeName = FhirUtils.ToConvention(
+    //        $"{fhirElement.Path}",
+    //        string.Empty,
+    //        FhirTypeBase.NamingConvention.PascalCase);
 
-        if (codeName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
-        {
-            codeName = codeName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
-        }
+    //    if (codeName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
+    //    {
+    //        codeName = codeName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
+    //    }
 
-        codeName += "Enum";
+    //    codeName += "Enum";
 
-        if (_info.TryGetValueSet(fhirElement.ValueSet, out FhirValueSet vs))
-        {
-            foreach (FhirConcept concept in vs.Concepts)
-            {
-                FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
+    //    if (vs != null)
+    //    {
+    //        foreach (FhirConcept concept in vs.Concepts)
+    //        {
+    //            FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
 
-                codeValues.Add(new ExportCodeEnumValue(
-                    name.ToUpperInvariant(),
-                    value,
-                    concept.Definition));
-            }
-        }
-        else
-        {
-            foreach (string code in fhirElement.Codes)
-            {
-                FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
+    //            codeValues.Add(new ExportCodeEnumValue(
+    //                name.ToUpperInvariant(),
+    //                value,
+    //                concept.Definition));
+    //        }
+    //    }
+    //    else
+    //    {
+    //        foreach (string code in fhirElement.Codes)
+    //        {
+    //            FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
-                codeValues.Add(new ExportCodeEnumValue(
-                    name.ToUpperInvariant(),
-                    value,
-                    string.Empty));
-            }
-        }
+    //            codeValues.Add(new ExportCodeEnumValue(
+    //                name.ToUpperInvariant(),
+    //                value,
+    //                string.Empty));
+    //        }
+    //    }
 
-        return new ExportCodeEnum(
-            fhirElement.Path,
-            codeName,
-            fhirElement.ValueSet,
-            codeValues);
-    }
+    //    return new ExportCodeEnum(
+    //        fhirElement.Path,
+    //        codeName,
+    //        fhirElement.ValueSet,
+    //        codeValues);
+    //}
 
     /// <summary>
     /// Creates export elements for a FHIR element.  Choice-types and primitives will expand the
     /// element definition to individual records.
     /// </summary>
-    /// <param name="fhirComplex">   The FHIR complex.</param>
-    /// <param name="fhirElement">   The FHIR element.</param>
-    /// <param name="exportElements">[out] The export elements.</param>
-    /// <param name="exportCodeEnums">   [out] The export codes.</param>
+    /// <param name="fhirComplex">                  The FHIR complex.</param>
+    /// <param name="fhirElement">                  The FHIR element.</param>
+    /// <param name="exportElements">               [out] The export elements.</param>
+    /// <param name="referencedValueSetExportNames">[out] List of names of the referenced value set
+    ///  exports.</param>
     private void ProcessFhirElement(
         FhirComplex fhirComplex,
         FhirElement fhirElement,
         out List<ExportElement> exportElements,
-        out List<ExportCodeEnum> exportCodeEnums)
+        out List<string> referencedValueSetExportNames)
     {
         exportElements = new();
-        exportCodeEnums = new();
+        referencedValueSetExportNames = new();
 
         bool isOptional = false;
 
@@ -479,17 +497,27 @@ public class ModelBuilder
         {
             string exportType;
             string exportInterfaceType;
-            bool hasCodeEnum = false;
+            bool hasReferencedValueSet = false;
+            string valueSetExportName = string.Empty;
+            FhirElement.ElementDefinitionBindingStrength? vsBindStrength = null;
+            FhirValueSet vs = null;
+
+            if ((!string.IsNullOrEmpty(fhirElement.ValueSet)) &&
+                _info.TryGetValueSet(fhirElement.ValueSet, out vs))
+            {
+                hasReferencedValueSet = true;
+                valueSetExportName = GetValueSetExportName(vs);
+                vsBindStrength = fhirElement.ValueSetBindingStrength;
+
+                referencedValueSetExportNames.Add(valueSetExportName);
+            }
 
             // Use generated enum for codes when required strength
             // EXCLUDE the MIME type value set - those should be bound to strings
-            if (ElementRequiresCodeEnum(fhirElement, out string codeName))
+            if (ElementRequiresCodeEnum(fhirElement, vs, out string codeName))
             {
                 exportType = codeName;
                 exportInterfaceType = codeName;
-                hasCodeEnum = true;
-
-                exportCodeEnums.Add(ExportCodeFromElement(fhirElement));
             }
             else if (_complexTypeSubstitutions.ContainsKey(fhirType))
             {
@@ -523,7 +551,9 @@ public class ModelBuilder
                 fhirElement.ValidationRegEx,
                 isOptional,
                 fhirElement.IsArray,
-                hasCodeEnum));
+                hasReferencedValueSet,
+                valueSetExportName,
+                vsBindStrength));
 
             if (RequiresExtension(fhirType))
             {
@@ -538,7 +568,9 @@ public class ModelBuilder
                     string.Empty,
                     true,
                     fhirElement.IsArray,
-                    false));
+                    false,
+                    string.Empty,
+                    null));
             }
         }
     }
@@ -569,6 +601,7 @@ public class ModelBuilder
         FhirComplex fhirComplex,
         FhirArtifactClassEnum fhirArtifactClass)
     {
+        HashSet<string> vsExportNames = new();
         List<ExportComplex> backbones = new();
 
         if (fhirComplex.Components != null)
@@ -576,12 +609,21 @@ public class ModelBuilder
             foreach (FhirComplex component in fhirComplex.Components.Values)
             {
                 // use unknown class for backbones to prevent adding DT or Resource specific elements
-                backbones.Add(ProcessFhirComplex(component, FhirArtifactClassEnum.Unknown));
+                ExportComplex backbone = ProcessFhirComplex(component, FhirArtifactClassEnum.Unknown);
+                backbones.Add(backbone);
+
+                // promote exported Value Set names so that parents always know about child dependencies
+                foreach (string vsName in backbone.ReferencedValueSetExportNames)
+                {
+                    if (!vsExportNames.Contains(vsName))
+                    {
+                        vsExportNames.Add(vsName);
+                    }
+                }
             }
         }
 
         List<ExportElement> elements = new();
-        Dictionary<string, ExportCodeEnum> codeEnumsByExportName = new();
 
         if (fhirArtifactClass == FhirArtifactClassEnum.Resource)
         {
@@ -598,7 +640,11 @@ public class ModelBuilder
                     string.Empty,
                     false,
                     false,
-                    false));
+                    false,
+                    "ResourceTypesValueSet",
+                    FhirElement.ElementDefinitionBindingStrength.Extensible));
+
+                vsExportNames.Add("ResourceTypesValueSet");
             }
             else if (fhirComplex.IsAbstract == false)
             {
@@ -613,7 +659,9 @@ public class ModelBuilder
                     string.Empty,
                     false,
                     false,
-                    false));
+                    false,
+                    string.Empty,
+                    null));
             }
         }
 
@@ -630,25 +678,41 @@ public class ModelBuilder
                     fhirComplex,
                     element,
                     out List<ExportElement> elementExports,
-                    out List<ExportCodeEnum> elementCodeEnums);
+                    out List<string> referencedValueSetExportNames);
 
                 elements.AddRange(elementExports);
 
-                foreach (ExportCodeEnum codeEnum in elementCodeEnums)
+                foreach (string vsExportName in referencedValueSetExportNames)
                 {
-                    if (codeEnumsByExportName.ContainsKey(codeEnum.ExportName))
+                    if (vsExportNames.Contains(vsExportName))
                     {
                         continue;
                     }
 
-                    codeEnumsByExportName.Add(codeEnum.ExportName, codeEnum);
+                    vsExportNames.Add(vsExportName);
                 }
             }
         }
 
-        ExportComplex export = ExportForFhirComplex(fhirComplex, backbones, elements, codeEnumsByExportName);
+        ExportComplex export = ExportForFhirComplex(
+            fhirComplex,
+            fhirArtifactClass,
+            backbones,
+            elements,
+            vsExportNames.ToList());
 
         return export;
+    }
+
+    /// <summary>Gets value set export name.</summary>
+    /// <param name="fhirValueSet">Set the FHIR value belongs to.</param>
+    /// <returns>The value set export name.</returns>
+    private string GetValueSetExportName(FhirValueSet fhirValueSet)
+    {
+        string vsName = FhirUtils.SanitizeForProperty(fhirValueSet.Id ?? fhirValueSet.Name, _reservedWords);
+        vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
+
+        return vsName + "ValueSet";
     }
 
     /// <summary>Process the FHIR value set described by fhirValueSet.</summary>
@@ -656,10 +720,7 @@ public class ModelBuilder
     /// <returns>An ExportValueSet.</returns>
     private ExportValueSet ProcessFhirValueSet(FhirValueSet fhirValueSet)
     {
-        string vsName = FhirUtils.SanitizeForProperty(fhirValueSet.Id ?? fhirValueSet.Name, _reservedWords);
-        vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
-
-        vsName = vsName + "ValueSet";
+        string vsName = GetValueSetExportName(fhirValueSet);
 
         Dictionary<string, ExportValueSetCoding> codingsByExportName = new();
 

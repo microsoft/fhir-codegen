@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.IO;
+using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -225,7 +226,7 @@ public sealed class TypeScriptSdk : ILanguage
             sb.WriteLineIndented(string.Join(", ", exportKey.Tokens.Select((t) => t.requiresTypeLiteral ? "type " + t.Token : t.Token)) + ", ");
         }
 
-        sb.WriteLineIndented("IFhirResource, FhirResource, ");
+        sb.WriteLineIndented("type IFhirResource, type FhirResource, ");
 
         sb.CloseScope();
 
@@ -284,8 +285,9 @@ public sealed class TypeScriptSdk : ILanguage
 
         WriteHeader(sb);
 
+        sb.WriteLine($"// FHIR ValueSet: {vs.FhirUrl}|{vs.FhirVersion}");
+        sb.WriteLine(string.Empty);
         sb.WriteLineIndented("import { Coding } from '../fhir.js'");
-
         sb.WriteLine(string.Empty);
 
         if (!string.IsNullOrEmpty(vs.ExportComment))
@@ -317,6 +319,27 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.CloseScope("};");
 
+        sb.WriteLine(string.Empty);
+
+        if (!string.IsNullOrEmpty(vs.ExportComment))
+        {
+            WriteIndentedComment(sb, vs.ExportComment);
+        }
+
+        sb.OpenScope($"export enum {vs.ExportName}Enum {{");
+
+        foreach (ModelBuilder.ExportValueSetCoding coding in vs.CodingsByExportName.Values)
+        {
+            if (!string.IsNullOrEmpty(coding.Comment))
+            {
+                WriteIndentedComment(sb, coding.Comment);
+            }
+
+            sb.WriteLineIndented($"{coding.ExportName} = \"{coding.Code}\",");
+        }
+
+        sb.CloseScope();
+
         string filename = Path.Combine(vsDirectory, vs.ExportName + ".ts");
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -336,57 +359,25 @@ public sealed class TypeScriptSdk : ILanguage
 
         WriteHeader(sb);
 
+        sb.WriteLine($"// FHIR {complex.ArtifactClass}: {complex.FhirName}");
+        sb.WriteLine(string.Empty);
         sb.WriteLineIndented("import * as fhir from '../fhir.js'");
+        sb.WriteLine(string.Empty);
+
+        foreach (string valueSetExportName in complex.ReferencedValueSetExportNames)
+        {
+            sb.WriteLineIndented($"import {{ {valueSetExportName}, {valueSetExportName}Enum }} from '../fhirValueSets/{valueSetExportName}.js'");
+        }
 
         BuildInterfaceForComplex(sb, complex);
 
         BuildClassForComplex(sb, complex);
-
-        BuildCodesForComplex(sb, complex);
 
         string filename = Path.Combine(modelDirectory, complex.ExportClassName + ".ts");
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
         {
             writer.Write(sb);
-        }
-    }
-
-    /// <summary>Builds codes for complex.</summary>
-    /// <param name="sb">     The writer.</param>
-    /// <param name="complex">The complex.</param>
-    private void BuildCodesForComplex(
-        ExportStringBuilder sb,
-        ModelBuilder.ExportComplex complex)
-    {
-        // recurse
-        if (complex.Backbones.Any())
-        {
-            foreach (ModelBuilder.ExportComplex backbone in complex.Backbones)
-            {
-                BuildCodesForComplex(sb, backbone);
-            }
-        }
-
-        foreach (ModelBuilder.ExportCodeEnum exportCode in complex.CodesByExportName.Values)
-        {
-            sb.WriteLine(string.Empty);
-            WriteIndentedComment(sb, $"Code Values for the {exportCode.FhirSourcePath} field");
-
-            sb.WriteLineIndented($"export enum {exportCode.ExportName} {{");
-            sb.IncreaseIndent();
-
-            foreach (ModelBuilder.ExportCodeEnumValue value in exportCode.CodeValues)
-            {
-                if (!string.IsNullOrEmpty(value.Comment))
-                {
-                    WriteIndentedComment(sb, value.Comment);
-                }
-
-                sb.WriteLineIndented($"{value.CodeName} = \"{value.CodeValue}\",");
-            }
-
-            sb.CloseScope();
         }
     }
 
@@ -430,7 +421,102 @@ public sealed class TypeScriptSdk : ILanguage
             BuildComplexElement(sb, element, "public");
         }
 
-        sb.WriteLineIndented($"constructor({{ }}) {{ }}");
+        BuildConstructor(sb, complex);
+
+        sb.CloseScope();
+    }
+
+    /// <summary>Builds a constructor.</summary>
+    /// <param name="sb">     The writer.</param>
+    /// <param name="complex">The complex.</param>
+    private void BuildConstructor(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportComplex complex)
+    {
+        // Constructor open
+        WriteIndentedComment(
+            sb,
+            $"Default constructor for {complex.ExportClassName} - initializes any required elements to null if a value is not provided.");
+
+        sb.OpenScope($"constructor(source:Partial<{complex.ExportInterfaceName}> = {{ }}) {{");
+
+        if (!string.IsNullOrEmpty(complex.ExportType))
+        {
+            sb.WriteLineIndented("super(source);");
+        }
+
+        foreach (ModelBuilder.ExportElement element in complex.Elements)
+        {
+            if (element.ExportName == "resourceType")
+            {
+                sb.WriteLineIndented($"this.resourceType = '{complex.FhirName}';");
+                continue;
+            }
+
+            if (element.isArray)
+            {
+                if (element.FhirType == "Resource")
+                {
+                    sb.OpenScope($"if (source['{element.ExportName}']) {{");
+                    sb.WriteLineIndented($"this.{element.ExportName} = [];");
+                    sb.OpenScope($"source.{element.ExportName}.forEach((x) => {{");
+                    sb.WriteLineIndented("var r = fhir.resourceFactory(x);");
+                    sb.WriteLineIndented($"if (r) {{ this.{element.ExportName}!.push(r); }}");
+                    sb.CloseScope("});");
+                    sb.CloseScope();
+                }
+                else if (element.ExportType.StartsWith("fhir"))
+                {
+                    sb.WriteLineIndented(
+                        $"if (source['{element.ExportName}'])" +
+                        $" {{" +
+                        $" this.{element.ExportName} = source.{element.ExportName}.map(" +
+                        $"(x) => new {element.ExportType}(x));" +
+                        $" }}");
+                }
+                else
+                {
+                    sb.WriteLineIndented(
+                        $"if (source['{element.ExportName}'])" +
+                        $" {{" +
+                        $" this.{element.ExportName} = source.{element.ExportName}.map(" +
+                        $"(x) => (x));" +
+                        $" }}");
+                }
+            }
+            else
+            {
+                if (element.FhirType == "Resource")
+                {
+                    sb.WriteLineIndented(
+                        $"if (source['{element.ExportName}'])" +
+                        $" {{" +
+                        $" this.{element.ExportName} = (fhir.resourceFactory(source.{element.ExportName}) ?? undefined);" +
+                        $" }}");
+                }
+                else if (element.ExportType.StartsWith("fhir"))
+                {
+                    sb.WriteLineIndented(
+                        $"if (source['{element.ExportName}'])" +
+                        $" {{" +
+                        $" this.{element.ExportName} = new {element.ExportType}(source.{element.ExportName}!);" +
+                        $" }}");
+                }
+                else
+                {
+                    sb.WriteLineIndented(
+                        $"if (source['{element.ExportName}'])" +
+                        $" {{" +
+                        $" this.{element.ExportName} = source.{element.ExportName};" +
+                        $" }}");
+                }
+            }
+
+            if (!element.isOptional)
+            {
+                sb.WriteLineIndented($"else {{ this.{element.ExportName} = null; }}");
+            }
+        }
 
         sb.CloseScope();
     }
