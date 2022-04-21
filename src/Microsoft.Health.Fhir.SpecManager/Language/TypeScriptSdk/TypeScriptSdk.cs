@@ -180,6 +180,71 @@ public sealed class TypeScriptSdk : ILanguage
         {
             WriteValueSet(vs, valueSetDirectory);
         }
+
+        WriteValueSetModule(exportDirectory, exports);
+
+        WriteIndexModule(exportDirectory);
+    }
+
+    /// <summary>Writes an index module.</summary>
+    /// <param name="exportDirectory">Directory to write files.</param>
+    private void WriteIndexModule(string exportDirectory)
+    {
+        ExportStringBuilder sb = new();
+
+        WriteHeader(sb);
+
+        sb.WriteLine(string.Empty);
+
+        sb.WriteLineIndented("import * as fhir from './fhir.js';");
+
+        sb.WriteLineIndented("import * as valueSets from './valueSets.js';");
+        sb.WriteLineIndented("export { fhir, valueSets };");
+
+        string filename = Path.Combine(exportDirectory, $"index.ts");
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            writer.Write(sb);
+        }
+    }
+
+    /// <summary>Writes a FHIR export module.</summary>
+    /// <param name="exportDirectory">Directory to write files.</param>
+    /// <param name="exports">        The exports.</param>
+    private void WriteValueSetModule(string exportDirectory, ModelBuilder.ExportModels exports)
+    {
+        ExportStringBuilder sb = new();
+
+        WriteHeader(sb);
+
+        sb.WriteLine(string.Empty);
+
+        foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
+        {
+            sb.WriteLineIndented(
+                $"import {{" +
+                $" {vs.ExportName}, {vs.ExportName}Type, {vs.ExportName}Enum," +
+                $" }}" +
+                $" from './fhirValueSets/{vs.ExportName}.js'");
+        }
+
+        sb.WriteLine(string.Empty);
+        sb.OpenScope("export {");
+
+        foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
+        {
+            sb.WriteLineIndented($"{vs.ExportName}, type {vs.ExportName}Type, {vs.ExportName}Enum,");
+        }
+
+        sb.CloseScope();
+
+        string filename = Path.Combine(exportDirectory, $"valueSets.ts");
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            writer.Write(sb);
+        }
     }
 
     /// <summary>Writes a FHIR export module.</summary>
@@ -213,6 +278,8 @@ public sealed class TypeScriptSdk : ILanguage
 
         WriteExpandedResourceBindings(sb, exports);
 
+        WriteFhirResourceFactory(sb, exports);
+
         sb.WriteLine(string.Empty);
         sb.OpenScope("export {");
 
@@ -227,6 +294,7 @@ public sealed class TypeScriptSdk : ILanguage
         }
 
         sb.WriteLineIndented("type IFhirResource, type FhirResource, ");
+        sb.WriteLineIndented("resourceFactory, ");
 
         sb.CloseScope();
 
@@ -236,6 +304,39 @@ public sealed class TypeScriptSdk : ILanguage
         {
             writer.Write(sb);
         }
+    }
+
+    /// <summary>Writes a FHIR resource factory.</summary>
+    /// <param name="sb">     The writer.</param>
+    /// <param name="exports">The exports.</param>
+    private void WriteFhirResourceFactory(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportModels exports)
+    {
+        if (exports.ResourcesByExportName.Count == 0)
+        {
+            return;
+        }
+
+        // function open
+        WriteIndentedComment(sb, "Factory creator for FHIR Resources");
+        sb.OpenScope("function resourceFactory(source:any) : FhirResource|null {");
+
+        // switch open
+        sb.OpenScope("switch (source[\"resourceType\"]) {");
+
+        foreach (ModelBuilder.ExportComplex complex in exports.ResourcesByExportName.Values)
+        {
+            sb.WriteLineIndented($"case \"{complex.FhirName}\": return new {complex.ExportClassName}(source);");
+        }
+
+        sb.WriteLineIndented("default: return null;");
+
+        // switch close
+        sb.CloseScope();
+
+        // function close
+        sb.CloseScope();
     }
 
     /// <summary>Writes the expanded resource interface binding.</summary>
@@ -299,16 +400,20 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportValueSetCoding coding in vs.CodingsByExportName.Values)
         {
-            if (!string.IsNullOrEmpty(coding.Comment))
+            if (string.IsNullOrEmpty(coding.Comment))
             {
-                WriteIndentedComment(sb, coding.Comment);
+                WriteIndentedComment(sb, "Code: " + coding.Code);
+            }
+            else
+            {
+                WriteIndentedComment(sb, coding.Code + ": " + coding.Comment);
             }
 
             sb.OpenScope($"{coding.ExportName}: new Coding({{");
 
             if (!string.IsNullOrEmpty(coding.Display))
             {
-                sb.WriteLineIndented($"display: \"{coding.Display}\",");
+                sb.WriteLineIndented($"display: \"{FhirUtils.SanitizeForQuoted(coding.Display)}\",");
             }
 
             sb.WriteLineIndented($"code: \"{coding.Code}\",");
@@ -317,10 +422,17 @@ public sealed class TypeScriptSdk : ILanguage
             sb.CloseScope("}),");
         }
 
-        sb.CloseScope("};");
+        sb.CloseScope("} as const;");
 
         sb.WriteLine(string.Empty);
+        if (!string.IsNullOrEmpty(vs.ExportComment))
+        {
+            WriteIndentedComment(sb, vs.ExportComment);
+        }
 
+        sb.WriteLineIndented($"export type {vs.ExportName}Type = typeof {vs.ExportName};");
+
+        sb.WriteLine(string.Empty);
         if (!string.IsNullOrEmpty(vs.ExportComment))
         {
             WriteIndentedComment(sb, vs.ExportComment);
@@ -330,9 +442,13 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportValueSetCoding coding in vs.CodingsByExportName.Values)
         {
-            if (!string.IsNullOrEmpty(coding.Comment))
+            if (string.IsNullOrEmpty(coding.Comment))
             {
-                WriteIndentedComment(sb, coding.Comment);
+                WriteIndentedComment(sb, "Code: " + coding.Code);
+            }
+            else
+            {
+                WriteIndentedComment(sb, coding.Code + ": " + coding.Comment);
             }
 
             sb.WriteLineIndented($"{coding.ExportName} = \"{coding.Code}\",");
@@ -366,7 +482,12 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (string valueSetExportName in complex.ReferencedValueSetExportNames)
         {
-            sb.WriteLineIndented($"import {{ {valueSetExportName}, {valueSetExportName}Enum }} from '../fhirValueSets/{valueSetExportName}.js'");
+            sb.WriteLineIndented(
+                $"import {{" +
+                $" {valueSetExportName}," +
+                $" {valueSetExportName}Type," +
+                $" {valueSetExportName}Enum " +
+                $"}} from '../fhirValueSets/{valueSetExportName}.js'");
         }
 
         BuildInterfaceForComplex(sb, complex);
@@ -416,13 +537,106 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.IncreaseIndent();
 
+        // add actual elements
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
-            BuildComplexElement(sb, element, "public");
+            BuildComplexElement(sb, element, false);
         }
 
         BuildConstructor(sb, complex);
 
+        // add functions to get Value-Set hints for elements with bound value sets
+        foreach (ModelBuilder.ExportElement element in complex.Elements)
+        {
+            if ((!element.hasReferencedValueSet) ||
+                (element.BoundValueSetStrength == null))
+            {
+                continue;
+            }
+
+            WriteIndentedComment(sb, $"{element.BoundValueSetStrength}-bound Value Set for {element.ExportName}");
+            sb.OpenScope($"public {element.ExportName}{element.BoundValueSetStrength}ValueSet():{element.ValueSetExportName}Type {{");
+            sb.WriteLineIndented($"return {element.ValueSetExportName};");
+            sb.CloseScope();
+        }
+
+        // add model validation function
+        BuildModelValidation(sb, complex);
+
+        if (_options.SupportFiles.TryGetInputForKey(complex.ExportClassName, out string contents))
+        {
+            sb.Write(contents);
+        }
+
+        sb.CloseScope();
+    }
+
+    /// <summary>Builds model validation.</summary>
+    /// <param name="sb">     The writer.</param>
+    /// <param name="complex">The complex.</param>
+    private void BuildModelValidation(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportComplex complex)
+    {
+        // function open
+        WriteIndentedComment(sb, "Function to perform basic model validation (e.g., check if required elements are present).");
+
+        if (string.IsNullOrEmpty(complex.ExportType))
+        {
+            sb.OpenScope("public doModelValidation():[string,string][] {");
+            sb.WriteLineIndented("var results:[string,string][] = [];");
+        }
+        else
+        {
+            sb.OpenScope("public override doModelValidation():[string,string][] {");
+            sb.WriteLineIndented("var results:[string,string][] = super.doModelValidation();");
+        }
+
+        foreach (ModelBuilder.ExportElement element in complex.Elements)
+        {
+            if (!element.isOptional)
+            {
+                if (element.isArray)
+                {
+                    sb.WriteLineIndented(
+                        $"if ((!this[\"{element.ExportName}\"]) ||" +
+                        $" (this[\"{element.ExportName}\"].length === 0))" +
+                        $" {{ results.push([\"{element.ExportName}\",'Missing required element: {element.FhirPath}']); }}");
+                }
+                else
+                {
+                    sb.WriteLineIndented(
+                        $"if (!this[\"{element.ExportName}\"])" +
+                        $" {{ results.push([\"{element.ExportName}\",'Missing required element: {element.FhirPath}']); }}");
+                }
+            }
+
+            // recurse into other FHIR types
+            if (element.ExportType.StartsWith("fhir", StringComparison.Ordinal))
+            {
+                if (element.isArray)
+                {
+                    sb.WriteLineIndented(
+                        $"if (this[\"{element.ExportName}\"])" +
+                        $" {{" +
+                        $" this.{element.ExportName}.forEach((x) =>" +
+                        $" {{" +
+                        $" results.push(...x.doModelValidation());" +
+                        $" }})" +
+                        $" }}");
+                }
+                else
+                {
+                    sb.WriteLineIndented(
+                        $"if (this[\"{element.ExportName}\"])" +
+                        $" {{ results.push(...this.{element.ExportName}.doModelValidation()); }}");
+                }
+            }
+        }
+
+        sb.WriteLineIndented("return results;");
+
+        // function close
         sb.CloseScope();
     }
 
@@ -558,7 +772,12 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
-            BuildComplexElement(sb, element);
+            BuildComplexElement(sb, element, true);
+        }
+
+        if (_options.SupportFiles.TryGetInputForKey(complex.ExportInterfaceName, out string contents))
+        {
+            sb.Write(contents);
         }
 
         sb.CloseScope();
@@ -567,11 +786,10 @@ public sealed class TypeScriptSdk : ILanguage
     /// <summary>Builds content for a complex element.</summary>
     /// <param name="sb">      The writer.</param>
     /// <param name="element"> The element.</param>
-    /// <param name="accessModifier">(Optional) The access modifier.</param>
     private void BuildComplexElement(
         ExportStringBuilder sb,
         ModelBuilder.ExportElement element,
-        string accessModifier = "")
+        bool isInterface)
     {
         if (!string.IsNullOrEmpty(element.ExportComment))
         {
@@ -595,13 +813,13 @@ public sealed class TypeScriptSdk : ILanguage
             typeAddition = "|null";
         }
 
-        if (string.IsNullOrEmpty(accessModifier))
+        if (isInterface)
         {
             sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {element.ExportInterfaceType}{arrayFlag}{typeAddition};");
         }
         else
         {
-            sb.WriteLineIndented($"{accessModifier} {element.ExportName}{optionalFlag}: {element.ExportInterfaceType}{arrayFlag}{typeAddition};");
+            sb.WriteLineIndented($"public {element.ExportName}{optionalFlag}: {element.ExportType}{arrayFlag}{typeAddition};");
         }
 
     }

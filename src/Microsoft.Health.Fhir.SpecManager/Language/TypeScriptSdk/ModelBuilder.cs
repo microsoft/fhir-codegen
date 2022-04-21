@@ -738,19 +738,27 @@ public class ModelBuilder
             processedKeys.Add(concept.Key());
 
             string fhirCodeName;
+            string additionalData;
+
             if (_systemsNamedByDisplay.Contains(concept.System))
             {
                 fhirCodeName = concept.Display;
+                additionalData = concept.Code;
             }
             else if (_systemsNamedByCode.Contains(concept.System))
             {
                 fhirCodeName = concept.Code;
+                additionalData = concept.System;
+            }
+            else if (string.IsNullOrEmpty(concept.Display))
+            {
+                fhirCodeName = concept.Code;
+                additionalData = concept.System;
             }
             else
             {
-                fhirCodeName = string.IsNullOrEmpty(concept.Display)
-                    ? concept.Code
-                    : concept.Display;
+                fhirCodeName = concept.Display;
+                additionalData = concept.Code;
             }
 
             string codeName = FhirUtils.SanitizeForProperty(fhirCodeName, _reservedWords);
@@ -760,14 +768,19 @@ public class ModelBuilder
 
             if (usedConceptLiterals.Contains(codeName))
             {
-                string system = (!string.IsNullOrEmpty(concept.SystemLocalName))
-                    ? concept.SystemLocalName
-                    : vsName;
+                additionalData = FhirUtils.SanitizeForProperty(additionalData, _reservedWords);
 
-                system = FhirUtils.SanitizeForProperty(system, _reservedWords);
-                system = FhirUtils.SanitizedToConvention(system, FhirTypeBase.NamingConvention.PascalCase);
+                if (additionalData.StartsWith("VAL", StringComparison.Ordinal))
+                {
+                    additionalData = additionalData.Substring(3);
+                    additionalData = "_" + FhirUtils.SanitizedToConvention(additionalData, FhirTypeBase.NamingConvention.PascalCase);
+                }
+                else
+                {
+                    additionalData = FhirUtils.SanitizedToConvention(additionalData, FhirTypeBase.NamingConvention.PascalCase);
+                }
 
-                codeName = codeName + system;
+                codeName = codeName + additionalData;
             }
 
             usedConceptLiterals.Add(codeName);
