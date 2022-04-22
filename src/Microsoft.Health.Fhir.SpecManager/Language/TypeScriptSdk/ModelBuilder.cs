@@ -28,19 +28,6 @@ public class ModelBuilder
         string ValueSetExportName,
         FhirElement.ElementDefinitionBindingStrength? BoundValueSetStrength);
 
-    ///// <summary>An export code enum value.</summary>
-    //public readonly record struct ExportCodeEnumValue(
-    //    string CodeName,
-    //    string CodeValue,
-    //    string Comment);
-
-    ///// <summary>An export code enum.</summary>
-    //public readonly record struct ExportCodeEnum(
-    //    string FhirSourcePath,
-    //    string ExportName,
-    //    string FhirValueSet,
-    //    List<ExportCodeEnumValue> CodeValues);
-
     /// <summary>An export complex.</summary>
     public readonly record struct ExportComplex(
         string FhirName,
@@ -54,7 +41,6 @@ public class ModelBuilder
         List<ExportComplex> Backbones,
         List<ExportElement> Elements,
         List<string> ReferencedValueSetExportNames);
-        //Dictionary<string, ExportCodeEnum> CodesByExportName);
 
     /// <summary>An export value set coding.</summary>
     public readonly record struct ExportValueSetCoding(
@@ -252,6 +238,12 @@ public class ModelBuilder
         List<SortedExportKey> sorted = new();
         HashSet<string> usedKeys = new();
 
+        // check for Coding first due to ValueSet mappings
+        if (complexes.ContainsKey("Coding"))
+        {
+            AddComplexToSort(complexes, complexes["Coding"], sorted, usedKeys);
+        }
+
         foreach ((string exportName, ExportComplex complex) in complexes)
         {
             if (usedKeys.Contains(exportName))
@@ -276,13 +268,17 @@ public class ModelBuilder
         List<SortedExportKey> sortedItems,
         HashSet<string> usedKeys)
     {
-        if ((!string.IsNullOrEmpty(complex.ExportType)) &&
-            (!usedKeys.Contains(complex.ExportType)) &&
-            complexes.ContainsKey(complex.ExportType))
+        string exportType = complex.ExportType.StartsWith("fhir.", StringComparison.Ordinal)
+            ? complex.ExportType.Substring(5)
+            : complex.ExportType;
+
+        if ((!string.IsNullOrEmpty(exportType)) &&
+            (!usedKeys.Contains(exportType)) &&
+            complexes.ContainsKey(exportType))
         {
             AddComplexToSort(
                 complexes,
-                complexes[complex.ExportType],
+                complexes[exportType],
                 sortedItems,
                 usedKeys);
         }

@@ -183,6 +183,8 @@ public sealed class TypeScriptSdk : ILanguage
 
         WriteValueSetModule(exportDirectory, exports);
 
+        WriteValueSetEnumModule(exportDirectory, exports);
+
         WriteIndexModule(exportDirectory);
     }
 
@@ -197,9 +199,10 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLine(string.Empty);
 
         sb.WriteLineIndented("import * as fhir from './fhir.js';");
-
         sb.WriteLineIndented("import * as valueSets from './valueSets.js';");
-        sb.WriteLineIndented("export { fhir, valueSets };");
+        sb.WriteLineIndented("import * as valueSetEnums from './valueSetEnums.js';");
+
+        sb.WriteLineIndented("export { fhir, valueSets, valueSetEnums };");
 
         string filename = Path.Combine(exportDirectory, $"index.ts");
         using (FileStream stream = new FileStream(filename, FileMode.Create))
@@ -210,6 +213,44 @@ public sealed class TypeScriptSdk : ILanguage
     }
 
     /// <summary>Writes a FHIR export module.</summary>
+    /// <param name="exportDirectory">Directory to write files.</param>
+    /// <param name="exports">        The exports.</param>
+    private void WriteValueSetEnumModule(string exportDirectory, ModelBuilder.ExportModels exports)
+    {
+        ExportStringBuilder sb = new();
+
+        WriteHeader(sb);
+
+        sb.WriteLine(string.Empty);
+
+        foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
+        {
+            sb.WriteLineIndented(
+                $"import {{" +
+                $" {vs.ExportName}Enum," +
+                $" }}" +
+                $" from './fhirValueSets/{vs.ExportName}.js'");
+        }
+
+        sb.WriteLine(string.Empty);
+        sb.OpenScope("export {");
+
+        foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
+        {
+            sb.WriteLineIndented($"{vs.ExportName}Enum,");
+        }
+
+        sb.CloseScope();
+
+        string filename = Path.Combine(exportDirectory, $"valueSetEnums.ts");
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            writer.Write(sb);
+        }
+    }
+
+    /// <summary>Writes a FHIR value setmodule.</summary>
     /// <param name="exportDirectory">Directory to write files.</param>
     /// <param name="exports">        The exports.</param>
     private void WriteValueSetModule(string exportDirectory, ModelBuilder.ExportModels exports)
@@ -224,7 +265,7 @@ public sealed class TypeScriptSdk : ILanguage
         {
             sb.WriteLineIndented(
                 $"import {{" +
-                $" {vs.ExportName}, {vs.ExportName}Type, {vs.ExportName}Enum," +
+                $" {vs.ExportName}, {vs.ExportName}Type," +
                 $" }}" +
                 $" from './fhirValueSets/{vs.ExportName}.js'");
         }
@@ -234,7 +275,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
         {
-            sb.WriteLineIndented($"{vs.ExportName}, type {vs.ExportName}Type, {vs.ExportName}Enum,");
+            sb.WriteLineIndented($"{vs.ExportName}, type {vs.ExportName}Type,");
         }
 
         sb.CloseScope();
@@ -555,7 +596,7 @@ public sealed class TypeScriptSdk : ILanguage
             }
 
             WriteIndentedComment(sb, $"{element.BoundValueSetStrength}-bound Value Set for {element.ExportName}");
-            sb.OpenScope($"public {element.ExportName}{element.BoundValueSetStrength}ValueSet():{element.ValueSetExportName}Type {{");
+            sb.OpenScope($"public static {element.ExportName}{element.BoundValueSetStrength}ValueSet():{element.ValueSetExportName}Type {{");
             sb.WriteLineIndented($"return {element.ValueSetExportName};");
             sb.CloseScope();
         }
