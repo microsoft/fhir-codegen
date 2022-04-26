@@ -4,9 +4,9 @@
 // </copyright>
 
 using System.IO;
-using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using static Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk.TypeScriptSdkCommon;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk;
 
@@ -31,47 +31,6 @@ public sealed class TypeScriptSdk : ILanguage
     /// <summary>The single file export extension - requires directory export.</summary>
     private const string _singleFileExportExtension = null;
 
-    /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
-    private static readonly Dictionary<string, string> _primitiveTypeMap = new()
-    {
-        { "base", "Object" },
-        { "base64Binary", "string" },
-        { "bool", "boolean" },
-        { "boolean", "boolean" },
-        { "canonical", "string" },
-        { "code", "string" },
-        { "date", "string" },
-        { "dateTime", "string" },           // Cannot use "DateTime" because of Partial Dates... may want to consider defining a new type, but not today
-        { "decimal", "number" },
-        { "id", "string" },
-        { "instant", "string" },
-        { "int", "number" },
-        { "integer", "number" },
-        { "integer64", "string" },
-        { "markdown", "string" },
-        { "number", "number" },
-        { "oid", "string" },
-        { "positiveInt", "number" },
-        { "string", "string" },
-        { "time", "string" },
-        { "unsignedInt", "number" },
-        { "uri", "string" },
-        { "url", "string" },
-        { "uuid", "string" },
-        { "xhtml", "string" },
-    };
-
-    /// <summary>Gets the reserved words.</summary>
-    /// <value>The reserved words.</value>
-    private static readonly HashSet<string> _reservedWords = new(StringComparer.Ordinal)
-    {
-        "const",
-        "enum",
-        "export",
-        "interface",
-        "Element",
-    };
-
     /// <summary>Gets the name of the language.</summary>
     /// <value>The name of the language.</value>
     string ILanguage.LanguageName => _languageName;
@@ -84,17 +43,17 @@ public sealed class TypeScriptSdk : ILanguage
 
     /// <summary>Gets the FHIR primitive type map.</summary>
     /// <value>The FHIR primitive type map.</value>
-    Dictionary<string, string> ILanguage.FhirPrimitiveTypeMap => _primitiveTypeMap;
+    Dictionary<string, string> ILanguage.FhirPrimitiveTypeMap => PrimitiveTypeMap;
 
     /// <summary>Gets the reserved words.</summary>
     /// <value>The reserved words.</value>
-    HashSet<string> ILanguage.ReservedWords => _reservedWords;
+    HashSet<string> ILanguage.ReservedWords => ReservedWords;
 
     /// <summary>
     /// Gets a list of FHIR class types that the language WILL export, regardless of user choices.
     /// Used to provide information to users.
     /// </summary>
-    List<ExporterOptions.FhirExportClassType> ILanguage.RequiredExportClassTypes => new List<ExporterOptions.FhirExportClassType>()
+    List<ExporterOptions.FhirExportClassType> ILanguage.RequiredExportClassTypes => new()
     {
         ExporterOptions.FhirExportClassType.ComplexType,
         ExporterOptions.FhirExportClassType.Resource,
@@ -103,14 +62,14 @@ public sealed class TypeScriptSdk : ILanguage
     /// <summary>
     /// Gets a list of FHIR class types that the language CAN export, depending on user choices.
     /// </summary>
-    List<ExporterOptions.FhirExportClassType> ILanguage.OptionalExportClassTypes => new List<ExporterOptions.FhirExportClassType>()
+    List<ExporterOptions.FhirExportClassType> ILanguage.OptionalExportClassTypes => new()
     {
         ExporterOptions.FhirExportClassType.Enum,
         ExporterOptions.FhirExportClassType.Profile,
     };
 
     /// <summary>Gets language-specific options and their descriptions.</summary>
-    Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>()
+    Dictionary<string, string> ILanguage.LanguageOptions => new()
     {
         { "namespace", "Base namespace for TypeScript classes (default: Fhir.R{VersionNumber})." },
     };
@@ -399,6 +358,7 @@ public sealed class TypeScriptSdk : ILanguage
             sb.WriteLine(string.Empty);
             WriteIndentedComment(sb, "Resource binding for generic use.");
             sb.WriteLineIndented($"type FhirResource = {exports.ResourcesByExportName.Values.First().ExportClassName};");
+
             return;
         }
 
@@ -862,35 +822,6 @@ public sealed class TypeScriptSdk : ILanguage
         {
             sb.WriteLineIndented($"public {element.ExportName}{optionalFlag}: {element.ExportType}{arrayFlag}{typeAddition};");
         }
-
-    }
-
-    /// <summary>Writes an indented comment.</summary>
-    /// <param name="sb">   The writer.</param>
-    /// <param name="value">The value.</param>
-    private void WriteIndentedComment(ExportStringBuilder sb, string value)
-    {
-        string comment;
-        string[] lines;
-
-        sb.WriteLineIndented("/**");
-
-        comment = value
-            .Replace('\r', '\n')
-            .Replace("\r\n", "\n", StringComparison.Ordinal)
-            .Replace("\n\n", "\n", StringComparison.Ordinal)
-            .Replace("&", "&amp;", StringComparison.Ordinal)
-            .Replace("<", "&lt;", StringComparison.Ordinal)
-            .Replace(">", "&gt;", StringComparison.Ordinal);
-
-        lines = comment.Split('\n');
-        foreach (string line in lines)
-        {
-            sb.WriteIndented(" * ");
-            sb.WriteLine(line);
-        }
-
-        sb.WriteLineIndented(" */");
     }
 
     /// <summary>Writes a header.</summary>

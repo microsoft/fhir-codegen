@@ -3,9 +3,8 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.Numerics;
-using fhirCsR3.ValueSets;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using static Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk.TypeScriptSdkCommon;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk;
 
@@ -77,105 +76,6 @@ public class ModelBuilder
         Dictionary<string, ExportValueSet> ValueSetsByExportName,
         List<SortedExportKey> SortedDataTypes,
         List<SortedExportKey> SortedResources);
-
-    /// <summary>
-    /// (Immutable) Dictionary mapping FHIR primitive types to language equivalents.
-    /// </summary>
-    private static readonly Dictionary<string, string> _primitiveTypeMap = new()
-    {
-        { "base", "Object" },
-        { "base64Binary", "string" },
-        { "bool", "boolean" },
-        { "boolean", "boolean" },
-        { "canonical", "string" },
-        { "code", "string" },
-        { "date", "string" },
-        { "dateTime", "string" },           // Cannot use "DateTime" because of Partial Dates... may want to consider defining a new type, but not today
-        { "decimal", "number" },
-        { "id", "string" },
-        { "instant", "string" },
-        { "int", "number" },
-        { "integer", "number" },
-        { "integer64", "string" },
-        { "markdown", "string" },
-        { "number", "number" },
-        { "oid", "string" },
-        { "positiveInt", "number" },
-        { "string", "string" },
-        { "time", "string" },
-        { "unsignedInt", "number" },
-        { "uri", "string" },
-        { "url", "string" },
-        { "uuid", "string" },
-        { "xhtml", "string" },
-    };
-
-    /// <summary>
-    /// (Immutable) Dictionary mapping FHIR complex types and resource names to language-specific
-    /// substitutions.
-    /// </summary>
-    private static readonly Dictionary<string, string> _complexTypeSubstitutions = new()
-    {
-        { "Resource", "FhirResource" },
-        { "Element", "FhirElement" },
-    };
-
-    /// <summary>(Immutable) Language reserved words.</summary>
-    private static readonly HashSet<string> _reservedWords = new()
-    {
-        "const",
-        "enum",
-        "export",
-        "interface",
-        "Element",
-        "string",
-        "number",
-        "boolean",
-        "Object",
-    };
-
-    /// <summary>The systems named by display.</summary>
-    private static HashSet<string> _systemsNamedByDisplay = new HashSet<string>()
-    {
-        /// <summary>Units of Measure have incomprehensible codes after naming substitutions.</summary>
-        "http://unitsofmeasure.org",
-    };
-
-    private static HashSet<string> _systemsNamedByCode = new HashSet<string>()
-    {
-        /// <summary>Operation Outcomes include c-style string formats in display.</summary>
-        "http://terminology.hl7.org/CodeSystem/operation-outcome",
-
-        /// <summary>Descriptions have quoted values.</summary>
-        "http://terminology.hl7.org/CodeSystem/smart-capabilities",
-
-        /// <summary>Descriptions have quoted values.</summary>
-        "http://hl7.org/fhir/v2/0301",
-
-        /// <summary>Display values are too long to be useful.</summary>
-        "http://terminology.hl7.org/CodeSystem/v2-0178",
-
-        /// <summary>Display values are too long to be useful.</summary>
-        "http://terminology.hl7.org/CodeSystem/v2-0277",
-
-        /// <summary>Display values are too long to be useful.</summary>
-        "http://terminology.hl7.org/CodeSystem/v3-VaccineManufacturer",
-
-        /// <summary>Display values are too long to be useful.</summary>
-        "http://hl7.org/fhir/v2/0278",
-
-        /// <summary>Display includes operation symbols: $.</summary>
-        "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
-
-        /// <summary>Names are often just symbols.</summary>
-        "http://hl7.org/fhir/v2/0290",
-
-        /// <summary>Display includes too many Unicode characters (invalid export names).</summary>
-        "http://hl7.org/fhir/v2/0255",
-
-        /// <summary>Display includes too many Unicode characters (invalid export names).</summary>
-        "http://hl7.org/fhir/v2/0256",
-    };
 
     /// <summary>The information.</summary>
     private FhirVersionInfo _info;
@@ -332,26 +232,26 @@ public class ModelBuilder
         if (string.IsNullOrEmpty(fhirComplex.BaseTypeName) ||
             fhirComplex.Name.Equals("Element", StringComparison.Ordinal))
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, _reservedWords);
+            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, ReservedWords);
             exportType = string.Empty;
             exportInterfaceType = string.Empty;
         }
         else if (fhirComplex.Name.Equals(fhirComplex.BaseTypeName, StringComparison.Ordinal))
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
+            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, ReservedWords);
             exportType = string.Empty;
             exportInterfaceType = string.Empty;
         }
         else if ((fhirComplex.Components != null) && fhirComplex.Components.ContainsKey(fhirComplex.Path))
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
-            exportType = fhirComplex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
+            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, ReservedWords);
+            exportType = fhirComplex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, PrimitiveTypeMap, false, string.Empty, ReservedWords);
             exportInterfaceType = "I" + exportType;
         }
         else
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
-            exportType = "fhir." + fhirComplex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
+            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, ReservedWords);
+            exportType = "fhir." + fhirComplex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, PrimitiveTypeMap, false, string.Empty, ReservedWords);
             exportInterfaceType = exportType.Insert(5, "I");
         }
 
@@ -429,7 +329,7 @@ public class ModelBuilder
     //    {
     //        foreach (FhirConcept concept in vs.Concepts)
     //        {
-    //            FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
+    //            FhirUtils.SanitizeForCode(concept.Code, ReservedWords, out string name, out string value);
 
     //            codeValues.Add(new ExportCodeEnumValue(
     //                name.ToUpperInvariant(),
@@ -441,7 +341,7 @@ public class ModelBuilder
     //    {
     //        foreach (string code in fhirElement.Codes)
     //        {
-    //            FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
+    //            FhirUtils.SanitizeForCode(code, ReservedWords, out string name, out string value);
 
     //            codeValues.Add(new ExportCodeEnumValue(
     //                name.ToUpperInvariant(),
@@ -515,14 +415,14 @@ public class ModelBuilder
                 exportType = codeName;
                 exportInterfaceType = codeName;
             }
-            else if (_complexTypeSubstitutions.ContainsKey(fhirType))
+            else if (ComplexTypeSubstitutions.ContainsKey(fhirType))
             {
-                exportType = "fhir." + _complexTypeSubstitutions[fhirType];
-                exportInterfaceType = "fhir.I" + _complexTypeSubstitutions[fhirType];
+                exportType = "fhir." + ComplexTypeSubstitutions[fhirType];
+                exportInterfaceType = "fhir.I" + ComplexTypeSubstitutions[fhirType];
             }
-            else if (_primitiveTypeMap.ContainsKey(fhirType))
+            else if (PrimitiveTypeMap.ContainsKey(fhirType))
             {
-                exportType = _primitiveTypeMap[fhirType];
+                exportType = PrimitiveTypeMap[fhirType];
                 exportInterfaceType = exportType;
             }
             else if (_info.ExcludedKeys.Contains(fhirType))
@@ -559,8 +459,8 @@ public class ModelBuilder
                     "Element",
                     "_" + exportName,
                     $"Extended properties for primitive element: {fhirElement.Path}",
-                    "fhir." + _complexTypeSubstitutions["Element"],
-                    "fhir.I" + _complexTypeSubstitutions["Element"],
+                    "fhir." + ComplexTypeSubstitutions["Element"],
+                    "fhir.I" + ComplexTypeSubstitutions["Element"],
                     string.Empty,
                     true,
                     fhirElement.IsArray,
@@ -581,7 +481,7 @@ public class ModelBuilder
             return false;
         }
 
-        if (_primitiveTypeMap.ContainsKey(typeName))
+        if (PrimitiveTypeMap.ContainsKey(typeName))
         {
             return true;
         }
@@ -705,7 +605,7 @@ public class ModelBuilder
     /// <returns>The value set export name.</returns>
     private string GetValueSetExportName(FhirValueSet fhirValueSet)
     {
-        string vsName = FhirUtils.SanitizeForProperty(fhirValueSet.Id ?? fhirValueSet.Name, _reservedWords);
+        string vsName = FhirUtils.SanitizeForProperty(fhirValueSet.Id ?? fhirValueSet.Name, ReservedWords);
         vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
 
         return vsName + "ValueSet";
@@ -736,12 +636,12 @@ public class ModelBuilder
             string fhirCodeName;
             string additionalData;
 
-            if (_systemsNamedByDisplay.Contains(concept.System))
+            if (SystemsNamedByDisplay.Contains(concept.System))
             {
                 fhirCodeName = concept.Display;
                 additionalData = concept.Code;
             }
-            else if (_systemsNamedByCode.Contains(concept.System))
+            else if (SystemsNamedByCode.Contains(concept.System))
             {
                 fhirCodeName = concept.Code;
                 additionalData = concept.System;
@@ -757,14 +657,14 @@ public class ModelBuilder
                 additionalData = concept.Code;
             }
 
-            string codeName = FhirUtils.SanitizeForProperty(fhirCodeName, _reservedWords);
+            string codeName = FhirUtils.SanitizeForProperty(fhirCodeName, ReservedWords);
             string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
             codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
 
             if (usedConceptLiterals.Contains(codeName))
             {
-                additionalData = FhirUtils.SanitizeForProperty(additionalData, _reservedWords);
+                additionalData = FhirUtils.SanitizeForProperty(additionalData, ReservedWords);
 
                 if (additionalData.StartsWith("VAL", StringComparison.Ordinal))
                 {
