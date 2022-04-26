@@ -135,7 +135,7 @@ public abstract class Exporter
         }
 
         // update language input files depending on the version of FHIR we are using
-        options.SupportFiles.TryLoad(info.FhirSequence);
+        options.SupportFiles?.TryLoad(info.FhirSequence);
 
         // perform our export
         exportLanguage.Export(
