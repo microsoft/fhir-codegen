@@ -554,6 +554,111 @@ public class FhirElement : FhirTypeBase
         return element;
     }
 
+    /// <summary>Information about the expanded element.</summary>
+    public readonly record struct ExpandedElementRec(
+        string ProperyName,
+        string ExportFhirType,
+        string BaseFhirType);
+
+    /// <summary>Names and types for export.</summary>
+    /// <param name="nameConvention">        The name convention.</param>
+    /// <param name="typeConvention">        The convention.</param>
+    /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
+    /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
+    /// <param name="isComponent">           (Optional) True if is component, false if not.</param>
+    /// <returns>A Dictionary of field names (e.g., ValueBoolean) and types (e.g., boolean).</returns>
+    public List<ExpandedElementRec> ExpandNamesAndTypes(
+        NamingConvention nameConvention,
+        NamingConvention typeConvention,
+        bool concatenatePath = false,
+        string concatenationDelimiter = "",
+        bool isComponent = false)
+    {
+        HashSet<string> usedNames = new();
+        List<ExpandedElementRec> values = new();
+
+        string baseName = Name;
+        bool isChoice = false;
+
+        if (isComponent)
+        {
+            values.Add(
+                new (
+                    FhirUtils.ToConvention(Name, Path, nameConvention, concatenatePath, concatenationDelimiter),
+                    FhirUtils.ToConvention(Path, string.Empty, typeConvention),
+                    Name));
+
+            return values;
+        }
+
+        if ((_elementTypes != null) && (_elementTypes.Count > 0))
+        {
+            if (baseName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
+            {
+                baseName = baseName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
+                isChoice = true;
+            }
+
+            if (isChoice)
+            {
+                foreach (FhirElementType elementType in _elementTypes.Values)
+                {
+                    string name = FhirUtils.ToConvention(baseName, Path, nameConvention, concatenatePath, concatenationDelimiter);
+                    string type = FhirUtils.ToConvention(elementType.Name, string.Empty, typeConvention);
+
+                    string combined = $"{name}{type}";
+
+                    if (!usedNames.Contains(combined))
+                    {
+                        usedNames.Add(combined);
+                        values.Add(new(combined, elementType.Type, elementType.Name));
+                    }
+                }
+            }
+            else
+            {
+                string types = string.Empty;
+                string fhirTypeName = baseName;
+
+                foreach (FhirElementType elementType in _elementTypes.Values)
+                {
+                    if (!string.IsNullOrEmpty(elementType.Name))
+                    {
+                        fhirTypeName = elementType.Name;
+                    }
+
+                    string type = elementType.Type;
+
+                    if (string.IsNullOrEmpty(types))
+                    {
+                        types = type;
+                    }
+                    else
+                    {
+                        types = $"{types}|{type}";
+                    }
+                }
+
+                string cased = FhirUtils.ToConvention(baseName, string.Empty, nameConvention, concatenatePath, concatenationDelimiter);
+
+                if (!usedNames.Contains(cased))
+                {
+                    usedNames.Add(cased);
+                    values.Add(new(cased, types, fhirTypeName));
+                }
+            }
+
+            return values;
+        }
+
+        values.Add(new(
+            FhirUtils.ToConvention(Name, Path, nameConvention, concatenatePath, concatenationDelimiter),
+            FhirUtils.ToConvention(BaseTypeName, string.Empty, typeConvention),
+            BaseTypeName));
+
+        return values;
+    }
+
     /// <summary>Names and types for export.</summary>
     /// <param name="nameConvention">        The name convention.</param>
     /// <param name="typeConvention">        The convention.</param>

@@ -280,6 +280,8 @@ public sealed class TypeScriptSdk : ILanguage
 
         WriteFhirResourceFactory(sb, exports);
 
+        WriteFhirConstructorPropsInterface(sb);
+
         sb.WriteLine(string.Empty);
         sb.OpenScope("export {");
 
@@ -293,7 +295,7 @@ public sealed class TypeScriptSdk : ILanguage
             sb.WriteLineIndented(string.Join(", ", exportKey.Tokens.Select((t) => t.requiresTypeLiteral ? "type " + t.Token : t.Token)) + ", ");
         }
 
-        sb.WriteLineIndented("type IFhirResource, type FhirResource, ");
+        sb.WriteLineIndented("type IFhirResource, type FhirResource, type FhirConstructorOptions, ");
         sb.WriteLineIndented("resourceFactory, ");
 
         sb.CloseScope();
@@ -304,6 +306,21 @@ public sealed class TypeScriptSdk : ILanguage
         {
             writer.Write(sb);
         }
+    }
+
+    /// <summary>Writes a FHIR constructor properties interface.</summary>
+    /// <param name="sb">The writer.</param>
+    private void WriteFhirConstructorPropsInterface(ExportStringBuilder sb)
+    {
+        // interface open
+        WriteIndentedComment(sb, "FHIR object constructor properties");
+        sb.OpenScope("interface FhirConstructorOptions {");
+
+        WriteIndentedComment(sb, "If objects should retain unknown elements.");
+        sb.WriteLineIndented("allowUnknownElements?: boolean|undefined;");
+
+        // interface close
+        sb.CloseScope();
     }
 
     /// <summary>Writes a FHIR resource factory.</summary>
@@ -478,7 +495,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.WriteLine($"// FHIR {complex.ArtifactClass}: {complex.FhirName}");
         sb.WriteLine(string.Empty);
-        sb.WriteLineIndented("import * as fhir from '../fhir.js'");
+        sb.WriteLineIndented("import * as fhir from '../fhir.js';");
         sb.WriteLine(string.Empty);
 
         foreach (string valueSetExportName in complex.ReferencedValueSetExportNames)
@@ -488,7 +505,17 @@ public sealed class TypeScriptSdk : ILanguage
                 $" {valueSetExportName}," +
                 $" {valueSetExportName}Type," +
                 $" {valueSetExportName}Enum " +
-                $"}} from '../fhirValueSets/{valueSetExportName}.js'");
+                $"}} from '../fhirValueSets/{valueSetExportName}.js';");
+        }
+
+        if (!complex.ReferencedValueSetExportNames.Contains("IssueTypeValueSet"))
+        {
+            sb.WriteLineIndented("import { IssueTypeValueSetEnum } from '../fhirValueSets/IssueTypeValueSet.js';");
+        }
+
+        if (!complex.ReferencedValueSetExportNames.Contains("IssueSeverityValueSet"))
+        {
+            sb.WriteLineIndented("import { IssueSeverityValueSetEnum } from '../fhirValueSets/IssueSeverityValueSet.js';");
         }
 
         BuildInterfaceForComplex(sb, complex);
@@ -584,32 +611,22 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (string.IsNullOrEmpty(complex.ExportType))
         {
-            sb.OpenScope("public doModelValidation():[string,string][] {");
-            sb.WriteLineIndented("var results:[string,string][] = [];");
+            sb.OpenScope("public doModelValidation():fhir.OperationOutcome {");
+            //sb.WriteLineIndented("var results:[string,string][] = [];");
+            sb.WriteLineIndented("var outcome:fhir.OperationOutcome = new fhir.OperationOutcome({issue:[]});");
         }
         else
         {
-            sb.OpenScope("public override doModelValidation():[string,string][] {");
-            sb.WriteLineIndented("var results:[string,string][] = super.doModelValidation();");
+            sb.OpenScope("public override doModelValidation():fhir.OperationOutcome {");
+            //sb.WriteLineIndented("var results:[string,string][] = super.doModelValidation();");
+            sb.WriteLineIndented("var outcome:fhir.OperationOutcome = super.doModelValidation();");
         }
 
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
             if (!element.isOptional)
             {
-                if (element.isArray)
-                {
-                    sb.WriteLineIndented(
-                        $"if ((!this[\"{element.ExportName}\"]) ||" +
-                        $" (this[\"{element.ExportName}\"].length === 0))" +
-                        $" {{ results.push([\"{element.ExportName}\",'Missing required element: {element.FhirPath}']); }}");
-                }
-                else
-                {
-                    sb.WriteLineIndented(
-                        $"if (!this[\"{element.ExportName}\"])" +
-                        $" {{ results.push([\"{element.ExportName}\",'Missing required element: {element.FhirPath}']); }}");
-                }
+                AddElementModelChecks(sb, element);
             }
 
             // recurse into other FHIR types
@@ -622,7 +639,7 @@ public sealed class TypeScriptSdk : ILanguage
                         $" {{" +
                         $" this.{element.ExportName}.forEach((x) =>" +
                         $" {{" +
-                        $" results.push(...x.doModelValidation());" +
+                        $" outcome.issue!.push(...x.doModelValidation().issue!);" +
                         $" }})" +
                         $" }}");
                 }
@@ -630,15 +647,72 @@ public sealed class TypeScriptSdk : ILanguage
                 {
                     sb.WriteLineIndented(
                         $"if (this[\"{element.ExportName}\"])" +
-                        $" {{ results.push(...this.{element.ExportName}.doModelValidation()); }}");
+                        $" {{ outcome.issue!.push(...this.{element.ExportName}.doModelValidation().issue!); }}");
                 }
             }
         }
 
-        sb.WriteLineIndented("return results;");
+        sb.WriteLineIndented("return outcome;");
 
         // function close
         sb.CloseScope();
+    }
+
+    /// <summary>Gets operation outcome issue.</summary>
+    /// <param name="issueSeverity">The issue severity.</param>
+    /// <param name="issueType">    Type of the issue.</param>
+    /// <param name="message">      The message.</param>
+    /// <returns>The operation outcome issue.</returns>
+    private string BuildOperationOutcomeIssue(string issueSeverity, string issueType, string message)
+    {
+        return
+            $"new fhir.OperationOutcomeIssue({{" +
+            $" severity: {issueSeverity}," +
+            $" code: {issueType}, " +
+            $" diagnostics: \"{SanitizeForTsQuoted(message) ?? string.Empty}\"," +
+            $" }})";
+    }
+
+    /// <summary>Adds an element optional array to 'element'.</summary>
+    /// <param name="sb">     The writer.</param>
+    /// <param name="element">The element.</param>
+    private void AddElementModelChecks(ExportStringBuilder sb, ModelBuilder.ExportElement element)
+    {
+        string propertyInfo =
+            $"property" +
+            $" {element.ExportName}{(element.isOptional ? "?" : string.Empty)}" +
+            $":{element.ExportType}{(element.isArray ? "[]" : string.Empty)}" +
+            $" fhir:" +
+            $" {element.FhirPath}" +
+            $":{element.FhirType}";
+
+        string missing = BuildOperationOutcomeIssue(
+            TsOutcomeIssueSeverity.Error,
+            TsOutcomeIssueType.RequiredElementMissing,
+            $"Missing required {propertyInfo}");
+
+        string notArray = BuildOperationOutcomeIssue(
+            TsOutcomeIssueSeverity.Error,
+            TsOutcomeIssueType.StructuralIssue,
+            $"Found scalar in array {propertyInfo}");
+
+        if (element.isArray)
+        {
+            sb.OpenScope($"if (!this['{element.ExportName}']) {{");
+            sb.WriteLineIndented($"outcome.issue!.push({missing});");
+            sb.ReopenScope($"}} else if (!Array.isArray(this.{element.ExportName})) {{");
+            sb.WriteLineIndented($"outcome.issue!.push({notArray});");
+            sb.ReopenScope($"}} else if (this.{element.ExportName}.length === 0) {{");
+            sb.WriteLineIndented($"outcome.issue!.push({missing});");
+            sb.CloseScope();
+        }
+        else
+        {
+            // TODO: add checks for primitive types
+            sb.OpenScope($"if (!this['{element.ExportName}']) {{");
+            sb.WriteLineIndented($"outcome.issue!.push({missing});");
+            sb.CloseScope();
+        }
     }
 
     /// <summary>Builds a constructor.</summary>
@@ -653,11 +727,15 @@ public sealed class TypeScriptSdk : ILanguage
             sb,
             $"Default constructor for {complex.ExportClassName} - initializes any required elements to null if a value is not provided.");
 
-        sb.OpenScope($"constructor(source:Partial<{complex.ExportInterfaceName}> = {{ }}) {{");
+        sb.OpenScope($"constructor(source:Partial<{complex.ExportInterfaceName}> = {{ }}, options:fhir.FhirConstructorOptions = {{ }}) {{");
 
         if (!string.IsNullOrEmpty(complex.ExportType))
         {
-            sb.WriteLineIndented("super(source);");
+            sb.WriteLineIndented("super(source, options);");
+        }
+        else
+        {
+            sb.WriteLineIndented("if (options.allowUnknownElements === true) { Object.assign(this, source); }");
         }
 
         foreach (ModelBuilder.ExportElement element in complex.Elements)
@@ -822,6 +900,23 @@ public sealed class TypeScriptSdk : ILanguage
         {
             sb.WriteLineIndented($"public {element.ExportName}{optionalFlag}: {element.ExportType}{arrayFlag}{typeAddition};");
         }
+    }
+
+    /// <summary>Sanitize for ts quoted.</summary>
+    /// <param name="input">The input.</param>
+    /// <returns>A string.</returns>
+    private static string SanitizeForTsQuoted(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return string.Empty;
+        }
+
+        input = input.Replace("\"", "'");
+        input = input.Replace("\r", "\\r");
+        input = input.Replace("\n", "\\n");
+
+        return input;
     }
 
     /// <summary>Writes a header.</summary>

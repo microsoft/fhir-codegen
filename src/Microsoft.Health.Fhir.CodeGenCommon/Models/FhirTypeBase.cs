@@ -138,6 +138,9 @@ public class FhirTypeBase
 
         /// <summary>Names are all lower case.</summary>
         LowerCase,
+
+        /// <summary>Lower case, separated by hyphens.</summary>
+        LowerKebab,
     }
 
     /// <summary>Gets the Id for this element/resource/datatype.</summary>
@@ -303,14 +306,42 @@ public class FhirTypeBase
         return output;
     }
 
-     /// <summary>Type for export.</summary>
-     /// <param name="convention">            The convention.</param>
-     /// <param name="primitiveTypeMap">      The base type map.</param>
-     /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
-     /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
-     /// <param name="reservedWords">         (Optional) The reserved words.</param>
-     /// <returns>A string.</returns>
-     public string TypeForExport(
+    /// <summary>Converts a word to a lower kebab.</summary>
+    /// <param name="word">The word.</param>
+    /// <returns>Word as a string.</returns>
+    public static string ToLowerKebab(string word)
+    {
+        if (string.IsNullOrEmpty(word))
+        {
+            return string.Empty;
+        }
+
+        return string.Join('-', word.Split('.')).ToLowerInvariant();
+    }
+
+    /// <summary>Converts a word to a lower kebab.</summary>
+    /// <param name="words">The words.</param>
+    /// <returns>Word as a string.</returns>
+    public static string[] ToLowerKebab(string[] words)
+    {
+        string[] output = new string[words.Length];
+
+        for (int i = 0; i < words.Length; i++)
+        {
+            output[i] = string.Join('-', words[i].Split('.')).ToLowerInvariant();
+        }
+
+        return output;
+    }
+
+    /// <summary>Type for export.</summary>
+    /// <param name="convention">            The convention.</param>
+    /// <param name="primitiveTypeMap">      The base type map.</param>
+    /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
+    /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
+    /// <param name="reservedWords">         (Optional) The reserved words.</param>
+    /// <returns>A string.</returns>
+    public string TypeForExport(
         NamingConvention convention,
         Dictionary<string, string> primitiveTypeMap,
         bool concatenatePath = false,

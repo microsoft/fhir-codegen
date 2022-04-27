@@ -377,7 +377,7 @@ public class ModelBuilder
 
         bool isOptional = false;
 
-        Dictionary<string, string> values = fhirElement.NamesAndTypesForExport(
+        List<FhirElement.ExpandedElementRec> values = fhirElement.ExpandNamesAndTypes(
             FhirTypeBase.NamingConvention.CamelCase,
             FhirTypeBase.NamingConvention.PascalCase,
             false,
@@ -389,7 +389,7 @@ public class ModelBuilder
             isOptional = true;
         }
 
-        foreach ((string exportName, string fhirType) in values)
+        foreach ((string exportName, string fhirType, string fhirTypeName) in values)
         {
             string exportType;
             string exportInterfaceType;
@@ -397,6 +397,7 @@ public class ModelBuilder
             string valueSetExportName = string.Empty;
             FhirElement.ElementDefinitionBindingStrength? vsBindStrength = null;
             FhirValueSet vs = null;
+            string shortId = fhirElement.Id.Split('.').Last();
 
             if ((!string.IsNullOrEmpty(fhirElement.ValueSet)) &&
                 _info.TryGetValueSet(fhirElement.ValueSet, out vs))
@@ -437,9 +438,9 @@ public class ModelBuilder
             }
 
             exportElements.Add(new ExportElement(
-                fhirElement.Id,
+                shortId,
                 fhirElement.Path,
-                fhirType,
+                fhirTypeName,
                 exportName,
                 fhirElement.Comment,
                 exportType,
@@ -454,8 +455,8 @@ public class ModelBuilder
             if (RequiresExtension(fhirType))
             {
                 exportElements.Add(new ExportElement(
-                    "_" + fhirElement.Id,
-                    fhirElement.Path.Insert(fhirElement.Path.LastIndexOf('.'), "_"),
+                    "_" + shortId,
+                    fhirElement.Path.Insert(fhirElement.Path.LastIndexOf('.') + 1, "_"),
                     "Element",
                     "_" + exportName,
                     $"Extended properties for primitive element: {fhirElement.Path}",

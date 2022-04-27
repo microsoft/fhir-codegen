@@ -76,6 +76,17 @@ public class ExportStringBuilder
         WriteLineIndented(closeLiteral);
     }
 
+    /// <summary>
+    /// Reopens a scope (decreases indent, writes a literal, then increases indent).
+    /// </summary>
+    /// <param name="literal">The literal.</param>
+    public void ReopenScope(string literal)
+    {
+        DecreaseIndent();
+        WriteLineIndented(literal);
+        IncreaseIndent();
+    }
+
     /// <summary>Sets an indent.</summary>
     /// <param name="level">The level.</param>
     public void SetIndent(int level)

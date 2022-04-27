@@ -260,6 +260,12 @@
             "commandLineArgs": "--output-path ..\\..\\temp\\ts-sdk-r4\\src --load-r4 latest --language TypeScriptSdk --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "ts-sdk-r4-rm": {
+            "commandName": "Project",
+            "commandLineArgs": "--export-keys CapabilityStatement --output-path ..\\..\\..\\ig-capability-editor\\src\\components --load-r4 latest --language TypeScriptSdkReactMaterial --official-expansions-only true",
+            //"commandLineArgs": "--export-keys Patient|Encounter|Observation|CapabilityStatement --output-path ..\\..\\temp\\ts-sdk-r4-rm --load-r4 latest --language TypeScriptSdkReactMaterial --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "firelyJsonTest": {
             "commandName": "Project",
             "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\generated\\SystemTextJsonExt_R4\\ --load-r4 latest --language CSharpFirely2JsonExt --official-expansions-only true",
