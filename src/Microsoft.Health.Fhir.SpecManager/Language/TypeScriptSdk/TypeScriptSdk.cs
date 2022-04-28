@@ -282,6 +282,11 @@ public sealed class TypeScriptSdk : ILanguage
 
         WriteFhirConstructorPropsInterface(sb);
 
+        if (_options.SupportFiles.TryGetInputForKey("fhir", out string contents))
+        {
+            sb.Write(contents);
+        }
+
         sb.WriteLine(string.Empty);
         sb.OpenScope("export {");
 
@@ -296,6 +301,7 @@ public sealed class TypeScriptSdk : ILanguage
         }
 
         sb.WriteLineIndented("type IFhirResource, type FhirResource, type FhirConstructorOptions, ");
+        sb.WriteLineIndented("fhirToJson, ");
         sb.WriteLineIndented("resourceFactory, ");
 
         sb.CloseScope();
@@ -591,11 +597,38 @@ public sealed class TypeScriptSdk : ILanguage
         // add model validation function
         BuildModelValidation(sb, complex);
 
+        // add toJSON override
+        BuildToJson(sb, complex);
+
         if (_options.SupportFiles.TryGetInputForKey(complex.ExportClassName, out string contents))
         {
             sb.Write(contents);
         }
 
+        sb.CloseScope();
+    }
+
+    private void BuildToJson(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportComplex complex)
+    {
+        // function open
+        WriteIndentedComment(sb, "Function to strip invalid element values for serialization.");
+
+        sb.OpenScope("public toJSON() {");
+
+        //if (string.IsNullOrEmpty(complex.ExportType))
+        //{
+        //    sb.OpenScope("public toJSON() {");
+        //}
+        //else
+        //{
+        //    sb.OpenScope("public override toJSON() {");
+        //}
+
+        sb.WriteLineIndented("return fhir.fhirToJson(this);");
+
+        // function close
         sb.CloseScope();
     }
 
@@ -612,13 +645,11 @@ public sealed class TypeScriptSdk : ILanguage
         if (string.IsNullOrEmpty(complex.ExportType))
         {
             sb.OpenScope("public doModelValidation():fhir.OperationOutcome {");
-            //sb.WriteLineIndented("var results:[string,string][] = [];");
             sb.WriteLineIndented("var outcome:fhir.OperationOutcome = new fhir.OperationOutcome({issue:[]});");
         }
         else
         {
             sb.OpenScope("public override doModelValidation():fhir.OperationOutcome {");
-            //sb.WriteLineIndented("var results:[string,string][] = super.doModelValidation();");
             sb.WriteLineIndented("var outcome:fhir.OperationOutcome = super.doModelValidation();");
         }
 
