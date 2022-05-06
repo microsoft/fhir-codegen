@@ -11,7 +11,7 @@ internal static class TypeScriptSdkCommon
     /// <summary>
     /// (Immutable) Dictionary mapping FHIR primitive types to language equivalents.
     /// </summary>
-    internal static readonly Dictionary<string, string> PrimitiveTypeMap = new()
+    internal static readonly Dictionary<string, string> PrimitiveTypeMap = new(StringComparer.OrdinalIgnoreCase)
     {
         { "base", "Object" },
         { "base64Binary", "string" },

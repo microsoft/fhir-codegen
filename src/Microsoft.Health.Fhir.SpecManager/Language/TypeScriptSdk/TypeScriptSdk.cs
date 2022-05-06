@@ -55,6 +55,7 @@ public sealed class TypeScriptSdk : ILanguage
     /// </summary>
     List<ExporterOptions.FhirExportClassType> ILanguage.RequiredExportClassTypes => new()
     {
+        ExporterOptions.FhirExportClassType.PrimitiveType,
         ExporterOptions.FhirExportClassType.ComplexType,
         ExporterOptions.FhirExportClassType.Resource,
     };
@@ -103,6 +104,12 @@ public sealed class TypeScriptSdk : ILanguage
             Directory.CreateDirectory(modelDirectory);
         }
 
+        string jsonDirectory = Path.Combine(exportDirectory, "fhirJson");
+        if (!Directory.Exists(jsonDirectory))
+        {
+            Directory.CreateDirectory(jsonDirectory);
+        }
+
         string valueSetDirectory = Path.Combine(exportDirectory, "fhirValueSets");
         if (_exportEnums)
         {
@@ -116,23 +123,38 @@ public sealed class TypeScriptSdk : ILanguage
         {
             foreach (LanguageSupportFiles.SupportFileRec fileRec in options.SupportFiles.StaticFiles)
             {
-                File.Copy(fileRec.Filename, Path.Combine(exportDirectory, fileRec.RelativeFilename));
+                string dest = Path.Combine(exportDirectory, fileRec.RelativeFilename);
+                string dir = Path.GetDirectoryName(dest);
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+
+                File.Copy(fileRec.Filename, dest);
             }
         }
 
         ModelBuilder tsBuilder = new ModelBuilder(info);
         ModelBuilder.ExportModels exports = tsBuilder.Build();
 
+        foreach (ModelBuilder.ExportPrimitive primitive in exports.PrimitiveTypesByExportName.Values)
+        {
+            WritePrimitive(primitive, modelDirectory);
+        }
+
         foreach (ModelBuilder.ExportComplex dataType in exports.ComplexDataTypesByExportName.Values)
         {
+            WriteComplexJson(dataType, jsonDirectory, exports.ValueSetsByExportName);
             WriteComplex(dataType, modelDirectory);
         }
 
         foreach (ModelBuilder.ExportComplex resource in exports.ResourcesByExportName.Values)
         {
+            WriteComplexJson(resource, jsonDirectory, exports.ValueSetsByExportName);
             WriteComplex(resource, modelDirectory);
         }
 
+        WriteFhirJsonExportModule(exportDirectory, exports);
         WriteFhirExportModule(exportDirectory, exports);
 
         foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
@@ -157,11 +179,12 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.WriteLine(string.Empty);
 
+        sb.WriteLineIndented("import * as fhirJson from './fhirJson.js';");
         sb.WriteLineIndented("import * as fhir from './fhir.js';");
         sb.WriteLineIndented("import * as valueSets from './valueSets.js';");
         sb.WriteLineIndented("import * as valueSetEnums from './valueSetEnums.js';");
 
-        sb.WriteLineIndented("export { fhir, valueSets, valueSetEnums };");
+        sb.WriteLineIndented("export { fhir, valueSets, valueSetEnums, fhirJson, };");
 
         string filename = Path.Combine(exportDirectory, $"index.ts");
         using (FileStream stream = new FileStream(filename, FileMode.Create))
@@ -250,13 +273,24 @@ public sealed class TypeScriptSdk : ILanguage
     /// <summary>Writes a FHIR export module.</summary>
     /// <param name="exportDirectory">Directory to write files.</param>
     /// <param name="exports">        The exports.</param>
-    private void WriteFhirExportModule(string exportDirectory, ModelBuilder.ExportModels exports)
+    private void WriteFhirExportModule(
+        string exportDirectory,
+        ModelBuilder.ExportModels exports)
     {
         ExportStringBuilder sb = new();
 
         WriteHeader(sb);
 
         sb.WriteLine(string.Empty);
+
+        foreach (ModelBuilder.SortedExportKey exportKey in exports.SortedPrimitives)
+        {
+            sb.WriteLineIndented(
+                $"import {{" +
+                $" {string.Join(", ", exportKey.Tokens.Select((t) => t.Token))}" +
+                $" }}" +
+                $" from './fhir/{exportKey.ExportName}.js';");
+        }
 
         foreach (ModelBuilder.SortedExportKey exportKey in exports.SortedDataTypes)
         {
@@ -290,6 +324,11 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLine(string.Empty);
         sb.OpenScope("export {");
 
+        foreach (ModelBuilder.SortedExportKey exportKey in exports.SortedPrimitives)
+        {
+            sb.WriteLineIndented(string.Join(", ", exportKey.Tokens.Select((t) => t.requiresTypeLiteral ? "type " + t.Token : t.Token)) + ", ");
+        }
+
         foreach (ModelBuilder.SortedExportKey exportKey in exports.SortedDataTypes)
         {
             sb.WriteLineIndented(string.Join(", ", exportKey.Tokens.Select((t) => t.requiresTypeLiteral ? "type " + t.Token : t.Token)) + ", ");
@@ -307,6 +346,73 @@ public sealed class TypeScriptSdk : ILanguage
         sb.CloseScope();
 
         string filename = Path.Combine(exportDirectory, $"fhir.ts");
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            writer.Write(sb);
+        }
+    }
+
+    /// <summary>
+    /// Writes a FHIR JSON export module.
+    /// Note that the 'type literal' flag is inverted because in the JSON models we
+    /// want to use the 'bare' export name, but export as an interface.
+    /// </summary>
+    /// <param name="exportDirectory">Directory to write files.</param>
+    /// <param name="exports">        The exports.</param>
+    private void WriteFhirJsonExportModule(
+        string exportDirectory,
+        ModelBuilder.ExportModels exports)
+    {
+        ExportStringBuilder sb = new();
+
+        WriteHeader(sb);
+
+        sb.WriteLine(string.Empty);
+
+        foreach (ModelBuilder.SortedExportKey exportKey in exports.SortedDataTypes)
+        {
+            sb.WriteLineIndented(
+                $"import {{" +
+                $" {string.Join(", ", exportKey.Tokens.Where((t) => (!t.requiresTypeLiteral)).Select((t) => t.Token))}" +
+                $" }}" +
+                $" from './fhirJson/{exportKey.ExportName}.js';");
+        }
+
+        foreach (ModelBuilder.SortedExportKey exportKey in exports.SortedResources)
+        {
+            sb.WriteLineIndented(
+                $"import {{" +
+                $" {string.Join(", ", exportKey.Tokens.Where((t) => (!t.requiresTypeLiteral)).Select((t) => t.Token))}" +
+                $" }}" +
+                $" from './fhirJson/{exportKey.ExportName}.js';");
+        }
+
+        WriteExpandedJsonResourceBindings(sb, exports);
+
+        if (_options.SupportFiles.TryGetInputForKey("fhirJson", out string contents))
+        {
+            sb.Write(contents);
+        }
+
+        sb.WriteLine(string.Empty);
+        sb.OpenScope("export {");
+
+        foreach (ModelBuilder.SortedExportKey exportKey in exports.SortedDataTypes)
+        {
+            sb.WriteLineIndented(string.Join(", ", exportKey.Tokens.Where((t) => (!t.requiresTypeLiteral)).Select((t) => "type " + t.Token)) + ", ");
+        }
+
+        foreach (ModelBuilder.SortedExportKey exportKey in exports.SortedResources)
+        {
+            sb.WriteLineIndented(string.Join(", ", exportKey.Tokens.Where((t) => (!t.requiresTypeLiteral)).Select((t) => "type " + t.Token)) + ", ");
+        }
+
+        sb.WriteLineIndented("type FhirResource, ");
+
+        sb.CloseScope();
+
+        string filename = Path.Combine(exportDirectory, $"fhirJson.ts");
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
         {
@@ -392,6 +498,34 @@ public sealed class TypeScriptSdk : ILanguage
         WriteIndentedComment(sb, "Resource binding for generic use.");
         sb.WriteLineIndented($"type IFhirResource = ");
         sb.WriteLine(spacing + string.Join(delim, exports.ResourcesByExportName.Values.Select((complex) => complex.ExportInterfaceName)) + ";");
+
+        sb.WriteLine(string.Empty);
+        WriteIndentedComment(sb, "Resource binding for generic use.");
+        sb.WriteLineIndented($"type FhirResource = ");
+        sb.WriteLine(spacing + string.Join(delim, exports.ResourcesByExportName.Values.Select((complex) => complex.ExportClassName)) + ";");
+    }
+
+    /// <summary>Writes the expanded resource interface binding.</summary>
+    private void WriteExpandedJsonResourceBindings(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportModels exports)
+    {
+        if (exports.ResourcesByExportName.Count == 0)
+        {
+            return;
+        }
+
+        if (exports.ResourcesByExportName.Count == 1)
+        {
+            sb.WriteLine(string.Empty);
+            WriteIndentedComment(sb, "Resource binding for generic use.");
+            sb.WriteLineIndented($"type FhirResource = {exports.ResourcesByExportName.Values.First().ExportClassName};");
+
+            return;
+        }
+
+        string spacing = new string(sb.IndentationChar, sb.Indentation + 1);
+        string delim = "\n" + spacing + "|";
 
         sb.WriteLine(string.Empty);
         WriteIndentedComment(sb, "Resource binding for generic use.");
@@ -488,6 +622,160 @@ public sealed class TypeScriptSdk : ILanguage
         }
     }
 
+    /// <summary>Writes a primitive.</summary>
+    /// <param name="primitive">     The primitive.</param>
+    /// <param name="modelDirectory">Pathname of the model directory.</param>
+    private void WritePrimitive(
+        ModelBuilder.ExportPrimitive primitive,
+        string modelDirectory)
+    {
+        ExportStringBuilder sb = new();
+
+        WriteHeader(sb);
+
+        sb.WriteLine($"// FHIR Primitive: {primitive.FhirName}");
+        sb.WriteLine(string.Empty);
+        sb.WriteLineIndented("import * as fhir from '../fhir.js';");
+        sb.WriteLine(string.Empty);
+
+        sb.WriteLineIndented("import { IssueTypeValueSetEnum } from '../fhirValueSets/IssueTypeValueSet.js';");
+        sb.WriteLineIndented("import { IssueSeverityValueSetEnum } from '../fhirValueSets/IssueSeverityValueSet.js';");
+
+        BuildInterfaceForPrimitive(sb, primitive);
+
+        BuildClassForPrimitive(sb, primitive);
+
+        string filename = Path.Combine(modelDirectory, primitive.ExportClassName + ".ts");
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            writer.Write(sb);
+        }
+    }
+
+    /// <summary>Builds interface for primitive.</summary>
+    /// <param name="sb">       The writer.</param>
+    /// <param name="primitive">The primitive.</param>
+    private void BuildInterfaceForPrimitive(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportPrimitive primitive)
+    {
+        sb.WriteLine(string.Empty);
+
+        if (!string.IsNullOrEmpty(primitive.ExportComment))
+        {
+            WriteIndentedComment(sb, primitive.ExportComment);
+        }
+
+        if (string.IsNullOrEmpty(primitive.ExportInterfaceType))
+        {
+            sb.WriteLineIndented($"export type {primitive.ExportInterfaceName} = {{");
+        }
+        else
+        {
+            sb.WriteLineIndented($"export type {primitive.ExportInterfaceName} = {primitive.ExportInterfaceType} & {{ ");
+        }
+
+        sb.IncreaseIndent();
+
+        WriteIndentedComment(sb, $"A {primitive.FhirName} value, represented as a JS {primitive.JsonExportType}");
+        sb.WriteLineIndented($"value:{primitive.JsonExportType}|null;");
+
+        if (_options.SupportFiles.TryGetInputForKey(primitive.ExportInterfaceName, out string contents))
+        {
+            sb.Write(contents);
+        }
+
+        sb.CloseScope();
+    }
+
+    /// <summary>Builds class for primitive.</summary>
+    /// <param name="sb">       The writer.</param>
+    /// <param name="primitive">The primitive.</param>
+    private void BuildClassForPrimitive(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportPrimitive primitive)
+    {
+        sb.WriteLine(string.Empty);
+
+        if (!string.IsNullOrEmpty(primitive.ExportComment))
+        {
+            WriteIndentedComment(sb, primitive.ExportComment);
+        }
+
+        if (string.IsNullOrEmpty(primitive.ExportClassType))
+        {
+            sb.WriteLineIndented($"export class {primitive.ExportClassName} implements {primitive.ExportInterfaceName} {{");
+        }
+        else
+        {
+            sb.WriteLineIndented($"export class {primitive.ExportClassName} extends {primitive.ExportClassType} implements {primitive.ExportInterfaceName} {{");
+        }
+
+        sb.IncreaseIndent();
+
+        WriteIndentedComment(sb, $"A {primitive.FhirName} value, represented as a JS {primitive.JsonExportType}");
+        sb.WriteLineIndented($"value:{primitive.JsonExportType}|null;");
+
+        BuildConstructor(sb, primitive);
+
+        // add model validation function
+        //BuildModelValidation(sb, complex);
+
+        // add toJSON override
+        //BuildToJson(sb, complex);
+
+        if (_options.SupportFiles.TryGetInputForKey(primitive.ExportClassName, out string contents))
+        {
+            sb.Write(contents);
+        }
+
+        sb.CloseScope();
+    }
+
+    /// <summary>Builds a constructor.</summary>
+    /// <param name="sb">       The writer.</param>
+    /// <param name="primitive">The primitive.</param>
+    private void BuildConstructor(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportPrimitive primitive)
+    {
+        sb.OpenScope("/**");
+        sb.WriteLineIndented($" * Create a {primitive.ExportClassName}");
+        sb.WriteLineIndented($" * @param value {primitive.ExportComment}");
+        sb.WriteLineIndented(" * @param id Unique id for inter-element referencing (uncommon on primitives)");
+        sb.WriteLineIndented(" * @param extension Additional content defined by implementations");
+        sb.WriteLineIndented(" * @param options Options to pass to extension constructors");
+        sb.CloseScope("*/");
+
+        // Constructor open
+
+        //WriteIndentedComment(
+        //    sb,
+        //    $"Default constructor for {primitive.ExportClassName}");
+
+        //sb.OpenScope($"constructor(source:Partial<{primitive.ExportInterfaceName}> = {{ }}, options:fhir.FhirConstructorOptions = {{ }}) {{");
+
+        sb.OpenScope(
+            $"constructor" +
+            $"(value?:{primitive.JsonExportType}|null," +
+            $" id?:string," +
+            $" extension?:(fhir.Extension|null)[]," +
+            $" options:fhir.FhirConstructorOptions = {{ }}" +
+            $") {{");
+
+        if (!string.IsNullOrEmpty(primitive.ExportClassType))
+        {
+            sb.WriteLineIndented("super(value, id, extension, options);");
+        }
+        //else
+        //{
+        //    sb.WriteLineIndented("if (options.allowUnknownElements === true) { Object.assign(this, source); }");
+        //}
+
+        sb.CloseScope();
+    }
+
     /// <summary>Writes a complex.</summary>
     /// <param name="complex">          The complex.</param>
     /// <param name="modelDirectory">   Pathname of the model directory.</param>
@@ -582,7 +870,7 @@ public sealed class TypeScriptSdk : ILanguage
         // add functions to get Value-Set hints for elements with bound value sets
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
-            if ((!element.hasReferencedValueSet) ||
+            if ((!element.HasReferencedValueSet) ||
                 (element.BoundValueSetStrength == null))
             {
                 continue;
@@ -655,7 +943,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
-            if (!element.isOptional)
+            if (!element.IsOptional)
             {
                 AddElementModelChecks(sb, element);
             }
@@ -663,7 +951,7 @@ public sealed class TypeScriptSdk : ILanguage
             // recurse into other FHIR types
             if (element.ExportType.StartsWith("fhir", StringComparison.Ordinal))
             {
-                if (element.isArray)
+                if (element.IsArray)
                 {
                     sb.WriteLineIndented(
                         $"if (this[\"{element.ExportName}\"])" +
@@ -711,8 +999,8 @@ public sealed class TypeScriptSdk : ILanguage
     {
         string propertyInfo =
             $"property" +
-            $" {element.ExportName}{(element.isOptional ? "?" : string.Empty)}" +
-            $":{element.ExportType}{(element.isArray ? "[]" : string.Empty)}" +
+            $" {element.ExportName}{(element.IsOptional ? "?" : string.Empty)}" +
+            $":{element.ExportType}{(element.IsArray ? "[]" : string.Empty)}" +
             $" fhir:" +
             $" {element.FhirPath}" +
             $":{element.FhirType}";
@@ -727,7 +1015,7 @@ public sealed class TypeScriptSdk : ILanguage
             TsOutcomeIssueType.StructuralIssue,
             $"Found scalar in array {propertyInfo}");
 
-        if (element.isArray)
+        if (element.IsArray)
         {
             sb.OpenScope($"if (!this['{element.ExportName}']) {{");
             sb.WriteLineIndented($"outcome.issue!.push({missing});");
@@ -777,7 +1065,7 @@ public sealed class TypeScriptSdk : ILanguage
                 continue;
             }
 
-            if (element.isArray)
+            if (element.IsArray)
             {
                 if (element.FhirType == "Resource")
                 {
@@ -836,7 +1124,7 @@ public sealed class TypeScriptSdk : ILanguage
                 }
             }
 
-            if (!element.isOptional)
+            if (!element.IsOptional)
             {
                 sb.WriteLineIndented($"else {{ this.{element.ExportName} = null; }}");
             }
@@ -906,11 +1194,11 @@ public sealed class TypeScriptSdk : ILanguage
             WriteIndentedComment(sb, element.ExportComment);
         }
 
-        string optionalFlag = element.isOptional ? "?" : string.Empty;
-        string arrayFlag = element.isArray ? "[]" : string.Empty;
+        string optionalFlag = element.IsOptional ? "?" : string.Empty;
+        string arrayFlag = element.IsArray ? "[]" : string.Empty;
         string typeAddition;
 
-        if (element.isOptional)
+        if (element.IsOptional)
         {
             typeAddition = "|undefined";
         }
@@ -930,6 +1218,149 @@ public sealed class TypeScriptSdk : ILanguage
         else
         {
             sb.WriteLineIndented($"public {element.ExportName}{optionalFlag}: {element.ExportType}{arrayFlag}{typeAddition};");
+        }
+    }
+
+    /// <summary>Writes a complex.</summary>
+    /// <param name="complex">      The complex.</param>
+    /// <param name="jsonDirectory">Pathname of the json model directory.</param>
+    private void WriteComplexJson(
+        ModelBuilder.ExportComplex complex,
+        string jsonDirectory,
+        Dictionary<string, ModelBuilder.ExportValueSet> ValueSetsByExportName)
+    {
+        ExportStringBuilder sb = new();
+
+        WriteHeader(sb);
+
+        sb.WriteLine($"// FHIR {complex.ArtifactClass}: {complex.FhirName}");
+        sb.WriteLine(string.Empty);
+        sb.WriteLineIndented("import * as fhir from '../fhirJson.js';");
+        sb.WriteLine(string.Empty);
+
+        BuildInterfaceForComplexJson(sb, complex, ValueSetsByExportName);
+
+        string filename = Path.Combine(jsonDirectory, complex.ExportClassName + ".ts");
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            writer.Write(sb);
+        }
+    }
+
+    /// <summary>Writes a complex interface.</summary>
+    /// <param name="sb">     The writer.</param>
+    /// <param name="complex">The complex.</param>
+    private void BuildInterfaceForComplexJson(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportComplex complex,
+        Dictionary<string, ModelBuilder.ExportValueSet> ValueSetsByExportName)
+    {
+        // recurse
+        if (complex.Backbones.Any())
+        {
+            foreach (ModelBuilder.ExportComplex backbone in complex.Backbones)
+            {
+                // use unknown for backbones to prevent resource/datatype specific fields
+                BuildInterfaceForComplexJson(sb, backbone, ValueSetsByExportName);
+            }
+        }
+
+        sb.WriteLine(string.Empty);
+
+        if (!string.IsNullOrEmpty(complex.ExportComment))
+        {
+            WriteIndentedComment(sb, complex.ExportComment);
+        }
+
+        if (string.IsNullOrEmpty(complex.ExportType))
+        {
+            sb.WriteLineIndented($"export interface {complex.ExportClassName} {{");
+        }
+        else
+        {
+            sb.WriteLineIndented($"export interface {complex.ExportClassName} extends {complex.ExportType} {{ ");
+        }
+
+        sb.IncreaseIndent();
+
+        foreach (ModelBuilder.ExportElement element in complex.Elements)
+        {
+            BuildComplexElementJson(sb, element, ValueSetsByExportName);
+        }
+
+        sb.CloseScope();
+    }
+
+    /// <summary>Builds content for a complex element.</summary>
+    /// <param name="sb">      The writer.</param>
+    /// <param name="element"> The element.</param>
+    private void BuildComplexElementJson(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportElement element,
+        Dictionary<string, ModelBuilder.ExportValueSet> ValueSetsByExportName)
+    {
+        if (!string.IsNullOrEmpty(element.ExportComment))
+        {
+            WriteIndentedComment(sb, element.ExportComment);
+        }
+
+        string optionalFlag = element.IsOptional ? "?" : string.Empty;
+        string arrayFlag = element.IsArray ? "[]" : string.Empty;
+        string typeAddition;
+
+        if (element.IsOptional)
+        {
+            typeAddition = "|undefined";
+        }
+        else if (element.ExportJsonType.Contains('"'))
+        {
+            typeAddition = string.Empty;
+        }
+        else
+        {
+            typeAddition = "|null";
+        }
+
+        string exportType;
+
+        if (element.ExportJsonType.EndsWith("Enum", StringComparison.Ordinal))
+        {
+            if (ValueSetsByExportName.ContainsKey(element.ValueSetExportName))
+            {
+                exportType = string.Join(
+                    "|",
+                    ValueSetsByExportName[element.ValueSetExportName].CodingsByExportName.Values.Select((c) => "'" + c.Code + "'"));
+
+                if (element.IsArray)
+                {
+                    exportType = "(" + exportType + "|null)";
+                }
+            }
+            else
+            {
+                exportType = "string";
+            }
+        }
+        else
+        {
+            exportType = element.ExportJsonType;
+        }
+
+        sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {exportType}{arrayFlag}{typeAddition};");
+
+        if (element.RequiresExtensionElement)
+        {
+            WriteIndentedComment(sb, $"Extended properties for primitive element: {element.FhirPath}");
+
+            if (element.IsArray)
+            {
+                sb.WriteLineIndented($"_{element.ExportName}?:(fhir.{ComplexTypeSubstitutions["Element"]}|null)[];");
+            }
+            else
+            {
+                sb.WriteLineIndented($"_{element.ExportName}?:fhir.{ComplexTypeSubstitutions["Element"]};");
+            }
         }
     }
 

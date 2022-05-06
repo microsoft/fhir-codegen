@@ -20,10 +20,12 @@ public class ModelBuilder
         string ExportComment,
         string ExportType,
         string ExportInterfaceType,
+        string ExportJsonType,
         string ValidationRegEx,
-        bool isOptional,
-        bool isArray,
-        bool hasReferencedValueSet,
+        bool IsOptional,
+        bool IsArray,
+        bool RequiresExtensionElement,
+        bool HasReferencedValueSet,
         string ValueSetExportName,
         FhirElement.ElementDefinitionBindingStrength? BoundValueSetStrength);
 
@@ -40,6 +42,16 @@ public class ModelBuilder
         List<ExportComplex> Backbones,
         List<ExportElement> Elements,
         List<string> ReferencedValueSetExportNames);
+
+    /// <summary>An export primitive.</summary>
+    public readonly record struct ExportPrimitive(
+        string FhirName,
+        string ExportClassName,
+        string ExportClassType,
+        string ExportInterfaceName,
+        string ExportInterfaceType,
+        string ExportComment,
+        string JsonExportType);
 
     /// <summary>An export value set coding.</summary>
     public readonly record struct ExportValueSetCoding(
@@ -69,11 +81,13 @@ public class ModelBuilder
         string ExportName,
         List<ExportTokenInfo> Tokens);
 
-    /// <summary>An exported.</summary>
+    /// <summary>The processed set of export models.</summary>
     public readonly record struct ExportModels(
+        Dictionary<string, ExportPrimitive> PrimitiveTypesByExportName,
         Dictionary<string, ExportComplex> ComplexDataTypesByExportName,
         Dictionary<string, ExportComplex> ResourcesByExportName,
         Dictionary<string, ExportValueSet> ValueSetsByExportName,
+        List<SortedExportKey> SortedPrimitives,
         List<SortedExportKey> SortedDataTypes,
         List<SortedExportKey> SortedResources);
 
@@ -90,14 +104,56 @@ public class ModelBuilder
     }
 
     /// <summary>Builds the given information.</summary>
+    /// <param name="supportPrimitves">(Optional) The support primitves.</param>
     /// <returns>The ExportModels.</returns>
     public ExportModels Build()
     {
+        Dictionary<string, ExportPrimitive> primitiveTypes = new();
+        List<SortedExportKey> sortedPrimitives;
         Dictionary<string, ExportComplex> complexDataTypes = new();
         List<SortedExportKey> sortedDataTypes;
         Dictionary<string, ExportComplex> resources = new();
         List<SortedExportKey> sortedResources;
         Dictionary<string, ExportValueSet> valueSets = new();
+
+        foreach (FhirPrimitive fhirPrimitive in _info.PrimitiveTypes.Values)
+        {
+            string exportName = "Fhir" + fhirPrimitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, ReservedWords);
+
+            string exportClassType;
+            string exportInterfaceType;
+
+            switch (exportName)
+            {
+                case "FhirBase":
+                    exportClassType = string.Empty;
+                    exportInterfaceType = string.Empty;
+                    break;
+
+                case "FhirPrimitive":
+                    exportClassType = "fhir.FhirBase";
+                    exportInterfaceType = "fhir.IFhirBase";
+                    break;
+
+                default:
+                    exportClassType = "fhir.FhirPrimitive";
+                    exportInterfaceType = "fhir.IFhirPrimitive";
+                    break;
+            }
+
+            primitiveTypes.Add(
+                exportName,
+                new ExportPrimitive(
+                    fhirPrimitive.Name,
+                    exportName,
+                    exportClassType,
+                    "I" + exportName,
+                    exportInterfaceType,
+                    fhirPrimitive.Comment,
+                    PrimitiveTypeMap.ContainsKey(fhirPrimitive.Name) ? PrimitiveTypeMap[fhirPrimitive.Name] : exportName));
+        }
+
+        sortedPrimitives = SortPrimitives(primitiveTypes);
 
         foreach (FhirComplex fhirComplex in _info.ComplexTypes.Values)
         {
@@ -127,7 +183,48 @@ public class ModelBuilder
             }
         }
 
-        return new ExportModels(complexDataTypes, resources, valueSets, sortedDataTypes, sortedResources);
+        return new ExportModels(primitiveTypes, complexDataTypes, resources, valueSets, sortedPrimitives, sortedDataTypes, sortedResources);
+    }
+
+    /// <summary>Sort primitives.</summary>
+    /// <param name="primitives">The primitives.</param>
+    /// <returns>The sorted primitives.</returns>
+    private List<SortedExportKey> SortPrimitives(Dictionary<string, ExportPrimitive> primitives)
+    {
+        List<SortedExportKey> sorted = new();
+        HashSet<string> usedKeys = new();
+
+        sorted.Add(new SortedExportKey("FhirBase", TokensFromPrimitive("FhirBase")));
+        usedKeys.Add("FhirBase");
+
+        sorted.Add(new SortedExportKey("FhirPrimitive", TokensFromPrimitive("FhirPrimitive")));
+        usedKeys.Add("FhirPrimitive");
+
+        foreach (ExportPrimitive primitive in primitives.Values)
+        {
+            if (usedKeys.Contains(primitive.ExportClassName))
+            {
+                continue;
+            }
+
+            sorted.Add(new SortedExportKey(primitive.ExportClassName, TokensFromPrimitive(primitive.ExportClassName)));
+            usedKeys.Add(primitive.ExportClassName);
+        }
+
+        return sorted;
+    }
+
+    /// <summary>Tokens from primitive.</summary>
+    /// <param name="primitiveName">The primitive name.</param>
+    /// <returns>A List&lt;ExportTokenInfo&gt;</returns>
+    private List<ExportTokenInfo> TokensFromPrimitive(string primitiveName)
+    {
+        List<ExportTokenInfo> tokens = new();
+
+        tokens.Add(new ExportTokenInfo("I" + primitiveName, true));
+        tokens.Add(new ExportTokenInfo(primitiveName, false));
+
+        return tokens;
     }
 
     /// <summary>Sort complexes.</summary>
@@ -393,6 +490,7 @@ public class ModelBuilder
         {
             string exportType;
             string exportInterfaceType;
+            string exportJsonType;
             bool hasReferencedValueSet = false;
             string valueSetExportName = string.Empty;
             FhirElement.ElementDefinitionBindingStrength? vsBindStrength = null;
@@ -415,26 +513,37 @@ public class ModelBuilder
             {
                 exportType = codeName;
                 exportInterfaceType = codeName;
+                exportJsonType = codeName;
             }
             else if (ComplexTypeSubstitutions.ContainsKey(fhirType))
             {
                 exportType = "fhir." + ComplexTypeSubstitutions[fhirType];
                 exportInterfaceType = "fhir.I" + ComplexTypeSubstitutions[fhirType];
+                exportJsonType = "fhir." + ComplexTypeSubstitutions[fhirType];
             }
             else if (PrimitiveTypeMap.ContainsKey(fhirType))
             {
-                exportType = PrimitiveTypeMap[fhirType];
+                exportType = "fhir.Fhir" + FhirUtils.ToConvention(
+                    fhirTypeName,
+                    string.Empty,
+                    FhirTypeBase.NamingConvention.PascalCase,
+                    false,
+                    string.Empty,
+                    ReservedWords);
                 exportInterfaceType = exportType;
+                exportJsonType = PrimitiveTypeMap[fhirType];
             }
             else if (_info.ExcludedKeys.Contains(fhirType))
             {
                 exportType = "any";
                 exportInterfaceType = exportType;
+                exportJsonType = "any";
             }
             else
             {
                 exportType = "fhir." + fhirType;
                 exportInterfaceType = "fhir.I" + fhirType;
+                exportJsonType = "fhir." + fhirType;
             }
 
             exportElements.Add(new ExportElement(
@@ -445,30 +554,14 @@ public class ModelBuilder
                 fhirElement.Comment,
                 exportType,
                 exportInterfaceType,
+                exportJsonType,
                 fhirElement.ValidationRegEx,
                 isOptional,
                 fhirElement.IsArray,
+                RequiresExtension(fhirType),
                 hasReferencedValueSet,
                 valueSetExportName,
                 vsBindStrength));
-
-            if (RequiresExtension(fhirType))
-            {
-                exportElements.Add(new ExportElement(
-                    "_" + shortId,
-                    fhirElement.Path.Insert(fhirElement.Path.LastIndexOf('.') + 1, "_"),
-                    "Element",
-                    "_" + exportName,
-                    $"Extended properties for primitive element: {fhirElement.Path}",
-                    "fhir." + ComplexTypeSubstitutions["Element"],
-                    "fhir.I" + ComplexTypeSubstitutions["Element"],
-                    string.Empty,
-                    true,
-                    fhirElement.IsArray,
-                    false,
-                    string.Empty,
-                    null));
-            }
         }
     }
 
@@ -534,7 +627,9 @@ public class ModelBuilder
                     "Resource Type Name",
                     "string",
                     "string",
+                    "string",
                     string.Empty,
+                    false,
                     false,
                     false,
                     false,
@@ -553,7 +648,9 @@ public class ModelBuilder
                     "Resource Type Name",
                     $"\"{fhirComplex.Id}\"",
                     $"\"{fhirComplex.Id}\"",
+                    $"\"{fhirComplex.Id}\"",
                     string.Empty,
+                    false,
                     false,
                     false,
                     false,
