@@ -339,7 +339,8 @@ public sealed class TypeScriptSdk : ILanguage
             sb.WriteLineIndented(string.Join(", ", exportKey.Tokens.Select((t) => t.requiresTypeLiteral ? "type " + t.Token : t.Token)) + ", ");
         }
 
-        sb.WriteLineIndented("type IFhirResource, type FhirResource, type FhirConstructorOptions, ");
+        //sb.WriteLineIndented("type IFhirResource, type FhirResource, type FhirConstructorOptions, ");
+        sb.WriteLineIndented("type FhirResource, type FhirConstructorOptions, ");
         sb.WriteLineIndented("fhirToJson, ");
         sb.WriteLineIndented("resourceFactory, ");
 
@@ -480,9 +481,9 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (exports.ResourcesByExportName.Count == 1)
         {
-            sb.WriteLine(string.Empty);
-            WriteIndentedComment(sb, "Resource binding for generic use.");
-            sb.WriteLineIndented($"type IFhirResource = {exports.ResourcesByExportName.Values.First().ExportInterfaceName};");
+            //sb.WriteLine(string.Empty);
+            //WriteIndentedComment(sb, "Resource binding for generic use.");
+            //sb.WriteLineIndented($"type IFhirResource = {exports.ResourcesByExportName.Values.First().ExportInterfaceName};");
 
             sb.WriteLine(string.Empty);
             WriteIndentedComment(sb, "Resource binding for generic use.");
@@ -494,10 +495,10 @@ public sealed class TypeScriptSdk : ILanguage
         string spacing = new string(sb.IndentationChar, sb.Indentation + 1);
         string delim = "\n" + spacing + "|";
 
-        sb.WriteLine(string.Empty);
-        WriteIndentedComment(sb, "Resource binding for generic use.");
-        sb.WriteLineIndented($"type IFhirResource = ");
-        sb.WriteLine(spacing + string.Join(delim, exports.ResourcesByExportName.Values.Select((complex) => complex.ExportInterfaceName)) + ";");
+        //sb.WriteLine(string.Empty);
+        //WriteIndentedComment(sb, "Resource binding for generic use.");
+        //sb.WriteLineIndented($"type IFhirResource = ");
+        //sb.WriteLine(spacing + string.Join(delim, exports.ResourcesByExportName.Values.Select((complex) => complex.ExportInterfaceName)) + ";");
 
         sb.WriteLine(string.Empty);
         WriteIndentedComment(sb, "Resource binding for generic use.");
@@ -641,7 +642,7 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLineIndented("import { IssueTypeValueSetEnum } from '../fhirValueSets/IssueTypeValueSet.js';");
         sb.WriteLineIndented("import { IssueSeverityValueSetEnum } from '../fhirValueSets/IssueSeverityValueSet.js';");
 
-        BuildInterfaceForPrimitive(sb, primitive);
+        //BuildInterfaceForPrimitive(sb, primitive);
 
         BuildClassForPrimitive(sb, primitive);
 
@@ -703,16 +704,21 @@ public sealed class TypeScriptSdk : ILanguage
             WriteIndentedComment(sb, primitive.ExportComment);
         }
 
-        if (string.IsNullOrEmpty(primitive.ExportClassType))
-        {
-            sb.WriteLineIndented($"export class {primitive.ExportClassName} implements {primitive.ExportInterfaceName} {{");
-        }
-        else
-        {
-            sb.WriteLineIndented($"export class {primitive.ExportClassName} extends {primitive.ExportClassType} implements {primitive.ExportInterfaceName} {{");
-        }
+        //if (string.IsNullOrEmpty(primitive.ExportClassType))
+        //{
+        //    sb.WriteLineIndented($"export class {primitive.ExportClassName} implements {primitive.ExportInterfaceName} {{");
+        //}
+        //else
+        //{
+        //    sb.WriteLineIndented($"export class {primitive.ExportClassName} extends {primitive.ExportClassType} implements {primitive.ExportInterfaceName} {{");
+        //}
+
+        sb.WriteLineIndented($"export class {primitive.ExportClassName} extends {primitive.ExportClassType} {{");
 
         sb.IncreaseIndent();
+
+        sb.WriteLineIndented($"readonly __dataType:string = '{primitive.ExportClassName.Substring(4)}';");
+        sb.WriteLineIndented($"readonly __jsonType:string = '{primitive.JsonExportType}';");
 
         WriteIndentedComment(sb, $"A {primitive.FhirName} value, represented as a JS {primitive.JsonExportType}");
         sb.WriteLineIndented($"value:{primitive.JsonExportType}|null;");
@@ -720,7 +726,7 @@ public sealed class TypeScriptSdk : ILanguage
         BuildConstructor(sb, primitive);
 
         // add model validation function
-        //BuildModelValidation(sb, complex);
+        BuildModelValidation(sb, primitive);
 
         // add toJSON override
         //BuildToJson(sb, complex);
@@ -758,7 +764,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.OpenScope(
             $"constructor" +
-            $"(value?:{primitive.JsonExportType}|null," +
+            $"(value?:{primitive.ExportClassName}|{primitive.JsonExportType}|null," +
             $" id?:string," +
             $" extension?:(fhir.Extension|null)[]," +
             $" options:fhir.FhirConstructorOptions = {{ }}" +
@@ -812,7 +818,7 @@ public sealed class TypeScriptSdk : ILanguage
             sb.WriteLineIndented("import { IssueSeverityValueSetEnum } from '../fhirValueSets/IssueSeverityValueSet.js';");
         }
 
-        BuildInterfaceForComplex(sb, complex);
+        //BuildInterfaceForComplex(sb, complex);
 
         BuildClassForComplex(sb, complex);
 
@@ -841,6 +847,8 @@ public sealed class TypeScriptSdk : ILanguage
             }
         }
 
+        BuildConstructorArgs(sb, complex);
+
         sb.WriteLine(string.Empty);
 
         if (!string.IsNullOrEmpty(complex.ExportComment))
@@ -848,16 +856,34 @@ public sealed class TypeScriptSdk : ILanguage
             WriteIndentedComment(sb, complex.ExportComment);
         }
 
+        //if (string.IsNullOrEmpty(complex.ExportType))
+        //{
+        //    sb.WriteLineIndented($"export class {complex.ExportClassName} implements {complex.ExportInterfaceName} {{");
+        //}
+        //else
+        //{
+        //    sb.WriteLineIndented($"export class {complex.ExportClassName} extends {complex.ExportType} implements {complex.ExportInterfaceName} {{");
+        //}
+
         if (string.IsNullOrEmpty(complex.ExportType))
         {
-            sb.WriteLineIndented($"export class {complex.ExportClassName} implements {complex.ExportInterfaceName} {{");
+            sb.WriteLineIndented($"export class {complex.ExportClassName} {{");
         }
         else
         {
-            sb.WriteLineIndented($"export class {complex.ExportClassName} extends {complex.ExportType} implements {complex.ExportInterfaceName} {{");
+            sb.WriteLineIndented($"export class {complex.ExportClassName} extends {complex.ExportType} {{");
         }
 
         sb.IncreaseIndent();
+
+        if (complex.ExportClassName.StartsWith("Fhir", StringComparison.Ordinal))
+        {
+            sb.WriteLineIndented($"readonly __dataType:string = '{complex.ExportClassName.Substring(4)}';");
+        }
+        else
+        {
+            sb.WriteLineIndented($"readonly __dataType:string = '{complex.ExportClassName}';");
+        }
 
         // add actual elements
         foreach (ModelBuilder.ExportElement element in complex.Elements)
@@ -896,6 +922,35 @@ public sealed class TypeScriptSdk : ILanguage
         sb.CloseScope();
     }
 
+    /// <summary>Builds constructor arguments.</summary>
+    /// <param name="sb">     The writer.</param>
+    /// <param name="complex">The complex.</param>
+    private void BuildConstructorArgs(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportComplex complex)
+    {
+        // interface open
+        WriteIndentedComment(sb, $"Valid arguments for the {complex.ExportClassName} type.");
+
+        if (string.IsNullOrEmpty(complex.ExportType))
+        {
+            sb.OpenScope($"export interface {complex.ExportClassName}Args {{");
+        }
+        else
+        {
+            sb.OpenScope($"export interface {complex.ExportClassName}Args extends {complex.ExportType}Args {{");
+        }
+
+        // add actual elements
+        foreach (ModelBuilder.ExportElement element in complex.Elements)
+        {
+            BuildComplexElementArg(sb, element);
+        }
+
+        // interface close
+        sb.CloseScope();
+    }
+
     private void BuildToJson(
         ExportStringBuilder sb,
         ModelBuilder.ExportComplex complex)
@@ -915,6 +970,54 @@ public sealed class TypeScriptSdk : ILanguage
         //}
 
         sb.WriteLineIndented("return fhir.fhirToJson(this);");
+
+        // function close
+        sb.CloseScope();
+    }
+
+    /// <summary>Builds model validation.</summary>
+    /// <param name="sb">       The writer.</param>
+    /// <param name="primitive">The primitive.</param>
+    private void BuildModelValidation(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportPrimitive primitive)
+    {
+        // function open
+        WriteIndentedComment(sb, "Function to perform basic model validation (e.g., check if required elements are present).");
+        sb.OpenScope("public override doModelValidation():fhir.OperationOutcome {");
+        sb.WriteLineIndented("var outcome:fhir.OperationOutcome = super.doModelValidation();");
+
+        if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
+        {
+            string invalidContent = BuildOperationOutcomeIssue(
+                TsOutcomeIssueSeverity.Error,
+                TsOutcomeIssueType.InvalidContent,
+                $"Invalid value in primitive type {primitive.FhirName}");
+
+            string exp = primitive.ValidationRegEx.StartsWith('^')
+                ? System.Text.RegularExpressions.Regex.Escape(primitive.ValidationRegEx)
+                : "^" + System.Text.RegularExpressions.Regex.Escape(primitive.ValidationRegEx) + "$";
+
+            sb.WriteLineIndented($"// original regex: {primitive.ValidationRegEx}");
+
+            if (primitive.JsonExportType.Equals("string", StringComparison.Ordinal))
+            {
+                // open value passes
+                sb.OpenScope($"if ((this.value) && (!/{exp}/.test(this.value))) {{");
+            }
+            else
+            {
+                // open value passes
+                sb.OpenScope($"if ((this.value) && (!/{exp}/.test(this.value.toString()))) {{");
+            }
+
+            sb.WriteLineIndented($"outcome.issue!.push({invalidContent});");
+
+            // close value exists
+            sb.CloseScope();
+        }
+
+        sb.WriteLineIndented("return outcome;");
 
         // function close
         sb.CloseScope();
@@ -1027,7 +1130,6 @@ public sealed class TypeScriptSdk : ILanguage
         }
         else
         {
-            // TODO: add checks for primitive types
             sb.OpenScope($"if (!this['{element.ExportName}']) {{");
             sb.WriteLineIndented($"outcome.issue!.push({missing});");
             sb.CloseScope();
@@ -1046,7 +1148,8 @@ public sealed class TypeScriptSdk : ILanguage
             sb,
             $"Default constructor for {complex.ExportClassName} - initializes any required elements to null if a value is not provided.");
 
-        sb.OpenScope($"constructor(source:Partial<{complex.ExportInterfaceName}> = {{ }}, options:fhir.FhirConstructorOptions = {{ }}) {{");
+        //sb.OpenScope($"constructor(source:Partial<{complex.ExportInterfaceName}> = {{ }}, options:fhir.FhirConstructorOptions = {{ }}) {{");
+        sb.OpenScope($"constructor(source:Partial<{complex.ExportClassName}Args> = {{ }}, options:fhir.FhirConstructorOptions = {{ }}) {{");
 
         if (!string.IsNullOrEmpty(complex.ExportType))
         {
@@ -1179,6 +1282,52 @@ public sealed class TypeScriptSdk : ILanguage
         }
 
         sb.CloseScope();
+    }
+
+    /// <summary>Builds content for a complex element.</summary>
+    /// <param name="sb">      The writer.</param>
+    /// <param name="element"> The element.</param>
+    private void BuildComplexElementArg(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportElement element)
+    {
+        if (!string.IsNullOrEmpty(element.ExportComment))
+        {
+            WriteIndentedComment(sb, element.ExportComment);
+        }
+
+        string optionalFlag = element.IsOptional ? "?" : string.Empty;
+        string arrayFlag = element.IsArray ? "[]" : string.Empty;
+
+        string exportType;
+        string typeAddition;
+
+        if (element.IsOptional)
+        {
+            typeAddition = "|undefined";
+        }
+        else
+        {
+            typeAddition = "|null";
+        }
+
+        if (PrimitiveTypeMap.ContainsKey(element.ExportJsonType))
+        {
+            if (element.IsArray)
+            {
+                exportType = $"({element.ExportType}|{PrimitiveTypeMap[element.ExportJsonType]})";
+            }
+            else
+            {
+                exportType = $"{element.ExportType}|{PrimitiveTypeMap[element.ExportJsonType]}";
+            }
+        }
+        else
+        {
+            exportType = element.ExportType;
+        }
+
+        sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {exportType}{arrayFlag}{typeAddition};");
     }
 
     /// <summary>Builds content for a complex element.</summary>

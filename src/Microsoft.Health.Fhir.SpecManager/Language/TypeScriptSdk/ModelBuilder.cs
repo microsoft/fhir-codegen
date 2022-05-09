@@ -51,7 +51,8 @@ public class ModelBuilder
         string ExportInterfaceName,
         string ExportInterfaceType,
         string ExportComment,
-        string JsonExportType);
+        string JsonExportType,
+        string ValidationRegEx);
 
     /// <summary>An export value set coding.</summary>
     public readonly record struct ExportValueSetCoding(
@@ -150,7 +151,8 @@ public class ModelBuilder
                     "I" + exportName,
                     exportInterfaceType,
                     fhirPrimitive.Comment,
-                    PrimitiveTypeMap.ContainsKey(fhirPrimitive.Name) ? PrimitiveTypeMap[fhirPrimitive.Name] : exportName));
+                    PrimitiveTypeMap.ContainsKey(fhirPrimitive.Name) ? PrimitiveTypeMap[fhirPrimitive.Name] : exportName,
+                    fhirPrimitive.ValidationRegEx));
         }
 
         sortedPrimitives = SortPrimitives(primitiveTypes);
@@ -221,7 +223,7 @@ public class ModelBuilder
     {
         List<ExportTokenInfo> tokens = new();
 
-        tokens.Add(new ExportTokenInfo("I" + primitiveName, true));
+        //tokens.Add(new ExportTokenInfo("I" + primitiveName, true));
         tokens.Add(new ExportTokenInfo(primitiveName, false));
 
         return tokens;
@@ -294,7 +296,8 @@ public class ModelBuilder
     {
         List<ExportTokenInfo> tokens = new();
 
-        tokens.Add(new ExportTokenInfo(complex.ExportInterfaceName, true));
+        //tokens.Add(new ExportTokenInfo(complex.ExportInterfaceName, true));
+        tokens.Add(new ExportTokenInfo(complex.ExportClassName + "Args", true));
         tokens.Add(new ExportTokenInfo(complex.ExportClassName, false));
 
         foreach (ExportComplex backbone in complex.Backbones)
