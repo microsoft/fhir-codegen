@@ -1591,6 +1591,7 @@ public sealed class TypeScriptSdk : ILanguage
         string optionalFlag = element.IsOptional ? "?" : string.Empty;
         string arrayFlag = element.IsArray ? "[]" : string.Empty;
         string typeAddition;
+        string initializer = element.IsArray ? " = []" : string.Empty;
 
         if (element.IsOptional)
         {
@@ -1607,11 +1608,11 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (isInterface)
         {
-            sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {element.ExportInterfaceType}{arrayFlag}{typeAddition};");
+            sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {element.ExportInterfaceType}{arrayFlag}{typeAddition}{initializer};");
         }
         else
         {
-            sb.WriteLineIndented($"public {element.ExportName}{optionalFlag}: {element.ExportType}{arrayFlag}{typeAddition};");
+            sb.WriteLineIndented($"public {element.ExportName}{optionalFlag}: {element.ExportType}{arrayFlag}{typeAddition}{initializer};");
         }
     }
 

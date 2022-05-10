@@ -3,7 +3,7 @@
  * @param obj 
  * @returns 
  */
- function fhirToJson(obj:any) {
+function fhirToJson(obj:any) {
   let c:any = {};
 
   for (const key in obj) {
