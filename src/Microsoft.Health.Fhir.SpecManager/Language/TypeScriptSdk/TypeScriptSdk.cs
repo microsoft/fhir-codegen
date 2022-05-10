@@ -160,6 +160,7 @@ public sealed class TypeScriptSdk : ILanguage
         foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
         {
             WriteValueSet(vs, valueSetDirectory);
+            WriteValueSetEnum(vs, valueSetDirectory);
         }
 
         WriteValueSetModule(exportDirectory, exports);
@@ -211,7 +212,7 @@ public sealed class TypeScriptSdk : ILanguage
                 $"import {{" +
                 $" {vs.ExportName}Enum," +
                 $" }}" +
-                $" from './fhirValueSets/{vs.ExportName}.js'");
+                $" from './fhirValueSets/{vs.ExportName}Enum.js'");
         }
 
         sb.WriteLine(string.Empty);
@@ -597,6 +598,33 @@ public sealed class TypeScriptSdk : ILanguage
             WriteIndentedComment(sb, vs.ExportComment);
         }
 
+        string filename = Path.Combine(vsDirectory, vs.ExportName + ".ts");
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            writer.Write(sb);
+        }
+    }
+
+    /// <summary>Writes a value set enum.</summary>
+    /// <param name="vs">         Set the value belongs to.</param>
+    /// <param name="vsDirectory">Pathname of the vs directory.</param>
+    private void WriteValueSetEnum(
+        ModelBuilder.ExportValueSet vs,
+        string vsDirectory)
+    {
+        ExportStringBuilder sb = new();
+
+        WriteHeader(sb);
+
+        sb.WriteLine($"// FHIR ValueSet Enum: {vs.FhirUrl}|{vs.FhirVersion}");
+        sb.WriteLine(string.Empty);
+
+        if (!string.IsNullOrEmpty(vs.ExportComment))
+        {
+            WriteIndentedComment(sb, vs.ExportComment);
+        }
+
         sb.OpenScope($"export enum {vs.ExportName}Enum {{");
 
         foreach (ModelBuilder.ExportValueSetCoding coding in vs.CodingsByExportName.Values)
@@ -615,7 +643,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.CloseScope();
 
-        string filename = Path.Combine(vsDirectory, vs.ExportName + ".ts");
+        string filename = Path.Combine(vsDirectory, vs.ExportName + "Enum.ts");
         using (FileStream stream = new FileStream(filename, FileMode.Create))
         using (ExportStreamWriter writer = new ExportStreamWriter(stream))
         {
@@ -639,8 +667,7 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLineIndented("import * as fhir from '../fhir.js';");
         sb.WriteLine(string.Empty);
 
-        sb.WriteLineIndented("import { IssueTypeValueSetEnum } from '../fhirValueSets/IssueTypeValueSet.js';");
-        sb.WriteLineIndented("import { IssueSeverityValueSetEnum } from '../fhirValueSets/IssueSeverityValueSet.js';");
+        sb.WriteLineIndented("import { IssueTypeValueSetEnum, IssueSeverityValueSetEnum } from '../valueSetEnums.js';");
 
         //BuildInterfaceForPrimitive(sb, primitive);
 
@@ -720,13 +747,35 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLineIndented($"readonly __dataType:string = '{primitive.ExportClassName.Substring(4)}';");
         sb.WriteLineIndented($"readonly __jsonType:string = '{primitive.JsonExportType}';");
 
+        if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
+        {
+            string exp = primitive.ValidationRegEx;
+
+            if (exp.StartsWith('+'))
+            {
+                exp = "\\" + exp;
+            }
+
+            if (!exp.StartsWith('^'))
+            {
+                exp = "^" + exp + "$";
+            }
+
+            sb.WriteLineIndented($"// original regex: {primitive.ValidationRegEx}");
+            sb.WriteLineIndented($"static readonly __regex:RegExp = /{exp}/");
+        }
+
         WriteIndentedComment(sb, $"A {primitive.FhirName} value, represented as a JS {primitive.JsonExportType}");
-        sb.WriteLineIndented($"value:{primitive.JsonExportType}|null;");
+        //sb.WriteLineIndented($"value:{primitive.JsonExportType}|null = null;");
+        sb.WriteLineIndented($"value?:{primitive.JsonExportType}|null|undefined;");
 
         BuildConstructor(sb, primitive);
 
         // add model validation function
         BuildModelValidation(sb, primitive);
+
+        // add primitive-like functions
+        BuildPrimitiveFunctions(sb, primitive);
 
         // add toJSON override
         //BuildToJson(sb, complex);
@@ -737,6 +786,131 @@ public sealed class TypeScriptSdk : ILanguage
         }
 
         sb.CloseScope();
+    }
+
+    /// <summary>Builds TS primitive functions.</summary>
+    /// <param name="sb">       The writer.</param>
+    /// <param name="primitive">The primitive.</param>
+    private void BuildPrimitiveFunctions(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportPrimitive primitive)
+    {
+        switch (primitive.JsonExportType)
+        {
+            case "boolean":
+                BuildPrimitiveBooleanFunctions(sb);
+                break;
+
+            case "number":
+                BuildPrimitiveNumberFunctions(sb);
+                break;
+
+            case "string":
+                BuildPrimitiveStringFunctions(sb);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    /// <summary>Builds primitive boolean functions.</summary>
+    /// <param name="sb">       The writer.</param>
+    private void BuildPrimitiveBooleanFunctions(
+        ExportStringBuilder sb)
+    {
+        WriteIndentedComment(sb, "Returns the primitive value of the specified object.");
+        sb.WriteLineIndented("public valueOf():boolean { return (this.value ?? false); }");
+    }
+
+    /// <summary>Builds primitive number functions.</summary>
+    /// <param name="sb">       The writer.</param>
+    private void BuildPrimitiveNumberFunctions(
+        ExportStringBuilder sb)
+    {
+        WriteIndentedComment(sb, "Returns a string representation of an object.\n@param radix Specifies a radix for converting numeric values to strings. This value is only used for numbers.");
+        sb.WriteLineIndented("public toString(radix?:number):string { return (this.value ?? NaN).toString(radix); }");
+
+        WriteIndentedComment(sb, "Returns a string representing a number in fixed-point notation.\n@param fractionDigits Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.");
+        sb.WriteLineIndented("public toFixed(fractionDigits?:number):string { return (this.value ?? NaN).toFixed(fractionDigits); }");
+
+        WriteIndentedComment(sb, "Returns a string containing a number represented in exponential notation.\n@param fractionDigits Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.");
+        sb.WriteLineIndented("public toExponential(fractionDigits?:number):string { return (this.value ?? NaN).toExponential(fractionDigits); }");
+
+        WriteIndentedComment(sb, "Returns a string containing a number represented either in exponential or fixed-point notation with a specified number of digits.\n@param precision Number of significant digits. Must be in the range 1 - 21, inclusive.");
+        sb.WriteLineIndented("public toPrecision(precision?:number):string { return (this.value ?? NaN).toPrecision(precision); }");
+
+        WriteIndentedComment(sb, "Returns the primitive value of the specified object.");
+        sb.WriteLineIndented("public valueOf():number { return (this.value ?? NaN); }");
+    }
+
+    /// <summary>Builds primitive string functions.</summary>
+    /// <param name="sb">       The writer.</param>
+    private void BuildPrimitiveStringFunctions(
+        ExportStringBuilder sb)
+    {
+        WriteIndentedComment(sb, "Returns a string representation of a string.");
+        sb.WriteLineIndented("public toString():string { return (this.value ?? '').toString(); }");
+
+        WriteIndentedComment(sb, "Returns the character at the specified index.\n@param pos The zero-based index of the desired character.");
+        sb.WriteLineIndented("public charAt(pos: number):string { return (this.value ?? '').charAt(pos); }");
+
+        WriteIndentedComment(sb, "Returns the Unicode value of the character at the specified location.\n@param index The zero-based index of the desired character. If there is no character at the specified index, NaN is returned.");
+        sb.WriteLineIndented("public charCodeAt(index: number):number { return (this.value ?? '').charCodeAt(index); }");
+
+        WriteIndentedComment(sb, "Returns a string that contains the concatenation of two or more strings.\n@param strings The strings to append to the end of the string.");
+        sb.WriteLineIndented("public concat(...strings: string[]):string { return (this.value ?? '').concat(...strings); }");
+
+        WriteIndentedComment(sb, "Returns the position of the first occurrence of a substring.\n@param searchString The substring to search for in the string\n@param position The index at which to begin searching the String object. If omitted, search starts at the beginning of the string.");
+        sb.WriteLineIndented("public indexOf(searchString: string, position?: number):number { return (this.value ?? '').indexOf(searchString, position); }");
+
+        WriteIndentedComment(sb, "Returns the last occurrence of a substring in the string.\n@param searchString The substring to search for.\n@param position The index at which to begin searching. If omitted, the search begins at the end of the string.");
+        sb.WriteLineIndented("public lastIndexOf(searchString: string, position?: number):number { return (this.value ?? '').lastIndexOf(searchString, position); }");
+
+        WriteIndentedComment(sb, "Determines whether two strings are equivalent in the current locale.\n@param that String to compare to target string");
+        sb.WriteLineIndented("public localeCompare(that: string):number { return (this.value ?? '').localeCompare(that); }");
+
+        WriteIndentedComment(sb, "Matches a string with a regular expression, and returns an array containing the results of that search.\n@param regexp A variable name or string literal containing the regular expression pattern and flags.");
+        sb.WriteLineIndented("public match(regexp: string|RegExp):RegExpMatchArray|null { return (this.value ?? '').match(regexp); }");
+
+        WriteIndentedComment(sb, "Replaces text in a string, using a regular expression or search string.\n@param searchValue A string to search for.\n@param replaceValue A string containing the text to replace for every successful match of searchValue in this string.");
+        sb.WriteLineIndented("public replace(searchValue:string|RegExp, replaceValue:string):string { return (this.value ?? '').replace(searchValue, replaceValue); }");
+
+        //WriteIndentedComment(sb, "Replaces text in a string, using a regular expression or search string.\n@param searchValue A string to search for.\n@param replacer A function that returns the replacement text.");
+        //sb.WriteLineIndented("public replace(searchValue:string|RegExp, replacer:(substring:string, ...args:any[]) => string):string { return (this.value ?? '').replace(searchValue, replacer); }");
+
+        WriteIndentedComment(sb, "Finds the first substring match in a regular expression search.\n@param regexp The regular expression pattern and applicable flags.");
+        sb.WriteLineIndented("public search(regexp:string|RegExp):number { return (this.value ?? '').search(regexp); }");
+
+        WriteIndentedComment(sb, "Returns a section of a string.\n@param start The index to the beginning of the specified portion of stringObj.\n@param end The index to the end of the specified portion of stringObj. The substring includes the characters up to, but not including, the character indicated by end.\nIf this value is not specified, the substring continues to the end of stringObj.");
+        sb.WriteLineIndented("public slice(start?:number, end?:number):string { return (this.value ?? '').slice(start, end); }");
+
+        WriteIndentedComment(sb, "Split a string into substrings using the specified separator and return them as an array.\n@param separator A string that identifies character or characters to use in separating the string. If omitted, a single-element array containing the entire string is returned.\n@param limit A value used to limit the number of elements returned in the array.");
+        sb.WriteLineIndented("public split(separator:string|RegExp, limit?:number):string[] { return (this.value ?? '').split(separator, limit); }");
+
+        WriteIndentedComment(sb, "Returns the substring at the specified location within a String object.\n@param start The zero-based index number indicating the beginning of the substring.\n@param end Zero-based index number indicating the end of the substring. The substring includes the characters up to, but not including, the character indicated by end.\nIf end is omitted, the characters from start through the end of the original string are returned.");
+        sb.WriteLineIndented("public substring(start:number, end?:number):string { return (this.value ?? '').substring(start, end); }");
+
+        WriteIndentedComment(sb, "Converts all the alphabetic characters in a string to lowercase.");
+        sb.WriteLineIndented("public toLowerCase():string { return (this.value ?? '').toLowerCase(); }");
+
+        WriteIndentedComment(sb, "Converts all alphabetic characters to lowercase, taking into account the host environment's current locale.");
+        sb.WriteLineIndented("public toLocaleLowerCase(locales?:string|string[]):string { return (this.value ?? '').toLocaleLowerCase(locales); }");
+
+        WriteIndentedComment(sb, "Converts all the alphabetic characters in a string to uppercase.");
+        sb.WriteLineIndented("public toUpperCase():string { return (this.value ?? '').toUpperCase(); }");
+
+        WriteIndentedComment(sb, "Returns a string where all alphabetic characters have been converted to uppercase, taking into account the host environment's current locale.");
+        sb.WriteLineIndented("public toLocaleUpperCase(locales?:string|string[]):string { return (this.value ?? '').toLocaleUpperCase(locales); }");
+
+        WriteIndentedComment(sb, "Removes the leading and trailing white space and line terminator characters from a string.");
+        sb.WriteLineIndented("public trim():string { return (this.value ?? '').trim(); }");
+
+        WriteIndentedComment(sb, "Returns the length of a String object.");
+        sb.WriteLineIndented("public get length():number { return this.value?.length ?? 0 };");
+
+        WriteIndentedComment(sb, "Returns the primitive value of the specified object.");
+        sb.WriteLineIndented("public valueOf():string { return this.value ?? ''; }");
     }
 
     /// <summary>Builds a constructor.</summary>
@@ -774,6 +948,9 @@ public sealed class TypeScriptSdk : ILanguage
         {
             sb.WriteLineIndented("super(value, id, extension, options);");
         }
+
+        //sb.WriteLineIndented("if (this.value === undefined) { this.value = null; }");
+
         //else
         //{
         //    sb.WriteLineIndented("if (options.allowUnknownElements === true) { Object.assign(this, source); }");
@@ -804,18 +981,22 @@ public sealed class TypeScriptSdk : ILanguage
                 $"import {{" +
                 $" {valueSetExportName}," +
                 $" {valueSetExportName}Type," +
-                $" {valueSetExportName}Enum " +
                 $"}} from '../fhirValueSets/{valueSetExportName}.js';");
+
+            sb.WriteLineIndented(
+                $"import {{" +
+                $" {valueSetExportName}Enum " +
+                $"}} from '../valueSetEnums.js';");
         }
 
         if (!complex.ReferencedValueSetExportNames.Contains("IssueTypeValueSet"))
         {
-            sb.WriteLineIndented("import { IssueTypeValueSetEnum } from '../fhirValueSets/IssueTypeValueSet.js';");
+            sb.WriteLineIndented("import { IssueTypeValueSetEnum } from '../valueSetEnums.js';");
         }
 
         if (!complex.ReferencedValueSetExportNames.Contains("IssueSeverityValueSet"))
         {
-            sb.WriteLineIndented("import { IssueSeverityValueSetEnum } from '../fhirValueSets/IssueSeverityValueSet.js';");
+            sb.WriteLineIndented("import { IssueSeverityValueSetEnum } from '../valueSetEnums.js';");
         }
 
         //BuildInterfaceForComplex(sb, complex);
@@ -951,6 +1132,9 @@ public sealed class TypeScriptSdk : ILanguage
         sb.CloseScope();
     }
 
+    /// <summary>Builds the toJSON override for a complex data type or resource.</summary>
+    /// <param name="sb">     The writer.</param>
+    /// <param name="complex">The complex.</param>
     private void BuildToJson(
         ExportStringBuilder sb,
         ModelBuilder.ExportComplex complex)
@@ -994,21 +1178,15 @@ public sealed class TypeScriptSdk : ILanguage
                 TsOutcomeIssueType.InvalidContent,
                 $"Invalid value in primitive type {primitive.FhirName}");
 
-            string exp = primitive.ValidationRegEx.StartsWith('^')
-                ? System.Text.RegularExpressions.Regex.Escape(primitive.ValidationRegEx)
-                : "^" + System.Text.RegularExpressions.Regex.Escape(primitive.ValidationRegEx) + "$";
-
-            sb.WriteLineIndented($"// original regex: {primitive.ValidationRegEx}");
-
             if (primitive.JsonExportType.Equals("string", StringComparison.Ordinal))
             {
                 // open value passes
-                sb.OpenScope($"if ((this.value) && (!/{exp}/.test(this.value))) {{");
+                sb.OpenScope($"if ((this.value) && (!{primitive.ExportClassName}.__regex.test(this.value))) {{");
             }
             else
             {
                 // open value passes
-                sb.OpenScope($"if ((this.value) && (!/{exp}/.test(this.value.toString()))) {{");
+                sb.OpenScope($"if ((this.value) && (!{primitive.ExportClassName}.__regex.test(this.value.toString()))) {{");
             }
 
             sb.WriteLineIndented($"outcome.issue!.push({invalidContent});");
@@ -1162,7 +1340,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
-            if (element.ExportName == "resourceType")
+            if ((complex.ArtifactClass == FhirArtifactClassEnum.Resource) && (element.ExportName == "resourceType"))
             {
                 sb.WriteLineIndented($"this.resourceType = '{complex.FhirName}';");
                 continue;
@@ -1321,6 +1499,14 @@ public sealed class TypeScriptSdk : ILanguage
             {
                 exportType = $"{element.ExportType}|{PrimitiveTypeMap[element.ExportJsonType]}";
             }
+        }
+        else if (element.ExportType.Equals("fhir.FhirResource", StringComparison.Ordinal))
+        {
+            exportType = "(fhir.ResourceArgs|any)";
+        }
+        else if (element.ExportType.StartsWith("fhir.", StringComparison.Ordinal))
+        {
+            exportType = element.ExportType + "Args";
         }
         else
         {

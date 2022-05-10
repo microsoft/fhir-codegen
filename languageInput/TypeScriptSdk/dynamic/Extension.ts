@@ -13,5 +13,6 @@
     }
 
     const vName = 'value' + (value.__dataType) ? value.__dataType : value.constructor.name;
-    ext[vName] = value;
+    (ext as any)[vName] = value;
+    return ext;
   }
