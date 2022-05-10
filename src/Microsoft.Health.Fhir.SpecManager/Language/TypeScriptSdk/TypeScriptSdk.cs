@@ -660,6 +660,8 @@ public sealed class TypeScriptSdk : ILanguage
     {
         ExportStringBuilder sb = new();
 
+        //sb.WriteLine($"/// <reference types=\"./{primitive.ExportClassName}.d.ts\" />");
+
         WriteHeader(sb);
 
         sb.WriteLine($"// FHIR Primitive: {primitive.FhirName}");
@@ -725,7 +727,14 @@ public sealed class TypeScriptSdk : ILanguage
         ModelBuilder.ExportPrimitive primitive)
     {
         sb.WriteLine(string.Empty);
+        if (!string.IsNullOrEmpty(primitive.ExportComment))
+        {
+            WriteIndentedComment(sb, primitive.ExportComment);
+        }
 
+        BuildConstructorArgs(sb, primitive);
+
+        sb.WriteLine(string.Empty);
         if (!string.IsNullOrEmpty(primitive.ExportComment))
         {
             WriteIndentedComment(sb, primitive.ExportComment);
@@ -913,6 +922,23 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLineIndented("public valueOf():string { return this.value ?? ''; }");
     }
 
+    /// <summary>Builds constructor arguments interface.</summary>
+    /// <param name="sb">       The writer.</param>
+    /// <param name="primitive">The primitive.</param>
+    private void BuildConstructorArgs(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportPrimitive primitive)
+    {
+        // interface open
+        sb.OpenScope($"export interface {primitive.ExportClassName}Args extends fhir.FhirPrimitiveArgs {{");
+
+        WriteIndentedComment(sb, primitive.ExportComment);
+        sb.WriteLineIndented($"value?:{primitive.ExportClassName}|{primitive.JsonExportType}|undefined;");
+
+        // interface close
+        sb.CloseScope();
+    }
+
     /// <summary>Builds a constructor.</summary>
     /// <param name="sb">       The writer.</param>
     /// <param name="primitive">The primitive.</param>
@@ -936,25 +962,33 @@ public sealed class TypeScriptSdk : ILanguage
 
         //sb.OpenScope($"constructor(source:Partial<{primitive.ExportInterfaceName}> = {{ }}, options:fhir.FhirConstructorOptions = {{ }}) {{");
 
+        // -- 
+
+        //sb.OpenScope(
+        //    $"constructor" +
+        //    $"(value:{primitive.ExportClassName}|{primitive.JsonExportType}|null|undefined = undefined," +
+        //    $" id:string|undefined = undefined," +
+        //    $" extension:(fhir.Extension|null)[]|undefined = undefined," +
+        //    $" options:fhir.FhirConstructorOptions = {{ }} " +
+        //    $") {{");
+
+        //if (!string.IsNullOrEmpty(primitive.ExportClassType))
+        //{
+        //    sb.WriteLineIndented("super(value, id, extension, options);");
+        //}
+
+        // --
+
         sb.OpenScope(
             $"constructor" +
-            $"(value?:{primitive.ExportClassName}|{primitive.JsonExportType}|null," +
-            $" id?:string," +
-            $" extension?:(fhir.Extension|null)[]," +
-            $" options:fhir.FhirConstructorOptions = {{ }}" +
+            $"(source:Partial<{primitive.ExportClassName}Args> = {{}}," +
+            $" options:fhir.FhirConstructorOptions = {{ }} " +
             $") {{");
 
         if (!string.IsNullOrEmpty(primitive.ExportClassType))
         {
-            sb.WriteLineIndented("super(value, id, extension, options);");
+            sb.WriteLineIndented("super(source, options);");
         }
-
-        //sb.WriteLineIndented("if (this.value === undefined) { this.value = null; }");
-
-        //else
-        //{
-        //    sb.WriteLineIndented("if (options.allowUnknownElements === true) { Object.assign(this, source); }");
-        //}
 
         sb.CloseScope();
     }
@@ -967,6 +1001,8 @@ public sealed class TypeScriptSdk : ILanguage
         string modelDirectory)
     {
         ExportStringBuilder sb = new();
+
+        //sb.WriteLine($"/// <reference types=\"./{complex.ExportClassName}.d.ts\" />");
 
         WriteHeader(sb);
 
@@ -1326,8 +1362,8 @@ public sealed class TypeScriptSdk : ILanguage
             sb,
             $"Default constructor for {complex.ExportClassName} - initializes any required elements to null if a value is not provided.");
 
-        //sb.OpenScope($"constructor(source:Partial<{complex.ExportInterfaceName}> = {{ }}, options:fhir.FhirConstructorOptions = {{ }}) {{");
-        sb.OpenScope($"constructor(source:Partial<{complex.ExportClassName}Args> = {{ }}, options:fhir.FhirConstructorOptions = {{ }}) {{");
+        sb.OpenScope($"constructor(source:Partial<{complex.ExportClassName}Args> = {{}}, options:fhir.FhirConstructorOptions = {{}}) {{");
+        //sb.OpenScope($"constructor(source?:Partial<{complex.ExportClassName}Args>|undefined, options?:fhir.FhirConstructorOptions|undefined) {{");
 
         if (!string.IsNullOrEmpty(complex.ExportType))
         {
@@ -1360,12 +1396,24 @@ public sealed class TypeScriptSdk : ILanguage
                 }
                 else if (element.ExportType.StartsWith("fhir"))
                 {
-                    sb.WriteLineIndented(
-                        $"if (source['{element.ExportName}'])" +
-                        $" {{" +
-                        $" this.{element.ExportName} = source.{element.ExportName}.map(" +
-                        $"(x) => new {element.ExportType}(x));" +
-                        $" }}");
+                    if (element.IsPrimitive)
+                    {
+                        sb.WriteLineIndented(
+                            $"if (source['{element.ExportName}'])" +
+                            $" {{" +
+                            $" this.{element.ExportName} = source.{element.ExportName}.map(" +
+                            $"(x) => new {element.ExportType}({{value: x}}));" +
+                            $" }}");
+                    }
+                    else
+                    {
+                        sb.WriteLineIndented(
+                            $"if (source['{element.ExportName}'])" +
+                            $" {{" +
+                            $" this.{element.ExportName} = source.{element.ExportName}.map(" +
+                            $"(x) => new {element.ExportType}(x));" +
+                            $" }}");
+                    }
                 }
                 else
                 {
@@ -1389,11 +1437,22 @@ public sealed class TypeScriptSdk : ILanguage
                 }
                 else if (element.ExportType.StartsWith("fhir"))
                 {
-                    sb.WriteLineIndented(
-                        $"if (source['{element.ExportName}'])" +
-                        $" {{" +
-                        $" this.{element.ExportName} = new {element.ExportType}(source.{element.ExportName}!);" +
-                        $" }}");
+                    if (element.IsPrimitive)
+                    {
+                        sb.WriteLineIndented(
+                            $"if (source['{element.ExportName}'])" +
+                            $" {{" +
+                            $" this.{element.ExportName} = new {element.ExportType}({{value: source.{element.ExportName}!}});" +
+                            $" }}");
+                    }
+                    else
+                    {
+                        sb.WriteLineIndented(
+                            $"if (source['{element.ExportName}'])" +
+                            $" {{" +
+                            $" this.{element.ExportName} = new {element.ExportType}(source.{element.ExportName}!);" +
+                            $" }}");
+                    }
                 }
                 else
                 {
@@ -1684,7 +1743,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {exportType}{arrayFlag}{typeAddition};");
 
-        if (element.RequiresExtensionElement)
+        if (element.IsPrimitive)
         {
             WriteIndentedComment(sb, $"Extended properties for primitive element: {element.FhirPath}");
 

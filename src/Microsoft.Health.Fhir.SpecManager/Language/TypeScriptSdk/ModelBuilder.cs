@@ -24,7 +24,7 @@ public class ModelBuilder
         string ValidationRegEx,
         bool IsOptional,
         bool IsArray,
-        bool RequiresExtensionElement,
+        bool IsPrimitive,
         bool HasReferencedValueSet,
         string ValueSetExportName,
         FhirElement.ElementDefinitionBindingStrength? BoundValueSetStrength);
@@ -224,6 +224,7 @@ public class ModelBuilder
         List<ExportTokenInfo> tokens = new();
 
         //tokens.Add(new ExportTokenInfo("I" + primitiveName, true));
+        tokens.Add(new ExportTokenInfo(primitiveName + "Args", true));
         tokens.Add(new ExportTokenInfo(primitiveName, false));
 
         return tokens;

@@ -3,7 +3,7 @@
  * @param obj 
  * @returns 
  */
-function fhirToJson(obj:any) {
+ function fhirToJson(obj:any) {
   let c:any = {};
 
   for (const key in obj) {
@@ -43,7 +43,9 @@ function fhirToJson(obj:any) {
           if (av.id) { (ao as any)['id'] = av.id; }
           if (av.extension) {
             (ao as any)['extension'] = [];
-            (ao as any)['extension'].push(fhirToJson(av.extension));
+            av.extension.forEach((e:any) => {
+              (ao as any)['extension'].push(fhirToJson(e));
+            });
           }
 
           if (Object.keys(ao).length !== 0) { 
@@ -77,7 +79,12 @@ function fhirToJson(obj:any) {
         const eName:string = '_' + key;
         c[eName] = {};
         if (obj[key]['id']) { c[eName]['id'] = obj[key]['id']; }
-        if (obj[key]['extension']) { c[eName]['extension'] = fhirToJson(obj[key]['extension']); }
+        if (obj[key]['extension']) {
+          c[eName]['extension'] = [];
+          obj[key]['extension'].forEach((e:any) => {
+            c[eName]['extension'].push(fhirToJson(e));
+          });
+        }
 
         if (Object.keys(c[eName]).length === 0) { delete c[eName]; }
       } else if (obj[key]['__dataType']) {

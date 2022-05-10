@@ -4,13 +4,30 @@ import * as fhir from '../fhir.js';
 
 import { IssueSeverityValueSetEnum, IssueTypeValueSetEnum } from '../valueSetEnums.js';
 
+export interface FhirPrimitiveArgs {
+  /**
+   * Value of the primitive - constrained by decendant classes.
+   */
+   value?:any|null|undefined;
+
+   /**
+     * Unique id for inter-element referencing
+     */
+   id?:string|undefined;
+ 
+   /**
+     * Additional content defined by implementations
+     */
+   extension?:(fhir.Extension|null)[]|undefined;
+ }
+
 export class FhirPrimitive extends fhir.FhirBase  {
   readonly __isPrimitive:boolean = true;
   readonly __dataType:string='PrimitiveType';
   readonly __jsonType:string='any';
 
   /**
-   * Value of the primitive - is constrained by decendant classes.
+   * Value of the primitive - constrained by decendant classes.
    */
   value?:boolean|number|bigint|string|null|undefined;
 
@@ -31,29 +48,31 @@ export class FhirPrimitive extends fhir.FhirBase  {
    * @param extension 
    * @param options 
    */
-  constructor(value?:any|null, id?:string, extension?:(fhir.Extension|null)[], options:fhir.FhirConstructorOptions = { }) {
+  constructor(source:Partial<FhirPrimitiveArgs> = {}, options:fhir.FhirConstructorOptions = {}) {
     super();
-    if ((value) && (value['__dataType'])) {
-      this.value = value.value ?? null;
-      this.id = value.id ?? undefined;
-      if ((value.extension) && (value.extension.length > 0)) {
-        this.extension = [];
-        value.extension!.forEach((e:any) => {
+    if (source) {
+      if ((source.value) && (source.value['__dataType'])) {
+        this.value = source.value.value ?? null;
+        this.id = source.value.id ?? undefined;
+        if ((source.value.extension) && (source.value.extension.length > 0)) {
+          this.extension = [];
+          source.value.extension!.forEach((e:any) => {
+            if (e === null) { this.extension!.push(null); }
+            else { this.extension!.push(new fhir.Extension(e, options)); }
+          });
+        }
+      } else if (source.value) {
+        this.value = source.value;
+      }
+  
+      if (source.id) { this.id = source.id; }
+      if ((source.extension) && (source.extension.length > 0)) {
+        if (!this.extension) { this.extension = []; }
+        source.extension!.forEach((e:any) => {
           if (e === null) { this.extension!.push(null); }
           else { this.extension!.push(new fhir.Extension(e, options)); }
         });
       }
-    } else {
-      this.value = value;
-    }
-
-    if (id) { this.id = id; }
-    if ((extension) && (extension.length > 0)) {
-      if (!this.extension) { this.extension = []; }
-      extension!.forEach((e:any) => {
-        if (e === null) { this.extension!.push(null); }
-        else { this.extension!.push(new fhir.Extension(e, options)); }
-      });
     }
   }
 
