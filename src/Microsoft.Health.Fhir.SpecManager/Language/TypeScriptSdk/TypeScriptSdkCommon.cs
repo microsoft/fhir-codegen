@@ -136,6 +136,17 @@ internal static class TypeScriptSdkCommon
         sb.WriteLineIndented(" */");
     }
 
+    /// <summary>A HashSet&lt;string&gt; extension method that conditional add.</summary>
+    /// <param name="hs"> The hs to act on.</param>
+    /// <param name="val">The value.</param>
+    internal static void ConditionalAdd(this HashSet<string> hs, string val)
+    {
+        if (!hs.Contains(val))
+        {
+            hs.Add(val);
+        }
+    }
+
     /// <summary>An operation outcome issue severity.</summary>
     public static class TsOutcomeIssueSeverity
     {

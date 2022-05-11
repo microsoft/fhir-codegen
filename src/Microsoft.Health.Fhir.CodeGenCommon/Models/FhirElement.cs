@@ -561,13 +561,17 @@ public class FhirElement : FhirTypeBase
         string BaseFhirType);
 
     /// <summary>Names and types for export.</summary>
+    /// <param name="rootExportName">        [out] Export name of the root element.</param>
     /// <param name="nameConvention">        The name convention.</param>
     /// <param name="typeConvention">        The convention.</param>
     /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
     /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
     /// <param name="isComponent">           (Optional) True if is component, false if not.</param>
-    /// <returns>A Dictionary of field names (e.g., ValueBoolean) and types (e.g., boolean).</returns>
+    /// <returns>
+    /// A Dictionary of field names (e.g., ValueBoolean) and types (e.g., boolean).
+    /// </returns>
     public List<ExpandedElementRec> ExpandNamesAndTypes(
+        out string rootExportName,
         NamingConvention nameConvention,
         NamingConvention typeConvention,
         bool concatenatePath = false,
@@ -588,6 +592,7 @@ public class FhirElement : FhirTypeBase
                     FhirUtils.ToConvention(Path, string.Empty, typeConvention),
                     Name));
 
+            rootExportName = values[0].ProperyName;
             return values;
         }
 
@@ -648,6 +653,7 @@ public class FhirElement : FhirTypeBase
                 }
             }
 
+            rootExportName = baseName;
             return values;
         }
 
@@ -656,6 +662,7 @@ public class FhirElement : FhirTypeBase
             FhirUtils.ToConvention(BaseTypeName, string.Empty, typeConvention),
             BaseTypeName));
 
+        rootExportName = values[0].ProperyName;
         return values;
     }
 

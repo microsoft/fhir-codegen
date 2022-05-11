@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.IO;
+using System.Linq;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using static Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk.TypeScriptSdkCommon;
@@ -770,7 +771,7 @@ public sealed class TypeScriptSdk : ILanguage
                 exp = "^" + exp + "$";
             }
 
-            sb.WriteLineIndented($"// original regex: {primitive.ValidationRegEx}");
+            sb.WriteLineIndented($"// published regex: {primitive.ValidationRegEx}");
             sb.WriteLineIndented($"static readonly __regex:RegExp = /{exp}/");
         }
 
@@ -1534,45 +1535,76 @@ public sealed class TypeScriptSdk : ILanguage
         }
 
         string optionalFlag = element.IsOptional ? "?" : string.Empty;
-        string arrayFlag = element.IsArray ? "[]" : string.Empty;
 
-        string exportType;
-        string typeAddition;
+        HashSet<string> exportTypes = new();
 
-        if (element.IsOptional)
+        if (element.IsChoice)
         {
-            typeAddition = "|undefined";
+            foreach (ModelBuilder.ExportElementChoiceType ct in element.ChoiceTypes)
+            {
+                if (PrimitiveTypeMap.ContainsKey(ct.ExportJsonType))
+                {
+                    exportTypes.ConditionalAdd(ct.ExportType);
+                    exportTypes.ConditionalAdd(PrimitiveTypeMap[ct.ExportJsonType]);
+                }
+                else if (ct.ExportType.Equals("fhir.FhirResource", StringComparison.Ordinal))
+                {
+                    exportTypes.ConditionalAdd("fhir.ResourceArgs");
+                    exportTypes.ConditionalAdd("any");
+                }
+                else if (ct.ExportType.StartsWith("fhir.", StringComparison.Ordinal))
+                {
+                    exportTypes.ConditionalAdd(ct.ExportType + "Args");
+                }
+                else
+                {
+                    exportTypes.ConditionalAdd(ct.ExportType);
+                }
+            }
         }
         else
         {
-            typeAddition = "|null";
-        }
-
-        if (PrimitiveTypeMap.ContainsKey(element.ExportJsonType))
-        {
-            if (element.IsArray)
+            if (PrimitiveTypeMap.ContainsKey(element.ExportJsonType))
             {
-                exportType = $"({element.ExportType}|{PrimitiveTypeMap[element.ExportJsonType]})";
+                exportTypes.ConditionalAdd(element.ExportType);
+                exportTypes.ConditionalAdd(PrimitiveTypeMap[element.ExportJsonType]);
+            }
+            else if (element.ExportType.Equals("fhir.FhirResource", StringComparison.Ordinal))
+            {
+                exportTypes.ConditionalAdd("fhir.ResourceArgs");
+                exportTypes.ConditionalAdd("any");
+            }
+            else if (element.ExportType.StartsWith("fhir.", StringComparison.Ordinal))
+            {
+                exportTypes.ConditionalAdd(element.ExportType + "Args");
             }
             else
             {
-                exportType = $"{element.ExportType}|{PrimitiveTypeMap[element.ExportJsonType]}";
+                exportTypes.ConditionalAdd(element.ExportType);
             }
         }
-        else if (element.ExportType.Equals("fhir.FhirResource", StringComparison.Ordinal))
+
+        string exportType;
+
+        if (element.IsArray && (exportTypes.Count > 1))
         {
-            exportType = "(fhir.ResourceArgs|any)";
-        }
-        else if (element.ExportType.StartsWith("fhir.", StringComparison.Ordinal))
-        {
-            exportType = element.ExportType + "Args";
+            exportType = "(" + string.Join('|', exportTypes) + ")[]";
         }
         else
         {
-            exportType = element.ExportType;
+            exportType = string.Join('|', exportTypes);
         }
 
-        sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {exportType}{arrayFlag}{typeAddition};");
+        if (element.IsOptional)
+        {
+            exportType = exportType + "|undefined";
+        }
+        else
+        {
+            exportType = exportType + "|null";
+        }
+
+        sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {exportType};");
     }
 
     /// <summary>Builds content for a complex element.</summary>
@@ -1681,16 +1713,25 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
-            BuildComplexElementJson(sb, element, ValueSetsByExportName);
+            if (element.IsChoice)
+            {
+                BuildComplexElementJsonChoice(sb, element, ValueSetsByExportName);
+            }
+            else
+            {
+                BuildComplexElementJsonSingleType(sb, element, ValueSetsByExportName);
+            }
+
         }
 
         sb.CloseScope();
     }
 
-    /// <summary>Builds content for a complex element.</summary>
-    /// <param name="sb">      The writer.</param>
-    /// <param name="element"> The element.</param>
-    private void BuildComplexElementJson(
+    /// <summary>Builds complex element JSON single type.</summary>
+    /// <param name="sb">                   The writer.</param>
+    /// <param name="element">              The element.</param>
+    /// <param name="ValueSetsByExportName">Name of the value sets by export.</param>
+    private void BuildComplexElementJsonSingleType(
         ExportStringBuilder sb,
         ModelBuilder.ExportElement element,
         Dictionary<string, ModelBuilder.ExportValueSet> ValueSetsByExportName)
@@ -1717,44 +1758,112 @@ public sealed class TypeScriptSdk : ILanguage
             typeAddition = "|null";
         }
 
-        string exportType;
-
-        if (element.ExportJsonType.EndsWith("Enum", StringComparison.Ordinal))
-        {
-            if (ValueSetsByExportName.ContainsKey(element.ValueSetExportName))
-            {
-                exportType = string.Join(
-                    "|",
-                    ValueSetsByExportName[element.ValueSetExportName].CodingsByExportName.Values.Select((c) => "'" + c.Code + "'"));
-
-                if (element.IsArray)
-                {
-                    exportType = "(" + exportType + "|null)";
-                }
-            }
-            else
-            {
-                exportType = "string";
-            }
-        }
-        else
-        {
-            exportType = element.ExportJsonType;
-        }
+        string exportType = ExpandJsonExportType(
+            element.ExportJsonType,
+            element.IsArray,
+            element.ValueSetExportName,
+            ValueSetsByExportName);
 
         sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {exportType}{arrayFlag}{typeAddition};");
 
         if (element.IsPrimitive)
         {
-            WriteIndentedComment(sb, $"Extended properties for primitive element: {element.FhirPath}");
+            BuildJsonElementPrimitiveExtension(
+                sb,
+                element.FhirPath,
+                element.ExportName,
+                element.IsArray);
+        }
+    }
 
-            if (element.IsArray)
+    /// <summary>Builds JSON element primitive extension.</summary>
+    /// <param name="sb">             The writer.</param>
+    /// <param name="fhirElementPath">Full pathname of the FHIR element file.</param>
+    /// <param name="exportName">     Name of the export.</param>
+    /// <param name="isArray">        True if is array, false if not.</param>
+    private void BuildJsonElementPrimitiveExtension(
+        ExportStringBuilder sb,
+        string fhirElementPath,
+        string exportName,
+        bool isArray)
+    {
+        WriteIndentedComment(sb, $"Extended properties for primitive element: {fhirElementPath}");
+
+        if (isArray)
+        {
+            sb.WriteLineIndented($"_{exportName}?:(fhir.{ComplexTypeSubstitutions["Element"]}|null)[];");
+        }
+        else
+        {
+            sb.WriteLineIndented($"_{exportName}?:fhir.{ComplexTypeSubstitutions["Element"]};");
+        }
+    }
+
+    /// <summary>Expand JSON export type.</summary>
+    /// <param name="jsonExportType">       Type of the JSON export.</param>
+    /// <param name="ValueSetsByExportName">Name of the value sets by export.</param>
+    /// <returns>A string.</returns>
+    private string ExpandJsonExportType(
+        string jsonExportType,
+        bool isArray,
+        string valueSetExportName,
+        Dictionary<string, ModelBuilder.ExportValueSet> ValueSetsByExportName)
+    {
+        if (jsonExportType.EndsWith("Enum", StringComparison.Ordinal))
+        {
+            if (ValueSetsByExportName.ContainsKey(valueSetExportName))
             {
-                sb.WriteLineIndented($"_{element.ExportName}?:(fhir.{ComplexTypeSubstitutions["Element"]}|null)[];");
+                if (isArray)
+                {
+                    return "(" + string.Join(
+                        "|",
+                        ValueSetsByExportName[valueSetExportName].CodingsByExportName.Values.Select((c) => "'" + c.Code + "'")) +
+                    ")";
+                }
+
+                return string.Join(
+                    "|",
+                    ValueSetsByExportName[valueSetExportName].CodingsByExportName.Values.Select((c) => "'" + c.Code + "'"));
             }
-            else
+
+            return "string";
+        }
+
+        return jsonExportType;
+    }
+
+    /// <summary>Builds content for a complex element.</summary>
+    /// <param name="sb">      The writer.</param>
+    /// <param name="element"> The element.</param>
+    private void BuildComplexElementJsonChoice(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportElement element,
+        Dictionary<string, ModelBuilder.ExportValueSet> ValueSetsByExportName)
+    {
+        string arrayFlag = element.IsArray ? "[]" : string.Empty;
+
+        foreach (ModelBuilder.ExportElementChoiceType ct in element.ChoiceTypes)
+        {
+            if (!string.IsNullOrEmpty(element.ExportComment))
             {
-                sb.WriteLineIndented($"_{element.ExportName}?:fhir.{ComplexTypeSubstitutions["Element"]};");
+                WriteIndentedComment(sb, element.ExportComment);
+            }
+
+            string exportType = ExpandJsonExportType(
+                ct.ExportJsonType,
+                element.IsArray,
+                element.ValueSetExportName,
+                ValueSetsByExportName);
+
+            sb.WriteLineIndented($"{ct.ExportName}?: {exportType}{arrayFlag}|undefined;");
+
+            if (ct.IsPrimitive)
+            {
+                BuildJsonElementPrimitiveExtension(
+                    sb,
+                    element.FhirPath,
+                    ct.ExportName,
+                    element.IsArray);
             }
         }
     }
