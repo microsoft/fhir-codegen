@@ -536,8 +536,10 @@ public class ModelBuilder
     /// <param name="interfaceType">[out] Type of the interface.</param>
     /// <param name="jsonType">     [out] Type of the JSON.</param>
     private void ExpandExportType(
+        string fhirPath,
         string fhirType,
         string exportTypeName,
+        Dictionary<string, FhirComplex> components,
         out string exportType,
         out string interfaceType,
         out string jsonType)
@@ -551,10 +553,19 @@ public class ModelBuilder
             return;
         }
 
+        if (components.ContainsKey(fhirPath))
+        {
+            exportType = "fhir." + exportTypeName;
+            interfaceType = "fhir.I" + exportTypeName;
+            jsonType = "fhir." + exportTypeName;
+
+            return;
+        }
+
         if (PrimitiveTypeMap.ContainsKey(fhirType))
         {
             exportType = "fhir.Fhir" + FhirUtils.ToConvention(
-                exportTypeName,
+                fhirType, // exportTypeName,
                 string.Empty,
                 FhirTypeBase.NamingConvention.PascalCase,
                 false,
@@ -640,8 +651,10 @@ public class ModelBuilder
             else
             {
                 ExpandExportType(
+                    fhirElement.Path,
                     fhirElementType,
                     elementExportType,
+                    fhirComplex.Components,
                     out elementExportType,
                     out elementInterfaceType,
                     out elementJsonType);
@@ -653,21 +666,19 @@ public class ModelBuilder
             elementInterfaceType = string.Empty;
             elementJsonType = string.Empty;
 
-            foreach ((string exportName, string fhirType, string fhirTypeName) in values)
+            foreach (FhirElement.ExpandedElementRec rec in values)
             {
-                string exportType;
-                string exportInterfaceType;
-                string exportJsonType;
-
                 ExpandExportType(
-                    fhirType,
-                    fhirTypeName,
-                    out exportType,
-                    out exportInterfaceType,
-                    out exportJsonType);
+                    fhirElement.Path,
+                    rec.BaseFhirType,
+                    rec.ExportFhirType,
+                    fhirComplex.Components,
+                    out string exportType,
+                    out string exportInterfaceType,
+                    out string exportJsonType);
 
                 ExportElementChoiceType ct = new ExportElementChoiceType(
-                    exportName,
+                    rec.ProperyName,
                     exportType,
                     exportInterfaceType,
                     exportJsonType,

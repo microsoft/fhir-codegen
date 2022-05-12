@@ -18,25 +18,27 @@ function fhirToJson(obj:any) {
       continue;
     }
 
+    let dKey:string = key + (obj['__' + key + 'IsChoice'] ? (obj[key]['__dataType'] ?? '') : '');
+
     if (Array.isArray(obj[key])) {
       if (obj[key].length === 0) {
         continue;
       }
 
       if (obj[key][0]['__isPrimitive']) {
-        const eName:string = '_' + key;
+        const eName:string = '_' + dKey;
         let foundAnyVal:boolean = false;
         let foundAnyExt:boolean = false;
-        c[key] = [];
+        c[dKey] = [];
         c[eName] = [];
         obj[key].forEach((av:any) => {
           let addElement:boolean = false;
           if ((av['value'] !== undefined) && (av['value'] !== null)) { 
-            c[key].push(av.valueOf()); 
+            c[dKey].push(av.valueOf()); 
             foundAnyVal = true;
             addElement = true;
           } else { 
-            c[key].push(null);
+            c[dKey].push(null);
           }
 
           let ao:object = {};
@@ -57,26 +59,26 @@ function fhirToJson(obj:any) {
           }
 
           if (!addElement) {
-            c[key].pop();
+            c[dKey].pop();
             c[eName].pop();
           }
         });
 
-        if (!foundAnyVal) { delete c[key]; }
+        if (!foundAnyVal) { delete c[dKey]; }
         if (!foundAnyExt) { delete c[eName]; }
       } else if (obj[key][0]['__dataType']) {
-        c[key] = [];
+        c[dKey] = [];
         obj[key].forEach((v:any) => {
-          c[key].push(fhirToJson(v));
+          c[dKey].push(fhirToJson(v));
         });
       } else {
-        c[key] = obj[key];
+        c[dKey] = obj[key];
       }
     } else {
       if (obj[key]['__isPrimitive']) {
-        if (obj[key]['value']) { c[key] = obj[key].valueOf(); }
+        if (obj[key]['value']) { c[dKey] = obj[key].valueOf(); }
 
-        const eName:string = '_' + key;
+        const eName:string = '_' + dKey;
         c[eName] = {};
         if (obj[key]['id']) { c[eName]['id'] = obj[key]['id']; }
         if (obj[key]['extension']) {
@@ -88,9 +90,9 @@ function fhirToJson(obj:any) {
 
         if (Object.keys(c[eName]).length === 0) { delete c[eName]; }
       } else if (obj[key]['__dataType']) {
-        c[key] = fhirToJson(obj[key]);
+        c[dKey] = fhirToJson(obj[key]);
       } else {
-        c[key] = obj[key];
+        c[dKey] = obj[key];
       }
     }
   }

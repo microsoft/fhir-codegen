@@ -1351,6 +1351,195 @@ public sealed class TypeScriptSdk : ILanguage
         }
     }
 
+    /// <summary>Builds constructor element.</summary>
+    /// <param name="sb">     The writer.</param>
+    /// <param name="element">The element.</param>
+    private void BuildConstructorElement(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportElement element)
+    {
+        void AddResource(string sourceName, string destName)
+        {
+            sb.WriteLineIndented(
+                $"if (source['{sourceName}'])" +
+                $" {{" +
+                $" this.{destName} = (fhir.resourceFactory(source.{sourceName}) ?? undefined);" +
+                $" }}");
+        }
+
+        void AddResourceArray(string sourceName, string destName)
+        {
+            sb.OpenScope($"if (source['{sourceName}']) {{");
+            sb.WriteLineIndented($"this.{destName} = [];");
+            sb.OpenScope($"source.{sourceName}.forEach((x) => {{");
+            sb.WriteLineIndented("var r = fhir.resourceFactory(x);");
+            sb.WriteLineIndented($"if (r) {{ this.{destName}!.push(r); }}");
+            sb.CloseScope("});");
+            sb.CloseScope();
+        }
+
+        void AddElement(string sourceName, string destName, string exportType, bool needsNew, bool needsValue, bool needsElse)
+        {
+            string assignment;
+
+            if (needsNew)
+            {
+                if (needsValue)
+                {
+                    assignment = $"new {exportType}({{value: source.{sourceName}}})";
+                }
+                else
+                {
+                    assignment = $"new {exportType}(source.{sourceName})";
+                }
+            }
+            else
+            {
+                assignment = $"source.{sourceName}";
+            }
+
+            if (needsElse)
+            {
+                sb.WriteLineIndented(
+                    $"else if (source['{sourceName}'])" +
+                    $" {{" +
+                    $" this.{destName} = {assignment};" +
+                    $" }}");
+            }
+            else
+            {
+                sb.WriteLineIndented(
+                    $"if (source['{sourceName}'])" +
+                    $" {{" +
+                    $" this.{destName} = {assignment};" +
+                    $" }}");
+            }
+
+        }
+
+        void AddElementArray(string sourceName, string destName, string exportType, bool needsNew, bool needsValue, bool needsElse)
+        {
+            string assignment;
+
+            if (needsNew)
+            {
+                if (needsValue)
+                {
+                    assignment = $"new {exportType}({{value: x}})";
+                }
+                else
+                {
+                    assignment = $"new {exportType}(x)";
+                }
+            }
+            else
+            {
+                assignment = "x";
+            }
+
+            if (needsElse)
+            {
+                sb.WriteLineIndented(
+                    $"else if (source['{sourceName}'])" +
+                    $" {{" +
+                    $" this.{destName} = source.{sourceName}.map((x) => {assignment});" +
+                    $" }}");
+            }
+            else
+            {
+                sb.WriteLineIndented(
+                    $"if (source['{sourceName}'])" +
+                    $" {{" +
+                    $" this.{destName} = source.{sourceName}.map((x) => {assignment});" +
+                    $" }}");
+            }
+        }
+
+        /////////////
+
+        if (element.IsArray)
+        {
+            if (element.FhirType == "Resource")
+            {
+                AddResourceArray(element.ExportName, element.ExportName);
+            }
+            else if (element.IsChoice)
+            {
+                AddElementArray(
+                    element.ExportName,
+                    element.ExportName,
+                    element.ExportType,
+                    element.ExportType.StartsWith("fhir"),
+                    element.IsPrimitive,
+                    false);
+
+                foreach (ModelBuilder.ExportElementChoiceType ct in element.ChoiceTypes)
+                {
+                    AddElementArray(
+                        ct.ExportName,
+                        element.ExportName,
+                        ct.ExportType,
+                        true,
+                        ct.IsPrimitive,
+                        true);
+                }
+            }
+            else
+            {
+                AddElementArray(
+                    element.ExportName,
+                    element.ExportName,
+                    element.ExportType,
+                    element.ExportType.StartsWith("fhir"),
+                    element.IsPrimitive,
+                    false);
+            }
+        }
+        else
+        {
+            if (element.FhirType == "Resource")
+            {
+                AddResource(element.ExportName, element.ExportName);
+            }
+            else if (element.IsChoice)
+            {
+                AddElement(
+                    element.ExportName,
+                    element.ExportName,
+                    element.ExportType,
+                    element.ExportType.StartsWith("fhir"),
+                    element.IsPrimitive,
+                    false);
+
+                foreach (ModelBuilder.ExportElementChoiceType ct in element.ChoiceTypes)
+                {
+                    AddElement(
+                        ct.ExportName,
+                        element.ExportName,
+                        ct.ExportType,
+                        true,
+                        ct.IsPrimitive,
+                        true);
+                }
+            }
+            else
+            {
+                AddElement(
+                    element.ExportName,
+                    element.ExportName,
+                    element.ExportType,
+                    element.ExportType.StartsWith("fhir"),
+                    element.IsPrimitive,
+                    false);
+            }
+        }
+
+        if (!element.IsOptional)
+        {
+            sb.WriteLineIndented($"else {{ this.{element.ExportName} = null; }}");
+        }
+    }
+
     /// <summary>Builds a constructor.</summary>
     /// <param name="sb">     The writer.</param>
     /// <param name="complex">The complex.</param>
@@ -1383,92 +1572,7 @@ public sealed class TypeScriptSdk : ILanguage
                 continue;
             }
 
-            if (element.IsArray)
-            {
-                if (element.FhirType == "Resource")
-                {
-                    sb.OpenScope($"if (source['{element.ExportName}']) {{");
-                    sb.WriteLineIndented($"this.{element.ExportName} = [];");
-                    sb.OpenScope($"source.{element.ExportName}.forEach((x) => {{");
-                    sb.WriteLineIndented("var r = fhir.resourceFactory(x);");
-                    sb.WriteLineIndented($"if (r) {{ this.{element.ExportName}!.push(r); }}");
-                    sb.CloseScope("});");
-                    sb.CloseScope();
-                }
-                else if (element.ExportType.StartsWith("fhir"))
-                {
-                    if (element.IsPrimitive)
-                    {
-                        sb.WriteLineIndented(
-                            $"if (source['{element.ExportName}'])" +
-                            $" {{" +
-                            $" this.{element.ExportName} = source.{element.ExportName}.map(" +
-                            $"(x) => new {element.ExportType}({{value: x}}));" +
-                            $" }}");
-                    }
-                    else
-                    {
-                        sb.WriteLineIndented(
-                            $"if (source['{element.ExportName}'])" +
-                            $" {{" +
-                            $" this.{element.ExportName} = source.{element.ExportName}.map(" +
-                            $"(x) => new {element.ExportType}(x));" +
-                            $" }}");
-                    }
-                }
-                else
-                {
-                    sb.WriteLineIndented(
-                        $"if (source['{element.ExportName}'])" +
-                        $" {{" +
-                        $" this.{element.ExportName} = source.{element.ExportName}.map(" +
-                        $"(x) => (x));" +
-                        $" }}");
-                }
-            }
-            else
-            {
-                if (element.FhirType == "Resource")
-                {
-                    sb.WriteLineIndented(
-                        $"if (source['{element.ExportName}'])" +
-                        $" {{" +
-                        $" this.{element.ExportName} = (fhir.resourceFactory(source.{element.ExportName}) ?? undefined);" +
-                        $" }}");
-                }
-                else if (element.ExportType.StartsWith("fhir"))
-                {
-                    if (element.IsPrimitive)
-                    {
-                        sb.WriteLineIndented(
-                            $"if (source['{element.ExportName}'])" +
-                            $" {{" +
-                            $" this.{element.ExportName} = new {element.ExportType}({{value: source.{element.ExportName}!}});" +
-                            $" }}");
-                    }
-                    else
-                    {
-                        sb.WriteLineIndented(
-                            $"if (source['{element.ExportName}'])" +
-                            $" {{" +
-                            $" this.{element.ExportName} = new {element.ExportType}(source.{element.ExportName}!);" +
-                            $" }}");
-                    }
-                }
-                else
-                {
-                    sb.WriteLineIndented(
-                        $"if (source['{element.ExportName}'])" +
-                        $" {{" +
-                        $" this.{element.ExportName} = source.{element.ExportName};" +
-                        $" }}");
-                }
-            }
-
-            if (!element.IsOptional)
-            {
-                sb.WriteLineIndented($"else {{ this.{element.ExportName} = null; }}");
-            }
+            BuildConstructorElement(sb, element);
         }
 
         sb.CloseScope();
@@ -1529,36 +1633,57 @@ public sealed class TypeScriptSdk : ILanguage
         ExportStringBuilder sb,
         ModelBuilder.ExportElement element)
     {
-        if (!string.IsNullOrEmpty(element.ExportComment))
+        string typeOptionalityFlag = element.IsOptional ? "|undefined" : "|null";
+        if (element.ExportJsonType.Contains('"'))
         {
-            WriteIndentedComment(sb, element.ExportComment);
+            typeOptionalityFlag = "|undefined";
         }
 
         string optionalFlag = element.IsOptional ? "?" : string.Empty;
+        string arrayFlag = element.IsArray ? "[]" : string.Empty;
 
         HashSet<string> exportTypes = new();
 
         if (element.IsChoice)
         {
+            string sdkTypes;
+            if (element.IsArray)
+            {
+                sdkTypes = string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType + "[]"));
+            }
+            else
+            {
+                sdkTypes = string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType));
+            }
+
+            WriteIndentedComment(sb, element.ExportComment);
+            sb.WriteLineIndented($"{element.ExportName}?: {sdkTypes}|undefined;");
+
             foreach (ModelBuilder.ExportElementChoiceType ct in element.ChoiceTypes)
             {
                 if (PrimitiveTypeMap.ContainsKey(ct.ExportJsonType))
                 {
-                    exportTypes.ConditionalAdd(ct.ExportType);
-                    exportTypes.ConditionalAdd(PrimitiveTypeMap[ct.ExportJsonType]);
+                    WriteIndentedComment(sb, element.ExportComment);
+                    sb.WriteLineIndented(
+                        $"{ct.ExportName}?:" +
+                        $" {ct.ExportType}{arrayFlag}" +
+                        $"|{PrimitiveTypeMap[ct.ExportJsonType]}{arrayFlag}" +
+                        $"|undefined;");
                 }
                 else if (ct.ExportType.Equals("fhir.FhirResource", StringComparison.Ordinal))
                 {
-                    exportTypes.ConditionalAdd("fhir.ResourceArgs");
-                    exportTypes.ConditionalAdd("any");
+                    WriteIndentedComment(sb, element.ExportComment);
+                    sb.WriteLineIndented($"{ct.ExportName}?: fhir.ResourceArgs{arrayFlag}|any{arrayFlag}|undefined;");
                 }
                 else if (ct.ExportType.StartsWith("fhir.", StringComparison.Ordinal))
                 {
-                    exportTypes.ConditionalAdd(ct.ExportType + "Args");
+                    WriteIndentedComment(sb, element.ExportComment);
+                    sb.WriteLineIndented($"{ct.ExportName}?: {ct.ExportType}Args{arrayFlag}|undefined;");
                 }
                 else
                 {
-                    exportTypes.ConditionalAdd(ct.ExportType);
+                    WriteIndentedComment(sb, element.ExportComment);
+                    sb.WriteLineIndented($"{ct.ExportName}?: {ct.ExportType}{arrayFlag}|undefined;");
                 }
             }
         }
@@ -1566,45 +1691,38 @@ public sealed class TypeScriptSdk : ILanguage
         {
             if (PrimitiveTypeMap.ContainsKey(element.ExportJsonType))
             {
-                exportTypes.ConditionalAdd(element.ExportType);
-                exportTypes.ConditionalAdd(PrimitiveTypeMap[element.ExportJsonType]);
+                WriteIndentedComment(sb, element.ExportComment);
+                sb.WriteLineIndented(
+                    $"{element.ExportName}{optionalFlag}:" +
+                    $" {element.ExportType}{arrayFlag}" +
+                    $"|{PrimitiveTypeMap[element.ExportJsonType]}{arrayFlag}" +
+                    $"|undefined;");
             }
             else if (element.ExportType.Equals("fhir.FhirResource", StringComparison.Ordinal))
             {
-                exportTypes.ConditionalAdd("fhir.ResourceArgs");
-                exportTypes.ConditionalAdd("any");
+                WriteIndentedComment(sb, element.ExportComment);
+                sb.WriteLineIndented(
+                    $"{element.ExportName}{optionalFlag}:" +
+                    $" fhir.ResourceArgs{arrayFlag}" +
+                    $"|any{arrayFlag}" +
+                    $"{typeOptionalityFlag};");
             }
             else if (element.ExportType.StartsWith("fhir.", StringComparison.Ordinal))
             {
-                exportTypes.ConditionalAdd(element.ExportType + "Args");
+                WriteIndentedComment(sb, element.ExportComment);
+                sb.WriteLineIndented($"{element.ExportName}{optionalFlag}:" +
+                    $" {element.ExportType}Args{arrayFlag}" +
+                    $"{typeOptionalityFlag};");
             }
             else
             {
-                exportTypes.ConditionalAdd(element.ExportType);
+                WriteIndentedComment(sb, element.ExportComment);
+                sb.WriteLineIndented(
+                    $"{element.ExportName}{optionalFlag}:" +
+                    $" {element.ExportType}{arrayFlag}" +
+                    $"{typeOptionalityFlag};");
             }
         }
-
-        string exportType;
-
-        if (element.IsArray && (exportTypes.Count > 1))
-        {
-            exportType = "(" + string.Join('|', exportTypes) + ")[]";
-        }
-        else
-        {
-            exportType = string.Join('|', exportTypes);
-        }
-
-        if (element.IsOptional)
-        {
-            exportType = exportType + "|undefined";
-        }
-        else
-        {
-            exportType = exportType + "|null";
-        }
-
-        sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {exportType};");
     }
 
     /// <summary>Builds content for a complex element.</summary>
@@ -1615,11 +1733,7 @@ public sealed class TypeScriptSdk : ILanguage
         ModelBuilder.ExportElement element,
         bool isInterface)
     {
-        if (!string.IsNullOrEmpty(element.ExportComment))
-        {
-            WriteIndentedComment(sb, element.ExportComment);
-        }
-
+        string accessModifier = isInterface ? string.Empty : "public ";
         string optionalFlag = element.IsOptional ? "?" : string.Empty;
         string arrayFlag = element.IsArray ? "[]" : string.Empty;
         string typeAddition;
@@ -1638,13 +1752,27 @@ public sealed class TypeScriptSdk : ILanguage
             typeAddition = "|null";
         }
 
-        if (isInterface)
+        string exportType;
+
+        if (element.IsChoice)
         {
-            sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {element.ExportInterfaceType}{arrayFlag}{typeAddition}{initializer};");
+            exportType = "(" + string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType)) + ")";
+        }
+        else if (isInterface)
+        {
+            exportType = element.ExportInterfaceType;
         }
         else
         {
-            sb.WriteLineIndented($"public {element.ExportName}{optionalFlag}: {element.ExportType}{arrayFlag}{typeAddition}{initializer};");
+            exportType = element.ExportType;
+        }
+
+        WriteIndentedComment(sb, element.ExportComment);
+        sb.WriteLineIndented($"{accessModifier}{element.ExportName}{optionalFlag}: {exportType}{arrayFlag}{typeAddition}{initializer};");
+
+        if (element.IsChoice && (!isInterface))
+        {
+            sb.WriteLineIndented($"readonly __{element.ExportName}IsChoice:true = true;");
         }
     }
 

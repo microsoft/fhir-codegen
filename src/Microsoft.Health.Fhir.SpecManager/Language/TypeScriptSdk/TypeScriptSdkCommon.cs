@@ -113,6 +113,11 @@ internal static class TypeScriptSdkCommon
     /// <param name="value">The value.</param>
     internal static void WriteIndentedComment(ExportStringBuilder sb, string value)
     {
+        if (string.IsNullOrEmpty(value))
+        {
+            return;
+        }
+
         string comment;
         string[] lines;
 
