@@ -777,7 +777,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         WriteIndentedComment(sb, $"A {primitive.FhirName} value, represented as a JS {primitive.JsonExportType}");
         //sb.WriteLineIndented($"value:{primitive.JsonExportType}|null = null;");
-        sb.WriteLineIndented($"value?:{primitive.JsonExportType}|null|undefined;");
+        sb.WriteLineIndented($"declare value?:{primitive.JsonExportType}|null|undefined;");
 
         BuildConstructor(sb, primitive);
 
@@ -1534,7 +1534,11 @@ public sealed class TypeScriptSdk : ILanguage
             }
         }
 
-        if (!element.IsOptional)
+        if (element.IsArray)
+        {
+            sb.WriteLineIndented($"else {{ this.{element.ExportName} = []; }}");
+        }
+        else if (!element.IsOptional)
         {
             sb.WriteLineIndented($"else {{ this.{element.ExportName} = null; }}");
         }
@@ -1737,9 +1741,12 @@ public sealed class TypeScriptSdk : ILanguage
         string optionalFlag = element.IsOptional ? "?" : string.Empty;
         string arrayFlag = element.IsArray ? "[]" : string.Empty;
         string typeAddition;
-        string initializer = element.IsArray ? " = []" : string.Empty;
 
-        if (element.IsOptional)
+        if (element.IsArray)
+        {
+            typeAddition = string.Empty;
+        }
+        else if (element.IsOptional)
         {
             typeAddition = "|undefined";
         }
@@ -1768,7 +1775,7 @@ public sealed class TypeScriptSdk : ILanguage
         }
 
         WriteIndentedComment(sb, element.ExportComment);
-        sb.WriteLineIndented($"{accessModifier}{element.ExportName}{optionalFlag}: {exportType}{arrayFlag}{typeAddition}{initializer};");
+        sb.WriteLineIndented($"{accessModifier}{element.ExportName}{optionalFlag}: {exportType}{arrayFlag}{typeAddition};");
 
         if (element.IsChoice && (!isInterface))
         {
