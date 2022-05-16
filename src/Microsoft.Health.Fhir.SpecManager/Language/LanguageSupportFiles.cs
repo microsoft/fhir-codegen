@@ -14,7 +14,7 @@ public class LanguageSupportFiles
 {
     /// <summary>Pathname of the directory.</summary>
     private string _directory;
-    private SupportFileRec[] _staticFiles;
+    private Dictionary<string, SupportFileRec> _staticFiles;
     private Dictionary<string, List<string>> _dynamicFiles;
 
     /// <summary>
@@ -42,8 +42,8 @@ public class LanguageSupportFiles
         }
 
         _directory = inputDir;
-        _staticFiles = new SupportFileRec[0];
-        _dynamicFiles = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
+        _staticFiles = new();
+        _dynamicFiles = new(StringComparer.OrdinalIgnoreCase);
     }
 
     /// <summary>A static support file.</summary>
@@ -52,7 +52,7 @@ public class LanguageSupportFiles
         string RelativeFilename);
 
     /// <summary>Gets the static files.</summary>
-    public SupportFileRec[] StaticFiles => _staticFiles;
+    public Dictionary<string, SupportFileRec> StaticFiles => _staticFiles;
 
     /// <summary>Gets the dynamic files.</summary>
     public Dictionary<string, List<string>> DynamicFiles => _dynamicFiles;
@@ -85,18 +85,16 @@ public class LanguageSupportFiles
     {
         string inputStaticDir = Path.Combine(_directory, "static");
 
+        _staticFiles.Clear();
         if (Directory.Exists(inputStaticDir))
         {
             string[] files = Directory.GetFiles(inputStaticDir, "*.*", SearchOption.AllDirectories);
 
-            List<SupportFileRec> supportFiles = new();
-
             foreach (string file in files)
             {
-                supportFiles.Add(new(file, Path.GetRelativePath(inputStaticDir, file)));
+                string relative = Path.GetRelativePath(inputStaticDir, file);
+                _staticFiles.Add(relative, new(file, relative));
             }
-
-            _staticFiles = supportFiles.ToArray();
         }
 
         string inputDynamicDir = Path.Combine(_directory, "dynamic");

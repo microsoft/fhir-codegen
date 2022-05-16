@@ -22,9 +22,9 @@ export interface FhirPrimitiveArgs {
  }
 
 export class FhirPrimitive extends fhir.FhirBase  {
-  readonly __isPrimitive:boolean = true;
-  readonly __dataType:string='PrimitiveType';
-  readonly __jsonType:string='any';
+  protected readonly __isPrimitive:boolean = true;
+  protected readonly __dataType:string='PrimitiveType';
+  protected readonly __jsonType:string='any';
 
   /**
    * Value of the primitive - constrained by decendant classes.

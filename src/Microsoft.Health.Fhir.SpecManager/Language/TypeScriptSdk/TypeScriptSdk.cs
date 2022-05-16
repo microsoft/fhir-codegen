@@ -5,6 +5,7 @@
 
 using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Options;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using static Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk.TypeScriptSdkCommon;
@@ -20,6 +21,9 @@ public sealed class TypeScriptSdk : ILanguage
     /// <summary>Options for controlling the export.</summary>
     private ExporterOptions _options;
 
+    /// <summary>Pathname of the export directory.</summary>
+    private string _exportDirectory;
+
     /// <summary>True to export enums.</summary>
     private bool _exportEnums = true;
 
@@ -31,6 +35,18 @@ public sealed class TypeScriptSdk : ILanguage
 
     /// <summary>The single file export extension - requires directory export.</summary>
     private const string _singleFileExportExtension = null;
+
+    /// <summary>(Immutable) Pathname of the relative export directory.</summary>
+    private const string _relativeExportDirectory = "";
+
+    /// <summary>(Immutable) Pathname of the relative model directory.</summary>
+    private const string _relativeModelDirectory = "fhir";
+
+    /// <summary>(Immutable) Pathname of the relative JSON directory.</summary>
+    private const string _relativeJsonDirectory = "fhirJson";
+
+    /// <summary>(Immutable) Pathname of the relative value set directory.</summary>
+    private const string _relativeValueSetDirectory = "fhirValueSets";
 
     /// <summary>Gets the name of the language.</summary>
     /// <value>The name of the language.</value>
@@ -89,6 +105,7 @@ public sealed class TypeScriptSdk : ILanguage
     {
         _info = info;
         _options = options;
+        _exportDirectory = Path.Combine(exportDirectory, _relativeExportDirectory);
 
         if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Enum))
         {
@@ -99,19 +116,19 @@ public sealed class TypeScriptSdk : ILanguage
             _exportEnums = false;
         }
 
-        string modelDirectory = Path.Combine(exportDirectory, "fhir");
+        string modelDirectory = Path.Combine(_exportDirectory, _relativeModelDirectory);
         if (!Directory.Exists(modelDirectory))
         {
             Directory.CreateDirectory(modelDirectory);
         }
 
-        string jsonDirectory = Path.Combine(exportDirectory, "fhirJson");
+        string jsonDirectory = Path.Combine(_exportDirectory, _relativeJsonDirectory);
         if (!Directory.Exists(jsonDirectory))
         {
             Directory.CreateDirectory(jsonDirectory);
         }
 
-        string valueSetDirectory = Path.Combine(exportDirectory, "fhirValueSets");
+        string valueSetDirectory = Path.Combine(_exportDirectory, _relativeValueSetDirectory);
         if (_exportEnums)
         {
             if (!Directory.Exists(valueSetDirectory))
@@ -122,7 +139,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (options.SupportFiles.StaticFiles.Any())
         {
-            foreach (LanguageSupportFiles.SupportFileRec fileRec in options.SupportFiles.StaticFiles)
+            foreach (LanguageSupportFiles.SupportFileRec fileRec in options.SupportFiles.StaticFiles.Values)
             {
                 string dest = Path.Combine(exportDirectory, fileRec.RelativeFilename);
                 string dir = Path.GetDirectoryName(dest);
@@ -140,40 +157,59 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportPrimitive primitive in exports.PrimitiveTypesByExportName.Values)
         {
-            WritePrimitive(primitive, modelDirectory);
+            WritePrimitive(primitive);
         }
 
         foreach (ModelBuilder.ExportComplex dataType in exports.ComplexDataTypesByExportName.Values)
         {
-            WriteComplexJson(dataType, jsonDirectory, exports.ValueSetsByExportName);
-            WriteComplex(dataType, modelDirectory);
+            WriteComplexJson(dataType, exports.ValueSetsByExportName);
+            WriteComplex(dataType);
         }
 
         foreach (ModelBuilder.ExportComplex resource in exports.ResourcesByExportName.Values)
         {
-            WriteComplexJson(resource, jsonDirectory, exports.ValueSetsByExportName);
-            WriteComplex(resource, modelDirectory);
+            WriteComplexJson(resource, exports.ValueSetsByExportName);
+            WriteComplex(resource);
         }
 
-        WriteFhirJsonExportModule(exportDirectory, exports);
-        WriteFhirExportModule(exportDirectory, exports);
+        WriteFhirJsonExportModule(exports);
+        WriteFhirExportModule(exports);
 
         foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
         {
-            WriteValueSet(vs, valueSetDirectory);
-            WriteValueSetEnum(vs, valueSetDirectory);
+            WriteValueSet(vs);
+            WriteValueSetEnum(vs);
         }
 
-        WriteValueSetModule(exportDirectory, exports);
+        WriteValueSetModule(exports);
 
-        WriteValueSetEnumModule(exportDirectory, exports);
+        WriteValueSetEnumModule(exports);
 
-        WriteIndexModule(exportDirectory);
+        WriteIndexModule();
+    }
+
+    /// <summary>Writes a file.</summary>
+    /// <param name="sb">              The writer.</param>
+    /// <param name="relativeFilename">Filename of the relative file.</param>
+    private void WriteFile(
+        ExportStringBuilder sb,
+        string relativeFilename)
+    {
+        if (_options.SupportFiles.StaticFiles.ContainsKey(relativeFilename))
+        {
+            return;
+        }
+
+        string filename = Path.Combine(_exportDirectory, relativeFilename);
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            writer.Write(sb);
+        }
     }
 
     /// <summary>Writes an index module.</summary>
-    /// <param name="exportDirectory">Directory to write files.</param>
-    private void WriteIndexModule(string exportDirectory)
+    private void WriteIndexModule()
     {
         ExportStringBuilder sb = new();
 
@@ -188,18 +224,12 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.WriteLineIndented("export { fhir, valueSets, valueSetEnums, fhirJson, };");
 
-        string filename = Path.Combine(exportDirectory, $"index.ts");
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            writer.Write(sb);
-        }
+        WriteFile(sb, Path.Combine(_relativeExportDirectory, "index.ts"));
     }
 
     /// <summary>Writes a FHIR export module.</summary>
-    /// <param name="exportDirectory">Directory to write files.</param>
-    /// <param name="exports">        The exports.</param>
-    private void WriteValueSetEnumModule(string exportDirectory, ModelBuilder.ExportModels exports)
+    /// <param name="exports">The exports.</param>
+    private void WriteValueSetEnumModule(ModelBuilder.ExportModels exports)
     {
         ExportStringBuilder sb = new();
 
@@ -213,7 +243,7 @@ public sealed class TypeScriptSdk : ILanguage
                 $"import {{" +
                 $" {vs.ExportName}Enum," +
                 $" }}" +
-                $" from './fhirValueSets/{vs.ExportName}Enum.js'");
+                $" from './{_relativeValueSetDirectory}/{vs.ExportName}Enum.js'");
         }
 
         sb.WriteLine(string.Empty);
@@ -226,18 +256,12 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.CloseScope();
 
-        string filename = Path.Combine(exportDirectory, $"valueSetEnums.ts");
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            writer.Write(sb);
-        }
+        WriteFile(sb, Path.Combine(_relativeExportDirectory, "valueSetEnums.ts"));
     }
 
     /// <summary>Writes a FHIR value setmodule.</summary>
-    /// <param name="exportDirectory">Directory to write files.</param>
-    /// <param name="exports">        The exports.</param>
-    private void WriteValueSetModule(string exportDirectory, ModelBuilder.ExportModels exports)
+    /// <param name="exports">The exports.</param>
+    private void WriteValueSetModule(ModelBuilder.ExportModels exports)
     {
         ExportStringBuilder sb = new();
 
@@ -251,7 +275,7 @@ public sealed class TypeScriptSdk : ILanguage
                 $"import {{" +
                 $" {vs.ExportName}, {vs.ExportName}Type," +
                 $" }}" +
-                $" from './fhirValueSets/{vs.ExportName}.js'");
+                $" from './{_relativeValueSetDirectory}/{vs.ExportName}.js'");
         }
 
         sb.WriteLine(string.Empty);
@@ -264,19 +288,12 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.CloseScope();
 
-        string filename = Path.Combine(exportDirectory, $"valueSets.ts");
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            writer.Write(sb);
-        }
+        WriteFile(sb, Path.Combine(_relativeExportDirectory, "valueSets.ts"));
     }
 
     /// <summary>Writes a FHIR export module.</summary>
-    /// <param name="exportDirectory">Directory to write files.</param>
-    /// <param name="exports">        The exports.</param>
+    /// <param name="exports">The exports.</param>
     private void WriteFhirExportModule(
-        string exportDirectory,
         ModelBuilder.ExportModels exports)
     {
         ExportStringBuilder sb = new();
@@ -291,7 +308,7 @@ public sealed class TypeScriptSdk : ILanguage
                 $"import {{" +
                 $" {string.Join(", ", exportKey.Tokens.Select((t) => t.Token))}" +
                 $" }}" +
-                $" from './fhir/{exportKey.ExportName}.js';");
+                $" from './{_relativeModelDirectory}/{exportKey.ExportName}.js';");
         }
 
         foreach (ModelBuilder.SortedExportKey exportKey in exports.SortedDataTypes)
@@ -300,7 +317,7 @@ public sealed class TypeScriptSdk : ILanguage
                 $"import {{" +
                 $" {string.Join(", ", exportKey.Tokens.Select((t) => t.Token))}" +
                 $" }}" +
-                $" from './fhir/{exportKey.ExportName}.js';");
+                $" from './{_relativeModelDirectory}/{exportKey.ExportName}.js';");
         }
 
         foreach (ModelBuilder.SortedExportKey exportKey in exports.SortedResources)
@@ -309,7 +326,7 @@ public sealed class TypeScriptSdk : ILanguage
                 $"import {{" +
                 $" {string.Join(", ", exportKey.Tokens.Select((t) => t.Token))}" +
                 $" }}" +
-                $" from './fhir/{exportKey.ExportName}.js';");
+                $" from './{_relativeModelDirectory}/{exportKey.ExportName}.js';");
         }
 
         WriteExpandedResourceBindings(sb, exports);
@@ -348,23 +365,15 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.CloseScope();
 
-        string filename = Path.Combine(exportDirectory, $"fhir.ts");
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            writer.Write(sb);
-        }
+        WriteFile(sb, Path.Combine(_relativeExportDirectory, "fhir.ts"));
     }
 
     /// <summary>
-    /// Writes a FHIR JSON export module.
-    /// Note that the 'type literal' flag is inverted because in the JSON models we
-    /// want to use the 'bare' export name, but export as an interface.
+    /// Writes a FHIR JSON export module. Note that the 'type literal' flag is inverted because in
+    /// the JSON models we want to use the 'bare' export name, but export as an interface.
     /// </summary>
-    /// <param name="exportDirectory">Directory to write files.</param>
-    /// <param name="exports">        The exports.</param>
+    /// <param name="exports">The exports.</param>
     private void WriteFhirJsonExportModule(
-        string exportDirectory,
         ModelBuilder.ExportModels exports)
     {
         ExportStringBuilder sb = new();
@@ -415,12 +424,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.CloseScope();
 
-        string filename = Path.Combine(exportDirectory, $"fhirJson.ts");
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            writer.Write(sb);
-        }
+        WriteFile(sb, Path.Combine(_relativeExportDirectory, "fhirJson.ts"));
     }
 
     /// <summary>Writes a FHIR constructor properties interface.</summary>
@@ -537,11 +541,9 @@ public sealed class TypeScriptSdk : ILanguage
     }
 
     /// <summary>Writes a value set.</summary>
-    /// <param name="vs">         Set the value belongs to.</param>
-    /// <param name="vsDirectory">Pathname of the vs directory.</param>
+    /// <param name="vs">Set the value belongs to.</param>
     private void WriteValueSet(
-        ModelBuilder.ExportValueSet vs,
-        string vsDirectory)
+        ModelBuilder.ExportValueSet vs)
     {
         ExportStringBuilder sb = new();
 
@@ -599,20 +601,13 @@ public sealed class TypeScriptSdk : ILanguage
             WriteIndentedComment(sb, vs.ExportComment);
         }
 
-        string filename = Path.Combine(vsDirectory, vs.ExportName + ".ts");
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            writer.Write(sb);
-        }
+        WriteFile(sb, Path.Combine(_relativeValueSetDirectory, vs.ExportName + ".ts"));
     }
 
     /// <summary>Writes a value set enum.</summary>
-    /// <param name="vs">         Set the value belongs to.</param>
-    /// <param name="vsDirectory">Pathname of the vs directory.</param>
+    /// <param name="vs">Set the value belongs to.</param>
     private void WriteValueSetEnum(
-        ModelBuilder.ExportValueSet vs,
-        string vsDirectory)
+        ModelBuilder.ExportValueSet vs)
     {
         ExportStringBuilder sb = new();
 
@@ -644,20 +639,13 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.CloseScope();
 
-        string filename = Path.Combine(vsDirectory, vs.ExportName + "Enum.ts");
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            writer.Write(sb);
-        }
+        WriteFile(sb, Path.Combine(_relativeValueSetDirectory, vs.ExportName + "Enum.ts"));
     }
 
     /// <summary>Writes a primitive.</summary>
     /// <param name="primitive">     The primitive.</param>
-    /// <param name="modelDirectory">Pathname of the model directory.</param>
     private void WritePrimitive(
-        ModelBuilder.ExportPrimitive primitive,
-        string modelDirectory)
+        ModelBuilder.ExportPrimitive primitive)
     {
         ExportStringBuilder sb = new();
 
@@ -676,12 +664,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         BuildClassForPrimitive(sb, primitive);
 
-        string filename = Path.Combine(modelDirectory, primitive.ExportClassName + ".ts");
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            writer.Write(sb);
-        }
+        WriteFile(sb, Path.Combine(_relativeModelDirectory, primitive.ExportClassName + ".ts"));
     }
 
     /// <summary>Builds interface for primitive.</summary>
@@ -754,8 +737,8 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.IncreaseIndent();
 
-        sb.WriteLineIndented($"readonly __dataType:string = '{primitive.ExportClassName.Substring(4)}';");
-        sb.WriteLineIndented($"readonly __jsonType:string = '{primitive.JsonExportType}';");
+        sb.WriteLineIndented($"protected readonly __dataType:string = '{primitive.ExportClassName.Substring(4)}';");
+        sb.WriteLineIndented($"protected readonly __jsonType:string = '{primitive.JsonExportType}';");
 
         if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
         {
@@ -995,11 +978,9 @@ public sealed class TypeScriptSdk : ILanguage
     }
 
     /// <summary>Writes a complex.</summary>
-    /// <param name="complex">          The complex.</param>
-    /// <param name="modelDirectory">   Pathname of the model directory.</param>
+    /// <param name="complex">The complex.</param>
     private void WriteComplex(
-        ModelBuilder.ExportComplex complex,
-        string modelDirectory)
+        ModelBuilder.ExportComplex complex)
     {
         ExportStringBuilder sb = new();
 
@@ -1018,7 +999,7 @@ public sealed class TypeScriptSdk : ILanguage
                 $"import {{" +
                 $" {valueSetExportName}," +
                 $" {valueSetExportName}Type," +
-                $"}} from '../fhirValueSets/{valueSetExportName}.js';");
+                $"}} from '../{_relativeValueSetDirectory}/{valueSetExportName}.js';");
 
             sb.WriteLineIndented(
                 $"import {{" +
@@ -1040,12 +1021,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         BuildClassForComplex(sb, complex);
 
-        string filename = Path.Combine(modelDirectory, complex.ExportClassName + ".ts");
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            writer.Write(sb);
-        }
+        WriteFile(sb, Path.Combine(_relativeModelDirectory, complex.ExportClassName + ".ts"));
     }
 
     /// <summary>Writes a complex class.</summary>
@@ -1096,11 +1072,11 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (complex.ExportClassName.StartsWith("Fhir", StringComparison.Ordinal))
         {
-            sb.WriteLineIndented($"readonly __dataType:string = '{complex.ExportClassName.Substring(4)}';");
+            sb.WriteLineIndented($"protected readonly __dataType:string = '{complex.ExportClassName.Substring(4)}';");
         }
         else
         {
-            sb.WriteLineIndented($"readonly __dataType:string = '{complex.ExportClassName}';");
+            sb.WriteLineIndented($"protected readonly __dataType:string = '{complex.ExportClassName}';");
         }
 
         // add actual elements
@@ -1130,7 +1106,7 @@ public sealed class TypeScriptSdk : ILanguage
         BuildModelValidation(sb, complex);
 
         // add toJSON override
-        BuildToJson(sb, complex);
+        //BuildToJson(sb, complex);
 
         if (_options.SupportFiles.TryGetInputForKey(complex.ExportClassName, out string contents))
         {
@@ -1779,16 +1755,15 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (element.IsChoice && (!isInterface))
         {
-            sb.WriteLineIndented($"readonly __{element.ExportName}IsChoice:true = true;");
+            sb.WriteLineIndented($"protected readonly __{element.ExportName}IsChoice:true = true;");
         }
     }
 
     /// <summary>Writes a complex.</summary>
-    /// <param name="complex">      The complex.</param>
-    /// <param name="jsonDirectory">Pathname of the json model directory.</param>
+    /// <param name="complex">              The complex.</param>
+    /// <param name="ValueSetsByExportName">Name of the value sets by export.</param>
     private void WriteComplexJson(
         ModelBuilder.ExportComplex complex,
-        string jsonDirectory,
         Dictionary<string, ModelBuilder.ExportValueSet> ValueSetsByExportName)
     {
         ExportStringBuilder sb = new();
@@ -1802,12 +1777,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         BuildInterfaceForComplexJson(sb, complex, ValueSetsByExportName);
 
-        string filename = Path.Combine(jsonDirectory, complex.ExportClassName + ".ts");
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-        {
-            writer.Write(sb);
-        }
+        WriteFile(sb, Path.Combine(_relativeJsonDirectory, complex.ExportClassName + ".ts"));
     }
 
     /// <summary>Writes a complex interface.</summary>
