@@ -242,17 +242,28 @@ public class FhirManager : IDisposable
 
         if (isCore)
         {
-            _directivePackageTypes.Add(loadDirective, FhirPackageCommon.FhirPackageTypeEnum.Core);
-            _directivePackageTypes.Add(loadDirective.Replace(".core", ".expansions"), FhirPackageCommon.FhirPackageTypeEnum.Core);
+            string coreDirective;
+
+            if (loadDirective.Contains('#'))
+            {
+                coreDirective = info.PackageName + loadDirective.Split('#')[1];
+            }
+            else
+            {
+                coreDirective = loadDirective;
+            }
+
+            _directivePackageTypes.Add(coreDirective, FhirPackageCommon.FhirPackageTypeEnum.Core);
+            _directivePackageTypes.Add(coreDirective.Replace(".core", ".expansions"), FhirPackageCommon.FhirPackageTypeEnum.Core);
 
             FhirCacheService.Current.UpdatePackageState(
-                loadDirective,
+                coreDirective,
                 info.PackageName,
                 info.VersionString,
                 PackageLoadStateEnum.Loaded);
 
             FhirCacheService.Current.UpdatePackageState(
-                loadDirective.Replace(".core", ".expansions"),
+                coreDirective.Replace(".core", ".expansions"),
                 info.PackageName,
                 info.VersionString,
                 PackageLoadStateEnum.Loaded);

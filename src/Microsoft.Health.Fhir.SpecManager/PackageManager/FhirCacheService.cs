@@ -521,6 +521,7 @@ public class FhirCacheService : IDisposable
                 branchUri = FhirCiUri;
                 break;
 
+            case null:
             case "":
                 if (name.Contains("r4b", StringComparison.OrdinalIgnoreCase))
                 {
