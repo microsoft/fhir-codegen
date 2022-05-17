@@ -246,7 +246,7 @@ public class FhirManager : IDisposable
 
             if (loadDirective.Contains('#'))
             {
-                coreDirective = info.PackageName + loadDirective.Split('#')[1];
+                coreDirective = info.PackageName + "#" + loadDirective.Split('#')[1];
             }
             else
             {

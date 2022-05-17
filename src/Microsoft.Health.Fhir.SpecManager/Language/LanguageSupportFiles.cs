@@ -199,7 +199,7 @@ public class LanguageSupportFiles
 
             foreach (string file in files)
             {
-                string relative = Path.GetRelativePath(inputAdditionsDir, file);
+                string relative = Path.GetRelativePath(inputReplacementDir, file);
                 _replacementFiles.Add(relative, new(file, relative));
             }
         }

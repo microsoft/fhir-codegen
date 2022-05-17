@@ -148,8 +148,31 @@ public class ModelBuilder
                     break;
 
                 default:
-                    exportClassType = "fhir.FhirPrimitive";
-                    exportInterfaceType = "fhir.IFhirPrimitive";
+
+                    if (fhirPrimitive.Id == fhirPrimitive.BaseTypeName)
+                    {
+                        exportClassType = "fhir.FhirPrimitive";
+                        exportInterfaceType = "fhir.IFhirPrimitive";
+                    }
+                    else if (_info.PrimitiveTypes.ContainsKey(fhirPrimitive.BaseTypeName))
+                    {
+                        string baseName = FhirUtils.ToConvention(
+                            fhirPrimitive.BaseTypeName,
+                            string.Empty,
+                            FhirTypeBase.NamingConvention.PascalCase,
+                            false,
+                            string.Empty,
+                            ReservedWords);
+
+                        exportClassType = "fhir.Fhir" + baseName;
+                        exportInterfaceType = "fhir.IFhir" + baseName;
+                    }
+                    else
+                    {
+                        exportClassType = "fhir.FhirPrimitive";
+                        exportInterfaceType = "fhir.IFhirPrimitive";
+                    }
+
                     break;
             }
 

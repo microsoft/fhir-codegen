@@ -48,6 +48,9 @@ public sealed class TypeScriptSdk : ILanguage
     /// <summary>(Immutable) Pathname of the relative value set directory.</summary>
     private const string _relativeValueSetDirectory = "fhirValueSets";
 
+    /// <summary>(Immutable) The ts internal prefix.</summary>
+    private const string _tsInternalPrefix = "_fts_";
+
     /// <summary>Gets the name of the language.</summary>
     /// <value>The name of the language.</value>
     string ILanguage.LanguageName => _languageName;
@@ -196,6 +199,15 @@ public sealed class TypeScriptSdk : ILanguage
     {
         if (_options.SupportFiles.ReplacementFiles.ContainsKey(relativeFilename))
         {
+            string dest = Path.Combine(_exportDirectory, _options.SupportFiles.ReplacementFiles[relativeFilename].RelativeFilename);
+            string dir = Path.GetDirectoryName(dest);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            File.Copy(_options.SupportFiles.ReplacementFiles[relativeFilename].Filename, dest);
+
             return;
         }
 
@@ -743,8 +755,8 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.IncreaseIndent();
 
-        sb.WriteLineIndented($"protected readonly __dataType:string = '{primitive.ExportClassName.Substring(4)}';");
-        sb.WriteLineIndented($"protected readonly __jsonType:string = '{primitive.JsonExportType}';");
+        sb.WriteLineIndented($"protected static readonly {_tsInternalPrefix}dataType:string = '{primitive.ExportClassName.Substring(4)}';");
+        sb.WriteLineIndented($"protected static readonly {_tsInternalPrefix}jsonType:string = '{primitive.JsonExportType}';");
 
         if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
         {
@@ -761,7 +773,7 @@ public sealed class TypeScriptSdk : ILanguage
             }
 
             sb.WriteLineIndented($"// published regex: {primitive.ValidationRegEx}");
-            sb.WriteLineIndented($"static readonly __regex:RegExp = /{exp}/");
+            sb.WriteLineIndented($"static readonly {_tsInternalPrefix}regex:RegExp = /{exp}/");
         }
 
         WriteIndentedComment(sb, $"A {primitive.FhirName} value, represented as a JS {primitive.JsonExportType}");
@@ -920,7 +932,7 @@ public sealed class TypeScriptSdk : ILanguage
         ModelBuilder.ExportPrimitive primitive)
     {
         // interface open
-        sb.OpenScope($"export interface {primitive.ExportClassName}Args extends fhir.FhirPrimitiveArgs {{");
+        sb.OpenScope($"export interface {primitive.ExportClassName}Args extends {primitive.ExportClassType}Args {{");
 
         WriteIndentedComment(sb, primitive.ExportComment);
         sb.WriteLineIndented($"value?:{primitive.ExportClassName}|{primitive.JsonExportType}|undefined;");
@@ -1083,11 +1095,11 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (complex.ExportClassName.StartsWith("Fhir", StringComparison.Ordinal))
         {
-            sb.WriteLineIndented($"protected readonly __dataType:string = '{complex.ExportClassName.Substring(4)}';");
+            sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}dataType:string = '{complex.ExportClassName.Substring(4)}';");
         }
         else
         {
-            sb.WriteLineIndented($"protected readonly __dataType:string = '{complex.ExportClassName}';");
+            sb.WriteLineIndented($"protected static readonly {_tsInternalPrefix}dataType:string = '{complex.ExportClassName}';");
         }
 
         // add actual elements
@@ -1205,12 +1217,12 @@ public sealed class TypeScriptSdk : ILanguage
             if (primitive.JsonExportType.Equals("string", StringComparison.Ordinal))
             {
                 // open value passes
-                sb.OpenScope($"if ((this.value) && (!{primitive.ExportClassName}.__regex.test(this.value))) {{");
+                sb.OpenScope($"if ((this.value) && (!{primitive.ExportClassName}.{_tsInternalPrefix}regex.test(this.value))) {{");
             }
             else
             {
                 // open value passes
-                sb.OpenScope($"if ((this.value) && (!{primitive.ExportClassName}.__regex.test(this.value.toString()))) {{");
+                sb.OpenScope($"if ((this.value) && (!{primitive.ExportClassName}.{_tsInternalPrefix}regex.test(this.value.toString()))) {{");
             }
 
             sb.WriteLineIndented($"outcome.issue!.push({invalidContent});");
@@ -1766,7 +1778,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (element.IsChoice && (!isInterface))
         {
-            sb.WriteLineIndented($"protected readonly __{element.ExportName}IsChoice:true = true;");
+            sb.WriteLineIndented($"protected static const {_tsInternalPrefix}{element.ExportName}IsChoice:true = true;");
         }
     }
 

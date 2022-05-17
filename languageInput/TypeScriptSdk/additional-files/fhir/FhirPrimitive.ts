@@ -22,9 +22,9 @@ export interface FhirPrimitiveArgs {
  }
 
 export class FhirPrimitive extends fhir.FhirBase  {
-  protected readonly __isPrimitive:boolean = true;
-  protected readonly __dataType:string='PrimitiveType';
-  protected readonly __jsonType:string='any';
+  protected readonly _fts_isPrimitive:boolean = true;
+  protected readonly _fts_dataType:string='PrimitiveType';
+  protected readonly _fts_jsonType:string='any';
 
   /**
    * Value of the primitive - constrained by decendant classes.
@@ -51,7 +51,7 @@ export class FhirPrimitive extends fhir.FhirBase  {
   constructor(source:Partial<FhirPrimitiveArgs> = {}, options:fhir.FhirConstructorOptions = {}) {
     super();
     if (source) {
-      if ((source.value) && (source.value['__dataType'])) {
+      if ((source.value) && (source.value['_fts_dataType'])) {
         this.value = source.value.value ?? null;
         this.id = source.value.id ?? undefined;
         if ((source.value.extension) && (source.value.extension.length > 0)) {

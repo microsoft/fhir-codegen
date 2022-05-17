@@ -868,8 +868,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             // right now, differential is generally 'more correct' than snapshot, see FHIR-37465
             if ((sd.Differential != null) &&
-                (sd.Snapshot.Element != null) &&
-                (sd.Snapshot.Element.Count > 0))
+                (sd.Differential.Element != null) &&
+                (sd.Differential.Element.Count > 0))
             {
                 foreach (fhirModels.ElementDefinition element in sd.Differential.Element)
                 {
