@@ -749,11 +749,69 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             string comment = string.Empty;
             string baseTypeName = string.Empty;
 
+#if false   // right now, differential is generally 'more correct' than snapshot, see FHIR-37465
             if ((sd.Snapshot != null) &&
                 (sd.Snapshot.Element != null) &&
                 (sd.Snapshot.Element.Count > 0))
             {
                 foreach (fhirModels.ElementDefinition element in sd.Snapshot.Element)
+                {
+                    if (element.Id == sd.Id)
+                    {
+                        descriptionShort = element.Short;
+                        definition = element.Definition;
+                        comment = element.Comment;
+                        continue;
+                    }
+
+                    if (element.Id != $"{sd.Id}.value")
+                    {
+                        continue;
+                    }
+
+                    if (element.Type == null)
+                    {
+                        continue;
+                    }
+
+                    foreach (fhirModels.ElementDefinitionType type in element.Type)
+                    {
+                        if (!string.IsNullOrEmpty(type.Code))
+                        {
+                            if (FhirElementType.IsFhirPathType(type.Code, out string fhirType))
+                            {
+                                baseTypeName = fhirType;
+                            }
+                            else if (FhirElementType.IsXmlBaseType(type.Code, out string xmlFhirType))
+                            {
+                                baseTypeName = xmlFhirType;
+                            }
+                        }
+
+                        if (type.Extension == null)
+                        {
+                            continue;
+                        }
+
+                        foreach (fhirModels.Extension ext in type.Extension)
+                        {
+                            if (ext.Url == "http://hl7.org/fhir/StructureDefinition/regex")
+                            {
+                                regex = ext.ValueString;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+#endif
+
+            // right now, differential is generally 'more correct' than snapshot see FHIR-37465
+            if ((sd.Differential != null) &&
+                (sd.Snapshot.Element != null) &&
+                (sd.Snapshot.Element.Count > 0))
+            {
+                foreach (fhirModels.ElementDefinition element in sd.Differential.Element)
                 {
                     if (element.Id == sd.Id)
                     {
