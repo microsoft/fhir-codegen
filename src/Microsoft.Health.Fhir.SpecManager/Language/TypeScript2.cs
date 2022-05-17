@@ -295,7 +295,7 @@ public sealed class TypeScript2 : ILanguage
 
         if (options.SupportFiles.StaticFiles.Any())
         {
-            foreach (LanguageSupportFiles.SupportFileRec fileRec in options.SupportFiles.StaticFiles)
+            foreach (LanguageSupportFiles.SupportFileRec fileRec in options.SupportFiles.StaticFiles.Values)
             {
                 File.Copy(fileRec.Filename, Path.Combine(exportDirectory, fileRec.RelativeFilename));
             }

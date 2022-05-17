@@ -177,13 +177,12 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
         {
-            WriteValueSet(vs);
-            WriteValueSetEnum(vs);
+            WriteValueSetCoding(vs);
+            WriteValueSetCode(vs);
         }
 
-        WriteValueSetModule(exports);
-
-        WriteValueSetEnumModule(exports);
+        WriteValueSetCodingModule(exports);
+        WriteValueSetCodeModule(exports);
 
         WriteIndexModule();
     }
@@ -219,17 +218,17 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.WriteLineIndented("import * as fhirJson from './fhirJson.js';");
         sb.WriteLineIndented("import * as fhir from './fhir.js';");
-        sb.WriteLineIndented("import * as valueSets from './valueSets.js';");
-        sb.WriteLineIndented("import * as valueSetEnums from './valueSetEnums.js';");
+        sb.WriteLineIndented($"import * as valueSetCodings from './valueSet{CodingObjectSuffix}.js';");
+        sb.WriteLineIndented($"import * as valueSetCodes from './valueSet{CodeObjectSuffix}.js';");
 
-        sb.WriteLineIndented("export { fhir, valueSets, valueSetEnums, fhirJson, };");
+        sb.WriteLineIndented("export { fhir, valueSetCodings, valueSetCodes, fhirJson, };");
 
         WriteFile(sb, Path.Combine(_relativeExportDirectory, "index.ts"));
     }
 
     /// <summary>Writes a FHIR export module.</summary>
     /// <param name="exports">The exports.</param>
-    private void WriteValueSetEnumModule(ModelBuilder.ExportModels exports)
+    private void WriteValueSetCodeModule(ModelBuilder.ExportModels exports)
     {
         ExportStringBuilder sb = new();
 
@@ -241,9 +240,10 @@ public sealed class TypeScriptSdk : ILanguage
         {
             sb.WriteLineIndented(
                 $"import {{" +
-                $" {vs.ExportName}Enum," +
+                $" {vs.ExportName}{CodeObjectSuffix}," +
+                $" {vs.ExportName}{CodeTypeSuffix}," +
                 $" }}" +
-                $" from './{_relativeValueSetDirectory}/{vs.ExportName}Enum.js'");
+                $" from './{_relativeValueSetDirectory}/{vs.ExportName}{CodeObjectSuffix}.js'");
         }
 
         sb.WriteLine(string.Empty);
@@ -251,17 +251,17 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
         {
-            sb.WriteLineIndented($"{vs.ExportName}Enum,");
+            sb.WriteLineIndented($"{vs.ExportName}{CodeObjectSuffix}, type {vs.ExportName}{CodeTypeSuffix},");
         }
 
         sb.CloseScope();
 
-        WriteFile(sb, Path.Combine(_relativeExportDirectory, "valueSetEnums.ts"));
+        WriteFile(sb, Path.Combine(_relativeExportDirectory, $"valueSet{CodeObjectSuffix}.ts"));
     }
 
     /// <summary>Writes a FHIR value setmodule.</summary>
     /// <param name="exports">The exports.</param>
-    private void WriteValueSetModule(ModelBuilder.ExportModels exports)
+    private void WriteValueSetCodingModule(ModelBuilder.ExportModels exports)
     {
         ExportStringBuilder sb = new();
 
@@ -273,7 +273,7 @@ public sealed class TypeScriptSdk : ILanguage
         {
             sb.WriteLineIndented(
                 $"import {{" +
-                $" {vs.ExportName}, {vs.ExportName}Type," +
+                $" {vs.ExportName}{CodingObjectSuffix}, {vs.ExportName}{CodingTypeSuffix}," +
                 $" }}" +
                 $" from './{_relativeValueSetDirectory}/{vs.ExportName}.js'");
         }
@@ -283,12 +283,12 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
         {
-            sb.WriteLineIndented($"{vs.ExportName}, type {vs.ExportName}Type,");
+            sb.WriteLineIndented($"{vs.ExportName}{CodingObjectSuffix}, type {vs.ExportName}{CodingTypeSuffix},");
         }
 
         sb.CloseScope();
 
-        WriteFile(sb, Path.Combine(_relativeExportDirectory, "valueSets.ts"));
+        WriteFile(sb, Path.Combine(_relativeExportDirectory, $"valueSet{CodingObjectSuffix}.ts"));
     }
 
     /// <summary>Writes a FHIR export module.</summary>
@@ -542,7 +542,7 @@ public sealed class TypeScriptSdk : ILanguage
 
     /// <summary>Writes a value set.</summary>
     /// <param name="vs">Set the value belongs to.</param>
-    private void WriteValueSet(
+    private void WriteValueSetCoding(
         ModelBuilder.ExportValueSet vs)
     {
         ExportStringBuilder sb = new();
@@ -559,7 +559,7 @@ public sealed class TypeScriptSdk : ILanguage
             WriteIndentedComment(sb, vs.ExportComment);
         }
 
-        sb.OpenScope($"export const {vs.ExportName} = {{");
+        sb.OpenScope($"export const {vs.ExportName}{CodingObjectSuffix} = {{");
 
         foreach (ModelBuilder.ExportValueSetCoding coding in vs.CodingsByExportName.Values)
         {
@@ -593,35 +593,25 @@ public sealed class TypeScriptSdk : ILanguage
             WriteIndentedComment(sb, vs.ExportComment);
         }
 
-        sb.WriteLineIndented($"export type {vs.ExportName}Type = typeof {vs.ExportName};");
+        sb.WriteLineIndented($"export type {vs.ExportName}{CodingTypeSuffix} = typeof {vs.ExportName}{CodingObjectSuffix};");
 
-        sb.WriteLine(string.Empty);
-        if (!string.IsNullOrEmpty(vs.ExportComment))
-        {
-            WriteIndentedComment(sb, vs.ExportComment);
-        }
-
-        WriteFile(sb, Path.Combine(_relativeValueSetDirectory, vs.ExportName + ".ts"));
+        WriteFile(sb, Path.Combine(_relativeValueSetDirectory, vs.ExportName + CodingObjectSuffix + ".ts"));
     }
 
     /// <summary>Writes a value set enum.</summary>
     /// <param name="vs">Set the value belongs to.</param>
-    private void WriteValueSetEnum(
+    private void WriteValueSetCode(
         ModelBuilder.ExportValueSet vs)
     {
         ExportStringBuilder sb = new();
 
         WriteHeader(sb);
 
-        sb.WriteLine($"// FHIR ValueSet Enum: {vs.FhirUrl}|{vs.FhirVersion}");
+        sb.WriteLine($"// FHIR ValueSet: {vs.FhirUrl}|{vs.FhirVersion}");
+
         sb.WriteLine(string.Empty);
-
-        if (!string.IsNullOrEmpty(vs.ExportComment))
-        {
-            WriteIndentedComment(sb, vs.ExportComment);
-        }
-
-        sb.OpenScope($"export enum {vs.ExportName}Enum {{");
+        WriteIndentedComment(sb, vs.ExportComment);
+        sb.OpenScope($"export const {vs.ExportName}{CodeObjectSuffix} = {{");
 
         foreach (ModelBuilder.ExportValueSetCoding coding in vs.CodingsByExportName.Values)
         {
@@ -634,12 +624,20 @@ public sealed class TypeScriptSdk : ILanguage
                 WriteIndentedComment(sb, coding.Code + ": " + coding.Comment);
             }
 
-            sb.WriteLineIndented($"{coding.ExportName} = \"{coding.Code}\",");
+            sb.WriteLineIndented($"{coding.ExportName}: \"{coding.Code}\",");
         }
 
-        sb.CloseScope();
+        sb.CloseScope("} as const;");
 
-        WriteFile(sb, Path.Combine(_relativeValueSetDirectory, vs.ExportName + "Enum.ts"));
+        sb.WriteLine(string.Empty);
+        WriteIndentedComment(sb, vs.ExportComment);
+
+        sb.WriteLineIndented(
+            $"export type {vs.ExportName}{CodeTypeSuffix}" +
+            $" = typeof {vs.ExportName}{CodeObjectSuffix}" +
+            $"[keyof typeof {vs.ExportName}{CodeObjectSuffix}];");
+
+        WriteFile(sb, Path.Combine(_relativeValueSetDirectory, vs.ExportName + CodeObjectSuffix + ".ts"));
     }
 
     /// <summary>Writes a primitive.</summary>
@@ -658,7 +656,15 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLineIndented("import * as fhir from '../fhir.js';");
         sb.WriteLine(string.Empty);
 
-        sb.WriteLineIndented("import { IssueTypeValueSetEnum, IssueSeverityValueSetEnum } from '../valueSetEnums.js';");
+        sb.WriteLineIndented(
+            $"import {{" +
+            $" IssueType{CodeObjectSuffix}" +
+            $" }} from '../{_relativeValueSetDirectory}/IssueType{CodeObjectSuffix}.js';");
+
+        sb.WriteLineIndented(
+            $"import {{" +
+            $" IssueSeverity{CodeObjectSuffix}" +
+            $" }} from '../{_relativeValueSetDirectory}/IssueSeverity{CodeObjectSuffix}.js';");
 
         //BuildInterfaceForPrimitive(sb, primitive);
 
@@ -997,24 +1003,29 @@ public sealed class TypeScriptSdk : ILanguage
         {
             sb.WriteLineIndented(
                 $"import {{" +
-                $" {valueSetExportName}," +
-                $" {valueSetExportName}Type," +
-                $"}} from '../{_relativeValueSetDirectory}/{valueSetExportName}.js';");
+                $" {valueSetExportName}{CodingObjectSuffix}," +
+                $" {valueSetExportName}{CodingTypeSuffix}," +
+                $"}} from '../{_relativeValueSetDirectory}/{valueSetExportName}{CodingObjectSuffix}.js';");
 
             sb.WriteLineIndented(
                 $"import {{" +
-                $" {valueSetExportName}Enum " +
-                $"}} from '../valueSetEnums.js';");
+                $" {valueSetExportName}{CodeObjectSuffix}, " +
+                $" {valueSetExportName}{CodeTypeSuffix} " +
+                $"}} from '../{_relativeValueSetDirectory}/{valueSetExportName}{CodeObjectSuffix}.js';");
         }
 
-        if (!complex.ReferencedValueSetExportNames.Contains("IssueTypeValueSet"))
+        if (!complex.ReferencedValueSetExportNames.Contains("IssueType"))
         {
-            sb.WriteLineIndented("import { IssueTypeValueSetEnum } from '../valueSetEnums.js';");
+            sb.WriteLineIndented(
+                $"import {{ IssueType{CodeObjectSuffix} }} " +
+                $"from '../{_relativeValueSetDirectory}/IssueType{CodeObjectSuffix}.js';");
         }
 
-        if (!complex.ReferencedValueSetExportNames.Contains("IssueSeverityValueSet"))
+        if (!complex.ReferencedValueSetExportNames.Contains("IssueSeverity"))
         {
-            sb.WriteLineIndented("import { IssueSeverityValueSetEnum } from '../valueSetEnums.js';");
+            sb.WriteLineIndented(
+                $"import {{ IssueSeverity{CodeObjectSuffix} }} " +
+                $"from '../{_relativeValueSetDirectory}/IssueSeverity{CodeObjectSuffix}.js';");
         }
 
         //BuildInterfaceForComplex(sb, complex);
@@ -1097,8 +1108,8 @@ public sealed class TypeScriptSdk : ILanguage
             }
 
             WriteIndentedComment(sb, $"{element.BoundValueSetStrength}-bound Value Set for {element.ExportName}");
-            sb.OpenScope($"public static {element.ExportName}{element.BoundValueSetStrength}ValueSet():{element.ValueSetExportName}Type {{");
-            sb.WriteLineIndented($"return {element.ValueSetExportName};");
+            sb.OpenScope($"public static {element.ExportName}{element.BoundValueSetStrength}Coding():{element.ValueSetExportName}{CodingTypeSuffix} {{");
+            sb.WriteLineIndented($"return {element.ValueSetExportName}{CodingObjectSuffix};");
             sb.CloseScope();
         }
 
@@ -1864,6 +1875,7 @@ public sealed class TypeScriptSdk : ILanguage
         }
 
         string exportType = ExpandJsonExportType(
+            element.HasReferencedValueSet && (element.BoundValueSetStrength == FhirElement.ElementDefinitionBindingStrength.Required),
             element.ExportJsonType,
             element.IsArray,
             element.ValueSetExportName,
@@ -1909,12 +1921,13 @@ public sealed class TypeScriptSdk : ILanguage
     /// <param name="ValueSetsByExportName">Name of the value sets by export.</param>
     /// <returns>A string.</returns>
     private string ExpandJsonExportType(
+        bool hasBoundVs,
         string jsonExportType,
         bool isArray,
         string valueSetExportName,
         Dictionary<string, ModelBuilder.ExportValueSet> ValueSetsByExportName)
     {
-        if (jsonExportType.EndsWith("Enum", StringComparison.Ordinal))
+        if (hasBoundVs)
         {
             if (ValueSetsByExportName.ContainsKey(valueSetExportName))
             {
@@ -1955,6 +1968,7 @@ public sealed class TypeScriptSdk : ILanguage
             }
 
             string exportType = ExpandJsonExportType(
+                ct.HasValueSetEnum,
                 ct.ExportJsonType,
                 element.IsArray,
                 element.ValueSetExportName,

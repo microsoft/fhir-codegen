@@ -17,7 +17,8 @@ public class ModelBuilder
         string ExportType,
         string ExportInterfaceType,
         string ExportJsonType,
-        bool IsPrimitive);
+        bool IsPrimitive,
+        bool HasValueSetEnum);
 
     /// <summary>An export element.</summary>
     public readonly record struct ExportElement(
@@ -399,12 +400,13 @@ public class ModelBuilder
         {
             if (vs != null)
             {
-                codeName = GetValueSetExportName(vs) + "Enum";
+                codeName = GetValueSetExportName(vs) + CodeTypeSuffix;
             }
             else
             {
+                Console.Write("");
                 codeName = FhirUtils.ToConvention(
-                    $"{fhirElement.Path}.Enum",
+                    $"{fhirElement.Path}.{CodeTypeSuffix}",
                     string.Empty,
                     FhirTypeBase.NamingConvention.PascalCase);
             }
@@ -416,122 +418,9 @@ public class ModelBuilder
         return false;
     }
 
-#if false
-    /// <summary>
-    /// Creates export elements for a FHIR element.  Choice-types and primitives will expand the
-    /// element definition to individual records.
-    /// </summary>
-    /// <param name="fhirComplex">                  The FHIR complex.</param>
-    /// <param name="fhirElement">                  The FHIR element.</param>
-    /// <param name="exportElements">               [out] The export elements.</param>
-    /// <param name="referencedValueSetExportNames">[out] List of names of the referenced value set
-    ///  exports.</param>
-    private void ProcessFhirElement(
-        FhirComplex fhirComplex,
-        FhirElement fhirElement,
-        out List<ExportElement> exportElements,
-        out List<string> referencedValueSetExportNames)
-    {
-        exportElements = new();
-        referencedValueSetExportNames = new();
-
-        bool isOptional = false;
-
-        List<FhirElement.ExpandedElementRec> values = fhirElement.ExpandNamesAndTypes(
-            FhirTypeBase.NamingConvention.CamelCase,
-            FhirTypeBase.NamingConvention.PascalCase,
-            false,
-            string.Empty,
-            fhirComplex.Components.ContainsKey(fhirElement.Path));
-
-        if (fhirElement.IsOptional || (values.Count > 1))
-        {
-            isOptional = true;
-        }
-
-        foreach ((string exportName, string fhirType, string fhirTypeName) in values)
-        {
-            string exportType;
-            string exportInterfaceType;
-            string exportJsonType;
-            bool hasReferencedValueSet = false;
-            string valueSetExportName = string.Empty;
-            FhirElement.ElementDefinitionBindingStrength? vsBindStrength = null;
-            FhirValueSet vs = null;
-            string shortId = fhirElement.Id.Split('.').Last();
-
-            if ((!string.IsNullOrEmpty(fhirElement.ValueSet)) &&
-                _info.TryGetValueSet(fhirElement.ValueSet, out vs))
-            {
-                hasReferencedValueSet = true;
-                valueSetExportName = GetValueSetExportName(vs);
-                vsBindStrength = fhirElement.ValueSetBindingStrength;
-
-                referencedValueSetExportNames.Add(valueSetExportName);
-            }
-
-            // Use generated enum for codes when required strength
-            // EXCLUDE the MIME type value set - those should be bound to strings
-            if (ElementRequiresCodeEnum(fhirElement, vs, out string codeName))
-            {
-                exportType = codeName;
-                exportInterfaceType = codeName;
-                exportJsonType = codeName;
-            }
-            else if (ComplexTypeSubstitutions.ContainsKey(fhirType))
-            {
-                exportType = "fhir." + ComplexTypeSubstitutions[fhirType];
-                exportInterfaceType = "fhir.I" + ComplexTypeSubstitutions[fhirType];
-                exportJsonType = "fhir." + ComplexTypeSubstitutions[fhirType];
-            }
-            else if (PrimitiveTypeMap.ContainsKey(fhirType))
-            {
-                exportType = "fhir.Fhir" + FhirUtils.ToConvention(
-                    fhirTypeName,
-                    string.Empty,
-                    FhirTypeBase.NamingConvention.PascalCase,
-                    false,
-                    string.Empty,
-                    ReservedWords);
-                exportInterfaceType = exportType;
-                exportJsonType = PrimitiveTypeMap[fhirType];
-            }
-            else if (_info.ExcludedKeys.Contains(fhirType))
-            {
-                exportType = "any";
-                exportInterfaceType = exportType;
-                exportJsonType = "any";
-            }
-            else
-            {
-                exportType = "fhir." + fhirType;
-                exportInterfaceType = "fhir.I" + fhirType;
-                exportJsonType = "fhir." + fhirType;
-            }
-
-            exportElements.Add(new ExportElement(
-                shortId,
-                fhirElement.Path,
-                fhirTypeName,
-                exportName,
-                fhirElement.Comment,
-                exportType,
-                exportInterfaceType,
-                exportJsonType,
-                fhirElement.ValidationRegEx,
-                isOptional,
-                fhirElement.IsArray,
-                RequiresExtension(fhirType),
-                hasReferencedValueSet,
-                valueSetExportName,
-                vsBindStrength));
-        }
-    }
-#endif
-
     /// <summary>Expand export type.</summary>
-    /// <param name="fhirType">     Type of the FHIR.</param>
-    /// <param name="fhirTypeName"> Name of the FHIR type.</param>
+    /// <param name="fhirPath">     Path to the FHIR element.</param>
+    /// <param name="fhirType"> Name of the FHIR type.</param>
     /// <param name="exportType">   [out] Type of the export.</param>
     /// <param name="interfaceType">[out] Type of the interface.</param>
     /// <param name="jsonType">     [out] Type of the JSON.</param>
@@ -668,6 +557,8 @@ public class ModelBuilder
 
             foreach (FhirElement.ExpandedElementRec rec in values)
             {
+                bool hasVs = false;
+
                 ExpandExportType(
                     fhirElement.Path,
                     rec.BaseFhirType,
@@ -677,12 +568,23 @@ public class ModelBuilder
                     out string exportInterfaceType,
                     out string exportJsonType);
 
+                // Use generated enum for codes when required strength
+                // EXCLUDE the MIME type value set - those should be bound to strings
+                if ((exportType == "fhir.FhirCode") &&
+                    ElementRequiresCodeEnum(fhirElement, vs, out string codeName))
+                {
+                    exportType = codeName;
+                    exportInterfaceType = codeName;
+                    exportJsonType = codeName;
+                }
+
                 ExportElementChoiceType ct = new ExportElementChoiceType(
                     rec.ProperyName,
                     exportType,
                     exportInterfaceType,
                     exportJsonType,
-                    RequiresExtension(exportJsonType));
+                    RequiresExtension(exportJsonType),
+                    hasVs);
 
                 choiceTypes.Add(ct);
             }
@@ -945,7 +847,8 @@ public class ModelBuilder
         string vsName = FhirUtils.SanitizeForProperty(fhirValueSet.Id ?? fhirValueSet.Name, ReservedWords);
         vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
 
-        return vsName + "ValueSet";
+        //return vsName + "ValueSet";
+        return vsName;
     }
 
     /// <summary>Process the FHIR value set described by fhirValueSet.</summary>

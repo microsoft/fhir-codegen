@@ -9,6 +9,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk;
 internal static class TypeScriptSdkCommon
 {
     /// <summary>
+    /// Literal to append to Value Set Coding Objects.
+    /// </summary>
+    internal const string CodingObjectSuffix = "Codings";
+
+    /// <summary>
+    /// Literal to append to Value Set Coding types.
+    /// </summary>
+    internal const string CodingTypeSuffix = "CodingType";
+
+    /// <summary>
+    /// Literal to append to code objects.
+    /// </summary>
+    internal const string CodeObjectSuffix = "Codes";
+
+    /// <summary>
+    /// Literal to append to code object types.
+    /// </summary>
+    internal const string CodeTypeSuffix = "CodeType";
+
+    /// <summary>
     /// (Immutable) Dictionary mapping FHIR primitive types to language equivalents.
     /// </summary>
     internal static readonly Dictionary<string, string> PrimitiveTypeMap = new(StringComparer.OrdinalIgnoreCase)
@@ -156,7 +176,7 @@ internal static class TypeScriptSdkCommon
     public static class TsOutcomeIssueSeverity
     {
         /// <summary>(Immutable) The root TS enum.</summary>
-        private const string _root = "IssueSeverityValueSetEnum.";
+        private const string _root = "IssueSeverity" + CodeObjectSuffix + ".";
 
         /// <summary>
         /// (Immutable)
@@ -188,7 +208,7 @@ internal static class TypeScriptSdkCommon
     public static class TsOutcomeIssueType
     {
         /// <summary>(Immutable) The root TS enum.</summary>
-        private const string _root = "IssueTypeValueSetEnum.";
+        private const string _root = "IssueType" + CodeObjectSuffix + ".";
 
         /// <summary>
         /// (Immutable)
