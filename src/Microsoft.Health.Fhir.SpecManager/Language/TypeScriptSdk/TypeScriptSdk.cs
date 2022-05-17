@@ -137,9 +137,9 @@ public sealed class TypeScriptSdk : ILanguage
             }
         }
 
-        if (options.SupportFiles.StaticFiles.Any())
+        if (options.SupportFiles.AdditionalFiles.Any())
         {
-            foreach (LanguageSupportFiles.SupportFileRec fileRec in options.SupportFiles.StaticFiles.Values)
+            foreach (LanguageSupportFiles.SupportFileRec fileRec in options.SupportFiles.AdditionalFiles.Values)
             {
                 string dest = Path.Combine(exportDirectory, fileRec.RelativeFilename);
                 string dir = Path.GetDirectoryName(dest);
@@ -194,7 +194,7 @@ public sealed class TypeScriptSdk : ILanguage
         ExportStringBuilder sb,
         string relativeFilename)
     {
-        if (_options.SupportFiles.StaticFiles.ContainsKey(relativeFilename))
+        if (_options.SupportFiles.ReplacementFiles.ContainsKey(relativeFilename))
         {
             return;
         }

@@ -14,8 +14,9 @@ public class LanguageSupportFiles
 {
     /// <summary>Pathname of the directory.</summary>
     private string _directory;
-    private Dictionary<string, SupportFileRec> _staticFiles;
-    private Dictionary<string, List<string>> _dynamicFiles;
+    private Dictionary<string, SupportFileRec> _additionalFiles;
+    private Dictionary<string, List<string>> _insertions;
+    private Dictionary<string, SupportFileRec> _replacementFiles;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LanguageSupportFiles"/> class.
@@ -42,8 +43,9 @@ public class LanguageSupportFiles
         }
 
         _directory = inputDir;
-        _staticFiles = new();
-        _dynamicFiles = new(StringComparer.OrdinalIgnoreCase);
+        _additionalFiles = new();
+        _insertions = new(StringComparer.OrdinalIgnoreCase);
+        _replacementFiles = new();
     }
 
     /// <summary>A static support file.</summary>
@@ -51,11 +53,14 @@ public class LanguageSupportFiles
         string Filename,
         string RelativeFilename);
 
-    /// <summary>Gets the static files.</summary>
-    public Dictionary<string, SupportFileRec> StaticFiles => _staticFiles;
+    /// <summary>Gets the additional files that should be included.</summary>
+    public Dictionary<string, SupportFileRec> AdditionalFiles => _additionalFiles;
 
-    /// <summary>Gets the dynamic files.</summary>
-    public Dictionary<string, List<string>> DynamicFiles => _dynamicFiles;
+    /// <summary>Gets the files that include insertions for objects.</summary>
+    public Dictionary<string, List<string>> Insertions => _insertions;
+
+    /// <summary>Gets the replacement files that should be used only as substitutions.</summary>
+    public Dictionary<string, SupportFileRec> ReplacementFiles => _replacementFiles;
 
     /// <summary>Attempts to get input for key a string from the given string.</summary>
     /// <param name="key">     The key.</param>
@@ -65,12 +70,12 @@ public class LanguageSupportFiles
     {
         contents = string.Empty;
 
-        if (!_dynamicFiles.ContainsKey(key))
+        if (!_insertions.ContainsKey(key))
         {
             return false;
         }
 
-        foreach (string file in _dynamicFiles[key])
+        foreach (string file in _insertions[key])
         {
             contents += File.ReadAllText(file);
         }
@@ -83,27 +88,27 @@ public class LanguageSupportFiles
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryLoad(FhirSequenceEnum fhirSequence)
     {
-        string inputStaticDir = Path.Combine(_directory, "static");
+        string inputAdditionsDir = Path.Combine(_directory, "additional-files");
 
-        _staticFiles.Clear();
-        if (Directory.Exists(inputStaticDir))
+        _additionalFiles.Clear();
+        if (Directory.Exists(inputAdditionsDir))
         {
-            string[] files = Directory.GetFiles(inputStaticDir, "*.*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(inputAdditionsDir, "*.*", SearchOption.AllDirectories);
 
             foreach (string file in files)
             {
-                string relative = Path.GetRelativePath(inputStaticDir, file);
-                _staticFiles.Add(relative, new(file, relative));
+                string relative = Path.GetRelativePath(inputAdditionsDir, file);
+                _additionalFiles.Add(relative, new(file, relative));
             }
         }
 
-        string inputDynamicDir = Path.Combine(_directory, "dynamic");
+        string inputInsertionsDir = Path.Combine(_directory, "insertions");
 
-        _dynamicFiles.Clear();
+        _insertions.Clear();
 
-        if (Directory.Exists(inputDynamicDir))
+        if (Directory.Exists(inputInsertionsDir))
         {
-            string[] files = Directory.GetFiles(inputDynamicDir, "*.*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(inputInsertionsDir, "*.*", SearchOption.AllDirectories);
 
             foreach (string file in files)
             {
@@ -114,12 +119,12 @@ public class LanguageSupportFiles
                     // just key
                     case 1:
                         {
-                            if (!_dynamicFiles.ContainsKey(components[0]))
+                            if (!_insertions.ContainsKey(components[0]))
                             {
-                                _dynamicFiles.Add(components[0], new());
+                                _insertions.Add(components[0], new());
                             }
 
-                            _dynamicFiles[components[0]].Add(file);
+                            _insertions[components[0]].Add(file);
                         }
 
                         break;
@@ -133,12 +138,12 @@ public class LanguageSupportFiles
 
                                 if (fhirSequence >= min)
                                 {
-                                    if (!_dynamicFiles.ContainsKey(components[0]))
+                                    if (!_insertions.ContainsKey(components[0]))
                                     {
-                                        _dynamicFiles.Add(components[0], new());
+                                        _insertions.Add(components[0], new());
                                     }
 
-                                    _dynamicFiles[components[0]].Add(file);
+                                    _insertions[components[0]].Add(file);
                                 }
                             }
                             catch (Exception ex)
@@ -160,12 +165,12 @@ public class LanguageSupportFiles
 
                                 if ((fhirSequence >= min) && (fhirSequence <= max))
                                 {
-                                    if (!_dynamicFiles.ContainsKey(components[0]))
+                                    if (!_insertions.ContainsKey(components[0]))
                                     {
-                                        _dynamicFiles.Add(components[0], new());
+                                        _insertions.Add(components[0], new());
                                     }
 
-                                    _dynamicFiles[components[0]].Add(file);
+                                    _insertions[components[0]].Add(file);
                                 }
                             }
                             catch (Exception ex)
@@ -181,6 +186,21 @@ public class LanguageSupportFiles
                         Console.WriteLine($" <<< unsupported language input file: {file}");
                         return false;
                 }
+            }
+        }
+
+        string inputReplacementDir = Path.Combine(_directory, "replacement-files");
+
+        _replacementFiles.Clear();
+
+        if (Directory.Exists(inputReplacementDir))
+        {
+            string[] files = Directory.GetFiles(inputReplacementDir, "*.*", SearchOption.AllDirectories);
+
+            foreach (string file in files)
+            {
+                string relative = Path.GetRelativePath(inputAdditionsDir, file);
+                _replacementFiles.Add(relative, new(file, relative));
             }
         }
 
