@@ -9,7 +9,7 @@ import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
 /**
  * See The Open Group, CDE 1.1 Remote Procedure Call specification, Appendix A.
  */
-export interface FhirUuidArgs extends fhir.FhirStringArgs {
+export interface FhirUuidArgs extends fhir.FhirUriArgs {
   /**
    * See The Open Group, CDE 1.1 Remote Procedure Call specification, Appendix A.
    */
@@ -19,11 +19,17 @@ export interface FhirUuidArgs extends fhir.FhirStringArgs {
 /**
  * See The Open Group, CDE 1.1 Remote Procedure Call specification, Appendix A.
  */
-export class FhirUuid extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Uuid';
-  protected static readonly _fts_jsonType:string = 'string';
+export class FhirUuid extends fhir.FhirUri {
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Uuid';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
-  static readonly _fts_regex:RegExp = /^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
+  public static readonly _fts_regex:RegExp = /^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
   /**
    * A uuid value, represented as a JS string
    */

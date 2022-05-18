@@ -3,9 +3,6 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 /**
  * XHTML
  */
@@ -20,8 +17,14 @@ export interface FhirXhtmlArgs extends fhir.FhirStringArgs {
  * XHTML
  */
 export class FhirXhtml extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Xhtml';
-  protected static readonly _fts_jsonType:string = 'string';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Xhtml';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   /**
    * A xhtml value, represented as a JS string
    */

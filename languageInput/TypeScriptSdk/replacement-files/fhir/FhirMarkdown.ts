@@ -20,10 +20,16 @@ export interface FhirMarkdownArgs extends fhir.FhirStringArgs {
  * Systems are not required to have markdown support, so the text should be readable without markdown processing. The markdown syntax is GFM - see https://github.github.com/gfm/
  */
 export class FhirMarkdown extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Markdown';
-  protected static readonly _fts_jsonType:string = 'string';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Markdown';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: [ \r\n\t\S]+
-  static readonly _fts_regex:RegExp = /^[ \r\n\t\S]+$/
+  public static readonly _fts_regex:RegExp = /^[ \r\n\t\S]+$/
   /**
    * A markdown value, represented as a JS string
    */

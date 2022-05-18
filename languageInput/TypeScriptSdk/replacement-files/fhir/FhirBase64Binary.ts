@@ -20,10 +20,16 @@ export interface FhirBase64BinaryArgs extends fhir.FhirStringArgs {
  * A stream of bytes, base64 encoded
  */
 export class FhirBase64Binary extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Base64Binary';
-  protected static readonly _fts_jsonType:string = 'string';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Base64Binary';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: (\s*([0-9a-zA-Z\+/=]){4}\s*)+
-  static readonly _fts_regex:RegExp = /^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$/
+  public static readonly _fts_regex:RegExp = /^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$/
   /**
    * A base64Binary value, represented as a JS string
    */

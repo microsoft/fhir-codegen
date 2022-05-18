@@ -20,10 +20,16 @@ export interface FhirPositiveIntArgs extends fhir.FhirIntegerArgs {
  * An integer with a value that is positive (e.g. &gt;0)
  */
 export class FhirPositiveInt extends fhir.FhirInteger {
-  protected static readonly _fts_dataType:string = 'PositiveInt';
-  protected static readonly _fts_jsonType:string = 'number';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'PositiveInt';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'number';
   // published regex: [1-9][0-9]*
-  static readonly _fts_regex:RegExp = /^[1-9][0-9]*$/
+  public static readonly _fts_regex:RegExp = /^[1-9][0-9]*$/
   /**
    * A positiveInt value, represented as a JS number
    */

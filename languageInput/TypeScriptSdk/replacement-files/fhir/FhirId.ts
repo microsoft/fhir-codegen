@@ -20,10 +20,16 @@ export interface FhirIdArgs extends fhir.FhirStringArgs {
  * RFC 4122
  */
 export class FhirId extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Id';
-  protected static readonly _fts_jsonType:string = 'string';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Id';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: [A-Za-z0-9\-\.]{1,64}
-  static readonly _fts_regex:RegExp = /^[A-Za-z0-9\-\.]{1,64}$/
+  public static readonly _fts_regex:RegExp = /^[A-Za-z0-9\-\.]{1,64}$/
   /**
    * A id value, represented as a JS string
    */

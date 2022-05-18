@@ -9,7 +9,7 @@ import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
 /**
  * A URI that is a literal reference
  */
-export interface FhirUrlArgs extends fhir.FhirStringArgs {
+export interface FhirUrlArgs extends fhir.FhirUriArgs {
   /**
    * A URI that is a literal reference
    */
@@ -19,11 +19,17 @@ export interface FhirUrlArgs extends fhir.FhirStringArgs {
 /**
  * A URI that is a literal reference
  */
-export class FhirUrl extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Url';
-  protected static readonly _fts_jsonType:string = 'string';
+export class FhirUrl extends fhir.FhirUri {
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Url';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: \S*
-  static readonly _fts_regex:RegExp = /^\S*$/
+  public static readonly _fts_regex:RegExp = /^\S*$/
   /**
    * A url value, represented as a JS string
    */

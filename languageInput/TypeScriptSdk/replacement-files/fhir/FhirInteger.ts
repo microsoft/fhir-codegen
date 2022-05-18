@@ -20,10 +20,16 @@ export interface FhirIntegerArgs extends fhir.FhirPrimitiveArgs {
  * 32 bit number; for values larger than this, use decimal
  */
 export class FhirInteger extends fhir.FhirPrimitive {
-  protected static readonly _fts_dataType:string = 'Integer';
-  protected static readonly _fts_jsonType:string = 'number';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Integer';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'number';
   // published regex: -?([0]|([1-9][0-9]*))
-  static readonly _fts_regex:RegExp = /^-?([0]|([1-9][0-9]*))$/
+  public static readonly _fts_regex:RegExp = /^-?([0]|([1-9][0-9]*))$/
   /**
    * A integer value, represented as a JS number
    */

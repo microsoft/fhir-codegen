@@ -257,6 +257,11 @@ public class ModelBuilder
     {
         List<ExportTokenInfo> tokens = new();
 
+        if (primitiveName.Equals("FhirBase", StringComparison.Ordinal))
+        {
+            tokens.Add(new ExportTokenInfo("FhirConstructorOptions", true));
+        }
+
         //tokens.Add(new ExportTokenInfo("I" + primitiveName, true));
         tokens.Add(new ExportTokenInfo(primitiveName + "Args", true));
         tokens.Add(new ExportTokenInfo(primitiveName, false));
@@ -368,14 +373,14 @@ public class ModelBuilder
             fhirComplex.Name.Equals("Element", StringComparison.Ordinal))
         {
             exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, ReservedWords);
-            exportType = string.Empty;
-            exportInterfaceType = string.Empty;
+            exportType = "fhir.FhirBase";
+            exportInterfaceType = "fhir.IFhirBase";
         }
         else if (fhirComplex.Name.Equals(fhirComplex.BaseTypeName, StringComparison.Ordinal))
         {
             exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, ReservedWords);
-            exportType = string.Empty;
-            exportInterfaceType = string.Empty;
+            exportType = "fhir.FhirBase";
+            exportInterfaceType = "fhir.IFhirBase";
         }
         else if ((fhirComplex.Components != null) && fhirComplex.Components.ContainsKey(fhirComplex.Path))
         {

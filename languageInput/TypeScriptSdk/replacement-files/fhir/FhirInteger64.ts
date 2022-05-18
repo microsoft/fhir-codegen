@@ -23,10 +23,16 @@ export interface FhirInteger64Args extends fhir.FhirNumberArgs {
  * This type is defined to allow for record/time counters that can get very large
  */
 export class FhirInteger64 extends fhir.FhirNumber {
-  protected static readonly _fts_dataType:string = 'Integer64';
-  protected static readonly _fts_jsonType:string = 'string';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Integer64';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: -?([0]|([1-9][0-9]*))
-  static readonly _fts_regex:RegExp = /^-?([0]|([1-9][0-9]*))$/
+  public static readonly _fts_regex:RegExp = /^-?([0]|([1-9][0-9]*))$/
   /**
    * A integer64 value, represented as a JS number
    */

@@ -2,7 +2,8 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueSeverityValueSetEnum, IssueTypeValueSetEnum } from '../valueSetEnums.js';
+import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
+import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
 
 export interface FhirPrimitiveArgs {
   /**
@@ -22,9 +23,12 @@ export interface FhirPrimitiveArgs {
  }
 
 export class FhirPrimitive extends fhir.FhirBase  {
-  protected readonly _fts_isPrimitive:boolean = true;
-  protected readonly _fts_dataType:string='PrimitiveType';
-  protected readonly _fts_jsonType:string='any';
+  public readonly _fts_isPrimitive:boolean = true;
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public readonly _fts_dataType:string='PrimitiveType';
+  public readonly _fts_jsonType:string='any';
 
   /**
    * Value of the primitive - constrained by decendant classes.
@@ -83,8 +87,8 @@ export class FhirPrimitive extends fhir.FhirBase  {
     var outcome:fhir.OperationOutcome = new fhir.OperationOutcome({issue:[]});
     if ((!this.value) && (!this.id) && ((!this.extension) || (this.extension.length === 0))) {
       outcome.issue!.push(new fhir.OperationOutcomeIssue({
-        severity: IssueSeverityValueSetEnum.Error,
-        code: IssueTypeValueSetEnum.RequiredElementMissing,
+        severity: IssueSeverityCodes.Error,
+        code: IssueTypeCodes.RequiredElementMissing,
         diagnostics: "Primitive values must have a value, id, or extensions.",
       }));
     }

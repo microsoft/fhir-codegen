@@ -20,10 +20,16 @@ export interface FhirDecimalArgs extends fhir.FhirPrimitiveArgs {
  * Do not use an IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigInteger)
  */
 export class FhirDecimal extends fhir.FhirPrimitive {
-  protected static readonly _fts_dataType:string = 'Decimal';
-  protected static readonly _fts_jsonType:string = 'number';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Decimal';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'number';
   // published regex: -?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?
-  static readonly _fts_regex:RegExp = /^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$/
+  public static readonly _fts_regex:RegExp = /^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$/
   /**
    * A decimal value, represented as a JS number
    */

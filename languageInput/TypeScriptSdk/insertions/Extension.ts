@@ -12,7 +12,7 @@
       return ext;
     }
 
-    const vName = 'value' + (value.__dataType) ? value.__dataType : value.constructor.name;
+    const vName = 'value' + (value._fts_dataType) ? value._fts_dataType : value.constructor.name;
     (ext as any)[vName] = value;
     return ext;
   }

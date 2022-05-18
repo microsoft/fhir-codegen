@@ -20,10 +20,16 @@ export interface FhirUriArgs extends fhir.FhirStringArgs {
  * see http://en.wikipedia.org/wiki/Uniform_resource_identifier
  */
 export class FhirUri extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Uri';
-  protected static readonly _fts_jsonType:string = 'string';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Uri';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: \S*
-  static readonly _fts_regex:RegExp = /^\S*$/
+  public static readonly _fts_regex:RegExp = /^\S*$/
   /**
    * A uri value, represented as a JS string
    */

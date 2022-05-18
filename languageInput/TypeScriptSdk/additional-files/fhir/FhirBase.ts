@@ -1,10 +1,32 @@
 // Minimum TypeScript Version: 3.7
 
+import { OperationOutcome } from './OperationOutcome.js';
+
+export interface FhirConstructorOptions {
+  /** If instantiated objects should allow non-FHIR defined properties */
+  allowUnknownElements?: boolean|undefined;
+}
+
 export interface FhirBaseArgs { }
 
 export class FhirBase {
-  protected readonly _fts_dataType:string='Base';
-  constructor() { }
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public readonly _fts_dataType:string='Base';
+
+  /** Default constructor */
+  constructor(source:Partial<FhirBaseArgs> = {}, options:FhirConstructorOptions = {}) {
+    if (options.allowUnknownElements === true) { Object.assign(this, source); }
+  }
+
+  /**
+   * Function to perform basic model validation (e.g., check if required elements are present).
+   */
+   public doModelValidation():OperationOutcome {
+    var outcome:OperationOutcome = new OperationOutcome({issue:[]});
+    return outcome;
+  }
 
   /**
    * Convert a class-structured model into JSON

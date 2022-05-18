@@ -287,7 +287,7 @@ public sealed class TypeScriptSdk : ILanguage
                 $"import {{" +
                 $" {vs.ExportName}{CodingObjectSuffix}, {vs.ExportName}{CodingTypeSuffix}," +
                 $" }}" +
-                $" from './{_relativeValueSetDirectory}/{vs.ExportName}.js'");
+                $" from './{_relativeValueSetDirectory}/{vs.ExportName}{CodingObjectSuffix}.js'");
         }
 
         sb.WriteLine(string.Empty);
@@ -345,7 +345,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         WriteFhirResourceFactory(sb, exports);
 
-        WriteFhirConstructorPropsInterface(sb);
+        //WriteFhirConstructorPropsInterface(sb);
 
         if (_options.SupportFiles.TryGetInputForKey("fhir", out string contents))
         {
@@ -371,7 +371,8 @@ public sealed class TypeScriptSdk : ILanguage
         }
 
         //sb.WriteLineIndented("type IFhirResource, type FhirResource, type FhirConstructorOptions, ");
-        sb.WriteLineIndented("type FhirResource, type FhirConstructorOptions, ");
+        //sb.WriteLineIndented("type FhirResource, type FhirConstructorOptions, ");
+        sb.WriteLineIndented("type FhirResource, ");
         sb.WriteLineIndented("fhirToJson, ");
         sb.WriteLineIndented("resourceFactory, ");
 
@@ -563,7 +564,8 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.WriteLine($"// FHIR ValueSet: {vs.FhirUrl}|{vs.FhirVersion}");
         sb.WriteLine(string.Empty);
-        sb.WriteLineIndented("import { Coding } from '../fhir.js'");
+        //sb.WriteLineIndented("import { Coding } from '../fhir.js'");
+        sb.WriteLineIndented("import { Coding } from '../fhir/Coding.js'");
         sb.WriteLine(string.Empty);
 
         if (!string.IsNullOrEmpty(vs.ExportComment))
@@ -668,11 +670,13 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLineIndented("import * as fhir from '../fhir.js';");
         sb.WriteLine(string.Empty);
 
+        WriteIgnoreNonUseLine(sb);
         sb.WriteLineIndented(
             $"import {{" +
             $" IssueType{CodeObjectSuffix}" +
             $" }} from '../{_relativeValueSetDirectory}/IssueType{CodeObjectSuffix}.js';");
 
+        WriteIgnoreNonUseLine(sb);
         sb.WriteLineIndented(
             $"import {{" +
             $" IssueSeverity{CodeObjectSuffix}" +
@@ -755,8 +759,10 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.IncreaseIndent();
 
-        sb.WriteLineIndented($"protected static readonly {_tsInternalPrefix}dataType:string = '{primitive.ExportClassName.Substring(4)}';");
-        sb.WriteLineIndented($"protected static readonly {_tsInternalPrefix}jsonType:string = '{primitive.JsonExportType}';");
+        WriteIndentedComment(sb, $"Mapping of this primitive to the FHIR equivalent");
+        sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}dataType:string = '{primitive.ExportClassName.Substring(4)}';");
+        WriteIndentedComment(sb, $"Mapping of this primitive to the JSON equivalent");
+        sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}jsonType:string = '{primitive.JsonExportType}';");
 
         if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
         {
@@ -773,7 +779,7 @@ public sealed class TypeScriptSdk : ILanguage
             }
 
             sb.WriteLineIndented($"// published regex: {primitive.ValidationRegEx}");
-            sb.WriteLineIndented($"static readonly {_tsInternalPrefix}regex:RegExp = /{exp}/");
+            sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}regex:RegExp = /{exp}/");
         }
 
         WriteIndentedComment(sb, $"A {primitive.FhirName} value, represented as a JS {primitive.JsonExportType}");
@@ -1013,12 +1019,14 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (string valueSetExportName in complex.ReferencedValueSetExportNames)
         {
+            WriteIgnoreNonUseLine(sb);
             sb.WriteLineIndented(
                 $"import {{" +
                 $" {valueSetExportName}{CodingObjectSuffix}," +
                 $" {valueSetExportName}{CodingTypeSuffix}," +
                 $"}} from '../{_relativeValueSetDirectory}/{valueSetExportName}{CodingObjectSuffix}.js';");
 
+            WriteIgnoreNonUseLine(sb);
             sb.WriteLineIndented(
                 $"import {{" +
                 $" {valueSetExportName}{CodeObjectSuffix}, " +
@@ -1028,6 +1036,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (!complex.ReferencedValueSetExportNames.Contains("IssueType"))
         {
+            WriteIgnoreNonUseLine(sb);
             sb.WriteLineIndented(
                 $"import {{ IssueType{CodeObjectSuffix} }} " +
                 $"from '../{_relativeValueSetDirectory}/IssueType{CodeObjectSuffix}.js';");
@@ -1035,6 +1044,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (!complex.ReferencedValueSetExportNames.Contains("IssueSeverity"))
         {
+            WriteIgnoreNonUseLine(sb);
             sb.WriteLineIndented(
                 $"import {{ IssueSeverity{CodeObjectSuffix} }} " +
                 $"from '../{_relativeValueSetDirectory}/IssueSeverity{CodeObjectSuffix}.js';");
@@ -1093,13 +1103,14 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.IncreaseIndent();
 
+        WriteIndentedComment(sb, $"Mapping of this datatype to a FHIR equivalent");
         if (complex.ExportClassName.StartsWith("Fhir", StringComparison.Ordinal))
         {
             sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}dataType:string = '{complex.ExportClassName.Substring(4)}';");
         }
         else
         {
-            sb.WriteLineIndented($"protected static readonly {_tsInternalPrefix}dataType:string = '{complex.ExportClassName}';");
+            sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}dataType:string = '{complex.ExportClassName}';");
         }
 
         // add actual elements
@@ -1114,12 +1125,13 @@ public sealed class TypeScriptSdk : ILanguage
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
             if ((!element.HasReferencedValueSet) ||
-                (element.BoundValueSetStrength == null))
+                (element.BoundValueSetStrength == null) ||
+                (element.BoundValueSetStrength == FhirElement.ElementDefinitionBindingStrength.Example))
             {
                 continue;
             }
 
-            WriteIndentedComment(sb, $"{element.BoundValueSetStrength}-bound Value Set for {element.ExportName}");
+            WriteIndentedComment(sb, $"{element.BoundValueSetStrength}-bound Value Set for {element.ExportName} ({element.FhirPath})");
             sb.OpenScope($"public static {element.ExportName}{element.BoundValueSetStrength}Coding():{element.ValueSetExportName}{CodingTypeSuffix} {{");
             sb.WriteLineIndented($"return {element.ValueSetExportName}{CodingObjectSuffix};");
             sb.CloseScope();
@@ -1305,7 +1317,7 @@ public sealed class TypeScriptSdk : ILanguage
             $"new fhir.OperationOutcomeIssue({{" +
             $" severity: {issueSeverity}," +
             $" code: {issueType}, " +
-            $" diagnostics: \"{SanitizeForTsQuoted(message) ?? string.Empty}\"," +
+            $" diagnostics: {TsQuoteAndSanitize(message) ?? "''"}," +
             $" }})";
     }
 
@@ -1778,7 +1790,8 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (element.IsChoice && (!isInterface))
         {
-            sb.WriteLineIndented($"protected static const {_tsInternalPrefix}{element.ExportName}IsChoice:true = true;");
+            WriteIndentedComment(sb, $"Internal flag to properly serialize choice-type element {element.FhirPath}");
+            sb.WriteLineIndented($"protected static readonly {_tsInternalPrefix}{element.ExportName}IsChoice:true = true;");
         }
     }
 
@@ -1828,7 +1841,8 @@ public sealed class TypeScriptSdk : ILanguage
             WriteIndentedComment(sb, complex.ExportComment);
         }
 
-        if (string.IsNullOrEmpty(complex.ExportType))
+        if (string.IsNullOrEmpty(complex.ExportType) ||
+            complex.ExportType.Equals("fhir.FhirBase", StringComparison.Ordinal))
         {
             sb.WriteLineIndented($"export interface {complex.ExportClassName} {{");
         }
@@ -1947,13 +1961,13 @@ public sealed class TypeScriptSdk : ILanguage
                 {
                     return "(" + string.Join(
                         "|",
-                        ValueSetsByExportName[valueSetExportName].CodingsByExportName.Values.Select((c) => "'" + c.Code + "'")) +
+                        ValueSetsByExportName[valueSetExportName].CodingsByExportName.Values.Select((c) => TsQuoteAndSanitize(c.Code))) +
                     ")";
                 }
 
                 return string.Join(
                     "|",
-                    ValueSetsByExportName[valueSetExportName].CodingsByExportName.Values.Select((c) => "'" + c.Code + "'"));
+                    ValueSetsByExportName[valueSetExportName].CodingsByExportName.Values.Select((c) => TsQuoteAndSanitize(c.Code)));
             }
 
             return "string";
@@ -1999,21 +2013,30 @@ public sealed class TypeScriptSdk : ILanguage
         }
     }
 
+    /// <summary>Writes an ignore non use line.</summary>
+    /// <param name="sb">The writer.</param>
+    private static void WriteIgnoreNonUseLine(ExportStringBuilder sb)
+    {
+        sb.WriteLineIndented("// @ts-ignore");
+        //sb.WriteLineIndented("// eslint-disable-next-line  no-unused-vars");
+    }
+
     /// <summary>Sanitize for ts quoted.</summary>
     /// <param name="input">The input.</param>
     /// <returns>A string.</returns>
-    private static string SanitizeForTsQuoted(string input)
+    private static string TsQuoteAndSanitize(string input)
     {
         if (string.IsNullOrEmpty(input))
         {
-            return string.Empty;
+            return "''";
         }
 
-        input = input.Replace("\"", "'");
+        input = input.Replace("\\", "\\\\");
+        input = input.Replace("\'", "\\\'");
         input = input.Replace("\r", "\\r");
         input = input.Replace("\n", "\\n");
 
-        return input;
+        return "'" + input + "'";
     }
 
     /// <summary>Writes a header.</summary>

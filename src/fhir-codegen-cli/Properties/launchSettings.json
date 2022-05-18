@@ -252,7 +252,7 @@
         },
         "ts-sdk-r4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\ts-sdk\\r4\\src --load-r4 latest --language TypeScriptSdk --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\fhir-typescript\\core\\r4\\src --load-r4 latest --language TypeScriptSdk --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "firelyJsonTest": {

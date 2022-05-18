@@ -9,7 +9,7 @@ import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
 /**
  * see [Canonical References](references.html#canonical)
  */
-export interface FhirCanonicalArgs extends fhir.FhirStringArgs {
+export interface FhirCanonicalArgs extends fhir.FhirUriArgs {
   /**
    * see [Canonical References](references.html#canonical)
    */
@@ -19,11 +19,17 @@ export interface FhirCanonicalArgs extends fhir.FhirStringArgs {
 /**
  * see [Canonical References](references.html#canonical)
  */
-export class FhirCanonical extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Canonical';
-  protected static readonly _fts_jsonType:string = 'string';
+export class FhirCanonical extends fhir.FhirUri {
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Canonical';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: \S*
-  static readonly _fts_regex:RegExp = /^\S*$/
+  public static readonly _fts_regex:RegExp = /^\S*$/
   /**
    * A canonical value, represented as a JS string
    */

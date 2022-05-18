@@ -20,10 +20,16 @@ export interface FhirStringArgs extends fhir.FhirPrimitiveArgs {
  * Note that FHIR strings SHALL NOT exceed 1MB in size
  */
 export class FhirString extends fhir.FhirPrimitive {
-  protected static readonly _fts_dataType:string = 'String';
-  protected static readonly _fts_jsonType:string = 'string';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'String';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: [ \r\n\t\S]+
-  static readonly _fts_regex:RegExp = /^[ \r\n\t\S]+$/
+  public static readonly _fts_regex:RegExp = /^[ \r\n\t\S]+$/
   /**
    * A string value, represented as a JS string
    */

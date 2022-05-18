@@ -20,10 +20,16 @@ export interface FhirBooleanArgs extends fhir.FhirPrimitiveArgs {
  * Value of "true" or "false"
  */
 export class FhirBoolean extends fhir.FhirPrimitive {
-  protected static readonly _fts_dataType:string = 'Boolean';
-  protected static readonly _fts_jsonType:string = 'boolean';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Boolean';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'boolean';
   // published regex: true|false
-  static readonly _fts_regex:RegExp = /^true|false$/
+  public static readonly _fts_regex:RegExp = /^true|false$/
   /**
    * A boolean value, represented as a JS boolean
    */

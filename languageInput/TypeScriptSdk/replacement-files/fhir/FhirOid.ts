@@ -9,7 +9,7 @@ import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
 /**
  * RFC 3001. See also ISO/IEC 8824:1990 €
  */
-export interface FhirOidArgs extends fhir.FhirStringArgs {
+export interface FhirOidArgs extends fhir.FhirUriArgs {
   /**
    * RFC 3001. See also ISO/IEC 8824:1990 €
    */
@@ -19,11 +19,17 @@ export interface FhirOidArgs extends fhir.FhirStringArgs {
 /**
  * RFC 3001. See also ISO/IEC 8824:1990 €
  */
-export class FhirOid extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Oid';
-  protected static readonly _fts_jsonType:string = 'string';
+export class FhirOid extends fhir.FhirUri {
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Oid';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: urn:oid:[0-2](\.(0|[1-9][0-9]*))+
-  static readonly _fts_regex:RegExp = /^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$/
+  public static readonly _fts_regex:RegExp = /^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$/
   /**
    * A oid value, represented as a JS string
    */

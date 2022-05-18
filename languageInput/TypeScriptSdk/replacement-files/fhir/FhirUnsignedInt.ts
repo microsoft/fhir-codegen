@@ -20,10 +20,16 @@ export interface FhirUnsignedIntArgs extends fhir.FhirIntegerArgs {
  * An integer with a value that is not negative (e.g. &gt;= 0)
  */
 export class FhirUnsignedInt extends fhir.FhirInteger {
-  protected static readonly _fts_dataType:string = 'UnsignedInt';
-  protected static readonly _fts_jsonType:string = 'number';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'UnsignedInt';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'number';
   // published regex: [0]|([1-9][0-9]*)
-  static readonly _fts_regex:RegExp = /^[0]|([1-9][0-9]*)$/
+  public static readonly _fts_regex:RegExp = /^[0]|([1-9][0-9]*)$/
   /**
    * A unsignedInt value, represented as a JS number
    */

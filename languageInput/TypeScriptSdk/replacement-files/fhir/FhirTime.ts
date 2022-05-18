@@ -20,10 +20,16 @@ export interface FhirTimeArgs extends fhir.FhirStringArgs {
  * A time during the day, with no date specified
  */
 export class FhirTime extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Time';
-  protected static readonly _fts_jsonType:string = 'string';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Time';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: ([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?
-  static readonly _fts_regex:RegExp = /^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$/
+  public static readonly _fts_regex:RegExp = /^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$/
   /**
    * A time value, represented as a JS string
    */

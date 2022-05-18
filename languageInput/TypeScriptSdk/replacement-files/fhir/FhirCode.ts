@@ -20,10 +20,16 @@ export interface FhirCodeArgs extends fhir.FhirStringArgs {
  * A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents
  */
 export class FhirCode extends fhir.FhirString {
-  protected static readonly _fts_dataType:string = 'Code';
-  protected static readonly _fts_jsonType:string = 'string';
+  /**
+   * Mapping of this datatype to a FHIR equivalent
+   */
+  public static readonly _fts_dataType:string = 'Code';
+  /**
+   * Mapping of this datatype to a JSON equivalent
+   */
+  public static readonly _fts_jsonType:string = 'string';
   // published regex: [^\s]+(\s[^\s]+)*
-  static readonly _fts_regex:RegExp = /^[^\s]+(\s[^\s]+)*$/
+  public static readonly _fts_regex:RegExp = /^[^\s]+(\s[^\s]+)*$/
   /**
    * A code value, represented as a JS string
    */
