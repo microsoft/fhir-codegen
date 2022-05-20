@@ -3,9 +3,6 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 /**
  * Note that FHIR strings SHALL NOT exceed 1MB in size
  */
@@ -23,13 +20,13 @@ export class FhirString extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_dataType:string = 'String';
+  public static override readonly _fts_dataType:string = 'String';
   /**
    * Mapping of this datatype to a JSON equivalent
    */
-  public static readonly _fts_jsonType:string = 'string';
+  public static override readonly _fts_jsonType:string = 'string';
   // published regex: [ \r\n\t\S]+
-  public static readonly _fts_regex:RegExp = /^[ \r\n\t\S]+$/
+  public static override readonly _fts_regex:RegExp = /^[ \r\n\t\S]+$/
   /**
    * A string value, represented as a JS string
    */
@@ -47,17 +44,17 @@ export class FhirString extends fhir.FhirPrimitive {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = super.doModelValidation();
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
     if ((this.value) && (!FhirString._fts_regex.test(this.value))) {
-      outcome.issue!.push(new fhir.OperationOutcomeIssue({ severity: IssueSeverityCodes.Error, code: IssueTypeCodes.InvalidContent,  diagnostics: "Invalid value in primitive type string", }));
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type string', });
     }
-    return outcome;
+    return issues;
   }
   /**
    * Returns a string representation of a string.
    */
-  public toString():string { return (this.value ?? '').toString(); }
+  public override toString():string { return (this.value ?? '').toString(); }
   /**
    * Returns the character at the specified index.
    * @param pos The zero-based index of the desired character.
@@ -153,5 +150,5 @@ export class FhirString extends fhir.FhirPrimitive {
   /**
    * Returns the primitive value of the specified object.
    */
-  public valueOf():string { return this.value ?? ''; }
+  public override valueOf():string { return this.value ?? ''; }
 }

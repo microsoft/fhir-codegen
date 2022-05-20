@@ -3,13 +3,10 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 /**
  * RFC 3001. See also ISO/IEC 8824:1990 €
  */
-export interface FhirOidArgs extends fhir.FhirUriArgs {
+export interface FhirOidArgs extends fhir.FhirPrimitiveArgs {
   /**
    * RFC 3001. See also ISO/IEC 8824:1990 €
    */
@@ -19,17 +16,17 @@ export interface FhirOidArgs extends fhir.FhirUriArgs {
 /**
  * RFC 3001. See also ISO/IEC 8824:1990 €
  */
-export class FhirOid extends fhir.FhirUri {
+export class FhirOid extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_dataType:string = 'Oid';
+  public static override readonly _fts_dataType:string = 'Oid';
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_jsonType:string = 'string';
+  public static override readonly _fts_jsonType:string = 'string';
   // published regex: urn:oid:[0-2](\.(0|[1-9][0-9]*))+
-  public static readonly _fts_regex:RegExp = /^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$/
+  public static override readonly _fts_regex:RegExp = /^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$/
   /**
    * A oid value, represented as a JS string
    */
@@ -47,11 +44,11 @@ export class FhirOid extends fhir.FhirUri {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = super.doModelValidation();
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
     if ((this.value) && (!FhirOid._fts_regex.test(this.value))) {
-      outcome.issue!.push(new fhir.OperationOutcomeIssue({ severity: IssueSeverityCodes.Error, code: IssueTypeCodes.InvalidContent,  diagnostics: "Invalid value in primitive type oid", }));
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type oid', });
     }
-    return outcome;
+    return issues;
   }
 }

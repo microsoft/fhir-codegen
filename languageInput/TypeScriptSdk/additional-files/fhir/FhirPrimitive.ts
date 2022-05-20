@@ -2,9 +2,6 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 export interface FhirPrimitiveArgs {
   /**
    * Value of the primitive - constrained by decendant classes.
@@ -23,12 +20,12 @@ export interface FhirPrimitiveArgs {
  }
 
 export class FhirPrimitive extends fhir.FhirBase  {
-  public readonly _fts_isPrimitive:boolean = true;
+  public static readonly _fts_isPrimitive:boolean = true;
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public readonly _fts_dataType:string='PrimitiveType';
-  public readonly _fts_jsonType:string='any';
+  public static override readonly _fts_dataType:string='PrimitiveType';
+  public static readonly _fts_jsonType:string='any';
 
   /**
    * Value of the primitive - constrained by decendant classes.
@@ -83,16 +80,16 @@ export class FhirPrimitive extends fhir.FhirBase  {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = new fhir.OperationOutcome({issue:[]});
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
     if ((!this.value) && (!this.id) && ((!this.extension) || (this.extension.length === 0))) {
-      outcome.issue!.push(new fhir.OperationOutcomeIssue({
-        severity: IssueSeverityCodes.Error,
-        code: IssueTypeCodes.RequiredElementMissing,
+      issues.push({
+        severity: 'error',
+        code: 'required',
         diagnostics: "Primitive values must have a value, id, or extensions.",
-      }));
+      });
     }
-    return outcome;
+    return issues;
   }
 
   /**

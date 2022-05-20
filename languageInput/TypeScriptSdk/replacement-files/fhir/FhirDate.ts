@@ -3,13 +3,10 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 /**
  * A date or partial date (e.g. just year or year + month). There is no time zone. The format is a union of the schema types gYear, gYearMonth and date.  Dates SHALL be valid dates.
  */
-export interface FhirDateArgs extends fhir.FhirStringArgs {
+export interface FhirDateArgs extends fhir.FhirPrimitiveArgs {
   /**
    * A date or partial date (e.g. just year or year + month). There is no time zone. The format is a union of the schema types gYear, gYearMonth and date.  Dates SHALL be valid dates.
    */
@@ -19,17 +16,17 @@ export interface FhirDateArgs extends fhir.FhirStringArgs {
 /**
  * A date or partial date (e.g. just year or year + month). There is no time zone. The format is a union of the schema types gYear, gYearMonth and date.  Dates SHALL be valid dates.
  */
-export class FhirDate extends fhir.FhirString {
+export class FhirDate extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_dataType:string = 'Date';
+  public static override readonly _fts_dataType:string = 'Date';
   /**
    * Mapping of this datatype to a JSON equivalent
    */
-  public static readonly _fts_jsonType:string = 'string';
+  public static override readonly _fts_jsonType:string = 'string';
   // published regex: ([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?
-  public static readonly _fts_regex:RegExp = /^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$/
+  public static override readonly _fts_regex:RegExp = /^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$/
   /**
    * A date value, represented as a JS string
    */
@@ -47,11 +44,11 @@ export class FhirDate extends fhir.FhirString {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = super.doModelValidation();
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
     if ((this.value) && (!FhirDate._fts_regex.test(this.value))) {
-      outcome.issue!.push(new fhir.OperationOutcomeIssue({ severity: IssueSeverityCodes.Error, code: IssueTypeCodes.InvalidContent,  diagnostics: "Invalid value in primitive type date", }));
+      issues.push({ severity: 'error', code: 'invalid',  diagnostics: 'Invalid value in primitive type date', });
     }
-    return outcome;
+    return issues;
   }
 }

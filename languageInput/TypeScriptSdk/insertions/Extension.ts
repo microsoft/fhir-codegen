@@ -12,7 +12,7 @@
       return ext;
     }
 
-    const vName = 'value' + (value._fts_dataType) ? value._fts_dataType : value.constructor.name;
+    const vName = 'value' + (Object.getPrototypeOf(value).constructor._fts_dataType ?? Object.getPrototypeOf(value).constructor.name);
     (ext as any)[vName] = value;
     return ext;
   }

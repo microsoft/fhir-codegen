@@ -6,7 +6,7 @@ import * as fhir from '../fhir.js';
 /**
  * XHTML
  */
-export interface FhirXhtmlArgs extends fhir.FhirStringArgs {
+export interface FhirXhtmlArgs extends fhir.FhirPrimitiveArgs {
   /**
    * XHTML
    */
@@ -16,15 +16,15 @@ export interface FhirXhtmlArgs extends fhir.FhirStringArgs {
 /**
  * XHTML
  */
-export class FhirXhtml extends fhir.FhirString {
+export class FhirXhtml extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_dataType:string = 'Xhtml';
+  public static override readonly _fts_dataType:string = 'Xhtml';
   /**
    * Mapping of this datatype to a JSON equivalent
    */
-  public static readonly _fts_jsonType:string = 'string';
+  public static override readonly _fts_jsonType:string = 'string';
   /**
    * A xhtml value, represented as a JS string
    */
@@ -42,8 +42,8 @@ export class FhirXhtml extends fhir.FhirString {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = super.doModelValidation();
-    return outcome;
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
+    return issues;
   }
 }

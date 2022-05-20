@@ -3,14 +3,11 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 /**
  * A signed integer in the range -9,223,372,036,854,775,808 to +9,223,372,036,854,775,807 (64-bit).
  * This type is defined to allow for record/time counters that can get very large
  */
-export interface FhirInteger64Args extends fhir.FhirNumberArgs {
+export interface FhirInteger64Args extends fhir.FhirPrimitiveArgs {
   /**
  * A signed integer in the range -9,223,372,036,854,775,808 to +9,223,372,036,854,775,807 (64-bit).
  * This type is defined to allow for record/time counters that can get very large
@@ -22,17 +19,17 @@ export interface FhirInteger64Args extends fhir.FhirNumberArgs {
  * A signed integer in the range -9,223,372,036,854,775,808 to +9,223,372,036,854,775,807 (64-bit).
  * This type is defined to allow for record/time counters that can get very large
  */
-export class FhirInteger64 extends fhir.FhirNumber {
+export class FhirInteger64 extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_dataType:string = 'Integer64';
+  public static override readonly _fts_dataType:string = 'Integer64';
   /**
    * Mapping of this datatype to a JSON equivalent
    */
-  public static readonly _fts_jsonType:string = 'string';
+  public static override readonly _fts_jsonType:string = 'string';
   // published regex: -?([0]|([1-9][0-9]*))
-  public static readonly _fts_regex:RegExp = /^-?([0]|([1-9][0-9]*))$/
+  public static override readonly _fts_regex:RegExp = /^-?([0]|([1-9][0-9]*))$/
   /**
    * A integer64 value, represented as a JS number
    */
@@ -50,11 +47,11 @@ export class FhirInteger64 extends fhir.FhirNumber {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = super.doModelValidation();
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
     if ((this.value) && (!FhirInteger64._fts_regex.test(this.value.toString()))) {
-      outcome.issue!.push(new fhir.OperationOutcomeIssue({ severity: IssueSeverityCodes.Error, code: IssueTypeCodes.InvalidContent,  diagnostics: "Invalid value in primitive type unsignedInt", }));
+      issues.push({ severity: 'error', code: 'invalid',  diagnostics: 'Invalid value in primitive type unsignedInt', });
     }
-    return outcome;
+    return issues;
   }
 }

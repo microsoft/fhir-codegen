@@ -34,6 +34,7 @@ public class ModelBuilder
         bool IsOptional,
         bool IsArray,
         bool IsPrimitive,
+        bool IsJsonArtefact,
         bool HasReferencedValueSet,
         string ValueSetExportName,
         FhirElement.ElementDefinitionBindingStrength? BoundValueSetStrength,
@@ -260,6 +261,10 @@ public class ModelBuilder
         if (primitiveName.Equals("FhirBase", StringComparison.Ordinal))
         {
             tokens.Add(new ExportTokenInfo("FhirConstructorOptions", true));
+            tokens.Add(new ExportTokenInfo("FtsElement", true));
+            tokens.Add(new ExportTokenInfo("FtsCoding", true));
+            tokens.Add(new ExportTokenInfo("FtsCodeableConcept", true));
+            tokens.Add(new ExportTokenInfo("FtsIssue", true));
         }
 
         //tokens.Add(new ExportTokenInfo("I" + primitiveName, true));
@@ -631,6 +636,7 @@ public class ModelBuilder
             fhirElement.IsOptional,
             fhirElement.IsArray,
             RequiresExtension(elementJsonType),
+            false,
             hasReferencedValueSet,
             referencedValueSetExportName,
             vsBindStrength,
@@ -728,6 +734,7 @@ public class ModelBuilder
             fhirElement.IsOptional,
             fhirElement.IsArray,
             RequiresExtension(fhirType),
+            false,
             hasReferencedValueSet,
             valueSetExportName,
             vsBindStrength,
@@ -802,6 +809,7 @@ public class ModelBuilder
                     false,
                     false,
                     false,
+                    true,
                     false,
                     "ResourceTypesValueSet",
                     FhirElement.ElementDefinitionBindingStrength.Extensible,
@@ -825,6 +833,7 @@ public class ModelBuilder
                     false,
                     false,
                     false,
+                    true,
                     false,
                     string.Empty,
                     null,

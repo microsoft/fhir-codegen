@@ -373,7 +373,7 @@ public sealed class TypeScriptSdk : ILanguage
         //sb.WriteLineIndented("type IFhirResource, type FhirResource, type FhirConstructorOptions, ");
         //sb.WriteLineIndented("type FhirResource, type FhirConstructorOptions, ");
         sb.WriteLineIndented("type FhirResource, ");
-        sb.WriteLineIndented("fhirToJson, ");
+        //sb.WriteLineIndented("fhirToJson, ");
         sb.WriteLineIndented("resourceFactory, ");
 
         sb.CloseScope();
@@ -670,17 +670,17 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLineIndented("import * as fhir from '../fhir.js';");
         sb.WriteLine(string.Empty);
 
-        WriteIgnoreNonUseLine(sb);
-        sb.WriteLineIndented(
-            $"import {{" +
-            $" IssueType{CodeObjectSuffix}" +
-            $" }} from '../{_relativeValueSetDirectory}/IssueType{CodeObjectSuffix}.js';");
+        //WriteIgnoreNonUseLine(sb);
+        //sb.WriteLineIndented(
+        //    $"import {{" +
+        //    $" IssueType{CodeObjectSuffix}" +
+        //    $" }} from '../{_relativeValueSetDirectory}/IssueType{CodeObjectSuffix}.js';");
 
-        WriteIgnoreNonUseLine(sb);
-        sb.WriteLineIndented(
-            $"import {{" +
-            $" IssueSeverity{CodeObjectSuffix}" +
-            $" }} from '../{_relativeValueSetDirectory}/IssueSeverity{CodeObjectSuffix}.js';");
+        //WriteIgnoreNonUseLine(sb);
+        //sb.WriteLineIndented(
+        //    $"import {{" +
+        //    $" IssueSeverity{CodeObjectSuffix}" +
+        //    $" }} from '../{_relativeValueSetDirectory}/IssueSeverity{CodeObjectSuffix}.js';");
 
         //BuildInterfaceForPrimitive(sb, primitive);
 
@@ -760,9 +760,9 @@ public sealed class TypeScriptSdk : ILanguage
         sb.IncreaseIndent();
 
         WriteIndentedComment(sb, $"Mapping of this primitive to the FHIR equivalent");
-        sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}dataType:string = '{primitive.ExportClassName.Substring(4)}';");
+        sb.WriteLineIndented($"public static override readonly {_tsInternalPrefix}dataType:string = '{primitive.ExportClassName.Substring(4)}';");
         WriteIndentedComment(sb, $"Mapping of this primitive to the JSON equivalent");
-        sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}jsonType:string = '{primitive.JsonExportType}';");
+        sb.WriteLineIndented($"public static override readonly {_tsInternalPrefix}jsonType:string = '{primitive.JsonExportType}';");
 
         if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
         {
@@ -779,7 +779,7 @@ public sealed class TypeScriptSdk : ILanguage
             }
 
             sb.WriteLineIndented($"// published regex: {primitive.ValidationRegEx}");
-            sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}regex:RegExp = /{exp}/");
+            sb.WriteLineIndented($"public static override readonly {_tsInternalPrefix}regex:RegExp = /{exp}/");
         }
 
         WriteIndentedComment(sb, $"A {primitive.FhirName} value, represented as a JS {primitive.JsonExportType}");
@@ -795,7 +795,7 @@ public sealed class TypeScriptSdk : ILanguage
         BuildPrimitiveFunctions(sb, primitive);
 
         // add toJSON override
-        //BuildToJson(sb, complex);
+        //BuildToJson(sb, primitive);
 
         if (_options.SupportFiles.TryGetInputForKey(primitive.ExportClassName, out string contents))
         {
@@ -1034,21 +1034,21 @@ public sealed class TypeScriptSdk : ILanguage
                 $"}} from '../{_relativeValueSetDirectory}/{valueSetExportName}{CodeObjectSuffix}.js';");
         }
 
-        if (!complex.ReferencedValueSetExportNames.Contains("IssueType"))
-        {
-            WriteIgnoreNonUseLine(sb);
-            sb.WriteLineIndented(
-                $"import {{ IssueType{CodeObjectSuffix} }} " +
-                $"from '../{_relativeValueSetDirectory}/IssueType{CodeObjectSuffix}.js';");
-        }
+        //if (!complex.ReferencedValueSetExportNames.Contains("IssueType"))
+        //{
+        //    WriteIgnoreNonUseLine(sb);
+        //    sb.WriteLineIndented(
+        //        $"import {{ IssueType{CodeObjectSuffix} }} " +
+        //        $"from '../{_relativeValueSetDirectory}/IssueType{CodeObjectSuffix}.js';");
+        //}
 
-        if (!complex.ReferencedValueSetExportNames.Contains("IssueSeverity"))
-        {
-            WriteIgnoreNonUseLine(sb);
-            sb.WriteLineIndented(
-                $"import {{ IssueSeverity{CodeObjectSuffix} }} " +
-                $"from '../{_relativeValueSetDirectory}/IssueSeverity{CodeObjectSuffix}.js';");
-        }
+        //if (!complex.ReferencedValueSetExportNames.Contains("IssueSeverity"))
+        //{
+        //    WriteIgnoreNonUseLine(sb);
+        //    sb.WriteLineIndented(
+        //        $"import {{ IssueSeverity{CodeObjectSuffix} }} " +
+        //        $"from '../{_relativeValueSetDirectory}/IssueSeverity{CodeObjectSuffix}.js';");
+        //}
 
         //BuildInterfaceForComplex(sb, complex);
 
@@ -1106,11 +1106,11 @@ public sealed class TypeScriptSdk : ILanguage
         WriteIndentedComment(sb, $"Mapping of this datatype to a FHIR equivalent");
         if (complex.ExportClassName.StartsWith("Fhir", StringComparison.Ordinal))
         {
-            sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}dataType:string = '{complex.ExportClassName.Substring(4)}';");
+            sb.WriteLineIndented($"public static override readonly {_tsInternalPrefix}dataType:string = '{complex.ExportClassName.Substring(4)}';");
         }
         else
         {
-            sb.WriteLineIndented($"public static readonly {_tsInternalPrefix}dataType:string = '{complex.ExportClassName}';");
+            sb.WriteLineIndented($"public static override readonly {_tsInternalPrefix}dataType:string = '{complex.ExportClassName}';");
         }
 
         // add actual elements
@@ -1190,6 +1190,33 @@ public sealed class TypeScriptSdk : ILanguage
         // function open
         WriteIndentedComment(sb, "Function to strip invalid element values for serialization.");
 
+        //sb.OpenScope("public toJSON() {");
+
+        if (string.IsNullOrEmpty(complex.ExportType))
+        {
+            sb.OpenScope("public toJSON() {");
+        }
+        else
+        {
+            sb.OpenScope("public override toJSON() {");
+        }
+
+        sb.WriteLineIndented("return fhir.fhirToJson(this);");
+
+        // function close
+        sb.CloseScope();
+    }
+
+    /// <summary>Builds the toJSON override for a complex data type or resource.</summary>
+    /// <param name="sb">       The writer.</param>
+    /// <param name="primitive">The primitive.</param>
+    private void BuildToJson(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportPrimitive primitive)
+    {
+        // function open
+        WriteIndentedComment(sb, "Function to strip invalid element values for serialization.");
+
         sb.OpenScope("public toJSON() {");
 
         //if (string.IsNullOrEmpty(complex.ExportType))
@@ -1216,8 +1243,8 @@ public sealed class TypeScriptSdk : ILanguage
     {
         // function open
         WriteIndentedComment(sb, "Function to perform basic model validation (e.g., check if required elements are present).");
-        sb.OpenScope("public override doModelValidation():fhir.OperationOutcome {");
-        sb.WriteLineIndented("var outcome:fhir.OperationOutcome = super.doModelValidation();");
+        sb.OpenScope("public override doModelValidation():fhir.FtsIssue[] {");
+        sb.WriteLineIndented("let issues:fhir.FtsIssue[] = super.doModelValidation();");
 
         if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
         {
@@ -1237,13 +1264,13 @@ public sealed class TypeScriptSdk : ILanguage
                 sb.OpenScope($"if ((this.value) && (!{primitive.ExportClassName}.{_tsInternalPrefix}regex.test(this.value.toString()))) {{");
             }
 
-            sb.WriteLineIndented($"outcome.issue!.push({invalidContent});");
+            sb.WriteLineIndented($"issues.push({invalidContent});");
 
             // close value exists
             sb.CloseScope();
         }
 
-        sb.WriteLineIndented("return outcome;");
+        sb.WriteLineIndented("return issues;");
 
         // function close
         sb.CloseScope();
@@ -1261,13 +1288,13 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (string.IsNullOrEmpty(complex.ExportType))
         {
-            sb.OpenScope("public doModelValidation():fhir.OperationOutcome {");
-            sb.WriteLineIndented("var outcome:fhir.OperationOutcome = new fhir.OperationOutcome({issue:[]});");
+            sb.OpenScope("public doModelValidation():fhir.FtsIssue[] {");
+            sb.WriteLineIndented("let issues:fhir.FtsIssue[] = [];");
         }
         else
         {
-            sb.OpenScope("public override doModelValidation():fhir.OperationOutcome {");
-            sb.WriteLineIndented("var outcome:fhir.OperationOutcome = super.doModelValidation();");
+            sb.OpenScope("public override doModelValidation():fhir.FtsIssue[] {");
+            sb.WriteLineIndented("let issues:fhir.FtsIssue[] = super.doModelValidation();");
         }
 
         foreach (ModelBuilder.ExportElement element in complex.Elements)
@@ -1287,7 +1314,7 @@ public sealed class TypeScriptSdk : ILanguage
                         $" {{" +
                         $" this.{element.ExportName}.forEach((x) =>" +
                         $" {{" +
-                        $" outcome.issue!.push(...x.doModelValidation().issue!);" +
+                        $" issues.push(...x.doModelValidation());" +
                         $" }})" +
                         $" }}");
                 }
@@ -1295,12 +1322,12 @@ public sealed class TypeScriptSdk : ILanguage
                 {
                     sb.WriteLineIndented(
                         $"if (this[\"{element.ExportName}\"])" +
-                        $" {{ outcome.issue!.push(...this.{element.ExportName}.doModelValidation().issue!); }}");
+                        $" {{ issues.push(...this.{element.ExportName}.doModelValidation()); }}");
                 }
             }
         }
 
-        sb.WriteLineIndented("return outcome;");
+        sb.WriteLineIndented("return issues;");
 
         // function close
         sb.CloseScope();
@@ -1314,11 +1341,11 @@ public sealed class TypeScriptSdk : ILanguage
     private string BuildOperationOutcomeIssue(string issueSeverity, string issueType, string message)
     {
         return
-            $"new fhir.OperationOutcomeIssue({{" +
-            $" severity: {issueSeverity}," +
-            $" code: {issueType}, " +
+            $"{{" +
+            $" severity: '{issueSeverity}'," +
+            $" code: '{issueType}', " +
             $" diagnostics: {TsQuoteAndSanitize(message) ?? "''"}," +
-            $" }})";
+            $" }}";
     }
 
     /// <summary>Adds an element optional array to 'element'.</summary>
@@ -1347,17 +1374,17 @@ public sealed class TypeScriptSdk : ILanguage
         if (element.IsArray)
         {
             sb.OpenScope($"if (!this['{element.ExportName}']) {{");
-            sb.WriteLineIndented($"outcome.issue!.push({missing});");
+            sb.WriteLineIndented($"issues.push({missing});");
             sb.ReopenScope($"}} else if (!Array.isArray(this.{element.ExportName})) {{");
-            sb.WriteLineIndented($"outcome.issue!.push({notArray});");
+            sb.WriteLineIndented($"issues.push({notArray});");
             sb.ReopenScope($"}} else if (this.{element.ExportName}.length === 0) {{");
-            sb.WriteLineIndented($"outcome.issue!.push({missing});");
+            sb.WriteLineIndented($"issues.push({missing});");
             sb.CloseScope();
         }
         else
         {
             sb.OpenScope($"if (!this['{element.ExportName}']) {{");
-            sb.WriteLineIndented($"outcome.issue!.push({missing});");
+            sb.WriteLineIndented($"issues.push({missing});");
             sb.CloseScope();
         }
     }
@@ -1785,6 +1812,12 @@ public sealed class TypeScriptSdk : ILanguage
             exportType = element.ExportType;
         }
 
+        if (element.IsJsonArtefact &&
+            (!element.FhirPath.Equals("Resource.resourceType", StringComparison.Ordinal)))
+        {
+            accessModifier = accessModifier + "override ";
+        }
+
         WriteIndentedComment(sb, element.ExportComment);
         sb.WriteLineIndented($"{accessModifier}{element.ExportName}{optionalFlag}: {exportType}{arrayFlag}{typeAddition};");
 
@@ -1863,7 +1896,6 @@ public sealed class TypeScriptSdk : ILanguage
             {
                 BuildComplexElementJsonSingleType(sb, element, ValueSetsByExportName);
             }
-
         }
 
         sb.CloseScope();

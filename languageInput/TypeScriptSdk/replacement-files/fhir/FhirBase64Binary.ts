@@ -3,13 +3,10 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 /**
  * A stream of bytes, base64 encoded
  */
-export interface FhirBase64BinaryArgs extends fhir.FhirStringArgs {
+export interface FhirBase64BinaryArgs extends fhir.FhirPrimitiveArgs {
   /**
    * A stream of bytes, base64 encoded
    */
@@ -19,17 +16,17 @@ export interface FhirBase64BinaryArgs extends fhir.FhirStringArgs {
 /**
  * A stream of bytes, base64 encoded
  */
-export class FhirBase64Binary extends fhir.FhirString {
+export class FhirBase64Binary extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_dataType:string = 'Base64Binary';
+  public static override readonly _fts_dataType:string = 'Base64Binary';
   /**
    * Mapping of this datatype to a JSON equivalent
    */
-  public static readonly _fts_jsonType:string = 'string';
+  public static override readonly _fts_jsonType:string = 'string';
   // published regex: (\s*([0-9a-zA-Z\+/=]){4}\s*)+
-  public static readonly _fts_regex:RegExp = /^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$/
+  public static override readonly _fts_regex:RegExp = /^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$/
   /**
    * A base64Binary value, represented as a JS string
    */
@@ -47,11 +44,11 @@ export class FhirBase64Binary extends fhir.FhirString {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = super.doModelValidation();
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
     if ((this.value) && (!FhirBase64Binary._fts_regex.test(this.value))) {
-      outcome.issue!.push(new fhir.OperationOutcomeIssue({ severity: IssueSeverityCodes.Error, code: IssueTypeCodes.InvalidContent,  diagnostics: "Invalid value in primitive type base64Binary", }));
+      issues.push({ severity: 'error', code: 'invalid',  diagnostics: 'Invalid value in primitive type base64Binary', });
     }
-    return outcome;
+    return issues;
   }
 }

@@ -3,9 +3,6 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 /**
  * 32 bit number; for values larger than this, use decimal
  */
@@ -23,13 +20,13 @@ export class FhirInteger extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_dataType:string = 'Integer';
+  public static override readonly _fts_dataType:string = 'Integer';
   /**
    * Mapping of this datatype to a JSON equivalent
    */
-  public static readonly _fts_jsonType:string = 'number';
+  public static override readonly _fts_jsonType:string = 'number';
   // published regex: -?([0]|([1-9][0-9]*))
-  public static readonly _fts_regex:RegExp = /^-?([0]|([1-9][0-9]*))$/
+  public static override readonly _fts_regex:RegExp = /^-?([0]|([1-9][0-9]*))$/
   /**
    * A integer value, represented as a JS number
    */
@@ -47,18 +44,18 @@ export class FhirInteger extends fhir.FhirPrimitive {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = super.doModelValidation();
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
     if ((this.value) && (!FhirInteger._fts_regex.test(this.value.toString()))) {
-      outcome.issue!.push(new fhir.OperationOutcomeIssue({ severity: IssueSeverityCodes.Error, code: IssueTypeCodes.InvalidContent,  diagnostics: "Invalid value in primitive type integer", }));
+      issues.push({ severity: 'error', code: 'invalid',  diagnostics: 'Invalid value in primitive type integer', });
     }
-    return outcome;
+    return issues;
   }
   /**
    * Returns a string representation of an object.
    * @param radix Specifies a radix for converting numeric values to strings. This value is only used for numbers.
    */
-  public toString(radix?:number):string { return (this.value ?? NaN).toString(radix); }
+  public override toString(radix?:number):string { return (this.value ?? NaN).toString(radix); }
   /**
    * Returns a string representing a number in fixed-point notation.
    * @param fractionDigits Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.
@@ -77,5 +74,5 @@ export class FhirInteger extends fhir.FhirPrimitive {
   /**
    * Returns the primitive value of the specified object.
    */
-  public valueOf():number { return (this.value ?? NaN); }
+  public override valueOf():number { return (this.value ?? NaN); }
 }

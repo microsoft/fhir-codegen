@@ -3,9 +3,6 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 /**
  * Value of "true" or "false"
  */
@@ -23,13 +20,13 @@ export class FhirBoolean extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_dataType:string = 'Boolean';
+  public static override readonly _fts_dataType:string = 'Boolean';
   /**
    * Mapping of this datatype to a JSON equivalent
    */
-  public static readonly _fts_jsonType:string = 'boolean';
+  public static override readonly _fts_jsonType:string = 'boolean';
   // published regex: true|false
-  public static readonly _fts_regex:RegExp = /^true|false$/
+  public static override readonly _fts_regex:RegExp = /^true|false$/
   /**
    * A boolean value, represented as a JS boolean
    */
@@ -47,15 +44,15 @@ export class FhirBoolean extends fhir.FhirPrimitive {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = super.doModelValidation();
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
     if ((this.value) && (!FhirBoolean._fts_regex.test(this.value.toString()))) {
-      outcome.issue!.push(new fhir.OperationOutcomeIssue({ severity: IssueSeverityCodes.Error, code: IssueTypeCodes.InvalidContent,  diagnostics: "Invalid value in primitive type boolean", }));
+      issues.push({ severity: 'error', code: 'invalid',  diagnostics: 'Invalid value in primitive type boolean', });
     }
-    return outcome;
+    return issues;
   }
   /**
    * Returns the primitive value of the specified object.
    */
-  public valueOf():boolean { return (this.value ?? false); }
+  public override valueOf():boolean { return (this.value ?? false); }
 }

@@ -3,13 +3,10 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 /**
  * A time during the day, with no date specified
  */
-export interface FhirTimeArgs extends fhir.FhirStringArgs {
+export interface FhirTimeArgs extends fhir.FhirPrimitiveArgs {
   /**
    * A time during the day, with no date specified
    */
@@ -19,17 +16,17 @@ export interface FhirTimeArgs extends fhir.FhirStringArgs {
 /**
  * A time during the day, with no date specified
  */
-export class FhirTime extends fhir.FhirString {
+export class FhirTime extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_dataType:string = 'Time';
+  public static override readonly _fts_dataType:string = 'Time';
   /**
    * Mapping of this datatype to a JSON equivalent
    */
-  public static readonly _fts_jsonType:string = 'string';
+  public static override readonly _fts_jsonType:string = 'string';
   // published regex: ([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?
-  public static readonly _fts_regex:RegExp = /^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$/
+  public static override readonly _fts_regex:RegExp = /^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$/
   /**
    * A time value, represented as a JS string
    */
@@ -47,11 +44,11 @@ export class FhirTime extends fhir.FhirString {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = super.doModelValidation();
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
     if ((this.value) && (!FhirTime._fts_regex.test(this.value))) {
-      outcome.issue!.push(new fhir.OperationOutcomeIssue({ severity: IssueSeverityCodes.Error, code: IssueTypeCodes.InvalidContent,  diagnostics: "Invalid value in primitive type time", }));
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type time', });
     }
-    return outcome;
+    return issues;
   }
 }

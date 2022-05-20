@@ -3,13 +3,10 @@
 
 import * as fhir from '../fhir.js';
 
-import { IssueTypeCodes } from '../fhirValueSets/IssueTypeCodes.js';
-import { IssueSeverityCodes } from '../fhirValueSets/IssueSeverityCodes.js';
-
 /**
  * An integer with a value that is not negative (e.g. &gt;= 0)
  */
-export interface FhirUnsignedIntArgs extends fhir.FhirIntegerArgs {
+export interface FhirUnsignedIntArgs extends fhir.FhirPrimitiveArgs {
   /**
    * An integer with a value that is not negative (e.g. &gt;= 0)
    */
@@ -19,17 +16,17 @@ export interface FhirUnsignedIntArgs extends fhir.FhirIntegerArgs {
 /**
  * An integer with a value that is not negative (e.g. &gt;= 0)
  */
-export class FhirUnsignedInt extends fhir.FhirInteger {
+export class FhirUnsignedInt extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
-  public static readonly _fts_dataType:string = 'UnsignedInt';
+  public static override readonly _fts_dataType:string = 'UnsignedInt';
   /**
    * Mapping of this datatype to a JSON equivalent
    */
-  public static readonly _fts_jsonType:string = 'number';
+  public static override readonly _fts_jsonType:string = 'number';
   // published regex: [0]|([1-9][0-9]*)
-  public static readonly _fts_regex:RegExp = /^[0]|([1-9][0-9]*)$/
+  public static override readonly _fts_regex:RegExp = /^[0]|([1-9][0-9]*)$/
   /**
    * A unsignedInt value, represented as a JS number
    */
@@ -47,11 +44,11 @@ export class FhirUnsignedInt extends fhir.FhirInteger {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.OperationOutcome {
-    var outcome:fhir.OperationOutcome = super.doModelValidation();
+  public override doModelValidation():fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation();
     if ((this.value) && (!FhirUnsignedInt._fts_regex.test(this.value.toString()))) {
-      outcome.issue!.push(new fhir.OperationOutcomeIssue({ severity: IssueSeverityCodes.Error, code: IssueTypeCodes.InvalidContent,  diagnostics: "Invalid value in primitive type unsignedInt", }));
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type unsignedInt', });
     }
-    return outcome;
+    return issues;
   }
 }
