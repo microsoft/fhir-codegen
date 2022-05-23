@@ -106,7 +106,7 @@ export class FhirBase {
   /**
    * Function to strip invalid element values for serialization.
    */
-  public toJSON() {
+   public toJSON() {
     let c:any = {};
   
     for (const key in (this as any)) {
@@ -117,19 +117,20 @@ export class FhirBase {
           ((this as any)[key] === [])) {
         continue;
       }
-  
-      if (key.startsWith('_fts_')) {
+
+      let isArray:boolean = Array.isArray((this as any)[key]);
+
+      if (isArray && (this as any)[key].length === 0) {
         continue;
       }
+
+      let ftsDt:string = (isArray ? (this as any)[key][0].constructor._fts_dataType : (this as any)[key].constructor._fts_dataType) ?? '';
+      let isChoice:boolean = (this as any).constructor['_fts_' + key + 'IsChoice'] ?? false;
+      let isPrimitive = (isArray ? (this as any)[key][0].constructor['_fts_isPrimitive'] : (this as any)[key].constructor['_fts_isPrimitive']) ?? false;
+      let dKey:string = key + (isChoice ? ftsDt : '');
   
-      let dKey:string = key + ((this as any)['_fts_' + key + 'IsChoice'] ? ((this as any)[key]['_fts_dataType'] ?? '') : '');
-  
-      if (Array.isArray((this as any)[key])) {
-        if ((this as any)[key].length === 0) {
-          continue;
-        }
-  
-        if ((this as any)[key][0]['_fts_isPrimitive']) {
+      if (isArray) {
+        if (isPrimitive) {
           const eName:string = '_' + dKey;
           let foundAnyVal:boolean = false;
           let foundAnyExt:boolean = false;
@@ -137,8 +138,8 @@ export class FhirBase {
           c[eName] = [];
           (this as any)[key].forEach((av:any) => {
             let addElement:boolean = false;
-            if ((av['value'] !== undefined) && (av['value'] !== null)) { 
-              c[dKey].push(av.valueOf()); 
+            if (av.value) { 
+              c[dKey].push(av.value); 
               foundAnyVal = true;
               addElement = true;
             } else { 
@@ -150,7 +151,7 @@ export class FhirBase {
             if (av.extension) {
               (ao as any)['extension'] = [];
               av.extension.forEach((e:any) => {
-                (ao as any)['extension'].push(e.toJSON());
+                (ao as any)['extension'].push(e);
               });
             }
   
@@ -170,34 +171,33 @@ export class FhirBase {
   
           if (!foundAnyVal) { delete c[dKey]; }
           if (!foundAnyExt) { delete c[eName]; }
-        } else if ((this as any)[key][0]['_fts_dataType']) {
+        } else if (ftsDt) {
           c[dKey] = [];
           (this as any)[key].forEach((v:any) => {
-            c[dKey].push(v.toJSON());
+            // c[dKey].push(v.toJSON());
+            c[dKey].push(v);
           });
         } else {
           c[dKey] = (this as any)[key];
         }
-      } else {
-        if ((this as any)[key]['_fts_isPrimitive']) {
-          if ((this as any)[key]['value']) { c[dKey] = (this as any)[key].valueOf(); }
-  
-          const eName:string = '_' + dKey;
-          c[eName] = {};
-          if ((this as any)[key]['id']) { c[eName]['id'] = (this as any)[key]['id']; }
-          if ((this as any)[key]['extension']) {
-            c[eName]['extension'] = [];
-            (this as any)[key]['extension'].forEach((e:any) => {
-              c[eName]['extension'].push(e.toJSON());
-            });
-          }
-  
-          if (Object.keys(c[eName]).length === 0) { delete c[eName]; }
-        } else if ((this as any)[key]['_fts_dataType']) {
-          c[dKey] = (this as any)[key].toJSON();
-        } else {
-          c[dKey] = (this as any)[key];
+      } else if (isPrimitive) {
+        if ((this as any)[key].value) { c[dKey] = (this as any)[key].value; }
+
+        const eName:string = '_' + dKey;
+        c[eName] = {};
+        if ((this as any)[key]['id']) { c[eName]['id'] = (this as any)[key]['id']; }
+        if ((this as any)[key]['extension']) {
+          c[eName]['extension'] = [];
+          (this as any)[key]['extension'].forEach((e:any) => {
+            c[eName]['extension'].push(e);
+          });
         }
+
+        if (Object.keys(c[eName]).length === 0) { delete c[eName]; }
+      } else if (ftsDt) {
+        c[dKey] = (this as any)[key];
+      } else {
+        c[dKey] = (this as any)[key];
       }
     }
   

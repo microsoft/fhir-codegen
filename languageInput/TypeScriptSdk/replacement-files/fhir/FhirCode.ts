@@ -6,17 +6,17 @@ import * as fhir from '../fhir.js';
 /**
  * A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents
  */
-export interface FhirCodeArgs extends fhir.FhirPrimitiveArgs {
+export interface FhirCodeArgs<CodeType extends string = string> extends fhir.FhirPrimitiveArgs {
   /**
    * A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents
    */
-  value?:FhirCode|string|undefined;
+  value?:FhirCode<CodeType>|CodeType|string|undefined;
 }
 
 /**
  * A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents
  */
-export class FhirCode extends fhir.FhirPrimitive {
+export class FhirCode<CodeType extends string = string> extends fhir.FhirPrimitive {
   /**
    * Mapping of this datatype to a FHIR equivalent
    */
@@ -30,7 +30,7 @@ export class FhirCode extends fhir.FhirPrimitive {
   /**
    * A code value, represented as a JS string
    */
-  declare value?:string|null|undefined;
+  declare value?:CodeType|string|null|undefined;
   /**
      * Create a FhirCode
      * @param value A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents

@@ -1125,16 +1125,34 @@ public sealed class TypeScriptSdk : ILanguage
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
             if ((!element.HasReferencedValueSet) ||
-                (element.BoundValueSetStrength == null) ||
-                (element.BoundValueSetStrength == FhirElement.ElementDefinitionBindingStrength.Example))
+                (element.BoundValueSetStrength == null))
             {
                 continue;
             }
 
-            WriteIndentedComment(sb, $"{element.BoundValueSetStrength}-bound Value Set for {element.ExportName} ({element.FhirPath})");
-            sb.OpenScope($"public static {element.ExportName}{element.BoundValueSetStrength}Coding():{element.ValueSetExportName}{CodingTypeSuffix} {{");
-            sb.WriteLineIndented($"return {element.ValueSetExportName}{CodingObjectSuffix};");
-            sb.CloseScope();
+            switch (element.BoundValueSetStrength)
+            {
+                case FhirElement.ElementDefinitionBindingStrength.Required:
+                    WriteIndentedComment(sb, $"{element.BoundValueSetStrength}-bound Value Set for {element.ExportName} ({element.FhirPath})");
+                    sb.OpenScope($"public static get {element.ExportName}{element.BoundValueSetStrength}{CodeObjectSuffix}() {{");
+                    sb.WriteLineIndented($"return {element.ValueSetExportName}{CodeObjectSuffix};");
+
+                    sb.CloseScope();
+                    break;
+
+                case FhirElement.ElementDefinitionBindingStrength.Extensible:
+                case FhirElement.ElementDefinitionBindingStrength.Preferred:
+                    WriteIndentedComment(sb, $"{element.BoundValueSetStrength}-bound Value Set for {element.ExportName} ({element.FhirPath})");
+                    sb.OpenScope($"public static get {element.ExportName}{element.BoundValueSetStrength}{CodingObjectSuffix}() {{");
+                    sb.WriteLineIndented($"return {element.ValueSetExportName}{CodingObjectSuffix};");
+
+                    sb.CloseScope();
+                    break;
+
+                case FhirElement.ElementDefinitionBindingStrength.Example:
+                default:
+                    break;
+            }
         }
 
         // add model validation function
@@ -1301,7 +1319,12 @@ public sealed class TypeScriptSdk : ILanguage
         {
             if (!element.IsOptional)
             {
-                AddElementModelChecks(sb, element);
+                AddModelCheckElementRequired(sb, element);
+            }
+
+            if (element.HasReferencedValueSet)
+            {
+                AddModelCheckReferencedValueSet(sb, element);
             }
 
             // recurse into other FHIR types
@@ -1343,15 +1366,15 @@ public sealed class TypeScriptSdk : ILanguage
         return
             $"{{" +
             $" severity: '{issueSeverity}'," +
-            $" code: '{issueType}', " +
-            $" diagnostics: {TsQuoteAndSanitize(message) ?? "''"}," +
+            $" code: '{issueType}'," +
+            $" diagnostics: {TsQuoteAndSanitize(message) ?? "''"}" +
             $" }}";
     }
 
-    /// <summary>Adds an element optional array to 'element'.</summary>
+    /// <summary>Adds a model check element required to 'element'.</summary>
     /// <param name="sb">     The writer.</param>
     /// <param name="element">The element.</param>
-    private void AddElementModelChecks(ExportStringBuilder sb, ModelBuilder.ExportElement element)
+    private void AddModelCheckElementRequired(ExportStringBuilder sb, ModelBuilder.ExportElement element)
     {
         string propertyInfo =
             $"property" +
@@ -1386,6 +1409,49 @@ public sealed class TypeScriptSdk : ILanguage
             sb.OpenScope($"if (!this['{element.ExportName}']) {{");
             sb.WriteLineIndented($"issues.push({missing});");
             sb.CloseScope();
+        }
+    }
+
+    /// <summary>Adds a model check element required to 'element'.</summary>
+    /// <param name="sb">     The writer.</param>
+    /// <param name="element">The element.</param>
+    private void AddModelCheckReferencedValueSet(ExportStringBuilder sb, ModelBuilder.ExportElement element)
+    {
+        string propertyInfo =
+            $"property" +
+            $" {element.ExportName}{(element.IsOptional ? "?" : string.Empty)}" +
+            $":{element.ExportType}{(element.IsArray ? "[]" : string.Empty)}" +
+            $" fhir:" +
+            $" {element.FhirPath}" +
+            $":{element.FhirType}" +
+            $" {element.BoundValueSetStrength} binding to: {element.ValueSetExportName}";
+
+        if (element.BoundValueSetStrength == FhirElement.ElementDefinitionBindingStrength.Required)
+        {
+            string invalidCode = BuildOperationOutcomeIssue(
+                TsOutcomeIssueSeverity.Error,
+                TsOutcomeIssueType.InvalidCode,
+                $"Invalid code {propertyInfo}");
+
+            if (element.IsArray)
+            {
+                sb.OpenScope($"if (this['{element.ExportName}']) {{");
+                sb.OpenScope($"this.{element.ExportName}.forEach((v) => {{");
+                sb.OpenScope($"if (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(v as any)) {{");
+                sb.WriteLineIndented($"issues.push({invalidCode});");
+                sb.CloseScope();
+                sb.CloseScope("});");
+                sb.CloseScope();
+            }
+            else
+            {
+                sb.OpenScope(
+                    $"if (this['{element.ExportName}'] &&" +
+                    $" (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(this.{element.ExportName} as any))" +
+                    $") {{");
+                sb.WriteLineIndented($"issues.push({invalidCode});");
+                sb.CloseScope();
+            }
         }
     }
 
@@ -1749,6 +1815,33 @@ public sealed class TypeScriptSdk : ILanguage
                     $"|any{arrayFlag}" +
                     $"{typeOptionalityFlag};");
             }
+            else if (element.HasReferencedValueSet && element.ExportType.Contains('<'))
+            {
+                WriteIndentedComment(sb, element.ExportComment);
+
+                switch (element.BoundValueSetStrength)
+                {
+                    case FhirElement.ElementDefinitionBindingStrength.Required:
+                        sb.WriteLineIndented($"{element.ExportName}{optionalFlag}:" +
+                            $" (fhir.FhirCodeArgs<{element.ValueSetExportName}>|{element.ValueSetExportName}|null){arrayFlag}" +
+                            $"{typeOptionalityFlag};");
+                        break;
+
+                    case FhirElement.ElementDefinitionBindingStrength.Extensible:
+                    case FhirElement.ElementDefinitionBindingStrength.Preferred:
+                        sb.WriteLineIndented($"{element.ExportName}{optionalFlag}:" +
+                            $" (fhir.FhirCodeArgs<{element.ValueSetExportName}|string>|{element.ValueSetExportName}|string|null){arrayFlag}" +
+                            $"{typeOptionalityFlag};");
+                        break;
+
+                    case FhirElement.ElementDefinitionBindingStrength.Example:
+                    default:
+                        sb.WriteLineIndented($"{element.ExportName}{optionalFlag}:" +
+                            $" (fhir.FhirCodeArgs<string>|string|null){arrayFlag}" +
+                            $"{typeOptionalityFlag};");
+                        break;
+                }
+            }
             else if (element.ExportType.StartsWith("fhir.", StringComparison.Ordinal))
             {
                 WriteIndentedComment(sb, element.ExportComment);
@@ -1780,8 +1873,9 @@ public sealed class TypeScriptSdk : ILanguage
         string arrayFlag = element.IsArray ? "[]" : string.Empty;
         string typeAddition;
 
-        if (element.IsArray)
+        if (element.IsArray && (!isInterface))
         {
+            optionalFlag = string.Empty;
             typeAddition = string.Empty;
         }
         else if (element.IsOptional)
@@ -1801,7 +1895,14 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (element.IsChoice)
         {
-            exportType = "(" + string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType)) + ")";
+            if (isInterface)
+            {
+                exportType = "(" + string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportInterfaceType)) + ")";
+            }
+            else
+            {
+                exportType = "(" + string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType)) + ")";
+            }
         }
         else if (isInterface)
         {
