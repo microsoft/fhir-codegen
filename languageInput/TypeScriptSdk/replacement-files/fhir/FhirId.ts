@@ -10,7 +10,7 @@ export interface FhirIdArgs extends fhir.FhirPrimitiveArgs {
   /**
    * RFC 4122
    */
-  value?:FhirId|string|undefined;
+  value?:FhirId|string|undefined|null;
 }
 
 /**

@@ -10,7 +10,7 @@ export interface FhirDecimalArgs extends fhir.FhirPrimitiveArgs {
   /**
    * Do not use an IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigInteger)
    */
-  value?:FhirDecimal|number|undefined;
+  value?:FhirDecimal|number|undefined|null;
 }
 
 /**

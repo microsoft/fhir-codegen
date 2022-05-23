@@ -10,7 +10,7 @@ export interface FhirOidArgs extends fhir.FhirPrimitiveArgs {
   /**
    * RFC 3001. See also ISO/IEC 8824:1990 €
    */
-  value?:FhirOid|string|undefined;
+  value?:FhirOid|string|undefined|null;
 }
 
 /**

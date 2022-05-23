@@ -10,7 +10,7 @@ export interface FhirCanonicalArgs extends fhir.FhirPrimitiveArgs {
   /**
    * see [Canonical References](references.html#canonical)
    */
-  value?:FhirCanonical|string|undefined;
+  value?:FhirCanonical|string|undefined|null;
 }
 
 /**

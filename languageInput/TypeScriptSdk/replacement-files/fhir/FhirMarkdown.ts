@@ -10,7 +10,7 @@ export interface FhirMarkdownArgs extends fhir.FhirPrimitiveArgs {
   /**
    * Systems are not required to have markdown support, so the text should be readable without markdown processing. The markdown syntax is GFM - see https://github.github.com/gfm/
    */
-  value?:FhirMarkdown|string|undefined;
+  value?:FhirMarkdown|string|undefined|null;
 }
 
 /**

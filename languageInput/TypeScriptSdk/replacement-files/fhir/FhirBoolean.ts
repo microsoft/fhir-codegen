@@ -10,7 +10,7 @@ export interface FhirBooleanArgs extends fhir.FhirPrimitiveArgs {
   /**
    * Value of "true" or "false"
    */
-  value?:FhirBoolean|boolean|undefined;
+  value?:FhirBoolean|boolean|undefined|null;
 }
 
 /**

@@ -10,7 +10,7 @@ export interface FhirCodeArgs<CodeType extends string = string> extends fhir.Fhi
   /**
    * A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents
    */
-  value?:FhirCode<CodeType>|CodeType|string|undefined;
+  value?:FhirCode<CodeType>|CodeType|string|undefined|null;
 }
 
 /**

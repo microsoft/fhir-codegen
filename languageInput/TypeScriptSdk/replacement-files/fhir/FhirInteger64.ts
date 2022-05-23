@@ -12,7 +12,7 @@ export interface FhirInteger64Args extends fhir.FhirPrimitiveArgs {
  * A signed integer in the range -9,223,372,036,854,775,808 to +9,223,372,036,854,775,807 (64-bit).
  * This type is defined to allow for record/time counters that can get very large
    */
-  value?:FhirInteger64|string|undefined;
+  value?:FhirInteger64|string|undefined|null;
 }
 
 /**

@@ -10,7 +10,7 @@ export interface FhirPositiveIntArgs extends fhir.FhirPrimitiveArgs {
   /**
    * An integer with a value that is positive (e.g. &gt;0)
    */
-  value?:FhirPositiveInt|number|undefined;
+  value?:FhirPositiveInt|number|undefined|null;
 }
 
 /**

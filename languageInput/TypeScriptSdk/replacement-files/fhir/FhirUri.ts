@@ -10,7 +10,7 @@ export interface FhirUriArgs extends fhir.FhirPrimitiveArgs {
   /**
    * see http://en.wikipedia.org/wiki/Uniform_resource_identifier
    */
-  value?:FhirUri|string|undefined;
+  value?:FhirUri|string|undefined|null;
 }
 
 /**

@@ -10,7 +10,7 @@ export interface FhirBase64BinaryArgs extends fhir.FhirPrimitiveArgs {
   /**
    * A stream of bytes, base64 encoded
    */
-  value?:FhirBase64Binary|string|undefined;
+  value?:FhirBase64Binary|string|undefined|null;
 }
 
 /**

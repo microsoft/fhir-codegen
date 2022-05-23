@@ -10,7 +10,7 @@ export interface FhirInstantArgs extends fhir.FhirPrimitiveArgs {
   /**
    * Note: This is intended for where precisely observed times are required, typically system logs etc., and not human-reported times - for them, see date and dateTime (which can be as precise as instant, but is not required to be) below. Time zone is always required
    */
-  value?:FhirInstant|string|undefined;
+  value?:FhirInstant|string|undefined|null;
 }
 
 /**

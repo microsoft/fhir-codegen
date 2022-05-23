@@ -10,7 +10,7 @@ export interface FhirStringArgs extends fhir.FhirPrimitiveArgs {
   /**
    * Note that FHIR strings SHALL NOT exceed 1MB in size
    */
-  value?:FhirString|string|undefined;
+  value?:FhirString|string|undefined|null;
 }
 
 /**
