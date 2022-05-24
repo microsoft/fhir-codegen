@@ -789,12 +789,15 @@ public class ModelBuilder
         string vsName = FhirUtils.SanitizeForProperty(fhirValueSet.Id ?? fhirValueSet.Name, ReservedWords);
         vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
 
-        if (vsName.EndsWith("Codes", StringComparison.OrdinalIgnoreCase))
+        if (vsName.EndsWith("Code", StringComparison.OrdinalIgnoreCase))
+        {
+            vsName = vsName.Substring(0, vsName.Length - 4);
+        }
+        else if (vsName.EndsWith("Codes", StringComparison.OrdinalIgnoreCase))
         {
             vsName = vsName.Substring(0, vsName.Length - 5);
         }
 
-        //return vsName + "ValueSet";
         return vsName;
     }
 

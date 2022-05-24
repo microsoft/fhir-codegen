@@ -44,6 +44,9 @@ export class FhirXhtml extends fhir.FhirPrimitive {
    */
   public override doModelValidation():fhir.FtsIssue[] {
     let issues:fhir.FtsIssue[] = super.doModelValidation();
+    if ((this.value) && (typeof this.value !== 'string')) {
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type xhtml', });
+    }
     return issues;
   }
 }

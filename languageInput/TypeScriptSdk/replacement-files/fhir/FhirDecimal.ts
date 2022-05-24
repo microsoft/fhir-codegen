@@ -46,8 +46,8 @@ export class FhirDecimal extends fhir.FhirPrimitive {
    */
   public override doModelValidation():fhir.FtsIssue[] {
     let issues:fhir.FtsIssue[] = super.doModelValidation();
-    if ((this.value) && (!FhirDecimal._fts_regex.test(this.value.toString()))) {
-      issues.push({ severity: 'error', code: 'invalid',  diagnostics: 'Invalid value in primitive type decimal', });
+    if ((this.value) && ((typeof this.value !== 'number') || (!FhirDecimal._fts_regex.test(this.value.toString())))) {
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type decimal', });
     }
     return issues;
   }

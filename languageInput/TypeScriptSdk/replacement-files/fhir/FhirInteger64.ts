@@ -49,8 +49,8 @@ export class FhirInteger64 extends fhir.FhirPrimitive {
    */
   public override doModelValidation():fhir.FtsIssue[] {
     let issues:fhir.FtsIssue[] = super.doModelValidation();
-    if ((this.value) && (!FhirInteger64._fts_regex.test(this.value.toString()))) {
-      issues.push({ severity: 'error', code: 'invalid',  diagnostics: 'Invalid value in primitive type unsignedInt', });
+    if ((this.value) && ((typeof this.value !== 'string') || (!FhirInteger64._fts_regex.test(this.value)))) {
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type unsignedInt', });
     }
     return issues;
   }

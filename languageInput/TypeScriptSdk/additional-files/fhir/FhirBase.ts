@@ -147,17 +147,20 @@ export class FhirBase {
             }
   
             let ao:object = {};
-            if (av.id) { (ao as any)['id'] = av.id; }
-            if (av.extension) {
+            if (av.id) { 
+              (ao as any)['id'] = av.id;
+              foundAnyExt = true;
+            }
+            if ((av.extension) && (av.extension.length !== 0)) {
               (ao as any)['extension'] = [];
               av.extension.forEach((e:any) => {
                 (ao as any)['extension'].push(e);
               });
+              foundAnyExt = true;
             }
   
-            if (Object.keys(ao).length !== 0) { 
+            if (foundAnyExt) { 
               c[eName].push(ao);
-              foundAnyExt = true;
               addElement = true;
             } else {
               c[eName].push(null);
@@ -186,7 +189,7 @@ export class FhirBase {
         const eName:string = '_' + dKey;
         c[eName] = {};
         if ((this as any)[key]['id']) { c[eName]['id'] = (this as any)[key]['id']; }
-        if ((this as any)[key]['extension']) {
+        if (((this as any)[key]['extension']) && ((this as any)[key]['extension'].length !== 0)) {
           c[eName]['extension'] = [];
           (this as any)[key]['extension'].forEach((e:any) => {
             c[eName]['extension'].push(e);

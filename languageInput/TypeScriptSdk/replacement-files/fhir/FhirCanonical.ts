@@ -46,8 +46,8 @@ export class FhirCanonical extends fhir.FhirPrimitive {
    */
   public override doModelValidation():fhir.FtsIssue[] {
     let issues:fhir.FtsIssue[] = super.doModelValidation();
-    if ((this.value) && (!FhirCanonical._fts_regex.test(this.value))) {
-      issues.push({ severity: 'error', code: 'invalid',  diagnostics: 'Invalid value in primitive type canonical', });
+    if ((this.value) && ((typeof this.value !== 'string') || (!FhirCanonical._fts_regex.test(this.value)))) {
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type canonical', });
     }
     return issues;
   }

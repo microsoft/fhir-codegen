@@ -46,8 +46,8 @@ export class FhirCode<CodeType extends string = string> extends fhir.FhirPrimiti
    */
   public override doModelValidation():fhir.FtsIssue[] {
     let issues:fhir.FtsIssue[] = super.doModelValidation();
-    if ((this.value) && (!FhirCode._fts_regex.test(this.value))) {
-      issues.push({ severity: 'error', code: 'invalid',  diagnostics: 'Invalid value in primitive type code', });
+    if ((this.value) && ((typeof this.value !== 'string') || (!FhirCode._fts_regex.test(this.value)))) {
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type code', });
     }
     return issues;
   }

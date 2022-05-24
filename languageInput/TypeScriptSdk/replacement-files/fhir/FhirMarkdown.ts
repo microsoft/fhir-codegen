@@ -46,8 +46,8 @@ export class FhirMarkdown extends fhir.FhirPrimitive {
    */
   public override doModelValidation():fhir.FtsIssue[] {
     let issues:fhir.FtsIssue[] = super.doModelValidation();
-    if ((this.value) && (!FhirMarkdown._fts_regex.test(this.value))) {
-      issues.push({ severity: 'error', code: 'invalid',  diagnostics: 'Invalid value in primitive type markdown', });
+    if ((this.value) && ((typeof this.value !== 'string') || (!FhirMarkdown._fts_regex.test(this.value)))) {
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type markdown', });
     }
     return issues;
   }

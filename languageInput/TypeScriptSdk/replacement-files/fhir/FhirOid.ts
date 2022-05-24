@@ -46,7 +46,7 @@ export class FhirOid extends fhir.FhirPrimitive {
    */
   public override doModelValidation():fhir.FtsIssue[] {
     let issues:fhir.FtsIssue[] = super.doModelValidation();
-    if ((this.value) && (!FhirOid._fts_regex.test(this.value))) {
+    if ((this.value) && ((typeof this.value !== 'string') || (!FhirOid._fts_regex.test(this.value)))) {
       issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type oid', });
     }
     return issues;
