@@ -565,15 +565,13 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLine($"// FHIR ValueSet: {vs.FhirUrl}|{vs.FhirVersion}");
         sb.WriteLine(string.Empty);
         //sb.WriteLineIndented("import { Coding } from '../fhir.js'");
-        sb.WriteLineIndented("import { Coding } from '../fhir/Coding.js'");
+        //sb.WriteLineIndented("import { Coding } from '../fhir/Coding.js'");
+        sb.WriteLineIndented("import { CodingArgs } from '../fhir/Coding.js'");
+
+        // write type
         sb.WriteLine(string.Empty);
-
-        if (!string.IsNullOrEmpty(vs.ExportComment))
-        {
-            WriteIndentedComment(sb, vs.ExportComment);
-        }
-
-        sb.OpenScope($"export const {vs.ExportName}{CodingObjectSuffix} = {{");
+        WriteIndentedComment(sb, vs.ExportComment);
+        sb.OpenScope($"export type {vs.ExportName}{CodingTypeSuffix} = {{");
 
         foreach (ModelBuilder.ExportValueSetCoding coding in vs.CodingsByExportName.Values)
         {
@@ -586,7 +584,29 @@ public sealed class TypeScriptSdk : ILanguage
                 WriteIndentedComment(sb, coding.Code + ": " + coding.Comment);
             }
 
-            sb.OpenScope($"{coding.ExportName}: new Coding({{");
+            sb.WriteLineIndented($"{coding.ExportName}: CodingArgs;");
+        }
+
+        sb.CloseScope();
+
+        // write const
+        sb.WriteLine(string.Empty);
+        WriteIndentedComment(sb, vs.ExportComment);
+        sb.OpenScope($"export const {vs.ExportName}{CodingObjectSuffix}:{vs.ExportName}{CodingTypeSuffix} = {{");
+
+        foreach (ModelBuilder.ExportValueSetCoding coding in vs.CodingsByExportName.Values)
+        {
+            if (string.IsNullOrEmpty(coding.Comment))
+            {
+                WriteIndentedComment(sb, "Code: " + coding.Code);
+            }
+            else
+            {
+                WriteIndentedComment(sb, coding.Code + ": " + coding.Comment);
+            }
+
+            //sb.OpenScope($"{coding.ExportName}: new Coding({{");
+            sb.OpenScope($"{coding.ExportName}: {{");
 
             if (!string.IsNullOrEmpty(coding.Display))
             {
@@ -596,18 +616,13 @@ public sealed class TypeScriptSdk : ILanguage
             sb.WriteLineIndented($"code: \"{coding.Code}\",");
             sb.WriteLineIndented($"system: \"{coding.System}\",");
 
-            sb.CloseScope("}),");
+            //sb.CloseScope("}),");
+            sb.CloseScope("},");
         }
 
         sb.CloseScope("} as const;");
 
-        sb.WriteLine(string.Empty);
-        if (!string.IsNullOrEmpty(vs.ExportComment))
-        {
-            WriteIndentedComment(sb, vs.ExportComment);
-        }
-
-        sb.WriteLineIndented($"export type {vs.ExportName}{CodingTypeSuffix} = typeof {vs.ExportName}{CodingObjectSuffix};");
+        //sb.WriteLineIndented($"export type {vs.ExportName}{CodingTypeSuffix} = typeof {vs.ExportName}{CodingObjectSuffix};");
 
         WriteFile(sb, Path.Combine(_relativeValueSetDirectory, vs.ExportName + CodingObjectSuffix + ".ts"));
     }
@@ -962,31 +977,6 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLineIndented(" * @param options Options to pass to extension constructors");
         sb.CloseScope("*/");
 
-        // Constructor open
-
-        //WriteIndentedComment(
-        //    sb,
-        //    $"Default constructor for {primitive.ExportClassName}");
-
-        //sb.OpenScope($"constructor(source:Partial<{primitive.ExportInterfaceName}> = {{ }}, options:fhir.FhirConstructorOptions = {{ }}) {{");
-
-        // -- 
-
-        //sb.OpenScope(
-        //    $"constructor" +
-        //    $"(value:{primitive.ExportClassName}|{primitive.JsonExportType}|null|undefined = undefined," +
-        //    $" id:string|undefined = undefined," +
-        //    $" extension:(fhir.Extension|null)[]|undefined = undefined," +
-        //    $" options:fhir.FhirConstructorOptions = {{ }} " +
-        //    $") {{");
-
-        //if (!string.IsNullOrEmpty(primitive.ExportClassType))
-        //{
-        //    sb.WriteLineIndented("super(value, id, extension, options);");
-        //}
-
-        // --
-
         sb.OpenScope(
             $"constructor" +
             $"(source:Partial<{primitive.ExportClassName}Args> = {{}}," +
@@ -1143,7 +1133,7 @@ public sealed class TypeScriptSdk : ILanguage
                 case FhirElement.ElementDefinitionBindingStrength.Extensible:
                 case FhirElement.ElementDefinitionBindingStrength.Preferred:
                     WriteIndentedComment(sb, $"{element.BoundValueSetStrength}-bound Value Set for {element.ExportName} ({element.FhirPath})");
-                    sb.OpenScope($"public static get {element.ExportName}{element.BoundValueSetStrength}{CodingObjectSuffix}() {{");
+                    sb.OpenScope($"public static get {element.ExportName}{element.BoundValueSetStrength}{CodingObjectSuffix}():{element.ValueSetExportName}{CodingTypeSuffix} {{");
                     sb.WriteLineIndented($"return {element.ValueSetExportName}{CodingObjectSuffix};");
 
                     sb.CloseScope();
@@ -1661,7 +1651,6 @@ public sealed class TypeScriptSdk : ILanguage
             $"Default constructor for {complex.ExportClassName} - initializes any required elements to null if a value is not provided.");
 
         sb.OpenScope($"constructor(source:Partial<{complex.ExportClassName}Args> = {{}}, options:fhir.FhirConstructorOptions = {{}}) {{");
-        //sb.OpenScope($"constructor(source?:Partial<{complex.ExportClassName}Args>|undefined, options?:fhir.FhirConstructorOptions|undefined) {{");
 
         if (!string.IsNullOrEmpty(complex.ExportType))
         {
