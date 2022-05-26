@@ -92,6 +92,19 @@ export class FhirPrimitive extends fhir.FhirBase  {
     return issues;
   }
 
+  /**
+   * Fluent-style function to add extended primitive properties
+   * @param source 
+   */
+   public addExtendedProperties(source:fhir.FhirElementArgs = {}):fhir.FhirPrimitive {
+    if (source.id) { this.id = source.id.toString(); }
+    if (source.extension) {
+      source.extension.forEach((x) => {
+        this.extension.push(new fhir.Extension(x));
+      });
+    }
+    return this;
+  }
 
   /**
    * Fluent-style function to add extensions

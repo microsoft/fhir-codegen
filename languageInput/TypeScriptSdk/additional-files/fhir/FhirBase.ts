@@ -113,8 +113,7 @@ export class FhirBase {
       if (((this as any)[key] === undefined) || 
           ((this as any)[key] === null) ||
           ((this as any)[key] === '') ||
-          ((this as any)[key] === NaN) ||
-          ((this as any)[key] === [])) {
+          (Number.isNaN((this as any)[key]))) {
         continue;
       }
 

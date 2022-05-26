@@ -1182,6 +1182,10 @@ public sealed class TypeScriptSdk : ILanguage
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
             BuildComplexElementArg(sb, element);
+            if (element.IsPrimitive)
+            {
+                BuildComplexElementArgExtension(sb, element);
+            }
         }
 
         // interface close
@@ -1638,6 +1642,52 @@ public sealed class TypeScriptSdk : ILanguage
         }
     }
 
+    /// <summary>Builds constructor extension element.</summary>
+    /// <param name="sb">     The writer.</param>
+    /// <param name="element">The element.</param>
+    private void BuildConstructorElementExtension(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportElement element)
+    {
+        string argType =
+            element.ExportType.Contains('<')
+            ? $"Partial<{element.ExportType.Substring(0, element.ExportType.IndexOf('<'))}>"
+            : $"Partial<{element.ExportType}Args>";
+
+        if (element.IsArray)
+        {
+            sb.OpenScope($"if (source['_{element.ExportName}']) {{");
+            sb.OpenScope($"source._{element.ExportName}.forEach((x,i) => {{");
+            sb.WriteLineIndented(
+                $"if (this.{element.ExportName}.length >= i)" +
+                $" {{" +
+                $" if (x) {{ this.{element.ExportName}[i].addExtendedProperties(x); }}" +
+                $" }}");
+            sb.WriteLineIndented(
+                $"else" +
+                $" {{" +
+                $" if (x) {{ this.{element.ExportName}.push(new {element.ExportType}(x as {argType})); }}" +
+                $" }}");
+            sb.CloseScope("});");
+            sb.CloseScope();
+        }
+        else
+        {
+            sb.OpenScope($"if (source['_{element.ExportName}']) {{");
+            sb.WriteLineIndented(
+                $"if (this.{element.ExportName})" +
+                $" {{" +
+                $" this.{element.ExportName}.addExtendedProperties(source._{element.ExportName}!);" +
+                $" }}");
+            sb.WriteLineIndented(
+                $"else" +
+                $" {{" +
+                $" this.{element.ExportName} = new {element.ExportType}(source._{element.ExportName} as {argType});" +
+                $" }}");
+            sb.CloseScope();
+        }
+    }
+
     /// <summary>Builds a constructor.</summary>
     /// <param name="sb">     The writer.</param>
     /// <param name="complex">The complex.</param>
@@ -1670,6 +1720,10 @@ public sealed class TypeScriptSdk : ILanguage
             }
 
             BuildConstructorElement(sb, element);
+            if (element.IsPrimitive)
+            {
+                BuildConstructorElementExtension(sb, element);
+            }
         }
 
         sb.CloseScope();
@@ -1846,6 +1900,22 @@ public sealed class TypeScriptSdk : ILanguage
                     $" {element.ExportType}{arrayFlag}" +
                     $"{typeOptionalityFlag};");
             }
+        }
+    }
+
+    private void BuildComplexElementArgExtension(
+        ExportStringBuilder sb,
+        ModelBuilder.ExportElement element)
+    {
+        WriteIndentedComment(sb, $"Extended properties for primitive element: {element.FhirPath}");
+
+        if (element.IsArray)
+        {
+            sb.WriteLineIndented($"_{element.ExportName}?:(fhir.{ComplexTypeSubstitutions["Element"]}Args|null)[];");
+        }
+        else
+        {
+            sb.WriteLineIndented($"_{element.ExportName}?:fhir.{ComplexTypeSubstitutions["Element"]}Args;");
         }
     }
 
