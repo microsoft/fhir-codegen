@@ -46,9 +46,33 @@ export class FhirUnsignedInt extends fhir.FhirPrimitive {
    */
   public override doModelValidation():fhir.FtsIssue[] {
     let issues:fhir.FtsIssue[] = super.doModelValidation();
-    if ((this.value) && ((typeof this.value !== 'number') || (!FhirUnsignedInt._fts_regex.test(this.value.toString())))) {
+    if ((this.value !== undefined) && ((typeof this.value !== 'number') || (!Number.isInteger(this.value)) || (this.value < 0) || (!FhirUnsignedInt._fts_regex.test(this.value.toString())))) {
       issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type unsignedInt', });
     }
     return issues;
   }
+  /**
+   * Returns a string representation of an object.
+   * @param radix Specifies a radix for converting numeric values to strings. This value is only used for numbers.
+   */
+   public override toString(radix?:number):string { return (this.value ?? NaN).toString(radix); }
+   /**
+    * Returns a string representing a number in fixed-point notation.
+    * @param fractionDigits Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.
+    */
+   public toFixed(fractionDigits?:number):string { return (this.value ?? NaN).toFixed(fractionDigits); }
+   /**
+    * Returns a string containing a number represented in exponential notation.
+    * @param fractionDigits Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.
+    */
+   public toExponential(fractionDigits?:number):string { return (this.value ?? NaN).toExponential(fractionDigits); }
+   /**
+    * Returns a string containing a number represented either in exponential or fixed-point notation with a specified number of digits.
+    * @param precision Number of significant digits. Must be in the range 1 - 21, inclusive.
+    */
+   public toPrecision(precision?:number):string { return (this.value ?? NaN).toPrecision(precision); }
+   /**
+    * Returns the primitive value of the specified object.
+    */
+   public override valueOf():number { return (this.value ?? NaN); }
 }

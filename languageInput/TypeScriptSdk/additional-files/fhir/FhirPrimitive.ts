@@ -52,7 +52,7 @@ export class FhirPrimitive extends fhir.FhirBase  {
   constructor(source:Partial<FhirPrimitiveArgs> = {}, options:fhir.FhirConstructorOptions = {}) {
     super();
     if (source) {
-      if ((source.value) && (source.value.constructor) && (source.value.constructor['_fts_dataType'])) {
+      if ((source.value !== undefined) && (source.value.constructor) && (source.value.constructor['_fts_dataType'])) {
         this.value = source.value.value ?? null;
         this.id = source.value.id ?? undefined;
         if ((source.value.extension) && (source.value.extension.length > 0)) {
@@ -61,7 +61,7 @@ export class FhirPrimitive extends fhir.FhirBase  {
             if (e) { this.extension!.push(new fhir.Extension(e, options)); }
           });
         }
-      } else if (source.value) {
+      } else if (source.value !== undefined) {
         this.value = source.value;
       }
   
@@ -82,7 +82,7 @@ export class FhirPrimitive extends fhir.FhirBase  {
    */
   public override doModelValidation():fhir.FtsIssue[] {
     let issues:fhir.FtsIssue[] = super.doModelValidation();
-    if ((!this.value) && (!this.id) && ((!this.extension) || (this.extension.length === 0))) {
+    if ((this.value === undefined) && (!this.id) && ((!this.extension) || (this.extension.length === 0))) {
       issues.push({
         severity: 'error',
         code: 'required',
