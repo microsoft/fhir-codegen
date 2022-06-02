@@ -1413,18 +1413,11 @@ public sealed class TypeScriptSdk : ILanguage
     /// <param name="element">The element.</param>
     private void AddModelCheckReferencedValueSet(ExportStringBuilder sb, ModelBuilder.ExportElement element)
     {
-        if (element.ExportType == "fhir.CodeableConcept")
-        {
-            // TODO: need to check inside a codeable concept for matches
-            return;
-        }
-
-        string propertyInfo =
-            $"property" +
-            $" {element.ExportName}" +
-            $" fhir:" +
-            $" {element.FhirPath}" +
-            $":{element.FhirType}" +
+        string issueMessage =
+            $"{element.ExportName}" +
+            $" ({element.FhirPath})" +
+            $" of type {element.FhirType}" +
+            $" is missing code for" +
             $" {element.BoundValueSetStrength} binding to: {element.ValueSetExportName}";
 
         if (element.BoundValueSetStrength == FhirElement.ElementDefinitionBindingStrength.Required)
@@ -1432,26 +1425,51 @@ public sealed class TypeScriptSdk : ILanguage
             string invalidCode = BuildOperationOutcomeIssue(
                 TsOutcomeIssueSeverity.Error,
                 TsOutcomeIssueType.InvalidCode,
-                $"Invalid code {propertyInfo}");
+                issueMessage);
 
             if (element.IsArray)
             {
-                sb.OpenScope($"if (this['{element.ExportName}']) {{");
-                sb.OpenScope($"this.{element.ExportName}.forEach((v) => {{");
-                sb.OpenScope($"if (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(v.value as any)) {{");
-                sb.WriteLineIndented($"issues.push({invalidCode});");
-                sb.CloseScope();
-                sb.CloseScope("});");
-                sb.CloseScope();
+                if (element.ExportType == "fhir.CodeableConcept")
+                {
+                    sb.OpenScope($"if (this['{element.ExportName}']) {{");
+                    sb.OpenScope($"this.{element.ExportName}.forEach((v) => {{");
+                    sb.OpenScope($"if (!v.hasCodingFromObject({element.ValueSetExportName}{CodingObjectSuffix})) {{");
+                    sb.WriteLineIndented($"issues.push({invalidCode});");
+                    sb.CloseScope();
+                    sb.CloseScope("});");
+                    sb.CloseScope();
+                }
+                else
+                {
+                    sb.OpenScope($"if (this['{element.ExportName}']) {{");
+                    sb.OpenScope($"this.{element.ExportName}.forEach((v) => {{");
+                    sb.OpenScope($"if (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(v.value as any)) {{");
+                    sb.WriteLineIndented($"issues.push({invalidCode});");
+                    sb.CloseScope();
+                    sb.CloseScope("});");
+                    sb.CloseScope();
+                }
             }
             else
             {
-                sb.OpenScope(
-                    $"if (this['{element.ExportName}'] &&" +
-                    $" (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(this.{element.ExportName}.value as any))" +
-                    $") {{");
-                sb.WriteLineIndented($"issues.push({invalidCode});");
-                sb.CloseScope();
+                if (element.ExportType == "fhir.CodeableConcept")
+                {
+                    sb.OpenScope(
+                        $"if (this['{element.ExportName}'] &&" +
+                        $" (!this.{element.ExportName}.hasCodingFromObject({element.ValueSetExportName}{CodingObjectSuffix}))" +
+                        $") {{");
+                    sb.WriteLineIndented($"issues.push({invalidCode});");
+                    sb.CloseScope();
+                }
+                else
+                {
+                    sb.OpenScope(
+                        $"if (this['{element.ExportName}'] &&" +
+                        $" (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(this.{element.ExportName}.value as any))" +
+                        $") {{");
+                    sb.WriteLineIndented($"issues.push({invalidCode});");
+                    sb.CloseScope();
+                }
             }
         }
     }
