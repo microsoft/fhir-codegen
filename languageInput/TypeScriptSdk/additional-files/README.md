@@ -1,15 +1,6 @@
 
-# FHIR TypeScript Library
+## fhir-typescript
 
-TODO
+This language output is designed for the [fhir-typescript](http://github.com/fhir-typescript/fhir-typescript) project.
 
-# Building
-
-
-`tsc --build`
-
-# Installing
-
-While this repo is the temp home:
-
-`npm install git+https://github.com/GinoCanessa/FhirTypeScriptOddsAndEnds.git`
+Please see that repository for additional information.

@@ -1255,8 +1255,8 @@ public sealed class TypeScriptSdk : ILanguage
     {
         // function open
         WriteIndentedComment(sb, "Function to perform basic model validation (e.g., check if required elements are present).");
-        sb.OpenScope("public override doModelValidation():fhir.FtsIssue[] {");
-        sb.WriteLineIndented("let issues:fhir.FtsIssue[] = super.doModelValidation();");
+        sb.OpenScope("public override doModelValidation(expression:string = ''):fhir.FtsIssue[] {");
+        sb.WriteLineIndented("let issues:fhir.FtsIssue[] = super.doModelValidation(expression);");
 
         if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
         {
@@ -1300,14 +1300,16 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (string.IsNullOrEmpty(complex.ExportType))
         {
-            sb.OpenScope("public doModelValidation():fhir.FtsIssue[] {");
+            sb.OpenScope("public doModelValidation(expression:string = ''):fhir.FtsIssue[] {");
             sb.WriteLineIndented("let issues:fhir.FtsIssue[] = [];");
         }
         else
         {
-            sb.OpenScope("public override doModelValidation():fhir.FtsIssue[] {");
-            sb.WriteLineIndented("let issues:fhir.FtsIssue[] = super.doModelValidation();");
+            sb.OpenScope("public override doModelValidation(expression:string = ''):fhir.FtsIssue[] {");
+            sb.WriteLineIndented("let issues:fhir.FtsIssue[] = super.doModelValidation(expression);");
         }
+
+        sb.WriteLineIndented($"if (expression === '') {{ expression = '{complex.FhirName}' }}");
 
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
@@ -1329,9 +1331,9 @@ public sealed class TypeScriptSdk : ILanguage
                     sb.WriteLineIndented(
                         $"if (this[\"{element.ExportName}\"])" +
                         $" {{" +
-                        $" this.{element.ExportName}.forEach((x) =>" +
+                        $" this.{element.ExportName}.forEach((x,i) =>" +
                         $" {{" +
-                        $" issues.push(...x.doModelValidation());" +
+                        $" issues.push(...x.doModelValidation(expression+`.{element.ExportName}[${{i}}]`));" +
                         $" }})" +
                         $" }}");
                 }
@@ -1339,7 +1341,7 @@ public sealed class TypeScriptSdk : ILanguage
                 {
                     sb.WriteLineIndented(
                         $"if (this[\"{element.ExportName}\"])" +
-                        $" {{ issues.push(...this.{element.ExportName}.doModelValidation()); }}");
+                        $" {{ issues.push(...this.{element.ExportName}.doModelValidation(expression+'.{element.ExportName}')); }}");
                 }
             }
         }
@@ -1361,7 +1363,8 @@ public sealed class TypeScriptSdk : ILanguage
             $"{{" +
             $" severity: '{issueSeverity}'," +
             $" code: '{issueType}'," +
-            $" diagnostics: {TsQuoteAndSanitize(message) ?? "''"}" +
+            $" diagnostics: {TsQuoteAndSanitize(message) ?? "''"}," +
+            $" expression: [expression]" +
             $" }}";
     }
 
@@ -1372,8 +1375,7 @@ public sealed class TypeScriptSdk : ILanguage
     {
         string propertyInfo =
             $"property" +
-            $" {element.ExportName}{(element.IsOptional ? "?" : string.Empty)}" +
-            $":{element.ExportType}{(element.IsArray ? "[]" : string.Empty)}" +
+            $" {element.ExportName}" +
             $" fhir:" +
             $" {element.FhirPath}" +
             $":{element.FhirType}";
@@ -1411,10 +1413,15 @@ public sealed class TypeScriptSdk : ILanguage
     /// <param name="element">The element.</param>
     private void AddModelCheckReferencedValueSet(ExportStringBuilder sb, ModelBuilder.ExportElement element)
     {
+        if (element.ExportType == "fhir.CodeableConcept")
+        {
+            // TODO: need to check inside a codeable concept for matches
+            return;
+        }
+
         string propertyInfo =
             $"property" +
-            $" {element.ExportName}{(element.IsOptional ? "?" : string.Empty)}" +
-            $":{element.ExportType}{(element.IsArray ? "[]" : string.Empty)}" +
+            $" {element.ExportName}" +
             $" fhir:" +
             $" {element.FhirPath}" +
             $":{element.FhirType}" +
@@ -1431,7 +1438,7 @@ public sealed class TypeScriptSdk : ILanguage
             {
                 sb.OpenScope($"if (this['{element.ExportName}']) {{");
                 sb.OpenScope($"this.{element.ExportName}.forEach((v) => {{");
-                sb.OpenScope($"if (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(v as any)) {{");
+                sb.OpenScope($"if (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(v.value as any)) {{");
                 sb.WriteLineIndented($"issues.push({invalidCode});");
                 sb.CloseScope();
                 sb.CloseScope("});");
@@ -1441,7 +1448,7 @@ public sealed class TypeScriptSdk : ILanguage
             {
                 sb.OpenScope(
                     $"if (this['{element.ExportName}'] &&" +
-                    $" (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(this.{element.ExportName} as any))" +
+                    $" (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(this.{element.ExportName}.value as any))" +
                     $") {{");
                 sb.WriteLineIndented($"issues.push({invalidCode});");
                 sb.CloseScope();

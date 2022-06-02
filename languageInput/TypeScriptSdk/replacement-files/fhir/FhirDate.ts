@@ -44,10 +44,10 @@ export class FhirDate extends fhir.FhirPrimitive {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-  public override doModelValidation():fhir.FtsIssue[] {
-    let issues:fhir.FtsIssue[] = super.doModelValidation();
-    if ((this.value !== undefined) && ((this.value === '') || (typeof this.value !== 'string') || (!FhirDate._fts_regex.test(this.value)))) {
-      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type date', });
+  public override doModelValidation(expression:string = ''):fhir.FtsIssue[] {
+    let issues:fhir.FtsIssue[] = super.doModelValidation(expression);
+    if ((this.value !== undefined) && (this.value !== null) && ((this.value === '') || (typeof this.value !== 'string') || (!FhirDate._fts_regex.test(this.value)))) {
+      issues.push({ severity: 'error', code: 'invalid', diagnostics: 'Invalid value in primitive type date', expression: [expression]});
     }
     return issues;
   }

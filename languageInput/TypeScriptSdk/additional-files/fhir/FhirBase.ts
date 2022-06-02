@@ -98,7 +98,7 @@ export class FhirBase {
   /**
    * Function to perform basic model validation (e.g., check if required elements are present).
    */
-   public doModelValidation():FtsIssue[] {
+   public doModelValidation(_expression:string = ''):FtsIssue[] {
     let issues:FtsIssue[] = [];
     return issues;
   }
