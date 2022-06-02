@@ -4,8 +4,6 @@
 // </copyright>
 
 using System.IO;
-using System.Linq;
-using Microsoft.Extensions.Options;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using static Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk.TypeScriptSdkCommon;
@@ -1839,12 +1837,24 @@ public sealed class TypeScriptSdk : ILanguage
             {
                 if (PrimitiveTypeMap.ContainsKey(ct.ExportJsonType))
                 {
-                    WriteIndentedComment(sb, element.ExportComment);
-                    sb.WriteLineIndented(
-                        $"{ct.ExportName}?:" +
-                        $" {ct.ExportType}{arrayFlag}" +
-                        $"|{PrimitiveTypeMap[ct.ExportJsonType]}{arrayFlag}" +
-                        $"|undefined;");
+                    if (element.IsArray)
+                    {
+                        WriteIndentedComment(sb, element.ExportComment);
+                        sb.WriteLineIndented(
+                            $"{ct.ExportName}?:" +
+                            $" {ct.ExportType}[]" +
+                            $"|({PrimitiveTypeMap[ct.ExportJsonType]}|null)[]" +
+                            $"|undefined;");
+                    }
+                    else
+                    {
+                        WriteIndentedComment(sb, element.ExportComment);
+                        sb.WriteLineIndented(
+                            $"{ct.ExportName}?:" +
+                            $" {ct.ExportType}" +
+                            $"|{PrimitiveTypeMap[ct.ExportJsonType]}" +
+                            $"|undefined;");
+                    }
                 }
                 else if (ct.ExportType.Equals("fhir.FhirResource", StringComparison.Ordinal))
                 {
@@ -1867,12 +1877,24 @@ public sealed class TypeScriptSdk : ILanguage
         {
             if (PrimitiveTypeMap.ContainsKey(element.ExportJsonType))
             {
-                WriteIndentedComment(sb, element.ExportComment);
-                sb.WriteLineIndented(
-                    $"{element.ExportName}{optionalFlag}:" +
-                    $" {element.ExportType}{arrayFlag}" +
-                    $"|{PrimitiveTypeMap[element.ExportJsonType]}{arrayFlag}" +
-                    $"|undefined;");
+                if (element.IsArray)
+                {
+                    WriteIndentedComment(sb, element.ExportComment);
+                    sb.WriteLineIndented(
+                        $"{element.ExportName}{optionalFlag}:" +
+                        $" {element.ExportType}[]" +
+                        $"|({PrimitiveTypeMap[element.ExportJsonType]}|null)[]" +
+                        $"|undefined;");
+                }
+                else
+                {
+                    WriteIndentedComment(sb, element.ExportComment);
+                    sb.WriteLineIndented(
+                        $"{element.ExportName}{optionalFlag}:" +
+                        $" {element.ExportType}" +
+                        $"|{PrimitiveTypeMap[element.ExportJsonType]}" +
+                        $"|undefined;");
+                }
             }
             else if (element.ExportType.Equals("fhir.FhirResource", StringComparison.Ordinal))
             {
@@ -2101,21 +2123,20 @@ public sealed class TypeScriptSdk : ILanguage
         }
 
         string optionalFlag = element.IsOptional ? "?" : string.Empty;
-        string arrayFlag = element.IsArray ? "[]" : string.Empty;
-        string typeAddition;
+        //string typeAddition;
 
-        if (element.IsOptional)
-        {
-            typeAddition = "|undefined";
-        }
-        else if (element.ExportJsonType.Contains('"'))
-        {
-            typeAddition = string.Empty;
-        }
-        else
-        {
-            typeAddition = "|null";
-        }
+        //if (element.IsOptional)
+        //{
+        //    typeAddition = "|undefined";
+        //}
+        //else if (element.ExportJsonType.Contains('"'))
+        //{
+        //    typeAddition = string.Empty;
+        //}
+        //else
+        //{
+        //    typeAddition = "|null";
+        //}
 
         string exportType = ExpandJsonExportType(
             element.HasReferencedValueSet && (element.BoundValueSetStrength == FhirElement.ElementDefinitionBindingStrength.Required),
@@ -2124,7 +2145,18 @@ public sealed class TypeScriptSdk : ILanguage
             element.ValueSetExportName,
             ValueSetsByExportName);
 
-        sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {exportType}{arrayFlag}{typeAddition};");
+        string fullType;
+
+        if (element.IsArray)
+        {
+            fullType = $"({exportType}|null)[]" + (element.IsOptional ? "|undefined" : "|null");
+        }
+        else
+        {
+            fullType = exportType + (element.IsOptional ? "|undefined" : "|null");
+        }
+
+        sb.WriteLineIndented($"{element.ExportName}{optionalFlag}: {fullType};");
 
         if (element.IsPrimitive)
         {
@@ -2201,8 +2233,6 @@ public sealed class TypeScriptSdk : ILanguage
         ModelBuilder.ExportElement element,
         Dictionary<string, ModelBuilder.ExportValueSet> ValueSetsByExportName)
     {
-        string arrayFlag = element.IsArray ? "[]" : string.Empty;
-
         foreach (ModelBuilder.ExportElementChoiceType ct in element.ChoiceTypes)
         {
             if (!string.IsNullOrEmpty(element.ExportComment))
@@ -2217,7 +2247,14 @@ public sealed class TypeScriptSdk : ILanguage
                 element.ValueSetExportName,
                 ValueSetsByExportName);
 
-            sb.WriteLineIndented($"{ct.ExportName}?: {exportType}{arrayFlag}|undefined;");
+            if (element.IsArray)
+            {
+                sb.WriteLineIndented($"{ct.ExportName}?: ({exportType}|null)[]|undefined;");
+            }
+            else
+            {
+                sb.WriteLineIndented($"{ct.ExportName}?: {exportType}|undefined;");
+            }
 
             if (ct.IsPrimitive)
             {
