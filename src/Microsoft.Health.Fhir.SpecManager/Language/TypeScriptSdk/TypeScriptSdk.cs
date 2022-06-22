@@ -1361,7 +1361,7 @@ public sealed class TypeScriptSdk : ILanguage
             $"{{" +
             $" severity: '{issueSeverity}'," +
             $" code: '{issueType}'," +
-            $" diagnostics: {TsQuoteAndSanitize(message) ?? "''"}," +
+            $" details: {{ text: {TsQuoteAndSanitize(message) ?? "''"} }}," +
             $" expression: [expression]" +
             $" }}";
     }

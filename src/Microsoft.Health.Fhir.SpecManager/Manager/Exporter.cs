@@ -12,7 +12,9 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
-/// <summary>An exporter.</summary>
+/// <summary>
+/// Class that performs exports by linking FhirVersionInfo to Lanugages for output.
+/// </summary>
 public abstract class Exporter
 {
     /// <summary>The random.</summary>

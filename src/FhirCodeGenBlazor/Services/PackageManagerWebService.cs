@@ -46,6 +46,9 @@ public class PackageManagerWebService : IDisposable, IHostedService, IPackageMan
     PackageCacheRecord IReadOnlyDictionary<string, PackageCacheRecord>.this[string key] =>
         FhirCacheService.Current.PackagesByDirective[key];
 
+    /// <summary>Gets the published releases.</summary>
+    public List<FhirPackageCommon.PublishedReleaseInformation> PublishedReleases => FhirPackageCommon.CoreVersions;
+
     /// <summary>Occurs when On Changed.</summary>
     public event EventHandler<EventArgs>? OnChanged;
 
@@ -246,10 +249,8 @@ public class PackageManagerWebService : IDisposable, IHostedService, IPackageMan
         return Task.CompletedTask;
     }
 
-
     /// <summary>Loads directive task.</summary>
     /// <param name="directive">The directive.</param>
-    /// <param name="requestId">[out] Identifier for the request.</param>
     /// <returns>An asynchronous result.</returns>
     private Task LoadDirectiveTask(string directive)
     {

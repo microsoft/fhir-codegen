@@ -1,0 +1,266 @@
+﻿@page "/diff"
+
+@using FhirCodeGenBlazor.Models;
+@using FhirCodeGenBlazor.Services;
+@using Microsoft.Health.Fhir.CodeGenCommon.Models;
+@using Microsoft.Health.Fhir.SpecManager.Manager
+@inject NavigationManager NavigationManager
+@inject ISpecManagerWebService SpecService
+@inject IPackageDiffWebService DiffService
+@implements IDisposable
+
+<PageTitle>FHIR Diff Tool</PageTitle>
+<p><em>This page requires a packages LOADED from the cache...</em></p>
+
+<p>
+    <select class="form-select m-2" aria-label="Package A" @bind="directiveA">
+        @foreach((string key, FhirVersionInfo info) in SpecService)
+        {
+            <option value="@key">@info.PackageName # @info.VersionString</option>
+        }
+    </select>
+</p>
+<p>
+    <select class="form-select m-2" aria-label="Package B" @bind="directiveB">
+        @foreach((string key, FhirVersionInfo info) in SpecService)
+        {
+            <option value="@key">@info.PackageName # @info.VersionString</option>
+        }
+    </select>
+</p>
+<p>
+    <button
+        type="button"
+        class="btn btn-primary m-1"
+        @onclick="() => RunDiff()"
+        >
+        Diff!
+    </button>
+    @if (diffInProgress)
+    {
+        <span class="spinner-border align-content-center"></span>
+    }
+</p>
+
+<table class="table">
+    <tbody>
+        @foreach ((FhirArtifactClassEnum artifactClass, Dictionary<string, List<DiffResults.DiffRecord>> artifactDict) in results.DiffsByKeyByArtifactClass)
+        {
+            if (artifactDict.Count == 0)
+            {
+                continue;
+            }
+
+            <tr>
+                <td>
+@*                    <button
+                        type="button"
+                        @onclick="() => ToggleVisibility(artifactClass.ToString())"
+                        title="Show/Hide"
+                        >
+                        <span class="oi oi-elevator"></span>
+                    </button>
+*@                    @artifactClass.ToString()
+                </td>
+            </tr>
+
+            @if (expandedKeys.Contains(artifactClass.ToString()))
+            {
+                <tr><td colspan="2">
+                    <table class="table">
+                        <tbody>
+                            @foreach(string key in artifactDict.Keys.OrderBy(s => s))
+                            {
+                                if (artifactDict[key].Count == 0)
+                                {
+                                    continue;
+                                }
+
+                                <tr>
+                                    <td>
+@*                                        <button
+                                            type="button"
+                                            @onclick="() => ToggleVisibility(key)"
+                                            title="Show/Hide"
+                                            >
+                                            <span class="oi oi-elevator"></span>
+                                        </button>
+*@                                        @key
+                                    </td>
+                                </tr>
+                                <tr><td>
+                                    <table class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-2">Path</th>
+                                                <th class="col-2">Type</th>
+                                                <th class="col-2">A</th>
+                                                <th class="col-2">B</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (DiffResults.DiffRecord rec in artifactDict[key])
+                                            {
+                                                <tr>
+                                                    <td>@rec.path</td>
+                                                    <td>@rec.diffType.ToString()</td>
+                                                    <td>@rec.valueA</td>
+                                                    <td>@rec.valueB</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </td></tr>
+
+                            }
+
+                        </tbody>
+                    </table>
+                </td></tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+    private string directiveA = "";
+    private string directiveB = "";
+
+    DiffResults results = new();
+
+    /// <summary>The expanded keys.</summary>
+    HashSet<string> expandedKeys = new();
+
+    /// <summary>Gets or sets a value indicating whether the difference in progress.</summary>
+    private bool diffInProgress { get; set; } = false;
+
+    /// <summary>Gets or sets the navigation tracker.</summary>
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        NavTracker?.NotifyNav("", "diff", 1);
+        NavigationManager.LocationChanged += HandleLocationChanged;
+
+        DiffService.OnDiffCompleted += HandleDiffCompleted;
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
+        DiffService.OnDiffCompleted -= HandleDiffCompleted;
+    }
+
+    /// <summary>Executes the difference operation.</summary>
+    private void RunDiff()
+    {
+        if (string.IsNullOrEmpty(directiveA))
+        {
+            return;
+        }
+
+        if (string.IsNullOrEmpty(directiveB))
+        {
+            return;
+        }
+
+        if (diffInProgress)
+        {
+            return;
+        }
+
+        diffInProgress = true;
+
+        DifferOptions options = new(false, false, false, false, false, true);
+
+        Task task = DiffService.RequestDiff(SpecService[directiveA], SpecService[directiveB], options);
+        task.Start();
+    }
+
+    /// <summary>Raises the difference completed event.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Event information to send to registered event handlers.</param>
+    private void HandleDiffCompleted(object? sender, DiffCompletedEventArgs e)
+    {
+        diffInProgress = false;
+
+        if (e.Results != null)
+        {
+            HashSet<string> updated = new();
+
+            foreach ((FhirArtifactClassEnum artifactClass, Dictionary<string, List<DiffResults.DiffRecord>> artifactDict) in e.Results.DiffsByKeyByArtifactClass)
+            {
+                if (artifactDict.Count == 0)
+                {
+                    continue;
+                }
+
+                updated.Add(artifactClass.ToString());
+
+                foreach (string key in artifactDict.Keys)
+                {
+                    updated.Add(key);
+                }
+            }
+
+            results = e.Results;
+            expandedKeys = updated;
+        }
+        else
+        {
+            results = new();
+            expandedKeys.Clear();
+        }
+
+        InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Handles the location changed.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Location changed event information.</param>
+    private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        if (e.Location.ToLowerInvariant().Contains("/diff"))
+        {
+            NavTracker?.NotifyNav("", $"diff", 1);
+        }
+    }
+
+    /// <summary>Toggle visibility.</summary>
+    /// <param name="key">The key.</param>
+    private void ToggleVisibility(string key)
+    {
+        if (expandedKeys.Contains(key))
+        {
+            expandedKeys.Remove(key);
+        }
+        else
+        {
+            expandedKeys.Add(key);
+        }
+
+        InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Gets button class.</summary>
+    /// <param name="enabled">True to enable, false to disable.</param>
+    /// <returns>The button class.</returns>
+    private string GetButtonClass(bool enabled)
+    {
+        if (enabled)
+        {
+            return "btn btn-primary m-1";
+        }
+
+        return "btn btn-outline-primary m-1";
+    }
+}
