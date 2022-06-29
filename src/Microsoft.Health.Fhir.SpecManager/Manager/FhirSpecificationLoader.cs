@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.IO;
+using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
@@ -52,26 +53,33 @@ public abstract class FhirSpecificationLoader
 
         HashSet<string> processedFiles = new HashSet<string>();
 
+        bool checkUnescaped = false;
+
+        if (packageInfo.VersionString.Equals("3.5.0", StringComparison.Ordinal))
+        {
+            checkUnescaped = true;
+        }
+
         // process Code Systems
-        ProcessFileGroup(corePackageDir, "CodeSystem", packageInfo, processedFiles);
+        ProcessFileGroup(corePackageDir, "CodeSystem", packageInfo, processedFiles, checkUnescaped);
 
         // process Value Set expansions
-        ProcessFileGroup(expansionPackageDir, "ValueSet", packageInfo, processedFiles);
+        ProcessFileGroup(expansionPackageDir, "ValueSet", packageInfo, processedFiles, checkUnescaped);
 
         // process other value set definitions (if requested)
         if (!officialExpansionsOnly)
         {
-            ProcessFileGroup(corePackageDir, "ValueSet", packageInfo, processedFiles);
+            ProcessFileGroup(corePackageDir, "ValueSet", packageInfo, processedFiles, checkUnescaped);
         }
 
         // process structure definitions
-        ProcessFileGroup(corePackageDir, "StructureDefinition", packageInfo, processedFiles);
+        ProcessFileGroup(corePackageDir, "StructureDefinition", packageInfo, processedFiles, checkUnescaped);
 
         // process search parameters (adds to resources)
-        ProcessFileGroup(corePackageDir, "SearchParameter", packageInfo, processedFiles);
+        ProcessFileGroup(corePackageDir, "SearchParameter", packageInfo, processedFiles, checkUnescaped);
 
         // process operations (adds to resources and version info (server level))
-        ProcessFileGroup(corePackageDir, "OperationDefinition", packageInfo, processedFiles);
+        ProcessFileGroup(corePackageDir, "OperationDefinition", packageInfo, processedFiles, checkUnescaped);
 
         // add version-specific "MAGIC" items
         AddSearchMagicParameters(packageInfo);
@@ -166,30 +174,34 @@ public abstract class FhirSpecificationLoader
     /// </summary>
     /// <param name="packageDir">    The package dir.</param>
     /// <param name="prefix">        The prefix.</param>
-    /// <param name="packageInfo">   [in,out] The package info.</param>
-    /// <param name="processedFiles">[in,out] The processed files.</param>
+    /// <param name="packageInfo">   The package info.</param>
+    /// <param name="processedFiles">The processed files.</param>
+    /// <param name="checkUnescaped">True if check unescaped.</param>
     private static void ProcessFileGroup(
         string packageDir,
         string prefix,
         IPackageImportable packageInfo,
-        HashSet<string> processedFiles)
+        HashSet<string> processedFiles,
+        bool checkUnescaped)
     {
         // get the files in this directory
         string[] files = Directory.GetFiles(packageDir, $"{prefix}*.json", SearchOption.TopDirectoryOnly);
 
         // process these files
-        ProcessPackageFiles(files, packageInfo, processedFiles);
+        ProcessPackageFiles(files, packageInfo, processedFiles, checkUnescaped);
     }
 
     /// <summary>Process the package files.</summary>
     /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
     /// <param name="files">         The files.</param>
-    /// <param name="packageInfo">   [in,out] Information describing the fhir version.</param>
-    /// <param name="processedFiles">[in,out] The processed files.</param>
+    /// <param name="packageInfo">   Information describing the fhir version.</param>
+    /// <param name="processedFiles">The processed files.</param>
+    /// <param name="checkUnescaped">True if check unescaped.</param>
     private static void ProcessPackageFiles(
         string[] files,
         IPackageImportable packageInfo,
-        HashSet<string> processedFiles)
+        HashSet<string> processedFiles,
+        bool checkUnescaped)
     {
         // traverse the files
         foreach (string filename in files)
@@ -240,6 +252,12 @@ public abstract class FhirSpecificationLoader
                 // Also, don't use ReadAllBytes here, since some DSTU2 stuff is encoded differently
                 // and the code needs to be modified to handle both cases.
                 string contents = File.ReadAllText(filename);
+
+                if (checkUnescaped)
+                {
+                    Regex regex = new Regex("[\\s]");
+                    contents = regex.Replace(contents, " ");
+                }
 
                 // parse the file - note: using var here is siginificantly more performant than object
                 var resource = packageInfo.ParseResource(contents);

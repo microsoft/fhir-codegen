@@ -42,6 +42,12 @@ public class Differ
         ComparePrimitiveTypes(_a.PrimitiveTypes, _b.PrimitiveTypes);
         CompareComplexTypes(FhirArtifactClassEnum.ComplexType, _a.ComplexTypes, _b.ComplexTypes);
         CompareComplexTypes(FhirArtifactClassEnum.Resource, _a.Resources, _b.Resources);
+        CompareComplexTypes(FhirArtifactClassEnum.Extension, _a.ExtensionsByUrl, _b.ExtensionsByUrl);
+        CompareComplexTypes(FhirArtifactClassEnum.Profile, _a.Profiles, _b.Profiles);
+
+        CompareFhirOperations(_a.OperationsByUrl, _b.OperationsByUrl);
+
+        CompareSearchParameters(_a.SearchParametersByUrl, _b.SearchParametersByUrl);
 
         //if (_options.CompareValueSetExpansions)
         //{
@@ -131,10 +137,480 @@ public class Differ
         }
     }
 
+    /// <summary>Compare search parameters.</summary>
+    /// <param name="A">The 'A' Search Parameter dictionary to process (typically older version).</param>
+    /// <param name="B">The 'B' Search Paraemter dictionary to process (typically newer version).</param>
+    private void CompareSearchParameters(
+        Dictionary<string, FhirSearchParam> A,
+        Dictionary<string, FhirSearchParam> B)
+    {
+        HashSet<string> keysA = A?.Keys.ToHashSet() ?? new();
+        HashSet<string> keysB = B?.Keys.ToHashSet() ?? new();
+
+        HashSet<string> keyIntersection = A?.Keys.ToHashSet() ?? new();
+        keyIntersection.IntersectWith(keysB);
+
+        keysA.ExceptWith(keyIntersection);
+        keysB.ExceptWith(keyIntersection);
+
+        foreach (string key in keysA)
+        {
+            _results.AddDiff(
+                FhirArtifactClassEnum.SearchParameter,
+                key,
+                key,
+                DiffResults.DiffTypeEnum.Removed,
+                key,
+                string.Empty);
+        }
+
+        foreach (string key in keysB)
+        {
+            _results.AddDiff(
+                FhirArtifactClassEnum.SearchParameter,
+                key,
+                key,
+                DiffResults.DiffTypeEnum.Added,
+                string.Empty,
+                key);
+        }
+
+        foreach (string key in keyIntersection)
+        {
+            CompareSearchParameter(key, A[key], B[key]);
+        }
+    }
+
+    /// <summary>Compare search parameter.</summary>
+    /// <param name="rootKey">The root key.</param>
+    /// <param name="A">      The 'A' search parameter to process (typically older version).</param>
+    /// <param name="B">      The 'B' search parameter to process (typically newer version).</param>
+    private void CompareSearchParameter(
+        string rootKey,
+        FhirSearchParam A,
+        FhirSearchParam B)
+    {
+        TestForDiff(
+            A.Id,
+            B.Id,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedId);
+
+        if (_options.CompareDescriptions)
+        {
+            TestForDiff(
+                A.Description,
+                B.Description,
+                FhirArtifactClassEnum.SearchParameter,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.ChangedDescription);
+
+            TestForDiff(
+                A.Purpose,
+                B.Purpose,
+                FhirArtifactClassEnum.SearchParameter,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.ChangedDescription);
+        }
+
+        TestForDiff(
+            A.Code,
+            B.Code,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedCode);
+
+        TestForDiff(
+            A.ResourceTypes,
+            B.ResourceTypes,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ExpandedType,
+            DiffResults.DiffTypeEnum.ReducedType);
+
+        TestForDiff(
+            A.Targets,
+            B.Targets,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ExpandedTargetProfile,
+            DiffResults.DiffTypeEnum.ReducedTargetProfile);
+
+        TestForDiff(
+            A.ValueType,
+            B.ValueType,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedSearchParameterType);
+
+        TestForDiff(
+            A.XPath,
+            B.XPath,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedXPath);
+
+        TestForDiff(
+            A.XPathUsage,
+            B.XPathUsage,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedXPath);
+
+        TestForDiff(
+            A.Expression,
+            B.Expression,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedExpression);
+    }
+
+    /// <summary>Compare operations.</summary>
+    /// <param name="A">The 'A' Operation Dictionary to process (typically older version).</param>
+    /// <param name="B">The 'B' Operation Dictionary to process (typically newer version).</param>
+    private void CompareFhirOperations(
+        Dictionary<string, FhirOperation> A,
+        Dictionary<string, FhirOperation> B)
+    {
+        HashSet<string> keysA = A?.Keys.ToHashSet() ?? new();
+        HashSet<string> keysB = B?.Keys.ToHashSet() ?? new();
+
+        HashSet<string> keyIntersection = A?.Keys.ToHashSet() ?? new();
+        keyIntersection.IntersectWith(keysB);
+
+        keysA.ExceptWith(keyIntersection);
+        keysB.ExceptWith(keyIntersection);
+
+        foreach (string key in keysA)
+        {
+            _results.AddDiff(
+                FhirArtifactClassEnum.Operation,
+                key,
+                key,
+                DiffResults.DiffTypeEnum.Removed,
+                key,
+                string.Empty);
+        }
+
+        foreach (string key in keysB)
+        {
+            _results.AddDiff(
+                FhirArtifactClassEnum.Operation,
+                key,
+                key,
+                DiffResults.DiffTypeEnum.Added,
+                string.Empty,
+                key);
+        }
+
+        foreach (string key in keyIntersection)
+        {
+            CompareFhirOperation(key, A[key], B[key]);
+        }
+    }
+
+    /// <summary>Compare FHIR operation.</summary>
+    /// <param name="rootKey">The root key.</param>
+    /// <param name="A">      The 'A' Operation to process (typically older version).</param>
+    /// <param name="B">      The 'B' Operation to process (typically newer version).</param>
+    private void CompareFhirOperation(
+        string rootKey,
+        FhirOperation A,
+        FhirOperation B)
+    {
+        TestForDiff(
+            A.Id,
+            B.Id,
+            FhirArtifactClassEnum.Operation,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedId);
+
+        if (_options.CompareDescriptions)
+        {
+            TestForDiff(
+                A.Description,
+                B.Description,
+                FhirArtifactClassEnum.Operation,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.ChangedDescription);
+
+            TestForDiff(
+                A.Comment,
+                B.Comment,
+                FhirArtifactClassEnum.Operation,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.ChangedDescription);
+        }
+
+        if ((A.DefinedOnSystem != B.DefinedOnSystem) ||
+            (A.DefinedOnType != B.DefinedOnType) ||
+            (A.DefinedOnInstance != B.DefinedOnInstance))
+        {
+            List<string> scopesA = new();
+            List<string> scopesB = new();
+
+            if (A.DefinedOnSystem)
+            {
+                scopesA.Add("System");
+            }
+
+            if (A.DefinedOnType)
+            {
+                scopesA.Add("Type");
+            }
+
+            if (A.DefinedOnInstance)
+            {
+                scopesA.Add("Instance");
+            }
+
+            if (B.DefinedOnSystem)
+            {
+                scopesB.Add("System");
+            }
+
+            if (B.DefinedOnType)
+            {
+                scopesB.Add("Type");
+            }
+
+            if (B.DefinedOnInstance)
+            {
+                scopesB.Add("Instance");
+            }
+
+            _results.AddDiff(
+                FhirArtifactClassEnum.Operation,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.ChangedScope,
+                string.Join(", ", scopesA),
+                string.Join(", ", scopesB));
+        }
+
+        TestForDiff(
+            A.Code,
+            B.Code,
+            FhirArtifactClassEnum.Operation,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedCode);
+
+        TestForDiff(
+            A.ResourceTypes,
+            B.ResourceTypes,
+            FhirArtifactClassEnum.Operation,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ExpandedType,
+            DiffResults.DiffTypeEnum.ReducedType);
+
+        CompareParameters(
+            FhirArtifactClassEnum.Operation,
+            rootKey,
+            A.Parameters,
+            B.Parameters);
+    }
+
+    /// <summary>Compare parameters.</summary>
+    /// <param name="artifactClass">The artifact class.</param>
+    /// <param name="rootKey">      The root key.</param>
+    /// <param name="A">            The 'A' IPackageExportable to process (typically older version).</param>
+    /// <param name="B">            The 'B' IPackageExportable to process (typically newer version).</param>
+    private void CompareParameters(
+        FhirArtifactClassEnum artifactClass,
+        string rootKey,
+        List<FhirParameter> A,
+        List<FhirParameter> B)
+    {
+        Dictionary<string, FhirParameter> dictA = new();
+        Dictionary<string, FhirParameter> dictB = new();
+
+        if (A != null)
+        {
+            foreach (FhirParameter p in A)
+            {
+                dictA.Add($"{p.Use}: {p.Name}", p);
+            }
+        }
+
+        if (B != null)
+        {
+            foreach (FhirParameter p in B)
+            {
+                dictB.Add($"{p.Use}: {p.Name}", p);
+            }
+        }
+
+        HashSet<string> keysA = dictA?.Keys.ToHashSet() ?? new();
+        HashSet<string> keysB = dictB?.Keys.ToHashSet() ?? new();
+
+        HashSet<string> keyIntersection = dictA?.Keys.ToHashSet() ?? new();
+        keyIntersection.IntersectWith(keysB);
+
+        keysA.ExceptWith(keyIntersection);
+        keysB.ExceptWith(keyIntersection);
+
+        foreach (string key in keysA)
+        {
+            _results.AddDiff(
+                artifactClass,
+                rootKey,
+                key,
+                DiffResults.DiffTypeEnum.Removed,
+                key,
+                string.Empty);
+        }
+
+        foreach (string key in keysB)
+        {
+            _results.AddDiff(
+                artifactClass,
+                rootKey,
+                key,
+                DiffResults.DiffTypeEnum.Added,
+                string.Empty,
+                key);
+        }
+
+        foreach (string key in keyIntersection)
+        {
+            CompareParameter(
+                artifactClass,
+                rootKey,
+                key,
+                dictA[key],
+                dictB[key]);
+        }
+    }
+
+    /// <summary>Compare parameter.</summary>
+    /// <param name="artifactClass">The artifact class.</param>
+    /// <param name="rootKey">      The root key.</param>
+    /// <param name="key">          The key.</param>
+    /// <param name="A">            The 'A' IPackageExportable to process (typically older version).</param>
+    /// <param name="B">            The 'B' IPackageExportable to process (typically newer version).</param>
+    private void CompareParameter(
+        FhirArtifactClassEnum artifactClass,
+        string rootKey,
+        string key,
+        FhirParameter A,
+        FhirParameter B)
+    {
+        if (_options.CompareDescriptions)
+        {
+            TestForDiff(
+                A.Documentation,
+                B.Documentation,
+                FhirArtifactClassEnum.Operation,
+                rootKey,
+                key,
+                DiffResults.DiffTypeEnum.ChangedDescription);
+        }
+
+        if (A.Min != B.Min)
+        {
+            if (A.Min == 0)
+            {
+                _results.AddDiff(
+                    artifactClass,
+                    rootKey,
+                    key,
+                    DiffResults.DiffTypeEnum.MadeRequired,
+                    A.FhirCardinality,
+                    B.FhirCardinality);
+            }
+            else if (B.Min == 0)
+            {
+                _results.AddDiff(
+                    artifactClass,
+                    rootKey,
+                    key,
+                    DiffResults.DiffTypeEnum.MadeOptional,
+                    A.FhirCardinality,
+                    B.FhirCardinality);
+            }
+            else
+            {
+                _results.AddDiff(
+                    artifactClass,
+                    rootKey,
+                    key,
+                    DiffResults.DiffTypeEnum.ChangedMinCardinality,
+                    A.FhirCardinality,
+                    B.FhirCardinality);
+            }
+        }
+
+        if (A.Max != B.Max)
+        {
+            if (A.Max == 1)
+            {
+                _results.AddDiff(
+                    artifactClass,
+                    rootKey,
+                    key,
+                    DiffResults.DiffTypeEnum.MadeArray,
+                    A.FhirCardinality,
+                    B.FhirCardinality);
+            }
+            else if (B.Max == 1)
+            {
+                _results.AddDiff(
+                    artifactClass,
+                    rootKey,
+                    key,
+                    DiffResults.DiffTypeEnum.MadeScalar,
+                    A.FhirCardinality,
+                    B.FhirCardinality);
+            }
+            else
+            {
+                _results.AddDiff(
+                    artifactClass,
+                    rootKey,
+                    key,
+                    DiffResults.DiffTypeEnum.ChangedMaxCardinality,
+                    A.FhirCardinality,
+                    B.FhirCardinality);
+            }
+        }
+
+        TestForDiff(
+            A.ValueType,
+            B.ValueType,
+            FhirArtifactClassEnum.Operation,
+            rootKey,
+            key,
+            DiffResults.DiffTypeEnum.ChangedType);
+
+        TestForDiff(
+            A.FieldOrder,
+            B.FieldOrder,
+            FhirArtifactClassEnum.Operation,
+            rootKey,
+            key,
+            DiffResults.DiffTypeEnum.ChangedOrder);
+    }
+
     /// <summary>Compare complex types.</summary>
     /// <param name="artifactClass">The artifact class.</param>
-    /// <param name="A">            The 'A' Primitive Type Dictionary (typically older version).</param>
-    /// <param name="B">            The 'B' Primitive Type Dictionary (typically newer version).</param>
+    /// <param name="A">            The 'A' Complex Type Dictionary (typically older version).</param>
+    /// <param name="B">            The 'B' Complex Type Dictionary (typically newer version).</param>
     private void CompareComplexTypes(
         FhirArtifactClassEnum artifactClass,
         Dictionary<string, FhirComplex> A,
@@ -162,13 +638,18 @@ public class Differ
 
         foreach (string key in keysB)
         {
-            _results.AddDiff(
+            RecursiveAddComplex(
                 artifactClass,
                 key,
-                key,
-                DiffResults.DiffTypeEnum.Added,
-                string.Empty,
-                key);
+                B[key]);
+
+            //_results.AddDiff(
+            //    artifactClass,
+            //    key,
+            //    key,
+            //    DiffResults.DiffTypeEnum.Added,
+            //    string.Empty,
+            //    key);
         }
 
         foreach (string key in keyIntersection)
@@ -192,6 +673,14 @@ public class Differ
         FhirComplex A,
         FhirComplex B)
     {
+        TestForDiff(
+            A.Id,
+            B.Id,
+            artifactClass,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedId);
+
         TestForDiff(
             A.BaseTypeName,
             B.BaseTypeName,
@@ -249,6 +738,49 @@ public class Differ
         CompareComplexComponents(artifactClass, rootKey, A.Components, B.Components);
         CompareComplexElements(artifactClass, rootKey, A.Elements, B.Elements);
     }
+
+    /// <summary>Recursive add complex.</summary>
+    /// <param name="artifactClass">The artifact class.</param>
+    /// <param name="rootKey">      The root key.</param>
+    /// <param name="complex">      The complex.</param>
+    /// <param name="rootComplex">  The root complex.</param>
+    private void RecursiveAddComplex(
+        FhirArtifactClassEnum artifactClass,
+        string rootKey,
+        FhirComplex complex,
+        FhirComplex rootComplex = null)
+    {
+        _results.AddDiff(
+            artifactClass,
+            rootKey,
+            complex.Path,
+            DiffResults.DiffTypeEnum.Added,
+            string.Empty,
+            complex.Path);
+
+        foreach (FhirElement element in complex.Elements.Values.OrderBy((e) => e.FieldOrder))
+        {
+            if (complex.Components.ContainsKey(element.BaseTypeName))
+            {
+                RecursiveAddComplex(artifactClass, rootKey, complex.Components[element.BaseTypeName], complex);
+            }
+            else if ((rootComplex != null) && (rootComplex.Components.ContainsKey(element.BaseTypeName)))
+            {
+                RecursiveAddComplex(artifactClass, rootKey, rootComplex.Components[element.BaseTypeName], complex);
+            }
+            else
+            {
+                _results.AddDiff(
+                    artifactClass,
+                    rootKey,
+                    element.Path,
+                    DiffResults.DiffTypeEnum.Added,
+                    string.Empty,
+                    element.Path);
+            }
+        }
+    }
+
 
     /// <summary>Compare complex components.</summary>
     /// <param name="artifactClass">The artifact class.</param>
@@ -401,8 +933,8 @@ public class Differ
                     rootKey,
                     A.Path,
                     DiffResults.DiffTypeEnum.MadeRequired,
-                    A.CardinalityMin.ToString(),
-                    B.CardinalityMin.ToString());
+                    A.FhirCardinality,
+                    B.FhirCardinality);
             }
             else if (B.CardinalityMin == 0)
             {
@@ -411,8 +943,8 @@ public class Differ
                     rootKey,
                     A.Path,
                     DiffResults.DiffTypeEnum.MadeOptional,
-                    A.CardinalityMin.ToString(),
-                    B.CardinalityMin.ToString());
+                    A.FhirCardinality,
+                    B.FhirCardinality);
             }
             else
             {
@@ -421,8 +953,8 @@ public class Differ
                     rootKey,
                     A.Path,
                     DiffResults.DiffTypeEnum.ChangedMinCardinality,
-                    A.CardinalityMin.ToString(),
-                    B.CardinalityMin.ToString());
+                    A.FhirCardinality,
+                    B.FhirCardinality);
             }
         }
 
@@ -435,8 +967,8 @@ public class Differ
                     rootKey,
                     A.Path,
                     DiffResults.DiffTypeEnum.MadeArray,
-                    A.CardinalityMin.ToString(),
-                    B.CardinalityMin.ToString());
+                    A.FhirCardinality,
+                    B.FhirCardinality);
             }
             else if (B.CardinalityMin == 1)
             {
@@ -445,8 +977,8 @@ public class Differ
                     rootKey,
                     A.Path,
                     DiffResults.DiffTypeEnum.MadeScalar,
-                    A.CardinalityMin.ToString(),
-                    B.CardinalityMin.ToString());
+                    A.FhirCardinality,
+                    B.FhirCardinality);
             }
             else
             {
@@ -455,8 +987,8 @@ public class Differ
                     rootKey,
                     A.Path,
                     DiffResults.DiffTypeEnum.ChangedMaxCardinality,
-                    A.CardinalityMin.ToString(),
-                    B.CardinalityMin.ToString());
+                    A.FhirCardinality,
+                    B.FhirCardinality);
             }
         }
 
@@ -833,6 +1365,55 @@ public class Differ
                 diffType,
                 valueA.ToString(),
                 valueB.ToString());
+        }
+    }
+
+    /// <summary>Tests for difference.</summary>
+    /// <param name="A">            The 'A' IPackageExportable to process (typically older version).</param>
+    /// <param name="B">            The 'B' IPackageExportable to process (typically newer version).</param>
+    /// <param name="artifactClass">The artifact class.</param>
+    /// <param name="key">          The key.</param>
+    /// <param name="path">         Full pathname of the file.</param>
+    /// <param name="diffIfAdded">  The difference if added.</param>
+    /// <param name="diffIfRemoved">The difference if removed.</param>
+    private void TestForDiff(
+        List<string> A,
+        List<string> B,
+        FhirArtifactClassEnum artifactClass,
+        string key,
+        string path,
+        DiffResults.DiffTypeEnum diffIfAdded,
+        DiffResults.DiffTypeEnum diffIfRemoved)
+    {
+        HashSet<string> valuesA = A?.ToHashSet() ?? new();
+        HashSet<string> valuesB = B?.ToHashSet() ?? new();
+
+        HashSet<string> valueIntersection = A?.ToHashSet() ?? new();
+        valueIntersection.IntersectWith(valuesB);
+
+        valuesA.ExceptWith(valueIntersection);
+        valuesB.ExceptWith(valueIntersection);
+
+        foreach (string val in valuesA)
+        {
+            _results.AddDiff(
+                artifactClass,
+                key,
+                path,
+                diffIfRemoved,
+                val,
+                string.Empty);
+        }
+
+        foreach (string val in valuesB)
+        {
+            _results.AddDiff(
+                artifactClass,
+                key,
+                path,
+                diffIfAdded,
+                string.Empty,
+                val);
         }
     }
 

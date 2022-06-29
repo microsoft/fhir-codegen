@@ -14,7 +14,7 @@ public class FhirSearchParam : ICloneable
     /// <param name="version">       The version.</param>
     /// <param name="name">          The name.</param>
     /// <param name="description">   The description.</param>
-    /// <param name="definition">       The purpose.</param>
+    /// <param name="definition">    The purpose.</param>
     /// <param name="code">          The code.</param>
     /// <param name="resourceTypes"> The type of the resource.</param>
     /// <param name="targets">       The targets.</param>

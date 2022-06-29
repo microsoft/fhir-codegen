@@ -59,6 +59,9 @@ public interface IPackageExportable
     /// <summary>Gets the system operations.</summary>
     public Dictionary<string, FhirOperation> SystemOperations { get; }
 
+    /// <summary>Gets all known operations, by Url.</summary>
+    public Dictionary<string, FhirOperation> OperationsByUrl { get; }
+
     /// <summary>Gets search parameters defined for all resources.</summary>
     public Dictionary<string, FhirSearchParam> AllResourceParameters { get; }
 
@@ -67,6 +70,9 @@ public interface IPackageExportable
 
     /// <summary>Gets search parameters defined for all interactions.</summary>
     public Dictionary<string, FhirSearchParam> AllInteractionParameters { get; }
+
+    /// <summary>Gets all search parameters by URL.</summary>
+    public Dictionary<string, FhirSearchParam> SearchParametersByUrl { get; }
 
     /// <summary>Gets the excluded keys.</summary>
     public HashSet<string> ExcludedKeys { get; }

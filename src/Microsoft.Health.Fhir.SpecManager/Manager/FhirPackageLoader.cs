@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.IO;
+using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.Health.Fhir.SpecManager.PackageManager;
 
@@ -56,20 +57,27 @@ public static class FhirPackageLoader
 
         HashSet<string> processedFiles = new HashSet<string>();
 
+        bool checkUnescaped = false;
+
+        if (packageInfo.VersionString.Equals("3.5.0", StringComparison.Ordinal))
+        {
+            checkUnescaped = true;
+        }
+
         // process Code Systems
-        ProcessFileGroup(contentDirectory, "CodeSystem", packageInfo, processedFiles);
+        ProcessFileGroup(contentDirectory, "CodeSystem", packageInfo, processedFiles, checkUnescaped);
 
         // process Value Set expansions
-        ProcessFileGroup(contentDirectory, "ValueSet", packageInfo, processedFiles);
+        ProcessFileGroup(contentDirectory, "ValueSet", packageInfo, processedFiles, checkUnescaped);
 
         // process structure definitions
-        ProcessFileGroup(contentDirectory, "StructureDefinition", packageInfo, processedFiles);
+        ProcessFileGroup(contentDirectory, "StructureDefinition", packageInfo, processedFiles, checkUnescaped);
 
         // process search parameters (adds to resources)
-        ProcessFileGroup(contentDirectory, "SearchParameter", packageInfo, processedFiles);
+        ProcessFileGroup(contentDirectory, "SearchParameter", packageInfo, processedFiles, checkUnescaped);
 
         // process operations (adds to resources and version info (server level))
-        ProcessFileGroup(contentDirectory, "OperationDefinition", packageInfo, processedFiles);
+        ProcessFileGroup(contentDirectory, "OperationDefinition", packageInfo, processedFiles, checkUnescaped);
 
         if (packageInfo.ConverterHasIssues(out int errorCount, out int warningCount))
         {
@@ -94,17 +102,19 @@ public static class FhirPackageLoader
     /// <param name="prefix">        The prefix.</param>
     /// <param name="fhirCoreInfo">  Information describing the fhir version.</param>
     /// <param name="processedFiles">The processed files.</param>
+    /// <param name="checkUnescaped">True if check unescaped.</param>
     private static void ProcessFileGroup(
         string packageDir,
         string prefix,
         IPackageImportable fhirCoreInfo,
-        HashSet<string> processedFiles)
+        HashSet<string> processedFiles,
+        bool checkUnescaped)
     {
         // get the files in this directory
         string[] files = Directory.GetFiles(packageDir, $"{prefix}*.json", SearchOption.TopDirectoryOnly);
 
         // process these files
-        ProcessPackageFiles(files, fhirCoreInfo, processedFiles);
+        ProcessPackageFiles(files, fhirCoreInfo, processedFiles, checkUnescaped);
     }
 
     /// <summary>Process the package files.</summary>
@@ -112,10 +122,12 @@ public static class FhirPackageLoader
     /// <param name="files">         The files.</param>
     /// <param name="fhirInfo">      FHIR information structure.</param>
     /// <param name="processedFiles">The processed files.</param>
+    /// <param name="checkUnescaped">True if check unescaped.</param>
     private static void ProcessPackageFiles(
         string[] files,
         IPackageImportable fhirInfo,
-        HashSet<string> processedFiles)
+        HashSet<string> processedFiles,
+        bool checkUnescaped)
     {
         // traverse the files
         foreach (string filename in files)
@@ -163,6 +175,12 @@ public static class FhirPackageLoader
 
                 // read the file
                 string contents = File.ReadAllText(filename);
+
+                if (checkUnescaped)
+                {
+                    Regex regex = new Regex("[\\s]");
+                    contents = regex.Replace(contents, " ");
+                }
 
                 // parse the file - note: using var here is siginificantly more performant than object
                 var resource = fhirInfo.ParseResource(contents);

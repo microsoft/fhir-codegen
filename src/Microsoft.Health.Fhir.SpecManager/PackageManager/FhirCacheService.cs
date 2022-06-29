@@ -814,10 +814,19 @@ public class FhirCacheService : IDisposable
         }
 
         string directive = name + "#" + version;
-
-        Uri uri = new Uri(FhirPublishedUri, $"{relative}/{name}.tgz");
         directory = Path.Combine(_cachePackageDirectory, directive);
 
+        // most publication versions are named with correct package information
+        Uri uri = new Uri(FhirPublishedUri, $"{relative}/{name}.tgz");
+        if (TryDownloadAndExtract(uri, directory, directive))
+        {
+            UpdatePackageCacheIndex(directive, directory);
+            return true;
+        }
+
+        // some ballot versions are published directly as CI versions
+        uri = new Uri(FhirPublishedUri, $"{relative}/package.tgz");
+        directory = Path.Combine(_cachePackageDirectory, $"hl7.fhir.core#{version}");
         if (TryDownloadAndExtract(uri, directory, directive))
         {
             UpdatePackageCacheIndex(directive, directory);

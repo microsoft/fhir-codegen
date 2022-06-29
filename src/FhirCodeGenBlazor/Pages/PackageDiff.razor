@@ -42,82 +42,93 @@
     }
 </p>
 
+<p>
+@foreach((FhirArtifactClassEnum classEnum, bool visible) in showArtifactClass)
+{
+    <button
+        type="button"
+        class=@GetButtonClass(visible)
+        @onclick="() => ToggleShowState(classEnum)"
+        >
+        @classEnum.ToString() (@results.DiffsByKeyByArtifactClass[classEnum].Count())
+    </button>
+}
+</p>
+
+<p>
+@foreach((DiffResults.DiffTypeEnum diffEnum, bool visible) in showDiffType.OrderBy(o => o.Key.ToString()))
+{
+    <button
+        type="button"
+        class=@GetButtonClass(visible)
+        @onclick="() => ToggleShowState(diffEnum)"
+        >
+        @diffEnum.ToString()
+    </button>
+}
+</p>
+
+<div class="input-group">
+    <span class="input-group-text" id="basic-addon1">Filter</span>
+    <input
+        type="text"
+        placeholder="Filter"
+        aria-label="Filter"
+        aria-describedby="basic-addon1"
+        @bind-value="artifactFilterText"
+        @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredArtifacts(e?.Value?.ToString() ?? "")))"
+        />
+</div>
+
+
 <table class="table">
     <tbody>
-        @foreach ((FhirArtifactClassEnum artifactClass, Dictionary<string, List<DiffResults.DiffRecord>> artifactDict) in results.DiffsByKeyByArtifactClass)
+        @foreach ((FhirArtifactClassEnum artifactClass, Dictionary<string, List<DiffResults.DiffRecord>> artifactDict) in filtered)
         {
-            if (artifactDict.Count == 0)
+            if ((artifactDict.Count == 0) || (!showArtifactClass[artifactClass]))
             {
                 continue;
             }
 
-            <tr>
-                <td>
-@*                    <button
-                        type="button"
-                        @onclick="() => ToggleVisibility(artifactClass.ToString())"
-                        title="Show/Hide"
-                        >
-                        <span class="oi oi-elevator"></span>
-                    </button>
-*@                    @artifactClass.ToString()
-                </td>
-            </tr>
-
-            @if (expandedKeys.Contains(artifactClass.ToString()))
-            {
-                <tr><td colspan="2">
-                    <table class="table">
-                        <tbody>
-                            @foreach(string key in artifactDict.Keys.OrderBy(s => s))
+            <tr><td>@artifactClass.ToString()</td></tr>
+            <tr><td colspan="2">
+                <table class="table">
+                    <tbody>
+                        @foreach(string key in artifactDict.Keys.OrderBy(s => s))
+                        {
+                            if (artifactDict[key].Count == 0)
                             {
-                                if (artifactDict[key].Count == 0)
-                                {
-                                    continue;
-                                }
-
-                                <tr>
-                                    <td>
-@*                                        <button
-                                            type="button"
-                                            @onclick="() => ToggleVisibility(key)"
-                                            title="Show/Hide"
-                                            >
-                                            <span class="oi oi-elevator"></span>
-                                        </button>
-*@                                        @key
-                                    </td>
-                                </tr>
-                                <tr><td>
-                                    <table class="table table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th class="col-2">Path</th>
-                                                <th class="col-2">Type</th>
-                                                <th class="col-2">A</th>
-                                                <th class="col-2">B</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (DiffResults.DiffRecord rec in artifactDict[key])
-                                            {
-                                                <tr>
-                                                    <td>@rec.path</td>
-                                                    <td>@rec.diffType.ToString()</td>
-                                                    <td>@rec.valueA</td>
-                                                    <td>@rec.valueB</td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                </td></tr>
-
+                                continue;
                             }
 
-                        </tbody>
-                    </table>
-                </td></tr>
-            }
+                            <tr><td>@key</td></tr>
+                            <tr><td>
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-2">Path</th>
+                                            <th class="col-2">Type</th>
+                                            <th class="col-2">@directiveA</th>
+                                            <th class="col-2">@directiveB</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (DiffResults.DiffRecord rec in artifactDict[key])
+                                        {
+                                            <tr>
+                                                <td>@rec.path</td>
+                                                <td>@rec.diffType.ToString()</td>
+                                                <td>@rec.valueA</td>
+                                                <td>@rec.valueB</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </td></tr>
+                        }
+                    </tbody>
+                </table>
+            </td></tr>
         }
     </tbody>
 </table>
@@ -126,10 +137,15 @@
     private string directiveA = "";
     private string directiveB = "";
 
-    DiffResults results = new();
+    /// <summary>Specifies the filter.</summary>
+    private string artifactFilterText = "";
 
-    /// <summary>The expanded keys.</summary>
-    HashSet<string> expandedKeys = new();
+    private DiffResults results = new();
+
+    private Dictionary<FhirArtifactClassEnum, Dictionary<string, List<DiffResults.DiffRecord>>> filtered = new();
+
+    private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new();
+    private Dictionary<DiffResults.DiffTypeEnum, bool> showDiffType = new();
 
     /// <summary>Gets or sets a value indicating whether the difference in progress.</summary>
     private bool diffInProgress { get; set; } = false;
@@ -143,6 +159,11 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
+
+        foreach (DiffResults.DiffTypeEnum diffType in Enum.GetValues(typeof(DiffResults.DiffTypeEnum)))
+        {
+            showDiffType.Add(diffType, true);
+        }
 
         NavTracker?.NotifyNav("", "diff", 1);
         NavigationManager.LocationChanged += HandleLocationChanged;
@@ -180,7 +201,8 @@
 
         diffInProgress = true;
 
-        DifferOptions options = new(false, false, false, false, false, true);
+        //DifferOptions options = new(false, false, false, false, false, true);
+        DifferOptions options = new(true, true, true, true, true, true);
 
         Task task = DiffService.RequestDiff(SpecService[directiveA], SpecService[directiveB], options);
         task.Start();
@@ -192,37 +214,131 @@
     private void HandleDiffCompleted(object? sender, DiffCompletedEventArgs e)
     {
         diffInProgress = false;
+        results = e.Results ?? new();
 
-        if (e.Results != null)
+        RebuildFilteredArtifacts(artifactFilterText, true);
+
+        InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Rebuild filtered artifacts.</summary>
+    /// <param name="appliedFilter">            (Optional) A filter specifying the applied.</param>
+    /// <param name="checkShownArtifactClasses">(Optional) True to check show artifact classes.</param>
+    private async void RebuildFilteredArtifacts(
+        string appliedFilter = "",
+        bool checkShownArtifactClasses = false)
+    {
+        if (checkShownArtifactClasses)
         {
-            HashSet<string> updated = new();
-
-            foreach ((FhirArtifactClassEnum artifactClass, Dictionary<string, List<DiffResults.DiffRecord>> artifactDict) in e.Results.DiffsByKeyByArtifactClass)
+            foreach ((FhirArtifactClassEnum artifactClass, Dictionary<string, List<DiffResults.DiffRecord>> artifactDict) in results.DiffsByKeyByArtifactClass)
             {
-                if (artifactDict.Count == 0)
+                if (!showArtifactClass.ContainsKey(artifactClass))
+                {
+                    switch (artifactClass)
+                    {
+                        case FhirArtifactClassEnum.Resource:
+                            showArtifactClass.Add(artifactClass, true);
+                            break;
+
+                        default:
+                            showArtifactClass.Add(artifactClass, false);
+                            break;
+                    }
+                }
+            }
+
+            foreach (FhirArtifactClassEnum classEnum in showArtifactClass.Keys)
+            {
+                if (!results.DiffsByKeyByArtifactClass.ContainsKey(classEnum))
+                {
+                    showArtifactClass.Remove(classEnum);
+                }
+            }
+        }
+
+        artifactFilterText = appliedFilter;
+
+        if ((results.DiffsByKeyByArtifactClass == null) || (results.DiffsByKeyByArtifactClass.Count == 0))
+        {
+            filtered = new();
+
+            // manually flag state has changed in case we are in a callback / async context
+            await InvokeAsync(() => StateHasChanged());
+
+            return;
+        }
+
+        Dictionary<FhirArtifactClassEnum, Dictionary<string, List<DiffResults.DiffRecord>>> updated = new();
+
+        foreach ((FhirArtifactClassEnum classEnum, Dictionary<string, List<DiffResults.DiffRecord>> records)
+                    in results.DiffsByKeyByArtifactClass)
+        {
+            AppendFilteredArtifacts(classEnum, appliedFilter, ref updated, records);
+        }
+
+        //artifacts.Sort((a, b) => a.Id.CompareTo(b.Id));
+        filtered = updated;
+
+        // manually flag state has changed in case we are in a callback / async context
+        await InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Appends a filtered artifacts.</summary>
+    /// <param name="classEnum">The class enum.</param>
+    /// <param name="filter">   Specifies the filter.</param>
+    /// <param name="updated">  [in,out] The updated.</param>
+    /// <param name="data">     The data.</param>
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    private void AppendFilteredArtifacts(
+        FhirArtifactClassEnum classEnum,
+        string filter,
+        ref Dictionary<FhirArtifactClassEnum, Dictionary<string, List<DiffResults.DiffRecord>>> updated,
+        Dictionary<string, List<DiffResults.DiffRecord>> data)
+    {
+        if (showArtifactClass[classEnum] != true)
+        {
+            return;
+        }
+
+        updated.Add(classEnum, new());
+
+        if (string.IsNullOrEmpty(filter))
+        {
+            foreach (string key in data.Keys.OrderBy((k) => k))
+            {
+                updated[classEnum].Add(key, new());
+                updated[classEnum][key].AddRange(data[key].Where(r => showDiffType[r.diffType]));
+                updated[classEnum][key].Sort((a, b) => a.path.CompareTo(b.path));
+            }
+        }
+        else
+        {
+            foreach (string key in data.Keys.OrderBy((k) => k))
+            {
+                if (!key.Contains(filter, StringComparison.OrdinalIgnoreCase))
                 {
                     continue;
                 }
 
-                updated.Add(artifactClass.ToString());
+                updated[classEnum].Add(key, new());
+                updated[classEnum][key].AddRange(
+                    data[key].Where(r =>
+                        showDiffType[r.diffType] &&
+                        (r.path.Contains(filter, StringComparison.OrdinalIgnoreCase)
+                    )));
 
-                foreach (string key in artifactDict.Keys)
+                if (updated[classEnum][key].Count == 0)
                 {
-                    updated.Add(key);
+                    updated[classEnum].Remove(key);
+                }
+                else
+                {
+                    updated[classEnum][key].Sort((a, b) => a.path.CompareTo(b.path));
                 }
             }
-
-            results = e.Results;
-            expandedKeys = updated;
         }
-        else
-        {
-            results = new();
-            expandedKeys.Clear();
-        }
-
-        InvokeAsync(() => StateHasChanged());
     }
+
 
     /// <summary>Handles the location changed.</summary>
     /// <param name="sender">The sender.</param>
@@ -235,20 +351,20 @@
         }
     }
 
-    /// <summary>Toggle visibility.</summary>
-    /// <param name="key">The key.</param>
-    private void ToggleVisibility(string key)
+    /// <summary>Toggle show state.</summary>
+    /// <param name="classEnum">The class enum.</param>
+    private void ToggleShowState(FhirArtifactClassEnum classEnum)
     {
-        if (expandedKeys.Contains(key))
-        {
-            expandedKeys.Remove(key);
-        }
-        else
-        {
-            expandedKeys.Add(key);
-        }
+        showArtifactClass[classEnum] = !showArtifactClass[classEnum];
+        InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
+    }
 
-        InvokeAsync(() => StateHasChanged());
+    /// <summary>Toggle show state.</summary>
+    /// <param name="diffEnum">The difference enum.</param>
+    private void ToggleShowState(DiffResults.DiffTypeEnum diffEnum)
+    {
+        showDiffType[diffEnum] = !showDiffType[diffEnum];
+        InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
     }
 
     /// <summary>Gets button class.</summary>

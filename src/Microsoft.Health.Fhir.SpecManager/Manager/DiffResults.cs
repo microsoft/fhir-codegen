@@ -44,6 +44,9 @@ public class DiffResults
         /// <summary>Indicates an element has different types in 'A' and 'B' (not simple overlap +/-).</summary>
         ChangedType,
 
+        /// <summary>Indicates a change in the search parameter type.</summary>
+        ChangedSearchParameterType,
+
         /// <summary>Indicates an element has the same type in 'A' and 'B', but additional Target Profiles in 'B'.</summary>
         ExpandedTargetProfile,
 
@@ -88,6 +91,21 @@ public class DiffResults
 
         /// <summary>Indicates a change in which ValueSet an element is bound to.</summary>
         ChangedBindingTarget,
+
+        /// <summary>Indicates a change in the ID of a canonical resource with the same URL.</summary>
+        ChangedId,
+
+        /// <summary>Indicates a change in the scope.</summary>
+        ChangedScope,
+
+        /// <summary>Indicates the 'code' of an object has changed.</summary>
+        ChangedCode,
+
+        /// <summary>Indicates a change in XPath literal and/or usage.</summary>
+        ChangedXPath,
+
+        /// <summary>Indicates a change in Expressions.</summary>
+        ChangedExpression,
     }
 
     public readonly record struct DiffRecord(
