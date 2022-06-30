@@ -14,7 +14,7 @@
 
 <p>
     <select class="form-select m-2" aria-label="Package A" @bind="directiveA">
-        @foreach((string key, FhirVersionInfo info) in SpecService)
+        @foreach((string key, FhirVersionInfo info) in SpecService.OrderBy((kvp) => kvp.Key))
         {
             <option value="@key">@info.PackageName # @info.VersionString</option>
         }
@@ -22,7 +22,7 @@
 </p>
 <p>
     <select class="form-select m-2" aria-label="Package B" @bind="directiveB">
-        @foreach((string key, FhirVersionInfo info) in SpecService)
+        @foreach((string key, FhirVersionInfo info) in SpecService.OrderBy((kvp) => kvp.Key))
         {
             <option value="@key">@info.PackageName # @info.VersionString</option>
         }
@@ -81,18 +81,20 @@
 </div>
 
 
-<table class="table">
-    <tbody>
-        @foreach ((FhirArtifactClassEnum artifactClass, Dictionary<string, List<DiffResults.DiffRecord>> artifactDict) in filtered)
-        {
-            if ((artifactDict.Count == 0) || (!showArtifactClass[artifactClass]))
-            {
-                continue;
-            }
+@foreach ((FhirArtifactClassEnum artifactClass, Dictionary<string, List<DiffResults.DiffRecord>> artifactDict) in filtered)
+{
+    if ((artifactDict.Count == 0) || (!showArtifactClass[artifactClass]))
+    {
+        continue;
+    }
 
-            <tr><td class="fw-bold">@artifactClass.ToString()</td></tr>
-            <tr><td colspan="2">
-                <table class="table">
+    <table class="table">
+        <thead>
+            <tr class="table-info"><td class="fw-bold">@artifactClass.ToString()s</td></tr>
+        </thead>
+        <tbody>
+            <tr><td>
+                <table class="table table-hover">
                     <tbody>
                         @foreach(string key in artifactDict.Keys.OrderBy(s => s))
                         {
@@ -104,22 +106,22 @@
                             switch (artifactClass)
                             {
                                 case FhirArtifactClassEnum.ValueSet:
-                                    <tr><td>@GetValueSetHeader(key)</td></tr>
+                                    <tr class="table-primary"><td>@GetValueSetHeader(key)</td></tr>
                                     break;
 
                                 default:
-                                    <tr><td>@key</td></tr>
+                                    <tr class="table-primary"><td>@key</td></tr>
                                     break;
                             }
 
                             <tr><td>
-                                <table class="table table-striped table-hover">
+                                <table class="table table-striped table-hover table-bordered">
                                     <thead>
                                         <tr>
-                                            <th class="col-2">Path</th>
-                                            <th class="col-2">Type</th>
-                                            <th class="col-2">@directiveA</th>
-                                            <th class="col-2">@directiveB</th>
+                                            <th class="col-md-2">Path</th>
+                                            <th class="col-md-2">Type</th>
+                                            <th class="col-md-2">@directiveA</th>
+                                            <th class="col-md-2">@directiveB</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -139,9 +141,9 @@
                     </tbody>
                 </table>
             </td></tr>
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
 
 @code {
     private string directiveA = "";
