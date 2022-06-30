@@ -90,7 +90,7 @@
                 continue;
             }
 
-            <tr><td>@artifactClass.ToString()</td></tr>
+            <tr><td class="fw-bold">@artifactClass.ToString()</td></tr>
             <tr><td colspan="2">
                 <table class="table">
                     <tbody>
@@ -101,7 +101,17 @@
                                 continue;
                             }
 
-                            <tr><td>@key</td></tr>
+                            switch (artifactClass)
+                            {
+                                case FhirArtifactClassEnum.ValueSet:
+                                    <tr><td>@GetValueSetHeader(key)</td></tr>
+                                    break;
+
+                                default:
+                                    <tr><td>@key</td></tr>
+                                    break;
+                            }
+
                             <tr><td>
                                 <table class="table table-striped table-hover">
                                     <thead>
@@ -146,6 +156,14 @@
 
     private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new();
     private Dictionary<DiffResults.DiffTypeEnum, bool> showDiffType = new();
+
+    private static string[] _bindingStrengthLiterals = {
+        "Not bound",
+        "Required",
+        "Extensible",
+        "Preferred",
+        "Example"
+    };
 
     /// <summary>Gets or sets a value indicating whether the difference in progress.</summary>
     private bool diffInProgress { get; set; } = false;
@@ -339,7 +357,6 @@
         }
     }
 
-
     /// <summary>Handles the location changed.</summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">     Location changed event information.</param>
@@ -365,6 +382,35 @@
     {
         showDiffType[diffEnum] = !showDiffType[diffEnum];
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
+    }
+
+    /// <summary>Gets value set header.</summary>
+    /// <param name="vsUrl">URL of the vs.</param>
+    /// <returns>The value set header.</returns>
+    private string GetValueSetHeader(string vsUrl)
+    {
+        if (string.IsNullOrEmpty(vsUrl))
+        {
+            return string.Empty;
+        }
+
+        string val = vsUrl;
+
+        if ((SpecService[directiveA]?.ValueSetsByUrl.ContainsKey(vsUrl) ?? false) &&
+            (SpecService[directiveA].ValueSetsByUrl[vsUrl].ValueSetsByVersion.Any()))
+        {
+            FhirValueSet vsA = SpecService[directiveA].ValueSetsByUrl[vsUrl].ValueSetsByVersion.First().Value;
+            val += $" | {_bindingStrengthLiterals[(int)(vsA.StrongestBinding ?? 0)]} in {directiveA}";
+        }
+
+        if ((SpecService[directiveB]?.ValueSetsByUrl.ContainsKey(vsUrl) ?? false) &&
+            (SpecService[directiveB].ValueSetsByUrl[vsUrl].ValueSetsByVersion.Any()))
+        {
+            FhirValueSet vsB = SpecService[directiveB].ValueSetsByUrl[vsUrl].ValueSetsByVersion.First().Value;
+            val += $" | {_bindingStrengthLiterals[(int)(vsB.StrongestBinding ?? 0)]} in {directiveB}";
+        }
+
+        return val;
     }
 
     /// <summary>Gets button class.</summary>

@@ -62,7 +62,7 @@
         },
         "ts5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --language TypeScript",
+            "commandLineArgs": "--output-path ..\\..\\generated\\TypeScript_R5.ts -p hl7.fhir.r5.core#current --include-experimental --language TypeScript",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "tsAll": {

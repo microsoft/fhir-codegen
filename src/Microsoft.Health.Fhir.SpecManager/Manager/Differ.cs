@@ -49,14 +49,178 @@ public class Differ
 
         CompareSearchParameters(_a.SearchParametersByUrl, _b.SearchParametersByUrl);
 
-        //if (_options.CompareValueSetExpansions)
-        //{
-
-        //}
+        if (_options.CompareValueSetExpansions)
+        {
+            CompareFhirValueSetCollections(_a.ValueSetsByUrl, _b.ValueSetsByUrl);
+        }
 
         Console.WriteLine($"Diff completed!");
 
         return _results;
+    }
+
+    /// <summary>Compare FHIR value set collections.</summary>
+    /// <param name="A">The 'A' value set collection dictionary to process (typically older version).</param>
+    /// <param name="B">The 'B' value set collection dictionary to process (typically newer version).</param>
+    private void CompareFhirValueSetCollections(
+        Dictionary<string, FhirValueSetCollection> A,
+        Dictionary<string, FhirValueSetCollection> B)
+    {
+        HashSet<string> keysA = A?.Keys.ToHashSet() ?? new();
+        HashSet<string> keysB = B?.Keys.ToHashSet() ?? new();
+
+        HashSet<string> keyIntersection = A?.Keys.ToHashSet() ?? new();
+        keyIntersection.IntersectWith(keysB);
+
+        keysA.ExceptWith(keyIntersection);
+        keysB.ExceptWith(keyIntersection);
+
+        foreach (string key in keysA)
+        {
+            _results.AddDiff(
+                FhirArtifactClassEnum.ValueSet,
+                key,
+                key,
+                DiffResults.DiffTypeEnum.Removed,
+                key,
+                string.Empty);
+        }
+
+        foreach (string key in keysB)
+        {
+            _results.AddDiff(
+                FhirArtifactClassEnum.ValueSet,
+                key,
+                key,
+                DiffResults.DiffTypeEnum.Added,
+                string.Empty,
+                key);
+        }
+
+        foreach (string key in keyIntersection)
+        {
+            // compare highest version of value set in each package
+            string keyA = A[key].ValueSetsByVersion.Keys.Max();
+            string keyB = B[key].ValueSetsByVersion.Keys.Max();
+
+            CompareValueSet(key, A[key].ValueSetsByVersion[keyA], B[key].ValueSetsByVersion[keyB]);
+        }
+    }
+
+    /// <summary>Compare value set.</summary>
+    /// <param name="rootKey">The root key.</param>
+    /// <param name="A">      The 'A' IPackageExportable to process (typically older version).</param>
+    /// <param name="B">      The 'B' IPackageExportable to process (typically newer version).</param>
+    private void CompareValueSet(
+        string rootKey,
+        FhirValueSet A,
+        FhirValueSet B)
+    {
+        TestForDiff(
+            A.Id,
+            B.Id,
+            FhirArtifactClassEnum.ValueSet,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedId);
+
+        if (_options.CompareDescriptions)
+        {
+            TestForDiff(
+                A.Title,
+                B.Title,
+                FhirArtifactClassEnum.ValueSet,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.ChangedDescription);
+
+            TestForDiff(
+                A.Description,
+                B.Description,
+                FhirArtifactClassEnum.ValueSet,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.ChangedDescription);
+        }
+
+        // check to see if we can compare the expansions
+        if ((A.Expansion != null) && (B.Expansion != null))
+        {
+            // only *actually* compare the expansions if neither is a "limited" expansion (just noise otherwise)
+            if ((!A.Expansion.IsLimitedExpansion) && (!B.Expansion.IsLimitedExpansion))
+            {
+                CompareValueSetExpansions(rootKey, A.Expansion, B.Expansion);
+            }
+        }
+        else if (A.Expansion != null)
+        {
+            _results.AddDiff(
+                FhirArtifactClassEnum.ValueSet,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.RemovedExpansion,
+                A.URL,
+                string.Empty);
+        }
+        else if (B.Expansion != null)
+        {
+            _results.AddDiff(
+                FhirArtifactClassEnum.ValueSet,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.AddedExpansion,
+                string.Empty,
+                B.URL);
+        }
+    }
+
+    /// <summary>Compare value set expansions.</summary>
+    /// <param name="rootKey">The root key.</param>
+    /// <param name="A">      The 'A' IPackageExportable to process (typically older version).</param>
+    /// <param name="B">      The 'B' IPackageExportable to process (typically newer version).</param>
+    private void CompareValueSetExpansions(
+        string rootKey,
+        FhirValueSetExpansion A,
+        FhirValueSetExpansion B)
+    {
+        TestForDiff(
+            A.Total ?? 0,
+            B.Total ?? 0,
+            FhirArtifactClassEnum.ValueSet,
+            rootKey,
+            "Total",
+            DiffResults.DiffTypeEnum.ChangedExpansion);
+
+        HashSet<string> valuesA = A?.Contains?.Select(c => c.SystemAndCode()).ToHashSet() ?? new();
+        HashSet<string> valuesB = B?.Contains?.Select(c => c.SystemAndCode()).ToHashSet() ?? new();
+
+        HashSet<string> valueIntersection = A?.Contains?.Select(c => c.SystemAndCode()).ToHashSet() ?? new();
+        valueIntersection.IntersectWith(valuesB);
+
+        valuesA.ExceptWith(valueIntersection);
+        valuesB.ExceptWith(valueIntersection);
+
+        foreach (string val in valuesA)
+        {
+            _results.AddDiff(
+                FhirArtifactClassEnum.ValueSet,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.RemovedExpansion,
+                val,
+                string.Empty);
+        }
+
+        foreach (string val in valuesB)
+        {
+            _results.AddDiff(
+                FhirArtifactClassEnum.ValueSet,
+                rootKey,
+                rootKey,
+                DiffResults.DiffTypeEnum.AddedExpansion,
+                string.Empty,
+                val);
+        }
     }
 
     /// <summary>Compare primitive types.</summary>
@@ -764,7 +928,7 @@ public class Differ
             {
                 RecursiveAddComplex(artifactClass, rootKey, complex.Components[element.BaseTypeName], complex);
             }
-            else if ((rootComplex != null) && (rootComplex.Components.ContainsKey(element.BaseTypeName)))
+            else if ((rootComplex != null) && rootComplex.Components.ContainsKey(element.BaseTypeName))
             {
                 RecursiveAddComplex(artifactClass, rootKey, rootComplex.Components[element.BaseTypeName], complex);
             }
@@ -780,7 +944,6 @@ public class Differ
             }
         }
     }
-
 
     /// <summary>Compare complex components.</summary>
     /// <param name="artifactClass">The artifact class.</param>

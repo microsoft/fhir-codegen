@@ -40,7 +40,7 @@ public static class Program
     ///  or latest).</param>
     /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
     ///  or latest).</param>
-    /// <param name="loadR4B">               If FHIR R4B should be loaded, which version (e.g., 4.3.0-snapshot1
+    /// <param name="loadR4B">               If FHIR R4B should be loaded, which version (e.g., 4.3.0
     ///  or latest).</param>
     /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 5.0.0-snapshot1
     ///  or latest).</param>

@@ -558,7 +558,7 @@ public class FhirCacheService : IDisposable
                     out string ciBuildId,
                     out string ciBuildDate);
 
-                if (cachedNpm.BuildDate.CompareTo(ciBuildDate) <= 0)
+                if (cachedNpm.BuildDate.CompareTo(ciBuildDate) > 0)
                 {
                     return true;
                 }

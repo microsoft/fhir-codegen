@@ -106,6 +106,15 @@ public class DiffResults
 
         /// <summary>Indicates a change in Expressions.</summary>
         ChangedExpression,
+
+        /// <summary>Indicates an expansion was added to the package.</summary>
+        AddedExpansion,
+
+        /// <summary>Indicates an expansion was removed from the package.</summary>
+        RemovedExpansion,
+
+        /// <summary>Indicates some change to the properties of an expansion.</summary>
+        ChangedExpansion,
     }
 
     public readonly record struct DiffRecord(

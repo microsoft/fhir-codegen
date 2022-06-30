@@ -36,6 +36,23 @@ public class FhirValueSetExpansion : ICloneable
         Offset = offset;
         Parameters = parameters;
         Contains = contains;
+
+        dynamic limited;
+        if (!(parameters?.TryGetValue("limitedExpansion", out limited) ?? false))
+        {
+            limited = false;
+        }
+
+        switch (limited)
+        {
+            case "-1":
+            case "true":
+            case true:
+                limited = true;
+                break;
+        }
+
+        IsLimitedExpansion = limited;
     }
 
     /// <summary>Gets the identifier.</summary>
@@ -61,6 +78,9 @@ public class FhirValueSetExpansion : ICloneable
     /// <summary>Gets the contains.</summary>
     /// <value>The contains.</value>
     public List<FhirConcept> Contains { get; }
+
+    /// <summary>Gets a value indicating whether this object is limited expansion.</summary>
+    public bool IsLimitedExpansion { get; }
 
     /// <summary>Makes a deep copy of this object.</summary>
     /// <returns>A copy of this object.</returns>
