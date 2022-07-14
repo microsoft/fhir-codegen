@@ -23,6 +23,9 @@ public class PackageCopyOptions
     /// <summary>Gets or sets a value indicating whether to copy resources.</summary>
     public bool CopyResources { get; set; } = true;
 
+    /// <summary>Gets or sets a value indicating whether to copy logical models.</summary>
+    public bool CopyLogicalModels { get; set; } = true;
+
     /// <summary>Gets or sets a value indicating whether to copy extensions.</summary>
     public bool CopyExtensions { get; set; } = true;
 

@@ -29,6 +29,11 @@ internal static class TypeScriptSdkCommon
     internal const string CodeTypeSuffix = "CodeType";
 
     /// <summary>
+    /// Literal to append to code and coding validation objects.
+    /// </summary>
+    internal const string VsValidationSuffix = "VsValidation";
+
+    /// <summary>
     /// (Immutable) Dictionary mapping FHIR primitive types to language equivalents.
     /// </summary>
     internal static readonly Dictionary<string, string> PrimitiveTypeMap = new(StringComparer.OrdinalIgnoreCase)

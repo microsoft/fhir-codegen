@@ -44,6 +44,7 @@ public class Differ
         CompareComplexTypes(FhirArtifactClassEnum.Resource, _a.Resources, _b.Resources);
         CompareComplexTypes(FhirArtifactClassEnum.Extension, _a.ExtensionsByUrl, _b.ExtensionsByUrl);
         CompareComplexTypes(FhirArtifactClassEnum.Profile, _a.Profiles, _b.Profiles);
+        CompareComplexTypes(FhirArtifactClassEnum.LogicalModel, _a.LogicalModels, _b.LogicalModels);
 
         CompareFhirOperations(_a.OperationsByUrl, _b.OperationsByUrl);
 
@@ -395,8 +396,8 @@ public class Differ
             FhirArtifactClassEnum.SearchParameter,
             rootKey,
             rootKey,
-            DiffResults.DiffTypeEnum.ExpandedType,
-            DiffResults.DiffTypeEnum.ReducedType);
+            DiffResults.DiffTypeEnum.AddedType,
+            DiffResults.DiffTypeEnum.RemovedType);
 
         TestForDiff(
             A.Targets,
@@ -404,8 +405,8 @@ public class Differ
             FhirArtifactClassEnum.SearchParameter,
             rootKey,
             rootKey,
-            DiffResults.DiffTypeEnum.ExpandedTargetProfile,
-            DiffResults.DiffTypeEnum.ReducedTargetProfile);
+            DiffResults.DiffTypeEnum.AddedTargetProfile,
+            DiffResults.DiffTypeEnum.RemovedTargetProfile);
 
         TestForDiff(
             A.ValueType,
@@ -580,8 +581,8 @@ public class Differ
             FhirArtifactClassEnum.Operation,
             rootKey,
             rootKey,
-            DiffResults.DiffTypeEnum.ExpandedType,
-            DiffResults.DiffTypeEnum.ReducedType);
+            DiffResults.DiffTypeEnum.AddedType,
+            DiffResults.DiffTypeEnum.RemovedType);
 
         CompareParameters(
             FhirArtifactClassEnum.Operation,
@@ -1263,7 +1264,7 @@ public class Differ
                 artifactClass,
                 rootKey,
                 path,
-                DiffResults.DiffTypeEnum.ReducedType,
+                DiffResults.DiffTypeEnum.RemovedType,
                 key,
                 string.Empty);
         }
@@ -1274,7 +1275,7 @@ public class Differ
                 artifactClass,
                 rootKey,
                 path,
-                DiffResults.DiffTypeEnum.ExpandedType,
+                DiffResults.DiffTypeEnum.AddedType,
                 string.Empty,
                 key);
         }
@@ -1325,7 +1326,7 @@ public class Differ
                 artifactClass,
                 rootKey,
                 path,
-                DiffResults.DiffTypeEnum.ReducedTargetProfile,
+                DiffResults.DiffTypeEnum.RemovedTargetProfile,
                 key,
                 string.Empty);
         }
@@ -1336,7 +1337,7 @@ public class Differ
                 artifactClass,
                 rootKey,
                 path,
-                DiffResults.DiffTypeEnum.ExpandedTargetProfile,
+                DiffResults.DiffTypeEnum.AddedTargetProfile,
                 string.Empty,
                 key);
         }
@@ -1389,7 +1390,7 @@ public class Differ
                 artifactClass,
                 rootKey,
                 path,
-                DiffResults.DiffTypeEnum.ReducedTypeProfile,
+                DiffResults.DiffTypeEnum.RemovedTypeProfile,
                 key,
                 string.Empty);
         }
@@ -1400,7 +1401,7 @@ public class Differ
                 artifactClass,
                 rootKey,
                 path,
-                DiffResults.DiffTypeEnum.ExpandedTypeProfile,
+                DiffResults.DiffTypeEnum.AddedTypeProfile,
                 string.Empty,
                 key);
         }

@@ -38,6 +38,9 @@ public enum FhirArtifactClassEnum
     /// <summary>An enum constant representing the profile option.</summary>
     Profile,
 
+    /// <summary>An enum constant representing the logical model option.</summary>
+    LogicalModel,
+
 
     /// <summary>An enum constant representing the capability statement option.</summary>
     CapabilityStatement,

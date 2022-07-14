@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -143,62 +144,211 @@ public class NpmPackageDetails
             throw new ArgumentNullException(nameof(contents));
         }
 
+        NpmPackageDetails details = null;
+
         // attempt to parse
         try
         {
-            NpmPackageDetails details = JsonSerializer.Deserialize<NpmPackageDetails>(contents);
-
-            if (!string.IsNullOrEmpty(details.FhirVersion))
+            details = JsonSerializer.Deserialize<NpmPackageDetails>(contents, new JsonSerializerOptions()
             {
-                if (details.FhirVersion.StartsWith('['))
-                {
-                    details.FhirVersion = details.FhirVersion.Substring(1, details.FhirVersion.Length - 2);
-                }
-            }
-
-            if (details.FhirVersionList == null)
-            {
-                if (details.FhirVersions != null)
-                {
-                    details.FhirVersionList = details.FhirVersions;
-                }
-                else if (!string.IsNullOrEmpty(details.FhirVersion))
-                {
-                    details.FhirVersionList = new string[1] { details.FhirVersion };
-                }
-                else
-                {
-                    details.FhirVersionList = new string[0];
-                }
-            }
-
-            if (details.FhirVersions == null)
-            {
-                if (details.FhirVersionList != null)
-                {
-                    details.FhirVersions = details.FhirVersionList;
-                }
-                else if (!string.IsNullOrEmpty(details.FhirVersion))
-                {
-                    details.FhirVersions = new string[1] { details.FhirVersion };
-                }
-                else
-                {
-                    details.FhirVersions = new string[0];
-                }
-            }
-
-            if (details.Dependencies == null)
-            {
-                details.Dependencies = new();
-            }
-
-            return details;
-
+                AllowTrailingCommas = true,
+            });
         }
-        catch (JsonException)
+        catch (JsonException jex)
         {
-            throw;
+            Console.WriteLine($"NpmPackageDetails.Parse <<< caught JSON exception in typed parse: {jex.Message}");
+            if (jex.InnerException != null)
+            {
+                Console.WriteLine($" <<< {jex.InnerException.Message}");
+            }
+
+            details = null;
         }
+
+        if (details == null)
+        {
+            try
+            {
+                JsonNode node = JsonNode.Parse(contents);
+
+                details = new()
+                {
+                    Name = StringFromNode(node, "name"),
+                    Version = StringFromNode(node, "version"),
+                    BuildDate = StringFromNode(node, "date"),
+                    FhirVersionList = EnumerableStringFromNode(node, "fhir-version-list"),
+                    FhirVersions = EnumerableStringFromNode(node, "fhirVersions"),
+                    FhirVersion = StringFromNode(node, "fhirVersion"),
+                    PackageType = StringFromNode(node, "type"),
+                    Canonical = StringFromNode(node, "canonical"),
+                    Homepage = StringFromNode(node, "homepage"),
+                    Title = StringFromNode(node, "title"),
+                    Description = StringFromNode(node, "description"),
+                    Dependencies = StringDictFromNode(node, "dependencies"),
+                    Keywords = EnumerableStringFromNode(node, "keywords"),
+                    Author = StringFromNode(node, "author"),
+                    License = StringFromNode(node, "license"),
+                    Directories = StringDictFromNode(node, "directories"),
+                    OriginalVersion = StringFromNode(node, "original-version"),
+                };
+
+                string url = StringFromNode(node, "url");
+
+                if (!string.IsNullOrEmpty(url))
+                {
+                    details.URL = new Uri(url);
+                }
+            }
+            catch (JsonException jex)
+            {
+                Console.WriteLine($"NpmPackageDetails.Parse <<< caught JSON exception in untyped parse: {jex.Message}");
+                if (jex.InnerException != null)
+                {
+                    Console.WriteLine($" <<< {jex.InnerException.Message}");
+                }
+
+                details = null;
+            }
+        }
+
+        if ((details == null) || string.IsNullOrEmpty(details.Name))
+        {
+            throw new Exception("Invalid NPM Package Manifest");
+        }
+
+        if (!string.IsNullOrEmpty(details.FhirVersion))
+        {
+            if (details.FhirVersion.StartsWith('['))
+            {
+                details.FhirVersion = details.FhirVersion.Substring(1, details.FhirVersion.Length - 2);
+            }
+        }
+
+        if (details.FhirVersionList == null)
+        {
+            if (details.FhirVersions != null)
+            {
+                details.FhirVersionList = details.FhirVersions;
+            }
+            else if (!string.IsNullOrEmpty(details.FhirVersion))
+            {
+                details.FhirVersionList = new string[1] { details.FhirVersion };
+            }
+            else
+            {
+                details.FhirVersionList = new string[0];
+            }
+        }
+
+        if (details.FhirVersions == null)
+        {
+            if (details.FhirVersionList != null)
+            {
+                details.FhirVersions = details.FhirVersionList;
+            }
+            else if (!string.IsNullOrEmpty(details.FhirVersion))
+            {
+                details.FhirVersions = new string[1] { details.FhirVersion };
+            }
+            else
+            {
+                details.FhirVersions = new string[0];
+            }
+        }
+
+        if (details.Dependencies == null)
+        {
+            details.Dependencies = new();
+        }
+
+        return details;
+    }
+
+    /// <summary>String dictionary from node.</summary>
+    /// <param name="node">The node.</param>
+    /// <param name="prop">The property.</param>
+    /// <returns>A Dictionary&lt;string,string&gt;</returns>
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    private static Dictionary<string, string> StringDictFromNode(JsonNode node, string prop)
+    {
+        if (node[prop] == null)
+        {
+            return null;
+        }
+
+        Dictionary<string, string> val = new();
+
+        switch (node[prop])
+        {
+            case JsonObject obj:
+                {
+                    foreach ((string key, JsonNode objNode) in obj)
+                    {
+                        val.Add(key, StringFromNode(node[prop], key));
+                    }
+                }
+                break;
+        }
+
+        return val;
+    }
+
+    /// <summary>Enumerates enumerable string from node in this collection.</summary>
+    /// <param name="node">The node.</param>
+    /// <param name="prop">The property.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process enumerable string from node in this
+    /// collection.
+    /// </returns>
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    private static IEnumerable<string> EnumerableStringFromNode(JsonNode node, string prop)
+    {
+        if (node[prop] == null)
+        {
+            return null;
+        }
+
+        List<string> val = new();
+
+        switch (node[prop])
+        {
+            case JsonArray ja:
+                {
+                    foreach (string item in ja)
+                    {
+                        val.Add(item);
+                    }
+                }
+                break;
+
+            default:
+                val.Add(node[prop].ToString());
+                break;
+        }
+
+        return val;
+    }
+
+    /// <summary>String from node.</summary>
+    /// <param name="node">The node.</param>
+    /// <param name="prop">The property.</param>
+    /// <returns>A string.</returns>
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    private static string StringFromNode(JsonNode node, string prop)
+    {
+        if (node[prop] == null)
+        {
+            return string.Empty;
+        }
+
+        switch (node[prop])
+        {
+            case JsonArray ja:
+                {
+                    return ja[0].ToString();
+                }
+        }
+
+        return node[prop].ToString();
     }
 }

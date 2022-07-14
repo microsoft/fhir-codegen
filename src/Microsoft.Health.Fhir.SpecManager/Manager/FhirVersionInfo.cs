@@ -23,6 +23,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     private Dictionary<string, FhirPrimitive> _primitiveTypesByName;
     private Dictionary<string, FhirComplex> _complexTypesByName;
     private Dictionary<string, FhirComplex> _resourcesByName;
+    private Dictionary<string, FhirComplex> _logicalModelsByName;
     private Dictionary<string, FhirComplex> _extensionsByUrl;
     private Dictionary<string, Dictionary<string, FhirComplex>> _extensionsByPath;
     private Dictionary<string, FhirComplex> _profilesByUrl;
@@ -50,6 +51,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         _primitiveTypesByName = new();
         _complexTypesByName = new();
         _resourcesByName = new();
+        _logicalModelsByName = new();
         _extensionsByUrl = new();
         _extensionsByPath = new();
         _profilesByUrl = new();
@@ -322,6 +324,80 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         new FhirNodeInfo(FhirNodeInfo.FhirNodeType.Resource, node));
 
                     _resourcesByName.Add(
+                        kvp.Key,
+                        node);
+                }
+            }
+        }
+
+        if (options.CopyLogicalModels)
+        {
+            foreach (KeyValuePair<string, FhirComplex> kvp in source._logicalModelsByName)
+            {
+                // check for restricting output
+                if (restrictOutput && (!exportSet.Contains(kvp.Key)))
+                {
+                    _excludedKeys.Add(kvp.Key);
+                    continue;
+                }
+
+                if (restrictResources && (!exportSet.Contains(kvp.Key)))
+                {
+                    _excludedKeys.Add(kvp.Key);
+                    continue;
+                }
+
+                // check for experimental - unless this is specifically included
+                if (((!restrictOutput) || (!restrictResources)) &&
+                    (!options.IncludeExperimental) &&
+                    kvp.Value.IsExperimental)
+                {
+                    _excludedKeys.Add(kvp.Key);
+                    continue;
+                }
+
+                if ((options.ServerInfo == null) ||
+                    (!options.ServerInfo.ResourceInteractions.ContainsKey(kvp.Key)))
+                {
+                    FhirComplex node = kvp.Value.DeepCopy(
+                        options.PrimitiveTypeMap,
+                        true,
+                        false,
+                        valueSetReferences,
+                        _nodeInfoByPath,
+                        null,
+                        null,
+                        null,
+                        null,
+                        options.IncludeExperimental);
+
+                    _nodeInfoByPath.Add(
+                        node.Path,
+                        new FhirNodeInfo(FhirNodeInfo.FhirNodeType.LogicalModel, node));
+
+                    _logicalModelsByName.Add(
+                        kvp.Key,
+                        node);
+                }
+                else
+                {
+                    FhirComplex node = kvp.Value.DeepCopy(
+                        options.PrimitiveTypeMap,
+                        true,
+                        false,
+                        valueSetReferences,
+                        _nodeInfoByPath,
+                        options.ServerInfo.ResourceInteractions[kvp.Key].SearchParameters,
+                        options.ServerInfo.ServerSearchParameters,
+                        options.ServerInfo.ResourceInteractions[kvp.Key].Operations,
+                        options.ServerInfo.ServerOperations,
+                        options.IncludeExperimental);
+
+                    _nodeInfoByPath.Add(
+                        node.Path,
+                        new FhirNodeInfo(FhirNodeInfo.FhirNodeType.LogicalModel, node));
+
+                    _logicalModelsByName.Add(
                         kvp.Key,
                         node);
                 }
@@ -682,6 +758,9 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <summary>Gets a dictionary with the known resources for this version of FHIR.</summary>
     public Dictionary<string, FhirComplex> Resources { get => _resourcesByName; }
 
+    /// <summary>Gets a dictionary with the known logical models by name.</summary>
+    public Dictionary<string, FhirComplex> LogicalModels { get => _logicalModelsByName; }
+
     /// <summary>Gets the profiles by id dictionary.</summary>
     public Dictionary<string, FhirComplex> Profiles { get => _profilesByUrl; }
 
@@ -848,6 +927,38 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             case FhirArtifactClassEnum.Resource:
                 {
                     artifact = ResolveInDict(token, _resourcesByName);
+
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    FhirComplex current = (FhirComplex)artifact;
+
+                    if (resolveParentLinks &&
+                        (!string.IsNullOrEmpty(current.BaseTypeName)) &&
+                        (!current.BaseTypeName.Equals(current.Name, StringComparison.Ordinal)) &&
+                        (current.Parent == null) &&
+                        TryGetArtifact(
+                            current.BaseTypeName,
+                            out object parent,
+                            out FhirArtifactClassEnum parentClass,
+                            out string parentResolvedDirective,
+                            true))
+                    {
+                        ((FhirComplex)artifact).Parent = (FhirComplex)parent;
+                        ((FhirComplex)artifact).ParentArtifactClass = parentClass;
+                        ((FhirComplex)artifact).ResolvedParentDirective = parentResolvedDirective;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.LogicalModel:
+                {
+                    artifact = ResolveInDict(token, _logicalModelsByName);
 
                     if (artifact == null)
                     {
@@ -1091,6 +1202,23 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             ArtifactClass = FhirArtifactClassEnum.Resource,
             Id = resource.Id,
+            Url = url,
+            DefinitionResourceType = "StructureDefinition",
+        });
+    }
+
+    /// <summary>Adds a logical model.</summary>
+    /// <param name="logicalModel">The logical model.</param>
+    public void AddLogicalModel(FhirComplex logicalModel)
+    {
+        _logicalModelsByName.Add(logicalModel.Path, logicalModel);
+
+        Uri url = logicalModel.URL ?? new Uri(CanonicalUrl, "StructureDefinition/" + logicalModel.Id);
+        _artifactClassByUrl.Add(url.ToString(), FhirArtifactClassEnum.LogicalModel);
+        _artifactsByClass[FhirArtifactClassEnum.LogicalModel].Add(new()
+        {
+            ArtifactClass = FhirArtifactClassEnum.LogicalModel,
+            Id = logicalModel.Id,
             Url = url,
             DefinitionResourceType = "StructureDefinition",
         });
@@ -1447,6 +1575,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             return _resourcesByName[currentPath].TryGetExplicitName(path, out explicitName, index);
         }
 
+        if (_logicalModelsByName.ContainsKey(currentPath))
+        {
+            return _logicalModelsByName[currentPath].TryGetExplicitName(path, out explicitName, index);
+        }
+
         explicitName = string.Empty;
         return false;
     }
@@ -1726,6 +1859,16 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         if (source._resourcesByName.ContainsKey(name))
         {
             AddComplexToExportSet(source._resourcesByName[name], set, true, source);
+        }
+
+        if (source._logicalModelsByName.ContainsKey(name))
+        {
+            AddComplexToExportSet(source._logicalModelsByName[name], set, true, source);
+        }
+
+        if (source._profilesByUrl.ContainsKey(name))
+        {
+            AddComplexToExportSet(source._profilesByUrl[name], set, true, source);
         }
     }
 

@@ -780,18 +780,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     {
                         if (sd.Type == "Extension")
                         {
-                            ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
+                            ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Extension);
                         }
                         else
                         {
-                            ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Profile);
+                            ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Profile);
                         }
                     }
                     else
                     {
-                        ProcessComplex(sd, fhirVersionInfo, sd.Kind == "complex-type" ? FhirComplex.FhirComplexType.DataType : FhirComplex.FhirComplexType.Resource);
+                        ProcessComplex(
+                            sd,
+                            fhirVersionInfo,
+                            sd.Kind == "complex-type" ? FhirArtifactClassEnum.ComplexType : FhirArtifactClassEnum.Resource);
                     }
 
+                    break;
+
+                case "logical":
+                    ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.LogicalModel);
                     break;
             }
         }
@@ -1083,13 +1090,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
         /// <summary>Process a complex structure (Complex Type or Resource).</summary>
         /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
-        /// <param name="sd">                   The structure definition to parse.</param>
-        /// <param name="fhirVersionInfo">      FHIR Version information.</param>
-        /// <param name="definitionComplexType">Type of structure definition we are parsing.</param>
+        /// <param name="sd">             The structure definition to parse.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        /// <param name="artifactClass">  Type of structure definition we are parsing.</param>
         private static void ProcessComplex(
             fhirModels.StructureDefinition sd,
             IPackageImportable fhirVersionInfo,
-            FhirComplex.FhirComplexType definitionComplexType)
+            FhirArtifactClassEnum artifactClass)
         {
             if ((sd.Snapshot == null) || (sd.Snapshot.Element == null))
             {
@@ -1540,18 +1547,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     }
                 }
 
-                switch (definitionComplexType)
+                switch (artifactClass)
                 {
-                    case FhirComplex.FhirComplexType.DataType:
+                    case FhirArtifactClassEnum.ComplexType:
                         fhirVersionInfo.AddComplexType(complex);
                         break;
-                    case FhirComplex.FhirComplexType.Resource:
+                    case FhirArtifactClassEnum.Resource:
                         fhirVersionInfo.AddResource(complex);
                         break;
-                    case FhirComplex.FhirComplexType.Extension:
+                    case FhirArtifactClassEnum.Extension:
                         fhirVersionInfo.AddExtension(complex);
                         break;
-                    case FhirComplex.FhirComplexType.Profile:
+                    case FhirArtifactClassEnum.Profile:
                         fhirVersionInfo.AddProfile(complex);
                         break;
                 }

@@ -36,10 +36,10 @@ public class DiffResults
         ChangedMaxCardinality,
 
         /// <summary>Indicates an element in 'B' has additional types compared with the same element in 'A'.</summary>
-        ExpandedType,
+        AddedType,
 
         /// <summary>Indicates an element in 'B' has fewer types compared with the same element in 'A'.</summary>
-        ReducedType,
+        RemovedType,
 
         /// <summary>Indicates an element has different types in 'A' and 'B' (not simple overlap +/-).</summary>
         ChangedType,
@@ -48,19 +48,19 @@ public class DiffResults
         ChangedSearchParameterType,
 
         /// <summary>Indicates an element has the same type in 'A' and 'B', but additional Target Profiles in 'B'.</summary>
-        ExpandedTargetProfile,
+        AddedTargetProfile,
 
         /// <summary>Indicates an element has the same type in 'A' and 'B', but fewer Target Profiles in 'B'.</summary>
-        ReducedTargetProfile,
+        RemovedTargetProfile,
 
         /// <summary>Indicates an element has the same type in 'A' and 'B', but different Target Profiles (not simple overlap +/-).</summary>
         ChangedTargetProfile,
 
         /// <summary>Indicates an element has the same type in 'A' and 'B', but additional Type Profiles in 'B'.</summary>
-        ExpandedTypeProfile,
+        AddedTypeProfile,
 
         /// <summary>Indicates an element has the same type in 'A' and 'B', but fewer Type Profiles in 'B'.</summary>
-        ReducedTypeProfile,
+        RemovedTypeProfile,
 
         /// <summary>Indicates an element has the same type in 'A' and 'B', but different Type Profiles (not simple overlap +/-).</summary>
         ChangedTypeProfile,
@@ -135,6 +135,7 @@ public class DiffResults
         FhirArtifactClassEnum.SearchParameter,
         FhirArtifactClassEnum.ValueSet,
         FhirArtifactClassEnum.Profile,
+        FhirArtifactClassEnum.LogicalModel,
     };
 
     /// <summary>

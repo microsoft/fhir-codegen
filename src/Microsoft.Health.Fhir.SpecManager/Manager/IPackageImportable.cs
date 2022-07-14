@@ -38,6 +38,9 @@ public interface IPackageImportable
     /// <summary>Gets a dictionary with the known resources for this version of FHIR.</summary>
     public Dictionary<string, FhirComplex> Resources { get; }
 
+    /// <summary>Gets a dictionary with the known logical models.</summary>
+    public Dictionary<string, FhirComplex> LogicalModels { get; }
+
     /// <summary>Gets the profiles by id dictionary.</summary>
     public Dictionary<string, FhirComplex> Profiles { get; }
 
@@ -132,6 +135,10 @@ public interface IPackageImportable
     /// <summary>Adds a resource.</summary>
     /// <param name="resource">The resource object.</param>
     public void AddResource(FhirComplex resource);
+
+    /// <summary>Adds a logical model.</summary>
+    /// <param name="logicalModel">The logical model.</param>
+    public void AddLogicalModel(FhirComplex logicalModel);
 
     /// <summary>Adds a search parameter.</summary>
     /// <param name="searchParam">The search parameter.</param>

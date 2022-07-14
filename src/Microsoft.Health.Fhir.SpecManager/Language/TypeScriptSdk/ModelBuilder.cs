@@ -11,6 +11,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk;
 /// <summary>The TypeScript-SDK model builder - converts internal models into TS-specific structures.</summary>
 public class ModelBuilder
 {
+    /// <summary>Information about the value set element binding.</summary>
+    /// <param name="ExportAlias">          The export alias.</param>
+    /// <param name="ElementExportType">    Type of the element export.</param>
+    /// <param name="BoundValueSetStrength">The bound value set strength.</param>
+    public readonly record struct ValueSetElementBindingInfo(
+        string ExportAlias,
+        string ElementExportType,
+        FhirElement.ElementDefinitionBindingStrength BoundValueSetStrength);
+
     /// <summary>An export element choice type.</summary>
     public readonly record struct ExportElementChoiceType(
         string ExportName,
@@ -100,6 +109,7 @@ public class ModelBuilder
         Dictionary<string, ExportComplex> ComplexDataTypesByExportName,
         Dictionary<string, ExportComplex> ResourcesByExportName,
         Dictionary<string, ExportValueSet> ValueSetsByExportName,
+        Dictionary<string, List<ValueSetElementBindingInfo>> ValueSetBindingInfoByExportName,
         List<SortedExportKey> SortedPrimitives,
         List<SortedExportKey> SortedDataTypes,
         List<SortedExportKey> SortedResources);
@@ -190,11 +200,13 @@ public class ModelBuilder
                     fhirPrimitive.ValidationRegEx));
         }
 
+        Dictionary<string, List<ValueSetElementBindingInfo>> valueSetBindings = new();
+
         sortedPrimitives = SortPrimitives(primitiveTypes);
 
         foreach (FhirComplex fhirComplex in _info.ComplexTypes.Values)
         {
-            ExportComplex exportComplex = ProcessFhirComplex(fhirComplex, FhirArtifactClassEnum.ComplexType);
+            ExportComplex exportComplex = ProcessFhirComplex(fhirComplex, FhirArtifactClassEnum.ComplexType, valueSetBindings);
 
             complexDataTypes.Add(exportComplex.ExportClassName, exportComplex);
         }
@@ -203,7 +215,7 @@ public class ModelBuilder
 
         foreach (FhirComplex fhirComplex in _info.Resources.Values)
         {
-            ExportComplex exportComplex = ProcessFhirComplex(fhirComplex, FhirArtifactClassEnum.Resource);
+            ExportComplex exportComplex = ProcessFhirComplex(fhirComplex, FhirArtifactClassEnum.Resource, valueSetBindings);
 
             resources.Add(exportComplex.ExportClassName, exportComplex);
         }
@@ -220,7 +232,15 @@ public class ModelBuilder
             }
         }
 
-        return new ExportModels(primitiveTypes, complexDataTypes, resources, valueSets, sortedPrimitives, sortedDataTypes, sortedResources);
+        return new ExportModels(
+            primitiveTypes,
+            complexDataTypes,
+            resources,
+            valueSets,
+            valueSetBindings,
+            sortedPrimitives,
+            sortedDataTypes,
+            sortedResources);
     }
 
     /// <summary>Sort primitives.</summary>
@@ -267,7 +287,6 @@ public class ModelBuilder
             tokens.Add(new ExportTokenInfo("FtsIssue", true));
         }
 
-        //tokens.Add(new ExportTokenInfo("I" + primitiveName, true));
         tokens.Add(new ExportTokenInfo(primitiveName + "Args", true));
         tokens.Add(new ExportTokenInfo(primitiveName, false));
 
@@ -341,7 +360,6 @@ public class ModelBuilder
     {
         List<ExportTokenInfo> tokens = new();
 
-        //tokens.Add(new ExportTokenInfo(complex.ExportInterfaceName, true));
         tokens.Add(new ExportTokenInfo(complex.ExportClassName + "Args", true));
         tokens.Add(new ExportTokenInfo(complex.ExportClassName, false));
 
@@ -668,10 +686,12 @@ public class ModelBuilder
     /// <summary>Process the backbone described by fhirComplex.</summary>
     /// <param name="fhirComplex">      The FHIR complex.</param>
     /// <param name="fhirArtifactClass">The FHIR artifact class.</param>
+    /// <param name="valueSetBindings"> The value set bindings.</param>
     /// <returns>An ExportComplex.</returns>
     private ExportComplex ProcessFhirComplex(
         FhirComplex fhirComplex,
-        FhirArtifactClassEnum fhirArtifactClass)
+        FhirArtifactClassEnum fhirArtifactClass,
+        Dictionary<string, List<ValueSetElementBindingInfo>> valueSetBindings)
     {
         HashSet<string> vsExportNames = new();
         List<ExportComplex> backbones = new();
@@ -681,7 +701,7 @@ public class ModelBuilder
             foreach (FhirComplex component in fhirComplex.Components.Values)
             {
                 // use unknown class for backbones to prevent adding DT or Resource specific elements
-                ExportComplex backbone = ProcessFhirComplex(component, FhirArtifactClassEnum.Unknown);
+                ExportComplex backbone = ProcessFhirComplex(component, FhirArtifactClassEnum.Unknown, valueSetBindings);
                 backbones.Add(backbone);
 
                 // promote exported Value Set names so that parents always know about child dependencies
@@ -767,6 +787,24 @@ public class ModelBuilder
                 if (!string.IsNullOrEmpty(referencedValueSetExportName))
                 {
                     vsExportNames.ConditionalAdd(referencedValueSetExportName);
+
+                    if (!valueSetBindings.ContainsKey(referencedValueSetExportName))
+                    {
+                        valueSetBindings.Add(referencedValueSetExportName, new());
+                    }
+
+                    string exportAlias = FhirUtils.ToConvention(
+                        string.Empty,
+                        elementExport.FhirPath,
+                        FhirTypeBase.NamingConvention.PascalCase,
+                        true,
+                        "_",
+                        ReservedWords);
+
+                    valueSetBindings[referencedValueSetExportName].Add(new(
+                        exportAlias,
+                        elementExport.ExportType,
+                        (FhirElement.ElementDefinitionBindingStrength)elementExport.BoundValueSetStrength));
                 }
             }
         }

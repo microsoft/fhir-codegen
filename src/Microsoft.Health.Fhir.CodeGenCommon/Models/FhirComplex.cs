@@ -190,6 +190,9 @@ public class FhirComplex : FhirTypeBase
 
         /// <summary>An enum constant representing the profile option.</summary>
         Profile,
+
+        /// <summary>An enum constant representing the logical model option.</summary>
+        LogicalModel,
     }
 
     /// <summary>Gets the explicit name of this structure, if provided.</summary>

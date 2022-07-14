@@ -38,6 +38,9 @@ public interface IPackageExportable
     /// <summary>Gets a dictionary with the known resources for this version of FHIR.</summary>
     public Dictionary<string, FhirComplex> Resources { get; }
 
+    /// <summary>Gets a dictionary with the known logical models.</summary>
+    public Dictionary<string, FhirComplex> LogicalModels { get; }
+
     /// <summary>Gets the profiles by id dictionary.</summary>
     public Dictionary<string, FhirComplex> Profiles { get; }
 

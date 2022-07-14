@@ -180,6 +180,7 @@ public sealed class TypeScriptSdk : ILanguage
         {
             WriteValueSetCoding(vs);
             WriteValueSetCode(vs);
+            WriteValueSetValidations(vs);
         }
 
         WriteValueSetCodingModule(exports);
@@ -262,6 +263,19 @@ public sealed class TypeScriptSdk : ILanguage
         foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
         {
             sb.WriteLineIndented($"{vs.ExportName}{CodeObjectSuffix}, type {vs.ExportName}{CodeTypeSuffix},");
+
+            if (exports.ValueSetBindingInfoByExportName.ContainsKey(vs.ExportName))
+            {
+                foreach (ModelBuilder.ValueSetElementBindingInfo bindingInfo in exports.ValueSetBindingInfoByExportName[vs.ExportName])
+                {
+                    if (!bindingInfo.ElementExportType.Contains("FhirCode"))
+                    {
+                        continue;
+                    }
+
+                    sb.WriteLineIndented($"{vs.ExportName}{CodeObjectSuffix} as {bindingInfo.ExportAlias}_{bindingInfo.BoundValueSetStrength}_{CodeObjectSuffix}, ");
+                }
+            }
         }
 
         sb.CloseScope();
@@ -294,6 +308,19 @@ public sealed class TypeScriptSdk : ILanguage
         foreach (ModelBuilder.ExportValueSet vs in exports.ValueSetsByExportName.Values)
         {
             sb.WriteLineIndented($"{vs.ExportName}{CodingObjectSuffix}, type {vs.ExportName}{CodingTypeSuffix},");
+
+            if (exports.ValueSetBindingInfoByExportName.ContainsKey(vs.ExportName))
+            {
+                foreach (ModelBuilder.ValueSetElementBindingInfo bindingInfo in exports.ValueSetBindingInfoByExportName[vs.ExportName])
+                {
+                    if (!bindingInfo.ElementExportType.Contains("CodeableConcept"))
+                    {
+                        continue;
+                    }
+
+                    sb.WriteLineIndented($"{vs.ExportName}{CodingObjectSuffix} as {bindingInfo.ExportAlias}_{bindingInfo.BoundValueSetStrength}_{CodingObjectSuffix}, ");
+                }
+            }
         }
 
         sb.CloseScope();
@@ -470,7 +497,7 @@ public sealed class TypeScriptSdk : ILanguage
         sb.OpenScope("function resourceFactory(source:any) : FhirResource|null {");
 
         // switch open
-        sb.OpenScope("switch (source[\"resourceType\"]) {");
+        sb.OpenScope("switch (source['resourceType']) {");
 
         foreach (ModelBuilder.ExportComplex complex in exports.ResourcesByExportName.Values)
         {
@@ -562,8 +589,6 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.WriteLine($"// FHIR ValueSet: {vs.FhirUrl}|{vs.FhirVersion}");
         sb.WriteLine(string.Empty);
-        //sb.WriteLineIndented("import { Coding } from '../fhir.js'");
-        //sb.WriteLineIndented("import { Coding } from '../fhir/Coding.js'");
         sb.WriteLineIndented("import { CodingArgs } from '../fhir/Coding.js'");
 
         // write type
@@ -603,7 +628,6 @@ public sealed class TypeScriptSdk : ILanguage
                 WriteIndentedComment(sb, coding.Code + ": " + coding.Comment);
             }
 
-            //sb.OpenScope($"{coding.ExportName}: new Coding({{");
             sb.OpenScope($"{coding.ExportName}: {{");
 
             if (!string.IsNullOrEmpty(coding.Display))
@@ -614,15 +638,36 @@ public sealed class TypeScriptSdk : ILanguage
             sb.WriteLineIndented($"code: \"{coding.Code}\",");
             sb.WriteLineIndented($"system: \"{coding.System}\",");
 
-            //sb.CloseScope("}),");
             sb.CloseScope("},");
         }
 
         sb.CloseScope("} as const;");
 
-        //sb.WriteLineIndented($"export type {vs.ExportName}{CodingTypeSuffix} = typeof {vs.ExportName}{CodingObjectSuffix};");
-
         WriteFile(sb, Path.Combine(_relativeValueSetDirectory, vs.ExportName + CodingObjectSuffix + ".ts"));
+    }
+
+    /// <summary>Writes a value set validations.</summary>
+    /// <param name="vs">Set the value belongs to.</param>
+    private void WriteValueSetValidations(
+        ModelBuilder.ExportValueSet vs)
+    {
+        ExportStringBuilder sb = new();
+
+        WriteHeader(sb);
+
+        sb.WriteLine($"// FHIR ValueSet Validation: {vs.FhirUrl}|{vs.FhirVersion}");
+
+        sb.WriteLine(string.Empty);
+        WriteIndentedComment(sb, vs.ExportComment);
+        sb.OpenScope($"export const {vs.ExportName}{VsValidationSuffix}: readonly string[] = [");
+
+        foreach (ModelBuilder.ExportValueSetCoding coding in vs.CodingsByExportName.Values)
+        {
+            sb.WriteLineIndented($"\"{coding.Code}\", \"{coding.System}|{coding.Code}\", ");
+        }
+        sb.CloseScope("] as const;");
+
+        WriteFile(sb, Path.Combine(_relativeValueSetDirectory, vs.ExportName + VsValidationSuffix + ".ts"));
     }
 
     /// <summary>Writes a value set enum.</summary>
@@ -1007,6 +1052,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (string valueSetExportName in complex.ReferencedValueSetExportNames)
         {
+#if FALSE // 2022.07.14 - only import validation models now
             WriteIgnoreNonUseLine(sb);
             sb.WriteLineIndented(
                 $"import {{" +
@@ -1014,31 +1060,20 @@ public sealed class TypeScriptSdk : ILanguage
                 $" {valueSetExportName}{CodingTypeSuffix}," +
                 $"}} from '../{_relativeValueSetDirectory}/{valueSetExportName}{CodingObjectSuffix}.js';");
 
+#endif
             WriteIgnoreNonUseLine(sb);
             sb.WriteLineIndented(
                 $"import {{" +
                 $" {valueSetExportName}{CodeObjectSuffix}, " +
                 $" {valueSetExportName}{CodeTypeSuffix} " +
                 $"}} from '../{_relativeValueSetDirectory}/{valueSetExportName}{CodeObjectSuffix}.js';");
+
+            WriteIgnoreNonUseLine(sb);
+            sb.WriteLineIndented(
+                $"import {{" +
+                $" {valueSetExportName}{VsValidationSuffix} " +
+                $"}} from '../{_relativeValueSetDirectory}/{valueSetExportName}{VsValidationSuffix}.js';");
         }
-
-        //if (!complex.ReferencedValueSetExportNames.Contains("IssueType"))
-        //{
-        //    WriteIgnoreNonUseLine(sb);
-        //    sb.WriteLineIndented(
-        //        $"import {{ IssueType{CodeObjectSuffix} }} " +
-        //        $"from '../{_relativeValueSetDirectory}/IssueType{CodeObjectSuffix}.js';");
-        //}
-
-        //if (!complex.ReferencedValueSetExportNames.Contains("IssueSeverity"))
-        //{
-        //    WriteIgnoreNonUseLine(sb);
-        //    sb.WriteLineIndented(
-        //        $"import {{ IssueSeverity{CodeObjectSuffix} }} " +
-        //        $"from '../{_relativeValueSetDirectory}/IssueSeverity{CodeObjectSuffix}.js';");
-        //}
-
-        //BuildInterfaceForComplex(sb, complex);
 
         BuildClassForComplex(sb, complex);
 
@@ -1071,15 +1106,6 @@ public sealed class TypeScriptSdk : ILanguage
             WriteIndentedComment(sb, complex.ExportComment);
         }
 
-        //if (string.IsNullOrEmpty(complex.ExportType))
-        //{
-        //    sb.WriteLineIndented($"export class {complex.ExportClassName} implements {complex.ExportInterfaceName} {{");
-        //}
-        //else
-        //{
-        //    sb.WriteLineIndented($"export class {complex.ExportClassName} extends {complex.ExportType} implements {complex.ExportInterfaceName} {{");
-        //}
-
         if (string.IsNullOrEmpty(complex.ExportType))
         {
             sb.WriteLineIndented($"export class {complex.ExportClassName} {{");
@@ -1109,6 +1135,9 @@ public sealed class TypeScriptSdk : ILanguage
 
         BuildConstructor(sb, complex);
 
+
+
+#if FALSE // 2022.07.14 - moving this to the value-set side to reduce final bundle size
         // add functions to get Value-Set hints for elements with bound value sets
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
@@ -1142,6 +1171,7 @@ public sealed class TypeScriptSdk : ILanguage
                     break;
             }
         }
+#endif
 
         // add model validation function
         BuildModelValidation(sb, complex);
@@ -1311,37 +1341,72 @@ public sealed class TypeScriptSdk : ILanguage
 
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
-            if (!element.IsOptional)
+            string validationFunction = element.IsOptional ? "vOpt" : "vReq";
+
+            if (element.IsArray)
             {
-                AddModelCheckElementRequired(sb, element);
+                validationFunction += "A";      // array
+            }
+            else
+            {
+                validationFunction += "S";      // scalar
             }
 
-            if (element.HasReferencedValueSet)
+            if ((element.HasReferencedValueSet) && (element.BoundValueSetStrength == FhirElement.ElementDefinitionBindingStrength.Required))
             {
-                AddModelCheckReferencedValueSet(sb, element);
+                string bindLiteral = (element.BoundValueSetStrength == null)
+                    ? string.Empty
+                    : element.BoundValueSetStrength.ToString().Substring(0, 1).ToLowerInvariant();
+
+                sb.WriteLineIndented(
+                    $"this.{validationFunction}V(" +
+                    $"'{element.ExportName}'," +
+                    $"expression," +
+                    $"'{element.ValueSetExportName}'," +
+                    $"{element.ValueSetExportName}{VsValidationSuffix}," +
+                    $"'{bindLiteral}'" +
+                    $")");
+            }
+            else
+            {
+                sb.WriteLineIndented(
+                    $"this.{validationFunction}(" +
+                    $"'{element.ExportName}'," +
+                    $"expression" +
+                    $")");
             }
 
-            // recurse into other FHIR types
-            if (element.ExportType.StartsWith("fhir", StringComparison.Ordinal))
-            {
-                if (element.IsArray)
-                {
-                    sb.WriteLineIndented(
-                        $"if (this[\"{element.ExportName}\"])" +
-                        $" {{" +
-                        $" this.{element.ExportName}.forEach((x,i) =>" +
-                        $" {{" +
-                        $" issues.push(...x.doModelValidation(expression+`.{element.ExportName}[${{i}}]`));" +
-                        $" }})" +
-                        $" }}");
-                }
-                else
-                {
-                    sb.WriteLineIndented(
-                        $"if (this[\"{element.ExportName}\"])" +
-                        $" {{ issues.push(...this.{element.ExportName}.doModelValidation(expression+'.{element.ExportName}')); }}");
-                }
-            }
+            //if (!element.IsOptional)
+            //{
+            //    AddModelCheckElementRequired(sb, element);
+            //}
+
+            //if (element.HasReferencedValueSet)
+            //{
+            //    AddModelCheckReferencedValueSet(sb, element);
+            //}
+
+            //// recurse into other FHIR types
+            //if (element.ExportType.StartsWith("fhir", StringComparison.Ordinal))
+            //{
+            //    if (element.IsArray)
+            //    {
+            //        sb.WriteLineIndented(
+            //            $"if (this['{element.ExportName}'])" +
+            //            $" {{" +
+            //            $" this.{element.ExportName}.forEach((x,i) =>" +
+            //            $" {{" +
+            //            $" issues.push(...x.doModelValidation(expression+`.{element.ExportName}[${{i}}]`));" +
+            //            $" }})" +
+            //            $" }}");
+            //    }
+            //    else
+            //    {
+            //        sb.WriteLineIndented(
+            //            $"if (this['{element.ExportName}'])" +
+            //            $" {{ issues.push(...this.{element.ExportName}.doModelValidation(expression+'.{element.ExportName}')); }}");
+            //    }
+            //}
         }
 
         sb.WriteLineIndented("return issues;");
@@ -1431,7 +1496,7 @@ public sealed class TypeScriptSdk : ILanguage
                 {
                     sb.OpenScope($"if (this['{element.ExportName}']) {{");
                     sb.OpenScope($"this.{element.ExportName}.forEach((v) => {{");
-                    sb.OpenScope($"if (!v.hasCodingFromObject({element.ValueSetExportName}{CodingObjectSuffix})) {{");
+                    sb.OpenScope($"if (!v.hasCodingFromValidationObj({element.ValueSetExportName}{VsValidationSuffix})) {{");
                     sb.WriteLineIndented($"issues.push({invalidCode});");
                     sb.CloseScope();
                     sb.CloseScope("});");
@@ -1441,7 +1506,8 @@ public sealed class TypeScriptSdk : ILanguage
                 {
                     sb.OpenScope($"if (this['{element.ExportName}']) {{");
                     sb.OpenScope($"this.{element.ExportName}.forEach((v) => {{");
-                    sb.OpenScope($"if (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(v.value as any)) {{");
+                    //sb.OpenScope($"if (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(v.value as any)) {{");
+                    sb.OpenScope($"if (!{element.ValueSetExportName}{VsValidationSuffix}.includes(v.value as string)) {{");
                     sb.WriteLineIndented($"issues.push({invalidCode});");
                     sb.CloseScope();
                     sb.CloseScope("});");
@@ -1454,7 +1520,7 @@ public sealed class TypeScriptSdk : ILanguage
                 {
                     sb.OpenScope(
                         $"if (this['{element.ExportName}'] &&" +
-                        $" (!this.{element.ExportName}.hasCodingFromObject({element.ValueSetExportName}{CodingObjectSuffix}))" +
+                        $" (!this.{element.ExportName}.hasCodingFromValidationObj({element.ValueSetExportName}{VsValidationSuffix}))" +
                         $") {{");
                     sb.WriteLineIndented($"issues.push({invalidCode});");
                     sb.CloseScope();
@@ -1463,7 +1529,8 @@ public sealed class TypeScriptSdk : ILanguage
                 {
                     sb.OpenScope(
                         $"if (this['{element.ExportName}'] &&" +
-                        $" (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(this.{element.ExportName}.value as any))" +
+                        //$" (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(this.{element.ExportName}.value as any))" +
+                        $" (!{element.ValueSetExportName}{VsValidationSuffix}.includes(this.{element.ExportName}.value as string))" +
                         $") {{");
                     sb.WriteLineIndented($"issues.push({invalidCode});");
                     sb.CloseScope();
