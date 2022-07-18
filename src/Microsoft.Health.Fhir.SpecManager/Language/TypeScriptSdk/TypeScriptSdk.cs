@@ -657,15 +657,43 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.WriteLine($"// FHIR ValueSet Validation: {vs.FhirUrl}|{vs.FhirVersion}");
 
+        List<string> values = vs.CodingsByExportName.Values.Select((val) => val.Code).ToList();
+        values.AddRange(vs.CodingsByExportName.Values.Where((val) => !string.IsNullOrEmpty(val.System)).Select((val) => val.System + "|" + val.Code));
+        values = values.Distinct().ToList();
+        values.Sort();
+
         sb.WriteLine(string.Empty);
         WriteIndentedComment(sb, vs.ExportComment);
         sb.OpenScope($"export const {vs.ExportName}{VsValidationSuffix}: readonly string[] = [");
 
-        foreach (ModelBuilder.ExportValueSetCoding coding in vs.CodingsByExportName.Values)
+        foreach (string val in values)
         {
-            sb.WriteLineIndented($"\"{coding.Code}\", \"{coding.System}|{coding.Code}\", ");
+            sb.WriteLineIndented($"\"{val}\",");
         }
+
         sb.CloseScope("] as const;");
+
+#if false   // 2022.07.15 - the hashes are smaller and faster, but do not gzip as well and yeild larger production file sizes.
+            // leaving this code here in case it is useful in the future.
+        List<ulong> hashes = values.Select((val) => Fnv1a.Hash52_1a_fast(val)).ToList();
+        if (hashes.Count != hashes.Distinct().Count())
+        {
+            throw new Exception("Duplicate hash - cannot continue!");
+        }
+
+        hashes.Sort();
+
+        sb.WriteLine(string.Empty);
+        WriteIndentedComment(sb, vs.ExportComment);
+        sb.OpenScope($"export const {vs.ExportName}{VsValidationSuffix}: readonly number[] = [");
+
+        foreach (ulong hash in hashes)
+        {
+            sb.WriteLineIndented($"0x{hash:X},");
+        }
+
+        sb.CloseScope("] as const;");
+#endif
 
         WriteFile(sb, Path.Combine(_relativeValueSetDirectory, vs.ExportName + VsValidationSuffix + ".ts"));
     }
@@ -1283,8 +1311,8 @@ public sealed class TypeScriptSdk : ILanguage
     {
         // function open
         WriteIndentedComment(sb, "Function to perform basic model validation (e.g., check if required elements are present).");
-        sb.OpenScope("public override doModelValidation(expression:string = ''):fhir.FtsIssue[] {");
-        sb.WriteLineIndented("let issues:fhir.FtsIssue[] = super.doModelValidation(expression);");
+        sb.OpenScope("public override doModelValidation(exp:string = ''):fhir.FtsIssue[] {");
+        sb.WriteLineIndented("let iss:fhir.FtsIssue[] = super.doModelValidation(exp);");
 
         if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
         {
@@ -1304,13 +1332,13 @@ public sealed class TypeScriptSdk : ILanguage
                 sb.OpenScope($"if ((this.value) && (!{primitive.ExportClassName}.{_tsInternalPrefix}regex.test(this.value.toString()))) {{");
             }
 
-            sb.WriteLineIndented($"issues.push({invalidContent});");
+            sb.WriteLineIndented($"iss.push({invalidContent});");
 
             // close value exists
             sb.CloseScope();
         }
 
-        sb.WriteLineIndented("return issues;");
+        sb.WriteLineIndented("return iss;");
 
         // function close
         sb.CloseScope();
@@ -1328,88 +1356,84 @@ public sealed class TypeScriptSdk : ILanguage
 
         if (string.IsNullOrEmpty(complex.ExportType))
         {
-            sb.OpenScope("public doModelValidation(expression:string = ''):fhir.FtsIssue[] {");
-            sb.WriteLineIndented("let issues:fhir.FtsIssue[] = [];");
+            sb.OpenScope("public doModelValidation(exp:string = ''):fhir.FtsIssue[] {");
+            sb.WriteLineIndented("let iss:fhir.FtsIssue[] = [];");
         }
         else
         {
-            sb.OpenScope("public override doModelValidation(expression:string = ''):fhir.FtsIssue[] {");
-            sb.WriteLineIndented("let issues:fhir.FtsIssue[] = super.doModelValidation(expression);");
+            sb.OpenScope("public override doModelValidation(exp:string = ''):fhir.FtsIssue[] {");
+            sb.WriteLineIndented("let iss:fhir.FtsIssue[] = super.doModelValidation(exp);");
         }
 
-        sb.WriteLineIndented($"if (expression === '') {{ expression = '{complex.FhirName}' }}");
+        sb.WriteLineIndented($"if (exp === '') {{ exp = '{complex.FhirName}' }}");
 
         foreach (ModelBuilder.ExportElement element in complex.Elements)
         {
-            string validationFunction = element.IsOptional ? "vOpt" : "vReq";
+            // *v*alidate *O*ptional or *R*equired
+            string validationFunction = element.IsOptional ? "vO" : "vR";
+
+            if (element.PreventExtensions)
+            {
+                validationFunction += "P";      // *P*rimitive
+            }
 
             if (element.IsArray)
             {
-                validationFunction += "A";      // array
+                validationFunction += "A";      // *A*rray
             }
             else
             {
-                validationFunction += "S";      // scalar
+                validationFunction += "S";      // *S*calar
             }
 
-            if ((element.HasReferencedValueSet) && (element.BoundValueSetStrength == FhirElement.ElementDefinitionBindingStrength.Required))
+            if (element.PreventExtensions)
+            {
+                // only check required primitives - optional ones have nothing to check
+                if (!element.IsOptional)
+                {
+                    sb.WriteLineIndented(
+                        $"iss.push(...this.{validationFunction}(" +
+                        $"'{element.ExportName}'," +
+                        $"exp" +
+                        $"));");
+                }
+            }
+            else if (element.HasReferencedValueSet &&
+                     (element.BoundValueSetStrength == FhirElement.ElementDefinitionBindingStrength.Required))
             {
                 string bindLiteral = (element.BoundValueSetStrength == null)
                     ? string.Empty
                     : element.BoundValueSetStrength.ToString().Substring(0, 1).ToLowerInvariant();
 
+                // append *V*alueset marker to function
                 sb.WriteLineIndented(
-                    $"this.{validationFunction}V(" +
+                    $"iss.push(...this.{validationFunction}V(" +
                     $"'{element.ExportName}'," +
-                    $"expression," +
+                    $"exp," +
                     $"'{element.ValueSetExportName}'," +
                     $"{element.ValueSetExportName}{VsValidationSuffix}," +
                     $"'{bindLiteral}'" +
-                    $")");
+                    $"));");
+            }
+            else if (element.IsPrimitive)
+            {
+                sb.WriteLineIndented(
+                    $"iss.push(...this.{validationFunction}(" +
+                    $"'{element.ExportName}'," +
+                    $"exp" +
+                    $"));");
             }
             else
             {
                 sb.WriteLineIndented(
-                    $"this.{validationFunction}(" +
+                    $"iss.push(...this.{validationFunction}(" +
                     $"'{element.ExportName}'," +
-                    $"expression" +
-                    $")");
+                    $"exp" +
+                    $"));");
             }
-
-            //if (!element.IsOptional)
-            //{
-            //    AddModelCheckElementRequired(sb, element);
-            //}
-
-            //if (element.HasReferencedValueSet)
-            //{
-            //    AddModelCheckReferencedValueSet(sb, element);
-            //}
-
-            //// recurse into other FHIR types
-            //if (element.ExportType.StartsWith("fhir", StringComparison.Ordinal))
-            //{
-            //    if (element.IsArray)
-            //    {
-            //        sb.WriteLineIndented(
-            //            $"if (this['{element.ExportName}'])" +
-            //            $" {{" +
-            //            $" this.{element.ExportName}.forEach((x,i) =>" +
-            //            $" {{" +
-            //            $" issues.push(...x.doModelValidation(expression+`.{element.ExportName}[${{i}}]`));" +
-            //            $" }})" +
-            //            $" }}");
-            //    }
-            //    else
-            //    {
-            //        sb.WriteLineIndented(
-            //            $"if (this['{element.ExportName}'])" +
-            //            $" {{ issues.push(...this.{element.ExportName}.doModelValidation(expression+'.{element.ExportName}')); }}");
-            //    }
-            //}
         }
 
-        sb.WriteLineIndented("return issues;");
+        sb.WriteLineIndented("return iss;");
 
         // function close
         sb.CloseScope();
@@ -1456,17 +1480,17 @@ public sealed class TypeScriptSdk : ILanguage
         if (element.IsArray)
         {
             sb.OpenScope($"if (!this['{element.ExportName}']) {{");
-            sb.WriteLineIndented($"issues.push({missing});");
+            sb.WriteLineIndented($"iss.push({missing});");
             sb.ReopenScope($"}} else if (!Array.isArray(this.{element.ExportName})) {{");
-            sb.WriteLineIndented($"issues.push({notArray});");
+            sb.WriteLineIndented($"iss.push({notArray});");
             sb.ReopenScope($"}} else if (this.{element.ExportName}.length === 0) {{");
-            sb.WriteLineIndented($"issues.push({missing});");
+            sb.WriteLineIndented($"iss.push({missing});");
             sb.CloseScope();
         }
         else
         {
             sb.OpenScope($"if (!this['{element.ExportName}']) {{");
-            sb.WriteLineIndented($"issues.push({missing});");
+            sb.WriteLineIndented($"iss.push({missing});");
             sb.CloseScope();
         }
     }
@@ -1497,7 +1521,7 @@ public sealed class TypeScriptSdk : ILanguage
                     sb.OpenScope($"if (this['{element.ExportName}']) {{");
                     sb.OpenScope($"this.{element.ExportName}.forEach((v) => {{");
                     sb.OpenScope($"if (!v.hasCodingFromValidationObj({element.ValueSetExportName}{VsValidationSuffix})) {{");
-                    sb.WriteLineIndented($"issues.push({invalidCode});");
+                    sb.WriteLineIndented($"iss.push({invalidCode});");
                     sb.CloseScope();
                     sb.CloseScope("});");
                     sb.CloseScope();
@@ -1508,7 +1532,7 @@ public sealed class TypeScriptSdk : ILanguage
                     sb.OpenScope($"this.{element.ExportName}.forEach((v) => {{");
                     //sb.OpenScope($"if (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(v.value as any)) {{");
                     sb.OpenScope($"if (!{element.ValueSetExportName}{VsValidationSuffix}.includes(v.value as string)) {{");
-                    sb.WriteLineIndented($"issues.push({invalidCode});");
+                    sb.WriteLineIndented($"iss.push({invalidCode});");
                     sb.CloseScope();
                     sb.CloseScope("});");
                     sb.CloseScope();
@@ -1522,7 +1546,7 @@ public sealed class TypeScriptSdk : ILanguage
                         $"if (this['{element.ExportName}'] &&" +
                         $" (!this.{element.ExportName}.hasCodingFromValidationObj({element.ValueSetExportName}{VsValidationSuffix}))" +
                         $") {{");
-                    sb.WriteLineIndented($"issues.push({invalidCode});");
+                    sb.WriteLineIndented($"iss.push({invalidCode});");
                     sb.CloseScope();
                 }
                 else
@@ -1532,7 +1556,7 @@ public sealed class TypeScriptSdk : ILanguage
                         //$" (!Object.values({element.ValueSetExportName}{CodeObjectSuffix}).includes(this.{element.ExportName}.value as any))" +
                         $" (!{element.ValueSetExportName}{VsValidationSuffix}.includes(this.{element.ExportName}.value as string))" +
                         $") {{");
-                    sb.WriteLineIndented($"issues.push({invalidCode});");
+                    sb.WriteLineIndented($"iss.push({invalidCode});");
                     sb.CloseScope();
                 }
             }
