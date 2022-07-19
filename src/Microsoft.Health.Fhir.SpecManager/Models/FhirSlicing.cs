@@ -67,7 +67,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _rules = new Dictionary<string, FhirSliceDiscriminatorRule>();
             foreach (FhirSliceDiscriminatorRule discriminator in discriminatorRules)
             {
-                _rules.Add(discriminator.Path, discriminator);
+                _rules.Add(string.Concat(discriminator.DiscriminatorTypeName, "+", discriminator.Path), discriminator);
             }
 
             _slices = new List<FhirComplex>();
