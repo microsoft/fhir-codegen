@@ -432,17 +432,17 @@ public class FhirCacheService : IDisposable
     {
         try
         {
-            // make sure our destination directory exists
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-
             using (Stream fileStream = _httpClient.GetStreamAsync(uri).Result)
             using (Stream gzipStream = new ICSharpCode.SharpZipLib.GZip.GZipInputStream(fileStream))
             using (ICSharpCode.SharpZipLib.Tar.TarArchive tar =
                     ICSharpCode.SharpZipLib.Tar.TarArchive.CreateInputTarArchive(gzipStream, Encoding.ASCII))
             {
+                // make sure our destination directory exists
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
                 // extract
                 tar.ExtractContents(directory, false);
             }

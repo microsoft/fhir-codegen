@@ -32,7 +32,7 @@
         },
         "r5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated -p hl7.fhir.r5.core#current --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 current --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "localInfo": {

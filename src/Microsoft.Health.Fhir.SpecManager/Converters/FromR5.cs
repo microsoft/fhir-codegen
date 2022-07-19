@@ -1155,7 +1155,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 {
                     if (!TryGetTypeFromElements(
                             sd.Name,
-                            sd.Differential.Element,
+                            sd.Snapshot.Element,
                             out Dictionary<string, FhirElementType> baseTypes,
                             out string regex))
                     {

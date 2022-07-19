@@ -396,20 +396,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("Indent = true,");
                 _writer.WriteLineIndented("OmitXmlDeclaration = false,");
                 _writer.WriteLineIndented("NewLineOnAttributes = true,");
-                _writer.CloseScope();
+                _writer.CloseScope("};");
                 _writer.WriteLine();
                 _writer.WriteLineIndented("_compactFormat = new XmlWriterSettings()");
                 _writer.OpenScope();
                 _writer.WriteLineIndented("Indent = true,");
                 _writer.WriteLineIndented("OmitXmlDeclaration = false,");
                 _writer.WriteLineIndented("NewLineOnAttributes = true,");
-                _writer.CloseScope();
+                _writer.CloseScope("};");
                 _writer.WriteLine();
                 _writer.WriteLineIndented("_readerSettings = new XmlReaderSettings()");
                 _writer.OpenScope();
                 _writer.WriteLineIndented("CheckCharacters = true,");
                 _writer.WriteLineIndented("DtdProcessing = DtdProcessing.Ignore,");
-                _writer.CloseScope();
+                _writer.CloseScope("};");
 
                 _writer.CloseScope();
                 _writer.WriteLine();
