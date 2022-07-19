@@ -65,7 +65,7 @@ public class FhirSlicing
         _rules = new();
         foreach (FhirSliceDiscriminatorRule discriminator in discriminatorRules)
         {
-            _rules.Add(discriminator.Path, discriminator);
+            _rules.Add(string.Concat(discriminator.DiscriminatorTypeName, "+", discriminator.Path), discriminator);
         }
 
         _slices = new();
