@@ -356,7 +356,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             // create a filename for writing (single file for now)
-            string filename = Path.Combine(exportDirectory, $"OpenApi_R{info.MajorVersion}_v{_openApiVersion}.json");
+            string filename = Path.Combine(exportDirectory, $"OpenApi_{info.FhirSequence}_v{_openApiVersion}.json");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (StreamWriter sw = new StreamWriter(stream))
@@ -416,7 +416,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>A string.</returns>
         private string BuildTypeNameFromPath(string type)
         {
-            if (_info.MajorVersion == 2)
+            if (_info.FhirSequence == FhirPackageCommon.FhirSequenceEnum.DSTU2)
             {
                 switch (type)
                 {

@@ -1,0 +1,78 @@
+﻿@inherits LayoutComponentBase
+
+@using FhirCodeGenBlazor.Models
+@implements INavTracker
+
+<PageTitle>FhirCodeGenBlazor</PageTitle>
+
+<div class="page">
+    <div id="collapsableNav" class="@navMenuCssClass">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="container-fluid ps-3 bg-dark">
+            <div class="row">
+                <div class="col text-start text-light mt-2">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            @foreach ((BreadcrumPageAndLink crumb, int index) in pagesAndLinks.Select((value, i) => (value, i)))
+                            {
+                                if (index == (pagesAndLinks.Count - 1))
+                                {
+                                    <li class="breadcrumb-item active" aria-current="page">@crumb.Page</li>
+                                }
+                                else
+                                {
+                                    <li class="breadcrumb-item"><a href="@crumb.Link">@crumb.Page</a></li>
+                                }
+                            }
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-1 text-end mt-2">
+                    <button title="Navigation menu" class="text-end navbar-toggler text-light" @onclick="() => ToggleNavMenu()">
+                        <span class="oi oi-menu"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <CascadingValue Value="this">
+            <article class="content px-4">
+                @Body
+            </article>
+        </CascadingValue>
+    </main>
+</div>
+
+@code {
+    private readonly record struct BreadcrumPageAndLink(string Page, string Link);
+
+    private List<BreadcrumPageAndLink> pagesAndLinks = new() { new("FHIR Cache", "") };
+
+    private bool collapseNavMenu = true;
+
+    private string navMenuCssClass => collapseNavMenu ? "sidebar collapse-horizontal collapse" : "sidebar collapse-horizontal";
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    /// <summary>Notifies a navigation.</summary>
+    /// <param name="page"> The page.</param>
+    /// <param name="link"> The link.</param>
+    /// <param name="depth">The depth.</param>
+    public void NotifyNav(string page, string link, int depth)
+    {
+        if (pagesAndLinks.Count > depth)
+        {
+            pagesAndLinks.RemoveRange(depth, pagesAndLinks.Count - depth);
+        }
+
+        pagesAndLinks.Add(new(page, link));
+
+        StateHasChanged();
+    }
+}

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29728.190
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DEDEA68B-9432-40E9-BB9E-84013AD677E0}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,10 +18,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen-cli", "src\fhir-codegen-cli\fhir-codegen-cli.csproj", "{69C02221-EEE0-43B6-9EB6-08E788C464AB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DF88E211-E60F-45B5-BA70-6FAC951157CF} = {DF88E211-E60F-45B5-BA70-6FAC951157CF}
+		{F2A5A856-D4C3-4750-8E66-234D7BB0EE7C} = {F2A5A856-D4C3-4750-8E66-234D7BB0EE7C}
+		{AD55CA8D-18C3-41CE-8ACD-D1ABA1429B39} = {AD55CA8D-18C3-41CE-8ACD-D1ABA1429B39}
+		{0BC83E95-1CC0-4F06-AC2D-2FB90476FAFA} = {0BC83E95-1CC0-4F06-AC2D-2FB90476FAFA}
+		{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29} = {3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.SpecManager", "src\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj", "{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen-test-cli", "src\fhir-codegen-test-cli\fhir-codegen-test-cli.csproj", "{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhirCsR2", "src\fhirCsR2\fhirCsR2.csproj", "{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhirCsR3", "src\fhirCsR3\fhirCsR3.csproj", "{0BC83E95-1CC0-4F06-AC2D-2FB90476FAFA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhirCsR4", "src\fhirCsR4\fhirCsR4.csproj", "{AD55CA8D-18C3-41CE-8ACD-D1ABA1429B39}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhirCsR4B", "src\fhirCsR4B\fhirCsR4B.csproj", "{DF88E211-E60F-45B5-BA70-6FAC951157CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhirCsR5", "src\fhirCsR5\fhirCsR5.csproj", "{F2A5A856-D4C3-4750-8E66-234D7BB0EE7C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeGenCommon", "src\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj", "{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FhirCodeGenBlazor", "src\FhirCodeGenBlazor\FhirCodeGenBlazor.csproj", "{F91764FD-EE86-4FBC-951F-819361ABCA4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +62,34 @@ Global
 		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BC83E95-1CC0-4F06-AC2D-2FB90476FAFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BC83E95-1CC0-4F06-AC2D-2FB90476FAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BC83E95-1CC0-4F06-AC2D-2FB90476FAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BC83E95-1CC0-4F06-AC2D-2FB90476FAFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD55CA8D-18C3-41CE-8ACD-D1ABA1429B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD55CA8D-18C3-41CE-8ACD-D1ABA1429B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD55CA8D-18C3-41CE-8ACD-D1ABA1429B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD55CA8D-18C3-41CE-8ACD-D1ABA1429B39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF88E211-E60F-45B5-BA70-6FAC951157CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF88E211-E60F-45B5-BA70-6FAC951157CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF88E211-E60F-45B5-BA70-6FAC951157CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF88E211-E60F-45B5-BA70-6FAC951157CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A5A856-D4C3-4750-8E66-234D7BB0EE7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A5A856-D4C3-4750-8E66-234D7BB0EE7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A5A856-D4C3-4750-8E66-234D7BB0EE7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A5A856-D4C3-4750-8E66-234D7BB0EE7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

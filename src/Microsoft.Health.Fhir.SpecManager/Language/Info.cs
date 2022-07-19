@@ -119,7 +119,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _options = options;
 
             // create a filename for writing (single file for now)
-            string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.txt");
+            string filename = Path.Combine(exportDirectory, $"Info_{info.FhirSequence}.txt");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -319,8 +319,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string experimental = complex.IsExperimental ? " (experimental)" : string.Empty;
 
                 _writer.WriteLine($"- {complex.Name}: {complex.BaseTypeName}{experimental}");
+
+                if (complex.RootElement != null)
+                {
+                    WriteElement(complex, complex.RootElement, true);
+                }
+
                 _writer.IncreaseIndent();
                 indented = true;
+            }
+            else if (complex.RootElement != null)
+            {
+                WriteElement(complex, complex.RootElement, true);
             }
 
             // write elements
@@ -453,11 +463,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes an element.</summary>
-        /// <param name="complex">The complex.</param>
-        /// <param name="element">The element.</param>
+        /// <param name="complex">      The complex.</param>
+        /// <param name="element">      The element.</param>
+        /// <param name="writeAsRootElementInfo">(Optional) True if is root element, false if not.</param>
         private void WriteElement(
             FhirComplex complex,
-            FhirElement element)
+            FhirElement element,
+            bool writeAsRootElementInfo = false)
         {
             string propertyType = string.Empty;
 
@@ -489,11 +501,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 fiveWs = " (W5: " + element.FiveWs + ")";
             }
 
-            _writer.WriteLineIndented(
-                $"-" +
-                $" {element.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}[{element.FhirCardinality}]:" +
-                $" {propertyType}" +
-                $"{fiveWs}");
+            if (writeAsRootElementInfo)
+            {
+                _writer.WriteLineIndented(
+                    $"  ^{element.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}[{element.FhirCardinality}]:" +
+                    $" {propertyType}" +
+                    $"{fiveWs}");
+            }
+            else
+            {
+                _writer.WriteLineIndented(
+                    $"-" +
+                    $" {element.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}[{element.FhirCardinality}]:" +
+                    $" {propertyType}" +
+                    $"{fiveWs}");
+            }
 
             _writer.IncreaseIndent();
 
@@ -521,20 +543,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"{{{codes}}}");
             }
 
-            // either step into backbone definition OR extensions, don't write both
-            if (complex.Components.ContainsKey(element.Path))
+            if (!writeAsRootElementInfo)
             {
-                WriteComplex(complex.Components[element.Path]);
-            }
-            else if (_info.ExtensionsByPath.ContainsKey(element.Path))
-            {
-                WriteExtensions(_info.ExtensionsByPath[element.Path].Values);
-            }
+                // either step into backbone definition OR extensions, don't write both
+                if (complex.Components.ContainsKey(element.Path))
+                {
+                    WriteComplex(complex.Components[element.Path]);
+                }
+                else if (_info.ExtensionsByPath.ContainsKey(element.Path))
+                {
+                    WriteExtensions(_info.ExtensionsByPath[element.Path].Values);
+                }
 
-            // check for slicing information
-            if (element.Slicing != null)
-            {
-                WriteSlicings(element.Slicing.Values);
+                // check for slicing information
+                if (element.Slicing != null)
+                {
+                    WriteSlicings(element.Slicing.Values);
+                }
             }
 
             _writer.DecreaseIndent();

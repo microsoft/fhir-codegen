@@ -1,23 +1,13 @@
-﻿// -------------------------------------------------------------------------------------------------
-// <copyright file="FromR4.cs" company="Microsoft Corporation">
+﻿// <copyright file="FromR4.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-// -------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
-using Newtonsoft.Json;
-using fhir_4 = fhirCsR4.Models;
-
-#if CAKE        // other versions of loaders
-using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
-using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4.Models;
-#endif
+using fhirModels = fhirCsR4.Models;
+using fhirSerialization = fhirCsR4.Serialization;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
@@ -42,7 +32,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// </summary>
         public FromR4()
         {
-            // _jsonConverter = new fhir_4.ResourceConverter();
+            // _jsonConverter = new fhirModels.ResourceConverter();
             _errors = new List<string>();
             _warnings = new List<string>();
         }
@@ -88,8 +78,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="vs">             The vs.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private void ProcessValueSet(
-            fhir_4.ValueSet vs,
-            FhirVersionInfo fhirVersionInfo)
+            fhirModels.ValueSet vs,
+            IPackageImportable fhirVersionInfo)
         {
             if (string.IsNullOrEmpty(vs.Status))
             {
@@ -118,7 +108,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 includes = new List<FhirValueSetComposition>();
 
-                foreach (fhir_4.ValueSetComposeInclude compose in vs.Compose.Include)
+                foreach (fhirModels.ValueSetComposeInclude compose in vs.Compose.Include)
                 {
                     includes.Add(BuildComposition(compose));
                 }
@@ -130,7 +120,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 excludes = new List<FhirValueSetComposition>();
 
-                foreach (fhir_4.ValueSetComposeInclude compose in vs.Compose.Exclude)
+                foreach (fhirModels.ValueSetComposeInclude compose in vs.Compose.Exclude)
                 {
                     excludes.Add(BuildComposition(compose));
                 }
@@ -144,7 +134,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 {
                     parameters = new Dictionary<string, dynamic>();
 
-                    foreach (fhir_4.ValueSetExpansionParameter param in vs.Expansion.Parameter)
+                    foreach (fhirModels.ValueSetExpansionParameter param in vs.Expansion.Parameter)
                     {
                         if (parameters.ContainsKey(param.Name))
                         {
@@ -199,7 +189,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 if ((vs.Expansion.Contains != null) && (vs.Expansion.Contains.Count > 0))
                 {
-                    foreach (fhir_4.ValueSetExpansionContains contains in vs.Expansion.Contains)
+                    foreach (fhirModels.ValueSetExpansionContains contains in vs.Expansion.Contains)
                     {
                         AddContains(ref expansionContains, contains);
                     }
@@ -223,7 +213,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 vs.Version = "0";
                 _warnings.Add($"ValueSet {vs.Name} ({vs.Id}): No Version present");
-                //throw new Exception($"Cannot index ValueSet: {vs.Url} version: {vs.Version}");
             }
 
             FhirValueSet valueSet = new FhirValueSet(
@@ -240,12 +229,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             // add our code system
             fhirVersionInfo.AddValueSet(valueSet);
-
-            if ((valueSet.Expansion == null) &&
-                (!IsExpandable(includes)))
-            {
-                _warnings.Add($"ValueSet {vs.Name} ({vs.Id}): Unexpandable Value Set in core specification!");
-            }
         }
 
         /// <summary>Query if 'includes' is expandable.</summary>
@@ -286,7 +269,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Adds the contains to 'ec'.</summary>
         /// <param name="contains">[in,out] The contains.</param>
         /// <param name="ec">      The ec.</param>
-        private void AddContains(ref List<FhirConcept> contains, fhir_4.ValueSetExpansionContains ec)
+        private void AddContains(ref List<FhirConcept> contains, fhirModels.ValueSetExpansionContains ec)
         {
             if (contains == null)
             {
@@ -308,7 +291,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if ((ec.Contains != null) && (ec.Contains.Count > 0))
             {
-                foreach (fhir_4.ValueSetExpansionContains subContains in ec.Contains)
+                foreach (fhirModels.ValueSetExpansionContains subContains in ec.Contains)
                 {
                     AddContains(ref contains, subContains);
                 }
@@ -318,7 +301,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Builds a composition.</summary>
         /// <param name="compose">The compose.</param>
         /// <returns>A FhirValueSetComposition.</returns>
-        private static FhirValueSetComposition BuildComposition(fhir_4.ValueSetComposeInclude compose)
+        private static FhirValueSetComposition BuildComposition(fhirModels.ValueSetComposeInclude compose)
         {
             if (compose == null)
             {
@@ -333,7 +316,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 concepts = new List<FhirConcept>();
 
-                foreach (fhir_4.ValueSetComposeIncludeConcept concept in compose.Concept)
+                foreach (fhirModels.ValueSetComposeIncludeConcept concept in compose.Concept)
                 {
                     concepts.Add(new FhirConcept(
                         compose.System,
@@ -346,7 +329,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 filters = new List<FhirValueSetFilter>();
 
-                foreach (fhir_4.ValueSetComposeIncludeFilter filter in compose.Filter)
+                foreach (fhirModels.ValueSetComposeIncludeFilter filter in compose.Filter)
                 {
                     filters.Add(new FhirValueSetFilter(
                         filter.Property,
@@ -382,8 +365,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="cs">             The create struct.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private void ProcessCodeSystem(
-            fhir_4.CodeSystem cs,
-            FhirVersionInfo fhirVersionInfo)
+            fhirModels.CodeSystem cs,
+            IPackageImportable fhirVersionInfo)
         {
             // TODO: Patch for R4B
             if (string.IsNullOrEmpty(cs.Status))
@@ -398,12 +381,50 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
+            Dictionary<string, FhirCodeSystem.FilterDefinition> filters = new();
+
+            if (cs.Filter != null)
+            {
+                foreach (fhirModels.CodeSystemFilter filter in cs.Filter)
+                {
+                    filters.Add(
+                        filter.Code,
+                        new(
+                            filter.Code,
+                            filter.Description,
+                            filter.Operator,
+                            filter.Value));
+                }
+            }
+
+            Dictionary<string, FhirCodeSystem.PropertyDefinition> properties = new();
+
+            if (cs.Property != null)
+            {
+                foreach (fhirModels.CodeSystemProperty prop in cs.Property)
+                {
+                    if (properties.ContainsKey(prop.Code))
+                    {
+                        _warnings.Add($"CodeSystem {cs.Name} ({cs.Id}): Duplicate proprety found: {prop.Code}");
+                        continue;
+                    }
+
+                    properties.Add(
+                        prop.Code,
+                        new(
+                            prop.Code,
+                            prop.Uri,
+                            prop.Description,
+                            FhirCodeSystem.PropertyTypeFromValue(prop.Type)));
+                }
+            }
+
             Dictionary<string, FhirConceptTreeNode> nodeLookup = new Dictionary<string, FhirConceptTreeNode>();
             FhirConceptTreeNode root = new FhirConceptTreeNode(null, null);
 
             if (cs.Concept != null)
             {
-                AddConceptTree(cs.Url, cs.Id, cs.Concept, ref root, ref nodeLookup);
+                AddConceptTree(cs.Url, cs.Id, cs.Concept, root, nodeLookup, properties);
             }
 
             FhirCodeSystem codeSystem = new FhirCodeSystem(
@@ -416,24 +437,123 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 cs.Description,
                 cs.Content,
                 root,
-                nodeLookup);
+                nodeLookup,
+                filters,
+                properties);
 
             // add our code system
             fhirVersionInfo.AddCodeSystem(codeSystem);
         }
 
+        /// <summary>Attempts to build internal concept from FHIR.</summary>
+        /// <param name="codeSystemUrl">      URL of the code system.</param>
+        /// <param name="codeSystemId">       Id of the code system.</param>
+        /// <param name="concept">            The concept.</param>
+        /// <param name="propertyDefinitions">The property definitions.</param>
+        /// <param name="fhirConcept">        [out] The FHIR concept.</param>
+        /// <param name="nodeLookup">         (Optional) The node lookup.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private bool TryBuildInternalConceptFromFhir(
+            string codeSystemUrl,
+            string codeSystemId,
+            fhirModels.CodeSystemConcept concept,
+            Dictionary<string, FhirCodeSystem.PropertyDefinition> propertyDefinitions,
+            out FhirConcept fhirConcept,
+            Dictionary<string, FhirConceptTreeNode> nodeLookup = null)
+        {
+            if (string.IsNullOrEmpty(concept.Code))
+            {
+                fhirConcept = null;
+                return false;
+            }
+
+            if ((nodeLookup != null) &&
+                nodeLookup.ContainsKey(concept.Code))
+            {
+                fhirConcept = null;
+                return false;
+            }
+
+            fhirConcept = new FhirConcept(
+                codeSystemUrl,
+                concept.Code,
+                concept.Display,
+                string.Empty,
+                concept.Definition,
+                codeSystemId);
+
+            if (concept.Property != null)
+            {
+                foreach (fhirModels.CodeSystemConceptProperty prop in concept.Property)
+                {
+                    if (string.IsNullOrEmpty(prop.Code) ||
+                        (!propertyDefinitions.ContainsKey(prop.Code)))
+                    {
+                        continue;
+                    }
+
+                    if ((prop.Code == "status") && (prop.ValueCode == "deprecated"))
+                    {
+                        fhirConcept = null;
+                        return false;
+                    }
+
+                    switch (propertyDefinitions[prop.Code].PropType)
+                    {
+                        case FhirCodeSystem.PropertyTypeEnum.Code:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueCode, prop.ValueCode);
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.Coding:
+                            fhirConcept.AddProperty(
+                                prop.Code,
+                                prop.ValueCoding,
+                                FhirConcept.GetCanonical(
+                                    prop.ValueCoding.System,
+                                    prop.ValueCoding.Code,
+                                    prop.ValueCoding.Version));
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.String:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueString, prop.ValueString);
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.Integer:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueInteger, prop.ValueInteger?.ToString() ?? string.Empty);
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.Boolean:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueBoolean, prop.ValueBoolean?.ToString() ?? string.Empty);
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.DateTime:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueDateTime, prop.ValueDateTime);
+                            break;
+
+                        case FhirCodeSystem.PropertyTypeEnum.Decimal:
+                            fhirConcept.AddProperty(prop.Code, prop.ValueDecimal, prop.ValueDecimal?.ToString() ?? string.Empty);
+                            break;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         /// <summary>Adds a concept tree to 'concepts'.</summary>
-        /// <param name="codeSystemUrl">URL of the code system.</param>
-        /// <param name="codeSystemId"> Id of the code system.</param>
-        /// <param name="concepts">     The concept.</param>
-        /// <param name="parent">       [in,out] The parent.</param>
-        /// <param name="nodeLookup">   [in,out] The node lookup.</param>
+        /// <param name="codeSystemUrl">      URL of the code system.</param>
+        /// <param name="codeSystemId">       Id of the code system.</param>
+        /// <param name="concepts">           The concept.</param>
+        /// <param name="parent">             The parent.</param>
+        /// <param name="nodeLookup">         The node lookup.</param>
+        /// <param name="propertyDefinitions">The property definitions.</param>
         private void AddConceptTree(
             string codeSystemUrl,
             string codeSystemId,
-            List<fhir_4.CodeSystemConcept> concepts,
-            ref FhirConceptTreeNode parent,
-            ref Dictionary<string, FhirConceptTreeNode> nodeLookup)
+            List<fhirModels.CodeSystemConcept> concepts,
+            FhirConceptTreeNode parent,
+            Dictionary<string, FhirConceptTreeNode> nodeLookup,
+            Dictionary<string, FhirCodeSystem.PropertyDefinition> propertyDefinitions)
         {
             if ((concepts == null) ||
                 (concepts.Count == 0) ||
@@ -442,63 +562,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            List<KeyValuePair<string, string>> properties = new List<KeyValuePair<string, string>>();
-
-            foreach (fhir_4.CodeSystemConcept concept in concepts)
+            foreach (fhirModels.CodeSystemConcept concept in concepts)
             {
-                if (concept.Property != null)
-                {
-                    bool deprecated = false;
-                    foreach (fhir_4.CodeSystemConceptProperty prop in concept.Property)
-                    {
-                        if (string.IsNullOrEmpty(prop.Code))
-                        {
-                            continue;
-                        }
-
-                        if ((prop.Code == "status") && (prop.ValueCode == "deprecated"))
-                        {
-                            deprecated = true;
-                            break;
-                        }
-
-                        if (!string.IsNullOrEmpty(prop.ValueCode))
-                        {
-                            properties.Add(new KeyValuePair<string, string>(prop.Code, prop.ValueCode));
-                        }
-                        else if (!string.IsNullOrEmpty(prop.ValueString))
-                        {
-                            properties.Add(new KeyValuePair<string, string>(prop.Code, prop.ValueString));
-                        }
-                    }
-
-                    if (deprecated)
-                    {
-                        continue;
-                    }
-                }
-
-                if (string.IsNullOrEmpty(concept.Code) || nodeLookup.ContainsKey(concept.Code))
-                {
-                    continue;
-                }
-
-                FhirConceptTreeNode node = parent.AddChild(
-                    new FhirConcept(
+                if (TryBuildInternalConceptFromFhir(
                         codeSystemUrl,
-                        concept.Code,
-                        concept.Display,
-                        string.Empty,
-                        concept.Definition,
                         codeSystemId,
-                        properties));
-
-                if (concept.Concept != null)
+                        concept,
+                        propertyDefinitions,
+                        out FhirConcept fhirConcept,
+                        nodeLookup))
                 {
-                    AddConceptTree(codeSystemUrl, codeSystemId, concept.Concept, ref node, ref nodeLookup);
-                }
+                    FhirConceptTreeNode node = parent.AddChild(fhirConcept);
 
-                nodeLookup.Add(concept.Code, node);
+                    if (concept.Concept != null)
+                    {
+                        AddConceptTree(codeSystemUrl, codeSystemId, concept.Concept, node, nodeLookup, propertyDefinitions);
+                    }
+
+                    nodeLookup.Add(concept.Code, node);
+                }
             }
         }
 
@@ -506,8 +588,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="op">             The operation.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private void ProcessOperation(
-            fhir_4.OperationDefinition op,
-            FhirVersionInfo fhirVersionInfo)
+            fhirModels.OperationDefinition op,
+            IPackageImportable fhirVersionInfo)
         {
             // ignore retired
             if (op.Status.Equals("retired", StringComparison.Ordinal))
@@ -519,7 +601,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if (op.Parameter != null)
             {
-                foreach (fhir_4.OperationDefinitionParameter opParam in op.Parameter)
+                foreach (fhirModels.OperationDefinitionParameter opParam in op.Parameter)
                 {
                     parameters.Add(new FhirParameter(
                         opParam.Name,
@@ -556,8 +638,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="sp">             The search parameter.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private void ProcessSearchParam(
-            fhir_4.SearchParameter sp,
-            FhirVersionInfo fhirVersionInfo)
+            fhirModels.SearchParameter sp,
+            IPackageImportable fhirVersionInfo)
         {
             // ignore retired
             if (sp.Status.Equals("retired", StringComparison.Ordinal))
@@ -616,8 +698,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="sd">             The structure definition we are parsing.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private void ProcessStructureDef(
-            fhir_4.StructureDefinition sd,
-            FhirVersionInfo fhirVersionInfo)
+            fhirModels.StructureDefinition sd,
+            IPackageImportable fhirVersionInfo)
         {
             // ignore retired
             if (sd.Status == "retired")
@@ -638,16 +720,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     {
                         if (sd.Type == "Extension")
                         {
-                            ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
+                            ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Extension);
                         }
                         else
                         {
-                            ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Profile);
+                            ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Profile);
                         }
                     }
                     else
                     {
-                        ProcessComplex(sd, fhirVersionInfo, sd.Kind == "complex-type" ? FhirComplex.FhirComplexType.DataType : FhirComplex.FhirComplexType.Resource);
+                        ProcessComplex(
+                            sd,
+                            fhirVersionInfo,
+                            sd.Kind == "complex-type" ? FhirArtifactClassEnum.ComplexType : FhirArtifactClassEnum.Resource);
                     }
 
                     break;
@@ -658,8 +743,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="sd">             The structure definition.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private static void ProcessDataTypePrimitive(
-            fhir_4.StructureDefinition sd,
-            FhirVersionInfo fhirVersionInfo)
+            fhirModels.StructureDefinition sd,
+            IPackageImportable fhirVersionInfo)
         {
             string regex = string.Empty;
             string descriptionShort = sd.Description;
@@ -667,11 +752,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             string comment = string.Empty;
             string baseTypeName = string.Empty;
 
+#if false   // right now, differential is generally 'more correct' than snapshot, see FHIR-37465
             if ((sd.Snapshot != null) &&
                 (sd.Snapshot.Element != null) &&
                 (sd.Snapshot.Element.Count > 0))
             {
-                foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
+                foreach (fhirModels.ElementDefinition element in sd.Snapshot.Element)
                 {
                     if (element.Id == sd.Id)
                     {
@@ -691,7 +777,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         continue;
                     }
 
-                    foreach (fhir_4.ElementDefinitionType type in element.Type)
+                    foreach (fhirModels.ElementDefinitionType type in element.Type)
                     {
                         if (!string.IsNullOrEmpty(type.Code))
                         {
@@ -710,7 +796,64 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             continue;
                         }
 
-                        foreach (fhir_4.Extension ext in type.Extension)
+                        foreach (fhirModels.Extension ext in type.Extension)
+                        {
+                            if (ext.Url == "http://hl7.org/fhir/StructureDefinition/regex")
+                            {
+                                regex = ext.ValueString;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+#endif
+
+            // right now, differential is generally 'more correct' than snapshot see FHIR-37465
+            if ((sd.Differential != null) &&
+                (sd.Differential.Element != null) &&
+                (sd.Differential.Element.Count > 0))
+            {
+                foreach (fhirModels.ElementDefinition element in sd.Differential.Element)
+                {
+                    if (element.Id == sd.Id)
+                    {
+                        descriptionShort = element.Short;
+                        definition = element.Definition;
+                        comment = element.Comment;
+                        continue;
+                    }
+
+                    if (element.Id != $"{sd.Id}.value")
+                    {
+                        continue;
+                    }
+
+                    if (element.Type == null)
+                    {
+                        continue;
+                    }
+
+                    foreach (fhirModels.ElementDefinitionType type in element.Type)
+                    {
+                        if (!string.IsNullOrEmpty(type.Code))
+                        {
+                            if (FhirElementType.IsFhirPathType(type.Code, out string fhirType))
+                            {
+                                baseTypeName = fhirType;
+                            }
+                            else if (FhirElementType.IsXmlBaseType(type.Code, out string xmlFhirType))
+                            {
+                                baseTypeName = xmlFhirType;
+                            }
+                        }
+
+                        if (type.Extension == null)
+                        {
+                            continue;
+                        }
+
+                        foreach (fhirModels.Extension ext in type.Extension)
                         {
                             if (ext.Url == "http://hl7.org/fhir/StructureDefinition/regex")
                             {
@@ -752,7 +895,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElement(
             string structureName,
-            fhir_4.ElementDefinition element,
+            fhirModels.ElementDefinition element,
             out Dictionary<string, FhirElementType> elementTypes,
             out string regex)
         {
@@ -769,12 +912,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             // check for declared type
             else if (element.Type != null)
             {
-                foreach (fhir_4.ElementDefinitionType edType in element.Type)
+                foreach (fhirModels.ElementDefinitionType edType in element.Type)
                 {
                     // check for extensions to find regex pattern
                     if (edType.Extension != null)
                     {
-                        foreach (fhir_4.Extension ext in edType.Extension)
+                        foreach (fhirModels.Extension ext in edType.Extension)
                         {
                             if (ext.Url == "http://hl7.org/fhir/StructureDefinition/regex")
                             {
@@ -829,14 +972,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElements(
             string structureName,
-            List<fhir_4.ElementDefinition> elements,
+            List<fhirModels.ElementDefinition> elements,
             out Dictionary<string, FhirElementType> elementTypes,
             out string regex)
         {
             elementTypes = null;
             regex = string.Empty;
 
-            foreach (fhir_4.ElementDefinition element in elements)
+            foreach (fhirModels.ElementDefinition element in elements)
             {
                 // split the path
                 string[] components = element.Path.Split('.');
@@ -872,14 +1015,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
         /// <summary>Process a complex structure (Complex Type or Resource).</summary>
+        /// <exception cref="ArgumentException">   Thrown when one or more arguments have unsupported or
+        ///  illegal values.</exception>
         /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
-        /// <param name="sd">                   The structure definition to parse.</param>
-        /// <param name="fhirVersionInfo">      FHIR Version information.</param>
-        /// <param name="definitionComplexType">Type of strcuture definition we are parsing.</param>
+        /// <param name="sd">             The structure definition to parse.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        /// <param name="artifactClass">  Type of strcuture definition we are parsing.</param>
         private void ProcessComplex(
-            fhir_4.StructureDefinition sd,
-            FhirVersionInfo fhirVersionInfo,
-            FhirComplex.FhirComplexType definitionComplexType)
+            fhirModels.StructureDefinition sd,
+            IPackageImportable fhirVersionInfo,
+            FhirArtifactClassEnum artifactClass)
         {
             if ((sd.Snapshot == null) || (sd.Snapshot.Element == null))
             {
@@ -894,7 +1039,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 List<string> contextElements = new List<string>();
                 if (sd.Context != null)
                 {
-                    foreach (fhir_4.StructureDefinitionContext context in sd.Context)
+                    foreach (fhirModels.StructureDefinitionContext context in sd.Context)
                     {
                         if (context.Type != "element")
                         {
@@ -911,11 +1056,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     definition = sd.Snapshot.Element[0].Definition;
                 }
 
+                //if (sd.Url == "http://hl7.org/fhir/StructureDefinition/bp")
+                //{
+                //    Console.Write("");
+                //}
+
                 // create a new complex type object for this type or resource
                 FhirComplex complex = new FhirComplex(
                     sd.Id,
                     sd.Name,
                     string.Empty,
+                    sd.Type,
                     new Uri(sd.Url),
                     sd.Status,
                     sd.Experimental == true,
@@ -929,7 +1080,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // check for a base definition
                 if (!string.IsNullOrEmpty(sd.BaseDefinition))
                 {
-                    complex.BaseTypeName = sd.BaseDefinition.Substring(sd.BaseDefinition.LastIndexOf('/') + 1);
+                    if (sd.BaseDefinition.StartsWith("http://hl7.org/fhir/StructureDefinition/"))
+                    {
+                        complex.BaseTypeName = sd.BaseDefinition.Substring(40);
+                    }
+                    else
+                    {
+                        complex.BaseTypeName = sd.BaseDefinition;
+                    }
                 }
                 else
                 {
@@ -956,7 +1114,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
 
                 // look for properties on this type
-                foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
+                foreach (fhirModels.ElementDefinition element in sd.Snapshot.Element)
                 {
                     try
                     {
@@ -965,22 +1123,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         Dictionary<string, FhirElementType> elementTypes = null;
                         string elementType = string.Empty;
                         string regex = string.Empty;
+                        bool isRootElement = false;
 
                         // split the id into component parts
                         string[] idComponents = id.Split('.');
                         string[] pathComponents = path.Split('.');
 
-                        // base definition, already processed
+                        // base definition / root element
                         if (pathComponents.Length < 2)
                         {
-                            // check for this component being different from primar
+                            // check for this component being different from primary
                             if ((pathComponents[0] != sd.Name) && (contextElements.Count == 0))
                             {
                                 // add to our context
                                 complex.AddContextElement(pathComponents[0]);
                             }
 
-                            continue;
+                            // parse as root element
+                            isRootElement = true;
                         }
 
                         // get the parent container and our field name
@@ -992,10 +1152,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 out string field,
                                 out string sliceName))
                         {
-                            // throw new InvalidDataException($"Could not find parent for {element.Path}!");
-                            // should load later
-                            // TODO: figure out a way to verify all dependencies loaded
-                            continue;
+                            if (isRootElement)
+                            {
+                                parent = complex;
+                                field = string.Empty;
+                                sliceName = string.Empty;
+                            }
+                            else
+                            {
+                                // throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                                // should load later
+                                // TODO: figure out a way to verify all dependencies loaded
+                                continue;
+                            }
                         }
 
                         // check for needing to add a slice to an element
@@ -1021,8 +1190,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         null,
                                         0,
                                         "*",
-                                        false,
-                                        false,
+                                        element.IsModifier,
+                                        element.IsModifierReason,
+                                        element.IsSummary,
+                                        element.MustSupport,
                                         string.Empty,
                                         null,
                                         string.Empty,
@@ -1097,8 +1268,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 int loc = element.ContentReference.IndexOf('#', StringComparison.Ordinal);
                                 elementType = element.ContentReference.Substring(loc + 1);
 
-                                _warnings.Add($"Complex: {sd.Name} ({sd.Id}): New format ContentReference: {element.Id}: {element.ContentReference}");
-
+                                // _warnings.Add($"Complex: {sd.Name} ({sd.Id}): New format ContentReference: {element.Id}: {element.ContentReference}");
                             }
                             else if (element.ContentReference[0] == '#')
                             {
@@ -1117,9 +1287,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         // get fixed values (if present)
                         GetFixedValueIfPresent(element, out string fixedName, out object fixedValue);
 
-                        // determine if this element is inherited
+                        // rough determine if this element is inherited, in case there is no differential
                         bool isInherited = false;
                         bool modifiesParent = true;
+
+                        if (!element.Path.StartsWith(complex.Name, StringComparison.Ordinal))
+                        {
+                            isInherited = true;
+                        }
 
                         if (element.Base != null)
                         {
@@ -1148,7 +1323,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         string explicitName = string.Empty;
                         if (element.Extension != null)
                         {
-                            foreach (fhir_4.Extension ext in element.Extension)
+                            foreach (fhirModels.Extension ext in element.Extension)
                             {
                                 if (ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name")
                                 {
@@ -1166,34 +1341,49 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                         string fiveWs = ((fwMapping != null) && fwMapping.Any()) ? fwMapping[0] : string.Empty;
 
-                        // add this field to the parent type
-                        parent.Elements.Add(
+                        if (parent.Elements.ContainsKey(path))
+                        {
+                            _errors.Add($"Complex {sd.Name} snapshot error ({path}): Repeated snapshot: {parent.Elements[path].Id} & {id}");
+                            continue;
+                        }
+
+                        FhirElement fhirElement = new FhirElement(
+                            id,
                             path,
-                            new FhirElement(
-                                id,
-                                path,
-                                explicitName,
-                                null,
-                                parent.Elements.Count,
-                                element.Short,
-                                element.Definition,
-                                element.Comment,
-                                regex,
-                                elementType,
-                                elementTypes,
-                                (int)(element.Min ?? 0),
-                                element.Max,
-                                element.IsModifier,
-                                element.IsSummary,
-                                defaultName,
-                                defaultValue,
-                                fixedName,
-                                fixedValue,
-                                isInherited,
-                                modifiesParent,
-                                bindingStrength,
-                                valueSet,
-                                fiveWs));
+                            explicitName,
+                            null,
+                            parent.Elements.Count,
+                            element.Short,
+                            element.Definition,
+                            element.Comment,
+                            regex,
+                            elementType,
+                            elementTypes,
+                            (int)(element.Min ?? 0),
+                            element.Max,
+                            element.IsModifier,
+                            element.IsModifierReason,
+                            element.IsSummary,
+                            element.MustSupport,
+                            defaultName,
+                            defaultValue,
+                            fixedName,
+                            fixedValue,
+                            isInherited,
+                            modifiesParent,
+                            bindingStrength,
+                            valueSet,
+                            fiveWs);
+
+                        if (isRootElement)
+                        {
+                            parent.AddRootElement(fhirElement);
+                        }
+                        else
+                        {
+                            // add this field to the parent type
+                            parent.Elements.Add(path, fhirElement);
+                        }
 
                         if (element.Slicing != null)
                         {
@@ -1204,7 +1394,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 throw new InvalidDataException($"Missing slicing discriminator: {sd.Name} - {element.Path}");
                             }
 
-                            foreach (fhir_4.ElementDefinitionSlicingDiscriminator discriminator in element.Slicing.Discriminator)
+                            foreach (fhirModels.ElementDefinitionSlicingDiscriminator discriminator in element.Slicing.Discriminator)
                             {
                                 discriminatorRules.Add(new FhirSliceDiscriminatorRule(
                                     discriminator.Type,
@@ -1232,63 +1422,83 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 if ((sd.Differential != null) &&
                     (sd.Differential.Element != null) &&
-                    (sd.Differential.Element.Count > 0) &&
-                    (sd.Differential.Element[0].Constraint != null) &&
-                    (sd.Differential.Element[0].Constraint.Count > 0))
+                    (sd.Differential.Element.Count > 0))
                 {
-                    foreach (fhir_4.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
+                    // look for additional constraints
+                    if ((sd.Differential.Element[0].Constraint != null) &&
+                        (sd.Differential.Element[0].Constraint.Count > 0))
                     {
-                        bool isBestPractice = false;
-                        string explanation = string.Empty;
-
-                        if (con.Extension != null)
+                        foreach (fhirModels.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
                         {
-                            foreach (fhir_4.Extension ext in con.Extension)
+                            bool isBestPractice = false;
+                            string explanation = string.Empty;
+
+                            if (con.Extension != null)
                             {
-                                switch (ext.Url)
+                                foreach (fhirModels.Extension ext in con.Extension)
                                 {
-                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
-                                        isBestPractice = ext.ValueBoolean == true;
-                                        break;
+                                    switch (ext.Url)
+                                    {
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
+                                            isBestPractice = ext.ValueBoolean == true;
+                                            break;
 
-                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
-                                        if (!string.IsNullOrEmpty(ext.ValueMarkdown))
-                                        {
-                                            explanation = ext.ValueMarkdown;
-                                        }
-                                        else
-                                        {
-                                            explanation = ext.ValueString;
-                                        }
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
+                                            if (!string.IsNullOrEmpty(ext.ValueMarkdown))
+                                            {
+                                                explanation = ext.ValueMarkdown;
+                                            }
+                                            else
+                                            {
+                                                explanation = ext.ValueString;
+                                            }
 
-                                        break;
+                                            break;
+                                    }
                                 }
                             }
-                        }
 
-                        complex.AddConstraint(new FhirConstraint(
-                            con.Key,
-                            con.Severity,
-                            con.Human,
-                            con.Expression,
-                            con.Xpath,
-                            isBestPractice,
-                            explanation));
+                            complex.AddConstraint(new FhirConstraint(
+                                con.Key,
+                                con.Severity,
+                                con.Human,
+                                con.Expression,
+                                con.Xpath,
+                                isBestPractice,
+                                explanation));
+                        }
+                    }
+
+                    // traverse all elements to flag proper 'differential' tags on elements
+                    foreach (fhirModels.ElementDefinition dif in sd.Differential.Element)
+                    {
+                        if (complex.Elements.ContainsKey(dif.Path))
+                        {
+                            complex.Elements[dif.Path].SetInDifferential();
+
+                            if ((!string.IsNullOrEmpty(dif.SliceName)) &&
+                                (complex.Elements[dif.Path].Slicing != null) &&
+                                complex.Elements[dif.Path].Slicing.ContainsKey(sd.Url) &&
+                                complex.Elements[dif.Path].Slicing[sd.Url].HasSlice(dif.SliceName))
+                            {
+                                complex.Elements[dif.Path].Slicing[sd.Url].SetInDifferential(dif.SliceName);
+                            }
+                        }
                     }
                 }
 
-                switch (definitionComplexType)
+                switch (artifactClass)
                 {
-                    case FhirComplex.FhirComplexType.DataType:
+                    case FhirArtifactClassEnum.ComplexType:
                         fhirVersionInfo.AddComplexType(complex);
                         break;
-                    case FhirComplex.FhirComplexType.Resource:
+                    case FhirArtifactClassEnum.Resource:
                         fhirVersionInfo.AddResource(complex);
                         break;
-                    case FhirComplex.FhirComplexType.Extension:
+                    case FhirArtifactClassEnum.Extension:
                         fhirVersionInfo.AddExtension(complex);
                         break;
-                    case FhirComplex.FhirComplexType.Profile:
+                    case FhirArtifactClassEnum.Profile:
                         fhirVersionInfo.AddProfile(complex);
                         break;
                 }
@@ -1310,14 +1520,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             try
             {
                 // try to parse this JSON into a resource object
-                // return JsonConvert.DeserializeObject<fhir_4.Resource>(json, _jsonConverter);
-                // return JsonSerializer.Deserialize<fhir_4.Resource>(json);
-                return System.Text.Json.JsonSerializer.Deserialize<fhir_4.Resource>(
+                return System.Text.Json.JsonSerializer.Deserialize<fhirModels.Resource>(
                     json,
-                    fhirCsR4.Serialization.FhirSerializerOptions.Compact);
-
+                    fhirSerialization.FhirSerializerOptions.Compact);
             }
-            catch (JsonException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine($"FromR4.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
                 throw;
@@ -1329,7 +1536,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         void IFhirConverter.ProcessResource(
             object resourceToParse,
-            FhirVersionInfo fhirVersionInfo)
+            IPackageImportable fhirVersionInfo)
         {
             try
             {
@@ -1337,30 +1544,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 {
                     // ignore
 
-                    // case fhir_4.CapabilityStatement capabilityStatement:
-                    // case fhir_4.CompartmentDefinition compartmentDefinition:
-                    // case fhir_4.ConceptMap conceptMap:
-                    // case fhir_4.NamingSystem namingSystem:
-                    // case fhir_4.StructureMap structureMap:
+                    // case fhirModels.CapabilityStatement capabilityStatement:
+                    // case fhirModels.CompartmentDefinition compartmentDefinition:
+                    // case fhirModels.ConceptMap conceptMap:
+                    // case fhirModels.NamingSystem namingSystem:
+                    // case fhirModels.StructureMap structureMap:
 
                     // process
-                    case fhir_4.CodeSystem codeSystem:
+                    case fhirModels.CodeSystem codeSystem:
                         ProcessCodeSystem(codeSystem, fhirVersionInfo);
                         break;
 
-                    case fhir_4.OperationDefinition operationDefinition:
+                    case fhirModels.OperationDefinition operationDefinition:
                         ProcessOperation(operationDefinition, fhirVersionInfo);
                         break;
 
-                    case fhir_4.SearchParameter searchParameter:
+                    case fhirModels.SearchParameter searchParameter:
                         ProcessSearchParam(searchParameter, fhirVersionInfo);
                         break;
 
-                    case fhir_4.StructureDefinition structureDefinition:
+                    case fhirModels.StructureDefinition structureDefinition:
                         ProcessStructureDef(structureDefinition, fhirVersionInfo);
                         break;
 
-                    case fhir_4.ValueSet valueSet:
+                    case fhirModels.ValueSet valueSet:
                         ProcessValueSet(valueSet, fhirVersionInfo);
                         break;
                 }
@@ -1387,7 +1594,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            fhir_4.CapabilityStatement caps = metadata as fhir_4.CapabilityStatement;
+            fhirModels.CapabilityStatement caps = metadata as fhirModels.CapabilityStatement;
 
             string swName = string.Empty;
             string swVersion = string.Empty;
@@ -1416,11 +1623,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if ((caps.Rest != null) && (caps.Rest.Count > 0))
             {
-                fhir_4.CapabilityStatementRest rest = caps.Rest[0];
+                fhirModels.CapabilityStatementRest rest = caps.Rest[0];
 
                 if (rest.Interaction != null)
                 {
-                    foreach (fhir_4.CapabilityStatementRestInteraction interaction in rest.Interaction)
+                    foreach (fhirModels.CapabilityStatementRestInteraction interaction in rest.Interaction)
                     {
                         if (string.IsNullOrEmpty(interaction.Code))
                         {
@@ -1433,7 +1640,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 if (rest.Resource != null)
                 {
-                    foreach (fhir_4.CapabilityStatementRestResource resource in rest.Resource)
+                    foreach (fhirModels.CapabilityStatementRestResource resource in rest.Resource)
                     {
                         FhirServerResourceInfo resourceInfo = ParseServerRestResource(resource);
 
@@ -1450,7 +1657,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 if (rest.SearchParam != null)
                 {
-                    foreach (fhir_4.CapabilityStatementRestResourceSearchParam sp in rest.SearchParam)
+                    foreach (fhirModels.CapabilityStatementRestResourceSearchParam sp in rest.SearchParam)
                     {
                         if (serverSearchParams.ContainsKey(sp.Name))
                         {
@@ -1469,7 +1676,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 if (rest.Operation != null)
                 {
-                    foreach (fhir_4.CapabilityStatementRestResourceOperation operation in rest.Operation)
+                    foreach (fhirModels.CapabilityStatementRestResourceOperation operation in rest.Operation)
                     {
                         if (serverOperations.ContainsKey(operation.Name))
                         {
@@ -1505,7 +1712,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="resource">The resource.</param>
         /// <returns>A FhirServerResourceInfo.</returns>
         private static FhirServerResourceInfo ParseServerRestResource(
-            fhir_4.CapabilityStatementRestResource resource)
+            fhirModels.CapabilityStatementRestResource resource)
         {
             List<string> interactions = new List<string>();
             Dictionary<string, FhirServerSearchParam> searchParams = new Dictionary<string, FhirServerSearchParam>();
@@ -1513,7 +1720,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if (resource.Interaction != null)
             {
-                foreach (fhir_4.CapabilityStatementRestResourceInteraction interaction in resource.Interaction)
+                foreach (fhirModels.CapabilityStatementRestResourceInteraction interaction in resource.Interaction)
                 {
                     if (string.IsNullOrEmpty(interaction.Code))
                     {
@@ -1526,7 +1733,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if (resource.SearchParam != null)
             {
-                foreach (fhir_4.CapabilityStatementRestResourceSearchParam sp in resource.SearchParam)
+                foreach (fhirModels.CapabilityStatementRestResourceSearchParam sp in resource.SearchParam)
                 {
                     if (searchParams.ContainsKey(sp.Name))
                     {
@@ -1545,7 +1752,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if (resource.Operation != null)
             {
-                foreach (fhir_4.CapabilityStatementRestResourceOperation operation in resource.Operation)
+                foreach (fhirModels.CapabilityStatementRestResourceOperation operation in resource.Operation)
                 {
                     if (operations.ContainsKey(operation.Name))
                     {
@@ -1585,7 +1792,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="defaultName"> [out] The default name.</param>
         /// <param name="defaultValue">[out] The default value.</param>
         private static void GetDefaultValueIfPresent(
-            fhir_4.ElementDefinition element,
+            fhirModels.ElementDefinition element,
             out string defaultName,
             out object defaultValue)
         {
@@ -1724,7 +1931,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="fixedName"> [out] Name of the fixed.</param>
         /// <param name="fixedValue">[out] The fixed value.</param>
         private static void GetFixedValueIfPresent(
-            fhir_4.ElementDefinition element,
+            fhirModels.ElementDefinition element,
             out string fixedName,
             out object fixedValue)
         {

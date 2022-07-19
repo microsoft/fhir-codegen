@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Version>2.0.0-beta1</Version>
+    <AssemblyVersion>$(PackageVersion)</AssemblyVersion>
+    <FileVersion>$(PackageVersion)</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.28.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\fhirCsR2\fhirCsR2.csproj" />
+    <ProjectReference Include="..\fhirCsR3\fhirCsR3.csproj" />
+    <ProjectReference Include="..\fhirCsR4B\fhirCsR4B.csproj" />
+    <ProjectReference Include="..\fhirCsR4\fhirCsR4.csproj" />
+    <ProjectReference Include="..\fhirCsR5\fhirCsR5.csproj" />
+    <ProjectReference Include="..\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj" />
+  </ItemGroup>
+
+</Project>
