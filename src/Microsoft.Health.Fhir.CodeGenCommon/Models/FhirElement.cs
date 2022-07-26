@@ -32,8 +32,10 @@ public class FhirElement : FhirTypeBase
     /// <param name="cardinalityMin">   The cardinality minimum.</param>
     /// <param name="cardinalityMax">   The cardinality maximum.</param>
     /// <param name="isModifier">       If this element modifies the meaning of its parent.</param>
+    /// <param name="isModifierReason"> Reason this element is a modifier.</param>
     /// <param name="isSummary">        If this element should be included in summaries.</param>
     /// <param name="isMustSupport">    If this element is marked as 'must support'.</param>
+    /// <param name="isSimple">         If this element is a 'simple' element (no extended props).</param>
     /// <param name="defaultFieldName"> Name of a default field, e.g., defaultUri, defaultCode.</param>
     /// <param name="defaultFieldValue">Value of a default field.</param>
     /// <param name="fixedFieldName">   Name of a fixed field, e.g., fixedUri, fixedCode.</param>
@@ -61,6 +63,7 @@ public class FhirElement : FhirTypeBase
         string isModifierReason,
         bool? isSummary,
         bool? isMustSupport,
+        bool isSimple,
         string defaultFieldName,
         object defaultFieldValue,
         string fixedFieldName,
@@ -145,6 +148,7 @@ public class FhirElement : FhirTypeBase
         IsSummary = isSummary == true;
         IsMustSupport = isMustSupport == true;
         _inDifferential = false;
+        IsSimple = isSimple;
 
         DefaultFieldName = defaultFieldName;
         DefaultFieldValue = defaultFieldValue;
@@ -196,6 +200,7 @@ public class FhirElement : FhirTypeBase
         string isModifierReason,
         bool isSummary,
         bool isMustSupport,
+        bool isSimple,
         string codesName,
         List<string> codes,
         string valueSet,
@@ -232,6 +237,7 @@ public class FhirElement : FhirTypeBase
         IsModifierReason = isModifierReason;
         IsSummary = isSummary;
         IsMustSupport = isMustSupport;
+        IsSimple = isSimple;
         CodesName = codesName;
         _codes = codes ?? new();
         ValueSet = valueSet;
@@ -315,6 +321,9 @@ public class FhirElement : FhirTypeBase
 
     /// <summary>Gets a value indicating whether this object is must support.</summary>
     public bool IsMustSupport { get; }
+
+    /// <summary>Gets a value indicating whether this object is simple (no extended properties).</summary>
+    public bool IsSimple { get; }
 
     /// <summary>Gets the field order.</summary>
     public int FieldOrder { get; }
@@ -488,6 +497,7 @@ public class FhirElement : FhirTypeBase
             IsModifierReason,
             IsSummary,
             IsMustSupport,
+            IsSimple,
             DefaultFieldName,
             DefaultFieldValue,
             FixedFieldName,

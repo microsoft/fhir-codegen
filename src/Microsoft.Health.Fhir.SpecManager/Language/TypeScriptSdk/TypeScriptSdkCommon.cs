@@ -75,6 +75,13 @@ internal static class TypeScriptSdkCommon
         { "Element", "FhirElement" },
     };
 
+    /// <summary>(Immutable) The primitives with simple (no extended properties) versions.</summary>
+    internal static readonly HashSet<string> PrimitivesWithSimpleVersions = new()
+    {
+        "FhirId", "FhirUri",
+        "fhir.FhirId", "fhir.FhirUri",
+    };
+
     /// <summary>The systems named by display.</summary>
     internal static readonly HashSet<string> SystemsNamedByDisplay = new()
     {
