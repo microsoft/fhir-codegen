@@ -64,6 +64,60 @@ public class PackageDiffWebService : IDisposable, IHostedService, IPackageDiffWe
         return diffTask;
     }
 
+    /// <summary>Request difference.</summary>
+    /// <param name="A">      An IPackageExportable to process.</param>
+    /// <param name="keyA">   The key of the artifact in package A to compare.</param>
+    /// <param name="B">      An IPackageExportable to process.</param>
+    /// <param name="keyB">   The key of the artifact in package B to compare.</param>
+    /// <param name="options">Options for controlling the operation.</param>
+    /// <returns>An asynchronous result.</returns>
+    public Task RequestDiff(
+        IPackageExportable A,
+        string keyA,
+        IPackageExportable B,
+        string keyB,
+        DifferOptions options)
+    {
+        Task diffTask = new Task(() =>
+        {
+            Differ differ = new Differ(A, B, options);
+            DiffResults results = differ.GenerateDiff(keyA, keyB);
+            DiffHasCompleted(
+                A.PackageName + "#" + A.VersionString + "." + keyA,
+                B.PackageName + "#" + B.VersionString + "." + keyB,
+                results);
+        });
+
+        return diffTask;
+    }
+
+    /// <summary>Request difference.</summary>
+    /// <param name="A">      An IPackageExportable to process.</param>
+    /// <param name="keysA">  The keys of artifacts in package A to compare.</param>
+    /// <param name="B">      An IPackageExportable to process.</param>
+    /// <param name="keysB">  The keys of artifacts in package B to compare.</param>
+    /// <param name="options">Options for controlling the operation.</param>
+    /// <returns>An asynchronous result.</returns>
+    public Task RequestDiff(
+        IPackageExportable A,
+        List<string> keysA,
+        IPackageExportable B,
+        List<string> keysB,
+        DifferOptions options)
+    {
+        Task diffTask = new Task(() =>
+        {
+            Differ differ = new Differ(A, B, options);
+            DiffResults results = differ.GenerateDiff(keysA, keysB);
+            DiffHasCompleted(
+                A.PackageName + "#" + A.VersionString,
+                B.PackageName + "#" + B.VersionString,
+                results);
+        });
+
+        return diffTask;
+    }
+
     /// <summary>Triggered when the application host is ready to start the service.</summary>
     /// <param name="cancellationToken">Indicates that the start process has been aborted.</param>
     /// <returns>An asynchronous result.</returns>

@@ -632,9 +632,23 @@ public class FhirCacheService : IDisposable
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetGuideCiPackageDetails(string branchName, out NpmPackageDetails details)
     {
-        if (branchName.StartsWith("ig/", StringComparison.OrdinalIgnoreCase))
+        if (branchName.StartsWith("http://build.fhir.org/ig/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(25);
+        }
+        else if (branchName.StartsWith("https://build.fhir.org/ig/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(26);
+        }
+        else if (branchName.StartsWith("ig/", StringComparison.OrdinalIgnoreCase))
         {
             branchName = branchName.Substring(3);
+        }
+
+        if (branchName.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+        {
+            int last = branchName.LastIndexOf('/');
+            branchName = branchName.Substring(0, last);
         }
 
         try
@@ -684,9 +698,22 @@ public class FhirCacheService : IDisposable
         string branchName,
         out NpmPackageDetails details)
     {
-        if (branchName.StartsWith("branches/", StringComparison.OrdinalIgnoreCase))
+        if (branchName.StartsWith("http://build.fhir.org/branches/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(31);
+        }
+        else if (branchName.StartsWith("https://build.fhir.org/branches/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(32);
+        }
+        else if (branchName.StartsWith("branches/", StringComparison.OrdinalIgnoreCase))
         {
             branchName = branchName.Substring(9);
+        }
+
+        if (branchName.Contains('/'))
+        {
+            branchName = branchName.Split('/')[0];
         }
 
         Uri branchUri = null;

@@ -819,6 +819,16 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             return _artifactClassByUrl[token];
         }
 
+        if (!string.IsNullOrEmpty(PackageDetails?.Canonical))
+        {
+            string joined = PackageDetails.Canonical + "/" + token;
+
+            if (_artifactClassByUrl.ContainsKey(joined))
+            {
+                return _artifactClassByUrl[joined];
+            }
+        }
+
         foreach (string definitionType in FhirPackageLoader.DefinitionalResourceTypesToLoad)
         {
             string url = new Uri(CanonicalUrl, definitionType + "/" + token).ToString();
@@ -843,6 +853,16 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         if (dict.ContainsKey(token))
         {
             return dict[token];
+        }
+
+        if (!string.IsNullOrEmpty(PackageDetails?.Canonical))
+        {
+            string joined = PackageDetails.Canonical + "/" + token;
+
+            if (dict.ContainsKey(joined))
+            {
+                return dict[joined];
+            }
         }
 
         if (token.Contains('/'))

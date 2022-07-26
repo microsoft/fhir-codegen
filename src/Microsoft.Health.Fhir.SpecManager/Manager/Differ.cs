@@ -13,9 +13,7 @@ public class Differ
     private DifferOptions _options;
     private DiffResults _results;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Differ"/> class.
-    /// </summary>
+    /// <summary>Initializes a new instance of the <see cref="Differ"/> class.</summary>
     /// <param name="A">      The 'A' IPackageExportable to process (typically older version).</param>
     /// <param name="B">      The 'B' IPackageExportable to process (typically newer version).</param>
     /// <param name="options">Options for controlling the operation.</param>
@@ -30,14 +28,11 @@ public class Differ
         _results = new();
     }
 
-    /// <summary>Generates a difference.</summary>
-    /// <param name="A">      The 'A' IPackageExportable to process (typically older version).</param>
-    /// <param name="B">      The 'B' IPackageExportable to process (typically newer version).</param>
-    /// <param name="_options">Options for controlling the operation.</param>
+    /// <summary>Compares the packages or artifacts requested.</summary>
     /// <returns>The difference.</returns>
     public DiffResults GenerateDiff()
     {
-        Console.WriteLine($"Starting diff between {_a.PackageName}#{_a.VersionString} and {_b.PackageName}#{_b.VersionString}");
+        Console.WriteLine($"Comparing {_a.PackageName}#{_a.VersionString} and {_b.PackageName}#{_b.VersionString}");
 
         ComparePrimitiveTypes(_a.PrimitiveTypes, _b.PrimitiveTypes);
         CompareComplexTypes(FhirArtifactClassEnum.ComplexType, _a.ComplexTypes, _b.ComplexTypes);
@@ -58,6 +53,164 @@ public class Differ
         Console.WriteLine($"Diff completed!");
 
         return _results;
+    }
+
+    /// <summary>Generates a difference between artifacts.</summary>
+    /// <param name="keyA">The key of the artifact in package A to compare.</param>
+    /// <param name="keyB">The key of the artifact in package B to compare.</param>
+    /// <returns>The difference between artifacts.</returns>
+    public DiffResults GenerateDiff(
+        string keyA,
+        string keyB)
+    {
+        Console.WriteLine($"Comparing {_a.PackageName}#{_a.VersionString}:{keyA} and {_b.PackageName}#{_b.VersionString}:{keyB}");
+
+        GenerateDiffBetweenArtifacts(keyA, keyB);
+
+        return _results;
+    }
+
+    /// <summary>Generates a difference between artifacts.</summary>
+    /// <param name="keysA">The keys a.</param>
+    /// <param name="keysB">The keys b.</param>
+    /// <returns>The difference between artifacts.</returns>
+    public DiffResults GenerateDiff(
+        List<string> keysA,
+        List<string> keysB)
+    {
+        if (((keysA?.Count ?? 0) == 0) ||
+            ((keysB?.Count ?? 0) == 0))
+        {
+            Console.WriteLine("Invalid list of keys (null or zero length)!");
+            return null;
+        }
+
+        if (keysA.Count != keysB.Count)
+        {
+            Console.WriteLine("Cannot perform requested diffs - keys are of different lengths!");
+            return null;
+        }
+
+        for (int i = 0; i < keysA.Count; i++)
+        {
+            Console.WriteLine($"Comparing {_a.PackageName}#{_a.VersionString}:{keysA[i]} and {_b.PackageName}#{_b.VersionString}:{keysB[i]}");
+            GenerateDiffBetweenArtifacts(keysA[i], keysB[i]);
+        }
+
+        return _results;
+    }
+
+    /// <summary>Generates a difference between artifacts.</summary>
+    /// <param name="keyA">The key of the artifact in package A to compare.</param>
+    /// <param name="keyB">The key of the artifact in package B to compare.</param>
+    private void GenerateDiffBetweenArtifacts(
+        string keyA,
+        string keyB)
+    {
+        bool resolvedA = _a.TryGetArtifact(keyA, out object a, out FhirArtifactClassEnum classA, out string _, true);
+        bool resolvedB = _b.TryGetArtifact(keyB, out object b, out FhirArtifactClassEnum classB, out string _, true);
+
+        if ((!resolvedA) && (!resolvedB))
+        {
+            Console.WriteLine(
+                $"Could not resolve {_a.PackageName}#{_a.VersionString}:{keyA} OR {_b.PackageName}#{_b.VersionString}:{keyB}");
+            return;
+        }
+
+        if ((!resolvedB) || (classA != classB))
+        {
+            if (a is FhirComplex complex)
+            {
+                RecursiveRemoveComplex(
+                    classA,
+                    keyA,
+                    complex);
+            }
+            else
+            {
+                _results.AddDiff(
+                    classA,
+                    keyA,
+                    keyA,
+                    DiffResults.DiffTypeEnum.Removed,
+                    classA.ToString(),
+                    string.Empty);
+            }
+        }
+
+        if ((!resolvedA) || (classA != classB))
+        {
+            if (b is FhirComplex complex)
+            {
+                RecursiveAddComplex(
+                    classB,
+                    keyB,
+                    complex);
+            }
+            else
+            {
+                _results.AddDiff(
+                    classB,
+                    keyB,
+                    keyB,
+                    DiffResults.DiffTypeEnum.AddedType,
+                    string.Empty,
+                    classB.ToString());
+            }
+        }
+
+        if ((!resolvedA) || (!resolvedB))
+        {
+            return;
+        }
+
+        switch (classA)
+        {
+            case FhirArtifactClassEnum.PrimitiveType:
+                ComparePrimitiveType((FhirPrimitive)a, (FhirPrimitive)b, keyA);
+                break;
+
+            case FhirArtifactClassEnum.ComplexType:
+            case FhirArtifactClassEnum.Resource:
+            case FhirArtifactClassEnum.Extension:
+            case FhirArtifactClassEnum.Profile:
+            case FhirArtifactClassEnum.LogicalModel:
+                CompareFhirComplex(classA, keyA, (FhirComplex)a, (FhirComplex)b);
+                break;
+            case FhirArtifactClassEnum.Operation:
+                CompareFhirOperation(keyA, (FhirOperation)a, (FhirOperation)b);
+                break;
+
+            case FhirArtifactClassEnum.SearchParameter:
+                CompareSearchParameter(keyA, (FhirSearchParam)a, (FhirSearchParam)b);
+                break;
+
+            case FhirArtifactClassEnum.ValueSet:
+                {
+                    // compare highest version of value set in each package
+                    string vsA = ((FhirValueSetCollection)a).ValueSetsByVersion.Keys.Max();
+                    string vsB = ((FhirValueSetCollection)b).ValueSetsByVersion.Keys.Max();
+
+                    CompareValueSet(
+                        keyA,
+                        ((FhirValueSetCollection)a).ValueSetsByVersion[vsA],
+                        ((FhirValueSetCollection)a).ValueSetsByVersion[vsB]);
+                }
+
+                break;
+
+            case FhirArtifactClassEnum.CapabilityStatement:
+            case FhirArtifactClassEnum.Compartment:
+            case FhirArtifactClassEnum.ConceptMap:
+            case FhirArtifactClassEnum.NamingSystem:
+            case FhirArtifactClassEnum.StructureMap:
+            case FhirArtifactClassEnum.ImplementationGuide:
+            case FhirArtifactClassEnum.CodeSystem:
+            case FhirArtifactClassEnum.Unknown:
+            default:
+                Console.WriteLine($"Diff not implemented! class {classA}");
+                break;
+        }
     }
 
     /// <summary>Compare FHIR value set collections.</summary>
@@ -264,41 +417,53 @@ public class Differ
 
         foreach (string key in keyIntersection)
         {
+            ComparePrimitiveType(A[key], B[key], key);
+        }
+    }
+
+    /// <summary>Compare primitive type.</summary>
+    /// <param name="A">  The 'A' IPackageExportable to process (typically older version).</param>
+    /// <param name="B">  The 'B' IPackageExportable to process (typically newer version).</param>
+    /// <param name="key">The key.</param>
+    private void ComparePrimitiveType(
+        FhirPrimitive A,
+        FhirPrimitive B,
+        string key)
+    {
+        TestPrimitiveDiff(
+            A.BaseTypeName,
+            B.BaseTypeName,
+            key,
+            DiffResults.DiffTypeEnum.ChangedType);
+
+        if (_options.CompareRegEx)
+        {
             TestPrimitiveDiff(
-                A[key].BaseTypeName,
-                B[key].BaseTypeName,
+                A.ValidationRegEx,
+                B.ValidationRegEx,
                 key,
-                DiffResults.DiffTypeEnum.ChangedType);
+                DiffResults.DiffTypeEnum.ChangedRegEx);
+        }
 
-            if (_options.CompareRegEx)
-            {
-                TestPrimitiveDiff(
-                    A[key].ValidationRegEx,
-                    B[key].ValidationRegEx,
-                    key,
-                    DiffResults.DiffTypeEnum.ChangedRegEx);
-            }
+        if (_options.CompareDescriptions)
+        {
+            TestPrimitiveDiff(
+                A.ShortDescription,
+                B.ShortDescription,
+                key,
+                DiffResults.DiffTypeEnum.ChangedDescription);
 
-            if (_options.CompareDescriptions)
-            {
-                TestPrimitiveDiff(
-                    A[key].ShortDescription,
-                    B[key].ShortDescription,
-                    key,
-                    DiffResults.DiffTypeEnum.ChangedDescription);
+            TestPrimitiveDiff(
+                A.Purpose,
+                B.Purpose,
+                key,
+                DiffResults.DiffTypeEnum.ChangedDescription);
 
-                TestPrimitiveDiff(
-                    A[key].Purpose,
-                    B[key].Purpose,
-                    key,
-                    DiffResults.DiffTypeEnum.ChangedDescription);
-
-                TestPrimitiveDiff(
-                    A[key].Comment,
-                    B[key].Comment,
-                    key,
-                    DiffResults.DiffTypeEnum.ChangedDescription);
-            }
+            TestPrimitiveDiff(
+                A.Comment,
+                B.Comment,
+                key,
+                DiffResults.DiffTypeEnum.ChangedDescription);
         }
     }
 
@@ -792,13 +957,18 @@ public class Differ
 
         foreach (string key in keysA)
         {
-            _results.AddDiff(
+            RecursiveRemoveComplex(
                 artifactClass,
                 key,
-                key,
-                DiffResults.DiffTypeEnum.Removed,
-                key,
-                string.Empty);
+                A[key]);
+
+            //_results.AddDiff(
+            //    artifactClass,
+            //    key,
+            //    key,
+            //    DiffResults.DiffTypeEnum.Removed,
+            //    key,
+            //    string.Empty);
         }
 
         foreach (string key in keysB)
@@ -940,6 +1110,48 @@ public class Differ
                     rootKey,
                     element.Path,
                     DiffResults.DiffTypeEnum.Added,
+                    string.Empty,
+                    element.Path);
+            }
+        }
+    }
+
+    /// <summary>Recursive remove complex.</summary>
+    /// <param name="artifactClass">The artifact class.</param>
+    /// <param name="rootKey">      The root key.</param>
+    /// <param name="complex">      The complex.</param>
+    /// <param name="rootComplex">  (Optional) The root complex.</param>
+    private void RecursiveRemoveComplex(
+        FhirArtifactClassEnum artifactClass,
+        string rootKey,
+        FhirComplex complex,
+        FhirComplex rootComplex = null)
+    {
+        _results.AddDiff(
+            artifactClass,
+            rootKey,
+            complex.Path,
+            DiffResults.DiffTypeEnum.Added,
+            string.Empty,
+            complex.Path);
+
+        foreach (FhirElement element in complex.Elements.Values.OrderBy((e) => e.FieldOrder))
+        {
+            if (complex.Components.ContainsKey(element.BaseTypeName))
+            {
+                RecursiveRemoveComplex(artifactClass, rootKey, complex.Components[element.BaseTypeName], complex);
+            }
+            else if ((rootComplex != null) && rootComplex.Components.ContainsKey(element.BaseTypeName))
+            {
+                RecursiveRemoveComplex(artifactClass, rootKey, rootComplex.Components[element.BaseTypeName], complex);
+            }
+            else
+            {
+                _results.AddDiff(
+                    artifactClass,
+                    rootKey,
+                    element.Path,
+                    DiffResults.DiffTypeEnum.Removed,
                     string.Empty,
                     element.Path);
             }

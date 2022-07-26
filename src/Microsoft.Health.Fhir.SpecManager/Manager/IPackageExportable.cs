@@ -91,4 +91,18 @@ public interface IPackageExportable
     /// <param name="vs">      [out] The vs.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetValueSet(string urlOrKey, out FhirValueSet vs);
+
+    /// <summary>Attempts to get artifact.</summary>
+    /// <param name="token">             The token.</param>
+    /// <param name="artifact">          [out] The artifact.</param>
+    /// <param name="artifactClass">     [out] The artifact class.</param>
+    /// <param name="resolvedPackage">   [out] The resolved package.</param>
+    /// <param name="resolveParentLinks">True to resolve parent links.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetArtifact(
+        string token,
+        out object artifact,
+        out FhirArtifactClassEnum artifactClass,
+        out string resolvedPackage,
+        bool resolveParentLinks);
 }
