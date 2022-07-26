@@ -29,7 +29,8 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (PackageCacheRecord record in PackageService.Values.OrderBy(r => r.CacheDirective))
+            @*@foreach (PackageCacheRecord record in PackageService.Values.OrderBy(r => r.CacheDirective))*@
+            @foreach ((string key, PackageCacheRecord record) in PackageService.OrderBy(r => r.Key))
             {
                 <tr>
                     @switch (record.PackageState)
@@ -39,7 +40,7 @@ else
                             <td>
                                 <button
                                     type="button"
-                                    @onclick="() => NavToViewPackage(record.CacheDirective)"
+                                    @onclick="() => NavToViewPackage(key)"
                                     data-bs-toggle="tooltip"
                                     title="View Package"
                                     >
@@ -47,7 +48,7 @@ else
                                 </button>
                                 <button
                                     type="button"
-                                    @onclick="() => NavToPackageElements(record.CacheDirective)"
+                                    @onclick="() => NavToPackageElements(key)"
                                     data-bs-toggle="tooltip"
                                     title="Package Elements"
                                     >
@@ -55,7 +56,7 @@ else
                                 </button>
                                 <button
                                     type="button"
-                                    @onclick="() => NavToExportPackage(record.CacheDirective)"
+                                    @onclick="() => NavToExportPackage(key)"
                                     data-bs-toggle="tooltip"
                                     title="Export Package"
                                     >
@@ -74,10 +75,10 @@ else
                             break;
 
                         default:
-                            <td><button type="button" @onclick="() => ButtonLoadPackageClicked(record.CacheDirective)">Load</button></td>
+                            <td><button type="button" @onclick="() => ButtonLoadPackageClicked(key)">Load</button></td>
                             break;
                     }
-                    <td>@record.CacheDirective</td>
+                    <td>@key</td>
                     <td>@string.Join(',', record.Details?.FhirVersions ?? new string[0])</td>
                     <td>@record.Details?.Title</td>
                     <td>@DependenciesForPackage(record)</td>

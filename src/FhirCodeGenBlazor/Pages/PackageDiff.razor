@@ -10,24 +10,62 @@
 @implements IDisposable
 
 <PageTitle>FHIR Diff Tool</PageTitle>
-<p><em>This page requires a packages LOADED from the cache...</em></p>
 
-<p>
-    <select class="form-select m-2" aria-label="Package A" @bind="directiveA">
+<p><em>Compare packages loaded from the cache</em></p>
+
+<div class="input-group mb-2">
+    <label class="input-group-text" for="selectPackageA">Package A</label>
+    <select id="selectPackageA" class="form-select" aria-label="Package A" @bind="directiveA">
         @foreach((string key, FhirVersionInfo info) in SpecService.OrderBy((kvp) => kvp.Key))
         {
             <option value="@key">@info.PackageName # @info.VersionString</option>
         }
     </select>
-</p>
-<p>
-    <select class="form-select m-2" aria-label="Package B" @bind="directiveB">
+</div>
+
+<div class="input-group mb-2">
+    <label class="input-group-text" for="selectArtifactA">(Optional) Artifact A</label>
+    <select id="selectArtifactA" class="form-select" aria-label="Artifact A" @bind="artifactA" disabled="@IsDisabledArtifactA()" >
+        @if (!string.IsNullOrEmpty(directiveA))
+        {
+            @foreach((FhirArtifactClassEnum ac, List<FhirArtifactRecord> artifacts) in SpecService[directiveA].ArtifactRecordsByClass)
+            {
+                foreach (FhirArtifactRecord artifact in artifacts)
+                {
+                    <option value="@artifact.Url">@ac - @artifact.Id</option>
+                }
+            }
+        }
+    </select>
+</div>
+
+<div class="input-group mb-2">
+    <label class="input-group-text" for="selectPackageB">Package B</label>
+    <select id="selectPackageA" class="form-select" aria-label="Package B" @bind="directiveB">
         @foreach((string key, FhirVersionInfo info) in SpecService.OrderBy((kvp) => kvp.Key))
         {
             <option value="@key">@info.PackageName # @info.VersionString</option>
         }
     </select>
-</p>
+</div>
+
+<div class="input-group mb-2">
+    <label class="input-group-text" for="selectArtifactB">(Optional) Artifact B</label>
+    <select id="selectArtifactB" class="form-select" aria-label="Artifact B" @bind="artifactB" disabled="@IsDisabledArtifactB()" >
+        @if (!string.IsNullOrEmpty(directiveB))
+        {
+            @foreach((FhirArtifactClassEnum ac, List<FhirArtifactRecord> artifacts) in SpecService[directiveB].ArtifactRecordsByClass)
+            {
+                foreach (FhirArtifactRecord artifact in artifacts)
+                {
+                    <option value="@artifact.Url">@ac - @artifact.Id</option>
+                }
+            }
+        }
+    </select>
+</div>
+
+
 <p>
     <button
         type="button"
@@ -120,8 +158,21 @@
                                         <tr>
                                             <th class="col-md-2">Path</th>
                                             <th class="col-md-2">Type</th>
-                                            <th class="col-md-2">@directiveA</th>
-                                            <th class="col-md-2">@directiveB</th>
+                                            @if (directiveA.Equals(directiveB))
+                                            {
+                                                <th class="col-md-2">@artifactA.Split('/').Last()</th>
+                                                <th class="col-md-2">@artifactB.Split('/').Last()</th>
+                                            }
+                                            else if (string.IsNullOrEmpty(artifactA) || string.IsNullOrEmpty(artifactB))
+                                            {
+                                                <th class="col-md-2">@directiveA</th>
+                                                <th class="col-md-2">@directiveB</th>
+                                            }
+                                            else
+                                            {
+                                                <th class="col-md-2">@directiveA.@artifactA</th>
+                                                <th class="col-md-2">@directiveB.@artifactB</th>
+                                            }
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -148,6 +199,9 @@
 @code {
     private string directiveA = "";
     private string directiveB = "";
+
+    private string artifactA = "";
+    private string artifactB = "";
 
     /// <summary>Specifies the filter.</summary>
     private string artifactFilterText = "";
@@ -185,7 +239,7 @@
             showDiffType.Add(diffType, true);
         }
 
-        NavTracker?.NotifyNav("", "diff", 1);
+        NavTracker?.NotifyNav("FHIR Diff Tool", "diff", 1);
         NavigationManager.LocationChanged += HandleLocationChanged;
 
         DiffService.OnDiffCompleted += HandleDiffCompleted;
@@ -224,8 +278,17 @@
         //DifferOptions options = new(false, false, false, false, false, true);
         DifferOptions options = new(true, true, true, true, true, true);
 
-        Task task = DiffService.RequestDiff(SpecService[directiveA], SpecService[directiveB], options);
-        task.Start();
+        if (string.IsNullOrEmpty(artifactA) || string.IsNullOrEmpty(artifactB))
+        {
+            Task task = DiffService.RequestDiff(SpecService[directiveA], SpecService[directiveB], options);
+            task.Start();
+        }
+        else
+        {
+            Task task = DiffService.RequestDiff(SpecService[directiveA], artifactA, SpecService[directiveB], artifactB, options);
+            task.Start();
+        }
+
     }
 
     /// <summary>Raises the difference completed event.</summary>
@@ -366,7 +429,7 @@
     {
         if (e.Location.ToLowerInvariant().Contains("/diff"))
         {
-            NavTracker?.NotifyNav("", $"diff", 1);
+            NavTracker?.NotifyNav("FHIR Diff Tool", $"diff", 1);
         }
     }
 
@@ -426,5 +489,15 @@
         }
 
         return "btn btn-outline-primary m-1";
+    }
+
+    private bool IsDisabledArtifactA()
+    {
+        return string.IsNullOrEmpty(directiveA);
+    }
+
+    private bool IsDisabledArtifactB()
+    {
+        return string.IsNullOrEmpty(directiveB);
     }
 }

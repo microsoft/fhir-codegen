@@ -29,4 +29,32 @@ public interface IPackageDiffWebService
     /// <param name="options">Options for controlling the operation.</param>
     /// <returns>An asynchronous result.</returns>
     Task RequestDiff(IPackageExportable A, IPackageExportable B, DifferOptions options);
+
+    /// <summary>Request difference.</summary>
+    /// <param name="A">      An IPackageExportable to process.</param>
+    /// <param name="keyA">   The key of the artifact in package A to compare.</param>
+    /// <param name="B">      An IPackageExportable to process.</param>
+    /// <param name="keyB">   The key of the artifact in package B to compare.</param>
+    /// <param name="options">Options for controlling the operation.</param>
+    /// <returns>An asynchronous result.</returns>
+    Task RequestDiff(
+        IPackageExportable A,
+        string keyA,
+        IPackageExportable B,
+        string keyB,
+        DifferOptions options);
+
+    /// <summary>Request difference.</summary>
+    /// <param name="A">      An IPackageExportable to process.</param>
+    /// <param name="keysA">  The keys of artifacts in package A to compare.</param>
+    /// <param name="B">      An IPackageExportable to process.</param>
+    /// <param name="keysB">  The keys of artifacts in package B to compare.</param>
+    /// <param name="options">Options for controlling the operation.</param>
+    /// <returns>An asynchronous result.</returns>
+    Task RequestDiff(
+        IPackageExportable A,
+        List<string> keysA,
+        IPackageExportable B,
+        List<string> keysB,
+        DifferOptions options);
 }
