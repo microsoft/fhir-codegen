@@ -747,8 +747,6 @@ public sealed class TypeScriptSdk : ILanguage
     {
         ExportStringBuilder sb = new();
 
-        //sb.WriteLine($"/// <reference types=\"./{primitive.ExportClassName}.d.ts\" />");
-
         WriteHeader(sb);
 
         sb.WriteLine($"// FHIR Primitive: {primitive.FhirName}");
@@ -756,23 +754,25 @@ public sealed class TypeScriptSdk : ILanguage
         sb.WriteLineIndented("import * as fhir from '../fhir.js';");
         sb.WriteLine(string.Empty);
 
-        //WriteIgnoreNonUseLine(sb);
-        //sb.WriteLineIndented(
-        //    $"import {{" +
-        //    $" IssueType{CodeObjectSuffix}" +
-        //    $" }} from '../{_relativeValueSetDirectory}/IssueType{CodeObjectSuffix}.js';");
-
-        //WriteIgnoreNonUseLine(sb);
-        //sb.WriteLineIndented(
-        //    $"import {{" +
-        //    $" IssueSeverity{CodeObjectSuffix}" +
-        //    $" }} from '../{_relativeValueSetDirectory}/IssueSeverity{CodeObjectSuffix}.js';");
-
-        //BuildInterfaceForPrimitive(sb, primitive);
-
         BuildClassForPrimitive(sb, primitive);
 
         WriteFile(sb, Path.Combine(_relativeModelDirectory, primitive.ExportClassName + ".ts"));
+
+        if (PrimitivesWithSimpleVersions.Contains(primitive.ExportClassName))
+        {
+            sb = new();
+
+            WriteHeader(sb);
+
+            sb.WriteLine($"// FHIR Simple Primitive (no extended properties): {primitive.FhirName}");
+            sb.WriteLine(string.Empty);
+            sb.WriteLineIndented("import * as fhir from '../fhir.js';");
+            sb.WriteLine(string.Empty);
+
+            BuildClassForPrimitive(sb, primitive, true);
+
+            WriteFile(sb, Path.Combine(_relativeModelDirectory, primitive.ExportClassName + "Simple.ts"));
+        }
     }
 
     /// <summary>Builds interface for primitive.</summary>
@@ -814,10 +814,14 @@ public sealed class TypeScriptSdk : ILanguage
     /// <summary>Builds class for primitive.</summary>
     /// <param name="sb">       The writer.</param>
     /// <param name="primitive">The primitive.</param>
+    /// <param name="isSimple"> (Optional) True if is simple, false if not.</param>
     private void BuildClassForPrimitive(
         ExportStringBuilder sb,
-        ModelBuilder.ExportPrimitive primitive)
+        ModelBuilder.ExportPrimitive primitive,
+        bool isSimple = false)
     {
+        string simpleExt = isSimple ? "Simple" : string.Empty;
+
         sb.WriteLine(string.Empty);
         if (!string.IsNullOrEmpty(primitive.ExportComment))
         {
@@ -832,16 +836,7 @@ public sealed class TypeScriptSdk : ILanguage
             WriteIndentedComment(sb, primitive.ExportComment);
         }
 
-        //if (string.IsNullOrEmpty(primitive.ExportClassType))
-        //{
-        //    sb.WriteLineIndented($"export class {primitive.ExportClassName} implements {primitive.ExportInterfaceName} {{");
-        //}
-        //else
-        //{
-        //    sb.WriteLineIndented($"export class {primitive.ExportClassName} extends {primitive.ExportClassType} implements {primitive.ExportInterfaceName} {{");
-        //}
-
-        sb.WriteLineIndented($"export class {primitive.ExportClassName} extends {primitive.ExportClassType} {{");
+        sb.WriteLineIndented($"export class {primitive.ExportClassName}{simpleExt} extends {primitive.ExportClassType}{simpleExt} {{");
 
         sb.IncreaseIndent();
 
@@ -869,19 +864,15 @@ public sealed class TypeScriptSdk : ILanguage
         }
 
         WriteIndentedComment(sb, $"A {primitive.FhirName} value, represented as a JS {primitive.JsonExportType}");
-        //sb.WriteLineIndented($"value:{primitive.JsonExportType}|null = null;");
         sb.WriteLineIndented($"declare value?:{primitive.JsonExportType}|null|undefined;");
 
-        BuildConstructor(sb, primitive);
+        BuildConstructor(sb, primitive, isSimple);
 
         // add model validation function
         BuildModelValidation(sb, primitive);
 
         // add primitive-like functions
         BuildPrimitiveFunctions(sb, primitive);
-
-        // add toJSON override
-        //BuildToJson(sb, primitive);
 
         if (_options.SupportFiles.TryGetInputForKey(primitive.ExportClassName, out string contents))
         {
@@ -1038,8 +1029,11 @@ public sealed class TypeScriptSdk : ILanguage
     /// <param name="primitive">The primitive.</param>
     private void BuildConstructor(
         ExportStringBuilder sb,
-        ModelBuilder.ExportPrimitive primitive)
+        ModelBuilder.ExportPrimitive primitive,
+        bool isSimple = false)
     {
+        string simpleExt = isSimple ? "Simple" : string.Empty;
+
         sb.OpenScope("/**");
         sb.WriteLineIndented($" * Create a {primitive.ExportClassName}");
         sb.WriteLineIndented($" * @param value {primitive.ExportComment}");
@@ -1050,7 +1044,7 @@ public sealed class TypeScriptSdk : ILanguage
 
         sb.OpenScope(
             $"constructor" +
-            $"(source:Partial<{primitive.ExportClassName}Args> = {{}}," +
+            $"(source:Partial<{primitive.ExportClassName}{simpleExt}Args> = {{}}," +
             $" options:fhir.FhirConstructorOptions = {{ }} " +
             $") {{");
 
@@ -1372,10 +1366,10 @@ public sealed class TypeScriptSdk : ILanguage
             // *v*alidate *O*ptional or *R*equired
             string validationFunction = element.IsOptional ? "vO" : "vR";
 
-            if (element.PreventExtensions)
-            {
-                validationFunction += "P";      // *P*rimitive
-            }
+            //if (element.IsPrimitive)
+            //{
+            //    validationFunction += "P";      // *P*rimitive
+            //}
 
             if (element.IsArray)
             {
@@ -1386,17 +1380,10 @@ public sealed class TypeScriptSdk : ILanguage
                 validationFunction += "S";      // *S*calar
             }
 
-            if (element.PreventExtensions)
+            if (element.IsJsonArtefact)
             {
-                // only check required primitives - optional ones have nothing to check
-                if (!element.IsOptional)
-                {
-                    sb.WriteLineIndented(
-                        $"iss.push(...this.{validationFunction}(" +
-                        $"'{element.ExportName}'," +
-                        $"exp" +
-                        $"));");
-                }
+                // already checked as part of function definition
+                continue;
             }
             else if (element.HasReferencedValueSet &&
                      (element.BoundValueSetStrength == FhirElement.ElementDefinitionBindingStrength.Required))
@@ -1834,7 +1821,7 @@ public sealed class TypeScriptSdk : ILanguage
             }
 
             BuildConstructorElement(sb, element);
-            if (element.IsPrimitive)
+            if (element.IsPrimitive && (!element.IsSimple))
             {
                 BuildConstructorElementExtension(sb, element);
             }

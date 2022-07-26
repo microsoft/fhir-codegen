@@ -44,7 +44,7 @@ public class ModelBuilder
         bool IsArray,
         bool IsPrimitive,
         bool IsJsonArtefact,
-        bool PreventExtensions,
+        bool IsSimple,
         bool HasReferencedValueSet,
         string ValueSetExportName,
         FhirElement.ElementDefinitionBindingStrength? BoundValueSetStrength,
@@ -258,6 +258,9 @@ public class ModelBuilder
         sorted.Add(new SortedExportKey("FhirPrimitive", TokensFromPrimitive("FhirPrimitive")));
         usedKeys.Add("FhirPrimitive");
 
+        sorted.Add(new SortedExportKey("FhirPrimitiveSimple", TokensFromPrimitive("FhirPrimitiveSimple")));
+        usedKeys.Add("FhirPrimitiveSimple");
+
         foreach (ExportPrimitive primitive in primitives.Values)
         {
             if (usedKeys.Contains(primitive.ExportClassName))
@@ -267,6 +270,12 @@ public class ModelBuilder
 
             sorted.Add(new SortedExportKey(primitive.ExportClassName, TokensFromPrimitive(primitive.ExportClassName)));
             usedKeys.Add(primitive.ExportClassName);
+
+            if (PrimitivesWithSimpleVersions.Contains(primitive.ExportClassName))
+            {
+                sorted.Add(new SortedExportKey(primitive.ExportClassName + "Simple", TokensFromPrimitive(primitive.ExportClassName + "Simple")));
+                usedKeys.Add(primitive.ExportClassName + "Simple");
+            }
         }
 
         return sorted;
@@ -470,16 +479,20 @@ public class ModelBuilder
     }
 
     /// <summary>Expand export type.</summary>
-    /// <param name="fhirPath">     Path to the FHIR element.</param>
-    /// <param name="fhirType"> Name of the FHIR type.</param>
-    /// <param name="exportType">   [out] Type of the export.</param>
-    /// <param name="interfaceType">[out] Type of the interface.</param>
-    /// <param name="jsonType">     [out] Type of the JSON.</param>
+    /// <param name="fhirPath">      Path to the FHIR element.</param>
+    /// <param name="fhirType">      Name of the FHIR type.</param>
+    /// <param name="exportTypeName">Name of the export type.</param>
+    /// <param name="components">    The components.</param>
+    /// <param name="isSimple">      True if is simple, false if not.</param>
+    /// <param name="exportType">    [out] Type of the export.</param>
+    /// <param name="interfaceType"> [out] Type of the interface.</param>
+    /// <param name="jsonType">      [out] Type of the JSON.</param>
     private void ExpandExportType(
         string fhirPath,
         string fhirType,
         string exportTypeName,
         Dictionary<string, FhirComplex> components,
+        bool isSimple,
         out string exportType,
         out string interfaceType,
         out string jsonType)
@@ -513,6 +526,11 @@ public class ModelBuilder
                 ReservedWords);
             interfaceType = exportType;
             jsonType = PrimitiveTypeMap[fhirType];
+
+            if (isSimple && PrimitivesWithSimpleVersions.Contains(exportType))
+            {
+                exportType = exportType + "Simple";
+            }
 
             return;
         }
@@ -595,6 +613,7 @@ public class ModelBuilder
                     fhirElementType,
                     elementExportType,
                     fhirComplex.Components,
+                    fhirElement.IsSimple,
                     out elementExportType,
                     out elementInterfaceType,
                     out elementJsonType);
@@ -615,6 +634,7 @@ public class ModelBuilder
                     rec.BaseFhirType,
                     rec.ExportFhirType,
                     fhirComplex.Components,
+                    false,
                     out string exportType,
                     out string exportInterfaceType,
                     out string exportJsonType);
@@ -659,7 +679,7 @@ public class ModelBuilder
             fhirElement.IsArray,
             RequiresExtension(elementJsonType),
             false,
-            false,
+            fhirElement.IsSimple,
             hasReferencedValueSet,
             referencedValueSetExportName,
             vsBindStrength,
