@@ -186,17 +186,7 @@ public class Differ
                 break;
 
             case FhirArtifactClassEnum.ValueSet:
-                {
-                    // compare highest version of value set in each package
-                    string vsA = ((FhirValueSetCollection)a).ValueSetsByVersion.Keys.Max();
-                    string vsB = ((FhirValueSetCollection)b).ValueSetsByVersion.Keys.Max();
-
-                    CompareValueSet(
-                        keyA,
-                        ((FhirValueSetCollection)a).ValueSetsByVersion[vsA],
-                        ((FhirValueSetCollection)a).ValueSetsByVersion[vsB]);
-                }
-
+                CompareValueSet(keyA, (FhirValueSet)a, (FhirValueSet)b);
                 break;
 
             case FhirArtifactClassEnum.CapabilityStatement:
