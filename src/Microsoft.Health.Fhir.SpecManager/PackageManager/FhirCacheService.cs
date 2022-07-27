@@ -140,6 +140,8 @@ public class FhirCacheService : IDisposable
             version = string.Empty;
         }
 
+        name = GetPackageNameFromInput(name);
+
         if (version.Equals("dev", StringComparison.OrdinalIgnoreCase))
         {
             if (TryDownloadCoreViaCI(name, branchName, out directory))
@@ -507,10 +509,7 @@ public class FhirCacheService : IDisposable
         string branchName,
         out string directory)
     {
-        if (branchName.StartsWith("branches/", StringComparison.OrdinalIgnoreCase))
-        {
-            branchName = branchName.Substring(9);
-        }
+        branchName = GetCoreBranchFromInput(branchName);
 
         Uri branchUri;
 
@@ -584,10 +583,7 @@ public class FhirCacheService : IDisposable
         out string name,
         out string directory)
     {
-        if (branchName.StartsWith("ig/", StringComparison.OrdinalIgnoreCase))
-        {
-            branchName = branchName.Substring(3);
-        }
+        branchName = GetIgBranchFromInput(branchName);
 
         try
         {
@@ -632,24 +628,7 @@ public class FhirCacheService : IDisposable
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetGuideCiPackageDetails(string branchName, out NpmPackageDetails details)
     {
-        if (branchName.StartsWith("http://build.fhir.org/ig/", StringComparison.OrdinalIgnoreCase))
-        {
-            branchName = branchName.Substring(25);
-        }
-        else if (branchName.StartsWith("https://build.fhir.org/ig/", StringComparison.OrdinalIgnoreCase))
-        {
-            branchName = branchName.Substring(26);
-        }
-        else if (branchName.StartsWith("ig/", StringComparison.OrdinalIgnoreCase))
-        {
-            branchName = branchName.Substring(3);
-        }
-
-        if (branchName.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
-        {
-            int last = branchName.LastIndexOf('/');
-            branchName = branchName.Substring(0, last);
-        }
+        branchName = GetIgBranchFromInput(branchName);
 
         try
         {
@@ -698,25 +677,9 @@ public class FhirCacheService : IDisposable
         string branchName,
         out NpmPackageDetails details)
     {
-        if (branchName.StartsWith("http://build.fhir.org/branches/", StringComparison.OrdinalIgnoreCase))
-        {
-            branchName = branchName.Substring(31);
-        }
-        else if (branchName.StartsWith("https://build.fhir.org/branches/", StringComparison.OrdinalIgnoreCase))
-        {
-            branchName = branchName.Substring(32);
-        }
-        else if (branchName.StartsWith("branches/", StringComparison.OrdinalIgnoreCase))
-        {
-            branchName = branchName.Substring(9);
-        }
+        branchName = GetCoreBranchFromInput(branchName);
 
-        if (branchName.Contains('/'))
-        {
-            branchName = branchName.Split('/')[0];
-        }
-
-        Uri branchUri = null;
+        Uri branchUri;
 
         switch (branchName.ToLowerInvariant())
         {
@@ -789,10 +752,7 @@ public class FhirCacheService : IDisposable
     {
         directory = Path.Combine(_cachePackageDirectory, $"{name}#current");
 
-        if (branchName.StartsWith("ig/", StringComparison.OrdinalIgnoreCase))
-        {
-            branchName = branchName.Substring(3);
-        }
+        branchName = GetIgBranchFromInput(branchName);
 
         string localNpmFilename = Path.Combine(directory, "package", "package.json");
         if (File.Exists(localNpmFilename))
@@ -861,6 +821,96 @@ public class FhirCacheService : IDisposable
         }
 
         return false;
+    }
+
+    /// <summary>Gets package name from canonical.</summary>
+    /// <param name="input">The input.</param>
+    /// <returns>The package name from canonical.</returns>
+    private static string GetPackageNameFromInput(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return string.Empty;
+        }
+
+        if (input.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+        {
+            if (input.EndsWith('/'))
+            {
+                return input.Substring(0, input.Length - 1).Split('/').Last();
+            }
+
+            return input.Split('/').Last();
+        }
+
+        return input;
+    }
+
+    /// <summary>Gets ig branch from input.</summary>
+    /// <param name="input">The input.</param>
+    /// <returns>The ig branch from input.</returns>
+    private static string GetIgBranchFromInput(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return string.Empty;
+        }
+
+        string branchName = input;
+
+        if (branchName.StartsWith("http://build.fhir.org/ig/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(25);
+        }
+        else if (branchName.StartsWith("https://build.fhir.org/ig/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(26);
+        }
+        else if (branchName.StartsWith("ig/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(3);
+        }
+
+        if (branchName.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+        {
+            int last = branchName.LastIndexOf('/');
+            branchName = branchName.Substring(0, last);
+        }
+
+        return branchName;
+    }
+
+    /// <summary>Gets core branch from input.</summary>
+    /// <param name="input">The input.</param>
+    /// <returns>The core branch from input.</returns>
+    private static string GetCoreBranchFromInput(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return string.Empty;
+        }
+
+        string branchName = input;
+
+        if (branchName.StartsWith("http://build.fhir.org/branches/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(31);
+        }
+        else if (branchName.StartsWith("https://build.fhir.org/branches/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(32);
+        }
+        else if (branchName.StartsWith("branches/", StringComparison.OrdinalIgnoreCase))
+        {
+            branchName = branchName.Substring(9);
+        }
+
+        if (branchName.Contains('/'))
+        {
+            branchName = branchName.Split('/')[0];
+        }
+
+        return branchName;
     }
 
     /// <summary>Gets the cached packages in this collection.</summary>
@@ -1024,6 +1074,8 @@ public class FhirCacheService : IDisposable
     public bool TryGetPackageManifests(string packageName, out IEnumerable<RegistryPackageManifest> manifests)
     {
         List<RegistryPackageManifest> manifestList = new();
+
+        packageName = GetPackageNameFromInput(packageName);
 
         foreach (Uri registryUri in PackageRegistryUris)
         {
