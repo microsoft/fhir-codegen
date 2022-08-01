@@ -1121,7 +1121,7 @@ public class Differ
             artifactClass,
             rootKey,
             complex.Path,
-            DiffResults.DiffTypeEnum.Added,
+            DiffResults.DiffTypeEnum.Removed,
             string.Empty,
             complex.Path);
 
