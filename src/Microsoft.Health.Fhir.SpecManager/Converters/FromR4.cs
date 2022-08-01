@@ -714,6 +714,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     ProcessDataTypePrimitive(sd, fhirVersionInfo);
                     break;
 
+                case "logical":
+                    ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.LogicalModel);
+                    break;
+
                 case "resource":
                 case "complex-type":
                     if (sd.Derivation == "constraint")
@@ -1111,7 +1115,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 {
                     if (!TryGetTypeFromElements(
                             sd.Name,
-                            sd.Differential.Element,
+                            sd.Snapshot.Element,
                             out Dictionary<string, FhirElementType> baseTypes,
                             out string _,
                             out bool _))
@@ -1522,6 +1526,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         break;
                     case FhirArtifactClassEnum.Profile:
                         fhirVersionInfo.AddProfile(complex);
+                        break;
+                    case FhirArtifactClassEnum.LogicalModel:
+                        fhirVersionInfo.AddLogicalModel(complex);
                         break;
                 }
             }

@@ -28,6 +28,7 @@
     <select id="selectArtifactA" class="form-select" aria-label="Artifact A" @bind="artifactA" disabled="@IsDisabledArtifactA()" >
         @if (!string.IsNullOrEmpty(directiveA))
         {
+            <option value="">(Compare all package contents)</option>
             @foreach((FhirArtifactClassEnum ac, List<FhirArtifactRecord> artifacts) in SpecService[directiveA].ArtifactRecordsByClass)
             {
                 foreach (FhirArtifactRecord artifact in artifacts)
@@ -54,6 +55,7 @@
     <select id="selectArtifactB" class="form-select" aria-label="Artifact B" @bind="artifactB" disabled="@IsDisabledArtifactB()" >
         @if (!string.IsNullOrEmpty(directiveB))
         {
+            <option value="">(Compare all package contents)</option>
             @foreach((FhirArtifactClassEnum ac, List<FhirArtifactRecord> artifacts) in SpecService[directiveB].ArtifactRecordsByClass)
             {
                 foreach (FhirArtifactRecord artifact in artifacts)
@@ -317,16 +319,7 @@
             {
                 if (!showArtifactClass.ContainsKey(artifactClass))
                 {
-                    switch (artifactClass)
-                    {
-                        case FhirArtifactClassEnum.Resource:
-                            showArtifactClass.Add(artifactClass, true);
-                            break;
-
-                        default:
-                            showArtifactClass.Add(artifactClass, false);
-                            break;
-                    }
+                    showArtifactClass.Add(artifactClass, false);
                 }
             }
 
@@ -335,6 +328,33 @@
                 if (!results.DiffsByKeyByArtifactClass.ContainsKey(classEnum))
                 {
                     showArtifactClass.Remove(classEnum);
+                    continue;
+                }
+
+                if (results.DiffsByKeyByArtifactClass[classEnum].Count == 0)
+                {
+                    showArtifactClass[classEnum] = false;
+                }
+            }
+
+            if (showArtifactClass.Count((kvp) => kvp.Value == true) == 0)
+            {
+                if (results.DiffsByKeyByArtifactClass.ContainsKey(FhirArtifactClassEnum.Resource) &&
+                    (results.DiffsByKeyByArtifactClass[FhirArtifactClassEnum.Resource].Count > 0))
+                {
+                    showArtifactClass[FhirArtifactClassEnum.Resource] = true;
+                }
+                else if (results.DiffsByKeyByArtifactClass.ContainsKey(FhirArtifactClassEnum.Profile) &&
+                    (results.DiffsByKeyByArtifactClass[FhirArtifactClassEnum.Profile].Count > 0))
+                {
+                    showArtifactClass[FhirArtifactClassEnum.Profile] = true;
+                }
+                else
+                {
+                    foreach (FhirArtifactClassEnum ac in showArtifactClass.Keys)
+                    {
+                        showArtifactClass[ac] = true;
+                    }
                 }
             }
         }
