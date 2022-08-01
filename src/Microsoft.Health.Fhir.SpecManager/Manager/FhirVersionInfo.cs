@@ -1231,7 +1231,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <param name="logicalModel">The logical model.</param>
     public void AddLogicalModel(FhirComplex logicalModel)
     {
-        _logicalModelsByName.Add(logicalModel.Path, logicalModel);
+        _logicalModelsByName.Add(logicalModel.Id, logicalModel);
 
         Uri url = logicalModel.URL ?? new Uri(CanonicalUrl, "StructureDefinition/" + logicalModel.Id);
         _artifactClassByUrl.Add(url.ToString(), FhirArtifactClassEnum.LogicalModel);

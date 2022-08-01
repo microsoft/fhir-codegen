@@ -55,18 +55,9 @@ public class FhirTypeBase
         StandardStatus = standardStatus;
         IsExperimental = isExperimental;
         ShortDescription = shortDescription;
-        Purpose = purpose;
+        Purpose = string.IsNullOrEmpty(purpose) ? string.Empty : purpose;
+        Comment = string.IsNullOrEmpty(comment) ? Purpose : comment;
         _baseTypeName = string.Empty;
-
-        if (string.IsNullOrEmpty(comment))
-        {
-            Comment = purpose;
-        }
-        else
-        {
-            Comment = comment;
-        }
-
         ValidationRegEx = validationRegEx;
         URL = url;
 
