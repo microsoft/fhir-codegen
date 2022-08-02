@@ -3,6 +3,8 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using Microsoft.OpenApi.Any;
+
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
 /// <summary>Class that performs a diff between two FhirVersionInfo packages.</summary>
@@ -1282,6 +1284,15 @@ public class Differ
             A.ElementTypes,
             B.ElementTypes);
 
+        TestForDiff<FhirElement.PropertyRepresentationCodes>(
+            A.Representations,
+            B.Representations,
+            artifactClass,
+            rootKey,
+            A.Path,
+            DiffResults.DiffTypeEnum.AddedRepresentation,
+            DiffResults.DiffTypeEnum.RemovedRepresentation);
+
         TestForDiff(
             A.FieldOrder,
             B.FieldOrder,
@@ -1755,6 +1766,73 @@ public class Differ
         HashSet<string> valuesB = B?.ToHashSet() ?? new();
 
         HashSet<string> valueIntersection = A?.ToHashSet() ?? new();
+        valueIntersection.IntersectWith(valuesB);
+
+        valuesA.ExceptWith(valueIntersection);
+        valuesB.ExceptWith(valueIntersection);
+
+        foreach (string val in valuesA)
+        {
+            _results.AddDiff(
+                artifactClass,
+                key,
+                path,
+                diffIfRemoved,
+                val,
+                string.Empty);
+        }
+
+        foreach (string val in valuesB)
+        {
+            _results.AddDiff(
+                artifactClass,
+                key,
+                path,
+                diffIfAdded,
+                string.Empty,
+                val);
+        }
+    }
+
+    /// <summary>Tests for difference.</summary>
+    /// <typeparam name="T">Generic type parameter.</typeparam>
+    /// <param name="A">            The List of values to compare from package 'A'.</param>
+    /// <param name="B">            The List of values to compare from package 'B'.</param>
+    /// <param name="artifactClass">The artifact class.</param>
+    /// <param name="key">          The key.</param>
+    /// <param name="path">         Full pathname of the file.</param>
+    /// <param name="diffIfAdded">  The difference if added.</param>
+    /// <param name="diffIfRemoved">The difference if removed.</param>
+    private void TestForDiff<T>(
+        List<T> A,
+        List<T> B,
+        FhirArtifactClassEnum artifactClass,
+        string key,
+        string path,
+        DiffResults.DiffTypeEnum diffIfAdded,
+        DiffResults.DiffTypeEnum diffIfRemoved)
+    {
+        HashSet<string> valuesA = new();
+        HashSet<string> valuesB = new();
+        HashSet<string> valueIntersection = new();
+
+        if ((A != null) && A.Any())
+        {
+            foreach (T val in A)
+            {
+                valuesA.Add(val.ToString());
+                valueIntersection.Add(val.ToString());
+            }
+        }
+
+        if ((B != null) && B.Any())
+        {
+            foreach (T val in B)
+            {
+                valuesB.Add(val.ToString());
+            }
+        }
+
         valueIntersection.IntersectWith(valuesB);
 
         valuesA.ExceptWith(valueIntersection);

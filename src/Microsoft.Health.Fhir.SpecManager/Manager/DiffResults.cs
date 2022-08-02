@@ -115,6 +115,15 @@ public class DiffResults
 
         /// <summary>Indicates some change to the properties of an expansion.</summary>
         ChangedExpansion,
+
+        /// <summary>Indicates the element has a new representation.</summary>
+        AddedRepresentation,
+
+        /// <summary>Indicates the element has removed a representation.</summary>
+        RemovedRepresentation,
+
+        /// <summary>Indicates the element.representation has changed.</summary>
+        ChangedRepresentation,
     }
 
     public readonly record struct DiffRecord(
