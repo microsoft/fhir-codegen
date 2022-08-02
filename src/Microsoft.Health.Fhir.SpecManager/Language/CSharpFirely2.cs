@@ -164,7 +164,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             "CanonicalResource",
             "MetadataResource",
-            "Citation",
         };
 
         /// <summary>True to export five ws.</summary>
