@@ -75,6 +75,11 @@
                             <p><strong>Validation RegEx:</strong> @element.ValidationRegEx</p>
                         }
 
+                        @if (element.Representations.Any())
+                        {
+                            <p><strong>Representations:</strong> @string.Join(", ", element.Representations)</p>
+                        }
+
                         @if (element.Slicing.Any())
                         {
                             <strong>Slicing:</strong>

@@ -14,6 +14,7 @@ public class FhirElement : FhirTypeBase
     private Dictionary<string, FhirElementType> _elementTypes;
     private bool _inDifferential;
     private List<string> _codes;
+    private List<PropertyRepresentationCodes> _representations;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirElement"/> class.
@@ -44,7 +45,8 @@ public class FhirElement : FhirTypeBase
     /// <param name="modifiesParent">   If this element hides a field of its parent.</param>
     /// <param name="bindingStrength">  Strength of binding: required|extensible|preferred|example.</param>
     /// <param name="valueSet">         URL of the value set bound to this element.</param>
-    /// <param name="fiveWs">        Five 'Ws' mapping value.</param>
+    /// <param name="fiveWs">           Five 'Ws' mapping value.</param>
+    /// <param name="representation">   Codes that define how this element is represented in instances, when the deviation varies from the normal case.</param>
     public FhirElement(
         string id,
         string path,
@@ -72,7 +74,8 @@ public class FhirElement : FhirTypeBase
         bool modifiesParent,
         string bindingStrength,
         string valueSet,
-        string fiveWs)
+        string fiveWs,
+        List<PropertyRepresentationCodes> representations)
         : base(
             id,
             path,
@@ -127,6 +130,12 @@ public class FhirElement : FhirTypeBase
                     _codes.Add(clean.Trim());
                 }
             }
+        }
+
+        _representations = new();
+        if ((representations != null) && representations.Any())
+        {
+            _representations.AddRange(representations);
         }
 
         ExplicitName = explicitName;
@@ -273,6 +282,30 @@ public class FhirElement : FhirTypeBase
         Example,
     }
 
+    /// <summary>How a property is represented when serialized.</summary>
+    public enum PropertyRepresentationCodes : int
+    {
+        /// <summary>In XML, this property is represented as an attribute not an element.</summary>
+        [FhirLiteral("xmlAttr")]
+        xmlAttr = 1,
+
+        /// <summary>This element is represented using the XML text attribute (primitives only).</summary>
+        [FhirLiteral("xmlText")]
+        xmlText,
+
+        /// <summary>The type of this element is indicated using xsi:type.</summary>
+        [FhirLiteral("typeAttr")]
+        typeAttr,
+
+        /// <summary>Use CDA narrative instead of XHTML.</summary>
+        [FhirLiteral("cdaText")]
+        cdaText,
+
+        /// <summary>The property is represented using XHTML.</summary>
+        [FhirLiteral("xhtml")]
+        xhtml,
+    }
+
     /// <summary>Gets the explicit name of this element, if one was specified.</summary>
     public string ExplicitName { get; }
 
@@ -334,6 +367,9 @@ public class FhirElement : FhirTypeBase
     /// <summary>Gets the codes.</summary>
     public List<string> Codes => _codes;
 
+    /// <summary>Gets the representation codes.</summary>
+    public List<PropertyRepresentationCodes> Representations => _representations;
+
     /// <summary>Gets the value set this element is bound to.</summary>
     public string ValueSet { get; }
 
@@ -374,6 +410,7 @@ public class FhirElement : FhirTypeBase
     /// <summary>True if this element appears in the differential.</summary>
     public bool InDifferential => _inDifferential;
 
+    /// <summary>Sets in differential.</summary>
     public void SetInDifferential()
     {
         _inDifferential = true;
@@ -452,6 +489,26 @@ public class FhirElement : FhirTypeBase
         return true;
     }
 
+    /// <summary>FHIR representation codes to enum.</summary>
+    /// <param name="codes">The codes.</param>
+    /// <returns>A List&lt;PropertyRepresentationCodes&gt;</returns>
+    public static List<PropertyRepresentationCodes> ConvertFhirRepresentations(IEnumerable<string> codes)
+    {
+        if ((codes == null) || (!codes.Any()))
+        {
+            return new();
+        }
+
+        List<PropertyRepresentationCodes> enums = new();
+
+        foreach (string val in codes)
+        {
+            enums.Add(val.ToFhirEnum<PropertyRepresentationCodes>());
+        }
+
+        return enums;
+    }
+
     /// <summary>Deep copy.</summary>
     /// <param name="primitiveTypeMap">   The primitive type map.</param>
     /// <param name="copySlicing">        True to copy slicing.</param>
@@ -506,7 +563,8 @@ public class FhirElement : FhirTypeBase
             ModifiesParent,
             BindingStrength,
             ValueSet,
-            FiveWs);
+            FiveWs,
+            _representations);
 
         // check for base type name
         if (!string.IsNullOrEmpty(BaseTypeName))
