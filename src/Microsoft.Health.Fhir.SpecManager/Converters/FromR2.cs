@@ -1202,6 +1202,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         true,
                                         string.Empty,
                                         string.Empty,
+                                        null,
                                         null));
                             }
 
@@ -1379,7 +1380,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             modifiesParent,
                             bindingStrength,
                             valueSet,
-                            fiveWs);
+                            fiveWs,
+                            FhirElement.ConvertFhirRepresentations(element.Representation));
 
                         if (isRootElement)
                         {
@@ -1515,6 +1517,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             false,
                             string.Empty,
                             string.Empty,
+                            null,
                             null));
                 }
 
