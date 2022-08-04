@@ -269,7 +269,7 @@ export class FhirBase {
 
     (this as any)[p].forEach((x:any,i:number) => {
       iss.push(...x.doModelValidation(`${exp}.${p}[${i}]`));
-      if (!(this as any)[p].hasCodingFromValidationObj(vsV)) {
+      if (!x.hasCodingFromValidationObj(vsV)) {
         iss.push({
           severity: (vsS === 'r') ? 'error' : 'information', 
           code:'code-invalid', 
