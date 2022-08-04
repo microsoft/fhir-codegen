@@ -494,14 +494,14 @@ public sealed class TypeScriptSdk : ILanguage
 
         // function open
         WriteIndentedComment(sb, "Factory creator for FHIR Resources");
-        sb.OpenScope("function resourceFactory(source:any) : FhirResource|null {");
+        sb.OpenScope("function resourceFactory(source:any, options:FhirConstructorOptions = {}) : FhirResource|null {");
 
         // switch open
         sb.OpenScope("switch (source['resourceType']) {");
 
         foreach (ModelBuilder.ExportComplex complex in exports.ResourcesByExportName.Values)
         {
-            sb.WriteLineIndented($"case \"{complex.FhirName}\": return new {complex.ExportClassName}(source);");
+            sb.WriteLineIndented($"case \"{complex.FhirName}\": return new {complex.ExportClassName}(source, options);");
         }
 
         sb.WriteLineIndented("default: return null;");

@@ -83,6 +83,14 @@ public class FhirManager : IDisposable
             {
                 packages.Add(_loadedInfoByDirective[directive]);
             }
+            else if (directive.Contains(".core", StringComparison.OrdinalIgnoreCase))
+            {
+                string t = directive.Replace(".core", string.Empty);
+                if (_loadedInfoByDirective.ContainsKey(t))
+                {
+                    packages.Add(_loadedInfoByDirective[t]);
+                }
+            }
         }
 
         return packages;
