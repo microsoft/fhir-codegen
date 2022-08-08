@@ -157,7 +157,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found array in scalar property ${p} (${exp})`}
+        details: {text: `Found array in scalar property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -191,7 +192,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found array in scalar property ${p} (${exp})`}
+        details: {text: `Found array in scalar property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -201,7 +203,9 @@ export class FhirBase {
       iss.push({
         severity: (vsS === 'r') ? 'error' : 'information', 
         code:'code-invalid', 
-        details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`}});
+        details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`},
+        expression: [exp],
+      });
     }
 
     return iss;
@@ -263,7 +267,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found scalar in array property ${p} (${exp})`}
+        details: {text: `Found scalar in array property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -273,7 +278,9 @@ export class FhirBase {
         iss.push({
           severity: (vsS === 'r') ? 'error' : 'information', 
           code:'code-invalid', 
-          details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`}});
+          details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`},
+          expression: [exp],
+        });
       }
     });
 
@@ -294,7 +301,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -302,7 +310,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found array in scalar property ${p} (${exp})`}
+        details: {text: `Found array in scalar property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -310,7 +319,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -340,7 +350,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -348,7 +359,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found array in scalar property ${p} (${exp})`}
+        details: {text: `Found array in scalar property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -358,7 +370,9 @@ export class FhirBase {
       iss.push({
         severity: (vsS === 'r') ? 'error' : 'information', 
         code:'code-invalid', 
-        details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`}});
+        details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`},
+        expression: [exp],
+      });
     }
     return iss;
   }
@@ -377,7 +391,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -385,7 +400,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found scalar in array property ${p} (${exp})`}
+        details: {text: `Found scalar in array property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -393,7 +409,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -425,7 +442,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -433,7 +451,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found scalar in array property ${p} (${exp})`}
+        details: {text: `Found scalar in array property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -441,7 +460,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -452,7 +472,9 @@ export class FhirBase {
         iss.push({
           severity: (vsS === 'r') ? 'error' : 'information', 
           code:'code-invalid', 
-          details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`}});
+          details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`},
+          expression: [exp],
+        });
       }
     });
     return iss;
