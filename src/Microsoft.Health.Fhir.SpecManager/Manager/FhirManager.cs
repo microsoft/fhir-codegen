@@ -47,7 +47,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             {
                 { 2, new SortedSet<string>() { "1.0.2" } },
                 { 3, new SortedSet<string>() { "3.0.2" } },
-                { 4, new SortedSet<string>() { "4.0.1", "4.1.0", "4.3.0-snapshot1" } },
+                { 4, new SortedSet<string>() { "4.0.1", "4.1.0", "4.3.0", "4.3.0-snapshot1" } },
                 { 5, new SortedSet<string>() { "4.4.0", "4.5.0", "4.6.0", "5.0.0-snapshot1" } },
             };
 
@@ -109,6 +109,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         ExamplesPackageName = string.Empty,
                         ExpansionsPackageName = "hl7.fhir.r4b.expansions",
                         VersionString = "4.1.0",
+                        IsDevBuild = false,
+                        IsLocalBuild = false,
+                        IsOnDisk = false,
+                    }
+                },
+                {
+                    "4.3.0",
+                    new FhirVersionInfo(4)
+                    {
+                        ReleaseName = "R4B",
+                        BallotPrefix = string.Empty,
+                        PackageName = "hl7.fhir.r4b.core",
+                        ExamplesPackageName = "hl7.fhir.r4b.examples",
+                        ExpansionsPackageName = "hl7.fhir.r4b.expansions",
+                        VersionString = "4.3.0",
                         IsDevBuild = false,
                         IsLocalBuild = false,
                         IsOnDisk = false,
