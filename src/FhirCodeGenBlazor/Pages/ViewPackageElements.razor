@@ -24,7 +24,7 @@
 else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRecordsByClass.Any())
 {
     <PageTitle>@directive</PageTitle>
-    <p>
+    <div class="form-control mb-2" id="artifactClassGrouping" >
         @foreach ((FhirArtifactClassEnum classEnum, bool visible) in showArtifactClass)
         {
             <button type="button"
@@ -33,33 +33,120 @@ else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRe
                 @classEnum.ToString() (@SpecService[directive].ArtifactRecordsByClass[classEnum].Count())
             </button>
         }
-    </p>
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="switchToggleDetails" @bind="showDetailedInfo" />
-        <label for="switchToggleDetails" class="form-label">Show Element Details</label>
     </div>
 
-    <div class="form-control mb-2">
-        <label class="form-check-label">
-            <input class="form-check-input mb-2" type="radio" name="filterType" id="radioFilterTypeBasic" checked="@filterValueType.Equals("basicName")" onchange="@((ChangeEventArgs __e) => ChangeFilterType("basicName"))" />
-            Basic string match on <code>Name</code> property
-        </label>
-        <br />
+    <ul class="nav nav-tabs" id="filterTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="@GetNavButtonClass(FilterValueTypeCodes.StringMatch)" @onclick="(() => filterValueType = FilterValueTypeCodes.StringMatch)" id="filterStringMatch" type="button" role="tab" aria-controls="tabStringMatch">Basic String</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="@GetNavButtonClass(FilterValueTypeCodes.RegexMatch)" @onclick="(() => filterValueType = FilterValueTypeCodes.RegexMatch)" id="filterRegexMatch" type="button" role="tab" aria-controls="tabRegexMatch">Regex</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="@GetNavButtonClass(FilterValueTypeCodes.LINQ)" @onclick="(() => filterValueType = FilterValueTypeCodes.LINQ)" id="filterLinq" type="button" role="tab" aria-controls="tabLinq">LINQ</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="filterTabContent">
+        <div class="@GetNavPaneClass(FilterValueTypeCodes.StringMatch)" id="tabStringMatch" role="tabpanel" aria-labelledby="filterStringMatch">
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">Comparison Property</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Comparison Property" @bind="stringMatchProperty">
+                        @foreach (string p in _basicMatchProperties)
+                        {
+                            if (p.Equals(stringMatchProperty, StringComparison.Ordinal))
+                            {
+                                <option value="@p" selected>@p</option>
+                            }
+                            else
+                            {
+                                <option value="@p">@p</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
 
-        <label class="form-check-label">
-            <input class="form-check-input mb-2" type="radio" name="filterType" id="radioFilterTypeRegex" checked="@filterValueType.Equals("regexName")" onchange="@((ChangeEventArgs __e) => ChangeFilterType("regexName"))" />
-            Regex matching on <code>Name</code> property
-        </label>
-        <br />
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">String Match Type</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="String Match Type" @bind="stringMatchType" id="selectStringMatchType">
+                        <option value="@StringMatchTypeCodes.StartsWith">Starts With</option>
+                        <option value="@StringMatchTypeCodes.Contains" selected>Contains</option>
+                        <option value="@StringMatchTypeCodes.EndsWith">Ends With</option>
+                    </select>
+                </div>
+            </div>
 
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="filterType" id="radioFilterTypeLinq" checked="@filterValueType.Equals("linq")" onchange="@((ChangeEventArgs __e) => ChangeFilterType("linq"))" />
-            LINQ query on <code>FhirElement</code> objects
-        </label>
-        <br />
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">Case Sensitivity</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Match Case Sensitivity" @bind="stringSensitivity">
+                        <option value="@StringMatchSensitivityCodes.CaseInsensitive" selected>Case Insensitive</option>
+                        <option value="@StringMatchSensitivityCodes.CaseSensitive">Case Sensitive</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">Search Value</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                        class="form-control"
+                        aria-label="Search Value"
+                        @bind-value="stringMatchValue"
+                        @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredElements(e?.Value?.ToString() ?? "")))" />
+                </div>
+            </div>
+        </div>
+
+        <div class="@GetNavPaneClass(FilterValueTypeCodes.RegexMatch)" id="tabRegexMatch" role="tabpanel" aria-labelledby="filterRegexMatch">
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">Comparison Property</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Comparison Property" @bind="regexMatchProperty">
+                        @foreach (string p in _basicMatchProperties)
+                        {
+                            if (p.Equals(regexMatchProperty, StringComparison.Ordinal))
+                            {
+                                <option value="@p" selected>@p</option>
+                            }
+                            else
+                            {
+                                <option value="@p">@p</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">Regular Expression</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                       class="form-control"
+                       aria-label="Regular Expression"
+                       @bind-value="regexExpression"
+                       @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredElements(e?.Value?.ToString() ?? "")))" />
+                </div>
+            </div>
+        </div>
+
+        <div class="@GetNavPaneClass(FilterValueTypeCodes.LINQ)" id="tabLinq" role="tabpanel" aria-labelledby="filterLinq">
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">LINQ Predicate</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                       class="form-control"
+                       aria-label="LINQ Predicate"
+                       @bind-value="linqPredicate"
+                       @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredElements(e?.Value?.ToString() ?? "")))" />
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="input-group">
+@*    <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Element Filter</span>
         <input
             type="text"
@@ -69,16 +156,39 @@ else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRe
             @bind-value="elementFilterText"
             @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredElements(e?.Value?.ToString() ?? "")))"
             />
-        <span class="ms-2 mt-2">@filteredElements.Count elements found</span>
-    </div>
+    </div>*@
 
-    <div class="input-group">
-        <button type="button" class="btn-primary m-1" @onclick="(() => DownloadElementPathsJson())">
-            Download Element Paths JSON
-        </button>
-        <button type="button" class="btn-primary m-1" @onclick="(() => DownloadFhirElementsJson())">
-            Download Element JSON
-        </button>
+    <div class="m-2 row">
+        <div class="form-check form-switch col-3">
+            <input class="form-check-input" type="checkbox" role="switch" id="switchToggleDetails" @bind="showDetailedInfo" />
+            <label for="switchToggleDetails" class="form-label">Show Element Details</label>
+        </div>
+        <div class="col-3">
+            <label class="form-label">@filteredElements.Count elements found</label>
+            &nbsp;
+            @switch (filterState)
+            {
+                case FilterStateCodes.Busy:
+                    <div class="spinner-border"></div>
+                    break;
+                case FilterStateCodes.Ok:
+                    <span class="oi oi-circle-check alert-success"></span>
+                    break;
+                case FilterStateCodes.Error:
+                    <span class="oi oi-x alert-danger"></span>
+                    break;
+                case FilterStateCodes.Idle:
+                default:
+                    break;
+            }
+        </div>
+        <div class="col-6">
+            <label class="form-label">Download JSON:</label>
+            <div class="btn-group small" role="group" aria-label="Download Options">
+                <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => DownloadElementPathsJson())">Paths</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => DownloadFhirElementsJson())">Elements</button>
+            </div>
+        </div>
     </div>
 
     <table class="table table-striped table-hover">
@@ -169,11 +279,79 @@ else
         { "linq",      "LINQ query on <code>FhirElement</code> objects" },
     };
 
+    /// <summary>Values that represent filter state codes.</summary>
+    private enum FilterStateCodes
+    {
+        Idle,
+        Busy,
+        Ok,
+        Error,
+    };
+
+    /// <summary>Values that represent filter value type codes.</summary>
+    private enum FilterValueTypeCodes
+    {
+        StringMatch,
+        RegexMatch,
+        LINQ,
+    }
+
+    /// <summary>Values that represent string match types.</summary>
+    private enum StringMatchTypeCodes
+    {
+        StartsWith,
+        Contains,
+        EndsWith,
+    }
+
+    /// <summary>Values that represent string match sensitivities.</summary>
+    private enum StringMatchSensitivityCodes
+    {
+        CaseSensitive,
+        CaseInsensitive,
+    }
+
+    /// <summary>The basic match properties.</summary>
+    private static List<string> _basicMatchProperties = new()
+    {
+        "Comment",
+        "ExplicitName",
+        "Id",
+        "Name",
+        "Path",
+        "ShortDescription",
+        "URL",
+    };
+
+    /// <summary>Gets or sets the type of the string match.</summary>
+    private StringMatchTypeCodes stringMatchType { get; set; } = StringMatchTypeCodes.StartsWith;
+
+    /// <summary>Gets or sets the string sensitivity.</summary>
+    private StringMatchSensitivityCodes stringSensitivity { get; set; } = StringMatchSensitivityCodes.CaseInsensitive;
+
+    /// <summary>Gets or sets the string match property.</summary>
+    private string stringMatchProperty { get; set; } = "Name";
+
+    /// <summary>Gets or sets the RegEx match property.</summary>
+    private string regexMatchProperty { get; set; } = "Name";
+
+    /// <summary>Gets or sets the state of the filter.</summary>
+    private FilterStateCodes filterState { get; set; } = FilterStateCodes.Idle;
+
+    /// <summary>The string match value.</summary>
+    private string stringMatchValue = "";
+
+    /// <summary>The RegEx expression.</summary>
+    private string regexExpression = "";
+
+    /// <summary>The linq predicate.</summary>
+    private string linqPredicate = "";
+
     /// <summary>Specifies the filter.</summary>
     private string elementFilterText = "";
 
     /// <summary>Type of the filter value.</summary>
-    private string filterValueType = "basicName";
+    private FilterValueTypeCodes filterValueType = FilterValueTypeCodes.StringMatch;
 
     /// <summary>The show artifact class.</summary>
     private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new()
@@ -220,8 +398,9 @@ else
         .AddReferences(
             typeof(FhirElement).Assembly,
             typeof(SpecManagerWebService).Assembly,
-            AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(a => a.GetName().Name?.Equals("System.Linq") ?? false))
-        .AddImports("System.Linq");
+            AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(a => a.GetName().Name?.Equals("System.Linq") ?? false),
+            AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(a => a.GetName().Name?.Equals("System.Runtime") ?? false))
+        .AddImports("System.Linq", "System.Text", "System.Text.RegularExpressions");
 
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
@@ -308,88 +487,6 @@ else
     }
 
     /// <summary>Adds the elements from complex.</summary>
-    /// <param name="filter">       Specifies the filter.</param>
-    /// <param name="complex">      The complex.</param>
-    /// <param name="elements">     The elements.</param>
-    /// <param name="rootComplex">  The root complex.</param>
-    /// <param name="artifactClass">The artifact class.</param>
-    private void AddElementsFromComplex(
-        string filter,
-        FhirComplex complex,
-        List<ElementRecord> elements,
-        FhirComplex rootComplex,
-        FhirArtifactClassEnum artifactClass)
-    {
-        if (string.IsNullOrEmpty(filter) || (complex == null))
-        {
-            return;
-        }
-
-        if (complex.Components != null)
-        {
-            foreach (FhirComplex component in complex.Components.Values)
-            {
-                AddElementsFromComplex(filter, component, elements, rootComplex, artifactClass);
-            }
-        }
-
-        if (complex.Elements != null)
-        {
-            foreach (FhirElement element in complex.Elements.Values)
-            {
-                if (element.Name.Contains(filter, StringComparison.OrdinalIgnoreCase))
-                {
-                    elements.Add(new ElementRecord(
-                        artifactClass,
-                        rootComplex,
-                        element));
-                }
-            }
-        }
-    }
-
-    /// <summary>Adds the elements from complex.</summary>
-    /// <param name="expression">   The expression.</param>
-    /// <param name="complex">      The complex.</param>
-    /// <param name="elements">     The elements.</param>
-    /// <param name="rootComplex">  The root complex.</param>
-    /// <param name="artifactClass">The artifact class.</param>
-    private void AddElementsFromComplex(
-        Regex expression,
-        FhirComplex complex,
-        List<ElementRecord> elements,
-        FhirComplex rootComplex,
-        FhirArtifactClassEnum artifactClass)
-    {
-        if ((expression == null) || (complex == null))
-        {
-            return;
-        }
-
-        if (complex.Components != null)
-        {
-            foreach (FhirComplex component in complex.Components.Values)
-            {
-                AddElementsFromComplex(expression, component, elements, rootComplex, artifactClass);
-            }
-        }
-
-        if (complex.Elements != null)
-        {
-            foreach (FhirElement element in complex.Elements.Values)
-            {
-                if (expression.IsMatch(element.Name))
-                {
-                    elements.Add(new ElementRecord(
-                        artifactClass,
-                        rootComplex,
-                        element));
-                }
-            }
-        }
-    }
-
-    /// <summary>Adds the elements from complex.</summary>
     /// <param name="predicate">    The predicate.</param>
     /// <param name="complex">      The complex.</param>
     /// <param name="elements">     The elements.</param>
@@ -445,125 +542,120 @@ else
     /// <param name="appliedFilter">(Optional) A filter specifying the applied.</param>
     private async void RebuildFilteredElements(string appliedFilter = "")
     {
-        elementFilterText = appliedFilter;
+        filterState = FilterStateCodes.Busy;
+        await InvokeAsync(() => StateHasChanged());
+        //elementFilterText = appliedFilter;
 
         if (appliedFilter.Length < 3)
         {
             filteredElements.Clear();
+            filterState = FilterStateCodes.Idle;
+            await InvokeAsync(() => StateHasChanged());
             return;
         }
 
+        Func<FhirElement, bool> predicate;
         List<ElementRecord> filtered = new();
 
         switch (filterValueType)
         {
-            case "basicName":
-                {
-                    foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
-                    {
-                        if (!visible)
-                        {
-                            continue;
-                        }
+            case FilterValueTypeCodes.StringMatch:
+                predicate = ((e) => e.Name.Contains(appliedFilter, StringComparison.OrdinalIgnoreCase));
 
-                        if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
-                        {
-                            foreach (FhirComplex complex in values)
-                            {
-                                AddElementsFromComplex(appliedFilter, complex, filtered, complex, artifactClass);
-                            }
-                        }
+                try
+                {
+                    string sc = stringSensitivity == StringMatchSensitivityCodes.CaseSensitive
+                        ? "System.StringComparison.Ordinal"
+                        : "System.StringComparison.OrdinalIgnoreCase";
+
+                    string p = $"e => e.{stringMatchProperty}.{stringMatchType}(\"{appliedFilter}\", {sc})";
+
+
+                    predicate = CSharpScript.EvaluateAsync<Func<FhirElement, bool>>(p, csScriptOpts).Result;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"RebuildFilteredElements <<< caught exception processing string match filter: {ex.Message}");
+                    if (ex.InnerException != null)
+                    {
+                        Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
                     }
+                    filteredElements.Clear();
+                    filterState = FilterStateCodes.Error;
+                    return;
+                }
+
+                break;
+
+            case FilterValueTypeCodes.RegexMatch:
+                Regex expression = new(appliedFilter);
+                predicate = ((e) => expression.IsMatch(e.Name));
+                break;
+
+            case FilterValueTypeCodes.LINQ:
+                try
+                {
+                    predicate = CSharpScript.EvaluateAsync<Func<FhirElement, bool>>(
+                        appliedFilter,
+                        csScriptOpts,
+                        new ScriptGlobals(SpecService[directive])
+                    ).Result;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"RebuildFilteredElements <<< caught exception processing linq filter: {ex.Message}");
+                    if (ex.InnerException != null)
+                    {
+                        Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
+                    }
+                    filteredElements.Clear();
+                    filterState = FilterStateCodes.Error;
+                    return;
                 }
                 break;
 
-            case "regexName":
+            default:
+                filteredElements.Clear();
+                filterState = FilterStateCodes.Error;
+                await InvokeAsync(() => StateHasChanged());
+                return;
+        }
+
+        try
+        {
+            foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
+            {
+                if (!visible)
                 {
-                    try
-                    {
-                        Regex expression = new(appliedFilter);
+                    continue;
+                }
 
-                        foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
-                        {
-                            if (!visible)
-                            {
-                                continue;
-                            }
-
-                            if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
-                            {
-                                foreach (FhirComplex complex in values)
-                                {
-                                    AddElementsFromComplex(expression, complex, filtered, complex, artifactClass);
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception)
+                if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
+                {
+                    foreach (FhirComplex complex in values)
                     {
-                        filteredElements.Clear();
-                        return;
+                        AddElementsFromComplex(predicate, complex, filtered, complex, artifactClass);
                     }
                 }
-                break;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"RebuildFilteredElements <<< caught exception processing filter ({predicate}): {ex.Message}");
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
+            }
 
-            case "linq":
-                {
-                    Func<FhirElement, bool> predicate;
-
-                    try
-                    {
-                        predicate = CSharpScript.EvaluateAsync<Func<FhirElement, bool>>(
-                            appliedFilter,
-                            csScriptOpts,
-                            new ScriptGlobals(SpecService[directive])
-                        ).Result;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"RebuildFilteredElements <<< caught exception processing linq filter: {ex.Message}");
-                        if (ex.InnerException != null)
-                        {
-                            Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
-                        }
-                        filteredElements.Clear();
-                        return;
-                    }
-
-                    try
-                    {
-                        foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
-                        {
-                            if (!visible)
-                            {
-                                continue;
-                            }
-
-                            if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
-                            {
-                                foreach (FhirComplex complex in values)
-                                {
-                                    AddElementsFromComplex(predicate, complex, filtered, complex, artifactClass);
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"RebuildFilteredElements <<< caught exception processing linq filter: {ex.Message}");
-                        if (ex.InnerException != null)
-                        {
-                            Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
-                        }
-                        filteredElements.Clear();
-                        return;
-                    }
-                }
-                break;
+            filteredElements.Clear();
+            filterState = FilterStateCodes.Error;
+            await InvokeAsync(() => StateHasChanged());
+            return;
         }
 
         filtered.Sort((a, b) => a.Element.Path.CompareTo(b.Element.Path));
         filteredElements = filtered;
+        filterState = FilterStateCodes.Ok;
 
         // manually flag state has changed in case we are in a callback / async context
         await InvokeAsync(() => StateHasChanged());
@@ -588,6 +680,12 @@ else
     /// <summary>Change filter type.</summary>
     /// <param name="filterType">Type of the filter.</param>
     private void ChangeFilterType(string filterType)
+    {
+        InvokeAsync(() => RebuildFilteredElements(elementFilterText));
+    }
+    /// <summary>Change filter type.</summary>
+    /// <param name="filterType">Type of the filter.</param>
+    private void ChangeFilterType(FilterValueTypeCodes filterType)
     {
         filterValueType = filterType;
         InvokeAsync(() => RebuildFilteredElements(elementFilterText));
@@ -641,5 +739,31 @@ else
         }
 
         return "btn btn-outline-primary m-1";
+    }
+
+    /// <summary>Gets navigation button class.</summary>
+    /// <param name="tab">The tab.</param>
+    /// <returns>The navigation button class.</returns>
+    private string GetNavButtonClass(FilterValueTypeCodes tab)
+    {
+        if (filterValueType == tab)
+        {
+            return "nav-link active";
+        }
+
+        return "nav-link";
+    }
+
+    /// <summary>Gets navigation pane class.</summary>
+    /// <param name="tab">The tab.</param>
+    /// <returns>The navigation pane class.</returns>
+    private string GetNavPaneClass(FilterValueTypeCodes tab)
+    {
+        if (filterValueType == tab)
+        {
+            return "tab-pane fade show active form-control mb-2";
+        }
+
+        return "tab-pane fade form-control mb-2";
     }
 }
