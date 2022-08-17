@@ -2,11 +2,17 @@
 
 @using FhirCodeGenBlazor.Models;
 @using FhirCodeGenBlazor.Services;
+@using Markdig;
+@using Microsoft.CodeAnalysis.CSharp.Scripting;
+@using Microsoft.CodeAnalysis.Scripting;
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
-@using Markdig
-@using System.Text.RegularExpressions
+@using Microsoft.Health.Fhir.SpecManager.Manager;
+@using System.IO;
+@using System.Text.RegularExpressions;
+@using System.Linq;
 @inject NavigationManager NavigationManager
 @inject ISpecManagerWebService SpecService
+@inject IJSRuntime JS
 @implements IDisposable
 @implements IPackageVersionProvider
 
@@ -15,17 +21,44 @@
     <PageTitle>FHIR Element Search</PageTitle>
     <p><em>This page requires a package name and version, please select...</em></p>
 }
-else if (SpecService[directive].ArtifactRecordsByClass.Any())
+else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRecordsByClass.Any())
 {
     <PageTitle>@directive</PageTitle>
+    <p>
+        @foreach ((FhirArtifactClassEnum classEnum, bool visible) in showArtifactClass)
+        {
+            <button type="button"
+                class=@GetButtonClass(visible)
+                @onclick="() => ToggleShowState(classEnum)">
+                @classEnum.ToString() (@SpecService[directive].ArtifactRecordsByClass[classEnum].Count())
+            </button>
+        }
+    </p>
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="switchToggleDetails" @bind="showDetailedInfo" />
         <label for="switchToggleDetails" class="form-label">Show Element Details</label>
     </div>
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="switchToggleRegex" @bind="filterIsRegex" />
-        <label for="switchToggleRegex" class="form-label">Use RegEx</label>
+
+    <div class="form-control mb-2">
+        <label class="form-check-label">
+            <input class="form-check-input mb-2" type="radio" name="filterType" id="radioFilterTypeBasic" checked="@filterValueType.Equals("basicName")" onchange="@((ChangeEventArgs __e) => ChangeFilterType("basicName"))" />
+            Basic string match on <code>Name</code> property
+        </label>
+        <br />
+
+        <label class="form-check-label">
+            <input class="form-check-input mb-2" type="radio" name="filterType" id="radioFilterTypeRegex" checked="@filterValueType.Equals("regexName")" onchange="@((ChangeEventArgs __e) => ChangeFilterType("regexName"))" />
+            Regex matching on <code>Name</code> property
+        </label>
+        <br />
+
+        <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="filterType" id="radioFilterTypeLinq" checked="@filterValueType.Equals("linq")" onchange="@((ChangeEventArgs __e) => ChangeFilterType("linq"))" />
+            LINQ query on <code>FhirElement</code> objects
+        </label>
+        <br />
     </div>
+
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Element Filter</span>
         <input
@@ -38,6 +71,16 @@ else if (SpecService[directive].ArtifactRecordsByClass.Any())
             />
         <span class="ms-2 mt-2">@filteredElements.Count elements found</span>
     </div>
+
+    <div class="input-group">
+        <button type="button" class="btn-primary m-1" @onclick="(() => DownloadElementPathsJson())">
+            Download Element Paths JSON
+        </button>
+        <button type="button" class="btn-primary m-1" @onclick="(() => DownloadFhirElementsJson())">
+            Download Element JSON
+        </button>
+    </div>
+
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -118,11 +161,29 @@ else
 }
 
 @code {
+    /// <summary>(Immutable) List of types of the filters.</summary>
+    private static readonly Dictionary<string,string> _filterTypes = new()
+    {
+        { "basicName", "Basic string match on <code>Name</code> property" },
+        { "regexName", "Regex matching on <code>Name</code> property" },
+        { "linq",      "LINQ query on <code>FhirElement</code> objects" },
+    };
+
     /// <summary>Specifies the filter.</summary>
     private string elementFilterText = "";
 
-    /// <summary>True if filter is RegEx.</summary>
-    private bool filterIsRegex = false;
+    /// <summary>Type of the filter value.</summary>
+    private string filterValueType = "basicName";
+
+    /// <summary>The show artifact class.</summary>
+    private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new()
+    {
+        { FhirArtifactClassEnum.ComplexType, true },
+        { FhirArtifactClassEnum.Resource, true },
+        { FhirArtifactClassEnum.Extension, true },
+        { FhirArtifactClassEnum.Profile, true },
+        { FhirArtifactClassEnum.LogicalModel, false }
+    };
 
     /// <summary>
     /// Gets or sets a value indicating whether the detailed information is shown.
@@ -154,6 +215,13 @@ else
 
     private List<ElementRecord> filteredElements = new();
 
+    /// <summary>Options for controlling the create structure script.</summary>
+    private ScriptOptions csScriptOpts = ScriptOptions.Default
+        .AddReferences(
+            typeof(FhirElement).Assembly,
+            typeof(SpecManagerWebService).Assembly,
+            AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(a => a.GetName().Name?.Equals("System.Linq") ?? false))
+        .AddImports("System.Linq");
 
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
@@ -252,19 +320,30 @@ else
         FhirComplex rootComplex,
         FhirArtifactClassEnum artifactClass)
     {
-        foreach (FhirComplex component in complex.Components.Values)
+        if (string.IsNullOrEmpty(filter) || (complex == null))
         {
-            AddElementsFromComplex(filter, component, elements, rootComplex, artifactClass);
+            return;
         }
 
-        foreach (FhirElement element in complex.Elements.Values)
+        if (complex.Components != null)
         {
-            if (element.Name.Contains(filter, StringComparison.OrdinalIgnoreCase))
+            foreach (FhirComplex component in complex.Components.Values)
             {
-                elements.Add(new ElementRecord(
-                    artifactClass,
-                    rootComplex,
-                    element));
+                AddElementsFromComplex(filter, component, elements, rootComplex, artifactClass);
+            }
+        }
+
+        if (complex.Elements != null)
+        {
+            foreach (FhirElement element in complex.Elements.Values)
+            {
+                if (element.Name.Contains(filter, StringComparison.OrdinalIgnoreCase))
+                {
+                    elements.Add(new ElementRecord(
+                        artifactClass,
+                        rootComplex,
+                        element));
+                }
             }
         }
     }
@@ -282,14 +361,63 @@ else
         FhirComplex rootComplex,
         FhirArtifactClassEnum artifactClass)
     {
-        foreach (FhirComplex component in complex.Components.Values)
+        if ((expression == null) || (complex == null))
         {
-            AddElementsFromComplex(expression, component, elements, rootComplex, artifactClass);
+            return;
         }
 
-        foreach (FhirElement element in complex.Elements.Values)
+        if (complex.Components != null)
         {
-            if (expression.IsMatch(element.Name))
+            foreach (FhirComplex component in complex.Components.Values)
+            {
+                AddElementsFromComplex(expression, component, elements, rootComplex, artifactClass);
+            }
+        }
+
+        if (complex.Elements != null)
+        {
+            foreach (FhirElement element in complex.Elements.Values)
+            {
+                if (expression.IsMatch(element.Name))
+                {
+                    elements.Add(new ElementRecord(
+                        artifactClass,
+                        rootComplex,
+                        element));
+                }
+            }
+        }
+    }
+
+    /// <summary>Adds the elements from complex.</summary>
+    /// <param name="predicate">    The predicate.</param>
+    /// <param name="complex">      The complex.</param>
+    /// <param name="elements">     The elements.</param>
+    /// <param name="rootComplex">  The root complex.</param>
+    /// <param name="artifactClass">The artifact class.</param>
+    private void AddElementsFromComplex(
+        Func<FhirElement, bool> predicate,
+        FhirComplex complex,
+        List<ElementRecord> elements,
+        FhirComplex rootComplex,
+        FhirArtifactClassEnum artifactClass)
+    {
+        if ((predicate == null) || (complex == null))
+        {
+            return;
+        }
+
+        if (complex.Components != null)
+        {
+            foreach (FhirComplex component in complex.Components.Values)
+            {
+                AddElementsFromComplex(predicate, component, elements, rootComplex, artifactClass);
+            }
+        }
+
+        if (complex.Elements != null)
+        {
+            foreach (FhirElement element in complex.Elements.Values.Where(predicate))
             {
                 elements.Add(new ElementRecord(
                     artifactClass,
@@ -299,10 +427,23 @@ else
         }
     }
 
-    /// <summary>Rebuild filtered artifacts.</summary>
-    /// <param name="appliedFilter">            (Optional) A filter specifying the applied.</param>
-    private async void RebuildFilteredElements(
-        string appliedFilter = "")
+    /// <summary>A script globals.</summary>
+    public class ScriptGlobals
+    {
+        /// <summary>Gets the FhirVersionInfo.</summary>
+        public FhirVersionInfo Info { get; }
+
+        /// <summary>Initializes a new instance of the ScriptGlobals class.</summary>
+        /// <param name="info">The information.</param>
+        public ScriptGlobals(FhirVersionInfo info)
+        {
+            Info = info;
+        }
+    }
+
+    /// <summary>Rebuild filtered elements.</summary>
+    /// <param name="appliedFilter">(Optional) A filter specifying the applied.</param>
+    private async void RebuildFilteredElements(string appliedFilter = "")
     {
         elementFilterText = appliedFilter;
 
@@ -314,50 +455,111 @@ else
 
         List<ElementRecord> filtered = new();
 
-        if (filterIsRegex)
+        switch (filterValueType)
         {
-            try
-            {
-                Regex expression = new(appliedFilter);
-
-                // search through complex data types
-                foreach (FhirComplex complex in SpecService[directive].ComplexTypes.Values)
+            case "basicName":
                 {
-                    AddElementsFromComplex(expression, complex, filtered, complex, FhirArtifactClassEnum.ComplexType);
-                }
+                    foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
+                    {
+                        if (!visible)
+                        {
+                            continue;
+                        }
 
-                foreach (FhirComplex complex in SpecService[directive].Resources.Values)
+                        if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
+                        {
+                            foreach (FhirComplex complex in values)
+                            {
+                                AddElementsFromComplex(appliedFilter, complex, filtered, complex, artifactClass);
+                            }
+                        }
+                    }
+                }
+                break;
+
+            case "regexName":
                 {
-                    AddElementsFromComplex(expression, complex, filtered, complex, FhirArtifactClassEnum.Resource);
-                }
+                    try
+                    {
+                        Regex expression = new(appliedFilter);
 
-                foreach (FhirComplex complex in SpecService[directive].Profiles.Values)
+                        foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
+                        {
+                            if (!visible)
+                            {
+                                continue;
+                            }
+
+                            if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
+                            {
+                                foreach (FhirComplex complex in values)
+                                {
+                                    AddElementsFromComplex(expression, complex, filtered, complex, artifactClass);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        filteredElements.Clear();
+                        return;
+                    }
+                }
+                break;
+
+            case "linq":
                 {
-                    AddElementsFromComplex(expression, complex, filtered, complex, FhirArtifactClassEnum.Profile);
+                    Func<FhirElement, bool> predicate;
+
+                    try
+                    {
+                        predicate = CSharpScript.EvaluateAsync<Func<FhirElement, bool>>(
+                            appliedFilter,
+                            csScriptOpts,
+                            new ScriptGlobals(SpecService[directive])
+                        ).Result;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"RebuildFilteredElements <<< caught exception processing linq filter: {ex.Message}");
+                        if (ex.InnerException != null)
+                        {
+                            Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
+                        }
+                        filteredElements.Clear();
+                        return;
+                    }
+
+                    try
+                    {
+                        foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
+                        {
+                            if (!visible)
+                            {
+                                continue;
+                            }
+
+                            if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
+                            {
+                                foreach (FhirComplex complex in values)
+                                {
+                                    AddElementsFromComplex(predicate, complex, filtered, complex, artifactClass);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"RebuildFilteredElements <<< caught exception processing linq filter: {ex.Message}");
+                        if (ex.InnerException != null)
+                        {
+                            Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
+                        }
+                        filteredElements.Clear();
+                        return;
+                    }
                 }
-            }
-            catch (Exception)
-            {
-                return;
-            }
-        }
-        else
-        {
-            // search through complex data types
-            foreach (FhirComplex complex in SpecService[directive].ComplexTypes.Values)
-            {
-                AddElementsFromComplex(appliedFilter, complex, filtered, complex, FhirArtifactClassEnum.ComplexType);
-            }
-
-            foreach (FhirComplex complex in SpecService[directive].Resources.Values)
-            {
-                AddElementsFromComplex(appliedFilter, complex, filtered, complex, FhirArtifactClassEnum.Resource);
-            }
-
-            foreach (FhirComplex complex in SpecService[directive].Profiles.Values)
-            {
-                AddElementsFromComplex(appliedFilter, complex, filtered, complex, FhirArtifactClassEnum.Profile);
-            }
+                break;
         }
 
         filtered.Sort((a, b) => a.Element.Path.CompareTo(b.Element.Path));
@@ -373,5 +575,71 @@ else
     private string LinkForArtifact(FhirArtifactRecord record)
     {
         return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&url={record.Url}";
+    }
+
+    /// <summary>Toggle show state.</summary>
+    /// <param name="classEnum">The class enum.</param>
+    private void ToggleShowState(FhirArtifactClassEnum classEnum)
+    {
+        showArtifactClass[classEnum] = !showArtifactClass[classEnum];
+        InvokeAsync(() => RebuildFilteredElements(elementFilterText));
+    }
+
+    /// <summary>Change filter type.</summary>
+    /// <param name="filterType">Type of the filter.</param>
+    private void ChangeFilterType(string filterType)
+    {
+        filterValueType = filterType;
+        InvokeAsync(() => RebuildFilteredElements(elementFilterText));
+    }
+
+    private async void DownloadElementPathsJson()
+    {
+        /// <summary>The elements.</summary>
+        IEnumerable<string> elements = filteredElements.Select<ElementRecord, string>(e => e.Element.Path);
+        string content = System.Text.Json.JsonSerializer.Serialize(elements);
+        using (Stream fs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content), false))
+        using (DotNetStreamReference streamRef = new DotNetStreamReference(fs, false))
+        {
+            await JS.InvokeVoidAsync("downloadFileFromStream", "elementPaths.json", streamRef);
+        }
+    }
+
+    /// <summary>Downloads the FHIR elements JSON.</summary>
+    private async void DownloadFhirElementsJson()
+    {
+        IEnumerable<FhirElement> elements = filteredElements.Select<ElementRecord, FhirElement>(e => e.Element);
+        string content = System.Text.Json.JsonSerializer.Serialize(elements);
+        using (Stream fs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content), false))
+        using (DotNetStreamReference streamRef = new DotNetStreamReference(fs, false))
+        {
+            await JS.InvokeVoidAsync("downloadFileFromStream", "elements.json", streamRef);
+        }
+    }
+
+    /// <summary>Gets linq execute button class.</summary>
+    /// <param name="currentFilterType">Type of the current filter.</param>
+    /// <returns>The linq execute button class.</returns>
+    private string GetLinqExecButtonClass(string currentFilterType)
+    {
+        if (currentFilterType.Equals("linq", StringComparison.Ordinal))
+        {
+            return "btn btn-primary ms-1";
+        }
+
+        return "btn btn-dark ms-1 disabled";
+    }
+
+    /// <summary>Gets button class.</summary>
+    /// <param name="enabled">True to enable, false to disable.</param>
+    /// <returns>The button class.</returns>
+    private string GetButtonClass(bool enabled)
+    {
+        if (enabled)
+        {
+            return "btn btn-primary m-1";
+        }
+
+        return "btn btn-outline-primary m-1";
     }
 }
