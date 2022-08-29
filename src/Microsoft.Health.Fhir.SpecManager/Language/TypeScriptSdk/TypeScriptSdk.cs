@@ -494,14 +494,14 @@ public sealed class TypeScriptSdk : ILanguage
 
         // function open
         WriteIndentedComment(sb, "Factory creator for FHIR Resources");
-        sb.OpenScope("function resourceFactory(source:any) : FhirResource|null {");
+        sb.OpenScope("function resourceFactory(source:any, options:FhirConstructorOptions = {}) : FhirResource|null {");
 
         // switch open
         sb.OpenScope("switch (source['resourceType']) {");
 
         foreach (ModelBuilder.ExportComplex complex in exports.ResourcesByExportName.Values)
         {
-            sb.WriteLineIndented($"case \"{complex.FhirName}\": return new {complex.ExportClassName}(source);");
+            sb.WriteLineIndented($"case \"{complex.FhirName}\": return new {complex.ExportClassName}(source, options);");
         }
 
         sb.WriteLineIndented("default: return null;");
@@ -1562,7 +1562,7 @@ public sealed class TypeScriptSdk : ILanguage
             sb.WriteLineIndented(
                 $"if (source['{sourceName}'])" +
                 $" {{" +
-                $" this.{destName} = (fhir.resourceFactory(source.{sourceName}) ?? undefined);" +
+                $" this.{destName} = (fhir.resourceFactory(source.{sourceName}, options) ?? undefined);" +
                 $" }}");
         }
 
@@ -1571,7 +1571,7 @@ public sealed class TypeScriptSdk : ILanguage
             sb.OpenScope($"if (source['{sourceName}']) {{");
             sb.WriteLineIndented($"this.{destName} = [];");
             sb.OpenScope($"source.{sourceName}.forEach((x) => {{");
-            sb.WriteLineIndented("var r = fhir.resourceFactory(x);");
+            sb.WriteLineIndented("var r = fhir.resourceFactory(x, options);");
             sb.WriteLineIndented($"if (r) {{ this.{destName}!.push(r); }}");
             sb.CloseScope("});");
             sb.CloseScope();
@@ -1580,16 +1580,19 @@ public sealed class TypeScriptSdk : ILanguage
         void AddElement(string sourceName, string destName, string exportType, bool needsNew, bool needsValue, bool needsElse)
         {
             string assignment;
+            string primitiveCheck = needsValue
+                ? " !== undefined"
+                : string.Empty;
 
             if (needsNew)
             {
                 if (needsValue)
                 {
-                    assignment = $"new {exportType}({{value: source.{sourceName}}})";
+                    assignment = $"new {exportType}({{value: source.{sourceName}}}, options)";
                 }
                 else
                 {
-                    assignment = $"new {exportType}(source.{sourceName})";
+                    assignment = $"new {exportType}(source.{sourceName}, options)";
                 }
             }
             else
@@ -1600,7 +1603,7 @@ public sealed class TypeScriptSdk : ILanguage
             if (needsElse)
             {
                 sb.WriteLineIndented(
-                    $"else if (source['{sourceName}'])" +
+                    $"else if (source['{sourceName}']{primitiveCheck})" +
                     $" {{" +
                     $" this.{destName} = {assignment};" +
                     $" }}");
@@ -1608,27 +1611,29 @@ public sealed class TypeScriptSdk : ILanguage
             else
             {
                 sb.WriteLineIndented(
-                    $"if (source['{sourceName}'])" +
+                    $"if (source['{sourceName}']{primitiveCheck})" +
                     $" {{" +
                     $" this.{destName} = {assignment};" +
                     $" }}");
             }
-
         }
 
         void AddElementArray(string sourceName, string destName, string exportType, bool needsNew, bool needsValue, bool needsElse)
         {
             string assignment;
+            string primitiveCheck = needsValue
+                ? " !== undefined"
+                : string.Empty;
 
             if (needsNew)
             {
                 if (needsValue)
                 {
-                    assignment = $"new {exportType}({{value: x}})";
+                    assignment = $"new {exportType}({{value: x}}, options)";
                 }
                 else
                 {
-                    assignment = $"new {exportType}(x)";
+                    assignment = $"new {exportType}(x, options)";
                 }
             }
             else
@@ -1639,7 +1644,7 @@ public sealed class TypeScriptSdk : ILanguage
             if (needsElse)
             {
                 sb.WriteLineIndented(
-                    $"else if (source['{sourceName}'])" +
+                    $"else if (source['{sourceName}']{primitiveCheck})" +
                     $" {{" +
                     $" this.{destName} = source.{sourceName}.map((x) => {assignment});" +
                     $" }}");
@@ -1647,7 +1652,7 @@ public sealed class TypeScriptSdk : ILanguage
             else
             {
                 sb.WriteLineIndented(
-                    $"if (source['{sourceName}'])" +
+                    $"if (source['{sourceName}']{primitiveCheck})" +
                     $" {{" +
                     $" this.{destName} = source.{sourceName}.map((x) => {assignment});" +
                     $" }}");
@@ -1783,7 +1788,7 @@ public sealed class TypeScriptSdk : ILanguage
             sb.WriteLineIndented(
                 $"else" +
                 $" {{" +
-                $" this.{element.ExportName} = new {element.ExportType}(source._{element.ExportName} as {argType});" +
+                $" this.{element.ExportName} = new {element.ExportType}(source._{element.ExportName} as {argType}, options);" +
                 $" }}");
             sb.CloseScope();
         }
