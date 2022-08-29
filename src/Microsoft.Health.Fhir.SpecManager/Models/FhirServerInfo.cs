@@ -136,7 +136,7 @@ public class FhirServerInfo
 
         Dictionary<string, FhirServerResourceInfo> resourceInteractions = new Dictionary<string, FhirServerResourceInfo>();
 
-        foreach (KeyValuePair<string, FhirServerResourceInfo> kvp in ResourceInteractions)
+        foreach (KeyValuePair<string, FhirServerResourceInfo> kvp in source.ResourceInteractions)
         {
             if (!info.Resources.ContainsKey(kvp.Key))
             {
@@ -146,17 +146,17 @@ public class FhirServerInfo
             resourceInteractions.Add(kvp.Key, (FhirServerResourceInfo)kvp.Value.Clone());
         }
 
-        List<SystemRestfulInteraction> serverInteractions = new List<SystemRestfulInteraction>();
-        _serverInteractions.ForEach(i => serverInteractions.Add(i));
+        _serverInteractions = new List<SystemRestfulInteraction>();
+        source.ServerInteractions.ForEach(i => _serverInteractions.Add(i));
 
         Dictionary<string, FhirServerSearchParam> serverSearchParameters = new Dictionary<string, FhirServerSearchParam>();
-        foreach (KeyValuePair<string, FhirServerSearchParam> kvp in ServerSearchParameters)
+        foreach (KeyValuePair<string, FhirServerSearchParam> kvp in source.ServerSearchParameters)
         {
             serverSearchParameters.Add(kvp.Key, (FhirServerSearchParam)kvp.Value.Clone());
         }
 
         Dictionary<string, FhirServerOperation> serverOperations = new Dictionary<string, FhirServerOperation>();
-        foreach (KeyValuePair<string, FhirServerOperation> kvp in ServerOperations)
+        foreach (KeyValuePair<string, FhirServerOperation> kvp in source.ServerOperations)
         {
             serverOperations.Add(kvp.Key, (FhirServerOperation)kvp.Value.Clone());
         }
@@ -164,8 +164,6 @@ public class FhirServerInfo
         ResourceInteractions = resourceInteractions;
         ServerSearchParameters = serverSearchParameters;
         ServerOperations = serverOperations;
-
-        _serverInteractions = serverInteractions;
     }
 
     /// <summary>Values that represent system restful interactions.</summary>
