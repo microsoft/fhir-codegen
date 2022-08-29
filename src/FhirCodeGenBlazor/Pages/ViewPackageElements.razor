@@ -10,6 +10,7 @@
 @using System.IO;
 @using System.Text.RegularExpressions;
 @using System.Linq;
+@using static FhirCodeGenBlazor.Models.PackageElementModels
 @inject NavigationManager NavigationManager
 @inject ISpecManagerWebService SpecService
 @inject IJSRuntime JS
@@ -95,7 +96,7 @@ else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRe
                         class="form-control"
                         aria-label="Search Value"
                         @bind-value="stringMatchValue"
-                        @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredElements(e?.Value?.ToString() ?? "")))" />
+                        @oninput="@((ChangeEventArgs e) => RequestElementFilter(e?.Value?.ToString() ?? null))" />
                 </div>
             </div>
         </div>
@@ -127,7 +128,7 @@ else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRe
                        class="form-control"
                        aria-label="Regular Expression"
                        @bind-value="regexExpression"
-                       @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredElements(e?.Value?.ToString() ?? "")))" />
+                       @oninput="@((ChangeEventArgs e) => RequestElementFilter(e?.Value?.ToString() ?? null))" />
                 </div>
             </div>
         </div>
@@ -140,23 +141,11 @@ else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRe
                        class="form-control"
                        aria-label="LINQ Predicate"
                        @bind-value="linqPredicate"
-                       @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredElements(e?.Value?.ToString() ?? "")))" />
+                       @oninput="@((ChangeEventArgs e) => RequestElementFilter(e?.Value?.ToString() ?? null))" />
                 </div>
             </div>
         </div>
     </div>
-
-@*    <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">Element Filter</span>
-        <input
-            type="text"
-            placeholder="Filter"
-            aria-label="Filter"
-            aria-describedby="basic-addon1"
-            @bind-value="elementFilterText"
-            @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredElements(e?.Value?.ToString() ?? "")))"
-            />
-    </div>*@
 
     <div class="m-2 row">
         <div class="form-check form-switch col-3">
@@ -169,7 +158,7 @@ else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRe
             @switch (filterState)
             {
                 case FilterStateCodes.Busy:
-                    <div class="spinner-border"></div>
+                    <div class="spinner-border-sm"></div>
                     break;
                 case FilterStateCodes.Ok:
                     <span class="oi oi-circle-check alert-success"></span>
@@ -191,6 +180,28 @@ else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRe
         </div>
     </div>
 
+    @if (showPaging)
+    {
+        <div class="m-2 row">
+            <div class="btn-group small" role="group" aria-label="Paging">
+                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="First" @onclick="(() => SetPage(1))">
+                        <span aria-hidden="true">&laquo;</span>
+                </button>
+
+                @foreach (int displayPage in pagingStatus.PageNavigation)
+                {
+                    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => SetPage(displayPage))">
+                        <span aria-hidden="true">@displayPage</span>
+                    </button>
+                }
+
+                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="Last" @onclick="(() => SetPage(pagingStatus.LastPage))">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </div>
+        </div>
+    }
+
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -202,67 +213,62 @@ else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRe
             </tr>
         </thead>
         <tbody>
-            @foreach (ElementRecord rec in filteredElements)
+            @if (showDetailedInfo)
             {
-                <tr class="@GetTrClass()">
-                    <td>
-                        <span class="fw-bold">@rec.Element.Path</span><br/>
-                        <span class="fst-italic">Defined by @rec.DefinedByClass:</span> <span class="fw-bold">@rec.RootComplex.Path</span>
-                        @if (!string.IsNullOrEmpty(rec.Element.FixedFieldName))
-                        {
-                            <span class="text-danger">&nbsp;*</span><span>fixed to:</span>
-                            <span class="font-monospace bg-dark bg-opacity-50 text-light p-1">@rec.Element.FixedFieldValue</span>
-                        }
-                    </td>
-                    <td>
-                        @if (rec.Element.IsMustSupport)
-                        {
-                            <span data-bs-toggle="tooltip" title="Must Support">Ⓜ️ </span>
-                        }
-
-                        @if (rec.Element.IsModifier)
-                        {
-                            <span data-bs-toggle="tooltip" title="@(rec.Element.IsModifierReason ?? "Modifier Element")">⁈ </span>
-                        }
-
-                        @if (rec.Element.IsSummary)
-                        {
-                            <span data-bs-toggle="tooltip" title="Included in Summary">∑ </span>
-                        }
-                    </td>
-                    <td class="text-wrap">@GetElementTypeString(rec.Element)</td>
-                    <td>@rec.Element.FhirCardinality</td>
-                    <td>
-                        @rec.Element.ShortDescription
-                    </td>
-                </tr>
-
-                @if (showDetailedInfo)
+                @lock (_elementLockObject)
                 {
-                    <tr>
-                        <td colspan="5">
-                            <div class="small">
-                                <strong>Definition:</strong><p>@rec.Element.Purpose</p>
-
-                                <strong>Comments:</strong>
-                                @(new MarkupString(Markdown.ToHtml(rec.Element.Comment)))
-
-                                @if (!string.IsNullOrEmpty(rec.Element.ValueSet))
-                                {
-                                    <p><strong>Bound to:</strong> @rec.Element.ValueSet (@rec.Element.ValueSetBindingStrength)</p>
-                                }
-
-                                @if (!string.IsNullOrEmpty(rec.Element.ValidationRegEx))
-                                {
-                                    <p><strong>Validation RegEx:</strong> @rec.Element.ValidationRegEx</p>
-                                }
-                            </div>
-                        </td>
-                    </tr>
+                    @for (int i = pagingStatus.CurrentIndexMin; i < pagingStatus.CurrentIndexMax; i++)
+                    //@foreach (ElementRecord rec in filteredElements)
+                    {
+                        <tr class="table-active">
+                            <FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@filteredElements[i]" />
+                            @*<FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@rec" />*@
+                        </tr>
+                        <tr>
+                            <FhirCodeGenBlazor.Components.PackageElementDetailsRow Rec="@filteredElements[i]" />
+                            @*<FhirCodeGenBlazor.Components.PackageElementDetailsRow Rec="@rec" />*@
+                        </tr>
+                    }
+                }
+            }
+            else
+            {
+                @lock (_elementLockObject)
+                {
+                    @for (int i = pagingStatus.CurrentIndexMin; i < pagingStatus.CurrentIndexMax; i++)
+                    //@foreach (ElementRecord rec in filteredElements)
+                    {
+                        <tr>
+                            <FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@filteredElements[i]" />
+                            @*<FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@rec" />*@
+                        </tr>
+                    }
                 }
             }
         </tbody>
     </table>
+
+    @if (showPaging)
+    {
+        <div class="m-2 row">
+            <div class="btn-group small" role="group" aria-label="Paging">
+                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="First" @onclick="(() => SetPage(1))">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+
+                @foreach (int displayPage in pagingStatus.PageNavigation)
+                {
+                    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => SetPage(displayPage))">
+                        <span aria-hidden="true">@displayPage</span>
+                    </button>
+                }
+
+                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="Last" @onclick="(() => SetPage(pagingStatus.LastPage))">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </div>
+        </div>
+    }
 }
 else
 {
@@ -271,6 +277,9 @@ else
 }
 
 @code {
+    /// <summary>(Immutable) The records per page.</summary>
+    private const int _recordsPerPage = 100;
+
     /// <summary>(Immutable) List of types of the filters.</summary>
     private static readonly Dictionary<string,string> _filterTypes = new()
     {
@@ -323,20 +332,123 @@ else
         "URL",
     };
 
+    /// <summary>A script globals.</summary>
+    public class ScriptGlobals
+    {
+        /// <summary>Gets the FhirVersionInfo.</summary>
+        public FhirVersionInfo Info { get; }
+
+        /// <summary>Gets the match RegEx.</summary>
+        public Regex? MatchRegex { get; }
+
+        /// <summary>Initializes a new instance of the ScriptGlobals class.</summary>
+        /// <param name="info">The information.</param>
+        public ScriptGlobals(FhirVersionInfo info, Regex? matchRegex)
+        {
+            Info = info;
+            MatchRegex = matchRegex;
+        }
+    }
+
+    /// <summary>Type of the string match.</summary>
+    private StringMatchTypeCodes _stringMatchType = StringMatchTypeCodes.Contains;
+
     /// <summary>Gets or sets the type of the string match.</summary>
-    private StringMatchTypeCodes stringMatchType { get; set; } = StringMatchTypeCodes.StartsWith;
+    private StringMatchTypeCodes stringMatchType
+    {
+        get
+        {
+            return _stringMatchType;
+        }
+        set
+        {
+            if (_stringMatchType != value)
+            {
+                _stringMatchType = value;
+                RequestElementFilter();
+            }
+        }
+    }
+
+    /// <summary>The string sensitivity.</summary>
+    private StringMatchSensitivityCodes _stringSensitivity = StringMatchSensitivityCodes.CaseInsensitive;
 
     /// <summary>Gets or sets the string sensitivity.</summary>
-    private StringMatchSensitivityCodes stringSensitivity { get; set; } = StringMatchSensitivityCodes.CaseInsensitive;
+    private StringMatchSensitivityCodes stringSensitivity
+    {
+        get
+        {
+            return _stringSensitivity;
+        }
+        set
+        {
+            if (_stringSensitivity != value)
+            {
+                _stringSensitivity = value;
+                RequestElementFilter();
+            }
+        }
+    }
+
+    /// <summary>The string match property.</summary>
+    private string _stringMatchProperty = "Name";
 
     /// <summary>Gets or sets the string match property.</summary>
-    private string stringMatchProperty { get; set; } = "Name";
+    private string stringMatchProperty
+    {
+        get
+        {
+            return _stringMatchProperty;
+        }
+        set
+        {
+            if (!_stringMatchProperty.Equals(value, StringComparison.Ordinal))
+            {
+                _stringMatchProperty = value;
+                RequestElementFilter();
+            }
+        }
+    }
+
+    /// <summary>The RegEx match property.</summary>
+    private string _regexMatchProperty = "Name";
 
     /// <summary>Gets or sets the RegEx match property.</summary>
-    private string regexMatchProperty { get; set; } = "Name";
+    private string regexMatchProperty
+    {
+        get
+        {
+            return _regexMatchProperty;
+        }
+        set
+        {
+            if (!_regexMatchProperty.Equals(value, StringComparison.Ordinal))
+            {
+                _regexMatchProperty = value;
+                RequestElementFilter();
+            }
+        }
+    }
+
+    /// <summary>State of the filter.</summary>
+    private FilterStateCodes _filterState = FilterStateCodes.Idle;
 
     /// <summary>Gets or sets the state of the filter.</summary>
-    private FilterStateCodes filterState { get; set; } = FilterStateCodes.Idle;
+    private FilterStateCodes filterState
+    {
+        get
+        {
+            return _filterState;
+        }
+        set
+        {
+            if (_filterState != value)
+            {
+                _filterState = value;
+                InvokeAsync(() => StateHasChanged());
+            }
+        }
+    }
 
     /// <summary>The string match value.</summary>
     private string stringMatchValue = "";
@@ -347,11 +459,50 @@ else
     /// <summary>The linq predicate.</summary>
     private string linqPredicate = "";
 
-    /// <summary>Specifies the filter.</summary>
-    private string elementFilterText = "";
+    /// <summary>Type of the filter value.</summary>
+    private FilterValueTypeCodes _filterValueType = FilterValueTypeCodes.StringMatch;
 
     /// <summary>Type of the filter value.</summary>
-    private FilterValueTypeCodes filterValueType = FilterValueTypeCodes.StringMatch;
+    private FilterValueTypeCodes filterValueType
+    {
+        get
+        {
+            return _filterValueType;
+        }
+        set
+        {
+            if (_filterValueType != value)
+            {
+                _filterValueType = value;
+                RequestElementFilter();
+            }
+        }
+    }
+
+    /// <summary>Information about the paging status.</summary>
+    /// <param name="PageNavigation"> The page navigation.</param>
+    /// <param name="CurrentPage">    The current page.</param>
+    /// <param name="CurrentIndexMin">The current index minimum.</param>
+    /// <param name="CurrentIndexMax">The current index maximum.</param>
+    /// <param name="LastPage">       The last page.</param>
+    private record struct PagingStatusInfo(
+        int[] PageNavigation,
+        int CurrentPage,
+        int CurrentIndexMin,
+        int CurrentIndexMax,
+        int LastPage);
+
+    /// <summary>Gets or sets a value indicating whether the paging is shown.</summary>
+    private bool showPaging { get; set; } = false;
+
+    /// <summary>Gets or sets the paging status.</summary>
+    private PagingStatusInfo pagingStatus { get; set; } = new(new int[0], 0, 0, 0, 0);
+
+    /// <summary>The predicates.</summary>
+    private Stack<Func<FhirElement, bool>> _predicates = new();
+
+    /// <summary>The predicates lock object.</summary>
+    private object _predicatesLockObject = new();
 
     /// <summary>The show artifact class.</summary>
     private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new()
@@ -385,13 +536,11 @@ else
     /// <summary>The directive.</summary>
     private string directive = string.Empty;
 
-    /// <summary>Information about the element.</summary>
-    private readonly record struct ElementRecord(
-        FhirArtifactClassEnum DefinedByClass,
-        FhirComplex RootComplex,
-        FhirElement Element);
-
+    /// <summary>The filtered elements.</summary>
     private List<ElementRecord> filteredElements = new();
+
+    /// <summary>The element lock object.</summary>
+    private object _elementLockObject = new();
 
     /// <summary>Options for controlling the create structure script.</summary>
     private ScriptOptions csScriptOpts = ScriptOptions.Default
@@ -413,7 +562,7 @@ else
         NavTracker?.NotifyNav(directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
         NavigationManager.LocationChanged += HandleLocationChanged;
 
-        Task.Run(() => RebuildFilteredElements(string.Empty));
+        RequestElementFilter();
     }
 
     /// <summary>
@@ -425,41 +574,6 @@ else
         NavigationManager.LocationChanged -= HandleLocationChanged;
     }
 
-    /// <summary>Gets tr class.</summary>
-    /// <returns>The tr class.</returns>
-    private string GetTrClass()
-    {
-        if (showDetailedInfo)
-        {
-            return "table-active";
-        }
-
-        return string.Empty;
-    }
-
-    /// <summary>Gets element type string.</summary>
-    /// <param name="element">The element.</param>
-    /// <returns>The element type string.</returns>
-    private string GetElementTypeString(FhirElement element)
-    {
-        if (element.BaseTypeName.Equals(element.Id, StringComparison.Ordinal))
-        {
-            return "BackboneElement";
-        }
-
-        if (!string.IsNullOrEmpty(element.BaseTypeName))
-        {
-            return element.BaseTypeName;
-        }
-
-        return string.Join(
-            ", ",
-            element.ElementTypes.Values.Select(
-                et => et.Profiles.Any()
-                    ? $"{et.Name}( {string.Join(" | ", et.Profiles.Values.Select(p => p.Name))} )"
-                    : et.Name));
-    }
-
     /// <summary>Artifacts updated.</summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">     Artifact index changed event information.</param>
@@ -467,7 +581,7 @@ else
     {
         if ((e.PackageName == PackageName) && (e.Version == Version))
         {
-            RebuildFilteredElements(elementFilterText);
+            RequestElementFilter();
         }
     }
 
@@ -482,7 +596,7 @@ else
 
             NavTracker?.NotifyNav(directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
 
-            Task.Run(() => RebuildFilteredElements(elementFilterText));
+            RequestElementFilter();
         }
     }
 
@@ -524,141 +638,287 @@ else
         }
     }
 
-    /// <summary>A script globals.</summary>
-    public class ScriptGlobals
+    /// <summary>Request element filter.</summary>
+    /// <param name="appliedFilter">(Optional) A specific filter to apply.</param>
+    private async void RequestElementFilter(string? appliedFilter = null)
     {
-        /// <summary>Gets the FhirVersionInfo.</summary>
-        public FhirVersionInfo Info { get; }
+        filterState = FilterStateCodes.Busy;
 
-        /// <summary>Initializes a new instance of the ScriptGlobals class.</summary>
-        /// <param name="info">The information.</param>
-        public ScriptGlobals(FhirVersionInfo info)
+        if (appliedFilter != null)
         {
-            Info = info;
+            switch (filterValueType)
+            {
+                case FilterValueTypeCodes.StringMatch:
+                    stringMatchValue = appliedFilter;
+                    break;
+
+                case FilterValueTypeCodes.RegexMatch:
+                    regexExpression = appliedFilter;
+                    break;
+
+                case FilterValueTypeCodes.LINQ:
+                    linqPredicate = appliedFilter;
+                    break;
+            }
         }
+
+        _ = Task.Run(() =>
+        {
+            if (!TryBuildPredicate(out Func<FhirElement, bool>? compiledPredicate))
+            {
+                lock (_elementLockObject)
+                {
+                    filteredElements.Clear();
+                    showPaging = false;
+                    pagingStatus = new(new int[0], 0, 0, 0, 0);
+                }
+                filterState = FilterStateCodes.Error;
+                return;
+            }
+
+            lock (_predicatesLockObject)
+            {
+                _predicates.Push(compiledPredicate!);
+            }
+
+            //Task.Factory.StartNew(() => FilterElements(), TaskCreationOptions.DenyChildAttach).ConfigureAwait(false);
+        })
+        .ContinueWith((_) => FilterElements())
+        .ConfigureAwait(false);
+
+        //await Task.Run(() => FilterElements()).ConfigureAwait(false);
     }
 
     /// <summary>Rebuild filtered elements.</summary>
-    /// <param name="appliedFilter">(Optional) A filter specifying the applied.</param>
-    private async void RebuildFilteredElements(string appliedFilter = "")
+    private void FilterElements()
     {
-        filterState = FilterStateCodes.Busy;
-        await InvokeAsync(() => StateHasChanged());
-        //elementFilterText = appliedFilter;
-
-        if (appliedFilter.Length < 3)
+        try
         {
-            filteredElements.Clear();
-            filterState = FilterStateCodes.Idle;
-            await InvokeAsync(() => StateHasChanged());
+            List<ElementRecord> filtered = new();
+
+            Func<FhirElement, bool> predicate;
+
+            lock (_predicatesLockObject)
+            {
+                if (!_predicates.Any())
+                {
+                    return;
+                }
+
+                predicate = _predicates.Pop();
+                _predicates.Clear();
+            }
+
+            filterState = FilterStateCodes.Busy;
+
+            try
+            {
+                foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
+                {
+                    if (!visible)
+                    {
+                        continue;
+                    }
+
+                    if (_predicates.Any())
+                    {
+                        _ = Task.Run(() => FilterElements());
+                        return;
+                    }
+
+                    if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
+                    {
+                        foreach (FhirComplex complex in values)
+                        {
+                            AddElementsFromComplex(predicate, complex, filtered, complex, artifactClass);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"RebuildFilteredElements <<< caught exception processing filter ({predicate}): {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
+                }
+
+                lock (_elementLockObject)
+                {
+                    Console.WriteLine(" <<< clearing: ElementFilterTask - exception applying filter");
+                    filteredElements.Clear();
+                    showPaging = false;
+                    pagingStatus = new(new int[0], 0, 0, 0, 0);
+                }
+                filterState = FilterStateCodes.Error;
+                return;
+            }
+
+            if (_predicates.Any())
+            {
+                _ = Task.Run(() => FilterElements());
+                return;
+            }
+
+            filtered.Sort((a, b) => a.Element.Path.CompareTo(b.Element.Path));
+
+            if (_predicates.Any())
+            {
+                _ = Task.Run(() => FilterElements());
+                return;
+            }
+
+            lock (_elementLockObject)
+            {
+                showPaging = true;
+                int totalPages = (int)Math.Floor((decimal)filtered.Count / (decimal)_recordsPerPage);
+
+                List<int> pageList = new();
+                pageList.Add(1);
+                if (totalPages > 1)
+                {
+                    pageList.Add(2);
+                }
+
+                if (totalPages > 2)
+                {
+                    pageList.Add(3);
+                }
+                pagingStatus = new(pageList.ToArray(), 0, 0, Math.Min(100, filtered.Count), totalPages);
+
+                filteredElements = filtered;
+            }
+
+            filterState = FilterStateCodes.Ok;
+        }
+        finally
+        {
+            InvokeAsync(() => StateHasChanged());
+        }
+    }
+
+    void SetPage(int pageNumber)
+    {
+        if ((pageNumber < 1) || (pageNumber > pagingStatus.LastPage))
+        {
             return;
         }
 
-        Func<FhirElement, bool> predicate;
-        List<ElementRecord> filtered = new();
+        lock (_elementLockObject)
+        {
+            List<int> pageList = new();
+
+            if (pageNumber == 1)
+            {
+                pageList.Add(1);
+                if (pagingStatus.LastPage > 1)
+                {
+                    pageList.Add(2);
+                }
+
+                if (pagingStatus.LastPage > 2)
+                {
+                    pageList.Add(3);
+                }
+            }
+            else if (pageNumber == pagingStatus.LastPage)
+            {
+                if (pageNumber > 2)
+                {
+                    pageList.Add(pageNumber - 2);
+                }
+
+                if (pageNumber > 1)
+                {
+                    pageList.Add(pageNumber - 1);
+                }
+
+                pageList.Add(pageNumber);
+            }
+            else
+            {
+                pageList.Add(pageNumber - 1);
+                pageList.Add(pageNumber);
+                pageList.Add(pageNumber + 1);
+            }
+
+            pagingStatus = new(pageList.ToArray(), 0, 100 * pageNumber, Math.Min(100 * (pageNumber + 1), filteredElements.Count), pagingStatus.LastPage);
+        }
+    }
+
+    /// <summary>
+    /// Attempts to build predicate a Func&lt;FhirElement,bool&gt; from the given FilterOptions.
+    /// </summary>
+    /// <param name="predicate">[out] The predicate.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryBuildPredicate(out Func<FhirElement, bool>? predicate)
+    {
+        string predString;
+        Regex? matchRegex = null;
 
         switch (filterValueType)
         {
             case FilterValueTypeCodes.StringMatch:
-                predicate = ((e) => e.Name.Contains(appliedFilter, StringComparison.OrdinalIgnoreCase));
-
-                try
+                if (stringMatchValue.Length < 2)
                 {
-                    string sc = stringSensitivity == StringMatchSensitivityCodes.CaseSensitive
-                        ? "System.StringComparison.Ordinal"
-                        : "System.StringComparison.OrdinalIgnoreCase";
-
-                    string p = $"e => e.{stringMatchProperty}.{stringMatchType}(\"{appliedFilter}\", {sc})";
-
-
-                    predicate = CSharpScript.EvaluateAsync<Func<FhirElement, bool>>(p, csScriptOpts).Result;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"RebuildFilteredElements <<< caught exception processing string match filter: {ex.Message}");
-                    if (ex.InnerException != null)
-                    {
-                        Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
-                    }
-                    filteredElements.Clear();
-                    filterState = FilterStateCodes.Error;
-                    return;
+                    predicate = null;
+                    return false;
                 }
 
+                string sc = stringSensitivity == StringMatchSensitivityCodes.CaseSensitive
+                    ? "System.StringComparison.Ordinal"
+                    : "System.StringComparison.OrdinalIgnoreCase";
+
+                predString = $"e => e.{stringMatchProperty}.{stringMatchType}(\"{stringMatchValue}\", {sc})";
                 break;
 
             case FilterValueTypeCodes.RegexMatch:
-                Regex expression = new(appliedFilter);
-                predicate = ((e) => expression.IsMatch(e.Name));
-                break;
-
-            case FilterValueTypeCodes.LINQ:
                 try
                 {
-                    predicate = CSharpScript.EvaluateAsync<Func<FhirElement, bool>>(
-                        appliedFilter,
-                        csScriptOpts,
-                        new ScriptGlobals(SpecService[directive])
-                    ).Result;
+                    matchRegex = new(regexExpression);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"RebuildFilteredElements <<< caught exception processing linq filter: {ex.Message}");
+                    Console.WriteLine($"TryBuildPredicate <<< caught exception compiling regex ({regexExpression}): {ex.Message}");
                     if (ex.InnerException != null)
                     {
                         Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
                     }
-                    filteredElements.Clear();
-                    filterState = FilterStateCodes.Error;
-                    return;
+                    predicate = null;
+                    return false;
                 }
+
+                predString = $"e => MatchRegex.IsMatch(e.{regexMatchProperty})";
+                break;
+
+            case FilterValueTypeCodes.LINQ:
+                predString = linqPredicate;
                 break;
 
             default:
-                filteredElements.Clear();
-                filterState = FilterStateCodes.Error;
-                await InvokeAsync(() => StateHasChanged());
-                return;
+                predicate = null;
+                return false;
         }
 
         try
         {
-            foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
-            {
-                if (!visible)
-                {
-                    continue;
-                }
-
-                if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
-                {
-                    foreach (FhirComplex complex in values)
-                    {
-                        AddElementsFromComplex(predicate, complex, filtered, complex, artifactClass);
-                    }
-                }
-            }
+            predicate = CSharpScript.EvaluateAsync<Func<FhirElement, bool>>(
+                predString,
+                csScriptOpts,
+                new ScriptGlobals(SpecService[directive], matchRegex)).Result;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"RebuildFilteredElements <<< caught exception processing filter ({predicate}): {ex.Message}");
+            Console.WriteLine($"RebuildFilteredElements <<< caught exception compiling filter ({predString}): {ex.Message}");
             if (ex.InnerException != null)
             {
                 Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
             }
-
-            filteredElements.Clear();
-            filterState = FilterStateCodes.Error;
-            await InvokeAsync(() => StateHasChanged());
-            return;
+            predicate = null;
+            return false;
         }
 
-        filtered.Sort((a, b) => a.Element.Path.CompareTo(b.Element.Path));
-        filteredElements = filtered;
-        filterState = FilterStateCodes.Ok;
-
-        // manually flag state has changed in case we are in a callback / async context
-        await InvokeAsync(() => StateHasChanged());
+        return true;
     }
 
     /// <summary>Links for artifact.</summary>
@@ -674,27 +934,19 @@ else
     private void ToggleShowState(FhirArtifactClassEnum classEnum)
     {
         showArtifactClass[classEnum] = !showArtifactClass[classEnum];
-        InvokeAsync(() => RebuildFilteredElements(elementFilterText));
-    }
-
-    /// <summary>Change filter type.</summary>
-    /// <param name="filterType">Type of the filter.</param>
-    private void ChangeFilterType(string filterType)
-    {
-        InvokeAsync(() => RebuildFilteredElements(elementFilterText));
-    }
-    /// <summary>Change filter type.</summary>
-    /// <param name="filterType">Type of the filter.</param>
-    private void ChangeFilterType(FilterValueTypeCodes filterType)
-    {
-        filterValueType = filterType;
-        InvokeAsync(() => RebuildFilteredElements(elementFilterText));
+        RequestElementFilter();
     }
 
     private async void DownloadElementPathsJson()
     {
         /// <summary>The elements.</summary>
-        IEnumerable<string> elements = filteredElements.Select<ElementRecord, string>(e => e.Element.Path);
+        IEnumerable<string> elements;
+
+        lock (_elementLockObject)
+        {
+            elements = filteredElements.Select<ElementRecord, string>(e => e.Element.Path);
+        }
+
         string content = System.Text.Json.JsonSerializer.Serialize(elements);
         using (Stream fs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content), false))
         using (DotNetStreamReference streamRef = new DotNetStreamReference(fs, false))
@@ -706,7 +958,13 @@ else
     /// <summary>Downloads the FHIR elements JSON.</summary>
     private async void DownloadFhirElementsJson()
     {
-        IEnumerable<FhirElement> elements = filteredElements.Select<ElementRecord, FhirElement>(e => e.Element);
+        IEnumerable<FhirElement> elements;
+
+        lock (_elementLockObject)
+        {
+            elements = filteredElements.Select<ElementRecord, FhirElement>(e => e.Element);
+        }
+
         string content = System.Text.Json.JsonSerializer.Serialize(elements);
         using (Stream fs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content), false))
         using (DotNetStreamReference streamRef = new DotNetStreamReference(fs, false))
