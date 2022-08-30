@@ -829,6 +829,15 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             {
                 return _artifactClassByUrl[joined];
             }
+
+            foreach (string definitionType in FhirPackageLoader.DefinitionalResourceTypesToLoad)
+            {
+                joined = PackageDetails.Canonical + "/" + definitionType + "/" + token;
+                if (_artifactClassByUrl.ContainsKey(joined))
+                {
+                    return _artifactClassByUrl[joined];
+                }
+            }
         }
 
         foreach (string definitionType in FhirPackageLoader.DefinitionalResourceTypesToLoad)
