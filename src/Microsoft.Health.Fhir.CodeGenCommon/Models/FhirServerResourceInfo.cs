@@ -156,6 +156,24 @@ public class FhirServerResourceInfo
         _referencePolicies = referencePolicies;
     }
 
+    /// <summary>Values that represent search method codes.</summary>
+    public enum SearchSupportCodes
+    {
+        None,
+        Both,
+        Get,
+        Post,
+    }
+
+    /// <summary>Values that represent search post parameter location codes.</summary>
+    public enum SearchPostParameterLocationCodes
+    {
+        None,
+        Both,
+        Query,
+        Body,
+    }
+
     /// <summary>Values that represent FHIR resource interactions.</summary>
     public enum FhirInteraction
     {
