@@ -75,6 +75,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>The search parameter location.</summary>
         private FhirServerResourceInfo.SearchPostParameterLocationCodes _searchParamLoc = SearchPostParameterLocationCodes.Body;
 
+        private Dictionary<string, OpenApiParameter> _commonParameters;
+
         /// <summary>True to single response code.</summary>
         private bool _singleResponseCode = false;
 
@@ -416,15 +418,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             document.Components = new OpenApiComponents();
 
-            document.Components.Parameters = new Dictionary<string, OpenApiParameter>()
+            _commonParameters = new Dictionary<string, OpenApiParameter>()
             {
                 ["id"] = BuildPathIdParameter(),
                 ["vid"] = BuildPathVidParameter(),
-                ["_format"] = BuildFormatParameter(),
-                ["_pretty"] = BuildPrettyParameter(),
+                ["_format"] = BuildStringParameter("_format", "Override the HTTP content negotiation"),
+                ["_pretty"] = BuildStringParameter("_pretty", "Ask for a pretty printed response for human convenience"),
                 ["_summary"] = BuildSummaryParameter(),
-                ["_elements"] = BuildElementsParameter(),
+                ["_elements"] = BuildStringParameter("_elements", "Ask for a particular set of elements to be returned"),
+                ["_content"] = BuildStringParameter("_content", "Search on the entire content of the resource"),
+                ["_id"] = BuildStringParameter("_id", "Logical id of this artifact"),
+                ["_in"] = BuildStringParameter("_in", "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List"),
+                ["_language"] = BuildStringParameter("_language", "Language of the resource content"),
+                ["_lastUpdated"] = BuildStringParameter("_lastUpdated", "When the resource version last changed"),
+                ["_list"] = BuildStringParameter("_list", "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists"),
+                ["_profile"] = BuildStringParameter("_profile", "Profiles this resource claims to conform to"),
+                ["_query"] = BuildStringParameter("_query", "A custom search profile that describes a specific defined query operation"),
+                ["_security"] = BuildStringParameter("_security", "Security Labels applied to this resource"),
+                ["_source"] = BuildStringParameter("_source", "Identifies where the resource comes from"),
+                ["_tag"] = BuildStringParameter("_tag", "Tags applied to this resource"),
+                ["_type"] = BuildStringParameter("_type", "A resource type filter"),
             };
+
+            document.Components.Parameters = _commonParameters;
 
             if (_includeSchemas && (!_inlineSchemas))
             {
@@ -1866,6 +1882,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             foreach (FhirServerSearchParam sp in searchParameters)
             {
+                if (_commonParameters.ContainsKey(sp.Name))
+                {
+                    op.Parameters.Add(BuildReferencedParameter(sp.Name));
+                    continue;
+                }
+
                 OpenApiParameter opParam = new OpenApiParameter()
                 {
                     Name = sp.Name,
@@ -1978,45 +2000,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             };
         }
 
-        /// <summary>Builds format parameter.</summary>
-        /// <returns>An OpenApiParameter.</returns>
-        private OpenApiParameter BuildFormatParameter()
-        {
-            return new OpenApiParameter()
-            {
-                Name = "_format",
-                In = ParameterLocation.Query,
-                Description = "Override the HTTP content negotiation",
-                Required = false,
-                Schema = new OpenApiSchema()
-                {
-                    Type = "string",
-                },
-            };
-        }
-
-        /// <summary>Builds pretty parameter.</summary>
-        /// <returns>An OpenApiParameter.</returns>
-        private OpenApiParameter BuildPrettyParameter()
-        {
-            return new OpenApiParameter()
-            {
-                Name = "_pretty",
-                In = ParameterLocation.Query,
-                Description = "Ask for a pretty printed response for human convenience",
-                Required = false,
-                Schema = new OpenApiSchema()
-                {
-                    Type = "string",
-                    Enum = new List<IOpenApiAny>()
-                    {
-                        new OpenApiString("true"),
-                        new OpenApiString("false"),
-                    },
-                },
-            };
-        }
-
         /// <summary>Builds summary parameter.</summary>
         /// <returns>An OpenApiParameter.</returns>
         private OpenApiParameter BuildSummaryParameter()
@@ -2042,15 +2025,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             };
         }
 
-        /// <summary>Builds elements parameter.</summary>
+        /// <summary>Builds string parameter.</summary>
+        /// <param name="name">       The name.</param>
+        /// <param name="description">The description.</param>
         /// <returns>An OpenApiParameter.</returns>
-        private OpenApiParameter BuildElementsParameter()
+        private OpenApiParameter BuildStringParameter(string name, string description)
         {
             return new OpenApiParameter()
             {
-                Name = "_elements",
+                Name = name,
                 In = ParameterLocation.Query,
-                Description = "Ask for a particular set of elements to be returned",
+                Description = description,
                 Required = false,
                 Schema = new OpenApiSchema()
                 {
