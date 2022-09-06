@@ -3,6 +3,7 @@
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @using FhirCodeGenBlazor.Services;
 @using Microsoft.Health.Fhir.SpecManager.PackageManager
+@inject NavigationManager NavigationManager
 @inject IPackageManagerWebService PackageService
 @implements IDisposable
 
@@ -19,7 +20,7 @@
 {
     case "released":
         <div class="input-group m-2">
-            <span class="input-group-text" id="basic-addon1">Released Package Name</span>
+            <span class="input-group-text" id="basic-addon1">Released Package Name or Canonical URL</span>
             <input
                 type="text"
                 placeholder="Package Name"
@@ -28,6 +29,7 @@
                 @bind="packageName"
                 />
             <button class="btn btn-outline-secondary" type="button" @onclick="(() => LookupReleasedPackage())">Lookup</button>
+            <button class="btn btn-outline-secondary" type="button" @onclick="(() => RequestManualDownload())">Try Load</button>
         </div>
         <div class="table-responsive">
             <table class="table table-striped table-hover">
@@ -69,22 +71,37 @@
                 </tbody>
             </table>
         </div>
-
         break;
 
     case "ig":
     case "core":
         <div class="input-group m-2">
-            <span class="input-group-text" id="label-branchname">CI Branch Name</span>
+            <span class="input-group-text" id="label-branchname">CI Path or URL</span>
             <input
                 type="text"
-                placeholder="CI Branch Name"
-                aria-label="CI Branch Name"
+                placeholder="CI Path or URL"
+                aria-label="CI Path or URL"
                 aria-describedby="label-branchname"
                 @bind="ciBranch"
                 />
             <button class="btn btn-outline-secondary" type="button" @onclick="@(() => LookupCiBuild())">Lookup</button>
         </div>
+        @if (selectedPackageType == "ig")
+        {
+            <p>
+                Branch information can be found via the <a href="http://build.fhir.org/ig/" target="_blank" >ig index</a>. Builds must
+                appear in the index and valid values can be the path rooted at <code>ig/</code>, the branch name, or the
+                URL of the built landing page (e.g., <code>http://build.fhir.org/ig/.../index.html</code>).
+            </p>
+        }
+        else
+        {
+            <p>
+                Branch information can be found via the <a href="http://build.fhir.org/branches/" target="_blank" >core branch index</a>.
+                Builds must appear in the index and valid values can be the path rooted at <code>branches/</code>, the branch name,
+                or the URL of the built landing page (e.g., <code>http://build.fhir.org/branches/.../</code>).
+            </p>
+        }
 
         if (ciPackage != null)
         {
@@ -173,6 +190,10 @@
     /// <summary>The CI package.</summary>
     private NpmPackageDetails? ciPackage = null;
 
+    /// <summary>Gets or sets the navigation tracker.</summary>
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
     protected override void OnInitialized()
@@ -180,6 +201,9 @@
         base.OnInitialized();
 
         PackageService.OnChanged += PackageServiceChanged;
+
+        NavTracker?.NotifyNav("Add Package", "addpackage", 1);
+        NavigationManager.LocationChanged += HandleLocationChanged;
     }
 
     /// <summary>
@@ -188,8 +212,21 @@
     /// </summary>
     public void Dispose()
     {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
         PackageService.OnChanged -= PackageServiceChanged;
     }
+
+        /// <summary>Handles the location changed.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Location changed event information.</param>
+    private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        if (e.Location.ToLowerInvariant().Contains("/diff"))
+        {
+            NavTracker?.NotifyNav("Add Package", "addpackage", 1);
+        }
+    }
+
 
     /// <summary>Handles the package service changed event.</summary>
     /// <param name="sender">The sender.</param>
@@ -264,6 +301,12 @@
         string directive = ciPackage.Name + "#current";
 
         PackageService.RequestDownload(directive, ciBranch, out _);
+    }
+
+    /// <summary>Request manual download.</summary>
+    private void RequestManualDownload()
+    {
+        PackageService.RequestDownload(packageName, string.Empty, out _);
     }
 
     /// <summary>Request version download.</summary>

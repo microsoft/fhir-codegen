@@ -38,6 +38,9 @@ public interface IPackageExportable
     /// <summary>Gets a dictionary with the known resources for this version of FHIR.</summary>
     public Dictionary<string, FhirComplex> Resources { get; }
 
+    /// <summary>Gets a dictionary with the known logical models.</summary>
+    public Dictionary<string, FhirComplex> LogicalModels { get; }
+
     /// <summary>Gets the profiles by id dictionary.</summary>
     public Dictionary<string, FhirComplex> Profiles { get; }
 
@@ -59,6 +62,9 @@ public interface IPackageExportable
     /// <summary>Gets the system operations.</summary>
     public Dictionary<string, FhirOperation> SystemOperations { get; }
 
+    /// <summary>Gets all known operations, by Url.</summary>
+    public Dictionary<string, FhirOperation> OperationsByUrl { get; }
+
     /// <summary>Gets search parameters defined for all resources.</summary>
     public Dictionary<string, FhirSearchParam> AllResourceParameters { get; }
 
@@ -67,6 +73,9 @@ public interface IPackageExportable
 
     /// <summary>Gets search parameters defined for all interactions.</summary>
     public Dictionary<string, FhirSearchParam> AllInteractionParameters { get; }
+
+    /// <summary>Gets all search parameters by URL.</summary>
+    public Dictionary<string, FhirSearchParam> SearchParametersByUrl { get; }
 
     /// <summary>Gets the excluded keys.</summary>
     public HashSet<string> ExcludedKeys { get; }
@@ -82,4 +91,18 @@ public interface IPackageExportable
     /// <param name="vs">      [out] The vs.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetValueSet(string urlOrKey, out FhirValueSet vs);
+
+    /// <summary>Attempts to get artifact.</summary>
+    /// <param name="token">             The token.</param>
+    /// <param name="artifact">          [out] The artifact.</param>
+    /// <param name="artifactClass">     [out] The artifact class.</param>
+    /// <param name="resolvedPackage">   [out] The resolved package.</param>
+    /// <param name="resolveParentLinks">True to resolve parent links.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetArtifact(
+        string token,
+        out object artifact,
+        out FhirArtifactClassEnum artifactClass,
+        out string resolvedPackage,
+        bool resolveParentLinks);
 }

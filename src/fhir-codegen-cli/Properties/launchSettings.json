@@ -27,12 +27,12 @@
         },
         "r4b-ci": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B_CI.txt -p hl7.fhir.r4b#current --ci-branch R4B --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B_CI.txt -p hl7.fhir.r4b#4.3.0-snapshot1 --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 current --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "localInfo": {
@@ -62,7 +62,7 @@
         },
         "ts5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --language TypeScript",
+            "commandLineArgs": "--output-path ..\\..\\generated\\TypeScript_R5.ts -p hl7.fhir.r5.core#current --include-experimental --language TypeScript",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "tsAll": {
@@ -250,14 +250,9 @@
             "commandLineArgs": "--output-path ..\\..\\temp\\cs2r5 --load-r5 latest --language-options CSharp2|namespace=fhirCsR5 --language CSharp2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "ts2r4": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\temp\\ts2r4\\src --load-r4 latest --language TypeScript2 --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
         "ts-sdk-r4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\temp\\ts-sdk-r4\\src --load-r4 latest --language TypeScriptSdk --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\fhir-typescript\\core\\r4\\src --load-r4 latest --language TypeScriptSdk --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "firelyJsonTest": {

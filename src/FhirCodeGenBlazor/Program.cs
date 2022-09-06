@@ -10,6 +10,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<IPackageManagerWebService, PackageManagerWebService>();
 builder.Services.AddSingleton<ISpecManagerWebService, SpecManagerWebService>();
 builder.Services.AddSingleton<ISpecExporterWebService, SpecExporterWebService>();
+builder.Services.AddSingleton<IPackageDiffWebService, PackageDiffWebService>();
 
 var app = builder.Build();
 
@@ -30,5 +31,6 @@ app.MapFallbackToPage("/_Host");
 app.Services.GetService<IPackageManagerWebService>()?.Init();
 app.Services.GetService<ISpecManagerWebService>()?.Init();
 app.Services.GetService<ISpecExporterWebService>()?.Init();
+app.Services.GetService<IPackageDiffWebService>()?.Init();
 
 app.Run();

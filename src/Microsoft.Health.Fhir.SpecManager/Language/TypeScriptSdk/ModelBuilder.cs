@@ -3,15 +3,32 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.Numerics;
-using fhirCsR3.ValueSets;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using static Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk.TypeScriptSdkCommon;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk;
 
 /// <summary>The TypeScript-SDK model builder - converts internal models into TS-specific structures.</summary>
 public class ModelBuilder
 {
+    /// <summary>Information about the value set element binding.</summary>
+    /// <param name="ExportAlias">          The export alias.</param>
+    /// <param name="ElementExportType">    Type of the element export.</param>
+    /// <param name="BoundValueSetStrength">The bound value set strength.</param>
+    public readonly record struct ValueSetElementBindingInfo(
+        string ExportAlias,
+        string ElementExportType,
+        FhirElement.ElementDefinitionBindingStrength BoundValueSetStrength);
+
+    /// <summary>An export element choice type.</summary>
+    public readonly record struct ExportElementChoiceType(
+        string ExportName,
+        string ExportType,
+        string ExportInterfaceType,
+        string ExportJsonType,
+        bool IsPrimitive,
+        bool HasValueSetEnum);
+
     /// <summary>An export element.</summary>
     public readonly record struct ExportElement(
         string FhirName,
@@ -21,12 +38,18 @@ public class ModelBuilder
         string ExportComment,
         string ExportType,
         string ExportInterfaceType,
+        string ExportJsonType,
         string ValidationRegEx,
-        bool isOptional,
-        bool isArray,
-        bool hasReferencedValueSet,
+        bool IsOptional,
+        bool IsArray,
+        bool IsPrimitive,
+        bool IsJsonArtefact,
+        bool IsSimple,
+        bool HasReferencedValueSet,
         string ValueSetExportName,
-        FhirElement.ElementDefinitionBindingStrength? BoundValueSetStrength);
+        FhirElement.ElementDefinitionBindingStrength? BoundValueSetStrength,
+        bool IsChoice,
+        List<ExportElementChoiceType> ChoiceTypes);
 
     /// <summary>An export complex.</summary>
     public readonly record struct ExportComplex(
@@ -41,6 +64,17 @@ public class ModelBuilder
         List<ExportComplex> Backbones,
         List<ExportElement> Elements,
         List<string> ReferencedValueSetExportNames);
+
+    /// <summary>An export primitive.</summary>
+    public readonly record struct ExportPrimitive(
+        string FhirName,
+        string ExportClassName,
+        string ExportClassType,
+        string ExportInterfaceName,
+        string ExportInterfaceType,
+        string ExportComment,
+        string JsonExportType,
+        string ValidationRegEx);
 
     /// <summary>An export value set coding.</summary>
     public readonly record struct ExportValueSetCoding(
@@ -70,112 +104,16 @@ public class ModelBuilder
         string ExportName,
         List<ExportTokenInfo> Tokens);
 
-    /// <summary>An exported.</summary>
+    /// <summary>The processed set of export models.</summary>
     public readonly record struct ExportModels(
+        Dictionary<string, ExportPrimitive> PrimitiveTypesByExportName,
         Dictionary<string, ExportComplex> ComplexDataTypesByExportName,
         Dictionary<string, ExportComplex> ResourcesByExportName,
         Dictionary<string, ExportValueSet> ValueSetsByExportName,
+        Dictionary<string, List<ValueSetElementBindingInfo>> ValueSetBindingInfoByExportName,
+        List<SortedExportKey> SortedPrimitives,
         List<SortedExportKey> SortedDataTypes,
         List<SortedExportKey> SortedResources);
-
-    /// <summary>
-    /// (Immutable) Dictionary mapping FHIR primitive types to language equivalents.
-    /// </summary>
-    private static readonly Dictionary<string, string> _primitiveTypeMap = new()
-    {
-        { "base", "Object" },
-        { "base64Binary", "string" },
-        { "bool", "boolean" },
-        { "boolean", "boolean" },
-        { "canonical", "string" },
-        { "code", "string" },
-        { "date", "string" },
-        { "dateTime", "string" },           // Cannot use "DateTime" because of Partial Dates... may want to consider defining a new type, but not today
-        { "decimal", "number" },
-        { "id", "string" },
-        { "instant", "string" },
-        { "int", "number" },
-        { "integer", "number" },
-        { "integer64", "string" },
-        { "markdown", "string" },
-        { "number", "number" },
-        { "oid", "string" },
-        { "positiveInt", "number" },
-        { "string", "string" },
-        { "time", "string" },
-        { "unsignedInt", "number" },
-        { "uri", "string" },
-        { "url", "string" },
-        { "uuid", "string" },
-        { "xhtml", "string" },
-    };
-
-    /// <summary>
-    /// (Immutable) Dictionary mapping FHIR complex types and resource names to language-specific
-    /// substitutions.
-    /// </summary>
-    private static readonly Dictionary<string, string> _complexTypeSubstitutions = new()
-    {
-        { "Resource", "FhirResource" },
-        { "Element", "FhirElement" },
-    };
-
-    /// <summary>(Immutable) Language reserved words.</summary>
-    private static readonly HashSet<string> _reservedWords = new()
-    {
-        "const",
-        "enum",
-        "export",
-        "interface",
-        "Element",
-        "string",
-        "number",
-        "boolean",
-        "Object",
-    };
-
-    /// <summary>The systems named by display.</summary>
-    private static HashSet<string> _systemsNamedByDisplay = new HashSet<string>()
-    {
-        /// <summary>Units of Measure have incomprehensible codes after naming substitutions.</summary>
-        "http://unitsofmeasure.org",
-    };
-
-    private static HashSet<string> _systemsNamedByCode = new HashSet<string>()
-    {
-        /// <summary>Operation Outcomes include c-style string formats in display.</summary>
-        "http://terminology.hl7.org/CodeSystem/operation-outcome",
-
-        /// <summary>Descriptions have quoted values.</summary>
-        "http://terminology.hl7.org/CodeSystem/smart-capabilities",
-
-        /// <summary>Descriptions have quoted values.</summary>
-        "http://hl7.org/fhir/v2/0301",
-
-        /// <summary>Display values are too long to be useful.</summary>
-        "http://terminology.hl7.org/CodeSystem/v2-0178",
-
-        /// <summary>Display values are too long to be useful.</summary>
-        "http://terminology.hl7.org/CodeSystem/v2-0277",
-
-        /// <summary>Display values are too long to be useful.</summary>
-        "http://terminology.hl7.org/CodeSystem/v3-VaccineManufacturer",
-
-        /// <summary>Display values are too long to be useful.</summary>
-        "http://hl7.org/fhir/v2/0278",
-
-        /// <summary>Display includes operation symbols: $.</summary>
-        "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
-
-        /// <summary>Names are often just symbols.</summary>
-        "http://hl7.org/fhir/v2/0290",
-
-        /// <summary>Display includes too many Unicode characters (invalid export names).</summary>
-        "http://hl7.org/fhir/v2/0255",
-
-        /// <summary>Display includes too many Unicode characters (invalid export names).</summary>
-        "http://hl7.org/fhir/v2/0256",
-    };
 
     /// <summary>The information.</summary>
     private FhirVersionInfo _info;
@@ -190,18 +128,86 @@ public class ModelBuilder
     }
 
     /// <summary>Builds the given information.</summary>
+    /// <param name="supportPrimitves">(Optional) The support primitves.</param>
     /// <returns>The ExportModels.</returns>
     public ExportModels Build()
     {
+        Dictionary<string, ExportPrimitive> primitiveTypes = new();
+        List<SortedExportKey> sortedPrimitives;
         Dictionary<string, ExportComplex> complexDataTypes = new();
         List<SortedExportKey> sortedDataTypes;
         Dictionary<string, ExportComplex> resources = new();
         List<SortedExportKey> sortedResources;
         Dictionary<string, ExportValueSet> valueSets = new();
 
+        foreach (FhirPrimitive fhirPrimitive in _info.PrimitiveTypes.Values)
+        {
+            string exportName = "Fhir" + fhirPrimitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, ReservedWords);
+
+            string exportClassType;
+            string exportInterfaceType;
+
+            switch (exportName)
+            {
+                case "FhirBase":
+                    exportClassType = string.Empty;
+                    exportInterfaceType = string.Empty;
+                    break;
+
+                case "FhirPrimitive":
+                    exportClassType = "fhir.FhirBase";
+                    exportInterfaceType = "fhir.IFhirBase";
+                    break;
+
+                default:
+
+                    if (fhirPrimitive.Id == fhirPrimitive.BaseTypeName)
+                    {
+                        exportClassType = "fhir.FhirPrimitive";
+                        exportInterfaceType = "fhir.IFhirPrimitive";
+                    }
+                    else if (_info.PrimitiveTypes.ContainsKey(fhirPrimitive.BaseTypeName))
+                    {
+                        string baseName = FhirUtils.ToConvention(
+                            fhirPrimitive.BaseTypeName,
+                            string.Empty,
+                            FhirTypeBase.NamingConvention.PascalCase,
+                            false,
+                            string.Empty,
+                            ReservedWords);
+
+                        exportClassType = "fhir.Fhir" + baseName;
+                        exportInterfaceType = "fhir.IFhir" + baseName;
+                    }
+                    else
+                    {
+                        exportClassType = "fhir.FhirPrimitive";
+                        exportInterfaceType = "fhir.IFhirPrimitive";
+                    }
+
+                    break;
+            }
+
+            primitiveTypes.Add(
+                exportName,
+                new ExportPrimitive(
+                    fhirPrimitive.Name,
+                    exportName,
+                    exportClassType,
+                    "I" + exportName,
+                    exportInterfaceType,
+                    fhirPrimitive.Comment,
+                    PrimitiveTypeMap.ContainsKey(fhirPrimitive.Name) ? PrimitiveTypeMap[fhirPrimitive.Name] : exportName,
+                    fhirPrimitive.ValidationRegEx));
+        }
+
+        Dictionary<string, List<ValueSetElementBindingInfo>> valueSetBindings = new();
+
+        sortedPrimitives = SortPrimitives(primitiveTypes);
+
         foreach (FhirComplex fhirComplex in _info.ComplexTypes.Values)
         {
-            ExportComplex exportComplex = ProcessFhirComplex(fhirComplex, FhirArtifactClassEnum.ComplexType);
+            ExportComplex exportComplex = ProcessFhirComplex(fhirComplex, FhirArtifactClassEnum.ComplexType, valueSetBindings);
 
             complexDataTypes.Add(exportComplex.ExportClassName, exportComplex);
         }
@@ -210,7 +216,7 @@ public class ModelBuilder
 
         foreach (FhirComplex fhirComplex in _info.Resources.Values)
         {
-            ExportComplex exportComplex = ProcessFhirComplex(fhirComplex, FhirArtifactClassEnum.Resource);
+            ExportComplex exportComplex = ProcessFhirComplex(fhirComplex, FhirArtifactClassEnum.Resource, valueSetBindings);
 
             resources.Add(exportComplex.ExportClassName, exportComplex);
         }
@@ -227,7 +233,74 @@ public class ModelBuilder
             }
         }
 
-        return new ExportModels(complexDataTypes, resources, valueSets, sortedDataTypes, sortedResources);
+        return new ExportModels(
+            primitiveTypes,
+            complexDataTypes,
+            resources,
+            valueSets,
+            valueSetBindings,
+            sortedPrimitives,
+            sortedDataTypes,
+            sortedResources);
+    }
+
+    /// <summary>Sort primitives.</summary>
+    /// <param name="primitives">The primitives.</param>
+    /// <returns>The sorted primitives.</returns>
+    private List<SortedExportKey> SortPrimitives(Dictionary<string, ExportPrimitive> primitives)
+    {
+        List<SortedExportKey> sorted = new();
+        HashSet<string> usedKeys = new();
+
+        sorted.Add(new SortedExportKey("FhirBase", TokensFromPrimitive("FhirBase")));
+        usedKeys.Add("FhirBase");
+
+        sorted.Add(new SortedExportKey("FhirPrimitive", TokensFromPrimitive("FhirPrimitive")));
+        usedKeys.Add("FhirPrimitive");
+
+        sorted.Add(new SortedExportKey("FhirPrimitiveSimple", TokensFromPrimitive("FhirPrimitiveSimple")));
+        usedKeys.Add("FhirPrimitiveSimple");
+
+        foreach (ExportPrimitive primitive in primitives.Values)
+        {
+            if (usedKeys.Contains(primitive.ExportClassName))
+            {
+                continue;
+            }
+
+            sorted.Add(new SortedExportKey(primitive.ExportClassName, TokensFromPrimitive(primitive.ExportClassName)));
+            usedKeys.Add(primitive.ExportClassName);
+
+            if (PrimitivesWithSimpleVersions.Contains(primitive.ExportClassName))
+            {
+                sorted.Add(new SortedExportKey(primitive.ExportClassName + "Simple", TokensFromPrimitive(primitive.ExportClassName + "Simple")));
+                usedKeys.Add(primitive.ExportClassName + "Simple");
+            }
+        }
+
+        return sorted;
+    }
+
+    /// <summary>Tokens from primitive.</summary>
+    /// <param name="primitiveName">The primitive name.</param>
+    /// <returns>A List&lt;ExportTokenInfo&gt;</returns>
+    private List<ExportTokenInfo> TokensFromPrimitive(string primitiveName)
+    {
+        List<ExportTokenInfo> tokens = new();
+
+        if (primitiveName.Equals("FhirBase", StringComparison.Ordinal))
+        {
+            tokens.Add(new ExportTokenInfo("FhirConstructorOptions", true));
+            tokens.Add(new ExportTokenInfo("FtsElement", true));
+            tokens.Add(new ExportTokenInfo("FtsCoding", true));
+            tokens.Add(new ExportTokenInfo("FtsCodeableConcept", true));
+            tokens.Add(new ExportTokenInfo("FtsIssue", true));
+        }
+
+        tokens.Add(new ExportTokenInfo(primitiveName + "Args", true));
+        tokens.Add(new ExportTokenInfo(primitiveName, false));
+
+        return tokens;
     }
 
     /// <summary>Sort complexes.</summary>
@@ -297,7 +370,7 @@ public class ModelBuilder
     {
         List<ExportTokenInfo> tokens = new();
 
-        tokens.Add(new ExportTokenInfo(complex.ExportInterfaceName, true));
+        tokens.Add(new ExportTokenInfo(complex.ExportClassName + "Args", true));
         tokens.Add(new ExportTokenInfo(complex.ExportClassName, false));
 
         foreach (ExportComplex backbone in complex.Backbones)
@@ -332,26 +405,26 @@ public class ModelBuilder
         if (string.IsNullOrEmpty(fhirComplex.BaseTypeName) ||
             fhirComplex.Name.Equals("Element", StringComparison.Ordinal))
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, _reservedWords);
-            exportType = string.Empty;
-            exportInterfaceType = string.Empty;
+            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, ReservedWords);
+            exportType = "fhir.FhirBase";
+            exportInterfaceType = "fhir.IFhirBase";
         }
         else if (fhirComplex.Name.Equals(fhirComplex.BaseTypeName, StringComparison.Ordinal))
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
-            exportType = string.Empty;
-            exportInterfaceType = string.Empty;
+            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, ReservedWords);
+            exportType = "fhir.FhirBase";
+            exportInterfaceType = "fhir.IFhirBase";
         }
         else if ((fhirComplex.Components != null) && fhirComplex.Components.ContainsKey(fhirComplex.Path))
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
-            exportType = fhirComplex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
+            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, ReservedWords);
+            exportType = fhirComplex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, PrimitiveTypeMap, false, string.Empty, ReservedWords);
             exportInterfaceType = "I" + exportType;
         }
         else
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
-            exportType = "fhir." + fhirComplex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
+            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, ReservedWords);
+            exportType = "fhir." + fhirComplex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, PrimitiveTypeMap, false, string.Empty, ReservedWords);
             exportInterfaceType = exportType.Insert(5, "I");
         }
 
@@ -388,12 +461,12 @@ public class ModelBuilder
         {
             if (vs != null)
             {
-                codeName = GetValueSetExportName(vs) + "Enum";
+                codeName = GetValueSetExportName(vs) + CodeTypeSuffix;
             }
             else
             {
                 codeName = FhirUtils.ToConvention(
-                    $"{fhirElement.Path}.Enum",
+                    $"{fhirElement.Path}.{CodeTypeSuffix}",
                     string.Empty,
                     FhirTypeBase.NamingConvention.PascalCase);
             }
@@ -405,170 +478,213 @@ public class ModelBuilder
         return false;
     }
 
-    ///// <summary>Export code from element.</summary>
-    ///// <param name="fhirElement">The FHIR element.</param>
-    ///// <param name="vs">         (Optional) The vs.</param>
-    ///// <returns>An ExportCodeEnum.</returns>
-    //private ExportCodeEnum ExportCodeFromElement(FhirElement fhirElement, FhirValueSet vs = null)
-    //{
-    //    List<ExportCodeEnumValue> codeValues = new();
+    /// <summary>Expand export type.</summary>
+    /// <param name="fhirPath">      Path to the FHIR element.</param>
+    /// <param name="fhirType">      Name of the FHIR type.</param>
+    /// <param name="exportTypeName">Name of the export type.</param>
+    /// <param name="components">    The components.</param>
+    /// <param name="isSimple">      True if is simple, false if not.</param>
+    /// <param name="exportType">    [out] Type of the export.</param>
+    /// <param name="interfaceType"> [out] Type of the interface.</param>
+    /// <param name="jsonType">      [out] Type of the JSON.</param>
+    private void ExpandExportType(
+        string fhirPath,
+        string fhirType,
+        string exportTypeName,
+        Dictionary<string, FhirComplex> components,
+        bool isSimple,
+        out string exportType,
+        out string interfaceType,
+        out string jsonType)
+    {
+        if (ComplexTypeSubstitutions.ContainsKey(fhirType))
+        {
+            exportType = "fhir." + ComplexTypeSubstitutions[fhirType];
+            interfaceType = "fhir.I" + ComplexTypeSubstitutions[fhirType];
+            jsonType = "fhir." + ComplexTypeSubstitutions[fhirType];
 
-    //    string codeName = FhirUtils.ToConvention(
-    //        $"{fhirElement.Path}",
-    //        string.Empty,
-    //        FhirTypeBase.NamingConvention.PascalCase);
+            return;
+        }
 
-    //    if (codeName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
-    //    {
-    //        codeName = codeName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
-    //    }
+        if (components.ContainsKey(fhirPath))
+        {
+            exportType = "fhir." + exportTypeName;
+            interfaceType = "fhir.I" + exportTypeName;
+            jsonType = "fhir." + exportTypeName;
 
-    //    codeName += "Enum";
+            return;
+        }
 
-    //    if (vs != null)
-    //    {
-    //        foreach (FhirConcept concept in vs.Concepts)
-    //        {
-    //            FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
+        if (PrimitiveTypeMap.ContainsKey(fhirType))
+        {
+            exportType = "fhir.Fhir" + FhirUtils.ToConvention(
+                fhirType, // exportTypeName,
+                string.Empty,
+                FhirTypeBase.NamingConvention.PascalCase,
+                false,
+                string.Empty,
+                ReservedWords);
+            interfaceType = exportType;
+            jsonType = PrimitiveTypeMap[fhirType];
 
-    //            codeValues.Add(new ExportCodeEnumValue(
-    //                name.ToUpperInvariant(),
-    //                value,
-    //                concept.Definition));
-    //        }
-    //    }
-    //    else
-    //    {
-    //        foreach (string code in fhirElement.Codes)
-    //        {
-    //            FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
+            if (isSimple && PrimitivesWithSimpleVersions.Contains(exportType))
+            {
+                exportType = exportType + "Simple";
+            }
 
-    //            codeValues.Add(new ExportCodeEnumValue(
-    //                name.ToUpperInvariant(),
-    //                value,
-    //                string.Empty));
-    //        }
-    //    }
+            return;
+        }
 
-    //    return new ExportCodeEnum(
-    //        fhirElement.Path,
-    //        codeName,
-    //        fhirElement.ValueSet,
-    //        codeValues);
-    //}
+        if (_info.ExcludedKeys.Contains(fhirType))
+        {
+            exportType = "any";
+            interfaceType = exportType;
+            jsonType = "any";
+
+            return;
+        }
+
+        exportType = "fhir." + exportTypeName;
+        interfaceType = "fhir.I" + exportTypeName;
+        jsonType = "fhir." + exportTypeName;
+    }
 
     /// <summary>
     /// Creates export elements for a FHIR element.  Choice-types and primitives will expand the
     /// element definition to individual records.
     /// </summary>
-    /// <param name="fhirComplex">                  The FHIR complex.</param>
-    /// <param name="fhirElement">                  The FHIR element.</param>
-    /// <param name="exportElements">               [out] The export elements.</param>
-    /// <param name="referencedValueSetExportNames">[out] List of names of the referenced value set
-    ///  exports.</param>
+    /// <param name="fhirComplex">                 The FHIR complex.</param>
+    /// <param name="fhirElement">                 The FHIR element.</param>
+    /// <param name="exportElement">               [out] The export element.</param>
+    /// <param name="referencedValueSetExportName">[out] Name of the referenced value set export.</param>
     private void ProcessFhirElement(
         FhirComplex fhirComplex,
         FhirElement fhirElement,
-        out List<ExportElement> exportElements,
-        out List<string> referencedValueSetExportNames)
+        out ExportElement exportElement,
+        out string referencedValueSetExportName)
     {
-        exportElements = new();
-        referencedValueSetExportNames = new();
+        string shortId = fhirElement.Id.Split('.').Last();
+        string fhirElementType = string.Empty;
+        string elementExportName;
+        string elementExportType;
+        string elementInterfaceType;
+        string elementJsonType;
 
-        bool isOptional = false;
+        bool hasReferencedValueSet = false;
+        referencedValueSetExportName = string.Empty;
+        FhirElement.ElementDefinitionBindingStrength? vsBindStrength = null;
+        FhirValueSet vs = null;
 
-        Dictionary<string, string> values = fhirElement.NamesAndTypesForExport(
+        List<ExportElementChoiceType> choiceTypes = new();
+
+        List<FhirElement.ExpandedElementRec> values = fhirElement.ExpandNamesAndTypes(
+            out elementExportName,
             FhirTypeBase.NamingConvention.CamelCase,
             FhirTypeBase.NamingConvention.PascalCase,
             false,
             string.Empty,
             fhirComplex.Components.ContainsKey(fhirElement.Path));
 
-        if (fhirElement.IsOptional || (values.Count > 1))
+        if (values.Count == 1)
         {
-            isOptional = true;
-        }
-
-        foreach ((string exportName, string fhirType) in values)
-        {
-            string exportType;
-            string exportInterfaceType;
-            bool hasReferencedValueSet = false;
-            string valueSetExportName = string.Empty;
-            FhirElement.ElementDefinitionBindingStrength? vsBindStrength = null;
-            FhirValueSet vs = null;
+            fhirElementType = values[0].BaseFhirType;
+            elementExportType = values[0].ExportFhirType;
 
             if ((!string.IsNullOrEmpty(fhirElement.ValueSet)) &&
-                _info.TryGetValueSet(fhirElement.ValueSet, out vs))
+                 _info.TryGetValueSet(fhirElement.ValueSet, out vs))
             {
                 hasReferencedValueSet = true;
-                valueSetExportName = GetValueSetExportName(vs);
+                referencedValueSetExportName = GetValueSetExportName(vs);
                 vsBindStrength = fhirElement.ValueSetBindingStrength;
-
-                referencedValueSetExportNames.Add(valueSetExportName);
             }
 
             // Use generated enum for codes when required strength
             // EXCLUDE the MIME type value set - those should be bound to strings
             if (ElementRequiresCodeEnum(fhirElement, vs, out string codeName))
             {
-                exportType = codeName;
-                exportInterfaceType = codeName;
-            }
-            else if (_complexTypeSubstitutions.ContainsKey(fhirType))
-            {
-                exportType = "fhir." + _complexTypeSubstitutions[fhirType];
-                exportInterfaceType = "fhir.I" + _complexTypeSubstitutions[fhirType];
-            }
-            else if (_primitiveTypeMap.ContainsKey(fhirType))
-            {
-                exportType = _primitiveTypeMap[fhirType];
-                exportInterfaceType = exportType;
-            }
-            else if (_info.ExcludedKeys.Contains(fhirType))
-            {
-                exportType = "any";
-                exportInterfaceType = exportType;
+                elementExportType = "fhir.FhirCode<" + codeName + ">";
+                elementInterfaceType = elementExportType + "|" + codeName;
+                elementJsonType = "string";
             }
             else
             {
-                exportType = "fhir." + fhirType;
-                exportInterfaceType = "fhir.I" + fhirType;
-            }
-
-            exportElements.Add(new ExportElement(
-                fhirElement.Id,
-                fhirElement.Path,
-                fhirType,
-                exportName,
-                fhirElement.Comment,
-                exportType,
-                exportInterfaceType,
-                fhirElement.ValidationRegEx,
-                isOptional,
-                fhirElement.IsArray,
-                hasReferencedValueSet,
-                valueSetExportName,
-                vsBindStrength));
-
-            if (RequiresExtension(fhirType))
-            {
-                exportElements.Add(new ExportElement(
-                    "_" + fhirElement.Id,
-                    fhirElement.Path.Insert(fhirElement.Path.LastIndexOf('.'), "_"),
-                    "Element",
-                    "_" + exportName,
-                    $"Extended properties for primitive element: {fhirElement.Path}",
-                    "fhir." + _complexTypeSubstitutions["Element"],
-                    "fhir.I" + _complexTypeSubstitutions["Element"],
-                    string.Empty,
-                    true,
-                    fhirElement.IsArray,
-                    false,
-                    string.Empty,
-                    null));
+                ExpandExportType(
+                    fhirElement.Path,
+                    fhirElementType,
+                    elementExportType,
+                    fhirComplex.Components,
+                    fhirElement.IsSimple,
+                    out elementExportType,
+                    out elementInterfaceType,
+                    out elementJsonType);
             }
         }
+        else
+        {
+            elementExportType = string.Empty;
+            elementInterfaceType = string.Empty;
+            elementJsonType = string.Empty;
+
+            foreach (FhirElement.ExpandedElementRec rec in values)
+            {
+                bool hasVs = false;
+
+                ExpandExportType(
+                    fhirElement.Path,
+                    rec.BaseFhirType,
+                    rec.ExportFhirType,
+                    fhirComplex.Components,
+                    false,
+                    out string exportType,
+                    out string exportInterfaceType,
+                    out string exportJsonType);
+
+                // Use generated enum for codes when required strength
+                // EXCLUDE the MIME type value set - those should be bound to strings
+                if ((exportType == "fhir.FhirCode") &&
+                    ElementRequiresCodeEnum(fhirElement, vs, out string codeName))
+                {
+                    elementExportType = "fhir.FhirCode<" + codeName + ">";
+                    elementInterfaceType = elementExportType + "|" + codeName;
+                    elementJsonType = "string";
+
+                    //exportType = codeName;
+                    //exportInterfaceType = codeName;
+                    //exportJsonType = codeName;
+                }
+
+                ExportElementChoiceType ct = new ExportElementChoiceType(
+                    rec.ProperyName,
+                    exportType,
+                    exportInterfaceType,
+                    exportJsonType,
+                    RequiresExtension(exportJsonType),
+                    hasVs);
+
+                choiceTypes.Add(ct);
+            }
+        }
+
+        exportElement = new ExportElement(
+            shortId,
+            fhirElement.Path,
+            fhirElementType,
+            elementExportName,
+            fhirElement.Comment,
+            elementExportType,
+            elementInterfaceType,
+            elementJsonType,
+            fhirElement.ValidationRegEx,
+            fhirElement.IsOptional,
+            fhirElement.IsArray,
+            RequiresExtension(elementJsonType),
+            false,
+            fhirElement.IsSimple,
+            hasReferencedValueSet,
+            referencedValueSetExportName,
+            vsBindStrength,
+            values.Count > 1,
+            choiceTypes);
     }
 
     /// <summary>Requires extension.</summary>
@@ -581,7 +697,7 @@ public class ModelBuilder
             return false;
         }
 
-        if (_primitiveTypeMap.ContainsKey(typeName))
+        if (PrimitiveTypeMap.ContainsKey(typeName))
         {
             return true;
         }
@@ -592,10 +708,12 @@ public class ModelBuilder
     /// <summary>Process the backbone described by fhirComplex.</summary>
     /// <param name="fhirComplex">      The FHIR complex.</param>
     /// <param name="fhirArtifactClass">The FHIR artifact class.</param>
+    /// <param name="valueSetBindings"> The value set bindings.</param>
     /// <returns>An ExportComplex.</returns>
     private ExportComplex ProcessFhirComplex(
         FhirComplex fhirComplex,
-        FhirArtifactClassEnum fhirArtifactClass)
+        FhirArtifactClassEnum fhirArtifactClass,
+        Dictionary<string, List<ValueSetElementBindingInfo>> valueSetBindings)
     {
         HashSet<string> vsExportNames = new();
         List<ExportComplex> backbones = new();
@@ -605,7 +723,7 @@ public class ModelBuilder
             foreach (FhirComplex component in fhirComplex.Components.Values)
             {
                 // use unknown class for backbones to prevent adding DT or Resource specific elements
-                ExportComplex backbone = ProcessFhirComplex(component, FhirArtifactClassEnum.Unknown);
+                ExportComplex backbone = ProcessFhirComplex(component, FhirArtifactClassEnum.Unknown, valueSetBindings);
                 backbones.Add(backbone);
 
                 // promote exported Value Set names so that parents always know about child dependencies
@@ -633,12 +751,18 @@ public class ModelBuilder
                     "Resource Type Name",
                     "string",
                     "string",
+                    "string",
                     string.Empty,
                     false,
                     false,
                     false,
+                    true,
+                    true,
+                    false,
                     "ResourceTypesValueSet",
-                    FhirElement.ElementDefinitionBindingStrength.Extensible));
+                    FhirElement.ElementDefinitionBindingStrength.Extensible,
+                    false,
+                    null));
 
                 vsExportNames.Add("ResourceTypesValueSet");
             }
@@ -652,11 +776,17 @@ public class ModelBuilder
                     "Resource Type Name",
                     $"\"{fhirComplex.Id}\"",
                     $"\"{fhirComplex.Id}\"",
+                    $"\"{fhirComplex.Id}\"",
                     string.Empty,
                     false,
                     false,
                     false,
+                    true,
+                    true,
+                    false,
                     string.Empty,
+                    null,
+                    false,
                     null));
             }
         }
@@ -673,19 +803,32 @@ public class ModelBuilder
                 ProcessFhirElement(
                     fhirComplex,
                     element,
-                    out List<ExportElement> elementExports,
-                    out List<string> referencedValueSetExportNames);
+                    out ExportElement elementExport,
+                    out string referencedValueSetExportName);
 
-                elements.AddRange(elementExports);
+                elements.Add(elementExport);
 
-                foreach (string vsExportName in referencedValueSetExportNames)
+                if (!string.IsNullOrEmpty(referencedValueSetExportName))
                 {
-                    if (vsExportNames.Contains(vsExportName))
+                    vsExportNames.ConditionalAdd(referencedValueSetExportName);
+
+                    if (!valueSetBindings.ContainsKey(referencedValueSetExportName))
                     {
-                        continue;
+                        valueSetBindings.Add(referencedValueSetExportName, new());
                     }
 
-                    vsExportNames.Add(vsExportName);
+                    string exportAlias = FhirUtils.ToConvention(
+                        string.Empty,
+                        elementExport.FhirPath,
+                        FhirTypeBase.NamingConvention.PascalCase,
+                        true,
+                        "_",
+                        ReservedWords);
+
+                    valueSetBindings[referencedValueSetExportName].Add(new(
+                        exportAlias,
+                        elementExport.ExportType,
+                        (FhirElement.ElementDefinitionBindingStrength)elementExport.BoundValueSetStrength));
                 }
             }
         }
@@ -705,10 +848,19 @@ public class ModelBuilder
     /// <returns>The value set export name.</returns>
     private string GetValueSetExportName(FhirValueSet fhirValueSet)
     {
-        string vsName = FhirUtils.SanitizeForProperty(fhirValueSet.Id ?? fhirValueSet.Name, _reservedWords);
+        string vsName = FhirUtils.SanitizeForProperty(fhirValueSet.Id ?? fhirValueSet.Name, ReservedWords);
         vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
 
-        return vsName + "ValueSet";
+        if (vsName.EndsWith("Code", StringComparison.OrdinalIgnoreCase))
+        {
+            vsName = vsName.Substring(0, vsName.Length - 4);
+        }
+        else if (vsName.EndsWith("Codes", StringComparison.OrdinalIgnoreCase))
+        {
+            vsName = vsName.Substring(0, vsName.Length - 5);
+        }
+
+        return vsName;
     }
 
     /// <summary>Process the FHIR value set described by fhirValueSet.</summary>
@@ -736,12 +888,12 @@ public class ModelBuilder
             string fhirCodeName;
             string additionalData;
 
-            if (_systemsNamedByDisplay.Contains(concept.System))
+            if (SystemsNamedByDisplay.Contains(concept.System))
             {
                 fhirCodeName = concept.Display;
                 additionalData = concept.Code;
             }
-            else if (_systemsNamedByCode.Contains(concept.System))
+            else if (SystemsNamedByCode.Contains(concept.System))
             {
                 fhirCodeName = concept.Code;
                 additionalData = concept.System;
@@ -757,14 +909,14 @@ public class ModelBuilder
                 additionalData = concept.Code;
             }
 
-            string codeName = FhirUtils.SanitizeForProperty(fhirCodeName, _reservedWords);
+            string codeName = FhirUtils.SanitizeForProperty(fhirCodeName, ReservedWords);
             string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
             codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
 
             if (usedConceptLiterals.Contains(codeName))
             {
-                additionalData = FhirUtils.SanitizeForProperty(additionalData, _reservedWords);
+                additionalData = FhirUtils.SanitizeForProperty(additionalData, ReservedWords);
 
                 if (additionalData.StartsWith("VAL", StringComparison.Ordinal))
                 {

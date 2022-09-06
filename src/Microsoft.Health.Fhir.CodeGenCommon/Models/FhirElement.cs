@@ -14,6 +14,7 @@ public class FhirElement : FhirTypeBase
     private Dictionary<string, FhirElementType> _elementTypes;
     private bool _inDifferential;
     private List<string> _codes;
+    private List<PropertyRepresentationCodes> _representations;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirElement"/> class.
@@ -32,8 +33,10 @@ public class FhirElement : FhirTypeBase
     /// <param name="cardinalityMin">   The cardinality minimum.</param>
     /// <param name="cardinalityMax">   The cardinality maximum.</param>
     /// <param name="isModifier">       If this element modifies the meaning of its parent.</param>
+    /// <param name="isModifierReason"> Reason this element is a modifier.</param>
     /// <param name="isSummary">        If this element should be included in summaries.</param>
     /// <param name="isMustSupport">    If this element is marked as 'must support'.</param>
+    /// <param name="isSimple">         If this element is a 'simple' element (no extended props).</param>
     /// <param name="defaultFieldName"> Name of a default field, e.g., defaultUri, defaultCode.</param>
     /// <param name="defaultFieldValue">Value of a default field.</param>
     /// <param name="fixedFieldName">   Name of a fixed field, e.g., fixedUri, fixedCode.</param>
@@ -42,7 +45,8 @@ public class FhirElement : FhirTypeBase
     /// <param name="modifiesParent">   If this element hides a field of its parent.</param>
     /// <param name="bindingStrength">  Strength of binding: required|extensible|preferred|example.</param>
     /// <param name="valueSet">         URL of the value set bound to this element.</param>
-    /// <param name="fiveWs">        Five 'Ws' mapping value.</param>
+    /// <param name="fiveWs">           Five 'Ws' mapping value.</param>
+    /// <param name="representation">   Codes that define how this element is represented in instances, when the deviation varies from the normal case.</param>
     public FhirElement(
         string id,
         string path,
@@ -61,6 +65,7 @@ public class FhirElement : FhirTypeBase
         string isModifierReason,
         bool? isSummary,
         bool? isMustSupport,
+        bool isSimple,
         string defaultFieldName,
         object defaultFieldValue,
         string fixedFieldName,
@@ -69,7 +74,8 @@ public class FhirElement : FhirTypeBase
         bool modifiesParent,
         string bindingStrength,
         string valueSet,
-        string fiveWs)
+        string fiveWs,
+        List<PropertyRepresentationCodes> representations)
         : base(
             id,
             path,
@@ -126,6 +132,12 @@ public class FhirElement : FhirTypeBase
             }
         }
 
+        _representations = new();
+        if ((representations != null) && representations.Any())
+        {
+            _representations.AddRange(representations);
+        }
+
         ExplicitName = explicitName;
 
         CardinalityMin = cardinalityMin;
@@ -145,6 +157,7 @@ public class FhirElement : FhirTypeBase
         IsSummary = isSummary == true;
         IsMustSupport = isMustSupport == true;
         _inDifferential = false;
+        IsSimple = isSimple;
 
         DefaultFieldName = defaultFieldName;
         DefaultFieldValue = defaultFieldValue;
@@ -196,6 +209,7 @@ public class FhirElement : FhirTypeBase
         string isModifierReason,
         bool isSummary,
         bool isMustSupport,
+        bool isSimple,
         string codesName,
         List<string> codes,
         string valueSet,
@@ -232,6 +246,7 @@ public class FhirElement : FhirTypeBase
         IsModifierReason = isModifierReason;
         IsSummary = isSummary;
         IsMustSupport = isMustSupport;
+        IsSimple = isSimple;
         CodesName = codesName;
         _codes = codes ?? new();
         ValueSet = valueSet;
@@ -265,6 +280,30 @@ public class FhirElement : FhirTypeBase
         /// <summary>Instances are not expected or even encouraged to draw from the specified value set. The value set merely provides examples of the types of concepts intended to be included.</summary>
         [FhirLiteral("example")]
         Example,
+    }
+
+    /// <summary>How a property is represented when serialized.</summary>
+    public enum PropertyRepresentationCodes : int
+    {
+        /// <summary>In XML, this property is represented as an attribute not an element.</summary>
+        [FhirLiteral("xmlAttr")]
+        xmlAttr = 1,
+
+        /// <summary>This element is represented using the XML text attribute (primitives only).</summary>
+        [FhirLiteral("xmlText")]
+        xmlText,
+
+        /// <summary>The type of this element is indicated using xsi:type.</summary>
+        [FhirLiteral("typeAttr")]
+        typeAttr,
+
+        /// <summary>Use CDA narrative instead of XHTML.</summary>
+        [FhirLiteral("cdaText")]
+        cdaText,
+
+        /// <summary>The property is represented using XHTML.</summary>
+        [FhirLiteral("xhtml")]
+        xhtml,
     }
 
     /// <summary>Gets the explicit name of this element, if one was specified.</summary>
@@ -316,6 +355,9 @@ public class FhirElement : FhirTypeBase
     /// <summary>Gets a value indicating whether this object is must support.</summary>
     public bool IsMustSupport { get; }
 
+    /// <summary>Gets a value indicating whether this object is simple (no extended properties).</summary>
+    public bool IsSimple { get; }
+
     /// <summary>Gets the field order.</summary>
     public int FieldOrder { get; }
 
@@ -324,6 +366,9 @@ public class FhirElement : FhirTypeBase
 
     /// <summary>Gets the codes.</summary>
     public List<string> Codes => _codes;
+
+    /// <summary>Gets the representation codes.</summary>
+    public List<PropertyRepresentationCodes> Representations => _representations;
 
     /// <summary>Gets the value set this element is bound to.</summary>
     public string ValueSet { get; }
@@ -365,6 +410,7 @@ public class FhirElement : FhirTypeBase
     /// <summary>True if this element appears in the differential.</summary>
     public bool InDifferential => _inDifferential;
 
+    /// <summary>Sets in differential.</summary>
     public void SetInDifferential()
     {
         _inDifferential = true;
@@ -443,6 +489,26 @@ public class FhirElement : FhirTypeBase
         return true;
     }
 
+    /// <summary>FHIR representation codes to enum.</summary>
+    /// <param name="codes">The codes.</param>
+    /// <returns>A List&lt;PropertyRepresentationCodes&gt;</returns>
+    public static List<PropertyRepresentationCodes> ConvertFhirRepresentations(IEnumerable<string> codes)
+    {
+        if ((codes == null) || (!codes.Any()))
+        {
+            return new();
+        }
+
+        List<PropertyRepresentationCodes> enums = new();
+
+        foreach (string val in codes)
+        {
+            enums.Add(val.ToFhirEnum<PropertyRepresentationCodes>());
+        }
+
+        return enums;
+    }
+
     /// <summary>Deep copy.</summary>
     /// <param name="primitiveTypeMap">   The primitive type map.</param>
     /// <param name="copySlicing">        True to copy slicing.</param>
@@ -488,6 +554,7 @@ public class FhirElement : FhirTypeBase
             IsModifierReason,
             IsSummary,
             IsMustSupport,
+            IsSimple,
             DefaultFieldName,
             DefaultFieldValue,
             FixedFieldName,
@@ -496,7 +563,8 @@ public class FhirElement : FhirTypeBase
             ModifiesParent,
             BindingStrength,
             ValueSet,
-            FiveWs);
+            FiveWs,
+            _representations);
 
         // check for base type name
         if (!string.IsNullOrEmpty(BaseTypeName))
@@ -552,6 +620,118 @@ public class FhirElement : FhirTypeBase
         }
 
         return element;
+    }
+
+    /// <summary>Information about the expanded element.</summary>
+    public readonly record struct ExpandedElementRec(
+        string ProperyName,
+        string ExportFhirType,
+        string BaseFhirType);
+
+    /// <summary>Names and types for export.</summary>
+    /// <param name="rootExportName">        [out] Export name of the root element.</param>
+    /// <param name="nameConvention">        The name convention.</param>
+    /// <param name="typeConvention">        The convention.</param>
+    /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
+    /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
+    /// <param name="isComponent">           (Optional) True if is component, false if not.</param>
+    /// <returns>
+    /// A Dictionary of field names (e.g., ValueBoolean) and types (e.g., boolean).
+    /// </returns>
+    public List<ExpandedElementRec> ExpandNamesAndTypes(
+        out string rootExportName,
+        NamingConvention nameConvention,
+        NamingConvention typeConvention,
+        bool concatenatePath = false,
+        string concatenationDelimiter = "",
+        bool isComponent = false)
+    {
+        HashSet<string> usedNames = new();
+        List<ExpandedElementRec> values = new();
+
+        string baseName = Name;
+        bool isChoice = false;
+
+        if (isComponent)
+        {
+            values.Add(
+                new (
+                    FhirUtils.ToConvention(Name, Path, nameConvention, concatenatePath, concatenationDelimiter),
+                    FhirUtils.ToConvention(Path, string.Empty, typeConvention),
+                    Name));
+
+            rootExportName = values[0].ProperyName;
+            return values;
+        }
+
+        if ((_elementTypes != null) && (_elementTypes.Count > 0))
+        {
+            if (baseName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
+            {
+                baseName = baseName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
+                isChoice = true;
+            }
+
+            if (isChoice)
+            {
+                foreach (FhirElementType elementType in _elementTypes.Values)
+                {
+                    string name = FhirUtils.ToConvention(baseName, Path, nameConvention, concatenatePath, concatenationDelimiter);
+                    string type = FhirUtils.ToConvention(elementType.Name, string.Empty, typeConvention);
+
+                    string combined = $"{name}{type}";
+
+                    if (!usedNames.Contains(combined))
+                    {
+                        usedNames.Add(combined);
+                        values.Add(new(combined, elementType.Type, elementType.Name));
+                    }
+                }
+            }
+            else
+            {
+                string types = string.Empty;
+                string fhirTypeName = baseName;
+
+                foreach (FhirElementType elementType in _elementTypes.Values)
+                {
+                    if (!string.IsNullOrEmpty(elementType.Name))
+                    {
+                        fhirTypeName = elementType.Name;
+                    }
+
+                    string type = elementType.Type;
+
+                    if (string.IsNullOrEmpty(types))
+                    {
+                        types = type;
+                    }
+                    else
+                    {
+                        types = $"{types}|{type}";
+                    }
+                }
+
+                string cased = FhirUtils.ToConvention(baseName, string.Empty, nameConvention, concatenatePath, concatenationDelimiter);
+
+                if (!usedNames.Contains(cased))
+                {
+                    usedNames.Add(cased);
+                    values.Add(new(cased, types, fhirTypeName));
+                }
+            }
+
+            rootExportName = baseName;
+            return values;
+        }
+
+        values.Add(new(
+            FhirUtils.ToConvention(Name, Path, nameConvention, concatenatePath, concatenationDelimiter),
+            FhirUtils.ToConvention(BaseTypeName, string.Empty, typeConvention),
+            BaseTypeName));
+
+        rootExportName = values[0].ProperyName;
+        return values;
     }
 
     /// <summary>Names and types for export.</summary>

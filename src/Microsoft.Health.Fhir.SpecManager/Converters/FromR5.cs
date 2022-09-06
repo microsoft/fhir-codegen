@@ -774,22 +774,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     ProcessDataTypePrimitive(sd, fhirVersionInfo);
                     break;
 
+                case "logical":
+                    ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.LogicalModel);
+                    break;
+
                 case "resource":
                 case "complex-type":
                     if (sd.Derivation == "constraint")
                     {
                         if (sd.Type == "Extension")
                         {
-                            ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
+                            ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Extension);
                         }
                         else
                         {
-                            ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Profile);
+                            ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Profile);
                         }
                     }
                     else
                     {
-                        ProcessComplex(sd, fhirVersionInfo, sd.Kind == "complex-type" ? FhirComplex.FhirComplexType.DataType : FhirComplex.FhirComplexType.Resource);
+                        ProcessComplex(
+                            sd,
+                            fhirVersionInfo,
+                            sd.Kind == "complex-type" ? FhirArtifactClassEnum.ComplexType : FhirArtifactClassEnum.Resource);
                     }
 
                     break;
@@ -809,11 +816,69 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             string comment = string.Empty;
             string baseTypeName = string.Empty;
 
+#if false   // right now, differential is generally 'more correct' than snapshot, see FHIR-37465
             if ((sd.Snapshot != null) &&
                 (sd.Snapshot.Element != null) &&
                 (sd.Snapshot.Element.Count > 0))
             {
                 foreach (fhirModels.ElementDefinition element in sd.Snapshot.Element)
+                {
+                    if (element.Id == sd.Id)
+                    {
+                        descriptionShort = element.Short;
+                        definition = element.Definition;
+                        comment = element.Comment;
+                        continue;
+                    }
+
+                    if (element.Id != $"{sd.Id}.value")
+                    {
+                        continue;
+                    }
+
+                    if (element.Type == null)
+                    {
+                        continue;
+                    }
+
+                    foreach (fhirModels.ElementDefinitionType type in element.Type)
+                    {
+                        if (!string.IsNullOrEmpty(type.Code))
+                        {
+                            if (FhirElementType.IsFhirPathType(type.Code, out string fhirType))
+                            {
+                                baseTypeName = fhirType;
+                            }
+                            else if (FhirElementType.IsXmlBaseType(type.Code, out string xmlFhirType))
+                            {
+                                baseTypeName = xmlFhirType;
+                            }
+                        }
+
+                        if (type.Extension == null)
+                        {
+                            continue;
+                        }
+
+                        foreach (fhirModels.Extension ext in type.Extension)
+                        {
+                            if (ext.Url == "http://hl7.org/fhir/StructureDefinition/regex")
+                            {
+                                regex = ext.ValueString;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+#endif
+
+            // right now, differential is generally 'more correct' than snapshot, see FHIR-37465
+            if ((sd.Differential != null) &&
+                (sd.Differential.Element != null) &&
+                (sd.Differential.Element.Count > 0))
+            {
+                foreach (fhirModels.ElementDefinition element in sd.Differential.Element)
                 {
                     if (element.Id == sd.Id)
                     {
@@ -891,15 +956,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="element">      The element.</param>
         /// <param name="elementTypes"> [out] Type of the element.</param>
         /// <param name="regex">        [out] The RegEx.</param>
+        /// <param name="isSimple">     [out] True if is simple, false if not.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElement(
             string structureName,
             fhirModels.ElementDefinition element,
             out Dictionary<string, FhirElementType> elementTypes,
-            out string regex)
+            out string regex,
+            out bool isSimple)
         {
             elementTypes = new Dictionary<string, FhirElementType>();
             regex = string.Empty;
+            isSimple = false;
 
             // TODO(ginoc): 5.0.0-snapshot1 needs these fixed
             switch (element.Path)
@@ -911,32 +979,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     return true;
             }
 
-            /* Correct some mistakes in the spec. Need to discuss this with Gino.
-             */
-            if (element.Path == "Resource.id")
-            {
-                elementTypes.Add("id", new FhirElementType("id"));
-            }
-
             // check for declared type
-            else if (element.Type != null)
+            if (element.Type != null)
             {
+                string fType;
+
                 foreach (fhirModels.ElementDefinitionType edType in element.Type)
                 {
-                    // check for extensions to find regex pattern
-                    if (edType.Extension != null)
-                    {
-                        foreach (fhirModels.Extension ext in edType.Extension)
-                        {
-                            if (ext.Url == "http://hl7.org/fhir/StructureDefinition/regex")
-                            {
-                                regex = ext.ValueString;
-                            }
-                        }
-                    }
+                    regex = edType.Extension?
+                        .FirstOrDefault((ext) => ext.Url.Equals("http://hl7.org/fhir/StructureDefinition/regex", StringComparison.Ordinal), new())
+                        .ValueString ?? string.Empty;
 
-                    // check for a specified type
-                    if (!string.IsNullOrEmpty(edType.Code))
+                    fType = edType.Extension?
+                        .FirstOrDefault((ext) => ext.Url.Equals("http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type", StringComparison.Ordinal), new())
+                        .ValueString ?? string.Empty;
+
+                    if (!string.IsNullOrEmpty(fType))
+                    {
+                        // create a type for this code
+                        FhirElementType elementType = new FhirElementType(
+                            fType,
+                            edType.TargetProfile,
+                            edType.Profile);
+
+                        isSimple = true;
+
+                        // add to our dictionary
+                        elementTypes.Add(elementType.Name, elementType);
+                    }
+                    else if (!string.IsNullOrEmpty(edType.Code))
                     {
                         // create a type for this code
                         FhirElementType elementType = new FhirElementType(
@@ -978,15 +1049,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="structureName">Name of the structure.</param>
         /// <param name="elements">     The elements.</param>
         /// <param name="elementTypes"> [out] Type of the element.</param>
+        /// <param name="regex">        [out] The RegEx.</param>
+        /// <param name="isSimple">     [out] True if is simple, false if not.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElements(
             string structureName,
             List<fhirModels.ElementDefinition> elements,
             out Dictionary<string, FhirElementType> elementTypes,
-            out string regex)
+            out string regex,
+            out bool isSimple)
         {
             elementTypes = null;
             regex = string.Empty;
+            isSimple = false;
 
             foreach (fhirModels.ElementDefinition element in elements)
             {
@@ -996,7 +1071,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // check for base path having a type
                 if (components.Length == 1)
                 {
-                    if (TryGetTypeFromElement(structureName, element, out elementTypes, out regex))
+                    if (TryGetTypeFromElement(structureName, element, out elementTypes, out regex, out isSimple))
                     {
                         // done searching
                         return true;
@@ -1007,7 +1082,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 if ((components.Length == 2) &&
                     components[1].Equals("value", StringComparison.Ordinal))
                 {
-                    if (TryGetTypeFromElement(structureName, element, out elementTypes, out regex))
+                    if (TryGetTypeFromElement(structureName, element, out elementTypes, out regex, out isSimple))
                     {
                         // keep looking in case we find a better option
                         continue;
@@ -1025,13 +1100,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
         /// <summary>Process a complex structure (Complex Type or Resource).</summary>
         /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
-        /// <param name="sd">                   The structure definition to parse.</param>
-        /// <param name="fhirVersionInfo">      FHIR Version information.</param>
-        /// <param name="definitionComplexType">Type of structure definition we are parsing.</param>
+        /// <param name="sd">             The structure definition to parse.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        /// <param name="artifactClass">  Type of structure definition we are parsing.</param>
         private static void ProcessComplex(
             fhirModels.StructureDefinition sd,
             IPackageImportable fhirVersionInfo,
-            FhirComplex.FhirComplexType definitionComplexType)
+            FhirArtifactClassEnum artifactClass)
         {
             if ((sd.Snapshot == null) || (sd.Snapshot.Element == null))
             {
@@ -1090,9 +1165,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 {
                     if (!TryGetTypeFromElements(
                             sd.Name,
-                            sd.Differential.Element,
+                            sd.Snapshot.Element,
                             out Dictionary<string, FhirElementType> baseTypes,
-                            out string regex))
+                            out string _,
+                            out bool _))
                     {
                         throw new InvalidDataException($"Could not determine base type for {sd.Name}");
                     }
@@ -1121,6 +1197,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         string elementType = string.Empty;
                         string regex = string.Empty;
                         bool isRootElement = false;
+                        bool isSimple = false;
 
                         // split the id into component parts
                         string[] idComponents = id.Split('.');
@@ -1191,6 +1268,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         element.IsModifierReason,
                                         element.IsSummary,
                                         element.MustSupport,
+                                        false,
                                         string.Empty,
                                         null,
                                         string.Empty,
@@ -1199,6 +1277,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         true,
                                         string.Empty,
                                         string.Empty,
+                                        null,
                                         null));
                             }
 
@@ -1236,7 +1315,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
 
                         // if we can't find a type, assume Element
-                        if (!TryGetTypeFromElement(parent.Name, element, out elementTypes, out regex))
+                        if (!TryGetTypeFromElement(parent.Name, element, out elementTypes, out regex, out isSimple))
                         {
                             if ((field == "Extension") || (field == "extension"))
                             {
@@ -1360,6 +1439,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             element.IsModifierReason,
                             element.IsSummary,
                             element.MustSupport,
+                            isSimple,
                             defaultName,
                             defaultValue,
                             fixedName,
@@ -1368,7 +1448,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             modifiesParent,
                             bindingStrength,
                             valueSet,
-                            fiveWs);
+                            fiveWs,
+                            FhirElement.ConvertFhirRepresentations(element.Representation));
 
                         if (isRootElement)
                         {
@@ -1482,19 +1563,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     }
                 }
 
-                switch (definitionComplexType)
+                switch (artifactClass)
                 {
-                    case FhirComplex.FhirComplexType.DataType:
+                    case FhirArtifactClassEnum.ComplexType:
                         fhirVersionInfo.AddComplexType(complex);
                         break;
-                    case FhirComplex.FhirComplexType.Resource:
+                    case FhirArtifactClassEnum.Resource:
                         fhirVersionInfo.AddResource(complex);
                         break;
-                    case FhirComplex.FhirComplexType.Extension:
+                    case FhirArtifactClassEnum.Extension:
                         fhirVersionInfo.AddExtension(complex);
                         break;
-                    case FhirComplex.FhirComplexType.Profile:
+                    case FhirArtifactClassEnum.Profile:
                         fhirVersionInfo.AddProfile(complex);
+                        break;
+                    case FhirArtifactClassEnum.LogicalModel:
+                        fhirVersionInfo.AddLogicalModel(complex);
                         break;
                 }
             }

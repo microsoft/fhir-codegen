@@ -4,6 +4,7 @@
 // </copyright>
 
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.PackageManager;
 
 namespace FhirCodeGenBlazor.Services;
@@ -31,6 +32,9 @@ public interface IPackageManagerWebService : IReadOnlyDictionary<string,PackageC
     /// <summary>Deletes the package described by directive.</summary>
     /// <param name="directive">The directive.</param>
     void DeletePackage(string directive);
+
+    /// <summary>Gets the published releases.</summary>
+    List<FhirPackageCommon.PublishedReleaseInformation> PublishedReleases { get; }
 
     /// <summary>Status of load request.</summary>
     /// <param name="directive">The directive.</param>

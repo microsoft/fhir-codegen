@@ -46,7 +46,27 @@ public class RegistryPackageManifest
         // attempt to parse
         try
         {
-            return JsonSerializer.Deserialize<RegistryPackageManifest>(json);
+            RegistryPackageManifest manifest = JsonSerializer.Deserialize<RegistryPackageManifest>(json);
+
+            // filter for garbage (packages2.fhir.org)
+            if ((manifest != null) &&
+                (manifest.Versions != null))
+            {
+                List<string> keysToRemove = new();
+
+                foreach ((string key, VersionInfo info) in manifest.Versions)
+                {
+                    if ((info.FhirVersion == "??") ||
+                        (info.PackageKind == "??"))
+                    {
+                        keysToRemove.Add(key);
+                    }
+                }
+
+                keysToRemove.ForEach((key) => manifest.Versions.Remove(key));
+            }
+
+            return manifest;
         }
         catch (JsonException)
         {
@@ -92,7 +112,17 @@ public class RegistryPackageManifest
             }
             else
             {
-                throw new ArgumentException($"Unparseable version: {first} ? {second}");
+                int comp = string.CompareOrdinal(componentsF[i], componentsS[i]);
+
+                if (comp > 0)
+                {
+                    return true;
+                }
+
+                if (comp < 0)
+                {
+                    return false;
+                }
             }
         }
 

@@ -41,11 +41,15 @@ public abstract class FhirUtils
         string concatenationDelimiter = "",
         HashSet<string> reservedWords = null)
     {
-        string value = name;
+        string value;
 
         if (concatenatePath && (!string.IsNullOrEmpty(path)))
         {
             value = path;
+        }
+        else
+        {
+            value = string.IsNullOrEmpty(name) ? path : name;
         }
 
         if (string.IsNullOrEmpty(value))
@@ -156,6 +160,22 @@ public abstract class FhirUtils
                     return value;
                 }
 
+            case NamingConvention.LowerKebab:
+                {
+                    string[] components = ToLowerKebab(value.Split('.'));
+                    value = string.Join('-', components);
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        components[components.Length - 1] = "fhir" + components[components.Length - 1];
+
+                        return string.Join('-', components);
+                    }
+
+                    return value;
+                }
+
             case NamingConvention.None:
             default:
                 throw new ArgumentException($"Invalid Naming Convention: {convention}");
@@ -204,6 +224,11 @@ public abstract class FhirUtils
             case NamingConvention.LowerCase:
                 {
                     return sanitized.ToLowerInvariant();
+                }
+
+            case NamingConvention.LowerKebab:
+                {
+                    return ToLowerKebab(sanitized);
                 }
 
             case NamingConvention.None:

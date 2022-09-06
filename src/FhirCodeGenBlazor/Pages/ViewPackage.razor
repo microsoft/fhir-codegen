@@ -37,6 +37,7 @@ else if (SpecService[directive].ArtifactRecordsByClass.Any())
             @bind-value="artifactFilterText"
             @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredArtifacts(e?.Value?.ToString() ?? "")))"
             />
+        <span class="ms-2 mt-2">@filteredArtifacts.Count artifacts found</span>
     </div>
     <table class="table table-striped table-hover">
         <thead>

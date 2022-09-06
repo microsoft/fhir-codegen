@@ -4,14 +4,14 @@
  */
 toDisplay(familyFirst:boolean = true, includeAnnotations:boolean = false):string {
   if ((this.text) && (this.text.length > 0)) {
-    return this.text;
+    return this.text.toString();
   }
 
   var val:string = '';
 
   if (familyFirst) {
     if (this.family) {
-      val = this.family;
+      val = this.family.toString();
     }
 
     if (this.given) {

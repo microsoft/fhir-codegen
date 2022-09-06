@@ -39,6 +39,7 @@ public class FhirNodeInfo
                 case FhirNodeType.DataType:
                 case FhirNodeType.Resource:
                 case FhirNodeType.Component:
+                case FhirNodeType.LogicalModel:
                 case FhirNodeType.Profile:
                     _sourcePrimitive = null;
                     _sourceComplex = (FhirComplex)sourceNode;
@@ -82,6 +83,7 @@ public class FhirNodeInfo
                 case FhirNodeType.DataType:
                 case FhirNodeType.Resource:
                 case FhirNodeType.Component:
+                case FhirNodeType.LogicalModel:
                 case FhirNodeType.Profile:
                     _sourcePrimitive = null;
                     _sourceComplex = (FhirComplex)sourceNode;
@@ -108,6 +110,7 @@ public class FhirNodeInfo
                 case FhirNodeType.DataType:
                 case FhirNodeType.Resource:
                 case FhirNodeType.Component:
+                case FhirNodeType.LogicalModel:
                 case FhirNodeType.Profile:
                     _destinationPrimitive = null;
                     _destinationComplex = (FhirComplex)destinationNode;
@@ -146,6 +149,9 @@ public class FhirNodeInfo
 
         /// <summary>This node is a profile data type.</summary>
         Profile,
+
+        /// <summary>This node is a logical model.</summary>
+        LogicalModel,
     }
 
     /// <summary>Gets the type of the source node.</summary>
