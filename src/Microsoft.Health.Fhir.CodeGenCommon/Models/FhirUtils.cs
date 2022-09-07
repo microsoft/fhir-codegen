@@ -294,7 +294,7 @@ public abstract class FhirUtils
         }
 
         string value = input.Trim();
-        value = value.Replace("\"", "\\\"");
+        value = value.Replace("\"", "\\\"").Replace("\n", "<br/> ");
 
         return value;
     }

@@ -1545,7 +1545,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     usedLiterals.Add(codeName);
 
-                    _writer.WriteLineIndented($"{codeName},");
+                    _writer.WriteLineIndented($"{FhirUtils.SanitizeForProperty(codeName, _reservedWords)},");
                 }
 
                 CloseScope();
@@ -1648,16 +1648,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 if (string.IsNullOrEmpty(element.FiveWs))
                 {
-                    fiveWs = " , FiveWs=\"\"";
+                    // fiveWs = ", FiveWs=\"\"";
                 }
                 else
                 {
-                    fiveWs = $" , FiveWs=\"{element.FiveWs}\"";
+                    fiveWs = $", FiveWs=\"{element.FiveWs}\"";
                 }
             }
 
             /* Exceptions:
-            *  o OperationOutcome.issue.severity does not have `IsModifier` anymore since R4. 
+            *  o OperationOutcome.issue.severity does not have `IsModifier` anymore since R4.
             */
 
             if (element.Path == "OperationOutcome.issue.severity")
@@ -1871,11 +1871,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 if (string.IsNullOrEmpty(element.FiveWs))
                 {
-                    fiveWs = " , FiveWs=\"\"";
+                    // fiveWs = " , FiveWs=\"\"";
                 }
                 else
                 {
-                    fiveWs = $" , FiveWs=\"{element.FiveWs}\"";
+                    fiveWs = $", FiveWs=\"{element.FiveWs}\"";
                 }
             }
 
