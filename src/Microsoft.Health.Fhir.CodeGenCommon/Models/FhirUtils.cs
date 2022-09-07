@@ -538,19 +538,19 @@ public abstract class FhirUtils
 
         if (value.StartsWith("http://hl7.org/fhir/", StringComparison.Ordinal))
         {
-            value = "Fhir" + value.Substring(20);
+            value = "FHIR_" + value.Substring(20);
         }
         else if (value.StartsWith("http://hl7.org/fhirpath/", StringComparison.Ordinal))
         {
-            value = "FHIRPath" + value.Substring(24);
+            value = "FHIRPath_" + value.Substring(24);
         }
         else if (value.StartsWith("http://terminology.hl7.org/", StringComparison.Ordinal))
         {
-            value = value.Substring(27);
+            value = "THO_" + value.Substring(27);
         }
         else if (value.StartsWith("http://hl7.org/", StringComparison.Ordinal))
         {
-            value = "HL7" + value.Substring(15);
+            value = "HL7_" + value.Substring(15);
         }
         else if (value.StartsWith("https://"))
         {
