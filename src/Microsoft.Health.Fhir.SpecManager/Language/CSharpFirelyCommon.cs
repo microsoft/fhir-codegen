@@ -63,6 +63,90 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["time"] = "TimePattern",
         };
 
+        /// <summary>Gets the reserved words.</summary>
+        /// <value>The reserved words.</value>
+        public static readonly HashSet<string> ReservedWords = new HashSet<string>()
+        {
+            "abstract",
+            "as",
+            "base",
+            "bool",
+            "break",
+            "byte",
+            "case",
+            "catch",
+            "char",
+            "checked",
+            "class",
+            "const",
+            "continue",
+            "decimal",
+            "default",
+            "delegate",
+            "do",
+            "double",
+            "else",
+            "enum",
+            "event",
+            "explicit",
+            "extern",
+            "false",
+            "finally",
+            "fixed",
+            "float",
+            "for",
+            "foreach",
+            "goto",
+            "if",
+            "implicit",
+            "in",
+            "int",
+            "interface",
+            "internal",
+            "is",
+            "lock",
+            "long",
+            "namespace",
+            "new",
+            "null",
+            "object",
+            "operator",
+            "out",
+            "override",
+            "params",
+            "private",
+            "protected",
+            "public",
+            "readonly",
+            "ref",
+            "return",
+            "sbyte",
+            "sealed",
+            "short",
+            "sizeof",
+            "stackalloc",
+            "static",
+            "string",
+            "struct",
+            "switch",
+            "this",
+            "throw",
+            "true",
+            "try",
+            "typeof",
+            "uint",
+            "ulong",
+            "unchecked",
+            "unsafe",
+            "ushort",
+            "using",
+            "static",
+            "virtual",
+            "void",
+            "volatile",
+            "while",
+        };
+
         /// <summary>Writes an indented comment.</summary>
         /// <param name="writer">The writer to write the comment to.</param>
         /// <param name="value">The value.</param>
@@ -135,9 +219,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Convert enum value - see Template-Model.tt#2061.</summary>
-        /// <param name="name">The name.</param>
+        /// <param name="name">            The name.</param>
+        /// <param name="dashAsMinus">(Optional) True if dashes are 'minus' literals.</param>
         /// <returns>The enum converted value.</returns>
-        public static string ConvertEnumValue(string name)
+        public static string ConvertEnumValue(string name, bool dashAsMinus = false)
         {
             if (name.StartsWith("_", StringComparison.Ordinal))
             {
@@ -174,19 +259,44 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 return "GreaterThan";
             }
 
-            string[] bits = name.Split(new char[] { ' ', '-' });
-            string result = null;
-            foreach (string bit in bits)
+            string result = string.Empty;
+
+            if (dashAsMinus)
             {
-                result += bit.Substring(0, 1).ToUpperInvariant();
-                result += bit.Substring(1);
+                string[] bits = name.Split(' ');
+
+                foreach (string bit in bits)
+                {
+                    result += bit.Substring(0, 1).ToUpperInvariant();
+                    result += bit.Substring(1);
+                }
+
+                bits = result.Split('-');
+                result = bits[0];
+
+                for (int i = 1; i < bits.Length; i++)
+                {
+                    result += "Minus";
+                    result += bits[i].Substring(0, 1).ToUpperInvariant();
+                    result += bits[i].Substring(1);
+                }
+            }
+            else
+            {
+                string[] bits = name.Split(new char[] { ' ', '-' });
+
+                foreach (string bit in bits)
+                {
+                    result += bit.Substring(0, 1).ToUpperInvariant();
+                    result += bit.Substring(1);
+                }
             }
 
-#pragma warning disable CA1307 // Specify StringComparison
-            result = result.Replace(".", "_");
-            result = result.Replace(")", "_");
-            result = result.Replace("(", "_");
-#pragma warning restore CA1307 // Specify StringComparison
+            result = result.Replace(".", "_", StringComparison.Ordinal);
+            result = result.Replace(")", "_", StringComparison.Ordinal);
+            result = result.Replace("(", "_", StringComparison.Ordinal);
+            result = result.Replace("/", "_", StringComparison.Ordinal);
+            result = result.Replace("+", "Plus", StringComparison.Ordinal);
 
             if (char.IsDigit(result[0]))
             {

@@ -154,7 +154,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the reserved words.</summary>
         /// <value>The reserved words.</value>
-        private static readonly HashSet<string> _reservedWords = new HashSet<string>();
+        private static readonly HashSet<string> _reservedWords = CSharpFirelyCommon.ReservedWords;
 
         private static readonly Func<WrittenModelInfo, bool> SupportedResourcesFilter = wmi => !wmi.IsAbstract;
         private static readonly Func<WrittenModelInfo, bool> FhirToCsFilter = wmi => !ExcludeFromCsToFhir.Contains(wmi.FhirName);
@@ -1510,9 +1510,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 HashSet<string> usedLiterals = new HashSet<string>();
 
+                bool checkForGmt = name.Equals("IANATimezones", StringComparison.OrdinalIgnoreCase);
+
                 foreach (FhirConcept concept in vs.Concepts)
                 {
-                    string codeName = ConvertEnumValue(concept.Code);
+                    string codeName = ConvertEnumValue(concept.Code, checkForGmt);
                     string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
                     if (string.IsNullOrEmpty(concept.Definition))
@@ -1524,7 +1526,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         WriteIndentedComment($"{concept.Definition}\n(system: {concept.System})");
                     }
 
-                    string display = FhirUtils.SanitizeForValue(concept.Display);
+                    string display = FhirUtils.SanitizeForQuoted(concept.Display);
 
                     _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
 
@@ -1561,9 +1563,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Convert enum value - see Template-Model.tt#2061.</summary>
-        /// <param name="name">The name.</param>
+        /// <param name="name">       The name.</param>
+        /// <param name="checkForGmt">(Optional) True to check for GMT.</param>
         /// <returns>The enum converted value.</returns>
-        private static string ConvertEnumValue(string name) => CSharpFirelyCommon.ConvertEnumValue(name);
+        private static string ConvertEnumValue(string name, bool checkForGmt = false) => FhirUtils.SanitizeForProperty(
+            name,
+            _reservedWords,
+            FhirTypeBase.NamingConvention.PascalCase,
+            FhirUtils.ReplacementsPascal,
+            checkForGmt);
+        //private static string ConvertEnumValue(string name, bool checkForGmt = false) => CSharpFirelyCommon.ConvertEnumValue(name, checkForGmt);
 
         /// <summary>Gets an order.</summary>
         /// <param name="element">The element.</param>
@@ -1646,11 +1655,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (_exportFiveWs)
             {
-                if (string.IsNullOrEmpty(element.FiveWs))
-                {
-                    fiveWs = " , FiveWs=\"\"";
-                }
-                else
+                if (!string.IsNullOrEmpty(element.FiveWs))
                 {
                     fiveWs = $" , FiveWs=\"{element.FiveWs}\"";
                 }
