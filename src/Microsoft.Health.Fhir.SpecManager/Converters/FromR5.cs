@@ -746,8 +746,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 sp.Type,
                 sp.Status,
                 sp.Experimental == true,
-                sp.Xpath,
-                sp.XpathUsage,
+                sp.Expression,
+                sp.ProcessingMode,
                 sp.Expression);
 
             // add our parameter

@@ -177,6 +177,8 @@ public abstract class FhirUtils
                 }
 
             case NamingConvention.None:
+                return value;
+
             default:
                 throw new ArgumentException($"Invalid Naming Convention: {convention}");
         }

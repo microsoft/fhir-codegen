@@ -3,7 +3,9 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Globalization;
 using System.IO;
+using System.Net.Mime;
 using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
