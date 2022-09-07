@@ -2,13 +2,8 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
+
 using System.IO;
-using System.Linq;
-using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.OpenApi;
@@ -16,7 +11,6 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
-using Newtonsoft.Json;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirServerResourceInfo;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
@@ -180,6 +174,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Gets the reserved words.</summary>
         /// <value>The reserved words.</value>
         private static readonly HashSet<string> _reservedWords = new HashSet<string>();
+
+        /// <summary>The HTTP response descriptions.</summary>
+        private static readonly Dictionary<int, string> _httpResponseDescriptions = new()
+        {
+            { 200, "OK" },
+            { 201, "CREATED" },
+            { 202, "ACCEPTED" },
+            { 204, "NO CONTENT" },
+            { 400, "BAD REQUEST" },
+            { 401, "NOT AUTHORIZED" },
+            { 404, "NOT FOUND" },
+            { 405, "METHOD NOT ALLOWED" },
+            { 409, "CONFLICT" },
+            { 410, "GONE" },
+            { 412, "CONFLICT" },
+            { 422, "UNPROCESSABLE" },
+        };
 
         /// <summary>Gets the name of the language.</summary>
         /// <value>The name of the language.</value>
@@ -475,11 +486,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (minify)
             {
-                object obj = JsonConvert.DeserializeObject(File.ReadAllText(filename));
+                // TODO(ginoc): Swap this to System.Text.Json
+                object obj = Newtonsoft.Json.JsonConvert.DeserializeObject(File.ReadAllText(filename));
 
                 File.Delete(filename);
 
-                File.WriteAllText(filename, JsonConvert.SerializeObject(obj, Formatting.None));
+                File.WriteAllText(filename, Newtonsoft.Json.JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.None));
             }
         }
 
@@ -952,813 +964,290 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     switch (interaction)
                     {
                         case FhirServerResourceInfo.FhirInteraction.Read:
-                            {
-                                string path = $"/{resource.ResourceType}/{{id}}";
-                                OperationType ot = OperationType.Get;
-
-                                if (!opsByMethodByPath.ContainsKey(path))
-                                {
-                                    opsByMethodByPath.Add(path, new());
-                                }
-
-                                if (opsByMethodByPath[path].ContainsKey(ot))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = new();
-                                AddOperationBasicProps(
-                                    op,
-                                    $"{interaction}{resource.ResourceType}",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    true,
-                                    false);
-
-                                if (_singleResponseCode)
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, false),
-                                        },
-                                    };
-                                }
-                                else
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, false),
-                                        },
-                                        ["410"] = new OpenApiResponse()
-                                        {
-                                            Description = "DELETED",
-                                        },
-                                        ["404"] = new OpenApiResponse()
-                                        {
-                                            Description = "NOT FOUND",
-                                        },
-                                    };
-                                }
-
-                                opsByMethodByPath[path].Add(ot, op);
-                            }
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}",
+                                OperationType.Get,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                true,
+                                false,
+                                new int[] { 200, 410, 404 },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                null);
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.VRead:
-                            {
-                                string path = $"/{resource.ResourceType}/{{id}}/_history/{{vid}}";
-                                OperationType ot = OperationType.Get;
-
-                                if (!opsByMethodByPath.ContainsKey(path))
-                                {
-                                    opsByMethodByPath.Add(path, new());
-                                }
-
-                                if (opsByMethodByPath[path].ContainsKey(ot))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = new();
-                                AddOperationBasicProps(
-                                    op,
-                                    $"{interaction}{resource.ResourceType}",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    true,
-                                    true);
-
-                                if (_singleResponseCode)
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, false),
-                                        },
-                                    };
-                                }
-                                else
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, false),
-                                        },
-                                        ["410"] = new OpenApiResponse()
-                                        {
-                                            Description = "DELETED",
-                                        },
-                                        ["404"] = new OpenApiResponse()
-                                        {
-                                            Description = "NOT FOUND",
-                                        },
-                                    };
-                                }
-
-                                opsByMethodByPath[path].Add(ot, op);
-                            }
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}/_history/{{vid}}",
+                                OperationType.Get,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                true,
+                                true,
+                                new int[] { 200, 410, 404 },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                null);
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.HistoryInstance:
+                            if (!_includeHistory)
                             {
-                                if (!_includeHistory)
-                                {
-                                    continue;
-                                }
-
-                                string path = $"/{resource.ResourceType}/{{id}}/_history";
-                                OperationType ot = OperationType.Get;
-
-                                if (!opsByMethodByPath.ContainsKey(path))
-                                {
-                                    opsByMethodByPath.Add(path, new());
-                                }
-
-                                if (opsByMethodByPath[path].ContainsKey(ot))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = new();
-                                AddOperationBasicProps(
-                                    op,
-                                    $"{interaction}{resource.ResourceType}",
-                                    $"History of a {resource.ResourceType} instance",
-                                    $"Get the history of a {resource.ResourceType} instance",
-                                    true,
-                                    false);
-
-                                if (_singleResponseCode)
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, true),
-                                        },
-                                    };
-                                }
-                                else
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, true),
-                                        },
-                                        ["410"] = new OpenApiResponse()
-                                        {
-                                            Description = "DELETED",
-                                        },
-                                        ["404"] = new OpenApiResponse()
-                                        {
-                                            Description = "NOT FOUND",
-                                        },
-                                    };
-                                }
-
-                                opsByMethodByPath[path].Add(ot, op);
+                                continue;
                             }
+
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}/_history",
+                                OperationType.Get,
+                                $"{interaction}{resource.ResourceType}",
+                                $"History of a {resource.ResourceType} instance",
+                                $"Get the history of a {resource.ResourceType} instance",
+                                true,
+                                false,
+                                new int[] { 200, 410, 404 },
+                                resource.ResourceType,
+                                true,
+                                false,
+                                null,
+                                null);
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.HistoryType:
+                            if (!_includeHistory)
                             {
-                                if (!_includeHistory)
-                                {
-                                    continue;
-                                }
-
-                                string path = $"/{resource.ResourceType}/_history";
-                                OperationType ot = OperationType.Get;
-
-                                if (!opsByMethodByPath.ContainsKey(path))
-                                {
-                                    opsByMethodByPath.Add(path, new());
-                                }
-
-                                if (opsByMethodByPath[path].ContainsKey(ot))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = new();
-                                AddOperationBasicProps(
-                                    op,
-                                    $"{interaction}{resource.ResourceType}",
-                                    $"History of all {resource.ResourceType}s",
-                                    $"Get the history of all {resource.ResourceType} instances",
-                                    false,
-                                    false);
-
-                                AddOperationParameters(_serverInfo.ServerSearchParameters.Values, op);
-                                AddOperationParameters(resource.SearchParameters.Values, op);
-
-                                if (_singleResponseCode)
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, true),
-                                        },
-                                    };
-                                }
-                                else
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, true),
-                                        },
-                                        ["410"] = new OpenApiResponse()
-                                        {
-                                            Description = "DELETED",
-                                        },
-                                        ["404"] = new OpenApiResponse()
-                                        {
-                                            Description = "NOT FOUND",
-                                        },
-                                    };
-                                }
-
-                                opsByMethodByPath[path].Add(ot, op);
+                                continue;
                             }
+
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/_history",
+                                OperationType.Get,
+                                $"{interaction}{resource.ResourceType}",
+                                $"History of all {resource.ResourceType}s",
+                                $"Get the history of all {resource.ResourceType} instances",
+                                false,
+                                false,
+                                new int[] { 200, 410, 404 },
+                                resource.ResourceType,
+                                true,
+                                true,
+                                resource.SearchParameters.Values,
+                                null);
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.Patch:
+                            if (_generateReadOnly)
                             {
-                                if (_generateReadOnly)
-                                {
-                                    continue;
-                                }
+                                continue;
+                            }
 
-                                string path = $"/{resource.ResourceType}/{{id}}";
-                                OperationType ot = OperationType.Patch;
-
-                                if (!opsByMethodByPath.ContainsKey(path))
-                                {
-                                    opsByMethodByPath.Add(path, new());
-                                }
-
-                                if (opsByMethodByPath[path].ContainsKey(ot))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = new();
-                                AddOperationBasicProps(
-                                    op,
-                                    $"{interaction}{resource.ResourceType}",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    true,
-                                    false);
-
-                                op.RequestBody = new OpenApiRequestBody()
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}",
+                                OperationType.Patch,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                true,
+                                false,
+                                new int[] { 200, 400, 401, 404, 412, },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                new OpenApiRequestBody()
                                 {
                                     Content = BuildContentMapForPatch(resource.ResourceType),
                                     Description = _includeDescriptions ? $"A {resource.ResourceType}" : null,
-                                };
-
-                                if (_singleResponseCode)
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMapForPatch(resource.ResourceType),
-                                        },
-                                    };
-                                }
-                                else
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMapForPatch(resource.ResourceType),
-                                        },
-                                        ["400"] = new OpenApiResponse()
-                                        {
-                                            Description = "BAD REQUEST",
-                                        },
-                                        ["401"] = new OpenApiResponse()
-                                        {
-                                            Description = "NOT AUTHORIZED",
-                                        },
-                                        ["404"] = new OpenApiResponse()
-                                        {
-                                            Description = "NOT FOUND",
-                                        },
-                                        ["405"] = new OpenApiResponse()
-                                        {
-                                            Description = "METHOD NOT ALLOWED",
-                                        },
-                                        ["412"] = new OpenApiResponse()
-                                        {
-                                            Description = "CONFLICT",
-                                        },
-                                        ["422"] = new OpenApiResponse()
-                                        {
-                                            Description = "UNPROCESSABLE",
-                                        },
-                                    };
-                                }
-
-                                opsByMethodByPath[path].Add(ot, op);
-                            }
+                                });
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.Update:
+                            if (_generateReadOnly)
                             {
-                                if (_generateReadOnly)
+                                continue;
+                            }
+
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}",
+                                OperationType.Put,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                true,
+                                false,
+                                new int[] { 200, 400, 401, 404, 405, 409, 412, 422, },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                new OpenApiRequestBody()
                                 {
-                                    continue;
-                                }
-
-                                string path = $"/{resource.ResourceType}/{{id}}";
-                                OperationType ot = OperationType.Put;
-
-                                if (!opsByMethodByPath.ContainsKey(path))
-                                {
-                                    opsByMethodByPath.Add(path, new());
-                                }
-
-                                if (opsByMethodByPath[path].ContainsKey(ot))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = new();
-                                AddOperationBasicProps(
-                                    op,
-                                    $"{interaction}{resource.ResourceType}",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    true,
-                                    false);
-
-                                op.RequestBody = new OpenApiRequestBody()
-                                {
+                                    Required = true,
                                     Content = BuildContentMap(resource.ResourceType, false),
                                     Description = _includeDescriptions ? $"A {resource.ResourceType}" : null,
-                                };
-
-                                if (_singleResponseCode)
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, false),
-                                        },
-                                    };
-                                }
-                                else
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, false),
-                                        },
-                                        ["400"] = new OpenApiResponse()
-                                        {
-                                            Description = "BAD REQUEST",
-                                        },
-                                        ["401"] = new OpenApiResponse()
-                                        {
-                                            Description = "NOT AUTHORIZED",
-                                        },
-                                        ["404"] = new OpenApiResponse()
-                                        {
-                                            Description = "NOT FOUND",
-                                        },
-                                        ["405"] = new OpenApiResponse()
-                                        {
-                                            Description = "METHOD NOT ALLOWED",
-                                        },
-                                        ["412"] = new OpenApiResponse()
-                                        {
-                                            Description = "CONFLICT",
-                                        },
-                                        ["422"] = new OpenApiResponse()
-                                        {
-                                            Description = "UNPROCESSABLE",
-                                        },
-                                    };
-                                }
-
-                                opsByMethodByPath[path].Add(ot, op);
-                            }
+                                });
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.Create:
+                            if (_generateReadOnly)
                             {
-                                if (_generateReadOnly)
+                                continue;
+                            }
+
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}",
+                                OperationType.Post,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                false,
+                                false,
+                                new int[] { 200, 400, 404, 422, },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                new OpenApiRequestBody()
                                 {
-                                    continue;
-                                }
-
-                                string path = $"/{resource.ResourceType}";
-                                OperationType ot = OperationType.Post;
-
-                                if (!opsByMethodByPath.ContainsKey(path))
-                                {
-                                    opsByMethodByPath.Add(path, new());
-                                }
-
-                                if (opsByMethodByPath[path].ContainsKey(ot))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = new();
-                                AddOperationBasicProps(
-                                    op,
-                                    $"{interaction}{resource.ResourceType}",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    false,
-                                    false);
-
-                                op.RequestBody = new OpenApiRequestBody()
-                                {
+                                    Required = true,
                                     Content = BuildContentMap(resource.ResourceType, false),
                                     Description = _includeDescriptions ? $"A {resource.ResourceType}" : null,
-                                };
+                                });
 
-
-                                if (_singleResponseCode)
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, false),
-                                        },
-                                    };
-                                }
-                                else
-                                {
-                                    op.Responses = new OpenApiResponses()
-                                    {
-                                        ["200"] = new OpenApiResponse()
-                                        {
-                                            Description = "OK",
-                                            Content = BuildContentMap(resource.ResourceType, false),
-                                        },
-                                        ["201"] = new OpenApiResponse()
-                                        {
-                                            Description = "CREATED",
-                                            Content = BuildContentMap(resource.ResourceType, false),
-                                        },
-                                        ["400"] = new OpenApiResponse()
-                                        {
-                                            Description = "BAD REQUEST",
-                                        },
-                                        ["401"] = new OpenApiResponse()
-                                        {
-                                            Description = "NOT AUTHORIZED",
-                                        },
-                                        ["404"] = new OpenApiResponse()
-                                        {
-                                            Description = "NOT FOUND",
-                                        },
-                                        ["405"] = new OpenApiResponse()
-                                        {
-                                            Description = "METHOD NOT ALLOWED",
-                                        },
-                                        ["412"] = new OpenApiResponse()
-                                        {
-                                            Description = "CONFLICT",
-                                        },
-                                        ["422"] = new OpenApiResponse()
-                                        {
-                                            Description = "UNPROCESSABLE",
-                                        },
-                                    };
-                                }
-
-                                opsByMethodByPath[path].Add(ot, op);
-
-                                if (resource.ConditionalCreate == true)
-                                {
-                                    ot = OperationType.Put;
-
-                                    if (opsByMethodByPath[path].ContainsKey(ot))
-                                    {
-                                        continue;
-                                    }
-
-                                    op = new();
-                                    AddOperationBasicProps(
-                                        op,
-                                        $"ConditionalCreate{resource.ResourceType}",
-                                        $"Conditionally Create a {resource.ResourceType} instance",
-                                        $"Conditionally Create a {resource.ResourceType} instance",
-                                        false,
-                                        false);
-
-                                    op.RequestBody = new OpenApiRequestBody()
+                            if (resource.ConditionalCreate == true)
+                            {
+                                AddPath(
+                                    opsByMethodByPath,
+                                    $"/{resource.ResourceType}",
+                                    OperationType.Put,
+                                    $"ConditionalCreate{resource.ResourceType}",
+                                    $"Conditionally Create a {resource.ResourceType} instance",
+                                    $"Conditionally Create a {resource.ResourceType} instance",
+                                    false,
+                                    false,
+                                    new int[] { 200, 400, 404, 412, },
+                                    resource.ResourceType,
+                                    false,
+                                    true,
+                                    resource.SearchParameters.Values,
+                                    new OpenApiRequestBody()
                                     {
                                         Required = true,
                                         Content = BuildContentMap(resource.ResourceType, false),
                                         Description = _includeDescriptions ? $"A {resource.ResourceType}" : null,
-                                    };
-
-                                    if (_singleResponseCode)
-                                    {
-                                        op.Responses = new OpenApiResponses()
-                                        {
-                                            ["200"] = new OpenApiResponse()
-                                            {
-                                                Description = "OK",
-                                                Content = BuildContentMap(resource.ResourceType, false),
-                                            },
-                                        };
-                                    }
-                                    else
-                                    {
-                                        op.Responses = new OpenApiResponses()
-                                        {
-                                            ["200"] = new OpenApiResponse()
-                                            {
-                                                Description = "OK",
-                                                Content = BuildContentMap(resource.ResourceType, false),
-                                            },
-                                            ["201"] = new OpenApiResponse()
-                                            {
-                                                Description = "CREATED",
-                                                Content = BuildContentMap(resource.ResourceType, false),
-                                            },
-                                            ["400"] = new OpenApiResponse()
-                                            {
-                                                Description = "BAD REQUEST",
-                                            },
-                                            ["401"] = new OpenApiResponse()
-                                            {
-                                                Description = "NOT AUTHORIZED",
-                                            },
-                                            ["404"] = new OpenApiResponse()
-                                            {
-                                                Description = "NOT FOUND",
-                                            },
-                                            ["405"] = new OpenApiResponse()
-                                            {
-                                                Description = "METHOD NOT ALLOWED",
-                                            },
-                                            ["412"] = new OpenApiResponse()
-                                            {
-                                                Description = "CONFLICT",
-                                            },
-                                            ["422"] = new OpenApiResponse()
-                                            {
-                                                Description = "UNPROCESSABLE",
-                                            },
-                                        };
-                                    }
-
-                                    opsByMethodByPath[path].Add(ot, op);
-                                }
+                                    });
                             }
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.Delete:
+                            if (_generateReadOnly)
                             {
-                                if (_generateReadOnly)
-                                {
-                                    continue;
-                                }
+                                continue;
+                            }
 
-                                string path = $"/{resource.ResourceType}/{{id}}";
-                                OperationType ot = OperationType.Delete;
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}",
+                                OperationType.Delete,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                true,
+                                false,
+                                new int[] { 200, 202, 204, 400, 401, 404, 405, 409, },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                null);
 
-                                if (!opsByMethodByPath.ContainsKey(path))
-                                {
-                                    opsByMethodByPath.Add(path, new());
-                                }
-
-                                if (opsByMethodByPath[path].ContainsKey(ot))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = new();
-                                AddOperationBasicProps(
-                                    op,
-                                    $"{interaction}{resource.ResourceType}",
-                                    $"{interaction} a {resource.ResourceType} instance",
-                                    $"{interaction} a {resource.ResourceType} instance",
+                            if ((resource.ConditionalDelete == ConditionalDeletePolicy.Single) ||
+                                (resource.ConditionalDelete == ConditionalDeletePolicy.Multiple))
+                            {
+                                AddPath(
+                                    opsByMethodByPath,
+                                    $"/{resource.ResourceType}",
+                                    OperationType.Delete,
+                                    $"ConditionalDelete{resource.ResourceType}",
+                                    $"Conditionally Delete a {resource.ResourceType} instance",
+                                    $"Conditionally Delete a {resource.ResourceType} instance",
+                                    false,
+                                    false,
+                                    new int[] { 200, 202, 204, 400, 404, 412, },
+                                    resource.ResourceType,
+                                    false,
                                     true,
-                                    false);
-
-                                op.Responses = new OpenApiResponses()
-                                {
-                                    ["204"] = new OpenApiResponse()
-                                    {
-                                        Description = "NO CONTENT",
-                                    },
-                                    ["400"] = new OpenApiResponse()
-                                    {
-                                        Description = "BAD REQUEST",
-                                    },
-                                    ["401"] = new OpenApiResponse()
-                                    {
-                                        Description = "NOT AUTHORIZED",
-                                    },
-                                    ["404"] = new OpenApiResponse()
-                                    {
-                                        Description = "NOT FOUND",
-                                    },
-                                    ["405"] = new OpenApiResponse()
-                                    {
-                                        Description = "METHOD NOT ALLOWED",
-                                    },
-                                };
-
-                                opsByMethodByPath[path].Add(ot, op);
+                                    resource.SearchParameters.Values,
+                                    null);
                             }
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.SearchType:
+
+                            if ((_searchSupport == SearchSupportCodes.Both) || (_searchSupport == SearchSupportCodes.Get))
                             {
-                                string path;
-                                OperationType ot;
+                                AddPath(
+                                    opsByMethodByPath,
+                                    $"/{resource.ResourceType}",
+                                    OperationType.Get,
+                                    $"SearchGet{resource.ResourceType}",
+                                    $"Search {resource.ResourceType}s",
+                                    $"Search across all {resource.ResourceType} instances",
+                                    false,
+                                    false,
+                                    new int[] { 200, 400, 401, 405, },
+                                    resource.ResourceType,
+                                    false,
+                                    true,
+                                    resource.SearchParameters.Values,
+                                    null);
+                            }
 
-                                if ((_searchSupport == SearchSupportCodes.Both) || (_searchSupport == SearchSupportCodes.Get))
-                                {
-                                    path = $"/{resource.ResourceType}";
-                                    ot = OperationType.Get;
-
-                                    if (!opsByMethodByPath.ContainsKey(path))
+                            if ((_searchSupport == SearchSupportCodes.Both) || (_searchSupport == SearchSupportCodes.Post))
+                            {
+                                AddPath(
+                                    opsByMethodByPath,
+                                    $"/{resource.ResourceType}/_search",
+                                    OperationType.Post,
+                                    $"SearchPost{resource.ResourceType}",
+                                    $"Search {resource.ResourceType}s",
+                                    $"Search across all {resource.ResourceType} instances",
+                                    false,
+                                    false,
+                                    new int[] { 200, 400, 401, 405, },
+                                    resource.ResourceType,
+                                    false,
+                                    true,
+                                    resource.SearchParameters.Values,
+                                    new OpenApiRequestBody()
                                     {
-                                        opsByMethodByPath.Add(path, new());
-                                    }
-
-                                    if (!opsByMethodByPath[path].ContainsKey(ot))
-                                    {
-                                        OpenApiOperation op = new();
-                                        AddOperationBasicProps(
-                                            op,
-                                            $"SearchGet{resource.ResourceType}",
-                                            $"Search {resource.ResourceType}s",
-                                            $"Search across all {resource.ResourceType} instances",
-                                            false,
-                                            false);
-
-                                        AddOperationParameters(_serverInfo.ServerSearchParameters.Values, op);
-                                        AddOperationParameters(resource.SearchParameters.Values, op);
-
-                                        if (_singleResponseCode)
-                                        {
-                                            op.Responses = new OpenApiResponses()
-                                            {
-                                                ["200"] = new OpenApiResponse()
-                                                {
-                                                    Description = "OK",
-                                                    Content = BuildContentMap(resource.ResourceType, true),
-                                                },
-                                            };
-                                        }
-                                        else
-                                        {
-                                            op.Responses = new OpenApiResponses()
-                                            {
-                                                ["200"] = new OpenApiResponse()
-                                                {
-                                                    Description = "OK",
-                                                    Content = BuildContentMap(resource.ResourceType, true),
-                                                },
-                                                ["400"] = new OpenApiResponse()
-                                                {
-                                                    Description = "BAD REQUEST",
-                                                },
-                                                ["401"] = new OpenApiResponse()
-                                                {
-                                                    Description = "NOT AUTHORIZED",
-                                                },
-                                                ["405"] = new OpenApiResponse()
-                                                {
-                                                    Description = "METHOD NOT ALLOWED",
-                                                },
-                                            };
-                                        }
-
-                                        opsByMethodByPath[path].Add(ot, op);
-                                    }
-                                }
-
-                                if ((_searchSupport == SearchSupportCodes.Both) || (_searchSupport == SearchSupportCodes.Post))
-                                {
-                                    path = $"/{resource.ResourceType}/_search";
-                                    ot = OperationType.Post;
-
-                                    if (!opsByMethodByPath.ContainsKey(path))
-                                    {
-                                        opsByMethodByPath.Add(path, new());
-                                    }
-
-                                    if (!opsByMethodByPath[path].ContainsKey(ot))
-                                    {
-                                        OpenApiOperation op = new();
-                                        AddOperationBasicProps(
-                                            op,
-                                            $"SearchPost{resource.ResourceType}",
-                                            $"Search {resource.ResourceType}s",
-                                            $"Search across all {resource.ResourceType} instances",
-                                            false,
-                                            false);
-
-                                        if ((_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
-                                            (_searchParamLoc == SearchPostParameterLocationCodes.Query))
-                                        {
-                                            AddOperationParameters(_serverInfo.ServerSearchParameters.Values, op);
-                                            AddOperationParameters(resource.SearchParameters.Values, op);
-                                        }
-
-                                        op.RequestBody = new OpenApiRequestBody()
-                                        {
-                                            Content = new Dictionary<string, OpenApiMediaType>()
+                                        Content = new Dictionary<string, OpenApiMediaType>()
                                             {
                                                 { "application/x-www-form-urlencoded", new OpenApiMediaType() },
                                             },
-                                            Description = _includeDescriptions ? "Search parameters" : null,
-                                        };
-
-                                        if ((_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
-                                            (_searchParamLoc == SearchPostParameterLocationCodes.Body))
-                                        {
-                                            AddOperationParametersToBody(op.RequestBody.Content["application/x-www-form-urlencoded"], _serverInfo.ServerSearchParameters.Values);
-                                            AddOperationParametersToBody(op.RequestBody.Content["application/x-www-form-urlencoded"], resource.SearchParameters.Values);
-                                        }
-
-                                        if (_singleResponseCode)
-                                        {
-                                            op.Responses = new OpenApiResponses()
-                                            {
-                                                ["200"] = new OpenApiResponse()
-                                                {
-                                                    Description = "OK",
-                                                    Content = BuildContentMap(resource.ResourceType, true),
-                                                },
-                                            };
-                                        }
-                                        else
-                                        {
-                                            op.Responses = new OpenApiResponses()
-                                            {
-                                                ["200"] = new OpenApiResponse()
-                                                {
-                                                    Description = "OK",
-                                                    Content = BuildContentMap(resource.ResourceType, true),
-                                                },
-                                                ["400"] = new OpenApiResponse()
-                                                {
-                                                    Description = "BAD REQUEST",
-                                                },
-                                                ["401"] = new OpenApiResponse()
-                                                {
-                                                    Description = "NOT AUTHORIZED",
-                                                },
-                                                ["405"] = new OpenApiResponse()
-                                                {
-                                                    Description = "METHOD NOT ALLOWED",
-                                                },
-                                            };
-                                        }
-
-                                        opsByMethodByPath[path].Add(ot, op);
-                                    }
-                                }
+                                        Description = _includeDescriptions ? "Search parameters" : null,
+                                    });
                             }
 
                             break;
@@ -1767,8 +1256,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // TODO(ginoc): Operations in the CS do not indicate if they are instance or type level...
                     //  Need to see if we can figure out the source of the operation (based on definition) and
                     //  use that to create the definition.  Need path location and parameters.
-                    //foreach (FhirServerOperation fhirOp in resource.Operations.Values)
+                    //foreach (FhirServerOperation serverOp in resource.Operations.Values)
                     //{
+                    //    if (string.IsNullOrEmpty(serverOp.DefinitionCanonical))
+                    //    {
+                    //        continue;
+                    //    }
+
+                    //    if (_info.TryGetArtifact(
+                    //            serverOp.DefinitionCanonical,
+                    //            out object artifact,
+                    //            out FhirArtifactClassEnum artifactClass,
+                    //            out string resolvedPackage))
+                    //    {
+                    //        continue;
+                    //    }
+
+                    //    FhirOperation fhirOp = (FhirOperation)artifact;
+
                     //    string path = $"/{resource.ResourceType}";
                     //    OperationType ot = OperationType.Post;
 
@@ -1871,6 +1376,165 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return paths;
+        }
+
+        /// <summary>Adds a path.</summary>
+        /// <param name="opsByMethodByPath">        Full pathname of the ops by method by file.</param>
+        /// <param name="path">                     Full pathname of the file.</param>
+        /// <param name="ot">                       The ot.</param>
+        /// <param name="operationId">              Identifier for the operation.</param>
+        /// <param name="summary">                  The summary.</param>
+        /// <param name="description">              The description.</param>
+        /// <param name="includeIdParam">           True to include, false to exclude the identifier
+        ///  parameter.</param>
+        /// <param name="includeVidParam">          True to include, false to exclude the vid parameter.</param>
+        /// <param name="responseCodes">            The response codes.</param>
+        /// <param name="returnType">               Type of the return.</param>
+        /// <param name="wrapReturnInBundle">       True to wrap return in bundle.</param>
+        /// <param name="includeServerSearchParams">True to include, false to exclude the server search
+        ///  parameters.</param>
+        /// <param name="opSearchParams">           Options for controlling the operation search.</param>
+        /// <param name="body">                     The body.</param>
+        private void AddPath(
+            Dictionary<string, Dictionary<OperationType, OpenApiOperation>> opsByMethodByPath,
+            string path,
+            OperationType ot,
+            string operationId,
+            string summary,
+            string description,
+            bool includeIdParam,
+            bool includeVidParam,
+            int[] responseCodes,
+            string returnType,
+            bool wrapReturnInBundle,
+            bool includeServerSearchParams,
+            IEnumerable<FhirServerSearchParam> opSearchParams,
+            OpenApiRequestBody body)
+        {
+            if (!opsByMethodByPath.ContainsKey(path))
+            {
+                opsByMethodByPath.Add(path, new());
+            }
+
+            if (opsByMethodByPath[path].ContainsKey(ot))
+            {
+                return;
+            }
+
+            if ((responseCodes == null) || (responseCodes.Length == 0))
+            {
+                return;
+            }
+
+            OpenApiOperation op = new();
+            AddOperationBasicProps(
+                op,
+                operationId,
+                summary,
+                description,
+                includeIdParam,
+                includeVidParam);
+
+            if (body != null)
+            {
+                op.RequestBody = body;
+            }
+
+            if (includeServerSearchParams)
+            {
+                if ((ot != OperationType.Post) ||
+                    (_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
+                    (_searchParamLoc == SearchPostParameterLocationCodes.Query))
+                {
+                    AddOperationParameters(_serverInfo.ServerSearchParameters.Values, op);
+                }
+
+                if ((ot == OperationType.Post) &&
+                    ((_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
+                     (_searchParamLoc == SearchPostParameterLocationCodes.Body)))
+                {
+                    AddOperationParametersToBody(
+                        op.RequestBody.Content["application/x-www-form-urlencoded"],
+                        _serverInfo.ServerSearchParameters.Values);
+                }
+            }
+
+            if (opSearchParams != null)
+            {
+                if ((ot != OperationType.Post) ||
+                    (_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
+                    (_searchParamLoc == SearchPostParameterLocationCodes.Query))
+                {
+                    AddOperationParameters(opSearchParams, op);
+                }
+
+                if ((ot == OperationType.Post) &&
+                    ((_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
+                     (_searchParamLoc == SearchPostParameterLocationCodes.Body)))
+                {
+                    AddOperationParametersToBody(
+                        op.RequestBody.Content["application/x-www-form-urlencoded"],
+                        opSearchParams);
+                }
+            }
+
+            op.Responses = new OpenApiResponses();
+
+            if (_singleResponseCode)
+            {
+                switch (responseCodes[0])
+                {
+                    case 200:
+                    case 201:
+                        op.Responses.Add(
+                            responseCodes[0].ToString(),
+                            new OpenApiResponse()
+                            {
+                                Description = _httpResponseDescriptions[responseCodes[0]],
+                                Content = BuildContentMap(returnType, wrapReturnInBundle),
+                            });
+                        break;
+
+                    default:
+                        op.Responses.Add(
+                            responseCodes[0].ToString(),
+                            new OpenApiResponse()
+                            {
+                                Description = _httpResponseDescriptions[responseCodes[0]],
+                            });
+                        break;
+                }
+            }
+            else
+            {
+                foreach (int code in responseCodes)
+                {
+                    switch (code)
+                    {
+                        case 200:
+                        case 201:
+                            op.Responses.Add(
+                                code.ToString(),
+                                new OpenApiResponse()
+                                {
+                                    Description = _httpResponseDescriptions[code],
+                                    Content = BuildContentMap(returnType, wrapReturnInBundle),
+                                });
+                            break;
+
+                        default:
+                            op.Responses.Add(
+                                code.ToString(),
+                                new OpenApiResponse()
+                                {
+                                    Description = _httpResponseDescriptions[code],
+                                });
+                            break;
+                    }
+                }
+            }
+
+            opsByMethodByPath[path].Add(ot, op);
         }
 
         /// <summary>Adds requested operation parameters to a given OpenApiOperation.</summary>
@@ -2761,722 +2425,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 operation.Description = description;
             }
-        }
-
-        /// <summary>Builds path operation for a resource.</summary>
-        /// <param name="pathOpType">     Type of the path operation.</param>
-        /// <param name="resourceName">   Name of the resource.</param>
-        /// <param name="isInstanceLevel">True if is instance level, false if not.</param>
-        /// <returns>An OpenApiOperation.</returns>
-        private OpenApiOperation BuildPathOperation(
-            OperationType pathOpType,
-            string resourceName,
-            bool isInstanceLevel)
-        {
-            OpenApiOperation operation = new OpenApiOperation();
-
-            bool wrapInBundle;
-
-            operation.Parameters.Add(BuildReferencedParameter("_format"));
-
-            if (isInstanceLevel)
-            {
-                operation.OperationId = $"{pathOpType}{resourceName}";
-                operation.Parameters.Add(BuildReferencedPathParameter("id"));
-            }
-            else
-            {
-                operation.OperationId = $"{pathOpType}{resourceName}s";
-            }
-
-            if (_includeSummaries)
-            {
-                if (isInstanceLevel)
-                {
-                    operation.Summary = $"Performs a {pathOpType} on a specific {resourceName}";
-                }
-                else
-                {
-                    operation.Summary = $"Performs a {pathOpType} operation at the {resourceName} type level.";
-                }
-            }
-
-            if (_includeDescriptions)
-            {
-                if (isInstanceLevel)
-                {
-                    operation.Description = $"{_instanceOpPrefixes[pathOpType]} a {resourceName}";
-                }
-                else
-                {
-                    operation.Description = $"{_typeOpPrefixes[pathOpType]} {resourceName}s at the type level.";
-                }
-            }
-
-            switch (pathOpType)
-            {
-                case OperationType.Get:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                        wrapInBundle = false;
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                        wrapInBundle = true;
-                    }
-
-                    if (_singleResponseCode)
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["410"] = new OpenApiResponse()
-                            {
-                                Description = "DELETED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Patch:
-                    if (!isInstanceLevel)
-                    {
-                        return null;
-                    }
-
-                    operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                    wrapInBundle = false;
-
-                    operation.RequestBody = new OpenApiRequestBody()
-                    {
-                        Content = BuildContentMapForPatch(resourceName),
-                        Description =
-                        _includeDescriptions
-                        ? $"A {resourceName}"
-                        : null,
-                    };
-
-                    if (_singleResponseCode)
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, isInstanceLevel),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["201"] = new OpenApiResponse()
-                            {
-                                Description = "CREATED",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["400"] = new OpenApiResponse()
-                            {
-                                Description = "BAD REQUEST",
-                            },
-                            ["401"] = new OpenApiResponse()
-                            {
-                                Description = "NOT AUTHORIZED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                            ["405"] = new OpenApiResponse()
-                            {
-                                Description = "METHOD NOT ALLOWED",
-                            },
-                            ["412"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["422"] = new OpenApiResponse()
-                            {
-                                Description = "UNPROCESSABLE",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Put:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                        wrapInBundle = false;
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                        wrapInBundle = false;
-                    }
-
-                    operation.RequestBody = new OpenApiRequestBody()
-                    {
-                        Content = BuildContentMap(resourceName, wrapInBundle),
-                        Description =
-                            _includeDescriptions
-                            ? $"A {resourceName}"
-                            : null,
-                    };
-
-                    if (_singleResponseCode)
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, isInstanceLevel),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["201"] = new OpenApiResponse()
-                            {
-                                Description = "CREATED",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["400"] = new OpenApiResponse()
-                            {
-                                Description = "BAD REQUEST",
-                            },
-                            ["401"] = new OpenApiResponse()
-                            {
-                                Description = "NOT AUTHORIZED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                            ["405"] = new OpenApiResponse()
-                            {
-                                Description = "METHOD NOT ALLOWED",
-                            },
-                            ["409"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["412"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["422"] = new OpenApiResponse()
-                            {
-                                Description = "UNPROCESSABLE",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Post:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                        wrapInBundle = false;
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                        wrapInBundle = false;
-                    }
-
-                    operation.RequestBody = new OpenApiRequestBody()
-                    {
-                        Content = BuildContentMap(resourceName, wrapInBundle),
-                        Description =
-                            _includeDescriptions
-                            ? $"A {resourceName}"
-                            : null,
-                    };
-
-                    if (_singleResponseCode)
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["201"] = new OpenApiResponse()
-                            {
-                                Description = "CREATED",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["400"] = new OpenApiResponse()
-                            {
-                                Description = "BAD REQUEST",
-                            },
-                            ["401"] = new OpenApiResponse()
-                            {
-                                Description = "NOT AUTHORIZED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                            ["412"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["422"] = new OpenApiResponse()
-                            {
-                                Description = "UNPROCESSABLE",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Delete:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                    }
-
-                    operation.Responses = new OpenApiResponses()
-                    {
-                        ["204"] = new OpenApiResponse()
-                        {
-                            Description = "NO CONTENT",
-                        },
-                    };
-
-                    break;
-
-                case OperationType.Options:
-                    break;
-                case OperationType.Head:
-                    break;
-                case OperationType.Trace:
-                    break;
-                default:
-                    break;
-            }
-
-            if ((operation.Responses == null) ||
-                (operation.Responses.Count == 0))
-            {
-                return null;
-            }
-
-            return operation;
-        }
-
-        /// <summary>Builds path operation for search.</summary>
-        /// <param name="pathOpType">     Type of the path operation.</param>
-        /// <param name="resourceName">   Name of the resource.</param>
-        /// <param name="isInstanceLevel">True if is instance level, false if not.</param>
-        /// <returns>An OpenApiOperation.</returns>
-        private OpenApiOperation BuildPathOperationForSearch(
-            OperationType pathOpType,
-            string resourceName,
-            bool isInstanceLevel)
-        {
-            OpenApiOperation operation = new OpenApiOperation();
-
-            bool wrapInBundle;
-
-            operation.Parameters.Add(BuildReferencedParameter("_format"));
-
-            if (isInstanceLevel)
-            {
-                operation.OperationId = $"{pathOpType}{resourceName}CompartmentSearch";
-                operation.Parameters.Add(BuildReferencedPathParameter("id"));
-            }
-            else
-            {
-                operation.OperationId = $"{pathOpType}{resourceName}Search";
-            }
-
-            if (_includeSummaries)
-            {
-                if (isInstanceLevel)
-                {
-                    operation.Summary = $"Performs a {pathOpType} Search in the {resourceName} compartment";
-                }
-                else
-                {
-                    operation.Summary = $"Performs a {pathOpType} Search at the {resourceName} type level.";
-                }
-            }
-
-            if (_includeDescriptions)
-            {
-                if (isInstanceLevel)
-                {
-                    operation.Description = $"{_instanceOpPrefixes[pathOpType]} a {resourceName}";
-                }
-                else
-                {
-                    operation.Description = $"{_typeOpPrefixes[pathOpType]} {resourceName}s at the type level.";
-                }
-            }
-
-            switch (pathOpType)
-            {
-                case OperationType.Get:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                        wrapInBundle = false;
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                        wrapInBundle = true;
-                    }
-
-                    if (_singleResponseCode)
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["410"] = new OpenApiResponse()
-                            {
-                                Description = "DELETED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Patch:
-                    if (!isInstanceLevel)
-                    {
-                        return null;
-                    }
-
-                    operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                    wrapInBundle = false;
-
-                    operation.RequestBody = new OpenApiRequestBody()
-                    {
-                        Content = BuildContentMapForPatch(resourceName),
-                        Description =
-                        _includeDescriptions
-                        ? $"A {resourceName}"
-                        : null,
-                    };
-
-                    if (_singleResponseCode)
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, isInstanceLevel),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["201"] = new OpenApiResponse()
-                            {
-                                Description = "CREATED",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["400"] = new OpenApiResponse()
-                            {
-                                Description = "BAD REQUEST",
-                            },
-                            ["401"] = new OpenApiResponse()
-                            {
-                                Description = "NOT AUTHORIZED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                            ["405"] = new OpenApiResponse()
-                            {
-                                Description = "METHOD NOT ALLOWED",
-                            },
-                            ["412"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["422"] = new OpenApiResponse()
-                            {
-                                Description = "UNPROCESSABLE",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Put:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                        wrapInBundle = false;
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                        wrapInBundle = false;
-                    }
-
-                    operation.RequestBody = new OpenApiRequestBody()
-                    {
-                        Content = BuildContentMap(resourceName, wrapInBundle),
-                        Description =
-                            _includeDescriptions
-                            ? $"A {resourceName}"
-                            : null,
-                    };
-
-                    if (_singleResponseCode)
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, isInstanceLevel),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["201"] = new OpenApiResponse()
-                            {
-                                Description = "CREATED",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["400"] = new OpenApiResponse()
-                            {
-                                Description = "BAD REQUEST",
-                            },
-                            ["401"] = new OpenApiResponse()
-                            {
-                                Description = "NOT AUTHORIZED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                            ["405"] = new OpenApiResponse()
-                            {
-                                Description = "METHOD NOT ALLOWED",
-                            },
-                            ["409"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["412"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["422"] = new OpenApiResponse()
-                            {
-                                Description = "UNPROCESSABLE",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Post:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                        wrapInBundle = false;
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                        wrapInBundle = false;
-                    }
-
-                    operation.RequestBody = new OpenApiRequestBody()
-                    {
-                        Content = BuildContentMap(resourceName, wrapInBundle),
-                        Description =
-                            _includeDescriptions
-                            ? $"A {resourceName}"
-                            : null,
-                    };
-
-                    if (_singleResponseCode)
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["201"] = new OpenApiResponse()
-                            {
-                                Description = "CREATED",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["400"] = new OpenApiResponse()
-                            {
-                                Description = "BAD REQUEST",
-                            },
-                            ["401"] = new OpenApiResponse()
-                            {
-                                Description = "NOT AUTHORIZED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                            ["412"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["422"] = new OpenApiResponse()
-                            {
-                                Description = "UNPROCESSABLE",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Delete:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                    }
-
-                    operation.Responses = new OpenApiResponses()
-                    {
-                        ["204"] = new OpenApiResponse()
-                        {
-                            Description = "NO CONTENT",
-                        },
-                    };
-
-                    break;
-
-                case OperationType.Options:
-                    break;
-                case OperationType.Head:
-                    break;
-                case OperationType.Trace:
-                    break;
-                default:
-                    break;
-            }
-
-            if ((operation.Responses == null) ||
-                (operation.Responses.Count == 0))
-            {
-                return null;
-            }
-
-            return operation;
         }
 
         /// <summary>Adds an accept header.</summary>
