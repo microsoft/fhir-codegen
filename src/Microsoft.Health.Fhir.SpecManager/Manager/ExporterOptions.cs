@@ -39,12 +39,12 @@ public class ExporterOptions
         string languageInputDir)
     {
         LanguageName = languageName;
-        ExportList = exportList;
+        ExportList = exportList ?? new string[0];
         ExtensionSupport = extensionSupport;
 
-        OptionalClassTypesToExport = optionalClassesToExport;
+        OptionalClassTypesToExport = optionalClassesToExport ?? new();
 
-        _extensionUrls = new ();
+        _extensionUrls = new();
         if (extensionUrls != null)
         {
             foreach (string url in extensionUrls)
@@ -56,7 +56,7 @@ public class ExporterOptions
             }
         }
 
-        _extensionElementPaths = new ();
+        _extensionElementPaths = new();
         if (extensionElementPaths != null)
         {
             foreach (string path in extensionElementPaths)
@@ -68,18 +68,12 @@ public class ExporterOptions
             }
         }
 
-        if (languageOptions != null)
-        {
-            _languageOptions = languageOptions;
-        }
-        else
-        {
-            _languageOptions = new (StringComparer.InvariantCultureIgnoreCase);
-        }
+        _languageOptions = languageOptions ?? new(StringComparer.InvariantCultureIgnoreCase);
 
-        ServerUrl = fhirServerUrl;
+        ServerUrl = fhirServerUrl ?? string.Empty;
         IncludeExperimental = includeExperimental;
 
+        LanguageInputDir = languageInputDir ?? string.Empty;
         if (!string.IsNullOrEmpty(languageInputDir))
         {
             SupportFiles = new Language.LanguageSupportFiles(languageInputDir, languageName);
@@ -178,6 +172,9 @@ public class ExporterOptions
 
     /// <summary>Gets a value indicating whether structures marked experimental should be included.</summary>
     public bool IncludeExperimental { get; }
+
+    /// <summary>Gets the language input dir.</summary>
+    public string LanguageInputDir { get; }
 
     /// <summary>Gets the language input.</summary>
     public Language.LanguageSupportFiles SupportFiles { get; }
