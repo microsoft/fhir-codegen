@@ -4,8 +4,10 @@
 // </copyright>
 
 using System.IO;
+using System.Linq;
 using Microsoft.Health.Fhir.SpecManager.Converters;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -827,6 +829,15 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             {
                 return _artifactClassByUrl[joined];
             }
+
+            foreach (string definitionType in FhirPackageLoader.DefinitionalResourceTypesToLoad)
+            {
+                joined = PackageDetails.Canonical + "/" + definitionType + "/" + token;
+                if (_artifactClassByUrl.ContainsKey(joined))
+                {
+                    return _artifactClassByUrl[joined];
+                }
+            }
         }
 
         foreach (string definitionType in FhirPackageLoader.DefinitionalResourceTypesToLoad)
@@ -887,6 +898,170 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
 
         return null;
+    }
+
+    /// <summary>
+    /// Attempts to get artifact complexes an IEnumerable&lt;FhirComplex&gt; from the given
+    /// FhirArtifactClassEnum.
+    /// </summary>
+    /// <typeparam name="T">Generic type parameter.</typeparam>
+    /// <param name="artifactClass">[out] The artifact class enum.</param>
+    /// <param name="values">       [out] The artifact values.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetArtifactValues<T>(
+        FhirArtifactClassEnum artifactClass,
+        out IEnumerable<T> values)
+    {
+        switch (artifactClass)
+        {
+            case FhirArtifactClassEnum.PrimitiveType:
+                {
+                    if (typeof(T) != typeof(FhirPrimitive))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_primitiveTypesByName.Values.AsEnumerable<FhirPrimitive>();
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.ComplexType:
+                {
+                    if (typeof(T) != typeof(FhirComplex))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_complexTypesByName.Values.AsEnumerable<FhirComplex>();
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.Resource:
+                {
+                    if (typeof(T) != typeof(FhirComplex))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_resourcesByName.Values.AsEnumerable<FhirComplex>();
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.LogicalModel:
+                {
+                    if (typeof(T) != typeof(FhirComplex))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_logicalModelsByName.Values.AsEnumerable<FhirComplex>();
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.Extension:
+                {
+                    if (typeof(T) != typeof(FhirComplex))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_extensionsByUrl.Values.AsEnumerable<FhirComplex>();
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.Operation:
+                {
+                    if (typeof(T) != typeof(FhirOperation))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_operationsByUrl.Values.AsEnumerable<FhirOperation>();
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.SearchParameter:
+                {
+                    if (typeof(T) != typeof(FhirSearchParam))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_searchParamsByUrl.Values.AsEnumerable<FhirSearchParam>();
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.CodeSystem:
+                {
+                    if (typeof(T) != typeof(FhirCodeSystem))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_codeSystemsByUrl.Values.AsEnumerable<FhirCodeSystem>();
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.ValueSet:
+                {
+                    if (typeof(T) == typeof(FhirValueSetCollection))
+                    {
+                        values = (IEnumerable<T>)_valueSetsByUrl.Values.AsEnumerable<FhirValueSetCollection>();
+                        return true;
+                    }
+
+                    if (typeof(T) == typeof(FhirValueSet))
+                    {
+                        List<FhirValueSet> vs = new List<FhirValueSet>();
+                        foreach (FhirValueSetCollection vsc in _valueSetsByUrl.Values)
+                        {
+                            if (vsc.ValueSetsByVersion.Any())
+                            {
+                                vs.Add(vsc.ValueSetsByVersion.First().Value);
+                            }
+                        }
+
+                        values = (IEnumerable<T>)vs.AsEnumerable<FhirValueSet>();
+                        return true;
+                    }
+
+                    values = null;
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.Profile:
+                {
+                    if (typeof(T) != typeof(FhirComplex))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_profilesByUrl.Values.AsEnumerable<FhirComplex>();
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.Unknown:
+            case FhirArtifactClassEnum.CapabilityStatement:
+            case FhirArtifactClassEnum.Compartment:
+            case FhirArtifactClassEnum.ConceptMap:
+            case FhirArtifactClassEnum.NamingSystem:
+            case FhirArtifactClassEnum.StructureMap:
+            case FhirArtifactClassEnum.ImplementationGuide:
+            default:
+                {
+                    values = null;
+                    return false;
+                }
+        }
     }
 
     /// <summary>Attempts to get artifact.</summary>

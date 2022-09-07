@@ -1,0 +1,27 @@
+﻿@using Markdig;
+@using static FhirCodeGenBlazor.Models.PackageElementModels
+
+<td colspan="5">
+    <div class="small">
+        <strong>Definition:</strong><p>@Rec.Element.Purpose</p>
+
+        <strong>Comments:</strong>
+        @(new MarkupString(Markdown.ToHtml(Rec.Element.Comment)))
+
+        @if (!string.IsNullOrEmpty(Rec.Element.ValueSet))
+        {
+            <p><strong>Bound to:</strong> @Rec.Element.ValueSet (@Rec.Element.ValueSetBindingStrength)</p>
+        }
+
+        @if (!string.IsNullOrEmpty(Rec.Element.ValidationRegEx))
+        {
+            <p><strong>Validation RegEx:</strong> @Rec.Element.ValidationRegEx</p>
+        }
+    </div>
+</td>
+
+@code {
+    /// <summary>Gets or sets the property name.</summary>
+    [Parameter]
+    public ElementRecord Rec { get; set; }
+}

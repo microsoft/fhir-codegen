@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.28.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.2.0" />
   </ItemGroup>
 
   <ItemGroup>

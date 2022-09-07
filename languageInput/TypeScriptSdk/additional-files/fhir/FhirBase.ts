@@ -157,7 +157,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found array in scalar property ${p} (${exp})`}
+        details: {text: `Found array in scalar property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -191,7 +192,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found array in scalar property ${p} (${exp})`}
+        details: {text: `Found array in scalar property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -201,7 +203,9 @@ export class FhirBase {
       iss.push({
         severity: (vsS === 'r') ? 'error' : 'information', 
         code:'code-invalid', 
-        details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`}});
+        details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`},
+        expression: [exp],
+      });
     }
 
     return iss;
@@ -263,7 +267,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found scalar in array property ${p} (${exp})`}
+        details: {text: `Found scalar in array property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -273,7 +278,9 @@ export class FhirBase {
         iss.push({
           severity: (vsS === 'r') ? 'error' : 'information', 
           code:'code-invalid', 
-          details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`}});
+          details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`},
+          expression: [exp],
+        });
       }
     });
 
@@ -294,7 +301,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -302,7 +310,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found array in scalar property ${p} (${exp})`}
+        details: {text: `Found array in scalar property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -310,7 +319,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -340,7 +350,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -348,7 +359,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found array in scalar property ${p} (${exp})`}
+        details: {text: `Found array in scalar property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -358,7 +370,9 @@ export class FhirBase {
       iss.push({
         severity: (vsS === 'r') ? 'error' : 'information', 
         code:'code-invalid', 
-        details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`}});
+        details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`},
+        expression: [exp],
+      });
     }
     return iss;
   }
@@ -377,7 +391,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -385,7 +400,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found scalar in array property ${p} (${exp})`}
+        details: {text: `Found scalar in array property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -393,7 +409,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -425,7 +442,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
@@ -433,7 +451,8 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'structure',
-        details: {text: `Found scalar in array property ${p} (${exp})`}
+        details: {text: `Found scalar in array property ${p} (${exp})`},
+        expression: [exp],
       }];
     }
 
@@ -441,88 +460,25 @@ export class FhirBase {
       return [{
         severity: 'error',
         code: 'required',
-        details: {text: `Missing required property '${p}', ${exp}`}
+        details: {text: `Missing required property '${p}', ${exp}`},
+        expression: [exp],
       }];
     }
 
     let iss:FtsIssue[] = [];
     (this as any)[p].forEach((x:any,i:number) => {
       iss.push(...x.doModelValidation(`${exp}.${p}[${i}]`));
-      if (!(this as any)[p].hasCodingFromValidationObj(vsV)) {
+      if (!x.hasCodingFromValidationObj(vsV)) {
         iss.push({
           severity: (vsS === 'r') ? 'error' : 'information', 
           code:'code-invalid', 
-          details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`}});
+          details:{text:`${p} (${exp}) does not contain code from bound value set ${vsN}`},
+          expression: [exp],
+        });
       }
     });
     return iss;
   }
-
-  // /**
-  //  * Validate a Required Primitive Scalar element
-  //  * @param p 
-  //  * @param exp 
-  //  * @returns 
-  //  */
-  // public vRPS(p:Readonly<string>, exp:Readonly<string>):FtsIssue[] {
-  //   if (((this as any)[p] === undefined) || 
-  //       ((this as any)[p] === null) ||
-  //       ((this as any)[p] === '') ||
-  //       (Number.isNaN((this as any)[p]))) {
-  //     return [{
-  //       severity: 'error',
-  //       code: 'required',
-  //       details: {text: `Missing required property '${p}', ${exp}`}
-  //     }];
-  //   }
-
-  //   if (Array.isArray((this as any)[p])) {
-  //     return [{
-  //       severity: 'error',
-  //       code: 'structure',
-  //       details: {text: `Found array in scalar property ${p} (${exp})`}
-  //     }];
-  //   }
-
-  //   return [];
-  // }
-
-  // /**
-  //  * Validate a Required Array element
-  //  * @param p 
-  //  * @param exp 
-  //  * @returns 
-  //  */
-  // public vRPA(p:Readonly<string>, exp:Readonly<string>):FtsIssue[] {
-  //   if (((this as any)[p] === undefined) || 
-  //       ((this as any)[p] === null) ||
-  //       ((this as any)[p] === '') ||
-  //       (Number.isNaN((this as any)[p]))) {
-  //     return [{
-  //       severity: 'error',
-  //       code: 'required',
-  //       details: {text: `Missing required property '${p}', ${exp}`}
-  //     }];
-  //   }
-
-  //   if (!Array.isArray((this as any)[p])) {
-  //     return [{
-  //       severity: 'error',
-  //       code: 'structure',
-  //       details: {text: `Found scalar in array property ${p} (${exp})`}
-  //     }];
-  //   }
-
-  //   if ((this as any)[p].length === 0) {
-  //     return [{
-  //       severity: 'error',
-  //       code: 'required',
-  //       details: {text: `Missing required property '${p}', ${exp}`}
-  //     }];
-  //   }
-
-  //   return [];
-  // }
 
   /**
    * Function to strip invalid element values for serialization.
@@ -558,7 +514,7 @@ export class FhirBase {
           c[eName] = [];
           (this as any)[key].forEach((av:any) => {
             let addElement:boolean = false;
-            if (av.value) { 
+            if ((av.value !== undefined) && (av.value !== null)) { 
               c[dKey].push(av.value); 
               foundAnyVal = true;
               addElement = true;
@@ -604,7 +560,7 @@ export class FhirBase {
           c[dKey] = (this as any)[key];
         }
       } else if (isPrimitive) {
-        if ((this as any)[key].value) { c[dKey] = (this as any)[key].value; }
+        if (((this as any)[key].value !== undefined) && ((this as any)[key].value !== null)) { c[dKey] = (this as any)[key].value; }
 
         const eName:string = '_' + dKey;
         c[eName] = {};
