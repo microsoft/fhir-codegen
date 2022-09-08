@@ -22,19 +22,11 @@ public static class ConverterHelper
                 return new FromR2();
 
             case FhirPackageCommon.FhirSequenceEnum.STU3:
-                return new FromR3();
-
             case FhirPackageCommon.FhirSequenceEnum.R4:
-                return new FromR4();
-
             case FhirPackageCommon.FhirSequenceEnum.R4B:
-                return new FromR4();
-
             case FhirPackageCommon.FhirSequenceEnum.R5:
-                return new FromR5();
-
             default:
-                return new FromR4();
+                return new FromNormative();
         }
     }
 

@@ -580,11 +580,13 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         string.Empty,
                         kvp.Value.Name,
                         kvp.Value.Documentation,
+                        null,
                         true,
                         false,
                         false,
                         kvp.Value.Name,
                         kvp.Value.Documentation,
+                        string.Empty,
                         null,
                         new List<FhirParameter>(),
                         false));

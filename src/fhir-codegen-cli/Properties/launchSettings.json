@@ -17,7 +17,7 @@
         },
         "r4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4.txt --load-r4 latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r4b": {
@@ -32,7 +32,7 @@
         },
         "r5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 current --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R5.txt --load-r5 current --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "localInfo": {
@@ -117,7 +117,7 @@
         },
         "csLocal-R5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path C:\\git\\argonaut-subscription-server-proxy\\argonaut-subscription-server-proxy\\Fhir\\R5 --fhir-publish-directory c:\\specs\\R5\\publish  --load-local-fhir-build latest --include-experimental --language CSharp2 --language-options CSharp2|namespace=fhirCsR5",
+            "commandLineArgs": "-p hl7.fhir.r5#current --include-experimental --language CSharp2 --output-path c:\\temp\\convert\\codegen2\\r5 --language-options CSharp2|namespace=fhirCsR5",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "GenerateAll": {

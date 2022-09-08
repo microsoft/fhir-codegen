@@ -8,8 +8,10 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -167,9 +169,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $"  references: {vs.ReferencedByPaths.Count}," +
                         $" strongest binding: {vs.StrongestBinding}");
 
-                    foreach (FhirConcept value in vs.Concepts.OrderBy(c => c.Code))
+                    if (vs.Expansion != null)
                     {
-                        _writer.WriteLineIndented($"- #{value.Code}: {value.Display}");
+                        if (vs.Expansion.IsLimitedExpansion)
+                        {
+                            _writer.WriteLineIndented($"! Partial expansion, not displayed");
+                        }
+                        else
+                        {
+                            foreach (FhirConcept value in vs.Expansion.Contains.OrderBy(c => c.Code))
+                            {
+                                _writer.WriteLineIndented($"- #{value.Code}: {value.Display}");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (FhirConcept value in vs.Concepts.OrderBy(c => c.Code))
+                        {
+                            _writer.WriteLineIndented($"- #{value.Code}: {value.Display}");
+                        }
                     }
 
                     _writer.DecreaseIndent();
@@ -485,7 +504,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         profiles = "(" + string.Join("|", elementType.Profiles.Values) + ")";
                     }
 
-                    propertyType = $"{propertyType}{joiner}{elementType.Name}{profiles}";
+                    string targets = string.Empty;
+                    if ((elementType.TypeProfiles != null) && (elementType.TypeProfiles.Count > 0))
+                    {
+                        targets = "(" + string.Join("|", elementType.TypeProfiles.Values) + ")";
+                    }
+
+                    propertyType = $"{propertyType}{joiner}{elementType.Name}{profiles}{targets}";
                 }
             }
 
@@ -528,13 +553,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // check for default value
             if (!string.IsNullOrEmpty(element.DefaultFieldName))
             {
-                _writer.WriteLineIndented($".{element.DefaultFieldName} = {element.DefaultFieldValue}");
+                _writer.WriteLineIndented($".{element.DefaultFieldName} = {JsonSerializer.Serialize(element.DefaultFieldValue)}");
             }
 
             // check for fixed value
             if (!string.IsNullOrEmpty(element.FixedFieldName))
             {
-                _writer.WriteLineIndented($".{element.FixedFieldName} = {element.FixedFieldValue}");
+                _writer.WriteLineIndented($".{element.FixedFieldName} = {JsonSerializer.Serialize(element.FixedFieldValue)}");
+            }
+
+            // check for pattern value
+            if (!string.IsNullOrEmpty(element.PatternFieldName))
+            {
+                _writer.WriteLineIndented($".{element.PatternFieldName} = {JsonSerializer.Serialize(element.PatternFieldValue)}");
             }
 
             if ((element.Codes != null) && (element.Codes.Count > 0))

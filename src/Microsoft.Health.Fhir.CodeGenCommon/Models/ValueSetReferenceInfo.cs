@@ -37,7 +37,10 @@ public class ValueSetReferenceInfo
         string elementPath,
         FhirElement.ElementDefinitionBindingStrength? strength)
     {
-        _paths.Add(elementPath);
+        if (!_paths.Contains(elementPath))
+        {
+            _paths.Add(elementPath);
+        }
 
         if (strength == null)
         {
