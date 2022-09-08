@@ -42,17 +42,17 @@
         },
         "ts2": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --language TypeScript",
+            "commandLineArgs": "--output-path ..\\..\\generated\\TypeScript_R2.ts --load-r2 latest --include-experimental --language TypeScript",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "ts3": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --language TypeScript",
+            "commandLineArgs": "--output-path ..\\..\\generated\\TypeScript_R3.ts --load-r3 latest --include-experimental --language TypeScript",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "ts4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --language TypeScript",
+            "commandLineArgs": "--output-path ..\\..\\generated\\TypeScript_R4.ts --load-r4 latest --include-experimental --language TypeScript",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "ts4B": {
@@ -72,17 +72,17 @@
         },
         "cs2": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --language CSharpBasic",
+            "commandLineArgs": "--output-path ..\\..\\generated\\CSharpBasic_R2.cs --load-r2 latest --include-experimental --language CSharpBasic",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "cs3": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --language CSharpBasic",
+            "commandLineArgs": "--output-path ..\\..\\generated\\CSharpBasic_R3.cs --load-r3 latest --include-experimental --language CSharpBasic",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "cs4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --language CSharpBasic",
+            "commandLineArgs": "--output-path ..\\..\\generated\\CSharpBasic_R4.cs --load-r4 latest --include-experimental --language CSharpBasic",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "cs4B": {
@@ -92,7 +92,7 @@
         },
         "cs5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --language CSharpBasic",
+            "commandLineArgs": "--output-path ..\\..\\generated\\CSharpBasic_R5.cs --load-r5 latest --include-experimental --language CSharpBasic",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "csAll": {
