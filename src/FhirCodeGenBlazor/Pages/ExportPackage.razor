@@ -101,7 +101,7 @@ else if (info.ArtifactRecordsByClass.Any())
         </li>
 
         <li>
-            Export Language<button class="btn" type="button" @onclick="() => showLanguageDetails = !showLanguageDetails"><span class="@GetCaretClass(showLanguageDetails)"></span></button>
+            Export Configuration<button class="btn" type="button" @onclick="() => showLanguageDetails = !showLanguageDetails"><span class="@GetCaretClass(showLanguageDetails)"></span></button>
 
             @if (showLanguageDetails == true)
             {
@@ -113,15 +113,61 @@ else if (info.ArtifactRecordsByClass.Any())
                     }
                 </select>
 
-                @if (language != null)
+                @if ((language != null) && (exporterOptions != null))
                 {
-                    @if ((language.LanguageOptions == null) || (!language.LanguageOptions.Any()))
+                    <p class="fw-bold mt-2">Optional Artifact Types to Export:</p>
+                    @foreach (ExporterOptions.FhirExportClassType optionalExportType in language.OptionalExportClassTypes)
                     {
-                        <p class="mt-2">No language options.</p>
+                        <button type="button"
+                            class="@GetButtonClass(optionalExportType)"
+                            @onclick="() => ToggleOptional(optionalExportType)">
+                            @optionalExportType
+                        </button>
                     }
-                    else
+
+                    <p class="fw-bold mt-2">Export Options:</p>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-1 text-end">
+                            <label for="exportDirectoryPath" class="form-label">Export Path</label>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" id="exportDirectoryPath" class="form-control" @bind="exportDirectoryPath">
+                        </div>
+                        <div class="col-auto">
+                            <span class="form-text">Server-based path to write export output</span>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-1 text-end">
+                            <label for="extensionSupportLevel" class="form-label">Extension Support Level</label>
+                        </div>
+                        <div class="col-2">
+                            <select class="form-select" aria-label="Extension Support Level" @bind="extensionSupport">
+                                @foreach (ExporterOptions.ExtensionSupportLevel value in Enum.GetValues(typeof(ExporterOptions.ExtensionSupportLevel)))
+                                {
+                                    <option value="@value">@value</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <span class="form-text">If supported by this language, where extensions should be included.</span>
+                        </div>
+                    </div>
+
+                    @if ((language.LanguageOptions != null) && (language.LanguageOptions.Any()))
                     {
-                        <p class="fw-bold mt-2">Language-Specific Options:</p>
+                        <div class="row g-3 mb-2">
+                            <div class="col-1 text-end">
+                                <label for="switchIncludeExperimental" class="form-label">Draft/Expiermental</label>
+                            </div>
+                            <div class="col-2 form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="switchIncludeExperimental" @bind="includeExperimental" />
+                            </div>
+                            <div class="col-auto">
+                                <span class="form-text">If export should include draft and experimental artifacts.</span>
+                            </div>
+                        </div>
 
                         @foreach ((string option, string description) in language.LanguageOptions)
                         {
@@ -130,7 +176,7 @@ else if (info.ArtifactRecordsByClass.Any())
                                     <label for="@GetIdForLanguageOption(option)" class="form-label">@option</label>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" id="@GetIdForLanguageOption(option)" class="form-control" @bind="languageOptions[option]">
+                                    <input type="text" id="@GetIdForLanguageOption(option)" class="form-control" @bind="exporterOptions.LanguageOptions[option]">
                                 </div>
                                 <div class="col-auto">
                                     <span class="form-text">@description</span>
@@ -139,25 +185,6 @@ else if (info.ArtifactRecordsByClass.Any())
                         }
                     }
                 }
-            }
-        </li>
-
-        <li>
-            Export Options<button class="btn" type="button" @onclick="() => showExportOptions = !showExportOptions"><span class="@GetCaretClass(showExportOptions)"></span></button>
-
-            @if (showExportOptions == true)
-            {
-                <div class="row g-3 align-items-center mb-2">
-                    <div class="col-1 text-end">
-                        <label for="exportDirectoryPath" class="form-label">Export Path</label>
-                    </div>
-                    <div class="col-2">
-                        <input type="text" id="exportDirectoryPath" class="form-control" @bind="exportDirectoryPath">
-                    </div>
-                    <div class="col-auto">
-                        <span class="form-text">Server-based path to write export output</span>
-                    </div>
-                </div>
             }
         </li>
     </ul>
@@ -206,20 +233,14 @@ else
     /// <summary>Gets or sets the language.</summary>
     private ILanguage? language { get; set; } = null;
 
-    /// <summary>Options for controlling the language.</summary>
-    private Dictionary<string, string> languageOptions = new(StringComparer.OrdinalIgnoreCase);
-
     /// <summary>Gets or sets a value indicating whether the package details is shown.</summary>
     private bool showPackageDetails { get; set; } = true;
 
     /// <summary>Gets or sets a value indicating whether the package contents is shown.</summary>
-    private bool showPackageContents { get; set; } = true;
+    private bool showPackageContents { get; set; } = false;
 
     /// <summary>Gets or sets a value indicating whether the language details is shown.</summary>
     private bool showLanguageDetails { get; set; } = true;
-
-    /// <summary>Gets or sets a value indicating whether the export options is shown.</summary>
-    private bool showExportOptions { get; set; } = true;
 
     /// <summary>Gets or sets the full pathname of the export directory file.</summary>
     private string exportDirectoryPath { get; set; } = string.Empty;
@@ -240,6 +261,17 @@ else
             InvokeAsync(() => UpdateLanguage(value));
         }
     }
+
+    /// <summary>Options for controlling the exporter.</summary>
+    private ExporterOptions? exporterOptions = null;
+
+    /// <summary>The extension support.</summary>
+    private ExporterOptions.ExtensionSupportLevel extensionSupport = ExporterOptions.ExtensionSupportLevel.NonPrimitive;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the experimental should be included.
+    /// </summary>
+    private bool includeExperimental { get; set; } = true;
 
     /// <summary>
     /// Gets or sets a value indicating whether the in progress should be exported.
@@ -306,6 +338,12 @@ else
             return;
         }
 
+        if (exporterOptions == null)
+        {
+            uiMessage = "*** Cannot Export without configuration! ***";
+            return;
+        }
+
         if (language == null)
         {
             uiMessage = "*** An export language is required! ***";
@@ -318,25 +356,28 @@ else
             return;
         }
 
-        BrowserStore.SetAsync("last_export_language", language.LanguageName);
-        BrowserStore.SetAsync($"path_{directive}_{language.LanguageName}", exportDirectoryPath);
+        BrowserStore.SetAsync("last_export_language", exporterOptions.LanguageName);
+        BrowserStore.SetAsync($"path_{directive}_{exporterOptions.LanguageName}", exportDirectoryPath);
 
-        foreach ((string option, string value) in languageOptions)
+        if (exporterOptions.LanguageOptions != null)
         {
-            BrowserStore.SetAsync($"{directive}_{language.LanguageName}_{option}", value);
+            foreach ((string option, string value) in exporterOptions.LanguageOptions)
+            {
+                BrowserStore.SetAsync($"{directive}_{exporterOptions.LanguageName}_{option}", value);
+            }
         }
 
         ExporterOptions options = new(
-            language.LanguageName,
-            null,
-            language.OptionalExportClassTypes,
-            ExporterOptions.ExtensionSupportLevel.NonPrimitive,
-            null,
-            null,
-            languageOptions,
-            string.Empty,
-            true,
-            string.Empty);
+            exporterOptions.LanguageName,
+            exporterOptions.ExportList,
+            exporterOptions.OptionalClassTypesToExport,
+            extensionSupport,
+            exporterOptions.ExtensionUrls,
+            exporterOptions.ExtensionElementPaths,
+            exporterOptions.LanguageOptions,
+            exporterOptions.ServerUrl,
+            includeExperimental,
+            exporterOptions.LanguageInputDir);
 
         uiMessage = string.Empty;
 
@@ -399,24 +440,22 @@ else
     {
         if (string.IsNullOrEmpty(name))
         {
+            exporterOptions = null;
             language = null;
             return;
         }
 
-        language = null;
-        languageOptions.Clear();
+        if (exporterOptions?.LanguageName == name)
+        {
+            return;
+        }
+
+        //language = null;
+        //languageOptions.Clear();
 
         if (ExportService.TryGetExportLanguage(name, out ILanguage? iLang) &&
             (iLang != null))
         {
-            foreach (string option in iLang.LanguageOptions.Keys)
-            {
-                ProtectedBrowserStorageResult<string> optReadResult = await
-                    BrowserStore.GetAsync<string>($"{directive}_{iLang.LanguageName}_{option}");
-
-                languageOptions.Add(option, optReadResult.Value ?? string.Empty);
-            }
-
             ProtectedBrowserStorageResult<string> readResult = await
                 BrowserStore.GetAsync<string>($"path_{directive}_{iLang.LanguageName}");
             if (readResult.Success)
@@ -425,9 +464,70 @@ else
             }
 
             language = iLang;
+            exporterOptions = new(
+                name,
+                exporterOptions?.ExportList,
+                null,
+                exporterOptions?.ExtensionSupport ?? ExporterOptions.ExtensionSupportLevel.NonPrimitive,
+                exporterOptions?.ExtensionUrls,
+                exporterOptions?.ExtensionElementPaths,
+                null,
+                exporterOptions?.ServerUrl,
+                exporterOptions?.IncludeExperimental ?? true,
+                exporterOptions?.LanguageInputDir);
+
+            foreach (string option in iLang.LanguageOptions.Keys)
+            {
+                ProtectedBrowserStorageResult<string> optReadResult = await
+                    BrowserStore.GetAsync<string>($"{directive}_{iLang.LanguageName}_{option}");
+
+                exporterOptions.LanguageOptions.Add(option, optReadResult.Value ?? string.Empty);
+            }
+
+            foreach (ExporterOptions.FhirExportClassType optionalExportType in language.OptionalExportClassTypes)
+            {
+                exporterOptions.OptionalClassTypesToExport.Add(optionalExportType);
+            }
+        }
+        else
+        {
+            language = null;
+            exporterOptions = null;
         }
 
         await InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Gets button class.</summary>
+    /// <param name="ct">The ct.</param>
+    /// <returns>The button class.</returns>
+    private string GetButtonClass(ExporterOptions.FhirExportClassType ct)
+    {
+        if (exporterOptions?.OptionalClassTypesToExport.Contains(ct) == true)
+        {
+            return "btn btn-primary me-2 mb-2";
+        }
+
+        return "btn btn-outline-primary me-2 mb-2";
+    }
+
+    /// <summary>Toggle optional.</summary>
+    /// <param name="ct">The ct.</param>
+    private void ToggleOptional(ExporterOptions.FhirExportClassType ct)
+    {
+        if (exporterOptions == null)
+        {
+            return;
+        }
+
+        if (exporterOptions.OptionalClassTypesToExport.Contains(ct) == true)
+        {
+            exporterOptions.OptionalClassTypesToExport.Remove(ct);
+        }
+        else
+        {
+            exporterOptions.OptionalClassTypesToExport.Add(ct);
+        }
     }
 
     /// <summary>
