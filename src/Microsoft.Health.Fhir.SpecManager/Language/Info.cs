@@ -2,16 +2,11 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {

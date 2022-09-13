@@ -4,10 +4,7 @@
 // </copyright>
 
 using System.IO;
-using System.Linq;
 using Microsoft.Health.Fhir.SpecManager.Converters;
-using Microsoft.Health.Fhir.SpecManager.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -559,6 +556,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             foreach (KeyValuePair<string, FhirOperation> kvp in source._systemOperations)
             {
+                if (_systemOperations.ContainsKey(kvp.Key))
+                {
+                    continue;
+                }
+
                 if (options.ServerInfo.ServerOperations.ContainsKey(kvp.Value.Code))
                 {
                     _systemOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
@@ -614,6 +616,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             foreach (KeyValuePair<string, FhirSearchParam> kvp in source._globalSearchParameters)
             {
+                if (_globalSearchParameters.ContainsKey(kvp.Key))
+                {
+                    continue;
+                }
+
                 if (options.ServerInfo.ServerSearchParameters.ContainsKey(kvp.Value.Code))
                 {
                     _globalSearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());

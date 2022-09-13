@@ -182,37 +182,22 @@
         },
         "server2": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseDstu2/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseDstu2/ --output-path ..\\..\\temp\\OpenApi_R2.json --language OpenAPI",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "server3": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseStu3/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseStu3/ --output-path ..\\..\\temp\\OpenApi_R3.json --language OpenAPI",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "server4": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|fhirjson=true|SingleResponses=true|ReadOnly=true --export-keys Patient|Bundle --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|fhirjson=true|SingleResponses=true|ReadOnly=true|PatchJson=true|PatchFhir=false --output-path ..\\..\\generated\\OpenApi_R4.json --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "server4Min": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|fhirjson=true|SingleResponses=true|Summaries=false|SchemaDescriptions=false|ReadOnly=true|ExpandProfiles=false --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "azTest": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|RemoveUncommonFields=true|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|BundleOperations=false|descriptions=true|DescriptionValidation=true|SchemasInline=true --extension-support none --export-keys Bundle|Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Observation|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|MedicationRequest|ServiceRequest|DiagnosticReport|Coverage|ImageStudy|Procedure --output-path ..\\..\\temp\\OpenApi_R4.json --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "azTestMin": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|RemoveUncommonFields=true|Minify=true|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|BundleOperations=false|descriptions=true|DescriptionValidation=true|SchemasInline=true --extension-support none --export-keys Bundle|Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Observation|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|MedicationRequest|ServiceRequest|DiagnosticReport|Coverage|ImageStudy|Procedure --output-path ..\\..\\temp\\OpenApi_R4_min.json --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "azTestFull": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|OpenApiVersion=3|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|descriptions=true|DescriptionValidation=true --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|fhirjson=true|SingleResponses=true|Summaries=false|SchemaDescriptions=false|ReadOnly=true|ExpandProfiles=false|PatchJson=true|PatchFhir=false --output-path ..\\..\\temp\\OpenApi_R4_min.json --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "cyto4": {

@@ -630,7 +630,7 @@ public static class Program
         string languageOptions,
         List<ILanguage> languages)
     {
-        Dictionary<string, Dictionary<string, string>> optionsByLanguage = new Dictionary<string, Dictionary<string, string>>();
+        Dictionary<string, Dictionary<string, string>> optionsByLanguage = new(StringComparer.OrdinalIgnoreCase);
 
         if ((languages == null) || (languages.Count == 0))
         {
@@ -639,7 +639,7 @@ public static class Program
 
         foreach (ILanguage lang in languages)
         {
-            optionsByLanguage.Add(lang.LanguageName, new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase));
+            optionsByLanguage.Add(lang.LanguageName, new(StringComparer.OrdinalIgnoreCase));
         }
 
         if (string.IsNullOrEmpty(languageOptions))
@@ -673,9 +673,9 @@ public static class Program
 
                 foreach (ILanguage lang in languages)
                 {
-                    if (lang.LanguageName.ToUpperInvariant() != lastName)
+                    if (!lang.LanguageName.Equals(lastName, StringComparison.OrdinalIgnoreCase))
                     {
-                        lastName = lang.LanguageName.ToUpperInvariant();
+                        lastName = lang.LanguageName;
                         currentName = lang.LanguageName;
 
                         break;
@@ -697,7 +697,7 @@ public static class Program
                 continue;
             }
 
-            string key = kvp[0].ToUpperInvariant();
+            string key = kvp[0];
 
             if (optionsByLanguage[currentName].ContainsKey(key))
             {

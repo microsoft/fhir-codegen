@@ -5,10 +5,9 @@
 
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Converters;
 using Microsoft.Health.Fhir.SpecManager.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -73,18 +72,22 @@ public static class ServerConnector
                 return false;
             }
 
-            ServerFhirVersionStruct version = JsonConvert.DeserializeObject<ServerFhirVersionStruct>(content);
+            string fhirVersion;
+            using (JsonDocument jdoc = JsonDocument.Parse(content))
+            {
+                fhirVersion = jdoc.RootElement.GetProperty("fhirVersion").GetString();
+            }
 
-            if (string.IsNullOrEmpty(version.FhirVersion))
+            if (string.IsNullOrEmpty(fhirVersion))
             {
                 Console.WriteLine($"Could not determine the FHIR version for {serverUrl}!");
                 serverInfo = null;
                 return false;
             }
 
-            Console.WriteLine($"Connected to {serverUrl}, FHIR version: {version.FhirVersion}");
+            Console.WriteLine($"Connected to {serverUrl}, FHIR version: {fhirVersion}");
 
-            IFhirConverter fhirConverter = ConverterHelper.ConverterForVersion(version.FhirVersion);
+            IFhirConverter fhirConverter = ConverterHelper.ConverterForVersion(fhirVersion);
 
             object metadata = fhirConverter.ParseResource(content);
 
@@ -125,12 +128,5 @@ public static class ServerConnector
 
         serverInfo = null;
         return false;
-    }
-
-    /// <summary>Minimal struct that will always parse a conformance/capability statement to get version info.</summary>
-    private struct ServerFhirVersionStruct
-    {
-        [JsonProperty("fhirVersion")]
-        public string FhirVersion { get; set; }
     }
 }

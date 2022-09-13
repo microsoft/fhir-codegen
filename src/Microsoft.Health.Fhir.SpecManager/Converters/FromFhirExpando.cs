@@ -1874,5 +1874,226 @@ public sealed class FromFhirExpando : IFhirConverter
         }
     }
 
-    void IFhirConverter.ProcessMetadata(object metadata, string serverUrl, out FhirServerInfo serverInfo) => throw new NotImplementedException();
+    /// <summary>Process a FHIR metadata resource into Server Information.</summary>
+    /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+    /// <param name="serverUrl"> URL of the server.</param>
+    /// <param name="serverInfo">[out] Information describing the server.</param>
+    void IFhirConverter.ProcessMetadata(
+        object metadata,
+        string serverUrl,
+        out FhirServerInfo serverInfo)
+    {
+        if (metadata == null)
+        {
+            serverInfo = null;
+            return;
+        }
+
+        FhirExpando caps = metadata as FhirExpando;
+
+        string swName = caps.GetString("software", "name") ?? string.Empty;
+        string swVersion = caps.GetString("software", "version") ?? string.Empty;
+        string swReleaseDate = caps.GetString("software", "releaseDate") ?? string.Empty;
+
+        string impDescription = caps.GetString("implementation", "description") ?? string.Empty;
+        string impUrl = caps.GetString("implementation", "url") ?? string.Empty;
+
+        List<string> serverInteractions = new List<string>();
+        Dictionary<string, FhirServerResourceInfo> resourceInteractions = new Dictionary<string, FhirServerResourceInfo>();
+        Dictionary<string, FhirServerSearchParam> serverSearchParams = new Dictionary<string, FhirServerSearchParam>();
+        Dictionary<string, FhirServerOperation> serverOperations = new Dictionary<string, FhirServerOperation>();
+
+        if (caps["rest"] != null)
+        {
+            FhirExpando rest = caps.GetExpandoEnumerable("rest").First();
+
+            if (rest == null)
+            {
+                serverInfo = null;
+                return;
+            }
+
+            if (rest["interaction"] != null)
+            {
+                foreach (FhirExpando interaction in rest.GetExpandoEnumerable("interaction"))
+                {
+                    string code = interaction.GetString("code");
+
+                    if (string.IsNullOrEmpty(code))
+                    {
+                        continue;
+                    }
+
+                    serverInteractions.Add(code);
+                }
+            }
+
+            if (rest["searchParam"] != null)
+            {
+                foreach (FhirExpando sp in rest.GetExpandoEnumerable("searchParam"))
+                {
+                    string spName = sp.GetString("name");
+
+                    if (string.IsNullOrEmpty(spName) || serverSearchParams.ContainsKey(spName))
+                    {
+                        continue;
+                    }
+
+                    serverSearchParams.Add(
+                        spName,
+                        new FhirServerSearchParam(
+                            spName,
+                            sp.GetString("definition"),
+                            sp.GetString("type"),
+                            sp.GetString("documentation")));
+                }
+            }
+
+            if (rest["operation"] != null)
+            {
+                foreach (FhirExpando operation in rest.GetExpandoEnumerable("operation"))
+                {
+                    string operationName = operation.GetString("name");
+
+                    if (string.IsNullOrEmpty(operationName))
+                    {
+                        continue;
+                    }
+
+                    if (serverOperations.ContainsKey(operationName))
+                    {
+                        serverOperations[operationName].AddDefinition(operation.GetString("definition"));
+                        continue;
+                    }
+
+                    serverOperations.Add(
+                        operationName,
+                        new FhirServerOperation(
+                            operationName,
+                            operation.GetString("definition"),
+                            operation.GetString("documentation")));
+                }
+            }
+
+            if (rest["resource"] != null)
+            {
+                foreach (FhirExpando resource in rest.GetExpandoEnumerable("resource"))
+                {
+                    FhirServerResourceInfo resourceInfo = ParseServerRestResource(resource);
+
+                    if (resourceInteractions.ContainsKey(resourceInfo.ResourceType))
+                    {
+                        continue;
+                    }
+
+                    resourceInteractions.Add(
+                        resourceInfo.ResourceType,
+                        resourceInfo);
+                }
+            }
+        }
+
+        serverInfo = new FhirServerInfo(
+            serverInteractions,
+            serverUrl,
+            caps.GetString("fhirVersion"),
+            swName,
+            swVersion,
+            swReleaseDate,
+            impDescription,
+            impUrl,
+            resourceInteractions,
+            serverSearchParams,
+            serverOperations);
+    }
+
+    /// <summary>Parse server REST resource.</summary>
+    /// <param name="resource">The resource.</param>
+    /// <returns>A FhirServerResourceInfo.</returns>
+    private static FhirServerResourceInfo ParseServerRestResource(
+        FhirExpando resource)
+    {
+        List<string> interactions = new List<string>();
+        Dictionary<string, FhirServerSearchParam> searchParams = new Dictionary<string, FhirServerSearchParam>();
+        Dictionary<string, FhirServerOperation> operations = new Dictionary<string, FhirServerOperation>();
+
+        if (resource["interaction"] != null)
+        {
+            foreach (FhirExpando interaction in resource.GetExpandoEnumerable("interaction"))
+            {
+                string code = interaction.GetString("code");
+
+                if (string.IsNullOrEmpty(code))
+                {
+                    continue;
+                }
+
+                interactions.Add(code);
+            }
+        }
+
+        if (resource["searchParam"] != null)
+        {
+            foreach (FhirExpando sp in resource.GetExpandoEnumerable("searchParam"))
+            {
+                string spName = sp.GetString("name");
+
+                if (string.IsNullOrEmpty(spName) || searchParams.ContainsKey(spName))
+                {
+                    continue;
+                }
+
+                searchParams.Add(
+                    spName,
+                    new FhirServerSearchParam(
+                        spName,
+                        sp.GetString("definition"),
+                        sp.GetString("type"),
+                        sp.GetString("documentation")));
+            }
+        }
+
+        if (resource["operation"] != null)
+        {
+            foreach (FhirExpando operation in resource.GetExpandoEnumerable("operation"))
+            {
+                string operationName = operation.GetString("name");
+
+                if (string.IsNullOrEmpty(operationName))
+                {
+                    continue;
+                }
+
+                if (operations.ContainsKey(operationName))
+                {
+                    operations[operationName].AddDefinition(operation.GetString("definition"));
+                    continue;
+                }
+
+                operations.Add(
+                    operationName,
+                    new FhirServerOperation(
+                        operationName,
+                        operation.GetString("definition"),
+                        operation.GetString("documentation")));
+            }
+        }
+
+        return new FhirServerResourceInfo(
+            interactions,
+            resource.GetString("type"),
+            resource.GetStringList("supportedProfile"),
+            resource.GetString("versioning"),
+            resource.GetBool("readHistory"),
+            resource.GetBool("updateCreate"),
+            resource.GetBool("conditionalCreate"),
+            resource.GetString("conditionalRead"),
+            resource.GetBool("conditionalUpdate"),
+            resource.GetString("conditionalDelete"),
+            resource.GetStringList("referencePolicy"),
+            resource.GetStringList("searchInclude"),
+            resource.GetStringList("searchRevInclude"),
+            searchParams,
+            operations);
+    }
 }
