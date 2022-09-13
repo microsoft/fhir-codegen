@@ -7,6 +7,7 @@ using System.Dynamic;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Xml.Linq;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -1023,7 +1024,7 @@ public sealed class FromFhirExpando : IFhirConverter
             List<string> contextElements = new List<string>();
             if (sd["context"] != null)
             {
-                foreach (object context in sd.GetExpandoEnumerable("context"))
+                foreach (object context in (IEnumerable<object>)sd["context"])
                 {
                     switch (context)
                     {
@@ -1717,99 +1718,15 @@ public sealed class FromFhirExpando : IFhirConverter
                         ?? string.Empty;
                 }
 
-                switch (edType["targetProfile"])
-                {
-                    case string edS:
-                        elementTargets = new string[] { edS };
-                        break;
+                elementTargets =
+                    edType.GetStringArray("targetProfile", "reference")     // R3 targetProfile is a reference (datatype)
+                    ?? edType.GetStringArray("targetProfile")               // R4+ targetProfile is a canonical (string value)
+                    ?? Array.Empty<string>();
 
-                    case IEnumerable<string> edES:
-                        elementTargets = edES;
-                        break;
-
-                    case FhirExpando edF:
-                        elementTargets = new string[] { edF.GetString("reference") };
-                        break;
-
-                    case IEnumerable<FhirExpando> edEF:
-                        elementTargets = edEF.Select(e => e.GetString("reference")).ToArray();
-                        break;
-
-                    case IEnumerable<object> edLO:
-                        {
-                            List<string> tempTargets = new();
-
-                            foreach (object edO in edLO)
-                            {
-                                switch (edO)
-                                {
-                                    case string edoS:
-                                        tempTargets.Add(edoS);
-                                        break;
-
-                                    case FhirExpando edoF:
-                                        tempTargets.Add(edoF.GetString("reference"));
-                                        break;
-                                }
-                            }
-
-                            elementTargets = tempTargets.ToArray();
-                        }
-
-                        break;
-
-                    case null:
-                    default:
-                        elementTargets = Array.Empty<string>();
-                        break;
-                }
-
-                switch (edType["profile"])
-                {
-                    case string edS:
-                        elementProfiles = new string[] { edS };
-                        break;
-
-                    case IEnumerable<string> edES:
-                        elementProfiles = edES;
-                        break;
-
-                    case FhirExpando edF:
-                        elementProfiles = new string[] { edF.GetString("reference") };
-                        break;
-
-                    case IEnumerable<FhirExpando> edEF:
-                        elementProfiles = edEF.Select(e => e.GetString("reference")).ToArray();
-                        break;
-
-                    case IEnumerable<object> edLO:
-                        {
-                            List<string> tempProfiles = new();
-
-                            foreach (object edO in edLO)
-                            {
-                                switch (edO)
-                                {
-                                    case string edoS:
-                                        tempProfiles.Add(edoS);
-                                        break;
-
-                                    case FhirExpando edoF:
-                                        tempProfiles.Add(edoF.GetString("reference"));
-                                        break;
-                                }
-                            }
-
-                            elementProfiles = tempProfiles.ToArray();
-                        }
-
-                        break;
-
-                    case null:
-                    default:
-                        elementProfiles = Array.Empty<string>();
-                        break;
-                }
+                elementProfiles =
+                    edType.GetStringArray("profile", "reference")           // R3 profile is a reference (datatype)
+                    ?? edType.GetStringArray("profile")                     // R4+ profile is a canonical (string value)
+                    ?? Array.Empty<string>();
 
                 if (!string.IsNullOrEmpty(fType))
                 {

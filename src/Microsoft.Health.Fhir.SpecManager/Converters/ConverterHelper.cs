@@ -26,7 +26,6 @@ public static class ConverterHelper
             case FhirPackageCommon.FhirSequenceEnum.R4B:
             case FhirPackageCommon.FhirSequenceEnum.R5:
             default:
-                // return new FromNormative();
                 return new FromFhirExpando();
         }
     }

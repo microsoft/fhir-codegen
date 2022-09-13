@@ -13840,7 +13840,7 @@ Value Sets: 1132 (unversioned)
   - #treatment: Treatment
 - ValueSet: http://hl7.org/fhir/ValueSet/activity-reason|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/additionalmaterials|3.0.2
     references: 0, strongest binding: 0
   - #document: Document
@@ -13879,7 +13879,7 @@ Value Sets: 1132 (unversioned)
   - #ar002: Plan Limit Reached
 - ValueSet: http://hl7.org/fhir/ValueSet/administration-method-codes|3.0.2
     references: 2, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/administrative-gender|3.0.2
     references: 6, strongest binding: Required
   - #female: Female
@@ -13921,7 +13921,7 @@ Value Sets: 1132 (unversioned)
   - #Severe: Severe
 - ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-type|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/age-units|3.0.2
     references: 0, strongest binding: 0
   - #a: years
@@ -14139,10 +14139,10 @@ Value Sets: 1132 (unversioned)
   - #unconfirmed: Unconfirmed
 - ValueSet: http://hl7.org/fhir/ValueSet/allergyintolerance-code|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/animal-breeds|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/animal-genderstatus|3.0.2
     references: 1, strongest binding: Example
   - #intact: Intact
@@ -14150,7 +14150,7 @@ Value Sets: 1132 (unversioned)
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/animal-species|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/appointmentstatus|3.0.2
     references: 1, strongest binding: Required
   - #arrived: Arrived
@@ -14163,7 +14163,7 @@ Value Sets: 1132 (unversioned)
   - #proposed: Proposed
 - ValueSet: http://hl7.org/fhir/ValueSet/approach-site-codes|3.0.2
     references: 2, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/assert-direction-codes|3.0.2
     references: 1, strongest binding: Required
   - #request: request
@@ -14493,13 +14493,13 @@ Value Sets: 1132 (unversioned)
   - #required: Required
 - ValueSet: http://hl7.org/fhir/ValueSet/body-site|3.0.2
     references: 11, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/bodysite-laterality|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/bodysite-relative-location|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/bundle-type|3.0.2
     references: 1, strongest binding: Required
   - #batch: Batch
@@ -14513,16 +14513,16 @@ Value Sets: 1132 (unversioned)
   - #transaction-response: Transaction Response
 - ValueSet: http://hl7.org/fhir/ValueSet/c80-doc-classcodes|20091109
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/c80-doc-typecodes|20091109
     references: 2, strongest binding: Preferred
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/c80-facilitycodes|20091109
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/c80-practice-codes|20091109
     references: 7, strongest binding: Preferred
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/capability-statement-kind|3.0.2
     references: 1, strongest binding: Required
   - #capability: Capability
@@ -14530,7 +14530,7 @@ Value Sets: 1132 (unversioned)
   - #requirements: Requirements
 - ValueSet: http://hl7.org/fhir/ValueSet/care-plan-activity|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/care-plan-activity-category|1.0.0
     references: 1, strongest binding: Example
   - #diet: Diet
@@ -14542,7 +14542,7 @@ Value Sets: 1132 (unversioned)
   - #supply: Supply
 - ValueSet: http://hl7.org/fhir/ValueSet/care-plan-activity-outcome|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/care-plan-activity-status|3.0.2
     references: 1, strongest binding: Required
   - #cancelled: Cancelled
@@ -14554,7 +14554,7 @@ Value Sets: 1132 (unversioned)
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/care-plan-category|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/care-plan-intent|3.0.2
     references: 1, strongest binding: Required
   - #option: Option
@@ -14682,7 +14682,7 @@ Value Sets: 1132 (unversioned)
   - #context: Context
 - ValueSet: http://hl7.org/fhir/ValueSet/clinical-findings|3.0.2
     references: 9, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/clinical-impression-status|3.0.2
     references: 1, strongest binding: Required
   - #completed: Completed
@@ -14690,7 +14690,7 @@ Value Sets: 1132 (unversioned)
   - #entered-in-error: Entered in Error
 - ValueSet: http://hl7.org/fhir/ValueSet/clinicalimpression-prognosis|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/codesystem-content-mode|3.0.2
     references: 1, strongest binding: Required
   - #complete: Complete
@@ -14783,16 +14783,16 @@ Value Sets: 1132 (unversioned)
   - #resolved: Resolved
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-code|3.0.2
     references: 8, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-outcome|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-severity|3.0.2
     references: 1, strongest binding: Preferred
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-stage|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-state|3.0.2
     references: 0, strongest binding: 0
   - #active: Active
@@ -14832,7 +14832,7 @@ Value Sets: 1132 (unversioned)
   - #use: Use
 - ValueSet: http://hl7.org/fhir/ValueSet/consent-category|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/consent-content-class|3.0.2
     references: 1, strongest binding: Extensible
   - #Account: Account
@@ -14958,7 +14958,7 @@ Value Sets: 1132 (unversioned)
   - #VisionPrescription: VisionPrescription
 - ValueSet: http://hl7.org/fhir/ValueSet/consent-content-code|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/consent-data-meaning|3.0.2
     references: 2, strongest binding: Required
   - #authoredby: AuthoredBy
@@ -14979,7 +14979,7 @@ Value Sets: 1132 (unversioned)
   - #rejected: Rejected
 - ValueSet: http://hl7.org/fhir/ValueSet/consistency-type|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity|3.0.2
     references: 1, strongest binding: Required
   - #error: Error
@@ -15475,7 +15475,7 @@ Value Sets: 1132 (unversioned)
   - #treatment: Treatment
 - ValueSet: http://hl7.org/fhir/ValueSet/designation-use|3.0.2
     references: 4, strongest binding: Required
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/detectedissue-category|3.0.2
     references: 1, strongest binding: Preferred
   - #ALLDONE: already performed
@@ -15538,10 +15538,10 @@ Value Sets: 1132 (unversioned)
   - #moderate: Moderate
 - ValueSet: http://hl7.org/fhir/ValueSet/device-action|3.0.2
     references: 1, strongest binding: Preferred
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/device-kind|3.0.2
     references: 4, strongest binding: Preferred
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/device-safety|3.0.2
     references: 1, strongest binding: Example
   - #C101673: Labeled as Containing Natural Rubber Latex
@@ -15685,10 +15685,10 @@ Value Sets: 1132 (unversioned)
   - #XC: External-camera Photography
 - ValueSet: http://hl7.org/fhir/ValueSet/diet-type|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/digital-media-subtype|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/digital-media-type|3.0.2
     references: 1, strongest binding: Required
   - #audio: Audio
@@ -15703,13 +15703,13 @@ Value Sets: 1132 (unversioned)
   - #value: Value
 - ValueSet: http://hl7.org/fhir/ValueSet/doc-classcodes|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/doc-section-codes|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/doc-typecodes|3.0.2
     references: 1, strongest binding: Preferred
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/document-mode|3.0.2
     references: 1, strongest binding: Required
   - #consumer: Consumer
@@ -15780,7 +15780,7 @@ Value Sets: 1132 (unversioned)
   - #translator: Translator
 - ValueSet: http://hl7.org/fhir/ValueSet/encounter-reason|3.0.2
     references: 2, strongest binding: Preferred
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/encounter-special-arrangements|3.0.2
     references: 1, strongest binding: Preferred
   - #add-bed: Additional bedding
@@ -15932,7 +15932,7 @@ Value Sets: 1132 (unversioned)
   - #water: Water
 - ValueSet: http://hl7.org/fhir/ValueSet/entformula-type|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/episode-of-care-status|3.0.2
     references: 2, strongest binding: Required
   - #active: Active
@@ -19379,7 +19379,7 @@ Value Sets: 1132 (unversioned)
   - #lab: Lab
 - ValueSet: http://hl7.org/fhir/ValueSet/flag-code|1.0.0
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/flag-priority|3.0.2
     references: 0, strongest binding: 0
   - #PH: High priority
@@ -19412,7 +19412,7 @@ Value Sets: 1132 (unversioned)
   - #SPS: spouse
 - ValueSet: http://hl7.org/fhir/ValueSet/food-type|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/formatcodes|20150326
     references: 1, strongest binding: Preferred
   - #urn:hl7-org:sdwg:ccda-nonXMLBody:1.1: For documents following C-CDA 1.1 constraints using a non structured body. 
@@ -19523,7 +19523,7 @@ Value Sets: 1132 (unversioned)
   - #successor: Successor
 - ValueSet: http://hl7.org/fhir/ValueSet/goal-start-event|3.0.2
     references: 2, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/goal-status|3.0.2
     references: 1, strongest binding: Required
   - #accepted: Accepted
@@ -19690,7 +19690,7 @@ Value Sets: 1132 (unversioned)
   - #school: School Record
 - ValueSet: http://hl7.org/fhir/ValueSet/immunization-reason|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/immunization-recommendation-date-criterion|3.0.2
     references: 1, strongest binding: Example
   - #due: Due
@@ -19704,7 +19704,7 @@ Value Sets: 1132 (unversioned)
   - #overdue: Overdue
 - ValueSet: http://hl7.org/fhir/ValueSet/immunization-recommendation-target-disease|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/immunization-role|3.0.2
     references: 1, strongest binding: Extensible
   - #AP: Administering Provider
@@ -19747,7 +19747,7 @@ Value Sets: 1132 (unversioned)
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/investigation-sets|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/issue-severity|3.0.2
     references: 1, strongest binding: Required
   - #error: Error
@@ -19805,7 +19805,7 @@ Value Sets: 1132 (unversioned)
   - #url: Url
 - ValueSet: http://hl7.org/fhir/ValueSet/jurisdiction|3.0.2
     references: 25, strongest binding: Extensible
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/kos-title|3.0.2
     references: 0, strongest binding: 0
   - #113000: Of Interest
@@ -19830,7 +19830,7 @@ Value Sets: 1132 (unversioned)
   - #113036: Group of Frames for Display
 - ValueSet: http://hl7.org/fhir/ValueSet/languages|3.0.2
     references: 12, strongest binding: Extensible
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/ldlcholesterol-codes|1.0.0
     references: 0, strongest binding: 0
   - #13457-7: LDL Cholesterol (Calc)
@@ -19926,7 +19926,7 @@ Value Sets: 1132 (unversioned)
   - #suspended: Suspended
 - ValueSet: http://hl7.org/fhir/ValueSet/manifestation-or-symptom|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/map-context-type|3.0.2
     references: 1, strongest binding: Required
   - #type: Type
@@ -20050,7 +20050,7 @@ Value Sets: 1132 (unversioned)
   - #thermal: MSP Thermal
 - ValueSet: http://hl7.org/fhir/ValueSet/media-view|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/medication-admin-category|3.0.2
     references: 1, strongest binding: Preferred
   - #community: Community
@@ -20066,10 +20066,10 @@ Value Sets: 1132 (unversioned)
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/medication-as-needed-reason|3.0.2
     references: 2, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/medication-codes|3.0.2
     references: 7, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/medication-dispense-category|3.0.2
     references: 1, strongest binding: Preferred
   - #community: Community
@@ -20085,7 +20085,7 @@ Value Sets: 1132 (unversioned)
   - #stopped: Stopped
 - ValueSet: http://hl7.org/fhir/ValueSet/medication-form-codes|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/medication-package-form|3.0.2
     references: 1, strongest binding: Example
   - #ampoule: Ampoule
@@ -20228,7 +20228,7 @@ Value Sets: 1132 (unversioned)
   - #u: U
 - ValueSet: http://hl7.org/fhir/ValueSet/modified-foodtype|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/name-assembly-order|3.0.2
     references: 0, strongest binding: 0
   - #F: Prefix Family Middle Given Suffix
@@ -20321,7 +20321,7 @@ Value Sets: 1132 (unversioned)
   - #WORKERSCOMP: Worker's Comp
 - ValueSet: http://hl7.org/fhir/ValueSet/no-immunization-reason|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/note-type|3.0.2
     references: 4, strongest binding: Required
   - #display: Display
@@ -20329,7 +20329,7 @@ Value Sets: 1132 (unversioned)
   - #printoper: Print (Operator)
 - ValueSet: http://hl7.org/fhir/ValueSet/nutrient-code|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/nutrition-request-status|3.0.2
     references: 1, strongest binding: Required
   - #active: Active
@@ -20421,7 +20421,7 @@ Value Sets: 1132 (unversioned)
   - #vital-signs: Vital Signs
 - ValueSet: http://hl7.org/fhir/ValueSet/observation-codes|3.0.2
     references: 5, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/observation-interpretation|3.0.2
     references: 2, strongest binding: Extensible
   - #<: Off scale low
@@ -20465,7 +20465,7 @@ Value Sets: 1132 (unversioned)
   - #WR: Weakly reactive
 - ValueSet: http://hl7.org/fhir/ValueSet/observation-methods|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/observation-relationshiptypes|3.0.2
     references: 1, strongest binding: Required
   - #derived-from: Derived From
@@ -20659,7 +20659,7 @@ Value Sets: 1132 (unversioned)
   - #TWIN: twin
 - ValueSet: http://hl7.org/fhir/ValueSet/participant-role|3.0.2
     references: 3, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/participantrequired|3.0.2
     references: 1, strongest binding: Required
   - #information-only: Information Only
@@ -20691,7 +20691,7 @@ Value Sets: 1132 (unversioned)
   - #payment: Payment
 - ValueSet: http://hl7.org/fhir/ValueSet/performer-role|3.0.2
     references: 4, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/plan-definition-type|3.0.2
     references: 1, strongest binding: Extensible
   - #eca-rule: ECA Rule
@@ -20743,19 +20743,19 @@ Value Sets: 1132 (unversioned)
   - #X2: chi square
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-category|3.0.2
     references: 2, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-code|3.0.2
     references: 4, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-followup|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-not-performed-reason|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-outcome|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-progress-status-codes|3.0.2
     references: 0, strongest binding: 0
   - #anesthesia-induced: Anesthesia Induced
@@ -20766,7 +20766,7 @@ Value Sets: 1132 (unversioned)
   - #prepared: Prepared
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-reason|3.0.2
     references: 4, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/process-outcome|3.0.2
     references: 1, strongest binding: Example
   - #complete: Complete
@@ -20945,7 +20945,7 @@ Value Sets: 1132 (unversioned)
   - #upper: Upper-bound
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-questions|3.0.2
     references: 2, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-usage-mode|3.0.2
     references: 0, strongest binding: 0
   - #capture: Capture Only
@@ -20971,10 +20971,10 @@ Value Sets: 1132 (unversioned)
   - #c: Emergency
 - ValueSet: http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/reason-medication-not-taken-codes|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/reference-handling-policy|3.0.2
     references: 1, strongest binding: Required
   - #enforced: Reference Integrity Enforced
@@ -20989,7 +20989,7 @@ Value Sets: 1132 (unversioned)
   - #specific: Version Specific
 - ValueSet: http://hl7.org/fhir/ValueSet/referencerange-appliesto|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/referencerange-meaning|3.0.2
     references: 1, strongest binding: Extensible
   - #endocrine: Endocrine
@@ -21007,7 +21007,7 @@ Value Sets: 1132 (unversioned)
   - #type: Type
 - ValueSet: http://hl7.org/fhir/ValueSet/referral-type|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/related-artifact-type|3.0.2
     references: 1, strongest binding: Required
   - #citation: Citation
@@ -21166,7 +21166,7 @@ Value Sets: 1132 (unversioned)
   - #warning: Warning
 - ValueSet: http://hl7.org/fhir/ValueSet/report-codes|3.0.2
     references: 1, strongest binding: Preferred
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/report-participant-type|3.0.2
     references: 1, strongest binding: Required
   - #client: Client
@@ -21400,7 +21400,7 @@ Value Sets: 1132 (unversioned)
   - #negligible: Negligible likelihood
 - ValueSet: http://hl7.org/fhir/ValueSet/route-codes|3.0.2
     references: 3, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/search-comparator|3.0.2
     references: 1, strongest binding: Required
   - #ap: Approximately
@@ -21702,7 +21702,7 @@ Value Sets: 1132 (unversioned)
   - #rna: RNA Sequence
 - ValueSet: http://hl7.org/fhir/ValueSet/service-category|3.0.2
     references: 4, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/service-modifiers|3.0.2
     references: 0, strongest binding: 0
   - #ah: After hours
@@ -21752,7 +21752,7 @@ Value Sets: 1132 (unversioned)
   - #semail: Secure Email
 - ValueSet: http://hl7.org/fhir/ValueSet/service-type|3.0.2
     references: 4, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/service-uscls|3.0.2
     references: 10, strongest binding: Example
   - #1101: Exam, comp, primary
@@ -21845,7 +21845,7 @@ Value Sets: 1132 (unversioned)
   - #unspecified: Unspecified Production Specification
 - ValueSet: http://hl7.org/fhir/ValueSet/specimen-collection-method|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/specimen-collection-priority|3.0.2
     references: 0, strongest binding: 0
   - #1: STAT
@@ -21857,7 +21857,7 @@ Value Sets: 1132 (unversioned)
   - #7: CALL OR FAX
 - ValueSet: http://hl7.org/fhir/ValueSet/specimen-container-type|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/specimen-processing-procedure|3.0.2
     references: 1, strongest binding: Example
   - #ACID: Acidification
@@ -21908,7 +21908,7 @@ Value Sets: 1132 (unversioned)
   - #material: Material
 - ValueSet: http://hl7.org/fhir/ValueSet/substance-code|3.0.2
     references: 3, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/substance-status|3.0.2
     references: 1, strongest binding: Required
   - #active: Active
@@ -21916,10 +21916,10 @@ Value Sets: 1132 (unversioned)
   - #inactive: Inactive
 - ValueSet: http://hl7.org/fhir/ValueSet/supplement-type|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/supply-item|1.0
     references: 2, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/supplydelivery-status|3.0.2
     references: 1, strongest binding: Required
   - #abandoned: Abandoned
@@ -22106,7 +22106,7 @@ Value Sets: 1132 (unversioned)
   - #FHIR-SDC-FormFiller: FHIR SDC FormFiller
 - ValueSet: http://hl7.org/fhir/ValueSet/texture-code|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/timing-abbreviation|3.0.2
     references: 1, strongest binding: Preferred
   - #AM: AM
@@ -23596,7 +23596,7 @@ Value Sets: 1132 (unversioned)
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/units-of-time|3.0.2
     references: 2, strongest binding: Required
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/unknown-content-code|3.0.2
     references: 1, strongest binding: Required
   - #both: Unknown Elements and Extensions
@@ -23615,7 +23615,7 @@ Value Sets: 1132 (unversioned)
   - #workflow: Workflow Setting
 - ValueSet: http://hl7.org/fhir/ValueSet/use-context|3.0.2
     references: 2, strongest binding: Extensible
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/usps-state|3.0.2
     references: 0, strongest binding: 0
   - #AK: Alaska
@@ -39115,10 +39115,10 @@ Value Sets: 1132 (unversioned)
   - #prodrecall: Product recall
 - ValueSet: http://hl7.org/fhir/ValueSet/vaccination-protocol-dose-target|3.0.2
     references: 1, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/vaccine-code|3.0.2
     references: 2, strongest binding: Example
-  - Partial expansion, not displayed
+  ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/variant-state|3.0.2
     references: 0, strongest binding: 0
   - #absent: absent

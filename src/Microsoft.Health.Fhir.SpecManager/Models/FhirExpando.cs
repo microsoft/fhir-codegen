@@ -230,19 +230,19 @@ public class FhirExpando : IDynamicMetaObjectProvider, IDictionary<string, objec
     {
         object o = GetObject(path);
 
-        if (o is string[])
+        switch (o)
         {
-            return (string[])o;
-        }
+            case string[] oSA:
+                return oSA;
 
-        if (o is Array)
-        {
-            return ((Array)o).Select(o => o.ToString()).ToArray();
-        }
+            case IEnumerable<string> oES:
+                return oES.ToArray();
 
-        if (o is IEnumerable)
-        {
-            return ((IEnumerable)o).Select(o => o.ToString()).ToArray();
+            case IEnumerable<object> oEO:
+                return oEO.Select(oEOo => oEOo.ToString()).ToArray();
+
+            case object oO:
+                return new string[] { oO.ToString() }; 
         }
 
         return null;
@@ -255,19 +255,22 @@ public class FhirExpando : IDynamicMetaObjectProvider, IDictionary<string, objec
     {
         object o = GetObject(path);
 
-        if (o is string[])
+        switch (o)
         {
-            return ((string[])o).ToList();
-        }
+            case string[] oSA:
+                return oSA.ToList();
 
-        if (o is Array)
-        {
-            return ((Array)o).Select(o => o.ToString()).ToList();
-        }
+            case List<string> oLS:
+                return oLS;
 
-        if (o is IEnumerable)
-        {
-            return ((IEnumerable)o).Select(o => o.ToString()).ToList();
+            case IEnumerable<string> oES:
+                return oES.ToList();
+
+            case IEnumerable<object> oEO:
+                return oEO.Select(oEOo => oEOo.ToString()).ToList();
+
+            case object oO:
+                return new List<string> { oO.ToString() };
         }
 
         return null;
