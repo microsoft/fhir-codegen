@@ -1,4 +1,4 @@
-﻿// <copyright file="FromNormative.cs" company="Microsoft Corporation">
+﻿// <copyright file="FromFhirObject.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -7,14 +7,13 @@ using System.Dynamic;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Xml.Linq;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters;
 
 /// <summary>Load models from a core package. This class cannot be inherited.</summary>
-public sealed class FromNormative : IFhirConverter
+public sealed class FromFhirExpando : IFhirConverter
 {
     private const string ExtensionComment = "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.";
     private const string ExtensionDefinition = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.";
@@ -46,333 +45,79 @@ public sealed class FromNormative : IFhirConverter
     /// <param name="NestKey"> The nest key.</param>
     private record struct ElementChoiceInfo(
         string Literal,
-        ReadTypeCodes ReadType,
-        string NestKey);
+        ReadTypeCodes ReadType);
 
     /// <summary>(Immutable) The open type choices.</summary>
     private static readonly ElementChoiceInfo[] _openTypeChoices = new[]
     {
         // Primitive Types
-        new ElementChoiceInfo("Base64Binary", ReadTypeCodes.ByteArray, string.Empty),
-        new ElementChoiceInfo("Boolean", ReadTypeCodes.Boolean, string.Empty),
-        new ElementChoiceInfo("Canonical", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("Code", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("Date", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("DateTime", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("Decimal", ReadTypeCodes.Decimal, string.Empty),
-        new ElementChoiceInfo("Id", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("Instant", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("Integer", ReadTypeCodes.Integer, string.Empty),
-        new ElementChoiceInfo("Integer64", ReadTypeCodes.Long, string.Empty),
-        new ElementChoiceInfo("Markdown", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("Oid", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("PositiveInt", ReadTypeCodes.Integer, string.Empty),
-        new ElementChoiceInfo("String", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("Time", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("UnsignedInt", ReadTypeCodes.Integer, string.Empty),
-        new ElementChoiceInfo("Uri", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("Url", ReadTypeCodes.String, string.Empty),
-        new ElementChoiceInfo("Uuid", ReadTypeCodes.String, string.Empty),
+        new ElementChoiceInfo("Base64Binary", ReadTypeCodes.ByteArray),
+        new ElementChoiceInfo("Boolean", ReadTypeCodes.Boolean),
+        new ElementChoiceInfo("Canonical", ReadTypeCodes.String),
+        new ElementChoiceInfo("Code", ReadTypeCodes.String),
+        new ElementChoiceInfo("Date", ReadTypeCodes.String),
+        new ElementChoiceInfo("DateTime", ReadTypeCodes.String),
+        new ElementChoiceInfo("Decimal", ReadTypeCodes.Decimal),
+        new ElementChoiceInfo("Id", ReadTypeCodes.String),
+        new ElementChoiceInfo("Instant", ReadTypeCodes.String),
+        new ElementChoiceInfo("Integer", ReadTypeCodes.Integer),
+        new ElementChoiceInfo("Integer64", ReadTypeCodes.Long),
+        new ElementChoiceInfo("Markdown", ReadTypeCodes.String),
+        new ElementChoiceInfo("Oid", ReadTypeCodes.String),
+        new ElementChoiceInfo("PositiveInt", ReadTypeCodes.Integer),
+        new ElementChoiceInfo("String", ReadTypeCodes.String),
+        new ElementChoiceInfo("Time", ReadTypeCodes.String),
+        new ElementChoiceInfo("UnsignedInt", ReadTypeCodes.Integer),
+        new ElementChoiceInfo("Uri", ReadTypeCodes.String),
+        new ElementChoiceInfo("Url", ReadTypeCodes.String),
+        new ElementChoiceInfo("Uuid", ReadTypeCodes.String),
 
         // Datatypes (complex types)
-        new ElementChoiceInfo("Address", ReadTypeCodes.Nested, "Address"),
-        new ElementChoiceInfo("Age", ReadTypeCodes.Nested, "Quantity"),
-        new ElementChoiceInfo("Annotation", ReadTypeCodes.Nested, "Annotation"),
-        new ElementChoiceInfo("Attachment", ReadTypeCodes.Nested, "Attachment"),
-        new ElementChoiceInfo("CodeableConcept", ReadTypeCodes.Nested, "CodeableConcept"),
-        new ElementChoiceInfo("CodeableReference", ReadTypeCodes.Nested, "CodeableReference"),
-        new ElementChoiceInfo("Coding", ReadTypeCodes.Nested, "Coding"),
-        new ElementChoiceInfo("ContactPoint", ReadTypeCodes.Nested, "ContactPoint"),
-        new ElementChoiceInfo("Count", ReadTypeCodes.Nested, "Quantity"),
-        new ElementChoiceInfo("Distance", ReadTypeCodes.Nested, "Quantity"),
-        new ElementChoiceInfo("Duration", ReadTypeCodes.Nested, "Quantity"),
-        new ElementChoiceInfo("HumanName", ReadTypeCodes.Nested, "HumanName"),
-        new ElementChoiceInfo("Identifier", ReadTypeCodes.Nested, "Identifier"),
-        new ElementChoiceInfo("Money", ReadTypeCodes.Nested, "Money"),
-        new ElementChoiceInfo("Period", ReadTypeCodes.Nested, "Period"),
-        new ElementChoiceInfo("Quantity", ReadTypeCodes.Nested, "Quantity"),
-        new ElementChoiceInfo("Range", ReadTypeCodes.Nested, "Range"),
-        new ElementChoiceInfo("Ratio", ReadTypeCodes.Nested, "Ratio"),
-        new ElementChoiceInfo("RatioRange", ReadTypeCodes.Nested, "RatioRange"),
-        new ElementChoiceInfo("Reference", ReadTypeCodes.Nested, "Reference"),
-        new ElementChoiceInfo("SampledData", ReadTypeCodes.Nested, "SampledData"),
-        new ElementChoiceInfo("SimpleQuantity", ReadTypeCodes.Nested, "Qantity"),
-        new ElementChoiceInfo("Signature", ReadTypeCodes.Nested, "Signature"),
-        new ElementChoiceInfo("Timing", ReadTypeCodes.Nested, "Timing"),
+        new ElementChoiceInfo("Address", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Age", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Annotation", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Attachment", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("CodeableConcept", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("CodeableReference", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Coding", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("ContactPoint", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Count", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Distance", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Duration", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("HumanName", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Identifier", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Money", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Period", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Quantity", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Range", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Ratio", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("RatioRange", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Reference", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("SampledData", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("SimpleQuantity", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Signature", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Timing", ReadTypeCodes.Nested),
 
         // MetaData Types
-        new ElementChoiceInfo("ContactDetail", ReadTypeCodes.Nested, "ContactDetail"),
-        new ElementChoiceInfo("DataRequirement", ReadTypeCodes.Nested, "DataRequirement"),
-        new ElementChoiceInfo("Expression", ReadTypeCodes.Nested, "Expression"),
-        new ElementChoiceInfo("ParameterDefinition", ReadTypeCodes.Nested, "ParameterDefinition"),
-        new ElementChoiceInfo("RelatedArtifact", ReadTypeCodes.Nested, "RelatedArtifact"),
-        new ElementChoiceInfo("TriggerDefinition", ReadTypeCodes.Nested, "TriggerDefinition"),
-        new ElementChoiceInfo("UsageContext", ReadTypeCodes.Nested, "UsageContext"),
-        new ElementChoiceInfo("Availability", ReadTypeCodes.Nested, "Availability"),
-        new ElementChoiceInfo("ExtendedContactDetail", ReadTypeCodes.Nested, "ExtendedContactDetail"),
+        new ElementChoiceInfo("ContactDetail", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("DataRequirement", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Expression", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("ParameterDefinition", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("RelatedArtifact", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("TriggerDefinition", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("UsageContext", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Availability", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("ExtendedContactDetail", ReadTypeCodes.Nested),
 
         // Special Types
-        new ElementChoiceInfo("Dosage", ReadTypeCodes.Nested, "Dosage"),
-        new ElementChoiceInfo("Meta", ReadTypeCodes.Nested, "Meta"),
-    };
-
-    /// <summary>(Immutable) The nested element choices.</summary>
-    private static readonly Dictionary<string, ElementChoiceInfo[]> _nestedElementChoices = new()
-    {
-        {
-            "Address",
-            new[]
-            {
-                new ElementChoiceInfo("use", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("type", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("text", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("line", ReadTypeCodes.StringArray, string.Empty),
-                new ElementChoiceInfo("city", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("district", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("state", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("postalCode", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("country", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("period", ReadTypeCodes.Nested, "Period"),
-            }
-        },
-        {
-            "Annotation",
-            new[]
-            {
-                new ElementChoiceInfo("authorReference", ReadTypeCodes.NestedArray, "Reference"),
-                new ElementChoiceInfo("authorString", ReadTypeCodes.StringArray, string.Empty),
-                new ElementChoiceInfo("time", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("text", ReadTypeCodes.String, string.Empty),
-            }
-        },
-        {
-            "Attachment",
-            new[]
-            {
-                new ElementChoiceInfo("contentType", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("language", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("data", ReadTypeCodes.ByteArray, string.Empty),
-                new ElementChoiceInfo("url", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("size", ReadTypeCodes.Long, string.Empty),
-                new ElementChoiceInfo("hash", ReadTypeCodes.ByteArray, string.Empty),
-                new ElementChoiceInfo("title", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("creation", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("height", ReadTypeCodes.Integer, string.Empty),
-                new ElementChoiceInfo("width", ReadTypeCodes.Integer, string.Empty),
-                new ElementChoiceInfo("frames", ReadTypeCodes.Integer, string.Empty),
-                new ElementChoiceInfo("duration", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("pages", ReadTypeCodes.Integer, string.Empty),
-            }
-        },
-        {
-            "CodeableConcept",
-            new[]
-            {
-                new ElementChoiceInfo("coding", ReadTypeCodes.NestedArray, "Coding"),
-                new ElementChoiceInfo("text", ReadTypeCodes.String, string.Empty),
-            }
-        },
-        {
-            "CodeableReference",
-            new[]
-            {
-                new ElementChoiceInfo("concept", ReadTypeCodes.Nested, "CodeableConcept"),
-                new ElementChoiceInfo("reference", ReadTypeCodes.Nested, "Reference"),
-            }
-        },
-        {
-            "Coding",
-            new[]
-            {
-                new ElementChoiceInfo("system", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("version", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("code", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("display", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("userSelected", ReadTypeCodes.Boolean, string.Empty),
-            }
-        },
-        {
-            "ContactDetail",
-            new[]
-            {
-                new ElementChoiceInfo("name", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("telecom", ReadTypeCodes.NestedArray, "ContactPoint"),
-            }
-        },
-        {
-            "ContactPoint",
-            new[]
-            {
-                new ElementChoiceInfo("system", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("value", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("use", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("rank", ReadTypeCodes.Integer, string.Empty),
-                new ElementChoiceInfo("period", ReadTypeCodes.Nested, "Period"),
-            }
-        },
-        {
-            "Expression",
-            new[]
-            {
-                new ElementChoiceInfo("description", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("name", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("language", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("expression", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("reference", ReadTypeCodes.String, string.Empty),
-            }
-        },
-        {
-            "HumanName",
-            new[]
-            {
-                new ElementChoiceInfo("use", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("text", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("family", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("given", ReadTypeCodes.StringArray, string.Empty),
-                new ElementChoiceInfo("prefix", ReadTypeCodes.StringArray, string.Empty),
-                new ElementChoiceInfo("suffix", ReadTypeCodes.StringArray, string.Empty),
-                new ElementChoiceInfo("period", ReadTypeCodes.Nested, "Period"),
-            }
-        },
-        {
-            "Identifier",
-            new[]
-            {
-                new ElementChoiceInfo("use", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("type", ReadTypeCodes.Nested, "CodeableConcept"),
-                new ElementChoiceInfo("system", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("value", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("period", ReadTypeCodes.Nested, "Period"),
-                new ElementChoiceInfo("assigner", ReadTypeCodes.Nested, "Reference"),
-            }
-        },
-        {
-            "Money",
-            new[]
-            {
-                new ElementChoiceInfo("value", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("currency", ReadTypeCodes.String, string.Empty),
-            }
-        },
-        {
-            "Period",
-            new[]
-            {
-                new ElementChoiceInfo("start", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("end", ReadTypeCodes.String, string.Empty),
-            }
-        },
-        {
-            "Quantity",
-            new[]
-            {
-                new ElementChoiceInfo("value", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("comparator", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("unit", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("system", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("code", ReadTypeCodes.String, string.Empty),
-            }
-        },
-        {
-            "Range",
-            new[]
-            {
-                new ElementChoiceInfo("low", ReadTypeCodes.Nested, "Quantity"),
-                new ElementChoiceInfo("high", ReadTypeCodes.Nested, "Quantity"),
-            }
-        },
-        {
-            "Ratio",
-            new[]
-            {
-                new ElementChoiceInfo("numerator", ReadTypeCodes.Nested, "Quantity"),
-                new ElementChoiceInfo("denominator", ReadTypeCodes.Nested, "Quantity"),
-            }
-        },
-        {
-            "RatioRange",
-            new[]
-            {
-                new ElementChoiceInfo("lowNumerator", ReadTypeCodes.Nested, "Quantity"),
-                new ElementChoiceInfo("highNumerator", ReadTypeCodes.Nested, "Quantity"),
-                new ElementChoiceInfo("denominator", ReadTypeCodes.Nested, "Quantity"),
-            }
-        },
-        {
-            "Reference",
-            new[]
-            {
-                new ElementChoiceInfo("reference", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("type", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("identifier", ReadTypeCodes.Nested, "Identifier"),
-                new ElementChoiceInfo("display", ReadTypeCodes.String, string.Empty),
-            }
-        },
-        {
-            "SampledData",
-            new[]
-            {
-                new ElementChoiceInfo("origin", ReadTypeCodes.Nested, "Quantity"),
-                new ElementChoiceInfo("interval", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("intervalUnit", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("factor", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("lowerLimit", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("upperLimit", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("dimensions", ReadTypeCodes.Integer, string.Empty),
-                new ElementChoiceInfo("data", ReadTypeCodes.String, string.Empty),
-            }
-        },
-        {
-            "Signature",
-            new[]
-            {
-                new ElementChoiceInfo("type", ReadTypeCodes.NestedArray, "Coding"),
-                new ElementChoiceInfo("when", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("who", ReadTypeCodes.Nested, "Reference"),
-                new ElementChoiceInfo("onBehalfOf", ReadTypeCodes.Nested, "Reference"),
-                new ElementChoiceInfo("targetFormat", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("sigFormat", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("data", ReadTypeCodes.ByteArray, string.Empty),
-            }
-        },
-        {
-            "Timing",
-            new[]
-            {
-                new ElementChoiceInfo("event", ReadTypeCodes.StringArray, string.Empty),
-                new ElementChoiceInfo("repeat", ReadTypeCodes.Nested, "TimingRepeat"),
-                new ElementChoiceInfo("code", ReadTypeCodes.Nested, "CodeableConcept"),
-            }
-        },
-        {
-            "TimingRepeat",
-            new[]
-            {
-                new ElementChoiceInfo("boundsDuration", ReadTypeCodes.Nested, "Quantity"),
-                new ElementChoiceInfo("boundsRange", ReadTypeCodes.Nested, "Range"),
-                new ElementChoiceInfo("boundsPeriod", ReadTypeCodes.Nested, "Period"),
-                new ElementChoiceInfo("count", ReadTypeCodes.Integer, string.Empty),
-                new ElementChoiceInfo("countMax", ReadTypeCodes.Integer, string.Empty),
-                new ElementChoiceInfo("duration", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("durationMax", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("durationUnit", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("frequency", ReadTypeCodes.Integer, string.Empty),
-                new ElementChoiceInfo("frequencyMax", ReadTypeCodes.Integer, string.Empty),
-                new ElementChoiceInfo("period", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("periodMax", ReadTypeCodes.Decimal, string.Empty),
-                new ElementChoiceInfo("periodUnit", ReadTypeCodes.String, string.Empty),
-                new ElementChoiceInfo("dayOfWeek", ReadTypeCodes.StringArray, string.Empty),
-                new ElementChoiceInfo("timeOfDay", ReadTypeCodes.StringArray, string.Empty),
-                new ElementChoiceInfo("when", ReadTypeCodes.StringArray, string.Empty),
-                new ElementChoiceInfo("offset", ReadTypeCodes.Integer, string.Empty),
-            }
-        },
+        new ElementChoiceInfo("Dosage", ReadTypeCodes.Nested),
+        new ElementChoiceInfo("Meta", ReadTypeCodes.Nested),
     };
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FromNormative"/> class.
+    /// Initializes a new instance of the <see cref="FromFhirExpando"/> class.
     /// </summary>
-    public FromNormative()
+    public FromFhirExpando()
     {
         _errors = new();
         _warnings = new();
@@ -382,12 +127,12 @@ public sealed class FromNormative : IFhirConverter
     /// <param name="cs">             The create struct.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
     private void ProcessCodeSystem(
-        JsonNode cs,
+        FhirExpando cs,
         IPackageImportable fhirVersionInfo)
     {
-        string csStatus = cs["status"]?.GetValue<string>();
-        string csName = cs["name"]?.GetValue<string>() ?? string.Empty;
-        string csId = cs["id"]?.GetValue<string>() ?? string.Empty;
+        string csStatus = cs.GetString("status") ?? string.Empty;
+        string csName = cs.GetString("name") ?? string.Empty;
+        string csId = cs.GetString("id") ?? string.Empty;
 
         if (string.IsNullOrEmpty(csStatus))
         {
@@ -405,9 +150,9 @@ public sealed class FromNormative : IFhirConverter
 
         if (cs["filter"] != null)
         {
-            foreach (JsonNode filter in cs["filter"].AsArray())
+            foreach (FhirExpando filter in cs.GetExpandoEnumerable("filter"))
             {
-                string filterCode = filter["code"]?.GetValue<string>();
+                string filterCode = filter.GetString("code");
 
                 if (string.IsNullOrEmpty(filterCode))
                 {
@@ -418,9 +163,9 @@ public sealed class FromNormative : IFhirConverter
                     filterCode,
                     new(
                         filterCode,
-                        filter["description"]?.GetValue<string>() ?? string.Empty,
-                        filter["operator"]?.AsArray().Select((op) => op.GetValue<string>()).AsEnumerable() ?? Array.Empty<string>(),
-                        filter["value"]?.GetValue<string>() ?? string.Empty));
+                        filter.GetString("description") ?? string.Empty,
+                        filter.GetStringArray("operator") ?? Array.Empty<string>(),
+                        filter.GetString("value") ?? string.Empty));
             }
         }
 
@@ -428,9 +173,9 @@ public sealed class FromNormative : IFhirConverter
 
         if (cs["property"] != null)
         {
-            foreach (JsonNode prop in cs["property"].AsArray())
+            foreach (FhirExpando prop in cs.GetExpandoEnumerable("property"))
             {
-                string propCode = prop["code"]?.GetValue<string>();
+                string propCode = prop.GetString("code");
 
                 if (string.IsNullOrEmpty(propCode))
                 {
@@ -447,9 +192,9 @@ public sealed class FromNormative : IFhirConverter
                     propCode,
                     new(
                         propCode,
-                        prop["uri"]?.GetValue<string>() ?? string.Empty,
-                        prop["description"]?.GetValue<string>() ?? string.Empty,
-                        FhirCodeSystem.PropertyTypeFromValue(prop["type"]?.GetValue<string>() ?? string.Empty)));
+                        prop.GetString("uri") ?? string.Empty,
+                        prop.GetString("description") ?? string.Empty,
+                        FhirCodeSystem.PropertyTypeFromValue(prop.GetString("type") ?? string.Empty)));
             }
         }
 
@@ -459,23 +204,23 @@ public sealed class FromNormative : IFhirConverter
         if (cs["concept"] != null)
         {
             AddConceptTree(
-                cs["url"]?.GetValue<string>() ?? string.Empty,
-                cs["id"]?.GetValue<string>() ?? string.Empty,
-                cs["concept"]?.AsArray(),
+                cs.GetString("url") ?? string.Empty,
+                cs.GetString("id") ?? string.Empty,
+                cs.GetExpandoEnumerable("concept"),
                 root,
                 nodeLookup,
                 properties);
         }
 
         FhirCodeSystem codeSystem = new FhirCodeSystem(
-            cs["name"]?.GetValue<string>(),
-            cs["id"]?.GetValue<string>(),
-            cs["version"]?.GetValue<string>() ?? string.Empty,
-            cs["title"]?.GetValue<string>() ?? string.Empty,
-            cs["url"]?.GetValue<string>() ?? string.Empty,
+            cs.GetString("name"),
+            cs.GetString("id"),
+            cs.GetString("version") ?? string.Empty,
+            cs.GetString("title") ?? string.Empty,
+            cs.GetString("url") ?? string.Empty,
             csStatus,
-            cs["description"]?.GetValue<string>() ?? string.Empty,
-            cs["content"]?.GetValue<string>(),
+            cs.GetString("description") ?? string.Empty,
+            cs.GetString("content"),
             root,
             nodeLookup,
             filters,
@@ -495,13 +240,13 @@ public sealed class FromNormative : IFhirConverter
     private void AddConceptTree(
         string codeSystemUrl,
         string codeSystemId,
-        JsonArray concepts,
+        IEnumerable<FhirExpando> concepts,
         FhirConceptTreeNode parent,
         Dictionary<string, FhirConceptTreeNode> nodeLookup,
         Dictionary<string, FhirCodeSystem.PropertyDefinition> propertyDefinitions)
     {
         if ((concepts == null) ||
-            (concepts.Count == 0) ||
+            (!concepts.Any()) ||
             (parent == null))
         {
             return;
@@ -509,7 +254,7 @@ public sealed class FromNormative : IFhirConverter
 
         List<KeyValuePair<string, string>> properties = new List<KeyValuePair<string, string>>();
 
-        foreach (JsonNode concept in concepts)
+        foreach (FhirExpando concept in concepts)
         {
             if (TryBuildInternalConceptFromFhir(
                     codeSystemUrl,
@@ -523,10 +268,16 @@ public sealed class FromNormative : IFhirConverter
 
                 if (concept["concept"] != null)
                 {
-                    AddConceptTree(codeSystemUrl, codeSystemId, concept["concept"].AsArray(), node, nodeLookup, propertyDefinitions);
+                    AddConceptTree(
+                        codeSystemUrl,
+                        codeSystemId,
+                        concept.GetExpandoEnumerable("concept"),
+                        node,
+                        nodeLookup,
+                        propertyDefinitions);
                 }
 
-                string conceptCode = concept["code"]?.GetValue<string>();
+                string conceptCode = concept.GetString("code");
 
                 // codes may be referenced multiple times depending on nesting structure
                 if (!nodeLookup.ContainsKey(conceptCode))
@@ -548,12 +299,12 @@ public sealed class FromNormative : IFhirConverter
     private bool TryBuildInternalConceptFromFhir(
         string codeSystemUrl,
         string codeSystemId,
-        JsonNode concept,
+        FhirExpando concept,
         Dictionary<string, FhirCodeSystem.PropertyDefinition> propertyDefinitions,
         out FhirConcept fhirConcept,
         Dictionary<string, FhirConceptTreeNode> nodeLookup = null)
     {
-        string code = concept["code"]?.GetValue<string>() ?? string.Empty;
+        string code = concept.GetString("code");
 
         if (string.IsNullOrEmpty(code))
         {
@@ -571,16 +322,16 @@ public sealed class FromNormative : IFhirConverter
         fhirConcept = new FhirConcept(
             codeSystemUrl,
             code,
-            concept["display"]?.GetValue<string>() ?? string.Empty,
+            concept.GetString("display") ?? string.Empty,
             string.Empty,
-            concept["definition"]?.GetValue<string>() ?? string.Empty,
+            concept.GetString("definition") ?? string.Empty,
             codeSystemId);
 
         if (concept["property"] != null)
         {
-            foreach (JsonNode prop in concept["property"].AsArray())
+            foreach (FhirExpando prop in concept.GetExpandoEnumerable("property"))
             {
-                string propCode = prop["code"]?.GetValue<string>() ?? string.Empty;
+                string propCode = prop.GetString("code");
 
                 if (string.IsNullOrEmpty(propCode) ||
                     (!propertyDefinitions.ContainsKey(propCode)))
@@ -588,7 +339,7 @@ public sealed class FromNormative : IFhirConverter
                     continue;
                 }
 
-                if ((propCode == "status") && (prop["valueCode"]?.GetValue<string>() == "deprecated"))
+                if ((propCode == "status") && (prop.GetString("valueCode") == "deprecated"))
                 {
                     fhirConcept = null;
                     return false;
@@ -599,23 +350,28 @@ public sealed class FromNormative : IFhirConverter
                     case FhirCodeSystem.PropertyTypeEnum.Code:
                         fhirConcept.AddProperty(
                             propCode,
-                            prop["valueCode"]?.GetValue<string>(),
-                            prop["valueCode"]?.GetValue<string>());
+                            prop.GetString("valueCode"),
+                            prop.GetString("valueCode"));
                         break;
 
                     case FhirCodeSystem.PropertyTypeEnum.Coding:
                         {
-                            string codingSystem = prop["valueCoding"]?["system"]?.GetValue<string>() ?? string.Empty;
-                            string codingCode = prop["valueCoding"]?["code"]?.GetValue<string>() ?? string.Empty;
-                            string codingVersion = prop["valueCoding"]?["version"]?.GetValue<string>() ?? string.Empty;
+                            FhirExpando vc = prop.GetExpando("valueCoding");
 
-                            fhirConcept.AddProperty(
-                                propCode,
-                                (system: codingSystem, code: codingCode, version: codingVersion),
-                                FhirConcept.GetCanonical(
-                                    codingSystem,
-                                    codingCode,
-                                    codingVersion));
+                            if (vc != null)
+                            {
+                                string codingSystem = vc.GetString("system") ?? string.Empty;
+                                string codingCode = vc.GetString("code") ?? string.Empty;
+                                string codingVersion = vc.GetString("version") ?? string.Empty;
+
+                                fhirConcept.AddProperty(
+                                    propCode,
+                                    (system: codingSystem, code: codingCode, version: codingVersion),
+                                    FhirConcept.GetCanonical(
+                                        codingSystem,
+                                        codingCode,
+                                        codingVersion));
+                            }
                         }
 
                         break;
@@ -623,36 +379,36 @@ public sealed class FromNormative : IFhirConverter
                     case FhirCodeSystem.PropertyTypeEnum.String:
                         fhirConcept.AddProperty(
                             propCode,
-                            prop["valueString"]?.GetValue<string>() ?? null,
-                            prop["valueString"]?.GetValue<string>() ?? string.Empty);
+                            prop.GetString("valueString") ?? null,
+                            prop.GetString("valueString") ?? string.Empty);
                         break;
 
                     case FhirCodeSystem.PropertyTypeEnum.Integer:
                         fhirConcept.AddProperty(
                             propCode,
-                            prop["valueInteger"]?.GetValue<int?>() ?? null,
-                            prop["valueInteger"]?.GetValue<int?>()?.ToString() ?? string.Empty);
+                            prop.GetInt("valueInteger") ?? null,
+                            prop.GetInt("valueInteger")?.ToString() ?? string.Empty);
                         break;
 
                     case FhirCodeSystem.PropertyTypeEnum.Boolean:
                         fhirConcept.AddProperty(
                             propCode,
-                            prop["valueBoolean"]?.GetValue<bool?>() ?? null,
-                            prop["valueBoolean"]?.GetValue<bool?>()?.ToString() ?? string.Empty);
+                            prop.GetBool("valueBoolean") ?? null,
+                            prop.GetBool("valueBoolean")?.ToString() ?? string.Empty);
                         break;
 
                     case FhirCodeSystem.PropertyTypeEnum.DateTime:
                         fhirConcept.AddProperty(
                             propCode,
-                            prop["valueDateTime"]?.GetValue<string>() ?? null,
-                            prop["valueDateTime"]?.GetValue<string>() ?? string.Empty);
+                            prop.GetString("valueDateTime") ?? null,
+                            prop.GetString("valueDateTime") ?? string.Empty);
                         break;
 
                     case FhirCodeSystem.PropertyTypeEnum.Decimal:
                         fhirConcept.AddProperty(
                             propCode,
-                            prop["valueDecimal"]?.GetValue<decimal?>() ?? null,
-                            prop["valueDecimal"]?.GetValue<decimal?>()?.ToString() ?? string.Empty);
+                            prop.GetDecimal("valueDecimal") ?? null,
+                            prop.GetDecimal("valueDecimal")?.ToString() ?? string.Empty);
                         break;
                 }
             }
@@ -665,10 +421,10 @@ public sealed class FromNormative : IFhirConverter
     /// <param name="op">             The operation.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
     private void ProcessOperation(
-        JsonNode op,
+        FhirExpando op,
         IPackageImportable fhirVersionInfo)
     {
-        string status = op["status"]?.GetValue<string>() ?? "unknown";
+        string status = op.GetString("status") ?? "unknown";
 
         // ignore retired
         if (status.Equals("retired", StringComparison.Ordinal))
@@ -680,19 +436,19 @@ public sealed class FromNormative : IFhirConverter
 
         if (op["parameter"] != null)
         {
-            foreach (JsonNode opParam in op["parameter"].AsArray())
+            foreach (FhirExpando opParam in op.GetExpandoEnumerable("parameter"))
             {
                 parameters.Add(new FhirParameter(
-                    opParam["name"]?.GetValue<string>(),
-                    opParam["use"]?.GetValue<string>(),
-                    opParam["scope"]?.AsArray().Select(n => n.GetValue<string>()).AsEnumerable() ?? null,
-                    opParam["min"]?.GetValue<int>() ?? 0,
-                    opParam["max"]?.GetValue<string>(),
-                    opParam["documentation"]?.GetValue<string>(),
-                    opParam["type"]?.GetValue<string>(),
-                    opParam["allowedType"]?.AsArray().Select(n => n.GetValue<string>()).AsEnumerable() ?? null,
-                    opParam["targetProfile"]?.AsArray().Select(n => n.GetValue<string>()).AsEnumerable() ?? null,
-                    opParam["searchType"]?.GetValue<string>(),
+                    opParam.GetString("name"),
+                    opParam.GetString("use"),
+                    opParam.GetStringArray("scope") ?? null,
+                    opParam.GetInt("min") ?? 0,
+                    opParam.GetString("max"),
+                    opParam.GetString("documentation"),
+                    opParam.GetString("type"),
+                    opParam.GetStringArray("allowedType") ?? null,
+                    opParam.GetStringArray("targetProfile") ?? null,
+                    opParam.GetString("searchType"),
                     parameters.Count));
             }
         }
@@ -703,34 +459,34 @@ public sealed class FromNormative : IFhirConverter
         {
             opBase = null;
         }
-        else if (op["base"].GetType() == typeof(JsonObject))
+        else if (op["base"].GetType() == typeof(string))
         {
-            // R3 and lower, base is a reference
-            opBase = op["base"]["reference"]?.GetValue<string>();
+            // R4 and higher, base is a 'canonical'
+            opBase = op.GetString("base");
         }
         else
         {
-            // R4 and higher, base is a 'canonical'
-            opBase = op["base"].GetValue<string>();
+            // R3 and lower, base is a reference
+            opBase = op.GetString("base", "reference");
         }
 
         // create the operation
         FhirOperation operation = new FhirOperation(
-            op["id"]?.GetValue<string>(),
-            new Uri(op["url"]?.GetValue<string>()),
-            op["version"]?.GetValue<string>(),
-            op["name"]?.GetValue<string>(),
-            op["description"]?.GetValue<string>(),
-            op["affectsState"]?.GetValue<bool?>(),
-            op["system"]?.GetValue<bool?>() ?? false,
-            op["type"]?.GetValue<bool?>() ?? false,
-            op["instance"]?.GetValue<bool?>() ?? false,
-            op["code"]?.GetValue<string>(),
-            op["comment"]?.GetValue<string>(),
+            op.GetString("id"),
+            new Uri(op.GetString("url")),
+            op.GetString("version"),
+            op.GetString("name"),
+            op.GetString("description"),
+            op.GetBool("affectsState"),
+            op.GetBool("system") ?? false,
+            op.GetBool("type") ?? false,
+            op.GetBool("instance") ?? false,
+            op.GetString("code"),
+            op.GetString("comment"),
             opBase,
-            op["resource"]?.AsArray().Select(n => n.GetValue<string>()).ToList() ?? null,
+            op.GetStringList("resource") ?? null,
             parameters,
-            op["experimental"]?.GetValue<bool>() == true);
+            op.GetBool("experimental") == true);
 
         // add our operation
         fhirVersionInfo.AddOperation(operation);
@@ -740,10 +496,10 @@ public sealed class FromNormative : IFhirConverter
     /// <param name="sp">             The search parameter.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
     private void ProcessSearchParam(
-        JsonNode sp,
+        FhirExpando sp,
         IPackageImportable fhirVersionInfo)
     {
-        string status = sp["status"]?.GetValue<string>() ?? "unknown";
+        string status = sp.GetString("status") ?? "unknown";
 
         // ignore retired
         if (status.Equals("retired", StringComparison.Ordinal))
@@ -751,7 +507,7 @@ public sealed class FromNormative : IFhirConverter
             return;
         }
 
-        List<string> resources = sp["base"]?.AsArray().Select(n => n.GetValue<string>()).ToList() ?? null;
+        List<string> resources = sp.GetStringList("base");
 
         // check for parameters with no base resource
         if (resources == null)
@@ -759,7 +515,7 @@ public sealed class FromNormative : IFhirConverter
             resources = new();
 
             // see if we can determine the resource based on id
-            string[] components = sp["id"]?.GetValue<string>().Split('-');
+            string[] components = sp.GetString("id").Split('-');
 
             foreach (string component in components)
             {
@@ -778,21 +534,21 @@ public sealed class FromNormative : IFhirConverter
 
         // create the search parameter
         FhirSearchParam param = new FhirSearchParam(
-            sp["id"]?.GetValue<string>(),
-            new Uri(sp["url"]?.GetValue<string>()),
-            sp["version"]?.GetValue<string>(),
-            sp["name"]?.GetValue<string>(),
-            sp["description"]?.GetValue<string>(),
-            sp["purpose"]?.GetValue<string>(),
-            sp["code"]?.GetValue<string>(),
+            sp.GetString("id"),
+            new Uri(sp.GetString("url")),
+            sp.GetString("version"),
+            sp.GetString("name"),
+            sp.GetString("description"),
+            sp.GetString("purpose"),
+            sp.GetString("code"),
             resources,
-            sp["target"]?.AsArray().Select(n => n.GetValue<string>()).ToList(),
-            sp["type"]?.GetValue<string>(),
+            sp.GetStringList("target"),
+            sp.GetString("type"),
             status,
-            sp["experimental"]?.GetValue<bool?>() == true,
-            sp["xpath"]?.GetValue<string>() ?? string.Empty,
-            sp["processingMode"]?.GetValue<string>() ?? sp["xpathUsage"]?.GetValue<string>() ?? string.Empty,
-            sp["expression"]?.GetValue<string>());
+            sp.GetBool("experimental") == true,
+            sp.GetString("xpath") ?? string.Empty,
+            sp.GetString("processingMode") ?? sp.GetString("xpathUsage") ?? string.Empty,
+            sp.GetString("expression"));
 
         // add our parameter
         fhirVersionInfo.AddSearchParameter(param);
@@ -802,14 +558,14 @@ public sealed class FromNormative : IFhirConverter
     /// <param name="vs">             The value set.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
     private static void ProcessValueSet(
-        JsonNode vs,
+        FhirExpando vs,
         IPackageImportable fhirVersionInfo)
     {
-        string vsStatus = vs["status"]?.GetValue<string>() ?? "unknown";
-        string vsId = vs["id"]?.GetValue<string>() ?? string.Empty;
-        string vsName = vs["name"]?.GetValue<string>() ?? string.Empty;
-        string vsUrl = vs["url"]?.GetValue<string>() ?? string.Empty;
-        string vsVersion = vs["version"]?.GetValue<string>() ?? string.Empty;
+        string vsStatus = vs.GetString("status") ?? "unknown";
+        string vsId = vs.GetString("id") ?? string.Empty;
+        string vsName = vs.GetString("name") ?? string.Empty;
+        string vsUrl = vs.GetString("url") ?? string.Empty;
+        string vsVersion = vs.GetString("version") ?? string.Empty;
 
         // ignore retired
         if (vsStatus.Equals("retired", StringComparison.Ordinal))
@@ -840,22 +596,22 @@ public sealed class FromNormative : IFhirConverter
         FhirValueSetExpansion expansion = null;
 
         if ((vs["compose"] != null) &&
-            (vs["compose"]["include"] != null))
+            (vs["compose", "include"] != null))
         {
             includes = new List<FhirValueSetComposition>();
 
-            foreach (JsonNode compose in vs["compose"]["include"].AsArray())
+            foreach (FhirExpando compose in vs.GetExpandoEnumerable("compose", "include"))
             {
                 includes.Add(BuildComposition(compose));
             }
         }
 
         if ((vs["compose"] != null) &&
-            (vs["compose"]["exclude"] != null))
+            (vs["compose", "exclude"] != null))
         {
             excludes = new List<FhirValueSetComposition>();
 
-            foreach (JsonNode compose in vs["compose"]["exclude"].AsArray())
+            foreach (FhirExpando compose in vs.GetExpandoEnumerable("compose", "exclude"))
             {
                 excludes.Add(BuildComposition(compose));
             }
@@ -865,77 +621,45 @@ public sealed class FromNormative : IFhirConverter
         {
             Dictionary<string, dynamic> parameters = null;
 
-            if (vs["expansion"]["parameter"] != null)
+            if (vs["expansion", "parameter"] != null)
             {
                 parameters = new Dictionary<string, dynamic>();
 
-                foreach (JsonNode param in vs["expansion"]["parameter"].AsArray())
+                foreach (FhirExpando param in vs.GetExpandoEnumerable("expansion","parameter"))
                 {
-                    string paramName = param["name"]?.GetValue<string>();
+                    string paramName = param.GetString("name");
                     if (string.IsNullOrEmpty(paramName) || parameters.ContainsKey(paramName))
                     {
                         continue;
                     }
 
-                    if (param["valueBoolean"] != null)
+                    foreach (string childName in param.Keys)
                     {
-                        parameters.Add(paramName, param["valueBoolean"].GetValue<bool>());
-                        continue;
-                    }
+                        if (childName == "name")
+                        {
+                            continue;
+                        }
 
-                    if (param["valueCode"] != null)
-                    {
-                        parameters.Add(paramName, param["valueCode"].GetValue<string>());
-                        continue;
-                    }
-
-                    if (param["valueDateTime"] != null)
-                    {
-                        parameters.Add(paramName, param["valueDateTime"].GetValue<string>());
-                        continue;
-                    }
-
-                    if (param["valueDecimal"] != null)
-                    {
-                        parameters.Add(paramName, param["valueDecimal"].GetValue<decimal>());
-                        continue;
-                    }
-
-                    if (param["valueInteger"] != null)
-                    {
-                        parameters.Add(paramName, param["valueInteger"].GetValue<int>());
-                        continue;
-                    }
-
-                    if (param["valueUri"] != null)
-                    {
-                        parameters.Add(paramName, param["valueUri"].GetValue<string>());
-                        continue;
-                    }
-
-                    if (param["valueString"] != null)
-                    {
-                        parameters.Add(paramName, param["valueString"].GetValue<string>());
-                        continue;
+                        parameters.Add(paramName, param[childName]);
                     }
                 }
             }
 
             List<FhirConcept> expansionContains = null;
 
-            if (vs["expansion"]["contains"] != null)
+            if (vs["expansion", "contains"] != null)
             {
-                foreach (JsonNode contains in vs["expansion"]["contains"].AsArray())
+                foreach (FhirExpando contains in vs.GetExpandoEnumerable("expansion", "contains"))
                 {
                     AddContains(ref expansionContains, contains);
                 }
             }
 
             expansion = new FhirValueSetExpansion(
-                vs["expansion"]["id"]?.GetValue<string>() ?? string.Empty,
-                vs["expansion"]["timestamp"]?.GetValue<string>() ?? string.Empty,
-                vs["expansion"]["total"]?.GetValue<int>(),
-                vs["expansion"]["offset"]?.GetValue<int>(),
+                vs.GetString("expansion", "id") ?? string.Empty,
+                vs.GetString("expansion", "timestamp") ?? string.Empty,
+                vs.GetInt("expansion", "total"),
+                vs.GetInt("expansion", "offset"),
                 parameters,
                 expansionContains);
         }
@@ -944,10 +668,10 @@ public sealed class FromNormative : IFhirConverter
             vsName,
             vsId,
             vsVersion,
-            vs["title"]?.GetValue<string>() ?? vsName,
+            vs.GetString("title") ?? vsName,
             vsUrl,
             vsStatus,
-            vs["description"]?.GetValue<string>() ?? vsName,
+            vs.GetString("description") ?? vsName,
             includes,
             excludes,
             expansion);
@@ -959,7 +683,7 @@ public sealed class FromNormative : IFhirConverter
     /// <summary>Adds a set of contains clauses to a value set expansion.</summary>
     /// <param name="contains">[in,out] The contains.</param>
     /// <param name="ec">      The ec.</param>
-    private static void AddContains(ref List<FhirConcept> contains, JsonNode ec)
+    private static void AddContains(ref List<FhirConcept> contains, FhirExpando ec)
     {
         if (contains == null)
         {
@@ -967,106 +691,93 @@ public sealed class FromNormative : IFhirConverter
         }
 
         FhirConcept fhirConcept = new FhirConcept(
-            ec["system"]?.GetValue<string>(),
-            ec["code"]?.GetValue<string>(),
-            ec["display"]?.GetValue<string>(),
-            ec["version"]?.GetValue<string>(),
+            ec.GetString("system"),
+            ec.GetString("code"),
+            ec.GetString("display"),
+            ec.GetString("version"),
             string.Empty,
             string.Empty);
 
         if (ec["property"] != null)
         {
-            foreach (JsonNode prop in ec["property"].AsArray())
+            foreach (FhirExpando prop in ec.GetExpandoEnumerable("property"))
             {
-                string propCode = prop["code"]?.GetValue<string>();
+                string propCode = prop.GetString("code");
 
                 if (string.IsNullOrEmpty(propCode))
                 {
                     continue;
                 }
 
-                if (prop["valueCode"] != null)
+                foreach (string propKey in prop.Keys)
                 {
-                    fhirConcept.AddProperty(
-                        propCode,
-                        prop["valueCode"].GetValue<string>(),
-                        prop["valueCode"].GetValue<string>());
-                    continue;
-                }
+                    switch (propKey)
+                    {
+                        case "code":
+                            // do nothing
+                            break;
 
-                if (prop["valueCoding"] != null)
-                {
-                    string codingSystem = prop["valueCoding"]?["system"]?.GetValue<string>() ?? string.Empty;
-                    string codingCode = prop["valueCoding"]?["code"]?.GetValue<string>() ?? string.Empty;
-                    string codingVersion = prop["valueCoding"]?["version"]?.GetValue<string>() ?? string.Empty;
+                        case "valueCoding":
+                            {
+                                string codingSystem = prop.GetString("valueCoding", "system") ?? string.Empty;
+                                string codingCode = prop.GetString("valueCoding", "code") ?? string.Empty;
+                                string codingVersion = prop.GetString("valueCoding", "version") ?? string.Empty;
 
-                    fhirConcept.AddProperty(
-                        propCode,
-                        (system: codingSystem, code: codingCode, version: codingVersion),
-                        FhirConcept.GetCanonical(
-                            codingSystem,
-                            codingCode,
-                            codingVersion));
-                    continue;
-                }
+                                fhirConcept.AddProperty(
+                                    propCode,
+                                    (system: codingSystem, code: codingCode, version: codingVersion),
+                                    FhirConcept.GetCanonical(
+                                        codingSystem,
+                                        codingCode,
+                                        codingVersion));
+                            }
 
-                if (prop["valueString"] != null)
-                {
-                    fhirConcept.AddProperty(
-                        propCode,
-                        prop["valueString"]?.GetValue<string>() ?? null,
-                        prop["valueString"]?.GetValue<string>() ?? string.Empty);
-                    continue;
-                }
+                            break;
 
-                if (prop["valueInteger"] != null)
-                {
-                    fhirConcept.AddProperty(
-                        propCode,
-                        prop["valueInteger"]?.GetValue<int?>() ?? null,
-                        prop["valueInteger"]?.GetValue<int?>()?.ToString() ?? string.Empty);
-                    continue;
-                }
+                        case "valueCode":
+                        case "valueString":
+                        case "valueDateTime":
+                            fhirConcept.AddProperty(
+                                propCode,
+                                prop.GetString(propKey),
+                                prop.GetString(propKey));
+                            break;
 
-                if (prop["valueBoolean"] != null)
-                {
-                    fhirConcept.AddProperty(
-                        propCode,
-                        prop["valueBoolean"]?.GetValue<bool?>() ?? null,
-                        prop["valueBoolean"]?.GetValue<bool?>()?.ToString() ?? string.Empty);
-                    continue;
-                }
+                        case "valueInteger":
+                            fhirConcept.AddProperty(
+                                propCode,
+                                prop.GetInt(propKey),
+                                prop.GetInt(propKey)?.ToString() ?? string.Empty);
+                            break;
 
-                if (prop["valueDateTime"] != null)
-                {
-                    fhirConcept.AddProperty(
-                        propCode,
-                        prop["valueDateTime"]?.GetValue<string>() ?? null,
-                        prop["valueDateTime"]?.GetValue<string>() ?? string.Empty);
-                    continue;
-                }
+                        case "valueDecimal":
+                            fhirConcept.AddProperty(
+                                propCode,
+                                prop.GetDecimal(propKey),
+                                prop.GetDecimal(propKey)?.ToString() ?? string.Empty);
+                            break;
 
-                if (prop["valueDecmial"] != null)
-                {
-                    fhirConcept.AddProperty(
-                        propCode,
-                        prop["valueDecimal"]?.GetValue<decimal?>() ?? null,
-                        prop["valueDecimal"]?.GetValue<decimal?>()?.ToString() ?? string.Empty);
-                    continue;
+                        default:
+                            fhirConcept.AddProperty(
+                                propCode,
+                                prop[propKey],
+                                prop[propKey].ToString() ?? string.Empty);
+                            break;
+                    }
                 }
             }
         }
 
         // TODO: Determine if the Inactive flag needs to be checked
-        if ((!string.IsNullOrEmpty(ec["system"]?.GetValue<string>())) ||
-            (!string.IsNullOrEmpty(ec["code"]?.GetValue<string>())))
+        if ((!string.IsNullOrEmpty(ec.GetString("system"))) ||
+            (!string.IsNullOrEmpty(ec.GetString("code"))))
         {
             contains.Add(fhirConcept);
         }
 
         if (ec["contains"] != null)
         {
-            foreach (JsonNode subContains in ec["contains"].AsArray())
+            foreach (FhirExpando subContains in ec.GetExpandoEnumerable("contains"))
             {
                 AddContains(ref contains, subContains);
             }
@@ -1076,7 +787,7 @@ public sealed class FromNormative : IFhirConverter
     /// <summary>Builds a composition.</summary>
     /// <param name="compose">The compose.</param>
     /// <returns>A FhirValueSetComposition.</returns>
-    private static FhirValueSetComposition BuildComposition(JsonNode compose)
+    private static FhirValueSetComposition BuildComposition(FhirExpando compose)
     {
         if (compose == null)
         {
@@ -1091,12 +802,12 @@ public sealed class FromNormative : IFhirConverter
         {
             concepts = new List<FhirConcept>();
 
-            foreach (JsonNode concept in compose["concept"].AsArray())
+            foreach (FhirExpando concept in compose.GetExpandoEnumerable("concept"))
             {
                 concepts.Add(new FhirConcept(
-                    compose["system"]?.GetValue<string>(),
-                    concept["code"]?.GetValue<string>(),
-                    concept["display"]?.GetValue<string>()));
+                    compose.GetString("system"),
+                    concept.GetString("code"),
+                    concept.GetString("display")));
             }
         }
 
@@ -1104,33 +815,23 @@ public sealed class FromNormative : IFhirConverter
         {
             filters = new List<FhirValueSetFilter>();
 
-            foreach (JsonNode filter in compose["filter"].AsArray())
+            foreach (FhirExpando filter in compose.GetExpandoEnumerable("filter"))
             {
                 filters.Add(new FhirValueSetFilter(
-                    filter["property"]?.GetValue<string>(),
-                    filter["op"]?.GetValue<string>(),
-                    filter["value"]?.GetValue<string>()));
+                    filter.GetString("property"),
+                    filter.GetString("op"),
+                    filter.GetString("value")));
             }
         }
 
         if (compose["valueSet"] != null)
         {
-            linkedValueSets = new List<string>();
-
-            foreach (JsonNode valueSet in compose["valueSet"].AsArray())
-            {
-                if (string.IsNullOrEmpty(valueSet.GetValue<string>()))
-                {
-                    continue;
-                }
-
-                linkedValueSets.Add(valueSet.GetValue<string>());
-            }
+            linkedValueSets = compose.GetStringList("valueSet") ?? new();
         }
 
         return new FhirValueSetComposition(
-            compose["system"]?.GetValue<string>(),
-            compose["version"]?.GetValue<string>(),
+            compose.GetString("system"),
+            compose.GetString("version"),
             concepts,
             filters,
             linkedValueSets);
@@ -1140,10 +841,10 @@ public sealed class FromNormative : IFhirConverter
     /// <param name="sd">             The structure definition we are parsing.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
     private void ProcessStructureDef(
-        JsonNode sd,
+        FhirExpando sd,
         IPackageImportable fhirVersionInfo)
     {
-        string sdStatus = sd["status"]?.GetValue<string>() ?? "unknown";
+        string sdStatus = sd.GetString("status") ?? "unknown";
 
         // ignore retired
         if (sdStatus == "retired")
@@ -1151,7 +852,7 @@ public sealed class FromNormative : IFhirConverter
             return;
         }
 
-        string sdKind = sd["kind"]?.GetValue<string>() ?? string.Empty;
+        string sdKind = sd.GetString("kind") ?? string.Empty;
 
         // act depending on kind
         switch (sdKind)
@@ -1166,9 +867,9 @@ public sealed class FromNormative : IFhirConverter
 
             case "resource":
             case "complex-type":
-                if (sd["derivation"]?.GetValue<string>() == "constraint")
+                if (sd.GetString("derivation") == "constraint")
                 {
-                    if (sd["type"]?.GetValue<string>() == "Extension")
+                    if (sd.GetString("type") == "Extension")
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Extension);
                     }
@@ -1193,32 +894,32 @@ public sealed class FromNormative : IFhirConverter
     /// <param name="sd">             The structure definition.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
     private static void ProcessDataTypePrimitive(
-        JsonNode sd,
+        FhirExpando sd,
         IPackageImportable fhirVersionInfo)
     {
-        string sdId = sd["id"]?.GetValue<string>() ?? string.Empty;
-        string sdName = sd["name"]?.GetValue<string>() ?? string.Empty;
-        string sdStatus = sd["status"]?.GetValue<string>() ?? "unknown";
+        string sdId = sd.GetString("id") ?? string.Empty;
+        string sdName = sd.GetString("name") ?? string.Empty;
+        string sdStatus = sd.GetString("status") ?? "unknown";
 
         string regex = string.Empty;
-        string descriptionShort = sd["description"]?.GetValue<string>() ?? string.Empty;
-        string definition = sd["purpose"]?.GetValue<string>() ?? string.Empty;
+        string descriptionShort = sd.GetString("description") ?? string.Empty;
+        string definition = sd.GetString("purpose") ?? string.Empty;
         string comment = string.Empty;
         string baseTypeName = string.Empty;
 
         // right now, differential is generally 'more correct' than snapshot for primitives, see FHIR-37465
         if ((sd["differential"] != null) &&
-            (sd["differential"]["element"] != null))
+            (sd["differential", "element"] != null))
         {
-            foreach (JsonNode element in sd["differential"]["element"].AsArray())
+            foreach (FhirExpando element in sd.GetExpandoEnumerable("differential", "element"))
             {
-                string elementId = element["id"]?.GetValue<string>();
+                string elementId = element.GetString("id");
 
                 if (elementId == sdId)
                 {
-                    descriptionShort = element["short"]?.GetValue<string>() ?? descriptionShort;
-                    definition = element["definition"]?.GetValue<string>() ?? definition;
-                    comment = element["comment"]?.GetValue<string>() ?? comment;
+                    descriptionShort = element.GetString("short") ?? descriptionShort;
+                    definition = element.GetString("definition") ?? definition;
+                    comment = element.GetString("comment") ?? comment;
                     continue;
                 }
 
@@ -1232,9 +933,9 @@ public sealed class FromNormative : IFhirConverter
                     continue;
                 }
 
-                foreach (JsonNode type in element["type"].AsArray())
+                foreach (FhirExpando type in element.GetExpandoEnumerable("type"))
                 {
-                    string typeCode = type["code"]?.GetValue<string>() ?? string.Empty;
+                    string typeCode = type.GetString("code") ?? string.Empty;
 
                     if (!string.IsNullOrEmpty(typeCode))
                     {
@@ -1253,14 +954,14 @@ public sealed class FromNormative : IFhirConverter
                         continue;
                     }
 
-                    foreach (JsonNode ext in type["extension"].AsArray())
+                    foreach (FhirExpando ext in type.GetExpandoEnumerable("extension"))
                     {
-                        string extUrl = ext["url"]?.GetValue<string>() ?? string.Empty;
+                        string extUrl = ext.GetString("url");
 
                         if ((extUrl == "http://hl7.org/fhir/StructureDefinition/regex") ||
                             (extUrl == "http://hl7.org/fhir/StructureDefinition/structuredefinition-regex"))
                         {
-                            regex = ext["valueString"]?.GetValue<string>();
+                            regex = ext.GetString("valueString");
                             break;
                         }
                     }
@@ -1278,9 +979,9 @@ public sealed class FromNormative : IFhirConverter
             sdId,
             sdName,
             baseTypeName,
-            new Uri(sd["url"]?.GetValue<string>() ?? string.Empty),
+            new Uri(sd.GetString("url") ?? string.Empty),
             sdStatus,
-            sd["experimental"]?.GetValue<bool>() == true,
+            sd.GetBool("experimental") == true,
             descriptionShort,
             definition,
             comment,
@@ -1296,23 +997,23 @@ public sealed class FromNormative : IFhirConverter
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
     /// <param name="artifactClass">  Type of structure definition we are parsing.</param>
     private static void ProcessComplex(
-        JsonNode sd,
+        FhirExpando sd,
         IPackageImportable fhirVersionInfo,
         FhirArtifactClassEnum artifactClass)
     {
-        if ((sd["snapshot"] == null) || (sd["snapshot"]["element"] == null))
+        if ((sd["snapshot"] == null) || (sd["snapshot", "element"] == null))
         {
             return;
         }
 
-        string sdId = sd["id"]?.GetValue<string>() ?? string.Empty;
-        string sdName = sd["name"]?.GetValue<string>() ?? string.Empty;
-        string sdStatus = sd["status"]?.GetValue<string>() ?? "unknown";
-        string sdType = sd["type"]?.GetValue<string>() ?? sdName;
-        string sdUrl = sd["url"]?.GetValue<string>() ?? string.Empty;
+        string sdId = sd.GetString("id") ?? string.Empty;
+        string sdName = sd.GetString("name") ?? string.Empty;
+        string sdStatus = sd.GetString("status") ?? "unknown";
+        string sdType = sd.GetString("type") ?? sdName;
+        string sdUrl = sd.GetString("url") ?? string.Empty;
 
-        string descriptionShort = sd["description"]?.GetValue<string>() ?? string.Empty;
-        string definition = sd["purpose"]?.GetValue<string>() ?? string.Empty;
+        string descriptionShort = sd.GetString("description") ?? string.Empty;
+        string definition = sd.GetString("purpose") ?? string.Empty;
         //string regex = string.Empty;
         //string comment = string.Empty;
         //string baseTypeName = string.Empty;
@@ -1322,32 +1023,36 @@ public sealed class FromNormative : IFhirConverter
             List<string> contextElements = new List<string>();
             if (sd["context"] != null)
             {
-                foreach (JsonNode context in sd["context"].AsArray())
+                foreach (object context in sd.GetExpandoEnumerable("context"))
                 {
-                    if (context.GetType() == typeof(JsonObject))
-                    {
-                        // R4 and higher, context is a backbone element
-                        if (context["type"]?.GetValue<string>() != "element")
-                        {
-                            // throw new ArgumentException($"Invalid extension context type: {context.Type}");
-                            _errors.Add($"StructureDefinition {sdName} ({sdId}) unhandled context type: {(string)context["type"]}");
-                            return;
-                        }
-
-                        contextElements.Add(context["expression"]?.GetValue<string>());
-                    }
-                    else
+                    switch (context)
                     {
                         // R3 and lower, context is a simple value
-                        contextElements.Add(context.GetValue<string>());
+                        case string contextString:
+                            contextElements.Add((string)context);
+                            break;
+
+                        // R4 and higher, context is a backbone element
+                        case FhirExpando ctx:
+                            if (ctx.GetString("type") != "element")
+                            {
+                                // throw new ArgumentException($"Invalid extension context type: {context.Type}");
+                                _errors.Add($"StructureDefinition {sdName} ({sdId}) unhandled context type: {ctx.GetString("type")}");
+                                return;
+                            }
+                            contextElements.Add(ctx.GetString("expression"));
+                            break;
                     }
                 }
             }
 
-            if (sd["snapshot"]["element"]?[0] != null)
+            if ((sd["snapshot", "element"] != null) &&
+                sd.GetExpandoEnumerable("snapshot", "element").Any())
             {
-                descriptionShort = sd["snapshot"]["element"][0]["short"]?.GetValue<string>() ?? descriptionShort;
-                definition = sd["snapshot"]["element"][0]["definition"]?.GetValue<string>() ?? definition;
+                FhirExpando element0 = sd.GetExpandoEnumerable("snapshot", "element").First();
+
+                descriptionShort = element0.GetString("short") ?? descriptionShort;
+                definition = element0.GetString("definition") ?? definition;
             }
 
             // create a new complex type object for this type or resource
@@ -1358,25 +1063,25 @@ public sealed class FromNormative : IFhirConverter
                 sdType,
                 new Uri(sdUrl),
                 sdStatus,
-                sd["experimental"]?.GetValue<bool>() == true,
+                sd.GetBool("experimental") == true,
                 descriptionShort,
                 definition,
                 string.Empty,
                 null,
                 contextElements,
-                sd["abstract"].GetValue<bool>());
+                sd.GetBool("abstract") ?? false);
 
             // check for a base definition
             if (sd["baseDefinition"] != null)
             {
-                string bd = sd["baseDefinition"].GetValue<string>();
+                string bd = sd.GetString("baseDefinition");
                 complex.BaseTypeName = bd.Substring(bd.LastIndexOf('/') + 1);
             }
             else
             {
                 if (!TryGetTypeFromElements(
                         sdName,
-                        sd["snapshot"]["element"],
+                        sd.GetExpandoEnumerable("snapshot", "element"),
                         out Dictionary<string, FhirElementType> baseTypes,
                         out string _,
                         out bool _))
@@ -1398,10 +1103,10 @@ public sealed class FromNormative : IFhirConverter
             }
 
             // look for properties on this type
-            foreach (JsonNode element in sd["snapshot"]["element"].AsArray())
+            foreach (FhirExpando element in sd.GetExpandoEnumerable("snapshot", "element"))
             {
-                string elementId = element["id"]?.GetValue<string>() ?? element["path"]?.GetValue<string>() ?? string.Empty;
-                string elementPath = element["path"]?.GetValue<string>() ?? element["id"]?.GetValue<string>() ?? string.Empty;
+                string elementId = element.GetString("id") ?? element.GetString("path") ?? string.Empty;
+                string elementPath = element.GetString("path") ?? element.GetString("id") ?? string.Empty;
 
                 try
                 {
@@ -1476,10 +1181,10 @@ public sealed class FromNormative : IFhirConverter
                                     null,
                                     0,
                                     "*",
-                                    element["isModifier"]?.GetValue<bool>(),
-                                    element["isModifierReason"]?.GetValue<string>(),
-                                    element["isSummary"]?.GetValue<bool>(),
-                                    element["mustSupport"]?.GetValue<bool>(),
+                                    element.GetBool("isModifier"),
+                                    element.GetString("isModifierReason"),
+                                    element.GetBool("isSummary"),
+                                    element.GetBool("mustSupport"),
                                     false,
                                     string.Empty,
                                     null,
@@ -1541,7 +1246,7 @@ public sealed class FromNormative : IFhirConverter
                         }
                     }
 
-                    string elementContentReference = element["contentReference"]?.GetValue<string>() ?? string.Empty;
+                    string elementContentReference = element.GetString("contentReference") ?? string.Empty;
 
                     // determine if there is type expansion
                     if (field.Contains("[x]", StringComparison.Ordinal))
@@ -1591,13 +1296,13 @@ public sealed class FromNormative : IFhirConverter
 
                     if (element["base"] != null)
                     {
-                        if (element["base"]["path"]?.GetValue<string>() != elementPath)
+                        if (element.GetString("base", "path") != elementPath)
                         {
                             isInherited = true;
                         }
 
-                        if ((element["base"]["min"]?.GetValue<int>() == element["min"]?.GetValue<int>()) &&
-                            (element["base"]["max"]?.GetValue<string>() == element["max"]?.GetValue<string>()) &&
+                        if ((element.GetInt("base", "min") == element.GetInt("min")) &&
+                            (element.GetString("base", "max") == element.GetString("max")) &&
                             (element["slicing"] == null))
                         {
                             modifiesParent = false;
@@ -1609,42 +1314,42 @@ public sealed class FromNormative : IFhirConverter
 
                     if (element["binding"] != null)
                     {
-                        bindingStrength = element["binding"]["strength"]?.GetValue<string>();
+                        bindingStrength = element.GetString("binding", "strength");
 
                         // R4 and later use 'valueSet' as canonical
                         // R3 uses 'valueSet[x]', uri or reference
-                        valueSet = element["binding"]["valueSet"]?.GetValue<string>()
-                            ?? element["binding"]["valueSetUri"]?.GetValue<string>();
+                        valueSet = element.GetString("binding", "valueSet")
+                            ?? element.GetString("binding", "valueSetUri");
 
                         if (string.IsNullOrEmpty(valueSet) &&
-                            (element["binding"]["valueSetReference"] != null))
+                            (element["binding", "valueSetReference"] != null))
                         {
-                            valueSet = element["binding"]["valueSetReference"]["reference"]?.GetValue<string>();
+                            valueSet = element.GetString("binding", "valueSetReference", "reference");
                         }
                     }
 
                     string explicitName = string.Empty;
                     if (element["extension"] != null)
                     {
-                        foreach (JsonNode ext in element["extension"].AsArray())
+                        foreach (FhirExpando ext in element.GetExpandoEnumerable("extension"))
                         {
-                            string extUrl = ext["url"].GetValue<string>();
+                            string extUrl = ext.GetString("url");
 
                             if (extUrl == "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name")
                             {
-                                explicitName = ext["valueString"]?.GetValue<string>();
+                                explicitName = ext.GetString("valueString");
                             }
                         }
                     }
 
                     List<string> fwMapping;
 
-                    fwMapping = element["mapping"]?.AsArray().Where(x =>
+                    fwMapping = element.GetExpandoEnumerable("mapping")?.Where(x =>
                         (x != null) &&
-                        x["identity"].GetValue<string>().Equals("w5", StringComparison.OrdinalIgnoreCase) &&
-                        x["map"].GetValue<string>().StartsWith("FiveWs", StringComparison.Ordinal) &&
-                        (!x["map"].GetValue<string>().Equals("FiveWs.subject[x]", StringComparison.Ordinal)))?
-                            .Select(x => x["map"].GetValue<string>()).ToList();
+                        x.GetString("identity").Equals("w5", StringComparison.OrdinalIgnoreCase) &&
+                        x.GetString("map").StartsWith("FiveWs", StringComparison.Ordinal) &&
+                        (!x.GetString("map").Equals("FiveWs.subject[x]", StringComparison.Ordinal)))?
+                            .Select(x => x.GetString("map")).ToList();
 
                     string fiveWs = ((fwMapping != null) && fwMapping.Any()) ? fwMapping[0] : string.Empty;
 
@@ -1660,18 +1365,18 @@ public sealed class FromNormative : IFhirConverter
                         explicitName,
                         null,
                         parent.Elements.Count,
-                        element["short"]?.GetValue<string>() ?? string.Empty,
-                        element["definition"]?.GetValue<string>() ?? string.Empty,
-                        element["comment"]?.GetValue<string>() ?? string.Empty,
+                        element.GetString("short") ?? string.Empty,
+                        element.GetString("definition") ?? string.Empty,
+                        element.GetString("comment") ?? string.Empty,
                         regex,
                         elementType,
                         elementTypes,
-                        element["min"]?.GetValue<int>() ?? 0,
-                        element["max"]?.GetValue<string>() ?? string.Empty,
-                        element["isModifier"]?.GetValue<bool>(),
-                        element["isModifierReason"]?.GetValue<string>() ?? string.Empty,
-                        element["isSummary"]?.GetValue<bool>(),
-                        element["mustSupport"]?.GetValue<bool>(),
+                        element.GetInt("min") ?? 0,
+                        element.GetString("max") ?? string.Empty,
+                        element.GetBool("isModifier"),
+                        element.GetString("isModifierReason") ?? string.Empty,
+                        element.GetBool("isSummary"),
+                        element.GetBool("mustSupport"),
                         isSimple,
                         defaultName,
                         defaultValue,
@@ -1684,7 +1389,7 @@ public sealed class FromNormative : IFhirConverter
                         bindingStrength,
                         valueSet,
                         fiveWs,
-                        FhirElement.ConvertFhirRepresentations(element["representation"]?.AsArray().Select(n => n.GetValue<string>())));
+                        FhirElement.ConvertFhirRepresentations(element.GetStringArray("representation")));
 
                     if (isRootElement)
                     {
@@ -1700,16 +1405,16 @@ public sealed class FromNormative : IFhirConverter
                     {
                         List<FhirSliceDiscriminatorRule> discriminatorRules = new List<FhirSliceDiscriminatorRule>();
 
-                        if (element["slicing"]["discriminator"] == null)
+                        if (element["slicing", "discriminator"] == null)
                         {
                             throw new InvalidDataException($"Missing slicing discriminator: {sdName} - {elementPath}");
                         }
 
-                        foreach (JsonNode discriminator in element["slicing"]["discriminator"].AsArray())
+                        foreach (FhirExpando discriminator in element.GetExpandoEnumerable("slicing", "discriminator"))
                         {
                             discriminatorRules.Add(new FhirSliceDiscriminatorRule(
-                                discriminator["type"].GetValue<string>(),
-                                discriminator["path"].GetValue<string>()));
+                                discriminator.GetString("type"),
+                                discriminator.GetString("path")));
                         }
 
                         // create our slicing
@@ -1717,9 +1422,9 @@ public sealed class FromNormative : IFhirConverter
                             new FhirSlicing(
                                 sdId,
                                 new Uri(sdUrl),
-                                element["slicing"]["description"]?.GetValue<string>(),
-                                element["slicing"]["ordered"]?.GetValue<bool>(),
-                                element["slicing"]["rules"].GetValue<string>(),
+                                element.GetString("slicing", "description"),
+                                element.GetBool("slicing", "ordered"),
+                                element.GetString("slicing", "rules"),
                                 discriminatorRules));
                     }
                 }
@@ -1732,38 +1437,40 @@ public sealed class FromNormative : IFhirConverter
             }
 
             if ((sd["differential"] != null) &&
-                (sd["differential"]["element"] != null) &&
-                (sd["differential"]["element"][0] != null))
+                (sd["differential", "element"] != null) &&
+                sd.GetExpandoEnumerable("differential", "element").Any())
             {
+                FhirExpando element0 = sd.GetExpandoEnumerable("differential", "element").First();
+
                 // look for additional constraints
-                if ((sd["differential"]["element"][0]["constraint"] != null) &&
-                    (sd["differential"]["element"][0]["constraint"][0] != null))
+                if ((element0["constraint"] != null) &&
+                    element0.GetExpandoEnumerable("constraint").Any())
                 {
-                    foreach (JsonNode con in sd["differential"]["element"][0]["constraint"].AsArray())
+                    foreach (FhirExpando con in element0.GetExpandoEnumerable("constraint"))
                     {
                         bool isBestPractice = false;
                         string explanation = string.Empty;
 
                         if (con["extension"] != null)
                         {
-                            foreach (JsonNode ext in con["extension"].AsArray())
+                            foreach (FhirExpando ext in con.GetExpandoEnumerable("extension"))
                             {
-                                string extUrl = ext["url"].GetValue<string>();
+                                string extUrl = ext.GetString("url");
 
                                 switch (extUrl)
                                 {
                                     case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
-                                        isBestPractice = ext["valueBoolean"]?.GetValue<bool>() == true;
+                                        isBestPractice = ext.GetBool("valueBoolean") == true;
                                         break;
 
                                     case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
                                         if (ext["valueMarkdown"] != null)
                                         {
-                                            explanation = ext["valueMarkdown"].GetValue<string>();
+                                            explanation = ext.GetString("valueMarkdown");
                                         }
                                         else
                                         {
-                                            explanation = ext["valueString"]?.GetValue<string>();
+                                            explanation = ext.GetString("valueString");
                                         }
 
                                         break;
@@ -1772,21 +1479,21 @@ public sealed class FromNormative : IFhirConverter
                         }
 
                         complex.AddConstraint(new FhirConstraint(
-                            con["key"].GetValue<string>(),
-                            con["severity"].GetValue<string>(),
-                            con["human"].GetValue<string>(),
-                            con["expression"]?.GetValue<string>() ?? string.Empty,
-                            con["xpath"]?.GetValue<string>() ?? string.Empty,
+                            con.GetString("key"),
+                            con.GetString("severity"),
+                            con.GetString("human"),
+                            con.GetString("expression") ?? string.Empty,
+                            con.GetString("xpath") ?? string.Empty,
                             isBestPractice,
                             explanation));
                     }
                 }
 
                 // traverse all elements to flag proper 'differential' tags on elements
-                foreach (JsonNode dif in sd["differential"]["element"].AsArray())
+                foreach (FhirExpando dif in sd.GetExpandoEnumerable("differential", "element"))
                 {
-                    string difPath = dif["path"].GetValue<string>();
-                    string difSliceName = dif["sliceName"]?.GetValue<string>() ?? string.Empty;
+                    string difPath = dif.GetString("path");
+                    string difSliceName = dif.GetString("sliceName") ?? string.Empty;
 
                     if (complex.Elements.ContainsKey(difPath))
                     {
@@ -1830,72 +1537,13 @@ public sealed class FromNormative : IFhirConverter
         }
     }
 
-    /// <summary>Reads a nested.</summary>
-    /// <param name="node">The node.</param>
-    /// <param name="key"> The key.</param>
-    /// <returns>The nested.</returns>
-    private static object ReadNested(
-        JsonNode node,
-        string key)
-    {
-        if (!_nestedElementChoices.ContainsKey(key))
-        {
-            return node.AsObject();
-        }
-
-        ExpandoObject o = new();
-
-        foreach (ElementChoiceInfo e in _nestedElementChoices[key])
-        {
-            if (node[e.Literal] == null)
-            {
-                continue;
-            }
-
-            switch (e.ReadType)
-            {
-                case ReadTypeCodes.ByteArray:
-                    o.TryAdd(e.Literal, node[e.Literal].GetValue<byte[]>());
-                    break;
-                case ReadTypeCodes.Boolean:
-                    o.TryAdd(e.Literal, node[e.Literal].GetValue<bool>());
-                    break;
-                case ReadTypeCodes.Decimal:
-                    o.TryAdd(e.Literal, node[e.Literal].GetValue<decimal>());
-                    break;
-                case ReadTypeCodes.String:
-                    o.TryAdd(e.Literal, node[e.Literal].GetValue<string>());
-                    break;
-                case ReadTypeCodes.StringArray:
-                    o.TryAdd(e.Literal, node[e.Literal].AsArray().Select(n => n.GetValue<string>()));
-                    break;
-                case ReadTypeCodes.Integer:
-                    o.TryAdd(e.Literal, node[e.Literal].GetValue<int>());
-                    break;
-                case ReadTypeCodes.Long:
-                    o.TryAdd(e.Literal, node[e.Literal].GetValue<long>());
-                    break;
-                case ReadTypeCodes.Nested:
-                    o.TryAdd(e.Literal, ReadNested(node[e.Literal], e.Literal));
-                    break;
-                case ReadTypeCodes.NestedArray:
-                    o.TryAdd(e.Literal, node[e.Literal].AsArray().Select(n => ReadNested(n, e.Literal)));
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        return o;
-    }
-
     /// <summary>Gets default value if present.</summary>
     /// <param name="element">The element.</param>
     /// <param name="prefix"> The prefix (e.g., defaultValue, fixedValue, minValue, value).</param>
     /// <param name="name">   [out] The default name.</param>
     /// <param name="value">  [out] The default value.</param>
     private static void GetValueIfPresent(
-        JsonNode element,
+        FhirExpando element,
         string prefix,
         out string name,
         out object value)
@@ -1909,34 +1557,30 @@ public sealed class FromNormative : IFhirConverter
                 switch (e.ReadType)
                 {
                     case ReadTypeCodes.ByteArray:
-                        value = element[name].GetValue<byte[]>();
+                        value = element.GetByteArray(name);
                         break;
                     case ReadTypeCodes.Boolean:
-                        value = element[name].GetValue<bool>();
+                        value = element.GetBool(name);
                         break;
                     case ReadTypeCodes.Decimal:
-                        value = element[name].GetValue<decimal>();
+                        value = element.GetDecimal(name);
                         break;
                     case ReadTypeCodes.String:
-                        value = element[name].GetValue<string>();
+                        value = element.GetString(name);
                         break;
                     case ReadTypeCodes.StringArray:
-                        value = element[name].AsArray().Select(n => n.GetValue<string>());
+                        value = element.GetStringArray(name);
                         break;
                     case ReadTypeCodes.Integer:
-                        value = element[name].GetValue<int>();
+                        value = element.GetInt(name);
                         break;
                     case ReadTypeCodes.Long:
-                        value = element[name].GetValue<long>();
+                        value = element.GetLong(name);
                         break;
                     case ReadTypeCodes.Nested:
-                        value = ReadNested(element[name], e.NestKey);
-                        break;
                     case ReadTypeCodes.NestedArray:
-                        value = element[name].AsArray().Select(n => ReadNested(n, e.NestKey));
-                        break;
                     default:
-                        value = element[name].AsObject();
+                        value = element[name];
                         break;
                 }
 
@@ -1957,7 +1601,7 @@ public sealed class FromNormative : IFhirConverter
     /// <returns>True if it succeeds, false if it fails.</returns>
     private static bool TryGetTypeFromElements(
         string structureName,
-        JsonNode elements,
+        IEnumerable<FhirExpando> elements,
         out Dictionary<string, FhirElementType> elementTypes,
         out string regex,
         out bool isSimple)
@@ -1966,10 +1610,10 @@ public sealed class FromNormative : IFhirConverter
         regex = string.Empty;
         isSimple = false;
 
-        foreach (JsonNode element in elements.AsArray())
+        foreach (FhirExpando element in elements)
         {
             // split the path
-            string[] components = element["path"].GetValue<string>().Split('.');
+            string[] components = element.GetString("path").Split('.');
 
             // check for base path having a type
             if (components.Length == 1)
@@ -2010,13 +1654,13 @@ public sealed class FromNormative : IFhirConverter
     /// <returns>True if it succeeds, false if it fails.</returns>
     private static bool TryGetTypeFromElement(
         string structureName,
-        JsonNode element,
+        FhirExpando element,
         out Dictionary<string, FhirElementType> elementTypes,
         out string regex,
         out bool isSimple)
     {
-        string elementId = element["id"]?.GetValue<string>() ?? string.Empty;
-        string elementPath = element["path"].GetValue<string>();
+        string elementId = element.GetString("id") ?? string.Empty;
+        string elementPath = element.GetString("path");
 
         elementTypes = new Dictionary<string, FhirElementType>();
         regex = string.Empty;
@@ -2027,11 +1671,18 @@ public sealed class FromNormative : IFhirConverter
         {
             case "ArtifactAssessment.approvalDate":
             case "ArtifactAssessment.lastReviewDate":
-                if (element["type"]?[0]?["code"]?.GetValue<string>() != "date")
                 {
-                    elementTypes.Add("date", new FhirElementType("date"));
-                    _warnings.Add($"StructureDefinition - {structureName} coerced {elementId} to type 'date'");
-                    return true;
+                    FhirExpando tc = element.GetExpandoEnumerable("type").First();
+
+                    if (tc != null)
+                    {
+                        if (tc.GetString("code") != "date")
+                        {
+                            elementTypes.Add("date", new FhirElementType("date"));
+                            _warnings.Add($"StructureDefinition - {structureName} coerced {elementId} to type 'date'");
+                            return true;
+                        }
+                    }
                 }
 
                 break;
@@ -2041,52 +1692,123 @@ public sealed class FromNormative : IFhirConverter
         if (element["type"] != null)
         {
             string fType;
+            IEnumerable<string> elementTargets;
+            IEnumerable<string> elementProfiles;
 
-            foreach (JsonNode edType in element["type"].AsArray())
+            foreach (FhirExpando edType in element.GetExpandoEnumerable("type"))
             {
-                regex = edType["extension"]?.AsArray()
-                    .FirstOrDefault((ext) => ext["url"].GetValue<string>().Equals("http://hl7.org/fhir/StructureDefinition/regex", StringComparison.Ordinal), null)
-                    ?["valueString"]?.GetValue<string>() ?? string.Empty;
-
-                JsonNode typeNode = edType["extension"]?.AsArray()
-                    .FirstOrDefault((ext) => ext["url"].GetValue<string>().Equals("http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type", StringComparison.Ordinal), null);
-
-                fType =
-                    typeNode?["valueUrl"]?.GetValue<string>()
-                    ?? typeNode?["valueString"]?.GetValue<string>()
-                    ?? string.Empty;
-
-                IEnumerable<string> elementTargets;
-                IEnumerable<string> elementProfiles;
-
-                if (edType["targetProfile"] == null)
+                if (edType["extension"] == null)
                 {
-                    elementTargets = Array.Empty<string>();
-                }
-                else if (edType["targetProfile"].GetType() == typeof(JsonArray))
-                {
-                    // R4 and later, array type
-                    elementTargets = edType["targetProfile"].AsArray().Select(n => n.GetValue<string>());
+                    regex = string.Empty;
+                    fType = string.Empty;
                 }
                 else
                 {
-                    // R3 and earlier, scalar type
-                    elementTargets = new string[] { edType["targetProfile"].GetValue<string>() };
+                    regex = edType.GetExpandoEnumerable("extension")
+                        .FirstOrDefault((ext) => ext.GetString("url")?.Equals("http://hl7.org/fhir/StructureDefinition/regex", StringComparison.Ordinal) ?? false, null)
+                        ?.GetString("valueString") ?? string.Empty;
+
+                    FhirExpando typeNode = edType.GetExpandoEnumerable("extension")
+                        .FirstOrDefault((ext) => ext.GetString("url")?.Equals("http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type", StringComparison.Ordinal) ?? false, null);
+
+                    fType =
+                        typeNode?.GetString("valueUrl")
+                        ?? typeNode?.GetString("valueString")
+                        ?? string.Empty;
                 }
 
-                if (edType["profile"] == null)
+                switch (edType["targetProfile"])
                 {
-                    elementProfiles = Array.Empty<string>();
+                    case string edS:
+                        elementTargets = new string[] { edS };
+                        break;
+
+                    case IEnumerable<string> edES:
+                        elementTargets = edES;
+                        break;
+
+                    case FhirExpando edF:
+                        elementTargets = new string[] { edF.GetString("reference") };
+                        break;
+
+                    case IEnumerable<FhirExpando> edEF:
+                        elementTargets = edEF.Select(e => e.GetString("reference")).ToArray();
+                        break;
+
+                    case IEnumerable<object> edLO:
+                        {
+                            List<string> tempTargets = new();
+
+                            foreach (object edO in edLO)
+                            {
+                                switch (edO)
+                                {
+                                    case string edoS:
+                                        tempTargets.Add(edoS);
+                                        break;
+
+                                    case FhirExpando edoF:
+                                        tempTargets.Add(edoF.GetString("reference"));
+                                        break;
+                                }
+                            }
+
+                            elementTargets = tempTargets.ToArray();
+                        }
+
+                        break;
+
+                    case null:
+                    default:
+                        elementTargets = Array.Empty<string>();
+                        break;
                 }
-                else if (edType["profile"].GetType() == typeof(JsonArray))
+
+                switch (edType["profile"])
                 {
-                    // R4 and later, array type
-                    elementProfiles = edType["profile"].AsArray().Select(n => n.GetValue<string>());
-                }
-                else
-                {
-                    // R3 and earlier, scalar type
-                    elementProfiles = new string[] { edType["profile"].GetValue<string>() };
+                    case string edS:
+                        elementProfiles = new string[] { edS };
+                        break;
+
+                    case IEnumerable<string> edES:
+                        elementProfiles = edES;
+                        break;
+
+                    case FhirExpando edF:
+                        elementProfiles = new string[] { edF.GetString("reference") };
+                        break;
+
+                    case IEnumerable<FhirExpando> edEF:
+                        elementProfiles = edEF.Select(e => e.GetString("reference")).ToArray();
+                        break;
+
+                    case IEnumerable<object> edLO:
+                        {
+                            List<string> tempProfiles = new();
+
+                            foreach (object edO in edLO)
+                            {
+                                switch (edO)
+                                {
+                                    case string edoS:
+                                        tempProfiles.Add(edoS);
+                                        break;
+
+                                    case FhirExpando edoF:
+                                        tempProfiles.Add(edoF.GetString("reference"));
+                                        break;
+                                }
+                            }
+
+                            elementProfiles = tempProfiles.ToArray();
+                        }
+
+                        break;
+
+                    case null:
+                    default:
+                        elementProfiles = Array.Empty<string>();
+                        break;
                 }
 
                 if (!string.IsNullOrEmpty(fType))
@@ -2102,11 +1824,11 @@ public sealed class FromNormative : IFhirConverter
                     // add to our dictionary
                     elementTypes.Add(elementType.Name, elementType);
                 }
-                else if (!string.IsNullOrEmpty(edType["code"]?.GetValue<string>()))
+                else if (!string.IsNullOrEmpty(edType.GetString("code")))
                 {
                     // create a type for this code
                     FhirElementType elementType = new FhirElementType(
-                        edType["code"].GetValue<string>(),
+                        edType.GetString("code"),
                         elementTargets,
                         elementProfiles);
 
@@ -2196,11 +1918,11 @@ public sealed class FromNormative : IFhirConverter
         try
         {
             // try to parse this JSON
-            return JsonNode.Parse(json);
+            return JsonSerializer.Deserialize<FhirExpando>(json);
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"FromNormative.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
+            Console.WriteLine($"FromFhirExpando.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
             throw;
         }
     }
@@ -2210,26 +1932,26 @@ public sealed class FromNormative : IFhirConverter
     /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>
     void IFhirConverter.ProcessResource(object resourceToParse, IPackageImportable fhirVersionInfo)
     {
-        switch ((resourceToParse as JsonNode)!["resourceType"]?.GetValue<string>() ?? string.Empty)
+        switch ((resourceToParse as FhirExpando)["resourceType"] ?? string.Empty)
         {
             case "CodeSystem":
-                ProcessCodeSystem(resourceToParse as JsonNode, fhirVersionInfo);
+                ProcessCodeSystem(resourceToParse as FhirExpando, fhirVersionInfo);
                 break;
 
             case "OperationDefinition":
-                ProcessOperation(resourceToParse as JsonNode, fhirVersionInfo);
+                ProcessOperation(resourceToParse as FhirExpando, fhirVersionInfo);
                 break;
 
             case "SearchParameter":
-                ProcessSearchParam(resourceToParse as JsonNode, fhirVersionInfo);
+                ProcessSearchParam(resourceToParse as FhirExpando, fhirVersionInfo);
                 break;
 
             case "ValueSet":
-                ProcessValueSet(resourceToParse as JsonNode, fhirVersionInfo);
+                ProcessValueSet(resourceToParse as FhirExpando, fhirVersionInfo);
                 break;
 
             case "StructureDefinition":
-                ProcessStructureDef(resourceToParse as JsonNode, fhirVersionInfo);
+                ProcessStructureDef(resourceToParse as FhirExpando, fhirVersionInfo);
                 break;
 
         }
