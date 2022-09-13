@@ -5,6 +5,7 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.Health.Fhir.SpecManager.Manager;
 
 namespace Microsoft.Health.Fhir.SpecManager.PackageManager;
 
@@ -54,10 +55,37 @@ public class RegistryPackageManifest
             {
                 List<string> keysToRemove = new();
 
-                foreach ((string key, VersionInfo info) in manifest.Versions)
+                foreach (string key in manifest.Versions.Keys)
                 {
-                    if ((info.FhirVersion == "??") ||
-                        (info.PackageKind == "??"))
+                    bool remove = false;
+                    string name = manifest.Versions[key].Name;
+
+                    if (manifest.Versions[key].PackageKind == "??")
+                    {
+                        if (name.StartsWith("hl7.fhir.r", StringComparison.OrdinalIgnoreCase))
+                        {
+                            manifest.Versions[key].PackageKind = "Core";
+                        }
+                        else
+                        {
+                            remove = true;
+                        }
+                    }
+
+                    if (manifest.Versions[key].FhirVersion == "??")
+                    {
+                        if (manifest.Versions[key].PackageKind.Equals("core", StringComparison.OrdinalIgnoreCase) &&
+                            FhirPackageCommon.TryGetMajorReleaseForVersion(key, out FhirPackageCommon.FhirSequenceEnum sequence))
+                        {
+                            manifest.Versions[key].FhirVersion = sequence.ToString();
+                        }
+                        else
+                        {
+                            remove = true;
+                        }
+                    }
+
+                    if (remove)
                     {
                         keysToRemove.Add(key);
                     }

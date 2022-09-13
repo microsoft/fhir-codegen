@@ -7,7 +7,6 @@ using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Dynamic;
-using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.Scripting.Debugging;
 using Microsoft.Scripting.Utils;
