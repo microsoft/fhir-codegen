@@ -5,7 +5,13 @@
 
 namespace Microsoft.Health.Fhir.SpecManager.Models;
 
-/// <summary>A FHIR expando class.</summary>
+/// <summary>
+/// Represents a dynamically assigned class within a FhirExpando.
+/// FhirExpando objects which share the same members will share the same
+/// class.  Classes are dynamically assigned as the expando object gains members.
+/// Based off the DotNet ExpandoClass implementation:
+///   https://github.com/microsoft/referencesource/blob/master/System.Core/Microsoft/Scripting/Actions/ExpandoClass.cs
+/// </summary>
 public class FhirExpandoClass
 {
     private readonly string[] _keys;                            // list of names associated with each element in the data array, sorted

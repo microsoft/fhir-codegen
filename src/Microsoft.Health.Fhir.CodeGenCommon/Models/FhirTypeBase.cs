@@ -3,12 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>
@@ -27,6 +21,7 @@ public class FhirTypeBase
     /// <param name="path">            The dot-notation path to this element/resource/datatype.</param>
     /// <param name="url">             The URL.</param>
     /// <param name="standardStatus">  The standard status.</param>
+    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  A value indicating whether this object is experimental.</param>
     /// <param name="shortDescription">The description.</param>
     /// <param name="purpose">         The purpose of this definition.</param>
@@ -37,6 +32,7 @@ public class FhirTypeBase
         string path,
         Uri url,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string shortDescription,
         string purpose,
@@ -53,6 +49,7 @@ public class FhirTypeBase
         Id = id;
         _path = path;
         StandardStatus = standardStatus;
+        FhirMaturityLevel = fmmLevel;
         IsExperimental = isExperimental;
         ShortDescription = shortDescription;
         Purpose = string.IsNullOrEmpty(purpose) ? string.Empty : purpose;
@@ -72,6 +69,7 @@ public class FhirTypeBase
     /// <param name="path">            The dot-notation path to this element/resource/datatype/extension.</param>
     /// <param name="url">             The URL.</param>
     /// <param name="standardStatus">  The standard status.</param>
+    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this object is marked experimental.</param>
     /// <param name="shortDescription">The description.</param>
     /// <param name="purpose">         The purpose of this definition.</param>
@@ -83,6 +81,7 @@ public class FhirTypeBase
         string path,
         Uri url,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string shortDescription,
         string purpose,
@@ -94,6 +93,7 @@ public class FhirTypeBase
             path,
             url,
             standardStatus,
+            fmmLevel,
             isExperimental,
             shortDescription,
             purpose,
@@ -165,6 +165,9 @@ public class FhirTypeBase
     /// </summary>
     /// <value>The standard status.</value>
     public string StandardStatus { get; }
+
+    /// <summary>Gets the FHIR maturity level.</summary>
+    public int? FhirMaturityLevel { get; }
 
     /// <summary>Gets a value indicating whether this object is experimental.</summary>
     public bool IsExperimental { get; }

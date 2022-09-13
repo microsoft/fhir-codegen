@@ -783,13 +783,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 baseTypeName = sd.Name;
             }
 
+            string standardStatus =
+                sd.Extension.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.First().ValueCode
+                ?? sd.Status;
+
+            int? fmmLevel =
+                sd.Extension.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.First().ValueInteger;
+
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
                 sd.Id,
                 sd.Name,
                 baseTypeName,
                 new Uri(sd.Url),
-                sd.Status,
+                standardStatus,
+                fmmLevel,
                 sd.Experimental == true,
                 descriptionShort,
                 definition,
@@ -996,6 +1006,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     definition = sd.Snapshot.Element[0].Definition;
                 }
 
+                string standardStatus =
+                    sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                        ?.First().ValueCode
+                    ?? sd.Status;
+
+                int? fmmLevel =
+                    sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                        ?.First().ValueInteger;
+
                 // create a new complex type object
                 FhirComplex complex = new FhirComplex(
                     sd.Id,
@@ -1003,7 +1022,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     string.Empty,
                     sd.ConstrainedType,
                     new Uri(sd.Url),
-                    sd.Status,
+                    standardStatus,
+                    fmmLevel,
                     sd.Experimental == true,
                     descriptionShort,
                     definition,

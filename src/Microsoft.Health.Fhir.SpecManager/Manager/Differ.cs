@@ -953,14 +953,6 @@ public class Differ
                 artifactClass,
                 key,
                 A[key]);
-
-            //_results.AddDiff(
-            //    artifactClass,
-            //    key,
-            //    key,
-            //    DiffResults.DiffTypeEnum.Removed,
-            //    key,
-            //    string.Empty);
         }
 
         foreach (string key in keysB)
@@ -969,14 +961,6 @@ public class Differ
                 artifactClass,
                 key,
                 B[key]);
-
-            //_results.AddDiff(
-            //    artifactClass,
-            //    key,
-            //    key,
-            //    DiffResults.DiffTypeEnum.Added,
-            //    string.Empty,
-            //    key);
         }
 
         foreach (string key in keyIntersection)
@@ -1023,6 +1007,22 @@ public class Differ
             rootKey,
             A.Path,
             DiffResults.DiffTypeEnum.ChangedExplicitName);
+
+        TestForDiff(
+            A.StandardStatus,
+            B.StandardStatus,
+            artifactClass,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedStandardStatus);
+
+        TestForDiff(
+            A.FhirMaturityLevel,
+            B.FhirMaturityLevel,
+            artifactClass,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedFmmLevel);
 
         if (_options.CompareRegEx)
         {
@@ -1672,6 +1672,41 @@ public class Differ
                 valueB);
         }
     }
+
+    /// <summary>Tests for difference.</summary>
+    /// <param name="valueA">       The value a.</param>
+    /// <param name="valueB">       The value b.</param>
+    /// <param name="artifactClass">The artifact class.</param>
+    /// <param name="key">          The key.</param>
+    /// <param name="path">         Full pathname of the file.</param>
+    /// <param name="diffType">     Type of the difference.</param>
+    private void TestForDiff(
+        int? valueA,
+        int? valueB,
+        FhirArtifactClassEnum artifactClass,
+        string key,
+        string path,
+        DiffResults.DiffTypeEnum diffType)
+    {
+        if ((valueA == null) && (valueB == null))
+        {
+            return;
+        }
+
+        if ((valueA == null) ||
+            (valueB == null) ||
+            (valueA != valueB))
+        {
+            _results.AddDiff(
+                artifactClass,
+                key,
+                path,
+                diffType,
+                valueA == null ? string.Empty : valueA.ToString(),
+                valueB == null ? string.Empty : valueB.ToString());
+        }
+    }
+
 
     /// <summary>Tests for difference ignore version.</summary>
     /// <param name="valueA">       The value a.</param>

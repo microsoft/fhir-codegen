@@ -18,6 +18,7 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
     /// <param name="baseTypeName">    The base type name for this primitive type.</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="standardStatus">  The standard status.</param>
+    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this primitive type is marked experimental.</param>
     /// <param name="shortDescription">Information describing the short.</param>
     /// <param name="purpose">         The purpose of this definition.</param>
@@ -29,6 +30,7 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
         string baseTypeName,
         Uri url,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string shortDescription,
         string purpose,
@@ -39,6 +41,7 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
             path,
             url,
             standardStatus,
+            fmmLevel,
             isExperimental,
             shortDescription,
             purpose,
@@ -59,6 +62,7 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
             BaseTypeName,
             URL,
             StandardStatus,
+            FhirMaturityLevel,
             IsExperimental,
             ShortDescription,
             Purpose,

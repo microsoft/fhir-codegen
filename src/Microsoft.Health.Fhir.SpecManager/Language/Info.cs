@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.IO;
+using System.Numerics;
 using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -249,9 +250,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirPrimitive primitive)
         {
             string experimental = primitive.IsExperimental ? " (experimental)" : string.Empty;
+            string fmm = (primitive.FhirMaturityLevel == null)
+                ? string.Empty
+                : "-FMM: " + primitive.FhirMaturityLevel.ToString();
 
             _writer.WriteLineIndented(
-                $"- {primitive.Name}:" +
+                $"- {primitive.Name} ({primitive.StandardStatus}{fmm}):" +
                     $" {primitive.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}" +
                     $"::{primitive.TypeForExport(FhirTypeBase.NamingConvention.CamelCase, _primitiveTypeMap)}" +
                     $"{experimental}");
@@ -332,7 +336,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 string experimental = complex.IsExperimental ? " (experimental)" : string.Empty;
 
-                _writer.WriteLine($"- {complex.Name}: {complex.BaseTypeName}{experimental}");
+                string fmm = (complex.FhirMaturityLevel == null)
+                    ? string.Empty
+                    : "-FMM: " + complex.FhirMaturityLevel.ToString();
+
+                _writer.WriteLine($"- {complex.Name} ({complex.StandardStatus}{fmm}): {complex.BaseTypeName}{experimental}");
 
                 if (complex.RootElement != null)
                 {

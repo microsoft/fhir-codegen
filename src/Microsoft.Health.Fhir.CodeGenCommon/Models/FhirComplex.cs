@@ -3,11 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A class representing a FHIR complex type.</summary>
@@ -29,6 +24,7 @@ public class FhirComplex : FhirTypeBase
     /// <param name="baseTypeName">    Base type of this complex structure, if provided.</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="standardStatus">  The standard status.</param>
+    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this complex resource is flagged as experimental.</param>
     /// <param name="shortDescription">Information describing the short.</param>
     /// <param name="purpose">         The purpose.</param>
@@ -41,6 +37,7 @@ public class FhirComplex : FhirTypeBase
         string baseTypeName,
         Uri url,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string shortDescription,
         string purpose,
@@ -51,6 +48,7 @@ public class FhirComplex : FhirTypeBase
             path,
             url,
             standardStatus,
+            fmmLevel,
             isExperimental,
             shortDescription,
             purpose,
@@ -82,6 +80,7 @@ public class FhirComplex : FhirTypeBase
     /// <param name="baseTypeName">    Base type name for this complex structure, if provided.</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="standardStatus">  The standard status.</param>
+    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this complex type is marked experimental.</param>
     /// <param name="shortDescription">Information describing the short.</param>
     /// <param name="purpose">         The definition.</param>
@@ -96,6 +95,7 @@ public class FhirComplex : FhirTypeBase
         string baseTypeName,
         Uri url,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string shortDescription,
         string purpose,
@@ -110,6 +110,7 @@ public class FhirComplex : FhirTypeBase
             baseTypeName,
             url,
             standardStatus,
+            fmmLevel,
             isExperimental,
             shortDescription,
             purpose,
@@ -129,6 +130,7 @@ public class FhirComplex : FhirTypeBase
         string explicitName,
         Uri url,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string baseTypeName,
         string shortDescription,
@@ -153,6 +155,7 @@ public class FhirComplex : FhirTypeBase
         baseTypeName,
         url,
         standardStatus,
+        fmmLevel,
         isExperimental,
         shortDescription,
         purpose,
@@ -338,6 +341,7 @@ public class FhirComplex : FhirTypeBase
                 elementType,
                 property.URL,
                 property.StandardStatus,
+                property.FhirMaturityLevel,
                 property.IsExperimental,
                 property.ShortDescription,
                 property.Purpose,
@@ -610,6 +614,7 @@ public class FhirComplex : FhirTypeBase
                 BaseTypeName,
                 URL,
                 StandardStatus,
+                FhirMaturityLevel,
                 IsExperimental,
                 ShortDescription,
                 Purpose,

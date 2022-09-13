@@ -975,13 +975,24 @@ public sealed class FromFhirExpando : IFhirConverter
             baseTypeName = sdName;
         }
 
+        string standardStatus =
+            sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                ?.GetString("valueCode")
+            ?? sd.GetString("status")
+            ?? string.Empty;
+
+        int? fmmLevel =
+            sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                ?.GetInt("valueInteger");
+
         // create a new primitive type object
         FhirPrimitive primitive = new FhirPrimitive(
             sdId,
             sdName,
             baseTypeName,
             new Uri(sd.GetString("url") ?? string.Empty),
-            sdStatus,
+            standardStatus,
+            fmmLevel,
             sd.GetBool("experimental") == true,
             descriptionShort,
             definition,
@@ -1056,6 +1067,17 @@ public sealed class FromFhirExpando : IFhirConverter
                 definition = element0.GetString("definition") ?? definition;
             }
 
+            string standardStatus =
+                sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.GetString("valueCode")
+                ?? sd.GetString("status")
+                ?? string.Empty;
+
+            int? fmmLevel =
+                sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.GetInt("valueInteger");
+
+
             // create a new complex type object for this type or resource
             FhirComplex complex = new FhirComplex(
                 sdId,
@@ -1063,7 +1085,8 @@ public sealed class FromFhirExpando : IFhirConverter
                 string.Empty,
                 sdType,
                 new Uri(sdUrl),
-                sdStatus,
+                standardStatus,
+                fmmLevel,
                 sd.GetBool("experimental") == true,
                 descriptionShort,
                 definition,

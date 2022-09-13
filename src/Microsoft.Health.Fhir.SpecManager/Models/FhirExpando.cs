@@ -13,7 +13,12 @@ using Microsoft.Scripting.Utils;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models;
 
-/// <summary>A FHIR object.</summary>
+/// <summary>
+/// Represents an object with members that can be dynamically added and removed at runtime.
+/// This implementation has modifications to support FHIR.
+/// Based off the DotNet ExpandoObject:
+///   https://github.com/Microsoft/referencesource/blob/master/System.Core/Microsoft/Scripting/Actions/ExpandoObject.cs
+/// </summary>
 [System.Text.Json.Serialization.JsonConverter(typeof(FhirExpandoJsonConverter))]
 public class FhirExpando : IDynamicMetaObjectProvider, IDictionary<string, object>, INotifyPropertyChanged
 {
@@ -319,6 +324,79 @@ public class FhirExpando : IDynamicMetaObjectProvider, IDictionary<string, objec
         }
 
         return new FhirExpando[] { (FhirExpando)o };
+    }
+
+    /// <summary>Gets the first extension.</summary>
+    /// <param name="url"> URL of the resource.</param>
+    /// <param name="path">A variable-length parameters list containing path.</param>
+    /// <returns>The first extension.</returns>
+    public FhirExpando GetFirstExtension(string url, params string[] path)
+    {
+        FhirExpando o;
+
+        if ((path == null) || (path.Length == 0))
+        {
+            o = this;
+        }
+        else
+        {
+            o = GetExpando(path);
+
+            if (o == null)
+            {
+                return null;
+            }
+        }
+
+        IEnumerable<FhirExpando> ext = o.GetExpandoEnumerable("extension");
+
+        if ((ext == null) || (!ext.Any()))
+        {
+            return null;
+        }
+
+        IEnumerable<FhirExpando> filtered = ext.Where(e => url.Equals(e?.GetString("url")));
+
+        if ((filtered == null) || (!filtered.Any()))
+        {
+            return null;
+        }
+
+        return filtered.First();
+    }
+
+    /// <summary>Gets the extensions in this collection.</summary>
+    /// <param name="url"> URL of the resource.</param>
+    /// <param name="path">A variable-length parameters list containing path.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process the extensions in this collection.
+    /// </returns>
+    public IEnumerable<FhirExpando> GetExtensions(string url, params string[] path)
+    {
+        FhirExpando o;
+
+        if ((path == null) || (path.Length == 0))
+        {
+            o = this;
+        }
+        else
+        {
+            o = GetExpando(path);
+
+            if (o == null)
+            {
+                return null;
+            }
+        }
+
+        IEnumerable<FhirExpando> ext = o.GetExpandoEnumerable("extension");
+
+        if ((ext == null) || (!ext.Any()))
+        {
+            return null;
+        }
+
+        return ext.Where(e => url.Equals(e?.GetString("url")));
     }
 
     /// <summary>
