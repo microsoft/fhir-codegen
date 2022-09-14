@@ -17,20 +17,22 @@ public class FhirTypeBase
 
     /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-    /// <param name="id">              The id of this element/resource/datatype.</param>
-    /// <param name="path">            The dot-notation path to this element/resource/datatype.</param>
-    /// <param name="url">             The URL.</param>
-    /// <param name="standardStatus">  The standard status.</param>
-    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
-    /// <param name="isExperimental">  A value indicating whether this object is experimental.</param>
-    /// <param name="shortDescription">The description.</param>
-    /// <param name="purpose">         The purpose of this definition.</param>
-    /// <param name="comment">         The comment.</param>
-    /// <param name="validationRegEx"> The validation RegEx.</param>
+    /// <param name="id">               The id of this element/resource/datatype.</param>
+    /// <param name="path">             The dot-notation path to this element/resource/datatype.</param>
+    /// <param name="url">              The URL.</param>
+    /// <param name="publicationStatus">The publication status.</param>
+    /// <param name="standardStatus">   The standard status.</param>
+    /// <param name="fmmLevel">         The FHIR Maturity Model level.</param>
+    /// <param name="isExperimental">   A value indicating whether this object is experimental.</param>
+    /// <param name="shortDescription"> The description.</param>
+    /// <param name="purpose">          The purpose of this definition.</param>
+    /// <param name="comment">          The comment.</param>
+    /// <param name="validationRegEx">  The validation RegEx.</param>
     public FhirTypeBase(
         string id,
         string path,
         Uri url,
+        string publicationStatus,
         string standardStatus,
         int? fmmLevel,
         bool isExperimental,
@@ -48,6 +50,7 @@ public class FhirTypeBase
         // set internal values
         Id = id;
         _path = path;
+        PublicationStatus = publicationStatus;
         StandardStatus = standardStatus;
         FhirMaturityLevel = fmmLevel;
         IsExperimental = isExperimental;
@@ -68,6 +71,7 @@ public class FhirTypeBase
     /// <param name="id">              The id of this element/resource/datatype/extension.</param>
     /// <param name="path">            The dot-notation path to this element/resource/datatype/extension.</param>
     /// <param name="url">             The URL.</param>
+    /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
     /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this object is marked experimental.</param>
@@ -80,6 +84,7 @@ public class FhirTypeBase
         string id,
         string path,
         Uri url,
+        string publicationStatus,
         string standardStatus,
         int? fmmLevel,
         bool isExperimental,
@@ -92,6 +97,7 @@ public class FhirTypeBase
             id,
             path,
             url,
+            publicationStatus,
             standardStatus,
             fmmLevel,
             isExperimental,
@@ -158,6 +164,9 @@ public class FhirTypeBase
     /// <summary>Gets URL of the document.</summary>
     /// <value>The URL.</value>
     public Uri URL { get; }
+
+    /// <summary>Gets the publication status.</summary>
+    public string PublicationStatus { get; }
 
     /// <summary>
     /// Gets status of this type in the standards process

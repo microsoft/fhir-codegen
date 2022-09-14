@@ -141,6 +141,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
+        /// <summary>Builds standard snippet.</summary>
+        /// <param name="standardStatus">The standard status.</param>
+        /// <param name="fmmLevel">      The fmm level.</param>
+        /// <returns>A string.</returns>
+        private static string BuildStandardSnippet(string standardStatus, int? fmmLevel, bool? isExperimental)
+        {
+            string ss = standardStatus ?? string.Empty;
+
+            string fmm = (fmmLevel == null)
+                ? string.Empty
+                : " FMM: " + fmmLevel.ToString();
+
+            string ie = (isExperimental == true)
+                ? " experimental"
+                : string.Empty;
+
+            if (string.IsNullOrEmpty(ss) && string.IsNullOrEmpty(fmm) && string.IsNullOrEmpty(ie))
+            {
+                return string.Empty;
+            }
+
+            return " (" + ss + fmm + ie + ")";
+        }
+
         /// <summary>Writes a value sets.</summary>
         /// <param name="valueSets"> Sets the value belongs to.</param>
         /// <param name="headerHint">(Optional) The header hint.</param>
@@ -157,7 +181,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderBy(v => v.Version))
                 {
-                    _writer.WriteLineIndented($"- ValueSet: {vs.URL}|{vs.Version}");
+                    string snip = BuildStandardSnippet(vs.StandardStatus, vs.FhirMaturityLevel, null);
+
+                    _writer.WriteLineIndented($"- ValueSet: {vs.URL}|{vs.Version}{snip}");
 
                     _writer.IncreaseIndent();
 
@@ -190,27 +216,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _writer.DecreaseIndent();
                 }
             }
-        }
-
-        /// <summary>Writes a value set.</summary>
-        /// <param name="valueSet">Set the value belongs to.</param>
-        private void WriteValueSet(
-            FhirValueSet valueSet)
-        {
-            _writer.WriteLineIndented(
-                $"- {valueSet.URL}|{valueSet.Version}" +
-                $" ({valueSet.Name})" +
-                $" {valueSet.ReferencedByPaths.Count} references," +
-                $" strongest: {valueSet.StrongestBinding}");
-
-            _writer.IncreaseIndent();
-
-            foreach (FhirConcept concept in valueSet.Concepts.OrderBy(c => c.Code))
-            {
-                _writer.WriteLineIndented($"- #{concept.Code}: {concept.Display}");
-            }
-
-            _writer.DecreaseIndent();
         }
 
         /// <summary>Writes the complexes.</summary>
@@ -249,16 +254,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WritePrimitiveType(
             FhirPrimitive primitive)
         {
-            string experimental = primitive.IsExperimental ? " (experimental)" : string.Empty;
-            string fmm = (primitive.FhirMaturityLevel == null)
-                ? string.Empty
-                : "-FMM: " + primitive.FhirMaturityLevel.ToString();
+            string snip = BuildStandardSnippet(primitive.StandardStatus, primitive.FhirMaturityLevel, primitive.IsExperimental);
 
             _writer.WriteLineIndented(
-                $"- {primitive.Name} ({primitive.StandardStatus}{fmm}):" +
+                $"- {primitive.Name}:" +
                     $" {primitive.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}" +
                     $"::{primitive.TypeForExport(FhirTypeBase.NamingConvention.CamelCase, _primitiveTypeMap)}" +
-                    $"{experimental}");
+                    $"{snip}");
 
             _writer.IncreaseIndent();
 
@@ -334,13 +336,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // (sub-properties are written with cardinality in the prior loop)
             if (_writer.Indentation == 0)
             {
-                string experimental = complex.IsExperimental ? " (experimental)" : string.Empty;
+                string snip = BuildStandardSnippet(complex.StandardStatus, complex.FhirMaturityLevel, complex.IsExperimental);
 
-                string fmm = (complex.FhirMaturityLevel == null)
-                    ? string.Empty
-                    : "-FMM: " + complex.FhirMaturityLevel.ToString();
-
-                _writer.WriteLine($"- {complex.Name} ({complex.StandardStatus}{fmm}): {complex.BaseTypeName}{experimental}");
+                _writer.WriteLine($"- {complex.Name}: {complex.BaseTypeName}{snip}");
 
                 if (complex.RootElement != null)
                 {
@@ -413,15 +411,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirOperation operation in operations.OrderBy(o => o.Code))
             {
-                string experimental = operation.IsExperimental ? $" (experimental)" : string.Empty;
+                string snip = BuildStandardSnippet(operation.StandardStatus, operation.FhirMaturityLevel, operation.IsExperimental);
 
                 if (isTypeLevel)
                 {
-                    _writer.WriteLineIndented($"${operation.Code}");
+                    _writer.WriteLineIndented($"${operation.Code}{snip}");
                 }
                 else
                 {
-                    _writer.WriteLineIndented($"/{{id}}${operation.Code}");
+                    _writer.WriteLineIndented($"/{{id}}/${operation.Code}{snip}");
                 }
 
                 if (operation.Parameters != null)
@@ -431,7 +429,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // write operation parameters inline
                     foreach (FhirParameter parameter in operation.Parameters.OrderBy(p => p.FieldOrder))
                     {
-                        _writer.WriteLineIndented($"{parameter.Use}: {parameter.Name} ({parameter.FhirCardinality}){experimental}");
+                        string st = string.IsNullOrEmpty(parameter.SearchType) ? string.Empty : "<" + parameter.SearchType + ">";
+                        _writer.WriteLineIndented(
+                            $"{parameter.Use}:" +
+                            $" {parameter.Name}:" +
+                            $" {parameter.ValueType}{st}[{parameter.FhirCardinality}]");
                     }
 
                     _writer.DecreaseIndent();
@@ -462,9 +464,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirSearchParam searchParam in searchParameters.OrderBy(s => s.Code))
             {
-                string experimental = searchParam.IsExperimental ? $" (experimental)" : string.Empty;
-
-                _writer.WriteLineIndented($"?{searchParam.Code}={searchParam.ValueType} ({searchParam.Name}){experimental}");
+                string snip = BuildStandardSnippet(searchParam.StandardStatus, searchParam.FhirMaturityLevel, searchParam.IsExperimental);
+                _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code}={searchParam.ValueType}{snip}");
             }
 
             if (indented)

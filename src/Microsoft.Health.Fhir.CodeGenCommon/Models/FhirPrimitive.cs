@@ -17,6 +17,7 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
     /// <param name="path">            Full pathname of the file.</param>
     /// <param name="baseTypeName">    The base type name for this primitive type.</param>
     /// <param name="url">             URL of the resource.</param>
+    /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
     /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this primitive type is marked experimental.</param>
@@ -29,6 +30,7 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
         string path,
         string baseTypeName,
         Uri url,
+        string publicationStatus,
         string standardStatus,
         int? fmmLevel,
         bool isExperimental,
@@ -40,6 +42,7 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
             id,
             path,
             url,
+            publicationStatus,
             standardStatus,
             fmmLevel,
             isExperimental,
@@ -61,6 +64,7 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
             Path,
             BaseTypeName,
             URL,
+            PublicationStatus,
             StandardStatus,
             FhirMaturityLevel,
             IsExperimental,

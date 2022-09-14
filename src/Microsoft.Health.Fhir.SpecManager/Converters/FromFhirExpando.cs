@@ -131,18 +131,18 @@ public sealed class FromFhirExpando : IFhirConverter
         FhirExpando cs,
         IPackageImportable fhirVersionInfo)
     {
-        string csStatus = cs.GetString("status") ?? string.Empty;
+        string publicationStatus = cs.GetString("status") ?? string.Empty;
         string csName = cs.GetString("name") ?? string.Empty;
         string csId = cs.GetString("id") ?? string.Empty;
 
-        if (string.IsNullOrEmpty(csStatus))
+        if (string.IsNullOrEmpty(publicationStatus))
         {
-            csStatus = "unknown";
+            publicationStatus = "unknown";
             _errors.Add($"CodeSystem {csName} ({csId}): Status field missing");
         }
 
         // ignore retired
-        if (csStatus.Equals("retired", StringComparison.Ordinal))
+        if (publicationStatus.Equals("retired", StringComparison.Ordinal))
         {
             return;
         }
@@ -213,13 +213,23 @@ public sealed class FromFhirExpando : IFhirConverter
                 properties);
         }
 
+        string standardStatus =
+            cs.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                ?.GetString("valueCode");
+
+        int? fmmLevel =
+            cs.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                ?.GetInt("valueInteger");
+
         FhirCodeSystem codeSystem = new FhirCodeSystem(
             cs.GetString("name"),
             cs.GetString("id"),
             cs.GetString("version") ?? string.Empty,
             cs.GetString("title") ?? string.Empty,
             cs.GetString("url") ?? string.Empty,
-            csStatus,
+            publicationStatus,
+            standardStatus,
+            fmmLevel,
             cs.GetString("description") ?? string.Empty,
             cs.GetString("content"),
             root,
@@ -425,10 +435,10 @@ public sealed class FromFhirExpando : IFhirConverter
         FhirExpando op,
         IPackageImportable fhirVersionInfo)
     {
-        string status = op.GetString("status") ?? "unknown";
+        string publicationStatus = op.GetString("status") ?? "unknown";
 
         // ignore retired
-        if (status.Equals("retired", StringComparison.Ordinal))
+        if (publicationStatus.Equals("retired", StringComparison.Ordinal))
         {
             return;
         }
@@ -471,6 +481,14 @@ public sealed class FromFhirExpando : IFhirConverter
             opBase = op.GetString("base", "reference");
         }
 
+        string standardStatus =
+            op.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                ?.GetString("valueCode");
+
+        int? fmmLevel =
+            op.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                ?.GetInt("valueInteger");
+
         // create the operation
         FhirOperation operation = new FhirOperation(
             op.GetString("id"),
@@ -478,6 +496,9 @@ public sealed class FromFhirExpando : IFhirConverter
             op.GetString("version"),
             op.GetString("name"),
             op.GetString("description"),
+            publicationStatus,
+            standardStatus,
+            fmmLevel,
             op.GetBool("affectsState"),
             op.GetBool("system") ?? false,
             op.GetBool("type") ?? false,
@@ -500,10 +521,10 @@ public sealed class FromFhirExpando : IFhirConverter
         FhirExpando sp,
         IPackageImportable fhirVersionInfo)
     {
-        string status = sp.GetString("status") ?? "unknown";
+        string publicationStatus = sp.GetString("status") ?? "unknown";
 
         // ignore retired
-        if (status.Equals("retired", StringComparison.Ordinal))
+        if (publicationStatus.Equals("retired", StringComparison.Ordinal))
         {
             return;
         }
@@ -533,6 +554,14 @@ public sealed class FromFhirExpando : IFhirConverter
             }
         }
 
+        string standardStatus =
+            sp.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                ?.GetString("valueCode");
+
+        int? fmmLevel =
+            sp.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                ?.GetInt("valueInteger");
+
         // create the search parameter
         FhirSearchParam param = new FhirSearchParam(
             sp.GetString("id"),
@@ -545,7 +574,9 @@ public sealed class FromFhirExpando : IFhirConverter
             resources,
             sp.GetStringList("target"),
             sp.GetString("type"),
-            status,
+            publicationStatus,
+            standardStatus,
+            fmmLevel,
             sp.GetBool("experimental") == true,
             sp.GetString("xpath") ?? string.Empty,
             sp.GetString("processingMode") ?? sp.GetString("xpathUsage") ?? string.Empty,
@@ -562,14 +593,14 @@ public sealed class FromFhirExpando : IFhirConverter
         FhirExpando vs,
         IPackageImportable fhirVersionInfo)
     {
-        string vsStatus = vs.GetString("status") ?? "unknown";
+        string publicationStatus = vs.GetString("status") ?? "unknown";
         string vsId = vs.GetString("id") ?? string.Empty;
         string vsName = vs.GetString("name") ?? string.Empty;
         string vsUrl = vs.GetString("url") ?? string.Empty;
         string vsVersion = vs.GetString("version") ?? string.Empty;
 
         // ignore retired
-        if (vsStatus.Equals("retired", StringComparison.Ordinal))
+        if (publicationStatus.Equals("retired", StringComparison.Ordinal))
         {
             return;
         }
@@ -665,13 +696,23 @@ public sealed class FromFhirExpando : IFhirConverter
                 expansionContains);
         }
 
+        string standardStatus =
+            vs.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                ?.GetString("valueCode");
+
+        int? fmmLevel =
+            vs.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                ?.GetInt("valueInteger");
+
         FhirValueSet valueSet = new FhirValueSet(
             vsName,
             vsId,
             vsVersion,
             vs.GetString("title") ?? vsName,
             vsUrl,
-            vsStatus,
+            publicationStatus,
+            standardStatus,
+            fmmLevel,
             vs.GetString("description") ?? vsName,
             includes,
             excludes,
@@ -845,10 +886,10 @@ public sealed class FromFhirExpando : IFhirConverter
         FhirExpando sd,
         IPackageImportable fhirVersionInfo)
     {
-        string sdStatus = sd.GetString("status") ?? "unknown";
+        string publicationStatus = sd.GetString("status") ?? "unknown";
 
         // ignore retired
-        if (sdStatus == "retired")
+        if (publicationStatus == "retired")
         {
             return;
         }
@@ -900,7 +941,7 @@ public sealed class FromFhirExpando : IFhirConverter
     {
         string sdId = sd.GetString("id") ?? string.Empty;
         string sdName = sd.GetString("name") ?? string.Empty;
-        string sdStatus = sd.GetString("status") ?? "unknown";
+        string publicationStatus = sd.GetString("status") ?? "unknown";
 
         string regex = string.Empty;
         string descriptionShort = sd.GetString("description") ?? string.Empty;
@@ -977,9 +1018,7 @@ public sealed class FromFhirExpando : IFhirConverter
 
         string standardStatus =
             sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                ?.GetString("valueCode")
-            ?? sd.GetString("status")
-            ?? string.Empty;
+                ?.GetString("valueCode");
 
         int? fmmLevel =
             sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
@@ -991,6 +1030,7 @@ public sealed class FromFhirExpando : IFhirConverter
             sdName,
             baseTypeName,
             new Uri(sd.GetString("url") ?? string.Empty),
+            publicationStatus,
             standardStatus,
             fmmLevel,
             sd.GetBool("experimental") == true,
@@ -1020,7 +1060,7 @@ public sealed class FromFhirExpando : IFhirConverter
 
         string sdId = sd.GetString("id") ?? string.Empty;
         string sdName = sd.GetString("name") ?? string.Empty;
-        string sdStatus = sd.GetString("status") ?? "unknown";
+        string publicationStatus = sd.GetString("status") ?? "unknown";
         string sdType = sd.GetString("type") ?? sdName;
         string sdUrl = sd.GetString("url") ?? string.Empty;
 
@@ -1069,14 +1109,11 @@ public sealed class FromFhirExpando : IFhirConverter
 
             string standardStatus =
                 sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                    ?.GetString("valueCode")
-                ?? sd.GetString("status")
-                ?? string.Empty;
+                    ?.GetString("valueCode");
 
             int? fmmLevel =
                 sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
                     ?.GetInt("valueInteger");
-
 
             // create a new complex type object for this type or resource
             FhirComplex complex = new FhirComplex(
@@ -1085,6 +1122,7 @@ public sealed class FromFhirExpando : IFhirConverter
                 string.Empty,
                 sdType,
                 new Uri(sdUrl),
+                publicationStatus,
                 standardStatus,
                 fmmLevel,
                 sd.GetBool("experimental") == true,

@@ -18,6 +18,9 @@ public class FhirOperation : ICloneable
     /// <param name="version">          The version.</param>
     /// <param name="name">             The name.</param>
     /// <param name="description">      The description.</param>
+    /// <param name="publicationStatus">The publication status.</param>
+    /// <param name="standardStatus">   The standard status.</param>
+    /// <param name="fmmLevel">         The fmm level.</param>
     /// <param name="affectsState">     State of the affects.</param>
     /// <param name="definedOnSystem">  True if defined on system, false if not.</param>
     /// <param name="definedOnType">    True if defined on type, false if not.</param>
@@ -35,6 +38,9 @@ public class FhirOperation : ICloneable
         string version,
         string name,
         string description,
+        string publicationStatus,
+        string standardStatus,
+        int? fmmLevel,
         bool? affectsState,
         bool definedOnSystem,
         bool definedOnType,
@@ -51,6 +57,9 @@ public class FhirOperation : ICloneable
         Version = version;
         Name = name;
         Description = description;
+        PublicationStatus = publicationStatus;
+        StandardStatus = standardStatus;
+        FhirMaturityLevel = fmmLevel;
         AffectsState = affectsState;
         DefinedOnSystem = definedOnSystem;
         DefinedOnType = definedOnType;
@@ -86,6 +95,19 @@ public class FhirOperation : ICloneable
     /// <summary>Gets the description.</summary>
     /// <value>The description.</value>
     public string Description { get; }
+
+    /// <summary>Gets the publication status.</summary>
+    public string PublicationStatus { get; }
+
+    /// <summary>
+    /// Gets status of this type in the standards process
+    /// see: http://hl7.org/fhir/valueset-standards-status.html.
+    /// </summary>
+    /// <value>The standard status.</value>
+    public string StandardStatus { get; }
+
+    /// <summary>Gets the FHIR maturity level.</summary>
+    public int? FhirMaturityLevel { get; }
 
     /// <summary>Gets a value indicating whether the affects state.</summary>
     public bool? AffectsState { get; }
@@ -154,6 +176,9 @@ public class FhirOperation : ICloneable
             Version,
             Name,
             Description,
+            PublicationStatus,
+            StandardStatus,
+            FhirMaturityLevel,
             AffectsState,
             DefinedOnSystem,
             DefinedOnType,

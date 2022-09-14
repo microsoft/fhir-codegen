@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Globalization;
 using Microsoft.OpenApi.Any;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
@@ -270,6 +271,30 @@ public class Differ
             rootKey,
             DiffResults.DiffTypeEnum.ChangedId);
 
+        TestForDiff(
+            A.PublicationStatus,
+            B.PublicationStatus,
+            FhirArtifactClassEnum.ValueSet,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedPublicationStatus);
+
+        TestForDiff(
+            A.StandardStatus,
+            B.StandardStatus,
+            FhirArtifactClassEnum.ValueSet,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedStandardStatus);
+
+        TestForDiff(
+            A.FhirMaturityLevel,
+            B.FhirMaturityLevel,
+            FhirArtifactClassEnum.ValueSet,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedFmmLevel);
+
         if (_options.CompareDescriptions)
         {
             TestForDiff(
@@ -428,6 +453,26 @@ public class Differ
             key,
             DiffResults.DiffTypeEnum.ChangedType);
 
+        TestPrimitiveDiff(
+            A.PublicationStatus,
+            B.PublicationStatus,
+            key,
+            DiffResults.DiffTypeEnum.ChangedPublicationStatus);
+
+        TestPrimitiveDiff(
+            A.StandardStatus,
+            B.StandardStatus,
+            key,
+            DiffResults.DiffTypeEnum.ChangedStandardStatus);
+
+        TestForDiff(
+            A.FhirMaturityLevel,
+            B.FhirMaturityLevel,
+            FhirArtifactClassEnum.PrimitiveType,
+            key,
+            key,
+            DiffResults.DiffTypeEnum.ChangedFmmLevel);
+
         if (_options.CompareRegEx)
         {
             TestPrimitiveDiff(
@@ -519,6 +564,30 @@ public class Differ
             rootKey,
             rootKey,
             DiffResults.DiffTypeEnum.ChangedId);
+
+        TestForDiff(
+            A.PublicationStatus,
+            B.PublicationStatus,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedPublicationStatus);
+
+        TestForDiff(
+            A.StandardStatus,
+            B.StandardStatus,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedStandardStatus);
+
+        TestForDiff(
+            A.FhirMaturityLevel,
+            B.FhirMaturityLevel,
+            FhirArtifactClassEnum.SearchParameter,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedFmmLevel);
 
         if (_options.CompareDescriptions)
         {
@@ -658,6 +727,30 @@ public class Differ
             rootKey,
             rootKey,
             DiffResults.DiffTypeEnum.ChangedId);
+
+        TestForDiff(
+            A.PublicationStatus,
+            B.PublicationStatus,
+            FhirArtifactClassEnum.Operation,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedPublicationStatus);
+
+        TestForDiff(
+            A.StandardStatus,
+            B.StandardStatus,
+            FhirArtifactClassEnum.Operation,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedStandardStatus);
+
+        TestForDiff(
+            A.FhirMaturityLevel,
+            B.FhirMaturityLevel,
+            FhirArtifactClassEnum.Operation,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedFmmLevel);
 
         if (_options.CompareDescriptions)
         {
@@ -1007,6 +1100,14 @@ public class Differ
             rootKey,
             A.Path,
             DiffResults.DiffTypeEnum.ChangedExplicitName);
+
+        TestForDiff(
+            A.PublicationStatus,
+            B.PublicationStatus,
+            artifactClass,
+            rootKey,
+            rootKey,
+            DiffResults.DiffTypeEnum.ChangedPublicationStatus);
 
         TestForDiff(
             A.StandardStatus,

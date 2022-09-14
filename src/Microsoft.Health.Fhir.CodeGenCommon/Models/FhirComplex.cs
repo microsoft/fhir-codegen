@@ -23,6 +23,7 @@ public class FhirComplex : FhirTypeBase
     /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
     /// <param name="baseTypeName">    Base type of this complex structure, if provided.</param>
     /// <param name="url">             URL of the resource.</param>
+    /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
     /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this complex resource is flagged as experimental.</param>
@@ -36,6 +37,7 @@ public class FhirComplex : FhirTypeBase
         string explicitName,
         string baseTypeName,
         Uri url,
+        string publicationStatus,
         string standardStatus,
         int? fmmLevel,
         bool isExperimental,
@@ -47,6 +49,7 @@ public class FhirComplex : FhirTypeBase
             id,
             path,
             url,
+            publicationStatus,
             standardStatus,
             fmmLevel,
             isExperimental,
@@ -79,6 +82,7 @@ public class FhirComplex : FhirTypeBase
     /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
     /// <param name="baseTypeName">    Base type name for this complex structure, if provided.</param>
     /// <param name="url">             URL of the resource.</param>
+    /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
     /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this complex type is marked experimental.</param>
@@ -94,6 +98,7 @@ public class FhirComplex : FhirTypeBase
         string explicitName,
         string baseTypeName,
         Uri url,
+        string publicationStatus,
         string standardStatus,
         int? fmmLevel,
         bool isExperimental,
@@ -109,6 +114,7 @@ public class FhirComplex : FhirTypeBase
             explicitName,
             baseTypeName,
             url,
+            publicationStatus,
             standardStatus,
             fmmLevel,
             isExperimental,
@@ -129,6 +135,7 @@ public class FhirComplex : FhirTypeBase
         string name,
         string explicitName,
         Uri url,
+        string publicationStatus,
         string standardStatus,
         int? fmmLevel,
         bool isExperimental,
@@ -154,6 +161,7 @@ public class FhirComplex : FhirTypeBase
         explicitName,
         baseTypeName,
         url,
+        publicationStatus,
         standardStatus,
         fmmLevel,
         isExperimental,
@@ -340,6 +348,7 @@ public class FhirComplex : FhirTypeBase
                 property.ExplicitName,
                 elementType,
                 property.URL,
+                property.PublicationStatus,
                 property.StandardStatus,
                 property.FhirMaturityLevel,
                 property.IsExperimental,
@@ -613,6 +622,7 @@ public class FhirComplex : FhirTypeBase
                 ExplicitName,
                 BaseTypeName,
                 URL,
+                PublicationStatus,
                 StandardStatus,
                 FhirMaturityLevel,
                 IsExperimental,

@@ -21,23 +21,27 @@ public class FhirValueSet : ICloneable
     private FhirElement.ElementDefinitionBindingStrength _strongestBinding;
 
     /// <summary>Initializes a new instance of the <see cref="FhirValueSet"/> class.</summary>
-    /// <param name="name">           The name.</param>
-    /// <param name="id">             The identifier.</param>
-    /// <param name="version">        The version.</param>
-    /// <param name="title">          The title.</param>
-    /// <param name="url">            The URL.</param>
-    /// <param name="standardStatus"> The standard status.</param>
-    /// <param name="description">    The description.</param>
-    /// <param name="composeIncludes">The compose includes.</param>
-    /// <param name="composeExcludes">The compose excludes.</param>
-    /// <param name="expansion">      The expansion.</param>
+    /// <param name="name">             The name.</param>
+    /// <param name="id">               The identifier.</param>
+    /// <param name="version">          The version.</param>
+    /// <param name="title">            The title.</param>
+    /// <param name="url">              The URL.</param>
+    /// <param name="publicationStatus">The publication status.</param>
+    /// <param name="standardStatus">   The standard status.</param>
+    /// <param name="fmmLevel">         The fmm level.</param>
+    /// <param name="description">      The description.</param>
+    /// <param name="composeIncludes">  The compose includes.</param>
+    /// <param name="composeExcludes">  The compose excludes.</param>
+    /// <param name="expansion">        The expansion.</param>
     public FhirValueSet(
         string name,
         string id,
         string version,
         string title,
         string url,
+        string publicationStatus,
         string standardStatus,
+        int? fmmLevel,
         string description,
         List<FhirValueSetComposition> composeIncludes,
         List<FhirValueSetComposition> composeExcludes,
@@ -48,7 +52,9 @@ public class FhirValueSet : ICloneable
         Version = version;
         Title = title;
         URL = url;
+        PublicationStatus = publicationStatus;
         StandardStatus = standardStatus;
+        FhirMaturityLevel = fmmLevel;
         Description = description;
         ComposeIncludes = composeIncludes;
         ComposeExcludes = composeExcludes;
@@ -74,7 +80,9 @@ public class FhirValueSet : ICloneable
         string version,
         string title,
         string url,
+        string publicationStatus,
         string standardStatus,
+        int? fmmLevel,
         string description,
         List<FhirValueSetComposition> composeIncludes,
         List<FhirValueSetComposition> composeExcludes,
@@ -88,7 +96,9 @@ public class FhirValueSet : ICloneable
             version,
             title,
             url,
+            publicationStatus,
             standardStatus,
+            fmmLevel,
             description,
             composeIncludes,
             composeExcludes,
@@ -123,9 +133,18 @@ public class FhirValueSet : ICloneable
     /// <value>The key.</value>
     public string Key => $"{URL}|{Version}";
 
-    /// <summary>Gets the standard status.</summary>
+    /// <summary>Gets the publication status.</summary>
+    public string PublicationStatus { get; }
+
+    /// <summary>
+    /// Gets status of this type in the standards process
+    /// see: http://hl7.org/fhir/valueset-standards-status.html.
+    /// </summary>
     /// <value>The standard status.</value>
     public string StandardStatus { get; }
+
+    /// <summary>Gets the FHIR maturity level.</summary>
+    public int? FhirMaturityLevel { get; }
 
     /// <summary>Gets the description.</summary>
     /// <value>The description.</value>
@@ -874,7 +893,9 @@ public class FhirValueSet : ICloneable
             Version,
             Title,
             URL,
+            PublicationStatus,
             StandardStatus,
+            FhirMaturityLevel,
             Description,
             includes,
             excludes,

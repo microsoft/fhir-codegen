@@ -323,6 +323,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 throw new Exception($"Cannot index ValueSet: {vs.Url} version: {vs.Version}");
             }
 
+            string standardStatus =
+                vs.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.FirstOrDefault()?.ValueCode;
+
+            int? fmmLevel =
+                vs.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.FirstOrDefault()?.ValueInteger;
+
             FhirValueSet valueSet = new FhirValueSet(
                 vs.Name,
                 vs.Id,
@@ -330,6 +338,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 string.Empty,
                 vs.Url,
                 vs.Status,
+                standardStatus,
+                fmmLevel,
                 vs.Description,
                 includes,
                 excludes,
@@ -452,6 +462,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             Dictionary<string, FhirCodeSystem.FilterDefinition> filters = new();
             Dictionary<string, FhirCodeSystem.PropertyDefinition> properties = new();
 
+            string standardStatus =
+                cs.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.FirstOrDefault()?.ValueCode;
+
+            int? fmmLevel =
+                cs.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.FirstOrDefault()?.ValueInteger;
+
             FhirCodeSystem codeSystem = new FhirCodeSystem(
                 string.Empty,
                 cs.Id,
@@ -459,6 +477,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 string.Empty,
                 cs.System,
                 string.Empty,
+                standardStatus,
+                fmmLevel,
                 string.Empty,
                 string.Empty,
                 root,
@@ -568,6 +588,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
             }
 
+            string standardStatus =
+                op.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.FirstOrDefault()?.ValueCode;
+
+            int? fmmLevel =
+                op.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.FirstOrDefault()?.ValueInteger;
+
             // create the operation
             FhirOperation operation = new FhirOperation(
                 op.Id,
@@ -575,6 +603,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 op.Version,
                 op.Name,
                 op.Description,
+                op.Status,
+                standardStatus,
+                fmmLevel,
                 op.Idempotent == null ? null : !op.Idempotent,
                 op.System,
                 (op.Type == null) || (op.Type.Count == 0),
@@ -631,6 +662,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
             }
 
+            string standardStatus =
+                sp.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.FirstOrDefault()?.ValueCode;
+
+            int? fmmLevel =
+                sp.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.FirstOrDefault()?.ValueInteger;
+
+
             // create the search parameter
             FhirSearchParam param = new FhirSearchParam(
                 sp.Id,
@@ -644,6 +684,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 sp.Target,
                 sp.Type,
                 sp.Status,
+                standardStatus,
+                fmmLevel,
                 sp.Experimental == true,
                 sp.Xpath,
                 sp.XpathUsage,
@@ -784,13 +826,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
 
             string standardStatus =
-                sd.Extension.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                    ?.First().ValueCode
-                ?? sd.Status;
+                sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.FirstOrDefault()?.ValueCode;
 
             int? fmmLevel =
-                sd.Extension.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
-                    ?.First().ValueInteger;
+                sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.FirstOrDefault()?.ValueInteger;
 
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
@@ -798,6 +839,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 sd.Name,
                 baseTypeName,
                 new Uri(sd.Url),
+                sd.Status,
                 standardStatus,
                 fmmLevel,
                 sd.Experimental == true,
@@ -1008,12 +1050,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 string standardStatus =
                     sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                        ?.First().ValueCode
+                        ?.FirstOrDefault()?.ValueCode
                     ?? sd.Status;
 
                 int? fmmLevel =
                     sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
-                        ?.First().ValueInteger;
+                        ?.FirstOrDefault()?.ValueInteger;
 
                 // create a new complex type object
                 FhirComplex complex = new FhirComplex(
@@ -1022,6 +1064,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     string.Empty,
                     sd.ConstrainedType,
                     new Uri(sd.Url),
+                    sd.Status,
                     standardStatus,
                     fmmLevel,
                     sd.Experimental == true,
