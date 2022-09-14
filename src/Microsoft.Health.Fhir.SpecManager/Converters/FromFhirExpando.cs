@@ -214,11 +214,11 @@ public sealed class FromFhirExpando : IFhirConverter
         }
 
         string standardStatus =
-            cs.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+            cs.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
                 ?.GetString("valueCode");
 
         int? fmmLevel =
-            cs.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+            cs.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
                 ?.GetInt("valueInteger");
 
         FhirCodeSystem codeSystem = new FhirCodeSystem(
@@ -482,11 +482,11 @@ public sealed class FromFhirExpando : IFhirConverter
         }
 
         string standardStatus =
-            op.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+            op.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
                 ?.GetString("valueCode");
 
         int? fmmLevel =
-            op.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+            op.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
                 ?.GetInt("valueInteger");
 
         // create the operation
@@ -555,11 +555,11 @@ public sealed class FromFhirExpando : IFhirConverter
         }
 
         string standardStatus =
-            sp.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+            sp.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
                 ?.GetString("valueCode");
 
         int? fmmLevel =
-            sp.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+            sp.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
                 ?.GetInt("valueInteger");
 
         // create the search parameter
@@ -697,11 +697,11 @@ public sealed class FromFhirExpando : IFhirConverter
         }
 
         string standardStatus =
-            vs.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+            vs.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
                 ?.GetString("valueCode");
 
         int? fmmLevel =
-            vs.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+            vs.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
                 ?.GetInt("valueInteger");
 
         FhirValueSet valueSet = new FhirValueSet(
@@ -1017,11 +1017,11 @@ public sealed class FromFhirExpando : IFhirConverter
         }
 
         string standardStatus =
-            sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+            sd.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
                 ?.GetString("valueCode");
 
         int? fmmLevel =
-            sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+            sd.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
                 ?.GetInt("valueInteger");
 
         // create a new primitive type object
@@ -1108,11 +1108,11 @@ public sealed class FromFhirExpando : IFhirConverter
             }
 
             string standardStatus =
-                sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                sd.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
                     ?.GetString("valueCode");
 
             int? fmmLevel =
-                sd.GetFirstExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                sd.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
                     ?.GetInt("valueInteger");
 
             // create a new complex type object for this type or resource

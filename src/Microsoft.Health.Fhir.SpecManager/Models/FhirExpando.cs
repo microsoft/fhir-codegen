@@ -328,19 +328,20 @@ public class FhirExpando : IDynamicMetaObjectProvider, IDictionary<string, objec
 
     /// <summary>Gets the first extension.</summary>
     /// <param name="url"> URL of the resource.</param>
-    /// <param name="path">A variable-length parameters list containing path.</param>
+    /// <param name="relativePath">A variable-length parameters list containing the relative path to
+    ///  the extension node, from this node.</param>
     /// <returns>The first extension.</returns>
-    public FhirExpando GetFirstExtension(string url, params string[] path)
+    public FhirExpando GetExtension(string url, params string[] relativePath)
     {
         FhirExpando o;
 
-        if ((path == null) || (path.Length == 0))
+        if ((relativePath == null) || (relativePath.Length == 0))
         {
             o = this;
         }
         else
         {
-            o = GetExpando(path);
+            o = GetExpando(relativePath);
 
             if (o == null)
             {
@@ -366,22 +367,23 @@ public class FhirExpando : IDynamicMetaObjectProvider, IDictionary<string, objec
     }
 
     /// <summary>Gets the extensions in this collection.</summary>
-    /// <param name="url"> URL of the resource.</param>
-    /// <param name="path">A variable-length parameters list containing path.</param>
+    /// <param name="url">         URL of the resource.</param>
+    /// <param name="relativePath">A variable-length parameters list containing the relative path to
+    ///  the extension node, from this node.</param>
     /// <returns>
     /// An enumerator that allows foreach to be used to process the extensions in this collection.
     /// </returns>
-    public IEnumerable<FhirExpando> GetExtensions(string url, params string[] path)
+    public IEnumerable<FhirExpando> GetExtensions(string url, params string[] relativePath)
     {
         FhirExpando o;
 
-        if ((path == null) || (path.Length == 0))
+        if ((relativePath == null) || (relativePath.Length == 0))
         {
             o = this;
         }
         else
         {
-            o = GetExpando(path);
+            o = GetExpando(relativePath);
 
             if (o == null)
             {
