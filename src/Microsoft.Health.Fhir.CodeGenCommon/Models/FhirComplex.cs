@@ -22,6 +22,7 @@ public class FhirComplex : FhirTypeBase
     /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
     /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
     /// <param name="baseTypeName">    Base type of this complex structure, if provided.</param>
+    /// <param name="baseTypeCanonical">Base type canonical of this complex structure, if provided</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
@@ -36,6 +37,7 @@ public class FhirComplex : FhirTypeBase
         string path,
         string explicitName,
         string baseTypeName,
+        string baseTypeCanonical,
         Uri url,
         string publicationStatus,
         string standardStatus,
@@ -57,7 +59,8 @@ public class FhirComplex : FhirTypeBase
             purpose,
             comment,
             validationRegEx,
-            baseTypeName)
+            baseTypeName,
+            baseTypeCanonical)
     {
         _components = new();
         _rootElement = null;
@@ -81,6 +84,7 @@ public class FhirComplex : FhirTypeBase
     /// <param name="path">            The dot-notation path to this resource/data type/extension.</param>
     /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
     /// <param name="baseTypeName">    Base type name for this complex structure, if provided.</param>
+    /// <param name="baseTypeCanonical">Base type canonical of this complex structure, if provided</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
@@ -97,6 +101,7 @@ public class FhirComplex : FhirTypeBase
         string path,
         string explicitName,
         string baseTypeName,
+        string baseTypeCanonical,
         Uri url,
         string publicationStatus,
         string standardStatus,
@@ -113,6 +118,7 @@ public class FhirComplex : FhirTypeBase
             path,
             explicitName,
             baseTypeName,
+            baseTypeCanonical,
             url,
             publicationStatus,
             standardStatus,
@@ -140,6 +146,7 @@ public class FhirComplex : FhirTypeBase
         int? fmmLevel,
         bool isExperimental,
         string baseTypeName,
+        string baseTypeCanonical,
         string shortDescription,
         string purpose,
         string comment,
@@ -160,6 +167,7 @@ public class FhirComplex : FhirTypeBase
         path,
         explicitName,
         baseTypeName,
+        baseTypeCanonical,
         url,
         publicationStatus,
         standardStatus,
@@ -347,6 +355,7 @@ public class FhirComplex : FhirTypeBase
                 property.Path,
                 property.ExplicitName,
                 elementType,
+                string.Empty,
                 property.URL,
                 property.PublicationStatus,
                 property.StandardStatus,
@@ -621,6 +630,7 @@ public class FhirComplex : FhirTypeBase
                 Path,
                 ExplicitName,
                 BaseTypeName,
+                BaseTypeCanonical,
                 URL,
                 PublicationStatus,
                 StandardStatus,

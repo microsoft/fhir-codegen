@@ -92,7 +92,8 @@ public class FhirElement : FhirTypeBase
             purpose,
             comment,
             validationRegEx,
-            baseTypeName)
+            baseTypeName,
+            string.Empty)
     {
         FieldOrder = fieldOrder;
         _elementTypes = elementTypes;
@@ -246,7 +247,8 @@ public class FhirElement : FhirTypeBase
             purpose,
             comment,
             validationRegEx,
-            baseTypeName)
+            baseTypeName,
+            string.Empty)
     {
         ExplicitName = explicitName;
         FieldOrder = fieldOrder;
@@ -493,6 +495,7 @@ public class FhirElement : FhirTypeBase
                 Path,
                 ExplicitName,
                 BaseTypeName,
+                BaseTypeCanonical,
                 URL,
                 PublicationStatus,
                 StandardStatus,

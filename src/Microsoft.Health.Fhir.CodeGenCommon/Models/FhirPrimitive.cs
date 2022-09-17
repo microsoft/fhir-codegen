@@ -50,7 +50,8 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
             purpose,
             comment,
             validationRegEx,
-            baseTypeName)
+            baseTypeName,
+            string.Empty)
     {
     }
 

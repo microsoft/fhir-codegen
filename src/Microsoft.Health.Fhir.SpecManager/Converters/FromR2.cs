@@ -1062,6 +1062,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     sd.Id,
                     sd.Name,
                     string.Empty,
+                    string.Empty,
                     sd.ConstrainedType,
                     new Uri(sd.Url),
                     sd.Status,
@@ -1079,6 +1080,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 if (!string.IsNullOrEmpty(sd.Base))
                 {
                     complex.BaseTypeName = sd.Base.Substring(sd.Base.LastIndexOf('/') + 1);
+                    complex.BaseTypeCanonical = sd.Base;
                 }
                 else
                 {

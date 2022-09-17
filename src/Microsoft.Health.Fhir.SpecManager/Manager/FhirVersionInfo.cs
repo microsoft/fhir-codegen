@@ -1082,15 +1082,25 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <param name="artifactClass">     [out] The artifact class enum.</param>
     /// <param name="resolvedPackage">   [out] The resolved package.</param>
     /// <param name="resolveParentLinks">(Optional) True to resolve parent links.</param>
+    /// <param name="knownArtifactClass"> (Optional) Class hint to resolve artifacts</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetArtifact(
         string token,
         out object artifact,
         out FhirArtifactClassEnum artifactClass,
         out string resolvedPackage,
-        bool resolveParentLinks = true)
+        bool resolveParentLinks = true,
+        FhirArtifactClassEnum knownArtifactClass = FhirArtifactClassEnum.Unknown)
     {
-        artifactClass = GetArtifactClass(token);
+        if (knownArtifactClass != FhirArtifactClassEnum.Unknown)
+        {
+            artifactClass = knownArtifactClass;
+        }
+        else
+        {
+            artifactClass = GetArtifactClass(token);
+        }
+
         switch (artifactClass)
         {
             case FhirArtifactClassEnum.PrimitiveType:
@@ -1279,13 +1289,16 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     }
 
                     FhirComplex current = (FhirComplex)artifact;
+                    string baseKey = string.IsNullOrEmpty(current.BaseTypeCanonical)
+                        ? current.BaseTypeName
+                        : current.BaseTypeCanonical;
 
                     if (resolveParentLinks &&
                         (!string.IsNullOrEmpty(current.BaseTypeName)) &&
                         (!current.BaseTypeName.Equals(current.Name, StringComparison.Ordinal)) &&
                         (current.Parent == null) &&
                         TryGetArtifact(
-                            current.BaseTypeName,
+                            baseKey,
                             out object parent,
                             out FhirArtifactClassEnum parentClass,
                             out string parentResolvedDirective,

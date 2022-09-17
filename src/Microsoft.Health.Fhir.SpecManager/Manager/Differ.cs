@@ -110,8 +110,8 @@ public class Differ
         string keyA,
         string keyB)
     {
-        bool resolvedA = _a.TryGetArtifact(keyA, out object a, out FhirArtifactClassEnum classA, out string _, true);
-        bool resolvedB = _b.TryGetArtifact(keyB, out object b, out FhirArtifactClassEnum classB, out string _, true);
+        bool resolvedA = _a.TryGetArtifact(keyA, out object a, out FhirArtifactClassEnum classA, out string _, true, FhirArtifactClassEnum.Unknown);
+        bool resolvedB = _b.TryGetArtifact(keyB, out object b, out FhirArtifactClassEnum classB, out string _, true, FhirArtifactClassEnum.Unknown);
 
         if ((!resolvedA) && (!resolvedB))
         {

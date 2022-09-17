@@ -1120,6 +1120,7 @@ public sealed class FromFhirExpando : IFhirConverter
                 sdId,
                 sdName,
                 string.Empty,
+                string.Empty,
                 sdType,
                 new Uri(sdUrl),
                 publicationStatus,
@@ -1138,6 +1139,7 @@ public sealed class FromFhirExpando : IFhirConverter
             {
                 string bd = sd.GetString("baseDefinition");
                 complex.BaseTypeName = bd.Substring(bd.LastIndexOf('/') + 1);
+                complex.BaseTypeCanonical = bd;
             }
             else
             {
