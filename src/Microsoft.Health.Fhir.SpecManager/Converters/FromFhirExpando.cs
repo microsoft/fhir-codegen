@@ -3,11 +3,8 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.Dynamic;
 using System.IO;
 using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Xml.Linq;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -621,6 +618,25 @@ public sealed class FromFhirExpando : IFhirConverter
         {
             _warnings.Add($"ValueSet {vsName} ({vsId}): No Version present");
             vsVersion = fhirVersionInfo.VersionString;
+        }
+
+        switch (vsVersion)
+        {
+            case "5.0.0-ballot":
+            case "5.0.0-cibuild":
+                switch (vsName)
+                {
+                    case "FHIRTypes":
+                        vsName = "FHIRAllTypes";
+                        _warnings.Add("ValueSet FHIRTypes renamed to FHIRAllTypes");
+                        break;
+
+                    case "ResourceTypes":
+                        vsName = "ResourceType";
+                        _warnings.Add("ValueSet ResourceTypes renamed to ResourceType");
+                        break;
+                }
+                break;
         }
 
         List<FhirValueSetComposition> includes = null;

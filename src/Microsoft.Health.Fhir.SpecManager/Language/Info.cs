@@ -184,7 +184,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     string snip = BuildStandardSnippet(vs.StandardStatus, vs.FhirMaturityLevel, null);
 
-                    _writer.WriteLineIndented($"- ValueSet: {vs.URL}|{vs.Version}{snip}");
+                    _writer.WriteLineIndented($"- ValueSet: {vs.URL}|{vs.Version}{snip} ({vs.Name})");
 
                     _writer.IncreaseIndent();
 
