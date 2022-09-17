@@ -6,6 +6,7 @@
 using System.IO;
 using System.Numerics;
 using System.Text.Json;
+using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -187,9 +188,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     _writer.IncreaseIndent();
 
+                    string bindings = string.Empty;
+
+                    if (vs.StrongestBindingByType != null)
+                    {
+                        bindings = ", bindings: " + string.Join(", ", vs.StrongestBindingByType.Select(bt => $"{bt.Key}:{bt.Value}"));
+                    }
+
                     _writer.WriteLineIndented(
                         $"  references: {vs.ReferencedByPaths.Count}," +
-                        $" strongest binding: {vs.StrongestBinding}");
+                        $" strongest binding: {vs.StrongestBinding}" +
+                        $"{bindings}");
 
                     if (vs.Expansion != null)
                     {

@@ -644,7 +644,10 @@ public class FhirElement : FhirTypeBase
                 valueSetReferences.Add(url, new ValueSetReferenceInfo());
             }
 
-            valueSetReferences[url].AddPath(Path, ValueSetBindingStrength);
+            if (ValueSetBindingStrength != null)
+            {
+                valueSetReferences[url].AddPath(Path, elementTypes.Keys, (ElementDefinitionBindingStrength)ValueSetBindingStrength!);
+            }
         }
 
         return element;

@@ -18,6 +18,7 @@ public class FhirValueSet : ICloneable
     private HashSet<string> _codeSystems = new();
     private List<string> _referencedPaths = new();
     private List<string> _referencedResources = new();
+    private Dictionary<string, FhirElement.ElementDefinitionBindingStrength> _bindingStrengthByType = new();
     private FhirElement.ElementDefinitionBindingStrength _strongestBinding;
 
     /// <summary>Initializes a new instance of the <see cref="FhirValueSet"/> class.</summary>
@@ -176,6 +177,11 @@ public class FhirValueSet : ICloneable
     /// <summary>Gets the list of resources or complex types that reference this value set.</summary>
     public List<string> ReferencedByComplexes => _referencedResources;
 
+    /// <summary>
+    /// Gets a Dictionary of strongest bindings by FHIR element type
+    /// </summary>
+    public Dictionary<string, FhirElement.ElementDefinitionBindingStrength> StrongestBindingByType => _bindingStrengthByType;
+
     /// <summary>Gets the strongest binding this value set is referenced as (null for unreferenced).</summary>
     public FhirElement.ElementDefinitionBindingStrength? StrongestBinding => _strongestBinding;
 
@@ -201,7 +207,7 @@ public class FhirValueSet : ICloneable
         HashSet<string> resources = new HashSet<string>();
         HashSet<string> paths = new HashSet<string>();
 
-        foreach (string path in referenceInfo.Paths)
+        foreach ((string path, ValueSetReferenceInfo.VsReferenceRec rec) in referenceInfo.VsRecsByPath)
         {
             if (paths.Contains(path))
             {
@@ -217,6 +223,18 @@ public class FhirValueSet : ICloneable
 
             _referencedPaths.Add((string)path.Clone());
             paths.Add(path);
+
+            if (rec.FhirTypes != null)
+            {
+                foreach (string fhirType in rec.FhirTypes)
+                {
+                    if ((!_bindingStrengthByType.ContainsKey(fhirType)) ||
+                        (_bindingStrengthByType[fhirType] < rec.BindingStrength))
+                    {
+                        _bindingStrengthByType[fhirType] = rec.BindingStrength;
+                    }
+                }
+            }
         }
 
         _strongestBinding = referenceInfo.StrongestBinding;
