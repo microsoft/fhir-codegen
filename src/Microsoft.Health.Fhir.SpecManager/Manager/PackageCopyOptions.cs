@@ -38,6 +38,9 @@ public class PackageCopyOptions
     /// <summary>Gets or sets a value indicating whether to copy operations.</summary>
     public bool CopyOperations { get; set; } = true;
 
+    /// <summary>Gets or sets a value indicating whether to copy implementation guides.</summary>
+    public bool CopyImplementationGuides { get; set; } = true;
+
     /// <summary>Gets or sets the extension urls.</summary>
     public HashSet<string> ExtensionUrls { get; set; } = null;
 

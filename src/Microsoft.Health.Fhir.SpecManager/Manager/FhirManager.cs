@@ -106,6 +106,49 @@ public class FhirManager : IDisposable
         return packages;
     }
 
+    /// <summary>
+    /// Test to see if the manager has a package matching a given id.
+    /// </summary>
+    /// <param name="packageId"></param>
+    /// <param name="version"></param>
+    /// <returns></returns>
+    public bool HasLoadedPackage(string packageId, out string version)
+    {
+        foreach (string directive in _loadedInfoByDirective.Keys)
+        {
+            string[] components = directive.Split('#');
+
+            if (components[0].Equals(packageId, StringComparison.OrdinalIgnoreCase))
+            {
+                version = (components.Length > 1) ? components[1] : string.Empty;
+                return true;
+            }
+        }
+
+        version = string.Empty;
+        return false;
+    }
+
+    /// <summary>
+    /// Tries to see if the manager can resolve a canonical URL in any loaded packages.
+    /// </summary>
+    /// <param name="canonical"></param>
+    /// <returns></returns>
+    public bool TryResolveCanonical(string canonical)
+    {
+        foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
+        {
+            FhirArtifactClassEnum canonicalClass = info.GetArtifactClass(canonical);
+
+            if (canonicalClass != FhirArtifactClassEnum.Unknown)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /// <summary>Gets the loaded core packages in this collection.</summary>
     /// <returns>
     /// An enumerator that allows foreach to be used to process the loaded core packages in this
