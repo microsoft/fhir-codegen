@@ -85,10 +85,20 @@ public class FhirManager : IDisposable
             }
             else if (directive.Contains(".core", StringComparison.OrdinalIgnoreCase))
             {
-                string t = directive.Replace(".core", string.Empty);
-                if (_loadedInfoByDirective.ContainsKey(t))
+                string d = directive.Replace(".core", string.Empty);
+
+                if (_loadedInfoByDirective.ContainsKey(d))
                 {
-                    packages.Add(_loadedInfoByDirective[t]);
+                    packages.Add(_loadedInfoByDirective[d]);
+                }
+            }
+            else if (directive.Contains('#'))
+            {
+                string d = directive.Replace("#", ".core#");
+
+                if (_loadedInfoByDirective.ContainsKey(d))
+                {
+                    packages.Add(_loadedInfoByDirective[d]);
                 }
             }
         }

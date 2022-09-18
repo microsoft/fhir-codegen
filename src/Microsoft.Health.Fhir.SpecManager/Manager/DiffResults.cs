@@ -124,6 +124,15 @@ public class DiffResults
 
         /// <summary>Indicates the element.representation has changed.</summary>
         ChangedRepresentation,
+
+        /// <summary>Indicates a definition has changed in publication status.</summary>
+        ChangedPublicationStatus,
+
+        /// <summary>Indicates a definition has changed in standard status.</summary>
+        ChangedStandardStatus,
+
+        /// <summary>Indicates a definition has changed in FMM level.</summary>
+        ChangedFmmLevel,
     }
 
     public readonly record struct DiffRecord(

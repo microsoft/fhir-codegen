@@ -424,9 +424,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteValueSet(
             FhirValueSet vs)
         {
-            string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
-
-            vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
+            string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords, FhirTypeBase.NamingConvention.PascalCase);
 
             if (!string.IsNullOrEmpty(vs.Description))
             {

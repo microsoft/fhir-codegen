@@ -4,6 +4,7 @@
 // </copyright>
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -19,8 +20,166 @@ public abstract class FhirUtils
     /// <summary>The RegEx remove duplicate lines.</summary>
     private const string _regexRemoveDuplicateLinesDefinition = "__+";
 
+    /// <summary>(Immutable) The RegEx remove duplicate whitespace.</summary>
+    private const string _regexRemoveDuplicateWhitespaceDefinition = "\\s+";
+
     /// <summary>The RegEx remove duplicate lines.</summary>
     private static Regex _regexRemoveDuplicateLines = new Regex(_regexRemoveDuplicateLinesDefinition);
+
+    /// <summary>The RegEx remove duplicate whitespace.</summary>
+    private static Regex _regexRemoveDuplicateWhitespace = new Regex(_regexRemoveDuplicateWhitespaceDefinition);
+
+    /// <summary>(Immutable) The underscore.</summary>
+    public static readonly Dictionary<char[], string> ReplacementsWithUnderscores = new(ReplacementComparer.Default)
+    {
+        { new char[1] { '…' }, "_ellipsis_" },
+        { new char[3] { '.', '.', '.' }, "_ellipsis_" },
+        { new char[1] { '’' }, "_quote_" },
+        { new char[2] { '’', '’' }, "_double_quote_" },
+        { new char[3] { '’', '’', '’' }, "_triple_quote_" },
+        { new char[1] { '\'' }, "_quote_" },
+        { new char[2] { '\'', '\'' }, "_double_quote_" },
+        { new char[3] { '\'', '\'', '\'' }, "_triple_quote_" },
+        { new char[1] { '=' }, "_equals_" },
+        { new char[2] { '=', '=' }, "_double_equals_" },
+        { new char[3] { '=', '=', '=' }, "_triple_equals_" },
+        { new char[2] { '!', '=' }, "_not_equal_" },
+        { new char[2] { '<', '>' }, "_not_equal_" },
+        { new char[2] { '<', '=' }, "_less_or_equal_" },
+        { new char[1] { '<' }, "_less_than_" },
+        { new char[2] { '>', '=' }, "_greater_or_equal_" },
+        { new char[1] { '>' }, "_greater_than_" },
+        { new char[1] { '!' }, "_not_" },
+        { new char[1] { '*' }, "_asterisk_" },
+        { new char[1] { '^' }, "_power_" },
+        { new char[1] { '#' }, "_number_" },
+        { new char[1] { '$' }, "_dollar_" },
+        { new char[1] { '%' }, "_percent_" },
+        { new char[1] { '&' }, "_and_" },
+        { new char[1] { '@' }, "_at_" },
+        { new char[1] { '+' }, "_plus_" },
+        { new char[1] { '{' }, "_" },
+        { new char[1] { '}' }, "_" },
+        { new char[1] { '[' }, "_" },
+        { new char[1] { ']' }, "_" },
+        { new char[1] { '(' }, "_" },
+        { new char[1] { ')' }, "_" },
+        { new char[1] { '\\' }, "_" },
+        { new char[1] { '/' }, "_" },
+        { new char[1] { '|' }, "_or_" },
+        { new char[2] { '|', '|' }, "_or_" },
+        { new char[1] { ':' }, "_" },
+        { new char[1] { ';' }, "_" },
+        { new char[1] { ',' }, "_" },
+        { new char[1] { '°' }, "_degrees_" },
+        { new char[1] { '?' }, "_question_" },
+        { new char[1] { '"' }, "_quotation_" },
+        { new char[2] { '"', '"' }, "_double_quotation_" },
+        { new char[1] { '“' }, "_quotation_" },
+        { new char[2] { '“', '“' }, "_double_quotation_" },
+        { new char[1] { '”' }, "_quotation_" },
+        { new char[2] { '”', '”' }, "_double_quotation_" },
+        { new char[1] { ' ' }, "_" },
+        { new char[1] { '-' }, "_" },
+        { new char[1] { '–' }, "_" },
+        { new char[1] { '—' }, "_" },
+        { new char[1] { '_' }, "_" },
+        { new char[1] { '.' }, "_" },
+        { new char[1] { '\r' }, "" },
+        { new char[1] { '\n' }, "" },
+        { new char[1] { '~' }, "_tilde_" },
+    };
+
+    /// <summary>(Immutable) The pascal.</summary>
+    public static readonly Dictionary<char[], string> ReplacementsPascal = new(ReplacementComparer.Default)
+    {
+        { new char[1] { '…' }, "Ellipsis" },
+        { new char[3] { '.', '.', '.' }, "Ellipsis" },
+        { new char[1] { '’' }, "Quote" },
+        { new char[2] { '’', '’' }, "DoubleQuote" },
+        { new char[3] { '’', '’', '’' }, "TripleQuote" },
+        { new char[1] { '\'' }, "Quote" },
+        { new char[2] { '\'', '\'' }, "DoubleQuote" },
+        { new char[3] { '\'', '\'', '\'' }, "TripleQuote" },
+        { new char[1] { '=' }, "Equals" },
+        { new char[2] { '=', '=' }, "DoubleEquals" },
+        { new char[3] { '=', '=', '=' }, "TripleEquals" },
+        { new char[2] { '!', '=' }, "NotEqual" },
+        { new char[2] { '<', '>' }, "NotEqual" },
+        { new char[2] { '<', '=' }, "LessOrEqual" },
+        { new char[1] { '<' }, "LessThan" },
+        { new char[2] { '>', '=' }, "GreaterOrEqual" },
+        { new char[1] { '>' }, "GreaterThan" },
+        { new char[1] { '!' }, "Not" },
+        { new char[1] { '*' }, "Asterisk" },
+        { new char[1] { '^' }, "Power" },
+        { new char[1] { '#' }, "Number" },
+        { new char[1] { '$' }, "Dollar" },
+        { new char[1] { '%' }, "Percent" },
+        { new char[1] { '&' }, "And" },
+        { new char[1] { '@' }, "At" },
+        { new char[1] { '+' }, "Plus" },
+        { new char[1] { '{' }, "_" },
+        { new char[1] { '}' }, "_" },
+        { new char[1] { '[' }, "_" },
+        { new char[1] { ']' }, "_" },
+        { new char[1] { '(' }, "_" },
+        { new char[1] { ')' }, "_" },
+        { new char[1] { '\\' }, "_" },
+        { new char[1] { '/' }, "_" },
+        { new char[1] { '|' }, "Or" },
+        { new char[2] { '|', '|' }, "Or" },
+        { new char[1] { ':' }, "_" },
+        { new char[1] { ';' }, "_" },
+        { new char[1] { ',' }, "_" },
+        { new char[1] { '°' }, "Degrees" },
+        { new char[1] { '?' }, "Question" },
+        { new char[1] { '"' }, "Quotation" },
+        { new char[2] { '"', '"' }, "DoubleQuotation" },
+        { new char[1] { '“' }, "Quotation" },
+        { new char[2] { '“', '“' }, "DoubleQuotation" },
+        { new char[1] { '”' }, "Quotation" },
+        { new char[2] { '”', '”' }, "DoubleQuotation" },
+        { new char[1] { ' ' }, "_" },
+        { new char[1] { '-' }, "_" },
+        { new char[1] { '–' }, "_" },
+        { new char[1] { '—' }, "_" },
+        { new char[1] { '_' }, "_" },
+        { new char[1] { '.' }, "_" },
+        { new char[1] { '\r' }, "" },
+        { new char[1] { '\n' }, "" },
+        { new char[1] { '~' }, "Tilde" },
+    };
+
+    /// <summary>A replacement comparer.</summary>
+    private class ReplacementComparer : IEqualityComparer<char[]>
+    {
+        /// <summary>The default.</summary>
+        private static ReplacementComparer _default = new();
+
+        /// <summary>Gets the default.</summary>
+        public static ReplacementComparer Default => _default;
+
+        /// <summary>Determines whether the specified objects are equal.</summary>
+        /// <param name="a">The first object of type <paramref name="T" /> to compare.</param>
+        /// <param name="b">The second object of type <paramref name="T" /> to compare.</param>
+        /// <returns>
+        /// <see langword="true" /> if the specified objects are equal; otherwise, <see langword="false" />
+        /// .
+        /// </returns>
+        public bool Equals(char[] a, char[] b)
+        {
+            return StructuralComparisons.StructuralEqualityComparer.Equals(a, b);
+        }
+
+        /// <summary>Returns a hash code for the specified object.</summary>
+        /// <param name="obj">The <see cref="T:System.Object" /> for which a hash code is to be returned.</param>
+        /// <returns>A hash code for the specified object.</returns>
+        public int GetHashCode(char[] obj)
+        {
+            return StructuralComparisons.StructuralEqualityComparer.GetHashCode(obj);
+        }
+    }
 
     /// <summary>Converts this object to a convention.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
@@ -79,7 +238,7 @@ public abstract class FhirUtils
 
             case NamingConvention.PascalDotNotation:
                 {
-                    string[] components = ToPascal(value.Split('.'));
+                    string[] components = ToPascal(value.Split('.', ' ', '_'));
                     value = string.Join(".", components);
 
                     if ((reservedWords != null) &&
@@ -96,7 +255,7 @@ public abstract class FhirUtils
 
             case NamingConvention.PascalCase:
                 {
-                    string[] components = ToPascal(value.Split('.'));
+                    string[] components = ToPascal(value.Split('.', ' ', '_'));
                     value = string.Join(concatenationDelimiter, components);
 
                     if ((reservedWords != null) &&
@@ -113,7 +272,7 @@ public abstract class FhirUtils
 
             case NamingConvention.CamelCase:
                 {
-                    string[] components = ToCamel(value.Split('.'));
+                    string[] components = ToCamel(value.Split('.', ' ', '_'));
                     value = string.Join(concatenationDelimiter, components);
 
                     if ((reservedWords != null) &&
@@ -130,7 +289,7 @@ public abstract class FhirUtils
 
             case NamingConvention.UpperCase:
                 {
-                    string[] components = ToUpperInvariant(value.Split('.'));
+                    string[] components = ToUpperInvariant(value.Split('.', ' ', '_'));
                     value = string.Join(concatenationDelimiter, components);
 
                     if ((reservedWords != null) &&
@@ -146,7 +305,7 @@ public abstract class FhirUtils
 
             case NamingConvention.LowerCase:
                 {
-                    string[] components = ToLowerInvariant(value.Split('.'));
+                    string[] components = ToLowerInvariant(value.Split('.', ' ', '_'));
                     value = string.Join(concatenationDelimiter, components);
 
                     if ((reservedWords != null) &&
@@ -162,7 +321,7 @@ public abstract class FhirUtils
 
             case NamingConvention.LowerKebab:
                 {
-                    string[] components = ToLowerKebab(value.Split('.'));
+                    string[] components = ToLowerKebab(value.Split('.', ' ', '_'));
                     value = string.Join('-', components);
 
                     if ((reservedWords != null) &&
@@ -177,6 +336,8 @@ public abstract class FhirUtils
                 }
 
             case NamingConvention.None:
+                return value;
+
             default:
                 throw new ArgumentException($"Invalid Naming Convention: {convention}");
         }
@@ -238,18 +399,37 @@ public abstract class FhirUtils
     }
 
     /// <summary>Sanitize for quoted.</summary>
-    /// <param name="input">The input.</param>
+    /// <param name="escapeToHtml">      (Optional) The input.</param>
+    /// <param name="condenseWhitespace">(Optional) True to condense whitespace.</param>
     /// <returns>A string.</returns>
-    public static string SanitizeForQuoted(string input)
+    public static string SanitizeForQuoted(
+        string input,
+        bool escapeToHtml = false,
+        bool condenseWhitespace = false)
     {
         if (string.IsNullOrEmpty(input))
         {
             return string.Empty;
         }
 
-        input = input.Replace("\"", "\\\"");
-        input = input.Replace("\r", "\\r");
-        input = input.Replace("\n", "\\n");
+        if (escapeToHtml)
+        {
+            input = input.Replace("\"", "&quot;")
+                .Replace("\r\n", "<br />")
+                .Replace("\r", "<br />")
+                .Replace("\n", "<br />");
+        }
+        else
+        {
+            input = input.Replace("\"", "\\\"")
+                .Replace("\r", "\\r")
+                .Replace("\n", "\\n");
+        }
+
+        if (condenseWhitespace)
+        {
+            input = _regexRemoveDuplicateWhitespace.Replace(input, " ");
+        }
 
         return input;
     }
@@ -296,6 +476,11 @@ public abstract class FhirUtils
         string value = input.Trim();
         value = value.Replace("\"", "\\\"").Replace("\n", "<br/> ");
 
+        if (value.Contains("\n", StringComparison.Ordinal))
+        {
+            Console.Write("");
+        }
+
         return value;
     }
 
@@ -335,20 +520,68 @@ public abstract class FhirUtils
     /// <summary>Sanitize for property.</summary>
     /// <param name="value">        The value.</param>
     /// <param name="reservedWords">The reserved words.</param>
+    /// <param name="toConvention"> (Optional) To convention.</param>
+    /// <param name="replacements"> (Optional) The replacements.</param>
+    /// <param name="checkForGmt">  (Optional) True to check for GMT.</param>
     /// <returns>A string.</returns>
     public static string SanitizeForProperty(
         string value,
-        HashSet<string> reservedWords)
+        HashSet<string> reservedWords,
+        NamingConvention convertToConvention = NamingConvention.None,
+        Dictionary<char[], string> replacements = null,
+        bool checkForGmt = false)
     {
         if (string.IsNullOrEmpty(value))
         {
-            return "NONE";
+            return ToConvention("None", string.Empty, convertToConvention);
         }
 
         if (value.StartsWith("http://hl7.org/fhir/", StringComparison.Ordinal))
         {
-            value = value.Substring(20);
+            value = "FHIR_" + value.Substring(20);
         }
+        else if (value.StartsWith("http://hl7.org/fhirpath/", StringComparison.Ordinal))
+        {
+            value = "FHIRPath_" + value.Substring(24);
+        }
+        else if (value.StartsWith("http://terminology.hl7.org/", StringComparison.Ordinal))
+        {
+            value = "THO_" + value.Substring(27);
+        }
+        else if (value.StartsWith("http://hl7.org/", StringComparison.Ordinal))
+        {
+            value = "HL7_" + value.Substring(15);
+        }
+        else if (value.StartsWith("https://"))
+        {
+            value = value.Substring(8);
+        }
+        else if (value.StartsWith("http://"))
+        {
+            value = value.Substring(7);
+        }
+        else if (value.StartsWith("urn:oid:"))
+        {
+            value = "OID_" + value.Substring(8);
+        }
+        else if (value.StartsWith("urn:uuid:"))
+        {
+            value = "UUID_" + value.Substring(9);
+        }
+        else if (value.StartsWith('/'))
+        {
+            value = "Per" + value.Substring(1);
+        }
+
+        if (checkForGmt)
+        {
+            if (value.Contains("/GMT-", StringComparison.Ordinal))
+            {
+                value = value.Replace("/GMT-", "/GMTMinus", StringComparison.Ordinal);
+            }
+        }
+
+        replacements = replacements ?? ReplacementsWithUnderscores;
 
         char[] chars = value.Normalize(NormalizationForm.FormD).ToCharArray();
 
@@ -358,276 +591,76 @@ public abstract class FhirUtils
 
         for (int i = 0; i < charsLen; i++)
         {
+            char[] v;
             char ch = chars[i];
-            char second = (i + 1 < charsLen) ? chars[i + 1] : '\0';
-            char third = (i + 2 < charsLen) ? chars[i + 2] : '\0';
 
-            switch (ch)
+            if (i + 2 < charsLen)
             {
-                case '.':
-                    if ((second == '.') &&
-                        (third == '.'))
-                    {
-                        sb.Append("_ellipsis_");
-                        i += 2;
-                        continue;
-                    }
+                v = new char[3] { ch, chars[i + 1], chars[i + 2] };
+                if (replacements.ContainsKey(v))
+                {
+                    sb.Append(replacements[v]);
+                    i += 2;                 // skip two *additional* characters
+                    continue;
+                }
+            }
 
-                    sb.Append('_');
+            if (i + 1 < charsLen)
+            {
+                v = new char[2] { ch, chars[i + 1] };
+                if (replacements.ContainsKey(v))
+                {
+                    sb.Append(replacements[v]);
+                    i += 1;                // skip one *additional* character
+                    continue;
+                }
+            }
+
+            v = new char[1] { ch };
+            if (replacements.ContainsKey(v))
+            {
+                sb.Append(replacements[v]);
+                continue;
+            }
+
+            UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(ch);
+
+            switch (uc)
+            {
+                case UnicodeCategory.UppercaseLetter:
+                case UnicodeCategory.LowercaseLetter:
+                case UnicodeCategory.TitlecaseLetter:
+                case UnicodeCategory.DecimalDigitNumber:
+                    sb.Append(ch);
                     break;
 
-                case '’':
-                case '\'':
-                    if (second == '\'')
-                    {
-                        sb.Append("_double_quote_");
-                        i++;
-                        continue;
-                    }
-
-                    sb.Append("_quote_");
-
-                    break;
-
-                case '=':
-                    if (second == '=')
-                    {
-                        sb.Append("_double_equals_");
-                        i++;
-                        continue;
-                    }
-
-                    sb.Append("_equals_");
-
-                    break;
-
-                case '!':
-                    if (second == '=')
-                    {
-                        sb.Append("_not_equals_");
-                        i++;
-                        continue;
-                    }
-
-                    sb.Append("_not_");
-
-                    break;
-
-                case '<':
-                    if (second == '=')
-                    {
-                        sb.Append("_less_than_or_equals_");
-                        i++;
-                        continue;
-                    }
-
-                    sb.Append("_less_than_");
-
-                    break;
-
-                case '>':
-                    if (second == '=')
-                    {
-                        sb.Append("_greater_than_or_equals_");
-                        i++;
-                        continue;
-                    }
-
-                    sb.Append("_greater_than_");
-
-                    break;
-
-                case '…':
-                    sb.Append("_ellipsis_unicode_");
-                    break;
-
-                case '*':
-                    sb.Append("_asterisk_");
-                    break;
-
-                case '^':
-                    sb.Append("_power_");
-                    break;
-
-                case '#':
-                    sb.Append("_number_");
-                    break;
-
-                case '$':
-                    sb.Append("_dollar_");
-                    break;
-
-                case '%':
-                    sb.Append("_percent_");
-                    break;
-
-                case '&':
-                    sb.Append("_and_");
-                    break;
-
-                case '@':
-                    sb.Append("_at_");
-                    break;
-
-                case '+':
-                    sb.Append("_plus_");
-                    break;
-
-                case '{':
-                    sb.Append("_");     // sb.Append("_open_brace_");
-                    break;
-
-                case '}':
-                    sb.Append("_");     // sb.Append("_close_brace_");
-                    break;
-
-                case '[':
-                    sb.Append("_");     // sb.Append("_open_bracket_");
-                    break;
-
-                case ']':
-                    sb.Append("_");     // sb.Append("_close_bracket_");
-                    break;
-
-                case '(':
-                    sb.Append("_");     // sb.Append("_open_parenthesis_");
-                    break;
-
-                case ')':
-                    sb.Append("_");     // sb.Append("_close_parenthesis_");
-                    break;
-
-                case '\\':
-                    sb.Append("_");     // sb.Append("_backslash_");
-                    break;
-
-                case '/':
-                    if (i == 0)
-                    {
-                        sb.Append("Per");
-                    }
-                    else
-                    {
-                        sb.Append("_");     // sb.Append("_slash_");
-                    }
-
-                    break;
-
-                case '|':
-                    sb.Append("_pipe_");
-                    break;
-
-                case ':':
-                    sb.Append("_");     // sb.Append("_colon_");
-                    break;
-
-                case ';':
-                    sb.Append("_");     // sb.Append("_semicolon_");
-                    break;
-
-                case ',':
-                    sb.Append("_");     // sb.Append("_comma_");
-                    break;
-
-                case '°':
-                    sb.Append("_degrees_");
-                    break;
-
-                case '?':
-                    sb.Append("_question_");
-                    break;
-
-                case '"':
-                case '“':
-                case '”':
-                    sb.Append("_quotation_");
-                    break;
-
-                case ' ':
-                case '-':
-                case '–':
-                case '—':
-                case '_':
-                    if (sb.Length != 0)
-                    {
-                        sb.Append('_');
-                    }
-
-                    break;
-
-                case '\r':
-                case '\n':
-                    break;
-
+                //case UnicodeCategory.ModifierLetter:
+                //case UnicodeCategory.OtherLetter:
+                //case UnicodeCategory.NonSpacingMark:
+                //case UnicodeCategory.SpacingCombiningMark:
+                //case UnicodeCategory.EnclosingMark:
+                //case UnicodeCategory.LetterNumber:
+                //case UnicodeCategory.OtherNumber:
+                //case UnicodeCategory.SpaceSeparator:
+                //case UnicodeCategory.LineSeparator:
+                //case UnicodeCategory.ParagraphSeparator:
+                //case UnicodeCategory.Control:
+                //case UnicodeCategory.Format:
+                //case UnicodeCategory.Surrogate:
+                //case UnicodeCategory.PrivateUse:
+                //case UnicodeCategory.ConnectorPunctuation:
+                //case UnicodeCategory.DashPunctuation:
+                //case UnicodeCategory.OpenPunctuation:
+                //case UnicodeCategory.ClosePunctuation:
+                //case UnicodeCategory.InitialQuotePunctuation:
+                //case UnicodeCategory.FinalQuotePunctuation:
+                //case UnicodeCategory.OtherPunctuation:
+                //case UnicodeCategory.MathSymbol:
+                //case UnicodeCategory.CurrencySymbol:
+                //case UnicodeCategory.ModifierSymbol:
+                //case UnicodeCategory.OtherSymbol:
+                //case UnicodeCategory.OtherNotAssigned:
                 default:
-                    UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(ch);
-
-                    switch (uc)
-                    {
-                        case UnicodeCategory.UppercaseLetter:
-                        case UnicodeCategory.LowercaseLetter:
-                        case UnicodeCategory.TitlecaseLetter:
-                            sb.Append(ch);
-                            break;
-                        case UnicodeCategory.ModifierLetter:
-                            break;
-                        case UnicodeCategory.OtherLetter:
-                            break;
-                        case UnicodeCategory.NonSpacingMark:
-                            break;
-                        case UnicodeCategory.SpacingCombiningMark:
-                            break;
-                        case UnicodeCategory.EnclosingMark:
-                            break;
-                        case UnicodeCategory.DecimalDigitNumber:
-                            sb.Append(ch);
-                            break;
-                        case UnicodeCategory.LetterNumber:
-                            break;
-                        case UnicodeCategory.OtherNumber:
-                            break;
-                        case UnicodeCategory.SpaceSeparator:
-                            break;
-                        case UnicodeCategory.LineSeparator:
-                            break;
-                        case UnicodeCategory.ParagraphSeparator:
-                            break;
-                        case UnicodeCategory.Control:
-                            break;
-                        case UnicodeCategory.Format:
-                            break;
-                        case UnicodeCategory.Surrogate:
-                            break;
-                        case UnicodeCategory.PrivateUse:
-                            break;
-                        case UnicodeCategory.ConnectorPunctuation:
-                            break;
-                        case UnicodeCategory.DashPunctuation:
-                            break;
-                        case UnicodeCategory.OpenPunctuation:
-                            break;
-                        case UnicodeCategory.ClosePunctuation:
-                            break;
-                        case UnicodeCategory.InitialQuotePunctuation:
-                            break;
-                        case UnicodeCategory.FinalQuotePunctuation:
-                            break;
-                        case UnicodeCategory.OtherPunctuation:
-                            break;
-                        case UnicodeCategory.MathSymbol:
-                            break;
-                        case UnicodeCategory.CurrencySymbol:
-                            break;
-                        case UnicodeCategory.ModifierSymbol:
-                            break;
-                        case UnicodeCategory.OtherSymbol:
-                            break;
-                        case UnicodeCategory.OtherNotAssigned:
-                            break;
-                        default:
-                            break;
-                    }
-
                     break;
             }
         }
@@ -645,6 +678,11 @@ public abstract class FhirUtils
         while (value.EndsWith("_", StringComparison.Ordinal))
         {
             value = value.Remove(value.Length - 1);
+        }
+
+        if (convertToConvention != NamingConvention.None)
+        {
+            value = ToConvention(value, string.Empty, convertToConvention);
         }
 
         // need to check for all digits or underscores, or reserved word

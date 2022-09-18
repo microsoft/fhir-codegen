@@ -3,11 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A class representing a FHIR complex type.</summary>
@@ -27,8 +22,11 @@ public class FhirComplex : FhirTypeBase
     /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
     /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
     /// <param name="baseTypeName">    Base type of this complex structure, if provided.</param>
+    /// <param name="baseTypeCanonical">Base type canonical of this complex structure, if provided</param>
     /// <param name="url">             URL of the resource.</param>
+    /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
+    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this complex resource is flagged as experimental.</param>
     /// <param name="shortDescription">Information describing the short.</param>
     /// <param name="purpose">         The purpose.</param>
@@ -39,8 +37,11 @@ public class FhirComplex : FhirTypeBase
         string path,
         string explicitName,
         string baseTypeName,
+        string baseTypeCanonical,
         Uri url,
+        string publicationStatus,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string shortDescription,
         string purpose,
@@ -50,13 +51,16 @@ public class FhirComplex : FhirTypeBase
             id,
             path,
             url,
+            publicationStatus,
             standardStatus,
+            fmmLevel,
             isExperimental,
             shortDescription,
             purpose,
             comment,
             validationRegEx,
-            baseTypeName)
+            baseTypeName,
+            baseTypeCanonical)
     {
         _components = new();
         _rootElement = null;
@@ -80,8 +84,11 @@ public class FhirComplex : FhirTypeBase
     /// <param name="path">            The dot-notation path to this resource/data type/extension.</param>
     /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
     /// <param name="baseTypeName">    Base type name for this complex structure, if provided.</param>
+    /// <param name="baseTypeCanonical">Base type canonical of this complex structure, if provided</param>
     /// <param name="url">             URL of the resource.</param>
+    /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
+    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this complex type is marked experimental.</param>
     /// <param name="shortDescription">Information describing the short.</param>
     /// <param name="purpose">         The definition.</param>
@@ -94,8 +101,11 @@ public class FhirComplex : FhirTypeBase
         string path,
         string explicitName,
         string baseTypeName,
+        string baseTypeCanonical,
         Uri url,
+        string publicationStatus,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string shortDescription,
         string purpose,
@@ -108,8 +118,11 @@ public class FhirComplex : FhirTypeBase
             path,
             explicitName,
             baseTypeName,
+            baseTypeCanonical,
             url,
+            publicationStatus,
             standardStatus,
+            fmmLevel,
             isExperimental,
             shortDescription,
             purpose,
@@ -128,9 +141,12 @@ public class FhirComplex : FhirTypeBase
         string name,
         string explicitName,
         Uri url,
+        string publicationStatus,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string baseTypeName,
+        string baseTypeCanonical,
         string shortDescription,
         string purpose,
         string comment,
@@ -151,8 +167,11 @@ public class FhirComplex : FhirTypeBase
         path,
         explicitName,
         baseTypeName,
+        baseTypeCanonical,
         url,
+        publicationStatus,
         standardStatus,
+        fmmLevel,
         isExperimental,
         shortDescription,
         purpose,
@@ -336,8 +355,11 @@ public class FhirComplex : FhirTypeBase
                 property.Path,
                 property.ExplicitName,
                 elementType,
+                string.Empty,
                 property.URL,
+                property.PublicationStatus,
                 property.StandardStatus,
+                property.FhirMaturityLevel,
                 property.IsExperimental,
                 property.ShortDescription,
                 property.Purpose,
@@ -608,8 +630,11 @@ public class FhirComplex : FhirTypeBase
                 Path,
                 ExplicitName,
                 BaseTypeName,
+                BaseTypeCanonical,
                 URL,
+                PublicationStatus,
                 StandardStatus,
+                FhirMaturityLevel,
                 IsExperimental,
                 ShortDescription,
                 Purpose,

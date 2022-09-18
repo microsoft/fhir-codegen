@@ -472,7 +472,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             using (StreamWriter sw = new StreamWriter(stream))
             {
                 // OpenApiYamlWriter writer = new OpenApiYamlWriter(sw);
-                OpenApiJsonWriter writer = new OpenApiJsonWriter(sw);
+                OpenApiJsonWriter writer = new OpenApiJsonWriter(sw, new OpenApiJsonWriterSettings() { Terse = minify });
 
                 if (_openApiVersion == 2)
                 {
@@ -482,16 +482,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     document.Serialize(writer, OpenApiSpecVersion.OpenApi3_0);
                 }
-            }
-
-            if (minify)
-            {
-                // TODO(ginoc): Swap this to System.Text.Json
-                object obj = Newtonsoft.Json.JsonConvert.DeserializeObject(File.ReadAllText(filename));
-
-                File.Delete(filename);
-
-                File.WriteAllText(filename, Newtonsoft.Json.JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.None));
             }
         }
 

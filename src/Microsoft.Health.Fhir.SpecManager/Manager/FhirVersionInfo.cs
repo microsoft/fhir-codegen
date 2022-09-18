@@ -4,10 +4,7 @@
 // </copyright>
 
 using System.IO;
-using System.Linq;
 using Microsoft.Health.Fhir.SpecManager.Converters;
-using Microsoft.Health.Fhir.SpecManager.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -559,6 +556,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             foreach (KeyValuePair<string, FhirOperation> kvp in source._systemOperations)
             {
+                if (_systemOperations.ContainsKey(kvp.Key))
+                {
+                    continue;
+                }
+
                 if (options.ServerInfo.ServerOperations.ContainsKey(kvp.Value.Code))
                 {
                     _systemOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
@@ -580,11 +582,16 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         string.Empty,
                         kvp.Value.Name,
                         kvp.Value.Documentation,
+                        string.Empty,
+                        string.Empty,
+                        null,
+                        null,
                         true,
                         false,
                         false,
                         kvp.Value.Name,
                         kvp.Value.Documentation,
+                        string.Empty,
                         null,
                         new List<FhirParameter>(),
                         false));
@@ -612,6 +619,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             foreach (KeyValuePair<string, FhirSearchParam> kvp in source._globalSearchParameters)
             {
+                if (_globalSearchParameters.ContainsKey(kvp.Key))
+                {
+                    continue;
+                }
+
                 if (options.ServerInfo.ServerSearchParameters.ContainsKey(kvp.Value.Code))
                 {
                     _globalSearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
@@ -1070,15 +1082,25 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <param name="artifactClass">     [out] The artifact class enum.</param>
     /// <param name="resolvedPackage">   [out] The resolved package.</param>
     /// <param name="resolveParentLinks">(Optional) True to resolve parent links.</param>
+    /// <param name="knownArtifactClass"> (Optional) Class hint to resolve artifacts</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetArtifact(
         string token,
         out object artifact,
         out FhirArtifactClassEnum artifactClass,
         out string resolvedPackage,
-        bool resolveParentLinks = true)
+        bool resolveParentLinks = true,
+        FhirArtifactClassEnum knownArtifactClass = FhirArtifactClassEnum.Unknown)
     {
-        artifactClass = GetArtifactClass(token);
+        if (knownArtifactClass != FhirArtifactClassEnum.Unknown)
+        {
+            artifactClass = knownArtifactClass;
+        }
+        else
+        {
+            artifactClass = GetArtifactClass(token);
+        }
+
         switch (artifactClass)
         {
             case FhirArtifactClassEnum.PrimitiveType:
@@ -1267,13 +1289,16 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     }
 
                     FhirComplex current = (FhirComplex)artifact;
+                    string baseKey = string.IsNullOrEmpty(current.BaseTypeCanonical)
+                        ? current.BaseTypeName
+                        : current.BaseTypeCanonical;
 
                     if (resolveParentLinks &&
                         (!string.IsNullOrEmpty(current.BaseTypeName)) &&
                         (!current.BaseTypeName.Equals(current.Name, StringComparison.Ordinal)) &&
                         (current.Parent == null) &&
                         TryGetArtifact(
-                            current.BaseTypeName,
+                            baseKey,
                             out object parent,
                             out FhirArtifactClassEnum parentClass,
                             out string parentResolvedDirective,
@@ -1921,6 +1946,8 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 null,
                 type,
                 string.Empty,
+                string.Empty,
+                null,
                 false,
                 string.Empty,
                 string.Empty,
