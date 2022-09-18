@@ -6,8 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -616,14 +614,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // traverse value sets starting with highest version
                     foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderByDescending(s => s.Version))
                     {
-                        if (vs.ReferencedByComplexes.Count < 2)
+                        if (vs.ReferencedByComplexes.Count(rc => rc != "Extension") < 2)
                         {
                             /* ValueSets that are used in a single POCO are generated as a nested enum inside that
                              * POCO, not here in the shared valuesets */
                             continue;
                         }
 
-                        if (vs.StrongestBinding != FhirElement.ElementDefinitionBindingStrength.Required)
+                        if (!vs.StrongestBindingByType.ContainsKey("code") || vs.StrongestBinding != FhirElement.ElementDefinitionBindingStrength.Required)
                         {
                             /* Since required bindings cannot be extended, those are the only bindings that
                                can be represented using enums in the POCO classes (using <c>Code&lt;T&gt;</c>). All other coded members
@@ -1343,6 +1341,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 explicitName = capitalizeThoseSillyBackboneNames(sillyBackboneName);
                 exportName = explicitName + "Component";
             }
+            if (complex.Id.StartsWith("NutritionOrder") && complex.Id.EndsWith("schedule")
+                || complex.Id.StartsWith("ExplanationOfBenefit") && complex.Id.EndsWith("bodySite")
+                || complex.Id.StartsWith("ImagingSelection") && complex.Id.EndsWith("mageRegion"))
+            {
+                string parentName = complex.Id.Substring(0, complex.Id.IndexOf('.'));
+                var sillyBackboneName = complex.Id.Substring(parentName.Length);
+                explicitName = capitalizeThoseSillyBackboneNames(sillyBackboneName);
+                exportName = explicitName + "Component";
+            }
             // end of repair
 
             string componentName = parentExportName + "#" + (string.IsNullOrEmpty(explicitName) ?
@@ -1434,7 +1441,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 foreach (FhirElement element in complex.Elements.Values)
                 {
                     if ((!string.IsNullOrEmpty(element.ValueSet)) &&
-                        (element.BindingStrength == "required") &&
+                        (element.BindingStrength == "required" && element.ElementTypes.Any(et => et.Key == "code")) && 
                         _info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
                     {
                         WriteEnum(vs, className, usedEnumNames);
@@ -2138,6 +2145,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             //   - Citation.contributorship.summary
 
             if (type.StartsWith("Citation") || type.StartsWith("Statistic") || type.StartsWith("DeviceDefinition"))
+            {
+                string parentName = type.Substring(0, type.IndexOf('.'));
+                var sillyBackboneName = type.Substring(parentName.Length);
+                type = parentName + "." + capitalizeThoseSillyBackboneNames(sillyBackboneName) + "Component";
+            }
+            else if (type.StartsWith("NutritionOrder") && type.EndsWith("schedule")
+                || type.StartsWith("ExplanationOfBenefit") && type.EndsWith("bodySite")
+                || type.StartsWith("ImagingSelection") && type.EndsWith("mageRegion"))
             {
                 string parentName = type.Substring(0, type.IndexOf('.'));
                 var sillyBackboneName = type.Substring(parentName.Length);
