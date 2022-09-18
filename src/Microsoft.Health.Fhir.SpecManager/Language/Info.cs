@@ -188,17 +188,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     _writer.IncreaseIndent();
 
-                    string bindings = string.Empty;
+                    string vsReferences = string.Empty;
 
                     if (vs.StrongestBindingByType != null)
                     {
-                        bindings = ", bindings: " + string.Join(", ", vs.StrongestBindingByType.Select(bt => $"{bt.Key}:{bt.Value}"));
+                        vsReferences = $"references ({vs.ReferencingElementsByPath.Count}): " + string.Join(", ", vs.ReferencingElementsByPath.Keys);
+                        vsReferences += ", strongest binding: " + vs.StrongestBinding.ToString();
+                        vsReferences += ", by type: " + string.Join(", ", vs.StrongestBindingByType.Select(bt => $"{bt.Key}:{bt.Value}"));
+                        _writer.WriteLineIndented(vsReferences);
                     }
-
-                    _writer.WriteLineIndented(
-                        $"  references: {vs.ReferencedByPaths.Count}," +
-                        $" strongest binding: {vs.StrongestBinding}" +
-                        $"{bindings}");
 
                     if (vs.Expansion != null)
                     {

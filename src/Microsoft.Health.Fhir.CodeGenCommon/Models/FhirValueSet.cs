@@ -17,6 +17,7 @@ public class FhirValueSet : ICloneable
     private List<FhirConcept> _valueList = null;
     private HashSet<string> _codeSystems = new();
     private List<string> _referencedPaths = new();
+    private Dictionary<string, FhirElement> _referencingElementsByPath = new();
     private List<string> _referencedResources = new();
     private Dictionary<string, FhirElement.ElementDefinitionBindingStrength> _bindingStrengthByType = new();
     private FhirElement.ElementDefinitionBindingStrength _strongestBinding;
@@ -172,7 +173,10 @@ public class FhirValueSet : ICloneable
     public HashSet<string> ReferencedCodeSystems => _codeSystems;
 
     /// <summary>Gets the list of elements (by Path) that reference this value set.</summary>
+    [Obsolete("Will be removing this in favor of ReferencingElementsByPath in the future")]
     public List<string> ReferencedByPaths => _referencedPaths;
+
+    public Dictionary<string, FhirElement> ReferencingElementsByPath => _referencingElementsByPath;
 
     /// <summary>Gets the list of resources or complex types that reference this value set.</summary>
     public List<string> ReferencedByComplexes => _referencedResources;
@@ -207,7 +211,7 @@ public class FhirValueSet : ICloneable
         HashSet<string> resources = new HashSet<string>();
         HashSet<string> paths = new HashSet<string>();
 
-        foreach ((string path, ValueSetReferenceInfo.VsReferenceRec rec) in referenceInfo.VsRecsByPath)
+        foreach ((string path, FhirElement element) in referenceInfo.ReferencingElementsByPath)
         {
             if (paths.Contains(path))
             {
@@ -221,17 +225,19 @@ public class FhirValueSet : ICloneable
                 _referencedResources.Add(resource);
             }
 
-            _referencedPaths.Add((string)path.Clone());
+            _referencedPaths.Add(path);
             paths.Add(path);
 
-            if (rec.FhirTypes != null)
+            _referencingElementsByPath.Add(path, element);
+
+            if (element.ElementTypes != null)
             {
-                foreach (string fhirType in rec.FhirTypes)
+                foreach (string fhirType in element.ElementTypes.Keys)
                 {
                     if ((!_bindingStrengthByType.ContainsKey(fhirType)) ||
-                        (_bindingStrengthByType[fhirType] < rec.BindingStrength))
+                        (_bindingStrengthByType[fhirType] < element.ValueSetBindingStrength))
                     {
-                        _bindingStrengthByType[fhirType] = rec.BindingStrength;
+                        _bindingStrengthByType[fhirType] = (FhirElement.ElementDefinitionBindingStrength)element.ValueSetBindingStrength;
                     }
                 }
             }

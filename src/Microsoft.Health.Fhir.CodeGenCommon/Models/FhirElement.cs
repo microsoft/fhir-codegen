@@ -646,7 +646,8 @@ public class FhirElement : FhirTypeBase
 
             if (ValueSetBindingStrength != null)
             {
-                valueSetReferences[url].AddPath(Path, elementTypes.Keys, (ElementDefinitionBindingStrength)ValueSetBindingStrength!);
+                //valueSetReferences[url].AddPath(Path, elementTypes.Keys, (ElementDefinitionBindingStrength)ValueSetBindingStrength!);
+                valueSetReferences[url].AddPath(this);
             }
         }
 

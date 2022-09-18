@@ -1863,6 +1863,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 swReleaseDate,
                 impDescription,
                 impUrl,
+                null,
+                null,
                 resourceInteractions,
                 serverSearchParams,
                 serverOperations);

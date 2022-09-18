@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using fhirCsR2.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -23,6 +24,8 @@ public class FhirServerInfo
     /// <param name="softwareReleaseDate">      The FHIR Server software release date.</param>
     /// <param name="implementationDescription">Information describing the implementation.</param>
     /// <param name="implementationUrl">        URL of the implementation.</param>
+    /// <param name="instantiates">             Canonical URL of another capability statement this implements.</param>
+    /// <param name="implementationGuides">     Implementation guides supported.</param>
     /// <param name="resourceInteractions">     The server interactions by resource.</param>
     /// <param name="serverSearchParameters">   The search parameters for searching all resources.</param>
     /// <param name="serverOperations">         The operations defined at the system level operation.</param>
@@ -35,6 +38,8 @@ public class FhirServerInfo
         string softwareReleaseDate,
         string implementationDescription,
         string implementationUrl,
+        IEnumerable<string> instantiates,
+        IEnumerable<string> implementationGuides,
         Dictionary<string, FhirServerResourceInfo> resourceInteractions,
         Dictionary<string, FhirServerSearchParam> serverSearchParameters,
         Dictionary<string, FhirServerOperation> serverOperations)
@@ -49,6 +54,8 @@ public class FhirServerInfo
         SoftwareReleaseDate = softwareReleaseDate;
         ImplementationDescription = implementationDescription;
         ImplementationUrl = implementationUrl;
+        Instantiates = instantiates;
+        ImplementationGuides = implementationGuides;
         ResourceInteractions = resourceInteractions;
         ServerSearchParameters = serverSearchParameters;
         ServerOperations = serverOperations;
@@ -85,6 +92,8 @@ public class FhirServerInfo
         string softwareReleaseDate,
         string implementationDescription,
         string implementationUrl,
+        IEnumerable<string> instantiates,
+        IEnumerable<string> implementationGuides,
         Dictionary<string, FhirServerResourceInfo> resourceInteractions,
         Dictionary<string, FhirServerSearchParam> serverSearchParameters,
         Dictionary<string, FhirServerOperation> serverOperations)
@@ -106,6 +115,8 @@ public class FhirServerInfo
         SoftwareReleaseDate = softwareReleaseDate;
         ImplementationDescription = implementationDescription;
         ImplementationUrl = implementationUrl;
+        Instantiates = instantiates;
+        ImplementationGuides = implementationGuides;
         ResourceInteractions = resourceInteractions;
         ServerSearchParameters = serverSearchParameters;
         ServerOperations = serverOperations;
@@ -133,6 +144,9 @@ public class FhirServerInfo
         SoftwareReleaseDate = source.SoftwareReleaseDate;
         ImplementationDescription = source.ImplementationDescription;
         ImplementationUrl = source.ImplementationUrl;
+
+        Instantiates = source.Instantiates?.ToArray();
+        ImplementationGuides = source.ImplementationGuides?.ToArray();
 
         Dictionary<string, FhirServerResourceInfo> resourceInteractions = new Dictionary<string, FhirServerResourceInfo>();
 
@@ -210,6 +224,12 @@ public class FhirServerInfo
     /// <summary>Gets URL of the implementation.</summary>
     public string ImplementationUrl { get; }
 
+    /// <summary>Gets the Canonical URLs of other capability statement this implements.</summary>
+    public IEnumerable<string> Instantiates { get; }
+
+    /// <summary>Gets the Implementation guides supported.</summary>
+    public IEnumerable<string> ImplementationGuides { get; }
+
     /// <summary>Gets the server interactions by resource.</summary>
     public Dictionary<string, FhirServerResourceInfo> ResourceInteractions { get; }
 
@@ -221,4 +241,70 @@ public class FhirServerInfo
 
     /// <summary>Gets the operations defined at the system level operation.</summary>
     public Dictionary<string, FhirServerOperation> ServerOperations { get; }
+
+    /// <summary>
+    /// Tries to resolve all packages for definitional resources
+    /// supported by a server.
+    /// </summary>
+    /// <returns></returns>
+    public bool TryResolveServerPackages()
+    {
+        if (string.IsNullOrEmpty(FhirVersion))
+        {
+            return false;
+        }
+
+        if (!FhirPackageCommon.TryGetMajorReleaseForVersion(FhirVersion, out FhirPackageCommon.FhirSequenceEnum sequence))
+        {
+            Console.WriteLine($"Unknown FHIR version on server: {FhirVersion} - cannot process.");
+            return false;
+        }
+
+        string corePackage = FhirPackageCommon.PackageBaseForRelease(sequence) + ".core";
+
+        if (!FhirManager.Current.HasLoadedPackage(corePackage, out _))
+        {
+            FhirManager.Current.LoadPackages(
+                    new string[] { corePackage + "#latest" } ,
+                    false,
+                    true,
+                    true,
+                    false,
+                    string.Empty,
+                    out _);
+        }
+
+
+        if (ImplementationGuides != null)
+        {
+            foreach (string ig in ImplementationGuides)
+            {
+            }
+        }
+
+        if (ServerOperations != null)
+        {
+            foreach (FhirServerOperation serverOp in ServerOperations.Values)
+            {
+                
+            }
+        }
+
+        if (ResourceInteractions != null)
+        {
+            foreach (FhirServerResourceInfo resourceInteraction in ResourceInteractions.Values)
+            {
+                if (resourceInteraction.Operations != null)
+                {
+                    foreach (FhirServerOperation resourceOp in resourceInteraction.Operations.Values)
+                    {
+
+                    }
+                }
+            }
+        }
+
+
+        return false;
+    }
 }

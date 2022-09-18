@@ -7,6 +7,7 @@ using System.IO;
 using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirImplementationGuide;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters;
 
@@ -1874,6 +1875,75 @@ public sealed class FromFhirExpando : IFhirConverter
         return false;
     }
 
+    /// <summary>Process the code system.</summary>
+    /// <param name="ig">             The ImplementationGuide.</param>
+    /// <param name="fhirVersionInfo">FHIR Version information.</param>
+    private void ProcessImplementationGuide(
+        FhirExpando ig,
+        IPackageImportable fhirVersionInfo)
+    {
+        string publicationStatus = ig.GetString("status") ?? string.Empty;
+        string csName = ig.GetString("name") ?? string.Empty;
+        string csId = ig.GetString("id") ?? string.Empty;
+
+        if (string.IsNullOrEmpty(publicationStatus))
+        {
+            publicationStatus = "unknown";
+            _errors.Add($"CodeSystem {csName} ({csId}): Status field missing");
+        }
+
+        // ignore retired
+        if (publicationStatus.Equals("retired", StringComparison.Ordinal))
+        {
+            return;
+        }
+
+
+        string standardStatus =
+            ig.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                ?.GetString("valueCode");
+
+        int? fmmLevel =
+            ig.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                ?.GetInt("valueInteger");
+
+        Dictionary<string, IgDependsOn> dependsOn = new();
+
+        if (ig["dependsOn"] != null)
+        {
+            foreach (FhirExpando dep in ig.GetExpandoEnumerable("dependsOn"))
+            {
+                string depUri = dep.GetString("uri");
+
+                if (string.IsNullOrEmpty(depUri))
+                {
+                    continue;
+                }
+
+                dependsOn.Add(depUri, new IgDependsOn(depUri, dep.GetString("packageId"), dep.GetString("version")));
+            }
+        }
+
+        FhirImplementationGuide implementationGuide = new FhirImplementationGuide(
+            ig.GetString("name"),
+            ig.GetString("id"),
+            new Uri(ig.GetString("url") ?? string.Empty),
+            ig.GetString("version") ?? string.Empty,
+            publicationStatus,
+            standardStatus,
+            fmmLevel,
+            (ig.GetBool("experimental") == true),
+            ig.GetString("title") ?? string.Empty,
+            string.Empty,
+            ig.GetString("description") ?? string.Empty,
+            ig.GetString("packageId"),
+            ig.GetString("fhirVersion"),
+            dependsOn);
+
+        // add our code system
+        fhirVersionInfo.AddImplementationGuide(implementationGuide);
+    }
+
     /// <summary>Displays the issues.</summary>
     void IFhirConverter.DisplayIssues()
     {
@@ -1950,6 +2020,9 @@ public sealed class FromFhirExpando : IFhirConverter
                 ProcessStructureDef(resourceToParse as FhirExpando, fhirVersionInfo);
                 break;
 
+            case "ImplementationGuide":
+                ProcessImplementationGuide(resourceToParse as FhirExpando, fhirVersionInfo);
+                break;
         }
     }
 
@@ -2081,6 +2154,8 @@ public sealed class FromFhirExpando : IFhirConverter
             swReleaseDate,
             impDescription,
             impUrl,
+            caps.GetStringArray("instantiates"),
+            caps.GetStringArray("implementationGuide"),
             resourceInteractions,
             serverSearchParams,
             serverOperations);
