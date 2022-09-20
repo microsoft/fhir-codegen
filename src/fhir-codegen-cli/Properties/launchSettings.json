@@ -32,7 +32,7 @@
         },
         "r5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R5.txt --load-r5 5.0.0-ballot --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R5.txt --load-r5 latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "localInfo": {

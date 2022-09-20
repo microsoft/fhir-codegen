@@ -300,20 +300,10 @@ public class FhirServerInfo
 
                 attempted.Add(serverOp.DefinitionCanonical);
 
-                if (FhirManager.Current.TryResolveCanonical(serverOp.DefinitionCanonical, out object definition, out FhirArtifactClassEnum ac))
+                if (!FhirManager.Current.TryResolveCanonical(sequence, serverOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out _) ||
+                    (ac != FhirArtifactClassEnum.Operation))
                 {
-                    canonicals.Add(
-                        serverOp.DefinitionCanonical,
-                        new ResolvedCanonical(
-                            serverOp.DefinitionCanonical,
-                            ac,
-                            definition));
-
-                    Console.WriteLine(" <<< Resoved operation canonical: " + serverOp.DefinitionCanonical);
-                }
-                else
-                {
-                    Console.WriteLine(" <<< FAILED TO RESOLVE: " + serverOp.DefinitionCanonical);
+                    Console.WriteLine(" <<< Failed to resolve canonical: " + serverOp.DefinitionCanonical);
                 }
             }
         }
@@ -333,27 +323,16 @@ public class FhirServerInfo
 
                         attempted.Add(resourceOp.DefinitionCanonical);
 
-                        if (FhirManager.Current.TryResolveCanonical(resourceOp.DefinitionCanonical, out object definition, out FhirArtifactClassEnum ac))
+                        if (!FhirManager.Current.TryResolveCanonical(sequence, resourceOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out _) ||
+                            (ac != FhirArtifactClassEnum.Operation))
                         {
-                            canonicals.Add(
-                                resourceOp.DefinitionCanonical,
-                                new ResolvedCanonical(
-                                    resourceOp.DefinitionCanonical,
-                                    ac,
-                                    definition));
-
-                            Console.WriteLine(" <<< Resoved operation canonical: " + resourceOp.DefinitionCanonical);
-                        }
-                        else
-                        {
-                            Console.WriteLine(" <<< FAILED TO RESOLVE: " + resourceOp.DefinitionCanonical);
+                            Console.WriteLine(" <<< Failed to resolve canonical: " + resourceOp.DefinitionCanonical);
                         }
                     }
                 }
             }
         }
 
-
-        return false;
+        return true;
     }
 }

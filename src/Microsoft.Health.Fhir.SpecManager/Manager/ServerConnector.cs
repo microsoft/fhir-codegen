@@ -133,6 +133,13 @@ public static class ServerConnector
         return false;
     }
 
+    /// <summary>
+    /// Attempt to download an instance from the specified FULL url.
+    /// </summary>
+    /// <param name="instanceUrl">Full URL for the instance content.</param>
+    /// <param name="fhirJson">Downloaded JSON or null if download fails.</param>
+    /// <returns></returns>
+
     public static bool TryDownloadResource(
         string instanceUrl,
         out string fhirJson)

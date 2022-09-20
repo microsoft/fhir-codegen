@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
+using Microsoft.VisualBasic;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirServerResourceInfo;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
@@ -1243,6 +1244,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             break;
                     }
 
+                    // check for a server only listing their operations at the end
+                    //if (!resource.Operations.Any())
+                    //{
+                    //}
+
                     // TODO(ginoc): Operations in the CS do not indicate if they are instance or type level...
                     //  Need to see if we can figure out the source of the operation (based on definition) and
                     //  use that to create the definition.  Need path location and parameters.
@@ -1253,11 +1259,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     //        continue;
                     //    }
 
-                    //    if (_info.TryGetArtifact(
+                    //    if ((!_info.TryGetArtifact(
                     //            serverOp.DefinitionCanonical,
                     //            out object artifact,
                     //            out FhirArtifactClassEnum artifactClass,
-                    //            out string resolvedPackage))
+                    //            out string resolvedPackage)) &&
+                    //        (!FhirManager.Current.TryResolveCanonical(
+                    //            _info.FhirSequence,
+                    //            serverOp.DefinitionCanonical,
+                    //            out artifactClass,
+                    //            out artifact)))
                     //    {
                     //        continue;
                     //    }
@@ -1280,9 +1291,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     //    OpenApiOperation op = new();
                     //    AddOperationBasicProps(
                     //        op,
-                    //        $"{interaction}{resource.ResourceType}",
-                    //        $"{interaction} a {resource.ResourceType} instance",
-                    //        $"{interaction} a {resource.ResourceType} instance",
+                    //        $"{FhirInteraction.Operation}{fhirOp}",
+                    //        $"{FhirInteraction.Operation} a {resource.ResourceType} instance",
+                    //        $"{FhirInteraction.Operation} a {resource.ResourceType} instance",
                     //        false,
                     //        false);
 
@@ -1347,6 +1358,119 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     //    opsByMethodByPath[path].Add(ot, op);
                     //}
                 }
+
+                //foreach (FhirServerOperation serverOp in _serverInfo.ServerOperations.Values)
+                //{
+                //    if (string.IsNullOrEmpty(serverOp.DefinitionCanonical))
+                //    {
+                //        continue;
+                //    }
+
+                //    if ((!_info.TryGetArtifact(
+                //            serverOp.DefinitionCanonical,
+                //            out object artifact,
+                //            out FhirArtifactClassEnum artifactClass,
+                //            out string resolvedPackage)) &&
+                //        (!FhirManager.Current.TryResolveCanonical(
+                //            _info.FhirSequence,
+                //            serverOp.DefinitionCanonical,
+                //            out artifactClass,
+                //            out artifact)))
+                //    {
+                //        continue;
+                //    }
+
+                //    if (!(artifact is FhirOperation fhirOp))
+                //    {
+                //        continue;
+                //    }
+
+                //    string path = string.Empty;
+                //    OperationType ot = OperationType.Post;
+
+                //    if (!opsByMethodByPath.ContainsKey(path))
+                //    {
+                //        opsByMethodByPath.Add(path, new());
+                //    }
+
+                //    if (opsByMethodByPath[path].ContainsKey(ot))
+                //    {
+                //        continue;
+                //    }
+
+                //    OpenApiOperation op = new();
+                //    AddOperationBasicProps(
+                //        op,
+                //        $"{FhirInteraction.Operation}{fhirOp.Id}",
+                //        $"{FhirInteraction.Operation} {fhirOp.Name}",
+                //        $"{FhirInteraction.Operation} {fhirOp.Name}",
+                //        false,
+                //        false);
+
+                //    string opInput;
+                //    string opOutput;
+
+
+                //    op.RequestBody = new OpenApiRequestBody()
+                //    {
+                //        Content = BuildContentMap("Parameters", false),
+                //        Description = _includeDescriptions ? $"A Parameters" : null,
+                //    };
+
+                //    if (_singleResponseCode)
+                //    {
+                //        op.Responses = new OpenApiResponses()
+                //        {
+                //            ["200"] = new OpenApiResponse()
+                //            {
+                //                Description = "OK",
+                //                Content = BuildContentMap(resource.ResourceType, false),
+                //            },
+                //        };
+                //    }
+                //    else
+                //    {
+                //        op.Responses = new OpenApiResponses()
+                //        {
+                //            ["200"] = new OpenApiResponse()
+                //            {
+                //                Description = "OK",
+                //                Content = BuildContentMap(resource.ResourceType, false),
+                //            },
+                //            ["201"] = new OpenApiResponse()
+                //            {
+                //                Description = "CREATED",
+                //                Content = BuildContentMap(resource.ResourceType, false),
+                //            },
+                //            ["400"] = new OpenApiResponse()
+                //            {
+                //                Description = "BAD REQUEST",
+                //            },
+                //            ["401"] = new OpenApiResponse()
+                //            {
+                //                Description = "NOT AUTHORIZED",
+                //            },
+                //            ["404"] = new OpenApiResponse()
+                //            {
+                //                Description = "NOT FOUND",
+                //            },
+                //            ["405"] = new OpenApiResponse()
+                //            {
+                //                Description = "METHOD NOT ALLOWED",
+                //            },
+                //            ["412"] = new OpenApiResponse()
+                //            {
+                //                Description = "CONFLICT",
+                //            },
+                //            ["422"] = new OpenApiResponse()
+                //            {
+                //                Description = "UNPROCESSABLE",
+                //            },
+                //        };
+                //    }
+
+                //    opsByMethodByPath[path].Add(ot, op);
+                //}
 
                 foreach ((string path, Dictionary<OperationType, OpenApiOperation> opsByType) in opsByMethodByPath)
                 {

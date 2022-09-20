@@ -28,6 +28,11 @@ public static class FhirPackageCommon
 
         /// <summary>An enum constant representing a FHIR Implementation Guide.</summary>
         IG,
+
+        /// <summary>
+        /// An enum constant representing a virtual package.
+        /// </summary>
+        Virtual,
     }
 
     /// <summary>Values that represent FHIR major releases.</summary>

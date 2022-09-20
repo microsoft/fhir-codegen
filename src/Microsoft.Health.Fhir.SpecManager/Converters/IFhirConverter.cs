@@ -23,6 +23,28 @@ public interface IFhirConverter
         object resourceToParse,
         IPackageImportable fhirVersionInfo);
 
+    /// <summary>Attempts to process resource.</summary>
+    /// <param name="resourceToParse">The resource object.</param>
+    /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>
+    /// <param name="resourceCanonical">Canonical URL of the processed resource, or string.Empty if not processed.</param>
+    /// <param name="artifactClass">  Class of the resource parsed</param>
+    void ProcessResource(
+        object resourceToParse,
+        IPackageImportable fhirVersionInfo,
+        out string resourceCanonical,
+        out FhirArtifactClassEnum artifactClass);
+
+    /// <summary>
+    /// Replace a value in a parsed but not-yet processed resource
+    /// </summary>
+    /// <param name="resource"></param>
+    /// <param name="path"></param>
+    /// <param name="value"></param>
+    void ReplaceValue(
+        object resource,
+        string[] path,
+        object value);
+
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>
     /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
     /// <param name="serverUrl"> URL of the server.</param>
