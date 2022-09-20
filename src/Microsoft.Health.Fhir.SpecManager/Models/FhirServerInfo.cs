@@ -242,6 +242,11 @@ public class FhirServerInfo
     /// <summary>Gets the operations defined at the system level operation.</summary>
     public Dictionary<string, FhirServerOperation> ServerOperations { get; }
 
+    public record struct ResolvedCanonical(
+        string Canonical,
+        FhirArtifactClassEnum ArtifactClass,
+        object ResourceObject);
+
     /// <summary>
     /// Tries to resolve all packages for definitional resources
     /// supported by a server.
@@ -274,6 +279,8 @@ public class FhirServerInfo
                     out _);
         }
 
+        HashSet<string> attempted = new();
+        Dictionary<string, ResolvedCanonical> canonicals = new();
 
         if (ImplementationGuides != null)
         {
@@ -286,7 +293,28 @@ public class FhirServerInfo
         {
             foreach (FhirServerOperation serverOp in ServerOperations.Values)
             {
-                
+                if (attempted.Contains(serverOp.DefinitionCanonical))
+                {
+                    continue;
+                }
+
+                attempted.Add(serverOp.DefinitionCanonical);
+
+                if (FhirManager.Current.TryResolveCanonical(serverOp.DefinitionCanonical, out object definition, out FhirArtifactClassEnum ac))
+                {
+                    canonicals.Add(
+                        serverOp.DefinitionCanonical,
+                        new ResolvedCanonical(
+                            serverOp.DefinitionCanonical,
+                            ac,
+                            definition));
+
+                    Console.WriteLine(" <<< Resoved operation canonical: " + serverOp.DefinitionCanonical);
+                }
+                else
+                {
+                    Console.WriteLine(" <<< FAILED TO RESOLVE: " + serverOp.DefinitionCanonical);
+                }
             }
         }
 
@@ -298,7 +326,28 @@ public class FhirServerInfo
                 {
                     foreach (FhirServerOperation resourceOp in resourceInteraction.Operations.Values)
                     {
+                        if (attempted.Contains(resourceOp.DefinitionCanonical))
+                        {
+                            continue;
+                        }
 
+                        attempted.Add(resourceOp.DefinitionCanonical);
+
+                        if (FhirManager.Current.TryResolveCanonical(resourceOp.DefinitionCanonical, out object definition, out FhirArtifactClassEnum ac))
+                        {
+                            canonicals.Add(
+                                resourceOp.DefinitionCanonical,
+                                new ResolvedCanonical(
+                                    resourceOp.DefinitionCanonical,
+                                    ac,
+                                    definition));
+
+                            Console.WriteLine(" <<< Resoved operation canonical: " + resourceOp.DefinitionCanonical);
+                        }
+                        else
+                        {
+                            Console.WriteLine(" <<< FAILED TO RESOLVE: " + resourceOp.DefinitionCanonical);
+                        }
                     }
                 }
             }

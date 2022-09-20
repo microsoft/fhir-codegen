@@ -21,6 +21,7 @@ public static class FhirPackageLoader
         "StructureDefinition",
         "SearchParameter",
         "OperationDefinition",
+        "ImplementationGuide",
     };
 
     /// <summary>Loads.</summary>

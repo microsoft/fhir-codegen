@@ -151,6 +151,21 @@ public abstract class FhirUtils
         { new char[1] { '~' }, "Tilde" },
     };
 
+    public static readonly Dictionary<string, string> DefinitionalResourceNames = new(StringComparer.OrdinalIgnoreCase)
+    {
+        { "StructureDefinition", "StructureDefinition" },
+        { "OperationDefinition", "OperationDefinition" },
+        { "Operation", "OperationDefinition" },
+        { "SearchParameter", "SearchParameter" },
+        { "ImplementationGuide", "ImplementationGuide" },
+        { "CapabilityStatement", "CapabilityStatement" },
+        { "CompartmentDefinition", "CompartmentDefinition" },
+        { "Compartment", "CompartmentDefinition" },
+        { "ConceptMap", "ConceptMap" },
+        { "NamingSystem", "NamingSystem" },
+        { "StructureMap", "StructureMap" },
+    };
+
     /// <summary>A replacement comparer.</summary>
     private class ReplacementComparer : IEqualityComparer<char[]>
     {

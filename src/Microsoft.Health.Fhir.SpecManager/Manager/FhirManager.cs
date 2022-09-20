@@ -134,18 +134,125 @@ public class FhirManager : IDisposable
     /// </summary>
     /// <param name="canonical"></param>
     /// <returns></returns>
-    public bool TryResolveCanonical(string canonical)
+    public bool TryResolveCanonical(string canonical, out object definition, out FhirArtifactClassEnum canonicalClass)
     {
         foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
         {
-            FhirArtifactClassEnum canonicalClass = info.GetArtifactClass(canonical);
-
-            if (canonicalClass != FhirArtifactClassEnum.Unknown)
+            if (info.TryGetArtifact(canonical, out definition, out canonicalClass, out _, true))
             {
                 return true;
             }
         }
 
+        string modified = canonical;
+
+        if (canonical.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+        {
+            // try removing the html
+            modified = canonical.Remove(canonical.Length - 5);
+
+            foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
+            {
+                if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                {
+                    return true;
+                }
+            }
+        }
+
+        if (modified.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        {
+            // try swapping to http
+            modified = "http://" + modified.Substring(8);
+
+            foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
+            {
+                if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                {
+                    return true;
+                }
+            }
+        }
+
+        modified = string.Empty;
+
+        if (canonical.StartsWith("https://www.hl7.org/fhir/", StringComparison.OrdinalIgnoreCase))
+        {
+            modified = canonical.Substring(25);
+        }
+        else if (canonical.StartsWith("https://hl7.org/fhir/", StringComparison.OrdinalIgnoreCase))
+        {
+            modified = canonical.Substring(21);
+        }
+
+        if (!string.IsNullOrEmpty(modified))
+        {
+            if (modified.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+            {
+                modified = modified.Remove(modified.Length - 5);
+            }
+
+            if (modified.Contains('/'))
+            {
+                // try swapping to http
+                modified = "http://hl7.org/fhir/" + modified;
+
+                foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
+                {
+                    if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                    {
+                        return true;
+                    }
+                }
+            }
+            else if (modified.Contains('-'))
+            {
+                string[] components = modified.Split('-');
+
+                if (components.Length > 1)
+                {
+                    for (int i = 0; i < components.Length; i++)
+                    {
+                        if (FhirUtils.DefinitionalResourceNames.TryGetValue(components[i], out string resourceName))
+                        {
+                            string part = string.Join('-', components.Where((v, index) => index != i));
+                            part = FhirUtils.ToConvention(part, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+
+                            modified = "http://hl7.org/fhir/" + resourceName + "/" + part;
+
+                            break;
+                        }
+                    }
+                }
+
+                foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
+                {
+                    if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        try
+        {
+            // attempt to fetch the URL and see what happens
+            if (ServerConnector.TryDownloadResource(canonical, out string json))
+            {
+
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+        // https://www.hl7.org/fhir/operation-resource-validate.html
+        // http://hl7.org/fhir/OperationDefinition/Resource-validate
+
+        definition = null;
+        canonicalClass = FhirArtifactClassEnum.Unknown;
         return false;
     }
 

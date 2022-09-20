@@ -102,6 +102,9 @@ public static class ServerConnector
                 Console.WriteLine($"\t    Release Date: {serverInfo.SoftwareReleaseDate}");
                 Console.WriteLine($"\t     Description: {serverInfo.ImplementationDescription}");
                 Console.WriteLine($"\t       Resources: {serverInfo.ResourceInteractions.Count}");
+
+                //serverInfo.TryResolveServerPackages();
+
                 return true;
             }
         }
@@ -129,4 +132,84 @@ public static class ServerConnector
         serverInfo = null;
         return false;
     }
+
+    public static bool TryDownloadResource(
+        string instanceUrl,
+        out string fhirJson)
+    {
+        if (string.IsNullOrEmpty(instanceUrl))
+        {
+            fhirJson = null;
+            return false;
+        }
+
+        HttpClient client = null;
+        HttpRequestMessage request = null;
+
+        try
+        {
+            Uri instanceUri = new Uri(instanceUrl);
+
+            client = new HttpClient();
+
+            request = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Get,
+                RequestUri = instanceUri,
+                Headers =
+                {
+                    Accept =
+                    {
+                        new MediaTypeWithQualityHeaderValue("application/fhir+json"),
+                    },
+                },
+            };
+
+            Console.WriteLine($"Requesting {request.RequestUri}...");
+
+            HttpResponseMessage response = client.SendAsync(request).Result;
+
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine($"Request to {request.RequestUri} failed! {response.StatusCode}");
+                fhirJson = null;
+                return false;
+            }
+
+            fhirJson = response.Content.ReadAsStringAsync().Result;
+
+            if (string.IsNullOrEmpty(fhirJson))
+            {
+                Console.WriteLine($"Request to {request.RequestUri} returned empty body!");
+                fhirJson = null;
+                return false;
+            }
+
+            return true;
+        }
+#pragma warning disable CA1031 // Do not catch general exception types
+        catch (Exception ex)
+#pragma warning restore CA1031 // Do not catch general exception types
+        {
+            Console.WriteLine($"Failed to get resource: {instanceUrl}, {ex.Message}");
+            fhirJson = null;
+            return false;
+        }
+        finally
+        {
+            if (request != null)
+            {
+                request.Dispose();
+            }
+
+            if (client != null)
+            {
+                client.Dispose();
+            }
+        }
+
+        fhirJson = null;
+        return false;
+    }
+
 }
