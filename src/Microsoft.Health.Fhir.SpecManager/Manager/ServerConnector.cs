@@ -103,7 +103,7 @@ public static class ServerConnector
                 Console.WriteLine($"\t     Description: {serverInfo.ImplementationDescription}");
                 Console.WriteLine($"\t       Resources: {serverInfo.ResourceInteractions.Count}");
 
-                //serverInfo.TryResolveServerPackages();
+                serverInfo.TryResolveServerPackages();
 
                 return true;
             }
