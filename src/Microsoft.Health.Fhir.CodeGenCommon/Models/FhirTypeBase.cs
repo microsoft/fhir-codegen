@@ -3,12 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>
@@ -20,23 +14,28 @@ public class FhirTypeBase
     private readonly string _nameCapitalized;
     private readonly string _path;
     private string _baseTypeName;
+    private string _baseTypeCanonical;
 
     /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-    /// <param name="id">              The id of this element/resource/datatype.</param>
-    /// <param name="path">            The dot-notation path to this element/resource/datatype.</param>
-    /// <param name="url">             The URL.</param>
-    /// <param name="standardStatus">  The standard status.</param>
-    /// <param name="isExperimental">  A value indicating whether this object is experimental.</param>
-    /// <param name="shortDescription">The description.</param>
-    /// <param name="purpose">         The purpose of this definition.</param>
-    /// <param name="comment">         The comment.</param>
-    /// <param name="validationRegEx"> The validation RegEx.</param>
+    /// <param name="id">               The id of this element/resource/datatype.</param>
+    /// <param name="path">             The dot-notation path to this element/resource/datatype.</param>
+    /// <param name="url">              The URL.</param>
+    /// <param name="publicationStatus">The publication status.</param>
+    /// <param name="standardStatus">   The standard status.</param>
+    /// <param name="fmmLevel">         The FHIR Maturity Model level.</param>
+    /// <param name="isExperimental">   A value indicating whether this object is experimental.</param>
+    /// <param name="shortDescription"> The description.</param>
+    /// <param name="purpose">          The purpose of this definition.</param>
+    /// <param name="comment">          The comment.</param>
+    /// <param name="validationRegEx">  The validation RegEx.</param>
     public FhirTypeBase(
         string id,
         string path,
         Uri url,
+        string publicationStatus,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string shortDescription,
         string purpose,
@@ -52,12 +51,15 @@ public class FhirTypeBase
         // set internal values
         Id = id;
         _path = path;
+        PublicationStatus = publicationStatus;
         StandardStatus = standardStatus;
+        FhirMaturityLevel = fmmLevel;
         IsExperimental = isExperimental;
         ShortDescription = shortDescription;
         Purpose = string.IsNullOrEmpty(purpose) ? string.Empty : purpose;
         Comment = string.IsNullOrEmpty(comment) ? Purpose : comment;
         _baseTypeName = string.Empty;
+        _baseTypeCanonical = string.Empty;
         ValidationRegEx = validationRegEx;
         URL = url;
 
@@ -71,36 +73,45 @@ public class FhirTypeBase
     /// <param name="id">              The id of this element/resource/datatype/extension.</param>
     /// <param name="path">            The dot-notation path to this element/resource/datatype/extension.</param>
     /// <param name="url">             The URL.</param>
+    /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
+    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
     /// <param name="isExperimental">  If this object is marked experimental.</param>
     /// <param name="shortDescription">The description.</param>
     /// <param name="purpose">         The purpose of this definition.</param>
     /// <param name="comment">         The comment.</param>
     /// <param name="validationRegEx"> The validation RegEx.</param>
     /// <param name="baseTypeName">    The name of the base type.</param>
+    /// <param name="baseTypeCanonical">The canonical url of the base type.</param>
     public FhirTypeBase(
         string id,
         string path,
         Uri url,
+        string publicationStatus,
         string standardStatus,
+        int? fmmLevel,
         bool isExperimental,
         string shortDescription,
         string purpose,
         string comment,
         string validationRegEx,
-        string baseTypeName)
+        string baseTypeName,
+        string baseTypeCanonical)
         : this(
             id,
             path,
             url,
+            publicationStatus,
             standardStatus,
+            fmmLevel,
             isExperimental,
             shortDescription,
             purpose,
             comment,
             validationRegEx)
     {
-        BaseTypeName = baseTypeName;
+        _baseTypeName = baseTypeName;
+        _baseTypeCanonical = baseTypeCanonical;
     }
 
     /// <summary>Values that represent naming conventions for item types.</summary>
@@ -159,6 +170,9 @@ public class FhirTypeBase
     /// <value>The URL.</value>
     public Uri URL { get; }
 
+    /// <summary>Gets the publication status.</summary>
+    public string PublicationStatus { get; }
+
     /// <summary>
     /// Gets status of this type in the standards process
     /// see: http://hl7.org/fhir/valueset-standards-status.html.
@@ -166,12 +180,19 @@ public class FhirTypeBase
     /// <value>The standard status.</value>
     public string StandardStatus { get; }
 
+    /// <summary>Gets the FHIR maturity level.</summary>
+    public int? FhirMaturityLevel { get; }
+
     /// <summary>Gets a value indicating whether this object is experimental.</summary>
     public bool IsExperimental { get; }
 
     /// <summary>Gets or sets the Name of the type this type inherits from (null if none).</summary>
     /// <value>The name of the base type.</value>
     public string BaseTypeName { get => _baseTypeName; set => _baseTypeName = value; }
+
+    /// <summary>Gets or sets the Canonical of the type this type inherits from (null if none).</summary>
+    /// <value>The name of the base type.</value>
+    public string BaseTypeCanonical { get => _baseTypeCanonical; set => _baseTypeCanonical = value; }
 
     /// <summary>
     /// Gets a concise description of what this element means (e.g. for use in autogenerated summaries).
@@ -345,7 +366,7 @@ public class FhirTypeBase
             return primitiveTypeMap[_baseTypeName];
         }
 
-        string baseType = _baseTypeName;
+        string baseType;
 
         // Resources cannot inherit patterns, but they are listed that way today
         // see https://chat.fhir.org/#narrow/stream/179177-conformance/topic/Inheritance.20and.20Cardinality.20Changes

@@ -85,15 +85,175 @@ public class FhirManager : IDisposable
             }
             else if (directive.Contains(".core", StringComparison.OrdinalIgnoreCase))
             {
-                string t = directive.Replace(".core", string.Empty);
-                if (_loadedInfoByDirective.ContainsKey(t))
+                string d = directive.Replace(".core", string.Empty);
+
+                if (_loadedInfoByDirective.ContainsKey(d))
                 {
-                    packages.Add(_loadedInfoByDirective[t]);
+                    packages.Add(_loadedInfoByDirective[d]);
+                }
+            }
+            else if (directive.Contains('#'))
+            {
+                string d = directive.Replace("#", ".core#");
+
+                if (_loadedInfoByDirective.ContainsKey(d))
+                {
+                    packages.Add(_loadedInfoByDirective[d]);
                 }
             }
         }
 
         return packages;
+    }
+
+    /// <summary>
+    /// Test to see if the manager has a package matching a given id.
+    /// </summary>
+    /// <param name="packageId"></param>
+    /// <param name="version"></param>
+    /// <returns></returns>
+    public bool HasLoadedPackage(string packageId, out string version)
+    {
+        foreach (string directive in _loadedInfoByDirective.Keys)
+        {
+            string[] components = directive.Split('#');
+
+            if (components[0].Equals(packageId, StringComparison.OrdinalIgnoreCase))
+            {
+                version = (components.Length > 1) ? components[1] : string.Empty;
+                return true;
+            }
+        }
+
+        version = string.Empty;
+        return false;
+    }
+
+    /// <summary>
+    /// Tries to see if the manager can resolve a canonical URL in any loaded packages.
+    /// </summary>
+    /// <param name="canonical"></param>
+    /// <returns></returns>
+    public bool TryResolveCanonical(string canonical, out object definition, out FhirArtifactClassEnum canonicalClass)
+    {
+        foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
+        {
+            if (info.TryGetArtifact(canonical, out definition, out canonicalClass, out _, true))
+            {
+                return true;
+            }
+        }
+
+        string modified = canonical;
+
+        if (canonical.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+        {
+            // try removing the html
+            modified = canonical.Remove(canonical.Length - 5);
+
+            foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
+            {
+                if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                {
+                    return true;
+                }
+            }
+        }
+
+        if (modified.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        {
+            // try swapping to http
+            modified = "http://" + modified.Substring(8);
+
+            foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
+            {
+                if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                {
+                    return true;
+                }
+            }
+        }
+
+        modified = string.Empty;
+
+        if (canonical.StartsWith("https://www.hl7.org/fhir/", StringComparison.OrdinalIgnoreCase))
+        {
+            modified = canonical.Substring(25);
+        }
+        else if (canonical.StartsWith("https://hl7.org/fhir/", StringComparison.OrdinalIgnoreCase))
+        {
+            modified = canonical.Substring(21);
+        }
+
+        if (!string.IsNullOrEmpty(modified))
+        {
+            if (modified.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+            {
+                modified = modified.Remove(modified.Length - 5);
+            }
+
+            if (modified.Contains('/'))
+            {
+                // try swapping to http
+                modified = "http://hl7.org/fhir/" + modified;
+
+                foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
+                {
+                    if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                    {
+                        return true;
+                    }
+                }
+            }
+            else if (modified.Contains('-'))
+            {
+                string[] components = modified.Split('-');
+
+                if (components.Length > 1)
+                {
+                    for (int i = 0; i < components.Length; i++)
+                    {
+                        if (FhirUtils.DefinitionalResourceNames.TryGetValue(components[i], out string resourceName))
+                        {
+                            string part = string.Join('-', components.Where((v, index) => index != i));
+                            part = FhirUtils.ToConvention(part, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+
+                            modified = "http://hl7.org/fhir/" + resourceName + "/" + part;
+
+                            break;
+                        }
+                    }
+                }
+
+                foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
+                {
+                    if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        try
+        {
+            // attempt to fetch the URL and see what happens
+            if (ServerConnector.TryDownloadResource(canonical, out string json))
+            {
+
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+        // https://www.hl7.org/fhir/operation-resource-validate.html
+        // http://hl7.org/fhir/OperationDefinition/Resource-validate
+
+        definition = null;
+        canonicalClass = FhirArtifactClassEnum.Unknown;
+        return false;
     }
 
     /// <summary>Gets the loaded core packages in this collection.</summary>

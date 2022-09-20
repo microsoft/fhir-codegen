@@ -5,10 +5,9 @@
 
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Converters;
 using Microsoft.Health.Fhir.SpecManager.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -73,18 +72,22 @@ public static class ServerConnector
                 return false;
             }
 
-            ServerFhirVersionStruct version = JsonConvert.DeserializeObject<ServerFhirVersionStruct>(content);
+            string fhirVersion;
+            using (JsonDocument jdoc = JsonDocument.Parse(content))
+            {
+                fhirVersion = jdoc.RootElement.GetProperty("fhirVersion").GetString();
+            }
 
-            if (string.IsNullOrEmpty(version.FhirVersion))
+            if (string.IsNullOrEmpty(fhirVersion))
             {
                 Console.WriteLine($"Could not determine the FHIR version for {serverUrl}!");
                 serverInfo = null;
                 return false;
             }
 
-            Console.WriteLine($"Connected to {serverUrl}, FHIR version: {version.FhirVersion}");
+            Console.WriteLine($"Connected to {serverUrl}, FHIR version: {fhirVersion}");
 
-            IFhirConverter fhirConverter = ConverterHelper.ConverterForVersion(version.FhirVersion);
+            IFhirConverter fhirConverter = ConverterHelper.ConverterForVersion(fhirVersion);
 
             object metadata = fhirConverter.ParseResource(content);
 
@@ -99,6 +102,9 @@ public static class ServerConnector
                 Console.WriteLine($"\t    Release Date: {serverInfo.SoftwareReleaseDate}");
                 Console.WriteLine($"\t     Description: {serverInfo.ImplementationDescription}");
                 Console.WriteLine($"\t       Resources: {serverInfo.ResourceInteractions.Count}");
+
+                //serverInfo.TryResolveServerPackages();
+
                 return true;
             }
         }
@@ -127,10 +133,83 @@ public static class ServerConnector
         return false;
     }
 
-    /// <summary>Minimal struct that will always parse a conformance/capability statement to get version info.</summary>
-    private struct ServerFhirVersionStruct
+    public static bool TryDownloadResource(
+        string instanceUrl,
+        out string fhirJson)
     {
-        [JsonProperty("fhirVersion")]
-        public string FhirVersion { get; set; }
+        if (string.IsNullOrEmpty(instanceUrl))
+        {
+            fhirJson = null;
+            return false;
+        }
+
+        HttpClient client = null;
+        HttpRequestMessage request = null;
+
+        try
+        {
+            Uri instanceUri = new Uri(instanceUrl);
+
+            client = new HttpClient();
+
+            request = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Get,
+                RequestUri = instanceUri,
+                Headers =
+                {
+                    Accept =
+                    {
+                        new MediaTypeWithQualityHeaderValue("application/fhir+json"),
+                    },
+                },
+            };
+
+            Console.WriteLine($"Requesting {request.RequestUri}...");
+
+            HttpResponseMessage response = client.SendAsync(request).Result;
+
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine($"Request to {request.RequestUri} failed! {response.StatusCode}");
+                fhirJson = null;
+                return false;
+            }
+
+            fhirJson = response.Content.ReadAsStringAsync().Result;
+
+            if (string.IsNullOrEmpty(fhirJson))
+            {
+                Console.WriteLine($"Request to {request.RequestUri} returned empty body!");
+                fhirJson = null;
+                return false;
+            }
+
+            return true;
+        }
+#pragma warning disable CA1031 // Do not catch general exception types
+        catch (Exception ex)
+#pragma warning restore CA1031 // Do not catch general exception types
+        {
+            Console.WriteLine($"Failed to get resource: {instanceUrl}, {ex.Message}");
+            fhirJson = null;
+            return false;
+        }
+        finally
+        {
+            if (request != null)
+            {
+                request.Dispose();
+            }
+
+            if (client != null)
+            {
+                client.Dispose();
+            }
+        }
+
+        fhirJson = null;
+        return false;
     }
+
 }

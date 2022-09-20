@@ -116,7 +116,9 @@ else
                 Url,
                 out object obj,
                 out FhirArtifactClassEnum fhirArtifactClass,
-                out _))
+                out _,
+                true,
+                FhirArtifactClassEnum.PrimitiveType))
         {
             Console.WriteLine($"Unresolved artifact: {Url} from {PackageName}#{Version}!");
             return;

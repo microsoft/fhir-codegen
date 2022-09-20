@@ -21,6 +21,7 @@ public static class FhirPackageLoader
         "StructureDefinition",
         "SearchParameter",
         "OperationDefinition",
+        "ImplementationGuide",
     };
 
     /// <summary>Loads.</summary>
@@ -186,14 +187,14 @@ public static class FhirPackageLoader
                 var resource = fhirInfo.ParseResource(contents);
 
                 // check type matching
-                if (!resource.GetType().Name.Equals(resourceHint, StringComparison.Ordinal))
-                {
-                    // type not found
-                    Console.WriteLine($"\nProcessPackageFiles <<<" +
-                        $" Mismatched type: {shortName}," +
-                        $" should be {resourceHint} parsed to:{resource.GetType().Name}");
-                    throw new InvalidDataException($"Mismatched type: {shortName}: {resourceHint} != {resource.GetType().Name}");
-                }
+                //if (!resource.GetType().Name.Equals(resourceHint, StringComparison.Ordinal))
+                //{
+                //    // type not found
+                //    Console.WriteLine($"\nProcessPackageFiles <<<" +
+                //        $" Mismatched type: {shortName}," +
+                //        $" should be {resourceHint} parsed to:{resource.GetType().Name}");
+                //    throw new InvalidDataException($"Mismatched type: {shortName}: {resourceHint} != {resource.GetType().Name}");
+                //}
 
                 // process this resource
                 fhirInfo.ProcessResource(resource);

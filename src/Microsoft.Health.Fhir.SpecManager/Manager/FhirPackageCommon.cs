@@ -79,6 +79,7 @@ public static class FhirPackageCommon
         new (FhirSequenceEnum.R5,    new DateOnly(2020, 08, 20), "4.5.0",           "R5 Preview #3", "2020Sep"),
         new (FhirSequenceEnum.R5,    new DateOnly(2021, 04, 15), "4.6.0",           "R5 Draft Ballot", "2021May"),
         new (FhirSequenceEnum.R5,    new DateOnly(2021, 12, 19), "5.0.0-snapshot1", "R5 January 2022 Connectathon"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2022, 09, 10), "5.0.0-ballot",    "R5 Ballot #1"),
     };
 
     /// <summary>(Immutable) The ballot URL changeover date.</summary>
@@ -240,6 +241,12 @@ public static class FhirPackageCommon
         {
             FhirSequenceEnum.R5,
             new()
+            {
+                //"CodeSystem-example-metadata.json",
+                //"CodeSystem-example-metadata-2.json",
+                //"ValueSet-example-metadata.json",
+                //"ValueSet-example-metadata-2.json",
+            }
         },
     };
 
@@ -448,7 +455,25 @@ public static class FhirPackageCommon
     ///  required range.</exception>
     /// <param name="version">The version string.</param>
     /// <returns>The FhirMajorRelease that should be used for the specified version.</returns>
+    ///
     public static FhirSequenceEnum MajorReleaseForVersion(string version)
+    {
+        if (TryGetMajorReleaseForVersion(version, out FhirSequenceEnum sequence))
+        {
+            return sequence;
+        }
+
+        throw new ArgumentOutOfRangeException($"Unknown FHIR version: {version}");
+    }
+
+    /// <summary>
+    /// Attempts to get major release for version a FhirSequenceEnum from the given string.
+    /// </summary>
+    /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+    /// <param name="version"> The version string.</param>
+    /// <param name="sequence">[out] The sequence.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool TryGetMajorReleaseForVersion(string version, out FhirSequenceEnum sequence)
     {
         if (string.IsNullOrEmpty(version))
         {
@@ -457,7 +482,8 @@ public static class FhirPackageCommon
 
         if (_fhirReleasesByVersion.ContainsKey(version))
         {
-            return _fhirReleasesByVersion[version].Major;
+            sequence = _fhirReleasesByVersion[version].Major;
+            return true;
         }
 
         string val;
@@ -483,24 +509,28 @@ public static class FhirPackageCommon
             case "1":
             case "2.0":
             case "2":
-                return FhirSequenceEnum.DSTU2;
+                sequence = FhirSequenceEnum.DSTU2;
+                return true;
 
             case "STU3":
             case "R3":
             case "3.0":
             case "3":
-                return FhirSequenceEnum.STU3;
+                sequence = FhirSequenceEnum.STU3;
+                return true;
 
             case "R4":
             case "4":
             case "4.0":
-                return FhirSequenceEnum.R4;
+                sequence = FhirSequenceEnum.R4;
+                return true;
 
             case "R4B":
             case "4B":
             case "4.1":
             case "4.3":
-                return FhirSequenceEnum.R4B;
+                sequence = FhirSequenceEnum.R4B;
+                return true;
 
             case "R5":
             case "4.2":
@@ -509,10 +539,12 @@ public static class FhirPackageCommon
             case "4.6":
             case "5.0":
             case "5":
-                return FhirSequenceEnum.R5;
+                sequence = FhirSequenceEnum.R5;
+                return true;
         }
 
-        throw new ArgumentOutOfRangeException($"Unknown FHIR version: {version}");
+        sequence = FhirSequenceEnum.DSTU2;
+        return false;
     }
 
     /// <summary>Determine if we should process resource.</summary>

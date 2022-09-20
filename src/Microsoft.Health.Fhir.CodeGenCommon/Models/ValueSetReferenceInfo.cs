@@ -3,16 +3,18 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>Information about the value set reference.</summary>
 public class ValueSetReferenceInfo
 {
-    private List<string> _paths;
+    public record struct VsReferenceRec(
+        string Path,
+        IEnumerable<string> FhirTypes,
+        FhirElement.ElementDefinitionBindingStrength BindingStrength);
+
+    private Dictionary<string, FhirElement> _referencingElementsByPath;
+    private Dictionary<string, VsReferenceRec> _vsRecsByPath;
     private FhirElement.ElementDefinitionBindingStrength _strongestBinding;
 
     /// <summary>
@@ -20,12 +22,15 @@ public class ValueSetReferenceInfo
     /// </summary>
     public ValueSetReferenceInfo()
     {
-        _paths = new List<string>();
+        _vsRecsByPath = new();
+        _referencingElementsByPath = new();
         _strongestBinding = FhirElement.ElementDefinitionBindingStrength.Example;
     }
 
     /// <summary>Gets the paths.</summary>
-    public List<string> Paths => _paths;
+    public Dictionary<string, VsReferenceRec> VsRecsByPath => _vsRecsByPath;
+
+    public Dictionary<string, FhirElement> ReferencingElementsByPath => _referencingElementsByPath;
 
     /// <summary>Gets the strongest binding.</summary>
     public FhirElement.ElementDefinitionBindingStrength StrongestBinding => _strongestBinding;
@@ -35,18 +40,47 @@ public class ValueSetReferenceInfo
     /// <param name="strength">   The strength of the value set binding to the given element.</param>
     public void AddPath(
         string elementPath,
-        FhirElement.ElementDefinitionBindingStrength? strength)
+        IEnumerable<string> elementTypes,
+        FhirElement.ElementDefinitionBindingStrength strength)
     {
-        _paths.Add(elementPath);
-
-        if (strength == null)
+        if (!_vsRecsByPath.ContainsKey(elementPath))
         {
-            return;
+            _vsRecsByPath.Add(elementPath, new (elementPath, elementTypes, strength));
         }
 
         if (strength < _strongestBinding)
         {
             _strongestBinding = (FhirElement.ElementDefinitionBindingStrength)strength;
+        }
+    }
+
+    public void AddPath(FhirElement element)
+    {
+        if ((element == null) ||
+            string.IsNullOrEmpty(element.Path) ||
+            (element.ValueSetBindingStrength == null) ||
+            _referencingElementsByPath.ContainsKey(element.Path))
+        {
+            return;
+        }
+
+        FhirElement.ElementDefinitionBindingStrength strength = (FhirElement.ElementDefinitionBindingStrength)element.ValueSetBindingStrength!;
+
+        if (!_vsRecsByPath.ContainsKey(element.Path))
+        {
+            _vsRecsByPath.Add(
+                element.Path,
+                new(
+                    element.Path,
+                    element.ElementTypes.Keys,
+                    strength));
+        }
+
+        _referencingElementsByPath.Add(element.Path, element);
+
+        if (strength < _strongestBinding)
+        {
+            _strongestBinding = strength;
         }
     }
 }

@@ -3,10 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -17,27 +13,33 @@ public class FhirValueSet : ICloneable
     private List<FhirConcept> _valueList = null;
     private HashSet<string> _codeSystems = new();
     private List<string> _referencedPaths = new();
+    private Dictionary<string, FhirElement> _referencingElementsByPath = new();
     private List<string> _referencedResources = new();
+    private Dictionary<string, FhirElement.ElementDefinitionBindingStrength> _bindingStrengthByType = new();
     private FhirElement.ElementDefinitionBindingStrength _strongestBinding;
 
     /// <summary>Initializes a new instance of the <see cref="FhirValueSet"/> class.</summary>
-    /// <param name="name">           The name.</param>
-    /// <param name="id">             The identifier.</param>
-    /// <param name="version">        The version.</param>
-    /// <param name="title">          The title.</param>
-    /// <param name="url">            The URL.</param>
-    /// <param name="standardStatus"> The standard status.</param>
-    /// <param name="description">    The description.</param>
-    /// <param name="composeIncludes">The compose includes.</param>
-    /// <param name="composeExcludes">The compose excludes.</param>
-    /// <param name="expansion">      The expansion.</param>
+    /// <param name="name">             The name.</param>
+    /// <param name="id">               The identifier.</param>
+    /// <param name="version">          The version.</param>
+    /// <param name="title">            The title.</param>
+    /// <param name="url">              The URL.</param>
+    /// <param name="publicationStatus">The publication status.</param>
+    /// <param name="standardStatus">   The standard status.</param>
+    /// <param name="fmmLevel">         The fmm level.</param>
+    /// <param name="description">      The description.</param>
+    /// <param name="composeIncludes">  The compose includes.</param>
+    /// <param name="composeExcludes">  The compose excludes.</param>
+    /// <param name="expansion">        The expansion.</param>
     public FhirValueSet(
         string name,
         string id,
         string version,
         string title,
         string url,
+        string publicationStatus,
         string standardStatus,
+        int? fmmLevel,
         string description,
         List<FhirValueSetComposition> composeIncludes,
         List<FhirValueSetComposition> composeExcludes,
@@ -48,7 +50,9 @@ public class FhirValueSet : ICloneable
         Version = version;
         Title = title;
         URL = url;
+        PublicationStatus = publicationStatus;
         StandardStatus = standardStatus;
+        FhirMaturityLevel = fmmLevel;
         Description = description;
         ComposeIncludes = composeIncludes;
         ComposeExcludes = composeExcludes;
@@ -74,7 +78,9 @@ public class FhirValueSet : ICloneable
         string version,
         string title,
         string url,
+        string publicationStatus,
         string standardStatus,
+        int? fmmLevel,
         string description,
         List<FhirValueSetComposition> composeIncludes,
         List<FhirValueSetComposition> composeExcludes,
@@ -88,7 +94,9 @@ public class FhirValueSet : ICloneable
             version,
             title,
             url,
+            publicationStatus,
             standardStatus,
+            fmmLevel,
             description,
             composeIncludes,
             composeExcludes,
@@ -123,9 +131,18 @@ public class FhirValueSet : ICloneable
     /// <value>The key.</value>
     public string Key => $"{URL}|{Version}";
 
-    /// <summary>Gets the standard status.</summary>
+    /// <summary>Gets the publication status.</summary>
+    public string PublicationStatus { get; }
+
+    /// <summary>
+    /// Gets status of this type in the standards process
+    /// see: http://hl7.org/fhir/valueset-standards-status.html.
+    /// </summary>
     /// <value>The standard status.</value>
     public string StandardStatus { get; }
+
+    /// <summary>Gets the FHIR maturity level.</summary>
+    public int? FhirMaturityLevel { get; }
 
     /// <summary>Gets the description.</summary>
     /// <value>The description.</value>
@@ -152,10 +169,18 @@ public class FhirValueSet : ICloneable
     public HashSet<string> ReferencedCodeSystems => _codeSystems;
 
     /// <summary>Gets the list of elements (by Path) that reference this value set.</summary>
+    [Obsolete("Will be removing this in favor of ReferencingElementsByPath in the future")]
     public List<string> ReferencedByPaths => _referencedPaths;
+
+    public Dictionary<string, FhirElement> ReferencingElementsByPath => _referencingElementsByPath;
 
     /// <summary>Gets the list of resources or complex types that reference this value set.</summary>
     public List<string> ReferencedByComplexes => _referencedResources;
+
+    /// <summary>
+    /// Gets a Dictionary of strongest bindings by FHIR element type
+    /// </summary>
+    public Dictionary<string, FhirElement.ElementDefinitionBindingStrength> StrongestBindingByType => _bindingStrengthByType;
 
     /// <summary>Gets the strongest binding this value set is referenced as (null for unreferenced).</summary>
     public FhirElement.ElementDefinitionBindingStrength? StrongestBinding => _strongestBinding;
@@ -182,7 +207,7 @@ public class FhirValueSet : ICloneable
         HashSet<string> resources = new HashSet<string>();
         HashSet<string> paths = new HashSet<string>();
 
-        foreach (string path in referenceInfo.Paths)
+        foreach ((string path, FhirElement element) in referenceInfo.ReferencingElementsByPath)
         {
             if (paths.Contains(path))
             {
@@ -196,8 +221,22 @@ public class FhirValueSet : ICloneable
                 _referencedResources.Add(resource);
             }
 
-            _referencedPaths.Add((string)path.Clone());
+            _referencedPaths.Add(path);
             paths.Add(path);
+
+            _referencingElementsByPath.Add(path, element);
+
+            if (element.ElementTypes != null)
+            {
+                foreach (string fhirType in element.ElementTypes.Keys)
+                {
+                    if ((!_bindingStrengthByType.ContainsKey(fhirType)) ||
+                        (_bindingStrengthByType[fhirType] < element.ValueSetBindingStrength))
+                    {
+                        _bindingStrengthByType[fhirType] = (FhirElement.ElementDefinitionBindingStrength)element.ValueSetBindingStrength;
+                    }
+                }
+            }
         }
 
         _strongestBinding = referenceInfo.StrongestBinding;
@@ -874,7 +913,9 @@ public class FhirValueSet : ICloneable
             Version,
             Title,
             URL,
+            PublicationStatus,
             StandardStatus,
+            FhirMaturityLevel,
             Description,
             includes,
             excludes,

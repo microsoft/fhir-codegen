@@ -104,5 +104,6 @@ public interface IPackageExportable
         out object artifact,
         out FhirArtifactClassEnum artifactClass,
         out string resolvedPackage,
-        bool resolveParentLinks);
+        bool resolveParentLinks,
+        FhirArtifactClassEnum knownArtifactClass);
 }

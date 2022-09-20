@@ -346,7 +346,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     input = concept.Code;
                 }
 
-                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords);
+                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords, FhirTypeBase.NamingConvention.PascalCase);
                 string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
                 codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);

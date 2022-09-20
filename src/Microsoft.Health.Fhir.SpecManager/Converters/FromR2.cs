@@ -323,6 +323,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 throw new Exception($"Cannot index ValueSet: {vs.Url} version: {vs.Version}");
             }
 
+            string standardStatus =
+                vs.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.FirstOrDefault()?.ValueCode;
+
+            int? fmmLevel =
+                vs.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.FirstOrDefault()?.ValueInteger;
+
             FhirValueSet valueSet = new FhirValueSet(
                 vs.Name,
                 vs.Id,
@@ -330,6 +338,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 string.Empty,
                 vs.Url,
                 vs.Status,
+                standardStatus,
+                fmmLevel,
                 vs.Description,
                 includes,
                 excludes,
@@ -452,6 +462,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             Dictionary<string, FhirCodeSystem.FilterDefinition> filters = new();
             Dictionary<string, FhirCodeSystem.PropertyDefinition> properties = new();
 
+            string standardStatus =
+                cs.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.FirstOrDefault()?.ValueCode;
+
+            int? fmmLevel =
+                cs.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.FirstOrDefault()?.ValueInteger;
+
             FhirCodeSystem codeSystem = new FhirCodeSystem(
                 string.Empty,
                 cs.Id,
@@ -459,6 +477,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 string.Empty,
                 cs.System,
                 string.Empty,
+                standardStatus,
+                fmmLevel,
                 string.Empty,
                 string.Empty,
                 root,
@@ -556,13 +576,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     parameters.Add(new FhirParameter(
                         opParam.Name,
                         opParam.Use,
+                        Array.Empty<string>(),
                         opParam.Min,
                         opParam.Max,
                         opParam.Documentation,
                         opParam.Type,
+                        Array.Empty<string>(),
+                        opParam.Profile == null ? Array.Empty<string>() : new string[1] { opParam.Profile.ReferenceField },
+                        string.Empty,
                         parameters.Count));
                 }
             }
+
+            string standardStatus =
+                op.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.FirstOrDefault()?.ValueCode;
+
+            int? fmmLevel =
+                op.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.FirstOrDefault()?.ValueInteger;
 
             // create the operation
             FhirOperation operation = new FhirOperation(
@@ -571,11 +603,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 op.Version,
                 op.Name,
                 op.Description,
+                op.Status,
+                standardStatus,
+                fmmLevel,
+                op.Idempotent == null ? null : !op.Idempotent,
                 op.System,
                 (op.Type == null) || (op.Type.Count == 0),
                 op.Instance,
                 op.Code,
                 op.Requirements,
+                op.Base?.ReferenceField ?? string.Empty,
                 op.Type,
                 parameters,
                 op.Experimental == true);
@@ -625,6 +662,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
             }
 
+            string standardStatus =
+                sp.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.FirstOrDefault()?.ValueCode;
+
+            int? fmmLevel =
+                sp.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.FirstOrDefault()?.ValueInteger;
+
+
             // create the search parameter
             FhirSearchParam param = new FhirSearchParam(
                 sp.Id,
@@ -638,6 +684,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 sp.Target,
                 sp.Type,
                 sp.Status,
+                standardStatus,
+                fmmLevel,
                 sp.Experimental == true,
                 sp.Xpath,
                 sp.XpathUsage,
@@ -777,6 +825,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 baseTypeName = sd.Name;
             }
 
+            string standardStatus =
+                sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                    ?.FirstOrDefault()?.ValueCode;
+
+            int? fmmLevel =
+                sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                    ?.FirstOrDefault()?.ValueInteger;
+
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
                 sd.Id,
@@ -784,6 +840,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 baseTypeName,
                 new Uri(sd.Url),
                 sd.Status,
+                standardStatus,
+                fmmLevel,
                 sd.Experimental == true,
                 descriptionShort,
                 definition,
@@ -990,14 +1048,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     definition = sd.Snapshot.Element[0].Definition;
                 }
 
+                string standardStatus =
+                    sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                        ?.FirstOrDefault()?.ValueCode
+                    ?? sd.Status;
+
+                int? fmmLevel =
+                    sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                        ?.FirstOrDefault()?.ValueInteger;
+
                 // create a new complex type object
                 FhirComplex complex = new FhirComplex(
                     sd.Id,
                     sd.Name,
                     string.Empty,
+                    string.Empty,
                     sd.ConstrainedType,
                     new Uri(sd.Url),
                     sd.Status,
+                    standardStatus,
+                    fmmLevel,
                     sd.Experimental == true,
                     descriptionShort,
                     definition,
@@ -1010,6 +1080,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 if (!string.IsNullOrEmpty(sd.Base))
                 {
                     complex.BaseTypeName = sd.Base.Substring(sd.Base.LastIndexOf('/') + 1);
+                    complex.BaseTypeCanonical = sd.Base;
                 }
                 else
                 {
@@ -1198,6 +1269,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         null,
                                         string.Empty,
                                         null,
+                                        string.Empty,
+                                        null,
                                         true,
                                         true,
                                         string.Empty,
@@ -1376,6 +1449,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             defaultValue,
                             fixedName,
                             fixedValue,
+                            string.Empty,
+                            null,
                             isInherited,
                             modifiesParent,
                             bindingStrength,
@@ -1509,6 +1584,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             false,
                             false,
                             true,
+                            string.Empty,
+                            null,
                             string.Empty,
                             null,
                             string.Empty,
@@ -1786,6 +1863,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 swReleaseDate,
                 impDescription,
                 impUrl,
+                null,
+                null,
                 resourceInteractions,
                 serverSearchParams,
                 serverOperations);

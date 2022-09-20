@@ -2,12 +2,11 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+
 using System.IO;
-using System.Linq;
-using System.Text;
+using System.Numerics;
+using System.Text.Json;
+using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -143,6 +142,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
+        /// <summary>Builds standard snippet.</summary>
+        /// <param name="standardStatus">The standard status.</param>
+        /// <param name="fmmLevel">      The fmm level.</param>
+        /// <returns>A string.</returns>
+        private static string BuildStandardSnippet(string standardStatus, int? fmmLevel, bool? isExperimental)
+        {
+            string ss = standardStatus ?? string.Empty;
+
+            string fmm = (fmmLevel == null)
+                ? string.Empty
+                : " FMM: " + fmmLevel.ToString();
+
+            string ie = (isExperimental == true)
+                ? " experimental"
+                : string.Empty;
+
+            if (string.IsNullOrEmpty(ss) && string.IsNullOrEmpty(fmm) && string.IsNullOrEmpty(ie))
+            {
+                return string.Empty;
+            }
+
+            return " (" + ss + fmm + ie + ")";
+        }
+
         /// <summary>Writes a value sets.</summary>
         /// <param name="valueSets"> Sets the value belongs to.</param>
         /// <param name="headerHint">(Optional) The header hint.</param>
@@ -159,43 +182,47 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderBy(v => v.Version))
                 {
-                    _writer.WriteLineIndented($"- ValueSet: {vs.URL}|{vs.Version}");
+                    string snip = BuildStandardSnippet(vs.StandardStatus, vs.FhirMaturityLevel, null);
+
+                    _writer.WriteLineIndented($"- ValueSet: {vs.URL}|{vs.Version}{snip} ({vs.Name})");
 
                     _writer.IncreaseIndent();
 
-                    _writer.WriteLineIndented(
-                        $"  references: {vs.ReferencedByPaths.Count}," +
-                        $" strongest binding: {vs.StrongestBinding}");
+                    string vsReferences = string.Empty;
 
-                    foreach (FhirConcept value in vs.Concepts.OrderBy(c => c.Code))
+                    if (vs.StrongestBindingByType != null)
                     {
-                        _writer.WriteLineIndented($"- #{value.Code}: {value.Display}");
+                        vsReferences = $"references ({vs.ReferencingElementsByPath.Count}): " + string.Join(", ", vs.ReferencingElementsByPath.Keys);
+                        vsReferences += ", strongest binding: " + vs.StrongestBinding.ToString();
+                        vsReferences += ", by type: " + string.Join(", ", vs.StrongestBindingByType.Select(bt => $"{bt.Key}:{bt.Value}"));
+                        _writer.WriteLineIndented(vsReferences);
+                    }
+
+                    if (vs.Expansion != null)
+                    {
+                        if (vs.Expansion.IsLimitedExpansion)
+                        {
+                            _writer.WriteLineIndented($"! Partial expansion, not displayed");
+                        }
+                        else
+                        {
+                            foreach (FhirConcept value in vs.Expansion.Contains.OrderBy(c => c.Code))
+                            {
+                                _writer.WriteLineIndented($"- #{value.Code}: {value.Display}");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (FhirConcept value in vs.Concepts.OrderBy(c => c.Code))
+                        {
+                            _writer.WriteLineIndented($"- #{value.Code}: {value.Display}");
+                        }
                     }
 
                     _writer.DecreaseIndent();
                 }
             }
-        }
-
-        /// <summary>Writes a value set.</summary>
-        /// <param name="valueSet">Set the value belongs to.</param>
-        private void WriteValueSet(
-            FhirValueSet valueSet)
-        {
-            _writer.WriteLineIndented(
-                $"- {valueSet.URL}|{valueSet.Version}" +
-                $" ({valueSet.Name})" +
-                $" {valueSet.ReferencedByPaths.Count} references," +
-                $" strongest: {valueSet.StrongestBinding}");
-
-            _writer.IncreaseIndent();
-
-            foreach (FhirConcept concept in valueSet.Concepts.OrderBy(c => c.Code))
-            {
-                _writer.WriteLineIndented($"- #{concept.Code}: {concept.Display}");
-            }
-
-            _writer.DecreaseIndent();
         }
 
         /// <summary>Writes the complexes.</summary>
@@ -234,13 +261,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WritePrimitiveType(
             FhirPrimitive primitive)
         {
-            string experimental = primitive.IsExperimental ? " (experimental)" : string.Empty;
+            string snip = BuildStandardSnippet(primitive.StandardStatus, primitive.FhirMaturityLevel, primitive.IsExperimental);
 
             _writer.WriteLineIndented(
                 $"- {primitive.Name}:" +
                     $" {primitive.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}" +
                     $"::{primitive.TypeForExport(FhirTypeBase.NamingConvention.CamelCase, _primitiveTypeMap)}" +
-                    $"{experimental}");
+                    $"{snip}");
 
             _writer.IncreaseIndent();
 
@@ -316,9 +343,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // (sub-properties are written with cardinality in the prior loop)
             if (_writer.Indentation == 0)
             {
-                string experimental = complex.IsExperimental ? " (experimental)" : string.Empty;
+                string snip = BuildStandardSnippet(complex.StandardStatus, complex.FhirMaturityLevel, complex.IsExperimental);
 
-                _writer.WriteLine($"- {complex.Name}: {complex.BaseTypeName}{experimental}");
+                _writer.WriteLine($"- {complex.Name}: {complex.BaseTypeName}{snip}");
 
                 if (complex.RootElement != null)
                 {
@@ -391,15 +418,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirOperation operation in operations.OrderBy(o => o.Code))
             {
-                string experimental = operation.IsExperimental ? $" (experimental)" : string.Empty;
+                string snip = BuildStandardSnippet(operation.StandardStatus, operation.FhirMaturityLevel, operation.IsExperimental);
 
                 if (isTypeLevel)
                 {
-                    _writer.WriteLineIndented($"${operation.Code}");
+                    _writer.WriteLineIndented($"${operation.Code}{snip}");
                 }
                 else
                 {
-                    _writer.WriteLineIndented($"/{{id}}${operation.Code}");
+                    _writer.WriteLineIndented($"/{{id}}/${operation.Code}{snip}");
                 }
 
                 if (operation.Parameters != null)
@@ -409,7 +436,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // write operation parameters inline
                     foreach (FhirParameter parameter in operation.Parameters.OrderBy(p => p.FieldOrder))
                     {
-                        _writer.WriteLineIndented($"{parameter.Use}: {parameter.Name} ({parameter.FhirCardinality}){experimental}");
+                        string st = string.IsNullOrEmpty(parameter.SearchType) ? string.Empty : "<" + parameter.SearchType + ">";
+                        _writer.WriteLineIndented(
+                            $"{parameter.Use}:" +
+                            $" {parameter.Name}:" +
+                            $" {parameter.ValueType}{st}[{parameter.FhirCardinality}]");
                     }
 
                     _writer.DecreaseIndent();
@@ -440,9 +471,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirSearchParam searchParam in searchParameters.OrderBy(s => s.Code))
             {
-                string experimental = searchParam.IsExperimental ? $" (experimental)" : string.Empty;
-
-                _writer.WriteLineIndented($"?{searchParam.Code}={searchParam.ValueType} ({searchParam.Name}){experimental}");
+                string snip = BuildStandardSnippet(searchParam.StandardStatus, searchParam.FhirMaturityLevel, searchParam.IsExperimental);
+                _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code}={searchParam.ValueType}{snip}");
             }
 
             if (indented)
@@ -485,7 +515,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         profiles = "(" + string.Join("|", elementType.Profiles.Values) + ")";
                     }
 
-                    propertyType = $"{propertyType}{joiner}{elementType.Name}{profiles}";
+                    string targets = string.Empty;
+                    if ((elementType.TypeProfiles != null) && (elementType.TypeProfiles.Count > 0))
+                    {
+                        targets = "(" + string.Join("|", elementType.TypeProfiles.Values) + ")";
+                    }
+
+                    propertyType = $"{propertyType}{joiner}{elementType.Name}{profiles}{targets}";
                 }
             }
 
@@ -528,13 +564,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // check for default value
             if (!string.IsNullOrEmpty(element.DefaultFieldName))
             {
-                _writer.WriteLineIndented($".{element.DefaultFieldName} = {element.DefaultFieldValue}");
+                _writer.WriteLineIndented($".{element.DefaultFieldName} = {JsonSerializer.Serialize(element.DefaultFieldValue)}");
             }
 
             // check for fixed value
             if (!string.IsNullOrEmpty(element.FixedFieldName))
             {
-                _writer.WriteLineIndented($".{element.FixedFieldName} = {element.FixedFieldValue}");
+                _writer.WriteLineIndented($".{element.FixedFieldName} = {JsonSerializer.Serialize(element.FixedFieldValue)}");
+            }
+
+            // check for pattern value
+            if (!string.IsNullOrEmpty(element.PatternFieldName))
+            {
+                _writer.WriteLineIndented($".{element.PatternFieldName} = {JsonSerializer.Serialize(element.PatternFieldValue)}");
             }
 
             if ((element.Codes != null) && (element.Codes.Count > 0))

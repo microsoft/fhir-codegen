@@ -96,16 +96,23 @@
 </p>
 
 <p>
-@foreach((DiffResults.DiffTypeEnum diffEnum, bool visible) in showDiffType.OrderBy(o => o.Key.ToString()))
-{
     <button
         type="button"
-        class=@GetButtonClass(visible)
-        @onclick="() => ToggleShowState(diffEnum)"
+        class=@GetButtonClass(_showState)
+        @onclick="() => ToggleShowState()"
         >
-        @diffEnum.ToString()
+        Toggle All
     </button>
-}
+    @foreach((DiffResults.DiffTypeEnum diffEnum, bool visible) in showDiffType.OrderBy(o => o.Key.ToString()))
+    {
+        <button
+            type="button"
+            class=@GetButtonClass(visible)
+            @onclick="() => ToggleShowState(diffEnum)"
+            >
+            @diffEnum.ToString()
+        </button>
+    }
 </p>
 
 <div class="input-group">
@@ -214,6 +221,9 @@
 
     private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new();
     private Dictionary<DiffResults.DiffTypeEnum, bool> showDiffType = new();
+
+    /// <summary>True to show, false to hide the state.</summary>
+    private bool _showState = true;
 
     private static string[] _bindingStrengthLiterals = {
         "Not bound",
@@ -398,6 +408,11 @@
         ref Dictionary<FhirArtifactClassEnum, Dictionary<string, List<DiffResults.DiffRecord>>> updated,
         Dictionary<string, List<DiffResults.DiffRecord>> data)
     {
+        if (!showArtifactClass.Any())
+        {
+            return;
+        }
+
         if (showArtifactClass[classEnum] != true)
         {
             return;
@@ -466,6 +481,19 @@
     private void ToggleShowState(DiffResults.DiffTypeEnum diffEnum)
     {
         showDiffType[diffEnum] = !showDiffType[diffEnum];
+        InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
+    }
+
+    /// <summary>Toggle show state.</summary>
+    /// <param name="state">True to state.</param>
+    private void ToggleShowState()
+    {
+        _showState = !_showState;
+        foreach (DiffResults.DiffTypeEnum diffEnum in showDiffType.Keys)
+        {
+            showDiffType[diffEnum] = _showState;
+        }
+
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
     }
 

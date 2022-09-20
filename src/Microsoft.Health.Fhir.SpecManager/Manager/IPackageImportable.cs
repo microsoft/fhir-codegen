@@ -148,6 +148,8 @@ public interface IPackageImportable
     /// <param name="valueSet">Set the value belongs to.</param>
     public void AddValueSet(FhirValueSet valueSet);
 
+    public void AddImplementationGuide(FhirImplementationGuide ig);
+
     /// <summary>Adds a versioned parameter.</summary>
     /// <param name="searchMagicType">Type of the search magic.</param>
     /// <param name="name">           The name.</param>

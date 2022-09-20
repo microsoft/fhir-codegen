@@ -4,10 +4,7 @@
 // </copyright>
 
 using System.IO;
-using System.Linq;
 using Microsoft.Health.Fhir.SpecManager.Converters;
-using Microsoft.Health.Fhir.SpecManager.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -41,6 +38,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     private Dictionary<string, FhirNodeInfo> _nodeInfoByPath;
     private Dictionary<FhirArtifactClassEnum, List<FhirArtifactRecord>> _artifactsByClass;
     private Dictionary<string, FhirArtifactClassEnum> _artifactClassByUrl;
+    private Dictionary<string, FhirImplementationGuide> _igsByUri;
 
     private HashSet<string> _excludedKeys;
 
@@ -68,6 +66,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         _valueSetsByUrl = new();
         _nodeInfoByPath = new();
         _artifactClassByUrl = new();
+        _igsByUri = new();
 
         _excludedKeys = new();
 
@@ -175,7 +174,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             }
         }
 
-        Dictionary<string, ValueSetReferenceInfo> valueSetReferences = new Dictionary<string, ValueSetReferenceInfo>();
+        Dictionary<string, ValueSetReferenceInfo> valueSetReferences = new();
 
         // check if we are exporting primitives
         if (options.CopyPrimitives)
@@ -543,6 +542,14 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             }
         }
 
+        if (options.CopyImplementationGuides)
+        {
+            foreach ((string key, FhirImplementationGuide ig) in source._igsByUri)
+            {
+                _igsByUri.Add(key, (FhirImplementationGuide)ig.Clone());
+            }
+        }
+
         if (options.ServerInfo == null)
         {
             foreach (KeyValuePair<string, FhirOperation> kvp in source._systemOperations)
@@ -559,6 +566,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             foreach (KeyValuePair<string, FhirOperation> kvp in source._systemOperations)
             {
+                if (_systemOperations.ContainsKey(kvp.Key))
+                {
+                    continue;
+                }
+
                 if (options.ServerInfo.ServerOperations.ContainsKey(kvp.Value.Code))
                 {
                     _systemOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
@@ -580,11 +592,16 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         string.Empty,
                         kvp.Value.Name,
                         kvp.Value.Documentation,
+                        string.Empty,
+                        string.Empty,
+                        null,
+                        null,
                         true,
                         false,
                         false,
                         kvp.Value.Name,
                         kvp.Value.Documentation,
+                        string.Empty,
                         null,
                         new List<FhirParameter>(),
                         false));
@@ -612,6 +629,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             foreach (KeyValuePair<string, FhirSearchParam> kvp in source._globalSearchParameters)
             {
+                if (_globalSearchParameters.ContainsKey(kvp.Key))
+                {
+                    continue;
+                }
+
                 if (options.ServerInfo.ServerSearchParameters.ContainsKey(kvp.Value.Code))
                 {
                     _globalSearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
@@ -1049,13 +1071,25 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     return true;
                 }
 
+            case FhirArtifactClassEnum.ImplementationGuide:
+                {
+                    if (typeof(T) != typeof(FhirImplementationGuide))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_igsByUri.Values.AsEnumerable<FhirImplementationGuide>();
+                    return true;
+                }
+
+
             case FhirArtifactClassEnum.Unknown:
             case FhirArtifactClassEnum.CapabilityStatement:
             case FhirArtifactClassEnum.Compartment:
             case FhirArtifactClassEnum.ConceptMap:
             case FhirArtifactClassEnum.NamingSystem:
             case FhirArtifactClassEnum.StructureMap:
-            case FhirArtifactClassEnum.ImplementationGuide:
             default:
                 {
                     values = null;
@@ -1070,15 +1104,25 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <param name="artifactClass">     [out] The artifact class enum.</param>
     /// <param name="resolvedPackage">   [out] The resolved package.</param>
     /// <param name="resolveParentLinks">(Optional) True to resolve parent links.</param>
+    /// <param name="knownArtifactClass"> (Optional) Class hint to resolve artifacts</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetArtifact(
         string token,
         out object artifact,
         out FhirArtifactClassEnum artifactClass,
         out string resolvedPackage,
-        bool resolveParentLinks = true)
+        bool resolveParentLinks = true,
+        FhirArtifactClassEnum knownArtifactClass = FhirArtifactClassEnum.Unknown)
     {
-        artifactClass = GetArtifactClass(token);
+        if (knownArtifactClass != FhirArtifactClassEnum.Unknown)
+        {
+            artifactClass = knownArtifactClass;
+        }
+        else
+        {
+            artifactClass = GetArtifactClass(token);
+        }
+
         switch (artifactClass)
         {
             case FhirArtifactClassEnum.PrimitiveType:
@@ -1267,13 +1311,16 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     }
 
                     FhirComplex current = (FhirComplex)artifact;
+                    string baseKey = string.IsNullOrEmpty(current.BaseTypeCanonical)
+                        ? current.BaseTypeName
+                        : current.BaseTypeCanonical;
 
                     if (resolveParentLinks &&
                         (!string.IsNullOrEmpty(current.BaseTypeName)) &&
                         (!current.BaseTypeName.Equals(current.Name, StringComparison.Ordinal)) &&
                         (current.Parent == null) &&
                         TryGetArtifact(
-                            current.BaseTypeName,
+                            baseKey,
                             out object parent,
                             out FhirArtifactClassEnum parentClass,
                             out string parentResolvedDirective,
@@ -1320,12 +1367,25 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     return false;
                 }
 
+            case FhirArtifactClassEnum.ImplementationGuide:
+                {
+                    artifact = ResolveInDict(token, _igsByUri);
+
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
+                }
+
             case FhirArtifactClassEnum.CapabilityStatement:
             case FhirArtifactClassEnum.Compartment:
             case FhirArtifactClassEnum.ConceptMap:
             case FhirArtifactClassEnum.NamingSystem:
             case FhirArtifactClassEnum.StructureMap:
-            case FhirArtifactClassEnum.ImplementationGuide:
             default:
                 {
                     artifact = null;
@@ -1562,6 +1622,27 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             Id = codeSystem.Id,
             Url = new Uri(codeSystem.URL),
             DefinitionResourceType = "CodeSystem",
+        });
+    }
+
+    public void AddImplementationGuide(FhirImplementationGuide ig)
+    {
+        if ((ig == null) ||
+            (ig.URL == null) ||
+            (_igsByUri.ContainsKey(ig.URL.ToString())))
+        {
+            return;
+        }
+
+        _igsByUri.Add(ig.URL.ToString(), ig);
+
+        _artifactClassByUrl.Add(ig.URL.ToString(), FhirArtifactClassEnum.ImplementationGuide);
+        _artifactsByClass[FhirArtifactClassEnum.ImplementationGuide].Add(new()
+        {
+            ArtifactClass = FhirArtifactClassEnum.ImplementationGuide,
+            Id = ig.Id,
+            Url = ig.URL,
+            DefinitionResourceType = "ImplementationGuide",
         });
     }
 
@@ -1921,6 +2002,8 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 null,
                 type,
                 string.Empty,
+                string.Empty,
+                null,
                 false,
                 string.Empty,
                 string.Empty,

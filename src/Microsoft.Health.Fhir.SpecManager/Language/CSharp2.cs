@@ -1061,8 +1061,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirValueSetCollection collection in valueSets)
             {
-                foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values)
-                {
+                FhirValueSet vs = collection.ValueSetsByVersion.Values.OrderBy((vs) => vs.Version).Last();
+
+                //foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values)
+                //{
                     string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
 
                     vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
@@ -1102,7 +1104,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                         WriteFooter();
                     }
-                }
+                //}
             }
         }
 

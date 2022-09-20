@@ -18,11 +18,16 @@ public class FhirOperation : ICloneable
     /// <param name="version">          The version.</param>
     /// <param name="name">             The name.</param>
     /// <param name="description">      The description.</param>
+    /// <param name="publicationStatus">The publication status.</param>
+    /// <param name="standardStatus">   The standard status.</param>
+    /// <param name="fmmLevel">         The fmm level.</param>
+    /// <param name="affectsState">     State of the affects.</param>
     /// <param name="definedOnSystem">  True if defined on system, false if not.</param>
     /// <param name="definedOnType">    True if defined on type, false if not.</param>
     /// <param name="definedOnInstance">True if defined on instance, false if not.</param>
     /// <param name="code">             The code.</param>
     /// <param name="comment">          The comment.</param>
+    /// <param name="baseDefinition">   The base definition.</param>
     /// <param name="resourceTypes">    A list of types of the resources.</param>
     /// <param name="parameters">       The allowed parameters to this operation.</param>
     /// <param name="isExperimental">   True if is experimental, false if not.</param>
@@ -33,11 +38,16 @@ public class FhirOperation : ICloneable
         string version,
         string name,
         string description,
+        string publicationStatus,
+        string standardStatus,
+        int? fmmLevel,
+        bool? affectsState,
         bool definedOnSystem,
         bool definedOnType,
         bool definedOnInstance,
         string code,
         string comment,
+        string baseDefinition,
         List<string> resourceTypes,
         List<FhirParameter> parameters,
         bool isExperimental)
@@ -47,11 +57,16 @@ public class FhirOperation : ICloneable
         Version = version;
         Name = name;
         Description = description;
+        PublicationStatus = publicationStatus;
+        StandardStatus = standardStatus;
+        FhirMaturityLevel = fmmLevel;
+        AffectsState = affectsState;
         DefinedOnSystem = definedOnSystem;
         DefinedOnType = definedOnType;
         DefinedOnInstance = definedOnInstance;
         Code = code;
         Comment = comment;
+        BaseDefinition = baseDefinition;
         Parameters = parameters;
         IsExperimental = isExperimental;
 
@@ -81,6 +96,22 @@ public class FhirOperation : ICloneable
     /// <value>The description.</value>
     public string Description { get; }
 
+    /// <summary>Gets the publication status.</summary>
+    public string PublicationStatus { get; }
+
+    /// <summary>
+    /// Gets status of this type in the standards process
+    /// see: http://hl7.org/fhir/valueset-standards-status.html.
+    /// </summary>
+    /// <value>The standard status.</value>
+    public string StandardStatus { get; }
+
+    /// <summary>Gets the FHIR maturity level.</summary>
+    public int? FhirMaturityLevel { get; }
+
+    /// <summary>Gets a value indicating whether the affects state.</summary>
+    public bool? AffectsState { get; }
+
     /// <summary>Gets a value indicating whether the defined on system.</summary>
     /// <value>True if defined on system, false if not.</value>
     public bool DefinedOnSystem { get; }
@@ -100,6 +131,9 @@ public class FhirOperation : ICloneable
     /// <summary>Gets the comment.</summary>
     /// <value>The comment.</value>
     public string Comment { get; }
+
+    /// <summary>Gets the base definition.</summary>
+    public string BaseDefinition { get; }
 
     /// <summary>Gets a list of types of the resources.</summary>
     /// <value>A list of types of the resources.</value>
@@ -142,11 +176,16 @@ public class FhirOperation : ICloneable
             Version,
             Name,
             Description,
+            PublicationStatus,
+            StandardStatus,
+            FhirMaturityLevel,
+            AffectsState,
             DefinedOnSystem,
             DefinedOnType,
             DefinedOnInstance,
             Code,
             Comment,
+            BaseDefinition,
             resourceTypes,
             parameters,
             IsExperimental);

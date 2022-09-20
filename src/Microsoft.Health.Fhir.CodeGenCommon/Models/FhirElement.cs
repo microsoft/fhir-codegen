@@ -41,6 +41,8 @@ public class FhirElement : FhirTypeBase
     /// <param name="defaultFieldValue">Value of a default field.</param>
     /// <param name="fixedFieldName">   Name of a fixed field, e.g., fixedUri, fixedCode.</param>
     /// <param name="fixedFieldValue">  Value of a fixed field.</param>
+    /// <param name="patternFieldName">   Name of a pattern field, e.g., fixedUri, fixedCode.</param>
+    /// <param name="patternFieldValue">  Value of a pattern field.</param>
     /// <param name="isInherited">      If this element is inherited from somewhere else.</param>
     /// <param name="modifiesParent">   If this element hides a field of its parent.</param>
     /// <param name="bindingStrength">  Strength of binding: required|extensible|preferred|example.</param>
@@ -70,6 +72,8 @@ public class FhirElement : FhirTypeBase
         object defaultFieldValue,
         string fixedFieldName,
         object fixedFieldValue,
+        string patternFieldName,
+        object patternFieldValue,
         bool isInherited,
         bool modifiesParent,
         string bindingStrength,
@@ -81,12 +85,15 @@ public class FhirElement : FhirTypeBase
             path,
             url,
             string.Empty,
+            string.Empty,
+            null,
             false,
             shortDescription,
             purpose,
             comment,
             validationRegEx,
-            baseTypeName)
+            baseTypeName,
+            string.Empty)
     {
         FieldOrder = fieldOrder;
         _elementTypes = elementTypes;
@@ -167,6 +174,9 @@ public class FhirElement : FhirTypeBase
         FixedFieldName = fixedFieldName;
         FixedFieldValue = fixedFieldValue;
 
+        PatternFieldName = patternFieldName;
+        PatternFieldValue = patternFieldValue;
+
         IsInherited = isInherited;
         ModifiesParent = modifiesParent;
 
@@ -221,6 +231,8 @@ public class FhirElement : FhirTypeBase
         Dictionary<string, FhirSlicing> slicing,
         string fixedFieldName,
         object fixedFieldValue,
+        string patternFieldName,
+        object patternFieldValue,
         string fiveWs,
         bool inDifferential)
         : base(
@@ -228,12 +240,15 @@ public class FhirElement : FhirTypeBase
             path,
             url,
             string.Empty,
+            string.Empty,
+            null,
             false,
             shortDescription,
             purpose,
             comment,
             validationRegEx,
-            baseTypeName)
+            baseTypeName,
+            string.Empty)
     {
         ExplicitName = explicitName;
         FieldOrder = fieldOrder;
@@ -258,6 +273,8 @@ public class FhirElement : FhirTypeBase
         _slicing = slicing ?? new();
         FixedFieldName = fixedFieldName;
         FixedFieldValue = fixedFieldValue;
+        PatternFieldName = patternFieldName;
+        PatternFieldValue = patternFieldValue;
         FiveWs = fiveWs;
         _inDifferential = inDifferential;
     }
@@ -398,6 +415,12 @@ public class FhirElement : FhirTypeBase
     /// <summary>Gets the fixed field value.</summary>
     public object FixedFieldValue { get; }
 
+    /// <summary>Gets the name of the pattern field.</summary>
+    public string PatternFieldName { get; }
+
+    /// <summary>Gets the pattern field value.</summary>
+    public object PatternFieldValue { get; }
+
     /// <summary>Gets a value indicating whether this property is an array.</summary>
     public bool IsArray => (CardinalityMax == -1) || (CardinalityMax > 1);
 
@@ -472,8 +495,11 @@ public class FhirElement : FhirTypeBase
                 Path,
                 ExplicitName,
                 BaseTypeName,
+                BaseTypeCanonical,
                 URL,
+                PublicationStatus,
                 StandardStatus,
+                FhirMaturityLevel,
                 false,
                 ShortDescription,
                 Purpose,
@@ -559,6 +585,8 @@ public class FhirElement : FhirTypeBase
             DefaultFieldValue,
             FixedFieldName,
             FixedFieldValue,
+            PatternFieldName,
+            PatternFieldValue,
             IsInherited,
             ModifiesParent,
             BindingStrength,
@@ -595,7 +623,7 @@ public class FhirElement : FhirTypeBase
         }
 
         // check for referenced value sets
-        if ((!IsInherited) &&
+        if (((!IsInherited) || ModifiesParent) &&
             (valueSetReferences != null) &&
             (!string.IsNullOrEmpty(ValueSet)))
         {
@@ -616,7 +644,11 @@ public class FhirElement : FhirTypeBase
                 valueSetReferences.Add(url, new ValueSetReferenceInfo());
             }
 
-            valueSetReferences[url].AddPath(Path, ValueSetBindingStrength);
+            if (ValueSetBindingStrength != null)
+            {
+                //valueSetReferences[url].AddPath(Path, elementTypes.Keys, (ElementDefinitionBindingStrength)ValueSetBindingStrength!);
+                valueSetReferences[url].AddPath(this);
+            }
         }
 
         return element;

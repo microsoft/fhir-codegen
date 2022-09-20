@@ -16,10 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\fhirCsR2\fhirCsR2.csproj" />
-    <ProjectReference Include="..\fhirCsR3\fhirCsR3.csproj" />
-    <ProjectReference Include="..\fhirCsR4B\fhirCsR4B.csproj" />
-    <ProjectReference Include="..\fhirCsR4\fhirCsR4.csproj" />
-    <ProjectReference Include="..\fhirCsR5\fhirCsR5.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj" />
   </ItemGroup>
 

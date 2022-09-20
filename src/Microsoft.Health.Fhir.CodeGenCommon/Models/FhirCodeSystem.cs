@@ -66,25 +66,29 @@ public class FhirCodeSystem
 
     /// <summary>Initializes a new instance of the <see cref="FhirCodeSystem"/> class.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-    /// <param name="name">          The name.</param>
-    /// <param name="id">            The identifier.</param>
-    /// <param name="version">       The version.</param>
-    /// <param name="title">         The title.</param>
-    /// <param name="url">           The URL.</param>
-    /// <param name="standardStatus">The standard status.</param>
-    /// <param name="description">   The description.</param>
-    /// <param name="content">       The content.</param>
-    /// <param name="rootConcept">   The root concept.</param>
-    /// <param name="conceptLookup"> The concept lookup.</param>
-    /// <param name="filters">       The filters.</param>
-    /// <param name="properties">    The properties.</param>
+    /// <param name="name">             The name.</param>
+    /// <param name="id">               The identifier.</param>
+    /// <param name="version">          The version.</param>
+    /// <param name="title">            The title.</param>
+    /// <param name="url">              The URL.</param>
+    /// <param name="publicationStatus">The publication status.</param>
+    /// <param name="standardStatus">   The standard status.</param>
+    /// <param name="fmmLevel">         The fmm level.</param>
+    /// <param name="description">      The description.</param>
+    /// <param name="content">          The content.</param>
+    /// <param name="rootConcept">      The root concept.</param>
+    /// <param name="conceptLookup">    The concept lookup.</param>
+    /// <param name="filters">          The filters.</param>
+    /// <param name="properties">       The properties.</param>
     public FhirCodeSystem(
         string name,
         string id,
         string version,
         string title,
         string url,
+        string publicationStatus,
         string standardStatus,
+        int? fmmLevel,
         string description,
         string content,
         FhirConceptTreeNode rootConcept,
@@ -102,7 +106,9 @@ public class FhirCodeSystem
         Version = version;
         Title = title;
         URL = url;
+        PublicationStatus = publicationStatus;
         StandardStatus = standardStatus;
+        FhirMaturityLevel = fmmLevel;
         Description = description;
         Content = content;
         _rootConcept = rootConcept;
@@ -131,9 +137,18 @@ public class FhirCodeSystem
     /// <value>The URL.</value>
     public string URL { get; }
 
-    /// <summary>Gets the standard status.</summary>
+    /// <summary>Gets the publication status.</summary>
+    public string PublicationStatus { get; }
+
+    /// <summary>
+    /// Gets status of this type in the standards process
+    /// see: http://hl7.org/fhir/valueset-standards-status.html.
+    /// </summary>
     /// <value>The standard status.</value>
     public string StandardStatus { get; }
+
+    /// <summary>Gets the FHIR maturity level.</summary>
+    public int? FhirMaturityLevel { get; }
 
     /// <summary>Gets the description.</summary>
     /// <value>The description.</value>

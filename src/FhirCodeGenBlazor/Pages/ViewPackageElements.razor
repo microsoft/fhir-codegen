@@ -626,15 +626,37 @@ else
             }
         }
 
-        if (complex.Elements != null)
+        if ((complex.Elements == null) || (!complex.Elements.Values.Any()))
         {
-            foreach (FhirElement element in complex.Elements.Values.Where(predicate))
+            return;
+        }
+
+        try
+        {
+            IEnumerable<FhirElement> res = complex.Elements.Values.Where(predicate);
+
+            if ((res == null) || (!res.Any()))
+            {
+                return;
+            }
+
+            foreach (FhirElement element in res)
             {
                 elements.Add(new ElementRecord(
                     artifactClass,
                     rootComplex,
                     element));
             }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"AddElementsFromComplex <<< caught exception applying LINQ filter: {ex.Message}");
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
+            }
+
+            return;
         }
     }
 
