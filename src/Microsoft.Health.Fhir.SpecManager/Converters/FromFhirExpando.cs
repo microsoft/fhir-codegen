@@ -1482,7 +1482,9 @@ public sealed class FromFhirExpando : IFhirConverter
                         parent.Elements.Add(elementPath, fhirElement);
                     }
 
-                    if (element["slicing"] != null)
+                    if ((element["slicing"] != null) &&
+                        (element["slicing", "discriminator"] != null) &&
+                        (element["slicing", "rules"] != null))
                     {
                         List<FhirSliceDiscriminatorRule> discriminatorRules = new List<FhirSliceDiscriminatorRule>();
 
