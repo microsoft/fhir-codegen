@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.IO;
+using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Converters;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
@@ -75,6 +76,25 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         {
             _artifactsByClass.Add(artifactClass, new());
         }
+    }
+
+    public FhirVersionInfo(FhirPackageCommon.FhirSequenceEnum fhirSequence)
+        :this()
+    {
+        _fhirConverter = ConverterHelper.ConverterForVersion(fhirSequence);
+        FhirSequence = fhirSequence;
+
+        PackageDetails = new NpmPackageDetails()
+        {
+            Name = "resolved.canonicals" + fhirSequence.ToString().ToLowerInvariant(),
+            Version = "0.0.0",
+            URL = new Uri("http://localhost/" + fhirSequence.ToString().ToLowerInvariant()),
+            Canonical = "http://localhost/" + fhirSequence.ToString().ToLowerInvariant(),
+        };
+
+        VersionString = "0.0.0";
+        PackageName = PackageDetails.Name;
+        CanonicalUrl = PackageDetails.URL;
     }
 
     /// <summary>Initializes a new instance of the <see cref="FhirVersionInfo"/> class.</summary>
@@ -475,25 +495,60 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
         if (options.CopyOperations)
         {
-            if (restrictOutput || restrictResources)
+            if (options.ServerInfo == null)
             {
-                foreach (FhirOperation op in source._operationsByUrl.Values)
+                if (restrictOutput || restrictResources)
                 {
-                    foreach (string opBaseType in op.ResourceTypes)
+                    foreach (FhirOperation op in source._operationsByUrl.Values)
                     {
-                        if (exportSet.Contains(opBaseType))
+                        foreach (string opBaseType in op.ResourceTypes)
                         {
-                            AddOperation((FhirOperation)op.Clone());
-                            break;
+                            if (exportSet.Contains(opBaseType))
+                            {
+                                AddOperation((FhirOperation)op.Clone());
+                                break;
+                            }
                         }
+                    }
+                }
+                else
+                {
+                    foreach (FhirOperation op in source._operationsByUrl.Values)
+                    {
+                        AddOperation((FhirOperation)op.Clone());
                     }
                 }
             }
             else
             {
-                foreach (FhirOperation op in source._operationsByUrl.Values)
+                if (options.ServerInfo.ServerOperations != null)
                 {
-                    AddOperation((FhirOperation)op.Clone());
+                    foreach (FhirServerOperation serverOp in options.ServerInfo.ServerOperations.Values)
+                    {
+                        if (FhirManager.Current.TryResolveCanonical(FhirSequence, serverOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object resource) &&
+                            (ac == FhirArtifactClassEnum.Operation))
+                        {
+                            AddOperation((FhirOperation)((FhirOperation)resource).Clone());
+                        }
+                    }
+                }
+
+                if (options.ServerInfo.ResourceInteractions != null)
+                {
+                    foreach (FhirServerResourceInfo resourceInteraction in options.ServerInfo.ResourceInteractions.Values)
+                    {
+                        if (resourceInteraction.Operations != null)
+                        {
+                            foreach (FhirServerOperation resourceOp in resourceInteraction.Operations.Values)
+                            {
+                                if (FhirManager.Current.TryResolveCanonical(FhirSequence, resourceOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object resource) &&
+                                    (ac == FhirArtifactClassEnum.Operation))
+                                {
+                                    AddOperation((FhirOperation)((FhirOperation)resource).Clone());
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -872,6 +927,75 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
 
         return FhirArtifactClassEnum.Unknown;
+    }
+
+    public bool AddCanonicalAlias(string canonicalUrl, string canonicalAlias)
+    {
+        if (string.IsNullOrEmpty(canonicalUrl) ||
+            string.IsNullOrEmpty(canonicalAlias))
+        {
+            return false;
+        }
+
+        if (canonicalUrl.Equals(canonicalAlias, StringComparison.Ordinal) ||
+            _artifactClassByUrl.ContainsKey(canonicalAlias))
+        {
+            return true;
+        }
+
+        if (!_artifactClassByUrl.TryGetValue(canonicalUrl, out FhirArtifactClassEnum ac))
+        {
+            return false;
+        }
+
+        _artifactClassByUrl.Add(canonicalAlias, ac);
+
+        switch (ac)
+        {
+            case FhirArtifactClassEnum.Extension:
+                _extensionsByUrl.Add(canonicalAlias, _extensionsByUrl[canonicalUrl]);
+                return true;
+
+            case FhirArtifactClassEnum.Operation:
+                _operationsByUrl.Add(canonicalAlias, _operationsByUrl[canonicalUrl]);
+                return true;
+
+            case FhirArtifactClassEnum.SearchParameter:
+                _searchParamsByUrl.Add(canonicalAlias, _searchParamsByUrl[canonicalUrl]);
+                return true;
+
+            case FhirArtifactClassEnum.CodeSystem:
+                _codeSystemsByUrl.Add(canonicalAlias, _codeSystemsByUrl[canonicalUrl]);
+                return true;
+
+            case FhirArtifactClassEnum.ValueSet:
+                _valueSetsByUrl.Add(canonicalAlias, _valueSetsByUrl[canonicalUrl]);
+                return true;
+
+            case FhirArtifactClassEnum.Profile:
+                _profilesByUrl.Add(canonicalAlias, _profilesByUrl[canonicalUrl]);
+                return true;
+
+            case FhirArtifactClassEnum.ImplementationGuide:
+                _igsByUri.Add(canonicalAlias, _igsByUri[canonicalUrl]);
+                return true;
+
+            case FhirArtifactClassEnum.LogicalModel:
+            case FhirArtifactClassEnum.CapabilityStatement:
+            case FhirArtifactClassEnum.Compartment:
+            case FhirArtifactClassEnum.ConceptMap:
+            case FhirArtifactClassEnum.NamingSystem:
+            case FhirArtifactClassEnum.StructureMap:
+            case FhirArtifactClassEnum.Resource:
+            case FhirArtifactClassEnum.PrimitiveType:
+            case FhirArtifactClassEnum.ComplexType:
+            case FhirArtifactClassEnum.Unknown:
+            default:
+                break;
+        }
+
+
+        return false;
     }
 
     /// <summary>Resolve in dictionary.</summary>
@@ -1930,6 +2054,30 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     {
         // process this per the correct FHIR version
         _fhirConverter.ProcessResource(resource, this);
+    }
+
+    /// <summary>Attempts to process resource.</summary>
+    /// <param name="resource">[out] The resource object.</param>
+    /// <param name="resourceCanonical"> Canonical of the processed resource, or string.Empty if not processed.</param>
+    /// <param name="artifactClass">  Class of the resource parsed</param>
+    public void ProcessResource(object resource, out string resourceCanonical, out FhirArtifactClassEnum artifactClass)
+    {
+        // process this per the correct FHIR version
+        _fhirConverter.ProcessResource(resource, this, out resourceCanonical, out artifactClass);
+    }
+
+    /// <summary>
+    /// Replace a value in a parsed but not-yet processed resource
+    /// </summary>
+    /// <param name="resource"></param>
+    /// <param name="path"></param>
+    /// <param name="value"></param>
+    public void ReplaceParsedValue(
+        object resource,
+        string[] path,
+        object value)
+    {
+        _fhirConverter.ReplaceValue(resource, path, value);
     }
 
     /// <summary>Determines if we can converter has issues.</summary>

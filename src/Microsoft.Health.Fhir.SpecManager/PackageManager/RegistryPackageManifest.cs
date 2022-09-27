@@ -3,9 +3,14 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics;
+using System.Reflection.Emit;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using fhirCsR2.Models;
+using System.Threading.Channels;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using Microsoft.Scripting.Hosting.Shell;
 
 namespace Microsoft.Health.Fhir.SpecManager.PackageManager;
 
@@ -62,7 +67,8 @@ public class RegistryPackageManifest
 
                     if (manifest.Versions[key].PackageKind == "??")
                     {
-                        if (name.StartsWith("hl7.fhir.r", StringComparison.OrdinalIgnoreCase))
+                        if (name.StartsWith("hl7.fhir.r", StringComparison.OrdinalIgnoreCase) &&
+                            key.EndsWith("ballot", StringComparison.Ordinal))
                         {
                             manifest.Versions[key].PackageKind = "Core";
                         }
@@ -118,8 +124,11 @@ public class RegistryPackageManifest
             return false;
         }
 
-        string[] componentsF = first.Split('.');
-        string[] componentsS = second.Split('.');
+        string[] versionSplitF = first.Split('-');
+        string[] versionSplitS = second.Split('-');
+
+        string[] componentsF = versionSplitF[0].Split('.');
+        string[] componentsS = versionSplitS[0].Split('.');
 
         int stopAt = Math.Min(componentsF.Length, componentsS.Length);
 
@@ -154,8 +163,87 @@ public class RegistryPackageManifest
             }
         }
 
+        // two equal versions, check for known dev tags: http://hl7.org/fhir/versions.html
+        //  no tag - release version
+        //  "snapshotN" - a frozen release of a specification for connectathon, ballot dependencies or other reasons
+        //  "ballotN" - a frozen release used in the ballot process
+        //  "draftN" - a frozen release put out for non - ballot review or QA.
+        //  "cibuild" - a 'special' release label that refers to a non - stable release that changes with each commit.
+
+        if (versionSplitF.Length == 1)
+        {
+            return true;
+        }
+
+        if (versionSplitS.Length == 1)
+        {
+            return false;
+        }
+
+        if (versionSplitF[1].Equals("cibuild", StringComparison.Ordinal))
+        {
+            // cibuild is always 'lower'
+            return false;
+        }
+
+        if (versionSplitS[1].Equals("cibuild", StringComparison.Ordinal))
+        {
+            // cibuild is always 'lower'
+            return true;
+        }
+
+        int hashF = BuildHashForTag(versionSplitF[1]);
+        int hashS = BuildHashForTag(versionSplitS[1]);
+
+        if (hashF != hashS)
+        {
+            return hashF > hashS;
+        }
+
         // if both are equal as far as they can, the longer one is higher
         return componentsF.Length > componentsS.Length;
+    }
+
+    private static int BuildHashForTag(string tag)
+    {
+        if (string.IsNullOrEmpty(tag))
+        {
+            return 0;
+        }
+
+        int hash;
+
+        //  "snapshotN" - a frozen release of a specification for connectathon, ballot dependencies or other reasons
+        //  "ballotN" - a frozen release used in the ballot process
+        //  "draftN" - a frozen release put out for non - ballot review or QA.
+        //  "cibuild" - a 'special' release label that refers to a non - stable release that changes with each commit.
+
+        switch (tag[0])
+        {
+            case 's':
+                hash = 200;
+                break;
+
+            case 'b':
+                hash = 300;
+                break;
+
+            case 'd':
+                hash = 100;
+                break;
+
+            case 'c':
+            default:
+                hash = 0;
+                break;
+        }
+
+        if (int.TryParse(tag.Substring(tag.Length - 1), out int sequence))
+        {
+            hash += sequence;
+        }
+
+        return hash;
     }
 
     /// <summary>Gets the highest version.</summary>

@@ -20,6 +20,8 @@ public class FhirManager : IDisposable
     /// <summary>The loaded information by version.</summary>
     private Dictionary<string, FhirVersionInfo> _loadedInfoByDirective;
 
+    private Dictionary<FhirPackageCommon.FhirSequenceEnum, FhirVersionInfo> _nonPackageArtifactsByVersion;
+
     /// <summary>List of types of the directive packages.</summary>
     private Dictionary<string, FhirPackageCommon.FhirPackageTypeEnum> _directivePackageTypes;
 
@@ -47,6 +49,7 @@ public class FhirManager : IDisposable
         _directivePackageTypes = new();
         _loadDirectiveToVersion = new();
         _managerLoadLockObject = new();
+        _nonPackageArtifactsByVersion = new();
     }
 
     /// <summary>Gets the current.</summary>
@@ -134,11 +137,22 @@ public class FhirManager : IDisposable
     /// </summary>
     /// <param name="canonical"></param>
     /// <returns></returns>
-    public bool TryResolveCanonical(string canonical, out object definition, out FhirArtifactClassEnum canonicalClass)
+    public bool TryResolveCanonical(
+        FhirPackageCommon.FhirSequenceEnum fhirSequence,
+        string canonical,
+        out FhirArtifactClassEnum canonicalClass,
+        out object resource)
     {
+        string resolvedPackage;
+
         foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
         {
-            if (info.TryGetArtifact(canonical, out definition, out canonicalClass, out _, true))
+            if (info.FhirSequence != fhirSequence)
+            {
+                continue;
+            }
+
+            if (info.TryGetArtifact(canonical, out resource, out canonicalClass, out resolvedPackage, true))
             {
                 return true;
             }
@@ -153,7 +167,7 @@ public class FhirManager : IDisposable
 
             foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
             {
-                if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                if (info.TryGetArtifact(modified, out resource, out canonicalClass, out resolvedPackage, true))
                 {
                     return true;
                 }
@@ -167,7 +181,12 @@ public class FhirManager : IDisposable
 
             foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
             {
-                if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                if (info.FhirSequence != fhirSequence)
+                {
+                    continue;
+                }
+
+                if (info.TryGetArtifact(modified, out resource, out canonicalClass, out _, true))
                 {
                     return true;
                 }
@@ -199,7 +218,12 @@ public class FhirManager : IDisposable
 
                 foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
                 {
-                    if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                    if (info.FhirSequence != fhirSequence)
+                    {
+                        continue;
+                    }
+
+                    if (info.TryGetArtifact(modified, out resource, out canonicalClass, out _, true))
                     {
                         return true;
                     }
@@ -227,7 +251,12 @@ public class FhirManager : IDisposable
 
                 foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
                 {
-                    if (info.TryGetArtifact(modified, out definition, out canonicalClass, out _, true))
+                    if (info.FhirSequence != fhirSequence)
+                    {
+                        continue;
+                    }
+
+                    if (info.TryGetArtifact(modified, out resource, out canonicalClass, out _, true))
                     {
                         return true;
                     }
@@ -240,18 +269,40 @@ public class FhirManager : IDisposable
             // attempt to fetch the URL and see what happens
             if (ServerConnector.TryDownloadResource(canonical, out string json))
             {
+                if (!_nonPackageArtifactsByVersion.ContainsKey(fhirSequence))
+                {
+                    FhirVersionInfo info = new(fhirSequence);
+                    TrackLoadedPackage(info.PackageName + "#" + info.VersionString, info, true, false);
+                }
 
+                object parsed = _nonPackageArtifactsByVersion[fhirSequence].ParseResource(json);
+
+                // fix for unreplaced [base] urls
+                if (json.Contains("\"[base", StringComparison.Ordinal))
+                {
+                    _nonPackageArtifactsByVersion[fhirSequence].ReplaceParsedValue(parsed, new string[] { "url" }, canonical);
+                }
+
+                _nonPackageArtifactsByVersion[fhirSequence].ProcessResource(parsed, out string resourceCanonical, out canonicalClass);
+
+                if ((!string.IsNullOrEmpty(resourceCanonical)) &&
+                    (canonicalClass != FhirArtifactClassEnum.Unknown))
+                {
+                    _nonPackageArtifactsByVersion[fhirSequence].AddCanonicalAlias(resourceCanonical, canonical);
+                    return _nonPackageArtifactsByVersion[fhirSequence].TryGetArtifact(
+                        resourceCanonical,
+                        out resource,
+                        out _,
+                        out _);
+                }
             }
         }
         catch (Exception ex)
         {
-
+            Console.WriteLine($" <<< failed to resolve canonical via HTTP: {ex.Message}");
         }
 
-        // https://www.hl7.org/fhir/operation-resource-validate.html
-        // http://hl7.org/fhir/OperationDefinition/Resource-validate
-
-        definition = null;
+        resource = null;
         canonicalClass = FhirArtifactClassEnum.Unknown;
         return false;
     }
@@ -435,6 +486,11 @@ public class FhirManager : IDisposable
                 info.PackageName,
                 info.VersionString,
                 PackageLoadStateEnum.Loaded);
+        }
+        else if (loadDirective.StartsWith("resolved.canonical", StringComparison.Ordinal))
+        {
+            _directivePackageTypes.Add(loadDirective, FhirPackageCommon.FhirPackageTypeEnum.Virtual);
+            _nonPackageArtifactsByVersion.Add(info.FhirSequence, info);
         }
         else
         {

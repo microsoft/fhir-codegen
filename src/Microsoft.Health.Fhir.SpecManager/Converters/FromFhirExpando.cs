@@ -899,15 +899,18 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <summary>Process the structure definition.</summary>
     /// <param name="sd">             The structure definition we are parsing.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
+    /// <param name="artifactClass">  The type of artifact this structure definition contains.</param>
     private void ProcessStructureDef(
         FhirExpando sd,
-        IPackageImportable fhirVersionInfo)
+        IPackageImportable fhirVersionInfo,
+        out FhirArtifactClassEnum artifactClass)
     {
         string publicationStatus = sd.GetString("status") ?? "unknown";
 
         // ignore retired
         if (publicationStatus == "retired")
         {
+            artifactClass = FhirArtifactClassEnum.Unknown;
             return;
         }
 
@@ -918,10 +921,12 @@ public sealed class FromFhirExpando : IFhirConverter
         {
             case "primitive-type":
                 ProcessDataTypePrimitive(sd, fhirVersionInfo);
+                artifactClass = FhirArtifactClassEnum.PrimitiveType;
                 break;
 
             case "logical":
                 ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.LogicalModel);
+                artifactClass = FhirArtifactClassEnum.LogicalModel;
                 break;
 
             case "resource":
@@ -931,20 +936,29 @@ public sealed class FromFhirExpando : IFhirConverter
                     if (sd.GetString("type") == "Extension")
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Extension);
+                        artifactClass = FhirArtifactClassEnum.Extension;
                     }
                     else
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Profile);
+                        artifactClass = FhirArtifactClassEnum.Profile;
                     }
                 }
                 else
                 {
+                    artifactClass = sdKind == "complex-type" ? FhirArtifactClassEnum.ComplexType : FhirArtifactClassEnum.Resource;
+
+
                     ProcessComplex(
                         sd,
                         fhirVersionInfo,
-                        sdKind == "complex-type" ? FhirArtifactClassEnum.ComplexType : FhirArtifactClassEnum.Resource);
+                        artifactClass);
                 }
 
+                break;
+
+            default:
+                artifactClass = FhirArtifactClassEnum.Unknown;
                 break;
         }
     }
@@ -1482,7 +1496,9 @@ public sealed class FromFhirExpando : IFhirConverter
                         parent.Elements.Add(elementPath, fhirElement);
                     }
 
-                    if (element["slicing"] != null)
+                    if ((element["slicing"] != null) &&
+                        (element["slicing", "discriminator"] != null) &&
+                        (element["slicing", "rules"] != null))
                     {
                         List<FhirSliceDiscriminatorRule> discriminatorRules = new List<FhirSliceDiscriminatorRule>();
 
@@ -1996,41 +2012,118 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <summary>Attempts to process resource.</summary>
     /// <param name="resourceToParse">The resource object.</param>
     /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>
-    void IFhirConverter.ProcessResource(object resourceToParse, IPackageImportable fhirVersionInfo)
+    public void ProcessResource(object resourceToParse, IPackageImportable fhirVersionInfo)
+    {
+        ProcessResource(resourceToParse, fhirVersionInfo, out _, out _);
+    }
+
+    /// <summary>Attempts to process resource.</summary>
+    /// <param name="resourceToParse">The resource object.</param>
+    /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>
+    /// <param name="resourceCanonical">Canonical URL of the processed resource, or string.Empty if not processed.</param>
+    /// <param name="artifactClass">  Class of the resource parsed</param>
+    public void ProcessResource(
+        object resourceToParse,
+        IPackageImportable fhirVersionInfo,
+        out string resourceCanonical,
+        out FhirArtifactClassEnum artifactClass)
     {
         switch ((resourceToParse as FhirExpando)["resourceType"] ?? string.Empty)
         {
             case "CodeSystem":
                 ProcessCodeSystem(resourceToParse as FhirExpando, fhirVersionInfo);
+                resourceCanonical = (resourceToParse as FhirExpando).GetString("url");
+                artifactClass = FhirArtifactClassEnum.CodeSystem;
                 break;
 
             case "OperationDefinition":
                 ProcessOperation(resourceToParse as FhirExpando, fhirVersionInfo);
+                resourceCanonical = (resourceToParse as FhirExpando).GetString("url");
+                artifactClass = FhirArtifactClassEnum.Operation;
                 break;
 
             case "SearchParameter":
                 ProcessSearchParam(resourceToParse as FhirExpando, fhirVersionInfo);
+                resourceCanonical = (resourceToParse as FhirExpando).GetString("url");
+                artifactClass = FhirArtifactClassEnum.SearchParameter;
                 break;
 
             case "ValueSet":
                 ProcessValueSet(resourceToParse as FhirExpando, fhirVersionInfo);
+                resourceCanonical = (resourceToParse as FhirExpando).GetString("url");
+                artifactClass = FhirArtifactClassEnum.ValueSet;
                 break;
 
             case "StructureDefinition":
-                ProcessStructureDef(resourceToParse as FhirExpando, fhirVersionInfo);
+                ProcessStructureDef(resourceToParse as FhirExpando, fhirVersionInfo, out artifactClass);
+                resourceCanonical = (resourceToParse as FhirExpando).GetString("url");
                 break;
 
             case "ImplementationGuide":
                 ProcessImplementationGuide(resourceToParse as FhirExpando, fhirVersionInfo);
+                resourceCanonical = (resourceToParse as FhirExpando).GetString("url");
+                artifactClass = FhirArtifactClassEnum.ImplementationGuide;
+                break;
+
+            default:
+                resourceCanonical = string.Empty;
+                artifactClass = FhirArtifactClassEnum.Unknown;
                 break;
         }
     }
+
+    /// <summary>
+    /// Replace a value in a parsed but not-yet processed resource
+    /// </summary>
+    /// <param name="resource"></param>
+    /// <param name="path"></param>
+    /// <param name="value"></param>
+    public void ReplaceValue(
+        object resource,
+        string[] path,
+        object value)
+    {
+        if ((resource == null) ||
+            (!(resource is FhirExpando)) ||
+            (path == null) ||
+            (!path.Any()))
+        {
+            return;
+        }
+
+        FhirExpando current = resource as FhirExpando;
+
+        for (int i = 0; i < path.Length - 2; i++)
+        {
+            if (current[path[i]] == null)
+            {
+                return;
+            }
+
+            current = current.GetExpando(path[i]);
+
+            if (current == null)
+            {
+                return;
+            }
+        }
+
+        if ((current[path.Last()] != null) && (value == null))
+        {
+            current.Remove(path.Last());
+        }
+        else
+        {
+            current[path.Last()] = value;
+        }
+    }
+
 
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>
     /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
     /// <param name="serverUrl"> URL of the server.</param>
     /// <param name="serverInfo">[out] Information describing the server.</param>
-    void IFhirConverter.ProcessMetadata(
+    public void ProcessMetadata(
         object metadata,
         string serverUrl,
         out FhirServerInfo serverInfo)

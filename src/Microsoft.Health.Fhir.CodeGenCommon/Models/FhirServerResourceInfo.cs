@@ -205,13 +205,29 @@ public class FhirServerResourceInfo
         [FhirLiteral("history-type")]
         HistoryType,
 
+        /// <summary>Retrieve the change history for all resources on a system.</summary>
+        [FhirLiteral("history-system")]
+        HistorySystem,
+
         /// <summary>Create a new resource with a server assigned id.</summary>
         [FhirLiteral("create")]
         Create,
 
+        /// <summary>Search a resource type or all resources based on some filter criteria.</summary>
+        [FhirLiteral("search")]
+        Search,
+
         /// <summary>Search all resources of the specified type based on some filter criteria.</summary>
         [FhirLiteral("search-type")]
         SearchType,
+
+        /// <summary>Search all resources based on some filter criteria.</summary>
+        [FhirLiteral("search-system")]
+        SearchSystem,
+
+        /// <summary>Perform an operation as defined by an OperationDefinition.</summary>
+        [FhirLiteral("operation")]
+        Operation,
     }
 
     /// <summary>Values that represent versioning policies.</summary>

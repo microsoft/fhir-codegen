@@ -32,7 +32,7 @@
         },
         "r5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R5.txt --load-r5 5.0.0-ballot --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R5.txt --load-r5 latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "localInfo": {
@@ -192,7 +192,7 @@
         },
         "server4": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|fhirjson=true|SingleResponses=true|ReadOnly=true|PatchJson=true|PatchFhir=false --output-path ..\\..\\generated\\OpenApi_R4.json --language OpenApi",
+            "commandLineArgs": "--fhir-server-url http://fhirdemo5.azurewebsites.net/ --language-options OpenApi|fhirjson=true|SingleResponses=true|ReadOnly=true|PatchJson=true|PatchFhir=false --output-path ..\\..\\generated\\OpenApi_R4.json --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "server4Min": {
@@ -203,26 +203,6 @@
         "cyto4": {
             "commandName": "Project",
             "commandLineArgs": "--output-path ..\\..\\cytoscape --load-r4 latest --export-keys Patient|Encounter|Observation --language Cytoscape",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "csV2Test": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\CSBasic2_R4\\ --load-r4 latest --language-options CSharp2|namespace=fhirCsR4 --language CSharp2 --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "cs2r2": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\temp\\cs2r2 --load-r2 latest --language-options CSharp2|namespace=fhirCsR2 --language CSharp2 --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "cs2r3": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\temp\\cs2r3 --load-r3 latest --language-options CSharp2|namespace=fhirCsR3 --language CSharp2 --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "cs2r4": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\temp\\cs2r4 --load-r4 latest --language-options CSharp2|namespace=fhirCsR4 --language CSharp2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "cs2r4B": {
