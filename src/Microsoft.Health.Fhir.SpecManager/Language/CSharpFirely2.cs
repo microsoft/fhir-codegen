@@ -614,7 +614,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // traverse value sets starting with highest version
                     foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderByDescending(s => s.Version))
                     {
-                        if (vs.ReferencingElementsByPath.Count(e => !e.Value.Path.StartsWith("Extension") && e.Value.BindingStrength == "required" && e.Value.ElementTypes.Any(et => et.Key == "code")) < 2)
+                        var resourcesUsing = vs.ReferencingElementsByPath.Where(e => !e.Value.Path.StartsWith("Extension") && e.Value.BindingStrength == "required" && e.Value.ElementTypes.Any(et => et.Key == "code"))
+                            .Select(p => p.Key.Contains('.') ? p.Key.Substring(0, p.Key.IndexOf('.')) : p.Key).Distinct();
+                        if (resourcesUsing.Count() < 2)
                         {
                             /* ValueSets that are used in a single POCO are generated as a nested enum inside that
                              * POCO, not here in the shared valuesets */
