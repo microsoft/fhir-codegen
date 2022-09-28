@@ -10,7 +10,7 @@ Detailed documentation can be found on the [documentation site](https://microsof
 
 Project source code is hosted on [GitHub](https://github.com/microsoft/fhir-codegen).
 
-All projects are currently built on .Net 6.0 and tested on multiple platforms, though Windows is the primary development platform.  The .Net 6.0 SDK and runtimes are available for free at: https://dotnet.microsoft.com/en-us/download .
+All projects are currently built on .Net 6.0 and tested on multiple platforms, though Windows is the primary development platform.  The .Net 6.0 SDK and runtimes are available for free from [Microsoft](https://dotnet.microsoft.com/en-us/download).
 
 ## Microsoft.Health.Fhir.CodeGenCommon
 
