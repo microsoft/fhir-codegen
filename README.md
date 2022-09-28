@@ -172,7 +172,7 @@ The system is designed to allow developers to add additional languages to be exp
 
 ## Build and Running From OCI (i.e. Docker) Images
 
-If you do not have .NET installed and wish to use the command-line utilities, you may instead build an OCI container to run it for you. The included [Dockerfile](./Dockerfile) has been tested with Docker Desktop but should work also with buildah and container runtimes such as cri-o. To build your own image for your native CPU architecture:
+If you do not have .NET installed and wish to use the command-line utilities, you may instead build an OCI container to run it for you. The included [Dockerfile](./Dockerfile) has been tested with Docker Desktop but should work also with `buildah` and container runtimes such as `podman` and `cri-o`. To build your own image for your native CPU architecture:
 
   `docker build -t <whatever>/fhir-codegen:latest .`
 
@@ -182,9 +182,9 @@ Alternatively, to build and push for multiple CPU architectures,
 
 The image is configured to run the CLI as its default entry point. To generate FHIR 4.0.1 TypeScript interfaces to a file on your _host_ computer's ./out directory, for example, simply pass the arguments as input to the container runtime, like so:
 
-  `docker run -it --rm -v `pwd`/out:/out <whatever>/fhir-codegen:latest --load-r4 4.0.1 --language TypeScript --output-path /out`
+  ``docker run -it --rm -v `pwd`/out:/out <whatever>/fhir-codegen:latest --load-r4 4.0.1 --language TypeScript --output-path /out``
 
-The above command binds a ./out directory (in your current working directory) to the output directory of fhir-codegen-cli running within the container, so you output will persist after the container exits and is removed. 
+The above command binds an ./out directory (within your current working directory) to the output directory of fhir-codegen-cli running within the container, so you output will persist after the container exits and is removed. 
 
 # Contributing
 
