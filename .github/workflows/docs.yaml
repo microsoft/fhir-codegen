@@ -38,6 +38,11 @@ jobs:
       run: docfx docfx/docfx.json
       continue-on-error: false
 
+    - name: Install rsync
+      uses: crazy-max/ghaction-chocolatey@v1
+      with:
+        args: install rsync
+
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.2.5
       with:
