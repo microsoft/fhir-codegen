@@ -1,0 +1,10 @@
+.dockerignore
+.git
+.gitignore
+.editorconfig
+
+docfx
+Dockerfile
+generated
+LICENSE
+*.md
