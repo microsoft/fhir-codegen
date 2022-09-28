@@ -36,13 +36,11 @@ jobs:
 
     - name: DocFX Build
       working-directory: docs
-      run: docfx .\docfx\docfx.json
+      run: docfx docfx/docfx.json
       continue-on-error: false
 
-    - name: Publish
-      if: github.event_name == 'push'
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4.2.5
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: docfx/_site
-        force_orphan: true
+        branch: gh-pages # The branch the action should deploy to.
+        folder: docfx/_site # The folder the action should deploy.
