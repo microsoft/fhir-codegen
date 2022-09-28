@@ -6,6 +6,7 @@
 using System.CommandLine;
 using System.CommandLine.Builder;
 using System.CommandLine.NamingConventionBinder;
+using System.CommandLine.Parsing;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,9 +25,9 @@ public static class Program
     /// <summary>The extensions outputted.</summary>
     private static HashSet<string> _extensionsOutputted;
 
+    private static RootCommand _rootCommand;
+
     /// <summary>Delegate function to do actual processing - matches Process.</summary>
-    /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
-    ///  are downloaded and cached (.../fhirVersions).</param>
     /// <param name="outputPath">            File or directory to write output.</param>
     /// <param name="verbose">               Show verbose output.</param>
     /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
@@ -61,8 +62,9 @@ public static class Program
     /// <param name="packages">              '|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core#4.0.0).</param>
     /// <param name="ciBranch">              If loading from the CI server, the name of the branch to use.</param>
     /// <param name="languageInputDir">      The full path to a local directory to pass additional content to languages.</param>
-    public delegate void ProcessDelegate(
-        string fhirSpecDirectory = "",
+    /// <param name="showHelp">              Show command-line help.</param>
+    /// <returns>Exit-code for the process - 0 for success, else an error code.</returns>
+    public delegate int ProcessDelegate(
         string outputPath = "",
         bool verbose = false,
         bool offlineMode = false,
@@ -83,57 +85,81 @@ public static class Program
         string packageDirectory = "",
         string packages = "",
         string ciBranch = "",
-        string languageInputDir = "");
+        string languageInputDir = "",
+        bool showHelp = false);
 
     /// <summary>Main entry-point for this application.</summary>
     /// <param name="args">An array of command-line argument strings.</param>
-    public static void Main(string[] args)
+    /// <returns>
+    /// An asynchronous result that yields exit-code for the process - 0 for success, else an error
+    /// code.
+    /// </returns>
+    public static async Task<int> Main(string[] args)
     {
-        // convert commands to lower-case for matching
-        if (args != null)
+        // build our options
+        _rootCommand = new RootCommand
         {
-            for (int i = 0; i < args.Length; i++)
-            {
-                if (string.IsNullOrEmpty(args[i]))
-                {
-                    continue;
-                }
-
-                if (args[i][0] == '-')
-                {
-#pragma warning disable CA1308 // Normalize strings to uppercase
-                    args[i] = args[i].ToLowerInvariant();
-#pragma warning restore CA1308 // Normalize strings to uppercase
-                }
-            }
-        }
-
-        RootCommand rootCommand = new RootCommand
-        {
-            new Option<string>(
-                name: "--fhir-spec-directory",
-                getDefaultValue: () => string.Empty,
-                "The full path to the directory where FHIR specifications are downloaded and cached (.../fhirVersions)."),
             new Option<string>(
                 aliases: new string[] { "--output-path", "-o" },
                 getDefaultValue: () => string.Empty,
                 "File or directory to write output."),
-            new Option<bool>(
-                aliases: new string[] { "--verbose", "-v" },
-                getDefaultValue: () => false,
-                "Show verbose output."),
-            new Option<bool>(
-                name: "--offline-mode",
-                getDefaultValue: () => false,
-                "Offline mode (will not download missing specifications)."),
+            new Option<string>(
+                name: "--package-directory",
+                getDefaultValue: () => string.Empty,
+                "The path to a local directory for FHIR packages, if different than the default FHIR cache (~/.fhir); e.g., (.../fhirPackages))."),
+
             new Option<string>(
                 aliases: new string[] { "--language", "-l" },
                 getDefaultValue: () => string.Empty,
-                "Name of the language to export (default: Info|TypeScript|CS2)."),
+                "Name of the language to export (default: Info|TypeScript|CSharpBasic)."),
+            new Option<bool>(
+                name: "--language-help",
+                getDefaultValue: () => false,
+                "Display languages and their options."),
+            new Option<string>(
+                aliases: new string[] { "--language-options", "--opts" },
+                getDefaultValue: () => string.Empty,
+                "Language specific options, see documentation for more details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo."),
+            new Option<string>(
+                name: "--language-input-dir",
+                getDefaultValue: () => string.Empty,
+                "The full path to a local directory to pass additional content to languages."),
+
+            new Option<bool>(
+                name: "--offline-mode",
+                getDefaultValue: () => false,
+                "Offline mode (will not download missing packages)."),
+
             new Option<string>(
                 aliases: new string[] { "--export-keys", "-k" },
                 getDefaultValue: () => string.Empty,
                 "'|' separated list of items to export (not present to export everything)."),
+            new Option<bool>(
+                name: "--official-expansions-only",
+                getDefaultValue: () => false,
+                "True to restrict value-sets exported to only official expansions (default: false)."),
+            new Option<bool>(
+                aliases: new string[] { "--include-experimental", "--experimental" },
+                getDefaultValue: () => false,
+                "If the output should include structures marked experimental (default: false)."),
+            new Option<string>(
+                aliases: new string[] { "--export-types", "--types" },
+                getDefaultValue: () => string.Empty,
+                "Types of FHIR structures to export (primitive|complex|resource|interaction|enum), default is all."),
+            new Option<string>(
+                name: "--extension-support",
+                getDefaultValue: () => string.Empty,
+                "The level of extensions to include (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive."),
+
+            new Option<string>(
+                aliases: new string[] { "--fhir-server-url", "--server" },
+                getDefaultValue: () => string.Empty,
+                "FHIR Server URL to pull a CapabilityStatement or Conformance from.  Requires application/fhir+json support."),
+
+            new Option<string>(
+                aliases: new string[] { "--packages", "-p" },
+                getDefaultValue: () => string.Empty,
+                "'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.r4.core#4.0.1|hl7.fhir.us.core#latest)."),
             new Option<string>(
                 aliases: new string[] { "--load-r2", "--load-DSTU2" },
                 getDefaultValue: () => string.Empty,
@@ -149,71 +175,37 @@ public static class Program
             new Option<string>(
                 name: "--load-r4b",
                 getDefaultValue: () => string.Empty,
-                "If FHIR R4B should be loaded, which version (e.g., 4.3.0-snapshot1 or latest)"),
+                "If FHIR R4B should be loaded, which version (e.g., 4.3.0 or latest)"),
             new Option<string>(
                 name: "--load-r5",
                 getDefaultValue: () => string.Empty,
-                "If FHIR R5 should be loaded, which version (e.g., 5.0.0-snapshot1 or latest)"),
-            new Option<string>(
-                aliases: new string[] { "--language-options", "--opts" },
-                getDefaultValue: () => string.Empty,
-                "Language specific options, see documentation for more details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo."),
-            new Option<bool>(
-                name: "--official-expansions-only",
-                getDefaultValue: () => false,
-                "True to restrict value-sets exported to only official expansions (default: false)."),
-            new Option<string>(
-                aliases: new string[] { "--fhir-server-url", "--server" },
-                getDefaultValue: () => string.Empty,
-                "FHIR Server URL to pull a CapabilityStatement or Conformance from.  Requires application/fhir+json support."),
-            new Option<bool>(
-                aliases: new string[] { "--include-experimental", "--experimental" },
-                getDefaultValue: () => false,
-                "If the output should include structures marked experimental (default: false)."),
-            new Option<string>(
-                aliases: new string[] { "--export-types", "--types" },
-                getDefaultValue: () => string.Empty,
-                "Types of FHIR structures to export (primitive|complex|resource|interaction|enum), default is all."),
-            new Option<string>(
-                name: "--extension-support",
-                getDefaultValue: () => string.Empty,
-                "The level of extensions to include (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive."),
-            new Option<bool>(
-                name: "--language-help",
-                getDefaultValue: () => false,
-                "Display languages and their options."),
-            new Option<string>(
-                name: "--package-directory",
-                getDefaultValue: () => string.Empty,
-                "The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages))."),
-            new Option<string>(
-                aliases: new string[] { "--packages", "-p" },
-                getDefaultValue: () => string.Empty,
-                "'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core#4.0.0)."),
+                "If FHIR R5 should be loaded, which version (e.g., 5.0.0-ballot or latest)"),
+
             new Option<string>(
                 name: "--ci-branch",
                 getDefaultValue: () => string.Empty,
                 "If loading from the CI server, the name of the branch to use."),
-            new Option<string>(
-                name: "--language-input-dir",
-                getDefaultValue: () => string.Empty,
-                "The full path to a local directory to pass additional content to languages."),
+
+            new Option<bool>(
+                aliases: new string[] { "--verbose", "-v" },
+                getDefaultValue: () => false,
+                "Show verbose output."),
         };
 
-        rootCommand.Description = "Command-line utility for processing the FHIR specification into other computer languages.";
+        _rootCommand.Description = "Command-line utility for processing the FHIR specification into other computer languages.";
 
         ProcessDelegate handler = Process;
+        _rootCommand.Handler = CommandHandler.Create(handler);
 
-        rootCommand.Handler = CommandHandler.Create(handler);
+        Parser parser = new CommandLineBuilder(_rootCommand)
+            .Build();
 
-        rootCommand.InvokeAsync(args);
+        return await _rootCommand.InvokeAsync(args);
     }
 
     /// <summary>
     /// Command-line utility for processing the FHIR specification into other computer languages.
     /// </summary>
-    /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
-    ///  are downloaded and cached (.../fhirVersions).</param>
     /// <param name="outputPath">            File or directory to write output.</param>
     /// <param name="verbose">               Show verbose output.</param>
     /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
@@ -227,9 +219,9 @@ public static class Program
     ///  or latest).</param>
     /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
     ///  or latest).</param>
-    /// <param name="loadR4B">               If FHIR R4B should be loaded, which version (e.g., 4.3.0-snapshot1
+    /// <param name="loadR4B">               If FHIR R4B should be loaded, which version (e.g., 4.3.0
     ///  or latest).</param>
-    /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 5.0.0-snapshot1
+    /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 5.0.0-ballot
     ///  or latest).</param>
     /// <param name="languageOptions">       Language specific options, see documentation for more
     ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
@@ -245,11 +237,13 @@ public static class Program
     ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
     /// <param name="languageHelp">          Display languages and their options.</param>
     /// <param name="packageDirectory">      The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
-    /// <param name="packages">              '|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core#4.0.0).</param>
+    /// <param name="packages">              '|' separated list of packages, with or without version numbers
+    /// (e.g., hl7.fhir.r4.core#4.0.1, hl7.fhir.us.core#latest).</param>
     /// <param name="ciBranch">              If loading from the CI server, the name of the branch to use.</param>
     /// <param name="languageInputDir">      The full path to a local directory to pass additional content to languages.</param>
-    public static void Process(
-        string fhirSpecDirectory = "",
+    /// <param name="showHelp">              Show command-line help.</param>
+    /// <returns>Exit-code for the process - 0 for success, else an error code.</returns>
+    public static int Process(
         string outputPath = "",
         bool verbose = false,
         bool offlineMode = false,
@@ -270,12 +264,13 @@ public static class Program
         string packageDirectory = "",
         string packages = "",
         string ciBranch = "",
-        string languageInputDir = "")
+        string languageInputDir = "",
+        bool showHelp = false)
     {
         if (languageHelp)
         {
             ShowLanguageHelp(language);
-            return;
+            return 0;
         }
 
         bool isBatch = false;
@@ -283,11 +278,6 @@ public static class Program
         List<string> filesWritten = new List<string>();
 
         _extensionsOutputted = new HashSet<string>();
-
-        if (string.IsNullOrEmpty(fhirSpecDirectory))
-        {
-            fhirSpecDirectory = FindRelativeDir(currentFilePath, "fhirVersions", "FHIR Core Specification");
-        }
 
         if (string.IsNullOrEmpty(packageDirectory))
         {
@@ -370,7 +360,7 @@ public static class Program
             if (!ServerConnector.TryGetServerInfo(fhirServerUrl, out serverInfo))
             {
                 Console.WriteLine($"Failed to get server information from {fhirServerUrl}!");
-                return;
+                return -1;
             }
         }
 
@@ -555,6 +545,8 @@ public static class Program
         }
 
         Console.WriteLine($"Done! Loading: {loadMS / 1000.0}s, Total: {totalMS / 1000.0}s");
+
+        return 0;
     }
 
     /// <summary>Searches for the FHIR specification directory.</summary>
