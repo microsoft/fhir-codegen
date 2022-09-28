@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Delegate Program.ProcessDelegate
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Delegate Program.ProcessDelegate
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="FhirCodegenCli.Program.ProcessDelegate">
+  
+  
+  <h1 id="FhirCodegenCli_Program_ProcessDelegate" data-uid="FhirCodegenCli.Program.ProcessDelegate" class="text-break">Delegate Program.ProcessDelegate
+  </h1>
+  <div class="markdown level0 summary"><p>Delegate function to do actual processing - matches Process.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="FhirCodegenCli.html">FhirCodegenCli</a></h6>
+  <h6><strong>Assembly</strong>: fhir-codegen-cli.dll</h6>
+  <h5 id="FhirCodegenCli_Program_ProcessDelegate_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public delegate int ProcessDelegate(string outputPath = &quot;&quot;, bool verbose = false, bool offlineMode = false, string language = &quot;&quot;, string exportKeys = &quot;&quot;, string loadR2 = &quot;&quot;, string loadR3 = &quot;&quot;, string loadR4 = &quot;&quot;, string loadR4B = &quot;&quot;, string loadR5 = &quot;&quot;, string languageOptions = &quot;&quot;, bool officialExpansionsOnly = false, string fhirServerUrl = &quot;&quot;, bool includeExperimental = false, string exportTypes = &quot;&quot;, string extensionSupport = &quot;&quot;, bool languageHelp = false, string packageDirectory = &quot;&quot;, string packages = &quot;&quot;, string ciBranch = &quot;&quot;, string languageInputDir = &quot;&quot;, bool showHelp = false);</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">outputPath</span></td>
+        <td><p>File or directory to write output.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>Show verbose output.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">offlineMode</span></td>
+        <td><p>Offline mode (will not download missing specs).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">language</span></td>
+        <td><pre><code> Name of the language to export (default:
+</code></pre>
+<p>Info|TypeScript|CSharpBasic).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">exportKeys</span></td>
+        <td><p>'|' separated list of items to export (not present to
+export everything).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">loadR2</span></td>
+        <td><pre><code>   If FHIR R2 should be loaded, which version (e.g., 1.0.2
+</code></pre>
+<p>or latest).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">loadR3</span></td>
+        <td><pre><code>   If FHIR R3 should be loaded, which version (e.g., 3.0.2
+</code></pre>
+<p>or latest).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">loadR4</span></td>
+        <td><pre><code>   If FHIR R4 should be loaded, which version (e.g., 4.0.1
+</code></pre>
+<p>or latest).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">loadR4B</span></td>
+        <td><pre><code>  If FHIR R4B should be loaded, which version (e.g., 4.3.0
+</code></pre>
+<p>or latest).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">loadR5</span></td>
+        <td><pre><code>   If FHIR R5 should be loaded, which version (e.g., 5.0.0-snapshot1
+</code></pre>
+<p>or latest).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">languageOptions</span></td>
+        <td><p>Language specific options, see documentation for more
+details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">officialExpansionsOnly</span></td>
+        <td><p>True to restrict value-sets exported to only official
+expansions (default: false).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fhirServerUrl</span></td>
+        <td><p>FHIR Server URL to pull a CapabilityStatement (or
+Conformance) from.  Requires application/fhir+json.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeExperimental</span></td>
+        <td><p>If the output should include structures marked
+experimental (false|true).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">exportTypes</span></td>
+        <td><p>Which FHIR classes types to export
+(primitive|complex|resource|interaction|enum), default is all.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">extensionSupport</span></td>
+        <td><p>The level of extensions to include
+(none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">languageHelp</span></td>
+        <td><p>Display languages and their options.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">packageDirectory</span></td>
+        <td><p>The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">packages</span></td>
+        <td><p>'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core#4.0.0).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ciBranch</span></td>
+        <td><p>If loading from the CI server, the name of the branch to use.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">languageInputDir</span></td>
+        <td><p>The full path to a local directory to pass additional content to languages.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">showHelp</span></td>
+        <td><p>Show command-line help.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Exit-code for the process - 0 for success, else an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=FhirCodegenCli_Program_ProcessDelegate.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program.ProcessDelegate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L67" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Microsoft.Health.Fhir.SpecManager.Manager
    ">
-    <meta name="generator" content="docfx 2.56.1.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -77,8 +77,19 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.Differ.html">Differ</a></h4>
+      <section><p>Class that performs a diff between two FhirVersionInfo packages.</p>
+</section>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.DifferOptions.html">DifferOptions</a></h4>
+      <section><p>A differ options.</p>
+</section>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.DiffResults.html">DiffResults</a></h4>
+      <section><p>A difference results.</p>
+</section>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.DiffResults..html">DiffResults.</a></h4>
+      <section></section>
       <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.Exporter.html">Exporter</a></h4>
-      <section><p>An exporter.</p>
+      <section><p>Class that performs exports by linking FhirVersionInfo to Lanugages for output.</p>
 </section>
       <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.ExporterOptions.html">ExporterOptions</a></h4>
       <section><p>An exporter options.</p>
@@ -86,25 +97,51 @@
       <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.html">FhirManager</a></h4>
       <section><p>FHIR version manager.</p>
 </section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageDownloader.html">FhirPackageDownloader</a></h4>
-      <section><p>A fhir package downloader.</p>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageCommon.html">FhirPackageCommon</a></h4>
+      <section><p>Information about the FHIR core package.</p>
+</section>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageCommon..html">FhirPackageCommon.</a></h4>
+      <section><p>Information about the published release.</p>
+</section>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageLoader.html">FhirPackageLoader</a></h4>
+      <section><p>A FHIR package loader (e.g., hl7.fhir.us.core).</p>
+</section>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirSpecificationLoader.html">FhirSpecificationLoader</a></h4>
+      <section><p>A FHIR Specification Package loader (e.g., R4).</p>
 </section>
       <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo.html">FhirVersionInfo</a></h4>
-      <section><p>Information about a FHIR release.</p>
+      <section><p>Information about a FHIR package.</p>
 </section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.Loader.html">Loader</a></h4>
-      <section><p>A FHIR Specification loader.</p>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.PackageCopyOptions.html">PackageCopyOptions</a></h4>
+      <section><p>Options when copying an IFhirPackageInfo.</p>
 </section>
       <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.html">ServerConnector</a></h4>
       <section><p>A FHIR server connector.</p>
 </section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.IPackageExportable.html">IPackageExportable</a></h4>
+      <section><p>Interface for package exportable.</p>
+</section>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.IPackageImportable.html">IPackageImportable</a></h4>
+      <section><p>Interface for package importable.</p>
+</section>
     <h3 id="enums">Enums
   </h3>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.DiffResults.DiffTypeEnum.html">DiffResults.DiffTypeEnum</a></h4>
+      <section><p>Values that represent Difference type enums.</p>
+</section>
       <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.ExporterOptions.ExtensionSupportLevel.html">ExporterOptions.ExtensionSupportLevel</a></h4>
       <section><p>Values that represent extension support requests.</p>
 </section>
       <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.ExporterOptions.FhirExportClassType.html">ExporterOptions.FhirExportClassType</a></h4>
       <section><p>Values that represent FHIR export class types.</p>
+</section>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageCommon.FhirPackageTypeEnum.html">FhirPackageCommon.FhirPackageTypeEnum</a></h4>
+      <section><p>Values that represent FHIR package types.</p>
+</section>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageCommon.FhirSequenceEnum.html">FhirPackageCommon.FhirSequenceEnum</a></h4>
+      <section><p>Values that represent FHIR major releases.</p>
 </section>
 </article>
           </div>
@@ -116,7 +153,8 @@
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

@@ -1,0 +1,1012 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ImagingStudy
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ImagingStudy
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="fhirCsR2.Models.ImagingStudy">
+  
+  
+  <h1 id="fhirCsR2_Models_ImagingStudy" data-uid="fhirCsR2.Models.ImagingStudy" class="text-break">Class ImagingStudy
+  </h1>
+  <div class="markdown level0 summary"><p>Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="fhirCsR2.Models.Resource.html">Resource</a></div>
+    <div class="level2"><a class="xref" href="fhirCsR2.Models.DomainResource.html">DomainResource</a></div>
+    <div class="level3"><span class="xref">ImagingStudy</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Contained">DomainResource.Contained</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Extension">DomainResource.Extension</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_ModifierExtension">DomainResource.ModifierExtension</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Text">DomainResource.Text</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Id">Resource.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__Id">Resource._Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_ImplicitRules">Resource.ImplicitRules</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__ImplicitRules">Resource._ImplicitRules</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Language">Resource.Language</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__Language">Resource._Language</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Meta">Resource.Meta</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="fhirCsR2.Models.html">fhirCsR2.Models</a></h6>
+  <h6><strong>Assembly</strong>: fhirCsR2.dll</h6>
+  <h5 id="fhirCsR2_Models_ImagingStudy_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(JsonStreamComponentConverter&lt;ImagingStudy&gt;))]
+public class ImagingStudy : DomainResource, IFhirJsonSerializable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy__Availability.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy._Availability%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L587">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy__Availability_" data-uid="fhirCsR2.Models.ImagingStudy._Availability*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy__Availability" data-uid="fhirCsR2.Models.ImagingStudy._Availability">_Availability</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Availability</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Availability { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy__Description.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy._Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L595">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy__Description_" data-uid="fhirCsR2.Models.ImagingStudy._Description*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy__Description" data-uid="fhirCsR2.Models.ImagingStudy._Description">_Description</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Description</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Description { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy__Started.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy._Started%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L643">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy__Started_" data-uid="fhirCsR2.Models.ImagingStudy._Started*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy__Started" data-uid="fhirCsR2.Models.ImagingStudy._Started">_Started</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Started</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Started { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy__Uid.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy._Uid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L651">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy__Uid_" data-uid="fhirCsR2.Models.ImagingStudy._Uid*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy__Uid" data-uid="fhirCsR2.Models.ImagingStudy._Uid">_Uid</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Uid</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Uid { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy__Url.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy._Url%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L659">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy__Url_" data-uid="fhirCsR2.Models.ImagingStudy._Url*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy__Url" data-uid="fhirCsR2.Models.ImagingStudy._Url">_Url</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Url</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Url { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Accession.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Accession%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L579">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Accession_" data-uid="fhirCsR2.Models.ImagingStudy.Accession*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Accession" data-uid="fhirCsR2.Models.ImagingStudy.Accession">Accession</h4>
+  <div class="markdown level1 summary"><p>Accession Number is an identifier related to some aspect of imaging workflow and data management. Usage may vary across different institutions.  See for instance <a href="http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf">IHE Radiology Technical Framework Volume 1 Appendix A</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Identifier Accession { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Identifier.html">Identifier</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Availability.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Availability%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L583">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Availability_" data-uid="fhirCsR2.Models.ImagingStudy.Availability*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Availability" data-uid="fhirCsR2.Models.ImagingStudy.Availability">Availability</h4>
+  <div class="markdown level1 summary"><p>Availability of study (online, offline or nearline).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Availability { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Description.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L591">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Description_" data-uid="fhirCsR2.Models.ImagingStudy.Description*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Description" data-uid="fhirCsR2.Models.ImagingStudy.Description">Description</h4>
+  <div class="markdown level1 summary"><p>Institution-generated description or classification of the Study performed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Description { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Identifier.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L599">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Identifier_" data-uid="fhirCsR2.Models.ImagingStudy.Identifier*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Identifier" data-uid="fhirCsR2.Models.ImagingStudy.Identifier">Identifier</h4>
+  <div class="markdown level1 summary"><p>Other identifiers for the study.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Identifier&gt; Identifier { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Identifier.html">Identifier</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Interpreter.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Interpreter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L603">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Interpreter_" data-uid="fhirCsR2.Models.ImagingStudy.Interpreter*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Interpreter" data-uid="fhirCsR2.Models.ImagingStudy.Interpreter">Interpreter</h4>
+  <div class="markdown level1 summary"><p>Who read the study and interpreted the images or other content.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference Interpreter { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_ModalityList.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.ModalityList%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L607">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_ModalityList_" data-uid="fhirCsR2.Models.ImagingStudy.ModalityList*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_ModalityList" data-uid="fhirCsR2.Models.ImagingStudy.ModalityList">ModalityList</h4>
+  <div class="markdown level1 summary"><p>A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Coding&gt; ModalityList { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Coding.html">Coding</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_NumberOfInstances.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.NumberOfInstances%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L611">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_NumberOfInstances_" data-uid="fhirCsR2.Models.ImagingStudy.NumberOfInstances*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_NumberOfInstances" data-uid="fhirCsR2.Models.ImagingStudy.NumberOfInstances">NumberOfInstances</h4>
+  <div class="markdown level1 summary"><p>Number of SOP Instances in Study.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint NumberOfInstances { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_NumberOfSeries.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.NumberOfSeries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L615">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_NumberOfSeries_" data-uid="fhirCsR2.Models.ImagingStudy.NumberOfSeries*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_NumberOfSeries" data-uid="fhirCsR2.Models.ImagingStudy.NumberOfSeries">NumberOfSeries</h4>
+  <div class="markdown level1 summary"><p>Number of Series in Study.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint NumberOfSeries { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Order.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Order%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L619">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Order_" data-uid="fhirCsR2.Models.ImagingStudy.Order*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Order" data-uid="fhirCsR2.Models.ImagingStudy.Order">Order</h4>
+  <div class="markdown level1 summary"><p>To support grouped procedures (one imaging study supporting multiple ordered procedures, e.g. chest/abdomen/pelvis CT).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Reference&gt; Order { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Patient.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Patient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L623">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Patient_" data-uid="fhirCsR2.Models.ImagingStudy.Patient*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Patient" data-uid="fhirCsR2.Models.ImagingStudy.Patient">Patient</h4>
+  <div class="markdown level1 summary"><p>The patient imaged in the study.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference Patient { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Procedure.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Procedure%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L627">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Procedure_" data-uid="fhirCsR2.Models.ImagingStudy.Procedure*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Procedure" data-uid="fhirCsR2.Models.ImagingStudy.Procedure">Procedure</h4>
+  <div class="markdown level1 summary"><p>Type of procedure performed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Reference&gt; Procedure { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Referrer.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Referrer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L631">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Referrer_" data-uid="fhirCsR2.Models.ImagingStudy.Referrer*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Referrer" data-uid="fhirCsR2.Models.ImagingStudy.Referrer">Referrer</h4>
+  <div class="markdown level1 summary"><p>The requesting/referring physician.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference Referrer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_ResourceType.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.ResourceType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L575">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_ResourceType_" data-uid="fhirCsR2.Models.ImagingStudy.ResourceType*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_ResourceType" data-uid="fhirCsR2.Models.ImagingStudy.ResourceType">ResourceType</h4>
+  <div class="markdown level1 summary"><p>Resource Type Name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ResourceType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_ResourceType">Resource.ResourceType</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Series.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Series%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L635">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Series_" data-uid="fhirCsR2.Models.ImagingStudy.Series*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Series" data-uid="fhirCsR2.Models.ImagingStudy.Series">Series</h4>
+  <div class="markdown level1 summary"><p>Each study has one or more series of images or other content.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;ImagingStudySeries&gt; Series { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.ImagingStudySeries.html">ImagingStudySeries</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Started.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Started%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L639">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Started_" data-uid="fhirCsR2.Models.ImagingStudy.Started*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Started" data-uid="fhirCsR2.Models.ImagingStudy.Started">Started</h4>
+  <div class="markdown level1 summary"><p>Date and Time the study started.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Started { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Uid.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Uid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L647">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Uid_" data-uid="fhirCsR2.Models.ImagingStudy.Uid*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Uid" data-uid="fhirCsR2.Models.ImagingStudy.Uid">Uid</h4>
+  <div class="markdown level1 summary"><p>Formal identifier for the study.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Uid { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_Url.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.Url%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L655">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_Url_" data-uid="fhirCsR2.Models.ImagingStudy.Url*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_Url" data-uid="fhirCsR2.Models.ImagingStudy.Url">Url</h4>
+  <div class="markdown level1 summary"><p>WADO-RS resource where Study is available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Url { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.DeserializeJson(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L1054">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_DeserializeJson_" data-uid="fhirCsR2.Models.ImagingStudy.DeserializeJson*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_" data-uid="fhirCsR2.Models.ImagingStudy.DeserializeJson(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">DeserializeJson(ref Utf8JsonReader, JsonSerializerOptions)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJson(ref Utf8JsonReader reader, JsonSerializerOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L833">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_DeserializeJsonProperty_" data-uid="fhirCsR2.Models.ImagingStudy.DeserializeJsonProperty*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_" data-uid="fhirCsR2.Models.ImagingStudy.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions,System.String)">DeserializeJsonProperty(ref Utf8JsonReader, JsonSerializerOptions, String)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy.SerializeJson(System.Text.Json.Utf8JsonWriter%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L663">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_ImagingStudy_SerializeJson_" data-uid="fhirCsR2.Models.ImagingStudy.SerializeJson*"></a>
+  <h4 id="fhirCsR2_Models_ImagingStudy_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_" data-uid="fhirCsR2.Models.ImagingStudy.SerializeJson(System.Text.Json.Utf8JsonWriter,System.Text.Json.JsonSerializerOptions,System.Boolean)">SerializeJson(Utf8JsonWriter, JsonSerializerOptions, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Serialize to a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonWriter</span></td>
+        <td><span class="parametername">writer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeStartObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_ImagingStudy.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.ImagingStudy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/ImagingStudy.cs/#L570" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

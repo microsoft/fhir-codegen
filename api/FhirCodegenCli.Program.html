@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Program
    ">
-    <meta name="generator" content="docfx 2.56.1.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -115,19 +115,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=FhirCodegenCli_Program_Main_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_String_System_Boolean_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program.Main(System.String%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.String%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=FhirCodegenCli_Program_FindRelativeDir_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program.FindRelativeDir(System.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L57">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L560">View Source</a>
   </span>
-  <a id="FhirCodegenCli_Program_Main_" data-uid="FhirCodegenCli.Program.Main*"></a>
-  <h4 id="FhirCodegenCli_Program_Main_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_String_System_Boolean_System_String_System_String_System_Boolean_" data-uid="FhirCodegenCli.Program.Main(System.String,System.String,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean,System.String,System.String,System.Boolean)">Main(String, String, Boolean, Boolean, String, String, String, String, String, String, String, Boolean, String, Boolean, String, String, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Command-line utility for processing the FHIR specification into other computer languages.</p>
+  <a id="FhirCodegenCli_Program_FindRelativeDir_" data-uid="FhirCodegenCli.Program.FindRelativeDir*"></a>
+  <h4 id="FhirCodegenCli_Program_FindRelativeDir_System_String_System_String_System_String_System_Boolean_" data-uid="FhirCodegenCli.Program.FindRelativeDir(System.String,System.String,System.String,System.Boolean)">FindRelativeDir(String, String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Searches for the FHIR specification directory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Main(string fhirSpecDirectory = &quot;&quot;, string outputPath = &quot;&quot;, bool verbose = false, bool offlineMode = false, string language = &quot;&quot;, string exportKeys = &quot;&quot;, string loadR2 = &quot;&quot;, string loadR3 = &quot;&quot;, string loadR4 = &quot;&quot;, string loadR5 = &quot;&quot;, string languageOptions = &quot;&quot;, bool officialExpansionsOnly = false, string fhirServerUrl = &quot;&quot;, bool includeExperimental = false, string exportTypes = &quot;&quot;, string extensionSupport = &quot;&quot;, bool languageHelp = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string FindRelativeDir(string startingDir, string dirName, string directoryType, bool thowIfNotFound = true)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -141,11 +141,140 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">fhirSpecDirectory</span></td>
-        <td><p>The full path to the directory where FHIR specifications
-are downloaded and cached.</p>
+        <td><span class="parametername">startingDir</span></td>
+        <td><p>The starting dir.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">dirName</span></td>
+        <td><p>The name of the directory we are searching for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directoryType</span></td>
+        <td><p>The directory type (error hint).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">thowIfNotFound</span></td>
+        <td><p>(Optional) True to thow if not found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The found FHIR directory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.DirectoryNotFoundException</span></td>
+        <td><p>Thrown when the requested directory is not
+present.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=FhirCodegenCli_Program_Main_System_String___.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program.Main(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L97">View Source</a>
+  </span>
+  <a id="FhirCodegenCli_Program_Main_" data-uid="FhirCodegenCli.Program.Main*"></a>
+  <h4 id="FhirCodegenCli_Program_Main_System_String___" data-uid="FhirCodegenCli.Program.Main(System.String[])">Main(String[])</h4>
+  <div class="markdown level1 summary"><p>Main entry-point for this application.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;int&gt; Main(string[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>An array of command-line argument strings.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><p>An asynchronous result that yields exit-code for the process - 0 for success, else an error
+code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=FhirCodegenCli_Program_Process_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_String_System_Boolean_System_String_System_String_System_Boolean_System_String_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program.Process(System.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.String%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L246">View Source</a>
+  </span>
+  <a id="FhirCodegenCli_Program_Process_" data-uid="FhirCodegenCli.Program.Process*"></a>
+  <h4 id="FhirCodegenCli_Program_Process_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_String_System_Boolean_System_String_System_String_System_Boolean_System_String_System_String_System_String_System_String_System_Boolean_" data-uid="FhirCodegenCli.Program.Process(System.String,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean,System.String,System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Boolean)">Process(String, Boolean, Boolean, String, String, String, String, String, String, String, String, Boolean, String, Boolean, String, String, Boolean, String, String, String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Command-line utility for processing the FHIR specification into other computer languages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int Process(string outputPath = &quot;&quot;, bool verbose = false, bool offlineMode = false, string language = &quot;&quot;, string exportKeys = &quot;&quot;, string loadR2 = &quot;&quot;, string loadR3 = &quot;&quot;, string loadR4 = &quot;&quot;, string loadR4B = &quot;&quot;, string loadR5 = &quot;&quot;, string languageOptions = &quot;&quot;, bool officialExpansionsOnly = false, string fhirServerUrl = &quot;&quot;, bool includeExperimental = false, string exportTypes = &quot;&quot;, string extensionSupport = &quot;&quot;, bool languageHelp = false, string packageDirectory = &quot;&quot;, string packages = &quot;&quot;, string ciBranch = &quot;&quot;, string languageInputDir = &quot;&quot;, bool showHelp = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">outputPath</span></td>
@@ -205,8 +334,16 @@ export everything).</p>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">loadR4B</span></td>
+        <td><pre><code>  If FHIR R4B should be loaded, which version (e.g., 4.3.0
+</code></pre>
+<p>or latest).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
         <td><span class="parametername">loadR5</span></td>
-        <td><pre><code>   If FHIR R5 should be loaded, which version (e.g., 4.4.0
+        <td><pre><code>   If FHIR R5 should be loaded, which version (e.g., 5.0.0-ballot
 </code></pre>
 <p>or latest).</p>
 </td>
@@ -259,6 +396,54 @@ experimental (false|true).</p>
         <td><p>Display languages and their options.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">packageDirectory</span></td>
+        <td><p>The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">packages</span></td>
+        <td><pre><code>  &amp;apos;|&amp;apos; separated list of packages, with or without version numbers
+</code></pre>
+<p>(e.g., hl7.fhir.r4.core#4.0.1, hl7.fhir.us.core#latest).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ciBranch</span></td>
+        <td><p>If loading from the CI server, the name of the branch to use.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">languageInputDir</span></td>
+        <td><p>The full path to a local directory to pass additional content to languages.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">showHelp</span></td>
+        <td><p>Show command-line help.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Exit-code for the process - 0 for success, else an error code.</p>
+</td>
+      </tr>
     </tbody>
   </table>
 </article>
@@ -272,12 +457,13 @@ experimental (false|true).</p>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=FhirCodegenCli_Program.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L20" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L23" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

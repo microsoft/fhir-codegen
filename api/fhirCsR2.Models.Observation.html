@@ -1,0 +1,1508 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Observation
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Observation
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="fhirCsR2.Models.Observation">
+  
+  
+  <h1 id="fhirCsR2_Models_Observation" data-uid="fhirCsR2.Models.Observation" class="text-break">Class Observation
+  </h1>
+  <div class="markdown level0 summary"><p>Measurements and simple assertions made about a patient, device or other subject.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="fhirCsR2.Models.Resource.html">Resource</a></div>
+    <div class="level2"><a class="xref" href="fhirCsR2.Models.DomainResource.html">DomainResource</a></div>
+    <div class="level3"><span class="xref">Observation</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Contained">DomainResource.Contained</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Extension">DomainResource.Extension</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_ModifierExtension">DomainResource.ModifierExtension</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Text">DomainResource.Text</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Id">Resource.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__Id">Resource._Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_ImplicitRules">Resource.ImplicitRules</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__ImplicitRules">Resource._ImplicitRules</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Language">Resource.Language</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__Language">Resource._Language</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Meta">Resource.Meta</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="fhirCsR2.Models.html">fhirCsR2.Models</a></h6>
+  <h6><strong>Assembly</strong>: fhirCsR2.dll</h6>
+  <h5 id="fhirCsR2_Models_Observation_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(JsonStreamComponentConverter&lt;Observation&gt;))]
+public class Observation : DomainResource, IFhirJsonSerializable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation__Comments.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation._Comments%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L631">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation__Comments_" data-uid="fhirCsR2.Models.Observation._Comments*"></a>
+  <h4 id="fhirCsR2_Models_Observation__Comments" data-uid="fhirCsR2.Models.Observation._Comments">_Comments</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Comments</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Comments { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation__EffectiveDateTime.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation._EffectiveDateTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L651">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation__EffectiveDateTime_" data-uid="fhirCsR2.Models.Observation._EffectiveDateTime*"></a>
+  <h4 id="fhirCsR2_Models_Observation__EffectiveDateTime" data-uid="fhirCsR2.Models.Observation._EffectiveDateTime">_EffectiveDateTime</h4>
+  <div class="markdown level1 summary"><p>Extension container element for EffectiveDateTime</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _EffectiveDateTime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation__Issued.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation._Issued%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L675">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation__Issued_" data-uid="fhirCsR2.Models.Observation._Issued*"></a>
+  <h4 id="fhirCsR2_Models_Observation__Issued" data-uid="fhirCsR2.Models.Observation._Issued">_Issued</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Issued</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Issued { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation__Status.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation._Status%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L703">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation__Status_" data-uid="fhirCsR2.Models.Observation._Status*"></a>
+  <h4 id="fhirCsR2_Models_Observation__Status" data-uid="fhirCsR2.Models.Observation._Status">_Status</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Status</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Status { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation__ValueDateTime.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation._ValueDateTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L755">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation__ValueDateTime_" data-uid="fhirCsR2.Models.Observation._ValueDateTime*"></a>
+  <h4 id="fhirCsR2_Models_Observation__ValueDateTime" data-uid="fhirCsR2.Models.Observation._ValueDateTime">_ValueDateTime</h4>
+  <div class="markdown level1 summary"><p>Extension container element for ValueDateTime</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _ValueDateTime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation__ValueString.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation._ValueString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L723">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation__ValueString_" data-uid="fhirCsR2.Models.Observation._ValueString*"></a>
+  <h4 id="fhirCsR2_Models_Observation__ValueString" data-uid="fhirCsR2.Models.Observation._ValueString">_ValueString</h4>
+  <div class="markdown level1 summary"><p>Extension container element for ValueString</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _ValueString { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation__ValueTime.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation._ValueTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L747">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation__ValueTime_" data-uid="fhirCsR2.Models.Observation._ValueTime*"></a>
+  <h4 id="fhirCsR2_Models_Observation__ValueTime" data-uid="fhirCsR2.Models.Observation._ValueTime">_ValueTime</h4>
+  <div class="markdown level1 summary"><p>Extension container element for ValueTime</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _ValueTime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_BodySite.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.BodySite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L615">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_BodySite_" data-uid="fhirCsR2.Models.Observation.BodySite*"></a>
+  <h4 id="fhirCsR2_Models_Observation_BodySite" data-uid="fhirCsR2.Models.Observation.BodySite">BodySite</h4>
+  <div class="markdown level1 summary"><p>Knowing where the observation is made is important for tracking if multiple sites are possible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodeableConcept BodySite { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Category.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Category%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L619">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Category_" data-uid="fhirCsR2.Models.Observation.Category*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Category" data-uid="fhirCsR2.Models.Observation.Category">Category</h4>
+  <div class="markdown level1 summary"><p>A code that classifies the general type of observation being made.  This is used  for searching, sorting and display purposes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodeableConcept Category { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Code.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Code%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L623">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Code_" data-uid="fhirCsR2.Models.Observation.Code*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Code" data-uid="fhirCsR2.Models.Observation.Code">Code</h4>
+  <div class="markdown level1 summary"><p>Knowing what kind of observation is being made is essential to understanding the observation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodeableConcept Code { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Comments.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Comments%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L627">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Comments_" data-uid="fhirCsR2.Models.Observation.Comments*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Comments" data-uid="fhirCsR2.Models.Observation.Comments">Comments</h4>
+  <div class="markdown level1 summary"><p>Need to be able to provide free text additional information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Comments { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Component.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Component%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L635">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Component_" data-uid="fhirCsR2.Models.Observation.Component*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Component" data-uid="fhirCsR2.Models.Observation.Component">Component</h4>
+  <div class="markdown level1 summary"><p>Component observations share the same attributes in the Observation resource as the primary observation and are always treated a part of a single observation (they are not separable).   However, the reference range for the primary observation value is not inherited by the component values and is required when appropriate for each component observation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;ObservationComponent&gt; Component { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.ObservationComponent.html">ObservationComponent</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_DataAbsentReason.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.DataAbsentReason%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L639">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_DataAbsentReason_" data-uid="fhirCsR2.Models.Observation.DataAbsentReason*"></a>
+  <h4 id="fhirCsR2_Models_Observation_DataAbsentReason" data-uid="fhirCsR2.Models.Observation.DataAbsentReason">DataAbsentReason</h4>
+  <div class="markdown level1 summary"><p>For many results it is necessary to handle exceptional values in measurements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodeableConcept DataAbsentReason { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Device.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Device%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L643">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Device_" data-uid="fhirCsR2.Models.Observation.Device*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Device" data-uid="fhirCsR2.Models.Observation.Device">Device</h4>
+  <div class="markdown level1 summary"><p>The device used to generate the observation data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference Device { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_EffectiveDateTime.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.EffectiveDateTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L647">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_EffectiveDateTime_" data-uid="fhirCsR2.Models.Observation.EffectiveDateTime*"></a>
+  <h4 id="fhirCsR2_Models_Observation_EffectiveDateTime" data-uid="fhirCsR2.Models.Observation.EffectiveDateTime">EffectiveDateTime</h4>
+  <div class="markdown level1 summary"><p>Knowing when an observation was deemed true is important to its relevance as well as determining trends.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string EffectiveDateTime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_EffectivePeriod.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.EffectivePeriod%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L655">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_EffectivePeriod_" data-uid="fhirCsR2.Models.Observation.EffectivePeriod*"></a>
+  <h4 id="fhirCsR2_Models_Observation_EffectivePeriod" data-uid="fhirCsR2.Models.Observation.EffectivePeriod">EffectivePeriod</h4>
+  <div class="markdown level1 summary"><p>Knowing when an observation was deemed true is important to its relevance as well as determining trends.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Period EffectivePeriod { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Period.html">Period</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Encounter.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Encounter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L659">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Encounter_" data-uid="fhirCsR2.Models.Observation.Encounter*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Encounter" data-uid="fhirCsR2.Models.Observation.Encounter">Encounter</h4>
+  <div class="markdown level1 summary"><p>For some observations it may be important to know the link between an observation and a particular encounter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference Encounter { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Identifier.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L663">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Identifier_" data-uid="fhirCsR2.Models.Observation.Identifier*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Identifier" data-uid="fhirCsR2.Models.Observation.Identifier">Identifier</h4>
+  <div class="markdown level1 summary"><p>Allows observations to be distinguished and referenced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Identifier&gt; Identifier { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Identifier.html">Identifier</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Interpretation.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Interpretation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L667">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Interpretation_" data-uid="fhirCsR2.Models.Observation.Interpretation*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Interpretation" data-uid="fhirCsR2.Models.Observation.Interpretation">Interpretation</h4>
+  <div class="markdown level1 summary"><p>For some results, particularly numeric results, an interpretation is necessary to fully understand the significance of a result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodeableConcept Interpretation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Issued.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Issued%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L671">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Issued_" data-uid="fhirCsR2.Models.Observation.Issued*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Issued" data-uid="fhirCsR2.Models.Observation.Issued">Issued</h4>
+  <div class="markdown level1 summary"><p>The date and time this observation was made available to providers, typically after the results have been reviewed and verified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Issued { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Method.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Method%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L679">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Method_" data-uid="fhirCsR2.Models.Observation.Method*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Method" data-uid="fhirCsR2.Models.Observation.Method">Method</h4>
+  <div class="markdown level1 summary"><p>In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodeableConcept Method { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Performer.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Performer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L683">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Performer_" data-uid="fhirCsR2.Models.Observation.Performer*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Performer" data-uid="fhirCsR2.Models.Observation.Performer">Performer</h4>
+  <div class="markdown level1 summary"><p>May give a degree of confidence in the observation and also indicates where follow-up questions should be directed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Reference&gt; Performer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ReferenceRange.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ReferenceRange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L687">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ReferenceRange_" data-uid="fhirCsR2.Models.Observation.ReferenceRange*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ReferenceRange" data-uid="fhirCsR2.Models.Observation.ReferenceRange">ReferenceRange</h4>
+  <div class="markdown level1 summary"><p>Knowing what values are considered &quot;normal&quot; can help evaluate the significance of a particular result. Need to be able to provide multiple reference ranges for different contexts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;ObservationReferenceRange&gt; ReferenceRange { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.ObservationReferenceRange.html">ObservationReferenceRange</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Related.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Related%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L691">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Related_" data-uid="fhirCsR2.Models.Observation.Related*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Related" data-uid="fhirCsR2.Models.Observation.Related">Related</h4>
+  <div class="markdown level1 summary"><p>Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and a set of related observations or sometimes QuestionnaireResponse  from which the measure is derived.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;ObservationRelated&gt; Related { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.ObservationRelated.html">ObservationRelated</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ResourceType.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ResourceType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L611">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ResourceType_" data-uid="fhirCsR2.Models.Observation.ResourceType*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ResourceType" data-uid="fhirCsR2.Models.Observation.ResourceType">ResourceType</h4>
+  <div class="markdown level1 summary"><p>Resource Type Name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ResourceType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_ResourceType">Resource.ResourceType</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Specimen.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Specimen%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L695">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Specimen_" data-uid="fhirCsR2.Models.Observation.Specimen*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Specimen" data-uid="fhirCsR2.Models.Observation.Specimen">Specimen</h4>
+  <div class="markdown level1 summary"><p>The specimen that was used when this observation was made.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference Specimen { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Status.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Status%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L699">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Status_" data-uid="fhirCsR2.Models.Observation.Status*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Status" data-uid="fhirCsR2.Models.Observation.Status">Status</h4>
+  <div class="markdown level1 summary"><p>Need to track the status of individual results. Some results are finalized before the whole report is finalized.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Status { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_Subject.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.Subject%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L707">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_Subject_" data-uid="fhirCsR2.Models.Observation.Subject*"></a>
+  <h4 id="fhirCsR2_Models_Observation_Subject" data-uid="fhirCsR2.Models.Observation.Subject">Subject</h4>
+  <div class="markdown level1 summary"><p>Observations have no value if you don't know who or what they're about.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference Subject { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ValueAttachment.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ValueAttachment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L739">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ValueAttachment_" data-uid="fhirCsR2.Models.Observation.ValueAttachment*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ValueAttachment" data-uid="fhirCsR2.Models.Observation.ValueAttachment">ValueAttachment</h4>
+  <div class="markdown level1 summary"><p>An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Attachment ValueAttachment { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Attachment.html">Attachment</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ValueCodeableConcept.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ValueCodeableConcept%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L715">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ValueCodeableConcept_" data-uid="fhirCsR2.Models.Observation.ValueCodeableConcept*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ValueCodeableConcept" data-uid="fhirCsR2.Models.Observation.ValueCodeableConcept">ValueCodeableConcept</h4>
+  <div class="markdown level1 summary"><p>An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodeableConcept ValueCodeableConcept { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ValueDateTime.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ValueDateTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L751">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ValueDateTime_" data-uid="fhirCsR2.Models.Observation.ValueDateTime*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ValueDateTime" data-uid="fhirCsR2.Models.Observation.ValueDateTime">ValueDateTime</h4>
+  <div class="markdown level1 summary"><p>An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ValueDateTime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ValuePeriod.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ValuePeriod%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L759">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ValuePeriod_" data-uid="fhirCsR2.Models.Observation.ValuePeriod*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ValuePeriod" data-uid="fhirCsR2.Models.Observation.ValuePeriod">ValuePeriod</h4>
+  <div class="markdown level1 summary"><p>An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Period ValuePeriod { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Period.html">Period</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ValueQuantity.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ValueQuantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L711">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ValueQuantity_" data-uid="fhirCsR2.Models.Observation.ValueQuantity*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ValueQuantity" data-uid="fhirCsR2.Models.Observation.ValueQuantity">ValueQuantity</h4>
+  <div class="markdown level1 summary"><p>An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Quantity ValueQuantity { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Quantity.html">Quantity</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ValueRange.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ValueRange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L727">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ValueRange_" data-uid="fhirCsR2.Models.Observation.ValueRange*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ValueRange" data-uid="fhirCsR2.Models.Observation.ValueRange">ValueRange</h4>
+  <div class="markdown level1 summary"><p>An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Range ValueRange { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Range.html">Range</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ValueRatio.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ValueRatio%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L731">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ValueRatio_" data-uid="fhirCsR2.Models.Observation.ValueRatio*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ValueRatio" data-uid="fhirCsR2.Models.Observation.ValueRatio">ValueRatio</h4>
+  <div class="markdown level1 summary"><p>An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Ratio ValueRatio { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Ratio.html">Ratio</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ValueSampledData.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ValueSampledData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L735">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ValueSampledData_" data-uid="fhirCsR2.Models.Observation.ValueSampledData*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ValueSampledData" data-uid="fhirCsR2.Models.Observation.ValueSampledData">ValueSampledData</h4>
+  <div class="markdown level1 summary"><p>An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SampledData ValueSampledData { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.SampledData.html">SampledData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ValueString.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ValueString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L719">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ValueString_" data-uid="fhirCsR2.Models.Observation.ValueString*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ValueString" data-uid="fhirCsR2.Models.Observation.ValueString">ValueString</h4>
+  <div class="markdown level1 summary"><p>An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ValueString { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_ValueTime.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.ValueTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L743">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_ValueTime_" data-uid="fhirCsR2.Models.Observation.ValueTime*"></a>
+  <h4 id="fhirCsR2_Models_Observation_ValueTime" data-uid="fhirCsR2.Models.Observation.ValueTime">ValueTime</h4>
+  <div class="markdown level1 summary"><p>An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ValueTime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.DeserializeJson(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L1336">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_DeserializeJson_" data-uid="fhirCsR2.Models.Observation.DeserializeJson*"></a>
+  <h4 id="fhirCsR2_Models_Observation_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_" data-uid="fhirCsR2.Models.Observation.DeserializeJson(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">DeserializeJson(ref Utf8JsonReader, JsonSerializerOptions)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJson(ref Utf8JsonReader reader, JsonSerializerOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L1035">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_DeserializeJsonProperty_" data-uid="fhirCsR2.Models.Observation.DeserializeJsonProperty*"></a>
+  <h4 id="fhirCsR2_Models_Observation_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_" data-uid="fhirCsR2.Models.Observation.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions,System.String)">DeserializeJsonProperty(ref Utf8JsonReader, JsonSerializerOptions, String)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation.SerializeJson(System.Text.Json.Utf8JsonWriter%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L763">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Observation_SerializeJson_" data-uid="fhirCsR2.Models.Observation.SerializeJson*"></a>
+  <h4 id="fhirCsR2_Models_Observation_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_" data-uid="fhirCsR2.Models.Observation.SerializeJson(System.Text.Json.Utf8JsonWriter,System.Text.Json.JsonSerializerOptions,System.Boolean)">SerializeJson(Utf8JsonWriter, JsonSerializerOptions, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Serialize to a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonWriter</span></td>
+        <td><span class="parametername">writer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeStartObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Observation.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Observation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Observation.cs/#L606" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

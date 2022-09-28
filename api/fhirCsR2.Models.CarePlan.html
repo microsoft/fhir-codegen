@@ -1,0 +1,950 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CarePlan
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CarePlan
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="fhirCsR2.Models.CarePlan">
+  
+  
+  <h1 id="fhirCsR2_Models_CarePlan" data-uid="fhirCsR2.Models.CarePlan" class="text-break">Class CarePlan
+  </h1>
+  <div class="markdown level0 summary"><p>Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="fhirCsR2.Models.Resource.html">Resource</a></div>
+    <div class="level2"><a class="xref" href="fhirCsR2.Models.DomainResource.html">DomainResource</a></div>
+    <div class="level3"><span class="xref">CarePlan</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Contained">DomainResource.Contained</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Extension">DomainResource.Extension</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_ModifierExtension">DomainResource.ModifierExtension</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Text">DomainResource.Text</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Id">Resource.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__Id">Resource._Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_ImplicitRules">Resource.ImplicitRules</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__ImplicitRules">Resource._ImplicitRules</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Language">Resource.Language</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__Language">Resource._Language</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Meta">Resource.Meta</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="fhirCsR2.Models.html">fhirCsR2.Models</a></h6>
+  <h6><strong>Assembly</strong>: fhirCsR2.dll</h6>
+  <h5 id="fhirCsR2_Models_CarePlan_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(JsonStreamComponentConverter&lt;CarePlan&gt;))]
+public class CarePlan : DomainResource, IFhirJsonSerializable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan__Description.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan._Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L943">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan__Description_" data-uid="fhirCsR2.Models.CarePlan._Description*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan__Description" data-uid="fhirCsR2.Models.CarePlan._Description">_Description</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Description</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Description { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan__Modified.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan._Modified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L959">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan__Modified_" data-uid="fhirCsR2.Models.CarePlan._Modified*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan__Modified" data-uid="fhirCsR2.Models.CarePlan._Modified">_Modified</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Modified</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Modified { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan__Status.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan._Status%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L983">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan__Status_" data-uid="fhirCsR2.Models.CarePlan._Status*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan__Status" data-uid="fhirCsR2.Models.CarePlan._Status">_Status</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Status</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Status { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Activity.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Activity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L919">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Activity_" data-uid="fhirCsR2.Models.CarePlan.Activity*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Activity" data-uid="fhirCsR2.Models.CarePlan.Activity">Activity</h4>
+  <div class="markdown level1 summary"><p>Allows systems to prompt for performance of planned activities, and validate plans against best practice.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CarePlanActivity&gt; Activity { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.CarePlanActivity.html">CarePlanActivity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Addresses.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Addresses%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L923">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Addresses_" data-uid="fhirCsR2.Models.CarePlan.Addresses*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Addresses" data-uid="fhirCsR2.Models.CarePlan.Addresses">Addresses</h4>
+  <div class="markdown level1 summary"><p>Links plan to the conditions it manages.  Also scopes plans - multiple plans may exist addressing different concerns.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Reference&gt; Addresses { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Author.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Author%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L927">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Author_" data-uid="fhirCsR2.Models.CarePlan.Author*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Author" data-uid="fhirCsR2.Models.CarePlan.Author">Author</h4>
+  <div class="markdown level1 summary"><p>Identifies the individual(s) or ogranization who is responsible for the content of the care plan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Reference&gt; Author { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Category.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Category%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L931">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Category_" data-uid="fhirCsR2.Models.CarePlan.Category*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Category" data-uid="fhirCsR2.Models.CarePlan.Category">Category</h4>
+  <div class="markdown level1 summary"><p>Used for filtering what plan(s) are retrieved and displayed to different types of users.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CodeableConcept&gt; Category { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Context.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Context%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L935">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Context_" data-uid="fhirCsR2.Models.CarePlan.Context*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Context" data-uid="fhirCsR2.Models.CarePlan.Context">Context</h4>
+  <div class="markdown level1 summary"><p>Identifies the context in which this particular CarePlan is defined.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference Context { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Description.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L939">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Description_" data-uid="fhirCsR2.Models.CarePlan.Description*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Description" data-uid="fhirCsR2.Models.CarePlan.Description">Description</h4>
+  <div class="markdown level1 summary"><p>Provides more detail than conveyed by category.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Description { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Goal.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Goal%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L947">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Goal_" data-uid="fhirCsR2.Models.CarePlan.Goal*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Goal" data-uid="fhirCsR2.Models.CarePlan.Goal">Goal</h4>
+  <div class="markdown level1 summary"><p>Provides context for plan.  Allows plan effectiveness to be evaluated by clinicians.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Reference&gt; Goal { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Identifier.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L951">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Identifier_" data-uid="fhirCsR2.Models.CarePlan.Identifier*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Identifier" data-uid="fhirCsR2.Models.CarePlan.Identifier">Identifier</h4>
+  <div class="markdown level1 summary"><p>Need to allow connection to a wider workflow.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Identifier&gt; Identifier { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Identifier.html">Identifier</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Modified.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Modified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L955">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Modified_" data-uid="fhirCsR2.Models.CarePlan.Modified*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Modified" data-uid="fhirCsR2.Models.CarePlan.Modified">Modified</h4>
+  <div class="markdown level1 summary"><p>Indicates how current the plan is.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Modified { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Note.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Note%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L963">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Note_" data-uid="fhirCsR2.Models.CarePlan.Note*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Note" data-uid="fhirCsR2.Models.CarePlan.Note">Note</h4>
+  <div class="markdown level1 summary"><p>Used to capture information that applies to the plan as a whole that doesn't fit into discrete elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Annotation Note { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Annotation.html">Annotation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Participant.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Participant%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L967">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Participant_" data-uid="fhirCsR2.Models.CarePlan.Participant*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Participant" data-uid="fhirCsR2.Models.CarePlan.Participant">Participant</h4>
+  <div class="markdown level1 summary"><p>Allows representation of care teams, helps scope care plan.  In some cases may be a determiner of access permissions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CarePlanParticipant&gt; Participant { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.CarePlanParticipant.html">CarePlanParticipant</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Period.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Period%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L971">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Period_" data-uid="fhirCsR2.Models.CarePlan.Period*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Period" data-uid="fhirCsR2.Models.CarePlan.Period">Period</h4>
+  <div class="markdown level1 summary"><p>Allows tracking what plan(s) are in effect at a particular time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Period Period { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Period.html">Period</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_RelatedPlan.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.RelatedPlan%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L975">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_RelatedPlan_" data-uid="fhirCsR2.Models.CarePlan.RelatedPlan*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_RelatedPlan" data-uid="fhirCsR2.Models.CarePlan.RelatedPlan">RelatedPlan</h4>
+  <div class="markdown level1 summary"><p>Identifies CarePlans with some sort of formal relationship to the current plan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CarePlanRelatedPlan&gt; RelatedPlan { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.CarePlanRelatedPlan.html">CarePlanRelatedPlan</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_ResourceType.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.ResourceType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L915">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_ResourceType_" data-uid="fhirCsR2.Models.CarePlan.ResourceType*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_ResourceType" data-uid="fhirCsR2.Models.CarePlan.ResourceType">ResourceType</h4>
+  <div class="markdown level1 summary"><p>Resource Type Name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ResourceType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_ResourceType">Resource.ResourceType</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Status.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Status%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L979">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Status_" data-uid="fhirCsR2.Models.CarePlan.Status*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Status" data-uid="fhirCsR2.Models.CarePlan.Status">Status</h4>
+  <div class="markdown level1 summary"><p>Allows clinicians to determine whether the plan is actionable or not.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Status { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Subject.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Subject%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L987">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Subject_" data-uid="fhirCsR2.Models.CarePlan.Subject*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Subject" data-uid="fhirCsR2.Models.CarePlan.Subject">Subject</h4>
+  <div class="markdown level1 summary"><p>Identifies the patient or group whose intended care is described by the plan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference Subject { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_Support.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.Support%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L991">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_Support_" data-uid="fhirCsR2.Models.CarePlan.Support*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_Support" data-uid="fhirCsR2.Models.CarePlan.Support">Support</h4>
+  <div class="markdown level1 summary"><p>Identifies barriers and other considerations associated with the care plan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Reference&gt; Support { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.DeserializeJson(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L1494">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_DeserializeJson_" data-uid="fhirCsR2.Models.CarePlan.DeserializeJson*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_" data-uid="fhirCsR2.Models.CarePlan.DeserializeJson(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">DeserializeJson(ref Utf8JsonReader, JsonSerializerOptions)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJson(ref Utf8JsonReader reader, JsonSerializerOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L1191">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_DeserializeJsonProperty_" data-uid="fhirCsR2.Models.CarePlan.DeserializeJsonProperty*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_" data-uid="fhirCsR2.Models.CarePlan.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions,System.String)">DeserializeJsonProperty(ref Utf8JsonReader, JsonSerializerOptions, String)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan.SerializeJson(System.Text.Json.Utf8JsonWriter%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L995">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_CarePlan_SerializeJson_" data-uid="fhirCsR2.Models.CarePlan.SerializeJson*"></a>
+  <h4 id="fhirCsR2_Models_CarePlan_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_" data-uid="fhirCsR2.Models.CarePlan.SerializeJson(System.Text.Json.Utf8JsonWriter,System.Text.Json.JsonSerializerOptions,System.Boolean)">SerializeJson(Utf8JsonWriter, JsonSerializerOptions, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Serialize to a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonWriter</span></td>
+        <td><span class="parametername">writer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeStartObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_CarePlan.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.CarePlan%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/CarePlan.cs/#L910" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

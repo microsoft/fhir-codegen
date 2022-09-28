@@ -1,0 +1,712 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Attachment
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Attachment
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="fhirCsR2.Models.Attachment">
+  
+  
+  <h1 id="fhirCsR2_Models_Attachment" data-uid="fhirCsR2.Models.Attachment" class="text-break">Class Attachment
+  </h1>
+  <div class="markdown level0 summary"><p>For referring to data content defined in other formats.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></div>
+    <div class="level2"><span class="xref">Attachment</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Element.html#fhirCsR2_Models_Element_Extension">Element.Extension</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Element.html#fhirCsR2_Models_Element_Fhir_comments">Element.Fhir_comments</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Element.html#fhirCsR2_Models_Element__Fhir_comments">Element._Fhir_comments</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Element.html#fhirCsR2_Models_Element_Id">Element.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Element.html#fhirCsR2_Models_Element__Id">Element._Id</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="fhirCsR2.Models.html">fhirCsR2.Models</a></h6>
+  <h6><strong>Assembly</strong>: fhirCsR2.dll</h6>
+  <h5 id="fhirCsR2_Models_Attachment_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(JsonStreamComponentConverter&lt;Attachment&gt;))]
+public class Attachment : Element, IFhirJsonSerializable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment__ContentType.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment._ContentType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L25">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment__ContentType_" data-uid="fhirCsR2.Models.Attachment._ContentType*"></a>
+  <h4 id="fhirCsR2_Models_Attachment__ContentType" data-uid="fhirCsR2.Models.Attachment._ContentType">_ContentType</h4>
+  <div class="markdown level1 summary"><p>Extension container element for ContentType</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _ContentType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment__Creation.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment._Creation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L33">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment__Creation_" data-uid="fhirCsR2.Models.Attachment._Creation*"></a>
+  <h4 id="fhirCsR2_Models_Attachment__Creation" data-uid="fhirCsR2.Models.Attachment._Creation">_Creation</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Creation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Creation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment__Language.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment._Language%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L49">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment__Language_" data-uid="fhirCsR2.Models.Attachment._Language*"></a>
+  <h4 id="fhirCsR2_Models_Attachment__Language" data-uid="fhirCsR2.Models.Attachment._Language">_Language</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Language</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Language { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment__Title.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment._Title%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L61">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment__Title_" data-uid="fhirCsR2.Models.Attachment._Title*"></a>
+  <h4 id="fhirCsR2_Models_Attachment__Title" data-uid="fhirCsR2.Models.Attachment._Title">_Title</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Title</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Title { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment__Url.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment._Url%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L69">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment__Url_" data-uid="fhirCsR2.Models.Attachment._Url*"></a>
+  <h4 id="fhirCsR2_Models_Attachment__Url" data-uid="fhirCsR2.Models.Attachment._Url">_Url</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Url</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Url { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_ContentType.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.ContentType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L21">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_ContentType_" data-uid="fhirCsR2.Models.Attachment.ContentType*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_ContentType" data-uid="fhirCsR2.Models.Attachment.ContentType">ContentType</h4>
+  <div class="markdown level1 summary"><p>Processors of the data need to be able to know how to interpret the data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ContentType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_Creation.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.Creation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L29">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_Creation_" data-uid="fhirCsR2.Models.Attachment.Creation*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_Creation" data-uid="fhirCsR2.Models.Attachment.Creation">Creation</h4>
+  <div class="markdown level1 summary"><p>This is often tracked as an integrity issue for use of the attachment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Creation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_Data.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.Data%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L37">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_Data_" data-uid="fhirCsR2.Models.Attachment.Data*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_Data" data-uid="fhirCsR2.Models.Attachment.Data">Data</h4>
+  <div class="markdown level1 summary"><p>The data needs to able to be transmitted inline.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] Data { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_Hash.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.Hash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L41">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_Hash_" data-uid="fhirCsR2.Models.Attachment.Hash*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_Hash" data-uid="fhirCsR2.Models.Attachment.Hash">Hash</h4>
+  <div class="markdown level1 summary"><p>Included so that applications can verify that the contents of a location have not changed and so that a signature of the content can implicitly sign the content of an image without having to include the data in the instance or reference the url in the signature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] Hash { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_Language.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.Language%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L45">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_Language_" data-uid="fhirCsR2.Models.Attachment.Language*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_Language" data-uid="fhirCsR2.Models.Attachment.Language">Language</h4>
+  <div class="markdown level1 summary"><p>Users need to be able to choose between the languages in a set of attachments.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Language { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_Size.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L53">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_Size_" data-uid="fhirCsR2.Models.Attachment.Size*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_Size" data-uid="fhirCsR2.Models.Attachment.Size">Size</h4>
+  <div class="markdown level1 summary"><p>Representing the size allows applications to determine whether they should fetch the content automatically in advance, or refuse to fetch it at all.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint? Size { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.UInt32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_Title.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.Title%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L57">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_Title_" data-uid="fhirCsR2.Models.Attachment.Title*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_Title" data-uid="fhirCsR2.Models.Attachment.Title">Title</h4>
+  <div class="markdown level1 summary"><p>Applications need a label to display to a human user in place of the actual data if the data cannot be rendered or perceived by the viewer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Title { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_Url.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.Url%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L65">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_Url_" data-uid="fhirCsR2.Models.Attachment.Url*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_Url" data-uid="fhirCsR2.Models.Attachment.Url">Url</h4>
+  <div class="markdown level1 summary"><p>The data needs to be transmitted by reference.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Url { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.DeserializeJson(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L229">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_DeserializeJson_" data-uid="fhirCsR2.Models.Attachment.DeserializeJson*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_" data-uid="fhirCsR2.Models.Attachment.DeserializeJson(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">DeserializeJson(ref Utf8JsonReader, JsonSerializerOptions)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJson(ref Utf8JsonReader reader, JsonSerializerOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L159">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_DeserializeJsonProperty_" data-uid="fhirCsR2.Models.Attachment.DeserializeJsonProperty*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_" data-uid="fhirCsR2.Models.Attachment.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions,System.String)">DeserializeJsonProperty(ref Utf8JsonReader, JsonSerializerOptions, String)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment.SerializeJson(System.Text.Json.Utf8JsonWriter%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L73">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_Attachment_SerializeJson_" data-uid="fhirCsR2.Models.Attachment.SerializeJson*"></a>
+  <h4 id="fhirCsR2_Models_Attachment_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_" data-uid="fhirCsR2.Models.Attachment.SerializeJson(System.Text.Json.Utf8JsonWriter,System.Text.Json.JsonSerializerOptions,System.Boolean)">SerializeJson(Utf8JsonWriter, JsonSerializerOptions, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Serialize to a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonWriter</span></td>
+        <td><span class="parametername">writer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeStartObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_Attachment.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.Attachment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/Attachment.cs/#L16" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

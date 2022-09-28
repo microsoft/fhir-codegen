@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>FhirCodeGenBlazor </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="FhirCodeGenBlazor ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="fhircodegenblazor">FhirCodeGenBlazor</h1>
+
+<p>The Blazor project is intended as a developer-friendly interface for exploring FHIR packages and exporting 'language' outputs.</p>
+<p>The project is a server-hosted Blazor web UI.  To date, it has only been tested as a single-user context - i.e., this is a UI for a local computer, not a hosted server.</p>
+<h2 id="index-page">Index Page</h2>
+<p>The main index page is a listing of the contents of the user's FHIR Cache.  Individual packages (package id plus version) can be loaded directly, or packages can be added or removed.</p>
+<p>Clicking 'Add Package' takes a user to the <a href="#add-package-page">Add Package Page</a>.</p>
+<p>Clicking 'Load' on a package directive record loads the package into memory and exposes additional page links: <a href="#view-package-page">View Package</a>, <a href="#package-elements-page">Package Elements</a>, and <a href="#export-package-page">Export Package</a>.</p>
+<h2 id="add-package-page">Add Package Page</h2>
+<p>The 'Add Package Page' is used to find and download FHIR packages.  Packages can be pulled from package registries (<code>http://packages.fhir.org/</code> and <code>http://packages2.fhir.org</code>), released web-packages of FHIR core (e.g., <code>http://hl7.org/fhir/R4/hl7.fhir.r4.core.tgz</code>), or the CI build server (<code>http://build.fhir.org</code>, with various branch and IG conventions).</p>
+<p>For release packages, the 'Lookup' option requests the package version manifests from the registry servers and allows downloading specific versions.</p>
+<p>For CI Builds, the lookup is used to confirm that a package exists at the requested location.</p>
+<h2 id="view-package-page">View Package Page</h2>
+<p>The 'View Package Page' is used to explore package artifacts.  It is intended to be considered as a view equivalent to browsing the published definitions, though it does not contain additional information (e.g., HTML pages) and is not considered a 'normative' view into packages.</p>
+<p>It does contain additional features for traversing nested definitions, expanding into datatypes (e.g., presenting a datatype element the same way a backbone element is displayed), etc..</p>
+<h2 id="package-elements-page">Package Elements Page</h2>
+<p>The 'Package Elements Page' is used to search over all 'FHIR Elements' within a package (can be filtered by artifact type).</p>
+<p>The page includes the ability to download JSON representations of the results, either an array of all FHIR Element Paths, or the normalized element definitions.</p>
+<h3 id="linq">LINQ</h3>
+<p>One of the mechanisms to search over package elements is a LINQ predicate.  The predicate is evaluated on each (normalized) <a href="/fhir-codegen/api/Microsoft.Health.Fhir.CodeGenCommon.Models.FhirElement.html">FhirElement</a> in the package, and there is global access to the current-context <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo.html">FhirVersionInfo</a> as <code>Info</code>.</p>
+<p>Some examples:</p>
+<ul>
+<li>to search for all elements that have a type of <code>uri</code></li>
+</ul>
+<pre><code class="lang-c#">e =&gt; (e.ElementTypes?.ContainsKey(&quot;uri&quot;) ?? false)
+</code></pre>
+<ul>
+<li>to search for all elements that have a type of <code>reference</code> and do not have search parameters:</li>
+</ul>
+<pre><code class="lang-c#">e =&gt; ((e.ElementTypes?.ContainsKey(&quot;Reference&quot;) ?? false) &amp;&amp; (!Info.SearchParametersByUrl.Values.Any(sp =&gt; sp.Expression.Contains(e.Path))))
+</code></pre>
+<ul>
+<li>to search for elements that have a <code>required</code> binding to a value-set that starts with <code>http://hl7.org/fhir/ValueSet/request</code>:</li>
+</ul>
+<pre><code class="lang-c#">e =&gt; ((e.BindingStrength?.Equals(&quot;required&quot;) ?? false) &amp;&amp; (e.ValueSet?.StartsWith(&quot;http://hl7.org/fhir/ValueSet/request&quot;) ?? false))
+</code></pre>
+<h2 id="export-package-page">Export Package Page</h2>
+<p>The 'Export Package Page' is used to perform an export based on a loaded package.  The page allows for selection of the Export Language module, common export parameters, and language-specific options.</p>
+<p>Note that the export path is local to the computer running the Blazor UI (server).</p>
+<h2 id="diff-tool-page">Diff Tool Page</h2>
+<p>The 'Diff Tool Page' is used to granularly compare either two packages or two artifacts.  The packages must be loaded into memory to be available for selection.</p>
+<p>The artifact types and changes detected are constantly being improved.  If you have suggestions or requests, please let us know!</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/docfx/articles/blazorui.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

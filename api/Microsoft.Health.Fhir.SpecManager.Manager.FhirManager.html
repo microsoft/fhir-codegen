@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class FhirManager
    ">
-    <meta name="generator" content="docfx 2.56.1.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -81,35 +81,11 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">FhirManager</span></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.html">Microsoft.Health.Fhir.SpecManager.Manager</a></h6>
   <h6><strong>Assembly</strong>: Microsoft.Health.Fhir.SpecManager.dll</h6>
   <h5 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FhirManager</code></pre>
+    <pre><code class="lang-csharp hljs">public class FhirManager : IDisposable</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -118,11 +94,11 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Current.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Current%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L150">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L56">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Current_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Current*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Current" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Current">Current</h4>
-  <div class="markdown level1 summary"><p>Gets the current singleton.</p>
+  <div class="markdown level1 summary"><p>Gets the current.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -140,8 +116,38 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.html">FhirManager</a></td>
-        <td><p>The current FHIR Manager singleton.</p>
-</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_InfoByDirective.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.InfoByDirective%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L59">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_InfoByDirective_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.InfoByDirective*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_InfoByDirective" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.InfoByDirective">InfoByDirective</h4>
+  <div class="markdown level1 summary"><p>Gets the information by directive.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, FhirVersionInfo&gt; InfoByDirective { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo.html">FhirVersionInfo</a>&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -149,19 +155,20 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Init_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Init(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L158">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L622">View Source</a>
   </span>
-  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Init_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Init*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Init_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Init(System.String)">Init(String)</h4>
-  <div class="markdown level1 summary"><p>Initializes this object.</p>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Dispose_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Dispose*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Dispose_System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Releases the unmanaged resources used by the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.html">FhirCacheService</a>
+and optionally releases the managed resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Init(string fhirSpecDirectory)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -174,51 +181,95 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">fhirSpecDirectory</span></td>
-        <td><p>Pathname of the FHIR Spec directory.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.ArgumentNullException</span></td>
-        <td><p>Thrown when one or more required arguments are
-null.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.IO.DirectoryNotFoundException</span></td>
-        <td><p>Thrown when the requested directory is not
-present.</p>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p>True to release both managed and unmanaged resources; false to
+release only unmanaged resources.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_LoadPublished_System_Int32_System_String_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.LoadPublished(System.Int32%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_GetLoadedCorePackages.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.GetLoadedCorePackages%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L199">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L74">View Source</a>
   </span>
-  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_LoadPublished_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.LoadPublished*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_LoadPublished_System_Int32_System_String_System_Boolean_System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.LoadPublished(System.Int32,System.String,System.Boolean,System.Boolean)">LoadPublished(Int32, String, Boolean, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Loads a published version of FHIR.</p>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_GetLoadedCorePackages_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.GetLoadedCorePackages*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_GetLoadedCorePackages" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.GetLoadedCorePackages">GetLoadedCorePackages()</h4>
+  <div class="markdown level1 summary"><p>Gets the loaded core packages in this collection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FhirVersionInfo LoadPublished(int majorRelease, string versions, bool offlineMode = false, bool officialExpansionsOnly = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;FhirVersionInfo&gt; GetLoadedCorePackages()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo.html">FhirVersionInfo</a>&gt;</td>
+        <td><p>An enumerator that allows foreach to be used to process the loaded core packages in this
+collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_GetLoadedPackages.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.GetLoadedPackages%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L315">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_GetLoadedPackages_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.GetLoadedPackages*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_GetLoadedPackages" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.GetLoadedPackages">GetLoadedPackages()</h4>
+  <div class="markdown level1 summary"><p>Gets the loaded core packages in this collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;FhirVersionInfo&gt; GetLoadedPackages()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo.html">FhirVersionInfo</a>&gt;</td>
+        <td><p>An enumerator that allows foreach to be used to process the loaded core packages in this
+collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_HasLoadedPackage_System_String_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.HasLoadedPackage(System.String%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L118">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_HasLoadedPackage_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.HasLoadedPackage*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_HasLoadedPackage_System_String_System_String__" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.HasLoadedPackage(System.String,System.String@)">HasLoadedPackage(String, out String)</h4>
+  <div class="markdown level1 summary"><p>Test to see if the manager has a package matching a given id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasLoadedPackage(string packageId, out string version)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -231,29 +282,78 @@ present.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">majorRelease</span></td>
-        <td><p>The release number of FHIR to load (e.g., 2 for DSTU2).</p>
-</td>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">packageId</span></td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">versions</span></td>
-        <td><pre><code> The specific version of FHIR to load, or &amp;apos;latest&amp;apos; for
-</code></pre>
-<p>highest known version.</p>
-</td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
       </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">offlineMode</span></td>
-        <td><p>(Optional) True to allow, false to suppress the download.</p>
-</td>
+        <td></td>
       </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Init.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Init%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L62">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Init_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Init*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_Init" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.Init">Init()</h4>
+  <div class="markdown level1 summary"><p>Initializes the FhirManager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Init()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_IsLoaded_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.IsLoaded(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L346">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_IsLoaded_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.IsLoaded*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_IsLoaded_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.IsLoaded(System.String)">IsLoaded(String)</h4>
+  <div class="markdown level1 summary"><p>Query if 'directive' is loaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsLoaded(string directive)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">officialExpansionsOnly</span></td>
-        <td><p>(Optional) True to official expansions only.</p>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directive</span></td>
+        <td><p>The directive.</p>
 </td>
       </tr>
     </tbody>
@@ -268,31 +368,237 @@ present.</p>
     </thead>
     <tbody>
       <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if loaded, false if not.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_LoadPackages_IEnumerable_System_String__System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_String_List_System_String___System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.LoadPackages(IEnumerable%7BSystem.String%7D%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CList%7BSystem.String%7D%40%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L516">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_LoadPackages_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.LoadPackages*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_LoadPackages_IEnumerable_System_String__System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_String_List_System_String___System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.LoadPackages(IEnumerable{System.String},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String,List{System.String}@,System.Boolean)">LoadPackages(IEnumerable&lt;String&gt;, Boolean, Boolean, Boolean, Boolean, String, out List&lt;String&gt;, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Loads the packages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadPackages(IEnumerable&lt;string&gt; packageDirectives, bool offlineMode, bool officialExpansionsOnly, bool loadDependencies, bool skipFhirCore, string ciBranch, out List&lt;string&gt; failedPackages, bool areDependencies = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">packageDirectives</span></td>
+        <td><p>The package directives.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">offlineMode</span></td>
+        <td><p>True to allow, false to suppress the download.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">officialExpansionsOnly</span></td>
+        <td><p>True to official expansions only.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">loadDependencies</span></td>
+        <td><p>True to load dependencies.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">skipFhirCore</span></td>
+        <td><p>True to skip loading FHIR core packages.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ciBranch</span></td>
+        <td><p>The CI branch.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">failedPackages</span></td>
+        <td><p>[out] The failed packages.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">areDependencies</span></td>
+        <td><p>(Optional) True if are dependencies.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_TryGetLoaded_System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.TryGetLoaded(System.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L331">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_TryGetLoaded_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.TryGetLoaded*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_TryGetLoaded_System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.TryGetLoaded(System.String,Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo@)">TryGetLoaded(String, out FhirVersionInfo)</h4>
+  <div class="markdown level1 summary"><p>Attempts to get loaded a FhirVersionInfo from the given string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetLoaded(string directive, out FhirVersionInfo info)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directive</span></td>
+        <td><p>The directive.</p>
+</td>
+      </tr>
+      <tr>
         <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo.html">FhirVersionInfo</a></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>[out] The information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
         <td><p>True if it succeeds, false if it fails.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 class="exceptions">Exceptions</h5>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_TryResolveCanonical_Microsoft_Health_Fhir_SpecManager_Manager_FhirPackageCommon_FhirSequenceEnum_System_String_FhirArtifactClassEnum__System_Object__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.TryResolveCanonical(Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageCommon.FhirSequenceEnum%2CSystem.String%2CFhirArtifactClassEnum%40%2CSystem.Object%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L140">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_TryResolveCanonical_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.TryResolveCanonical*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_TryResolveCanonical_Microsoft_Health_Fhir_SpecManager_Manager_FhirPackageCommon_FhirSequenceEnum_System_String_FhirArtifactClassEnum__System_Object__" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.TryResolveCanonical(Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageCommon.FhirSequenceEnum,System.String,FhirArtifactClassEnum@,System.Object@)">TryResolveCanonical(FhirPackageCommon.FhirSequenceEnum, String, out FhirArtifactClassEnum, out Object)</h4>
+  <div class="markdown level1 summary"><p>Tries to see if the manager can resolve a canonical URL in any loaded packages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryResolveCanonical(FhirPackageCommon.FhirSequenceEnum fhirSequence, string canonical, out FhirArtifactClassEnum canonicalClass, out object resource)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Condition</th>
+        <th>Name</th>
+        <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
-        <td><p>Thrown when one or more arguments are outside the
-required range.</p>
-</td>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageCommon.FhirSequenceEnum.html">FhirPackageCommon.FhirSequenceEnum</a></td>
+        <td><span class="parametername">fhirSequence</span></td>
+        <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.ArgumentException</span></td>
-        <td><p>Thrown when one or more arguments have
-unsupported or illegal values.</p>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">canonical</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">FhirArtifactClassEnum</span></td>
+        <td><span class="parametername">canonicalClass</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_UnloadPackage_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.UnloadPackage(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L353">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_UnloadPackage_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.UnloadPackage*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_FhirManager_UnloadPackage_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.FhirManager.UnloadPackage(System.String)">UnloadPackage(String)</h4>
+  <div class="markdown level1 summary"><p>Unload package.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnloadPackage(string directive)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directive</span></td>
+        <td><p>The directive.</p>
 </td>
       </tr>
     </tbody>
@@ -308,12 +614,13 @@ unsupported or illegal values.</p>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_FhirManager.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.FhirManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L16" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/FhirManager.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>FHIR CodeGen </title>
+    <title>fhir-codegen </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="FHIR CodeGen ">
-    <meta name="generator" content="docfx 2.56.1.0">
+    <meta name="title" content="fhir-codegen ">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -60,14 +60,154 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="fhir-codegen">FHIR CodeGen</h1>
+<h1 id="fhir-codegen">fhir-codegen</h1>
 
-<p>A .Net Core library and utility to generate various computer language outputs from FHIR specifications.</p>
-<h2 id="usage">Usage</h2>
-<p>Detailed usage information is available <a href="articles/cli.html">here</a>.</p>
-<h2 id="extending">Extending</h2>
-<p>Documentation for developers interested in extending the tooling to include additional langauges or add other features is available <a href="articles/extending.html">here</a>.</p>
-<h2 id="contributing">Contributing</h2>
+<p>A .Net library and related utilities to work with FHIR specifications.</p>
+<h1 id="documentation">Documentation</h1>
+<p>Detailed documentation can be found on the <a href="https://microsoft.github.io/fhir-codegen/">documentation site</a>.</p>
+<h1 id="projects-in-this-repository">Projects in this Repository</h1>
+<p>Project source code is hosted on <a href="https://github.com/microsoft/fhir-codegen">GitHub</a>.</p>
+<p>All projects are currently built on .Net 6.0 and tested on multiple platforms, though Windows is the primary development platform.  The .Net 6.0 SDK and runtimes are available for free from <a href="https://dotnet.microsoft.com/en-us/download">Microsoft</a>.</p>
+<h2 id="microsofthealthfhircodegencommon">Microsoft.Health.Fhir.CodeGenCommon</h2>
+<p>This project is a class library that contains the common (normalized) models used in these projects.  The project is lightweight and used to ensure that additional projects (e.g., a WASM UI) have access to all the models.</p>
+<p>Detailed information about the models can be found in the <a href="/fhir-codegen/api/Microsoft.Health.Fhir.CodeGenCommon.Models.html">Common Models Documentation</a>.</p>
+<h2 id="microsofthealthfhirspecmanager">Microsoft.Health.Fhir.SpecManager</h2>
+<p>This project is a class library that contains the logic used in the various projects.  For example, this project contains the code to:</p>
+<ul>
+<li>download packages,</li>
+<li>resolve canonical URLs,</li>
+<li>normalize different versions of FHIR,</li>
+<li>read metadata (CapabilityStatement or Conformance) from FHIR servers,</li>
+<li>compare packages or artifacts,</li>
+<li>convert normalized models into language-specific models,</li>
+<li>etc.</li>
+</ul>
+<p>More information about this project can be found in the <a href="/fhir-codegen/api/index.html">API Documentation</a>.</p>
+<h3 id="export-languages">Export Languages</h3>
+<p>The projects in this repository can be used to translate FHIR packages (core or IG) into other forms - e.g., programming language definitions (C#, TypeScript, etc.), or data files for consumption (Info, Cytoscape, etc.).</p>
+<p>More information about current languages can be found on the <a href="/fhir-codegen/articles/languages.html">Export Languages Page</a>.  Information about adding new languages can be found on the <a href="/fhir-codegen/articles/extending.html">Extending Page</a>.</p>
+<h2 id="fhircodegenblazor">FhirCodeGenBlazor</h2>
+<p>This project is a server-side Blazor application that can be used to interact with the code-generation library.  Generally, it can:</p>
+<ul>
+<li>manage the FHIR Package Cache (<code>~/.fhir</code>) - add/update/remove packages</li>
+<li>browse package artifacts</li>
+<li>search across element information (e.g., resource/logical models elements)</li>
+<li>compare packages or artifacts (Diff Tool)</li>
+<li>perform exports</li>
+<li>etc.</li>
+</ul>
+<p>To run this project from a command line:</p>
+<ul>
+<li><code>dotnet run --project src/FhirCodeGenBlazor/FhirCodeGenBlazor.csproj</code>
+or, you can build a release version to run:</li>
+<li><code>dotnet build src/FhirCodeGenBlazor/FhirCodeGenBlazor.csproj -c Release</code></li>
+<li><code>dotnet ./src/FhirCodeGenBlazor/bin/Release/net6.0/FhirCodeGenBlazor.dll</code></li>
+</ul>
+<p>More information about this project can be found in the <a href="/fhir-codegen/articles/blazorui.html">Blazor UI Documentation</a>.</p>
+<h2 id="fhir-codegen-cli">fhir-codegen-cli</h2>
+<p>This project is a command-line application that can be used to perform export operations (e.g., for CI Pipelines).  Generally, it can:</p>
+<ul>
+<li>manage the FHIR Package Cache (<code>~/.fhir</code>) - add/update packages</li>
+<li>perform exports / transforms of FHIR packages</li>
+</ul>
+<p>To run this project from a command line:</p>
+<ul>
+<li><code>dotnet run --project src/fhir-codegen-cli/fhir-codegen-cli.csproj -- [options]</code>
+or, you can build a release version to run:</li>
+<li><code>dotnet build src/fhir-codegen-cli/fhir-codegen-cli.csproj -c Release</code></li>
+<li><code>dotnet ./src/fhir-codegen-cli/bin/Release/net6.0/fhir-codegen-cli.dll</code></li>
+</ul>
+<pre><code>Usage:
+  fhir-codegen-cli [options]
+
+Options:
+  -o, --output-path &lt;output-path&gt;                File or directory to write output.
+  --package-directory &lt;package-directory&gt;        The path to a local directory for FHIR packages, if different than the default 
+                                                 FHIR cache (~/.fhir); e.g., (.../fhirPackages)).
+  -l, --language &lt;language&gt;                      Name of the language to export (default: Info|TypeScript|CSharpBasic).
+  --language-help                                Display languages and their options. [default: False]
+  --language-options, --opts &lt;language-options&gt;  Language specific options, see documentation for more details. Example: 
+                                                 Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.
+  --language-input-dir &lt;language-input-dir&gt;      The full path to a local directory to pass additional content to languages.
+  --offline-mode                                 Offline mode (will not download missing packages). [default: False]
+  -k, --export-keys &lt;export-keys&gt;                '|' separated list of items to export (not present to export everything).
+  --official-expansions-only                     Set to restrict value-sets to only official expansions. [default: False]
+  --experimental, --include-experimental         If the output should include structures marked experimental. [default: False]
+  --export-types, --types &lt;export-types&gt;         Types of FHIR structures to export (primitive|complex|resource|
+                                                 interaction|enum), default is all.
+  --extension-support &lt;extension-support&gt;        The level of extensions to include (none|official|officialNonPrimitive|
+                                                 nonPrimitive|all), default is nonPrimitive.
+  --fhir-server-url, --server &lt;fhir-server-url&gt;  FHIR Server URL to pull a CapabilityStatement or Conformance from. The server
+                                                 must provide application/fhir+json support.
+  -p, --packages &lt;packages&gt;                      '|' separated list of packages, with or without version numbers,
+                                                 e.g., hl7.fhir.r4.core#4.0.1|hl7.fhir.us.core#latest.
+  --load-DSTU2, --load-r2 &lt;load-DSTU2&gt;           If FHIR DSTU2 should be loaded, which version (e.g., 1.0.2 or latest)
+  --load-r3, --load-STU3 &lt;load-STU3&gt;             If FHIR STU3 should be loaded, which version (e.g., 3.0.2 or latest)
+  --load-r4 &lt;load-r4&gt;                            If FHIR R4 should be loaded, which version (e.g., 4.0.1 or latest)
+  --load-r4b &lt;load-r4b&gt;                          If FHIR R4B should be loaded, which version (e.g., 4.3.0 or latest)
+  --load-r5 &lt;load-r5&gt;                            If FHIR R5 should be loaded, which version (e.g., 5.0.0-ballot or latest)
+  --ci-branch &lt;ci-branch&gt;                        If loading from the CI server, the name of the branch to use.
+  -v, --verbose                                  Show verbose output. [default: False]
+  --version                                      Show version information
+  -?, -h, --help                                 Show help and usage information
+</code></pre>
+<p>More information about this project can be found in the <a href="/fhir-codegen/articles/cli.html">Command Line Documentation</a>.</p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li><p>Download and parse FHIR R4 (latest published version) into the user FHIR cache, then build a TypeScript file in the current directory</p>
+<ul>
+<li><code>fhir-codegen-cli -p hl7.fhir.r4#latest --language TypeScript --output-path ./R4.ts</code></li>
+</ul>
+</li>
+<li><p>Download and parse FHIR R4 (latest published version) into the user FHIR cache, then build a TypeScript file in the current directory, restricted to just the Resources: Patient, Encounter, and Observation</p>
+<ul>
+<li><code>fhir-codegen-cli --load-r4 latest --language TypeScript --output-path ./R4.ts --export-keys Patient|Encounter|Observation</code></li>
+</ul>
+</li>
+<li><p>Download and parse the latest published version of each FHIR release into the user FHIR cache, then build a C# file for each in ./cs</p>
+<ul>
+<li><code>fhir-codegen-cli --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --language CSharpBasic --output-path ./cs</code></li>
+</ul>
+</li>
+<li><p>Download and parse FHIR R4 (latest published version) into the user FHIR cache, then build a C# file in the current directory using the namespace: MyOrg.MyProject.Fhir</p>
+<ul>
+<li><code>fhir-codegen-cli -p hl7.fhir.r4#latest --language CSharpBasic --output-path ./cs/R4.cs --language-options CSharpBasic|namespace=MyOrg.MyProject.Fhir</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="fhir-codegen-test-cli">fhir-codegen-test-cli</h2>
+<p>This project is a <strong>minimal</strong> test harness for generated TypeScript and CSharp code.  It can be used to ensure that the core parsing and generation is working properly, and potentially as an example for other language outputs.</p>
+<p>To run this project from a command line:</p>
+<ul>
+<li><code>dotnet run --project src/fhir-codegen-test-cli/fhir-codegen-test-cli.csproj -- [options]</code></li>
+</ul>
+<p>It will use generated CSharpBasic and TypeScript files for FHIR Versions DSTU2, STU3, R4, and R5.  It will then run each through a build process (requires <code>dotnet</code> for C# and <code>tsc</code> for TypeScript) to validate there are no syntax errors in any of the generated files.</p>
+<p>Note that this test takes several minutes to run.</p>
+<h3 id="usage">Usage</h3>
+<pre><code>fhir-codegen-test-cli:
+  The FHIR CodeGen Test CLI.
+
+Usage:
+  fhir-codegen-test-cli [options]
+
+Options:
+  --repo-root-path &lt;repo-root-path&gt;    The path to the repository root (if not CWD).
+  --verbose                            True to display all output (default: false)
+  --fixed-format-statistics            True to output *only* test run statistics:
+                                         #run[tab]#passed[tab]#failed[tab]#skipped
+                                         (default: false)
+  --errors-to-std-error                True to write errors to stderr instead of stdout.
+                                         (default: False)
+  --version                            Show version information
+  -?, -h, --help                       Show help and usage information
+</code></pre>
+<h3 id="requirements">Requirements</h3>
+<p>In order to run TypeScript tests, the system must be able to find the 'tsc' (TypeScript compile) command.  Note that it must be installed and accessible by the test application (e.g., <code>npm install -g typescript</code>).</p>
+<h1 id="fhircsr2">fhirCsR2</h1>
+<p>This is a library project used to isolate the FHIR DSTU2 definitions.  All other versions of FHIR are dynamically parsed, but there has not been justification to port this forward - no technical corrections for DSTU2 are expected, so this is <em>mostly</em> considered legacy.</p>
+<h1 id="pre-generated-files">Pre-Generated Files</h1>
+<p>The <code>generated</code> directory has static outputs for each of the supported versions of FHIR, in some of the supported languages.  These files are used to validate changes to the core loading and parsing, but may be useful otherwise.</p>
+<h1 id="contributing">Contributing</h1>
 <p>This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit <a href="https://cla.opensource.microsoft.com">https://cla.opensource.microsoft.com</a>.</p>
@@ -77,6 +217,8 @@ provided by the bot. You will only need to do this once across all repos using o
 <p>This project has adopted the <a href="https://opensource.microsoft.com/codeofconduct/">Microsoft Open Source Code of Conduct</a>.
 For more information see the <a href="https://opensource.microsoft.com/codeofconduct/faq/">Code of Conduct FAQ</a> or
 contact <a href="mailto:opencode@microsoft.com">opencode@microsoft.com</a> with any additional questions or comments.</p>
+<h1 id="trademarks">Trademarks</h1>
+<p>FHIR® is the registered trademark of HL7 and is used under Community Project guidelines.  This project is not affiliated with, or approved or sponsored by, HL7.</p>
 </article>
           </div>
           
@@ -85,12 +227,13 @@ contact <a href="mailto:opencode@microsoft.com">opencode@microsoft.com</a> with 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/docfx/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/docfx/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

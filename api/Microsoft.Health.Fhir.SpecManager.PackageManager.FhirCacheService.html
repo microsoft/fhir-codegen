@@ -1,0 +1,976 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class FhirCacheService
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class FhirCacheService
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService">
+  
+  
+  <h1 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService" class="text-break">Class FhirCacheService
+  </h1>
+  <div class="markdown level0 summary"><p>Manager for package caches.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">FhirCacheService</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.Health.Fhir.SpecManager.PackageManager.html">Microsoft.Health.Fhir.SpecManager.PackageManager</a></h6>
+  <h6><strong>Assembly</strong>: Microsoft.Health.Fhir.SpecManager.dll</h6>
+  <h5 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class FhirCacheService : IDisposable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_Current.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.Current%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L99">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_Current_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.Current*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_Current" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.Current">Current</h4>
+  <div class="markdown level1 summary"><p>Gets the current singleton.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FhirCacheService Current { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.html">FhirCacheService</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_PackagesByDirective.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.PackagesByDirective%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L102">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_PackagesByDirective_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.PackagesByDirective*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_PackagesByDirective" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.PackagesByDirective">PackagesByDirective</h4>
+  <div class="markdown level1 summary"><p>Gets the packages by directive.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, PackageCacheRecord&gt; PackagesByDirective { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">PackageCacheRecord</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_DeletePackage_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.DeletePackage(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L385">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_DeletePackage_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.DeletePackage*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_DeletePackage_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.DeletePackage(System.String)">DeletePackage(String)</h4>
+  <div class="markdown level1 summary"><p>Deletes the package described by packageDirective.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeletePackage(string packageDirective)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">packageDirective</span></td>
+        <td><p>The package directive.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L1443">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_Dispose_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.Dispose*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_Dispose_System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Releases the unmanaged resources used by the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.html">FhirCacheService</a>
+and optionally releases the managed resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p>True to release both managed and unmanaged resources; false to
+release only unmanaged resources.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_FindOrDownload_System_String_System_String__System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.FindOrDownload(System.String%2CSystem.String%40%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L120">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_FindOrDownload_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.FindOrDownload*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_FindOrDownload_System_String_System_String__System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.FindOrDownload(System.String,System.String@,System.Boolean,System.String)">FindOrDownload(String, out String, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>Searches for the first or download.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool FindOrDownload(string directive, out string directory, bool offlineMode, string branchName = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directive</span></td>
+        <td><p>The directive.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directory</span></td>
+        <td><p>[out] Pathname of the directory.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">offlineMode</span></td>
+        <td><p>True to enable offline mode, false to disable it.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">branchName</span></td>
+        <td><p>(Optional) Name of the branch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_GetCachedPackages.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.GetCachedPackages%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L921">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_GetCachedPackages_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.GetCachedPackages*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_GetCachedPackages" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.GetCachedPackages">GetCachedPackages()</h4>
+  <div class="markdown level1 summary"><p>Gets the cached packages in this collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;NpmPackageDetails&gt; GetCachedPackages()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">NpmPackageDetails</span>&gt;</td>
+        <td><p>An enumerator that allows foreach to be used to process the cached packages in this
+collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_Init_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.Init(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L106">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_Init_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.Init*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_Init_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.Init(System.String)">Init(String)</h4>
+  <div class="markdown level1 summary"><p>Initializes the FhirCacheService.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Init(string cacheDirectory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">cacheDirectory</span></td>
+        <td><p>Pathname of the cache directory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_StateHasChanged.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.StateHasChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L1470">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_StateHasChanged_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.StateHasChanged*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_StateHasChanged" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.StateHasChanged">StateHasChanged()</h4>
+  <div class="markdown level1 summary"><p>State has changed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StateHasChanged()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadCoreViaCI_System_String_System_String_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadCoreViaCI(System.String%2CSystem.String%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L507">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadCoreViaCI_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadCoreViaCI*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadCoreViaCI_System_String_System_String_System_String__" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadCoreViaCI(System.String,System.String,System.String@)">TryDownloadCoreViaCI(String, String, out String)</h4>
+  <div class="markdown level1 summary"><p>Attempts to download core via ci a string from the given string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryDownloadCoreViaCI(string name, string branchName, out string directory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">branchName</span></td>
+        <td><p>Name of the branch.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directory</span></td>
+        <td><p>[out] Pathname of the directory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadGuideViaCI_System_String_System_String_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadGuideViaCI(System.String%2CSystem.String%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L748">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadGuideViaCI_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadGuideViaCI*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadGuideViaCI_System_String_System_String_System_String__" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadGuideViaCI(System.String,System.String,System.String@)">TryDownloadGuideViaCI(String, String, out String)</h4>
+  <div class="markdown level1 summary"><p>Attempts to download guide via ci a string from the given string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryDownloadGuideViaCI(string name, string branchName, out string directory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">branchName</span></td>
+        <td><p>Name of the branch.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directory</span></td>
+        <td><p>[out] Pathname of the directory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadGuideViaCI_System_String_System_String__System_String__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadGuideViaCI(System.String%2CSystem.String%40%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L581">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadGuideViaCI_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadGuideViaCI*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadGuideViaCI_System_String_System_String__System_String__" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadGuideViaCI(System.String,System.String@,System.String@)">TryDownloadGuideViaCI(String, out String, out String)</h4>
+  <div class="markdown level1 summary"><p>Attempts to download guide via ci a string from the given string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryDownloadGuideViaCI(string branchName, out string name, out string directory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">branchName</span></td>
+        <td><p>Name of the branch.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>[out] The name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directory</span></td>
+        <td><p>[out] Pathname of the directory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadViaCI_System_String_System_String_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadViaCI(System.String%2CSystem.String%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L473">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadViaCI_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadViaCI*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryDownloadViaCI_System_String_System_String_System_String__" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryDownloadViaCI(System.String,System.String,System.String@)">TryDownloadViaCI(String, String, out String)</h4>
+  <div class="markdown level1 summary"><p>Attempts to download via ci a string from the given string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryDownloadViaCI(string name, string branchName, out string directory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">branchName</span></td>
+        <td><p>Name of the branch.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directory</span></td>
+        <td><p>[out] Pathname of the directory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetCoreCiPackageDetails_System_String_NpmPackageDetails__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetCoreCiPackageDetails(System.String%2CNpmPackageDetails%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L676">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetCoreCiPackageDetails_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetCoreCiPackageDetails*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetCoreCiPackageDetails_System_String_NpmPackageDetails__" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetCoreCiPackageDetails(System.String,NpmPackageDetails@)">TryGetCoreCiPackageDetails(String, out NpmPackageDetails)</h4>
+  <div class="markdown level1 summary"><p>Attempts to get core ci package details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetCoreCiPackageDetails(string branchName, out NpmPackageDetails details)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">branchName</span></td>
+        <td><p>Name of the branch.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">NpmPackageDetails</span></td>
+        <td><span class="parametername">details</span></td>
+        <td><p>[out] The details.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetGuideCiPackageDetails_System_String_NpmPackageDetails__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetGuideCiPackageDetails(System.String%2CNpmPackageDetails%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L629">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetGuideCiPackageDetails_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetGuideCiPackageDetails*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetGuideCiPackageDetails_System_String_NpmPackageDetails__" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetGuideCiPackageDetails(System.String,NpmPackageDetails@)">TryGetGuideCiPackageDetails(String, out NpmPackageDetails)</h4>
+  <div class="markdown level1 summary"><p>Attempts to get guide ci package details the NpmPackageDetails from the given string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetGuideCiPackageDetails(string branchName, out NpmPackageDetails details)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">branchName</span></td>
+        <td><p>Name of the branch.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">NpmPackageDetails</span></td>
+        <td><span class="parametername">details</span></td>
+        <td><p>[out] The details.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetPackageManifests_System_String_IEnumerable_Microsoft_Health_Fhir_SpecManager_PackageManager_RegistryPackageManifest___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetPackageManifests(System.String%2CIEnumerable%7BMicrosoft.Health.Fhir.SpecManager.PackageManager.RegistryPackageManifest%7D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L1074">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetPackageManifests_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetPackageManifests*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetPackageManifests_System_String_IEnumerable_Microsoft_Health_Fhir_SpecManager_PackageManager_RegistryPackageManifest___" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetPackageManifests(System.String,IEnumerable{Microsoft.Health.Fhir.SpecManager.PackageManager.RegistryPackageManifest}@)">TryGetPackageManifests(String, out IEnumerable&lt;RegistryPackageManifest&gt;)</h4>
+  <div class="markdown level1 summary"><p>Attempts to get a package manifest for a given package.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetPackageManifests(string packageName, out IEnumerable&lt;RegistryPackageManifest&gt; manifests)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">packageName</span></td>
+        <td><p>Name of the package.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.PackageManager.RegistryPackageManifest.html">RegistryPackageManifest</a>&gt;</td>
+        <td><span class="parametername">manifests</span></td>
+        <td><p>[out] The manifest.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetPackageState_System_String_PackageLoadStateEnum__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetPackageState(System.String%2CPackageLoadStateEnum%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L1250">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetPackageState_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetPackageState*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_TryGetPackageState_System_String_PackageLoadStateEnum__" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.TryGetPackageState(System.String,PackageLoadStateEnum@)">TryGetPackageState(String, out PackageLoadStateEnum)</h4>
+  <div class="markdown level1 summary"><p>Attempts to get a package state, returning a default value rather than throwing an exception
+if it fails.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetPackageState(string directive, out PackageLoadStateEnum state)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directive</span></td>
+        <td><p>The directive.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">PackageLoadStateEnum</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>[out] The state.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_UpdatePackageState_System_String_System_String_System_String_PackageLoadStateEnum_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.UpdatePackageState(System.String%2CSystem.String%2CSystem.String%2CPackageLoadStateEnum)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L1218">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_UpdatePackageState_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.UpdatePackageState*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_UpdatePackageState_System_String_System_String_System_String_PackageLoadStateEnum_" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.UpdatePackageState(System.String,System.String,System.String,PackageLoadStateEnum)">UpdatePackageState(String, String, String, PackageLoadStateEnum)</h4>
+  <div class="markdown level1 summary"><p>Updates the package state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePackageState(string directive, string resolvedName, string resolvedVersion, PackageLoadStateEnum toState)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directive</span></td>
+        <td><p>The directive.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resolvedName</span></td>
+        <td><p>Name of the resolved.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resolvedVersion</span></td>
+        <td><p>The resolved version.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">PackageLoadStateEnum</span></td>
+        <td><span class="parametername">toState</span></td>
+        <td><p>State of to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_OnChanged.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.OnChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L96">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService_OnChanged" data-uid="Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService.OnChanged">OnChanged</h4>
+  <div class="markdown level1 summary"><p>Occurs when On Changed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;EventArgs&gt; OnChanged</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EventHandler</span>&lt;<span class="xref">EventArgs</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_PackageManager_FhirCacheService.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.PackageManager.FhirCacheService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/PackageManager/FhirCacheService.cs/#L14" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

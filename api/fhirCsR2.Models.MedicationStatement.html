@@ -1,0 +1,1012 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MedicationStatement
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MedicationStatement
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="fhirCsR2.Models.MedicationStatement">
+  
+  
+  <h1 id="fhirCsR2_Models_MedicationStatement" data-uid="fhirCsR2.Models.MedicationStatement" class="text-break">Class MedicationStatement
+  </h1>
+  <div class="markdown level0 summary"><p>A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from e.g. the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains   The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="fhirCsR2.Models.Resource.html">Resource</a></div>
+    <div class="level2"><a class="xref" href="fhirCsR2.Models.DomainResource.html">DomainResource</a></div>
+    <div class="level3"><span class="xref">MedicationStatement</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Contained">DomainResource.Contained</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Extension">DomainResource.Extension</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_ModifierExtension">DomainResource.ModifierExtension</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.DomainResource.html#fhirCsR2_Models_DomainResource_Text">DomainResource.Text</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Id">Resource.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__Id">Resource._Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_ImplicitRules">Resource.ImplicitRules</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__ImplicitRules">Resource._ImplicitRules</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Language">Resource.Language</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__Language">Resource._Language</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Meta">Resource.Meta</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="fhirCsR2.Models.html">fhirCsR2.Models</a></h6>
+  <h6><strong>Assembly</strong>: fhirCsR2.dll</h6>
+  <h5 id="fhirCsR2_Models_MedicationStatement_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(JsonStreamComponentConverter&lt;MedicationStatement&gt;))]
+public class MedicationStatement : DomainResource, IFhirJsonSerializable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement__DateAsserted.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement._DateAsserted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L309">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement__DateAsserted_" data-uid="fhirCsR2.Models.MedicationStatement._DateAsserted*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement__DateAsserted" data-uid="fhirCsR2.Models.MedicationStatement._DateAsserted">_DateAsserted</h4>
+  <div class="markdown level1 summary"><p>Extension container element for DateAsserted</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _DateAsserted { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement__EffectiveDateTime.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement._EffectiveDateTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L321">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement__EffectiveDateTime_" data-uid="fhirCsR2.Models.MedicationStatement._EffectiveDateTime*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement__EffectiveDateTime" data-uid="fhirCsR2.Models.MedicationStatement._EffectiveDateTime">_EffectiveDateTime</h4>
+  <div class="markdown level1 summary"><p>Extension container element for EffectiveDateTime</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _EffectiveDateTime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement__Note.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement._Note%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L349">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement__Note_" data-uid="fhirCsR2.Models.MedicationStatement._Note*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement__Note" data-uid="fhirCsR2.Models.MedicationStatement._Note">_Note</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Note</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Note { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement__Status.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement._Status%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L373">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement__Status_" data-uid="fhirCsR2.Models.MedicationStatement._Status*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement__Status" data-uid="fhirCsR2.Models.MedicationStatement._Status">_Status</h4>
+  <div class="markdown level1 summary"><p>Extension container element for Status</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _Status { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement__WasNotTaken.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement._WasNotTaken%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L385">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement__WasNotTaken_" data-uid="fhirCsR2.Models.MedicationStatement._WasNotTaken*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement__WasNotTaken" data-uid="fhirCsR2.Models.MedicationStatement._WasNotTaken">_WasNotTaken</h4>
+  <div class="markdown level1 summary"><p>Extension container element for WasNotTaken</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Element _WasNotTaken { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Element.html">Element</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_DateAsserted.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.DateAsserted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L305">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_DateAsserted_" data-uid="fhirCsR2.Models.MedicationStatement.DateAsserted*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_DateAsserted" data-uid="fhirCsR2.Models.MedicationStatement.DateAsserted">DateAsserted</h4>
+  <div class="markdown level1 summary"><p>The date when the medication statement was asserted by the information source.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DateAsserted { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_Dosage.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.Dosage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L313">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_Dosage_" data-uid="fhirCsR2.Models.MedicationStatement.Dosage*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_Dosage" data-uid="fhirCsR2.Models.MedicationStatement.Dosage">Dosage</h4>
+  <div class="markdown level1 summary"><p>Indicates how the medication is/was used by the patient.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;MedicationStatementDosage&gt; Dosage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.MedicationStatementDosage.html">MedicationStatementDosage</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_EffectiveDateTime.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.EffectiveDateTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L317">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_EffectiveDateTime_" data-uid="fhirCsR2.Models.MedicationStatement.EffectiveDateTime*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_EffectiveDateTime" data-uid="fhirCsR2.Models.MedicationStatement.EffectiveDateTime">EffectiveDateTime</h4>
+  <div class="markdown level1 summary"><p>The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string EffectiveDateTime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_EffectivePeriod.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.EffectivePeriod%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L325">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_EffectivePeriod_" data-uid="fhirCsR2.Models.MedicationStatement.EffectivePeriod*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_EffectivePeriod" data-uid="fhirCsR2.Models.MedicationStatement.EffectivePeriod">EffectivePeriod</h4>
+  <div class="markdown level1 summary"><p>The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Period EffectivePeriod { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Period.html">Period</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_Identifier.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L329">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_Identifier_" data-uid="fhirCsR2.Models.MedicationStatement.Identifier*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_Identifier" data-uid="fhirCsR2.Models.MedicationStatement.Identifier">Identifier</h4>
+  <div class="markdown level1 summary"><p>External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Identifier&gt; Identifier { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Identifier.html">Identifier</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_InformationSource.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.InformationSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L333">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_InformationSource_" data-uid="fhirCsR2.Models.MedicationStatement.InformationSource*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_InformationSource" data-uid="fhirCsR2.Models.MedicationStatement.InformationSource">InformationSource</h4>
+  <div class="markdown level1 summary"><p>The person who provided the information about the taking of this medication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference InformationSource { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_MedicationCodeableConcept.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.MedicationCodeableConcept%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L337">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_MedicationCodeableConcept_" data-uid="fhirCsR2.Models.MedicationStatement.MedicationCodeableConcept*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_MedicationCodeableConcept" data-uid="fhirCsR2.Models.MedicationStatement.MedicationCodeableConcept">MedicationCodeableConcept</h4>
+  <div class="markdown level1 summary"><p>Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodeableConcept MedicationCodeableConcept { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_MedicationReference.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.MedicationReference%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L341">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_MedicationReference_" data-uid="fhirCsR2.Models.MedicationStatement.MedicationReference*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_MedicationReference" data-uid="fhirCsR2.Models.MedicationStatement.MedicationReference">MedicationReference</h4>
+  <div class="markdown level1 summary"><p>Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference MedicationReference { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_Note.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.Note%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L345">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_Note_" data-uid="fhirCsR2.Models.MedicationStatement.Note*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_Note" data-uid="fhirCsR2.Models.MedicationStatement.Note">Note</h4>
+  <div class="markdown level1 summary"><p>Provides extra information about the medication statement that is not conveyed by the other attributes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Note { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_Patient.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.Patient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L353">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_Patient_" data-uid="fhirCsR2.Models.MedicationStatement.Patient*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_Patient" data-uid="fhirCsR2.Models.MedicationStatement.Patient">Patient</h4>
+  <div class="markdown level1 summary"><p>The person or animal who is/was taking the medication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference Patient { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_ReasonForUseCodeableConcept.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.ReasonForUseCodeableConcept%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L357">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_ReasonForUseCodeableConcept_" data-uid="fhirCsR2.Models.MedicationStatement.ReasonForUseCodeableConcept*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_ReasonForUseCodeableConcept" data-uid="fhirCsR2.Models.MedicationStatement.ReasonForUseCodeableConcept">ReasonForUseCodeableConcept</h4>
+  <div class="markdown level1 summary"><p>A reason for why the medication is being/was taken.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodeableConcept ReasonForUseCodeableConcept { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_ReasonForUseReference.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.ReasonForUseReference%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L361">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_ReasonForUseReference_" data-uid="fhirCsR2.Models.MedicationStatement.ReasonForUseReference*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_ReasonForUseReference" data-uid="fhirCsR2.Models.MedicationStatement.ReasonForUseReference">ReasonForUseReference</h4>
+  <div class="markdown level1 summary"><p>A reason for why the medication is being/was taken.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reference ReasonForUseReference { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_ReasonNotTaken.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.ReasonNotTaken%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L365">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_ReasonNotTaken_" data-uid="fhirCsR2.Models.MedicationStatement.ReasonNotTaken*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_ReasonNotTaken" data-uid="fhirCsR2.Models.MedicationStatement.ReasonNotTaken">ReasonNotTaken</h4>
+  <div class="markdown level1 summary"><p>A code indicating why the medication was not taken.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CodeableConcept&gt; ReasonNotTaken { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.CodeableConcept.html">CodeableConcept</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_ResourceType.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.ResourceType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L301">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_ResourceType_" data-uid="fhirCsR2.Models.MedicationStatement.ResourceType*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_ResourceType" data-uid="fhirCsR2.Models.MedicationStatement.ResourceType">ResourceType</h4>
+  <div class="markdown level1 summary"><p>Resource Type Name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ResourceType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_ResourceType">Resource.ResourceType</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_Status.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.Status%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L369">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_Status_" data-uid="fhirCsR2.Models.MedicationStatement.Status*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_Status" data-uid="fhirCsR2.Models.MedicationStatement.Status">Status</h4>
+  <div class="markdown level1 summary"><p>A code representing the patient or other source's judgment about the state of the medication used that this statement is about.  Generally this will be active or completed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Status { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_SupportingInformation.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.SupportingInformation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L377">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_SupportingInformation_" data-uid="fhirCsR2.Models.MedicationStatement.SupportingInformation*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_SupportingInformation" data-uid="fhirCsR2.Models.MedicationStatement.SupportingInformation">SupportingInformation</h4>
+  <div class="markdown level1 summary"><p>Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports the MedicationStatement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Reference&gt; SupportingInformation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Reference.html">Reference</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_WasNotTaken.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.WasNotTaken%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L381">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_WasNotTaken_" data-uid="fhirCsR2.Models.MedicationStatement.WasNotTaken*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_WasNotTaken" data-uid="fhirCsR2.Models.MedicationStatement.WasNotTaken">WasNotTaken</h4>
+  <div class="markdown level1 summary"><p>Set this to true if the record is saying that the medication was NOT taken.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? WasNotTaken { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.DeserializeJson(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L761">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_DeserializeJson_" data-uid="fhirCsR2.Models.MedicationStatement.DeserializeJson*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_" data-uid="fhirCsR2.Models.MedicationStatement.DeserializeJson(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">DeserializeJson(ref Utf8JsonReader, JsonSerializerOptions)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJson(ref Utf8JsonReader reader, JsonSerializerOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L560">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_DeserializeJsonProperty_" data-uid="fhirCsR2.Models.MedicationStatement.DeserializeJsonProperty*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_" data-uid="fhirCsR2.Models.MedicationStatement.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions,System.String)">DeserializeJsonProperty(ref Utf8JsonReader, JsonSerializerOptions, String)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement.SerializeJson(System.Text.Json.Utf8JsonWriter%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L389">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_MedicationStatement_SerializeJson_" data-uid="fhirCsR2.Models.MedicationStatement.SerializeJson*"></a>
+  <h4 id="fhirCsR2_Models_MedicationStatement_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_" data-uid="fhirCsR2.Models.MedicationStatement.SerializeJson(System.Text.Json.Utf8JsonWriter,System.Text.Json.JsonSerializerOptions,System.Boolean)">SerializeJson(Utf8JsonWriter, JsonSerializerOptions, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Serialize to a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonWriter</span></td>
+        <td><span class="parametername">writer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeStartObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_MedicationStatement.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.MedicationStatement%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/MedicationStatement.cs/#L296" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

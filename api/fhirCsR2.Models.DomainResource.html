@@ -1,0 +1,533 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class DomainResource
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class DomainResource
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="fhirCsR2.Models.DomainResource">
+  
+  
+  <h1 id="fhirCsR2_Models_DomainResource" data-uid="fhirCsR2.Models.DomainResource" class="text-break">Class DomainResource
+  </h1>
+  <div class="markdown level0 summary"><p>A resource that includes narrative, extensions, and contained resources.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="fhirCsR2.Models.Resource.html">Resource</a></div>
+    <div class="level2"><span class="xref">DomainResource</span></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Account.html">Account</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.AllergyIntolerance.html">AllergyIntolerance</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Appointment.html">Appointment</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.AppointmentResponse.html">AppointmentResponse</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.AuditEvent.html">AuditEvent</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Basic.html">Basic</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.BodySite.html">BodySite</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.CarePlan.html">CarePlan</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Claim.html">Claim</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ClaimResponse.html">ClaimResponse</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ClinicalImpression.html">ClinicalImpression</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Communication.html">Communication</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.CommunicationRequest.html">CommunicationRequest</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Composition.html">Composition</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ConceptMap.html">ConceptMap</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Condition.html">Condition</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Conformance.html">Conformance</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Contract.html">Contract</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Coverage.html">Coverage</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.DataElement.html">DataElement</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.DetectedIssue.html">DetectedIssue</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Device.html">Device</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.DeviceComponent.html">DeviceComponent</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.DeviceMetric.html">DeviceMetric</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.DeviceUseRequest.html">DeviceUseRequest</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.DeviceUseStatement.html">DeviceUseStatement</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.DiagnosticOrder.html">DiagnosticOrder</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.DiagnosticReport.html">DiagnosticReport</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.DocumentManifest.html">DocumentManifest</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.DocumentReference.html">DocumentReference</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.EligibilityRequest.html">EligibilityRequest</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.EligibilityResponse.html">EligibilityResponse</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Encounter.html">Encounter</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.EnrollmentRequest.html">EnrollmentRequest</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.EnrollmentResponse.html">EnrollmentResponse</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.EpisodeOfCare.html">EpisodeOfCare</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ExplanationOfBenefit.html">ExplanationOfBenefit</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.FamilyMemberHistory.html">FamilyMemberHistory</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Flag.html">Flag</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Goal.html">Goal</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Group.html">Group</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.HealthcareService.html">HealthcareService</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ImagingObjectSelection.html">ImagingObjectSelection</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ImagingStudy.html">ImagingStudy</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Immunization.html">Immunization</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ImmunizationRecommendation.html">ImmunizationRecommendation</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ImplementationGuide.html">ImplementationGuide</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.List.html">List</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Location.html">Location</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Media.html">Media</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Medication.html">Medication</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.MedicationAdministration.html">MedicationAdministration</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.MedicationDispense.html">MedicationDispense</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.MedicationOrder.html">MedicationOrder</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.MedicationStatement.html">MedicationStatement</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.MessageHeader.html">MessageHeader</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.NamingSystem.html">NamingSystem</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.NutritionOrder.html">NutritionOrder</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Observation.html">Observation</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.OperationDefinition.html">OperationDefinition</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.OperationOutcome.html">OperationOutcome</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Order.html">Order</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.OrderResponse.html">OrderResponse</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Organization.html">Organization</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Patient.html">Patient</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.PaymentNotice.html">PaymentNotice</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.PaymentReconciliation.html">PaymentReconciliation</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Person.html">Person</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Practitioner.html">Practitioner</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Procedure.html">Procedure</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ProcedureRequest.html">ProcedureRequest</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ProcessRequest.html">ProcessRequest</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ProcessResponse.html">ProcessResponse</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Provenance.html">Provenance</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Questionnaire.html">Questionnaire</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.QuestionnaireResponse.html">QuestionnaireResponse</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ReferralRequest.html">ReferralRequest</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.RelatedPerson.html">RelatedPerson</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.RiskAssessment.html">RiskAssessment</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Schedule.html">Schedule</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.SearchParameter.html">SearchParameter</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Slot.html">Slot</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Specimen.html">Specimen</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.StructureDefinition.html">StructureDefinition</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Subscription.html">Subscription</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.Substance.html">Substance</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.SupplyDelivery.html">SupplyDelivery</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.SupplyRequest.html">SupplyRequest</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.TestScript.html">TestScript</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.ValueSet.html">ValueSet</a></div>
+      <div class="level3"><a class="xref" href="fhirCsR2.Models.VisionPrescription.html">VisionPrescription</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_ResourceType">Resource.ResourceType</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Id">Resource.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__Id">Resource._Id</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_ImplicitRules">Resource.ImplicitRules</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__ImplicitRules">Resource._ImplicitRules</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Language">Resource.Language</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource__Language">Resource._Language</a>
+    </div>
+    <div>
+      <a class="xref" href="fhirCsR2.Models.Resource.html#fhirCsR2_Models_Resource_Meta">Resource.Meta</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="fhirCsR2.Models.html">fhirCsR2.Models</a></h6>
+  <h6><strong>Assembly</strong>: fhirCsR2.dll</h6>
+  <h5 id="fhirCsR2_Models_DomainResource_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(JsonStreamResourceConverter))]
+public class DomainResource : Resource, IFhirJsonSerializable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_DomainResource_Contained.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.DomainResource.Contained%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/DomainResource.cs/#L21">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_DomainResource_Contained_" data-uid="fhirCsR2.Models.DomainResource.Contained*"></a>
+  <h4 id="fhirCsR2_Models_DomainResource_Contained" data-uid="fhirCsR2.Models.DomainResource.Contained">Contained</h4>
+  <div class="markdown level1 summary"><p>These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Resource&gt; Contained { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Resource.html">Resource</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_DomainResource_Extension.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.DomainResource.Extension%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/DomainResource.cs/#L25">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_DomainResource_Extension_" data-uid="fhirCsR2.Models.DomainResource.Extension*"></a>
+  <h4 id="fhirCsR2_Models_DomainResource_Extension" data-uid="fhirCsR2.Models.DomainResource.Extension">Extension</h4>
+  <div class="markdown level1 summary"><p>May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Extension&gt; Extension { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Extension.html">Extension</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_DomainResource_ModifierExtension.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.DomainResource.ModifierExtension%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/DomainResource.cs/#L29">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_DomainResource_ModifierExtension_" data-uid="fhirCsR2.Models.DomainResource.ModifierExtension*"></a>
+  <h4 id="fhirCsR2_Models_DomainResource_ModifierExtension" data-uid="fhirCsR2.Models.DomainResource.ModifierExtension">ModifierExtension</h4>
+  <div class="markdown level1 summary"><p>May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Extension&gt; ModifierExtension { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="fhirCsR2.Models.Extension.html">Extension</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_DomainResource_Text.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.DomainResource.Text%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/DomainResource.cs/#L33">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_DomainResource_Text_" data-uid="fhirCsR2.Models.DomainResource.Text*"></a>
+  <h4 id="fhirCsR2_Models_DomainResource_Text" data-uid="fhirCsR2.Models.DomainResource.Text">Text</h4>
+  <div class="markdown level1 summary"><p>A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Narrative Text { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fhirCsR2.Models.Narrative.html">Narrative</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_DomainResource_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.DomainResource.DeserializeJson(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/DomainResource.cs/#L196">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_DomainResource_DeserializeJson_" data-uid="fhirCsR2.Models.DomainResource.DeserializeJson*"></a>
+  <h4 id="fhirCsR2_Models_DomainResource_DeserializeJson_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_" data-uid="fhirCsR2.Models.DomainResource.DeserializeJson(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">DeserializeJson(ref Utf8JsonReader, JsonSerializerOptions)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJson(ref Utf8JsonReader reader, JsonSerializerOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_DomainResource_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.DomainResource.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader%40%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/DomainResource.cs/#L98">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_DomainResource_DeserializeJsonProperty_" data-uid="fhirCsR2.Models.DomainResource.DeserializeJsonProperty*"></a>
+  <h4 id="fhirCsR2_Models_DomainResource_DeserializeJsonProperty_System_Text_Json_Utf8JsonReader__System_Text_Json_JsonSerializerOptions_System_String_" data-uid="fhirCsR2.Models.DomainResource.DeserializeJsonProperty(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions,System.String)">DeserializeJsonProperty(ref Utf8JsonReader, JsonSerializerOptions, String)</h4>
+  <div class="markdown level1 summary"><p>Deserialize a JSON property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_DomainResource_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.DomainResource.SerializeJson(System.Text.Json.Utf8JsonWriter%2CSystem.Text.Json.JsonSerializerOptions%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/DomainResource.cs/#L37">View Source</a>
+  </span>
+  <a id="fhirCsR2_Models_DomainResource_SerializeJson_" data-uid="fhirCsR2.Models.DomainResource.SerializeJson*"></a>
+  <h4 id="fhirCsR2_Models_DomainResource_SerializeJson_System_Text_Json_Utf8JsonWriter_System_Text_Json_JsonSerializerOptions_System_Boolean_" data-uid="fhirCsR2.Models.DomainResource.SerializeJson(System.Text.Json.Utf8JsonWriter,System.Text.Json.JsonSerializerOptions,System.Boolean)">SerializeJson(Utf8JsonWriter, JsonSerializerOptions, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Serialize to a JSON object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.Json.Utf8JsonWriter</span></td>
+        <td><span class="parametername">writer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeStartObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="fhirCsR2.Serialization.IFhirJsonSerializable.html">IFhirJsonSerializable</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=fhirCsR2_Models_DomainResource.md&amp;value=---%0Auid%3A%20fhirCsR2.Models.DomainResource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhirCsR2/Models/DomainResource.cs/#L16" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

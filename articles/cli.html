@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>CLI Usage </title>
+    <title>Command Line Interface </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="CLI Usage ">
-    <meta name="generator" content="docfx 2.56.1.0">
+    <meta name="title" content="Command Line Interface ">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -67,232 +67,101 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="cli-usage">CLI Usage</h1>
+<h1 id="command-line-interface">Command Line Interface</h1>
 
+<p>The command-line-interface (CLI) project is intended as a utility suitable for both manual and automated (e.g., CI Pipeline) use.</p>
+<p>The CLI is focused on language-export.  It includes options to specify inputs (e.g., which FHIR packages to download/parse, if additional filters should be used, etc.) and outputs (e.g., export language, destination directory, etc.).</p>
+<h2 id="options">Options</h2>
+<p>The CLI self-reports all options with descriptions:</p>
 <pre><code class="lang-dos">Usage:
   fhir-codegen-cli [options]
 
 Options:
-  --fhir-spec-directory &lt;fhir-spec-directory&gt;    The full path to the directory where FHIR 
-                                                    specifications are downloaded and cached.
-  --output-path &lt;output-path&gt;                    File or directory to write output.
-  --verbose                                      Show verbose output.
-  --offline-mode                                 Offline mode .
-                                                    (will not download missing specs)
-  --language &lt;language&gt;                          Name of the language to export.
-                                                    (default: Info|TypeScript|CSharpBasic)
-  --export-keys &lt;export-keys&gt;                    '|' separated list of items to export.
-                                                    (not present to export everything)
-  --load-r2 &lt;load-r2&gt;                            If FHIR R2 should be loaded, which version.
-                                                    (e.g., 1.0.2 or latest)
-  --load-r3 &lt;load-r3&gt;                            If FHIR R3 should be loaded, which version.
-                                                    (e.g., 3.0.2 or latest)
-  --load-r4 &lt;load-r4&gt;                            If FHIR R4 should be loaded, which version.
-                                                    (e.g., 4.0.1 or latest).
-  --load-r5 &lt;load-r5&gt;                            If FHIR R5 should be loaded, which version.
-                                                    (e.g., 4.4.0 or latest)
-  --language-help                                Show supported languages and their options.
-  --language-options &lt;language-options&gt;          Language specific options, see documentation
-                                                   for more details.
-                                                   (e.g., CSharpBasic|namespace=myorg.fhir)
-  --official-expansions-only                     True to restrict value-sets exported to only
-                                                    official expansions.
-                                                    (default: false)
-  --fhir-server-url &lt;fhir-server-url&gt;            FHIR Server URL to pull a CapabilityStatement
-                                                    (or Conformance) from. Only supports
-                                                    application/fhir+json.
-  --include-experimental                         If the output should include structures
-                                                    marked experimental.
-                                                    (default: false)
-  --export-types                                 Which FHIR classes types to export:
-                                                    primitive|complex|resource|interaction|enum
-                                                    (default: all types)
+  -o, --output-path &lt;output-path&gt;                File or directory to write output.
+
+  --package-directory &lt;package-directory&gt;        The path to a local directory for FHIR packages,
+                                                 if different than the default 
+                                                 FHIR cache (~/.fhir); e.g., (.../fhirPackages)).
+
+  -l, --language &lt;language&gt;                      Name of the language to export (default: 
+                                                 Info|TypeScript|CSharpBasic).
+  --language-help                                Display languages and their options. 
+                                                 [default: False]
+  --language-options, --opts &lt;language-options&gt;  Language specific options, see documentation for
+                                                 more details. Example: 
+                                                 Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.
+  --language-input-dir &lt;language-input-dir&gt;      The full path to a local directory to pass 
+                                                 additional content to languages.
+
+  --offline-mode                                 Offline mode (will not download packages).
+                                                 [default: False]
+  -k, --export-keys &lt;export-keys&gt;                '|' separated list of items to export (not present
+                                                 to export everything).
+  --official-expansions-only                     Set to restrict value-sets to only official
+                                                 expansions. [default: False]
+  --experimental, --include-experimental         If the output should include structures marked
+                                                 experimental. [default: False]
+  --export-types, --types &lt;export-types&gt;         Types of FHIR structures to export
+                                                 (primitive|complex|resource|interaction|enum),
+                                                 default is all.
+  --extension-support &lt;extension-support&gt;        The level of extensions to include (none|
+                                                 official|officialNonPrimitive|nonPrimitive|all),
+                                                 default is nonPrimitive.
+  --fhir-server-url, --server &lt;fhir-server-url&gt;  FHIR Server URL to pull a CapabilityStatement 
+                                                 or Conformance from. The server
+                                                 must provide application/fhir+json support.
+
+  -p, --packages &lt;packages&gt;                      '|' separated list of packages, with or without
+                                                 version numbers, e.g.,
+                                                 hl7.fhir.r4.core#4.0.1|hl7.fhir.us.core#latest.
+  --load-DSTU2, --load-r2 &lt;load-DSTU2&gt;           If FHIR DSTU2 should be loaded, which version
+                                                 (e.g., 1.0.2 or latest)
+  --load-r3, --load-STU3 &lt;load-STU3&gt;             If FHIR STU3 should be loaded, which version
+                                                 (e.g., 3.0.2 or latest)
+  --load-r4 &lt;load-r4&gt;                            If FHIR R4 should be loaded, which version
+                                                 (e.g., 4.0.1 or latest)
+  --load-r4b &lt;load-r4b&gt;                          If FHIR R4B should be loaded, which version
+                                                 (e.g., 4.3.0 or latest)
+  --load-r5 &lt;load-r5&gt;                            If FHIR R5 should be loaded, which version
+                                                 (e.g., 5.0.0-ballot or latest)
+  --ci-branch &lt;ci-branch&gt;                        If loading from the CI server, the name of the 
+                                                 branch to use.
+
+  -v, --verbose                                  Show verbose output. [default: False]
   --version                                      Show version information
   -?, -h, --help                                 Show help and usage information
 </code></pre>
-<h2 id="language-information">Language Information</h2>
-<h3 id="csharpbasic">CSharpBasic</h3>
-<p>Basic C# language bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.</p>
-<table>
-<thead>
-<tr>
-<th>Language Option</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>namespace</td>
-<td>Namespace to use when exporting C# files.</td>
-<td>fhir</td>
-</tr>
-</tbody>
-</table>
-<h3 id="csharpfirely1">CSharpFirely1</h3>
-<p>Export base C# classes needed for the Firely-maintained C# API (<a href="https://github.com/FirelyTeam/fhir-net-api/">FHIR-Net-API</a>), v1.</p>
-<table>
-<thead>
-<tr>
-<th>Language Option</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DetailedHeader</td>
-<td>If the generator should include the user and date/time information in the header (true|false).</td>
-<td>true</td>
-</tr>
-</tbody>
-</table>
-<h3 id="csharpfirely2">CSharpFirely2</h3>
-<p>Export base C# classes needed for the Firely-maintained C# API (<a href="https://github.com/FirelyTeam/fhir-net-api/">FHIR-Net-API</a>), v2.</p>
-<h3 id="cytoscape-experimental">Cytoscape <strong>EXPERIMENTAL</strong></h3>
-<p>Export a <a href="https://js.cytoscape.org/">cytoscape</a> data file (JSON).</p>
-<h3 id="info">Info</h3>
-<p>Basic text output of a version of FHIR for information and testing.</p>
-<h3 id="openapi-experimental">OpenAPI <strong>EXPERIMENTAL</strong></h3>
-<p>Export an OpenAPI 2 or 3 JSON version of the standard.</p>
-<table>
-<thead>
-<tr>
-<th>Language Option</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BundleOperations</td>
-<td>If the generator should include /Bundle, etc. (true|false).</td>
-<td>true</td>
-</tr>
-<tr>
-<td>Descriptions</td>
-<td>If properties should include descriptions (true|false).</td>
-<td>true</td>
-</tr>
-<tr>
-<td>DescriptionMaxLen</td>
-<td>Maximum length of descriptions, if being validated.</td>
-<td>60</td>
-</tr>
-<tr>
-<td>DescriptionValidation</td>
-<td>If descriptions are required and should be validated (false|true).</td>
-<td>false</td>
-</tr>
-<tr>
-<td>ExpandProfiles</td>
-<td>If types should expand based on allowed profiles (true|false).</td>
-<td>true</td>
-</tr>
-<tr>
-<td>FhirJson</td>
-<td>If paths should explicitly support FHIR+JSON (true|false).</td>
-<td>true</td>
-</tr>
-<tr>
-<td>FhirXml</td>
-<td>If paths should explicitly support FHIR+XML (false|true).</td>
-<td>false</td>
-</tr>
-<tr>
-<td>History</td>
-<td>If _history GET operations should be included (false|true)</td>
-<td>false</td>
-</tr>
-<tr>
-<td>MaxRecurisions</td>
-<td>Maximum depth to expand recursions.</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Metadata</td>
-<td>If the JSON should include a link to /metadata (false|true).</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Minify</td>
-<td>If the output JSON should be minified (false|true).</td>
-<td>false</td>
-</tr>
-<tr>
-<td>OpenApiVersion</td>
-<td>Open API version to use (2, 3).</td>
-<td>2</td>
-</tr>
-<tr>
-<td>OperationCase</td>
-<td>Case of the first letter of Operation IDs (upper|lower).</td>
-<td>upper</td>
-</tr>
-<tr>
-<td>ReadOnly</td>
-<td>If the output should only contain GET operations (false|true).</td>
-<td>false</td>
-</tr>
-<tr>
-<td>RemoveUncommonFields</td>
-<td>If the generator should remove some uncommon fields (false|true)</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Schemas</td>
-<td>If schemas should be included (true|false).</td>
-<td>true</td>
-</tr>
-<tr>
-<td>SchemasInline</td>
-<td>If the output should inline all schemas (no inheritance) (false|true).</td>
-<td>false</td>
-</tr>
-<tr>
-<td>SingleResponses</td>
-<td>If operations should only include a single response (false|true).</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Summaries</td>
-<td>If responses should include summaries (true|false).</td>
-<td>true</td>
-</tr>
-<tr>
-<td>Title</td>
-<td>Title to use in the Info section.</td>
-<td>`FHIR {FHIR Release Name}:{FHIR Version String}</td>
-</tr>
-<tr>
-<td>WriteOnly</td>
-<td>If the output should only contain POST/PUT/DELETE operations (false|true).</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-<h3 id="typescript">TypeScript</h3>
-<p>Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.</p>
-<h2 id="cli-examples">CLI Examples</h2>
+<h2 id="package-source">Package Source</h2>
+<p>By default, the CLI will use the user's FHIR cache directory (<code>~/.fhir</code>).  This directory is common to many tools in the FHIR ecosystem, such as the publication tooling (e.g., IG Publisher) and package-based tools from other companies (e.g., Firely).</p>
+<p>If a different directory is desired (e.g., CI Builds in a docker image, 'clean' builds from a specific location, etc.), the <code>--package-directory</code> option can be used.</p>
+<h2 id="specifying-packages">Specifying Packages</h2>
+<p>Initially, the CLI only supported loading FHIR Core specifications (e.g., FHIR R4).  In order to maintain backwards compatibility, explicit options to load core specifications are still supported (e.g., <code>--load-r4 latest</code>), though users should consider changing to the package directive format (e.g., <code>--packages hl7.fhir.r4.core#latest</code>).</p>
+<h2 id="languages">Languages</h2>
+<p>fhir-codegen supports several export languages, each with their own configuration (options), additional files, and artifact support.  Since the language support is common to all projects in the repository, more information can be found on the <a href="languages.html">Languages Page</a></p>
+<h2 id="filtering">Filtering</h2>
+<p>Several options relate to filtering the artifacts included in a package, e.g., <code>--export-keys</code> is used to provide an explicit list of artifacts that should be allowed; <code>--server</code> is used to filter packages based on the capabilities of an existing FHIR server; etc..</p>
+<p>These filters are applied after packages are loaded.  For example, a user may want to generate <em>only</em> definitions for FHIR R4 Patient, Encounter, Observation, and Bundle resources.  A user can specify to load the FHIR R4 specification and use the option <code>--export-keys Patient|Encounter|Observation|Bundle</code> to filter the specification.  Note that the filtering is &quot;smart&quot; in that all definitions required by those resources (e.g., data types, etc.) will still be included.</p>
+<p>Note that some languages will provide 'object' stubs for elements that cannot be defined, while others may exclude them entirely.</p>
+<h2 id="examples">Examples</h2>
 <ul>
-<li><p>Download and parse FHIR R4 (latest published version) into ./fhir, then build a TypeScript file in the current directory</p>
+<li><p>Download and parse FHIR R4 (latest published version) into the user FHIR cache, then build a TypeScript file in the current directory</p>
 <ul>
-<li><code>fhir-codegen-cli --load-r4 latest --fhir-spec-directory ./fhir --language TypeScript --output-path ./R4.ts</code></li>
+<li><code>fhir-codegen-cli -p hl7.fhir.r4#latest --language TypeScript --output-path ./R4.ts</code></li>
 </ul>
 </li>
-<li><p>Download and parse FHIR R4 (latest published version) into ./fhir, then build a TypeScript file in the current directory, restricted to just the Resources: Patient, Encounter, and Observation</p>
+<li><p>Download and parse FHIR R4 (latest published version) into the user FHIR cache, then build a TypeScript file in the current directory, restricted to just the Resources: Patient, Encounter, and Observation</p>
 <ul>
-<li><code>fhir-codegen-cli --load-r4 latest --fhir-spec-directory ./fhir --language TypeScript --output-path ./R4.ts --export-keys Patient|Encounter|Observation</code></li>
+<li><code>fhir-codegen-cli --load-r4 latest --language TypeScript --output-path ./R4.ts --export-keys Patient|Encounter|Observation</code></li>
 </ul>
 </li>
-<li><p>Download and parse the latest published version of each FHIR release into ./fhir, then build a C# file for each in ./cs</p>
+<li><p>Download and parse the latest published version of each FHIR release into the user FHIR cache, then build a C# file for each in ./cs</p>
 <ul>
-<li><code>fhir-codegen-cli --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ./fhir --language CSharpBasic --output-path ./cs</code></li>
+<li><code>fhir-codegen-cli --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --language CSharpBasic --output-path ./cs</code></li>
 </ul>
 </li>
-<li><p>Download and parse FHIR R4 (latest published version) into ./fhir, then build a C# file in the current directory using the namespace: MyOrg.MyProject.Fhir</p>
+<li><p>Download and parse FHIR R4 (latest published version) into the user FHIR cache, then build a C# file in the current directory using the namespace: MyOrg.MyProject.Fhir</p>
 <ul>
-<li><code>fhir-codegen-cli --load-r4 latest --fhir-spec-directory ./fhir --language CSharpBasic --output-path ./cs/R4.cs --language-options CSharpBasic|namespace=MyOrg.MyProject.Fhir</code></li>
+<li><code>fhir-codegen-cli -p hl7.fhir.r4#latest --language CSharpBasic --output-path ./cs/R4.cs --language-options CSharpBasic|namespace=MyOrg.MyProject.Fhir</code></li>
 </ul>
 </li>
 </ul>
@@ -309,7 +178,8 @@ Options:
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

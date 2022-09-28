@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Adding new langauges </title>
+    <title>Adding New Languages </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Adding new langauges ">
-    <meta name="generator" content="docfx 2.56.1.0">
+    <meta name="title" content="Adding New Languages ">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -67,14 +67,19 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="adding-new-langauges">Adding new langauges</h1>
+<h1 id="adding-new-languages">Adding New Languages</h1>
 
 <p>The system is designed to allow developers to add additional languages to be exported.</p>
-<p>Language files must be added to the <code>src/Microsoft.Health.Fhir.SpecManager/Langauge</code> directory, and implement the <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.ILanguage.html">ILanguage</a> interface present in the same directory.</p>
+<p>Language files must be added to the <code>src/Microsoft.Health.Fhir.SpecManager/Language</code> directory, and implement the <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.ILanguage.html">ILanguage</a> interface present in the same directory.</p>
 <p>The library loads and parses all FHIR versions into a consistent local model.</p>
-<p>During export, the interface function <code>Export</code> is called, with a <code>FhirVersionInfo</code> already set to all user options (e.g., the requested version of FHIR has been loaded, filtering has been applied, etc.).</p>
+<p>During export, the interface function <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.ILanguage.html#methods">Export</a> is called, with a <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Manager.IPackageExportable.html">IPackageExportable</a> already set to all user options (e.g., the requested version of FHIR has been loaded, filtering has been applied, etc.).</p>
 <p>The <code>Export</code> function may write as many files as desired in the <code>exportDirectory</code>.  The exporter will move those files into the user-requested directory, and will bundle them together in an archive if necessary (relative paths are preserved).</p>
-<p>The <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.Info.html">Info</a>, <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.CSharpBasic.html">CSharpBasic</a>, and <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.TypeScript.html">TypeScript</a> languages are all available as references on how to traverse the various structures.</p>
+<p>Existing language implementations can be used to serve as templates for export.  Specifically:</p>
+<ul>
+<li><a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.Info.html">Info</a> is a good 'single-file' export language that covers many types of artifacts.</li>
+<li><a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk.html">TypeScriptSdk</a> is a good example of an 'advanced' configuration that performs a conversion from the generic models into language-specific objects before exporting.</li>
+</ul>
+<p>More information about all of the implemented language modules can be found on the <a href="languages.html">Export Languages Page</a>.</p>
 </article>
           </div>
           
@@ -88,7 +93,8 @@
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Microsoft.Health.Fhir.SpecManager.Models
    ">
-    <meta name="generator" content="docfx 2.56.1.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -77,152 +77,31 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirCode.html">FhirCode</a></h4>
-      <section><p>A FHIR Code value object.</p>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.html">FhirExpando</a></h4>
+      <section><p>Represents an object with members that can be dynamically added and removed at runtime.
+This implementation has modifications to support FHIR.
+Based off the DotNet ExpandoObject:
+<a href="https://github.com/Microsoft/referencesource/blob/master/System.Core/Microsoft/Scripting/Actions/ExpandoObject.cs">https://github.com/Microsoft/referencesource/blob/master/System.Core/Microsoft/Scripting/Actions/ExpandoObject.cs</a></p>
 </section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirCodeSystem.html">FhirCodeSystem</a></h4>
-      <section><p>A fhir code system.</p>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirExpandoClass.html">FhirExpandoClass</a></h4>
+      <section><p>Represents a dynamically assigned class within a FhirExpando.
+FhirExpando objects which share the same members will share the same
+class.  Classes are dynamically assigned as the expando object gains members.
+Based off the DotNet ExpandoClass implementation:
+<a href="https://github.com/microsoft/referencesource/blob/master/System.Core/Microsoft/Scripting/Actions/ExpandoClass.cs">https://github.com/microsoft/referencesource/blob/master/System.Core/Microsoft/Scripting/Actions/ExpandoClass.cs</a></p>
 </section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.html">FhirComplex</a></h4>
-      <section><p>A class representing a FHIR complex type.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirConcept.html">FhirConcept</a></h4>
-      <section><p>A fhir triplet.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirConceptTreeNode.html">FhirConceptTreeNode</a></h4>
-      <section><p>A fhir concept tree node.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.html">FhirConstraint</a></h4>
-      <section><p>A FHIR constraint.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirElement.html">FhirElement</a></h4>
-      <section><p>A FHIR element.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirElementProfile.html">FhirElementProfile</a></h4>
-      <section><p>A fhir element profile.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirElementType.html">FhirElementType</a></h4>
-      <section><p>A fhir element type.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirNodeInfo.html">FhirNodeInfo</a></h4>
-      <section><p>A FHIR node information class.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirOperation.html">FhirOperation</a></h4>
-      <section><p>A fhir operation.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirPackageInfo.html">FhirPackageInfo</a></h4>
-      <section><p>Information about the fhir package.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirParameter.html">FhirParameter</a></h4>
-      <section><p>A fhir parameter.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirPrimitive.html">FhirPrimitive</a></h4>
-      <section><p>A class representing a FHIR primitive (r2:simple) type.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirResourceCapability.html">FhirResourceCapability</a></h4>
-      <section><p>A fhir capability.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirSearchParam.html">FhirSearchParam</a></h4>
-      <section><p>A fhir search parameter.</p>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirExpandoJsonConverter.html">FhirExpandoJsonConverter</a></h4>
+      <section><p>A FHIR expando JSON converter.</p>
 </section>
       <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerInfo.html">FhirServerInfo</a></h4>
       <section><p>A FHIR server.</p>
 </section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerOperation.html">FhirServerOperation</a></h4>
-      <section><p>A FHIR server operation.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerResourceInfo.html">FhirServerResourceInfo</a></h4>
-      <section><p>Information about a supported FHIR server resource.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerSearchParam.html">FhirServerSearchParam</a></h4>
-      <section><p>A FHIR server search parameter.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirSliceDiscriminatorRule.html">FhirSliceDiscriminatorRule</a></h4>
-      <section><p>A fhir slice discriminator rule.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirSlicing.html">FhirSlicing</a></h4>
-      <section><p>FHIR Slicing information.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirTypeBase.html">FhirTypeBase</a></h4>
-      <section><p>A base class for FHIR types to inherit from (common properties).</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirUtils.html">FhirUtils</a></h4>
-      <section><p>A fhir utilities.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirValueSet.html">FhirValueSet</a></h4>
-      <section><p>A fhir value set.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirValueSetCollection.html">FhirValueSetCollection</a></h4>
-      <section><p>Collection of fhir value sets.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirValueSetComposition.html">FhirValueSetComposition</a></h4>
-      <section><p>A fhir value set composition.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirValueSetExpansion.html">FhirValueSetExpansion</a></h4>
-      <section><p>A fhir value set expansion.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirValueSetExpansionContains.html">FhirValueSetExpansionContains</a></h4>
-      <section><p>A fhir value set expansion contains.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirValueSetFilter.html">FhirValueSetFilter</a></h4>
-      <section><p>A fhir value set filter.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.ValueSetReferenceInfo.html">ValueSetReferenceInfo</a></h4>
-      <section><p>Information about the value set reference.</p>
-</section>
+      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerInfo..html">FhirServerInfo.</a></h4>
+      <section></section>
     <h3 id="enums">Enums
   </h3>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.FhirComplexType.html">FhirComplex.FhirComplexType</a></h4>
-      <section><p>Values that represent fhir complex types.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirElement.ElementDefinitionBindingStrength.html">FhirElement.ElementDefinitionBindingStrength</a></h4>
-      <section><p>Values that represent element definition binding strengths.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirNodeInfo.FhirNodeType.html">FhirNodeInfo.FhirNodeType</a></h4>
-      <section><p>Values that represent node and link types.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirResourceCapability.ConditionalDeleteStatus.html">FhirResourceCapability.ConditionalDeleteStatus</a></h4>
-      <section><p>Values that represent conditional delete status.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirResourceCapability.ConditionalReadStatus.html">FhirResourceCapability.ConditionalReadStatus</a></h4>
-      <section><p>Values that represent conditional read status.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirResourceCapability.VersioningPolicy.html">FhirResourceCapability.VersioningPolicy</a></h4>
-      <section><p>Values that represent versioning policies.</p>
-</section>
       <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerInfo.SystemRestfulInteraction.html">FhirServerInfo.SystemRestfulInteraction</a></h4>
       <section><p>Values that represent system restful interactions.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerResourceInfo.ConditionalDeletePolicy.html">FhirServerResourceInfo.ConditionalDeletePolicy</a></h4>
-      <section><p>Values that represent conditional delete policies.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerResourceInfo.ConditionalReadPolicy.html">FhirServerResourceInfo.ConditionalReadPolicy</a></h4>
-      <section><p>Values that represent conditional read policies.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerResourceInfo.FhirInteraction.html">FhirServerResourceInfo.FhirInteraction</a></h4>
-      <section><p>Values that represent FHIR resource interactions.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerResourceInfo.ReferenceHandlingPolicy.html">FhirServerResourceInfo.ReferenceHandlingPolicy</a></h4>
-      <section><p>Values that represent reference handling policies.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerResourceInfo.VersioningPolicy.html">FhirServerResourceInfo.VersioningPolicy</a></h4>
-      <section><p>Values that represent versioning policies.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerSearchParam.SearchParameterType.html">FhirServerSearchParam.SearchParameterType</a></h4>
-      <section><p>Values that represent the type of value a search parameter refers to, and how the content is
-interpreted.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirSliceDiscriminatorRule.FhirSliceDiscriminatorType.html">FhirSliceDiscriminatorRule.FhirSliceDiscriminatorType</a></h4>
-      <section><p>Values that represent fhir slice discriminator types.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirSlicing.FhirSlicingRule.html">FhirSlicing.FhirSlicingRule</a></h4>
-      <section><p>Values that represent how slices are interpreted when evaluating an instance.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirTypeBase.NamingConvention.html">FhirTypeBase.NamingConvention</a></h4>
-      <section><p>Values that represent naming conventions for item types.</p>
-</section>
-      <h4><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirValueSetComposition.CompositionType.html">FhirValueSetComposition.CompositionType</a></h4>
-      <section><p>Values that represent composition types.</p>
 </section>
 </article>
           </div>
@@ -234,7 +113,8 @@ interpreted.</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

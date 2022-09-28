@@ -1,0 +1,438 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Export Language Information </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Export Language Information ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="export-language-information">Export Language Information</h1>
+
+<p>While each 'export language' is unique, there are several definitions that have evolved over time and kept prior versions (for existing functionality).  This page groups languages for context.</p>
+<h2 id="c-basic-models">C# Basic Models</h2>
+<p>These languages are used to generate 'basic' FHIR models in C#.  That is to say, classes that represent the FHIR+JSON structures and can round-trip in FHIR+JSON.  Initially, these classes were used to bootstrap this project, though only the definitions from DSTU2 are still used for this.</p>
+<p>Today, these exports are used as part of the 'generated' definitions to ensure that parsing and export remain consistent in a compilable (testable) format, as well as for prototyping changes to the core FHIR specifications.</p>
+<h3 id="csharpbasic">CSharpBasic</h3>
+<p>Initial basic C# language bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR+JSON.  This language exports a single file containing all exported artifacts.</p>
+<table>
+<thead>
+<tr>
+<th>Language Option</th>
+<th>Description</th>
+<th>Default</th>
+<th>Allowed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>namespace</td>
+<td>Namespace to use when exporting C# files.</td>
+<td><code>fhir</code></td>
+<td>C# namespace literal strings</td>
+</tr>
+</tbody>
+</table>
+<h3 id="csharp2">CSharp2</h3>
+<p>Second version of basic C# language bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR+JSON using <code>System.Text.Json</code>.  This language exports a directory structure with individual files for each artifact (e.g., resource, value set, etc.).</p>
+<table>
+<thead>
+<tr>
+<th>Language Option</th>
+<th>Description</th>
+<th>Default</th>
+<th>Allowed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>access-modifier</td>
+<td>Access modifier for exported elements.</td>
+<td><code>public</code></td>
+<td><code>public</code> | <code>internal</code> | <code>private</code></td>
+</tr>
+<tr>
+<td>namespace</td>
+<td>Namespace to use when exporting C# files.</td>
+<td><code>Fhir.R{VersionNumber}</code></td>
+<td>C# namespace literal strings</td>
+</tr>
+</tbody>
+</table>
+<h2 id="firely-c">Firely C#</h2>
+<p>These language definitions are used to generate the 'generated' portions of the <a href="https://fire.ly/products/firely-net-sdk/">Firely .Net SDK</a>.</p>
+<p>Note that changes to these modules must be submitted or approved by Firely SDK maintainers.</p>
+<h3 id="csharpfirely1">CSharpFirely1</h3>
+<p>Export base C# classes needed for the Firely-maintained C# API (<a href="https://github.com/FirelyTeam/fhir-net-api/">FHIR-Net-API</a>), v1.</p>
+<table>
+<thead>
+<tr>
+<th>Language Option</th>
+<th>Description</th>
+<th>Default</th>
+<th>Allowed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DetailedHeader</td>
+<td>If the generator should include the user and date/time information in the header.</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="csharpfirely2">CSharpFirely2</h3>
+<p>Export base C# classes needed for the Firely-maintained C# API (<a href="https://github.com/FirelyTeam/fhir-net-api/">FHIR-Net-API</a>), v2.</p>
+<table>
+<thead>
+<tr>
+<th>Language Option</th>
+<th>Description</th>
+<th>Default</th>
+<th>Allowed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>subset</td>
+<td>Which subset of language exports to make.</td>
+<td><code>main</code></td>
+<td><code>all</code> | <code>common</code> | <code>main</code></td>
+</tr>
+<tr>
+<td>w5</td>
+<td>If output should include 5 W's mappings.</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="subsets">Subsets</h4>
+<p>Note that the <code>subset</code> option is used to control which type of objects are exported:</p>
+<ul>
+<li><code>all</code> is used to export all package artifacts.</li>
+<li><code>common</code> is used to export artifacts which have been promoted to the <a href="https://github.com/FirelyTeam/firely-net-common/">common</a> Firely SDK package.</li>
+<li><code>main</code> is used to export version-specific artifacts, a complement to <code>common</code>.</li>
+</ul>
+<h3 id="csharpfirelyig">CSharpFirelyIG</h3>
+<p>Prototype module for generating Implementation Guide-specific additions to the Firely Net SDK.</p>
+<h2 id="info">Info</h2>
+<p>This language definition produces a text output of package contents.  This is used as part of the 'generated' file set to ensure that parsing and generation remain consistent.  These files are also useful as a method to quickly find information from a package.</p>
+<h2 id="typescript">TypeScript</h2>
+<p>TypeScript generation includes a few different language export modules with different goals.  Each is detailed below.</p>
+<h3 id="typescript-1">TypeScript</h3>
+<p>This language exports a single TypeScript file, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR+JSON.</p>
+<p>This language is kept stable as it is used to generate the definitions used in <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/fhir">DefinitelyTyped</a> (<code>@types/fhir</code>).  Post-processing of this file into the DTS used is done by Vermonster's <a href="https://github.com/Vermonster/fhir-dts-generator">fhir-dts-generator</a> project.</p>
+<p>Note that changes to this module must be submitted or approved by Vermonster.</p>
+<h3 id="typescript2">TypeScript2</h3>
+<p>This is the second (internal) iteration of TypeScript exports.  It generates a single file per artifact (e.g., resource, value-set, etc.).  It is a prototype for moving from 'JSON-definition' to 'SDK' territory.</p>
+<table>
+<thead>
+<tr>
+<th>Language Option</th>
+<th>Description</th>
+<th>Default</th>
+<th>Allowed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>namespace</td>
+<td>Namespace to use when exporting C# files.</td>
+<td><code>Fhir.R{VersionNumber}</code></td>
+<td>C# namespace literal strings</td>
+</tr>
+</tbody>
+</table>
+<h3 id="typescriptsdk">TypeScriptSdk</h3>
+<p>This module is used to generate the <a href="https://github.com/fhir-typescript/fhir-typescript">fhir-typescript</a> SDK (beta).  While serialization and parsing are FHIR+JSON compatible, the class definitions provide a smoother developer experience (e.g., choice types are a single property with multiple allowed types).</p>
+<p>Note that this is the first export module to separate language-specific generation from the file writing.  E.g., the class in <code>Language/TypeScriptSdk/ModelBuilder.cs</code> is used to convert the internal normalized but generic models (e.g., <code>FhirElement</code>) into TypeScript-specific models (e.g., <code>TypeScriptSdk.ModelBuilder.ExportElement</code>).  This style of module is generally preferred moving forward, as it allows for more flexibility in exports (e.g., being able to internalize the models for FHIR R4 when exporting an IG built on that version of FHIR).</p>
+<p>Note that changes to this module must be submitted or approved by 'fhir-typescript' maintainers.</p>
+<h2 id="cytoscape">Cytoscape</h2>
+<p><strong>EXPERIMENTAL</strong></p>
+<p>Export a <a href="https://js.cytoscape.org/">cytoscape</a> data file (JSON).</p>
+<h2 id="openapi">OpenAPI</h2>
+<p><strong>EXPERIMENTAL</strong></p>
+<p>This module is used to export <a href="https://www.openapis.org/">OpenAPI</a> definitions.  Tool-chains that consume OpenAPI definitions are varied and often have quite specific requirements.  To be more widely useful, this module defines <em>many</em> options to modify the exported definitions.</p>
+<p>Note that this module is still considered experimental/beta at this time.  Note that this module is expected to become 'stable' relatively Soon™ (2022-2023).</p>
+<table>
+<thead>
+<tr>
+<th>Language Option</th>
+<th>Description</th>
+<th>Default</th>
+<th>Allowed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SchemaLevel</td>
+<td>How much schema to include.</td>
+<td><code>detailed</code></td>
+<td><code>minimal</code> | <code>names</code> | <code>detailed</code></td>
+</tr>
+<tr>
+<td>FhirJson</td>
+<td>If paths should explicitly support FHIR+JSON.</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>FhirXml</td>
+<td>If paths should explicitly support FHIR+XML.</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>PatchJson</td>
+<td>If PATCH operations should explicitly support json-patch.</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>PatchXml</td>
+<td>If PATCH operations should explicitly support XML-patch.</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>PatchFhir</td>
+<td>If PATCH operations should explicitly support FHIR types.</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>SearchSupport</td>
+<td>Supported search methods.</td>
+<td><code>both</code></td>
+<td><code>both</code> | <code>get</code> | <code>post</code> | <code>none</code></td>
+</tr>
+<tr>
+<td>SearchPostParams</td>
+<td>Where search params should appear in post-based search.</td>
+<td><code>body</code></td>
+<td><code>body</code> | <code>query</code> | <code>both</code> | <code>none</code></td>
+</tr>
+<tr>
+<td>History</td>
+<td>If _history GET operations should be included.</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td>If the JSON should include a link to /metadata.</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>BundleOperations</td>
+<td>If the generator should include /Bundle, etc..</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>ReadOnly</td>
+<td>If the output should only contain GET operations.</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>WriteOnly</td>
+<td>If the output should only contain POST/PUT/DELETE operations.</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>Descriptions</td>
+<td>If properties should include descriptions.</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>DescriptionMaxLen</td>
+<td>Maximum length of descriptions, if being validated.</td>
+<td><code>60</code></td>
+<td>Positive Integer values</td>
+</tr>
+<tr>
+<td>DescriptionValidation</td>
+<td>If descriptions are required and should be validated.</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>ExpandProfiles</td>
+<td>If types should expand based on allowed profiles.</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>ExpandReferences</td>
+<td>If types should expand through references.</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>MaxRecursions</td>
+<td>Maximum depth to expand recursions.</td>
+<td><code>0</code></td>
+<td>Positive Integer values</td>
+</tr>
+<tr>
+<td>Minify</td>
+<td>If the output JSON should be minified.</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>OpenApiVersion</td>
+<td>Open API version to use.</td>
+<td><code>2</code></td>
+<td><code>2</code> | <code>3</code></td>
+</tr>
+<tr>
+<td>OperationCase</td>
+<td>Case of the first letter of Operation IDs.</td>
+<td><code>upper</code></td>
+<td><code>upper</code> | <code>lower</code></td>
+</tr>
+<tr>
+<td>RemoveUncommonFields</td>
+<td>If the generator should remove some uncommon fields.</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>Schemas</td>
+<td>If schemas should be included.</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>SchemasInline</td>
+<td>If the output should inline all schemas (no inheritance).</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>SingleResponses</td>
+<td>If operations should only include a single response.</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>Summaries</td>
+<td>If responses should include summaries.</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+</tr>
+<tr>
+<td>Title</td>
+<td>Title to use in the Info section.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/docfx/articles/languages.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
