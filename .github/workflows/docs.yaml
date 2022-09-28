@@ -19,7 +19,7 @@ on:
 jobs:
   generate-docs:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -29,19 +29,11 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    - name: Setup DocFX
-      uses: crazy-max/ghaction-chocolatey@v1
-      with:
-        args: install docfx
-
-    - name: DocFX Build
-      run: docfx docfx/docfx.json
-      continue-on-error: false
-
-    - name: Install rsync
-      uses: crazy-max/ghaction-chocolatey@v1
-      with:
-        args: install rsync
+    - name: Install and Build
+      run: |
+        curl -L https://github.com/dotnet/docfx/releases/latest/download/docfx.zip -o docfx.zip
+        unzip -d .docfx docfx.zip
+        dotnet ./.docfx/docfx.exe docfx/docfx.json
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.2.5
