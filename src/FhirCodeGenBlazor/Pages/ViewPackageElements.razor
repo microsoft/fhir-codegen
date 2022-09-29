@@ -144,6 +144,12 @@ else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRe
                        @oninput="@((ChangeEventArgs e) => RequestElementFilter(e?.Value?.ToString() ?? null))" />
                 </div>
             </div>
+            <div class="mb-2 row">
+                <label class="mb-sm-2">
+                    For details and examples, please see the 
+                    <a href="https://microsoft.github.io/fhir-codegen/articles/blazorui.html#linq" target="_blank">API documentation</a>.
+                </label>
+            </div>
         </div>
     </div>
 
