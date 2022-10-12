@@ -23,7 +23,7 @@ public abstract class Exporter
     /// <summary>Exports.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
     /// <param name="sourceFhirInfo">  Information describing the source FHIR version information.</param>
-    /// <param name="sourceServerInfo">Information describing the source server.</param>
+    /// <param name="sourceCapStatementFilter">Capability Statment to use as a filter.</param>
     /// <param name="exportLanguage">  The export language.</param>
     /// <param name="options">         Options for controlling the operation.</param>
     /// <param name="outputPath">      The output filename.</param>
@@ -31,7 +31,7 @@ public abstract class Exporter
     /// <returns>A List of files written by the export operation.</returns>
     public static List<string> Export(
         FhirVersionInfo sourceFhirInfo,
-        FhirServerInfo sourceServerInfo,
+        FhirCapabiltyStatement sourceCapStatementFilter,
         ILanguage exportLanguage,
         ExporterOptions options,
         string outputPath,
@@ -125,15 +125,15 @@ public abstract class Exporter
                 CopyProfiles = copyProfiles,
                 ExtensionUrls = options.ExtensionUrls,
                 ExtensionElementPaths = options.ExtensionElementPaths,
-                ServerInfo = sourceServerInfo,
+                CapStatmentFilter = sourceCapStatementFilter,
                 IncludeExperimental = options.IncludeExperimental,
             });
 
-        FhirServerInfo serverInfo = null;
+        FhirCapabiltyStatement capFilter = null;
 
-        if (sourceServerInfo != null)
+        if (sourceCapStatementFilter != null)
         {
-            serverInfo = new FhirServerInfo(sourceServerInfo, info);
+            capFilter = new FhirCapabiltyStatement(sourceCapStatementFilter);
         }
 
         // update language input files depending on the version of FHIR we are using
@@ -142,7 +142,7 @@ public abstract class Exporter
         // perform our export
         exportLanguage.Export(
             info,
-            serverInfo,
+            capFilter,
             options,
             tempDir);
 
@@ -205,7 +205,14 @@ public abstract class Exporter
         {
             string filename = Path.Combine(outputPath, langVersionString);
 
-            filename = Path.ChangeExtension(filename, exportLanguage.SingleFileExportExtension);
+            if (string.IsNullOrEmpty(exportLanguage.SingleFileExportExtension))
+            {
+                filename = Path.ChangeExtension(filename, Path.GetExtension(exportedFiles[0]));
+            }
+            else
+            {
+                filename = Path.ChangeExtension(filename, exportLanguage.SingleFileExportExtension);
+            }
 
             if (File.Exists(filename))
             {

@@ -22,7 +22,7 @@ public static class ServerConnector
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool TryGetServerInfo(
         string serverUrl,
-        out FhirServerInfo serverInfo)
+        out FhirCapabiltyStatement serverInfo)
     {
         if (string.IsNullOrEmpty(serverUrl))
         {
@@ -103,7 +103,7 @@ public static class ServerConnector
                 Console.WriteLine($"\t     Description: {serverInfo.ImplementationDescription}");
                 Console.WriteLine($"\t       Resources: {serverInfo.ResourceInteractions.Count}");
 
-                serverInfo.TryResolveServerPackages();
+                FhirManager.Current.TryResolveCanonicals(serverInfo);
 
                 return true;
             }

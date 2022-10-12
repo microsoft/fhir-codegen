@@ -3,6 +3,8 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System;
+
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
 /// <summary>An exporter options.</summary>
@@ -206,6 +208,33 @@ public class ExporterOptions
         }
 
         return valueDefault;
+    }
+
+    /// <summary>Gets parameter nullable.</summary>
+    /// <param name="field">The field.</param>
+    /// <returns>The parameter nullable.</returns>
+    public bool? GetParamBoolN(
+        string field)
+    {
+        if (string.IsNullOrEmpty(field))
+        {
+            return null;
+        }
+
+        string name = field.ToUpperInvariant();
+
+        if (!_languageOptions.ContainsKey(name) ||
+            string.IsNullOrEmpty(_languageOptions[name]))
+        {
+            return null;
+        }
+
+        if (bool.TryParse(_languageOptions[name], out bool bValue))
+        {
+            return bValue;
+        }
+
+        return null;
     }
 
     /// <summary>Gets language parameter.</summary>

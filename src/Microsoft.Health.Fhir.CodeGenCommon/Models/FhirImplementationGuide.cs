@@ -8,7 +8,7 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 /// <summary>
 /// Class representing normalized ImplementationGuide resources.
 /// </summary>
-public class FhirImplementationGuide : FhirTypeBase
+public class FhirImplementationGuide : FhirTypeBase, ICloneable
 {
     public record struct IgDependsOn(
         string IgUri,
@@ -59,6 +59,8 @@ public class FhirImplementationGuide : FhirTypeBase
 
     public Dictionary<string, IgDependsOn> DependsOn => _dependsOn;
 
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
     public object Clone()
     {
         return new FhirImplementationGuide(

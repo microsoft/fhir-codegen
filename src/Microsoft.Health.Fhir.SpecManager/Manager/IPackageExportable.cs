@@ -77,6 +77,15 @@ public interface IPackageExportable
     /// <summary>Gets all search parameters by URL.</summary>
     public Dictionary<string, FhirSearchParam> SearchParametersByUrl { get; }
 
+    /// <summary>Gets known implementation guides, keyed by URL.</summary>
+    public Dictionary<string, FhirImplementationGuide> ImplementationGuidesByUrl { get; }
+
+    /// <summary>Gets known capability statements, keyed by URL.</summary>
+    public Dictionary<string, FhirCapabiltyStatement> CapabilitiesByUrl { get; }
+
+    /// <summary>Gets the node info by path dictionary.</summary>
+    public Dictionary<string, FhirNodeInfo> NodeByPath { get; }
+
     /// <summary>Gets the excluded keys.</summary>
     public HashSet<string> ExcludedKeys { get; }
 
@@ -106,4 +115,10 @@ public interface IPackageExportable
         out string resolvedPackage,
         bool resolveParentLinks,
         FhirArtifactClassEnum knownArtifactClass);
+
+    /// <summary>Attempts to get node information about the node described by the path.</summary>
+    /// <param name="path">Full pathname of the file.</param>
+    /// <param name="node">[out] The node information.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetNodeInfo(string path, out FhirNodeInfo node);
 }

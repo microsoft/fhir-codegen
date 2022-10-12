@@ -1,26 +1,22 @@
-﻿// <copyright file="FhirServerOperation.cs" company="Microsoft Corporation">
+﻿// <copyright file="FhirCapOperation.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
-/// <summary>A FHIR server operation.</summary>
-public class FhirServerOperation
+/// <summary>A FHIR Operation, as listed in a CapabilityStatement.</summary>
+public class FhirCapOperation : ICloneable
 {
     private List<string> _additionalDefinitions;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FhirServerOperation"/> class.
+    /// Initializes a new instance of the <see cref="FhirCapOperation"/> class.
     /// </summary>
     /// <param name="name">               The name.</param>
     /// <param name="definitionCanonical">The definition canonical.</param>
     /// <param name="documentation">      The documentation.</param>
-    public FhirServerOperation(string name, string definitionCanonical, string documentation)
+    public FhirCapOperation(string name, string definitionCanonical, string documentation)
     {
         Name = name;
         DefinitionCanonical = definitionCanonical;
@@ -56,7 +52,7 @@ public class FhirServerOperation
     /// <returns>A copy of this object.</returns>
     public object Clone()
     {
-        return new FhirServerOperation(
+        return new FhirCapOperation(
             Name,
             DefinitionCanonical,
             Documentation);

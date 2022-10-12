@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.IO;
+using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.Health.Fhir.SpecManager.PackageManager;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
@@ -11,6 +12,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager;
 /// <summary>FHIR version manager.</summary>
 public class FhirManager : IDisposable
 {
+    /// <summary>A resolved canonical.</summary>
+    /// <param name="Canonical">     The canonical.</param>
+    /// <param name="ArtifactClass"> The artifact class.</param>
+    /// <param name="ResourceObject">The resource object.</param>
+    public record struct ResolvedCanonical(
+        string Canonical,
+        FhirArtifactClassEnum ArtifactClass,
+        object ResourceObject);
+
     /// <summary>True to disposed value.</summary>
     private bool _disposedValue;
 
@@ -130,6 +140,94 @@ public class FhirManager : IDisposable
 
         version = string.Empty;
         return false;
+    }
+
+    /// <summary>Attempts to resolve canonicals.</summary>
+    /// <param name="caps">The capabilities.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryResolveCanonicals(
+        FhirCapabiltyStatement caps)
+    {
+        if (string.IsNullOrEmpty(caps.FhirVersion))
+        {
+            return false;
+        }
+
+        if (!FhirPackageCommon.TryGetMajorReleaseForVersion(caps.FhirVersion, out FhirPackageCommon.FhirSequenceEnum sequence))
+        {
+            Console.WriteLine($"Unknown FHIR version on server: {caps.FhirVersion} - cannot process.");
+            return false;
+        }
+
+        string corePackage = FhirPackageCommon.PackageBaseForRelease(sequence) + ".core";
+
+        if (!HasLoadedPackage(corePackage, out _))
+        {
+            LoadPackages(
+                    new string[] { corePackage + "#latest" },
+                    false,
+                    true,
+                    true,
+                    false,
+                    string.Empty,
+                    out _);
+        }
+
+        HashSet<string> attempted = new();
+        Dictionary<string, ResolvedCanonical> canonicals = new();
+
+        if (caps.ImplementationGuides != null)
+        {
+            foreach (string ig in caps.ImplementationGuides)
+            {
+            }
+        }
+
+        if (caps.ServerOperations != null)
+        {
+            foreach (FhirCapOperation serverOp in caps.ServerOperations.Values)
+            {
+                if (attempted.Contains(serverOp.DefinitionCanonical))
+                {
+                    continue;
+                }
+
+                attempted.Add(serverOp.DefinitionCanonical);
+
+                if (!TryResolveCanonical(sequence, serverOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out _) ||
+                    (ac != FhirArtifactClassEnum.Operation))
+                {
+                    Console.WriteLine(" <<< Failed to resolve canonical: " + serverOp.DefinitionCanonical);
+                }
+            }
+        }
+
+        if (caps.ResourceInteractions != null)
+        {
+            foreach (FhirCapResource resourceInteraction in caps.ResourceInteractions.Values)
+            {
+                if (resourceInteraction.Operations != null)
+                {
+                    foreach (FhirCapOperation resourceOp in resourceInteraction.Operations.Values)
+                    {
+                        if (attempted.Contains(resourceOp.DefinitionCanonical))
+                        {
+                            continue;
+                        }
+
+                        attempted.Add(resourceOp.DefinitionCanonical);
+
+                        if (!TryResolveCanonical(sequence, resourceOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out _) ||
+                            (ac != FhirArtifactClassEnum.Operation))
+                        {
+                            Console.WriteLine(" <<< Failed to resolve canonical: " + resourceOp.DefinitionCanonical);
+                        }
+                    }
+                }
+            }
+        }
+
+        return true;
     }
 
     /// <summary>

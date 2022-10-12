@@ -506,7 +506,8 @@ public sealed class FromFhirExpando : IFhirConverter
             opBase,
             op.GetStringList("resource") ?? null,
             parameters,
-            op.GetBool("experimental") == true);
+            op.GetBool("experimental") == true,
+            op.GetString("kind"));
 
         // add our operation
         fhirVersionInfo.AddOperation(operation);
@@ -2065,6 +2066,12 @@ public sealed class FromFhirExpando : IFhirConverter
                 artifactClass = FhirArtifactClassEnum.ImplementationGuide;
                 break;
 
+            case "CapabilityStatement":
+                ProcessMetadata(resourceToParse as FhirExpando, out _, string.Empty, fhirVersionInfo);
+                resourceCanonical = (resourceToParse as FhirExpando).GetString("url");
+                artifactClass = FhirArtifactClassEnum.CapabilityStatement;
+                break;
+
             default:
                 resourceCanonical = string.Empty;
                 artifactClass = FhirArtifactClassEnum.Unknown;
@@ -2118,23 +2125,29 @@ public sealed class FromFhirExpando : IFhirConverter
         }
     }
 
-
-    /// <summary>Process a FHIR metadata resource into Server Information.</summary>
-    /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
-    /// <param name="serverUrl"> URL of the server.</param>
-    /// <param name="serverInfo">[out] Information describing the server.</param>
+    /// <summary>Process a FHIR capabilities resource (CapabilityStatement or Conformance).</summary>
+    /// <param name="metadata">           The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+    /// <param name="capabilityStatement">[out] The capability statement.</param>
+    /// <param name="serverUrl">          (Optional) URL of the server.</param>
+    /// <param name="info">               (Optional) The information.</param>
     public void ProcessMetadata(
         object metadata,
-        string serverUrl,
-        out FhirServerInfo serverInfo)
+        out FhirCapabiltyStatement capabilityStatement,
+        string serverUrl = "",
+        IPackageImportable info = null)
     {
         if (metadata == null)
         {
-            serverInfo = null;
+            capabilityStatement = null;
             return;
         }
 
         FhirExpando caps = metadata as FhirExpando;
+
+        string capId = caps.GetString("id") ?? string.Empty;
+        string capUrl = string.IsNullOrEmpty(serverUrl)
+            ? caps.GetString("url") ?? string.Empty
+            : serverUrl;
 
         string swName = caps.GetString("software", "name") ?? string.Empty;
         string swVersion = caps.GetString("software", "version") ?? string.Empty;
@@ -2144,19 +2157,13 @@ public sealed class FromFhirExpando : IFhirConverter
         string impUrl = caps.GetString("implementation", "url") ?? string.Empty;
 
         List<string> serverInteractions = new List<string>();
-        Dictionary<string, FhirServerResourceInfo> resourceInteractions = new Dictionary<string, FhirServerResourceInfo>();
-        Dictionary<string, FhirServerSearchParam> serverSearchParams = new Dictionary<string, FhirServerSearchParam>();
-        Dictionary<string, FhirServerOperation> serverOperations = new Dictionary<string, FhirServerOperation>();
+        Dictionary<string, FhirCapResource> resourceInteractions = new Dictionary<string, FhirCapResource>();
+        Dictionary<string, FhirCapSearchParam> serverSearchParams = new Dictionary<string, FhirCapSearchParam>();
+        Dictionary<string, FhirCapOperation> serverOperations = new Dictionary<string, FhirCapOperation>();
 
         if (caps["rest"] != null)
         {
             FhirExpando rest = caps.GetExpandoEnumerable("rest").First();
-
-            if (rest == null)
-            {
-                serverInfo = null;
-                return;
-            }
 
             if (rest["interaction"] != null)
             {
@@ -2186,7 +2193,7 @@ public sealed class FromFhirExpando : IFhirConverter
 
                     serverSearchParams.Add(
                         spName,
-                        new FhirServerSearchParam(
+                        new FhirCapSearchParam(
                             spName,
                             sp.GetString("definition"),
                             sp.GetString("type"),
@@ -2213,7 +2220,7 @@ public sealed class FromFhirExpando : IFhirConverter
 
                     serverOperations.Add(
                         operationName,
-                        new FhirServerOperation(
+                        new FhirCapOperation(
                             operationName,
                             operation.GetString("definition"),
                             operation.GetString("documentation")));
@@ -2224,7 +2231,7 @@ public sealed class FromFhirExpando : IFhirConverter
             {
                 foreach (FhirExpando resource in rest.GetExpandoEnumerable("resource"))
                 {
-                    FhirServerResourceInfo resourceInfo = ParseServerRestResource(resource);
+                    FhirCapResource resourceInfo = ParseServerRestResource(resource);
 
                     if (resourceInteractions.ContainsKey(resourceInfo.ResourceType))
                     {
@@ -2238,10 +2245,15 @@ public sealed class FromFhirExpando : IFhirConverter
             }
         }
 
-        serverInfo = new FhirServerInfo(
+        capabilityStatement = new FhirCapabiltyStatement(
             serverInteractions,
-            serverUrl,
+            capId,
+            capUrl,
+            caps.GetString("name"),
+            caps.GetString("title"),
             caps.GetString("fhirVersion"),
+            caps.GetStringArray("format"),
+            caps.GetStringArray("patchFormat"),
             swName,
             swVersion,
             swReleaseDate,
@@ -2252,17 +2264,42 @@ public sealed class FromFhirExpando : IFhirConverter
             resourceInteractions,
             serverSearchParams,
             serverOperations);
+
+        if (info != null)
+        {
+            info.AddCapabilityStatement(capabilityStatement);
+        }
+    }
+
+    /// <summary>Process a FHIR metadata resource into Server Information.</summary>
+    /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+    /// <param name="serverUrl"> URL of the server.</param>
+    /// <param name="capabilities">[out] Information describing the server.</param>
+    public void ProcessMetadata(
+        object metadata,
+        string serverUrl,
+        out FhirCapabiltyStatement capabilities)
+    {
+        if (metadata == null)
+        {
+            capabilities = null;
+            return;
+        }
+
+        ProcessMetadata(metadata, out capabilities, serverUrl);
+
+        return;
     }
 
     /// <summary>Parse server REST resource.</summary>
     /// <param name="resource">The resource.</param>
     /// <returns>A FhirServerResourceInfo.</returns>
-    private static FhirServerResourceInfo ParseServerRestResource(
+    private static FhirCapResource ParseServerRestResource(
         FhirExpando resource)
     {
         List<string> interactions = new List<string>();
-        Dictionary<string, FhirServerSearchParam> searchParams = new Dictionary<string, FhirServerSearchParam>();
-        Dictionary<string, FhirServerOperation> operations = new Dictionary<string, FhirServerOperation>();
+        Dictionary<string, FhirCapSearchParam> searchParams = new Dictionary<string, FhirCapSearchParam>();
+        Dictionary<string, FhirCapOperation> operations = new Dictionary<string, FhirCapOperation>();
 
         if (resource["interaction"] != null)
         {
@@ -2292,7 +2329,7 @@ public sealed class FromFhirExpando : IFhirConverter
 
                 searchParams.Add(
                     spName,
-                    new FhirServerSearchParam(
+                    new FhirCapSearchParam(
                         spName,
                         sp.GetString("definition"),
                         sp.GetString("type"),
@@ -2319,14 +2356,14 @@ public sealed class FromFhirExpando : IFhirConverter
 
                 operations.Add(
                     operationName,
-                    new FhirServerOperation(
+                    new FhirCapOperation(
                         operationName,
                         operation.GetString("definition"),
                         operation.GetString("documentation")));
             }
         }
 
-        return new FhirServerResourceInfo(
+        return new FhirCapResource(
             interactions,
             resource.GetString("type"),
             resource.GetStringList("supportedProfile"),
@@ -2336,6 +2373,7 @@ public sealed class FromFhirExpando : IFhirConverter
             resource.GetBool("conditionalCreate"),
             resource.GetString("conditionalRead"),
             resource.GetBool("conditionalUpdate"),
+            resource.GetBool("conditionalPatch"),
             resource.GetString("conditionalDelete"),
             resource.GetStringList("referencePolicy"),
             resource.GetStringList("searchInclude"),

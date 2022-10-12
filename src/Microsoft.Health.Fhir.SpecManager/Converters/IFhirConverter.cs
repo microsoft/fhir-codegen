@@ -48,11 +48,11 @@ public interface IFhirConverter
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>
     /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
     /// <param name="serverUrl"> URL of the server.</param>
-    /// <param name="serverInfo">[out] Information describing the server.</param>
+    /// <param name="capabilities">[out] Capabilities of a server.</param>
     void ProcessMetadata(
         object metadata,
         string serverUrl,
-        out FhirServerInfo serverInfo);
+        out FhirCapabiltyStatement capabilities);
 
     /// <summary>Query if 'errorCount' has issues.</summary>
     /// <param name="errorCount">  [out] Number of errors.</param>

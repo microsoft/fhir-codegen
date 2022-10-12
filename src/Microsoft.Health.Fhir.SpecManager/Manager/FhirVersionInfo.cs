@@ -12,7 +12,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager;
 /// <summary>Information about a FHIR package.</summary>
 public class FhirVersionInfo : IPackageImportable, IPackageExportable
 {
-    private static HashSet<string> _npmFilesToIgnore = new ()
+    private static HashSet<string> _npmFilesToIgnore = new()
     {
         ".index.json",
         "package.json",
@@ -40,6 +40,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     private Dictionary<FhirArtifactClassEnum, List<FhirArtifactRecord>> _artifactsByClass;
     private Dictionary<string, FhirArtifactClassEnum> _artifactClassByUrl;
     private Dictionary<string, FhirImplementationGuide> _igsByUri;
+    private Dictionary<string, FhirCapabiltyStatement> _capsByUrl;
 
     private HashSet<string> _excludedKeys;
 
@@ -68,6 +69,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         _nodeInfoByPath = new();
         _artifactClassByUrl = new();
         _igsByUri = new();
+        _capsByUrl = new();
 
         _excludedKeys = new();
 
@@ -79,7 +81,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     }
 
     public FhirVersionInfo(FhirPackageCommon.FhirSequenceEnum fhirSequence)
-        :this()
+        : this()
     {
         _fhirConverter = ConverterHelper.ConverterForVersion(fhirSequence);
         FhirSequence = fhirSequence;
@@ -177,10 +179,10 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
 
         // only want server restrictions if there is not an explicit one
-        if ((options.ServerInfo != null) &&
+        if ((options.CapStatmentFilter != null) &&
             (exportSet.Count == 0))
         {
-            foreach (FhirServerResourceInfo resource in options.ServerInfo.ResourceInteractions.Values)
+            foreach (FhirCapResource resource in options.CapStatmentFilter.ResourceInteractions.Values)
             {
                 AddToExportSet(resource.ResourceType, exportSet, source);
             }
@@ -303,8 +305,8 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     continue;
                 }
 
-                if ((options.ServerInfo == null) ||
-                    (!options.ServerInfo.ResourceInteractions.ContainsKey(kvp.Key)))
+                if ((options.CapStatmentFilter == null) ||
+                    (!options.CapStatmentFilter.ResourceInteractions.ContainsKey(kvp.Key)))
                 {
                     FhirComplex node = kvp.Value.DeepCopy(
                         options.PrimitiveTypeMap,
@@ -334,10 +336,10 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         false,
                         valueSetReferences,
                         _nodeInfoByPath,
-                        options.ServerInfo.ResourceInteractions[kvp.Key].SearchParameters,
-                        options.ServerInfo.ServerSearchParameters,
-                        options.ServerInfo.ResourceInteractions[kvp.Key].Operations,
-                        options.ServerInfo.ServerOperations,
+                        options.CapStatmentFilter.ResourceInteractions[kvp.Key].SearchParameters,
+                        options.CapStatmentFilter.ServerSearchParameters,
+                        options.CapStatmentFilter.ResourceInteractions[kvp.Key].Operations,
+                        options.CapStatmentFilter.ServerOperations,
                         options.IncludeExperimental);
 
                     _nodeInfoByPath.Add(
@@ -377,8 +379,8 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     continue;
                 }
 
-                if ((options.ServerInfo == null) ||
-                    (!options.ServerInfo.ResourceInteractions.ContainsKey(kvp.Key)))
+                if ((options.CapStatmentFilter == null) ||
+                    (!options.CapStatmentFilter.ResourceInteractions.ContainsKey(kvp.Key)))
                 {
                     FhirComplex node = kvp.Value.DeepCopy(
                         options.PrimitiveTypeMap,
@@ -408,10 +410,10 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         false,
                         valueSetReferences,
                         _nodeInfoByPath,
-                        options.ServerInfo.ResourceInteractions[kvp.Key].SearchParameters,
-                        options.ServerInfo.ServerSearchParameters,
-                        options.ServerInfo.ResourceInteractions[kvp.Key].Operations,
-                        options.ServerInfo.ServerOperations,
+                        options.CapStatmentFilter.ResourceInteractions[kvp.Key].SearchParameters,
+                        options.CapStatmentFilter.ServerSearchParameters,
+                        options.CapStatmentFilter.ResourceInteractions[kvp.Key].Operations,
+                        options.CapStatmentFilter.ServerOperations,
                         options.IncludeExperimental);
 
                     _nodeInfoByPath.Add(
@@ -495,7 +497,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
         if (options.CopyOperations)
         {
-            if (options.ServerInfo == null)
+            if (options.CapStatmentFilter == null)
             {
                 if (restrictOutput || restrictResources)
                 {
@@ -521,9 +523,9 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             }
             else
             {
-                if (options.ServerInfo.ServerOperations != null)
+                if (options.CapStatmentFilter.ServerOperations != null)
                 {
-                    foreach (FhirServerOperation serverOp in options.ServerInfo.ServerOperations.Values)
+                    foreach (FhirCapOperation serverOp in options.CapStatmentFilter.ServerOperations.Values)
                     {
                         if (FhirManager.Current.TryResolveCanonical(FhirSequence, serverOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object resource) &&
                             (ac == FhirArtifactClassEnum.Operation))
@@ -533,13 +535,13 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     }
                 }
 
-                if (options.ServerInfo.ResourceInteractions != null)
+                if (options.CapStatmentFilter.ResourceInteractions != null)
                 {
-                    foreach (FhirServerResourceInfo resourceInteraction in options.ServerInfo.ResourceInteractions.Values)
+                    foreach (FhirCapResource resourceInteraction in options.CapStatmentFilter.ResourceInteractions.Values)
                     {
                         if (resourceInteraction.Operations != null)
                         {
-                            foreach (FhirServerOperation resourceOp in resourceInteraction.Operations.Values)
+                            foreach (FhirCapOperation resourceOp in resourceInteraction.Operations.Values)
                             {
                                 if (FhirManager.Current.TryResolveCanonical(FhirSequence, resourceOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object resource) &&
                                     (ac == FhirArtifactClassEnum.Operation))
@@ -605,7 +607,15 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             }
         }
 
-        if (options.ServerInfo == null)
+        if (options.CopyCapabilityStatements)
+        {
+            foreach ((string key, FhirCapabiltyStatement cap) in source._capsByUrl)
+            {
+                _capsByUrl.Add(key, (FhirCapabiltyStatement)cap.Clone());
+            }
+        }
+
+        if (options.CapStatmentFilter == null)
         {
             foreach (KeyValuePair<string, FhirOperation> kvp in source._systemOperations)
             {
@@ -626,13 +636,13 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     continue;
                 }
 
-                if (options.ServerInfo.ServerOperations.ContainsKey(kvp.Value.Code))
+                if (options.CapStatmentFilter.ServerOperations.ContainsKey(kvp.Value.Code))
                 {
                     _systemOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
                 }
             }
 
-            foreach (KeyValuePair<string, FhirServerOperation> kvp in options.ServerInfo.ServerOperations)
+            foreach (KeyValuePair<string, FhirCapOperation> kvp in options.CapStatmentFilter.ServerOperations)
             {
                 if (_systemOperations.ContainsKey(kvp.Key))
                 {
@@ -659,11 +669,12 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         string.Empty,
                         null,
                         new List<FhirParameter>(),
-                        false));
+                        false,
+                        string.Empty));
             }
         }
 
-        if (options.ServerInfo == null)
+        if (options.CapStatmentFilter == null)
         {
             foreach (KeyValuePair<string, FhirSearchParam> kvp in source._globalSearchParameters)
             {
@@ -689,7 +700,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     continue;
                 }
 
-                if (options.ServerInfo.ServerSearchParameters.ContainsKey(kvp.Value.Code))
+                if (options.CapStatmentFilter.ServerSearchParameters.ContainsKey(kvp.Value.Code))
                 {
                     _globalSearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
                 }
@@ -861,7 +872,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <summary>Gets the system operations.</summary>
     public Dictionary<string, FhirOperation> SystemOperations { get => _systemOperations; }
 
-    /// <summary>Gets URL of the operations by.</summary>
+    /// <summary>Gets known operations, keyed by URL.</summary>
     public Dictionary<string, FhirOperation> OperationsByUrl { get => _operationsByUrl; }
 
     /// <summary>Gets search parameters defined for all resources.</summary>
@@ -873,8 +884,14 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <summary>Gets search parameters defined for all interactions.</summary>
     public Dictionary<string, FhirSearchParam> AllInteractionParameters { get => _allInteractionParameters; }
 
-    /// <summary>Gets URL of the search parameters by.</summary>
+    /// <summary>Gets known search parameters, keyed by URL.</summary>
     public Dictionary<string, FhirSearchParam> SearchParametersByUrl { get => _searchParamsByUrl; }
+
+    /// <summary>Gets known implementation guides, keyed by URL.</summary>
+    public Dictionary<string, FhirImplementationGuide> ImplementationGuidesByUrl { get => _igsByUri; }
+
+    /// <summary>Gets known capability statements, keyed by URL.</summary>
+    public Dictionary<string, FhirCapabiltyStatement> CapabilitiesByUrl { get => _capsByUrl; }
 
     /// <summary>Gets the node info by path dictionary.</summary>
     public Dictionary<string, FhirNodeInfo> NodeByPath { get => _nodeInfoByPath; }
@@ -980,8 +997,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 _igsByUri.Add(canonicalAlias, _igsByUri[canonicalUrl]);
                 return true;
 
-            case FhirArtifactClassEnum.LogicalModel:
             case FhirArtifactClassEnum.CapabilityStatement:
+                _capsByUrl.Add(canonicalAlias, _capsByUrl[canonicalUrl]);
+                return true;
+
+            case FhirArtifactClassEnum.LogicalModel:
             case FhirArtifactClassEnum.Compartment:
             case FhirArtifactClassEnum.ConceptMap:
             case FhirArtifactClassEnum.NamingSystem:
@@ -1191,7 +1211,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         return false;
                     }
 
-                    values = (IEnumerable<T>)_profilesByUrl.Values.AsEnumerable<FhirComplex>();
+                    values = (IEnumerable<T>)_profilesByUrl.Values.AsEnumerable();
                     return true;
                 }
 
@@ -1203,13 +1223,23 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         return false;
                     }
 
-                    values = (IEnumerable<T>)_igsByUri.Values.AsEnumerable<FhirImplementationGuide>();
+                    values = (IEnumerable<T>)_igsByUri.Values.AsEnumerable();
                     return true;
                 }
 
+            case FhirArtifactClassEnum.CapabilityStatement:
+                {
+                    if (typeof(T) != typeof(FhirCapabiltyStatement))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_capsByUrl.Values.AsEnumerable();
+                    return true;
+                }
 
             case FhirArtifactClassEnum.Unknown:
-            case FhirArtifactClassEnum.CapabilityStatement:
             case FhirArtifactClassEnum.Compartment:
             case FhirArtifactClassEnum.ConceptMap:
             case FhirArtifactClassEnum.NamingSystem:
@@ -1506,6 +1536,19 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 }
 
             case FhirArtifactClassEnum.CapabilityStatement:
+                {
+                    artifact = ResolveInDict(token, _capsByUrl);
+
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
+                }
+
             case FhirArtifactClassEnum.Compartment:
             case FhirArtifactClassEnum.ConceptMap:
             case FhirArtifactClassEnum.NamingSystem:
@@ -1749,11 +1792,13 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         });
     }
 
+    /// <summary>Adds an implementation guide.</summary>
+    /// <param name="ig">The ig.</param>
     public void AddImplementationGuide(FhirImplementationGuide ig)
     {
         if ((ig == null) ||
             (ig.URL == null) ||
-            (_igsByUri.ContainsKey(ig.URL.ToString())))
+            _igsByUri.ContainsKey(ig.URL.ToString()))
         {
             return;
         }
@@ -1767,6 +1812,29 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             Id = ig.Id,
             Url = ig.URL,
             DefinitionResourceType = "ImplementationGuide",
+        });
+    }
+
+    /// <summary>Adds a capability statement.</summary>
+    /// <param name="cap">The capability.</param>
+    public void AddCapabilityStatement(FhirCapabiltyStatement cap)
+    {
+        if ((cap == null) ||
+            string.IsNullOrEmpty(cap.Url) ||
+            _capsByUrl.ContainsKey(cap.Url))
+        {
+            return;
+        }
+
+        _capsByUrl.Add(cap.Url, cap);
+
+        _artifactClassByUrl.Add(cap.Url, FhirArtifactClassEnum.CapabilityStatement);
+        _artifactsByClass[FhirArtifactClassEnum.CapabilityStatement].Add(new()
+        {
+            ArtifactClass = FhirArtifactClassEnum.CapabilityStatement,
+            Id = cap.Id,
+            Url = new Uri(cap.Url),
+            DefinitionResourceType = "CapabilityStatement",
         });
     }
 

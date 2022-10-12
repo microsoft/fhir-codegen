@@ -6,12 +6,25 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A fhir operation.</summary>
 public class FhirOperation : ICloneable
 {
+    /// <summary>Values that represent operation kind codes.</summary>
+    public enum OperationKindCodes
+    {
+        /// <summary>An executable operation.</summary>
+        [FhirLiteral("operation")]
+        Operation,
+
+        /// <summary>A named query.</summary>
+        [FhirLiteral("query")]
+        Query,
+    }
+
     /// <summary>Initializes a new instance of the <see cref="FhirOperation"/> class.</summary>
     /// <param name="id">               The identifier.</param>
     /// <param name="url">              The URL.</param>
@@ -31,6 +44,7 @@ public class FhirOperation : ICloneable
     /// <param name="resourceTypes">    A list of types of the resources.</param>
     /// <param name="parameters">       The allowed parameters to this operation.</param>
     /// <param name="isExperimental">   True if is experimental, false if not.</param>
+    /// <param name="kind">             The operation kind</param>
     [System.Text.Json.Serialization.JsonConstructor]
     public FhirOperation(
         string id,
@@ -50,7 +64,8 @@ public class FhirOperation : ICloneable
         string baseDefinition,
         List<string> resourceTypes,
         List<FhirParameter> parameters,
-        bool isExperimental)
+        bool isExperimental,
+        string kind)
     {
         Id = id;
         URL = url;
@@ -69,6 +84,19 @@ public class FhirOperation : ICloneable
         BaseDefinition = baseDefinition;
         Parameters = parameters;
         IsExperimental = isExperimental;
+
+        if (string.IsNullOrEmpty(kind))
+        {
+            Kind = OperationKindCodes.Operation;
+        }
+        else if (kind.StartsWith("q", StringComparison.OrdinalIgnoreCase))
+        {
+            Kind = OperationKindCodes.Query;
+        }
+        else
+        {
+            Kind = OperationKindCodes.Operation;
+        }
 
         if (resourceTypes != null)
         {
@@ -146,6 +174,9 @@ public class FhirOperation : ICloneable
     /// <summary>Gets a value indicating whether this object is experimental.</summary>
     public bool IsExperimental { get; }
 
+    /// <summary>Gets the operation kind.</summary>
+    public OperationKindCodes Kind { get; }
+
     /// <summary>Deep copy.</summary>
     /// <returns>A FhirOperation.</returns>
     public object Clone()
@@ -188,6 +219,7 @@ public class FhirOperation : ICloneable
             BaseDefinition,
             resourceTypes,
             parameters,
-            IsExperimental);
+            IsExperimental,
+            Kind.ToLiteral());
     }
 }

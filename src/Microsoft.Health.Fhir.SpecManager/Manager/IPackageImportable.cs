@@ -71,6 +71,15 @@ public interface IPackageImportable
     /// <summary>Gets search parameters defined for all interactions.</summary>
     public Dictionary<string, FhirSearchParam> AllInteractionParameters { get; }
 
+    /// <summary>Gets known search parameters, keyed by URL.</summary>
+    public Dictionary<string, FhirSearchParam> SearchParametersByUrl { get; }
+
+    /// <summary>Gets known implementation guides, keyed by URL.</summary>
+    public Dictionary<string, FhirImplementationGuide> ImplementationGuidesByUrl { get; }
+
+    /// <summary>Gets known capability statements, keyed by URL.</summary>
+    public Dictionary<string, FhirCapabiltyStatement> CapabilitiesByUrl { get; }
+
     /// <summary>Gets or sets the name of the package release.</summary>
     public string ReleaseName { get; set; }
 
@@ -148,7 +157,13 @@ public interface IPackageImportable
     /// <param name="valueSet">Set the value belongs to.</param>
     public void AddValueSet(FhirValueSet valueSet);
 
+    /// <summary>Adds an implementation guide.</summary>
+    /// <param name="ig">The ig.</param>
     public void AddImplementationGuide(FhirImplementationGuide ig);
+
+    /// <summary>Adds a capability statement.</summary>
+    /// <param name="cap">The capability.</param>
+    public void AddCapabilityStatement(FhirCapabiltyStatement cap);
 
     /// <summary>Adds a versioned parameter.</summary>
     /// <param name="searchMagicType">Type of the search magic.</param>

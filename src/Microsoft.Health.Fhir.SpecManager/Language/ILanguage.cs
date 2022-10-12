@@ -48,7 +48,7 @@ public interface ILanguage
     /// <param name="exportDirectory">Directory to write files.</param>
     void Export(
         FhirVersionInfo info,
-        FhirServerInfo serverInfo,
+        FhirCapabiltyStatement serverInfo,
         ExporterOptions options,
         string exportDirectory);
 }

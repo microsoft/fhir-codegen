@@ -615,7 +615,8 @@ public sealed class FromR2 : IFhirConverter
             op.Base?.ReferenceField ?? string.Empty,
             op.Type,
             parameters,
-            op.Experimental == true);
+            op.Experimental == true,
+            op.Kind);
 
         // add our parameter
         fhirVersionInfo.AddOperation(operation);
@@ -1769,6 +1770,12 @@ public sealed class FromR2 : IFhirConverter
                 artifactClass = FhirArtifactClassEnum.ValueSet;
                 break;
 
+            case fhirModels.Conformance conformance:
+                ProcessMetadata(conformance, out _, string.Empty, fhirVersionInfo);
+                resourceCanonical = conformance.Url;
+                artifactClass = FhirArtifactClassEnum.CapabilityStatement;
+                break;
+
             default:
                 resourceCanonical = string.Empty;
                 artifactClass = FhirArtifactClassEnum.Unknown;
@@ -1790,22 +1797,29 @@ public sealed class FromR2 : IFhirConverter
         throw new NotImplementedException();
     }
 
-    /// <summary>Process a FHIR metadata resource into Server Information.</summary>
+    /// <summary>Process the metadata.</summary>
     /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
-    /// <param name="serverUrl"> URL of the server.</param>
-    /// <param name="serverInfo">[out] Information describing the server.</param>
-    void IFhirConverter.ProcessMetadata(
+    /// <param name="capabilityStatement">[out] Information describing the server.</param>
+    /// <param name="serverUrl"> (Optional) URL of the server.</param>
+    /// <param name="info">      (Optional) The information.</param>
+    private void ProcessMetadata(
         object metadata,
-        string serverUrl,
-        out FhirServerInfo serverInfo)
+        out FhirCapabiltyStatement capabilityStatement,
+        string serverUrl = "",
+        IPackageImportable info = null)
     {
         if (metadata == null)
         {
-            serverInfo = null;
+            capabilityStatement = null;
             return;
         }
 
         fhirModels.Conformance caps = metadata as fhirModels.Conformance;
+
+        string capId = caps.Id;
+        string capUrl = string.IsNullOrEmpty(serverUrl)
+            ? caps.Url
+            : serverUrl;
 
         string swName = string.Empty;
         string swVersion = string.Empty;
@@ -1828,9 +1842,9 @@ public sealed class FromR2 : IFhirConverter
         }
 
         List<string> serverInteractions = new List<string>();
-        Dictionary<string, FhirServerResourceInfo> resourceInteractions = new Dictionary<string, FhirServerResourceInfo>();
-        Dictionary<string, FhirServerSearchParam> serverSearchParams = new Dictionary<string, FhirServerSearchParam>();
-        Dictionary<string, FhirServerOperation> serverOperations = new Dictionary<string, FhirServerOperation>();
+        Dictionary<string, FhirCapResource> resourceInteractions = new Dictionary<string, FhirCapResource>();
+        Dictionary<string, FhirCapSearchParam> serverSearchParams = new Dictionary<string, FhirCapSearchParam>();
+        Dictionary<string, FhirCapOperation> serverOperations = new Dictionary<string, FhirCapOperation>();
 
         if ((caps.Rest != null) && (caps.Rest.Count > 0))
         {
@@ -1853,7 +1867,7 @@ public sealed class FromR2 : IFhirConverter
             {
                 foreach (fhirModels.ConformanceRestResource resource in rest.Resource)
                 {
-                    FhirServerResourceInfo resourceInfo = ParseServerRestResource(resource);
+                    FhirCapResource resourceInfo = ParseServerRestResource(resource);
 
                     if (resourceInteractions.ContainsKey(resourceInfo.ResourceType))
                     {
@@ -1877,7 +1891,7 @@ public sealed class FromR2 : IFhirConverter
 
                     serverSearchParams.Add(
                         sp.Name,
-                        new FhirServerSearchParam(
+                        new FhirCapSearchParam(
                             sp.Name,
                             sp.Definition,
                             sp.Type,
@@ -1897,7 +1911,7 @@ public sealed class FromR2 : IFhirConverter
 
                     serverOperations.Add(
                         operation.Name,
-                        new FhirServerOperation(
+                        new FhirCapOperation(
                             operation.Name,
                             operation.Definition.ReferenceField,
                             string.Empty));
@@ -1905,10 +1919,15 @@ public sealed class FromR2 : IFhirConverter
             }
         }
 
-        serverInfo = new FhirServerInfo(
+        capabilityStatement = new FhirCapabiltyStatement(
             serverInteractions,
-            serverUrl,
+            capId,
+            capUrl,
+            caps.Name,
+            caps.Name,
             caps.FhirVersion,
+            caps.Format,
+            Array.Empty<string>(),
             swName,
             swVersion,
             swReleaseDate,
@@ -1919,17 +1938,42 @@ public sealed class FromR2 : IFhirConverter
             resourceInteractions,
             serverSearchParams,
             serverOperations);
+
+        if (info != null)
+        {
+            info.AddCapabilityStatement(capabilityStatement);
+        }
+    }
+
+    /// <summary>Process a FHIR metadata resource into Server Information.</summary>
+    /// <param name="metadata">    The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+    /// <param name="serverUrl">   URL of the server.</param>
+    /// <param name="capabilities">[out] Capabilities of a server.</param>
+    void IFhirConverter.ProcessMetadata(
+        object metadata,
+        string serverUrl,
+        out FhirCapabiltyStatement capabilities)
+    {
+        if (metadata == null)
+        {
+            capabilities = null;
+            return;
+        }
+
+        ProcessMetadata(metadata, out capabilities, serverUrl);
+
+        return;
     }
 
     /// <summary>Parse server REST resource.</summary>
     /// <param name="resource">The resource.</param>
     /// <returns>A FhirServerResourceInfo.</returns>
-    private static FhirServerResourceInfo ParseServerRestResource(
+    private static FhirCapResource ParseServerRestResource(
         fhirModels.ConformanceRestResource resource)
     {
         List<string> interactions = new List<string>();
-        Dictionary<string, FhirServerSearchParam> searchParams = new Dictionary<string, FhirServerSearchParam>();
-        Dictionary<string, FhirServerOperation> operations = new Dictionary<string, FhirServerOperation>();
+        Dictionary<string, FhirCapSearchParam> searchParams = new Dictionary<string, FhirCapSearchParam>();
+        Dictionary<string, FhirCapOperation> operations = new Dictionary<string, FhirCapOperation>();
 
         if (resource.Interaction != null)
         {
@@ -1955,7 +1999,7 @@ public sealed class FromR2 : IFhirConverter
 
                 searchParams.Add(
                     sp.Name,
-                    new FhirServerSearchParam(
+                    new FhirCapSearchParam(
                         sp.Name,
                         sp.Definition,
                         sp.Type,
@@ -1963,7 +2007,7 @@ public sealed class FromR2 : IFhirConverter
             }
         }
 
-        return new FhirServerResourceInfo(
+        return new FhirCapResource(
             interactions,
             resource.Type,
             null,
@@ -1973,6 +2017,7 @@ public sealed class FromR2 : IFhirConverter
             resource.ConditionalCreate,
             null,
             resource.ConditionalUpdate,
+            null,
             resource.ConditionalDelete,
             null,
             resource.SearchInclude,

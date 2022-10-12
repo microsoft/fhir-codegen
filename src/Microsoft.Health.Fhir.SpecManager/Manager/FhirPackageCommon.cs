@@ -471,6 +471,22 @@ public static class FhirPackageCommon
         throw new ArgumentOutOfRangeException($"Unknown FHIR version: {version}");
     }
 
+    /// <summary>For sequence.</summary>
+    /// <param name="sequence">[out] The sequence.</param>
+    /// <returns>A string.</returns>
+    public static string RForSequence(FhirSequenceEnum sequence)
+    {
+        switch (sequence)
+        {
+            case FhirSequenceEnum.DSTU2:
+                return "R2";
+            case FhirSequenceEnum.STU3:
+                return "R3";
+        }
+
+        return sequence.ToString();
+    }
+
     /// <summary>
     /// Attempts to get major release for version a FhirSequenceEnum from the given string.
     /// </summary>

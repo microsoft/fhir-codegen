@@ -9,12 +9,9 @@ using System.CommandLine.NamingConventionBinder;
 using System.CommandLine.Parsing;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
-using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.Health.Fhir.SpecManager.PackageManager;
 
 namespace FhirCodegenCli;
@@ -353,11 +350,11 @@ public static class Program
 
         List<string> directives = new();
 
-        FhirServerInfo serverInfo = null;
+        FhirCapabiltyStatement serverCaps = null;
 
         if (!string.IsNullOrEmpty(fhirServerUrl))
         {
-            if (!ServerConnector.TryGetServerInfo(fhirServerUrl, out serverInfo))
+            if (!ServerConnector.TryGetServerInfo(fhirServerUrl, out serverCaps))
             {
                 Console.WriteLine($"Failed to get server information from {fhirServerUrl}!");
                 return -1;
@@ -371,7 +368,7 @@ public static class Program
             string.IsNullOrEmpty(loadR5) &&
             string.IsNullOrEmpty(packages))
         {
-            if (serverInfo == null)
+            if (serverCaps == null)
             {
                 loadR2 = "latest";
                 loadR3 = "latest";
@@ -379,9 +376,9 @@ public static class Program
                 loadR4B = "latest";
                 loadR5 = "latest";
             }
-            else
+            else if (FhirPackageCommon.TryGetMajorReleaseForVersion(serverCaps.FhirVersion, out FhirPackageCommon.FhirSequenceEnum sequence))
             {
-                switch (serverInfo.MajorVersion)
+                switch (sequence)
                 {
                     case FhirPackageCommon.FhirSequenceEnum.DSTU2:
                         loadR2 = "latest";
@@ -403,6 +400,11 @@ public static class Program
                         loadR5 = "latest";
                         break;
                 }
+            }
+            else
+            {
+                Console.WriteLine($"Unable to process server-reported FHIR version: {serverCaps.FhirVersion}");
+                return -2;
             }
         }
 
@@ -531,7 +533,7 @@ public static class Program
 
                 foreach (FhirVersionInfo info in fhirCorePackages)
                 {
-                    filesWritten.AddRange(Exporter.Export(info, serverInfo, lang, options, outputPath, isBatch));
+                    filesWritten.AddRange(Exporter.Export(info, serverCaps, lang, options, outputPath, isBatch));
                 }
             }
         }

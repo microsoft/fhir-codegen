@@ -1,27 +1,23 @@
-﻿// <copyright file="FhirServerSearchParam.cs" company="Microsoft Corporation">
+﻿// <copyright file="FhirCapSearchParam.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
-/// <summary>A FHIR server search parameter.</summary>
-public class FhirServerSearchParam
+/// <summary>A FHIR search parameter record from a CapabilityStatement.</summary>
+public class FhirCapSearchParam : ICloneable
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="FhirServerSearchParam"/> class.
+    /// Initializes a new instance of the <see cref="FhirCapSearchParam"/> class.
     /// </summary>
     /// <param name="name">               The name.</param>
     /// <param name="definitionCanonical">The definition canonical.</param>
     /// <param name="parameterType">      The type of the parameter.</param>
     /// <param name="documentation">      The documentation.</param>
-    public FhirServerSearchParam(
+    public FhirCapSearchParam(
         string name,
         string definitionCanonical,
         SearchParameterType parameterType,
@@ -34,13 +30,13 @@ public class FhirServerSearchParam
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FhirServerSearchParam"/> class.
+    /// Initializes a new instance of the <see cref="FhirCapSearchParam"/> class.
     /// </summary>
     /// <param name="name">               The name.</param>
     /// <param name="definitionCanonical">The definition canonical.</param>
     /// <param name="parameterType">      The type of the parameter.</param>
     /// <param name="documentation">      The documentation.</param>
-    public FhirServerSearchParam(
+    public FhirCapSearchParam(
         string name,
         string definitionCanonical,
         string parameterType,
@@ -113,7 +109,7 @@ public class FhirServerSearchParam
     /// <returns>A copy of this object.</returns>
     public object Clone()
     {
-        return new FhirServerSearchParam(
+        return new FhirCapSearchParam(
             Name,
             DefinitionCanonical,
             ParameterType,

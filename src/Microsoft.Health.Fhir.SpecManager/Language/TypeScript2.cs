@@ -254,7 +254,7 @@ public sealed class TypeScript2 : ILanguage
     /// <param name="exportDirectory">Directory to write files.</param>
     void ILanguage.Export(
         FhirVersionInfo info,
-        FhirServerInfo serverInfo,
+        FhirCapabiltyStatement serverInfo,
         ExporterOptions options,
         string exportDirectory)
     {

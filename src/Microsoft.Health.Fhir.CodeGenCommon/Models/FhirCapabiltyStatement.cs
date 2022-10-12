@@ -1,38 +1,48 @@
-﻿// <copyright file="FhirServerInfo.cs" company="Microsoft Corporation">
+﻿// <copyright file="FhirCapabiltyStatement.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using fhirCsR2.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
-using Microsoft.Health.Fhir.SpecManager.Manager;
 
-namespace Microsoft.Health.Fhir.SpecManager.Models;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A FHIR server.</summary>
-public class FhirServerInfo
+public class FhirCapabiltyStatement : ICloneable
 {
     private readonly List<SystemRestfulInteraction> _serverInteractions;
-    private readonly FhirPackageCommon.FhirSequenceEnum _fhirMajorVersion;
 
-    /// <summary>Initializes a new instance of the <see cref="FhirServerInfo"/> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirCapabiltyStatement"/> class.
+    /// </summary>
     /// <param name="serverInteractions">       The server interaction flags.</param>
+    /// <param name="id">                       The identifier.</param>
     /// <param name="url">                      FHIR Base URL for the server.</param>
+    /// <param name="name">                     The name.</param>
+    /// <param name="title">                    The title.</param>
     /// <param name="fhirVersion">              The server-reported FHIR version.</param>
+    /// <param name="fhirMimeTypes">            List of types of the FHIR mimes.</param>
+    /// <param name="patchMimeTypes">           A list of types of the FHIR patch mimes.</param>
     /// <param name="softwareName">             The FHIR Server software name.</param>
     /// <param name="softwareVersion">          The FHIR Server software version.</param>
     /// <param name="softwareReleaseDate">      The FHIR Server software release date.</param>
     /// <param name="implementationDescription">Information describing the implementation.</param>
     /// <param name="implementationUrl">        URL of the implementation.</param>
-    /// <param name="instantiates">             Canonical URL of another capability statement this implements.</param>
+    /// <param name="instantiates">             Canonical URL of another capability statement this
+    ///  implements.</param>
     /// <param name="implementationGuides">     Implementation guides supported.</param>
     /// <param name="resourceInteractions">     The server interactions by resource.</param>
     /// <param name="serverSearchParameters">   The search parameters for searching all resources.</param>
     /// <param name="serverOperations">         The operations defined at the system level operation.</param>
-    public FhirServerInfo(
+    public FhirCapabiltyStatement(
         List<string> serverInteractions,
+        string id,
         string url,
+        string name,
+        string title,
         string fhirVersion,
+        IEnumerable<string> fhirMimeTypes,
+        IEnumerable<string> patchMimeTypes,
         string softwareName,
         string softwareVersion,
         string softwareReleaseDate,
@@ -40,15 +50,17 @@ public class FhirServerInfo
         string implementationUrl,
         IEnumerable<string> instantiates,
         IEnumerable<string> implementationGuides,
-        Dictionary<string, FhirServerResourceInfo> resourceInteractions,
-        Dictionary<string, FhirServerSearchParam> serverSearchParameters,
-        Dictionary<string, FhirServerOperation> serverOperations)
+        Dictionary<string, FhirCapResource> resourceInteractions,
+        Dictionary<string, FhirCapSearchParam> serverSearchParameters,
+        Dictionary<string, FhirCapOperation> serverOperations)
     {
+        Id = id;
         Url = url;
+        Name = name;
+        Title = title;
         FhirVersion = fhirVersion;
-
-        _fhirMajorVersion = FhirPackageCommon.MajorReleaseForVersion(fhirVersion);
-
+        FhirMimeTypes = fhirMimeTypes?.ToArray() ?? Array.Empty<string>();
+        PatchMimeTypes = patchMimeTypes?.ToArray() ?? Array.Empty<string>();
         SoftwareName = softwareName;
         SoftwareVersion = softwareVersion;
         SoftwareReleaseDate = softwareReleaseDate;
@@ -71,22 +83,37 @@ public class FhirServerInfo
         }
     }
 
-    /// <summary>Initializes a new instance of the <see cref="FhirServerInfo"/> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirCapabiltyStatement"/> class.
+    /// </summary>
     /// <param name="serverInteractions">       The server interaction flags.</param>
+    /// <param name="id">                       The identifier.</param>
     /// <param name="url">                      FHIR Base URL for the server.</param>
+    /// <param name="name">                     The name.</param>
+    /// <param name="title">                    The title.</param>
     /// <param name="fhirVersion">              The server-reported FHIR version.</param>
+    /// <param name="fhirMimeTypes">            List of types of the FHIR mimes.</param>
+    /// <param name="patchMimeTypes">           A list of types of the FHIR patch mimes.</param>
     /// <param name="softwareName">             The FHIR Server software name.</param>
     /// <param name="softwareVersion">          The FHIR Server software version.</param>
     /// <param name="softwareReleaseDate">      The FHIR Server software release date.</param>
     /// <param name="implementationDescription">Information describing the implementation.</param>
     /// <param name="implementationUrl">        URL of the implementation.</param>
+    /// <param name="instantiates">             Canonical URL of another capability statement this
+    ///  implements.</param>
+    /// <param name="implementationGuides">     Implementation guides supported.</param>
     /// <param name="resourceInteractions">     The server interactions by resource.</param>
     /// <param name="serverSearchParameters">   The search parameters for searching all resources.</param>
     /// <param name="serverOperations">         The operations defined at the system level operation.</param>
-    public FhirServerInfo(
+    public FhirCapabiltyStatement(
         List<SystemRestfulInteraction> serverInteractions,
+        string id,
         string url,
+        string name,
+        string title,
         string fhirVersion,
+        IEnumerable<string> fhirMimeTypes,
+        IEnumerable<string> patchMimeTypes,
         string softwareName,
         string softwareVersion,
         string softwareReleaseDate,
@@ -94,22 +121,17 @@ public class FhirServerInfo
         string implementationUrl,
         IEnumerable<string> instantiates,
         IEnumerable<string> implementationGuides,
-        Dictionary<string, FhirServerResourceInfo> resourceInteractions,
-        Dictionary<string, FhirServerSearchParam> serverSearchParameters,
-        Dictionary<string, FhirServerOperation> serverOperations)
+        Dictionary<string, FhirCapResource> resourceInteractions,
+        Dictionary<string, FhirCapSearchParam> serverSearchParameters,
+        Dictionary<string, FhirCapOperation> serverOperations)
     {
+        Id = id;
         Url = url;
+        Name = name;
+        Title = title;
         FhirVersion = fhirVersion;
-
-        if (string.IsNullOrEmpty(fhirVersion))
-        {
-            _fhirMajorVersion = 0;
-        }
-        else
-        {
-            _fhirMajorVersion = FhirPackageCommon.MajorReleaseForVersion(fhirVersion);
-        }
-
+        FhirMimeTypes = fhirMimeTypes?.ToArray() ?? Array.Empty<string>();
+        PatchMimeTypes = patchMimeTypes?.ToArray() ?? Array.Empty<string>();
         SoftwareName = softwareName;
         SoftwareVersion = softwareVersion;
         SoftwareReleaseDate = softwareReleaseDate;
@@ -124,21 +146,23 @@ public class FhirServerInfo
         _serverInteractions = serverInteractions;
     }
 
-    /// <summary>Initializes a new instance of the <see cref="FhirServerInfo"/> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirCapabiltyStatement"/> class.
+    /// </summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
     /// <param name="source">Source for the.</param>
-    /// <param name="info">  The information.</param>
-    public FhirServerInfo(FhirServerInfo source, FhirVersionInfo info)
+    public FhirCapabiltyStatement(FhirCapabiltyStatement source)
     {
         if (source == null)
         {
             throw new ArgumentNullException(nameof(source));
         }
 
+        Id = source.Id;
         Url = source.Url;
+        Name = source.Name;
+        Title = source.Title;
         FhirVersion = source.FhirVersion;
-        _fhirMajorVersion = source._fhirMajorVersion;
-
         SoftwareName = source.SoftwareName;
         SoftwareVersion = source.SoftwareVersion;
         SoftwareReleaseDate = source.SoftwareReleaseDate;
@@ -148,31 +172,31 @@ public class FhirServerInfo
         Instantiates = source.Instantiates?.ToArray();
         ImplementationGuides = source.ImplementationGuides?.ToArray();
 
-        Dictionary<string, FhirServerResourceInfo> resourceInteractions = new Dictionary<string, FhirServerResourceInfo>();
+        Dictionary<string, FhirCapResource> resourceInteractions = new Dictionary<string, FhirCapResource>();
 
-        foreach (KeyValuePair<string, FhirServerResourceInfo> kvp in source.ResourceInteractions)
+        foreach (KeyValuePair<string, FhirCapResource> kvp in source.ResourceInteractions)
         {
-            if (!info.Resources.ContainsKey(kvp.Key))
-            {
-                continue;
-            }
+            //if (!info.Resources.ContainsKey(kvp.Key))
+            //{
+            //    continue;
+            //}
 
-            resourceInteractions.Add(kvp.Key, (FhirServerResourceInfo)kvp.Value.Clone());
+            resourceInteractions.Add(kvp.Key, (FhirCapResource)kvp.Value.Clone());
         }
 
         _serverInteractions = new List<SystemRestfulInteraction>();
         source.ServerInteractions.ForEach(i => _serverInteractions.Add(i));
 
-        Dictionary<string, FhirServerSearchParam> serverSearchParameters = new Dictionary<string, FhirServerSearchParam>();
-        foreach (KeyValuePair<string, FhirServerSearchParam> kvp in source.ServerSearchParameters)
+        Dictionary<string, FhirCapSearchParam> serverSearchParameters = new Dictionary<string, FhirCapSearchParam>();
+        foreach (KeyValuePair<string, FhirCapSearchParam> kvp in source.ServerSearchParameters)
         {
-            serverSearchParameters.Add(kvp.Key, (FhirServerSearchParam)kvp.Value.Clone());
+            serverSearchParameters.Add(kvp.Key, (FhirCapSearchParam)kvp.Value.Clone());
         }
 
-        Dictionary<string, FhirServerOperation> serverOperations = new Dictionary<string, FhirServerOperation>();
-        foreach (KeyValuePair<string, FhirServerOperation> kvp in source.ServerOperations)
+        Dictionary<string, FhirCapOperation> serverOperations = new Dictionary<string, FhirCapOperation>();
+        foreach (KeyValuePair<string, FhirCapOperation> kvp in source.ServerOperations)
         {
-            serverOperations.Add(kvp.Key, (FhirServerOperation)kvp.Value.Clone());
+            serverOperations.Add(kvp.Key, (FhirCapOperation)kvp.Value.Clone());
         }
 
         ResourceInteractions = resourceInteractions;
@@ -200,14 +224,26 @@ public class FhirServerInfo
         HistorySystem,
     }
 
+    /// <summary>Gets the identifier.</summary>
+    public string Id { get; }
+
     /// <summary>Gets FHIR Base URL for the server.</summary>
     public string Url { get; }
 
-    /// <summary>Gets the server-reported FHIR version.</summary>
+    /// <summary>Gets the name.</summary>
+    public string Name { get; }
+
+    /// <summary>Gets the title.</summary>
+    public string Title { get; }
+
+    /// <summary>Gets the listed FHIR version.</summary>
     public string FhirVersion { get; }
 
-    /// <summary>Gets the major version.</summary>
-    public FhirPackageCommon.FhirSequenceEnum MajorVersion => _fhirMajorVersion;
+    /// <summary>Gets a list of types of the FHIR mimes.</summary>
+    public IEnumerable<string> FhirMimeTypes { get; }
+
+    /// <summary>Gets a list of types of the FHIR patch mimes.</summary>
+    public IEnumerable<string> PatchMimeTypes { get; }
 
     /// <summary>Gets the FHIR Server software name.</summary>
     public string SoftwareName { get; }
@@ -231,108 +267,141 @@ public class FhirServerInfo
     public IEnumerable<string> ImplementationGuides { get; }
 
     /// <summary>Gets the server interactions by resource.</summary>
-    public Dictionary<string, FhirServerResourceInfo> ResourceInteractions { get; }
+    public Dictionary<string, FhirCapResource> ResourceInteractions { get; }
 
     /// <summary>Gets the server interactions.</summary>
     public List<SystemRestfulInteraction> ServerInteractions => _serverInteractions;
 
     /// <summary>Gets the search parameters for searching all resources.</summary>
-    public Dictionary<string, FhirServerSearchParam> ServerSearchParameters { get; }
+    public Dictionary<string, FhirCapSearchParam> ServerSearchParameters { get; }
 
     /// <summary>Gets the operations defined at the system level operation.</summary>
-    public Dictionary<string, FhirServerOperation> ServerOperations { get; }
+    public Dictionary<string, FhirCapOperation> ServerOperations { get; }
 
-    public record struct ResolvedCanonical(
-        string Canonical,
-        FhirArtifactClassEnum ArtifactClass,
-        object ResourceObject);
-
-    /// <summary>
-    /// Tries to resolve all packages for definitional resources
-    /// supported by a server.
-    /// </summary>
-    /// <returns></returns>
-    public bool TryResolveServerPackages()
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public object Clone()
     {
-        if (string.IsNullOrEmpty(FhirVersion))
+        return new FhirCapabiltyStatement(this);
+    }
+
+    /// <summary>Determines if we can supports FHIR JSON.</summary>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool SupportsFhirJson()
+    {
+        if ((FhirMimeTypes == null) ||
+            (!FhirMimeTypes.Any()))
         {
             return false;
         }
 
-        if (!FhirPackageCommon.TryGetMajorReleaseForVersion(FhirVersion, out FhirPackageCommon.FhirSequenceEnum sequence))
+        if (FhirMimeTypes.Contains("json") ||
+            FhirMimeTypes.Contains("fhir+json") ||
+            FhirMimeTypes.Contains("application/fhir+json"))
         {
-            Console.WriteLine($"Unknown FHIR version on server: {FhirVersion} - cannot process.");
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>Determines if we can supports FHIR XML.</summary>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool SupportsFhirXml()
+    {
+        if ((FhirMimeTypes == null) ||
+            (!FhirMimeTypes.Any()))
+        {
             return false;
         }
 
-        string corePackage = FhirPackageCommon.PackageBaseForRelease(sequence) + ".core";
-
-        if (!FhirManager.Current.HasLoadedPackage(corePackage, out _))
+        if (FhirMimeTypes.Contains("xml") ||
+            FhirMimeTypes.Contains("fhir+xml") ||
+            FhirMimeTypes.Contains("application/fhir+xml") ||
+            FhirMimeTypes.Contains("text/fhir+xml"))
         {
-            FhirManager.Current.LoadPackages(
-                    new string[] { corePackage + "#latest" } ,
-                    false,
-                    true,
-                    true,
-                    false,
-                    string.Empty,
-                    out _);
+            return true;
         }
 
-        HashSet<string> attempted = new();
-        Dictionary<string, ResolvedCanonical> canonicals = new();
+        return false;
+    }
 
-        if (ImplementationGuides != null)
+    /// <summary>Determines if we can supports patch JSON.</summary>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool SupportsPatchJson()
+    {
+        if ((PatchMimeTypes == null) ||
+            (!PatchMimeTypes.Any()))
         {
-            foreach (string ig in ImplementationGuides)
-            {
-            }
+            return false;
         }
 
-        if (ServerOperations != null)
+        if (PatchMimeTypes.Contains("json") ||
+            PatchMimeTypes.Contains("application/json") ||
+            PatchMimeTypes.Contains("application/json-patch+json"))
         {
-            foreach (FhirServerOperation serverOp in ServerOperations.Values)
-            {
-                if (attempted.Contains(serverOp.DefinitionCanonical))
-                {
-                    continue;
-                }
-
-                attempted.Add(serverOp.DefinitionCanonical);
-
-                if (!FhirManager.Current.TryResolveCanonical(sequence, serverOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out _) ||
-                    (ac != FhirArtifactClassEnum.Operation))
-                {
-                    Console.WriteLine(" <<< Failed to resolve canonical: " + serverOp.DefinitionCanonical);
-                }
-            }
+            return true;
         }
 
-        if (ResourceInteractions != null)
+        return false;
+    }
+
+    /// <summary>Determines if we can supports patch XML.</summary>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool SupportsPatchXml()
+    {
+        if ((PatchMimeTypes == null) ||
+            (!PatchMimeTypes.Any()))
         {
-            foreach (FhirServerResourceInfo resourceInteraction in ResourceInteractions.Values)
-            {
-                if (resourceInteraction.Operations != null)
-                {
-                    foreach (FhirServerOperation resourceOp in resourceInteraction.Operations.Values)
-                    {
-                        if (attempted.Contains(resourceOp.DefinitionCanonical))
-                        {
-                            continue;
-                        }
-
-                        attempted.Add(resourceOp.DefinitionCanonical);
-
-                        if (!FhirManager.Current.TryResolveCanonical(sequence, resourceOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out _) ||
-                            (ac != FhirArtifactClassEnum.Operation))
-                        {
-                            Console.WriteLine(" <<< Failed to resolve canonical: " + resourceOp.DefinitionCanonical);
-                        }
-                    }
-                }
-            }
+            return false;
         }
 
-        return true;
+        if (PatchMimeTypes.Contains("xml") ||
+            PatchMimeTypes.Contains("application/xml") ||
+            PatchMimeTypes.Contains("text/xml"))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>Determines if we can supports patch FHIR JSON.</summary>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool SupportsPatchFhirJson()
+    {
+        if ((PatchMimeTypes == null) ||
+            (!PatchMimeTypes.Any()))
+        {
+            return false;
+        }
+
+        if (PatchMimeTypes.Contains("fhir+json") ||
+            PatchMimeTypes.Contains("application/fhir+json"))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>Determines if we can supports patch FHIR XML.</summary>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool SupportsPatchFhirXml()
+    {
+        if ((PatchMimeTypes == null) ||
+            (!PatchMimeTypes.Any()))
+        {
+            return false;
+        }
+
+        if (PatchMimeTypes.Contains("fhir+xml") ||
+            PatchMimeTypes.Contains("application/fhir+xml") ||
+            PatchMimeTypes.Contains("text/fhir+xml"))
+        {
+            return true;
+        }
+
+        return false;
     }
 }

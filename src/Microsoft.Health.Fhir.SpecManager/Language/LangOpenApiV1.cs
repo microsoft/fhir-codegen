@@ -1,9 +1,10 @@
-﻿// <copyright file="LangOpenApi.cs" company="Microsoft Corporation">
+﻿// <copyright file="LangOpenApiV1.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
 using System.IO;
+using Microsoft.Health.Fhir.SpecManager.Language.OpenApi;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.OpenApi;
@@ -12,18 +13,19 @@ using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
 using Microsoft.VisualBasic;
-using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirServerResourceInfo;
+using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirCapResource;
+using static Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
     /// <summary>An OpenApi language exporter.</summary>
-    public sealed class LangOpenApi : ILanguage
+    public sealed class LangOpenApiV1 : ILanguage
     {
         /// <summary>FHIR information we are exporting.</summary>
         private FhirVersionInfo _info;
 
         /// <summary>Information describing the server.</summary>
-        private FhirServerInfo _serverInfo;
+        private FhirCapabiltyStatement _serverInfo;
 
         /// <summary>Options for controlling the export.</summary>
         private ExporterOptions _options;
@@ -32,7 +34,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private HashSet<string> _exportedCodes = new HashSet<string>();
 
         /// <summary>Name of the language.</summary>
-        private const string _languageName = "OpenApi";
+        private const string _languageName = "OpenApiV1";
 
         /// <summary>The single file export extension.</summary>
         private const string _singleFileExportExtension = ".json";
@@ -65,10 +67,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private bool _patchFhirXml = false;
 
         /// <summary>The search support.</summary>
-        private FhirServerResourceInfo.SearchSupportCodes _searchSupport = FhirServerResourceInfo.SearchSupportCodes.Both;
+        private OaHttpSupportCodes _searchSupport = OaHttpSupportCodes.Both;
 
         /// <summary>The search parameter location.</summary>
-        private FhirServerResourceInfo.SearchPostParameterLocationCodes _searchParamLoc = SearchPostParameterLocationCodes.Body;
+        private OaSearchPostParameterLocationCodes _searchParamLoc = OaSearchPostParameterLocationCodes.Body;
 
         private Dictionary<string, OpenApiParameter> _commonParameters;
 
@@ -252,7 +254,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             //{ "ModelOnlyObjects", "If all models should be reduced to 'object' (false|true)." },
 
             { "History", "If _history GET operations should be included (false|true)" },
-            { "MaxRecurisions", "Maximum depth to expand recursions (0)." },
+            { "MaxRecursions", "Maximum depth to expand recursions (0)." },
             { "Metadata", "If the JSON should include a link to /metadata (false|true)." },
             { "Minify", "If the output JSON should be minified (false|true)." },
             { "OpenApiVersion", "Open API version to use (2, 3)." },
@@ -274,7 +276,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="exportDirectory">Directory to write files.</param>
         void ILanguage.Export(
             FhirVersionInfo info,
-            FhirServerInfo serverInfo,
+            FhirCapabiltyStatement serverInfo,
             ExporterOptions options,
             string exportDirectory)
         {
@@ -319,20 +321,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             switch (searchSupport.ToUpperInvariant())
             {
                 case "NONE":
-                    _searchSupport = FhirServerResourceInfo.SearchSupportCodes.None;
+                    _searchSupport = OaHttpSupportCodes.None;
                     break;
 
                 case "GET":
-                    _searchSupport = FhirServerResourceInfo.SearchSupportCodes.Get;
+                    _searchSupport = OaHttpSupportCodes.Get;
                     break;
 
                 case "POST":
-                    _searchSupport = FhirServerResourceInfo.SearchSupportCodes.Post;
+                    _searchSupport = OaHttpSupportCodes.Post;
                     break;
 
                 default:
                 case "BOTH":
-                    _searchSupport = FhirServerResourceInfo.SearchSupportCodes.Both;
+                    _searchSupport = OaHttpSupportCodes.Both;
                     break;
             }
 
@@ -340,20 +342,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             switch (postParamLoc.ToUpperInvariant())
             {
                 case "NONE":
-                    _searchParamLoc = SearchPostParameterLocationCodes.None;
+                    _searchParamLoc = OaSearchPostParameterLocationCodes.None;
                     break;
 
                 case "BOTH":
-                    _searchParamLoc = SearchPostParameterLocationCodes.Both;
+                    _searchParamLoc = OaSearchPostParameterLocationCodes.Both;
                     break;
 
                 case "QUERY":
-                    _searchParamLoc = SearchPostParameterLocationCodes.Query;
+                    _searchParamLoc = OaSearchPostParameterLocationCodes.Query;
                     break;
 
                 default:
                 case "BODY":
-                    _searchParamLoc = SearchPostParameterLocationCodes.Body;
+                    _searchParamLoc = OaSearchPostParameterLocationCodes.Body;
                     break;
             }
 
@@ -934,7 +936,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            foreach (FhirServerResourceInfo resource in _serverInfo.ResourceInteractions.Values)
+            foreach (FhirCapResource resource in _serverInfo.ResourceInteractions.Values)
             {
                 if ((!_includeBundleOperations) &&
                     (resource.ResourceType == "Bundle"))
@@ -950,11 +952,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 Dictionary<string, Dictionary<OperationType, OpenApiOperation>> opsByMethodByPath = new();
 
-                foreach (FhirServerResourceInfo.FhirInteraction interaction in resource.Interactions)
+                foreach (FhirCapResource.FhirInteractionCodes interaction in resource.Interactions)
                 {
                     switch (interaction)
                     {
-                        case FhirServerResourceInfo.FhirInteraction.Read:
+                        case FhirCapResource.FhirInteractionCodes.Read:
                             AddPath(
                                 opsByMethodByPath,
                                 $"/{resource.ResourceType}/{{id}}",
@@ -973,7 +975,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                             break;
 
-                        case FhirServerResourceInfo.FhirInteraction.VRead:
+                        case FhirCapResource.FhirInteractionCodes.VRead:
                             AddPath(
                                 opsByMethodByPath,
                                 $"/{resource.ResourceType}/{{id}}/_history/{{vid}}",
@@ -992,7 +994,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                             break;
 
-                        case FhirServerResourceInfo.FhirInteraction.HistoryInstance:
+                        case FhirCapResource.FhirInteractionCodes.HistoryInstance:
                             if (!_includeHistory)
                             {
                                 continue;
@@ -1016,7 +1018,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                             break;
 
-                        case FhirServerResourceInfo.FhirInteraction.HistoryType:
+                        case FhirCapResource.FhirInteractionCodes.HistoryType:
                             if (!_includeHistory)
                             {
                                 continue;
@@ -1040,7 +1042,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                             break;
 
-                        case FhirServerResourceInfo.FhirInteraction.Patch:
+                        case FhirCapResource.FhirInteractionCodes.Patch:
                             if (_generateReadOnly)
                             {
                                 continue;
@@ -1068,7 +1070,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                             break;
 
-                        case FhirServerResourceInfo.FhirInteraction.Update:
+                        case FhirCapResource.FhirInteractionCodes.Update:
                             if (_generateReadOnly)
                             {
                                 continue;
@@ -1097,7 +1099,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                             break;
 
-                        case FhirServerResourceInfo.FhirInteraction.Create:
+                        case FhirCapResource.FhirInteractionCodes.Create:
                             if (_generateReadOnly)
                             {
                                 continue;
@@ -1150,7 +1152,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                             break;
 
-                        case FhirServerResourceInfo.FhirInteraction.Delete:
+                        case FhirCapResource.FhirInteractionCodes.Delete:
                             if (_generateReadOnly)
                             {
                                 continue;
@@ -1194,9 +1196,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                             break;
 
-                        case FhirServerResourceInfo.FhirInteraction.SearchType:
+                        case FhirCapResource.FhirInteractionCodes.SearchType:
 
-                            if ((_searchSupport == SearchSupportCodes.Both) || (_searchSupport == SearchSupportCodes.Get))
+                            if ((_searchSupport == OaHttpSupportCodes.Both) || (_searchSupport == OaHttpSupportCodes.Get))
                             {
                                 AddPath(
                                     opsByMethodByPath,
@@ -1215,7 +1217,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                     null);
                             }
 
-                            if ((_searchSupport == SearchSupportCodes.Both) || (_searchSupport == SearchSupportCodes.Post))
+                            if ((_searchSupport == OaHttpSupportCodes.Both) || (_searchSupport == OaHttpSupportCodes.Post))
                             {
                                 AddPath(
                                     opsByMethodByPath,
@@ -1240,6 +1242,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                         Description = _includeDescriptions ? "Search parameters" : null,
                                     });
                             }
+
+                            break;
+
+                        case FhirCapResource.FhirInteractionCodes.Operation:
 
                             break;
                     }
@@ -1522,7 +1528,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string returnType,
             bool wrapReturnInBundle,
             bool includeServerSearchParams,
-            IEnumerable<FhirServerSearchParam> opSearchParams,
+            IEnumerable<FhirCapSearchParam> opSearchParams,
             OpenApiRequestBody body)
         {
             if (!opsByMethodByPath.ContainsKey(path))
@@ -1557,15 +1563,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (includeServerSearchParams)
             {
                 if ((ot != OperationType.Post) ||
-                    (_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
-                    (_searchParamLoc == SearchPostParameterLocationCodes.Query))
+                    (_searchParamLoc == OaSearchPostParameterLocationCodes.Both) ||
+                    (_searchParamLoc == OaSearchPostParameterLocationCodes.Query))
                 {
                     AddOperationParameters(_serverInfo.ServerSearchParameters.Values, op);
                 }
 
                 if ((ot == OperationType.Post) &&
-                    ((_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
-                     (_searchParamLoc == SearchPostParameterLocationCodes.Body)))
+                    ((_searchParamLoc == OaSearchPostParameterLocationCodes.Both) ||
+                     (_searchParamLoc == OaSearchPostParameterLocationCodes.Body)))
                 {
                     AddOperationParametersToBody(
                         op.RequestBody.Content["application/x-www-form-urlencoded"],
@@ -1576,15 +1582,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (opSearchParams != null)
             {
                 if ((ot != OperationType.Post) ||
-                    (_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
-                    (_searchParamLoc == SearchPostParameterLocationCodes.Query))
+                    (_searchParamLoc == OaSearchPostParameterLocationCodes.Both) ||
+                    (_searchParamLoc == OaSearchPostParameterLocationCodes.Query))
                 {
                     AddOperationParameters(opSearchParams, op);
                 }
 
                 if ((ot == OperationType.Post) &&
-                    ((_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
-                     (_searchParamLoc == SearchPostParameterLocationCodes.Body)))
+                    ((_searchParamLoc == OaSearchPostParameterLocationCodes.Both) ||
+                     (_searchParamLoc == OaSearchPostParameterLocationCodes.Body)))
                 {
                     AddOperationParametersToBody(
                         op.RequestBody.Content["application/x-www-form-urlencoded"],
@@ -1655,10 +1661,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="searchParameters">Options for controlling the search.</param>
         /// <param name="op">              The operation.</param>
         private void AddOperationParameters(
-            IEnumerable<FhirServerSearchParam> searchParameters,
+            IEnumerable<FhirCapSearchParam> searchParameters,
             OpenApiOperation op)
         {
-            foreach (FhirServerSearchParam sp in searchParameters)
+            foreach (FhirCapSearchParam sp in searchParameters)
             {
                 if (_commonParameters.ContainsKey(sp.Name))
                 {
@@ -1678,21 +1684,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 switch (sp.ParameterType)
                 {
-                    case FhirServerSearchParam.SearchParameterType.Number:
+                    case FhirCapSearchParam.SearchParameterType.Number:
                         opParam.Schema = new OpenApiSchema()
                         {
                             Type = "number",
                         };
                         break;
 
-                    case FhirServerSearchParam.SearchParameterType.Date:
-                    case FhirServerSearchParam.SearchParameterType.String:
-                    case FhirServerSearchParam.SearchParameterType.Token:
-                    case FhirServerSearchParam.SearchParameterType.Reference:
-                    case FhirServerSearchParam.SearchParameterType.Composite:
-                    case FhirServerSearchParam.SearchParameterType.Quantity:
-                    case FhirServerSearchParam.SearchParameterType.Uri:
-                    case FhirServerSearchParam.SearchParameterType.Special:
+                    case FhirCapSearchParam.SearchParameterType.Date:
+                    case FhirCapSearchParam.SearchParameterType.String:
+                    case FhirCapSearchParam.SearchParameterType.Token:
+                    case FhirCapSearchParam.SearchParameterType.Reference:
+                    case FhirCapSearchParam.SearchParameterType.Composite:
+                    case FhirCapSearchParam.SearchParameterType.Quantity:
+                    case FhirCapSearchParam.SearchParameterType.Uri:
+                    case FhirCapSearchParam.SearchParameterType.Special:
                     default:
 
                         opParam.Schema = new OpenApiSchema()
@@ -1712,15 +1718,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="searchParameters">Options for controlling the search.</param>
         private void AddOperationParametersToBody(
             OpenApiMediaType mt,
-            IEnumerable<FhirServerSearchParam> searchParameters)
+            IEnumerable<FhirCapSearchParam> searchParameters)
         {
             mt.Schema = new OpenApiSchema();
 
-            foreach (FhirServerSearchParam sp in searchParameters)
+            foreach (FhirCapSearchParam sp in searchParameters)
             {
                 switch (sp.ParameterType)
                 {
-                    case FhirServerSearchParam.SearchParameterType.Number:
+                    case FhirCapSearchParam.SearchParameterType.Number:
                         mt.Schema.Properties.Add(sp.Name, new OpenApiSchema()
                             {
                                 Title = sp.Name,
@@ -1728,14 +1734,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             });
                         break;
 
-                    case FhirServerSearchParam.SearchParameterType.Date:
-                    case FhirServerSearchParam.SearchParameterType.String:
-                    case FhirServerSearchParam.SearchParameterType.Token:
-                    case FhirServerSearchParam.SearchParameterType.Reference:
-                    case FhirServerSearchParam.SearchParameterType.Composite:
-                    case FhirServerSearchParam.SearchParameterType.Quantity:
-                    case FhirServerSearchParam.SearchParameterType.Uri:
-                    case FhirServerSearchParam.SearchParameterType.Special:
+                    case FhirCapSearchParam.SearchParameterType.Date:
+                    case FhirCapSearchParam.SearchParameterType.String:
+                    case FhirCapSearchParam.SearchParameterType.Token:
+                    case FhirCapSearchParam.SearchParameterType.Reference:
+                    case FhirCapSearchParam.SearchParameterType.Composite:
+                    case FhirCapSearchParam.SearchParameterType.Quantity:
+                    case FhirCapSearchParam.SearchParameterType.Uri:
+                    case FhirCapSearchParam.SearchParameterType.Special:
                     default:
                         mt.Schema.Properties.Add(sp.Name, new OpenApiSchema()
                             {

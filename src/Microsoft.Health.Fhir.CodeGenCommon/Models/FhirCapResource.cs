@@ -1,25 +1,19 @@
-﻿// <copyright file="FhirServerResourceInfo.cs" company="Microsoft Corporation">
+﻿// <copyright file="FhirCapResource.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
-/// <summary>Information about a supported FHIR server resource.</summary>
-public class FhirServerResourceInfo
+/// <summary>A FHIR Resource support record from a CapabilityStatement.</summary>
+public class FhirCapResource : ICloneable
 {
-    private readonly List<FhirInteraction> _interactions;
+    private readonly List<FhirInteractionCodes> _interactions;
     private readonly List<ReferenceHandlingPolicy> _referencePolicies;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirServerResourceInfo"/> class.
-    /// </summary>
+    /// <summary>Initializes a new instance of the <see cref="FhirCapResource"/> class.</summary>
     /// <param name="interactions">     The interactions.</param>
     /// <param name="resourceType">     The resource type.</param>
     /// <param name="supportedProfiles">The list of supported profile URLs.</param>
@@ -30,13 +24,14 @@ public class FhirServerResourceInfo
     /// <param name="conditionalCreate">A value indicating whether allows/uses conditional create.</param>
     /// <param name="conditionalRead">  The conditional read policy for this resource.</param>
     /// <param name="conditionalUpdate">A value indicating whether the conditional update.</param>
+    /// <param name="conditionalPatch"> If the server allows/uses conditional patch.</param>
     /// <param name="conditionalDelete">The conditional delete.</param>
     /// <param name="referencePolicies">The reference policy.</param>
     /// <param name="searchIncludes">   The _include values supported by the server.</param>
     /// <param name="searchRevIncludes">The _revinclude values supported by the server.</param>
     /// <param name="searchParameters"> The search parameters supported by implementation.</param>
     /// <param name="operations">       The operations supported by implementation.</param>
-    public FhirServerResourceInfo(
+    public FhirCapResource(
         List<string> interactions,
         string resourceType,
         List<string> supportedProfiles,
@@ -46,12 +41,13 @@ public class FhirServerResourceInfo
         bool? conditionalCreate,
         string conditionalRead,
         bool? conditionalUpdate,
+        bool? conditionalPatch,
         string conditionalDelete,
         List<string> referencePolicies,
         List<string> searchIncludes,
         List<string> searchRevIncludes,
-        Dictionary<string, FhirServerSearchParam> searchParameters,
-        Dictionary<string, FhirServerOperation> operations)
+        Dictionary<string, FhirCapSearchParam> searchParameters,
+        Dictionary<string, FhirCapOperation> operations)
     {
         ResourceType = resourceType;
         SupportedProfiles = supportedProfiles ?? new List<string>();
@@ -59,18 +55,19 @@ public class FhirServerResourceInfo
         UpdateCreate = updateCreate;
         ConditionalCreate = conditionalCreate;
         ConditionalUpdate = conditionalUpdate;
+        ConditionalPatch = conditionalPatch;
         SearchIncludes = searchIncludes ?? new List<string>();
         SearchRevIncludes = searchRevIncludes ?? new List<string>();
-        SearchParameters = searchParameters ?? new Dictionary<string, FhirServerSearchParam>();
-        Operations = operations ?? new Dictionary<string, FhirServerOperation>();
+        SearchParameters = searchParameters ?? new Dictionary<string, FhirCapSearchParam>();
+        Operations = operations ?? new Dictionary<string, FhirCapOperation>();
 
-        _interactions = new List<FhirInteraction>();
+        _interactions = new List<FhirInteractionCodes>();
 
         if (interactions != null)
         {
             foreach (string interaction in interactions)
             {
-                _interactions.Add(interaction.ToFhirEnum<FhirInteraction>());
+                _interactions.Add(interaction.ToFhirEnum<FhirInteractionCodes>());
             }
         }
 
@@ -100,9 +97,7 @@ public class FhirServerResourceInfo
         }
     }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirServerResourceInfo"/> class.
-    /// </summary>
+    /// <summary>Initializes a new instance of the <see cref="FhirCapResource"/> class.</summary>
     /// <param name="interactions">     The interactions.</param>
     /// <param name="resourceType">     The resource type.</param>
     /// <param name="supportedProfiles">The list of supported profile URLs.</param>
@@ -113,14 +108,15 @@ public class FhirServerResourceInfo
     /// <param name="conditionalCreate">A value indicating whether allows/uses conditional create.</param>
     /// <param name="conditionalRead">  The conditional read policy for this resource.</param>
     /// <param name="conditionalUpdate">A value indicating whether the conditional update.</param>
+    /// <param name="conditionalPatch"> If the server allows/uses conditional patch.</param>
     /// <param name="conditionalDelete">The conditional delete.</param>
     /// <param name="referencePolicies">The reference policy.</param>
     /// <param name="searchIncludes">   The _include values supported by the server.</param>
     /// <param name="searchRevIncludes">The _revinclude values supported by the server.</param>
     /// <param name="searchParameters"> The search parameters supported by implementation.</param>
     /// <param name="operations">       The operations supported by implementation.</param>
-    public FhirServerResourceInfo(
-        List<FhirInteraction> interactions,
+    public FhirCapResource(
+        List<FhirInteractionCodes> interactions,
         string resourceType,
         List<string> supportedProfiles,
         VersioningPolicy? versionSupport,
@@ -129,12 +125,13 @@ public class FhirServerResourceInfo
         bool? conditionalCreate,
         ConditionalReadPolicy? conditionalRead,
         bool? conditionalUpdate,
+        bool? conditionalPatch,
         ConditionalDeletePolicy? conditionalDelete,
         List<ReferenceHandlingPolicy> referencePolicies,
         List<string> searchIncludes,
         List<string> searchRevIncludes,
-        Dictionary<string, FhirServerSearchParam> searchParameters,
-        Dictionary<string, FhirServerOperation> operations)
+        Dictionary<string, FhirCapSearchParam> searchParameters,
+        Dictionary<string, FhirCapOperation> operations)
     {
         ResourceType = resourceType;
         SupportedProfiles = supportedProfiles ?? new List<string>();
@@ -142,40 +139,26 @@ public class FhirServerResourceInfo
         UpdateCreate = updateCreate;
         ConditionalCreate = conditionalCreate;
         ConditionalUpdate = conditionalUpdate;
+        ConditionalPatch = conditionalPatch;
+        ConditionalRead = conditionalRead;
+        ConditionalDelete = conditionalDelete;
         SearchIncludes = searchIncludes ?? new List<string>();
         SearchRevIncludes = searchRevIncludes ?? new List<string>();
-        SearchParameters = searchParameters ?? new Dictionary<string, FhirServerSearchParam>();
-        Operations = operations ?? new Dictionary<string, FhirServerOperation>();
+        SearchParameters = searchParameters ?? new Dictionary<string, FhirCapSearchParam>();
+        Operations = operations ?? new Dictionary<string, FhirCapOperation>();
 
         _interactions = interactions;
 
         VersionSupport = versionSupport;
-        ConditionalRead = conditionalRead;
-        ConditionalDelete = conditionalDelete;
 
         _referencePolicies = referencePolicies;
     }
 
-    /// <summary>Values that represent search method codes.</summary>
-    public enum SearchSupportCodes
-    {
-        None,
-        Both,
-        Get,
-        Post,
-    }
-
-    /// <summary>Values that represent search post parameter location codes.</summary>
-    public enum SearchPostParameterLocationCodes
-    {
-        None,
-        Both,
-        Query,
-        Body,
-    }
-
-    /// <summary>Values that represent FHIR resource interactions.</summary>
-    public enum FhirInteraction
+    /// <summary>
+    /// Values that represent FHIR resource interactions.
+    /// Codes from https://hl7.org/fhir/codesystem-restful-interaction.html
+    /// </summary>
+    public enum FhirInteractionCodes
     {
         /// <summary>Read the current state of the resource..</summary>
         [FhirLiteral("read")]
@@ -228,6 +211,18 @@ public class FhirServerResourceInfo
         /// <summary>Perform an operation as defined by an OperationDefinition.</summary>
         [FhirLiteral("operation")]
         Operation,
+
+        /// <summary>Get a Capability Statement for the system.</summary>
+        [FhirLiteral("capabilities")]
+        Capabilities,
+
+        /// <summary>Get a Capability Statement for the system.</summary>
+        [FhirLiteral("transaction")]
+        Transaction,
+
+        /// <summary>Get a Capability Statement for the system.</summary>
+        [FhirLiteral("batch")]
+        Batch,
     }
 
     /// <summary>Values that represent versioning policies.</summary>
@@ -315,7 +310,7 @@ public class FhirServerResourceInfo
     public List<string> SupportedProfiles { get; }
 
     /// <summary>Gets the supported interactions.</summary>
-    public List<FhirInteraction> Interactions => _interactions;
+    public List<FhirInteractionCodes> Interactions => _interactions;
 
     /// <summary>Gets the supported version policy.</summary>
     public VersioningPolicy? VersionSupport { get; }
@@ -332,8 +327,11 @@ public class FhirServerResourceInfo
     /// <summary>Gets the conditional read policy for this resource.</summary>
     public ConditionalReadPolicy? ConditionalRead { get; }
 
-    /// <summary>Gets a value indicating whether the conditional update.</summary>
+    /// <summary>If the server allows/uses conditional update.</summary>
     public bool? ConditionalUpdate { get; }
+
+    /// <summary>If the server allows/uses conditional patch.</summary>
+    public bool? ConditionalPatch { get; }
 
     /// <summary>Gets the conditional delete.</summary>
     public ConditionalDeletePolicy? ConditionalDelete { get; }
@@ -348,16 +346,16 @@ public class FhirServerResourceInfo
     public List<string> SearchRevIncludes { get; }
 
     /// <summary>Gets the search parameters supported by implementation.</summary>
-    public Dictionary<string, FhirServerSearchParam> SearchParameters { get; }
+    public Dictionary<string, FhirCapSearchParam> SearchParameters { get; }
 
     /// <summary>Gets the operations supported by implementation.</summary>
-    public Dictionary<string, FhirServerOperation> Operations { get; }
+    public Dictionary<string, FhirCapOperation> Operations { get; }
 
     /// <summary>Makes a deep copy of this object.</summary>
     /// <returns>A copy of this object.</returns>
     public object Clone()
     {
-        List<FhirInteraction> interactions = new List<FhirInteraction>();
+        List<FhirInteractionCodes> interactions = new List<FhirInteractionCodes>();
         _interactions.ForEach(i => interactions.Add(i));
 
         List<ReferenceHandlingPolicy> referencePolicy = new List<ReferenceHandlingPolicy>();
@@ -366,19 +364,19 @@ public class FhirServerResourceInfo
         List<string> searchIncludes = SearchIncludes.Select(s => (string)s.Clone()).ToList();
         List<string> searchRevIncludes = SearchRevIncludes.Select(s => (string)s.Clone()).ToList();
 
-        Dictionary<string, FhirServerSearchParam> searchParameters = new Dictionary<string, FhirServerSearchParam>();
-        foreach (KeyValuePair<string, FhirServerSearchParam> kvp in SearchParameters)
+        Dictionary<string, FhirCapSearchParam> searchParameters = new Dictionary<string, FhirCapSearchParam>();
+        foreach (KeyValuePair<string, FhirCapSearchParam> kvp in SearchParameters)
         {
-            searchParameters.Add(kvp.Key, (FhirServerSearchParam)kvp.Value.Clone());
+            searchParameters.Add(kvp.Key, (FhirCapSearchParam)kvp.Value.Clone());
         }
 
-        Dictionary<string, FhirServerOperation> operations = new Dictionary<string, FhirServerOperation>();
-        foreach (KeyValuePair<string, FhirServerOperation> kvp in Operations)
+        Dictionary<string, FhirCapOperation> operations = new Dictionary<string, FhirCapOperation>();
+        foreach (KeyValuePair<string, FhirCapOperation> kvp in Operations)
         {
-            operations.Add(kvp.Key, (FhirServerOperation)kvp.Value.Clone());
+            operations.Add(kvp.Key, (FhirCapOperation)kvp.Value.Clone());
         }
 
-        return new FhirServerResourceInfo(
+        return new FhirCapResource(
             interactions,
             ResourceType,
             SupportedProfiles,
@@ -388,6 +386,7 @@ public class FhirServerResourceInfo
             ConditionalCreate,
             ConditionalRead,
             ConditionalUpdate,
+            ConditionalPatch,
             ConditionalDelete,
             referencePolicy,
             searchIncludes,

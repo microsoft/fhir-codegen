@@ -607,10 +607,10 @@ public class FhirComplex : FhirTypeBase
         bool canHideParentFields,
         Dictionary<string, ValueSetReferenceInfo> valueSetReferences,
         Dictionary<string, FhirNodeInfo> typeMapByPath,
-        Dictionary<string, FhirServerSearchParam> supportedSearchParams = null,
-        Dictionary<string, FhirServerSearchParam> serverSearchParams = null,
-        Dictionary<string, FhirServerOperation> supportedOperations = null,
-        Dictionary<string, FhirServerOperation> serverOperations = null,
+        Dictionary<string, FhirCapSearchParam> supportedSearchParams = null,
+        Dictionary<string, FhirCapSearchParam> serverSearchParams = null,
+        Dictionary<string, FhirCapOperation> supportedOperations = null,
+        Dictionary<string, FhirCapOperation> serverOperations = null,
         bool includeExperimental = false)
     {
         List<string> contextElements = null;
