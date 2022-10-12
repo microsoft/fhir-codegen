@@ -2,6 +2,7 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -152,7 +153,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     IncludeBase = false,
                 }
             },
-
         };
 
         /// <summary>Gets the name of the language.</summary>
@@ -223,7 +223,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             // create a filename for writing (single file for now)
-            string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.ts");
+            string filename = Path.Combine(exportDirectory, $"{info.FhirSequence}.ts");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -346,7 +346,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     input = concept.Code;
                 }
 
-                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords);
+                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords, FhirTypeBase.NamingConvention.PascalCase);
                 string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
                 codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
@@ -388,8 +388,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (!string.IsNullOrEmpty(concept.Display))
                 {
-                    string display = FhirUtils.SanitizeToAscii(concept.Display);
-                    _writer.WriteLineIndented($"display: \"{FhirUtils.SanitizeForQuoted(display)}\",");
+                    _writer.WriteLineIndented($"display: \"{FhirUtils.SanitizeForQuoted(concept.Display)}\",");
                 }
 
                 _writer.WriteLineIndented($"system: \"{concept.System}\"");
@@ -512,7 +511,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
                 string typeName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
 
-                //if (ShouldSupportGenerics(complex.Path))
                 if (_genericsAndTypeHints.ContainsKey(complex.Path))
                 {
                     _writer.WriteLineIndented(
@@ -681,6 +679,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirElement element)
         {
             string optionalFlagString = element.IsOptional ? "?" : string.Empty;
+            string optionalSuffixString = element.IsOptional ? " | undefined" : string.Empty;
             string arrayFlagString = element.IsArray ? "[]" : string.Empty;
 
             Dictionary<string, string> values = element.NamesAndTypesForExport(
@@ -695,6 +694,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.IsNullOrEmpty(optionalFlagString))
             {
                 optionalFlagString = "?";
+                optionalSuffixString = " | undefined";
             }
 
             foreach (KeyValuePair<string, string> kvp in values)
@@ -722,20 +722,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             string.Empty,
                             FhirTypeBase.NamingConvention.PascalCase);
 
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName}{arrayFlagString};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName}{arrayFlagString}{optionalSuffixString};");
                     }
                     else if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
                     {
                         // use the full expansion
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))}){arrayFlagString};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))}){arrayFlagString}{optionalSuffixString};");
                     }
                     else
                     {
                         // otherwise, inline the required codes
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString}{optionalSuffixString};");
                     }
                 }
-                //else if (ShouldSupportGenerics(element.Path))
                 else if (_genericsAndTypeHints.ContainsKey(element.Path))
                 {
                     GenericTypeHintInfo typeHint = _genericsAndTypeHints[element.Path];
@@ -745,29 +744,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         _writer.WriteLineIndented(
                             $"{kvp.Key}{optionalFlagString}:" +
                             $" {kvp.Value}" +
-                            $"<{_genericsAndTypeHints[element.Path].Alias}>{arrayFlagString};");
+                            $"<{_genericsAndTypeHints[element.Path].Alias}>{arrayFlagString}{optionalSuffixString};");
                     }
                     else
                     {
                         _writer.WriteLineIndented(
                             $"{kvp.Key}{optionalFlagString}:" +
-                            $" {_genericsAndTypeHints[element.Path].Alias}{arrayFlagString};");
+                            $" {_genericsAndTypeHints[element.Path].Alias}{arrayFlagString}{optionalSuffixString};");
                     }
-
-                    //_writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}<T>{arrayFlagString};");
                 }
                 else if (kvp.Value.Equals("Resource", StringComparison.Ordinal))
                 {
-                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: FhirResource{arrayFlagString};");
+                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: FhirResource{arrayFlagString}{optionalSuffixString};");
                 }
                 else
                 {
-                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString}{optionalSuffixString};");
                 }
 
                 if (RequiresExtension(kvp.Value))
                 {
-                    _writer.WriteLineIndented($"_{kvp.Key}?: Element{arrayFlagString};");
+                    _writer.WriteLineIndented($"_{kvp.Key}?: Element{arrayFlagString} | undefined;");
                 }
             }
         }

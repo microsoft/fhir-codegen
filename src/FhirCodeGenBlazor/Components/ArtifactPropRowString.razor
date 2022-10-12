@@ -1,0 +1,20 @@
+﻿<tr>
+    <td><strong>@Name</strong></td>
+    <td>@Value</td>
+</tr>
+@*<div class="m-0 mb-1 row">
+    <label for="@Id" class="col-sm-2 col-form-label">@Label</label>
+    <div class="col-sm-10">
+        <input type="text" readonly class="form-control" id="@Id" value="@Value">
+    </div>
+</div>
+*@
+@code {
+    /// <summary>Gets or sets the property name.</summary>
+    [Parameter]
+    public string Name { get; set; } = string.Empty;
+
+    /// <summary>Gets or sets the value.</summary>
+    [Parameter]
+    public string Value { get; set; } = string.Empty;
+}

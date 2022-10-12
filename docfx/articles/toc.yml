@@ -1,8 +1,12 @@
 - name: Introduction
   href: intro.md
-- name: CLI
+- name: Export Languages
+  href: languages.md
+- name: Extending
+  href: extending.md
+- name: Blazor UI
+  href: blazorui.md
+- name: Command Line
   href: cli.md
 - name: Testing
   href: test.md
-- name: Extending
-  href: extending.md

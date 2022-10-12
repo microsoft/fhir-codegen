@@ -2,11 +2,8 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-using System;
-using System.Collections.Generic;
+
 using System.IO;
-using System.Linq;
-using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.OpenApi;
@@ -14,7 +11,8 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
-using Newtonsoft.Json;
+using Microsoft.VisualBasic;
+using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirServerResourceInfo;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -53,6 +51,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>True to explicit FHIR XML.</summary>
         private bool _fhirXml = false;
+
+        /// <summary>True to patch JSON.</summary>
+        private bool _patchJson = false;
+
+        /// <summary>True to patch XML.</summary>
+        private bool _patchXml = false;
+
+        /// <summary>True to patch FHIR JSON.</summary>
+        private bool _patchFhirJson = false;
+
+        /// <summary>True to patch FHIR XML.</summary>
+        private bool _patchFhirXml = false;
+
+        /// <summary>The search support.</summary>
+        private FhirServerResourceInfo.SearchSupportCodes _searchSupport = FhirServerResourceInfo.SearchSupportCodes.Both;
+
+        /// <summary>The search parameter location.</summary>
+        private FhirServerResourceInfo.SearchPostParameterLocationCodes _searchParamLoc = SearchPostParameterLocationCodes.Body;
+
+        private Dictionary<string, OpenApiParameter> _commonParameters;
 
         /// <summary>True to single response code.</summary>
         private bool _singleResponseCode = false;
@@ -158,6 +176,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The reserved words.</value>
         private static readonly HashSet<string> _reservedWords = new HashSet<string>();
 
+        /// <summary>The HTTP response descriptions.</summary>
+        private static readonly Dictionary<int, string> _httpResponseDescriptions = new()
+        {
+            { 200, "OK" },
+            { 201, "CREATED" },
+            { 202, "ACCEPTED" },
+            { 204, "NO CONTENT" },
+            { 400, "BAD REQUEST" },
+            { 401, "NOT AUTHORIZED" },
+            { 404, "NOT FOUND" },
+            { 405, "METHOD NOT ALLOWED" },
+            { 409, "CONFLICT" },
+            { 410, "GONE" },
+            { 412, "CONFLICT" },
+            { 422, "UNPROCESSABLE" },
+        };
+
         /// <summary>Gets the name of the language.</summary>
         /// <value>The name of the language.</value>
         string ILanguage.LanguageName => _languageName;
@@ -206,6 +241,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "ExpandReferences", "If types should expand through references (true|false)" },
             { "FhirJson", "If paths should explicitly support FHIR+JSON (true|false)." },
             { "FhirXml", "If paths should explicitly support FHIR+XML (false|true)." },
+
+            { "PatchJson", "If PATCH operations should explicitly support json-patch (false|true)." },
+            { "PatchXml", "If PATCH operations should explicitly support XML-patch (false|true)." },
+            { "PatchFhir", "If PATCH operations should explicitly support FHIR types (true|false)." },
+
+            { "SearchSupport", "Supported search methods (both|get|post|none)." },
+            { "SearchPostParams", "Where search params should appear in post-based search (body|query|both|none)." },
+
+            //{ "ModelOnlyObjects", "If all models should be reduced to 'object' (false|true)." },
+
             { "History", "If _history GET operations should be included (false|true)" },
             { "MaxRecurisions", "Maximum depth to expand recursions (0)." },
             { "Metadata", "If the JSON should include a link to /metadata (false|true)." },
@@ -264,6 +309,54 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _expandReferences = _options.GetParam("ExpandReferences", true);
             _fhirJson = _options.GetParam("FhirJson", true);
             _fhirXml = _options.GetParam("FhirXml", false);
+
+            _patchJson = _options.GetParam("PatchJson", false);
+            _patchXml = _options.GetParam("PatchXml", false);
+            _patchFhirJson = _options.GetParam("PatchFhir", true) && _fhirJson;
+            _patchFhirXml = _options.GetParam("PatchFhir", true) && _fhirXml;
+
+            string searchSupport = _options.GetParam("SearchSupport", "both");
+            switch (searchSupport.ToUpperInvariant())
+            {
+                case "NONE":
+                    _searchSupport = FhirServerResourceInfo.SearchSupportCodes.None;
+                    break;
+
+                case "GET":
+                    _searchSupport = FhirServerResourceInfo.SearchSupportCodes.Get;
+                    break;
+
+                case "POST":
+                    _searchSupport = FhirServerResourceInfo.SearchSupportCodes.Post;
+                    break;
+
+                default:
+                case "BOTH":
+                    _searchSupport = FhirServerResourceInfo.SearchSupportCodes.Both;
+                    break;
+            }
+
+            string postParamLoc = _options.GetParam("SearchPostParams", "body");
+            switch (postParamLoc.ToUpperInvariant())
+            {
+                case "NONE":
+                    _searchParamLoc = SearchPostParameterLocationCodes.None;
+                    break;
+
+                case "BOTH":
+                    _searchParamLoc = SearchPostParameterLocationCodes.Both;
+                    break;
+
+                case "QUERY":
+                    _searchParamLoc = SearchPostParameterLocationCodes.Query;
+                    break;
+
+                default:
+                case "BODY":
+                    _searchParamLoc = SearchPostParameterLocationCodes.Body;
+                    break;
+            }
+
             _includeHistory = _options.GetParam("History", false);
             _maxRecursions = _options.GetParam("MaxRecursions", 0);
             _includeMetadata = _options.GetParam("Metadata", false);
@@ -337,11 +430,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             document.Components = new OpenApiComponents();
 
-            document.Components.Parameters = new Dictionary<string, OpenApiParameter>()
+            _commonParameters = new Dictionary<string, OpenApiParameter>()
             {
                 ["id"] = BuildPathIdParameter(),
-                ["_format"] = BuildFormatParameter(),
+                ["vid"] = BuildPathVidParameter(),
+                ["_format"] = BuildStringParameter("_format", "Override the HTTP content negotiation"),
+                ["_pretty"] = BuildStringParameter("_pretty", "Ask for a pretty printed response for human convenience"),
+                ["_summary"] = BuildSummaryParameter(),
+                ["_elements"] = BuildStringParameter("_elements", "Ask for a particular set of elements to be returned"),
+                ["_content"] = BuildStringParameter("_content", "Search on the entire content of the resource"),
+                ["_id"] = BuildStringParameter("_id", "Logical id of this artifact"),
+                ["_in"] = BuildStringParameter("_in", "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List"),
+                ["_language"] = BuildStringParameter("_language", "Language of the resource content"),
+                ["_lastUpdated"] = BuildStringParameter("_lastUpdated", "When the resource version last changed"),
+                ["_list"] = BuildStringParameter("_list", "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists"),
+                ["_profile"] = BuildStringParameter("_profile", "Profiles this resource claims to conform to"),
+                ["_query"] = BuildStringParameter("_query", "A custom search profile that describes a specific defined query operation"),
+                ["_security"] = BuildStringParameter("_security", "Security Labels applied to this resource"),
+                ["_source"] = BuildStringParameter("_source", "Identifies where the resource comes from"),
+                ["_tag"] = BuildStringParameter("_tag", "Tags applied to this resource"),
+                ["_type"] = BuildStringParameter("_type", "A resource type filter"),
             };
+
+            document.Components.Parameters = _commonParameters;
 
             if (_includeSchemas && (!_inlineSchemas))
             {
@@ -356,13 +467,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             // create a filename for writing (single file for now)
-            string filename = Path.Combine(exportDirectory, $"OpenApi_R{info.MajorVersion}_v{_openApiVersion}.json");
+            string filename = Path.Combine(exportDirectory, $"OpenApi_{info.FhirSequence}_v{_openApiVersion}.json");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (StreamWriter sw = new StreamWriter(stream))
             {
                 // OpenApiYamlWriter writer = new OpenApiYamlWriter(sw);
-                OpenApiJsonWriter writer = new OpenApiJsonWriter(sw);
+                OpenApiJsonWriter writer = new OpenApiJsonWriter(sw, new OpenApiJsonWriterSettings() { Terse = minify });
 
                 if (_openApiVersion == 2)
                 {
@@ -372,15 +483,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     document.Serialize(writer, OpenApiSpecVersion.OpenApi3_0);
                 }
-            }
-
-            if (minify)
-            {
-                object obj = JsonConvert.DeserializeObject(File.ReadAllText(filename));
-
-                File.Delete(filename);
-
-                File.WriteAllText(filename, JsonConvert.SerializeObject(obj, Formatting.None));
             }
         }
 
@@ -416,7 +518,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>A string.</returns>
         private string BuildTypeNameFromPath(string type)
         {
-            if (_info.MajorVersion == 2)
+            if (_info.FhirSequence == FhirPackageCommon.FhirSequenceEnum.DSTU2)
             {
                 switch (type)
                 {
@@ -846,196 +948,707 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                OpenApiPathItem typePath = new OpenApiPathItem()
-                {
-                    Operations = new Dictionary<OperationType, OpenApiOperation>(),
-                };
-
-                OpenApiPathItem instancePath = new OpenApiPathItem()
-                {
-                    Operations = new Dictionary<OperationType, OpenApiOperation>(),
-                };
-
-                OpenApiPathItem historyTypePath = new OpenApiPathItem()
-                {
-                    Operations = new Dictionary<OperationType, OpenApiOperation>(),
-                };
-
-                OpenApiPathItem historyInstancePath = new OpenApiPathItem()
-                {
-                    Operations = new Dictionary<OperationType, OpenApiOperation>(),
-                };
+                Dictionary<string, Dictionary<OperationType, OpenApiOperation>> opsByMethodByPath = new();
 
                 foreach (FhirServerResourceInfo.FhirInteraction interaction in resource.Interactions)
                 {
                     switch (interaction)
                     {
                         case FhirServerResourceInfo.FhirInteraction.Read:
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}",
+                                OperationType.Get,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                true,
+                                false,
+                                new int[] { 200, 410, 404 },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                null);
+
+                            break;
+
                         case FhirServerResourceInfo.FhirInteraction.VRead:
-                            {
-                                if (instancePath.Operations.ContainsKey(OperationType.Get))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = BuildPathOperation(
-                                    OperationType.Get,
-                                    resource.ResourceType,
-                                    true);
-
-                                instancePath.Operations.Add(
-                                    OperationType.Get,
-                                    op);
-                            }
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}/_history/{{vid}}",
+                                OperationType.Get,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                true,
+                                true,
+                                new int[] { 200, 410, 404 },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                null);
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.HistoryInstance:
+                            if (!_includeHistory)
                             {
-                                if (!_includeHistory)
-                                {
-                                    continue;
-                                }
-
-                                if (historyInstancePath.Operations.ContainsKey(OperationType.Get))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = BuildPathOperation(
-                                    OperationType.Get,
-                                    resource.ResourceType,
-                                    true);
-
-                                historyInstancePath.Operations.Add(
-                                    OperationType.Get,
-                                    op);
+                                continue;
                             }
+
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}/_history",
+                                OperationType.Get,
+                                $"{interaction}{resource.ResourceType}",
+                                $"History of a {resource.ResourceType} instance",
+                                $"Get the history of a {resource.ResourceType} instance",
+                                true,
+                                false,
+                                new int[] { 200, 410, 404 },
+                                resource.ResourceType,
+                                true,
+                                false,
+                                null,
+                                null);
+
+                            break;
+
+                        case FhirServerResourceInfo.FhirInteraction.HistoryType:
+                            if (!_includeHistory)
+                            {
+                                continue;
+                            }
+
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/_history",
+                                OperationType.Get,
+                                $"{interaction}{resource.ResourceType}",
+                                $"History of all {resource.ResourceType}s",
+                                $"Get the history of all {resource.ResourceType} instances",
+                                false,
+                                false,
+                                new int[] { 200, 410, 404 },
+                                resource.ResourceType,
+                                true,
+                                true,
+                                resource.SearchParameters.Values,
+                                null);
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.Patch:
-                        case FhirServerResourceInfo.FhirInteraction.Update:
-
                             if (_generateReadOnly)
                             {
                                 continue;
                             }
 
-                            if (!instancePath.Operations.ContainsKey(OperationType.Put))
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}",
+                                OperationType.Patch,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                true,
+                                false,
+                                new int[] { 200, 400, 401, 404, 412, },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                new OpenApiRequestBody()
+                                {
+                                    Content = BuildContentMapForPatch(resource.ResourceType),
+                                    Description = _includeDescriptions ? $"A {resource.ResourceType}" : null,
+                                });
+
+                            break;
+
+                        case FhirServerResourceInfo.FhirInteraction.Update:
+                            if (_generateReadOnly)
                             {
-                                instancePath.Operations.Add(
-                                    OperationType.Put,
-                                    BuildPathOperation(OperationType.Put, resource.ResourceType, true));
+                                continue;
                             }
+
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}",
+                                OperationType.Put,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                true,
+                                false,
+                                new int[] { 200, 400, 401, 404, 405, 409, 412, 422, },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                new OpenApiRequestBody()
+                                {
+                                    Required = true,
+                                    Content = BuildContentMap(resource.ResourceType, false),
+                                    Description = _includeDescriptions ? $"A {resource.ResourceType}" : null,
+                                });
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.Create:
-
                             if (_generateReadOnly)
                             {
                                 continue;
                             }
 
-                            if (!typePath.Operations.ContainsKey(OperationType.Put))
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}",
+                                OperationType.Post,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                false,
+                                false,
+                                new int[] { 200, 400, 404, 422, },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                new OpenApiRequestBody()
+                                {
+                                    Required = true,
+                                    Content = BuildContentMap(resource.ResourceType, false),
+                                    Description = _includeDescriptions ? $"A {resource.ResourceType}" : null,
+                                });
+
+                            if (resource.ConditionalCreate == true)
                             {
-                                typePath.Operations.Add(
+                                AddPath(
+                                    opsByMethodByPath,
+                                    $"/{resource.ResourceType}",
                                     OperationType.Put,
-                                    BuildPathOperation(OperationType.Put, resource.ResourceType, false));
+                                    $"ConditionalCreate{resource.ResourceType}",
+                                    $"Conditionally Create a {resource.ResourceType} instance",
+                                    $"Conditionally Create a {resource.ResourceType} instance",
+                                    false,
+                                    false,
+                                    new int[] { 200, 400, 404, 412, },
+                                    resource.ResourceType,
+                                    false,
+                                    true,
+                                    resource.SearchParameters.Values,
+                                    new OpenApiRequestBody()
+                                    {
+                                        Required = true,
+                                        Content = BuildContentMap(resource.ResourceType, false),
+                                        Description = _includeDescriptions ? $"A {resource.ResourceType}" : null,
+                                    });
                             }
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.Delete:
-
                             if (_generateReadOnly)
                             {
                                 continue;
                             }
 
-                            if (!instancePath.Operations.ContainsKey(OperationType.Delete))
+                            AddPath(
+                                opsByMethodByPath,
+                                $"/{resource.ResourceType}/{{id}}",
+                                OperationType.Delete,
+                                $"{interaction}{resource.ResourceType}",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                $"{interaction} a {resource.ResourceType} instance",
+                                true,
+                                false,
+                                new int[] { 200, 202, 204, 400, 401, 404, 405, 409, },
+                                resource.ResourceType,
+                                false,
+                                false,
+                                null,
+                                null);
+
+                            if ((resource.ConditionalDelete == ConditionalDeletePolicy.Single) ||
+                                (resource.ConditionalDelete == ConditionalDeletePolicy.Multiple))
                             {
-                                instancePath.Operations.Add(
+                                AddPath(
+                                    opsByMethodByPath,
+                                    $"/{resource.ResourceType}",
                                     OperationType.Delete,
-                                    BuildPathOperation(OperationType.Delete, resource.ResourceType, true));
+                                    $"ConditionalDelete{resource.ResourceType}",
+                                    $"Conditionally Delete a {resource.ResourceType} instance",
+                                    $"Conditionally Delete a {resource.ResourceType} instance",
+                                    false,
+                                    false,
+                                    new int[] { 200, 202, 204, 400, 404, 412, },
+                                    resource.ResourceType,
+                                    false,
+                                    true,
+                                    resource.SearchParameters.Values,
+                                    null);
                             }
 
                             break;
 
                         case FhirServerResourceInfo.FhirInteraction.SearchType:
+
+                            if ((_searchSupport == SearchSupportCodes.Both) || (_searchSupport == SearchSupportCodes.Get))
                             {
-                                if (typePath.Operations.ContainsKey(OperationType.Get))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = BuildPathOperation(
+                                AddPath(
+                                    opsByMethodByPath,
+                                    $"/{resource.ResourceType}",
                                     OperationType.Get,
+                                    $"SearchGet{resource.ResourceType}",
+                                    $"Search {resource.ResourceType}s",
+                                    $"Search across all {resource.ResourceType} instances",
+                                    false,
+                                    false,
+                                    new int[] { 200, 400, 401, 405, },
                                     resource.ResourceType,
-                                    false);
-
-                                AddOperationParameters(_serverInfo.ServerSearchParameters.Values, op);
-                                AddOperationParameters(resource.SearchParameters.Values, op);
-
-                                typePath.Operations.Add(
-                                    OperationType.Get,
-                                    op);
+                                    false,
+                                    true,
+                                    resource.SearchParameters.Values,
+                                    null);
                             }
 
-                            break;
-
-                        case FhirServerResourceInfo.FhirInteraction.HistoryType:
+                            if ((_searchSupport == SearchSupportCodes.Both) || (_searchSupport == SearchSupportCodes.Post))
                             {
-                                if (!_includeHistory)
-                                {
-                                    continue;
-                                }
-
-                                if (historyTypePath.Operations.ContainsKey(OperationType.Get))
-                                {
-                                    continue;
-                                }
-
-                                OpenApiOperation op = BuildPathOperation(
-                                    OperationType.Get,
+                                AddPath(
+                                    opsByMethodByPath,
+                                    $"/{resource.ResourceType}/_search",
+                                    OperationType.Post,
+                                    $"SearchPost{resource.ResourceType}",
+                                    $"Search {resource.ResourceType}s",
+                                    $"Search across all {resource.ResourceType} instances",
+                                    false,
+                                    false,
+                                    new int[] { 200, 400, 401, 405, },
                                     resource.ResourceType,
-                                    false);
-
-                                AddOperationParameters(_serverInfo.ServerSearchParameters.Values, op);
-                                AddOperationParameters(resource.SearchParameters.Values, op);
-
-                                historyTypePath.Operations.Add(
-                                    OperationType.Get,
-                                    op);
+                                    false,
+                                    true,
+                                    resource.SearchParameters.Values,
+                                    new OpenApiRequestBody()
+                                    {
+                                        Content = new Dictionary<string, OpenApiMediaType>()
+                                            {
+                                                { "application/x-www-form-urlencoded", new OpenApiMediaType() },
+                                            },
+                                        Description = _includeDescriptions ? "Search parameters" : null,
+                                    });
                             }
 
                             break;
                     }
+
+                    // check for a server only listing their operations at the end
+                    //if (!resource.Operations.Any())
+                    //{
+                    //}
+
+                    // TODO(ginoc): Operations in the CS do not indicate if they are instance or type level...
+                    //  Need to see if we can figure out the source of the operation (based on definition) and
+                    //  use that to create the definition.  Need path location and parameters.
+                    //foreach (FhirServerOperation serverOp in resource.Operations.Values)
+                    //{
+                    //    if (string.IsNullOrEmpty(serverOp.DefinitionCanonical))
+                    //    {
+                    //        continue;
+                    //    }
+
+                    //    if ((!_info.TryGetArtifact(
+                    //            serverOp.DefinitionCanonical,
+                    //            out object artifact,
+                    //            out FhirArtifactClassEnum artifactClass,
+                    //            out string resolvedPackage)) &&
+                    //        (!FhirManager.Current.TryResolveCanonical(
+                    //            _info.FhirSequence,
+                    //            serverOp.DefinitionCanonical,
+                    //            out artifactClass,
+                    //            out artifact)))
+                    //    {
+                    //        continue;
+                    //    }
+
+                    //    FhirOperation fhirOp = (FhirOperation)artifact;
+
+                    //    string path = $"/{resource.ResourceType}";
+                    //    OperationType ot = OperationType.Post;
+
+                    //    if (!opsByMethodByPath.ContainsKey(path))
+                    //    {
+                    //        opsByMethodByPath.Add(path, new());
+                    //    }
+
+                    //    if (opsByMethodByPath[path].ContainsKey(ot))
+                    //    {
+                    //        continue;
+                    //    }
+
+                    //    OpenApiOperation op = new();
+                    //    AddOperationBasicProps(
+                    //        op,
+                    //        $"{FhirInteraction.Operation}{fhirOp}",
+                    //        $"{FhirInteraction.Operation} a {resource.ResourceType} instance",
+                    //        $"{FhirInteraction.Operation} a {resource.ResourceType} instance",
+                    //        false,
+                    //        false);
+
+                    //    op.RequestBody = new OpenApiRequestBody()
+                    //    {
+                    //        Content = BuildContentMap(resource.ResourceType, false),
+                    //        Description = _includeDescriptions ? $"A {resource.ResourceType}" : null,
+                    //    };
+
+                    //    if (_singleResponseCode)
+                    //    {
+                    //        op.Responses = new OpenApiResponses()
+                    //        {
+                    //            ["200"] = new OpenApiResponse()
+                    //            {
+                    //                Description = "OK",
+                    //                Content = BuildContentMap(resource.ResourceType, false),
+                    //            },
+                    //        };
+                    //    }
+                    //    else
+                    //    {
+                    //        op.Responses = new OpenApiResponses()
+                    //        {
+                    //            ["200"] = new OpenApiResponse()
+                    //            {
+                    //                Description = "OK",
+                    //                Content = BuildContentMap(resource.ResourceType, false),
+                    //            },
+                    //            ["201"] = new OpenApiResponse()
+                    //            {
+                    //                Description = "CREATED",
+                    //                Content = BuildContentMap(resource.ResourceType, false),
+                    //            },
+                    //            ["400"] = new OpenApiResponse()
+                    //            {
+                    //                Description = "BAD REQUEST",
+                    //            },
+                    //            ["401"] = new OpenApiResponse()
+                    //            {
+                    //                Description = "NOT AUTHORIZED",
+                    //            },
+                    //            ["404"] = new OpenApiResponse()
+                    //            {
+                    //                Description = "NOT FOUND",
+                    //            },
+                    //            ["405"] = new OpenApiResponse()
+                    //            {
+                    //                Description = "METHOD NOT ALLOWED",
+                    //            },
+                    //            ["412"] = new OpenApiResponse()
+                    //            {
+                    //                Description = "CONFLICT",
+                    //            },
+                    //            ["422"] = new OpenApiResponse()
+                    //            {
+                    //                Description = "UNPROCESSABLE",
+                    //            },
+                    //        };
+                    //    }
+
+                    //    opsByMethodByPath[path].Add(ot, op);
+                    //}
                 }
 
-                if (typePath.Operations.Count > 0)
-                {
-                    paths.Add($"/{resource.ResourceType}", typePath);
-                }
+                //foreach (FhirServerOperation serverOp in _serverInfo.ServerOperations.Values)
+                //{
+                //    if (string.IsNullOrEmpty(serverOp.DefinitionCanonical))
+                //    {
+                //        continue;
+                //    }
 
-                if (historyTypePath.Operations.Count > 0)
-                {
-                    paths.Add($"/{resource.ResourceType}/_history", historyTypePath);
-                }
+                //    if ((!_info.TryGetArtifact(
+                //            serverOp.DefinitionCanonical,
+                //            out object artifact,
+                //            out FhirArtifactClassEnum artifactClass,
+                //            out string resolvedPackage)) &&
+                //        (!FhirManager.Current.TryResolveCanonical(
+                //            _info.FhirSequence,
+                //            serverOp.DefinitionCanonical,
+                //            out artifactClass,
+                //            out artifact)))
+                //    {
+                //        continue;
+                //    }
 
-                if (instancePath.Operations.Count > 0)
-                {
-                    paths.Add($"/{resource.ResourceType}/{{id}}", instancePath);
-                }
+                //    if (!(artifact is FhirOperation fhirOp))
+                //    {
+                //        continue;
+                //    }
 
-                if (historyInstancePath.Operations.Count > 0)
+                //    string path = string.Empty;
+                //    OperationType ot = OperationType.Post;
+
+                //    if (!opsByMethodByPath.ContainsKey(path))
+                //    {
+                //        opsByMethodByPath.Add(path, new());
+                //    }
+
+                //    if (opsByMethodByPath[path].ContainsKey(ot))
+                //    {
+                //        continue;
+                //    }
+
+                //    OpenApiOperation op = new();
+                //    AddOperationBasicProps(
+                //        op,
+                //        $"{FhirInteraction.Operation}{fhirOp.Id}",
+                //        $"{FhirInteraction.Operation} {fhirOp.Name}",
+                //        $"{FhirInteraction.Operation} {fhirOp.Name}",
+                //        false,
+                //        false);
+
+                //    string opInput;
+                //    string opOutput;
+
+
+                //    op.RequestBody = new OpenApiRequestBody()
+                //    {
+                //        Content = BuildContentMap("Parameters", false),
+                //        Description = _includeDescriptions ? $"A Parameters" : null,
+                //    };
+
+                //    if (_singleResponseCode)
+                //    {
+                //        op.Responses = new OpenApiResponses()
+                //        {
+                //            ["200"] = new OpenApiResponse()
+                //            {
+                //                Description = "OK",
+                //                Content = BuildContentMap(resource.ResourceType, false),
+                //            },
+                //        };
+                //    }
+                //    else
+                //    {
+                //        op.Responses = new OpenApiResponses()
+                //        {
+                //            ["200"] = new OpenApiResponse()
+                //            {
+                //                Description = "OK",
+                //                Content = BuildContentMap(resource.ResourceType, false),
+                //            },
+                //            ["201"] = new OpenApiResponse()
+                //            {
+                //                Description = "CREATED",
+                //                Content = BuildContentMap(resource.ResourceType, false),
+                //            },
+                //            ["400"] = new OpenApiResponse()
+                //            {
+                //                Description = "BAD REQUEST",
+                //            },
+                //            ["401"] = new OpenApiResponse()
+                //            {
+                //                Description = "NOT AUTHORIZED",
+                //            },
+                //            ["404"] = new OpenApiResponse()
+                //            {
+                //                Description = "NOT FOUND",
+                //            },
+                //            ["405"] = new OpenApiResponse()
+                //            {
+                //                Description = "METHOD NOT ALLOWED",
+                //            },
+                //            ["412"] = new OpenApiResponse()
+                //            {
+                //                Description = "CONFLICT",
+                //            },
+                //            ["422"] = new OpenApiResponse()
+                //            {
+                //                Description = "UNPROCESSABLE",
+                //            },
+                //        };
+                //    }
+
+                //    opsByMethodByPath[path].Add(ot, op);
+                //}
+
+                foreach ((string path, Dictionary<OperationType, OpenApiOperation> opsByType) in opsByMethodByPath)
                 {
-                    paths.Add($"/{resource.ResourceType}/{{id}}/_history", historyInstancePath);
+                    OpenApiPathItem pathItem = new()
+                    {
+                        Operations = opsByType,
+                        Parameters = new List<OpenApiParameter>(),
+                    };
+
+                    pathItem.Parameters.Add(BuildReferencedParameter("_format"));
+                    pathItem.Parameters.Add(BuildReferencedParameter("_pretty"));
+                    pathItem.Parameters.Add(BuildReferencedParameter("_summary"));
+                    pathItem.Parameters.Add(BuildReferencedParameter("_elements"));
+
+                    paths.Add(path, pathItem);
                 }
             }
 
             return paths;
+        }
+
+        /// <summary>Adds a path.</summary>
+        /// <param name="opsByMethodByPath">        Full pathname of the ops by method by file.</param>
+        /// <param name="path">                     Full pathname of the file.</param>
+        /// <param name="ot">                       The ot.</param>
+        /// <param name="operationId">              Identifier for the operation.</param>
+        /// <param name="summary">                  The summary.</param>
+        /// <param name="description">              The description.</param>
+        /// <param name="includeIdParam">           True to include, false to exclude the identifier
+        ///  parameter.</param>
+        /// <param name="includeVidParam">          True to include, false to exclude the vid parameter.</param>
+        /// <param name="responseCodes">            The response codes.</param>
+        /// <param name="returnType">               Type of the return.</param>
+        /// <param name="wrapReturnInBundle">       True to wrap return in bundle.</param>
+        /// <param name="includeServerSearchParams">True to include, false to exclude the server search
+        ///  parameters.</param>
+        /// <param name="opSearchParams">           Options for controlling the operation search.</param>
+        /// <param name="body">                     The body.</param>
+        private void AddPath(
+            Dictionary<string, Dictionary<OperationType, OpenApiOperation>> opsByMethodByPath,
+            string path,
+            OperationType ot,
+            string operationId,
+            string summary,
+            string description,
+            bool includeIdParam,
+            bool includeVidParam,
+            int[] responseCodes,
+            string returnType,
+            bool wrapReturnInBundle,
+            bool includeServerSearchParams,
+            IEnumerable<FhirServerSearchParam> opSearchParams,
+            OpenApiRequestBody body)
+        {
+            if (!opsByMethodByPath.ContainsKey(path))
+            {
+                opsByMethodByPath.Add(path, new());
+            }
+
+            if (opsByMethodByPath[path].ContainsKey(ot))
+            {
+                return;
+            }
+
+            if ((responseCodes == null) || (responseCodes.Length == 0))
+            {
+                return;
+            }
+
+            OpenApiOperation op = new();
+            AddOperationBasicProps(
+                op,
+                operationId,
+                summary,
+                description,
+                includeIdParam,
+                includeVidParam);
+
+            if (body != null)
+            {
+                op.RequestBody = body;
+            }
+
+            if (includeServerSearchParams)
+            {
+                if ((ot != OperationType.Post) ||
+                    (_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
+                    (_searchParamLoc == SearchPostParameterLocationCodes.Query))
+                {
+                    AddOperationParameters(_serverInfo.ServerSearchParameters.Values, op);
+                }
+
+                if ((ot == OperationType.Post) &&
+                    ((_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
+                     (_searchParamLoc == SearchPostParameterLocationCodes.Body)))
+                {
+                    AddOperationParametersToBody(
+                        op.RequestBody.Content["application/x-www-form-urlencoded"],
+                        _serverInfo.ServerSearchParameters.Values);
+                }
+            }
+
+            if (opSearchParams != null)
+            {
+                if ((ot != OperationType.Post) ||
+                    (_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
+                    (_searchParamLoc == SearchPostParameterLocationCodes.Query))
+                {
+                    AddOperationParameters(opSearchParams, op);
+                }
+
+                if ((ot == OperationType.Post) &&
+                    ((_searchParamLoc == SearchPostParameterLocationCodes.Both) ||
+                     (_searchParamLoc == SearchPostParameterLocationCodes.Body)))
+                {
+                    AddOperationParametersToBody(
+                        op.RequestBody.Content["application/x-www-form-urlencoded"],
+                        opSearchParams);
+                }
+            }
+
+            op.Responses = new OpenApiResponses();
+
+            if (_singleResponseCode)
+            {
+                switch (responseCodes[0])
+                {
+                    case 200:
+                    case 201:
+                        op.Responses.Add(
+                            responseCodes[0].ToString(),
+                            new OpenApiResponse()
+                            {
+                                Description = _httpResponseDescriptions[responseCodes[0]],
+                                Content = BuildContentMap(returnType, wrapReturnInBundle),
+                            });
+                        break;
+
+                    default:
+                        op.Responses.Add(
+                            responseCodes[0].ToString(),
+                            new OpenApiResponse()
+                            {
+                                Description = _httpResponseDescriptions[responseCodes[0]],
+                            });
+                        break;
+                }
+            }
+            else
+            {
+                foreach (int code in responseCodes)
+                {
+                    switch (code)
+                    {
+                        case 200:
+                        case 201:
+                            op.Responses.Add(
+                                code.ToString(),
+                                new OpenApiResponse()
+                                {
+                                    Description = _httpResponseDescriptions[code],
+                                    Content = BuildContentMap(returnType, wrapReturnInBundle),
+                                });
+                            break;
+
+                        default:
+                            op.Responses.Add(
+                                code.ToString(),
+                                new OpenApiResponse()
+                                {
+                                    Description = _httpResponseDescriptions[code],
+                                });
+                            break;
+                    }
+                }
+            }
+
+            opsByMethodByPath[path].Add(ot, op);
         }
 
         /// <summary>Adds requested operation parameters to a given OpenApiOperation.</summary>
@@ -1047,6 +1660,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             foreach (FhirServerSearchParam sp in searchParameters)
             {
+                if (_commonParameters.ContainsKey(sp.Name))
+                {
+                    op.Parameters.Add(BuildReferencedParameter(sp.Name));
+                    continue;
+                }
+
                 OpenApiParameter opParam = new OpenApiParameter()
                 {
                     Name = sp.Name,
@@ -1088,61 +1707,117 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
-        /// <summary>Builds path identifier parameter.</summary>
+        /// <summary>Adds an operation parameters to body to 'searchParameters'.</summary>
+        /// <param name="mt">              The mt.</param>
+        /// <param name="searchParameters">Options for controlling the search.</param>
+        private void AddOperationParametersToBody(
+            OpenApiMediaType mt,
+            IEnumerable<FhirServerSearchParam> searchParameters)
+        {
+            mt.Schema = new OpenApiSchema();
+
+            foreach (FhirServerSearchParam sp in searchParameters)
+            {
+                switch (sp.ParameterType)
+                {
+                    case FhirServerSearchParam.SearchParameterType.Number:
+                        mt.Schema.Properties.Add(sp.Name, new OpenApiSchema()
+                            {
+                                Title = sp.Name,
+                                Type = "number",
+                            });
+                        break;
+
+                    case FhirServerSearchParam.SearchParameterType.Date:
+                    case FhirServerSearchParam.SearchParameterType.String:
+                    case FhirServerSearchParam.SearchParameterType.Token:
+                    case FhirServerSearchParam.SearchParameterType.Reference:
+                    case FhirServerSearchParam.SearchParameterType.Composite:
+                    case FhirServerSearchParam.SearchParameterType.Quantity:
+                    case FhirServerSearchParam.SearchParameterType.Uri:
+                    case FhirServerSearchParam.SearchParameterType.Special:
+                    default:
+                        mt.Schema.Properties.Add(sp.Name, new OpenApiSchema()
+                            {
+                                Title = sp.Name,
+                                Type = "string",
+                            });
+
+                        break;
+                }
+            }
+        }
+
+        /// <summary>Builds a required path parameter.</summary>
         /// <returns>An OpenApiParameter.</returns>
-        private static OpenApiParameter BuildReferencedPathIdParameter()
+        private static OpenApiParameter BuildReferencedPathParameter(string name)
         {
             return new OpenApiParameter()
             {
-                Name = "id",
+                Name = name,
                 Reference = new OpenApiReference()
                 {
-                    Id = "id",
+                    Id = name,
                     Type = ReferenceType.Parameter,
                 },
             };
         }
 
-        /// <summary>Builds referenced format parameter.</summary>
+        /// <summary>Builds referenced parameter.</summary>
         /// <returns>An OpenApiParameter.</returns>
-        private static OpenApiParameter BuildReferencedFormatParameter()
+        private static OpenApiParameter BuildReferencedParameter(string name)
         {
             return new OpenApiParameter()
             {
-                Name = "_format",
+                Name = name,
                 Reference = new OpenApiReference()
                 {
-                    Id = "_format",
+                    Id = name,
                     Type = ReferenceType.Parameter,
                 },
             };
         }
 
-        /// <summary>Builds format parameter.</summary>
+        /// <summary>Builds summary parameter.</summary>
         /// <returns>An OpenApiParameter.</returns>
-        private OpenApiParameter BuildFormatParameter()
+        private OpenApiParameter BuildSummaryParameter()
         {
-            OpenApiString value;
-
-            if (_fhirJson || (!_fhirXml))
-            {
-                value = new OpenApiString("application/fhir+json");
-            }
-            else
-            {
-                value = new OpenApiString("application/fhir+xml");
-            }
-
             return new OpenApiParameter()
             {
-                Name = "_format",
+                Name = "_summary",
                 In = ParameterLocation.Query,
-                Description = "Requested content type",
-                Required = true,
+                Description = "Ask for a predefined short form of the resource in response",
+                Required = false,
                 Schema = new OpenApiSchema()
                 {
                     Type = "string",
-                    Default = value,
+                    Enum = new List<IOpenApiAny>()
+                    {
+                        new OpenApiString("true"),
+                        new OpenApiString("text"),
+                        new OpenApiString("data"),
+                        new OpenApiString("count"),
+                        new OpenApiString("false"),
+                    },
+                },
+            };
+        }
+
+        /// <summary>Builds string parameter.</summary>
+        /// <param name="name">       The name.</param>
+        /// <param name="description">The description.</param>
+        /// <returns>An OpenApiParameter.</returns>
+        private OpenApiParameter BuildStringParameter(string name, string description)
+        {
+            return new OpenApiParameter()
+            {
+                Name = name,
+                In = ParameterLocation.Query,
+                Description = description,
+                Required = false,
+                Schema = new OpenApiSchema()
+                {
+                    Type = "string",
                 },
             };
         }
@@ -1156,7 +1831,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 Name = "id",
                 In = ParameterLocation.Path,
                 Description = "Resource ID",
-                Required = true,
+                //Required = true,
+                Schema = new OpenApiSchema()
+                {
+                    Type = "string",
+                },
+            };
+        }
+
+        /// <summary>Builds path vid parameter.</summary>
+        /// <returns>An OpenApiParameter.</returns>
+        private static OpenApiParameter BuildPathVidParameter()
+        {
+            return new OpenApiParameter()
+            {
+                Name = "vid",
+                In = ParameterLocation.Path,
+                Description = "Resource Version ID",
+                //Required = true,
                 Schema = new OpenApiSchema()
                 {
                     Type = "string",
@@ -1239,6 +1931,140 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         {
                             SetSchemaType(resourceName, ref schema);
                         }
+                    }
+
+                    mediaTypes.Add(
+                        "application/fhir+xml",
+                        new OpenApiMediaType()
+                        {
+                            Schema = schema,
+                        });
+                }
+            }
+
+            return mediaTypes;
+        }
+
+        /// <summary>Builds content map for patch.</summary>
+        /// <param name="resourceName">Name of the resource.</param>
+        /// <returns>A dictionary of OpenApiMediaType records, keyed by MIME type.</returns>
+        private Dictionary<string, OpenApiMediaType> BuildContentMapForPatch(string resourceName)
+        {
+            Dictionary<string, OpenApiMediaType> mediaTypes = new Dictionary<string, OpenApiMediaType>();
+
+            if (_patchJson)
+            {
+                if (string.IsNullOrEmpty(resourceName))
+                {
+                    mediaTypes.Add(
+                        "application/json-patch+json",
+                        new OpenApiMediaType());
+                }
+                else
+                {
+                    OpenApiSchema schema = new OpenApiSchema();
+                    int schemaElementCount = 1;
+
+                    if (_inlineSchemas)
+                    {
+                        BuildInlineSchema(ref schema, ref schemaElementCount, resourceName, false);
+                    }
+                    else
+                    {
+                        SetSchemaType(resourceName, ref schema);
+                    }
+
+                    mediaTypes.Add(
+                        "application/json-patch+json",
+                        new OpenApiMediaType()
+                        {
+                            Schema = schema,
+                        });
+                }
+            }
+
+            if (_patchXml)
+            {
+                if (string.IsNullOrEmpty(resourceName))
+                {
+                    mediaTypes.Add(
+                        "application/xml-patch+xml",
+                        new OpenApiMediaType());
+                }
+                else
+                {
+                    OpenApiSchema schema = new OpenApiSchema();
+                    int schemaElementCount = 1;
+
+                    if (_inlineSchemas)
+                    {
+                        BuildInlineSchema(ref schema, ref schemaElementCount, resourceName, false);
+                    }
+                    else
+                    {
+                        SetSchemaType(resourceName, ref schema);
+                    }
+
+                    mediaTypes.Add(
+                        "application/xml-patch+xml",
+                        new OpenApiMediaType()
+                        {
+                            Schema = schema,
+                        });
+                }
+            }
+
+            if (_patchFhirJson)
+            {
+                if (string.IsNullOrEmpty(resourceName))
+                {
+                    mediaTypes.Add(
+                        "application/fhir+json",
+                        new OpenApiMediaType());
+                }
+                else
+                {
+                    OpenApiSchema schema = new OpenApiSchema();
+                    int schemaElementCount = 1;
+
+                    if (_inlineSchemas)
+                    {
+                        BuildInlineSchema(ref schema, ref schemaElementCount, resourceName, false);
+                    }
+                    else
+                    {
+                        SetSchemaType(resourceName, ref schema);
+                    }
+
+                    mediaTypes.Add(
+                        "application/fhir+json",
+                        new OpenApiMediaType()
+                        {
+                            Schema = schema,
+                        });
+                }
+            }
+
+            if (_patchFhirXml)
+            {
+                if (string.IsNullOrEmpty(resourceName))
+                {
+                    mediaTypes.Add(
+                        "application/fhir+xml",
+                        new OpenApiMediaType());
+                }
+                else
+                {
+                    OpenApiSchema schema = new OpenApiSchema();
+                    int schemaElementCount = 1;
+
+                    if (_inlineSchemas)
+                    {
+                        BuildInlineSchema(ref schema, ref schemaElementCount, resourceName, false);
+                    }
+                    else
+                    {
+                        SetSchemaType(resourceName, ref schema);
                     }
 
                     mediaTypes.Add(
@@ -1671,291 +2497,52 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             schemaElementCount++;
         }
 
-        /// <summary>Builds path operation for a resource.</summary>
-        /// <param name="pathOpType">Type of the path operation.</param>
-        /// <returns>An OpenApiOperation.</returns>
-        private OpenApiOperation BuildPathOperation(
-            OperationType pathOpType,
-            string resourceName,
-            bool isInstanceLevel)
+        /// <summary>Adds an operation basic properties.</summary>
+        /// <param name="operation">      The operation.</param>
+        /// <param name="operationId">    Identifier for the operation.</param>
+        /// <param name="summary">        The summary.</param>
+        /// <param name="description">    The description.</param>
+        /// <param name="includeIdParam"> (Optional) True to include, false to exclude the identifier
+        ///  parameter.</param>
+        /// <param name="includeVidParam">(Optional) True to include, false to exclude the vid parameter.</param>
+        private void AddOperationBasicProps(
+            OpenApiOperation operation,
+            string operationId,
+            string summary,
+            string description,
+            bool includeIdParam = false,
+            bool includeVidParam = false)
         {
-            OpenApiOperation operation = new OpenApiOperation();
-
-            bool wrapInBundle;
-
-            operation.Parameters.Add(BuildReferencedFormatParameter());
-
-            if (isInstanceLevel)
+            if (includeIdParam)
             {
-                operation.OperationId = $"{pathOpType}{resourceName}";
-                operation.Parameters.Add(BuildReferencedPathIdParameter());
+                operation.Parameters.Add(BuildReferencedPathParameter("id"));
             }
-            else
+
+            if (includeVidParam)
             {
-                operation.OperationId = $"{pathOpType}{resourceName}s";
+                operation.Parameters.Add(BuildReferencedPathParameter("vid"));
             }
+
+            //operation.Parameters.Add(BuildReferencedParameter("_format"));
+            //operation.Parameters.Add(BuildReferencedParameter("_pretty"));
+            //operation.Parameters.Add(BuildReferencedParameter("_summary"));
+            //operation.Parameters.Add(BuildReferencedParameter("_elements"));
+
+            operation.OperationId = operationId;
 
             if (_includeSummaries)
             {
-                if (isInstanceLevel)
-                {
-                    operation.Summary = $"Performs a {pathOpType} on a specific {resourceName}";
-                }
-                else
-                {
-                    operation.Summary = $"Performs a {pathOpType} operation at the {resourceName} type level.";
-                }
+                operation.Summary = summary;
             }
 
             if (_includeDescriptions)
             {
-                if (isInstanceLevel)
-                {
-                    operation.Description = $"{_instanceOpPrefixes[pathOpType]} a {resourceName}";
-                }
-                else
-                {
-                    operation.Description = $"{_typeOpPrefixes[pathOpType]} {resourceName}s at the type level.";
-                }
+                operation.Description = description;
             }
-
-            switch (pathOpType)
-            {
-                case OperationType.Get:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                        wrapInBundle = false;
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                        wrapInBundle = true;
-                    }
-
-                    if (_singleResponseCode)
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["410"] = new OpenApiResponse()
-                            {
-                                Description = "DELETED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Patch:
-                case OperationType.Put:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                        wrapInBundle = false;
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                        wrapInBundle = false;
-                    }
-
-                    if (_singleResponseCode)
-                    {
-                        operation.RequestBody = new OpenApiRequestBody()
-                        {
-                            Content = BuildContentMap(resourceName, wrapInBundle),
-                            Description =
-                                _includeDescriptions
-                                ? $"A {resourceName}"
-                                : null,
-                        };
-
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, isInstanceLevel),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["201"] = new OpenApiResponse()
-                            {
-                                Description = "CREATED",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["400"] = new OpenApiResponse()
-                            {
-                                Description = "BAD REQUEST",
-                            },
-                            ["401"] = new OpenApiResponse()
-                            {
-                                Description = "NOT AUTHORIZED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                            ["405"] = new OpenApiResponse()
-                            {
-                                Description = "METHOD NOT ALLOWED",
-                            },
-                            ["409"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["412"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["422"] = new OpenApiResponse()
-                            {
-                                Description = "UNPROCESSABLE",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Post:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                        wrapInBundle = false;
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                        wrapInBundle = false;
-                    }
-
-                    if (_singleResponseCode)
-                    {
-                        operation.RequestBody = new OpenApiRequestBody()
-                        {
-                            Content = BuildContentMap(resourceName, wrapInBundle),
-                            Description =
-                                _includeDescriptions
-                                ? $"A {resourceName}"
-                                : null,
-                        };
-
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                        };
-                    }
-                    else
-                    {
-                        operation.Responses = new OpenApiResponses()
-                        {
-                            ["200"] = new OpenApiResponse()
-                            {
-                                Description = "OK",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["201"] = new OpenApiResponse()
-                            {
-                                Description = "CREATED",
-                                Content = BuildContentMap(resourceName, wrapInBundle),
-                            },
-                            ["400"] = new OpenApiResponse()
-                            {
-                                Description = "BAD REQUEST",
-                            },
-                            ["401"] = new OpenApiResponse()
-                            {
-                                Description = "NOT AUTHORIZED",
-                            },
-                            ["404"] = new OpenApiResponse()
-                            {
-                                Description = "NOT FOUND",
-                            },
-                            ["412"] = new OpenApiResponse()
-                            {
-                                Description = "CONFLICT",
-                            },
-                            ["422"] = new OpenApiResponse()
-                            {
-                                Description = "UNPROCESSABLE",
-                            },
-                        };
-                    }
-
-                    break;
-
-                case OperationType.Delete:
-                    if (isInstanceLevel)
-                    {
-                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
-                    }
-                    else
-                    {
-                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
-                    }
-
-                    operation.Responses = new OpenApiResponses()
-                    {
-                        ["204"] = new OpenApiResponse()
-                        {
-                            Description = "NO CONTENT",
-                        },
-                    };
-
-                    break;
-
-                case OperationType.Options:
-                    break;
-                case OperationType.Head:
-                    break;
-                case OperationType.Trace:
-                    break;
-                default:
-                    break;
-            }
-
-            if ((operation.Responses == null) ||
-                (operation.Responses.Count == 0))
-            {
-                return null;
-            }
-
-            return operation;
         }
 
+        /// <summary>Adds an accept header.</summary>
+        /// <param name="op">[in,out] The operation.</param>
         private void AddAcceptHeader(ref OpenApiOperation op)
         {
             if (op.Parameters == null)

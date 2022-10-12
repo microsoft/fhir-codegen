@@ -1,7 +1,8 @@
-﻿// <copyright file="CSharpBasic.cs" company="Microsoft Corporation">
+﻿// <copyright file="CSharp2.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -82,7 +83,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Sets the namespace value belongs to.</summary>
         private string _namespaceValueSets;
 
-        /// <summary>The namespace serialization.</summary>
+        /// <summary>The serialization namespace.</summary>
         private string _namespaceSerialization;
 
         /// <summary>True to include, false to exclude the summaries.</summary>
@@ -99,12 +100,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Pathname of the serialization directory.</summary>
         private string _directorySerialization;
-
-        /// <summary>True to write stream reader.</summary>
-        private bool _writeStreamReader;
-
-        /// <summary>True to write document reader.</summary>
-        private bool _writeDocReader;
 
         /// <summary>List of types of the exported resource names and types.</summary>
         private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
@@ -126,6 +121,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             { "base", "Object" },
             { "base64Binary", "byte[]" },
+            { "bool", "bool" },
+            { "bool?", "bool" },
             { "boolean", "bool" },
             { "canonical", "string" },
             { "code", "string" },
@@ -134,12 +131,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "decimal", "decimal" },
             { "id", "string" },
             { "instant", "string" },
+            { "int", "int" },
+            { "int?", "int" },
             { "integer", "int" },
             { "integer64", "long" },
             { "markdown", "string" },
             { "oid", "string" },
             { "positiveInt", "uint" },
             { "string", "string" },
+            { "string?", "string" },
             { "time", "string" },
             { "unsignedInt", "uint" },
             { "uri", "string" },
@@ -300,16 +300,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _exportEnums = false;
             }
 
-            _namespace = options.GetParam("namespace", $"Fhir.R{info.MajorVersion}");
+            _namespace = options.GetParam("namespace", $"Fhir.{info.FhirSequence}");
             _namespaceModels = _namespace + ".Models";
             _namespaceValueSets = _namespace + ".ValueSets";
             _namespaceSerialization = _namespace + ".Serialization";
 
             _includeSummaries = options.GetParam("include-summaries", true);
             _accessModifier = options.GetParam("access-modifier", "public");
-
-            _writeStreamReader = options.GetParam("stream-reader", true);
-            _writeDocReader = options.GetParam("doc-reader", false);
 
             _exportedResourceNamesAndTypes = new Dictionary<string, string>();
             _exportedCodes = new HashSet<string>();
@@ -344,6 +341,152 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             WriteJsonSerializationHelpers();
+            WriteXmlSerializationHelpers();
+        }
+
+        /// <summary>Writes the XML serialization helpers.</summary>
+        private void WriteXmlSerializationHelpers()
+        {
+            WriteXmlSerializerInterface();
+            WriteXmlSerializerOptions();
+        }
+
+        /// <summary>Writes the JSON serializer options.</summary>
+        private void WriteXmlSerializerOptions()
+        {
+            // create a filename for writing
+            string filename = Path.Combine(_directorySerialization, "FhirXmlSerializerOptions.cs");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteHeader(false, false, true);
+
+                // open namespace
+                _writer.WriteLineIndented($"namespace {_namespaceSerialization}");
+                _writer.OpenScope();
+
+                // open class
+                WriteIndentedComment("Default XmlSerializerOptions to format XML serialization as expected.");
+                _writer.WriteLineIndented($"{_accessModifier} static class FhirXmlSerializerOptions");
+                _writer.OpenScope();
+
+                _writer.WriteLine("#pragma warning disable CA1810 // Initialize reference type static fields inline");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Compact format internal variable.");
+                _writer.WriteLineIndented("private static readonly XmlWriterSettings _compactFormat;");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Pretty print format internal variable.");
+                _writer.WriteLineIndented("private static readonly XmlWriterSettings _prettyFormat;");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Parser settings internal variable.");
+                _writer.WriteLineIndented("private static readonly XmlReaderSettings _readerSettings;");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Initializes static members of the <see cref=\"FhirXmlSerializerOptions\"/> class.");
+                _writer.WriteLineIndented("static FhirXmlSerializerOptions()");
+                _writer.OpenScope();
+                _writer.WriteLineIndented("_prettyFormat = new XmlWriterSettings()");
+                _writer.OpenScope();
+                _writer.WriteLineIndented("Indent = true,");
+                _writer.WriteLineIndented("OmitXmlDeclaration = false,");
+                _writer.WriteLineIndented("NewLineOnAttributes = true,");
+                _writer.CloseScope("};");
+                _writer.WriteLine();
+                _writer.WriteLineIndented("_compactFormat = new XmlWriterSettings()");
+                _writer.OpenScope();
+                _writer.WriteLineIndented("Indent = true,");
+                _writer.WriteLineIndented("OmitXmlDeclaration = false,");
+                _writer.WriteLineIndented("NewLineOnAttributes = true,");
+                _writer.CloseScope("};");
+                _writer.WriteLine();
+                _writer.WriteLineIndented("_readerSettings = new XmlReaderSettings()");
+                _writer.OpenScope();
+                _writer.WriteLineIndented("CheckCharacters = true,");
+                _writer.WriteLineIndented("DtdProcessing = DtdProcessing.Ignore,");
+                _writer.CloseScope("};");
+
+                _writer.CloseScope();
+                _writer.WriteLine();
+
+                _writer.WriteLine("#pragma warning restore CA1810 // Initialize reference type static fields inline");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Compact (no extra whitespace) format.");
+                _writer.WriteLineIndented("public static XmlWriterSettings Compact => _compactFormat;");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Pretty-printed (newlines and indentation) format.");
+                _writer.WriteLineIndented("public static XmlWriterSettings Pretty => _prettyFormat;");
+
+                WriteIndentedComment("Default Parser settings.");
+                _writer.WriteLineIndented("public static XmlReaderSettings ParseSettings => _readerSettings;");
+
+                // close class
+                _writer.CloseScope();
+
+                // close namespace
+                _writer.CloseScope();
+
+                WriteFooter();
+            }
+        }
+
+        /// <summary>Writes the XML serializer interface.</summary>
+        private void WriteXmlSerializerInterface()
+        {
+            // create a filename for writing
+            string filename = Path.Combine(_directorySerialization, "IFhirXmlSerializable.cs");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteHeader(false, false, true);
+
+                // open namespace
+                _writer.WriteLineIndented($"namespace {_namespaceSerialization}");
+                _writer.OpenScope();
+
+                // open interface
+                WriteIndentedComment("Interface for indicating FHIR XML Serialization is possible.");
+                _writer.WriteLineIndented($"{_accessModifier} interface IFhirXmlSerializable");
+                _writer.OpenScope();
+
+                // function SerializeJson
+                WriteIndentedComment("Serialize to an XML object");
+                _writer.WriteLineIndented($"void SerializeXml(" +
+                    "XmlWriter writer, " +
+                    "XmlWriterSettings options, " +
+                    "bool includeStartObject);");
+
+                // function DeserializeXml
+                WriteIndentedComment("Parse an open XML object into the current object.");
+                _writer.WriteLineIndented($"void DeserializeXml(" +
+                    $"ref XmlReader reader, " +
+                    $"XmlReaderSettings options);");
+
+                // function DeserializeXmlProperty
+                WriteIndentedComment("Parse a specific property from an open XML object into a field in the current object.");
+                _writer.WriteLineIndented($"void DeserializeXmlProperty(" +
+                    $"ref XmlReader reader, " +
+                    $"XmlReaderSettings options, " +
+                    $"string propertyName);");
+
+                // close interface
+                _writer.CloseScope();
+
+                // close namespace
+                _writer.CloseScope();
+
+                WriteFooter();
+            }
         }
 
         /// <summary>Writes the JSON serialization helper files.</summary>
@@ -352,18 +495,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteJsonSerializerInterface();
             WriteJsonSerializerOptions();
 
-            if (_writeStreamReader)
-            {
-                WriteJsonStreamResourceConverter();
-                WriteJsonStreamComponentConverter();
-            }
+            WriteJsonStreamResourceConverter();
+            WriteJsonStreamComponentConverter();
         }
 
         /// <summary>Writes the JSON serializer options.</summary>
         private void WriteJsonSerializerOptions()
         {
             // create a filename for writing
-            string filename = Path.Combine(_directorySerialization, "FhirSerializerOptions.cs");
+            string filename = Path.Combine(_directorySerialization, "FhirJsonSerializerOptions.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -378,7 +518,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 // open class
                 WriteIndentedComment("Default JsonSerializerOptions to format JSON serialization as expected.");
-                _writer.WriteLineIndented($"{_accessModifier} static class FhirSerializerOptions");
+                _writer.WriteLineIndented($"{_accessModifier} static class FhirJsonSerializerOptions");
                 _writer.OpenScope();
 
                 _writer.WriteLine("#pragma warning disable CA1810 // Initialize reference type static fields inline");
@@ -392,8 +532,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("private static readonly JsonSerializerOptions _prettyFormat;");
                 _writer.WriteLine();
 
-                WriteIndentedComment("Initializes static members of the <see cref=\"FhirSerializerOptions\"/> class.");
-                _writer.WriteLineIndented("static FhirSerializerOptions()");
+                WriteIndentedComment("Initializes static members of the <see cref=\"FhirJsonSerializerOptions\"/> class.");
+                _writer.WriteLineIndented("static FhirJsonSerializerOptions()");
                 _writer.OpenScope();
                 _writer.WriteLineIndented("_prettyFormat = new JsonSerializerOptions();");
                 _writer.WriteLineIndented("_prettyFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;");
@@ -455,29 +595,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     "JsonSerializerOptions options, " +
                     "bool includeStartObject);");
 
-                if (_writeStreamReader)
-                {
-                    // function DeserializeJson
-                    WriteIndentedComment("Parse an open JSON object into the current object.");
-                    _writer.WriteLineIndented($"void DeserializeJson(" +
-                        $"ref Utf8JsonReader reader, " +
-                        $"JsonSerializerOptions options);");
+                // function DeserializeJson
+                WriteIndentedComment("Parse an open JSON object into the current object.");
+                _writer.WriteLineIndented($"void DeserializeJson(" +
+                    $"ref Utf8JsonReader reader, " +
+                    $"JsonSerializerOptions options);");
 
-                    // function DeserializeJsonProperty
-                    WriteIndentedComment("Parse a specific property from an open JSON object into a field in the current object.");
-                    _writer.WriteLineIndented($"void DeserializeJsonProperty(" +
-                        $"ref Utf8JsonReader reader, " +
-                        $"JsonSerializerOptions options, " +
-                        $"string propertyName);");
-                }
-
-                if (_writeDocReader)
-                {
-                    // function CreateFromJsonElements
-                    WriteIndentedComment("Load an object from a JsonElement tree.");
-                    _writer.WriteLineIndented($"void LoadFromJsonElements(" +
-                        $"JsonElement root);");
-                }
+                // function DeserializeJsonProperty
+                WriteIndentedComment("Parse a specific property from an open JSON object into a field in the current object.");
+                _writer.WriteLineIndented($"void DeserializeJsonProperty(" +
+                    $"ref Utf8JsonReader reader, " +
+                    $"JsonSerializerOptions options, " +
+                    $"string propertyName);");
 
                 // close interface
                 _writer.CloseScope();
@@ -640,7 +769,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 // loop through our types
                 foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
                 {
-                    _writer.WriteLineIndented($"case {kvp.Value} typed{kvp.Value}:");
+                    _writer.WriteLineIndented($"case {_namespaceModels}.{kvp.Value} typed{kvp.Value}:");
                     _writer.IncreaseIndent();
                     _writer.WriteLineIndented($"typed{kvp.Value}.SerializeJson(writer, options, true);");
                     _writer.WriteLineIndented("break;");
@@ -932,8 +1061,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirValueSetCollection collection in valueSets)
             {
-                foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values)
-                {
+                FhirValueSet vs = collection.ValueSetsByVersion.Values.OrderBy((vs) => vs.Version).Last();
+
+                //foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values)
+                //{
                     string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
 
                     vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
@@ -973,7 +1104,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                         WriteFooter();
                     }
-                }
+                //}
             }
         }
 
@@ -1004,12 +1135,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"{_accessModifier} static class {vsName}Codes");
             }
 
+            // class
             _writer.OpenScope();
 
             bool prefixWithSystem = vs.ReferencedCodeSystems.Count > 1;
             HashSet<string> usedValues = new HashSet<string>();
 
-            Dictionary<string, string> literals = new Dictionary<string, string>();
+            Dictionary<string, string> literals = new ();
+            Dictionary<string, string> literalsWithSystemLookup = new ();
 
             foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
             {
@@ -1027,10 +1160,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     input = concept.Code;
                 }
 
+                string codeSystem = FhirUtils.SanitizeForQuoted(concept.System);
+                string codeSystemNameSanitized = FhirUtils.SanitizeForProperty(concept.SystemLocalName, _reservedWords);
                 string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords);
                 string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
                 codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
+                codeSystemNameSanitized = FhirUtils.SanitizedToConvention(codeSystemNameSanitized, FhirTypeBase.NamingConvention.PascalCase);
 
                 string name;
 
@@ -1061,8 +1197,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 usedValues.Add(name);
 
                 literals.Add(name, codeValue);
+                literals.Add(codeSystemNameSanitized + name, codeSystem + "#" + codeValue);
+                literalsWithSystemLookup.Add(codeSystem + "#" + codeValue, name);
 
-                WriteIndentedComment(concept.Definition ?? concept.Display);
+                if (!string.IsNullOrEmpty(concept.Definition))
+                {
+                    WriteIndentedComment(concept.Definition);
+                }
+                else
+                {
+                    WriteIndentedComment(concept.Display);
+                }
 
                 if (_namesRequiringKeywordNew.Contains(name))
                 {
@@ -1074,7 +1219,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 _writer.OpenScope();
-
                 _writer.WriteLineIndented($"Code = \"{codeValue}\",");
 
                 if (!string.IsNullOrEmpty(concept.Display))
@@ -1095,8 +1239,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"public const string Literal{kvp.Key} = \"{kvp.Value}\";");
             }
 
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("};");
+            // values
+            _writer.WriteLine();
+            WriteIndentedComment($"Dictionary for looking up {vsName} Codings based on Codes");
+            _writer.OpenScope("public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {");
+            foreach (KeyValuePair<string, string> kvp in literals)
+            {
+                if (literalsWithSystemLookup.ContainsKey(kvp.Value))
+                {
+                    _writer.WriteLineIndented($"{{ \"{kvp.Value}\", {literalsWithSystemLookup[kvp.Value]} }}, ");
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"{{ \"{kvp.Value}\", {kvp.Key} }}, ");
+                }
+            }
+
+            // Values
+            _writer.CloseScope("};");
+
+            // class
+            _writer.CloseScope("};");
         }
 
         /// <summary>Writes the complexes.</summary>
@@ -1252,15 +1415,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteComplexJsonSerialization(complex, nameForExport, hasBaseClass, baseClassName, isResource);
 
-            if (_writeStreamReader)
-            {
-                WriteComplexJsonDeserialization(complex, nameForExport, hasBaseClass, baseClassName);
-            }
-
-            if (_writeDocReader)
-            {
-                WriteComplexLoadFromJsonElements(complex, nameForExport, hasBaseClass, baseClassName);
-            }
+            WriteComplexJsonDeserialization(complex, nameForExport, hasBaseClass, baseClassName);
 
             // close interface (type)
             _writer.CloseScope();
@@ -1311,6 +1466,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _writer.IncreaseIndent();
 
+            List<string> sanitizedValues = new ();
+
             if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
             {
                 foreach (FhirConcept concept in vs.Concepts)
@@ -1318,6 +1475,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
 
                     _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                    sanitizedValues.Add(value);
                 }
             }
             else
@@ -1327,7 +1485,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
                     _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                    sanitizedValues.Add(value);
                 }
+            }
+
+            if (sanitizedValues.Count > 0)
+            {
+                _writer.OpenScope("public static HashSet<string> Values = new HashSet<string>() {");
+                foreach (string value in sanitizedValues)
+                {
+                    _writer.WriteLineIndented($"\"{value}\",");
+                }
+
+                _writer.CloseScope("};");
             }
 
             _writer.DecreaseIndent();
@@ -1702,152 +1872,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLine();
         }
 
-        /// <summary>Writes a complex load from JSON elements.</summary>
-        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
-        /// <param name="complex">      The complex.</param>
-        /// <param name="nameForExport">The name for export.</param>
-        /// <param name="hasBaseClass"> True if has base class, false if not.</param>
-        /// <param name="baseClassName">Name of the base class.</param>
-        private void WriteComplexLoadFromJsonElements(
-            FhirComplex complex,
-            string nameForExport,
-            bool hasBaseClass,
-            string baseClassName)
-        {
-            WriteIndentedComment("Load from a JsonElement tree");
-
-            string keywordNew = hasBaseClass ? "new " : string.Empty;
-
-            _writer.WriteLineIndented($"{_accessModifier} {keywordNew}void LoadFromJsonElements(" +
-                "JsonElement root)");
-
-            // open LoadFromJsonElements
-            _writer.OpenScope();
-
-            if (hasBaseClass)
-            {
-                _writer.WriteLineIndented($"(({_namespaceModels}.{baseClassName})this).LoadFromJsonElements(root);");
-                _writer.WriteLine();
-            }
-
-            WriteLoadElementFromJsonElements(complex);
-
-            // close LoadFromJsonElements
-            _writer.CloseScope();
-        }
-
-        /// <summary>Writes a parse JSON property elements.</summary>
-        /// <param name="complex">The complex.</param>
-        private void WriteLoadElementFromJsonElements(FhirComplex complex)
-        {
-            foreach (FhirElement element in complex.Elements.Values)
-            {
-                if (element.IsInherited)
-                {
-                    continue;
-                }
-
-                Dictionary<string, string> values = element.NamesAndTypesForExport(
-                    FhirTypeBase.NamingConvention.PascalCase,
-                    FhirTypeBase.NamingConvention.PascalCase,
-                    false,
-                    string.Empty,
-                    complex.Components.ContainsKey(element.Path));
-
-                bool isMultiTyped = values.Count > 1;
-
-                foreach (KeyValuePair<string, string> kvp in values)
-                {
-                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional || isMultiTyped);
-
-                    string elementName;
-                    if ((kvp.Key == complex.Name) && (!element.IsInherited))
-                    {
-                        elementName = $"{kvp.Key}Field";
-                    }
-                    else
-                    {
-                        elementName = kvp.Key;
-                    }
-
-                    string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
-
-                    string elementType = element.IsArray
-                        ? $"List<{kvp.Value}>"
-                        : $"{kvp.Value}";
-
-                    switch (elementType)
-                    {
-                        case "bool":
-                            WriteJsonElementLoadSimple(elementName, camel, kvp.Value, isOptional, "GetBoolean");
-                            break;
-                        case "List<bool>":
-                            WriteJsonElementLoadList(elementName, camel, kvp.Value, "GetBoolean");
-                            break;
-                        case "decimal":
-                            WriteJsonElementLoadSimple(elementName, camel, kvp.Value, isOptional, "GetDecimal");
-                            break;
-                        case "List<decimal>":
-                            WriteJsonElementLoadList(elementName, camel, kvp.Value, "GetDecimal");
-                            break;
-                        case "Guid":
-                            WriteJsonElementLoadSimple(elementName, camel, kvp.Value, isOptional, "GetGuid");
-                            break;
-                        case "List<Guid>":
-                            WriteJsonElementLoadList(elementName, camel, kvp.Value, "GetGuid");
-                            break;
-                        case "int":
-                            WriteJsonElementLoadSimple(elementName, camel, kvp.Value, isOptional, "GetInt32");
-                            break;
-                        case "List<int>":
-                            WriteJsonElementLoadList(elementName, camel, kvp.Value, "GetInt32");
-                            break;
-                        case "long":
-                            WriteJsonElementLoadSimple(elementName, camel, kvp.Value, isOptional, "GetInt64");
-                            break;
-                        case "List<long>":
-                            WriteJsonElementLoadList(elementName, camel, kvp.Value, "GetInt64");
-                            break;
-                        case "string":
-                            WriteJsonElementLoadSimple(elementName, camel, kvp.Value, isOptional, "GetString");
-                            break;
-                        case "List<string>":
-                            WriteJsonElementLoadList(elementName, camel, kvp.Value, "GetString");
-                            break;
-                        case "uint":
-                            WriteJsonElementLoadSimple(elementName, camel, kvp.Value, isOptional, "GetUInt32");
-                            break;
-                        case "List<uint>":
-                            WriteJsonElementLoadList(elementName, camel, kvp.Value, "GetUInt32");
-                            break;
-                        default:
-                            if (element.IsArray)
-                            {
-                                WriteJsonElementLoadList(elementName, camel, kvp.Value, string.Empty);
-                            }
-                            else
-                            {
-                                WriteJsonElementLoadSimple(elementName, camel, kvp.Value, isOptional, string.Empty);
-                            }
-
-                            break;
-                    }
-
-                    if (RequiresExtension(kvp.Value))
-                    {
-                        if (element.IsArray)
-                        {
-                            WriteJsonElementLoadList("_" + elementName, "_" + camel, "Element", string.Empty);
-                        }
-                        else
-                        {
-                            WriteJsonElementLoadSimple("_" + elementName, "_" + camel, "Element", true, string.Empty);
-                        }
-                    }
-                }
-            }
-        }
-
         /// <summary>Writes the JSON serialization for an element.</summary>
         /// <param name="elementName">       Name of the element.</param>
         /// <param name="camel">             The camel.</param>
@@ -2219,10 +2243,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 default:
                     if (string.IsNullOrEmpty(getterFunctionName))
                     {
-                        //_writer.WriteLineIndented($"{elementName} = " +
-                        //    $"JsonSerializer.Deserialize" +
-                        //    $"<{_namespaceModels}.{elementType}>(ref reader, options);");
-
                         _writer.WriteLineIndented($"{elementName} = new {_namespaceModels}.{elementType}();");
                         _writer.WriteLineIndented($"{elementName}.DeserializeJson(ref reader, options);");
                     }
@@ -2273,10 +2293,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $"JsonSerializer.Deserialize" +
                         $"<{_namespaceModels}.{elementType}>(ref reader, options);");
                     _writer.WriteLineIndented($"{elementName}.Add(resource);");
-
-                    //_writer.WriteLineIndented($"{_namespaceModels}.{elementType} resource = new {_namespaceModels}.{elementType}();");
-                    //_writer.WriteLineIndented($"resource.DeserializeJson(ref reader, options);");
-                    //_writer.WriteLineIndented($"{elementName}.Add(resource);");
                     break;
 
                 case "byte[]":
@@ -2296,11 +2312,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 default:
                     if (string.IsNullOrEmpty(getterFunctionName))
                     {
-                        //_writer.WriteLineIndented($"{_namespaceModels}.{elementType} obj{elementName} = " +
-                        //    $"JsonSerializer.Deserialize" +
-                        //    $"<{_namespaceModels}.{elementType}>(ref reader, options);");
-                        //_writer.WriteLineIndented($"{elementName}.Add(obj{elementName});");
-
                         _writer.WriteLineIndented($"{_namespaceModels}.{elementType} obj{elementName} = new {_namespaceModels}.{elementType}();");
                         _writer.WriteLineIndented($"obj{elementName}.DeserializeJson(ref reader, options);");
                         _writer.WriteLineIndented($"{elementName}.Add(obj{elementName});");
@@ -2413,8 +2424,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string elementType = element.IsArray
                     ? $"List<{kvp.Value}{optionalFlagString}>"
                     : $"{kvp.Value}{optionalFlagString}";
-
-                string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
 
                 _writer.WriteLineIndented($"{_accessModifier} {elementType} {elementName} {{ get; set; }}");
 
@@ -2532,6 +2541,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("using System.Text.Json;");
                 _writer.WriteLineIndented("using System.Text.Json.Serialization;");
 
+                _writer.WriteLineIndented("using System.Xml;");
+
                 _writer.WriteLineIndented($"using {_namespaceSerialization};");
             }
 
@@ -2549,6 +2560,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("using System.Text;");
                 _writer.WriteLineIndented("using System.Text.Json;");
                 _writer.WriteLineIndented("using System.Text.Json.Serialization;");
+                _writer.WriteLineIndented("using System.Xml;");
 
                 _writer.WriteLineIndented($"using {_namespaceModels};");
             }

@@ -1,606 +1,645 @@
-﻿// -------------------------------------------------------------------------------------------------
-// <copyright file="FhirManager.cs" company="Microsoft Corporation">
+﻿// <copyright file="FhirManager.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-// -------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using Microsoft.Health.Fhir.SpecManager.PackageManager;
 
-namespace Microsoft.Health.Fhir.SpecManager.Manager
+namespace Microsoft.Health.Fhir.SpecManager.Manager;
+
+/// <summary>FHIR version manager.</summary>
+public class FhirManager : IDisposable
 {
-    /// <summary>FHIR version manager.</summary>
-    public class FhirManager
+    /// <summary>True to disposed value.</summary>
+    private bool _disposedValue;
+
+    /// <summary>The singleton.</summary>
+    private static FhirManager _singleton;
+
+    /// <summary>The loaded information by version.</summary>
+    private Dictionary<string, FhirVersionInfo> _loadedInfoByDirective;
+
+    private Dictionary<FhirPackageCommon.FhirSequenceEnum, FhirVersionInfo> _nonPackageArtifactsByVersion;
+
+    /// <summary>List of types of the directive packages.</summary>
+    private Dictionary<string, FhirPackageCommon.FhirPackageTypeEnum> _directivePackageTypes;
+
+    /// <summary>The packages loaded by request.</summary>
+    private HashSet<string> _loadedByRequest;
+
+    /// <summary>The packages loaded as dependency.</summary>
+    private HashSet<string> _loadedAsDependency;
+
+    /// <summary>The load directive to version.</summary>
+    private Dictionary<string, string> _loadDirectiveToVersion;
+
+    /// <summary>Manager for load lock object.</summary>
+    private object _managerLoadLockObject;
+
+    /// <summary>
+    /// Prevents a default instance of the <see cref="FhirManager"/> class from being created.
+    /// </summary>
+    private FhirManager()
     {
-        /// <summary>FHIR Manager singleton.</summary>
-        private static FhirManager _instance;
+        _disposedValue = false;
+        _loadedInfoByDirective = new();
+        _loadedByRequest = new();
+        _loadedAsDependency = new();
+        _directivePackageTypes = new();
+        _loadDirectiveToVersion = new();
+        _managerLoadLockObject = new();
+        _nonPackageArtifactsByVersion = new();
+    }
 
-        /// <summary>Map of known major versions and version strings.</summary>
-        private Dictionary<int, SortedSet<string>> _knownVersions;
+    /// <summary>Gets the current.</summary>
+    public static FhirManager Current => _singleton;
 
-        /// <summary>Dictionary of published versions.</summary>
-        private Dictionary<string, FhirVersionInfo> _publishedVersionDict;
+    /// <summary>Gets the information by directive.</summary>
+    public Dictionary<string, FhirVersionInfo> InfoByDirective => _loadedInfoByDirective;
 
-        /// <summary>Local development version (if present).</summary>
-        private FhirVersionInfo _localVersion;
+    /// <summary>Initializes the FhirManager.</summary>
+    public static void Init()
+    {
+        Console.WriteLine("Starting FhirManager...");
 
-        /// <summary>Pathname of the npm directory.</summary>
-        private string _fhirSpecDirectory;
+        _singleton = new FhirManager();
+    }
 
-        /// <summary>Pathname of the local FHIR Publish directory.</summary>
-        private string _localPublishDirectory;
+    /// <summary>Gets the loaded core packages in this collection.</summary>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process the loaded core packages in this
+    /// collection.
+    /// </returns>
+    public List<FhirVersionInfo> GetLoadedCorePackages()
+    {
+        List<FhirVersionInfo> packages = new();
 
-        /// <summary>Initializes a new instance of the <see cref="FhirManager"/> class.</summary>
-        /// <param name="npmDirectory">    Pathname of the npm directory.</param>
-        /// <param name="fhirPublishDirectory">Pathname of the fhir build directory.</param>
-        private FhirManager(string npmDirectory, string fhirPublishDirectory)
+        foreach ((string directive, FhirPackageCommon.FhirPackageTypeEnum type) in _directivePackageTypes)
         {
-            // set locals
-            _fhirSpecDirectory = npmDirectory;
-            _localPublishDirectory = fhirPublishDirectory;
-            _localVersion = null;
-
-            _knownVersions = new Dictionary<int, SortedSet<string>>()
+            if (type != FhirPackageCommon.FhirPackageTypeEnum.Core)
             {
-                { 2, new SortedSet<string>() { "1.0.2" } },
-                { 3, new SortedSet<string>() { "3.0.2" } },
-                { 4, new SortedSet<string>() { "4.0.1", "4.1.0", "4.3.0", "4.3.0-snapshot1" } },
-                { 5, new SortedSet<string>() { "4.4.0", "4.5.0", "4.6.0", "5.0.0-snapshot1" } },
-            };
+                continue;
+            }
 
-            // build the dictionary of published versions*
-            _publishedVersionDict = new Dictionary<string, FhirVersionInfo>()
+            if (_loadedInfoByDirective.ContainsKey(directive))
             {
+                packages.Add(_loadedInfoByDirective[directive]);
+            }
+            else if (directive.Contains(".core", StringComparison.OrdinalIgnoreCase))
+            {
+                string d = directive.Replace(".core", string.Empty);
+
+                if (_loadedInfoByDirective.ContainsKey(d))
                 {
-                    "1.0.2",
-                    new FhirVersionInfo(2)
-                    {
-                        ReleaseName = "DSTU2",
-                        BallotPrefix = string.Empty,
-                        PackageName = "hl7.fhir.r2.core",
-                        ExamplesPackageName = "hl7.fhir.r2.examples",
-                        ExpansionsPackageName = "hl7.fhir.r2.expansions",
-                        VersionString = "1.0.2",
-                        IsDevBuild = false,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
+                    packages.Add(_loadedInfoByDirective[d]);
+                }
+            }
+            else if (directive.Contains('#'))
+            {
+                string d = directive.Replace("#", ".core#");
+
+                if (_loadedInfoByDirective.ContainsKey(d))
                 {
-                    "3.0.2",
-                    new FhirVersionInfo(3)
-                    {
-                        ReleaseName = "STU3",
-                        BallotPrefix = string.Empty,
-                        PackageName = "hl7.fhir.r3.core",
-                        ExamplesPackageName = "hl7.fhir.r3.examples",
-                        ExpansionsPackageName = "hl7.fhir.r3.expansions",
-                        VersionString = "3.0.2",
-                        IsDevBuild = false,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
-                {
-                    "4.0.1",
-                    new FhirVersionInfo(4)
-                    {
-                        ReleaseName = "R4",
-                        BallotPrefix = string.Empty,
-                        PackageName = "hl7.fhir.r4.core",
-                        ExamplesPackageName = "hl7.fhir.r4.examples",
-                        ExpansionsPackageName = "hl7.fhir.r4.expansions",
-                        VersionString = "4.0.1",
-                        IsDevBuild = false,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
-                {
-                    "4.1.0",
-                    new FhirVersionInfo(4)
-                    {
-                        ReleaseName = "R4B",
-                        BallotPrefix = "2021Mar",
-                        PackageName = "hl7.fhir.r4b.core",
-                        ExamplesPackageName = string.Empty,
-                        ExpansionsPackageName = "hl7.fhir.r4b.expansions",
-                        VersionString = "4.1.0",
-                        IsDevBuild = false,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
-                {
-                    "4.3.0",
-                    new FhirVersionInfo(4)
-                    {
-                        ReleaseName = "R4B",
-                        BallotPrefix = string.Empty,
-                        PackageName = "hl7.fhir.r4b.core",
-                        ExamplesPackageName = "hl7.fhir.r4b.examples",
-                        ExpansionsPackageName = "hl7.fhir.r4b.expansions",
-                        VersionString = "4.3.0",
-                        IsDevBuild = false,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
-                {
-                    "4.3.0-snapshot1",
-                    new FhirVersionInfo(4)
-                    {
-                        ReleaseName = "R4B",
-                        BallotPrefix = string.Empty,
-                        PackageName = "hl7.fhir.r4b.core",
-                        ExamplesPackageName = "hl7.fhir.r4b.examples",
-                        ExpansionsPackageName = "hl7.fhir.r4b.expansions",
-                        VersionString = "4.3.0-snapshot1",
-                        IsDevBuild = false,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
-                {
-                    "4.4.0",
-                    new FhirVersionInfo(5)
-                    {
-                        ReleaseName = "R5",
-                        BallotPrefix = "2020May",
-                        PackageName = "hl7.fhir.r5.core",
-                        ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
-                        ExpansionsPackageName = "hl7.fhir.r5.expansions",
-                        VersionString = "4.4.0",
-                        IsDevBuild = false,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
-                {
-                    "4.5.0",
-                    new FhirVersionInfo(5)
-                    {
-                        ReleaseName = "R5",
-                        BallotPrefix = "2020Sep",
-                        PackageName = "hl7.fhir.r5.core",
-                        ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
-                        ExpansionsPackageName = "hl7.fhir.r5.expansions",
-                        VersionString = "4.5.0",
-                        IsDevBuild = false,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
-                {
-                    "4.6.0",
-                    new FhirVersionInfo(5)
-                    {
-                        ReleaseName = "R5",
-                        BallotPrefix = "2021May",
-                        PackageName = "hl7.fhir.r5.core",
-                        ExamplesPackageName = "hl7.fhir.r5.examples",
-                        ExpansionsPackageName = "hl7.fhir.r5.expansions",
-                        VersionString = "4.6.0",
-                        IsDevBuild = false,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
-                {
-                    "5.0.0-snapshot1",
-                    new FhirVersionInfo(5)
-                    {
-                        ReleaseName = "R5",
-                        BallotPrefix = string.Empty,
-                        PackageName = "hl7.fhir.r5.core",
-                        ExamplesPackageName = "hl7.fhir.r5.examples",
-                        ExpansionsPackageName = "hl7.fhir.r5.expansions",
-                        VersionString = "5.0.0-snapshot1",
-                        IsDevBuild = false,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
-            };
+                    packages.Add(_loadedInfoByDirective[d]);
+                }
+            }
         }
 
-        /// <summary>Gets the current singleton.</summary>
-        ///
-        /// <value>The current FHIR Manager singleton.</value>
-        public static FhirManager Current => _instance;
+        return packages;
+    }
 
-        /// <summary>Initializes this object.</summary>
-        /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
-        ///  null.</exception>
-        /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
-        ///  present.</exception>
-        /// <param name="fhirSpecDirectory">        Pathname of the FHIR Spec directory.</param>
-        /// <param name="fhirPublishDirectory">Pathname of the FHIR local publish directory.</param>
-        public static void Init(string fhirSpecDirectory, string fhirPublishDirectory)
+    /// <summary>
+    /// Test to see if the manager has a package matching a given id.
+    /// </summary>
+    /// <param name="packageId"></param>
+    /// <param name="version"></param>
+    /// <returns></returns>
+    public bool HasLoadedPackage(string packageId, out string version)
+    {
+        foreach (string directive in _loadedInfoByDirective.Keys)
         {
-            // check to make sure we have a directory to work from
-            if (string.IsNullOrEmpty(fhirSpecDirectory) && string.IsNullOrEmpty(fhirPublishDirectory))
+            string[] components = directive.Split('#');
+
+            if (components[0].Equals(packageId, StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentNullException(nameof(fhirSpecDirectory));
+                version = (components.Length > 1) ? components[1] : string.Empty;
+                return true;
             }
-
-            string specDir = string.Empty;
-            string publishDir = string.Empty;
-
-            if (!string.IsNullOrEmpty(fhirSpecDirectory))
-            {
-                // check for rooted vs relative
-                if (Path.IsPathRooted(fhirSpecDirectory))
-                {
-                    specDir = Path.GetFullPath(fhirSpecDirectory);
-                }
-                else
-                {
-                    specDir = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), fhirSpecDirectory));
-                }
-
-                // make sure the directory exists
-                if (!Directory.Exists(specDir))
-                {
-                    throw new DirectoryNotFoundException($"FHIR Specification Directory not found: {fhirSpecDirectory}");
-                }
-            }
-
-            if (!string.IsNullOrEmpty(fhirPublishDirectory))
-            {
-                // check for rooted vs relative
-                if (Path.IsPathRooted(fhirPublishDirectory))
-                {
-                    publishDir = Path.GetFullPath(fhirPublishDirectory);
-                }
-                else
-                {
-                    publishDir = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), fhirPublishDirectory));
-                }
-
-                // make sure the directory exists
-                if (!Directory.Exists(publishDir))
-                {
-                    throw new DirectoryNotFoundException($"FHIR Build Directory not found: {fhirPublishDirectory}");
-                }
-            }
-
-            // make our instance
-            _instance = new FhirManager(specDir, publishDir);
         }
 
-        /// <summary>Loads the local.</summary>
-        /// <exception cref="ArgumentNullException">      Thrown when one or more required arguments are
-        ///  null.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
-        ///  required range.</exception>
-        /// <param name="localLoadType">         Type of the local load.</param>
-        /// <param name="officialExpansionsOnly">(Optional) True to official expansions only.</param>
-        /// <returns>The local.</returns>
-        public FhirVersionInfo LoadLocal(
-            string localLoadType,
-            bool officialExpansionsOnly = false)
+        version = string.Empty;
+        return false;
+    }
+
+    /// <summary>
+    /// Tries to see if the manager can resolve a canonical URL in any loaded packages.
+    /// </summary>
+    /// <param name="canonical"></param>
+    /// <returns></returns>
+    public bool TryResolveCanonical(
+        FhirPackageCommon.FhirSequenceEnum fhirSequence,
+        string canonical,
+        out FhirArtifactClassEnum canonicalClass,
+        out object resource)
+    {
+        string resolvedPackage;
+
+        foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
         {
-            if (string.IsNullOrEmpty(_localPublishDirectory))
+            if (info.FhirSequence != fhirSequence)
             {
-#pragma warning disable CA2208 // Instantiate argument exceptions correctly
-                throw new ArgumentNullException($"Loading a local FHIR build requires a --fhir-publish-directory");
-#pragma warning restore CA2208 // Instantiate argument exceptions correctly
+                continue;
             }
 
-            GetLocalVersionInfo(
-                out string fhirVersion,
-                out string versionString,
-                out string buildId,
-                out string buildDate);
-
-            int majorVersion = FhirVersionInfo.GetMajorVersion(versionString);
-
-            if (majorVersion == 0)
+            if (info.TryGetArtifact(canonical, out resource, out canonicalClass, out resolvedPackage, true))
             {
-                throw new ArgumentOutOfRangeException($"Unknown FHIR version: {versionString}");
+                return true;
             }
-
-            string unfortunateVersionNameAppend =
-                (versionString == "4.1.0")
-                ? "b"
-                : string.Empty;
-
-            _localVersion = new FhirVersionInfo(majorVersion)
-            {
-                ReleaseName = buildId,
-                PackageName = $"hl7.fhir.r{majorVersion}{unfortunateVersionNameAppend}.core",
-                ExamplesPackageName = string.Empty,
-                ExpansionsPackageName = $"hl7.fhir.r{majorVersion}{unfortunateVersionNameAppend}.expansions",
-                VersionString = versionString,
-                IsDevBuild = true,
-                DevBranch = string.Empty,
-                IsLocalBuild = true,
-                IsOnDisk = true,
-            };
-
-            // load the package
-            Loader.LoadLocalBuild(_localPublishDirectory, _fhirSpecDirectory, ref _localVersion, localLoadType, officialExpansionsOnly);
-
-            return _localVersion;
         }
 
-        /// <summary>Gets local version information.</summary>
-        /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
-        /// <param name="fhirVersion">[out] The FHIR version.</param>
-        /// <param name="version">    [out] The version string (e.g., 4.0.1).</param>
-        /// <param name="buildId">    [out] Identifier for the build.</param>
-        /// <param name="buildDate">  [out] The build date.</param>
-        private void GetLocalVersionInfo(
-            out string fhirVersion,
-            out string version,
-            out string buildId,
-            out string buildDate)
+        string modified = canonical;
+
+        if (canonical.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
         {
-            string infoPath = Path.Combine(_localPublishDirectory, "version.info");
+            // try removing the html
+            modified = canonical.Remove(canonical.Length - 5);
 
-            if (!File.Exists(infoPath))
+            foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
             {
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
-                throw new FileNotFoundException("Incomplete FHIR build, cannot find version information", infoPath);
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
+                if (info.TryGetArtifact(modified, out resource, out canonicalClass, out resolvedPackage, true))
+                {
+                    return true;
+                }
             }
+        }
 
-            IEnumerable<string> lines = File.ReadLines(infoPath);
+        if (modified.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        {
+            // try swapping to http
+            modified = "http://" + modified.Substring(8);
 
-            fhirVersion = string.Empty;
-            version = string.Empty;
-            buildId = string.Empty;
-            buildDate = string.Empty;
-
-            foreach (string line in lines)
+            foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
             {
-                if (!line.Contains('=', StringComparison.Ordinal))
+                if (info.FhirSequence != fhirSequence)
                 {
                     continue;
                 }
 
-                string[] kvp = line.Split('=');
-
-                if (kvp.Length != 2)
+                if (info.TryGetArtifact(modified, out resource, out canonicalClass, out _, true))
                 {
-                    continue;
-                }
-
-                switch (kvp[0])
-                {
-                    case "FhirVersion":
-                        fhirVersion = kvp[1];
-                        break;
-
-                    case "version":
-                        version = kvp[1];
-                        break;
-
-                    case "buildId":
-                        buildId = kvp[1];
-                        break;
-
-                    case "date":
-                        buildDate = kvp[1];
-                        break;
+                    return true;
                 }
             }
         }
 
-        /// <summary>Loads a published version of FHIR.</summary>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
-        ///  required range.</exception>
-        /// <exception cref="ArgumentException">          Thrown when one or more arguments have
-        ///  unsupported or illegal values.</exception>
-        /// <param name="majorRelease">          The release number of FHIR to load (e.g., 2 for DSTU2).</param>
-        /// <param name="versions">              The specific version of FHIR to load, or 'latest' for
-        ///  highest known version.</param>
-        /// <param name="offlineMode">           (Optional) True to allow, false to suppress the download.</param>
-        /// <param name="officialExpansionsOnly">(Optional) True to official expansions only.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public FhirVersionInfo LoadPublished(
-            int majorRelease,
-            string versions,
-            bool offlineMode = false,
-            bool officialExpansionsOnly = false)
-        {
-            HashSet<string> versionsToLoad = new HashSet<string>();
+        modified = string.Empty;
 
-            // check major version
-            if (!_knownVersions.ContainsKey(majorRelease))
+        if (canonical.StartsWith("https://www.hl7.org/fhir/", StringComparison.OrdinalIgnoreCase))
+        {
+            modified = canonical.Substring(25);
+        }
+        else if (canonical.StartsWith("https://hl7.org/fhir/", StringComparison.OrdinalIgnoreCase))
+        {
+            modified = canonical.Substring(21);
+        }
+
+        if (!string.IsNullOrEmpty(modified))
+        {
+            if (modified.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentOutOfRangeException($"Unknown Published FHIR version: {majorRelease}");
+                modified = modified.Remove(modified.Length - 5);
             }
 
-            // figure out which version(s) we are loading
-            if (string.IsNullOrEmpty(versions) || (versions == "latest"))
+            if (modified.Contains('/'))
             {
-                string bestMatchVersion = string.Empty;
+                // try swapping to http
+                modified = "http://hl7.org/fhir/" + modified;
 
-                // known versions are sorted in ascending order
-                foreach (string knownVersion in _knownVersions[majorRelease])
+                foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
                 {
-                    if (string.IsNullOrEmpty(bestMatchVersion))
+                    if (info.FhirSequence != fhirSequence)
                     {
-                        bestMatchVersion = knownVersion;
                         continue;
                     }
 
-                    if (string.IsNullOrEmpty(_publishedVersionDict[knownVersion].BallotPrefix) ||
-                        (!string.IsNullOrEmpty(_publishedVersionDict[bestMatchVersion].BallotPrefix)))
+                    if (info.TryGetArtifact(modified, out resource, out canonicalClass, out _, true))
                     {
-                        bestMatchVersion = knownVersion;
+                        return true;
+                    }
+                }
+            }
+            else if (modified.Contains('-'))
+            {
+                string[] components = modified.Split('-');
+
+                if (components.Length > 1)
+                {
+                    for (int i = 0; i < components.Length; i++)
+                    {
+                        if (FhirUtils.DefinitionalResourceNames.TryGetValue(components[i], out string resourceName))
+                        {
+                            string part = string.Join('-', components.Where((v, index) => index != i));
+                            part = FhirUtils.ToConvention(part, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+
+                            modified = "http://hl7.org/fhir/" + resourceName + "/" + part;
+
+                            break;
+                        }
                     }
                 }
 
-                if (!versionsToLoad.Contains(bestMatchVersion))
+                foreach (FhirVersionInfo info in _loadedInfoByDirective.Values)
                 {
-                    versionsToLoad.Add(bestMatchVersion);
+                    if (info.FhirSequence != fhirSequence)
+                    {
+                        continue;
+                    }
+
+                    if (info.TryGetArtifact(modified, out resource, out canonicalClass, out _, true))
+                    {
+                        return true;
+                    }
                 }
+            }
+        }
+
+        try
+        {
+            // attempt to fetch the URL and see what happens
+            if (ServerConnector.TryDownloadResource(canonical, out string json))
+            {
+                if (!_nonPackageArtifactsByVersion.ContainsKey(fhirSequence))
+                {
+                    FhirVersionInfo info = new(fhirSequence);
+                    TrackLoadedPackage(info.PackageName + "#" + info.VersionString, info, true, false);
+                }
+
+                object parsed = _nonPackageArtifactsByVersion[fhirSequence].ParseResource(json);
+
+                // fix for unreplaced [base] urls
+                if (json.Contains("\"[base", StringComparison.Ordinal))
+                {
+                    _nonPackageArtifactsByVersion[fhirSequence].ReplaceParsedValue(parsed, new string[] { "url" }, canonical);
+                }
+
+                _nonPackageArtifactsByVersion[fhirSequence].ProcessResource(parsed, out string resourceCanonical, out canonicalClass);
+
+                if ((!string.IsNullOrEmpty(resourceCanonical)) &&
+                    (canonicalClass != FhirArtifactClassEnum.Unknown))
+                {
+                    _nonPackageArtifactsByVersion[fhirSequence].AddCanonicalAlias(resourceCanonical, canonical);
+                    return _nonPackageArtifactsByVersion[fhirSequence].TryGetArtifact(
+                        resourceCanonical,
+                        out resource,
+                        out _,
+                        out _);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($" <<< failed to resolve canonical via HTTP: {ex.Message}");
+        }
+
+        resource = null;
+        canonicalClass = FhirArtifactClassEnum.Unknown;
+        return false;
+    }
+
+    /// <summary>Gets the loaded core packages in this collection.</summary>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process the loaded core packages in this
+    /// collection.
+    /// </returns>
+    public List<FhirVersionInfo> GetLoadedPackages()
+    {
+        List<FhirVersionInfo> packages = new();
+
+        foreach ((string directive, FhirPackageCommon.FhirPackageTypeEnum type) in _directivePackageTypes)
+        {
+            packages.Add(_loadedInfoByDirective[directive]);
+        }
+
+        return packages;
+    }
+
+    /// <summary>Attempts to get loaded a FhirVersionInfo from the given string.</summary>
+    /// <param name="directive">The directive.</param>
+    /// <param name="info">     [out] The information.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetLoaded(string directive, out FhirVersionInfo info)
+    {
+        if (!_loadedInfoByDirective.ContainsKey(directive))
+        {
+            info = null;
+            return false;
+        }
+
+        info = _loadedInfoByDirective[directive];
+        return true;
+    }
+
+    /// <summary>Query if 'directive' is loaded.</summary>
+    /// <param name="directive">The directive.</param>
+    /// <returns>True if loaded, false if not.</returns>
+    public bool IsLoaded(string directive)
+    {
+        return _directivePackageTypes.ContainsKey(directive) || _loadDirectiveToVersion.ContainsKey(directive);
+    }
+
+    /// <summary>Unload package.</summary>
+    /// <param name="directive">The directive.</param>
+    public void UnloadPackage(string directive)
+    {
+        if (_loadedInfoByDirective.ContainsKey(directive))
+        {
+            _loadedInfoByDirective.Remove(directive);
+        }
+
+        if (_directivePackageTypes.ContainsKey(directive))
+        {
+            _directivePackageTypes.Remove(directive);
+        }
+
+        if (_loadDirectiveToVersion.ContainsKey(directive))
+        {
+            _loadDirectiveToVersion.Remove(directive);
+        }
+    }
+
+    /// <summary>Loads FHIR core packages.</summary>
+    /// <param name="sequence">              The sequence.</param>
+    /// <param name="version">               The specific version of FHIR to load, or 'latest' for
+    ///  highest known version.</param>
+    /// <param name="offlineMode">           True to allow, false to suppress the download.</param>
+    /// <param name="officialExpansionsOnly">True to official expansions only.</param>
+    /// <param name="ciBranch">              (Optional) The CI branch.</param>
+    /// <returns>The FHIR core.</returns>
+    private FhirVersionInfo LoadFhirCore(
+        FhirPackageCommon.FhirSequenceEnum sequence,
+        string version,
+        bool offlineMode,
+        bool officialExpansionsOnly,
+        string ciBranch = "")
+    {
+        string packageBase = FhirPackageCommon.PackageBaseForRelease(sequence);
+
+        if (!string.IsNullOrEmpty(ciBranch))
+        {
+            version = "current";
+        }
+
+        string corePackage = packageBase + ".core#" + version;
+        string expansionsPackage = packageBase + ".expansions#" + version;
+
+        if (!FhirCacheService.Current.FindOrDownload(
+            corePackage,
+            out string corePackageDirectory,
+            offlineMode,
+            ciBranch))
+        {
+            throw new Exception($"Failed to retrieve {corePackage}");
+        }
+
+        if (!FhirCacheService.Current.FindOrDownload(
+            expansionsPackage,
+            out string expansionsDirectory,
+            offlineMode,
+            ciBranch))
+        {
+            throw new Exception($"Failed to retrieve {expansionsPackage}");
+        }
+
+        if (_loadedInfoByDirective.ContainsKey(corePackage))
+        {
+            return _loadedInfoByDirective[corePackage];
+        }
+
+        // grab the correct basic version info
+        FhirVersionInfo info = new FhirVersionInfo(corePackageDirectory);
+
+        // load the package
+        lock (_managerLoadLockObject)
+        {
+            FhirSpecificationLoader.Load(
+                info,
+                corePackageDirectory,
+                expansionsDirectory,
+                officialExpansionsOnly);
+        }
+
+        return info;
+    }
+
+    /// <summary>Track loaded package.</summary>
+    /// <param name="loadDirective">The load directive.</param>
+    /// <param name="info">         The information.</param>
+    /// <param name="wasRequested"> True if requested.</param>
+    /// <param name="isCore">       True if is core, false if not.</param>
+    private void TrackLoadedPackage(string loadDirective, FhirVersionInfo info, bool wasRequested, bool isCore)
+    {
+        string directive = info.PackageName + "#" + info.VersionString;
+
+        if (_loadedInfoByDirective.ContainsKey(loadDirective))
+        {
+            Console.WriteLine($"WARNING: Attempt to load already loaded package: {loadDirective}");
+            return;
+        }
+
+        _loadedInfoByDirective.Add(loadDirective, info);
+
+        if (wasRequested)
+        {
+            _loadedByRequest.Add(loadDirective);
+            _loadDirectiveToVersion.Add(loadDirective, directive);
+        }
+        else
+        {
+            _loadedAsDependency.Add(loadDirective);
+        }
+
+        if (isCore)
+        {
+            string coreDirective;
+
+            if (loadDirective.Contains('#'))
+            {
+                coreDirective = info.PackageName + "#" + loadDirective.Split('#')[1];
             }
             else
             {
-                // NOTE: we'll have to support multiple versions of a release in the future, was easier to just put this in now
-                string[] versionSplit = versions.Split(',');
-
-                foreach (string version in versionSplit)
-                {
-                    if (version == "latest")
-                    {
-                        string bestMatchVersion = string.Empty;
-
-                        // known versions are sorted in ascending order
-                        foreach (string knownVersion in _knownVersions[majorRelease])
-                        {
-                            if (string.IsNullOrEmpty(bestMatchVersion))
-                            {
-                                bestMatchVersion = knownVersion;
-                                continue;
-                            }
-
-                            if (string.IsNullOrEmpty(_publishedVersionDict[knownVersion].BallotPrefix))
-                            {
-                                bestMatchVersion = knownVersion;
-                            }
-                        }
-
-                        if (!versionsToLoad.Contains(bestMatchVersion))
-                        {
-                            versionsToLoad.Add(bestMatchVersion);
-                        }
-
-                        continue;
-                    }
-
-                    if (!_knownVersions[majorRelease].Contains(version))
-                    {
-                        throw new ArgumentException($"Invalid version {version} for R{majorRelease}");
-                    }
-
-                    versionsToLoad.Add(version);
-                }
+                coreDirective = loadDirective;
             }
 
-            if (versionsToLoad.Count == 0)
-            {
-                throw new ArgumentException($"Could not find version to load: R{majorRelease}, versions: {versions}");
-            }
+            _directivePackageTypes.Add(coreDirective, FhirPackageCommon.FhirPackageTypeEnum.Core);
+            _directivePackageTypes.Add(coreDirective.Replace(".core", ".expansions"), FhirPackageCommon.FhirPackageTypeEnum.Core);
 
-            // for now, only load the first version we encountered
-            string versionToLoad = versionsToLoad.ElementAt(0);
-
-            // grab the correct basic version info
-            FhirVersionInfo info = _publishedVersionDict[versionToLoad];
-
-            // grab the packages we need
-            FindOrDownload(
-                info.ReleaseName,
-                info.BallotPrefix,
+            FhirCacheService.Current.UpdatePackageState(
+                coreDirective,
                 info.PackageName,
                 info.VersionString,
-                offlineMode);
+                PackageLoadStateEnum.Loaded);
 
-            FindOrDownload(
-                info.ReleaseName,
-                info.BallotPrefix,
-                info.ExpansionsPackageName,
+            FhirCacheService.Current.UpdatePackageState(
+                coreDirective.Replace(".core", ".expansions"),
+                info.PackageName,
                 info.VersionString,
-                offlineMode);
-
-            FindOrDownload(
-                info.ReleaseName,
-                info.BallotPrefix,
-                info.ExamplesPackageName,
-                info.VersionString,
-                offlineMode,
-                true);
-
-            // load the package
-            Loader.LoadPackage(_fhirSpecDirectory, ref info, officialExpansionsOnly);
-
-            // update our version information
-            _publishedVersionDict[versionToLoad] = info;
-
-            // return this record
-            return info;
+                PackageLoadStateEnum.Loaded);
         }
-
-        /// <summary>Searches for the first or download.</summary>
-        /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
-        ///  null.</exception>
-        /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
-        ///  present.</exception>
-        /// <exception cref="Exception">                 Thrown when an exception error condition occurs.</exception>
-        /// <param name="releaseName"> The release name (e.g., R4, DSTU2).</param>
-        /// <param name="ballotPrefix">The ballot prefix.</param>
-        /// <param name="packageName"> Name of the package.</param>
-        /// <param name="version">     The version string (e.g., 4.0.1).</param>
-        /// <param name="offlineMode"> True to allow, false to suppress the download.</param>
-        /// <param name="isOptional">  (Optional) True if is optional, false if not.</param>
-        private void FindOrDownload(
-            string releaseName,
-            string ballotPrefix,
-            string packageName,
-            string version,
-            bool offlineMode,
-            bool isOptional = false)
+        else if (loadDirective.StartsWith("resolved.canonical", StringComparison.Ordinal))
         {
-            if (string.IsNullOrEmpty(packageName))
-            {
-                if (isOptional)
-                {
-                    return;
-                }
+            _directivePackageTypes.Add(loadDirective, FhirPackageCommon.FhirPackageTypeEnum.Virtual);
+            _nonPackageArtifactsByVersion.Add(info.FhirSequence, info);
+        }
+        else
+        {
+            _directivePackageTypes.Add(loadDirective, FhirPackageCommon.FhirPackageTypeEnum.IG);
 
-                throw new ArgumentNullException(nameof(packageName));
+            FhirCacheService.Current.UpdatePackageState(
+                loadDirective,
+                info.PackageName,
+                info.VersionString,
+                PackageLoadStateEnum.Loaded);
+        }
+    }
+
+    /// <summary>Loads the packages.</summary>
+    /// <param name="packageDirectives">     The package directives.</param>
+    /// <param name="offlineMode">           True to allow, false to suppress the download.</param>
+    /// <param name="officialExpansionsOnly">True to official expansions only.</param>
+    /// <param name="loadDependencies">      True to load dependencies.</param>
+    /// <param name="skipFhirCore">          True to skip loading FHIR core packages.</param>
+    /// <param name="ciBranch">              The CI branch.</param>
+    /// <param name="failedPackages">        [out] The failed packages.</param>
+    /// <param name="areDependencies">       (Optional) True if are dependencies.</param>
+    public void LoadPackages(
+        IEnumerable<string> packageDirectives,
+        bool offlineMode,
+        bool officialExpansionsOnly,
+        bool loadDependencies,
+        bool skipFhirCore,
+        string ciBranch,
+        out List<string> failedPackages,
+        bool areDependencies = false)
+    {
+        failedPackages = new();
+
+        foreach (string directive in packageDirectives)
+        {
+            if (_loadedInfoByDirective.ContainsKey(directive))
+            {
+                continue;
             }
 
-            if (!Loader.TryFindPackage(
-                releaseName,
-                packageName,
-                version,
-                _fhirSpecDirectory,
-                out _))
-            {
-                if (offlineMode)
-                {
-                    if (isOptional)
-                    {
-                        Console.WriteLine(
-                            $"Failed to find OPTIONAL {packageName}-{version}" +
-                            $" in {_fhirSpecDirectory}");
-                        return;
-                    }
+            FhirCacheService.Current.UpdatePackageState(directive, string.Empty, string.Empty, PackageLoadStateEnum.InProgress);
 
-                    throw new DirectoryNotFoundException(
-                        $"Failed to find FHIR {packageName}" +
-                        $" ({releaseName})" +
-                        $" in {_fhirSpecDirectory}");
+            FhirVersionInfo info;
+            bool isCore = FhirPackageCommon.TryGetReleaseByPackage(
+                directive,
+                out FhirPackageCommon.FhirSequenceEnum release);
+
+            if (isCore)
+            {
+                if (skipFhirCore)
+                {
+                    continue;
                 }
 
-                Console.WriteLine($" <<< downloading {packageName}-{version}...");
+                string[] components = directive.Split('#');
 
-                if (!FhirPackageDownloader.Download(
-                        releaseName,
-                        ballotPrefix,
-                        packageName,
-                        version,
-                        _fhirSpecDirectory))
+                info = LoadFhirCore(
+                    release,
+                    components[1],
+                    offlineMode,
+                    officialExpansionsOnly,
+                    ciBranch);
+            }
+            else
+            {
+                FhirCacheService.Current.FindOrDownload(
+                    directive,
+                    out string directory,
+                    offlineMode,
+                    ciBranch);
+
+                string resolvedDirective = Path.GetFileName(directory);
+
+                if (_loadedInfoByDirective.ContainsKey(resolvedDirective))
                 {
-                    if (isOptional)
+                    continue;
+                }
+
+                lock (_managerLoadLockObject)
+                {
+                    FhirPackageLoader.Load(directive, directory, out info);
+                }
+            }
+
+            if (info == null)
+            {
+                failedPackages.Add(directive);
+            }
+            else
+            {
+                Console.WriteLine($"Loaded {directive} as {info.PackageName} version {info.VersionString}");
+                TrackLoadedPackage(directive, info, true, isCore);
+
+                if (loadDependencies &&
+                    (info.PackageDetails != null) &&
+                    (info.PackageDetails.Dependencies != null) &&
+                    info.PackageDetails.Dependencies.Any())
+                {
+                    List<string> dependencyDirectives = new();
+
+                    foreach ((string name, string version) in info.PackageDetails.Dependencies)
                     {
-                        Console.WriteLine(
-                            $"Failed to download OPTIONAL {packageName}-{version}");
-                        return;
+                        dependencyDirectives.Add(name + "#" + version);
                     }
 
-                    throw new Exception($"Could not download: {packageName}-{version}");
+                    LoadPackages(
+                        dependencyDirectives,
+                        offlineMode,
+                        officialExpansionsOnly,
+                        loadDependencies,
+                        skipFhirCore,
+                        ciBranch,
+                        out List<string> failedDependencies,
+                        areDependencies: true);
+
+                    failedPackages.AddRange(failedDependencies);
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Releases the unmanaged resources used by the <see cref="FhirCacheService"/>
+    /// and optionally releases the managed resources.
+    /// </summary>
+    /// <param name="disposing">True to release both managed and unmanaged resources; false to
+    ///  release only unmanaged resources.</param>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposedValue)
+        {
+            if (disposing)
+            {
+                _loadedInfoByDirective.Clear();
+            }
+
+            _disposedValue = true;
+        }
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    void IDisposable.Dispose()
+    {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
     }
 }

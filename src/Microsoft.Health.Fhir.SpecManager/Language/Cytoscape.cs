@@ -2,15 +2,12 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+
 using System.IO;
-using System.Linq;
-using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -115,13 +112,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             Dictionary<string, CytoElement> elementDict = BuildNodes();
 
             // create a filename for writing
-            string filename = Path.Combine(exportDirectory, $"{_languageName}_R{info.MajorVersion}.json");
+            string filename = Path.Combine(exportDirectory, $"{_languageName}_{info.FhirSequence}.json");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
-            using (StreamWriter writer = new StreamWriter(stream))
             {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(writer, elementDict.Values);
+                JsonSerializer.Serialize(stream, elementDict.Values, typeof(IEnumerable<CytoElement>));
             }
         }
 
@@ -130,11 +125,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private Dictionary<string, CytoElement> BuildNodes()
         {
             Dictionary<string, CytoElement> elements = new Dictionary<string, CytoElement>();
-
-            //foreach (FhirPrimitive primitive in _info.PrimitiveTypes.Values)
-            //{
-            //    AddPrimitive(elements, primitive);
-            //}
 
             foreach (FhirComplex dataType in _info.ComplexTypes.Values)
             {
@@ -446,11 +436,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             public const string GroupEdges = "edges";
 
             /// <summary>Gets or sets the group.</summary>
-            [JsonProperty("group")]
+            [JsonPropertyName("group")]
             public string Group { get; set; }
 
             /// <summary>Gets or sets the data.</summary>
-            [JsonProperty("data")]
+            [JsonPropertyName("data")]
             public CytoElementData Data { get; set; }
         }
 
@@ -458,19 +448,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private class CytoElementData
         {
             /// <summary>Gets or sets the identifier.</summary>
-            [JsonProperty("id")]
+            [JsonPropertyName("id")]
             public string Id { get; set; }
 
             /// <summary>Gets or sets the name.</summary>
-            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonPropertyName("name"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
             public string Name { get; set; }
 
             /// <summary>Gets or sets the group.</summary>
-            [JsonProperty("group", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonPropertyName("group"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
             public string Group { get; set; }
 
             /// <summary>Gets or sets the weight.</summary>
-            [JsonProperty("weight", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonPropertyName("weight"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
             public decimal? Weight { get; set; }
         }
 
@@ -478,7 +468,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private class CytoElementDataNode : CytoElementData
         {
             /// <summary>Gets or sets the parent for a compound node.</summary>
-            [JsonProperty("parent", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonPropertyName("parent"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
             public string ParentId { get; set; }
         }
 
@@ -486,11 +476,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private class CytoElementDataEdge : CytoElementData
         {
             /// <summary>Gets or sets the source node id for an edge.</summary>
-            [JsonProperty("source")]
+            [JsonPropertyName("source")]
             public string SourceId { get; set; }
 
             /// <summary>Gets or sets the target node id for an edge.</summary>
-            [JsonProperty("target")]
+            [JsonPropertyName("target")]
             public string TargetId { get; set; }
         }
     }
