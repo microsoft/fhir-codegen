@@ -396,13 +396,17 @@ public static class OpenApiCommon
     /// <summary>Builds string parameter.</summary>
     /// <param name="name">       The name.</param>
     /// <param name="description">The description.</param>
+    /// <param name="paramLoc">   (Optional) The parameter location.</param>
     /// <returns>An OpenApiParameter.</returns>
-    internal static OpenApiParameter BuildStringParameter(string name, string description)
+    internal static OpenApiParameter BuildStringParameter(
+        string name,
+        string description,
+        ParameterLocation paramLoc = ParameterLocation.Query)
     {
         return new OpenApiParameter()
         {
             Name = name,
-            In = ParameterLocation.Query,
+            In = paramLoc,
             Description = description,
             Required = false,
             Schema = new OpenApiSchema()
@@ -415,13 +419,17 @@ public static class OpenApiCommon
     /// <summary>Builds number parameter.</summary>
     /// <param name="name">       The name.</param>
     /// <param name="description">The description.</param>
+    /// <param name="paramLoc">   (Optional) The parameter location.</param>
     /// <returns>An OpenApiParameter.</returns>
-    internal static OpenApiParameter BuildNumberParameter(string name, string description)
+    internal static OpenApiParameter BuildNumberParameter(
+        string name,
+        string description,
+        ParameterLocation paramLoc = ParameterLocation.Query)
     {
         return new OpenApiParameter()
         {
             Name = name,
-            In = ParameterLocation.Query,
+            In = paramLoc,
             Description = description,
             Required = false,
             Schema = new OpenApiSchema()

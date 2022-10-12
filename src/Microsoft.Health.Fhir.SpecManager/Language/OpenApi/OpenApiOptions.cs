@@ -15,7 +15,7 @@ public class OpenApiOptions
     /// <summary>Gets options for controlling the language.</summary>
     public static Dictionary<string, string> LanguageOptions => new()
     {
-        { "OpenApiVersion", "Open API version to use (2, 3)." },
+        { "OpenApiVersion", "Open API version to use (2|3)." },
         { "FileFormat", "File format to export (json|yaml)." },
         { "Title", "Title to use in the Info section, defaults to 'FHIR {FhirSequence}:{VersionString}'." },
         { "Version", "Version number to use in the OpenAPI file, defaults to '{FHIR Version}'." },
@@ -24,11 +24,13 @@ public class OpenApiOptions
         { "SchemaStyle", "How schemas should be built (references|inline)." },
         { "MaxRecursions", "Maximum depth to expand recursions (0)." },
 
-        { "FhirMime", "Which FHIR MIME types to support (capabilities|json|xml|both)" },
-        { "PatchMime", "Which FHIR Patch types to support (capabilities|json|xml|fhirMime|all)" },
+        { "FhirMime", "Which FHIR MIME types to support (capabilities|json|xml|both)." },
+        { "PatchMime", "Which FHIR Patch types to support (capabilities|json|xml|fhirMime|all)." },
 
         { "SearchSupport", "Supported search methods (both|get|post|none)." },
+        { "IncludeSearchParams", "If search parameters should be included in the definitions (true|false)." },
         { "SearchPostParams", "Where search params should appear in post-based search (body|query|both|none)." },
+        { "ConsolidateSearchParams", "If search parameters should be consolidated (true|false)." },
 
         { "OperationSupport", "Supported Operation calling styles (post|get|both|none)." },
 
@@ -42,7 +44,7 @@ public class OpenApiOptions
         { "History", "If _history GET operations should be included (false|true)." },
 
         { "Metadata", "If the JSON should include a link to /metadata (true|false)." },
-        { "BundleOperations", "If the generator should include /Bundle, etc. (true|false)" },
+        { "BundleOperations", "If the generator should include /Bundle, etc. (true|false)." },
 
         { "ReadOnly", "If the output should only contain GET operations (false|true)." },
         { "WriteOnly", "If the output should only contain POST/PUT/DELETE operations (false|true)." },
@@ -122,7 +124,9 @@ public class OpenApiOptions
                 SchemaLevel = OpenApiCommon.OaSchemaLevelCodes.None;
                 break;
 
+            case "NAME":
             case "NAMES":
+            case "NAMED":
                 SchemaLevel = OpenApiCommon.OaSchemaLevelCodes.Names;
                 break;
 
@@ -224,6 +228,8 @@ public class OpenApiOptions
                 break;
         }
 
+        IncludeSearchParams = options.GetParam("IncludeSearchParams", true);
+
         val = options.GetParam("SearchPostParams", "body");
         switch (val.ToUpperInvariant())
         {
@@ -244,6 +250,8 @@ public class OpenApiOptions
                 SearchParamLoc = OpenApiCommon.OaSearchPostParameterLocationCodes.Body;
                 break;
         }
+
+        ConsolidateSearchParams = options.GetParam("ConsolidateSearchParams", true);
 
         val = options.GetParam("OperationSupport", "post");
         switch (val.ToUpperInvariant())
@@ -450,8 +458,16 @@ public class OpenApiOptions
     /// <summary>The search support.</summary>
     internal OpenApiCommon.OaHttpSupportCodes SearchSupport { get; set; } = OpenApiCommon.OaHttpSupportCodes.Both;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the search parameters should be included.
+    /// </summary>
+    internal bool IncludeSearchParams { get; set; } = true;
+
     /// <summary>The search parameter location.</summary>
     internal OpenApiCommon.OaSearchPostParameterLocationCodes SearchParamLoc { get; set; } = OpenApiCommon.OaSearchPostParameterLocationCodes.Body;
+
+    /// <summary>Gets or sets the search parameter consolidation.</summary>
+    internal bool ConsolidateSearchParams { get; set; } = true;
 
     /// <summary>Gets or sets the operation support.</summary>
     internal OpenApiCommon.OaHttpSupportCodes OperationSupport { get; set; } = OpenApiCommon.OaHttpSupportCodes.Post;
