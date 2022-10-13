@@ -11,6 +11,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language.OpenApi;
 /// <summary>An open API common.</summary>
 public static class OpenApiCommon
 {
+    public const string PathComponentLogicalId = "logical_id";
+    public const string PathComponentVersionId = "resource_version";
+
     /// <summary>Values that represent OpenAPI file formats.</summary>
     public enum OaFileFormat
     {
@@ -57,7 +60,13 @@ public static class OpenApiCommon
         FhirXml,
 
         /// <summary>Support application/fhir+json and application/fhir+xml.</summary>
-        Both,
+        Common,
+
+        /// <summary>Support application/x-turtle.</summary>
+        FhirTurtle,
+
+        /// <summary>All known FHIR MIME types.</summary>
+        All,
     }
 
     /// <summary>Values that represent Patch MIME configuration options.</summary>
@@ -244,6 +253,12 @@ public static class OpenApiCommon
     /// <summary>(Immutable) Options for controlling the history.</summary>
     public static readonly Dictionary<string, OpenApiParameter> _historyParameters;
 
+    /// <summary>(Immutable) The HTTP Request headers.</summary>
+    public static readonly Dictionary<string, OpenApiParameter> _httpRequestHeaders;
+
+    /// <summary>(Immutable) The HTTP response headers.</summary>
+    public static readonly Dictionary<string, OpenApiParameter> _httpResponseHeaders;
+
     /// <summary>(Immutable) The response codes read.</summary>
     public static readonly int[] _responseCodesRead = new int[] { 200, 410, 404 };
 
@@ -334,8 +349,8 @@ public static class OpenApiCommon
 
         _pathParameters = new()
         {
-            ["id"] = BuildPathParameter("id", "Resource Logical ID"),
-            ["vid"] = BuildPathParameter("vid", "Resource Version Number"),
+            [PathComponentLogicalId] = BuildPathParameter(PathComponentLogicalId, "Resource Logical ID"),
+            [PathComponentVersionId] = BuildPathParameter(PathComponentVersionId, "Resource Version Number"),
         };
 
         _historyParameters = new()
@@ -345,6 +360,24 @@ public static class OpenApiCommon
             ["_at"] = BuildStringParameter("_at", "Only include resource versions that were current at some point during the time period specified in the date time value"),
             ["_list"] = BuildStringParameter("_list", "Only include resource versions that are referenced in the specified list"),
             ["_sort"] = BuildStringParameter("_sort", "Request which order results should be returned in"),
+        };
+
+        _httpRequestHeaders = new()
+        {
+            ["Accept"] = BuildStringParameter("Accept", "Content-negotiation for MIME Type and FHIR Version", ParameterLocation.Header),
+            ["If-Match"] = BuildStringParameter("If-Match", "ETag-based matching for conditional requests", ParameterLocation.Header),
+            ["If-Modified-Since"] = BuildStringParameter("If-Modified-Since", "Date-based matching for conditional read requests", ParameterLocation.Header),
+            ["If-None-Exist"] = BuildStringParameter("If-None-Exist", "HL7 defined extension header to prevent the creation of duplicate resources", ParameterLocation.Header),
+            ["If-None-Match"] = BuildStringParameter("If-None-Match", "ETag-based matching for conditional requests", ParameterLocation.Header),
+            ["Prefer"] = BuildStringParameter("Prefer", "Request various behaviors specific to a single request", ParameterLocation.Header),
+        };
+
+        _httpResponseHeaders = new()
+        {
+            ["ETag"] = BuildStringParameter("ETag", "The value from .meta.versionId as a weak ETag, prefixed with W/ and enclosed in quotes", ParameterLocation.Header),
+            ["Last-Modified"] = BuildStringParameter("Last-Modified", "The value from .meta.lastUpdated, which is a FHIR instant, converted to the proper format", ParameterLocation.Header),
+            ["Location"] = BuildStringParameter("Location", "The URL to redirect a request to", ParameterLocation.Header),
+            ["Content-Location"] = BuildStringParameter("Content-Location", "Indicates an alternate location for the returned data", ParameterLocation.Header),
         };
 
     }

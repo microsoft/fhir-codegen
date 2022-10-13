@@ -4,7 +4,6 @@
 // </copyright>
 
 
-using fhirCsR2.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.OpenApi.Models;
@@ -36,6 +35,7 @@ public class ModelBuilder
 
     private bool _fhirJson = false;
     private bool _fhirXml = false;
+    private bool _fhirTurtle = false;
 
     private bool _patchJson = false;
     private bool _patchXml = false;
@@ -150,7 +150,7 @@ public class ModelBuilder
                     continue;
                 }
 
-                if (fhirSp.ValueType.Equals("number", StringComparison.OrdinalIgnoreCase))
+                if (fhirSp.ValueType?.Equals("number", StringComparison.OrdinalIgnoreCase) ?? false)
                 {
                     parameters.Add(fhirSp.Code, BuildNumberParameter(fhirSp.Code, fhirSp.Description, ParameterLocation.Query));
                 }
@@ -230,6 +230,14 @@ public class ModelBuilder
             }
         }
 
+        if (_openApiOptions.IncludeHeaders)
+        {
+            foreach ((string code, OpenApiParameter parameter) in _httpRequestHeaders)
+            {
+                p.Add(code, parameter);
+            }
+        }
+
         return p;
     }
 
@@ -248,17 +256,29 @@ public class ModelBuilder
         {
             _fhirJson = _caps.SupportsFhirJson();
             _fhirXml = _caps.SupportsFhirXml();
+            _fhirTurtle = _caps.SupportsFhirTurtle();
         }
-        else if (_openApiOptions.FhirMime == OaFhirMimeCodes.Both)
+        else if (_openApiOptions.FhirMime == OaFhirMimeCodes.Common)
         {
             _fhirJson = true;
             _fhirXml = true;
+            _fhirTurtle = false;
+        }
+        else if (_openApiOptions.FhirMime == OaFhirMimeCodes.All)
+        {
+            _fhirJson = true;
+            _fhirXml = true;
+            _fhirTurtle = true;
         }
         else
         {
             _fhirJson = _openApiOptions.FhirMime == OaFhirMimeCodes.FhirJson;
             _fhirXml = _openApiOptions.FhirMime == OaFhirMimeCodes.FhirXml;
+            _fhirTurtle = _openApiOptions.FhirMime == OaFhirMimeCodes.FhirTurtle;
         }
+
+        // ensure that *something* is supported
+
 
         if ((_openApiOptions.PatchMime == OaPatchMimeCodes.FromCapabilities) &&
             (_caps != null))
@@ -386,8 +406,6 @@ public class ModelBuilder
 
                 paths.Add($"/metadata", metadataPath);
             }
-
-            // TODO(ginoc): Need to add options for CapabilityStatement operations - and figure out how they are applied
         }
 
         // handle resource-specific things first (alphebetical)
@@ -413,7 +431,7 @@ public class ModelBuilder
                 {
                     case FhirInteractionCodes.Read:
                         {
-                            opPath = $"/{resource.Name}/{{id}}";
+                            opPath = $"/{resource.Name}/{{{PathComponentLogicalId}}}";
                             if (!paths.ContainsKey(opPath))
                             {
                                 paths.Add(opPath, new OpenApiPathItem() { Operations = new Dictionary<OperationType, OpenApiOperation>() });
@@ -426,7 +444,7 @@ public class ModelBuilder
 
                     case FhirInteractionCodes.VRead:
                         {
-                            opPath = $"/{resource.Name}/{{id}}/_history/{{vid}}";
+                            opPath = $"/{resource.Name}/{{{PathComponentLogicalId}}}/_history/{{{PathComponentVersionId}}}";
                             if (!paths.ContainsKey(opPath))
                             {
                                 paths.Add(opPath, new OpenApiPathItem() { Operations = new Dictionary<OperationType, OpenApiOperation>() });
@@ -439,7 +457,7 @@ public class ModelBuilder
 
                     case FhirInteractionCodes.Update:
                         {
-                            opPath = $"/{resource.Name}/{{id}}";
+                            opPath = $"/{resource.Name}/{{{PathComponentLogicalId}}}";
                             if (!paths.ContainsKey(opPath))
                             {
                                 paths.Add(opPath, new OpenApiPathItem() { Operations = new Dictionary<OperationType, OpenApiOperation>() });
@@ -452,7 +470,7 @@ public class ModelBuilder
 
                     case FhirInteractionCodes.Patch:
                         {
-                            opPath = $"/{resource.Name}/{{id}}";
+                            opPath = $"/{resource.Name}/{{{PathComponentLogicalId}}}";
                             if (!paths.ContainsKey(opPath))
                             {
                                 paths.Add(opPath, new OpenApiPathItem() { Operations = new Dictionary<OperationType, OpenApiOperation>() });
@@ -465,7 +483,7 @@ public class ModelBuilder
 
                     case FhirInteractionCodes.Delete:
                         {
-                            opPath = $"/{resource.Name}/{{id}}";
+                            opPath = $"/{resource.Name}/{{{PathComponentLogicalId}}}";
                             if (!paths.ContainsKey(opPath))
                             {
                                 paths.Add(opPath, new OpenApiPathItem() { Operations = new Dictionary<OperationType, OpenApiOperation>() });
@@ -483,7 +501,7 @@ public class ModelBuilder
                                 continue;
                             }
 
-                            opPath = $"/{resource.Name}/{{id}}/_history";
+                            opPath = $"/{resource.Name}/{{{PathComponentLogicalId}}}/_history";
                             if (!paths.ContainsKey(opPath))
                             {
                                 paths.Add(opPath, new OpenApiPathItem() { Operations = new Dictionary<OperationType, OpenApiOperation>() });
@@ -563,7 +581,7 @@ public class ModelBuilder
             }       // close: foreach resource
 
             // traverse the operations for this resource
-            foreach (FhirOperation fhirOp in GetResourceFhirOperations(resource.Name))
+            foreach (FhirOperation fhirOp in GetResourceFhirOperations(resource.Name, FhirOperation.OperationKindCodes.Operation))
             {
                 BuildResourceOperationOasPaths(paths, resource, schemas, fhirOp);
             }
@@ -584,7 +602,7 @@ public class ModelBuilder
                     AddCommonHttpParameters(paths[opPath]);
                 }
 
-                paths[opPath].AddOperation(OperationType.Get, BuildSearchSystemGetOasOp(schemas));
+                paths[opPath].AddOperation(OperationType.Get, BuildSystemSearchGetOasOp(schemas));
             }
 
             if (_searchPost)
@@ -596,7 +614,7 @@ public class ModelBuilder
                     AddCommonHttpParameters(paths[opPath]);
                 }
 
-                paths[opPath].AddOperation(OperationType.Post, BuildSearchSystemPostOasOp(schemas));
+                paths[opPath].AddOperation(OperationType.Post, BuildSystemSearchPostOasOp(schemas));
             }
         }
 
@@ -604,7 +622,7 @@ public class ModelBuilder
 
 
         // handle system-level operations
-        foreach (FhirOperation fhirOp in GetSystemFhirOperations())
+        foreach (FhirOperation fhirOp in GetSystemFhirOperations(FhirOperation.OperationKindCodes.Operation))
         {
             BuildSystemOperationOasPaths(paths, schemas, fhirOp);
         }
@@ -621,7 +639,7 @@ public class ModelBuilder
         Dictionary<string, OpenApiSchema> schemas,
         FhirOperation fhirOp)
     {
-        // TODO(ginoc): need to find the correct path and add appropriate parameters (input parameters of the operation)
+        // query operations cannot be invoked directly, they are added to search
         if (fhirOp.Kind == FhirOperation.OperationKindCodes.Query)
         {
             return;
@@ -699,7 +717,7 @@ public class ModelBuilder
         Dictionary<string, OpenApiSchema> schemas,
         FhirOperation fhirOp)
     {
-        // TODO(ginoc): need to find the correct path and add appropriate parameters (input parameters of the operation)
+        // query operations cannot be invoked directly, they are added to search
         if (fhirOp.Kind == FhirOperation.OperationKindCodes.Query)
         {
             return;
@@ -711,7 +729,7 @@ public class ModelBuilder
         {
             if (TryBuildOperationGetOasOp(resource, fhirOp, schemas, OaOpLevelCodes.Instance, out OpenApiOperation oasOpGet))
             {
-                opPath = $"/{resource.Name}/{{id}}/${fhirOp.Code}";
+                opPath = $"/{resource.Name}/{{{PathComponentLogicalId}}}/${fhirOp.Code}";
                 if (!paths.ContainsKey(opPath))
                 {
                     paths.Add(opPath, new OpenApiPathItem() { Operations = new Dictionary<OperationType, OpenApiOperation>() });
@@ -727,7 +745,7 @@ public class ModelBuilder
 
             if (TryBuildOperationPostOasOp(resource, fhirOp, schemas, OaOpLevelCodes.Instance, out OpenApiOperation oasOpPost))
             {
-                opPath = $"/{resource.Name}/{{id}}/${fhirOp.Code}";
+                opPath = $"/{resource.Name}/{{{PathComponentLogicalId}}}/${fhirOp.Code}";
                 if (!paths.ContainsKey(opPath))
                 {
                     paths.Add(opPath, new OpenApiPathItem() { Operations = new Dictionary<OperationType, OpenApiOperation>() });
@@ -851,19 +869,62 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = fhirOp.Description;
+            if (string.IsNullOrEmpty(fhirOp.Description))
+            {
+                oasOp.Summary = $"operation: execute the {fhirOp.Name} operation";
+            }
+            else
+            {
+                oasOp.Summary = "operation: " + fhirOp.Description;
+            }
         }
 
         if (opLevel == OaOpLevelCodes.Instance)
         {
-            // instance level includes {id} segment
-            oasOp.Parameters.Add(BuildReferencedParameter("id"));
+            // instance level includes PathComponentLogicalId segment
+            oasOp.Parameters.Add(BuildReferencedParameter(PathComponentLogicalId));
+        }
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
         }
 
         HashSet<string> usedParams = new();
 
+        List<FhirParameter> inParams = new();
+        List<FhirParameter> outParams = new();
+
+        HashSet<string> inResourceParamNames = new();
+
+        foreach (FhirParameter p in fhirOp.Parameters)
+        {
+            switch (p.Use.FirstOrDefault('-'))
+            {
+                case 'i':
+                case 'I':
+                    inParams.Add(p);
+
+                    if (p.ValueType?.Equals("resource", StringComparison.OrdinalIgnoreCase) ?? false)
+                    {
+                        inResourceParamNames.Add(p.Name);
+                    }
+
+                    break;
+
+                case 'o':
+                case 'O':
+                    outParams.Add(p);
+                    break;
+            }
+        }
+
+        // can skip this parameter if we are on instance level and there is a single input resource
+        bool canSkipInputResource = (opLevel == OaOpLevelCodes.Instance) && (inResourceParamNames.Count() == 1);
+
         // search for input parameters
-        foreach (FhirParameter fhirParam in fhirOp.Parameters.Where(fp => fp.Use.Equals("in", StringComparison.Ordinal)))
+        foreach (FhirParameter fhirParam in inParams)
         {
             // skip duplicates
             if (usedParams.Contains(fhirParam.Name))
@@ -871,9 +932,29 @@ public class ModelBuilder
                 continue;
             }
 
-            // query parameters can only be 'simple' types
-            if (!_info.PrimitiveTypes.ContainsKey(fhirParam.ValueType))
+            // skip 'resource' on input if instance level
+            if (canSkipInputResource && inResourceParamNames.Contains(fhirParam.Name))
             {
+                continue;
+            }
+
+            // if we have parameter scopes, skip ones that do not patch
+            if ((fhirParam.Scopes?.Any() ?? false) &&
+                (!fhirParam.Scopes.Contains(opLevel.ToLiteral())))
+            {
+                continue;
+            }
+
+            // query parameters can only be 'simple' types
+            if (!_info.PrimitiveTypes.ContainsKey(fhirParam.ValueType ?? "string"))
+            {
+                // if we cannot add a required value, fail
+                if (fhirParam.Min > 0)
+                {
+                    oasOp = null;
+                    return false;
+                }
+
                 continue;
             }
 
@@ -881,13 +962,11 @@ public class ModelBuilder
             usedParams.Add(fhirParam.Name);
         }
 
-        FhirParameter[] outParams = fhirOp.Parameters.Where(fp => fp.Use.Equals("out", StringComparison.Ordinal)).ToArray();
-
-        if (outParams.Length == 1)
+        if (outParams.Count == 1)
         {
-            if (_info.Resources.ContainsKey(outParams[0].ValueType))
+            if (_info.Resources.ContainsKey(outParams[0].ValueType ?? "string"))
             {
-                oasOp.Responses = BuildResponses(_responseCodesRead, outParams[0].ValueType, schemas);
+                oasOp.Responses = BuildResponses(_responseCodesRead, outParams[0].ValueType ?? "string", schemas);
             }
             else
             {
@@ -969,32 +1048,86 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = fhirOp.Description;
+            if (string.IsNullOrEmpty(fhirOp.Description))
+            {
+                oasOp.Summary = $"operation: execute the {fhirOp.Name} operation";
+            }
+            else
+            {
+                oasOp.Summary = "operation: " + fhirOp.Description;
+            }
         }
 
         if (opLevel == OaOpLevelCodes.Instance)
         {
-            // instance level includes {id} segment
-            oasOp.Parameters.Add(BuildReferencedParameter("id"));
+            // instance level includes PathComponentLogicalId segment
+            oasOp.Parameters.Add(BuildReferencedParameter(PathComponentLogicalId));
+        }
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
         }
 
         HashSet<string> usedParams = new();
 
-        FhirParameter[] inParams = fhirOp.Parameters.Where(fp => fp.Use.Equals("in", StringComparison.Ordinal)).ToArray();
+        List<FhirParameter> inParams = new();
+        List<FhirParameter> simpleInParams = new();
+        List<FhirParameter> outParams = new();
 
-        FhirParameter[] simpleInParams = inParams.Where(fp => _info.PrimitiveTypes.ContainsKey(fp.ValueType)).ToArray();
-        FhirParameter[] resourceInParams = inParams.Where(fp => _info.Resources.ContainsKey(fp.ValueType)).ToArray();
+        HashSet<string> inResourceParamNames = new();
+        FhirParameter inputResourceParameter = null;
+
+        int complexInParamCount = 0;
+
+        foreach (FhirParameter p in fhirOp.Parameters)
+        {
+            switch (p.Use.FirstOrDefault('-'))
+            {
+                case 'i':
+                case 'I':
+                    inParams.Add(p);
+
+                    if (p.ValueType?.Equals("resource", StringComparison.OrdinalIgnoreCase) ?? false)
+                    {
+                        inResourceParamNames.Add(p.Name);
+                        inputResourceParameter = p;
+                    }
+                    else if (_info.Resources.ContainsKey(p.ValueType ?? string.Empty))
+                    {
+                        inResourceParamNames.Add(p.Name);
+                        inputResourceParameter = p;
+                    }
+                    else if (_info.PrimitiveTypes.ContainsKey(p.ValueType ?? "string"))
+                    {
+                        simpleInParams.Add(p);
+                    }
+                    else
+                    {
+                        complexInParamCount++;
+                    }
+
+                    break;
+
+                case 'o':
+                case 'O':
+                    outParams.Add(p);
+                    break;
+            }
+        }
 
         // check for a single resource parameter and all others are 'simple' (primitive) types
-        if ((resourceInParams.Length == 1) &&
-            (simpleInParams.Length + resourceInParams.Length) == inParams.Length)
+        if ((inResourceParamNames.Count() == 1) &&
+            (complexInParamCount == 0) &&
+            (inputResourceParameter  != null))
         {
             oasOp.RequestBody = new OpenApiRequestBody()
             {
                 Required = true,
-                Content = BuildContentMap(resourceInParams[0].ValueType, schemas),
+                Content = BuildContentMap(inputResourceParameter.ValueType ?? "Resource", schemas),
                 Description = _openApiOptions.IncludeDescriptions
-                    ? resourceInParams[0].Documentation
+                    ? inputResourceParameter.Documentation
                     : null,
             };
 
@@ -1022,13 +1155,11 @@ public class ModelBuilder
             };
         }
 
-        FhirParameter[] outParams = fhirOp.Parameters.Where(fp => fp.Use.Equals("out", StringComparison.Ordinal)).ToArray();
-
-        if (outParams.Length == 1)
+        if (outParams.Count() == 1)
         {
-            if (_info.Resources.ContainsKey(outParams[0].ValueType))
+            if (_info.Resources.ContainsKey(outParams[0].ValueType ?? "string"))
             {
-                oasOp.Responses = BuildResponses(_responseCodesRead, outParams[0].ValueType, schemas);
+                oasOp.Responses = BuildResponses(_responseCodesRead, outParams[0].ValueType ?? "string", schemas);
             }
             else
             {
@@ -1116,7 +1247,7 @@ public class ModelBuilder
     /// <summary>Builds resource search system post oas operation.</summary>
     /// <param name="schemas">The schemas.</param>
     /// <returns>An OpenApiOperation.</returns>
-    private OpenApiOperation BuildSearchSystemPostOasOp(
+    private OpenApiOperation BuildSystemSearchPostOasOp(
         Dictionary<string, OpenApiSchema> schemas)
     {
         OpenApiOperation oasOp = new();
@@ -1129,7 +1260,13 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = "Search the entire FHIR server";
+            oasOp.Summary = "search-system: Search all resources";
+        }
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
         }
 
         oasOp.RequestBody = new OpenApiRequestBody()
@@ -1261,7 +1398,13 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"Search all FHIR {resource.Name}";
+            oasOp.Summary = $"search-type: Search for {resource.Name} instances";
+        }
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
         }
 
         oasOp.RequestBody = new OpenApiRequestBody()
@@ -1350,7 +1493,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = fhirSp.Name,
-                        Type = fhirSp.ValueType,
+                        Type = fhirSp.ValueType ?? "string",
                     });
 
                 usedParams.Add(fhirSp.Code);
@@ -1365,7 +1508,7 @@ public class ModelBuilder
     /// <summary>Builds resource search system get oas operation.</summary>
     /// <param name="schemas">The schemas.</param>
     /// <returns>An OpenApiOperation.</returns>
-    private OpenApiOperation BuildSearchSystemGetOasOp(
+    private OpenApiOperation BuildSystemSearchGetOasOp(
         Dictionary<string, OpenApiSchema> schemas)
     {
         OpenApiOperation oasOp = new();
@@ -1378,7 +1521,13 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = "System-level search";
+            oasOp.Summary = "search-sytem: Search all resources";
+        }
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
         }
 
         HashSet<string> usedParams = new();
@@ -1458,7 +1607,13 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"Search all FHIR {resource.Name}";
+            oasOp.Summary = $"search-type: Search for {resource.Name} instances";
+        }
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
         }
 
         HashSet<string> usedParams = new();
@@ -1562,14 +1717,20 @@ public class ModelBuilder
 
         oasOp.Tags.Add(new OpenApiTag() { Reference = new OpenApiReference() { Id = resource.Name, Type = ReferenceType.Tag, } });
 
-        //if (_openApiOptions.IncludeDescriptions)
-        //{
-        //    oasOp.Description = "Create a FHIR " + resource.Name + ": " + resource.ShortDescription;
-        //}
-
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"Create a FHIR {resource.Name}";
+            oasOp.Summary = $"create: Create a new {resource.Name} instance";
+        }
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
+
+            if (ResolveConditionalCreate(resource.Name))
+            {
+                oasOp.Parameters.Add(BuildReferencedParameter("If-None-Exist"));
+            }
         }
 
         oasOp.RequestBody = new OpenApiRequestBody()
@@ -1603,14 +1764,31 @@ public class ModelBuilder
 
         oasOp.Tags.Add(new OpenApiTag() { Reference = new OpenApiReference() { Id = resource.Name, Type = ReferenceType.Tag, } });
 
-        //if (_openApiOptions.IncludeDescriptions)
-        //{
-        //    oasOp.Description = "Get the version history of all FHIR " + resource.Name + ": " + resource.ShortDescription;
-        //}
-
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"Get the history of all FHIR {resource.Name}";
+            oasOp.Summary = $"history-type: Get the change history of all {resource.Name} resources";
+        }
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
+
+            switch (ResolveConditionalRead(resource.Name))
+            {
+                case ConditionalReadPolicy.NotSupported:
+                    break;
+                case ConditionalReadPolicy.ModifiedSince:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    break;
+                case ConditionalReadPolicy.NotMatch:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    break;
+                case ConditionalReadPolicy.FullSupport:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    break;
+            }
         }
 
         foreach (string code in _openApiOptions.HttpReadParams)
@@ -1644,18 +1822,35 @@ public class ModelBuilder
 
         oasOp.Tags.Add(new OpenApiTag() { Reference = new OpenApiReference() { Id = resource.Name, Type = ReferenceType.Tag, } });
 
-        //if (_openApiOptions.IncludeDescriptions)
-        //{
-        //    oasOp.Description = "Get the version history of a specific FHIR " + resource.Name + ": " + resource.ShortDescription;
-        //}
-
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"Get the history of a FHIR {resource.Name}";
+            oasOp.Summary = $"history-instance: Get the change history of a specific {resource.Name} resource";
         }
 
-        // history instance includes {id} segment
-        oasOp.Parameters.Add(BuildReferencedParameter("id"));
+        // history instance includes PathComponentLogicalId segment
+        oasOp.Parameters.Add(BuildReferencedParameter(PathComponentLogicalId));
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
+
+            switch (ResolveConditionalRead(resource.Name))
+            {
+                case ConditionalReadPolicy.NotSupported:
+                    break;
+                case ConditionalReadPolicy.ModifiedSince:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    break;
+                case ConditionalReadPolicy.NotMatch:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    break;
+                case ConditionalReadPolicy.FullSupport:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    break;
+            }
+        }
 
         foreach (string code in _openApiOptions.HttpReadParams)
         {
@@ -1680,6 +1875,8 @@ public class ModelBuilder
         FhirComplex resource,
         Dictionary<string, OpenApiSchema> schemas)
     {
+        ConditionalDeletePolicy conditionalDelete = ResolveConditiaonlDelete(resource.Name);
+
         OpenApiOperation oasOp = new();
 
         string id = FhirUtils.ToConvention("Delete." + resource.Name, string.Empty, _openApiOptions.IdConvention);
@@ -1690,14 +1887,25 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"Delete a FHIR {resource.Name}";
+            oasOp.Summary = $"delete: Perform a loical delete on a {resource.Name} instance";
         }
 
-        // delete includes {id} segment
-        oasOp.Parameters.Add(BuildReferencedParameter("id"));
+        // delete includes PathComponentLogicalId segment
+        oasOp.Parameters.Add(BuildReferencedParameter(PathComponentLogicalId));
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
+
+            if (conditionalDelete != ConditionalDeletePolicy.NotSupported)
+            {
+                oasOp.Parameters.Add(BuildReferencedParameter("If-Match"));
+            }
+        }
 
         // conditional deletes take search parameters
-        if ((ResolveConditiaonlDelete(resource.Name) != ConditionalDeletePolicy.NotSupported) &&
+        if ((conditionalDelete != ConditionalDeletePolicy.NotSupported) &&
             _openApiOptions.IncludeSearchParams)
         {
             HashSet<string> usedParams = new();
@@ -1758,11 +1966,22 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"Patch a FHIR {resource.Name}";
+            oasOp.Summary = $"patch: Patch a {resource.Name} instance";
         }
 
-        // patch includes {id} segment
-        oasOp.Parameters.Add(BuildReferencedParameter("id"));
+        // patch includes PathComponentLogicalId segment
+        oasOp.Parameters.Add(BuildReferencedParameter(PathComponentLogicalId));
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
+
+            if (ResolveConditionalPatch(resource.Name))
+            {
+                oasOp.Parameters.Add(BuildReferencedParameter("If-Match"));
+            }
+        }
 
         oasOp.RequestBody = new OpenApiRequestBody()
         {
@@ -1788,6 +2007,10 @@ public class ModelBuilder
     {
         OpenApiOperation oasOp = new();
 
+        bool supportUpdateCreate = ResolveUpdateCreate(resource.Name);
+        bool supportConditionalCreate = supportUpdateCreate && ResolveConditionalCreate(resource.Name);
+        bool supportConditionalUpdate = ResolveConditionalUpdate(resource.Name);
+
         string id;
 
         if (ResolveUpdateCreate(resource.Name))
@@ -1796,7 +2019,7 @@ public class ModelBuilder
 
             if (_openApiOptions.IncludeSummaries)
             {
-                oasOp.Summary = $"Update or Create a FHIR {resource.Name}";
+                oasOp.Summary = $"update,create: Update or Create a {resource.Name} instance";
             }
         }
         else
@@ -1805,7 +2028,7 @@ public class ModelBuilder
 
             if (_openApiOptions.IncludeSummaries)
             {
-                oasOp.Summary = $"Update a FHIR {resource.Name}";
+                oasOp.Summary = $"update: Update a {resource.Name} instance";
             }
         }
 
@@ -1813,45 +2036,64 @@ public class ModelBuilder
 
         oasOp.Tags.Add(new OpenApiTag() { Reference = new OpenApiReference() { Id = resource.Name, Type = ReferenceType.Tag, } });
 
-        // update includes {id} segment
-        oasOp.Parameters.Add(BuildReferencedParameter("id"));
+        // update includes PathComponentLogicalId segment
+        oasOp.Parameters.Add(BuildReferencedParameter(PathComponentLogicalId));
 
-        // conditional updates take search parameters
-        if (ResolveConditionalUpdate(resource.Name) &&
-            _openApiOptions.IncludeSearchParams)
+        if (_openApiOptions.IncludeHeaders)
         {
-            HashSet<string> usedParams = new();
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
 
-            foreach (string code in _openApiOptions.SearchCommonParams)
+            if (supportUpdateCreate && supportConditionalCreate)
             {
-                if (usedParams.Contains(code))
-                {
-                    continue;
-                }
-
-                oasOp.Parameters.Add(BuildReferencedParameter(code));
-                usedParams.Add(code);
+                oasOp.Parameters.Add(BuildReferencedParameter("If-None-Exist"));
             }
 
-            foreach (FhirSearchParam fhirSp in GetResourceSearchParameters(resource.Name))
+            if (supportConditionalUpdate)
             {
-                if (_openApiOptions.ConsolidateSearchParams)
+                oasOp.Parameters.Add(BuildReferencedParameter("If-Match"));
+                oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+            }
+        }
+
+        // conditional updates take search parameters
+        if (ResolveConditionalUpdate(resource.Name))
+        {
+            if (_openApiOptions.IncludeSearchParams)
+            {
+                HashSet<string> usedParams = new();
+
+                foreach (string code in _openApiOptions.SearchCommonParams)
                 {
-                    oasOp.Parameters.Add(BuildReferencedParameter(fhirSp.Code));
+                    if (usedParams.Contains(code))
+                    {
+                        continue;
+                    }
+
+                    oasOp.Parameters.Add(BuildReferencedParameter(code));
+                    usedParams.Add(code);
+                }
+
+                foreach (FhirSearchParam fhirSp in GetResourceSearchParameters(resource.Name))
+                {
+                    if (_openApiOptions.ConsolidateSearchParams)
+                    {
+                        oasOp.Parameters.Add(BuildReferencedParameter(fhirSp.Code));
+                        usedParams.Add(fhirSp.Code);
+                        continue;
+                    }
+
+                    if (fhirSp.ValueType?.Equals("number") ?? false)
+                    {
+                        oasOp.Parameters.Add(BuildNumberParameter(fhirSp.Code, fhirSp.Description));
+                    }
+                    else
+                    {
+                        oasOp.Parameters.Add(BuildStringParameter(fhirSp.Code, fhirSp.Description));
+                    }
+
                     usedParams.Add(fhirSp.Code);
-                    continue;
                 }
-
-                if (fhirSp.ValueType?.Equals("number") ?? false)
-                {
-                    oasOp.Parameters.Add(BuildNumberParameter(fhirSp.Code, fhirSp.Description));
-                }
-                else
-                {
-                    oasOp.Parameters.Add(BuildStringParameter(fhirSp.Code, fhirSp.Description));
-                }
-
-                usedParams.Add(fhirSp.Code);
             }
         }
 
@@ -1885,25 +2127,42 @@ public class ModelBuilder
 
         oasOp.Tags.Add(new OpenApiTag() { Reference = new OpenApiReference() { Id = resource.Name, Type = ReferenceType.Tag, } });
 
-        //if (_openApiOptions.IncludeDescriptions)
-        //{
-        //    oasOp.Description = "VRead a specific version of a FHIR " + resource.Name + ": " + resource.ShortDescription;
-        //}
-
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"Read a specific version of a FHIR {resource.Name}";
+            oasOp.Summary = $"vread: Read {resource.Name} instance with specific version";
         }
 
-        // vread includes {id} segment
-        oasOp.Parameters.Add(BuildReferencedParameter("id"));
+        // vread includes PathComponentLogicalId segment
+        oasOp.Parameters.Add(BuildReferencedParameter(PathComponentLogicalId));
 
-        // vread includes {vid} segment
-        oasOp.Parameters.Add(BuildReferencedParameter("vid"));
-
+        // vread includes PathComponentVersionId segment
+        oasOp.Parameters.Add(BuildReferencedParameter(PathComponentVersionId));
+        
         foreach (string code in _openApiOptions.HttpReadParams)
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
+        }
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
+
+            switch (ResolveConditionalRead(resource.Name))
+            {
+                case ConditionalReadPolicy.NotSupported:
+                    break;
+                case ConditionalReadPolicy.ModifiedSince:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    break;
+                case ConditionalReadPolicy.NotMatch:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    break;
+                case ConditionalReadPolicy.FullSupport:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    break;
+            }
         }
 
         oasOp.Responses = BuildResponses(_responseCodesRead, resource.Name, schemas);
@@ -1927,22 +2186,39 @@ public class ModelBuilder
 
         oasOp.Tags.Add(new OpenApiTag() { Reference = new OpenApiReference() { Id = resource.Name, Type = ReferenceType.Tag, } });
 
-        //if (_openApiOptions.IncludeDescriptions)
-        //{
-        //    oasOp.Description = "Read a specific FHIR " + resource.Name + ": " + resource.ShortDescription;
-        //}
-
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"Read a FHIR {resource.Name}";
+            oasOp.Summary = $"read: Read a FHIR {resource.Name}";
         }
 
-        // read includes {id} segment
-        oasOp.Parameters.Add(BuildReferencedParameter("id"));
-
+        // read includes PathComponentLogicalId segment
+        oasOp.Parameters.Add(BuildReferencedParameter(PathComponentLogicalId));
+        
         foreach (string code in _openApiOptions.HttpReadParams)
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
+        }
+
+        if (_openApiOptions.IncludeHeaders)
+        {
+            oasOp.Parameters.Add(BuildReferencedParameter("Accept"));
+            oasOp.Parameters.Add(BuildReferencedParameter("Prefer"));
+
+            switch (ResolveConditionalRead(resource.Name))
+            {
+                case ConditionalReadPolicy.NotSupported:
+                    break;
+                case ConditionalReadPolicy.ModifiedSince:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    break;
+                case ConditionalReadPolicy.NotMatch:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    break;
+                case ConditionalReadPolicy.FullSupport:
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    break;
+            }
         }
 
         oasOp.Responses = BuildResponses(_responseCodesRead, resource.Name, schemas);
@@ -1959,6 +2235,8 @@ public class ModelBuilder
         string resourceName,
         Dictionary<string, OpenApiSchema> schemas)
     {
+        // TODO(ginoc): figure out which response headers belong on which response types
+
         OpenApiResponses r = new();
 
         if (_openApiOptions.SingleResponseCode)
@@ -2067,11 +2345,14 @@ public class ModelBuilder
 
     /// <summary>Gets the resource FHIR operations in this collection.</summary>
     /// <param name="resourceName">Name of the resource.</param>
+    /// <param name="kindFilter">  (Optional) A filter specifying the kind.</param>
     /// <returns>
     /// An enumerator that allows foreach to be used to process the resource FHIR operations in this
     /// collection.
     /// </returns>
-    private IEnumerable<FhirOperation> GetResourceFhirOperations(string resourceName)
+    private IEnumerable<FhirOperation> GetResourceFhirOperations(
+        string resourceName,
+        FhirOperation.OperationKindCodes? kindFilter = null)
     {
         if (!IncludeResouce(resourceName))
         {
@@ -2079,6 +2360,7 @@ public class ModelBuilder
         }
 
         List<FhirOperation> operations = new();
+
 
         if (_caps != null)
         {
@@ -2108,7 +2390,11 @@ public class ModelBuilder
                     continue;
                 }
 
-                operations.Add(fhirOp);
+                if ((kindFilter == null) ||
+                    (kindFilter == fhirOp.Kind))
+                {
+                    operations.Add(fhirOp);
+                }
             }
 
             // some servers just shove all operations into system-level reporting
@@ -2134,7 +2420,11 @@ public class ModelBuilder
                     continue;
                 }
 
-                operations.Add(fhirOp);
+                if ((kindFilter == null) ||
+                    (kindFilter == fhirOp.Kind))
+                {
+                    operations.Add(fhirOp);
+                }
             }
 
             return operations;
@@ -2153,10 +2443,42 @@ public class ModelBuilder
                 continue;
             }
 
-            operations.Add(fhirOp);
+            if ((kindFilter == null) ||
+                (kindFilter == fhirOp.Kind))
+            {
+                operations.Add(fhirOp);
+            }
         }
 
         return operations;
+    }
+
+    /// <summary>Gets FHIR query search parameter.</summary>
+    /// <param name="uriBase">     The URI base.</param>
+    /// <param name="resourceName">Name of the resource.</param>
+    /// <returns>The FHIR query search parameter.</returns>
+    private FhirSearchParam GetFhirQuerySearchParam(
+        Uri uriBase,
+        string resourceName)
+    {
+        return new FhirSearchParam(
+            "_query",
+            new Uri(uriBase, "/SearchParameter/Resource-query"),
+            _info.VersionString,
+            "_query",
+            "A custom search profile that describes a specific defined query operation",
+            "A custom search profile that describes a specific defined query operation",
+            "_query",
+            new List<string>() { resourceName },
+            null,
+            "string",
+            string.Empty,
+            string.Empty,
+            null,
+            false,
+            string.Empty,
+            string.Empty,
+            string.Empty);
     }
 
     /// <summary>Gets the resource search parameters in this collection.</summary>
@@ -2172,12 +2494,13 @@ public class ModelBuilder
             return Array.Empty<FhirSearchParam>();
         }
 
+        HashSet<string> used = new();
         List<FhirSearchParam> searchParameters = new();
 
         if (_caps != null)
         {
             Uri uriBase = string.IsNullOrEmpty(_caps.Url)
-                ? new Uri("http://fhir-codegen-local/")
+                ? new Uri("http://fhir-codegen-local/SearchParameter")
                 : new Uri(_caps.Url);
 
             if (!_caps.ResourceInteractions.ContainsKey(resourceName))
@@ -2188,12 +2511,18 @@ public class ModelBuilder
             // check operations for this specific resource
             foreach (FhirCapSearchParam capSp in _caps.ResourceInteractions[resourceName].SearchParameters.Values)
             {
+                if (used.Contains(capSp.Name))
+                {
+                    continue;
+                }
+
                 if (!string.IsNullOrEmpty(capSp.DefinitionCanonical))
                 {
                     if (FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capSp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object fhirSpObj) &&
                         (fhirSpObj is FhirSearchParam fhirSp))
                     {
                         searchParameters.Add(fhirSp);
+                        used.Add(capSp.Name);
                         continue;
                     }
                 }
@@ -2202,7 +2531,7 @@ public class ModelBuilder
                 searchParameters.Add(new FhirSearchParam(
                     capSp.Name,
                     string.IsNullOrEmpty(capSp.DefinitionCanonical)
-                        ? new Uri(uriBase, resourceName + "/" + capSp.Name)
+                        ? new Uri(uriBase, resourceName + "-" + capSp.Name)
                         : new Uri(capSp.DefinitionCanonical),
                     _info.VersionString,
                     capSp.Name,
@@ -2219,23 +2548,207 @@ public class ModelBuilder
                     string.Empty,
                     string.Empty,
                     string.Empty));
+
+                used.Add(capSp.Name);
             }
+
+            // check for 'query' operations
+            foreach (FhirOperation fhirOp in GetResourceFhirOperations(resourceName, FhirOperation.OperationKindCodes.Query))
+            {
+                // if we have any query operations, make sure _query is added to this resource
+                if (!used.Contains("_query"))
+                {
+                    searchParameters.Add(GetFhirQuerySearchParam(uriBase, resourceName));
+                    used.Add("_query");
+                }
+
+                foreach (FhirParameter opParam in fhirOp.Parameters)
+                {
+                    if (!opParam.Use.Equals("in", StringComparison.Ordinal))
+                    {
+                        continue;
+                    }
+
+                    // do not include parameters that do not explicitly state their search type (per spec)
+                    if (string.IsNullOrEmpty(opParam.SearchType))
+                    {
+                        continue;
+                    }
+
+                    if (used.Contains(opParam.Name))
+                    {
+                        continue;
+                    }
+
+                    // create a 'local' canonical for referecing
+                    searchParameters.Add(new FhirSearchParam(
+                        opParam.Name,
+                        (fhirOp.URL == null)
+                            ? new Uri(uriBase, $"{resourceName}-{fhirOp.Name}-{opParam.Name}")
+                            : new Uri(fhirOp.URL, $"-{opParam.Name}"),
+                        _info.VersionString,
+                        opParam.Name,
+                        opParam.Documentation,
+                        opParam.Documentation,
+                        opParam.Name,
+                        new List<string>() { resourceName },
+                        null,
+                        opParam.SearchType,
+                        string.Empty,
+                        string.Empty,
+                        null,
+                        false,
+                        string.Empty,
+                        string.Empty,
+                        string.Empty));
+
+                    used.Add(opParam.Name);
+                }
+            }
+
+            // exit out since we have everything based on the capability statement
             return searchParameters;
         }
 
         // if there is no capabilties, just use everything in the package
         searchParameters.AddRange(_info.Resources[resourceName].SearchParameters.Values);
 
+        // check for 'query' operations
+        foreach (FhirOperation fhirOp in _info.Resources[resourceName].TypeOperations.Values)
+        {
+            if (fhirOp.Kind != FhirOperation.OperationKindCodes.Query)
+            {
+                continue;
+            }
+
+            Uri uriBase = (_info.PackageDetails?.URL == null)
+                ? new Uri("http://fhir-codegen-local/SearchParameter")
+                : _info.PackageDetails.URL;
+
+            // if we have any query operations, make sure _query is added to this resource
+            if (!used.Contains("_query"))
+            {
+                searchParameters.Add(GetFhirQuerySearchParam(uriBase, resourceName));
+                used.Add("_query");
+            }
+
+            foreach (FhirParameter opParam in fhirOp.Parameters)
+            {
+                if (!opParam.Use.Equals("in", StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                // do not include parameters that do not explicitly state their search type (per spec)
+                if (string.IsNullOrEmpty(opParam.SearchType))
+                {
+                    continue;
+                }
+
+                if (used.Contains(opParam.Name))
+                {
+                    continue;
+                }
+
+                // create a 'local' canonical for referecing
+                searchParameters.Add(new FhirSearchParam(
+                    opParam.Name,
+                    (fhirOp.URL == null)
+                        ? new Uri(uriBase, $"{resourceName}-{fhirOp.Name}-{opParam.Name}")
+                        : new Uri(fhirOp.URL, $"{opParam.Name}"),
+                    _info.VersionString,
+                    opParam.Name,
+                    opParam.Documentation,
+                    opParam.Documentation,
+                    opParam.Name,
+                    new List<string>() { resourceName },
+                    null,
+                    opParam.SearchType,
+                    string.Empty,
+                    string.Empty,
+                    null,
+                    false,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty));
+
+                used.Add(opParam.Name);
+            }
+        }
+
+        foreach (FhirOperation fhirOp in _info.Resources[resourceName].InstanceOperations.Values)
+        {
+            if (fhirOp.Kind != FhirOperation.OperationKindCodes.Query)
+            {
+                continue;
+            }
+
+            Uri uriBase = (_info.PackageDetails?.URL == null)
+                ? new Uri("http://fhir-codegen-local/SearchParameter")
+                : _info.PackageDetails.URL;
+
+            // if we have any query operations, make sure _query is added to this resource
+            if (!used.Contains("_query"))
+            {
+                searchParameters.Add(GetFhirQuerySearchParam(uriBase, resourceName));
+                used.Add("_query");
+            }
+
+            foreach (FhirParameter opParam in fhirOp.Parameters)
+            {
+                if (!opParam.Use.Equals("in", StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                // do not include parameters that do not explicitly state their search type (per spec)
+                if (string.IsNullOrEmpty(opParam.SearchType))
+                {
+                    continue;
+                }
+
+                if (used.Contains(opParam.Name))
+                {
+                    continue;
+                }
+
+                // create a 'local' canonical for referecing
+                searchParameters.Add(new FhirSearchParam(
+                    opParam.Name,
+                    (fhirOp.URL == null)
+                        ? new Uri(uriBase, $"{resourceName}-{fhirOp.Name}-{opParam.Name}")
+                        : new Uri(fhirOp.URL, $"{opParam.Name}"),
+                    _info.VersionString,
+                    opParam.Name,
+                    opParam.Documentation,
+                    opParam.Documentation,
+                    opParam.Name,
+                    new List<string>() { resourceName },
+                    null,
+                    opParam.SearchType,
+                    string.Empty,
+                    string.Empty,
+                    null,
+                    false,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty));
+
+                used.Add(opParam.Name);
+            }
+        }
+
         return searchParameters;
     }
 
-
     /// <summary>Gets the system FHIR operations in this collection.</summary>
+    /// <param name="kindFilter">(Optional) A filter specifying the kind.</param>
     /// <returns>
     /// An enumerator that allows foreach to be used to process the system FHIR operations in this
     /// collection.
     /// </returns>
-    private IEnumerable<FhirOperation> GetSystemFhirOperations()
+    private IEnumerable<FhirOperation> GetSystemFhirOperations(
+        FhirOperation.OperationKindCodes? kindFilter = null)
     {
         List<FhirOperation> operations = new();
 
@@ -2258,7 +2771,11 @@ public class ModelBuilder
                     continue;
                 }
 
-                operations.Add(fhirOp);
+                if ((kindFilter == null) ||
+                    (kindFilter == fhirOp.Kind))
+                {
+                    operations.Add(fhirOp);
+                }
             }
 
 
@@ -2273,7 +2790,11 @@ public class ModelBuilder
                 continue;
             }
 
-            operations.Add(fhirOp);
+            if ((kindFilter == null) ||
+                (kindFilter == fhirOp.Kind))
+            {
+                operations.Add(fhirOp);
+            }
         }
 
         return operations;
@@ -2311,7 +2832,6 @@ public class ModelBuilder
         return operation;
     }
 
-
     /// <summary>Builds a content map.</summary>
     /// <param name="resourceName">Name of the resource.</param>
     /// <param name="wrapInBundle">True to wrap in bundle.</param>
@@ -2335,6 +2855,13 @@ public class ModelBuilder
         {
             mediaTypes.Add(
                 "application/fhir+xml",
+                OasMediaForResource(name, schemas));
+        }
+
+        if (_fhirTurtle)
+        {
+            mediaTypes.Add(
+                "application/fhir+turtle",
                 OasMediaForResource(name, schemas));
         }
 
@@ -2513,6 +3040,10 @@ public class ModelBuilder
         {
             title = _caps.Title;
         }
+        else if (!string.IsNullOrEmpty(_caps?.SoftwareName ?? null))
+        {
+            title = _caps.SoftwareName;
+        }
         else
         {
             title = $"FHIR {_info.FhirSequence}:{_info.VersionString}";
@@ -2523,6 +3054,10 @@ public class ModelBuilder
         if (!string.IsNullOrEmpty(_openApiOptions.Version))
         {
             version = _openApiOptions.Version;
+        }
+        else if (!string.IsNullOrEmpty(_caps?.SoftwareVersion ?? null))
+        {
+            version = _caps.SoftwareVersion;
         }
         else if (!string.IsNullOrEmpty(_caps?.FhirVersion ?? null))
         {

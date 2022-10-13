@@ -5,6 +5,7 @@
 
 
 using System.IO;
+using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -90,33 +91,19 @@ public class LangOpenApi : ILanguage
     {
         OpenApiOptions openApiOptions = new OpenApiOptions(options);
 
-        string fileExt = openApiOptions.FileFormat.ToString().ToLower();
-
         if (serverInfo != null)
         {
             ModelBuilder builder = new(info, openApiOptions, options, serverInfo);
 
             OpenApiDocument doc = builder.Build();
 
-            string filename = Path.Combine(exportDirectory, $"{_languageName}_{FhirPackageCommon.RForSequence(info.FhirSequence)}.{fileExt}");
-
-            using (FileStream stream = new FileStream(filename, FileMode.Create))
-            using (StreamWriter sw = new StreamWriter(stream))
+            if (openApiOptions.MultiFile)
             {
-                IOpenApiWriter writer;
-
-                switch (openApiOptions.FileFormat)
-                {
-                    case OaFileFormat.Json:
-                    default:
-                        writer = new OpenApiJsonWriter(sw, new OpenApiJsonWriterSettings() { Terse = openApiOptions.Minify });
-                        break;
-                    case OaFileFormat.Yaml:
-                        writer = new OpenApiYamlWriter(sw);
-                        break;
-                }
-
-                doc.Serialize(writer, openApiOptions.OpenApiVersion);
+                WriteAsMultiFile(exportDirectory, openApiOptions, doc, FhirPackageCommon.RForSequence(info.FhirSequence));
+            }
+            else
+            {
+                WriteAsSingleFile(exportDirectory, openApiOptions, doc, FhirPackageCommon.RForSequence(info.FhirSequence));
             }
         }
         else
@@ -127,27 +114,246 @@ public class LangOpenApi : ILanguage
 
                 OpenApiDocument doc = builder.Build();
 
-                string filename = Path.Combine(exportDirectory, $"{_languageName}_{cap.Id}.{fileExt}");
-
-                using (FileStream stream = new FileStream(filename, FileMode.Create))
-                using (StreamWriter sw = new StreamWriter(stream))
+                if (openApiOptions.MultiFile)
                 {
-                    IOpenApiWriter writer;
-
-                    switch (openApiOptions.FileFormat)
-                    {
-                        case OaFileFormat.Json:
-                        default:
-                            writer = new OpenApiJsonWriter(sw, new OpenApiJsonWriterSettings() { Terse = openApiOptions.Minify });
-                            break;
-                        case OaFileFormat.Yaml:
-                            writer = new OpenApiYamlWriter(sw);
-                            break;
-                    }
-
-                    doc.Serialize(writer, openApiOptions.OpenApiVersion);
+                    WriteAsMultiFile(exportDirectory, openApiOptions, doc, cap.Id);
+                }
+                else
+                {
+                    WriteAsSingleFile(exportDirectory, openApiOptions, doc, cap.Id);
                 }
             }
+        }
+    }
+
+    /// <summary>Writes as multi file.</summary>
+    /// <param name="exportDirectory">Directory to write files.</param>
+    /// <param name="openApiOptions"> Options for controlling the open API.</param>
+    /// <param name="completeDoc">            The document.</param>
+    /// <param name="fileId">         Identifier for the file.</param>
+    private void WriteAsMultiFile(
+        string exportDirectory,
+        OpenApiOptions openApiOptions,
+        OpenApiDocument completeDoc,
+        string fileId)
+    {
+        Dictionary<string, OpenApiDocument> docsByPrefix = new();
+
+        // traverse the paths to discover our root keys (mostly just resources)
+        foreach ((string apiPath, OpenApiPathItem pathItem) in completeDoc.Paths)
+        {
+            string pathKey;
+            string titleSuffix;
+
+            if (apiPath.Equals("/", StringComparison.Ordinal) ||
+                apiPath.Substring(0, 2).Equals("/_", StringComparison.Ordinal) ||
+                apiPath.Substring(0, 2).Equals("/$", StringComparison.Ordinal))
+            {
+                pathKey = "_Root";
+                titleSuffix = "Server Root";
+            }
+            else
+            {
+                pathKey = apiPath.Split('/')[1];
+                titleSuffix = pathKey;
+            }
+
+            if (!docsByPrefix.ContainsKey(pathKey))
+            {
+                OpenApiDocument doc = new();
+                doc.Info = new OpenApiInfo(completeDoc.Info);
+                doc.Info.Title += " - " + titleSuffix;
+
+                doc.Components = new();
+                doc.Components.Parameters = new Dictionary<string, OpenApiParameter>();
+                doc.Components.Schemas = new Dictionary<string, OpenApiSchema>();
+                doc.Paths = new();
+                doc.Tags = new List<OpenApiTag>();
+
+                docsByPrefix.Add(pathKey, doc);
+            }
+
+            docsByPrefix[pathKey].Paths.Add(apiPath, new OpenApiPathItem(pathItem));
+        }
+
+        Dictionary<string, OpenApiTag> sourceTags = completeDoc.Tags.ToDictionary(t => t.Name);
+
+        // traverse each partial document, resolve missing references and write
+        foreach ((string pathKey, OpenApiDocument doc) in docsByPrefix)
+        {
+            ResolveContainedRefs(completeDoc, doc, sourceTags);
+
+            WriteAsSingleFile(exportDirectory, openApiOptions, doc, fileId + "_" + pathKey);
+        }
+    }
+
+    /// <summary>Copies the nested defs.</summary>
+    /// <param name="source">Another instance to copy.</param>
+    /// <param name="target">Target for the.</param>
+    private void ResolveContainedRefs(
+        OpenApiDocument source,
+        OpenApiDocument target,
+        Dictionary<string, OpenApiTag> sourceTags)
+    {
+        HashSet<string> usedTags = new();
+
+        foreach ((string targetPathKey, OpenApiPathItem targetPath) in target.Paths)
+        {
+            foreach ((OperationType targetOpKey, OpenApiOperation targetOp) in targetPath.Operations)
+            {
+                foreach (OpenApiTag targetTag in targetOp.Tags)
+                {
+                    // only need to resolve references, actual tags were copied
+                    if (string.IsNullOrEmpty(targetTag.Reference?.Id ?? null) ||
+                        usedTags.Contains(targetTag.Reference.Id))
+                    {
+                        continue;
+                    }
+
+                    target.Tags.Add(sourceTags[targetTag.Reference.Id]);
+                    usedTags.Add(targetTag.Reference.Id);
+                }
+
+                foreach (OpenApiParameter targetParam in targetOp.Parameters)
+                {
+                    // only need to resolve references, full parameters were copied
+                    if (string.IsNullOrEmpty(targetParam.Reference?.Id ?? null) ||
+                        target.Components.Parameters.ContainsKey(targetParam.Reference.Id))
+                    {
+                        continue;
+                    }
+
+                    //target.Components.Parameters.Add(
+                    //    targetParam.Reference.Id,
+                    //    new OpenApiParameter(source.Components.Parameters[targetParam.Reference.Id]));
+
+                    target.Components.Parameters.Add(
+                        targetParam.Reference.Id,
+                        source.Components.Parameters[targetParam.Reference.Id]);
+
+                }
+
+                foreach (OpenApiMediaType targetMedia in targetOp.RequestBody?.Content?.Values ?? Array.Empty<OpenApiMediaType>())
+                {
+                    // only process references, the rest were copied
+                    if (string.IsNullOrEmpty(targetMedia.Schema?.Reference?.Id ?? null) ||
+                        target.Components.Schemas.ContainsKey(targetMedia.Schema.Reference.Id))
+                    {
+                        continue;
+                    }
+
+                    CopySchemaRecursive(source, target, targetMedia.Schema.Reference.Id);
+                }
+
+                foreach (OpenApiResponse targetResponse in targetOp.Responses.Values)
+                {
+                    foreach (OpenApiMediaType targetMedia in targetResponse.Content.Values)
+                    {
+                        // only process references, the rest were copied
+                        if (string.IsNullOrEmpty(targetMedia.Schema?.Reference?.Id ?? null) ||
+                            target.Components.Schemas.ContainsKey(targetMedia.Schema.Reference.Id))
+                        {
+                            continue;
+                        }
+
+                        CopySchemaRecursive(source, target, targetMedia.Schema.Reference.Id);
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>Copies the schema recursive.</summary>
+    /// <param name="source">Another instance to copy.</param>
+    /// <param name="target">Target for the.</param>
+    /// <param name="key">   The key.</param>
+    private void CopySchemaRecursive(
+        OpenApiDocument source,
+        OpenApiDocument target,
+        string key)
+    {
+        if (target.Components.Schemas.ContainsKey(key))
+        {
+            return;
+        }
+
+        target.Components.Schemas.Add(key, source.Components.Schemas[key]);
+
+        //OpenApiSchema src = source.Components.Schemas[key];
+
+        //OpenApiSchema ts = new OpenApiSchema()
+        //{
+        //    Type = src.Type,
+        //    Properties = new Dictionary<string, OpenApiSchema>(),
+        //    Description = src.Description,
+        //};
+
+        //target.Components.Schemas.Add(
+        //    key,
+        //    ts);
+
+        //// check inheritance
+        //if (src.AllOf != null)
+        //{
+        //    ts.AllOf = new List<OpenApiSchema>();
+        //}
+
+        foreach (OpenApiSchema s in target.Components.Schemas[key].AllOf ?? Array.Empty<OpenApiSchema>())
+        {
+            //ts.AllOf.Add(s);
+
+            if (string.IsNullOrEmpty(s.Reference?.Id ?? null) ||
+                target.Components.Schemas.ContainsKey(s.Reference.Id))
+            {
+                continue;
+            }
+
+            CopySchemaRecursive(source, target, s.Reference.Id);
+        }
+
+        // check properties
+        foreach (OpenApiSchema s in target.Components.Schemas[key].Properties?.Values ?? Array.Empty<OpenApiSchema>())
+        {
+            if (string.IsNullOrEmpty(s.Reference?.Id ?? null) ||
+                target.Components.Schemas.ContainsKey(s.Reference.Id))
+            {
+                continue;
+            }
+
+            CopySchemaRecursive(source, target, s.Reference.Id);
+        }
+    }
+
+    /// <summary>Writes an OpenApi Document as single file.</summary>
+    /// <param name="exportDirectory">Directory to write files.</param>
+    /// <param name="openApiOptions"> Options for controlling the open API.</param>
+    /// <param name="doc">            The document.</param>
+    /// <param name="fileId">         Identifier for the file.</param>
+    private static void WriteAsSingleFile(
+        string exportDirectory,
+        OpenApiOptions openApiOptions,
+        OpenApiDocument doc,
+        string fileId)
+    {
+        string filename = Path.Combine(exportDirectory, $"{_languageName}_{fileId}.{openApiOptions.FileFormat.ToString().ToLowerInvariant()}");
+
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (StreamWriter sw = new StreamWriter(stream))
+        {
+            IOpenApiWriter writer;
+
+            switch (openApiOptions.FileFormat)
+            {
+                case OaFileFormat.Json:
+                default:
+                    writer = new OpenApiJsonWriter(sw, new OpenApiJsonWriterSettings() { Terse = openApiOptions.Minify });
+                    break;
+                case OaFileFormat.Yaml:
+                    writer = new OpenApiYamlWriter(sw);
+                    break;
+            }
+
+            doc.Serialize(writer, openApiOptions.OpenApiVersion);
         }
     }
 }

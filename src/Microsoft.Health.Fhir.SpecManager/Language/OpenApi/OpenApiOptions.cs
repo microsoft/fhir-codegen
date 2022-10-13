@@ -24,7 +24,7 @@ public class OpenApiOptions
         { "SchemaStyle", "How schemas should be built (references|inline)." },
         { "MaxRecursions", "Maximum depth to expand recursions (0)." },
 
-        { "FhirMime", "Which FHIR MIME types to support (capabilities|json|xml|both)." },
+        { "FhirMime", "Which FHIR MIME types to support (capabilities|json|xml|common|turtle|all)." },
         { "PatchMime", "Which FHIR Patch types to support (capabilities|json|xml|fhirMime|all)." },
 
         { "SearchSupport", "Supported search methods (both|get|post|none)." },
@@ -32,7 +32,7 @@ public class OpenApiOptions
         { "SearchPostParams", "Where search params should appear in post-based search (body|query|both|none)." },
         { "ConsolidateSearchParams", "If search parameters should be consolidated (true|false)." },
 
-        { "OperationSupport", "Supported Operation calling styles (post|get|both|none)." },
+        { "OperationSupport", "Supported Operation calling styles (both|post|get|none)." },
 
         { "UpdateCreate", "If update can commit to a new identity (capabilities|false|true)." },
         { "ConditionalCreate", "If the server allows/uses conditional create (capabilities|false|true)." },
@@ -69,6 +69,9 @@ public class OpenApiOptions
         { "SingleResponses", "If operations should only include a single response (false|true)." },
         { "Summaries", "If responses should include summaries (true|false)." },
 
+        { "IncludeHeaders", "If the output should include HTTP Headers (false|true)." },
+
+        { "MultiFile", "If the export should split contents across multiple files (false|true)." },
     };
 
     /// <summary>
@@ -153,27 +156,38 @@ public class OpenApiOptions
         MaxRecursions = options.GetParam("MaxRecursions", 0);
 
         val = options.GetParam("FhirMime", "capabilities");
-        switch (val.FirstOrDefault('j'))
+        switch (val.ToLowerInvariant())
         {
-            case 'c':
-            case 'C':
+            case "capabilities":
             default:
                 FhirMime = OpenApiCommon.OaFhirMimeCodes.FromCapabilities;
                 break;
 
-            case 'j':
-            case 'J':
+            case "json":
+            case "fhir+json":
+            case "application/fhir+json":
                 FhirMime = OpenApiCommon.OaFhirMimeCodes.FhirJson;
                 break;
 
-            case 'x':
-            case 'X':
+            case "xml":
+            case "fhir+xml":
+            case "application/fhir+xml":
                 FhirMime = OpenApiCommon.OaFhirMimeCodes.FhirXml;
                 break;
 
-            case 'b':
-            case 'B':
-                FhirMime = OpenApiCommon.OaFhirMimeCodes.Both;
+            case "common":
+                FhirMime = OpenApiCommon.OaFhirMimeCodes.Common;
+                break;
+
+            case "all":
+                FhirMime = OpenApiCommon.OaFhirMimeCodes.All;
+                break;
+
+            case "ttl":
+            case "turtle":
+            case "application/x-turtle":
+            case "application/fhir+turtle":
+                FhirMime = OpenApiCommon.OaFhirMimeCodes.FhirTurtle;
                 break;
         }
 
@@ -253,7 +267,7 @@ public class OpenApiOptions
 
         ConsolidateSearchParams = options.GetParam("ConsolidateSearchParams", true);
 
-        val = options.GetParam("OperationSupport", "post");
+        val = options.GetParam("OperationSupport", "both");
         switch (val.ToUpperInvariant())
         {
             case "NONE":
@@ -429,6 +443,8 @@ public class OpenApiOptions
                 break;
         }
 
+        IncludeHeaders = options.GetParam("IncludeHeaders", false);
+        MultiFile = options.GetParam("MultiFile", false);
     }
 
     /// <summary>Gets or sets the file format.</summary>
@@ -552,4 +568,10 @@ public class OpenApiOptions
 
     /// <summary>Gets or sets the operation id naming convention.</summary>
     internal FhirTypeBase.NamingConvention IdConvention { get; set; } = FhirTypeBase.NamingConvention.PascalCase;
+
+    /// <summary>Gets a value indicating whether HTTP headers should be included.</summary>
+    internal bool IncludeHeaders { get; } = false;
+
+    /// <summary>Gets a value indicating whether the multi file.</summary>
+    internal bool MultiFile { get; } = false;
 }

@@ -1737,14 +1737,19 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
 
         Uri url = operation.URL ?? new Uri(CanonicalUrl, "OperationDefinition/" + operation.Id);
-        _artifactClassByUrl.Add(url.ToString(), FhirArtifactClassEnum.Operation);
-        _artifactsByClass[FhirArtifactClassEnum.Operation].Add(new()
+        string urlS = url.ToString();
+
+        if (!_artifactClassByUrl.ContainsKey(urlS))
         {
-            ArtifactClass = FhirArtifactClassEnum.Operation,
-            Id = operation.Id,
-            Url = url,
-            DefinitionResourceType = "OperationDefinition",
-        });
+            _artifactClassByUrl.Add(urlS, FhirArtifactClassEnum.Operation);
+            _artifactsByClass[FhirArtifactClassEnum.Operation].Add(new()
+            {
+                ArtifactClass = FhirArtifactClassEnum.Operation,
+                Id = operation.Id,
+                Url = url,
+                DefinitionResourceType = "OperationDefinition",
+            });
+        }
 
         // check for system level operation
         if (operation.DefinedOnSystem)

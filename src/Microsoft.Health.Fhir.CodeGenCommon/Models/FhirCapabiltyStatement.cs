@@ -163,6 +163,8 @@ public class FhirCapabiltyStatement : ICloneable
         Name = source.Name;
         Title = source.Title;
         FhirVersion = source.FhirVersion;
+        FhirMimeTypes = source.FhirMimeTypes?.ToArray() ?? Array.Empty<string>();
+        PatchMimeTypes = source.PatchMimeTypes?.ToArray() ?? Array.Empty<string>();
         SoftwareName = source.SoftwareName;
         SoftwareVersion = source.SoftwareVersion;
         SoftwareReleaseDate = source.SoftwareReleaseDate;
@@ -325,6 +327,26 @@ public class FhirCapabiltyStatement : ICloneable
 
         return false;
     }
+
+    /// <summary>Determines if we can supports FHIR turtle.</summary>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool SupportsFhirTurtle()
+    {
+        if ((FhirMimeTypes == null) ||
+            (!FhirMimeTypes.Any()))
+        {
+            return false;
+        }
+
+        if (FhirMimeTypes.Contains("ttl") ||
+            FhirMimeTypes.Contains("application/x-turtle"))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 
     /// <summary>Determines if we can supports patch JSON.</summary>
     /// <returns>True if it succeeds, false if it fails.</returns>
