@@ -4,7 +4,6 @@
 // </copyright>
 
 using System.IO;
-using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Converters;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
@@ -132,7 +131,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// </summary>
     /// <param name="source"> Source for the.</param>
     /// <param name="options">Options for controlling the operation.</param>
-    public FhirVersionInfo(FhirVersionInfo source, PackageCopyOptions options)
+    public FhirVersionInfo(FhirVersionInfo source, PackageCopyOptions options, bool resolveExternal)
         : this()
     {
         _fhirConverter = ConverterHelper.ConverterForVersion(source.FhirSequence);
@@ -527,7 +526,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 {
                     foreach (FhirCapOperation serverOp in options.CapStatmentFilter.ServerOperations.Values)
                     {
-                        if (FhirManager.Current.TryResolveCanonical(FhirSequence, serverOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object resource) &&
+                        if (FhirManager.Current.TryResolveCanonical(FhirSequence, serverOp.DefinitionCanonical, resolveExternal, out FhirArtifactClassEnum ac, out object resource) &&
                             (ac == FhirArtifactClassEnum.Operation))
                         {
                             AddOperation((FhirOperation)((FhirOperation)resource).Clone());
@@ -543,7 +542,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         {
                             foreach (FhirCapOperation resourceOp in resourceInteraction.Operations.Values)
                             {
-                                if (FhirManager.Current.TryResolveCanonical(FhirSequence, resourceOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object resource) &&
+                                if (FhirManager.Current.TryResolveCanonical(FhirSequence, resourceOp.DefinitionCanonical, resolveExternal, out FhirArtifactClassEnum ac, out object resource) &&
                                     (ac == FhirArtifactClassEnum.Operation))
                                 {
                                     AddOperation((FhirOperation)((FhirOperation)resource).Clone());

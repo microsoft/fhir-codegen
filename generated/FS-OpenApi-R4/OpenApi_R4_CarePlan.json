@@ -1,0 +1,1254 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Firely Server - CarePlan",
+    "version": "4.10.0"
+  },
+  "host": "server.fire.ly",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/CarePlan": {
+      "post": {
+        "tags": [
+          "CarePlan"
+        ],
+        "summary": "create: Create a new CarePlan instance",
+        "operationId": "CreateCarePlan",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A FHIR CarePlan",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CarePlan"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CarePlan"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "CarePlan"
+        ],
+        "summary": "search-type: Search for CarePlan instances",
+        "operationId": "SearchCarePlanGet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_contained"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_graph"
+          },
+          {
+            "$ref": "#/parameters/_include"
+          },
+          {
+            "$ref": "#/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/parameters/_score"
+          },
+          {
+            "$ref": "#/parameters/_sort"
+          },
+          {
+            "$ref": "#/parameters/_total"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/activity-code"
+          },
+          {
+            "$ref": "#/parameters/activity-date"
+          },
+          {
+            "$ref": "#/parameters/activity-reference"
+          },
+          {
+            "$ref": "#/parameters/based-on"
+          },
+          {
+            "$ref": "#/parameters/care-team"
+          },
+          {
+            "$ref": "#/parameters/category"
+          },
+          {
+            "$ref": "#/parameters/condition"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/encounter"
+          },
+          {
+            "$ref": "#/parameters/goal"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/instantiates-canonical"
+          },
+          {
+            "$ref": "#/parameters/instantiates-uri"
+          },
+          {
+            "$ref": "#/parameters/intent"
+          },
+          {
+            "$ref": "#/parameters/part-of"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/performer"
+          },
+          {
+            "$ref": "#/parameters/replaces"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/subject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CarePlan/{logical_id}": {
+      "delete": {
+        "tags": [
+          "CarePlan"
+        ],
+        "summary": "delete: Perform a loical delete on a CarePlan instance",
+        "operationId": "DeleteCarePlan",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/activity-code"
+          },
+          {
+            "$ref": "#/parameters/activity-date"
+          },
+          {
+            "$ref": "#/parameters/activity-reference"
+          },
+          {
+            "$ref": "#/parameters/based-on"
+          },
+          {
+            "$ref": "#/parameters/care-team"
+          },
+          {
+            "$ref": "#/parameters/category"
+          },
+          {
+            "$ref": "#/parameters/condition"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/encounter"
+          },
+          {
+            "$ref": "#/parameters/goal"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/instantiates-canonical"
+          },
+          {
+            "$ref": "#/parameters/instantiates-uri"
+          },
+          {
+            "$ref": "#/parameters/intent"
+          },
+          {
+            "$ref": "#/parameters/part-of"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/performer"
+          },
+          {
+            "$ref": "#/parameters/replaces"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/subject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CarePlan"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CarePlan"
+        ],
+        "summary": "patch: Patch a CarePlan instance",
+        "operationId": "PatchCarePlan",
+        "consumes": [ ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Patch to apply to a FHIR CarePlan record",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CarePlan"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "CarePlan"
+        ],
+        "summary": "read: Read a FHIR CarePlan",
+        "operationId": "ReadCarePlan",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CarePlan"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CarePlan"
+        ],
+        "summary": "update,create: Update or Create a CarePlan instance",
+        "operationId": "UpdateOrCreateCarePlan",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/activity-code"
+          },
+          {
+            "$ref": "#/parameters/activity-date"
+          },
+          {
+            "$ref": "#/parameters/activity-reference"
+          },
+          {
+            "$ref": "#/parameters/based-on"
+          },
+          {
+            "$ref": "#/parameters/care-team"
+          },
+          {
+            "$ref": "#/parameters/category"
+          },
+          {
+            "$ref": "#/parameters/condition"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/encounter"
+          },
+          {
+            "$ref": "#/parameters/goal"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/instantiates-canonical"
+          },
+          {
+            "$ref": "#/parameters/instantiates-uri"
+          },
+          {
+            "$ref": "#/parameters/intent"
+          },
+          {
+            "$ref": "#/parameters/part-of"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/performer"
+          },
+          {
+            "$ref": "#/parameters/replaces"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/subject"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "An updated FHIR CarePlan",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CarePlan"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CarePlan"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CarePlan/_search": {
+      "post": {
+        "tags": [
+          "CarePlan"
+        ],
+        "summary": "search-type: Search for CarePlan instances",
+        "operationId": "SearchCarePlanPost",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "_elements",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_summary",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_content",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_filter",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_in",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_language",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_lastUpdated",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_list",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_profile",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_query",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_security",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_source",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_tag",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_text",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_contained",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_count",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_graph",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_include",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_revinclude",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_score",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_sort",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_total",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_format",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_has",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "activity-code",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "activity-date",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "activity-reference",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "based-on",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "care-team",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "condition",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "encounter",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "goal",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "identifier",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "instantiates-canonical",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "instantiates-uri",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "intent",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "part-of",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "patient",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "performer",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "replaces",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "subject",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CarePlan/{logical_id}/_history/{resource_version}": {
+      "get": {
+        "tags": [
+          "CarePlan"
+        ],
+        "summary": "vread: Read CarePlan instance with specific version",
+        "operationId": "VReadCarePlan",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/resource_version"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CarePlan"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "CarePlan": {
+      "description": "Healthcare plan for patient or group",
+      "type": "object"
+    },
+    "Bundle": {
+      "description": "Contains a collection of resources",
+      "type": "object"
+    }
+  },
+  "parameters": {
+    "_format": {
+      "in": "query",
+      "name": "_format",
+      "description": "Override the HTTP content negotiation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_pretty": {
+      "in": "query",
+      "name": "_pretty",
+      "description": "Ask for a pretty printed response for human convenience",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_elements": {
+      "in": "query",
+      "name": "_elements",
+      "description": "Ask for a particular set of elements to be returned",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_summary": {
+      "in": "query",
+      "name": "_summary",
+      "description": "Return only portions of resources, based on pre-defined levels",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_content": {
+      "in": "query",
+      "name": "_content",
+      "description": "Search on the entire content of the resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_filter": {
+      "in": "query",
+      "name": "_filter",
+      "description": "Provide an inline query expression",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_id": {
+      "in": "query",
+      "name": "_id",
+      "description": "Logical id of this artifact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_in": {
+      "in": "query",
+      "name": "_in",
+      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_language": {
+      "in": "query",
+      "name": "_language",
+      "description": "Language of the resource content",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_lastUpdated": {
+      "in": "query",
+      "name": "_lastUpdated",
+      "description": "When the resource version last changed",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_list": {
+      "in": "query",
+      "name": "_list",
+      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_profile": {
+      "in": "query",
+      "name": "_profile",
+      "description": "Profiles this resource claims to conform to",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_query": {
+      "in": "query",
+      "name": "_query",
+      "description": "A custom search profile that describes a specific defined query operation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_security": {
+      "in": "query",
+      "name": "_security",
+      "description": "Security Labels applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_source": {
+      "in": "query",
+      "name": "_source",
+      "description": "Identifies where the resource comes from",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_tag": {
+      "in": "query",
+      "name": "_tag",
+      "description": "Tags applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_text": {
+      "in": "query",
+      "name": "_text",
+      "description": "Perform searches against the narrative content of a resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_contained": {
+      "in": "query",
+      "name": "_contained",
+      "description": "Request different types of handling for contained resources",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_count": {
+      "in": "query",
+      "name": "_count",
+      "description": "Limit the number of match results per page of response",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "_graph": {
+      "in": "query",
+      "name": "_graph",
+      "description": "Include additional resources according to a GraphDefinition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_include": {
+      "in": "query",
+      "name": "_include",
+      "description": "Include additional resources, based on following links forward across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_revinclude": {
+      "in": "query",
+      "name": "_revinclude",
+      "description": "Include additional resources, based on following reverse links across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_score": {
+      "in": "query",
+      "name": "_score",
+      "description": "Request match relevance in results",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_sort": {
+      "in": "query",
+      "name": "_sort",
+      "description": "Request which order results should be returned in",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_total": {
+      "in": "query",
+      "name": "_total",
+      "description": "Request a precision of the total number of results for a request",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_has": {
+      "in": "query",
+      "name": "_has",
+      "description": "Enables querying a reverse chain",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "activity-code": {
+      "in": "query",
+      "name": "activity-code",
+      "description": "Detail type of activity",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "activity-date": {
+      "in": "query",
+      "name": "activity-date",
+      "description": "Specified date occurs within period specified by CarePlan.activity.detail.scheduled[x]",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "activity-reference": {
+      "in": "query",
+      "name": "activity-reference",
+      "description": "Activity details defined in specific resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "based-on": {
+      "in": "query",
+      "name": "based-on",
+      "description": "The service request this appointment is allocated to assess",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "care-team": {
+      "in": "query",
+      "name": "care-team",
+      "description": "Who's involved in plan?",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "category": {
+      "in": "query",
+      "name": "category",
+      "description": "product-problem | product-quality | product-use-error | wrong-dose | incorrect-prescribing-information | wrong-technique | wrong-route-of-administration | wrong-rate | wrong-duration | wrong-time | expired-drug | medical-device-use-error | problem-different-manufacturer | unsafe-physical-environment",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "condition": {
+      "in": "query",
+      "name": "condition",
+      "description": "Health issues this plan addresses",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "date": {
+      "in": "query",
+      "name": "date",
+      "description": "The activity definition publication date",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "encounter": {
+      "in": "query",
+      "name": "encounter",
+      "description": "Encounter created as part of",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "goal": {
+      "in": "query",
+      "name": "goal",
+      "description": "Desired outcome of plan",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "identifier": {
+      "in": "query",
+      "name": "identifier",
+      "description": "Account number",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "instantiates-canonical": {
+      "in": "query",
+      "name": "instantiates-canonical",
+      "description": "Instantiates FHIR protocol or definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "instantiates-uri": {
+      "in": "query",
+      "name": "instantiates-uri",
+      "description": "Instantiates external protocol or definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "intent": {
+      "in": "query",
+      "name": "intent",
+      "description": "proposal | plan | order | option",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "part-of": {
+      "in": "query",
+      "name": "part-of",
+      "description": "Part of referenced CarePlan",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "patient": {
+      "in": "query",
+      "name": "patient",
+      "description": "The entity that caused the expenses",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "performer": {
+      "in": "query",
+      "name": "performer",
+      "description": "Matches if the practitioner is listed as a performer in any of the \"simple\" activities.  (For performers of the detailed activities, chain through the activitydetail search parameter.)",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "replaces": {
+      "in": "query",
+      "name": "replaces",
+      "description": "CarePlan replaced by this CarePlan",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "status": {
+      "in": "query",
+      "name": "status",
+      "description": "active | inactive | entered-in-error | on-hold | unknown",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "subject": {
+      "in": "query",
+      "name": "subject",
+      "description": "The entity that caused the expenses",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "logical_id": {
+      "in": "path",
+      "name": "logical_id",
+      "description": "Resource Logical ID",
+      "required": true,
+      "type": "string"
+    },
+    "resource_version": {
+      "in": "path",
+      "name": "resource_version",
+      "description": "Resource Version Number",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "tags": [
+    {
+      "name": "CarePlan",
+      "description": "Healthcare plan for patient or group"
+    }
+  ]
+}
