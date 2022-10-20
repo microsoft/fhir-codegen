@@ -212,43 +212,43 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 switch (count)
                 {
                     case 1:
-                        Write($" ");
+                        Write(" ");
                         return;
 
                     case 2:
-                        Write($"  ");
+                        Write("  ");
                         return;
 
                     case 3:
-                        Write($"   ");
+                        Write("   ");
                         return;
 
                     case 4:
-                        Write($"    ");
+                        Write("    ");
                         return;
 
                     case 5:
-                        Write($"     ");
+                        Write("     ");
                         return;
 
                     case 6:
-                        Write($"      ");
+                        Write("      ");
                         return;
 
                     case 7:
-                        Write($"       ");
+                        Write("       ");
                         return;
 
                     case 8:
-                        Write($"        ");
+                        Write("        ");
                         return;
 
                     case 9:
-                        Write($"         ");
+                        Write("         ");
                         return;
 
                     case 10:
-                        Write($"          ");
+                        Write("          ");
                         return;
                 }
             }

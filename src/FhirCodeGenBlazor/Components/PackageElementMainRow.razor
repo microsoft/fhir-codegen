@@ -1,0 +1,64 @@
+﻿@using Microsoft.Health.Fhir.CodeGenCommon.Models
+@using static FhirCodeGenBlazor.Models.PackageElementModels
+
+<td>
+    <span class="fw-bold">@Rec.Element.Path</span><br />
+    <span class="fst-italic">Defined by @Rec.DefinedByClass:</span> <span class="fw-bold">@Rec.RootComplex.Path</span>
+    @if (!string.IsNullOrEmpty(Rec.Element.FixedFieldName))
+    {
+        <span class="text-danger">&nbsp;*</span>
+
+        <span>fixed to:</span>
+        <span class="font-monospace bg-dark bg-opacity-50 text-light p-1">@Rec.Element.FixedFieldValue</span>
+    }
+</td>
+<td>
+    @if (Rec.Element.IsMustSupport)
+    {
+        <span data-bs-toggle="tooltip" title="Must Support">Ⓜ️ </span>
+    }
+
+    @if (Rec.Element.IsModifier)
+    {
+        <span data-bs-toggle="tooltip" title="@(Rec.Element.IsModifierReason ?? "Modifier Element")">⁈ </span>
+    }
+
+    @if (Rec.Element.IsSummary)
+    {
+        <span data-bs-toggle="tooltip" title="Included in Summary">∑ </span>
+    }
+</td>
+<td class="text-wrap">@GetElementTypeString(Rec.Element)</td>
+<td>@Rec.Element.FhirCardinality</td>
+<td>
+    @Rec.Element.ShortDescription
+</td>
+
+@code {
+    /// <summary>Gets or sets the property name.</summary>
+    [Parameter]
+    public ElementRecord Rec { get; set; }
+
+    /// <summary>Gets element type string.</summary>
+    /// <param name="element">The element.</param>
+    /// <returns>The element type string.</returns>
+    private string GetElementTypeString(FhirElement element)
+    {
+        if (element.BaseTypeName.Equals(element.Id, StringComparison.Ordinal))
+        {
+            return "BackboneElement";
+        }
+
+        if (!string.IsNullOrEmpty(element.BaseTypeName))
+        {
+            return element.BaseTypeName;
+        }
+
+        return string.Join(
+            ", ",
+            element.ElementTypes.Values.Select(
+                et => et.Profiles.Any()
+                    ? $"{et.Name}( {string.Join(" | ", et.Profiles.Values.Select(p => p.Name))} )"
+                    : et.Name));
+    }
+}

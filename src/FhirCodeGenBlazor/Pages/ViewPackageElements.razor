@@ -1,0 +1,1055 @@
+﻿@page "/view/package/elements"
+
+@using FhirCodeGenBlazor.Models;
+@using FhirCodeGenBlazor.Services;
+@using Markdig;
+@using Microsoft.CodeAnalysis.CSharp.Scripting;
+@using Microsoft.CodeAnalysis.Scripting;
+@using Microsoft.Health.Fhir.CodeGenCommon.Models;
+@using Microsoft.Health.Fhir.SpecManager.Manager;
+@using System.IO;
+@using System.Text.RegularExpressions;
+@using System.Linq;
+@using static FhirCodeGenBlazor.Models.PackageElementModels
+@inject NavigationManager NavigationManager
+@inject ISpecManagerWebService SpecService
+@inject IJSRuntime JS
+@implements IDisposable
+@implements IPackageVersionProvider
+
+@if (string.IsNullOrEmpty(directive))
+{
+    <PageTitle>FHIR Element Search</PageTitle>
+    <p><em>This page requires a package name and version, please select...</em></p>
+}
+else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRecordsByClass.Any())
+{
+    <PageTitle>@directive</PageTitle>
+    <div class="form-control mb-2" id="artifactClassGrouping" >
+        @foreach ((FhirArtifactClassEnum classEnum, bool visible) in showArtifactClass)
+        {
+            <button type="button"
+                class=@GetButtonClass(visible)
+                @onclick="() => ToggleShowState(classEnum)">
+                @classEnum.ToString() (@SpecService[directive].ArtifactRecordsByClass[classEnum].Count())
+            </button>
+        }
+    </div>
+
+    <ul class="nav nav-tabs" id="filterTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="@GetNavButtonClass(FilterValueTypeCodes.StringMatch)" @onclick="(() => filterValueType = FilterValueTypeCodes.StringMatch)" id="filterStringMatch" type="button" role="tab" aria-controls="tabStringMatch">Basic String</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="@GetNavButtonClass(FilterValueTypeCodes.RegexMatch)" @onclick="(() => filterValueType = FilterValueTypeCodes.RegexMatch)" id="filterRegexMatch" type="button" role="tab" aria-controls="tabRegexMatch">Regex</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="@GetNavButtonClass(FilterValueTypeCodes.LINQ)" @onclick="(() => filterValueType = FilterValueTypeCodes.LINQ)" id="filterLinq" type="button" role="tab" aria-controls="tabLinq">LINQ</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="filterTabContent">
+        <div class="@GetNavPaneClass(FilterValueTypeCodes.StringMatch)" id="tabStringMatch" role="tabpanel" aria-labelledby="filterStringMatch">
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">Comparison Property</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Comparison Property" @bind="stringMatchProperty">
+                        @foreach (string p in _basicMatchProperties)
+                        {
+                            if (p.Equals(stringMatchProperty, StringComparison.Ordinal))
+                            {
+                                <option value="@p" selected>@p</option>
+                            }
+                            else
+                            {
+                                <option value="@p">@p</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">String Match Type</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="String Match Type" @bind="stringMatchType" id="selectStringMatchType">
+                        <option value="@StringMatchTypeCodes.StartsWith">Starts With</option>
+                        <option value="@StringMatchTypeCodes.Contains" selected>Contains</option>
+                        <option value="@StringMatchTypeCodes.EndsWith">Ends With</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">Case Sensitivity</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Match Case Sensitivity" @bind="stringSensitivity">
+                        <option value="@StringMatchSensitivityCodes.CaseInsensitive" selected>Case Insensitive</option>
+                        <option value="@StringMatchSensitivityCodes.CaseSensitive">Case Sensitive</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">Search Value</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                        class="form-control"
+                        aria-label="Search Value"
+                        @bind-value="stringMatchValue"
+                        @oninput="@((ChangeEventArgs e) => RequestElementFilter(e?.Value?.ToString() ?? null))" />
+                </div>
+            </div>
+        </div>
+
+        <div class="@GetNavPaneClass(FilterValueTypeCodes.RegexMatch)" id="tabRegexMatch" role="tabpanel" aria-labelledby="filterRegexMatch">
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">Comparison Property</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Comparison Property" @bind="regexMatchProperty">
+                        @foreach (string p in _basicMatchProperties)
+                        {
+                            if (p.Equals(regexMatchProperty, StringComparison.Ordinal))
+                            {
+                                <option value="@p" selected>@p</option>
+                            }
+                            else
+                            {
+                                <option value="@p">@p</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">Regular Expression</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                       class="form-control"
+                       aria-label="Regular Expression"
+                       @bind-value="regexExpression"
+                       @oninput="@((ChangeEventArgs e) => RequestElementFilter(e?.Value?.ToString() ?? null))" />
+                </div>
+            </div>
+        </div>
+
+        <div class="@GetNavPaneClass(FilterValueTypeCodes.LINQ)" id="tabLinq" role="tabpanel" aria-labelledby="filterLinq">
+            <div class="mb-2 row">
+                <label class="col-sm-2 col-form-label">LINQ Predicate</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                       class="form-control"
+                       aria-label="LINQ Predicate"
+                       @bind-value="linqPredicate"
+                       @oninput="@((ChangeEventArgs e) => RequestElementFilter(e?.Value?.ToString() ?? null))" />
+                </div>
+            </div>
+            <div class="mb-2 row">
+                <label class="mb-sm-2">
+                    For details and examples, please see the 
+                    <a href="https://microsoft.github.io/fhir-codegen/articles/blazorui.html#linq" target="_blank">API documentation</a>.
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-2 row">
+        <div class="form-check form-switch col-3">
+            <input class="form-check-input" type="checkbox" role="switch" id="switchToggleDetails" @bind="showDetailedInfo" />
+            <label for="switchToggleDetails" class="form-label">Show Element Details</label>
+        </div>
+        <div class="col-3">
+            <label class="form-label">@filteredElements.Count elements found</label>
+            &nbsp;
+            @switch (filterState)
+            {
+                case FilterStateCodes.Busy:
+                    <div class="spinner-border-sm"></div>
+                    break;
+                case FilterStateCodes.Ok:
+                    <span class="oi oi-circle-check alert-success"></span>
+                    break;
+                case FilterStateCodes.Error:
+                    <span class="oi oi-x alert-danger"></span>
+                    break;
+                case FilterStateCodes.Idle:
+                default:
+                    break;
+            }
+        </div>
+        <div class="col-6">
+            <label class="form-label">Download JSON:</label>
+            <div class="btn-group small" role="group" aria-label="Download Options">
+                <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => DownloadElementPathsJson())">Paths</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => DownloadFhirElementsJson())">Elements</button>
+            </div>
+        </div>
+    </div>
+
+    @if (showPaging)
+    {
+        <div class="m-2 row">
+            <div class="btn-group small" role="group" aria-label="Paging">
+                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="First" @onclick="(() => SetPage(1))">
+                        <span aria-hidden="true">&laquo;</span>
+                </button>
+
+                @foreach (int displayPage in pagingStatus.PageNavigation)
+                {
+                    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => SetPage(displayPage))">
+                        <span aria-hidden="true">@displayPage</span>
+                    </button>
+                }
+
+                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="Last" @onclick="(() => SetPage(pagingStatus.LastPage))">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </div>
+        </div>
+    }
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-2">Element</th>
+                <th class="col-md-1">Flags</th>
+                <th class="col-md-1">Type</th>
+                <th class="col-md-1">Card.</th>
+                <th class="col-md-3">Short</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (showDetailedInfo)
+            {
+                @lock (_elementLockObject)
+                {
+                    @for (int i = pagingStatus.CurrentIndexMin; i < pagingStatus.CurrentIndexMax; i++)
+                    //@foreach (ElementRecord rec in filteredElements)
+                    {
+                        <tr class="table-active">
+                            <FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@filteredElements[i]" />
+                            @*<FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@rec" />*@
+                        </tr>
+                        <tr>
+                            <FhirCodeGenBlazor.Components.PackageElementDetailsRow Rec="@filteredElements[i]" />
+                            @*<FhirCodeGenBlazor.Components.PackageElementDetailsRow Rec="@rec" />*@
+                        </tr>
+                    }
+                }
+            }
+            else
+            {
+                @lock (_elementLockObject)
+                {
+                    @for (int i = pagingStatus.CurrentIndexMin; i < pagingStatus.CurrentIndexMax; i++)
+                    //@foreach (ElementRecord rec in filteredElements)
+                    {
+                        <tr>
+                            <FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@filteredElements[i]" />
+                            @*<FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@rec" />*@
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+    @if (showPaging)
+    {
+        <div class="m-2 row">
+            <div class="btn-group small" role="group" aria-label="Paging">
+                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="First" @onclick="(() => SetPage(1))">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+
+                @foreach (int displayPage in pagingStatus.PageNavigation)
+                {
+                    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => SetPage(displayPage))">
+                        <span aria-hidden="true">@displayPage</span>
+                    </button>
+                }
+
+                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="Last" @onclick="(() => SetPage(pagingStatus.LastPage))">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <PageTitle>@directive</PageTitle>
+    <p><em>This package contains no supported artifacts.</em></p>
+}
+
+@code {
+    /// <summary>(Immutable) The records per page.</summary>
+    private const int _recordsPerPage = 100;
+
+    /// <summary>(Immutable) List of types of the filters.</summary>
+    private static readonly Dictionary<string,string> _filterTypes = new()
+    {
+        { "basicName", "Basic string match on <code>Name</code> property" },
+        { "regexName", "Regex matching on <code>Name</code> property" },
+        { "linq",      "LINQ query on <code>FhirElement</code> objects" },
+    };
+
+    /// <summary>Values that represent filter state codes.</summary>
+    private enum FilterStateCodes
+    {
+        Idle,
+        Busy,
+        Ok,
+        Error,
+    };
+
+    /// <summary>Values that represent filter value type codes.</summary>
+    private enum FilterValueTypeCodes
+    {
+        StringMatch,
+        RegexMatch,
+        LINQ,
+    }
+
+    /// <summary>Values that represent string match types.</summary>
+    private enum StringMatchTypeCodes
+    {
+        StartsWith,
+        Contains,
+        EndsWith,
+    }
+
+    /// <summary>Values that represent string match sensitivities.</summary>
+    private enum StringMatchSensitivityCodes
+    {
+        CaseSensitive,
+        CaseInsensitive,
+    }
+
+    /// <summary>The basic match properties.</summary>
+    private static List<string> _basicMatchProperties = new()
+    {
+        "Comment",
+        "ExplicitName",
+        "Id",
+        "Name",
+        "Path",
+        "ShortDescription",
+        "URL",
+    };
+
+    /// <summary>A script globals.</summary>
+    public class ScriptGlobals
+    {
+        /// <summary>Gets the FhirVersionInfo.</summary>
+        public FhirVersionInfo Info { get; }
+
+        /// <summary>Gets the match RegEx.</summary>
+        public Regex? MatchRegex { get; }
+
+        /// <summary>Initializes a new instance of the ScriptGlobals class.</summary>
+        /// <param name="info">The information.</param>
+        public ScriptGlobals(FhirVersionInfo info, Regex? matchRegex)
+        {
+            Info = info;
+            MatchRegex = matchRegex;
+        }
+    }
+
+    /// <summary>Type of the string match.</summary>
+    private StringMatchTypeCodes _stringMatchType = StringMatchTypeCodes.Contains;
+
+    /// <summary>Gets or sets the type of the string match.</summary>
+    private StringMatchTypeCodes stringMatchType
+    {
+        get
+        {
+            return _stringMatchType;
+        }
+        set
+        {
+            if (_stringMatchType != value)
+            {
+                _stringMatchType = value;
+                RequestElementFilter();
+            }
+        }
+    }
+
+    /// <summary>The string sensitivity.</summary>
+    private StringMatchSensitivityCodes _stringSensitivity = StringMatchSensitivityCodes.CaseInsensitive;
+
+    /// <summary>Gets or sets the string sensitivity.</summary>
+    private StringMatchSensitivityCodes stringSensitivity
+    {
+        get
+        {
+            return _stringSensitivity;
+        }
+        set
+        {
+            if (_stringSensitivity != value)
+            {
+                _stringSensitivity = value;
+                RequestElementFilter();
+            }
+        }
+    }
+
+    /// <summary>The string match property.</summary>
+    private string _stringMatchProperty = "Name";
+
+    /// <summary>Gets or sets the string match property.</summary>
+    private string stringMatchProperty
+    {
+        get
+        {
+            return _stringMatchProperty;
+        }
+        set
+        {
+            if (!_stringMatchProperty.Equals(value, StringComparison.Ordinal))
+            {
+                _stringMatchProperty = value;
+                RequestElementFilter();
+            }
+        }
+    }
+
+    /// <summary>The RegEx match property.</summary>
+    private string _regexMatchProperty = "Name";
+
+    /// <summary>Gets or sets the RegEx match property.</summary>
+    private string regexMatchProperty
+    {
+        get
+        {
+            return _regexMatchProperty;
+        }
+        set
+        {
+            if (!_regexMatchProperty.Equals(value, StringComparison.Ordinal))
+            {
+                _regexMatchProperty = value;
+                RequestElementFilter();
+            }
+        }
+    }
+
+    /// <summary>State of the filter.</summary>
+    private FilterStateCodes _filterState = FilterStateCodes.Idle;
+
+    /// <summary>Gets or sets the state of the filter.</summary>
+    private FilterStateCodes filterState
+    {
+        get
+        {
+            return _filterState;
+        }
+        set
+        {
+            if (_filterState != value)
+            {
+                _filterState = value;
+                InvokeAsync(() => StateHasChanged());
+            }
+        }
+    }
+
+    /// <summary>The string match value.</summary>
+    private string stringMatchValue = "";
+
+    /// <summary>The RegEx expression.</summary>
+    private string regexExpression = "";
+
+    /// <summary>The linq predicate.</summary>
+    private string linqPredicate = "";
+
+    /// <summary>Type of the filter value.</summary>
+    private FilterValueTypeCodes _filterValueType = FilterValueTypeCodes.StringMatch;
+
+    /// <summary>Type of the filter value.</summary>
+    private FilterValueTypeCodes filterValueType
+    {
+        get
+        {
+            return _filterValueType;
+        }
+        set
+        {
+            if (_filterValueType != value)
+            {
+                _filterValueType = value;
+                RequestElementFilter();
+            }
+        }
+    }
+
+    /// <summary>Information about the paging status.</summary>
+    /// <param name="PageNavigation"> The page navigation.</param>
+    /// <param name="CurrentPage">    The current page.</param>
+    /// <param name="CurrentIndexMin">The current index minimum.</param>
+    /// <param name="CurrentIndexMax">The current index maximum.</param>
+    /// <param name="LastPage">       The last page.</param>
+    private record struct PagingStatusInfo(
+        int[] PageNavigation,
+        int CurrentPage,
+        int CurrentIndexMin,
+        int CurrentIndexMax,
+        int LastPage);
+
+    /// <summary>Gets or sets a value indicating whether the paging is shown.</summary>
+    private bool showPaging { get; set; } = false;
+
+    /// <summary>Gets or sets the paging status.</summary>
+    private PagingStatusInfo pagingStatus { get; set; } = new(new int[0], 0, 0, 0, 0);
+
+    /// <summary>The predicates.</summary>
+    private Stack<Func<FhirElement, bool>> _predicates = new();
+
+    /// <summary>The predicates lock object.</summary>
+    private object _predicatesLockObject = new();
+
+    /// <summary>The show artifact class.</summary>
+    private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new()
+    {
+        { FhirArtifactClassEnum.ComplexType, true },
+        { FhirArtifactClassEnum.Resource, true },
+        { FhirArtifactClassEnum.Extension, true },
+        { FhirArtifactClassEnum.Profile, true },
+        { FhirArtifactClassEnum.LogicalModel, false }
+    };
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the detailed information is shown.
+    /// </summary>
+    private bool showDetailedInfo { get; set; } = true;
+
+    /// <summary>Gets or sets the navigation tracker.</summary>
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
+    /// <summary>Gets or sets the package name.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "packageName")]
+    public string PackageName { get; set; } = "";
+
+    /// <summary>Gets or sets the package version.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "version")]
+    public string Version { get; set; } = "";
+
+    /// <summary>The directive.</summary>
+    private string directive = string.Empty;
+
+    /// <summary>The filtered elements.</summary>
+    private List<ElementRecord> filteredElements = new();
+
+    /// <summary>The element lock object.</summary>
+    private object _elementLockObject = new();
+
+    /// <summary>Options for controlling the create structure script.</summary>
+    private ScriptOptions csScriptOpts = ScriptOptions.Default
+        .AddReferences(
+            typeof(FhirElement).Assembly,
+            typeof(SpecManagerWebService).Assembly,
+            AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(a => a.GetName().Name?.Equals("System.Linq") ?? false),
+            AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(a => a.GetName().Name?.Equals("System.Runtime") ?? false))
+        .AddImports("System.Linq", "System.Text", "System.Text.RegularExpressions");
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        directive = PackageName + "#" + Version;
+
+        NavTracker?.NotifyNav(directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
+        NavigationManager.LocationChanged += HandleLocationChanged;
+
+        RequestElementFilter();
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
+    }
+
+    /// <summary>Artifacts updated.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Artifact index changed event information.</param>
+    private void ArtifactsUpdated(object? sender, ArtifactIndexChangedEventArgs e)
+    {
+        if ((e.PackageName == PackageName) && (e.Version == Version))
+        {
+            RequestElementFilter();
+        }
+    }
+
+    /// <summary>Handles the location changed.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Location changed event information.</param>
+    private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        if (e.Location.ToLowerInvariant().Contains("/view/package/elements"))
+        {
+            directive = PackageName + "#" + Version;
+
+            NavTracker?.NotifyNav(directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
+
+            RequestElementFilter();
+        }
+    }
+
+    /// <summary>Adds the elements from complex.</summary>
+    /// <param name="predicate">    The predicate.</param>
+    /// <param name="complex">      The complex.</param>
+    /// <param name="elements">     The elements.</param>
+    /// <param name="rootComplex">  The root complex.</param>
+    /// <param name="artifactClass">The artifact class.</param>
+    private void AddElementsFromComplex(
+        Func<FhirElement, bool> predicate,
+        FhirComplex complex,
+        List<ElementRecord> elements,
+        FhirComplex rootComplex,
+        FhirArtifactClassEnum artifactClass)
+    {
+        if ((predicate == null) || (complex == null))
+        {
+            return;
+        }
+
+        if (complex.Components != null)
+        {
+            foreach (FhirComplex component in complex.Components.Values)
+            {
+                AddElementsFromComplex(predicate, component, elements, rootComplex, artifactClass);
+            }
+        }
+
+        if ((complex.Elements == null) || (!complex.Elements.Values.Any()))
+        {
+            return;
+        }
+
+        try
+        {
+            IEnumerable<FhirElement> res = complex.Elements.Values.Where(predicate);
+
+            if ((res == null) || (!res.Any()))
+            {
+                return;
+            }
+
+            foreach (FhirElement element in res)
+            {
+                elements.Add(new ElementRecord(
+                    artifactClass,
+                    rootComplex,
+                    element));
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"AddElementsFromComplex <<< caught exception applying LINQ filter: {ex.Message}");
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
+            }
+
+            return;
+        }
+    }
+
+    /// <summary>Request element filter.</summary>
+    /// <param name="appliedFilter">(Optional) A specific filter to apply.</param>
+    private async void RequestElementFilter(string? appliedFilter = null)
+    {
+        filterState = FilterStateCodes.Busy;
+
+        if (appliedFilter != null)
+        {
+            switch (filterValueType)
+            {
+                case FilterValueTypeCodes.StringMatch:
+                    stringMatchValue = appliedFilter;
+                    break;
+
+                case FilterValueTypeCodes.RegexMatch:
+                    regexExpression = appliedFilter;
+                    break;
+
+                case FilterValueTypeCodes.LINQ:
+                    linqPredicate = appliedFilter;
+                    break;
+            }
+        }
+
+        _ = Task.Run(() =>
+        {
+            if (!TryBuildPredicate(out Func<FhirElement, bool>? compiledPredicate))
+            {
+                lock (_elementLockObject)
+                {
+                    filteredElements.Clear();
+                    showPaging = false;
+                    pagingStatus = new(new int[0], 0, 0, 0, 0);
+                }
+                filterState = FilterStateCodes.Error;
+                return;
+            }
+
+            lock (_predicatesLockObject)
+            {
+                _predicates.Push(compiledPredicate!);
+            }
+
+            //Task.Factory.StartNew(() => FilterElements(), TaskCreationOptions.DenyChildAttach).ConfigureAwait(false);
+        })
+        .ContinueWith((_) => FilterElements())
+        .ConfigureAwait(false);
+
+        //await Task.Run(() => FilterElements()).ConfigureAwait(false);
+    }
+
+    /// <summary>Rebuild filtered elements.</summary>
+    private void FilterElements()
+    {
+        try
+        {
+            List<ElementRecord> filtered = new();
+
+            Func<FhirElement, bool> predicate;
+
+            lock (_predicatesLockObject)
+            {
+                if (!_predicates.Any())
+                {
+                    return;
+                }
+
+                predicate = _predicates.Pop();
+                _predicates.Clear();
+            }
+
+            filterState = FilterStateCodes.Busy;
+
+            try
+            {
+                foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
+                {
+                    if (!visible)
+                    {
+                        continue;
+                    }
+
+                    if (_predicates.Any())
+                    {
+                        _ = Task.Run(() => FilterElements());
+                        return;
+                    }
+
+                    if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
+                    {
+                        foreach (FhirComplex complex in values)
+                        {
+                            AddElementsFromComplex(predicate, complex, filtered, complex, artifactClass);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"RebuildFilteredElements <<< caught exception processing filter ({predicate}): {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
+                }
+
+                lock (_elementLockObject)
+                {
+                    Console.WriteLine(" <<< clearing: ElementFilterTask - exception applying filter");
+                    filteredElements.Clear();
+                    showPaging = false;
+                    pagingStatus = new(new int[0], 0, 0, 0, 0);
+                }
+                filterState = FilterStateCodes.Error;
+                return;
+            }
+
+            if (_predicates.Any())
+            {
+                _ = Task.Run(() => FilterElements());
+                return;
+            }
+
+            filtered.Sort((a, b) => a.Element.Path.CompareTo(b.Element.Path));
+
+            if (_predicates.Any())
+            {
+                _ = Task.Run(() => FilterElements());
+                return;
+            }
+
+            lock (_elementLockObject)
+            {
+                showPaging = true;
+                int totalPages = (int)Math.Floor((decimal)filtered.Count / (decimal)_recordsPerPage);
+
+                List<int> pageList = new();
+                pageList.Add(1);
+                if (totalPages > 1)
+                {
+                    pageList.Add(2);
+                }
+
+                if (totalPages > 2)
+                {
+                    pageList.Add(3);
+                }
+                pagingStatus = new(pageList.ToArray(), 0, 0, Math.Min(100, filtered.Count), totalPages);
+
+                filteredElements = filtered;
+            }
+
+            filterState = FilterStateCodes.Ok;
+        }
+        finally
+        {
+            InvokeAsync(() => StateHasChanged());
+        }
+    }
+
+    void SetPage(int pageNumber)
+    {
+        if ((pageNumber < 1) || (pageNumber > pagingStatus.LastPage))
+        {
+            return;
+        }
+
+        lock (_elementLockObject)
+        {
+            List<int> pageList = new();
+
+            if (pageNumber == 1)
+            {
+                pageList.Add(1);
+                if (pagingStatus.LastPage > 1)
+                {
+                    pageList.Add(2);
+                }
+
+                if (pagingStatus.LastPage > 2)
+                {
+                    pageList.Add(3);
+                }
+            }
+            else if (pageNumber == pagingStatus.LastPage)
+            {
+                if (pageNumber > 2)
+                {
+                    pageList.Add(pageNumber - 2);
+                }
+
+                if (pageNumber > 1)
+                {
+                    pageList.Add(pageNumber - 1);
+                }
+
+                pageList.Add(pageNumber);
+            }
+            else
+            {
+                pageList.Add(pageNumber - 1);
+                pageList.Add(pageNumber);
+                pageList.Add(pageNumber + 1);
+            }
+
+            pagingStatus = new(pageList.ToArray(), 0, 100 * pageNumber, Math.Min(100 * (pageNumber + 1), filteredElements.Count), pagingStatus.LastPage);
+        }
+    }
+
+    /// <summary>
+    /// Attempts to build predicate a Func&lt;FhirElement,bool&gt; from the given FilterOptions.
+    /// </summary>
+    /// <param name="predicate">[out] The predicate.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryBuildPredicate(out Func<FhirElement, bool>? predicate)
+    {
+        string predString;
+        Regex? matchRegex = null;
+
+        switch (filterValueType)
+        {
+            case FilterValueTypeCodes.StringMatch:
+                if (stringMatchValue.Length < 2)
+                {
+                    predicate = null;
+                    return false;
+                }
+
+                string sc = stringSensitivity == StringMatchSensitivityCodes.CaseSensitive
+                    ? "System.StringComparison.Ordinal"
+                    : "System.StringComparison.OrdinalIgnoreCase";
+
+                predString = $"e => e.{stringMatchProperty}.{stringMatchType}(\"{stringMatchValue}\", {sc})";
+                break;
+
+            case FilterValueTypeCodes.RegexMatch:
+                try
+                {
+                    matchRegex = new(regexExpression);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"TryBuildPredicate <<< caught exception compiling regex ({regexExpression}): {ex.Message}");
+                    if (ex.InnerException != null)
+                    {
+                        Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
+                    }
+                    predicate = null;
+                    return false;
+                }
+
+                predString = $"e => MatchRegex.IsMatch(e.{regexMatchProperty})";
+                break;
+
+            case FilterValueTypeCodes.LINQ:
+                predString = linqPredicate;
+                break;
+
+            default:
+                predicate = null;
+                return false;
+        }
+
+        try
+        {
+            predicate = CSharpScript.EvaluateAsync<Func<FhirElement, bool>>(
+                predString,
+                csScriptOpts,
+                new ScriptGlobals(SpecService[directive], matchRegex)).Result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"RebuildFilteredElements <<< caught exception compiling filter ({predString}): {ex.Message}");
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
+            }
+            predicate = null;
+            return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>Links for artifact.</summary>
+    /// <param name="record">The record.</param>
+    /// <returns>A string.</returns>
+    private string LinkForArtifact(FhirArtifactRecord record)
+    {
+        return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&url={record.Url}";
+    }
+
+    /// <summary>Toggle show state.</summary>
+    /// <param name="classEnum">The class enum.</param>
+    private void ToggleShowState(FhirArtifactClassEnum classEnum)
+    {
+        showArtifactClass[classEnum] = !showArtifactClass[classEnum];
+        RequestElementFilter();
+    }
+
+    private async void DownloadElementPathsJson()
+    {
+        /// <summary>The elements.</summary>
+        IEnumerable<string> elements;
+
+        lock (_elementLockObject)
+        {
+            elements = filteredElements.Select<ElementRecord, string>(e => e.Element.Path);
+        }
+
+        string content = System.Text.Json.JsonSerializer.Serialize(elements);
+        using (Stream fs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content), false))
+        using (DotNetStreamReference streamRef = new DotNetStreamReference(fs, false))
+        {
+            await JS.InvokeVoidAsync("downloadFileFromStream", "elementPaths.json", streamRef);
+        }
+    }
+
+    /// <summary>Downloads the FHIR elements JSON.</summary>
+    private async void DownloadFhirElementsJson()
+    {
+        IEnumerable<FhirElement> elements;
+
+        lock (_elementLockObject)
+        {
+            elements = filteredElements.Select<ElementRecord, FhirElement>(e => e.Element);
+        }
+
+        string content = System.Text.Json.JsonSerializer.Serialize(elements);
+        using (Stream fs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content), false))
+        using (DotNetStreamReference streamRef = new DotNetStreamReference(fs, false))
+        {
+            await JS.InvokeVoidAsync("downloadFileFromStream", "elements.json", streamRef);
+        }
+    }
+
+    /// <summary>Gets linq execute button class.</summary>
+    /// <param name="currentFilterType">Type of the current filter.</param>
+    /// <returns>The linq execute button class.</returns>
+    private string GetLinqExecButtonClass(string currentFilterType)
+    {
+        if (currentFilterType.Equals("linq", StringComparison.Ordinal))
+        {
+            return "btn btn-primary ms-1";
+        }
+
+        return "btn btn-dark ms-1 disabled";
+    }
+
+    /// <summary>Gets button class.</summary>
+    /// <param name="enabled">True to enable, false to disable.</param>
+    /// <returns>The button class.</returns>
+    private string GetButtonClass(bool enabled)
+    {
+        if (enabled)
+        {
+            return "btn btn-primary m-1 col-md-2";
+        }
+
+        return "btn btn-outline-primary m-1 col-md-2";
+    }
+
+    /// <summary>Gets navigation button class.</summary>
+    /// <param name="tab">The tab.</param>
+    /// <returns>The navigation button class.</returns>
+    private string GetNavButtonClass(FilterValueTypeCodes tab)
+    {
+        if (filterValueType == tab)
+        {
+            return "nav-link active";
+        }
+
+        return "nav-link";
+    }
+
+    /// <summary>Gets navigation pane class.</summary>
+    /// <param name="tab">The tab.</param>
+    /// <returns>The navigation pane class.</returns>
+    private string GetNavPaneClass(FilterValueTypeCodes tab)
+    {
+        if (filterValueType == tab)
+        {
+            return "tab-pane fade show active form-control mb-2";
+        }
+
+        return "tab-pane fade form-control mb-2";
+    }
+}

@@ -1,0 +1,197 @@
+﻿@page "/"
+@using FhirCodeGenBlazor.Models
+@using Microsoft.Health.Fhir.CodeGenCommon.Models;
+@using FhirCodeGenBlazor.Services;
+@inject NavigationManager NavigationManager
+@inject IPackageManagerWebService PackageService
+@implements IDisposable
+
+<PageTitle>FHIR Cache</PageTitle>
+<h3>Local FHIR Cache</h3>
+
+@if (!loaded)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>
+    <button class="btn btn-outline-secondary" type="button" @onclick="@(() => NavToAddPackage())">Add Packages</button>
+    </p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Cache Directive</th>
+                <th>FHIR Version</th>
+                <th>Title</th>
+                <th>Dependencies</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (PackageCacheRecord record in PackageService.Values.OrderBy(r => r.CacheDirective))*@
+            @foreach ((string key, PackageCacheRecord record) in PackageService.OrderBy(r => r.Key))
+            {
+                <tr>
+                    @switch (record.PackageState)
+                    {
+                        case PackageLoadStateEnum.Loaded:
+
+                            <td>
+                                <button
+                                    type="button"
+                                    @onclick="() => NavToViewPackage(key)"
+                                    data-bs-toggle="tooltip"
+                                    title="View Package"
+                                    >
+                                    <span class="oi oi-eye"></span>
+                                </button>
+                                <button
+                                    type="button"
+                                    @onclick="() => NavToPackageElements(key)"
+                                    data-bs-toggle="tooltip"
+                                    title="Package Elements"
+                                    >
+                                    <span class="oi oi-box"></span>
+                                </button>
+                                <button
+                                    type="button"
+                                    @onclick="() => NavToExportPackage(key)"
+                                    data-bs-toggle="tooltip"
+                                    title="Export Package"
+                                    >
+                                    <span class="oi oi-arrow-thick-right"></span>
+                                </button>
+                            </td>
+                            break;
+
+                        case PackageLoadStateEnum.Parsed:
+                            <td><span class="oi oi-check"></span></td>
+                            break;
+
+                        case PackageLoadStateEnum.Queued:
+                        case PackageLoadStateEnum.InProgress:
+                            <td><div class="spinner-border"></div></td>
+                            break;
+
+                        default:
+                            <td><button type="button" @onclick="() => ButtonLoadPackageClicked(key)">Load</button></td>
+                            break;
+                    }
+                    <td>@key</td>
+                    <td>@string.Join(',', record.Details?.FhirVersions ?? new string[0])</td>
+                    <td>@record.Details?.Title</td>
+                    <td>@DependenciesForPackage(record)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    /// <summary>Gets or sets the navigation tracker.</summary>
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
+    private bool loaded = false;
+    private string directiveToLoad = string.Empty;
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        NavTracker?.NotifyNav("FHIR Cache", "", 0);
+        PackageService.OnChanged += PackageServiceChanged;
+        loaded = true;
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        PackageService.OnChanged -= PackageServiceChanged;
+    }
+
+    /// <summary>Handles the package service changed event.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Event information to send to registered event handlers.</param>
+    private void PackageServiceChanged(object? sender, EventArgs e)
+    {
+        InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Navigation to add package.</summary>
+    private void NavToAddPackage()
+    {
+        NavigationManager.NavigateTo("/addpackage");
+    }
+
+    /// <summary>Navigation to browse package.</summary>
+    /// <param name="directive">The directive.</param>
+    private void NavToPackageElements(string directive)
+    {
+        string[] components = directive.Split('#');
+
+        if (components.Length > 1)
+        {
+            NavigationManager.NavigateTo($"/view/package/elements?packageName={components[0]}&version={components[1]}");
+            return;
+        }
+
+        NavigationManager.NavigateTo($"/view/package/elements?packageName={components[0]}");
+    }
+
+    /// <summary>Navigation to browse package.</summary>
+    /// <param name="directive">The directive.</param>
+    private void NavToViewPackage(string directive)
+    {
+        string[] components = directive.Split('#');
+
+        if (components.Length > 1)
+        {
+            NavigationManager.NavigateTo($"/view/package?packageName={components[0]}&version={components[1]}");
+            return;
+        }
+
+        NavigationManager.NavigateTo($"/view/package?packageName={components[0]}");
+    }
+
+    /// <summary>Navigation to export package.</summary>
+    /// <param name="directive">The directive.</param>
+    private void NavToExportPackage(string directive)
+    {
+        string[] components = directive.Split('#');
+
+        if (components.Length > 1)
+        {
+            NavigationManager.NavigateTo($"/export/package?packageName={components[0]}&version={components[1]}");
+            return;
+        }
+
+        NavigationManager.NavigateTo($"/export/package?packageName={components[0]}");
+    }
+
+    /// <summary>Button load package clicked.</summary>
+    /// <param name="directive">The directive.</param>
+    void ButtonLoadPackageClicked(string directive)
+    {
+        PackageService.RequestLoad(directive, out _);
+    }
+
+    /// <summary>Dependencies for package.</summary>
+    /// <param name="record">The record.</param>
+    /// <returns>A string.</returns>
+    string DependenciesForPackage(PackageCacheRecord record)
+    {
+        if (record.Details?.Dependencies?.Any() != true)
+        {
+            return string.Empty;
+        }
+
+        return string.Join(", ", record.Details.Dependencies.Select((KeyValuePair<string, string> kvp) => $"{kvp.Key}#{kvp.Value}"));
+    }
+}

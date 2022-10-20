@@ -1,0 +1,83 @@
+﻿@using FhirCodeGenBlazor.Models
+@using Microsoft.Health.Fhir.CodeGenCommon.Models
+
+@if (ObjectToDisplay != null)
+{
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th class="col-md-2">System</th>
+				<th class="col-md-1">Version</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (FhirValueSetComposition item in ObjectToDisplay)
+		{
+			<tr class="table-active">
+				<td class="text-wrap">@item.System</td>
+				<td class="text-wrap">@(item.Version ?? "(latest)")</td>
+			</tr>
+
+			@if(item.Filters?.Count > 0)
+			{
+				<tr>
+					<td colspan="2" style="padding-left: 60px;">
+						<h3>Filters</h3>
+						<table class="table">
+							<tbody>
+							@foreach (FhirValueSetFilter filter in item.Filters)
+							{
+								<tr>
+									<td class="col-md-1">@filter.Property</td>
+									<td class="col-md-1">@filter.Operation</td>
+									<td class="col-md-1">@filter.Value</td>
+								</tr>
+							}
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			}
+
+			@if (item.Concepts?.Count > 0)
+			{
+				<tr>
+					<td colspan="2" style="padding-left: 60px;">
+						<table class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th class="col-md-1">Code</th>
+									<th class="col-md-1">Display</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach (FhirConcept itemConcept in item.Concepts)
+							{
+								<tr>
+									<td class="fw-bold">
+										<span>@itemConcept.Code</span><br/>
+									</td>
+									<td class="text-wrap">@itemConcept.Display</td>
+								</tr>
+							}
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			}
+		}
+		</tbody>
+	</table>
+</div>
+}
+
+@code {
+	/// <summary>Gets or sets the package and version provider.</summary>
+	[CascadingParameter]
+	public IPackageVersionProvider? PackageAndVersionProvider { get; set; } = null;
+
+	/// <summary>Gets or sets the object to display.</summary>
+	[Parameter]
+	public List<FhirValueSetComposition>? ObjectToDisplay { get; set; } = null;
+}

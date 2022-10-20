@@ -70,19 +70,19 @@ namespace FhirCodegenTestCli
 
             _verbose = verbose;
 
-            try
-            {
-                _testsRun++;
-                //RunCodeGen(path);
-                _testsPassed++;
-            }
-            catch (Exception ex)
-            {
-                _testsFailed++;
-                WriteTestInfo($"Failed during Code Generation! {ex.Message}");
+            //try
+            //{
+            //    _testsRun++;
+            //    //RunCodeGen(path);
+            //    _testsPassed++;
+            //}
+            //catch (Exception ex)
+            //{
+            //    _testsFailed++;
+            //    WriteTestInfo($"Failed during Code Generation! {ex.Message}");
 
-                return 1;
-            }
+            //    return 1;
+            //}
 
             for (int version = FhirVersionMin; version <= FhirVersionMax; version++)
             {

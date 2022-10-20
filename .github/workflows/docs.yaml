@@ -1,0 +1,54 @@
+name: Docs
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - src/**
+    - docfx/**
+    - .github/workflows/docs.yml
+
+jobs:
+  generate-docs:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET 6.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Setup DocFX
+      uses: crazy-max/ghaction-chocolatey@v1
+      with:
+        args: install docfx
+
+    - name: DocFX Build
+      run: docfx ./docfx/docfx.json
+      continue-on-error: false
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: site
+        path: docfx/_site
+          
+  deploy:
+    concurrency: ci-${{ github.ref }}
+    needs: [generate-docs]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: site
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: 'site'

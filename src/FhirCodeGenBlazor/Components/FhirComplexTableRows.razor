@@ -1,0 +1,322 @@
+﻿@using FhirCodeGenBlazor.Models
+@using FhirCodeGenBlazor.Services
+@using Markdig
+@using Microsoft.Health.Fhir.CodeGenCommon.Models
+@inject ISpecManagerWebService SpecService
+
+@if (ObjectToDisplay != null)
+{
+    @foreach(FhirElement element in ObjectToDisplay.Elements.Values)
+    {
+        @if (ShowDifferentialOnly && (!element.InDifferential))
+        {
+            continue;
+        }
+
+        <tr class="@GetTrClass()">
+            @if (!string.IsNullOrEmpty(element.FixedFieldName))
+            {
+                <td class="fw-bold">
+                    <span>@ElementName(element)</span><br/>
+                    &nbsp;<span class="text-danger">*</span> fixed to:
+                    <span class="font-monospace bg-dark bg-opacity-50 text-light p-1">@element.FixedFieldValue</span>
+                </td>
+            }
+            else
+            {
+                <td class="fw-bold">@ElementName(element)</td>
+            }
+            <td>
+                @if (element.IsMustSupport)
+                {
+                    <span data-bs-toggle="tooltip" title="Must Support">Ⓜ️ </span>
+                }
+
+                @if (element.IsModifier)
+                {
+                    <span data-bs-toggle="tooltip" title="@(element.IsModifierReason ?? "Modifier Element")">⁈ </span>
+                }
+
+                @if (element.IsSummary)
+                {
+                    <span data-bs-toggle="tooltip" title="Included in Summary">∑ </span>
+                }
+            </td>
+            <td class="text-wrap">@GetElementTypeString(element)</td>
+            <td>@element.FhirCardinality</td>
+            <td>
+                @element.ShortDescription
+            </td>
+        </tr>
+
+        @if (ShowDetails)
+        {
+            <tr>
+                <td colspan="5">
+                    <div class="small">
+                        @if (!string.IsNullOrEmpty(element.Purpose))
+                        {
+                            <strong>Definition:</strong><p>@element.Purpose</p>
+                        }
+
+                        @if (!string.IsNullOrEmpty(element.Comment))
+                        {
+                            <strong>Comments:</strong>
+                            @(new MarkupString(Markdown.ToHtml(element.Comment)))
+                        }
+
+                        @if (!string.IsNullOrEmpty(element.ValueSet))
+                        {
+                            <p><strong>Bound to:</strong> @element.ValueSet (@element.ValueSetBindingStrength)</p>
+                        }
+
+                        @if (!string.IsNullOrEmpty(element.ValidationRegEx))
+                        {
+                            <p><strong>Validation RegEx:</strong> @element.ValidationRegEx</p>
+                        }
+
+                        @if (element.Representations.Any())
+                        {
+                            <p><strong>Representations:</strong> @string.Join(", ", element.Representations)</p>
+                        }
+
+                        @if (element.Slicing.Any())
+                        {
+                            <strong>Slicing:</strong>
+                            @foreach(FhirSlicing slicing in element.Slicing.Values)
+                            {
+                                <p>
+                                    <strong>Slice:</strong> <span>@slicing.DefinedByUrl</span>,
+                                    @if (slicing.IsOrdered)
+                                    {
+                                        <span>Ordered: Slice @slicing.FieldOrder ,</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Unordered, </span>
+                                    }
+                                    <span>@string.Join(", ", slicing.DiscriminatorRules.Values.Select(dr => $"{dr.DiscriminatorTypeName}:{dr.Path}"))</span>
+                                </p>
+
+                                @if (slicing.Slices.Any() && ((!ShowDifferentialOnly) || slicing.HasDifferentialSlices))
+                                {
+                                    <table class="table table-bordered border-primary table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-md-2">Element</th>
+                                                <th class="col-md-1">Flags</th>
+                                                <th class="col-md-1">Type</th>
+                                                <th class="col-md-1">Card.</th>
+                                                <th class="col-md-3">Short</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (FhirComplex slice in slicing.Slices)
+                                            {
+                                                <FhirComplexTableRows
+                                                    ObjectToDisplay=@slice
+                                                    ParentNamePrefix=@string.Format("{0}:{1}", @ElementName(element), slice.SliceName)
+                                                    ExpandToDepth=@ExpandToDepth
+                                                    Depth=@Depth
+                                                    ShowDetails=@ShowDetails
+                                                    ShowDifferentialOnly=@ShowDifferentialOnly
+                                                    />
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                            }
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+
+        @if (CanDrillDown(element, out string name))
+        {
+            if (ObjectToDisplay.Components.ContainsKey(name))
+            {
+                <FhirComplexTableRows
+                    ObjectToDisplay=@ObjectToDisplay.Components[name]
+                    ParentNamePrefix=@NameForChildren(element)
+                    ExpandToDepth=@ExpandToDepth
+                    Depth=@Depth
+                    ShowDetails=@ShowDetails
+                    ShowDifferentialOnly=@ShowDifferentialOnly
+                    />
+            }
+            else if ((Depth < ExpandToDepth) &&
+                     (SpecService[directive].TryGetArtifact(
+                        name,
+                        out object artifact,
+                        out FhirArtifactClassEnum artifactClass,
+                        out _)) &&
+                     (artifact != null))
+            {
+                switch (artifact)
+                {
+                    case FhirComplex complex:
+                        <FhirComplexTableRows
+                            ObjectToDisplay=@complex
+                            ParentNamePrefix=@NameForChildren(element)
+                            ExpandToDepth=@ExpandToDepth
+                            Depth=@(Depth + 1)
+                            ShowDetails=@ShowDetails
+                            ShowDifferentialOnly=@ShowDifferentialOnly
+                            />
+                        break;
+                }
+            }
+        }
+    }
+}
+
+@code {
+    /// <summary>Gets or sets the package and version provider.</summary>
+    [CascadingParameter]
+    public IPackageVersionProvider? PackageAndVersionProvider { get; set; } = null;
+
+    /// <summary>Gets or sets the object to display.</summary>
+    [Parameter]
+    public FhirComplex? ObjectToDisplay { get; set; } = null;
+
+    /// <summary>Gets or sets the parent name prefix.</summary>
+    [Parameter]
+    public string ParentNamePrefix { get; set; } = string.Empty;
+
+    /// <summary>Gets or sets the depth of the expand to.</summary>
+    [Parameter]
+    public int ExpandToDepth { get; set; } = 0;
+
+    /// <summary>Gets or sets the depth.</summary>
+    [Parameter]
+    public int Depth { get; set; } = 0;
+
+    /// <summary>Gets or sets a value indicating whether the details is shown.</summary>
+    [Parameter]
+    public bool ShowDetails { get; set; } = true;
+
+    /// <summary>Gets or sets a value indicating whether the changes only is shown.</summary>
+    [Parameter]
+    public bool ShowDifferentialOnly { get; set; } = false;
+
+    /// <summary>The directive.</summary>
+    private string directive = string.Empty;
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        if (PackageAndVersionProvider != null)
+        {
+            directive = PackageAndVersionProvider.PackageName + "#" + PackageAndVersionProvider.Version;
+        }
+    }
+
+    /// <summary>Gets tr class.</summary>
+    /// <returns>The tr class.</returns>
+    private string GetTrClass()
+    {
+        if (ShowDetails)
+        {
+            return "table-active";
+        }
+
+        return string.Empty;
+    }
+
+    /// <summary>Element name.</summary>
+    /// <param name="element">The element.</param>
+    /// <returns>A string.</returns>
+    private string ElementName(FhirElement element)
+    {
+        if (!string.IsNullOrEmpty(element.ExplicitName))
+        {
+            return ParentNamePrefix + "." + element.ExplicitName;
+        }
+
+        return ParentNamePrefix + "." + element.Name;
+    }
+
+    /// <summary>Name for children.</summary>
+    /// <param name="element">The element.</param>
+    /// <returns>A string.</returns>
+    private string NameForChildren(FhirElement element)
+    {
+        if (element.CardinalityMax != 1)
+        {
+            return ElementName(element) + "[]";
+        }
+
+        return ElementName(element);
+    }
+
+    /// <summary>Determine if we can drill down.</summary>
+    /// <param name="element">The element.</param>
+    /// <param name="name">   [out] The name.</param>
+    /// <returns>True if we can drill down, false if not.</returns>
+    private bool CanDrillDown(FhirElement element, out string name)
+    {
+        if (!string.IsNullOrEmpty(element.BaseTypeName))
+        {
+            name = element.BaseTypeName;
+
+            if (name.Equals("Extension", StringComparison.Ordinal))
+            {
+                name = string.Empty;
+                return false;
+            }
+
+            return true;
+        }
+
+        if (element.ElementTypes.Count == 1)
+        {
+            name = element.ElementTypes.Values.First().Name;
+
+            if (name.Equals("Extension", StringComparison.Ordinal))
+            {
+                name = string.Empty;
+                return false;
+            }
+
+            return true;
+        }
+
+        name = string.Empty;
+        return false;
+    }
+
+    /// <summary>Links for artifact.</summary>
+    /// <param name="record">The record.</param>
+    /// <returns>A string.</returns>
+    private string LinkForArtifact(FhirArtifactRecord record)
+    {
+        return $"/viewArtifact/?packageName={PackageAndVersionProvider?.PackageName}&version={PackageAndVersionProvider?.Version}&id={record.Id}";
+    }
+
+    /// <summary>Gets element type string.</summary>
+    /// <param name="element">The element.</param>
+    /// <returns>The element type string.</returns>
+    private string GetElementTypeString(FhirElement element)
+    {
+        if (element.BaseTypeName.Equals(element.Id, StringComparison.Ordinal))
+        {
+            return "BackboneElement";
+        }
+
+        if (!string.IsNullOrEmpty(element.BaseTypeName))
+        {
+            return element.BaseTypeName;
+        }
+
+        return string.Join(
+            ", ",
+            element.ElementTypes.Values.Select(
+                et => et.Profiles.Any()
+                    ? $"{et.Name}( {string.Join(" | ", et.Profiles.Values.Select(p => p.Name))} )"
+                    : et.Name));
+    }
+}
