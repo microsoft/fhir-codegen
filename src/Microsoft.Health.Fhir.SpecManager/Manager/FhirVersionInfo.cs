@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System;
 using System.IO;
 using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Converters;
@@ -2055,6 +2056,68 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
 
         explicitName = string.Empty;
         return false;
+    }
+
+    /// <summary>Gets inheritance names hash.</summary>
+    /// <param name="key">The key.</param>
+    /// <returns>The inheritance names hash.</returns>
+    public HashSet<string> GetInheritanceNamesHash(string key)
+    {
+        HashSet<string> hs = new();
+
+        if (_complexTypesByName.ContainsKey(key))
+        {
+            FhirComplex c = _complexTypesByName[key];
+
+            hs.Add(c.Name);
+
+            if ((!string.IsNullOrEmpty(c.BaseTypeName)) &&
+                (!c.Name.Equals(c.BaseTypeName, StringComparison.OrdinalIgnoreCase)))
+            {
+                hs.UnionWith(GetInheritanceNamesHash(c.BaseTypeName));
+            }
+        }
+
+        if (_resourcesByName.ContainsKey(key))
+        {
+            FhirComplex c = _resourcesByName[key];
+
+            hs.Add(c.Name);
+
+            if ((!string.IsNullOrEmpty(c.BaseTypeName)) &&
+                (!c.Name.Equals(c.BaseTypeName, StringComparison.OrdinalIgnoreCase)))
+            {
+                hs.UnionWith(GetInheritanceNamesHash(c.BaseTypeName));
+            }
+        }
+
+        if (_profilesByUrl.ContainsKey(key))
+        {
+            FhirComplex c = _profilesByUrl[key];
+
+            hs.Add(c.Name);
+
+            if ((!string.IsNullOrEmpty(c.BaseTypeName)) &&
+                (!c.Name.Equals(c.BaseTypeName, StringComparison.OrdinalIgnoreCase)))
+            {
+                hs.UnionWith(GetInheritanceNamesHash(c.BaseTypeName));
+            }
+        }
+
+        if (_logicalModelsByName.ContainsKey(key))
+        {
+            FhirComplex c = _logicalModelsByName[key];
+
+            hs.Add(c.Name);
+
+            if ((!string.IsNullOrEmpty(c.BaseTypeName)) &&
+                (!c.Name.Equals(c.BaseTypeName, StringComparison.OrdinalIgnoreCase)))
+            {
+                hs.UnionWith(GetInheritanceNamesHash(c.BaseTypeName));
+            }
+        }
+
+        return hs;
     }
 
     /// <summary>Determine if we should process resource.</summary>

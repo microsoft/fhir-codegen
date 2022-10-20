@@ -1,0 +1,52 @@
+﻿@using Microsoft.Health.Fhir.CodeGenCommon.Models
+
+@if (NpmPackage != null)
+{
+    <MudSimpleTable>
+        <thead>
+            <th>Property</th>
+            <th>Value</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>@NpmPackage.Name</td>
+            </tr>
+            <tr>
+                <td>Version</td>
+                <td>@NpmPackage.Version</td>
+            </tr>
+            <tr>
+                <td>URL</td>
+                <td>@NpmPackage.URL</td>
+            </tr>
+            <tr>
+                <td>Build Date</td>
+                <td>@NpmPackage.BuildDate</td>
+            </tr>
+            <tr>
+                <td>Title</td>
+                <td>@NpmPackage.Title</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>@NpmPackage.Description</td>
+            </tr>
+            <tr>
+                <td>FHIR Versions</td>
+                <td>@string.Join(", ", NpmPackage.FhirVersions)</td>
+            </tr>
+            <tr>
+                <td>Dependencies</td>
+                <td>@string.Join(", ", NpmPackage.Dependencies.Select((k,v) => $"{k}#{v}"))</td>
+            </tr>
+        </tbody>
+    </MudSimpleTable>
+}
+
+@code {
+
+    /// <summary>Gets or sets the object to display.</summary>
+    [Parameter]
+    public NpmPackageDetails? NpmPackage { get; set; } = null;
+}

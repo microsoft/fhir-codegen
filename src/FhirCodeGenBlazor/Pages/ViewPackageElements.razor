@@ -17,299 +17,193 @@
 @implements IDisposable
 @implements IPackageVersionProvider
 
-@if (string.IsNullOrEmpty(directive))
+@if (string.IsNullOrEmpty(directive) ||
+     (!SpecService.ContainsKey(directive)))
 {
     <PageTitle>FHIR Element Search</PageTitle>
-    <p><em>This page requires a package name and version, please select...</em></p>
-}
-else if (SpecService.ContainsKey(directive) && SpecService[directive].ArtifactRecordsByClass.Any())
-{
-    <PageTitle>@directive</PageTitle>
-    <div class="form-control mb-2" id="artifactClassGrouping" >
-        @foreach ((FhirArtifactClassEnum classEnum, bool visible) in showArtifactClass)
-        {
-            <button type="button"
-                class=@GetButtonClass(visible)
-                @onclick="() => ToggleShowState(classEnum)">
-                @classEnum.ToString() (@SpecService[directive].ArtifactRecordsByClass[classEnum].Count())
-            </button>
-        }
-    </div>
-
-    <ul class="nav nav-tabs" id="filterTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="@GetNavButtonClass(FilterValueTypeCodes.StringMatch)" @onclick="(() => filterValueType = FilterValueTypeCodes.StringMatch)" id="filterStringMatch" type="button" role="tab" aria-controls="tabStringMatch">Basic String</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="@GetNavButtonClass(FilterValueTypeCodes.RegexMatch)" @onclick="(() => filterValueType = FilterValueTypeCodes.RegexMatch)" id="filterRegexMatch" type="button" role="tab" aria-controls="tabRegexMatch">Regex</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="@GetNavButtonClass(FilterValueTypeCodes.LINQ)" @onclick="(() => filterValueType = FilterValueTypeCodes.LINQ)" id="filterLinq" type="button" role="tab" aria-controls="tabLinq">LINQ</button>
-        </li>
-    </ul>
-    <div class="tab-content" id="filterTabContent">
-        <div class="@GetNavPaneClass(FilterValueTypeCodes.StringMatch)" id="tabStringMatch" role="tabpanel" aria-labelledby="filterStringMatch">
-            <div class="mb-2 row">
-                <label class="col-sm-2 col-form-label">Comparison Property</label>
-                <div class="col-sm-10">
-                    <select class="form-select" aria-label="Comparison Property" @bind="stringMatchProperty">
-                        @foreach (string p in _basicMatchProperties)
-                        {
-                            if (p.Equals(stringMatchProperty, StringComparison.Ordinal))
-                            {
-                                <option value="@p" selected>@p</option>
-                            }
-                            else
-                            {
-                                <option value="@p">@p</option>
-                            }
-                        }
-                    </select>
-                </div>
-            </div>
-
-            <div class="mb-2 row">
-                <label class="col-sm-2 col-form-label">String Match Type</label>
-                <div class="col-sm-10">
-                    <select class="form-select" aria-label="String Match Type" @bind="stringMatchType" id="selectStringMatchType">
-                        <option value="@StringMatchTypeCodes.StartsWith">Starts With</option>
-                        <option value="@StringMatchTypeCodes.Contains" selected>Contains</option>
-                        <option value="@StringMatchTypeCodes.EndsWith">Ends With</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="mb-2 row">
-                <label class="col-sm-2 col-form-label">Case Sensitivity</label>
-                <div class="col-sm-10">
-                    <select class="form-select" aria-label="Match Case Sensitivity" @bind="stringSensitivity">
-                        <option value="@StringMatchSensitivityCodes.CaseInsensitive" selected>Case Insensitive</option>
-                        <option value="@StringMatchSensitivityCodes.CaseSensitive">Case Sensitive</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="mb-2 row">
-                <label class="col-sm-2 col-form-label">Search Value</label>
-                <div class="col-sm-10">
-                    <input type="text"
-                        class="form-control"
-                        aria-label="Search Value"
-                        @bind-value="stringMatchValue"
-                        @oninput="@((ChangeEventArgs e) => RequestElementFilter(e?.Value?.ToString() ?? null))" />
-                </div>
-            </div>
-        </div>
-
-        <div class="@GetNavPaneClass(FilterValueTypeCodes.RegexMatch)" id="tabRegexMatch" role="tabpanel" aria-labelledby="filterRegexMatch">
-            <div class="mb-2 row">
-                <label class="col-sm-2 col-form-label">Comparison Property</label>
-                <div class="col-sm-10">
-                    <select class="form-select" aria-label="Comparison Property" @bind="regexMatchProperty">
-                        @foreach (string p in _basicMatchProperties)
-                        {
-                            if (p.Equals(regexMatchProperty, StringComparison.Ordinal))
-                            {
-                                <option value="@p" selected>@p</option>
-                            }
-                            else
-                            {
-                                <option value="@p">@p</option>
-                            }
-                        }
-                    </select>
-                </div>
-            </div>
-
-            <div class="mb-2 row">
-                <label class="col-sm-2 col-form-label">Regular Expression</label>
-                <div class="col-sm-10">
-                    <input type="text"
-                       class="form-control"
-                       aria-label="Regular Expression"
-                       @bind-value="regexExpression"
-                       @oninput="@((ChangeEventArgs e) => RequestElementFilter(e?.Value?.ToString() ?? null))" />
-                </div>
-            </div>
-        </div>
-
-        <div class="@GetNavPaneClass(FilterValueTypeCodes.LINQ)" id="tabLinq" role="tabpanel" aria-labelledby="filterLinq">
-            <div class="mb-2 row">
-                <label class="col-sm-2 col-form-label">LINQ Predicate</label>
-                <div class="col-sm-10">
-                    <input type="text"
-                       class="form-control"
-                       aria-label="LINQ Predicate"
-                       @bind-value="linqPredicate"
-                       @oninput="@((ChangeEventArgs e) => RequestElementFilter(e?.Value?.ToString() ?? null))" />
-                </div>
-            </div>
-            <div class="mb-2 row">
-                <label class="mb-sm-2">
-                    For details and examples, please see the 
-                    <a href="https://microsoft.github.io/fhir-codegen/articles/blazorui.html#linq" target="_blank">API documentation</a>.
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="m-2 row">
-        <div class="form-check form-switch col-3">
-            <input class="form-check-input" type="checkbox" role="switch" id="switchToggleDetails" @bind="showDetailedInfo" />
-            <label for="switchToggleDetails" class="form-label">Show Element Details</label>
-        </div>
-        <div class="col-3">
-            <label class="form-label">@filteredElements.Count elements found</label>
-            &nbsp;
-            @switch (filterState)
-            {
-                case FilterStateCodes.Busy:
-                    <div class="spinner-border-sm"></div>
-                    break;
-                case FilterStateCodes.Ok:
-                    <span class="oi oi-circle-check alert-success"></span>
-                    break;
-                case FilterStateCodes.Error:
-                    <span class="oi oi-x alert-danger"></span>
-                    break;
-                case FilterStateCodes.Idle:
-                default:
-                    break;
-            }
-        </div>
-        <div class="col-6">
-            <label class="form-label">Download JSON:</label>
-            <div class="btn-group small" role="group" aria-label="Download Options">
-                <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => DownloadElementPathsJson())">Paths</button>
-                <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => DownloadFhirElementsJson())">Elements</button>
-            </div>
-        </div>
-    </div>
-
-    @if (showPaging)
-    {
-        <div class="m-2 row">
-            <div class="btn-group small" role="group" aria-label="Paging">
-                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="First" @onclick="(() => SetPage(1))">
-                        <span aria-hidden="true">&laquo;</span>
-                </button>
-
-                @foreach (int displayPage in pagingStatus.PageNavigation)
-                {
-                    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => SetPage(displayPage))">
-                        <span aria-hidden="true">@displayPage</span>
-                    </button>
-                }
-
-                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="Last" @onclick="(() => SetPage(pagingStatus.LastPage))">
-                    <span aria-hidden="true">&raquo;</span>
-                </button>
-            </div>
-        </div>
-    }
-
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th class="col-md-2">Element</th>
-                <th class="col-md-1">Flags</th>
-                <th class="col-md-1">Type</th>
-                <th class="col-md-1">Card.</th>
-                <th class="col-md-3">Short</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (showDetailedInfo)
-            {
-                @lock (_elementLockObject)
-                {
-                    @for (int i = pagingStatus.CurrentIndexMin; i < pagingStatus.CurrentIndexMax; i++)
-                    //@foreach (ElementRecord rec in filteredElements)
-                    {
-                        <tr class="table-active">
-                            <FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@filteredElements[i]" />
-                            @*<FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@rec" />*@
-                        </tr>
-                        <tr>
-                            <FhirCodeGenBlazor.Components.PackageElementDetailsRow Rec="@filteredElements[i]" />
-                            @*<FhirCodeGenBlazor.Components.PackageElementDetailsRow Rec="@rec" />*@
-                        </tr>
-                    }
-                }
-            }
-            else
-            {
-                @lock (_elementLockObject)
-                {
-                    @for (int i = pagingStatus.CurrentIndexMin; i < pagingStatus.CurrentIndexMax; i++)
-                    //@foreach (ElementRecord rec in filteredElements)
-                    {
-                        <tr>
-                            <FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@filteredElements[i]" />
-                            @*<FhirCodeGenBlazor.Components.PackageElementMainRow Rec="@rec" />*@
-                        </tr>
-                    }
-                }
-            }
-        </tbody>
-    </table>
-
-    @if (showPaging)
-    {
-        <div class="m-2 row">
-            <div class="btn-group small" role="group" aria-label="Paging">
-                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="First" @onclick="(() => SetPage(1))">
-                    <span aria-hidden="true">&laquo;</span>
-                </button>
-
-                @foreach (int displayPage in pagingStatus.PageNavigation)
-                {
-                    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => SetPage(displayPage))">
-                        <span aria-hidden="true">@displayPage</span>
-                    </button>
-                }
-
-                <button type="button" class="btn btn-outline-primary btn-sm" aria-label="Last" @onclick="(() => SetPage(pagingStatus.LastPage))">
-                    <span aria-hidden="true">&raquo;</span>
-                </button>
-            </div>
-        </div>
-    }
+    <MudText Typo="Typo.h5">This page requires a loaded package (specified by name and version).</MudText>
 }
 else
 {
     <PageTitle>@directive</PageTitle>
-    <p><em>This package contains no supported artifacts.</em></p>
+
+    <MudExpansionPanels MultiExpansion="true">
+        <MudExpansionPanel Text="Artifact Type Filtering">
+            <MudGrid>
+                <MudItem xs="6" sm="3">
+                    <MudFab StartIcon="@Icons.Filled.Flip"
+                            Label="Toggle All Artifacts"
+                            OnClick="() => InvokeAsync(() => ToggleShowArtifactState())"
+                            Disabled="@_busy"
+                            />
+                </MudItem>
+
+                @foreach(FhirArtifactClassEnum ac in showArtifactClass.Keys.OrderBy(k => k))
+                {
+                    <MudItem xs="6" sm="3">
+                        <MudSwitch
+                            Color="Color.Info"
+                            Checked="@showArtifactClass[ac]"
+                            CheckedChanged="@((bool s) => ToggleShowState(ac, s))"
+                            Label="@(ac.ToString() + " (" + SpecService[directive].ArtifactRecordsByClass[ac].Count() + ")")" />
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudExpansionPanel>
+        <MudExpansionPanel Text="Advanced Filtering">
+            <MudTabs Elevation="2" Centered="true" ApplyEffectsToContainer="true" @bind-ActivePanelIndex="searchPanelIndex" >
+                <MudTabPanel Text="Basic String">
+                    <MudGrid>
+                        <MudItem xs="12">
+                            <MudSelect T="string" Label="Comparison Property" @bind-Value="stringMatchProperty">
+                                @foreach (string v in _basicMatchProperties)
+                                {
+                                    <MudSelectItem Value="@v">@v</MudSelectItem>
+                                }
+                            </MudSelect>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudSelect T="StringMatchTypeCodes" Label="String Match Type" @bind-Value="stringMatchType">
+                                <MudSelectItem Value="StringMatchTypeCodes.StartsWith">Starts With</MudSelectItem>
+                                <MudSelectItem Value="StringMatchTypeCodes.Contains">Contains</MudSelectItem>
+                                <MudSelectItem Value="StringMatchTypeCodes.EndsWith">Ends With</MudSelectItem>
+                            </MudSelect>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudSelect T="StringMatchSensitivityCodes" Label="Case Sensitivity" @bind-Value="stringSensitivity">
+                                <MudSelectItem Value="StringMatchSensitivityCodes.CaseInsensitive">Starts With</MudSelectItem>
+                                <MudSelectItem Value="StringMatchSensitivityCodes.CaseSensitive">Contains</MudSelectItem>
+                            </MudSelect>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudTextField @bind-Value="@stringMatchValue" Error="inputIsInvalid" Label="Search Value" DebounceInterval="500" OnDebounceIntervalElapsed="HandleFilterChange" />
+                        </MudItem>
+                    </MudGrid>
+                </MudTabPanel>
+                <MudTabPanel Text="RegEx">
+                    <MudGrid>
+                        <MudItem xs="12">
+                            <MudSelect T="string" Label="Comparison Property" @bind-Value="regexMatchProperty">
+                                @foreach (string v in _basicMatchProperties)
+                                {
+                                    <MudSelectItem Value="@v">@v</MudSelectItem>
+                                }
+                            </MudSelect>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudTextField @bind-Value="@regexExpression" Error="inputIsInvalid" Label="Regular Expression" DebounceInterval="500" OnDebounceIntervalElapsed="HandleFilterChange" />
+                        </MudItem>
+                    </MudGrid>
+                </MudTabPanel>
+                <MudTabPanel Text="LINQ">
+                    <MudGrid>
+                        <MudItem xs="12">
+                            <MudTextField @bind-Value="@linqPredicate" Error="inputIsInvalid" Label="LINQ Predicate" DebounceInterval="500" OnDebounceIntervalElapsed="HandleFilterChange" />
+                        </MudItem>
+                        <MudItem xs="12">
+                            For details and examples, please see the 
+                            <MudLink href="https://microsoft.github.io/fhir-codegen/articles/blazorui.html#linq" target="_blank">API documentation</MudLink>.
+                        </MudItem>
+                    </MudGrid>
+                </MudTabPanel>
+            </MudTabs>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+
+    <MudTable
+        @ref="_displayTable"
+        Items="@filteredElements"
+        Filter="new Func<ElementRecord, bool>(FilterFuncInstance)"
+        Dense="true"
+        Striped="true"
+        Hover="true"
+        Height="calc(100vh - (var(--mud-appbar-height) * 4.6))"
+        FixedHeader="true"
+        RowsPerPage="100">
+        <ToolBarContent>
+            <MudSwitch Color="Color.Info" @bind-Checked="showDetailedInfo" Label="Show detailed info" />
+        </ToolBarContent>
+        <ColGroup>
+            <col style="width: 20vw!important;" />
+            <col style="width: 7vw!important;" />
+            <col style="width: 3vw!important;" />
+            <col style="width: 10vw!important;" />
+            <col style="width: 50vw!important;" />
+        </ColGroup>
+        <HeaderContent>
+            <MudTh>Element</MudTh>
+            <MudTh>Flags</MudTh>
+            <MudTh>Card.</MudTh>
+            <MudTh>Type</MudTh>
+            <MudTh>Short</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>
+                <b>@context.Element.Path</b><br />
+                <em>Defined by @context.DefinedByClass: @context.RootComplex.Path</em>
+                @if (!string.IsNullOrEmpty(context.Element.FixedFieldName))
+                {
+                    <MudText Color="Color.Error">&nbsp;*</MudText>
+                    <span> fixed to: </span>
+                    <span class="font-monospace bg-dark bg-opacity-50 text-light p-1">@context.Element.FixedFieldValue</span>
+                }
+            </MudTd>
+            <MudTd>
+                @if (context.Element.IsMustSupport)
+                {
+                    <MudTooltip Text="Must Supprt">Ⓜ️</MudTooltip>
+                }
+
+                @if (context.Element.IsModifier)
+                {
+                    <MudTooltip Text="@(context.Element.IsModifierReason ?? "Modifier Element")">⁈</MudTooltip>
+                }
+
+                @if (context.Element.IsSummary)
+                {
+                    <MudTooltip Text="Include in Summary">∑</MudTooltip>
+                }
+            </MudTd>
+            <MudTd>@context.Element.FhirCardinality</MudTd>
+            <MudTd>@GetElementTypeString(context.Element)</MudTd>
+            <MudTd>
+                @context.Element.ShortDescription
+            </MudTd>
+        </RowTemplate>
+        <ChildRowContent>
+            @if (showDetailedInfo)
+            {
+                <MudTr>
+                    <td colspan="5" style="padding-left: 32px;">
+                        <MudText Typo="Typo.body2">
+                            <strong>Definition:</strong><p>@context.Element.Purpose</p>
+                            <strong>Comments:</strong>
+                            @(new MarkupString(Markdown.ToHtml(context.Element.Comment)))
+
+                            @if (!string.IsNullOrEmpty(context.Element.ValueSet))
+                            {
+                                <p><strong>Bound to:</strong> @context.Element.ValueSet (@context.Element.ValueSetBindingStrength)</p>
+                            }
+
+                            @if (!string.IsNullOrEmpty(context.Element.ValidationRegEx))
+                            {
+                                <p><strong>Validation RegEx:</strong> @context.Element.ValidationRegEx</p>
+                            }
+                        </MudText>
+                    </td>
+                </MudTr>
+            }
+        </ChildRowContent>
+        <PagerContent>
+            <MudTablePager PageSizeOptions="@(new int[] {100, 50, 20, 10})" />
+        </PagerContent>
+    </MudTable>
 }
 
+
 @code {
-    /// <summary>(Immutable) The records per page.</summary>
-    private const int _recordsPerPage = 100;
-
-    /// <summary>(Immutable) List of types of the filters.</summary>
-    private static readonly Dictionary<string,string> _filterTypes = new()
-    {
-        { "basicName", "Basic string match on <code>Name</code> property" },
-        { "regexName", "Regex matching on <code>Name</code> property" },
-        { "linq",      "LINQ query on <code>FhirElement</code> objects" },
-    };
-
-    /// <summary>Values that represent filter state codes.</summary>
-    private enum FilterStateCodes
-    {
-        Idle,
-        Busy,
-        Ok,
-        Error,
-    };
-
-    /// <summary>Values that represent filter value type codes.</summary>
-    private enum FilterValueTypeCodes
-    {
-        StringMatch,
-        RegexMatch,
-        LINQ,
-    }
+    /// <summary>The display table.</summary>
+    private MudTable<ElementRecord>? _displayTable = null;
 
     /// <summary>Values that represent string match types.</summary>
     private enum StringMatchTypeCodes
@@ -371,7 +265,7 @@ else
             if (_stringMatchType != value)
             {
                 _stringMatchType = value;
-                RequestElementFilter();
+                HandleFilterChange(stringMatchValue);
             }
         }
     }
@@ -391,7 +285,7 @@ else
             if (_stringSensitivity != value)
             {
                 _stringSensitivity = value;
-                RequestElementFilter();
+                HandleFilterChange(stringMatchValue);
             }
         }
     }
@@ -411,7 +305,7 @@ else
             if (!_stringMatchProperty.Equals(value, StringComparison.Ordinal))
             {
                 _stringMatchProperty = value;
-                RequestElementFilter();
+                HandleFilterChange(stringMatchValue);
             }
         }
     }
@@ -431,30 +325,20 @@ else
             if (!_regexMatchProperty.Equals(value, StringComparison.Ordinal))
             {
                 _regexMatchProperty = value;
-                RequestElementFilter();
+                HandleFilterChange(regexExpression);
             }
         }
     }
 
-    /// <summary>State of the filter.</summary>
-    private FilterStateCodes _filterState = FilterStateCodes.Idle;
+    /// <summary>Zero-based index of the search panel.</summary>
+    private int searchPanelIndex = 0;
 
-    /// <summary>Gets or sets the state of the filter.</summary>
-    private FilterStateCodes filterState
-    {
-        get
-        {
-            return _filterState;
-        }
-        set
-        {
-            if (_filterState != value)
-            {
-                _filterState = value;
-                InvokeAsync(() => StateHasChanged());
-            }
-        }
-    }
+    /// <summary>(Immutable) The search panel index basic text.</summary>
+    private const int SearchPanelIndexBasicText = 0;
+    /// <summary>(Immutable) The search panel index RegEx.</summary>
+    private const int SearchPanelIndexRegEx = 1;
+    /// <summary>(Immutable) The search panel index linq.</summary>
+    private const int SearchPanelIndexLinq = 2;
 
     /// <summary>The string match value.</summary>
     private string stringMatchValue = "";
@@ -465,25 +349,11 @@ else
     /// <summary>The linq predicate.</summary>
     private string linqPredicate = "";
 
-    /// <summary>Type of the filter value.</summary>
-    private FilterValueTypeCodes _filterValueType = FilterValueTypeCodes.StringMatch;
+    /// <summary>The search predicate.</summary>
+    private Func<FhirElement, bool>? searchPredicate = null;
 
-    /// <summary>Type of the filter value.</summary>
-    private FilterValueTypeCodes filterValueType
-    {
-        get
-        {
-            return _filterValueType;
-        }
-        set
-        {
-            if (_filterValueType != value)
-            {
-                _filterValueType = value;
-                RequestElementFilter();
-            }
-        }
-    }
+    /// <summary>True if input is invalid.</summary>
+    private bool inputIsInvalid = false;
 
     /// <summary>Information about the paging status.</summary>
     /// <param name="PageNavigation"> The page navigation.</param>
@@ -497,18 +367,6 @@ else
         int CurrentIndexMin,
         int CurrentIndexMax,
         int LastPage);
-
-    /// <summary>Gets or sets a value indicating whether the paging is shown.</summary>
-    private bool showPaging { get; set; } = false;
-
-    /// <summary>Gets or sets the paging status.</summary>
-    private PagingStatusInfo pagingStatus { get; set; } = new(new int[0], 0, 0, 0, 0);
-
-    /// <summary>The predicates.</summary>
-    private Stack<Func<FhirElement, bool>> _predicates = new();
-
-    /// <summary>The predicates lock object.</summary>
-    private object _predicatesLockObject = new();
 
     /// <summary>The show artifact class.</summary>
     private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new()
@@ -548,6 +406,12 @@ else
     /// <summary>The element lock object.</summary>
     private object _elementLockObject = new();
 
+    /// <summary>Control toggle behavior of the 'all' button.</summary>
+    private bool _showArtifactState = true;
+
+    /// <summary>If the page should be showing progress indicators.</summary>
+    private bool _busy = false;
+
     /// <summary>Options for controlling the create structure script.</summary>
     private ScriptOptions csScriptOpts = ScriptOptions.Default
         .AddReferences(
@@ -568,7 +432,7 @@ else
         NavTracker?.NotifyNav(directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
         NavigationManager.LocationChanged += HandleLocationChanged;
 
-        RequestElementFilter();
+        HandleNonFilterChange();
     }
 
     /// <summary>
@@ -578,17 +442,6 @@ else
     public void Dispose()
     {
         NavigationManager.LocationChanged -= HandleLocationChanged;
-    }
-
-    /// <summary>Artifacts updated.</summary>
-    /// <param name="sender">The sender.</param>
-    /// <param name="e">     Artifact index changed event information.</param>
-    private void ArtifactsUpdated(object? sender, ArtifactIndexChangedEventArgs e)
-    {
-        if ((e.PackageName == PackageName) && (e.Version == Version))
-        {
-            RequestElementFilter();
-        }
     }
 
     /// <summary>Handles the location changed.</summary>
@@ -602,7 +455,7 @@ else
 
             NavTracker?.NotifyNav(directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
 
-            RequestElementFilter();
+            HandleNonFilterChange();
         }
     }
 
@@ -613,13 +466,12 @@ else
     /// <param name="rootComplex">  The root complex.</param>
     /// <param name="artifactClass">The artifact class.</param>
     private void AddElementsFromComplex(
-        Func<FhirElement, bool> predicate,
         FhirComplex complex,
         List<ElementRecord> elements,
         FhirComplex rootComplex,
         FhirArtifactClassEnum artifactClass)
     {
-        if ((predicate == null) || (complex == null))
+        if (complex == null)
         {
             return;
         }
@@ -628,7 +480,7 @@ else
         {
             foreach (FhirComplex component in complex.Components.Values)
             {
-                AddElementsFromComplex(predicate, component, elements, rootComplex, artifactClass);
+                AddElementsFromComplex(component, elements, rootComplex, artifactClass);
             }
         }
 
@@ -637,240 +489,79 @@ else
             return;
         }
 
-        try
+        if ((complex.Elements == null) || (!complex.Elements.Any()))
         {
-            IEnumerable<FhirElement> res = complex.Elements.Values.Where(predicate);
-
-            if ((res == null) || (!res.Any()))
-            {
-                return;
-            }
-
-            foreach (FhirElement element in res)
-            {
-                elements.Add(new ElementRecord(
-                    artifactClass,
-                    rootComplex,
-                    element));
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"AddElementsFromComplex <<< caught exception applying LINQ filter: {ex.Message}");
-            if (ex.InnerException != null)
-            {
-                Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
-            }
-
             return;
+        }
+
+        foreach (FhirElement element in complex.Elements.Values)
+        {
+            elements.Add(new ElementRecord(
+                artifactClass,
+                rootComplex,
+                element));
         }
     }
 
-    /// <summary>Request element filter.</summary>
-    /// <param name="appliedFilter">(Optional) A specific filter to apply.</param>
-    private async void RequestElementFilter(string? appliedFilter = null)
+    /// <summary>Filter function instance.</summary>
+    /// <param name="e">A FhirElement to process.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool FilterFuncInstance(ElementRecord e) => FilterFuncDefinition(e, searchPredicate);
+
+    /// <summary>Filter function definition.</summary>
+    /// <param name="e">A FhirElement to process.</param>
+    /// <param name="p">A predicate to evaluate against the element.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool FilterFuncDefinition(ElementRecord e, Func<FhirElement, bool>? p)
     {
-        filterState = FilterStateCodes.Busy;
-
-        if (appliedFilter != null)
+        if (p == null)
         {
-            switch (filterValueType)
-            {
-                case FilterValueTypeCodes.StringMatch:
-                    stringMatchValue = appliedFilter;
-                    break;
-
-                case FilterValueTypeCodes.RegexMatch:
-                    regexExpression = appliedFilter;
-                    break;
-
-                case FilterValueTypeCodes.LINQ:
-                    linqPredicate = appliedFilter;
-                    break;
-            }
+            return !inputIsInvalid;
         }
 
-        _ = Task.Run(() =>
+        try
         {
-            if (!TryBuildPredicate(out Func<FhirElement, bool>? compiledPredicate))
-            {
-                lock (_elementLockObject)
-                {
-                    filteredElements.Clear();
-                    showPaging = false;
-                    pagingStatus = new(new int[0], 0, 0, 0, 0);
-                }
-                filterState = FilterStateCodes.Error;
-                return;
-            }
-
-            lock (_predicatesLockObject)
-            {
-                _predicates.Push(compiledPredicate!);
-            }
-
-            //Task.Factory.StartNew(() => FilterElements(), TaskCreationOptions.DenyChildAttach).ConfigureAwait(false);
-        })
-        .ContinueWith((_) => FilterElements())
-        .ConfigureAwait(false);
-
-        //await Task.Run(() => FilterElements()).ConfigureAwait(false);
+            return p.Invoke(e.Element);
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     /// <summary>Rebuild filtered elements.</summary>
-    private void FilterElements()
+    private void BuildElementList()
     {
+        _busy = true;
+
         try
         {
             List<ElementRecord> filtered = new();
 
-            Func<FhirElement, bool> predicate;
-
-            lock (_predicatesLockObject)
+            foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
             {
-                if (!_predicates.Any())
+                if (!visible)
                 {
-                    return;
+                    continue;
                 }
 
-                predicate = _predicates.Pop();
-                _predicates.Clear();
-            }
-
-            filterState = FilterStateCodes.Busy;
-
-            try
-            {
-                foreach ((FhirArtifactClassEnum artifactClass, bool visible) in showArtifactClass)
+                if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
                 {
-                    if (!visible)
+                    foreach (FhirComplex complex in values)
                     {
-                        continue;
-                    }
-
-                    if (_predicates.Any())
-                    {
-                        _ = Task.Run(() => FilterElements());
-                        return;
-                    }
-
-                    if (SpecService[directive].TryGetArtifactValues<FhirComplex>(artifactClass, out IEnumerable<FhirComplex> values))
-                    {
-                        foreach (FhirComplex complex in values)
-                        {
-                            AddElementsFromComplex(predicate, complex, filtered, complex, artifactClass);
-                        }
+                        AddElementsFromComplex(complex, filtered, complex, artifactClass);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"RebuildFilteredElements <<< caught exception processing filter ({predicate}): {ex.Message}");
-                if (ex.InnerException != null)
-                {
-                    Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
-                }
-
-                lock (_elementLockObject)
-                {
-                    Console.WriteLine(" <<< clearing: ElementFilterTask - exception applying filter");
-                    filteredElements.Clear();
-                    showPaging = false;
-                    pagingStatus = new(new int[0], 0, 0, 0, 0);
-                }
-                filterState = FilterStateCodes.Error;
-                return;
-            }
-
-            if (_predicates.Any())
-            {
-                _ = Task.Run(() => FilterElements());
-                return;
             }
 
             filtered.Sort((a, b) => a.Element.Path.CompareTo(b.Element.Path));
 
-            if (_predicates.Any())
-            {
-                _ = Task.Run(() => FilterElements());
-                return;
-            }
-
-            lock (_elementLockObject)
-            {
-                showPaging = true;
-                int totalPages = (int)Math.Floor((decimal)filtered.Count / (decimal)_recordsPerPage);
-
-                List<int> pageList = new();
-                pageList.Add(1);
-                if (totalPages > 1)
-                {
-                    pageList.Add(2);
-                }
-
-                if (totalPages > 2)
-                {
-                    pageList.Add(3);
-                }
-                pagingStatus = new(pageList.ToArray(), 0, 0, Math.Min(100, filtered.Count), totalPages);
-
-                filteredElements = filtered;
-            }
-
-            filterState = FilterStateCodes.Ok;
+            filteredElements = filtered;
         }
         finally
         {
+            _busy = false;
             InvokeAsync(() => StateHasChanged());
-        }
-    }
-
-    void SetPage(int pageNumber)
-    {
-        if ((pageNumber < 1) || (pageNumber > pagingStatus.LastPage))
-        {
-            return;
-        }
-
-        lock (_elementLockObject)
-        {
-            List<int> pageList = new();
-
-            if (pageNumber == 1)
-            {
-                pageList.Add(1);
-                if (pagingStatus.LastPage > 1)
-                {
-                    pageList.Add(2);
-                }
-
-                if (pagingStatus.LastPage > 2)
-                {
-                    pageList.Add(3);
-                }
-            }
-            else if (pageNumber == pagingStatus.LastPage)
-            {
-                if (pageNumber > 2)
-                {
-                    pageList.Add(pageNumber - 2);
-                }
-
-                if (pageNumber > 1)
-                {
-                    pageList.Add(pageNumber - 1);
-                }
-
-                pageList.Add(pageNumber);
-            }
-            else
-            {
-                pageList.Add(pageNumber - 1);
-                pageList.Add(pageNumber);
-                pageList.Add(pageNumber + 1);
-            }
-
-            pagingStatus = new(pageList.ToArray(), 0, 100 * pageNumber, Math.Min(100 * (pageNumber + 1), filteredElements.Count), pagingStatus.LastPage);
         }
     }
 
@@ -884,9 +575,9 @@ else
         string predString;
         Regex? matchRegex = null;
 
-        switch (filterValueType)
+        switch (searchPanelIndex)
         {
-            case FilterValueTypeCodes.StringMatch:
+            case SearchPanelIndexBasicText:
                 if (stringMatchValue.Length < 2)
                 {
                     predicate = null;
@@ -900,7 +591,7 @@ else
                 predString = $"e => e.{stringMatchProperty}.{stringMatchType}(\"{stringMatchValue}\", {sc})";
                 break;
 
-            case FilterValueTypeCodes.RegexMatch:
+            case SearchPanelIndexRegEx:
                 try
                 {
                     matchRegex = new(regexExpression);
@@ -919,7 +610,7 @@ else
                 predString = $"e => MatchRegex.IsMatch(e.{regexMatchProperty})";
                 break;
 
-            case FilterValueTypeCodes.LINQ:
+            case SearchPanelIndexLinq:
                 predString = linqPredicate;
                 break;
 
@@ -957,14 +648,7 @@ else
         return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&url={record.Url}";
     }
 
-    /// <summary>Toggle show state.</summary>
-    /// <param name="classEnum">The class enum.</param>
-    private void ToggleShowState(FhirArtifactClassEnum classEnum)
-    {
-        showArtifactClass[classEnum] = !showArtifactClass[classEnum];
-        RequestElementFilter();
-    }
-
+    /// <summary>Downloads the element paths JSON.</summary>
     private async void DownloadElementPathsJson()
     {
         /// <summary>The elements.</summary>
@@ -1001,55 +685,94 @@ else
         }
     }
 
-    /// <summary>Gets linq execute button class.</summary>
-    /// <param name="currentFilterType">Type of the current filter.</param>
-    /// <returns>The linq execute button class.</returns>
-    private string GetLinqExecButtonClass(string currentFilterType)
+    /// <summary>Toggle show artifact state.</summary>
+    private void ToggleShowArtifactState()
     {
-        if (currentFilterType.Equals("linq", StringComparison.Ordinal))
+        // flag we are busy - will be cleared by RebuildFilteredArtifacts
+        _busy = true;
+
+        _showArtifactState = !_showArtifactState;
+        foreach (FhirArtifactClassEnum ac in showArtifactClass.Keys)
         {
-            return "btn btn-primary ms-1";
+            showArtifactClass[ac] = _showArtifactState;
         }
 
-        return "btn btn-dark ms-1 disabled";
+        InvokeAsync(() => BuildElementList());
     }
 
-    /// <summary>Gets button class.</summary>
-    /// <param name="enabled">True to enable, false to disable.</param>
-    /// <returns>The button class.</returns>
-    private string GetButtonClass(bool enabled)
+    /// <summary>Toggle show state.</summary>
+    /// <param name="classEnum">The class enum.</param>
+    private void ToggleShowState(FhirArtifactClassEnum classEnum, bool? v)
     {
-        if (enabled)
+        if (v == showArtifactClass[classEnum])
         {
-            return "btn btn-primary m-1 col-md-2";
+            return;
         }
 
-        return "btn btn-outline-primary m-1 col-md-2";
+        if (v == null)
+        {
+            showArtifactClass[classEnum] = !showArtifactClass[classEnum];
+        }
+        else
+        {
+            showArtifactClass[classEnum] = (v == true);
+        }
+
+        InvokeAsync(() => BuildElementList());
     }
 
-    /// <summary>Gets navigation button class.</summary>
-    /// <param name="tab">The tab.</param>
-    /// <returns>The navigation button class.</returns>
-    private string GetNavButtonClass(FilterValueTypeCodes tab)
+    /// <summary>Handles the filter change described by value.</summary>
+    /// <param name="value">The value.</param>
+    private void HandleFilterChange(string value)
     {
-        if (filterValueType == tab)
+        if (string.IsNullOrEmpty(value))
         {
-            return "nav-link active";
+            searchPredicate = null;
+            inputIsInvalid = false;
+            _displayTable?.UpdateSelection();
+            InvokeAsync(() => StateHasChanged());
+            return;
         }
 
-        return "nav-link";
+        if (TryBuildPredicate(out Func<FhirElement, bool>? pred))
+        {
+            searchPredicate = pred;
+            inputIsInvalid = false;
+            _displayTable?.UpdateSelection();
+            InvokeAsync(() => StateHasChanged());
+            return;
+        }
+
+        inputIsInvalid = true;
+        _displayTable?.UpdateSelection();
+        InvokeAsync(() => StateHasChanged());
     }
 
-    /// <summary>Gets navigation pane class.</summary>
-    /// <param name="tab">The tab.</param>
-    /// <returns>The navigation pane class.</returns>
-    private string GetNavPaneClass(FilterValueTypeCodes tab)
+    private void HandleNonFilterChange()
     {
-        if (filterValueType == tab)
+        InvokeAsync(() => BuildElementList());
+    }
+
+    /// <summary>Gets element type string.</summary>
+    /// <param name="element">The element.</param>
+    /// <returns>The element type string.</returns>
+    private MarkupString GetElementTypeString(FhirElement element)
+    {
+        if (element.BaseTypeName.Equals(element.Id, StringComparison.Ordinal))
         {
-            return "tab-pane fade show active form-control mb-2";
+            return new MarkupString("BackboneElement");
         }
 
-        return "tab-pane fade form-control mb-2";
+        if (!string.IsNullOrEmpty(element.BaseTypeName))
+        {
+            return new MarkupString(element.BaseTypeName);
+        }
+
+        return new MarkupString(string.Join(
+            ", <br />",
+            element.ElementTypes.Values.Select(
+                et => et.Profiles.Any()
+                    ? $"{et.Name}( {string.Join("<br /> | ", et.Profiles.Values.Select(p => p.Name))} )"
+                    : et.Name)));
     }
 }

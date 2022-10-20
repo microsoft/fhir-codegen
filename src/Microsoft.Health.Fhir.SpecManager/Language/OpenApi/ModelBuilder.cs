@@ -1302,7 +1302,7 @@ public class ModelBuilder
                 new OpenApiSchema()
                 {
                     Title = code,
-                    Type = GetBodyParamType(code),
+                    Type = "string",                                // GetBodyParamType(code),
                 });
             usedParams.Add(code);
         }
@@ -1321,7 +1321,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = code,
-                        Type = GetBodyParamType(code),
+                        Type = "string",                            // GetBodyParamType(code),
                     });
                 usedParams.Add(code);
             }
@@ -1338,7 +1338,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = code,
-                        Type = GetBodyParamType(code),
+                        Type = "string",                            // GetBodyParamType(code),
                     });
                 usedParams.Add(code);
             }
@@ -1353,19 +1353,19 @@ public class ModelBuilder
                         continue;
                     }
 
-                    string advertisedType = capParam?.ParameterType.ToLiteral() ?? string.Empty;
+                    //string advertisedType = capParam?.ParameterType.ToLiteral() ?? string.Empty;
 
-                    if (string.IsNullOrEmpty(advertisedType))
-                    {
-                        advertisedType = GetBodyParamType(capParam.Name);
-                    }
+                    //if (string.IsNullOrEmpty(advertisedType))
+                    //{
+                    //    advertisedType = GetBodyParamType(capParam.Name);
+                    //}
 
                     oasOp.RequestBody.Content["application/x-www-form-urlencoded"].Schema.Properties.Add(
                         capParam.Name,
                         new OpenApiSchema()
                         {
                             Title = capParam.Name,
-                            Type = advertisedType,
+                            Type = "string",                        // advertisedType,
                             Description = _openApiOptions.IncludeDescriptions
                                 ? capParam.Documentation
                                 : null,
@@ -1440,7 +1440,7 @@ public class ModelBuilder
                 new OpenApiSchema()
                 {
                     Title = code,
-                    Type = GetBodyParamType(code, resource.Name),
+                    Type = "string",                            // GetBodyParamType(code, resource.Name),
                 });
             usedParams.Add(code);
         }
@@ -1459,7 +1459,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = code,
-                        Type = GetBodyParamType(code, resource.Name),
+                        Type = "string",                        // GetBodyParamType(code, resource.Name),
                     });
                 usedParams.Add(code);
             }
@@ -1476,7 +1476,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = code,
-                        Type = GetBodyParamType(code, resource.Name),
+                        Type = "string",                        // GetBodyParamType(code, resource.Name),
                     });
                 usedParams.Add(code);
             }
@@ -1493,7 +1493,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = fhirSp.Name,
-                        Type = fhirSp.ValueType ?? "string",
+                        Type = "string",                        // fhirSp.ValueType ?? "string",
                     });
 
                 usedParams.Add(fhirSp.Code);
@@ -2359,8 +2359,15 @@ public class ModelBuilder
             return Array.Empty<FhirOperation>();
         }
 
-        List<FhirOperation> operations = new();
+        HashSet<string> resourceAndParentsHash = _info.GetInheritanceNamesHash(resourceName);
 
+        if (!resourceAndParentsHash.Any())
+        {
+            // unknown resource name
+            return Array.Empty<FhirOperation>();
+        }
+
+        List<FhirOperation> operations = new();
 
         if (_caps != null)
         {
@@ -2384,7 +2391,8 @@ public class ModelBuilder
                     continue;
                 }
 
-                if (!(fhirOp.ResourceTypes?.Contains(resourceName) ?? false))
+                // since some operation definitions exclude the resource type when they mean 'Resource', missing defaults to true
+                if (!(fhirOp.ResourceTypes?.Any(rt => resourceAndParentsHash.Contains(rt)) ?? true))
                 {
                     Console.WriteLine($"Skipping {resourceName} requested operation '{capOp.DefinitionCanonical}' - definition cannot apply here");
                     continue;
@@ -2410,7 +2418,8 @@ public class ModelBuilder
                     continue;
                 }
 
-                if (!(fhirOp.ResourceTypes?.Contains(resourceName) ?? false))
+                // since some operation definitions exclude the resource type when they mean 'Resource', missing defaults to true
+                if (!(fhirOp.ResourceTypes?.Any(rt => resourceAndParentsHash.Contains(rt)) ?? true))
                 {
                     continue;
                 }

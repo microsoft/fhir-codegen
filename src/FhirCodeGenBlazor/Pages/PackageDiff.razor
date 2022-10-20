@@ -11,199 +11,223 @@
 
 <PageTitle>FHIR Diff Tool</PageTitle>
 
-<p><em>Compare packages loaded from the cache</em></p>
-
-<div class="input-group mb-2">
-    <label class="input-group-text" for="selectPackageA">Package A</label>
-    <select id="selectPackageA" class="form-select" aria-label="Package A" @bind="directiveA">
-        @foreach((string key, FhirVersionInfo info) in SpecService.OrderBy((kvp) => kvp.Key))
-        {
-            <option value="@key">@info.PackageName # @info.VersionString</option>
-        }
-    </select>
-</div>
-
-<div class="input-group mb-2">
-    <label class="input-group-text" for="selectArtifactA">(Optional) Artifact A</label>
-    <select id="selectArtifactA" class="form-select" aria-label="Artifact A" @bind="artifactA" disabled="@IsDisabledArtifactA()" >
-        @if (!string.IsNullOrEmpty(directiveA))
-        {
-            <option value="">(Compare all package contents)</option>
-            @foreach((FhirArtifactClassEnum ac, List<FhirArtifactRecord> artifacts) in SpecService[directiveA].ArtifactRecordsByClass)
-            {
-                foreach (FhirArtifactRecord artifact in artifacts)
-                {
-                    <option value="@artifact.Url">@ac - @artifact.Id</option>
-                }
-            }
-        }
-    </select>
-</div>
-
-<div class="input-group mb-2">
-    <label class="input-group-text" for="selectPackageB">Package B</label>
-    <select id="selectPackageA" class="form-select" aria-label="Package B" @bind="directiveB">
-        @foreach((string key, FhirVersionInfo info) in SpecService.OrderBy((kvp) => kvp.Key))
-        {
-            <option value="@key">@info.PackageName # @info.VersionString</option>
-        }
-    </select>
-</div>
-
-<div class="input-group mb-2">
-    <label class="input-group-text" for="selectArtifactB">(Optional) Artifact B</label>
-    <select id="selectArtifactB" class="form-select" aria-label="Artifact B" @bind="artifactB" disabled="@IsDisabledArtifactB()" >
-        @if (!string.IsNullOrEmpty(directiveB))
-        {
-            <option value="">(Compare all package contents)</option>
-            @foreach((FhirArtifactClassEnum ac, List<FhirArtifactRecord> artifacts) in SpecService[directiveB].ArtifactRecordsByClass)
-            {
-                foreach (FhirArtifactRecord artifact in artifacts)
-                {
-                    <option value="@artifact.Url">@ac - @artifact.Id</option>
-                }
-            }
-        }
-    </select>
-</div>
-
-
-<p>
-    <button
-        type="button"
-        class="btn btn-primary m-1"
-        @onclick="() => RunDiff()"
-        >
-        Diff!
-    </button>
-    @if (diffInProgress)
-    {
-        <span class="spinner-border align-content-center"></span>
-    }
-</p>
-
-<p>
-@foreach((FhirArtifactClassEnum classEnum, bool visible) in showArtifactClass)
-{
-    <button
-        type="button"
-        class=@GetButtonClass(visible)
-        @onclick="() => ToggleShowState(classEnum)"
-        >
-        @classEnum.ToString() (@results.DiffsByKeyByArtifactClass[classEnum].Count())
-    </button>
-}
-</p>
-
-<p>
-    <button
-        type="button"
-        class=@GetButtonClass(_showState)
-        @onclick="() => ToggleShowState()"
-        >
-        Toggle All
-    </button>
-    @foreach((DiffResults.DiffTypeEnum diffEnum, bool visible) in showDiffType.OrderBy(o => o.Key.ToString()))
-    {
-        <button
-            type="button"
-            class=@GetButtonClass(visible)
-            @onclick="() => ToggleShowState(diffEnum)"
-            >
-            @diffEnum.ToString()
-        </button>
-    }
-</p>
-
-<div class="input-group">
-    <span class="input-group-text" id="basic-addon1">Filter</span>
-    <input
-        type="text"
-        placeholder="Filter"
-        aria-label="Filter"
-        aria-describedby="basic-addon1"
-        @bind-value="artifactFilterText"
-        @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredArtifacts(e?.Value?.ToString() ?? "")))"
-        />
-</div>
-
-
-@foreach ((FhirArtifactClassEnum artifactClass, Dictionary<string, List<DiffResults.DiffRecord>> artifactDict) in filtered)
-{
-    if ((artifactDict.Count == 0) || (!showArtifactClass[artifactClass]))
-    {
-        continue;
-    }
-
-    <table class="table">
-        <thead>
-            <tr class="table-info"><td class="fw-bold">@artifactClass.ToString()s</td></tr>
-        </thead>
-        <tbody>
-            <tr><td>
-                <table class="table table-hover">
-                    <tbody>
-                        @foreach(string key in artifactDict.Keys.OrderBy(s => s))
-                        {
-                            if (artifactDict[key].Count == 0)
+<MudExpansionPanels MultiExpansion="true">
+    <MudExpansionPanel Text="Package Selection" IsInitiallyExpanded="true">
+        <MudCard>
+            <MudCardContent>
+                <MudGrid>
+                    <MudItem xs="12">
+                        <MudSelect T="string" Label="Package A" @bind-Value="directiveA">
+                            @foreach ((string key, FhirVersionInfo info) in SpecService.OrderBy((kvp) => kvp.Key))
                             {
-                                continue;
+                                <MudSelectItem Value="@key">@info.PackageName # @info.VersionString</MudSelectItem>
                             }
+                        </MudSelect>
+                    </MudItem>
 
-                            switch (artifactClass)
+                    <MudItem xs="4">
+                        <MudField Label="(Optional) Artifact A" Variant="Variant.Filled">
+                            @artifactA
+                        </MudField>
+                    </MudItem>
+                    <MudItem xs="8">
+                        <MudTooltip Text="Select Artifact">
+                            <MudIconButton Icon="@Icons.Filled.LibraryAddCheck" @onclick="() => ShowArtifactSelectDialog(true)"/>
+                        </MudTooltip>
+                        <MudTooltip Text="Compare Entire Package">
+                            <MudIconButton Icon="@Icons.Filled.Close" />
+                        </MudTooltip>
+                    </MudItem>
+
+                    <MudItem xs="12">
+                        <MudSelect T="string" Label="Package B" @bind-Value="directiveB">
+                            @foreach ((string key, FhirVersionInfo info) in SpecService.OrderBy((kvp) => kvp.Key))
                             {
-                                case FhirArtifactClassEnum.ValueSet:
-                                    <tr class="table-primary"><td>@GetValueSetHeader(key)</td></tr>
-                                    break;
-
-                                default:
-                                    <tr class="table-primary"><td>@key</td></tr>
-                                    break;
+                                <MudSelectItem Value="@key">@info.PackageName # @info.VersionString</MudSelectItem>
                             }
+                        </MudSelect>
+                    </MudItem>
 
-                            <tr><td>
-                                <table class="table table-striped table-hover table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-md-2">Path</th>
-                                            <th class="col-md-2">Type</th>
-                                            @if (directiveA.Equals(directiveB))
-                                            {
-                                                <th class="col-md-2">@artifactA.Split('/').Last()</th>
-                                                <th class="col-md-2">@artifactB.Split('/').Last()</th>
-                                            }
-                                            else if (string.IsNullOrEmpty(artifactA) || string.IsNullOrEmpty(artifactB))
-                                            {
-                                                <th class="col-md-2">@directiveA</th>
-                                                <th class="col-md-2">@directiveB</th>
-                                            }
-                                            else
-                                            {
-                                                <th class="col-md-2">@directiveA.@artifactA</th>
-                                                <th class="col-md-2">@directiveB.@artifactB</th>
-                                            }
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (DiffResults.DiffRecord rec in artifactDict[key])
-                                        {
-                                            <tr>
-                                                <td>@rec.path</td>
-                                                <td>@rec.diffType.ToString()</td>
-                                                <td>@rec.valueA</td>
-                                                <td>@rec.valueB</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </td></tr>
-                        }
-                    </tbody>
-                </table>
-            </td></tr>
-        </tbody>
-    </table>
-}
+                    <MudItem xs="4">
+                        <MudField Label="(Optional) Artifact B" Variant="Variant.Filled">
+                            @artifactB
+                        </MudField>
+                    </MudItem>
+                    <MudItem xs="8">
+                        <MudTooltip Text="Select Artifact">
+                            <MudIconButton Icon="@Icons.Filled.LibraryAddCheck" @onclick="() => ShowArtifactSelectDialog(false)"/>
+                        </MudTooltip>
+                        <MudTooltip Text="Compare Entire Package">
+                            <MudIconButton Icon="@Icons.Filled.Close" />
+                        </MudTooltip>
+                    </MudItem>
+
+                </MudGrid>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Color="Color.Primary"
+                           Variant="Variant.Filled"
+                           Disabled="@_busy"
+                           OnClick="() => RunDiff()">
+                    @if (_busy)
+                    {
+                        <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                        <MudText Class="ms-2">Processing</MudText>
+                    }
+                    else
+                    {
+                        <MudText>Compare</MudText>
+                    }
+                </MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Artifact Type Filtering">
+        <MudGrid>
+            <MudItem xs="6" sm="3">
+                <MudFab StartIcon="@Icons.Filled.Flip"
+                        Label="Toggle All Artifacts"
+                        OnClick="() => InvokeAsync(() => ToggleShowArtifactState())"
+                        Disabled="@_busy"
+                        />
+            </MudItem>
+
+            @foreach(FhirArtifactClassEnum ac in showArtifactClass.Keys.OrderBy(k => k))
+            {
+                <MudItem xs="6" sm="3">
+                    <MudSwitch
+                        Color="Color.Info"
+                        Checked="@showArtifactClass[ac]"
+                        CheckedChanged="@((bool s) => ToggleShowState(ac, s))"
+                        Label="@(ac.ToString() + " (" + results.DiffsByKeyByArtifactClass[ac].Count() + ")")" />
+                </MudItem>
+            }
+        </MudGrid>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Diff Type Filtering">
+        <MudGrid>
+            <MudItem xs="6" sm="3">
+                <MudFab StartIcon="@Icons.Filled.Flip"
+                        Label="Toggle All Difference Types"
+                        OnClick="() => InvokeAsync(() => ToggleShowDiffTypeState())"
+                        Disabled="@_busy" />
+            </MudItem>
+
+            @foreach (DiffResults.DiffTypeEnum dt in showDiffType.Keys.OrderBy(k => k))
+            {
+                <MudItem xs="6" sm="3">
+                    <MudSwitch Color="Color.Info"
+                           Checked="@showDiffType[dt]"
+                           CheckedChanged="@((bool s) => ToggleShowState(dt, s))"
+                           Label="@dt.ToString()" />
+                </MudItem>
+            }
+        </MudGrid>
+    </MudExpansionPanel>
+
+</MudExpansionPanels>
+
+<MudTable Height="calc(100vh - (var(--mud-appbar-height) * 4.7))"
+    Items="elements"
+    Filter="new Func<ExpandedDiffRec, bool>(FilterFuncInstance)"
+          GroupBy="@_groupDefinition"
+          GroupHeaderStyle="background-color:var(--mud-palette-background-grey)"
+          GroupFooterClass="mb-4"
+          Dense="true"
+    Striped="true"
+    Virtualize="false"
+    FixedHeader="true"
+    FixedFooter="true">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Differences between FHIR artifacts</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="artifactFilterText" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>&nbsp;</MudTh>
+        <MudTh>Element Path</MudTh>
+        <MudTh>Change</MudTh>
+        @if (directiveA.Equals(directiveB, StringComparison.Ordinal))
+        {
+            <MudTh>@artifactA.Split('/').Last()</MudTh>
+            <MudTh>@artifactB.Split('/').Last()</MudTh>
+        }
+        else if (string.IsNullOrEmpty(artifactA) || string.IsNullOrEmpty(artifactB))
+        {
+            <MudTh>@directiveA</MudTh>
+            <MudTh>@directiveB</MudTh>
+        }
+        else
+        {
+            <MudTh>@(directiveA + "." + artifactA)</MudTh>
+            <MudTh>@(directiveB + "." + artifactB)</MudTh>
+        }
+    </HeaderContent>
+    <GroupHeaderTemplate>
+        <MudTh colspan="5">@context.Key</MudTh>
+    </GroupHeaderTemplate>
+    <RowTemplate>
+        <MudTd></MudTd>
+        <MudTd>@context.Path</MudTd>
+        <MudTd>@context.DiffType.ToString()</MudTd>
+        <MudTd>@context.ValueA</MudTd>
+        <MudTd>@context.ValueB</MudTd>
+    </RowTemplate>
+    <FooterContent>
+        <MudTd></MudTd>
+        <MudTd style="font-weight: 500;">Element Path</MudTd>
+        <MudTd style="font-weight: 500;">Change</MudTd>
+        @if (directiveA.Equals(directiveB, StringComparison.Ordinal))
+        {
+            <MudTd style="font-weight: 500;">@artifactA.Split('/').Last()</MudTd>
+            <MudTd style="font-weight: 500;">@artifactB.Split('/').Last()</MudTd>
+        }
+        else if (string.IsNullOrEmpty(artifactA) || string.IsNullOrEmpty(artifactB))
+        {
+            <MudTd style="font-weight: 500;">@directiveA</MudTd>
+            <MudTd style="font-weight: 500;">@directiveB</MudTd>
+        }
+        else
+        {
+            <MudTd style="font-weight: 500;">@(directiveA + "." + artifactA)</MudTd>
+            <MudTd style="font-weight: 500;">@(directiveB + "." + artifactB)</MudTd>
+        }
+    </FooterContent>
+</MudTable>
+
+<MudDialog @bind-IsVisible="showArtifactDialog" Options="artifactDialogOptions" >
+    <DialogContent>
+        <MudTable Height="50vh"
+            Items="dialogArtifacts"
+            Filter="new Func<ExpandedArtifactRec, bool>(DialogFilterFuncInstance)"
+            Hover="true"
+            FixedHeader="true"
+            Dense="true">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Select Comparison Artifact</MudText>
+                <MudSpacer />
+                <MudTextField @bind-Value="dialogFilterText" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh></MudTh>
+                <MudTh>Artifact Type</MudTh>
+                <MudTh>Id</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd>
+                    <MudFab StartIcon="@Icons.Filled.Add" @onclick="() => SelectArtifact(context.Url)" Size="Size.Small" />
+                </MudTd>
+                <MudTd>@context.ArtifactClass</MudTd>
+                <MudTd>@context.Id</MudTd>
+            </RowTemplate>
+        </MudTable>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CloseArtifactDialog" Class="px-10">Close</MudButton>
+    </DialogActions>
+</MudDialog>
 
 @code {
     private string directiveA = "";
@@ -212,18 +236,76 @@
     private string artifactA = "";
     private string artifactB = "";
 
+    /// <summary>True if the page is busy (e.g., running comparison).</summary>
+    private bool _busy { get; set; } = false;
+
+    /// <summary>Gets or sets a value indicating whether the artifact dialog is shown.</summary>
+    private bool showArtifactDialog { get; set; } = false;
+
+    /// <summary>The dialog filter text.</summary>
+    private string dialogFilterText = "";
+
+    /// <summary>True if dialog is for a.</summary>
+    private bool dialogIsForA = false;
+
+    /// <summary>Options for controlling the artifact dialog.</summary>
+    private DialogOptions artifactDialogOptions = new() { FullWidth = true, };
+
+    /// <summary>Information about the expanded artifact.</summary>
+    /// <param name="ArtifactClass">The artifact class.</param>
+    /// <param name="Url">          URL of the resource.</param>
+    /// <param name="Id">           The identifier.</param>
+    private readonly record struct ExpandedArtifactRec(
+        FhirArtifactClassEnum ArtifactClass,
+        string Url,
+        string Id);
+
+    private IEnumerable<ExpandedArtifactRec> dialogArtifacts = Array.Empty<ExpandedArtifactRec>();
+
     /// <summary>Specifies the filter.</summary>
     private string artifactFilterText = "";
 
+    /// <summary>The results.</summary>
     private DiffResults results = new();
 
+    /// <summary>The filtered.</summary>
     private Dictionary<FhirArtifactClassEnum, Dictionary<string, List<DiffResults.DiffRecord>>> filtered = new();
+
+    /// <summary>Information about the expanded difference.</summary>
+    /// <param name="ArtifactClass">The artifact class.</param>
+    /// <param name="Group">        The group.</param>
+    /// <param name="Path">         Full pathname of the file.</param>
+    /// <param name="DiffType">     Type of the difference.</param>
+    /// <param name="ValueA">       The value a.</param>
+    /// <param name="ValueB">       The value b.</param>
+    private readonly record struct ExpandedDiffRec(
+        FhirArtifactClassEnum ArtifactClass,
+        string Group,
+        string Path,
+        DiffResults.DiffTypeEnum DiffType,
+        string ValueA,
+        string ValueB);
+
+    /// <summary>The elements.</summary>
+    private IEnumerable<ExpandedDiffRec> elements = Array.Empty<ExpandedDiffRec>();
+
+    /// <summary>The group definition.</summary>
+    private TableGroupDefinition<ExpandedDiffRec> _groupDefinition = new()
+    {
+        GroupName = "Artifact Key",
+        Indentation = false,
+        Expandable = false,
+        Selector = (e) => e.Group
+    };
 
     private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new();
     private Dictionary<DiffResults.DiffTypeEnum, bool> showDiffType = new();
 
-    /// <summary>True to show, false to hide the state.</summary>
-    private bool _showState = true;
+    /// <summary>Control toggle behavior of the 'all' button.</summary>
+    private bool _showDiffState = true;
+
+    /// <summary>Control toggle behavior of the 'all' button.</summary>
+    private bool _showArtifactState = true;
 
     private static string[] _bindingStrengthLiterals = {
         "Not bound",
@@ -232,9 +314,6 @@
         "Preferred",
         "Example"
     };
-
-    /// <summary>Gets or sets a value indicating whether the difference in progress.</summary>
-    private bool diffInProgress { get; set; } = false;
 
     /// <summary>Gets or sets the navigation tracker.</summary>
     [CascadingParameter]
@@ -280,17 +359,18 @@
             return;
         }
 
-        if (diffInProgress)
+        if (_busy)
         {
             return;
         }
 
-        diffInProgress = true;
+        _busy = true;
 
         //DifferOptions options = new(false, false, false, false, false, true);
         DifferOptions options = new(true, true, true, true, true, true);
 
-        if (string.IsNullOrEmpty(artifactA) || string.IsNullOrEmpty(artifactB))
+        if (string.IsNullOrEmpty(artifactA) || artifactA.Equals('*') ||
+            string.IsNullOrEmpty(artifactB) || artifactB.Equals('*'))
         {
             Task task = DiffService.RequestDiff(SpecService[directiveA], SpecService[directiveB], options);
             task.Start();
@@ -308,12 +388,52 @@
     /// <param name="e">     Event information to send to registered event handlers.</param>
     private void HandleDiffCompleted(object? sender, DiffCompletedEventArgs e)
     {
-        diffInProgress = false;
+        _busy = false;
         results = e.Results ?? new();
 
         RebuildFilteredArtifacts(artifactFilterText, true);
 
         InvokeAsync(() => StateHasChanged());
+    }
+
+    /// <summary>Dialog filter function instance.</summary>
+    /// <param name="rec">The record.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool DialogFilterFuncInstance(ExpandedArtifactRec rec) => DialogFilterFuncDefinition(rec, dialogFilterText);
+
+    /// <summary>Dialog filter function definition.</summary>
+    /// <param name="rec">         The record.</param>
+    /// <param name="searchString">The search string.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool DialogFilterFuncDefinition(ExpandedArtifactRec rec, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString) ||
+            rec.Id.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>Filter function instance.</summary>
+    /// <param name="diffRec">The difference record.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool FilterFuncInstance(ExpandedDiffRec diffRec) => FilterFuncDefinition(diffRec, artifactFilterText);
+
+    /// <summary>Filter function definition.</summary>
+    /// <param name="diffRec">     The difference record.</param>
+    /// <param name="searchString">The search string.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool FilterFuncDefinition(ExpandedDiffRec diffRec, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString) ||
+            diffRec.Path.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>Rebuild filtered artifacts.</summary>
@@ -323,6 +443,10 @@
         string appliedFilter = "",
         bool checkShownArtifactClasses = false)
     {
+        _busy = true;
+
+        List<ExpandedDiffRec> elementList = new();
+
         if (checkShownArtifactClasses)
         {
             foreach ((FhirArtifactClassEnum artifactClass, Dictionary<string, List<DiffResults.DiffRecord>> artifactDict) in results.DiffsByKeyByArtifactClass)
@@ -369,28 +493,36 @@
             }
         }
 
-        artifactFilterText = appliedFilter;
-
-        if ((results.DiffsByKeyByArtifactClass == null) || (results.DiffsByKeyByArtifactClass.Count == 0))
+        foreach ((FhirArtifactClassEnum ac, Dictionary<string, List<DiffResults.DiffRecord>> artifacts) in results.DiffsByKeyByArtifactClass)
         {
-            filtered = new();
+            if (showArtifactClass[ac] == false)
+            {
+                continue;
+            }
 
-            // manually flag state has changed in case we are in a callback / async context
-            await InvokeAsync(() => StateHasChanged());
+            foreach ((string key, List<DiffResults.DiffRecord> diffList) in artifacts.OrderBy(kvp => kvp.Key))
+            {
+                foreach (DiffResults.DiffRecord diffRec in diffList)
+                {
+                    if (showDiffType[diffRec.diffType] == false)
+                    {
+                        continue;
+                    }
 
-            return;
+                    elementList.Add(new ExpandedDiffRec(
+                        ac,
+                        ac.ToString() + " - " + key,
+                        diffRec.path,
+                        diffRec.diffType,
+                        diffRec.valueA,
+                        diffRec.valueB));
+                }
+            }
         }
 
-        Dictionary<FhirArtifactClassEnum, Dictionary<string, List<DiffResults.DiffRecord>>> updated = new();
+        elements = elementList;
 
-        foreach ((FhirArtifactClassEnum classEnum, Dictionary<string, List<DiffResults.DiffRecord>> records)
-                    in results.DiffsByKeyByArtifactClass)
-        {
-            AppendFilteredArtifacts(classEnum, appliedFilter, ref updated, records);
-        }
-
-        //artifacts.Sort((a, b) => a.Id.CompareTo(b.Id));
-        filtered = updated;
+        _busy = false;
 
         // manually flag state has changed in case we are in a callback / async context
         await InvokeAsync(() => StateHasChanged());
@@ -470,28 +602,133 @@
 
     /// <summary>Toggle show state.</summary>
     /// <param name="classEnum">The class enum.</param>
-    private void ToggleShowState(FhirArtifactClassEnum classEnum)
+    /// <param name="v">        True to v.</param>
+    private void ToggleShowState(FhirArtifactClassEnum classEnum, bool? v)
     {
-        showArtifactClass[classEnum] = !showArtifactClass[classEnum];
+        if (v == showArtifactClass[classEnum])
+        {
+            return;
+        }
+
+        if (v == null)
+        {
+            showArtifactClass[classEnum] = !showArtifactClass[classEnum];
+        }
+        else
+        {
+            showArtifactClass[classEnum] = (v == true);
+        }
+
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
+    }
+
+    /// <summary>Shows the artifact select dialog.</summary>
+    private void ShowArtifactSelectDialog(bool isForA)
+    {
+        if (isForA)
+        {
+            if (!SpecService.ContainsKey(directiveA))
+            {
+                return;
+            }
+
+            dialogIsForA = true;
+
+            dialogArtifacts = SpecService[directiveA].ArtifactRecordsByClass
+                .SelectMany(kvp => kvp.Value)
+                .Select(rec => new ExpandedArtifactRec(
+                    rec.ArtifactClass,
+                    rec.Url.ToString(),
+                    rec.Id));
+        }
+        else
+        {
+            if (!SpecService.ContainsKey(directiveB))
+            {
+                return;
+            }
+
+            dialogIsForA = false;
+
+            dialogArtifacts = SpecService[directiveB].ArtifactRecordsByClass
+                .SelectMany(kvp => kvp.Value)
+                .Select(rec => new ExpandedArtifactRec(
+                    rec.ArtifactClass,
+                    rec.Url.ToString(),
+                    rec.Id));
+        }
+
+        showArtifactDialog = true;
+    }
+
+    /// <summary>Select artifact.</summary>
+    /// <param name="url">URL of the resource.</param>
+    private void SelectArtifact(string url)
+    {
+        if (dialogIsForA)
+        {
+            artifactA = url;
+        }
+        else
+        {
+            artifactB = url;
+        }
+
+        dialogArtifacts = Array.Empty<ExpandedArtifactRec>();
+        showArtifactDialog = false;
+    }
+
+    /// <summary>Closes artifact dialog.</summary>
+    private void CloseArtifactDialog()
+    {
+        dialogArtifacts = Array.Empty<ExpandedArtifactRec>();
+        showArtifactDialog = false;
     }
 
     /// <summary>Toggle show state.</summary>
     /// <param name="diffEnum">The difference enum.</param>
-    private void ToggleShowState(DiffResults.DiffTypeEnum diffEnum)
+    /// <param name="v">       True to v.</param>
+    private void ToggleShowState(DiffResults.DiffTypeEnum diffEnum, bool? v)
     {
-        showDiffType[diffEnum] = !showDiffType[diffEnum];
+        if (showDiffType[diffEnum] == v)
+        {
+            return;
+        }
+
+        if (v == null)
+        {
+            showDiffType[diffEnum] = !showDiffType[diffEnum];
+        }
+        else
+        {
+            showDiffType[diffEnum] = (v == true);
+        }
+
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
     }
 
-    /// <summary>Toggle show state.</summary>
-    /// <param name="state">True to state.</param>
-    private void ToggleShowState()
+    /// <summary>Toggle show difference type state.</summary>
+    private void ToggleShowDiffTypeState()
     {
-        _showState = !_showState;
+        _showDiffState = !_showDiffState;
         foreach (DiffResults.DiffTypeEnum diffEnum in showDiffType.Keys)
         {
-            showDiffType[diffEnum] = _showState;
+            showDiffType[diffEnum] = _showDiffState;
+        }
+
+        InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
+    }
+
+    /// <summary>Toggle show artifact state.</summary>
+    private void ToggleShowArtifactState()
+    {
+        // flag we are busy - will be cleared by RebuildFilteredArtifacts
+        _busy = true;
+
+        _showArtifactState = !_showArtifactState;
+        foreach (FhirArtifactClassEnum ac in showArtifactClass.Keys)
+        {
+            showArtifactClass[ac] = _showArtifactState;
         }
 
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
@@ -524,19 +761,6 @@
         }
 
         return val;
-    }
-
-    /// <summary>Gets button class.</summary>
-    /// <param name="enabled">True to enable, false to disable.</param>
-    /// <returns>The button class.</returns>
-    private string GetButtonClass(bool enabled)
-    {
-        if (enabled)
-        {
-            return "btn btn-primary m-1 col-md-2";
-        }
-
-        return "btn btn-outline-primary m-1 col-md-2";
     }
 
     private bool IsDisabledArtifactA()

@@ -89,6 +89,11 @@ public interface IPackageExportable
     /// <summary>Gets the excluded keys.</summary>
     public HashSet<string> ExcludedKeys { get; }
 
+    /// <summary>Gets inheritance names hash.</summary>
+    /// <param name="key">The key.</param>
+    /// <returns>The inheritance names hash.</returns>
+    public HashSet<string> GetInheritanceNamesHash(string key);
+
     /// <summary>Attempts to get explicit name a string from the given string.</summary>
     /// <param name="path">        Full pathname of the file.</param>
     /// <param name="explicitName">[out] Name of the explicit.</param>
