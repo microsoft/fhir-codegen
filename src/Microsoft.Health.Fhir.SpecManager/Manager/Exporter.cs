@@ -8,7 +8,6 @@ using System.Threading;
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.Health.Fhir.SpecManager.Language;
-using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -18,7 +17,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager;
 public abstract class Exporter
 {
     /// <summary>The random.</summary>
-    private static Random _rand = new ();
+    private static Random _rand = new();
 
     /// <summary>Exports.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
@@ -37,7 +36,7 @@ public abstract class Exporter
         string outputPath,
         bool isPartOfBatch)
     {
-        List<string> filesWritten = new ();
+        List<string> filesWritten = new();
 
         if (sourceFhirInfo == null)
         {
@@ -112,7 +111,7 @@ public abstract class Exporter
         }
 
         // create a copy of the FHIR information for use in this export
-        FhirVersionInfo info = new (
+        FhirVersionInfo info = new(
             sourceFhirInfo,
             new()
             {
@@ -127,7 +126,7 @@ public abstract class Exporter
                 ExtensionElementPaths = options.ExtensionElementPaths,
                 CapStatmentFilter = sourceCapStatementFilter,
                 IncludeExperimental = options.IncludeExperimental,
-            });
+            }, options.ResolveExternal);
 
         FhirCapabiltyStatement capFilter = null;
 

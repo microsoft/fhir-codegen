@@ -7,7 +7,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Converters;
-using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -22,6 +21,7 @@ public static class ServerConnector
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool TryGetServerInfo(
         string serverUrl,
+        bool resolveExternal,
         out FhirCapabiltyStatement serverInfo)
     {
         if (string.IsNullOrEmpty(serverUrl))
@@ -58,7 +58,7 @@ public static class ServerConnector
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                Console.WriteLine($"Request to {request.RequestUri} failed! {response.StatusCode}");
+                Console.WriteLine($"Request to {request.RequestUri} failed! Returned: {response.StatusCode}");
                 serverInfo = null;
                 return false;
             }
@@ -103,7 +103,7 @@ public static class ServerConnector
                 Console.WriteLine($"\t     Description: {serverInfo.ImplementationDescription}");
                 Console.WriteLine($"\t       Resources: {serverInfo.ResourceInteractions.Count}");
 
-                FhirManager.Current.TryResolveCanonicals(serverInfo);
+                FhirManager.Current.TryResolveCanonicals(serverInfo, resolveExternal);
 
                 return true;
             }
@@ -178,7 +178,7 @@ public static class ServerConnector
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                Console.WriteLine($"Request to {request.RequestUri} failed! {response.StatusCode}");
+                Console.WriteLine($"Request to {request.RequestUri} failed! Returned: {response.StatusCode}");
                 fhirJson = null;
                 return false;
             }

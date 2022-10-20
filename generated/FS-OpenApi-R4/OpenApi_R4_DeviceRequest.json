@@ -1,0 +1,1212 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Firely Server - DeviceRequest",
+    "version": "4.10.0"
+  },
+  "host": "server.fire.ly",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/DeviceRequest": {
+      "post": {
+        "tags": [
+          "DeviceRequest"
+        ],
+        "summary": "create: Create a new DeviceRequest instance",
+        "operationId": "CreateDeviceRequest",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A FHIR DeviceRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeviceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DeviceRequest"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "DeviceRequest"
+        ],
+        "summary": "search-type: Search for DeviceRequest instances",
+        "operationId": "SearchDeviceRequestGet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_contained"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_graph"
+          },
+          {
+            "$ref": "#/parameters/_include"
+          },
+          {
+            "$ref": "#/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/parameters/_score"
+          },
+          {
+            "$ref": "#/parameters/_sort"
+          },
+          {
+            "$ref": "#/parameters/_total"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/authored-on"
+          },
+          {
+            "$ref": "#/parameters/based-on"
+          },
+          {
+            "$ref": "#/parameters/code"
+          },
+          {
+            "$ref": "#/parameters/device"
+          },
+          {
+            "$ref": "#/parameters/encounter"
+          },
+          {
+            "$ref": "#/parameters/event-date"
+          },
+          {
+            "$ref": "#/parameters/group-identifier"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/instantiates-canonical"
+          },
+          {
+            "$ref": "#/parameters/instantiates-uri"
+          },
+          {
+            "$ref": "#/parameters/insurance"
+          },
+          {
+            "$ref": "#/parameters/intent"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/performer"
+          },
+          {
+            "$ref": "#/parameters/prior-request"
+          },
+          {
+            "$ref": "#/parameters/requester"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/subject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/DeviceRequest/{logical_id}": {
+      "delete": {
+        "tags": [
+          "DeviceRequest"
+        ],
+        "summary": "delete: Perform a loical delete on a DeviceRequest instance",
+        "operationId": "DeleteDeviceRequest",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/authored-on"
+          },
+          {
+            "$ref": "#/parameters/based-on"
+          },
+          {
+            "$ref": "#/parameters/code"
+          },
+          {
+            "$ref": "#/parameters/device"
+          },
+          {
+            "$ref": "#/parameters/encounter"
+          },
+          {
+            "$ref": "#/parameters/event-date"
+          },
+          {
+            "$ref": "#/parameters/group-identifier"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/instantiates-canonical"
+          },
+          {
+            "$ref": "#/parameters/instantiates-uri"
+          },
+          {
+            "$ref": "#/parameters/insurance"
+          },
+          {
+            "$ref": "#/parameters/intent"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/performer"
+          },
+          {
+            "$ref": "#/parameters/prior-request"
+          },
+          {
+            "$ref": "#/parameters/requester"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/subject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DeviceRequest"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "DeviceRequest"
+        ],
+        "summary": "patch: Patch a DeviceRequest instance",
+        "operationId": "PatchDeviceRequest",
+        "consumes": [ ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Patch to apply to a FHIR DeviceRequest record",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DeviceRequest"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "DeviceRequest"
+        ],
+        "summary": "read: Read a FHIR DeviceRequest",
+        "operationId": "ReadDeviceRequest",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DeviceRequest"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DeviceRequest"
+        ],
+        "summary": "update,create: Update or Create a DeviceRequest instance",
+        "operationId": "UpdateOrCreateDeviceRequest",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/authored-on"
+          },
+          {
+            "$ref": "#/parameters/based-on"
+          },
+          {
+            "$ref": "#/parameters/code"
+          },
+          {
+            "$ref": "#/parameters/device"
+          },
+          {
+            "$ref": "#/parameters/encounter"
+          },
+          {
+            "$ref": "#/parameters/event-date"
+          },
+          {
+            "$ref": "#/parameters/group-identifier"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/instantiates-canonical"
+          },
+          {
+            "$ref": "#/parameters/instantiates-uri"
+          },
+          {
+            "$ref": "#/parameters/insurance"
+          },
+          {
+            "$ref": "#/parameters/intent"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/performer"
+          },
+          {
+            "$ref": "#/parameters/prior-request"
+          },
+          {
+            "$ref": "#/parameters/requester"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/subject"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "An updated FHIR DeviceRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeviceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DeviceRequest"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/DeviceRequest/_search": {
+      "post": {
+        "tags": [
+          "DeviceRequest"
+        ],
+        "summary": "search-type: Search for DeviceRequest instances",
+        "operationId": "SearchDeviceRequestPost",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "_elements",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_summary",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_content",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_filter",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_in",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_language",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_lastUpdated",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_list",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_profile",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_query",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_security",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_source",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_tag",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_text",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_contained",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_count",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_graph",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_include",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_revinclude",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_score",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_sort",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_total",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_format",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_has",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "authored-on",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "based-on",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "code",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "device",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "encounter",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "event-date",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "group-identifier",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "identifier",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "instantiates-canonical",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "instantiates-uri",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "insurance",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "intent",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "patient",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "performer",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "prior-request",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "requester",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "subject",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/DeviceRequest/{logical_id}/_history/{resource_version}": {
+      "get": {
+        "tags": [
+          "DeviceRequest"
+        ],
+        "summary": "vread: Read DeviceRequest instance with specific version",
+        "operationId": "VReadDeviceRequest",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/resource_version"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DeviceRequest"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "DeviceRequest": {
+      "description": "Medical device request",
+      "type": "object"
+    },
+    "Bundle": {
+      "description": "Contains a collection of resources",
+      "type": "object"
+    }
+  },
+  "parameters": {
+    "_format": {
+      "in": "query",
+      "name": "_format",
+      "description": "Override the HTTP content negotiation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_pretty": {
+      "in": "query",
+      "name": "_pretty",
+      "description": "Ask for a pretty printed response for human convenience",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_elements": {
+      "in": "query",
+      "name": "_elements",
+      "description": "Ask for a particular set of elements to be returned",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_summary": {
+      "in": "query",
+      "name": "_summary",
+      "description": "Return only portions of resources, based on pre-defined levels",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_content": {
+      "in": "query",
+      "name": "_content",
+      "description": "Search on the entire content of the resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_filter": {
+      "in": "query",
+      "name": "_filter",
+      "description": "Provide an inline query expression",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_id": {
+      "in": "query",
+      "name": "_id",
+      "description": "Logical id of this artifact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_in": {
+      "in": "query",
+      "name": "_in",
+      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_language": {
+      "in": "query",
+      "name": "_language",
+      "description": "Language of the resource content",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_lastUpdated": {
+      "in": "query",
+      "name": "_lastUpdated",
+      "description": "When the resource version last changed",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_list": {
+      "in": "query",
+      "name": "_list",
+      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_profile": {
+      "in": "query",
+      "name": "_profile",
+      "description": "Profiles this resource claims to conform to",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_query": {
+      "in": "query",
+      "name": "_query",
+      "description": "A custom search profile that describes a specific defined query operation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_security": {
+      "in": "query",
+      "name": "_security",
+      "description": "Security Labels applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_source": {
+      "in": "query",
+      "name": "_source",
+      "description": "Identifies where the resource comes from",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_tag": {
+      "in": "query",
+      "name": "_tag",
+      "description": "Tags applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_text": {
+      "in": "query",
+      "name": "_text",
+      "description": "Perform searches against the narrative content of a resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_contained": {
+      "in": "query",
+      "name": "_contained",
+      "description": "Request different types of handling for contained resources",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_count": {
+      "in": "query",
+      "name": "_count",
+      "description": "Limit the number of match results per page of response",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "_graph": {
+      "in": "query",
+      "name": "_graph",
+      "description": "Include additional resources according to a GraphDefinition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_include": {
+      "in": "query",
+      "name": "_include",
+      "description": "Include additional resources, based on following links forward across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_revinclude": {
+      "in": "query",
+      "name": "_revinclude",
+      "description": "Include additional resources, based on following reverse links across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_score": {
+      "in": "query",
+      "name": "_score",
+      "description": "Request match relevance in results",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_sort": {
+      "in": "query",
+      "name": "_sort",
+      "description": "Request which order results should be returned in",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_total": {
+      "in": "query",
+      "name": "_total",
+      "description": "Request a precision of the total number of results for a request",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_has": {
+      "in": "query",
+      "name": "_has",
+      "description": "Enables querying a reverse chain",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "authored-on": {
+      "in": "query",
+      "name": "authored-on",
+      "description": "When the request transitioned to being actionable",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "based-on": {
+      "in": "query",
+      "name": "based-on",
+      "description": "The service request this appointment is allocated to assess",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "code": {
+      "in": "query",
+      "name": "code",
+      "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](condition.html): Code for the condition\r\n* [DeviceRequest](devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a condition code\r\n* [List](list.html): What the purpose of this list is\r\n* [Medication](medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](medicationstatement.html): Return statements of this medication code\r\n* [Observation](observation.html): The code of the observation type\r\n* [Procedure](procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](servicerequest.html): What is being requested/ordered\r\n",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "device": {
+      "in": "query",
+      "name": "device",
+      "description": "Reference to resource that is being requested/ordered",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "encounter": {
+      "in": "query",
+      "name": "encounter",
+      "description": "Encounter created as part of",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "event-date": {
+      "in": "query",
+      "name": "event-date",
+      "description": "When service should occur",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "group-identifier": {
+      "in": "query",
+      "name": "group-identifier",
+      "description": "Composite request this is part of",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "identifier": {
+      "in": "query",
+      "name": "identifier",
+      "description": "Account number",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "instantiates-canonical": {
+      "in": "query",
+      "name": "instantiates-canonical",
+      "description": "Instantiates FHIR protocol or definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "instantiates-uri": {
+      "in": "query",
+      "name": "instantiates-uri",
+      "description": "Instantiates external protocol or definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "insurance": {
+      "in": "query",
+      "name": "insurance",
+      "description": "Associated insurance coverage",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "intent": {
+      "in": "query",
+      "name": "intent",
+      "description": "proposal | plan | order | option",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "patient": {
+      "in": "query",
+      "name": "patient",
+      "description": "The entity that caused the expenses",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "performer": {
+      "in": "query",
+      "name": "performer",
+      "description": "Matches if the practitioner is listed as a performer in any of the \"simple\" activities.  (For performers of the detailed activities, chain through the activitydetail search parameter.)",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "prior-request": {
+      "in": "query",
+      "name": "prior-request",
+      "description": "Request takes the place of referenced completed or terminated requests",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "requester": {
+      "in": "query",
+      "name": "requester",
+      "description": "Who/what is requesting service",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "status": {
+      "in": "query",
+      "name": "status",
+      "description": "active | inactive | entered-in-error | on-hold | unknown",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "subject": {
+      "in": "query",
+      "name": "subject",
+      "description": "The entity that caused the expenses",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "logical_id": {
+      "in": "path",
+      "name": "logical_id",
+      "description": "Resource Logical ID",
+      "required": true,
+      "type": "string"
+    },
+    "resource_version": {
+      "in": "path",
+      "name": "resource_version",
+      "description": "Resource Version Number",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "tags": [
+    {
+      "name": "DeviceRequest",
+      "description": "Medical device request"
+    }
+  ]
+}

@@ -376,6 +376,7 @@ else
             exporterOptions.ExtensionElementPaths,
             exporterOptions.LanguageOptions,
             exporterOptions.ServerUrl,
+            exporterOptions.ResolveExternal,
             includeExperimental,
             exporterOptions.LanguageInputDir);
 
@@ -473,6 +474,7 @@ else
                 exporterOptions?.ExtensionElementPaths,
                 null,
                 exporterOptions?.ServerUrl,
+                exporterOptions?.ResolveExternal ?? true,
                 exporterOptions?.IncludeExperimental ?? true,
                 exporterOptions?.LanguageInputDir);
 

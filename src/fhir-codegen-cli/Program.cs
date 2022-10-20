@@ -48,6 +48,7 @@ public static class Program
     ///  expansions (default: false).</param>
     /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
     ///  Conformance) from.  Requires application/fhir+json.</param>
+    /// <param name="resolveExternal">      Whether or not to try to resolve unknown canonicals at the given fhir server url.</param>
     /// <param name="includeExperimental">   If the output should include structures marked
     ///  experimental (false|true).</param>
     /// <param name="exportTypes">           Which FHIR classes types to export
@@ -75,6 +76,7 @@ public static class Program
         string languageOptions = "",
         bool officialExpansionsOnly = false,
         string fhirServerUrl = "",
+        bool resolveExternal = true,
         bool includeExperimental = false,
         string exportTypes = "",
         string extensionSupport = "",
@@ -104,7 +106,6 @@ public static class Program
                 name: "--package-directory",
                 getDefaultValue: () => string.Empty,
                 "The path to a local directory for FHIR packages, if different than the default FHIR cache (~/.fhir); e.g., (.../fhirPackages))."),
-
             new Option<string>(
                 aliases: new string[] { "--language", "-l" },
                 getDefaultValue: () => string.Empty,
@@ -152,6 +153,10 @@ public static class Program
                 aliases: new string[] { "--fhir-server-url", "--server" },
                 getDefaultValue: () => string.Empty,
                 "FHIR Server URL to pull a CapabilityStatement or Conformance from.  Requires application/fhir+json support."),
+            new Option<bool>(
+                name: "--resolve-external",
+                getDefaultValue: () => true,
+                "Whether to try to resolve unknown canonicals on the server given by --server/--fhir-server-url."),
 
             new Option<string>(
                 aliases: new string[] { "--packages", "-p" },
@@ -226,6 +231,7 @@ public static class Program
     ///  expansions (default: false).</param>
     /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
     ///  Conformance) from.  Requires application/fhir+json.</param>
+    /// <param name="resolveExternal">      Whether or not to try to resolve unknown canonicals at the given fhir server url.</param>
     /// <param name="includeExperimental">   If the output should include structures marked
     ///  experimental (false|true).</param>
     /// <param name="exportTypes">           Which FHIR classes types to export
@@ -254,6 +260,7 @@ public static class Program
         string languageOptions = "",
         bool officialExpansionsOnly = false,
         string fhirServerUrl = "",
+        bool resolveExternal = true,
         bool includeExperimental = false,
         string exportTypes = "",
         string extensionSupport = "",
@@ -354,7 +361,7 @@ public static class Program
 
         if (!string.IsNullOrEmpty(fhirServerUrl))
         {
-            if (!ServerConnector.TryGetServerInfo(fhirServerUrl, out serverCaps))
+            if (!ServerConnector.TryGetServerInfo(fhirServerUrl, resolveExternal, out serverCaps))
             {
                 Console.WriteLine($"Failed to get server information from {fhirServerUrl}!");
                 return -1;
@@ -528,6 +535,7 @@ public static class Program
                     null,
                     languageOptsByLang[lang.LanguageName],
                     fhirServerUrl,
+                    resolveExternal,
                     includeExperimental,
                     languageInputDir);
 

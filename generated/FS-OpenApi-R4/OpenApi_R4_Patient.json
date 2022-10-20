@@ -1,0 +1,1454 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Firely Server - Patient",
+    "version": "4.10.0"
+  },
+  "host": "server.fire.ly",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/Patient": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "create: Create a new Patient instance",
+        "operationId": "CreatePatient",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A FHIR Patient",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "search-type: Search for Patient instances",
+        "operationId": "SearchPatientGet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_contained"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_graph"
+          },
+          {
+            "$ref": "#/parameters/_include"
+          },
+          {
+            "$ref": "#/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/parameters/_score"
+          },
+          {
+            "$ref": "#/parameters/_sort"
+          },
+          {
+            "$ref": "#/parameters/_total"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/active"
+          },
+          {
+            "$ref": "#/parameters/address"
+          },
+          {
+            "$ref": "#/parameters/address-city"
+          },
+          {
+            "$ref": "#/parameters/address-country"
+          },
+          {
+            "$ref": "#/parameters/address-postalcode"
+          },
+          {
+            "$ref": "#/parameters/address-state"
+          },
+          {
+            "$ref": "#/parameters/address-use"
+          },
+          {
+            "$ref": "#/parameters/birthdate"
+          },
+          {
+            "$ref": "#/parameters/death-date"
+          },
+          {
+            "$ref": "#/parameters/deceased"
+          },
+          {
+            "$ref": "#/parameters/email"
+          },
+          {
+            "$ref": "#/parameters/ethnicity"
+          },
+          {
+            "$ref": "#/parameters/family"
+          },
+          {
+            "$ref": "#/parameters/gender"
+          },
+          {
+            "$ref": "#/parameters/general-practitioner"
+          },
+          {
+            "$ref": "#/parameters/given"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/language"
+          },
+          {
+            "$ref": "#/parameters/link"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/organization"
+          },
+          {
+            "$ref": "#/parameters/phone"
+          },
+          {
+            "$ref": "#/parameters/phonetic"
+          },
+          {
+            "$ref": "#/parameters/race"
+          },
+          {
+            "$ref": "#/parameters/telecom"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/Patient/{logical_id}": {
+      "delete": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "delete: Perform a loical delete on a Patient instance",
+        "operationId": "DeletePatient",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/active"
+          },
+          {
+            "$ref": "#/parameters/address"
+          },
+          {
+            "$ref": "#/parameters/address-city"
+          },
+          {
+            "$ref": "#/parameters/address-country"
+          },
+          {
+            "$ref": "#/parameters/address-postalcode"
+          },
+          {
+            "$ref": "#/parameters/address-state"
+          },
+          {
+            "$ref": "#/parameters/address-use"
+          },
+          {
+            "$ref": "#/parameters/birthdate"
+          },
+          {
+            "$ref": "#/parameters/death-date"
+          },
+          {
+            "$ref": "#/parameters/deceased"
+          },
+          {
+            "$ref": "#/parameters/email"
+          },
+          {
+            "$ref": "#/parameters/ethnicity"
+          },
+          {
+            "$ref": "#/parameters/family"
+          },
+          {
+            "$ref": "#/parameters/gender"
+          },
+          {
+            "$ref": "#/parameters/general-practitioner"
+          },
+          {
+            "$ref": "#/parameters/given"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/language"
+          },
+          {
+            "$ref": "#/parameters/link"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/organization"
+          },
+          {
+            "$ref": "#/parameters/phone"
+          },
+          {
+            "$ref": "#/parameters/phonetic"
+          },
+          {
+            "$ref": "#/parameters/race"
+          },
+          {
+            "$ref": "#/parameters/telecom"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "patch: Patch a Patient instance",
+        "operationId": "PatchPatient",
+        "consumes": [ ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Patch to apply to a FHIR Patient record",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "read: Read a FHIR Patient",
+        "operationId": "ReadPatient",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "update,create: Update or Create a Patient instance",
+        "operationId": "UpdateOrCreatePatient",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/active"
+          },
+          {
+            "$ref": "#/parameters/address"
+          },
+          {
+            "$ref": "#/parameters/address-city"
+          },
+          {
+            "$ref": "#/parameters/address-country"
+          },
+          {
+            "$ref": "#/parameters/address-postalcode"
+          },
+          {
+            "$ref": "#/parameters/address-state"
+          },
+          {
+            "$ref": "#/parameters/address-use"
+          },
+          {
+            "$ref": "#/parameters/birthdate"
+          },
+          {
+            "$ref": "#/parameters/death-date"
+          },
+          {
+            "$ref": "#/parameters/deceased"
+          },
+          {
+            "$ref": "#/parameters/email"
+          },
+          {
+            "$ref": "#/parameters/ethnicity"
+          },
+          {
+            "$ref": "#/parameters/family"
+          },
+          {
+            "$ref": "#/parameters/gender"
+          },
+          {
+            "$ref": "#/parameters/general-practitioner"
+          },
+          {
+            "$ref": "#/parameters/given"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/language"
+          },
+          {
+            "$ref": "#/parameters/link"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/organization"
+          },
+          {
+            "$ref": "#/parameters/phone"
+          },
+          {
+            "$ref": "#/parameters/phonetic"
+          },
+          {
+            "$ref": "#/parameters/race"
+          },
+          {
+            "$ref": "#/parameters/telecom"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "An updated FHIR Patient",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/Patient/_search": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "search-type: Search for Patient instances",
+        "operationId": "SearchPatientPost",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "_elements",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_summary",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_content",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_filter",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_in",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_language",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_lastUpdated",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_list",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_profile",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_query",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_security",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_source",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_tag",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_text",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_contained",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_count",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_graph",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_include",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_revinclude",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_score",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_sort",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_total",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_format",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_has",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "active",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address-city",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address-country",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address-postalcode",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address-state",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address-use",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "birthdate",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "death-date",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "deceased",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "ethnicity",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "family",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "gender",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "general-practitioner",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "given",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "identifier",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "language",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "link",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "organization",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "phone",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "phonetic",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "race",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "telecom",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/Patient/{logical_id}/_history/{resource_version}": {
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "vread: Read Patient instance with specific version",
+        "operationId": "VReadPatient",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/resource_version"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/Patient/{logical_id}/$everything": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "operation: This operation is used to return all the information related to one or more patients described in the resource or context on which this operation is invoked. The response is a bundle of type \"searchset\". At a minimum, the patient resource(s) itself is returned, along with any other resources that the server has that are related to the patient(s), and that are available for the given user. The server also returns whatever resources are needed to support the records - e.g. linked practitioners, medications, locations, organizations etc.   \n\nThe intended use for this operation is to provide a patient with access to their entire record (e.g. \"Blue Button\"), or for provider or other user to perform a bulk data download.  The server SHOULD return at least all resources that it has that are in the patient compartment for the identified patient(s), and any resource referenced from those, including binaries and attachments. In the US Realm, at a minimum, the resources returned SHALL include all the data covered by the meaningful use common data elements as defined in the US Core Implementation Guide. Other applicable implementation guides may make additional rules about how much information that is returned.",
+        "operationId": "PatientInstanceEverythingPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/Patient/$everything": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "operation: This operation is used to return all the information related to one or more patients described in the resource or context on which this operation is invoked. The response is a bundle of type \"searchset\". At a minimum, the patient resource(s) itself is returned, along with any other resources that the server has that are related to the patient(s), and that are available for the given user. The server also returns whatever resources are needed to support the records - e.g. linked practitioners, medications, locations, organizations etc.   \n\nThe intended use for this operation is to provide a patient with access to their entire record (e.g. \"Blue Button\"), or for provider or other user to perform a bulk data download.  The server SHOULD return at least all resources that it has that are in the patient compartment for the identified patient(s), and any resource referenced from those, including binaries and attachments. In the US Realm, at a minimum, the resources returned SHALL include all the data covered by the meaningful use common data elements as defined in the US Core Implementation Guide. Other applicable implementation guides may make additional rules about how much information that is returned.",
+        "operationId": "PatientEverythingPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "Patient": {
+      "description": "Information about an individual or animal receiving health care services",
+      "type": "object"
+    },
+    "Bundle": {
+      "description": "Contains a collection of resources",
+      "type": "object"
+    },
+    "Parameters": {
+      "description": "Operation Request or Response",
+      "type": "object"
+    }
+  },
+  "parameters": {
+    "_format": {
+      "in": "query",
+      "name": "_format",
+      "description": "Override the HTTP content negotiation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_pretty": {
+      "in": "query",
+      "name": "_pretty",
+      "description": "Ask for a pretty printed response for human convenience",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_elements": {
+      "in": "query",
+      "name": "_elements",
+      "description": "Ask for a particular set of elements to be returned",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_summary": {
+      "in": "query",
+      "name": "_summary",
+      "description": "Return only portions of resources, based on pre-defined levels",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_content": {
+      "in": "query",
+      "name": "_content",
+      "description": "Search on the entire content of the resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_filter": {
+      "in": "query",
+      "name": "_filter",
+      "description": "Provide an inline query expression",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_id": {
+      "in": "query",
+      "name": "_id",
+      "description": "Logical id of this artifact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_in": {
+      "in": "query",
+      "name": "_in",
+      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_language": {
+      "in": "query",
+      "name": "_language",
+      "description": "Language of the resource content",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_lastUpdated": {
+      "in": "query",
+      "name": "_lastUpdated",
+      "description": "When the resource version last changed",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_list": {
+      "in": "query",
+      "name": "_list",
+      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_profile": {
+      "in": "query",
+      "name": "_profile",
+      "description": "Profiles this resource claims to conform to",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_query": {
+      "in": "query",
+      "name": "_query",
+      "description": "A custom search profile that describes a specific defined query operation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_security": {
+      "in": "query",
+      "name": "_security",
+      "description": "Security Labels applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_source": {
+      "in": "query",
+      "name": "_source",
+      "description": "Identifies where the resource comes from",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_tag": {
+      "in": "query",
+      "name": "_tag",
+      "description": "Tags applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_text": {
+      "in": "query",
+      "name": "_text",
+      "description": "Perform searches against the narrative content of a resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_contained": {
+      "in": "query",
+      "name": "_contained",
+      "description": "Request different types of handling for contained resources",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_count": {
+      "in": "query",
+      "name": "_count",
+      "description": "Limit the number of match results per page of response",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "_graph": {
+      "in": "query",
+      "name": "_graph",
+      "description": "Include additional resources according to a GraphDefinition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_include": {
+      "in": "query",
+      "name": "_include",
+      "description": "Include additional resources, based on following links forward across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_revinclude": {
+      "in": "query",
+      "name": "_revinclude",
+      "description": "Include additional resources, based on following reverse links across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_score": {
+      "in": "query",
+      "name": "_score",
+      "description": "Request match relevance in results",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_sort": {
+      "in": "query",
+      "name": "_sort",
+      "description": "Request which order results should be returned in",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_total": {
+      "in": "query",
+      "name": "_total",
+      "description": "Request a precision of the total number of results for a request",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_has": {
+      "in": "query",
+      "name": "_has",
+      "description": "Enables querying a reverse chain",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "active": {
+      "in": "query",
+      "name": "active",
+      "description": "The Healthcare Service is currently marked as active",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address": {
+      "in": "query",
+      "name": "address",
+      "description": "Identifier for the network access point of the user device",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address-city": {
+      "in": "query",
+      "name": "address-city",
+      "description": "A city specified in an address",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address-country": {
+      "in": "query",
+      "name": "address-country",
+      "description": "A country specified in an address",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address-postalcode": {
+      "in": "query",
+      "name": "address-postalcode",
+      "description": "A postal code specified in an address",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address-state": {
+      "in": "query",
+      "name": "address-state",
+      "description": "A state specified in an address",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address-use": {
+      "in": "query",
+      "name": "address-use",
+      "description": "A use code specified in an address",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "birthdate": {
+      "in": "query",
+      "name": "birthdate",
+      "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): The patient's date of birth\r\n* [Person](person.html): The person's date of birth\r\n* [RelatedPerson](relatedperson.html): The Related Person's date of birth\r\n",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "death-date": {
+      "in": "query",
+      "name": "death-date",
+      "description": "The date of death has been provided and satisfies this search value",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "deceased": {
+      "in": "query",
+      "name": "deceased",
+      "description": "This patient has been marked as deceased, or as a death date entered",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "email": {
+      "in": "query",
+      "name": "email",
+      "description": "A value in an email contact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "ethnicity": {
+      "in": "query",
+      "name": "ethnicity",
+      "description": "Returns patients with an ethnicity extension matching the specified code.",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "family": {
+      "in": "query",
+      "name": "family",
+      "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A portion of the family name of the patient\r\n* [Practitioner](practitioner.html): A portion of the family name\r\n",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "gender": {
+      "in": "query",
+      "name": "gender",
+      "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): Gender of the patient\r\n* [Person](person.html): The gender of the person\r\n* [Practitioner](practitioner.html): Gender of the practitioner\r\n* [RelatedPerson](relatedperson.html): Gender of the related person\r\n",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "general-practitioner": {
+      "in": "query",
+      "name": "general-practitioner",
+      "description": "Patient's nominated general practitioner, not the organization that manages the record",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "given": {
+      "in": "query",
+      "name": "given",
+      "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A portion of the given name of the patient\r\n* [Practitioner](practitioner.html): A portion of the given name\r\n",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "identifier": {
+      "in": "query",
+      "name": "identifier",
+      "description": "Account number",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "language": {
+      "in": "query",
+      "name": "language",
+      "description": "A language in which a designation is provided",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "link": {
+      "in": "query",
+      "name": "link",
+      "description": "All patients linked to the given patient",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "name": {
+      "in": "query",
+      "name": "name",
+      "description": "Human-readable label",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "organization": {
+      "in": "query",
+      "name": "organization",
+      "description": "Custodian of the consent",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "phone": {
+      "in": "query",
+      "name": "phone",
+      "description": "A value in a phone contact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "phonetic": {
+      "in": "query",
+      "name": "phonetic",
+      "description": "A portion of the organization's name using some kind of phonetic matching algorithm",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "race": {
+      "in": "query",
+      "name": "race",
+      "description": "Returns patients with a race extension matching the specified code.",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "telecom": {
+      "in": "query",
+      "name": "telecom",
+      "description": "Contact details for individual or organization",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "logical_id": {
+      "in": "path",
+      "name": "logical_id",
+      "description": "Resource Logical ID",
+      "required": true,
+      "type": "string"
+    },
+    "resource_version": {
+      "in": "path",
+      "name": "resource_version",
+      "description": "Resource Version Number",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "tags": [
+    {
+      "name": "Patient",
+      "description": "Information about an individual or animal receiving health care services"
+    }
+  ]
+}

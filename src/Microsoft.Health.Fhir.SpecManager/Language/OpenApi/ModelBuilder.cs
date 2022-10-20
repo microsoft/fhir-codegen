@@ -122,7 +122,7 @@ public class ModelBuilder
         }
 
         Dictionary<string, OpenApiTag> tags = new();
-        tags.Add("System", new OpenApiTag() { Name = "System", Description = "Sever-level requests"});
+        tags.Add("System", new OpenApiTag() { Name = "System", Description = "Sever-level requests" });
 
         doc.Paths = BuildPaths(schemas, tags);
 
@@ -588,7 +588,7 @@ public class ModelBuilder
 
             // TODO(ginoc): handle compartments
         }
-        
+
         // handle system-level paths
         {
             string opPath;
@@ -1120,7 +1120,7 @@ public class ModelBuilder
         // check for a single resource parameter and all others are 'simple' (primitive) types
         if ((inResourceParamNames.Count() == 1) &&
             (complexInParamCount == 0) &&
-            (inputResourceParameter  != null))
+            (inputResourceParameter != null))
         {
             oasOp.RequestBody = new OpenApiRequestBody()
             {
@@ -1184,65 +1184,7 @@ public class ModelBuilder
         }
     }
 
-    /// <summary>Gets body parameter type.</summary>
-    /// <param name="code">        The code.</param>
-    /// <param name="resourceName">(Optional) Name of the resource.</param>
-    /// <returns>The body parameter type.</returns>
-    private string GetBodyParamType(string code, string resourceName = "")
-    {
-        if (string.IsNullOrEmpty(code))
-        {
-            return "string";
-        }
-
-        if ((!string.IsNullOrEmpty(resourceName)) &&
-            (_caps?.ResourceInteractions?.ContainsKey(resourceName) ?? false) &&
-            (_caps.ResourceInteractions[resourceName].SearchParameters?.ContainsKey(code) ?? false))
-        {
-            return _caps.ResourceInteractions[resourceName].SearchParameters[code].ParameterType == FhirCapSearchParam.SearchParameterType.Number
-                ? "number"
-                : "string";
-        }
-
-        if (_caps?.ServerSearchParameters?.ContainsKey(code) ?? false)
-        {
-            return _caps.ServerSearchParameters[code].ParameterType == FhirCapSearchParam.SearchParameterType.Number
-                ? "number"
-                : "string";
-        }
-
-        if (_httpReadParameters.ContainsKey(code))
-        {
-            return _httpReadParameters[code].Schema.Type;
-        }
-
-        if (_httpCommonParameters.ContainsKey(code))
-        {
-            return _httpCommonParameters[code].Schema.Type;
-        }
-
-        if (_searchCommonParameters.ContainsKey(code))
-        {
-            return _searchCommonParameters[code].Schema.Type;
-        }
-
-        if (_searchResultParameters.ContainsKey(code))
-        {
-            return _searchResultParameters[code].Schema.Type;
-        }
-
-        if (_searchRootParameters.ContainsKey(code))
-        {
-            return _searchRootParameters[code].Schema.Type;
-        }
-
-        if (_pathParameters.ContainsKey(code))
-        {
-            return _pathParameters[code].Schema.Type;
-        }
-
-        return "string";
-    }
+    private const string POST_SEARCH_TYPE = "string";
 
     /// <summary>Builds resource search system post oas operation.</summary>
     /// <param name="schemas">The schemas.</param>
@@ -1302,7 +1244,7 @@ public class ModelBuilder
                 new OpenApiSchema()
                 {
                     Title = code,
-                    Type = GetBodyParamType(code),
+                    Type = POST_SEARCH_TYPE,
                 });
             usedParams.Add(code);
         }
@@ -1321,7 +1263,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = code,
-                        Type = GetBodyParamType(code),
+                        Type = POST_SEARCH_TYPE,
                     });
                 usedParams.Add(code);
             }
@@ -1338,7 +1280,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = code,
-                        Type = GetBodyParamType(code),
+                        Type = POST_SEARCH_TYPE,
                     });
                 usedParams.Add(code);
             }
@@ -1353,19 +1295,12 @@ public class ModelBuilder
                         continue;
                     }
 
-                    string advertisedType = capParam?.ParameterType.ToLiteral() ?? string.Empty;
-
-                    if (string.IsNullOrEmpty(advertisedType))
-                    {
-                        advertisedType = GetBodyParamType(capParam.Name);
-                    }
-
                     oasOp.RequestBody.Content["application/x-www-form-urlencoded"].Schema.Properties.Add(
                         capParam.Name,
                         new OpenApiSchema()
                         {
                             Title = capParam.Name,
-                            Type = advertisedType,
+                            Type = POST_SEARCH_TYPE,
                             Description = _openApiOptions.IncludeDescriptions
                                 ? capParam.Documentation
                                 : null,
@@ -1440,7 +1375,7 @@ public class ModelBuilder
                 new OpenApiSchema()
                 {
                     Title = code,
-                    Type = GetBodyParamType(code, resource.Name),
+                    Type = POST_SEARCH_TYPE,
                 });
             usedParams.Add(code);
         }
@@ -1459,7 +1394,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = code,
-                        Type = GetBodyParamType(code, resource.Name),
+                        Type = POST_SEARCH_TYPE,
                     });
                 usedParams.Add(code);
             }
@@ -1476,7 +1411,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = code,
-                        Type = GetBodyParamType(code, resource.Name),
+                        Type = POST_SEARCH_TYPE,
                     });
                 usedParams.Add(code);
             }
@@ -1493,7 +1428,7 @@ public class ModelBuilder
                     new OpenApiSchema()
                     {
                         Title = fhirSp.Name,
-                        Type = fhirSp.ValueType ?? "string",
+                        Type = "string",
                     });
 
                 usedParams.Add(fhirSp.Code);
@@ -2137,7 +2072,7 @@ public class ModelBuilder
 
         // vread includes PathComponentVersionId segment
         oasOp.Parameters.Add(BuildReferencedParameter(PathComponentVersionId));
-        
+
         foreach (string code in _openApiOptions.HttpReadParams)
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
@@ -2193,7 +2128,7 @@ public class ModelBuilder
 
         // read includes PathComponentLogicalId segment
         oasOp.Parameters.Add(BuildReferencedParameter(PathComponentLogicalId));
-        
+
         foreach (string code in _openApiOptions.HttpReadParams)
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
@@ -2372,7 +2307,7 @@ public class ModelBuilder
             // check operations for this specific resource
             foreach (FhirCapOperation capOp in _caps.ResourceInteractions[resourceName].Operations.Values)
             {
-                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object fhirOpObj))
+                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirOpObj))
                 {
                     Console.WriteLine($"Skipping unresolvable Operation: {capOp.DefinitionCanonical}");
                     continue;
@@ -2400,7 +2335,7 @@ public class ModelBuilder
             // some servers just shove all operations into system-level reporting
             foreach (FhirCapOperation capOp in _caps.ServerOperations.Values)
             {
-                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object fhirOpObj))
+                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirOpObj))
                 {
                     continue;
                 }
@@ -2518,7 +2453,7 @@ public class ModelBuilder
 
                 if (!string.IsNullOrEmpty(capSp.DefinitionCanonical))
                 {
-                    if (FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capSp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object fhirSpObj) &&
+                    if (FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capSp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirSpObj) &&
                         (fhirSpObj is FhirSearchParam fhirSp))
                     {
                         searchParameters.Add(fhirSp);
@@ -2756,7 +2691,7 @@ public class ModelBuilder
         {
             foreach (FhirCapOperation capOp in _caps.ServerOperations.Values)
             {
-                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out object fhirOpObj))
+                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirOpObj))
                 {
                     continue;
                 }
