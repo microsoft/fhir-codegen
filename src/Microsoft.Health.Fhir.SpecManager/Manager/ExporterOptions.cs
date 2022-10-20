@@ -3,8 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
 /// <summary>An exporter options.</summary>
@@ -25,6 +23,7 @@ public class ExporterOptions
     /// <param name="languageOptions">        Options for controlling the language.</param>
     /// <param name="fhirServerUrl">          FHIR Server URL to pull a CapabilityStatement (or
     ///  Conformance) from.  Requires application/fhir+json.</param>
+    /// <param name="resolveExternal">      Whether or not to try to resolve unknown canonicals at the given fhir server url.</param>
     /// <param name="includeExperimental">    A value indicating whether structures marked experimental
     ///  should be included.</param>
     /// <param name="languageInputDir">       The language input dir.</param>
@@ -37,6 +36,7 @@ public class ExporterOptions
         IEnumerable<string> extensionElementPaths,
         Dictionary<string, string> languageOptions,
         string fhirServerUrl,
+        bool resolveExternal,
         bool includeExperimental,
         string languageInputDir)
     {
@@ -73,6 +73,7 @@ public class ExporterOptions
         _languageOptions = languageOptions ?? new(StringComparer.InvariantCultureIgnoreCase);
 
         ServerUrl = fhirServerUrl ?? string.Empty;
+        ResolveExternal = resolveExternal;
         IncludeExperimental = includeExperimental;
 
         LanguageInputDir = languageInputDir ?? string.Empty;
@@ -171,6 +172,9 @@ public class ExporterOptions
 
     /// <summary>Gets URL of the FHIR server (if specified).</summary>
     public string ServerUrl { get; }
+
+    /// <summary> Whether or not to try to resolve unknown canonicals at the given fhir server url.</summary>
+    public bool ResolveExternal { get; }
 
     /// <summary>Gets a value indicating whether structures marked experimental should be included.</summary>
     public bool IncludeExperimental { get; }

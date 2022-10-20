@@ -1,0 +1,1484 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Firely Server - CodeSystem",
+    "version": "4.10.0"
+  },
+  "host": "server.fire.ly",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/CodeSystem": {
+      "post": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "create: Create a new CodeSystem instance",
+        "operationId": "CreateCodeSystem",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A FHIR CodeSystem",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CodeSystem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CodeSystem"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "search-type: Search for CodeSystem instances",
+        "operationId": "SearchCodeSystemGet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_contained"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_graph"
+          },
+          {
+            "$ref": "#/parameters/_include"
+          },
+          {
+            "$ref": "#/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/parameters/_score"
+          },
+          {
+            "$ref": "#/parameters/_sort"
+          },
+          {
+            "$ref": "#/parameters/_total"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/code"
+          },
+          {
+            "$ref": "#/parameters/content-mode"
+          },
+          {
+            "$ref": "#/parameters/context"
+          },
+          {
+            "$ref": "#/parameters/context-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type"
+          },
+          {
+            "$ref": "#/parameters/context-type-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type-value"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/description"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/jurisdiction"
+          },
+          {
+            "$ref": "#/parameters/language"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/publisher"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/supplements"
+          },
+          {
+            "$ref": "#/parameters/system"
+          },
+          {
+            "$ref": "#/parameters/title"
+          },
+          {
+            "$ref": "#/parameters/url"
+          },
+          {
+            "$ref": "#/parameters/version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CodeSystem/{logical_id}": {
+      "delete": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "delete: Perform a loical delete on a CodeSystem instance",
+        "operationId": "DeleteCodeSystem",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/code"
+          },
+          {
+            "$ref": "#/parameters/content-mode"
+          },
+          {
+            "$ref": "#/parameters/context"
+          },
+          {
+            "$ref": "#/parameters/context-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type"
+          },
+          {
+            "$ref": "#/parameters/context-type-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type-value"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/description"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/jurisdiction"
+          },
+          {
+            "$ref": "#/parameters/language"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/publisher"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/supplements"
+          },
+          {
+            "$ref": "#/parameters/system"
+          },
+          {
+            "$ref": "#/parameters/title"
+          },
+          {
+            "$ref": "#/parameters/url"
+          },
+          {
+            "$ref": "#/parameters/version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CodeSystem"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "patch: Patch a CodeSystem instance",
+        "operationId": "PatchCodeSystem",
+        "consumes": [ ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Patch to apply to a FHIR CodeSystem record",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CodeSystem"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "read: Read a FHIR CodeSystem",
+        "operationId": "ReadCodeSystem",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CodeSystem"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "update,create: Update or Create a CodeSystem instance",
+        "operationId": "UpdateOrCreateCodeSystem",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/code"
+          },
+          {
+            "$ref": "#/parameters/content-mode"
+          },
+          {
+            "$ref": "#/parameters/context"
+          },
+          {
+            "$ref": "#/parameters/context-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type"
+          },
+          {
+            "$ref": "#/parameters/context-type-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type-value"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/description"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/jurisdiction"
+          },
+          {
+            "$ref": "#/parameters/language"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/publisher"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/supplements"
+          },
+          {
+            "$ref": "#/parameters/system"
+          },
+          {
+            "$ref": "#/parameters/title"
+          },
+          {
+            "$ref": "#/parameters/url"
+          },
+          {
+            "$ref": "#/parameters/version"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "An updated FHIR CodeSystem",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CodeSystem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CodeSystem"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CodeSystem/_search": {
+      "post": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "search-type: Search for CodeSystem instances",
+        "operationId": "SearchCodeSystemPost",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "_elements",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_summary",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_content",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_filter",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_in",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_language",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_lastUpdated",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_list",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_profile",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_query",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_security",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_source",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_tag",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_text",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_contained",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_count",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_graph",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_include",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_revinclude",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_score",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_sort",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_total",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_format",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_has",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "code",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "content-mode",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-quantity",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-type",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-type-quantity",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-type-value",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "identifier",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "jurisdiction",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "language",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "publisher",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "supplements",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "system",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "url",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "version",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CodeSystem/{logical_id}/_history/{resource_version}": {
+      "get": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "vread: Read CodeSystem instance with specific version",
+        "operationId": "VReadCodeSystem",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/resource_version"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CodeSystem"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CodeSystem/{logical_id}/$find-matches": {
+      "post": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "operation: Given a set of properties (and text), return one or more possible matching codes\n\nThis operation takes a set of properties, and examines the code system looking for codes in the code system that match a set of known properties. \n\nWhen looking for matches, there are 3 possible types of match:\n* a complete match - a code that represents all the provided properties correctly\n* a partial match - a code that represents some of the provided properties correctly, and not others \n* a possible match - a code that may represent the provided properties closely, but may capture less or more precise information for some of the properties\n\nThe $find-matches operation can be called in one of 2 modes:\n* By a human, looking for the best match for a set of properties. In this mode, the server returns a list of complete, possible or partial matches (possibly with comments), so that the user can choose (or not) the most appropriate code\n* By a machine (typically in a system interface performing a transformation). In this mode, the server returns only a list of complete and partial matches, but no possible matches. The machine can choose a code from the list (or not) based on what properties are not coded\n\nThese modes are differentiated by the 'exact' parameter, so the client can indicate whether it only wants exact matches (including partial matches) or whether potential matches based on text matching are desired\n \nThe find-matches operation is still preliminary. The interface can be expected to change as more experience is gained from implementations.",
+        "operationId": "CodeSystemInstanceFind-matchesPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CodeSystem/$find-matches": {
+      "post": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "operation: Given a set of properties (and text), return one or more possible matching codes\n\nThis operation takes a set of properties, and examines the code system looking for codes in the code system that match a set of known properties. \n\nWhen looking for matches, there are 3 possible types of match:\n* a complete match - a code that represents all the provided properties correctly\n* a partial match - a code that represents some of the provided properties correctly, and not others \n* a possible match - a code that may represent the provided properties closely, but may capture less or more precise information for some of the properties\n\nThe $find-matches operation can be called in one of 2 modes:\n* By a human, looking for the best match for a set of properties. In this mode, the server returns a list of complete, possible or partial matches (possibly with comments), so that the user can choose (or not) the most appropriate code\n* By a machine (typically in a system interface performing a transformation). In this mode, the server returns only a list of complete and partial matches, but no possible matches. The machine can choose a code from the list (or not) based on what properties are not coded\n\nThese modes are differentiated by the 'exact' parameter, so the client can indicate whether it only wants exact matches (including partial matches) or whether potential matches based on text matching are desired\n \nThe find-matches operation is still preliminary. The interface can be expected to change as more experience is gained from implementations.",
+        "operationId": "CodeSystemFind-matchesPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CodeSystem/$lookup": {
+      "post": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "operation: Given a code/system, or a Coding, get additional details about the concept, including definition, status, designations, and properties. One of the products of this operation is a full decomposition of a code from a structured terminology.\n\nWhen invoking this operation, a client SHALL provide both a system and a code, either using the system+code parameters, or in the coding parameter. Other parameters are optional",
+        "operationId": "CodeSystemLookupPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CodeSystem/{logical_id}/$subsumes": {
+      "post": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "operation: Test the subsumption relationship between code/Coding A and code/Coding B given the semantics of subsumption in the underlying code system (see [hierarchyMeaning](codesystem-definitions.html#CodeSystem.hierarchyMeaning)).\n\nWhen invoking this operation, a client SHALL provide both a and codes, either as code or Coding parameters. The system parameter is required unless the operation is invoked on an instance of a code system resource. Other parameters are optional",
+        "operationId": "CodeSystemInstanceSubsumesPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/CodeSystem/$subsumes": {
+      "post": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "operation: Test the subsumption relationship between code/Coding A and code/Coding B given the semantics of subsumption in the underlying code system (see [hierarchyMeaning](codesystem-definitions.html#CodeSystem.hierarchyMeaning)).\n\nWhen invoking this operation, a client SHALL provide both a and codes, either as code or Coding parameters. The system parameter is required unless the operation is invoked on an instance of a code system resource. Other parameters are optional",
+        "operationId": "CodeSystemSubsumesPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "CodeSystem": {
+      "description": "Declares the existence of and describes a code system or code system supplement",
+      "type": "object"
+    },
+    "Bundle": {
+      "description": "Contains a collection of resources",
+      "type": "object"
+    },
+    "Parameters": {
+      "description": "Operation Request or Response",
+      "type": "object"
+    }
+  },
+  "parameters": {
+    "_format": {
+      "in": "query",
+      "name": "_format",
+      "description": "Override the HTTP content negotiation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_pretty": {
+      "in": "query",
+      "name": "_pretty",
+      "description": "Ask for a pretty printed response for human convenience",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_elements": {
+      "in": "query",
+      "name": "_elements",
+      "description": "Ask for a particular set of elements to be returned",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_summary": {
+      "in": "query",
+      "name": "_summary",
+      "description": "Return only portions of resources, based on pre-defined levels",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_content": {
+      "in": "query",
+      "name": "_content",
+      "description": "Search on the entire content of the resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_filter": {
+      "in": "query",
+      "name": "_filter",
+      "description": "Provide an inline query expression",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_id": {
+      "in": "query",
+      "name": "_id",
+      "description": "Logical id of this artifact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_in": {
+      "in": "query",
+      "name": "_in",
+      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_language": {
+      "in": "query",
+      "name": "_language",
+      "description": "Language of the resource content",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_lastUpdated": {
+      "in": "query",
+      "name": "_lastUpdated",
+      "description": "When the resource version last changed",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_list": {
+      "in": "query",
+      "name": "_list",
+      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_profile": {
+      "in": "query",
+      "name": "_profile",
+      "description": "Profiles this resource claims to conform to",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_query": {
+      "in": "query",
+      "name": "_query",
+      "description": "A custom search profile that describes a specific defined query operation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_security": {
+      "in": "query",
+      "name": "_security",
+      "description": "Security Labels applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_source": {
+      "in": "query",
+      "name": "_source",
+      "description": "Identifies where the resource comes from",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_tag": {
+      "in": "query",
+      "name": "_tag",
+      "description": "Tags applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_text": {
+      "in": "query",
+      "name": "_text",
+      "description": "Perform searches against the narrative content of a resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_contained": {
+      "in": "query",
+      "name": "_contained",
+      "description": "Request different types of handling for contained resources",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_count": {
+      "in": "query",
+      "name": "_count",
+      "description": "Limit the number of match results per page of response",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "_graph": {
+      "in": "query",
+      "name": "_graph",
+      "description": "Include additional resources according to a GraphDefinition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_include": {
+      "in": "query",
+      "name": "_include",
+      "description": "Include additional resources, based on following links forward across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_revinclude": {
+      "in": "query",
+      "name": "_revinclude",
+      "description": "Include additional resources, based on following reverse links across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_score": {
+      "in": "query",
+      "name": "_score",
+      "description": "Request match relevance in results",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_sort": {
+      "in": "query",
+      "name": "_sort",
+      "description": "Request which order results should be returned in",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_total": {
+      "in": "query",
+      "name": "_total",
+      "description": "Request a precision of the total number of results for a request",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_has": {
+      "in": "query",
+      "name": "_has",
+      "description": "Enables querying a reverse chain",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "code": {
+      "in": "query",
+      "name": "code",
+      "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](condition.html): Code for the condition\r\n* [DeviceRequest](devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a condition code\r\n* [List](list.html): What the purpose of this list is\r\n* [Medication](medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](medicationstatement.html): Return statements of this medication code\r\n* [Observation](observation.html): The code of the observation type\r\n* [Procedure](procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](servicerequest.html): What is being requested/ordered\r\n",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "content-mode": {
+      "in": "query",
+      "name": "content-mode",
+      "description": "not-present | example | fragment | complete | supplement",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context": {
+      "in": "query",
+      "name": "context",
+      "description": "A use context assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-quantity": {
+      "in": "query",
+      "name": "context-quantity",
+      "description": "A quantity- or range-valued use context assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-type": {
+      "in": "query",
+      "name": "context-type",
+      "description": "A type of use context assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-type-quantity": {
+      "in": "query",
+      "name": "context-type-quantity",
+      "description": "A use context type and quantity- or range-based value assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-type-value": {
+      "in": "query",
+      "name": "context-type-value",
+      "description": "A use context type and value assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "date": {
+      "in": "query",
+      "name": "date",
+      "description": "The activity definition publication date",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "description": {
+      "in": "query",
+      "name": "description",
+      "description": "The description of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "identifier": {
+      "in": "query",
+      "name": "identifier",
+      "description": "Account number",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "jurisdiction": {
+      "in": "query",
+      "name": "jurisdiction",
+      "description": "Intended jurisdiction for the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "language": {
+      "in": "query",
+      "name": "language",
+      "description": "A language in which a designation is provided",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "name": {
+      "in": "query",
+      "name": "name",
+      "description": "Human-readable label",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "publisher": {
+      "in": "query",
+      "name": "publisher",
+      "description": "Name of the publisher of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "status": {
+      "in": "query",
+      "name": "status",
+      "description": "active | inactive | entered-in-error | on-hold | unknown",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "supplements": {
+      "in": "query",
+      "name": "supplements",
+      "description": "Find code system supplements for the referenced code system",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "system": {
+      "in": "query",
+      "name": "system",
+      "description": "The system for any codes defined by this code system (same as 'url')",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "title": {
+      "in": "query",
+      "name": "title",
+      "description": "The human-friendly name of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "url": {
+      "in": "query",
+      "name": "url",
+      "description": "The uri that identifies the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "version": {
+      "in": "query",
+      "name": "version",
+      "description": "The business version of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "logical_id": {
+      "in": "path",
+      "name": "logical_id",
+      "description": "Resource Logical ID",
+      "required": true,
+      "type": "string"
+    },
+    "resource_version": {
+      "in": "path",
+      "name": "resource_version",
+      "description": "Resource Version Number",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "tags": [
+    {
+      "name": "CodeSystem",
+      "description": "Declares the existence of and describes a code system or code system supplement"
+    }
+  ]
+}

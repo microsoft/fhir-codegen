@@ -1,0 +1,139 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Firely Server - Resource",
+    "version": "4.10.0"
+  },
+  "host": "server.fire.ly",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/Resource/{logical_id}/$meta": {
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "operation: This operation retrieves a summary of the profiles, tags, and security labels for the given scope; e.g. for each scope:  \n\n* system-wide: a list of all profiles, tags and security labels in use by the system \n* resource-type level: A list of all profiles, tags, and security labels for the resource type \n* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.  Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)",
+        "operationId": "ResourceInstanceMetaPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/Resource/$meta": {
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "operation: This operation retrieves a summary of the profiles, tags, and security labels for the given scope; e.g. for each scope:  \n\n* system-wide: a list of all profiles, tags and security labels in use by the system \n* resource-type level: A list of all profiles, tags, and security labels for the resource type \n* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.  Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)",
+        "operationId": "ResourceMetaPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "Parameters": {
+      "description": "Operation Request or Response",
+      "type": "object"
+    }
+  },
+  "parameters": {
+    "_format": {
+      "in": "query",
+      "name": "_format",
+      "description": "Override the HTTP content negotiation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_pretty": {
+      "in": "query",
+      "name": "_pretty",
+      "description": "Ask for a pretty printed response for human convenience",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "logical_id": {
+      "in": "path",
+      "name": "logical_id",
+      "description": "Resource Logical ID",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "tags": [
+    {
+      "name": "Resource",
+      "description": "Base Resource"
+    }
+  ]
+}

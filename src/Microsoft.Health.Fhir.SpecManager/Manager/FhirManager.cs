@@ -4,7 +4,6 @@
 // </copyright>
 
 using System.IO;
-using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.Health.Fhir.SpecManager.PackageManager;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
@@ -146,7 +145,7 @@ public class FhirManager : IDisposable
     /// <param name="caps">The capabilities.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryResolveCanonicals(
-        FhirCapabiltyStatement caps)
+        FhirCapabiltyStatement caps, bool resolveExternal)
     {
         if (string.IsNullOrEmpty(caps.FhirVersion))
         {
@@ -194,7 +193,7 @@ public class FhirManager : IDisposable
 
                 attempted.Add(serverOp.DefinitionCanonical);
 
-                if (!TryResolveCanonical(sequence, serverOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out _) ||
+                if (!TryResolveCanonical(sequence, serverOp.DefinitionCanonical, resolveExternal, out FhirArtifactClassEnum ac, out _) ||
                     (ac != FhirArtifactClassEnum.Operation))
                 {
                     Console.WriteLine(" <<< Failed to resolve canonical: " + serverOp.DefinitionCanonical);
@@ -217,7 +216,7 @@ public class FhirManager : IDisposable
 
                         attempted.Add(resourceOp.DefinitionCanonical);
 
-                        if (!TryResolveCanonical(sequence, resourceOp.DefinitionCanonical, out FhirArtifactClassEnum ac, out _) ||
+                        if (!TryResolveCanonical(sequence, resourceOp.DefinitionCanonical, resolveExternal, out FhirArtifactClassEnum ac, out _) ||
                             (ac != FhirArtifactClassEnum.Operation))
                         {
                             Console.WriteLine(" <<< Failed to resolve canonical: " + resourceOp.DefinitionCanonical);
@@ -238,6 +237,7 @@ public class FhirManager : IDisposable
     public bool TryResolveCanonical(
         FhirPackageCommon.FhirSequenceEnum fhirSequence,
         string canonical,
+        bool resolveExternal,
         out FhirArtifactClassEnum canonicalClass,
         out object resource)
     {
@@ -362,42 +362,45 @@ public class FhirManager : IDisposable
             }
         }
 
-        try
+        if (resolveExternal)
         {
-            // attempt to fetch the URL and see what happens
-            if (ServerConnector.TryDownloadResource(canonical, out string json))
+            try
             {
-                if (!_nonPackageArtifactsByVersion.ContainsKey(fhirSequence))
+                // attempt to fetch the URL and see what happens
+                if (ServerConnector.TryDownloadResource(canonical, out string json))
                 {
-                    FhirVersionInfo info = new(fhirSequence);
-                    TrackLoadedPackage(info.PackageName + "#" + info.VersionString, info, true, false);
-                }
+                    if (!_nonPackageArtifactsByVersion.ContainsKey(fhirSequence))
+                    {
+                        FhirVersionInfo info = new(fhirSequence);
+                        TrackLoadedPackage(info.PackageName + "#" + info.VersionString, info, true, false);
+                    }
 
-                object parsed = _nonPackageArtifactsByVersion[fhirSequence].ParseResource(json);
+                    object parsed = _nonPackageArtifactsByVersion[fhirSequence].ParseResource(json);
 
-                // fix for unreplaced [base] urls
-                if (json.Contains("\"[base", StringComparison.Ordinal))
-                {
-                    _nonPackageArtifactsByVersion[fhirSequence].ReplaceParsedValue(parsed, new string[] { "url" }, canonical);
-                }
+                    // fix for unreplaced [base] urls
+                    if (json.Contains("\"[base", StringComparison.Ordinal))
+                    {
+                        _nonPackageArtifactsByVersion[fhirSequence].ReplaceParsedValue(parsed, new string[] { "url" }, canonical);
+                    }
 
-                _nonPackageArtifactsByVersion[fhirSequence].ProcessResource(parsed, out string resourceCanonical, out canonicalClass);
+                    _nonPackageArtifactsByVersion[fhirSequence].ProcessResource(parsed, out string resourceCanonical, out canonicalClass);
 
-                if ((!string.IsNullOrEmpty(resourceCanonical)) &&
-                    (canonicalClass != FhirArtifactClassEnum.Unknown))
-                {
-                    _nonPackageArtifactsByVersion[fhirSequence].AddCanonicalAlias(resourceCanonical, canonical);
-                    return _nonPackageArtifactsByVersion[fhirSequence].TryGetArtifact(
-                        resourceCanonical,
-                        out resource,
-                        out _,
-                        out _);
+                    if ((!string.IsNullOrEmpty(resourceCanonical)) &&
+                        (canonicalClass != FhirArtifactClassEnum.Unknown))
+                    {
+                        _nonPackageArtifactsByVersion[fhirSequence].AddCanonicalAlias(resourceCanonical, canonical);
+                        return _nonPackageArtifactsByVersion[fhirSequence].TryGetArtifact(
+                            resourceCanonical,
+                            out resource,
+                            out _,
+                            out _);
+                    }
                 }
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($" <<< failed to resolve canonical via HTTP: {ex.Message}");
+            catch (Exception ex)
+            {
+                Console.WriteLine($" <<< failed to resolve canonical via HTTP: {ex.Message}");
+            }
         }
 
         resource = null;

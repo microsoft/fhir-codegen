@@ -5,7 +5,6 @@
 
 
 using System.IO;
-using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -107,7 +106,7 @@ public class LangOpenApi : ILanguage
             }
         }
         else
-        { 
+        {
             foreach (FhirCapabiltyStatement cap in info.CapabilitiesByUrl.Values)
             {
                 ModelBuilder builder = new(info, openApiOptions, options, cap);
@@ -170,6 +169,8 @@ public class LangOpenApi : ILanguage
                 doc.Paths = new();
                 doc.Tags = new List<OpenApiTag>();
 
+                doc.Servers = completeDoc.Servers.ToList();
+
                 docsByPrefix.Add(pathKey, doc);
             }
 
@@ -187,6 +188,23 @@ public class LangOpenApi : ILanguage
         }
     }
 
+
+    private static void MaybeAddParameters(IList<OpenApiParameter> newParameters, OpenApiDocument source, OpenApiDocument target)
+    {
+        foreach (OpenApiParameter targetParam in newParameters)
+        {
+            // only need to resolve references, full parameters were copied
+            if (!string.IsNullOrEmpty(targetParam.Reference?.Id ?? null) &&
+                    !target.Components.Parameters.ContainsKey(targetParam.Reference.Id))
+            {
+                target.Components.Parameters.Add(
+                    targetParam.Reference.Id,
+                    source.Components.Parameters[targetParam.Reference.Id]);
+            }
+        }
+    }
+
+
     /// <summary>Copies the nested defs.</summary>
     /// <param name="source">Another instance to copy.</param>
     /// <param name="target">Target for the.</param>
@@ -199,6 +217,8 @@ public class LangOpenApi : ILanguage
 
         foreach ((string targetPathKey, OpenApiPathItem targetPath) in target.Paths)
         {
+            MaybeAddParameters(targetPath.Parameters, source, target);
+
             foreach ((OperationType targetOpKey, OpenApiOperation targetOp) in targetPath.Operations)
             {
                 foreach (OpenApiTag targetTag in targetOp.Tags)
@@ -214,24 +234,7 @@ public class LangOpenApi : ILanguage
                     usedTags.Add(targetTag.Reference.Id);
                 }
 
-                foreach (OpenApiParameter targetParam in targetOp.Parameters)
-                {
-                    // only need to resolve references, full parameters were copied
-                    if (string.IsNullOrEmpty(targetParam.Reference?.Id ?? null) ||
-                        target.Components.Parameters.ContainsKey(targetParam.Reference.Id))
-                    {
-                        continue;
-                    }
-
-                    //target.Components.Parameters.Add(
-                    //    targetParam.Reference.Id,
-                    //    new OpenApiParameter(source.Components.Parameters[targetParam.Reference.Id]));
-
-                    target.Components.Parameters.Add(
-                        targetParam.Reference.Id,
-                        source.Components.Parameters[targetParam.Reference.Id]);
-
-                }
+                MaybeAddParameters(targetOp.Parameters, source, target);
 
                 foreach (OpenApiMediaType targetMedia in targetOp.RequestBody?.Content?.Values ?? Array.Empty<OpenApiMediaType>())
                 {
