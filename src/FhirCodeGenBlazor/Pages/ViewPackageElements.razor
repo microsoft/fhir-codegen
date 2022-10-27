@@ -3,6 +3,7 @@
 @using FhirCodeGenBlazor.Models;
 @using FhirCodeGenBlazor.Services;
 @using Markdig;
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using Microsoft.CodeAnalysis.CSharp.Scripting;
 @using Microsoft.CodeAnalysis.Scripting;
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -11,9 +12,10 @@
 @using System.Text.RegularExpressions;
 @using System.Linq;
 @using static FhirCodeGenBlazor.Models.PackageElementModels
-@inject NavigationManager NavigationManager
 @inject ISpecManagerWebService SpecService
 @inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+@inject ProtectedLocalStorage BrowserStore
 @implements IDisposable
 @implements IPackageVersionProvider
 
@@ -368,13 +370,13 @@ else
         int CurrentIndexMax,
         int LastPage);
 
-    /// <summary>The show artifact class.</summary>
+    /// <summary>The show artifact class.  Initialize all to false, will be updated after first render.</summary>
     private Dictionary<FhirArtifactClassEnum, bool> showArtifactClass = new()
     {
-        { FhirArtifactClassEnum.ComplexType, true },
-        { FhirArtifactClassEnum.Resource, true },
-        { FhirArtifactClassEnum.Extension, true },
-        { FhirArtifactClassEnum.Profile, true },
+        { FhirArtifactClassEnum.ComplexType, false },
+        { FhirArtifactClassEnum.Resource, false },
+        { FhirArtifactClassEnum.Extension, false },
+        { FhirArtifactClassEnum.Profile, false },
         { FhirArtifactClassEnum.LogicalModel, false }
     };
 
@@ -429,10 +431,41 @@ else
 
         directive = PackageName + "#" + Version;
 
-        NavTracker?.NotifyNav(directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
+        NavTracker?.NotifyNav("Elements of " + directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
         NavigationManager.LocationChanged += HandleLocationChanged;
 
         HandleNonFilterChange();
+    }
+
+    /// <summary>Executes the after render action.</summary>
+    /// <param name="firstRender">True to first render.</param>
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Task.Run(() => UpdateInitialArtifactDisplay());
+        }
+
+        base.OnAfterRender(firstRender);
+    }
+
+    /// <summary>Updates the initial artifact display.</summary>
+    private async void UpdateInitialArtifactDisplay()
+    {
+        foreach (FhirArtifactClassEnum classEnum in showArtifactClass.Keys)
+        {
+            var readResult = await BrowserStore.GetAsync<bool>("showAC_" + classEnum);
+            if (readResult.Success)
+            {
+                showArtifactClass[classEnum] = readResult.Value;
+            }
+            else
+            {
+                showArtifactClass[classEnum] = true;
+            }
+        }
+
+        _ = InvokeAsync(() => BuildElementList());
     }
 
     /// <summary>
@@ -453,7 +486,7 @@ else
         {
             directive = PackageName + "#" + Version;
 
-            NavTracker?.NotifyNav(directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
+            NavTracker?.NotifyNav("Elements of " + directive, $"view/package/elements?packageName={PackageName}&version={Version}", 1);
 
             HandleNonFilterChange();
         }
@@ -695,6 +728,7 @@ else
         foreach (FhirArtifactClassEnum ac in showArtifactClass.Keys)
         {
             showArtifactClass[ac] = _showArtifactState;
+            _ = BrowserStore.SetAsync("showAC_" + ac, showArtifactClass[ac]);
         }
 
         InvokeAsync(() => BuildElementList());
@@ -717,6 +751,8 @@ else
         {
             showArtifactClass[classEnum] = (v == true);
         }
+
+        _ = BrowserStore.SetAsync("showAC_" + classEnum, showArtifactClass[classEnum]);
 
         InvokeAsync(() => BuildElementList());
     }

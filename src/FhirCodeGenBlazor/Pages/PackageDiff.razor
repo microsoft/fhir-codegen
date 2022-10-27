@@ -2,11 +2,13 @@
 
 @using FhirCodeGenBlazor.Models;
 @using FhirCodeGenBlazor.Services;
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @using Microsoft.Health.Fhir.SpecManager.Manager
-@inject NavigationManager NavigationManager
 @inject ISpecManagerWebService SpecService
 @inject IPackageDiffWebService DiffService
+@inject NavigationManager NavigationManager
+@inject ProtectedLocalStorage BrowserStore
 @implements IDisposable
 
 <PageTitle>FHIR Diff Tool</PageTitle>
@@ -325,16 +327,41 @@
     {
         base.OnInitialized();
 
-        foreach (DiffResults.DiffTypeEnum diffType in Enum.GetValues(typeof(DiffResults.DiffTypeEnum)))
-        {
-            showDiffType.Add(diffType, true);
-        }
-
         NavTracker?.NotifyNav("FHIR Diff Tool", "diff", 1);
         NavigationManager.LocationChanged += HandleLocationChanged;
 
         DiffService.OnDiffCompleted += HandleDiffCompleted;
     }
+
+    /// <summary>Executes the after render action.</summary>
+    /// <param name="firstRender">True to first render.</param>
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Task.Run(() => LoadDiffTypes());
+        }
+
+        base.OnAfterRender(firstRender);
+    }
+
+    /// <summary>Loads difference types.</summary>
+    private async void LoadDiffTypes()
+    {
+        foreach (DiffResults.DiffTypeEnum diffType in Enum.GetValues(typeof(DiffResults.DiffTypeEnum)))
+        {
+            var readResult = await BrowserStore.GetAsync<bool>("showDT_" + diffType);
+            if (readResult.Success)
+            {
+                showDiffType.Add(diffType, readResult.Value);
+            }
+            else
+            {
+                showDiffType.Add(diffType, true);
+            }
+        }
+    }
+
 
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
@@ -443,6 +470,13 @@
         string appliedFilter = "",
         bool checkShownArtifactClasses = false)
     {
+        if ((!(results?.DiffsByKeyByArtifactClass?.Any() ?? false)) ||
+            (!showArtifactClass.Any()))
+        {
+            _busy = false;
+            return;
+        }
+
         _busy = true;
 
         List<ExpandedDiffRec> elementList = new();
@@ -453,7 +487,15 @@
             {
                 if (!showArtifactClass.ContainsKey(artifactClass))
                 {
-                    showArtifactClass.Add(artifactClass, false);
+                    var readResult = await BrowserStore.GetAsync<bool>("showAC_" + artifactClass);
+                    if (readResult.Success)
+                    {
+                        showArtifactClass.Add(artifactClass, readResult.Value);
+                    }
+                    else
+                    {
+                        showArtifactClass.Add(artifactClass, false);
+                    }
                 }
             }
 
@@ -493,7 +535,9 @@
             }
         }
 
-        foreach ((FhirArtifactClassEnum ac, Dictionary<string, List<DiffResults.DiffRecord>> artifacts) in results.DiffsByKeyByArtifactClass)
+        foreach (
+            (FhirArtifactClassEnum ac, Dictionary<string, List<DiffResults.DiffRecord>> artifacts)
+            in results.DiffsByKeyByArtifactClass)
         {
             if (showArtifactClass[ac] == false)
             {
@@ -619,6 +663,8 @@
             showArtifactClass[classEnum] = (v == true);
         }
 
+        _ = BrowserStore.SetAsync("showAC_" + classEnum, showArtifactClass[classEnum]);
+
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
     }
 
@@ -704,6 +750,8 @@
             showDiffType[diffEnum] = (v == true);
         }
 
+        _ = BrowserStore.SetAsync("showDT_" + diffEnum, showDiffType[diffEnum]);
+
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
     }
 
@@ -714,6 +762,7 @@
         foreach (DiffResults.DiffTypeEnum diffEnum in showDiffType.Keys)
         {
             showDiffType[diffEnum] = _showDiffState;
+            _ = BrowserStore.SetAsync("showDT_" + diffEnum, showDiffType[diffEnum]);
         }
 
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
@@ -729,6 +778,7 @@
         foreach (FhirArtifactClassEnum ac in showArtifactClass.Keys)
         {
             showArtifactClass[ac] = _showArtifactState;
+            _ = BrowserStore.SetAsync("showAC_" + ac, showArtifactClass[ac]);
         }
 
         InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
