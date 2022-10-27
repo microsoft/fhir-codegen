@@ -41,6 +41,7 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
         : base(
             id,
             path,
+            baseTypeName,
             url,
             publicationStatus,
             standardStatus,

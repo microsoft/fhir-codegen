@@ -28,4 +28,8 @@
     <ProjectReference Include="..\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\" />
+  </ItemGroup>
+
 </Project>

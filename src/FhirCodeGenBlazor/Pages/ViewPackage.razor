@@ -28,7 +28,7 @@ else
                             />
                 </MudItem>
 
-                @foreach(FhirArtifactClassEnum ac in showArtifactClass.Keys.OrderBy(k => k))
+                @foreach(FhirArtifactClassEnum ac in showArtifactClass.Keys.OrderBy(k => k.ToString()))
                 {
                     <MudItem xs="6" sm="3">
                         <MudSwitch
@@ -43,8 +43,8 @@ else
     </MudExpansionPanels>
     <MudTable
         Items="filteredArtifacts"
-        Height="75vh"
-        Filter="new Func<FhirArtifactRecord, bool>(FilterFuncInstance)"
+          Height="calc(100vh - (var(--mud-appbar-height) * 2.9))"
+          Filter="new Func<FhirArtifactRecord, bool>(FilterFuncInstance)"
         Dense="true"
         Striped="true"
         Virtualize="true"
@@ -54,6 +54,11 @@ else
             <MudSpacer />
             <MudTextField @bind-Value="artifactFilterText" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
         </ToolBarContent>
+        <ColGroup>
+            <col style="width: 10vw!important;" />
+            <col style="width: 10vw!important;" />
+            <col style="width: 80vw!important;" />
+        </ColGroup>
         <HeaderContent>
             <MudTh>Artifact Type</MudTh>
             <MudTh>Id</MudTh>
@@ -211,6 +216,11 @@ else
         string appliedFilter = "",
         bool checkShownArtifactClasses = false)
     {
+        if (!SpecService.ContainsKey(directive))
+        {
+            return;
+        }
+
         _busy = true;
 
         if (checkShownArtifactClasses)
@@ -281,6 +291,36 @@ else
     /// <returns>A string.</returns>
     private string LinkForArtifact(FhirArtifactRecord record)
     {
-        return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&url={record.Url}";
+        switch (record.ArtifactClass)
+        {
+            // types requiring specific view pages
+            case FhirArtifactClassEnum.CodeSystem:
+            case FhirArtifactClassEnum.Operation:
+            case FhirArtifactClassEnum.PrimitiveType:
+            case FhirArtifactClassEnum.ValueSet:
+                return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&url={record.Url}";
+
+            // types using the ViewFhirComplex page
+            case FhirArtifactClassEnum.ComplexType:
+            case FhirArtifactClassEnum.Extension:
+            case FhirArtifactClassEnum.LogicalModel:
+            case FhirArtifactClassEnum.Profile:
+            case FhirArtifactClassEnum.Resource:
+                return $"/view/complex/?packageName={PackageName}&version={Version}&url={record.Url}&ac={record.ArtifactClass}";
+
+            // types not displayable
+            case FhirArtifactClassEnum.CapabilityStatement:
+            case FhirArtifactClassEnum.Compartment:
+            case FhirArtifactClassEnum.ConceptMap:
+            case FhirArtifactClassEnum.ImplementationGuide:
+            case FhirArtifactClassEnum.NamingSystem:
+            case FhirArtifactClassEnum.SearchParameter:
+            case FhirArtifactClassEnum.StructureMap:
+            case FhirArtifactClassEnum.Unknown:
+            default:
+                break;
+        }
+
+        return "#";
     }
 }

@@ -21,6 +21,7 @@ public class FhirElement : FhirTypeBase
     /// </summary>
     /// <param name="id">               Id for this element.</param>
     /// <param name="path">             Dot notation path for this element.</param>
+    /// <param name="basePath">         The dot-notation path to the base definition of this record.</param>
     /// <param name="explicitName">     Explicit name of this element, if present.</param>
     /// <param name="url">              URL of this element (if present).</param>
     /// <param name="fieldOrder">       The field order.</param>
@@ -52,6 +53,7 @@ public class FhirElement : FhirTypeBase
     public FhirElement(
         string id,
         string path,
+        string basePath,
         string explicitName,
         Uri url,
         int fieldOrder,
@@ -83,6 +85,7 @@ public class FhirElement : FhirTypeBase
         : base(
             id,
             path,
+            basePath,
             url,
             string.Empty,
             string.Empty,
@@ -202,6 +205,7 @@ public class FhirElement : FhirTypeBase
     public FhirElement(
         string id,
         string path,
+        string basePath,
         string explicitName,
         Uri url,
         int fieldOrder,
@@ -238,6 +242,7 @@ public class FhirElement : FhirTypeBase
         : base(
             id,
             path,
+            basePath,
             url,
             string.Empty,
             string.Empty,
@@ -565,6 +570,7 @@ public class FhirElement : FhirTypeBase
         FhirElement element = new FhirElement(
             Id,
             Path,
+            BasePath,
             ExplicitName,
             URL,
             FieldOrder,

@@ -50,6 +50,7 @@ public class FhirComplex : FhirTypeBase
         : base(
             id,
             path,
+            baseTypeName,
             url,
             publicationStatus,
             standardStatus,

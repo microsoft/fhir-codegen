@@ -4,6 +4,7 @@
 // </copyright>
 
 using Microsoft.Health.Fhir.SpecManager.Models;
+using static Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -105,6 +106,13 @@ public interface IPackageExportable
     /// <param name="vs">      [out] The vs.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetValueSet(string urlOrKey, out FhirValueSet vs);
+
+    /// <summary>Gets the artifacts in this collection.</summary>
+    /// <param name="token">The ID or URL of the artifact.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process the artifacts in this collection.
+    /// </returns>
+    public IEnumerable<ResolvedArtifactRecord> GetArtifacts(string token);
 
     /// <summary>Attempts to get artifact.</summary>
     /// <param name="token">             The token.</param>

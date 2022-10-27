@@ -52,8 +52,8 @@
         </MudNavMenu>
     </MudDrawer>
 
-    @*Note that we have to see padding-top here because of the non-fixed app bar *@
-    <MudMainContent style="padding-top: 0px" >
+    @*Note that we have to set padding-top here because of the non-fixed app bar *@
+    <MudMainContent style="padding-top: 0px; margin-left: 4px; margin-right: 4px;" >
         <CascadingValue Value="this">
             @Body
         </CascadingValue>
@@ -62,7 +62,17 @@
 
 @code {
 
-    private MudTheme _theme = new();
+    private MudTheme _theme = new()
+    {
+        Typography = new()
+        {
+            Body2 = new Body2()
+            {
+                    FontFamily = new[] { "Lucida Console", "Courier New", "monospace" },
+                    FontWeight = 500,
+            }
+        }
+    };
     private bool _isDarkMode;
 
     private List<BreadcrumbItem> _crumbs = new()

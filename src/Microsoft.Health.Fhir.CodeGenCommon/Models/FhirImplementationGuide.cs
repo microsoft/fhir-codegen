@@ -35,6 +35,7 @@ public class FhirImplementationGuide : FhirTypeBase, ICloneable
         : base(
             id,
             name,
+            string.Empty,
             url,
             publicationStatus,
             standardStatus,

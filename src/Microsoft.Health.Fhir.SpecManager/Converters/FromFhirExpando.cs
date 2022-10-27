@@ -1203,6 +1203,7 @@ public sealed class FromFhirExpando : IFhirConverter
             {
                 string elementId = element.GetString("id") ?? element.GetString("path") ?? string.Empty;
                 string elementPath = element.GetString("path") ?? element.GetString("id") ?? string.Empty;
+                string basePath = element.GetString("base", "path") ?? string.Empty;
 
                 try
                 {
@@ -1266,6 +1267,7 @@ public sealed class FromFhirExpando : IFhirConverter
                                 new FhirElement(
                                     elementPath,
                                     elementPath,
+                                    basePath,
                                     string.Empty,
                                     null,
                                     parent.Elements.Count,
@@ -1458,6 +1460,7 @@ public sealed class FromFhirExpando : IFhirConverter
                     FhirElement fhirElement = new FhirElement(
                         elementId,
                         elementPath,
+                        basePath,
                         explicitName,
                         null,
                         parent.Elements.Count,

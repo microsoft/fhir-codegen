@@ -93,7 +93,7 @@
                         />
             </MudItem>
 
-            @foreach(FhirArtifactClassEnum ac in showArtifactClass.Keys.OrderBy(k => k))
+            @foreach(FhirArtifactClassEnum ac in showArtifactClass.Keys.OrderBy(k => k.ToString()))
             {
                 <MudItem xs="6" sm="3">
                     <MudSwitch

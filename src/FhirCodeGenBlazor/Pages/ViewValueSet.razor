@@ -9,16 +9,219 @@
 @implements IDisposable
 @implements IPackageVersionProvider
 
-@if (fhirComplex == null)
+@if (fhirValueSet == null)
 {
     <PageTitle>FHIR ValueSet</PageTitle>
 }
 else
 {
-    <PageTitle>@fhirComplex.Name</PageTitle>
-    <CascadingValue Value="this">
-        <FhirValueSetDisplay ObjectToDisplay=@fhirComplex/>
-    </CascadingValue>
+    <PageTitle>@fhirValueSet.Name</PageTitle>
+
+    @if (fhirValueSet != null)
+    {
+        <MudExpansionPanels MultiExpansion="true">
+            <MudExpansionPanel Text="ValueSet Information">
+                <MudGrid Spacing="1">
+                    <MudItem xs="12"><MudText Typo="Typo.h5">FHIR Value Set: @fhirValueSet.Name</MudText></MudItem>
+
+                    <MudItem xs="2">Id</MudItem>
+                    <MudItem xs="10">@fhirValueSet.Id</MudItem>
+
+                    <MudItem xs="2">Name</MudItem>
+                    <MudItem xs="10">@fhirValueSet.Name</MudItem>
+
+                    <MudItem xs="2">Title</MudItem>
+                    <MudItem xs="10">@fhirValueSet.Title</MudItem>
+
+                    <MudItem xs="2">URL</MudItem>
+                    <MudItem xs="10">@fhirValueSet.URL.ToString()</MudItem>
+
+                    <MudItem xs="2">Version</MudItem>
+                    <MudItem xs="10">@fhirValueSet.Version</MudItem>
+
+                    <MudItem xs="2">Standard Status</MudItem>
+                    <MudItem xs="10">@fhirValueSet.StandardStatus</MudItem>
+
+                    <MudItem xs="2">Short Description</MudItem>
+                    <MudItem xs="10">@fhirValueSet.Description</MudItem>
+                </MudGrid>
+            </MudExpansionPanel>
+
+            <MudExpansionPanel Text="Expansion">
+                @if (fhirValueSet?.Expansion != null)
+                {
+                    <MudGrid>
+                        <MudItem xs="2">Identifier</MudItem>
+                        <MudItem xs="10">@fhirValueSet.Expansion.Identifier</MudItem>
+
+                        <MudItem xs="2">Timestamp</MudItem>
+                        <MudItem xs="10">@fhirValueSet.Expansion.Timestamp</MudItem>
+
+                        <MudItem xs="2">Is a Limited Expansion</MudItem>
+                        <MudItem xs="10">@fhirValueSet.Expansion.IsLimitedExpansion</MudItem>
+
+                        <MudItem xs="2">Parameters</MudItem>
+                        @foreach ((string name, dynamic value) in fhirValueSet.Expansion.Parameters)
+                        {
+                            <MudItem xs="2">
+                                <MudField Label="@name" Variant="Variant.Text">@value</MudField>
+                            </MudItem>
+                        }
+                    </MudGrid>
+
+                    <MudTable Items="@fhirValueSet.Expansion.Contains"
+                          Striped="true"
+                          Hover="true"
+                          Dense="true"
+                          Height="50vh"
+                          FixedHeader="true">
+                        <ColGroup>
+                            <col style="width: 5vw!important;" />
+                            <col style="width: 5vw!important;" />
+                            <col style="width: 20vw!important;" />
+                            <col style="width: 70vw!important;" />
+                        </ColGroup>
+                        <HeaderContent>
+                            <MudTh>Code</MudTh>
+                            <MudTh>Display</MudTh>
+                            <MudTh>Definition</MudTh>
+                            <MudTh>Properties</MudTh>
+                        </HeaderContent>
+                        <RowTemplate>
+                            <MudTd><MudText Typo="Typo.body2">@context.Code</MudText></MudTd>
+                            <MudTd>@context.Display</MudTd>
+                            <MudTd>@context.Definition</MudTd>
+                            <MudTd>@GetPropertyString(context)</MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                }
+                else
+                {
+                    <MudText>There is no expansion loaded for this ValueSet.</MudText>
+                }
+            </MudExpansionPanel>
+
+            @if (fhirValueSet?.Concepts?.Any() ?? false)
+            {
+                <MudExpansionPanel Text="Enumerated Concepts">
+                    <MudTable Items="@fhirValueSet.Concepts"
+                          Striped="true"
+                          Hover="true"
+                          Dense="true"
+                          Height="50vh"
+                          FixedHeader="true">
+                        <ColGroup>
+                            <col style="width: 5vw!important;" />
+                            <col style="width: 5vw!important;" />
+                            <col style="width: 20vw!important;" />
+                            <col style="width: 70vw!important;" />
+                        </ColGroup>
+                        <HeaderContent>
+                            <MudTh>Code</MudTh>
+                            <MudTh>Display</MudTh>
+                            <MudTh>Definition</MudTh>
+                            <MudTh>Properties</MudTh>
+                        </HeaderContent>
+                        <RowTemplate>
+                            <MudTd><MudText Typo="Typo.body2">@context.Code</MudText></MudTd>
+                            <MudTd>@context.Display</MudTd>
+                            <MudTd>@context.Definition</MudTd>
+                            <MudTd>@GetPropertyString(context)</MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                </MudExpansionPanel>
+            }
+
+            @if (fhirValueSet?.ComposeIncludes != null)
+            {
+                @foreach (FhirValueSetComposition vsc in fhirValueSet.ComposeIncludes)
+                {
+                    <MudExpansionPanel Text="@("Composition Include: " + vsc.System + (string.IsNullOrEmpty(vsc.Version) ? string.Empty : "|" + vsc.Version))">
+                        @if (vsc.Filters?.Count > 0)
+                        {
+                            <MudTable Items="@vsc.Filters"
+                                  Striped="true"
+                                  Hover="true"
+                                  Dense="true">
+                                <HeaderContent>
+                                    <MudTh>Property</MudTh>
+                                    <MudTh>Operation</MudTh>
+                                    <MudTh>Value</MudTh>
+                                </HeaderContent>
+                                <RowTemplate>
+                                    <MudTd>@context.Property</MudTd>
+                                    <MudTd>@context.Operation</MudTd>
+                                    <MudTd>@context.Value</MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        }
+
+                        @if (vsc.Concepts?.Count > 0)
+                        {
+                            <MudTable Items="@vsc.Concepts"
+                                  Striped="true"
+                                  Hover="true"
+                                  Dense="true">
+                                <HeaderContent>
+                                    <MudTh>Code</MudTh>
+                                    <MudTh>Display</MudTh>
+                                </HeaderContent>
+                                <RowTemplate>
+                                    <MudTd>@context.Code</MudTd>
+                                    <MudTd>@context.Display</MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        }
+                    </MudExpansionPanel>
+                }
+            }
+
+            @if (fhirValueSet?.ComposeExcludes != null)
+            {
+                @foreach (FhirValueSetComposition vsc in fhirValueSet.ComposeExcludes)
+                {
+                    <MudExpansionPanel Text="@("Composition Exclude: " + vsc.System + (string.IsNullOrEmpty(vsc.Version) ? string.Empty : "|" + vsc.Version))">
+                        @if (vsc.Filters?.Count > 0)
+                        {
+                            <MudTable Items="@vsc.Filters"
+                                  Striped="true"
+                                  Hover="true"
+                                  Dense="true">
+                                <HeaderContent>
+                                    <MudTh>Property</MudTh>
+                                    <MudTh>Operation</MudTh>
+                                    <MudTh>Value</MudTh>
+                                </HeaderContent>
+                                <RowTemplate>
+                                    <MudTd>@context.Property</MudTd>
+                                    <MudTd>@context.Operation</MudTd>
+                                    <MudTd>@context.Value</MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        }
+
+                        @if (vsc.Concepts?.Count > 0)
+                        {
+                            <MudTable Items="@vsc.Concepts"
+                                  Striped="true"
+                                  Hover="true"
+                                  Dense="true">
+                                <HeaderContent>
+                                    <MudTh>Code</MudTh>
+                                    <MudTh>Display</MudTh>
+                                </HeaderContent>
+                                <RowTemplate>
+                                    <MudTd>@context.Code</MudTd>
+                                    <MudTd>@context.Display</MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        }
+                    </MudExpansionPanel>
+                }
+            }
+
+        </MudExpansionPanels>
+    }
 }
 
 @code {
@@ -45,7 +248,7 @@ else
     private string directive = string.Empty;
 
     /// <summary>A complex-type FHIR artifact (resource, complex data type, etc.).</summary>
-    private FhirValueSet? fhirComplex = null;
+    private FhirValueSet? fhirValueSet = null;
 
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
@@ -87,6 +290,20 @@ else
         NavManager.LocationChanged -= HandleLocationChanged;
     }
 
+    /// <summary>Gets property string.</summary>
+    /// <param name="concept">The concept.</param>
+    /// <returns>The property string.</returns>
+    private string GetPropertyString(FhirConcept concept)
+    {
+        if (!concept.Properties.Any())
+        {
+            return string.Empty;
+        }
+
+        return string.Join(", ", concept.Properties.Select((kvp) => kvp.Key + ": " + string.Join(", ", kvp.Value)));
+    }
+
+    /// <summary>Gets the object.</summary>
     private void GetObject()
     {
         if (string.IsNullOrEmpty(directive))
@@ -107,7 +324,7 @@ else
             return;
         }
 
-        fhirComplex = null;
+        fhirValueSet = null;
 
         if (!SpecService[directive].TryGetArtifact(
                 Url,
@@ -127,7 +344,7 @@ else
             return;
         }
 
-        fhirComplex = (FhirValueSet)obj;
+        fhirValueSet = (FhirValueSet)obj;
 
         // manually flag state has changed in case we are in a callback / async context
         InvokeAsync(() => StateHasChanged());

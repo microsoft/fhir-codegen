@@ -227,6 +227,9 @@ public class FhirConcept : ICloneable
     /// <returns>A string.</returns>
     public string Key() => $"{System}#{Code}";
 
+    /// <summary>Gets the defined concept properties.</summary>
+    public Dictionary<string, List<object>> Properties => _properties;
+
     /// <summary>Makes a deep copy of this object.</summary>
     /// <returns>A copy of this object.</returns>
     public object Clone()

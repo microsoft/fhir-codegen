@@ -15,18 +15,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language.OpenApi;
 
 public class LangOpenApi : ILanguage
 {
-    /// <summary>FHIR information we are exporting.</summary>
-    private FhirVersionInfo _info;
-
-    /// <summary>Options for controlling the export.</summary>
-    private ExporterOptions _options;
-
-    /// <summary>Pathname of the export directory.</summary>
-    private string _exportDirectory;
-
-    /// <summary>True to export enums.</summary>
-    private bool _exportEnums = true;
-
     /// <summary>Name of the language.</summary>
     private const string _languageName = "OpenApi";
 

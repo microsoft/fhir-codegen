@@ -4,6 +4,7 @@
 @using FhirCodeGenBlazor.Services;
 @inject NavigationManager NavigationManager
 @inject IPackageManagerWebService PackageService
+@inject ISpecManagerWebService SpecService
 @implements IDisposable
 
 <PageTitle>FHIR Cache</PageTitle>
@@ -28,6 +29,13 @@ else
             <MudSpacer />
             <MudTextField @bind-Value="packageSearchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
         </ToolBarContent>
+        <ColGroup>
+            <col style="width: 10vw!important;" />
+            <col style="width: 15vw!important;" />
+            <col style="width: 5vw!important;" />
+            <col style="width: 20vw!important;" />
+            <col style="width: 50vw!important;" />
+        </ColGroup>
         <HeaderContent>
             <MudTh></MudTh>
             <MudTh>Cache Directive</MudTh>
@@ -40,35 +48,62 @@ else
                 @switch (context.Value.PackageState)
                 {
                     case PackageLoadStateEnum.Loaded:
-                        <MudTooltip Text="Package Overview">
-                            <MudFab
-                                StartIcon="@Icons.Filled.ViewInAr"
-                                @onclick="() => NavToViewPackage(context.Key)"
-                                Size="Size.Small" />
-                        </MudTooltip>
-                        <MudTooltip Text="Element Explorer">
-                            <MudFab
-                                StartIcon="@Icons.Filled.Preview"
-                                @onclick="() => NavToPackageElements(context.Key)"
-                                Size="Size.Small" />
-                        </MudTooltip>
-                        <MudTooltip Text="Export">
-                            <MudFab
-                                StartIcon="@Icons.Filled.DriveFileMove"
-                                @onclick="() => NavToExportPackage(context.Key)"
-                                Size="Size.Small" />
-                        </MudTooltip>
-                        <MudTooltip Text="Delete">
-                            <MudFab
-                                StartIcon="@Icons.Filled.Delete"
-                                Color="Color.Error"
-                                @onclick="() => RequestDelete(context.Key)"
-                                Size="Size.Small" />
-                        </MudTooltip>
+                        @if (SpecService.ContainsKey(context.Key))
+                        {
+                            <MudTooltip Text="Package Overview">
+                                <MudFab
+                                    StartIcon="@Icons.Filled.ViewInAr"
+                                    @onclick="() => NavToViewPackage(context.Key)"
+                                    Size="Size.Small" />
+                            </MudTooltip>
+                            <MudTooltip Text="Element Explorer">
+                                <MudFab
+                                    StartIcon="@Icons.Filled.Preview"
+                                    @onclick="() => NavToPackageElements(context.Key)"
+                                    Size="Size.Small" />
+                            </MudTooltip>
+                            <MudTooltip Text="Export">
+                                <MudFab
+                                    StartIcon="@Icons.Filled.DriveFileMove"
+                                    @onclick="() => NavToExportPackage(context.Key)"
+                                    Size="Size.Small" />
+                            </MudTooltip>
+                            <MudTooltip Text="Delete">
+                                <MudFab
+                                    StartIcon="@Icons.Filled.Delete"
+                                    Color="Color.Error"
+                                    @onclick="() => RequestDelete(context.Key)"
+                                    Size="Size.Small" />
+                            </MudTooltip>
+                        }
+                        else
+                        {
+                            <MudTooltip Text="Loaded">
+                                <MudFab
+                                    StartIcon="@Icons.Filled.DownloadDone"
+                                    Color="Color.Success"
+                                    Disabled="true"
+                                    Size="Size.Small" />
+                            </MudTooltip>
+                            <MudTooltip Text="Delete">
+                                <MudFab
+                                    StartIcon="@Icons.Filled.Delete"
+                                    Color="Color.Error"
+                                    @onclick="() => RequestDelete(context.Key)"
+                                    Size="Size.Small" />
+                            </MudTooltip>
+                        }
+
                         break;
 
                     case PackageLoadStateEnum.Parsed:
-                        <MudIcon Icon="@Icons.Filled.DownloadDone"/>
+                        <MudTooltip Text="Loaded">
+                            <MudFab
+                                StartIcon="@Icons.Filled.DownloadDone"
+                                Color="Color.Success"
+                                Disabled="true"
+                                Size="Size.Small" />
+                        </MudTooltip>
                         break;
 
                     case PackageLoadStateEnum.Queued:

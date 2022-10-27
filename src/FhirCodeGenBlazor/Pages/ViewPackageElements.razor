@@ -38,7 +38,7 @@ else
                             />
                 </MudItem>
 
-                @foreach(FhirArtifactClassEnum ac in showArtifactClass.Keys.OrderBy(k => k))
+                @foreach(FhirArtifactClassEnum ac in showArtifactClass.Keys.OrderBy(k => k.ToString()))
                 {
                     <MudItem xs="6" sm="3">
                         <MudSwitch
@@ -175,7 +175,7 @@ else
             {
                 <MudTr>
                     <td colspan="5" style="padding-left: 32px;">
-                        <MudText Typo="Typo.body2">
+                        <MudText Typo="Typo.caption">
                             <strong>Definition:</strong><p>@context.Element.Purpose</p>
                             <strong>Comments:</strong>
                             @(new MarkupString(Markdown.ToHtml(context.Element.Comment)))

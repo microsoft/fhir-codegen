@@ -1300,7 +1300,7 @@ public class ModelBuilder
                         new OpenApiSchema()
                         {
                             Title = capParam.Name,
-                            Type = advertisedType,
+                            Type = POST_SEARCH_TYPE,
                             Description = _openApiOptions.IncludeDescriptions
                                 ? capParam.Documentation
                                 : null,

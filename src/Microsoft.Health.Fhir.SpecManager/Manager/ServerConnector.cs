@@ -214,9 +214,6 @@ public static class ServerConnector
                 client.Dispose();
             }
         }
-
-        fhirJson = null;
-        return false;
     }
 
 }

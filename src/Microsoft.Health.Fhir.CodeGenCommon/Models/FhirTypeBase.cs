@@ -20,6 +20,7 @@ public class FhirTypeBase
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
     /// <param name="id">               The id of this element/resource/datatype.</param>
     /// <param name="path">             The dot-notation path to this element/resource/datatype.</param>
+    /// <param name="basePath">         The dot-notation path to the base definition of this record.</param>
     /// <param name="url">              The URL.</param>
     /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">   The standard status.</param>
@@ -32,6 +33,7 @@ public class FhirTypeBase
     public FhirTypeBase(
         string id,
         string path,
+        string basePath,
         Uri url,
         string publicationStatus,
         string standardStatus,
@@ -51,6 +53,7 @@ public class FhirTypeBase
         // set internal values
         Id = id;
         _path = path;
+        BasePath = basePath;
         PublicationStatus = publicationStatus;
         StandardStatus = standardStatus;
         FhirMaturityLevel = fmmLevel;
@@ -72,6 +75,7 @@ public class FhirTypeBase
     /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
     /// <param name="id">              The id of this element/resource/datatype/extension.</param>
     /// <param name="path">            The dot-notation path to this element/resource/datatype/extension.</param>
+    /// <param name="basePath">         The dot-notation path to the base definition of this record.</param>
     /// <param name="url">             The URL.</param>
     /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
@@ -86,6 +90,7 @@ public class FhirTypeBase
     public FhirTypeBase(
         string id,
         string path,
+        string basePath,
         Uri url,
         string publicationStatus,
         string standardStatus,
@@ -100,6 +105,7 @@ public class FhirTypeBase
         : this(
             id,
             path,
+            basePath,
             url,
             publicationStatus,
             standardStatus,
@@ -152,6 +158,9 @@ public class FhirTypeBase
     /// <summary>Gets the dot-notation path to this element/resource/datatype.</summary>
     /// <value>The dot-notation path to this element/resource/datatype.</value>
     public string Path => _path;
+
+    /// <summary>Gets the dot-notation path to the base definition for this record.</summary>
+    public string BasePath { get; }
 
     /// <summary>
     /// Gets a natural language name identifying the structure definition. This name should be usable as an

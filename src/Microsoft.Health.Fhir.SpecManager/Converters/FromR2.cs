@@ -1146,6 +1146,7 @@ public sealed class FromR2 : IFhirConverter
                 {
                     string id = element.Id ?? element.Path;
                     string path = element.Path ?? element.Id;
+                    string basePath = element.Base?.Path ?? string.Empty;
                     Dictionary<string, FhirElementType> elementTypes = null;
                     string elementType = string.Empty;
                     bool isRootElement = false;
@@ -1261,6 +1262,7 @@ public sealed class FromR2 : IFhirConverter
                                 new FhirElement(
                                     path,
                                     path,
+                                    basePath,
                                     string.Empty,
                                     null,
                                     parent.Elements.Count,
@@ -1441,6 +1443,7 @@ public sealed class FromR2 : IFhirConverter
                     FhirElement fhirElement = new FhirElement(
                         id,
                         path,
+                        basePath,
                         explicitName,
                         null,
                         parent.Elements.Count,
@@ -1577,6 +1580,7 @@ public sealed class FromR2 : IFhirConverter
                     new FhirElement(
                         "Element.fhir_comments",
                         "Element.fhir_comments",
+                        string.Empty,
                         string.Empty,
                         null,
                         int.MaxValue,

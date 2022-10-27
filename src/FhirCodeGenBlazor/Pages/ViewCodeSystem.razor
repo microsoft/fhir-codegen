@@ -9,16 +9,77 @@
 @implements IDisposable
 @implements IPackageVersionProvider
 
-@if (fhirComplex == null)
+@if (fhirCodeSystem == null)
 {
     <PageTitle>FHIR CodeSystem</PageTitle>
 }
 else
 {
-    <PageTitle>@fhirComplex.Name</PageTitle>
-    <CascadingValue Value="this">
-        <FhirCodeSystemDisplay ObjectToDisplay=@fhirComplex/>
-    </CascadingValue>
+    <PageTitle>@fhirCodeSystem.Name</PageTitle>
+    @if (fhirCodeSystem != null)
+    {
+        <MudExpansionPanels MultiExpansion="true">
+            <MudExpansionPanel Text="CodeSystem Information">
+                <MudGrid Spacing="1">
+                    <MudItem xs="12"><MudText Typo="Typo.h5">FHIR Code System: @fhirCodeSystem.Name</MudText></MudItem>
+
+                    <MudItem xs="2">Id</MudItem>
+                    <MudItem xs="10">@fhirCodeSystem.Id</MudItem>
+
+                    <MudItem xs="2">Name</MudItem>
+                    <MudItem xs="10">@fhirCodeSystem.Name</MudItem>
+
+                    <MudItem xs="2">Title</MudItem>
+                    <MudItem xs="10">@fhirCodeSystem.Title</MudItem>
+
+                    <MudItem xs="2">URL</MudItem>
+                    <MudItem xs="10">@fhirCodeSystem.URL.ToString()</MudItem>
+
+                    <MudItem xs="2">Version</MudItem>
+                    <MudItem xs="10">@fhirCodeSystem.Version</MudItem>
+
+                    <MudItem xs="2">Standard Status</MudItem>
+                    <MudItem xs="10">@fhirCodeSystem.StandardStatus</MudItem>
+
+                    <MudItem xs="2">Short Description</MudItem>
+                    <MudItem xs="10">@fhirCodeSystem.Description</MudItem>
+                </MudGrid>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+
+        @if (fhirCodeSystem?.ConceptLookup?.Any() ?? false)
+        {
+            <MudTable Items="@fhirCodeSystem.ConceptLookup.Values"
+                  Striped="true"
+                  Hover="true"
+                  Dense="true"
+                  Height="calc(100vh - (var(--mud-appbar-height) * 2.9))"
+                  FixedHeader="true">
+                <ColGroup>
+                    <col style="width: 5vw!important;" />
+                    <col style="width: 5vw!important;" />
+                    <col style="width: 20vw!important;" />
+                    <col style="width: 70vw!important;" />
+                </ColGroup>
+                <HeaderContent>
+                    <MudTh>Code</MudTh>
+                    <MudTh>Display</MudTh>
+                    <MudTh>Definition</MudTh>
+                    <MudTh>Properties</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd><MudText Typo="Typo.body2">@context.Concept.Code</MudText></MudTd>
+                    <MudTd>@context.Concept.Display</MudTd>
+                    <MudTd>@context.Concept.Definition</MudTd>
+                    <MudTd>@GetPropertyString(context.Concept)</MudTd>
+                </RowTemplate>
+            </MudTable>
+        }
+        else
+        {
+            <MudText>There are no non-deprecated conepts present.</MudText>
+        }
+    }
 }
 
 @code {
@@ -45,7 +106,7 @@ else
     private string directive = string.Empty;
 
     /// <summary>A complex-type FHIR artifact (resource, complex data type, etc.).</summary>
-    private FhirCodeSystem? fhirComplex = null;
+    private FhirCodeSystem? fhirCodeSystem = null;
 
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
@@ -87,6 +148,20 @@ else
         NavManager.LocationChanged -= HandleLocationChanged;
     }
 
+    /// <summary>Gets property string.</summary>
+    /// <param name="concept">The concept.</param>
+    /// <returns>The property string.</returns>
+    private string GetPropertyString(FhirConcept concept)
+    {
+        if (!concept.Properties.Any())
+        {
+            return string.Empty;
+        }
+
+        return string.Join(", ", concept.Properties.Select((kvp) => kvp.Key + ": " + string.Join(", ", kvp.Value)));
+    }
+
+    /// <summary>Gets the object.</summary>
     private void GetObject()
     {
         if (string.IsNullOrEmpty(directive))
@@ -107,7 +182,7 @@ else
             return;
         }
 
-        fhirComplex = null;
+        fhirCodeSystem = null;
 
         if (!SpecService[directive].TryGetArtifact(
                 Url,
@@ -127,7 +202,7 @@ else
             return;
         }
 
-        fhirComplex = (FhirCodeSystem)obj;
+        fhirCodeSystem = (FhirCodeSystem)obj;
 
         // manually flag state has changed in case we are in a callback / async context
         InvokeAsync(() => StateHasChanged());

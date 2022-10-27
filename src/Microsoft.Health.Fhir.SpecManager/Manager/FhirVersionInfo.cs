@@ -1252,6 +1252,45 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
     }
 
+    /// <summary>Information about the resolved artifact.</summary>
+    /// <param name="ArtifactClass">  The artifact class.</param>
+    /// <param name="ResolvedPackage">The resolved package.</param>
+    /// <param name="Id">             The identifier.</param>
+    /// <param name="Url">            URL of the resource.</param>
+    /// <param name="Artifact">       The artifact.</param>
+    public readonly record struct ResolvedArtifactRecord(
+        FhirArtifactClassEnum ArtifactClass,
+        string ResolvedPackage,
+        object Artifact);
+
+    /// <summary>Gets the artifacts in this collection.</summary>
+    /// <param name="token">The ID or URL of the artifact.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process the artifacts in this collection.
+    /// </returns>
+    public IEnumerable<ResolvedArtifactRecord> GetArtifacts(string token)
+    {
+        Dictionary<string, ResolvedArtifactRecord> recs = new();
+
+        foreach (FhirArtifactClassEnum ac in Enum.GetValues(typeof(FhirArtifactClassEnum)))
+        {
+            if (TryGetArtifact(token, out object artifact, out FhirArtifactClassEnum resolvedAc, out string resolvedPackage, false, ac))
+            {
+                string key = resolvedPackage + ":" + ac.ToString() + ":" + token;
+
+                if (!recs.ContainsKey(key))
+                {
+                    recs.Add(key, new ResolvedArtifactRecord(
+                        resolvedAc,
+                        resolvedPackage,
+                        artifact));
+                }
+            }
+        }
+
+        return recs.Values;
+    }
+
     /// <summary>Attempts to get artifact.</summary>
     /// <param name="token">             The ID or URL of the artifact.</param>
     /// <param name="artifact">          [out] The artifact.</param>

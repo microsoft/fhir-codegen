@@ -118,7 +118,34 @@
             </MudCardActions>
         </MudCard>
 
-        <FhirCodeGenBlazor.Components.NpmPackageDisplay NpmPackage="@ciPackage"/>
+        @if (ciPackage != null)
+        {
+            <MudGrid>
+                <MudItem xs="2">Name</MudItem>
+                <MudItem xs="10">@ciPackage.Name</MudItem>
+
+                <MudItem xs="2">Version</MudItem>
+                <MudItem xs="10">@ciPackage.Version</MudItem>
+
+                <MudItem xs="2">URL</MudItem>
+                <MudItem xs="10">@ciPackage.URL</MudItem>
+
+                <MudItem xs="2">Build Date</MudItem>
+                <MudItem xs="10">@ciPackage.BuildDate</MudItem>
+
+                <MudItem xs="2">Title</MudItem>
+                <MudItem xs="10">@ciPackage.Title</MudItem>
+
+                <MudItem xs="2">Description</MudItem>
+                <MudItem xs="10">@ciPackage.Description</MudItem>
+
+                <MudItem xs="2">FHIR Versions</MudItem>
+                <MudItem xs="10">@string.Join(", ", ciPackage.FhirVersions)</MudItem>
+
+                <MudItem xs="2">Dependencies</MudItem>
+                <MudItem xs="10">@string.Join(", ", ciPackage.Dependencies.Select((k,v) => $"{k}#{v}"))</MudItem>
+            </MudGrid>
+        }
 
     </MudTabPanel>
 
@@ -167,7 +194,34 @@
             </MudCardActions>
         </MudCard>
 
-        <FhirCodeGenBlazor.Components.NpmPackageDisplay NpmPackage="@ciPackage"/>
+        @if (ciPackage != null)
+        {
+            <MudGrid>
+                <MudItem xs="2">Name</MudItem>
+                <MudItem xs="10">@ciPackage.Name</MudItem>
+
+                <MudItem xs="2">Version</MudItem>
+                <MudItem xs="10">@ciPackage.Version</MudItem>
+
+                <MudItem xs="2">URL</MudItem>
+                <MudItem xs="10">@ciPackage.URL</MudItem>
+
+                <MudItem xs="2">Build Date</MudItem>
+                <MudItem xs="10">@ciPackage.BuildDate</MudItem>
+
+                <MudItem xs="2">Title</MudItem>
+                <MudItem xs="10">@ciPackage.Title</MudItem>
+
+                <MudItem xs="2">Description</MudItem>
+                <MudItem xs="10">@ciPackage.Description</MudItem>
+
+                <MudItem xs="2">FHIR Versions</MudItem>
+                <MudItem xs="10">@string.Join(", ", ciPackage.FhirVersions)</MudItem>
+
+                <MudItem xs="2">Dependencies</MudItem>
+                <MudItem xs="10">@string.Join(", ", ciPackage.Dependencies.Select((k,v) => $"{k}#{v}"))</MudItem>
+            </MudGrid>
+        }
 
     </MudTabPanel>
 
@@ -180,9 +234,6 @@
 
     /// <summary>The ci branch.</summary>
     private string ciBranch = string.Empty;
-
-    /// <summary>The selected language.</summary>
-    private string selectedPackageType = "released";
 
     /// <summary>The release versions.</summary>
     private IEnumerable<RegistryPackageManifest.VersionInfo> releaseVersions = new RegistryPackageManifest.VersionInfo[0];
