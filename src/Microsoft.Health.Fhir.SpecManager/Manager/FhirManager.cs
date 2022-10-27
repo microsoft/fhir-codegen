@@ -375,25 +375,26 @@ public class FhirManager : IDisposable
                         TrackLoadedPackage(info.PackageName + "#" + info.VersionString, info, true, false);
                     }
 
-                    object parsed = _nonPackageArtifactsByVersion[fhirSequence].ParseResource(json);
-
-                    // fix for unreplaced [base] urls
-                    if (json.Contains("\"[base", StringComparison.Ordinal))
+                    if (_nonPackageArtifactsByVersion[fhirSequence].TryParseResource(json, out var parsed, out string rt))
                     {
-                        _nonPackageArtifactsByVersion[fhirSequence].ReplaceParsedValue(parsed, new string[] { "url" }, canonical);
-                    }
+                        // fix for unreplaced [base] urls
+                        if (json.Contains("\"[base", StringComparison.Ordinal))
+                        {
+                            _nonPackageArtifactsByVersion[fhirSequence].ReplaceParsedValue(parsed, new string[] { "url" }, canonical);
+                        }
 
-                    _nonPackageArtifactsByVersion[fhirSequence].ProcessResource(parsed, out string resourceCanonical, out canonicalClass);
+                        _nonPackageArtifactsByVersion[fhirSequence].ProcessResource(parsed, out string resourceCanonical, out canonicalClass);
 
-                    if ((!string.IsNullOrEmpty(resourceCanonical)) &&
-                        (canonicalClass != FhirArtifactClassEnum.Unknown))
-                    {
-                        _nonPackageArtifactsByVersion[fhirSequence].AddCanonicalAlias(resourceCanonical, canonical);
-                        return _nonPackageArtifactsByVersion[fhirSequence].TryGetArtifact(
-                            resourceCanonical,
-                            out resource,
-                            out _,
-                            out _);
+                        if ((!string.IsNullOrEmpty(resourceCanonical)) &&
+                            (canonicalClass != FhirArtifactClassEnum.Unknown))
+                        {
+                            _nonPackageArtifactsByVersion[fhirSequence].AddCanonicalAlias(resourceCanonical, canonical);
+                            return _nonPackageArtifactsByVersion[fhirSequence].TryGetArtifact(
+                                resourceCanonical,
+                                out resource,
+                                out _,
+                                out _);
+                        }
                     }
                 }
             }

@@ -65,20 +65,70 @@ public static class FhirPackageLoader
             checkUnescaped = true;
         }
 
-        // process Code Systems
-        ProcessFileGroup(contentDirectory, "CodeSystem", packageInfo, processedFiles, checkUnescaped);
+        FhirPackageIndex fhirPackageIndex = FhirPackageIndex.Load(directory);
 
-        // process Value Set expansions
-        ProcessFileGroup(contentDirectory, "ValueSet", packageInfo, processedFiles, checkUnescaped);
+        if (fhirPackageIndex != null)
+        {
+            if (fhirPackageIndex.FilesByResourceType.ContainsKey("CodeSystem"))
+            {
+                ProcessFileGroup(
+                    contentDirectory,
+                    fhirPackageIndex.FilesByResourceType["CodeSystem"],
+                    packageInfo,
+                    processedFiles,
+                    checkUnescaped);
+            }
 
-        // process structure definitions
-        ProcessFileGroup(contentDirectory, "StructureDefinition", packageInfo, processedFiles, checkUnescaped);
+            if (fhirPackageIndex.FilesByResourceType.ContainsKey("ValueSet"))
+            {
+                ProcessFileGroup(
+                    contentDirectory,
+                    fhirPackageIndex.FilesByResourceType["ValueSet"],
+                    packageInfo,
+                    processedFiles,
+                    checkUnescaped);
+            }
 
-        // process search parameters (adds to resources)
-        ProcessFileGroup(contentDirectory, "SearchParameter", packageInfo, processedFiles, checkUnescaped);
+            foreach ((string resourceType, List<FhirPackageIndex.PackageIndexFile> files) in fhirPackageIndex.FilesByResourceType)
+            {
+                switch (resourceType)
+                {
+                    case "CodeSystem":
+                    case "ValueSet":
+                        // already processed
+                        break;
 
-        // process operations (adds to resources and version info (server level))
-        ProcessFileGroup(contentDirectory, "OperationDefinition", packageInfo, processedFiles, checkUnescaped);
+                    default:
+                        ProcessFileGroup(
+                            contentDirectory,
+                            files,
+                            packageInfo,
+                            processedFiles,
+                            checkUnescaped);
+                        break;
+                }
+            }
+        }
+        else
+        {
+            //// process Code Systems
+            //ProcessFileGroup(contentDirectory, "CodeSystem", packageInfo, processedFiles, checkUnescaped);
+
+            //// process Value Set expansions
+            //ProcessFileGroup(contentDirectory, "ValueSet", packageInfo, processedFiles, checkUnescaped);
+
+            //// process structure definitions
+            //ProcessFileGroup(contentDirectory, "StructureDefinition", packageInfo, processedFiles, checkUnescaped);
+
+            //// process search parameters (adds to resources)
+            //ProcessFileGroup(contentDirectory, "SearchParameter", packageInfo, processedFiles, checkUnescaped);
+
+            //// process operations (adds to resources and version info (server level))
+            //ProcessFileGroup(contentDirectory, "OperationDefinition", packageInfo, processedFiles, checkUnescaped);
+
+            // try to load every json file
+            ProcessFileGroup(contentDirectory, string.Empty, packageInfo, processedFiles, checkUnescaped);
+        }
 
         if (packageInfo.ConverterHasIssues(out int errorCount, out int warningCount))
         {
@@ -101,13 +151,13 @@ public static class FhirPackageLoader
     /// </summary>
     /// <param name="packageDir">    The package dir.</param>
     /// <param name="prefix">        The prefix.</param>
-    /// <param name="fhirCoreInfo">  Information describing the fhir version.</param>
+    /// <param name="fhirInfo">  Information describing the fhir version.</param>
     /// <param name="processedFiles">The processed files.</param>
     /// <param name="checkUnescaped">True if check unescaped.</param>
     private static void ProcessFileGroup(
         string packageDir,
         string prefix,
-        IPackageImportable fhirCoreInfo,
+        IPackageImportable fhirInfo,
         HashSet<string> processedFiles,
         bool checkUnescaped)
     {
@@ -115,7 +165,26 @@ public static class FhirPackageLoader
         string[] files = Directory.GetFiles(packageDir, $"{prefix}*.json", SearchOption.TopDirectoryOnly);
 
         // process these files
-        ProcessPackageFiles(files, fhirCoreInfo, processedFiles, checkUnescaped);
+        ProcessPackageFiles(files, fhirInfo, processedFiles, checkUnescaped);
+    }
+
+    /// <summary>Process a file group.</summary>
+    /// <param name="packageDir">    The package dir.</param>
+    /// <param name="indexFiles">    The index files.</param>
+    /// <param name="fhirInfo">      Information describing the fhir version.</param>
+    /// <param name="processedFiles">The processed files.</param>
+    /// <param name="checkUnescaped">True if check unescaped.</param>
+    private static void ProcessFileGroup(
+        string packageDir,
+        List<FhirPackageIndex.PackageIndexFile> indexFiles,
+        IPackageImportable fhirInfo,
+        HashSet<string> processedFiles,
+        bool checkUnescaped)
+    {
+        // grab the filenames and prefix with the package directory
+        IEnumerable<string> files = indexFiles.Select(pif => Path.Combine(packageDir, pif.Filename));
+
+        ProcessPackageFiles(files, fhirInfo, processedFiles, checkUnescaped);
     }
 
     /// <summary>Process the package files.</summary>
@@ -125,7 +194,7 @@ public static class FhirPackageLoader
     /// <param name="processedFiles">The processed files.</param>
     /// <param name="checkUnescaped">True if check unescaped.</param>
     private static void ProcessPackageFiles(
-        string[] files,
+        IEnumerable<string> files,
         IPackageImportable fhirInfo,
         HashSet<string> processedFiles,
         bool checkUnescaped)
@@ -143,28 +212,11 @@ public static class FhirPackageLoader
             // parse the name into parts we want
             string shortName = Path.GetFileNameWithoutExtension(filename);
             string[] components = shortName.Split('-');
-            string resourceHint = components[0];
-            string resourceName = shortName.Substring(resourceHint.Length + 1);
 
             // attempt to load this file
             try
             {
                 Console.Write($"{fhirInfo.FhirSequence}: {shortName,-85}\r");
-
-                // check for ignored types
-                if (fhirInfo.ShouldIgnoreResource(resourceHint))
-                {
-                    // skip
-                    continue;
-                }
-
-                // this should be listed in process types (validation check)
-                if (!fhirInfo.ShouldProcessResource(resourceHint))
-                {
-                    // type not found
-                    Console.WriteLine($"\nProcessPackageFiles <<< Unhandled type: {shortName}");
-                    throw new InvalidDataException($"Unhandled type: {shortName}");
-                }
 
                 if (processedFiles.Contains(shortName))
                 {
@@ -184,20 +236,11 @@ public static class FhirPackageLoader
                 }
 
                 // parse the file - note: using var here is siginificantly more performant than object
-                var resource = fhirInfo.ParseResource(contents);
-
-                // check type matching
-                //if (!resource.GetType().Name.Equals(resourceHint, StringComparison.Ordinal))
-                //{
-                //    // type not found
-                //    Console.WriteLine($"\nProcessPackageFiles <<<" +
-                //        $" Mismatched type: {shortName}," +
-                //        $" should be {resourceHint} parsed to:{resource.GetType().Name}");
-                //    throw new InvalidDataException($"Mismatched type: {shortName}: {resourceHint} != {resource.GetType().Name}");
-                //}
-
-                // process this resource
-                fhirInfo.ProcessResource(resource);
+                if (fhirInfo.TryParseResource(contents, out var resource, out string rt))
+                {
+                    // process this resource
+                    fhirInfo.ProcessResource(resource);
+                }
             }
             catch (Exception ex)
             {

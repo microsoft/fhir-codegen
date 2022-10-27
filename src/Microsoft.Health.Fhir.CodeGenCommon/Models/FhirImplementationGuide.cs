@@ -30,7 +30,7 @@ public class FhirImplementationGuide : FhirTypeBase, ICloneable
         string purpose,
         string comment,
         string packageId,
-        string fhirVersion,
+        IEnumerable<string> fhirVersion,
         Dictionary<string, IgDependsOn> dependsOn)
         : base(
             id,
@@ -52,9 +52,42 @@ public class FhirImplementationGuide : FhirTypeBase, ICloneable
         _dependsOn = dependsOn;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirImplementationGuide"/> class.
+    /// </summary>
+    /// <param name="source">Source for the.</param>
+    public FhirImplementationGuide(FhirImplementationGuide source)
+        : base(
+            source.Id,
+            source.Name,
+            source.BasePath,
+            source.URL,
+            source.PublicationStatus,
+            source.StandardStatus,
+            source.FhirMaturityLevel,
+            source.IsExperimental,
+            source.ShortDescription,
+            source.Purpose,
+            source.Comment,
+            source.ValidationRegEx)
+    {
+        Version = source.Version;
+        PackageId = source.PackageId;
+        FhirVersion = source.FhirVersion?.Select(s => s) ?? Array.Empty<string>();
+        _dependsOn = new();
+        if (source._dependsOn?.Any() ?? false)
+        {
+            foreach (KeyValuePair<string, IgDependsOn> kvp in source._dependsOn)
+            {
+                _dependsOn.Add(kvp.Key, new(kvp.Value.IgUri, kvp.Value.PackageId, kvp.Value.Version));
+            }
+        }
+    }
+
+
     public string PackageId { get; }
 
-    public string FhirVersion { get; }
+    public IEnumerable<string> FhirVersion { get; }
 
     public string Version { get; }
 

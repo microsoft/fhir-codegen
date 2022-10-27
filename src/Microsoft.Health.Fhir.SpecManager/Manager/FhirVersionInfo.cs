@@ -2217,9 +2217,9 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <summary>Parses resource an object from the given string.</summary>
     /// <param name="json">The JSON.</param>
     /// <returns>A typed Resource object.</returns>
-    public object ParseResource(string json)
+    public bool TryParseResource(string json, out object resource, out string resourceType)
     {
-        return _fhirConverter.ParseResource(json);
+        return _fhirConverter.TryParseResource(json, out resource, out resourceType);
     }
 
     /// <summary>Attempts to process resource.</summary>

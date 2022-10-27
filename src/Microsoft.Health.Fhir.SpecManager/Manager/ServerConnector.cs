@@ -89,7 +89,11 @@ public static class ServerConnector
 
             IFhirConverter fhirConverter = ConverterHelper.ConverterForVersion(fhirVersion);
 
-            object metadata = fhirConverter.ParseResource(content);
+            if (!fhirConverter.TryParseResource(content, out var metadata, out string rt))
+            {
+                serverInfo = null;
+                return false;
+            }
 
             fhirConverter.ProcessMetadata(metadata, serverUrl, out serverInfo);
 

@@ -18,6 +18,11 @@ public sealed class FromFhirExpando : IFhirConverter
     private const string ExtensionDefinition = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.";
     private const string ExtensionShort = "Additional content defined by implementations";
 
+    private const string ExtUrlStandardStatus = "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status";
+    private const string ExtUrlFmm = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm";
+    private const string ExtUrlCapExpectation = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation";
+    private const string ExtUrlCapSearchParamCombo = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination";
+
     /// <summary>The errors.</summary>
     private static List<string> _errors;
 
@@ -211,13 +216,8 @@ public sealed class FromFhirExpando : IFhirConverter
                 properties);
         }
 
-        string standardStatus =
-            cs.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                ?.GetString("valueCode");
-
-        int? fmmLevel =
-            cs.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
-                ?.GetInt("valueInteger");
+        string standardStatus = cs.GetExtensionValueCode(ExtUrlStandardStatus);
+        int? fmmLevel = cs.GetExtensionValueInteger(ExtUrlFmm);
 
         FhirCodeSystem codeSystem = new FhirCodeSystem(
             cs.GetString("name"),
@@ -479,13 +479,8 @@ public sealed class FromFhirExpando : IFhirConverter
             opBase = op.GetString("base", "reference");
         }
 
-        string standardStatus =
-            op.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                ?.GetString("valueCode");
-
-        int? fmmLevel =
-            op.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
-                ?.GetInt("valueInteger");
+        string standardStatus = op.GetExtensionValueCode(ExtUrlStandardStatus);
+        int? fmmLevel = op.GetExtensionValueInteger(ExtUrlFmm);
 
         // create the operation
         FhirOperation operation = new FhirOperation(
@@ -553,13 +548,8 @@ public sealed class FromFhirExpando : IFhirConverter
             }
         }
 
-        string standardStatus =
-            sp.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                ?.GetString("valueCode");
-
-        int? fmmLevel =
-            sp.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
-                ?.GetInt("valueInteger");
+        string standardStatus = sp.GetExtensionValueCode(ExtUrlStandardStatus);
+        int? fmmLevel = sp.GetExtensionValueInteger(ExtUrlFmm);
 
         // create the search parameter
         FhirSearchParam param = new FhirSearchParam(
@@ -714,13 +704,8 @@ public sealed class FromFhirExpando : IFhirConverter
                 expansionContains);
         }
 
-        string standardStatus =
-            vs.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                ?.GetString("valueCode");
-
-        int? fmmLevel =
-            vs.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
-                ?.GetInt("valueInteger");
+        string standardStatus = vs.GetExtensionValueCode(ExtUrlStandardStatus);
+        int? fmmLevel = vs.GetExtensionValueInteger(ExtUrlFmm);
 
         FhirValueSet valueSet = new FhirValueSet(
             vsName,
@@ -1048,13 +1033,8 @@ public sealed class FromFhirExpando : IFhirConverter
             baseTypeName = sdName;
         }
 
-        string standardStatus =
-            sd.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                ?.GetString("valueCode");
-
-        int? fmmLevel =
-            sd.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
-                ?.GetInt("valueInteger");
+        string standardStatus = sd.GetExtensionValueCode(ExtUrlStandardStatus);
+        int? fmmLevel = sd.GetExtensionValueInteger(ExtUrlFmm);
 
         // create a new primitive type object
         FhirPrimitive primitive = new FhirPrimitive(
@@ -1139,13 +1119,8 @@ public sealed class FromFhirExpando : IFhirConverter
                 definition = element0.GetString("definition") ?? definition;
             }
 
-            string standardStatus =
-                sd.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                    ?.GetString("valueCode");
-
-            int? fmmLevel =
-                sd.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
-                    ?.GetInt("valueInteger");
+            string standardStatus = sd.GetExtensionValueCode(ExtUrlStandardStatus);
+            int? fmmLevel = sd.GetExtensionValueInteger(ExtUrlFmm);
 
             // create a new complex type object for this type or resource
             FhirComplex complex = new FhirComplex(
@@ -1918,14 +1893,8 @@ public sealed class FromFhirExpando : IFhirConverter
             return;
         }
 
-
-        string standardStatus =
-            ig.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
-                ?.GetString("valueCode");
-
-        int? fmmLevel =
-            ig.GetExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
-                ?.GetInt("valueInteger");
+        string standardStatus = ig.GetExtensionValueCode(ExtUrlStandardStatus);
+        int? fmmLevel = ig.GetExtensionValueInteger(ExtUrlFmm);
 
         Dictionary<string, IgDependsOn> dependsOn = new();
 
@@ -1957,7 +1926,7 @@ public sealed class FromFhirExpando : IFhirConverter
             string.Empty,
             ig.GetString("description") ?? string.Empty,
             ig.GetString("packageId"),
-            ig.GetString("fhirVersion"),
+            ig.GetStringArray("fhirVersion"),
             dependsOn);
 
         // add our code system
@@ -1996,20 +1965,31 @@ public sealed class FromFhirExpando : IFhirConverter
         return (errorCount > 0) || (warningCount > 0);
     }
 
-    /// <summary>Parses resource an object from the given string.</summary>
-    /// <param name="json">The JSON.</param>
+    /// <summary>Try to parse a resource object from the given string.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out].</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
     /// <returns>A typed Resource object.</returns>
-    object IFhirConverter.ParseResource(string json)
+    bool IFhirConverter.TryParseResource(string json, out object resource, out string resourceType)
     {
         try
         {
             // try to parse this JSON
-            return JsonSerializer.Deserialize<FhirExpando>(json);
+            FhirExpando parsed = JsonSerializer.Deserialize<FhirExpando>(json);
+
+            resource = parsed;
+            resourceType = parsed.GetString("resourceType");
+            return true;
         }
         catch (Exception ex)
         {
+            _errors.Add($"Failed to parse resource: {ex.Message}");
+
             Console.WriteLine($"FromFhirExpando.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
-            throw;
+
+            resource = null;
+            resourceType = string.Empty;
+            return false;
         }
     }
 
@@ -2159,7 +2139,8 @@ public sealed class FromFhirExpando : IFhirConverter
         string impDescription = caps.GetString("implementation", "description") ?? string.Empty;
         string impUrl = caps.GetString("implementation", "url") ?? string.Empty;
 
-        List<string> serverInteractions = new List<string>();
+        List<string> serverInteractions = new();
+        List<string> serverInteractionExpectations = new();
         Dictionary<string, FhirCapResource> resourceInteractions = new Dictionary<string, FhirCapResource>();
         Dictionary<string, FhirCapSearchParam> serverSearchParams = new Dictionary<string, FhirCapSearchParam>();
         Dictionary<string, FhirCapOperation> serverOperations = new Dictionary<string, FhirCapOperation>();
@@ -2180,6 +2161,7 @@ public sealed class FromFhirExpando : IFhirConverter
                     }
 
                     serverInteractions.Add(code);
+                    serverInteractionExpectations.Add(interaction.GetExtensionValueCode(ExtUrlCapExpectation));
                 }
             }
 
@@ -2200,7 +2182,8 @@ public sealed class FromFhirExpando : IFhirConverter
                             spName,
                             sp.GetString("definition"),
                             sp.GetString("type"),
-                            sp.GetString("documentation")));
+                            sp.GetString("documentation"),
+                            sp.GetExtensionValueCode(ExtUrlCapExpectation)));
                 }
             }
 
@@ -2226,7 +2209,8 @@ public sealed class FromFhirExpando : IFhirConverter
                         new FhirCapOperation(
                             operationName,
                             operation.GetString("definition"),
-                            operation.GetString("documentation")));
+                            operation.GetString("documentation"),
+                            operation.GetExtensionValueCode(ExtUrlCapExpectation)));
                 }
             }
 
@@ -2250,20 +2234,25 @@ public sealed class FromFhirExpando : IFhirConverter
 
         capabilityStatement = new FhirCapabiltyStatement(
             serverInteractions,
+            serverInteractionExpectations,
             capId,
             capUrl,
             caps.GetString("name"),
             caps.GetString("title"),
             caps.GetString("fhirVersion"),
             caps.GetStringArray("format"),
+            caps.GetExtensionValueCodeArray(ExtUrlCapExpectation, "_format"),
             caps.GetStringArray("patchFormat"),
+            caps.GetExtensionValueCodeArray(ExtUrlCapExpectation, "_patchFormat"),
             swName,
             swVersion,
             swReleaseDate,
             impDescription,
             impUrl,
             caps.GetStringArray("instantiates"),
+            caps.GetExtensionValueCodeArray(ExtUrlCapExpectation, "_instantiates"),
             caps.GetStringArray("implementationGuide"),
+            caps.GetExtensionValueCodeArray(ExtUrlCapExpectation, "_implementationGuide"),
             resourceInteractions,
             serverSearchParams,
             serverOperations);
@@ -2300,9 +2289,10 @@ public sealed class FromFhirExpando : IFhirConverter
     private static FhirCapResource ParseServerRestResource(
         FhirExpando resource)
     {
-        List<string> interactions = new List<string>();
-        Dictionary<string, FhirCapSearchParam> searchParams = new Dictionary<string, FhirCapSearchParam>();
-        Dictionary<string, FhirCapOperation> operations = new Dictionary<string, FhirCapOperation>();
+        List<string> interactions = new();
+        List<string> interactionExpectations = new();
+        Dictionary<string, FhirCapSearchParam> searchParams = new();
+        Dictionary<string, FhirCapOperation> operations = new();
 
         if (resource["interaction"] != null)
         {
@@ -2316,6 +2306,7 @@ public sealed class FromFhirExpando : IFhirConverter
                 }
 
                 interactions.Add(code);
+                interactionExpectations.Add(interaction.GetExtensionValueCode(ExtUrlCapExpectation));
             }
         }
 
@@ -2336,7 +2327,8 @@ public sealed class FromFhirExpando : IFhirConverter
                         spName,
                         sp.GetString("definition"),
                         sp.GetString("type"),
-                        sp.GetString("documentation")));
+                        sp.GetString("documentation"),
+                        sp.GetExtensionValueCode(ExtUrlCapExpectation)));
             }
         }
 
@@ -2362,14 +2354,33 @@ public sealed class FromFhirExpando : IFhirConverter
                     new FhirCapOperation(
                         operationName,
                         operation.GetString("definition"),
-                        operation.GetString("documentation")));
+                        operation.GetString("documentation"),
+                        operation.GetExtensionValueCode(ExtUrlCapExpectation)));
+            }
+        }
+
+        IEnumerable<FhirExpando> capSearchCombinations = resource.GetExtensions(ExtUrlCapSearchParamCombo);
+
+        List<FhirCapSearchParamCombination> spCombinations = new();
+
+        if (capSearchCombinations != null)
+        {
+            foreach (FhirExpando spCombination in capSearchCombinations)
+            {
+                spCombinations.Add(new FhirCapSearchParamCombination(
+                    spCombination.GetExtensionsValueString("required"),
+                    spCombination.GetExtensionsValueString("optional"),
+                    spCombination.GetExtensionValueString(ExtUrlCapExpectation)));
             }
         }
 
         return new FhirCapResource(
-            interactions,
             resource.GetString("type"),
+            resource.GetExtensionValueCode(ExtUrlCapExpectation),
+            interactions,
+            interactionExpectations,
             resource.GetStringList("supportedProfile"),
+            resource.GetExtensionValueCodeList(ExtUrlCapExpectation, "_supportedProfile"),
             resource.GetString("versioning"),
             resource.GetBool("readHistory"),
             resource.GetBool("updateCreate"),
@@ -2380,8 +2391,11 @@ public sealed class FromFhirExpando : IFhirConverter
             resource.GetString("conditionalDelete"),
             resource.GetStringList("referencePolicy"),
             resource.GetStringList("searchInclude"),
+            resource.GetExtensionValueCodeList(ExtUrlCapExpectation, "_searchInclude"),
             resource.GetStringList("searchRevInclude"),
+            resource.GetExtensionValueCodeList(ExtUrlCapExpectation, "_searchRevInclude"),
             searchParams,
-            operations);
+            operations,
+            spCombinations.ToArray());
     }
 }

@@ -10,42 +10,40 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 /// <summary>A FHIR search parameter record from a CapabilityStatement.</summary>
 public class FhirCapSearchParam : ICloneable
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirCapSearchParam"/> class.
-    /// </summary>
+    /// <summary>Initializes a new instance of the <see cref="FhirCapSearchParam"/> class.</summary>
     /// <param name="name">               The name.</param>
     /// <param name="definitionCanonical">The definition canonical.</param>
     /// <param name="parameterType">      The type of the parameter.</param>
     /// <param name="documentation">      The documentation.</param>
-    public FhirCapSearchParam(
-        string name,
-        string definitionCanonical,
-        SearchParameterType parameterType,
-        string documentation)
-    {
-        Name = name;
-        DefinitionCanonical = definitionCanonical;
-        ParameterType = parameterType;
-        Documentation = documentation;
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirCapSearchParam"/> class.
-    /// </summary>
-    /// <param name="name">               The name.</param>
-    /// <param name="definitionCanonical">The definition canonical.</param>
-    /// <param name="parameterType">      The type of the parameter.</param>
-    /// <param name="documentation">      The documentation.</param>
+    /// <param name="expectation">        The conformance expectation.</param>
     public FhirCapSearchParam(
         string name,
         string definitionCanonical,
         string parameterType,
-        string documentation)
+        string documentation,
+        string expectation)
     {
         Name = name;
         DefinitionCanonical = definitionCanonical;
         ParameterType = parameterType.ToFhirEnum<SearchParameterType>();
         Documentation = documentation;
+        ExpectationLiteral = expectation;
+        if (expectation.TryFhirEnum<FhirCapabiltyStatement.ExpectationCodes>(out object expect))
+        {
+            Expectation = (FhirCapabiltyStatement.ExpectationCodes)expect;
+        }
+    }
+
+    /// <summary>Initializes a new instance of the <see cref="FhirCapSearchParam"/> class.</summary>
+    /// <param name="source">Source to copy.</param>
+    public FhirCapSearchParam(FhirCapSearchParam source)
+    {
+        Name = source.Name;
+        DefinitionCanonical = source.DefinitionCanonical;
+        ParameterType = source.ParameterType;
+        Documentation = source.Documentation;
+        ExpectationLiteral = source.ExpectationLiteral;
+        Expectation = source.Expectation;
     }
 
     /// <summary>
@@ -105,14 +103,16 @@ public class FhirCapSearchParam : ICloneable
     /// <summary>Gets the documentation.</summary>
     public string Documentation { get; }
 
+    /// <summary>Gets the conformance expectation literal.</summary>
+    public string ExpectationLiteral { get; }
+
+    /// <summary>Gets the conformance expectation.</summary>
+    public FhirCapabiltyStatement.ExpectationCodes? Expectation { get; }
+
     /// <summary>Makes a deep copy of this object.</summary>
     /// <returns>A copy of this object.</returns>
     public object Clone()
     {
-        return new FhirCapSearchParam(
-            Name,
-            DefinitionCanonical,
-            ParameterType,
-            Documentation);
+        return new FhirCapSearchParam(this);
     }
 }

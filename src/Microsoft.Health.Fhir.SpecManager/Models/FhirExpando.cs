@@ -3,10 +3,12 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Dynamic;
+using System.IO;
 using System.Linq.Expressions;
 using Microsoft.Scripting.Debugging;
 using Microsoft.Scripting.Utils;
@@ -366,6 +368,118 @@ public class FhirExpando : IDynamicMetaObjectProvider, IDictionary<string, objec
         return filtered.First();
     }
 
+    /// <summary>Gets extension valueCode.</summary>
+    /// <param name="url">         URL of the resource.</param>
+    /// <param name="relativePath">A variable-length parameters list containing the relative path to
+    ///  the extension node, from this node.</param>
+    /// <returns>The extension value.</returns>
+    public string GetExtensionValueCode(
+        string url,
+        params string[] relativePath)
+    {
+        return GetExtension(url, relativePath)?.GetString("valueCode") ?? string.Empty;
+    }
+
+    /// <summary>Gets extension value string.</summary>
+    /// <param name="url">         URL of the resource.</param>
+    /// <param name="relativePath">A variable-length parameters list containing the relative path to
+    ///  the extension node, from this node.</param>
+    /// <returns>The extension value string.</returns>
+    public string GetExtensionValueString(
+        string url,
+        params string[] relativePath)
+    {
+        return GetExtension(url, relativePath)?.GetString("valueString") ?? string.Empty;
+    }
+
+
+    /// <summary>Gets extension value code array.</summary>
+    /// <param name="url"> URL of the resource.</param>
+    /// <param name="path">A variable-length parameters list containing path.</param>
+    /// <returns>An array of string.</returns>
+    public string[] GetExtensionValueCodeArray(string url, params string[] path)
+    {
+        object o = GetObject(path);
+
+        switch (o)
+        {
+            case IEnumerable<object> oEO:
+                return oEO.Select(oEOo => ((FhirExpando)oEOo).GetExtensionValueCode(url)).ToArray();
+
+            case object oO:
+                return new string[] { ((FhirExpando)oO).GetExtensionValueCode(url) };
+        }
+
+        return null;
+    }
+
+    /// <summary>Gets extension value string array.</summary>
+    /// <param name="url"> URL of the resource.</param>
+    /// <param name="path">A variable-length parameters list containing path.</param>
+    /// <returns>An array of string.</returns>
+    public string[] GetExtensionValueStringArray(string url, params string[] path)
+    {
+        object o = GetObject(path);
+
+        switch (o)
+        {
+            case IEnumerable<object> oEO:
+                return oEO.Select(oEOo => ((FhirExpando)oEOo).GetExtensionValueString(url)).ToArray();
+
+            case object oO:
+                return new string[] { ((FhirExpando)oO).GetExtensionValueString(url) };
+        }
+
+        return null;
+    }
+
+    public string[] GetExtensionsValueString(string url, params string[] path)
+    {
+        object o = GetObject(path);
+
+        switch (o)
+        {
+            case IEnumerable<object> oEO:
+                return oEO.SelectMany(oEOo => ((FhirExpando)oEOo).GetExtensions(url).Select(e => e.GetString("valueString"))).ToArray();
+
+            case object oO:
+                return ((FhirExpando)oO).GetExtensions(url).Select(e => e.GetString("valueString")).ToArray();
+        }
+
+        return null;
+    }
+
+
+    /// <summary>Gets extension value code list.</summary>
+    /// <param name="url"> URL of the resource.</param>
+    /// <param name="path">A variable-length parameters list containing path.</param>
+    /// <returns>The extension value code list.</returns>
+    public List<string> GetExtensionValueCodeList(string url, params string[] path)
+    {
+        object o = GetObject(path);
+
+        switch (o)
+        {
+            case IEnumerable<object> oEO:
+                return oEO.Select(oEOo => ((FhirExpando)oEOo).GetExtensionValueCode(url)).ToList();
+
+            case object oO:
+                return new List<string>() { ((FhirExpando)oO).GetExtensionValueCode(url) };
+        }
+
+        return null;
+    }
+
+    /// <summary>Gets extension value integer.</summary>
+    /// <param name="url">         URL of the resource.</param>
+    /// <param name="relativePath">A variable-length parameters list containing the relative path to
+    ///  the extension node, from this node.</param>
+    /// <returns>The extension value integer.</returns>
+    public int? GetExtensionValueInteger(string url, params string[] relativePath)
+    {
+        return GetExtension(url, relativePath)?.GetInt("valueInteger");
+    }
+
     /// <summary>Gets the extensions in this collection.</summary>
     /// <param name="url">         URL of the resource.</param>
     /// <param name="relativePath">A variable-length parameters list containing the relative path to
@@ -399,6 +513,33 @@ public class FhirExpando : IDynamicMetaObjectProvider, IDictionary<string, objec
         }
 
         return ext.Where(e => url.Equals(e?.GetString("url")));
+    }
+
+    /// <summary>Gets the extensions in this collection.</summary>
+    /// <param name="relativePath">A variable-length parameters list containing the relative path to
+    ///  the extension node, from this node.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process the extensions in this collection.
+    /// </returns>
+    public IEnumerable<FhirExpando> GetAllExtensions(params string[] relativePath)
+    {
+        FhirExpando o;
+
+        if ((relativePath == null) || (relativePath.Length == 0))
+        {
+            o = this;
+        }
+        else
+        {
+            o = GetExpando(relativePath);
+
+            if (o == null)
+            {
+                return null;
+            }
+        }
+
+        return o.GetExpandoEnumerable("extension");
     }
 
     /// <summary>

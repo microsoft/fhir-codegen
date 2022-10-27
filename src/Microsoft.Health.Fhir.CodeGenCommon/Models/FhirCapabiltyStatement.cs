@@ -12,44 +12,69 @@ public class FhirCapabiltyStatement : ICloneable
 {
     private readonly List<SystemRestfulInteraction> _serverInteractions;
 
+    /// <summary>Values that represent conformance expectation codes.</summary>
+    public enum ExpectationCodes
+    {
+        /// <summary>An enum constant representing the may option.</summary>
+        [FhirLiteral("MAY")]
+        May,
+
+        /// <summary>An enum constant representing the should option.</summary>
+        [FhirLiteral("SHOULD")]
+        Should,
+
+        /// <summary>An enum constant representing the shall option.</summary>
+        [FhirLiteral("SHALL")]
+        Shall,
+    }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirCapabiltyStatement"/> class.
     /// </summary>
     /// <param name="serverInteractions">       The server interaction flags.</param>
+    /// <param name="serverInteractionExpectations">Conformance expectations for server interactions.</param>
     /// <param name="id">                       The identifier.</param>
     /// <param name="url">                      FHIR Base URL for the server.</param>
     /// <param name="name">                     The name.</param>
     /// <param name="title">                    The title.</param>
     /// <param name="fhirVersion">              The server-reported FHIR version.</param>
-    /// <param name="fhirMimeTypes">            List of types of the FHIR mimes.</param>
-    /// <param name="patchMimeTypes">           A list of types of the FHIR patch mimes.</param>
+    /// <param name="fhirMimeTypes">            List of supported FHIR MIME types.</param>
+    /// <param name="fhirMimeTypeExpectations"> List of conformance expectations for FHIR MIME types.</param>
+    /// <param name="patchMimeTypes">           List of supported patch MIME types.</param>
+    /// <param name="patchMimeTypeExpectations">List of conformance expectations for patch MIME types.</param>
     /// <param name="softwareName">             The FHIR Server software name.</param>
     /// <param name="softwareVersion">          The FHIR Server software version.</param>
     /// <param name="softwareReleaseDate">      The FHIR Server software release date.</param>
     /// <param name="implementationDescription">Information describing the implementation.</param>
     /// <param name="implementationUrl">        URL of the implementation.</param>
-    /// <param name="instantiates">             Canonical URL of another capability statement this
-    ///  implements.</param>
+    /// <param name="instantiates">             Canonical URL of another capability statement this CS implements.</param>
+    /// <param name="instantiateExpectations">  Conformance expectations for supported capability statements,.</param>
     /// <param name="implementationGuides">     Implementation guides supported.</param>
+    /// <param name="implementationGuideExpectations">Implementation guide conformance expectations.</param>
     /// <param name="resourceInteractions">     The server interactions by resource.</param>
     /// <param name="serverSearchParameters">   The search parameters for searching all resources.</param>
     /// <param name="serverOperations">         The operations defined at the system level operation.</param>
     public FhirCapabiltyStatement(
         List<string> serverInteractions,
+        List<string> serverInteractionExpectations,
         string id,
         string url,
         string name,
         string title,
         string fhirVersion,
         IEnumerable<string> fhirMimeTypes,
+        IEnumerable<string> fhirMimeTypeExpectations,
         IEnumerable<string> patchMimeTypes,
+        IEnumerable<string> patchMimeTypeExpectations,
         string softwareName,
         string softwareVersion,
         string softwareReleaseDate,
         string implementationDescription,
         string implementationUrl,
         IEnumerable<string> instantiates,
+        IEnumerable<string> instantiateExpectations,
         IEnumerable<string> implementationGuides,
+        IEnumerable<string> implementationGuideExpectations,
         Dictionary<string, FhirCapResource> resourceInteractions,
         Dictionary<string, FhirCapSearchParam> serverSearchParameters,
         Dictionary<string, FhirCapOperation> serverOperations)

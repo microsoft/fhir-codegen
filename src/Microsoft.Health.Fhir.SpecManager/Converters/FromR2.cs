@@ -1697,25 +1697,33 @@ public sealed class FromR2 : IFhirConverter
         }
     }
 
-    /// <summary>Parses resource an object from the given string.</summary>
-    /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
-    /// <param name="json">The JSON.</param>
+    /// <summary>Try to parse a resource object from the given string.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out].</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
     /// <returns>A typed Resource object.</returns>
-    object IFhirConverter.ParseResource(string json)
+    bool IFhirConverter.TryParseResource(string json, out object resource, out string resourceType)
     {
         try
         {
             // try to parse this JSON into a resource object
-            // return JsonConvert.DeserializeObject<fhirModels.Resource>(json, _jsonConverter);
-            // return JsonSerializer.Deserialize<fhirModels.Resource>(json);
-            return System.Text.Json.JsonSerializer.Deserialize<fhirModels.Resource>(
+            fhirModels.Resource parsed = System.Text.Json.JsonSerializer.Deserialize<fhirModels.Resource>(
                 json,
                 fhirSerialization.FhirSerializerOptions.Compact);
+
+            resource = parsed;
+            resourceType = parsed.ResourceType;
+            return true;
         }
         catch (Exception ex)
         {
+            _errors.Add($"Failed to parse resource: {ex.Message}");
+
             Console.WriteLine($"FromR2.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
-            throw;
+
+            resource = null;
+            resourceType = string.Empty;
+            return false;
         }
     }
 
@@ -1899,7 +1907,8 @@ public sealed class FromR2 : IFhirConverter
                             sp.Name,
                             sp.Definition,
                             sp.Type,
-                            sp.Documentation));
+                            sp.Documentation,
+                            string.Empty));
                 }
             }
 
@@ -1918,6 +1927,7 @@ public sealed class FromR2 : IFhirConverter
                         new FhirCapOperation(
                             operation.Name,
                             operation.Definition.ReferenceField,
+                            string.Empty,
                             string.Empty));
                 }
             }
@@ -1925,6 +1935,7 @@ public sealed class FromR2 : IFhirConverter
 
         capabilityStatement = new FhirCapabiltyStatement(
             serverInteractions,
+            null,
             capId,
             capUrl,
             caps.Name,
@@ -1932,11 +1943,15 @@ public sealed class FromR2 : IFhirConverter
             caps.FhirVersion,
             caps.Format,
             Array.Empty<string>(),
+            Array.Empty<string>(),
+            Array.Empty<string>(),
             swName,
             swVersion,
             swReleaseDate,
             impDescription,
             impUrl,
+            null,
+            null,
             null,
             null,
             resourceInteractions,
@@ -2007,13 +2022,17 @@ public sealed class FromR2 : IFhirConverter
                         sp.Name,
                         sp.Definition,
                         sp.Type,
-                        sp.Documentation));
+                        sp.Documentation,
+                        string.Empty));
             }
         }
 
         return new FhirCapResource(
-            interactions,
             resource.Type,
+            string.Empty,
+            interactions,
+            null,
+            null,
             null,
             resource.Versioning,
             resource.ReadHistory,
@@ -2025,9 +2044,12 @@ public sealed class FromR2 : IFhirConverter
             resource.ConditionalDelete,
             null,
             resource.SearchInclude,
+            null,
             resource.SearchRevInclude,
+            null,
             searchParams,
-            operations);
+            operations,
+            Array.Empty<FhirCapSearchParamCombination>());
     }
 
     /// <summary>Gets default value if present.</summary>
