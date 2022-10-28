@@ -763,7 +763,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.WriteLineIndented($"public {elementType} {elementName} {{ get; set; }}");
 
-                if (RequiresExtension(kvp.Value))
+                if (RequiresExtension(kvp.Value) && (!element.IsSimple))
                 {
                     _writer.WriteLineIndented($"[JsonProperty(\"_{camel}\")]");
 
