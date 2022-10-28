@@ -190,7 +190,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     string vsReferences = string.Empty;
 
-                    if (vs.StrongestBindingByType != null)
+                    if (vs.StrongestBindingByType?.Any() ?? false)
                     {
                         vsReferences = $"references ({vs.ReferencingElementsByPath.Count}): " + string.Join(", ", vs.ReferencingElementsByPath.Keys);
                         vsReferences += ", strongest binding: " + vs.StrongestBinding.ToString();
@@ -528,6 +528,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (string.IsNullOrEmpty(propertyType))
             {
                 propertyType = element.BaseTypeName;
+            }
+
+            if (element.IsSimple)
+            {
+                propertyType = propertyType + " *simple*";
             }
 
             string fiveWs = string.Empty;
