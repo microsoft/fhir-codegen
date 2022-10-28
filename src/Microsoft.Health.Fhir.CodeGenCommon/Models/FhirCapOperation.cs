@@ -29,9 +29,9 @@ public class FhirCapOperation : ICloneable
         Documentation = documentation;
         _additionalDefinitions = null;
         ExpectationLiteral = expectation;
-        if (expectation.TryFhirEnum<FhirCapabiltyStatement.ExpectationCodes>(out object expect))
+        if (expectation.TryFhirEnum(out FhirCapabiltyStatement.ExpectationCodes expect))
         {
-            Expectation = (FhirCapabiltyStatement.ExpectationCodes)expect;
+            Expectation = expect;
         }
     }
 

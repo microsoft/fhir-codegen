@@ -4,6 +4,7 @@
 // </copyright>
 
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirCapabiltyStatement;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
@@ -62,83 +63,37 @@ public class FhirCapResource : ICloneable
     {
         ResourceType = resourceType;
         ExpectationLiteral = expectation;
-        if (expectation.TryFhirEnum<FhirCapabiltyStatement.ExpectationCodes>(out object expect))
+        if (expectation.TryFhirEnum(out ExpectationCodes expect))
         {
-            Expectation = (FhirCapabiltyStatement.ExpectationCodes)expect;
+            Expectation = expect;
         }
 
         SupportedProfiles = supportedProfiles ?? new();
-        SupportedProfileExpectationLiterals = supportedProfileExpectations ?? new();
-        SupportedProfileExpectations = new();
-        if (supportedProfileExpectations?.Any() ?? false)
-        {
-            foreach (string peLit in supportedProfileExpectations)
-            {
-                if (peLit.TryFhirEnum<FhirCapabiltyStatement.ExpectationCodes>(out expect))
-                {
-                    SupportedProfileExpectations.Add((FhirCapabiltyStatement.ExpectationCodes)expect);
-                }
-            }
-        }
+        SupportedProfilesEx = ProcessExpectationEnumerables(SupportedProfiles, supportedProfileExpectations);
 
         ReadHistory = readHistory;
         UpdateCreate = updateCreate;
         ConditionalCreate = conditionalCreate;
         ConditionalUpdate = conditionalUpdate;
         ConditionalPatch = conditionalPatch;
+
         SearchIncludes = searchIncludes ?? new();
-        SearchIncludeExpectationLiterals = searchIncludeExpectations ?? new();
-        SearchIncludeExpectations = new();
-        if (searchIncludeExpectations?.Any() ?? false)
-        {
-            foreach (string seLit in searchIncludeExpectations)
-            {
-                if (seLit.TryFhirEnum<FhirCapabiltyStatement.ExpectationCodes>(out expect))
-                {
-                    SearchIncludeExpectations.Add((FhirCapabiltyStatement.ExpectationCodes)expect);
-                }
-            }
-        }
+        SearchIncludesEx = ProcessExpectationEnumerables(SearchIncludes, searchIncludeExpectations);
 
         SearchRevIncludes = searchRevIncludes ?? new();
-        SearchRevIncludeExpectationLiterals = searchRevIncludeExpectations ?? new();
-        SearchRevIncludeExpectations = new();
-        if (searchRevIncludeExpectations?.Any() ?? false)
+        SearchRevIncludesEx = ProcessExpectationEnumerables(SearchRevIncludes, searchRevIncludeExpectations);
+
+        if ((interactions?.Any() ?? false) &&
+            interactions.TryFhirEnum(out IEnumerable<FhirInteractionCodes> fi))
         {
-            foreach (string seLit in searchRevIncludeExpectations)
-            {
-                if (seLit.TryFhirEnum<FhirCapabiltyStatement.ExpectationCodes>(out expect))
-                {
-                    SearchRevIncludeExpectations.Add((FhirCapabiltyStatement.ExpectationCodes)expect);
-                }
-            }
+            Interactions = fi.ToList();
+        }
+        else
+        {
+            Interactions = new();
         }
 
-        InteractionLiterals = interactions ?? new();
-        Interactions = new();
-        if (interactions?.Any() ?? false)
-        {
-            foreach (string interactionLit in interactions)
-            {
-                if (interactionLit.TryFhirEnum<FhirInteractionCodes>(out object interaction))
-                {
-                    Interactions.Add((FhirInteractionCodes)interaction);
-                }
-            }
-        }
-
-        InteractionExpectationLiterals = interactionExpectations ?? new();
-        InteractionExpectations = new();
-        if (interactionExpectations?.Any() ?? false)
-        {
-            foreach (string ieLit in interactionExpectations)
-            {
-                if (ieLit.TryFhirEnum<FhirCapabiltyStatement.ExpectationCodes>(out expect))
-                {
-                    InteractionExpectations.Add((FhirCapabiltyStatement.ExpectationCodes)expect);
-                }
-            }
-        }
+        InteractionsEx = ProcessExpectationEnumerables(Interactions, interactionExpectations);
 
         if (!string.IsNullOrEmpty(versionSupport))
         {
@@ -178,13 +133,10 @@ public class FhirCapResource : ICloneable
         ResourceType = source.ResourceType;
         ExpectationLiteral = source.ExpectationLiteral;
         Expectation = source.Expectation;
-        InteractionLiterals = source.InteractionLiterals.Select(s => s).ToList();
-        Interactions = source.Interactions.Select(i => i).ToList();
-        InteractionExpectationLiterals = source.InteractionExpectationLiterals.Select(s => s).ToList();
-        InteractionExpectations = source.InteractionExpectations.Select(e => e).ToList();
+        Interactions = source.Interactions.Select(e => e).ToList();
+        InteractionsEx = source.InteractionsEx.Select(r => r with { });
         SupportedProfiles = source.SupportedProfiles.Select(s => s).ToList();
-        SupportedProfileExpectationLiterals = source.SupportedProfileExpectationLiterals.Select(s => s).ToList();
-        SupportedProfileExpectations = source.SupportedProfileExpectations.Select(e => e).ToList();
+        SupportedProfilesEx = source.SupportedProfilesEx.Select(r => r with { });
 
         VersionSupport = source.VersionSupport;
         ReadHistory = source.ReadHistory;
@@ -198,12 +150,10 @@ public class FhirCapResource : ICloneable
         _referencePolicies = source.ReferencePolicies.Select(p => p).ToList();
 
         SearchIncludes = source.SearchIncludes.Select(s => s).ToList();
-        SearchIncludeExpectationLiterals = source.SearchIncludeExpectationLiterals.Select(s => s).ToList();
-        SearchIncludeExpectations = source.SearchIncludeExpectations.Select(e => e).ToList();
+        SearchIncludesEx = source.SearchIncludesEx.Select(r => r with { });
 
         SearchRevIncludes = source.SearchRevIncludes.Select(s => s).ToList();
-        SearchRevIncludeExpectationLiterals = source.SearchRevIncludeExpectationLiterals.Select(s => s).ToList();
-        SearchRevIncludeExpectations = source.SearchRevIncludeExpectations.Select(e => e).ToList();
+        SearchRevIncludesEx = source.SearchRevIncludesEx.Select(r => r with { });
 
         SearchParameters = new();
         foreach (KeyValuePair<string, FhirCapSearchParam> kvp in source.SearchParameters)
@@ -217,7 +167,7 @@ public class FhirCapResource : ICloneable
             Operations.Add(kvp.Key, new(kvp.Value));
         }
 
-        SearchParameterCombinations = source.SearchParameterCombinations.Select(c => c);
+        SearchParameterCombinations = source.SearchParameterCombinations.Select(c => new FhirCapSearchParamCombination(c));
     }
 
     /// <summary>
@@ -381,23 +331,14 @@ public class FhirCapResource : ICloneable
     /// <summary>Gets the list of supported profile URLs.</summary>
     public List<string> SupportedProfiles { get; }
 
-    /// <summary>Gets the supported profile expectations.</summary>
-    public List<string> SupportedProfileExpectationLiterals { get; }
-
-    /// <summary>Gets the supported profile expectations.</summary>
-    public List<FhirCapabiltyStatement.ExpectationCodes?> SupportedProfileExpectations { get; }
-
-    /// <summary>Gets the interaction literals.</summary>
-    public List<string> InteractionLiterals { get; }
+    /// <summary>Gets the supported profile URLs, with conformance expectations.</summary>
+    public IEnumerable<ValWithExpectation<string>> SupportedProfilesEx { get; }
 
     /// <summary>Gets the supported interactions.</summary>
     public List<FhirInteractionCodes> Interactions { get; }
 
-    /// <summary>Gets the interaction expectation literals.</summary>
-    public List<string> InteractionExpectationLiterals { get; }
-
-    /// <summary>Gets the interaction expectation literals.</summary>
-    public List<FhirCapabiltyStatement.ExpectationCodes> InteractionExpectations { get; }
+    /// <summary>Gets the supported interactions, with conformance expectations.</summary>
+    public IEnumerable<ValWithExpectation<FhirInteractionCodes>> InteractionsEx { get; }
 
     /// <summary>Gets the supported version policy.</summary>
     public VersioningPolicy? VersionSupport { get; }
@@ -429,20 +370,14 @@ public class FhirCapResource : ICloneable
     /// <summary>Gets the _include values supported by the server.</summary>
     public List<string> SearchIncludes { get; }
 
-    /// <summary>Gets the search includes expectation literals.</summary>
-    public List<string> SearchIncludeExpectationLiterals { get; }
-
-    /// <summary>Gets the search includes expectations.</summary>
-    public List<FhirCapabiltyStatement.ExpectationCodes?> SearchIncludeExpectations { get; }
+    /// <summary>Gets the search includes, with conformance expectations.</summary>
+    public IEnumerable<ValWithExpectation<string>> SearchIncludesEx { get; }
 
     /// <summary>Gets the _revinclude values supported by the server.</summary>
     public List<string> SearchRevIncludes { get; }
 
-    /// <summary>Gets the search reverse includes expectation literals.</summary>
-    public List<string> SearchRevIncludeExpectationLiterals { get; }
-
-    /// <summary>Gets the search reverse includes expectations.</summary>
-    public List<FhirCapabiltyStatement.ExpectationCodes> SearchRevIncludeExpectations { get; }
+    /// <summary>Gets the search reverse includes, with conformance expectations.</summary>
+    public IEnumerable<ValWithExpectation<string>> SearchRevIncludesEx { get; }
 
     /// <summary>Gets the search parameters supported by implementation.</summary>
     public Dictionary<string, FhirCapSearchParam> SearchParameters { get; }

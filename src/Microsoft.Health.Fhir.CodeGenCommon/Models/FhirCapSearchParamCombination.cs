@@ -28,9 +28,9 @@ public class FhirCapSearchParamCombination : ICloneable
         RequiredParams = requiredParams ?? Array.Empty<string>();
         OptionalParams = optionalParams ?? Array.Empty<string>();
         ExpectationLiteral = expectation;
-        if (expectation.TryFhirEnum<FhirCapabiltyStatement.ExpectationCodes>(out object expect))
+        if (expectation.TryFhirEnum(out FhirCapabiltyStatement.ExpectationCodes expect))
         {
-            Expectation = (FhirCapabiltyStatement.ExpectationCodes)expect;
+            Expectation = expect;
         }
     }
 

@@ -1,4 +1,4 @@
-﻿@page "/view/codesystem"
+﻿@page "/view/capabilitystatement"
 
 @using FhirCodeGenBlazor.Models
 @using FhirCodeGenBlazor.Services
@@ -8,47 +8,65 @@
 @implements IDisposable
 @implements IPackageVersionProvider
 
-@if (fhirCodeSystem == null)
+@if (fhirCaps == null)
 {
-    <PageTitle>FHIR CodeSystem</PageTitle>
+    <PageTitle>FHIR CapabilityStatement</PageTitle>
 }
 else
 {
-    <PageTitle>@fhirCodeSystem.Name</PageTitle>
-    @if (fhirCodeSystem != null)
+    <PageTitle>@fhirCaps.Name</PageTitle>
+    @if (fhirCaps != null)
     {
         <MudExpansionPanels MultiExpansion="true">
-            <MudExpansionPanel Text="CodeSystem Information">
+            <MudExpansionPanel Text="Capability Statement Information">
                 <MudGrid Spacing="1">
-                    <MudItem xs="12"><MudText Typo="Typo.h5">FHIR Code System: @fhirCodeSystem.Name</MudText></MudItem>
+                    <MudItem xs="12"><MudText Typo="Typo.h5">FHIR Capability Statement: @fhirCaps.Name</MudText></MudItem>
 
                     <MudItem xs="2">Id</MudItem>
-                    <MudItem xs="10">@fhirCodeSystem.Id</MudItem>
+                    <MudItem xs="10">@fhirCaps.Id</MudItem>
 
                     <MudItem xs="2">Name</MudItem>
-                    <MudItem xs="10">@fhirCodeSystem.Name</MudItem>
+                    <MudItem xs="10">@fhirCaps.Name</MudItem>
 
                     <MudItem xs="2">Title</MudItem>
-                    <MudItem xs="10">@fhirCodeSystem.Title</MudItem>
+                    <MudItem xs="10">@fhirCaps.Title</MudItem>
 
                     <MudItem xs="2">URL</MudItem>
-                    <MudItem xs="10">@fhirCodeSystem.URL.ToString()</MudItem>
+                    <MudItem xs="10">@fhirCaps.Url</MudItem>
 
-                    <MudItem xs="2">Version</MudItem>
-                    <MudItem xs="10">@fhirCodeSystem.Version</MudItem>
+                    <MudItem xs="2">FHIR Version</MudItem>
+                    <MudItem xs="10">@fhirCaps.FhirVersion</MudItem>
 
-                    <MudItem xs="2">Standard Status</MudItem>
-                    <MudItem xs="10">@fhirCodeSystem.StandardStatus</MudItem>
+                    <MudItem xs="2">Software Name</MudItem>
+                    <MudItem xs="10">@fhirCaps.SoftwareName</MudItem>
 
-                    <MudItem xs="2">Short Description</MudItem>
-                    <MudItem xs="10">@fhirCodeSystem.Description</MudItem>
+                    <MudItem xs="2">Software Version</MudItem>
+                    <MudItem xs="10">@fhirCaps.SoftwareVersion</MudItem>
+
+                    <MudItem xs="2">Software Release Date</MudItem>
+                    <MudItem xs="10">@fhirCaps.SoftwareReleaseDate</MudItem>
+
+                    <MudItem xs="2">Implementation Description</MudItem>
+                    <MudItem xs="10">@fhirCaps.ImplementationDescription</MudItem>
+
+                    <MudItem xs="2">Implementation URL</MudItem>
+                    <MudItem xs="10">@fhirCaps.ImplementationUrl</MudItem>
+
+                    <MudItem xs="2">FHIR MIME Types</MudItem>
+                    <MudItem xs="10">
+                        @foreach (FhirCapabiltyStatement.ValWithExpectation<string> v in fhirCaps.FhirMimeTypesEx)
+                        {
+                            <MudChip>@(v.Value + " (" + v.ExpectationCode + ")")</MudChip>
+                        }
+                    </MudItem>
+
                 </MudGrid>
             </MudExpansionPanel>
         </MudExpansionPanels>
 
-        @if (fhirCodeSystem?.ConceptLookup?.Any() ?? false)
+@*        @if (fhirCaps?.ConceptLookup?.Any() ?? false)
         {
-            <MudTable Items="@fhirCodeSystem.ConceptLookup.Values"
+            <MudTable Items="@fhirCaps.ConceptLookup.Values"
                   Striped="true"
                   Hover="true"
                   Dense="true"
@@ -77,7 +95,7 @@ else
         else
         {
             <MudText>There are no non-deprecated conepts present.</MudText>
-        }
+        }*@
     }
 }
 
@@ -104,8 +122,8 @@ else
     /// <summary>The directive.</summary>
     private string directive = string.Empty;
 
-    /// <summary>A FHIR Code System.</summary>
-    private FhirCodeSystem? fhirCodeSystem = null;
+    /// <summary>A FHIR Capability Statement.</summary>
+    private FhirCapabiltyStatement? fhirCaps = null;
 
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
@@ -113,7 +131,7 @@ else
     {
         base.OnInitialized();
 
-        NavTracker?.NotifyNav(Url, $"view/CodeSystem?packageName={PackageName}&version={Version}&url={Url}", 2);
+        NavTracker?.NotifyNav(Url, $"view/CapabilityStatement?packageName={PackageName}&version={Version}&url={Url}", 2);
         NavManager.LocationChanged += HandleLocationChanged;
 
         if (string.IsNullOrEmpty(PackageName))
@@ -132,7 +150,7 @@ else
     {
         if (e.Location.ToLowerInvariant().Contains("/view/CodeSystem"))
         {
-            NavTracker?.NotifyNav(Url, $"view/CodeSystem?packageName={PackageName}&version={Version}&url={Url}", 2);
+            NavTracker?.NotifyNav(Url, $"view/CapabilityStatement?packageName={PackageName}&version={Version}&url={Url}", 2);
             directive = PackageName + "#" + Version;
             GetObject();
         }
@@ -181,7 +199,7 @@ else
             return;
         }
 
-        fhirCodeSystem = null;
+        fhirCaps = null;
 
         if (!SpecService[directive].TryGetArtifact(
                 Url,
@@ -189,19 +207,19 @@ else
                 out FhirArtifactClassEnum fhirArtifactClass,
                 out _,
                 true,
-                FhirArtifactClassEnum.CodeSystem))
+                FhirArtifactClassEnum.CapabilityStatement))
         {
             Console.WriteLine($"Unresolved artifact: {Url} from {PackageName}#{Version}!");
             return;
         }
 
-        if (fhirArtifactClass != FhirArtifactClassEnum.CodeSystem)
+        if (fhirArtifactClass != FhirArtifactClassEnum.CapabilityStatement)
         {
             Console.WriteLine($"Incorrect artifact type: {Url} from {PackageName}#{Version} came back as {fhirArtifactClass}!");
             return;
         }
 
-        fhirCodeSystem = (FhirCodeSystem)obj;
+        fhirCaps = (FhirCapabiltyStatement)obj;
 
         // manually flag state has changed in case we are in a callback / async context
         InvokeAsync(() => StateHasChanged());

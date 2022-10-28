@@ -28,9 +28,9 @@ public class FhirCapSearchParam : ICloneable
         ParameterType = parameterType.ToFhirEnum<SearchParameterType>();
         Documentation = documentation;
         ExpectationLiteral = expectation;
-        if (expectation.TryFhirEnum<FhirCapabiltyStatement.ExpectationCodes>(out object expect))
+        if (expectation.TryFhirEnum(out FhirCapabiltyStatement.ExpectationCodes expect))
         {
-            Expectation = (FhirCapabiltyStatement.ExpectationCodes)expect;
+            Expectation = expect;
         }
     }
 

@@ -319,6 +319,7 @@ else
             case FhirArtifactClassEnum.Operation:
             case FhirArtifactClassEnum.PrimitiveType:
             case FhirArtifactClassEnum.ValueSet:
+            case FhirArtifactClassEnum.CapabilityStatement:
                 return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&url={record.Url}";
 
             // types using the ViewFhirComplex page
@@ -330,7 +331,6 @@ else
                 return $"/view/complex/?packageName={PackageName}&version={Version}&url={record.Url}&ac={record.ArtifactClass}";
 
             // types not displayable
-            case FhirArtifactClassEnum.CapabilityStatement:
             case FhirArtifactClassEnum.Compartment:
             case FhirArtifactClassEnum.ConceptMap:
             case FhirArtifactClassEnum.ImplementationGuide:
