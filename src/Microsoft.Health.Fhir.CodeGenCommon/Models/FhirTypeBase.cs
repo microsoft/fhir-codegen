@@ -3,6 +3,8 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>
@@ -69,7 +71,7 @@ public class FhirTypeBase
         // check for components in the path
         string[] components = path.Split('.');
         _name = components[components.Length - 1];
-        _nameCapitalized = ToPascal(_name);
+        _nameCapitalized = _name.ToPascalCase();
     }
 
     /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
@@ -438,7 +440,7 @@ public class FhirTypeBase
                     if ((reservedWords != null) &&
                         reservedWords.Contains(_path))
                     {
-                        return _path + "Fhir";
+                        return "Fhir" + _path;
                     }
 
                     return _path;
@@ -446,16 +448,12 @@ public class FhirTypeBase
 
             case NamingConvention.PascalDotNotation:
                 {
-                    string[] components = ToPascal(_path.Split('.'));
-                    string value = string.Join(".", components);
+                    string value = _path.ToPascalDotCase(true);
 
                     if ((reservedWords != null) &&
                         reservedWords.Contains(value))
                     {
-                        components[components.Length - 1] =
-                            "Fhir" + components[components.Length - 1];
-
-                        return string.Join(".", components);
+                        return "Fhir" + value;
                     }
 
                     return value;
@@ -465,16 +463,12 @@ public class FhirTypeBase
                 {
                     if (concatenatePath)
                     {
-                        string[] components = ToPascal(_path.Split('.'));
-                        string value = string.Join(concatenationDelimiter, components);
+                        string value = _path.ToPascalCase(true, concatenationDelimiter);
 
                         if ((reservedWords != null) &&
                             reservedWords.Contains(value))
                         {
-                            components[components.Length - 1] =
-                                "Fhir" + components[components.Length - 1];
-
-                            return string.Join(concatenationDelimiter, components);
+                            return "Fhir" + value;
                         }
 
                         return value;
@@ -495,24 +489,24 @@ public class FhirTypeBase
 
                     if (concatenatePath)
                     {
-                        string[] components = ToCamel(_path.Split('.'));
-                        value = string.Join(concatenationDelimiter, components);
+                        value = _path.ToCamelCase(true, concatenationDelimiter);
 
                         if ((reservedWords != null) &&
                             reservedWords.Contains(value))
                         {
-                            components[components.Length - 1] =
-                                "fhir" + ToPascal(components[components.Length - 1]);
-
-                            return string.Join(concatenationDelimiter, components);
+                            // change the main value to Pascal case since we are prefixing with lower case
+                            return "fhir" + value.ToPascalCase(false);
                         }
+
+                        return value;
                     }
 
-                    value = ToCamel(_name);
+                    value = _name.ToCamelCase(false);
 
                     if ((reservedWords != null) &&
                         reservedWords.Contains(value))
                     {
+                        // note we use capitialized for appending here since the prefix is lower-cased
                         return "fhir" + _nameCapitalized;
                     }
 
@@ -525,16 +519,15 @@ public class FhirTypeBase
 
                     if (concatenatePath)
                     {
-                        string[] components = ToUpperInvariant(_path.Split('.'));
-                        value = string.Join(concatenationDelimiter, components);
+                        value = _path.ToUpperCase(true, concatenationDelimiter);
 
                         if ((reservedWords != null) &&
                             reservedWords.Contains(value))
                         {
-                            components[components.Length - 1] = "FHIR" + components[components.Length - 1];
-
-                            return string.Join(concatenationDelimiter, components);
+                            return "FHIR" + value;
                         }
+
+                        return value;
                     }
 
                     value = _name.ToUpperInvariant();
@@ -542,7 +535,8 @@ public class FhirTypeBase
                     if ((reservedWords != null) &&
                         reservedWords.Contains(value))
                     {
-                        return "FHIR" + value;
+                        // note we use capitialized for appending here since the prefix is lower-cased
+                        return "FHIR" + _nameCapitalized;
                     }
 
                     return value;
@@ -554,15 +548,12 @@ public class FhirTypeBase
 
                     if (concatenatePath)
                     {
-                        string[] components = ToLowerInvariant(_path.Split('.'));
-                        value = string.Join(concatenationDelimiter, components);
+                        value = _path.ToLowerCase(true, concatenationDelimiter);
 
                         if ((reservedWords != null) &&
                             reservedWords.Contains(value))
                         {
-                            components[components.Length - 1] = "fhir" + components[components.Length - 1];
-
-                            return string.Join(concatenationDelimiter, components);
+                            return "fhir" + value;
                         }
                     }
 

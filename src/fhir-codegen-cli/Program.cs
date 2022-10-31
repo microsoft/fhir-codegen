@@ -163,23 +163,23 @@ public static class Program
                 getDefaultValue: () => string.Empty,
                 "'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.r4.core#4.0.1|hl7.fhir.us.core#latest)."),
             new Option<string>(
-                aliases: new string[] { "--load-r2", "--load-DSTU2" },
+                aliases: new string[] { "--load-r2", "--load-R2", "--load-dstu2", "--load-DSTU2" },
                 getDefaultValue: () => string.Empty,
                 "If FHIR DSTU2 should be loaded, which version (e.g., 1.0.2 or latest)"),
             new Option<string>(
-                aliases: new string[] { "--load-r3", "--load-STU3" },
+                aliases: new string[] { "--load-r3", "--load-R3", "--load-stu3", "--load-STU3" },
                 getDefaultValue: () => string.Empty,
                 "If FHIR STU3 should be loaded, which version (e.g., 3.0.2 or latest)"),
             new Option<string>(
-                name: "--load-r4",
+                aliases: new string[] { "--load-r4", "--load-R4" },
                 getDefaultValue: () => string.Empty,
                 "If FHIR R4 should be loaded, which version (e.g., 4.0.1 or latest)"),
             new Option<string>(
-                name: "--load-r4b",
+                aliases: new string[] { "--load-r4b", "--load-R4B" },
                 getDefaultValue: () => string.Empty,
                 "If FHIR R4B should be loaded, which version (e.g., 4.3.0 or latest)"),
             new Option<string>(
-                name: "--load-r5",
+                aliases: new string[] { "--load-r5", "--load-R5" },
                 getDefaultValue: () => string.Empty,
                 "If FHIR R5 should be loaded, which version (e.g., 5.0.0-ballot or latest)"),
 

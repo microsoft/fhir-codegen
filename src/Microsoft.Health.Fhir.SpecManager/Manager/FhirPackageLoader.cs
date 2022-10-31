@@ -99,12 +99,20 @@ public static class FhirPackageLoader
                         break;
 
                     default:
-                        ProcessFileGroup(
-                            contentDirectory,
-                            files,
-                            packageInfo,
-                            processedFiles,
-                            checkUnescaped);
+                        if (resourceType.Equals("Observation"))
+                        {
+                            Console.Write("");
+                        }
+
+                        if (packageInfo.ShouldProcessResource(resourceType))
+                        {
+                            ProcessFileGroup(
+                                contentDirectory,
+                                files,
+                                packageInfo,
+                                processedFiles,
+                                checkUnescaped);
+                        }
                         break;
                 }
             }

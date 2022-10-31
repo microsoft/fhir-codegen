@@ -2171,7 +2171,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             case FhirPackageCommon.FhirPackageTypeEnum.Unknown:
             case FhirPackageCommon.FhirPackageTypeEnum.IG:
             default:
-                return true;
+                return FhirPackageCommon.ShouldProcessResource(resourceName);
         }
     }
 

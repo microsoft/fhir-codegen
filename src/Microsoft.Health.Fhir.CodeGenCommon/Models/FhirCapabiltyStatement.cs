@@ -16,18 +16,18 @@ public class FhirCapabiltyStatement : ICloneable
     {
         /// <summary>An enum constant representing the may option.</summary>
         [FhirLiteral("MAY")]
-        May,
+        MAY,
 
         /// <summary>An enum constant representing the should option.</summary>
         [FhirLiteral("SHOULD")]
-        Should,
+        SHOULD,
 
         /// <summary>An enum constant representing the shall option.</summary>
         [FhirLiteral("SHALL")]
-        Shall,
+        SHALL,
 
-        /// <summary>An enum constant representing the none option.</summary>
-        None,
+        /// <summary>No conformance expectation has been specified.</summary>
+        NotSpecified,
     }
 
     /// <summary>A value with a conformance expectation.</summary>
@@ -69,6 +69,10 @@ public class FhirCapabiltyStatement : ICloneable
         string url,
         string name,
         string title,
+        //string description,
+        //string narrative,
+        //string narrativeStatus,
+        //string kind,
         string fhirVersion,
         IEnumerable<string> fhirMimeTypes,
         IEnumerable<string> fhirMimeTypeExpectations,
@@ -450,7 +454,7 @@ public class FhirCapabiltyStatement : ICloneable
                 }
                 else
                 {
-                    expectList.Add(new(val, lit, ExpectationCodes.None));
+                    expectList.Add(new(val, lit, ExpectationCodes.NotSpecified));
                 }
             }
         }

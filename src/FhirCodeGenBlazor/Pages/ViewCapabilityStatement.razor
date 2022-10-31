@@ -18,7 +18,7 @@ else
     @if (fhirCaps != null)
     {
         <MudExpansionPanels MultiExpansion="true">
-            <MudExpansionPanel Text="Capability Statement Information">
+            <MudExpansionPanel Text="Capability Statement Information" IsInitiallyExpanded="true">
                 <MudGrid Spacing="1">
                     <MudItem xs="12"><MudText Typo="Typo.h5">FHIR Capability Statement: @fhirCaps.Name</MudText></MudItem>
 
@@ -60,8 +60,63 @@ else
                         }
                     </MudItem>
 
+                    <MudItem xs="2">Patch MIME Types</MudItem>
+                    <MudItem xs="10">
+                        @foreach (FhirCapabiltyStatement.ValWithExpectation<string> v in fhirCaps.PatchMimeTypesEx)
+                        {
+                            <MudChip>@(v.Value + " (" + v.ExpectationCode + ")")</MudChip>
+                        }
+                    </MudItem>
+
+                    <MudItem xs="2">Instantiates (Implements)</MudItem>
+                    <MudItem xs="10">
+                        @foreach (FhirCapabiltyStatement.ValWithExpectation<string> v in fhirCaps.InstantiatesEx)
+                        {
+                            <MudChip>@(v.Value + " (" + v.ExpectationCode + ")")</MudChip>
+                        }
+                    </MudItem>
+
+                    <MudItem xs="2">Supported IGs</MudItem>
+                    <MudItem xs="10">
+                        @foreach (FhirCapabiltyStatement.ValWithExpectation<string> v in fhirCaps.ImplementationGuidesEx)
+                        {
+                            <MudChip>@(v.Value + " (" + v.ExpectationCode + ")")</MudChip>
+                        }
+                    </MudItem>
                 </MudGrid>
             </MudExpansionPanel>
+            <MudExpansionPanel Text="Summary">
+@*                <MudTable Items="@fhirCaps.ResourceInteractions.Values"
+                      Striped="true"
+                      Hover="true"
+                      Dense="true"
+                      Height="60vh"
+                      FixedHeader="true">
+                    <ColGroup>
+                        <col style="width: 5vw!important;" />
+                        <col style="width: 5vw!important;" />
+                        <col style="width: 20vw!important;" />
+                        <col style="width: 70vw!important;" />
+                    </ColGroup>
+                    <HeaderContent>
+                        <MudTh>Resource Type</MudTh>
+                        <MudTh>Profiles</MudTh>
+                        <MudTh>Searches</MudTh>
+                        <MudTh></MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd><MudText Typo="Typo.body2">@context.Concept.Code</MudText></MudTd>
+                        <MudTd>@context.Concept.Display</MudTd>
+                        <MudTd>@context.Concept.Definition</MudTd>
+                        <MudTd>@GetPropertyString(context.Concept)</MudTd>
+                    </RowTemplate>
+                </MudTable>
+*@            </MudExpansionPanel>
+            <MudExpansionPanel Text="Server Search Parameters">
+            </MudExpansionPanel>
+            <MudExpansionPanel Text="Server Operations">
+            </MudExpansionPanel>
+
         </MudExpansionPanels>
 
 @*        @if (fhirCaps?.ConceptLookup?.Any() ?? false)
@@ -124,6 +179,10 @@ else
 
     /// <summary>A FHIR Capability Statement.</summary>
     private FhirCapabiltyStatement? fhirCaps = null;
+
+
+
+    //private IEnumerable<dynamic> expandedInteractions =  
 
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
