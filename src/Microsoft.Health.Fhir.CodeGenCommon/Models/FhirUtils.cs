@@ -489,7 +489,7 @@ public abstract class FhirUtils
         }
 
         string value = input.Trim();
-        value = value.Replace("\"", "\\\"");
+        value = value.Replace("\"", "\\\"").Replace("\n", "<br/> ");
 
         if (value.Contains("\n", StringComparison.Ordinal))
         {

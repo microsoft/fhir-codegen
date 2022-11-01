@@ -42,12 +42,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             { "boolean", "FhirBoolean" },
             { "dateTime", "FhirDateTime" },
+            { "date", "Date" },
+            { "time", "Time" },
+            { "instant", "Instant" },
+            { "id", "Id" },
+            { "positiveInt", "PositiveInt" },
             { "decimal", "FhirDecimal" },
+            { "integer", "Integer" },
             { "Reference", "ResourceReference" },
             { "string", "FhirString" },
             { "uri", "FhirUri" },
             { "url", "FhirUrl" },
             { "xhtml", "XHtml" },
+            { "canonical", "Canonical" },
+            { "markdown", "Markdown" },
+
         };
 
         /// <summary>Primitive types that have a specific validation attribute on their Value property.</summary>
@@ -68,7 +77,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="value">The value.</param>
         /// <param name="isSummary">(Optional) True if is summary, false if not.</param>
         /// <param name="singleLine">(Optional) True if this is a short comment using a single line comment prefix. Implies isSummary = false.</param>
-        public static void WriteIndentedComment(ExportStreamWriter writer, string value, bool isSummary = true, bool singleLine = false)
+        public static void WriteIndentedComment(ExportStreamWriter writer, string value, bool isSummary = true, bool singleLine = false, bool encodeHtml = true)
         {
             if (string.IsNullOrEmpty(value))
             {
@@ -86,9 +95,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
 #pragma warning disable CA1307 // Specify StringComparison
-            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n")
+            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n");
 #pragma warning restore CA1307 // Specify StringComparison
-                .Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
+            if (encodeHtml)
+                comment = comment.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
 
             string[] lines = comment.Split('\n');
             foreach (string line in lines)
