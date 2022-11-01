@@ -2173,36 +2173,15 @@ public class ModelBuilder
         // TODO(ginoc): figure out which response headers belong on which response types
 
         OpenApiResponses r = new();
+        emitResponse(_openApiOptions.SingleResponseCode ? responseCodes.Take(1) : responseCodes, resourceName, schemas, r);
+        return r;
 
-        if (_openApiOptions.SingleResponseCode)
-        {
-            switch (responseCodes[0])
-            {
-                case 200:
-                case 201:
-                    r.Add(
-                        responseCodes[0].ToString(),
-                        new OpenApiResponse()
-                        {
-                            Description = _httpResponseDescriptions[responseCodes[0]],
-                            Content = BuildContentMap(resourceName, schemas),
-                        });
-                    break;
-
-                default:
-                    r.Add(
-                        responseCodes[0].ToString(),
-                        new OpenApiResponse()
-                        {
-                            Description = _httpResponseDescriptions[responseCodes[0]],
-                        });
-                    break;
-            }
-        }
-        else
+        void emitResponse(IEnumerable<int> responseCodes, string resourceName, Dictionary<string, OpenApiSchema> schemas, OpenApiResponses r)
         {
             foreach (int code in responseCodes)
             {
+                bool isErrorResponse = code >= 400;
+
                 switch (code)
                 {
                     case 200:
@@ -2222,13 +2201,12 @@ public class ModelBuilder
                             new OpenApiResponse()
                             {
                                 Description = _httpResponseDescriptions[code],
+                                Content = isErrorResponse ? BuildContentMap("OperationOutcome", schemas) : new OpenApiResponse().Content
                             });
                         break;
                 }
             }
         }
-
-        return r;
     }
 
     /// <summary>Gets the interactions in this collection.</summary>
@@ -2755,14 +2733,7 @@ public class ModelBuilder
                 : null,
         };
 
-        operation.Responses = new OpenApiResponses()
-        {
-            ["200"] = new OpenApiResponse()
-            {
-                Description = "OK",
-                Content = BuildContentMap(resourceName, schemas),
-            },
-        };
+        operation.Responses = BuildResponses(new[] { 200 }, resourceName, schemas);
 
         return operation;
     }
