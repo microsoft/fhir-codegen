@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Order", IsResource=true)]
+  [FhirType("Order","http://hl7.org/fhir/StructureDefinition/Order", IsResource=true)]
   public partial class Order : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -114,6 +114,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new WhenComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as WhenComponent;
@@ -158,6 +159,29 @@ namespace Hl7.Fhir.Model
           if (Code != null) yield return new ElementValue("code", Code);
           if (Schedule != null) yield return new ElementValue("schedule", Schedule);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "code":
+            value = Code;
+            return Code is not null;
+          case "schedule":
+            value = Schedule;
+            return Schedule is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+        if (Schedule is not null) yield return new KeyValuePair<string,object>("schedule",Schedule);
       }
 
     }
@@ -257,6 +281,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("reason", InSummary=true, Order=140, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Resource")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [DataMember]
     public Hl7.Fhir.Model.DataType Reason
@@ -322,6 +347,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Order());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Order;
@@ -390,6 +416,53 @@ namespace Hl7.Fhir.Model
         if (When != null) yield return new ElementValue("when", When);
         foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "source":
+          value = Source;
+          return Source is not null;
+        case "target":
+          value = Target;
+          return Target is not null;
+        case "reason":
+          value = Reason;
+          return Reason is not null;
+        case "when":
+          value = When;
+          return When is not null;
+        case "detail":
+          value = Detail;
+          return Detail?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Source is not null) yield return new KeyValuePair<string,object>("source",Source);
+      if (Target is not null) yield return new KeyValuePair<string,object>("target",Target);
+      if (Reason is not null) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (When is not null) yield return new KeyValuePair<string,object>("when",When);
+      if (Detail?.Any() == true) yield return new KeyValuePair<string,object>("detail",Detail);
     }
 
   }

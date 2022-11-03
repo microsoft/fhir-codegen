@@ -99,11 +99,6 @@ public static class FhirPackageLoader
                         break;
 
                     default:
-                        if (resourceType.Equals("Observation"))
-                        {
-                            Console.Write("");
-                        }
-
                         if (packageInfo.ShouldProcessResource(resourceType))
                         {
                             ProcessFileGroup(
@@ -244,7 +239,8 @@ public static class FhirPackageLoader
                 }
 
                 // parse the file - note: using var here is siginificantly more performant than object
-                if (fhirInfo.TryParseResource(contents, out var resource, out string rt))
+                if (fhirInfo.TryParseResource(contents, out var resource, out string rt) &&
+                    fhirInfo.ShouldProcessResource(rt))
                 {
                     // process this resource
                     fhirInfo.ProcessResource(resource);

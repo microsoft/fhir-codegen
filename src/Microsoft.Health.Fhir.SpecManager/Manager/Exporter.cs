@@ -193,11 +193,11 @@ public abstract class Exporter
 
         if (info.IsDevBuild)
         {
-            langVersionString = $"local_{exportLanguage.LanguageName}_{info.FhirSequence}_{info.ReleaseName}";
+            langVersionString = $"local_{exportLanguage.LanguageName}_{FhirPackageCommon.RForSequence(info.FhirSequence)}_{info.ReleaseName}";
         }
         else
         {
-            langVersionString = $"{exportLanguage.LanguageName}_{info.FhirSequence}";
+            langVersionString = $"{exportLanguage.LanguageName}_{FhirPackageCommon.RForSequence(info.FhirSequence)}";
         }
 
         if (exportedFiles.Length == 1)

@@ -23,6 +23,13 @@ public sealed class FromFhirExpando : IFhirConverter
     private const string ExtUrlCapExpectation = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation";
     private const string ExtUrlCapSearchParamCombo = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination";
 
+    private const string ExtUrlSdRegex = "http://hl7.org/fhir/StructureDefinition/regex";
+    private const string ExtUrlSdRegex2 = "http://hl7.org/fhir/StructureDefinition/structuredefinition-regex";
+
+    private const string ExtUrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
+    private const string ExtUrlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
+    private const string ExtUrlRdfType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type";
+
     /// <summary>The errors.</summary>
     private static List<string> _errors;
 
@@ -921,25 +928,19 @@ public sealed class FromFhirExpando : IFhirConverter
                 {
                     if (sd.GetString("type") == "Extension")
                     {
-                        ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Extension);
                         artifactClass = FhirArtifactClassEnum.Extension;
                     }
                     else
                     {
-                        ProcessComplex(sd, fhirVersionInfo, FhirArtifactClassEnum.Profile);
                         artifactClass = FhirArtifactClassEnum.Profile;
                     }
                 }
                 else
                 {
                     artifactClass = sdKind == "complex-type" ? FhirArtifactClassEnum.ComplexType : FhirArtifactClassEnum.Resource;
-
-
-                    ProcessComplex(
-                        sd,
-                        fhirVersionInfo,
-                        artifactClass);
                 }
+
+                ProcessComplex(sd, fhirVersionInfo, artifactClass);
 
                 break;
 
@@ -996,7 +997,16 @@ public sealed class FromFhirExpando : IFhirConverter
                 {
                     string typeCode = type.GetString("code") ?? string.Empty;
 
-                    if (!string.IsNullOrEmpty(typeCode))
+                    if (string.IsNullOrEmpty(typeCode))
+                    {
+                        typeCode = type.GetExtensionValueString(ExtUrlXmlType, "_code");
+
+                        if (FhirElementType.IsXmlBaseType(typeCode, out string xmlFhirType))
+                        {
+                            baseTypeName = xmlFhirType;
+                        }
+                    }
+                    else
                     {
                         if (FhirElementType.IsFhirPathType(typeCode, out string fhirType))
                         {
@@ -1013,16 +1023,10 @@ public sealed class FromFhirExpando : IFhirConverter
                         continue;
                     }
 
-                    foreach (FhirExpando ext in type.GetExpandoEnumerable("extension"))
+                    regex = type.GetExtensionValueString(ExtUrlSdRegex) ?? string.Empty;
+                    if (string.IsNullOrEmpty(regex))
                     {
-                        string extUrl = ext.GetString("url");
-
-                        if ((extUrl == "http://hl7.org/fhir/StructureDefinition/regex") ||
-                            (extUrl == "http://hl7.org/fhir/StructureDefinition/structuredefinition-regex"))
-                        {
-                            regex = ext.GetString("valueString");
-                            break;
-                        }
+                        regex = type.GetExtensionValueString(ExtUrlSdRegex2) ?? string.Empty;
                     }
                 }
             }
@@ -1041,6 +1045,8 @@ public sealed class FromFhirExpando : IFhirConverter
             sdId,
             sdName,
             baseTypeName,
+            sd.GetString("baseDefinition") ?? string.Empty,
+            sd.GetString("version") ?? string.Empty,
             new Uri(sd.GetString("url") ?? string.Empty),
             publicationStatus,
             standardStatus,
@@ -1049,7 +1055,10 @@ public sealed class FromFhirExpando : IFhirConverter
             descriptionShort,
             definition,
             comment,
-            regex);
+            regex,
+            sd.GetString("text", "div"),
+            sd.GetString("text", "status"),
+            sd.GetString("fhirVersion"));
 
         // add to our dictionary of primitive types
         fhirVersionInfo.AddPrimitive(primitive);
@@ -1124,11 +1133,14 @@ public sealed class FromFhirExpando : IFhirConverter
 
             // create a new complex type object for this type or resource
             FhirComplex complex = new FhirComplex(
+                artifactClass,
                 sdId,
                 sdName,
-                string.Empty,
+                sdName,
                 string.Empty,
                 sdType,
+                sd.GetString("baseDefinition") ?? string.Empty,
+                sd.GetString("version") ?? string.Empty,
                 new Uri(sdUrl),
                 publicationStatus,
                 standardStatus,
@@ -1137,9 +1149,12 @@ public sealed class FromFhirExpando : IFhirConverter
                 descriptionShort,
                 definition,
                 string.Empty,
-                null,
                 contextElements,
-                sd.GetBool("abstract") ?? false);
+                sd.GetBool("abstract") ?? false,
+                string.Empty,
+                sd.GetString("text", "div") ?? string.Empty,
+                sd.GetString("text", "status") ?? string.Empty,
+                sd.GetString("fhirVersion") ?? string.Empty);
 
             // check for a base definition
             if (sd["baseDefinition"] != null)
@@ -1240,6 +1255,7 @@ public sealed class FromFhirExpando : IFhirConverter
                             parent.Elements.Add(
                                 elementPath,
                                 new FhirElement(
+                                    complex,
                                     elementPath,
                                     elementPath,
                                     basePath,
@@ -1299,7 +1315,13 @@ public sealed class FromFhirExpando : IFhirConverter
                         if (parent.Elements.ContainsKey(elementPath))
                         {
                             // add this slice to the field
-                            parent.Elements[elementPath].AddSlice(sdUrl, sliceName);
+                            parent.Elements[elementPath].AddSlice(
+                                sdUrl,
+                                sliceName,
+                                element.GetString("description") ?? string.Empty,
+                                string.Empty,
+                                string.Empty,
+                                parent);
                         }
 
                         // only slice parent has slice name
@@ -1433,6 +1455,7 @@ public sealed class FromFhirExpando : IFhirConverter
                     }
 
                     FhirElement fhirElement = new FhirElement(
+                        complex,
                         elementId,
                         elementPath,
                         basePath,
@@ -1914,8 +1937,8 @@ public sealed class FromFhirExpando : IFhirConverter
         }
 
         FhirImplementationGuide implementationGuide = new FhirImplementationGuide(
-            ig.GetString("name"),
             ig.GetString("id"),
+            ig.GetString("name"),
             new Uri(ig.GetString("url") ?? string.Empty),
             ig.GetString("version") ?? string.Empty,
             publicationStatus,
@@ -1927,7 +1950,10 @@ public sealed class FromFhirExpando : IFhirConverter
             ig.GetString("description") ?? string.Empty,
             ig.GetString("packageId"),
             ig.GetStringArray("fhirVersion"),
-            dependsOn);
+            dependsOn,
+            string.Empty,
+            ig.GetString("text", "div"),
+            ig.GetString("text", "status"));
 
         // add our code system
         fhirVersionInfo.AddImplementationGuide(implementationGuide);
@@ -2132,6 +2158,11 @@ public sealed class FromFhirExpando : IFhirConverter
             ? caps.GetString("url") ?? string.Empty
             : serverUrl;
 
+        if (string.IsNullOrEmpty(capUrl))
+        {
+            capUrl = "http://example.org/missing/url/" + capId;
+        }
+
         string swName = caps.GetString("software", "name") ?? string.Empty;
         string swVersion = caps.GetString("software", "version") ?? string.Empty;
         string swReleaseDate = caps.GetString("software", "releaseDate") ?? string.Empty;
@@ -2232,6 +2263,9 @@ public sealed class FromFhirExpando : IFhirConverter
             }
         }
 
+        string standardStatus = caps.GetExtensionValueCode(ExtUrlStandardStatus);
+        int? fmmLevel = caps.GetExtensionValueInteger(ExtUrlFmm);
+
         capabilityStatement = new FhirCapabiltyStatement(
             serverInteractions,
             serverInteractionExpectations,
@@ -2239,7 +2273,16 @@ public sealed class FromFhirExpando : IFhirConverter
             capUrl,
             caps.GetString("name"),
             caps.GetString("title"),
+            caps.GetString("version"),
+            caps.GetString("status") ?? string.Empty,
+            standardStatus,
+            fmmLevel,
+            caps.GetBool("experimental") == true,
+            caps.GetString("description"),
+            caps.GetString("text", "div"),
+            caps.GetString("text", "status"),
             caps.GetString("fhirVersion"),
+            caps.GetString("kind"),
             caps.GetStringArray("format"),
             caps.GetExtensionValueCodeArray(ExtUrlCapExpectation, "_format"),
             caps.GetStringArray("patchFormat"),

@@ -3,10 +3,12 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A class representing a FHIR complex type.</summary>
-public class FhirComplex : FhirTypeBase
+public class FhirComplex : FhirModelBase
 {
     private Dictionary<string, FhirComplex> _components;
     private FhirElement _rootElement;
@@ -15,14 +17,16 @@ public class FhirComplex : FhirTypeBase
     private Dictionary<string, FhirOperation> _typeOperations;
     private Dictionary<string, FhirOperation> _instanceOperations;
     private List<string> _contextElements;
-    private List<FhirConstraint> _constraints;
+    private Dictionary<string, FhirConstraint> _constraintsByKey;
 
     /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
     /// <param name="id">              The id of this resource/datatype/extension.</param>
+    /// <param name="name">            Name of this definition.</param>
     /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
     /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
     /// <param name="baseTypeName">    Base type of this complex structure, if provided.</param>
     /// <param name="baseTypeCanonical">Base type canonical of this complex structure, if provided</param>
+    /// <param name="version">         Version of this definition.</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
@@ -31,13 +35,15 @@ public class FhirComplex : FhirTypeBase
     /// <param name="shortDescription">Information describing the short.</param>
     /// <param name="purpose">         The purpose.</param>
     /// <param name="comment">         The comment.</param>
-    /// <param name="validationRegEx"> The validation RegEx.</param>
     public FhirComplex(
+        FhirArtifactClassEnum artifactType,
         string id,
+        string name,
         string path,
         string explicitName,
         string baseTypeName,
         string baseTypeCanonical,
+        string version,
         Uri url,
         string publicationStatus,
         string standardStatus,
@@ -46,11 +52,18 @@ public class FhirComplex : FhirTypeBase
         string shortDescription,
         string purpose,
         string comment,
-        string validationRegEx)
+        string validationRegEx,
+        string narrative,
+        string narrativeStatus,
+        string fhirVersion)
         : base(
+            artifactType,
             id,
+            name,
             path,
             baseTypeName,
+            baseTypeCanonical,
+            version,
             url,
             publicationStatus,
             standardStatus,
@@ -60,8 +73,9 @@ public class FhirComplex : FhirTypeBase
             purpose,
             comment,
             validationRegEx,
-            baseTypeName,
-            baseTypeCanonical)
+            narrative,
+            narrativeStatus,
+            fhirVersion)
     {
         _components = new();
         _rootElement = null;
@@ -69,7 +83,7 @@ public class FhirComplex : FhirTypeBase
         _searchParameters = new();
         _typeOperations = new();
         _instanceOperations = new();
-        _constraints = new();
+        _constraintsByKey = new();
         _contextElements = new();
         SliceName = string.Empty;
         ExplicitName = explicitName;
@@ -81,11 +95,13 @@ public class FhirComplex : FhirTypeBase
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirComplex"/> class.
     /// </summary>
+    /// <param name="artifactType">    Type of artifact this complex object represents.</param>
     /// <param name="id">              The id of this resource/data type/extension.</param>
-    /// <param name="path">            The dot-notation path to this resource/data type/extension.</param>
+    /// <param name="name">            The 'name' of this model.</param>
     /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
     /// <param name="baseTypeName">    Base type name for this complex structure, if provided.</param>
     /// <param name="baseTypeCanonical">Base type canonical of this complex structure, if provided</param>
+    /// <param name="version">         Version of this definition.</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
@@ -94,15 +110,18 @@ public class FhirComplex : FhirTypeBase
     /// <param name="shortDescription">Information describing the short.</param>
     /// <param name="purpose">         The definition.</param>
     /// <param name="comment">         The comment.</param>
-    /// <param name="validationRegEx"> The validation RegEx.</param>
     /// <param name="contextElements"> The context elements.</param>
     /// <param name="isAbstract">      If the complex structure is an abstract type.</param>
+    /// <param name="validationRegEx"> Validation regex pattern for this definition.</param>
     public FhirComplex(
+        FhirArtifactClassEnum artifactType,
         string id,
+        string name,
         string path,
         string explicitName,
         string baseTypeName,
         string baseTypeCanonical,
+        string version,
         Uri url,
         string publicationStatus,
         string standardStatus,
@@ -111,15 +130,21 @@ public class FhirComplex : FhirTypeBase
         string shortDescription,
         string purpose,
         string comment,
-        string validationRegEx,
         List<string> contextElements,
-        bool isAbstract)
+        bool isAbstract,
+        string validationRegEx,
+        string narrative,
+        string narrativeStatus,
+        string fhirVersion)
         : this(
+            artifactType,
             id,
+            name,
             path,
             explicitName,
             baseTypeName,
             baseTypeCanonical,
+            version,
             url,
             publicationStatus,
             standardStatus,
@@ -128,73 +153,155 @@ public class FhirComplex : FhirTypeBase
             shortDescription,
             purpose,
             comment,
-            validationRegEx)
+            validationRegEx,
+            narrative,
+            narrativeStatus,
+            fhirVersion)
     {
         _contextElements = contextElements;
         IsAbstract = isAbstract;
     }
 
-    /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
-    [System.Text.Json.Serialization.JsonConstructor]
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirComplex"/> class for a slice.
+    /// </summary>
+    /// <param name="artifactType">    Type of artifact this complex object represents.</param>
+    /// <param name="id">              The id of this resource/data type/extension.</param>
+    /// <param name="elementName">     The element name this model is defined by (e.g., the path to a backbone element).</param>
+    /// <param name="sliceName">       Name of this slice.</param>
+    /// <param name="path">            Path to this definition.</param>
+    /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
+    /// <param name="baseTypeName">    Base type name for this complex structure, if provided.</param>
+    /// <param name="baseTypeCanonical">Base type canonical of this complex structure, if provided</param>
+    /// <param name="version">         Version of this definition.</param>
+    /// <param name="url">             URL of the resource.</param>
+    /// <param name="publicationStatus">The publication status.</param>
+    /// <param name="standardStatus">  The standard status.</param>
+    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
+    /// <param name="isExperimental">  If this complex type is marked experimental.</param>
+    /// <param name="shortDescription">Information describing the short.</param>
+    /// <param name="purpose">         The definition.</param>
+    /// <param name="comment">         The comment.</param>
+    /// <param name="contextElements"> The context elements.</param>
+    /// <param name="isAbstract">      If the complex structure is an abstract type.</param>
+    /// <param name="validationRegEx"> Validation regex pattern for this definition.</param>
     public FhirComplex(
+        FhirArtifactClassEnum artifactType,
         string id,
+        string elementName,
+        string sliceName,
         string path,
-        string name,
         string explicitName,
+        string version,
         Uri url,
         string publicationStatus,
         string standardStatus,
         int? fmmLevel,
         bool isExperimental,
-        string baseTypeName,
-        string baseTypeCanonical,
         string shortDescription,
         string purpose,
         string comment,
         string validationRegEx,
-        bool isAbstract,
-        bool isPlaceholder,
-        string sliceName,
-        FhirElement rootElement,
-        Dictionary<string, FhirElement> elements,
-        Dictionary<string, FhirComplex> components,
-        Dictionary<string, FhirSearchParam> searchParameters,
-        Dictionary<string, FhirOperation> typeOperations,
-        Dictionary<string, FhirOperation> instanceOperations,
-        List<string> contextElements,
-        List<FhirConstraint> constraints)
-    : this(
-        id,
-        path,
-        explicitName,
-        baseTypeName,
-        baseTypeCanonical,
-        url,
-        publicationStatus,
-        standardStatus,
-        fmmLevel,
-        isExperimental,
-        shortDescription,
-        purpose,
-        comment,
-        validationRegEx)
+        string narrative,
+        string narrativeStatus,
+        string fhirVersion)
+        : this(
+            artifactType,
+            id,
+            elementName,
+            path,
+            explicitName,
+            string.Empty,
+            string.Empty,
+            version,
+            url,
+            publicationStatus,
+            standardStatus,
+            fmmLevel,
+            isExperimental,
+            shortDescription,
+            purpose,
+            comment,
+            validationRegEx,
+            narrative,
+            narrativeStatus,
+            fhirVersion)
     {
-        IsAbstract = isAbstract;
-        IsPlaceholder = isPlaceholder;
         SliceName = sliceName;
-
-        _rootElement = rootElement;
-        _elements = elements ?? new();
-        _components = components ?? new();
-        _searchParameters = searchParameters ?? new();
-        _typeOperations = typeOperations ?? new();
-        _instanceOperations = instanceOperations ?? new();
-        _contextElements = contextElements ?? new();
-        _constraints = constraints ?? new();
-        Parent = null;
-        ParentArtifactClass = FhirArtifactClassEnum.Unknown;
-        ResolvedParentDirective = string.Empty;
     }
+
+    ///// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
+    //[System.Text.Json.Serialization.JsonConstructor]
+    //public FhirComplex(
+    //    FhirArtifactClassEnum artifactType,
+    //    string id,
+    //    string name,
+    //    string path,
+    //    string explicitName,
+    //    string baseTypeName,
+    //    string baseTypeCanonical,
+    //    string version,
+    //    Uri url,
+    //    string publicationStatus,
+    //    string standardStatus,
+    //    int? fmmLevel,
+    //    bool isExperimental,
+    //    string shortDescription,
+    //    string purpose,
+    //    string comment,
+    //    bool isAbstract,
+    //    bool isPlaceholder,
+    //    string sliceName,
+    //    FhirElement rootElement,
+    //    Dictionary<string, FhirElement> elements,
+    //    Dictionary<string, FhirComplex> components,
+    //    Dictionary<string, FhirSearchParam> searchParameters,
+    //    Dictionary<string, FhirOperation> typeOperations,
+    //    Dictionary<string, FhirOperation> instanceOperations,
+    //    List<string> contextElements,
+    //    IEnumerable<FhirConstraint> constraints,
+    //    string validationRegEx,
+    //    string narrative,
+    //    string narrativeStatus,
+    //    string fhirVersion)
+    //    : this(
+    //        artifactType,
+    //        id,
+    //        name,
+    //        path,
+    //        explicitName,
+    //        baseTypeName,
+    //        baseTypeCanonical,
+    //        version,
+    //        url,
+    //        publicationStatus,
+    //        standardStatus,
+    //        fmmLevel,
+    //        isExperimental,
+    //        shortDescription,
+    //        purpose,
+    //        comment,
+    //        validationRegEx,
+    //        narrative,
+    //        narrativeStatus,
+    //        fhirVersion)
+    //{
+    //    IsAbstract = isAbstract;
+    //    IsPlaceholder = isPlaceholder;
+    //    SliceName = sliceName;
+
+    //    _rootElement = rootElement;
+    //    _elements = elements ?? new();
+    //    _components = components ?? new();
+    //    _searchParameters = searchParameters ?? new();
+    //    _typeOperations = typeOperations ?? new();
+    //    _instanceOperations = instanceOperations ?? new();
+    //    _contextElements = contextElements ?? new();
+    //    _constraintsByKey = constraints ?? new();
+    //    Parent = null;
+    //    ParentArtifactClass = FhirArtifactClassEnum.Unknown;
+    //    ResolvedParentDirective = string.Empty;
+    //}
 
     /// <summary>Values that represent fhir complex types.</summary>
     public enum FhirComplexType
@@ -266,13 +373,18 @@ public class FhirComplex : FhirTypeBase
     public List<string> ContextElements { get => _contextElements; }
 
     /// <summary>Gets the constraints.</summary>
-    public List<FhirConstraint> Constraints { get => _constraints; }
+    public IEnumerable<FhirConstraint> Constraints { get => _constraintsByKey.Values; }
 
     /// <summary>Adds a constraint.</summary>
     /// <param name="constraint">The constraint.</param>
     public void AddConstraint(FhirConstraint constraint)
     {
-        _constraints.Add(constraint);
+        if (_constraintsByKey.ContainsKey(constraint.Key))
+        {
+            return;
+        }
+
+        _constraintsByKey.Add(constraint.Key, constraint);
     }
 
     /// <summary>Adds a search parameter.</summary>
@@ -348,24 +460,41 @@ public class FhirComplex : FhirTypeBase
             elementType = property.ElementTypes.Values.ElementAt(0).Name;
         }
 
+        // TODO: adding name test
+        if (_components.ContainsKey(property.Name))
+        {
+            // change the element to point at the correct area
+            _elements[path].BaseTypeName = property.Path;
+
+            return true;
+        }
+
+        // TODO: changed Name to path here
+
         // create a new complex type from the property
         _components.Add(
             property.Path,
             new FhirComplex(
+                ArtifactClass,
                 property.Id,
+                property.Name,
                 property.Path,
                 property.ExplicitName,
                 elementType,
                 string.Empty,
+                Version,
                 property.URL,
-                property.PublicationStatus,
-                property.StandardStatus,
-                property.FhirMaturityLevel,
-                property.IsExperimental,
+                PublicationStatus,
+                StandardStatus,
+                FhirMaturityLevel,
+                IsExperimental,
                 property.ShortDescription,
                 property.Purpose,
                 property.Comment,
-                property.ValidationRegEx));
+                property.ValidationRegEx,
+                NarrativeText,
+                NarrativeStatus,
+                FhirVersion));
 
         // change the element to point at the new area
         _elements[path].BaseTypeName = property.Path;
@@ -589,12 +718,13 @@ public class FhirComplex : FhirTypeBase
     }
 
     /// <summary>Deep copy - cannot use Clone because of needed parameters.</summary>
+    /// <param name="artifactType">         Type of the artifact.</param>
     /// <param name="primitiveTypeMap">     The primitive type map.</param>
     /// <param name="copySlicing">          True to copy slicing.</param>
     /// <param name="canHideParentFields">  True if can hide parent fields, false if not.</param>
-    /// <param name="valueSetReferences">   [in,out] Value Set URLs and lists of FHIR paths that
-    ///  reference them.</param>
-    /// <param name="typeMapByPath">        [in,out] Type mappings by path.</param>
+    /// <param name="valueSetReferences">   Value Set URLs and lists of FHIR paths that reference
+    ///  them.</param>
+    /// <param name="typeMapByPath">        Type mappings by path.</param>
     /// <param name="supportedSearchParams">(Optional) Options for controlling the supported search.</param>
     /// <param name="serverSearchParams">   (Optional) Options for controlling the server search.</param>
     /// <param name="supportedOperations">  (Optional) The supported operations.</param>
@@ -614,52 +744,45 @@ public class FhirComplex : FhirTypeBase
         Dictionary<string, FhirCapOperation> serverOperations = null,
         bool includeExperimental = false)
     {
-        List<string> contextElements = null;
-
-        if (ContextElements != null)
-        {
-            contextElements = new List<string>();
-            foreach (string contextElement in ContextElements)
-            {
-                contextElements.Add(new string(contextElement));
-            }
-        }
+        List<string> contextElements = ContextElements?.Select(s => new string(s)).ToList() ?? null;
 
         // generate our base copy
         FhirComplex complex = new FhirComplex(
-                Id,
-                Path,
-                ExplicitName,
-                BaseTypeName,
-                BaseTypeCanonical,
-                URL,
-                PublicationStatus,
-                StandardStatus,
-                FhirMaturityLevel,
-                IsExperimental,
-                ShortDescription,
-                Purpose,
-                Comment,
-                ValidationRegEx,
-                ContextElements,
-                IsAbstract);
+            ArtifactClass,
+            Id,
+            Name,
+            Path,
+            ExplicitName,
+            BaseTypeName,
+            BaseTypeCanonical,
+            Version,
+            URL,
+            PublicationStatus,
+            StandardStatus,
+            FhirMaturityLevel,
+            IsExperimental,
+            ShortDescription,
+            Purpose,
+            Comment,
+            ContextElements,
+            IsAbstract,
+            ValidationRegEx,
+            NarrativeText,
+            NarrativeStatus,
+            FhirVersion);
 
         complex._rootElement = _rootElement;
-
-        if (!string.IsNullOrEmpty(SliceName))
-        {
-            complex.SliceName = this.SliceName;
-        }
+        complex.SliceName = SliceName;
 
         if (!string.IsNullOrEmpty(BaseTypeName))
         {
-            if ((primitiveTypeMap != null) && primitiveTypeMap.ContainsKey(this.BaseTypeName))
+            if ((primitiveTypeMap != null) && primitiveTypeMap.ContainsKey(BaseTypeName))
             {
-                complex.BaseTypeName = primitiveTypeMap[this.BaseTypeName];
+                complex.BaseTypeName = primitiveTypeMap[BaseTypeName];
             }
             else
             {
-                complex.BaseTypeName = this.BaseTypeName;
+                complex.BaseTypeName = BaseTypeName;
             }
         }
 
@@ -676,7 +799,8 @@ public class FhirComplex : FhirTypeBase
                     primitiveTypeMap,
                     copySlicing,
                     canHideParentFields,
-                    valueSetReferences);
+                    valueSetReferences,
+                    complex);
 
             complex.Elements.Add(element.Path, copied);
         }
@@ -817,10 +941,7 @@ public class FhirComplex : FhirTypeBase
             }
         }
 
-        if (_constraints != null)
-        {
-            complex._constraints = _constraints.Select(c => (FhirConstraint)c.Clone()).ToList();
-        }
+        complex._constraintsByKey = _constraintsByKey.DeepCopy();
 
         return complex;
     }

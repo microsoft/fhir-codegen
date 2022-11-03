@@ -85,6 +85,14 @@ else
                     </MudItem>
                 </MudGrid>
             </MudExpansionPanel>
+            @if (!string.IsNullOrEmpty(fhirCaps.NarrativeText))
+            {
+                <MudExpansionPanel Text="@("Narrative: " + fhirCaps.NarrativeStatus)">
+                    <MudPaper Class="pa-16 ma-2" Elevation="3">
+                        @(new MarkupString(fhirCaps.NarrativeText))
+                    </MudPaper>
+                </MudExpansionPanel>
+            }
             <MudExpansionPanel Text="Summary">
 @*                <MudTable Items="@fhirCaps.ResourceInteractions.Values"
                       Striped="true"

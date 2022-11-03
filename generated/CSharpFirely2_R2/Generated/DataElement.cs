@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("DataElement", IsResource=true)]
+  [FhirType("DataElement","http://hl7.org/fhir/StructureDefinition/DataElement", IsResource=true)]
   public partial class DataElement : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -179,6 +179,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ContactComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ContactComponent;
@@ -223,6 +224,29 @@ namespace Hl7.Fhir.Model
           if (NameElement != null) yield return new ElementValue("name", NameElement);
           foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "name":
+            value = NameElement;
+            return NameElement is not null;
+          case "telecom":
+            value = Telecom;
+            return Telecom?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+        if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
       }
 
     }
@@ -387,6 +411,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new MappingComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as MappingComponent;
@@ -439,6 +464,37 @@ namespace Hl7.Fhir.Model
           if (NameElement != null) yield return new ElementValue("name", NameElement);
           if (CommentsElement != null) yield return new ElementValue("comments", CommentsElement);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "identity":
+            value = IdentityElement;
+            return IdentityElement is not null;
+          case "uri":
+            value = UriElement;
+            return UriElement is not null;
+          case "name":
+            value = NameElement;
+            return NameElement is not null;
+          case "comments":
+            value = CommentsElement;
+            return CommentsElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (IdentityElement is not null) yield return new KeyValuePair<string,object>("identity",IdentityElement);
+        if (UriElement is not null) yield return new KeyValuePair<string,object>("uri",UriElement);
+        if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+        if (CommentsElement is not null) yield return new KeyValuePair<string,object>("comments",CommentsElement);
       }
 
     }
@@ -553,7 +609,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// draft | active | retired
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=130)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=130)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.ConformanceResourceStatus> StatusElement
@@ -738,6 +795,7 @@ namespace Hl7.Fhir.Model
     /// comparable | fully-specified | equivalent | convertable | scaleable | flexible
     /// </summary>
     [FhirElement("stringency", InSummary=true, Order=200)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.DataElement.DataElementStringency> StringencyElement
     {
@@ -825,6 +883,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new DataElement());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as DataElement;
@@ -917,6 +976,77 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Mapping) { if (elem != null) yield return new ElementValue("mapping", elem); }
         foreach (var elem in Element) { if (elem != null) yield return new ElementValue("element", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "url":
+          value = UrlElement;
+          return UrlElement is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "version":
+          value = VersionElement;
+          return VersionElement is not null;
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "experimental":
+          value = ExperimentalElement;
+          return ExperimentalElement is not null;
+        case "publisher":
+          value = PublisherElement;
+          return PublisherElement is not null;
+        case "contact":
+          value = Contact;
+          return Contact?.Any() == true;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "useContext":
+          value = UseContext;
+          return UseContext?.Any() == true;
+        case "copyright":
+          value = CopyrightElement;
+          return CopyrightElement is not null;
+        case "stringency":
+          value = StringencyElement;
+          return StringencyElement is not null;
+        case "mapping":
+          value = Mapping;
+          return Mapping?.Any() == true;
+        case "element":
+          value = Element;
+          return Element?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (UrlElement is not null) yield return new KeyValuePair<string,object>("url",UrlElement);
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (VersionElement is not null) yield return new KeyValuePair<string,object>("version",VersionElement);
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (ExperimentalElement is not null) yield return new KeyValuePair<string,object>("experimental",ExperimentalElement);
+      if (PublisherElement is not null) yield return new KeyValuePair<string,object>("publisher",PublisherElement);
+      if (Contact?.Any() == true) yield return new KeyValuePair<string,object>("contact",Contact);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (UseContext?.Any() == true) yield return new KeyValuePair<string,object>("useContext",UseContext);
+      if (CopyrightElement is not null) yield return new KeyValuePair<string,object>("copyright",CopyrightElement);
+      if (StringencyElement is not null) yield return new KeyValuePair<string,object>("stringency",StringencyElement);
+      if (Mapping?.Any() == true) yield return new KeyValuePair<string,object>("mapping",Mapping);
+      if (Element?.Any() == true) yield return new KeyValuePair<string,object>("element",Element);
     }
 
   }

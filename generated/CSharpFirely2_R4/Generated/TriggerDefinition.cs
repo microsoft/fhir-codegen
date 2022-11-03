@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("TriggerDefinition")]
+  [FhirType("TriggerDefinition","http://hl7.org/fhir/StructureDefinition/TriggerDefinition")]
   public partial class TriggerDefinition : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -117,6 +117,7 @@ namespace Hl7.Fhir.Model
     /// named-event | periodic | data-changed | data-added | data-modified | data-removed | data-accessed | data-access-ended
     /// </summary>
     [FhirElement("type", InSummary=true, Order=30)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.TriggerDefinition.TriggerType> TypeElement
@@ -181,6 +182,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("timing", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Schedule")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime))]
     [DataMember]
     public Hl7.Fhir.Model.DataType Timing
@@ -241,6 +243,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new TriggerDefinition());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as TriggerDefinition;
@@ -297,6 +300,41 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Data) { if (elem != null) yield return new ElementValue("data", elem); }
         if (Condition != null) yield return new ElementValue("condition", Condition);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "timing":
+          value = Timing;
+          return Timing is not null;
+        case "data":
+          value = Data;
+          return Data?.Any() == true;
+        case "condition":
+          value = Condition;
+          return Condition is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (Timing is not null) yield return new KeyValuePair<string,object>("timing",Timing);
+      if (Data?.Any() == true) yield return new KeyValuePair<string,object>("data",Data);
+      if (Condition is not null) yield return new KeyValuePair<string,object>("condition",Condition);
     }
 
   }

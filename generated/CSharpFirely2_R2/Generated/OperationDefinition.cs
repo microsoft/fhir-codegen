@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("OperationDefinition", IsResource=true)]
+  [FhirType("OperationDefinition","http://hl7.org/fhir/StructureDefinition/OperationDefinition", IsResource=true)]
   public partial class OperationDefinition : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -1088,6 +1088,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ContactComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ContactComponent;
@@ -1132,6 +1133,29 @@ namespace Hl7.Fhir.Model
           if (NameElement != null) yield return new ElementValue("name", NameElement);
           foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "name":
+            value = NameElement;
+            return NameElement is not null;
+          case "telecom":
+            value = Telecom;
+            return Telecom?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+        if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
       }
 
     }
@@ -1185,6 +1209,7 @@ namespace Hl7.Fhir.Model
       /// in | out
       /// </summary>
       [FhirElement("use", Order=50)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.OperationDefinition.OperationParameterUse> UseElement
@@ -1312,6 +1337,7 @@ namespace Hl7.Fhir.Model
       /// What type this parameter has
       /// </summary>
       [FhirElement("type", Order=90)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.OperationDefinition.ParameterTypesusedinOperationDefinitions> TypeElement
       {
@@ -1408,6 +1434,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ParameterComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ParameterComponent;
@@ -1482,6 +1509,57 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "name":
+            value = NameElement;
+            return NameElement is not null;
+          case "use":
+            value = UseElement;
+            return UseElement is not null;
+          case "min":
+            value = MinElement;
+            return MinElement is not null;
+          case "max":
+            value = MaxElement;
+            return MaxElement is not null;
+          case "documentation":
+            value = DocumentationElement;
+            return DocumentationElement is not null;
+          case "type":
+            value = TypeElement;
+            return TypeElement is not null;
+          case "profile":
+            value = Profile;
+            return Profile is not null;
+          case "binding":
+            value = Binding;
+            return Binding is not null;
+          case "part":
+            value = Part;
+            return Part?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+        if (UseElement is not null) yield return new KeyValuePair<string,object>("use",UseElement);
+        if (MinElement is not null) yield return new KeyValuePair<string,object>("min",MinElement);
+        if (MaxElement is not null) yield return new KeyValuePair<string,object>("max",MaxElement);
+        if (DocumentationElement is not null) yield return new KeyValuePair<string,object>("documentation",DocumentationElement);
+        if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+        if (Profile is not null) yield return new KeyValuePair<string,object>("profile",Profile);
+        if (Binding is not null) yield return new KeyValuePair<string,object>("binding",Binding);
+        if (Part?.Any() == true) yield return new KeyValuePair<string,object>("part",Part);
+      }
+
     }
 
     /// <summary>
@@ -1501,6 +1579,7 @@ namespace Hl7.Fhir.Model
       /// required | extensible | preferred | example
       /// </summary>
       [FhirElement("strength", Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.BindingStrength> StrengthElement
@@ -1534,6 +1613,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("valueSet", Order=50, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("ValueSet")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.ResourceReference))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
@@ -1565,6 +1645,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new BindingComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as BindingComponent;
@@ -1609,6 +1690,29 @@ namespace Hl7.Fhir.Model
           if (StrengthElement != null) yield return new ElementValue("strength", StrengthElement);
           if (ValueSet != null) yield return new ElementValue("valueSet", ValueSet);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "strength":
+            value = StrengthElement;
+            return StrengthElement is not null;
+          case "valueSet":
+            value = ValueSet;
+            return ValueSet is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (StrengthElement is not null) yield return new KeyValuePair<string,object>("strength",StrengthElement);
+        if (ValueSet is not null) yield return new KeyValuePair<string,object>("valueSet",ValueSet);
       }
 
     }
@@ -1710,7 +1814,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// draft | active | retired
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=120)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=120)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.ConformanceResourceStatus> StatusElement
@@ -1743,6 +1848,7 @@ namespace Hl7.Fhir.Model
     /// operation | query
     /// </summary>
     [FhirElement("kind", Order=130)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.OperationDefinition.OperationKind> KindElement
@@ -2085,6 +2191,7 @@ namespace Hl7.Fhir.Model
     /// Invoke at resource level for these type
     /// </summary>
     [FhirElement("type", Order=250)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Code<Hl7.Fhir.Model.ResourceType>> TypeElement
@@ -2196,6 +2303,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new OperationDefinition());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as OperationDefinition;
@@ -2308,6 +2416,97 @@ namespace Hl7.Fhir.Model
         if (InstanceElement != null) yield return new ElementValue("instance", InstanceElement);
         foreach (var elem in Parameter) { if (elem != null) yield return new ElementValue("parameter", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "url":
+          value = UrlElement;
+          return UrlElement is not null;
+        case "version":
+          value = VersionElement;
+          return VersionElement is not null;
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "kind":
+          value = KindElement;
+          return KindElement is not null;
+        case "experimental":
+          value = ExperimentalElement;
+          return ExperimentalElement is not null;
+        case "publisher":
+          value = PublisherElement;
+          return PublisherElement is not null;
+        case "contact":
+          value = Contact;
+          return Contact?.Any() == true;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "requirements":
+          value = RequirementsElement;
+          return RequirementsElement is not null;
+        case "idempotent":
+          value = IdempotentElement;
+          return IdempotentElement is not null;
+        case "code":
+          value = CodeElement;
+          return CodeElement is not null;
+        case "notes":
+          value = NotesElement;
+          return NotesElement is not null;
+        case "base":
+          value = Base;
+          return Base is not null;
+        case "system":
+          value = SystemElement;
+          return SystemElement is not null;
+        case "type":
+          value = TypeElement;
+          return TypeElement?.Any() == true;
+        case "instance":
+          value = InstanceElement;
+          return InstanceElement is not null;
+        case "parameter":
+          value = Parameter;
+          return Parameter?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (UrlElement is not null) yield return new KeyValuePair<string,object>("url",UrlElement);
+      if (VersionElement is not null) yield return new KeyValuePair<string,object>("version",VersionElement);
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (KindElement is not null) yield return new KeyValuePair<string,object>("kind",KindElement);
+      if (ExperimentalElement is not null) yield return new KeyValuePair<string,object>("experimental",ExperimentalElement);
+      if (PublisherElement is not null) yield return new KeyValuePair<string,object>("publisher",PublisherElement);
+      if (Contact?.Any() == true) yield return new KeyValuePair<string,object>("contact",Contact);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (RequirementsElement is not null) yield return new KeyValuePair<string,object>("requirements",RequirementsElement);
+      if (IdempotentElement is not null) yield return new KeyValuePair<string,object>("idempotent",IdempotentElement);
+      if (CodeElement is not null) yield return new KeyValuePair<string,object>("code",CodeElement);
+      if (NotesElement is not null) yield return new KeyValuePair<string,object>("notes",NotesElement);
+      if (Base is not null) yield return new KeyValuePair<string,object>("base",Base);
+      if (SystemElement is not null) yield return new KeyValuePair<string,object>("system",SystemElement);
+      if (TypeElement?.Any() == true) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (InstanceElement is not null) yield return new KeyValuePair<string,object>("instance",InstanceElement);
+      if (Parameter?.Any() == true) yield return new KeyValuePair<string,object>("parameter",Parameter);
     }
 
   }

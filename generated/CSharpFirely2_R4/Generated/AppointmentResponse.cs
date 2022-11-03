@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("AppointmentResponse", IsResource=true)]
+  [FhirType("AppointmentResponse","http://hl7.org/fhir/StructureDefinition/AppointmentResponse", IsResource=true)]
   public partial class AppointmentResponse : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// External Ids for this item
     /// </summary>
-    [FhirElement("identifier", InSummary=true, Order=90)]
+    [FhirElement("identifier", InSummary=true, Order=90, FiveWs="FiveWs.identifier")]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Hl7.Fhir.Model.Identifier> Identifier
@@ -88,7 +88,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Time from appointment, or requested new start time
     /// </summary>
-    [FhirElement("start", Order=110)]
+    [FhirElement("start", Order=110, FiveWs="FiveWs.init")]
     [DataMember]
     public Hl7.Fhir.Model.Instant StartElement
     {
@@ -119,7 +119,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Time from appointment, or requested new end time
     /// </summary>
-    [FhirElement("end", Order=120)]
+    [FhirElement("end", Order=120, FiveWs="FiveWs.done[x]")]
     [DataMember]
     public Hl7.Fhir.Model.Instant EndElement
     {
@@ -164,7 +164,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Person, Location, HealthcareService, or Device
     /// </summary>
-    [FhirElement("actor", InSummary=true, Order=140)]
+    [FhirElement("actor", InSummary=true, Order=140, FiveWs="FiveWs.who")]
     [CLSCompliant(false)]
     [References("Patient","Practitioner","PractitionerRole","RelatedPerson","Device","HealthcareService","Location")]
     [DataMember]
@@ -179,7 +179,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// accepted | declined | tentative | needs-action
     /// </summary>
-    [FhirElement("participantStatus", InSummary=true, Order=150)]
+    [FhirElement("participantStatus", InSummary=true, IsModifier=true, Order=150)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.ParticipationStatus> ParticipantStatusElement
@@ -265,6 +266,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new AppointmentResponse());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as AppointmentResponse;
@@ -333,6 +335,53 @@ namespace Hl7.Fhir.Model
         if (ParticipantStatusElement != null) yield return new ElementValue("participantStatus", ParticipantStatusElement);
         if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "appointment":
+          value = Appointment;
+          return Appointment is not null;
+        case "start":
+          value = StartElement;
+          return StartElement is not null;
+        case "end":
+          value = EndElement;
+          return EndElement is not null;
+        case "participantType":
+          value = ParticipantType;
+          return ParticipantType?.Any() == true;
+        case "actor":
+          value = Actor;
+          return Actor is not null;
+        case "participantStatus":
+          value = ParticipantStatusElement;
+          return ParticipantStatusElement is not null;
+        case "comment":
+          value = CommentElement;
+          return CommentElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Appointment is not null) yield return new KeyValuePair<string,object>("appointment",Appointment);
+      if (StartElement is not null) yield return new KeyValuePair<string,object>("start",StartElement);
+      if (EndElement is not null) yield return new KeyValuePair<string,object>("end",EndElement);
+      if (ParticipantType?.Any() == true) yield return new KeyValuePair<string,object>("participantType",ParticipantType);
+      if (Actor is not null) yield return new KeyValuePair<string,object>("actor",Actor);
+      if (ParticipantStatusElement is not null) yield return new KeyValuePair<string,object>("participantStatus",ParticipantStatusElement);
+      if (CommentElement is not null) yield return new KeyValuePair<string,object>("comment",CommentElement);
     }
 
   }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Device", IsResource=true)]
+  [FhirType("Device","http://hl7.org/fhir/StructureDefinition/Device", IsResource=true)]
   public partial class Device : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -128,7 +128,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// available | not-available | entered-in-error
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=120)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=120)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.Device.DeviceStatus> StatusElement
     {
@@ -497,6 +498,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Device());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Device;
@@ -597,6 +599,85 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
         if (UrlElement != null) yield return new ElementValue("url", UrlElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "note":
+          value = Note;
+          return Note?.Any() == true;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "manufacturer":
+          value = ManufacturerElement;
+          return ManufacturerElement is not null;
+        case "model":
+          value = ModelElement;
+          return ModelElement is not null;
+        case "version":
+          value = VersionElement;
+          return VersionElement is not null;
+        case "manufactureDate":
+          value = ManufactureDateElement;
+          return ManufactureDateElement is not null;
+        case "expiry":
+          value = ExpiryElement;
+          return ExpiryElement is not null;
+        case "udi":
+          value = UdiElement;
+          return UdiElement is not null;
+        case "lotNumber":
+          value = LotNumberElement;
+          return LotNumberElement is not null;
+        case "owner":
+          value = Owner;
+          return Owner is not null;
+        case "location":
+          value = Location;
+          return Location is not null;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "contact":
+          value = Contact;
+          return Contact?.Any() == true;
+        case "url":
+          value = UrlElement;
+          return UrlElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Note?.Any() == true) yield return new KeyValuePair<string,object>("note",Note);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (ManufacturerElement is not null) yield return new KeyValuePair<string,object>("manufacturer",ManufacturerElement);
+      if (ModelElement is not null) yield return new KeyValuePair<string,object>("model",ModelElement);
+      if (VersionElement is not null) yield return new KeyValuePair<string,object>("version",VersionElement);
+      if (ManufactureDateElement is not null) yield return new KeyValuePair<string,object>("manufactureDate",ManufactureDateElement);
+      if (ExpiryElement is not null) yield return new KeyValuePair<string,object>("expiry",ExpiryElement);
+      if (UdiElement is not null) yield return new KeyValuePair<string,object>("udi",UdiElement);
+      if (LotNumberElement is not null) yield return new KeyValuePair<string,object>("lotNumber",LotNumberElement);
+      if (Owner is not null) yield return new KeyValuePair<string,object>("owner",Owner);
+      if (Location is not null) yield return new KeyValuePair<string,object>("location",Location);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (Contact?.Any() == true) yield return new KeyValuePair<string,object>("contact",Contact);
+      if (UrlElement is not null) yield return new KeyValuePair<string,object>("url",UrlElement);
     }
 
   }

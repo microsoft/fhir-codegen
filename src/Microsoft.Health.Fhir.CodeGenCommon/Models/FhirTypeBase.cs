@@ -10,116 +10,62 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 /// <summary>
 /// A base class for FHIR types to inherit from (common properties).
 /// </summary>
-public class FhirTypeBase
+public abstract class FhirTypeBase
 {
-    private readonly string _name;
-    private readonly string _nameCapitalized;
-    private readonly string _path;
-    private string _baseTypeName;
-    private string _baseTypeCanonical;
+    internal readonly string _path;
+    internal readonly string _name;
+    internal readonly string _nameCapitalized;
+    internal string _baseTypeName;
+    internal string _baseTypeCanonical;
 
     /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-    /// <param name="id">               The id of this element/resource/datatype.</param>
-    /// <param name="path">             The dot-notation path to this element/resource/datatype.</param>
-    /// <param name="basePath">         The dot-notation path to the base definition of this record.</param>
+    /// <param name="rootArtifactClass">The root artifact class.</param>
+    /// <param name="id">               The id of this element/resource/datatype/extension.</param>
+    /// <param name="name">             The name.</param>
+    /// <param name="path">             The dot-notation path to this
+    ///  element/resource/datatype/extension.</param>
+    /// <param name="baseTypeName">     The name of the base type.</param>
+    /// <param name="baseTypeCanonical">The canonical url of the base type.</param>
     /// <param name="url">              The URL.</param>
-    /// <param name="publicationStatus">The publication status.</param>
-    /// <param name="standardStatus">   The standard status.</param>
-    /// <param name="fmmLevel">         The FHIR Maturity Model level.</param>
-    /// <param name="isExperimental">   A value indicating whether this object is experimental.</param>
     /// <param name="shortDescription"> The description.</param>
     /// <param name="purpose">          The purpose of this definition.</param>
     /// <param name="comment">          The comment.</param>
     /// <param name="validationRegEx">  The validation RegEx.</param>
     public FhirTypeBase(
         string id,
+        string name,
         string path,
-        string basePath,
+        string baseTypeName,
+        string baseTypeCanonical,
         Uri url,
-        string publicationStatus,
-        string standardStatus,
-        int? fmmLevel,
-        bool isExperimental,
         string shortDescription,
         string purpose,
         string comment,
         string validationRegEx)
     {
         // sanity checks
-        if (string.IsNullOrEmpty(path))
+        if (string.IsNullOrEmpty(id))
         {
-            throw new ArgumentNullException(nameof(path));
+            throw new ArgumentNullException(nameof(id));
         }
 
         // set internal values
         Id = id;
-        _path = path;
-        BasePath = basePath;
-        PublicationStatus = publicationStatus;
-        StandardStatus = standardStatus;
-        FhirMaturityLevel = fmmLevel;
-        IsExperimental = isExperimental;
+        _path = string.IsNullOrEmpty(path) ? id : path;
+        _name = string.IsNullOrEmpty(name) ? _path.Split('.').First() ?? string.Empty : name;
+        _nameCapitalized = _name.ToPascalCase();
+
+        _baseTypeName = baseTypeName;
+        _baseTypeCanonical = baseTypeCanonical;
+
+        URL = url;
+
         ShortDescription = shortDescription;
         Purpose = string.IsNullOrEmpty(purpose) ? string.Empty : purpose;
         Comment = string.IsNullOrEmpty(comment) ? Purpose : comment;
-        _baseTypeName = string.Empty;
-        _baseTypeCanonical = string.Empty;
+
         ValidationRegEx = validationRegEx;
-        URL = url;
-
-        // check for components in the path
-        string[] components = path.Split('.');
-        _name = components[components.Length - 1];
-        _nameCapitalized = _name.ToPascalCase();
-    }
-
-    /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
-    /// <param name="id">              The id of this element/resource/datatype/extension.</param>
-    /// <param name="path">            The dot-notation path to this element/resource/datatype/extension.</param>
-    /// <param name="basePath">         The dot-notation path to the base definition of this record.</param>
-    /// <param name="url">             The URL.</param>
-    /// <param name="publicationStatus">The publication status.</param>
-    /// <param name="standardStatus">  The standard status.</param>
-    /// <param name="fmmLevel">        The FHIR Maturity Model level.</param>
-    /// <param name="isExperimental">  If this object is marked experimental.</param>
-    /// <param name="shortDescription">The description.</param>
-    /// <param name="purpose">         The purpose of this definition.</param>
-    /// <param name="comment">         The comment.</param>
-    /// <param name="validationRegEx"> The validation RegEx.</param>
-    /// <param name="baseTypeName">    The name of the base type.</param>
-    /// <param name="baseTypeCanonical">The canonical url of the base type.</param>
-    public FhirTypeBase(
-        string id,
-        string path,
-        string basePath,
-        Uri url,
-        string publicationStatus,
-        string standardStatus,
-        int? fmmLevel,
-        bool isExperimental,
-        string shortDescription,
-        string purpose,
-        string comment,
-        string validationRegEx,
-        string baseTypeName,
-        string baseTypeCanonical)
-        : this(
-            id,
-            path,
-            basePath,
-            url,
-            publicationStatus,
-            standardStatus,
-            fmmLevel,
-            isExperimental,
-            shortDescription,
-            purpose,
-            comment,
-            validationRegEx)
-    {
-        _baseTypeName = baseTypeName;
-        _baseTypeCanonical = baseTypeCanonical;
     }
 
     /// <summary>Values that represent naming conventions for item types.</summary>
@@ -157,13 +103,6 @@ public class FhirTypeBase
     /// <value>The Id for this element/resource/datatype.</value>
     public string Id { get; }
 
-    /// <summary>Gets the dot-notation path to this element/resource/datatype.</summary>
-    /// <value>The dot-notation path to this element/resource/datatype.</value>
-    public string Path => _path;
-
-    /// <summary>Gets the dot-notation path to the base definition for this record.</summary>
-    public string BasePath { get; }
-
     /// <summary>
     /// Gets a natural language name identifying the structure definition. This name should be usable as an
     /// identifier for the module by machine processing applications such as code generation.
@@ -177,28 +116,15 @@ public class FhirTypeBase
     /// <value>The name capitalized.</value>
     public string NameCapitalized => _nameCapitalized;
 
+    /// <summary>Gets the dot-notation path to this element/resource/datatype.</summary>
+    /// <value>The dot-notation path to this element/resource/datatype.</value>
+    public string Path => _path;
+
     /// <summary>Gets URL of the document.</summary>
     /// <value>The URL.</value>
     public Uri URL { get; }
 
-    /// <summary>Gets the publication status.</summary>
-    public string PublicationStatus { get; }
-
-    /// <summary>
-    /// Gets status of this type in the standards process
-    /// see: http://hl7.org/fhir/valueset-standards-status.html.
-    /// </summary>
-    /// <value>The standard status.</value>
-    public string StandardStatus { get; }
-
-    /// <summary>Gets the FHIR maturity level.</summary>
-    public int? FhirMaturityLevel { get; }
-
-    /// <summary>Gets a value indicating whether this object is experimental.</summary>
-    public bool IsExperimental { get; }
-
     /// <summary>Gets or sets the Name of the type this type inherits from (null if none).</summary>
-    /// <value>The name of the base type.</value>
     public string BaseTypeName { get => _baseTypeName; set => _baseTypeName = value; }
 
     /// <summary>Gets or sets the Canonical of the type this type inherits from (null if none).</summary>
@@ -230,132 +156,10 @@ public class FhirTypeBase
     public string Comment { get; }
 
     /// <summary>
-    /// Gets a RegEx string used to validate values of a type or property.
+    /// Gets a RegEx string used to validate values in this property.
     /// </summary>
     /// <value>The validation RegEx.</value>
     public string ValidationRegEx { get; }
-
-    /// <summary>Capitalizes a word.</summary>
-    /// <param name="word">The word.</param>
-    /// <returns>A capitalized version of the word.</returns>
-    public static string ToPascal(string word)
-    {
-        if (string.IsNullOrEmpty(word))
-        {
-            return string.Empty;
-        }
-
-        return string.Concat(word.Substring(0, 1).ToUpperInvariant(), word.Substring(1));
-    }
-
-    /// <summary>Capitalizes a word.</summary>
-    /// <param name="words">The words.</param>
-    /// <returns>A capitalized version of the word.</returns>
-    public static string[] ToPascal(string[] words)
-    {
-        string[] output = new string[words.Length];
-
-        for (int i = 0; i < words.Length; i++)
-        {
-            output[i] = ToPascal(words[i]);
-        }
-
-        return output;
-    }
-
-    /// <summary>Converts a word to a camel case.</summary>
-    /// <param name="word">The word.</param>
-    /// <returns>Word as a string.</returns>
-    public static string ToCamel(string word)
-    {
-        if (string.IsNullOrEmpty(word))
-        {
-            return string.Empty;
-        }
-
-        return string.Concat(word.Substring(0, 1).ToLowerInvariant(), word.Substring(1));
-    }
-
-    /// <summary>Converts a word to a camel case.</summary>
-    /// <param name="words">The words.</param>
-    /// <returns>Word as a string.</returns>
-    public static string[] ToCamel(string[] words)
-    {
-        string[] output = new string[words.Length];
-
-        for (int i = 0; i < words.Length; i++)
-        {
-            // first word is lower case
-            if (i == 0)
-            {
-                output[i] = ToCamel(words[i]);
-                continue;
-            }
-
-            // other words are capitalized
-            output[i] = ToPascal(words[i]);
-        }
-
-        return output;
-    }
-
-    /// <summary>Converts the words to an upper invariant.</summary>
-    /// <param name="words">The words.</param>
-    /// <returns>Words as a string[].</returns>
-    public static string[] ToUpperInvariant(string[] words)
-    {
-        string[] output = new string[words.Length];
-
-        for (int i = 0; i < words.Length; i++)
-        {
-            output[i] = words[i].ToUpperInvariant();
-        }
-
-        return output;
-    }
-
-    /// <summary>Converts the words to a lower invariant.</summary>
-    /// <param name="words">The words.</param>
-    /// <returns>Words as a string[].</returns>
-    public static string[] ToLowerInvariant(string[] words)
-    {
-        string[] output = new string[words.Length];
-
-        for (int i = 0; i < words.Length; i++)
-        {
-            output[i] = words[i].ToUpperInvariant();
-        }
-
-        return output;
-    }
-
-    /// <summary>Converts a word to a lower kebab.</summary>
-    /// <param name="word">The word.</param>
-    /// <returns>Word as a string.</returns>
-    public static string ToLowerKebab(string word)
-    {
-        if (string.IsNullOrEmpty(word))
-        {
-            return string.Empty;
-        }
-
-        return string.Join('-', word.Split('.')).ToLowerInvariant();
-    }
-
-    /// <summary>Converts a word to a lower kebab.</summary>
-    /// <param name="words">The words.</param>
-    /// <returns>Word as a string.</returns>
-    public static string[] ToLowerKebab(string[] words)
-    {
-        string[] output = new string[words.Length];
-
-        for (int i = 0; i < words.Length; i++)
-        {
-            output[i] = string.Join('-', words[i].Split('.')).ToLowerInvariant();
-        }
-
-        return output;
-    }
 
     /// <summary>Type for export.</summary>
     /// <param name="convention">            The convention.</param>
@@ -524,7 +328,7 @@ public class FhirTypeBase
                         if ((reservedWords != null) &&
                             reservedWords.Contains(value))
                         {
-                            return "FHIR" + value;
+                            return "FHIR_" + value;
                         }
 
                         return value;
@@ -553,7 +357,7 @@ public class FhirTypeBase
                         if ((reservedWords != null) &&
                             reservedWords.Contains(value))
                         {
-                            return "fhir" + value;
+                            return "fhir_" + value;
                         }
                     }
 

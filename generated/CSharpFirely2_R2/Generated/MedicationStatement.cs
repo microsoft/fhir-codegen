@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("MedicationStatement", IsResource=true)]
+  [FhirType("MedicationStatement","http://hl7.org/fhir/StructureDefinition/MedicationStatement", IsResource=true)]
   public partial class MedicationStatement : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -166,6 +166,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("site", InSummary=true, Order=70, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("BodySite")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
       [DataMember]
       public Hl7.Fhir.Model.DataType Site
@@ -272,6 +273,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new DosageComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as DosageComponent;
@@ -344,6 +346,57 @@ namespace Hl7.Fhir.Model
           if (Rate != null) yield return new ElementValue("rate", Rate);
           if (MaxDosePerPeriod != null) yield return new ElementValue("maxDosePerPeriod", MaxDosePerPeriod);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "text":
+            value = TextElement;
+            return TextElement is not null;
+          case "timing":
+            value = Timing;
+            return Timing is not null;
+          case "asNeeded":
+            value = AsNeeded;
+            return AsNeeded is not null;
+          case "site":
+            value = Site;
+            return Site is not null;
+          case "route":
+            value = Route;
+            return Route is not null;
+          case "method":
+            value = Method;
+            return Method is not null;
+          case "quantity":
+            value = Quantity;
+            return Quantity is not null;
+          case "rate":
+            value = Rate;
+            return Rate is not null;
+          case "maxDosePerPeriod":
+            value = MaxDosePerPeriod;
+            return MaxDosePerPeriod is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (TextElement is not null) yield return new KeyValuePair<string,object>("text",TextElement);
+        if (Timing is not null) yield return new KeyValuePair<string,object>("timing",Timing);
+        if (AsNeeded is not null) yield return new KeyValuePair<string,object>("asNeeded",AsNeeded);
+        if (Site is not null) yield return new KeyValuePair<string,object>("site",Site);
+        if (Route is not null) yield return new KeyValuePair<string,object>("route",Route);
+        if (Method is not null) yield return new KeyValuePair<string,object>("method",Method);
+        if (Quantity is not null) yield return new KeyValuePair<string,object>("quantity",Quantity);
+        if (Rate is not null) yield return new KeyValuePair<string,object>("rate",Rate);
+        if (MaxDosePerPeriod is not null) yield return new KeyValuePair<string,object>("maxDosePerPeriod",MaxDosePerPeriod);
       }
 
     }
@@ -424,7 +477,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// active | completed | entered-in-error | intended
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=130)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=130)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.MedicationStatement.MedicationStatementStatus> StatusElement
@@ -456,7 +510,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// True if medication is/was not being taken
     /// </summary>
-    [FhirElement("wasNotTaken", InSummary=true, Order=140)]
+    [FhirElement("wasNotTaken", InSummary=true, IsModifier=true, Order=140)]
     [DataMember]
     public Hl7.Fhir.Model.FhirBoolean WasNotTakenElement
     {
@@ -500,6 +554,7 @@ namespace Hl7.Fhir.Model
 
     [FhirElement("reasonForUse", InSummary=true, Order=160, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Condition")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [DataMember]
     public Hl7.Fhir.Model.DataType ReasonForUse
@@ -577,6 +632,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("medication", InSummary=true, Order=200, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Medication")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
@@ -633,6 +689,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new MedicationStatement());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as MedicationStatement;
@@ -721,6 +778,73 @@ namespace Hl7.Fhir.Model
         if (Medication != null) yield return new ElementValue("medication", Medication);
         foreach (var elem in Dosage) { if (elem != null) yield return new ElementValue("dosage", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "informationSource":
+          value = InformationSource;
+          return InformationSource is not null;
+        case "dateAsserted":
+          value = DateAssertedElement;
+          return DateAssertedElement is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "wasNotTaken":
+          value = WasNotTakenElement;
+          return WasNotTakenElement is not null;
+        case "reasonNotTaken":
+          value = ReasonNotTaken;
+          return ReasonNotTaken?.Any() == true;
+        case "reasonForUse":
+          value = ReasonForUse;
+          return ReasonForUse is not null;
+        case "effective":
+          value = Effective;
+          return Effective is not null;
+        case "note":
+          value = NoteElement;
+          return NoteElement is not null;
+        case "supportingInformation":
+          value = SupportingInformation;
+          return SupportingInformation?.Any() == true;
+        case "medication":
+          value = Medication;
+          return Medication is not null;
+        case "dosage":
+          value = Dosage;
+          return Dosage?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (InformationSource is not null) yield return new KeyValuePair<string,object>("informationSource",InformationSource);
+      if (DateAssertedElement is not null) yield return new KeyValuePair<string,object>("dateAsserted",DateAssertedElement);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (WasNotTakenElement is not null) yield return new KeyValuePair<string,object>("wasNotTaken",WasNotTakenElement);
+      if (ReasonNotTaken?.Any() == true) yield return new KeyValuePair<string,object>("reasonNotTaken",ReasonNotTaken);
+      if (ReasonForUse is not null) yield return new KeyValuePair<string,object>("reasonForUse",ReasonForUse);
+      if (Effective is not null) yield return new KeyValuePair<string,object>("effective",Effective);
+      if (NoteElement is not null) yield return new KeyValuePair<string,object>("note",NoteElement);
+      if (SupportingInformation?.Any() == true) yield return new KeyValuePair<string,object>("supportingInformation",SupportingInformation);
+      if (Medication is not null) yield return new KeyValuePair<string,object>("medication",Medication);
+      if (Dosage?.Any() == true) yield return new KeyValuePair<string,object>("dosage",Dosage);
     }
 
   }

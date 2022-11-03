@@ -15141,7 +15141,8 @@ Value Sets: 931 (unversioned)
   - #physical: Physical
   - #postal: Postal
 - ValueSet: http://hl7.org/fhir/ValueSet/address-use|1.0.2 (AddressUse)
-  references (3): Address.use, Patient.address.use, Patient.contact.address.use, strongest binding: Required, by type: code:Required
+  references (1): Address.use, strongest binding: Required, by type: code:Required
+  extensions/profiles (2): strongest binding: Required, refs: Extension:uslab-patient, Extension:uslab-phpatient
   - #home: Home
   - #old: Old / Incorrect
   - #temp: Temporary
@@ -15170,7 +15171,7 @@ Value Sets: 931 (unversioned)
   - #other: Other
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/age-units|1.0.2 (AgeUnits)
-  references (2): Observation.referenceRange.age.low.code, Observation.referenceRange.age.high.code, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:uslab-obsquantity
   - #a: Year
   - #d: Day
   - #h: Hour
@@ -23275,7 +23276,7 @@ Value Sets: 931 (unversioned)
   - #90484001: Hospital outpatient general surgery clinic
   - #91154008: Free-standing birthing center
 - ValueSet: http://hl7.org/fhir/ValueSet/c80-practice-codes|20091109 (Practice Setting Code Value Set)
-  references (6): Appointment.type, DocumentReference.context.practiceSetting, HealthcareService.serviceType.type, ReferralRequest.serviceRequested, Schedule.type, Slot.type, strongest binding: Preferred, by type: CodeableConcept:Example
+  references (6): Appointment.type, DocumentReference.context.practiceSetting, HealthcareService.serviceType.type, ReferralRequest.serviceRequested, Schedule.type, Slot.type, strongest binding: Preferred, by type: CodeableConcept:Preferred
   - #394539006: Pediatric surgery
   - #394576009: Surgical-Accident & emergency
   - #394577000: Anesthetics
@@ -23487,7 +23488,8 @@ Value Sets: 931 (unversioned)
   - #final: Final
   - #preliminary: Preliminary
 - ValueSet: http://hl7.org/fhir/ValueSet/concept-map-equivalence|1.0.2 (ConceptMapEquivalence)
-  references (2): ConceptMap.element.target.equivalence, DataElement.element.mapping.extension.valueCode, strongest binding: Required, by type: code:Required
+  references (1): ConceptMap.element.target.equivalence, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:sdc-element
   - #disjoint: Disjoint
   - #equal: Equal
   - #equivalent: Equivalent
@@ -23558,14 +23560,16 @@ Value Sets: 931 (unversioned)
   - #error: Error
   - #warning: Warning
 - ValueSet: http://hl7.org/fhir/ValueSet/contact-point-system|1.0.2 (ContactPointSystem)
-  references (5): ContactPoint.system, Patient.telecom.system, Practitioner.telecom.system, Organization.telecom.system, Patient.contact.telecom.system, strongest binding: Required, by type: code:Required
+  references (1): ContactPoint.system, strongest binding: Required, by type: code:Required
+  extensions/profiles (4): strongest binding: Required, refs: Extension:daf-patient, Extension:daf-pract, Extension:uslab-cctarget, Extension:uslab-phpatient
   - #email: Email
   - #fax: Fax
   - #other: URL
   - #pager: Pager
   - #phone: Phone
 - ValueSet: http://hl7.org/fhir/ValueSet/contact-point-use|1.0.2 (ContactPointUse)
-  references (2): ContactPoint.use, Patient.telecom.use, strongest binding: Required, by type: code:Required
+  references (1): ContactPoint.use, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:uslab-phpatient
   - #home: Home
   - #mobile: Mobile
   - #old: Old
@@ -23633,12 +23637,12 @@ Value Sets: 931 (unversioned)
   - #ASKU: asked but unknown
   - #UNK: unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-list-DAFMedListCode|1.0.2 (DAF Medication List Codes)
-  references (1): List.code, strongest binding: Required, by type: CodeableConcept:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:daf-medicationlist
   - #10160-0: 
   - #42346-7: 
   - #75311-1: 
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-medication-route|1.0.2 (Medication Route FDA Value Set)
-  references (5): Immunization.route, MedicationAdministration.dosage.route, MedicationDispense.dosageInstruction.route, MedicationOrder.dosageInstruction.route, MedicationStatement.dosage.route, strongest binding: Preferred, by type: CodeableConcept:Preferred
+  extensions/profiles (5): strongest binding: Preferred, refs: Extension:daf-immunization, Extension:daf-medicationadministration, Extension:daf-medicationdispense, Extension:daf-medicationorder, Extension:daf-medicationstatement
   - #C28161: INTRAMUSCULAR
   - #C38192: AURICULAR (OTIC)
   - #C38193: BUCCAL
@@ -23774,7 +23778,7 @@ Value Sets: 931 (unversioned)
   - #not-asked: Not Asked
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-observation-CCDAVitalSignResult|1.0.2 (C-CDA Vital Sign Result )
-  references (1): Observation.code, strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:daf-vitalsigns
   - #2710-2: 
   - #3140-1: 
   - #3141-9: 
@@ -23791,7 +23795,7 @@ Value Sets: 931 (unversioned)
   - #8867-4: 
   - #9279-1: 
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-product-form|1.0.2 (Medication Product Form Value Set)
-  references (1): Medication.product.form, strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:daf-medication
   - #C17423: DRUG DELIVERY SYSTEM
   - #C25158: CAPSULE
   - #C25394: PILL
@@ -23968,13 +23972,13 @@ Value Sets: 931 (unversioned)
   - #ASKU: asked but unknown
   - #UNK: unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-substance|1.0.2 (DAF Substance-Reactant for Intolerance and Negation Codes)
-  references (2): AllergyIntolerance.substance, AllergyIntolerance.reaction.substance, strongest binding: Preferred, by type: CodeableConcept:Preferred
+  extensions/profiles (1): strongest binding: Preferred, refs: Extension:daf-allergyintolerance
   - #160244002: No Known Allergies
   - #409137002: No Known Drug Allergies
   - #428607008: No Known Environmental Allergy
   - #429625007: No Known Food Allergies
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-ucum-vitals-common|1.0.2 (Common UCUM units)
-  references (2): Observation.referenceRange.low, Observation.referenceRange.high, strongest binding: Required, by type: Quantity:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:daf-vitalsigns
   - #/min: per minute
   - #%: percent
   - #Cel: degree Celsius
@@ -27745,7 +27749,7 @@ Value Sets: 931 (unversioned)
   - #planned: Planned
   - #reserved: Reserved
 - ValueSet: http://hl7.org/fhir/ValueSet/encounter-participant-type|1.0.2 (ParticipantType)
-  references (3): Appointment.participant.type, AppointmentResponse.participantType, Encounter.participant.type, strongest binding: Required, by type: CodeableConcept:Extensible
+  references (3): Appointment.participant.type, AppointmentResponse.participantType, Encounter.participant.type, strongest binding: Required, by type: CodeableConcept:Required
   - #ADM: admitter
   - #ATND: attender
   - #CALLBCK: callback contact
@@ -31416,7 +31420,8 @@ Value Sets: 931 (unversioned)
   - #PRN: Provider number
   - #TAX: Tax ID number
 - ValueSet: http://hl7.org/fhir/ValueSet/identifier-use|1.0.2 (IdentifierUse)
-  references (9): Identifier.use, DiagnosticOrder.identifier.use, DiagnosticReport.identifier.use, Observation.identifier.use, Specimen.identifier.use, Specimen.accessionIdentifier.use, Organization.identifier.use, Patient.identifier.use, Practitioner.identifier.use, strongest binding: Required, by type: code:Required
+  references (1): Identifier.use, strongest binding: Required, by type: code:Required
+  extensions/profiles (7): strongest binding: Required, refs: Extension:daf-diagnosticorder, Extension:daf-diagnosticreport, Extension:daf-resultobs, Extension:daf-spec, Extension:uslab-cctarget, Extension:uslab-patient, Extension:uslab-phpract
   - #official: Official
   - #secondary: Secondary
   - #temp: Temp
@@ -31530,7 +31535,7 @@ Value Sets: 931 (unversioned)
   - #113038: Incorrect Modality Worklist Entry
   - #113039: Data Retention Policy Expired
 - ValueSet: http://hl7.org/fhir/ValueSet/ldlcholesterol-codes|1.0.0 (LDLCodes)
-  references (1): Observation.code, strongest binding: Required, by type: CodeableConcept:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:ldlcholesterol
   - #13457-7: LDL Cholesterol (Calc)
   - #18262-6: LDL Cholesterol (Assay)
 - ValueSet: http://hl7.org/fhir/ValueSet/link-type|1.0.2 (LinkType)
@@ -32737,7 +32742,7 @@ Value Sets: 931 (unversioned)
   - #near-miss: Near Miss
   - #unsafe: Unsafe Condition
 - ValueSet: http://hl7.org/fhir/ValueSet/qicore-appropriateness-score|1.0.2 (QICoreAppropriatenessScore)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required, decimal:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:qicore-procedurerequest-appropriatenessScore
   - #appropriate: Appropriate
   - #extremely-appropriate: Extremely Appropriate
   - #extremely-inappropriate: Extremely Inappropriate
@@ -32748,7 +32753,7 @@ Value Sets: 931 (unversioned)
   - #uncertain-appropriate: Uncertain Appropriate
   - #uncertain-inappropriate: Uncertain Inappropriate
 - ValueSet: http://hl7.org/fhir/ValueSet/qicore-communication-medium|1.0.2 (QICore Communication Medium Codes)
-  references (2): Communication.medium, CommunicationRequest.medium, strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (2): strongest binding: Example, refs: Extension:qicore-communication, Extension:qicore-communicationrequest
   - #device: Via medical device
   - #email: Electronic mail (email)
   - #fax: Facsimile (fax)
@@ -32779,7 +32784,7 @@ Value Sets: 931 (unversioned)
   - #FIN: No Financial Backing
   - #MED: Medical Status Altered
 - ValueSet: http://hl7.org/fhir/ValueSet/qicore-flag-category|1.0.2 (Flag Category Codes)
-  references (1): Flag.category, strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:qicore-flag
   - #ADM: Administrative
   - #ADV: Advance Directive
   - #BH: Behavioral
@@ -33626,13 +33631,13 @@ Value Sets: 931 (unversioned)
   - #extensions: Unknown Extensions
   - #no: Neither Elements or Extensions
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-do-event|1.0.2 (USLAB Diagnostic Order Event Codes)
-  references (1): DiagnosticOrder.event.description, strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:daf-diagnosticorder
   - #add-on-request: add-on request
   - #lab-cancel: laboratory cancel
   - #new-request: new request
   - #orderer-cancel: orderer cancel
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-obs-interpretation|1.0.2 (US Laboratory Observation Profile Interpretation Codes)
-  references (1): Observation.interpretation, strongest binding: Required, by type: CodeableConcept:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:daf-resultobs
   - #<: Off scale low
   - #>: Off scale high
   - #A: Abnormal
@@ -33671,7 +33676,7 @@ Value Sets: 931 (unversioned)
   - #response: response
   - #result: result
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-obs-spec-reject|1.0.2 (US Laboratory Observation Specimen Rejection Codes)
-  references (1): Observation.extension.valueCodeableConcept, strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:uslab-obscode
   - #EX: Expired
   - #QS: Quantity not sufficient
   - #RA: Missing patient ID number
@@ -33687,16 +33692,16 @@ Value Sets: 931 (unversioned)
   - #RR: Improper storage
   - #RS: Name misspelling
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-patient-uslab-nameuse|1.0.2 (USLabNameUse)
-  references (1): Patient.name.use, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:uslab-patient
   - #anonymous: Anonymous
   - #official: Official
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-patient-uslabph-nameuse|1.0.2 (USLabPHNameUse)
-  references (1): Patient.name.use, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:uslab-phpatient
   - #anonymous: Anonymous
   - #maiden: Maiden
   - #official: Official
 - ValueSet: http://hl7.org/fhir/ValueSet/usps-state|1.0.2 (USPS Two Letter Alphabetic Codes)
-  references (1): Patient.address.state, strongest binding: Required, by type: string:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:daf-patient
   - #AK: Alaska
   - #AL: Alabama
   - #AR: Arkansas
@@ -41078,7 +41083,7 @@ Value Sets: 931 (unversioned)
   - #S: Serious
   - #W: Warning
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-Ethnicity|2015-07-31 (v3 Code System Ethnicity)
-  references (1): Patient.extension.valueCodeableConcept, strongest binding: Required, by type: CodeableConcept:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:uslab-patient
   - #2135-2: Hispanic or Latino
   - #2186-5: Not Hispanic or Latino
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ExposureMode|2015-07-31 (v3 Code System ExposureMode)
@@ -42135,7 +42140,7 @@ Value Sets: 931 (unversioned)
   - #LA: legally authenticated
   - #UC: unsigned completed document
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse|2014-03-26 (PurposeOfUse)
-  references (5): AuditEvent.event.purposeOfEvent, AuditEvent.participant.purposeOfUse, Contract.actionReason, Contract.term.actionReason, Provenance.reason, strongest binding: Extensible, by type: Coding:Extensible, CodeableConcept:Example
+  references (5): AuditEvent.event.purposeOfEvent, AuditEvent.participant.purposeOfUse, Contract.actionReason, Contract.term.actionReason, Provenance.reason, strongest binding: Extensible, by type: Coding:Extensible, CodeableConcept:Extensible
   - #CAREMGT: Care Management
   - #CLINTRCH: clinical trial research
   - #CLINTRL: clinical trial
@@ -42201,7 +42206,7 @@ Value Sets: 931 (unversioned)
   - #new: new
   - #waitContinuedQueryResponse: waitContinuedQueryResponse
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-Race|2015-07-31 (v3 Code System Race)
-  references (1): Patient.extension.valueCodeableConcept, strongest binding: Required, by type: CodeableConcept:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:uslab-patient
   - #1002-5: American Indian or Alaska Native
   - #2028-9: Asian
   - #2054-5: Black or African American

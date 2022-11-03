@@ -9,7 +9,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A FHIR server.</summary>
-public class FhirCapabiltyStatement : ICloneable
+public class FhirCapabiltyStatement : FhirModelBase, ICloneable
 {
     /// <summary>Values that represent conformance expectation codes.</summary>
     public enum ExpectationCodes
@@ -69,11 +69,16 @@ public class FhirCapabiltyStatement : ICloneable
         string url,
         string name,
         string title,
-        //string description,
-        //string narrative,
-        //string narrativeStatus,
-        //string kind,
+        string version,
+        string publicationStatus,
+        string standardStatus,
+        int? fmmLevel,
+        bool isExperimental,
+        string description,
+        string narrative,
+        string narrativeStatus,
         string fhirVersion,
+        string capabilityStatementKind,
         IEnumerable<string> fhirMimeTypes,
         IEnumerable<string> fhirMimeTypeExpectations,
         IEnumerable<string> patchMimeTypes,
@@ -90,13 +95,27 @@ public class FhirCapabiltyStatement : ICloneable
         Dictionary<string, FhirCapResource> resourceInteractions,
         Dictionary<string, FhirCapSearchParam> serverSearchParameters,
         Dictionary<string, FhirCapOperation> serverOperations)
+        : base(
+            FhirArtifactClassEnum.CapabilityStatement,
+            id,
+            name,
+            string.Empty,
+            string.Empty,
+            string.Empty,
+            version,
+            string.IsNullOrEmpty(url) ? null : new Uri(url),
+            publicationStatus,
+            standardStatus,
+            fmmLevel,
+            isExperimental,
+            title,
+            description,
+            string.Empty,
+            string.Empty,
+            narrative,
+            narrativeStatus,
+            fhirVersion)
     {
-        Id = id;
-        Url = url;
-        Name = name;
-        Title = title;
-        FhirVersion = fhirVersion;
-
         FhirMimeTypes = fhirMimeTypes ?? Array.Empty<string>();
         FhirMimeTypesEx = ProcessExpectationEnumerables(FhirMimeTypes, fhirMimeTypeExpectations);
  
@@ -138,17 +157,13 @@ public class FhirCapabiltyStatement : ICloneable
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
     /// <param name="source">Source for the.</param>
     public FhirCapabiltyStatement(FhirCapabiltyStatement source)
+        : base (source)
     {
         if (source == null)
         {
             throw new ArgumentNullException(nameof(source));
         }
 
-        Id = source.Id;
-        Url = source.Url;
-        Name = source.Name;
-        Title = source.Title;
-        FhirVersion = source.FhirVersion;
         FhirMimeTypes = source.FhirMimeTypes.Select(s => s);
         FhirMimeTypesEx = source.FhirMimeTypesEx.Select(r => r with { });
         PatchMimeTypes = source.PatchMimeTypes.Select(s => s);
@@ -208,21 +223,6 @@ public class FhirCapabiltyStatement : ICloneable
         [FhirLiteral("history-system")]
         HistorySystem,
     }
-
-    /// <summary>Gets the identifier.</summary>
-    public string Id { get; }
-
-    /// <summary>Gets FHIR Base URL for the server.</summary>
-    public string Url { get; }
-
-    /// <summary>Gets the name.</summary>
-    public string Name { get; }
-
-    /// <summary>Gets the title.</summary>
-    public string Title { get; }
-
-    /// <summary>Gets the listed FHIR version.</summary>
-    public string FhirVersion { get; }
 
     /// <summary>Gets the FHIR MIME types.</summary>
     public IEnumerable<string> FhirMimeTypes { get; }

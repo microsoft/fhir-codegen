@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Organization", IsResource=true)]
+  [FhirType("Organization","http://hl7.org/fhir/StructureDefinition/Organization", IsResource=true)]
   public partial class Organization : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -143,6 +143,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ContactComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ContactComponent;
@@ -197,6 +198,37 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "purpose":
+            value = Purpose;
+            return Purpose is not null;
+          case "name":
+            value = Name;
+            return Name is not null;
+          case "telecom":
+            value = Telecom;
+            return Telecom?.Any() == true;
+          case "address":
+            value = Address;
+            return Address is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Purpose is not null) yield return new KeyValuePair<string,object>("purpose",Purpose);
+        if (Name is not null) yield return new KeyValuePair<string,object>("name",Name);
+        if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
+        if (Address is not null) yield return new KeyValuePair<string,object>("address",Address);
+      }
+
     }
 
     /// <summary>
@@ -216,7 +248,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Whether the organization's record is still in active use
     /// </summary>
-    [FhirElement("active", InSummary=true, Order=100)]
+    [FhirElement("active", InSummary=true, IsModifier=true, Order=100)]
     [DataMember]
     public Hl7.Fhir.Model.FhirBoolean ActiveElement
     {
@@ -371,6 +403,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Organization());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Organization;
@@ -439,6 +472,53 @@ namespace Hl7.Fhir.Model
         if (PartOf != null) yield return new ElementValue("partOf", PartOf);
         foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "active":
+          value = ActiveElement;
+          return ActiveElement is not null;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "telecom":
+          value = Telecom;
+          return Telecom?.Any() == true;
+        case "address":
+          value = Address;
+          return Address?.Any() == true;
+        case "partOf":
+          value = PartOf;
+          return PartOf is not null;
+        case "contact":
+          value = Contact;
+          return Contact?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (ActiveElement is not null) yield return new KeyValuePair<string,object>("active",ActiveElement);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
+      if (Address?.Any() == true) yield return new KeyValuePair<string,object>("address",Address);
+      if (PartOf is not null) yield return new KeyValuePair<string,object>("partOf",PartOf);
+      if (Contact?.Any() == true) yield return new KeyValuePair<string,object>("contact",Contact);
     }
 
   }

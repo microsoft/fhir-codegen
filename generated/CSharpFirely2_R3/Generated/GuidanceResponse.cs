@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("GuidanceResponse", IsResource=true)]
+  [FhirType("GuidanceResponse","http://hl7.org/fhir/StructureDefinition/GuidanceResponse", IsResource=true)]
   public partial class GuidanceResponse : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -164,7 +164,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// success | data-requested | data-required | in-progress | failure | entered-in-error
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=120)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=120)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.GuidanceResponse.GuidanceResponseStatus> StatusElement
@@ -274,6 +275,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("reason", Order=170, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Resource")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [DataMember]
     public Hl7.Fhir.Model.DataType Reason
@@ -390,6 +392,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new GuidanceResponse());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as GuidanceResponse;
@@ -482,6 +485,77 @@ namespace Hl7.Fhir.Model
         if (Result != null) yield return new ElementValue("result", Result);
         foreach (var elem in DataRequirement) { if (elem != null) yield return new ElementValue("dataRequirement", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "requestId":
+          value = RequestIdElement;
+          return RequestIdElement is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier is not null;
+        case "module":
+          value = Module;
+          return Module is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "context":
+          value = Context;
+          return Context is not null;
+        case "occurrenceDateTime":
+          value = OccurrenceDateTimeElement;
+          return OccurrenceDateTimeElement is not null;
+        case "performer":
+          value = Performer;
+          return Performer is not null;
+        case "reason":
+          value = Reason;
+          return Reason is not null;
+        case "note":
+          value = Note;
+          return Note?.Any() == true;
+        case "evaluationMessage":
+          value = EvaluationMessage;
+          return EvaluationMessage?.Any() == true;
+        case "outputParameters":
+          value = OutputParameters;
+          return OutputParameters is not null;
+        case "result":
+          value = Result;
+          return Result is not null;
+        case "dataRequirement":
+          value = DataRequirement;
+          return DataRequirement?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (RequestIdElement is not null) yield return new KeyValuePair<string,object>("requestId",RequestIdElement);
+      if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Module is not null) yield return new KeyValuePair<string,object>("module",Module);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Context is not null) yield return new KeyValuePair<string,object>("context",Context);
+      if (OccurrenceDateTimeElement is not null) yield return new KeyValuePair<string,object>("occurrenceDateTime",OccurrenceDateTimeElement);
+      if (Performer is not null) yield return new KeyValuePair<string,object>("performer",Performer);
+      if (Reason is not null) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (Note?.Any() == true) yield return new KeyValuePair<string,object>("note",Note);
+      if (EvaluationMessage?.Any() == true) yield return new KeyValuePair<string,object>("evaluationMessage",EvaluationMessage);
+      if (OutputParameters is not null) yield return new KeyValuePair<string,object>("outputParameters",OutputParameters);
+      if (Result is not null) yield return new KeyValuePair<string,object>("result",Result);
+      if (DataRequirement?.Any() == true) yield return new KeyValuePair<string,object>("dataRequirement",DataRequirement);
     }
 
   }

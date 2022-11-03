@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("SubstanceAmount")]
+  [FhirType("SubstanceAmount","http://hl7.org/fhir/StructureDefinition/SubstanceAmount")]
   public partial class SubstanceAmount : Hl7.Fhir.Model.BackboneType
   {
     /// <summary>
@@ -114,6 +114,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ReferenceRangeComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ReferenceRangeComponent;
@@ -158,6 +159,29 @@ namespace Hl7.Fhir.Model
           if (LowLimit != null) yield return new ElementValue("lowLimit", LowLimit);
           if (HighLimit != null) yield return new ElementValue("highLimit", HighLimit);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "lowLimit":
+            value = LowLimit;
+            return LowLimit is not null;
+          case "highLimit":
+            value = HighLimit;
+            return HighLimit is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (LowLimit is not null) yield return new KeyValuePair<string,object>("lowLimit",LowLimit);
+        if (HighLimit is not null) yield return new KeyValuePair<string,object>("highLimit",HighLimit);
       }
 
     }
@@ -256,6 +280,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new SubstanceAmount());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as SubstanceAmount;
@@ -308,6 +333,37 @@ namespace Hl7.Fhir.Model
         if (AmountTextElement != null) yield return new ElementValue("amountText", AmountTextElement);
         if (ReferenceRange != null) yield return new ElementValue("referenceRange", ReferenceRange);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "amount":
+          value = Amount;
+          return Amount is not null;
+        case "amountType":
+          value = AmountType;
+          return AmountType is not null;
+        case "amountText":
+          value = AmountTextElement;
+          return AmountTextElement is not null;
+        case "referenceRange":
+          value = ReferenceRange;
+          return ReferenceRange is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Amount is not null) yield return new KeyValuePair<string,object>("amount",Amount);
+      if (AmountType is not null) yield return new KeyValuePair<string,object>("amountType",AmountType);
+      if (AmountTextElement is not null) yield return new KeyValuePair<string,object>("amountText",AmountTextElement);
+      if (ReferenceRange is not null) yield return new KeyValuePair<string,object>("referenceRange",ReferenceRange);
     }
 
   }

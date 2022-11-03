@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("VerificationResult", IsResource=true)]
+  [FhirType("VerificationResult","http://hl7.org/fhir/StructureDefinition/VerificationResult", IsResource=true)]
   public partial class VerificationResult : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -117,7 +117,7 @@ namespace Hl7.Fhir.Model
       /// <summary>
       /// Reference to the primary source
       /// </summary>
-      [FhirElement("who", Order=40)]
+      [FhirElement("who", Order=40, FiveWs="FiveWs.who")]
       [CLSCompliant(false)]
       [References("Organization","Practitioner","PractitionerRole")]
       [DataMember]
@@ -253,6 +253,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new PrimarySourceComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as PrimarySourceComponent;
@@ -317,6 +318,49 @@ namespace Hl7.Fhir.Model
           if (CanPushUpdates != null) yield return new ElementValue("canPushUpdates", CanPushUpdates);
           foreach (var elem in PushTypeAvailable) { if (elem != null) yield return new ElementValue("pushTypeAvailable", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "who":
+            value = Who;
+            return Who is not null;
+          case "type":
+            value = Type;
+            return Type?.Any() == true;
+          case "communicationMethod":
+            value = CommunicationMethod;
+            return CommunicationMethod?.Any() == true;
+          case "validationStatus":
+            value = ValidationStatus;
+            return ValidationStatus is not null;
+          case "validationDate":
+            value = ValidationDateElement;
+            return ValidationDateElement is not null;
+          case "canPushUpdates":
+            value = CanPushUpdates;
+            return CanPushUpdates is not null;
+          case "pushTypeAvailable":
+            value = PushTypeAvailable;
+            return PushTypeAvailable?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Who is not null) yield return new KeyValuePair<string,object>("who",Who);
+        if (Type?.Any() == true) yield return new KeyValuePair<string,object>("type",Type);
+        if (CommunicationMethod?.Any() == true) yield return new KeyValuePair<string,object>("communicationMethod",CommunicationMethod);
+        if (ValidationStatus is not null) yield return new KeyValuePair<string,object>("validationStatus",ValidationStatus);
+        if (ValidationDateElement is not null) yield return new KeyValuePair<string,object>("validationDate",ValidationDateElement);
+        if (CanPushUpdates is not null) yield return new KeyValuePair<string,object>("canPushUpdates",CanPushUpdates);
+        if (PushTypeAvailable?.Any() == true) yield return new KeyValuePair<string,object>("pushTypeAvailable",PushTypeAvailable);
       }
 
     }
@@ -522,6 +566,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new AttestationComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as AttestationComponent;
@@ -590,6 +635,53 @@ namespace Hl7.Fhir.Model
           if (ProxySignature != null) yield return new ElementValue("proxySignature", ProxySignature);
           if (SourceSignature != null) yield return new ElementValue("sourceSignature", SourceSignature);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "who":
+            value = Who;
+            return Who is not null;
+          case "onBehalfOf":
+            value = OnBehalfOf;
+            return OnBehalfOf is not null;
+          case "communicationMethod":
+            value = CommunicationMethod;
+            return CommunicationMethod is not null;
+          case "date":
+            value = DateElement;
+            return DateElement is not null;
+          case "sourceIdentityCertificate":
+            value = SourceIdentityCertificateElement;
+            return SourceIdentityCertificateElement is not null;
+          case "proxyIdentityCertificate":
+            value = ProxyIdentityCertificateElement;
+            return ProxyIdentityCertificateElement is not null;
+          case "proxySignature":
+            value = ProxySignature;
+            return ProxySignature is not null;
+          case "sourceSignature":
+            value = SourceSignature;
+            return SourceSignature is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Who is not null) yield return new KeyValuePair<string,object>("who",Who);
+        if (OnBehalfOf is not null) yield return new KeyValuePair<string,object>("onBehalfOf",OnBehalfOf);
+        if (CommunicationMethod is not null) yield return new KeyValuePair<string,object>("communicationMethod",CommunicationMethod);
+        if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+        if (SourceIdentityCertificateElement is not null) yield return new KeyValuePair<string,object>("sourceIdentityCertificate",SourceIdentityCertificateElement);
+        if (ProxyIdentityCertificateElement is not null) yield return new KeyValuePair<string,object>("proxyIdentityCertificate",ProxyIdentityCertificateElement);
+        if (ProxySignature is not null) yield return new KeyValuePair<string,object>("proxySignature",ProxySignature);
+        if (SourceSignature is not null) yield return new KeyValuePair<string,object>("sourceSignature",SourceSignature);
       }
 
     }
@@ -688,6 +780,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ValidatorComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ValidatorComponent;
@@ -736,6 +829,33 @@ namespace Hl7.Fhir.Model
           if (IdentityCertificateElement != null) yield return new ElementValue("identityCertificate", IdentityCertificateElement);
           if (AttestationSignature != null) yield return new ElementValue("attestationSignature", AttestationSignature);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "organization":
+            value = Organization;
+            return Organization is not null;
+          case "identityCertificate":
+            value = IdentityCertificateElement;
+            return IdentityCertificateElement is not null;
+          case "attestationSignature":
+            value = AttestationSignature;
+            return AttestationSignature is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Organization is not null) yield return new KeyValuePair<string,object>("organization",Organization);
+        if (IdentityCertificateElement is not null) yield return new KeyValuePair<string,object>("identityCertificate",IdentityCertificateElement);
+        if (AttestationSignature is not null) yield return new KeyValuePair<string,object>("attestationSignature",AttestationSignature);
       }
 
     }
@@ -805,6 +925,7 @@ namespace Hl7.Fhir.Model
     /// attested | validated | in-process | req-revalid | val-fail | reval-fail
     /// </summary>
     [FhirElement("status", InSummary=true, Order=120)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.VerificationResult.status> Status_Element
@@ -1052,6 +1173,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new VerificationResult());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as VerificationResult;
@@ -1144,6 +1266,77 @@ namespace Hl7.Fhir.Model
         if (Attestation != null) yield return new ElementValue("attestation", Attestation);
         foreach (var elem in Validator) { if (elem != null) yield return new ElementValue("validator", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "target":
+          value = Target;
+          return Target?.Any() == true;
+        case "targetLocation":
+          value = TargetLocationElement;
+          return TargetLocationElement?.Any() == true;
+        case "need":
+          value = Need;
+          return Need is not null;
+        case "status":
+          value = Status_Element;
+          return Status_Element is not null;
+        case "statusDate":
+          value = StatusDateElement;
+          return StatusDateElement is not null;
+        case "validationType":
+          value = ValidationType;
+          return ValidationType is not null;
+        case "validationProcess":
+          value = ValidationProcess;
+          return ValidationProcess?.Any() == true;
+        case "frequency":
+          value = Frequency;
+          return Frequency is not null;
+        case "lastPerformed":
+          value = LastPerformedElement;
+          return LastPerformedElement is not null;
+        case "nextScheduled":
+          value = NextScheduledElement;
+          return NextScheduledElement is not null;
+        case "failureAction":
+          value = FailureAction;
+          return FailureAction is not null;
+        case "primarySource":
+          value = PrimarySource;
+          return PrimarySource?.Any() == true;
+        case "attestation":
+          value = Attestation;
+          return Attestation is not null;
+        case "validator":
+          value = Validator;
+          return Validator?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Target?.Any() == true) yield return new KeyValuePair<string,object>("target",Target);
+      if (TargetLocationElement?.Any() == true) yield return new KeyValuePair<string,object>("targetLocation",TargetLocationElement);
+      if (Need is not null) yield return new KeyValuePair<string,object>("need",Need);
+      if (Status_Element is not null) yield return new KeyValuePair<string,object>("status",Status_Element);
+      if (StatusDateElement is not null) yield return new KeyValuePair<string,object>("statusDate",StatusDateElement);
+      if (ValidationType is not null) yield return new KeyValuePair<string,object>("validationType",ValidationType);
+      if (ValidationProcess?.Any() == true) yield return new KeyValuePair<string,object>("validationProcess",ValidationProcess);
+      if (Frequency is not null) yield return new KeyValuePair<string,object>("frequency",Frequency);
+      if (LastPerformedElement is not null) yield return new KeyValuePair<string,object>("lastPerformed",LastPerformedElement);
+      if (NextScheduledElement is not null) yield return new KeyValuePair<string,object>("nextScheduled",NextScheduledElement);
+      if (FailureAction is not null) yield return new KeyValuePair<string,object>("failureAction",FailureAction);
+      if (PrimarySource?.Any() == true) yield return new KeyValuePair<string,object>("primarySource",PrimarySource);
+      if (Attestation is not null) yield return new KeyValuePair<string,object>("attestation",Attestation);
+      if (Validator?.Any() == true) yield return new KeyValuePair<string,object>("validator",Validator);
     }
 
   }

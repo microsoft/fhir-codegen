@@ -3,10 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
@@ -28,12 +25,11 @@ public class FhirValueSetCollection : ICloneable
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirValueSetCollection"/> class.
     /// </summary>
-    /// <param name="url">               The URL.</param>
-    /// <param name="valueSetsByVersion">The value sets by version.</param>
-    private FhirValueSetCollection(string url, Dictionary<string, FhirValueSet> valueSetsByVersion)
+    /// <param name="source">Source for the.</param>
+    private FhirValueSetCollection(FhirValueSetCollection source)
     {
-        URL = url;
-        _valueSetsByVersion = valueSetsByVersion;
+        URL = source.URL;
+        _valueSetsByVersion = source._valueSetsByVersion?.DeepCopy() ?? new();
     }
 
     /// <summary>Gets URL of the document.</summary>
@@ -140,13 +136,6 @@ public class FhirValueSetCollection : ICloneable
     /// <returns>A new object that is a copy of this instance.</returns>
     public object Clone()
     {
-        Dictionary<string, FhirValueSet> valueSets = new Dictionary<string, FhirValueSet>();
-
-        foreach (KeyValuePair<string, FhirValueSet> kvp in _valueSetsByVersion)
-        {
-            valueSets.Add(kvp.Key, (FhirValueSet)kvp.Value.Clone());
-        }
-
-        return new FhirValueSetCollection(URL, valueSets);
+        return new FhirValueSetCollection(this);
     }
 }

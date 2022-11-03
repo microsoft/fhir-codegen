@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("OrderResponse", IsResource=true)]
+  [FhirType("OrderResponse","http://hl7.org/fhir/StructureDefinition/OrderResponse", IsResource=true)]
   public partial class OrderResponse : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -198,7 +198,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// pending | review | rejected | error | accepted | cancelled | replaced | aborted | completed
     /// </summary>
-    [FhirElement("orderStatus", InSummary=true, Order=130)]
+    [FhirElement("orderStatus", InSummary=true, IsModifier=true, Order=130)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.OrderResponse.OrderStatus> OrderStatus_Element
@@ -299,6 +300,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new OrderResponse());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as OrderResponse;
@@ -363,6 +365,49 @@ namespace Hl7.Fhir.Model
         if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
         foreach (var elem in Fulfillment) { if (elem != null) yield return new ElementValue("fulfillment", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "request":
+          value = Request;
+          return Request is not null;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "who":
+          value = Who;
+          return Who is not null;
+        case "orderStatus":
+          value = OrderStatus_Element;
+          return OrderStatus_Element is not null;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "fulfillment":
+          value = Fulfillment;
+          return Fulfillment?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Request is not null) yield return new KeyValuePair<string,object>("request",Request);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (Who is not null) yield return new KeyValuePair<string,object>("who",Who);
+      if (OrderStatus_Element is not null) yield return new KeyValuePair<string,object>("orderStatus",OrderStatus_Element);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (Fulfillment?.Any() == true) yield return new KeyValuePair<string,object>("fulfillment",Fulfillment);
     }
 
   }

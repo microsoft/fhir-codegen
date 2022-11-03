@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("CommunicationRequest", IsResource=true)]
+  [FhirType("CommunicationRequest","http://hl7.org/fhir/StructureDefinition/CommunicationRequest", IsResource=true)]
   public partial class CommunicationRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -73,6 +73,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("content", Order=40, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("Resource")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.ResourceReference))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
@@ -103,6 +104,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new PayloadComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as PayloadComponent;
@@ -143,6 +145,25 @@ namespace Hl7.Fhir.Model
           foreach (var item in base.NamedChildren) yield return item;
           if (Content != null) yield return new ElementValue("content", Content);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "content":
+            value = Content;
+            return Content is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Content is not null) yield return new KeyValuePair<string,object>("content",Content);
       }
 
     }
@@ -211,6 +232,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new RequesterComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as RequesterComponent;
@@ -255,6 +277,29 @@ namespace Hl7.Fhir.Model
           if (Agent != null) yield return new ElementValue("agent", Agent);
           if (OnBehalfOf != null) yield return new ElementValue("onBehalfOf", OnBehalfOf);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "agent":
+            value = Agent;
+            return Agent is not null;
+          case "onBehalfOf":
+            value = OnBehalfOf;
+            return OnBehalfOf is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Agent is not null) yield return new KeyValuePair<string,object>("agent",Agent);
+        if (OnBehalfOf is not null) yield return new KeyValuePair<string,object>("onBehalfOf",OnBehalfOf);
       }
 
     }
@@ -321,7 +366,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// draft | active | suspended | cancelled | completed | entered-in-error | unknown
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=130)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=130)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.RequestStatus> StatusElement
@@ -368,6 +414,7 @@ namespace Hl7.Fhir.Model
     /// Message urgency
     /// </summary>
     [FhirElement("priority", InSummary=true, Order=150)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.RequestPriority> PriorityElement
     {
@@ -641,6 +688,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new CommunicationRequest());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as CommunicationRequest;
@@ -757,6 +805,101 @@ namespace Hl7.Fhir.Model
         foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
         foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "basedOn":
+          value = BasedOn;
+          return BasedOn?.Any() == true;
+        case "replaces":
+          value = Replaces;
+          return Replaces?.Any() == true;
+        case "groupIdentifier":
+          value = GroupIdentifier;
+          return GroupIdentifier is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "category":
+          value = Category;
+          return Category?.Any() == true;
+        case "priority":
+          value = PriorityElement;
+          return PriorityElement is not null;
+        case "medium":
+          value = Medium;
+          return Medium?.Any() == true;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "recipient":
+          value = Recipient;
+          return Recipient?.Any() == true;
+        case "topic":
+          value = Topic;
+          return Topic?.Any() == true;
+        case "context":
+          value = Context;
+          return Context is not null;
+        case "payload":
+          value = Payload;
+          return Payload?.Any() == true;
+        case "occurrence":
+          value = Occurrence;
+          return Occurrence is not null;
+        case "authoredOn":
+          value = AuthoredOnElement;
+          return AuthoredOnElement is not null;
+        case "sender":
+          value = Sender;
+          return Sender is not null;
+        case "requester":
+          value = Requester;
+          return Requester is not null;
+        case "reasonCode":
+          value = ReasonCode;
+          return ReasonCode?.Any() == true;
+        case "reasonReference":
+          value = ReasonReference;
+          return ReasonReference?.Any() == true;
+        case "note":
+          value = Note;
+          return Note?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (BasedOn?.Any() == true) yield return new KeyValuePair<string,object>("basedOn",BasedOn);
+      if (Replaces?.Any() == true) yield return new KeyValuePair<string,object>("replaces",Replaces);
+      if (GroupIdentifier is not null) yield return new KeyValuePair<string,object>("groupIdentifier",GroupIdentifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Category?.Any() == true) yield return new KeyValuePair<string,object>("category",Category);
+      if (PriorityElement is not null) yield return new KeyValuePair<string,object>("priority",PriorityElement);
+      if (Medium?.Any() == true) yield return new KeyValuePair<string,object>("medium",Medium);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Recipient?.Any() == true) yield return new KeyValuePair<string,object>("recipient",Recipient);
+      if (Topic?.Any() == true) yield return new KeyValuePair<string,object>("topic",Topic);
+      if (Context is not null) yield return new KeyValuePair<string,object>("context",Context);
+      if (Payload?.Any() == true) yield return new KeyValuePair<string,object>("payload",Payload);
+      if (Occurrence is not null) yield return new KeyValuePair<string,object>("occurrence",Occurrence);
+      if (AuthoredOnElement is not null) yield return new KeyValuePair<string,object>("authoredOn",AuthoredOnElement);
+      if (Sender is not null) yield return new KeyValuePair<string,object>("sender",Sender);
+      if (Requester is not null) yield return new KeyValuePair<string,object>("requester",Requester);
+      if (ReasonCode?.Any() == true) yield return new KeyValuePair<string,object>("reasonCode",ReasonCode);
+      if (ReasonReference?.Any() == true) yield return new KeyValuePair<string,object>("reasonReference",ReasonReference);
+      if (Note?.Any() == true) yield return new KeyValuePair<string,object>("note",Note);
     }
 
   }

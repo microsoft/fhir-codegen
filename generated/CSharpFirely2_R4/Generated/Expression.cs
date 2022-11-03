@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Expression")]
+  [FhirType("Expression","http://hl7.org/fhir/StructureDefinition/Expression")]
   public partial class Expression : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -234,6 +234,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Expression());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Expression;
@@ -290,6 +291,41 @@ namespace Hl7.Fhir.Model
         if (ExpressionElement != null) yield return new ElementValue("expression", ExpressionElement);
         if (ReferenceElement != null) yield return new ElementValue("reference", ReferenceElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "language":
+          value = LanguageElement;
+          return LanguageElement is not null;
+        case "expression":
+          value = ExpressionElement;
+          return ExpressionElement is not null;
+        case "reference":
+          value = ReferenceElement;
+          return ReferenceElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (LanguageElement is not null) yield return new KeyValuePair<string,object>("language",LanguageElement);
+      if (ExpressionElement is not null) yield return new KeyValuePair<string,object>("expression",ExpressionElement);
+      if (ReferenceElement is not null) yield return new KeyValuePair<string,object>("reference",ReferenceElement);
     }
 
   }

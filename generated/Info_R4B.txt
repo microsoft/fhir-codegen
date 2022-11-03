@@ -4352,7 +4352,7 @@ Resources: 143
   - url[1..1]: uri *simple*
     .fixedUri = "http://hl7.org/fhir/StructureDefinition/valueset-special-status"
   - value[x][1..1]: string
-  ?author: author=string ( experimental)
+  ?author: author=string (experimental)
   ?code: code=token (trial-use)
   ?content-mode: content-mode=token (trial-use)
   ?context: context=token (trial-use)
@@ -4362,11 +4362,11 @@ Resources: 143
   ?context-type-value: context-type-value=composite (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
-  ?effective: effective=date ( experimental)
-  ?end: end=date ( experimental)
+  ?effective: effective=date (experimental)
+  ?end: end=date (experimental)
   ?identifier: identifier=token (trial-use)
   ?jurisdiction: jurisdiction=token (trial-use)
-  ?keyword: keyword=string ( experimental)
+  ?keyword: keyword=string (experimental)
   ?language: language=token (trial-use)
   ?name: name=string (trial-use)
   ?publisher: publisher=string (trial-use)
@@ -4376,7 +4376,7 @@ Resources: 143
   ?title: title=string (trial-use)
   ?url: url=uri (trial-use)
   ?version: version=token (trial-use)
-  ?workflow: workflow=token ( experimental)
+  ?workflow: workflow=token (experimental)
   $find-matches (trial-use FMM: 0)
     in: system: uri[0..1]
     in: version: string[0..1]
@@ -5971,7 +5971,7 @@ Resources: 143
     .fixedUri = "http://hl7.org/fhir/StructureDefinition/device-implantStatus"
   - value[x][1..1]: code
   ?device-name: device-name=string (trial-use)
-  ?din: din=token ( experimental)
+  ?din: din=token (experimental)
   ?identifier: identifier=token (trial-use)
   ?location: location=reference (trial-use)
   ?manufacturer: manufacturer=string (trial-use)
@@ -6609,7 +6609,7 @@ Resources: 143
   - url[1..1]: uri *simple*
     .fixedUri = "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo"
   - value[x][1..1]: Reference(Resource)
-  ?assessed-condition: assessed-condition=reference ( experimental)
+  ?assessed-condition: assessed-condition=reference (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
   ?code: code=token (trial-use)
@@ -11182,7 +11182,7 @@ Resources: 143
   - url[1..1]: uri *simple*
     .fixedUri = "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo"
   - value[x][1..1]: Reference(Resource)
-  ?amino-acid-change: amino-acid-change=string ( experimental)
+  ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
   ?code: code=token (trial-use)
@@ -11206,12 +11206,12 @@ Resources: 143
   ?date: date=date (trial-use)
   ?derived-from: derived-from=reference (trial-use)
   ?device: device=reference (trial-use)
-  ?dna-variant: dna-variant=string ( experimental)
+  ?dna-variant: dna-variant=string (experimental)
   ?encounter: encounter=reference (trial-use)
   ?focus: focus=reference (trial-use)
-  ?gene-amino-acid-change: gene-amino-acid-change=string ( experimental)
-  ?gene-dnavariant: gene-dnavariant=string ( experimental)
-  ?gene-identifier: gene-identifier=token ( experimental)
+  ?gene-amino-acid-change: gene-amino-acid-change=string (experimental)
+  ?gene-dnavariant: gene-dnavariant=string (experimental)
+  ?gene-identifier: gene-identifier=token (experimental)
   ?has-member: has-member=reference (trial-use)
   ?identifier: identifier=token (trial-use)
   ?method: method=token (trial-use)
@@ -12354,9 +12354,9 @@ Resources: 143
   ?address-postalcode: address-postalcode=string (trial-use)
   ?address-state: address-state=string (trial-use)
   ?address-use: address-use=token (trial-use)
-  ?age: age=number ( experimental)
+  ?age: age=number (experimental)
   ?birthdate: birthdate=date (trial-use)
-  ?birthOrderBoolean: birthOrderBoolean=token ( experimental)
+  ?birthOrderBoolean: birthOrderBoolean=token (experimental)
   ?death-date: death-date=date (trial-use)
   ?deceased: deceased=token (trial-use)
   ?email: email=token (trial-use)
@@ -12367,10 +12367,10 @@ Resources: 143
   ?identifier: identifier=token (trial-use)
   ?language: language=token (trial-use)
   ?link: link=reference (trial-use)
-  ?mothersMaidenName: mothersMaidenName=string ( experimental)
+  ?mothersMaidenName: mothersMaidenName=string (experimental)
   ?name: name=string (trial-use)
   ?organization: organization=reference (trial-use)
-  ?Example Search Parameter on an extension: part-agree=reference ( experimental)
+  ?Example Search Parameter on an extension: part-agree=reference (experimental)
   ?phone: phone=token (trial-use)
   ?phonetic: phonetic=string (trial-use)
   ?telecom: telecom=token (trial-use)
@@ -14429,7 +14429,7 @@ Resources: 143
   ?based-on: based-on=reference (trial-use)
   ?encounter: encounter=reference (trial-use)
   ?identifier: identifier=token (trial-use)
-  ?item-subject: item-subject=reference ( experimental)
+  ?item-subject: item-subject=reference (experimental)
   ?part-of: part-of=reference (trial-use)
   ?patient: patient=reference (trial-use)
   ?questionnaire: questionnaire=reference (trial-use)
@@ -17178,7 +17178,7 @@ Resources: 143
   - url[1..1]: uri *simple*
     .fixedUri = "http://hl7.org/fhir/StructureDefinition/valueset-workflowStatus"
   - value[x][1..1]: string
-  ?author: author=string ( experimental)
+  ?author: author=string (experimental)
   ?code: code=token (trial-use)
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
@@ -17187,12 +17187,12 @@ Resources: 143
   ?context-type-value: context-type-value=composite (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
-  ?effective: effective=date ( experimental)
-  ?end: end=date ( experimental)
+  ?effective: effective=date (experimental)
+  ?end: end=date (experimental)
   ?expansion: expansion=uri (trial-use)
   ?identifier: identifier=token (trial-use)
   ?jurisdiction: jurisdiction=token (trial-use)
-  ?keyword: keyword=string ( experimental)
+  ?keyword: keyword=string (experimental)
   ?name: name=string (trial-use)
   ?publisher: publisher=string (trial-use)
   ?reference: reference=uri (trial-use)
@@ -17200,7 +17200,7 @@ Resources: 143
   ?title: title=string (trial-use)
   ?url: url=uri (trial-use)
   ?version: version=token (trial-use)
-  ?workflow: workflow=token ( experimental)
+  ?workflow: workflow=token (experimental)
   $expand (normative FMM: 5)
     in: url: uri[0..1]
     in: valueSet: ValueSet[0..1]
@@ -17637,7 +17637,7 @@ All Resource Parameters: 13
   ?_content: _content=string (trial-use)
   ?FilterSearchParameter: _filter=special
   ?_has: _has=string (trial-use)
-  ?ID-SEARCH-PARAMETER: _id=token ( experimental)
+  ?ID-SEARCH-PARAMETER: _id=token (experimental)
   ?_lastUpdated: _lastUpdated=date (trial-use)
   ?_list: _list=string (trial-use)
   ?_profile: _profile=uri (trial-use)
@@ -17727,7 +17727,8 @@ Value Sets: 713 (unversioned)
   - #quality-measure: Quality measure
   - #risk-assessment: Risk assessment
 - ValueSet: http://hl7.org/fhir/ValueSet/action-relationship-type|4.3.0 (trial-use FMM: 3) (ActionRelationshipType)
-  references (3): PlanDefinition.action.relatedAction.relationship, RequestGroup.action.relatedAction.relationship, Extension.extension.value[x], strongest binding: Required, by type: code:Required
+  references (2): PlanDefinition.action.relatedAction.relationship, RequestGroup.action.relatedAction.relationship, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:cqf-relativeDateTime
   - #after: After
   - #after-end: After End
   - #after-start: After Start
@@ -18303,7 +18304,7 @@ Value Sets: 713 (unversioned)
   - #refuted: Refuted
   - #unconfirmed: Unconfirmed
 - ValueSet: http://hl7.org/fhir/ValueSet/animal-breeds|4.3.0 (AnimalBreeds)
-  references (1): Extension.extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:patient-animal
   - #1006005: Percheron horse (organism)
   - #10261003: Belgium landrace pig (organism)
   - #10643004: Arucana chicken (organism)
@@ -20675,12 +20676,12 @@ Value Sets: 713 (unversioned)
   - #9277006: Polled Hereford (organism)
   - #944009: Brown Welsh cattle breed (organism)
 - ValueSet: http://hl7.org/fhir/ValueSet/animal-genderstatus|4.3.0 (GenderStatus)
-  references (1): Extension.extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:patient-animal
   - #intact: Intact
   - #neutered: Neutered
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/animal-species|4.3.0 (AnimalSpecies)
-  references (2): Extension.extension.value[x], Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (2): strongest binding: Example, refs: Extension:patient-animal, Extension:practitioner-animalSpecies
   - #125097000: goat
   - #125099002: sheep
   - #132950000: mule
@@ -21274,7 +21275,8 @@ Value Sets: 713 (unversioned)
   - #preferred: Preferred
   - #required: Required
 - ValueSet: http://hl7.org/fhir/ValueSet/body-site|4.3.0 (draft FMM: 1) (SNOMEDCTBodyStructures)
-  references (12): ActivityDefinition.bodySite, BodyStructure.location, ChargeItem.bodysite, Condition.bodySite, DeviceUseStatement.bodySite, ImagingStudy.series.bodySite, Media.bodySite, Observation.bodySite, Procedure.bodySite, ServiceRequest.bodySite, Specimen.collection.bodySite, Extension.value[x], strongest binding: Extensible, by type: CodeableConcept:Example, Coding:Example
+  references (11): ActivityDefinition.bodySite, BodyStructure.location, ChargeItem.bodysite, Condition.bodySite, DeviceUseStatement.bodySite, ImagingStudy.series.bodySite, Media.bodySite, Observation.bodySite, Procedure.bodySite, ServiceRequest.bodySite, Specimen.collection.bodySite, strongest binding: Example, by type: CodeableConcept:Example, Coding:Example
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:openEHR-location
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/bodysite-laterality|4.3.0 (draft FMM: 1) (Laterality)
   references (1): ImagingStudy.series.laterality, strongest binding: Example, by type: Coding:Example
@@ -21300,7 +21302,7 @@ Value Sets: 713 (unversioned)
   references (1): DocumentReference.context.facilityType, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/c80-practice-codes|4.3.0 (draft FMM: 1) (PracticeSettingCodeValueSet)
-  references (7): Appointment.specialty, DocumentReference.context.practiceSetting, HealthcareService.specialty, OrganizationAffiliation.specialty, PractitionerRole.specialty, Schedule.specialty, Slot.specialty, strongest binding: Preferred, by type: CodeableConcept:Example
+  references (7): Appointment.specialty, DocumentReference.context.practiceSetting, HealthcareService.specialty, OrganizationAffiliation.specialty, PractitionerRole.specialty, Schedule.specialty, Slot.specialty, strongest binding: Preferred, by type: CodeableConcept:Preferred
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/capability-statement-kind|4.3.0 (normative FMM: 5) (CapabilityStatementKind)
   references (2): CapabilityStatement.kind, TerminologyCapabilities.kind, strongest binding: Required, by type: code:Required
@@ -21351,7 +21353,7 @@ Value Sets: 713 (unversioned)
   references (1): CareTeam.participant.role, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/catalogType|4.3.0 (CatalogType)
-  references (1): Composition.category, strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Profile:catalog
   - #device: Device Catalog
   - #medication: Medication Catalog
   - #protocol: Protocol List
@@ -21360,7 +21362,8 @@ Value Sets: 713 (unversioned)
   - #info: The response is informational
   - #warning: The response is a warning
 - ValueSet: http://hl7.org/fhir/ValueSet/certainty-rating|4.3.0 (trial-use FMM: 1) (EvidenceCertaintyRating)
-  references (2): Evidence.certainty.rating, Extension.extension.value[x], strongest binding: Extensible, by type: CodeableConcept:Example
+  references (1): Evidence.certainty.rating, strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Example, refs: Extension:cqf-certainty
   - #absent: absent
   - #downcode1: reduce rating: -1
   - #downcode2: reduce rating: -2
@@ -21378,7 +21381,8 @@ Value Sets: 713 (unversioned)
   - #very-low: Very low quality
   - #very-serious-concern: very serious concern
 - ValueSet: http://hl7.org/fhir/ValueSet/certainty-type|4.3.0 (trial-use FMM: 1) (EvidenceCertaintyType)
-  references (2): Evidence.certainty.type, Extension.extension.value[x], strongest binding: Extensible, by type: CodeableConcept:Example
+  references (1): Evidence.certainty.type, strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Example, refs: Extension:cqf-certainty
   - #DoseResponseGradient: Dose response gradient
   - #Imprecision: Imprecision
   - #Inconsistency: Inconsistency
@@ -21793,7 +21797,8 @@ Value Sets: 713 (unversioned)
   - #final: Final
   - #preliminary: Preliminary
 - ValueSet: http://hl7.org/fhir/ValueSet/concept-map-equivalence|4.3.0 (trial-use FMM: 3) (ConceptMapEquivalence)
-  references (2): ConceptMap.group.element.target.equivalence, Extension.value[x], strongest binding: Required, by type: code:Required
+  references (1): ConceptMap.group.element.target.equivalence, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:elementdefinition-equivalence
   - #disjoint: Disjoint
   - #equal: Equal
   - #equivalent: Equivalent
@@ -21839,10 +21844,12 @@ Value Sets: 713 (unversioned)
   references (9): ClinicalImpression.finding.itemCodeableConcept, Condition.code, DeviceRequest.reasonCode, FamilyMemberHistory.condition.code, MedicationRequest.reasonCode, MedicationStatement.reasonCode, PlanDefinition.goal.addresses, Procedure.complication, ResearchStudy.condition, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-outcome|4.3.0 (draft FMM: 1) (ConditionOutcomeCodes)
-  references (2): FamilyMemberHistory.condition.outcome, Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  references (1): FamilyMemberHistory.condition.outcome, strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:condition-outcome
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-severity|4.3.0 (Condition/DiagnosisSeverity)
-  references (2): Condition.severity, Extension.value[x], strongest binding: Preferred, by type: CodeableConcept:Example
+  references (1): Condition.severity, strongest binding: Preferred, by type: CodeableConcept:Preferred
+  extensions/profiles (1): strongest binding: Example, refs: Extension:familymemberhistory-severity
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-stage|4.3.0 (draft FMM: 1) (ConditionStage)
   references (1): Condition.stage.summary, strongest binding: Example, by type: CodeableConcept:Example
@@ -21941,7 +21948,8 @@ Value Sets: 713 (unversioned)
   references (1): NutritionOrder.oralDiet.fluidConsistencyType, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity|4.3.0 (normative FMM: 5) (ConstraintSeverity)
-  references (2): ElementDefinition.constraint.severity, Extension.extension.value[x], strongest binding: Required, by type: code:Required
+  references (1): ElementDefinition.constraint.severity, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:questionnaire-constraint
   - #error: Error
   - #warning: Warning
 - ValueSet: http://hl7.org/fhir/ValueSet/contact-point-system|4.3.0 (normative FMM: 5) (ContactPointSystem)
@@ -22211,7 +22219,7 @@ Value Sets: 713 (unversioned)
   - #endorser: Endorser
   - #reviewer: Reviewer
 - ValueSet: http://hl7.org/fhir/ValueSet/country|4.3.0 (trial-use FMM: 1) (Country ValueSet)
-  references (4): Ingredient.substance.strength.country, Ingredient.substance.strength.referenceStrength.country, MedicinalProductDefinition.name.countryLanguage.country, SubstanceDefinition.sourceMaterial.countryOfOrigin, strongest binding: Required, by type: CodeableConcept:Example
+  references (4): Ingredient.substance.strength.country, Ingredient.substance.strength.referenceStrength.country, MedicinalProductDefinition.name.countryLanguage.country, SubstanceDefinition.sourceMaterial.countryOfOrigin, strongest binding: Required, by type: CodeableConcept:Required
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/coverage-class|4.3.0 (trial-use FMM: 2) (CoverageClassCodes)
   references (1): Coverage.class.type, strongest binding: Extensible, by type: CodeableConcept:Extensible
@@ -22316,7 +22324,8 @@ Value Sets: 713 (unversioned)
   references (1): Money.currency, strongest binding: Required, by type: code:Required
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/data-absent-reason|4.3.0 (normative FMM: 5) (DataAbsentReason)
-  references (3): Observation.dataAbsentReason, Observation.component.dataAbsentReason, Extension.value[x], strongest binding: Required, by type: CodeableConcept:Extensible, code:Required
+  references (2): Observation.dataAbsentReason, Observation.component.dataAbsentReason, strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Required, refs: Extension:data-absent-reason
   - #as-text: As Text
   - #asked-declined: Asked But Declined
   - #asked-unknown: Asked But Unknown
@@ -22333,7 +22342,7 @@ Value Sets: 713 (unversioned)
   - #unknown: Unknown
   - #unsupported: Unsupported
 - ValueSet: http://hl7.org/fhir/ValueSet/data-types|4.3.0 (normative FMM: 5) (DataType)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:questionnaire-baseType
   - #Address: Address
   - #Age: Age
   - #Annotation: Annotation
@@ -22768,7 +22777,8 @@ Value Sets: 713 (unversioned)
   references (1): Procedure.focalDevice.action, strongest binding: Preferred, by type: CodeableConcept:Preferred
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/device-kind|4.3.0 (draft FMM: 1) (FHIRDeviceTypes)
-  references (5): ChargeItem.product[x], DeviceDefinition.type, DeviceRequest.code[x], Procedure.usedCode, Extension.value[x], strongest binding: Example, by type: Reference:Example, CodeableConcept:Example
+  references (4): ChargeItem.product[x], DeviceDefinition.type, DeviceRequest.code[x], Procedure.usedCode, strongest binding: Example, by type: Reference:Example, CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:observation-deviceCode
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/device-nametype|4.3.0 (trial-use FMM: 2) (DeviceNameType)
   references (2): Device.deviceName.type, DeviceDefinition.deviceName.type, strongest binding: Required, by type: code:Required
@@ -23260,7 +23270,8 @@ Value Sets: 713 (unversioned)
   - #SupplyDelivery: SupplyDelivery
   - #Task: Task
 - ValueSet: http://hl7.org/fhir/ValueSet/event-status|4.3.0 (trial-use FMM: 3) (EventStatus)
-  references (4): Communication.status, Media.status, Procedure.status, Event.status, strongest binding: Required, by type: code:Required
+  references (3): Communication.status, Media.status, Procedure.status, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: LogicalModel:Event
   - #completed: Completed
   - #entered-in-error: Entered in Error
   - #in-progress: In Progress
@@ -23331,7 +23342,7 @@ Value Sets: 713 (unversioned)
   - #SubgroupAnalysis: Subgroup analysis
   - #Treatment: Article about treatment
 - ValueSet: http://hl7.org/fhir/ValueSet/evidence-quality|4.3.0 (QualityOfEvidenceRating)
-  references (1): Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:cqf-qualityOfEvidence
   - #high: High quality
   - #low: Low quality
   - #moderate: Moderate quality
@@ -23507,7 +23518,7 @@ Value Sets: 713 (unversioned)
   - #extension: Extension URL
   - #fhirpath: FHIRPath
 - ValueSet: http://hl7.org/fhir/ValueSet/feeding-device|4.3.0 (FeedingDeviceCodes)
-  references (1): Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:nutritionorder-adaptiveFeedingDevice
   - #angled-utensil: Angled utensils
   - #autofeeding-device: Automated feeding devices
   - #bigcut-nipple: Enlarged, cross-cut nipple
@@ -23747,7 +23758,8 @@ Value Sets: 713 (unversioned)
   - #VisionPrescription: VisionPrescription
   - #xhtml: XHTML
 - ValueSet: http://hl7.org/fhir/ValueSet/FHIR-version|4.3.0 (normative FMM: 5) (FHIRVersion)
-  references (5): CapabilityStatement.fhirVersion, ImplementationGuide.fhirVersion, ImplementationGuide.definition.resource.fhirVersion, StructureDefinition.fhirVersion, Extension.value[x], strongest binding: Required, by type: code:Required
+  references (4): CapabilityStatement.fhirVersion, ImplementationGuide.fhirVersion, ImplementationGuide.definition.resource.fhirVersion, StructureDefinition.fhirVersion, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:structuredefinition-applicable-version
   - #0.0.80: 0.0.80
   - #0.0.81: 0.0.81
   - #0.0.82: 0.0.82
@@ -23810,7 +23822,7 @@ Value Sets: 713 (unversioned)
   references (1): Flag.code, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/flag-priority|4.3.0 (FlagPriorityCodes)
-  references (1): Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:flag-priority
   - #PH: High priority
   - #PL: Low priority
   - #PM: Medium priority
@@ -23827,7 +23839,7 @@ Value Sets: 713 (unversioned)
   - #draft: Draft
   - #entered-in-error: Entered in Error
 - ValueSet: http://hl7.org/fhir/ValueSet/focal-subject|4.3.0 (FocalSubjectCodes)
-  references (1): Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:observation-focusCode
   - #83418008: Fetus
   - #DON: donor
   - #SPS: spouse
@@ -23930,7 +23942,7 @@ Value Sets: 713 (unversioned)
   - #patient: Patient
   - #provider: Provider
 - ValueSet: http://hl7.org/fhir/ValueSet/gender-identity|4.3.0 (GenderIdentity)
-  references (1): Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:patient-genderIdentity
   - #female: female
   - #male: male
   - #non-binary: non-binary
@@ -23957,7 +23969,8 @@ Value Sets: 713 (unversioned)
   - #physiotherapy: Physiotherapy
   - #safety: Safety
 - ValueSet: http://hl7.org/fhir/ValueSet/goal-priority|4.3.0 (GoalPriority)
-  references (3): Goal.priority, PlanDefinition.goal.priority, Extension.extension.value[x], strongest binding: Preferred, by type: CodeableConcept:Example
+  references (2): Goal.priority, PlanDefinition.goal.priority, strongest binding: Preferred, by type: CodeableConcept:Preferred
+  extensions/profiles (1): strongest binding: Example, refs: Extension:goal-acceptance
   - #high-priority: High Priority
   - #low-priority: Low Priority
   - #medium-priority: Medium Priority
@@ -24587,7 +24600,8 @@ Value Sets: 713 (unversioned)
   - #time: Time
   - #url: Url
 - ValueSet: http://hl7.org/fhir/ValueSet/jurisdiction|4.3.0 (normative FMM: 5) (Jurisdiction ValueSet)
-  references (32): ActivityDefinition.jurisdiction, CapabilityStatement.jurisdiction, ChargeItemDefinition.jurisdiction, Citation.jurisdiction, CodeSystem.jurisdiction, ConceptMap.jurisdiction, EventDefinition.jurisdiction, ExampleScenario.jurisdiction, GraphDefinition.jurisdiction, ImplementationGuide.jurisdiction, Library.jurisdiction, Measure.jurisdiction, MedicinalProductDefinition.name.countryLanguage.jurisdiction, MessageDefinition.jurisdiction, NamingSystem.jurisdiction, OperationDefinition.jurisdiction, PackagedProductDefinition.legalStatusOfSupply.jurisdiction, PlanDefinition.jurisdiction, Questionnaire.jurisdiction, RegulatedAuthorization.region, ResearchDefinition.jurisdiction, ResearchElementDefinition.jurisdiction, ResearchStudy.location, SearchParameter.jurisdiction, StructureDefinition.jurisdiction, StructureMap.jurisdiction, SubscriptionTopic.jurisdiction, SubstanceDefinition.name.jurisdiction, TerminologyCapabilities.jurisdiction, TestScript.jurisdiction, ValueSet.jurisdiction, Definition.jurisdiction, strongest binding: Extensible, by type: CodeableConcept:Example
+  references (31): ActivityDefinition.jurisdiction, CapabilityStatement.jurisdiction, ChargeItemDefinition.jurisdiction, Citation.jurisdiction, CodeSystem.jurisdiction, ConceptMap.jurisdiction, EventDefinition.jurisdiction, ExampleScenario.jurisdiction, GraphDefinition.jurisdiction, ImplementationGuide.jurisdiction, Library.jurisdiction, Measure.jurisdiction, MedicinalProductDefinition.name.countryLanguage.jurisdiction, MessageDefinition.jurisdiction, NamingSystem.jurisdiction, OperationDefinition.jurisdiction, PackagedProductDefinition.legalStatusOfSupply.jurisdiction, PlanDefinition.jurisdiction, Questionnaire.jurisdiction, RegulatedAuthorization.region, ResearchDefinition.jurisdiction, ResearchElementDefinition.jurisdiction, ResearchStudy.location, SearchParameter.jurisdiction, StructureDefinition.jurisdiction, StructureMap.jurisdiction, SubscriptionTopic.jurisdiction, SubstanceDefinition.name.jurisdiction, TerminologyCapabilities.jurisdiction, TestScript.jurisdiction, ValueSet.jurisdiction, strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: LogicalModel:Definition
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/knowledge-resource-types|4.3.0 (KnowledgeResourceType)
   - #ActivityDefinition: ActivityDefinition
@@ -24600,11 +24614,12 @@ Value Sets: 713 (unversioned)
   - #StructureMap: StructureMap
   - #ValueSet: ValueSet
 - ValueSet: http://hl7.org/fhir/ValueSet/language-preference-type|4.3.0 (LanguagePreferenceType)
-  references (1): Extension.value[x], strongest binding: Extensible, by type: Coding:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:patient-preferenceType
   - #verbal: verbal
   - #written: written
 - ValueSet: http://hl7.org/fhir/ValueSet/languages|4.3.0 (trial-use FMM: 3) (CommonLanguages)
-  references (17): Attachment.language, Citation.citedArtifact.title.language, Citation.citedArtifact.abstract.language, Citation.citedArtifact.publicationForm.language, ClaimResponse.processNote.language, CodeSystem.concept.designation.language, ExplanationOfBenefit.processNote.language, HealthcareService.communication, MedicinalProductDefinition.name.countryLanguage.language, Patient.communication.language, Practitioner.communication, RelatedPerson.communication.language, Resource.language, SubstanceDefinition.name.language, ValueSet.compose.include.concept.designation.language, Extension.value[x], Extension.extension.value[x], strongest binding: Preferred, by type: code:Preferred, CodeableConcept:Preferred
+  references (15): Attachment.language, Citation.citedArtifact.title.language, Citation.citedArtifact.abstract.language, Citation.citedArtifact.publicationForm.language, ClaimResponse.processNote.language, CodeSystem.concept.designation.language, ExplanationOfBenefit.processNote.language, HealthcareService.communication, MedicinalProductDefinition.name.countryLanguage.language, Patient.communication.language, Practitioner.communication, RelatedPerson.communication.language, Resource.language, SubstanceDefinition.name.language, ValueSet.compose.include.concept.designation.language, strongest binding: Preferred, by type: code:Preferred, CodeableConcept:Preferred
+  extensions/profiles (2): strongest binding: Preferred, refs: Extension:cqf-recipientLanguage, Extension:devicerequest-patientInstruction
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/legal-status-of-supply|4.3.0 (trial-use FMM: 1) (LegalStatusOfSupply)
   references (2): MedicinalProductDefinition.legalStatusOfSupply, PackagedProductDefinition.legalStatusOfSupply.code, strongest binding: Example, by type: CodeableConcept:Example
@@ -25138,7 +25153,8 @@ Value Sets: 713 (unversioned)
   - #http: HTTP
   - #mllp: MLLP
 - ValueSet: http://hl7.org/fhir/ValueSet/messageheader-response-request|4.3.0 (trial-use FMM: 1) (messageheader-response-request)
-  references (2): MessageDefinition.responseRequired, Extension.value[x], strongest binding: Required, by type: code:Required
+  references (1): MessageDefinition.responseRequired, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:messageheader-response-request
   - #always: Always
   - #never: Never
   - #on-error: Error/reject conditions only
@@ -25187,7 +25203,7 @@ Value Sets: 713 (unversioned)
   references (1): NutritionOrder.oralDiet.texture.foodType, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/name-assembly-order|4.3.0 (HumanNameAssemblyOrder)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:humanname-assembly-order
   - #F: Prefix Family Given Suffix
   - #G: Prefix Given Family Suffix
   - #NL1: Own Name
@@ -25196,7 +25212,7 @@ Value Sets: 713 (unversioned)
   - #NL4: Own Name followed by Partner Name
   - #UNK: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/name-part-qualifier|4.3.0 (EntityNamePartQualifier)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:iso21090-EN-qualifier
   - #AC: Academic
   - #AD: Acquired
   - #BR: Birth
@@ -25219,7 +25235,7 @@ Value Sets: 713 (unversioned)
   - #temp: Temp
   - #usual: Usual
 - ValueSet: http://hl7.org/fhir/ValueSet/name-v3-representation|4.3.0 (NameRepresentationUse)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:iso21090-EN-representation
   - #ABC: 
   - #IDE: 
   - #SYL: 
@@ -25359,7 +25375,7 @@ Value Sets: 713 (unversioned)
   - #8: Doctor
   - #9: Subscriber
 - ValueSet: http://hl7.org/fhir/ValueSet/observation-category|4.3.0 (draft FMM: 1) (ObservationCategoryCodes)
-  references (2): Observation.category, ObservationDefinition.category, strongest binding: Preferred, by type: CodeableConcept:Example
+  references (2): Observation.category, ObservationDefinition.category, strongest binding: Preferred, by type: CodeableConcept:Preferred
   - #activity: Activity
   - #exam: Exam
   - #imaging: Imaging
@@ -25716,7 +25732,7 @@ Value Sets: 713 (unversioned)
   - #advance: Advance
   - #payment: Payment
 - ValueSet: http://hl7.org/fhir/ValueSet/performer-function|4.3.0 (Performer Function Codes)
-  references (1): Extension.value[x], strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:event-performerFunction
   - #ATND: 
   - #AUT: 
   - #AUTHEN: 
@@ -25732,7 +25748,7 @@ Value Sets: 713 (unversioned)
   - #VRF: 
   - #WIT: 
 - ValueSet: http://hl7.org/fhir/ValueSet/performer-role|4.3.0 (draft FMM: 1) (ProcedurePerformerRoleCodes)
-  references (4): ChargeItem.performer.function, MedicationRequest.performerType, Procedure.performer.function, Task.performerType, strongest binding: Preferred, by type: CodeableConcept:Example
+  references (4): ChargeItem.performer.function, MedicationRequest.performerType, Procedure.performer.function, Task.performerType, strongest binding: Preferred, by type: CodeableConcept:Preferred
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/permitted-data-type|4.3.0 (trial-use FMM: 0) (ObservationDataType)
   references (1): ObservationDefinition.permittedDataType, strongest binding: Required, by type: code:Required
@@ -25754,7 +25770,7 @@ Value Sets: 713 (unversioned)
   - #order-set: Order Set
   - #workflow-definition: Workflow Definition
 - ValueSet: http://hl7.org/fhir/ValueSet/postal-address-use|4.3.0 (PostalAddressUse)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:iso21090-AD-use
   - #BAD: bad address
   - #CONF: confidential address
   - #DIR: direct
@@ -25767,7 +25783,7 @@ Value Sets: 713 (unversioned)
   references (1): SpecimenDefinition.patientPreparation, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/probability-distribution-type|4.3.0 (ProbabilityDistributionType)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:iso21090-uncertaintyType
   - #B: beta
   - #E: exponential
   - #F: F
@@ -25793,7 +25809,7 @@ Value Sets: 713 (unversioned)
   references (1): Procedure.outcome, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-progress-status-codes|4.3.0 (ProcedureProgressStatusCodes)
-  references (1): Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:procedure-progressStatus
   - #anesthesia-induced: Anesthesia Induced
   - #closed-incision: Closed Incision
   - #in-operating-room: In Operating Room
@@ -25979,13 +25995,13 @@ Value Sets: 713 (unversioned)
   - #revision: Revision
   - #source: Source
 - ValueSet: http://hl7.org/fhir/ValueSet/provenance-history-agent-type|4.3.0 (ProvenanceEventHistoryAgentRoleCodes)
-  references (1): Provenance.agent.type, strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Profile:provenance-relevant-history
   - #AUT: Author
   - #ENT: Data Enterer
   - #INF: Informant
   - #VRF: Verifier
 - ValueSet: http://hl7.org/fhir/ValueSet/provenance-history-record-activity|4.3.0 (ProvenanceHistoryRecordActivityCodes)
-  references (1): Provenance.activity, strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Profile:provenance-relevant-history
   - #ABORT: Stopped/Ended/Aborted
   - #ACTIVATE: Activated
   - #CANCEL: Cancelled
@@ -26030,7 +26046,8 @@ Value Sets: 713 (unversioned)
   - #604210: Optometrist
   - #604215: Ophthalmologist
 - ValueSet: http://hl7.org/fhir/ValueSet/publication-status|4.3.0 (normative FMM: 5) (PublicationStatus)
-  references (46): ActivityDefinition.status, AdministrableProductDefinition.status, AdministrableProductDefinition.property.status, CapabilityStatement.status, CatalogEntry.status, ChargeItemDefinition.status, Citation.status, ClinicalUseDefinition.status, CodeSystem.status, CompartmentDefinition.status, ConceptMap.status, EventDefinition.status, Evidence.status, EvidenceReport.status, EvidenceVariable.status, ExampleScenario.status, GraphDefinition.status, ImplementationGuide.status, Ingredient.status, InsurancePlan.status, Library.status, ManufacturedItemDefinition.status, Measure.status, MedicinalProductDefinition.status, MessageDefinition.status, NamingSystem.status, OperationDefinition.status, PackagedProductDefinition.status, PlanDefinition.status, Questionnaire.status, RegulatedAuthorization.status, RegulatedAuthorization.case.status, ResearchDefinition.status, ResearchElementDefinition.status, SearchParameter.status, StructureDefinition.status, StructureMap.status, SubscriptionTopic.status, SubstanceDefinition.status, SubstanceDefinition.code.status, SubstanceDefinition.name.status, SubstanceDefinition.name.official.status, TerminologyCapabilities.status, TestScript.status, ValueSet.status, Definition.status, strongest binding: Required, by type: code:Required, CodeableConcept:Preferred
+  references (45): ActivityDefinition.status, AdministrableProductDefinition.status, AdministrableProductDefinition.property.status, CapabilityStatement.status, CatalogEntry.status, ChargeItemDefinition.status, Citation.status, ClinicalUseDefinition.status, CodeSystem.status, CompartmentDefinition.status, ConceptMap.status, EventDefinition.status, Evidence.status, EvidenceReport.status, EvidenceVariable.status, ExampleScenario.status, GraphDefinition.status, ImplementationGuide.status, Ingredient.status, InsurancePlan.status, Library.status, ManufacturedItemDefinition.status, Measure.status, MedicinalProductDefinition.status, MessageDefinition.status, NamingSystem.status, OperationDefinition.status, PackagedProductDefinition.status, PlanDefinition.status, Questionnaire.status, RegulatedAuthorization.status, RegulatedAuthorization.case.status, ResearchDefinition.status, ResearchElementDefinition.status, SearchParameter.status, StructureDefinition.status, StructureMap.status, SubscriptionTopic.status, SubstanceDefinition.status, SubstanceDefinition.code.status, SubstanceDefinition.name.status, SubstanceDefinition.name.official.status, TerminologyCapabilities.status, TestScript.status, ValueSet.status, strongest binding: Required, by type: code:Required, CodeableConcept:Required
+  extensions/profiles (1): strongest binding: Required, refs: LogicalModel:Definition
   - #active: Active
   - #draft: Draft
   - #retired: Retired
@@ -26060,7 +26077,7 @@ Value Sets: 713 (unversioned)
   - #in-progress: In Progress
   - #stopped: Stopped
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-display-category|4.3.0 (QuestionnaireTextCategories)
-  references (1): Extension.value[x], strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:questionnaire-displayCategory
   - #help: Help
   - #instructions: Instructions
   - #security: Security
@@ -26078,7 +26095,7 @@ Value Sets: 713 (unversioned)
   - #>=: Greater or Equals
   - #exists: Exists
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-item-control|4.3.0 (QuestionnaireItemUIControlCodes)
-  references (1): Extension.value[x], strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:questionnaire-itemControl
   - #atable: Answer Table
   - #autocomplete: Auto-complete
   - #check-box: Check-box
@@ -26108,12 +26125,12 @@ Value Sets: 713 (unversioned)
   references (2): Questionnaire.code, Questionnaire.item.code, strongest binding: Example, by type: Coding:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaireresponse-mode|4.3.0 (QuestionnaireResponseMode)
-  references (1): Extension.value[x], strongest binding: Required, by type: CodeableConcept:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:questionnaireresponse-completionMode
   - #ELECTRONIC: 
   - #VERBAL: 
   - #WRITTEN: 
 - ValueSet: http://hl7.org/fhir/ValueSet/reaction-event-certainty|4.3.0 (AllergyIntoleranceCertainty)
-  references (1): Extension.value[x], strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:allergyintolerance-certainty
   - #confirmed: Confirmed
   - #likely: Likely
   - #unknown: Unknown
@@ -26135,7 +26152,7 @@ Value Sets: 713 (unversioned)
   references (1): MedicationStatement.statusReason, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/recommendation-strength|4.3.0 (StrengthOfRecommendationRating)
-  references (1): Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:cqf-strengthOfRecommendation
   - #strong: Strong
   - #weak: Weak
 - ValueSet: http://hl7.org/fhir/ValueSet/reference-handling-policy|4.3.0 (normative FMM: 5) (ReferenceHandlingPolicy)
@@ -26154,7 +26171,7 @@ Value Sets: 713 (unversioned)
   references (2): Observation.referenceRange.appliesTo, ObservationDefinition.qualifiedInterval.appliesTo, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/referencerange-meaning|4.3.0 (trial-use FMM: 0) (ObservationReferenceRangeMeaningCodes)
-  references (2): Observation.referenceRange.type, ObservationDefinition.qualifiedInterval.context, strongest binding: Extensible, by type: CodeableConcept:Preferred
+  references (2): Observation.referenceRange.type, ObservationDefinition.qualifiedInterval.context, strongest binding: Extensible, by type: CodeableConcept:Extensible
   - #endocrine: Endocrine
   - #follicular: Follicular Stage
   - #luteal: Luteal
@@ -26417,7 +26434,8 @@ Value Sets: 713 (unversioned)
   - #openapi: The URL is the RESTful or other kind of API that can access to the result.
   - #other: Some other complicated or particular way to get resource from URL.
 - ValueSet: http://hl7.org/fhir/ValueSet/request-intent|4.3.0 (trial-use FMM: 3) (RequestIntent)
-  references (6): ActivityDefinition.intent, DeviceRequest.intent, NutritionOrder.intent, RequestGroup.intent, ServiceRequest.intent, Request.intent, strongest binding: Required, by type: code:Required
+  references (5): ActivityDefinition.intent, DeviceRequest.intent, NutritionOrder.intent, RequestGroup.intent, ServiceRequest.intent, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: LogicalModel:Request
   - #directive: Directive
   - #filler-order: Filler Order
   - #instance-order: Instance Order
@@ -26428,7 +26446,8 @@ Value Sets: 713 (unversioned)
   - #proposal: Proposal
   - #reflex-order: Reflex Order
 - ValueSet: http://hl7.org/fhir/ValueSet/request-priority|4.3.0 (trial-use FMM: 3) (RequestPriority)
-  references (12): ActivityDefinition.priority, Communication.priority, CommunicationRequest.priority, DeviceRequest.priority, MedicationRequest.priority, PlanDefinition.action.priority, RequestGroup.priority, RequestGroup.action.priority, ServiceRequest.priority, SupplyRequest.priority, Task.priority, Request.priority, strongest binding: Required, by type: code:Required
+  references (11): ActivityDefinition.priority, Communication.priority, CommunicationRequest.priority, DeviceRequest.priority, MedicationRequest.priority, PlanDefinition.action.priority, RequestGroup.priority, RequestGroup.action.priority, ServiceRequest.priority, SupplyRequest.priority, Task.priority, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: LogicalModel:Request
   - #asap: ASAP
   - #routine: Routine
   - #stat: STAT
@@ -26451,7 +26470,8 @@ Value Sets: 713 (unversioned)
   - #Task: Task
   - #VisionPrescription: VisionPrescription
 - ValueSet: http://hl7.org/fhir/ValueSet/request-status|4.3.0 (trial-use FMM: 2) (RequestStatus)
-  references (7): CarePlan.status, CommunicationRequest.status, DeviceRequest.status, NutritionOrder.status, RequestGroup.status, ServiceRequest.status, Request.status, strongest binding: Required, by type: code:Required
+  references (6): CarePlan.status, CommunicationRequest.status, DeviceRequest.status, NutritionOrder.status, RequestGroup.status, ServiceRequest.status, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: LogicalModel:Request
   - #active: Active
   - #completed: Completed
   - #draft: Draft
@@ -26529,7 +26549,7 @@ Value Sets: 713 (unversioned)
   - #contained: Contained
   - #referenced: Referenced
 - ValueSet: http://hl7.org/fhir/ValueSet/resource-security-category|4.3.0 (ResourceSecurityCategory)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:structuredefinition-security-category
   - #anonymous: Anonymous READ Access Resource
   - #business: Business Sensitive Resource
   - #individual: Individual Sensitive Resource
@@ -26541,7 +26561,7 @@ Value Sets: 713 (unversioned)
   - #open: Open
   - #openAtEnd: Open at End
 - ValueSet: http://hl7.org/fhir/ValueSet/resource-status|4.3.0 (CanonicalStatusCodesForFHIRResources)
-  references (1): FiveWs.status, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: LogicalModel:FiveWs
   - #abandoned: abandoned
   - #accepted: accepted
   - #active: active
@@ -26574,7 +26594,8 @@ Value Sets: 713 (unversioned)
   - #unconfirmed: unconfirmed
   - #unknown: unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/resource-types|4.3.0 (normative FMM: 5) (ResourceType)
-  references (13): Reference.type, CapabilityStatement.rest.resource.type, CompartmentDefinition.resource.code, ExampleScenario.instance.resourceType, GraphDefinition.start, GraphDefinition.link.target.type, ImplementationGuide.global.type, MessageDefinition.focus.code, OperationDefinition.resource, Questionnaire.subjectType, SearchParameter.base, SearchParameter.target, Extension.value[x], strongest binding: Required, by type: uri:Extensible, code:Required
+  references (12): Reference.type, CapabilityStatement.rest.resource.type, CompartmentDefinition.resource.code, ExampleScenario.instance.resourceType, GraphDefinition.start, GraphDefinition.link.target.type, ImplementationGuide.global.type, MessageDefinition.focus.code, OperationDefinition.resource, Questionnaire.subjectType, SearchParameter.base, SearchParameter.target, strongest binding: Required, by type: uri:Extensible, code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:questionnaire-referenceResource
   - #Account: Account
   - #ActivityDefinition: ActivityDefinition
   - #AdministrableProductDefinition: AdministrableProductDefinition
@@ -26799,14 +26820,14 @@ Value Sets: 713 (unversioned)
   - #other: Other
   - #phonetic: Phonetic
 - ValueSet: http://hl7.org/fhir/ValueSet/secondary-finding|4.3.0 (ObservationCategoryCodes)
-  references (1): Extension.value[x], strongest binding: Extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:observation-secondaryFinding
   - #acmg-version1: ACMG Version 1
   - #acmg-version2: ACMG Version 2
 - ValueSet: http://hl7.org/fhir/ValueSet/security-labels|4.3.0 (normative FMM: 5) (All Security Labels)
   references (4): Meta.security, AuditEvent.entity.securityLabel, Consent.provision.securityLabel, DocumentReference.securityLabel, strongest binding: Extensible, by type: Coding:Extensible, CodeableConcept:Extensible
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/security-role-type|4.3.0 (trial-use FMM: 2) (SecurityRoleType)
-  references (3): AuditEvent.agent.role, Consent.provision.actor.role, Provenance.agent.role, strongest binding: Extensible, by type: CodeableConcept:Example
+  references (3): AuditEvent.agent.role, Consent.provision.actor.role, Provenance.agent.role, strongest binding: Extensible, by type: CodeableConcept:Extensible
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/sequence-type|4.3.0 (trial-use FMM: 1) (sequenceType)
   references (1): MolecularSequence.type, strongest binding: Required, by type: code:Required
@@ -27518,7 +27539,8 @@ Value Sets: 713 (unversioned)
   references (1): ServiceRequest.orderDetail, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/signature-type|4.3.0 (SignatureTypeCodes)
-  references (2): Signature.type, Extension.value[x], strongest binding: Preferred, by type: Coding:Preferred, CodeableConcept:Preferred
+  references (1): Signature.type, strongest binding: Preferred, by type: Coding:Preferred
+  extensions/profiles (1): strongest binding: Preferred, refs: Extension:questionnaire-signatureRequired
   - #1.2.840.10065.1.12.1.1: Author's Signature
   - #1.2.840.10065.1.12.1.10: Identity Witness Signature
   - #1.2.840.10065.1.12.1.11: Consent Witness Signature
@@ -27545,7 +27567,7 @@ Value Sets: 713 (unversioned)
   - #entered-in-error: Entered in error
   - #free: Free
 - ValueSet: http://hl7.org/fhir/ValueSet/smart-capabilities|4.3.0 (SmartCapabilities)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:capabilities
   - #client-confidential-symmetric: Confidential Client Profile
   - #client-public: Public Client Profile
   - #context-ehr-encounter: Allows "Encounter Level Launch Context (EHR)"
@@ -27926,7 +27948,7 @@ Value Sets: 713 (unversioned)
   references (1): Specimen.collection.method, strongest binding: Example, by type: CodeableConcept:Example
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/specimen-collection-priority|4.3.0 (SpecimenCollectionPriority)
-  references (1): Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:specimen-collectionPriority
   - #1: STAT
   - #2: ASAP
   - #3: ASAP-ED
@@ -27958,7 +27980,7 @@ Value Sets: 713 (unversioned)
   - #unavailable: Unavailable
   - #unsatisfactory: Unsatisfactory
 - ValueSet: http://hl7.org/fhir/ValueSet/standards-status|4.3.0 (StandardsStatus)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:structuredefinition-standards-status
   - #deprecated: Deprecated
   - #draft: Draft
   - #external: External
@@ -28167,7 +28189,8 @@ Value Sets: 713 (unversioned)
   - #food: Dietary Substance
   - #material: Material
 - ValueSet: http://hl7.org/fhir/ValueSet/substance-code|4.3.0 (draft FMM: 1) (SubstanceCode)
-  references (4): AllergyIntolerance.reaction.substance, Substance.code, Substance.ingredient.substance[x], Extension.extension.value[x], strongest binding: Example, by type: CodeableConcept:Example, Reference:Example
+  references (3): AllergyIntolerance.reaction.substance, Substance.code, Substance.ingredient.substance[x], strongest binding: Example, by type: CodeableConcept:Example, Reference:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:allergyintolerance-substanceExposureRisk
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/substance-grade|4.3.0 (trial-use FMM: 1) (SubstanceGrade)
   references (1): SubstanceDefinition.grade, strongest binding: Example, by type: CodeableConcept:Example
@@ -28576,7 +28599,7 @@ Value Sets: 713 (unversioned)
   - #rejected: Rejected
   - #requested: Requested
 - ValueSet: http://hl7.org/fhir/ValueSet/template-status-code|4.3.0 (TemplateStatusCode)
-  references (1): Extension.value[x], strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:structuredefinition-template-status
   - #active: active
   - #cancelled: Cancelled
   - #draft: Draft
@@ -28761,15 +28784,15 @@ Value Sets: 713 (unversioned)
   - #update: update
   - #vread: vread
 - ValueSet: http://hl7.org/fhir/ValueSet/ucum-bodylength|4.3.0 (BodyLengthUnits)
-  references (1): Observation.value[x].code, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Profile:bodyheight
   - #[in_i]: 
   - #cm: 
 - ValueSet: http://hl7.org/fhir/ValueSet/ucum-bodytemp|4.3.0 (BodyTemperatureUnits)
-  references (1): Observation.value[x].code, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Profile:bodytemp
   - #[degF]: 
   - #Cel: 
 - ValueSet: http://hl7.org/fhir/ValueSet/ucum-bodyweight|4.3.0 (BodyWeightUnits)
-  references (1): Observation.value[x].code, strongest binding: Required, by type: code:Required
+  extensions/profiles (1): strongest binding: Required, refs: Profile:bodyweight
   - #[lb_av]: 
   - #g: 
   - #kg: 
@@ -30132,10 +30155,11 @@ Value Sets: 713 (unversioned)
   - #Wb: Weber
   - #wk: week
 - ValueSet: http://hl7.org/fhir/ValueSet/ucum-units|4.3.0 (trial-use FMM: 0) (UCUMCodes)
-  references (4): ObservationDefinition.quantitativeDetails.customaryUnit, ObservationDefinition.quantitativeDetails.unit, ResearchElementDefinition.characteristic.unitOfMeasure, Extension.value[x], strongest binding: Required, by type: CodeableConcept:Extensible, canonical:Required
+  references (3): ObservationDefinition.quantitativeDetails.customaryUnit, ObservationDefinition.quantitativeDetails.unit, ResearchElementDefinition.characteristic.unitOfMeasure, strongest binding: Required, by type: CodeableConcept:Required
+  extensions/profiles (1): strongest binding: Required, refs: Extension:elementdefinition-allowedUnits
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/ucum-vitals-common|4.3.0 (VitalSignsUnits)
-  references (1): Observation.value[x], strongest binding: Extensible, by type: Quantity:Extensible
+  extensions/profiles (1): strongest binding: Extensible, refs: Profile:bmi
   - #[degF]: degree Fahrenheit
   - #[in_i]: inch (international)
   - #[lb_av]: pound (US and British)
@@ -30240,7 +30264,8 @@ Value Sets: 713 (unversioned)
   - #venue: Clinical Venue
   - #workflow: Workflow Setting
 - ValueSet: http://hl7.org/fhir/ValueSet/use-context|4.3.0 (draft FMM: 1) (Context of Use ValueSet)
-  references (2): UsageContext.value[x], Extension.value[x], strongest binding: Extensible, by type: CodeableConcept:Example, Quantity:Example, Range:Example, Reference:Example, boolean:Extensible
+  references (1): UsageContext.value[x], strongest binding: Example, by type: CodeableConcept:Example, Quantity:Example, Range:Example, Reference:Example
+  extensions/profiles (1): strongest binding: Extensible, refs: Extension:elementdefinition-bestpractice
   ! Partial expansion, not displayed
 - ValueSet: http://hl7.org/fhir/ValueSet/vaccine-code|4.3.0 (draft FMM: 1) (VaccineAdministeredValueSet)
   references (3): Immunization.vaccineCode, ImmunizationRecommendation.recommendation.vaccineCode, ImmunizationRecommendation.recommendation.contraindicatedVaccineCode, strongest binding: Example, by type: CodeableConcept:Example
@@ -30854,7 +30879,8 @@ Value Sets: 713 (unversioned)
   - #VIRTM: Viral Transport medium
   - #WEST: Buffered Citrate (Westergren Sedimentation Rate)
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0487|2.0.0 (Hl7VSSpecimenType)
-  references (4): Specimen.type, SpecimenDefinition.typeCollected, SpecimenDefinition.typeTested.type, Extension.value[x], strongest binding: Example, by type: CodeableConcept:Example
+  references (3): Specimen.type, SpecimenDefinition.typeCollected, SpecimenDefinition.typeTested.type, strongest binding: Example, by type: CodeableConcept:Example
+  extensions/profiles (1): strongest binding: Example, refs: Extension:observation-specimenCode
   - #...: No suggested values
   - #ABS: Abscess
   - #ACNE: Tissue, Acne
@@ -31188,7 +31214,7 @@ Value Sets: 713 (unversioned)
   - #FNA: Fasting not asked of the patient at time of procedure.
   - #NF: The patient indicated they did not fast prior to the procedure.
   - #NG: Not Given - Patient was not asked at the time of the procedure.
-- ValueSet: http://terminology.hl7.org/ValueSet/v3-ActCode|2.0.0 ( FMM: 1) (ActCode)
+- ValueSet: http://terminology.hl7.org/ValueSet/v3-ActCode|2.0.0 (FMM: 1) (ActCode)
   references (3): Composition.event.code, DocumentManifest.type, DocumentReference.context.event, strongest binding: Example, by type: CodeableConcept:Example
   - #_ActAccountCode: ActAccountCode
   - #_ActAdjudicationCode: ActAdjudicationCode
@@ -32568,7 +32594,7 @@ Value Sets: 713 (unversioned)
   - #T: timing critical
   - #UD: use as directed
   - #UR: urgent
-- ValueSet: http://terminology.hl7.org/ValueSet/v3-ActReason|2.0.0 ( FMM: 1) (ActReason)
+- ValueSet: http://terminology.hl7.org/ValueSet/v3-ActReason|2.0.0 (FMM: 1) (ActReason)
   references (1): CommunicationRequest.reasonCode, strongest binding: Example, by type: CodeableConcept:Example
   - #_ActAccommodationReason: ActAccommodationReason
   - #_ActAdjudicationReason: ActAdjudicationReason
@@ -33018,7 +33044,7 @@ Value Sets: 713 (unversioned)
   - #VIDEOCONF: videoconferencing
   - #WRITTEN: written
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-PurposeOfUse|2.0.0 (PurposeOfUse)
-  references (6): AuditEvent.purposeOfEvent, AuditEvent.agent.purposeOfUse, Consent.provision.purpose, Contract.term.action.intent, Contract.term.action.reasonCode, Provenance.reason, strongest binding: Extensible, by type: CodeableConcept:Example, Coding:Extensible
+  references (6): AuditEvent.purposeOfEvent, AuditEvent.agent.purposeOfUse, Consent.provision.purpose, Contract.term.action.intent, Contract.term.action.reasonCode, Provenance.reason, strongest binding: Extensible, by type: CodeableConcept:Extensible, Coding:Extensible
   - #BIORCH: biomedical research
   - #BTG: break the glass
   - #CAREMGT: care management
@@ -33079,7 +33105,7 @@ Value Sets: 713 (unversioned)
   - #TRANSRCH: translational healthcare research
   - #TREAT: treatment
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType|2.0.0 (ServiceDeliveryLocationRoleType)
-  references (2): Location.type, ServiceRequest.locationCode, strongest binding: Extensible, by type: CodeableConcept:Example
+  references (2): Location.type, ServiceRequest.locationCode, strongest binding: Extensible, by type: CodeableConcept:Extensible
   - #_DedicatedClinicalLocationRoleType: DedicatedClinicalLocationRoleType
   - #_DedicatedNonClinicalLocationRoleType: DedicatedNonClinicalLocationRoleType
   - #_DedicatedServiceDeliveryLocationRoleType: DedicatedServiceDeliveryLocationRoleType

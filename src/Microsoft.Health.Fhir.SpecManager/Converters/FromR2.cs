@@ -850,6 +850,8 @@ public sealed class FromR2 : IFhirConverter
             sd.Id,
             sd.Name,
             baseTypeName,
+            sd.Base ?? string.Empty,
+            sd.Version ?? string.Empty,
             new Uri(sd.Url),
             sd.Status,
             standardStatus,
@@ -858,7 +860,10 @@ public sealed class FromR2 : IFhirConverter
             descriptionShort,
             definition,
             comment,
-            regex);
+            regex,
+            sd.Text?.Div ?? string.Empty,
+            sd.Text?.Status ?? string.Empty,
+            sd.FhirVersion);
 
         // add to our dictionary of primitive types
         fhirVersionInfo.AddPrimitive(primitive);
@@ -1071,11 +1076,14 @@ public sealed class FromR2 : IFhirConverter
 
             // create a new complex type object
             FhirComplex complex = new FhirComplex(
+                artifactClass,
                 sd.Id,
                 sd.Name,
-                string.Empty,
+                sd.Name,
                 string.Empty,
                 sd.ConstrainedType,
+                sd.Base ?? string.Empty,
+                sd.Version ?? string.Empty,
                 new Uri(sd.Url),
                 sd.Status,
                 standardStatus,
@@ -1084,9 +1092,12 @@ public sealed class FromR2 : IFhirConverter
                 descriptionShort,
                 definition,
                 string.Empty,
-                null,
                 contextElements,
-                sd.Abstract);
+                sd.Abstract,
+                string.Empty,
+                sd.Text?.Div ?? string.Empty,
+                sd.Text?.Status ?? string.Empty,
+                sd.FhirVersion ?? string.Empty);
 
             // check for a base definition
             if (!string.IsNullOrEmpty(sd.Base))
@@ -1260,6 +1271,7 @@ public sealed class FromR2 : IFhirConverter
                             parent.Elements.Add(
                                 path,
                                 new FhirElement(
+                                    complex,
                                     path,
                                     path,
                                     basePath,
@@ -1319,7 +1331,13 @@ public sealed class FromR2 : IFhirConverter
                         if (parent.Elements.ContainsKey(path))
                         {
                             // add this slice to the field
-                            parent.Elements[path].AddSlice(sd.Url, sliceName);
+                            parent.Elements[path].AddSlice(
+                                sd.Url,
+                                sliceName,
+                                element.Slicing?.Description ?? string.Empty,
+                                string.Empty,
+                                string.Empty,
+                                parent);
                         }
 
                         // only slice parent has slice name
@@ -1441,6 +1459,7 @@ public sealed class FromR2 : IFhirConverter
                     string fiveWs = ((fwMapping != null) && fwMapping.Any()) ? fwMapping[0] : string.Empty;
 
                     FhirElement fhirElement = new FhirElement(
+                        complex,
                         id,
                         path,
                         basePath,
@@ -1578,6 +1597,7 @@ public sealed class FromR2 : IFhirConverter
                 complex.Elements.Add(
                     "Element.fhir_comments",
                     new FhirElement(
+                        complex,
                         "Element.fhir_comments",
                         "Element.fhir_comments",
                         string.Empty,
@@ -1933,6 +1953,14 @@ public sealed class FromR2 : IFhirConverter
             }
         }
 
+        string standardStatus =
+            caps.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                ?.FirstOrDefault()?.ValueCode;
+
+        int? fmmLevel =
+            caps.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                ?.FirstOrDefault()?.ValueInteger;
+
         capabilityStatement = new FhirCapabiltyStatement(
             serverInteractions,
             null,
@@ -1940,7 +1968,16 @@ public sealed class FromR2 : IFhirConverter
             capUrl,
             caps.Name,
             caps.Name,
+            caps.Version,
+            caps.Status,
+            standardStatus,
+            fmmLevel,
+            caps.Experimental == true,
+            caps.Description,
+            caps.Text?.Div ?? string.Empty,
+            caps.Text?.Status ?? string.Empty,
             caps.FhirVersion,
+            caps.Kind,
             caps.Format,
             Array.Empty<string>(),
             Array.Empty<string>(),

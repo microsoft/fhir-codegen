@@ -148,22 +148,38 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>A string.</returns>
         private static string BuildStandardSnippet(string standardStatus, int? fmmLevel, bool? isExperimental)
         {
-            string ss = standardStatus ?? string.Empty;
+            string val = standardStatus;
 
-            string fmm = (fmmLevel == null)
-                ? string.Empty
-                : " FMM: " + fmmLevel.ToString();
+            if (fmmLevel != null)
+            {
+                if (string.IsNullOrEmpty(val))
+                {
+                    val = "FMM: " + fmmLevel.ToString();
+                }
+                else
+                {
+                    val = val + " FMM: " + fmmLevel.ToString();
+                }
+            }
 
-            string ie = (isExperimental == true)
-                ? " experimental"
-                : string.Empty;
+            if (isExperimental == true)
+            {
+                if (string.IsNullOrEmpty(val))
+                {
+                    val = "experimental";
+                }
+                else
+                {
+                    val = val + " experimental";
+                }
+            }
 
-            if (string.IsNullOrEmpty(ss) && string.IsNullOrEmpty(fmm) && string.IsNullOrEmpty(ie))
+            if (string.IsNullOrEmpty(val))
             {
                 return string.Empty;
             }
 
-            return " (" + ss + fmm + ie + ")";
+            return " (" + val + ")";
         }
 
         /// <summary>Writes a value sets.</summary>
@@ -188,13 +204,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     _writer.IncreaseIndent();
 
-                    string vsReferences = string.Empty;
-
                     if (vs.StrongestBindingByType?.Any() ?? false)
                     {
-                        vsReferences = $"references ({vs.ReferencingElementsByPath.Count}): " + string.Join(", ", vs.ReferencingElementsByPath.Keys);
-                        vsReferences += ", strongest binding: " + vs.StrongestBinding.ToString();
-                        vsReferences += ", by type: " + string.Join(", ", vs.StrongestBindingByType.Select(bt => $"{bt.Key}:{bt.Value}"));
+                        string vsReferences =
+                            $"references ({vs.ReferencingElementsByPath.Count}): " + string.Join(", ", vs.ReferencingElementsByPath.Keys) +
+                            ", strongest binding: " + vs.StrongestBinding.ToString() +
+                            ", by type: " + string.Join(", ", vs.StrongestBindingByType.Select(bt => $"{bt.Key}:{bt.Value}"));
+
+                        _writer.WriteLineIndented(vsReferences);
+                    }
+
+                    if (vs.StrongestExternalBindingByType?.Any() ?? false)
+                    {
+                        string vsReferences =
+                            $"extensions/profiles ({vs.ReferencingExternalElementsByUrl.Count}):" +
+                            " strongest binding: " + vs.StrongestExternalBinding.ToString() +
+                            ", refs: " + string.Join(", ", vs.ReferencingExternalElementsByUrl.Select(bt => $"{bt.Value.RootArtifact.ArtifactClass}:{bt.Value.RootArtifact.Id}"));
+
                         _writer.WriteLineIndented(vsReferences);
                     }
 

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("DiagnosticOrder", IsResource=true)]
+  [FhirType("DiagnosticOrder","http://hl7.org/fhir/StructureDefinition/DiagnosticOrder", IsResource=true)]
   public partial class DiagnosticOrder : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -160,6 +160,7 @@ namespace Hl7.Fhir.Model
       /// proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed
       /// </summary>
       [FhirElement("status", InSummary=true, Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.DiagnosticOrder.DiagnosticOrderStatus> StatusElement
@@ -270,6 +271,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new EventComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as EventComponent;
@@ -322,6 +324,37 @@ namespace Hl7.Fhir.Model
           if (DateTimeElement != null) yield return new ElementValue("dateTime", DateTimeElement);
           if (Actor != null) yield return new ElementValue("actor", Actor);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "status":
+            value = StatusElement;
+            return StatusElement is not null;
+          case "description":
+            value = Description;
+            return Description is not null;
+          case "dateTime":
+            value = DateTimeElement;
+            return DateTimeElement is not null;
+          case "actor":
+            value = Actor;
+            return Actor is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+        if (Description is not null) yield return new KeyValuePair<string,object>("description",Description);
+        if (DateTimeElement is not null) yield return new KeyValuePair<string,object>("dateTime",DateTimeElement);
+        if (Actor is not null) yield return new KeyValuePair<string,object>("actor",Actor);
       }
 
     }
@@ -386,6 +419,7 @@ namespace Hl7.Fhir.Model
       /// proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed
       /// </summary>
       [FhirElement("status", InSummary=true, Order=70)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.DiagnosticOrder.DiagnosticOrderStatus> StatusElement
       {
@@ -450,6 +484,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ItemComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ItemComponent;
@@ -506,6 +541,41 @@ namespace Hl7.Fhir.Model
           if (StatusElement != null) yield return new ElementValue("status", StatusElement);
           foreach (var elem in Event) { if (elem != null) yield return new ElementValue("event", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "code":
+            value = Code;
+            return Code is not null;
+          case "specimen":
+            value = Specimen;
+            return Specimen?.Any() == true;
+          case "bodySite":
+            value = BodySite;
+            return BodySite is not null;
+          case "status":
+            value = StatusElement;
+            return StatusElement is not null;
+          case "event":
+            value = Event;
+            return Event?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+        if (Specimen?.Any() == true) yield return new KeyValuePair<string,object>("specimen",Specimen);
+        if (BodySite is not null) yield return new KeyValuePair<string,object>("bodySite",BodySite);
+        if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+        if (Event?.Any() == true) yield return new KeyValuePair<string,object>("event",Event);
       }
 
     }
@@ -619,7 +689,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=160)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=160)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.DiagnosticOrder.DiagnosticOrderStatus> StatusElement
     {
@@ -651,6 +722,7 @@ namespace Hl7.Fhir.Model
     /// routine | urgent | stat | asap
     /// </summary>
     [FhirElement("priority", InSummary=true, Order=170)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.DiagnosticOrderPriority> PriorityElement
     {
@@ -750,6 +822,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new DiagnosticOrder());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as DiagnosticOrder;
@@ -834,6 +907,69 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
         foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "orderer":
+          value = Orderer;
+          return Orderer is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "reason":
+          value = Reason;
+          return Reason?.Any() == true;
+        case "supportingInformation":
+          value = SupportingInformation;
+          return SupportingInformation?.Any() == true;
+        case "specimen":
+          value = Specimen;
+          return Specimen?.Any() == true;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "priority":
+          value = PriorityElement;
+          return PriorityElement is not null;
+        case "event":
+          value = Event;
+          return Event?.Any() == true;
+        case "item":
+          value = Item;
+          return Item?.Any() == true;
+        case "note":
+          value = Note;
+          return Note?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Orderer is not null) yield return new KeyValuePair<string,object>("orderer",Orderer);
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Reason?.Any() == true) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (SupportingInformation?.Any() == true) yield return new KeyValuePair<string,object>("supportingInformation",SupportingInformation);
+      if (Specimen?.Any() == true) yield return new KeyValuePair<string,object>("specimen",Specimen);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (PriorityElement is not null) yield return new KeyValuePair<string,object>("priority",PriorityElement);
+      if (Event?.Any() == true) yield return new KeyValuePair<string,object>("event",Event);
+      if (Item?.Any() == true) yield return new KeyValuePair<string,object>("item",Item);
+      if (Note?.Any() == true) yield return new KeyValuePair<string,object>("note",Note);
     }
 
   }

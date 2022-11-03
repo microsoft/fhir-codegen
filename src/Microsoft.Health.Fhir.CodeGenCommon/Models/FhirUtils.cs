@@ -30,6 +30,9 @@ public abstract class FhirUtils
     /// <summary>The RegEx remove duplicate whitespace.</summary>
     private static Regex _regexRemoveDuplicateWhitespace = new Regex(_regexRemoveDuplicateWhitespaceDefinition);
 
+    /// <summary>The RegEx ASCII escaping.</summary>
+    private static Regex _regexAsciiEscaping = new Regex("[^ -~]+");
+
     /// <summary>(Immutable) The underscore.</summary>
     public static readonly Dictionary<char[], string> ReplacementsWithUnderscores = new(ReplacementComparer.Default)
     {
@@ -298,39 +301,38 @@ public abstract class FhirUtils
         switch (convention)
         {
             case NamingConvention.FhirDotNotation:
-                return sanitized.Replace('_', '.');
+                {
+                    return sanitized.Replace('_', '.');
+                }
 
             case NamingConvention.PascalDotNotation:
                 {
-                    string[] components = ToPascal(sanitized.Split('_'));
-                    return string.Join(".", components);
+                    return sanitized.ToPascalDotCase(true);
                 }
 
             case NamingConvention.PascalCase:
                 {
-                    string[] components = ToPascal(sanitized.Split('_'));
-                    return string.Join(string.Empty, components);
+                    return sanitized.ToPascalCase(false);
                 }
 
             case NamingConvention.CamelCase:
                 {
-                    string[] components = ToCamel(sanitized.Split('_'));
-                    return string.Join(string.Empty, components);
+                    return sanitized.ToCamelCase(false);
                 }
 
             case NamingConvention.UpperCase:
                 {
-                    return sanitized.ToUpperInvariant();
+                    return sanitized.ToUpperCase(false);
                 }
 
             case NamingConvention.LowerCase:
                 {
-                    return sanitized.ToLowerInvariant();
+                    return sanitized.ToLowerCase(false);
                 }
 
             case NamingConvention.LowerKebab:
                 {
-                    return ToLowerKebab(sanitized);
+                    return sanitized.ToLowerKebabCase(false);
                 }
 
             case NamingConvention.None:
@@ -417,11 +419,6 @@ public abstract class FhirUtils
         string value = input.Trim();
         value = value.Replace("\"", "\\\"");
 
-        if (value.Contains("\n", StringComparison.Ordinal))
-        {
-            Console.Write("");
-        }
-
         return value;
     }
 
@@ -453,9 +450,7 @@ public abstract class FhirUtils
     /// <returns>A string.</returns>
     public static string SanitizeToAscii(string value)
     {
-        string pattern = "[^ -~]+";
-        Regex reg_exp = new Regex(pattern);
-        return reg_exp.Replace(value, string.Empty);
+        return _regexAsciiEscaping.Replace(value, string.Empty);
     }
 
     /// <summary>Sanitize for property.</summary>

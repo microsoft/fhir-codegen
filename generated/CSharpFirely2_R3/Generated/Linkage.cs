@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Linkage", IsResource=true)]
+  [FhirType("Linkage","http://hl7.org/fhir/StructureDefinition/Linkage", IsResource=true)]
   public partial class Linkage : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -100,6 +100,7 @@ namespace Hl7.Fhir.Model
       /// source | alternate | historical
       /// </summary>
       [FhirElement("type", InSummary=true, Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.Linkage.LinkageType> TypeElement
@@ -162,6 +163,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ItemComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ItemComponent;
@@ -206,6 +208,29 @@ namespace Hl7.Fhir.Model
           if (TypeElement != null) yield return new ElementValue("type", TypeElement);
           if (Resource != null) yield return new ElementValue("resource", Resource);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = TypeElement;
+            return TypeElement is not null;
+          case "resource":
+            value = Resource;
+            return Resource is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+        if (Resource is not null) yield return new KeyValuePair<string,object>("resource",Resource);
       }
 
     }
@@ -291,6 +316,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Linkage());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Linkage;
@@ -339,6 +365,33 @@ namespace Hl7.Fhir.Model
         if (Author != null) yield return new ElementValue("author", Author);
         foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "active":
+          value = ActiveElement;
+          return ActiveElement is not null;
+        case "author":
+          value = Author;
+          return Author is not null;
+        case "item":
+          value = Item;
+          return Item?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (ActiveElement is not null) yield return new KeyValuePair<string,object>("active",ActiveElement);
+      if (Author is not null) yield return new KeyValuePair<string,object>("author",Author);
+      if (Item?.Any() == true) yield return new KeyValuePair<string,object>("item",Item);
     }
 
   }

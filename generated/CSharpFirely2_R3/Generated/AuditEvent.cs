@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("AuditEvent", IsResource=true)]
+  [FhirType("AuditEvent","http://hl7.org/fhir/StructureDefinition/AuditEvent", IsResource=true)]
   public partial class AuditEvent : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -434,6 +434,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new AgentComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as AgentComponent;
@@ -516,6 +517,65 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "role":
+            value = Role;
+            return Role?.Any() == true;
+          case "reference":
+            value = Reference;
+            return Reference is not null;
+          case "userId":
+            value = UserId;
+            return UserId is not null;
+          case "altId":
+            value = AltIdElement;
+            return AltIdElement is not null;
+          case "name":
+            value = NameElement;
+            return NameElement is not null;
+          case "requestor":
+            value = RequestorElement;
+            return RequestorElement is not null;
+          case "location":
+            value = Location;
+            return Location is not null;
+          case "policy":
+            value = PolicyElement;
+            return PolicyElement?.Any() == true;
+          case "media":
+            value = Media;
+            return Media is not null;
+          case "network":
+            value = Network;
+            return Network is not null;
+          case "purposeOfUse":
+            value = PurposeOfUse;
+            return PurposeOfUse?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Role?.Any() == true) yield return new KeyValuePair<string,object>("role",Role);
+        if (Reference is not null) yield return new KeyValuePair<string,object>("reference",Reference);
+        if (UserId is not null) yield return new KeyValuePair<string,object>("userId",UserId);
+        if (AltIdElement is not null) yield return new KeyValuePair<string,object>("altId",AltIdElement);
+        if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+        if (RequestorElement is not null) yield return new KeyValuePair<string,object>("requestor",RequestorElement);
+        if (Location is not null) yield return new KeyValuePair<string,object>("location",Location);
+        if (PolicyElement?.Any() == true) yield return new KeyValuePair<string,object>("policy",PolicyElement);
+        if (Media is not null) yield return new KeyValuePair<string,object>("media",Media);
+        if (Network is not null) yield return new KeyValuePair<string,object>("network",Network);
+        if (PurposeOfUse?.Any() == true) yield return new KeyValuePair<string,object>("purposeOfUse",PurposeOfUse);
+      }
+
     }
 
     /// <summary>
@@ -566,6 +626,7 @@ namespace Hl7.Fhir.Model
       /// The type of network access point
       /// </summary>
       [FhirElement("type", Order=50)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.AuditEvent.AuditEventAgentNetworkType> TypeElement
       {
@@ -613,6 +674,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new NetworkComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as NetworkComponent;
@@ -657,6 +719,29 @@ namespace Hl7.Fhir.Model
           if (AddressElement != null) yield return new ElementValue("address", AddressElement);
           if (TypeElement != null) yield return new ElementValue("type", TypeElement);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "address":
+            value = AddressElement;
+            return AddressElement is not null;
+          case "type":
+            value = TypeElement;
+            return TypeElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (AddressElement is not null) yield return new KeyValuePair<string,object>("address",AddressElement);
+        if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
       }
 
     }
@@ -754,6 +839,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new SourceComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as SourceComponent;
@@ -802,6 +888,33 @@ namespace Hl7.Fhir.Model
           if (Identifier != null) yield return new ElementValue("identifier", Identifier);
           foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "site":
+            value = SiteElement;
+            return SiteElement is not null;
+          case "identifier":
+            value = Identifier;
+            return Identifier is not null;
+          case "type":
+            value = Type;
+            return Type?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (SiteElement is not null) yield return new KeyValuePair<string,object>("site",SiteElement);
+        if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+        if (Type?.Any() == true) yield return new KeyValuePair<string,object>("type",Type);
       }
 
     }
@@ -1035,6 +1148,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new EntityComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as EntityComponent;
@@ -1111,6 +1225,61 @@ namespace Hl7.Fhir.Model
           if (QueryElement != null) yield return new ElementValue("query", QueryElement);
           foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "identifier":
+            value = Identifier;
+            return Identifier is not null;
+          case "reference":
+            value = Reference;
+            return Reference is not null;
+          case "type":
+            value = Type;
+            return Type is not null;
+          case "role":
+            value = Role;
+            return Role is not null;
+          case "lifecycle":
+            value = Lifecycle;
+            return Lifecycle is not null;
+          case "securityLabel":
+            value = SecurityLabel;
+            return SecurityLabel?.Any() == true;
+          case "name":
+            value = NameElement;
+            return NameElement is not null;
+          case "description":
+            value = DescriptionElement;
+            return DescriptionElement is not null;
+          case "query":
+            value = QueryElement;
+            return QueryElement is not null;
+          case "detail":
+            value = Detail;
+            return Detail?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+        if (Reference is not null) yield return new KeyValuePair<string,object>("reference",Reference);
+        if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+        if (Role is not null) yield return new KeyValuePair<string,object>("role",Role);
+        if (Lifecycle is not null) yield return new KeyValuePair<string,object>("lifecycle",Lifecycle);
+        if (SecurityLabel?.Any() == true) yield return new KeyValuePair<string,object>("securityLabel",SecurityLabel);
+        if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+        if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+        if (QueryElement is not null) yield return new KeyValuePair<string,object>("query",QueryElement);
+        if (Detail?.Any() == true) yield return new KeyValuePair<string,object>("detail",Detail);
       }
 
     }
@@ -1212,6 +1381,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new DetailComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as DetailComponent;
@@ -1258,6 +1428,29 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = TypeElement;
+            return TypeElement is not null;
+          case "value":
+            value = ValueElement;
+            return ValueElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+        if (ValueElement is not null) yield return new KeyValuePair<string,object>("value",ValueElement);
+      }
+
     }
 
     /// <summary>
@@ -1292,6 +1485,7 @@ namespace Hl7.Fhir.Model
     /// Type of action performed during the event
     /// </summary>
     [FhirElement("action", InSummary=true, Order=110)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.AuditEvent.AuditEventAction> ActionElement
     {
@@ -1355,6 +1549,7 @@ namespace Hl7.Fhir.Model
     /// Whether the event succeeded or failed
     /// </summary>
     [FhirElement("outcome", InSummary=true, Order=130)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.AuditEvent.AuditEventOutcome> OutcomeElement
     {
@@ -1497,6 +1692,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new AuditEvent());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as AuditEvent;
@@ -1573,6 +1769,61 @@ namespace Hl7.Fhir.Model
         if (Source != null) yield return new ElementValue("source", Source);
         foreach (var elem in Entity) { if (elem != null) yield return new ElementValue("entity", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "subtype":
+          value = Subtype;
+          return Subtype?.Any() == true;
+        case "action":
+          value = ActionElement;
+          return ActionElement is not null;
+        case "recorded":
+          value = RecordedElement;
+          return RecordedElement is not null;
+        case "outcome":
+          value = OutcomeElement;
+          return OutcomeElement is not null;
+        case "outcomeDesc":
+          value = OutcomeDescElement;
+          return OutcomeDescElement is not null;
+        case "purposeOfEvent":
+          value = PurposeOfEvent;
+          return PurposeOfEvent?.Any() == true;
+        case "agent":
+          value = Agent;
+          return Agent?.Any() == true;
+        case "source":
+          value = Source;
+          return Source is not null;
+        case "entity":
+          value = Entity;
+          return Entity?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Subtype?.Any() == true) yield return new KeyValuePair<string,object>("subtype",Subtype);
+      if (ActionElement is not null) yield return new KeyValuePair<string,object>("action",ActionElement);
+      if (RecordedElement is not null) yield return new KeyValuePair<string,object>("recorded",RecordedElement);
+      if (OutcomeElement is not null) yield return new KeyValuePair<string,object>("outcome",OutcomeElement);
+      if (OutcomeDescElement is not null) yield return new KeyValuePair<string,object>("outcomeDesc",OutcomeDescElement);
+      if (PurposeOfEvent?.Any() == true) yield return new KeyValuePair<string,object>("purposeOfEvent",PurposeOfEvent);
+      if (Agent?.Any() == true) yield return new KeyValuePair<string,object>("agent",Agent);
+      if (Source is not null) yield return new KeyValuePair<string,object>("source",Source);
+      if (Entity?.Any() == true) yield return new KeyValuePair<string,object>("entity",Entity);
     }
 
   }
