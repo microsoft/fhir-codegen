@@ -22,7 +22,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private ExporterOptions _options;
 
         /// <summary>Keep track of information about written value sets.</summary>
-        private Dictionary<string, WrittenValueSetInfo> _writtenValueSets = new Dictionary<string, WrittenValueSetInfo>();
+        private Dictionary<string, WrittenValueSetInfo> _writtenValueSets = new();
 
         /// <summary>The split characters.</summary>
         private static readonly char[] _splitChars = { '|', ' ' };
@@ -43,7 +43,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private const string _singleFileExportExtension = null;
 
         /// <summary>Structures to skip generating.</summary>
-        private static readonly HashSet<string> _exclusionSet = new HashSet<string>()
+        private static readonly HashSet<string> _exclusionSet = new()
         {
             /* Since Base defines its methods abstractly, the pattern for generating it
              * is sufficiently different from derived classes that it makes sense not
@@ -85,7 +85,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>
         /// List of types introduced in R5 that are retrospectively introduced in R3 and R4.
         /// </summary>
-        private static readonly List<WrittenModelInfo> _commonR5DataTypes = new List<WrittenModelInfo>
+        private static readonly List<WrittenModelInfo> _commonR5DataTypes = new()
         {
             new WrittenModelInfo { CsName = "BackboneType", FhirName = "BackboneType", IsAbstract = true },
             new WrittenModelInfo { CsName = "Base", FhirName = "Base", IsAbstract = true },
@@ -96,7 +96,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>
         /// List of complex datatype classes that are part of the 'common' subset. See <see cref="GenSubset"/>.
         /// </summary>
-        private static readonly List<string> _commmonComplexTypes = new List<string>()
+        private static readonly List<string> _commmonComplexTypes = new()
         {
             "BackboneElement",
             "BackboneType",
@@ -122,7 +122,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>
         /// List of complex datatype classes that are part of the 'big common' subset. See <see cref="GenSubset"/>.
         /// </summary>
-        private static readonly List<string> _bigCommmonComplexTypes = new List<string>()
+        private static readonly List<string> _bigCommmonComplexTypes = new()
         {
            "ElementDefinition",
            "Signature"
@@ -131,7 +131,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>
         /// List of resource classes that are part of the 'common' subset. See <see cref="GenSubset"/>.
         /// </summary>
-        private static readonly List<string> _commmonResourceTypes = new List<string>()
+        private static readonly List<string> _commmonResourceTypes = new()
         {
             "DomainResource",
             "OperationOutcome",
@@ -143,7 +143,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>
         /// List of resource classes that are part of the 'big common' (R4+) subset. See <see cref="GenSubset"/>.
         /// </summary>
-        private static readonly List<string> _bigCommmonResourceTypes = new List<string>()
+        private static readonly List<string> _bigCommmonResourceTypes = new()
         {
             "Binary",
             "Bundle",
@@ -162,6 +162,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             "http://hl7.org/fhir/ValueSet/publication-status",
             "http://hl7.org/fhir/ValueSet/FHIR-version",
+
+            // Doesn't strictly need to be in common (but in bigcommon),
+            // but we used to generate it for common, so I am keeping it that way.
+            "http://hl7.org/fhir/ValueSet/filter-operator",
         };
 
         /// <summary>
@@ -171,17 +175,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// </remarks>
         private static readonly List<string> _bigCommonValueSets = new List<string>()
         {
-            "http://hl7.org/fhir/ValueSet/filter-operator",
             "http://hl7.org/fhir/ValueSet/capability-statement-kind",
             "http://hl7.org/fhir/ValueSet/binding-strength",
-            "http://hl7.org/fhir/ValueSet/search-param-type"
+            "http://hl7.org/fhir/ValueSet/search-param-type",
+
+            // These are necessary for CapabilityStatement/CapabilityStatement2
+            // CapStat2 has disappeared in ballot, if that becomes final,
+            // these don't have to be created as shared valuesets anymore.
+            "http://hl7.org/fhir/ValueSet/restful-capability-mode",
+            "http://hl7.org/fhir/ValueSet/type-restful-interaction",
+            "http://hl7.org/fhir/ValueSet/system-restful-interaction",
+
+            // For these valuesets the algorithm to determine whather a vs is shared
+            // is still considering core extensions too. When this is corrected,
+            // these can probably go.
+            "http://hl7.org/fhir/ValueSet/constraint-severity"
         };
 
         /// <summary>
         /// List of valuesets that must explicitly be part of satellites (even though we could
         /// generate them in common/bigcommon).
         /// </summary>
-        private static readonly List<string> _satelliteValueSets = new List<string>()
+        private static readonly List<string> _satelliteValueSets = new()
         {
             "http://hl7.org/fhir/ValueSet/resource-types",
         };
@@ -200,6 +215,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "MetadataResource",
         };
 
+        /// <summary>
+        /// The list of elements that would normally be represented using a CodeOfT enum, but that we
+        /// want to be generated as a normal Code instead.
+        /// </summary>
+        private readonly List<string> _codedElementOverrides = new()
+            {
+                "CapabilityStatement.rest.resource.type"
+            };
+
+        /// <summary>
+        /// Some valuesets have names that are the same as element names or are just not nice - use this collection
+        /// to change the name of the generated enum as required.
+        /// </summary>
+        private readonly Dictionary<string, string> _enumNamesOverride = new()
+        {
+            ["CharacteristicCombination"] = "CharacteristicCombinationCode"
+        };
+
+
         /// <summary>True to export five ws.</summary>
         private bool _exportFiveWs = true;
 
@@ -215,9 +249,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // Subset of generated output for the Big Common "Hl7.Fhir.Core" project            
             BigCommon = 2,
 
-            // Subset of generated output for each of the satellite "Hl7.Fhir.R<x>.Core" projects 
+            // Subset of generated output for each of the satellite "Hl7.Fhir.R4.Core" (and later) projects 
             Satellite = 4,
 
+            // Subset of generated outfor combining Big common + satellite (used for R3)
+            BigSatellite = BigCommon | Satellite,
+
+            // Generate all (not used for any of the production assemblies)
             All = Common | BigCommon | Satellite
         }
 
@@ -259,7 +297,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Gets language-specific options and their descriptions.</summary>
         Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>()
         {
-            { "subset", "Which subset of language exports to make (bigcommon|common|satellite|all)." },
+            { "subset", "Which subset of language exports to make (common|bigcommon|bigsatellite|satellite|all)." },
             { "w5", "If output should include 5 W's mappings (true|false)." },
         };
 
@@ -275,8 +313,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string exportDirectory)
         {
             /* For the ExporterOptions.LanguageOptions we accept:
-             *    subset=bigcommon|common|satellite|all       'common' and bigcommon will generate code for the specific parts of the library,
-             *                              'satellite' will genreate code for the version-specific 'api' (main) repo of the library
+             *    subset=common|bigcommon|bigsatellite|satellite|all 
+             *          'common' and bigcommon will generate code for the specific parts of the library,
+             *          'satellite' will genreate code for the version-specific 'api' (main) repo of the library,
+             *          'bigsatellite' will combine common and satellite in one output
              */
             GenSubset subset = GenSubset.All;
 
@@ -286,15 +326,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     "common" => GenSubset.Common,
                     "bigcommon" => GenSubset.BigCommon,
+                    "bigsatellite" => GenSubset.BigSatellite,
                     "satellite" => GenSubset.Satellite,
                     _ => GenSubset.All
                 };
             }
 
-            if ((subset.HasFlag(GenSubset.Common) || subset.HasFlag(GenSubset.BigCommon))
-                && info.FhirSequence != FhirPackageCommon.FhirSequenceEnum.R5)
+            if (subset.HasFlag(GenSubset.Common) && info.FhirSequence != FhirPackageCommon.FhirSequenceEnum.R5)
             {
-                Console.WriteLine($"Aborting {_languageName} for {info.FhirSequence}: code generation for the 'common'/'bigcommon' subset should be run on R5 only.");
+                Console.WriteLine($"Aborting {_languageName} for {info.FhirSequence}: code generation for the 'common' subset should be run on R5 only.");
+                return;
+            }
+
+            if (subset.HasFlag(GenSubset.BigCommon) &&
+                (info.FhirSequence != FhirPackageCommon.FhirSequenceEnum.STU3 &&
+                info.FhirSequence != FhirPackageCommon.FhirSequenceEnum.R5))
+            {
+                Console.WriteLine($"Aborting {_languageName} for {info.FhirSequence}: code generation for the 'bigcommon' subset should be run on R3 and R5 only.");
                 return;
             }
 
@@ -405,7 +453,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     "A class with methods to retrieve information about the\n" +
                     "FHIR definitions based on which this assembly was generated.");
 
-                _writer.WriteLineIndented("public static partial class ModelInfo");
+                _writer.WriteLineIndented("public partial class ModelInfo");
 
                 // open class
                 OpenScope();
@@ -1001,7 +1049,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (_info.FhirSequence < FhirPackageCommon.FhirSequenceEnum.R5)
             {
                 // Promote R4 datatypes (all derived from Element/BackboneElement) to the right new subclass
-                if (baseTypeName == "BackboneElement" && _info.FhirSequence == FhirPackageCommon.FhirSequenceEnum.R4)
+                if (baseTypeName == "BackboneElement" && _info.FhirSequence > FhirPackageCommon.FhirSequenceEnum.STU3)
                 {
                     return "BackboneType";
                 }
@@ -1468,10 +1516,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 return;
             }
 
+
 #pragma warning disable CA1307 // Specify StringComparison
             string name = (vs.Name ?? vs.Id).Replace(" ", string.Empty).Replace("_", string.Empty);
 #pragma warning restore CA1307 // Specify StringComparison
             string nameSanitized = FhirUtils.SanitizeForProperty(name, _reservedWords);
+
+            // Enums and their containing classes cannot have the same name,
+            // so we have to correct these here
+            if (_enumNamesOverride.TryGetValue(nameSanitized, out var replacementName))
+            {
+                nameSanitized = replacementName;
+            }
 
             if (usedEnumNames.Contains(nameSanitized))
             {
@@ -1616,9 +1672,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             GenSubset subset)
         {
             bool hasDefinedEnum = true;
+
             if ((element.BindingStrength != "required") ||
                 (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs)) ||
-                _exclusionSet.Contains(vs.URL))
+                _exclusionSet.Contains(vs.URL) ||
+                _codedElementOverrides.Contains(element.Path)
+                )
             {
                 hasDefinedEnum = false;
                 vs = null;
