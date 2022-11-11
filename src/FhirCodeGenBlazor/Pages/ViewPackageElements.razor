@@ -412,6 +412,12 @@ else
 
     /// <summary>Control toggle behavior of the 'all' button.</summary>
     private bool _showArtifactState = true;
+    
+    /// <summary>Options for controlling the JSON serializer.</summary>
+    private static System.Text.Json.JsonSerializerOptions jsonSerializerOptions = new()
+    {
+        Converters = { new System.Text.Json.Serialization.JsonStringEnumConverter() }
+    };
 
     /// <summary>If the page should be showing progress indicators.</summary>
     private bool _busy = false;
@@ -694,7 +700,7 @@ else
             elements = filteredElements.Where(e => FilterFuncDefinition(e, searchPredicate)).Select<ElementRecord, string>(e => e.Element.Path);
         }
 
-        string content = System.Text.Json.JsonSerializer.Serialize(elements);
+        string content = System.Text.Json.JsonSerializer.Serialize(elements, jsonSerializerOptions);
         using (Stream fs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content), false))
         using (DotNetStreamReference streamRef = new DotNetStreamReference(fs, false))
         {
@@ -712,7 +718,7 @@ else
             elements = filteredElements.Where(e => FilterFuncDefinition(e, searchPredicate)).Select<ElementRecord, FhirElement>(e => e.Element);
         }
 
-        string content = System.Text.Json.JsonSerializer.Serialize(elements);
+        string content = System.Text.Json.JsonSerializer.Serialize(elements, jsonSerializerOptions);
         using (Stream fs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content), false))
         using (DotNetStreamReference streamRef = new DotNetStreamReference(fs, false))
         {
