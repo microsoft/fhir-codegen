@@ -122,7 +122,7 @@
         },
         "Firely openAPI": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://server.fire.ly/ --resolve-external false --language-options OpenApi|SingleResponses=true|Metadata=true|SchemaLevel=names|MultiFile=true --output-path ..\\..\\generated\\FS-OpenApi-R4 --language OpenApi",
+            "commandLineArgs": "--fhir-server-url http://server.fire.ly/ --resolve-external false --language-options OpenApi|SingleResponses=false|Metadata=true|SchemaLevel=names|MultiFile=true --output-path ..\\..\\generated\\FS-OpenApi-R4 --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }
