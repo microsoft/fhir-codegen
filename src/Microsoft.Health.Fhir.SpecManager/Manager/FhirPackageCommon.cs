@@ -255,6 +255,22 @@ public static class FhirPackageCommon
         },
     };
 
+    /// <summary>(Immutable) The processable resources.</summary>
+    private static readonly HashSet<string> _processableResources = new()
+    {
+        "CapabilityStatement",
+        "CodeSystem",
+        "CompartmentDefinition",
+        "ConceptMap",
+        "ImplementationGuide",
+        "NamingSystem",
+        "OperationDefinition",
+        "SearchParameter",
+        "StructureDefinition",
+        "StructureMap",
+        "ValueSet",
+    };
+
     /// <summary>
     /// Initializes static members of the <see cref="FhirPackageCommon"/> class.
     /// </summary>
@@ -521,7 +537,7 @@ public static class FhirPackageCommon
         }
 
         // fallback to guessing
-        switch (val)
+        switch (val.ToUpperInvariant())
         {
             case "DSTU2":
             case "STU2":
@@ -580,6 +596,14 @@ public static class FhirPackageCommon
         }
 
         return false;
+    }
+
+    /// <summary>Determine if we should process resource.</summary>
+    /// <param name="resourceName">Name of the resource.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool ShouldProcessResource(string resourceName)
+    {
+        return _processableResources.Contains(resourceName);
     }
 
     /// <summary>Determine if we should ignore resource.</summary>

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("DataRequirement")]
+  [FhirType("DataRequirement","http://hl7.org/fhir/StructureDefinition/DataRequirement")]
   public partial class DataRequirement : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -219,6 +219,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new CodeFilterComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as CodeFilterComponent;
@@ -271,6 +272,37 @@ namespace Hl7.Fhir.Model
           if (ValueSetElement != null) yield return new ElementValue("valueSet", ValueSetElement);
           foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "path":
+            value = PathElement;
+            return PathElement is not null;
+          case "searchParam":
+            value = SearchParamElement;
+            return SearchParamElement is not null;
+          case "valueSet":
+            value = ValueSetElement;
+            return ValueSetElement is not null;
+          case "code":
+            value = Code;
+            return Code?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (PathElement is not null) yield return new KeyValuePair<string,object>("path",PathElement);
+        if (SearchParamElement is not null) yield return new KeyValuePair<string,object>("searchParam",SearchParamElement);
+        if (ValueSetElement is not null) yield return new KeyValuePair<string,object>("valueSet",ValueSetElement);
+        if (Code?.Any() == true) yield return new KeyValuePair<string,object>("code",Code);
       }
 
     }
@@ -386,6 +418,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new DateFilterComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as DateFilterComponent;
@@ -434,6 +467,33 @@ namespace Hl7.Fhir.Model
           if (SearchParamElement != null) yield return new ElementValue("searchParam", SearchParamElement);
           if (Value != null) yield return new ElementValue("value", Value);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "path":
+            value = PathElement;
+            return PathElement is not null;
+          case "searchParam":
+            value = SearchParamElement;
+            return SearchParamElement is not null;
+          case "value":
+            value = Value;
+            return Value is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (PathElement is not null) yield return new KeyValuePair<string,object>("path",PathElement);
+        if (SearchParamElement is not null) yield return new KeyValuePair<string,object>("searchParam",SearchParamElement);
+        if (Value is not null) yield return new KeyValuePair<string,object>("value",Value);
       }
 
     }
@@ -487,6 +547,7 @@ namespace Hl7.Fhir.Model
       /// ascending | descending
       /// </summary>
       [FhirElement("direction", InSummary=true, Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.DataRequirement.SortDirection> DirectionElement
@@ -535,6 +596,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new SortComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as SortComponent;
@@ -581,12 +643,36 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "path":
+            value = PathElement;
+            return PathElement is not null;
+          case "direction":
+            value = DirectionElement;
+            return DirectionElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (PathElement is not null) yield return new KeyValuePair<string,object>("path",PathElement);
+        if (DirectionElement is not null) yield return new KeyValuePair<string,object>("direction",DirectionElement);
+      }
+
     }
 
     /// <summary>
     /// The type of the required data
     /// </summary>
     [FhirElement("type", InSummary=true, Order=30)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.FHIRAllTypes> TypeElement
@@ -652,6 +738,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("subject", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Group")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [DataMember]
     public Hl7.Fhir.Model.DataType Subject
@@ -793,6 +880,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new DataRequirement());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as DataRequirement;
@@ -861,6 +949,53 @@ namespace Hl7.Fhir.Model
         if (LimitElement != null) yield return new ElementValue("limit", LimitElement);
         foreach (var elem in Sort) { if (elem != null) yield return new ElementValue("sort", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "profile":
+          value = ProfileElement;
+          return ProfileElement?.Any() == true;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "mustSupport":
+          value = MustSupportElement;
+          return MustSupportElement?.Any() == true;
+        case "codeFilter":
+          value = CodeFilter;
+          return CodeFilter?.Any() == true;
+        case "dateFilter":
+          value = DateFilter;
+          return DateFilter?.Any() == true;
+        case "limit":
+          value = LimitElement;
+          return LimitElement is not null;
+        case "sort":
+          value = Sort;
+          return Sort?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (ProfileElement?.Any() == true) yield return new KeyValuePair<string,object>("profile",ProfileElement);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (MustSupportElement?.Any() == true) yield return new KeyValuePair<string,object>("mustSupport",MustSupportElement);
+      if (CodeFilter?.Any() == true) yield return new KeyValuePair<string,object>("codeFilter",CodeFilter);
+      if (DateFilter?.Any() == true) yield return new KeyValuePair<string,object>("dateFilter",DateFilter);
+      if (LimitElement is not null) yield return new KeyValuePair<string,object>("limit",LimitElement);
+      if (Sort?.Any() == true) yield return new KeyValuePair<string,object>("sort",Sort);
     }
 
   }

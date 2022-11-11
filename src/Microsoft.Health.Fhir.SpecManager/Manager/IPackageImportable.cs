@@ -191,9 +191,11 @@ public interface IPackageImportable
     public bool HasValueSet(string urlOrKey);
 
     /// <summary>Parses resource an object from the given string.</summary>
-    /// <param name="json">The JSON.</param>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out] The resource object.</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
     /// <returns>A typed Resource object.</returns>
-    public object ParseResource(string json);
+    public bool TryParseResource(string json, out object resource, out string resourceType);
 
     /// <summary>Attempts to process resource.</summary>
     /// <param name="resource">[out] The resource object.</param>

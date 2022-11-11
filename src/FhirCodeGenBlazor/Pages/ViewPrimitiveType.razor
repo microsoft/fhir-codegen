@@ -2,7 +2,6 @@
 
 @using FhirCodeGenBlazor.Models
 @using FhirCodeGenBlazor.Services
-@using FhirCodeGenBlazor.Components
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @inject NavigationManager NavManager
 @inject ISpecManagerWebService SpecService
@@ -15,10 +14,36 @@
 }
 else
 {
-    <PageTitle>@fhirPrimitive.Name</PageTitle>    
-    <CascadingValue Value="this">
-        <FhirPrimitiveDisplay ObjectToDisplay=@fhirPrimitive/>
-    </CascadingValue>
+    <PageTitle>@fhirPrimitive.Name</PageTitle>
+    @if (fhirPrimitive != null)
+    {
+        <MudGrid Spacing="1">
+            <MudItem xs="12"><MudText Typo="Typo.h5">FHIR Primitive Type: @fhirPrimitive.Name</MudText></MudItem>
+
+        <MudItem xs="2">Id</MudItem>
+        <MudItem xs="10">@fhirPrimitive.Id</MudItem>
+            <MudItem xs="2">Name</MudItem>
+            <MudItem xs="10">@fhirPrimitive.Name</MudItem>
+
+            <MudItem xs="2">Path</MudItem>
+            <MudItem xs="10">@fhirPrimitive.Path</MudItem>
+
+            <MudItem xs="2">Base Type</MudItem>
+            <MudItem xs="10">@fhirPrimitive.BaseTypeName</MudItem>
+
+            <MudItem xs="2">URL</MudItem>
+            <MudItem xs="10">@fhirPrimitive.URL.ToString()</MudItem>
+
+            <MudItem xs="2">Standard Status</MudItem>
+            <MudItem xs="10">@fhirPrimitive.StandardStatus</MudItem>
+
+            <MudItem xs="2">Short Description</MudItem>
+            <MudItem xs="10">@fhirPrimitive.ShortDescription</MudItem>
+
+            <MudItem xs="2">Comment</MudItem>
+            <MudItem xs="10">@fhirPrimitive.Comment</MudItem>
+        </MudGrid>
+    }
 }
 
 @code {

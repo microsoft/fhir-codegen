@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Provenance", IsResource=true)]
+  [FhirType("Provenance","http://hl7.org/fhir/StructureDefinition/Provenance", IsResource=true)]
   public partial class Provenance : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -180,6 +180,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new AgentComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as AgentComponent;
@@ -232,6 +233,37 @@ namespace Hl7.Fhir.Model
           if (UserId != null) yield return new ElementValue("userId", UserId);
           foreach (var elem in RelatedAgent) { if (elem != null) yield return new ElementValue("relatedAgent", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "role":
+            value = Role;
+            return Role is not null;
+          case "actor":
+            value = Actor;
+            return Actor is not null;
+          case "userId":
+            value = UserId;
+            return UserId is not null;
+          case "relatedAgent":
+            value = RelatedAgent;
+            return RelatedAgent?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Role is not null) yield return new KeyValuePair<string,object>("role",Role);
+        if (Actor is not null) yield return new KeyValuePair<string,object>("actor",Actor);
+        if (UserId is not null) yield return new KeyValuePair<string,object>("userId",UserId);
+        if (RelatedAgent?.Any() == true) yield return new KeyValuePair<string,object>("relatedAgent",RelatedAgent);
       }
 
     }
@@ -315,6 +347,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new RelatedAgentComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as RelatedAgentComponent;
@@ -361,6 +394,29 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = Type;
+            return Type is not null;
+          case "target":
+            value = TargetElement;
+            return TargetElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+        if (TargetElement is not null) yield return new KeyValuePair<string,object>("target",TargetElement);
+      }
+
     }
 
     /// <summary>
@@ -380,6 +436,7 @@ namespace Hl7.Fhir.Model
       /// derivation | revision | quotation | source
       /// </summary>
       [FhirElement("role", InSummary=true, Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.Provenance.ProvenanceEntityRole> RoleElement
@@ -521,6 +578,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new EntityComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as EntityComponent;
@@ -577,6 +635,41 @@ namespace Hl7.Fhir.Model
           if (DisplayElement != null) yield return new ElementValue("display", DisplayElement);
           if (Agent != null) yield return new ElementValue("agent", Agent);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "role":
+            value = RoleElement;
+            return RoleElement is not null;
+          case "type":
+            value = Type;
+            return Type is not null;
+          case "reference":
+            value = ReferenceElement;
+            return ReferenceElement is not null;
+          case "display":
+            value = DisplayElement;
+            return DisplayElement is not null;
+          case "agent":
+            value = Agent;
+            return Agent is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (RoleElement is not null) yield return new KeyValuePair<string,object>("role",RoleElement);
+        if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+        if (ReferenceElement is not null) yield return new KeyValuePair<string,object>("reference",ReferenceElement);
+        if (DisplayElement is not null) yield return new KeyValuePair<string,object>("display",DisplayElement);
+        if (Agent is not null) yield return new KeyValuePair<string,object>("agent",Agent);
       }
 
     }
@@ -786,6 +879,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Provenance());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Provenance;
@@ -862,6 +956,61 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Entity) { if (elem != null) yield return new ElementValue("entity", elem); }
         foreach (var elem in Signature) { if (elem != null) yield return new ElementValue("signature", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "target":
+          value = Target;
+          return Target?.Any() == true;
+        case "period":
+          value = Period;
+          return Period is not null;
+        case "recorded":
+          value = RecordedElement;
+          return RecordedElement is not null;
+        case "reason":
+          value = Reason;
+          return Reason?.Any() == true;
+        case "activity":
+          value = Activity;
+          return Activity is not null;
+        case "location":
+          value = Location;
+          return Location is not null;
+        case "policy":
+          value = PolicyElement;
+          return PolicyElement?.Any() == true;
+        case "agent":
+          value = Agent;
+          return Agent?.Any() == true;
+        case "entity":
+          value = Entity;
+          return Entity?.Any() == true;
+        case "signature":
+          value = Signature;
+          return Signature?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Target?.Any() == true) yield return new KeyValuePair<string,object>("target",Target);
+      if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
+      if (RecordedElement is not null) yield return new KeyValuePair<string,object>("recorded",RecordedElement);
+      if (Reason?.Any() == true) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (Activity is not null) yield return new KeyValuePair<string,object>("activity",Activity);
+      if (Location is not null) yield return new KeyValuePair<string,object>("location",Location);
+      if (PolicyElement?.Any() == true) yield return new KeyValuePair<string,object>("policy",PolicyElement);
+      if (Agent?.Any() == true) yield return new KeyValuePair<string,object>("agent",Agent);
+      if (Entity?.Any() == true) yield return new KeyValuePair<string,object>("entity",Entity);
+      if (Signature?.Any() == true) yield return new KeyValuePair<string,object>("signature",Signature);
     }
 
   }

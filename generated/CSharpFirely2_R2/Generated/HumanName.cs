@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("HumanName")]
+  [FhirType("HumanName","http://hl7.org/fhir/StructureDefinition/HumanName")]
   public partial class HumanName : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -110,7 +110,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// usual | official | temp | nickname | anonymous | old | maiden
     /// </summary>
-    [FhirElement("use", InSummary=true, Order=30)]
+    [FhirElement("use", InSummary=true, IsModifier=true, Order=30)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.HumanName.NameUse> UseElement
     {
@@ -335,6 +336,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new HumanName());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as HumanName;
@@ -399,6 +401,49 @@ namespace Hl7.Fhir.Model
         foreach (var elem in SuffixElement) { if (elem != null) yield return new ElementValue("suffix", elem); }
         if (Period != null) yield return new ElementValue("period", Period);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "use":
+          value = UseElement;
+          return UseElement is not null;
+        case "text":
+          value = TextElement;
+          return TextElement is not null;
+        case "family":
+          value = FamilyElement;
+          return FamilyElement?.Any() == true;
+        case "given":
+          value = GivenElement;
+          return GivenElement?.Any() == true;
+        case "prefix":
+          value = PrefixElement;
+          return PrefixElement?.Any() == true;
+        case "suffix":
+          value = SuffixElement;
+          return SuffixElement?.Any() == true;
+        case "period":
+          value = Period;
+          return Period is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (UseElement is not null) yield return new KeyValuePair<string,object>("use",UseElement);
+      if (TextElement is not null) yield return new KeyValuePair<string,object>("text",TextElement);
+      if (FamilyElement?.Any() == true) yield return new KeyValuePair<string,object>("family",FamilyElement);
+      if (GivenElement?.Any() == true) yield return new KeyValuePair<string,object>("given",GivenElement);
+      if (PrefixElement?.Any() == true) yield return new KeyValuePair<string,object>("prefix",PrefixElement);
+      if (SuffixElement?.Any() == true) yield return new KeyValuePair<string,object>("suffix",SuffixElement);
+      if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
     }
 
   }

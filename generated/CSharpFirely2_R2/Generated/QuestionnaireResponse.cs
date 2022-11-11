@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("QuestionnaireResponse", IsResource=true)]
+  [FhirType("QuestionnaireResponse","http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse", IsResource=true)]
   public partial class QuestionnaireResponse : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -256,6 +256,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new GroupComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as GroupComponent;
@@ -316,6 +317,45 @@ namespace Hl7.Fhir.Model
           foreach (var elem in Group) { if (elem != null) yield return new ElementValue("group", elem); }
           foreach (var elem in Question) { if (elem != null) yield return new ElementValue("question", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "linkId":
+            value = LinkIdElement;
+            return LinkIdElement is not null;
+          case "title":
+            value = TitleElement;
+            return TitleElement is not null;
+          case "text":
+            value = TextElement;
+            return TextElement is not null;
+          case "subject":
+            value = Subject;
+            return Subject is not null;
+          case "group":
+            value = Group;
+            return Group?.Any() == true;
+          case "question":
+            value = Question;
+            return Question?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (LinkIdElement is not null) yield return new KeyValuePair<string,object>("linkId",LinkIdElement);
+        if (TitleElement is not null) yield return new KeyValuePair<string,object>("title",TitleElement);
+        if (TextElement is not null) yield return new KeyValuePair<string,object>("text",TextElement);
+        if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+        if (Group?.Any() == true) yield return new KeyValuePair<string,object>("group",Group);
+        if (Question?.Any() == true) yield return new KeyValuePair<string,object>("question",Question);
       }
 
     }
@@ -430,6 +470,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new QuestionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as QuestionComponent;
@@ -480,6 +521,33 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "linkId":
+            value = LinkIdElement;
+            return LinkIdElement is not null;
+          case "text":
+            value = TextElement;
+            return TextElement is not null;
+          case "answer":
+            value = Answer;
+            return Answer?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (LinkIdElement is not null) yield return new KeyValuePair<string,object>("linkId",LinkIdElement);
+        if (TextElement is not null) yield return new KeyValuePair<string,object>("text",TextElement);
+        if (Answer?.Any() == true) yield return new KeyValuePair<string,object>("answer",Answer);
+      }
+
     }
 
     /// <summary>
@@ -500,6 +568,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("value", Order=40, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("Resource")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.ResourceReference))]
       [DataMember]
       public Hl7.Fhir.Model.DataType Value
@@ -544,6 +613,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new AnswerComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as AnswerComponent;
@@ -590,6 +660,29 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "value":
+            value = Value;
+            return Value is not null;
+          case "group":
+            value = Group;
+            return Group?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Value is not null) yield return new KeyValuePair<string,object>("value",Value);
+        if (Group?.Any() == true) yield return new KeyValuePair<string,object>("group",Group);
+      }
+
     }
 
     /// <summary>
@@ -623,7 +716,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// in-progress | completed | amended
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=110)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=110)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.QuestionnaireResponse.QuestionnaireResponseStatus> StatusElement
@@ -783,6 +877,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new QuestionnaireResponse());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as QuestionnaireResponse;
@@ -855,6 +950,57 @@ namespace Hl7.Fhir.Model
         if (Encounter != null) yield return new ElementValue("encounter", Encounter);
         if (Group != null) yield return new ElementValue("group", Group);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier is not null;
+        case "questionnaire":
+          value = Questionnaire;
+          return Questionnaire is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "author":
+          value = Author;
+          return Author is not null;
+        case "authored":
+          value = AuthoredElement;
+          return AuthoredElement is not null;
+        case "source":
+          value = Source;
+          return Source is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "group":
+          value = Group;
+          return Group is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Questionnaire is not null) yield return new KeyValuePair<string,object>("questionnaire",Questionnaire);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Author is not null) yield return new KeyValuePair<string,object>("author",Author);
+      if (AuthoredElement is not null) yield return new KeyValuePair<string,object>("authored",AuthoredElement);
+      if (Source is not null) yield return new KeyValuePair<string,object>("source",Source);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Group is not null) yield return new KeyValuePair<string,object>("group",Group);
     }
 
   }

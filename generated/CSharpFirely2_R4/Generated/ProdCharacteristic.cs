@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("ProdCharacteristic")]
+  [FhirType("ProdCharacteristic","http://hl7.org/fhir/StructureDefinition/ProdCharacteristic")]
   public partial class ProdCharacteristic : Hl7.Fhir.Model.BackboneType
   {
     /// <summary>
@@ -284,6 +284,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new ProdCharacteristic());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as ProdCharacteristic;
@@ -364,6 +365,65 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Image) { if (elem != null) yield return new ElementValue("image", elem); }
         if (Scoring != null) yield return new ElementValue("scoring", Scoring);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "height":
+          value = Height;
+          return Height is not null;
+        case "width":
+          value = Width;
+          return Width is not null;
+        case "depth":
+          value = Depth;
+          return Depth is not null;
+        case "weight":
+          value = Weight;
+          return Weight is not null;
+        case "nominalVolume":
+          value = NominalVolume;
+          return NominalVolume is not null;
+        case "externalDiameter":
+          value = ExternalDiameter;
+          return ExternalDiameter is not null;
+        case "shape":
+          value = ShapeElement;
+          return ShapeElement is not null;
+        case "color":
+          value = ColorElement;
+          return ColorElement?.Any() == true;
+        case "imprint":
+          value = ImprintElement;
+          return ImprintElement?.Any() == true;
+        case "image":
+          value = Image;
+          return Image?.Any() == true;
+        case "scoring":
+          value = Scoring;
+          return Scoring is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Height is not null) yield return new KeyValuePair<string,object>("height",Height);
+      if (Width is not null) yield return new KeyValuePair<string,object>("width",Width);
+      if (Depth is not null) yield return new KeyValuePair<string,object>("depth",Depth);
+      if (Weight is not null) yield return new KeyValuePair<string,object>("weight",Weight);
+      if (NominalVolume is not null) yield return new KeyValuePair<string,object>("nominalVolume",NominalVolume);
+      if (ExternalDiameter is not null) yield return new KeyValuePair<string,object>("externalDiameter",ExternalDiameter);
+      if (ShapeElement is not null) yield return new KeyValuePair<string,object>("shape",ShapeElement);
+      if (ColorElement?.Any() == true) yield return new KeyValuePair<string,object>("color",ColorElement);
+      if (ImprintElement?.Any() == true) yield return new KeyValuePair<string,object>("imprint",ImprintElement);
+      if (Image?.Any() == true) yield return new KeyValuePair<string,object>("image",Image);
+      if (Scoring is not null) yield return new KeyValuePair<string,object>("scoring",Scoring);
     }
 
   }

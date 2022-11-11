@@ -850,6 +850,8 @@ public sealed class FromR2 : IFhirConverter
             sd.Id,
             sd.Name,
             baseTypeName,
+            sd.Base ?? string.Empty,
+            sd.Version ?? string.Empty,
             new Uri(sd.Url),
             sd.Status,
             standardStatus,
@@ -858,7 +860,10 @@ public sealed class FromR2 : IFhirConverter
             descriptionShort,
             definition,
             comment,
-            regex);
+            regex,
+            sd.Text?.Div ?? string.Empty,
+            sd.Text?.Status ?? string.Empty,
+            sd.FhirVersion);
 
         // add to our dictionary of primitive types
         fhirVersionInfo.AddPrimitive(primitive);
@@ -1071,11 +1076,14 @@ public sealed class FromR2 : IFhirConverter
 
             // create a new complex type object
             FhirComplex complex = new FhirComplex(
+                artifactClass,
                 sd.Id,
                 sd.Name,
-                string.Empty,
+                sd.Name,
                 string.Empty,
                 sd.ConstrainedType,
+                sd.Base ?? string.Empty,
+                sd.Version ?? string.Empty,
                 new Uri(sd.Url),
                 sd.Status,
                 standardStatus,
@@ -1084,9 +1092,12 @@ public sealed class FromR2 : IFhirConverter
                 descriptionShort,
                 definition,
                 string.Empty,
-                null,
                 contextElements,
-                sd.Abstract);
+                sd.Abstract,
+                string.Empty,
+                sd.Text?.Div ?? string.Empty,
+                sd.Text?.Status ?? string.Empty,
+                sd.FhirVersion ?? string.Empty);
 
             // check for a base definition
             if (!string.IsNullOrEmpty(sd.Base))
@@ -1146,6 +1157,7 @@ public sealed class FromR2 : IFhirConverter
                 {
                     string id = element.Id ?? element.Path;
                     string path = element.Path ?? element.Id;
+                    string basePath = element.Base?.Path ?? string.Empty;
                     Dictionary<string, FhirElementType> elementTypes = null;
                     string elementType = string.Empty;
                     bool isRootElement = false;
@@ -1259,8 +1271,10 @@ public sealed class FromR2 : IFhirConverter
                             parent.Elements.Add(
                                 path,
                                 new FhirElement(
+                                    complex,
                                     path,
                                     path,
+                                    basePath,
                                     string.Empty,
                                     null,
                                     parent.Elements.Count,
@@ -1317,7 +1331,13 @@ public sealed class FromR2 : IFhirConverter
                         if (parent.Elements.ContainsKey(path))
                         {
                             // add this slice to the field
-                            parent.Elements[path].AddSlice(sd.Url, sliceName);
+                            parent.Elements[path].AddSlice(
+                                sd.Url,
+                                sliceName,
+                                element.Slicing?.Description ?? string.Empty,
+                                string.Empty,
+                                string.Empty,
+                                parent);
                         }
 
                         // only slice parent has slice name
@@ -1439,8 +1459,10 @@ public sealed class FromR2 : IFhirConverter
                     string fiveWs = ((fwMapping != null) && fwMapping.Any()) ? fwMapping[0] : string.Empty;
 
                     FhirElement fhirElement = new FhirElement(
+                        complex,
                         id,
                         path,
+                        basePath,
                         explicitName,
                         null,
                         parent.Elements.Count,
@@ -1575,8 +1597,10 @@ public sealed class FromR2 : IFhirConverter
                 complex.Elements.Add(
                     "Element.fhir_comments",
                     new FhirElement(
+                        complex,
                         "Element.fhir_comments",
                         "Element.fhir_comments",
+                        string.Empty,
                         string.Empty,
                         null,
                         int.MaxValue,
@@ -1693,25 +1717,33 @@ public sealed class FromR2 : IFhirConverter
         }
     }
 
-    /// <summary>Parses resource an object from the given string.</summary>
-    /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
-    /// <param name="json">The JSON.</param>
+    /// <summary>Try to parse a resource object from the given string.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out].</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
     /// <returns>A typed Resource object.</returns>
-    object IFhirConverter.ParseResource(string json)
+    bool IFhirConverter.TryParseResource(string json, out object resource, out string resourceType)
     {
         try
         {
             // try to parse this JSON into a resource object
-            // return JsonConvert.DeserializeObject<fhirModels.Resource>(json, _jsonConverter);
-            // return JsonSerializer.Deserialize<fhirModels.Resource>(json);
-            return System.Text.Json.JsonSerializer.Deserialize<fhirModels.Resource>(
+            fhirModels.Resource parsed = System.Text.Json.JsonSerializer.Deserialize<fhirModels.Resource>(
                 json,
                 fhirSerialization.FhirSerializerOptions.Compact);
+
+            resource = parsed;
+            resourceType = parsed.ResourceType;
+            return true;
         }
         catch (Exception ex)
         {
+            _errors.Add($"Failed to parse resource: {ex.Message}");
+
             Console.WriteLine($"FromR2.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
-            throw;
+
+            resource = null;
+            resourceType = string.Empty;
+            return false;
         }
     }
 
@@ -1895,7 +1927,8 @@ public sealed class FromR2 : IFhirConverter
                             sp.Name,
                             sp.Definition,
                             sp.Type,
-                            sp.Documentation));
+                            sp.Documentation,
+                            string.Empty));
                 }
             }
 
@@ -1914,25 +1947,48 @@ public sealed class FromR2 : IFhirConverter
                         new FhirCapOperation(
                             operation.Name,
                             operation.Definition.ReferenceField,
+                            string.Empty,
                             string.Empty));
                 }
             }
         }
 
+        string standardStatus =
+            caps.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                ?.FirstOrDefault()?.ValueCode;
+
+        int? fmmLevel =
+            caps.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                ?.FirstOrDefault()?.ValueInteger;
+
         capabilityStatement = new FhirCapabiltyStatement(
             serverInteractions,
+            null,
             capId,
             capUrl,
             caps.Name,
             caps.Name,
+            caps.Version,
+            caps.Status,
+            standardStatus,
+            fmmLevel,
+            caps.Experimental == true,
+            caps.Description,
+            caps.Text?.Div ?? string.Empty,
+            caps.Text?.Status ?? string.Empty,
             caps.FhirVersion,
+            caps.Kind,
             caps.Format,
+            Array.Empty<string>(),
+            Array.Empty<string>(),
             Array.Empty<string>(),
             swName,
             swVersion,
             swReleaseDate,
             impDescription,
             impUrl,
+            null,
+            null,
             null,
             null,
             resourceInteractions,
@@ -2003,13 +2059,17 @@ public sealed class FromR2 : IFhirConverter
                         sp.Name,
                         sp.Definition,
                         sp.Type,
-                        sp.Documentation));
+                        sp.Documentation,
+                        string.Empty));
             }
         }
 
         return new FhirCapResource(
-            interactions,
             resource.Type,
+            string.Empty,
+            interactions,
+            null,
+            null,
             null,
             resource.Versioning,
             resource.ReadHistory,
@@ -2021,9 +2081,12 @@ public sealed class FromR2 : IFhirConverter
             resource.ConditionalDelete,
             null,
             resource.SearchInclude,
+            null,
             resource.SearchRevInclude,
+            null,
             searchParams,
-            operations);
+            operations,
+            Array.Empty<FhirCapSearchParamCombination>());
     }
 
     /// <summary>Gets default value if present.</summary>

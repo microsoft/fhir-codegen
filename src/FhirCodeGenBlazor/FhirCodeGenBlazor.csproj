@@ -10,13 +10,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.28.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.2.0" />
+    <Content Remove="Shared\NavMenu.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Shared\NavMenu.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+    <PackageReference Include="Markdig" Version="0.30.4" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.3.1" />
+    <PackageReference Include="MudBlazor" Version="6.0.17" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\fhirCsR2\fhirCsR2.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\" />
   </ItemGroup>
 
 </Project>

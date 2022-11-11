@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Location", IsResource=true)]
+  [FhirType("Location","http://hl7.org/fhir/StructureDefinition/Location", IsResource=true)]
   public partial class Location : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -234,6 +234,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new PositionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as PositionComponent;
@@ -284,6 +285,33 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "longitude":
+            value = LongitudeElement;
+            return LongitudeElement is not null;
+          case "latitude":
+            value = LatitudeElement;
+            return LatitudeElement is not null;
+          case "altitude":
+            value = AltitudeElement;
+            return AltitudeElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (LongitudeElement is not null) yield return new KeyValuePair<string,object>("longitude",LongitudeElement);
+        if (LatitudeElement is not null) yield return new KeyValuePair<string,object>("latitude",LatitudeElement);
+        if (AltitudeElement is not null) yield return new KeyValuePair<string,object>("altitude",AltitudeElement);
+      }
+
     }
 
     /// <summary>
@@ -303,7 +331,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// active | suspended | inactive
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=100)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=100)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.Location.LocationStatus> StatusElement
     {
@@ -396,7 +425,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// instance | kind
     /// </summary>
-    [FhirElement("mode", InSummary=true, Order=130)]
+    [FhirElement("mode", InSummary=true, IsModifier=true, Order=130)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.Location.LocationMode> ModeElement
     {
@@ -550,6 +580,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Location());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Location;
@@ -634,6 +665,69 @@ namespace Hl7.Fhir.Model
         if (ManagingOrganization != null) yield return new ElementValue("managingOrganization", ManagingOrganization);
         if (PartOf != null) yield return new ElementValue("partOf", PartOf);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "mode":
+          value = ModeElement;
+          return ModeElement is not null;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "telecom":
+          value = Telecom;
+          return Telecom?.Any() == true;
+        case "address":
+          value = Address;
+          return Address is not null;
+        case "physicalType":
+          value = PhysicalType;
+          return PhysicalType is not null;
+        case "position":
+          value = Position;
+          return Position is not null;
+        case "managingOrganization":
+          value = ManagingOrganization;
+          return ManagingOrganization is not null;
+        case "partOf":
+          value = PartOf;
+          return PartOf is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (ModeElement is not null) yield return new KeyValuePair<string,object>("mode",ModeElement);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
+      if (Address is not null) yield return new KeyValuePair<string,object>("address",Address);
+      if (PhysicalType is not null) yield return new KeyValuePair<string,object>("physicalType",PhysicalType);
+      if (Position is not null) yield return new KeyValuePair<string,object>("position",Position);
+      if (ManagingOrganization is not null) yield return new KeyValuePair<string,object>("managingOrganization",ManagingOrganization);
+      if (PartOf is not null) yield return new KeyValuePair<string,object>("partOf",PartOf);
     }
 
   }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Practitioner", IsResource=true)]
+  [FhirType("Practitioner","http://hl7.org/fhir/StructureDefinition/Practitioner", IsResource=true)]
   public partial class Practitioner : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -179,6 +179,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new PractitionerRoleComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as PractitionerRoleComponent;
@@ -239,6 +240,45 @@ namespace Hl7.Fhir.Model
           foreach (var elem in Location) { if (elem != null) yield return new ElementValue("location", elem); }
           foreach (var elem in HealthcareService) { if (elem != null) yield return new ElementValue("healthcareService", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "managingOrganization":
+            value = ManagingOrganization;
+            return ManagingOrganization is not null;
+          case "role":
+            value = Role;
+            return Role is not null;
+          case "specialty":
+            value = Specialty;
+            return Specialty?.Any() == true;
+          case "period":
+            value = Period;
+            return Period is not null;
+          case "location":
+            value = Location;
+            return Location?.Any() == true;
+          case "healthcareService":
+            value = HealthcareService;
+            return HealthcareService?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (ManagingOrganization is not null) yield return new KeyValuePair<string,object>("managingOrganization",ManagingOrganization);
+        if (Role is not null) yield return new KeyValuePair<string,object>("role",Role);
+        if (Specialty?.Any() == true) yield return new KeyValuePair<string,object>("specialty",Specialty);
+        if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
+        if (Location?.Any() == true) yield return new KeyValuePair<string,object>("location",Location);
+        if (HealthcareService?.Any() == true) yield return new KeyValuePair<string,object>("healthcareService",HealthcareService);
       }
 
     }
@@ -334,6 +374,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new QualificationComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as QualificationComponent;
@@ -386,6 +427,37 @@ namespace Hl7.Fhir.Model
           if (Period != null) yield return new ElementValue("period", Period);
           if (Issuer != null) yield return new ElementValue("issuer", Issuer);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "identifier":
+            value = Identifier;
+            return Identifier?.Any() == true;
+          case "code":
+            value = Code;
+            return Code is not null;
+          case "period":
+            value = Period;
+            return Period is not null;
+          case "issuer":
+            value = Issuer;
+            return Issuer is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+        if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+        if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
+        if (Issuer is not null) yield return new KeyValuePair<string,object>("issuer",Issuer);
       }
 
     }
@@ -480,6 +552,7 @@ namespace Hl7.Fhir.Model
     /// male | female | other | unknown
     /// </summary>
     [FhirElement("gender", InSummary=true, Order=140)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.AdministrativeGender> GenderElement
     {
@@ -623,6 +696,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Practitioner());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Practitioner;
@@ -703,6 +777,65 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Qualification) { if (elem != null) yield return new ElementValue("qualification", elem); }
         foreach (var elem in Communication) { if (elem != null) yield return new ElementValue("communication", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "active":
+          value = ActiveElement;
+          return ActiveElement is not null;
+        case "name":
+          value = Name;
+          return Name is not null;
+        case "telecom":
+          value = Telecom;
+          return Telecom?.Any() == true;
+        case "address":
+          value = Address;
+          return Address?.Any() == true;
+        case "gender":
+          value = GenderElement;
+          return GenderElement is not null;
+        case "birthDate":
+          value = BirthDateElement;
+          return BirthDateElement is not null;
+        case "photo":
+          value = Photo;
+          return Photo?.Any() == true;
+        case "practitionerRole":
+          value = PractitionerRole;
+          return PractitionerRole?.Any() == true;
+        case "qualification":
+          value = Qualification;
+          return Qualification?.Any() == true;
+        case "communication":
+          value = Communication;
+          return Communication?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (ActiveElement is not null) yield return new KeyValuePair<string,object>("active",ActiveElement);
+      if (Name is not null) yield return new KeyValuePair<string,object>("name",Name);
+      if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
+      if (Address?.Any() == true) yield return new KeyValuePair<string,object>("address",Address);
+      if (GenderElement is not null) yield return new KeyValuePair<string,object>("gender",GenderElement);
+      if (BirthDateElement is not null) yield return new KeyValuePair<string,object>("birthDate",BirthDateElement);
+      if (Photo?.Any() == true) yield return new KeyValuePair<string,object>("photo",Photo);
+      if (PractitionerRole?.Any() == true) yield return new KeyValuePair<string,object>("practitionerRole",PractitionerRole);
+      if (Qualification?.Any() == true) yield return new KeyValuePair<string,object>("qualification",Qualification);
+      if (Communication?.Any() == true) yield return new KeyValuePair<string,object>("communication",Communication);
     }
 
   }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("MedicinalProductInteraction", IsResource=true)]
+  [FhirType("MedicinalProductInteraction","http://hl7.org/fhir/StructureDefinition/MedicinalProductInteraction", IsResource=true)]
   public partial class MedicinalProductInteraction : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -73,6 +73,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("item", InSummary=true, Order=40, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("MedicinalProduct","Medication","Substance","ObservationDefinition")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.CodeableConcept))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
@@ -103,6 +104,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new InteractantComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as InteractantComponent;
@@ -143,6 +145,25 @@ namespace Hl7.Fhir.Model
           foreach (var item in base.NamedChildren) yield return item;
           if (Item != null) yield return new ElementValue("item", Item);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "item":
+            value = Item;
+            return Item is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Item is not null) yield return new KeyValuePair<string,object>("item",Item);
       }
 
     }
@@ -285,6 +306,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new MedicinalProductInteraction());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as MedicinalProductInteraction;
@@ -349,6 +371,49 @@ namespace Hl7.Fhir.Model
         if (Incidence != null) yield return new ElementValue("incidence", Incidence);
         if (Management != null) yield return new ElementValue("management", Management);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "subject":
+          value = Subject;
+          return Subject?.Any() == true;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "interactant":
+          value = Interactant;
+          return Interactant?.Any() == true;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "effect":
+          value = Effect;
+          return Effect is not null;
+        case "incidence":
+          value = Incidence;
+          return Incidence is not null;
+        case "management":
+          value = Management;
+          return Management is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Subject?.Any() == true) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (Interactant?.Any() == true) yield return new KeyValuePair<string,object>("interactant",Interactant);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Effect is not null) yield return new KeyValuePair<string,object>("effect",Effect);
+      if (Incidence is not null) yield return new KeyValuePair<string,object>("incidence",Incidence);
+      if (Management is not null) yield return new KeyValuePair<string,object>("management",Management);
     }
 
   }

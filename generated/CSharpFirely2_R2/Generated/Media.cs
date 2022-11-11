@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Media", IsResource=true)]
+  [FhirType("Media","http://hl7.org/fhir/StructureDefinition/Media", IsResource=true)]
   public partial class Media : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -87,6 +87,7 @@ namespace Hl7.Fhir.Model
     /// photo | video | audio
     /// </summary>
     [FhirElement("type", InSummary=true, Order=90)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.Media.DigitalMediaType> TypeElement
@@ -384,6 +385,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Media());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Media;
@@ -468,6 +470,69 @@ namespace Hl7.Fhir.Model
         if (DurationElement != null) yield return new ElementValue("duration", DurationElement);
         if (Content != null) yield return new ElementValue("content", Content);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "subtype":
+          value = Subtype;
+          return Subtype is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "operator":
+          value = Operator;
+          return Operator is not null;
+        case "view":
+          value = View;
+          return View is not null;
+        case "deviceName":
+          value = DeviceNameElement;
+          return DeviceNameElement is not null;
+        case "height":
+          value = HeightElement;
+          return HeightElement is not null;
+        case "width":
+          value = WidthElement;
+          return WidthElement is not null;
+        case "frames":
+          value = FramesElement;
+          return FramesElement is not null;
+        case "duration":
+          value = DurationElement;
+          return DurationElement is not null;
+        case "content":
+          value = Content;
+          return Content is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (Subtype is not null) yield return new KeyValuePair<string,object>("subtype",Subtype);
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Operator is not null) yield return new KeyValuePair<string,object>("operator",Operator);
+      if (View is not null) yield return new KeyValuePair<string,object>("view",View);
+      if (DeviceNameElement is not null) yield return new KeyValuePair<string,object>("deviceName",DeviceNameElement);
+      if (HeightElement is not null) yield return new KeyValuePair<string,object>("height",HeightElement);
+      if (WidthElement is not null) yield return new KeyValuePair<string,object>("width",WidthElement);
+      if (FramesElement is not null) yield return new KeyValuePair<string,object>("frames",FramesElement);
+      if (DurationElement is not null) yield return new KeyValuePair<string,object>("duration",DurationElement);
+      if (Content is not null) yield return new KeyValuePair<string,object>("content",Content);
     }
 
   }

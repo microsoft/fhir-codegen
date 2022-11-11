@@ -1251,6 +1251,45 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
     }
 
+    /// <summary>Information about the resolved artifact.</summary>
+    /// <param name="ArtifactClass">  The artifact class.</param>
+    /// <param name="ResolvedPackage">The resolved package.</param>
+    /// <param name="Id">             The identifier.</param>
+    /// <param name="Url">            URL of the resource.</param>
+    /// <param name="Artifact">       The artifact.</param>
+    public readonly record struct ResolvedArtifactRecord(
+        FhirArtifactClassEnum ArtifactClass,
+        string ResolvedPackage,
+        object Artifact);
+
+    /// <summary>Gets the artifacts in this collection.</summary>
+    /// <param name="token">The ID or URL of the artifact.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process the artifacts in this collection.
+    /// </returns>
+    public IEnumerable<ResolvedArtifactRecord> GetArtifacts(string token)
+    {
+        Dictionary<string, ResolvedArtifactRecord> recs = new();
+
+        foreach (FhirArtifactClassEnum ac in Enum.GetValues(typeof(FhirArtifactClassEnum)))
+        {
+            if (TryGetArtifact(token, out object artifact, out FhirArtifactClassEnum resolvedAc, out string resolvedPackage, false, ac))
+            {
+                string key = resolvedPackage + ":" + ac.ToString() + ":" + token;
+
+                if (!recs.ContainsKey(key))
+                {
+                    recs.Add(key, new ResolvedArtifactRecord(
+                        resolvedAc,
+                        resolvedPackage,
+                        artifact));
+                }
+            }
+        }
+
+        return recs.Values;
+    }
+
     /// <summary>Attempts to get artifact.</summary>
     /// <param name="token">             The ID or URL of the artifact.</param>
     /// <param name="artifact">          [out] The artifact.</param>
@@ -2056,6 +2095,68 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         return false;
     }
 
+    /// <summary>Gets inheritance names hash.</summary>
+    /// <param name="key">The key.</param>
+    /// <returns>The inheritance names hash.</returns>
+    public HashSet<string> GetInheritanceNamesHash(string key)
+    {
+        HashSet<string> hs = new();
+
+        if (_complexTypesByName.ContainsKey(key))
+        {
+            FhirComplex c = _complexTypesByName[key];
+
+            hs.Add(c.Name);
+
+            if ((!string.IsNullOrEmpty(c.BaseTypeName)) &&
+                (!c.Name.Equals(c.BaseTypeName, StringComparison.OrdinalIgnoreCase)))
+            {
+                hs.UnionWith(GetInheritanceNamesHash(c.BaseTypeName));
+            }
+        }
+
+        if (_resourcesByName.ContainsKey(key))
+        {
+            FhirComplex c = _resourcesByName[key];
+
+            hs.Add(c.Name);
+
+            if ((!string.IsNullOrEmpty(c.BaseTypeName)) &&
+                (!c.Name.Equals(c.BaseTypeName, StringComparison.OrdinalIgnoreCase)))
+            {
+                hs.UnionWith(GetInheritanceNamesHash(c.BaseTypeName));
+            }
+        }
+
+        if (_profilesByUrl.ContainsKey(key))
+        {
+            FhirComplex c = _profilesByUrl[key];
+
+            hs.Add(c.Name);
+
+            if ((!string.IsNullOrEmpty(c.BaseTypeName)) &&
+                (!c.Name.Equals(c.BaseTypeName, StringComparison.OrdinalIgnoreCase)))
+            {
+                hs.UnionWith(GetInheritanceNamesHash(c.BaseTypeName));
+            }
+        }
+
+        if (_logicalModelsByName.ContainsKey(key))
+        {
+            FhirComplex c = _logicalModelsByName[key];
+
+            hs.Add(c.Name);
+
+            if ((!string.IsNullOrEmpty(c.BaseTypeName)) &&
+                (!c.Name.Equals(c.BaseTypeName, StringComparison.OrdinalIgnoreCase)))
+            {
+                hs.UnionWith(GetInheritanceNamesHash(c.BaseTypeName));
+            }
+        }
+
+        return hs;
+    }
+
     /// <summary>Determine if we should process resource.</summary>
     /// <param name="resourceName">Name of the resource.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
@@ -2069,7 +2170,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             case FhirPackageCommon.FhirPackageTypeEnum.Unknown:
             case FhirPackageCommon.FhirPackageTypeEnum.IG:
             default:
-                return true;
+                return FhirPackageCommon.ShouldProcessResource(resourceName);
         }
     }
 
@@ -2115,9 +2216,9 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <summary>Parses resource an object from the given string.</summary>
     /// <param name="json">The JSON.</param>
     /// <returns>A typed Resource object.</returns>
-    public object ParseResource(string json)
+    public bool TryParseResource(string json, out object resource, out string resourceType)
     {
-        return _fhirConverter.ParseResource(json);
+        return _fhirConverter.TryParseResource(json, out resource, out resourceType);
     }
 
     /// <summary>Attempts to process resource.</summary>

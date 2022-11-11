@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -466,10 +467,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     input = concept.Code;
                 }
 
-                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords);
+                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords).ToPascalCase(true);
                 string codeValue = FhirUtils.SanitizeForValue(concept.Code);
-
-                codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
 
                 string name;
 
@@ -763,7 +762,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.WriteLineIndented($"public {elementType} {elementName} {{ get; set; }}");
 
-                if (RequiresExtension(kvp.Value))
+                if (RequiresExtension(kvp.Value) && (!element.IsSimple))
                 {
                     _writer.WriteLineIndented($"[JsonProperty(\"_{camel}\")]");
 

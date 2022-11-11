@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Attachment")]
+  [FhirType("Attachment","http://hl7.org/fhir/StructureDefinition/Attachment")]
   public partial class Attachment : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -329,6 +329,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Attachment());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Attachment;
@@ -397,6 +398,53 @@ namespace Hl7.Fhir.Model
         if (TitleElement != null) yield return new ElementValue("title", TitleElement);
         if (CreationElement != null) yield return new ElementValue("creation", CreationElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "contentType":
+          value = ContentTypeElement;
+          return ContentTypeElement is not null;
+        case "language":
+          value = LanguageElement;
+          return LanguageElement is not null;
+        case "data":
+          value = DataElement;
+          return DataElement is not null;
+        case "url":
+          value = UrlElement;
+          return UrlElement is not null;
+        case "size":
+          value = SizeElement;
+          return SizeElement is not null;
+        case "hash":
+          value = HashElement;
+          return HashElement is not null;
+        case "title":
+          value = TitleElement;
+          return TitleElement is not null;
+        case "creation":
+          value = CreationElement;
+          return CreationElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (ContentTypeElement is not null) yield return new KeyValuePair<string,object>("contentType",ContentTypeElement);
+      if (LanguageElement is not null) yield return new KeyValuePair<string,object>("language",LanguageElement);
+      if (DataElement is not null) yield return new KeyValuePair<string,object>("data",DataElement);
+      if (UrlElement is not null) yield return new KeyValuePair<string,object>("url",UrlElement);
+      if (SizeElement is not null) yield return new KeyValuePair<string,object>("size",SizeElement);
+      if (HashElement is not null) yield return new KeyValuePair<string,object>("hash",HashElement);
+      if (TitleElement is not null) yield return new KeyValuePair<string,object>("title",TitleElement);
+      if (CreationElement is not null) yield return new KeyValuePair<string,object>("creation",CreationElement);
     }
 
   }

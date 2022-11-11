@@ -1,12 +1,12 @@
 using FhirCodeGenBlazor.Services;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddMudServices();
 builder.Services.AddSingleton<IPackageManagerWebService, PackageManagerWebService>();
 builder.Services.AddSingleton<ISpecManagerWebService, SpecManagerWebService>();
 builder.Services.AddSingleton<ISpecExporterWebService, SpecExporterWebService>();

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("ImagingStudy", IsResource=true)]
+  [FhirType("ImagingStudy","http://hl7.org/fhir/StructureDefinition/ImagingStudy", IsResource=true)]
   public partial class ImagingStudy : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -246,6 +246,7 @@ namespace Hl7.Fhir.Model
       /// ONLINE | OFFLINE | NEARLINE | UNAVAILABLE
       /// </summary>
       [FhirElement("availability", InSummary=true, Order=90)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.ImagingStudy.InstanceAvailability> AvailabilityElement
       {
@@ -404,6 +405,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new SeriesComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as SeriesComponent;
@@ -484,6 +486,65 @@ namespace Hl7.Fhir.Model
           if (StartedElement != null) yield return new ElementValue("started", StartedElement);
           foreach (var elem in Instance) { if (elem != null) yield return new ElementValue("instance", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "number":
+            value = NumberElement;
+            return NumberElement is not null;
+          case "modality":
+            value = Modality;
+            return Modality is not null;
+          case "uid":
+            value = UidElement;
+            return UidElement is not null;
+          case "description":
+            value = DescriptionElement;
+            return DescriptionElement is not null;
+          case "numberOfInstances":
+            value = NumberOfInstancesElement;
+            return NumberOfInstancesElement is not null;
+          case "availability":
+            value = AvailabilityElement;
+            return AvailabilityElement is not null;
+          case "url":
+            value = UrlElement;
+            return UrlElement is not null;
+          case "bodySite":
+            value = BodySite;
+            return BodySite is not null;
+          case "laterality":
+            value = Laterality;
+            return Laterality is not null;
+          case "started":
+            value = StartedElement;
+            return StartedElement is not null;
+          case "instance":
+            value = Instance;
+            return Instance?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (NumberElement is not null) yield return new KeyValuePair<string,object>("number",NumberElement);
+        if (Modality is not null) yield return new KeyValuePair<string,object>("modality",Modality);
+        if (UidElement is not null) yield return new KeyValuePair<string,object>("uid",UidElement);
+        if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+        if (NumberOfInstancesElement is not null) yield return new KeyValuePair<string,object>("numberOfInstances",NumberOfInstancesElement);
+        if (AvailabilityElement is not null) yield return new KeyValuePair<string,object>("availability",AvailabilityElement);
+        if (UrlElement is not null) yield return new KeyValuePair<string,object>("url",UrlElement);
+        if (BodySite is not null) yield return new KeyValuePair<string,object>("bodySite",BodySite);
+        if (Laterality is not null) yield return new KeyValuePair<string,object>("laterality",Laterality);
+        if (StartedElement is not null) yield return new KeyValuePair<string,object>("started",StartedElement);
+        if (Instance?.Any() == true) yield return new KeyValuePair<string,object>("instance",Instance);
       }
 
     }
@@ -696,6 +757,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new InstanceComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as InstanceComponent;
@@ -756,6 +818,45 @@ namespace Hl7.Fhir.Model
           if (TitleElement != null) yield return new ElementValue("title", TitleElement);
           foreach (var elem in Content) { if (elem != null) yield return new ElementValue("content", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "number":
+            value = NumberElement;
+            return NumberElement is not null;
+          case "uid":
+            value = UidElement;
+            return UidElement is not null;
+          case "sopClass":
+            value = SopClassElement;
+            return SopClassElement is not null;
+          case "type":
+            value = TypeElement;
+            return TypeElement is not null;
+          case "title":
+            value = TitleElement;
+            return TitleElement is not null;
+          case "content":
+            value = Content;
+            return Content?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (NumberElement is not null) yield return new KeyValuePair<string,object>("number",NumberElement);
+        if (UidElement is not null) yield return new KeyValuePair<string,object>("uid",UidElement);
+        if (SopClassElement is not null) yield return new KeyValuePair<string,object>("sopClass",SopClassElement);
+        if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+        if (TitleElement is not null) yield return new KeyValuePair<string,object>("title",TitleElement);
+        if (Content?.Any() == true) yield return new KeyValuePair<string,object>("content",Content);
       }
 
     }
@@ -915,6 +1016,7 @@ namespace Hl7.Fhir.Model
     /// ONLINE | OFFLINE | NEARLINE | UNAVAILABLE (0008,0056)
     /// </summary>
     [FhirElement("availability", InSummary=true, Order=170)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.ImagingStudy.InstanceAvailability> AvailabilityElement
     {
@@ -1147,6 +1249,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new ImagingStudy());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as ImagingStudy;
@@ -1247,6 +1350,85 @@ namespace Hl7.Fhir.Model
         if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
         foreach (var elem in Series) { if (elem != null) yield return new ElementValue("series", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "started":
+          value = StartedElement;
+          return StartedElement is not null;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "uid":
+          value = UidElement;
+          return UidElement is not null;
+        case "accession":
+          value = Accession;
+          return Accession is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "order":
+          value = Order;
+          return Order?.Any() == true;
+        case "modalityList":
+          value = ModalityList;
+          return ModalityList?.Any() == true;
+        case "referrer":
+          value = Referrer;
+          return Referrer is not null;
+        case "availability":
+          value = AvailabilityElement;
+          return AvailabilityElement is not null;
+        case "url":
+          value = UrlElement;
+          return UrlElement is not null;
+        case "numberOfSeries":
+          value = NumberOfSeriesElement;
+          return NumberOfSeriesElement is not null;
+        case "numberOfInstances":
+          value = NumberOfInstancesElement;
+          return NumberOfInstancesElement is not null;
+        case "procedure":
+          value = Procedure;
+          return Procedure?.Any() == true;
+        case "interpreter":
+          value = Interpreter;
+          return Interpreter is not null;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "series":
+          value = Series;
+          return Series?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (StartedElement is not null) yield return new KeyValuePair<string,object>("started",StartedElement);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (UidElement is not null) yield return new KeyValuePair<string,object>("uid",UidElement);
+      if (Accession is not null) yield return new KeyValuePair<string,object>("accession",Accession);
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Order?.Any() == true) yield return new KeyValuePair<string,object>("order",Order);
+      if (ModalityList?.Any() == true) yield return new KeyValuePair<string,object>("modalityList",ModalityList);
+      if (Referrer is not null) yield return new KeyValuePair<string,object>("referrer",Referrer);
+      if (AvailabilityElement is not null) yield return new KeyValuePair<string,object>("availability",AvailabilityElement);
+      if (UrlElement is not null) yield return new KeyValuePair<string,object>("url",UrlElement);
+      if (NumberOfSeriesElement is not null) yield return new KeyValuePair<string,object>("numberOfSeries",NumberOfSeriesElement);
+      if (NumberOfInstancesElement is not null) yield return new KeyValuePair<string,object>("numberOfInstances",NumberOfInstancesElement);
+      if (Procedure?.Any() == true) yield return new KeyValuePair<string,object>("procedure",Procedure);
+      if (Interpreter is not null) yield return new KeyValuePair<string,object>("interpreter",Interpreter);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (Series?.Any() == true) yield return new KeyValuePair<string,object>("series",Series);
     }
 
   }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Specimen", IsResource=true)]
+  [FhirType("Specimen","http://hl7.org/fhir/StructureDefinition/Specimen", IsResource=true)]
   public partial class Specimen : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -227,6 +227,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new CollectionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as CollectionComponent;
@@ -287,6 +288,45 @@ namespace Hl7.Fhir.Model
           if (Method != null) yield return new ElementValue("method", Method);
           if (BodySite != null) yield return new ElementValue("bodySite", BodySite);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "collector":
+            value = Collector;
+            return Collector is not null;
+          case "comment":
+            value = CommentElement;
+            return CommentElement?.Any() == true;
+          case "collected":
+            value = Collected;
+            return Collected is not null;
+          case "quantity":
+            value = Quantity;
+            return Quantity is not null;
+          case "method":
+            value = Method;
+            return Method is not null;
+          case "bodySite":
+            value = BodySite;
+            return BodySite is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Collector is not null) yield return new KeyValuePair<string,object>("collector",Collector);
+        if (CommentElement?.Any() == true) yield return new KeyValuePair<string,object>("comment",CommentElement);
+        if (Collected is not null) yield return new KeyValuePair<string,object>("collected",Collected);
+        if (Quantity is not null) yield return new KeyValuePair<string,object>("quantity",Quantity);
+        if (Method is not null) yield return new KeyValuePair<string,object>("method",Method);
+        if (BodySite is not null) yield return new KeyValuePair<string,object>("bodySite",BodySite);
       }
 
     }
@@ -385,6 +425,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new TreatmentComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as TreatmentComponent;
@@ -433,6 +474,33 @@ namespace Hl7.Fhir.Model
           if (Procedure != null) yield return new ElementValue("procedure", Procedure);
           foreach (var elem in Additive) { if (elem != null) yield return new ElementValue("additive", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "description":
+            value = DescriptionElement;
+            return DescriptionElement is not null;
+          case "procedure":
+            value = Procedure;
+            return Procedure is not null;
+          case "additive":
+            value = Additive;
+            return Additive?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+        if (Procedure is not null) yield return new KeyValuePair<string,object>("procedure",Procedure);
+        if (Additive?.Any() == true) yield return new KeyValuePair<string,object>("additive",Additive);
       }
 
     }
@@ -539,6 +607,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("additive", Order=90, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("Substance")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
       [DataMember]
       public Hl7.Fhir.Model.DataType Additive
@@ -573,6 +642,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ContainerComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ContainerComponent;
@@ -635,6 +705,45 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "identifier":
+            value = Identifier;
+            return Identifier?.Any() == true;
+          case "description":
+            value = DescriptionElement;
+            return DescriptionElement is not null;
+          case "type":
+            value = Type;
+            return Type is not null;
+          case "capacity":
+            value = Capacity;
+            return Capacity is not null;
+          case "specimenQuantity":
+            value = SpecimenQuantity;
+            return SpecimenQuantity is not null;
+          case "additive":
+            value = Additive;
+            return Additive is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+        if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+        if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+        if (Capacity is not null) yield return new KeyValuePair<string,object>("capacity",Capacity);
+        if (SpecimenQuantity is not null) yield return new KeyValuePair<string,object>("specimenQuantity",SpecimenQuantity);
+        if (Additive is not null) yield return new KeyValuePair<string,object>("additive",Additive);
+      }
+
     }
 
     /// <summary>
@@ -654,7 +763,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// available | unavailable | unsatisfactory | entered-in-error
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=100)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=100)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.Specimen.SpecimenStatus> StatusElement
     {
@@ -840,6 +950,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Specimen());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Specimen;
@@ -916,6 +1027,61 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Treatment) { if (elem != null) yield return new ElementValue("treatment", elem); }
         foreach (var elem in Container) { if (elem != null) yield return new ElementValue("container", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "parent":
+          value = Parent;
+          return Parent?.Any() == true;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "accessionIdentifier":
+          value = AccessionIdentifier;
+          return AccessionIdentifier is not null;
+        case "receivedTime":
+          value = ReceivedTimeElement;
+          return ReceivedTimeElement is not null;
+        case "collection":
+          value = Collection;
+          return Collection is not null;
+        case "treatment":
+          value = Treatment;
+          return Treatment?.Any() == true;
+        case "container":
+          value = Container;
+          return Container?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Parent?.Any() == true) yield return new KeyValuePair<string,object>("parent",Parent);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (AccessionIdentifier is not null) yield return new KeyValuePair<string,object>("accessionIdentifier",AccessionIdentifier);
+      if (ReceivedTimeElement is not null) yield return new KeyValuePair<string,object>("receivedTime",ReceivedTimeElement);
+      if (Collection is not null) yield return new KeyValuePair<string,object>("collection",Collection);
+      if (Treatment?.Any() == true) yield return new KeyValuePair<string,object>("treatment",Treatment);
+      if (Container?.Any() == true) yield return new KeyValuePair<string,object>("container",Container);
     }
 
   }

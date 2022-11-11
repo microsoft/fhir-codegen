@@ -3,147 +3,152 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A FHIR server.</summary>
-public class FhirCapabiltyStatement : ICloneable
+public class FhirCapabiltyStatement : FhirModelBase, ICloneable
 {
-    private readonly List<SystemRestfulInteraction> _serverInteractions;
+    /// <summary>Values that represent conformance expectation codes.</summary>
+    public enum ExpectationCodes
+    {
+        /// <summary>An enum constant representing the may option.</summary>
+        [FhirLiteral("MAY")]
+        MAY,
+
+        /// <summary>An enum constant representing the should option.</summary>
+        [FhirLiteral("SHOULD")]
+        SHOULD,
+
+        /// <summary>An enum constant representing the shall option.</summary>
+        [FhirLiteral("SHALL")]
+        SHALL,
+
+        /// <summary>No conformance expectation has been specified.</summary>
+        NotSpecified,
+    }
+
+    /// <summary>A value with a conformance expectation.</summary>
+    /// <param name="Value">             The value.</param>
+    /// <param name="ExpectationLiteral">The expectation literal.</param>
+    /// <param name="ExpectationCode">   The expectation code.</param>
+    public record ValWithExpectation<T>(T Value, string ExpectationLiteral, ExpectationCodes ExpectationCode);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirCapabiltyStatement"/> class.
     /// </summary>
     /// <param name="serverInteractions">       The server interaction flags.</param>
+    /// <param name="serverInteractionExpectations">Conformance expectations for server interactions.</param>
     /// <param name="id">                       The identifier.</param>
     /// <param name="url">                      FHIR Base URL for the server.</param>
     /// <param name="name">                     The name.</param>
     /// <param name="title">                    The title.</param>
     /// <param name="fhirVersion">              The server-reported FHIR version.</param>
-    /// <param name="fhirMimeTypes">            List of types of the FHIR mimes.</param>
-    /// <param name="patchMimeTypes">           A list of types of the FHIR patch mimes.</param>
+    /// <param name="fhirMimeTypes">            List of supported FHIR MIME types.</param>
+    /// <param name="fhirMimeTypeExpectations"> List of conformance expectations for FHIR MIME types.</param>
+    /// <param name="patchMimeTypes">           List of supported patch MIME types.</param>
+    /// <param name="patchMimeTypeExpectations">List of conformance expectations for patch MIME types.</param>
     /// <param name="softwareName">             The FHIR Server software name.</param>
     /// <param name="softwareVersion">          The FHIR Server software version.</param>
     /// <param name="softwareReleaseDate">      The FHIR Server software release date.</param>
     /// <param name="implementationDescription">Information describing the implementation.</param>
     /// <param name="implementationUrl">        URL of the implementation.</param>
-    /// <param name="instantiates">             Canonical URL of another capability statement this
-    ///  implements.</param>
+    /// <param name="instantiates">             Canonical URL of another capability statement this CS implements.</param>
+    /// <param name="instantiateExpectations">  Conformance expectations for supported capability statements,.</param>
     /// <param name="implementationGuides">     Implementation guides supported.</param>
+    /// <param name="implementationGuideExpectations">Implementation guide conformance expectations.</param>
     /// <param name="resourceInteractions">     The server interactions by resource.</param>
     /// <param name="serverSearchParameters">   The search parameters for searching all resources.</param>
     /// <param name="serverOperations">         The operations defined at the system level operation.</param>
     public FhirCapabiltyStatement(
         List<string> serverInteractions,
+        List<string> serverInteractionExpectations,
         string id,
         string url,
         string name,
         string title,
+        string version,
+        string publicationStatus,
+        string standardStatus,
+        int? fmmLevel,
+        bool isExperimental,
+        string description,
+        string narrative,
+        string narrativeStatus,
         string fhirVersion,
+        string capabilityStatementKind,
         IEnumerable<string> fhirMimeTypes,
+        IEnumerable<string> fhirMimeTypeExpectations,
         IEnumerable<string> patchMimeTypes,
+        IEnumerable<string> patchMimeTypeExpectations,
         string softwareName,
         string softwareVersion,
         string softwareReleaseDate,
         string implementationDescription,
         string implementationUrl,
         IEnumerable<string> instantiates,
+        IEnumerable<string> instantiateExpectations,
         IEnumerable<string> implementationGuides,
+        IEnumerable<string> implementationGuideExpectations,
         Dictionary<string, FhirCapResource> resourceInteractions,
         Dictionary<string, FhirCapSearchParam> serverSearchParameters,
         Dictionary<string, FhirCapOperation> serverOperations)
+        : base(
+            FhirArtifactClassEnum.CapabilityStatement,
+            id,
+            name,
+            string.Empty,
+            string.Empty,
+            string.Empty,
+            version,
+            string.IsNullOrEmpty(url) ? null : new Uri(url),
+            publicationStatus,
+            standardStatus,
+            fmmLevel,
+            isExperimental,
+            title,
+            description,
+            string.Empty,
+            string.Empty,
+            narrative,
+            narrativeStatus,
+            fhirVersion)
     {
-        Id = id;
-        Url = url;
-        Name = name;
-        Title = title;
-        FhirVersion = fhirVersion;
-        FhirMimeTypes = fhirMimeTypes?.ToArray() ?? Array.Empty<string>();
-        PatchMimeTypes = patchMimeTypes?.ToArray() ?? Array.Empty<string>();
+        FhirMimeTypes = fhirMimeTypes ?? Array.Empty<string>();
+        FhirMimeTypesEx = ProcessExpectationEnumerables(FhirMimeTypes, fhirMimeTypeExpectations);
+ 
+        PatchMimeTypes = patchMimeTypes ?? Array.Empty<string>();
+        PatchMimeTypesEx = ProcessExpectationEnumerables(PatchMimeTypes, patchMimeTypeExpectations);
+
         SoftwareName = softwareName;
         SoftwareVersion = softwareVersion;
         SoftwareReleaseDate = softwareReleaseDate;
         ImplementationDescription = implementationDescription;
         ImplementationUrl = implementationUrl;
-        Instantiates = instantiates;
+
+        Instantiates = instantiates ?? Array.Empty<string>();
+        InstantiatesEx = ProcessExpectationEnumerables(Instantiates, instantiateExpectations);
+
         ImplementationGuides = implementationGuides;
+        ImplementationGuidesEx = ProcessExpectationEnumerables(ImplementationGuides, implementationGuideExpectations);
+
         ResourceInteractions = resourceInteractions;
         ServerSearchParameters = serverSearchParameters;
         ServerOperations = serverOperations;
 
-        _serverInteractions = new List<SystemRestfulInteraction>();
-
-        if (serverInteractions != null)
+        if ((serverInteractions != null) &&
+            serverInteractions.TryFhirEnum(out IEnumerable<SystemRestfulInteraction> si))
         {
-            foreach (string interaction in serverInteractions)
-            {
-                _serverInteractions.Add(interaction.ToFhirEnum<SystemRestfulInteraction>());
-            }
+            ServerInteractions = si;
         }
-    }
+        else
+        {
+            ServerInteractions = Array.Empty<SystemRestfulInteraction>();
+        }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirCapabiltyStatement"/> class.
-    /// </summary>
-    /// <param name="serverInteractions">       The server interaction flags.</param>
-    /// <param name="id">                       The identifier.</param>
-    /// <param name="url">                      FHIR Base URL for the server.</param>
-    /// <param name="name">                     The name.</param>
-    /// <param name="title">                    The title.</param>
-    /// <param name="fhirVersion">              The server-reported FHIR version.</param>
-    /// <param name="fhirMimeTypes">            List of types of the FHIR mimes.</param>
-    /// <param name="patchMimeTypes">           A list of types of the FHIR patch mimes.</param>
-    /// <param name="softwareName">             The FHIR Server software name.</param>
-    /// <param name="softwareVersion">          The FHIR Server software version.</param>
-    /// <param name="softwareReleaseDate">      The FHIR Server software release date.</param>
-    /// <param name="implementationDescription">Information describing the implementation.</param>
-    /// <param name="implementationUrl">        URL of the implementation.</param>
-    /// <param name="instantiates">             Canonical URL of another capability statement this
-    ///  implements.</param>
-    /// <param name="implementationGuides">     Implementation guides supported.</param>
-    /// <param name="resourceInteractions">     The server interactions by resource.</param>
-    /// <param name="serverSearchParameters">   The search parameters for searching all resources.</param>
-    /// <param name="serverOperations">         The operations defined at the system level operation.</param>
-    public FhirCapabiltyStatement(
-        List<SystemRestfulInteraction> serverInteractions,
-        string id,
-        string url,
-        string name,
-        string title,
-        string fhirVersion,
-        IEnumerable<string> fhirMimeTypes,
-        IEnumerable<string> patchMimeTypes,
-        string softwareName,
-        string softwareVersion,
-        string softwareReleaseDate,
-        string implementationDescription,
-        string implementationUrl,
-        IEnumerable<string> instantiates,
-        IEnumerable<string> implementationGuides,
-        Dictionary<string, FhirCapResource> resourceInteractions,
-        Dictionary<string, FhirCapSearchParam> serverSearchParameters,
-        Dictionary<string, FhirCapOperation> serverOperations)
-    {
-        Id = id;
-        Url = url;
-        Name = name;
-        Title = title;
-        FhirVersion = fhirVersion;
-        FhirMimeTypes = fhirMimeTypes?.ToArray() ?? Array.Empty<string>();
-        PatchMimeTypes = patchMimeTypes?.ToArray() ?? Array.Empty<string>();
-        SoftwareName = softwareName;
-        SoftwareVersion = softwareVersion;
-        SoftwareReleaseDate = softwareReleaseDate;
-        ImplementationDescription = implementationDescription;
-        ImplementationUrl = implementationUrl;
-        Instantiates = instantiates;
-        ImplementationGuides = implementationGuides;
-        ResourceInteractions = resourceInteractions;
-        ServerSearchParameters = serverSearchParameters;
-        ServerOperations = serverOperations;
-
-        _serverInteractions = serverInteractions;
+        ServerInteractionsEx = ProcessExpectationEnumerables(ServerInteractions, serverInteractionExpectations);
     }
 
     /// <summary>
@@ -152,57 +157,50 @@ public class FhirCapabiltyStatement : ICloneable
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
     /// <param name="source">Source for the.</param>
     public FhirCapabiltyStatement(FhirCapabiltyStatement source)
+        : base (source)
     {
         if (source == null)
         {
             throw new ArgumentNullException(nameof(source));
         }
 
-        Id = source.Id;
-        Url = source.Url;
-        Name = source.Name;
-        Title = source.Title;
-        FhirVersion = source.FhirVersion;
-        FhirMimeTypes = source.FhirMimeTypes?.ToArray() ?? Array.Empty<string>();
-        PatchMimeTypes = source.PatchMimeTypes?.ToArray() ?? Array.Empty<string>();
+        FhirMimeTypes = source.FhirMimeTypes.Select(s => s);
+        FhirMimeTypesEx = source.FhirMimeTypesEx.Select(r => r with { });
+        PatchMimeTypes = source.PatchMimeTypes.Select(s => s);
+        PatchMimeTypesEx = source.PatchMimeTypesEx.Select(r => r with { });
         SoftwareName = source.SoftwareName;
         SoftwareVersion = source.SoftwareVersion;
         SoftwareReleaseDate = source.SoftwareReleaseDate;
         ImplementationDescription = source.ImplementationDescription;
         ImplementationUrl = source.ImplementationUrl;
 
-        Instantiates = source.Instantiates?.ToArray();
-        ImplementationGuides = source.ImplementationGuides?.ToArray();
+        Instantiates = source.Instantiates.Select(s => s);
+        InstantiatesEx = source.InstantiatesEx.Select(r => r with { });
+        ImplementationGuides = source.ImplementationGuides.Select(s => s);
+        ImplementationGuidesEx = source.ImplementationGuidesEx.Select(r => r with { });
 
         Dictionary<string, FhirCapResource> resourceInteractions = new Dictionary<string, FhirCapResource>();
-
         foreach (KeyValuePair<string, FhirCapResource> kvp in source.ResourceInteractions)
         {
-            //if (!info.Resources.ContainsKey(kvp.Key))
-            //{
-            //    continue;
-            //}
-
             resourceInteractions.Add(kvp.Key, (FhirCapResource)kvp.Value.Clone());
         }
+        ResourceInteractions = resourceInteractions;
 
-        _serverInteractions = new List<SystemRestfulInteraction>();
-        source.ServerInteractions.ForEach(i => _serverInteractions.Add(i));
+        ServerInteractions = source.ServerInteractions.Select(e => e);
+        ServerInteractionsEx = source.ServerInteractionsEx.Select(r => r with { });
 
         Dictionary<string, FhirCapSearchParam> serverSearchParameters = new Dictionary<string, FhirCapSearchParam>();
         foreach (KeyValuePair<string, FhirCapSearchParam> kvp in source.ServerSearchParameters)
         {
-            serverSearchParameters.Add(kvp.Key, (FhirCapSearchParam)kvp.Value.Clone());
+            serverSearchParameters.Add(kvp.Key, new(kvp.Value));
         }
+        ServerSearchParameters = serverSearchParameters;
 
         Dictionary<string, FhirCapOperation> serverOperations = new Dictionary<string, FhirCapOperation>();
         foreach (KeyValuePair<string, FhirCapOperation> kvp in source.ServerOperations)
         {
-            serverOperations.Add(kvp.Key, (FhirCapOperation)kvp.Value.Clone());
+            serverOperations.Add(kvp.Key, new(kvp.Value));
         }
-
-        ResourceInteractions = resourceInteractions;
-        ServerSearchParameters = serverSearchParameters;
         ServerOperations = serverOperations;
     }
 
@@ -226,26 +224,17 @@ public class FhirCapabiltyStatement : ICloneable
         HistorySystem,
     }
 
-    /// <summary>Gets the identifier.</summary>
-    public string Id { get; }
-
-    /// <summary>Gets FHIR Base URL for the server.</summary>
-    public string Url { get; }
-
-    /// <summary>Gets the name.</summary>
-    public string Name { get; }
-
-    /// <summary>Gets the title.</summary>
-    public string Title { get; }
-
-    /// <summary>Gets the listed FHIR version.</summary>
-    public string FhirVersion { get; }
-
-    /// <summary>Gets a list of types of the FHIR mimes.</summary>
+    /// <summary>Gets the FHIR MIME types.</summary>
     public IEnumerable<string> FhirMimeTypes { get; }
 
-    /// <summary>Gets a list of types of the FHIR patch mimes.</summary>
+    /// <summary>Gets the FHIR MIME types, with conformance expectations.</summary>
+    public IEnumerable<ValWithExpectation<string>> FhirMimeTypesEx { get; }
+
+    /// <summary>Gets the patch MIME types.</summary>
     public IEnumerable<string> PatchMimeTypes { get; }
+
+    /// <summary>Gets the patch MIME types, with conformance expectations.</summary>
+    public IEnumerable<ValWithExpectation<string>> PatchMimeTypesEx { get; }
 
     /// <summary>Gets the FHIR Server software name.</summary>
     public string SoftwareName { get; }
@@ -265,14 +254,23 @@ public class FhirCapabiltyStatement : ICloneable
     /// <summary>Gets the Canonical URLs of other capability statement this implements.</summary>
     public IEnumerable<string> Instantiates { get; }
 
+    /// <summary>Gets the instantiate information, with conformation expectations.</summary>
+    public IEnumerable<ValWithExpectation<string>> InstantiatesEx { get; }
+
     /// <summary>Gets the Implementation guides supported.</summary>
     public IEnumerable<string> ImplementationGuides { get; }
+
+    /// <summary>Gets the implementation guides supported, with conformance expectations.</summary>
+    public IEnumerable<ValWithExpectation<string>> ImplementationGuidesEx { get; }
 
     /// <summary>Gets the server interactions by resource.</summary>
     public Dictionary<string, FhirCapResource> ResourceInteractions { get; }
 
     /// <summary>Gets the server interactions.</summary>
-    public List<SystemRestfulInteraction> ServerInteractions => _serverInteractions;
+    public IEnumerable<SystemRestfulInteraction> ServerInteractions { get; }
+
+    /// <summary>Gets the server interactions, with conformance expectations.</summary>
+    public IEnumerable<ValWithExpectation<SystemRestfulInteraction>> ServerInteractionsEx { get; }
 
     /// <summary>Gets the search parameters for searching all resources.</summary>
     public Dictionary<string, FhirCapSearchParam> ServerSearchParameters { get; }
@@ -425,5 +423,42 @@ public class FhirCapabiltyStatement : ICloneable
         }
 
         return false;
+    }
+
+
+    /// <summary>Process the expectation enumerables.</summary>
+    /// <param name="requiredLength">     Length of the required.</param>
+    /// <param name="source">             Source for the.</param>
+    /// <param name="expectationLiterals">[out] The expectation literals.</param>
+    /// <param name="expectations">       [out] The expectations.</param>
+    public static IEnumerable<ValWithExpectation<T>> ProcessExpectationEnumerables<T>(
+        IEnumerable<T> sourceValues,
+        IEnumerable<string> sourceExpectations)
+    {
+        if (!(sourceValues?.Any() ?? false))
+        {
+            return Array.Empty<ValWithExpectation<T>>();
+        }
+
+        List<ValWithExpectation<T>> expectList = new();
+
+        using (IEnumerator<string> sourceExE = (sourceExpectations ?? Array.Empty<string>()).GetEnumerator())
+        {
+            foreach (T val in sourceValues)
+            {
+                string lit = sourceExE.MoveNext() ? sourceExE.Current : string.Empty;
+
+                if (lit.TryFhirEnum(out ExpectationCodes code))
+                {
+                    expectList.Add(new(val, lit, code));
+                }
+                else
+                {
+                    expectList.Add(new(val, lit, ExpectationCodes.NotSpecified));
+                }
+            }
+        }
+
+        return expectList.ToArray();
     }
 }

@@ -21,187 +21,199 @@ else if (info.ArtifactRecordsByClass.Any())
 {
     <PageTitle>@directive</PageTitle>
 
-    <ul>
-        <li>
-            Package Details<button class="btn" type="button" @onclick="() => showPackageDetails = !showPackageDetails"><span class="@GetCaretClass(showPackageDetails)"></span></button>
+    <MudExpansionPanels MultiExpansion="true">
+        <MudExpansionPanel Text="Package Details">
+            <MudSimpleTable>
+                <thead>
+                    <tr class="row justify-content-start">
+                        <th class="col-2">Property</th>
+                        <th class="col-4">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row justify-content-start">
+                        <td class="col-2">Package Name</td>
+                        <td class="col-4">@info.PackageName</td>
+                    </tr>
+                    <tr class="row justify-content-start">
+                        <td class="col-2">Version</td>
+                        <td class="col-4">@info.VersionString</td>
+                    </tr>
+                    <tr class="row justify-content-start">
+                        <td class="col-2">FHIR Release</td>
+                        <td class="col-4">@info.FhirSequence</td>
+                    </tr>
 
-            @if (showPackageDetails == true)
-            {
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr class="row justify-content-start">
-                            <th class="col-2">Property</th>
-                            <th class="col-4">Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="row justify-content-start">
-                            <td class="col-2">Package Name</td>
-                            <td class="col-4">@info.PackageName</td>
-                        </tr>
-                        <tr class="row justify-content-start">
-                            <td class="col-2">Version</td>
-                            <td class="col-4">@info.VersionString</td>
-                        </tr>
-                        <tr class="row justify-content-start">
-                            <td class="col-2">FHIR Release</td>
-                            <td class="col-4">@info.FhirSequence</td>
-                        </tr>
-
-                        @if (info.PackageDetails != null)
+                    @if (info.PackageDetails != null)
+                    {
+                        @if (info.PackageDetails.FhirVersions != null)
                         {
-                            @if (info.PackageDetails.FhirVersions != null)
-                            {
-                                <tr class="row justify-content-start">
-                                    <td class="col-2">FHIR Versions</td>
-                                    <td class="col-4">@string.Join(", ", info.PackageDetails.FhirVersions)</td>
-                                </tr>
-                            }
-
-                            @if (info.PackageDetails.Dependencies != null)
-                            {
-                                <tr class="row justify-content-start">
-                                    <td class="col-2">Dependencies</td>
-                                    <td class="col-4">@string.Join(", ", info.PackageDetails.Dependencies.Select(kvp => $"{kvp.Key}#{kvp.Value}"))</td>
-                                </tr>
-                            }
-                        }
-                    </tbody>
-                </table>
-            }
-        </li>
-
-        <li>
-            Package Contents<button class="btn" type="button" @onclick="() => showPackageContents = !showPackageContents"><span class="@GetCaretClass(showPackageContents)"></span></button>
-            @if (showPackageContents == true)
-            {
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr class="row justify-content-start">
-                            <th class="col-2">Artifact Type</th>
-                            <th class="col-1">Count</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (FhirArtifactClassEnum classEnum in info.ArtifactRecordsByClass.Keys.OrderBy(e => e.ToString()))
-                        {
-                            @if (!@info.ArtifactRecordsByClass[classEnum].Any())
-                            {
-                                continue;
-                            }
-
                             <tr class="row justify-content-start">
-                                <td class="col-2">@classEnum.ToString()</td>
-                                <td class="col-1">@info.ArtifactRecordsByClass[classEnum].Count()</td>
+                                <td class="col-2">FHIR Versions</td>
+                                <td class="col-4">@string.Join(", ", info.PackageDetails.FhirVersions)</td>
                             </tr>
                         }
-                    </tbody>
-                </table>
-            }
-        </li>
 
-        <li>
-            Export Configuration<button class="btn" type="button" @onclick="() => showLanguageDetails = !showLanguageDetails"><span class="@GetCaretClass(showLanguageDetails)"></span></button>
-
-            @if (showLanguageDetails == true)
-            {
-                <select class="form-select" aria-label="Select Language" @bind="selectedLanguage">
-                    <option selected value="">Select a language</option>
-                    @foreach (string name in ExportService.GetExportLanguages().Keys)
-                    {
-                        <option value="@name">@name</option>
-                    }
-                </select>
-
-                @if ((language != null) && (exporterOptions != null))
-                {
-                    <p class="fw-bold mt-2">Optional Artifact Types to Export:</p>
-                    @foreach (ExporterOptions.FhirExportClassType optionalExportType in language.OptionalExportClassTypes)
-                    {
-                        <button type="button"
-                            class="@GetButtonClass(optionalExportType)"
-                            @onclick="() => ToggleOptional(optionalExportType)">
-                            @optionalExportType
-                        </button>
-                    }
-
-                    <p class="fw-bold mt-2">Export Options:</p>
-                    <div class="row g-3 align-items-center mb-2">
-                        <div class="col-1 text-end">
-                            <label for="exportDirectoryPath" class="form-label">Export Path</label>
-                        </div>
-                        <div class="col-2">
-                            <input type="text" id="exportDirectoryPath" class="form-control" @bind="exportDirectoryPath">
-                        </div>
-                        <div class="col-auto">
-                            <span class="form-text">Server-based path to write export output</span>
-                        </div>
-                    </div>
-
-                    <div class="row g-3 align-items-center mb-2">
-                        <div class="col-1 text-end">
-                            <label for="extensionSupportLevel" class="form-label">Extension Support Level</label>
-                        </div>
-                        <div class="col-2">
-                            <select class="form-select" aria-label="Extension Support Level" @bind="extensionSupport">
-                                @foreach (ExporterOptions.ExtensionSupportLevel value in Enum.GetValues(typeof(ExporterOptions.ExtensionSupportLevel)))
-                                {
-                                    <option value="@value">@value</option>
-                                }
-                            </select>
-                        </div>
-                        <div class="col-auto">
-                            <span class="form-text">If supported by this language, where extensions should be included.</span>
-                        </div>
-                    </div>
-
-                    @if ((language.LanguageOptions != null) && (language.LanguageOptions.Any()))
-                    {
-                        <div class="row g-3 mb-2">
-                            <div class="col-1 text-end">
-                                <label for="switchIncludeExperimental" class="form-label">Draft/Expiermental</label>
-                            </div>
-                            <div class="col-2 form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchIncludeExperimental" @bind="includeExperimental" />
-                            </div>
-                            <div class="col-auto">
-                                <span class="form-text">If export should include draft and experimental artifacts.</span>
-                            </div>
-                        </div>
-
-                        @foreach ((string option, string description) in language.LanguageOptions)
+                        @if (info.PackageDetails.Dependencies != null)
                         {
-                            <div class="row g-3 align-items-center mb-2">
-                                <div class="col-1 text-end">
-                                    <label for="@GetIdForLanguageOption(option)" class="form-label">@option</label>
-                                </div>
-                                <div class="col-2">
-                                    <input type="text" id="@GetIdForLanguageOption(option)" class="form-control" @bind="exporterOptions.LanguageOptions[option]">
-                                </div>
-                                <div class="col-auto">
-                                    <span class="form-text">@description</span>
-                                </div>
-                            </div>
+                            <tr class="row justify-content-start">
+                                <td class="col-2">Dependencies</td>
+                                <td class="col-4">@string.Join(", ", info.PackageDetails.Dependencies.Select(kvp => $"{kvp.Key}#{kvp.Value}"))</td>
+                            </tr>
                         }
                     }
+                </tbody>
+            </MudSimpleTable>
+        </MudExpansionPanel>
+        <MudExpansionPanel Text="Package Contents">
+            <MudTable
+                Items="info.ArtifactRecordsByClass.Keys.OrderBy(e => e.ToString())"
+                Dense="true"
+                Striped="true">
+                <HeaderContent>
+                    <MudTh>Artifact Type</MudTh>
+                    <MudTh>Count</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>@context</MudTd>
+                    <MudTd>@info.ArtifactRecordsByClass[context].Count()</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudExpansionPanel>
+        <MudExpansionPanel Text="Export Configuration" IsInitiallyExpanded="true">
+            <MudSelect T="string" Label="Select a Language" @bind-Value="selectedLanguage">
+                @foreach (string name in ExportService.GetExportLanguages().Keys.OrderBy(k => k))
+                {
+                    <MudSelectItem Value="@name"/>
                 }
+            </MudSelect>
+            <br />
+            @if ((language != null) && (exporterOptions != null))
+            {
+                <MudField Label="Optional Artifact Types to Export" Variant="Variant.Text" InnerPadding="false">
+                    <MudGrid>
+                        @foreach (ExporterOptions.FhirExportClassType et in optionalExportTypes.Keys)
+                        {
+                            <MudItem xs="12" sm="6" md="4">
+                                <MudSwitch Color="Color.Info" @bind-Checked="@optionalExportTypes[et]" Label="@et.ToString()" />
+                            </MudItem>
+                        }
+                    </MudGrid>
+                </MudField>
             }
-        </li>
-    </ul>
+            <br />
 
-    <div class="row g-3 align-items-center mb-2">
-        <div class="col-1 text-center">
-            <button class="@GetExportButtonClass()" type="button" @onclick="() => StartExport()">Start</button>
-        </div>
+            <MudText>General Export Options:</MudText>
+            <MudSimpleTable Dense="true" >
+                <tbody>
+                    <tr>
+                        <td>
+                            <MudTextField
+                                @bind-Value="exportDirectoryPath"
+                                Label="Export Path"
+                                HelperText="Server-based path to write export output"></MudTextField>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <MudSelect T="ExporterOptions.ExtensionSupportLevel"
+                                   Label="Extension Support Level"
+                                   HelperText="If supported by this language, where extensions should be included.">
+                                @foreach (ExporterOptions.ExtensionSupportLevel value in Enum.GetValues(typeof(ExporterOptions.ExtensionSupportLevel)))
+                                {
+                                    <MudSelectItem Value="@value" />
+                                }
+                            </MudSelect>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <MudSwitch Color="Color.Info" @bind-Checked="@includeExperimental" Label="Draft/Experimental"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </MudSimpleTable>
+
+            <br />
+            <MudText>Language Export Options:</MudText>
+            <MudTable
+                Items="@languageOptions.Values.OrderBy(v => v.Name)"
+                Dense="true">
+                <RowTemplate>
+                    <MudTd>
+                        @switch (context.TypeCode)
+                        {
+                            case LanguageOptionTypeCodes.Boolean:
+                                <MudSwitch
+                                    Color="Color.Info"
+                                    @bind-Checked="@context.Value"
+                                    Converter="@(new BoolValConverter())"
+                                >@context.Name - @context.Description</MudSwitch>
+                                break;
+
+                            case LanguageOptionTypeCodes.Number:
+                                <MudNumericField 
+                                   T="int"
+                                   Label="@context.Name"
+                                   HelperText="@context.Description"
+                                   Value="Int32.Parse(context.Value ?? string.Empty)"
+                                   ValueChanged="@((int value) => context.Value = value.ToString())"/>
+                                break;
+
+                            case LanguageOptionTypeCodes.Choice:
+                                <MudSelect
+                                    T="string"
+                                    Label="@context.Name"
+                                    HelperText="@context.Description">
+                                    @foreach (string v in context.AllowedValues)
+                                    {
+                                        <MudSelectItem Value="@v"/>
+                                    }
+                                </MudSelect>
+                                break;
+
+                            case LanguageOptionTypeCodes.CommaDelimtedString:
+                                <MudTextField @bind-Value="@context.Value"
+                                  Label="@context.Name"
+                                  HelperText="@context.Description"></MudTextField>
+                                break;
+
+                            case LanguageOptionTypeCodes.String:
+                            default:
+                                <MudTextField @bind-Value="@context.Value"
+                                  Label="@context.Name"
+                                  HelperText="@context.Description"></MudTextField>
+                                break;
+                        }
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+    <br />
+    <MudButton
+        Color="Color.Primary"
+        Variant="Variant.Filled"
+        Disabled="@exportInProgress"
+        OnClick="() => StartExport()">
         @if (exportInProgress)
         {
-            <div class="col-1"><span class="spinner-border align-content-center"></span></div>
+            <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true"/>
+            <MudText Class="ms-2">Processing</MudText>
         }
-        else if (!string.IsNullOrEmpty(uiMessage))
+        else
         {
-            <div class="col-3 fw-bold text-danger">@uiMessage</div>
+            <MudText>Start</MudText>
         }
-    </div>
+    </MudButton>
+
+    @if (!string.IsNullOrEmpty(uiMessage))
+    {
+        <MudText Color="Color.Error">@uiMessage</MudText>
+    }
+
+    <br />
 }
 else
 {
@@ -232,6 +244,70 @@ else
 
     /// <summary>Gets or sets the language.</summary>
     private ILanguage? language { get; set; } = null;
+
+    private Dictionary<ExporterOptions.FhirExportClassType, bool> optionalExportTypes { get; set; } = new();
+
+    /// <summary>Values that represent lanuage option type codes.</summary>
+    public enum LanguageOptionTypeCodes
+    {
+        /// <summary>The option accepts boolean values.</summary>
+        Boolean,
+
+        /// <summary>The option accepts an arbitrary string value.</summary>
+        String,
+
+        /// <summary>The option accepts a comma-delimited set of arbitrary string values.</summary>
+        CommaDelimtedString,
+
+        /// <summary>The option accepts numeric values.</summary>
+        Number,
+
+        /// <summary>The option accepts one from a set of literals.</summary>
+        Choice,
+    }
+
+    /// <summary>A language user interface option.</summary>
+    public class LanguageUiOption
+    {
+        /// <summary>Initializes a new instance of the <see="LanguageUiOption"/> class.</summary>
+        /// <param name="name">         The name.</param>
+        /// <param name="description">  The description.</param>
+        /// <param name="typeCode">     The type code.</param>
+        /// <param name="defaultValue"> The default value.</param>
+        /// <param name="allowedValues">The allowed values.</param>
+        /// <param name="value">        The value.</param>
+        public LanguageUiOption(
+            string name,
+            string description,
+            LanguageOptionTypeCodes typeCode,
+            string defaultValue,
+            string[] allowedValues,
+            string? value)
+        {
+            Name = name;
+            Description = description;
+            TypeCode = typeCode;
+            DefaultValue = defaultValue;
+            AllowedValues = allowedValues;
+            Value = value;
+        }
+
+        /// <summary>Gets or sets the name.</summary>
+        public string Name { get; set; }
+        /// <summary>Gets or sets the description.</summary>
+        public string Description { get; set; }
+        /// <summary>Gets or sets the type code.</summary>
+        public LanguageOptionTypeCodes TypeCode { get; set; }
+        /// <summary>Gets or sets the default value.</summary>
+        public string DefaultValue { get; set; }
+        /// <summary>Gets or sets the allowed values.</summary>
+        public string[] AllowedValues { get; set; }
+        /// <summary>Gets or sets the value.</summary>
+        public string? Value { get; set; }
+    }
+
+    /// <summary>Options for controlling the language.</summary>
+    private Dictionary<string, LanguageUiOption> languageOptions = new();
 
     /// <summary>Gets or sets a value indicating whether the package details is shown.</summary>
     private bool showPackageDetails { get; set; } = true;
@@ -293,7 +369,7 @@ else
             info = SpecService[directive];
         }
 
-        NavTracker?.NotifyNav(directive, $"export/package?packageName={PackageName}&version={Version}", 1);
+        NavTracker?.NotifyNav("Export " + directive, $"export/package?packageName={PackageName}&version={Version}", 1);
         NavigationManager.LocationChanged += HandleLocationChanged;
     }
 
@@ -370,7 +446,7 @@ else
         ExporterOptions options = new(
             exporterOptions.LanguageName,
             exporterOptions.ExportList,
-            exporterOptions.OptionalClassTypesToExport,
+            optionalExportTypes.Where(kvp => kvp.Value == true).Select(kvp => kvp.Key).ToList(),
             extensionSupport,
             exporterOptions.ExtensionUrls,
             exporterOptions.ExtensionElementPaths,
@@ -411,30 +487,6 @@ else
         InvokeAsync(() => StateHasChanged());
     }
 
-
-    /// <summary>Gets identifier for language option.</summary>
-    /// <param name="option">The option.</param>
-    /// <returns>The identifier for language option.</returns>
-    string GetIdForLanguageOption(string option)
-    {
-        return "input_" + option;
-    }
-
-    /// <summary>Gets export button class.</summary>
-    /// <returns>The export button class.</returns>
-    string GetExportButtonClass()
-    {
-        return exportInProgress ? "btn btn-dark disabled" : "btn btn-primary";
-    }
-
-    /// <summary>Gets caret class.</summary>
-    /// <param name="shown">True to shown.</param>
-    /// <returns>The caret class.</returns>
-    string GetCaretClass(bool shown)
-    {
-        return shown ? "oi oi-caret-bottom" : "oi oi-caret-top";
-    }
-
     /// <summary>Updates the language described by name.</summary>
     /// <param name="name">The name.</param>
     private async void UpdateLanguage(string name)
@@ -443,6 +495,7 @@ else
         {
             exporterOptions = null;
             language = null;
+            languageOptions.Clear();
             return;
         }
 
@@ -450,9 +503,6 @@ else
         {
             return;
         }
-
-        //language = null;
-        //languageOptions.Clear();
 
         if (ExportService.TryGetExportLanguage(name, out ILanguage? iLang) &&
             (iLang != null))
@@ -478,6 +528,20 @@ else
                 exporterOptions?.IncludeExperimental ?? true,
                 exporterOptions?.LanguageInputDir);
 
+            Dictionary<string, LanguageUiOption> langOpts = new();
+
+            foreach ((string key, string description) in iLang.LanguageOptions)
+            {
+                ProtectedBrowserStorageResult<string> optReadResult = await
+                    BrowserStore.GetAsync<string>($"{directive}_{iLang.LanguageName}_{key}");
+
+                LanguageUiOption langOpt = ParseLanguageOption(key, description, optReadResult.Value);
+
+                langOpts.Add(key, langOpt);
+            }
+
+            languageOptions = langOpts;
+
             foreach (string option in iLang.LanguageOptions.Keys)
             {
                 ProtectedBrowserStorageResult<string> optReadResult = await
@@ -486,10 +550,19 @@ else
                 exporterOptions.LanguageOptions.Add(option, optReadResult.Value ?? string.Empty);
             }
 
+            Dictionary<ExporterOptions.FhirExportClassType, bool> optionalExports = new();
+
             foreach (ExporterOptions.FhirExportClassType optionalExportType in language.OptionalExportClassTypes)
             {
-                exporterOptions.OptionalClassTypesToExport.Add(optionalExportType);
+                optionalExports.Add(
+                    optionalExportType,
+                    optionalExportTypes.ContainsKey(optionalExportType)
+                        ? optionalExportTypes[optionalExportType]
+                        : false);
+                //exporterOptions.OptionalClassTypesToExport.Add(optionalExportType);
             }
+
+            optionalExportTypes = optionalExports;
         }
         else
         {
@@ -500,17 +573,104 @@ else
         await InvokeAsync(() => StateHasChanged());
     }
 
-    /// <summary>Gets button class.</summary>
+    private LanguageUiOption ParseLanguageOption(
+        string optionName,
+        string optionDescription,
+        string? savedValue)
+    {
+        int openParenLoc = optionDescription.LastIndexOf('(');
+        int closeParenLoc = optionDescription.LastIndexOf(')');
+
+        if ((openParenLoc == -1) ||
+            (closeParenLoc == -1) ||
+            (openParenLoc > closeParenLoc))
+        {
+            return new LanguageUiOption(
+                optionName,
+                optionDescription,
+                LanguageOptionTypeCodes.String,
+                string.Empty,
+                Array.Empty<string>(),
+                savedValue);
+        }
+
+        string description = optionDescription.Substring(0, openParenLoc - 1).Trim();
+
+        if (closeParenLoc != (optionDescription.Length - 1))
+        {
+            description += optionDescription.Substring(closeParenLoc + 1);
+        }
+
+        string hint = optionDescription.Substring(openParenLoc + 1, (closeParenLoc - openParenLoc) - 1);
+
+        if (hint.Contains('|'))
+        {
+            string[] choices = hint.Split('|');
+
+            if ((choices.Length == 2) &&
+                choices.Contains("false", StringComparer.OrdinalIgnoreCase) &&
+                choices.Contains("true", StringComparer.OrdinalIgnoreCase))
+            {
+                return new LanguageUiOption(
+                    optionName,
+                    description,
+                    LanguageOptionTypeCodes.Boolean,
+                    choices[0],
+                    choices,
+                    savedValue);
+            }
+
+            return new LanguageUiOption(
+                optionName,
+                description,
+                LanguageOptionTypeCodes.Choice,
+                choices[0],
+                choices,
+                savedValue);
+        }
+
+        if (hint.Contains(','))
+        {
+            return new LanguageUiOption(
+                optionName,
+                description,
+                LanguageOptionTypeCodes.CommaDelimtedString,
+                hint,
+                Array.Empty<string>(),
+                savedValue ?? hint);
+        }
+
+        if (int.TryParse(hint, out _))
+        {
+            return new LanguageUiOption(
+                optionName,
+                description,
+                LanguageOptionTypeCodes.Number,
+                hint,
+                Array.Empty<string>(),
+                savedValue ?? hint);
+        }
+
+        return new LanguageUiOption(
+            optionName,
+            description,
+            LanguageOptionTypeCodes.String,
+            hint,
+            Array.Empty<string>(),
+            savedValue ?? hint);
+    }
+
+    /// <summary>Gets button variant.</summary>
     /// <param name="ct">The ct.</param>
-    /// <returns>The button class.</returns>
-    private string GetButtonClass(ExporterOptions.FhirExportClassType ct)
+    /// <returns>The button variant.</returns>
+    private MudBlazor.Variant GetButtonVariant(ExporterOptions.FhirExportClassType ct)
     {
         if (exporterOptions?.OptionalClassTypesToExport.Contains(ct) == true)
         {
-            return "btn btn-primary me-2 mb-2";
+            return Variant.Filled;
         }
 
-        return "btn btn-outline-primary me-2 mb-2";
+        return Variant.Outlined;
     }
 
     /// <summary>Toggle optional.</summary>
@@ -532,6 +692,54 @@ else
         }
     }
 
+    /// <summary>A value converter.</summary>
+    public class BoolValConverter : BoolConverter<string?>
+    {
+
+        public BoolValConverter()
+        {
+            SetFunc = OnSet;
+            GetFunc = OnGet;
+        }
+
+        private string TrueString = "true";
+        private string FalseString = "false";
+        private string NullString = "";
+
+        private string OnGet(bool? value)
+        {
+            try
+            {
+                return (value == true) ? TrueString : FalseString;
+            }
+            catch (Exception e)
+            {
+                UpdateGetError("Conversion error: " + e.Message);
+                return NullString;
+            }
+        }
+
+        private bool? OnSet(string? arg)
+        {
+            if (arg == null)
+                return null;
+            try
+            {
+                if (arg == TrueString)
+                    return true;
+                if (arg == FalseString)
+                    return false;
+                else
+                    return null;
+            }
+            catch (FormatException e)
+            {
+                UpdateSetError("Conversion error: " + e.Message);
+                return null;
+            }
+        }
+    }
+
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
     /// resources.
@@ -546,7 +754,7 @@ else
     /// <param name="e">     Location changed event information.</param>
     private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
     {
-        if (e.Location.ToLowerInvariant().Contains("/view/package"))
+        if (e.Location.ToLowerInvariant().Contains("/export/package"))
         {
             directive = PackageName + "#" + Version;
             if (SpecService.ContainsKey(directive))
@@ -558,7 +766,7 @@ else
                 info = null;
             }
 
-            NavTracker?.NotifyNav(directive, $"view/package?packageName={PackageName}&version={Version}", 1);
+            NavTracker?.NotifyNav("Export " + directive, $"view/package?packageName={PackageName}&version={Version}", 1);
 
             InvokeAsync(() => StateHasChanged());
         }

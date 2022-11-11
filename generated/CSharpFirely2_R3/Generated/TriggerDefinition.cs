@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("TriggerDefinition")]
+  [FhirType("TriggerDefinition","http://hl7.org/fhir/StructureDefinition/TriggerDefinition")]
   public partial class TriggerDefinition : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -111,6 +111,7 @@ namespace Hl7.Fhir.Model
     /// named-event | periodic | data-added | data-modified | data-removed | data-accessed | data-access-ended
     /// </summary>
     [FhirElement("type", InSummary=true, Order=30)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.TriggerDefinition.TriggerType> TypeElement
@@ -175,6 +176,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("eventTiming", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Schedule")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime))]
     [DataMember]
     public Hl7.Fhir.Model.DataType EventTiming
@@ -220,6 +222,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new TriggerDefinition());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as TriggerDefinition;
@@ -272,6 +275,37 @@ namespace Hl7.Fhir.Model
         if (EventTiming != null) yield return new ElementValue("eventTiming", EventTiming);
         if (EventData != null) yield return new ElementValue("eventData", EventData);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "eventName":
+          value = EventNameElement;
+          return EventNameElement is not null;
+        case "eventTiming":
+          value = EventTiming;
+          return EventTiming is not null;
+        case "eventData":
+          value = EventData;
+          return EventData is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (EventNameElement is not null) yield return new KeyValuePair<string,object>("eventName",EventNameElement);
+      if (EventTiming is not null) yield return new KeyValuePair<string,object>("eventTiming",EventTiming);
+      if (EventData is not null) yield return new KeyValuePair<string,object>("eventData",EventData);
     }
 
   }

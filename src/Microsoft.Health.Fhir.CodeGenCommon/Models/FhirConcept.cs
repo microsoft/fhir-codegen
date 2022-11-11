@@ -179,6 +179,30 @@ public class FhirConcept : ICloneable
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirConcept"/> class.
+    /// </summary>
+    /// <param name="source">Source for the.</param>
+    public FhirConcept(FhirConcept source)
+    {
+        System = source.System;
+        Code = source.Code;
+        Display = source.Display;
+        Version = source.Version;
+        Definition = source.Definition;
+        SystemLocalName = source.SystemLocalName;
+
+        foreach ((string propCode, List<object> propValues) in source._properties)
+        {
+            _properties.Add(propCode, propValues.Select(obj => obj).ToList());
+        }
+
+        foreach (string hash in source._propertyKeyValueHash)
+        {
+            _propertyKeyValueHash.Add(hash);
+        }
+    }
+
     /// <summary>Initializes a new instance of the <see cref="FhirConcept"/> class.</summary>
     private FhirConcept()
         : this(
@@ -227,19 +251,14 @@ public class FhirConcept : ICloneable
     /// <returns>A string.</returns>
     public string Key() => $"{System}#{Code}";
 
+    /// <summary>Gets the defined concept properties.</summary>
+    public Dictionary<string, List<object>> Properties => _properties;
+
     /// <summary>Makes a deep copy of this object.</summary>
     /// <returns>A copy of this object.</returns>
     public object Clone()
     {
-        return new FhirConcept(
-            System,
-            Code,
-            Display,
-            Version,
-            Definition,
-            SystemLocalName,
-            _properties,
-            _propertyKeyValueHash);
+        return new FhirConcept(this);
     }
 
     /// <summary>Adds a property.</summary>

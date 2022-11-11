@@ -1,0 +1,546 @@
+﻿@page "/view/complex"
+
+@using FhirCodeGenBlazor.Models
+@using FhirCodeGenBlazor.Services
+@using Markdig
+@using Microsoft.Health.Fhir.CodeGenCommon.Models;
+@using Microsoft.Health.Fhir.SpecManager.Manager
+@inject NavigationManager NavManager
+@inject ISpecManagerWebService SpecService
+@implements IDisposable
+@implements IPackageVersionProvider
+
+@if (fhirComplex == null)
+{
+    <PageTitle>FHIR Artifact View</PageTitle>
+}
+else
+{
+    <PageTitle>@fhirComplex.Name</PageTitle>
+
+    <MudExpansionPanels MultiExpansion="true">
+        <MudExpansionPanel Text="Artifact Information">
+            <MudGrid>
+                <MudItem xs="2">Id</MudItem>
+                <MudItem xs="10">@fhirComplex?.Id</MudItem>
+
+                <MudItem xs="2">Name</MudItem>
+                <MudItem xs="10">@fhirComplex?.Name</MudItem>
+
+                <MudItem xs="2">Path</MudItem>
+                <MudItem xs="10">@fhirComplex?.Path</MudItem>
+
+                <MudItem xs="2">URL</MudItem>
+                <MudItem xs="10">@fhirComplex?.URL.ToString()</MudItem>
+
+                <MudItem xs="2">Standard Status</MudItem>
+                <MudItem xs="10">@fhirComplex?.StandardStatus</MudItem>
+
+                <MudItem xs="2">Short Description</MudItem>
+                <MudItem xs="10">@fhirComplex?.ShortDescription</MudItem>
+
+                <MudItem xs="2">Comment</MudItem>
+                <MudItem xs="10">@fhirComplex?.Comment</MudItem>
+
+                <MudItem xs="2">Hierarchy</MudItem>
+                <MudItem xs="12" sm="10">
+                    <MudChipSet @bind-SelectedChip="selectedHierarchyChip" Filter="true" Mandatory="true">
+                        @foreach (ComplexInfo ci in hierarchy)
+                        {
+                            <MudChip Default="@ci.IsRoot"
+                             Color="Color.Info"
+                             @onclick="() => SetTableObject(ci.Complex)">
+                                @ci.Complex.Name (@ci.ComplexArtifactClass)
+                            </MudChip>
+                        }
+                    </MudChipSet>
+                </MudItem>
+            </MudGrid>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+
+    <MudTable Items="@elements"
+          Filter="new Func<ElementDisplayRec, bool>(FilterFunc)"
+          Striped="true"
+          Hover="true"
+          Dense="true"
+          Height="calc(100vh - (var(--mud-appbar-height) * 2.9))"
+          FixedHeader="true">
+        <ToolBarContent>
+            <MudSwitch Color="Color.Info" @bind-Checked="expandAcrossTypes" Label="Expand into types" />
+            <MudSwitch Color="Color.Info" @bind-Checked="showDetailedInfo" Label="Element details" />
+            <MudSwitch Color="Color.Info" @bind-Checked="showDifferentialOnly" Label="Differential Only" />
+        </ToolBarContent>
+        <ColGroup>
+            <col style="width: 20vw!important;" />
+            <col style="width: 7vw!important;" />
+            <col style="width: 3vw!important;" />
+            <col style="width: 10vw!important;" />
+            <col style="width: 50vw!important;" />
+        </ColGroup>
+        <HeaderContent>
+            <MudTh>Element</MudTh>
+            <MudTh>Flags</MudTh>
+            <MudTh>Card.</MudTh>
+            <MudTh>Type</MudTh>
+            <MudTh>Short</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>
+                <MudText Typo="Typo.body2">@context.ElementNameDisplay</MudText>
+            </MudTd>
+            <MudTd>
+                @if (context.Element.IsMustSupport)
+                {
+                    <MudTooltip Text="Must Supprt">Ⓜ️</MudTooltip>
+                }
+
+                @if (context.Element.IsModifier)
+                {
+                    <MudTooltip Text="@(context.Element.IsModifierReason ?? "Modifier Element")">⁈</MudTooltip>
+                }
+
+                @if (context.Element.IsSummary)
+                {
+                    <MudTooltip Text="Include in Summary">∑</MudTooltip>
+                }
+            </MudTd>
+            <MudTd>@context.Element.FhirCardinality</MudTd>
+            <MudTd>@GetElementTypeString(context.Element)</MudTd>
+            <MudTd>
+                @context.Element.ShortDescription
+            </MudTd>
+        </RowTemplate>
+        <ChildRowContent>
+            @if (showDetailedInfo)
+            {
+                <MudTr>
+                    <td colspan="5" style="padding-left: 32px;">
+                        <MudText Typo="Typo.caption">
+                            <strong>Defined By:</strong> <em>@context.ElementDefinedBy</em><br />
+
+                            @if (!string.IsNullOrEmpty(context.Element.FixedFieldName))
+                            {
+                                <strong>Fixed Value:</strong> <pre>@context.Element.FixedFieldValue</pre>
+                            }
+
+                            <strong>Definition:</strong><p>@context.Element.Purpose</p>
+                            <strong>Comments:</strong>
+                            @(new MarkupString(Markdown.ToHtml(context.Element.Comment)))
+
+                            @if (!string.IsNullOrEmpty(context.Element.ValueSet))
+                            {
+                                <p><strong>Bound to:</strong> @context.Element.ValueSet (@context.Element.ValueSetBindingStrength)</p>
+                            }
+
+                            @if (!string.IsNullOrEmpty(context.Element.ValidationRegEx))
+                            {
+                                <p><strong>Validation RegEx:</strong> @context.Element.ValidationRegEx</p>
+                            }
+                        </MudText>
+                    </td>
+                </MudTr>
+            }
+        </ChildRowContent>
+    </MudTable>
+}
+
+@code {
+    /// <summary>Gets or sets the navigation tracker.</summary>
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
+    /// <summary>Gets or sets the package name.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "packageName")]
+    public string PackageName { get; set; } = "";
+
+    /// <summary>Gets or sets the package version.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "version")]
+    public string Version { get; set; } = "";
+
+    /// <summary>Gets or sets the identifier.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "url")]
+    public string Url { get; set; } = "";
+
+    /// <summary>The artifact class.</summary>
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "ac")]
+    public string ArtifactClassParam { get; set; } = "";
+
+    /// <summary>Gets or sets the artifact class.</summary>
+    private FhirArtifactClassEnum artifactClass = FhirArtifactClassEnum.Unknown;
+
+    /// <summary>The directive.</summary>
+    private string directive = string.Empty;
+
+    /// <summary>A complex-type FHIR artifact (resource, complex data type, etc.).</summary>
+    private FhirComplex? fhirComplex = null;
+
+    /// <summary>Gets or sets a value indicating whether the expand across types.</summary>
+    private bool expandAcrossTypes { get; set; } = false;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the detailed information is shown.
+    /// </summary>
+    private bool showDetailedInfo { get; set; } = true;
+
+    /// <summary>Gets or sets a value indicating whether the changes only is shown.</summary>
+    private bool showDifferentialOnly { get; set; } = false;
+
+    /// <summary>The table object.</summary>
+    private FhirComplex? selectedDisplayComplex { get; set; } = null;
+
+    /// <summary>The selected hierarchy chip.</summary>
+    private MudChip? selectedHierarchyChip;
+
+    /// <summary>The elements.</summary>
+    IEnumerable<ElementDisplayRec> elements = Array.Empty<ElementDisplayRec>();
+
+    /// <summary>Information about a FHIR complex structure.</summary>
+    private readonly record struct ComplexInfo(
+        bool IsRoot,
+        FhirComplex Complex,
+        FhirArtifactClassEnum ComplexArtifactClass,
+        string ResolvedPackage);
+
+    /// <summary>Element information, processed for display.</summary>
+    /// <param name="IsTypeExpansion">True if is type expansion, false if not.</param>
+    /// <param name="Element">        The element.</param>
+    private readonly record struct ElementDisplayRec(
+        bool IsTypeExpansion,
+        string ElementNameDisplay,
+        string ElementDefinedBy,
+        FhirElement Element);
+
+    /// <summary>The hierarchy.</summary>
+    private List<ComplexInfo> hierarchy = new();
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        NavTracker?.NotifyNav(Url, $"view/complex?packageName={PackageName}&version={Version}&url={Url}&ac={ArtifactClassParam}", 2);
+        NavManager.LocationChanged += HandleLocationChanged;
+
+        if (string.IsNullOrEmpty(PackageName))
+        {
+            return;
+        }
+
+        _ =Enum.TryParse<FhirArtifactClassEnum>(ArtifactClassParam, out artifactClass);
+        directive = PackageName + "#" + Version;
+        GetObject();
+    }
+
+    /// <summary>Handles the location changed.</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">     Location changed event information.</param>
+    private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        if (e.Location.ToLowerInvariant().Contains("/view/complex"))
+        {
+            NavTracker?.NotifyNav(Url, $"view/profile?packageName={PackageName}&version={Version}&url={Url}&ac={ArtifactClassParam}", 2);
+            _ = Enum.TryParse<FhirArtifactClassEnum>(ArtifactClassParam, out artifactClass);
+            directive = PackageName + "#" + Version;
+            GetObject();
+        }
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+        NavManager.LocationChanged -= HandleLocationChanged;
+    }
+
+    private void GetObject()
+    {
+        if (string.IsNullOrEmpty(directive))
+        {
+            Console.WriteLine("Missing required directive!");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(Url))
+        {
+            Console.WriteLine("Missing required Url");
+            return;
+        }
+
+        if (!SpecService.ContainsKey(directive))
+        {
+            Console.WriteLine($"Directive {directive} is unknown or not loaded");
+            return;
+        }
+
+        fhirComplex = null;
+
+        if (!SpecService[directive].TryGetArtifact(
+                Url,
+                out object obj,
+                out FhirArtifactClassEnum fhirArtifactClass,
+                out _,
+                true,
+                artifactClass))
+        {
+            Console.WriteLine($"Unresolved artifact: {Url} from {PackageName}#{Version}!");
+            return;
+        }
+
+        if (fhirArtifactClass != artifactClass)
+        {
+            Console.WriteLine($"Incorrect artifact type: {Url} from {PackageName}#{Version} came back as {fhirArtifactClass} (needed {artifactClass})!");
+            return;
+        }
+
+        fhirComplex = (FhirComplex)obj;
+
+        selectedDisplayComplex = fhirComplex;
+
+        hierarchy.Add(new ComplexInfo()
+        {
+            IsRoot = true,
+            Complex = fhirComplex,
+            ComplexArtifactClass = artifactClass,
+            ResolvedPackage = PackageName + "#" + Version,
+        });
+
+        AddParentToHierarchy(fhirComplex);
+
+        InvokeAsync(() => BuildElementList());
+    }
+
+    /// <summary>Builds element list.</summary>
+    private void BuildElementList()
+    {
+        if (selectedDisplayComplex == null)
+        {
+            return;
+        }
+
+        List<ElementDisplayRec> elementList = new();
+
+        AddElementsForComplex(elementList, selectedDisplayComplex);
+
+        elements = elementList;
+
+        // manually flag state has changed in case we are in a callback / async context
+        InvokeAsync(() => StateHasChanged());
+    }
+    
+    /// <summary>Adds the elements for complex.</summary>
+    /// <param name="elementList">    List of elements.</param>
+    /// <param name="complex">        The complex.</param>
+    /// <param name="depth">          (Optional) The depth.</param>
+    /// <param name="isTypeExpansion">(Optional) True if is type expansion, false if not.</param>
+    /// <param name="parentPrefix">   (Optional) The parent prefix.</param>
+    private void AddElementsForComplex(
+        List<ElementDisplayRec> elementList,
+        FhirComplex complex,
+        bool isTypeExpansion = false,
+        string parentPrefix = "")
+    {
+        foreach (FhirElement element in complex.Elements.Values)
+        {
+            string displayName =
+                (string.IsNullOrEmpty(parentPrefix) ? complex.Name : parentPrefix)
+                + "."
+                + (string.IsNullOrEmpty(element.ExplicitName) ? element.Name : element.ExplicitName)
+                + (element.CardinalityMax.Equals(1) ? string.Empty : "[]");
+
+            string definedBy;
+
+            if ((!element.IsInherited) || (string.IsNullOrEmpty(element.BasePath)))
+            {
+                definedBy = complex.Name;
+            }
+            else
+            {
+                definedBy = element.BasePath.Split('.')[0];
+            }
+
+            // add this element
+            elementList.Add(new ElementDisplayRec(
+                isTypeExpansion,
+                displayName,
+                definedBy,
+                element));
+
+            if (ShouldRecurseElement(element, out string name))
+            {
+                if (complex.Components.ContainsKey(name))
+                {
+                    // components do not count against depth
+                    AddElementsForComplex(
+                        elementList,
+                        complex.Components[name],
+                        isTypeExpansion,
+                        displayName);
+
+                    continue;
+                }
+
+                // if we are already in a type expansion, do not nest into further types
+                if (isTypeExpansion)
+                {
+                    continue;
+                }
+
+                IEnumerable<FhirVersionInfo.ResolvedArtifactRecord> recs = SpecService[directive].GetArtifacts(name);
+
+                foreach (FhirVersionInfo.ResolvedArtifactRecord rec in recs)
+                {
+                    if (!(rec.Artifact is FhirComplex c))
+                    {
+                        continue;
+                    }
+
+                    switch (rec.ArtifactClass)
+                    {
+                        case FhirArtifactClassEnum.ComplexType:
+                            AddElementsForComplex(
+                                elementList,
+                                c,
+                                true,
+                                displayName);
+                            break;
+
+                        case FhirArtifactClassEnum.Extension:
+                        case FhirArtifactClassEnum.Profile:
+                        case FhirArtifactClassEnum.Resource:
+                        case FhirArtifactClassEnum.LogicalModel:
+                            AddElementsForComplex(
+                                elementList,
+                                c,
+                                isTypeExpansion,
+                                displayName);
+                            break;
+
+                        default:
+                            // skip everything else
+                            break;
+                    }
+                }
+            }
+
+        }
+    }
+
+    /// <summary>Determine if we should recurse element.</summary>
+    /// <param name="element">The element.</param>
+    /// <param name="name">   [out] The name.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool ShouldRecurseElement(FhirElement element, out string name)
+    {
+        if (!string.IsNullOrEmpty(element.BaseTypeName))
+        {
+            name = element.BaseTypeName;
+
+            if (name.Equals("Extension", StringComparison.Ordinal))
+            {
+                name = string.Empty;
+                return false;
+            }
+
+            return true;
+        }
+
+        if (element.ElementTypes.Count == 1)
+        {
+            name = element.ElementTypes.Values.First().Name;
+
+            if (name.Equals("Extension", StringComparison.Ordinal))
+            {
+                name = string.Empty;
+                return false;
+            }
+
+            return true;
+        }
+
+        name = string.Empty;
+        return false;
+    }
+
+    
+    /// <summary>Gets element type string.</summary>
+    /// <param name="element">The element.</param>
+    /// <returns>The element type string.</returns>
+    private MarkupString GetElementTypeString(FhirElement element)
+    {
+        if (element.BaseTypeName.Equals(element.Id, StringComparison.Ordinal))
+        {
+            return new MarkupString("BackboneElement");
+        }
+
+        if (!string.IsNullOrEmpty(element.BaseTypeName))
+        {
+            return new MarkupString(element.BaseTypeName);
+        }
+
+        return new MarkupString(string.Join(
+            ", <br />",
+            element.ElementTypes.Values.Select(
+                et => et.Profiles.Any()
+                    ? $"{et.Name}( {string.Join("<br /> | ", et.Profiles.Values.Select(p => p.Name))} )"
+                    : et.Name)));
+    }
+
+
+    /// <summary>Filter function.</summary>
+    /// <param name="e">A FhirElement to process.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool FilterFunc(ElementDisplayRec e)
+    {
+        if (showDifferentialOnly && (!e.Element.InDifferential))
+        {
+            return false;
+        }
+
+        if ((!expandAcrossTypes) && e.IsTypeExpansion)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    
+    /// <summary>Sets table object.</summary>
+    /// <param name="complex">The complex.</param>
+    private void SetTableObject(FhirComplex complex)
+    {
+        selectedDisplayComplex = complex;
+        InvokeAsync(() => BuildElementList());
+    }
+
+    /// <summary>Adds a parent to hierarchy.</summary>
+    /// <param name="obj">The object.</param>
+    private void AddParentToHierarchy(FhirComplex obj)
+    {
+        if (obj == null)
+        {
+            return;
+        }
+
+        if (obj.Parent != null)
+        {
+            hierarchy.Add(new ComplexInfo()
+                {
+                    IsRoot = false,
+                    Complex = obj.Parent,
+                    ComplexArtifactClass = obj.ParentArtifactClass,
+                    ResolvedPackage = obj.ResolvedParentDirective,
+                });
+
+            AddParentToHierarchy(obj.Parent);
+        }
+    }
+}

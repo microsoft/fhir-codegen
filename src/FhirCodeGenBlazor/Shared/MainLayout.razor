@@ -1,63 +1,115 @@
 ﻿@inherits LayoutComponentBase
 
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @using FhirCodeGenBlazor.Models
+@using FhirCodeGenBlazor.Services;
+
+@inject ProtectedLocalStorage BrowserStore
+@inject IPackageManagerWebService PackageService
+
 @implements INavTracker
 
-<PageTitle>FhirCodeGenBlazor</PageTitle>
+<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-<div class="page">
-    <div id="collapsableNav" class="@navMenuCssClass">
-        <NavMenu />
-    </div>
+<MudLayout>
+    <MudAppBar Color="Color.Info" Fixed="false" Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
+        <MudBreadcrumbs Items="_crumbs"></MudBreadcrumbs>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/microsoft/fhir-codegen" Target="_blank" />
+        <MudToggleIconButton
+            @bind-Toggled="@_isDarkMode"
+            Color="Color.Inherit"
+            Icon="@Icons.Filled.LightMode"
+            ToggledIcon="@Icons.Filled.DarkMode" />
+    </MudAppBar>
 
-    <main>
-        <div class="container-fluid ps-3 bg-dark">
-            <div class="row">
-                <div class="col text-start text-light mt-2">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            @foreach ((BreadcrumPageAndLink crumb, int index) in pagesAndLinks.Select((value, i) => (value, i)))
-                            {
-                                if (index == (pagesAndLinks.Count - 1))
-                                {
-                                    <li class="breadcrumb-item active" aria-current="page">@crumb.Page</li>
-                                }
-                                else
-                                {
-                                    <li class="breadcrumb-item"><a href="@crumb.Link">@crumb.Page</a></li>
-                                }
-                            }
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-1 text-end mt-2">
-                    <button title="Navigation menu" class="text-end navbar-toggler text-light" @onclick="() => ToggleNavMenu()">
-                        <span class="oi oi-menu"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <MudDrawer @bind-Open="showNav" DisableOverlay="true" Variant="@DrawerVariant.Temporary">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">FHIR CodeGen</MudText>
+            <MudSpacer />
+            <MudFab StartIcon="@Icons.Filled.Close" OnClick="@ToggleDrawer" Size="Size.Small" />
+        </MudDrawerHeader>
+        <MudNavMenu>
+            <MudNavLink Href="/">FHIR Cache</MudNavLink>
+            <MudNavLink Href="/diff">Diff Tool</MudNavLink>
+            <MudNavGroup Title="Packages" Expanded="true">
+                @foreach ((string key, PackageCacheRecord record) in PackageService)
+                {
+                    if ((record.PackageState != PackageLoadStateEnum.Loaded) ||
+                        (record.Details == null))
+                    {
+                        continue;
+                    }
 
+                    <MudNavLink Href="@LinkForPackage(key)" Icon="@Icons.Filled.Archive">@key</MudNavLink>
+                }
+
+            </MudNavGroup>
+        </MudNavMenu>
+    </MudDrawer>
+
+    @*Note that we have to set padding-top here because of the non-fixed app bar *@
+    <MudMainContent style="padding-top: 0px; margin-left: 4px; margin-right: 4px;" >
         <CascadingValue Value="this">
-            <article class="content px-4">
-                @Body
-            </article>
+            @Body
         </CascadingValue>
-    </main>
-</div>
+    </MudMainContent>
+</MudLayout>
 
 @code {
-    private readonly record struct BreadcrumPageAndLink(string Page, string Link);
 
-    private List<BreadcrumPageAndLink> pagesAndLinks = new() { new("FHIR Cache", "") };
-
-    private bool collapseNavMenu = true;
-
-    private string navMenuCssClass => collapseNavMenu ? "sidebar collapse-horizontal collapse" : "sidebar collapse-horizontal";
-
-    private void ToggleNavMenu()
+    private MudTheme _theme = new()
     {
-        collapseNavMenu = !collapseNavMenu;
+        Typography = new()
+        {
+            Body2 = new Body2()
+            {
+                    FontFamily = new[] { "Lucida Console", "Courier New", "monospace" },
+                    FontWeight = 500,
+            }
+        }
+    };
+    private bool _isDarkMode;
+
+    private List<BreadcrumbItem> _crumbs = new()
+    {
+        new BreadcrumbItem("FHIR Cache", "#"),
+    };
+
+    /// <summary>True to show, false to hide the navigation.</summary>
+    private bool showNav = false;
+
+    /// <summary>Toggle drawer.</summary>
+    void ToggleDrawer()
+    {
+        showNav = !showNav;
+    }
+
+    /// <summary>Links for package.</summary>
+    /// <param name="directive">The directive.</param>
+    /// <returns>A string.</returns>
+    private string LinkForPackage(string directive)
+    {
+        string[] parts = directive.Split('#');
+        return $"/view/package?packageName={parts[0]}&version={parts[1]}";
+    }
+
+    /// <summary>Executes the after render asynchronous action.</summary>
+    /// <param name="firstRender">True to first render.</param>
+    /// <returns>An asynchronous result.</returns>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ProtectedBrowserStorageResult<bool> optReadResult = await BrowserStore.GetAsync<bool>("darkMode");
+
+            _isDarkMode = optReadResult.Value;
+            StateHasChanged();
+        }
     }
 
     /// <summary>Notifies a navigation.</summary>
@@ -66,12 +118,12 @@
     /// <param name="depth">The depth.</param>
     public void NotifyNav(string page, string link, int depth)
     {
-        if (pagesAndLinks.Count > depth)
+        if (_crumbs.Count > depth)
         {
-            pagesAndLinks.RemoveRange(depth, pagesAndLinks.Count - depth);
+            _crumbs.RemoveRange(depth, _crumbs.Count - depth);
         }
 
-        pagesAndLinks.Add(new(page, link));
+        _crumbs.Add(new BreadcrumbItem(page, link));
 
         StateHasChanged();
     }

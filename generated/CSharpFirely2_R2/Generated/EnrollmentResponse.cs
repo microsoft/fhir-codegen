@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("EnrollmentResponse", IsResource=true)]
+  [FhirType("EnrollmentResponse","http://hl7.org/fhir/StructureDefinition/EnrollmentResponse", IsResource=true)]
   public partial class EnrollmentResponse : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -88,6 +88,7 @@ namespace Hl7.Fhir.Model
     /// complete | error
     /// </summary>
     [FhirElement("outcome", InSummary=true, Order=110)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.RemittanceOutcome> OutcomeElement
     {
@@ -276,6 +277,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new EnrollmentResponse());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as EnrollmentResponse;
@@ -352,6 +354,61 @@ namespace Hl7.Fhir.Model
         if (RequestProvider != null) yield return new ElementValue("requestProvider", RequestProvider);
         if (RequestOrganization != null) yield return new ElementValue("requestOrganization", RequestOrganization);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "request":
+          value = Request;
+          return Request is not null;
+        case "outcome":
+          value = OutcomeElement;
+          return OutcomeElement is not null;
+        case "disposition":
+          value = DispositionElement;
+          return DispositionElement is not null;
+        case "ruleset":
+          value = Ruleset;
+          return Ruleset is not null;
+        case "originalRuleset":
+          value = OriginalRuleset;
+          return OriginalRuleset is not null;
+        case "created":
+          value = CreatedElement;
+          return CreatedElement is not null;
+        case "organization":
+          value = Organization;
+          return Organization is not null;
+        case "requestProvider":
+          value = RequestProvider;
+          return RequestProvider is not null;
+        case "requestOrganization":
+          value = RequestOrganization;
+          return RequestOrganization is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Request is not null) yield return new KeyValuePair<string,object>("request",Request);
+      if (OutcomeElement is not null) yield return new KeyValuePair<string,object>("outcome",OutcomeElement);
+      if (DispositionElement is not null) yield return new KeyValuePair<string,object>("disposition",DispositionElement);
+      if (Ruleset is not null) yield return new KeyValuePair<string,object>("ruleset",Ruleset);
+      if (OriginalRuleset is not null) yield return new KeyValuePair<string,object>("originalRuleset",OriginalRuleset);
+      if (CreatedElement is not null) yield return new KeyValuePair<string,object>("created",CreatedElement);
+      if (Organization is not null) yield return new KeyValuePair<string,object>("organization",Organization);
+      if (RequestProvider is not null) yield return new KeyValuePair<string,object>("requestProvider",RequestProvider);
+      if (RequestOrganization is not null) yield return new KeyValuePair<string,object>("requestOrganization",RequestOrganization);
     }
 
   }

@@ -3,10 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A fhir value set filter.</summary>
@@ -69,6 +65,15 @@ public class FhirValueSetFilter : ICloneable
         Value = value;
     }
 
+    /// <summary>Initializes a new instance of the <see cref="FhirValueSetFilter"/> class.</summary>
+    /// <param name="source">Source to copy.</param>
+    public FhirValueSetFilter(FhirValueSetFilter source)
+    {
+        Property = source.Property;
+        Operation = source.Operation;
+        Value = source.Value;
+    }
+
     /// <summary>Gets the property.</summary>
     /// <value>The property.</value>
     public string Property { get; }
@@ -85,6 +90,6 @@ public class FhirValueSetFilter : ICloneable
     /// <returns>A copy of this object.</returns>
     public object Clone()
     {
-        return new FhirValueSetFilter(Property, Operation, Value);
+        return new FhirValueSetFilter(this);
     }
 }

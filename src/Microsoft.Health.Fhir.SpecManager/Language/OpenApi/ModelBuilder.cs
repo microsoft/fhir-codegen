@@ -2272,8 +2272,15 @@ public class ModelBuilder
             return Array.Empty<FhirOperation>();
         }
 
-        List<FhirOperation> operations = new();
+        HashSet<string> resourceAndParentsHash = _info.GetInheritanceNamesHash(resourceName);
 
+        if (!resourceAndParentsHash.Any())
+        {
+            // unknown resource name
+            return Array.Empty<FhirOperation>();
+        }
+
+        List<FhirOperation> operations = new();
 
         if (_caps != null)
         {
@@ -2297,7 +2304,8 @@ public class ModelBuilder
                     continue;
                 }
 
-                if (!(fhirOp.ResourceTypes?.Contains(resourceName) ?? false))
+                // since some operation definitions exclude the resource type when they mean 'Resource', missing defaults to true
+                if (!(fhirOp.ResourceTypes?.Any(rt => resourceAndParentsHash.Contains(rt)) ?? true))
                 {
                     Console.WriteLine($"Skipping {resourceName} requested operation '{capOp.DefinitionCanonical}' - definition cannot apply here");
                     continue;
@@ -2323,7 +2331,8 @@ public class ModelBuilder
                     continue;
                 }
 
-                if (!(fhirOp.ResourceTypes?.Contains(resourceName) ?? false))
+                // since some operation definitions exclude the resource type when they mean 'Resource', missing defaults to true
+                if (!(fhirOp.ResourceTypes?.Any(rt => resourceAndParentsHash.Contains(rt)) ?? true))
                 {
                     continue;
                 }

@@ -3,9 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq.Expressions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
@@ -39,6 +37,21 @@ public class FhirConstraint : ICloneable
         BestPracticeExplanation = bestPracticeExplanation;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirConstraint"/> class.
+    /// </summary>
+    /// <param name="source">Source for the.</param>
+    public FhirConstraint(FhirConstraint source)
+    {
+        Key = source.Key;
+        Severity = source.Severity;
+        Description = source.Description;
+        Expression = source.Expression;
+        XPath = source.XPath;
+        IsBestPractice = source.IsBestPractice;
+        BestPracticeExplanation = source.BestPracticeExplanation;
+    }
+
     /// <summary>Gets the constraint key (id).</summary>
     public string Key { get; }
 
@@ -64,13 +77,6 @@ public class FhirConstraint : ICloneable
     /// <returns>A new object that is a copy of this instance.</returns>
     public object Clone()
     {
-        return new FhirConstraint(
-            Key,
-            Severity,
-            Description,
-            Expression,
-            XPath,
-            IsBestPractice,
-            BestPracticeExplanation);
+        return new FhirConstraint(this);
     }
 }
