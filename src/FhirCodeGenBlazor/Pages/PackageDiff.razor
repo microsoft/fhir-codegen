@@ -6,6 +6,7 @@
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @using Microsoft.Health.Fhir.SpecManager.Manager
 @inject ISpecManagerWebService SpecService
+@inject IJSRuntime JS
 @inject IPackageDiffWebService DiffService
 @inject NavigationManager NavigationManager
 @inject ProtectedLocalStorage BrowserStore
@@ -139,11 +140,13 @@
           GroupFooterClass="mb-4"
           Dense="true"
     Striped="true"
-    Virtualize="false"
+    Virtualize="true"
     FixedHeader="true"
     FixedFooter="true">
     <ToolBarContent>
         <MudText Typo="Typo.h6">Differences between FHIR artifacts</MudText>
+        <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Filled.Download" OnClick="() => DownloadExpandedDiffsJson()">Filtered Diffs</MudButton>
+        <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Filled.Download" OnClick="() => DownloadDiffResultsJson()">Full Diff Results</MudButton>
         <MudSpacer />
         <MudTextField @bind-Value="artifactFilterText" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
     </ToolBarContent>
@@ -470,8 +473,9 @@
         string appliedFilter = "",
         bool checkShownArtifactClasses = false)
     {
-        if ((!(results?.DiffsByKeyByArtifactClass?.Any() ?? false)) ||
-            (!showArtifactClass.Any()))
+        //if ((!(results?.DiffsByKeyByArtifactClass?.Any() ?? false)) ||
+        //    (!showArtifactClass.Any()))
+        if (!(results?.DiffsByKeyByArtifactClass?.Any() ?? false))
         {
             _busy = false;
             return;
@@ -821,5 +825,31 @@
     private bool IsDisabledArtifactB()
     {
         return string.IsNullOrEmpty(directiveB);
+    }
+
+    /// <summary>Downloads the current filtered expanded diff records as JSON.</summary>
+    private async void DownloadExpandedDiffsJson()
+    {
+        IEnumerable<ExpandedDiffRec> downloadElements;
+
+        downloadElements = elements.Where(e => FilterFuncDefinition(e, artifactFilterText));
+
+        string content = System.Text.Json.JsonSerializer.Serialize(downloadElements);
+        using (Stream fs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content), false))
+        using (DotNetStreamReference streamRef = new DotNetStreamReference(fs, false))
+        {
+            await JS.InvokeVoidAsync("downloadFileFromStream", "expandedDiffs.json", streamRef);
+        }
+    }
+
+    /// <summary>Downloads the complete difference results as JSON.</summary>
+    private async void DownloadDiffResultsJson()
+    {
+        string content = System.Text.Json.JsonSerializer.Serialize(results);
+        using (Stream fs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content), false))
+        using (DotNetStreamReference streamRef = new DotNetStreamReference(fs, false))
+        {
+            await JS.InvokeVoidAsync("downloadFileFromStream", "diffResults.json", streamRef);
+        }
     }
 }

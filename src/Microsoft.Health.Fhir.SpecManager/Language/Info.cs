@@ -4,11 +4,8 @@
 // </copyright>
 
 using System.IO;
-using System.Numerics;
 using System.Text.Json;
-using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
-using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {

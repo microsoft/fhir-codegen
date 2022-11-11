@@ -123,7 +123,9 @@ else
         FixedHeader="true"
         RowsPerPage="100">
         <ToolBarContent>
-            <MudSwitch Color="Color.Info" @bind-Checked="showDetailedInfo" Label="Show detailed info" />
+            <MudSwitch Class="ms-2" Color="Color.Info" @bind-Checked="showDetailedInfo" Label="Show detailed info" />
+            <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Filled.Download" OnClick="() => DownloadElementPathsJson()">Paths (JSON)</MudButton>
+            <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Filled.Download" OnClick="() => DownloadFhirElementsJson()">Elements (JSON)</MudButton>
         </ToolBarContent>
         <ColGroup>
             <col style="width: 20vw!important;" />
@@ -689,7 +691,7 @@ else
 
         lock (_elementLockObject)
         {
-            elements = filteredElements.Select<ElementRecord, string>(e => e.Element.Path);
+            elements = filteredElements.Where(e => FilterFuncDefinition(e, searchPredicate)).Select<ElementRecord, string>(e => e.Element.Path);
         }
 
         string content = System.Text.Json.JsonSerializer.Serialize(elements);
@@ -707,7 +709,7 @@ else
 
         lock (_elementLockObject)
         {
-            elements = filteredElements.Select<ElementRecord, FhirElement>(e => e.Element);
+            elements = filteredElements.Where(e => FilterFuncDefinition(e, searchPredicate)).Select<ElementRecord, FhirElement>(e => e.Element);
         }
 
         string content = System.Text.Json.JsonSerializer.Serialize(elements);

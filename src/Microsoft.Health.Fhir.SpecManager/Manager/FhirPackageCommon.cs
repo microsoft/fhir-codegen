@@ -537,7 +537,7 @@ public static class FhirPackageCommon
         }
 
         // fallback to guessing
-        switch (val)
+        switch (val.ToUpperInvariant())
         {
             case "DSTU2":
             case "STU2":

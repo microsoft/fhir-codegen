@@ -135,14 +135,21 @@ public class DiffResults
         ChangedFmmLevel,
     }
 
+    /// <summary>Information about the difference.</summary>
+    /// <param name="path">    Full pathname of the file.</param>
+    /// <param name="diffType">Type of the difference.</param>
+    /// <param name="valueA">  The value a.</param>
+    /// <param name="valueB">  The value b.</param>
     public readonly record struct DiffRecord(
         string path,
         DiffTypeEnum diffType,
         string valueA,
         string valueB);
 
+    /// <summary>The diffs by key by artifact class.</summary>
     private Dictionary<FhirArtifactClassEnum, Dictionary<string, List<DiffRecord>>> _diffsByKeyByArtifactClass = new();
 
+    /// <summary>(Immutable) The valid artifact classes.</summary>
     private static readonly HashSet<FhirArtifactClassEnum> _validArtifactClasses = new()
     {
         FhirArtifactClassEnum.PrimitiveType,
