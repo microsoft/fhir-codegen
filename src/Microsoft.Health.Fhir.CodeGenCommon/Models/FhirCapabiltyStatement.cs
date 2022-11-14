@@ -127,7 +127,7 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
     {
         FhirMimeTypes = fhirMimeTypes ?? Array.Empty<string>();
         FhirMimeTypesEx = ProcessExpectationEnumerables(FhirMimeTypes, fhirMimeTypeExpectations);
- 
+
         PatchMimeTypes = patchMimeTypes ?? Array.Empty<string>();
         PatchMimeTypesEx = ProcessExpectationEnumerables(PatchMimeTypes, patchMimeTypeExpectations);
 
@@ -140,7 +140,7 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
         Instantiates = instantiates ?? Array.Empty<string>();
         InstantiatesEx = ProcessExpectationEnumerables(Instantiates, instantiateExpectations);
 
-        ImplementationGuides = implementationGuides;
+        ImplementationGuides = implementationGuides ?? Array.Empty<string>();
         ImplementationGuidesEx = ProcessExpectationEnumerables(ImplementationGuides, implementationGuideExpectations);
 
         ResourceInteractions = resourceInteractions;
