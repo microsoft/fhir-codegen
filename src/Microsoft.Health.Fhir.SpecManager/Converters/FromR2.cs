@@ -616,7 +616,10 @@ public sealed class FromR2 : IFhirConverter
             op.Type,
             parameters,
             op.Experimental == true,
-            op.Kind);
+            op.Kind,
+            op.Text?.Div ?? string.Empty,
+            op.Text?.Status ?? string.Empty,
+            string.Empty);
 
         // add our parameter
         fhirVersionInfo.AddOperation(operation);

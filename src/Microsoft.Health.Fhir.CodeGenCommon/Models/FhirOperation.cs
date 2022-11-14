@@ -3,15 +3,12 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A fhir operation.</summary>
-public class FhirOperation : ICloneable
+public class FhirOperation : FhirModelBase, ICloneable
 {
     /// <summary>Values that represent operation kind codes.</summary>
     public enum OperationKindCodes
@@ -44,8 +41,10 @@ public class FhirOperation : ICloneable
     /// <param name="resourceTypes">    A list of types of the resources.</param>
     /// <param name="parameters">       The allowed parameters to this operation.</param>
     /// <param name="isExperimental">   True if is experimental, false if not.</param>
-    /// <param name="kind">             The operation kind</param>
-    [System.Text.Json.Serialization.JsonConstructor]
+    /// <param name="kind">             The operation kind.</param>
+    /// <param name="narrative">        The narrative.</param>
+    /// <param name="narrativeStatus">  The narrative status.</param>
+    /// <param name="fhirVersion">      The server-reported FHIR version.</param>
     public FhirOperation(
         string id,
         Uri url,
@@ -65,25 +64,38 @@ public class FhirOperation : ICloneable
         List<string> resourceTypes,
         List<FhirParameter> parameters,
         bool isExperimental,
-        string kind)
+        string kind,
+        string narrative,
+        string narrativeStatus,
+        string fhirVersion)
+        : base(
+            FhirArtifactClassEnum.Operation,
+            id,
+            name,
+            string.Empty,
+            string.Empty,
+            string.Empty,
+            version,
+            url,
+            publicationStatus,
+            standardStatus,
+            fmmLevel,
+            isExperimental,
+            description,
+            string.Empty,
+            comment,
+            string.Empty,
+            narrative,
+            narrativeStatus,
+            fhirVersion)
     {
-        Id = id;
-        URL = url;
-        Version = version;
-        Name = name;
-        Description = description;
-        PublicationStatus = publicationStatus;
-        StandardStatus = standardStatus;
-        FhirMaturityLevel = fmmLevel;
         AffectsState = affectsState;
         DefinedOnSystem = definedOnSystem;
         DefinedOnType = definedOnType;
         DefinedOnInstance = definedOnInstance;
         Code = code;
-        Comment = comment;
         BaseDefinition = baseDefinition;
         Parameters = parameters;
-        IsExperimental = isExperimental;
 
         if (string.IsNullOrEmpty(kind))
         {
@@ -104,39 +116,6 @@ public class FhirOperation : ICloneable
         }
     }
 
-    /// <summary>Gets the identifier.</summary>
-    /// <value>The identifier.</value>
-    public string Id { get; }
-
-    /// <summary>Gets URL of the document.</summary>
-    /// <value>The URL.</value>
-    public Uri URL { get; }
-
-    /// <summary>Gets the version.</summary>
-    /// <value>The version.</value>
-    public string Version { get; }
-
-    /// <summary>Gets the name.</summary>
-    /// <value>The name.</value>
-    public string Name { get; }
-
-    /// <summary>Gets the description.</summary>
-    /// <value>The description.</value>
-    public string Description { get; }
-
-    /// <summary>Gets the publication status.</summary>
-    public string PublicationStatus { get; }
-
-    /// <summary>
-    /// Gets status of this type in the standards process
-    /// see: http://hl7.org/fhir/valueset-standards-status.html.
-    /// </summary>
-    /// <value>The standard status.</value>
-    public string StandardStatus { get; }
-
-    /// <summary>Gets the FHIR maturity level.</summary>
-    public int? FhirMaturityLevel { get; }
-
     /// <summary>Gets a value indicating whether the affects state.</summary>
     public bool? AffectsState { get; }
 
@@ -156,10 +135,6 @@ public class FhirOperation : ICloneable
     /// <value>The code.</value>
     public string Code { get; }
 
-    /// <summary>Gets the comment.</summary>
-    /// <value>The comment.</value>
-    public string Comment { get; }
-
     /// <summary>Gets the base definition.</summary>
     public string BaseDefinition { get; }
 
@@ -170,9 +145,6 @@ public class FhirOperation : ICloneable
     /// <summary>Gets allowed parameters to this operation.</summary>
     /// <value>The allowed parameters to this operation.</value>
     public List<FhirParameter> Parameters { get; }
-
-    /// <summary>Gets a value indicating whether this object is experimental.</summary>
-    public bool IsExperimental { get; }
 
     /// <summary>Gets the operation kind.</summary>
     public OperationKindCodes Kind { get; }
@@ -220,6 +192,9 @@ public class FhirOperation : ICloneable
             resourceTypes,
             parameters,
             IsExperimental,
-            Kind.ToLiteral());
+            Kind.ToLiteral(),
+            NarrativeText,
+            NarrativeStatus,
+            FhirVersion);
     }
 }

@@ -509,7 +509,10 @@ public sealed class FromFhirExpando : IFhirConverter
             op.GetStringList("resource") ?? null,
             parameters,
             op.GetBool("experimental") == true,
-            op.GetString("kind"));
+            op.GetString("kind"),
+            op.GetString("text", "div"),
+            op.GetString("text", "status"),
+            op.GetString("fhirVersion"));
 
         // add our operation
         fhirVersionInfo.AddOperation(operation);

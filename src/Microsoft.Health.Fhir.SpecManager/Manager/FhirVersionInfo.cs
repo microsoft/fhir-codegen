@@ -669,7 +669,10 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         null,
                         new List<FhirParameter>(),
                         false,
-                        string.Empty));
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
+                        options.CapStatmentFilter.FhirVersion));
             }
         }
 

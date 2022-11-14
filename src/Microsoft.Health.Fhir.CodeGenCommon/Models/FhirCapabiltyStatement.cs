@@ -45,7 +45,16 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
     /// <param name="url">                      FHIR Base URL for the server.</param>
     /// <param name="name">                     The name.</param>
     /// <param name="title">                    The title.</param>
+    /// <param name="version">                  Version of this Capability Statement.</param>
+    /// <param name="publicationStatus">        Publication Status (draft,etc.).</param>
+    /// <param name="standardStatus">           Standard status (e.g., STU, Normative).</param>
+    /// <param name="fmmLevel">                 FHIR Maturity Model number.</param>
+    /// <param name="isExperimental">           A value indicating whether this object is experimental.</param>
+    /// <param name="description">              The description.</param>
+    /// <param name="narrative">                The narrative.</param>
+    /// <param name="narrativeStatus">          The narrative status.</param>
     /// <param name="fhirVersion">              The server-reported FHIR version.</param>
+    /// <param name="capabilityStatementKind">  The capability statement kind.</param>
     /// <param name="fhirMimeTypes">            List of supported FHIR MIME types.</param>
     /// <param name="fhirMimeTypeExpectations"> List of conformance expectations for FHIR MIME types.</param>
     /// <param name="patchMimeTypes">           List of supported patch MIME types.</param>
