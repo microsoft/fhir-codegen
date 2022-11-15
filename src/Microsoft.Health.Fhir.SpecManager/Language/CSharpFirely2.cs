@@ -1676,7 +1676,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if ((element.BindingStrength != "required") ||
                 (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs)) ||
                 _exclusionSet.Contains(vs.URL) ||
-                _codedElementOverrides.Contains(element.Path)
+                (_codedElementOverrides.Contains(element.Path) && _info.FhirSequence >= FhirPackageCommon.FhirSequenceEnum.R4)
                 )
             {
                 hasDefinedEnum = false;
