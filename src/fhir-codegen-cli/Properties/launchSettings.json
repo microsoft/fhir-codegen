@@ -142,7 +142,7 @@
         },
         "Firely 2.x STU3": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R3.Core\\Model --load-r3 latest --language CSharpFirely2 --language-options CSharpFirely2|subset=bigsatellite --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.STU3.Core\\Model --load-r3 latest --language CSharpFirely2 --language-options CSharpFirely2|subset=bigsatellite --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 2.x R4": {
