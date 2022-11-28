@@ -122,7 +122,7 @@ public class ModelBuilder
         }
 
         Dictionary<string, OpenApiTag> tags = new();
-        tags.Add("System", new OpenApiTag() { Name = "System", Description = "Sever-level requests" });
+        tags.Add("System", new OpenApiTag() { Name = "System", Description = "Server-level requests" });
 
         doc.Paths = BuildPaths(schemas, tags);
 
