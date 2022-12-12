@@ -116,6 +116,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Quantity",
             "Range",
             "Reference",
+            "Signature",
             "UsageContext",
         };
 
@@ -125,7 +126,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly List<string> _bigCommmonComplexTypes = new()
         {
            "ElementDefinition",
-           "Signature"
         };
 
         /// <summary>
@@ -133,6 +133,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// </summary>
         private static readonly List<string> _commmonResourceTypes = new()
         {
+            "Binary",
+            "Bundle",
             "DomainResource",
             "OperationOutcome",
             "Parameters",
@@ -145,12 +147,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// </summary>
         private static readonly List<string> _bigCommmonResourceTypes = new()
         {
-            "Binary",
-            "Bundle",
             "CapabilityStatement",
             "CodeSystem",
             "ElementDefinition",
-            "Signature",
             "StructureDefinition",
             "ValueSet",
         };
@@ -376,6 +375,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             string infoFilename = Path.Combine(_exportDirectory, "Generated", "_GeneratorLog.cs");
 
+            // Add "4.3.0" to the FHIR Version enum. Can be removed when we start using 5.0-snapshot2 (which does include this code).
+            if (_info.ValueSetsByUrl.TryGetValue("http://hl7.org/fhir/ValueSet/FHIR-version", out FhirValueSetCollection versionVSs))
+            {
+                var versionVS = versionVSs.ValueSetsByVersion.Values.SingleOrDefault();
+                var insertAfter = versionVS.Concepts.FindIndex(0, versionVS.Concepts.Count - 1, fc => fc.Code == "4.2.0");
+                versionVS.Concepts.Insert(insertAfter + 1, new FhirConcept("http://hl7.org/fhir/FHIR-version", "4.3.0", "4.3.0", "", "R4B ."));
+            }
+
             using (var infoStream = new FileStream(infoFilename, FileMode.Create))
             using (var infoWriter = new ExportStreamWriter(infoStream))
             {
@@ -404,6 +411,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 AddModels(allComplexTypes, _info.ComplexTypes.Values);
                 AddModels(allComplexTypes, _commonR5DataTypes);
+
+                // For "common", we need to modify the (R4+-based) definition of Binary, to include
+                // the pre-R4 element "content".
+                if (_info.Resources.TryGetValue("Binary", out FhirComplex binary))
+                {
+                    if (!binary.Elements.ContainsKey("Binary.content") && binary.Elements.TryGetValue("Binary.data", out FhirElement data))
+                    {
+                        var contentElement = new FhirElement("Binary.content", "Binary.content", data.ExplicitName, data.URL,
+                            data.FieldOrder, data.ShortDescription, data.Purpose, data.Comment, data.ValidationRegEx,
+                            data.BaseTypeName, data.ElementTypes, 1, "1",
+                            data.IsModifier, data.IsModifierReason, data.IsSummary, data.IsMustSupport,
+                            data.IsSimple, data.DefaultFieldName, data.DefaultFieldValue,
+                            data.FixedFieldName, data.FixedFieldValue, data.PatternFieldName, data.PatternFieldValue,
+                            data.IsInherited, data.ModifiesParent, data.BindingStrength, data.ValueSet, data.FiveWs,
+                            data.Representations
+                            );
+
+                        binary.Elements.Add(contentElement.Path, contentElement);
+                    }
+                }
 
                 if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Resource))
                 {
@@ -724,16 +751,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         {
                             continue;
                         }
-
-                        //if (subset.HasFlag(GenSubset.Common) && !_commonValueSets.Contains(vs.URL))
-                        //{
-                        //    continue;
-                        //}
-
-                        //if (subset.HasFlag(GenSubset.BigCommon) && !_bigCommonValueSets.Contains(vs.URL))
-                        //{
-                        //    continue;
-                        //}
 
                         // If this is a shared valueset that will be generated in the common library,
                         // don't also generate it here.
@@ -1930,34 +1947,45 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              *
              * If we start to include more classes like this, we might need to
              * automate this, by scanning differences between 3/4/5/6/7 etc.. */
-            string BuildExceptionElementAttribute(string versionString = null)
+            void BuildFhirElementAttribute(string since = null, string until = null)
             {
-                var prefix = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
-                if (versionString is { })
+                var attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
+                if (since is { })
                 {
-                    prefix += $", Since=FhirRelease.{versionString}";
+                    attributeText += $", Since=FhirRelease.{since}";
                 }
 
-                prefix += ")]";
-                return prefix;
+                attributeText += ")]";
+                _writer.WriteLineIndented(attributeText);
+
+                if (until is not null)
+                {
+                    _writer.WriteLineIndented($"[NotMapped(Since=FhirRelease.{until})]");
+                }
             }
 
-            if (element.Path == "Meta.source")
+            if (element.Path is "Meta.source" or "Reference.type" or "Bundle.timestamp" or "Binary.data")
             {
-                _writer.WriteLineIndented(BuildExceptionElementAttribute("R4"));
+                BuildFhirElementAttribute("R4");
             }
-            else if (element.Path == "Reference.type")
+            else if (element.Path is "Binary.content")
             {
-                _writer.WriteLineIndented(BuildExceptionElementAttribute("R4"));
+                BuildFhirElementAttribute(until: "R4");
+            }
+            else if (element.Path is "ValueSet.compose.property" or "ValueSet.compose.include.copyright"
+                or "ValueSet.expansion.property" or "ValueSet.expansion.contains.property"
+                or "ValueSet.scope")
+            {
+                BuildFhirElementAttribute("R5");
+            }
+            else if (element.Path == "Meta.profile")
+            {
+                BuildFhirElementAttribute();
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Canonical), Since = FhirRelease.R4)]");
             }
             else
             {
-                _writer.WriteLineIndented(BuildExceptionElementAttribute());
-            }
-
-            if (element.Path == "Meta.profile")
-            {
-                _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Canonical), Since = FhirRelease.R4)]");
+                BuildFhirElementAttribute();
             }
 
             // Generate the [AllowedTypes] and [ResourceReference] attributes, except when we are
