@@ -229,7 +229,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// </summary>
         private readonly Dictionary<string, string> _enumNamesOverride = new()
         {
-            ["CharacteristicCombination"] = "CharacteristicCombinationCode"
+            ["http://hl7.org/fhir/ValueSet/characteristic-combination"] = "CharacteristicCombinationCode",
+            ["http://hl7.org/fhir/ValueSet/claim-use"] = "ClaimUseCode",
+            ["http://hl7.org/fhir/ValueSet/content-type"] = "ContentTypeCode",
+            ["http://hl7.org/fhir/ValueSet/exposure-state"] = "ExposureStateCode",
+            ["http://hl7.org/fhir/ValueSet/verificationresult-status"] = "StatusCode",
+            ["http://terminology.hl7.org/ValueSet/v3-Confidentiality"] = "ConfidentialityCode",
+            ["http://hl7.org/fhir/ValueSet/variable-type"] = "VariableTypeCode",
+            ["http://hl7.org/fhir/ValueSet/group-measure"] = "GroupMeasureCode"
         };
 
 
@@ -1537,11 +1544,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 #pragma warning disable CA1307 // Specify StringComparison
             string name = (vs.Name ?? vs.Id).Replace(" ", string.Empty).Replace("_", string.Empty);
 #pragma warning restore CA1307 // Specify StringComparison
-            string nameSanitized = FhirUtils.SanitizeForProperty(name, _reservedWords);
+            string nameSanitized = FhirUtils.SanitizeForProperty(name, _reservedWords, FhirTypeBase.NamingConvention.PascalCase);
 
             // Enums and their containing classes cannot have the same name,
             // so we have to correct these here
-            if (_enumNamesOverride.TryGetValue(nameSanitized, out var replacementName))
+            if (_enumNamesOverride.TryGetValue(vs.URL, out var replacementName))
             {
                 nameSanitized = replacementName;
             }
@@ -1790,7 +1797,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     if (vsName.ToUpperInvariant() == pascal.ToUpperInvariant())
                     {
-                        matchTrailer = "_";
+                        throw new InvalidOperationException($"Using the name '{pascal}' for the property would lead to a compiler error. " +
+                            $"Change the name of the valueset '{vs.URL}' by adapting the _enunNamesOverride variable in the generator and rerun.");
+                        //matchTrailer = "_";
                     }
                 }
 
