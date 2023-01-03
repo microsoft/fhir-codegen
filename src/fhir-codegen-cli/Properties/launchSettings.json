@@ -147,7 +147,7 @@
         },
         "Firely 5.x R4B": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R4B.Core\\Model --load-r4b 4.3.0 --language CSharpFirely2 --language-options CSharpFirely2 --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R4B\\Model --load-r4b 4.3.0 --language CSharpFirely2 --language-options CSharpFirely2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x R5": {
