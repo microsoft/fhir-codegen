@@ -125,39 +125,34 @@
             "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --load-r3 latest --load-r4 latest --load-r5 latest --language Info|TypeScript|CSharpBasic",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "GenerateFirely": {
+        "Firely 5.x Base": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --language CSharpFirely1|CSharpFirely2 --official-expansions-only true --language-options CSharpFirely1|DetailedHeader=false",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Base\\Model --load-r5 5.0.0-snapshot1 --language CSharpFirely2 --language-options CSharpFirely2|subset=base --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "Firely 2.x Common": {
+        "Firely 5.x Conformance": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Support.Poco\\Model --load-r5 5.0.0-snapshot1 --language CSharpFirely2 --language-options CSharpFirely2|subset=common --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Conformance\\Model --load-r5 5.0.0-snapshot1 --language CSharpFirely2 --language-options CSharpFirely2|subset=conformance --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "Firely 2.x Big Common": {
+        "Firely 5.x STU3": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r5 5.0.0-snapshot1 --language CSharpFirely2 --language-options CSharpFirely2|subset=bigcommon --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.STU3\\Model --load-r3 3.0.2 --language CSharpFirely2 --language-options CSharpFirely2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "Firely 2.x STU3": {
+        "Firely 5.x R4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.STU3.Core\\Model --load-r3 latest --language CSharpFirely2 --language-options CSharpFirely2|subset=bigsatellite --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R4\\Model --load-r4 4.0.1 --language CSharpFirely2 --language-options CSharpFirely2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "Firely 2.x R4": {
+        "Firely 5.x R4B": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R4.Core\\Model --load-r4 4.0.1 --language CSharpFirely2 --language-options CSharpFirely2|subset=satellite --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R4B\\Model --load-r4b 4.3.0 --language CSharpFirely2 --language-options CSharpFirely2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "Firely 2.x R4B": {
+        "Firely 5.x R5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R4B.Core\\Model --load-r4b 4.3.0 --language CSharpFirely2 --language-options CSharpFirely2|subset=satellite --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "Firely 2.x R5": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R5.Core\\Model --load-r5 5.0.0-snapshot1 --language CSharpFirely2 --language-options CSharpFirely2|subset=satellite --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R5\\Model --load-r5 5.0.0-snapshot1 --language CSharpFirely2 --language-options CSharpFirely2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "server2": {
