@@ -137,7 +137,7 @@
         },
         "Firely 5.x STU3": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.STU3.Core\\Model --load-r3 latest --language CSharpFirely2 --language-options CSharpFirely2 --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.STU3\\Model --load-r3 3.0.2 --language CSharpFirely2 --language-options CSharpFirely2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x R4": {
