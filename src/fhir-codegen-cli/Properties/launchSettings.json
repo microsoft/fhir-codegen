@@ -132,7 +132,7 @@
         },
         "Firely 5.x Conformance": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r5 5.0.0-snapshot1 --language CSharpFirely2 --language-options CSharpFirely2|subset=conformance --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Conformance\\Model --load-r5 5.0.0-snapshot1 --language CSharpFirely2 --language-options CSharpFirely2|subset=conformance --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x STU3": {
