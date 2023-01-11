@@ -98,6 +98,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// </summary>
         private static readonly List<string> _baseSubsetComplexTypes = new()
         {
+            "Attachment",
             "BackboneElement",
             "BackboneType",
             "Base",
@@ -126,6 +127,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly List<string> _conformanceSubsetComplexTypes = new()
         {
            "ElementDefinition",
+           "RelatedArtifact",
         };
 
         /// <summary>
@@ -186,7 +188,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // For these valuesets the algorithm to determine whather a vs is shared
             // is still considering core extensions too. When this is corrected,
             // these can probably go.
-            "http://hl7.org/fhir/ValueSet/constraint-severity"
+            "http://hl7.org/fhir/ValueSet/constraint-severity",
+
+            "http://hl7.org/fhir/ValueSet/codesystem-content-mode"
         };
 
         /// <summary>Gets the reserved words.</summary>
@@ -225,9 +229,90 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["http://hl7.org/fhir/ValueSet/verificationresult-status"] = "StatusCode",
             ["http://terminology.hl7.org/ValueSet/v3-Confidentiality"] = "ConfidentialityCode",
             ["http://hl7.org/fhir/ValueSet/variable-type"] = "VariableTypeCode",
-            ["http://hl7.org/fhir/ValueSet/group-measure"] = "GroupMeasureCode"
+            ["http://hl7.org/fhir/ValueSet/group-measure"] = "GroupMeasureCode",
+            ["http://hl7.org/fhir/ValueSet/coverage-kind"] = "CoverageKindCode",
+            ["http://hl7.org/fhir/ValueSet/fhir-types"] = "FHIRAllTypes"
         };
 
+        private readonly Dictionary<string, string> _sinceAttributes = new()
+        {
+            ["Meta.source"] = "R4",
+            ["Reference.type"] = "R4",
+            ["Bundle.timestamp"] = "R4",
+            ["Binary.data"] = "R4",
+            ["ValueSet.compose.property"] = "R5",
+            ["ValueSet.compose.include.copyright"] = "R5",
+            ["ValueSet.expansion.property"] = "R5",
+            ["ValueSet.expansion.contains.property"] = "R5",
+            ["ValueSet.scope"] = "R5",
+            ["Bundle.issues"] = "R5",
+            ["CapabilityStatement.rest.resource.conditionalPatch"] = "R5",
+            ["CapabilityStatement.versionAlgorithm[x]"] = "R5",
+            ["CapabilityStatement.copyrightLabel"] = "R5",
+            ["CapabilityStatement.acceptLanguage"] = "R5",
+            ["CodeSystem.concept.designation.additionalUse"] = "R5",
+            ["CodeSystem.approvalDate"] = "R5",
+            ["CodeSystem.lastReviewDate"] = "R5",
+            ["CodeSystem.effectivePeriod"] = "R5",
+            ["CodeSystem.topic"] = "R5",
+            ["CodeSystem.author"] = "R5",
+            ["CodeSystem.editor"] = "R5",
+            ["CodeSystem.reviewer"] = "R5",
+            ["CodeSystem.endorser"] = "R5",
+            ["CodeSystem.relatedArtifact"] = "R5",
+            ["ElementDefinition.constraint.suppress"] = "R5",
+            ["ElementDefinition.mustHaveValue"] = "R5",
+            ["ElementDefinition.valueAlternatives"] = "R5",
+            ["ElementDefinition.obligation"] = "R5",
+            ["ElementDefinition.obligation.code"] = "R5",
+            ["ElementDefinition.obligation.actor"] = "R5",
+            ["ElementDefinition.obligation.documentation"] = "R5",
+            ["ElementDefinition.obligation.usage"] = "R5",
+            ["ElementDefinition.obligation.filter"] = "R5",
+            ["ElementDefinition.obligation.filterDocumentation"] = "R5",
+            ["ElementDefinition.obligation.process"] = "R5",
+            ["ElementDefinition.binding.additional"] = "R5",
+            ["ElementDefinition.binding.additional.purpose"] = "R5",
+            ["ElementDefinition.binding.additional.valueSet"] = "R5",
+            ["ElementDefinition.binding.additional.documentation"] = "R5",
+            ["ElementDefinition.binding.additional.shortDoco"] = "R5",
+            ["ElementDefinition.binding.additional.usage"] = "R5",
+            ["ElementDefinition.binding.additional.any"] = "R5",
+            ["StructureDefinition.versionAlgorithm[x]"] = "R5",
+            ["StructureDefinition.copyrightLabel"] = "R5",
+            ["ValueSet.compose.include.concept.designation.additionalUse"] = "R5",
+            ["ValueSet.expansion.next"] = "R5",
+            ["ValueSet.expansion.contains.property.subProperty"] = "R5",
+            ["ValueSet.expansion.contains.property.subProperty.code"] = "R5",
+            ["ValueSet.expansion.contains.property.subProperty.value[x]"] = "R5",
+            ["ValueSet.approvalDate"] = "R5",
+            ["ValueSet.lastReviewDate"] = "R5",
+            ["ValueSet.effectivePeriod"] = "R5",
+            ["ValueSet.topic"] = "R5",
+            ["ValueSet.author"] = "R5",
+            ["ValueSet.editor"] = "R5",
+            ["ValueSet.reviewer"] = "R5",
+            ["ValueSet.endorser"] = "R5",
+            ["ValueSet.relatedArtifact"] = "R5",
+            ["Attachment.height"] = "R5",
+            ["Attachment.width"] = "R5",
+            ["Attachment.frames"] = "R5",
+            ["Attachment.duration"] = "R5",
+            ["Attachment.pages"] = "R5",
+            ["RelatedArtifact.classifier"] = "R5",
+            ["RelatedArtifact.resourceReference"] = "R5",
+            ["RelatedArtifact.publicationStatus"] = "R5",
+            ["RelatedArtifact.publicationDate"] = "R5",
+
+        };
+
+        private readonly Dictionary<string, string> _untilAttributes = new()
+        {
+            ["Binary.content"] = "R4",
+            ["ElementDefinition.constraint.xpath"] = "R5",
+            ["ValueSet.scope.focus"] = "R5",
+            ["RelatedArtifact.url"] = "R5",
+        };
 
         /// <summary>True to export five ws.</summary>
         private bool _exportFiveWs = true;
@@ -304,14 +389,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _ = options.LanguageOptions.TryGetValue("subset", out string ss);
 
             var subset = (ss ?? "satellite") switch
-                {
-                    "base" => GenSubset.Base,
-                    "conformance" => GenSubset.Conformance,
-                    "satellite" when info.FhirSequence == FhirPackageCommon.FhirSequenceEnum.STU3
-                        => GenSubset.Satellite | GenSubset.Conformance,
-                    "satellite" => GenSubset.Satellite,
-                    _ => throw new NotSupportedException($"Unknown subset flag '{ss}'.")
-                };
+            {
+                "base" => GenSubset.Base,
+                "conformance" => GenSubset.Conformance,
+                "satellite" when info.FhirSequence == FhirPackageCommon.FhirSequenceEnum.STU3
+                    => GenSubset.Satellite | GenSubset.Conformance,
+                "satellite" => GenSubset.Satellite,
+                _ => throw new NotSupportedException($"Unknown subset flag '{ss}'.")
+            };
 
             if (subset.HasFlag(GenSubset.Base) && info.FhirSequence != FhirPackageCommon.FhirSequenceEnum.R5)
             {
@@ -357,13 +442,100 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             string infoFilename = Path.Combine(_exportDirectory, "Generated", "_GeneratorLog.cs");
 
-            // Add "4.3.0" to the FHIR Version enum. Can be removed when we start using 5.0-snapshot2 (which does include this code).
-            if (_info.ValueSetsByUrl.TryGetValue("http://hl7.org/fhir/ValueSet/FHIR-version", out FhirValueSetCollection versionVSs))
+            // We need to modify the (R4+-based) definition of Binary, to include
+            // the pre-R4 element "content".
+            if (_info.Resources.TryGetValue("Binary", out FhirComplex binary))
             {
-                var versionVS = versionVSs.ValueSetsByVersion.Values.Single();
-                var insertAfter = versionVS.Concepts.FindIndex(0, versionVS.Concepts.Count - 1, fc => fc.Code == "4.2.0");
-                versionVS.Concepts.Insert(insertAfter + 1, new FhirConcept("http://hl7.org/fhir/FHIR-version", "4.3.0", "4.3.0", "", "R4B ."));
+                if (!binary.Elements.ContainsKey("Binary.content") && binary.Elements.TryGetValue("Binary.data", out FhirElement data))
+                {
+                    var contentElement = new FhirElement("Binary.content", "Binary.content", data.ExplicitName, data.URL,
+                        data.FieldOrder, data.ShortDescription, data.Purpose, data.Comment, data.ValidationRegEx,
+                        data.BaseTypeName, data.ElementTypes, 1, "1",
+                        data.IsModifier, data.IsModifierReason, data.IsSummary, data.IsMustSupport,
+                        data.IsSimple, data.DefaultFieldName, data.DefaultFieldValue,
+                        data.FixedFieldName, data.FixedFieldValue, data.PatternFieldName, data.PatternFieldValue,
+                        data.IsInherited, data.ModifiesParent, data.BindingStrength, data.ValueSet, data.FiveWs,
+                        data.Representations
+                        );
+
+                    binary.Elements.Add(contentElement.Path, contentElement);
+                }
             }
+
+            // Element ValueSet.scope.focus has been removed in R5 (5.0.0-snapshot3). Adding this element to the list of Resources,
+            // so we can add a [NotMapped] attribute later.
+            if (_info.NodeByPath.TryGetValue("ValueSet.scope", out FhirNodeInfo scopeNode)
+                && scopeNode.GetSource() is FhirComplex scopeComplex
+                && !scopeComplex.Elements.ContainsKey("ValueSet.scope.focus"))
+            {
+                var focusElement = new FhirElement(id: "ValueSet.scope.focus", path: "ValueSet.scope.focus", explicitName: null, url: null,
+                    fieldOrder: 3, shortDescription: "General focus of the Value Set as it relates to the intended semantic space",
+                    purpose: null, comment: null, validationRegEx: null,
+                    baseTypeName: "string", elementTypes: null, cardinalityMin: 0, cardinalityMax: "1",
+                    isModifier: false, isModifierReason: null, isSummary: false, isMustSupport: false,
+                    isSimple: false, defaultFieldName: null, defaultFieldValue: null,
+                    fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
+                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
+                    representations: null
+                    );
+
+                scopeComplex.Elements.Add(focusElement.Path, focusElement);
+            }
+
+            // Element Bundle.link.relation changed from FhirString to Code<Hl7.Fhir.Model.Bundle.LinkRelationTypes> in R5 (5.0.0-snapshot3.
+            // We decided to leave the type to FhirString
+            if (_info.NodeByPath.TryGetValue("Bundle.link", out FhirNodeInfo linkNode)
+                && linkNode.GetSource() is FhirComplex linkComplex
+                && linkComplex.Elements.TryGetValue("Bundle.link.relation", out FhirElement element))
+            {
+                element.BaseTypeName = "string";
+            }
+
+
+            // Element ElementDefinition.constraint.xpath has been removed in R5 (5.0.0-snapshot3). Adding this element to the list of ComplexTypes,
+            // so we can add a [NotMapped] attribute later.
+            if (_info.NodeByPath.TryGetValue("ElementDefinition.constraint", out FhirNodeInfo constraintNode)
+                && constraintNode.GetSource() is FhirComplex constraintComplex
+                && !constraintComplex.Elements.ContainsKey("ElementDefinition.constraint.xpath"))
+            {
+                var xPathElement = new FhirElement(id: "ElementDefinition.constraint.xpath", path: "ElementDefinition.constraint.xpath",
+                    explicitName: null, url: null,
+                    fieldOrder: 7, shortDescription: "XPath expression of constraint",
+                    purpose: null, comment: "Elements SHALL use \"f\" as the namespace prefix for the FHIR namespace, and \"x\" for the xhtml namespace, and SHALL NOT use any other prefixes.     Note: XPath is generally considered not useful because it does not apply to JSON and other formats and because of XSLT implementation issues, and may be removed in the future.",
+                    validationRegEx: null,
+                    baseTypeName: "string", elementTypes: null, cardinalityMin: 0, cardinalityMax: "1",
+                    isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
+                    isSimple: false, defaultFieldName: null, defaultFieldValue: null,
+                    fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
+                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
+                    representations: null
+                    ); ;
+
+                constraintComplex.Elements.Add(xPathElement.Path, xPathElement);
+            }
+
+            // We need to modify the (R4+-based) definition of Binary, to include
+            // the pre-R4 element "content".
+            if (_info.ComplexTypes.TryGetValue("RelatedArtifact", out FhirComplex relatedArtifact))
+            {
+                if (!relatedArtifact.Elements.ContainsKey("RelatedArtifact.url"))
+                {
+                    var urlElement = new FhirElement(id: "RelatedArtifact.url", path: "RelatedArtifact.url", explicitName: null, url: null,
+                    fieldOrder: 6, shortDescription: "Where the artifact can be accessed",
+                    purpose: null, comment: null, validationRegEx: null,
+                    baseTypeName: "url", elementTypes: null, cardinalityMin: 0, cardinalityMax: "1",
+                    isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
+                    isSimple: false, defaultFieldName: null, defaultFieldValue: null,
+                    fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
+                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
+                    representations: null
+                    );
+
+                    relatedArtifact.Elements.Add(urlElement.Path, urlElement);
+                }
+            }
+
+
 
             using (var infoStream = new FileStream(infoFilename, FileMode.Create))
             using (var infoWriter = new ExportStreamWriter(infoStream))
@@ -393,26 +565,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 AddModels(allComplexTypes, _info.ComplexTypes.Values);
                 AddModels(allComplexTypes, _sharedR5DataTypes);
-
-                // We need to modify the (R4+-based) definition of Binary, to include
-                // the pre-R4 element "content".
-                if (_info.Resources.TryGetValue("Binary", out FhirComplex binary))
-                {
-                    if (!binary.Elements.ContainsKey("Binary.content") && binary.Elements.TryGetValue("Binary.data", out FhirElement data))
-                    {
-                        var contentElement = new FhirElement("Binary.content", "Binary.content", data.ExplicitName, data.URL,
-                            data.FieldOrder, data.ShortDescription, data.Purpose, data.Comment, data.ValidationRegEx,
-                            data.BaseTypeName, data.ElementTypes, 1, "1",
-                            data.IsModifier, data.IsModifierReason, data.IsSummary, data.IsMustSupport,
-                            data.IsSimple, data.DefaultFieldName, data.DefaultFieldValue,
-                            data.FixedFieldName, data.FixedFieldValue, data.PatternFieldName, data.PatternFieldValue,
-                            data.IsInherited, data.ModifiesParent, data.BindingStrength, data.ValueSet, data.FiveWs,
-                            data.Representations
-                            );
-
-                        binary.Elements.Add(contentElement.Path, contentElement);
-                    }
-                }
 
                 if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Resource))
                 {
@@ -1551,15 +1703,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     string codeName = ConvertEnumValue(concept.Code);
                     string codeValue = FhirUtils.SanitizeForValue(concept.Code);
+                    string description = string.IsNullOrEmpty(concept.Definition)
+                        ? $"MISSING DESCRIPTION\n(system: {concept.System})"
+                        : $"{concept.Definition}\n(system: {concept.System})";
 
-                    if (string.IsNullOrEmpty(concept.Definition))
+                    if (concept.HasProperty("status", "deprecated"))
                     {
-                        WriteIndentedComment($"MISSING DESCRIPTION\n(system: {concept.System})");
+                        description += "\nThis enum is DEPRECATED.";
                     }
-                    else
-                    {
-                        WriteIndentedComment($"{concept.Definition}\n(system: {concept.System})");
-                    }
+
+                    WriteIndentedComment(description);
 
                     string display = FhirUtils.SanitizeForValue(concept.Display);
 
@@ -1673,8 +1826,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
 
-            WriteIndentedComment(element.ShortDescription);
-
             BuildElementOptionals(
                 element,
                 subset,
@@ -1699,12 +1850,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             */
             if (element.Path == "OperationOutcome.issue.severity")
             {
+                WriteIndentedComment(element.ShortDescription);
                 _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, IsModifier=true, Order={GetOrder(element)}{choice}{fiveWs})]");
                 _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs}, Since=FhirRelease.R4)]");
             }
+            else if (_sinceAttributes.TryGetValue(element.Path, out string since))
+            {
+                BuildFhirElementAttribute(element.Name, element.ShortDescription, summary, isModifier, element, choice, fiveWs, since: since);
+            }
+            else if (_untilAttributes.TryGetValue(element.Path, out string until))
+            {
+                BuildFhirElementAttribute(element.Name, element.ShortDescription, summary, isModifier, element, choice, fiveWs, until: until);
+            }
             else
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs})]");
+                BuildFhirElementAttribute(element.Name, element.ShortDescription, summary, isModifier, element, choice, fiveWs);
             }
 
             if (hasDefinedEnum)
@@ -1762,7 +1922,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     if (vsName.ToUpperInvariant() == pascal.ToUpperInvariant())
                     {
                         throw new InvalidOperationException($"Using the name '{pascal}' for the property would lead to a compiler error. " +
-                            $"Change the name of the valueset '{vs.URL}' by adapting the _enunNamesOverride variable in the generator and rerun.");
+                            $"Change the name of the valueset '{vs.URL}' by adapting the _enumNamesOverride variable in the generator and rerun.");
                         //matchTrailer = "_";
                     }
                 }
@@ -1874,6 +2034,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
+        private void BuildFhirElementAttribute(string name, string shortDescription, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, string until = null)
+        {
+            var description =
+                (since, until) switch
+                {
+                    (not null, _) => shortDescription +
+                                     $". Note: Element was introduced in {since}, do not use when working with older releases.",
+                    (_, not null) => shortDescription +
+                                     $". Note: Element is deprecated since {until}, do not use with {until} and newer releases.",
+                    _ => shortDescription
+                };
+
+            WriteIndentedComment(description);
+
+            string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
+            if (since is { })
+            {
+                attributeText += $", Since=FhirRelease.{since}";
+            }
+
+            attributeText += ")]";
+            _writer.WriteLineIndented(attributeText);
+
+            if (until is not null)
+            {
+                _writer.WriteLineIndented($"[NotMapped(Since=FhirRelease.{until})]");
+            }
+        }
+
         /// <summary>Writes an element.</summary>
         /// <param name="exportedComplexName">Name of the exported complex parent.</param>
         /// <param name="element">            The element.</param>
@@ -1919,57 +2108,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              *
              * If we start to include more classes like this, we might need to
              * automate this, by scanning differences between 3/4/5/6/7 etc.. */
-            void BuildFhirElementAttribute(string since = null, string until = null)
+
+            var description = element.Path switch
             {
-                var description =
-                    (since, until) switch
-                    {
-                        (not null, _) => element.ShortDescription +
-                                         $". Note: Element was introduced in {since}, do not use when working with older releases.",
-                        (_, not null) => element.ShortDescription +
-                                         $". Note: Element is deprecated since {until}, do not use with {until} and newer releases.",
-                        _ => element.ShortDescription
-                    };
+                "Signature.when" or "Signature.who" => element.ShortDescription + ". Note: Since R5 the cardinality is expanded to 0..1 (previous it was 1..1)",
+                "Signature.type" => element.ShortDescription + ". Note: Since R5 the cardinality is expanded to 0..* (previous it was 1..*)",
+                _ => element.ShortDescription
+            };
 
-                WriteIndentedComment(description);
-
-                string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
-                if (since is { })
-                {
-                    attributeText += $", Since=FhirRelease.{since}";
-                }
-
-                attributeText += ")]";
-                _writer.WriteLineIndented(attributeText);
-
-                if (until is not null)
-                {
-                    _writer.WriteLineIndented($"[NotMapped(Since=FhirRelease.{until})]");
-                }
+            if (_sinceAttributes.TryGetValue(element.Path, out string since))
+            {
+                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs, since: since);
             }
-
-            if (element.Path is "Meta.source" or "Reference.type" or "Bundle.timestamp" or "Binary.data")
+            else if (_untilAttributes.TryGetValue(element.Path, out string until))
             {
-                BuildFhirElementAttribute("R4");
-            }
-            else if (element.Path is "Binary.content")
-            {
-                BuildFhirElementAttribute(until: "R4");
-            }
-            else if (element.Path is "ValueSet.compose.property" or "ValueSet.compose.include.copyright"
-                or "ValueSet.expansion.property" or "ValueSet.expansion.contains.property"
-                or "ValueSet.scope")
-            {
-                BuildFhirElementAttribute("R5");
+                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs, until: until);
             }
             else if (element.Path == "Meta.profile")
             {
-                BuildFhirElementAttribute();
+                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Canonical), Since = FhirRelease.R4)]");
+            }
+            else if (element.Path == "Bundle.link.relation")
+            {
+                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Code), Since = FhirRelease.R5)]");
             }
             else
             {
-                BuildFhirElementAttribute();
+                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
             }
 
             // Generate the [AllowedTypes] and [ResourceReference] attributes, except when we are

@@ -1207,7 +1207,7 @@ public class FhirCacheService : IDisposable
             SaveIniData(_iniFilePath, data);
         }
 
-        Console.WriteLine($" << cache contains {_packagesByDirective.Count} packges");
+        Console.WriteLine($" << cache contains {_packagesByDirective.Count} packages");
     }
 
     /// <summary>Updates the package state.</summary>
