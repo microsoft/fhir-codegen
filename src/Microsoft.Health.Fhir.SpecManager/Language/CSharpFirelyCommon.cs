@@ -183,6 +183,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             result = result.Replace(".", "_");
             result = result.Replace(")", "_");
             result = result.Replace("(", "_");
+            result = result.Replace("/", "_");
+            result = result.Replace("+", "_");
 #pragma warning restore CA1307 // Specify StringComparison
 
             if (char.IsDigit(result[0]))

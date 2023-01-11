@@ -505,10 +505,8 @@ public abstract class FhirUtils
         string value = input.Trim();
         value = value.Replace("\"", "\\\"");
 
-        if (value.Contains("\n", StringComparison.Ordinal))
-        {
-            Console.Write("");
-        }
+        value = value.Replace("\n", string.Empty);
+
 
         return value;
     }
