@@ -2140,6 +2140,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(UnsignedInt), Since = FhirRelease.STU3)]");
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Integer64), Since = FhirRelease.R5)]");
             }
+            else if (element.Path is
+                "ElementDefinition.constraint.requirements" or
+                "ElementDefinition.binding.description" or
+                "ElementDefinition.mapping.comment")
+            {
+                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof(FhirString))]");
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Markdown), Since = FhirRelease.R5)]");
+            }
             else
             {
                 BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
