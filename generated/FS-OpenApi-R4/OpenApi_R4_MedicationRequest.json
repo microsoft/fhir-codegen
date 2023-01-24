@@ -2061,18 +2061,20 @@
       }
     }
   },
+  "security": [
+    {
+      "openId": [
+        "openid",
+        "profile",
+        "fhirUser",
+        "offline_access"
+      ]
+    }
+  ],
   "tags": [
     {
       "name": "MedicationRequest",
       "description": "Ordering of medication for patient or group"
     }
-  ],
-  "security": {
-    "openId": [
-      "openid",
-      "profile",
-      "fhirUser",
-      "offline_access"
-    ]
-  }
+  ]
 }

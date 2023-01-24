@@ -2013,18 +2013,20 @@
       }
     }
   },
+  "security": [
+    {
+      "openId": [
+        "openid",
+        "profile",
+        "fhirUser",
+        "offline_access"
+      ]
+    }
+  ],
   "tags": [
     {
       "name": "InsurancePlan",
       "description": "Details of a Health Insurance product/plan provided by an organization"
     }
-  ],
-  "security": {
-    "openId": [
-      "openid",
-      "profile",
-      "fhirUser",
-      "offline_access"
-    ]
-  }
+  ]
 }

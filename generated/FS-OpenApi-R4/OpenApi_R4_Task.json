@@ -2129,18 +2129,20 @@
       }
     }
   },
+  "security": [
+    {
+      "openId": [
+        "openid",
+        "profile",
+        "fhirUser",
+        "offline_access"
+      ]
+    }
+  ],
   "tags": [
     {
       "name": "Task",
       "description": "A task to be performed"
     }
-  ],
-  "security": {
-    "openId": [
-      "openid",
-      "profile",
-      "fhirUser",
-      "offline_access"
-    ]
-  }
+  ]
 }

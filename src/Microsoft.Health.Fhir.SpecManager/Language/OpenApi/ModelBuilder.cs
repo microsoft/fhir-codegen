@@ -15,6 +15,7 @@ using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirCapResource;
 using static Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Threading;
+using fhirCsR2.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language.OpenApi;
 
@@ -127,14 +128,16 @@ public class ModelBuilder
             doc.Components.Schemas = schemas;
         }
 
-        Dictionary<string, OpenApiTag> tags = new();
-        tags.Add("System", new OpenApiTag() { Name = "System", Description = "Sever-level requests" });
+        Dictionary<string, OpenApiTag> tags = new()
+        {
+            { SYSTEM_TAG_REF.Reference.Id, new OpenApiTag() { Name = SYSTEM_TAG_REF.Reference.Id, Description = "Sever-level requests" } }
+        };
 
         doc.Paths = BuildPaths(schemas, tags);
 
         doc.Tags = tags.Values.ToList();
 
-        if (_caps.SecuritySchemes?.OfType<FhirCapSmartOAuthScheme>()?.FirstOrDefault() is { } oauth)
+        if (_caps.SecuritySchemes?.OfType<FhirCapSmartOAuthScheme>()?.FirstOrDefault() is { } oauth && _exporterOptions.ServerUrl is not null)
         {
             AddSmartOAuthScheme(_caps.Url, doc, oauth);
         }
@@ -160,23 +163,17 @@ public class ModelBuilder
 
         doc.Components.SecuritySchemes.Add("openId", schema);
 
-        // Note that the SecurityRequirements serialization is broken, so we have
-        // to use extensions instead.
-        //doc.SecurityRequirements.Add(
-        //    new OpenApiSecurityRequirement()
-        //    {
-        //        [schema] = new List<string>() { "openid", "fhirUser" }
-        //    });
-
+        var schemeRef = new OpenApiSecurityScheme()
+        {
+            Reference = new OpenApiReference() { Id = schema.Name, Type = ReferenceType.SecurityScheme }
+        };
+       
         var scopes = getScopes(configUrl).Result;
-        var scopesArray = new OpenApiArray();
-        scopesArray.AddRange(scopes.Select(s => new OpenApiString(s)));
 
-        doc.Extensions.Add("security",
-            new OpenApiObject()
-            {
-                ["openId"] = scopesArray
-            });
+        doc.SecurityRequirements.Add(new OpenApiSecurityRequirement()
+        {
+            { schemeRef, scopes }
+        });
     }
 
     private async Task<string[]> getScopes(string endpoint)
@@ -859,6 +856,9 @@ public class ModelBuilder
         }
     }
 
+    private static readonly OpenApiTag SYSTEM_TAG_REF =
+        new OpenApiTag() { Reference = new OpenApiReference() { Id = "System", Type = ReferenceType.Tag } };
+
     /// <summary>Builds a resource operation get oas operation.</summary>
     /// <param name="resource">The resource.</param>
     /// <param name="fhirOp">  The FHIR operation.</param>
@@ -923,7 +923,7 @@ public class ModelBuilder
 
         if (opLevel == OaOpLevelCodes.System)
         {
-            oasOp.Tags.Add(new OpenApiTag() { Reference = new OpenApiReference() { Id = "System", Type = ReferenceType.Tag, } });
+            oasOp.Tags.Add(SYSTEM_TAG_REF);
         }
         else
         {
@@ -2811,9 +2811,10 @@ public class ModelBuilder
             Description =
                 _openApiOptions.IncludeDescriptions
                 ? "Read metadata."
-                : null,
+                : null,            
         };
 
+        operation.Tags.Add(SYSTEM_TAG_REF);
         operation.Responses = BuildResponses(new[] { 200 }, resourceName, schemas);
 
         return operation;

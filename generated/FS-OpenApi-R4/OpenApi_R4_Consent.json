@@ -2036,18 +2036,20 @@
       }
     }
   },
+  "security": [
+    {
+      "openId": [
+        "openid",
+        "profile",
+        "fhirUser",
+        "offline_access"
+      ]
+    }
+  ],
   "tags": [
     {
       "name": "Consent",
       "description": "A healthcare consumer's  choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time"
     }
-  ],
-  "security": {
-    "openId": [
-      "openid",
-      "profile",
-      "fhirUser",
-      "offline_access"
-    ]
-  }
+  ]
 }

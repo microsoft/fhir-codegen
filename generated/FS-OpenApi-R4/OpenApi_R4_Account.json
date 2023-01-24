@@ -1878,18 +1878,20 @@
       }
     }
   },
+  "security": [
+    {
+      "openId": [
+        "openid",
+        "profile",
+        "fhirUser",
+        "offline_access"
+      ]
+    }
+  ],
   "tags": [
     {
       "name": "Account",
       "description": "Tracks balance, charges, for patient or cost center"
     }
-  ],
-  "security": {
-    "openId": [
-      "openid",
-      "profile",
-      "fhirUser",
-      "offline_access"
-    ]
-  }
+  ]
 }

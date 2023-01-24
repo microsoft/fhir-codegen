@@ -13,6 +13,9 @@
   "paths": {
     "/metadata": {
       "get": {
+        "tags": [
+          "System"
+        ],
         "summary": "Read metadata information about this server.",
         "description": "Read metadata.",
         "operationId": "GetMetadata",
@@ -603,18 +606,20 @@
       }
     }
   },
+  "security": [
+    {
+      "openId": [
+        "openid",
+        "profile",
+        "fhirUser",
+        "offline_access"
+      ]
+    }
+  ],
   "tags": [
     {
       "name": "System",
       "description": "Sever-level requests"
     }
-  ],
-  "security": {
-    "openId": [
-      "openid",
-      "profile",
-      "fhirUser",
-      "offline_access"
-    ]
-  }
+  ]
 }
