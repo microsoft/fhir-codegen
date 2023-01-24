@@ -1,12 +1,14 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
     "title": "Firely Server - Immunization",
-    "version": "4.10.0"
+    "version": "1.0.0"
   },
-  "host": "server.fire.ly",
-  "schemes": [
-    "http"
+  "servers": [
+    {
+      "url": "https://secure.server.fire.ly/",
+      "description": "Firely Server"
+    }
   ],
   "paths": {
     "/Immunization": {
@@ -16,72 +18,141 @@
         ],
         "summary": "create: Create a new Immunization instance",
         "operationId": "CreateImmunization",
-        "consumes": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "A FHIR Immunization",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Immunization"
+        "requestBody": {
+          "description": "A FHIR Immunization",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Immunization"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Immunization"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Immunization"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              }
             }
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "405": {
             "description": "METHOD NOT ALLOWED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "409": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "412": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "422": {
             "description": "UNPROCESSABLE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -92,162 +163,185 @@
         ],
         "summary": "search-type: Search for Immunization instances",
         "operationId": "SearchImmunizationGet",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/_elements"
+            "$ref": "#/components/parameters/_elements"
           },
           {
-            "$ref": "#/parameters/_summary"
+            "$ref": "#/components/parameters/_summary"
           },
           {
-            "$ref": "#/parameters/_content"
+            "$ref": "#/components/parameters/_content"
           },
           {
-            "$ref": "#/parameters/_filter"
+            "$ref": "#/components/parameters/_filter"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_in"
+            "$ref": "#/components/parameters/_in"
           },
           {
-            "$ref": "#/parameters/_language"
+            "$ref": "#/components/parameters/_language"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_list"
+            "$ref": "#/components/parameters/_list"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_query"
+            "$ref": "#/components/parameters/_query"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/_text"
+            "$ref": "#/components/parameters/_text"
           },
           {
-            "$ref": "#/parameters/_contained"
+            "$ref": "#/components/parameters/_contained"
           },
           {
-            "$ref": "#/parameters/_count"
+            "$ref": "#/components/parameters/_count"
           },
           {
-            "$ref": "#/parameters/_graph"
+            "$ref": "#/components/parameters/_graph"
           },
           {
-            "$ref": "#/parameters/_include"
+            "$ref": "#/components/parameters/_include"
           },
           {
-            "$ref": "#/parameters/_revinclude"
+            "$ref": "#/components/parameters/_revinclude"
           },
           {
-            "$ref": "#/parameters/_score"
+            "$ref": "#/components/parameters/_score"
           },
           {
-            "$ref": "#/parameters/_sort"
+            "$ref": "#/components/parameters/_sort"
           },
           {
-            "$ref": "#/parameters/_total"
+            "$ref": "#/components/parameters/_total"
           },
           {
-            "$ref": "#/parameters/_format"
+            "$ref": "#/components/parameters/_format"
           },
           {
-            "$ref": "#/parameters/_has"
+            "$ref": "#/components/parameters/_has"
           },
           {
-            "$ref": "#/parameters/date"
+            "$ref": "#/components/parameters/date"
           },
           {
-            "$ref": "#/parameters/identifier"
+            "$ref": "#/components/parameters/identifier"
           },
           {
-            "$ref": "#/parameters/location"
+            "$ref": "#/components/parameters/location"
           },
           {
-            "$ref": "#/parameters/lot-number"
+            "$ref": "#/components/parameters/lot-number"
           },
           {
-            "$ref": "#/parameters/manufacturer"
+            "$ref": "#/components/parameters/manufacturer"
           },
           {
-            "$ref": "#/parameters/patient"
+            "$ref": "#/components/parameters/patient"
           },
           {
-            "$ref": "#/parameters/performer"
+            "$ref": "#/components/parameters/performer"
           },
           {
-            "$ref": "#/parameters/reaction"
+            "$ref": "#/components/parameters/reaction"
           },
           {
-            "$ref": "#/parameters/reaction-date"
+            "$ref": "#/components/parameters/reaction-date"
           },
           {
-            "$ref": "#/parameters/reason-code"
+            "$ref": "#/components/parameters/reason-code"
           },
           {
-            "$ref": "#/parameters/reason-reference"
+            "$ref": "#/components/parameters/reason-reference"
           },
           {
-            "$ref": "#/parameters/series"
+            "$ref": "#/components/parameters/series"
           },
           {
-            "$ref": "#/parameters/status"
+            "$ref": "#/components/parameters/status"
           },
           {
-            "$ref": "#/parameters/status-reason"
+            "$ref": "#/components/parameters/status-reason"
           },
           {
-            "$ref": "#/parameters/target-disease"
+            "$ref": "#/components/parameters/target-disease"
           },
           {
-            "$ref": "#/parameters/vaccine-code"
+            "$ref": "#/components/parameters/vaccine-code"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Bundle"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     },
@@ -256,136 +350,123 @@
         "tags": [
           "Immunization"
         ],
-        "summary": "delete: Perform a loical delete on a Immunization instance",
+        "summary": "delete: Perform a logical delete on a Immunization instance",
         "operationId": "DeleteImmunization",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/_content"
+            "$ref": "#/components/parameters/_content"
           },
           {
-            "$ref": "#/parameters/_filter"
+            "$ref": "#/components/parameters/_filter"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_in"
+            "$ref": "#/components/parameters/_in"
           },
           {
-            "$ref": "#/parameters/_language"
+            "$ref": "#/components/parameters/_language"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_list"
+            "$ref": "#/components/parameters/_list"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_query"
+            "$ref": "#/components/parameters/_query"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/_text"
+            "$ref": "#/components/parameters/_text"
           },
           {
-            "$ref": "#/parameters/_count"
+            "$ref": "#/components/parameters/_count"
           },
           {
-            "$ref": "#/parameters/_format"
+            "$ref": "#/components/parameters/_format"
           },
           {
-            "$ref": "#/parameters/_has"
+            "$ref": "#/components/parameters/_has"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/date"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/identifier"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/location"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/lot-number"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/manufacturer"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/patient"
           },
           {
-            "$ref": "#/parameters/date"
+            "$ref": "#/components/parameters/performer"
           },
           {
-            "$ref": "#/parameters/identifier"
+            "$ref": "#/components/parameters/reaction"
           },
           {
-            "$ref": "#/parameters/location"
+            "$ref": "#/components/parameters/reaction-date"
           },
           {
-            "$ref": "#/parameters/lot-number"
+            "$ref": "#/components/parameters/reason-code"
           },
           {
-            "$ref": "#/parameters/manufacturer"
+            "$ref": "#/components/parameters/reason-reference"
           },
           {
-            "$ref": "#/parameters/patient"
+            "$ref": "#/components/parameters/series"
           },
           {
-            "$ref": "#/parameters/performer"
+            "$ref": "#/components/parameters/status"
           },
           {
-            "$ref": "#/parameters/reaction"
+            "$ref": "#/components/parameters/status-reason"
           },
           {
-            "$ref": "#/parameters/reaction-date"
+            "$ref": "#/components/parameters/target-disease"
           },
           {
-            "$ref": "#/parameters/reason-code"
-          },
-          {
-            "$ref": "#/parameters/reason-reference"
-          },
-          {
-            "$ref": "#/parameters/series"
-          },
-          {
-            "$ref": "#/parameters/status"
-          },
-          {
-            "$ref": "#/parameters/status-reason"
-          },
-          {
-            "$ref": "#/parameters/target-disease"
-          },
-          {
-            "$ref": "#/parameters/vaccine-code"
+            "$ref": "#/components/parameters/vaccine-code"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Immunization"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              }
             }
           },
           "202": {
@@ -396,32 +477,77 @@
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "405": {
             "description": "METHOD NOT ALLOWED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "409": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -432,52 +558,90 @@
         ],
         "summary": "patch: Patch a Immunization instance",
         "operationId": "PatchImmunization",
-        "consumes": [ ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Patch to apply to a FHIR Immunization record",
-            "required": true,
-            "schema": { }
+            "$ref": "#/components/parameters/logical_id"
           }
         ],
+        "requestBody": {
+          "description": "Patch to apply to a FHIR Immunization record",
+          "content": { },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Immunization"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              }
             }
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "412": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -488,38 +652,61 @@
         ],
         "summary": "read: Read a FHIR Immunization",
         "operationId": "ReadImmunization",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/_elements"
+            "$ref": "#/components/parameters/_elements"
           },
           {
-            "$ref": "#/parameters/_summary"
+            "$ref": "#/components/parameters/_summary"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Immunization"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -530,199 +717,270 @@
         ],
         "summary": "update,create: Update or Create a Immunization instance",
         "operationId": "UpdateOrCreateImmunization",
-        "consumes": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/_content"
+            "$ref": "#/components/parameters/_content"
           },
           {
-            "$ref": "#/parameters/_filter"
+            "$ref": "#/components/parameters/_filter"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_in"
+            "$ref": "#/components/parameters/_in"
           },
           {
-            "$ref": "#/parameters/_language"
+            "$ref": "#/components/parameters/_language"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_list"
+            "$ref": "#/components/parameters/_list"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_query"
+            "$ref": "#/components/parameters/_query"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/_text"
+            "$ref": "#/components/parameters/_text"
           },
           {
-            "$ref": "#/parameters/_count"
+            "$ref": "#/components/parameters/_count"
           },
           {
-            "$ref": "#/parameters/_format"
+            "$ref": "#/components/parameters/_format"
           },
           {
-            "$ref": "#/parameters/_has"
+            "$ref": "#/components/parameters/_has"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/date"
+            "$ref": "#/components/parameters/date"
           },
           {
-            "$ref": "#/parameters/identifier"
+            "$ref": "#/components/parameters/identifier"
           },
           {
-            "$ref": "#/parameters/location"
+            "$ref": "#/components/parameters/location"
           },
           {
-            "$ref": "#/parameters/lot-number"
+            "$ref": "#/components/parameters/lot-number"
           },
           {
-            "$ref": "#/parameters/manufacturer"
+            "$ref": "#/components/parameters/manufacturer"
           },
           {
-            "$ref": "#/parameters/patient"
+            "$ref": "#/components/parameters/patient"
           },
           {
-            "$ref": "#/parameters/performer"
+            "$ref": "#/components/parameters/performer"
           },
           {
-            "$ref": "#/parameters/reaction"
+            "$ref": "#/components/parameters/reaction"
           },
           {
-            "$ref": "#/parameters/reaction-date"
+            "$ref": "#/components/parameters/reaction-date"
           },
           {
-            "$ref": "#/parameters/reason-code"
+            "$ref": "#/components/parameters/reason-code"
           },
           {
-            "$ref": "#/parameters/reason-reference"
+            "$ref": "#/components/parameters/reason-reference"
           },
           {
-            "$ref": "#/parameters/series"
+            "$ref": "#/components/parameters/series"
           },
           {
-            "$ref": "#/parameters/status"
+            "$ref": "#/components/parameters/status"
           },
           {
-            "$ref": "#/parameters/status-reason"
+            "$ref": "#/components/parameters/status-reason"
           },
           {
-            "$ref": "#/parameters/target-disease"
+            "$ref": "#/components/parameters/target-disease"
           },
           {
-            "$ref": "#/parameters/vaccine-code"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "An updated FHIR Immunization",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Immunization"
-            }
+            "$ref": "#/components/parameters/vaccine-code"
           }
         ],
+        "requestBody": {
+          "description": "An updated FHIR Immunization",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Immunization"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Immunization"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Immunization"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              }
             }
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "405": {
             "description": "METHOD NOT ALLOWED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "409": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "412": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "422": {
             "description": "UNPROCESSABLE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     },
@@ -733,247 +991,237 @@
         ],
         "summary": "search-type: Search for Immunization instances",
         "operationId": "SearchImmunizationPost",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "_elements",
-            "type": "string"
+        "requestBody": {
+          "description": "FHIR search parameters",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "_elements": {
+                    "title": "_elements",
+                    "type": "string"
+                  },
+                  "_summary": {
+                    "title": "_summary",
+                    "type": "string"
+                  },
+                  "_content": {
+                    "title": "_content",
+                    "type": "string"
+                  },
+                  "_filter": {
+                    "title": "_filter",
+                    "type": "string"
+                  },
+                  "_id": {
+                    "title": "_id",
+                    "type": "string"
+                  },
+                  "_in": {
+                    "title": "_in",
+                    "type": "string"
+                  },
+                  "_language": {
+                    "title": "_language",
+                    "type": "string"
+                  },
+                  "_lastUpdated": {
+                    "title": "_lastUpdated",
+                    "type": "string"
+                  },
+                  "_list": {
+                    "title": "_list",
+                    "type": "string"
+                  },
+                  "_profile": {
+                    "title": "_profile",
+                    "type": "string"
+                  },
+                  "_query": {
+                    "title": "_query",
+                    "type": "string"
+                  },
+                  "_security": {
+                    "title": "_security",
+                    "type": "string"
+                  },
+                  "_source": {
+                    "title": "_source",
+                    "type": "string"
+                  },
+                  "_tag": {
+                    "title": "_tag",
+                    "type": "string"
+                  },
+                  "_text": {
+                    "title": "_text",
+                    "type": "string"
+                  },
+                  "_contained": {
+                    "title": "_contained",
+                    "type": "string"
+                  },
+                  "_count": {
+                    "title": "_count",
+                    "type": "string"
+                  },
+                  "_graph": {
+                    "title": "_graph",
+                    "type": "string"
+                  },
+                  "_include": {
+                    "title": "_include",
+                    "type": "string"
+                  },
+                  "_revinclude": {
+                    "title": "_revinclude",
+                    "type": "string"
+                  },
+                  "_score": {
+                    "title": "_score",
+                    "type": "string"
+                  },
+                  "_sort": {
+                    "title": "_sort",
+                    "type": "string"
+                  },
+                  "_total": {
+                    "title": "_total",
+                    "type": "string"
+                  },
+                  "_format": {
+                    "title": "_format",
+                    "type": "string"
+                  },
+                  "_has": {
+                    "title": "_has",
+                    "type": "string"
+                  },
+                  "date": {
+                    "title": "date",
+                    "type": "string"
+                  },
+                  "identifier": {
+                    "title": "identifier",
+                    "type": "string"
+                  },
+                  "location": {
+                    "title": "location",
+                    "type": "string"
+                  },
+                  "lot-number": {
+                    "title": "lot-number",
+                    "type": "string"
+                  },
+                  "manufacturer": {
+                    "title": "manufacturer",
+                    "type": "string"
+                  },
+                  "patient": {
+                    "title": "patient",
+                    "type": "string"
+                  },
+                  "performer": {
+                    "title": "performer",
+                    "type": "string"
+                  },
+                  "reaction": {
+                    "title": "reaction",
+                    "type": "string"
+                  },
+                  "reaction-date": {
+                    "title": "reaction-date",
+                    "type": "string"
+                  },
+                  "reason-code": {
+                    "title": "reason-code",
+                    "type": "string"
+                  },
+                  "reason-reference": {
+                    "title": "reason-reference",
+                    "type": "string"
+                  },
+                  "series": {
+                    "title": "series",
+                    "type": "string"
+                  },
+                  "status": {
+                    "title": "status",
+                    "type": "string"
+                  },
+                  "status-reason": {
+                    "title": "status-reason",
+                    "type": "string"
+                  },
+                  "target-disease": {
+                    "title": "target-disease",
+                    "type": "string"
+                  },
+                  "vaccine-code": {
+                    "title": "vaccine-code",
+                    "type": "string"
+                  }
+                }
+              }
+            }
           },
-          {
-            "in": "formData",
-            "name": "_summary",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_content",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_filter",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_id",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_in",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_language",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_lastUpdated",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_list",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_profile",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_query",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_security",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_source",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_tag",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_text",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_contained",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_count",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_graph",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_include",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_revinclude",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_score",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_sort",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_total",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_format",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_has",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "date",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "identifier",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "location",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "lot-number",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "manufacturer",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "patient",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "performer",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "reaction",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "reaction-date",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "reason-code",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "reason-reference",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "series",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "status",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "status-reason",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "target-disease",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "vaccine-code",
-            "type": "string"
-          }
-        ],
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Bundle"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     },
@@ -984,377 +1232,831 @@
         ],
         "summary": "vread: Read Immunization instance with specific version",
         "operationId": "VReadImmunization",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/resource_version"
+            "$ref": "#/components/parameters/resource_version"
           },
           {
-            "$ref": "#/parameters/_elements"
+            "$ref": "#/components/parameters/_elements"
           },
           {
-            "$ref": "#/parameters/_summary"
+            "$ref": "#/components/parameters/_summary"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Immunization"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Immunization"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/Immunization/{logical_id}/$meta-add": {
+      "post": {
+        "tags": [
+          "Immunization"
+        ],
+        "summary": "operation: This operation takes a meta, and adds the profiles, tags, and security labels found in it to the nominated resource",
+        "operationId": "ImmunizationInstanceMetaAddPost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/Immunization/{logical_id}/$meta-delete": {
+      "post": {
+        "tags": [
+          "Immunization"
+        ],
+        "summary": "operation: This operation takes a meta, and deletes the profiles, tags, and security labels found in it from the nominated resource",
+        "operationId": "ImmunizationInstanceMetaDeletePost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/Immunization/{logical_id}/$meta": {
+      "post": {
+        "tags": [
+          "Immunization"
+        ],
+        "summary": "operation: This operation retrieves a summary of the profiles, tags, and security labels for the given scope; e.g. for each scope:  \n\n* system-wide: a list of all profiles, tags and security labels in use by the system \n* resource-type level: A list of all profiles, tags, and security labels for the resource type \n* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.  Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)",
+        "operationId": "ImmunizationInstanceMetaPost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/Immunization/$meta": {
+      "post": {
+        "tags": [
+          "Immunization"
+        ],
+        "summary": "operation: This operation retrieves a summary of the profiles, tags, and security labels for the given scope; e.g. for each scope:  \n\n* system-wide: a list of all profiles, tags and security labels in use by the system \n* resource-type level: A list of all profiles, tags, and security labels for the resource type \n* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.  Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)",
+        "operationId": "ImmunizationMetaPost",
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     }
   },
-  "definitions": {
-    "Immunization": {
-      "description": "Immunization event information",
-      "type": "object"
+  "components": {
+    "schemas": {
+      "Immunization": {
+        "type": "object",
+        "description": "Immunization event information"
+      },
+      "OperationOutcome": {
+        "type": "object",
+        "description": "Information about the success/failure of an action"
+      },
+      "Bundle": {
+        "type": "object",
+        "description": "Contains a collection of resources"
+      },
+      "Parameters": {
+        "type": "object",
+        "description": "Operation Request or Response"
+      }
     },
-    "OperationOutcome": {
-      "description": "Information about the success/failure of an action",
-      "type": "object"
+    "parameters": {
+      "_format": {
+        "name": "_format",
+        "in": "query",
+        "description": "Override the HTTP content negotiation",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_pretty": {
+        "name": "_pretty",
+        "in": "query",
+        "description": "Ask for a pretty printed response for human convenience",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_elements": {
+        "name": "_elements",
+        "in": "query",
+        "description": "Ask for a particular set of elements to be returned",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_summary": {
+        "name": "_summary",
+        "in": "query",
+        "description": "Return only portions of resources, based on pre-defined levels",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_content": {
+        "name": "_content",
+        "in": "query",
+        "description": "Search on the entire content of the resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_filter": {
+        "name": "_filter",
+        "in": "query",
+        "description": "Provide an inline query expression",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_id": {
+        "name": "_id",
+        "in": "query",
+        "description": "Logical id of this artifact",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_in": {
+        "name": "_in",
+        "in": "query",
+        "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_language": {
+        "name": "_language",
+        "in": "query",
+        "description": "Language of the resource content",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_lastUpdated": {
+        "name": "_lastUpdated",
+        "in": "query",
+        "description": "When the resource version last changed",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_list": {
+        "name": "_list",
+        "in": "query",
+        "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_profile": {
+        "name": "_profile",
+        "in": "query",
+        "description": "Profiles this resource claims to conform to",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_query": {
+        "name": "_query",
+        "in": "query",
+        "description": "A custom search profile that describes a specific defined query operation",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_security": {
+        "name": "_security",
+        "in": "query",
+        "description": "Security Labels applied to this resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_source": {
+        "name": "_source",
+        "in": "query",
+        "description": "Identifies where the resource comes from",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_tag": {
+        "name": "_tag",
+        "in": "query",
+        "description": "Tags applied to this resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_text": {
+        "name": "_text",
+        "in": "query",
+        "description": "Perform searches against the narrative content of a resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_contained": {
+        "name": "_contained",
+        "in": "query",
+        "description": "Request different types of handling for contained resources",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_count": {
+        "name": "_count",
+        "in": "query",
+        "description": "Limit the number of match results per page of response",
+        "style": "form",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "_graph": {
+        "name": "_graph",
+        "in": "query",
+        "description": "Include additional resources according to a GraphDefinition",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_include": {
+        "name": "_include",
+        "in": "query",
+        "description": "Include additional resources, based on following links forward across references",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_revinclude": {
+        "name": "_revinclude",
+        "in": "query",
+        "description": "Include additional resources, based on following reverse links across references",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_score": {
+        "name": "_score",
+        "in": "query",
+        "description": "Request match relevance in results",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_sort": {
+        "name": "_sort",
+        "in": "query",
+        "description": "Request which order results should be returned in",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_total": {
+        "name": "_total",
+        "in": "query",
+        "description": "Request a precision of the total number of results for a request",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_has": {
+        "name": "_has",
+        "in": "query",
+        "description": "Enables querying a reverse chain",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "date": {
+        "name": "date",
+        "in": "query",
+        "description": "The activity definition publication date",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "identifier": {
+        "name": "identifier",
+        "in": "query",
+        "description": "Account number",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "location": {
+        "name": "location",
+        "in": "query",
+        "description": "Location where adverse event occurred",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "lot-number": {
+        "name": "lot-number",
+        "in": "query",
+        "description": "Vaccine Lot Number",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "manufacturer": {
+        "name": "manufacturer",
+        "in": "query",
+        "description": "The manufacturer of the device",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "patient": {
+        "name": "patient",
+        "in": "query",
+        "description": "The entity that caused the expenses",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "performer": {
+        "name": "performer",
+        "in": "query",
+        "description": "Matches if the practitioner is listed as a performer in any of the \"simple\" activities.  (For performers of the detailed activities, chain through the activitydetail search parameter.)",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "reaction": {
+        "name": "reaction",
+        "in": "query",
+        "description": "Additional information on reaction",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "reaction-date": {
+        "name": "reaction-date",
+        "in": "query",
+        "description": "When reaction started",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "reason-code": {
+        "name": "reason-code",
+        "in": "query",
+        "description": "Coded reason this appointment is scheduled",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "reason-reference": {
+        "name": "reason-reference",
+        "in": "query",
+        "description": "Reason the appointment is to take place (resource)",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "series": {
+        "name": "series",
+        "in": "query",
+        "description": "DICOM Series Instance UID for a series",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status": {
+        "name": "status",
+        "in": "query",
+        "description": "active | inactive | entered-in-error | on-hold | unknown",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status-reason": {
+        "name": "status-reason",
+        "in": "query",
+        "description": "Reason why the vaccine was not administered",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "target-disease": {
+        "name": "target-disease",
+        "in": "query",
+        "description": "The target disease the dose is being administered against",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "vaccine-code": {
+        "name": "vaccine-code",
+        "in": "query",
+        "description": "Vaccine Product Administered",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "logical_id": {
+        "name": "logical_id",
+        "in": "path",
+        "description": "Resource Logical ID",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "resource_version": {
+        "name": "resource_version",
+        "in": "path",
+        "description": "Resource Version Number",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      }
     },
-    "Bundle": {
-      "description": "Contains a collection of resources",
-      "type": "object"
-    }
-  },
-  "parameters": {
-    "_format": {
-      "in": "query",
-      "name": "_format",
-      "description": "Override the HTTP content negotiation",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_pretty": {
-      "in": "query",
-      "name": "_pretty",
-      "description": "Ask for a pretty printed response for human convenience",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_elements": {
-      "in": "query",
-      "name": "_elements",
-      "description": "Ask for a particular set of elements to be returned",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_summary": {
-      "in": "query",
-      "name": "_summary",
-      "description": "Return only portions of resources, based on pre-defined levels",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_content": {
-      "in": "query",
-      "name": "_content",
-      "description": "Search on the entire content of the resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_filter": {
-      "in": "query",
-      "name": "_filter",
-      "description": "Provide an inline query expression",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_id": {
-      "in": "query",
-      "name": "_id",
-      "description": "Logical id of this artifact",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_in": {
-      "in": "query",
-      "name": "_in",
-      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_language": {
-      "in": "query",
-      "name": "_language",
-      "description": "Language of the resource content",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_lastUpdated": {
-      "in": "query",
-      "name": "_lastUpdated",
-      "description": "When the resource version last changed",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_list": {
-      "in": "query",
-      "name": "_list",
-      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_profile": {
-      "in": "query",
-      "name": "_profile",
-      "description": "Profiles this resource claims to conform to",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_query": {
-      "in": "query",
-      "name": "_query",
-      "description": "A custom search profile that describes a specific defined query operation",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_security": {
-      "in": "query",
-      "name": "_security",
-      "description": "Security Labels applied to this resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_source": {
-      "in": "query",
-      "name": "_source",
-      "description": "Identifies where the resource comes from",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_tag": {
-      "in": "query",
-      "name": "_tag",
-      "description": "Tags applied to this resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_text": {
-      "in": "query",
-      "name": "_text",
-      "description": "Perform searches against the narrative content of a resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_contained": {
-      "in": "query",
-      "name": "_contained",
-      "description": "Request different types of handling for contained resources",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_count": {
-      "in": "query",
-      "name": "_count",
-      "description": "Limit the number of match results per page of response",
-      "type": "number",
-      "collectionFormat": "multi"
-    },
-    "_graph": {
-      "in": "query",
-      "name": "_graph",
-      "description": "Include additional resources according to a GraphDefinition",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_include": {
-      "in": "query",
-      "name": "_include",
-      "description": "Include additional resources, based on following links forward across references",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_revinclude": {
-      "in": "query",
-      "name": "_revinclude",
-      "description": "Include additional resources, based on following reverse links across references",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_score": {
-      "in": "query",
-      "name": "_score",
-      "description": "Request match relevance in results",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_sort": {
-      "in": "query",
-      "name": "_sort",
-      "description": "Request which order results should be returned in",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_total": {
-      "in": "query",
-      "name": "_total",
-      "description": "Request a precision of the total number of results for a request",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_has": {
-      "in": "query",
-      "name": "_has",
-      "description": "Enables querying a reverse chain",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "date": {
-      "in": "query",
-      "name": "date",
-      "description": "The activity definition publication date",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "identifier": {
-      "in": "query",
-      "name": "identifier",
-      "description": "Account number",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "location": {
-      "in": "query",
-      "name": "location",
-      "description": "Location where adverse event occurred",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "lot-number": {
-      "in": "query",
-      "name": "lot-number",
-      "description": "Vaccine Lot Number",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "manufacturer": {
-      "in": "query",
-      "name": "manufacturer",
-      "description": "The manufacturer of the device",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "patient": {
-      "in": "query",
-      "name": "patient",
-      "description": "The entity that caused the expenses",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "performer": {
-      "in": "query",
-      "name": "performer",
-      "description": "Matches if the practitioner is listed as a performer in any of the \"simple\" activities.  (For performers of the detailed activities, chain through the activitydetail search parameter.)",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "reaction": {
-      "in": "query",
-      "name": "reaction",
-      "description": "Additional information on reaction",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "reaction-date": {
-      "in": "query",
-      "name": "reaction-date",
-      "description": "When reaction started",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "reason-code": {
-      "in": "query",
-      "name": "reason-code",
-      "description": "Coded reason this appointment is scheduled",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "reason-reference": {
-      "in": "query",
-      "name": "reason-reference",
-      "description": "Reason the appointment is to take place (resource)",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "series": {
-      "in": "query",
-      "name": "series",
-      "description": "DICOM Series Instance UID for a series",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "status": {
-      "in": "query",
-      "name": "status",
-      "description": "active | inactive | entered-in-error | on-hold | unknown",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "status-reason": {
-      "in": "query",
-      "name": "status-reason",
-      "description": "Reason why the vaccine was not administered",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "target-disease": {
-      "in": "query",
-      "name": "target-disease",
-      "description": "The target disease the dose is being administered against",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "vaccine-code": {
-      "in": "query",
-      "name": "vaccine-code",
-      "description": "Vaccine Product Administered",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "logical_id": {
-      "in": "path",
-      "name": "logical_id",
-      "description": "Resource Logical ID",
-      "required": true,
-      "type": "string"
-    },
-    "resource_version": {
-      "in": "path",
-      "name": "resource_version",
-      "description": "Resource Version Number",
-      "required": true,
-      "type": "string"
+    "securitySchemes": {
+      "openId": {
+        "type": "openIdConnect",
+        "openIdConnectUrl": "https://secure.server.fire.ly/.well-known/smart-configuration"
+      }
     }
   },
   "tags": [
@@ -1362,5 +2064,13 @@
       "name": "Immunization",
       "description": "Immunization event information"
     }
-  ]
+  ],
+  "security": {
+    "openId": [
+      "openid",
+      "profile",
+      "fhirUser",
+      "offline_access"
+    ]
+  }
 }

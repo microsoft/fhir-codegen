@@ -6,6 +6,7 @@
 
 using System.IO;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
@@ -134,10 +135,11 @@ public class LangOpenApi : ILanguage
 
             if (apiPath.Equals("/", StringComparison.Ordinal) ||
                 apiPath.Substring(0, 2).Equals("/_", StringComparison.Ordinal) ||
-                apiPath.Substring(0, 2).Equals("/$", StringComparison.Ordinal))
+                apiPath.Substring(0, 2).Equals("/$", StringComparison.Ordinal) ||
+                char.IsLower(apiPath[1]))
             {
-                pathKey = "_Root";
-                titleSuffix = "Server Root";
+                pathKey = "_SystemOperations";
+                titleSuffix = "System Operations";
             }
             else
             {
@@ -154,6 +156,11 @@ public class LangOpenApi : ILanguage
                 doc.Components = new();
                 doc.Components.Parameters = new Dictionary<string, OpenApiParameter>();
                 doc.Components.Schemas = new Dictionary<string, OpenApiSchema>();
+                doc.Components.SecuritySchemes = completeDoc.Components.SecuritySchemes;
+                doc.SecurityRequirements = completeDoc.SecurityRequirements;
+                doc.Components.Extensions = completeDoc.Components.Extensions;
+                doc.Extensions = completeDoc.Extensions;
+
                 doc.Paths = new();
                 doc.Tags = new List<OpenApiTag>();
 
@@ -328,23 +335,16 @@ public class LangOpenApi : ILanguage
     {
         string filename = Path.Combine(exportDirectory, $"{_languageName}_{fileId}.{openApiOptions.FileFormat.ToString().ToLowerInvariant()}");
 
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (StreamWriter sw = new StreamWriter(stream))
+        using FileStream stream = new FileStream(filename, FileMode.Create);
+        using StreamWriter sw = new StreamWriter(stream);
+
+        IOpenApiWriter writer = openApiOptions.FileFormat switch
         {
-            IOpenApiWriter writer;
+            OaFileFormat.Yaml => new OpenApiYamlWriter(sw),
+            _ => new OpenApiJsonWriter(sw, new OpenApiJsonWriterSettings() { Terse = openApiOptions.Minify }),
+        };
 
-            switch (openApiOptions.FileFormat)
-            {
-                case OaFileFormat.Json:
-                default:
-                    writer = new OpenApiJsonWriter(sw, new OpenApiJsonWriterSettings() { Terse = openApiOptions.Minify });
-                    break;
-                case OaFileFormat.Yaml:
-                    writer = new OpenApiYamlWriter(sw);
-                    break;
-            }
+        doc.Serialize(writer, openApiOptions.OpenApiVersion);
 
-            doc.Serialize(writer, openApiOptions.OpenApiVersion);
-        }
     }
 }

@@ -1,12 +1,14 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
     "title": "Firely Server - MolecularSequence",
-    "version": "4.10.0"
+    "version": "1.0.0"
   },
-  "host": "server.fire.ly",
-  "schemes": [
-    "http"
+  "servers": [
+    {
+      "url": "https://secure.server.fire.ly/",
+      "description": "Firely Server"
+    }
   ],
   "paths": {
     "/MolecularSequence": {
@@ -16,72 +18,141 @@
         ],
         "summary": "create: Create a new MolecularSequence instance",
         "operationId": "CreateMolecularSequence",
-        "consumes": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "A FHIR MolecularSequence",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/MolecularSequence"
+        "requestBody": {
+          "description": "A FHIR MolecularSequence",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MolecularSequence"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/MolecularSequence"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/MolecularSequence"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              }
             }
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "405": {
             "description": "METHOD NOT ALLOWED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "409": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "412": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "422": {
             "description": "UNPROCESSABLE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -92,153 +163,176 @@
         ],
         "summary": "search-type: Search for MolecularSequence instances",
         "operationId": "SearchMolecularSequenceGet",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/_elements"
+            "$ref": "#/components/parameters/_elements"
           },
           {
-            "$ref": "#/parameters/_summary"
+            "$ref": "#/components/parameters/_summary"
           },
           {
-            "$ref": "#/parameters/_content"
+            "$ref": "#/components/parameters/_content"
           },
           {
-            "$ref": "#/parameters/_filter"
+            "$ref": "#/components/parameters/_filter"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_in"
+            "$ref": "#/components/parameters/_in"
           },
           {
-            "$ref": "#/parameters/_language"
+            "$ref": "#/components/parameters/_language"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_list"
+            "$ref": "#/components/parameters/_list"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_query"
+            "$ref": "#/components/parameters/_query"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/_text"
+            "$ref": "#/components/parameters/_text"
           },
           {
-            "$ref": "#/parameters/_contained"
+            "$ref": "#/components/parameters/_contained"
           },
           {
-            "$ref": "#/parameters/_count"
+            "$ref": "#/components/parameters/_count"
           },
           {
-            "$ref": "#/parameters/_graph"
+            "$ref": "#/components/parameters/_graph"
           },
           {
-            "$ref": "#/parameters/_include"
+            "$ref": "#/components/parameters/_include"
           },
           {
-            "$ref": "#/parameters/_revinclude"
+            "$ref": "#/components/parameters/_revinclude"
           },
           {
-            "$ref": "#/parameters/_score"
+            "$ref": "#/components/parameters/_score"
           },
           {
-            "$ref": "#/parameters/_sort"
+            "$ref": "#/components/parameters/_sort"
           },
           {
-            "$ref": "#/parameters/_total"
+            "$ref": "#/components/parameters/_total"
           },
           {
-            "$ref": "#/parameters/_format"
+            "$ref": "#/components/parameters/_format"
           },
           {
-            "$ref": "#/parameters/_has"
+            "$ref": "#/components/parameters/_has"
           },
           {
-            "$ref": "#/parameters/chromosome"
+            "$ref": "#/components/parameters/chromosome"
           },
           {
-            "$ref": "#/parameters/chromosome-variant-coordinate"
+            "$ref": "#/components/parameters/chromosome-variant-coordinate"
           },
           {
-            "$ref": "#/parameters/chromosome-window-coordinate"
+            "$ref": "#/components/parameters/chromosome-window-coordinate"
           },
           {
-            "$ref": "#/parameters/identifier"
+            "$ref": "#/components/parameters/identifier"
           },
           {
-            "$ref": "#/parameters/patient"
+            "$ref": "#/components/parameters/patient"
           },
           {
-            "$ref": "#/parameters/referenceseqid"
+            "$ref": "#/components/parameters/referenceseqid"
           },
           {
-            "$ref": "#/parameters/referenceseqid-variant-coordinate"
+            "$ref": "#/components/parameters/referenceseqid-variant-coordinate"
           },
           {
-            "$ref": "#/parameters/referenceseqid-window-coordinate"
+            "$ref": "#/components/parameters/referenceseqid-window-coordinate"
           },
           {
-            "$ref": "#/parameters/type"
+            "$ref": "#/components/parameters/type"
           },
           {
-            "$ref": "#/parameters/variant-end"
+            "$ref": "#/components/parameters/variant-end"
           },
           {
-            "$ref": "#/parameters/variant-start"
+            "$ref": "#/components/parameters/variant-start"
           },
           {
-            "$ref": "#/parameters/window-end"
+            "$ref": "#/components/parameters/window-end"
           },
           {
-            "$ref": "#/parameters/window-start"
+            "$ref": "#/components/parameters/window-start"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Bundle"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     },
@@ -247,127 +341,114 @@
         "tags": [
           "MolecularSequence"
         ],
-        "summary": "delete: Perform a loical delete on a MolecularSequence instance",
+        "summary": "delete: Perform a logical delete on a MolecularSequence instance",
         "operationId": "DeleteMolecularSequence",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/_content"
+            "$ref": "#/components/parameters/_content"
           },
           {
-            "$ref": "#/parameters/_filter"
+            "$ref": "#/components/parameters/_filter"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_in"
+            "$ref": "#/components/parameters/_in"
           },
           {
-            "$ref": "#/parameters/_language"
+            "$ref": "#/components/parameters/_language"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_list"
+            "$ref": "#/components/parameters/_list"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_query"
+            "$ref": "#/components/parameters/_query"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/_text"
+            "$ref": "#/components/parameters/_text"
           },
           {
-            "$ref": "#/parameters/_count"
+            "$ref": "#/components/parameters/_count"
           },
           {
-            "$ref": "#/parameters/_format"
+            "$ref": "#/components/parameters/_format"
           },
           {
-            "$ref": "#/parameters/_has"
+            "$ref": "#/components/parameters/_has"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/chromosome"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/chromosome-variant-coordinate"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/chromosome-window-coordinate"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/identifier"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/patient"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/referenceseqid"
           },
           {
-            "$ref": "#/parameters/chromosome"
+            "$ref": "#/components/parameters/referenceseqid-variant-coordinate"
           },
           {
-            "$ref": "#/parameters/chromosome-variant-coordinate"
+            "$ref": "#/components/parameters/referenceseqid-window-coordinate"
           },
           {
-            "$ref": "#/parameters/chromosome-window-coordinate"
+            "$ref": "#/components/parameters/type"
           },
           {
-            "$ref": "#/parameters/identifier"
+            "$ref": "#/components/parameters/variant-end"
           },
           {
-            "$ref": "#/parameters/patient"
+            "$ref": "#/components/parameters/variant-start"
           },
           {
-            "$ref": "#/parameters/referenceseqid"
+            "$ref": "#/components/parameters/window-end"
           },
           {
-            "$ref": "#/parameters/referenceseqid-variant-coordinate"
-          },
-          {
-            "$ref": "#/parameters/referenceseqid-window-coordinate"
-          },
-          {
-            "$ref": "#/parameters/type"
-          },
-          {
-            "$ref": "#/parameters/variant-end"
-          },
-          {
-            "$ref": "#/parameters/variant-start"
-          },
-          {
-            "$ref": "#/parameters/window-end"
-          },
-          {
-            "$ref": "#/parameters/window-start"
+            "$ref": "#/components/parameters/window-start"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/MolecularSequence"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              }
             }
           },
           "202": {
@@ -378,32 +459,77 @@
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "405": {
             "description": "METHOD NOT ALLOWED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "409": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -414,52 +540,90 @@
         ],
         "summary": "patch: Patch a MolecularSequence instance",
         "operationId": "PatchMolecularSequence",
-        "consumes": [ ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Patch to apply to a FHIR MolecularSequence record",
-            "required": true,
-            "schema": { }
+            "$ref": "#/components/parameters/logical_id"
           }
         ],
+        "requestBody": {
+          "description": "Patch to apply to a FHIR MolecularSequence record",
+          "content": { },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/MolecularSequence"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              }
             }
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "412": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -470,38 +634,61 @@
         ],
         "summary": "read: Read a FHIR MolecularSequence",
         "operationId": "ReadMolecularSequence",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/_elements"
+            "$ref": "#/components/parameters/_elements"
           },
           {
-            "$ref": "#/parameters/_summary"
+            "$ref": "#/components/parameters/_summary"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/MolecularSequence"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -512,190 +699,261 @@
         ],
         "summary": "update,create: Update or Create a MolecularSequence instance",
         "operationId": "UpdateOrCreateMolecularSequence",
-        "consumes": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/_content"
+            "$ref": "#/components/parameters/_content"
           },
           {
-            "$ref": "#/parameters/_filter"
+            "$ref": "#/components/parameters/_filter"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_in"
+            "$ref": "#/components/parameters/_in"
           },
           {
-            "$ref": "#/parameters/_language"
+            "$ref": "#/components/parameters/_language"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_list"
+            "$ref": "#/components/parameters/_list"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_query"
+            "$ref": "#/components/parameters/_query"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/_text"
+            "$ref": "#/components/parameters/_text"
           },
           {
-            "$ref": "#/parameters/_count"
+            "$ref": "#/components/parameters/_count"
           },
           {
-            "$ref": "#/parameters/_format"
+            "$ref": "#/components/parameters/_format"
           },
           {
-            "$ref": "#/parameters/_has"
+            "$ref": "#/components/parameters/_has"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/chromosome"
+            "$ref": "#/components/parameters/chromosome"
           },
           {
-            "$ref": "#/parameters/chromosome-variant-coordinate"
+            "$ref": "#/components/parameters/chromosome-variant-coordinate"
           },
           {
-            "$ref": "#/parameters/chromosome-window-coordinate"
+            "$ref": "#/components/parameters/chromosome-window-coordinate"
           },
           {
-            "$ref": "#/parameters/identifier"
+            "$ref": "#/components/parameters/identifier"
           },
           {
-            "$ref": "#/parameters/patient"
+            "$ref": "#/components/parameters/patient"
           },
           {
-            "$ref": "#/parameters/referenceseqid"
+            "$ref": "#/components/parameters/referenceseqid"
           },
           {
-            "$ref": "#/parameters/referenceseqid-variant-coordinate"
+            "$ref": "#/components/parameters/referenceseqid-variant-coordinate"
           },
           {
-            "$ref": "#/parameters/referenceseqid-window-coordinate"
+            "$ref": "#/components/parameters/referenceseqid-window-coordinate"
           },
           {
-            "$ref": "#/parameters/type"
+            "$ref": "#/components/parameters/type"
           },
           {
-            "$ref": "#/parameters/variant-end"
+            "$ref": "#/components/parameters/variant-end"
           },
           {
-            "$ref": "#/parameters/variant-start"
+            "$ref": "#/components/parameters/variant-start"
           },
           {
-            "$ref": "#/parameters/window-end"
+            "$ref": "#/components/parameters/window-end"
           },
           {
-            "$ref": "#/parameters/window-start"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "An updated FHIR MolecularSequence",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/MolecularSequence"
-            }
+            "$ref": "#/components/parameters/window-start"
           }
         ],
+        "requestBody": {
+          "description": "An updated FHIR MolecularSequence",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MolecularSequence"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/MolecularSequence"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/MolecularSequence"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              }
             }
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "405": {
             "description": "METHOD NOT ALLOWED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "409": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "412": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "422": {
             "description": "UNPROCESSABLE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     },
@@ -706,232 +964,225 @@
         ],
         "summary": "search-type: Search for MolecularSequence instances",
         "operationId": "SearchMolecularSequencePost",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "_elements",
-            "type": "string"
+        "requestBody": {
+          "description": "FHIR search parameters",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "_elements": {
+                    "title": "_elements",
+                    "type": "string"
+                  },
+                  "_summary": {
+                    "title": "_summary",
+                    "type": "string"
+                  },
+                  "_content": {
+                    "title": "_content",
+                    "type": "string"
+                  },
+                  "_filter": {
+                    "title": "_filter",
+                    "type": "string"
+                  },
+                  "_id": {
+                    "title": "_id",
+                    "type": "string"
+                  },
+                  "_in": {
+                    "title": "_in",
+                    "type": "string"
+                  },
+                  "_language": {
+                    "title": "_language",
+                    "type": "string"
+                  },
+                  "_lastUpdated": {
+                    "title": "_lastUpdated",
+                    "type": "string"
+                  },
+                  "_list": {
+                    "title": "_list",
+                    "type": "string"
+                  },
+                  "_profile": {
+                    "title": "_profile",
+                    "type": "string"
+                  },
+                  "_query": {
+                    "title": "_query",
+                    "type": "string"
+                  },
+                  "_security": {
+                    "title": "_security",
+                    "type": "string"
+                  },
+                  "_source": {
+                    "title": "_source",
+                    "type": "string"
+                  },
+                  "_tag": {
+                    "title": "_tag",
+                    "type": "string"
+                  },
+                  "_text": {
+                    "title": "_text",
+                    "type": "string"
+                  },
+                  "_contained": {
+                    "title": "_contained",
+                    "type": "string"
+                  },
+                  "_count": {
+                    "title": "_count",
+                    "type": "string"
+                  },
+                  "_graph": {
+                    "title": "_graph",
+                    "type": "string"
+                  },
+                  "_include": {
+                    "title": "_include",
+                    "type": "string"
+                  },
+                  "_revinclude": {
+                    "title": "_revinclude",
+                    "type": "string"
+                  },
+                  "_score": {
+                    "title": "_score",
+                    "type": "string"
+                  },
+                  "_sort": {
+                    "title": "_sort",
+                    "type": "string"
+                  },
+                  "_total": {
+                    "title": "_total",
+                    "type": "string"
+                  },
+                  "_format": {
+                    "title": "_format",
+                    "type": "string"
+                  },
+                  "_has": {
+                    "title": "_has",
+                    "type": "string"
+                  },
+                  "chromosome": {
+                    "title": "chromosome",
+                    "type": "string"
+                  },
+                  "chromosome-variant-coordinate": {
+                    "title": "chromosome-variant-coordinate",
+                    "type": "string"
+                  },
+                  "chromosome-window-coordinate": {
+                    "title": "chromosome-window-coordinate",
+                    "type": "string"
+                  },
+                  "identifier": {
+                    "title": "identifier",
+                    "type": "string"
+                  },
+                  "patient": {
+                    "title": "patient",
+                    "type": "string"
+                  },
+                  "referenceseqid": {
+                    "title": "referenceseqid",
+                    "type": "string"
+                  },
+                  "referenceseqid-variant-coordinate": {
+                    "title": "referenceseqid-variant-coordinate",
+                    "type": "string"
+                  },
+                  "referenceseqid-window-coordinate": {
+                    "title": "referenceseqid-window-coordinate",
+                    "type": "string"
+                  },
+                  "type": {
+                    "title": "type",
+                    "type": "string"
+                  },
+                  "variant-end": {
+                    "title": "variant-end",
+                    "type": "string"
+                  },
+                  "variant-start": {
+                    "title": "variant-start",
+                    "type": "string"
+                  },
+                  "window-end": {
+                    "title": "window-end",
+                    "type": "string"
+                  },
+                  "window-start": {
+                    "title": "window-start",
+                    "type": "string"
+                  }
+                }
+              }
+            }
           },
-          {
-            "in": "formData",
-            "name": "_summary",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_content",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_filter",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_id",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_in",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_language",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_lastUpdated",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_list",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_profile",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_query",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_security",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_source",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_tag",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_text",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_contained",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_count",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_graph",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_include",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_revinclude",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_score",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_sort",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_total",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_format",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_has",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "chromosome",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "chromosome-variant-coordinate",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "chromosome-window-coordinate",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "identifier",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "patient",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "referenceseqid",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "referenceseqid-variant-coordinate",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "referenceseqid-window-coordinate",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "type",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "variant-end",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "variant-start",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "window-end",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "window-start",
-            "type": "string"
-          }
-        ],
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Bundle"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     },
@@ -942,356 +1193,800 @@
         ],
         "summary": "vread: Read MolecularSequence instance with specific version",
         "operationId": "VReadMolecularSequence",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/resource_version"
+            "$ref": "#/components/parameters/resource_version"
           },
           {
-            "$ref": "#/parameters/_elements"
+            "$ref": "#/components/parameters/_elements"
           },
           {
-            "$ref": "#/parameters/_summary"
+            "$ref": "#/components/parameters/_summary"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/MolecularSequence"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/MolecularSequence"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/MolecularSequence/{logical_id}/$meta-add": {
+      "post": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "operation: This operation takes a meta, and adds the profiles, tags, and security labels found in it to the nominated resource",
+        "operationId": "MolecularSequenceInstanceMetaAddPost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/MolecularSequence/{logical_id}/$meta-delete": {
+      "post": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "operation: This operation takes a meta, and deletes the profiles, tags, and security labels found in it from the nominated resource",
+        "operationId": "MolecularSequenceInstanceMetaDeletePost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/MolecularSequence/{logical_id}/$meta": {
+      "post": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "operation: This operation retrieves a summary of the profiles, tags, and security labels for the given scope; e.g. for each scope:  \n\n* system-wide: a list of all profiles, tags and security labels in use by the system \n* resource-type level: A list of all profiles, tags, and security labels for the resource type \n* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.  Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)",
+        "operationId": "MolecularSequenceInstanceMetaPost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/MolecularSequence/$meta": {
+      "post": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "operation: This operation retrieves a summary of the profiles, tags, and security labels for the given scope; e.g. for each scope:  \n\n* system-wide: a list of all profiles, tags and security labels in use by the system \n* resource-type level: A list of all profiles, tags, and security labels for the resource type \n* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.  Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)",
+        "operationId": "MolecularSequenceMetaPost",
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     }
   },
-  "definitions": {
-    "MolecularSequence": {
-      "description": "Information about a biological sequence",
-      "type": "object"
+  "components": {
+    "schemas": {
+      "MolecularSequence": {
+        "type": "object",
+        "description": "Information about a biological sequence"
+      },
+      "OperationOutcome": {
+        "type": "object",
+        "description": "Information about the success/failure of an action"
+      },
+      "Bundle": {
+        "type": "object",
+        "description": "Contains a collection of resources"
+      },
+      "Parameters": {
+        "type": "object",
+        "description": "Operation Request or Response"
+      }
     },
-    "OperationOutcome": {
-      "description": "Information about the success/failure of an action",
-      "type": "object"
+    "parameters": {
+      "_format": {
+        "name": "_format",
+        "in": "query",
+        "description": "Override the HTTP content negotiation",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_pretty": {
+        "name": "_pretty",
+        "in": "query",
+        "description": "Ask for a pretty printed response for human convenience",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_elements": {
+        "name": "_elements",
+        "in": "query",
+        "description": "Ask for a particular set of elements to be returned",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_summary": {
+        "name": "_summary",
+        "in": "query",
+        "description": "Return only portions of resources, based on pre-defined levels",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_content": {
+        "name": "_content",
+        "in": "query",
+        "description": "Search on the entire content of the resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_filter": {
+        "name": "_filter",
+        "in": "query",
+        "description": "Provide an inline query expression",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_id": {
+        "name": "_id",
+        "in": "query",
+        "description": "Logical id of this artifact",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_in": {
+        "name": "_in",
+        "in": "query",
+        "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_language": {
+        "name": "_language",
+        "in": "query",
+        "description": "Language of the resource content",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_lastUpdated": {
+        "name": "_lastUpdated",
+        "in": "query",
+        "description": "When the resource version last changed",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_list": {
+        "name": "_list",
+        "in": "query",
+        "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_profile": {
+        "name": "_profile",
+        "in": "query",
+        "description": "Profiles this resource claims to conform to",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_query": {
+        "name": "_query",
+        "in": "query",
+        "description": "A custom search profile that describes a specific defined query operation",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_security": {
+        "name": "_security",
+        "in": "query",
+        "description": "Security Labels applied to this resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_source": {
+        "name": "_source",
+        "in": "query",
+        "description": "Identifies where the resource comes from",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_tag": {
+        "name": "_tag",
+        "in": "query",
+        "description": "Tags applied to this resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_text": {
+        "name": "_text",
+        "in": "query",
+        "description": "Perform searches against the narrative content of a resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_contained": {
+        "name": "_contained",
+        "in": "query",
+        "description": "Request different types of handling for contained resources",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_count": {
+        "name": "_count",
+        "in": "query",
+        "description": "Limit the number of match results per page of response",
+        "style": "form",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "_graph": {
+        "name": "_graph",
+        "in": "query",
+        "description": "Include additional resources according to a GraphDefinition",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_include": {
+        "name": "_include",
+        "in": "query",
+        "description": "Include additional resources, based on following links forward across references",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_revinclude": {
+        "name": "_revinclude",
+        "in": "query",
+        "description": "Include additional resources, based on following reverse links across references",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_score": {
+        "name": "_score",
+        "in": "query",
+        "description": "Request match relevance in results",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_sort": {
+        "name": "_sort",
+        "in": "query",
+        "description": "Request which order results should be returned in",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_total": {
+        "name": "_total",
+        "in": "query",
+        "description": "Request a precision of the total number of results for a request",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_has": {
+        "name": "_has",
+        "in": "query",
+        "description": "Enables querying a reverse chain",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "chromosome": {
+        "name": "chromosome",
+        "in": "query",
+        "description": "Chromosome number of the reference sequence",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "chromosome-variant-coordinate": {
+        "name": "chromosome-variant-coordinate",
+        "in": "query",
+        "description": "Search parameter by chromosome and variant coordinate. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `chromosome-variant-coordinate=1$lt345$gt123`, this means it will search for the MolecularSequence resource with variants on chromosome 1 and with position >123 and <345, where in 1-based system resource, all strings within region 1:124-344 will be revealed, while in 0-based system resource, all strings within region 1:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "chromosome-window-coordinate": {
+        "name": "chromosome-window-coordinate",
+        "in": "query",
+        "description": "Search parameter by chromosome and window. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `chromosome-window-coordinate=1$lt345$gt123`, this means it will search for the MolecularSequence resource with a window on chromosome 1 and with position >123 and <345, where in 1-based system resource, all strings within region 1:124-344 will be revealed, while in 0-based system resource, all strings within region 1:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "identifier": {
+        "name": "identifier",
+        "in": "query",
+        "description": "Account number",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "patient": {
+        "name": "patient",
+        "in": "query",
+        "description": "The entity that caused the expenses",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "referenceseqid": {
+        "name": "referenceseqid",
+        "in": "query",
+        "description": "Reference Sequence of the sequence",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "referenceseqid-variant-coordinate": {
+        "name": "referenceseqid-variant-coordinate",
+        "in": "query",
+        "description": "Search parameter by reference sequence and variant coordinate. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `referenceSeqId-variant-coordinate=NC_000001.11$lt345$gt123`, this means it will search for the MolecularSequence resource with variants on NC_000001.11 and with position >123 and <345, where in 1-based system resource, all strings within region NC_000001.11:124-344 will be revealed, while in 0-based system resource, all strings within region NC_000001.11:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "referenceseqid-window-coordinate": {
+        "name": "referenceseqid-window-coordinate",
+        "in": "query",
+        "description": "Search parameter by reference sequence and window. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `referenceSeqId-window-coordinate=NC_000001.11$lt345$gt123`, this means it will search for the MolecularSequence resource with a window on NC_000001.11 and with position >123 and <345, where in 1-based system resource, all strings within region NC_000001.11:124-344 will be revealed, while in 0-based system resource, all strings within region NC_000001.11:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "type": {
+        "name": "type",
+        "in": "query",
+        "description": "E.g. patient, expense, depreciation",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "variant-end": {
+        "name": "variant-end",
+        "in": "query",
+        "description": "End position (0-based exclusive, which menas the acid at this position will not be included, 1-based inclusive, which means the acid at this position will be included) of the variant.",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "variant-start": {
+        "name": "variant-start",
+        "in": "query",
+        "description": "Start position (0-based inclusive, 1-based inclusive, that means the nucleic acid or amino acid at this position will be included) of the variant.",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "window-end": {
+        "name": "window-end",
+        "in": "query",
+        "description": "End position (0-based exclusive, which menas the acid at this position will not be included, 1-based inclusive, which means the acid at this position will be included) of the reference sequence.",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "window-start": {
+        "name": "window-start",
+        "in": "query",
+        "description": "Start position (0-based inclusive, 1-based inclusive, that means the nucleic acid or amino acid at this position will be included) of the reference sequence.",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "logical_id": {
+        "name": "logical_id",
+        "in": "path",
+        "description": "Resource Logical ID",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "resource_version": {
+        "name": "resource_version",
+        "in": "path",
+        "description": "Resource Version Number",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      }
     },
-    "Bundle": {
-      "description": "Contains a collection of resources",
-      "type": "object"
-    }
-  },
-  "parameters": {
-    "_format": {
-      "in": "query",
-      "name": "_format",
-      "description": "Override the HTTP content negotiation",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_pretty": {
-      "in": "query",
-      "name": "_pretty",
-      "description": "Ask for a pretty printed response for human convenience",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_elements": {
-      "in": "query",
-      "name": "_elements",
-      "description": "Ask for a particular set of elements to be returned",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_summary": {
-      "in": "query",
-      "name": "_summary",
-      "description": "Return only portions of resources, based on pre-defined levels",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_content": {
-      "in": "query",
-      "name": "_content",
-      "description": "Search on the entire content of the resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_filter": {
-      "in": "query",
-      "name": "_filter",
-      "description": "Provide an inline query expression",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_id": {
-      "in": "query",
-      "name": "_id",
-      "description": "Logical id of this artifact",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_in": {
-      "in": "query",
-      "name": "_in",
-      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_language": {
-      "in": "query",
-      "name": "_language",
-      "description": "Language of the resource content",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_lastUpdated": {
-      "in": "query",
-      "name": "_lastUpdated",
-      "description": "When the resource version last changed",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_list": {
-      "in": "query",
-      "name": "_list",
-      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_profile": {
-      "in": "query",
-      "name": "_profile",
-      "description": "Profiles this resource claims to conform to",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_query": {
-      "in": "query",
-      "name": "_query",
-      "description": "A custom search profile that describes a specific defined query operation",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_security": {
-      "in": "query",
-      "name": "_security",
-      "description": "Security Labels applied to this resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_source": {
-      "in": "query",
-      "name": "_source",
-      "description": "Identifies where the resource comes from",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_tag": {
-      "in": "query",
-      "name": "_tag",
-      "description": "Tags applied to this resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_text": {
-      "in": "query",
-      "name": "_text",
-      "description": "Perform searches against the narrative content of a resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_contained": {
-      "in": "query",
-      "name": "_contained",
-      "description": "Request different types of handling for contained resources",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_count": {
-      "in": "query",
-      "name": "_count",
-      "description": "Limit the number of match results per page of response",
-      "type": "number",
-      "collectionFormat": "multi"
-    },
-    "_graph": {
-      "in": "query",
-      "name": "_graph",
-      "description": "Include additional resources according to a GraphDefinition",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_include": {
-      "in": "query",
-      "name": "_include",
-      "description": "Include additional resources, based on following links forward across references",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_revinclude": {
-      "in": "query",
-      "name": "_revinclude",
-      "description": "Include additional resources, based on following reverse links across references",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_score": {
-      "in": "query",
-      "name": "_score",
-      "description": "Request match relevance in results",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_sort": {
-      "in": "query",
-      "name": "_sort",
-      "description": "Request which order results should be returned in",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_total": {
-      "in": "query",
-      "name": "_total",
-      "description": "Request a precision of the total number of results for a request",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_has": {
-      "in": "query",
-      "name": "_has",
-      "description": "Enables querying a reverse chain",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "chromosome": {
-      "in": "query",
-      "name": "chromosome",
-      "description": "Chromosome number of the reference sequence",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "chromosome-variant-coordinate": {
-      "in": "query",
-      "name": "chromosome-variant-coordinate",
-      "description": "Search parameter by chromosome and variant coordinate. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `chromosome-variant-coordinate=1$lt345$gt123`, this means it will search for the MolecularSequence resource with variants on chromosome 1 and with position >123 and <345, where in 1-based system resource, all strings within region 1:124-344 will be revealed, while in 0-based system resource, all strings within region 1:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "chromosome-window-coordinate": {
-      "in": "query",
-      "name": "chromosome-window-coordinate",
-      "description": "Search parameter by chromosome and window. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `chromosome-window-coordinate=1$lt345$gt123`, this means it will search for the MolecularSequence resource with a window on chromosome 1 and with position >123 and <345, where in 1-based system resource, all strings within region 1:124-344 will be revealed, while in 0-based system resource, all strings within region 1:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "identifier": {
-      "in": "query",
-      "name": "identifier",
-      "description": "Account number",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "patient": {
-      "in": "query",
-      "name": "patient",
-      "description": "The entity that caused the expenses",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "referenceseqid": {
-      "in": "query",
-      "name": "referenceseqid",
-      "description": "Reference Sequence of the sequence",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "referenceseqid-variant-coordinate": {
-      "in": "query",
-      "name": "referenceseqid-variant-coordinate",
-      "description": "Search parameter by reference sequence and variant coordinate. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `referenceSeqId-variant-coordinate=NC_000001.11$lt345$gt123`, this means it will search for the MolecularSequence resource with variants on NC_000001.11 and with position >123 and <345, where in 1-based system resource, all strings within region NC_000001.11:124-344 will be revealed, while in 0-based system resource, all strings within region NC_000001.11:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "referenceseqid-window-coordinate": {
-      "in": "query",
-      "name": "referenceseqid-window-coordinate",
-      "description": "Search parameter by reference sequence and window. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `referenceSeqId-window-coordinate=NC_000001.11$lt345$gt123`, this means it will search for the MolecularSequence resource with a window on NC_000001.11 and with position >123 and <345, where in 1-based system resource, all strings within region NC_000001.11:124-344 will be revealed, while in 0-based system resource, all strings within region NC_000001.11:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "type": {
-      "in": "query",
-      "name": "type",
-      "description": "E.g. patient, expense, depreciation",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "variant-end": {
-      "in": "query",
-      "name": "variant-end",
-      "description": "End position (0-based exclusive, which menas the acid at this position will not be included, 1-based inclusive, which means the acid at this position will be included) of the variant.",
-      "type": "number",
-      "collectionFormat": "multi"
-    },
-    "variant-start": {
-      "in": "query",
-      "name": "variant-start",
-      "description": "Start position (0-based inclusive, 1-based inclusive, that means the nucleic acid or amino acid at this position will be included) of the variant.",
-      "type": "number",
-      "collectionFormat": "multi"
-    },
-    "window-end": {
-      "in": "query",
-      "name": "window-end",
-      "description": "End position (0-based exclusive, which menas the acid at this position will not be included, 1-based inclusive, which means the acid at this position will be included) of the reference sequence.",
-      "type": "number",
-      "collectionFormat": "multi"
-    },
-    "window-start": {
-      "in": "query",
-      "name": "window-start",
-      "description": "Start position (0-based inclusive, 1-based inclusive, that means the nucleic acid or amino acid at this position will be included) of the reference sequence.",
-      "type": "number",
-      "collectionFormat": "multi"
-    },
-    "logical_id": {
-      "in": "path",
-      "name": "logical_id",
-      "description": "Resource Logical ID",
-      "required": true,
-      "type": "string"
-    },
-    "resource_version": {
-      "in": "path",
-      "name": "resource_version",
-      "description": "Resource Version Number",
-      "required": true,
-      "type": "string"
+    "securitySchemes": {
+      "openId": {
+        "type": "openIdConnect",
+        "openIdConnectUrl": "https://secure.server.fire.ly/.well-known/smart-configuration"
+      }
     }
   },
   "tags": [
@@ -1299,5 +1994,13 @@
       "name": "MolecularSequence",
       "description": "Information about a biological sequence"
     }
-  ]
+  ],
+  "security": {
+    "openId": [
+      "openid",
+      "profile",
+      "fhirUser",
+      "offline_access"
+    ]
+  }
 }

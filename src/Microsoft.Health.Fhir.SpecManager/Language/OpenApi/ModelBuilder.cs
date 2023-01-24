@@ -4,11 +4,17 @@
 // </copyright>
 
 
+using System.Net.Http;
+using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using static System.Net.Mime.MediaTypeNames;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirCapResource;
 using static Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using System.Threading;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language.OpenApi;
 
@@ -128,7 +134,64 @@ public class ModelBuilder
 
         doc.Tags = tags.Values.ToList();
 
+        if (_caps.SecuritySchemes?.OfType<FhirCapSmartOAuthScheme>()?.FirstOrDefault() is { } oauth)
+        {
+            AddSmartOAuthScheme(_caps.Url, doc, oauth);
+        }
+
         return doc;
+    }
+
+    private void AddSmartOAuthScheme(string baseUrl, OpenApiDocument doc, FhirCapSmartOAuthScheme _)
+    {
+        // OpenIdConnect is only supported in OpenApi 3.0
+        if (_openApiOptions.OpenApiVersion == Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0)
+            return;
+
+        if (!baseUrl.EndsWith("/")) baseUrl += "/";
+        var configUrl = $"{baseUrl}.well-known/smart-configuration";
+
+        var schema = new OpenApiSecurityScheme()
+        {
+            Name = "openId",
+            Type = SecuritySchemeType.OpenIdConnect,
+            OpenIdConnectUrl = new Uri(configUrl)
+        };
+
+        doc.Components.SecuritySchemes.Add("openId", schema);
+
+        // Note that the SecurityRequirements serialization is broken, so we have
+        // to use extensions instead.
+        //doc.SecurityRequirements.Add(
+        //    new OpenApiSecurityRequirement()
+        //    {
+        //        [schema] = new List<string>() { "openid", "fhirUser" }
+        //    });
+
+        var scopes = getScopes(configUrl).Result;
+        var scopesArray = new OpenApiArray();
+        scopesArray.AddRange(scopes.Select(s => new OpenApiString(s)));
+
+        doc.Extensions.Add("security",
+            new OpenApiObject()
+            {
+                ["openId"] = scopesArray
+            });
+    }
+
+    private async Task<string[]> getScopes(string endpoint)
+    {
+        try
+        {
+            var retriever = new OpenIdConnectConfigurationRetriever();
+            var config = await OpenIdConnectConfigurationRetriever.GetAsync(endpoint, CancellationToken.None);
+
+            return config.ScopesSupported.ToArray();
+        }
+        catch
+        {
+            return Array.Empty<string>();
+        }
     }
 
     /// <summary>Consolidate resource parameters.</summary>
@@ -1822,7 +1885,7 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"delete: Perform a loical delete on a {resource.Name} instance";
+            oasOp.Summary = $"delete: Perform a logical delete on a {resource.Name} instance";
         }
 
         // delete includes PathComponentLogicalId segment
@@ -1858,6 +1921,11 @@ public class ModelBuilder
 
             foreach (FhirSearchParam fhirSp in GetResourceSearchParameters(resource.Name))
             {
+                if (usedParams.Contains(fhirSp.Code))
+                {
+                    continue;
+                }
+
                 if (_openApiOptions.ConsolidateSearchParams)
                 {
                     oasOp.Parameters.Add(BuildReferencedParameter(fhirSp.Code));
@@ -2449,6 +2517,10 @@ public class ModelBuilder
                     }
                 }
 
+                var doc = capSp.Documentation;
+                var pattern = @"(\[[A-Z].*\])\((.*.html)\)";  // Match Markdown links [xxxxx](yyyy.html), where xxxx is a capitalized string
+                var fixedDoc = doc is not null ? Regex.Replace(doc, pattern, "$1(http://hl7.org/fhir/$2)") : null;    // prefix those links with HL7 FHIR spec base
+
                 // create a 'local' canonical for referecing
                 searchParameters.Add(new FhirSearchParam(
                     capSp.Name,
@@ -2457,8 +2529,8 @@ public class ModelBuilder
                         : new Uri(capSp.DefinitionCanonical),
                     _info.VersionString,
                     capSp.Name,
-                    capSp.Documentation,
-                    capSp.Documentation,
+                    fixedDoc,
+                    fixedDoc,
                     capSp.Name,
                     new List<string>() { resourceName },
                     null,
