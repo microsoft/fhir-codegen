@@ -2170,6 +2170,7 @@ public sealed class FromFhirExpando : IFhirConverter
         string impDescription = caps.GetString("implementation", "description") ?? string.Empty;
         string impUrl = caps.GetString("implementation", "url") ?? string.Empty;
 
+        FhirCapSecurityScheme security = null;
         List<string> serverInteractions = new();
         List<string> serverInteractionExpectations = new();
         Dictionary<string, FhirCapResource> resourceInteractions = new Dictionary<string, FhirCapResource>();
@@ -2261,6 +2262,21 @@ public sealed class FromFhirExpando : IFhirConverter
                         resourceInfo);
                 }
             }
+
+            if (rest["security"] is not null)
+            {
+                var smartExt = rest.GetExtension("http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris", "security");
+
+                if (smartExt is not null)
+                {
+                    var token = smartExt.GetExtension("token")?.GetString("valueUri");
+                    var authorize = smartExt.GetExtension("authorize")?.GetString("valueUri");
+                    var introspect = smartExt.GetExtension("introspect")?.GetString("valueUri");
+                    var revoke = smartExt.GetExtension("revoke")?.GetString("valueUri");
+
+                    security = new FhirCapSmartOAuthScheme(token, authorize, introspect, revoke);
+                }
+            }
         }
 
         string standardStatus = caps.GetExtensionValueCode(ExtUrlStandardStatus);
@@ -2298,7 +2314,8 @@ public sealed class FromFhirExpando : IFhirConverter
             caps.GetExtensionValueCodeArray(ExtUrlCapExpectation, "_implementationGuide"),
             resourceInteractions,
             serverSearchParams,
-            serverOperations);
+            serverOperations,
+            new[] { security });
 
         if (info != null)
         {
