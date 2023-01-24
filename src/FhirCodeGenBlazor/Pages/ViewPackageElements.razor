@@ -73,8 +73,8 @@ else
                         </MudItem>
                         <MudItem xs="12">
                             <MudSelect T="StringMatchSensitivityCodes" Label="Case Sensitivity" @bind-Value="stringSensitivity">
-                                <MudSelectItem Value="StringMatchSensitivityCodes.CaseInsensitive">Starts With</MudSelectItem>
-                                <MudSelectItem Value="StringMatchSensitivityCodes.CaseSensitive">Contains</MudSelectItem>
+                                <MudSelectItem Value="StringMatchSensitivityCodes.CaseInsensitive">Case Insensitive</MudSelectItem>
+                                <MudSelectItem Value="StringMatchSensitivityCodes.CaseSensitive">Case Sensitive</MudSelectItem>
                             </MudSelect>
                         </MudItem>
                         <MudItem xs="12">
@@ -412,7 +412,7 @@ else
 
     /// <summary>Control toggle behavior of the 'all' button.</summary>
     private bool _showArtifactState = true;
-    
+
     /// <summary>Options for controlling the JSON serializer.</summary>
     private static System.Text.Json.JsonSerializerOptions jsonSerializerOptions = new()
     {
@@ -781,13 +781,14 @@ else
         if (TryBuildPredicate(out Func<FhirElement, bool>? pred))
         {
             searchPredicate = pred;
-            inputIsInvalid = false;
+            inputIsInvalid = true;
             _displayTable?.UpdateSelection();
             InvokeAsync(() => StateHasChanged());
             return;
         }
 
-        inputIsInvalid = true;
+        searchPredicate = null;
+        inputIsInvalid = false;
         _displayTable?.UpdateSelection();
         InvokeAsync(() => StateHasChanged());
     }
