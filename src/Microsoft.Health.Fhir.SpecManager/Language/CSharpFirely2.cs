@@ -2237,13 +2237,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 nativeType = $"{Namespace}.{type}";
             }
 
-            if ((_info.FhirSequence < FhirPackageCommon.FhirSequenceEnum.R4) &&
-                _info.ComplexTypes.ContainsKey(exportedComplexName) &&
-                (type == "markdown"))
-            {
-                nativeType = "string";
-                noElement = false;
-            }
+            //if ((_info.FhirSequence < FhirPackageCommon.FhirSequenceEnum.R4) &&
+            //    _info.ComplexTypes.ContainsKey(exportedComplexName) &&
+            //    (type == "markdown"))
+            //{
+            //    nativeType = "string";
+            //    noElement = false;
+            //}
 
             if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(type))
             {
