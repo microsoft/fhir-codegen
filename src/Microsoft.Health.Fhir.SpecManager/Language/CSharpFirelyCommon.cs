@@ -32,6 +32,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "uri", "string" },
             { "url", "string" },
             { "xhtml", "string" },
+            { "markdown", "string" }
         };
 
         /// <summary>Types that have non-standard names or formatting (see Template-Model.tt#1252).</summary>
