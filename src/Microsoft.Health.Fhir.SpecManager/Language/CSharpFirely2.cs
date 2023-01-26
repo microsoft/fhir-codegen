@@ -303,6 +303,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["RelatedArtifact.resourceReference"] = "R5",
             ["RelatedArtifact.publicationStatus"] = "R5",
             ["RelatedArtifact.publicationDate"] = "R5",
+            ["Signature.who"] = "R4",
+            ["Signature.onBehalfOf"] = "R4",
             ["Signature.sigFormat"] = "R4",
             ["Signature.targetFormat"] = "R4"
         };
@@ -2075,16 +2077,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void BuildFhirElementAttribute(string name, string shortDescription, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, string until = null)
         {
             var description =
-                (since, until) switch
+                (since, until, shortDescription) switch
                 {
-                    (not null, _) => shortDescription +
+                    (_, _, null) => null,
+                    (not null, _, _) => shortDescription +
                                      $". Note: Element was introduced in {since}, do not use when working with older releases.",
-                    (_, not null) => shortDescription +
+                    (_, not null, _) => shortDescription +
                                      $". Note: Element is deprecated since {until}, do not use with {until} and newer releases.",
                     _ => shortDescription
                 };
 
-            WriteIndentedComment(description);
+            if (description is not null)
+            {
+                WriteIndentedComment(description);
+            }
 
             string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
             if (since is { })
@@ -2156,7 +2162,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (_sinceAttributes.TryGetValue(element.Path, out string since))
             {
-                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs, since: since);
+                if (element.Path is "Signature.who" or "Signature.onBehalfOf")
+                {
+                    BuildFhirElementAttribute(name, description, summary, isModifier, element, ", Choice = ChoiceType.DatatypeChoice", fiveWs);
+                    BuildFhirElementAttribute(name, null, summary, isModifier, element, choice, fiveWs, since: since);
+                    _writer.WriteLineIndented($"[DeclaredType(Type = typeof(ResourceReference), Since = FhirRelease.R4)]");
+                    _writer.WriteLineIndented($"[AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference))]");
+                }
+                else
+                {
+                    BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs, since: since);
+                }
             }
             else if (_untilAttributes.TryGetValue(element.Path, out string until))
             {
@@ -2205,7 +2221,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (!string.IsNullOrEmpty(resourceReferences))
             {
-                _writer.WriteLineIndented(resourceReferences);
+                if (element.Path is "Signature.who" or "Signature.onBehalfOf")
+                {
+                    _writer.WriteLineIndented($"[References(\"Practitioner\",\"RelatedPerson\",\"Patient\",\"Device\",\"Organization\")]");
+                    _writer.WriteLineIndented($"[References(\"Practitioner\",\"PractitionerRole\",\"RelatedPerson\",\"Patient\",\"Device\",\"Organization\", 1Since=FhirRelease.R4)]");
+
+                }
+                else
+                {
+                    _writer.WriteLineIndented(resourceReferences);
+
+                }
             }
 
             if (!string.IsNullOrEmpty(allowedTypes))
