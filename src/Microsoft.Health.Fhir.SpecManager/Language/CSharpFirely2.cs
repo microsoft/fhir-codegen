@@ -303,7 +303,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["RelatedArtifact.resourceReference"] = "R5",
             ["RelatedArtifact.publicationStatus"] = "R5",
             ["RelatedArtifact.publicationDate"] = "R5",
-
+            ["Signature.sigFormat"] = "R4",
+            ["Signature.targetFormat"] = "R4"
         };
 
         private readonly Dictionary<string, string> _untilAttributes = new()
@@ -312,6 +313,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["ElementDefinition.constraint.xpath"] = "R5",
             ["ValueSet.scope.focus"] = "R5",
             ["RelatedArtifact.url"] = "R5",
+            ["Signature.blob"] = "R4",
+            ["Signature.contentType"] = "R4"
         };
 
         /// <summary>True to export five ws.</summary>
@@ -460,6 +463,41 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     binary.Elements.Add(contentElement.Path, contentElement);
                 }
+            }
+
+            // We need to modify the definition of Signature, to include
+            // the STU3 content.
+            if (_info.ComplexTypes.TryGetValue("Signature", out FhirComplex signature))
+            {
+                if (!signature.Elements.ContainsKey("Signature.blob") && signature.Elements.TryGetValue("Signature.data", out FhirElement data))
+                {
+                    var contentElement = new FhirElement("Signature.blob", "Signature.blob", data.ExplicitName, data.URL,
+                        data.FieldOrder, data.ShortDescription, data.Purpose, data.Comment, data.ValidationRegEx,
+                        data.BaseTypeName, data.ElementTypes, 0, "1",
+                        data.IsModifier, data.IsModifierReason, data.IsSummary, data.IsMustSupport,
+                        data.IsSimple, data.DefaultFieldName, data.DefaultFieldValue,
+                        data.FixedFieldName, data.FixedFieldValue, data.PatternFieldName, data.PatternFieldValue,
+                        data.IsInherited, data.ModifiesParent, data.BindingStrength, data.ValueSet, data.FiveWs,
+                        data.Representations
+                        );
+
+                    signature.Elements.Add(contentElement.Path, contentElement);
+                }
+
+                var contentTypeElement = new FhirElement(id: "Signature.contentType", path: "Signature.contentType", explicitName: null, url: null,
+                    fieldOrder: 6, shortDescription: "The technical format of the signature",
+                    purpose: null, comment: null, validationRegEx: null,
+                    baseTypeName: null, elementTypes: new() { { "code", new("code", "string", new("http://hl7.org/fhir/code"), null, null) } }, cardinalityMin: 0, cardinalityMax: "1",
+                    isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
+                    isSimple: false, defaultFieldName: null, defaultFieldValue: null,
+                    fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
+                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
+                    representations: null
+                    );
+
+                signature.Elements.Add(contentTypeElement.Path, contentTypeElement);
+
+
             }
 
             // Element ValueSet.scope.focus has been removed in R5 (5.0.0-snapshot3). Adding this element to the list of Resources,
