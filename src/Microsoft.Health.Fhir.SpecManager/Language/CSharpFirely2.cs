@@ -303,7 +303,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["RelatedArtifact.resourceReference"] = "R5",
             ["RelatedArtifact.publicationStatus"] = "R5",
             ["RelatedArtifact.publicationDate"] = "R5",
-
+            ["Signature.who"] = "R4",
+            ["Signature.onBehalfOf"] = "R4",
+            ["Signature.sigFormat"] = "R4",
+            ["Signature.targetFormat"] = "R4"
         };
 
         private readonly Dictionary<string, string> _untilAttributes = new()
@@ -312,6 +315,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["ElementDefinition.constraint.xpath"] = "R5",
             ["ValueSet.scope.focus"] = "R5",
             ["RelatedArtifact.url"] = "R5",
+            ["Signature.blob"] = "R4",
+            ["Signature.contentType"] = "R4"
         };
 
         /// <summary>True to export five ws.</summary>
@@ -460,6 +465,55 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     binary.Elements.Add(contentElement.Path, contentElement);
                 }
+            }
+
+            // We need to modify the definition of Signature, to include
+            // the STU3 content.
+            if (_info.ComplexTypes.TryGetValue("Signature", out FhirComplex signature))
+            {
+                if (!signature.Elements.ContainsKey("Signature.blob") && signature.Elements.TryGetValue("Signature.data", out FhirElement data))
+                {
+                    var contentElement = new FhirElement("Signature.blob", "Signature.blob", data.ExplicitName, data.URL,
+                        data.FieldOrder, data.ShortDescription, data.Purpose, data.Comment, data.ValidationRegEx,
+                        data.BaseTypeName, data.ElementTypes, 0, "1",
+                        data.IsModifier, data.IsModifierReason, data.IsSummary, data.IsMustSupport,
+                        data.IsSimple, data.DefaultFieldName, data.DefaultFieldValue,
+                        data.FixedFieldName, data.FixedFieldValue, data.PatternFieldName, data.PatternFieldValue,
+                        data.IsInherited, data.ModifiesParent, data.BindingStrength, data.ValueSet, data.FiveWs,
+                        data.Representations
+                        );
+
+                    signature.Elements.Add(contentElement.Path, contentElement);
+                }
+
+                if (!signature.Elements.ContainsKey("Signature.contentType"))
+                {
+                    var contentTypeElement = new FhirElement(id: "Signature.contentType", path: "Signature.contentType", explicitName: null, url: null,
+                        fieldOrder: 6, shortDescription: "The technical format of the signature",
+                        purpose: null, comment: null, validationRegEx: null,
+                        baseTypeName: null, elementTypes: new() { { "code", new("code", "string", new("http://hl7.org/fhir/code"), null, null) } }, cardinalityMin: 0, cardinalityMax: "1",
+                        isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
+                        isSimple: false, defaultFieldName: null, defaultFieldValue: null,
+                        fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
+                        isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
+                        representations: null
+                        );
+
+                    signature.Elements.Add(contentTypeElement.Path, contentTypeElement);
+                }
+
+                if (signature.Elements.TryGetValue("Signature.who", out FhirElement who))
+                {
+                    // make it a choice type, like it was in STU3
+                    who.ElementTypes.Add("uri", new FhirElementType("FhirUri"));
+                }
+
+                if (signature.Elements.TryGetValue("Signature.onBehalfOf", out FhirElement onBehalfOf))
+                {
+                    // make it a choice type, like it was in STU3
+                    onBehalfOf.ElementTypes.Add("uri", new FhirElementType("FhirUri"));
+                }
+
             }
 
             // Element ValueSet.scope.focus has been removed in R5 (5.0.0-snapshot3). Adding this element to the list of Resources,
@@ -2037,16 +2091,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void BuildFhirElementAttribute(string name, string shortDescription, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, string until = null)
         {
             var description =
-                (since, until) switch
+                (since, until, shortDescription) switch
                 {
-                    (not null, _) => shortDescription +
+                    (_, _, null) => null,
+                    (not null, _, _) => shortDescription +
                                      $". Note: Element was introduced in {since}, do not use when working with older releases.",
-                    (_, not null) => shortDescription +
+                    (_, not null, _) => shortDescription +
                                      $". Note: Element is deprecated since {until}, do not use with {until} and newer releases.",
                     _ => shortDescription
                 };
 
-            WriteIndentedComment(description);
+            if (description is not null)
+            {
+                WriteIndentedComment(description);
+            }
 
             string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
             if (since is { })
@@ -2118,7 +2176,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (_sinceAttributes.TryGetValue(element.Path, out string since))
             {
-                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs, since: since);
+                if (element.Path is "Signature.who" or "Signature.onBehalfOf")
+                {
+                    BuildFhirElementAttribute(name, description, summary, isModifier, element, ", Choice = ChoiceType.DatatypeChoice", fiveWs);
+                    BuildFhirElementAttribute(name, null, summary, isModifier, element, "", fiveWs, since: since);
+                    _writer.WriteLineIndented($"[DeclaredType(Type = typeof(ResourceReference), Since = FhirRelease.R4)]");
+                    _writer.WriteLineIndented($"[AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference))]");
+                }
+                else
+                {
+                    BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs, since: since);
+                }
             }
             else if (_untilAttributes.TryGetValue(element.Path, out string until))
             {
@@ -2167,7 +2235,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (!string.IsNullOrEmpty(resourceReferences))
             {
-                _writer.WriteLineIndented(resourceReferences);
+                if (element.Path is "Signature.who" or "Signature.onBehalfOf")
+                {
+                    _writer.WriteLineIndented($"[References(\"Practitioner\",\"RelatedPerson\",\"Patient\",\"Device\",\"Organization\")]");
+                    _writer.WriteLineIndented($"[References(\"Practitioner\",\"PractitionerRole\",\"RelatedPerson\",\"Patient\",\"Device\",\"Organization\", Since=FhirRelease.R4)]");
+
+                }
+                else
+                {
+                    _writer.WriteLineIndented(resourceReferences);
+
+                }
             }
 
             if (!string.IsNullOrEmpty(allowedTypes))
