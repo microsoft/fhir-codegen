@@ -486,18 +486,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     signature.Elements.Add(contentElement.Path, contentElement);
                 }
 
-                var contentTypeElement = new FhirElement(id: "Signature.contentType", path: "Signature.contentType", explicitName: null, url: null,
-                    fieldOrder: 6, shortDescription: "The technical format of the signature",
-                    purpose: null, comment: null, validationRegEx: null,
-                    baseTypeName: null, elementTypes: new() { { "code", new("code", "string", new("http://hl7.org/fhir/code"), null, null) } }, cardinalityMin: 0, cardinalityMax: "1",
-                    isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
-                    isSimple: false, defaultFieldName: null, defaultFieldValue: null,
-                    fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
-                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
-                    representations: null
-                    );
+                if (!signature.Elements.ContainsKey("Signature.contentType"))
+                {
+                    var contentTypeElement = new FhirElement(id: "Signature.contentType", path: "Signature.contentType", explicitName: null, url: null,
+                        fieldOrder: 6, shortDescription: "The technical format of the signature",
+                        purpose: null, comment: null, validationRegEx: null,
+                        baseTypeName: null, elementTypes: new() { { "code", new("code", "string", new("http://hl7.org/fhir/code"), null, null) } }, cardinalityMin: 0, cardinalityMax: "1",
+                        isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
+                        isSimple: false, defaultFieldName: null, defaultFieldValue: null,
+                        fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
+                        isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
+                        representations: null
+                        );
 
-                signature.Elements.Add(contentTypeElement.Path, contentTypeElement);
+                    signature.Elements.Add(contentTypeElement.Path, contentTypeElement);
+                }
 
                 if (signature.Elements.TryGetValue("Signature.who", out FhirElement who))
                 {
