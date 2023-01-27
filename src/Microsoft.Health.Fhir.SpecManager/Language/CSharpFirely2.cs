@@ -499,6 +499,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 signature.Elements.Add(contentTypeElement.Path, contentTypeElement);
 
+                if (signature.Elements.TryGetValue("Signature.who", out FhirElement who))
+                {
+                    // make it a choice type, like it was in STU3
+                    who.ElementTypes.Add("uri", new FhirElementType("FhirUri"));
+                }
+
+                if (signature.Elements.TryGetValue("Signature.onBehalfOf", out FhirElement onBehalfOf))
+                {
+                    // make it a choice type, like it was in STU3
+                    onBehalfOf.ElementTypes.Add("uri", new FhirElementType("FhirUri"));
+                }
 
             }
 
@@ -2165,7 +2176,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 if (element.Path is "Signature.who" or "Signature.onBehalfOf")
                 {
                     BuildFhirElementAttribute(name, description, summary, isModifier, element, ", Choice = ChoiceType.DatatypeChoice", fiveWs);
-                    BuildFhirElementAttribute(name, null, summary, isModifier, element, choice, fiveWs, since: since);
+                    BuildFhirElementAttribute(name, null, summary, isModifier, element, "", fiveWs, since: since);
                     _writer.WriteLineIndented($"[DeclaredType(Type = typeof(ResourceReference), Since = FhirRelease.R4)]");
                     _writer.WriteLineIndented($"[AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference))]");
                 }
@@ -2224,7 +2235,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 if (element.Path is "Signature.who" or "Signature.onBehalfOf")
                 {
                     _writer.WriteLineIndented($"[References(\"Practitioner\",\"RelatedPerson\",\"Patient\",\"Device\",\"Organization\")]");
-                    _writer.WriteLineIndented($"[References(\"Practitioner\",\"PractitionerRole\",\"RelatedPerson\",\"Patient\",\"Device\",\"Organization\", 1Since=FhirRelease.R4)]");
+                    _writer.WriteLineIndented($"[References(\"Practitioner\",\"PractitionerRole\",\"RelatedPerson\",\"Patient\",\"Device\",\"Organization\", Since=FhirRelease.R4)]");
 
                 }
                 else
