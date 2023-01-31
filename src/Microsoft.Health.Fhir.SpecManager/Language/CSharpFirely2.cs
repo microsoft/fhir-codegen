@@ -309,14 +309,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["Signature.targetFormat"] = "R4"
         };
 
-        private readonly Dictionary<string, string> _untilAttributes = new()
+        private readonly Dictionary<string, (string since, string newName)> _untilAttributes = new()
         {
-            ["Binary.content"] = "R4",
-            ["ElementDefinition.constraint.xpath"] = "R5",
-            ["ValueSet.scope.focus"] = "R5",
-            ["RelatedArtifact.url"] = "R5",
-            ["Signature.blob"] = "R4",
-            ["Signature.contentType"] = "R4"
+            ["Binary.content"] = ("R4", "Binary.data"),
+            ["ElementDefinition.constraint.xpath"] = ("R5", ""),
+            ["ValueSet.scope.focus"] = ("R5", ""),
+            ["RelatedArtifact.url"] = ("R5", ""),
+            ["Signature.blob"] = ("R4", "Signature.data"),
+            ["Signature.contentType"] = ("R4", "")
         };
 
         /// <summary>True to export five ws.</summary>
@@ -1912,7 +1912,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 BuildFhirElementAttribute(element.Name, element.ShortDescription, summary, isModifier, element, choice, fiveWs, since: since);
             }
-            else if (_untilAttributes.TryGetValue(element.Path, out string until))
+            else if (_untilAttributes.TryGetValue(element.Path, out (string, string) until))
             {
                 BuildFhirElementAttribute(element.Name, element.ShortDescription, summary, isModifier, element, choice, fiveWs, until: until);
             }
@@ -2088,7 +2088,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
-        private void BuildFhirElementAttribute(string name, string shortDescription, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, string until = null)
+        private void BuildFhirElementAttribute(string name, string shortDescription, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, (string, string)? until = null)
         {
             var description =
                 (since, until, shortDescription) switch
@@ -2096,8 +2096,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     (_, _, null) => null,
                     (not null, _, _) => shortDescription +
                                      $". Note: Element was introduced in {since}, do not use when working with older releases.",
-                    (_, not null, _) => shortDescription +
-                                     $". Note: Element is deprecated since {until}, do not use with {until} and newer releases.",
+                    (_, (var release, ""), _) => shortDescription +
+                                     $". Note: Element is deprecated since {release}, do not use with {release} and newer releases.",
+                    (_, (var release, var replacedBy), _) => shortDescription +
+                                     $". Note: Element is replaced by '{replacedBy}' since {release}. Do not use this element '{name}' with {release} and newer releases.",
                     _ => shortDescription
                 };
 
@@ -2117,7 +2119,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (until is not null)
             {
-                _writer.WriteLineIndented($"[NotMapped(Since=FhirRelease.{until})]");
+                _writer.WriteLineIndented($"[NotMapped(Since=FhirRelease.{until.Value.Item1})]");
             }
         }
 
@@ -2169,8 +2171,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             var description = element.Path switch
             {
-                "Signature.when" or "Signature.who" => element.ShortDescription + ". Note: Since R5 the cardinality is expanded to 0..1 (previous it was 1..1)",
-                "Signature.type" => element.ShortDescription + ". Note: Since R5 the cardinality is expanded to 0..* (previous it was 1..*)",
+                "Signature.who" => element.ShortDescription + ".\nNote 1: Since R4 the type of this element should be a fixed type (ResourceReference). For backwards compatibility it remains of type DataType.\nNote 2: Since R5 the cardinality is expanded to 0..1 (previous it was 1..1).",
+                "Signature.onBehalfOf" => element.ShortDescription + ".\nNote: Since R4 the type of this element should be a fixed type (ResourceReference). For backwards compatibility it remains of type DataType.",
+                "Signature.when" => element.ShortDescription + ".\nNote: Since R5 the cardinality is expanded to 0..1 (previous it was 1..1).",
+                "Signature.type" => element.ShortDescription + ".\nNote: Since R5 the cardinality is expanded to 0..* (previous it was 1..*).",
                 _ => element.ShortDescription
             };
 
@@ -2188,7 +2192,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs, since: since);
                 }
             }
-            else if (_untilAttributes.TryGetValue(element.Path, out string until))
+            else if (_untilAttributes.TryGetValue(element.Path, out (string, string) until))
             {
                 BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs, until: until);
             }
