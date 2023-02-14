@@ -2279,7 +2279,7 @@ Complex Types: 49
     .fixedUri = "http://hl7.org/fhir/StructureDefinition/identifier-validDate"
   - value[x][1..1]: dateTime
 - MarketingStatus: BackboneType (draft)
-  ^marketingStatus[0..*]: MarketingStatus
+  ^marketingStatus[0..*]: MarketingStatus (W5: administrative.medication)
   - id[0..1]: id *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -2385,7 +2385,7 @@ Complex Types: 49
   - id[0..1]: id *simple*
   - extension[0..*]: Extension
 - ProductShelfLife: BackboneType (draft)
-  ^productShelfLife[0..*]: ProductShelfLife
+  ^productShelfLife[0..*]: ProductShelfLife (W5: administrative.medication)
   - id[0..1]: id *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -2633,7 +2633,7 @@ Complex Types: 49
   - sessionKey[0..1]: string
 Resources: 159
 - Account: DomainResource (trial-use FMM: 2)
-  ^account[0..*]: Account
+  ^account[0..*]: Account (W5: financial.support)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2699,7 +2699,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?type: type=token (trial-use)
 - ActivityDefinition: DomainResource (trial-use FMM: 3)
-  ^activityDefinition[0..*]: ActivityDefinition
+  ^activityDefinition[0..*]: ActivityDefinition (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2840,7 +2840,7 @@ Resources: 159
     out: return: Resource[1..1]
   Profiles: 1
   - Shareable ActivityDefinition (shareableactivitydefinition)
-      ^activityDefinition[1..1]: Element
+      ^activityDefinition[1..1]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -2914,7 +2914,7 @@ Resources: 159
       - path[1..1]: string
       - expression[1..1]: Expression
 - ActorDefinition: DomainResource (trial-use FMM: 0 experimental)
-  ^actorDefinition[0..*]: ActorDefinition
+  ^actorDefinition[0..*]: ActorDefinition (W5: conformance.content)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2969,7 +2969,7 @@ Resources: 159
   ?url: url=uri (trial-use experimental)
   ?version: version=token (trial-use experimental)
 - AdministrableProductDefinition: DomainResource (trial-use FMM: 2)
-  ^administrableProductDefinition[0..*]: AdministrableProductDefinition
+  ^administrableProductDefinition[0..*]: AdministrableProductDefinition (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3026,7 +3026,7 @@ Resources: 159
   ?status: status=token (trial-use)
   ?target-species: target-species=token (trial-use)
 - AdverseEvent: DomainResource (trial-use FMM: 0 experimental)
-  ^adverseEvent[0..*]: AdverseEvent
+  ^adverseEvent[0..*]: AdverseEvent (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3115,7 +3115,7 @@ Resources: 159
   ?subject: subject=reference (trial-use experimental)
   ?substance: substance=reference (trial-use experimental)
 - AllergyIntolerance: DomainResource (trial-use FMM: 3)
-  ^allergyIntolerance[0..*]: AllergyIntolerance
+  ^allergyIntolerance[0..*]: AllergyIntolerance (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3277,7 +3277,7 @@ Resources: 159
   ?type: type=token (normative)
   ?verification-status: verification-status=token (trial-use)
 - Appointment: DomainResource (trial-use FMM: 3)
-  ^appointment[0..*]: Appointment
+  ^appointment[0..*]: Appointment (W5: workflow.scheduling)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3397,7 +3397,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?supporting-info: supporting-info=reference (trial-use)
 - AppointmentResponse: DomainResource (trial-use FMM: 3)
-  ^appointmentResponse[0..*]: AppointmentResponse
+  ^appointmentResponse[0..*]: AppointmentResponse (W5: workflow.scheduling)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3428,7 +3428,7 @@ Resources: 159
   ?patient: patient=reference (trial-use)
   ?practitioner: practitioner=reference (trial-use)
 - ArtifactAssessment: DomainResource (trial-use FMM: 0 experimental)
-  ^artifactAssessment[0..*]: ArtifactAssessment
+  ^artifactAssessment[0..*]: ArtifactAssessment (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3472,7 +3472,7 @@ Resources: 159
   ?date: date=date (normative experimental)
   Profiles: 1
   - EBMRecommendation (ebmrecommendation)
-      ^artifactAssessment[1..1]: Element
+      ^artifactAssessment[1..1]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -3503,7 +3503,7 @@ Resources: 159
       - freeToShare[0..1]: boolean
       - component[0..*]: ArtifactAssessment.content
 - AuditEvent: DomainResource (trial-use FMM: 3)
-  ^auditEvent[0..*]: AuditEvent
+  ^auditEvent[0..*]: AuditEvent (W5: infrastructure.information)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3641,7 +3641,7 @@ Resources: 159
   ?purpose: purpose=token (trial-use)
   ?source: source=reference (trial-use)
 - Basic: DomainResource (trial-use FMM: 1)
-  ^basic[0..*]: Basic
+  ^basic[0..*]: Basic (W5: infrastructure.structure)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3735,7 +3735,7 @@ Resources: 159
   ?patient: patient=reference (trial-use)
   ?subject: subject=reference (trial-use)
 - Binary: Resource (normative FMM: 5)
-  ^binary[0..*]: Binary
+  ^binary[0..*]: Binary (W5: infrastructure.structure)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3744,7 +3744,7 @@ Resources: 159
   - securityContext[0..1]: Reference(Resource)
   - data[0..1]: base64Binary
 - BiologicallyDerivedProduct: DomainResource (trial-use FMM: 2)
-  ^biologicallyDerivedProduct[0..*]: BiologicallyDerivedProduct
+  ^biologicallyDerivedProduct[0..*]: BiologicallyDerivedProduct (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3842,7 +3842,7 @@ Resources: 159
   ?product-status: product-status=token (trial-use)
   ?request: request=reference (trial-use)
 - BodyStructure: DomainResource (trial-use FMM: 1)
-  ^bodyStructure[0..*]: BodyStructure
+  ^bodyStructure[0..*]: BodyStructure (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3876,7 +3876,7 @@ Resources: 159
   ?patient: patient=reference (trial-use)
   ?structure: structure=token (trial-use)
 - Bundle: Resource (normative FMM: 5)
-  ^bundle[0..*]: Bundle
+  ^bundle[0..*]: Bundle (W5: infrastructure.structure)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3955,7 +3955,7 @@ Resources: 159
   ?timestamp: timestamp=date (trial-use)
   ?type: type=token (normative)
 - CanonicalResource: DomainResource (normative FMM: 5)
-  ^canonicalResource[1..1]: CanonicalResource
+  ^canonicalResource[1..1]: CanonicalResource (W5: conformance.behavior)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3990,7 +3990,7 @@ Resources: 159
     .fixedUri = "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version"
   - value[x][1..1]: code
 - CapabilityStatement: DomainResource (normative FMM: 5)
-  ^capabilityStatement[0..*]: CapabilityStatement
+  ^capabilityStatement[0..*]: CapabilityStatement (W5: conformance.behavior)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4359,7 +4359,7 @@ Resources: 159
     in: resource: code[1..*]
     out: return: CapabilityStatement[1..1]
 - CarePlan: DomainResource (trial-use FMM: 2)
-  ^carePlan[0..*]: CarePlan
+  ^carePlan[0..*]: CarePlan (W5: clinical.careprovision)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4526,7 +4526,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - CareTeam: DomainResource (trial-use FMM: 2)
-  ^careTeam[0..*]: CareTeam
+  ^careTeam[0..*]: CareTeam (W5: clinical.careprovision)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4570,7 +4570,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - ChargeItem: DomainResource (trial-use FMM: 0 experimental)
-  ^chargeItem[0..*]: ChargeItem
+  ^chargeItem[0..*]: ChargeItem (W5: financial.support)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4642,7 +4642,7 @@ Resources: 159
   ?service: service=reference (trial-use experimental)
   ?subject: subject=reference (trial-use experimental)
 - ChargeItemDefinition: DomainResource (trial-use FMM: 0 experimental)
-  ^chargeItemDefinition[0..*]: ChargeItemDefinition
+  ^chargeItemDefinition[0..*]: ChargeItemDefinition (W5: financial.support)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4715,7 +4715,7 @@ Resources: 159
   ?url: url=uri (normative experimental)
   ?version: version=token (normative experimental)
 - Citation: DomainResource (trial-use FMM: 0 experimental)
-  ^citation[0..*]: Citation
+  ^citation[0..*]: Citation (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4923,7 +4923,7 @@ Resources: 159
   ?url: url=uri (normative experimental)
   ?version: version=token (normative experimental)
 - Claim: DomainResource (trial-use FMM: 2)
-  ^claim[0..*]: Claim
+  ^claim[0..*]: Claim (W5: financial.billing)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5113,7 +5113,7 @@ Resources: 159
     in: resource: Resource[1..1]
     out: return: Resource[1..1]
 - ClaimResponse: DomainResource (trial-use FMM: 2)
-  ^claimResponse[0..*]: ClaimResponse
+  ^claimResponse[0..*]: ClaimResponse (W5: financial.billing)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5294,7 +5294,7 @@ Resources: 159
   ?status: status=token (normative)
   ?use: use=token (normative)
 - ClinicalImpression: DomainResource (trial-use FMM: 0 experimental)
-  ^clinicalImpression[0..*]: ClinicalImpression
+  ^clinicalImpression[0..*]: ClinicalImpression (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5360,7 +5360,7 @@ Resources: 159
   ?subject: subject=reference (trial-use experimental)
   ?supporting-info: supporting-info=reference (trial-use experimental)
 - ClinicalUseDefinition: DomainResource (trial-use FMM: 2)
-  ^clinicalUseDefinition[0..*]: ClinicalUseDefinition
+  ^clinicalUseDefinition[0..*]: ClinicalUseDefinition (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5440,7 +5440,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?type: type=token (normative)
 - CodeSystem: DomainResource (normative FMM: 5)
-  ^codeSystem[0..*]: CodeSystem
+  ^codeSystem[0..*]: CodeSystem (W5: conformance.terminology)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5882,7 +5882,7 @@ Resources: 159
     out: issues: OperationOutcome[0..1]
   Profiles: 1
   - ShareableCodeSystem (shareablecodesystem)
-      ^codeSystem[1..1]: Element
+      ^codeSystem[1..1]: Element (W5: conformance.terminology)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -6046,7 +6046,7 @@ Resources: 159
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/ordinalValue"
       - value[x][1..1]: decimal
 - Communication: DomainResource (trial-use FMM: 2)
-  ^communication[0..*]: Communication
+  ^communication[0..*]: Communication (W5: workflow.encounter)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6131,7 +6131,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?topic: topic=token (trial-use)
 - CommunicationRequest: DomainResource (trial-use FMM: 2)
-  ^communicationRequest[0..*]: CommunicationRequest
+  ^communicationRequest[0..*]: CommunicationRequest (W5: workflow.order)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6265,7 +6265,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - CompartmentDefinition: DomainResource (trial-use FMM: 1)
-  ^compartmentDefinition[0..*]: CompartmentDefinition
+  ^compartmentDefinition[0..*]: CompartmentDefinition (W5: conformance.behavior)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6340,7 +6340,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - Composition: DomainResource (trial-use FMM: 2)
-  ^composition[0..*]: Composition
+  ^composition[0..*]: Composition (W5: infrastructure.documents)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6469,7 +6469,7 @@ Resources: 159
     in: graph: uri[0..1]
   Profiles: 2
   - Profile for Catalog (catalog)
-      ^composition[0..*]: Element
+      ^composition[0..*]: Element (W5: infrastructure.documents)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -6533,7 +6533,7 @@ Resources: 159
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/composition-section-subject"
       - value[x][1..1]: string
   - Clinical Document (clinicaldocument)
-      ^composition[0..*]: Element
+      ^composition[0..*]: Element (W5: infrastructure.documents)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -6598,7 +6598,7 @@ Resources: 159
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/composition-section-subject"
       - value[x][1..1]: string
 - ConceptMap: DomainResource (trial-use FMM: 1)
-  ^conceptMap[0..*]: ConceptMap
+  ^conceptMap[0..*]: ConceptMap (W5: conformance.terminology)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6808,7 +6808,7 @@ Resources: 159
     out: match: [0..*]
   Profiles: 1
   - ShareableConceptMap (shareableconceptmap)
-      ^conceptMap[1..1]: Element
+      ^conceptMap[1..1]: Element (W5: conformance.terminology)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -6914,7 +6914,7 @@ Resources: 159
           {related-to|equivalent|source-is-narrower-than-target|source-is-broader-than-target|not-related-to}
         - otherMap[0..1]: canonical(ConceptMap)
 - Condition: DomainResource (trial-use FMM: 3)
-  ^condition[0..*]: Condition
+  ^condition[0..*]: Condition (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7070,7 +7070,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?verification-status: verification-status=token (trial-use)
 - ConditionDefinition: DomainResource (trial-use FMM: 0 experimental)
-  ^conditionDefinition[0..*]: ConditionDefinition
+  ^conditionDefinition[0..*]: ConditionDefinition (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7159,7 +7159,7 @@ Resources: 159
   ?url: url=uri (normative experimental)
   ?version: version=token (normative experimental)
 - Consent: DomainResource (trial-use FMM: 2)
-  ^consent[0..*]: Consent
+  ^consent[0..*]: Consent (W5: infrastructure.information)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7301,7 +7301,7 @@ Resources: 159
   ?verified: verified=token (normative)
   ?verified-date: verified-date=date (normative)
 - Contract: DomainResource (trial-use FMM: 1)
-  ^contract[0..*]: Contract
+  ^contract[0..*]: Contract (W5: financial.other)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7502,7 +7502,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?url: url=uri (normative)
 - Coverage: DomainResource (trial-use FMM: 2)
-  ^coverage[0..*]: Coverage
+  ^coverage[0..*]: Coverage (W5: financial.support)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7580,7 +7580,7 @@ Resources: 159
   ?subscriberid: subscriberid=token
   ?type: type=token (trial-use)
 - CoverageEligibilityRequest: DomainResource (trial-use FMM: 2)
-  ^coverageEligibilityRequest[0..*]: CoverageEligibilityRequest
+  ^coverageEligibilityRequest[0..*]: CoverageEligibilityRequest (W5: financial.support)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7648,7 +7648,7 @@ Resources: 159
     in: resource: Resource[1..1]
     out: return: Resource[1..1]
 - CoverageEligibilityResponse: DomainResource (trial-use FMM: 2)
-  ^coverageEligibilityResponse[0..*]: CoverageEligibilityResponse
+  ^coverageEligibilityResponse[0..*]: CoverageEligibilityResponse (W5: financial.support)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7719,7 +7719,7 @@ Resources: 159
   ?requestor: requestor=reference (trial-use)
   ?status: status=token (normative)
 - DetectedIssue: DomainResource (trial-use FMM: 2)
-  ^detectedIssue[0..*]: DetectedIssue
+  ^detectedIssue[0..*]: DetectedIssue (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7777,7 +7777,7 @@ Resources: 159
   ?status: status=token
   ?subject: subject=reference (trial-use)
 - Device: DomainResource (trial-use FMM: 2)
-  ^device[0..*]: Device
+  ^device[0..*]: Device (W5: administrative.device)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7904,7 +7904,7 @@ Resources: 159
   ?url: url=uri (trial-use)
   ?version: version=string (trial-use)
 - DeviceDefinition: DomainResource (trial-use FMM: 1)
-  ^deviceDefinition[0..*]: DeviceDefinition
+  ^deviceDefinition[0..*]: DeviceDefinition (W5: administrative.device)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8048,7 +8048,7 @@ Resources: 159
   ?parent: parent=reference (trial-use)
   ?type: type=token (trial-use)
 - DeviceDispense: DomainResource (trial-use FMM: 0 experimental)
-  ^deviceDispense[0..*]: DeviceDispense
+  ^deviceDispense[0..*]: DeviceDispense (W5: administrative.device)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8093,7 +8093,7 @@ Resources: 159
   ?code: code=token (trial-use experimental)
   ?subject: subject=reference (trial-use experimental)
 - DeviceMetric: DomainResource (trial-use FMM: 1)
-  ^deviceMetric[0..*]: DeviceMetric
+  ^deviceMetric[0..*]: DeviceMetric (W5: administrative.device)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8129,7 +8129,7 @@ Resources: 159
   ?source: source=reference (trial-use)
   ?type: type=token (trial-use)
 - DeviceRequest: DomainResource (trial-use FMM: 0 experimental)
-  ^deviceRequest[0..*]: DeviceRequest
+  ^deviceRequest[0..*]: DeviceRequest (W5: workflow.order)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8258,7 +8258,7 @@ Resources: 159
   ?status: status=token (normative experimental)
   ?subject: subject=reference (trial-use experimental)
 - DeviceUsage: DomainResource (trial-use FMM: 1)
-  ^deviceUsage[0..*]: DeviceUsage
+  ^deviceUsage[0..*]: DeviceUsage (W5: workflow.order)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8331,7 +8331,7 @@ Resources: 159
   ?identifier: identifier=token (trial-use)
   ?patient: patient=reference (trial-use)
 - DiagnosticReport: DomainResource (trial-use FMM: 3)
-  ^diagnosticReport[0..*]: DiagnosticReport
+  ^diagnosticReport[0..*]: DiagnosticReport (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8531,7 +8531,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   Profiles: 1
   - Example Lipid Profile (lipidprofile)
-      ^diagnosticReport[1..1]: Element
+      ^diagnosticReport[1..1]: Element (W5: clinical.diagnostics)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -8585,7 +8585,7 @@ Resources: 159
     - conclusion[0..1]: string
     - presentedForm[0..*]: Attachment
 - DocumentManifest: DomainResource (trial-use FMM: 2)
-  ^documentManifest[0..*]: DocumentManifest
+  ^documentManifest[0..*]: DocumentManifest (W5: infrastructure.documents)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8633,7 +8633,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?type: type=token (normative)
 - DocumentReference: DomainResource (trial-use FMM: 3)
-  ^documentReference[0..*]: DocumentReference
+  ^documentReference[0..*]: DocumentReference (W5: infrastructure.documents)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8833,7 +8833,7 @@ Resources: 159
   - modifierExtension[0..*]: Extension
   ?_text: _text=special (trial-use)
 - Encounter: DomainResource (trial-use FMM: 2)
-  ^encounter[0..*]: Encounter
+  ^encounter[0..*]: Encounter (W5: workflow.encounter)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9002,7 +9002,7 @@ Resources: 159
   ?subject-status: subject-status=token (trial-use)
   ?type: type=token (normative)
 - Endpoint: DomainResource (trial-use FMM: 2)
-  ^endpoint[0..*]: Endpoint
+  ^endpoint[0..*]: Endpoint (W5: infrastructure.exchange)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9039,7 +9039,7 @@ Resources: 159
   ?payload-type: payload-type=token (trial-use)
   ?status: status=token (normative)
 - EnrollmentRequest: DomainResource (trial-use FMM: 0 experimental)
-  ^enrollmentRequest[0..*]: EnrollmentRequest
+  ^enrollmentRequest[0..*]: EnrollmentRequest (W5: financial.support)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9068,7 +9068,7 @@ Resources: 159
   ?status: status=token (normative experimental)
   ?subject: subject=reference (trial-use experimental)
 - EnrollmentResponse: DomainResource (trial-use FMM: 0 experimental)
-  ^enrollmentResponse[0..*]: EnrollmentResponse
+  ^enrollmentResponse[0..*]: EnrollmentResponse (W5: financial.support)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9098,7 +9098,7 @@ Resources: 159
   ?request: request=reference (trial-use experimental)
   ?status: status=token (normative experimental)
 - EpisodeOfCare: DomainResource (trial-use FMM: 2)
-  ^episodeOfCare[0..*]: EpisodeOfCare
+  ^episodeOfCare[0..*]: EpisodeOfCare (W5: workflow.encounter)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9157,7 +9157,7 @@ Resources: 159
   ?status: status=token (normative)
   ?type: type=token (normative)
 - EventDefinition: DomainResource (trial-use FMM: 0 experimental)
-  ^eventDefinition[0..*]: EventDefinition
+  ^eventDefinition[0..*]: EventDefinition (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9225,7 +9225,7 @@ Resources: 159
   ?url: url=uri (normative experimental)
   ?version: version=token (normative experimental)
 - Evidence: DomainResource (trial-use FMM: 1)
-  ^evidence[0..*]: Evidence
+  ^evidence[0..*]: Evidence (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9348,7 +9348,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - EvidenceReport: DomainResource (trial-use FMM: 0 experimental)
-  ^evidenceReport[0..*]: EvidenceReport
+  ^evidenceReport[0..*]: EvidenceReport (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9434,7 +9434,7 @@ Resources: 159
   ?status: status=token (normative experimental)
   ?url: url=uri (normative experimental)
 - EvidenceVariable: DomainResource (trial-use FMM: 1)
-  ^evidenceVariable[0..*]: EvidenceVariable
+  ^evidenceVariable[0..*]: EvidenceVariable (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9544,7 +9544,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - ExampleScenario: DomainResource (trial-use FMM: 1)
-  ^exampleScenario[0..*]: ExampleScenario
+  ^exampleScenario[0..*]: ExampleScenario (W5: infrastructure.information)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9661,7 +9661,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - ExplanationOfBenefit: DomainResource (trial-use FMM: 2)
-  ^explanationOfBenefit[0..*]: ExplanationOfBenefit
+  ^explanationOfBenefit[0..*]: ExplanationOfBenefit (W5: financial.other)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9984,7 +9984,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subdetail-udi: subdetail-udi=reference (trial-use)
 - FamilyMemberHistory: DomainResource (trial-use FMM: 2)
-  ^familyMemberHistory[0..*]: FamilyMemberHistory
+  ^familyMemberHistory[0..*]: FamilyMemberHistory (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10135,7 +10135,7 @@ Resources: 159
   ?status: status=token (normative)
   Profiles: 1
   - Family member history for genetics analysis (familymemberhistory-genetic)
-      ^familyMemberHistory[0..*]: Element
+      ^familyMemberHistory[0..*]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -10197,7 +10197,7 @@ Resources: 159
       - performed[x][0..1]: Age|dateTime|Period|Range|string
       - note[0..*]: Annotation
 - Flag: DomainResource (trial-use FMM: 1)
-  ^flag[0..*]: Flag
+  ^flag[0..*]: Flag (W5: workflow.encounter)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10242,7 +10242,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - FormularyItem: DomainResource (trial-use FMM: 0 experimental)
-  ^formularyItem[0..*]: FormularyItem
+  ^formularyItem[0..*]: FormularyItem (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10258,7 +10258,7 @@ Resources: 159
   ?code: code=token (trial-use experimental)
   ?identifier: identifier=token (trial-use experimental)
 - GenomicStudy: DomainResource (trial-use FMM: 0 experimental)
-  ^genomicStudy[0..*]: GenomicStudy
+  ^genomicStudy[0..*]: GenomicStudy (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10331,7 +10331,7 @@ Resources: 159
   ?status: status=token (trial-use experimental)
   ?subject: subject=reference (trial-use experimental)
 - Goal: DomainResource (trial-use FMM: 2)
-  ^goal[0..*]: Goal
+  ^goal[0..*]: Goal (W5: clinical.careprovision)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10443,7 +10443,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?target-date: target-date=date (trial-use)
 - GraphDefinition: DomainResource (trial-use FMM: 1)
-  ^graphDefinition[0..*]: GraphDefinition
+  ^graphDefinition[0..*]: GraphDefinition (W5: conformance.behavior)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10520,7 +10520,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - Group: DomainResource (trial-use FMM: 0 experimental)
-  ^group[0..*]: Group
+  ^group[0..*]: Group (W5: administrative.group)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10576,7 +10576,7 @@ Resources: 159
   ?value: value=token (trial-use experimental)
   Profiles: 2
   - Actual Group (actualgroup)
-      ^group[1..1]: Element
+      ^group[1..1]: Element (W5: administrative.group)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -10613,7 +10613,7 @@ Resources: 159
       - period[0..1]: Period
       - inactive[0..1]: boolean
   - Group Definition (groupdefinition)
-      ^group[1..1]: Element
+      ^group[1..1]: Element (W5: administrative.group)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -10650,7 +10650,7 @@ Resources: 159
       - period[0..1]: Period
       - inactive[0..1]: boolean
 - GuidanceResponse: DomainResource (trial-use FMM: 2)
-  ^guidanceResponse[0..*]: GuidanceResponse
+  ^guidanceResponse[0..*]: GuidanceResponse (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10681,7 +10681,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   Profiles: 1
   - CDS Hooks GuidanceResponse (cdshooksguidanceresponse)
-      ^guidanceResponse[1..1]: Element
+      ^guidanceResponse[1..1]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -10710,7 +10710,7 @@ Resources: 159
     - result[0..1]: Reference(CarePlan|RequestOrchestration)
     - dataRequirement[0..*]: DataRequirement
 - HealthcareService: DomainResource (trial-use FMM: 2)
-  ^healthcareService[0..*]: HealthcareService
+  ^healthcareService[0..*]: HealthcareService (W5: administrative.group)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10761,7 +10761,7 @@ Resources: 159
   ?service-type: service-type=token (trial-use)
   ?specialty: specialty=token (trial-use)
 - ImagingSelection: DomainResource (trial-use FMM: 1)
-  ^imagingSelection[0..*]: ImagingSelection
+  ^imagingSelection[0..*]: ImagingSelection (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10824,7 +10824,7 @@ Resources: 159
   ?study-uid: study-uid=token (trial-use)
   ?subject: subject=reference (trial-use)
 - ImagingStudy: DomainResource (trial-use FMM: 4)
-  ^imagingStudy[0..*]: ImagingStudy
+  ^imagingStudy[0..*]: ImagingStudy (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10904,7 +10904,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - Immunization: DomainResource (trial-use FMM: 3)
-  ^immunization[0..*]: Immunization
+  ^immunization[0..*]: Immunization (W5: clinical.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11014,7 +11014,7 @@ Resources: 159
   ?target-disease: target-disease=token (trial-use)
   ?vaccine-code: vaccine-code=token (trial-use)
 - ImmunizationEvaluation: DomainResource (trial-use FMM: 0 experimental)
-  ^immunizationEvaluation[0..*]: ImmunizationEvaluation
+  ^immunizationEvaluation[0..*]: ImmunizationEvaluation (W5: clinical.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11070,7 +11070,7 @@ Resources: 159
   ?status: status=token (normative experimental)
   ?target-disease: target-disease=token (trial-use experimental)
 - ImmunizationRecommendation: DomainResource (trial-use FMM: 1)
-  ^immunizationRecommendation[0..*]: ImmunizationRecommendation
+  ^immunizationRecommendation[0..*]: ImmunizationRecommendation (W5: clinical.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11138,7 +11138,7 @@ Resources: 159
   ?target-disease: target-disease=token (trial-use)
   ?vaccine-type: vaccine-type=token (trial-use)
 - ImplementationGuide: DomainResource (trial-use FMM: 1)
-  ^implementationGuide[0..*]: ImplementationGuide
+  ^implementationGuide[0..*]: ImplementationGuide (W5: conformance.misc)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11313,7 +11313,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - Ingredient: DomainResource (trial-use FMM: 2)
-  ^ingredient[0..*]: Ingredient
+  ^ingredient[0..*]: Ingredient (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11371,7 +11371,7 @@ Resources: 159
   ?substance-code: substance-code=token (draft)
   ?substance-definition: substance-definition=reference (draft)
 - InsurancePlan: DomainResource (trial-use FMM: 0 experimental)
-  ^insurancePlan[0..*]: InsurancePlan
+  ^insurancePlan[0..*]: InsurancePlan (W5: administrative.entity)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11460,7 +11460,7 @@ Resources: 159
   ?status: status=token (normative experimental)
   ?type: type=token (trial-use experimental)
 - InventoryReport: DomainResource (trial-use FMM: 0 experimental)
-  ^inventoryReport[0..*]: InventoryReport
+  ^inventoryReport[0..*]: InventoryReport (W5: administrative.entity)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11506,7 +11506,7 @@ Resources: 159
     .fixedUri = "http://hl7.org/fhir/StructureDefinition/event-basedOn"
   - value[x][1..1]: Reference(Resource)
 - Invoice: DomainResource (trial-use FMM: 0 experimental)
-  ^invoice[0..*]: Invoice
+  ^invoice[0..*]: Invoice (W5: financial.support)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11567,7 +11567,7 @@ Resources: 159
   ?totalnet: totalnet=quantity (trial-use experimental)
   ?type: type=token (trial-use experimental)
 - Library: DomainResource (trial-use FMM: 3)
-  ^library[0..*]: Library
+  ^library[0..*]: Library (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11641,7 +11641,7 @@ Resources: 159
   ?version: version=token (normative)
   Profiles: 1
   - ShareableLibrary (shareablelibrary)
-      ^library[1..1]: Element
+      ^library[1..1]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -11687,7 +11687,7 @@ Resources: 159
     - dataRequirement[0..*]: DataRequirement
     - content[0..*]: Attachment
 - Linkage: DomainResource (trial-use FMM: 0 experimental)
-  ^linkage[0..*]: Linkage
+  ^linkage[0..*]: Linkage (W5: infrastructure.structure)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11709,7 +11709,7 @@ Resources: 159
   ?item: item=reference (trial-use experimental)
   ?source: source=reference (trial-use experimental)
 - List: DomainResource (trial-use FMM: 1)
-  ^list[0..*]: List
+  ^list[0..*]: List (W5: infrastructure.documents)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11784,7 +11784,7 @@ Resources: 159
     in: patient: id[1..1]
     in: name: code[1..1]
 - Location: DomainResource (trial-use FMM: 3)
-  ^location[0..*]: Location
+  ^location[0..*]: Location (W5: administrative.entity)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11850,7 +11850,7 @@ Resources: 159
   ?status: status=token (normative)
   ?type: type=token (trial-use)
 - ManufacturedItemDefinition: DomainResource (trial-use FMM: 2)
-  ^manufacturedItemDefinition[0..*]: ManufacturedItemDefinition
+  ^manufacturedItemDefinition[0..*]: ManufacturedItemDefinition (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11897,7 +11897,7 @@ Resources: 159
   ?name: name=token (draft)
   ?status: status=token (trial-use)
 - Measure: DomainResource (trial-use FMM: 3)
-  ^measure[0..*]: Measure
+  ^measure[0..*]: Measure (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12114,7 +12114,7 @@ Resources: 159
     in: resource: Resource[0..*]
   Profiles: 1
   - Shareable Measure (shareablemeasure)
-      ^measure[1..1]: Element
+      ^measure[1..1]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -12227,7 +12227,7 @@ Resources: 159
       - description[0..1]: string
       - criteria[1..1]: Expression
 - MeasureReport: DomainResource (trial-use FMM: 3)
-  ^measureReport[0..*]: MeasureReport
+  ^measureReport[0..*]: MeasureReport (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12309,7 +12309,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - Medication: DomainResource (trial-use FMM: 3)
-  ^medication[0..*]: Medication
+  ^medication[0..*]: Medication (W5: clinical.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12422,7 +12422,7 @@ Resources: 159
   ?marketingauthorizationholder: marketingauthorizationholder=reference
   ?status: status=token (normative)
 - MedicationAdministration: DomainResource (trial-use FMM: 2)
-  ^medicationAdministration[0..*]: MedicationAdministration
+  ^medicationAdministration[0..*]: MedicationAdministration (W5: clinical.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12501,7 +12501,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - MedicationDispense: DomainResource (trial-use FMM: 2)
-  ^medicationDispense[0..*]: MedicationDispense
+  ^medicationDispense[0..*]: MedicationDispense (W5: clinical.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12599,7 +12599,7 @@ Resources: 159
   ?whenhandedover: whenhandedover=date (normative)
   ?whenprepared: whenprepared=date (normative)
 - MedicationKnowledge: DomainResource (trial-use FMM: 1)
-  ^medicationKnowledge[0..*]: MedicationKnowledge
+  ^medicationKnowledge[0..*]: MedicationKnowledge (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12749,7 +12749,7 @@ Resources: 159
   ?source-cost: source-cost=token (normative)
   ?status: status=token (normative)
 - MedicationRequest: DomainResource (trial-use FMM: 3)
-  ^medicationRequest[0..*]: MedicationRequest
+  ^medicationRequest[0..*]: MedicationRequest (W5: clinical.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12850,7 +12850,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - MedicationUsage: DomainResource (trial-use FMM: 3)
-  ^medicationUsage[0..*]: MedicationUsage
+  ^medicationUsage[0..*]: MedicationUsage (W5: clinical.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12913,7 +12913,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - MedicinalProductDefinition: DomainResource (trial-use FMM: 3)
-  ^medicinalProductDefinition[0..*]: MedicinalProductDefinition
+  ^medicinalProductDefinition[0..*]: MedicinalProductDefinition (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13012,7 +13012,7 @@ Resources: 159
     in: _count: integer[0..1]
     out: return: Bundle[1..1]
 - MessageDefinition: DomainResource (trial-use FMM: 1)
-  ^messageDefinition[0..*]: MessageDefinition
+  ^messageDefinition[0..*]: MessageDefinition (W5: infrastructure.exchange)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13087,7 +13087,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - MessageHeader: DomainResource (trial-use FMM: 4)
-  ^messageHeader[0..*]: MessageHeader
+  ^messageHeader[0..*]: MessageHeader (W5: infrastructure.exchange)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13151,7 +13151,7 @@ Resources: 159
   ?source-uri: source-uri=uri (normative)
   ?target: target=reference (trial-use)
 - MetadataResource: DomainResource (normative FMM: 5)
-  ^metadataResource[1..1]: MetadataResource
+  ^metadataResource[1..1]: MetadataResource (W5: conformance.behavior)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13188,7 +13188,7 @@ Resources: 159
   - endorser[0..*]: ContactDetail
   - relatedArtifact[0..*]: RelatedArtifact
 - MolecularSequence: DomainResource (trial-use FMM: 1)
-  ^molecularSequence[0..*]: MolecularSequence
+  ^molecularSequence[0..*]: MolecularSequence (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13246,7 +13246,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?type: type=token (trial-use)
 - NamingSystem: DomainResource (trial-use FMM: 2)
-  ^namingSystem[0..*]: NamingSystem
+  ^namingSystem[0..*]: NamingSystem (W5: conformance.terminology)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13385,7 +13385,7 @@ Resources: 159
     out: targetIdentifier.period: boolean[0..1]
   Profiles: 1
   - ShareableNamingSystem (shareablenamingsystem)
-      ^namingSystem[1..1]: Element
+      ^namingSystem[1..1]: Element (W5: conformance.terminology)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -13438,7 +13438,7 @@ Resources: 159
       - period[0..1]: Period
       - authoritative[0..1]: boolean
 - NutritionIntake: DomainResource (trial-use FMM: 1)
-  ^nutritionIntake[0..*]: NutritionIntake
+  ^nutritionIntake[0..*]: NutritionIntake (W5: clinical.careprovision)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13511,7 +13511,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - NutritionOrder: DomainResource (trial-use FMM: 2)
-  ^nutritionOrder[0..*]: NutritionOrder
+  ^nutritionOrder[0..*]: NutritionOrder (W5: clinical.careprovision)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13712,7 +13712,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?supplement: supplement=token (trial-use)
 - NutritionProduct: DomainResource (trial-use FMM: 1)
-  ^nutritionProduct[0..*]: NutritionProduct
+  ^nutritionProduct[0..*]: NutritionProduct (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13761,7 +13761,7 @@ Resources: 159
   ?identifier: identifier=token (trial-use)
   ?status: status=token (normative)
 - Observation: DomainResource (normative FMM: 5)
-  ^observation[0..*]: Observation
+  ^observation[0..*]: Observation (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14070,7 +14070,7 @@ Resources: 159
     out: source: Observation[0..*]
   Profiles: 6
   - Example Lipid Profile (cholesterol)
-      ^observation[1..1]: Element
+      ^observation[1..1]: Element (W5: clinical.diagnostics)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -14154,7 +14154,7 @@ Resources: 159
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/observation-timeOffset"
       - value[x][1..1]: integer
   - Device Metric Observation Profile (devicemetricobservation)
-      ^observation[0..*]: Element
+      ^observation[0..*]: Element (W5: clinical.diagnostics)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -14229,7 +14229,7 @@ Resources: 159
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/observation-timeOffset"
       - value[x][1..1]: integer
   - Example Lipid Profile (hdlcholesterol)
-      ^observation[1..1]: Element
+      ^observation[1..1]: Element (W5: clinical.diagnostics)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -14304,7 +14304,7 @@ Resources: 159
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/observation-timeOffset"
       - value[x][1..1]: integer
   - Example Lipid Profile (ldlcholesterol)
-      ^observation[1..1]: Element
+      ^observation[1..1]: Element (W5: clinical.diagnostics)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -14378,7 +14378,7 @@ Resources: 159
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/observation-timeOffset"
       - value[x][1..1]: integer
   - Example Lipid Profile (triglyceride)
-      ^observation[1..1]: Element
+      ^observation[1..1]: Element (W5: clinical.diagnostics)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -14452,7 +14452,7 @@ Resources: 159
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/observation-timeOffset"
       - value[x][1..1]: integer
   - observation-vitalsigns (vitalsigns)
-      ^observation[0..*]: Element
+      ^observation[0..*]: Element (W5: clinical.diagnostics)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -14544,7 +14544,7 @@ Resources: 159
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/observation-timeOffset"
       - value[x][1..1]: integer
 - ObservationDefinition: DomainResource (trial-use FMM: 1)
-  ^observationDefinition[0..*]: ObservationDefinition
+  ^observationDefinition[0..*]: ObservationDefinition (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14638,7 +14638,7 @@ Resources: 159
   ?title: title=string (normative)
   ?url: url=uri (normative)
 - OperationDefinition: DomainResource (normative FMM: 5)
-  ^operationDefinition[0..*]: OperationDefinition
+  ^operationDefinition[0..*]: OperationDefinition (W5: conformance.behavior)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14780,7 +14780,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - OperationOutcome: DomainResource (normative FMM: 5)
-  ^operationOutcome[0..*]: OperationOutcome
+  ^operationOutcome[0..*]: OperationOutcome (W5: infrastructure.exchange)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14820,7 +14820,7 @@ Resources: 159
       .fixedUri = "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source"
     - value[x][1..1]: string
 - Organization: DomainResource (trial-use FMM: 3)
-  ^organization[0..*]: Organization
+  ^organization[0..*]: Organization (W5: administrative.group)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14874,7 +14874,7 @@ Resources: 159
   ?phonetic: phonetic=string (normative)
   ?type: type=token (trial-use)
 - OrganizationAffiliation: DomainResource (trial-use FMM: 0 experimental)
-  ^organizationAffiliation[0..*]: OrganizationAffiliation
+  ^organizationAffiliation[0..*]: OrganizationAffiliation (W5: administrative.individual)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14917,7 +14917,7 @@ Resources: 159
   ?specialty: specialty=token (trial-use experimental)
   ?telecom: telecom=token (trial-use experimental)
 - PackagedProductDefinition: DomainResource (trial-use FMM: 2)
-  ^packagedProductDefinition[0..*]: PackagedProductDefinition
+  ^packagedProductDefinition[0..*]: PackagedProductDefinition (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14981,7 +14981,7 @@ Resources: 159
   ?package-for: package-for=reference (trial-use)
   ?status: status=token (trial-use)
 - Parameters: Resource (normative FMM: 5)
-  ^parameters[0..*]: Parameters
+  ^parameters[0..*]: Parameters (W5: infrastructure.exchange)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15008,7 +15008,7 @@ Resources: 159
       .fixedUri = "http://hl7.org/fhir/StructureDefinition/parameters-fullUrl"
     - value[x][1..1]: uri
 - Patient: DomainResource (normative FMM: 5)
-  ^patient[0..*]: Patient
+  ^patient[0..*]: Patient (W5: administrative.individual)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15384,7 +15384,7 @@ Resources: 159
     in: preview: boolean[0..1]
     out: return: Parameters[1..1]
 - PaymentNotice: DomainResource (trial-use FMM: 2)
-  ^paymentNotice[0..*]: PaymentNotice
+  ^paymentNotice[0..*]: PaymentNotice (W5: financial.payment)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15421,7 +15421,7 @@ Resources: 159
   ?response: response=reference (trial-use)
   ?status: status=token (normative)
 - PaymentReconciliation: DomainResource (trial-use FMM: 2)
-  ^paymentReconciliation[0..*]: PaymentReconciliation
+  ^paymentReconciliation[0..*]: PaymentReconciliation (W5: financial.payment)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15501,7 +15501,7 @@ Resources: 159
   ?requestor: requestor=reference (trial-use)
   ?status: status=token (normative)
 - Permission: DomainResource (trial-use FMM: 0 experimental)
-  ^permission[0..*]: Permission
+  ^permission[0..*]: Permission (W5: infrastructure.information)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15553,7 +15553,7 @@ Resources: 159
     - limit[0..*]: CodeableConcept
   ?status: status=token (normative experimental)
 - Person: DomainResource (trial-use FMM: 2)
-  ^person[0..*]: Person
+  ^person[0..*]: Person (W5: administrative.entity)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15726,7 +15726,7 @@ Resources: 159
   ?relatedperson: relatedperson=reference (trial-use)
   ?telecom: telecom=token (trial-use)
 - PlanDefinition: DomainResource (trial-use FMM: 3)
-  ^planDefinition[0..*]: PlanDefinition
+  ^planDefinition[0..*]: PlanDefinition (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15982,7 +15982,7 @@ Resources: 159
     out: return: Bundle[0..*]
   Profiles: 3
   - CDSHooksServicePlanDefinition (cdshooksserviceplandefinition)
-      ^planDefinition[1..1]: Element
+      ^planDefinition[1..1]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -16162,7 +16162,7 @@ Resources: 159
       - value[x][1..1]: Expression
     - asNeeded[x][0..1]: boolean|CodeableConcept
   - Computable PlanDefinition (computableplandefinition)
-      ^planDefinition[1..1]: Element
+      ^planDefinition[1..1]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -16340,7 +16340,7 @@ Resources: 159
       - value[x][1..1]: Expression
     - asNeeded[x][0..1]: boolean|CodeableConcept
   - Shareable PlanDefinition (shareableplandefinition)
-      ^planDefinition[1..1]: Element
+      ^planDefinition[1..1]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -16518,7 +16518,7 @@ Resources: 159
       - value[x][1..1]: Expression
     - asNeeded[x][0..1]: boolean|CodeableConcept
 - Practitioner: DomainResource (trial-use FMM: 3)
-  ^practitioner[0..*]: Practitioner
+  ^practitioner[0..*]: Practitioner (W5: administrative.individual)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16676,7 +16676,7 @@ Resources: 159
   ?qualification-period: qualification-period=date (trial-use)
   ?telecom: telecom=token (trial-use)
 - PractitionerRole: DomainResource (trial-use FMM: 2)
-  ^practitionerRole[0..*]: PractitionerRole
+  ^practitionerRole[0..*]: PractitionerRole (W5: administrative.individual)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16725,7 +16725,7 @@ Resources: 159
   ?specialty: specialty=token (trial-use)
   ?telecom: telecom=token (trial-use)
 - Procedure: DomainResource (trial-use FMM: 3)
-  ^procedure[0..*]: Procedure
+  ^procedure[0..*]: Procedure (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16861,7 +16861,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - Provenance: DomainResource (trial-use FMM: 3)
-  ^provenance[0..*]: Provenance
+  ^provenance[0..*]: Provenance (W5: infrastructure.information)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16912,7 +16912,7 @@ Resources: 159
   ?when: when=date (trial-use)
   Profiles: 1
   - Provenance Relevant History (provenance-relevant-history)
-      ^provenance[0..*]: Element
+      ^provenance[0..*]: Element (W5: infrastructure.information)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -16959,7 +16959,7 @@ Resources: 159
       - agent[0..*]: Provenance.agent
     - signature[0..*]: Signature
 - Questionnaire: DomainResource (trial-use FMM: 3)
-  ^questionnaire[0..*]: Questionnaire
+  ^questionnaire[0..*]: Questionnaire (W5: infrastructure.information)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -17399,7 +17399,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - QuestionnaireResponse: DomainResource (trial-use FMM: 3)
-  ^questionnaireResponse[0..*]: QuestionnaireResponse
+  ^questionnaireResponse[0..*]: QuestionnaireResponse (W5: infrastructure.information)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -17543,7 +17543,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - RegulatedAuthorization: DomainResource (trial-use FMM: 2)
-  ^regulatedAuthorization[0..*]: RegulatedAuthorization
+  ^regulatedAuthorization[0..*]: RegulatedAuthorization (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -17583,7 +17583,7 @@ Resources: 159
   ?status: status=token (trial-use)
   ?subject: subject=reference (trial-use)
 - RelatedPerson: DomainResource (trial-use FMM: 2)
-  ^relatedPerson[0..*]: RelatedPerson
+  ^relatedPerson[0..*]: RelatedPerson (W5: administrative.individual)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -17751,7 +17751,7 @@ Resources: 159
   ?relationship: relationship=token (trial-use)
   ?telecom: telecom=token (trial-use)
 - RequestGroup: DomainResource (trial-use FMM: 2)
-  ^requestGroup[0..*]: RequestGroup
+  ^requestGroup[0..*]: RequestGroup (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -17836,7 +17836,7 @@ Resources: 159
     - action[0..*]: RequestGroup.action
   Profiles: 1
   - CDS Hooks RequestGroup (cdshooksrequestgroup)
-      ^requestGroup[1..1]: Element
+      ^requestGroup[1..1]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -17920,7 +17920,7 @@ Resources: 159
       - resource[0..1]: Reference(Resource)
       - action[0..*]: RequestGroup.action
 - RequestOrchestration: DomainResource (trial-use FMM: 2)
-  ^requestOrchestration[0..*]: RequestOrchestration
+  ^requestOrchestration[0..*]: RequestOrchestration (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18105,7 +18105,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   Profiles: 1
   - CDS Hooks RequestOrchestration (cdshooksrequestorchestration)
-      ^requestOrchestration[1..1]: Element
+      ^requestOrchestration[1..1]: Element (W5: clinical.general)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -18238,7 +18238,7 @@ Resources: 159
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/variable"
       - value[x][1..1]: Expression
 - Requirements: DomainResource (trial-use FMM: 0 experimental)
-  ^requirements[0..*]: Requirements
+  ^requirements[0..*]: Requirements (W5: conformance.content)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18304,7 +18304,7 @@ Resources: 159
   ?url: url=uri (trial-use experimental)
   ?version: version=token (trial-use experimental)
 - ResearchStudy: DomainResource (trial-use FMM: 0 experimental)
-  ^researchStudy[0..*]: ResearchStudy
+  ^researchStudy[0..*]: ResearchStudy (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18465,7 +18465,7 @@ Resources: 159
   ?status: status=token (normative experimental)
   ?title: title=string (normative experimental)
 - ResearchSubject: DomainResource (trial-use FMM: 0 experimental)
-  ^researchSubject[0..*]: ResearchSubject
+  ^researchSubject[0..*]: ResearchSubject (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18618,7 +18618,7 @@ Resources: 159
     in: profile: uri[0..1]
     out: return: OperationOutcome[1..1]
 - RiskAssessment: DomainResource (trial-use FMM: 1)
-  ^riskAssessment[0..*]: RiskAssessment
+  ^riskAssessment[0..*]: RiskAssessment (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18677,7 +18677,7 @@ Resources: 159
   ?risk: risk=token (trial-use)
   ?subject: subject=reference (trial-use)
 - Schedule: DomainResource (trial-use FMM: 3)
-  ^schedule[0..*]: Schedule
+  ^schedule[0..*]: Schedule (W5: workflow.scheduling)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18705,7 +18705,7 @@ Resources: 159
   ?service-type-reference: service-type-reference=reference (trial-use)
   ?specialty: specialty=token (trial-use)
 - SearchParameter: DomainResource (trial-use FMM: 3)
-  ^searchParameter[0..*]: SearchParameter
+  ^searchParameter[0..*]: SearchParameter (W5: conformance.behavior)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18797,7 +18797,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - ServiceRequest: DomainResource (trial-use FMM: 2)
-  ^serviceRequest[0..*]: ServiceRequest
+  ^serviceRequest[0..*]: ServiceRequest (W5: clinical.general)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18946,7 +18946,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - Slot: DomainResource (trial-use FMM: 3)
-  ^slot[0..*]: Slot
+  ^slot[0..*]: Slot (W5: workflow.scheduling)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18977,7 +18977,7 @@ Resources: 159
   ?start: start=date (normative)
   ?status: status=token (normative)
 - Specimen: DomainResource (trial-use FMM: 2)
-  ^specimen[0..*]: Specimen
+  ^specimen[0..*]: Specimen (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -19087,7 +19087,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?type: type=token (trial-use)
 - SpecimenDefinition: DomainResource (trial-use FMM: 1)
-  ^specimenDefinition[0..*]: SpecimenDefinition
+  ^specimenDefinition[0..*]: SpecimenDefinition (W5: clinical.diagnostics)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -19195,7 +19195,7 @@ Resources: 159
     in: settingContext: CodeableConcept[0..1]
     out: return: Specimen[1..1]
 - StructureDefinition: DomainResource (normative FMM: 5)
-  ^structureDefinition[0..*]: StructureDefinition
+  ^structureDefinition[0..*]: StructureDefinition (W5: conformance.content)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -19423,7 +19423,7 @@ Resources: 159
     in: url: string<token>[0..1]
     out: return: StructureDefinition[1..1]
 - StructureMap: DomainResource (trial-use FMM: 2)
-  ^structureMap[0..*]: StructureMap
+  ^structureMap[0..*]: StructureMap (W5: conformance.content)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -19573,7 +19573,7 @@ Resources: 159
     in: content: Resource[1..1]
     out: return: Resource[1..1]
 - Subscription: DomainResource (trial-use FMM: 2)
-  ^subscription[0..*]: Subscription
+  ^subscription[0..*]: Subscription (W5: infrastructure.exchange)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -19636,7 +19636,7 @@ Resources: 159
     in: status: code[0..*]
     out: return: Bundle[1..1]
 - SubscriptionStatus: DomainResource (trial-use FMM: 0 experimental)
-  ^subscriptionStatus[0..*]: SubscriptionStatus
+  ^subscriptionStatus[0..*]: SubscriptionStatus (W5: infrastructure.exchange)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -19662,7 +19662,7 @@ Resources: 159
   - topic[0..1]: canonical(SubscriptionTopic)
   - error[0..*]: CodeableConcept
 - SubscriptionTopic: DomainResource (trial-use FMM: 0 experimental)
-  ^subscriptionTopic[0..*]: SubscriptionTopic
+  ^subscriptionTopic[0..*]: SubscriptionTopic (W5: infrastructure.exchange)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -19752,7 +19752,7 @@ Resources: 159
   ?url: url=uri (normative experimental)
   ?version: version=token (normative experimental)
 - Substance: DomainResource (trial-use FMM: 2)
-  ^substance[0..*]: Substance
+  ^substance[0..*]: Substance (W5: administrative.entity)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -19859,7 +19859,7 @@ Resources: 159
   ?status: status=token (normative)
   ?substance-reference: substance-reference=reference (trial-use)
 - SubstanceDefinition: DomainResource (trial-use FMM: 1)
-  ^substanceDefinition[0..*]: SubstanceDefinition
+  ^substanceDefinition[0..*]: SubstanceDefinition (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -19983,7 +19983,7 @@ Resources: 159
   ?identifier: identifier=token (trial-use)
   ?name: name=string (normative)
 - SubstanceNucleicAcid: DomainResource (trial-use FMM: 0 experimental)
-  ^substanceNucleicAcid[0..*]: SubstanceNucleicAcid
+  ^substanceNucleicAcid[0..*]: SubstanceNucleicAcid (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20022,7 +20022,7 @@ Resources: 159
       - name[0..1]: string
       - residueSite[0..1]: string
 - SubstancePolymer: DomainResource (trial-use FMM: 0 experimental)
-  ^substancePolymer[0..*]: SubstancePolymer
+  ^substancePolymer[0..*]: SubstancePolymer (W5: clinical.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20079,7 +20079,7 @@ Resources: 159
         - format[0..1]: CodeableConcept
         - attachment[0..1]: Attachment
 - SubstanceProtein: DomainResource (trial-use FMM: 0 experimental)
-  ^substanceProtein[0..*]: SubstanceProtein
+  ^substanceProtein[0..*]: SubstanceProtein (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20104,7 +20104,7 @@ Resources: 159
     - cTerminalModificationId[0..1]: Identifier
     - cTerminalModification[0..1]: string
 - SubstanceReferenceInformation: DomainResource (trial-use FMM: 0 experimental)
-  ^substanceReferenceInformation[0..*]: SubstanceReferenceInformation
+  ^substanceReferenceInformation[0..*]: SubstanceReferenceInformation (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20141,7 +20141,7 @@ Resources: 159
     - amountType[0..1]: CodeableConcept
     - source[0..*]: Reference(DocumentReference)
 - SubstanceSourceMaterial: DomainResource (trial-use FMM: 0 experimental)
-  ^substanceSourceMaterial[0..*]: SubstanceSourceMaterial
+  ^substanceSourceMaterial[0..*]: SubstanceSourceMaterial (W5: administrative.medication)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20205,7 +20205,7 @@ Resources: 159
     - part[0..1]: CodeableConcept
     - partLocation[0..1]: CodeableConcept
 - SupplyDelivery: DomainResource (trial-use FMM: 1)
-  ^supplyDelivery[0..*]: SupplyDelivery
+  ^supplyDelivery[0..*]: SupplyDelivery (W5: workflow.order)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20298,7 +20298,7 @@ Resources: 159
   ?status: status=token (normative)
   ?supplier: supplier=reference (trial-use)
 - SupplyRequest: DomainResource (trial-use FMM: 1)
-  ^supplyRequest[0..*]: SupplyRequest
+  ^supplyRequest[0..*]: SupplyRequest (W5: workflow.order)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20398,7 +20398,7 @@ Resources: 159
   ?subject: subject=reference (trial-use)
   ?supplier: supplier=reference (trial-use)
 - Task: DomainResource (trial-use FMM: 2)
-  ^task[0..*]: Task
+  ^task[0..*]: Task (W5: workflow.order)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20541,7 +20541,7 @@ Resources: 159
   ?status: status=token (normative)
   ?subject: subject=reference (trial-use)
 - TerminologyCapabilities: DomainResource (trial-use FMM: 1)
-  ^terminologyCapabilities[0..*]: TerminologyCapabilities
+  ^terminologyCapabilities[0..*]: TerminologyCapabilities (W5: conformance.behavior)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20658,7 +20658,7 @@ Resources: 159
   ?url: url=uri (normative)
   ?version: version=token (normative)
 - TestReport: DomainResource (trial-use FMM: 0 experimental)
-  ^testReport[0..*]: TestReport
+  ^testReport[0..*]: TestReport (W5: conformance.misc)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20737,7 +20737,7 @@ Resources: 159
   ?tester: tester=string (normative experimental)
   ?testscript: testscript=reference (trial-use experimental)
 - TestScript: DomainResource (trial-use FMM: 2)
-  ^testScript[0..*]: TestScript
+  ^testScript[0..*]: TestScript (W5: conformance.misc)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -20939,7 +20939,7 @@ Resources: 159
   ?version: version=token (normative)
   Profiles: 1
   - Shareable TestScript (shareabletestscript)
-      ^testScript[1..1]: Element
+      ^testScript[1..1]: Element (W5: conformance.misc)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -21114,7 +21114,7 @@ Resources: 159
         - modifierExtension[0..*]: Extension
         - operation[1..1]: TestScript.setup.action.operation
 - Transport: DomainResource (trial-use FMM: 0 experimental)
-  ^transport[0..*]: Transport
+  ^transport[0..*]: Transport (W5: workflow.order)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -21178,7 +21178,7 @@ Resources: 159
   ?identifier: identifier=token (trial-use experimental)
   ?status: status=token (normative experimental)
 - ValueSet: DomainResource (normative FMM: 5)
-  ^valueSet[0..*]: ValueSet
+  ^valueSet[0..*]: ValueSet (W5: conformance.terminology)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -21766,7 +21766,7 @@ Resources: 159
     out: issues: OperationOutcome[0..1]
   Profiles: 2
   - ShareableValueSet (shareablevalueset)
-      ^valueSet[1..1]: Element
+      ^valueSet[1..1]: Element (W5: conformance.terminology)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -22056,7 +22056,7 @@ Resources: 159
       - inclusionCriteria[0..1]: string
       - exclusionCriteria[0..1]: string
   - VSDALignedValueSet (vsd-alignedvalueset)
-      ^valueSet[1..1]: Element
+      ^valueSet[1..1]: Element (W5: conformance.terminology)
     - id[0..1]: id *simple*
     - meta[0..1]: Meta
     - implicitRules[0..1]: uri
@@ -22364,7 +22364,7 @@ Resources: 159
       - inclusionCriteria[0..1]: string
       - exclusionCriteria[0..1]: string
 - VerificationResult: DomainResource (trial-use FMM: 0 experimental)
-  ^verificationResult[0..*]: VerificationResult
+  ^verificationResult[0..*]: VerificationResult (W5: administrative.entity)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -22417,7 +22417,7 @@ Resources: 159
     - attestationSignature[0..1]: Signature
   ?target: target=reference (trial-use experimental)
 - VisionPrescription: DomainResource (trial-use FMM: 2)
-  ^visionPrescription[0..*]: VisionPrescription
+  ^visionPrescription[0..*]: VisionPrescription (W5: clinical.careprovision)
   - id[0..1]: id *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri

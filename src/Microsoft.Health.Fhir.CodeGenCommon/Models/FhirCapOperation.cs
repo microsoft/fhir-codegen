@@ -85,4 +85,16 @@ public class FhirCapOperation : ICloneable
     {
         return new FhirCapOperation(this);
     }
+
+    /// <summary>Converts this object to a string with expectation.</summary>
+    /// <returns>This object as a string.</returns>
+    public string ToStringWithExpectation()
+    {
+        if (string.IsNullOrEmpty(ExpectationLiteral))
+        {
+            return Name;
+        }
+
+        return $"{Name} ({ExpectationLiteral})";
+    }
 }

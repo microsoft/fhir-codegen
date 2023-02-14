@@ -42,6 +42,27 @@ else
                 <MudItem xs="2">Comment</MudItem>
                 <MudItem xs="10">@fhirComplex?.Comment</MudItem>
 
+                <MudItem xs="2">Mappings</MudItem>
+                <MudItem xs="12" sm="10">
+                    <MudChipSet Filter="false" Mandatory="false">
+                        @foreach (FhirStructureDefMapping map in fhirComplex.Mappings.Values)
+                        {
+                            if (fhirComplex.RootElementMappings.ContainsKey(map.Identity))
+                            {
+                                <MudChip Color="Color.Info">
+                                    @map.Name : @string.Join(", ", fhirComplex.RootElementMappings[map.Identity].Select(em => em.Map))
+                                </MudChip>
+                            }
+                            else
+                            {
+                                <MudChip Color="Color.Info">
+                                    @map.Name
+                                </MudChip>
+                            }
+                        }
+                    </MudChipSet>
+                </MudItem>
+
                 <MudItem xs="2">Hierarchy</MudItem>
                 <MudItem xs="12" sm="10">
                     <MudChipSet @bind-SelectedChip="selectedHierarchyChip" Filter="true" Mandatory="true">

@@ -2700,7 +2700,6 @@ public class ModelBuilder
                 }
             }
 
-
             return operations;
         }
 

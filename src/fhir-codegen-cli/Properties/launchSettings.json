@@ -17,7 +17,7 @@
         },
         "tsBasic-Rx": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\TypeScript_R3.ts --load-r3 latest --include-experimental --language TypeScript",
+            "commandLineArgs": "--output-path ..\\..\\generated\\TypeScript_R4B.ts --load-r4b latest --include-experimental --language TypeScript",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "csBasic-All": {

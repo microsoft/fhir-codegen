@@ -4,6 +4,7 @@
 // </copyright>
 
 using System;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
@@ -29,6 +30,9 @@ public abstract class FhirModelBase : FhirTypeBase
     /// <param name="purpose">          The purpose.</param>
     /// <param name="comment">          The comment.</param>
     /// <param name="validationRegEx">  Validation regex pattern for this definition.</param>
+    /// <param name="narrative">        Narrative content for this resource.</param>
+    /// <param name="narrativeStatus">  Narrative status for the narrative of this resource.</param>
+    /// <param name="fhirVersion">      FHIR version for this model resource.</param>
     public FhirModelBase(
         FhirArtifactClassEnum artifactClass,
         string id,
@@ -121,7 +125,6 @@ public abstract class FhirModelBase : FhirTypeBase
 
     /// <summary>Gets the listed FHIR version.</summary>
     public string FhirVersion { get; }
-
 
     // **** NEW ****
 

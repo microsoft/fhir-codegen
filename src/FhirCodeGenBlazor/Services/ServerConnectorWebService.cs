@@ -1,4 +1,4 @@
-﻿// <copyright file="SpecExporterWebService.cs" company="Microsoft Corporation">
+﻿// <copyright file="ServerConnectorWebService.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -9,8 +9,7 @@ using Microsoft.Health.Fhir.SpecManager.Manager;
 
 namespace FhirCodeGenBlazor.Services;
 
-/// <summary>A service for accessing specifier exporter webs information.</summary>
-public class SpecExporterWebService : IDisposable, IHostedService, ISpecExporterWebService
+public class ServerConnectorWebService : IDisposable, IHostedService, IServerConnectorService
 {
     /// <summary>True if has disposed, false if not.</summary>
     private bool _hasDisposed;
@@ -19,7 +18,7 @@ public class SpecExporterWebService : IDisposable, IHostedService, ISpecExporter
     /// <summary>
     /// Initializes a new instance of the <see cref="SpecExporterWebService"/> class.
     /// </summary>
-    public SpecExporterWebService()
+    public ServerConnectorWebService()
     {
         _hasDisposed = false;
     }
@@ -29,64 +28,25 @@ public class SpecExporterWebService : IDisposable, IHostedService, ISpecExporter
     {
     }
 
-    /// <summary>Request export.</summary>
-    /// <param name="info">          The information.</param>
-    /// <param name="capStatementFilter">A capability statement used to filter export contents.</param>
-    /// <param name="exportLanguage">The export language.</param>
-    /// <param name="options">       Options for controlling the operation.</param>
-    /// <param name="outputPath">    Full pathname of the output file.</param>
-    /// <returns>An asynchronous result.</returns>
-    public Task RequestExport(
-        FhirVersionInfo info,
-        FhirCapabiltyStatement? capStatementFilter,
-        ILanguage exportLanguage,
-        ExporterOptions options,
-        string outputPath)
-    {
-        Task exportTask = new Task(() => Exporter.Export(
-            info,
-            capStatementFilter,
-            exportLanguage,
-            options,
-            outputPath,
-            false));
-
-        return exportTask;
-    }
-
-
-    /// <summary>Gets languages by name.</summary>
-    /// <returns>The languages by name.</returns>
-    public Dictionary<string, ILanguage> GetExportLanguages()
-    {
-        Dictionary<string, ILanguage> languages = new();
-
-        foreach (ILanguage lang in LanguageHelper.GetLanguages("*"))
-        {
-            languages.Add(lang.LanguageName, lang);
-        }
-
-        return languages;
-    }
-
-    /// <summary>Attempts to get export language an ILanguage? from the given string.</summary>
-    /// <param name="name"> The name.</param>
-    /// <param name="iLang">[out] Language interface or null.</param>
+    /// <summary>Attempts to get server information.</summary>
+    /// <param name="serverUrl">      URL of the server.</param>
+    /// <param name="resolveExternal">True to resolve external.</param>
+    /// <param name="json">           [out] The JSON.</param>
+    /// <param name="serverInfo">     [out] Information describing the server.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public bool TryGetExportLanguage(string name, out ILanguage? iLang)
+    public bool TryGetServerInfo(
+        string serverUrl,
+        bool resolveExternal,
+        out string json,
+        out FhirCapabiltyStatement serverInfo)
     {
-        List<ILanguage> languages = LanguageHelper.GetLanguages(name);
-
-        if (languages.Any())
-        {
-            iLang = languages[0];
-            return true;
-        }
-
-        iLang = null;
-        return false;
+        return ServerConnector.TryGetServerInfo(serverUrl, resolveExternal, out json, out serverInfo);
     }
 
+    public FhirCapabiltyStatement ParseCapabilityJson(string json)
+    {
+        return ServerConnector.ParseCapabilityJson(json);
+    }
 
     /// <summary>Triggered when the application host is ready to start the service.</summary>
     /// <param name="cancellationToken">Indicates that the start process has been aborted.</param>

@@ -669,7 +669,7 @@ else
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"RebuildFilteredElements <<< caught exception compiling filter ({predString}): {ex.Message}");
+            Console.WriteLine($"TryBuildPredicate <<< caught exception compiling filter ({predString}): {ex.Message}");
             if (ex.InnerException != null)
             {
                 Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
@@ -772,7 +772,7 @@ else
         if (string.IsNullOrEmpty(value))
         {
             searchPredicate = null;
-            inputIsInvalid = false;
+            inputIsInvalid = true;
             _displayTable?.UpdateSelection();
             InvokeAsync(() => StateHasChanged());
             return;
@@ -781,14 +781,14 @@ else
         if (TryBuildPredicate(out Func<FhirElement, bool>? pred))
         {
             searchPredicate = pred;
-            inputIsInvalid = true;
+            inputIsInvalid = false;
             _displayTable?.UpdateSelection();
             InvokeAsync(() => StateHasChanged());
             return;
         }
 
         searchPredicate = null;
-        inputIsInvalid = false;
+        inputIsInvalid = true;
         _displayTable?.UpdateSelection();
         InvokeAsync(() => StateHasChanged());
     }

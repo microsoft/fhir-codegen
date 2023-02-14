@@ -15,6 +15,7 @@ public class FhirElement : FhirPropertyBase
     private bool _inDifferential;
     private List<string> _codes;
     private List<PropertyRepresentationCodes> _representations;
+    private string _fiveWs = null;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirElement"/> class.
@@ -49,7 +50,6 @@ public class FhirElement : FhirPropertyBase
     /// <param name="modifiesParent">   If this element hides a field of its parent.</param>
     /// <param name="bindingStrength">  Strength of binding: required|extensible|preferred|example.</param>
     /// <param name="valueSet">         URL of the value set bound to this element.</param>
-    /// <param name="fiveWs">           Five 'Ws' mapping value.</param>
     /// <param name="representations">   Codes that define how this element is represented in instances, when the deviation varies from the normal case.</param>
     public FhirElement(
         FhirComplex rootArtifact,
@@ -82,8 +82,8 @@ public class FhirElement : FhirPropertyBase
         bool modifiesParent,
         string bindingStrength,
         string valueSet,
-        string fiveWs,
-        List<PropertyRepresentationCodes> representations)
+        List<PropertyRepresentationCodes> representations,
+        Dictionary<string, List<FhirElementDefMapping>> mappings)
         : base(
             rootArtifact,
             id,
@@ -95,7 +95,8 @@ public class FhirElement : FhirPropertyBase
             shortDescription,
             purpose,
             comment,
-            validationRegEx)
+            validationRegEx,
+            mappings)
     {
         FieldOrder = fieldOrder;
         _elementTypes = elementTypes;
@@ -194,7 +195,7 @@ public class FhirElement : FhirPropertyBase
             ValueSetBindingStrength = bindingStrength.ToFhirEnum<ElementDefinitionBindingStrength>();
         }
 
-        FiveWs = fiveWs;
+        _fiveWs = Mappings.ContainsKey("w5") ? Mappings["w5"]?.FirstOrDefault()?.Map ?? null : null;
     }
 
     /// <summary>
@@ -238,7 +239,8 @@ public class FhirElement : FhirPropertyBase
         string patternFieldName,
         object patternFieldValue,
         string fiveWs,
-        bool inDifferential)
+        bool inDifferential,
+        Dictionary<string, List<FhirElementDefMapping>> mappings)
         : this(
               rootArtifact,
               id,
@@ -270,8 +272,8 @@ public class FhirElement : FhirPropertyBase
               modifiesParent,
               bindingStrength,
               valueSet,
-              fiveWs,
-              null)
+              null,
+              mappings)
     {
         CodesName = codesName;
         _codes = codes ?? new();
@@ -429,7 +431,7 @@ public class FhirElement : FhirPropertyBase
     public bool IsOptional => CardinalityMin == 0;
 
     /// <summary>Gets the five Ws mapping list for the current element.</summary>
-    public string FiveWs { get; }
+    public string FiveWs => _fiveWs;
 
     /// <summary>True if this element appears in the differential.</summary>
     public bool InDifferential => _inDifferential;
@@ -517,7 +519,9 @@ public class FhirElement : FhirPropertyBase
             parent.ValidationRegEx,
             parent.NarrativeText,
             parent.NarrativeStatus,
-            parent.FhirVersion);
+            parent.FhirVersion,
+            parent.Mappings.DeepCopy(),
+            parent.RootElementMappings.DeepCopy());
 
         // create a new complex type from the property
         _slicing[url].AddSlice(
@@ -573,7 +577,7 @@ public class FhirElement : FhirPropertyBase
                 elementTypes.Add(kvp.Key, kvp.Value.DeepCopy(primitiveTypeMap));
             }
         }
-
+        
         // generate our copy
         FhirElement element = new FhirElement(
             destinationArtifact ?? RootArtifact,
@@ -606,8 +610,8 @@ public class FhirElement : FhirPropertyBase
             ModifiesParent,
             BindingStrength,
             ValueSet,
-            FiveWs,
-            _representations);
+            _representations,
+            Mappings.DeepCopy());
 
         // check for base type name
         if (!string.IsNullOrEmpty(BaseTypeName))

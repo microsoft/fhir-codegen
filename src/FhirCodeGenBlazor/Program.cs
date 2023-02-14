@@ -11,6 +11,7 @@ builder.Services.AddSingleton<IPackageManagerWebService, PackageManagerWebServic
 builder.Services.AddSingleton<ISpecManagerWebService, SpecManagerWebService>();
 builder.Services.AddSingleton<ISpecExporterWebService, SpecExporterWebService>();
 builder.Services.AddSingleton<IPackageDiffWebService, PackageDiffWebService>();
+builder.Services.AddSingleton<IServerConnectorService, ServerConnectorWebService>();
 
 var app = builder.Build();
 
@@ -32,5 +33,6 @@ app.Services.GetService<IPackageManagerWebService>()?.Init();
 app.Services.GetService<ISpecManagerWebService>()?.Init();
 app.Services.GetService<ISpecExporterWebService>()?.Init();
 app.Services.GetService<IPackageDiffWebService>()?.Init();
+app.Services.GetService<IServerConnectorService>()?.Init();
 
 app.Run();

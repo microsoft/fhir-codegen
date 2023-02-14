@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.IO;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Converters;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
@@ -40,6 +41,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     private Dictionary<string, FhirArtifactClassEnum> _artifactClassByUrl;
     private Dictionary<string, FhirImplementationGuide> _igsByUri;
     private Dictionary<string, FhirCapabiltyStatement> _capsByUrl;
+    private Dictionary<string, FhirCompartment> _compartmentsByUrl;
 
     private HashSet<string> _excludedKeys;
 
@@ -69,6 +71,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         _artifactClassByUrl = new();
         _igsByUri = new();
         _capsByUrl = new();
+        _compartmentsByUrl = new();
 
         _excludedKeys = new();
 
@@ -606,12 +609,14 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             }
         }
 
+        if (options.CopyCompartments)
+        {
+            _compartmentsByUrl = source._compartmentsByUrl.DeepCopy();
+        }
+
         if (options.CopyCapabilityStatements)
         {
-            foreach ((string key, FhirCapabiltyStatement cap) in source._capsByUrl)
-            {
-                _capsByUrl.Add(key, (FhirCapabiltyStatement)cap.Clone());
-            }
+            _capsByUrl = source._capsByUrl.DeepCopy();
         }
 
         if (options.CapStatmentFilter == null)
@@ -895,6 +900,9 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <summary>Gets known capability statements, keyed by URL.</summary>
     public Dictionary<string, FhirCapabiltyStatement> CapabilitiesByUrl { get => _capsByUrl; }
 
+    /// <summary>Gets the compartments by URL.</summary>
+    public Dictionary<string, FhirCompartment> CompartmentsByUrl { get => _compartmentsByUrl; }
+
     /// <summary>Gets the node info by path dictionary.</summary>
     public Dictionary<string, FhirNodeInfo> NodeByPath { get => _nodeInfoByPath; }
 
@@ -1003,8 +1011,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 _capsByUrl.Add(canonicalAlias, _capsByUrl[canonicalUrl]);
                 return true;
 
-            case FhirArtifactClassEnum.LogicalModel:
             case FhirArtifactClassEnum.Compartment:
+                _compartmentsByUrl.Add(canonicalAlias, _compartmentsByUrl[canonicalUrl]);
+                return true;
+
+            case FhirArtifactClassEnum.LogicalModel:
             case FhirArtifactClassEnum.ConceptMap:
             case FhirArtifactClassEnum.NamingSystem:
             case FhirArtifactClassEnum.StructureMap:
@@ -1241,8 +1252,19 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     return true;
                 }
 
-            case FhirArtifactClassEnum.Unknown:
             case FhirArtifactClassEnum.Compartment:
+                {
+                    if (typeof(T) != typeof(FhirCompartment))
+                    {
+                        values = null;
+                        return false;
+                    }
+
+                    values = (IEnumerable<T>)_compartmentsByUrl.Values.AsEnumerable();
+                    return true;
+                }
+
+            case FhirArtifactClassEnum.Unknown:
             case FhirArtifactClassEnum.ConceptMap:
             case FhirArtifactClassEnum.NamingSystem:
             case FhirArtifactClassEnum.StructureMap:
@@ -1591,6 +1613,19 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 }
 
             case FhirArtifactClassEnum.Compartment:
+                {
+                    artifact = ResolveInDict(token, _compartmentsByUrl);
+
+                    if (artifact == null)
+                    {
+                        resolvedPackage = string.Empty;
+                        return false;
+                    }
+
+                    resolvedPackage = PackageDetails.Name + "#" + PackageDetails.Version;
+                    return true;
+                }
+                
             case FhirArtifactClassEnum.ConceptMap:
             case FhirArtifactClassEnum.NamingSystem:
             case FhirArtifactClassEnum.StructureMap:
@@ -1881,6 +1916,27 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             Id = cap.Id,
             Url = new Uri(cap.Url),
             DefinitionResourceType = "CapabilityStatement",
+        });
+    }
+
+    public void AddCompartment(FhirCompartment compartment)
+    {
+        if ((compartment == null) ||
+            string.IsNullOrEmpty(compartment.Url) ||
+            _compartmentsByUrl.ContainsKey(compartment.Url))
+        {
+            return;
+        }
+
+        _compartmentsByUrl.Add(compartment.Url, compartment);
+
+        _artifactClassByUrl.Add(compartment.Url, FhirArtifactClassEnum.Compartment);
+        _artifactsByClass[FhirArtifactClassEnum.Compartment].Add(new()
+        {
+            ArtifactClass = FhirArtifactClassEnum.Compartment,
+            Id = compartment.Id,
+            Url = new Uri(compartment.Url),
+            DefinitionResourceType = "CompartmentDefinition",
         });
     }
 

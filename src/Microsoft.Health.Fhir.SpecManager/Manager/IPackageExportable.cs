@@ -84,6 +84,9 @@ public interface IPackageExportable
     /// <summary>Gets known capability statements, keyed by URL.</summary>
     public Dictionary<string, FhirCapabiltyStatement> CapabilitiesByUrl { get; }
 
+    /// <summary>Gets Compartment definitions, keyed by URL.</summary>
+    public Dictionary<string, FhirCompartment> CompartmentsByUrl { get; }
+
     /// <summary>Gets the node info by path dictionary.</summary>
     public Dictionary<string, FhirNodeInfo> NodeByPath { get; }
 

@@ -51,6 +51,35 @@ public static class LinqExtensions
         return dest;
     }
 
+
+    /// <summary>
+    /// A Dictionary&lt;KT,VT&gt; extension method that deep copies the dictionary.
+    /// </summary>
+    /// <typeparam name="KT">Key Type.</typeparam>
+    /// <typeparam name="VT">Value Type.</typeparam>
+    /// <param name="source">The source dictionary to copy.</param>
+    /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
+    public static Dictionary<KT, List<VT>> DeepCopy<KT, VT>(this Dictionary<KT, List<VT>> source)
+        where VT : ICloneable
+    {
+        Dictionary<KT, List<VT>> dest = new();
+
+        foreach ((KT key, List<VT> sourceList) in source)
+        {
+            List<VT> list = new();
+
+            foreach (VT value in sourceList)
+            {
+                list.Add((VT)value.Clone());
+            }
+
+            dest.Add(key, list);
+        }
+
+        return dest;
+    }
+
+
     /// <summary>
     /// A Dictionary&lt;KT,VT&gt; extension method that shallow copies the given source.
     /// </summary>
@@ -63,6 +92,25 @@ public static class LinqExtensions
         Dictionary<KT, VT> dest = new();
 
         foreach ((KT key, VT value) in source)
+        {
+            dest.Add(key, value);
+        }
+
+        return dest;
+    }
+
+    /// <summary>
+    /// A Dictionary&lt;KT,VT&gt; extension method that shallow copies the given source.
+    /// </summary>
+    /// <typeparam name="KT">Type of the kt.</typeparam>
+    /// <typeparam name="VT">Type of the vt.</typeparam>
+    /// <param name="source">The source dictionary to copy.</param>
+    /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
+    public static Dictionary<KT, List<VT>> ShallowCopy<KT, VT>(this Dictionary<KT, List<VT>> source)
+    {
+        Dictionary<KT, List<VT>> dest = new();
+
+        foreach ((KT key, List<VT> value) in source)
         {
             dest.Add(key, value);
         }

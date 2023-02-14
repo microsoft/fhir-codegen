@@ -3,7 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -143,9 +142,9 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
         ImplementationGuides = implementationGuides ?? Array.Empty<string>();
         ImplementationGuidesEx = ProcessExpectationEnumerables(ImplementationGuides, implementationGuideExpectations);
 
-        ResourceInteractions = resourceInteractions;
-        ServerSearchParameters = serverSearchParameters;
-        ServerOperations = serverOperations;
+        ResourceInteractions = resourceInteractions ?? new();
+        ServerSearchParameters = serverSearchParameters ?? new();
+        ServerOperations = serverOperations ?? new();
 
         if ((serverInteractions != null) &&
             serverInteractions.TryFhirEnum(out IEnumerable<SystemRestfulInteraction> si))
