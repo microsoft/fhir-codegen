@@ -2589,6 +2589,10 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             VersionString = details.Version;
         }
 
+        // FIX: There is a published version of 5.0.0-snapshot1 that has FhirVersions set to 3.0.1, let's correct that here
+        if (details.Version == "5.0.0-snapshot1" && VersionString == "3.0.1")
+            VersionString = "5.0.0-snapshot1";
+
         // TODO(ginoc): verify from here down - should not make any difference because of cache manager and can probably be removed
 
         if (directive.EndsWith("current", StringComparison.OrdinalIgnoreCase) ||
