@@ -3,9 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -483,6 +481,22 @@ public abstract class FhirUtils
     /// <returns>A string.</returns>
     public static string SanitizeForValue(string input)
     {
+        // A very specific clean up for encoding bugs in the current R5 release
+        input = input switch
+        {
+            "SC#o TomC) and PrC-ncipe dobra" => "São Tomé and Príncipe dobra",
+            "Icelandic krC3na" => "Icelandic króna",
+            "Mongolian tC6grC6g" => "Mongolian tögrög",
+            "Nicaraguan cC3rdoba" => "Nicaraguan córdoba",
+            "Polish zEoty" => "Polish złoty",
+            "Paraguayan guaranC-" => "Paraguayan guaraní",
+            "Salvadoran colC3n" => "Salvadoran colón",
+            "Tongan paJ;anga" => "Tongan paʻanga",
+            "Venezuelan bolC-var" => "Venezuelan bolívar",
+            "Vietnamese D#a;%ng" => "Vietnamese dồng",
+            _ => input
+        };
+
         if (string.IsNullOrEmpty(input))
         {
             return string.Empty;
@@ -491,10 +505,8 @@ public abstract class FhirUtils
         string value = input.Trim();
         value = value.Replace("\"", "\\\"");
 
-        if (value.Contains("\n", StringComparison.Ordinal))
-        {
-            Console.Write("");
-        }
+        value = value.Replace("\n", string.Empty);
+
 
         return value;
     }

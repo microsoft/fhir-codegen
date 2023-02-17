@@ -2,9 +2,6 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-using System;
-using System.Collections.Generic;
-using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -35,6 +32,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "uri", "string" },
             { "url", "string" },
             { "xhtml", "string" },
+            { "markdown", "string" }
         };
 
         /// <summary>Types that have non-standard names or formatting (see Template-Model.tt#1252).</summary>
@@ -186,6 +184,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             result = result.Replace(".", "_");
             result = result.Replace(")", "_");
             result = result.Replace("(", "_");
+            result = result.Replace("/", "_");
+            result = result.Replace("+", "_");
 #pragma warning restore CA1307 // Specify StringComparison
 
             if (char.IsDigit(result[0]))
