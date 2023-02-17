@@ -909,7 +909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Health.Fhir.CodeGenCommon.Models.FhirUtils.html",
-          "hash": "i01Ma86zQRPHIDxZx0264IiO94SKzMdO1Nr0VIQGAIU="
+          "hash": "xE68ynQJ0/m9JRK0FXqHOSkSXkngeVi5FA0o5TN+Q6Y="
         }
       },
       "is_incremental": false,
@@ -1145,23 +1145,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Microsoft.Health.Fhir.SpecManager.Language.CSharpFirely1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.Health.Fhir.SpecManager.Language.CSharpFirely1.html",
-          "hash": "g3vgeaDclfZgiJDHgNLVgy64klhbcu47taqoROwGMfg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Microsoft.Health.Fhir.SpecManager.Language.CSharpFirely2.yml",
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Health.Fhir.SpecManager.Language.CSharpFirely2.html",
-          "hash": "LQrwEMBcNdv9P3G4ZQJb87o8b6reW31kWMJRiMr2gFs="
+          "hash": "p4ahKhfIrc15zVh9mR9ZcupRhBbnYbgZF+VsJ4000Cs="
         }
       },
       "is_incremental": false,
@@ -1365,7 +1353,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Health.Fhir.SpecManager.Language.html",
-          "hash": "Cl5SiFUjExqnSW4xrVgccQe+WOekvMdJ7N5kgRFcmzY="
+          "hash": "vZslHt7coFWGc7k/ADJaDtFgMYxE8ZN/MtiZlQE9UNg="
         }
       },
       "is_incremental": false,
@@ -1533,7 +1521,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageCommon.html",
-          "hash": "ojSqZZTcAeDGYDw0hFdsb8A2lL52RFCqD0CdHOSJq5c="
+          "hash": "v17lGGG22SzUdXahsAwSFB41rpN2hiLsnObwQ1bIJ5k="
         }
       },
       "is_incremental": false,
@@ -1569,7 +1557,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo.html",
-          "hash": "/VDhTMnmU3zhDrcfUGl3FB+P+Vkm8eLy1jo58C+oMDY="
+          "hash": "MdzGYjRQXvX1hZEL5qSEUK4TV9003GDLz1+nTkqkcBQ="
         }
       },
       "is_incremental": false,
@@ -9780,7 +9768,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Cp4gK0ecJUan62KVsN9h4/NjaHGNNLfgV1XRNvM0cTA="
+          "hash": "ZBHC0IK0xOd1JAsOzhhyvRVazLcb5b1x77h2353eCEM="
         }
       },
       "is_incremental": false,
@@ -9915,7 +9903,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 813,
+          "total_file_count": 812,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
