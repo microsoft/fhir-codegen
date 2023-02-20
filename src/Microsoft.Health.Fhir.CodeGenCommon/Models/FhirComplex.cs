@@ -3,12 +3,15 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.IO;
+using System.Xml.Linq;
+using System;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A class representing a FHIR complex type.</summary>
-public class FhirComplex : FhirModelBase
+public class FhirComplex : FhirModelBase, ICloneable
 {
     private Dictionary<string, FhirComplex> _components;
     private FhirElement _rootElement;
@@ -255,6 +258,52 @@ public class FhirComplex : FhirModelBase
             rootElementMappings)
     {
         SliceName = sliceName;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the Microsoft.Health.Fhir.CodeGenCommon.Models.FhirComplex
+    /// class.
+    /// </summary>
+    /// <param name="source">Source for the.</param>
+    public FhirComplex(FhirComplex source)
+    : base(
+        source.ArtifactClass,
+        source.Id,
+        source.Name,
+        source.Path,
+        source.BaseTypeName,
+        source._baseTypeCanonical,
+        source.Version,
+        source.URL,
+        source.PublicationStatus,
+        source.StandardStatus,
+        source.FhirMaturityLevel,
+        source.IsExperimental,
+        source.ShortDescription,
+        source.Purpose,
+        source.Comment,
+        source.ValidationRegEx,
+        source.NarrativeText,
+        source.NarrativeStatus,
+        source.FhirVersion)
+    {
+        ExplicitName = source.ExplicitName;
+        IsAbstract = source.IsAbstract;
+        IsPlaceholder = source.IsPlaceholder;
+        Parent = source.Parent;
+        ParentArtifactClass = source.ParentArtifactClass;
+        ResolvedParentDirective = source.ResolvedParentDirective;
+        SliceName = source.SliceName;
+        _rootElement = (FhirElement)source._rootElement?.Clone() ?? null;
+        _elements = source._elements?.DeepCopy() ?? null;
+        _components = source._components?.DeepCopy() ?? null;
+        _searchParameters = source._searchParameters?.DeepCopy() ?? null;
+        _typeOperations = source._typeOperations?.DeepCopy() ?? null;
+        _instanceOperations = source._instanceOperations?.DeepCopy() ?? null;
+        _contextElements = source._contextElements?.Select(v => v).ToList() ?? null;
+        _constraintsByKey = source._constraintsByKey?.DeepCopy() ?? null;
+        Mappings = source.Mappings?.DeepCopy() ?? null;
+        RootElementMappings = source.RootElementMappings?.DeepCopy() ?? null;
     }
 
     /// <summary>Values that represent fhir complex types.</summary>
@@ -677,6 +726,13 @@ public class FhirComplex : FhirModelBase
         }
 
         return val;
+    }
+
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public object Clone()
+    {
+        return new FhirComplex(this);
     }
 
     /// <summary>Deep copy - cannot use Clone because of needed parameters.</summary>

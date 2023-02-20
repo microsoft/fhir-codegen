@@ -6,7 +6,7 @@
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A fhir slice discriminator rule.</summary>
-public class FhirSliceDiscriminatorRule
+public class FhirSliceDiscriminatorRule : ICloneable
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirSliceDiscriminatorRule"/> class.
@@ -44,6 +44,16 @@ public class FhirSliceDiscriminatorRule
         }
 
         Path = path;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirSliceDiscriminatorRule"/> class.
+    /// </summary>
+    /// <param name="source">Source for the.</param>
+    public FhirSliceDiscriminatorRule(FhirSliceDiscriminatorRule source)
+    {
+        DiscriminatorType = source.DiscriminatorType;
+        Path = source.Path;
     }
 
     /// <summary>
@@ -123,10 +133,17 @@ public class FhirSliceDiscriminatorRule
     /// <value>The full pathname of the file.</value>
     public string Path { get; }
 
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public object Clone()
+    {
+        return new FhirSliceDiscriminatorRule(this);
+    }
+
     /// <summary>Deep copy.</summary>
     /// <returns>A FhirSliceDiscriminatorRule.</returns>
     public FhirSliceDiscriminatorRule DeepCopy()
     {
-        return new FhirSliceDiscriminatorRule(DiscriminatorType, Path);
+        return new FhirSliceDiscriminatorRule(this);
     }
 }

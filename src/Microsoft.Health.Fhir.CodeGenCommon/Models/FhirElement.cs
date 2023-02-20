@@ -8,9 +8,9 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A FHIR element.</summary>
-public class FhirElement : FhirPropertyBase
+public class FhirElement : FhirPropertyBase, ICloneable
 {
-    private readonly Dictionary<string, FhirSlicing> _slicing;
+    private Dictionary<string, FhirSlicing> _slicing;
     private Dictionary<string, FhirElementType> _elementTypes;
     private bool _inDifferential;
     private List<string> _codes;
@@ -549,6 +549,69 @@ public class FhirElement : FhirPropertyBase
         }
 
         return enums;
+    }
+
+    /// <summary>Copies the with.</summary>
+    /// <param name="root">          (Optional) The root.</param>
+    /// <param name="id">            (Optional) Id for this element.</param>
+    /// <param name="path">          (Optional) Dot notation path for this element.</param>
+    /// <param name="cardinalityMin">(Optional) The cardinality minimum.</param>
+    /// <param name="cardinalityMax">(Optional) The cardinality maximum.</param>
+    /// <returns>A FhirElement.</returns>
+    public FhirElement CopyWith(
+        FhirComplex root = null,
+        string id = null,
+        string path = null,
+        int? cardinalityMin = null,
+        string cardinalityMax = null)
+    {
+
+        // generate our copy
+        FhirElement element = new FhirElement(
+            root ?? RootArtifact,
+            id ?? Id,
+            path ?? Path,
+            BasePath,
+            ExplicitName,
+            URL,
+            FieldOrder,
+            ShortDescription,
+            Purpose,
+            Comment,
+            ValidationRegEx,
+            BaseTypeName,
+            _elementTypes?.DeepCopy() ?? null,
+            cardinalityMin ?? CardinalityMin,
+            cardinalityMax ?? (CardinalityMax == -1 ? "*" : $"{CardinalityMax}"),
+            IsModifier,
+            IsModifierReason,
+            IsSummary,
+            IsMustSupport,
+            IsSimple,
+            DefaultFieldName,
+            DefaultFieldValue,
+            FixedFieldName,
+            FixedFieldValue,
+            PatternFieldName,
+            PatternFieldValue,
+            IsInherited,
+            ModifiesParent,
+            BindingStrength,
+            ValueSet,
+            _representations?.Select(pr => pr).ToList() ?? null,
+            Mappings?.DeepCopy() ?? null);
+
+        element.BaseTypeName = BaseTypeName;
+        element._slicing = _slicing?.DeepCopy() ?? null;
+
+        return element;
+    }
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    public object Clone()
+    {
+        return this.CopyWith();
     }
 
     /// <summary>Deep copy.</summary>
