@@ -2,12 +2,12 @@
     "profiles": {
         "info-All": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r4b latest --load-r5 latest --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "info-Rx": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4.txt --load-r4 latest --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B.txt --load-r4b latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "tsBasic-All": {

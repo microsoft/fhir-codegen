@@ -62,13 +62,13 @@ public class RegistryPackageManifest
 
                 foreach (string key in manifest.Versions.Keys)
                 {
+                    FhirPackageCommon.FhirSequenceEnum sequence;
                     bool remove = false;
                     string name = manifest.Versions[key].Name;
 
                     if (manifest.Versions[key].PackageKind == "??")
                     {
-                        if (name.StartsWith("hl7.fhir.r", StringComparison.OrdinalIgnoreCase) &&
-                            key.EndsWith("ballot", StringComparison.Ordinal))
+                        if (name.StartsWith("hl7.fhir.r", StringComparison.OrdinalIgnoreCase))
                         {
                             manifest.Versions[key].PackageKind = "Core";
                         }
@@ -81,7 +81,7 @@ public class RegistryPackageManifest
                     if (manifest.Versions[key].FhirVersion == "??")
                     {
                         if (manifest.Versions[key].PackageKind.Equals("core", StringComparison.OrdinalIgnoreCase) &&
-                            FhirPackageCommon.TryGetMajorReleaseForVersion(key, out FhirPackageCommon.FhirSequenceEnum sequence))
+                            FhirPackageCommon.TryGetMajorReleaseForVersion(key, out sequence))
                         {
                             manifest.Versions[key].FhirVersion = sequence.ToString();
                         }
@@ -89,6 +89,12 @@ public class RegistryPackageManifest
                         {
                             remove = true;
                         }
+                    }
+
+                    if (manifest.Versions[key].PackageKind.Equals("core", StringComparison.OrdinalIgnoreCase) &&
+                        FhirPackageCommon.TryGetMajorReleaseForVersion(key, out sequence))
+                    {
+                        manifest.Versions[key].FhirVersion = sequence.ToString();
                     }
 
                     if (remove)
