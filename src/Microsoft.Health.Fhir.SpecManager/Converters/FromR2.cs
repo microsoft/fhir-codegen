@@ -5,6 +5,7 @@
 
 using System.IO;
 using fhirCsR2.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using fhirModels = fhirCsR2.Models;
@@ -1566,6 +1567,55 @@ public sealed class FromR2 : IFhirConverter
                         slicingDepths.Add(slicingDepth);
                         slicingPaths[slicingDepth] = element.Path;
                     }
+
+                    // look for additional constraints
+                    if ((element.Constraint != null) &&
+                        (element.Constraint.Count > 0))
+                    {
+                        foreach (fhirModels.ElementDefinitionConstraint con in element.Constraint)
+                        {
+                            bool isBestPractice = false;
+                            string explanation = string.Empty;
+
+                            if (con.Extension != null)
+                            {
+                                foreach (fhirModels.Extension ext in con.Extension)
+                                {
+                                    switch (ext.Url)
+                                    {
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
+                                            isBestPractice = ext.ValueBoolean == true;
+                                            break;
+
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
+                                            if (!string.IsNullOrEmpty(ext.ValueMarkdown))
+                                            {
+                                                explanation = ext.ValueMarkdown;
+                                            }
+                                            else
+                                            {
+                                                explanation = ext.ValueString;
+                                            }
+
+                                            break;
+                                    }
+                                }
+                            }
+
+                            fhirElement.AddConstraint(new FhirConstraint(
+                                con.Key,
+                                con.Requirements,
+                                con.Severity,
+                                null,
+                                con.Human,
+                                string.Empty,
+                                con.Xpath,
+                                isBestPractice,
+                                explanation,
+                                string.Empty,
+                                path));
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -1577,9 +1627,7 @@ public sealed class FromR2 : IFhirConverter
 
             if ((sd.Differential != null) &&
                 (sd.Differential.Element != null) &&
-                (sd.Differential.Element.Count > 0) &&
-                (sd.Differential.Element[0].Constraint != null) &&
-                (sd.Differential.Element[0].Constraint.Count > 0))
+                (sd.Differential.Element.Count > 0))
             {
                 // look for mapping definitions
                 if ((sd.Differential.Element[0].Mapping != null) &&
@@ -1639,12 +1687,16 @@ public sealed class FromR2 : IFhirConverter
 
                         complex.AddConstraint(new FhirConstraint(
                             con.Key,
+                            con.Requirements,
                             con.Severity,
+                            null,
                             con.Human,
                             string.Empty,
                             con.Xpath,
                             isBestPractice,
-                            explanation));
+                            explanation,
+                            string.Empty,
+                            complex.Name));
                     }
                 }
             }
@@ -1690,65 +1742,6 @@ public sealed class FromR2 : IFhirConverter
                         string.Empty,
                         null,
                         null));
-            }
-
-            if ((sd.Differential != null) &&
-                (sd.Differential.Element != null) &&
-                (sd.Differential.Element.Count > 0))
-            {
-                // look for additional constraints
-                if ((sd.Differential.Element[0].Constraint != null) &&
-                    (sd.Differential.Element[0].Constraint.Count > 0))
-                {
-                    foreach (fhirModels.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
-                    {
-                        bool isBestPractice = false;
-                        string explanation = string.Empty;
-
-                        if (con.Extension != null)
-                        {
-                            foreach (fhirModels.Extension ext in con.Extension)
-                            {
-                                switch (ext.Url)
-                                {
-                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
-                                        isBestPractice = ext.ValueBoolean == true;
-                                        break;
-
-                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
-                                        if (!string.IsNullOrEmpty(ext.ValueMarkdown))
-                                        {
-                                            explanation = ext.ValueMarkdown;
-                                        }
-                                        else
-                                        {
-                                            explanation = ext.ValueString;
-                                        }
-
-                                        break;
-                                }
-                            }
-                        }
-
-                        complex.AddConstraint(new FhirConstraint(
-                            con.Key,
-                            con.Severity,
-                            con.Human,
-                            string.Empty,
-                            con.Xpath,
-                            isBestPractice,
-                            explanation));
-                    }
-                }
-
-                // traverse all elements to flag proper 'differential' tags on elements
-                foreach (fhirModels.ElementDefinition dif in sd.Differential.Element)
-                {
-                    if (complex.Elements.ContainsKey(dif.Path))
-                    {
-                        complex.Elements[dif.Path].SetInDifferential();
-                    }
-                }
             }
 
             switch (artifactClass)

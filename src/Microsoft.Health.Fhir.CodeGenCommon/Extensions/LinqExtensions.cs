@@ -117,4 +117,16 @@ public static class LinqExtensions
 
         return dest;
     }
+
+    /// <summary>A HashSet&lt;string&gt; extension method that copies to.</summary>
+    /// <param name="source">The source dictionary to copy.</param>
+    /// <param name="dest">  Destination for the.</param>
+    /// <returns>A HashSet&lt;string&gt;</returns>
+    public static void CopyTo(this HashSet<string> source, HashSet<string> dest)
+    {
+        foreach (string val in source)
+        {
+            dest.Add(val);
+        }
+    }
 }

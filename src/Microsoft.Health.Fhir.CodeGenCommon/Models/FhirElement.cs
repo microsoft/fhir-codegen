@@ -16,6 +16,9 @@ public class FhirElement : FhirPropertyBase, ICloneable
     private List<string> _codes;
     private List<PropertyRepresentationCodes> _representations;
     private string _fiveWs = null;
+    private HashSet<string> _conditions = new();
+    private Dictionary<string, FhirConstraint> _constraintsByKey = new();
+
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirElement"/> class.
@@ -240,7 +243,9 @@ public class FhirElement : FhirPropertyBase, ICloneable
         object patternFieldValue,
         string fiveWs,
         bool inDifferential,
-        Dictionary<string, List<FhirElementDefMapping>> mappings)
+        Dictionary<string, List<FhirElementDefMapping>> mappings,
+        HashSet<string> conditions,
+        Dictionary<string, FhirConstraint> constraints)
         : this(
               rootArtifact,
               id,
@@ -280,6 +285,8 @@ public class FhirElement : FhirPropertyBase, ICloneable
         //_elementTypes = elementTypes ?? new();
         _slicing = slicing ?? new();
         _inDifferential = inDifferential;
+        _conditions = conditions ?? new();
+        _constraintsByKey = constraints ?? new();
     }
 
     /// <summary>Values that represent element definition binding strengths.</summary>
@@ -435,6 +442,49 @@ public class FhirElement : FhirPropertyBase, ICloneable
 
     /// <summary>True if this element appears in the differential.</summary>
     public bool InDifferential => _inDifferential;
+
+    /// <summary>Gets the conditions.</summary>
+    public HashSet<string> Conditions => _conditions;
+    
+    /// <summary>Gets the constraints.</summary>
+    public IEnumerable<FhirConstraint> Constraints { get => _constraintsByKey.Values; }
+
+    /// <summary>Gets the constraints by key.</summary>
+    public Dictionary<string, FhirConstraint> ConstraintsByKey { get => _constraintsByKey; }
+
+    public void AddCondition(string condition)
+    {
+        if (_conditions.Contains(condition))
+        {
+            return;
+        }
+
+        _conditions.Add(condition);
+    }
+
+    /// <summary>Adds a constraint.</summary>
+    /// <param name="constraint">The constraint.</param>
+    public void AddConstraint(FhirConstraint constraint)
+    {
+        if (_constraintsByKey.ContainsKey(constraint.Key))
+        {
+            return;
+        }
+
+        if (RootArtifact != null)
+        {
+            if (!RootArtifact.ConstraintsByKey.ContainsKey(constraint.Key))
+            {
+                RootArtifact.AddConstraint(constraint);
+            }
+
+            _constraintsByKey.Add(constraint.Key, RootArtifact.ConstraintsByKey[constraint.Key]);
+            return;
+        }
+
+        _constraintsByKey.Add(constraint.Key, constraint);
+    }
+
 
     /// <summary>Sets in differential.</summary>
     public void SetInDifferential()
@@ -604,6 +654,10 @@ public class FhirElement : FhirPropertyBase, ICloneable
         element.BaseTypeName = BaseTypeName;
         element._slicing = _slicing?.DeepCopy() ?? null;
 
+        // add conditions and constraints
+        _conditions.CopyTo(element._conditions);
+        element._constraintsByKey = _constraintsByKey.DeepCopy();
+
         return element;
     }
 
@@ -703,6 +757,10 @@ public class FhirElement : FhirPropertyBase, ICloneable
                 element.AddSlicing(slicing);
             }
         }
+
+        // add conditions and constraints
+        _conditions.CopyTo(element._conditions);
+        element._constraintsByKey = _constraintsByKey.DeepCopy();
 
         // check for referenced value sets
         if (((!IsInherited) || ModifiesParent) &&

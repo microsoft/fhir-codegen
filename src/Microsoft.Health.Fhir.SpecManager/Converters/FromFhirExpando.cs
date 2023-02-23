@@ -1569,11 +1569,72 @@ public sealed class FromFhirExpando : IFhirConverter
                                 element.GetString("slicing", "rules"),
                                 discriminatorRules));
                     }
+
+                    // look for conditions
+                    if ((element["condition"] != null) &&
+                        element.GetStringList("condition").Any())
+                    {
+                        foreach (string condition in element.GetStringList("condition"))
+                        {
+                            fhirElement.AddCondition(condition);
+                        }
+                    }
+
+                    // look for constraints
+                    if ((element["constraint"] != null) &&
+                        element.GetExpandoEnumerable("constraint").Any())
+                    {
+                        foreach (FhirExpando con in element.GetExpandoEnumerable("constraint"))
+                        {
+                            bool isBestPractice = false;
+                            string explanation = string.Empty;
+
+                            if (con["extension"] != null)
+                            {
+                                foreach (FhirExpando ext in con.GetExpandoEnumerable("extension"))
+                                {
+                                    string extUrl = ext.GetString("url");
+
+                                    switch (extUrl)
+                                    {
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
+                                            isBestPractice = ext.GetBool("valueBoolean") == true;
+                                            break;
+
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
+                                            if (ext["valueMarkdown"] != null)
+                                            {
+                                                explanation = ext.GetString("valueMarkdown");
+                                            }
+                                            else
+                                            {
+                                                explanation = ext.GetString("valueString");
+                                            }
+
+                                            break;
+                                    }
+                                }
+                            }
+
+                            fhirElement.AddConstraint(new FhirConstraint(
+                                con.GetString("key"),
+                                con.GetString("requirements"),
+                                con.GetString("severity"),
+                                con.GetBool("suppress"),
+                                con.GetString("human"),
+                                con.GetString("expression") ?? string.Empty,
+                                con.GetString("xpath") ?? string.Empty,
+                                isBestPractice,
+                                explanation,
+                                con.GetString("source") ?? string.Empty,
+                                elementPath));
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(string.Empty);
-                    Console.WriteLine($"FromR5.ProcessComplex <<< element: {elementPath} ({elementId}) - exception: {ex.Message}");
+                    Console.WriteLine($"FromFhirExpando.ProcessComplex <<< element: {elementPath} ({elementId}) - exception: {ex.Message}");
                     throw;
                 }
             }
@@ -1651,12 +1712,16 @@ public sealed class FromFhirExpando : IFhirConverter
 
                         complex.AddConstraint(new FhirConstraint(
                             con.GetString("key"),
+                            con.GetString("requirements"),
                             con.GetString("severity"),
+                            con.GetBool("suppress"),
                             con.GetString("human"),
                             con.GetString("expression") ?? string.Empty,
                             con.GetString("xpath") ?? string.Empty,
                             isBestPractice,
-                            explanation));
+                            explanation,
+                            con.GetString("source") ?? string.Empty,
+                            complex.Name));
                     }
                 }
 
@@ -1703,7 +1768,7 @@ public sealed class FromFhirExpando : IFhirConverter
         catch (Exception ex)
         {
             Console.WriteLine(string.Empty);
-            Console.WriteLine($"FromR5.ProcessComplex <<< SD: {sdName} ({sdId}) - exception: {ex.Message}");
+            Console.WriteLine($"FromFhirExpando.ProcessComplex <<< SD: {sdName} ({sdId}) - exception: {ex.Message}");
             throw;
         }
     }

@@ -378,6 +378,9 @@ public class FhirComplex : FhirModelBase, ICloneable
     /// <summary>Gets the constraints.</summary>
     public IEnumerable<FhirConstraint> Constraints { get => _constraintsByKey.Values; }
 
+    /// <summary>Gets the constraints by key.</summary>
+    public Dictionary<string, FhirConstraint> ConstraintsByKey { get => _constraintsByKey; }
+
     /// <summary>Gets the mappings - external specifications that the content is mapped to.</summary>
     public Dictionary<string, FhirStructureDefMapping> Mappings { get; } = new();
 

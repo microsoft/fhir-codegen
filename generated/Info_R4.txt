@@ -279,6 +279,8 @@ Primitive Types: 20
 Complex Types: 41
 - Address: Element (normative)
   ^address[0..*]: Address
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - use[0..1]: code
@@ -458,6 +460,10 @@ Complex Types: 41
   - value[x][1..1]: code
 - Age: Quantity (trial-use)
   ^age[0..*]: Age
+  !age-1 (local): error - (code.exists() or value.empty()) and (system.empty() or system = %ucum) and (value.empty() or value.hasValue().not() or value > 0)
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !qty-3 (inherited): error - code.empty() or system.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -468,6 +474,8 @@ Complex Types: 41
   - code[0..1]: code
 - Annotation: Element (normative)
   ^annotation[0..*]: Annotation
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - author[x][0..1]: Reference(Practitioner|Patient|RelatedPerson|Organization)|string
@@ -482,6 +490,9 @@ Complex Types: 41
   - value[x][1..1]: code
 - Attachment: Element (normative)
   ^attachment[0..*]: Attachment
+  !att-1 (local): error - data.empty() or contentType.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - contentType[0..1]: code
@@ -513,17 +524,23 @@ Complex Types: 41
   - value[x][1..1]: CodeableConcept
 - BackboneElement: Element (normative)
   ^backboneElement[0..*]: BackboneElement
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
 - CodeableConcept: Element (normative)
   ^codeableConcept[0..*]: CodeableConcept
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - coding[0..*]: Coding
   - text[0..1]: string
 - Coding: Element (normative)
   ^coding[0..*]: Coding
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - system[0..1]: uri
@@ -552,12 +569,17 @@ Complex Types: 41
   - value[x][1..1]: uri
 - ContactDetail: Element (normative)
   ^contactDetail[0..*]: ContactDetail
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - name[0..1]: string
   - telecom[0..*]: ContactPoint
 - ContactPoint: Element (normative)
   ^contactPoint[0..*]: ContactPoint
+  !cpt-2 (local): error - value.empty() or system.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - system[0..1]: code
@@ -600,6 +622,8 @@ Complex Types: 41
   - value[x][1..1]: url
 - Contributor: Element (trial-use)
   ^contributor[0..*]: Contributor
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - type[1..1]: code
@@ -608,6 +632,10 @@ Complex Types: 41
   - contact[0..*]: ContactDetail
 - Count: Quantity (trial-use)
   ^count[0..*]: Count
+  !cnt-3 (local): error - (code.exists() or value.empty()) and (system.empty() or system = %ucum) and (code.empty() or code = '1') and (value.empty() or value.hasValue().not() or value.toString().contains('.').not())
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !qty-3 (inherited): error - code.empty() or system.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -618,6 +646,10 @@ Complex Types: 41
   - code[0..1]: code
 - DataRequirement: Element (trial-use)
   ^dataRequirement[0..*]: DataRequirement
+  !drq-1 (local): error - path.exists() xor searchParam.exists()
+  !drq-2 (local): error - path.exists() xor searchParam.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - type[1..1]: code
@@ -646,6 +678,10 @@ Complex Types: 41
       {ascending|descending}
 - Distance: Quantity (trial-use)
   ^distance[0..*]: Distance
+  !dis-1 (local): error - (code.exists() or value.empty()) and (system.empty() or system = %ucum)
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !qty-3 (inherited): error - code.empty() or system.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -656,6 +692,8 @@ Complex Types: 41
   - code[0..1]: code
 - Dosage: BackboneElement (trial-use)
   ^dosage[0..*]: Dosage
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -679,6 +717,10 @@ Complex Types: 41
   - maxDosePerLifetime[0..1]: Quantity(SimpleQuantity)
 - Duration: Quantity (normative)
   ^duration[0..*]: Duration
+  !drt-1 (local): error - code.exists() implies ((system = %ucum) and value.exists())
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !qty-3 (inherited): error - code.empty() or system.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -689,6 +731,8 @@ Complex Types: 41
   - code[0..1]: code
 - Element: Element (normative)
   ^element[0..*]: Element
+  !ele-1 (local): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   Extensions: 17
@@ -833,6 +877,28 @@ Complex Types: 41
   - value[x][1..1]: code
 - ElementDefinition: BackboneElement (normative)
   ^elementDefinition[0..*]: ElementDefinition
+  !eld-1 (local): error - discriminator.exists() or description.exists()
+  !eld-11 (local): error - binding.empty() or type.code.empty() or type.select((code = 'code') or (code = 'Coding') or (code='CodeableConcept') or (code = 'Quantity') or (code = 'string') or (code = 'uri')).exists()
+  !eld-12 (local): error - valueSet.exists() implies (valueSet.startsWith('http:') or valueSet.startsWith('https') or valueSet.startsWith('urn:'))
+  !eld-13 (local): error - type.select(code).isDistinct()
+  !eld-14 (local): error - constraint.select(key).isDistinct()
+  !eld-15 (local): error - defaultValue.empty() or meaningWhenMissing.empty()
+  !eld-16 (local): error - sliceName.empty() or sliceName.matches('^[a-zA-Z0-9\\/\\-_\\[\\]\\@]+$')
+  !eld-17 (local): error - (code='Reference' or code = 'canonical') or targetProfile.empty()
+  !eld-18 (local): error - (isModifier.exists() and isModifier) implies isModifierReason.exists()
+  !eld-19 (local): error - path.matches('[^\\s\\.,:;\\\'"\\/|?!@#$%&*()\\[\\]{}]{1,64}(\\.[^\\s\\.,:;\\\'"\\/|?!@#$%&*()\\[\\]{}]{1,64}(\\[x\\])?(\\:[^\\s\\.]+)?)*')
+  !eld-2 (local): error - min.empty() or max.empty() or (max = '*') or iif(max != '*', min <= max.toInteger())
+  !eld-20 (local): warning - path.matches('[A-Za-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*(\\[x])?)*')
+  !eld-21 (local): warning - expression.exists()
+  !eld-22 (local): error - sliceIsConstraining.exists() implies sliceName.exists()
+  !eld-3 (local): error - empty() or ($this = '*') or (toInteger() >= 0)
+  !eld-4 (local): error - aggregation.empty() or (code = 'Reference') or (code = 'canonical')
+  !eld-5 (local): error - contentReference.empty() or (type.empty() and defaultValue.empty() and fixed.empty() and pattern.empty() and example.empty() and minValue.empty() and maxValue.empty() and maxLength.empty() and binding.empty())
+  !eld-6 (local): error - fixed.empty() or (type.count()  <= 1)
+  !eld-7 (local): error - pattern.empty() or (type.count() <= 1)
+  !eld-8 (local): error - pattern.empty() or fixed.empty()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -1305,6 +1371,9 @@ Complex Types: 41
       - value[x][1..1]: code
 - Expression: Element (trial-use)
   ^expression[0..*]: Expression
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !exp-1 (local): error - expression.exists() or reference.exists()
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - description[0..1]: string
@@ -1315,12 +1384,16 @@ Complex Types: 41
   - reference[0..1]: uri
 - Extension: Element (normative)
   ^extension[0..*]: Extension
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (local): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - url[1..1]: uri *simple*
   - value[x][0..1]: Address|Age|Annotation|Attachment|base64Binary|boolean|canonical|code|CodeableConcept|Coding|ContactDetail|ContactPoint|Contributor|Count|DataRequirement|date|dateTime|decimal|Distance|Dosage|Duration|Expression|HumanName|id|Identifier|instant|integer|markdown|Meta|Money|oid|ParameterDefinition|Period|positiveInt|Quantity|Range|Ratio|Reference|RelatedArtifact|SampledData|Signature|string|time|Timing|TriggerDefinition|unsignedInt|uri|url|UsageContext|uuid
 - HumanName: Element (normative)
   ^humanName[0..*]: HumanName
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - use[0..1]: code
@@ -1422,6 +1495,8 @@ Complex Types: 41
   - value[x][1..1]: code
 - Identifier: Element (normative)
   ^identifier[0..*]: Identifier
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - use[0..1]: code
@@ -1447,6 +1522,8 @@ Complex Types: 41
   - value[x][1..1]: dateTime
 - MarketingStatus: BackboneElement (draft)
   ^marketingStatus[0..*]: MarketingStatus
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -1457,6 +1534,8 @@ Complex Types: 41
   - restoreDate[0..1]: dateTime
 - Meta: Element (normative)
   ^meta[0..*]: Meta
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - versionId[0..1]: id
@@ -1467,12 +1546,18 @@ Complex Types: 41
   - tag[0..*]: Coding
 - Money: Element (normative)
   ^money[0..*]: Money
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - value[0..1]: decimal
   - currency[0..1]: code
 - Narrative: Element (normative)
   ^narrative[0..*]: Narrative
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !txt-1 (local): error - htmlChecks()
+  !txt-2 (local): error - htmlChecks()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - status[1..1]: code
@@ -1480,6 +1565,8 @@ Complex Types: 41
   - div[1..1]: xhtml
 - ParameterDefinition: Element (trial-use)
   ^parameterDefinition[0..*]: ParameterDefinition
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - name[0..1]: code
@@ -1492,12 +1579,17 @@ Complex Types: 41
   - profile[0..1]: canonical(StructureDefinition)
 - Period: Element (normative)
   ^period[0..*]: Period
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !per-1 (local): error - start.hasValue().not() or end.hasValue().not() or (start <= end)
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - start[0..1]: dateTime
   - end[0..1]: dateTime
 - Population: BackboneElement (draft)
   ^population[0..*]: Population
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -1507,6 +1599,8 @@ Complex Types: 41
   - physiologicalCondition[0..1]: CodeableConcept
 - ProdCharacteristic: BackboneElement (draft)
   ^prodCharacteristic[0..*]: ProdCharacteristic
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -1523,6 +1617,8 @@ Complex Types: 41
   - scoring[0..1]: CodeableConcept
 - ProductShelfLife: BackboneElement (draft)
   ^productShelfLife[0..*]: ProductShelfLife
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -1532,6 +1628,9 @@ Complex Types: 41
   - specialPrecautionsForStorage[0..*]: CodeableConcept
 - Quantity: Element (normative)
   ^quantity[0..*]: Quantity
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !qty-3 (local): error - code.empty() or system.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -1580,18 +1679,27 @@ Complex Types: 41
     - code[0..1]: code
 - Range: Element (normative)
   ^range[0..*]: Range
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !rng-2 (local): error - low.empty() or high.empty() or (low <= high)
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - low[0..1]: Quantity(SimpleQuantity)
   - high[0..1]: Quantity(SimpleQuantity)
 - Ratio: Element (normative)
   ^ratio[0..*]: Ratio
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !rat-1 (local): error - (numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - numerator[0..1]: Quantity
   - denominator[0..1]: Quantity
 - Reference: Element (normative)
   ^reference[0..*]: Reference
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !ref-1 (local): error - reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - reference[0..1]: string
@@ -1600,6 +1708,8 @@ Complex Types: 41
   - display[0..1]: string
 - RelatedArtifact: Element (trial-use)
   ^relatedArtifact[0..*]: RelatedArtifact
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - type[1..1]: code
@@ -1612,6 +1722,8 @@ Complex Types: 41
   - resource[0..1]: canonical(Resource)
 - SampledData: Element (trial-use)
   ^sampledData[0..*]: SampledData
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - origin[1..1]: Quantity(SimpleQuantity)
@@ -1623,6 +1735,8 @@ Complex Types: 41
   - data[0..1]: string
 - Signature: Element (trial-use)
   ^signature[0..*]: Signature
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - type[1..*]: Coding
@@ -1634,6 +1748,8 @@ Complex Types: 41
   - data[0..1]: base64Binary
 - SubstanceAmount: BackboneElement (draft)
   ^substanceAmount[0..*]: SubstanceAmount
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -1647,6 +1763,17 @@ Complex Types: 41
     - highLimit[0..1]: Quantity
 - Timing: BackboneElement (normative)
   ^timing[0..*]: Timing
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !tim-1 (local): error - duration.empty() or durationUnit.exists()
+  !tim-10 (local): error - timeOfDay.empty() or when.empty()
+  !tim-2 (local): error - period.empty() or periodUnit.exists()
+  !tim-4 (local): error - duration.exists() implies duration >= 0
+  !tim-5 (local): error - period.exists() implies period >= 0
+  !tim-6 (local): error - periodMax.empty() or period.exists()
+  !tim-7 (local): error - durationMax.empty() or duration.exists()
+  !tim-8 (local): error - countMax.empty() or count.exists()
+  !tim-9 (local): error - offset.empty() or (when.exists() and ((when in ('C' | 'CM' | 'CD' | 'CV')).not()))
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -1688,6 +1815,11 @@ Complex Types: 41
   - code[0..1]: CodeableConcept
 - TriggerDefinition: Element (trial-use)
   ^triggerDefinition[0..*]: TriggerDefinition
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !trd-1 (local): error - data.empty() or timing.empty()
+  !trd-2 (local): error - condition.exists() implies data.exists()
+  !trd-3 (local): error - (type = 'named-event' implies name.exists()) and (type = 'periodic' implies timing.exists()) and (type.startsWith('data-') implies data.exists())
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - type[1..1]: code
@@ -1698,6 +1830,8 @@ Complex Types: 41
   - condition[0..1]: Expression
 - UsageContext: Element (trial-use)
   ^usageContext[0..*]: UsageContext
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - extension[0..*]: Extension
   - code[1..1]: Coding
@@ -1712,6 +1846,13 @@ Complex Types: 41
 Resources: 148
 - Account: DomainResource (trial-use FMM: 2)
   ^account[0..*]: Account
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1753,6 +1894,14 @@ Resources: 148
   ?type: type=token (trial-use)
 - ActivityDefinition: DomainResource (trial-use FMM: 2)
   ^activityDefinition[0..*]: ActivityDefinition
+  !adf-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1947,6 +2096,13 @@ Resources: 148
       - expression[1..1]: Expression
 - AdverseEvent: DomainResource (trial-use FMM: 0)
   ^adverseEvent[0..*]: AdverseEvent
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2009,6 +2165,15 @@ Resources: 148
   ?substance: substance=reference (trial-use)
 - AllergyIntolerance: DomainResource (trial-use FMM: 3)
   ^allergyIntolerance[0..*]: AllergyIntolerance
+  !ait-1 (local): error - verificationStatus.coding.where(system = 'http://terminology.hl7.org/CodeSystem/allergyintolerance-verification' and code = 'entered-in-error').exists() or clinicalStatus.exists()
+  !ait-2 (local): error - verificationStatus.coding.where(system = 'http://terminology.hl7.org/CodeSystem/allergyintolerance-verification' and code = 'entered-in-error').empty() or clinicalStatus.empty()
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2162,6 +2327,17 @@ Resources: 148
   ?verification-status: verification-status=token (trial-use)
 - Appointment: DomainResource (trial-use FMM: 3)
   ^appointment[0..*]: Appointment
+  !app-1 (local): error - type.exists() or actor.exists()
+  !app-2 (local): error - start.exists() = end.exists()
+  !app-3 (local): error - (start.exists() and end.exists()) or (status in ('proposed' | 'cancelled' | 'waitlist'))
+  !app-4 (local): error - Appointment.cancelationReason.exists() implies (Appointment.status='no-show' or Appointment.status='cancelled')
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2222,6 +2398,14 @@ Resources: 148
   ?supporting-info: supporting-info=reference (trial-use)
 - AppointmentResponse: DomainResource (trial-use FMM: 3)
   ^appointmentResponse[0..*]: AppointmentResponse
+  !apr-1 (local): error - participantType.exists() or actor.exists()
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2248,6 +2432,14 @@ Resources: 148
   ?practitioner: practitioner=reference (trial-use)
 - AuditEvent: DomainResource (trial-use FMM: 3)
   ^auditEvent[0..*]: AuditEvent
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !sev-1 (local): error - name.empty() or query.empty()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2491,6 +2683,13 @@ Resources: 148
       - value[x][1..1]: Reference(ImagingStudy)
 - Basic: DomainResource (trial-use FMM: 1)
   ^basic[0..*]: Basic
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2579,6 +2778,7 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - Binary: Resource (normative FMM: 5)
   ^binary[0..*]: Binary
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2588,6 +2788,13 @@ Resources: 148
   - data[0..1]: base64Binary
 - BiologicallyDerivedProduct: DomainResource (trial-use FMM: 0)
   ^biologicallyDerivedProduct[0..*]: BiologicallyDerivedProduct
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2637,6 +2844,13 @@ Resources: 148
     - duration[0..1]: Period
 - BodyStructure: DomainResource (trial-use FMM: 1)
   ^bodyStructure[0..*]: BodyStructure
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2659,6 +2873,19 @@ Resources: 148
   ?patient: patient=reference (trial-use)
 - Bundle: Resource (normative FMM: 5)
   ^bundle[0..*]: Bundle
+  !bdl-1 (local): error - total.empty() or (type = 'searchset') or (type = 'history')
+  !bdl-10 (local): error - type = 'document' implies (timestamp.hasValue())
+  !bdl-11 (local): error - type = 'document' implies entry.first().resource.is(Composition)
+  !bdl-12 (local): error - type = 'message' implies entry.first().resource.is(MessageHeader)
+  !bdl-2 (local): error - entry.search.empty() or (type = 'searchset')
+  !bdl-3 (local): error - entry.all(request.exists() = (%resource.type = 'batch' or %resource.type = 'transaction' or %resource.type = 'history'))
+  !bdl-4 (local): error - entry.all(response.exists() = (%resource.type = 'batch-response' or %resource.type = 'transaction-response' or %resource.type = 'history'))
+  !bdl-5 (local): error - resource.exists() or request.exists() or response.exists()
+  !bdl-7 (local): error - (type = 'history') or entry.where(fullUrl.exists()).select(fullUrl&resource.meta.versionId).isDistinct()
+  !bdl-8 (local): error - fullUrl.contains('/_history/').not()
+  !bdl-9 (local): error - type = 'document' implies (identifier.system.exists() and identifier.value.exists())
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2736,6 +2963,23 @@ Resources: 148
   ?type: type=token (trial-use)
 - CapabilityStatement: DomainResource (normative FMM: 5)
   ^capabilityStatement[0..*]: CapabilityStatement
+  !cpb-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !cpb-1 (local): error - rest.exists() or messaging.exists() or document.exists()
+  !cpb-12 (local): error - searchParam.select(name).isDistinct()
+  !cpb-14 (local): error - (kind != 'instance') or implementation.exists()
+  !cpb-15 (local): error - (kind != 'capability') or (implementation.exists().not() and software.exists())
+  !cpb-16 (local): error - (kind!='requirements') or (implementation.exists().not() and software.exists().not())
+  !cpb-2 (local): error - (description.count() + software.count() + implementation.count()) > 0
+  !cpb-3 (local): error - messaging.endpoint.empty() or kind = 'instance'
+  !cpb-7 (local): error - document.select(profile&mode).isDistinct()
+  !cpb-9 (local): error - resource.select(type).isDistinct()
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3117,6 +3361,14 @@ Resources: 148
     out: return: CapabilityStatement[1..1]
 - CarePlan: DomainResource (trial-use FMM: 2)
   ^carePlan[0..*]: CarePlan
+  !cpl-3 (local): error - detail.empty() or reference.empty()
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3216,6 +3468,14 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - CareTeam: DomainResource (trial-use FMM: 2)
   ^careTeam[0..*]: CareTeam
+  !ctm-1 (local): error - onBehalfOf.exists() implies (member.resolve().iif(empty(), true, ofType(Practitioner).exists()))
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3262,6 +3522,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - CatalogEntry: DomainResource (trial-use FMM: 0)
   ^catalogEntry[0..*]: CatalogEntry
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3292,6 +3559,13 @@ Resources: 148
     - item[1..1]: Reference(CatalogEntry)
 - ChargeItem: DomainResource (trial-use FMM: 0)
   ^chargeItem[0..*]: ChargeItem
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3351,6 +3625,14 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - ChargeItemDefinition: DomainResource (trial-use FMM: 0)
   ^chargeItemDefinition[0..*]: ChargeItemDefinition
+  !cid-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3426,6 +3708,13 @@ Resources: 148
   ?version: version=token (trial-use)
 - Claim: DomainResource (trial-use FMM: 2)
   ^claim[0..*]: Claim
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3601,6 +3890,13 @@ Resources: 148
     out: return: Resource[1..1]
 - ClaimResponse: DomainResource (trial-use FMM: 2)
   ^claimResponse[0..*]: ClaimResponse
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3760,6 +4056,13 @@ Resources: 148
   ?use: use=token (trial-use)
 - ClinicalImpression: DomainResource (trial-use FMM: 0)
   ^clinicalImpression[0..*]: ClinicalImpression
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3822,6 +4125,15 @@ Resources: 148
   ?supporting-info: supporting-info=reference (trial-use)
 - CodeSystem: DomainResource (normative FMM: 5)
   ^codeSystem[0..*]: CodeSystem
+  !csd-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !csd-1 (local): error - concept.code.combine($this.descendants().concept.code).isDistinct()
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4313,6 +4625,13 @@ Resources: 148
       - value[x][1..1]: decimal
 - Communication: DomainResource (trial-use FMM: 2)
   ^communication[0..*]: Communication
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4380,6 +4699,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - CommunicationRequest: DomainResource (trial-use FMM: 2)
   ^communicationRequest[0..*]: CommunicationRequest
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4471,6 +4797,14 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - CompartmentDefinition: DomainResource (trial-use FMM: 1)
   ^compartmentDefinition[0..*]: CompartmentDefinition
+  !cpd-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4542,6 +4876,15 @@ Resources: 148
   ?version: version=token (trial-use)
 - Composition: DomainResource (trial-use FMM: 2)
   ^composition[0..*]: Composition
+  !cmp-1 (local): error - text.exists() or entry.exists() or section.exists()
+  !cmp-2 (local): error - emptyReason.empty() or entry.empty()
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4795,6 +5138,17 @@ Resources: 148
       - value[x][1..1]: string
 - ConceptMap: DomainResource (trial-use FMM: 3)
   ^conceptMap[0..*]: ConceptMap
+  !cmd-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !cmd-1 (local): error - comment.exists() or equivalence.empty() or ((equivalence != 'narrower') and (equivalence != 'inexact'))
+  !cmd-2 (local): error - (mode = 'fixed') implies code.exists()
+  !cmd-3 (local): error - (mode = 'other-map') implies url.exists()
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4955,6 +5309,18 @@ Resources: 148
     out: match: [0..*]
 - Condition: DomainResource (trial-use FMM: 3)
   ^condition[0..*]: Condition
+  !con-1 (local): error - summary.exists() or assessment.exists()
+  !con-2 (local): error - code.exists() or detail.exists()
+  !con-3 (local): warning - clinicalStatus.exists() or verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code = 'entered-in-error').exists() or category.select($this='problem-list-item').empty()
+  !con-4 (local): error - abatement.empty() or clinicalStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-clinical' and (code='resolved' or code='remission' or code='inactive')).exists()
+  !con-5 (local): error - verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code='entered-in-error').empty() or clinicalStatus.empty()
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5081,6 +5447,18 @@ Resources: 148
   ?verification-status: verification-status=token (trial-use)
 - Consent: DomainResource (trial-use FMM: 2)
   ^consent[0..*]: Consent
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !ppc-1 (local): error - policy.exists() or policyRule.exists()
+  !ppc-2 (local): error - patient.exists() or scope.coding.where(system='something' and code='patient-privacy').exists().not()
+  !ppc-3 (local): error - patient.exists() or scope.coding.where(system='something' and code='research').exists().not()
+  !ppc-4 (local): error - patient.exists() or scope.coding.where(system='something' and code='adr').exists().not()
+  !ppc-5 (local): error - patient.exists() or scope.coding.where(system='something' and code='treatment').exists().not()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5189,6 +5567,13 @@ Resources: 148
   ?status: status=token (trial-use)
 - Contract: DomainResource (trial-use FMM: 1)
   ^contract[0..*]: Contract
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5385,6 +5770,13 @@ Resources: 148
   ?url: url=uri (trial-use)
 - Coverage: DomainResource (trial-use FMM: 2)
   ^coverage[0..*]: Coverage
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5441,6 +5833,13 @@ Resources: 148
   ?type: type=token (trial-use)
 - CoverageEligibilityRequest: DomainResource (trial-use FMM: 2)
   ^coverageEligibilityRequest[0..*]: CoverageEligibilityRequest
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5509,6 +5908,14 @@ Resources: 148
     out: return: Resource[1..1]
 - CoverageEligibilityResponse: DomainResource (trial-use FMM: 2)
   ^coverageEligibilityResponse[0..*]: CoverageEligibilityResponse
+  !ces-1 (local): error - category.exists() xor productOrService.exists()
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5580,6 +5987,13 @@ Resources: 148
   ?status: status=token (trial-use)
 - DetectedIssue: DomainResource (trial-use FMM: 1)
   ^detectedIssue[0..*]: DetectedIssue
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5621,6 +6035,13 @@ Resources: 148
   ?patient: patient=reference (trial-use)
 - Device: DomainResource (trial-use FMM: 2)
   ^device[0..*]: Device
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5711,6 +6132,13 @@ Resources: 148
   ?url: url=uri (trial-use)
 - DeviceDefinition: DomainResource (trial-use FMM: 0)
   ^deviceDefinition[0..*]: DeviceDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5780,6 +6208,13 @@ Resources: 148
   ?type: type=token (trial-use)
 - DeviceMetric: DomainResource (trial-use FMM: 1)
   ^deviceMetric[0..*]: DeviceMetric
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5816,6 +6251,13 @@ Resources: 148
   ?type: type=token (trial-use)
 - DeviceRequest: DomainResource (trial-use FMM: 1)
   ^deviceRequest[0..*]: DeviceRequest
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5912,6 +6354,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - DeviceUseStatement: DomainResource (trial-use FMM: 0)
   ^deviceUseStatement[0..*]: DeviceUseStatement
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5971,6 +6420,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - DiagnosticReport: DomainResource (trial-use FMM: 3)
   ^diagnosticReport[0..*]: DiagnosticReport
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6492,6 +6948,13 @@ Resources: 148
     - presentedForm[0..*]: Attachment
 - DocumentManifest: DomainResource (trial-use FMM: 2)
   ^documentManifest[0..*]: DocumentManifest
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6533,6 +6996,13 @@ Resources: 148
   ?type: type=token (trial-use)
 - DocumentReference: DomainResource (trial-use FMM: 3)
   ^documentReference[0..*]: DocumentReference
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6607,6 +7077,13 @@ Resources: 148
   ?type: type=token (trial-use)
 - DomainResource: Resource (normative FMM: 5)
   ^domainResource[0..*]: DomainResource
+  !dom-2 (local): error - contained.contained.empty()
+  !dom-3 (local): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (local): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (local): error - contained.meta.security.empty()
+  !dom-6 (local): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6618,6 +7095,14 @@ Resources: 148
   ?_text: _text=string (trial-use)
 - EffectEvidenceSynthesis: DomainResource (trial-use FMM: 0)
   ^effectEvidenceSynthesis[0..*]: EffectEvidenceSynthesis
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ees-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6727,6 +7212,13 @@ Resources: 148
   ?version: version=token (trial-use)
 - Encounter: DomainResource (trial-use FMM: 2)
   ^encounter[0..*]: Encounter
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6852,6 +7344,13 @@ Resources: 148
   ?type: type=token (trial-use)
 - Endpoint: DomainResource (trial-use FMM: 2)
   ^endpoint[0..*]: Endpoint
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6880,6 +7379,13 @@ Resources: 148
   ?status: status=token (trial-use)
 - EnrollmentRequest: DomainResource (trial-use FMM: 0)
   ^enrollmentRequest[0..*]: EnrollmentRequest
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6902,6 +7408,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - EnrollmentResponse: DomainResource (trial-use FMM: 0)
   ^enrollmentResponse[0..*]: EnrollmentResponse
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6925,6 +7438,13 @@ Resources: 148
   ?status: status=token (trial-use)
 - EpisodeOfCare: DomainResource (trial-use FMM: 2)
   ^episodeOfCare[0..*]: EpisodeOfCare
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6969,6 +7489,14 @@ Resources: 148
   ?type: type=token (trial-use)
 - EventDefinition: DomainResource (trial-use FMM: 0)
   ^eventDefinition[0..*]: EventDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !evd-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7037,6 +7565,14 @@ Resources: 148
   ?version: version=token (trial-use)
 - Evidence: DomainResource (trial-use FMM: 0)
   ^evidence[0..*]: Evidence
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !evi-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7145,6 +7681,14 @@ Resources: 148
     - outcome[1..*]: Reference(EvidenceVariable)
 - EvidenceVariable: DomainResource (trial-use FMM: 0)
   ^evidenceVariable[0..*]: EvidenceVariable
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !evv-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7275,6 +7819,14 @@ Resources: 148
         {mean|median|mean-of-mean|mean-of-median|median-of-mean|median-of-median}
 - ExampleScenario: DomainResource (trial-use FMM: 0)
   ^exampleScenario[0..*]: ExampleScenario
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !esc-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7384,6 +7936,13 @@ Resources: 148
   ?version: version=token (trial-use)
 - ExplanationOfBenefit: DomainResource (trial-use FMM: 2)
   ^explanationOfBenefit[0..*]: ExplanationOfBenefit
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7662,6 +8221,15 @@ Resources: 148
   ?subdetail-udi: subdetail-udi=reference (trial-use)
 - FamilyMemberHistory: DomainResource (trial-use FMM: 2)
   ^familyMemberHistory[0..*]: FamilyMemberHistory
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !fhs-1 (local): error - age.empty() or born.empty()
+  !fhs-2 (local): error - age.exists() or estimatedAge.empty()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7808,6 +8376,13 @@ Resources: 148
     - note[0..*]: Annotation
 - Flag: DomainResource (trial-use FMM: 1)
   ^flag[0..*]: Flag
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7846,6 +8421,14 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - Goal: DomainResource (trial-use FMM: 2)
   ^goal[0..*]: Goal
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !gol-1 (local): error - (detail.exists() and measure.exists()) or detail.exists().not()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7933,6 +8516,14 @@ Resources: 148
   ?target-date: target-date=date (trial-use)
 - GraphDefinition: DomainResource (trial-use FMM: 1)
   ^graphDefinition[0..*]: GraphDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !gdf-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8008,6 +8599,14 @@ Resources: 148
   ?version: version=token (trial-use)
 - Group: DomainResource (trial-use FMM: 1)
   ^group[0..*]: Group
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !grp-1 (local): error - member.empty() or (actual = true)
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8108,6 +8707,13 @@ Resources: 148
       - period[0..1]: Period
 - GuidanceResponse: DomainResource (trial-use FMM: 2)
   ^guidanceResponse[0..*]: GuidanceResponse
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8169,6 +8775,13 @@ Resources: 148
     - dataRequirement[0..*]: DataRequirement
 - HealthcareService: DomainResource (trial-use FMM: 2)
   ^healthcareService[0..*]: HealthcareService
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8233,6 +8846,13 @@ Resources: 148
   ?specialty: specialty=token (trial-use)
 - ImagingStudy: DomainResource (trial-use FMM: 3)
   ^imagingStudy[0..*]: ImagingStudy
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8308,6 +8928,14 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - Immunization: DomainResource (trial-use FMM: 3)
   ^immunization[0..*]: Immunization
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !imm-1 (local): error - documentType.exists() or reference.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8396,6 +9024,13 @@ Resources: 148
   ?vaccine-code: vaccine-code=token (trial-use)
 - ImmunizationEvaluation: DomainResource (trial-use FMM: 0)
   ^immunizationEvaluation[0..*]: ImmunizationEvaluation
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8427,6 +9062,14 @@ Resources: 148
   ?target-disease: target-disease=token (trial-use)
 - ImmunizationRecommendation: DomainResource (trial-use FMM: 1)
   ^immunizationRecommendation[0..*]: ImmunizationRecommendation
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !imr-1 (local): error - vaccineCode.exists() or targetDisease.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8470,6 +9113,16 @@ Resources: 148
   ?vaccine-type: vaccine-type=token (trial-use)
 - ImplementationGuide: DomainResource (trial-use FMM: 1)
   ^implementationGuide[0..*]: ImplementationGuide
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !ig-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !ig-1 (local): error - resource.groupingId.all(%context.grouping.id contains $this)
+  !ig-2 (local): error - definition.resource.fhirVersion.all(%context.fhirVersion contains $this)
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8617,6 +9270,14 @@ Resources: 148
   ?version: version=token (trial-use)
 - InsurancePlan: DomainResource (trial-use FMM: 0)
   ^insurancePlan[0..*]: InsurancePlan
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !ipn-1 (local): error - (identifier.count() + name.count()) > 0
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8713,6 +9374,13 @@ Resources: 148
   ?type: type=token (trial-use)
 - Invoice: DomainResource (trial-use FMM: 0)
   ^invoice[0..*]: Invoice
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8772,6 +9440,14 @@ Resources: 148
   ?type: type=token (trial-use)
 - Library: DomainResource (trial-use FMM: 2)
   ^library[0..*]: Library
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !lib-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8931,6 +9607,14 @@ Resources: 148
     - content[0..*]: Attachment
 - Linkage: DomainResource (trial-use FMM: 0)
   ^linkage[0..*]: Linkage
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !lnk-1 (local): error - item.count()>1
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8953,6 +9637,16 @@ Resources: 148
   ?source: source=reference (trial-use)
 - List: DomainResource (trial-use FMM: 1)
   ^list[0..*]: List
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !lst-1 (local): error - emptyReason.empty() or entry.empty()
+  !lst-2 (local): error - mode = 'changes' or entry.deleted.empty()
+  !lst-3 (local): error - mode = 'working' or entry.date.empty()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9010,6 +9704,13 @@ Resources: 148
     in: name: code[1..1]
 - Location: DomainResource (trial-use FMM: 3)
   ^location[0..*]: Location
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9075,6 +9776,15 @@ Resources: 148
   ?type: type=token (trial-use)
 - Measure: DomainResource (trial-use FMM: 2)
   ^measure[0..*]: Measure
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !mea-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !mea-1 (local): error - group.stratifier.all((code | description | criteria).exists() xor component.exists())
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9329,6 +10039,15 @@ Resources: 148
       - criteria[1..1]: Expression
 - MeasureReport: DomainResource (trial-use FMM: 2)
   ^measureReport[0..*]: MeasureReport
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !mrp-1 (local): error - (type != 'data-collection') or group.exists().not()
+  !mrp-2 (local): error - group.stratifier.stratum.all(value.exists() xor component.exists())
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9397,6 +10116,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - Media: DomainResource (trial-use FMM: 1)
   ^media[0..*]: Media
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9499,6 +10225,13 @@ Resources: 148
   ?view: view=token (trial-use)
 - Medication: DomainResource (trial-use FMM: 3)
   ^medication[0..*]: Medication
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9538,6 +10271,14 @@ Resources: 148
   ?status: status=token (trial-use)
 - MedicationAdministration: DomainResource (trial-use FMM: 2)
   ^medicationAdministration[0..*]: MedicationAdministration
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !mad-1 (local): error - dose.exists() or rate.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9602,6 +10343,14 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - MedicationDispense: DomainResource (trial-use FMM: 2)
   ^medicationDispense[0..*]: MedicationDispense
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !mdd-1 (local): error - whenHandedOver.empty() or whenPrepared.empty() or whenHandedOver >= whenPrepared
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9671,6 +10420,13 @@ Resources: 148
   ?whenprepared: whenprepared=date (trial-use)
 - MedicationKnowledge: DomainResource (trial-use FMM: 0)
   ^medicationKnowledge[0..*]: MedicationKnowledge
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9802,6 +10558,13 @@ Resources: 148
   ?status: status=token (trial-use)
 - MedicationRequest: DomainResource (trial-use FMM: 3)
   ^medicationRequest[0..*]: MedicationRequest
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9883,6 +10646,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - MedicationStatement: DomainResource (trial-use FMM: 3)
   ^medicationStatement[0..*]: MedicationStatement
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9929,6 +10699,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - MedicinalProduct: DomainResource (trial-use FMM: 0)
   ^medicinalProduct[0..*]: MedicinalProduct
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10006,6 +10783,13 @@ Resources: 148
     out: return: Bundle[1..1]
 - MedicinalProductAuthorization: DomainResource (trial-use FMM: 0)
   ^medicinalProductAuthorization[0..*]: MedicinalProductAuthorization
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10052,6 +10836,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - MedicinalProductContraindication: DomainResource (trial-use FMM: 0)
   ^medicinalProductContraindication[0..*]: MedicinalProductContraindication
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10075,6 +10866,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - MedicinalProductIndication: DomainResource (trial-use FMM: 0)
   ^medicinalProductIndication[0..*]: MedicinalProductIndication
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10100,6 +10898,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - MedicinalProductIngredient: DomainResource (trial-use FMM: 0)
   ^medicinalProductIngredient[0..*]: MedicinalProductIngredient
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10146,6 +10951,13 @@ Resources: 148
     - strength[0..*]: MedicinalProductIngredient.specifiedSubstance.strength
 - MedicinalProductInteraction: DomainResource (trial-use FMM: 0)
   ^medicinalProductInteraction[0..*]: MedicinalProductInteraction
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10168,6 +10980,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - MedicinalProductManufactured: DomainResource (trial-use FMM: 0)
   ^medicinalProductManufactured[0..*]: MedicinalProductManufactured
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10185,6 +11004,13 @@ Resources: 148
   - otherCharacteristics[0..*]: CodeableConcept
 - MedicinalProductPackaged: DomainResource (trial-use FMM: 0)
   ^medicinalProductPackaged[0..*]: MedicinalProductPackaged
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10226,6 +11052,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - MedicinalProductPharmaceutical: DomainResource (trial-use FMM: 0)
   ^medicinalProductPharmaceutical[0..*]: MedicinalProductPharmaceutical
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10272,6 +11105,13 @@ Resources: 148
   ?target-species: target-species=token (trial-use)
 - MedicinalProductUndesirableEffect: DomainResource (trial-use FMM: 0)
   ^medicinalProductUndesirableEffect[0..*]: MedicinalProductUndesirableEffect
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10288,6 +11128,15 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - MessageDefinition: DomainResource (trial-use FMM: 1)
   ^messageDefinition[0..*]: MessageDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !md-1 (local): error - max='*' or (max.toInteger() > 0)
+  !msd-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10363,6 +11212,13 @@ Resources: 148
   ?version: version=token (trial-use)
 - MessageHeader: DomainResource (trial-use FMM: 4)
   ^messageHeader[0..*]: MessageHeader
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10427,6 +11283,16 @@ Resources: 148
   ?target: target=reference (trial-use)
 - MolecularSequence: DomainResource (trial-use FMM: 1)
   ^molecularSequence[0..*]: MolecularSequence
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !msq-3 (local): error - coordinateSystem = 1 or coordinateSystem = 0
+  !msq-5 (local): error - (chromosome.empty() and genomeBuild.empty()) or (chromosome.exists() and genomeBuild.exists())
+  !msq-6 (local): error - (genomeBuild.count()+referenceSeqId.count()+ referenceSeqPointer.count()+ referenceSeqString.count()) = 1
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10547,6 +11413,16 @@ Resources: 148
   ?window-start: window-start=number (trial-use)
 - NamingSystem: DomainResource (trial-use FMM: 1)
   ^namingSystem[0..*]: NamingSystem
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !nsd-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !nsd-1 (local): error - kind != 'root' or uniqueId.all(type != 'uuid')
+  !nsd-2 (local): error - uniqueId.where(preferred = true).select(type).isDistinct()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10633,6 +11509,14 @@ Resources: 148
     out: result: string[1..1]
 - NutritionOrder: DomainResource (trial-use FMM: 2)
   ^nutritionOrder[0..*]: NutritionOrder
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !nor-1 (local): warning - oralDiet.exists() or supplement.exists() or enteralFormula.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10775,6 +11659,16 @@ Resources: 148
   ?supplement: supplement=token (trial-use)
 - Observation: DomainResource (normative FMM: 5)
   ^observation[0..*]: Observation
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !obs-3 (local): error - low.exists() or high.exists() or text.exists()
+  !obs-6 (local): error - dataAbsentReason.empty() or value.empty()
+  !obs-7 (local): error - value.empty() or component.code.where(coding.intersect(%resource.code.coding).exists()).empty()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11669,6 +12563,13 @@ Resources: 148
       - value[x][1..1]: integer
 - ObservationDefinition: DomainResource (trial-use FMM: 0)
   ^observationDefinition[0..*]: ObservationDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11713,6 +12614,17 @@ Resources: 148
   - criticalCodedValueSet[0..1]: Reference(ValueSet)
 - OperationDefinition: DomainResource (normative FMM: 5)
   ^operationDefinition[0..*]: OperationDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !opd-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !opd-1 (local): error - type.exists() or part.exists()
+  !opd-2 (local): error - searchType.exists() implies type = 'string'
+  !opd-3 (local): error - targetProfile.exists() implies (type = 'Reference' or type = 'canonical')
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11843,6 +12755,13 @@ Resources: 148
   ?version: version=token (trial-use)
 - OperationOutcome: DomainResource (normative FMM: 5)
   ^operationOutcome[0..*]: OperationOutcome
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11883,6 +12802,16 @@ Resources: 148
     - value[x][1..1]: string
 - Organization: DomainResource (trial-use FMM: 3)
   ^organization[0..*]: Organization
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !org-1 (local): error - (identifier.count() + name.count()) > 0
+  !org-2 (local): error - where(use = 'home').empty()
+  !org-3 (local): error - where(use = 'home').empty()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11937,6 +12866,13 @@ Resources: 148
   ?type: type=token (trial-use)
 - OrganizationAffiliation: DomainResource (trial-use FMM: 0)
   ^organizationAffiliation[0..*]: OrganizationAffiliation
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11980,6 +12916,9 @@ Resources: 148
   ?telecom: telecom=token (trial-use)
 - Parameters: Resource (normative FMM: 5)
   ^parameters[0..*]: Parameters
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !inv-1 (local): error - (part.exists() and value.empty() and resource.empty()) or (part.empty() and (value.exists() xor resource.exists()))
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12001,6 +12940,14 @@ Resources: 148
     - value[x][1..1]: uri
 - Patient: DomainResource (normative FMM: 5)
   ^patient[0..*]: Patient
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !pat-1 (local): error - name.exists() or telecom.exists() or address.exists() or organization.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12257,6 +13204,13 @@ Resources: 148
     out: return: Bundle[1..1]
 - PaymentNotice: DomainResource (trial-use FMM: 2)
   ^paymentNotice[0..*]: PaymentNotice
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12287,6 +13241,13 @@ Resources: 148
   ?status: status=token (trial-use)
 - PaymentReconciliation: DomainResource (trial-use FMM: 2)
   ^paymentReconciliation[0..*]: PaymentReconciliation
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12341,6 +13302,13 @@ Resources: 148
   ?status: status=token (trial-use)
 - Person: DomainResource (trial-use FMM: 2)
   ^person[0..*]: Person
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12387,6 +13355,14 @@ Resources: 148
   ?telecom: telecom=token (trial-use)
 - PlanDefinition: DomainResource (trial-use FMM: 2)
   ^planDefinition[0..*]: PlanDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !pdf-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12975,6 +13951,13 @@ Resources: 148
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle"
 - Practitioner: DomainResource (trial-use FMM: 3)
   ^practitioner[0..*]: Practitioner
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13027,6 +14010,13 @@ Resources: 148
   ?telecom: telecom=token (trial-use)
 - PractitionerRole: DomainResource (trial-use FMM: 2)
   ^practitionerRole[0..*]: PractitionerRole
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13084,6 +14074,13 @@ Resources: 148
   ?telecom: telecom=token (trial-use)
 - Procedure: DomainResource (trial-use FMM: 3)
   ^procedure[0..*]: Procedure
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13211,6 +14208,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - Provenance: DomainResource (trial-use FMM: 3)
   ^provenance[0..*]: Provenance
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13334,6 +14338,27 @@ Resources: 148
     - signature[0..*]: Signature
 - Questionnaire: DomainResource (trial-use FMM: 3)
   ^questionnaire[0..*]: Questionnaire
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !que-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !que-1 (local): error - (type='group' implies item.empty().not()) and (type.trace('type')='display' implies item.trace('item').empty())
+  !que-10 (local): error - (type in ('boolean' | 'decimal' | 'integer' | 'string' | 'text' | 'url' | 'open-choice')) or maxLength.empty()
+  !que-11 (local): error - answerOption.empty() or initial.empty()
+  !que-12 (local): error - enableWhen.count() > 2 implies enableBehavior.exists()
+  !que-13 (local): error - repeats=true or initial.count() <= 1
+  !que-2 (local): error - descendants().linkId.isDistinct()
+  !que-3 (local): error - type!='display' or code.empty()
+  !que-4 (local): error - answerOption.empty() or answerValueSet.empty()
+  !que-5 (local): error - (type ='choice' or type = 'open-choice' or type = 'decimal' or type = 'integer' or type = 'date' or type = 'dateTime' or type = 'time' or type = 'string' or type = 'quantity') or (answerValueSet.empty() and answerOption.empty())
+  !que-6 (local): error - type!='display' or (required.empty() and repeats.empty())
+  !que-7 (local): error - operator = 'exists' implies (answer is Boolean)
+  !que-8 (local): error - (type!='group' and type!='display') or initial.empty()
+  !que-9 (local): error - type!='display' or readOnly.empty()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14350,6 +15375,14 @@ Resources: 148
       - value[x][1..1]: Expression
 - QuestionnaireResponse: DomainResource (trial-use FMM: 3)
   ^questionnaireResponse[0..*]: QuestionnaireResponse
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !qrs-1 (local): error - (answer.exists() and item.exists()).not()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14460,6 +15493,13 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - RelatedPerson: DomainResource (trial-use FMM: 2)
   ^relatedPerson[0..*]: RelatedPerson
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14512,6 +15552,14 @@ Resources: 148
   ?telecom: telecom=token (trial-use)
 - RequestGroup: DomainResource (trial-use FMM: 2)
   ^requestGroup[0..*]: RequestGroup
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !rqg-1 (local): error - resource.exists() != action.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14697,6 +15745,14 @@ Resources: 148
         .fixedUri = "http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle"
 - ResearchDefinition: DomainResource (trial-use FMM: 0)
   ^researchDefinition[0..*]: ResearchDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !rsd-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14771,6 +15827,14 @@ Resources: 148
   ?version: version=token (trial-use)
 - ResearchElementDefinition: DomainResource (trial-use FMM: 0)
   ^researchElementDefinition[0..*]: ResearchElementDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !red-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14863,6 +15927,13 @@ Resources: 148
   ?version: version=token (trial-use)
 - ResearchStudy: DomainResource (trial-use FMM: 1)
   ^researchStudy[0..*]: ResearchStudy
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14922,6 +15993,13 @@ Resources: 148
   ?title: title=string (trial-use)
 - ResearchSubject: DomainResource (trial-use FMM: 1)
   ^researchSubject[0..*]: ResearchSubject
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14947,6 +16025,7 @@ Resources: 148
   ?study: study=reference (trial-use)
 - Resource: Resource (normative FMM: 5)
   ^resource[0..*]: Resource
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14974,6 +16053,15 @@ Resources: 148
     out: return: OperationOutcome[1..1]
 - RiskAssessment: DomainResource (trial-use FMM: 1)
   ^riskAssessment[0..*]: RiskAssessment
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !ras-1 (local): error - (low.empty() or ((low.code = '%') and (low.system = %ucum))) and (high.empty() or ((high.code = '%') and (high.system = %ucum)))
+  !ras-2 (local): error - probability is decimal implies (probability as decimal) <= 100
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15028,6 +16116,14 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - RiskEvidenceSynthesis: DomainResource (trial-use FMM: 0)
   ^riskEvidenceSynthesis[0..*]: RiskEvidenceSynthesis
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !rvs-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15128,6 +16224,13 @@ Resources: 148
   ?version: version=token (trial-use)
 - Schedule: DomainResource (trial-use FMM: 3)
   ^schedule[0..*]: Schedule
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15153,6 +16256,16 @@ Resources: 148
   ?specialty: specialty=token (trial-use)
 - SearchParameter: DomainResource (trial-use FMM: 3)
   ^searchParameter[0..*]: SearchParameter
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !spd-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !spd-1 (local): error - xpath.empty() or xpathUsage.exists()
+  !spd-2 (local): error - chain.empty() or type = 'reference'
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15243,6 +16356,14 @@ Resources: 148
   ?version: version=token (trial-use)
 - ServiceRequest: DomainResource (trial-use FMM: 2)
   ^serviceRequest[0..*]: ServiceRequest
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !prr-1 (local): error - orderDetail.empty() or code.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15416,6 +16537,13 @@ Resources: 148
     - relevantHistory[0..*]: Reference(Provenance)
 - Slot: DomainResource (trial-use FMM: 3)
   ^slot[0..*]: Slot
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15446,6 +16574,13 @@ Resources: 148
   ?status: status=token (trial-use)
 - Specimen: DomainResource (trial-use FMM: 2)
   ^specimen[0..*]: Specimen
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15548,6 +16683,13 @@ Resources: 148
   ?type: type=token (trial-use)
 - SpecimenDefinition: DomainResource (trial-use FMM: 0)
   ^specimenDefinition[0..*]: SpecimenDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15601,6 +16743,37 @@ Resources: 148
   ?type: type=token (trial-use)
 - StructureDefinition: DomainResource (normative FMM: 5)
   ^structureDefinition[0..*]: StructureDefinition
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !sdf-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !sdf-1 (local): error - derivation = 'constraint' or snapshot.element.select(path).isDistinct()
+  !sdf-10 (local): error - binding.empty() or binding.valueSet.exists() or binding.description.exists()
+  !sdf-11 (local): error - kind != 'logical' implies snapshot.empty() or snapshot.element.first().path = type
+  !sdf-14 (local): error - snapshot.element.all(id.exists()) and differential.element.all(id.exists())
+  !sdf-15 (local): error - kind!='logical' implies snapshot.element.first().type.empty()
+  !sdf-15a (local): error - (kind!='logical'  and differential.element.first().path.contains('.').not()) implies differential.element.first().type.empty()
+  !sdf-16 (local): error - snapshot.element.all(id.exists()) and snapshot.element.id.trace('ids').isDistinct()
+  !sdf-17 (local): error - differential.element.all(id.exists()) and differential.element.id.trace('ids').isDistinct()
+  !sdf-18 (local): error - contextInvariant.exists() implies type = 'Extension'
+  !sdf-19 (local): error - url.startsWith('http://hl7.org/fhir/StructureDefinition') implies (differential.element.type.code.all(matches('^[a-zA-Z0-9]+$') or matches('^http:\\/\\/hl7\\.org\\/fhirpath\\/System\\.[A-Z][A-Za-z]+$')) and snapshot.element.type.code.all(matches('^[a-zA-Z0-9\\.]+$') or matches('^http:\\/\\/hl7\\.org\\/fhirpath\\/System\\.[A-Z][A-Za-z]+$')))
+  !sdf-2 (local): error - name.exists() or uri.exists()
+  !sdf-20 (local): error - element.where(path.contains('.').not()).slicing.empty()
+  !sdf-21 (local): error - differential.element.defaultValue.exists() implies (derivation = 'specialization')
+  !sdf-22 (local): error - url.startsWith('http://hl7.org/fhir/StructureDefinition') implies (snapshot.element.defaultValue.empty() and differential.element.defaultValue.empty())
+  !sdf-23 (local): error - (snapshot | differential).element.all(path.contains('.').not() implies sliceName.empty())
+  !sdf-3 (local): error - element.all(definition.exists() and min.exists() and max.exists())
+  !sdf-4 (local): error - abstract = true or baseDefinition.exists()
+  !sdf-5 (local): error - type != 'Extension' or derivation = 'specialization' or (context.exists())
+  !sdf-6 (local): error - snapshot.exists() or differential.exists()
+  !sdf-8 (local): error - (%resource.kind = 'logical' or element.first().path = %resource.type) and element.tail().all(path.startsWith(%resource.snapshot.element.first().path&'.'))
+  !sdf-8a (local): error - (%resource.kind = 'logical' or element.first().path.startsWith(%resource.type)) and (element.tail().empty() or element.tail().all(path.startsWith(%resource.differential.element.first().path.replaceMatches('\\..*','')&'.')))
+  !sdf-8b (local): error - element.all(base.exists())
+  !sdf-9 (local): error - children().element.where(path.contains('.').not()).label.empty() and children().element.where(path.contains('.').not()).code.empty() and children().element.where(path.contains('.').not()).requirements.empty()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15813,6 +16986,16 @@ Resources: 148
     out: return: StructureDefinition[1..1]
 - StructureMap: DomainResource (trial-use FMM: 2)
   ^structureMap[0..*]: StructureMap
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !smp-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !smp-1 (local): error - element.exists() implies context.exists()
+  !smp-2 (local): error - context.exists() implies contextType.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15963,6 +17146,13 @@ Resources: 148
     out: return: Resource[1..1]
 - Subscription: DomainResource (trial-use FMM: 3)
   ^subscription[0..*]: Subscription
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15995,6 +17185,13 @@ Resources: 148
   ?url: url=uri (trial-use)
 - Substance: DomainResource (trial-use FMM: 2)
   ^substance[0..*]: Substance
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16032,6 +17229,13 @@ Resources: 148
   ?substance-reference: substance-reference=reference (trial-use)
 - SubstanceNucleicAcid: DomainResource (trial-use FMM: 0)
   ^substanceNucleicAcid[0..*]: SubstanceNucleicAcid
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16071,6 +17275,13 @@ Resources: 148
       - residueSite[0..1]: string
 - SubstancePolymer: DomainResource (trial-use FMM: 0)
   ^substancePolymer[0..*]: SubstancePolymer
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16125,6 +17336,13 @@ Resources: 148
         - attachment[0..1]: Attachment
 - SubstanceProtein: DomainResource (trial-use FMM: 0)
   ^substanceProtein[0..*]: SubstanceProtein
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16150,6 +17368,13 @@ Resources: 148
     - cTerminalModification[0..1]: string
 - SubstanceReferenceInformation: DomainResource (trial-use FMM: 0)
   ^substanceReferenceInformation[0..*]: SubstanceReferenceInformation
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16195,6 +17420,13 @@ Resources: 148
     - source[0..*]: Reference(DocumentReference)
 - SubstanceSourceMaterial: DomainResource (trial-use FMM: 0)
   ^substanceSourceMaterial[0..*]: SubstanceSourceMaterial
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16259,6 +17491,13 @@ Resources: 148
     - partLocation[0..1]: CodeableConcept
 - SubstanceSpecification: DomainResource (trial-use FMM: 0)
   ^substanceSpecification[0..*]: SubstanceSpecification
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16376,6 +17615,13 @@ Resources: 148
   ?code: code=token (trial-use)
 - SupplyDelivery: DomainResource (trial-use FMM: 1)
   ^supplyDelivery[0..*]: SupplyDelivery
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16445,6 +17691,13 @@ Resources: 148
   ?supplier: supplier=reference (trial-use)
 - SupplyRequest: DomainResource (trial-use FMM: 1)
   ^supplyRequest[0..*]: SupplyRequest
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16503,6 +17756,14 @@ Resources: 148
   ?supplier: supplier=reference (trial-use)
 - Task: DomainResource (trial-use FMM: 2)
   ^task[0..*]: Task
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !inv-1 (local): error - lastModified.exists().not() or authoredOn.exists().not() or lastModified >= authoredOn
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16607,6 +17868,19 @@ Resources: 148
   ?subject: subject=reference (trial-use)
 - TerminologyCapabilities: DomainResource (trial-use FMM: 0)
   ^terminologyCapabilities[0..*]: TerminologyCapabilities
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !tcp-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !tcp-1 (local): error - version.count() > 1 implies version.all(code.exists())
+  !tcp-2 (local): error - (description.count() + software.count() + implementation.count()) > 0
+  !tcp-3 (local): error - (kind != 'instance') or implementation.exists()
+  !tcp-4 (local): error - (kind != 'capability') or (implementation.exists().not() and software.exists())
+  !tcp-5 (local): error - (kind!='requirements') or (implementation.exists().not() and software.exists().not())
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16720,6 +17994,15 @@ Resources: 148
   ?version: version=token (trial-use)
 - TestReport: DomainResource (trial-use FMM: 0)
   ^testReport[0..*]: TestReport
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !inv-1 (local): error - operation.exists() xor assert.exists()
+  !inv-2 (local): error - operation.exists() xor assert.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16799,6 +18082,27 @@ Resources: 148
   ?testscript: testscript=reference (trial-use)
 - TestScript: DomainResource (trial-use FMM: 2)
   ^testScript[0..*]: TestScript
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !tst-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !tst-1 (local): error - operation.exists() xor assert.exists()
+  !tst-10 (local): error - compareToSourceId.empty() xor (compareToSourceExpression.exists() or compareToSourcePath.exists())
+  !tst-11 (local): error - compareToSourceId.empty() xor (compareToSourceExpression.exists() or compareToSourcePath.exists())
+  !tst-12 (local): error - (response.empty() and responseCode.empty() and direction = 'request') or direction.empty() or direction = 'response'
+  !tst-13 (local): error - (response.empty() and responseCode.empty() and direction = 'request') or direction.empty() or direction = 'response'
+  !tst-2 (local): error - operation.exists() xor assert.exists()
+  !tst-3 (local): error - expression.empty() or headerField.empty() or path.empty()
+  !tst-4 (local): error - capability.required.exists() or capability.validated.exists()
+  !tst-5 (local): error - extension.exists() or (contentType.count() + expression.count() + headerField.count() + minimumId.count() + navigationLinks.count() + path.count() + requestMethod.count() + resource.count() + responseCode.count() + response.count()  + validateProfileId.count() <=1)
+  !tst-6 (local): error - extension.exists() or (contentType.count() + expression.count() + headerField.count() + minimumId.count() + navigationLinks.count() + path.count() + requestMethod.count() + resource.count() + responseCode.count() + response.count() + validateProfileId.count() <=1)
+  !tst-7 (local): error - sourceId.exists() or (targetId.count() + url.count() + params.count() = 1) or (type.code in ('capabilities' |'search' | 'transaction' | 'history'))
+  !tst-8 (local): error - sourceId.exists() or (targetId.count() + url.count() + params.count() = 1) or (type.code in ('capabilities' | 'search' | 'transaction' | 'history'))
+  !tst-9 (local): error - sourceId.exists() or (targetId.count() + url.count() + params.count() = 1) or (type.code in ('capabilities' | 'search' | 'transaction' | 'history'))
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -16987,6 +18291,20 @@ Resources: 148
   ?version: version=token (trial-use)
 - ValueSet: DomainResource (normative FMM: 5)
   ^valueSet[0..*]: ValueSet
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
+  !vsd-0 (local): warning - name.matches('[A-Z]([A-Za-z0-9_]){0,254}')
+  !vsd-1 (local): error - valueSet.exists() or system.exists()
+  !vsd-10 (local): error - code.empty() or system.exists()
+  !vsd-2 (local): error - (concept.exists() or filter.exists()) implies system.exists()
+  !vsd-3 (local): error - concept.empty() or filter.empty()
+  !vsd-6 (local): error - code.exists() or display.exists()
+  !vsd-9 (local): error - code.exists() or abstract = true
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -17700,6 +19018,13 @@ Resources: 148
       - value[x][1..1]: boolean
 - VerificationResult: DomainResource (trial-use FMM: 0)
   ^verificationResult[0..*]: VerificationResult
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -17753,6 +19078,13 @@ Resources: 148
   ?target: target=reference (trial-use)
 - VisionPrescription: DomainResource (trial-use FMM: 2)
   ^visionPrescription[0..*]: VisionPrescription
+  !dom-2 (inherited): error - contained.contained.empty()
+  !dom-3 (inherited): error - contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4 (inherited): error - contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5 (inherited): error - contained.meta.security.empty()
+  !dom-6 (inherited): warning - text.`div`.exists()
+  !ele-1 (inherited): error - hasValue() or (children().count() > id.count())
+  !ext-1 (inherited): error - extension.exists() != value.exists()
   - id[0..1]: string *simple*
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri

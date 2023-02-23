@@ -229,7 +229,9 @@ Complex Types: 28
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/us-core-county"
   - valueString[1..1]: string
 - Age: Quantity (draft)
-  ^quantity[0..*]: Quantity
+  ^quantity[0..*]: Quantity constraints: age-1, qty-3
+  !age-1: local error: 
+  !qty-3: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -246,7 +248,8 @@ Complex Types: 28
   - time[0..1]: dateTime
   - text[1..1]: string
 - Attachment: Element (draft)
-  ^attachment[0..*]: Element
+  ^attachment[0..*]: Element constraints: att-1
+  !att-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - contentType[0..1]: code
@@ -291,7 +294,8 @@ Complex Types: 28
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/valueset-reference"
   - valueUri[1..1]: uri
 - ContactPoint: Element (draft)
-  ^contactPoint[0..*]: Element
+  ^contactPoint[0..*]: Element constraints: cpt-2
+  !cpt-2: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - system[0..1]: code
@@ -315,7 +319,9 @@ Complex Types: 28
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/us-core-direct"
   - valueBoolean[1..1]: boolean
 - Count: Quantity (draft)
-  ^quantity[0..*]: Quantity
+  ^quantity[0..*]: Quantity constraints: cnt-1, qty-3
+  !cnt-1: local error: 
+  !qty-3: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -325,7 +331,9 @@ Complex Types: 28
   - system[0..1]: uri
   - code[0..1]: code
 - Distance: Quantity (draft)
-  ^quantity[0..*]: Quantity
+  ^quantity[0..*]: Quantity constraints: dis-1, qty-3
+  !dis-1: local error: 
+  !qty-3: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -335,7 +343,9 @@ Complex Types: 28
   - system[0..1]: uri
   - code[0..1]: code
 - Duration: Quantity (draft)
-  ^quantity[0..*]: Quantity
+  ^quantity[0..*]: Quantity constraints: drt-1, qty-3
+  !drt-1: local error: 
+  !qty-3: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -345,12 +355,27 @@ Complex Types: 28
   - system[0..1]: uri
   - code[0..1]: code
 - Element: Element (draft)
-  ^element[0..*]: Element
+  ^element[0..*]: Element constraints: ele-1
+  !ele-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - fhir_comments[0..*]: string *simple*
 - ElementDefinition: Element (draft)
-  ^elementDefinition[0..*]: Element
+  ^elementDefinition[0..*]: Element constraints: eld-11, eld-13, eld-14, eld-15, eld-2, eld-5, eld-6, eld-7, eld-8
+  !eld-1: local error: 
+  !eld-10: local error: 
+  !eld-11: local error: 
+  !eld-12: local error: 
+  !eld-13: local error: 
+  !eld-14: local error: 
+  !eld-15: local error: 
+  !eld-2: local error: 
+  !eld-3: local error: 
+  !eld-4: local error: 
+  !eld-5: local error: 
+  !eld-6: local error: 
+  !eld-7: local error: 
+  !eld-8: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - path[1..1]: string
@@ -358,7 +383,7 @@ Complex Types: 28
   - name[0..1]: string
   - label[0..1]: string
   - code[0..*]: Coding
-  - slicing[0..1]: Element
+  - slicing[0..1]: Element constraints: eld-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - discriminator[0..*]: string
@@ -372,14 +397,14 @@ Complex Types: 28
   - requirements[0..1]: markdown
   - alias[0..*]: string
   - min[0..1]: integer
-  - max[0..1]: string
+  - max[0..1]: string constraints: eld-3
   - base[0..1]: Element
     - id[0..1]: id
     - extension[0..*]: Extension
     - path[1..1]: string
     - min[1..1]: integer
     - max[1..1]: string
-  - type[0..*]: Element
+  - type[0..*]: Element constraints: eld-4
     - id[0..1]: id
     - extension[0..*]: Extension
     - code[1..1]: code
@@ -428,13 +453,13 @@ Complex Types: 28
   - mustSupport[0..1]: boolean
   - isModifier[0..1]: boolean
   - isSummary[0..1]: boolean
-  - binding[0..1]: Element
+  - binding[0..1]: Element constraints: eld-10
     - id[0..1]: id
     - extension[0..*]: Extension
     - strength[1..1]: code
       {required|extensible|preferred|example}
     - description[0..1]: string
-    - valueSet[x][0..1]: Reference(ValueSet)|uri
+    - valueSet[x][0..1]: Reference(ValueSet)|uri constraints: eld-12
     Extensions: 2
     +http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet
       ^extension[0..1]: Extension
@@ -481,7 +506,7 @@ Complex Types: 28
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits"
   - value[x][1..1]: CodeableConcept|Reference(ValueSet)
   +http://hl7.org/fhir/StructureDefinition/elementdefinition-de
-    ^elementDefinition[0..*]: ElementDefinition
+    ^elementDefinition[0..*]: ElementDefinition constraints: eld-11, eld-13, eld-14, eld-15, eld-2, eld-5, eld-6, eld-7, eld-8
   - id[0..1]: id
   - extension[0..*]: Extension
     : http://hl7.org/fhir/StructureDefinition/elementdefinition-de - Open (value@url)
@@ -496,14 +521,14 @@ Complex Types: 28
   - requirements[0..1]: markdown
   - alias[0..*]: string
   - min[0..1]: integer
-  - max[0..1]: string
+  - max[0..1]: string constraints: eld-3
   - base[0..1]: Element
     - id[0..1]: id
     - extension[0..*]: Extension
     - path[1..1]: string
     - min[1..1]: integer
     - max[1..1]: string
-  - type[0..*]: Element
+  - type[0..*]: Element constraints: eld-4
     - id[0..1]: id
     - extension[0..*]: Extension
     - code[1..1]: code
@@ -544,13 +569,13 @@ Complex Types: 28
     - human[1..1]: string
     - xpath[1..1]: string
   - mustSupport[0..1]: boolean
-  - binding[0..1]: Element
+  - binding[0..1]: Element constraints: eld-10
     - id[0..1]: id
     - extension[0..*]: Extension
     - strength[1..1]: code
       {required|extensible|preferred|example}
     - description[0..1]: string
-    - valueSet[x][0..1]: Reference(ValueSet)|uri
+    - valueSet[x][0..1]: Reference(ValueSet)|uri constraints: eld-12
     Extensions: 2
     +http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet
       ^extension[0..1]: Extension
@@ -723,7 +748,9 @@ Complex Types: 28
   - security[0..*]: Coding
   - tag[0..*]: Coding
 - Money: Quantity (draft)
-  ^quantity[0..*]: Quantity
+  ^quantity[0..*]: Quantity constraints: mny-1, qty-3
+  !mny-1: local error: 
+  !qty-3: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -734,19 +761,24 @@ Complex Types: 28
   - code[0..1]: code
 - Narrative: Element (draft)
   ^narrative[0..*]: Element
+  !txt-1: local error: 
+  !txt-2: local error: 
+  !txt-3: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - status[1..1]: code
     {generated|extensions|additional|empty}
-  - div[1..1]: xhtml
+  - div[1..1]: xhtml constraints: txt-1, txt-2, txt-3
 - Period: Element (draft)
-  ^period[0..*]: Element
+  ^period[0..*]: Element constraints: per-1
+  !per-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - start[0..1]: dateTime
   - end[0..1]: dateTime
 - Quantity: Element (draft)
-  ^quantity[0..*]: Element
+  ^quantity[0..*]: Element constraints: qty-3
+  !qty-3: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -769,19 +801,22 @@ Complex Types: 28
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType"
   - valueCode[1..1]: code
 - Range: Element (draft)
-  ^range[0..*]: Element
+  ^range[0..*]: Element constraints: rng-2
+  !rng-2: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - low[0..1]: Quantity(SimpleQuantity)
   - high[0..1]: Quantity(SimpleQuantity)
 - Ratio: Element (draft)
-  ^ratio[0..*]: Element
+  ^ratio[0..*]: Element constraints: rat-1
+  !rat-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - numerator[0..1]: Quantity
   - denominator[0..1]: Quantity
 - Reference: Element (draft)
-  ^reference[0..*]: Element
+  ^reference[0..*]: Element constraints: ref-1
+  !ref-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - reference[0..1]: string
@@ -808,7 +843,9 @@ Complex Types: 28
   - contentType[1..1]: code
   - blob[1..1]: base64Binary
 - SimpleQuantity: Quantity (draft)
-  ^quantity[0..*]: Quantity
+  ^quantity[0..*]: Quantity constraints: qty-3, sqty-1
+  !qty-3: local error: 
+  !sqty-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - value[0..1]: decimal
@@ -817,22 +854,29 @@ Complex Types: 28
   - code[0..1]: code
 - Timing: Element (draft)
   ^timing[0..*]: Element
+  !tim-1: local error: 
+  !tim-2: local error: 
+  !tim-3: local error: 
+  !tim-4: local error: 
+  !tim-5: local error: 
+  !tim-6: local error: 
+  !tim-7: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - event[0..*]: dateTime
-  - repeat[0..1]: Element
+  - repeat[0..1]: Element constraints: tim-1, tim-2, tim-3, tim-6, tim-7
     - id[0..1]: id
     - extension[0..*]: Extension
     - bounds[x][0..1]: Period|Quantity(Duration)|Range
     - count[0..1]: integer
-    - duration[0..1]: decimal
+    - duration[0..1]: decimal constraints: tim-4
     - durationMax[0..1]: decimal
     - durationUnits[0..1]: code
       {s|min|h|d|wk|mo|a}
     - frequency[0..1]: integer
       .defaultValueInteger = 1
     - frequencyMax[0..1]: integer
-    - period[0..1]: decimal
+    - period[0..1]: decimal constraints: tim-5
     - periodMax[0..1]: decimal
     - periodUnits[0..1]: code
       {s|min|h|d|wk|mo|a}
@@ -917,7 +961,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/allergyintolerance-duration"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/openEHR-administration
       ^extension[0..1]: Extension
     - id[0..1]: id
@@ -947,7 +991,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/openEHR-exposureDuration"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/openEHR-location
       ^extension[0..*]: Extension
     - id[0..1]: id
@@ -972,7 +1016,7 @@ Resources: 96
   - id[0..1]: id
   - url[1..1]: uri
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/allergyintolerance-resolutionAge"
-  - valueQuantity[1..1]: Quantity(Age)
+  - valueQuantity[1..1]: Quantity(Age) constraints: age-1, qty-3
   +http://hl7.org/fhir/StructureDefinition/daf-allergyintolerance
     ^allergyIntolerance[0..*]: AllergyIntolerance (W5: clinical.general)
   - id[0..1]: id
@@ -1020,7 +1064,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/allergyintolerance-duration"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/openEHR-administration
       ^extension[0..1]: Extension
     - id[0..1]: id
@@ -1050,7 +1094,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/openEHR-exposureDuration"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/openEHR-location
       ^extension[0..*]: Extension
     - id[0..1]: id
@@ -1070,7 +1114,7 @@ Resources: 96
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/openEHR-test"
   - value[x][1..1]: Reference(Observation|DiagnosticReport)
   +http://hl7.org/fhir/StructureDefinition/qicore-allergyintolerance
-    ^allergyIntolerance[0..*]: AllergyIntolerance (W5: clinical.general)
+    ^allergyIntolerance[0..*]: AllergyIntolerance constraints: inv-1 (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1121,7 +1165,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/allergyintolerance-duration"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/openEHR-administration
       ^extension[0..1]: Extension
     - id[0..1]: id
@@ -1151,7 +1195,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/openEHR-exposureDuration"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/openEHR-location
       ^extension[0..*]: Extension
     - id[0..1]: id
@@ -1180,7 +1224,10 @@ Resources: 96
   ?substance: substance=token
   ?type: type=token
 - Appointment: DomainResource (draft FMM: 1)
-  ^appointment[0..*]: DomainResource (W5: workflow.scheduling)
+  ^appointment[0..*]: DomainResource constraints: app-2, app-3 (W5: workflow.scheduling)
+  !app-1: local error: 
+  !app-2: local error: 
+  !app-3: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1201,7 +1248,7 @@ Resources: 96
   - minutesDuration[0..1]: positiveInt
   - slot[0..*]: Reference(Slot)
   - comment[0..1]: string
-  - participant[1..*]: BackboneElement
+  - participant[1..*]: BackboneElement constraints: app-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -1220,7 +1267,8 @@ Resources: 96
   ?practitioner: practitioner=reference
   ?status: status=token
 - AppointmentResponse: DomainResource (draft FMM: 1)
-  ^appointmentResponse[0..*]: DomainResource (W5: workflow.scheduling)
+  ^appointmentResponse[0..*]: DomainResource constraints: apr-1 (W5: workflow.scheduling)
+  !apr-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1247,6 +1295,7 @@ Resources: 96
   ?practitioner: practitioner=reference
 - AuditEvent: DomainResource (draft FMM: 2)
   ^auditEvent[0..*]: DomainResource (W5: infrastructure.information)
+  !sev-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1293,7 +1342,7 @@ Resources: 96
     - site[0..1]: string (W5: who.witness)
     - identifier[1..1]: Identifier (W5: who.witness)
     - type[0..*]: Coding (W5: who.witness)
-  - object[0..*]: BackboneElement (W5: what)
+  - object[0..*]: BackboneElement constraints: sev-1 (W5: what)
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -1361,7 +1410,7 @@ Resources: 96
     - site[0..1]: string (W5: who.witness)
     - identifier[1..1]: Identifier (W5: who.witness)
     - type[0..*]: Coding (W5: who.witness)
-  - object[0..*]: BackboneElement (W5: what)
+  - object[0..*]: BackboneElement constraints: sev-1 (W5: what)
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -1578,7 +1627,14 @@ Resources: 96
   ?identifier: identifier=token
   ?patient: patient=reference
 - Bundle: Resource (draft FMM: 2)
-  ^bundle[0..*]: Resource (W5: infrastructure.structure)
+  ^bundle[0..*]: Resource constraints: bdl-1, bdl-2, bdl-3, bdl-4, bdl-7 (W5: infrastructure.structure)
+  !bdl-1: local error: 
+  !bdl-2: local error: 
+  !bdl-3: local error: 
+  !bdl-4: local error: 
+  !bdl-5: local error: 
+  !bdl-6: local error: 
+  !bdl-7: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1592,7 +1648,7 @@ Resources: 96
     - modifierExtension[0..*]: Extension
     - relation[1..1]: string
     - url[1..1]: uri
-  - entry[0..*]: BackboneElement
+  - entry[0..*]: BackboneElement constraints: bdl-5, bdl-6
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -1645,6 +1701,7 @@ Resources: 96
   ?type: type=token
 - CarePlan: DomainResource (draft FMM: 1)
   ^carePlan[0..*]: DomainResource (W5: clinical.careprovision)
+  !cpl-3: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1679,7 +1736,7 @@ Resources: 96
     - role[0..1]: CodeableConcept
     - member[0..1]: Reference(Practitioner|RelatedPerson|Patient|Organization)
   - goal[0..*]: Reference(Goal)
-  - activity[0..*]: BackboneElement
+  - activity[0..*]: BackboneElement constraints: cpl-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -2221,6 +2278,8 @@ Resources: 96
   ?time: time=date
 - Composition: DomainResource (draft FMM: 2)
   ^composition[0..*]: DomainResource (W5: infrastructure.documents)
+  !cmp-1: local error: 
+  !cmp-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2256,7 +2315,7 @@ Resources: 96
     - period[0..1]: Period
     - detail[0..*]: Reference(Resource)
   - encounter[0..1]: Reference(Encounter) (W5: context)
-  - section[0..*]: BackboneElement
+  - section[0..*]: BackboneElement constraints: cmp-1, cmp-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -2314,7 +2373,7 @@ Resources: 96
     - period[0..1]: Period
     - detail[0..*]: Reference(Resource)
   - encounter[0..1]: Reference(Encounter) (W5: context)
-  - section[0..*]: BackboneElement
+  - section[0..*]: BackboneElement constraints: cmp-1, cmp-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -2369,7 +2428,7 @@ Resources: 96
     - time[0..1]: dateTime
     - party[0..1]: Reference(Patient|Practitioner|Organization) (W5: who.witness)
   - custodian[0..1]: Reference(Organization)
-  - section[0..*]: BackboneElement
+  - section[0..*]: BackboneElement constraints: cmp-1, cmp-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -2407,6 +2466,7 @@ Resources: 96
   ?type: type=token
 - ConceptMap: DomainResource (draft FMM: 2)
   ^conceptMap[0..*]: DomainResource (W5: conformance.terminology)
+  !cmd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2442,7 +2502,7 @@ Resources: 96
     - modifierExtension[0..*]: Extension
     - codeSystem[0..1]: uri
     - code[0..1]: code
-    - target[0..*]: BackboneElement
+    - target[0..*]: BackboneElement constraints: cmd-1
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
@@ -2479,6 +2539,8 @@ Resources: 96
   ?version: version=token
 - Condition: DomainResource (draft FMM: 2)
   ^condition[0..*]: DomainResource (W5: clinical.general)
+  !con-1: local error: 
+  !con-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2501,13 +2563,13 @@ Resources: 96
   - severity[0..1]: CodeableConcept (W5: grade)
   - onset[x][0..1]: dateTime|Period|Quantity(Age)|Range|string (W5: when.init)
   - abatement[x][0..1]: boolean|dateTime|Period|Quantity(Age)|Range|string (W5: when.done)
-  - stage[0..1]: BackboneElement
+  - stage[0..1]: BackboneElement constraints: con-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - summary[0..1]: CodeableConcept
     - assessment[0..*]: Reference(ClinicalImpression|DiagnosticReport|Observation)
-  - evidence[0..*]: BackboneElement
+  - evidence[0..*]: BackboneElement constraints: con-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -2593,16 +2655,16 @@ Resources: 96
   - onset[x][0..1]: dateTime|Period|Quantity(Age)|Range|string (W5: when.init)
     : http://hl7.org/fhir/StructureDefinition/daf-condition - Open (value@@type)
       : Slice 0:onsetroot - on onset[x]
-  - onsetQuantity[0..1]: Quantity(Age)
+  - onsetQuantity[0..1]: Quantity(Age) constraints: age-1, qty-3
   - onsetDateTime[0..1]: dateTime (W5: when.init)
   - abatementBoolean[0..1]: boolean (W5: when.done)
-  - stage[0..1]: BackboneElement
+  - stage[0..1]: BackboneElement constraints: con-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - summary[0..1]: CodeableConcept
     - assessment[0..*]: Reference(ClinicalImpression|DiagnosticReport|Observation)
-  - evidence[0..*]: BackboneElement
+  - evidence[0..*]: BackboneElement constraints: con-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -2637,13 +2699,13 @@ Resources: 96
   - severity[0..1]: CodeableConcept (W5: grade)
   - onset[x][0..1]: dateTime|Period|Quantity(Age)|Range|string (W5: when.init)
   - abatement[x][0..1]: boolean|dateTime|Period|Quantity(Age)|Range|string (W5: when.done)
-  - stage[0..1]: BackboneElement
+  - stage[0..1]: BackboneElement constraints: con-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - summary[0..1]: CodeableConcept
     - assessment[0..*]: Reference(ClinicalImpression|DiagnosticReport|Observation)
-  - evidence[0..*]: BackboneElement
+  - evidence[0..*]: BackboneElement constraints: con-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -2703,13 +2765,13 @@ Resources: 96
   - severity[0..1]: CodeableConcept (W5: grade)
   - onset[x][0..1]: dateTime|Period|Quantity(Age)|Range|string (W5: when.init)
   - abatement[x][0..1]: boolean|dateTime|Period|Quantity(Age)|Range|string (W5: when.done)
-  - stage[0..1]: BackboneElement
+  - stage[0..1]: BackboneElement constraints: con-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - summary[0..1]: CodeableConcept
     - assessment[0..*]: Reference(ClinicalImpression|DiagnosticReport|Observation)
-  - evidence[0..*]: BackboneElement
+  - evidence[0..*]: BackboneElement constraints: con-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -2763,13 +2825,13 @@ Resources: 96
   - severity[0..1]: CodeableConcept (W5: grade)
   - onset[x][0..1]: dateTime|Period|Quantity(Age)|Range|string (W5: when.init)
   - abatement[x][0..1]: boolean|dateTime|Period|Quantity(Age)|Range|string (W5: when.done)
-  - stage[0..1]: BackboneElement
+  - stage[0..1]: BackboneElement constraints: con-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - summary[0..1]: CodeableConcept
     - assessment[0..*]: Reference(ClinicalImpression|DiagnosticReport|Observation)
-  - evidence[0..*]: BackboneElement
+  - evidence[0..*]: BackboneElement constraints: con-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -2793,7 +2855,17 @@ Resources: 96
   ?severity: severity=token
   ?stage: stage=token
 - Conformance: DomainResource (draft FMM: 2)
-  ^conformance[1..1]: DomainResource (W5: conformance.behavior)
+  ^conformance[1..1]: DomainResource constraints: cnf-1, cnf-14, cnf-15, cnf-2, cnf-3, cnf-7, cnf-8 (W5: conformance.behavior)
+  !cnf-1: local error: 
+  !cnf-12: local error: 
+  !cnf-13: local error: 
+  !cnf-14: local error: 
+  !cnf-15: local error: 
+  !cnf-2: local error: 
+  !cnf-3: local error: 
+  !cnf-7: local error: 
+  !cnf-8: local error: 
+  !cnf-9: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2840,7 +2912,7 @@ Resources: 96
   - format[1..*]: code
     {xml|json|MIME Type}
   - profile[0..*]: Reference(StructureDefinition)
-  - rest[0..*]: BackboneElement
+  - rest[0..*]: BackboneElement constraints: cnf-9
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -2860,7 +2932,7 @@ Resources: 96
         - modifierExtension[0..*]: Extension
         - type[0..1]: code
         - blob[0..1]: base64Binary
-    - resource[1..*]: BackboneElement
+    - resource[1..*]: BackboneElement constraints: cnf-12
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
@@ -2896,7 +2968,7 @@ Resources: 96
         {not-supported|single|multiple}
       - searchInclude[0..*]: string
       - searchRevInclude[0..*]: string
-      - searchParam[0..*]: BackboneElement
+      - searchParam[0..*]: BackboneElement constraints: cnf-13
         - id[0..1]: id
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
@@ -3268,6 +3340,8 @@ Resources: 96
   ?type: type=token
 - DataElement: DomainResource (draft FMM: 1)
   ^dataElement[0..*]: DomainResource (W5: conformance.content)
+  !dae-1: local error: 
+  !dae-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3324,7 +3398,7 @@ Resources: 96
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/mapSourcePublisher"
     - valueString[1..1]: string
-  - element[1..*]: ElementDefinition
+  - element[1..*]: ElementDefinition constraints: dae-1, dae-2
   Extensions: 8
   +http://hl7.org/fhir/StructureDefinition/11179-de-administrative-status
     ^extension[0..1]: Extension
@@ -3420,7 +3494,7 @@ Resources: 96
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/mapSourcePublisher"
     - valueString[1..1]: string
-  - element[1..*]: ElementDefinition
+  - element[1..*]: ElementDefinition constraints: dae-1, dae-2
     - id[0..1]: id
     - extension[0..*]: Extension
       : http://hl7.org/fhir/StructureDefinition/sdc-element - Open (value@url)
@@ -3442,7 +3516,7 @@ Resources: 96
       - url[1..1]: uri
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/11179-de-is-data-element-concept"
       - valueBoolean[1..1]: boolean
-    - slicing[0..1]: Element
+    - slicing[0..1]: Element constraints: eld-1
       - id[0..1]: id
       - extension[0..*]: Extension
       - discriminator[0..*]: string
@@ -3455,7 +3529,7 @@ Resources: 96
     - comments[0..1]: markdown
     - requirements[0..1]: markdown
     - alias[0..*]: string
-    - type[0..1]: Element
+    - type[0..1]: Element constraints: eld-4
       - id[0..1]: id
       - extension[0..*]: Extension
       - code[1..1]: code
@@ -3471,13 +3545,13 @@ Resources: 96
     - maxLength[0..1]: integer
     - isModifier[0..1]: boolean
     - isSummary[0..1]: boolean
-    - binding[0..1]: Element
+    - binding[0..1]: Element constraints: eld-10
       - id[0..1]: id
       - extension[0..*]: Extension
       - strength[1..1]: code
         {required|extensible|preferred|example}
       - description[0..1]: string
-      - valueSetReference[1..1]: Reference(ValueSet)
+      - valueSetReference[1..1]: Reference(ValueSet) constraints: eld-12
         Extensions: 2
         +http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap
           ^extension[0..1]: Extension
@@ -3505,7 +3579,7 @@ Resources: 96
       - language[0..1]: code
       - map[1..1]: string
   +http://hl7.org/fhir/StructureDefinition/sdcde-dataelement
-    ^dataElement[0..*]: DataElement (W5: conformance.content)
+    ^dataElement[0..*]: DataElement constraints: inv-2 (W5: conformance.content)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3604,7 +3678,7 @@ Resources: 96
         - url[1..1]: uri
           .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/mapSourcePublisher"
         - valueString[1..1]: string
-  - element[1..*]: ElementDefinition
+  - element[1..*]: ElementDefinition constraints: dae-1, dae-2
     - id[0..1]: id
     - extension[0..*]: Extension
       : http://hl7.org/fhir/StructureDefinition/sdcde-dataelement - Open (value@url)
@@ -3635,7 +3709,7 @@ Resources: 96
       - url[1..1]: uri
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/11179-de-is-data-element-concept"
       - valueBoolean[1..1]: boolean
-    - slicing[0..1]: Element
+    - slicing[0..1]: Element constraints: eld-1
       - id[0..1]: id
       - extension[0..*]: Extension
       - discriminator[0..*]: string
@@ -3649,14 +3723,14 @@ Resources: 96
     - requirements[0..1]: markdown
     - alias[0..*]: string
     - min[0..1]: integer
-    - max[0..1]: string
+    - max[0..1]: string constraints: eld-3
     - base[0..1]: Element
       - id[0..1]: id
       - extension[0..*]: Extension
       - path[1..1]: string
       - min[1..1]: integer
       - max[1..1]: string
-    - type[0..1]: Element
+    - type[0..1]: Element constraints: eld-4
       - id[0..1]: id
       - extension[0..*]: Extension
       - code[1..1]: code
@@ -3684,13 +3758,13 @@ Resources: 96
       - xpath[1..1]: string
     - isModifier[0..1]: boolean
     - isSummary[0..1]: boolean
-    - binding[0..1]: Element
+    - binding[0..1]: Element constraints: eld-10
       - id[0..1]: id
       - extension[0..*]: Extension
       - strength[1..1]: code
         {required|extensible|preferred|example}
       - description[0..1]: string
-      - valueSetReference[1..1]: Reference(sdcde-valueset)
+      - valueSetReference[1..1]: Reference(sdcde-valueset) constraints: eld-12, inv-3
         - id[0..1]: id
         - extension[0..*]: Extension
           : http://hl7.org/fhir/StructureDefinition/sdcde-dataelement - Open (value@url)
@@ -4275,7 +4349,7 @@ Resources: 96
         - display[0..1]: string
         - userSelected[0..1]: boolean
       - text[0..1]: string
-    - dateTime[1..1]: dateTime
+    - dateTime[1..1]: dateTime constraints: inv-2
     - actor[0..1]: Reference(Practitioner|Device)
   - item[1..*]: BackboneElement
     - id[0..1]: id
@@ -4776,7 +4850,11 @@ Resources: 96
   ?subject: subject=reference
   ?type: type=token
 - DomainResource: Resource (draft FMM: 2)
-  ^domainResource[0..*]: Resource
+  ^domainResource[0..*]: Resource constraints: dom-1, dom-2, dom-3, dom-4
+  !dom-1: local error: 
+  !dom-2: local error: 
+  !dom-3: local error: 
+  !dom-4: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5248,7 +5326,8 @@ Resources: 96
   - requestOrganization[0..1]: Reference(Organization)
   ?identifier: identifier=token
 - FamilyMemberHistory: DomainResource (draft FMM: 1)
-  ^familyMemberHistory[0..*]: DomainResource (W5: clinical.general)
+  ^familyMemberHistory[0..*]: DomainResource constraints: fhs-1 (W5: clinical.general)
+  !fhs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5293,7 +5372,7 @@ Resources: 96
     - valueCodeableConcept[1..1]: CodeableConcept
   Extensions: 6
   +http://hl7.org/fhir/StructureDefinition/daf-familymemberhistory
-    ^familyMemberHistory[0..*]: FamilyMemberHistory (W5: clinical.general)
+    ^familyMemberHistory[0..*]: FamilyMemberHistory constraints: fhs-1 (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5360,7 +5439,7 @@ Resources: 96
   - url[1..1]: uri
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
   +http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic
-    ^familyMemberHistory[0..*]: FamilyMemberHistory (W5: clinical.general)
+    ^familyMemberHistory[0..*]: FamilyMemberHistory constraints: fhs-1 (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5413,7 +5492,7 @@ Resources: 96
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/familymemberhistory-patient-record"
   - valueReference[1..1]: Reference(Patient)
   +http://hl7.org/fhir/StructureDefinition/qicore-familymemberhistory
-    ^familyMemberHistory[0..*]: FamilyMemberHistory (W5: clinical.general)
+    ^familyMemberHistory[0..*]: FamilyMemberHistory constraints: fhs-1 (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5660,7 +5739,8 @@ Resources: 96
   ?subject: subject=reference
   ?targetdate: targetdate=date
 - Group: DomainResource (draft FMM: 1)
-  ^group[0..*]: DomainResource (W5: administrative.group)
+  ^group[0..*]: DomainResource constraints: grp-1 (W5: administrative.group)
+  !grp-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5869,7 +5949,7 @@ Resources: 96
   - id[0..1]: id
   - url[1..1]: uri
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/imagingstudy-radiationDuration"
-  - valueQuantity[1..1]: Quantity(Duration)
+  - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
   +http://hl7.org/fhir/StructureDefinition/qicore-imagingstudy
     ^imagingStudy[0..*]: ImagingStudy (W5: clinical.diagnostics)
   - id[0..1]: id
@@ -5935,7 +6015,9 @@ Resources: 96
   ?study: study=uri
   ?uid: uid=uri
 - Immunization: DomainResource (draft FMM: 1)
-  ^immunization[0..*]: DomainResource (W5: clinical.medication)
+  ^immunization[0..*]: DomainResource constraints: imm-1, imm-2 (W5: clinical.medication)
+  !imm-1: local error: 
+  !imm-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5990,7 +6072,7 @@ Resources: 96
     - doseStatusReason[0..1]: CodeableConcept
   Extensions: 2
   +http://hl7.org/fhir/StructureDefinition/daf-immunization
-    ^immunization[0..*]: Immunization (W5: clinical.medication)
+    ^immunization[0..*]: Immunization constraints: imm-1, imm-2 (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6016,7 +6098,7 @@ Resources: 96
   - expirationDate[0..1]: date
   - site[0..1]: CodeableConcept
   - route[0..1]: CodeableConcept
-  - doseQuantity[0..1]: Quantity(SimpleQuantity)
+  - doseQuantity[0..1]: Quantity(SimpleQuantity) constraints: qty-3, sqty-1
   - note[0..*]: Annotation
   - explanation[0..1]: BackboneElement
     - id[0..1]: id
@@ -6044,7 +6126,7 @@ Resources: 96
     - doseStatus[1..1]: CodeableConcept
     - doseStatusReason[0..1]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/qicore-immunization
-    ^immunization[0..*]: Immunization (W5: clinical.medication)
+    ^immunization[0..*]: Immunization constraints: imm-1, imm-2 (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6277,7 +6359,9 @@ Resources: 96
   ?url: url=uri
   ?version: version=token
 - List: DomainResource (draft FMM: 1)
-  ^list[0..*]: DomainResource (W5: infrastructure.documents)
+  ^list[0..*]: DomainResource constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  !lst-1: local error: 
+  !lst-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6310,7 +6394,7 @@ Resources: 96
   - emptyReason[0..1]: CodeableConcept
   Extensions: 7
   +http://hl7.org/fhir/StructureDefinition/daf-allergylist
-    ^list[0..*]: List (W5: infrastructure.documents)
+    ^list[0..*]: List constraints: lst-1, lst-2 (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6342,7 +6426,7 @@ Resources: 96
     - item[1..1]: Reference(daf-allergyintolerance)
   - emptyReason[0..1]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/daf-encounterlist
-    ^list[0..*]: List (W5: infrastructure.documents)
+    ^list[0..*]: List constraints: lst-1, lst-2 (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6374,7 +6458,7 @@ Resources: 96
     - item[1..1]: Reference(daf-encounter)
   - emptyReason[0..1]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/daf-immunizationlist
-    ^list[0..*]: List (W5: infrastructure.documents)
+    ^list[0..*]: List constraints: lst-1, lst-2 (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6406,7 +6490,7 @@ Resources: 96
     - item[1..1]: Reference(daf-immunization)
   - emptyReason[0..1]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/daf-medicationlist
-    ^list[0..*]: List (W5: infrastructure.documents)
+    ^list[0..*]: List constraints: lst-1, lst-2 (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6438,7 +6522,7 @@ Resources: 96
     - item[1..1]: Reference(daf-medicationstatement|daf-medicationadministration|daf-medicationorder|daf-medicationdispense)
   - emptyReason[0..1]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/daf-problemlist
-    ^list[0..*]: List (W5: infrastructure.documents)
+    ^list[0..*]: List constraints: lst-1, lst-2 (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6470,7 +6554,7 @@ Resources: 96
     - item[1..1]: Reference(daf-condition)
   - emptyReason[0..1]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/daf-procedurelist
-    ^list[0..*]: List (W5: infrastructure.documents)
+    ^list[0..*]: List constraints: lst-1, lst-2 (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6502,7 +6586,7 @@ Resources: 96
     - item[1..1]: Reference(daf-procedure)
   - emptyReason[0..1]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/daf-resultlist
-    ^list[0..*]: List (W5: infrastructure.documents)
+    ^list[0..*]: List constraints: lst-1, lst-2 (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6685,7 +6769,11 @@ Resources: 96
   ?status: status=token
   ?type: type=token
 - Media: DomainResource (draft FMM: 1)
-  ^media[0..*]: DomainResource (W5: infrastructure.structure)
+  ^media[0..*]: DomainResource constraints: mda-1, mda-2, mda-3, mda-4 (W5: infrastructure.structure)
+  !mda-1: local error: 
+  !mda-2: local error: 
+  !mda-3: local error: 
+  !mda-4: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6891,7 +6979,10 @@ Resources: 96
   ?ingredient: ingredient=reference
   ?manufacturer: manufacturer=reference
 - MedicationAdministration: DomainResource (draft FMM: 1)
-  ^medicationAdministration[0..*]: DomainResource (W5: clinical.medication)
+  ^medicationAdministration[0..*]: DomainResource constraints: mad-2, mad-3 (W5: clinical.medication)
+  !mad-1: local error: 
+  !mad-2: local error: 
+  !mad-3: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6914,7 +7005,7 @@ Resources: 96
   - medication[x][1..1]: CodeableConcept|Reference(Medication)
   - device[0..*]: Reference(Device)
   - note[0..1]: string
-  - dosage[0..1]: BackboneElement
+  - dosage[0..1]: BackboneElement constraints: mad-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -6926,7 +7017,7 @@ Resources: 96
     - rate[x][0..1]: Range|Ratio
   Extensions: 2
   +http://hl7.org/fhir/StructureDefinition/daf-medicationadministration
-    ^medicationAdministration[0..*]: MedicationAdministration (W5: clinical.medication)
+    ^medicationAdministration[0..*]: MedicationAdministration constraints: mad-2, mad-3 (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6953,7 +7044,7 @@ Resources: 96
   - medicationReference[1..1]: Reference(daf-medication)
   - device[0..*]: Reference(Device)
   - note[0..1]: string
-  - dosage[0..1]: BackboneElement
+  - dosage[0..1]: BackboneElement constraints: mad-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -6964,7 +7055,7 @@ Resources: 96
     - quantity[0..1]: Quantity(SimpleQuantity)
     - rate[x][0..1]: Range|Ratio
   +http://hl7.org/fhir/StructureDefinition/qicore-medicationadministration
-    ^medicationAdministration[0..*]: MedicationAdministration (W5: clinical.medication)
+    ^medicationAdministration[0..*]: MedicationAdministration constraints: mad-2, mad-3 (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6987,7 +7078,7 @@ Resources: 96
   - medication[x][1..1]: CodeableConcept|Reference(qicore-medication)
   - device[0..*]: Reference(qicore-device)
   - note[0..1]: string
-  - dosage[0..1]: BackboneElement
+  - dosage[0..1]: BackboneElement constraints: mad-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -7009,7 +7100,8 @@ Resources: 96
   ?prescription: prescription=reference
   ?status: status=token
 - MedicationDispense: DomainResource (draft FMM: 1)
-  ^medicationDispense[0..*]: DomainResource (W5: clinical.medication)
+  ^medicationDispense[0..*]: DomainResource constraints: mdd-1 (W5: clinical.medication)
+  !mdd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7059,7 +7151,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-infuseOver"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/pharmacy-core-maxDeliveryRate
       ^extension[0..1]: Extension
     - id[0..1]: id
@@ -7095,7 +7187,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-rateIncrementInterval"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
   - substitution[0..1]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
@@ -7105,7 +7197,7 @@ Resources: 96
     - responsibleParty[0..*]: Reference(Practitioner)
   Extensions: 4
   +http://hl7.org/fhir/StructureDefinition/daf-medicationdispense
-    ^medicationDispense[0..*]: MedicationDispense (W5: clinical.medication)
+    ^medicationDispense[0..*]: MedicationDispense constraints: mdd-1 (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7159,7 +7251,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-infuseOver"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/pharmacy-core-maxDeliveryRate
       ^extension[0..1]: Extension
     - id[0..1]: id
@@ -7195,7 +7287,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-rateIncrementInterval"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
   - substitution[0..1]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
@@ -7216,7 +7308,7 @@ Resources: 96
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-refillsRemaining"
   - valueInteger[1..1]: integer
   +http://hl7.org/fhir/StructureDefinition/qicore-medicationdispense
-    ^medicationDispense[0..*]: MedicationDispense (W5: clinical.medication)
+    ^medicationDispense[0..*]: MedicationDispense constraints: mdd-1 (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7278,7 +7370,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-infuseOver"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/pharmacy-core-maxDeliveryRate
       ^extension[0..1]: Extension
     - id[0..1]: id
@@ -7314,7 +7406,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-rateIncrementInterval"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
   - substitution[0..1]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
@@ -7383,7 +7475,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-infuseOver"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/pharmacy-core-maxDeliveryRate
       ^extension[0..1]: Extension
     - id[0..1]: id
@@ -7419,7 +7511,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-rateIncrementInterval"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
   - dispenseRequest[0..1]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
@@ -7496,7 +7588,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-infuseOver"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/pharmacy-core-maxDeliveryRate
       ^extension[0..1]: Extension
     - id[0..1]: id
@@ -7532,7 +7624,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-rateIncrementInterval"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
   - dispenseRequest[0..1]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
@@ -7613,7 +7705,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-infuseOver"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
     +http://hl7.org/fhir/StructureDefinition/pharmacy-core-maxDeliveryRate
       ^extension[0..1]: Extension
     - id[0..1]: id
@@ -7649,7 +7741,7 @@ Resources: 96
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/pharmacy-core-rateIncrementInterval"
-    - valueQuantity[1..1]: Quantity(Duration)
+    - valueQuantity[1..1]: Quantity(Duration) constraints: drt-1, qty-3
   - dispenseRequest[0..1]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
@@ -7682,7 +7774,9 @@ Resources: 96
   ?prescriber: prescriber=reference
   ?status: status=token
 - MedicationStatement: DomainResource (draft FMM: 1)
-  ^medicationStatement[0..*]: DomainResource (W5: clinical.medication)
+  ^medicationStatement[0..*]: DomainResource constraints: mst-1, mst-2 (W5: clinical.medication)
+  !mst-1: local error: 
+  !mst-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7719,7 +7813,7 @@ Resources: 96
     - maxDosePerPeriod[0..1]: Ratio
   Extensions: 2
   +http://hl7.org/fhir/StructureDefinition/daf-medicationstatement
-    ^medicationStatement[0..*]: MedicationStatement (W5: clinical.medication)
+    ^medicationStatement[0..*]: MedicationStatement constraints: mst-1, mst-2 (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7755,7 +7849,7 @@ Resources: 96
     - rate[x][0..1]: Range|Ratio
     - maxDosePerPeriod[0..1]: Ratio
   +http://hl7.org/fhir/StructureDefinition/qicore-medicationstatement
-    ^medicationStatement[0..*]: MedicationStatement (W5: clinical.medication)
+    ^medicationStatement[0..*]: MedicationStatement constraints: mst-1, mst-2 (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7854,7 +7948,10 @@ Resources: 96
   ?target: target=reference
   ?timestamp: timestamp=date
 - NamingSystem: DomainResource (draft FMM: 1)
-  ^namingSystem[0..*]: DomainResource (W5: conformance.terminology)
+  ^namingSystem[0..*]: DomainResource constraints: nsd-1, nsd-2, nsd-3 (W5: conformance.terminology)
+  !nsd-1: local error: 
+  !nsd-2: local error: 
+  !nsd-3: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7906,7 +8003,8 @@ Resources: 96
   ?type: type=token
   ?value: value=string
 - NutritionOrder: DomainResource (draft FMM: 1)
-  ^nutritionOrder[0..*]: DomainResource (W5: clinical.careprovision)
+  ^nutritionOrder[0..*]: DomainResource constraints: nor-1 (W5: clinical.careprovision)
+  !nor-1: local warning: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7984,7 +8082,10 @@ Resources: 96
   ?status: status=token
   ?supplement: supplement=token
 - Observation: DomainResource (draft FMM: 3)
-  ^observation[0..*]: DomainResource (W5: clinical.diagnostics)
+  ^observation[0..*]: DomainResource constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  !obs-3: local error: 
+  !obs-6: local error: 
+  !obs-7: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8011,7 +8112,7 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(Specimen)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[0..*]: BackboneElement
+  - referenceRange[0..*]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -8037,7 +8138,7 @@ Resources: 96
     - referenceRange[0..*]: Observation.referenceRange
   Extensions: 47
   +http://hl7.org/fhir/StructureDefinition/cholesterol
-    ^observation[1..1]: Observation (W5: clinical.diagnostics)
+    ^observation[1..1]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8073,11 +8174,11 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(Specimen)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[1..1]: BackboneElement
+  - referenceRange[1..1]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - high[1..1]: Quantity(SimpleQuantity)
+    - high[1..1]: Quantity(SimpleQuantity) constraints: qty-3, sqty-1
     - text[0..1]: string
   - component[0..*]: BackboneElement
     - id[0..1]: id
@@ -8088,7 +8189,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/daf-resultobs
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8124,7 +8225,7 @@ Resources: 96
     - text[0..1]: string
   - subject[1..1]: Reference(daf-patient) (W5: who.focus)
   - encounter[0..1]: Reference(daf-encounter) (W5: context)
-  - effective[x][0..1]: dateTime|Period (W5: when.done)
+  - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(daf-pract|daf-organization|daf-patient|daf-relatedperson) (W5: who.actor)
   - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
@@ -8146,7 +8247,7 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(daf-spec)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[0..1]: BackboneElement
+  - referenceRange[0..1]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -8183,7 +8284,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..1]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/daf-smokingstatus
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8223,7 +8324,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/daf-vitalsigns
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8259,11 +8360,11 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(Specimen)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[0..1]: BackboneElement
+  - referenceRange[0..1]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - low[0..1]: Quantity(SimpleQuantity)
+    - low[0..1]: Quantity(SimpleQuantity) constraints: qty-3, sqty-1
       - id[0..1]: id
       - extension[0..*]: Extension
       - value[0..1]: decimal
@@ -8271,7 +8372,7 @@ Resources: 96
       - system[0..1]: uri
         .fixedValueUri = "http://unitsofmeasure.org"
       - code[0..1]: code
-    - high[0..1]: Quantity(SimpleQuantity)
+    - high[0..1]: Quantity(SimpleQuantity) constraints: qty-3, sqty-1
       - id[0..1]: id
       - extension[0..*]: Extension
       - value[0..1]: decimal
@@ -8299,7 +8400,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/devicemetricobservation
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8322,7 +8423,7 @@ Resources: 96
   - bodySite[0..1]: CodeableConcept
   - method[0..1]: CodeableConcept
   - device[1..1]: Reference(DeviceMetric)
-  - referenceRange[0..1]: BackboneElement
+  - referenceRange[0..1]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -8347,7 +8448,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/genetics
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8400,7 +8501,7 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(Specimen)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[0..*]: BackboneElement
+  - referenceRange[0..*]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -8575,7 +8676,7 @@ Resources: 96
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/geneticsVariationId"
   - valueCodeableConcept[1..1]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/hdlcholesterol
-    ^observation[1..1]: Observation (W5: clinical.diagnostics)
+    ^observation[1..1]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8602,11 +8703,11 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(Specimen)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[1..1]: BackboneElement
+  - referenceRange[1..1]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - low[1..1]: Quantity(SimpleQuantity)
+    - low[1..1]: Quantity(SimpleQuantity) constraints: qty-3, sqty-1
     - text[0..1]: string
   - component[0..*]: BackboneElement
     - id[0..1]: id
@@ -8617,7 +8718,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/ldlcholesterol
-    ^observation[1..1]: Observation (W5: clinical.diagnostics)
+    ^observation[1..1]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8646,11 +8747,11 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(Specimen)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[1..1]: BackboneElement
+  - referenceRange[1..1]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - high[1..1]: Quantity(SimpleQuantity)
+    - high[1..1]: Quantity(SimpleQuantity) constraints: qty-3, sqty-1
     - text[0..1]: string
   - component[0..*]: BackboneElement
     - id[0..1]: id
@@ -8685,7 +8786,7 @@ Resources: 96
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/observation-focal-subject"
   - valueCodeableConcept[1..1]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/qicore-observation
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8714,7 +8815,7 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(qicore-specimen)
   - device[0..1]: Reference(qicore-device|DeviceMetric)
-  - referenceRange[0..*]: BackboneElement
+  - referenceRange[0..*]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -8739,7 +8840,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/triglyceride
-    ^observation[1..1]: Observation (W5: clinical.diagnostics)
+    ^observation[1..1]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8766,7 +8867,7 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(Specimen)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[1..1]: BackboneElement
+  - referenceRange[1..1]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -8781,7 +8882,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-obscode
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8835,8 +8936,8 @@ Resources: 96
     - text[0..1]: string
   - subject[1..1]: Reference(uslab-patient|uslab-phpatient) (W5: who.focus)
   - encounter[0..1]: Reference(Encounter) (W5: context)
-  - effective[x][0..1]: dateTime|Period (W5: when.done)
-  - issued[0..1]: instant (W5: when.recorded)
+  - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
+  - issued[0..1]: instant constraints: inv-4 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
     : http://hl7.org/fhir/StructureDefinition/uslab-obscode - OpenAtEnd (value@type@profile)
       : Slice 0:USLabPerformingLabSlice - on performer
@@ -8858,7 +8959,7 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(uslab-spec)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[0..*]: BackboneElement
+  - referenceRange[0..*]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -8882,7 +8983,7 @@ Resources: 96
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/uslab-observationkind"
   - valueCode[1..1]: code
   +http://hl7.org/fhir/StructureDefinition/uslab-obsother
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8936,8 +9037,8 @@ Resources: 96
     - text[0..1]: string
   - subject[1..1]: Reference(uslab-patient|uslab-phpatient) (W5: who.focus)
   - encounter[0..1]: Reference(Encounter) (W5: context)
-  - effective[x][0..1]: dateTime|Period (W5: when.done)
-  - issued[0..1]: instant (W5: when.recorded)
+  - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
+  - issued[0..1]: instant constraints: inv-3 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
     : http://hl7.org/fhir/StructureDefinition/uslab-obsother - OpenAtEnd (value@type@profile)
       : Slice 0:USLabPerformingLabSlice - on performer
@@ -8959,7 +9060,7 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(uslab-spec)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[0..*]: BackboneElement
+  - referenceRange[0..*]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -8977,7 +9078,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-obspanel
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9031,8 +9132,8 @@ Resources: 96
     - text[0..1]: string
   - subject[1..1]: Reference(uslab-patient|uslab-phpatient) (W5: who.focus)
   - encounter[0..1]: Reference(Encounter) (W5: context)
-  - effective[x][0..1]: dateTime|Period (W5: when.done)
-  - issued[0..1]: instant (W5: when.recorded)
+  - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
+  - issued[0..1]: instant constraints: inv-3 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
     : http://hl7.org/fhir/StructureDefinition/uslab-obspanel - OpenAtEnd (value@type@profile)
       : Slice 0:USLabPerformingLabSlice - on performer
@@ -9058,7 +9159,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-obsquantity
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9112,8 +9213,8 @@ Resources: 96
     - text[0..1]: string
   - subject[1..1]: Reference(uslab-patient|uslab-phpatient) (W5: who.focus)
   - encounter[0..1]: Reference(Encounter) (W5: context)
-  - effective[x][0..1]: dateTime|Period (W5: when.done)
-  - issued[0..1]: instant (W5: when.recorded)
+  - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
+  - issued[0..1]: instant constraints: inv-3 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
     : http://hl7.org/fhir/StructureDefinition/uslab-obsquantity - OpenAtEnd (value@type@profile)
       : Slice 0:USLabPerformingLabSlice - on performer
@@ -9135,7 +9236,7 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(uslab-spec)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[0..1]: BackboneElement
+  - referenceRange[0..1]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -9185,7 +9286,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-obsrange
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9239,8 +9340,8 @@ Resources: 96
     - text[0..1]: string
   - subject[1..1]: Reference(uslab-patient|uslab-phpatient) (W5: who.focus)
   - encounter[0..1]: Reference(Encounter) (W5: context)
-  - effective[x][0..1]: dateTime|Period (W5: when.done)
-  - issued[0..1]: instant (W5: when.recorded)
+  - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
+  - issued[0..1]: instant constraints: inv-3 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
     : http://hl7.org/fhir/StructureDefinition/uslab-obsrange - OpenAtEnd (value@type@profile)
       : Slice 0:USLabPerformingLabSlice - on performer
@@ -9262,7 +9363,7 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(uslab-spec)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[0..1]: BackboneElement
+  - referenceRange[0..1]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -9312,7 +9413,7 @@ Resources: 96
     - dataAbsentReason[0..1]: CodeableConcept
     - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-obsratio
-    ^observation[0..*]: Observation (W5: clinical.diagnostics)
+    ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9366,8 +9467,8 @@ Resources: 96
     - text[0..1]: string
   - subject[1..1]: Reference(uslab-patient|uslab-phpatient) (W5: who.focus)
   - encounter[0..1]: Reference(Encounter) (W5: context)
-  - effective[x][0..1]: dateTime|Period (W5: when.done)
-  - issued[0..1]: instant (W5: when.recorded)
+  - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
+  - issued[0..1]: instant constraints: inv-3 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
     : http://hl7.org/fhir/StructureDefinition/uslab-obsratio - OpenAtEnd (value@type@profile)
       : Slice 0:USLabPerformingLabSlice - on performer
@@ -9389,7 +9490,7 @@ Resources: 96
   - method[0..1]: CodeableConcept
   - specimen[0..1]: Reference(uslab-spec)
   - device[0..1]: Reference(Device|DeviceMetric)
-  - referenceRange[0..1]: BackboneElement
+  - referenceRange[0..1]: BackboneElement constraints: obs-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -9449,6 +9550,7 @@ Resources: 96
   ?value-string: value-string=string
 - OperationDefinition: DomainResource (draft FMM: 1)
   ^operationDefinition[0..*]: DomainResource (W5: conformance.behavior)
+  !opd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9482,7 +9584,7 @@ Resources: 96
   - system[1..1]: boolean
   - type[0..*]: code
   - instance[1..1]: boolean
-  - parameter[0..*]: BackboneElement
+  - parameter[0..*]: BackboneElement constraints: opd-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -9556,6 +9658,7 @@ Resources: 96
     - valueString[1..1]: string
 - Order: DomainResource (draft FMM: 0)
   ^order[0..*]: DomainResource (W5: workflow.order)
+  !ord-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9570,7 +9673,7 @@ Resources: 96
   - source[0..1]: Reference(Practitioner|Organization) (W5: who.cause)
   - target[0..1]: Reference(Organization|Device|Practitioner) (W5: who.actor)
   - reason[x][0..1]: CodeableConcept|Reference(Resource) (W5: why)
-  - when[0..1]: BackboneElement
+  - when[0..1]: BackboneElement constraints: ord-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -9611,7 +9714,10 @@ Resources: 96
   ?request: request=reference
   ?who: who=reference
 - Organization: DomainResource (draft FMM: 1)
-  ^organization[0..*]: DomainResource (W5: administrative.group)
+  ^organization[0..*]: DomainResource constraints: org-1 (W5: administrative.group)
+  !org-1: local error: 
+  !org-2: local error: 
+  !org-3: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9624,8 +9730,8 @@ Resources: 96
   - active[0..1]: boolean (W5: status)
   - type[0..1]: CodeableConcept (W5: class)
   - name[0..1]: string
-  - telecom[0..*]: ContactPoint
-  - address[0..*]: Address
+  - telecom[0..*]: ContactPoint constraints: org-3
+  - address[0..*]: Address constraints: org-2
   - partOf[0..1]: Reference(Organization)
   - contact[0..*]: BackboneElement
     - id[0..1]: id
@@ -9644,7 +9750,7 @@ Resources: 96
     - valueBoolean[1..1]: boolean
   Extensions: 7
   +http://hl7.org/fhir/StructureDefinition/daf-organization
-    ^organization[0..*]: Organization (W5: administrative.group)
+    ^organization[0..*]: Organization constraints: org-1 (W5: administrative.group)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9657,8 +9763,8 @@ Resources: 96
   - active[0..1]: boolean (W5: status)
   - type[0..1]: CodeableConcept (W5: class)
   - name[1..1]: string
-  - telecom[0..*]: ContactPoint
-  - address[0..1]: Address
+  - telecom[0..*]: ContactPoint constraints: org-3
+  - address[0..1]: Address constraints: org-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - use[0..1]: code
@@ -9702,7 +9808,7 @@ Resources: 96
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/organization-period"
   - valuePeriod[1..1]: Period
   +http://hl7.org/fhir/StructureDefinition/qicore-organization
-    ^organization[0..*]: Organization (W5: administrative.group)
+    ^organization[0..*]: Organization constraints: org-1 (W5: administrative.group)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9715,8 +9821,8 @@ Resources: 96
   - active[0..1]: boolean (W5: status)
   - type[0..1]: CodeableConcept (W5: class)
   - name[0..1]: string
-  - telecom[0..*]: ContactPoint
-  - address[0..*]: Address
+  - telecom[0..*]: ContactPoint constraints: org-3
+  - address[0..*]: Address constraints: org-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - use[0..1]: code
@@ -9748,7 +9854,7 @@ Resources: 96
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/organization-preferredContact"
     - valueBoolean[1..1]: boolean
   +http://hl7.org/fhir/StructureDefinition/uslab-cctarget
-    ^organization[0..*]: Organization (W5: administrative.group)
+    ^organization[0..*]: Organization constraints: inv-1, org-1 (W5: administrative.group)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9773,7 +9879,7 @@ Resources: 96
   - active[0..1]: boolean (W5: status)
   - type[0..1]: CodeableConcept (W5: class)
   - name[0..1]: string
-  - telecom[1..*]: ContactPoint
+  - telecom[1..*]: ContactPoint constraints: org-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - system[1..1]: code
@@ -9783,7 +9889,7 @@ Resources: 96
       {home|work|temp|old|mobile}
     - rank[0..1]: positiveInt
     - period[0..1]: Period
-  - address[1..*]: Address
+  - address[1..*]: Address constraints: org-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - use[0..1]: code
@@ -9795,7 +9901,7 @@ Resources: 96
     - city[0..1]: string
     - district[0..1]: string
     - state[0..1]: string
-    - postalCode[0..1]: string
+    - postalCode[0..1]: string constraints: inv-2
     - country[0..1]: string
     - period[0..1]: Period
   - partOf[0..1]: Reference(Organization)
@@ -9825,7 +9931,7 @@ Resources: 96
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/organization-preferredContact"
     - valueBoolean[1..1]: boolean
   +http://hl7.org/fhir/StructureDefinition/uslab-orderfacility
-    ^organization[0..*]: Organization (W5: administrative.group)
+    ^organization[0..*]: Organization constraints: inv-1, org-1 (W5: administrative.group)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9850,7 +9956,7 @@ Resources: 96
   - active[0..1]: boolean (W5: status)
   - type[0..1]: CodeableConcept (W5: class)
   - name[0..1]: string
-  - telecom[1..*]: ContactPoint
+  - telecom[1..*]: ContactPoint constraints: org-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - system[1..1]: code
@@ -9860,7 +9966,7 @@ Resources: 96
       {home|work|temp|old|mobile}
     - rank[0..1]: positiveInt
     - period[0..1]: Period
-  - address[1..*]: Address
+  - address[1..*]: Address constraints: org-2
     - id[0..1]: id
     - extension[0..*]: Extension
       : http://hl7.org/fhir/StructureDefinition/uslab-orderfacility - Open (value@url)
@@ -9874,7 +9980,7 @@ Resources: 96
     - city[0..1]: string
     - district[0..1]: string
     - state[0..1]: string
-    - postalCode[0..1]: string
+    - postalCode[0..1]: string constraints: inv-2
     - country[0..1]: string
     - period[0..1]: Period
   - partOf[0..1]: Reference(Organization)
@@ -9894,7 +10000,7 @@ Resources: 96
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/organization-preferredContact"
     - valueBoolean[1..1]: boolean
   +http://hl7.org/fhir/StructureDefinition/uslab-performinglab
-    ^organization[0..*]: Organization (W5: administrative.group)
+    ^organization[0..*]: Organization constraints: inv-1, org-1 (W5: administrative.group)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9919,8 +10025,8 @@ Resources: 96
   - active[0..1]: boolean (W5: status)
   - type[0..1]: CodeableConcept (W5: class)
   - name[0..1]: string
-  - telecom[0..*]: ContactPoint
-  - address[1..1]: Address
+  - telecom[0..*]: ContactPoint constraints: org-3
+  - address[1..1]: Address constraints: org-2
     - id[0..1]: id
     - extension[0..*]: Extension
       : http://hl7.org/fhir/StructureDefinition/uslab-performinglab - Open (value@url)
@@ -9934,7 +10040,7 @@ Resources: 96
     - city[0..1]: string
     - district[0..1]: string
     - state[0..1]: string
-    - postalCode[0..1]: string
+    - postalCode[0..1]: string constraints: inv-2
     - country[0..1]: string
     - period[0..1]: Period
   - partOf[0..1]: Reference(Organization)
@@ -9978,20 +10084,23 @@ Resources: 96
   ?type: type=token
 - Parameters: Resource (draft FMM: 1)
   ^parameters[0..*]: Resource (W5: infrastructure.exchange)
+  !inv-1: local error: 
+  !inv-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
   - language[0..1]: code
-  - parameter[0..*]: BackboneElement
+  - parameter[0..*]: BackboneElement constraints: inv-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - name[1..1]: string
     - value[x][0..1]: Address|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|date|dateTime|decimal|HumanName|id|Identifier|instant|integer|markdown|Meta|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri
     - resource[0..1]: Resource
-    - part[0..*]: Parameters.parameter
+    - part[0..*]: Parameters.parameter constraints: inv-2
 - Patient: DomainResource (draft FMM: 3)
   ^patient[0..*]: DomainResource (W5: administrative.individual)
+  !pat-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10019,7 +10128,7 @@ Resources: 96
   - maritalStatus[0..1]: CodeableConcept
   - multipleBirth[x][0..1]: boolean|integer
   - photo[0..*]: Attachment
-  - contact[0..*]: BackboneElement
+  - contact[0..*]: BackboneElement constraints: pat-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -10121,13 +10230,13 @@ Resources: 96
     - city[1..1]: string
     - district[0..1]: string
     - state[1..1]: string
-    - postalCode[1..1]: string
+    - postalCode[1..1]: string constraints: inv-1
     - country[1..1]: string
     - period[0..1]: Period
   - maritalStatus[0..1]: CodeableConcept
   - multipleBirth[x][0..1]: boolean|integer
   - photo[0..*]: Attachment
-  - contact[0..*]: BackboneElement
+  - contact[0..*]: BackboneElement constraints: pat-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -10146,7 +10255,7 @@ Resources: 96
       - city[0..1]: string
       - district[0..1]: string
       - state[0..1]: string
-      - postalCode[0..1]: string
+      - postalCode[0..1]: string constraints: inv-2
       - country[0..1]: string
       - period[0..1]: Period
     - gender[0..1]: code
@@ -10360,7 +10469,7 @@ Resources: 96
   - maritalStatus[0..1]: CodeableConcept
   - multipleBirth[x][0..1]: boolean|integer
   - photo[0..*]: Attachment
-  - contact[0..*]: BackboneElement
+  - contact[0..*]: BackboneElement constraints: pat-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -10514,13 +10623,13 @@ Resources: 96
     - city[0..1]: string
     - district[0..1]: string
     - state[0..1]: string
-    - postalCode[0..1]: string
+    - postalCode[0..1]: string constraints: inv-1
     - country[0..1]: string
     - period[0..1]: Period
   - maritalStatus[0..1]: CodeableConcept
   - multipleBirth[x][0..1]: boolean|integer
   - photo[0..*]: Attachment
-  - contact[0..*]: BackboneElement
+  - contact[0..*]: BackboneElement constraints: pat-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -10668,13 +10777,13 @@ Resources: 96
     - city[0..1]: string
     - district[0..1]: string
     - state[0..1]: string
-    - postalCode[0..1]: string
+    - postalCode[0..1]: string constraints: inv-1
     - country[0..1]: string
     - period[0..1]: Period
   - maritalStatus[0..1]: CodeableConcept
   - multipleBirth[x][0..1]: boolean|integer
   - photo[0..*]: Attachment
-  - contact[0..*]: BackboneElement
+  - contact[0..*]: BackboneElement constraints: pat-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -10725,7 +10834,7 @@ Resources: 96
       - city[0..1]: string
       - district[0..1]: string
       - state[0..1]: string
-      - postalCode[0..1]: string
+      - postalCode[0..1]: string constraints: inv-2
       - country[0..1]: string
       - period[0..1]: Period
     - gender[0..1]: code
@@ -10945,7 +11054,7 @@ Resources: 96
   - communication[0..*]: CodeableConcept
   Extensions: 6
   +http://hl7.org/fhir/StructureDefinition/daf-pract
-    ^practitioner[0..*]: Practitioner (W5: administrative.individual)
+    ^practitioner[0..*]: Practitioner constraints: inv-1 (W5: administrative.individual)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10956,7 +11065,7 @@ Resources: 96
     - status[1..1]: code
       .fixedValueCode = "generated"
       {generated|extensions|additional|empty}
-    - div[1..1]: xhtml
+    - div[1..1]: xhtml constraints: txt-1, txt-2, txt-3
   - contained[0..*]: Resource
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
@@ -11091,7 +11200,7 @@ Resources: 96
     - issuer[0..1]: Reference(qicore-organization)
   - communication[0..*]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/uslab-phpract
-    ^practitioner[0..*]: Practitioner (W5: administrative.individual)
+    ^practitioner[0..*]: Practitioner constraints: inv-1 (W5: administrative.individual)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11147,7 +11256,7 @@ Resources: 96
     - city[0..1]: string
     - district[0..1]: string
     - state[0..1]: string
-    - postalCode[0..1]: string
+    - postalCode[0..1]: string constraints: inv-2
     - country[0..1]: string
     - period[0..1]: Period
   - gender[0..1]: code
@@ -11181,7 +11290,7 @@ Resources: 96
     - issuer[0..1]: Reference(Organization)
   - communication[0..*]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/uslab-pract
-    ^practitioner[0..*]: Practitioner (W5: administrative.individual)
+    ^practitioner[0..*]: Practitioner constraints: inv-1 (W5: administrative.individual)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11275,7 +11384,8 @@ Resources: 96
   ?specialty: specialty=token
   ?telecom: telecom=token
 - Procedure: DomainResource (draft FMM: 1)
-  ^procedure[0..*]: DomainResource (W5: clinical.general)
+  ^procedure[0..*]: DomainResource constraints: pro-1 (W5: clinical.general)
+  !pro-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11318,7 +11428,7 @@ Resources: 96
   - used[0..*]: Reference(Device|Medication|Substance)
   Extensions: 8
   +http://hl7.org/fhir/StructureDefinition/daf-procedure
-    ^procedure[0..*]: Procedure (W5: clinical.general)
+    ^procedure[0..*]: Procedure constraints: pro-1 (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11396,7 +11506,7 @@ Resources: 96
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/procedure-targetBodySite"
   - valueReference[1..1]: Reference(BodySite)
   +http://hl7.org/fhir/StructureDefinition/qicore-procedure
-    ^procedure[0..*]: Procedure (W5: clinical.general)
+    ^procedure[0..*]: Procedure constraints: pro-1 (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11703,7 +11813,11 @@ Resources: 96
   ?target: target=reference
   ?userid: userid=token
 - Questionnaire: DomainResource (draft FMM: 2)
-  ^questionnaire[0..*]: DomainResource (W5: infrastructure.information)
+  ^questionnaire[0..*]: DomainResource constraints: que-2, que-3 (W5: infrastructure.information)
+  !que-1: local error: 
+  !que-2: local error: 
+  !que-3: local error: 
+  !que-4: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11720,7 +11834,7 @@ Resources: 96
   - publisher[0..1]: string (W5: who.witness)
   - telecom[0..*]: ContactPoint
   - subjectType[0..*]: code
-  - group[1..1]: BackboneElement
+  - group[1..1]: BackboneElement constraints: que-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -11767,18 +11881,18 @@ Resources: 96
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-label"
       - valueString[1..1]: string
       +http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
-        ^extension[0..1]: Extension
+        ^extension[0..1]: Extension constraints: inv-2
       - id[0..1]: id
       - url[1..1]: uri
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
       - valueInteger[1..1]: integer
       +http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
-        ^extension[0..1]: Extension
+        ^extension[0..1]: Extension constraints: inv-1
       - id[0..1]: id
       - url[1..1]: uri
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
       - valueInteger[1..1]: integer
-    - question[0..*]: BackboneElement
+    - question[0..*]: BackboneElement constraints: que-4
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
@@ -11913,13 +12027,13 @@ Resources: 96
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-label"
       - valueString[1..1]: string
       +http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
-        ^extension[0..1]: Extension
+        ^extension[0..1]: Extension constraints: inv-2
       - id[0..1]: id
       - url[1..1]: uri
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
       - valueInteger[1..1]: integer
       +http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
-        ^extension[0..1]: Extension
+        ^extension[0..1]: Extension constraints: inv-1
       - id[0..1]: id
       - url[1..1]: uri
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
@@ -11978,13 +12092,13 @@ Resources: 96
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-label"
     - valueString[1..1]: string
     +http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
-      ^extension[0..1]: Extension
+      ^extension[0..1]: Extension constraints: inv-2
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
     - valueInteger[1..1]: integer
     +http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
-      ^extension[0..1]: Extension
+      ^extension[0..1]: Extension constraints: inv-1
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
@@ -11997,7 +12111,7 @@ Resources: 96
     .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-category"
   - valueCodeableConcept[1..1]: CodeableConcept
   +http://hl7.org/fhir/StructureDefinition/sdc-questionnaire
-    ^questionnaire[0..*]: Questionnaire (W5: infrastructure.information)
+    ^questionnaire[0..*]: Questionnaire constraints: que-2, que-3 (W5: infrastructure.information)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12019,7 +12133,7 @@ Resources: 96
   - publisher[0..1]: string (W5: who.witness)
   - telecom[0..*]: ContactPoint
   - subjectType[0..*]: code
-  - group[1..1]: BackboneElement
+  - group[1..1]: BackboneElement constraints: que-1
     - id[0..1]: id
     - extension[0..*]: Extension
       : http://hl7.org/fhir/StructureDefinition/sdc-questionnaire - Open (value@url)
@@ -12150,18 +12264,18 @@ Resources: 96
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-label"
       - valueString[1..1]: string
       +http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
-        ^extension[0..1]: Extension
+        ^extension[0..1]: Extension constraints: inv-2
       - id[0..1]: id
       - url[1..1]: uri
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
       - valueInteger[1..1]: integer
       +http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
-        ^extension[0..1]: Extension
+        ^extension[0..1]: Extension constraints: inv-1
       - id[0..1]: id
       - url[1..1]: uri
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
       - valueInteger[1..1]: integer
-    - question[0..*]: BackboneElement
+    - question[0..*]: BackboneElement constraints: que-4
       - id[0..1]: id
       - extension[0..*]: Extension
         : http://hl7.org/fhir/StructureDefinition/sdc-questionnaire - Open (value@url)
@@ -12417,13 +12531,13 @@ Resources: 96
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-label"
       - valueString[1..1]: string
       +http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
-        ^extension[0..1]: Extension
+        ^extension[0..1]: Extension constraints: inv-2
       - id[0..1]: id
       - url[1..1]: uri
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
       - valueInteger[1..1]: integer
       +http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
-        ^extension[0..1]: Extension
+        ^extension[0..1]: Extension constraints: inv-1
       - id[0..1]: id
       - url[1..1]: uri
         .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
@@ -12482,13 +12596,13 @@ Resources: 96
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-label"
     - valueString[1..1]: string
     +http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
-      ^extension[0..1]: Extension
+      ^extension[0..1]: Extension constraints: inv-2
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
     - valueInteger[1..1]: integer
     +http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
-      ^extension[0..1]: Extension
+      ^extension[0..1]: Extension constraints: inv-1
     - id[0..1]: id
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
@@ -12516,6 +12630,7 @@ Resources: 96
   ?version: version=string
 - QuestionnaireResponse: DomainResource (draft FMM: 2)
   ^questionnaireResponse[0..*]: DomainResource (W5: infrastructure.information)
+  !qrs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12533,7 +12648,7 @@ Resources: 96
   - authored[0..1]: dateTime (W5: when.recorded)
   - source[0..1]: Reference(Patient|Practitioner|RelatedPerson) (W5: who.source)
   - encounter[0..1]: Reference(Encounter) (W5: context)
-  - group[0..1]: BackboneElement
+  - group[0..1]: BackboneElement constraints: qrs-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -12601,7 +12716,7 @@ Resources: 96
   - authored[1..1]: dateTime (W5: when.recorded)
   - source[0..1]: Reference(Patient|Practitioner|RelatedPerson) (W5: who.source)
   - encounter[0..1]: Reference(Encounter) (W5: context)
-  - group[1..1]: BackboneElement
+  - group[1..1]: BackboneElement constraints: qrs-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -12822,6 +12937,8 @@ Resources: 96
   - valueReference[1..1]: Reference(Goal)
 - RiskAssessment: DomainResource (draft FMM: 0)
   ^riskAssessment[0..*]: DomainResource (W5: clinical.general)
+  !ras-1: local error: 
+  !ras-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12843,7 +12960,7 @@ Resources: 96
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - outcome[1..1]: CodeableConcept
-    - probability[x][0..1]: CodeableConcept|decimal|Range
+    - probability[x][0..1]: CodeableConcept|decimal|Range constraints: ras-1, ras-2
     - relativeRisk[0..1]: decimal
     - when[x][0..1]: Period|Range
     - rationale[0..1]: string
@@ -12876,7 +12993,8 @@ Resources: 96
   ?identifier: identifier=token
   ?type: type=token
 - SearchParameter: DomainResource (draft FMM: 1)
-  ^searchParameter[1..1]: DomainResource (W5: conformance.behavior)
+  ^searchParameter[1..1]: DomainResource constraints: spd-1 (W5: conformance.behavior)
+  !spd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13074,7 +13192,7 @@ Resources: 96
     - modifierExtension[0..*]: Extension
     - collector[0..1]: Reference(Practitioner)
     - comment[0..*]: string
-    - collected[x][1..1]: dateTime|Period (W5: when.init)
+    - collected[x][1..1]: dateTime|Period constraints: inv-2 (W5: when.init)
     - quantity[0..1]: Quantity(SimpleQuantity)
       Extensions: 1
       +http://hl7.org/fhir/StructureDefinition/specimen-isDryWeight
@@ -13276,7 +13394,7 @@ Resources: 96
     - modifierExtension[0..*]: Extension
     - collector[0..1]: Reference(Practitioner)
     - comment[0..*]: string
-    - collected[x][1..1]: dateTime|Period (W5: when.init)
+    - collected[x][1..1]: dateTime|Period constraints: inv-2 (W5: when.init)
     - quantity[0..1]: Quantity(SimpleQuantity)
       Extensions: 1
       +http://hl7.org/fhir/StructureDefinition/specimen-isDryWeight
@@ -13354,7 +13472,20 @@ Resources: 96
   ?subject: subject=reference
   ?type: type=token
 - StructureDefinition: DomainResource (draft FMM: 2)
-  ^structureDefinition[1..1]: DomainResource (W5: conformance.content)
+  ^structureDefinition[1..1]: DomainResource constraints: sdf-1, sdf-10, sdf-11, sdf-12, sdf-13, sdf-4, sdf-5, sdf-6, sdf-7, sdf-8, sdf-9 (W5: conformance.content)
+  !sdf-1: local error: 
+  !sdf-10: local error: 
+  !sdf-11: local error: 
+  !sdf-12: local error: 
+  !sdf-13: local error: 
+  !sdf-2: local error: 
+  !sdf-3: local error: 
+  !sdf-4: local error: 
+  !sdf-5: local error: 
+  !sdf-6: local error: 
+  !sdf-7: local error: 
+  !sdf-8: local error: 
+  !sdf-9: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13385,7 +13516,7 @@ Resources: 96
   - copyright[0..1]: string
   - code[0..*]: Coding
   - fhirVersion[0..1]: id
-  - mapping[0..*]: BackboneElement
+  - mapping[0..*]: BackboneElement constraints: sdf-2
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -13401,7 +13532,7 @@ Resources: 96
     {resource|datatype|mapping|extension}
   - context[0..*]: string
   - base[0..1]: uri
-  - snapshot[0..1]: BackboneElement
+  - snapshot[0..1]: BackboneElement constraints: sdf-3
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -13642,6 +13773,20 @@ Resources: 96
   ?supplier: supplier=reference
 - TestScript: DomainResource (draft FMM: 0)
   ^testScript[0..*]: DomainResource (W5: conformance.misc)
+  !inv-1: local error: 
+  !inv-10: local error: 
+  !inv-11: local error: 
+  !inv-12: local error: 
+  !inv-13: local error: 
+  !inv-14: local error: 
+  !inv-2: local error: 
+  !inv-3: local error: 
+  !inv-4: local error: 
+  !inv-5: local error: 
+  !inv-6: local error: 
+  !inv-7: local error: 
+  !inv-8: local error: 
+  !inv-9: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13669,7 +13814,7 @@ Resources: 96
   - useContext[0..*]: CodeableConcept
   - requirements[0..1]: string (W5: why)
   - copyright[0..1]: string
-  - metadata[0..1]: BackboneElement
+  - metadata[0..1]: BackboneElement constraints: inv-5
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -13698,7 +13843,7 @@ Resources: 96
     - autodelete[0..1]: boolean
     - resource[0..1]: Reference(Resource)
   - profile[0..*]: Reference(Resource)
-  - variable[0..*]: BackboneElement
+  - variable[0..*]: BackboneElement constraints: inv-4
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -13710,12 +13855,12 @@ Resources: 96
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - metadata[0..1]: TestScript.metadata
-    - action[1..*]: BackboneElement
+    - metadata[0..1]: TestScript.metadata constraints: inv-6
+    - action[1..*]: BackboneElement constraints: inv-1
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - operation[0..1]: BackboneElement
+      - operation[0..1]: BackboneElement constraints: inv-10
         - id[0..1]: id
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
@@ -13741,7 +13886,7 @@ Resources: 96
         - sourceId[0..1]: id
         - targetId[0..1]: id
         - url[0..1]: string
-      - assert[0..1]: BackboneElement
+      - assert[0..1]: BackboneElement constraints: inv-13, inv-8
         - id[0..1]: id
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
@@ -13773,22 +13918,22 @@ Resources: 96
     - modifierExtension[0..*]: Extension
     - name[0..1]: string
     - description[0..1]: string
-    - metadata[0..1]: TestScript.metadata
-    - action[1..*]: BackboneElement
+    - metadata[0..1]: TestScript.metadata constraints: inv-7
+    - action[1..*]: BackboneElement constraints: inv-2
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - operation[0..1]: TestScript.setup.action.operation
-      - assert[0..1]: TestScript.setup.action.assert
+      - operation[0..1]: TestScript.setup.action.operation constraints: inv-11
+      - assert[0..1]: TestScript.setup.action.assert constraints: inv-14, inv-9
   - teardown[0..1]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - action[1..*]: BackboneElement
+    - action[1..*]: BackboneElement constraints: inv-3
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - operation[0..1]: TestScript.setup.action.operation
+      - operation[0..1]: TestScript.setup.action.operation constraints: inv-12
   ?description: description=string
   ?identifier: identifier=token
   ?name: name=string
@@ -13797,7 +13942,17 @@ Resources: 96
   ?testscript-test-capability: testscript-test-capability=string
   ?url: url=uri
 - ValueSet: DomainResource (draft FMM: 3)
-  ^valueSet[0..*]: DomainResource (W5: conformance.terminology)
+  ^valueSet[0..*]: DomainResource constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
+  !vsd-1: local error: 
+  !vsd-10: local error: 
+  !vsd-11: local error: 
+  !vsd-2: local error: 
+  !vsd-3: local error: 
+  !vsd-5: local error: 
+  !vsd-6: local error: 
+  !vsd-7: local error: 
+  !vsd-8: local error: 
+  !vsd-9: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13828,7 +13983,7 @@ Resources: 96
   - requirements[0..1]: string
   - copyright[0..1]: string
   - extensible[0..1]: boolean
-  - codeSystem[0..1]: BackboneElement
+  - codeSystem[0..1]: BackboneElement constraints: vsd-3, vsd-8
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -13908,12 +14063,12 @@ Resources: 96
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/valueset-oid"
     - valueUri[1..1]: uri
-  - compose[0..1]: BackboneElement
+  - compose[0..1]: BackboneElement constraints: vsd-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - import[0..*]: uri
-    - include[0..*]: BackboneElement
+    - include[0..*]: BackboneElement constraints: vsd-11
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
@@ -13993,7 +14148,7 @@ Resources: 96
       - modifierExtension[0..*]: Extension
       - name[1..1]: string
       - value[x][0..1]: boolean|code|decimal|integer|string|uri
-    - contains[0..*]: BackboneElement
+    - contains[0..*]: BackboneElement constraints: vsd-10, vsd-6, vsd-9
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
@@ -14049,7 +14204,7 @@ Resources: 96
     - valueBoolean[1..1]: boolean
   Extensions: 17
   +http://hl7.org/fhir/StructureDefinition/sdc-valueset
-    ^valueSet[0..*]: ValueSet (W5: conformance.terminology)
+    ^valueSet[0..*]: ValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14082,7 +14237,7 @@ Resources: 96
   - requirements[0..1]: string
   - copyright[0..1]: string
   - extensible[1..1]: boolean
-  - codeSystem[0..1]: BackboneElement
+  - codeSystem[0..1]: BackboneElement constraints: vsd-3, vsd-8
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -14181,12 +14336,12 @@ Resources: 96
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/valueset-oid"
     - valueUri[1..1]: uri
-  - compose[0..1]: BackboneElement
+  - compose[0..1]: BackboneElement constraints: vsd-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - import[0..*]: uri
-    - include[0..*]: BackboneElement
+    - include[0..*]: BackboneElement constraints: vsd-11
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
@@ -14285,7 +14440,7 @@ Resources: 96
       - modifierExtension[0..*]: Extension
       - name[1..1]: string
       - value[x][0..1]: boolean|code|decimal|integer|string|uri
-    - contains[0..*]: BackboneElement
+    - contains[0..*]: BackboneElement constraints: vsd-10, vsd-6, vsd-9
       - id[0..1]: id
       - extension[0..*]: Extension
         : http://hl7.org/fhir/StructureDefinition/sdc-valueset - Open (value@url)
@@ -14359,7 +14514,7 @@ Resources: 96
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/valueset-unclosed"
     - valueBoolean[1..1]: boolean
   +http://hl7.org/fhir/StructureDefinition/sdcde-valueset
-    ^valueSet[0..*]: ValueSet (W5: conformance.terminology)
+    ^valueSet[0..*]: ValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14395,7 +14550,7 @@ Resources: 96
   - requirements[0..1]: string
   - copyright[0..1]: string
   - extensible[0..1]: boolean
-  - codeSystem[0..1]: BackboneElement
+  - codeSystem[0..1]: BackboneElement constraints: vsd-3, vsd-8
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -14477,12 +14632,12 @@ Resources: 96
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/valueset-oid"
     - valueUri[1..1]: uri
-  - compose[0..1]: BackboneElement
+  - compose[0..1]: BackboneElement constraints: vsd-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - import[0..*]: uri
-    - include[0..*]: BackboneElement
+    - include[0..*]: BackboneElement constraints: vsd-11
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
@@ -14564,7 +14719,7 @@ Resources: 96
       - modifierExtension[0..*]: Extension
       - name[1..1]: string
       - value[x][0..1]: boolean|code|decimal|integer|string|uri
-    - contains[0..*]: BackboneElement
+    - contains[0..*]: BackboneElement constraints: vsd-10, vsd-6, vsd-9
       - id[0..1]: id
       - extension[0..*]: Extension
         : http://hl7.org/fhir/StructureDefinition/sdcde-valueset - Open (value@url)
@@ -14623,7 +14778,7 @@ Resources: 96
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/valueset-unclosed"
     - valueBoolean[1..1]: boolean
   +http://hl7.org/fhir/StructureDefinition/shareablevalueset
-    ^valueSet[1..1]: ValueSet (W5: conformance.terminology)
+    ^valueSet[1..1]: ValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -14654,7 +14809,7 @@ Resources: 96
   - requirements[0..1]: string
   - copyright[0..1]: string
   - extensible[0..1]: boolean
-  - codeSystem[0..1]: BackboneElement
+  - codeSystem[0..1]: BackboneElement constraints: vsd-3, vsd-8
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
@@ -14734,12 +14889,12 @@ Resources: 96
     - url[1..1]: uri
       .fixedValueUri = "http://hl7.org/fhir/StructureDefinition/valueset-oid"
     - valueUri[1..1]: uri
-  - compose[0..1]: BackboneElement
+  - compose[0..1]: BackboneElement constraints: vsd-1
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - import[0..*]: uri
-    - include[0..*]: BackboneElement
+    - include[0..*]: BackboneElement constraints: vsd-11
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
@@ -14819,7 +14974,7 @@ Resources: 96
       - modifierExtension[0..*]: Extension
       - name[1..1]: string
       - value[x][0..1]: boolean|code|decimal|integer|string|uri
-    - contains[0..*]: BackboneElement
+    - contains[0..*]: BackboneElement constraints: vsd-10, vsd-6, vsd-9
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
