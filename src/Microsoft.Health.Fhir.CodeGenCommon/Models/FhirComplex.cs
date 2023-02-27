@@ -389,14 +389,15 @@ public class FhirComplex : FhirModelBase, ICloneable
 
     /// <summary>Adds a constraint.</summary>
     /// <param name="constraint">The constraint.</param>
-    public void AddConstraint(FhirConstraint constraint)
+    /// <param name="copyIfNew"> (Optional) True to copy if new.</param>
+    public void AddConstraint(FhirConstraint constraint, bool copyIfNew = false)
     {
         if (_constraintsByKey.ContainsKey(constraint.Key))
         {
             return;
         }
 
-        _constraintsByKey.Add(constraint.Key, constraint);
+        _constraintsByKey.Add(constraint.Key, copyIfNew ? (FhirConstraint)constraint.Clone() : constraint);
     }
 
     /// <summary>Adds a search parameter.</summary>

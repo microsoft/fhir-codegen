@@ -4,6 +4,8 @@
 // </copyright>
 
 
+using System.Runtime.CompilerServices;
+
 namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 /// <summary>A linq extensions.</summary>
@@ -17,6 +19,7 @@ public static class LinqExtensions
     /// <param name="ie">    The IE to act on.</param>
     /// <param name="action">The action.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool ForEach<T>(this IEnumerable<T> ie, Func<T, int, bool> action)
     {
         int i = 0;
@@ -27,8 +30,24 @@ public static class LinqExtensions
                 return false;
             }
         }
-
+        
         return true;
+    }
+
+    /// <summary>
+    /// An IEnumerable&lt;T&gt; extension method that applies an operation to all items in this
+    /// collection.
+    /// </summary>
+    /// <typeparam name="T">Generic type parameter.</typeparam>
+    /// <param name="ie">    The IE to act on.</param>
+    /// <param name="action">The action.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void ForEach<T>(this IEnumerable<T> ie, Action<T> action)
+    {
+        foreach (T e in ie)
+        {
+            action(e);
+        }
     }
 
     /// <summary>
@@ -38,6 +57,7 @@ public static class LinqExtensions
     /// <typeparam name="VT">Value Type.</typeparam>
     /// <param name="source">The source dictionary to copy.</param>
     /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Dictionary<KT,VT> DeepCopy<KT, VT>(this Dictionary<KT, VT> source)
         where VT : ICloneable
     {
@@ -59,6 +79,7 @@ public static class LinqExtensions
     /// <typeparam name="VT">Value Type.</typeparam>
     /// <param name="source">The source dictionary to copy.</param>
     /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Dictionary<KT, List<VT>> DeepCopy<KT, VT>(this Dictionary<KT, List<VT>> source)
         where VT : ICloneable
     {
@@ -87,6 +108,7 @@ public static class LinqExtensions
     /// <typeparam name="VT">Value Type.</typeparam>
     /// <param name="source">The source dictionary to copy.</param>
     /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Dictionary<KT, VT> ShallowCopy<KT, VT>(this Dictionary<KT, VT> source)
     {
         Dictionary<KT, VT> dest = new();
@@ -106,6 +128,7 @@ public static class LinqExtensions
     /// <typeparam name="VT">Type of the vt.</typeparam>
     /// <param name="source">The source dictionary to copy.</param>
     /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Dictionary<KT, List<VT>> ShallowCopy<KT, VT>(this Dictionary<KT, List<VT>> source)
     {
         Dictionary<KT, List<VT>> dest = new();
@@ -122,6 +145,7 @@ public static class LinqExtensions
     /// <param name="source">The source dictionary to copy.</param>
     /// <param name="dest">  Destination for the.</param>
     /// <returns>A HashSet&lt;string&gt;</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void CopyTo(this HashSet<string> source, HashSet<string> dest)
     {
         foreach (string val in source)

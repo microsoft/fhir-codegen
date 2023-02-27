@@ -464,7 +464,8 @@ public class FhirElement : FhirPropertyBase, ICloneable
 
     /// <summary>Adds a constraint.</summary>
     /// <param name="constraint">The constraint.</param>
-    public void AddConstraint(FhirConstraint constraint)
+    /// <param name="copyIfNew"> (Optional) True to copy if new.</param>
+    public void AddConstraint(FhirConstraint constraint, bool copyIfNew = false)
     {
         if (_constraintsByKey.ContainsKey(constraint.Key))
         {
@@ -475,14 +476,14 @@ public class FhirElement : FhirPropertyBase, ICloneable
         {
             if (!RootArtifact.ConstraintsByKey.ContainsKey(constraint.Key))
             {
-                RootArtifact.AddConstraint(constraint);
+                RootArtifact.AddConstraint(constraint, copyIfNew);
             }
 
             _constraintsByKey.Add(constraint.Key, RootArtifact.ConstraintsByKey[constraint.Key]);
             return;
         }
 
-        _constraintsByKey.Add(constraint.Key, constraint);
+        _constraintsByKey.Add(constraint.Key, copyIfNew ? (FhirConstraint)constraint.Clone() : constraint);
     }
 
 
@@ -654,9 +655,10 @@ public class FhirElement : FhirPropertyBase, ICloneable
         element.BaseTypeName = BaseTypeName;
         element._slicing = _slicing?.DeepCopy() ?? null;
 
-        // add conditions and constraints
         _conditions.CopyTo(element._conditions);
-        element._constraintsByKey = _constraintsByKey.DeepCopy();
+
+        // need to add constraints individually so we can reference the root objects
+        _constraintsByKey.Values.ForEach(c => element.AddConstraint(c, true));
 
         return element;
     }
@@ -758,9 +760,10 @@ public class FhirElement : FhirPropertyBase, ICloneable
             }
         }
 
-        // add conditions and constraints
         _conditions.CopyTo(element._conditions);
-        element._constraintsByKey = _constraintsByKey.DeepCopy();
+
+        // need to add constraints individually so we can reference the root objects
+        _constraintsByKey.Values.ForEach(c => element.AddConstraint(c, true));
 
         // check for referenced value sets
         if (((!IsInherited) || ModifiesParent) &&

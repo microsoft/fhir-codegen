@@ -161,7 +161,8 @@ else if (info.ArtifactRecordsByClass.Any())
                         case LanguageOptionTypeCodes.Choice:
                             <MudSelect T="string"
                                     Label="@optValue.Name"
-                                    HelperText="@optValue.Description">
+                                    HelperText="@optValue.Description"
+                                    @bind-Value="optValue.Value">
                                 @foreach (string v in optValue.AllowedValues)
                                 {
                                     <MudSelectItem Value="@v" />
@@ -460,11 +461,17 @@ else
         BrowserStore.SetAsync("last_export_language", exporterOptions.LanguageName);
         BrowserStore.SetAsync($"path_{directive}_{exporterOptions.LanguageName}", exportDirectoryPath);
 
-        if (exporterOptions.LanguageOptions != null)
+        if (languageOptions != null)
         {
-            foreach ((string option, string value) in exporterOptions.LanguageOptions)
+            exporterOptions.LanguageOptions.Clear();
+
+            foreach ((string key, LanguageUiOption opt) in languageOptions)
             {
-                BrowserStore.SetAsync($"{directive}_{exporterOptions.LanguageName}_{option}", value);
+                BrowserStore.SetAsync($"{directive}_{exporterOptions.LanguageName}_{key}", opt.Value ?? string.Empty);
+                if (!string.IsNullOrEmpty(opt.Value))
+                {
+                    exporterOptions.LanguageOptions.Add(key, opt.Value);
+                }
             }
         }
 
