@@ -98,6 +98,13 @@ else if (info.ArtifactRecordsByClass.Any())
                     </MudButton>
                 </MudStack>
 
+                <MudStack Row="true">
+                    <MudTextField @bind-Value="capabilityAuthHeader"
+                              Label="Authorization Header"
+                              HelperText="Authorization header value">
+                    </MudTextField>
+                </MudStack>
+
                 <MudTextField T="string" @bind-Value="capabilityJson" Variant="Variant.Filled" Lines="5" ReadOnly="true" />
             </MudStack>
         </MudExpansionPanel>
@@ -353,6 +360,9 @@ else
     /// <summary>URL of the capability server.</summary>
     private string capabilityServerUrl = string.Empty;
 
+    /// <summary>The capability authentication header.</summary>
+    private string capabilityAuthHeader = string.Empty;
+
     /// <summary>The capability statement.</summary>
     private FhirCapabiltyStatement? capabilityStatement = null;
 
@@ -400,6 +410,12 @@ else
             capabilityServerUrl = readResult.Value ?? string.Empty;
         }
 
+        readResult = await BrowserStore.GetAsync<string>("last_export_auth");
+        if (readResult.Success)
+        {
+            capabilityAuthHeader = readResult.Value ?? string.Empty;
+        }
+
         readResult = await BrowserStore.GetAsync<string>("last_export_language");
         if (readResult.Success)
         {
@@ -417,13 +433,21 @@ else
     void TryGetServerInfo()
     {
         BrowserStore.SetAsync("last_export_url", capabilityServerUrl);
+        BrowserStore.SetAsync("last_export_auth", capabilityAuthHeader);
 
         if (string.IsNullOrEmpty(capabilityServerUrl))
         {
             return;
         }
 
-        ConnectorService.TryGetServerInfo(capabilityServerUrl, false, out capabilityJson, out capabilityStatement);
+        Dictionary<string, IEnumerable<string>> headers = new();
+
+        if (!string.IsNullOrEmpty(capabilityAuthHeader))
+        {
+            headers.Add("Authorization", new string[] { capabilityAuthHeader });
+        }
+
+        ConnectorService.TryGetServerInfo(capabilityServerUrl, false, headers, out capabilityJson, out capabilityStatement);
     }
 
     /// <summary>Starts an export.</summary>
@@ -758,7 +782,6 @@ else
     /// <summary>A value converter.</summary>
     public class BoolValConverter : BoolConverter<string?>
     {
-
         public BoolValConverter()
         {
             SetFunc = OnSet;

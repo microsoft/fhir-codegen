@@ -2384,7 +2384,8 @@ public sealed class FromFhirExpando : IFhirConverter
 
         FhirExpando caps = metadata as FhirExpando;
 
-        string capId = caps.GetString("id") ?? string.Empty;
+        // if there is no id, just make one up
+        string capId = caps.GetString("id") ?? Guid.NewGuid().ToString();
         string capUrl = string.IsNullOrEmpty(serverUrl)
             ? caps.GetString("url") ?? string.Empty
             : serverUrl;

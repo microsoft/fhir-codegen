@@ -16,25 +16,29 @@ public static class ServerConnector
     /// <summary>Attempts to get server information a FhirServerInfo from the given string.</summary>
     /// <param name="serverUrl">      URL of the server.</param>
     /// <param name="resolveExternal">True to resolve external references.</param>
+    /// <param name="headers">        The headers.</param>
     /// <param name="serverInfo">     [out] Information describing the server.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool TryGetServerInfo(
         string serverUrl,
         bool resolveExternal,
+        Dictionary<string, IEnumerable<string>> headers,
         out FhirCapabiltyStatement serverInfo)
     {
-        return TryGetServerInfo(serverUrl, resolveExternal, out _, out serverInfo);
+        return TryGetServerInfo(serverUrl, resolveExternal, headers, out _, out serverInfo);
     }
 
     /// <summary>Attempts to get server information a FhirServerInfo from the given string.</summary>
     /// <param name="serverUrl">      URL of the server.</param>
     /// <param name="resolveExternal">True to resolve external references.</param>
+    /// <param name="headers">        The headers.</param>
     /// <param name="json">           [out] The JSON.</param>
     /// <param name="serverInfo">     [out] Information describing the server.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool TryGetServerInfo(
         string serverUrl,
         bool resolveExternal,
+        Dictionary<string, IEnumerable<string>> headers,
         out string json,
         out FhirCapabiltyStatement serverInfo)
 
@@ -81,6 +85,14 @@ public static class ServerConnector
                     },
                 },
             };
+
+            if (headers?.Any() ?? false)
+            {
+                foreach ((string key, IEnumerable<string> values) in headers)
+                {
+                    request.Headers.Add(key, values);
+                }
+            }
 
             Console.WriteLine($"Requesting metadata from {request.RequestUri}...");
 
@@ -239,6 +251,14 @@ public static class ServerConnector
                     },
                 },
             };
+
+            //if (headers?.Any() ?? false)
+            //{
+            //    foreach ((string key, IEnumerable<string> values) in headers)
+            //    {
+            //        request.Headers.Add(key, values);
+            //    }
+            //}
 
             Console.WriteLine($"Requesting {request.RequestUri}...");
 

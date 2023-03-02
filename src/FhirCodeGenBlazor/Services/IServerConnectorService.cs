@@ -15,11 +15,14 @@ public interface IServerConnectorService
     /// <summary>Attempts to get server information.</summary>
     /// <param name="serverUrl">      URL of the server.</param>
     /// <param name="resolveExternal">True to resolve external.</param>
+    /// <param name="headers">        The headers.</param>
+    /// <param name="json">           [out] The JSON.</param>
     /// <param name="serverInfo">     [out] Information describing the server.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     bool TryGetServerInfo(
         string serverUrl,
         bool resolveExternal,
+        Dictionary<string, IEnumerable<string>> headers,
         out string json,
         out FhirCapabiltyStatement serverInfo);
 
