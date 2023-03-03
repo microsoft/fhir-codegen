@@ -790,6 +790,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             $"{{" +
                             $" Resource = \"{complex.Name}\"," +
                             $" Name = \"{sp.Name}\"," +
+                            $" Code = \"{sp.Code}\"," +
                             (_info.FhirSequence == FhirPackageCommon.FhirSequenceEnum.STU3 ?
                                 $" Description = @\"{SanitizeForMarkdown(description)}\"," :
                                 $" Description = new Markdown(@\"{SanitizeForMarkdown(description)}\"),") +
