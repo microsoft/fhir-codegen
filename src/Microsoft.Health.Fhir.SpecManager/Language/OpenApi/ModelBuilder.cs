@@ -120,7 +120,6 @@ public class ModelBuilder
             }
         }
 
-
         Dictionary<string, OpenApiSchema> schemas = BuildSchemas();
 
         if (_openApiOptions.SchemaStyle != OaSchemaStyleCodes.Inline)

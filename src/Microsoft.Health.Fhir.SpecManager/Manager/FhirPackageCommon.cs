@@ -65,27 +65,28 @@ public static class FhirPackageCommon
     /// <summary>The FHIR releases.</summary>
     private static List<PublishedReleaseInformation> _fhirReleases = new()
     {
-        new (FhirSequenceEnum.DSTU2, new DateOnly(2015, 10, 24), "1.0.2",           "DSTU2 Release with 1 technical errata"),
-
-        new (FhirSequenceEnum.STU3,  new DateOnly(2019, 10, 24), "3.0.2",           "STU3 Release with 2 technical errata"),
-
-        new (FhirSequenceEnum.R4,    new DateOnly(2018, 04, 02), "3.2.0",           "R4 Draft for comment / First Candidate Normative Content", "2018Jan"),
-        new (FhirSequenceEnum.R4,    new DateOnly(2018, 05, 02), "3.3.0",           "R4 Ballot #1 : Mixed Normative/Trial use (First Normative ballot)", "2018May"),
-        new (FhirSequenceEnum.R4,    new DateOnly(2018, 08, 21), "3.5.0",           "R4 Ballot #2 : Mixed Normative/Trial use (Second Normative ballot + Baltimore Connectathon)", "2018Sep"),
-        new (FhirSequenceEnum.R4,    new DateOnly(2018, 11, 09), "3.5a.0",          "Special R4 Ballot #3 : Normative Packages for Terminology / Conformance + Observation", "2018Dec"),
-        new (FhirSequenceEnum.R4,    new DateOnly(2019, 10, 30), "4.0.1",           "R4 Release with 1 technical errata"),
-
-        new (FhirSequenceEnum.R4B,   new DateOnly(2021, 03, 11), "4.1.0",           "R4B Ballot #1", "2021Mar"),
-        new (FhirSequenceEnum.R4B,   new DateOnly(2021, 12, 20), "4.3.0-snapshot1", "R4B January 2022 Connectathon"),
-        new (FhirSequenceEnum.R4B,   new DateOnly(2022, 05, 28), "4.3.0",           "R4B Release"),
-
-        new (FhirSequenceEnum.R5,    new DateOnly(2019, 12, 31), "4.2.0",           "R5 Preview #1", "2020Feb"),
-        new (FhirSequenceEnum.R5,    new DateOnly(2020, 05, 04), "4.4.0",           "R5 Preview #2", "2020May"),
-        new (FhirSequenceEnum.R5,    new DateOnly(2020, 08, 20), "4.5.0",           "R5 Preview #3", "2020Sep"),
-        new (FhirSequenceEnum.R5,    new DateOnly(2021, 04, 15), "4.6.0",           "R5 Draft Ballot", "2021May"),
-        new (FhirSequenceEnum.R5,    new DateOnly(2021, 12, 19), "5.0.0-snapshot1", "R5 January 2022 Connectathon"),
-        new (FhirSequenceEnum.R5,    new DateOnly(2022, 09, 10), "5.0.0-ballot",    "R5 Ballot #1"),
-        new (FhirSequenceEnum.R5,    new DateOnly(2022, 12, 14), "5.0.0-snapshot3", "R5 Connectathon 32 Base"),
+        new (FhirSequenceEnum.DSTU2, new DateOnly(2015, 10, 24), "1.0.2",             "DSTU2 Release with 1 technical errata"),
+                                                                                      
+        new (FhirSequenceEnum.STU3,  new DateOnly(2019, 10, 24), "3.0.2",             "STU3 Release with 2 technical errata"),
+                                                                                      
+        new (FhirSequenceEnum.R4,    new DateOnly(2018, 04, 02), "3.2.0",             "R4 Draft for comment / First Candidate Normative Content", "2018Jan"),
+        new (FhirSequenceEnum.R4,    new DateOnly(2018, 05, 02), "3.3.0",             "R4 Ballot #1 : Mixed Normative/Trial use (First Normative ballot)", "2018May"),
+        new (FhirSequenceEnum.R4,    new DateOnly(2018, 08, 21), "3.5.0",             "R4 Ballot #2 : Mixed Normative/Trial use (Second Normative ballot + Baltimore Connectathon)", "2018Sep"),
+        new (FhirSequenceEnum.R4,    new DateOnly(2018, 11, 09), "3.5a.0",            "Special R4 Ballot #3 : Normative Packages for Terminology / Conformance + Observation", "2018Dec"),
+        new (FhirSequenceEnum.R4,    new DateOnly(2019, 10, 30), "4.0.1",             "R4 Release with 1 technical errata"),
+                                                                                      
+        new (FhirSequenceEnum.R4B,   new DateOnly(2021, 03, 11), "4.1.0",             "R4B Ballot #1", "2021Mar"),
+        new (FhirSequenceEnum.R4B,   new DateOnly(2021, 12, 20), "4.3.0-snapshot1",   "R4B January 2022 Connectathon"),
+        new (FhirSequenceEnum.R4B,   new DateOnly(2022, 05, 28), "4.3.0",             "R4B Release"),
+                                                                                      
+        new (FhirSequenceEnum.R5,    new DateOnly(2019, 12, 31), "4.2.0",             "R5 Preview #1", "2020Feb"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2020, 05, 04), "4.4.0",             "R5 Preview #2", "2020May"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2020, 08, 20), "4.5.0",             "R5 Preview #3", "2020Sep"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2021, 04, 15), "4.6.0",             "R5 Draft Ballot", "2021May"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2021, 12, 19), "5.0.0-snapshot1",   "R5 January 2022 Connectathon"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2022, 09, 10), "5.0.0-ballot",      "R5 Ballot #1"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2022, 12, 14), "5.0.0-snapshot3",   "R5 Connectathon 32 Base"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2023, 03, 01), "5.0.0-draft-final", "R5 Final QA"),
     };
 
     /// <summary>(Immutable) The ballot URL changeover date.</summary>
@@ -287,9 +288,10 @@ public static class FhirPackageCommon
             if (!_latestVersionByRelease.ContainsKey(release.Major))
             {
                 _latestVersionByRelease.Add(release.Major, release.Version);
+                continue;
             }
-            else if (release.PublicationDate.CompareTo(
-                    _fhirReleasesByVersion[_latestVersionByRelease[release.Major]].PublicationDate) > 0)
+
+            if (release.PublicationDate.CompareTo(_fhirReleasesByVersion[_latestVersionByRelease[release.Major]].PublicationDate) > 0)
             {
                 _latestVersionByRelease[release.Major] = release.Version;
             }

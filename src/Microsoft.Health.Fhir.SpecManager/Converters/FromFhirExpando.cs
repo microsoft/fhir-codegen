@@ -1910,14 +1910,12 @@ public sealed class FromFhirExpando : IFhirConverter
                 {
                     FhirExpando tc = element.GetExpandoEnumerable("type").First();
 
-                    if (tc != null)
+                    if ((tc != null) &&
+                        (tc.GetString("code") != "date"))
                     {
-                        if (tc.GetString("code") != "date")
-                        {
-                            elementTypes.Add("date", new FhirElementType("date"));
-                            _warnings.Add($"StructureDefinition - {structureName} coerced {elementId} to type 'date'");
-                            return true;
-                        }
+                        elementTypes.Add("date", new FhirElementType("date"));
+                        _warnings.Add($"StructureDefinition - {structureName} coerced {elementId} to type 'date'");
+                        return true;
                     }
                 }
 
