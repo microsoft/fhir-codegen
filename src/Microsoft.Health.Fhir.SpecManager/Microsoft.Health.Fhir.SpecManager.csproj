@@ -10,10 +10,13 @@
   <ItemGroup>
     <Compile Remove="Exporter\**" />
     <Compile Remove="fhir\**" />
+    <Compile Remove="Utils\**" />
     <EmbeddedResource Remove="Exporter\**" />
     <EmbeddedResource Remove="fhir\**" />
+    <EmbeddedResource Remove="Utils\**" />
     <None Remove="Exporter\**" />
     <None Remove="fhir\**" />
+    <None Remove="Utils\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,10 +47,6 @@
   <ItemGroup>
     <ProjectReference Include="..\fhirCsR2\fhirCsR2.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Utils\" />
   </ItemGroup>
 
 </Project>

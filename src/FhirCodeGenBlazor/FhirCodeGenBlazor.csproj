@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Components\**" />
+    <Content Remove="Components\**" />
+    <EmbeddedResource Remove="Components\**" />
+    <None Remove="Components\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Shared\NavMenu.razor" />
   </ItemGroup>
 
@@ -28,10 +35,6 @@
   <ItemGroup>
     <ProjectReference Include="..\fhirCsR2\fhirCsR2.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Components\" />
   </ItemGroup>
 
 </Project>
