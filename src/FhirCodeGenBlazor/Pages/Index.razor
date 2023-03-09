@@ -25,7 +25,7 @@ else
         <ToolBarContent>
             <MudText Typo="Typo.h6">FHIR Cache Contents</MudText>
             <MudSpacer />
-            <MudFab StartIcon="@Icons.Filled.LibraryAdd" OnClick="@(() => NavToAddPackage())" Size="Size.Small" />
+            <MudFab StartIcon="@Icons.Material.Filled.LibraryAdd" OnClick="@(() => NavToAddPackage())" Size="Size.Small" />
             <MudSpacer />
             <MudTextField @bind-Value="packageSearchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
         </ToolBarContent>
@@ -52,31 +52,31 @@ else
                         {
                             <MudTooltip Text="Package Overview">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.ViewInAr"
+                                    StartIcon="@Icons.Material.Filled.ViewInAr"
                                     @onclick="() => NavToViewPackage(context.Key)"
                                     Size="Size.Small" />
                             </MudTooltip>
                             <MudTooltip Text="LINQ Runner">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.Search"
+                                    StartIcon="@Icons.Material.Filled.Search"
                                     @onclick="() => NavToScript(context.Key)"
                                     Size="Size.Small" />
                             </MudTooltip>
                             <MudTooltip Text="Element Explorer">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.Preview"
+                                    StartIcon="@Icons.Material.Filled.Preview"
                                     @onclick="() => NavToPackageElements(context.Key)"
                                     Size="Size.Small" />
                             </MudTooltip>
                             <MudTooltip Text="Export">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.DriveFileMove"
+                                    StartIcon="@Icons.Material.Filled.DriveFileMove"
                                     @onclick="() => NavToExportPackage(context.Key)"
                                     Size="Size.Small" />
                             </MudTooltip>
                             <MudTooltip Text="Delete">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.Delete"
+                                    StartIcon="@Icons.Material.Filled.Delete"
                                     Color="Color.Error"
                                     @onclick="() => RequestDelete(context.Key)"
                                     Size="Size.Small" />
@@ -86,14 +86,14 @@ else
                         {
                             <MudTooltip Text="Loaded">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.DownloadDone"
+                                    StartIcon="@Icons.Material.Filled.DownloadDone"
                                     Color="Color.Success"
                                     Disabled="true"
                                     Size="Size.Small" />
                             </MudTooltip>
                             <MudTooltip Text="Delete">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.Delete"
+                                    StartIcon="@Icons.Material.Filled.Delete"
                                     Color="Color.Error"
                                     @onclick="() => RequestDelete(context.Key)"
                                     Size="Size.Small" />
@@ -105,7 +105,7 @@ else
                     case PackageLoadStateEnum.Parsed:
                         <MudTooltip Text="Loaded">
                             <MudFab
-                                StartIcon="@Icons.Filled.DownloadDone"
+                                StartIcon="@Icons.Material.Filled.DownloadDone"
                                 Color="Color.Success"
                                 Disabled="true"
                                 Size="Size.Small" />
@@ -120,13 +120,13 @@ else
                     default:
                         <MudTooltip Text="Load">
                             <MudFab
-                                StartIcon="@Icons.Filled.Input"
+                                StartIcon="@Icons.Material.Filled.Input"
                                 @onclick="() => ButtonLoadPackageClicked(context.Key)"
                                 Size="Size.Small" />
                         </MudTooltip>
                         <MudTooltip Text="Delete">
                             <MudFab
-                                StartIcon="@Icons.Filled.Delete"
+                                StartIcon="@Icons.Material.Filled.Delete"
                                 Color="Color.Error"
                                 @onclick="() => RequestDelete(context.Key)"
                                 Size="Size.Small" />

@@ -58,7 +58,7 @@ public class FhirExpandoJsonConverter : JsonConverter<FhirExpando>
     /// <param name="options">An object that specifies serialization options to use.</param>
     public override void Write(Utf8JsonWriter writer, FhirExpando value, JsonSerializerOptions options)
     {
-        JsonSerializer.Serialize(writer, (IDictionary<string, object?>)value, options);
+        JsonSerializer.Serialize(writer, (IDictionary<string, object>)value, options);
     }
 
     /// <summary>Extracts the value.</summary>
@@ -66,7 +66,7 @@ public class FhirExpandoJsonConverter : JsonConverter<FhirExpando>
     /// <param name="reader"> [in,out] The reader.</param>
     /// <param name="options">An object that specifies serialization options to use.</param>
     /// <returns>The extracted value.</returns>
-    private object? ExtractValue(ref Utf8JsonReader reader, JsonSerializerOptions options)
+    private object ExtractValue(ref Utf8JsonReader reader, JsonSerializerOptions options)
     {
         switch (reader.TokenType)
         {
@@ -99,7 +99,7 @@ public class FhirExpandoJsonConverter : JsonConverter<FhirExpando>
                 return Read(ref reader, typeof(FhirExpando), options);
 
             case JsonTokenType.StartArray:
-                List<object?> list = new();
+                List<object> list = new();
                 while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
                 {
                     list.Add(ExtractValue(ref reader, options));

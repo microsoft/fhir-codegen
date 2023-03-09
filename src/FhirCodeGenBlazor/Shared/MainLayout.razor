@@ -23,15 +23,15 @@
         <MudToggleIconButton
             @bind-Toggled="@_isDarkMode"
             Color="Color.Inherit"
-            Icon="@Icons.Filled.LightMode"
-            ToggledIcon="@Icons.Filled.DarkMode" />
+            Icon="@Icons.Material.Filled.LightMode"
+            ToggledIcon="@Icons.Material.Filled.DarkMode" />
     </MudAppBar>
 
     <MudDrawer @bind-Open="showNav" DisableOverlay="true" Variant="@DrawerVariant.Temporary">
         <MudDrawerHeader>
             <MudText Typo="Typo.h6">FHIR CodeGen</MudText>
             <MudSpacer />
-            <MudFab StartIcon="@Icons.Filled.Close" OnClick="@ToggleDrawer" Size="Size.Small" />
+            <MudFab StartIcon="@Icons.Material.Filled.Close" OnClick="@ToggleDrawer" Size="Size.Small" />
         </MudDrawerHeader>
         <MudNavMenu>
             <MudNavLink Href="/">FHIR Cache</MudNavLink>
@@ -45,7 +45,7 @@
                         continue;
                     }
 
-                    <MudNavLink Href="@LinkForPackage(key)" Icon="@Icons.Filled.Archive">@key</MudNavLink>
+                    <MudNavLink Href="@LinkForPackage(key)" Icon="@Icons.Material.Filled.Archive">@key</MudNavLink>
                 }
 
             </MudNavGroup>

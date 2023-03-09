@@ -69,7 +69,7 @@ public class FhirExpandoClass
 
             for (int i = 0; i < infos.Count; i++)
             {
-                FhirExpandoClass? klass = infos[i].Target as FhirExpandoClass;
+                FhirExpandoClass klass = infos[i].Target as FhirExpandoClass;
                 if (klass == null)
                 {
                     infos.RemoveAt(i);
@@ -106,7 +106,7 @@ public class FhirExpandoClass
             _transitions = new Dictionary<int, List<WeakReference>>();
         }
 
-        List<WeakReference>? infos;
+        List<WeakReference> infos;
         if (!_transitions.TryGetValue(hashCode, out infos))
         {
             _transitions[hashCode] = infos = new List<WeakReference>();

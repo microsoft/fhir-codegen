@@ -53,7 +53,7 @@ else
                             <MudText>Compile</MudText>
                         }
                     </MudButton>
-                    <MudButton Color="Color.Primary" Variant="Variant.Outlined" OnClick="@(() => RunCompiledScript())">
+                    <MudButton Color="Color.Primary" Disabled="@inputIsInvalid" Variant="Variant.Outlined" OnClick="@(() => RunCompiledScript())">
                         @if (_busy)
                         {
                             <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
@@ -118,7 +118,7 @@ else
     private Script<object>? _compiled = null;
 
     /// <summary>True if input is invalid.</summary>
-    private bool inputIsInvalid = false;
+    private bool inputIsInvalid = true;
 
     /// <summary>Gets or sets the navigation tracker.</summary>
     [CascadingParameter]
@@ -269,8 +269,8 @@ else
             return;
         }
 
-        if ((!TryCompile(scriptCode, out _compiled)) ||
-            (_compiled == null))
+        if ((TryCompile(scriptCode, out _compiled)) &&
+            (_compiled != null))
         {
             _busy = false;
             inputIsInvalid = false;

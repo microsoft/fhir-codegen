@@ -33,7 +33,7 @@ else
         <MudExpansionPanel Text="Artifact Type Filtering">
             <MudGrid>
                 <MudItem xs="6" sm="3">
-                    <MudFab StartIcon="@Icons.Filled.Flip"
+                    <MudFab StartIcon="@Icons.Material.Filled.Flip"
                             Label="Toggle All Artifacts"
                             OnClick="() => InvokeAsync(() => ToggleShowArtifactState())"
                             Disabled="@_busy"
@@ -124,8 +124,8 @@ else
         RowsPerPage="100">
         <ToolBarContent>
             <MudSwitch Class="ms-2" Color="Color.Info" @bind-Checked="showDetailedInfo" Label="Show detailed info" />
-            <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Filled.Download" OnClick="() => DownloadElementPathsJson()">Paths (JSON)</MudButton>
-            <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Filled.Download" OnClick="() => DownloadFhirElementsJson()">Elements (JSON)</MudButton>
+            <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Download" OnClick="() => DownloadElementPathsJson()">Paths (JSON)</MudButton>
+            <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Download" OnClick="() => DownloadFhirElementsJson()">Elements (JSON)</MudButton>
         </ToolBarContent>
         <ColGroup>
             <col style="width: 20vw!important;" />

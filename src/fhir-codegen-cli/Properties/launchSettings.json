@@ -7,7 +7,7 @@
         },
         "info-Rx": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R3.txt --load-r3 latest --include-experimental --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R5.txt --load-r5 latest --include-experimental --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "tsBasic-All": {

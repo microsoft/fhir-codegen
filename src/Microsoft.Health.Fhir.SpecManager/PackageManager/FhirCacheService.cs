@@ -7,6 +7,7 @@ using System.IO;
 using System.Net.Http;
 using IniParser.Model;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using static Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageCommon;
 
 namespace Microsoft.Health.Fhir.SpecManager.PackageManager;
 
@@ -955,8 +956,38 @@ public class FhirCacheService : IDisposable
         out bool isCached,
         out string directory)
     {
-        string highestCached;
+        string highestCached = string.Empty;
         string highestOnline = string.Empty;
+
+        if (TryGetReleaseByPackage(name, out FhirSequenceEnum seq))
+        {
+            foreach (PublishedReleaseInformation release in CoreVersions.Where(cv => cv.Major == seq).OrderByDescending(cv => cv.PublicationDate))
+            {
+                if (string.IsNullOrEmpty(highestOnline))
+                {
+                    highestOnline = release.Version;
+                }
+
+                if (HasCachedVersion(name, release.Version, out directory))
+                {
+                    highestCached = release.Version;
+                    break;
+                }
+            }
+
+            if (offlineMode)
+            {
+                version = highestCached;
+                isCached = true;
+                directory = Path.Combine(_cachePackageDirectory, $"{name}#{version}");
+                return true;
+            }
+
+            version = highestOnline;
+            isCached = true;
+            directory = Path.Combine(_cachePackageDirectory, $"{name}#{version}");
+            return true;
+        }
 
         _ = TryGetHighestVersionOffline(name, out highestCached);
 

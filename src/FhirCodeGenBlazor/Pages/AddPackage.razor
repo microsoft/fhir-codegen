@@ -19,8 +19,8 @@
                               HelperText="Released Package Name or Canonical URL"></MudTextField>
             </MudCardContent>
             <MudCardActions>
-                <MudFab OnClick="(() => LookupReleasedPackage())" StartIcon="@Icons.Filled.ManageSearch" Label="Lookup"/>
-                <MudFab OnClick="(() => RequestManualDownload())" StartIcon="@Icons.Filled.DownloadForOffline" Label="Try to Load the Directive" />
+                <MudFab OnClick="(() => LookupReleasedPackage())" StartIcon="@Icons.Material.Filled.ManageSearch" Label="Lookup"/>
+                <MudFab OnClick="(() => RequestManualDownload())" StartIcon="@Icons.Material.Filled.DownloadForOffline" Label="Try to Load the Directive" />
             </MudCardActions>
         </MudCard>
 
@@ -49,7 +49,7 @@
                         case PackageLoadStateEnum.Unknown:
                             <MudTooltip Text="Download">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.Download"
+                                    StartIcon="@Icons.Material.Filled.Download"
                                     OnClick="@(() => RequestReleasedDownload(context))"
                                     Size="Size.Small"/>
                             </MudTooltip>
@@ -61,7 +61,7 @@
                         default:
                             <MudTooltip Text="Download">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.Delete"
+                                    StartIcon="@Icons.Material.Filled.Delete"
                                     Color="Color.Error"
                                     OnClick="@(() => RequestDelete(context))"
                                     Size="Size.Small" />
@@ -90,13 +90,13 @@
                 </MudText>
             </MudCardContent>
             <MudCardActions>
-                <MudFab OnClick="(() => LookupCiBuild(true))" StartIcon="@Icons.Filled.ManageSearch" Label="Lookup" />
+                <MudFab OnClick="(() => LookupCiBuild(true))" StartIcon="@Icons.Material.Filled.ManageSearch" Label="Lookup" />
 
                 @if (ciPackage != null)
                 {
                     @if (IsCiLocal())
                     {
-                        <MudFab OnClick="(() => RequestCiDelete())" StartIcon="@Icons.Filled.Delete" Label="Delete" Color="Color.Error" />
+                        <MudFab OnClick="(() => RequestCiDelete())" StartIcon="@Icons.Material.Filled.Delete" Label="Delete" Color="Color.Error" />
                     }
 
                     @switch (GetCiPackageState())
@@ -111,7 +111,7 @@
                         case PackageLoadStateEnum.Loaded:
                         case PackageLoadStateEnum.Parsed:
                         default:
-                            <MudFab OnClick="(() => RequestCiDownload())" StartIcon="@Icons.Filled.DriveFileMove" Label="Download" />
+                            <MudFab OnClick="(() => RequestCiDownload())" StartIcon="@Icons.Material.Filled.DriveFileMove" Label="Download" />
                             break;
                     }
                 }
@@ -161,14 +161,14 @@
                 </MudText>
             </MudCardContent>
             <MudCardActions>
-                <MudFab OnClick="(() => LookupCiBuild(false))" StartIcon="@Icons.Filled.ManageSearch" Label="Lookup" />
+                <MudFab OnClick="(() => LookupCiBuild(false))" StartIcon="@Icons.Material.Filled.ManageSearch" Label="Lookup" />
 
                 @if (ciPackage != null)
                 {
                     @if (IsCiLocal())
                     {
                         <MudTooltip Text="Delete">
-                            <MudFab StartIcon="@Icons.Filled.Delete"
+                            <MudFab StartIcon="@Icons.Material.Filled.Delete"
                                 Color="Color.Error"
                                 @onclick="() => RequestCiDelete()"
                                 Size="Size.Small" />
@@ -187,7 +187,7 @@
                         case PackageLoadStateEnum.Loaded:
                         case PackageLoadStateEnum.Parsed:
                         default:
-                            <MudFab OnClick="(() => RequestCiDownload())" StartIcon="@Icons.Filled.DriveFileMove" Label="Download" />
+                            <MudFab OnClick="(() => RequestCiDownload())" StartIcon="@Icons.Material.Filled.DriveFileMove" Label="Download" />
                             break;
                     }
                 }
