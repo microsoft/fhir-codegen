@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Schedule", IsResource=true)]
+  [FhirType("Schedule","http://hl7.org/fhir/StructureDefinition/Schedule", IsResource=true)]
   public partial class Schedule : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -166,6 +166,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Schedule());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Schedule;
@@ -222,6 +223,41 @@ namespace Hl7.Fhir.Model
         if (PlanningHorizon != null) yield return new ElementValue("planningHorizon", PlanningHorizon);
         if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "type":
+          value = Type;
+          return Type?.Any() == true;
+        case "actor":
+          value = Actor;
+          return Actor is not null;
+        case "planningHorizon":
+          value = PlanningHorizon;
+          return PlanningHorizon is not null;
+        case "comment":
+          value = CommentElement;
+          return CommentElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Type?.Any() == true) yield return new KeyValuePair<string,object>("type",Type);
+      if (Actor is not null) yield return new KeyValuePair<string,object>("actor",Actor);
+      if (PlanningHorizon is not null) yield return new KeyValuePair<string,object>("planningHorizon",PlanningHorizon);
+      if (CommentElement is not null) yield return new KeyValuePair<string,object>("comment",CommentElement);
     }
 
   }

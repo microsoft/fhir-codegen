@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("DeviceMetric", IsResource=true)]
+  [FhirType("DeviceMetric","http://hl7.org/fhir/StructureDefinition/DeviceMetric", IsResource=true)]
   public partial class DeviceMetric : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -260,6 +260,7 @@ namespace Hl7.Fhir.Model
       /// unspecified | offset | gain | two-point
       /// </summary>
       [FhirElement("type", InSummary=true, Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCalibrationType> TypeElement
       {
@@ -291,6 +292,7 @@ namespace Hl7.Fhir.Model
       /// not-calibrated | calibration-required | calibrated | unspecified
       /// </summary>
       [FhirElement("state", InSummary=true, Order=50)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCalibrationState> StateElement
       {
@@ -370,6 +372,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new CalibrationComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as CalibrationComponent;
@@ -418,6 +421,33 @@ namespace Hl7.Fhir.Model
           if (StateElement != null) yield return new ElementValue("state", StateElement);
           if (TimeElement != null) yield return new ElementValue("time", TimeElement);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = TypeElement;
+            return TypeElement is not null;
+          case "state":
+            value = StateElement;
+            return StateElement is not null;
+          case "time":
+            value = TimeElement;
+            return TimeElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+        if (StateElement is not null) yield return new KeyValuePair<string,object>("state",StateElement);
+        if (TimeElement is not null) yield return new KeyValuePair<string,object>("time",TimeElement);
       }
 
     }
@@ -497,6 +527,7 @@ namespace Hl7.Fhir.Model
     /// on | off | standby
     /// </summary>
     [FhirElement("operationalStatus", InSummary=true, Order=140)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricOperationalStatus> OperationalStatusElement
     {
@@ -528,6 +559,7 @@ namespace Hl7.Fhir.Model
     /// black | red | green | yellow | blue | magenta | cyan | white
     /// </summary>
     [FhirElement("color", InSummary=true, Order=150)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricColor> ColorElement
     {
@@ -559,6 +591,7 @@ namespace Hl7.Fhir.Model
     /// measurement | setting | calculation | unspecified
     /// </summary>
     [FhirElement("category", InSummary=true, Order=160)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCategory> CategoryElement
@@ -642,6 +675,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new DeviceMetric());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as DeviceMetric;
@@ -718,6 +752,61 @@ namespace Hl7.Fhir.Model
         if (MeasurementPeriod != null) yield return new ElementValue("measurementPeriod", MeasurementPeriod);
         foreach (var elem in Calibration) { if (elem != null) yield return new ElementValue("calibration", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier is not null;
+        case "unit":
+          value = Unit;
+          return Unit is not null;
+        case "source":
+          value = Source;
+          return Source is not null;
+        case "parent":
+          value = Parent;
+          return Parent is not null;
+        case "operationalStatus":
+          value = OperationalStatusElement;
+          return OperationalStatusElement is not null;
+        case "color":
+          value = ColorElement;
+          return ColorElement is not null;
+        case "category":
+          value = CategoryElement;
+          return CategoryElement is not null;
+        case "measurementPeriod":
+          value = MeasurementPeriod;
+          return MeasurementPeriod is not null;
+        case "calibration":
+          value = Calibration;
+          return Calibration?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Unit is not null) yield return new KeyValuePair<string,object>("unit",Unit);
+      if (Source is not null) yield return new KeyValuePair<string,object>("source",Source);
+      if (Parent is not null) yield return new KeyValuePair<string,object>("parent",Parent);
+      if (OperationalStatusElement is not null) yield return new KeyValuePair<string,object>("operationalStatus",OperationalStatusElement);
+      if (ColorElement is not null) yield return new KeyValuePair<string,object>("color",ColorElement);
+      if (CategoryElement is not null) yield return new KeyValuePair<string,object>("category",CategoryElement);
+      if (MeasurementPeriod is not null) yield return new KeyValuePair<string,object>("measurementPeriod",MeasurementPeriod);
+      if (Calibration?.Any() == true) yield return new KeyValuePair<string,object>("calibration",Calibration);
     }
 
   }

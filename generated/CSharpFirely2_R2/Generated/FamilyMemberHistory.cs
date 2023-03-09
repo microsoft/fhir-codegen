@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("FamilyMemberHistory", IsResource=true)]
+  [FhirType("FamilyMemberHistory","http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory", IsResource=true)]
   public partial class FamilyMemberHistory : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -179,6 +179,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ConditionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ConditionComponent;
@@ -231,6 +232,37 @@ namespace Hl7.Fhir.Model
           if (Onset != null) yield return new ElementValue("onset", Onset);
           if (Note != null) yield return new ElementValue("note", Note);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "code":
+            value = Code;
+            return Code is not null;
+          case "outcome":
+            value = Outcome;
+            return Outcome is not null;
+          case "onset":
+            value = Onset;
+            return Onset is not null;
+          case "note":
+            value = Note;
+            return Note is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+        if (Outcome is not null) yield return new KeyValuePair<string,object>("outcome",Outcome);
+        if (Onset is not null) yield return new KeyValuePair<string,object>("onset",Onset);
+        if (Note is not null) yield return new KeyValuePair<string,object>("note",Note);
       }
 
     }
@@ -299,7 +331,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// partial | completed | entered-in-error | health-unknown
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=120)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=120)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.FamilyMemberHistory.FamilyHistoryStatus> StatusElement
@@ -377,6 +410,7 @@ namespace Hl7.Fhir.Model
     /// male | female | other | unknown
     /// </summary>
     [FhirElement("gender", InSummary=true, Order=150)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.AdministrativeGender> GenderElement
     {
@@ -506,6 +540,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new FamilyMemberHistory());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as FamilyMemberHistory;
@@ -590,6 +625,69 @@ namespace Hl7.Fhir.Model
         if (Note != null) yield return new ElementValue("note", Note);
         foreach (var elem in Condition) { if (elem != null) yield return new ElementValue("condition", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "relationship":
+          value = Relationship;
+          return Relationship is not null;
+        case "gender":
+          value = GenderElement;
+          return GenderElement is not null;
+        case "born":
+          value = Born;
+          return Born is not null;
+        case "age":
+          value = Age;
+          return Age is not null;
+        case "deceased":
+          value = Deceased;
+          return Deceased is not null;
+        case "note":
+          value = Note;
+          return Note is not null;
+        case "condition":
+          value = Condition;
+          return Condition?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (Relationship is not null) yield return new KeyValuePair<string,object>("relationship",Relationship);
+      if (GenderElement is not null) yield return new KeyValuePair<string,object>("gender",GenderElement);
+      if (Born is not null) yield return new KeyValuePair<string,object>("born",Born);
+      if (Age is not null) yield return new KeyValuePair<string,object>("age",Age);
+      if (Deceased is not null) yield return new KeyValuePair<string,object>("deceased",Deceased);
+      if (Note is not null) yield return new KeyValuePair<string,object>("note",Note);
+      if (Condition?.Any() == true) yield return new KeyValuePair<string,object>("condition",Condition);
     }
 
   }

@@ -10,12 +10,13 @@ using System.Text;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A class representing a FHIR primitive (r2:simple) type.</summary>
-public class FhirPrimitive : FhirTypeBase, ICloneable
+public class FhirPrimitive : FhirModelBase, ICloneable
 {
     /// <summary>Initializes a new instance of the <see cref="FhirPrimitive"/> class.</summary>
     /// <param name="id">              The identifier.</param>
-    /// <param name="path">            Full pathname of the file.</param>
+    /// <param name="name">            Name of this FHIR primitive.</param>
     /// <param name="baseTypeName">    The base type name for this primitive type.</param>
+    /// <param name="version">         Version of this definition.</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="publicationStatus">The publication status.</param>
     /// <param name="standardStatus">  The standard status.</param>
@@ -27,8 +28,10 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
     /// <param name="validationRegEx"> The validation RegEx.</param>
     public FhirPrimitive(
         string id,
-        string path,
+        string name,
         string baseTypeName,
+        string baseTypeCanonical,
+        string version,
         Uri url,
         string publicationStatus,
         string standardStatus,
@@ -37,10 +40,18 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
         string shortDescription,
         string purpose,
         string comment,
-        string validationRegEx)
+        string validationRegEx,
+        string narrative,
+        string narrativeStatus,
+        string fhirVersion)
         : base(
+            FhirArtifactClassEnum.PrimitiveType,
             id,
-            path,
+            name,
+            name,
+            baseTypeName,
+            baseTypeCanonical,
+            version,
             url,
             publicationStatus,
             standardStatus,
@@ -50,8 +61,35 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
             purpose,
             comment,
             validationRegEx,
-            baseTypeName,
-            string.Empty)
+            narrative,
+            narrativeStatus,
+            fhirVersion)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirPrimitive"/> class.
+    /// </summary>
+    /// <param name="source">Source for the.</param>
+    public FhirPrimitive(FhirPrimitive source)
+        : this(
+              source.Id,
+              source.Name,
+              source.BaseTypeName,
+              source.BaseTypeCanonical,
+              source.Version,
+              source.URL,
+              source.PublicationStatus,
+              source.StandardStatus,
+              source.FhirMaturityLevel,
+              source.IsExperimental,
+              source.ShortDescription,
+              source.Purpose,
+              source.Comment,
+              source.ValidationRegEx,
+              source.NarrativeText,
+              source.NarrativeStatus,
+              source.FhirVersion)
     {
     }
 
@@ -60,19 +98,7 @@ public class FhirPrimitive : FhirTypeBase, ICloneable
     public object Clone()
     {
         // generate the base object
-        FhirPrimitive primitive = new FhirPrimitive(
-            Id,
-            Path,
-            BaseTypeName,
-            URL,
-            PublicationStatus,
-            StandardStatus,
-            FhirMaturityLevel,
-            IsExperimental,
-            ShortDescription,
-            Purpose,
-            Comment,
-            ValidationRegEx);
+        FhirPrimitive primitive = new FhirPrimitive(this);
 
         return primitive;
     }

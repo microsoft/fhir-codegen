@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("DataRequirement")]
+  [FhirType("DataRequirement","http://hl7.org/fhir/StructureDefinition/DataRequirement")]
   public partial class DataRequirement : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -105,6 +105,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("valueSet", InSummary=true, Order=40, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("ValueSet")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.ResourceReference))]
       [DataMember]
       public Hl7.Fhir.Model.DataType ValueSet
@@ -198,6 +199,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new CodeFilterComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as CodeFilterComponent;
@@ -254,6 +256,41 @@ namespace Hl7.Fhir.Model
           foreach (var elem in ValueCoding) { if (elem != null) yield return new ElementValue("valueCoding", elem); }
           foreach (var elem in ValueCodeableConcept) { if (elem != null) yield return new ElementValue("valueCodeableConcept", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "path":
+            value = PathElement;
+            return PathElement is not null;
+          case "valueSet":
+            value = ValueSet;
+            return ValueSet is not null;
+          case "valueCode":
+            value = ValueCodeElement;
+            return ValueCodeElement?.Any() == true;
+          case "valueCoding":
+            value = ValueCoding;
+            return ValueCoding?.Any() == true;
+          case "valueCodeableConcept":
+            value = ValueCodeableConcept;
+            return ValueCodeableConcept?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (PathElement is not null) yield return new KeyValuePair<string,object>("path",PathElement);
+        if (ValueSet is not null) yield return new KeyValuePair<string,object>("valueSet",ValueSet);
+        if (ValueCodeElement?.Any() == true) yield return new KeyValuePair<string,object>("valueCode",ValueCodeElement);
+        if (ValueCoding?.Any() == true) yield return new KeyValuePair<string,object>("valueCoding",ValueCoding);
+        if (ValueCodeableConcept?.Any() == true) yield return new KeyValuePair<string,object>("valueCodeableConcept",ValueCodeableConcept);
       }
 
     }
@@ -338,6 +375,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new DateFilterComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as DateFilterComponent;
@@ -384,12 +422,36 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "path":
+            value = PathElement;
+            return PathElement is not null;
+          case "value":
+            value = Value;
+            return Value is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (PathElement is not null) yield return new KeyValuePair<string,object>("path",PathElement);
+        if (Value is not null) yield return new KeyValuePair<string,object>("value",Value);
+      }
+
     }
 
     /// <summary>
     /// The type of the required data
     /// </summary>
     [FhirElement("type", InSummary=true, Order=30)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.FHIRAllTypes> TypeElement
@@ -533,6 +595,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new DataRequirement());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as DataRequirement;
@@ -589,6 +652,41 @@ namespace Hl7.Fhir.Model
         foreach (var elem in CodeFilter) { if (elem != null) yield return new ElementValue("codeFilter", elem); }
         foreach (var elem in DateFilter) { if (elem != null) yield return new ElementValue("dateFilter", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "profile":
+          value = ProfileElement;
+          return ProfileElement?.Any() == true;
+        case "mustSupport":
+          value = MustSupportElement;
+          return MustSupportElement?.Any() == true;
+        case "codeFilter":
+          value = CodeFilter;
+          return CodeFilter?.Any() == true;
+        case "dateFilter":
+          value = DateFilter;
+          return DateFilter?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (ProfileElement?.Any() == true) yield return new KeyValuePair<string,object>("profile",ProfileElement);
+      if (MustSupportElement?.Any() == true) yield return new KeyValuePair<string,object>("mustSupport",MustSupportElement);
+      if (CodeFilter?.Any() == true) yield return new KeyValuePair<string,object>("codeFilter",CodeFilter);
+      if (DateFilter?.Any() == true) yield return new KeyValuePair<string,object>("dateFilter",DateFilter);
     }
 
   }

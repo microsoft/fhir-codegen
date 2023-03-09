@@ -387,7 +387,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="exportDirectory">Directory to write files.</param>
         void ILanguage.Export(
             FhirVersionInfo info,
-            FhirServerInfo serverInfo,
+            FhirCapabiltyStatement serverInfo,
             ExporterOptions options,
             string exportDirectory)
         {
@@ -453,15 +453,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 if (!binary.Elements.ContainsKey("Binary.content") && binary.Elements.TryGetValue("Binary.data", out FhirElement data))
                 {
-                    var contentElement = new FhirElement("Binary.content", "Binary.content", data.ExplicitName, data.URL,
-                        data.FieldOrder, data.ShortDescription, data.Purpose, data.Comment, data.ValidationRegEx,
-                        data.BaseTypeName, data.ElementTypes, 1, "1",
-                        data.IsModifier, data.IsModifierReason, data.IsSummary, data.IsMustSupport,
-                        data.IsSimple, data.DefaultFieldName, data.DefaultFieldValue,
-                        data.FixedFieldName, data.FixedFieldValue, data.PatternFieldName, data.PatternFieldValue,
-                        data.IsInherited, data.ModifiesParent, data.BindingStrength, data.ValueSet, data.FiveWs,
-                        data.Representations
-                        );
+                    var contentElement = data.CopyWith(binary, "Binary.content", "Binary.content", 1, "1");
 
                     binary.Elements.Add(contentElement.Path, contentElement);
                 }
@@ -473,30 +465,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 if (!signature.Elements.ContainsKey("Signature.blob") && signature.Elements.TryGetValue("Signature.data", out FhirElement data))
                 {
-                    var contentElement = new FhirElement("Signature.blob", "Signature.blob", data.ExplicitName, data.URL,
-                        data.FieldOrder, data.ShortDescription, data.Purpose, data.Comment, data.ValidationRegEx,
-                        data.BaseTypeName, data.ElementTypes, 0, "1",
-                        data.IsModifier, data.IsModifierReason, data.IsSummary, data.IsMustSupport,
-                        data.IsSimple, data.DefaultFieldName, data.DefaultFieldValue,
-                        data.FixedFieldName, data.FixedFieldValue, data.PatternFieldName, data.PatternFieldValue,
-                        data.IsInherited, data.ModifiesParent, data.BindingStrength, data.ValueSet, data.FiveWs,
-                        data.Representations
-                        );
+                    var contentElement = data.CopyWith(signature, "Signature.blob", "Signature.blob", 0, "1");
 
                     signature.Elements.Add(contentElement.Path, contentElement);
                 }
 
                 if (!signature.Elements.ContainsKey("Signature.contentType"))
                 {
-                    var contentTypeElement = new FhirElement(id: "Signature.contentType", path: "Signature.contentType", explicitName: null, url: null,
+                    var contentTypeElement = new FhirElement(
+                        rootArtifact: signature,
+                        id: "Signature.contentType", path: "Signature.contentType", basePath: null, explicitName: null, url: null,
                         fieldOrder: 6, shortDescription: "The technical format of the signature",
                         purpose: null, comment: null, validationRegEx: null,
                         baseTypeName: null, elementTypes: new() { { "code", new("code", "string", new("http://hl7.org/fhir/code"), null, null) } }, cardinalityMin: 0, cardinalityMax: "1",
                         isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
                         isSimple: false, defaultFieldName: null, defaultFieldValue: null,
                         fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
-                        isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
-                        representations: null
+                        isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null,
+                        representations: null, mappings: null
                         );
 
                     signature.Elements.Add(contentTypeElement.Path, contentTypeElement);
@@ -522,15 +508,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 && scopeNode.GetSource() is FhirComplex scopeComplex
                 && !scopeComplex.Elements.ContainsKey("ValueSet.scope.focus"))
             {
-                var focusElement = new FhirElement(id: "ValueSet.scope.focus", path: "ValueSet.scope.focus", explicitName: null, url: null,
+                var focusElement = new FhirElement(
+                    rootArtifact: scopeComplex,
+                    id: "ValueSet.scope.focus", path: "ValueSet.scope.focus", basePath: null, explicitName: null, url: null,
                     fieldOrder: 3, shortDescription: "General focus of the Value Set as it relates to the intended semantic space",
                     purpose: null, comment: null, validationRegEx: null,
                     baseTypeName: "string", elementTypes: null, cardinalityMin: 0, cardinalityMax: "1",
                     isModifier: false, isModifierReason: null, isSummary: false, isMustSupport: false,
                     isSimple: false, defaultFieldName: null, defaultFieldValue: null,
                     fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
-                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
-                    representations: null
+                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, representations: null,
+                    mappings: null
                     );
 
                 scopeComplex.Elements.Add(focusElement.Path, focusElement);
@@ -552,8 +540,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 && constraintNode.GetSource() is FhirComplex constraintComplex
                 && !constraintComplex.Elements.ContainsKey("ElementDefinition.constraint.xpath"))
             {
-                var xPathElement = new FhirElement(id: "ElementDefinition.constraint.xpath", path: "ElementDefinition.constraint.xpath",
-                    explicitName: null, url: null,
+                var xPathElement = new FhirElement(
+                    rootArtifact: constraintComplex,
+                    id: "ElementDefinition.constraint.xpath", path: "ElementDefinition.constraint.xpath",
+                    basePath: null, explicitName: null, url: null,
                     fieldOrder: 7, shortDescription: "XPath expression of constraint",
                     purpose: null, comment: "Elements SHALL use \"f\" as the namespace prefix for the FHIR namespace, and \"x\" for the xhtml namespace, and SHALL NOT use any other prefixes.     Note: XPath is generally considered not useful because it does not apply to JSON and other formats and because of XSLT implementation issues, and may be removed in the future.",
                     validationRegEx: null,
@@ -561,8 +551,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
                     isSimple: false, defaultFieldName: null, defaultFieldValue: null,
                     fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
-                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
-                    representations: null
+                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, representations: null,
+                    mappings: null
                     ); ;
 
                 constraintComplex.Elements.Add(xPathElement.Path, xPathElement);
@@ -574,21 +564,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 if (!relatedArtifact.Elements.ContainsKey("RelatedArtifact.url"))
                 {
-                    var urlElement = new FhirElement(id: "RelatedArtifact.url", path: "RelatedArtifact.url", explicitName: null, url: null,
-                    fieldOrder: 6, shortDescription: "Where the artifact can be accessed",
-                    purpose: null, comment: null, validationRegEx: null,
-                    baseTypeName: "url", elementTypes: null, cardinalityMin: 0, cardinalityMax: "1",
-                    isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
-                    isSimple: false, defaultFieldName: null, defaultFieldValue: null,
-                    fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
-                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, fiveWs: null,
-                    representations: null
-                    );
+                    var urlElement = new FhirElement(
+                        rootArtifact: relatedArtifact,
+                        id: "RelatedArtifact.url", path: "RelatedArtifact.url", basePath: null, explicitName: null, url: null,
+                        fieldOrder: 6, shortDescription: "Where the artifact can be accessed",
+                        purpose: null, comment: null, validationRegEx: null,
+                        baseTypeName: "url", elementTypes: null, cardinalityMin: 0, cardinalityMax: "1",
+                        isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
+                        isSimple: false, defaultFieldName: null, defaultFieldValue: null,
+                        fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
+                        isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, representations: null,
+                        mappings: null
+                        );
 
                     relatedArtifact.Elements.Add(urlElement.Path, urlElement);
                 }
             }
-
 
 
             using (var infoStream = new FileStream(infoFilename, FileMode.Create))

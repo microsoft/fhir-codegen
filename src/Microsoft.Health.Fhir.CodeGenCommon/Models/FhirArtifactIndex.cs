@@ -8,9 +8,6 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 /// <summary>Values that represent FHIR artifact class enums.</summary>
 public enum FhirArtifactClassEnum
 {
-    /// <summary>An enum constant representing the unknown option.</summary>
-    Unknown,
-
     /// <summary>An enum constant representing the primitive type option.</summary>
     PrimitiveType,
 
@@ -60,6 +57,9 @@ public enum FhirArtifactClassEnum
 
     /// <summary>An enum constant representing the implementation guide option.</summary>
     ImplementationGuide,
+
+    /// <summary>An enum constant representing the unknown option.</summary>
+    Unknown,
 }
 
 /// <summary>Information about the FHIR artifact.</summary>

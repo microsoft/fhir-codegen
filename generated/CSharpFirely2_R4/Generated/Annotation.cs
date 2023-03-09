@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Annotation")]
+  [FhirType("Annotation","http://hl7.org/fhir/StructureDefinition/Annotation")]
   public partial class Annotation : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -60,6 +60,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("author", InSummary=true, Order=30, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Practitioner","Patient","RelatedPerson","Organization")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.FhirString))]
     [DataMember]
     public Hl7.Fhir.Model.DataType Author
@@ -136,6 +137,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Annotation());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Annotation;
@@ -184,6 +186,33 @@ namespace Hl7.Fhir.Model
         if (TimeElement != null) yield return new ElementValue("time", TimeElement);
         if (Text != null) yield return new ElementValue("text", Text);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "author":
+          value = Author;
+          return Author is not null;
+        case "time":
+          value = TimeElement;
+          return TimeElement is not null;
+        case "text":
+          value = Text;
+          return Text is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Author is not null) yield return new KeyValuePair<string,object>("author",Author);
+      if (TimeElement is not null) yield return new KeyValuePair<string,object>("time",TimeElement);
+      if (Text is not null) yield return new KeyValuePair<string,object>("text",Text);
     }
 
   }

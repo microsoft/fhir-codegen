@@ -7,25 +7,45 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Converters;
-using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
 /// <summary>A FHIR server connector.</summary>
 public static class ServerConnector
 {
-    /// <summary>
-    /// Attempts to get server information a FhirServerInfo from the given string.
-    /// </summary>
-    /// <param name="serverUrl"> URL of the server.</param>
-    /// <param name="serverInfo">[out] Information describing the server.</param>
+    /// <summary>Attempts to get server information a FhirServerInfo from the given string.</summary>
+    /// <param name="serverUrl">      URL of the server.</param>
+    /// <param name="resolveExternal">True to resolve external references.</param>
+    /// <param name="headers">        The headers.</param>
+    /// <param name="serverInfo">     [out] Information describing the server.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool TryGetServerInfo(
         string serverUrl,
-        out FhirServerInfo serverInfo)
+        bool resolveExternal,
+        Dictionary<string, IEnumerable<string>> headers,
+        out FhirCapabiltyStatement serverInfo)
+    {
+        return TryGetServerInfo(serverUrl, resolveExternal, headers, out _, out serverInfo);
+    }
+
+    /// <summary>Attempts to get server information a FhirServerInfo from the given string.</summary>
+    /// <param name="serverUrl">      URL of the server.</param>
+    /// <param name="resolveExternal">True to resolve external references.</param>
+    /// <param name="headers">        The headers.</param>
+    /// <param name="json">           [out] The JSON.</param>
+    /// <param name="serverInfo">     [out] Information describing the server.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool TryGetServerInfo(
+        string serverUrl,
+        bool resolveExternal,
+        Dictionary<string, IEnumerable<string>> headers,
+        out string json,
+        out FhirCapabiltyStatement serverInfo)
+
     {
         if (string.IsNullOrEmpty(serverUrl))
         {
+            json = string.Empty;
             serverInfo = null;
             return false;
         }
@@ -35,14 +55,28 @@ public static class ServerConnector
 
         try
         {
-            Uri serverUri = new Uri(serverUrl);
+            Uri requestUri;
+
+            if (serverUrl.EndsWith("metadata", StringComparison.OrdinalIgnoreCase))
+            {
+                requestUri = new Uri(serverUrl);
+            }
+            else if (serverUrl.EndsWith("/"))
+            {
+                Uri serverUri = new Uri(serverUrl);
+                requestUri = new Uri(serverUri, "metadata");
+            }
+            else
+            {
+                requestUri = new Uri(serverUrl + "/metadata");
+            }
 
             client = new HttpClient();
 
             request = new HttpRequestMessage()
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri(serverUri, "metadata"),
+                RequestUri = requestUri,
                 Headers =
                 {
                     Accept =
@@ -52,28 +86,38 @@ public static class ServerConnector
                 },
             };
 
+            if (headers?.Any() ?? false)
+            {
+                foreach ((string key, IEnumerable<string> values) in headers)
+                {
+                    request.Headers.Add(key, values);
+                }
+            }
+
             Console.WriteLine($"Requesting metadata from {request.RequestUri}...");
 
             HttpResponseMessage response = client.SendAsync(request).Result;
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                Console.WriteLine($"Request to {request.RequestUri} failed! {response.StatusCode}");
+                Console.WriteLine($"Request to {request.RequestUri} failed! Returned: {response.StatusCode}");
+                json = string.Empty;
                 serverInfo = null;
                 return false;
             }
 
-            string content = response.Content.ReadAsStringAsync().Result;
+            json = response.Content.ReadAsStringAsync().Result;
 
-            if (string.IsNullOrEmpty(content))
+            if (string.IsNullOrEmpty(json))
             {
                 Console.WriteLine($"Request to {request.RequestUri} returned empty body!");
+                json = string.Empty;
                 serverInfo = null;
                 return false;
             }
 
             string fhirVersion;
-            using (JsonDocument jdoc = JsonDocument.Parse(content))
+            using (JsonDocument jdoc = JsonDocument.Parse(json))
             {
                 fhirVersion = jdoc.RootElement.GetProperty("fhirVersion").GetString();
             }
@@ -89,7 +133,11 @@ public static class ServerConnector
 
             IFhirConverter fhirConverter = ConverterHelper.ConverterForVersion(fhirVersion);
 
-            object metadata = fhirConverter.ParseResource(content);
+            if (!fhirConverter.TryParseResource(json, out var metadata, out string rt))
+            {
+                serverInfo = null;
+                return false;
+            }
 
             fhirConverter.ProcessMetadata(metadata, serverUrl, out serverInfo);
 
@@ -103,7 +151,7 @@ public static class ServerConnector
                 Console.WriteLine($"\t     Description: {serverInfo.ImplementationDescription}");
                 Console.WriteLine($"\t       Resources: {serverInfo.ResourceInteractions.Count}");
 
-                serverInfo.TryResolveServerPackages();
+                FhirManager.Current.TryResolveCanonicals(serverInfo, resolveExternal);
 
                 return true;
             }
@@ -113,6 +161,7 @@ public static class ServerConnector
 #pragma warning restore CA1031 // Do not catch general exception types
         {
             Console.WriteLine($"Failed to get server info from: {serverUrl}, {ex.Message}");
+            json = string.Empty;
             serverInfo = null;
             return false;
         }
@@ -131,6 +180,37 @@ public static class ServerConnector
 
         serverInfo = null;
         return false;
+    }
+
+    /// <summary>Parse capability JSON.</summary>
+    /// <param name="json">[out] The JSON.</param>
+    /// <returns>A FhirCapabiltyStatement.</returns>
+    public static FhirCapabiltyStatement ParseCapabilityJson(string json)
+    {
+        string url;
+        string fhirVersion;
+        using (JsonDocument jdoc = JsonDocument.Parse(json))
+        {
+            fhirVersion = jdoc.RootElement.GetProperty("fhirVersion").GetString();
+            url = jdoc.RootElement.GetProperty("url").GetString() ?? string.Empty;
+        }
+
+        if (string.IsNullOrEmpty(fhirVersion))
+        {
+            Console.WriteLine($"ParseCapabilityJson <<< could not determine the FHIR version");
+            return null;
+        }
+
+        IFhirConverter fhirConverter = ConverterHelper.ConverterForVersion(fhirVersion);
+
+        if (!fhirConverter.TryParseResource(json, out var metadata, out string rt))
+        {
+            return null;
+        }
+
+        fhirConverter.ProcessMetadata(metadata, url, out FhirCapabiltyStatement serverInfo);
+
+        return serverInfo;
     }
 
     /// <summary>
@@ -172,13 +252,21 @@ public static class ServerConnector
                 },
             };
 
+            //if (headers?.Any() ?? false)
+            //{
+            //    foreach ((string key, IEnumerable<string> values) in headers)
+            //    {
+            //        request.Headers.Add(key, values);
+            //    }
+            //}
+
             Console.WriteLine($"Requesting {request.RequestUri}...");
 
             HttpResponseMessage response = client.SendAsync(request).Result;
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                Console.WriteLine($"Request to {request.RequestUri} failed! {response.StatusCode}");
+                Console.WriteLine($"Request to {request.RequestUri} failed! Returned: {response.StatusCode}");
                 fhirJson = null;
                 return false;
             }
@@ -214,9 +302,6 @@ public static class ServerConnector
                 client.Dispose();
             }
         }
-
-        fhirJson = null;
-        return false;
     }
 
 }

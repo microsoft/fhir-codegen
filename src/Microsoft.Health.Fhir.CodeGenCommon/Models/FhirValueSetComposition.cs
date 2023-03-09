@@ -35,6 +35,19 @@ public class FhirValueSetComposition : ICloneable
         LinkedValueSets = linkedValueSets;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirValueSetComposition"/> class.
+    /// </summary>
+    /// <param name="source">Source for the.</param>
+    public FhirValueSetComposition(FhirValueSetComposition source)
+    {
+        System = source.System;
+        Version = source.Version;
+        Concepts = source.Concepts?.Select(c => new FhirConcept(c)).ToList() ?? new();
+        Filters = source.Filters?.Select(f => new FhirValueSetFilter(f)).ToList() ?? new();
+        LinkedValueSets = source.LinkedValueSets?.Select(s => s).ToList() ?? new();
+    }
+
     /// <summary>Values that represent composition types.</summary>
     public enum CompositionType
     {
@@ -69,32 +82,6 @@ public class FhirValueSetComposition : ICloneable
     /// <returns>A new object that is a copy of this instance.</returns>
     public object Clone()
     {
-        List<FhirConcept> concepts = null;
-
-        if (Concepts != null)
-        {
-            concepts = Concepts.Select(c => (FhirConcept)c.Clone()).ToList();
-        }
-
-        List<FhirValueSetFilter> filters = null;
-
-        if (Filters != null)
-        {
-            filters = Filters.Select(f => (FhirValueSetFilter)f.Clone()).ToList();
-        }
-
-        List<string> linked = null;
-
-        if (LinkedValueSets != null)
-        {
-            linked = LinkedValueSets.Select(s => (string)s.Clone()).ToList();
-        }
-
-        return new FhirValueSetComposition(
-            System,
-            Version,
-            concepts,
-            filters,
-            linked);
+        return new FhirValueSetComposition(this);
     }
 }

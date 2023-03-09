@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("ReferralRequest", IsResource=true)]
+  [FhirType("ReferralRequest","http://hl7.org/fhir/StructureDefinition/ReferralRequest", IsResource=true)]
   public partial class ReferralRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -110,7 +110,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// draft | requested | active | cancelled | accepted | rejected | completed
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=90)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=90)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.ReferralRequest.ReferralStatus> StatusElement
@@ -436,6 +437,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new ReferralRequest());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as ReferralRequest;
@@ -536,6 +538,85 @@ namespace Hl7.Fhir.Model
         foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", elem); }
         if (FulfillmentTime != null) yield return new ElementValue("fulfillmentTime", FulfillmentTime);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "specialty":
+          value = Specialty;
+          return Specialty is not null;
+        case "priority":
+          value = Priority;
+          return Priority is not null;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "requester":
+          value = Requester;
+          return Requester is not null;
+        case "recipient":
+          value = Recipient;
+          return Recipient?.Any() == true;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "dateSent":
+          value = DateSentElement;
+          return DateSentElement is not null;
+        case "reason":
+          value = Reason;
+          return Reason is not null;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "serviceRequested":
+          value = ServiceRequested;
+          return ServiceRequested?.Any() == true;
+        case "supportingInformation":
+          value = SupportingInformation;
+          return SupportingInformation?.Any() == true;
+        case "fulfillmentTime":
+          value = FulfillmentTime;
+          return FulfillmentTime is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Specialty is not null) yield return new KeyValuePair<string,object>("specialty",Specialty);
+      if (Priority is not null) yield return new KeyValuePair<string,object>("priority",Priority);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (Requester is not null) yield return new KeyValuePair<string,object>("requester",Requester);
+      if (Recipient?.Any() == true) yield return new KeyValuePair<string,object>("recipient",Recipient);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (DateSentElement is not null) yield return new KeyValuePair<string,object>("dateSent",DateSentElement);
+      if (Reason is not null) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (ServiceRequested?.Any() == true) yield return new KeyValuePair<string,object>("serviceRequested",ServiceRequested);
+      if (SupportingInformation?.Any() == true) yield return new KeyValuePair<string,object>("supportingInformation",SupportingInformation);
+      if (FulfillmentTime is not null) yield return new KeyValuePair<string,object>("fulfillmentTime",FulfillmentTime);
     }
 
   }

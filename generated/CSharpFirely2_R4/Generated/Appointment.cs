@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Appointment", IsResource=true)]
+  [FhirType("Appointment","http://hl7.org/fhir/StructureDefinition/Appointment", IsResource=true)]
   public partial class Appointment : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -184,7 +184,7 @@ namespace Hl7.Fhir.Model
       /// <summary>
       /// Person, Location/HealthcareService or Device
       /// </summary>
-      [FhirElement("actor", InSummary=true, Order=50)]
+      [FhirElement("actor", InSummary=true, Order=50, FiveWs="FiveWs.who")]
       [CLSCompliant(false)]
       [References("Patient","Practitioner","PractitionerRole","RelatedPerson","Device","HealthcareService","Location")]
       [DataMember]
@@ -200,6 +200,7 @@ namespace Hl7.Fhir.Model
       /// required | optional | information-only
       /// </summary>
       [FhirElement("required", InSummary=true, Order=60)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.Appointment.ParticipantRequired> RequiredElement
       {
@@ -231,6 +232,7 @@ namespace Hl7.Fhir.Model
       /// accepted | declined | tentative | needs-action
       /// </summary>
       [FhirElement("status", InSummary=true, Order=70)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.ParticipationStatus> StatusElement
@@ -295,6 +297,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ParticipantComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ParticipantComponent;
@@ -353,12 +356,47 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = Type;
+            return Type?.Any() == true;
+          case "actor":
+            value = Actor;
+            return Actor is not null;
+          case "required":
+            value = RequiredElement;
+            return RequiredElement is not null;
+          case "status":
+            value = StatusElement;
+            return StatusElement is not null;
+          case "period":
+            value = Period;
+            return Period is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Type?.Any() == true) yield return new KeyValuePair<string,object>("type",Type);
+        if (Actor is not null) yield return new KeyValuePair<string,object>("actor",Actor);
+        if (RequiredElement is not null) yield return new KeyValuePair<string,object>("required",RequiredElement);
+        if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+        if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
+      }
+
     }
 
     /// <summary>
     /// External Ids for this item
     /// </summary>
-    [FhirElement("identifier", InSummary=true, Order=90)]
+    [FhirElement("identifier", InSummary=true, Order=90, FiveWs="FiveWs.identifier")]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Hl7.Fhir.Model.Identifier> Identifier
@@ -372,7 +410,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// proposed | pending | booked | arrived | fulfilled | cancelled | noshow | entered-in-error | checked-in | waitlist
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=100)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=100, FiveWs="FiveWs.status")]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.Appointment.AppointmentStatus> StatusElement
@@ -445,7 +484,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// The specialty of a practitioner that would be required to perform the service requested in this appointment
     /// </summary>
-    [FhirElement("specialty", InSummary=true, Order=140)]
+    [FhirElement("specialty", InSummary=true, Order=140, FiveWs="FiveWs.class")]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Hl7.Fhir.Model.CodeableConcept> Specialty
@@ -502,7 +541,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Used to make informed decisions if needing to re-prioritize
     /// </summary>
-    [FhirElement("priority", Order=180)]
+    [FhirElement("priority", Order=180, FiveWs="FiveWs.class")]
     [DataMember]
     public Hl7.Fhir.Model.UnsignedInt PriorityElement
     {
@@ -564,7 +603,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Additional information to support the appointment
     /// </summary>
-    [FhirElement("supportingInformation", Order=200)]
+    [FhirElement("supportingInformation", Order=200, FiveWs="FiveWs.context")]
     [CLSCompliant(false)]
     [References("Resource")]
     [Cardinality(Min=0,Max=-1)]
@@ -580,7 +619,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// When appointment is to take place
     /// </summary>
-    [FhirElement("start", InSummary=true, Order=210)]
+    [FhirElement("start", InSummary=true, Order=210, FiveWs="FiveWs.init")]
     [DataMember]
     public Hl7.Fhir.Model.Instant StartElement
     {
@@ -611,7 +650,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// When appointment is to conclude
     /// </summary>
-    [FhirElement("end", InSummary=true, Order=220)]
+    [FhirElement("end", InSummary=true, Order=220, FiveWs="FiveWs.done[x]")]
     [DataMember]
     public Hl7.Fhir.Model.Instant EndElement
     {
@@ -863,6 +902,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Appointment());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Appointment;
@@ -987,6 +1027,109 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", elem); }
         foreach (var elem in RequestedPeriod) { if (elem != null) yield return new ElementValue("requestedPeriod", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "cancelationReason":
+          value = CancelationReason;
+          return CancelationReason is not null;
+        case "serviceCategory":
+          value = ServiceCategory;
+          return ServiceCategory?.Any() == true;
+        case "serviceType":
+          value = ServiceType;
+          return ServiceType?.Any() == true;
+        case "specialty":
+          value = Specialty;
+          return Specialty?.Any() == true;
+        case "appointmentType":
+          value = AppointmentType;
+          return AppointmentType is not null;
+        case "reasonCode":
+          value = ReasonCode;
+          return ReasonCode?.Any() == true;
+        case "reasonReference":
+          value = ReasonReference;
+          return ReasonReference?.Any() == true;
+        case "priority":
+          value = PriorityElement;
+          return PriorityElement is not null;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "supportingInformation":
+          value = SupportingInformation;
+          return SupportingInformation?.Any() == true;
+        case "start":
+          value = StartElement;
+          return StartElement is not null;
+        case "end":
+          value = EndElement;
+          return EndElement is not null;
+        case "minutesDuration":
+          value = MinutesDurationElement;
+          return MinutesDurationElement is not null;
+        case "slot":
+          value = Slot;
+          return Slot?.Any() == true;
+        case "created":
+          value = CreatedElement;
+          return CreatedElement is not null;
+        case "comment":
+          value = CommentElement;
+          return CommentElement is not null;
+        case "patientInstruction":
+          value = PatientInstructionElement;
+          return PatientInstructionElement is not null;
+        case "basedOn":
+          value = BasedOn;
+          return BasedOn?.Any() == true;
+        case "participant":
+          value = Participant;
+          return Participant?.Any() == true;
+        case "requestedPeriod":
+          value = RequestedPeriod;
+          return RequestedPeriod?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (CancelationReason is not null) yield return new KeyValuePair<string,object>("cancelationReason",CancelationReason);
+      if (ServiceCategory?.Any() == true) yield return new KeyValuePair<string,object>("serviceCategory",ServiceCategory);
+      if (ServiceType?.Any() == true) yield return new KeyValuePair<string,object>("serviceType",ServiceType);
+      if (Specialty?.Any() == true) yield return new KeyValuePair<string,object>("specialty",Specialty);
+      if (AppointmentType is not null) yield return new KeyValuePair<string,object>("appointmentType",AppointmentType);
+      if (ReasonCode?.Any() == true) yield return new KeyValuePair<string,object>("reasonCode",ReasonCode);
+      if (ReasonReference?.Any() == true) yield return new KeyValuePair<string,object>("reasonReference",ReasonReference);
+      if (PriorityElement is not null) yield return new KeyValuePair<string,object>("priority",PriorityElement);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (SupportingInformation?.Any() == true) yield return new KeyValuePair<string,object>("supportingInformation",SupportingInformation);
+      if (StartElement is not null) yield return new KeyValuePair<string,object>("start",StartElement);
+      if (EndElement is not null) yield return new KeyValuePair<string,object>("end",EndElement);
+      if (MinutesDurationElement is not null) yield return new KeyValuePair<string,object>("minutesDuration",MinutesDurationElement);
+      if (Slot?.Any() == true) yield return new KeyValuePair<string,object>("slot",Slot);
+      if (CreatedElement is not null) yield return new KeyValuePair<string,object>("created",CreatedElement);
+      if (CommentElement is not null) yield return new KeyValuePair<string,object>("comment",CommentElement);
+      if (PatientInstructionElement is not null) yield return new KeyValuePair<string,object>("patientInstruction",PatientInstructionElement);
+      if (BasedOn?.Any() == true) yield return new KeyValuePair<string,object>("basedOn",BasedOn);
+      if (Participant?.Any() == true) yield return new KeyValuePair<string,object>("participant",Participant);
+      if (RequestedPeriod?.Any() == true) yield return new KeyValuePair<string,object>("requestedPeriod",RequestedPeriod);
     }
 
   }

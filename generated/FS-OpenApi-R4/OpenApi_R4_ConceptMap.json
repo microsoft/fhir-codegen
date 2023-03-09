@@ -1,0 +1,1695 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Firely Server - ConceptMap",
+    "version": "4.10.0"
+  },
+  "host": "server.fire.ly",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/ConceptMap": {
+      "post": {
+        "tags": [
+          "ConceptMap"
+        ],
+        "summary": "create: Create a new ConceptMap instance",
+        "operationId": "CreateConceptMap",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A FHIR ConceptMap",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConceptMap"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ConceptMap"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ConceptMap"
+        ],
+        "summary": "search-type: Search for ConceptMap instances",
+        "operationId": "SearchConceptMapGet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_contained"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_graph"
+          },
+          {
+            "$ref": "#/parameters/_include"
+          },
+          {
+            "$ref": "#/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/parameters/_score"
+          },
+          {
+            "$ref": "#/parameters/_sort"
+          },
+          {
+            "$ref": "#/parameters/_total"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/context"
+          },
+          {
+            "$ref": "#/parameters/context-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type"
+          },
+          {
+            "$ref": "#/parameters/context-type-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type-value"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/dependson"
+          },
+          {
+            "$ref": "#/parameters/description"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/jurisdiction"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/other"
+          },
+          {
+            "$ref": "#/parameters/product"
+          },
+          {
+            "$ref": "#/parameters/publisher"
+          },
+          {
+            "$ref": "#/parameters/source"
+          },
+          {
+            "$ref": "#/parameters/source-code"
+          },
+          {
+            "$ref": "#/parameters/source-system"
+          },
+          {
+            "$ref": "#/parameters/source-uri"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/target"
+          },
+          {
+            "$ref": "#/parameters/target-code"
+          },
+          {
+            "$ref": "#/parameters/target-system"
+          },
+          {
+            "$ref": "#/parameters/target-uri"
+          },
+          {
+            "$ref": "#/parameters/title"
+          },
+          {
+            "$ref": "#/parameters/url"
+          },
+          {
+            "$ref": "#/parameters/version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ConceptMap/{logical_id}": {
+      "delete": {
+        "tags": [
+          "ConceptMap"
+        ],
+        "summary": "delete: Perform a loical delete on a ConceptMap instance",
+        "operationId": "DeleteConceptMap",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/context"
+          },
+          {
+            "$ref": "#/parameters/context-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type"
+          },
+          {
+            "$ref": "#/parameters/context-type-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type-value"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/dependson"
+          },
+          {
+            "$ref": "#/parameters/description"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/jurisdiction"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/other"
+          },
+          {
+            "$ref": "#/parameters/product"
+          },
+          {
+            "$ref": "#/parameters/publisher"
+          },
+          {
+            "$ref": "#/parameters/source"
+          },
+          {
+            "$ref": "#/parameters/source-code"
+          },
+          {
+            "$ref": "#/parameters/source-system"
+          },
+          {
+            "$ref": "#/parameters/source-uri"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/target"
+          },
+          {
+            "$ref": "#/parameters/target-code"
+          },
+          {
+            "$ref": "#/parameters/target-system"
+          },
+          {
+            "$ref": "#/parameters/target-uri"
+          },
+          {
+            "$ref": "#/parameters/title"
+          },
+          {
+            "$ref": "#/parameters/url"
+          },
+          {
+            "$ref": "#/parameters/version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ConceptMap"
+            }
+          },
+          "202": {
+            "description": "ACCEPTED"
+          },
+          "204": {
+            "description": "NO CONTENT"
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "ConceptMap"
+        ],
+        "summary": "patch: Patch a ConceptMap instance",
+        "operationId": "PatchConceptMap",
+        "consumes": [ ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Patch to apply to a FHIR ConceptMap record",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ConceptMap"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ConceptMap"
+        ],
+        "summary": "read: Read a FHIR ConceptMap",
+        "operationId": "ReadConceptMap",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ConceptMap"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ConceptMap"
+        ],
+        "summary": "update,create: Update or Create a ConceptMap instance",
+        "operationId": "UpdateOrCreateConceptMap",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/context"
+          },
+          {
+            "$ref": "#/parameters/context-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type"
+          },
+          {
+            "$ref": "#/parameters/context-type-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type-value"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/dependson"
+          },
+          {
+            "$ref": "#/parameters/description"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/jurisdiction"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/other"
+          },
+          {
+            "$ref": "#/parameters/product"
+          },
+          {
+            "$ref": "#/parameters/publisher"
+          },
+          {
+            "$ref": "#/parameters/source"
+          },
+          {
+            "$ref": "#/parameters/source-code"
+          },
+          {
+            "$ref": "#/parameters/source-system"
+          },
+          {
+            "$ref": "#/parameters/source-uri"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/target"
+          },
+          {
+            "$ref": "#/parameters/target-code"
+          },
+          {
+            "$ref": "#/parameters/target-system"
+          },
+          {
+            "$ref": "#/parameters/target-uri"
+          },
+          {
+            "$ref": "#/parameters/title"
+          },
+          {
+            "$ref": "#/parameters/url"
+          },
+          {
+            "$ref": "#/parameters/version"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "An updated FHIR ConceptMap",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConceptMap"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ConceptMap"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ConceptMap/_search": {
+      "post": {
+        "tags": [
+          "ConceptMap"
+        ],
+        "summary": "search-type: Search for ConceptMap instances",
+        "operationId": "SearchConceptMapPost",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "_elements",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_summary",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_content",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_filter",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_in",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_language",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_lastUpdated",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_list",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_profile",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_query",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_security",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_source",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_tag",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_text",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_contained",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_count",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_graph",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_include",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_revinclude",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_score",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_sort",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_total",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_format",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_has",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-quantity",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-type",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-type-quantity",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-type-value",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "dependson",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "identifier",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "jurisdiction",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "other",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "product",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "publisher",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "source",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "source-code",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "source-system",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "source-uri",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "target",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "target-code",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "target-system",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "target-uri",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "url",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "version",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ConceptMap/{logical_id}/_history/{resource_version}": {
+      "get": {
+        "tags": [
+          "ConceptMap"
+        ],
+        "summary": "vread: Read ConceptMap instance with specific version",
+        "operationId": "VReadConceptMap",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/resource_version"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ConceptMap"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ConceptMap/{logical_id}/$translate": {
+      "post": {
+        "tags": [
+          "ConceptMap"
+        ],
+        "summary": "operation: Translate a code from one value set to another, based on the existing value set and concept maps resources, and/or other additional knowledge available to the server. \r\n\r\n One (and only one) of the in parameters (code, coding, codeableConcept) must be provided, to identify the code that is to be translated.  \r\n\r\n The operation returns a set of parameters including a 'result' for whether there is an acceptable match, and a list of possible matches. Note that the list of matches may include notes of codes for which mapping is specifically excluded, so implementers have to check the match.equivalence for each match",
+        "operationId": "ConceptMapInstanceTranslatePost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ConceptMap/$translate": {
+      "post": {
+        "tags": [
+          "ConceptMap"
+        ],
+        "summary": "operation: Translate a code from one value set to another, based on the existing value set and concept maps resources, and/or other additional knowledge available to the server. \r\n\r\n One (and only one) of the in parameters (code, coding, codeableConcept) must be provided, to identify the code that is to be translated.  \r\n\r\n The operation returns a set of parameters including a 'result' for whether there is an acceptable match, and a list of possible matches. Note that the list of matches may include notes of codes for which mapping is specifically excluded, so implementers have to check the match.equivalence for each match",
+        "operationId": "ConceptMapTranslatePost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "ConceptMap": {
+      "description": "A map from one set of concepts to one or more other concepts",
+      "type": "object"
+    },
+    "OperationOutcome": {
+      "description": "Information about the success/failure of an action",
+      "type": "object"
+    },
+    "Bundle": {
+      "description": "Contains a collection of resources",
+      "type": "object"
+    },
+    "Parameters": {
+      "description": "Operation Request or Response",
+      "type": "object"
+    }
+  },
+  "parameters": {
+    "_format": {
+      "in": "query",
+      "name": "_format",
+      "description": "Override the HTTP content negotiation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_pretty": {
+      "in": "query",
+      "name": "_pretty",
+      "description": "Ask for a pretty printed response for human convenience",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_elements": {
+      "in": "query",
+      "name": "_elements",
+      "description": "Ask for a particular set of elements to be returned",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_summary": {
+      "in": "query",
+      "name": "_summary",
+      "description": "Return only portions of resources, based on pre-defined levels",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_content": {
+      "in": "query",
+      "name": "_content",
+      "description": "Search on the entire content of the resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_filter": {
+      "in": "query",
+      "name": "_filter",
+      "description": "Provide an inline query expression",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_id": {
+      "in": "query",
+      "name": "_id",
+      "description": "Logical id of this artifact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_in": {
+      "in": "query",
+      "name": "_in",
+      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_language": {
+      "in": "query",
+      "name": "_language",
+      "description": "Language of the resource content",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_lastUpdated": {
+      "in": "query",
+      "name": "_lastUpdated",
+      "description": "When the resource version last changed",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_list": {
+      "in": "query",
+      "name": "_list",
+      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_profile": {
+      "in": "query",
+      "name": "_profile",
+      "description": "Profiles this resource claims to conform to",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_query": {
+      "in": "query",
+      "name": "_query",
+      "description": "A custom search profile that describes a specific defined query operation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_security": {
+      "in": "query",
+      "name": "_security",
+      "description": "Security Labels applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_source": {
+      "in": "query",
+      "name": "_source",
+      "description": "Identifies where the resource comes from",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_tag": {
+      "in": "query",
+      "name": "_tag",
+      "description": "Tags applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_text": {
+      "in": "query",
+      "name": "_text",
+      "description": "Perform searches against the narrative content of a resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_contained": {
+      "in": "query",
+      "name": "_contained",
+      "description": "Request different types of handling for contained resources",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_count": {
+      "in": "query",
+      "name": "_count",
+      "description": "Limit the number of match results per page of response",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "_graph": {
+      "in": "query",
+      "name": "_graph",
+      "description": "Include additional resources according to a GraphDefinition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_include": {
+      "in": "query",
+      "name": "_include",
+      "description": "Include additional resources, based on following links forward across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_revinclude": {
+      "in": "query",
+      "name": "_revinclude",
+      "description": "Include additional resources, based on following reverse links across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_score": {
+      "in": "query",
+      "name": "_score",
+      "description": "Request match relevance in results",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_sort": {
+      "in": "query",
+      "name": "_sort",
+      "description": "Request which order results should be returned in",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_total": {
+      "in": "query",
+      "name": "_total",
+      "description": "Request a precision of the total number of results for a request",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_has": {
+      "in": "query",
+      "name": "_has",
+      "description": "Enables querying a reverse chain",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context": {
+      "in": "query",
+      "name": "context",
+      "description": "A use context assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-quantity": {
+      "in": "query",
+      "name": "context-quantity",
+      "description": "A quantity- or range-valued use context assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-type": {
+      "in": "query",
+      "name": "context-type",
+      "description": "A type of use context assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-type-quantity": {
+      "in": "query",
+      "name": "context-type-quantity",
+      "description": "A use context type and quantity- or range-based value assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-type-value": {
+      "in": "query",
+      "name": "context-type-value",
+      "description": "A use context type and value assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "date": {
+      "in": "query",
+      "name": "date",
+      "description": "The activity definition publication date",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "dependson": {
+      "in": "query",
+      "name": "dependson",
+      "description": "Reference to property mapping depends on",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "description": {
+      "in": "query",
+      "name": "description",
+      "description": "The description of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "identifier": {
+      "in": "query",
+      "name": "identifier",
+      "description": "Account number",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "jurisdiction": {
+      "in": "query",
+      "name": "jurisdiction",
+      "description": "Intended jurisdiction for the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "name": {
+      "in": "query",
+      "name": "name",
+      "description": "Human-readable label",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "other": {
+      "in": "query",
+      "name": "other",
+      "description": "canonical reference to an additional ConceptMap to use for mapping if the source concept is unmapped",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "product": {
+      "in": "query",
+      "name": "product",
+      "description": "Reference to property mapping depends on",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "publisher": {
+      "in": "query",
+      "name": "publisher",
+      "description": "Name of the publisher of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "source": {
+      "in": "query",
+      "name": "source",
+      "description": "The identity of source detecting the event",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "source-code": {
+      "in": "query",
+      "name": "source-code",
+      "description": "Identifies element being mapped",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "source-system": {
+      "in": "query",
+      "name": "source-system",
+      "description": "Source system where concepts to be mapped are defined",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "source-uri": {
+      "in": "query",
+      "name": "source-uri",
+      "description": "The source value set that contains the concepts that are being mapped",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "status": {
+      "in": "query",
+      "name": "status",
+      "description": "active | inactive | entered-in-error | on-hold | unknown",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "target": {
+      "in": "query",
+      "name": "target",
+      "description": "The target value set which provides context for the mappings",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "target-code": {
+      "in": "query",
+      "name": "target-code",
+      "description": "Code that identifies the target element",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "target-system": {
+      "in": "query",
+      "name": "target-system",
+      "description": "Target system that the concepts are to be mapped to",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "target-uri": {
+      "in": "query",
+      "name": "target-uri",
+      "description": "The target value set which provides context for the mappings",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "title": {
+      "in": "query",
+      "name": "title",
+      "description": "The human-friendly name of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "url": {
+      "in": "query",
+      "name": "url",
+      "description": "The uri that identifies the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "version": {
+      "in": "query",
+      "name": "version",
+      "description": "The business version of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "logical_id": {
+      "in": "path",
+      "name": "logical_id",
+      "description": "Resource Logical ID",
+      "required": true,
+      "type": "string"
+    },
+    "resource_version": {
+      "in": "path",
+      "name": "resource_version",
+      "description": "Resource Version Number",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "tags": [
+    {
+      "name": "ConceptMap",
+      "description": "A map from one set of concepts to one or more other concepts"
+    }
+  ]
+}

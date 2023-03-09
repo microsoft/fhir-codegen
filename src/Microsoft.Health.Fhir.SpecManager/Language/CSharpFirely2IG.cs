@@ -254,7 +254,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="exportDirectory">Directory to write files.</param>
         void ILanguage.Export(
             FhirVersionInfo info,
-            FhirServerInfo serverInfo,
+            FhirCapabiltyStatement serverInfo,
             ExporterOptions options,
             string exportDirectory)
         {
@@ -1101,7 +1101,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writtenConverters.Add($"{exportName}JsonExtensions.{exportName}JsonConverter");
 
             // open class
-            WriteIndentedComment("Resource converter to support Sytem.Text.Json interop.");
+            WriteIndentedComment("Resource converter to support System.Text.Json interop.");
             _writer.WriteLineIndented($"public class {exportName}JsonConverter : JsonConverter<{exportName}>");
             _writer.OpenScope();
 

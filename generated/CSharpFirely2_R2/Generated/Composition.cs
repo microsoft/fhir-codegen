@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Composition", IsResource=true)]
+  [FhirType("Composition","http://hl7.org/fhir/StructureDefinition/Composition", IsResource=true)]
   public partial class Composition : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -209,6 +209,7 @@ namespace Hl7.Fhir.Model
       /// personal | professional | legal | official
       /// </summary>
       [FhirElement("mode", InSummary=true, Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=-1)]
       [DataMember]
       public List<Code<Hl7.Fhir.Model.Composition.CompositionAttestationMode>> ModeElement
@@ -304,6 +305,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new AttesterComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as AttesterComponent;
@@ -352,6 +354,33 @@ namespace Hl7.Fhir.Model
           if (TimeElement != null) yield return new ElementValue("time", TimeElement);
           if (Party != null) yield return new ElementValue("party", Party);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "mode":
+            value = ModeElement;
+            return ModeElement?.Any() == true;
+          case "time":
+            value = TimeElement;
+            return TimeElement is not null;
+          case "party":
+            value = Party;
+            return Party is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (ModeElement?.Any() == true) yield return new KeyValuePair<string,object>("mode",ModeElement);
+        if (TimeElement is not null) yield return new KeyValuePair<string,object>("time",TimeElement);
+        if (Party is not null) yield return new KeyValuePair<string,object>("party",Party);
       }
 
     }
@@ -433,6 +462,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new EventComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as EventComponent;
@@ -481,6 +511,33 @@ namespace Hl7.Fhir.Model
           if (Period != null) yield return new ElementValue("period", Period);
           foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "code":
+            value = Code;
+            return Code?.Any() == true;
+          case "period":
+            value = Period;
+            return Period is not null;
+          case "detail":
+            value = Detail;
+            return Detail?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Code?.Any() == true) yield return new KeyValuePair<string,object>("code",Code);
+        if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
+        if (Detail?.Any() == true) yield return new KeyValuePair<string,object>("detail",Detail);
       }
 
     }
@@ -558,7 +615,8 @@ namespace Hl7.Fhir.Model
       /// <summary>
       /// working | snapshot | changes
       /// </summary>
-      [FhirElement("mode", InSummary=true, Order=70)]
+      [FhirElement("mode", InSummary=true, IsModifier=true, Order=70)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.ListMode> ModeElement
       {
@@ -668,6 +726,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new SectionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as SectionComponent;
@@ -736,6 +795,53 @@ namespace Hl7.Fhir.Model
           if (EmptyReason != null) yield return new ElementValue("emptyReason", EmptyReason);
           foreach (var elem in Section) { if (elem != null) yield return new ElementValue("section", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "title":
+            value = TitleElement;
+            return TitleElement is not null;
+          case "code":
+            value = Code;
+            return Code is not null;
+          case "text":
+            value = Text;
+            return Text is not null;
+          case "mode":
+            value = ModeElement;
+            return ModeElement is not null;
+          case "orderedBy":
+            value = OrderedBy;
+            return OrderedBy is not null;
+          case "entry":
+            value = Entry;
+            return Entry?.Any() == true;
+          case "emptyReason":
+            value = EmptyReason;
+            return EmptyReason is not null;
+          case "section":
+            value = Section;
+            return Section?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (TitleElement is not null) yield return new KeyValuePair<string,object>("title",TitleElement);
+        if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+        if (Text is not null) yield return new KeyValuePair<string,object>("text",Text);
+        if (ModeElement is not null) yield return new KeyValuePair<string,object>("mode",ModeElement);
+        if (OrderedBy is not null) yield return new KeyValuePair<string,object>("orderedBy",OrderedBy);
+        if (Entry?.Any() == true) yield return new KeyValuePair<string,object>("entry",Entry);
+        if (EmptyReason is not null) yield return new KeyValuePair<string,object>("emptyReason",EmptyReason);
+        if (Section?.Any() == true) yield return new KeyValuePair<string,object>("section",Section);
       }
 
     }
@@ -847,7 +953,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// preliminary | final | amended | entered-in-error
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=140)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=140)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.CompositionStatus> StatusElement
@@ -879,7 +986,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// As defined by affinity domain
     /// </summary>
-    [FhirElement("confidentiality", InSummary=true, Order=150)]
+    [FhirElement("confidentiality", InSummary=true, IsModifier=true, Order=150)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.Composition.v3CodeSystemConfidentiality> ConfidentialityElement
     {
@@ -1043,6 +1151,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Composition());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Composition;
@@ -1135,6 +1244,77 @@ namespace Hl7.Fhir.Model
         if (Encounter != null) yield return new ElementValue("encounter", Encounter);
         foreach (var elem in Section) { if (elem != null) yield return new ElementValue("section", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier is not null;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "class":
+          value = Class;
+          return Class is not null;
+        case "title":
+          value = TitleElement;
+          return TitleElement is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "confidentiality":
+          value = ConfidentialityElement;
+          return ConfidentialityElement is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "author":
+          value = Author;
+          return Author?.Any() == true;
+        case "attester":
+          value = Attester;
+          return Attester?.Any() == true;
+        case "custodian":
+          value = Custodian;
+          return Custodian is not null;
+        case "event":
+          value = Event;
+          return Event?.Any() == true;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "section":
+          value = Section;
+          return Section?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Class is not null) yield return new KeyValuePair<string,object>("class",Class);
+      if (TitleElement is not null) yield return new KeyValuePair<string,object>("title",TitleElement);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (ConfidentialityElement is not null) yield return new KeyValuePair<string,object>("confidentiality",ConfidentialityElement);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Author?.Any() == true) yield return new KeyValuePair<string,object>("author",Author);
+      if (Attester?.Any() == true) yield return new KeyValuePair<string,object>("attester",Attester);
+      if (Custodian is not null) yield return new KeyValuePair<string,object>("custodian",Custodian);
+      if (Event?.Any() == true) yield return new KeyValuePair<string,object>("event",Event);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Section?.Any() == true) yield return new KeyValuePair<string,object>("section",Section);
     }
 
   }

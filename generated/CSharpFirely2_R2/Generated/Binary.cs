@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Binary", IsResource=true)]
+  [FhirType("Binary","http://hl7.org/fhir/StructureDefinition/Binary", IsResource=true)]
   public partial class Binary : Hl7.Fhir.Model.Resource
   {
     /// <summary>
@@ -139,6 +139,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Binary());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Binary;
@@ -183,6 +184,29 @@ namespace Hl7.Fhir.Model
         if (ContentTypeElement != null) yield return new ElementValue("contentType", ContentTypeElement);
         if (ContentElement != null) yield return new ElementValue("content", ContentElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "contentType":
+          value = ContentTypeElement;
+          return ContentTypeElement is not null;
+        case "content":
+          value = ContentElement;
+          return ContentElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (ContentTypeElement is not null) yield return new KeyValuePair<string,object>("contentType",ContentTypeElement);
+      if (ContentElement is not null) yield return new KeyValuePair<string,object>("content",ContentElement);
     }
 
   }

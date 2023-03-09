@@ -196,12 +196,12 @@ public abstract class FhirSpecificationLoader
     /// <summary>Process the package files.</summary>
     /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
     /// <param name="files">         The files.</param>
-    /// <param name="packageInfo">   Information describing the fhir version.</param>
+    /// <param name="fhirInfo">   Information describing the fhir version.</param>
     /// <param name="processedFiles">The processed files.</param>
     /// <param name="checkUnescaped">True if check unescaped.</param>
     private static void ProcessPackageFiles(
         string[] files,
-        IPackageImportable packageInfo,
+        IPackageImportable fhirInfo,
         HashSet<string> processedFiles,
         bool checkUnescaped)
     {
@@ -209,7 +209,7 @@ public abstract class FhirSpecificationLoader
         foreach (string filename in files)
         {
             // check for skipping file
-            if (packageInfo.ShouldSkipFile(Path.GetFileName(filename)))
+            if (fhirInfo.ShouldSkipFile(Path.GetFileName(filename)))
             {
                 // skip this file
                 continue;
@@ -224,17 +224,17 @@ public abstract class FhirSpecificationLoader
             // attempt to load this file
             try
             {
-                Console.Write($"{packageInfo.FhirSequence}: {shortName,-85}\r");
+                Console.Write($"{fhirInfo.FhirSequence}: {shortName,-85}\r");
 
                 // check for ignored types
-                if (packageInfo.ShouldIgnoreResource(resourceHint))
+                if (fhirInfo.ShouldIgnoreResource(resourceHint))
                 {
                     // skip
                     continue;
                 }
 
                 // this should be listed in process types (validation check)
-                if (!packageInfo.ShouldProcessResource(resourceHint))
+                if (!fhirInfo.ShouldProcessResource(resourceHint))
                 {
                     // type not found
                     Console.WriteLine($"\nProcessPackageFiles <<< Unhandled type: {shortName}");
@@ -262,20 +262,11 @@ public abstract class FhirSpecificationLoader
                 }
 
                 // parse the file - note: using var here is siginificantly more performant than object
-                var resource = packageInfo.ParseResource(contents);
-
-                // check type matching
-                //if (!resource.GetType().Name.Equals(resourceHint, StringComparison.Ordinal))
-                //{
-                //    // type not found
-                //    Console.WriteLine($"\nProcessPackageFiles <<<" +
-                //        $" Mismatched type: {shortName}," +
-                //        $" should be {resourceHint} parsed to:{resource.GetType().Name}");
-                //    throw new InvalidDataException($"Mismatched type: {shortName}: {resourceHint} != {resource.GetType().Name}");
-                //}
-
-                // process this resource
-                packageInfo.ProcessResource(resource);
+                if (fhirInfo.TryParseResource(contents, out var resource, out string rt))
+                {
+                    // process this resource
+                    fhirInfo.ProcessResource(resource);
+                }
             }
             catch (Exception ex)
             {

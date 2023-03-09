@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("MedicationOrder", IsResource=true)]
+  [FhirType("MedicationOrder","http://hl7.org/fhir/StructureDefinition/MedicationOrder", IsResource=true)]
   public partial class MedicationOrder : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -191,6 +191,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("site", InSummary=true, Order=80, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("BodySite")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
       [DataMember]
       public Hl7.Fhir.Model.DataType Site
@@ -298,6 +299,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new DosageInstructionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as DosageInstructionComponent;
@@ -376,6 +378,61 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "text":
+            value = TextElement;
+            return TextElement is not null;
+          case "additionalInstructions":
+            value = AdditionalInstructions;
+            return AdditionalInstructions is not null;
+          case "timing":
+            value = Timing;
+            return Timing is not null;
+          case "asNeeded":
+            value = AsNeeded;
+            return AsNeeded is not null;
+          case "site":
+            value = Site;
+            return Site is not null;
+          case "route":
+            value = Route;
+            return Route is not null;
+          case "method":
+            value = Method;
+            return Method is not null;
+          case "dose":
+            value = Dose;
+            return Dose is not null;
+          case "rate":
+            value = Rate;
+            return Rate is not null;
+          case "maxDosePerPeriod":
+            value = MaxDosePerPeriod;
+            return MaxDosePerPeriod is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (TextElement is not null) yield return new KeyValuePair<string,object>("text",TextElement);
+        if (AdditionalInstructions is not null) yield return new KeyValuePair<string,object>("additionalInstructions",AdditionalInstructions);
+        if (Timing is not null) yield return new KeyValuePair<string,object>("timing",Timing);
+        if (AsNeeded is not null) yield return new KeyValuePair<string,object>("asNeeded",AsNeeded);
+        if (Site is not null) yield return new KeyValuePair<string,object>("site",Site);
+        if (Route is not null) yield return new KeyValuePair<string,object>("route",Route);
+        if (Method is not null) yield return new KeyValuePair<string,object>("method",Method);
+        if (Dose is not null) yield return new KeyValuePair<string,object>("dose",Dose);
+        if (Rate is not null) yield return new KeyValuePair<string,object>("rate",Rate);
+        if (MaxDosePerPeriod is not null) yield return new KeyValuePair<string,object>("maxDosePerPeriod",MaxDosePerPeriod);
+      }
+
     }
 
     /// <summary>
@@ -396,6 +453,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("medication", InSummary=true, Order=40, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("Medication")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
       [DataMember]
       public Hl7.Fhir.Model.DataType Medication
@@ -499,6 +557,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new DispenseRequestComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as DispenseRequestComponent;
@@ -555,6 +614,41 @@ namespace Hl7.Fhir.Model
           if (Quantity != null) yield return new ElementValue("quantity", Quantity);
           if (ExpectedSupplyDuration != null) yield return new ElementValue("expectedSupplyDuration", ExpectedSupplyDuration);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "medication":
+            value = Medication;
+            return Medication is not null;
+          case "validityPeriod":
+            value = ValidityPeriod;
+            return ValidityPeriod is not null;
+          case "numberOfRepeatsAllowed":
+            value = NumberOfRepeatsAllowedElement;
+            return NumberOfRepeatsAllowedElement is not null;
+          case "quantity":
+            value = Quantity;
+            return Quantity is not null;
+          case "expectedSupplyDuration":
+            value = ExpectedSupplyDuration;
+            return ExpectedSupplyDuration is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Medication is not null) yield return new KeyValuePair<string,object>("medication",Medication);
+        if (ValidityPeriod is not null) yield return new KeyValuePair<string,object>("validityPeriod",ValidityPeriod);
+        if (NumberOfRepeatsAllowedElement is not null) yield return new KeyValuePair<string,object>("numberOfRepeatsAllowed",NumberOfRepeatsAllowedElement);
+        if (Quantity is not null) yield return new KeyValuePair<string,object>("quantity",Quantity);
+        if (ExpectedSupplyDuration is not null) yield return new KeyValuePair<string,object>("expectedSupplyDuration",ExpectedSupplyDuration);
       }
 
     }
@@ -619,6 +713,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new SubstitutionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as SubstitutionComponent;
@@ -663,6 +758,29 @@ namespace Hl7.Fhir.Model
           if (Type != null) yield return new ElementValue("type", Type);
           if (Reason != null) yield return new ElementValue("reason", Reason);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = Type;
+            return Type is not null;
+          case "reason":
+            value = Reason;
+            return Reason is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+        if (Reason is not null) yield return new KeyValuePair<string,object>("reason",Reason);
       }
 
     }
@@ -715,7 +833,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// active | on-hold | completed | entered-in-error | stopped | draft
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=110)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=110)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.MedicationOrder.MedicationOrderStatus> StatusElement
     {
@@ -837,6 +956,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("reason", InSummary=true, Order=170, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Condition")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [DataMember]
     public Hl7.Fhir.Model.DataType Reason
@@ -883,6 +1003,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("medication", InSummary=true, Order=190, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Medication")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
@@ -982,6 +1103,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new MedicationOrder());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as MedicationOrder;
@@ -1078,6 +1200,81 @@ namespace Hl7.Fhir.Model
         if (Substitution != null) yield return new ElementValue("substitution", Substitution);
         if (PriorPrescription != null) yield return new ElementValue("priorPrescription", PriorPrescription);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "dateWritten":
+          value = DateWrittenElement;
+          return DateWrittenElement is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "dateEnded":
+          value = DateEndedElement;
+          return DateEndedElement is not null;
+        case "reasonEnded":
+          value = ReasonEnded;
+          return ReasonEnded is not null;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "prescriber":
+          value = Prescriber;
+          return Prescriber is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "reason":
+          value = Reason;
+          return Reason is not null;
+        case "note":
+          value = NoteElement;
+          return NoteElement is not null;
+        case "medication":
+          value = Medication;
+          return Medication is not null;
+        case "dosageInstruction":
+          value = DosageInstruction;
+          return DosageInstruction?.Any() == true;
+        case "dispenseRequest":
+          value = DispenseRequest;
+          return DispenseRequest is not null;
+        case "substitution":
+          value = Substitution;
+          return Substitution is not null;
+        case "priorPrescription":
+          value = PriorPrescription;
+          return PriorPrescription is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (DateWrittenElement is not null) yield return new KeyValuePair<string,object>("dateWritten",DateWrittenElement);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (DateEndedElement is not null) yield return new KeyValuePair<string,object>("dateEnded",DateEndedElement);
+      if (ReasonEnded is not null) yield return new KeyValuePair<string,object>("reasonEnded",ReasonEnded);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (Prescriber is not null) yield return new KeyValuePair<string,object>("prescriber",Prescriber);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Reason is not null) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (NoteElement is not null) yield return new KeyValuePair<string,object>("note",NoteElement);
+      if (Medication is not null) yield return new KeyValuePair<string,object>("medication",Medication);
+      if (DosageInstruction?.Any() == true) yield return new KeyValuePair<string,object>("dosageInstruction",DosageInstruction);
+      if (DispenseRequest is not null) yield return new KeyValuePair<string,object>("dispenseRequest",DispenseRequest);
+      if (Substitution is not null) yield return new KeyValuePair<string,object>("substitution",Substitution);
+      if (PriorPrescription is not null) yield return new KeyValuePair<string,object>("priorPrescription",PriorPrescription);
     }
 
   }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Coverage", IsResource=true)]
+  [FhirType("Coverage","http://hl7.org/fhir/StructureDefinition/Coverage", IsResource=true)]
   public partial class Coverage : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -294,7 +294,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Plan holder information
     /// </summary>
-    [FhirElement("subscriber", InSummary=true, Order=200)]
+    [FhirElement("subscriber", InSummary=true, IsModifier=true, Order=200)]
     [CLSCompliant(false)]
     [References("Patient")]
     [DataMember]
@@ -367,6 +367,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Coverage());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Coverage;
@@ -459,6 +460,77 @@ namespace Hl7.Fhir.Model
         if (Network != null) yield return new ElementValue("network", Network);
         foreach (var elem in Contract) { if (elem != null) yield return new ElementValue("contract", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "issuer":
+          value = Issuer;
+          return Issuer is not null;
+        case "bin":
+          value = Bin;
+          return Bin is not null;
+        case "period":
+          value = Period;
+          return Period is not null;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "subscriberId":
+          value = SubscriberId;
+          return SubscriberId is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "group":
+          value = GroupElement;
+          return GroupElement is not null;
+        case "plan":
+          value = PlanElement;
+          return PlanElement is not null;
+        case "subPlan":
+          value = SubPlanElement;
+          return SubPlanElement is not null;
+        case "dependent":
+          value = DependentElement;
+          return DependentElement is not null;
+        case "sequence":
+          value = SequenceElement;
+          return SequenceElement is not null;
+        case "subscriber":
+          value = Subscriber;
+          return Subscriber is not null;
+        case "network":
+          value = Network;
+          return Network is not null;
+        case "contract":
+          value = Contract;
+          return Contract?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Issuer is not null) yield return new KeyValuePair<string,object>("issuer",Issuer);
+      if (Bin is not null) yield return new KeyValuePair<string,object>("bin",Bin);
+      if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (SubscriberId is not null) yield return new KeyValuePair<string,object>("subscriberId",SubscriberId);
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (GroupElement is not null) yield return new KeyValuePair<string,object>("group",GroupElement);
+      if (PlanElement is not null) yield return new KeyValuePair<string,object>("plan",PlanElement);
+      if (SubPlanElement is not null) yield return new KeyValuePair<string,object>("subPlan",SubPlanElement);
+      if (DependentElement is not null) yield return new KeyValuePair<string,object>("dependent",DependentElement);
+      if (SequenceElement is not null) yield return new KeyValuePair<string,object>("sequence",SequenceElement);
+      if (Subscriber is not null) yield return new KeyValuePair<string,object>("subscriber",Subscriber);
+      if (Network is not null) yield return new KeyValuePair<string,object>("network",Network);
+      if (Contract?.Any() == true) yield return new KeyValuePair<string,object>("contract",Contract);
     }
 
   }

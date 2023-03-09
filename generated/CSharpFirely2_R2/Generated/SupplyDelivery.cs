@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("SupplyDelivery", IsResource=true)]
+  [FhirType("SupplyDelivery","http://hl7.org/fhir/StructureDefinition/SupplyDelivery", IsResource=true)]
   public partial class SupplyDelivery : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -99,7 +99,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// in-progress | completed | abandoned
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=100)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=100)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.SupplyDelivery.SupplyDeliveryStatus> StatusElement
     {
@@ -302,6 +303,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new SupplyDelivery());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as SupplyDelivery;
@@ -382,6 +384,65 @@ namespace Hl7.Fhir.Model
         if (Destination != null) yield return new ElementValue("destination", Destination);
         foreach (var elem in Receiver) { if (elem != null) yield return new ElementValue("receiver", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "quantity":
+          value = Quantity;
+          return Quantity is not null;
+        case "suppliedItem":
+          value = SuppliedItem;
+          return SuppliedItem is not null;
+        case "supplier":
+          value = Supplier;
+          return Supplier is not null;
+        case "whenPrepared":
+          value = WhenPrepared;
+          return WhenPrepared is not null;
+        case "time":
+          value = TimeElement;
+          return TimeElement is not null;
+        case "destination":
+          value = Destination;
+          return Destination is not null;
+        case "receiver":
+          value = Receiver;
+          return Receiver?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Quantity is not null) yield return new KeyValuePair<string,object>("quantity",Quantity);
+      if (SuppliedItem is not null) yield return new KeyValuePair<string,object>("suppliedItem",SuppliedItem);
+      if (Supplier is not null) yield return new KeyValuePair<string,object>("supplier",Supplier);
+      if (WhenPrepared is not null) yield return new KeyValuePair<string,object>("whenPrepared",WhenPrepared);
+      if (TimeElement is not null) yield return new KeyValuePair<string,object>("time",TimeElement);
+      if (Destination is not null) yield return new KeyValuePair<string,object>("destination",Destination);
+      if (Receiver?.Any() == true) yield return new KeyValuePair<string,object>("receiver",Receiver);
     }
 
   }

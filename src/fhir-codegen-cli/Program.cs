@@ -9,12 +9,9 @@ using System.CommandLine.NamingConventionBinder;
 using System.CommandLine.Parsing;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
-using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.Health.Fhir.SpecManager.PackageManager;
 
 namespace FhirCodegenCli;
@@ -51,6 +48,8 @@ public static class Program
     ///  expansions (default: false).</param>
     /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
     ///  Conformance) from.  Requires application/fhir+json.</param>
+    /// <param name="fhirServerHeaders">     Headers to include when calling a FHIR server, format is key=value|key=value|...</param>
+    /// <param name="resolveExternal">      Whether or not to try to resolve unknown canonicals at the given fhir server url.</param>
     /// <param name="includeExperimental">   If the output should include structures marked
     ///  experimental (false|true).</param>
     /// <param name="exportTypes">           Which FHIR classes types to export
@@ -78,6 +77,8 @@ public static class Program
         string languageOptions = "",
         bool officialExpansionsOnly = false,
         string fhirServerUrl = "",
+        string fhirServerHeaders = "",
+        bool resolveExternal = true,
         bool includeExperimental = false,
         string exportTypes = "",
         string extensionSupport = "",
@@ -107,7 +108,6 @@ public static class Program
                 name: "--package-directory",
                 getDefaultValue: () => string.Empty,
                 "The path to a local directory for FHIR packages, if different than the default FHIR cache (~/.fhir); e.g., (.../fhirPackages))."),
-
             new Option<string>(
                 aliases: new string[] { "--language", "-l" },
                 getDefaultValue: () => string.Empty,
@@ -155,29 +155,37 @@ public static class Program
                 aliases: new string[] { "--fhir-server-url", "--server" },
                 getDefaultValue: () => string.Empty,
                 "FHIR Server URL to pull a CapabilityStatement or Conformance from.  Requires application/fhir+json support."),
+            new Option<bool>(
+                name: "--resolve-external",
+                getDefaultValue: () => true,
+                "Whether to try to resolve unknown canonicals on the server given by --server/--fhir-server-url."),
+            new Option<string>(
+                aliases: new string[] { "--fhir-server-headers", "--headers" },
+                getDefaultValue: () => string.Empty,
+                "Headers to include when calling a FHIR server, format is key=value|key=value|..."),
 
             new Option<string>(
                 aliases: new string[] { "--packages", "-p" },
                 getDefaultValue: () => string.Empty,
                 "'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.r4.core#4.0.1|hl7.fhir.us.core#latest)."),
             new Option<string>(
-                aliases: new string[] { "--load-r2", "--load-DSTU2" },
+                aliases: new string[] { "--load-r2", "--load-R2", "--load-dstu2", "--load-DSTU2" },
                 getDefaultValue: () => string.Empty,
                 "If FHIR DSTU2 should be loaded, which version (e.g., 1.0.2 or latest)"),
             new Option<string>(
-                aliases: new string[] { "--load-r3", "--load-STU3" },
+                aliases: new string[] { "--load-r3", "--load-R3", "--load-stu3", "--load-STU3" },
                 getDefaultValue: () => string.Empty,
                 "If FHIR STU3 should be loaded, which version (e.g., 3.0.2 or latest)"),
             new Option<string>(
-                name: "--load-r4",
+                aliases: new string[] { "--load-r4", "--load-R4" },
                 getDefaultValue: () => string.Empty,
                 "If FHIR R4 should be loaded, which version (e.g., 4.0.1 or latest)"),
             new Option<string>(
-                name: "--load-r4b",
+                aliases: new string[] { "--load-r4b", "--load-R4B" },
                 getDefaultValue: () => string.Empty,
                 "If FHIR R4B should be loaded, which version (e.g., 4.3.0 or latest)"),
             new Option<string>(
-                name: "--load-r5",
+                aliases: new string[] { "--load-r5", "--load-R5" },
                 getDefaultValue: () => string.Empty,
                 "If FHIR R5 should be loaded, which version (e.g., 5.0.0-ballot or latest)"),
 
@@ -229,6 +237,8 @@ public static class Program
     ///  expansions (default: false).</param>
     /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
     ///  Conformance) from.  Requires application/fhir+json.</param>
+    /// <param name="fhirServerHeaders">     Headers to include when calling a FHIR server, format is key=value|key=value|...</param>
+    /// <param name="resolveExternal">      Whether or not to try to resolve unknown canonicals at the given fhir server url.</param>
     /// <param name="includeExperimental">   If the output should include structures marked
     ///  experimental (false|true).</param>
     /// <param name="exportTypes">           Which FHIR classes types to export
@@ -257,6 +267,8 @@ public static class Program
         string languageOptions = "",
         bool officialExpansionsOnly = false,
         string fhirServerUrl = "",
+        string fhirServerHeaders = "",
+        bool resolveExternal = true,
         bool includeExperimental = false,
         string exportTypes = "",
         string extensionSupport = "",
@@ -353,11 +365,13 @@ public static class Program
 
         List<string> directives = new();
 
-        FhirServerInfo serverInfo = null;
+        FhirCapabiltyStatement serverCaps = null;
 
         if (!string.IsNullOrEmpty(fhirServerUrl))
         {
-            if (!ServerConnector.TryGetServerInfo(fhirServerUrl, out serverInfo))
+            Dictionary<string, IEnumerable<string>> headers = ParseHttpHeaders(fhirServerHeaders);
+
+            if (!ServerConnector.TryGetServerInfo(fhirServerUrl, resolveExternal, headers, out serverCaps))
             {
                 Console.WriteLine($"Failed to get server information from {fhirServerUrl}!");
                 return -1;
@@ -371,7 +385,7 @@ public static class Program
             string.IsNullOrEmpty(loadR5) &&
             string.IsNullOrEmpty(packages))
         {
-            if (serverInfo == null)
+            if (serverCaps == null)
             {
                 loadR2 = "latest";
                 loadR3 = "latest";
@@ -379,9 +393,9 @@ public static class Program
                 loadR4B = "latest";
                 loadR5 = "latest";
             }
-            else
+            else if (FhirPackageCommon.TryGetMajorReleaseForVersion(serverCaps.FhirVersion, out FhirPackageCommon.FhirSequenceEnum sequence))
             {
-                switch (serverInfo.MajorVersion)
+                switch (sequence)
                 {
                     case FhirPackageCommon.FhirSequenceEnum.DSTU2:
                         loadR2 = "latest";
@@ -403,6 +417,11 @@ public static class Program
                         loadR5 = "latest";
                         break;
                 }
+            }
+            else
+            {
+                Console.WriteLine($"Unable to process server-reported FHIR version: {serverCaps.FhirVersion}");
+                return -2;
             }
         }
 
@@ -526,12 +545,13 @@ public static class Program
                     null,
                     languageOptsByLang[lang.LanguageName],
                     fhirServerUrl,
+                    resolveExternal,
                     includeExperimental,
                     languageInputDir);
 
                 foreach (FhirVersionInfo info in fhirCorePackages)
                 {
-                    filesWritten.AddRange(Exporter.Export(info, serverInfo, lang, options, outputPath, isBatch));
+                    filesWritten.AddRange(Exporter.Export(info, serverCaps, lang, options, outputPath, isBatch));
                 }
             }
         }
@@ -612,6 +632,46 @@ public static class Program
                 Console.WriteLine($"\t- {kvp.Key}\n\t\t{kvp.Value}");
             }
         }
+    }
+
+    /// <summary>Parse HTTP headers.</summary>
+    /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
+    ///  illegal values.</exception>
+    /// <param name="headersArg">The headers argument.</param>
+    /// <returns>A Dictionary&lt;string,IEnumerable&lt;string&gt;&gt;</returns>
+    public static Dictionary<string, IEnumerable<string>> ParseHttpHeaders(
+        string headersArg)
+    {
+        if (string.IsNullOrEmpty(headersArg))
+        {
+            return new();
+        }
+
+        Dictionary<string, IEnumerable<string>> headers = new();
+
+        foreach (string header in headersArg.Split('|'))
+        {
+            string[] parts = header.Split('=');
+
+            if (parts.Length != 2)
+            {
+                throw new ArgumentException($"Invalid header: {header}");
+            }
+
+            string key = parts[0].Trim();
+            string value = parts[1].Trim();
+
+            if (headers.ContainsKey(key))
+            {
+                headers[key] = headers[key].Append(value);
+            }
+            else
+            {
+                headers.Add(key, new List<string>() { value });
+            }
+        }
+
+        return headers;
     }
 
     /// <summary>Gets options for language.</summary>

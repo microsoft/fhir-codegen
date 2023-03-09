@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("GuidanceResponse", IsResource=true)]
+  [FhirType("GuidanceResponse","http://hl7.org/fhir/StructureDefinition/GuidanceResponse", IsResource=true)]
   public partial class GuidanceResponse : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -117,7 +117,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Business identifier
     /// </summary>
-    [FhirElement("identifier", InSummary=true, Order=100)]
+    [FhirElement("identifier", InSummary=true, Order=100, FiveWs="FiveWs.identifier")]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Hl7.Fhir.Model.Identifier> Identifier
@@ -147,7 +147,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// success | data-requested | data-required | in-progress | failure | entered-in-error
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=120)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=120, FiveWs="FiveWs.status")]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.GuidanceResponse.GuidanceResponseStatus> StatusElement
@@ -179,7 +180,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Patient the request was performed for
     /// </summary>
-    [FhirElement("subject", Order=130)]
+    [FhirElement("subject", Order=130, FiveWs="FiveWs.subject")]
     [CLSCompliant(false)]
     [References("Patient","Group")]
     [DataMember]
@@ -194,7 +195,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Encounter during which the response was returned
     /// </summary>
-    [FhirElement("encounter", Order=140)]
+    [FhirElement("encounter", Order=140, FiveWs="FiveWs.context")]
     [CLSCompliant(false)]
     [References("Encounter")]
     [DataMember]
@@ -209,7 +210,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// When the guidance response was processed
     /// </summary>
-    [FhirElement("occurrenceDateTime", Order=150)]
+    [FhirElement("occurrenceDateTime", Order=150, FiveWs="FiveWs.done[x]")]
     [DataMember]
     public Hl7.Fhir.Model.FhirDateTime OccurrenceDateTimeElement
     {
@@ -240,7 +241,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Device returning the guidance
     /// </summary>
-    [FhirElement("performer", Order=160)]
+    [FhirElement("performer", Order=160, FiveWs="FiveWs.actor")]
     [CLSCompliant(false)]
     [References("Device")]
     [DataMember]
@@ -255,7 +256,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Why guidance is needed
     /// </summary>
-    [FhirElement("reasonCode", Order=170)]
+    [FhirElement("reasonCode", Order=170, FiveWs="FiveWs.why[x]")]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Hl7.Fhir.Model.CodeableConcept> ReasonCode
@@ -269,7 +270,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Why guidance is needed
     /// </summary>
-    [FhirElement("reasonReference", Order=180)]
+    [FhirElement("reasonReference", Order=180, FiveWs="FiveWs.why[x]")]
     [CLSCompliant(false)]
     [References("Condition","Observation","DiagnosticReport","DocumentReference")]
     [Cardinality(Min=0,Max=-1)]
@@ -389,6 +390,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new GuidanceResponse());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as GuidanceResponse;
@@ -485,6 +487,81 @@ namespace Hl7.Fhir.Model
         if (Result != null) yield return new ElementValue("result", Result);
         foreach (var elem in DataRequirement) { if (elem != null) yield return new ElementValue("dataRequirement", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "requestIdentifier":
+          value = RequestIdentifier;
+          return RequestIdentifier is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "module":
+          value = Module;
+          return Module is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "occurrenceDateTime":
+          value = OccurrenceDateTimeElement;
+          return OccurrenceDateTimeElement is not null;
+        case "performer":
+          value = Performer;
+          return Performer is not null;
+        case "reasonCode":
+          value = ReasonCode;
+          return ReasonCode?.Any() == true;
+        case "reasonReference":
+          value = ReasonReference;
+          return ReasonReference?.Any() == true;
+        case "note":
+          value = Note;
+          return Note?.Any() == true;
+        case "evaluationMessage":
+          value = EvaluationMessage;
+          return EvaluationMessage?.Any() == true;
+        case "outputParameters":
+          value = OutputParameters;
+          return OutputParameters is not null;
+        case "result":
+          value = Result;
+          return Result is not null;
+        case "dataRequirement":
+          value = DataRequirement;
+          return DataRequirement?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (RequestIdentifier is not null) yield return new KeyValuePair<string,object>("requestIdentifier",RequestIdentifier);
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Module is not null) yield return new KeyValuePair<string,object>("module",Module);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (OccurrenceDateTimeElement is not null) yield return new KeyValuePair<string,object>("occurrenceDateTime",OccurrenceDateTimeElement);
+      if (Performer is not null) yield return new KeyValuePair<string,object>("performer",Performer);
+      if (ReasonCode?.Any() == true) yield return new KeyValuePair<string,object>("reasonCode",ReasonCode);
+      if (ReasonReference?.Any() == true) yield return new KeyValuePair<string,object>("reasonReference",ReasonReference);
+      if (Note?.Any() == true) yield return new KeyValuePair<string,object>("note",Note);
+      if (EvaluationMessage?.Any() == true) yield return new KeyValuePair<string,object>("evaluationMessage",EvaluationMessage);
+      if (OutputParameters is not null) yield return new KeyValuePair<string,object>("outputParameters",OutputParameters);
+      if (Result is not null) yield return new KeyValuePair<string,object>("result",Result);
+      if (DataRequirement?.Any() == true) yield return new KeyValuePair<string,object>("dataRequirement",DataRequirement);
     }
 
   }

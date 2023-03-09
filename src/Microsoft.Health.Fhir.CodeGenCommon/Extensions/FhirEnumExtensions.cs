@@ -128,7 +128,7 @@ public static class FhirEnumExtensions
     /// <param name="literal">The literal.</param>
     /// <param name="value">  [out] The value.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public static bool TryFhirEnum<T>(this string literal, out object value)
+    public static bool TryFhirEnum<T>(this string literal, out T value)
         where T : struct
     {
         if (string.IsNullOrEmpty(literal))
@@ -141,6 +141,41 @@ public static class FhirEnumExtensions
     }
 
     /// <summary>
+    /// A string extension method that attempts to to FHIR enum a T from the given string.
+    /// </summary>
+    /// <typeparam name="T">Generic type parameter.</typeparam>
+    /// <param name="source">The source to act on.</param>
+    /// <param name="values">[out] The values.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool TryFhirEnum<T>(this IEnumerable<string> source, out IEnumerable<T> values)
+        where T : struct
+    {
+        if (!(source?.Any() ?? false))
+        {
+            values = Array.Empty<T>();
+            return false;
+        }
+
+        List<T> data = new();
+
+        foreach (string sourceVal in source)
+        {
+            if (sourceVal.TryFhirEnum(out T val))
+            {
+                data.Add(val);
+            }
+            else
+            {
+                values = Array.Empty<T>();
+                return false;
+            }
+        }
+
+        values = data.ToArray();
+        return true;
+    }
+
+    /// <summary>
     /// A Type extension method that attempts to parse a FHIR string literal to a FHIR-Literal tagged
     /// enum value.
     /// </summary>
@@ -148,7 +183,7 @@ public static class FhirEnumExtensions
     /// <param name="literal">The literal.</param>
     /// <param name="value">  [out] The value.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public static bool TryParseFhir<T>(string literal, out object value)
+    public static bool TryParseFhir<T>(string literal, out T value)
         where T : struct
     {
         if (string.IsNullOrEmpty(literal))
@@ -166,11 +201,11 @@ public static class FhirEnumExtensions
 
         if (!_typeLookups[enumType].StringToEnum.ContainsKey(literal))
         {
-            value = null;
+            value = default(T);
             return false;
         }
 
-        value = _typeLookups[enumType].StringToEnum[literal];
+        value = (T)_typeLookups[enumType].StringToEnum[literal];
         return true;
     }
 

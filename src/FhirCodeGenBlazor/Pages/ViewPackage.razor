@@ -2,72 +2,76 @@
 
 @using FhirCodeGenBlazor.Models;
 @using FhirCodeGenBlazor.Services;
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
-@inject NavigationManager NavigationManager
 @inject ISpecManagerWebService SpecService
+@inject NavigationManager NavigationManager
+@inject ProtectedLocalStorage BrowserStore
 @implements IDisposable
 
-@if (string.IsNullOrEmpty(directive))
+@if (string.IsNullOrEmpty(directive) ||
+     (!SpecService.ContainsKey(directive)))
 {
     <PageTitle>FHIR Package Browser</PageTitle>
-    <p><em>This page requires a package name and version, please select...</em></p>
-}
-else if (SpecService[directive].ArtifactRecordsByClass.Any())
-{
-    <PageTitle>@directive</PageTitle>
-    <p>
-        @foreach((FhirArtifactClassEnum classEnum, bool visible) in showArtifactClass)
-        {
-            <button
-                type="button"
-                class=@GetButtonClass(visible)
-                @onclick="() => ToggleShowState(classEnum)"
-                >
-                @classEnum.ToString() (@SpecService[directive].ArtifactRecordsByClass[classEnum].Count())
-            </button>
-        }
-    </p>
-    <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">Filter</span>
-        <input
-            type="text"
-            placeholder="Filter"
-            aria-label="Filter"
-            aria-describedby="basic-addon1"
-            @bind-value="artifactFilterText"
-            @oninput="@((ChangeEventArgs e) => InvokeAsync(() => RebuildFilteredArtifacts(e?.Value?.ToString() ?? "")))"
-            />
-        <span class="ms-2 mt-2">@filteredArtifacts.Count artifacts found</span>
-    </div>
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th class="col-md-2">Artifact Type</th>
-                <th class="col-md-2">Id</th>
-                <th class="col-md-4">Url</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (FhirArtifactRecord artifactRecord in filteredArtifacts)
-            {
-                <tr>
-                    <td>@artifactRecord.ArtifactClass.ToString()</td>
-                    <td>
-                        <NavLink class="nav-link" href="@LinkForArtifact(artifactRecord)">
-                            @artifactRecord.Id
-                        </NavLink>
-                    </td>
-                    @*<td>@artifactRecord.Id</td>*@
-                    <td>@artifactRecord.Url</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <MudText Typo="Typo.h5">This page requires a loaded package (specified by name and version).</MudText>
 }
 else
 {
     <PageTitle>@directive</PageTitle>
-    <p><em>This package contains no supported artifacts.</em></p>
+
+    <MudExpansionPanels MultiExpansion="true">
+        <MudExpansionPanel Text="Artifact Type Filtering">
+            <MudGrid>
+                <MudItem xs="6" sm="3">
+                    <MudFab StartIcon="@Icons.Material.Filled.Flip"
+                            Label="Toggle All Artifacts"
+                            OnClick="() => InvokeAsync(() => ToggleShowArtifactState())"
+                            Disabled="@_busy"
+                            />
+                </MudItem>
+
+                @foreach(FhirArtifactClassEnum ac in showArtifactClass.Keys.OrderBy(k => k.ToString()))
+                {
+                    <MudItem xs="6" sm="3">
+                        <MudSwitch
+                            Color="Color.Info"
+                            Checked="@showArtifactClass[ac]"
+                            CheckedChanged="@((bool s) => ToggleShowState(ac, s))"
+                            Label="@(ac.ToString() + " (" + SpecService[directive].ArtifactRecordsByClass[ac].Count() + ")")" />
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+    <MudTable
+        Items="filteredArtifacts"
+          Height="calc(100vh - (var(--mud-appbar-height) * 2.9))"
+          Filter="new Func<FhirArtifactRecord, bool>(FilterFuncInstance)"
+        Dense="true"
+        Striped="true"
+        Virtualize="true"
+        FixedHeader="true">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Package Contents</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="artifactFilterText" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+        <ColGroup>
+            <col style="width: 10vw!important;" />
+            <col style="width: 10vw!important;" />
+            <col style="width: 80vw!important;" />
+        </ColGroup>
+        <HeaderContent>
+            <MudTh>Artifact Type</MudTh>
+            <MudTh>Id</MudTh>
+            <MudTh>Url</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.ArtifactClass</MudTd>
+            <MudTd><MudLink href="@LinkForArtifact(context)">@context.Id</MudLink></MudTd>
+            <MudTd>@context.Url</MudTd>
+        </RowTemplate>
+    </MudTable>
 }
 
 @code {
@@ -95,6 +99,12 @@ else
     /// <summary>The directive.</summary>
     private string directive = string.Empty;
 
+    /// <summary>Control toggle behavior of the 'all' button.</summary>
+    private bool _showArtifactState = true;
+
+    /// <summary>If the page should be showing progress indicators.</summary>
+    private bool _busy = false;
+
     /// <summary>Executes the initialized asynchronous action.</summary>
     /// <returns>An asynchronous result.</returns>
     protected override void OnInitialized()
@@ -103,10 +113,20 @@ else
 
         directive = PackageName + "#" + Version;
 
-        NavTracker?.NotifyNav(directive, $"view/package?packageName={PackageName}&version={Version}", 1);
+        NavTracker?.NotifyNav("Explore " + directive, $"view/package?packageName={PackageName}&version={Version}", 1);
         NavigationManager.LocationChanged += HandleLocationChanged;
+    }
 
-        Task.Run(() => RebuildFilteredArtifacts(string.Empty, true));
+    /// <summary>Executes the after render action.</summary>
+    /// <param name="firstRender">True to first render.</param>
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Task.Run(() => RebuildFilteredArtifacts(artifactFilterText, true));
+        }
+
+        base.OnAfterRender(firstRender);
     }
 
     /// <summary>
@@ -138,18 +158,68 @@ else
         {
             directive = PackageName + "#" + Version;
 
-            NavTracker?.NotifyNav(directive, $"view/package?packageName={PackageName}&version={Version}", 1);
-
-            Task.Run(() => RebuildFilteredArtifacts(artifactFilterText, true));
+            NavTracker?.NotifyNav("Explore " + directive, $"view/package?packageName={PackageName}&version={Version}", 1);
         }
+    }
+
+    /// <summary>Toggle show artifact state.</summary>
+    private void ToggleShowArtifactState()
+    {
+        // flag we are busy - will be cleared by RebuildFilteredArtifacts
+        _busy = true;
+
+        _showArtifactState = !_showArtifactState;
+        foreach (FhirArtifactClassEnum ac in showArtifactClass.Keys)
+        {
+            showArtifactClass[ac] = _showArtifactState;
+            _ = BrowserStore.SetAsync("showAC_" + ac, showArtifactClass[ac]);
+        }
+
+        InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
     }
 
     /// <summary>Toggle show state.</summary>
     /// <param name="classEnum">The class enum.</param>
-    private void ToggleShowState(FhirArtifactClassEnum classEnum)
+    private void ToggleShowState(FhirArtifactClassEnum classEnum, bool? v)
     {
-        showArtifactClass[classEnum] = !showArtifactClass[classEnum];
-        InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText));
+        if (v == showArtifactClass[classEnum])
+        {
+            return;
+        }
+
+        if (v == null)
+        {
+            showArtifactClass[classEnum] = !showArtifactClass[classEnum];
+        }
+        else
+        {
+            showArtifactClass[classEnum] = (v == true);
+        }
+
+        _ = BrowserStore.SetAsync("showAC_" + classEnum, showArtifactClass[classEnum]);
+
+        InvokeAsync(() => RebuildFilteredArtifacts(artifactFilterText, false));
+    }
+
+    /// <summary>Filter function instance.</summary>
+    /// <param name="rec">The record.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool FilterFuncInstance(FhirArtifactRecord rec) => FilterFuncDefinition(rec, artifactFilterText);
+
+    /// <summary>Filter function definition.</summary>
+    /// <param name="rec">         The record.</param>
+    /// <param name="searchString">The search string.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool FilterFuncDefinition(FhirArtifactRecord rec, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString) ||
+            rec.Id.Contains(searchString, StringComparison.OrdinalIgnoreCase) ||
+            rec.Url.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>Rebuild filtered artifacts.</summary>
@@ -159,21 +229,36 @@ else
         string appliedFilter = "",
         bool checkShownArtifactClasses = false)
     {
+        if (!SpecService.ContainsKey(directive))
+        {
+            return;
+        }
+
+        _busy = true;
+
         if (checkShownArtifactClasses)
         {
             foreach (FhirArtifactClassEnum classEnum in SpecService[directive].ArtifactRecordsByClass.Keys)
             {
                 if (!showArtifactClass.ContainsKey(classEnum))
                 {
-                    switch (classEnum)
+                    var readResult = await BrowserStore.GetAsync<bool>("showAC_" + classEnum);
+                    if (readResult.Success)
                     {
-                        case FhirArtifactClassEnum.Resource:
-                            showArtifactClass.Add(classEnum, true);
-                            break;
+                        showArtifactClass.Add(classEnum, readResult.Value);
+                    }
+                    else
+                    {
+                        switch (classEnum)
+                        {
+                            case FhirArtifactClassEnum.Resource:
+                                showArtifactClass.Add(classEnum, true);
+                                break;
 
-                        default:
-                            showArtifactClass.Add(classEnum, false);
-                            break;
+                            default:
+                                showArtifactClass.Add(classEnum, false);
+                                break;
+                        }
                     }
                 }
             }
@@ -187,7 +272,7 @@ else
             }
         }
 
-        artifactFilterText = appliedFilter;
+        //artifactFilterText = appliedFilter;
 
         if (SpecService[directive].ArtifactRecordsByClass == null)
         {
@@ -203,45 +288,23 @@ else
 
         foreach ((FhirArtifactClassEnum classEnum, IEnumerable<FhirArtifactRecord> records) in SpecService[directive].ArtifactRecordsByClass)
         {
-            AppendFilteredArtifacts(classEnum, appliedFilter, ref artifacts, records);
+            if (showArtifactClass[classEnum] != true)
+            {
+                continue;
+            }
+
+            artifacts.AddRange(records);
+
+            //AppendFilteredArtifacts(classEnum, appliedFilter, ref artifacts, records);
         }
 
         artifacts.Sort((a, b) => a.Id.CompareTo(b.Id));
         filteredArtifacts = artifacts;
 
+        _busy = false;
+
         // manually flag state has changed in case we are in a callback / async context
         await InvokeAsync(() => StateHasChanged());
-    }
-
-    /// <summary>Appends a filtered artifacts.</summary>
-    /// <param name="include">  True to include, false to exclude.</param>
-    /// <param name="filter">   Specifies the filter.</param>
-    /// <param name="artifacts">[in,out] The artifacts.</param>
-    /// <param name="dataClass">The data class.</param>
-    /// <param name="data">     The data.</param>
-    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-    private void AppendFilteredArtifacts(
-        FhirArtifactClassEnum classEnum,
-        string filter,
-        ref List<FhirArtifactRecord> artifacts,
-        IEnumerable<FhirArtifactRecord> data)
-    {
-        if (showArtifactClass[classEnum] != true)
-        {
-            return;
-        }
-
-        if (string.IsNullOrEmpty(filter))
-        {
-            artifacts.AddRange(data);
-        }
-        else
-        {
-            artifacts.AddRange(
-                data.Where(record =>
-                    (record.Id.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
-                    (record.Url.ToString().Contains(filter, StringComparison.OrdinalIgnoreCase)))));
-        }
     }
 
     /// <summary>Links for artifact.</summary>
@@ -249,19 +312,36 @@ else
     /// <returns>A string.</returns>
     private string LinkForArtifact(FhirArtifactRecord record)
     {
-        return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&url={record.Url}";
-    }
-
-    /// <summary>Gets button class.</summary>
-    /// <param name="enabled">True to enable, false to disable.</param>
-    /// <returns>The button class.</returns>
-    private string GetButtonClass(bool enabled)
-    {
-        if (enabled)
+        switch (record.ArtifactClass)
         {
-            return "btn btn-primary m-1 col-md-2";
+            // types requiring specific view pages
+            case FhirArtifactClassEnum.CodeSystem:
+            case FhirArtifactClassEnum.Operation:
+            case FhirArtifactClassEnum.PrimitiveType:
+            case FhirArtifactClassEnum.ValueSet:
+            case FhirArtifactClassEnum.CapabilityStatement:
+                return $"/view/{record.ArtifactClass}/?packageName={PackageName}&version={Version}&url={record.Url}";
+
+            // types using the ViewFhirComplex page
+            case FhirArtifactClassEnum.ComplexType:
+            case FhirArtifactClassEnum.Extension:
+            case FhirArtifactClassEnum.LogicalModel:
+            case FhirArtifactClassEnum.Profile:
+            case FhirArtifactClassEnum.Resource:
+                return $"/view/complex/?packageName={PackageName}&version={Version}&url={record.Url}&ac={record.ArtifactClass}";
+
+            // types not displayable
+            case FhirArtifactClassEnum.Compartment:
+            case FhirArtifactClassEnum.ConceptMap:
+            case FhirArtifactClassEnum.ImplementationGuide:
+            case FhirArtifactClassEnum.NamingSystem:
+            case FhirArtifactClassEnum.SearchParameter:
+            case FhirArtifactClassEnum.StructureMap:
+            case FhirArtifactClassEnum.Unknown:
+            default:
+                break;
         }
 
-        return "btn btn-outline-primary m-1 col-md-2";
+        return "";
     }
 }

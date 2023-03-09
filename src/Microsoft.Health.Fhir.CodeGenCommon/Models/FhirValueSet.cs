@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.Text.RegularExpressions;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
@@ -14,9 +15,12 @@ public class FhirValueSet : ICloneable
     private HashSet<string> _codeSystems = new();
     private List<string> _referencedPaths = new();
     private Dictionary<string, FhirElement> _referencingElementsByPath = new();
+    private Dictionary<string, FhirElement> _referencingExternalElementsByUrl = new();
     private List<string> _referencedResources = new();
     private Dictionary<string, FhirElement.ElementDefinitionBindingStrength> _bindingStrengthByType = new();
+    private Dictionary<string, FhirElement.ElementDefinitionBindingStrength> _externalBindingStrengthByType = new();
     private FhirElement.ElementDefinitionBindingStrength _strongestBinding;
+    private FhirElement.ElementDefinitionBindingStrength _strongestExternalBinding;
 
     /// <summary>Initializes a new instance of the <see cref="FhirValueSet"/> class.</summary>
     /// <param name="name">             The name.</param>
@@ -72,39 +76,31 @@ public class FhirValueSet : ICloneable
     /// <param name="expansion">      The expansion.</param>
     /// <param name="concepts">       The resolved concepts.</param>
     /// <param name="referencedCodeSystems">The list of code systems referenced by this value set.</param>
-    private FhirValueSet(
-        string name,
-        string id,
-        string version,
-        string title,
-        string url,
-        string publicationStatus,
-        string standardStatus,
-        int? fmmLevel,
-        string description,
-        List<FhirValueSetComposition> composeIncludes,
-        List<FhirValueSetComposition> composeExcludes,
-        FhirValueSetExpansion expansion,
-        List<FhirConcept> concepts,
-        HashSet<string> referencedCodeSystems,
-        FhirElement.ElementDefinitionBindingStrength strongestBinding)
-        : this(
-            name,
-            id,
-            version,
-            title,
-            url,
-            publicationStatus,
-            standardStatus,
-            fmmLevel,
-            description,
-            composeIncludes,
-            composeExcludes,
-            expansion)
+    private FhirValueSet(FhirValueSet source)
     {
-        _valueList = concepts;
-        _codeSystems = referencedCodeSystems;
-        _strongestBinding = strongestBinding;
+        Name = source.Name;
+        Id = source.Id;
+        Version = source.Version;
+        Title = source.Title;
+        URL = source.URL;
+        PublicationStatus = source.PublicationStatus;
+        StandardStatus = source.StandardStatus;
+        FhirMaturityLevel = source.FhirMaturityLevel;
+        Description = source.Description;
+
+        ComposeIncludes = source.ComposeIncludes?.Select(c => new FhirValueSetComposition(c)).ToList() ?? new();
+        ComposeExcludes = source.ComposeExcludes?.Select(c => new FhirValueSetComposition(c)).ToList() ?? new();
+        Expansion = (FhirValueSetExpansion)source.Expansion?.Clone() ?? null;
+        _valueList = source._valueList?.Select(c => new FhirConcept(c)).ToList() ?? new();
+        _codeSystems = source._codeSystems?.Select(s => s).ToHashSet() ?? new();
+        _referencedPaths = source._referencedPaths?.Select(s => s).ToList() ?? new();
+        _referencingElementsByPath = source._referencingElementsByPath?.ShallowCopy() ?? new();
+        _referencingExternalElementsByUrl = source._referencingExternalElementsByUrl?.ShallowCopy() ?? new();
+        _referencedResources = source._referencedResources?.Select(s => s).ToList() ?? new();
+        _bindingStrengthByType = source._bindingStrengthByType?.ShallowCopy() ?? new();
+        _externalBindingStrengthByType = source._externalBindingStrengthByType?.ShallowCopy() ?? new();
+        _strongestBinding = source._strongestBinding;
+        _strongestExternalBinding = source._strongestExternalBinding;
     }
 
     /// <summary>Gets the name.</summary>
@@ -172,7 +168,11 @@ public class FhirValueSet : ICloneable
     [Obsolete("Will be removing this in favor of ReferencingElementsByPath in the future")]
     public List<string> ReferencedByPaths => _referencedPaths;
 
+    /// <summary>Gets the full pathname of the referencing elements by file.</summary>
     public Dictionary<string, FhirElement> ReferencingElementsByPath => _referencingElementsByPath;
+
+    /// <summary>Gets the full pathname of the external referencing elements (e.g., extensions, profiles) by definitional URL.</summary>
+    public Dictionary<string, FhirElement> ReferencingExternalElementsByUrl => _referencingExternalElementsByUrl;
 
     /// <summary>Gets the list of resources or complex types that reference this value set.</summary>
     public List<string> ReferencedByComplexes => _referencedResources;
@@ -182,8 +182,14 @@ public class FhirValueSet : ICloneable
     /// </summary>
     public Dictionary<string, FhirElement.ElementDefinitionBindingStrength> StrongestBindingByType => _bindingStrengthByType;
 
+    /// <summary>Gets the type of the strongest external (e.g., profile, extension) binding by type.</summary>
+    public Dictionary<string, FhirElement.ElementDefinitionBindingStrength> StrongestExternalBindingByType => _externalBindingStrengthByType;
+
     /// <summary>Gets the strongest binding this value set is referenced as (null for unreferenced).</summary>
     public FhirElement.ElementDefinitionBindingStrength? StrongestBinding => _strongestBinding;
+
+    /// <summary>Gets the strongest external (e.g., profile, extension) binding.</summary>
+    public FhirElement.ElementDefinitionBindingStrength? StrongestExternalBinding => _strongestExternalBinding;
 
     /// <summary>Sets the references.</summary>
     /// <param name="referenceInfo">Reference information for this value set.</param>
@@ -194,52 +200,166 @@ public class FhirValueSet : ICloneable
             return;
         }
 
-        if (_referencedResources == null)
-        {
-            _referencedResources = new();
-        }
+        HashSet<string> matchedRoots = new();
+        HashSet<string> paths = new();
+        HashSet<string> urls = new();
 
-        if (_referencedPaths == null)
+        foreach ((string path, FhirElement element) in referenceInfo.ReferencingElementsByPath.OrderBy(s => s.Value.RootArtifact?.ArtifactClass))
         {
-            _referencedPaths = new();
-        }
-
-        HashSet<string> resources = new HashSet<string>();
-        HashSet<string> paths = new HashSet<string>();
-
-        foreach ((string path, FhirElement element) in referenceInfo.ReferencingElementsByPath)
-        {
-            if (paths.Contains(path))
+            switch (element.RootArtifact.ArtifactClass)
             {
+                // 'primary' references downstream callers want to know about
+                case FhirArtifactClassEnum.PrimitiveType:
+                case FhirArtifactClassEnum.ComplexType:
+                case FhirArtifactClassEnum.Resource:
+                    {
+                        if (paths.Contains(path))
+                        {
+                            continue;
+                        }
+
+                        if (CheckPathForDataType(matchedRoots, path, element.RootArtifact))
+                        {
+                            // do not add this path - it is handled by a type higher in the tree
+                            continue;
+                        }
+
+                        _referencingElementsByPath.Add(path, element);
+                        paths.Add(path);
+                        _referencedPaths.Add(path);
+
+                        string rootName = path.Substring(0, path.IndexOf('.'));
+
+                        if (!matchedRoots.Contains(rootName))
+                        {
+                            matchedRoots.Add(rootName);
+                            _referencedResources.Add(rootName);
+                        }
+
+                        if ((element.ElementTypes != null) &&
+                            (element.ValueSetBindingStrength != null))
+                        {
+                            foreach (string fhirType in element.ElementTypes.Keys)
+                            {
+                                if ((!_bindingStrengthByType.ContainsKey(fhirType)) ||
+                                    (_bindingStrengthByType[fhirType] < element.ValueSetBindingStrength))
+                                {
+                                    _bindingStrengthByType[fhirType] = (FhirElement.ElementDefinitionBindingStrength)element.ValueSetBindingStrength;
+                                }
+                            }
+                        }
+                    }
+                    break;
+
+                // additional or 'external' references - important to track but typically handled differently
+                case FhirArtifactClassEnum.Extension:
+                case FhirArtifactClassEnum.Profile:
+                case FhirArtifactClassEnum.LogicalModel:
+                case FhirArtifactClassEnum.ConceptMap:
+                    {
+                        string url = element.RootArtifact.Url;
+
+                        if (urls.Contains(url))
+                        {
+                            continue;
+                        }
+
+                        urls.Add(url);
+                        _referencingExternalElementsByUrl.Add(url, element);
+
+                        if ((element.ElementTypes != null) &&
+                            (element.ValueSetBindingStrength != null))
+                        {
+                            foreach (string fhirType in element.ElementTypes.Keys)
+                            {
+                                if ((!_externalBindingStrengthByType.ContainsKey(fhirType)) ||
+                                    (_externalBindingStrengthByType[fhirType] < element.ValueSetBindingStrength))
+                                {
+                                    _externalBindingStrengthByType[fhirType] = (FhirElement.ElementDefinitionBindingStrength)element.ValueSetBindingStrength;
+                                }
+                            }
+                        }
+                    }
+                    break;
+
+                // don't bother tracking references derived from these classes
+                case FhirArtifactClassEnum.NamingSystem:
+                case FhirArtifactClassEnum.Operation:
+                case FhirArtifactClassEnum.SearchParameter:
+                case FhirArtifactClassEnum.CodeSystem:
+                case FhirArtifactClassEnum.ValueSet:
+                case FhirArtifactClassEnum.CapabilityStatement:
+                case FhirArtifactClassEnum.Compartment:
+                case FhirArtifactClassEnum.StructureMap:
+                case FhirArtifactClassEnum.ImplementationGuide:
+                case FhirArtifactClassEnum.Unknown:
+                default:
+                    {
+                        continue;
+                    }
+            }
+
+        }
+
+        _strongestBinding = _bindingStrengthByType.Any()
+            ? _bindingStrengthByType.Values.Max()
+            : FhirElement.ElementDefinitionBindingStrength.Example;
+
+        _strongestExternalBinding = _externalBindingStrengthByType.Any()
+            ? _externalBindingStrengthByType.Values.Max()
+            : FhirElement.ElementDefinitionBindingStrength.Example;
+    }
+
+    /// <summary>Check path for data type.</summary>
+    /// <param name="matchedRoots">The matched roots.</param>
+    /// <param name="path">        Full pathname of the file.</param>
+    /// <param name="root">        The element.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private static bool CheckPathForDataType(
+        HashSet<string> matchedRoots,
+        string path,
+        FhirComplex root)
+    {
+        FhirComplex complex = root;
+
+        bool found = false;
+        int index = path.IndexOf('.');
+        int len = path.Length;
+        while ((index != -1) && (index != len))
+        {
+            string subPath = path.Substring(0, index);
+
+            if (!complex.Elements.ContainsKey(subPath))
+            {
+                // find next
+                index = path.IndexOf('.', index + 1);
                 continue;
             }
 
-            string resource = path.Substring(0, path.IndexOf('.'));
-            if (!resources.Contains(resource))
+            if (complex.Elements[subPath].ElementTypes.Count > 1)
             {
-                resources.Add(resource);
-                _referencedResources.Add(resource);
+                // this cannot be skipped
+                continue;
             }
 
-            _referencedPaths.Add(path);
-            paths.Add(path);
+            string subType = complex.Elements[subPath].ElementTypes?.First().Key ?? complex.Elements[subPath].BaseTypeName;
 
-            _referencingElementsByPath.Add(path, element);
-
-            if (element.ElementTypes != null)
+            if (matchedRoots.Contains(subType))
             {
-                foreach (string fhirType in element.ElementTypes.Keys)
-                {
-                    if ((!_bindingStrengthByType.ContainsKey(fhirType)) ||
-                        (_bindingStrengthByType[fhirType] < element.ValueSetBindingStrength))
-                    {
-                        _bindingStrengthByType[fhirType] = (FhirElement.ElementDefinitionBindingStrength)element.ValueSetBindingStrength;
-                    }
-                }
+                found = true;
+                break;
             }
+
+            if (complex.Components.ContainsKey(subPath))
+            {
+                complex = complex.Components[subPath];
+            }
+
+            // find next
+            index = path.IndexOf('.', index + 1);
         }
 
-        _strongestBinding = referenceInfo.StrongestBinding;
+        return found;
     }
 
     /// <summary>Gets a list of FhirTriplets to cover all values in the value set.</summary>
@@ -866,62 +986,9 @@ public class FhirValueSet : ICloneable
     }
 
     /// <summary>Deep copy.</summary>
-    /// <param name="resolveRules">(Optional) True to resolve rules.</param>
     /// <returns>A FhirValueSet.</returns>
     public object Clone()
     {
-        List<FhirValueSetComposition> includes = new List<FhirValueSetComposition>();
-
-        if (ComposeIncludes != null)
-        {
-            includes = ComposeIncludes.Select(i => (FhirValueSetComposition)i.Clone()).ToList();
-        }
-
-        List<FhirValueSetComposition> excludes = new List<FhirValueSetComposition>();
-
-        if (ComposeExcludes != null)
-        {
-            excludes = ComposeExcludes.Select(e => (FhirValueSetComposition)e.Clone()).ToList();
-        }
-
-        FhirValueSetExpansion expansion = null;
-
-        if (Expansion != null)
-        {
-            expansion = (FhirValueSetExpansion)Expansion.Clone();
-        }
-
-        List<FhirConcept> concepts = null;
-
-        if (Concepts != null)
-        {
-            concepts = Concepts.Select(c => (FhirConcept)c.Clone()).ToList();
-        }
-
-        HashSet<string> codeSystems = new HashSet<string>();
-        if (_codeSystems != null)
-        {
-            foreach (string val in _codeSystems)
-            {
-                codeSystems.Add(val);
-            }
-        }
-
-        return new FhirValueSet(
-            Name,
-            Id,
-            Version,
-            Title,
-            URL,
-            PublicationStatus,
-            StandardStatus,
-            FhirMaturityLevel,
-            Description,
-            includes,
-            excludes,
-            expansion,
-            concepts,
-            codeSystems,
-            _strongestBinding);
+        return new FhirValueSet(this);
     }
 }

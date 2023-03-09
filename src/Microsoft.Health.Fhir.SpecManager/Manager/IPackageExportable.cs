@@ -4,6 +4,7 @@
 // </copyright>
 
 using Microsoft.Health.Fhir.SpecManager.Models;
+using static Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -77,8 +78,25 @@ public interface IPackageExportable
     /// <summary>Gets all search parameters by URL.</summary>
     public Dictionary<string, FhirSearchParam> SearchParametersByUrl { get; }
 
+    /// <summary>Gets known implementation guides, keyed by URL.</summary>
+    public Dictionary<string, FhirImplementationGuide> ImplementationGuidesByUrl { get; }
+
+    /// <summary>Gets known capability statements, keyed by URL.</summary>
+    public Dictionary<string, FhirCapabiltyStatement> CapabilitiesByUrl { get; }
+
+    /// <summary>Gets Compartment definitions, keyed by URL.</summary>
+    public Dictionary<string, FhirCompartment> CompartmentsByUrl { get; }
+
+    /// <summary>Gets the node info by path dictionary.</summary>
+    public Dictionary<string, FhirNodeInfo> NodeByPath { get; }
+
     /// <summary>Gets the excluded keys.</summary>
     public HashSet<string> ExcludedKeys { get; }
+
+    /// <summary>Gets inheritance names hash.</summary>
+    /// <param name="key">The key.</param>
+    /// <returns>The inheritance names hash.</returns>
+    public HashSet<string> GetInheritanceNamesHash(string key);
 
     /// <summary>Attempts to get explicit name a string from the given string.</summary>
     /// <param name="path">        Full pathname of the file.</param>
@@ -91,6 +109,13 @@ public interface IPackageExportable
     /// <param name="vs">      [out] The vs.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetValueSet(string urlOrKey, out FhirValueSet vs);
+
+    /// <summary>Gets the artifacts in this collection.</summary>
+    /// <param name="token">The ID or URL of the artifact.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process the artifacts in this collection.
+    /// </returns>
+    public IEnumerable<ResolvedArtifactRecord> GetArtifacts(string token);
 
     /// <summary>Attempts to get artifact.</summary>
     /// <param name="token">             The token.</param>
@@ -106,4 +131,10 @@ public interface IPackageExportable
         out string resolvedPackage,
         bool resolveParentLinks,
         FhirArtifactClassEnum knownArtifactClass);
+
+    /// <summary>Attempts to get node information about the node described by the path.</summary>
+    /// <param name="path">Full pathname of the file.</param>
+    /// <param name="node">[out] The node information.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetNodeInfo(string path, out FhirNodeInfo node);
 }

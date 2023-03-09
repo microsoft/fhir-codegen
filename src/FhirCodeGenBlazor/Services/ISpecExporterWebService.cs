@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -25,10 +26,16 @@ public interface ISpecExporterWebService
     bool TryGetExportLanguage(string name, out ILanguage? iLang);
 
     /// <summary>Request export.</summary>
-    /// <param name="info">          The loaded FHIR package information.</param>
-    /// <param name="exportLanguage">The export language.</param>
-    /// <param name="options">       Options for controlling the operation.</param>
-    /// <param name="outputPath">    Full pathname of the output file.</param>
+    /// <param name="info">              The loaded FHIR package information.</param>
+    /// <param name="capStatementFilter">A capability statement used to filter export contents.</param>
+    /// <param name="exportLanguage">    The export language.</param>
+    /// <param name="options">           Options for controlling the operation.</param>
+    /// <param name="outputPath">        Full pathname of the output file.</param>
     /// <returns>An asynchronous result.</returns>
-    Task RequestExport(FhirVersionInfo info, ILanguage exportLanguage, ExporterOptions options, string outputPath);
+    Task RequestExport(
+        FhirVersionInfo info,
+        FhirCapabiltyStatement? capStatementFilter,
+        ILanguage exportLanguage,
+        ExporterOptions options,
+        string outputPath);
 }

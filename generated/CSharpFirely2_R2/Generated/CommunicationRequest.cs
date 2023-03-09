@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("CommunicationRequest", IsResource=true)]
+  [FhirType("CommunicationRequest","http://hl7.org/fhir/StructureDefinition/CommunicationRequest", IsResource=true)]
   public partial class CommunicationRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -143,6 +143,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("content", InSummary=true, Order=40, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("Resource")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.ResourceReference))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
@@ -173,6 +174,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new PayloadComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as PayloadComponent;
@@ -213,6 +215,25 @@ namespace Hl7.Fhir.Model
           foreach (var item in base.NamedChildren) yield return item;
           if (Content != null) yield return new ElementValue("content", Content);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "content":
+            value = Content;
+            return Content is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Content is not null) yield return new KeyValuePair<string,object>("content",Content);
       }
 
     }
@@ -321,7 +342,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | failed
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=160)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=160)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.CommunicationRequest.CommunicationRequestStatus> StatusElement
     {
@@ -484,6 +506,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new CommunicationRequest());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as CommunicationRequest;
@@ -576,6 +599,77 @@ namespace Hl7.Fhir.Model
         if (Subject != null) yield return new ElementValue("subject", Subject);
         if (Priority != null) yield return new ElementValue("priority", Priority);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "category":
+          value = Category;
+          return Category is not null;
+        case "sender":
+          value = Sender;
+          return Sender is not null;
+        case "recipient":
+          value = Recipient;
+          return Recipient?.Any() == true;
+        case "payload":
+          value = Payload;
+          return Payload?.Any() == true;
+        case "medium":
+          value = Medium;
+          return Medium?.Any() == true;
+        case "requester":
+          value = Requester;
+          return Requester is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "scheduled":
+          value = Scheduled;
+          return Scheduled is not null;
+        case "reason":
+          value = Reason;
+          return Reason?.Any() == true;
+        case "requestedOn":
+          value = RequestedOnElement;
+          return RequestedOnElement is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "priority":
+          value = Priority;
+          return Priority is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Category is not null) yield return new KeyValuePair<string,object>("category",Category);
+      if (Sender is not null) yield return new KeyValuePair<string,object>("sender",Sender);
+      if (Recipient?.Any() == true) yield return new KeyValuePair<string,object>("recipient",Recipient);
+      if (Payload?.Any() == true) yield return new KeyValuePair<string,object>("payload",Payload);
+      if (Medium?.Any() == true) yield return new KeyValuePair<string,object>("medium",Medium);
+      if (Requester is not null) yield return new KeyValuePair<string,object>("requester",Requester);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Scheduled is not null) yield return new KeyValuePair<string,object>("scheduled",Scheduled);
+      if (Reason?.Any() == true) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (RequestedOnElement is not null) yield return new KeyValuePair<string,object>("requestedOn",RequestedOnElement);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Priority is not null) yield return new KeyValuePair<string,object>("priority",Priority);
     }
 
   }

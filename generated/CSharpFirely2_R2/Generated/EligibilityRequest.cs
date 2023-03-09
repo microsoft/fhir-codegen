@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("EligibilityRequest", IsResource=true)]
+  [FhirType("EligibilityRequest","http://hl7.org/fhir/StructureDefinition/EligibilityRequest", IsResource=true)]
   public partial class EligibilityRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -196,6 +196,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new EligibilityRequest());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as EligibilityRequest;
@@ -260,6 +261,49 @@ namespace Hl7.Fhir.Model
         if (Provider != null) yield return new ElementValue("provider", Provider);
         if (Organization != null) yield return new ElementValue("organization", Organization);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "ruleset":
+          value = Ruleset;
+          return Ruleset is not null;
+        case "originalRuleset":
+          value = OriginalRuleset;
+          return OriginalRuleset is not null;
+        case "created":
+          value = CreatedElement;
+          return CreatedElement is not null;
+        case "target":
+          value = Target;
+          return Target is not null;
+        case "provider":
+          value = Provider;
+          return Provider is not null;
+        case "organization":
+          value = Organization;
+          return Organization is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Ruleset is not null) yield return new KeyValuePair<string,object>("ruleset",Ruleset);
+      if (OriginalRuleset is not null) yield return new KeyValuePair<string,object>("originalRuleset",OriginalRuleset);
+      if (CreatedElement is not null) yield return new KeyValuePair<string,object>("created",CreatedElement);
+      if (Target is not null) yield return new KeyValuePair<string,object>("target",Target);
+      if (Provider is not null) yield return new KeyValuePair<string,object>("provider",Provider);
+      if (Organization is not null) yield return new KeyValuePair<string,object>("organization",Organization);
     }
 
   }

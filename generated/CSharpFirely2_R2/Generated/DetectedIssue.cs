@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("DetectedIssue", IsResource=true)]
+  [FhirType("DetectedIssue","http://hl7.org/fhir/StructureDefinition/DetectedIssue", IsResource=true)]
   public partial class DetectedIssue : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -177,6 +177,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new MitigationComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as MitigationComponent;
@@ -227,6 +228,33 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "action":
+            value = Action;
+            return Action is not null;
+          case "date":
+            value = DateElement;
+            return DateElement is not null;
+          case "author":
+            value = Author;
+            return Author is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Action is not null) yield return new KeyValuePair<string,object>("action",Action);
+        if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+        if (Author is not null) yield return new KeyValuePair<string,object>("author",Author);
+      }
+
     }
 
     /// <summary>
@@ -261,6 +289,7 @@ namespace Hl7.Fhir.Model
     /// high | moderate | low
     /// </summary>
     [FhirElement("severity", InSummary=true, Order=110)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.DetectedIssue.DetectedIssueSeverity> SeverityElement
     {
@@ -467,6 +496,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new DetectedIssue());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as DetectedIssue;
@@ -543,6 +573,61 @@ namespace Hl7.Fhir.Model
         if (ReferenceElement != null) yield return new ElementValue("reference", ReferenceElement);
         foreach (var elem in Mitigation) { if (elem != null) yield return new ElementValue("mitigation", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "category":
+          value = Category;
+          return Category is not null;
+        case "severity":
+          value = SeverityElement;
+          return SeverityElement is not null;
+        case "implicated":
+          value = Implicated;
+          return Implicated?.Any() == true;
+        case "detail":
+          value = DetailElement;
+          return DetailElement is not null;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "author":
+          value = Author;
+          return Author is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier is not null;
+        case "reference":
+          value = ReferenceElement;
+          return ReferenceElement is not null;
+        case "mitigation":
+          value = Mitigation;
+          return Mitigation?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (Category is not null) yield return new KeyValuePair<string,object>("category",Category);
+      if (SeverityElement is not null) yield return new KeyValuePair<string,object>("severity",SeverityElement);
+      if (Implicated?.Any() == true) yield return new KeyValuePair<string,object>("implicated",Implicated);
+      if (DetailElement is not null) yield return new KeyValuePair<string,object>("detail",DetailElement);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (Author is not null) yield return new KeyValuePair<string,object>("author",Author);
+      if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (ReferenceElement is not null) yield return new KeyValuePair<string,object>("reference",ReferenceElement);
+      if (Mitigation?.Any() == true) yield return new KeyValuePair<string,object>("mitigation",Mitigation);
     }
 
   }

@@ -1,0 +1,1387 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Firely Server - RelatedPerson",
+    "version": "4.10.0"
+  },
+  "host": "server.fire.ly",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/RelatedPerson": {
+      "post": {
+        "tags": [
+          "RelatedPerson"
+        ],
+        "summary": "create: Create a new RelatedPerson instance",
+        "operationId": "CreateRelatedPerson",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A FHIR RelatedPerson",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RelatedPerson"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RelatedPerson"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "RelatedPerson"
+        ],
+        "summary": "search-type: Search for RelatedPerson instances",
+        "operationId": "SearchRelatedPersonGet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_contained"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_graph"
+          },
+          {
+            "$ref": "#/parameters/_include"
+          },
+          {
+            "$ref": "#/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/parameters/_score"
+          },
+          {
+            "$ref": "#/parameters/_sort"
+          },
+          {
+            "$ref": "#/parameters/_total"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/active"
+          },
+          {
+            "$ref": "#/parameters/address"
+          },
+          {
+            "$ref": "#/parameters/address-city"
+          },
+          {
+            "$ref": "#/parameters/address-country"
+          },
+          {
+            "$ref": "#/parameters/address-postalcode"
+          },
+          {
+            "$ref": "#/parameters/address-state"
+          },
+          {
+            "$ref": "#/parameters/address-use"
+          },
+          {
+            "$ref": "#/parameters/birthdate"
+          },
+          {
+            "$ref": "#/parameters/email"
+          },
+          {
+            "$ref": "#/parameters/gender"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/phone"
+          },
+          {
+            "$ref": "#/parameters/phonetic"
+          },
+          {
+            "$ref": "#/parameters/relationship"
+          },
+          {
+            "$ref": "#/parameters/telecom"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/RelatedPerson/{logical_id}": {
+      "delete": {
+        "tags": [
+          "RelatedPerson"
+        ],
+        "summary": "delete: Perform a loical delete on a RelatedPerson instance",
+        "operationId": "DeleteRelatedPerson",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/active"
+          },
+          {
+            "$ref": "#/parameters/address"
+          },
+          {
+            "$ref": "#/parameters/address-city"
+          },
+          {
+            "$ref": "#/parameters/address-country"
+          },
+          {
+            "$ref": "#/parameters/address-postalcode"
+          },
+          {
+            "$ref": "#/parameters/address-state"
+          },
+          {
+            "$ref": "#/parameters/address-use"
+          },
+          {
+            "$ref": "#/parameters/birthdate"
+          },
+          {
+            "$ref": "#/parameters/email"
+          },
+          {
+            "$ref": "#/parameters/gender"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/phone"
+          },
+          {
+            "$ref": "#/parameters/phonetic"
+          },
+          {
+            "$ref": "#/parameters/relationship"
+          },
+          {
+            "$ref": "#/parameters/telecom"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RelatedPerson"
+            }
+          },
+          "202": {
+            "description": "ACCEPTED"
+          },
+          "204": {
+            "description": "NO CONTENT"
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "RelatedPerson"
+        ],
+        "summary": "patch: Patch a RelatedPerson instance",
+        "operationId": "PatchRelatedPerson",
+        "consumes": [ ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Patch to apply to a FHIR RelatedPerson record",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RelatedPerson"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "RelatedPerson"
+        ],
+        "summary": "read: Read a FHIR RelatedPerson",
+        "operationId": "ReadRelatedPerson",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RelatedPerson"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "RelatedPerson"
+        ],
+        "summary": "update,create: Update or Create a RelatedPerson instance",
+        "operationId": "UpdateOrCreateRelatedPerson",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/active"
+          },
+          {
+            "$ref": "#/parameters/address"
+          },
+          {
+            "$ref": "#/parameters/address-city"
+          },
+          {
+            "$ref": "#/parameters/address-country"
+          },
+          {
+            "$ref": "#/parameters/address-postalcode"
+          },
+          {
+            "$ref": "#/parameters/address-state"
+          },
+          {
+            "$ref": "#/parameters/address-use"
+          },
+          {
+            "$ref": "#/parameters/birthdate"
+          },
+          {
+            "$ref": "#/parameters/email"
+          },
+          {
+            "$ref": "#/parameters/gender"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/phone"
+          },
+          {
+            "$ref": "#/parameters/phonetic"
+          },
+          {
+            "$ref": "#/parameters/relationship"
+          },
+          {
+            "$ref": "#/parameters/telecom"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "An updated FHIR RelatedPerson",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RelatedPerson"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RelatedPerson"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/RelatedPerson/_search": {
+      "post": {
+        "tags": [
+          "RelatedPerson"
+        ],
+        "summary": "search-type: Search for RelatedPerson instances",
+        "operationId": "SearchRelatedPersonPost",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "_elements",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_summary",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_content",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_filter",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_in",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_language",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_lastUpdated",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_list",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_profile",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_query",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_security",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_source",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_tag",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_text",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_contained",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_count",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_graph",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_include",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_revinclude",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_score",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_sort",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_total",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_format",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_has",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "active",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address-city",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address-country",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address-postalcode",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address-state",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address-use",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "birthdate",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "gender",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "identifier",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "patient",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "phone",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "phonetic",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "relationship",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "telecom",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/RelatedPerson/{logical_id}/_history/{resource_version}": {
+      "get": {
+        "tags": [
+          "RelatedPerson"
+        ],
+        "summary": "vread: Read RelatedPerson instance with specific version",
+        "operationId": "VReadRelatedPerson",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/resource_version"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RelatedPerson"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "RelatedPerson": {
+      "description": "A person that is related to a patient, but who is not a direct target of care",
+      "type": "object"
+    },
+    "OperationOutcome": {
+      "description": "Information about the success/failure of an action",
+      "type": "object"
+    },
+    "Bundle": {
+      "description": "Contains a collection of resources",
+      "type": "object"
+    }
+  },
+  "parameters": {
+    "_format": {
+      "in": "query",
+      "name": "_format",
+      "description": "Override the HTTP content negotiation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_pretty": {
+      "in": "query",
+      "name": "_pretty",
+      "description": "Ask for a pretty printed response for human convenience",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_elements": {
+      "in": "query",
+      "name": "_elements",
+      "description": "Ask for a particular set of elements to be returned",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_summary": {
+      "in": "query",
+      "name": "_summary",
+      "description": "Return only portions of resources, based on pre-defined levels",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_content": {
+      "in": "query",
+      "name": "_content",
+      "description": "Search on the entire content of the resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_filter": {
+      "in": "query",
+      "name": "_filter",
+      "description": "Provide an inline query expression",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_id": {
+      "in": "query",
+      "name": "_id",
+      "description": "Logical id of this artifact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_in": {
+      "in": "query",
+      "name": "_in",
+      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_language": {
+      "in": "query",
+      "name": "_language",
+      "description": "Language of the resource content",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_lastUpdated": {
+      "in": "query",
+      "name": "_lastUpdated",
+      "description": "When the resource version last changed",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_list": {
+      "in": "query",
+      "name": "_list",
+      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_profile": {
+      "in": "query",
+      "name": "_profile",
+      "description": "Profiles this resource claims to conform to",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_query": {
+      "in": "query",
+      "name": "_query",
+      "description": "A custom search profile that describes a specific defined query operation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_security": {
+      "in": "query",
+      "name": "_security",
+      "description": "Security Labels applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_source": {
+      "in": "query",
+      "name": "_source",
+      "description": "Identifies where the resource comes from",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_tag": {
+      "in": "query",
+      "name": "_tag",
+      "description": "Tags applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_text": {
+      "in": "query",
+      "name": "_text",
+      "description": "Perform searches against the narrative content of a resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_contained": {
+      "in": "query",
+      "name": "_contained",
+      "description": "Request different types of handling for contained resources",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_count": {
+      "in": "query",
+      "name": "_count",
+      "description": "Limit the number of match results per page of response",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "_graph": {
+      "in": "query",
+      "name": "_graph",
+      "description": "Include additional resources according to a GraphDefinition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_include": {
+      "in": "query",
+      "name": "_include",
+      "description": "Include additional resources, based on following links forward across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_revinclude": {
+      "in": "query",
+      "name": "_revinclude",
+      "description": "Include additional resources, based on following reverse links across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_score": {
+      "in": "query",
+      "name": "_score",
+      "description": "Request match relevance in results",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_sort": {
+      "in": "query",
+      "name": "_sort",
+      "description": "Request which order results should be returned in",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_total": {
+      "in": "query",
+      "name": "_total",
+      "description": "Request a precision of the total number of results for a request",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_has": {
+      "in": "query",
+      "name": "_has",
+      "description": "Enables querying a reverse chain",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "active": {
+      "in": "query",
+      "name": "active",
+      "description": "The Healthcare Service is currently marked as active",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address": {
+      "in": "query",
+      "name": "address",
+      "description": "Identifier for the network access point of the user device",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address-city": {
+      "in": "query",
+      "name": "address-city",
+      "description": "A city specified in an address",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address-country": {
+      "in": "query",
+      "name": "address-country",
+      "description": "A country specified in an address",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address-postalcode": {
+      "in": "query",
+      "name": "address-postalcode",
+      "description": "A postal code specified in an address",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address-state": {
+      "in": "query",
+      "name": "address-state",
+      "description": "A state specified in an address",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "address-use": {
+      "in": "query",
+      "name": "address-use",
+      "description": "A use code specified in an address",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "birthdate": {
+      "in": "query",
+      "name": "birthdate",
+      "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): The patient's date of birth\r\n* [Person](person.html): The person's date of birth\r\n* [RelatedPerson](relatedperson.html): The Related Person's date of birth\r\n",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "email": {
+      "in": "query",
+      "name": "email",
+      "description": "A value in an email contact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "gender": {
+      "in": "query",
+      "name": "gender",
+      "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): Gender of the patient\r\n* [Person](person.html): The gender of the person\r\n* [Practitioner](practitioner.html): Gender of the practitioner\r\n* [RelatedPerson](relatedperson.html): Gender of the related person\r\n",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "identifier": {
+      "in": "query",
+      "name": "identifier",
+      "description": "Account number",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "name": {
+      "in": "query",
+      "name": "name",
+      "description": "Human-readable label",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "patient": {
+      "in": "query",
+      "name": "patient",
+      "description": "The entity that caused the expenses",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "phone": {
+      "in": "query",
+      "name": "phone",
+      "description": "A value in a phone contact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "phonetic": {
+      "in": "query",
+      "name": "phonetic",
+      "description": "A portion of the organization's name using some kind of phonetic matching algorithm",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "relationship": {
+      "in": "query",
+      "name": "relationship",
+      "description": "Combination of relation and relatesTo",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "telecom": {
+      "in": "query",
+      "name": "telecom",
+      "description": "Contact details for individual or organization",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "logical_id": {
+      "in": "path",
+      "name": "logical_id",
+      "description": "Resource Logical ID",
+      "required": true,
+      "type": "string"
+    },
+    "resource_version": {
+      "in": "path",
+      "name": "resource_version",
+      "description": "Resource Version Number",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "tags": [
+    {
+      "name": "RelatedPerson",
+      "description": "A person that is related to a patient, but who is not a direct target of care"
+    }
+  ]
+}

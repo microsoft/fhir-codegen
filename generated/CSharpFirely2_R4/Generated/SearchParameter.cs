@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("SearchParameter", IsResource=true)]
+  [FhirType("SearchParameter","http://hl7.org/fhir/StructureDefinition/SearchParameter", IsResource=true)]
   public partial class SearchParameter : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -338,6 +338,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ComponentComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ComponentComponent;
@@ -384,12 +385,35 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "definition":
+            value = DefinitionElement;
+            return DefinitionElement is not null;
+          case "expression":
+            value = ExpressionElement;
+            return ExpressionElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (DefinitionElement is not null) yield return new KeyValuePair<string,object>("definition",DefinitionElement);
+        if (ExpressionElement is not null) yield return new KeyValuePair<string,object>("expression",ExpressionElement);
+      }
+
     }
 
     /// <summary>
     /// Canonical identifier for this search parameter, represented as a URI (globally unique)
     /// </summary>
-    [FhirElement("url", InSummary=true, Order=90)]
+    [FhirElement("url", InSummary=true, Order=90, FiveWs="FiveWs.identifier")]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Hl7.Fhir.Model.FhirUri UrlElement
@@ -421,7 +445,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Business version of the search parameter
     /// </summary>
-    [FhirElement("version", InSummary=true, Order=100)]
+    [FhirElement("version", InSummary=true, Order=100, FiveWs="FiveWs.version")]
     [DataMember]
     public Hl7.Fhir.Model.FhirString VersionElement
     {
@@ -515,7 +539,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// draft | active | retired | unknown
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=130)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=130, FiveWs="FiveWs.status")]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.PublicationStatus> StatusElement
@@ -547,7 +572,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// For testing purposes, not real usage
     /// </summary>
-    [FhirElement("experimental", InSummary=true, Order=140)]
+    [FhirElement("experimental", InSummary=true, Order=140, FiveWs="FiveWs.class")]
     [DataMember]
     public Hl7.Fhir.Model.FhirBoolean ExperimentalElement
     {
@@ -578,7 +603,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Date last changed
     /// </summary>
-    [FhirElement("date", InSummary=true, Order=150)]
+    [FhirElement("date", InSummary=true, Order=150, FiveWs="FiveWs.recorded")]
     [DataMember]
     public Hl7.Fhir.Model.FhirDateTime DateElement
     {
@@ -609,7 +634,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Name of the publisher (organization or individual)
     /// </summary>
-    [FhirElement("publisher", InSummary=true, Order=160)]
+    [FhirElement("publisher", InSummary=true, Order=160, FiveWs="FiveWs.witness")]
     [DataMember]
     public Hl7.Fhir.Model.FhirString PublisherElement
     {
@@ -696,7 +721,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Why this search parameter is defined
     /// </summary>
-    [FhirElement("purpose", Order=210)]
+    [FhirElement("purpose", Order=210, FiveWs="FiveWs.why[x]")]
     [DataMember]
     public Hl7.Fhir.Model.Markdown Purpose
     {
@@ -742,6 +767,7 @@ namespace Hl7.Fhir.Model
     /// The resource type(s) this search parameter applies to
     /// </summary>
     [FhirElement("base", InSummary=true, Order=230)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=-1)]
     [DataMember]
     public List<Code<Hl7.Fhir.Model.ResourceType>> BaseElement
@@ -774,6 +800,7 @@ namespace Hl7.Fhir.Model
     /// number | date | string | token | reference | composite | quantity | uri | special
     /// </summary>
     [FhirElement("type", InSummary=true, Order=240)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.SearchParamType> TypeElement
@@ -868,6 +895,7 @@ namespace Hl7.Fhir.Model
     /// normal | phonetic | nearby | distance | other
     /// </summary>
     [FhirElement("xpathUsage", Order=270)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.SearchParameter.XPathUsageType> XpathUsageElement
     {
@@ -899,6 +927,7 @@ namespace Hl7.Fhir.Model
     /// Types of resource (if a resource reference)
     /// </summary>
     [FhirElement("target", Order=280)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Code<Hl7.Fhir.Model.ResourceType>> TargetElement
@@ -993,6 +1022,7 @@ namespace Hl7.Fhir.Model
     /// eq | ne | gt | lt | ge | le | sa | eb | ap
     /// </summary>
     [FhirElement("comparator", Order=310)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Code<Hl7.Fhir.Model.SearchParameter.SearchComparator>> ComparatorElement
@@ -1025,6 +1055,7 @@ namespace Hl7.Fhir.Model
     /// missing | exact | contains | not | text | in | not-in | below | above | type | identifier | ofType
     /// </summary>
     [FhirElement("modifier", Order=320)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Code<Hl7.Fhir.Model.SearchParameter.SearchModifierCode>> ModifierElement
@@ -1143,6 +1174,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new SearchParameter());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as SearchParameter;
@@ -1283,6 +1315,125 @@ namespace Hl7.Fhir.Model
         foreach (var elem in ChainElement) { if (elem != null) yield return new ElementValue("chain", elem); }
         foreach (var elem in Component) { if (elem != null) yield return new ElementValue("component", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "url":
+          value = UrlElement;
+          return UrlElement is not null;
+        case "version":
+          value = VersionElement;
+          return VersionElement is not null;
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "derivedFrom":
+          value = DerivedFromElement;
+          return DerivedFromElement is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "experimental":
+          value = ExperimentalElement;
+          return ExperimentalElement is not null;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "publisher":
+          value = PublisherElement;
+          return PublisherElement is not null;
+        case "contact":
+          value = Contact;
+          return Contact?.Any() == true;
+        case "description":
+          value = Description;
+          return Description is not null;
+        case "useContext":
+          value = UseContext;
+          return UseContext?.Any() == true;
+        case "jurisdiction":
+          value = Jurisdiction;
+          return Jurisdiction?.Any() == true;
+        case "purpose":
+          value = Purpose;
+          return Purpose is not null;
+        case "code":
+          value = CodeElement;
+          return CodeElement is not null;
+        case "base":
+          value = BaseElement;
+          return BaseElement?.Any() == true;
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "expression":
+          value = ExpressionElement;
+          return ExpressionElement is not null;
+        case "xpath":
+          value = XpathElement;
+          return XpathElement is not null;
+        case "xpathUsage":
+          value = XpathUsageElement;
+          return XpathUsageElement is not null;
+        case "target":
+          value = TargetElement;
+          return TargetElement?.Any() == true;
+        case "multipleOr":
+          value = MultipleOrElement;
+          return MultipleOrElement is not null;
+        case "multipleAnd":
+          value = MultipleAndElement;
+          return MultipleAndElement is not null;
+        case "comparator":
+          value = ComparatorElement;
+          return ComparatorElement?.Any() == true;
+        case "modifier":
+          value = ModifierElement;
+          return ModifierElement?.Any() == true;
+        case "chain":
+          value = ChainElement;
+          return ChainElement?.Any() == true;
+        case "component":
+          value = Component;
+          return Component?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (UrlElement is not null) yield return new KeyValuePair<string,object>("url",UrlElement);
+      if (VersionElement is not null) yield return new KeyValuePair<string,object>("version",VersionElement);
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (DerivedFromElement is not null) yield return new KeyValuePair<string,object>("derivedFrom",DerivedFromElement);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (ExperimentalElement is not null) yield return new KeyValuePair<string,object>("experimental",ExperimentalElement);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (PublisherElement is not null) yield return new KeyValuePair<string,object>("publisher",PublisherElement);
+      if (Contact?.Any() == true) yield return new KeyValuePair<string,object>("contact",Contact);
+      if (Description is not null) yield return new KeyValuePair<string,object>("description",Description);
+      if (UseContext?.Any() == true) yield return new KeyValuePair<string,object>("useContext",UseContext);
+      if (Jurisdiction?.Any() == true) yield return new KeyValuePair<string,object>("jurisdiction",Jurisdiction);
+      if (Purpose is not null) yield return new KeyValuePair<string,object>("purpose",Purpose);
+      if (CodeElement is not null) yield return new KeyValuePair<string,object>("code",CodeElement);
+      if (BaseElement?.Any() == true) yield return new KeyValuePair<string,object>("base",BaseElement);
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (ExpressionElement is not null) yield return new KeyValuePair<string,object>("expression",ExpressionElement);
+      if (XpathElement is not null) yield return new KeyValuePair<string,object>("xpath",XpathElement);
+      if (XpathUsageElement is not null) yield return new KeyValuePair<string,object>("xpathUsage",XpathUsageElement);
+      if (TargetElement?.Any() == true) yield return new KeyValuePair<string,object>("target",TargetElement);
+      if (MultipleOrElement is not null) yield return new KeyValuePair<string,object>("multipleOr",MultipleOrElement);
+      if (MultipleAndElement is not null) yield return new KeyValuePair<string,object>("multipleAnd",MultipleAndElement);
+      if (ComparatorElement?.Any() == true) yield return new KeyValuePair<string,object>("comparator",ComparatorElement);
+      if (ModifierElement?.Any() == true) yield return new KeyValuePair<string,object>("modifier",ModifierElement);
+      if (ChainElement?.Any() == true) yield return new KeyValuePair<string,object>("chain",ChainElement);
+      if (Component?.Any() == true) yield return new KeyValuePair<string,object>("component",Component);
     }
 
   }

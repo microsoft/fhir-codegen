@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Flag", IsResource=true)]
+  [FhirType("Flag","http://hl7.org/fhir/StructureDefinition/Flag", IsResource=true)]
   public partial class Flag : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -113,7 +113,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// active | inactive | entered-in-error
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=110)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=110)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.Flag.FlagStatus> StatusElement
@@ -241,6 +242,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Flag());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Flag;
@@ -309,6 +311,53 @@ namespace Hl7.Fhir.Model
         if (Author != null) yield return new ElementValue("author", Author);
         if (Code != null) yield return new ElementValue("code", Code);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "category":
+          value = Category;
+          return Category is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "period":
+          value = Period;
+          return Period is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "author":
+          value = Author;
+          return Author is not null;
+        case "code":
+          value = Code;
+          return Code is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Category is not null) yield return new KeyValuePair<string,object>("category",Category);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Author is not null) yield return new KeyValuePair<string,object>("author",Author);
+      if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
     }
 
   }

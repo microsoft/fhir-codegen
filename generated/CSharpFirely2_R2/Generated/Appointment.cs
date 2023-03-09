@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Appointment", IsResource=true)]
+  [FhirType("Appointment","http://hl7.org/fhir/StructureDefinition/Appointment", IsResource=true)]
   public partial class Appointment : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -215,6 +215,7 @@ namespace Hl7.Fhir.Model
       /// required | optional | information-only
       /// </summary>
       [FhirElement("required", InSummary=true, Order=60)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.Appointment.ParticipantRequired> RequiredElement
       {
@@ -246,6 +247,7 @@ namespace Hl7.Fhir.Model
       /// accepted | declined | tentative | needs-action
       /// </summary>
       [FhirElement("status", Order=70)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.Appointment.ParticipationStatus> StatusElement
@@ -296,6 +298,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ParticipantComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ParticipantComponent;
@@ -350,6 +353,37 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = Type;
+            return Type?.Any() == true;
+          case "actor":
+            value = Actor;
+            return Actor is not null;
+          case "required":
+            value = RequiredElement;
+            return RequiredElement is not null;
+          case "status":
+            value = StatusElement;
+            return StatusElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Type?.Any() == true) yield return new KeyValuePair<string,object>("type",Type);
+        if (Actor is not null) yield return new KeyValuePair<string,object>("actor",Actor);
+        if (RequiredElement is not null) yield return new KeyValuePair<string,object>("required",RequiredElement);
+        if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      }
+
     }
 
     /// <summary>
@@ -369,7 +403,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// proposed | pending | booked | arrived | fulfilled | cancelled | noshow
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=100)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=100)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.Appointment.AppointmentStatus> StatusElement
@@ -670,6 +705,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Appointment());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Appointment;
@@ -754,6 +790,69 @@ namespace Hl7.Fhir.Model
         if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
         foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "reason":
+          value = Reason;
+          return Reason is not null;
+        case "priority":
+          value = PriorityElement;
+          return PriorityElement is not null;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "start":
+          value = StartElement;
+          return StartElement is not null;
+        case "end":
+          value = EndElement;
+          return EndElement is not null;
+        case "minutesDuration":
+          value = MinutesDurationElement;
+          return MinutesDurationElement is not null;
+        case "slot":
+          value = Slot;
+          return Slot?.Any() == true;
+        case "comment":
+          value = CommentElement;
+          return CommentElement is not null;
+        case "participant":
+          value = Participant;
+          return Participant?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Reason is not null) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (PriorityElement is not null) yield return new KeyValuePair<string,object>("priority",PriorityElement);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (StartElement is not null) yield return new KeyValuePair<string,object>("start",StartElement);
+      if (EndElement is not null) yield return new KeyValuePair<string,object>("end",EndElement);
+      if (MinutesDurationElement is not null) yield return new KeyValuePair<string,object>("minutesDuration",MinutesDurationElement);
+      if (Slot?.Any() == true) yield return new KeyValuePair<string,object>("slot",Slot);
+      if (CommentElement is not null) yield return new KeyValuePair<string,object>("comment",CommentElement);
+      if (Participant?.Any() == true) yield return new KeyValuePair<string,object>("participant",Participant);
     }
 
   }

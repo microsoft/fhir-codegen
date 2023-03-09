@@ -11,10 +11,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters;
 /// <summary>Interface for converter.</summary>
 public interface IFhirConverter
 {
-    /// <summary>Parses resource an object from the given string.</summary>
-    /// <param name="json">The JSON.</param>
+    /// <summary>Try to parse a JSON string into a resource object.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out].</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
     /// <returns>A typed Resource object.</returns>
-    object ParseResource(string json);
+    bool TryParseResource(string json, out object resource, out string resourceType);
 
     /// <summary>Attempts to process resource.</summary>
     /// <param name="resourceToParse">The resource object.</param>
@@ -48,11 +50,11 @@ public interface IFhirConverter
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>
     /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
     /// <param name="serverUrl"> URL of the server.</param>
-    /// <param name="serverInfo">[out] Information describing the server.</param>
+    /// <param name="capabilities">[out] Capabilities of a server.</param>
     void ProcessMetadata(
         object metadata,
         string serverUrl,
-        out FhirServerInfo serverInfo);
+        out FhirCapabiltyStatement capabilities);
 
     /// <summary>Query if 'errorCount' has issues.</summary>
     /// <param name="errorCount">  [out] Number of errors.</param>

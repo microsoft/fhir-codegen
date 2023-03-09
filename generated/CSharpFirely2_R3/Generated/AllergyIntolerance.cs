@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("AllergyIntolerance", IsResource=true)]
+  [FhirType("AllergyIntolerance","http://hl7.org/fhir/StructureDefinition/AllergyIntolerance", IsResource=true)]
   public partial class AllergyIntolerance : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -335,6 +335,7 @@ namespace Hl7.Fhir.Model
       /// mild | moderate | severe (of event as a whole)
       /// </summary>
       [FhirElement("severity", Order=80)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity> SeverityElement
       {
@@ -414,6 +415,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ReactionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ReactionComponent;
@@ -480,6 +482,49 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "substance":
+            value = Substance;
+            return Substance is not null;
+          case "manifestation":
+            value = Manifestation;
+            return Manifestation?.Any() == true;
+          case "description":
+            value = DescriptionElement;
+            return DescriptionElement is not null;
+          case "onset":
+            value = OnsetElement;
+            return OnsetElement is not null;
+          case "severity":
+            value = SeverityElement;
+            return SeverityElement is not null;
+          case "exposureRoute":
+            value = ExposureRoute;
+            return ExposureRoute is not null;
+          case "note":
+            value = Note;
+            return Note?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Substance is not null) yield return new KeyValuePair<string,object>("substance",Substance);
+        if (Manifestation?.Any() == true) yield return new KeyValuePair<string,object>("manifestation",Manifestation);
+        if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+        if (OnsetElement is not null) yield return new KeyValuePair<string,object>("onset",OnsetElement);
+        if (SeverityElement is not null) yield return new KeyValuePair<string,object>("severity",SeverityElement);
+        if (ExposureRoute is not null) yield return new KeyValuePair<string,object>("exposureRoute",ExposureRoute);
+        if (Note?.Any() == true) yield return new KeyValuePair<string,object>("note",Note);
+      }
+
     }
 
     /// <summary>
@@ -499,7 +544,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// active | inactive | resolved
     /// </summary>
-    [FhirElement("clinicalStatus", InSummary=true, Order=100)]
+    [FhirElement("clinicalStatus", InSummary=true, IsModifier=true, Order=100)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceClinicalStatus> ClinicalStatusElement
     {
@@ -530,7 +576,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// unconfirmed | confirmed | refuted | entered-in-error
     /// </summary>
-    [FhirElement("verificationStatus", InSummary=true, Order=110)]
+    [FhirElement("verificationStatus", InSummary=true, IsModifier=true, Order=110)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceVerificationStatus> VerificationStatusElement
@@ -563,6 +610,7 @@ namespace Hl7.Fhir.Model
     /// allergy | intolerance - Underlying mechanism (if known)
     /// </summary>
     [FhirElement("type", InSummary=true, Order=120)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType> TypeElement
     {
@@ -594,6 +642,7 @@ namespace Hl7.Fhir.Model
     /// food | medication | environment | biologic
     /// </summary>
     [FhirElement("category", InSummary=true, Order=130)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCategory>> CategoryElement
@@ -626,6 +675,7 @@ namespace Hl7.Fhir.Model
     /// low | high | unable-to-assess
     /// </summary>
     [FhirElement("criticality", InSummary=true, Order=140)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality> CriticalityElement
     {
@@ -850,6 +900,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new AllergyIntolerance());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as AllergyIntolerance;
@@ -946,6 +997,81 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
         foreach (var elem in Reaction) { if (elem != null) yield return new ElementValue("reaction", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "clinicalStatus":
+          value = ClinicalStatusElement;
+          return ClinicalStatusElement is not null;
+        case "verificationStatus":
+          value = VerificationStatusElement;
+          return VerificationStatusElement is not null;
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "category":
+          value = CategoryElement;
+          return CategoryElement?.Any() == true;
+        case "criticality":
+          value = CriticalityElement;
+          return CriticalityElement is not null;
+        case "code":
+          value = Code;
+          return Code is not null;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "onset":
+          value = Onset;
+          return Onset is not null;
+        case "assertedDate":
+          value = AssertedDateElement;
+          return AssertedDateElement is not null;
+        case "recorder":
+          value = Recorder;
+          return Recorder is not null;
+        case "asserter":
+          value = Asserter;
+          return Asserter is not null;
+        case "lastOccurrence":
+          value = LastOccurrenceElement;
+          return LastOccurrenceElement is not null;
+        case "note":
+          value = Note;
+          return Note?.Any() == true;
+        case "reaction":
+          value = Reaction;
+          return Reaction?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (ClinicalStatusElement is not null) yield return new KeyValuePair<string,object>("clinicalStatus",ClinicalStatusElement);
+      if (VerificationStatusElement is not null) yield return new KeyValuePair<string,object>("verificationStatus",VerificationStatusElement);
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (CategoryElement?.Any() == true) yield return new KeyValuePair<string,object>("category",CategoryElement);
+      if (CriticalityElement is not null) yield return new KeyValuePair<string,object>("criticality",CriticalityElement);
+      if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (Onset is not null) yield return new KeyValuePair<string,object>("onset",Onset);
+      if (AssertedDateElement is not null) yield return new KeyValuePair<string,object>("assertedDate",AssertedDateElement);
+      if (Recorder is not null) yield return new KeyValuePair<string,object>("recorder",Recorder);
+      if (Asserter is not null) yield return new KeyValuePair<string,object>("asserter",Asserter);
+      if (LastOccurrenceElement is not null) yield return new KeyValuePair<string,object>("lastOccurrence",LastOccurrenceElement);
+      if (Note?.Any() == true) yield return new KeyValuePair<string,object>("note",Note);
+      if (Reaction?.Any() == true) yield return new KeyValuePair<string,object>("reaction",Reaction);
     }
 
   }

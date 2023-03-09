@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("ProductShelfLife")]
+  [FhirType("ProductShelfLife","http://hl7.org/fhir/StructureDefinition/ProductShelfLife")]
   public partial class ProductShelfLife : Hl7.Fhir.Model.BackboneType
   {
     /// <summary>
@@ -132,6 +132,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new ProductShelfLife());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as ProductShelfLife;
@@ -184,6 +185,37 @@ namespace Hl7.Fhir.Model
         if (Period != null) yield return new ElementValue("period", Period);
         foreach (var elem in SpecialPrecautionsForStorage) { if (elem != null) yield return new ElementValue("specialPrecautionsForStorage", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier is not null;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "period":
+          value = Period;
+          return Period is not null;
+        case "specialPrecautionsForStorage":
+          value = SpecialPrecautionsForStorage;
+          return SpecialPrecautionsForStorage?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
+      if (SpecialPrecautionsForStorage?.Any() == true) yield return new KeyValuePair<string,object>("specialPrecautionsForStorage",SpecialPrecautionsForStorage);
     }
 
   }

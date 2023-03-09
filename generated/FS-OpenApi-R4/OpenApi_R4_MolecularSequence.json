@@ -1,0 +1,1303 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Firely Server - MolecularSequence",
+    "version": "4.10.0"
+  },
+  "host": "server.fire.ly",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/MolecularSequence": {
+      "post": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "create: Create a new MolecularSequence instance",
+        "operationId": "CreateMolecularSequence",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A FHIR MolecularSequence",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MolecularSequence"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MolecularSequence"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "search-type: Search for MolecularSequence instances",
+        "operationId": "SearchMolecularSequenceGet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_contained"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_graph"
+          },
+          {
+            "$ref": "#/parameters/_include"
+          },
+          {
+            "$ref": "#/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/parameters/_score"
+          },
+          {
+            "$ref": "#/parameters/_sort"
+          },
+          {
+            "$ref": "#/parameters/_total"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/chromosome"
+          },
+          {
+            "$ref": "#/parameters/chromosome-variant-coordinate"
+          },
+          {
+            "$ref": "#/parameters/chromosome-window-coordinate"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/referenceseqid"
+          },
+          {
+            "$ref": "#/parameters/referenceseqid-variant-coordinate"
+          },
+          {
+            "$ref": "#/parameters/referenceseqid-window-coordinate"
+          },
+          {
+            "$ref": "#/parameters/type"
+          },
+          {
+            "$ref": "#/parameters/variant-end"
+          },
+          {
+            "$ref": "#/parameters/variant-start"
+          },
+          {
+            "$ref": "#/parameters/window-end"
+          },
+          {
+            "$ref": "#/parameters/window-start"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/MolecularSequence/{logical_id}": {
+      "delete": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "delete: Perform a loical delete on a MolecularSequence instance",
+        "operationId": "DeleteMolecularSequence",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/chromosome"
+          },
+          {
+            "$ref": "#/parameters/chromosome-variant-coordinate"
+          },
+          {
+            "$ref": "#/parameters/chromosome-window-coordinate"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/referenceseqid"
+          },
+          {
+            "$ref": "#/parameters/referenceseqid-variant-coordinate"
+          },
+          {
+            "$ref": "#/parameters/referenceseqid-window-coordinate"
+          },
+          {
+            "$ref": "#/parameters/type"
+          },
+          {
+            "$ref": "#/parameters/variant-end"
+          },
+          {
+            "$ref": "#/parameters/variant-start"
+          },
+          {
+            "$ref": "#/parameters/window-end"
+          },
+          {
+            "$ref": "#/parameters/window-start"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MolecularSequence"
+            }
+          },
+          "202": {
+            "description": "ACCEPTED"
+          },
+          "204": {
+            "description": "NO CONTENT"
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "patch: Patch a MolecularSequence instance",
+        "operationId": "PatchMolecularSequence",
+        "consumes": [ ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Patch to apply to a FHIR MolecularSequence record",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MolecularSequence"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "read: Read a FHIR MolecularSequence",
+        "operationId": "ReadMolecularSequence",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MolecularSequence"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "update,create: Update or Create a MolecularSequence instance",
+        "operationId": "UpdateOrCreateMolecularSequence",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/chromosome"
+          },
+          {
+            "$ref": "#/parameters/chromosome-variant-coordinate"
+          },
+          {
+            "$ref": "#/parameters/chromosome-window-coordinate"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/patient"
+          },
+          {
+            "$ref": "#/parameters/referenceseqid"
+          },
+          {
+            "$ref": "#/parameters/referenceseqid-variant-coordinate"
+          },
+          {
+            "$ref": "#/parameters/referenceseqid-window-coordinate"
+          },
+          {
+            "$ref": "#/parameters/type"
+          },
+          {
+            "$ref": "#/parameters/variant-end"
+          },
+          {
+            "$ref": "#/parameters/variant-start"
+          },
+          {
+            "$ref": "#/parameters/window-end"
+          },
+          {
+            "$ref": "#/parameters/window-start"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "An updated FHIR MolecularSequence",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MolecularSequence"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MolecularSequence"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/MolecularSequence/_search": {
+      "post": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "search-type: Search for MolecularSequence instances",
+        "operationId": "SearchMolecularSequencePost",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "_elements",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_summary",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_content",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_filter",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_in",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_language",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_lastUpdated",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_list",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_profile",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_query",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_security",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_source",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_tag",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_text",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_contained",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_count",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_graph",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_include",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_revinclude",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_score",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_sort",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_total",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_format",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_has",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "chromosome",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "chromosome-variant-coordinate",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "chromosome-window-coordinate",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "identifier",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "patient",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "referenceseqid",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "referenceseqid-variant-coordinate",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "referenceseqid-window-coordinate",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "type",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "variant-end",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "variant-start",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "window-end",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "window-start",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/MolecularSequence/{logical_id}/_history/{resource_version}": {
+      "get": {
+        "tags": [
+          "MolecularSequence"
+        ],
+        "summary": "vread: Read MolecularSequence instance with specific version",
+        "operationId": "VReadMolecularSequence",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/resource_version"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MolecularSequence"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "MolecularSequence": {
+      "description": "Information about a biological sequence",
+      "type": "object"
+    },
+    "OperationOutcome": {
+      "description": "Information about the success/failure of an action",
+      "type": "object"
+    },
+    "Bundle": {
+      "description": "Contains a collection of resources",
+      "type": "object"
+    }
+  },
+  "parameters": {
+    "_format": {
+      "in": "query",
+      "name": "_format",
+      "description": "Override the HTTP content negotiation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_pretty": {
+      "in": "query",
+      "name": "_pretty",
+      "description": "Ask for a pretty printed response for human convenience",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_elements": {
+      "in": "query",
+      "name": "_elements",
+      "description": "Ask for a particular set of elements to be returned",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_summary": {
+      "in": "query",
+      "name": "_summary",
+      "description": "Return only portions of resources, based on pre-defined levels",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_content": {
+      "in": "query",
+      "name": "_content",
+      "description": "Search on the entire content of the resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_filter": {
+      "in": "query",
+      "name": "_filter",
+      "description": "Provide an inline query expression",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_id": {
+      "in": "query",
+      "name": "_id",
+      "description": "Logical id of this artifact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_in": {
+      "in": "query",
+      "name": "_in",
+      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_language": {
+      "in": "query",
+      "name": "_language",
+      "description": "Language of the resource content",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_lastUpdated": {
+      "in": "query",
+      "name": "_lastUpdated",
+      "description": "When the resource version last changed",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_list": {
+      "in": "query",
+      "name": "_list",
+      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_profile": {
+      "in": "query",
+      "name": "_profile",
+      "description": "Profiles this resource claims to conform to",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_query": {
+      "in": "query",
+      "name": "_query",
+      "description": "A custom search profile that describes a specific defined query operation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_security": {
+      "in": "query",
+      "name": "_security",
+      "description": "Security Labels applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_source": {
+      "in": "query",
+      "name": "_source",
+      "description": "Identifies where the resource comes from",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_tag": {
+      "in": "query",
+      "name": "_tag",
+      "description": "Tags applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_text": {
+      "in": "query",
+      "name": "_text",
+      "description": "Perform searches against the narrative content of a resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_contained": {
+      "in": "query",
+      "name": "_contained",
+      "description": "Request different types of handling for contained resources",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_count": {
+      "in": "query",
+      "name": "_count",
+      "description": "Limit the number of match results per page of response",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "_graph": {
+      "in": "query",
+      "name": "_graph",
+      "description": "Include additional resources according to a GraphDefinition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_include": {
+      "in": "query",
+      "name": "_include",
+      "description": "Include additional resources, based on following links forward across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_revinclude": {
+      "in": "query",
+      "name": "_revinclude",
+      "description": "Include additional resources, based on following reverse links across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_score": {
+      "in": "query",
+      "name": "_score",
+      "description": "Request match relevance in results",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_sort": {
+      "in": "query",
+      "name": "_sort",
+      "description": "Request which order results should be returned in",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_total": {
+      "in": "query",
+      "name": "_total",
+      "description": "Request a precision of the total number of results for a request",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_has": {
+      "in": "query",
+      "name": "_has",
+      "description": "Enables querying a reverse chain",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "chromosome": {
+      "in": "query",
+      "name": "chromosome",
+      "description": "Chromosome number of the reference sequence",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "chromosome-variant-coordinate": {
+      "in": "query",
+      "name": "chromosome-variant-coordinate",
+      "description": "Search parameter by chromosome and variant coordinate. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `chromosome-variant-coordinate=1$lt345$gt123`, this means it will search for the MolecularSequence resource with variants on chromosome 1 and with position >123 and <345, where in 1-based system resource, all strings within region 1:124-344 will be revealed, while in 0-based system resource, all strings within region 1:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "chromosome-window-coordinate": {
+      "in": "query",
+      "name": "chromosome-window-coordinate",
+      "description": "Search parameter by chromosome and window. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `chromosome-window-coordinate=1$lt345$gt123`, this means it will search for the MolecularSequence resource with a window on chromosome 1 and with position >123 and <345, where in 1-based system resource, all strings within region 1:124-344 will be revealed, while in 0-based system resource, all strings within region 1:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "identifier": {
+      "in": "query",
+      "name": "identifier",
+      "description": "Account number",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "patient": {
+      "in": "query",
+      "name": "patient",
+      "description": "The entity that caused the expenses",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "referenceseqid": {
+      "in": "query",
+      "name": "referenceseqid",
+      "description": "Reference Sequence of the sequence",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "referenceseqid-variant-coordinate": {
+      "in": "query",
+      "name": "referenceseqid-variant-coordinate",
+      "description": "Search parameter by reference sequence and variant coordinate. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `referenceSeqId-variant-coordinate=NC_000001.11$lt345$gt123`, this means it will search for the MolecularSequence resource with variants on NC_000001.11 and with position >123 and <345, where in 1-based system resource, all strings within region NC_000001.11:124-344 will be revealed, while in 0-based system resource, all strings within region NC_000001.11:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "referenceseqid-window-coordinate": {
+      "in": "query",
+      "name": "referenceseqid-window-coordinate",
+      "description": "Search parameter by reference sequence and window. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `referenceSeqId-window-coordinate=NC_000001.11$lt345$gt123`, this means it will search for the MolecularSequence resource with a window on NC_000001.11 and with position >123 and <345, where in 1-based system resource, all strings within region NC_000001.11:124-344 will be revealed, while in 0-based system resource, all strings within region NC_000001.11:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "type": {
+      "in": "query",
+      "name": "type",
+      "description": "E.g. patient, expense, depreciation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "variant-end": {
+      "in": "query",
+      "name": "variant-end",
+      "description": "End position (0-based exclusive, which menas the acid at this position will not be included, 1-based inclusive, which means the acid at this position will be included) of the variant.",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "variant-start": {
+      "in": "query",
+      "name": "variant-start",
+      "description": "Start position (0-based inclusive, 1-based inclusive, that means the nucleic acid or amino acid at this position will be included) of the variant.",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "window-end": {
+      "in": "query",
+      "name": "window-end",
+      "description": "End position (0-based exclusive, which menas the acid at this position will not be included, 1-based inclusive, which means the acid at this position will be included) of the reference sequence.",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "window-start": {
+      "in": "query",
+      "name": "window-start",
+      "description": "Start position (0-based inclusive, 1-based inclusive, that means the nucleic acid or amino acid at this position will be included) of the reference sequence.",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "logical_id": {
+      "in": "path",
+      "name": "logical_id",
+      "description": "Resource Logical ID",
+      "required": true,
+      "type": "string"
+    },
+    "resource_version": {
+      "in": "path",
+      "name": "resource_version",
+      "description": "Resource Version Number",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "tags": [
+    {
+      "name": "MolecularSequence",
+      "description": "Information about a biological sequence"
+    }
+  ]
+}

@@ -1,0 +1,1922 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Firely Server - ValueSet",
+    "version": "4.10.0"
+  },
+  "host": "server.fire.ly",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/ValueSet": {
+      "post": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "create: Create a new ValueSet instance",
+        "operationId": "CreateValueSet",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A FHIR ValueSet",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "search-type: Search for ValueSet instances",
+        "operationId": "SearchValueSetGet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_contained"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_graph"
+          },
+          {
+            "$ref": "#/parameters/_include"
+          },
+          {
+            "$ref": "#/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/parameters/_score"
+          },
+          {
+            "$ref": "#/parameters/_sort"
+          },
+          {
+            "$ref": "#/parameters/_total"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/code"
+          },
+          {
+            "$ref": "#/parameters/context"
+          },
+          {
+            "$ref": "#/parameters/context-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type"
+          },
+          {
+            "$ref": "#/parameters/context-type-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type-value"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/description"
+          },
+          {
+            "$ref": "#/parameters/expansion"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/jurisdiction"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/publisher"
+          },
+          {
+            "$ref": "#/parameters/reference"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/title"
+          },
+          {
+            "$ref": "#/parameters/url"
+          },
+          {
+            "$ref": "#/parameters/version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ValueSet/{logical_id}": {
+      "delete": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "delete: Perform a loical delete on a ValueSet instance",
+        "operationId": "DeleteValueSet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/code"
+          },
+          {
+            "$ref": "#/parameters/context"
+          },
+          {
+            "$ref": "#/parameters/context-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type"
+          },
+          {
+            "$ref": "#/parameters/context-type-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type-value"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/description"
+          },
+          {
+            "$ref": "#/parameters/expansion"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/jurisdiction"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/publisher"
+          },
+          {
+            "$ref": "#/parameters/reference"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/title"
+          },
+          {
+            "$ref": "#/parameters/url"
+          },
+          {
+            "$ref": "#/parameters/version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          },
+          "202": {
+            "description": "ACCEPTED"
+          },
+          "204": {
+            "description": "NO CONTENT"
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "patch: Patch a ValueSet instance",
+        "operationId": "PatchValueSet",
+        "consumes": [ ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Patch to apply to a FHIR ValueSet record",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "read: Read a FHIR ValueSet",
+        "operationId": "ReadValueSet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "update,create: Update or Create a ValueSet instance",
+        "operationId": "UpdateOrCreateValueSet",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/_content"
+          },
+          {
+            "$ref": "#/parameters/_filter"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_in"
+          },
+          {
+            "$ref": "#/parameters/_language"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_list"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_query"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/_text"
+          },
+          {
+            "$ref": "#/parameters/_count"
+          },
+          {
+            "$ref": "#/parameters/_format"
+          },
+          {
+            "$ref": "#/parameters/_has"
+          },
+          {
+            "$ref": "#/parameters/_id"
+          },
+          {
+            "$ref": "#/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/parameters/_profile"
+          },
+          {
+            "$ref": "#/parameters/_security"
+          },
+          {
+            "$ref": "#/parameters/_source"
+          },
+          {
+            "$ref": "#/parameters/_tag"
+          },
+          {
+            "$ref": "#/parameters/code"
+          },
+          {
+            "$ref": "#/parameters/context"
+          },
+          {
+            "$ref": "#/parameters/context-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type"
+          },
+          {
+            "$ref": "#/parameters/context-type-quantity"
+          },
+          {
+            "$ref": "#/parameters/context-type-value"
+          },
+          {
+            "$ref": "#/parameters/date"
+          },
+          {
+            "$ref": "#/parameters/description"
+          },
+          {
+            "$ref": "#/parameters/expansion"
+          },
+          {
+            "$ref": "#/parameters/identifier"
+          },
+          {
+            "$ref": "#/parameters/jurisdiction"
+          },
+          {
+            "$ref": "#/parameters/name"
+          },
+          {
+            "$ref": "#/parameters/publisher"
+          },
+          {
+            "$ref": "#/parameters/reference"
+          },
+          {
+            "$ref": "#/parameters/status"
+          },
+          {
+            "$ref": "#/parameters/title"
+          },
+          {
+            "$ref": "#/parameters/url"
+          },
+          {
+            "$ref": "#/parameters/version"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "An updated FHIR ValueSet",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ValueSet/_search": {
+      "post": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "search-type: Search for ValueSet instances",
+        "operationId": "SearchValueSetPost",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "_elements",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_summary",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_content",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_filter",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_in",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_language",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_lastUpdated",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_list",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_profile",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_query",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_security",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_source",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_tag",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_text",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_contained",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_count",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_graph",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_include",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_revinclude",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_score",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_sort",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_total",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_format",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_has",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "code",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-quantity",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-type",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-type-quantity",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "context-type-value",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "expansion",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "identifier",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "jurisdiction",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "publisher",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "reference",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "url",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "version",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Bundle"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ValueSet/{logical_id}/_history/{resource_version}": {
+      "get": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "vread: Read ValueSet instance with specific version",
+        "operationId": "VReadValueSet",
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "$ref": "#/parameters/resource_version"
+          },
+          {
+            "$ref": "#/parameters/_elements"
+          },
+          {
+            "$ref": "#/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ValueSet/{logical_id}/$expand": {
+      "post": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "operation: The definition of a value set is used to create a simple collection of codes suitable for use for data entry or validation. \n\nIf the operation is not called at the instance level, one of the in parameters url, context or valueSet must be provided.  An expanded value set will be returned, or an OperationOutcome with an error message.",
+        "operationId": "ValueSetInstanceExpandPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "query",
+            "name": "url",
+            "description": "A canonical reference to a value set. The server must know the value set (e.g. it is defined explicitly in the server's value sets, or it is defined implicitly by some code system known to the server",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "valueSetVersion",
+            "description": "The identifier that is used to identify a specific version of the value set to be used when generating the expansion. This is an arbitrary value managed by the value set author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available.",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "context",
+            "description": "The context of the value set, so that the server can resolve this to a value set to expand. The recommended format for this URI is [Structure Definition URL]#[name or path into structure definition] e.g. http://hl7.org/fhir/StructureDefinition/observation-hspc-height-hspcheight#Observation.interpretation. Other forms may be used but are not defined. This form is only usable if the terminology server also has access to the conformance registry that the server is using, but can be used to delegate the mapping from an application context to a binding at run-time",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "contextDirection",
+            "description": "If a context is provided, a context direction may also be provided. Valid values are: \n\n* 'incoming': the codes a client can use for PUT/POST operations,  and \n* 'outgoing', the codes a client might receive from the server.\n\nThe purpose is to inform the server whether to use the value set associated with the context for reading or writing purposes (note: for most elements, this is the same value set, but there are a few elements where the reading and writing value sets are different)",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "A text filter that is applied to restrict the codes that are returned (this is useful in a UI context). The interpretation of this is delegated to the server in order to allow to determine the most optimal search approach for the context. The server can document the way this parameter works in [TerminologyCapabilities](terminologycapabilities.html)..expansion.textFilter. Typical usage of this parameter includes functionality like:\n\n* using left matching e.g. \"acut ast\"\n* allowing for wild cards such as %, &, ?\n* searching on definition as well as display(s)\n* allowing for search conditions (and / or / exclusions)\n\nText Search engines such as Lucene or Solr, long with their considerable functionality, might also be used. The optional text search might also be code system specific, and servers might have different implementations for different code systems",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "description": "The date for which the expansion should be generated.  if a date is provided, it means that the server should use the value set / code system definitions as they were on the given date, or return an error if this is not possible.  Normally, the date is the current conditions (which is the default value) but under some circumstances, systems need to generate an expansion as it would have been in the past. A typical example of this would be where code selection is constrained to the set of codes that were available when the patient was treated, not when the record is being edited. Note that which date is appropriate is a matter for implementation policy.",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Paging support - where to start if a subset is desired (default = 0). Offset is number of records (not number of pages)",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "count",
+            "description": "Paging support - how many codes should be provided in a partial page view. Paging only applies to flat expansions - servers ignore paging if the expansion is not flat.  If count = 0, the client is asking how large the expansion is. Servers SHOULD honor this request for hierarchical expansions as well, and simply return the overall count",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "includeDesignations",
+            "description": "Controls whether concept designations are to be included or excluded in value set expansions",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "designation",
+            "description": "A [token](search.html#token) that specifies a system+code that is either a use or a language. Designations that match by language or use are included in the expansion. If no designation is specified, it is at the server discretion which designations to return",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "includeDefinition",
+            "description": "Controls whether the value set definition is included or excluded in value set expansions",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "activeOnly",
+            "description": "Controls whether inactive concepts are included or excluded in value set expansions. Note that if the value set explicitly specifies that inactive codes are included, this parameter can still remove them from a specific expansion, but this parameter cannot include them if the value set excludes them",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "excludeNested",
+            "description": "Controls whether or not the value set expansion nests codes or not (i.e. ValueSet.expansion.contains.contains)",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "excludeNotForUI",
+            "description": "Controls whether or not the value set expansion is assembled for a user interface use or not. Value sets intended for User Interface might include ['abstract' codes](codesystem.html#status) or have nested contains with items with no code or abstract = true, with the sole purpose of helping a user navigate through the list efficiently, where as a value set not generated for UI use might be flat, and only contain the selectable codes in the value set. The exact implications of 'for UI' depend on the code system, and what properties it exposes for a terminology server to use. In the FHIR Specification itself, the value set expansions are generated with excludeNotForUI = false, and the expansions used when generated schema / code etc, or performing validation, are all excludeNotForUI = true.",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "excludePostCoordinated",
+            "description": "Controls whether or not the value set expansion includes post coordinated codes",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "displayLanguage",
+            "description": "Specifies the language to be used for description in the expansions i.e. the language to be used for ValueSet.expansion.contains.display",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "exclude-system",
+            "description": "Code system, or a particular version of a code system to be excluded from the value set expansion. The format is the same as a canonical URL: [system]|[version] - e.g. http://loinc.org|2.56",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "system-version",
+            "description": "Specifies a version to use for a system, if the value set does not specify which one to use. The format is the same as a canonical URL: [system]|[version] - e.g. http://loinc.org|2.56",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "check-system-version",
+            "description": "Edge Case: Specifies a version to use for a system. If a value set specifies a different version, an error is returned instead of the expansion. The format is the same as a canonical URL: [system]|[version] - e.g. http://loinc.org|2.56",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "force-system-version",
+            "description": "Edge Case: Specifies a version to use for a system. This parameter overrides any specified version in the value set (and any it depends on). The format is the same as a canonical URL: [system]|[version] - e.g. http://loinc.org|2.56. Note that this has obvious safety issues, in that it may result in a value set expansion giving a different list of codes that is both wrong and unsafe, and implementers should only use this capability reluctantly. It primarily exists to deal with situations where specifications have fallen into decay as time passes. If the value is override, the version used SHALL explicitly be represented in the expansion parameters",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The value set is provided directly as part of the request. Servers may choose not to accept value sets in this fashion",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ValueSet/$expand": {
+      "post": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "operation: The definition of a value set is used to create a simple collection of codes suitable for use for data entry or validation. \n\nIf the operation is not called at the instance level, one of the in parameters url, context or valueSet must be provided.  An expanded value set will be returned, or an OperationOutcome with an error message.",
+        "operationId": "ValueSetExpandPost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "url",
+            "description": "A canonical reference to a value set. The server must know the value set (e.g. it is defined explicitly in the server's value sets, or it is defined implicitly by some code system known to the server",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "valueSetVersion",
+            "description": "The identifier that is used to identify a specific version of the value set to be used when generating the expansion. This is an arbitrary value managed by the value set author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available.",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "context",
+            "description": "The context of the value set, so that the server can resolve this to a value set to expand. The recommended format for this URI is [Structure Definition URL]#[name or path into structure definition] e.g. http://hl7.org/fhir/StructureDefinition/observation-hspc-height-hspcheight#Observation.interpretation. Other forms may be used but are not defined. This form is only usable if the terminology server also has access to the conformance registry that the server is using, but can be used to delegate the mapping from an application context to a binding at run-time",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "contextDirection",
+            "description": "If a context is provided, a context direction may also be provided. Valid values are: \n\n* 'incoming': the codes a client can use for PUT/POST operations,  and \n* 'outgoing', the codes a client might receive from the server.\n\nThe purpose is to inform the server whether to use the value set associated with the context for reading or writing purposes (note: for most elements, this is the same value set, but there are a few elements where the reading and writing value sets are different)",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "A text filter that is applied to restrict the codes that are returned (this is useful in a UI context). The interpretation of this is delegated to the server in order to allow to determine the most optimal search approach for the context. The server can document the way this parameter works in [TerminologyCapabilities](terminologycapabilities.html)..expansion.textFilter. Typical usage of this parameter includes functionality like:\n\n* using left matching e.g. \"acut ast\"\n* allowing for wild cards such as %, &, ?\n* searching on definition as well as display(s)\n* allowing for search conditions (and / or / exclusions)\n\nText Search engines such as Lucene or Solr, long with their considerable functionality, might also be used. The optional text search might also be code system specific, and servers might have different implementations for different code systems",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "description": "The date for which the expansion should be generated.  if a date is provided, it means that the server should use the value set / code system definitions as they were on the given date, or return an error if this is not possible.  Normally, the date is the current conditions (which is the default value) but under some circumstances, systems need to generate an expansion as it would have been in the past. A typical example of this would be where code selection is constrained to the set of codes that were available when the patient was treated, not when the record is being edited. Note that which date is appropriate is a matter for implementation policy.",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Paging support - where to start if a subset is desired (default = 0). Offset is number of records (not number of pages)",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "count",
+            "description": "Paging support - how many codes should be provided in a partial page view. Paging only applies to flat expansions - servers ignore paging if the expansion is not flat.  If count = 0, the client is asking how large the expansion is. Servers SHOULD honor this request for hierarchical expansions as well, and simply return the overall count",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "includeDesignations",
+            "description": "Controls whether concept designations are to be included or excluded in value set expansions",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "designation",
+            "description": "A [token](search.html#token) that specifies a system+code that is either a use or a language. Designations that match by language or use are included in the expansion. If no designation is specified, it is at the server discretion which designations to return",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "includeDefinition",
+            "description": "Controls whether the value set definition is included or excluded in value set expansions",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "activeOnly",
+            "description": "Controls whether inactive concepts are included or excluded in value set expansions. Note that if the value set explicitly specifies that inactive codes are included, this parameter can still remove them from a specific expansion, but this parameter cannot include them if the value set excludes them",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "excludeNested",
+            "description": "Controls whether or not the value set expansion nests codes or not (i.e. ValueSet.expansion.contains.contains)",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "excludeNotForUI",
+            "description": "Controls whether or not the value set expansion is assembled for a user interface use or not. Value sets intended for User Interface might include ['abstract' codes](codesystem.html#status) or have nested contains with items with no code or abstract = true, with the sole purpose of helping a user navigate through the list efficiently, where as a value set not generated for UI use might be flat, and only contain the selectable codes in the value set. The exact implications of 'for UI' depend on the code system, and what properties it exposes for a terminology server to use. In the FHIR Specification itself, the value set expansions are generated with excludeNotForUI = false, and the expansions used when generated schema / code etc, or performing validation, are all excludeNotForUI = true.",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "excludePostCoordinated",
+            "description": "Controls whether or not the value set expansion includes post coordinated codes",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "displayLanguage",
+            "description": "Specifies the language to be used for description in the expansions i.e. the language to be used for ValueSet.expansion.contains.display",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "exclude-system",
+            "description": "Code system, or a particular version of a code system to be excluded from the value set expansion. The format is the same as a canonical URL: [system]|[version] - e.g. http://loinc.org|2.56",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "system-version",
+            "description": "Specifies a version to use for a system, if the value set does not specify which one to use. The format is the same as a canonical URL: [system]|[version] - e.g. http://loinc.org|2.56",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "check-system-version",
+            "description": "Edge Case: Specifies a version to use for a system. If a value set specifies a different version, an error is returned instead of the expansion. The format is the same as a canonical URL: [system]|[version] - e.g. http://loinc.org|2.56",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "force-system-version",
+            "description": "Edge Case: Specifies a version to use for a system. This parameter overrides any specified version in the value set (and any it depends on). The format is the same as a canonical URL: [system]|[version] - e.g. http://loinc.org|2.56. Note that this has obvious safety issues, in that it may result in a value set expansion giving a different list of codes that is both wrong and unsafe, and implementers should only use this capability reluctantly. It primarily exists to deal with situations where specifications have fallen into decay as time passes. If the value is override, the version used SHALL explicitly be represented in the expansion parameters",
+            "type": "string",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The value set is provided directly as part of the request. Servers may choose not to accept value sets in this fashion",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ValueSet"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ValueSet/{logical_id}/$validate-code": {
+      "post": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "operation: Validate that a coded value is in the set of codes allowed by a value set.\n\nIf the operation is not called at the instance level, one of the in parameters url, context or  valueSet must be provided.  One (and only one) of the in parameters code, coding, or codeableConcept must be provided.  The operation returns a result (true / false), an error message, and the recommended display for the code",
+        "operationId": "ValueSetInstanceValidate-codePost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/logical_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    },
+    "/ValueSet/$validate-code": {
+      "post": {
+        "tags": [
+          "ValueSet"
+        ],
+        "summary": "operation: Validate that a coded value is in the set of codes allowed by a value set.\n\nIf the operation is not called at the instance level, one of the in parameters url, context or  valueSet must be provided.  One (and only one) of the in parameters code, coding, or codeableConcept must be provided.  The operation returns a result (true / false), an error message, and the recommended display for the code",
+        "operationId": "ValueSetValidate-codePost",
+        "consumes": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "produces": [
+          "application/fhir+json",
+          "application/fhir+xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input parameters to the operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parameters"
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/definitions/OperationOutcome"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/_format"
+        },
+        {
+          "$ref": "#/parameters/_pretty"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "ValueSet": {
+      "description": "A set of codes drawn from one or more code systems",
+      "type": "object"
+    },
+    "OperationOutcome": {
+      "description": "Information about the success/failure of an action",
+      "type": "object"
+    },
+    "Bundle": {
+      "description": "Contains a collection of resources",
+      "type": "object"
+    },
+    "Parameters": {
+      "description": "Operation Request or Response",
+      "type": "object"
+    }
+  },
+  "parameters": {
+    "_format": {
+      "in": "query",
+      "name": "_format",
+      "description": "Override the HTTP content negotiation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_pretty": {
+      "in": "query",
+      "name": "_pretty",
+      "description": "Ask for a pretty printed response for human convenience",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_elements": {
+      "in": "query",
+      "name": "_elements",
+      "description": "Ask for a particular set of elements to be returned",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_summary": {
+      "in": "query",
+      "name": "_summary",
+      "description": "Return only portions of resources, based on pre-defined levels",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_content": {
+      "in": "query",
+      "name": "_content",
+      "description": "Search on the entire content of the resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_filter": {
+      "in": "query",
+      "name": "_filter",
+      "description": "Provide an inline query expression",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_id": {
+      "in": "query",
+      "name": "_id",
+      "description": "Logical id of this artifact",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_in": {
+      "in": "query",
+      "name": "_in",
+      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_language": {
+      "in": "query",
+      "name": "_language",
+      "description": "Language of the resource content",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_lastUpdated": {
+      "in": "query",
+      "name": "_lastUpdated",
+      "description": "When the resource version last changed",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_list": {
+      "in": "query",
+      "name": "_list",
+      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_profile": {
+      "in": "query",
+      "name": "_profile",
+      "description": "Profiles this resource claims to conform to",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_query": {
+      "in": "query",
+      "name": "_query",
+      "description": "A custom search profile that describes a specific defined query operation",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_security": {
+      "in": "query",
+      "name": "_security",
+      "description": "Security Labels applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_source": {
+      "in": "query",
+      "name": "_source",
+      "description": "Identifies where the resource comes from",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_tag": {
+      "in": "query",
+      "name": "_tag",
+      "description": "Tags applied to this resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_text": {
+      "in": "query",
+      "name": "_text",
+      "description": "Perform searches against the narrative content of a resource",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_contained": {
+      "in": "query",
+      "name": "_contained",
+      "description": "Request different types of handling for contained resources",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_count": {
+      "in": "query",
+      "name": "_count",
+      "description": "Limit the number of match results per page of response",
+      "type": "number",
+      "collectionFormat": "multi"
+    },
+    "_graph": {
+      "in": "query",
+      "name": "_graph",
+      "description": "Include additional resources according to a GraphDefinition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_include": {
+      "in": "query",
+      "name": "_include",
+      "description": "Include additional resources, based on following links forward across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_revinclude": {
+      "in": "query",
+      "name": "_revinclude",
+      "description": "Include additional resources, based on following reverse links across references",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_score": {
+      "in": "query",
+      "name": "_score",
+      "description": "Request match relevance in results",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_sort": {
+      "in": "query",
+      "name": "_sort",
+      "description": "Request which order results should be returned in",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_total": {
+      "in": "query",
+      "name": "_total",
+      "description": "Request a precision of the total number of results for a request",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "_has": {
+      "in": "query",
+      "name": "_has",
+      "description": "Enables querying a reverse chain",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "code": {
+      "in": "query",
+      "name": "code",
+      "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](condition.html): Code for the condition\r\n* [DeviceRequest](devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a condition code\r\n* [List](list.html): What the purpose of this list is\r\n* [Medication](medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](medicationstatement.html): Return statements of this medication code\r\n* [Observation](observation.html): The code of the observation type\r\n* [Procedure](procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](servicerequest.html): What is being requested/ordered\r\n",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context": {
+      "in": "query",
+      "name": "context",
+      "description": "A use context assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-quantity": {
+      "in": "query",
+      "name": "context-quantity",
+      "description": "A quantity- or range-valued use context assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-type": {
+      "in": "query",
+      "name": "context-type",
+      "description": "A type of use context assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-type-quantity": {
+      "in": "query",
+      "name": "context-type-quantity",
+      "description": "A use context type and quantity- or range-based value assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "context-type-value": {
+      "in": "query",
+      "name": "context-type-value",
+      "description": "A use context type and value assigned to the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "date": {
+      "in": "query",
+      "name": "date",
+      "description": "The activity definition publication date",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "description": {
+      "in": "query",
+      "name": "description",
+      "description": "The description of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "expansion": {
+      "in": "query",
+      "name": "expansion",
+      "description": "Identifies the value set expansion (business identifier)",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "identifier": {
+      "in": "query",
+      "name": "identifier",
+      "description": "Account number",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "jurisdiction": {
+      "in": "query",
+      "name": "jurisdiction",
+      "description": "Intended jurisdiction for the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "name": {
+      "in": "query",
+      "name": "name",
+      "description": "Human-readable label",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "publisher": {
+      "in": "query",
+      "name": "publisher",
+      "description": "Name of the publisher of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "reference": {
+      "in": "query",
+      "name": "reference",
+      "description": "A code system included or excluded in the value set or an imported value set",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "status": {
+      "in": "query",
+      "name": "status",
+      "description": "active | inactive | entered-in-error | on-hold | unknown",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "title": {
+      "in": "query",
+      "name": "title",
+      "description": "The human-friendly name of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "url": {
+      "in": "query",
+      "name": "url",
+      "description": "The uri that identifies the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "version": {
+      "in": "query",
+      "name": "version",
+      "description": "The business version of the activity definition",
+      "type": "string",
+      "collectionFormat": "multi"
+    },
+    "logical_id": {
+      "in": "path",
+      "name": "logical_id",
+      "description": "Resource Logical ID",
+      "required": true,
+      "type": "string"
+    },
+    "resource_version": {
+      "in": "path",
+      "name": "resource_version",
+      "description": "Resource Version Number",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "tags": [
+    {
+      "name": "ValueSet",
+      "description": "A set of codes drawn from one or more code systems"
+    }
+  ]
+}

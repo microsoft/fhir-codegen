@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("DiagnosticReport", IsResource=true)]
+  [FhirType("DiagnosticReport","http://hl7.org/fhir/StructureDefinition/DiagnosticReport", IsResource=true)]
   public partial class DiagnosticReport : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -187,6 +187,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ImageComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ImageComponent;
@@ -233,6 +234,29 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "comment":
+            value = CommentElement;
+            return CommentElement is not null;
+          case "link":
+            value = Link;
+            return Link is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (CommentElement is not null) yield return new KeyValuePair<string,object>("comment",CommentElement);
+        if (Link is not null) yield return new KeyValuePair<string,object>("link",Link);
+      }
+
     }
 
     /// <summary>
@@ -252,7 +276,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// registered | partial | final | corrected | appended | cancelled | entered-in-error
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=100)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=100)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.DiagnosticReport.DiagnosticReportStatus> StatusElement
@@ -575,6 +600,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new DiagnosticReport());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as DiagnosticReport;
@@ -679,6 +705,89 @@ namespace Hl7.Fhir.Model
         foreach (var elem in CodedDiagnosis) { if (elem != null) yield return new ElementValue("codedDiagnosis", elem); }
         foreach (var elem in PresentedForm) { if (elem != null) yield return new ElementValue("presentedForm", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "category":
+          value = Category;
+          return Category is not null;
+        case "code":
+          value = Code;
+          return Code is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "effective":
+          value = Effective;
+          return Effective is not null;
+        case "issued":
+          value = IssuedElement;
+          return IssuedElement is not null;
+        case "performer":
+          value = Performer;
+          return Performer is not null;
+        case "request":
+          value = Request;
+          return Request?.Any() == true;
+        case "specimen":
+          value = Specimen;
+          return Specimen?.Any() == true;
+        case "result":
+          value = Result;
+          return Result?.Any() == true;
+        case "imagingStudy":
+          value = ImagingStudy;
+          return ImagingStudy?.Any() == true;
+        case "image":
+          value = Image;
+          return Image?.Any() == true;
+        case "conclusion":
+          value = ConclusionElement;
+          return ConclusionElement is not null;
+        case "codedDiagnosis":
+          value = CodedDiagnosis;
+          return CodedDiagnosis?.Any() == true;
+        case "presentedForm":
+          value = PresentedForm;
+          return PresentedForm?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Category is not null) yield return new KeyValuePair<string,object>("category",Category);
+      if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Effective is not null) yield return new KeyValuePair<string,object>("effective",Effective);
+      if (IssuedElement is not null) yield return new KeyValuePair<string,object>("issued",IssuedElement);
+      if (Performer is not null) yield return new KeyValuePair<string,object>("performer",Performer);
+      if (Request?.Any() == true) yield return new KeyValuePair<string,object>("request",Request);
+      if (Specimen?.Any() == true) yield return new KeyValuePair<string,object>("specimen",Specimen);
+      if (Result?.Any() == true) yield return new KeyValuePair<string,object>("result",Result);
+      if (ImagingStudy?.Any() == true) yield return new KeyValuePair<string,object>("imagingStudy",ImagingStudy);
+      if (Image?.Any() == true) yield return new KeyValuePair<string,object>("image",Image);
+      if (ConclusionElement is not null) yield return new KeyValuePair<string,object>("conclusion",ConclusionElement);
+      if (CodedDiagnosis?.Any() == true) yield return new KeyValuePair<string,object>("codedDiagnosis",CodedDiagnosis);
+      if (PresentedForm?.Any() == true) yield return new KeyValuePair<string,object>("presentedForm",PresentedForm);
     }
 
   }

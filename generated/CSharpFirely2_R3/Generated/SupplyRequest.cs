@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("SupplyRequest", IsResource=true)]
+  [FhirType("SupplyRequest","http://hl7.org/fhir/StructureDefinition/SupplyRequest", IsResource=true)]
   public partial class SupplyRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -139,6 +139,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("item", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("Medication","Substance","Device")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
       [DataMember]
       public Hl7.Fhir.Model.DataType Item
@@ -169,6 +170,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new OrderedItemComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as OrderedItemComponent;
@@ -213,6 +215,29 @@ namespace Hl7.Fhir.Model
           if (Quantity != null) yield return new ElementValue("quantity", Quantity);
           if (Item != null) yield return new ElementValue("item", Item);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "quantity":
+            value = Quantity;
+            return Quantity is not null;
+          case "item":
+            value = Item;
+            return Item is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Quantity is not null) yield return new KeyValuePair<string,object>("quantity",Quantity);
+        if (Item is not null) yield return new KeyValuePair<string,object>("item",Item);
       }
 
     }
@@ -281,6 +306,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new RequesterComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as RequesterComponent;
@@ -327,6 +353,29 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "agent":
+            value = Agent;
+            return Agent is not null;
+          case "onBehalfOf":
+            value = OnBehalfOf;
+            return OnBehalfOf is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Agent is not null) yield return new KeyValuePair<string,object>("agent",Agent);
+        if (OnBehalfOf is not null) yield return new KeyValuePair<string,object>("onBehalfOf",OnBehalfOf);
+      }
+
     }
 
     /// <summary>
@@ -345,7 +394,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// draft | active | suspended +
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=100)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=100)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.SupplyRequest.SupplyRequestStatus> StatusElement
     {
@@ -390,6 +440,7 @@ namespace Hl7.Fhir.Model
     /// routine | urgent | asap | stat
     /// </summary>
     [FhirElement("priority", InSummary=true, Order=120)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.RequestPriority> PriorityElement
     {
@@ -510,6 +561,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("reason", Order=180, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Resource")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [DataMember]
     public Hl7.Fhir.Model.DataType Reason
@@ -580,6 +632,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new SupplyRequest());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as SupplyRequest;
@@ -664,6 +717,69 @@ namespace Hl7.Fhir.Model
         if (DeliverFrom != null) yield return new ElementValue("deliverFrom", DeliverFrom);
         if (DeliverTo != null) yield return new ElementValue("deliverTo", DeliverTo);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "category":
+          value = Category;
+          return Category is not null;
+        case "priority":
+          value = PriorityElement;
+          return PriorityElement is not null;
+        case "orderedItem":
+          value = OrderedItem;
+          return OrderedItem is not null;
+        case "occurrence":
+          value = Occurrence;
+          return Occurrence is not null;
+        case "authoredOn":
+          value = AuthoredOnElement;
+          return AuthoredOnElement is not null;
+        case "requester":
+          value = Requester;
+          return Requester is not null;
+        case "supplier":
+          value = Supplier;
+          return Supplier?.Any() == true;
+        case "reason":
+          value = Reason;
+          return Reason is not null;
+        case "deliverFrom":
+          value = DeliverFrom;
+          return DeliverFrom is not null;
+        case "deliverTo":
+          value = DeliverTo;
+          return DeliverTo is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Category is not null) yield return new KeyValuePair<string,object>("category",Category);
+      if (PriorityElement is not null) yield return new KeyValuePair<string,object>("priority",PriorityElement);
+      if (OrderedItem is not null) yield return new KeyValuePair<string,object>("orderedItem",OrderedItem);
+      if (Occurrence is not null) yield return new KeyValuePair<string,object>("occurrence",Occurrence);
+      if (AuthoredOnElement is not null) yield return new KeyValuePair<string,object>("authoredOn",AuthoredOnElement);
+      if (Requester is not null) yield return new KeyValuePair<string,object>("requester",Requester);
+      if (Supplier?.Any() == true) yield return new KeyValuePair<string,object>("supplier",Supplier);
+      if (Reason is not null) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (DeliverFrom is not null) yield return new KeyValuePair<string,object>("deliverFrom",DeliverFrom);
+      if (DeliverTo is not null) yield return new KeyValuePair<string,object>("deliverTo",DeliverTo);
     }
 
   }

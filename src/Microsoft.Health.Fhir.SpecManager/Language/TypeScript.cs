@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -201,7 +202,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="exportDirectory">Directory to write files.</param>
         void ILanguage.Export(
             FhirVersionInfo info,
-            FhirServerInfo serverInfo,
+            FhirCapabiltyStatement serverInfo,
             ExporterOptions options,
             string exportDirectory)
         {
@@ -321,9 +322,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ref Dictionary<string, WrittenCodeInfo> writtenCodesAndNames,
             ref HashSet<string> writtenNames)
         {
-            string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
-
-            vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
+            string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords).ToPascalCase();
 
             foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
             {
@@ -346,10 +345,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     input = concept.Code;
                 }
 
-                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords, FhirTypeBase.NamingConvention.PascalCase);
+                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords).ToPascalCase(true);
                 string codeValue = FhirUtils.SanitizeForValue(concept.Code);
-
-                codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
 
                 string constName;
                 if (!string.IsNullOrEmpty(concept.SystemLocalName))

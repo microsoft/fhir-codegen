@@ -4,11 +4,8 @@
 // </copyright>
 
 using System.IO;
-using System.Numerics;
 using System.Text.Json;
-using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
-using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -108,7 +105,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="exportDirectory">Directory to write files.</param>
         void ILanguage.Export(
             FhirVersionInfo info,
-            FhirServerInfo serverInfo,
+            FhirCapabiltyStatement serverInfo,
             ExporterOptions options,
             string exportDirectory)
         {
@@ -148,22 +145,38 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>A string.</returns>
         private static string BuildStandardSnippet(string standardStatus, int? fmmLevel, bool? isExperimental)
         {
-            string ss = standardStatus ?? string.Empty;
+            string val = standardStatus;
 
-            string fmm = (fmmLevel == null)
-                ? string.Empty
-                : " FMM: " + fmmLevel.ToString();
+            if (fmmLevel != null)
+            {
+                if (string.IsNullOrEmpty(val))
+                {
+                    val = "FMM: " + fmmLevel.ToString();
+                }
+                else
+                {
+                    val = val + " FMM: " + fmmLevel.ToString();
+                }
+            }
 
-            string ie = (isExperimental == true)
-                ? " experimental"
-                : string.Empty;
+            if (isExperimental == true)
+            {
+                if (string.IsNullOrEmpty(val))
+                {
+                    val = "experimental";
+                }
+                else
+                {
+                    val = val + " experimental";
+                }
+            }
 
-            if (string.IsNullOrEmpty(ss) && string.IsNullOrEmpty(fmm) && string.IsNullOrEmpty(ie))
+            if (string.IsNullOrEmpty(val))
             {
                 return string.Empty;
             }
 
-            return " (" + ss + fmm + ie + ")";
+            return " (" + val + ")";
         }
 
         /// <summary>Writes a value sets.</summary>
@@ -188,13 +201,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     _writer.IncreaseIndent();
 
-                    string vsReferences = string.Empty;
-
-                    if (vs.StrongestBindingByType != null)
+                    if (vs.StrongestBindingByType?.Any() ?? false)
                     {
-                        vsReferences = $"references ({vs.ReferencingElementsByPath.Count}): " + string.Join(", ", vs.ReferencingElementsByPath.Keys);
-                        vsReferences += ", strongest binding: " + vs.StrongestBinding.ToString();
-                        vsReferences += ", by type: " + string.Join(", ", vs.StrongestBindingByType.Select(bt => $"{bt.Key}:{bt.Value}"));
+                        string vsReferences =
+                            $"references ({vs.ReferencingElementsByPath.Count}): " + string.Join(", ", vs.ReferencingElementsByPath.Keys) +
+                            ", strongest binding: " + vs.StrongestBinding.ToString() +
+                            ", by type: " + string.Join(", ", vs.StrongestBindingByType.Select(bt => $"{bt.Key}:{bt.Value}"));
+
+                        _writer.WriteLineIndented(vsReferences);
+                    }
+
+                    if (vs.StrongestExternalBindingByType?.Any() ?? false)
+                    {
+                        string vsReferences =
+                            $"extensions/profiles ({vs.ReferencingExternalElementsByUrl.Count}):" +
+                            " strongest binding: " + vs.StrongestExternalBinding.ToString() +
+                            ", refs: " + string.Join(", ", vs.ReferencingExternalElementsByUrl.Select(bt => $"{bt.Value.RootArtifact.ArtifactClass}:{bt.Value.RootArtifact.Id}"));
+
                         _writer.WriteLineIndented(vsReferences);
                     }
 
@@ -354,6 +377,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.IncreaseIndent();
                 indented = true;
+
+                if (complex.Constraints?.Any() ?? false == true)
+                {
+                    WriteConstraints(complex.ConstraintsByKey.OrderBy(kvp => kvp.Key).Select(kvp => kvp.Value));
+                }
             }
             else if (complex.RootElement != null)
             {
@@ -395,6 +423,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (indented)
             {
                 _writer.DecreaseIndent();
+            }
+        }
+
+        /// <summary>Writes the constraints.</summary>
+        /// <param name="constraints">The constraints.</param>
+        private void WriteConstraints(IEnumerable<FhirConstraint> constraints)
+        {
+            foreach (FhirConstraint constraint in constraints)
+            {
+                string inherited = constraint.IsInherited ? "inherited" : "local";
+                _writer.WriteLineIndented($"!{constraint.Key}: {inherited} {constraint.Severity}: {constraint.Expression}");
             }
         }
 
@@ -528,6 +567,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (string.IsNullOrEmpty(propertyType))
             {
                 propertyType = element.BaseTypeName;
+            }
+
+            if (element.IsSimple)
+            {
+                propertyType = propertyType + " *simple*";
+            }
+
+            if (element.ConstraintsByKey?.Where(kvp => !kvp.Value.IsInherited).Any() ?? false)
+            {
+                propertyType = propertyType +
+                    " constraints: " +
+                    string.Join(", ", element.ConstraintsByKey.Values.Where(c => !c.IsInherited).Select(c => c.Key).OrderBy(v => v)) +
+                    "";
+            }
+
+            if (element.Conditions?.Any() ?? false)
+            {
+                propertyType = propertyType +
+                    " conditions: " +
+                    string.Join(", ", element.Conditions.OrderBy(v => v)) +
+                    "";
             }
 
             string fiveWs = string.Empty;
