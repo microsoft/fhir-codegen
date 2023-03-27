@@ -81,35 +81,11 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">NpmPackageDetails</span></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.Health.Fhir.CodeGenCommon.Models.html">Microsoft.Health.Fhir.CodeGenCommon.Models</a></h6>
   <h6><strong>Assembly</strong>: Microsoft.Health.Fhir.CodeGenCommon.dll</h6>
   <h5 id="Microsoft_Health_Fhir_CodeGenCommon_Models_NpmPackageDetails_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NpmPackageDetails</code></pre>
+    <pre><code class="lang-csharp hljs">public class NpmPackageDetails : object</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -127,8 +103,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;author&quot;)]
-public string Author { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Author { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -159,8 +134,7 @@ public string Author { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;date&quot;)]
-public string BuildDate { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string BuildDate { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -191,8 +165,7 @@ public string BuildDate { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;canonical&quot;)]
-public string Canonical { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Canonical { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -223,8 +196,7 @@ public string Canonical { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;dependencies&quot;)]
-public Dictionary&lt;string, string&gt; Dependencies { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string&gt; Dependencies { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -255,8 +227,7 @@ public Dictionary&lt;string, string&gt; Dependencies { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;description&quot;)]
-public string Description { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Description { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -287,8 +258,7 @@ public string Description { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;directories&quot;)]
-public Dictionary&lt;string, string&gt; Directories { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string&gt; Directories { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -319,8 +289,7 @@ public Dictionary&lt;string, string&gt; Directories { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;fhirVersion&quot;)]
-public string FhirVersion { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string FhirVersion { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -351,8 +320,7 @@ public string FhirVersion { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;fhir-version-list&quot;)]
-public IEnumerable&lt;string&gt; FhirVersionList { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; FhirVersionList { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -383,8 +351,7 @@ public IEnumerable&lt;string&gt; FhirVersionList { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;fhirVersions&quot;)]
-public IEnumerable&lt;string&gt; FhirVersions { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; FhirVersions { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -415,8 +382,7 @@ public IEnumerable&lt;string&gt; FhirVersions { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;homepage&quot;)]
-public string Homepage { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Homepage { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -447,8 +413,7 @@ public string Homepage { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;keywords&quot;)]
-public IEnumerable&lt;string&gt; Keywords { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; Keywords { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -479,8 +444,7 @@ public IEnumerable&lt;string&gt; Keywords { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;license&quot;)]
-public string License { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string License { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -511,8 +475,7 @@ public string License { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;name&quot;)]
-public string Name { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -543,8 +506,7 @@ public string Name { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;original-version&quot;)]
-public string OriginalVersion { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string OriginalVersion { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -575,8 +537,7 @@ public string OriginalVersion { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;type&quot;)]
-public string PackageType { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string PackageType { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -607,8 +568,7 @@ public string PackageType { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;title&quot;)]
-public string Title { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Title { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -639,8 +599,7 @@ public string Title { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;tools-version&quot;)]
-public decimal ToolsVersion { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public decimal ToolsVersion { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -671,8 +630,7 @@ public decimal ToolsVersion { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;url&quot;)]
-public Uri URL { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Uri URL { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -703,8 +661,7 @@ public Uri URL { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;version&quot;)]
-public string Version { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Version { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -773,22 +730,6 @@ public string Version { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Text.Json.JsonException</span></td>
-        <td><p>Thrown when a JSON error condition occurs.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Models_NpmPackageDetails_Parse_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Models.NpmPackageDetails.Parse(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
@@ -835,22 +776,6 @@ public string Version { get; set; }</code></pre>
       <tr>
         <td><a class="xref" href="Microsoft.Health.Fhir.CodeGenCommon.Models.NpmPackageDetails.html">NpmPackageDetails</a></td>
         <td><p>The NpmPackageDetails.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Text.Json.JsonException</span></td>
-        <td><p>Thrown when a JSON error condition occurs.</p>
 </td>
       </tr>
     </tbody>

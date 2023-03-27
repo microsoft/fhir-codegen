@@ -86,40 +86,14 @@ Based off the DotNet ExpandoObject:
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">System.Dynamic.IDynamicMetaObjectProvider</span></div>
-    <div><span class="xref">System.Collections.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</div>
-    <div><span class="xref">System.ComponentModel.INotifyPropertyChanged</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
+    <div><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</div>
+    <div><span class="xref">INotifyPropertyChanged</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.html">Microsoft.Health.Fhir.SpecManager.Models</a></h6>
   <h6><strong>Assembly</strong>: Microsoft.Health.Fhir.SpecManager.dll</h6>
   <h5 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(FhirExpandoJsonConverter))]
-public class FhirExpando : IDynamicMetaObjectProvider, INotifyPropertyChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public class FhirExpando : IDynamicMetaObjectProvider</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -128,7 +102,7 @@ public class FhirExpando : IDynamicMetaObjectProvider, INotifyPropertyChanged</c
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando__ctor.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L53">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L55">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.#ctor*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando__ctor" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.#ctor">FhirExpando()</h4>
@@ -146,7 +120,7 @@ public class FhirExpando : IDynamicMetaObjectProvider, INotifyPropertyChanged</c
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Count.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1299">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1440">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Count_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Count*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Count" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Count">Count</h4>
@@ -178,7 +152,7 @@ public class FhirExpando : IDynamicMetaObjectProvider, INotifyPropertyChanged</c
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_IsReadOnly.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.IsReadOnly%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1307">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1448">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_IsReadOnly_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.IsReadOnly*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_IsReadOnly" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.IsReadOnly">IsReadOnly</h4>
@@ -210,7 +184,7 @@ is read-only.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Item_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Item(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1164">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1305">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Item_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Item*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Item_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Item(System.String)">Item[String]</h4>
@@ -260,7 +234,7 @@ is read-only.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Item_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Item(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1189">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1330">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Item_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Item*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Item_System_String_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Item(System.String,System.String)">Item[String, String]</h4>
@@ -316,7 +290,7 @@ is read-only.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Keys.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Keys%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1148">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1289">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Keys_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Keys*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Keys" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Keys">Keys</h4>
@@ -338,7 +312,7 @@ is read-only.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ICollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">ICollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -348,7 +322,7 @@ is read-only.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Values.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Values%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1156">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1297">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Values_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Values*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Values" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Values">Values</h4>
@@ -370,7 +344,7 @@ the <span class="xref">System.Collections.Generic.IDictionary`2</span>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ICollection</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><span class="xref">ICollection</span>&lt;<span class="xref">System.Object</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -382,7 +356,7 @@ the <span class="xref">System.Collections.Generic.IDictionary`2</span>.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Add_KeyValuePair_System_String_System_Object__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Add(KeyValuePair%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1316">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1457">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Add_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Add*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Add_KeyValuePair_System_String_System_Object__" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Add(KeyValuePair{System.String,System.Object})">Add(KeyValuePair&lt;String, Object&gt;)</h4>
@@ -417,7 +391,7 @@ the <span class="xref">System.Collections.Generic.IDictionary`2</span>.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Add_System_String_System_Object_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Add(System.String%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1231">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1372">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Add_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Add*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Add_System_String_System_Object_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Add(System.String,System.Object)">Add(String, Object)</h4>
@@ -458,7 +432,7 @@ the <span class="xref">System.Collections.Generic.IDictionary`2</span>.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Clear.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Clear%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1326">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1467">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Clear_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Clear*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Clear" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Clear">Clear()</h4>
@@ -474,7 +448,7 @@ the <span class="xref">System.Collections.Generic.IDictionary`2</span>.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Contains_KeyValuePair_System_String_System_Object__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Contains(KeyValuePair%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1363">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1504">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Contains_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Contains*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Contains_KeyValuePair_System_String_System_Object__" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Contains(KeyValuePair{System.String,System.Object})">Contains(KeyValuePair&lt;String, Object&gt;)</h4>
@@ -527,7 +501,7 @@ specific value.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_ContainsKey_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.ContainsKey(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1248">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1389">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_ContainsKey_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.ContainsKey*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_ContainsKey_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.ContainsKey(System.String)">ContainsKey(String)</h4>
@@ -580,7 +554,7 @@ contains an element with the key; otherwise, <span class="xref">false</span>.</p
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_CopyTo_KeyValuePair_System_String_System_Object____System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.CopyTo(KeyValuePair%7BSystem.String%2CSystem.Object%7D%5B%5D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1384">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1525">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_CopyTo_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.CopyTo*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_CopyTo_KeyValuePair_System_String_System_Object____System_Int32_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.CopyTo(KeyValuePair{System.String,System.Object}[],System.Int32)">CopyTo(KeyValuePair&lt;String, Object&gt;[], Int32)</h4>
@@ -621,10 +595,61 @@ begins.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetAllExtensions_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetAllExtensions(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L524">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetAllExtensions_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetAllExtensions*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetAllExtensions_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetAllExtensions(System.String[])">GetAllExtensions(String[])</h4>
+  <div class="markdown level1 summary"><p>Gets the extensions in this collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;FhirExpando&gt; GetAllExtensions(params string[] relativePath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">relativePath</span></td>
+        <td><p>A variable-length parameters list containing the relative path to
+the extension node, from this node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.html">FhirExpando</a>&gt;</td>
+        <td><p>An enumerator that allows foreach to be used to process the extensions in this collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetBool_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetBool(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L193">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L195">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetBool_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetBool*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetBool_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetBool(System.String[])">GetBool(String[])</h4>
@@ -674,7 +699,7 @@ begins.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetByteArray_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetByteArray(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L213">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L215">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetByteArray_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetByteArray*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetByteArray_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetByteArray(System.String[])">GetByteArray(String[])</h4>
@@ -724,7 +749,7 @@ begins.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetDecimal_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetDecimal(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L173">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L175">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetDecimal_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetDecimal*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetDecimal_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetDecimal(System.String[])">GetDecimal(String[])</h4>
@@ -774,7 +799,7 @@ begins.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetEnumerator.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1421">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1562">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetEnumerator_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetEnumerator*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetEnumerator" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetEnumerator">GetEnumerator()</h4>
@@ -795,7 +820,7 @@ begins.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="xref">IEnumerator</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><p>An enumerator that can be used to iterate through the collection.</p>
 </td>
       </tr>
@@ -806,7 +831,7 @@ begins.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExpando_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExpando(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L286">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L288">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExpando_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExpando*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExpando_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExpando(System.String[])">GetExpando(String[])</h4>
@@ -856,7 +881,7 @@ begins.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExpandoEnumerable_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExpandoEnumerable(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L304">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L306">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExpandoEnumerable_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExpandoEnumerable*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExpandoEnumerable_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExpandoEnumerable(System.String[])">GetExpandoEnumerable(String[])</h4>
@@ -895,7 +920,7 @@ begins.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.html">FhirExpando</a>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.html">FhirExpando</a>&gt;</td>
         <td><p>An enumerator that allows foreach to be used to process the expando enumerables in this
 collection.</p>
 </td>
@@ -907,7 +932,7 @@ collection.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtension_System_String_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtension(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L334">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L336">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtension_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtension*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtension_System_String_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtension(System.String,System.String[])">GetExtension(String, String[])</h4>
@@ -964,7 +989,7 @@ the extension node, from this node.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensions_System_String_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensions(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L376">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L490">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensions_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensions*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensions_System_String_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensions(System.String,System.String[])">GetExtensions(String, String[])</h4>
@@ -1010,8 +1035,399 @@ the extension node, from this node.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.html">FhirExpando</a>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.html">FhirExpando</a>&gt;</td>
         <td><p>An enumerator that allows foreach to be used to process the extensions in this collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionsValueString_System_String_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionsValueString(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L436">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionsValueString_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionsValueString*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionsValueString_System_String_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionsValueString(System.String,System.String[])">GetExtensionsValueString(String, String[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] GetExtensionsValueString(string url, params string[] path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">url</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueCode_System_String_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueCode(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L376">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueCode_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueCode*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueCode_System_String_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueCode(System.String,System.String[])">GetExtensionValueCode(String, String[])</h4>
+  <div class="markdown level1 summary"><p>Gets extension valueCode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetExtensionValueCode(string url, params string[] relativePath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>URL of the resource.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">relativePath</span></td>
+        <td><p>A variable-length parameters list containing the relative path to
+the extension node, from this node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The extension value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueCodeArray_System_String_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueCodeArray(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L400">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueCodeArray_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueCodeArray*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueCodeArray_System_String_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueCodeArray(System.String,System.String[])">GetExtensionValueCodeArray(String, String[])</h4>
+  <div class="markdown level1 summary"><p>Gets extension value code array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] GetExtensionValueCodeArray(string url, params string[] path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>URL of the resource.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">path</span></td>
+        <td><p>A variable-length parameters list containing path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>An array of string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueCodeList_System_String_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueCodeList(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L457">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueCodeList_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueCodeList*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueCodeList_System_String_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueCodeList(System.String,System.String[])">GetExtensionValueCodeList(String, String[])</h4>
+  <div class="markdown level1 summary"><p>Gets extension value code list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; GetExtensionValueCodeList(string url, params string[] path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>URL of the resource.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">path</span></td>
+        <td><p>A variable-length parameters list containing path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>The extension value code list.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueInteger_System_String_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueInteger(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L478">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueInteger_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueInteger*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueInteger_System_String_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueInteger(System.String,System.String[])">GetExtensionValueInteger(String, String[])</h4>
+  <div class="markdown level1 summary"><p>Gets extension value integer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? GetExtensionValueInteger(string url, params string[] relativePath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>URL of the resource.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">relativePath</span></td>
+        <td><p>A variable-length parameters list containing the relative path to
+the extension node, from this node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><p>The extension value integer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueString_System_String_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueString(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L388">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueString_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueString*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueString_System_String_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueString(System.String,System.String[])">GetExtensionValueString(String, String[])</h4>
+  <div class="markdown level1 summary"><p>Gets extension value string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetExtensionValueString(string url, params string[] relativePath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>URL of the resource.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">relativePath</span></td>
+        <td><p>A variable-length parameters list containing the relative path to
+the extension node, from this node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The extension value string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueStringArray_System_String_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueStringArray(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L420">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueStringArray_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueStringArray*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetExtensionValueStringArray_System_String_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetExtensionValueStringArray(System.String,System.String[])">GetExtensionValueStringArray(String, String[])</h4>
+  <div class="markdown level1 summary"><p>Gets extension value string array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] GetExtensionValueStringArray(string url, params string[] path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>URL of the resource.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">path</span></td>
+        <td><p>A variable-length parameters list containing path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>An array of string.</p>
 </td>
       </tr>
     </tbody>
@@ -1021,7 +1437,7 @@ the extension node, from this node.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetInt_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetInt(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L133">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L135">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetInt_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetInt*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetInt_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetInt(System.String[])">GetInt(String[])</h4>
@@ -1071,7 +1487,7 @@ the extension node, from this node.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetLong_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetLong(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L153">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L155">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetLong_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetLong*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetLong_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetLong(System.String[])">GetLong(String[])</h4>
@@ -1121,7 +1537,7 @@ the extension node, from this node.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetObject_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetObject(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L62">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L64">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetObject_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetObject*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetObject_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetObject(System.String[])">GetObject(String[])</h4>
@@ -1171,7 +1587,7 @@ the extension node, from this node.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetString_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetString(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L128">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L130">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetString_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetString*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetString_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetString(System.String[])">GetString(String[])</h4>
@@ -1221,7 +1637,7 @@ the extension node, from this node.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetStringArray_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetStringArray(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L233">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L235">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetStringArray_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetStringArray*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetStringArray_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetStringArray(System.String[])">GetStringArray(String[])</h4>
@@ -1271,7 +1687,7 @@ the extension node, from this node.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetStringList_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetStringList(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L258">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L260">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetStringList_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetStringList*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_GetStringList_System_String___" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.GetStringList(System.String[])">GetStringList(String[])</h4>
@@ -1321,7 +1737,7 @@ the extension node, from this node.</p>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Remove_KeyValuePair_System_String_System_Object__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Remove(KeyValuePair%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1412">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1553">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Remove_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Remove*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Remove_KeyValuePair_System_String_System_Object__" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Remove(KeyValuePair{System.String,System.Object})">Remove(KeyValuePair&lt;String, Object&gt;)</h4>
@@ -1375,7 +1791,7 @@ is not found in the original <span class="xref">System.Collections.Generic.IColl
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Remove_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Remove(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1269">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1410">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Remove_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Remove*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_Remove_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.Remove(System.String)">Remove(String)</h4>
@@ -1428,7 +1844,7 @@ in the original <span class="xref">System.Collections.Generic.IDictionary`2</spa
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_TryGetValue_System_String_System_Object__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.TryGetValue(System.String%2CSystem.Object%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1288">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1429">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_TryGetValue_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.TryGetValue*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_TryGetValue_System_String_System_Object__" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.TryGetValue(System.String,System.Object@)">TryGetValue(String, out Object)</h4>
@@ -1482,131 +1898,12 @@ contains an element with the specified key; otherwise, <span class="xref">false<
       </tr>
     </tbody>
   </table>
-  <h3 id="eii">Explicit Interface Implementations
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_System_Collections_IEnumerable_GetEnumerator.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.System%23Collections%23IEnumerable%23GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1432">View Source</a>
-  </span>
-  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_System_Collections_IEnumerable_GetEnumerator_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.System#Collections#IEnumerable#GetEnumerator*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_System_Collections_IEnumerable_GetEnumerator" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
-  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through a collection.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerator IEnumerable.GetEnumerator()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td><p>An <span class="xref">System.Collections.IEnumerator</span> object that can be used to iterate through
-the collection.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_System_ComponentModel_INotifyPropertyChanged_PropertyChanged.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.System%23ComponentModel%23INotifyPropertyChanged%23PropertyChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L1900">View Source</a>
-  </span>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_System_ComponentModel_INotifyPropertyChanged_PropertyChanged" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.System#ComponentModel#INotifyPropertyChanged#PropertyChanged">INotifyPropertyChanged.PropertyChanged</h4>
-  <div class="markdown level1 summary"><p>Occurs when a property value changes.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.ComponentModel.PropertyChangedEventHandler</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_System_Dynamic_IDynamicMetaObjectProvider_GetMetaObject_System_Linq_Expressions_Expression_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.System%23Dynamic%23IDynamicMetaObjectProvider%23GetMetaObject(System.Linq.Expressions.Expression)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L684">View Source</a>
-  </span>
-  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_System_Dynamic_IDynamicMetaObjectProvider_GetMetaObject_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.System#Dynamic#IDynamicMetaObjectProvider#GetMetaObject*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirExpando_System_Dynamic_IDynamicMetaObjectProvider_GetMetaObject_System_Linq_Expressions_Expression_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirExpando.System#Dynamic#IDynamicMetaObjectProvider#GetMetaObject(System.Linq.Expressions.Expression)">IDynamicMetaObjectProvider.GetMetaObject(Expression)</h4>
-  <div class="markdown level1 summary"><p>Returns the <span class="xref">System.Dynamic.DynamicMetaObject</span> responsible for binding
-operations performed on this object.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">DynamicMetaObject IDynamicMetaObjectProvider.GetMetaObject(Expression parameter)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Linq.Expressions.Expression</span></td>
-        <td><span class="parametername">parameter</span></td>
-        <td><p>The expression tree representation of the runtime value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Dynamic.DynamicMetaObject</span></td>
-        <td><p>The <span class="xref">System.Dynamic.DynamicMetaObject</span> to bind this object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">System.Dynamic.IDynamicMetaObjectProvider</span>
+      <span class="xref">IDictionary&lt;, &gt;</span>
   </div>
   <div>
-      <span class="xref">System.Collections.IDictionary&lt;, &gt;</span>
-  </div>
-  <div>
-      <span class="xref">System.ComponentModel.INotifyPropertyChanged</span>
+      <span class="xref">INotifyPropertyChanged</span>
   </div>
 </article>
           </div>
@@ -1619,7 +1916,7 @@ operations performed on this object.</p>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirExpando.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirExpando%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L22" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirExpando.cs/#L24" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

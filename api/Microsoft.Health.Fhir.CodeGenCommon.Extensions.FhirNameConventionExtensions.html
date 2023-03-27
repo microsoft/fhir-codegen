@@ -1,0 +1,1387 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class FhirNameConventionExtensions
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class FhirNameConventionExtensions
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions">
+  
+  
+  <h1 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions" class="text-break">Class FhirNameConventionExtensions
+  </h1>
+  <div class="markdown level0 summary"><p>A FHIR name convention extensions.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">FhirNameConventionExtensions</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.Health.Fhir.CodeGenCommon.Extensions.html">Microsoft.Health.Fhir.CodeGenCommon.Extensions</a></h6>
+  <h6><strong>Assembly</strong>: Microsoft.Health.Fhir.CodeGenCommon.dll</h6>
+  <h5 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class FhirNameConventionExtensions : object</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToCamelCase_System_String_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToCamelCase(System.String%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L83">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToCamelCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToCamelCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToCamelCase_System_String_System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToCamelCase(System.String,System.Boolean,System.String)">ToCamelCase(String, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>A string extension method that converts a word to a camelCase.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToCamelCase(this string word, bool removeDelimiters = true, string joinDelimiter = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">word</span></td>
+        <td><p>The word to act on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Word as a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToCamelCase_System_String___System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToCamelCase(System.String%5B%5D%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L105">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToCamelCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToCamelCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToCamelCase_System_String___System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToCamelCase(System.String[],System.Boolean,System.String)">ToCamelCase(String[], Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>An extension method that converts an array of words each to camelCase.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string[] ToCamelCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>Word as a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToCamelCaseWord_IEnumerable_System_String__System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToCamelCaseWord(IEnumerable%7BSystem.String%7D%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L133">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToCamelCaseWord_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToCamelCaseWord*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToCamelCaseWord_IEnumerable_System_String__System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToCamelCaseWord(IEnumerable{System.String},System.Boolean,System.String)">ToCamelCaseWord(IEnumerable&lt;String&gt;, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>An IEnumerable&lt;string&gt; extension method that converts the words to a camelWord.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToCamelCaseWord(this IEnumerable&lt;string&gt; words, bool removeDelimiters = true, string joinDelimiter = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Words as a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerCase_System_String_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerCase(System.String%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L250">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerCase_System_String_System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerCase(System.String,System.Boolean,System.String)">ToLowerCase(String, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>A string extension method that converts this object to a lower case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToLowerCase(this string word, bool removeDelimiters = true, string joinDelimiter = &quot;_&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">word</span></td>
+        <td><p>The word to act on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerCase_System_String___System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerCase(System.String%5B%5D%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L272">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerCase_System_String___System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerCase(System.String[],System.Boolean,System.String)">ToLowerCase(String[], Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>An extension method that converts an array of words each to lower_invariant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string[] ToLowerCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = &quot;_&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>Words as a string[].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerCaseWord_IEnumerable_System_String__System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerCaseWord(IEnumerable%7BSystem.String%7D%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L315">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerCaseWord_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerCaseWord*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerCaseWord_IEnumerable_System_String__System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerCaseWord(IEnumerable{System.String},System.Boolean,System.String)">ToLowerCaseWord(IEnumerable&lt;String&gt;, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>An IEnumerable&lt;string&gt; extension method that converts words a single lower_invariant
+word.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToLowerCaseWord(this IEnumerable&lt;string&gt; words, bool removeDelimiters = true, string joinDelimiter = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerKebabCase_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerKebabCase(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L331">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerKebabCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerKebabCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerKebabCase_System_String_System_Boolean_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerKebabCase(System.String,System.Boolean)">ToLowerKebabCase(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>A string extension method that converts this object to a lower-kebab-case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToLowerKebabCase(this string word, bool removeDelimiters = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">word</span></td>
+        <td><p>The word to act on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerKebabCase_System_String___System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerKebabCase(System.String%5B%5D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L338">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerKebabCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerKebabCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerKebabCase_System_String___System_Boolean_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerKebabCase(System.String[],System.Boolean)">ToLowerKebabCase(String[], Boolean)</h4>
+  <div class="markdown level1 summary"><p>A string extension method that converts this object to a lower-kebab-case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string[] ToLowerKebabCase(this string[] words, bool removeDelimiters = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerKebabCaseWord_IEnumerable_System_String__System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerKebabCaseWord(IEnumerable%7BSystem.String%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L348">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerKebabCaseWord_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerKebabCaseWord*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerKebabCaseWord_IEnumerable_System_String__System_Boolean_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerKebabCaseWord(IEnumerable{System.String},System.Boolean)">ToLowerKebabCaseWord(IEnumerable&lt;String&gt;, Boolean)</h4>
+  <div class="markdown level1 summary"><p>An IEnumerable&lt;string&gt; extension method that converts this object to a lower-kebab-case
+word.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToLowerKebabCaseWord(this IEnumerable&lt;string&gt; words, bool removeDelimiters = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerSnakeCase_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerSnakeCase(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L357">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerSnakeCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerSnakeCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerSnakeCase_System_String_System_Boolean_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerSnakeCase(System.String,System.Boolean)">ToLowerSnakeCase(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>A string extension method that converts this object to a lower_snake_case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToLowerSnakeCase(this string word, bool removeDelimiters = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">word</span></td>
+        <td><p>The word to act on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerSnakeCase_System_String___System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerSnakeCase(System.String%5B%5D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L364">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerSnakeCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerSnakeCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerSnakeCase_System_String___System_Boolean_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerSnakeCase(System.String[],System.Boolean)">ToLowerSnakeCase(String[], Boolean)</h4>
+  <div class="markdown level1 summary"><p>A string extension method that converts this object to a lower_snake_case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string[] ToLowerSnakeCase(this string[] words, bool removeDelimiters = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerSnakeCaseWord_IEnumerable_System_String__System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerSnakeCaseWord(IEnumerable%7BSystem.String%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L374">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerSnakeCaseWord_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerSnakeCaseWord*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToLowerSnakeCaseWord_IEnumerable_System_String__System_Boolean_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToLowerSnakeCaseWord(IEnumerable{System.String},System.Boolean)">ToLowerSnakeCaseWord(IEnumerable&lt;String&gt;, Boolean)</h4>
+  <div class="markdown level1 summary"><p>An IEnumerable&lt;string&gt; extension method that converts this object to a lower_snake_case
+word.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToLowerSnakeCaseWord(this IEnumerable&lt;string&gt; words, bool removeDelimiters = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalCase_System_String_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalCase(System.String%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L24">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalCase_System_String_System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalCase(System.String,System.Boolean,System.String)">ToPascalCase(String, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>A string extension method that converts a word to PascalCase.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToPascalCase(this string word, bool removeDelimiters = true, string joinDelimiter = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">word</span></td>
+        <td><p>The word to act on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Word as a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalCase_System_String___System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalCase(System.String%5B%5D%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L44">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalCase_System_String___System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalCase(System.String[],System.Boolean,System.String)">ToPascalCase(String[], Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>An extension method that converts an array of words each to PascalCase.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string[] ToPascalCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>Word as a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalCaseWord_IEnumerable_System_String__System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalCaseWord(IEnumerable%7BSystem.String%7D%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L68">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalCaseWord_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalCaseWord*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalCaseWord_IEnumerable_System_String__System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalCaseWord(IEnumerable{System.String},System.Boolean,System.String)">ToPascalCaseWord(IEnumerable&lt;String&gt;, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>An IEnumerable&lt;string&gt; extension method that converts the words to a PascalWord.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToPascalCaseWord(this IEnumerable&lt;string&gt; words, bool removeDelimiters = true, string joinDelimiter = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Words as a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalDotCase_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalDotCase(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L383">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalDotCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalDotCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalDotCase_System_String_System_Boolean_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalDotCase(System.String,System.Boolean)">ToPascalDotCase(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>A string extension method that converts this object to a pascal dot case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToPascalDotCase(this string word, bool removeDelimiters = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">word</span></td>
+        <td><p>The word to act on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalDotCase_System_String___System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalDotCase(System.String%5B%5D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L390">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalDotCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalDotCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalDotCase_System_String___System_Boolean_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalDotCase(System.String[],System.Boolean)">ToPascalDotCase(String[], Boolean)</h4>
+  <div class="markdown level1 summary"><p>A string extension method that converts this object to a pascal dot case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string[] ToPascalDotCase(this string[] words, bool removeDelimiters = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalDotCaseWord_IEnumerable_System_String__System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalDotCaseWord(IEnumerable%7BSystem.String%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L400">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalDotCaseWord_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalDotCaseWord*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToPascalDotCaseWord_IEnumerable_System_String__System_Boolean_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToPascalDotCaseWord(IEnumerable{System.String},System.Boolean)">ToPascalDotCaseWord(IEnumerable&lt;String&gt;, Boolean)</h4>
+  <div class="markdown level1 summary"><p>An IEnumerable&lt;string&gt; extension method that converts this object to a pascal dot case
+word.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToPascalDotCaseWord(this IEnumerable&lt;string&gt; words, bool removeDelimiters = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToUpperCase_System_String_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToUpperCase(System.String%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L170">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToUpperCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToUpperCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToUpperCase_System_String_System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToUpperCase(System.String,System.Boolean,System.String)">ToUpperCase(String, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>An extension method that converts an array of words each to UPPER CASE.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToUpperCase(this string word, bool removeDelimiters = true, string joinDelimiter = &quot;_&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">word</span></td>
+        <td><p>The word to act on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Words as a string[].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToUpperCase_System_String___System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToUpperCase(System.String%5B%5D%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L192">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToUpperCase_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToUpperCase*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToUpperCase_System_String___System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToUpperCase(System.String[],System.Boolean,System.String)">ToUpperCase(String[], Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>An extension method that converts an array of words each to UPPER INVARIANT.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string[] ToUpperCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = &quot;_&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>Words as a string[].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToUpperCaseWord_IEnumerable_System_String__System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToUpperCaseWord(IEnumerable%7BSystem.String%7D%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L235">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToUpperCaseWord_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToUpperCaseWord*"></a>
+  <h4 id="Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions_ToUpperCaseWord_IEnumerable_System_String__System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.ToUpperCaseWord(IEnumerable{System.String},System.Boolean,System.String)">ToUpperCaseWord(IEnumerable&lt;String&gt;, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>An IEnumerable&lt;string&gt; extension method that converts words a single UPPER_INVARIANT
+word.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToUpperCaseWord(this IEnumerable&lt;string&gt; words, bool removeDelimiters = true, string joinDelimiter = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">words</span></td>
+        <td><p>The words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeDelimiters</span></td>
+        <td><p>(Optional) True to remove delimiters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">joinDelimiter</span></td>
+        <td><p>(Optional) The word delimiter to use when joining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The given data converted to a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Extensions_FhirNameConventionExtensions.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Extensions/FhirNameConventionExtensions.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

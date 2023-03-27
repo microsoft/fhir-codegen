@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum FhirServerSearchParam.SearchParameterType
+    <title>Enum OpenApiCommon.OaOpLevelCodes
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum FhirServerSearchParam.SearchParameterType
+    <meta name="title" content="Enum OpenApiCommon.OaOpLevelCodes
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -68,20 +68,19 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Models.FhirServerSearchParam.SearchParameterType">
+            <article class="content wrap" id="_content" data-uid="Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon.OaOpLevelCodes">
   
   
-  <h1 id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType" data-uid="Microsoft.Health.Fhir.CodeGenCommon.Models.FhirServerSearchParam.SearchParameterType" class="text-break">Enum FhirServerSearchParam.SearchParameterType
+  <h1 id="Microsoft_Health_Fhir_SpecManager_Language_OpenApi_OpenApiCommon_OaOpLevelCodes" data-uid="Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon.OaOpLevelCodes" class="text-break">Enum OpenApiCommon.OaOpLevelCodes
   </h1>
-  <div class="markdown level0 summary"><p>Values that represent the type of value a search parameter refers to, and how the content is
-interpreted.</p>
+  <div class="markdown level0 summary"><p>Values that represent oa Operation level codes.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.Health.Fhir.CodeGenCommon.Models.html">Microsoft.Health.Fhir.CodeGenCommon.Models</a></h6>
-  <h6><strong>Assembly</strong>: Microsoft.Health.Fhir.CodeGenCommon.dll</h6>
-  <h5 id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Language.OpenApi.html">Microsoft.Health.Fhir.SpecManager.Language.OpenApi</a></h6>
+  <h6><strong>Assembly</strong>: Microsoft.Health.Fhir.SpecManager.dll</h6>
+  <h5 id="Microsoft_Health_Fhir_SpecManager_Language_OpenApi_OpenApiCommon_OaOpLevelCodes_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum SearchParameterType</code></pre>
+    <pre><code class="lang-csharp hljs">public enum OaOpLevelCodes : int</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -94,48 +93,18 @@ interpreted.</p>
     <thead>
     <tbody>
       <tr>
-        <td id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType_Composite">Composite</td>
-        <td><p>A composite search parameter that combines a search on two values together.</p>
+        <td id="Microsoft_Health_Fhir_SpecManager_Language_OpenApi_OpenApiCommon_OaOpLevelCodes_Instance">Instance</td>
+        <td><p>An enum constant representing the instance option.</p>
 </td>
       </tr>
       <tr>
-        <td id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType_Date">Date</td>
-        <td><p>Search parameter is on a date/time. The date format is the standard XML format, though other formats may be supported.</p>
+        <td id="Microsoft_Health_Fhir_SpecManager_Language_OpenApi_OpenApiCommon_OaOpLevelCodes_System">System</td>
+        <td><p>An enum constant representing the system option.</p>
 </td>
       </tr>
       <tr>
-        <td id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType_Number">Number</td>
-        <td><p>Search parameter SHALL be a number (a whole number, or a decimal).</p>
-</td>
-      </tr>
-      <tr>
-        <td id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType_Quantity">Quantity</td>
-        <td><p>A search parameter that searches on a quantity.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType_Reference">Reference</td>
-        <td><p>A reference to another resource (Reference or canonical).</p>
-</td>
-      </tr>
-      <tr>
-        <td id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType_Special">Special</td>
-        <td><p>Special logic applies to this parameter per the description of the search parameter.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType_String">String</td>
-        <td><p>Search parameter is a simple string, like a name part. Search is case-insensitive and accent-insensitive. May match just the start of a string. String parameters may contain spaces.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType_Token">Token</td>
-        <td><p>Search parameter on a coded element or identifier. May be used to search through the text, display, code and code/codesystem (for codes) and label, system and key (for identifier). Its value is either a string or a pair of namespace and value, separated by a &quot;|&quot;, depending on the modifier used.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType_Uri">Uri</td>
-        <td><p>A search parameter that searches on a URI (RFC 3986).</p>
+        <td id="Microsoft_Health_Fhir_SpecManager_Language_OpenApi_OpenApiCommon_OaOpLevelCodes_Type">Type</td>
+        <td><p>An enum constant representing the resource option.</p>
 </td>
       </tr>
     </tbody>
@@ -148,10 +117,10 @@ interpreted.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_CodeGenCommon_Models_FhirServerSearchParam_SearchParameterType.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.CodeGenCommon.Models.FhirServerSearchParam.SearchParameterType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_OpenApi_OpenApiCommon_OaOpLevelCodes.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon.OaOpLevelCodes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.CodeGenCommon/Models/FhirServerSearchParam.cs/#L59" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/OpenApi/OpenApiCommon.cs/#L124" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

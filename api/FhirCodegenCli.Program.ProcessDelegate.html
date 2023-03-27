@@ -80,7 +80,7 @@
   <h6><strong>Assembly</strong>: fhir-codegen-cli.dll</h6>
   <h5 id="FhirCodegenCli_Program_ProcessDelegate_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public delegate int ProcessDelegate(string outputPath = &quot;&quot;, bool verbose = false, bool offlineMode = false, string language = &quot;&quot;, string exportKeys = &quot;&quot;, string loadR2 = &quot;&quot;, string loadR3 = &quot;&quot;, string loadR4 = &quot;&quot;, string loadR4B = &quot;&quot;, string loadR5 = &quot;&quot;, string languageOptions = &quot;&quot;, bool officialExpansionsOnly = false, string fhirServerUrl = &quot;&quot;, bool includeExperimental = false, string exportTypes = &quot;&quot;, string extensionSupport = &quot;&quot;, bool languageHelp = false, string packageDirectory = &quot;&quot;, string packages = &quot;&quot;, string ciBranch = &quot;&quot;, string languageInputDir = &quot;&quot;, bool showHelp = false);</code></pre>
+    <pre><code class="lang-csharp hljs">public delegate int ProcessDelegate(string outputPath = &quot;&quot;, bool verbose = false, bool offlineMode = false, string language = &quot;&quot;, string exportKeys = &quot;&quot;, string loadR2 = &quot;&quot;, string loadR3 = &quot;&quot;, string loadR4 = &quot;&quot;, string loadR4B = &quot;&quot;, string loadR5 = &quot;&quot;, string languageOptions = &quot;&quot;, bool officialExpansionsOnly = false, string fhirServerUrl = &quot;&quot;, string fhirServerHeaders = &quot;&quot;, bool resolveExternal = true, bool includeExperimental = false, string exportTypes = &quot;&quot;, string extensionSupport = &quot;&quot;, bool languageHelp = false, string packageDirectory = &quot;&quot;, string packages = &quot;&quot;, string ciBranch = &quot;&quot;, string languageInputDir = &quot;&quot;, bool showHelp = false);</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -187,6 +187,18 @@ Conformance) from.  Requires application/fhir+json.</p>
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fhirServerHeaders</span></td>
+        <td><p>Headers to include when calling a FHIR server, format is key=value|key=value|...</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">resolveExternal</span></td>
+        <td><p>Whether or not to try to resolve unknown canonicals at the given fhir server url.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">includeExperimental</span></td>
         <td><p>If the output should include structures marked
@@ -272,7 +284,7 @@ experimental (false|true).</p>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=FhirCodegenCli_Program_ProcessDelegate.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program.ProcessDelegate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L67" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L66" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
