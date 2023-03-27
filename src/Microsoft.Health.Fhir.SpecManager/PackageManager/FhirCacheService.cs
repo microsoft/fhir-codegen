@@ -210,7 +210,7 @@ public class FhirCacheService : IDisposable
     {
         foreach (Uri registryUri in PackageRegistryUris)
         {
-            Uri uri = new Uri(registryUri, $"{name}/{version}/");
+            Uri uri = new Uri(registryUri, $"{name}/{version}");
             directory = Path.Combine(_cachePackageDirectory, $"{name}#{version}");
 
             string directive = name + "#" + version;

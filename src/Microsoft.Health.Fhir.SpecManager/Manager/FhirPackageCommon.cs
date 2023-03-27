@@ -87,6 +87,7 @@ public static class FhirPackageCommon
         new (FhirSequenceEnum.R5,    new DateOnly(2022, 09, 10), "5.0.0-ballot",      "R5 Ballot #1"),
         new (FhirSequenceEnum.R5,    new DateOnly(2022, 12, 14), "5.0.0-snapshot3",   "R5 Connectathon 32 Base"),
         new (FhirSequenceEnum.R5,    new DateOnly(2023, 03, 01), "5.0.0-draft-final", "R5 Final QA"),
+        new (FhirSequenceEnum.R5,    new DateOnly(2023, 03, 26), "5.0.0",             "R5 Release"),
     };
 
     /// <summary>(Immutable) The ballot URL changeover date.</summary>

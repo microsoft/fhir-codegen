@@ -61,7 +61,8 @@ public class RegistryPackageManifest
                     bool remove = false;
                     string name = manifest.Versions[key].Name;
 
-                    if (manifest.Versions[key].PackageKind == "??")
+                    if (string.IsNullOrEmpty(manifest.Versions[key].PackageKind) ||
+                        (manifest.Versions[key].PackageKind == "??"))
                     {
                         if (name.StartsWith("hl7.fhir.r", StringComparison.OrdinalIgnoreCase))
                         {
@@ -73,7 +74,8 @@ public class RegistryPackageManifest
                         }
                     }
 
-                    if (manifest.Versions[key].FhirVersion == "??")
+                    if (string.IsNullOrEmpty(manifest.Versions[key].FhirVersion) ||
+                        (manifest.Versions[key].FhirVersion == "??"))
                     {
                         if (manifest.Versions[key].PackageKind.Equals("core", StringComparison.OrdinalIgnoreCase) &&
                             FhirPackageCommon.TryGetMajorReleaseForVersion(key, out sequence))
