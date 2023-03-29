@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("RelatedArtifact")]
+  [FhirType("RelatedArtifact","http://hl7.org/fhir/StructureDefinition/RelatedArtifact")]
   public partial class RelatedArtifact : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -117,6 +117,7 @@ namespace Hl7.Fhir.Model
     /// documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of
     /// </summary>
     [FhirElement("type", InSummary=true, Order=30)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType> TypeElement
@@ -290,6 +291,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new RelatedArtifact());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as RelatedArtifact;
@@ -350,6 +352,45 @@ namespace Hl7.Fhir.Model
         if (Document != null) yield return new ElementValue("document", Document);
         if (Resource != null) yield return new ElementValue("resource", Resource);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "display":
+          value = DisplayElement;
+          return DisplayElement is not null;
+        case "citation":
+          value = CitationElement;
+          return CitationElement is not null;
+        case "url":
+          value = UrlElement;
+          return UrlElement is not null;
+        case "document":
+          value = Document;
+          return Document is not null;
+        case "resource":
+          value = Resource;
+          return Resource is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (DisplayElement is not null) yield return new KeyValuePair<string,object>("display",DisplayElement);
+      if (CitationElement is not null) yield return new KeyValuePair<string,object>("citation",CitationElement);
+      if (UrlElement is not null) yield return new KeyValuePair<string,object>("url",UrlElement);
+      if (Document is not null) yield return new KeyValuePair<string,object>("document",Document);
+      if (Resource is not null) yield return new KeyValuePair<string,object>("resource",Resource);
     }
 
   }

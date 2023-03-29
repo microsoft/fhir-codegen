@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("ProcessRequest", IsResource=true)]
+  [FhirType("ProcessRequest","http://hl7.org/fhir/StructureDefinition/ProcessRequest", IsResource=true)]
   public partial class ProcessRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -153,6 +153,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ItemsComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ItemsComponent;
@@ -195,12 +196,32 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "sequenceLinkId":
+            value = SequenceLinkIdElement;
+            return SequenceLinkIdElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (SequenceLinkIdElement is not null) yield return new KeyValuePair<string,object>("sequenceLinkId",SequenceLinkIdElement);
+      }
+
     }
 
     /// <summary>
     /// cancel | poll | reprocess | status
     /// </summary>
     [FhirElement("action", InSummary=true, Order=90)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.ProcessRequest.ActionList> ActionElement
@@ -562,6 +583,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new ProcessRequest());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as ProcessRequest;
@@ -662,6 +684,85 @@ namespace Hl7.Fhir.Model
         foreach (var elem in ExcludeElement) { if (elem != null) yield return new ElementValue("exclude", elem); }
         if (Period != null) yield return new ElementValue("period", Period);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "action":
+          value = ActionElement;
+          return ActionElement is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "ruleset":
+          value = Ruleset;
+          return Ruleset is not null;
+        case "originalRuleset":
+          value = OriginalRuleset;
+          return OriginalRuleset is not null;
+        case "created":
+          value = CreatedElement;
+          return CreatedElement is not null;
+        case "target":
+          value = Target;
+          return Target is not null;
+        case "provider":
+          value = Provider;
+          return Provider is not null;
+        case "organization":
+          value = Organization;
+          return Organization is not null;
+        case "request":
+          value = Request;
+          return Request is not null;
+        case "response":
+          value = Response;
+          return Response is not null;
+        case "nullify":
+          value = NullifyElement;
+          return NullifyElement is not null;
+        case "reference":
+          value = ReferenceElement;
+          return ReferenceElement is not null;
+        case "item":
+          value = Item;
+          return Item?.Any() == true;
+        case "include":
+          value = IncludeElement;
+          return IncludeElement?.Any() == true;
+        case "exclude":
+          value = ExcludeElement;
+          return ExcludeElement?.Any() == true;
+        case "period":
+          value = Period;
+          return Period is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (ActionElement is not null) yield return new KeyValuePair<string,object>("action",ActionElement);
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Ruleset is not null) yield return new KeyValuePair<string,object>("ruleset",Ruleset);
+      if (OriginalRuleset is not null) yield return new KeyValuePair<string,object>("originalRuleset",OriginalRuleset);
+      if (CreatedElement is not null) yield return new KeyValuePair<string,object>("created",CreatedElement);
+      if (Target is not null) yield return new KeyValuePair<string,object>("target",Target);
+      if (Provider is not null) yield return new KeyValuePair<string,object>("provider",Provider);
+      if (Organization is not null) yield return new KeyValuePair<string,object>("organization",Organization);
+      if (Request is not null) yield return new KeyValuePair<string,object>("request",Request);
+      if (Response is not null) yield return new KeyValuePair<string,object>("response",Response);
+      if (NullifyElement is not null) yield return new KeyValuePair<string,object>("nullify",NullifyElement);
+      if (ReferenceElement is not null) yield return new KeyValuePair<string,object>("reference",ReferenceElement);
+      if (Item?.Any() == true) yield return new KeyValuePair<string,object>("item",Item);
+      if (IncludeElement?.Any() == true) yield return new KeyValuePair<string,object>("include",IncludeElement);
+      if (ExcludeElement?.Any() == true) yield return new KeyValuePair<string,object>("exclude",ExcludeElement);
+      if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
     }
 
   }

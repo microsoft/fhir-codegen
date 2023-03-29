@@ -41,14 +41,20 @@ public class PackageCopyOptions
     /// <summary>Gets or sets a value indicating whether to copy implementation guides.</summary>
     public bool CopyImplementationGuides { get; set; } = true;
 
+    /// <summary>Gets or sets a value indicating whether the copy capability statements.</summary>
+    public bool CopyCapabilityStatements { get; set; } = true;
+
+    /// <summary>Gets or sets a value indicating whether the copy compartments.</summary>
+    public bool CopyCompartments { get; set; } = true;
+
     /// <summary>Gets or sets the extension urls.</summary>
     public HashSet<string> ExtensionUrls { get; set; } = null;
 
     /// <summary>Gets or sets the extension element paths.</summary>
     public HashSet<string> ExtensionElementPaths { get; set; } = null;
 
-    /// <summary>Gets or sets information describing the server.</summary>
-    public Models.FhirServerInfo ServerInfo { get; set; } = null;
+    /// <summary>Gets or sets a capability statment to use as a filter.</summary>
+    public FhirCapabiltyStatement CapStatmentFilter { get; set; } = null;
 
     /// <summary>
     /// Gets or sets a value indicating whether the experimental should be included.

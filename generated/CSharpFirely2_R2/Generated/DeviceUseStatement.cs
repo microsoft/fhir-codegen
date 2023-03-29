@@ -44,7 +44,7 @@ namespace Hl7.Fhir.Model
 {
   [Serializable]
   [DataContract]
-  [FhirType("DeviceUseStatement", IsResource=true)]
+  [FhirType("DeviceUseStatement","http://hl7.org/fhir/StructureDefinition/DeviceUseStatement", IsResource=true)]
   public partial class DeviceUseStatement : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -57,6 +57,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("bodySite", InSummary=true, Order=90, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("BodySite")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [DataMember]
     public Hl7.Fhir.Model.DataType BodySite
@@ -215,6 +216,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new DeviceUseStatement());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as DeviceUseStatement;
@@ -287,6 +289,57 @@ namespace Hl7.Fhir.Model
         if (Subject != null) yield return new ElementValue("subject", Subject);
         if (Timing != null) yield return new ElementValue("timing", Timing);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "bodySite":
+          value = BodySite;
+          return BodySite is not null;
+        case "whenUsed":
+          value = WhenUsed;
+          return WhenUsed is not null;
+        case "device":
+          value = Device;
+          return Device is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "indication":
+          value = Indication;
+          return Indication?.Any() == true;
+        case "notes":
+          value = NotesElement;
+          return NotesElement?.Any() == true;
+        case "recordedOn":
+          value = RecordedOnElement;
+          return RecordedOnElement is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "timing":
+          value = Timing;
+          return Timing is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (BodySite is not null) yield return new KeyValuePair<string,object>("bodySite",BodySite);
+      if (WhenUsed is not null) yield return new KeyValuePair<string,object>("whenUsed",WhenUsed);
+      if (Device is not null) yield return new KeyValuePair<string,object>("device",Device);
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Indication?.Any() == true) yield return new KeyValuePair<string,object>("indication",Indication);
+      if (NotesElement?.Any() == true) yield return new KeyValuePair<string,object>("notes",NotesElement);
+      if (RecordedOnElement is not null) yield return new KeyValuePair<string,object>("recordedOn",RecordedOnElement);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Timing is not null) yield return new KeyValuePair<string,object>("timing",Timing);
     }
 
   }

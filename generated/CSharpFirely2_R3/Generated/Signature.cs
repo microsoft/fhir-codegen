@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Signature")]
+  [FhirType("Signature","http://hl7.org/fhir/StructureDefinition/Signature")]
   public partial class Signature : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -106,6 +106,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("who", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Practitioner","RelatedPerson","Patient","Device","Organization")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.ResourceReference))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
@@ -122,6 +123,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("onBehalfOf", InSummary=true, Order=60, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Practitioner","RelatedPerson","Patient","Device","Organization")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.ResourceReference))]
     [DataMember]
     public Hl7.Fhir.Model.DataType OnBehalfOf
@@ -218,6 +220,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Signature());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Signature;
@@ -278,6 +281,45 @@ namespace Hl7.Fhir.Model
         if (ContentTypeElement != null) yield return new ElementValue("contentType", ContentTypeElement);
         if (BlobElement != null) yield return new ElementValue("blob", BlobElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = Type;
+          return Type?.Any() == true;
+        case "when":
+          value = WhenElement;
+          return WhenElement is not null;
+        case "who":
+          value = Who;
+          return Who is not null;
+        case "onBehalfOf":
+          value = OnBehalfOf;
+          return OnBehalfOf is not null;
+        case "contentType":
+          value = ContentTypeElement;
+          return ContentTypeElement is not null;
+        case "blob":
+          value = BlobElement;
+          return BlobElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Type?.Any() == true) yield return new KeyValuePair<string,object>("type",Type);
+      if (WhenElement is not null) yield return new KeyValuePair<string,object>("when",WhenElement);
+      if (Who is not null) yield return new KeyValuePair<string,object>("who",Who);
+      if (OnBehalfOf is not null) yield return new KeyValuePair<string,object>("onBehalfOf",OnBehalfOf);
+      if (ContentTypeElement is not null) yield return new KeyValuePair<string,object>("contentType",ContentTypeElement);
+      if (BlobElement is not null) yield return new KeyValuePair<string,object>("blob",BlobElement);
     }
 
   }

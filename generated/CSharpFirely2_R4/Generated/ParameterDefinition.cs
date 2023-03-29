@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("ParameterDefinition")]
+  [FhirType("ParameterDefinition","http://hl7.org/fhir/StructureDefinition/ParameterDefinition")]
   public partial class ParameterDefinition : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -90,6 +90,7 @@ namespace Hl7.Fhir.Model
     /// in | out
     /// </summary>
     [FhirElement("use", InSummary=true, Order=40)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.OperationParameterUse> UseElement
@@ -215,6 +216,7 @@ namespace Hl7.Fhir.Model
     /// What type of value
     /// </summary>
     [FhirElement("type", InSummary=true, Order=80)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.FHIRAllTypes> TypeElement
@@ -299,6 +301,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new ParameterDefinition());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as ParameterDefinition;
@@ -363,6 +366,49 @@ namespace Hl7.Fhir.Model
         if (TypeElement != null) yield return new ElementValue("type", TypeElement);
         if (ProfileElement != null) yield return new ElementValue("profile", ProfileElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "use":
+          value = UseElement;
+          return UseElement is not null;
+        case "min":
+          value = MinElement;
+          return MinElement is not null;
+        case "max":
+          value = MaxElement;
+          return MaxElement is not null;
+        case "documentation":
+          value = DocumentationElement;
+          return DocumentationElement is not null;
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "profile":
+          value = ProfileElement;
+          return ProfileElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (UseElement is not null) yield return new KeyValuePair<string,object>("use",UseElement);
+      if (MinElement is not null) yield return new KeyValuePair<string,object>("min",MinElement);
+      if (MaxElement is not null) yield return new KeyValuePair<string,object>("max",MaxElement);
+      if (DocumentationElement is not null) yield return new KeyValuePair<string,object>("documentation",DocumentationElement);
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (ProfileElement is not null) yield return new KeyValuePair<string,object>("profile",ProfileElement);
     }
 
   }

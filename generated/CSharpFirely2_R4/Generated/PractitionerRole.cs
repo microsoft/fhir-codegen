@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("PractitionerRole", IsResource=true)]
+  [FhirType("PractitionerRole","http://hl7.org/fhir/StructureDefinition/PractitionerRole", IsResource=true)]
   public partial class PractitionerRole : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -72,6 +72,7 @@ namespace Hl7.Fhir.Model
       /// mon | tue | wed | thu | fri | sat | sun
       /// </summary>
       [FhirElement("daysOfWeek", Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=0,Max=-1)]
       [DataMember]
       public List<Code<Hl7.Fhir.Model.DaysOfWeek>> DaysOfWeekElement
@@ -215,6 +216,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new AvailableTimeComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as AvailableTimeComponent;
@@ -267,6 +269,37 @@ namespace Hl7.Fhir.Model
           if (AvailableStartTimeElement != null) yield return new ElementValue("availableStartTime", AvailableStartTimeElement);
           if (AvailableEndTimeElement != null) yield return new ElementValue("availableEndTime", AvailableEndTimeElement);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "daysOfWeek":
+            value = DaysOfWeekElement;
+            return DaysOfWeekElement?.Any() == true;
+          case "allDay":
+            value = AllDayElement;
+            return AllDayElement is not null;
+          case "availableStartTime":
+            value = AvailableStartTimeElement;
+            return AvailableStartTimeElement is not null;
+          case "availableEndTime":
+            value = AvailableEndTimeElement;
+            return AvailableEndTimeElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (DaysOfWeekElement?.Any() == true) yield return new KeyValuePair<string,object>("daysOfWeek",DaysOfWeekElement);
+        if (AllDayElement is not null) yield return new KeyValuePair<string,object>("allDay",AllDayElement);
+        if (AvailableStartTimeElement is not null) yield return new KeyValuePair<string,object>("availableStartTime",AvailableStartTimeElement);
+        if (AvailableEndTimeElement is not null) yield return new KeyValuePair<string,object>("availableEndTime",AvailableEndTimeElement);
       }
 
     }
@@ -349,6 +382,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new NotAvailableComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as NotAvailableComponent;
@@ -395,12 +429,35 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "description":
+            value = DescriptionElement;
+            return DescriptionElement is not null;
+          case "during":
+            value = During;
+            return During is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+        if (During is not null) yield return new KeyValuePair<string,object>("during",During);
+      }
+
     }
 
     /// <summary>
     /// Business Identifiers that are specific to a role/location
     /// </summary>
-    [FhirElement("identifier", InSummary=true, Order=90)]
+    [FhirElement("identifier", InSummary=true, Order=90, FiveWs="FiveWs.identifier")]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Hl7.Fhir.Model.Identifier> Identifier
@@ -414,7 +471,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Whether this practitioner role record is in active use
     /// </summary>
-    [FhirElement("active", InSummary=true, Order=100)]
+    [FhirElement("active", InSummary=true, Order=100, FiveWs="FiveWs.status")]
     [DataMember]
     public Hl7.Fhir.Model.FhirBoolean ActiveElement
     {
@@ -445,7 +502,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// The period during which the practitioner is authorized to perform in these role(s)
     /// </summary>
-    [FhirElement("period", InSummary=true, Order=110)]
+    [FhirElement("period", InSummary=true, Order=110, FiveWs="FiveWs.done[x]")]
     [DataMember]
     public Hl7.Fhir.Model.Period Period
     {
@@ -516,7 +573,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// The location(s) at which this practitioner provides care
     /// </summary>
-    [FhirElement("location", InSummary=true, Order=160)]
+    [FhirElement("location", InSummary=true, Order=160, FiveWs="FiveWs.where[x]")]
     [CLSCompliant(false)]
     [References("Location")]
     [Cardinality(Min=0,Max=-1)]
@@ -666,6 +723,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new PractitionerRole());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as PractitionerRole;
@@ -758,6 +816,77 @@ namespace Hl7.Fhir.Model
         if (AvailabilityExceptionsElement != null) yield return new ElementValue("availabilityExceptions", AvailabilityExceptionsElement);
         foreach (var elem in Endpoint) { if (elem != null) yield return new ElementValue("endpoint", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "active":
+          value = ActiveElement;
+          return ActiveElement is not null;
+        case "period":
+          value = Period;
+          return Period is not null;
+        case "practitioner":
+          value = Practitioner;
+          return Practitioner is not null;
+        case "organization":
+          value = Organization;
+          return Organization is not null;
+        case "code":
+          value = Code;
+          return Code?.Any() == true;
+        case "specialty":
+          value = Specialty;
+          return Specialty?.Any() == true;
+        case "location":
+          value = Location;
+          return Location?.Any() == true;
+        case "healthcareService":
+          value = HealthcareService;
+          return HealthcareService?.Any() == true;
+        case "telecom":
+          value = Telecom;
+          return Telecom?.Any() == true;
+        case "availableTime":
+          value = AvailableTime;
+          return AvailableTime?.Any() == true;
+        case "notAvailable":
+          value = NotAvailable;
+          return NotAvailable?.Any() == true;
+        case "availabilityExceptions":
+          value = AvailabilityExceptionsElement;
+          return AvailabilityExceptionsElement is not null;
+        case "endpoint":
+          value = Endpoint;
+          return Endpoint?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (ActiveElement is not null) yield return new KeyValuePair<string,object>("active",ActiveElement);
+      if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
+      if (Practitioner is not null) yield return new KeyValuePair<string,object>("practitioner",Practitioner);
+      if (Organization is not null) yield return new KeyValuePair<string,object>("organization",Organization);
+      if (Code?.Any() == true) yield return new KeyValuePair<string,object>("code",Code);
+      if (Specialty?.Any() == true) yield return new KeyValuePair<string,object>("specialty",Specialty);
+      if (Location?.Any() == true) yield return new KeyValuePair<string,object>("location",Location);
+      if (HealthcareService?.Any() == true) yield return new KeyValuePair<string,object>("healthcareService",HealthcareService);
+      if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
+      if (AvailableTime?.Any() == true) yield return new KeyValuePair<string,object>("availableTime",AvailableTime);
+      if (NotAvailable?.Any() == true) yield return new KeyValuePair<string,object>("notAvailable",NotAvailable);
+      if (AvailabilityExceptionsElement is not null) yield return new KeyValuePair<string,object>("availabilityExceptions",AvailabilityExceptionsElement);
+      if (Endpoint?.Any() == true) yield return new KeyValuePair<string,object>("endpoint",Endpoint);
     }
 
   }

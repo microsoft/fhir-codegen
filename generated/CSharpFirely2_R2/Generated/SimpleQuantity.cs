@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("SimpleQuantity")]
+  [FhirType("SimpleQuantity","http://hl7.org/fhir/StructureDefinition/SimpleQuantity")]
   public partial class SimpleQuantity : Quantity
   {
     /// <summary>

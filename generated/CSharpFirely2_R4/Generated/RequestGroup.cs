@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("RequestGroup", IsResource=true)]
+  [FhirType("RequestGroup","http://hl7.org/fhir/StructureDefinition/RequestGroup", IsResource=true)]
   public partial class RequestGroup : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -196,6 +196,7 @@ namespace Hl7.Fhir.Model
       /// routine | urgent | asap | stat
       /// </summary>
       [FhirElement("priority", Order=80)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.RequestPriority> PriorityElement
       {
@@ -297,7 +298,7 @@ namespace Hl7.Fhir.Model
       /// <summary>
       /// Who should perform the action
       /// </summary>
-      [FhirElement("participant", Order=140)]
+      [FhirElement("participant", Order=140, FiveWs="FiveWs.actor")]
       [CLSCompliant(false)]
       [References("Patient","Practitioner","PractitionerRole","RelatedPerson","Device")]
       [Cardinality(Min=0,Max=-1)]
@@ -327,6 +328,7 @@ namespace Hl7.Fhir.Model
       /// visual-group | logical-group | sentence-group
       /// </summary>
       [FhirElement("groupingBehavior", Order=160)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.ActionGroupingBehavior> GroupingBehaviorElement
       {
@@ -358,6 +360,7 @@ namespace Hl7.Fhir.Model
       /// any | all | all-or-none | exactly-one | at-most-one | one-or-more
       /// </summary>
       [FhirElement("selectionBehavior", Order=170)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.ActionSelectionBehavior> SelectionBehaviorElement
       {
@@ -389,6 +392,7 @@ namespace Hl7.Fhir.Model
       /// must | could | must-unless-documented
       /// </summary>
       [FhirElement("requiredBehavior", Order=180)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.ActionRequiredBehavior> RequiredBehaviorElement
       {
@@ -420,6 +424,7 @@ namespace Hl7.Fhir.Model
       /// yes | no
       /// </summary>
       [FhirElement("precheckBehavior", Order=190)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.ActionPrecheckBehavior> PrecheckBehaviorElement
       {
@@ -451,6 +456,7 @@ namespace Hl7.Fhir.Model
       /// single | multiple
       /// </summary>
       [FhirElement("cardinalityBehavior", Order=200)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.ActionCardinalityBehavior> CardinalityBehaviorElement
       {
@@ -544,6 +550,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ActionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ActionComponent;
@@ -658,6 +665,97 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "prefix":
+            value = PrefixElement;
+            return PrefixElement is not null;
+          case "title":
+            value = TitleElement;
+            return TitleElement is not null;
+          case "description":
+            value = DescriptionElement;
+            return DescriptionElement is not null;
+          case "textEquivalent":
+            value = TextEquivalentElement;
+            return TextEquivalentElement is not null;
+          case "priority":
+            value = PriorityElement;
+            return PriorityElement is not null;
+          case "code":
+            value = Code;
+            return Code?.Any() == true;
+          case "documentation":
+            value = Documentation;
+            return Documentation?.Any() == true;
+          case "condition":
+            value = Condition;
+            return Condition?.Any() == true;
+          case "relatedAction":
+            value = RelatedAction;
+            return RelatedAction?.Any() == true;
+          case "timing":
+            value = Timing;
+            return Timing is not null;
+          case "participant":
+            value = Participant;
+            return Participant?.Any() == true;
+          case "type":
+            value = Type;
+            return Type is not null;
+          case "groupingBehavior":
+            value = GroupingBehaviorElement;
+            return GroupingBehaviorElement is not null;
+          case "selectionBehavior":
+            value = SelectionBehaviorElement;
+            return SelectionBehaviorElement is not null;
+          case "requiredBehavior":
+            value = RequiredBehaviorElement;
+            return RequiredBehaviorElement is not null;
+          case "precheckBehavior":
+            value = PrecheckBehaviorElement;
+            return PrecheckBehaviorElement is not null;
+          case "cardinalityBehavior":
+            value = CardinalityBehaviorElement;
+            return CardinalityBehaviorElement is not null;
+          case "resource":
+            value = Resource;
+            return Resource is not null;
+          case "action":
+            value = Action;
+            return Action?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (PrefixElement is not null) yield return new KeyValuePair<string,object>("prefix",PrefixElement);
+        if (TitleElement is not null) yield return new KeyValuePair<string,object>("title",TitleElement);
+        if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+        if (TextEquivalentElement is not null) yield return new KeyValuePair<string,object>("textEquivalent",TextEquivalentElement);
+        if (PriorityElement is not null) yield return new KeyValuePair<string,object>("priority",PriorityElement);
+        if (Code?.Any() == true) yield return new KeyValuePair<string,object>("code",Code);
+        if (Documentation?.Any() == true) yield return new KeyValuePair<string,object>("documentation",Documentation);
+        if (Condition?.Any() == true) yield return new KeyValuePair<string,object>("condition",Condition);
+        if (RelatedAction?.Any() == true) yield return new KeyValuePair<string,object>("relatedAction",RelatedAction);
+        if (Timing is not null) yield return new KeyValuePair<string,object>("timing",Timing);
+        if (Participant?.Any() == true) yield return new KeyValuePair<string,object>("participant",Participant);
+        if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+        if (GroupingBehaviorElement is not null) yield return new KeyValuePair<string,object>("groupingBehavior",GroupingBehaviorElement);
+        if (SelectionBehaviorElement is not null) yield return new KeyValuePair<string,object>("selectionBehavior",SelectionBehaviorElement);
+        if (RequiredBehaviorElement is not null) yield return new KeyValuePair<string,object>("requiredBehavior",RequiredBehaviorElement);
+        if (PrecheckBehaviorElement is not null) yield return new KeyValuePair<string,object>("precheckBehavior",PrecheckBehaviorElement);
+        if (CardinalityBehaviorElement is not null) yield return new KeyValuePair<string,object>("cardinalityBehavior",CardinalityBehaviorElement);
+        if (Resource is not null) yield return new KeyValuePair<string,object>("resource",Resource);
+        if (Action?.Any() == true) yield return new KeyValuePair<string,object>("action",Action);
+      }
+
     }
 
     /// <summary>
@@ -677,6 +775,7 @@ namespace Hl7.Fhir.Model
       /// applicability | start | stop
       /// </summary>
       [FhirElement("kind", Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.ActionConditionKind> KindElement
@@ -738,6 +837,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ConditionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ConditionComponent;
@@ -782,6 +882,29 @@ namespace Hl7.Fhir.Model
           if (KindElement != null) yield return new ElementValue("kind", KindElement);
           if (Expression != null) yield return new ElementValue("expression", Expression);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "kind":
+            value = KindElement;
+            return KindElement is not null;
+          case "expression":
+            value = Expression;
+            return Expression is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (KindElement is not null) yield return new KeyValuePair<string,object>("kind",KindElement);
+        if (Expression is not null) yield return new KeyValuePair<string,object>("expression",Expression);
       }
 
     }
@@ -835,6 +958,7 @@ namespace Hl7.Fhir.Model
       /// before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
       /// </summary>
       [FhirElement("relationship", Order=50)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.ActionRelationshipType> RelationshipElement
@@ -899,6 +1023,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new RelatedActionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as RelatedActionComponent;
@@ -949,12 +1074,39 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "actionId":
+            value = ActionIdElement;
+            return ActionIdElement is not null;
+          case "relationship":
+            value = RelationshipElement;
+            return RelationshipElement is not null;
+          case "offset":
+            value = Offset;
+            return Offset is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (ActionIdElement is not null) yield return new KeyValuePair<string,object>("actionId",ActionIdElement);
+        if (RelationshipElement is not null) yield return new KeyValuePair<string,object>("relationship",RelationshipElement);
+        if (Offset is not null) yield return new KeyValuePair<string,object>("offset",Offset);
+      }
+
     }
 
     /// <summary>
     /// Business identifier
     /// </summary>
-    [FhirElement("identifier", InSummary=true, Order=90)]
+    [FhirElement("identifier", InSummary=true, Order=90, FiveWs="FiveWs.identifier")]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Hl7.Fhir.Model.Identifier> Identifier
@@ -1077,7 +1229,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// draft | active | on-hold | revoked | completed | entered-in-error | unknown
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=150)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=150, FiveWs="FiveWs.status")]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.RequestStatus> StatusElement
@@ -1109,7 +1262,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option
     /// </summary>
-    [FhirElement("intent", InSummary=true, Order=160)]
+    [FhirElement("intent", InSummary=true, IsModifier=true, Order=160, FiveWs="FiveWs.class")]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.RequestIntent> IntentElement
@@ -1141,7 +1295,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// routine | urgent | asap | stat
     /// </summary>
-    [FhirElement("priority", InSummary=true, Order=170)]
+    [FhirElement("priority", InSummary=true, Order=170, FiveWs="FiveWs.grade")]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.RequestPriority> PriorityElement
     {
@@ -1172,7 +1327,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// What's being requested/ordered
     /// </summary>
-    [FhirElement("code", InSummary=true, Order=180)]
+    [FhirElement("code", InSummary=true, Order=180, FiveWs="FiveWs.what[x]")]
     [DataMember]
     public Hl7.Fhir.Model.CodeableConcept Code
     {
@@ -1185,7 +1340,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Who the request group is about
     /// </summary>
-    [FhirElement("subject", Order=190)]
+    [FhirElement("subject", Order=190, FiveWs="FiveWs.subject")]
     [CLSCompliant(false)]
     [References("Patient","Group")]
     [DataMember]
@@ -1200,7 +1355,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Created as part of
     /// </summary>
-    [FhirElement("encounter", Order=200)]
+    [FhirElement("encounter", Order=200, FiveWs="FiveWs.context")]
     [CLSCompliant(false)]
     [References("Encounter")]
     [DataMember]
@@ -1215,7 +1370,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// When the request group was authored
     /// </summary>
-    [FhirElement("authoredOn", Order=210)]
+    [FhirElement("authoredOn", Order=210, FiveWs="FiveWs.recorded")]
     [DataMember]
     public Hl7.Fhir.Model.FhirDateTime AuthoredOnElement
     {
@@ -1246,7 +1401,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Device or practitioner that authored the request group
     /// </summary>
-    [FhirElement("author", Order=220)]
+    [FhirElement("author", Order=220, FiveWs="FiveWs.author")]
     [CLSCompliant(false)]
     [References("Device","Practitioner","PractitionerRole")]
     [DataMember]
@@ -1261,7 +1416,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Why the request group is needed
     /// </summary>
-    [FhirElement("reasonCode", Order=230)]
+    [FhirElement("reasonCode", Order=230, FiveWs="FiveWs.why[x]")]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Hl7.Fhir.Model.CodeableConcept> ReasonCode
@@ -1275,7 +1430,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Why the request group is needed
     /// </summary>
-    [FhirElement("reasonReference", Order=240)]
+    [FhirElement("reasonReference", Order=240, FiveWs="FiveWs.why[x]")]
     [CLSCompliant(false)]
     [References("Condition","Observation","DiagnosticReport","DocumentReference")]
     [Cardinality(Min=0,Max=-1)]
@@ -1352,6 +1507,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new RequestGroup());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as RequestGroup;
@@ -1460,6 +1616,93 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
         foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "instantiatesCanonical":
+          value = InstantiatesCanonicalElement;
+          return InstantiatesCanonicalElement?.Any() == true;
+        case "instantiatesUri":
+          value = InstantiatesUriElement;
+          return InstantiatesUriElement?.Any() == true;
+        case "basedOn":
+          value = BasedOn;
+          return BasedOn?.Any() == true;
+        case "replaces":
+          value = Replaces;
+          return Replaces?.Any() == true;
+        case "groupIdentifier":
+          value = GroupIdentifier;
+          return GroupIdentifier is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "intent":
+          value = IntentElement;
+          return IntentElement is not null;
+        case "priority":
+          value = PriorityElement;
+          return PriorityElement is not null;
+        case "code":
+          value = Code;
+          return Code is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "authoredOn":
+          value = AuthoredOnElement;
+          return AuthoredOnElement is not null;
+        case "author":
+          value = Author;
+          return Author is not null;
+        case "reasonCode":
+          value = ReasonCode;
+          return ReasonCode?.Any() == true;
+        case "reasonReference":
+          value = ReasonReference;
+          return ReasonReference?.Any() == true;
+        case "note":
+          value = Note;
+          return Note?.Any() == true;
+        case "action":
+          value = Action;
+          return Action?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (InstantiatesCanonicalElement?.Any() == true) yield return new KeyValuePair<string,object>("instantiatesCanonical",InstantiatesCanonicalElement);
+      if (InstantiatesUriElement?.Any() == true) yield return new KeyValuePair<string,object>("instantiatesUri",InstantiatesUriElement);
+      if (BasedOn?.Any() == true) yield return new KeyValuePair<string,object>("basedOn",BasedOn);
+      if (Replaces?.Any() == true) yield return new KeyValuePair<string,object>("replaces",Replaces);
+      if (GroupIdentifier is not null) yield return new KeyValuePair<string,object>("groupIdentifier",GroupIdentifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (IntentElement is not null) yield return new KeyValuePair<string,object>("intent",IntentElement);
+      if (PriorityElement is not null) yield return new KeyValuePair<string,object>("priority",PriorityElement);
+      if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (AuthoredOnElement is not null) yield return new KeyValuePair<string,object>("authoredOn",AuthoredOnElement);
+      if (Author is not null) yield return new KeyValuePair<string,object>("author",Author);
+      if (ReasonCode?.Any() == true) yield return new KeyValuePair<string,object>("reasonCode",ReasonCode);
+      if (ReasonReference?.Any() == true) yield return new KeyValuePair<string,object>("reasonReference",ReasonReference);
+      if (Note?.Any() == true) yield return new KeyValuePair<string,object>("note",Note);
+      if (Action?.Any() == true) yield return new KeyValuePair<string,object>("action",Action);
     }
 
   }

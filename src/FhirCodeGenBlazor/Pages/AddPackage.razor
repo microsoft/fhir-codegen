@@ -10,168 +10,222 @@
 <PageTitle>Add Package To Cache</PageTitle>
 <h4>Find And Download Package</h4>
 
-<select class="form-select m-2" aria-label="Select Package Type" @bind="selectedPackageType">
-    <option selected value="released">Released Package</option>
-    <option value="ig">CI: Implementation Guide</option>
-    <option value="core">CI: FHIR Core</option>
-</select>
+<MudTabs Elevation="2" Centered="true" Rounded="true" ApplyEffectsToContainer="true">
+    <MudTabPanel Text="Released Package">
+        <MudCard Elevation="2">
+            <MudCardContent>
+                <MudTextField @bind-Value="@packageName"
+                              Label="Package Name"
+                              HelperText="Released Package Name or Canonical URL"></MudTextField>
+            </MudCardContent>
+            <MudCardActions>
+                <MudFab OnClick="(() => LookupReleasedPackage())" StartIcon="@Icons.Material.Filled.ManageSearch" Label="Lookup"/>
+                <MudFab OnClick="(() => RequestManualDownload())" StartIcon="@Icons.Material.Filled.DownloadForOffline" Label="Try to Load the Directive" />
+            </MudCardActions>
+        </MudCard>
 
-@switch (selectedPackageType)
-{
-    case "released":
-        <div class="input-group m-2">
-            <span class="input-group-text" id="basic-addon1">Released Package Name or Canonical URL</span>
-            <input
-                type="text"
-                placeholder="Package Name"
-                aria-label="Package Name"
-                aria-describedby="basic-addon1"
-                @bind="packageName"
-                />
-            <button class="btn btn-outline-secondary" type="button" @onclick="(() => LookupReleasedPackage())">Lookup</button>
-            <button class="btn btn-outline-secondary" type="button" @onclick="(() => RequestManualDownload())">Try Load</button>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th class="col-md-1"></th>
-                        <th class="col-md-1">Directive</th>
-                        <th class="col-md-2">Package</th>
-                        <th class="col-md-1">Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (RegistryPackageManifest.VersionInfo version in releaseVersions)
+        <MudTable
+            Items="@releaseVersions"
+            Dense="true"
+            Striped="true">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Released Packages</MudText>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh></MudTh>
+                <MudTh>Directive</MudTh>
+                <MudTh>Package</MudTh>
+                <MudTh>Date</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd>
+                    @switch (GetPackageState(context))
                     {
-                        <tr>
-                            @switch (GetPackageState(version))
-                            {
-                                case PackageLoadStateEnum.Queued:
-                                case PackageLoadStateEnum.InProgress:
-                                    <td><div class="spinner-border"></div></td>
-                                break;
+                        case PackageLoadStateEnum.Queued:
+                        case PackageLoadStateEnum.InProgress:
+                            <MudProgressCircular Color="Color.Default" Indeterminate="true" Size="Size.Small" />
+                            break;
 
-                                case PackageLoadStateEnum.Unknown:
-                                    <td><button class="btn btn-primary btn-sm m-2" type="button" @onclick="@(() => RequestReleasedDownload(version))">Download</button></td>
-                                break;
+                        case PackageLoadStateEnum.Unknown:
+                            <MudTooltip Text="Download">
+                                <MudFab
+                                    StartIcon="@Icons.Material.Filled.Download"
+                                    OnClick="@(() => RequestReleasedDownload(context))"
+                                    Size="Size.Small"/>
+                            </MudTooltip>
+                            break;
 
-                                case PackageLoadStateEnum.NotLoaded:
-                                case PackageLoadStateEnum.Loaded:
-                                case PackageLoadStateEnum.Parsed:
-                                default:
-                                    <td><button class="btn btn-danger btn-sm m-2" type="button" @onclick="@(() => RequestDelete(version))">Delete Local</button></td>
-                                break;
-                            }
-                            <td>@GetVersionDirective(version)</td>
-                            <td>@version.URL</td>
-                            <td>@version.Date</td>
-                        </tr>
+                        case PackageLoadStateEnum.NotLoaded:
+                        case PackageLoadStateEnum.Loaded:
+                        case PackageLoadStateEnum.Parsed:
+                        default:
+                            <MudTooltip Text="Download">
+                                <MudFab
+                                    StartIcon="@Icons.Material.Filled.Delete"
+                                    Color="Color.Error"
+                                    OnClick="@(() => RequestDelete(context))"
+                                    Size="Size.Small" />
+                            </MudTooltip>
+                            break;
                     }
-                </tbody>
-            </table>
-        </div>
-        break;
+                </MudTd>
+                <MudTd>@GetVersionDirective(context)</MudTd>
+                <MudTd>@context.URL</MudTd>
+                <MudTd>@context.Date</MudTd>
+                <MudTd></MudTd>
+            </RowTemplate>
+        </MudTable>
+    </MudTabPanel>
 
-    case "ig":
-    case "core":
-        <div class="input-group m-2">
-            <span class="input-group-text" id="label-branchname">CI Path or URL</span>
-            <input
-                type="text"
-                placeholder="CI Path or URL"
-                aria-label="CI Path or URL"
-                aria-describedby="label-branchname"
-                @bind="ciBranch"
-                />
-            <button class="btn btn-outline-secondary" type="button" @onclick="@(() => LookupCiBuild())">Lookup</button>
-        </div>
-        @if (selectedPackageType == "ig")
+    <MudTabPanel Text="CI Build - FHIR IG">
+        <MudCard>
+            <MudCardContent>
+                <MudTextField @bind-Value="@ciBranch" Label="CI Path or URL">
+                </MudTextField>
+                <MudText>
+                    Branch information can be found via the
+                    <MudLink Href="http://build.fhir.org/ig/" Target="_blank">IG Index</MudLink>. Builds must
+                    appear in the index and valid values can be the path rooted at <code>ig/</code>, the branch name, or the
+                    URL of the built landing page (e.g., <code>http://build.fhir.org/ig/.../index.html</code>).
+                </MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudFab OnClick="(() => LookupCiBuild(true))" StartIcon="@Icons.Material.Filled.ManageSearch" Label="Lookup" />
+
+                @if (ciPackage != null)
+                {
+                    @if (IsCiLocal())
+                    {
+                        <MudFab OnClick="(() => RequestCiDelete())" StartIcon="@Icons.Material.Filled.Delete" Label="Delete" Color="Color.Error" />
+                    }
+
+                    @switch (GetCiPackageState())
+                    {
+                        case PackageLoadStateEnum.Queued:
+                        case PackageLoadStateEnum.InProgress:
+                            <MudProgressCircular Color="Color.Default" Indeterminate="true" Size="Size.Small" />
+                            break;
+
+                        case PackageLoadStateEnum.Unknown:
+                        case PackageLoadStateEnum.NotLoaded:
+                        case PackageLoadStateEnum.Loaded:
+                        case PackageLoadStateEnum.Parsed:
+                        default:
+                            <MudFab OnClick="(() => RequestCiDownload())" StartIcon="@Icons.Material.Filled.DriveFileMove" Label="Download" />
+                            break;
+                    }
+                }
+            </MudCardActions>
+        </MudCard>
+
+        @if (ciPackage != null)
         {
-            <p>
-                Branch information can be found via the <a href="http://build.fhir.org/ig/" target="_blank" >ig index</a>. Builds must
-                appear in the index and valid values can be the path rooted at <code>ig/</code>, the branch name, or the
-                URL of the built landing page (e.g., <code>http://build.fhir.org/ig/.../index.html</code>).
-            </p>
+            <MudGrid>
+                <MudItem xs="2">Name</MudItem>
+                <MudItem xs="10">@ciPackage.Name</MudItem>
+
+                <MudItem xs="2">Version</MudItem>
+                <MudItem xs="10">@ciPackage.Version</MudItem>
+
+                <MudItem xs="2">URL</MudItem>
+                <MudItem xs="10">@ciPackage.URL</MudItem>
+
+                <MudItem xs="2">Build Date</MudItem>
+                <MudItem xs="10">@ciPackage.BuildDate</MudItem>
+
+                <MudItem xs="2">Title</MudItem>
+                <MudItem xs="10">@ciPackage.Title</MudItem>
+
+                <MudItem xs="2">Description</MudItem>
+                <MudItem xs="10">@ciPackage.Description</MudItem>
+
+                <MudItem xs="2">FHIR Versions</MudItem>
+                <MudItem xs="10">@string.Join(", ", ciPackage.FhirVersions)</MudItem>
+
+                <MudItem xs="2">Dependencies</MudItem>
+                <MudItem xs="10">@string.Join(", ", ciPackage.Dependencies.Select((k,v) => $"{k}#{v}"))</MudItem>
+            </MudGrid>
         }
-        else
+
+    </MudTabPanel>
+
+    <MudTabPanel Text="CI Build - FHIR Core">
+        <MudCard>
+            <MudCardContent>
+                <MudTextField @bind-Value="@ciBranch" Label="CI Path or URL">
+                </MudTextField>
+                <MudText>
+                    Branch information can be found via the <MudLink Href="http://build.fhir.org/branches/" Target="_blank">Core Branch Index</MudLink>.
+                    Builds must appear in the index and valid values can be the path rooted at <code>branches/</code>, the branch name,
+                    or the URL of the built landing page (e.g., <code>http://build.fhir.org/branches/.../</code>).
+                </MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudFab OnClick="(() => LookupCiBuild(false))" StartIcon="@Icons.Material.Filled.ManageSearch" Label="Lookup" />
+
+                @if (ciPackage != null)
+                {
+                    @if (IsCiLocal())
+                    {
+                        <MudTooltip Text="Delete">
+                            <MudFab StartIcon="@Icons.Material.Filled.Delete"
+                                Color="Color.Error"
+                                @onclick="() => RequestCiDelete()"
+                                Size="Size.Small" />
+                        </MudTooltip>
+                    }
+
+                    @switch (GetCiPackageState())
+                    {
+                        case PackageLoadStateEnum.Queued:
+                        case PackageLoadStateEnum.InProgress:
+                            <MudProgressCircular Color="Color.Default" Indeterminate="true" Size="Size.Small" />
+                            break;
+
+                        case PackageLoadStateEnum.Unknown:
+                        case PackageLoadStateEnum.NotLoaded:
+                        case PackageLoadStateEnum.Loaded:
+                        case PackageLoadStateEnum.Parsed:
+                        default:
+                            <MudFab OnClick="(() => RequestCiDownload())" StartIcon="@Icons.Material.Filled.DriveFileMove" Label="Download" />
+                            break;
+                    }
+                }
+            </MudCardActions>
+        </MudCard>
+
+        @if (ciPackage != null)
         {
-            <p>
-                Branch information can be found via the <a href="http://build.fhir.org/branches/" target="_blank" >core branch index</a>.
-                Builds must appear in the index and valid values can be the path rooted at <code>branches/</code>, the branch name,
-                or the URL of the built landing page (e.g., <code>http://build.fhir.org/branches/.../</code>).
-            </p>
+            <MudGrid>
+                <MudItem xs="2">Name</MudItem>
+                <MudItem xs="10">@ciPackage.Name</MudItem>
+
+                <MudItem xs="2">Version</MudItem>
+                <MudItem xs="10">@ciPackage.Version</MudItem>
+
+                <MudItem xs="2">URL</MudItem>
+                <MudItem xs="10">@ciPackage.URL</MudItem>
+
+                <MudItem xs="2">Build Date</MudItem>
+                <MudItem xs="10">@ciPackage.BuildDate</MudItem>
+
+                <MudItem xs="2">Title</MudItem>
+                <MudItem xs="10">@ciPackage.Title</MudItem>
+
+                <MudItem xs="2">Description</MudItem>
+                <MudItem xs="10">@ciPackage.Description</MudItem>
+
+                <MudItem xs="2">FHIR Versions</MudItem>
+                <MudItem xs="10">@string.Join(", ", ciPackage.FhirVersions)</MudItem>
+
+                <MudItem xs="2">Dependencies</MudItem>
+                <MudItem xs="10">@string.Join(", ", ciPackage.Dependencies.Select((k,v) => $"{k}#{v}"))</MudItem>
+            </MudGrid>
         }
 
-        if (ciPackage != null)
-        {
-            <table>
-                <thead>
-                    <tr>
-                        <th>Property</th>
-                        <th>Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>@ciPackage.Name</td>
-                    </tr>
-                    <tr>
-                        <td>Version</td>
-                        <td>@ciPackage.Version</td>
-                    </tr>
-                    <tr>
-                        <td>URL</td>
-                        <td>@ciPackage.URL</td>
-                    </tr>
-                    <tr>
-                        <td>Build Date</td>
-                        <td>@ciPackage.BuildDate</td>
-                    </tr>
-                    <tr>
-                        <td>Title</td>
-                        <td>@ciPackage.Title</td>
-                    </tr>
-                    <tr>
-                        <td>Description</td>
-                        <td>@ciPackage.Description</td>
-                    </tr>
-                    <tr>
-                        <td>FHIR Versions</td>
-                        <td>@string.Join(", ", ciPackage.FhirVersions)</td>
-                    </tr>
-                    <tr>
-                        <td>Dependencies</td>
-                        <td>@string.Join(", ", ciPackage.Dependencies.Select((k,v) => $"{k}#{v}"))</td>
-                    </tr>
-                </tbody>
-            </table>
+    </MudTabPanel>
 
-            @if (IsCiLocal())
-            {
-                <button class="btn btn-danger btn-sm m-2" type="button" @onclick="@(() => RequestCiDelete())">Download</button>
-            }
-
-
-            @switch (GetCiPackageState())
-            {
-                case PackageLoadStateEnum.Queued:
-                case PackageLoadStateEnum.InProgress:
-                    <div class="spinner-border m-2"></div>
-                break;
-
-                case PackageLoadStateEnum.Unknown:
-                case PackageLoadStateEnum.NotLoaded:
-                case PackageLoadStateEnum.Loaded:
-                case PackageLoadStateEnum.Parsed:
-                default:
-                    <button class="btn btn-danger btn-sm m-2" type="button" @onclick="@(() => RequestCiDownload())">Download</button>
-                break;
-            }
-        }
-        break;
-}
+</MudTabs>
 
 
 @code {
@@ -180,9 +234,6 @@
 
     /// <summary>The ci branch.</summary>
     private string ciBranch = string.Empty;
-
-    /// <summary>The selected language.</summary>
-    private string selectedPackageType = "released";
 
     /// <summary>The release versions.</summary>
     private IEnumerable<RegistryPackageManifest.VersionInfo> releaseVersions = new RegistryPackageManifest.VersionInfo[0];
@@ -216,7 +267,7 @@
         PackageService.OnChanged -= PackageServiceChanged;
     }
 
-        /// <summary>Handles the location changed.</summary>
+    /// <summary>Handles the location changed.</summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">     Location changed event information.</param>
     private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
@@ -382,12 +433,12 @@
     }
 
     /// <summary>Looks up a given key to find its associated ci build.</summary>
-    private void LookupCiBuild()
+    private void LookupCiBuild(bool isIg)
     {
         bool success = false;
         NpmPackageDetails details;
 
-        if (selectedPackageType == "ig")
+        if (isIg)
         {
             success = PackageService.TryGetGuideCiPackageDetails(ciBranch, out details);
         }

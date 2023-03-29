@@ -8,19 +8,25 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A FHIR element.</summary>
-public class FhirElement : FhirTypeBase
+public class FhirElement : FhirPropertyBase, ICloneable
 {
-    private readonly Dictionary<string, FhirSlicing> _slicing;
+    private Dictionary<string, FhirSlicing> _slicing;
     private Dictionary<string, FhirElementType> _elementTypes;
     private bool _inDifferential;
     private List<string> _codes;
     private List<PropertyRepresentationCodes> _representations;
+    private string _fiveWs = null;
+    private HashSet<string> _conditions = new();
+    private Dictionary<string, FhirConstraint> _constraintsByKey = new();
+
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirElement"/> class.
     /// </summary>
+    /// <param name="rootArtifact">    The root artifact that contains this definition.</param>
     /// <param name="id">               Id for this element.</param>
     /// <param name="path">             Dot notation path for this element.</param>
+    /// <param name="basePath">         The dot-notation path to the base definition of this record.</param>
     /// <param name="explicitName">     Explicit name of this element, if present.</param>
     /// <param name="url">              URL of this element (if present).</param>
     /// <param name="fieldOrder">       The field order.</param>
@@ -47,11 +53,12 @@ public class FhirElement : FhirTypeBase
     /// <param name="modifiesParent">   If this element hides a field of its parent.</param>
     /// <param name="bindingStrength">  Strength of binding: required|extensible|preferred|example.</param>
     /// <param name="valueSet">         URL of the value set bound to this element.</param>
-    /// <param name="fiveWs">           Five 'Ws' mapping value.</param>
-    /// <param name="representation">   Codes that define how this element is represented in instances, when the deviation varies from the normal case.</param>
+    /// <param name="representations">   Codes that define how this element is represented in instances, when the deviation varies from the normal case.</param>
     public FhirElement(
+        FhirComplex rootArtifact,
         string id,
         string path,
+        string basePath,
         string explicitName,
         Uri url,
         int fieldOrder,
@@ -78,22 +85,21 @@ public class FhirElement : FhirTypeBase
         bool modifiesParent,
         string bindingStrength,
         string valueSet,
-        string fiveWs,
-        List<PropertyRepresentationCodes> representations)
+        List<PropertyRepresentationCodes> representations,
+        Dictionary<string, List<FhirElementDefMapping>> mappings)
         : base(
+            rootArtifact,
             id,
             path,
+            basePath,
+            baseTypeName,
+            string.Empty,
             url,
-            string.Empty,
-            string.Empty,
-            null,
-            false,
             shortDescription,
             purpose,
             comment,
             validationRegEx,
-            baseTypeName,
-            string.Empty)
+            mappings)
     {
         FieldOrder = fieldOrder;
         _elementTypes = elementTypes;
@@ -161,7 +167,7 @@ public class FhirElement : FhirTypeBase
 
         IsModifier = isModifier == true;
         IsModifierReason = isModifierReason;
-        IsSummary = isSummary == true;
+        IsSummary = (isSummary == true) || (isModifier == true);
         IsMustSupport = isMustSupport == true;
         _inDifferential = false;
         IsSimple = isSimple;
@@ -192,7 +198,7 @@ public class FhirElement : FhirTypeBase
             ValueSetBindingStrength = bindingStrength.ToFhirEnum<ElementDefinitionBindingStrength>();
         }
 
-        FiveWs = fiveWs;
+        _fiveWs = Mappings.ContainsKey("w5") ? Mappings["w5"]?.FirstOrDefault()?.Map ?? null : null;
     }
 
     /// <summary>
@@ -200,8 +206,10 @@ public class FhirElement : FhirTypeBase
     /// </summary>
     [System.Text.Json.Serialization.JsonConstructor]
     public FhirElement(
+        FhirComplex rootArtifact,
         string id,
         string path,
+        string basePath,
         string explicitName,
         Uri url,
         int fieldOrder,
@@ -234,69 +242,71 @@ public class FhirElement : FhirTypeBase
         string patternFieldName,
         object patternFieldValue,
         string fiveWs,
-        bool inDifferential)
-        : base(
-            id,
-            path,
-            url,
-            string.Empty,
-            string.Empty,
-            null,
-            false,
-            shortDescription,
-            purpose,
-            comment,
-            validationRegEx,
-            baseTypeName,
-            string.Empty)
+        bool inDifferential,
+        Dictionary<string, List<FhirElementDefMapping>> mappings,
+        HashSet<string> conditions,
+        Dictionary<string, FhirConstraint> constraints)
+        : this(
+              rootArtifact,
+              id,
+              path,
+              basePath,
+              explicitName,
+              url,
+              fieldOrder,
+              shortDescription,
+              purpose,
+              comment,
+              validationRegEx,
+              baseTypeName,
+              elementTypes,
+              cardinalityMin,
+              (cardinalityMax == -1) ? "*" : cardinalityMax.ToString(),
+              isModifier,
+              isModifierReason,
+              isSummary,
+              isMustSupport,
+              isSimple,
+              defaultFieldName,
+              defaultFieldValue,
+              fixedFieldName,
+              fixedFieldValue,
+              patternFieldName,
+              patternFieldValue,
+              isInherited,
+              modifiesParent,
+              bindingStrength,
+              valueSet,
+              null,
+              mappings)
     {
-        ExplicitName = explicitName;
-        FieldOrder = fieldOrder;
-        CardinalityMin = cardinalityMin;
-        CardinalityMax = cardinalityMax;
-        IsInherited = isInherited;
-        ModifiesParent = modifiesParent;
-        HidesParent = hidesParent;
-        IsModifier = isModifier;
-        IsModifierReason = isModifierReason;
-        IsSummary = isSummary;
-        IsMustSupport = isMustSupport;
-        IsSimple = isSimple;
         CodesName = codesName;
         _codes = codes ?? new();
-        ValueSet = valueSet;
-        BindingStrength = bindingStrength;
-        ValueSetBindingStrength = valueSetBindingStrength;
-        _elementTypes = elementTypes ?? new();
-        DefaultFieldName = defaultFieldName;
-        DefaultFieldValue = defaultFieldValue;
+        //_elementTypes = elementTypes ?? new();
         _slicing = slicing ?? new();
-        FixedFieldName = fixedFieldName;
-        FixedFieldValue = fixedFieldValue;
-        PatternFieldName = patternFieldName;
-        PatternFieldValue = patternFieldValue;
-        FiveWs = fiveWs;
         _inDifferential = inDifferential;
+        _conditions = conditions ?? new();
+        _constraintsByKey = constraints ?? new();
     }
 
     /// <summary>Values that represent element definition binding strengths.</summary>
     public enum ElementDefinitionBindingStrength : int
     {
-        /// <summary>To be conformant, the concept in this element SHALL be from the specified value set.</summary>
-        [FhirLiteral("required")]
-        Required = 1,
-
-        /// <summary>To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated. If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead.</summary>
-        [FhirLiteral("extensible")]
-        Extensible,
+        /// <summary>Instances are not expected or even encouraged to draw from the specified value set. The value set merely provides examples of the types of concepts intended to be included.</summary>
+        [FhirLiteral("example")]
+        Example = 1,
 
         /// <summary>Instances are encouraged to draw from the specified codes for interoperability purposes but are not required to do so to be considered conformant.</summary>
         [FhirLiteral("preferred")]
         Preferred,
 
-        /// <summary>Instances are not expected or even encouraged to draw from the specified value set. The value set merely provides examples of the types of concepts intended to be included.</summary>
-        [FhirLiteral("example")]
-        Example,
+        /// <summary>To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated. If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead.</summary>
+        [FhirLiteral("extensible")]
+        Extensible,
+
+        /// <summary>To be conformant, the concept in this element SHALL be from the specified value set.</summary>
+        [FhirLiteral("required")]
+        Required,
     }
 
     /// <summary>How a property is represented when serialized.</summary>
@@ -428,10 +438,54 @@ public class FhirElement : FhirTypeBase
     public bool IsOptional => CardinalityMin == 0;
 
     /// <summary>Gets the five Ws mapping list for the current element.</summary>
-    public string FiveWs { get; }
+    public string FiveWs => _fiveWs;
 
     /// <summary>True if this element appears in the differential.</summary>
     public bool InDifferential => _inDifferential;
+
+    /// <summary>Gets the conditions.</summary>
+    public HashSet<string> Conditions => _conditions;
+    
+    /// <summary>Gets the constraints.</summary>
+    public IEnumerable<FhirConstraint> Constraints { get => _constraintsByKey.Values; }
+
+    /// <summary>Gets the constraints by key.</summary>
+    public Dictionary<string, FhirConstraint> ConstraintsByKey { get => _constraintsByKey; }
+
+    public void AddCondition(string condition)
+    {
+        if (_conditions.Contains(condition))
+        {
+            return;
+        }
+
+        _conditions.Add(condition);
+    }
+
+    /// <summary>Adds a constraint.</summary>
+    /// <param name="constraint">The constraint.</param>
+    /// <param name="copyIfNew"> (Optional) True to copy if new.</param>
+    public void AddConstraint(FhirConstraint constraint, bool copyIfNew = false)
+    {
+        if (_constraintsByKey.ContainsKey(constraint.Key))
+        {
+            return;
+        }
+
+        if (RootArtifact != null)
+        {
+            if (!RootArtifact.ConstraintsByKey.ContainsKey(constraint.Key))
+            {
+                RootArtifact.AddConstraint(constraint, copyIfNew);
+            }
+
+            _constraintsByKey.Add(constraint.Key, RootArtifact.ConstraintsByKey[constraint.Key]);
+            return;
+        }
+
+        _constraintsByKey.Add(constraint.Key, copyIfNew ? (FhirConstraint)constraint.Clone() : constraint);
+    }
+
 
     /// <summary>Sets in differential.</summary>
     public void SetInDifferential()
@@ -477,8 +531,15 @@ public class FhirElement : FhirTypeBase
     /// <summary>Adds a component from an element.</summary>
     /// <param name="url">      URL of this element (if present).</param>
     /// <param name="sliceName">Name of the element.</param>
+    /// <param name="parent">   The parent.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public bool AddSlice(string url, string sliceName)
+    public bool AddSlice(
+        string url,
+        string sliceName,
+        string shortDescription,
+        string purpose,
+        string comment,
+        FhirComplex parent)
     {
         if (!_slicing.ContainsKey(url))
         {
@@ -491,21 +552,27 @@ public class FhirElement : FhirTypeBase
         }
 
         FhirComplex slice = new FhirComplex(
-                Id,
-                Path,
-                ExplicitName,
-                BaseTypeName,
-                BaseTypeCanonical,
-                URL,
-                PublicationStatus,
-                StandardStatus,
-                FhirMaturityLevel,
-                false,
-                ShortDescription,
-                Purpose,
-                Comment,
-                ValidationRegEx);
-        slice.SliceName = sliceName;
+            parent.ArtifactClass,
+            Id + ":" + sliceName,
+            Name,
+            sliceName,
+            Path,
+            ExplicitName,
+            parent.Version,
+            new Uri(url),
+            parent.PublicationStatus,
+            parent.StandardStatus,
+            parent.FhirMaturityLevel,
+            parent.IsExperimental,
+            shortDescription,
+            purpose,
+            comment,
+            parent.ValidationRegEx,
+            parent.NarrativeText,
+            parent.NarrativeStatus,
+            parent.FhirVersion,
+            parent.Mappings.DeepCopy(),
+            parent.RootElementMappings.DeepCopy());
 
         // create a new complex type from the property
         _slicing[url].AddSlice(
@@ -535,18 +602,87 @@ public class FhirElement : FhirTypeBase
         return enums;
     }
 
+    /// <summary>Copies the with.</summary>
+    /// <param name="root">          (Optional) The root.</param>
+    /// <param name="id">            (Optional) Id for this element.</param>
+    /// <param name="path">          (Optional) Dot notation path for this element.</param>
+    /// <param name="cardinalityMin">(Optional) The cardinality minimum.</param>
+    /// <param name="cardinalityMax">(Optional) The cardinality maximum.</param>
+    /// <returns>A FhirElement.</returns>
+    public FhirElement CopyWith(
+        FhirComplex root = null,
+        string id = null,
+        string path = null,
+        int? cardinalityMin = null,
+        string cardinalityMax = null)
+    {
+
+        // generate our copy
+        FhirElement element = new FhirElement(
+            root ?? RootArtifact,
+            id ?? Id,
+            path ?? Path,
+            BasePath,
+            ExplicitName,
+            URL,
+            FieldOrder,
+            ShortDescription,
+            Purpose,
+            Comment,
+            ValidationRegEx,
+            BaseTypeName,
+            _elementTypes?.DeepCopy() ?? null,
+            cardinalityMin ?? CardinalityMin,
+            cardinalityMax ?? (CardinalityMax == -1 ? "*" : $"{CardinalityMax}"),
+            IsModifier,
+            IsModifierReason,
+            IsSummary,
+            IsMustSupport,
+            IsSimple,
+            DefaultFieldName,
+            DefaultFieldValue,
+            FixedFieldName,
+            FixedFieldValue,
+            PatternFieldName,
+            PatternFieldValue,
+            IsInherited,
+            ModifiesParent,
+            BindingStrength,
+            ValueSet,
+            _representations?.Select(pr => pr).ToList() ?? null,
+            Mappings?.DeepCopy() ?? null);
+
+        element.BaseTypeName = BaseTypeName;
+        element._slicing = _slicing?.DeepCopy() ?? null;
+
+        _conditions.CopyTo(element._conditions);
+
+        // need to add constraints individually so we can reference the root objects
+        _constraintsByKey.Values.ForEach(c => element.AddConstraint(c, true));
+
+        return element;
+    }
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    public object Clone()
+    {
+        return this.CopyWith();
+    }
+
     /// <summary>Deep copy.</summary>
     /// <param name="primitiveTypeMap">   The primitive type map.</param>
     /// <param name="copySlicing">        True to copy slicing.</param>
     /// <param name="canHideParentFields">True if can hide parent fields, false if not.</param>
-    /// <param name="valueSetReferences"> [in,out] Value Set URLs and lists of FHIR paths that
-    ///  reference them.</param>
+    /// <param name="valueSetReferences"> Value Set URLs and lists of FHIR paths that reference them.</param>
+    /// <param name="destinationArtifact">(Optional) Destination artifact.</param>
     /// <returns>A FhirElement.</returns>
     public FhirElement DeepCopy(
         Dictionary<string, string> primitiveTypeMap,
         bool copySlicing,
         bool canHideParentFields,
-        Dictionary<string, ValueSetReferenceInfo> valueSetReferences)
+        Dictionary<string, ValueSetReferenceInfo> valueSetReferences,
+        FhirComplex destinationArtifact = null)
     {
         // copy the element types
         Dictionary<string, FhirElementType> elementTypes = null;
@@ -560,11 +696,13 @@ public class FhirElement : FhirTypeBase
                 elementTypes.Add(kvp.Key, kvp.Value.DeepCopy(primitiveTypeMap));
             }
         }
-
+        
         // generate our copy
         FhirElement element = new FhirElement(
+            destinationArtifact ?? RootArtifact,
             Id,
             Path,
+            BasePath,
             ExplicitName,
             URL,
             FieldOrder,
@@ -591,8 +729,8 @@ public class FhirElement : FhirTypeBase
             ModifiesParent,
             BindingStrength,
             ValueSet,
-            FiveWs,
-            _representations);
+            _representations,
+            Mappings.DeepCopy());
 
         // check for base type name
         if (!string.IsNullOrEmpty(BaseTypeName))
@@ -622,6 +760,11 @@ public class FhirElement : FhirTypeBase
             }
         }
 
+        _conditions.CopyTo(element._conditions);
+
+        // need to add constraints individually so we can reference the root objects
+        _constraintsByKey.Values.ForEach(c => element.AddConstraint(c, true));
+
         // check for referenced value sets
         if (((!IsInherited) || ModifiesParent) &&
             (valueSetReferences != null) &&
@@ -646,7 +789,6 @@ public class FhirElement : FhirTypeBase
 
             if (ValueSetBindingStrength != null)
             {
-                //valueSetReferences[url].AddPath(Path, elementTypes.Keys, (ElementDefinitionBindingStrength)ValueSetBindingStrength!);
                 valueSetReferences[url].AddPath(this);
             }
         }

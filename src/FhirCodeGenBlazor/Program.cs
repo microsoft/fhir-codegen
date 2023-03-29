@@ -1,16 +1,17 @@
 using FhirCodeGenBlazor.Services;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddMudServices();
 builder.Services.AddSingleton<IPackageManagerWebService, PackageManagerWebService>();
 builder.Services.AddSingleton<ISpecManagerWebService, SpecManagerWebService>();
 builder.Services.AddSingleton<ISpecExporterWebService, SpecExporterWebService>();
 builder.Services.AddSingleton<IPackageDiffWebService, PackageDiffWebService>();
+builder.Services.AddSingleton<IServerConnectorService, ServerConnectorWebService>();
 
 var app = builder.Build();
 
@@ -32,5 +33,6 @@ app.Services.GetService<IPackageManagerWebService>()?.Init();
 app.Services.GetService<ISpecManagerWebService>()?.Init();
 app.Services.GetService<ISpecExporterWebService>()?.Init();
 app.Services.GetService<IPackageDiffWebService>()?.Init();
+app.Services.GetService<IServerConnectorService>()?.Init();
 
 app.Run();

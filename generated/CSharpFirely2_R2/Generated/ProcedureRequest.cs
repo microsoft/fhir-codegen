@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("ProcedureRequest", IsResource=true)]
+  [FhirType("ProcedureRequest","http://hl7.org/fhir/StructureDefinition/ProcedureRequest", IsResource=true)]
   public partial class ProcedureRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -222,6 +222,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("reason", InSummary=true, Order=130, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Condition")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [DataMember]
     public Hl7.Fhir.Model.DataType Reason
@@ -280,7 +281,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// proposed | draft | requested | received | accepted | in-progress | completed | suspended | rejected | aborted
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=170)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=170)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.ProcedureRequest.ProcedureRequestStatus> StatusElement
     {
@@ -387,6 +389,7 @@ namespace Hl7.Fhir.Model
     /// routine | urgent | stat | asap
     /// </summary>
     [FhirElement("priority", InSummary=true, Order=220)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.ProcedureRequest.ProcedureRequestPriority> PriorityElement
     {
@@ -446,6 +449,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new ProcedureRequest());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as ProcedureRequest;
@@ -538,6 +542,77 @@ namespace Hl7.Fhir.Model
         if (Orderer != null) yield return new ElementValue("orderer", Orderer);
         if (PriorityElement != null) yield return new ElementValue("priority", PriorityElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "code":
+          value = Code;
+          return Code is not null;
+        case "bodySite":
+          value = BodySite;
+          return BodySite?.Any() == true;
+        case "reason":
+          value = Reason;
+          return Reason is not null;
+        case "scheduled":
+          value = Scheduled;
+          return Scheduled is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "performer":
+          value = Performer;
+          return Performer is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "notes":
+          value = Notes;
+          return Notes?.Any() == true;
+        case "asNeeded":
+          value = AsNeeded;
+          return AsNeeded is not null;
+        case "orderedOn":
+          value = OrderedOnElement;
+          return OrderedOnElement is not null;
+        case "orderer":
+          value = Orderer;
+          return Orderer is not null;
+        case "priority":
+          value = PriorityElement;
+          return PriorityElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+      if (BodySite?.Any() == true) yield return new KeyValuePair<string,object>("bodySite",BodySite);
+      if (Reason is not null) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (Scheduled is not null) yield return new KeyValuePair<string,object>("scheduled",Scheduled);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Performer is not null) yield return new KeyValuePair<string,object>("performer",Performer);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Notes?.Any() == true) yield return new KeyValuePair<string,object>("notes",Notes);
+      if (AsNeeded is not null) yield return new KeyValuePair<string,object>("asNeeded",AsNeeded);
+      if (OrderedOnElement is not null) yield return new KeyValuePair<string,object>("orderedOn",OrderedOnElement);
+      if (Orderer is not null) yield return new KeyValuePair<string,object>("orderer",Orderer);
+      if (PriorityElement is not null) yield return new KeyValuePair<string,object>("priority",PriorityElement);
     }
 
   }

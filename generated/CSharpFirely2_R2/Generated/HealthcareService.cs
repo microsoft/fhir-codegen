@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("HealthcareService", IsResource=true)]
+  [FhirType("HealthcareService","http://hl7.org/fhir/StructureDefinition/HealthcareService", IsResource=true)]
   public partial class HealthcareService : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -168,6 +168,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ServiceTypeComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ServiceTypeComponent;
@@ -214,6 +215,29 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = Type;
+            return Type is not null;
+          case "specialty":
+            value = Specialty;
+            return Specialty?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+        if (Specialty?.Any() == true) yield return new KeyValuePair<string,object>("specialty",Specialty);
+      }
+
     }
 
     /// <summary>
@@ -233,6 +257,7 @@ namespace Hl7.Fhir.Model
       /// mon | tue | wed | thu | fri | sat | sun
       /// </summary>
       [FhirElement("daysOfWeek", Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=0,Max=-1)]
       [DataMember]
       public List<Code<Hl7.Fhir.Model.HealthcareService.DaysOfWeek>> DaysOfWeek_Element
@@ -376,6 +401,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new AvailableTimeComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as AvailableTimeComponent;
@@ -428,6 +454,37 @@ namespace Hl7.Fhir.Model
           if (AvailableStartTimeElement != null) yield return new ElementValue("availableStartTime", AvailableStartTimeElement);
           if (AvailableEndTimeElement != null) yield return new ElementValue("availableEndTime", AvailableEndTimeElement);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "daysOfWeek":
+            value = DaysOfWeek_Element;
+            return DaysOfWeek_Element?.Any() == true;
+          case "allDay":
+            value = AllDayElement;
+            return AllDayElement is not null;
+          case "availableStartTime":
+            value = AvailableStartTimeElement;
+            return AvailableStartTimeElement is not null;
+          case "availableEndTime":
+            value = AvailableEndTimeElement;
+            return AvailableEndTimeElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (DaysOfWeek_Element?.Any() == true) yield return new KeyValuePair<string,object>("daysOfWeek",DaysOfWeek_Element);
+        if (AllDayElement is not null) yield return new KeyValuePair<string,object>("allDay",AllDayElement);
+        if (AvailableStartTimeElement is not null) yield return new KeyValuePair<string,object>("availableStartTime",AvailableStartTimeElement);
+        if (AvailableEndTimeElement is not null) yield return new KeyValuePair<string,object>("availableEndTime",AvailableEndTimeElement);
       }
 
     }
@@ -510,6 +567,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new NotAvailableComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as NotAvailableComponent;
@@ -554,6 +612,29 @@ namespace Hl7.Fhir.Model
           if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
           if (During != null) yield return new ElementValue("during", During);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "description":
+            value = DescriptionElement;
+            return DescriptionElement is not null;
+          case "during":
+            value = During;
+            return During is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+        if (During is not null) yield return new KeyValuePair<string,object>("during",During);
       }
 
     }
@@ -1045,6 +1126,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new HealthcareService());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as HealthcareService;
@@ -1169,6 +1251,109 @@ namespace Hl7.Fhir.Model
         foreach (var elem in NotAvailable) { if (elem != null) yield return new ElementValue("notAvailable", elem); }
         if (AvailabilityExceptionsElement != null) yield return new ElementValue("availabilityExceptions", AvailabilityExceptionsElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "providedBy":
+          value = ProvidedBy;
+          return ProvidedBy is not null;
+        case "serviceCategory":
+          value = ServiceCategory;
+          return ServiceCategory is not null;
+        case "serviceType":
+          value = ServiceType;
+          return ServiceType?.Any() == true;
+        case "location":
+          value = Location;
+          return Location is not null;
+        case "serviceName":
+          value = ServiceNameElement;
+          return ServiceNameElement is not null;
+        case "comment":
+          value = CommentElement;
+          return CommentElement is not null;
+        case "extraDetails":
+          value = ExtraDetailsElement;
+          return ExtraDetailsElement is not null;
+        case "photo":
+          value = Photo;
+          return Photo is not null;
+        case "telecom":
+          value = Telecom;
+          return Telecom?.Any() == true;
+        case "coverageArea":
+          value = CoverageArea;
+          return CoverageArea?.Any() == true;
+        case "serviceProvisionCode":
+          value = ServiceProvisionCode;
+          return ServiceProvisionCode?.Any() == true;
+        case "eligibility":
+          value = Eligibility;
+          return Eligibility is not null;
+        case "eligibilityNote":
+          value = EligibilityNoteElement;
+          return EligibilityNoteElement is not null;
+        case "programName":
+          value = ProgramNameElement;
+          return ProgramNameElement?.Any() == true;
+        case "characteristic":
+          value = Characteristic;
+          return Characteristic?.Any() == true;
+        case "referralMethod":
+          value = ReferralMethod;
+          return ReferralMethod?.Any() == true;
+        case "publicKey":
+          value = PublicKeyElement;
+          return PublicKeyElement is not null;
+        case "appointmentRequired":
+          value = AppointmentRequiredElement;
+          return AppointmentRequiredElement is not null;
+        case "availableTime":
+          value = AvailableTime;
+          return AvailableTime?.Any() == true;
+        case "notAvailable":
+          value = NotAvailable;
+          return NotAvailable?.Any() == true;
+        case "availabilityExceptions":
+          value = AvailabilityExceptionsElement;
+          return AvailabilityExceptionsElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (ProvidedBy is not null) yield return new KeyValuePair<string,object>("providedBy",ProvidedBy);
+      if (ServiceCategory is not null) yield return new KeyValuePair<string,object>("serviceCategory",ServiceCategory);
+      if (ServiceType?.Any() == true) yield return new KeyValuePair<string,object>("serviceType",ServiceType);
+      if (Location is not null) yield return new KeyValuePair<string,object>("location",Location);
+      if (ServiceNameElement is not null) yield return new KeyValuePair<string,object>("serviceName",ServiceNameElement);
+      if (CommentElement is not null) yield return new KeyValuePair<string,object>("comment",CommentElement);
+      if (ExtraDetailsElement is not null) yield return new KeyValuePair<string,object>("extraDetails",ExtraDetailsElement);
+      if (Photo is not null) yield return new KeyValuePair<string,object>("photo",Photo);
+      if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
+      if (CoverageArea?.Any() == true) yield return new KeyValuePair<string,object>("coverageArea",CoverageArea);
+      if (ServiceProvisionCode?.Any() == true) yield return new KeyValuePair<string,object>("serviceProvisionCode",ServiceProvisionCode);
+      if (Eligibility is not null) yield return new KeyValuePair<string,object>("eligibility",Eligibility);
+      if (EligibilityNoteElement is not null) yield return new KeyValuePair<string,object>("eligibilityNote",EligibilityNoteElement);
+      if (ProgramNameElement?.Any() == true) yield return new KeyValuePair<string,object>("programName",ProgramNameElement);
+      if (Characteristic?.Any() == true) yield return new KeyValuePair<string,object>("characteristic",Characteristic);
+      if (ReferralMethod?.Any() == true) yield return new KeyValuePair<string,object>("referralMethod",ReferralMethod);
+      if (PublicKeyElement is not null) yield return new KeyValuePair<string,object>("publicKey",PublicKeyElement);
+      if (AppointmentRequiredElement is not null) yield return new KeyValuePair<string,object>("appointmentRequired",AppointmentRequiredElement);
+      if (AvailableTime?.Any() == true) yield return new KeyValuePair<string,object>("availableTime",AvailableTime);
+      if (NotAvailable?.Any() == true) yield return new KeyValuePair<string,object>("notAvailable",NotAvailable);
+      if (AvailabilityExceptionsElement is not null) yield return new KeyValuePair<string,object>("availabilityExceptions",AvailabilityExceptionsElement);
     }
 
   }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("RelatedPerson", IsResource=true)]
+  [FhirType("RelatedPerson","http://hl7.org/fhir/StructureDefinition/RelatedPerson", IsResource=true)]
   public partial class RelatedPerson : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -129,6 +129,7 @@ namespace Hl7.Fhir.Model
     /// male | female | other | unknown
     /// </summary>
     [FhirElement("gender", InSummary=true, Order=140)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.AdministrativeGender> GenderElement
     {
@@ -256,6 +257,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new RelatedPerson());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as RelatedPerson;
@@ -332,6 +334,61 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Photo) { if (elem != null) yield return new ElementValue("photo", elem); }
         if (Period != null) yield return new ElementValue("period", Period);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "relationship":
+          value = Relationship;
+          return Relationship is not null;
+        case "name":
+          value = Name;
+          return Name is not null;
+        case "telecom":
+          value = Telecom;
+          return Telecom?.Any() == true;
+        case "gender":
+          value = GenderElement;
+          return GenderElement is not null;
+        case "birthDate":
+          value = BirthDateElement;
+          return BirthDateElement is not null;
+        case "address":
+          value = Address;
+          return Address?.Any() == true;
+        case "photo":
+          value = Photo;
+          return Photo?.Any() == true;
+        case "period":
+          value = Period;
+          return Period is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (Relationship is not null) yield return new KeyValuePair<string,object>("relationship",Relationship);
+      if (Name is not null) yield return new KeyValuePair<string,object>("name",Name);
+      if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
+      if (GenderElement is not null) yield return new KeyValuePair<string,object>("gender",GenderElement);
+      if (BirthDateElement is not null) yield return new KeyValuePair<string,object>("birthDate",BirthDateElement);
+      if (Address?.Any() == true) yield return new KeyValuePair<string,object>("address",Address);
+      if (Photo?.Any() == true) yield return new KeyValuePair<string,object>("photo",Photo);
+      if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
     }
 
   }

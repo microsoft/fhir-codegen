@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Signature")]
+  [FhirType("Signature","http://hl7.org/fhir/StructureDefinition/Signature")]
   public partial class Signature : Hl7.Fhir.Model.DataType
   {
     /// <summary>
@@ -250,6 +250,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Signature());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Signature;
@@ -314,6 +315,49 @@ namespace Hl7.Fhir.Model
         if (SigFormatElement != null) yield return new ElementValue("sigFormat", SigFormatElement);
         if (DataElement != null) yield return new ElementValue("data", DataElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = Type;
+          return Type?.Any() == true;
+        case "when":
+          value = WhenElement;
+          return WhenElement is not null;
+        case "who":
+          value = Who;
+          return Who is not null;
+        case "onBehalfOf":
+          value = OnBehalfOf;
+          return OnBehalfOf is not null;
+        case "targetFormat":
+          value = TargetFormatElement;
+          return TargetFormatElement is not null;
+        case "sigFormat":
+          value = SigFormatElement;
+          return SigFormatElement is not null;
+        case "data":
+          value = DataElement;
+          return DataElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Type?.Any() == true) yield return new KeyValuePair<string,object>("type",Type);
+      if (WhenElement is not null) yield return new KeyValuePair<string,object>("when",WhenElement);
+      if (Who is not null) yield return new KeyValuePair<string,object>("who",Who);
+      if (OnBehalfOf is not null) yield return new KeyValuePair<string,object>("onBehalfOf",OnBehalfOf);
+      if (TargetFormatElement is not null) yield return new KeyValuePair<string,object>("targetFormat",TargetFormatElement);
+      if (SigFormatElement is not null) yield return new KeyValuePair<string,object>("sigFormat",SigFormatElement);
+      if (DataElement is not null) yield return new KeyValuePair<string,object>("data",DataElement);
     }
 
   }

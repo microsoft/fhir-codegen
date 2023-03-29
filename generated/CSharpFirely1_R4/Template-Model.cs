@@ -68,15 +68,6 @@
   // Used in model class (resource): Composition.status
   // Used in model class (resource): DocumentReference.docStatus
 
-// Generated Shared Enumeration: ConceptMapEquivalence (http://hl7.org/fhir/ValueSet/concept-map-equivalence)
-  // Used in model class (resource): ConceptMap.group.element.target.equivalence
-  // Used in model class (type): Extension.value[x]
-
-// Generated Shared Enumeration: DataAbsentReason (http://hl7.org/fhir/ValueSet/data-absent-reason)
-  // Used in model class (resource): Observation.dataAbsentReason
-  // Used in model class (resource): Observation.component.dataAbsentReason
-  // Used in model class (type): Extension.value[x]
-
 // Generated Shared Enumeration: DaysOfWeek (http://hl7.org/fhir/ValueSet/days-of-week)
   // Used in model class (type): Timing.repeat.dayOfWeek
   // Used in model class (resource): HealthcareService.availableTime.daysOfWeek
@@ -105,7 +96,6 @@
   // Used in model class (resource): ImplementationGuide.fhirVersion
   // Used in model class (resource): ImplementationGuide.definition.resource.fhirVersion
   // Used in model class (resource): StructureDefinition.fhirVersion
-  // Used in model class (type): Extension.value[x]
 
 // Generated Shared Enumeration: FilterOperator (http://hl7.org/fhir/ValueSet/filter-operator)
   // Used in model class (resource): CodeSystem.filter.operator
@@ -139,10 +129,6 @@
 // Generated Shared Enumeration: MeasureImprovementNotation (http://hl7.org/fhir/ValueSet/measure-improvement-notation)
   // Used in model class (resource): Measure.improvementNotation
   // Used in model class (resource): MeasureReport.improvementNotation
-
-// Generated Shared Enumeration: messageheader_response_request (http://hl7.org/fhir/ValueSet/messageheader-response-request)
-  // Used in model class (resource): MessageDefinition.responseRequired
-  // Used in model class (type): Extension.value[x]
 
 // Generated Shared Enumeration: NoteType (http://hl7.org/fhir/ValueSet/note-type)
   // Used in model class (resource): ClaimResponse.processNote.type
@@ -243,7 +229,6 @@
   // Used in model class (resource): Questionnaire.subjectType
   // Used in model class (resource): SearchParameter.base
   // Used in model class (resource): SearchParameter.target
-  // Used in model class (type): Extension.value[x]
 
 // Generated Shared Enumeration: SearchParamType (http://hl7.org/fhir/ValueSet/search-param-type)
   // Used in model class (resource): CapabilityStatement.rest.resource.searchParam.type

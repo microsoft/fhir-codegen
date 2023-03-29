@@ -3,14 +3,9 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.Diagnostics;
-using System.Reflection.Emit;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using fhirCsR2.Models;
-using System.Threading.Channels;
 using Microsoft.Health.Fhir.SpecManager.Manager;
-using Microsoft.Scripting.Hosting.Shell;
 
 namespace Microsoft.Health.Fhir.SpecManager.PackageManager;
 
@@ -62,13 +57,14 @@ public class RegistryPackageManifest
 
                 foreach (string key in manifest.Versions.Keys)
                 {
+                    FhirPackageCommon.FhirSequenceEnum sequence;
                     bool remove = false;
                     string name = manifest.Versions[key].Name;
 
-                    if (manifest.Versions[key].PackageKind == "??")
+                    if (string.IsNullOrEmpty(manifest.Versions[key].PackageKind) ||
+                        (manifest.Versions[key].PackageKind == "??"))
                     {
-                        if (name.StartsWith("hl7.fhir.r", StringComparison.OrdinalIgnoreCase) &&
-                            key.EndsWith("ballot", StringComparison.Ordinal))
+                        if (name.StartsWith("hl7.fhir.r", StringComparison.OrdinalIgnoreCase))
                         {
                             manifest.Versions[key].PackageKind = "Core";
                         }
@@ -78,10 +74,11 @@ public class RegistryPackageManifest
                         }
                     }
 
-                    if (manifest.Versions[key].FhirVersion == "??")
+                    if (string.IsNullOrEmpty(manifest.Versions[key].FhirVersion) ||
+                        (manifest.Versions[key].FhirVersion == "??"))
                     {
                         if (manifest.Versions[key].PackageKind.Equals("core", StringComparison.OrdinalIgnoreCase) &&
-                            FhirPackageCommon.TryGetMajorReleaseForVersion(key, out FhirPackageCommon.FhirSequenceEnum sequence))
+                            FhirPackageCommon.TryGetMajorReleaseForVersion(key, out sequence))
                         {
                             manifest.Versions[key].FhirVersion = sequence.ToString();
                         }
@@ -89,6 +86,12 @@ public class RegistryPackageManifest
                         {
                             remove = true;
                         }
+                    }
+
+                    if (manifest.Versions[key].PackageKind.Equals("core", StringComparison.OrdinalIgnoreCase) &&
+                        FhirPackageCommon.TryGetMajorReleaseForVersion(key, out sequence))
+                    {
+                        manifest.Versions[key].FhirVersion = sequence.ToString();
                     }
 
                     if (remove)
@@ -180,6 +183,20 @@ public class RegistryPackageManifest
             return false;
         }
 
+        // check for final draft
+        if ((versionSplitF.Length > 2) &&
+            (versionSplitF[2].Equals("final", StringComparison.Ordinal)))
+        {
+            return true;
+        }
+
+        // check for final draft
+        if ((versionSplitS.Length > 2) &&
+            (versionSplitS[2].Equals("final", StringComparison.Ordinal)))
+        {
+            return false;
+        }
+
         if (versionSplitF[1].Equals("cibuild", StringComparison.Ordinal))
         {
             // cibuild is always 'lower'
@@ -213,10 +230,11 @@ public class RegistryPackageManifest
 
         int hash;
 
-        //  "snapshotN" - a frozen release of a specification for connectathon, ballot dependencies or other reasons
-        //  "ballotN" - a frozen release used in the ballot process
-        //  "draftN" - a frozen release put out for non - ballot review or QA.
-        //  "cibuild" - a 'special' release label that refers to a non - stable release that changes with each commit.
+        // "snapshotN" - a frozen release of a specification for connectathon, ballot dependencies or other reasons
+        // "ballotN" - a frozen release used in the ballot process
+        // "draftN" - a frozen release put out for non - ballot review or QA.
+        // "cibuild" - a 'special' release label that refers to a non - stable release that changes with each commit.
+        // "draft-final" - a frozen release put out for QA.
 
         switch (tag[0])
         {
@@ -229,7 +247,14 @@ public class RegistryPackageManifest
                 break;
 
             case 'd':
-                hash = 100;
+                if (tag.Contains("final", StringComparison.Ordinal))
+                {
+                    hash = 400;
+                }
+                else
+                {
+                    hash = 100;
+                }
                 break;
 
             case 'c':
@@ -251,16 +276,30 @@ public class RegistryPackageManifest
     public string HighestVersion()
     {
         string highestVersion = string.Empty;
+        string highestDate = string.Empty;
+        string highestVersionByDate = string.Empty;
 
-        foreach (string version in Versions.Keys)
+        foreach (VersionInfo version in Versions.Values)
         {
-            if (IsFirstHigherVersion(version, highestVersion))
+            if (IsFirstHigherVersion(version.Version, highestVersion))
             {
-                highestVersion = version;
+                highestVersion = version.Version;
+            }
+
+            if (string.IsNullOrEmpty(highestDate) ||
+                string.Compare(version.Date, highestDate, StringComparison.Ordinal) > 0)
+            {
+                highestDate = version.Date;
+                highestVersionByDate = version.Version;
             }
         }
 
-        return highestVersion;
+        if (string.IsNullOrEmpty(highestVersionByDate))
+        {
+            return highestVersion;
+        }
+
+        return highestVersionByDate;
     }
 
     /// <summary>Information about the version.</summary>

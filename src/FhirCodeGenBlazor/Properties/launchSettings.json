@@ -10,7 +10,6 @@
   "profiles": {
     "FhirCodeGenBlazor": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5197",
       "environmentVariables": {

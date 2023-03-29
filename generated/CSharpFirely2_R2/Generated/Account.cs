@@ -44,7 +44,7 @@ namespace Hl7.Fhir.Model
 {
   [Serializable]
   [DataContract]
-  [FhirType("Account", IsResource=true)]
+  [FhirType("Account","http://hl7.org/fhir/StructureDefinition/Account", IsResource=true)]
   public partial class Account : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// active | inactive
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=120)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=120)]
     [DataMember]
     public Hl7.Fhir.Model.Code StatusElement
     {
@@ -283,6 +283,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Account());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Account;
@@ -363,6 +364,65 @@ namespace Hl7.Fhir.Model
         if (Owner != null) yield return new ElementValue("owner", Owner);
         if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "activePeriod":
+          value = ActivePeriod;
+          return ActivePeriod is not null;
+        case "currency":
+          value = Currency;
+          return Currency is not null;
+        case "balance":
+          value = Balance;
+          return Balance is not null;
+        case "coveragePeriod":
+          value = CoveragePeriod;
+          return CoveragePeriod is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "owner":
+          value = Owner;
+          return Owner is not null;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (ActivePeriod is not null) yield return new KeyValuePair<string,object>("activePeriod",ActivePeriod);
+      if (Currency is not null) yield return new KeyValuePair<string,object>("currency",Currency);
+      if (Balance is not null) yield return new KeyValuePair<string,object>("balance",Balance);
+      if (CoveragePeriod is not null) yield return new KeyValuePair<string,object>("coveragePeriod",CoveragePeriod);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Owner is not null) yield return new KeyValuePair<string,object>("owner",Owner);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
     }
 
   }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("MarketingStatus")]
+  [FhirType("MarketingStatus","http://hl7.org/fhir/StructureDefinition/MarketingStatus")]
   public partial class MarketingStatus : Hl7.Fhir.Model.BackboneType
   {
     /// <summary>
@@ -164,6 +164,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new MarketingStatus());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as MarketingStatus;
@@ -220,6 +221,41 @@ namespace Hl7.Fhir.Model
         if (DateRange != null) yield return new ElementValue("dateRange", DateRange);
         if (RestoreDateElement != null) yield return new ElementValue("restoreDate", RestoreDateElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "country":
+          value = Country;
+          return Country is not null;
+        case "jurisdiction":
+          value = Jurisdiction;
+          return Jurisdiction is not null;
+        case "status":
+          value = Status;
+          return Status is not null;
+        case "dateRange":
+          value = DateRange;
+          return DateRange is not null;
+        case "restoreDate":
+          value = RestoreDateElement;
+          return RestoreDateElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Country is not null) yield return new KeyValuePair<string,object>("country",Country);
+      if (Jurisdiction is not null) yield return new KeyValuePair<string,object>("jurisdiction",Jurisdiction);
+      if (Status is not null) yield return new KeyValuePair<string,object>("status",Status);
+      if (DateRange is not null) yield return new KeyValuePair<string,object>("dateRange",DateRange);
+      if (RestoreDateElement is not null) yield return new KeyValuePair<string,object>("restoreDate",RestoreDateElement);
     }
 
   }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Substance", IsResource=true)]
+  [FhirType("Substance","http://hl7.org/fhir/StructureDefinition/Substance", IsResource=true)]
   public partial class Substance : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -146,6 +146,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new InstanceComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as InstanceComponent;
@@ -194,6 +195,33 @@ namespace Hl7.Fhir.Model
           if (ExpiryElement != null) yield return new ElementValue("expiry", ExpiryElement);
           if (Quantity != null) yield return new ElementValue("quantity", Quantity);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "identifier":
+            value = Identifier;
+            return Identifier is not null;
+          case "expiry":
+            value = ExpiryElement;
+            return ExpiryElement is not null;
+          case "quantity":
+            value = Quantity;
+            return Quantity is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+        if (ExpiryElement is not null) yield return new KeyValuePair<string,object>("expiry",ExpiryElement);
+        if (Quantity is not null) yield return new KeyValuePair<string,object>("quantity",Quantity);
       }
 
     }
@@ -260,6 +288,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new IngredientComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as IngredientComponent;
@@ -304,6 +333,29 @@ namespace Hl7.Fhir.Model
           if (Quantity != null) yield return new ElementValue("quantity", Quantity);
           if (Substance != null) yield return new ElementValue("substance", Substance);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "quantity":
+            value = Quantity;
+            return Quantity is not null;
+          case "substance":
+            value = Substance;
+            return Substance is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Quantity is not null) yield return new KeyValuePair<string,object>("quantity",Quantity);
+        if (Substance is not null) yield return new KeyValuePair<string,object>("substance",Substance);
       }
 
     }
@@ -433,6 +485,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Substance());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Substance;
@@ -493,6 +546,45 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Instance) { if (elem != null) yield return new ElementValue("instance", elem); }
         foreach (var elem in Ingredient) { if (elem != null) yield return new ElementValue("ingredient", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "category":
+          value = Category;
+          return Category?.Any() == true;
+        case "code":
+          value = Code;
+          return Code is not null;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "instance":
+          value = Instance;
+          return Instance?.Any() == true;
+        case "ingredient":
+          value = Ingredient;
+          return Ingredient?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Category?.Any() == true) yield return new KeyValuePair<string,object>("category",Category);
+      if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (Instance?.Any() == true) yield return new KeyValuePair<string,object>("instance",Instance);
+      if (Ingredient?.Any() == true) yield return new KeyValuePair<string,object>("ingredient",Ingredient);
     }
 
   }

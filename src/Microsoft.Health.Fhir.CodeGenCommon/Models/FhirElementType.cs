@@ -3,10 +3,12 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A fhir element type.</summary>
-public class FhirElementType
+public class FhirElementType : ICloneable
 {
     private readonly Dictionary<string, FhirElementProfile> _targetProfiles;
     private readonly Dictionary<string, FhirElementProfile> _typeProfiles;
@@ -49,6 +51,20 @@ public class FhirElementType
 
         _targetProfiles = new Dictionary<string, FhirElementProfile>();
         _typeProfiles = new Dictionary<string, FhirElementProfile>();
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the Microsoft.Health.Fhir.CodeGenCommon.Models.FhirElementType
+    /// class.
+    /// </summary>
+    /// <param name="source">Source for the.</param>
+    public FhirElementType(FhirElementType source)
+    {
+        Name = source.Name;
+        Type = source.Type;
+        URL = source.URL;
+        _targetProfiles = source._targetProfiles.DeepCopy();
+        _typeProfiles = source._typeProfiles.DeepCopy();
     }
 
     /// <summary>Initializes a new instance of the <see cref="FhirElementType"/> class.</summary>
@@ -419,4 +435,12 @@ public class FhirElementType
 
         return !string.IsNullOrEmpty(fhirType);
     }
+
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public object Clone()
+    {
+        return new FhirElementType(this);
+    }
+
 }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("MolecularSequence", IsResource=true)]
+  [FhirType("MolecularSequence","http://hl7.org/fhir/StructureDefinition/MolecularSequence", IsResource=true)]
   public partial class MolecularSequence : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -256,6 +256,7 @@ namespace Hl7.Fhir.Model
       /// sense | antisense
       /// </summary>
       [FhirElement("orientation", InSummary=true, Order=60)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.MolecularSequence.orientationType> OrientationElement
       {
@@ -346,6 +347,7 @@ namespace Hl7.Fhir.Model
       /// watson | crick
       /// </summary>
       [FhirElement("strand", InSummary=true, Order=100)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.MolecularSequence.strandType> StrandElement
       {
@@ -462,6 +464,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ReferenceSeqComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ReferenceSeqComponent;
@@ -534,6 +537,57 @@ namespace Hl7.Fhir.Model
           if (WindowStartElement != null) yield return new ElementValue("windowStart", WindowStartElement);
           if (WindowEndElement != null) yield return new ElementValue("windowEnd", WindowEndElement);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "chromosome":
+            value = Chromosome;
+            return Chromosome is not null;
+          case "genomeBuild":
+            value = GenomeBuildElement;
+            return GenomeBuildElement is not null;
+          case "orientation":
+            value = OrientationElement;
+            return OrientationElement is not null;
+          case "referenceSeqId":
+            value = ReferenceSeqId;
+            return ReferenceSeqId is not null;
+          case "referenceSeqPointer":
+            value = ReferenceSeqPointer;
+            return ReferenceSeqPointer is not null;
+          case "referenceSeqString":
+            value = ReferenceSeqStringElement;
+            return ReferenceSeqStringElement is not null;
+          case "strand":
+            value = StrandElement;
+            return StrandElement is not null;
+          case "windowStart":
+            value = WindowStartElement;
+            return WindowStartElement is not null;
+          case "windowEnd":
+            value = WindowEndElement;
+            return WindowEndElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Chromosome is not null) yield return new KeyValuePair<string,object>("chromosome",Chromosome);
+        if (GenomeBuildElement is not null) yield return new KeyValuePair<string,object>("genomeBuild",GenomeBuildElement);
+        if (OrientationElement is not null) yield return new KeyValuePair<string,object>("orientation",OrientationElement);
+        if (ReferenceSeqId is not null) yield return new KeyValuePair<string,object>("referenceSeqId",ReferenceSeqId);
+        if (ReferenceSeqPointer is not null) yield return new KeyValuePair<string,object>("referenceSeqPointer",ReferenceSeqPointer);
+        if (ReferenceSeqStringElement is not null) yield return new KeyValuePair<string,object>("referenceSeqString",ReferenceSeqStringElement);
+        if (StrandElement is not null) yield return new KeyValuePair<string,object>("strand",StrandElement);
+        if (WindowStartElement is not null) yield return new KeyValuePair<string,object>("windowStart",WindowStartElement);
+        if (WindowEndElement is not null) yield return new KeyValuePair<string,object>("windowEnd",WindowEndElement);
       }
 
     }
@@ -745,6 +799,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new VariantComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as VariantComponent;
@@ -807,6 +862,45 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "start":
+            value = StartElement;
+            return StartElement is not null;
+          case "end":
+            value = EndElement;
+            return EndElement is not null;
+          case "observedAllele":
+            value = ObservedAlleleElement;
+            return ObservedAlleleElement is not null;
+          case "referenceAllele":
+            value = ReferenceAlleleElement;
+            return ReferenceAlleleElement is not null;
+          case "cigar":
+            value = CigarElement;
+            return CigarElement is not null;
+          case "variantPointer":
+            value = VariantPointer;
+            return VariantPointer is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (StartElement is not null) yield return new KeyValuePair<string,object>("start",StartElement);
+        if (EndElement is not null) yield return new KeyValuePair<string,object>("end",EndElement);
+        if (ObservedAlleleElement is not null) yield return new KeyValuePair<string,object>("observedAllele",ObservedAlleleElement);
+        if (ReferenceAlleleElement is not null) yield return new KeyValuePair<string,object>("referenceAllele",ReferenceAlleleElement);
+        if (CigarElement is not null) yield return new KeyValuePair<string,object>("cigar",CigarElement);
+        if (VariantPointer is not null) yield return new KeyValuePair<string,object>("variantPointer",VariantPointer);
+      }
+
     }
 
     /// <summary>
@@ -826,6 +920,7 @@ namespace Hl7.Fhir.Model
       /// indel | snp | unknown
       /// </summary>
       [FhirElement("type", InSummary=true, Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.MolecularSequence.qualityType> TypeElement
@@ -1249,6 +1344,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new QualityComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as QualityComponent;
@@ -1345,6 +1441,81 @@ namespace Hl7.Fhir.Model
           if (FScoreElement != null) yield return new ElementValue("fScore", FScoreElement);
           if (Roc != null) yield return new ElementValue("roc", Roc);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = TypeElement;
+            return TypeElement is not null;
+          case "standardSequence":
+            value = StandardSequence;
+            return StandardSequence is not null;
+          case "start":
+            value = StartElement;
+            return StartElement is not null;
+          case "end":
+            value = EndElement;
+            return EndElement is not null;
+          case "score":
+            value = Score;
+            return Score is not null;
+          case "method":
+            value = Method;
+            return Method is not null;
+          case "truthTP":
+            value = TruthTPElement;
+            return TruthTPElement is not null;
+          case "queryTP":
+            value = QueryTPElement;
+            return QueryTPElement is not null;
+          case "truthFN":
+            value = TruthFNElement;
+            return TruthFNElement is not null;
+          case "queryFP":
+            value = QueryFPElement;
+            return QueryFPElement is not null;
+          case "gtFP":
+            value = GtFPElement;
+            return GtFPElement is not null;
+          case "precision":
+            value = PrecisionElement;
+            return PrecisionElement is not null;
+          case "recall":
+            value = RecallElement;
+            return RecallElement is not null;
+          case "fScore":
+            value = FScoreElement;
+            return FScoreElement is not null;
+          case "roc":
+            value = Roc;
+            return Roc is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+        if (StandardSequence is not null) yield return new KeyValuePair<string,object>("standardSequence",StandardSequence);
+        if (StartElement is not null) yield return new KeyValuePair<string,object>("start",StartElement);
+        if (EndElement is not null) yield return new KeyValuePair<string,object>("end",EndElement);
+        if (Score is not null) yield return new KeyValuePair<string,object>("score",Score);
+        if (Method is not null) yield return new KeyValuePair<string,object>("method",Method);
+        if (TruthTPElement is not null) yield return new KeyValuePair<string,object>("truthTP",TruthTPElement);
+        if (QueryTPElement is not null) yield return new KeyValuePair<string,object>("queryTP",QueryTPElement);
+        if (TruthFNElement is not null) yield return new KeyValuePair<string,object>("truthFN",TruthFNElement);
+        if (QueryFPElement is not null) yield return new KeyValuePair<string,object>("queryFP",QueryFPElement);
+        if (GtFPElement is not null) yield return new KeyValuePair<string,object>("gtFP",GtFPElement);
+        if (PrecisionElement is not null) yield return new KeyValuePair<string,object>("precision",PrecisionElement);
+        if (RecallElement is not null) yield return new KeyValuePair<string,object>("recall",RecallElement);
+        if (FScoreElement is not null) yield return new KeyValuePair<string,object>("fScore",FScoreElement);
+        if (Roc is not null) yield return new KeyValuePair<string,object>("roc",Roc);
       }
 
     }
@@ -1611,6 +1782,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new RocComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as RocComponent;
@@ -1677,6 +1849,49 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "score":
+            value = ScoreElement;
+            return ScoreElement?.Any() == true;
+          case "numTP":
+            value = NumTPElement;
+            return NumTPElement?.Any() == true;
+          case "numFP":
+            value = NumFPElement;
+            return NumFPElement?.Any() == true;
+          case "numFN":
+            value = NumFNElement;
+            return NumFNElement?.Any() == true;
+          case "precision":
+            value = PrecisionElement;
+            return PrecisionElement?.Any() == true;
+          case "sensitivity":
+            value = SensitivityElement;
+            return SensitivityElement?.Any() == true;
+          case "fMeasure":
+            value = FMeasureElement;
+            return FMeasureElement?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (ScoreElement?.Any() == true) yield return new KeyValuePair<string,object>("score",ScoreElement);
+        if (NumTPElement?.Any() == true) yield return new KeyValuePair<string,object>("numTP",NumTPElement);
+        if (NumFPElement?.Any() == true) yield return new KeyValuePair<string,object>("numFP",NumFPElement);
+        if (NumFNElement?.Any() == true) yield return new KeyValuePair<string,object>("numFN",NumFNElement);
+        if (PrecisionElement?.Any() == true) yield return new KeyValuePair<string,object>("precision",PrecisionElement);
+        if (SensitivityElement?.Any() == true) yield return new KeyValuePair<string,object>("sensitivity",SensitivityElement);
+        if (FMeasureElement?.Any() == true) yield return new KeyValuePair<string,object>("fMeasure",FMeasureElement);
+      }
+
     }
 
     /// <summary>
@@ -1696,6 +1911,7 @@ namespace Hl7.Fhir.Model
       /// directlink | openapi | login | oauth | other
       /// </summary>
       [FhirElement("type", InSummary=true, Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.MolecularSequence.repositoryType> TypeElement
@@ -1903,6 +2119,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new RepositoryComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as RepositoryComponent;
@@ -1963,6 +2180,45 @@ namespace Hl7.Fhir.Model
           if (VariantsetIdElement != null) yield return new ElementValue("variantsetId", VariantsetIdElement);
           if (ReadsetIdElement != null) yield return new ElementValue("readsetId", ReadsetIdElement);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = TypeElement;
+            return TypeElement is not null;
+          case "url":
+            value = UrlElement;
+            return UrlElement is not null;
+          case "name":
+            value = NameElement;
+            return NameElement is not null;
+          case "datasetId":
+            value = DatasetIdElement;
+            return DatasetIdElement is not null;
+          case "variantsetId":
+            value = VariantsetIdElement;
+            return VariantsetIdElement is not null;
+          case "readsetId":
+            value = ReadsetIdElement;
+            return ReadsetIdElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+        if (UrlElement is not null) yield return new KeyValuePair<string,object>("url",UrlElement);
+        if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+        if (DatasetIdElement is not null) yield return new KeyValuePair<string,object>("datasetId",DatasetIdElement);
+        if (VariantsetIdElement is not null) yield return new KeyValuePair<string,object>("variantsetId",VariantsetIdElement);
+        if (ReadsetIdElement is not null) yield return new KeyValuePair<string,object>("readsetId",ReadsetIdElement);
       }
 
     }
@@ -2104,6 +2360,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new StructureVariantComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as StructureVariantComponent;
@@ -2160,6 +2417,41 @@ namespace Hl7.Fhir.Model
           if (Outer != null) yield return new ElementValue("outer", Outer);
           if (Inner != null) yield return new ElementValue("inner", Inner);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "variantType":
+            value = VariantType;
+            return VariantType is not null;
+          case "exact":
+            value = ExactElement;
+            return ExactElement is not null;
+          case "length":
+            value = LengthElement;
+            return LengthElement is not null;
+          case "outer":
+            value = Outer;
+            return Outer is not null;
+          case "inner":
+            value = Inner;
+            return Inner is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (VariantType is not null) yield return new KeyValuePair<string,object>("variantType",VariantType);
+        if (ExactElement is not null) yield return new KeyValuePair<string,object>("exact",ExactElement);
+        if (LengthElement is not null) yield return new KeyValuePair<string,object>("length",LengthElement);
+        if (Outer is not null) yield return new KeyValuePair<string,object>("outer",Outer);
+        if (Inner is not null) yield return new KeyValuePair<string,object>("inner",Inner);
       }
 
     }
@@ -2259,6 +2551,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new OuterComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as OuterComponent;
@@ -2303,6 +2596,29 @@ namespace Hl7.Fhir.Model
           if (StartElement != null) yield return new ElementValue("start", StartElement);
           if (EndElement != null) yield return new ElementValue("end", EndElement);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "start":
+            value = StartElement;
+            return StartElement is not null;
+          case "end":
+            value = EndElement;
+            return EndElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (StartElement is not null) yield return new KeyValuePair<string,object>("start",StartElement);
+        if (EndElement is not null) yield return new KeyValuePair<string,object>("end",EndElement);
       }
 
     }
@@ -2402,6 +2718,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new InnerComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as InnerComponent;
@@ -2448,12 +2765,35 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "start":
+            value = StartElement;
+            return StartElement is not null;
+          case "end":
+            value = EndElement;
+            return EndElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (StartElement is not null) yield return new KeyValuePair<string,object>("start",StartElement);
+        if (EndElement is not null) yield return new KeyValuePair<string,object>("end",EndElement);
+      }
+
     }
 
     /// <summary>
     /// Unique ID for this particular sequence. This is a FHIR-defined id
     /// </summary>
-    [FhirElement("identifier", InSummary=true, Order=90)]
+    [FhirElement("identifier", InSummary=true, Order=90, FiveWs="FiveWs.identifier")]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Hl7.Fhir.Model.Identifier> Identifier
@@ -2468,6 +2808,7 @@ namespace Hl7.Fhir.Model
     /// aa | dna | rna
     /// </summary>
     [FhirElement("type", InSummary=true, Order=100)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.MolecularSequence.sequenceType> TypeElement
     {
@@ -2781,6 +3122,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new MolecularSequence());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as MolecularSequence;
@@ -2881,6 +3223,85 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Pointer) { if (elem != null) yield return new ElementValue("pointer", elem); }
         foreach (var elem in StructureVariant) { if (elem != null) yield return new ElementValue("structureVariant", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "coordinateSystem":
+          value = CoordinateSystemElement;
+          return CoordinateSystemElement is not null;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "specimen":
+          value = Specimen;
+          return Specimen is not null;
+        case "device":
+          value = Device;
+          return Device is not null;
+        case "performer":
+          value = Performer;
+          return Performer is not null;
+        case "quantity":
+          value = Quantity;
+          return Quantity is not null;
+        case "referenceSeq":
+          value = ReferenceSeq;
+          return ReferenceSeq is not null;
+        case "variant":
+          value = Variant;
+          return Variant?.Any() == true;
+        case "observedSeq":
+          value = ObservedSeqElement;
+          return ObservedSeqElement is not null;
+        case "quality":
+          value = Quality;
+          return Quality?.Any() == true;
+        case "readCoverage":
+          value = ReadCoverageElement;
+          return ReadCoverageElement is not null;
+        case "repository":
+          value = Repository;
+          return Repository?.Any() == true;
+        case "pointer":
+          value = Pointer;
+          return Pointer?.Any() == true;
+        case "structureVariant":
+          value = StructureVariant;
+          return StructureVariant?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (CoordinateSystemElement is not null) yield return new KeyValuePair<string,object>("coordinateSystem",CoordinateSystemElement);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (Specimen is not null) yield return new KeyValuePair<string,object>("specimen",Specimen);
+      if (Device is not null) yield return new KeyValuePair<string,object>("device",Device);
+      if (Performer is not null) yield return new KeyValuePair<string,object>("performer",Performer);
+      if (Quantity is not null) yield return new KeyValuePair<string,object>("quantity",Quantity);
+      if (ReferenceSeq is not null) yield return new KeyValuePair<string,object>("referenceSeq",ReferenceSeq);
+      if (Variant?.Any() == true) yield return new KeyValuePair<string,object>("variant",Variant);
+      if (ObservedSeqElement is not null) yield return new KeyValuePair<string,object>("observedSeq",ObservedSeqElement);
+      if (Quality?.Any() == true) yield return new KeyValuePair<string,object>("quality",Quality);
+      if (ReadCoverageElement is not null) yield return new KeyValuePair<string,object>("readCoverage",ReadCoverageElement);
+      if (Repository?.Any() == true) yield return new KeyValuePair<string,object>("repository",Repository);
+      if (Pointer?.Any() == true) yield return new KeyValuePair<string,object>("pointer",Pointer);
+      if (StructureVariant?.Any() == true) yield return new KeyValuePair<string,object>("structureVariant",StructureVariant);
     }
 
   }

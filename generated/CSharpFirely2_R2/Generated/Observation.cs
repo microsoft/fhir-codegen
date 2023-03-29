@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Observation", IsResource=true)]
+  [FhirType("Observation","http://hl7.org/fhir/StructureDefinition/Observation", IsResource=true)]
   public partial class Observation : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -272,6 +272,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ReferenceRangeComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ReferenceRangeComponent;
@@ -330,6 +331,41 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "low":
+            value = Low;
+            return Low is not null;
+          case "high":
+            value = High;
+            return High is not null;
+          case "meaning":
+            value = Meaning;
+            return Meaning is not null;
+          case "age":
+            value = Age;
+            return Age is not null;
+          case "text":
+            value = TextElement;
+            return TextElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Low is not null) yield return new KeyValuePair<string,object>("low",Low);
+        if (High is not null) yield return new KeyValuePair<string,object>("high",High);
+        if (Meaning is not null) yield return new KeyValuePair<string,object>("meaning",Meaning);
+        if (Age is not null) yield return new KeyValuePair<string,object>("age",Age);
+        if (TextElement is not null) yield return new KeyValuePair<string,object>("text",TextElement);
+      }
+
     }
 
     /// <summary>
@@ -349,6 +385,7 @@ namespace Hl7.Fhir.Model
       /// has-member | derived-from | sequel-to | replaces | qualified-by | interfered-by
       /// </summary>
       [FhirElement("type", Order=40)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.Observation.ObservationRelationshipType> TypeElement
       {
@@ -412,6 +449,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new RelatedComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as RelatedComponent;
@@ -456,6 +494,29 @@ namespace Hl7.Fhir.Model
           if (TypeElement != null) yield return new ElementValue("type", TypeElement);
           if (Target != null) yield return new ElementValue("target", Target);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "type":
+            value = TypeElement;
+            return TypeElement is not null;
+          case "target":
+            value = Target;
+            return Target is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+        if (Target is not null) yield return new KeyValuePair<string,object>("target",Target);
       }
 
     }
@@ -551,6 +612,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ComponentComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ComponentComponent;
@@ -605,6 +667,37 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "code":
+            value = Code;
+            return Code is not null;
+          case "value":
+            value = Value;
+            return Value is not null;
+          case "dataAbsentReason":
+            value = DataAbsentReason;
+            return DataAbsentReason is not null;
+          case "referenceRange":
+            value = ReferenceRange;
+            return ReferenceRange?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+        if (Value is not null) yield return new KeyValuePair<string,object>("value",Value);
+        if (DataAbsentReason is not null) yield return new KeyValuePair<string,object>("dataAbsentReason",DataAbsentReason);
+        if (ReferenceRange?.Any() == true) yield return new KeyValuePair<string,object>("referenceRange",ReferenceRange);
+      }
+
     }
 
     /// <summary>
@@ -624,7 +717,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// registered | preliminary | final | amended +
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=100)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=100)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.Observation.ObservationStatus> StatusElement
@@ -980,6 +1074,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Observation());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Observation;
@@ -1096,6 +1191,101 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Related) { if (elem != null) yield return new ElementValue("related", elem); }
         foreach (var elem in Component) { if (elem != null) yield return new ElementValue("component", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "category":
+          value = Category;
+          return Category is not null;
+        case "code":
+          value = Code;
+          return Code is not null;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "effective":
+          value = Effective;
+          return Effective is not null;
+        case "issued":
+          value = IssuedElement;
+          return IssuedElement is not null;
+        case "performer":
+          value = Performer;
+          return Performer?.Any() == true;
+        case "value":
+          value = Value;
+          return Value is not null;
+        case "dataAbsentReason":
+          value = DataAbsentReason;
+          return DataAbsentReason is not null;
+        case "interpretation":
+          value = Interpretation;
+          return Interpretation is not null;
+        case "comments":
+          value = CommentsElement;
+          return CommentsElement is not null;
+        case "bodySite":
+          value = BodySite;
+          return BodySite is not null;
+        case "method":
+          value = Method;
+          return Method is not null;
+        case "specimen":
+          value = Specimen;
+          return Specimen is not null;
+        case "device":
+          value = Device;
+          return Device is not null;
+        case "referenceRange":
+          value = ReferenceRange;
+          return ReferenceRange?.Any() == true;
+        case "related":
+          value = Related;
+          return Related?.Any() == true;
+        case "component":
+          value = Component;
+          return Component?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Category is not null) yield return new KeyValuePair<string,object>("category",Category);
+      if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Effective is not null) yield return new KeyValuePair<string,object>("effective",Effective);
+      if (IssuedElement is not null) yield return new KeyValuePair<string,object>("issued",IssuedElement);
+      if (Performer?.Any() == true) yield return new KeyValuePair<string,object>("performer",Performer);
+      if (Value is not null) yield return new KeyValuePair<string,object>("value",Value);
+      if (DataAbsentReason is not null) yield return new KeyValuePair<string,object>("dataAbsentReason",DataAbsentReason);
+      if (Interpretation is not null) yield return new KeyValuePair<string,object>("interpretation",Interpretation);
+      if (CommentsElement is not null) yield return new KeyValuePair<string,object>("comments",CommentsElement);
+      if (BodySite is not null) yield return new KeyValuePair<string,object>("bodySite",BodySite);
+      if (Method is not null) yield return new KeyValuePair<string,object>("method",Method);
+      if (Specimen is not null) yield return new KeyValuePair<string,object>("specimen",Specimen);
+      if (Device is not null) yield return new KeyValuePair<string,object>("device",Device);
+      if (ReferenceRange?.Any() == true) yield return new KeyValuePair<string,object>("referenceRange",ReferenceRange);
+      if (Related?.Any() == true) yield return new KeyValuePair<string,object>("related",Related);
+      if (Component?.Any() == true) yield return new KeyValuePair<string,object>("component",Component);
     }
 
   }

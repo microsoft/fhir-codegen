@@ -71,6 +71,15 @@ public interface IPackageImportable
     /// <summary>Gets search parameters defined for all interactions.</summary>
     public Dictionary<string, FhirSearchParam> AllInteractionParameters { get; }
 
+    /// <summary>Gets known search parameters, keyed by URL.</summary>
+    public Dictionary<string, FhirSearchParam> SearchParametersByUrl { get; }
+
+    /// <summary>Gets known implementation guides, keyed by URL.</summary>
+    public Dictionary<string, FhirImplementationGuide> ImplementationGuidesByUrl { get; }
+
+    /// <summary>Gets known capability statements, keyed by URL.</summary>
+    public Dictionary<string, FhirCapabiltyStatement> CapabilitiesByUrl { get; }
+
     /// <summary>Gets or sets the name of the package release.</summary>
     public string ReleaseName { get; set; }
 
@@ -148,7 +157,17 @@ public interface IPackageImportable
     /// <param name="valueSet">Set the value belongs to.</param>
     public void AddValueSet(FhirValueSet valueSet);
 
+    /// <summary>Adds an implementation guide.</summary>
+    /// <param name="ig">The ig.</param>
     public void AddImplementationGuide(FhirImplementationGuide ig);
+
+    /// <summary>Adds a compartment.</summary>
+    /// <param name="compartment">The compartment.</param>
+    public void AddCompartment(FhirCompartment compartment);
+
+    /// <summary>Adds a capability statement.</summary>
+    /// <param name="cap">The capability.</param>
+    public void AddCapabilityStatement(FhirCapabiltyStatement cap);
 
     /// <summary>Adds a versioned parameter.</summary>
     /// <param name="searchMagicType">Type of the search magic.</param>
@@ -176,9 +195,11 @@ public interface IPackageImportable
     public bool HasValueSet(string urlOrKey);
 
     /// <summary>Parses resource an object from the given string.</summary>
-    /// <param name="json">The JSON.</param>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out] The resource object.</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
     /// <returns>A typed Resource object.</returns>
-    public object ParseResource(string json);
+    public bool TryParseResource(string json, out object resource, out string resourceType);
 
     /// <summary>Attempts to process resource.</summary>
     /// <param name="resource">[out] The resource object.</param>

@@ -5,9 +5,10 @@
 
 using System.Collections;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirTypeBase;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -26,6 +27,9 @@ public abstract class FhirUtils
 
     /// <summary>The RegEx remove duplicate whitespace.</summary>
     private static Regex _regexRemoveDuplicateWhitespace = new Regex(_regexRemoveDuplicateWhitespaceDefinition);
+
+    /// <summary>The RegEx ASCII escaping.</summary>
+    private static Regex _regexAsciiEscaping = new Regex("[^ -~]+");
 
     /// <summary>(Immutable) The underscore.</summary>
     public static readonly Dictionary<char[], string> ReplacementsWithUnderscores = new(ReplacementComparer.Default)
@@ -229,127 +233,52 @@ public abstract class FhirUtils
             throw new ArgumentNullException(nameof(name));
         }
 
+        if (reservedWords?.Contains(value) ?? false)
+        {
+            value = "Fhir" + concatenationDelimiter + value;
+        }
+
         switch (convention)
         {
             case NamingConvention.FhirDotNotation:
                 {
-                    if ((reservedWords != null) && reservedWords.Contains(value))
-                    {
-                        int i = value.LastIndexOf('.');
-                        if (i == -1)
-                        {
-                            value = "Fhir" + value;
-                        }
-                        else
-                        {
-                            value = value.Substring(0, i + 1) + "Fhir" + value.Substring(i + 1);
-                        }
-                    }
-
                     return value;
                 }
 
             case NamingConvention.PascalDotNotation:
                 {
-                    string[] components = ToPascal(value.Split('.', ' ', '_'));
-                    value = string.Join(".", components);
-
-                    if ((reservedWords != null) &&
-                        reservedWords.Contains(value))
-                    {
-                        components[components.Length - 1] =
-                            "Fhir" + components[components.Length - 1];
-
-                        return string.Join(".", components);
-                    }
-
-                    return value;
+                    return value.ToPascalDotCase(true);
                 }
 
             case NamingConvention.PascalCase:
                 {
-                    string[] components = ToPascal(value.Split('.', ' ', '_'));
-                    value = string.Join(concatenationDelimiter, components);
-
-                    if ((reservedWords != null) &&
-                        reservedWords.Contains(value))
-                    {
-                        components[components.Length - 1] =
-                            "Fhir" + components[components.Length - 1];
-
-                        return string.Join(concatenationDelimiter, components);
-                    }
-
-                    return value;
+                    return value.ToPascalCase(true);
                 }
 
             case NamingConvention.CamelCase:
                 {
-                    string[] components = ToCamel(value.Split('.', ' ', '_'));
-                    value = string.Join(concatenationDelimiter, components);
-
-                    if ((reservedWords != null) &&
-                        reservedWords.Contains(value))
-                    {
-                        components[components.Length - 1] =
-                            "fhir" + ToPascal(components[components.Length - 1]);
-
-                        return string.Join(concatenationDelimiter, components);
-                    }
-
-                    return value;
+                    return value.ToCamelCase(true, concatenationDelimiter);
                 }
 
             case NamingConvention.UpperCase:
                 {
-                    string[] components = ToUpperInvariant(value.Split('.', ' ', '_'));
-                    value = string.Join(concatenationDelimiter, components);
-
-                    if ((reservedWords != null) &&
-                        reservedWords.Contains(value))
-                    {
-                        components[components.Length - 1] = "FHIR" + components[components.Length - 1];
-
-                        return string.Join(concatenationDelimiter, components);
-                    }
-
-                    return value;
+                    return value.ToUpperCase(true, concatenationDelimiter);
                 }
 
             case NamingConvention.LowerCase:
                 {
-                    string[] components = ToLowerInvariant(value.Split('.', ' ', '_'));
-                    value = string.Join(concatenationDelimiter, components);
-
-                    if ((reservedWords != null) &&
-                        reservedWords.Contains(value))
-                    {
-                        components[components.Length - 1] = "fhir" + components[components.Length - 1];
-
-                        return string.Join(concatenationDelimiter, components);
-                    }
-
-                    return value;
+                    return value.ToLowerCase(true, concatenationDelimiter);
                 }
 
             case NamingConvention.LowerKebab:
                 {
-                    string[] components = ToLowerKebab(value.Split('.', ' ', '_'));
-                    value = string.Join('-', components);
-
-                    if ((reservedWords != null) &&
-                        reservedWords.Contains(value))
-                    {
-                        components[components.Length - 1] = "fhir" + components[components.Length - 1];
-
-                        return string.Join('-', components);
-                    }
-
-                    return value;
+                    return value.ToLowerKebabCase(true);
                 }
 
             case NamingConvention.None:
-                return value;
+                {
+                    return value;
+                }
 
             default:
                 throw new ArgumentException($"Invalid Naming Convention: {convention}");
@@ -370,39 +299,38 @@ public abstract class FhirUtils
         switch (convention)
         {
             case NamingConvention.FhirDotNotation:
-                return sanitized.Replace('_', '.');
+                {
+                    return sanitized.Replace('_', '.');
+                }
 
             case NamingConvention.PascalDotNotation:
                 {
-                    string[] components = ToPascal(sanitized.Split('_'));
-                    return string.Join(".", components);
+                    return sanitized.ToPascalDotCase(true);
                 }
 
             case NamingConvention.PascalCase:
                 {
-                    string[] components = ToPascal(sanitized.Split('_'));
-                    return string.Join(string.Empty, components);
+                    return sanitized.ToPascalCase(false);
                 }
 
             case NamingConvention.CamelCase:
                 {
-                    string[] components = ToCamel(sanitized.Split('_'));
-                    return string.Join(string.Empty, components);
+                    return sanitized.ToCamelCase(false);
                 }
 
             case NamingConvention.UpperCase:
                 {
-                    return sanitized.ToUpperInvariant();
+                    return sanitized.ToUpperCase(false);
                 }
 
             case NamingConvention.LowerCase:
                 {
-                    return sanitized.ToLowerInvariant();
+                    return sanitized.ToLowerCase(false);
                 }
 
             case NamingConvention.LowerKebab:
                 {
-                    return ToLowerKebab(sanitized);
+                    return sanitized.ToLowerKebabCase(false);
                 }
 
             case NamingConvention.None:
@@ -507,7 +435,6 @@ public abstract class FhirUtils
 
         value = value.Replace("\n", string.Empty);
 
-
         return value;
     }
 
@@ -539,9 +466,7 @@ public abstract class FhirUtils
     /// <returns>A string.</returns>
     public static string SanitizeToAscii(string value)
     {
-        string pattern = "[^ -~]+";
-        Regex reg_exp = new Regex(pattern);
-        return reg_exp.Replace(value, string.Empty);
+        return _regexAsciiEscaping.Replace(value, string.Empty);
     }
 
     /// <summary>Sanitize for property.</summary>

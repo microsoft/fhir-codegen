@@ -4,6 +4,8 @@
 // </copyright>
 
 using System.IO;
+using fhirCsR2.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using fhirModels = fhirCsR2.Models;
@@ -615,7 +617,11 @@ public sealed class FromR2 : IFhirConverter
             op.Base?.ReferenceField ?? string.Empty,
             op.Type,
             parameters,
-            op.Experimental == true);
+            op.Experimental == true,
+            op.Kind,
+            op.Text?.Div ?? string.Empty,
+            op.Text?.Status ?? string.Empty,
+            string.Empty);
 
         // add our parameter
         fhirVersionInfo.AddOperation(operation);
@@ -849,6 +855,8 @@ public sealed class FromR2 : IFhirConverter
             sd.Id,
             sd.Name,
             baseTypeName,
+            sd.Base ?? string.Empty,
+            sd.Version ?? string.Empty,
             new Uri(sd.Url),
             sd.Status,
             standardStatus,
@@ -857,7 +865,10 @@ public sealed class FromR2 : IFhirConverter
             descriptionShort,
             definition,
             comment,
-            regex);
+            regex,
+            sd.Text?.Div ?? string.Empty,
+            sd.Text?.Status ?? string.Empty,
+            sd.FhirVersion);
 
         // add to our dictionary of primitive types
         fhirVersionInfo.AddPrimitive(primitive);
@@ -1068,13 +1079,31 @@ public sealed class FromR2 : IFhirConverter
                 sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
                     ?.FirstOrDefault()?.ValueInteger;
 
+            Dictionary<string, FhirStructureDefMapping> structureMaps = new();
+
+            foreach (fhirModels.StructureDefinitionMapping mappingNode in sd.Mapping ?? Enumerable.Empty<fhirModels.StructureDefinitionMapping>())
+            {
+                structureMaps.Add(
+                    mappingNode.Identity,
+                    new()
+                    {
+                        Identity = mappingNode.Identity,
+                        CanonicalUri = mappingNode.Uri ?? string.Empty,
+                        Name = mappingNode.Name,
+                        Comment = mappingNode.Comments ?? string.Empty,
+                    });
+            }
+
             // create a new complex type object
             FhirComplex complex = new FhirComplex(
+                artifactClass,
                 sd.Id,
                 sd.Name,
-                string.Empty,
+                sd.Name,
                 string.Empty,
                 sd.ConstrainedType,
+                sd.Base ?? string.Empty,
+                sd.Version ?? string.Empty,
                 new Uri(sd.Url),
                 sd.Status,
                 standardStatus,
@@ -1083,9 +1112,14 @@ public sealed class FromR2 : IFhirConverter
                 descriptionShort,
                 definition,
                 string.Empty,
-                null,
                 contextElements,
-                sd.Abstract);
+                sd.Abstract,
+                string.Empty,
+                sd.Text?.Div ?? string.Empty,
+                sd.Text?.Status ?? string.Empty,
+                sd.FhirVersion ?? string.Empty,
+                structureMaps,
+                null);
 
             // check for a base definition
             if (!string.IsNullOrEmpty(sd.Base))
@@ -1145,6 +1179,7 @@ public sealed class FromR2 : IFhirConverter
                 {
                     string id = element.Id ?? element.Path;
                     string path = element.Path ?? element.Id;
+                    string basePath = element.Base?.Path ?? string.Empty;
                     Dictionary<string, FhirElementType> elementTypes = null;
                     string elementType = string.Empty;
                     bool isRootElement = false;
@@ -1258,8 +1293,10 @@ public sealed class FromR2 : IFhirConverter
                             parent.Elements.Add(
                                 path,
                                 new FhirElement(
+                                    complex,
                                     path,
                                     path,
+                                    basePath,
                                     string.Empty,
                                     null,
                                     parent.Elements.Count,
@@ -1316,7 +1353,13 @@ public sealed class FromR2 : IFhirConverter
                         if (parent.Elements.ContainsKey(path))
                         {
                             // add this slice to the field
-                            parent.Elements[path].AddSlice(sd.Url, sliceName);
+                            parent.Elements[path].AddSlice(
+                                sd.Url,
+                                sliceName,
+                                element.Slicing?.Description ?? string.Empty,
+                                string.Empty,
+                                string.Empty,
+                                parent);
                         }
 
                         // only slice parent has slice name
@@ -1428,18 +1471,30 @@ public sealed class FromR2 : IFhirConverter
                         }
                     }
 
-                    List<string> fwMapping = element.Mapping?.Where(x =>
-                        (x != null) &&
-                        x.Identity.Equals("w5", StringComparison.OrdinalIgnoreCase) &&
-                        x.Map.StartsWith("FiveWs", StringComparison.Ordinal) &&
-                        (!x.Map.Equals("FiveWs.subject[x]", StringComparison.Ordinal)))?
-                            .Select(x => x.Map).ToList();
+                    Dictionary<string, List<FhirElementDefMapping>> elementMaps = new();
 
-                    string fiveWs = ((fwMapping != null) && fwMapping.Any()) ? fwMapping[0] : string.Empty;
+                    foreach (fhirModels.ElementDefinitionMapping mappingNode in element.Mapping ?? Enumerable.Empty<fhirModels.ElementDefinitionMapping>())
+                    {
+                        if (!elementMaps.ContainsKey(mappingNode.Identity))
+                        {
+                            elementMaps.Add(mappingNode.Identity, new());
+                        }
+
+                        elementMaps[mappingNode.Identity].Add(
+                            new()
+                            {
+                                Identity = mappingNode.Identity,
+                                Language = mappingNode.Language ?? string.Empty,
+                                Map = mappingNode.Map,
+                                Comment = string.Empty,
+                            });
+                    }
 
                     FhirElement fhirElement = new FhirElement(
+                        complex,
                         id,
                         path,
+                        basePath,
                         explicitName,
                         null,
                         parent.Elements.Count,
@@ -1466,8 +1521,8 @@ public sealed class FromR2 : IFhirConverter
                         modifiesParent,
                         bindingStrength,
                         valueSet,
-                        fiveWs,
-                        FhirElement.ConvertFhirRepresentations(element.Representation));
+                        FhirElement.ConvertFhirRepresentations(element.Representation),
+                        elementMaps);
 
                     if (isRootElement)
                     {
@@ -1512,6 +1567,55 @@ public sealed class FromR2 : IFhirConverter
                         slicingDepths.Add(slicingDepth);
                         slicingPaths[slicingDepth] = element.Path;
                     }
+
+                    // look for additional constraints
+                    if ((element.Constraint != null) &&
+                        (element.Constraint.Count > 0))
+                    {
+                        foreach (fhirModels.ElementDefinitionConstraint con in element.Constraint)
+                        {
+                            bool isBestPractice = false;
+                            string explanation = string.Empty;
+
+                            if (con.Extension != null)
+                            {
+                                foreach (fhirModels.Extension ext in con.Extension)
+                                {
+                                    switch (ext.Url)
+                                    {
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
+                                            isBestPractice = ext.ValueBoolean == true;
+                                            break;
+
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
+                                            if (!string.IsNullOrEmpty(ext.ValueMarkdown))
+                                            {
+                                                explanation = ext.ValueMarkdown;
+                                            }
+                                            else
+                                            {
+                                                explanation = ext.ValueString;
+                                            }
+
+                                            break;
+                                    }
+                                }
+                            }
+
+                            fhirElement.AddConstraint(new FhirConstraint(
+                                con.Key,
+                                con.Requirements,
+                                con.Severity,
+                                null,
+                                con.Human,
+                                string.Empty,
+                                con.Xpath,
+                                isBestPractice,
+                                explanation,
+                                string.Empty,
+                                path));
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -1523,96 +1627,30 @@ public sealed class FromR2 : IFhirConverter
 
             if ((sd.Differential != null) &&
                 (sd.Differential.Element != null) &&
-                (sd.Differential.Element.Count > 0) &&
-                (sd.Differential.Element[0].Constraint != null) &&
-                (sd.Differential.Element[0].Constraint.Count > 0))
-            {
-                foreach (fhirModels.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
-                {
-                    bool isBestPractice = false;
-                    string explanation = string.Empty;
-
-                    if (con.Extension != null)
-                    {
-                        foreach (fhirModels.Extension ext in con.Extension)
-                        {
-                            switch (ext.Url)
-                            {
-                                case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
-                                    isBestPractice = ext.ValueBoolean == true;
-                                    break;
-
-                                case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
-                                    if (!string.IsNullOrEmpty(ext.ValueMarkdown))
-                                    {
-                                        explanation = ext.ValueMarkdown;
-                                    }
-                                    else
-                                    {
-                                        explanation = ext.ValueString;
-                                    }
-
-                                    break;
-                            }
-                        }
-                    }
-
-                    complex.AddConstraint(new FhirConstraint(
-                        con.Key,
-                        con.Severity,
-                        con.Human,
-                        string.Empty,
-                        con.Xpath,
-                        isBestPractice,
-                        explanation));
-                }
-            }
-
-            // TODO(ginoc): Review this hack to add fhir_comments to Element and persist it
-            if (complex.Id.Equals("Element", StringComparison.Ordinal))
-            {
-                complex.Elements.Add(
-                    "Element.fhir_comments",
-                    new FhirElement(
-                        "Element.fhir_comments",
-                        "Element.fhir_comments",
-                        string.Empty,
-                        null,
-                        int.MaxValue,
-                        "JSON-Serialization Comments - not an actual element",
-                        "JSON Serialization Comments - not an actual element",
-                        string.Empty,
-                        string.Empty,
-                        string.Empty,
-                        new Dictionary<string, FhirElementType>()
-                        {
-                            { "string", new FhirElementType("string") },
-                        },
-                        0,
-                        "*",
-                        false,
-                        string.Empty,
-                        false,
-                        false,
-                        true,
-                        string.Empty,
-                        null,
-                        string.Empty,
-                        null,
-                        string.Empty,
-                        null,
-                        false,
-                        false,
-                        string.Empty,
-                        string.Empty,
-                        null,
-                        null));
-            }
-
-            if ((sd.Differential != null) &&
-                (sd.Differential.Element != null) &&
                 (sd.Differential.Element.Count > 0))
             {
+                // look for mapping definitions
+                if ((sd.Differential.Element[0].Mapping != null) &&
+                    (sd.Differential.Element[0].Mapping.Count > 0))
+                {
+                    foreach (fhirModels.ElementDefinitionMapping mappingNode in sd.Differential.Element[0].Mapping)
+                    {
+                        if (!complex.RootElementMappings.ContainsKey(mappingNode.Identity))
+                        {
+                            complex.RootElementMappings.Add(mappingNode.Identity, new());
+                        }
+
+                        complex.RootElementMappings[mappingNode.Identity].Add(
+                            new()
+                            {
+                                Identity = mappingNode.Identity,
+                                Language = mappingNode.Language ?? string.Empty,
+                                Map = mappingNode.Map,
+                                Comment = string.Empty,
+                            });
+                    }
+                }
+
                 // look for additional constraints
                 if ((sd.Differential.Element[0].Constraint != null) &&
                     (sd.Differential.Element[0].Constraint.Count > 0))
@@ -1649,23 +1687,61 @@ public sealed class FromR2 : IFhirConverter
 
                         complex.AddConstraint(new FhirConstraint(
                             con.Key,
+                            con.Requirements,
                             con.Severity,
+                            null,
                             con.Human,
                             string.Empty,
                             con.Xpath,
                             isBestPractice,
-                            explanation));
+                            explanation,
+                            string.Empty,
+                            complex.Name));
                     }
                 }
+            }
 
-                // traverse all elements to flag proper 'differential' tags on elements
-                foreach (fhirModels.ElementDefinition dif in sd.Differential.Element)
-                {
-                    if (complex.Elements.ContainsKey(dif.Path))
-                    {
-                        complex.Elements[dif.Path].SetInDifferential();
-                    }
-                }
+            // TODO(ginoc): Review this hack to add fhir_comments to Element and persist it
+            if (complex.Id.Equals("Element", StringComparison.Ordinal))
+            {
+                complex.Elements.Add(
+                    "Element.fhir_comments",
+                    new FhirElement(
+                        complex,
+                        "Element.fhir_comments",
+                        "Element.fhir_comments",
+                        string.Empty,
+                        string.Empty,
+                        null,
+                        int.MaxValue,
+                        "JSON-Serialization Comments - not an actual element",
+                        "JSON Serialization Comments - not an actual element",
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
+                        new Dictionary<string, FhirElementType>()
+                        {
+                            { "string", new FhirElementType("string") },
+                        },
+                        0,
+                        "*",
+                        false,
+                        string.Empty,
+                        false,
+                        false,
+                        true,
+                        string.Empty,
+                        null,
+                        string.Empty,
+                        null,
+                        string.Empty,
+                        null,
+                        false,
+                        false,
+                        string.Empty,
+                        string.Empty,
+                        null,
+                        null));
             }
 
             switch (artifactClass)
@@ -1692,25 +1768,33 @@ public sealed class FromR2 : IFhirConverter
         }
     }
 
-    /// <summary>Parses resource an object from the given string.</summary>
-    /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
-    /// <param name="json">The JSON.</param>
+    /// <summary>Try to parse a resource object from the given string.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out].</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
     /// <returns>A typed Resource object.</returns>
-    object IFhirConverter.ParseResource(string json)
+    bool IFhirConverter.TryParseResource(string json, out object resource, out string resourceType)
     {
         try
         {
             // try to parse this JSON into a resource object
-            // return JsonConvert.DeserializeObject<fhirModels.Resource>(json, _jsonConverter);
-            // return JsonSerializer.Deserialize<fhirModels.Resource>(json);
-            return System.Text.Json.JsonSerializer.Deserialize<fhirModels.Resource>(
+            fhirModels.Resource parsed = System.Text.Json.JsonSerializer.Deserialize<fhirModels.Resource>(
                 json,
                 fhirSerialization.FhirSerializerOptions.Compact);
+
+            resource = parsed;
+            resourceType = parsed.ResourceType;
+            return true;
         }
         catch (Exception ex)
         {
+            _errors.Add($"Failed to parse resource: {ex.Message}");
+
             Console.WriteLine($"FromR2.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
-            throw;
+
+            resource = null;
+            resourceType = string.Empty;
+            return false;
         }
     }
 
@@ -1769,6 +1853,12 @@ public sealed class FromR2 : IFhirConverter
                 artifactClass = FhirArtifactClassEnum.ValueSet;
                 break;
 
+            case fhirModels.Conformance conformance:
+                ProcessMetadata(conformance, out _, string.Empty, fhirVersionInfo);
+                resourceCanonical = conformance.Url;
+                artifactClass = FhirArtifactClassEnum.CapabilityStatement;
+                break;
+
             default:
                 resourceCanonical = string.Empty;
                 artifactClass = FhirArtifactClassEnum.Unknown;
@@ -1790,22 +1880,29 @@ public sealed class FromR2 : IFhirConverter
         throw new NotImplementedException();
     }
 
-    /// <summary>Process a FHIR metadata resource into Server Information.</summary>
+    /// <summary>Process the metadata.</summary>
     /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
-    /// <param name="serverUrl"> URL of the server.</param>
-    /// <param name="serverInfo">[out] Information describing the server.</param>
-    void IFhirConverter.ProcessMetadata(
+    /// <param name="capabilityStatement">[out] Information describing the server.</param>
+    /// <param name="serverUrl"> (Optional) URL of the server.</param>
+    /// <param name="info">      (Optional) The information.</param>
+    private void ProcessMetadata(
         object metadata,
-        string serverUrl,
-        out FhirServerInfo serverInfo)
+        out FhirCapabiltyStatement capabilityStatement,
+        string serverUrl = "",
+        IPackageImportable info = null)
     {
         if (metadata == null)
         {
-            serverInfo = null;
+            capabilityStatement = null;
             return;
         }
 
         fhirModels.Conformance caps = metadata as fhirModels.Conformance;
+
+        string capId = caps.Id;
+        string capUrl = string.IsNullOrEmpty(serverUrl)
+            ? caps.Url
+            : serverUrl;
 
         string swName = string.Empty;
         string swVersion = string.Empty;
@@ -1828,9 +1925,9 @@ public sealed class FromR2 : IFhirConverter
         }
 
         List<string> serverInteractions = new List<string>();
-        Dictionary<string, FhirServerResourceInfo> resourceInteractions = new Dictionary<string, FhirServerResourceInfo>();
-        Dictionary<string, FhirServerSearchParam> serverSearchParams = new Dictionary<string, FhirServerSearchParam>();
-        Dictionary<string, FhirServerOperation> serverOperations = new Dictionary<string, FhirServerOperation>();
+        Dictionary<string, FhirCapResource> resourceInteractions = new Dictionary<string, FhirCapResource>();
+        Dictionary<string, FhirCapSearchParam> serverSearchParams = new Dictionary<string, FhirCapSearchParam>();
+        Dictionary<string, FhirCapOperation> serverOperations = new Dictionary<string, FhirCapOperation>();
 
         if ((caps.Rest != null) && (caps.Rest.Count > 0))
         {
@@ -1853,7 +1950,7 @@ public sealed class FromR2 : IFhirConverter
             {
                 foreach (fhirModels.ConformanceRestResource resource in rest.Resource)
                 {
-                    FhirServerResourceInfo resourceInfo = ParseServerRestResource(resource);
+                    FhirCapResource resourceInfo = ParseServerRestResource(resource);
 
                     if (resourceInteractions.ContainsKey(resourceInfo.ResourceType))
                     {
@@ -1877,11 +1974,12 @@ public sealed class FromR2 : IFhirConverter
 
                     serverSearchParams.Add(
                         sp.Name,
-                        new FhirServerSearchParam(
+                        new FhirCapSearchParam(
                             sp.Name,
                             sp.Definition,
                             sp.Type,
-                            sp.Documentation));
+                            sp.Documentation,
+                            string.Empty));
                 }
             }
 
@@ -1897,18 +1995,44 @@ public sealed class FromR2 : IFhirConverter
 
                     serverOperations.Add(
                         operation.Name,
-                        new FhirServerOperation(
+                        new FhirCapOperation(
                             operation.Name,
                             operation.Definition.ReferenceField,
+                            string.Empty,
                             string.Empty));
                 }
             }
         }
 
-        serverInfo = new FhirServerInfo(
+        string standardStatus =
+            caps.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status")
+                ?.FirstOrDefault()?.ValueCode;
+
+        int? fmmLevel =
+            caps.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
+                ?.FirstOrDefault()?.ValueInteger;
+
+        capabilityStatement = new FhirCapabiltyStatement(
             serverInteractions,
-            serverUrl,
+            null,
+            capId,
+            capUrl,
+            caps.Name,
+            caps.Name,
+            caps.Version,
+            caps.Status,
+            standardStatus,
+            fmmLevel,
+            caps.Experimental == true,
+            caps.Description,
+            caps.Text?.Div ?? string.Empty,
+            caps.Text?.Status ?? string.Empty,
             caps.FhirVersion,
+            caps.Kind,
+            caps.Format,
+            Array.Empty<string>(),
+            Array.Empty<string>(),
+            Array.Empty<string>(),
             swName,
             swVersion,
             swReleaseDate,
@@ -1916,20 +2040,47 @@ public sealed class FromR2 : IFhirConverter
             impUrl,
             null,
             null,
+            null,
+            null,
             resourceInteractions,
             serverSearchParams,
             serverOperations);
+
+        if (info != null)
+        {
+            info.AddCapabilityStatement(capabilityStatement);
+        }
+    }
+
+    /// <summary>Process a FHIR metadata resource into Server Information.</summary>
+    /// <param name="metadata">    The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+    /// <param name="serverUrl">   URL of the server.</param>
+    /// <param name="capabilities">[out] Capabilities of a server.</param>
+    void IFhirConverter.ProcessMetadata(
+        object metadata,
+        string serverUrl,
+        out FhirCapabiltyStatement capabilities)
+    {
+        if (metadata == null)
+        {
+            capabilities = null;
+            return;
+        }
+
+        ProcessMetadata(metadata, out capabilities, serverUrl);
+
+        return;
     }
 
     /// <summary>Parse server REST resource.</summary>
     /// <param name="resource">The resource.</param>
     /// <returns>A FhirServerResourceInfo.</returns>
-    private static FhirServerResourceInfo ParseServerRestResource(
+    private static FhirCapResource ParseServerRestResource(
         fhirModels.ConformanceRestResource resource)
     {
         List<string> interactions = new List<string>();
-        Dictionary<string, FhirServerSearchParam> searchParams = new Dictionary<string, FhirServerSearchParam>();
-        Dictionary<string, FhirServerOperation> operations = new Dictionary<string, FhirServerOperation>();
+        Dictionary<string, FhirCapSearchParam> searchParams = new Dictionary<string, FhirCapSearchParam>();
+        Dictionary<string, FhirCapOperation> operations = new Dictionary<string, FhirCapOperation>();
 
         if (resource.Interaction != null)
         {
@@ -1955,17 +2106,21 @@ public sealed class FromR2 : IFhirConverter
 
                 searchParams.Add(
                     sp.Name,
-                    new FhirServerSearchParam(
+                    new FhirCapSearchParam(
                         sp.Name,
                         sp.Definition,
                         sp.Type,
-                        sp.Documentation));
+                        sp.Documentation,
+                        string.Empty));
             }
         }
 
-        return new FhirServerResourceInfo(
-            interactions,
+        return new FhirCapResource(
             resource.Type,
+            string.Empty,
+            interactions,
+            null,
+            null,
             null,
             resource.Versioning,
             resource.ReadHistory,
@@ -1973,12 +2128,16 @@ public sealed class FromR2 : IFhirConverter
             resource.ConditionalCreate,
             null,
             resource.ConditionalUpdate,
+            null,
             resource.ConditionalDelete,
             null,
             resource.SearchInclude,
+            null,
             resource.SearchRevInclude,
+            null,
             searchParams,
-            operations);
+            operations,
+            Array.Empty<FhirCapSearchParamCombination>());
     }
 
     /// <summary>Gets default value if present.</summary>

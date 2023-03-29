@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Procedure", IsResource=true)]
+  [FhirType("Procedure","http://hl7.org/fhir/StructureDefinition/Procedure", IsResource=true)]
   public partial class Procedure : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -150,6 +150,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new PerformerComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as PerformerComponent;
@@ -194,6 +195,29 @@ namespace Hl7.Fhir.Model
           if (Actor != null) yield return new ElementValue("actor", Actor);
           if (Role != null) yield return new ElementValue("role", Role);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "actor":
+            value = Actor;
+            return Actor is not null;
+          case "role":
+            value = Role;
+            return Role is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Actor is not null) yield return new KeyValuePair<string,object>("actor",Actor);
+        if (Role is not null) yield return new KeyValuePair<string,object>("role",Role);
       }
 
     }
@@ -260,6 +284,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new FocalDeviceComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as FocalDeviceComponent;
@@ -306,6 +331,29 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "action":
+            value = Action;
+            return Action is not null;
+          case "manipulated":
+            value = Manipulated;
+            return Manipulated is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Action is not null) yield return new KeyValuePair<string,object>("action",Action);
+        if (Manipulated is not null) yield return new KeyValuePair<string,object>("manipulated",Manipulated);
+      }
+
     }
 
     /// <summary>
@@ -341,7 +389,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// in-progress | aborted | completed | entered-in-error
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=110)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=110)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.Procedure.ProcedureStatus> StatusElement
@@ -400,7 +449,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// True if procedure was not performed as scheduled
     /// </summary>
-    [FhirElement("notPerformed", InSummary=true, Order=140)]
+    [FhirElement("notPerformed", InSummary=true, IsModifier=true, Order=140)]
     [DataMember]
     public Hl7.Fhir.Model.FhirBoolean NotPerformedElement
     {
@@ -461,6 +510,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("reason", InSummary=true, Order=170, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Condition")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [DataMember]
     public Hl7.Fhir.Model.DataType Reason
@@ -685,6 +735,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Procedure());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Procedure;
@@ -805,6 +856,105 @@ namespace Hl7.Fhir.Model
         foreach (var elem in FocalDevice) { if (elem != null) yield return new ElementValue("focalDevice", elem); }
         foreach (var elem in Used) { if (elem != null) yield return new ElementValue("used", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "category":
+          value = Category;
+          return Category is not null;
+        case "code":
+          value = Code;
+          return Code is not null;
+        case "notPerformed":
+          value = NotPerformedElement;
+          return NotPerformedElement is not null;
+        case "reasonNotPerformed":
+          value = ReasonNotPerformed;
+          return ReasonNotPerformed?.Any() == true;
+        case "bodySite":
+          value = BodySite;
+          return BodySite?.Any() == true;
+        case "reason":
+          value = Reason;
+          return Reason is not null;
+        case "performer":
+          value = Performer;
+          return Performer?.Any() == true;
+        case "performed":
+          value = Performed;
+          return Performed is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "location":
+          value = Location;
+          return Location is not null;
+        case "outcome":
+          value = Outcome;
+          return Outcome is not null;
+        case "report":
+          value = Report;
+          return Report?.Any() == true;
+        case "complication":
+          value = Complication;
+          return Complication?.Any() == true;
+        case "followUp":
+          value = FollowUp;
+          return FollowUp?.Any() == true;
+        case "request":
+          value = Request;
+          return Request is not null;
+        case "notes":
+          value = Notes;
+          return Notes?.Any() == true;
+        case "focalDevice":
+          value = FocalDevice;
+          return FocalDevice?.Any() == true;
+        case "used":
+          value = Used;
+          return Used?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Category is not null) yield return new KeyValuePair<string,object>("category",Category);
+      if (Code is not null) yield return new KeyValuePair<string,object>("code",Code);
+      if (NotPerformedElement is not null) yield return new KeyValuePair<string,object>("notPerformed",NotPerformedElement);
+      if (ReasonNotPerformed?.Any() == true) yield return new KeyValuePair<string,object>("reasonNotPerformed",ReasonNotPerformed);
+      if (BodySite?.Any() == true) yield return new KeyValuePair<string,object>("bodySite",BodySite);
+      if (Reason is not null) yield return new KeyValuePair<string,object>("reason",Reason);
+      if (Performer?.Any() == true) yield return new KeyValuePair<string,object>("performer",Performer);
+      if (Performed is not null) yield return new KeyValuePair<string,object>("performed",Performed);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Location is not null) yield return new KeyValuePair<string,object>("location",Location);
+      if (Outcome is not null) yield return new KeyValuePair<string,object>("outcome",Outcome);
+      if (Report?.Any() == true) yield return new KeyValuePair<string,object>("report",Report);
+      if (Complication?.Any() == true) yield return new KeyValuePair<string,object>("complication",Complication);
+      if (FollowUp?.Any() == true) yield return new KeyValuePair<string,object>("followUp",FollowUp);
+      if (Request is not null) yield return new KeyValuePair<string,object>("request",Request);
+      if (Notes?.Any() == true) yield return new KeyValuePair<string,object>("notes",Notes);
+      if (FocalDevice?.Any() == true) yield return new KeyValuePair<string,object>("focalDevice",FocalDevice);
+      if (Used?.Any() == true) yield return new KeyValuePair<string,object>("used",Used);
     }
 
   }

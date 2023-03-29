@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Patient", IsResource=true)]
+  [FhirType("Patient","http://hl7.org/fhir/StructureDefinition/Patient", IsResource=true)]
   public partial class Patient : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -160,6 +160,7 @@ namespace Hl7.Fhir.Model
       /// male | female | other | unknown
       /// </summary>
       [FhirElement("gender", Order=80)]
+      [DeclaredType(Type = typeof(Code))]
       [DataMember]
       public Code<Hl7.Fhir.Model.AdministrativeGender> GenderElement
       {
@@ -240,6 +241,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ContactComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ContactComponent;
@@ -304,6 +306,49 @@ namespace Hl7.Fhir.Model
           if (Organization != null) yield return new ElementValue("organization", Organization);
           if (Period != null) yield return new ElementValue("period", Period);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "relationship":
+            value = Relationship;
+            return Relationship?.Any() == true;
+          case "name":
+            value = Name;
+            return Name is not null;
+          case "telecom":
+            value = Telecom;
+            return Telecom?.Any() == true;
+          case "address":
+            value = Address;
+            return Address is not null;
+          case "gender":
+            value = GenderElement;
+            return GenderElement is not null;
+          case "organization":
+            value = Organization;
+            return Organization is not null;
+          case "period":
+            value = Period;
+            return Period is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Relationship?.Any() == true) yield return new KeyValuePair<string,object>("relationship",Relationship);
+        if (Name is not null) yield return new KeyValuePair<string,object>("name",Name);
+        if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
+        if (Address is not null) yield return new KeyValuePair<string,object>("address",Address);
+        if (GenderElement is not null) yield return new KeyValuePair<string,object>("gender",GenderElement);
+        if (Organization is not null) yield return new KeyValuePair<string,object>("organization",Organization);
+        if (Period is not null) yield return new KeyValuePair<string,object>("period",Period);
       }
 
     }
@@ -382,6 +427,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new AnimalComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as AnimalComponent;
@@ -430,6 +476,33 @@ namespace Hl7.Fhir.Model
           if (Breed != null) yield return new ElementValue("breed", Breed);
           if (GenderStatus != null) yield return new ElementValue("genderStatus", GenderStatus);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "species":
+            value = Species;
+            return Species is not null;
+          case "breed":
+            value = Breed;
+            return Breed is not null;
+          case "genderStatus":
+            value = GenderStatus;
+            return GenderStatus is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Species is not null) yield return new KeyValuePair<string,object>("species",Species);
+        if (Breed is not null) yield return new KeyValuePair<string,object>("breed",Breed);
+        if (GenderStatus is not null) yield return new KeyValuePair<string,object>("genderStatus",GenderStatus);
       }
 
     }
@@ -512,6 +585,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new CommunicationComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as CommunicationComponent;
@@ -558,6 +632,29 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "language":
+            value = Language;
+            return Language is not null;
+          case "preferred":
+            value = PreferredElement;
+            return PreferredElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Language is not null) yield return new KeyValuePair<string,object>("language",Language);
+        if (PreferredElement is not null) yield return new KeyValuePair<string,object>("preferred",PreferredElement);
+      }
+
     }
 
     /// <summary>
@@ -593,6 +690,7 @@ namespace Hl7.Fhir.Model
       /// replaced-by | replaces | refer | seealso - type of link
       /// </summary>
       [FhirElement("type", InSummary=true, Order=50)]
+      [DeclaredType(Type = typeof(Code))]
       [Cardinality(Min=1,Max=1)]
       [DataMember]
       public Code<Hl7.Fhir.Model.Patient.LinkType> TypeElement
@@ -641,6 +739,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new LinkComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as LinkComponent;
@@ -687,6 +786,29 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "other":
+            value = Other;
+            return Other is not null;
+          case "type":
+            value = TypeElement;
+            return TypeElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Other is not null) yield return new KeyValuePair<string,object>("other",Other);
+        if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      }
+
     }
 
     /// <summary>
@@ -706,7 +828,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Whether this patient's record is in active use
     /// </summary>
-    [FhirElement("active", InSummary=true, Order=100)]
+    [FhirElement("active", InSummary=true, IsModifier=true, Order=100)]
     [DataMember]
     public Hl7.Fhir.Model.FhirBoolean ActiveElement
     {
@@ -766,6 +888,7 @@ namespace Hl7.Fhir.Model
     /// male | female | other | unknown
     /// </summary>
     [FhirElement("gender", InSummary=true, Order=130)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.AdministrativeGender> GenderElement
     {
@@ -827,7 +950,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Indicates if the individual is deceased or not
     /// </summary>
-    [FhirElement("deceased", InSummary=true, Order=150, Choice=ChoiceType.DatatypeChoice)]
+    [FhirElement("deceased", InSummary=true, IsModifier=true, Order=150, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
     [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.FhirDateTime))]
     [DataMember]
@@ -912,7 +1035,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// This patient is known to be an animal (non-human)
     /// </summary>
-    [FhirElement("animal", InSummary=true, Order=210)]
+    [FhirElement("animal", InSummary=true, IsModifier=true, Order=210)]
     [DataMember]
     public Hl7.Fhir.Model.Patient.AnimalComponent Animal
     {
@@ -970,7 +1093,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Link to another patient resource that concerns the same actual person
     /// </summary>
-    [FhirElement("link", InSummary=true, Order=250)]
+    [FhirElement("link", InSummary=true, IsModifier=true, Order=250)]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Hl7.Fhir.Model.Patient.LinkComponent> Link
@@ -1016,6 +1139,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Patient());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Patient;
@@ -1120,6 +1244,89 @@ namespace Hl7.Fhir.Model
         if (ManagingOrganization != null) yield return new ElementValue("managingOrganization", ManagingOrganization);
         foreach (var elem in Link) { if (elem != null) yield return new ElementValue("link", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "active":
+          value = ActiveElement;
+          return ActiveElement is not null;
+        case "name":
+          value = Name;
+          return Name?.Any() == true;
+        case "telecom":
+          value = Telecom;
+          return Telecom?.Any() == true;
+        case "gender":
+          value = GenderElement;
+          return GenderElement is not null;
+        case "birthDate":
+          value = BirthDateElement;
+          return BirthDateElement is not null;
+        case "deceased":
+          value = Deceased;
+          return Deceased is not null;
+        case "address":
+          value = Address;
+          return Address?.Any() == true;
+        case "maritalStatus":
+          value = MaritalStatus;
+          return MaritalStatus is not null;
+        case "multipleBirth":
+          value = MultipleBirth;
+          return MultipleBirth is not null;
+        case "photo":
+          value = Photo;
+          return Photo?.Any() == true;
+        case "contact":
+          value = Contact;
+          return Contact?.Any() == true;
+        case "animal":
+          value = Animal;
+          return Animal is not null;
+        case "communication":
+          value = Communication;
+          return Communication?.Any() == true;
+        case "generalPractitioner":
+          value = GeneralPractitioner;
+          return GeneralPractitioner?.Any() == true;
+        case "managingOrganization":
+          value = ManagingOrganization;
+          return ManagingOrganization is not null;
+        case "link":
+          value = Link;
+          return Link?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (ActiveElement is not null) yield return new KeyValuePair<string,object>("active",ActiveElement);
+      if (Name?.Any() == true) yield return new KeyValuePair<string,object>("name",Name);
+      if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
+      if (GenderElement is not null) yield return new KeyValuePair<string,object>("gender",GenderElement);
+      if (BirthDateElement is not null) yield return new KeyValuePair<string,object>("birthDate",BirthDateElement);
+      if (Deceased is not null) yield return new KeyValuePair<string,object>("deceased",Deceased);
+      if (Address?.Any() == true) yield return new KeyValuePair<string,object>("address",Address);
+      if (MaritalStatus is not null) yield return new KeyValuePair<string,object>("maritalStatus",MaritalStatus);
+      if (MultipleBirth is not null) yield return new KeyValuePair<string,object>("multipleBirth",MultipleBirth);
+      if (Photo?.Any() == true) yield return new KeyValuePair<string,object>("photo",Photo);
+      if (Contact?.Any() == true) yield return new KeyValuePair<string,object>("contact",Contact);
+      if (Animal is not null) yield return new KeyValuePair<string,object>("animal",Animal);
+      if (Communication?.Any() == true) yield return new KeyValuePair<string,object>("communication",Communication);
+      if (GeneralPractitioner?.Any() == true) yield return new KeyValuePair<string,object>("generalPractitioner",GeneralPractitioner);
+      if (ManagingOrganization is not null) yield return new KeyValuePair<string,object>("managingOrganization",ManagingOrganization);
+      if (Link?.Any() == true) yield return new KeyValuePair<string,object>("link",Link);
     }
 
   }

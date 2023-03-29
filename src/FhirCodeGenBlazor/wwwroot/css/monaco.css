@@ -1,0 +1,4 @@
+﻿.monaco-editor-container {
+    height: calc(50vh);
+    width: calc(100vw - 2em);
+}

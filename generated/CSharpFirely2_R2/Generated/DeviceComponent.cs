@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("DeviceComponent", IsResource=true)]
+  [FhirType("DeviceComponent","http://hl7.org/fhir/StructureDefinition/DeviceComponent", IsResource=true)]
   public partial class DeviceComponent : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -222,6 +222,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ProductionSpecificationComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ProductionSpecificationComponent;
@@ -270,6 +271,33 @@ namespace Hl7.Fhir.Model
           if (ComponentId != null) yield return new ElementValue("componentId", ComponentId);
           if (ProductionSpecElement != null) yield return new ElementValue("productionSpec", ProductionSpecElement);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "specType":
+            value = SpecType;
+            return SpecType is not null;
+          case "componentId":
+            value = ComponentId;
+            return ComponentId is not null;
+          case "productionSpec":
+            value = ProductionSpecElement;
+            return ProductionSpecElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (SpecType is not null) yield return new KeyValuePair<string,object>("specType",SpecType);
+        if (ComponentId is not null) yield return new KeyValuePair<string,object>("componentId",ComponentId);
+        if (ProductionSpecElement is not null) yield return new KeyValuePair<string,object>("productionSpec",ProductionSpecElement);
       }
 
     }
@@ -395,6 +423,7 @@ namespace Hl7.Fhir.Model
     /// other | chemical | electrical | impedance | nuclear | optical | thermal | biological | mechanical | acoustical | manual+
     /// </summary>
     [FhirElement("measurementPrinciple", InSummary=true, Order=160)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.DeviceComponent.Measmnt_Principle> MeasurementPrincipleElement
     {
@@ -477,6 +506,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new DeviceComponent());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as DeviceComponent;
@@ -553,6 +583,61 @@ namespace Hl7.Fhir.Model
         foreach (var elem in ProductionSpecification) { if (elem != null) yield return new ElementValue("productionSpecification", elem); }
         if (LanguageCode != null) yield return new ElementValue("languageCode", LanguageCode);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier is not null;
+        case "lastSystemChange":
+          value = LastSystemChangeElement;
+          return LastSystemChangeElement is not null;
+        case "source":
+          value = Source;
+          return Source is not null;
+        case "parent":
+          value = Parent;
+          return Parent is not null;
+        case "operationalStatus":
+          value = OperationalStatus;
+          return OperationalStatus?.Any() == true;
+        case "parameterGroup":
+          value = ParameterGroup;
+          return ParameterGroup is not null;
+        case "measurementPrinciple":
+          value = MeasurementPrincipleElement;
+          return MeasurementPrincipleElement is not null;
+        case "productionSpecification":
+          value = ProductionSpecification;
+          return ProductionSpecification?.Any() == true;
+        case "languageCode":
+          value = LanguageCode;
+          return LanguageCode is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (LastSystemChangeElement is not null) yield return new KeyValuePair<string,object>("lastSystemChange",LastSystemChangeElement);
+      if (Source is not null) yield return new KeyValuePair<string,object>("source",Source);
+      if (Parent is not null) yield return new KeyValuePair<string,object>("parent",Parent);
+      if (OperationalStatus?.Any() == true) yield return new KeyValuePair<string,object>("operationalStatus",OperationalStatus);
+      if (ParameterGroup is not null) yield return new KeyValuePair<string,object>("parameterGroup",ParameterGroup);
+      if (MeasurementPrincipleElement is not null) yield return new KeyValuePair<string,object>("measurementPrinciple",MeasurementPrincipleElement);
+      if (ProductionSpecification?.Any() == true) yield return new KeyValuePair<string,object>("productionSpecification",ProductionSpecification);
+      if (LanguageCode is not null) yield return new KeyValuePair<string,object>("languageCode",LanguageCode);
     }
 
   }

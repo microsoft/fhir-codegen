@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("SearchParameter", IsResource=true)]
+  [FhirType("SearchParameter","http://hl7.org/fhir/StructureDefinition/SearchParameter", IsResource=true)]
   public partial class SearchParameter : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -173,6 +173,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new ContactComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as ContactComponent;
@@ -217,6 +218,29 @@ namespace Hl7.Fhir.Model
           if (NameElement != null) yield return new ElementValue("name", NameElement);
           foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", elem); }
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "name":
+            value = NameElement;
+            return NameElement is not null;
+          case "telecom":
+            value = Telecom;
+            return Telecom?.Any() == true;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+        if (Telecom?.Any() == true) yield return new KeyValuePair<string,object>("telecom",Telecom);
       }
 
     }
@@ -288,7 +312,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// draft | active | retired
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=110)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=110)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.ConformanceResourceStatus> StatusElement
     {
@@ -490,6 +515,7 @@ namespace Hl7.Fhir.Model
     /// The resource type this search parameter applies to
     /// </summary>
     [FhirElement("base", InSummary=true, Order=180)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.ResourceType> BaseElement
@@ -522,6 +548,7 @@ namespace Hl7.Fhir.Model
     /// number | date | string | token | reference | composite | quantity | uri
     /// </summary>
     [FhirElement("type", InSummary=true, Order=190)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.SearchParamType> TypeElement
@@ -617,6 +644,7 @@ namespace Hl7.Fhir.Model
     /// normal | phonetic | nearby | distance | other
     /// </summary>
     [FhirElement("xpathUsage", Order=220)]
+    [DeclaredType(Type = typeof(Code))]
     [DataMember]
     public Code<Hl7.Fhir.Model.SearchParameter.XPathUsageType> XpathUsageElement
     {
@@ -648,6 +676,7 @@ namespace Hl7.Fhir.Model
     /// Types of resource (if a resource reference)
     /// </summary>
     [FhirElement("target", Order=230)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=0,Max=-1)]
     [DataMember]
     public List<Code<Hl7.Fhir.Model.ResourceType>> TargetElement
@@ -709,6 +738,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new SearchParameter());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as SearchParameter;
@@ -805,6 +835,81 @@ namespace Hl7.Fhir.Model
         if (XpathUsageElement != null) yield return new ElementValue("xpathUsage", XpathUsageElement);
         foreach (var elem in TargetElement) { if (elem != null) yield return new ElementValue("target", elem); }
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "url":
+          value = UrlElement;
+          return UrlElement is not null;
+        case "name":
+          value = NameElement;
+          return NameElement is not null;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "experimental":
+          value = ExperimentalElement;
+          return ExperimentalElement is not null;
+        case "publisher":
+          value = PublisherElement;
+          return PublisherElement is not null;
+        case "contact":
+          value = Contact;
+          return Contact?.Any() == true;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "requirements":
+          value = RequirementsElement;
+          return RequirementsElement is not null;
+        case "code":
+          value = CodeElement;
+          return CodeElement is not null;
+        case "base":
+          value = BaseElement;
+          return BaseElement is not null;
+        case "type":
+          value = TypeElement;
+          return TypeElement is not null;
+        case "description":
+          value = DescriptionElement;
+          return DescriptionElement is not null;
+        case "xpath":
+          value = XpathElement;
+          return XpathElement is not null;
+        case "xpathUsage":
+          value = XpathUsageElement;
+          return XpathUsageElement is not null;
+        case "target":
+          value = TargetElement;
+          return TargetElement?.Any() == true;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (UrlElement is not null) yield return new KeyValuePair<string,object>("url",UrlElement);
+      if (NameElement is not null) yield return new KeyValuePair<string,object>("name",NameElement);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (ExperimentalElement is not null) yield return new KeyValuePair<string,object>("experimental",ExperimentalElement);
+      if (PublisherElement is not null) yield return new KeyValuePair<string,object>("publisher",PublisherElement);
+      if (Contact?.Any() == true) yield return new KeyValuePair<string,object>("contact",Contact);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (RequirementsElement is not null) yield return new KeyValuePair<string,object>("requirements",RequirementsElement);
+      if (CodeElement is not null) yield return new KeyValuePair<string,object>("code",CodeElement);
+      if (BaseElement is not null) yield return new KeyValuePair<string,object>("base",BaseElement);
+      if (TypeElement is not null) yield return new KeyValuePair<string,object>("type",TypeElement);
+      if (DescriptionElement is not null) yield return new KeyValuePair<string,object>("description",DescriptionElement);
+      if (XpathElement is not null) yield return new KeyValuePair<string,object>("xpath",XpathElement);
+      if (XpathUsageElement is not null) yield return new KeyValuePair<string,object>("xpathUsage",XpathUsageElement);
+      if (TargetElement?.Any() == true) yield return new KeyValuePair<string,object>("target",TargetElement);
     }
 
   }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("MedicationAdministration", IsResource=true)]
+  [FhirType("MedicationAdministration","http://hl7.org/fhir/StructureDefinition/MedicationAdministration", IsResource=true)]
   public partial class MedicationAdministration : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -104,6 +104,7 @@ namespace Hl7.Fhir.Model
       /// </summary>
       [FhirElement("site", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
       [CLSCompliant(false)]
+      [References("BodySite")]
       [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
       [DataMember]
       public Hl7.Fhir.Model.DataType Site
@@ -192,6 +193,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new DosageComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as DosageComponent;
@@ -254,6 +256,45 @@ namespace Hl7.Fhir.Model
         }
       }
 
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "text":
+            value = TextElement;
+            return TextElement is not null;
+          case "site":
+            value = Site;
+            return Site is not null;
+          case "route":
+            value = Route;
+            return Route is not null;
+          case "method":
+            value = Method;
+            return Method is not null;
+          case "quantity":
+            value = Quantity;
+            return Quantity is not null;
+          case "rate":
+            value = Rate;
+            return Rate is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (TextElement is not null) yield return new KeyValuePair<string,object>("text",TextElement);
+        if (Site is not null) yield return new KeyValuePair<string,object>("site",Site);
+        if (Route is not null) yield return new KeyValuePair<string,object>("route",Route);
+        if (Method is not null) yield return new KeyValuePair<string,object>("method",Method);
+        if (Quantity is not null) yield return new KeyValuePair<string,object>("quantity",Quantity);
+        if (Rate is not null) yield return new KeyValuePair<string,object>("rate",Rate);
+      }
+
     }
 
     /// <summary>
@@ -273,7 +314,8 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// in-progress | on-hold | completed | entered-in-error | stopped
     /// </summary>
-    [FhirElement("status", InSummary=true, Order=100)]
+    [FhirElement("status", InSummary=true, IsModifier=true, Order=100)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.MedicationAdministrationStatus> StatusElement
@@ -366,7 +408,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// True if medication not administered
     /// </summary>
-    [FhirElement("wasNotGiven", InSummary=true, Order=150)]
+    [FhirElement("wasNotGiven", InSummary=true, IsModifier=true, Order=150)]
     [DataMember]
     public Hl7.Fhir.Model.FhirBoolean WasNotGivenElement
     {
@@ -443,6 +485,7 @@ namespace Hl7.Fhir.Model
     /// </summary>
     [FhirElement("medication", InSummary=true, Order=190, Choice=ChoiceType.DatatypeChoice)]
     [CLSCompliant(false)]
+    [References("Medication")]
     [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
@@ -546,6 +589,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new MedicationAdministration());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as MedicationAdministration;
@@ -638,6 +682,77 @@ namespace Hl7.Fhir.Model
         if (NoteElement != null) yield return new ElementValue("note", NoteElement);
         if (Dosage != null) yield return new ElementValue("dosage", Dosage);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "status":
+          value = StatusElement;
+          return StatusElement is not null;
+        case "patient":
+          value = Patient;
+          return Patient is not null;
+        case "practitioner":
+          value = Practitioner;
+          return Practitioner is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "prescription":
+          value = Prescription;
+          return Prescription is not null;
+        case "wasNotGiven":
+          value = WasNotGivenElement;
+          return WasNotGivenElement is not null;
+        case "reasonNotGiven":
+          value = ReasonNotGiven;
+          return ReasonNotGiven?.Any() == true;
+        case "reasonGiven":
+          value = ReasonGiven;
+          return ReasonGiven?.Any() == true;
+        case "effectiveTime":
+          value = EffectiveTime;
+          return EffectiveTime is not null;
+        case "medication":
+          value = Medication;
+          return Medication is not null;
+        case "device":
+          value = Device;
+          return Device?.Any() == true;
+        case "note":
+          value = NoteElement;
+          return NoteElement is not null;
+        case "dosage":
+          value = Dosage;
+          return Dosage is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (StatusElement is not null) yield return new KeyValuePair<string,object>("status",StatusElement);
+      if (Patient is not null) yield return new KeyValuePair<string,object>("patient",Patient);
+      if (Practitioner is not null) yield return new KeyValuePair<string,object>("practitioner",Practitioner);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Prescription is not null) yield return new KeyValuePair<string,object>("prescription",Prescription);
+      if (WasNotGivenElement is not null) yield return new KeyValuePair<string,object>("wasNotGiven",WasNotGivenElement);
+      if (ReasonNotGiven?.Any() == true) yield return new KeyValuePair<string,object>("reasonNotGiven",ReasonNotGiven);
+      if (ReasonGiven?.Any() == true) yield return new KeyValuePair<string,object>("reasonGiven",ReasonGiven);
+      if (EffectiveTime is not null) yield return new KeyValuePair<string,object>("effectiveTime",EffectiveTime);
+      if (Medication is not null) yield return new KeyValuePair<string,object>("medication",Medication);
+      if (Device?.Any() == true) yield return new KeyValuePair<string,object>("device",Device);
+      if (NoteElement is not null) yield return new KeyValuePair<string,object>("note",NoteElement);
+      if (Dosage is not null) yield return new KeyValuePair<string,object>("dosage",Dosage);
     }
 
   }

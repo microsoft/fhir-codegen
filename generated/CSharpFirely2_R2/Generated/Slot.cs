@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("Slot", IsResource=true)]
+  [FhirType("Slot","http://hl7.org/fhir/StructureDefinition/Slot", IsResource=true)]
   public partial class Slot : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -136,6 +136,7 @@ namespace Hl7.Fhir.Model
     /// busy | free | busy-unavailable | busy-tentative
     /// </summary>
     [FhirElement("freeBusyType", InSummary=true, Order=120)]
+    [DeclaredType(Type = typeof(Code))]
     [Cardinality(Min=1,Max=1)]
     [DataMember]
     public Code<Hl7.Fhir.Model.Slot.SlotStatus> FreeBusyTypeElement
@@ -316,6 +317,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new Slot());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as Slot;
@@ -384,6 +386,53 @@ namespace Hl7.Fhir.Model
         if (OverbookedElement != null) yield return new ElementValue("overbooked", OverbookedElement);
         if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "identifier":
+          value = Identifier;
+          return Identifier?.Any() == true;
+        case "type":
+          value = Type;
+          return Type is not null;
+        case "schedule":
+          value = Schedule;
+          return Schedule is not null;
+        case "freeBusyType":
+          value = FreeBusyTypeElement;
+          return FreeBusyTypeElement is not null;
+        case "start":
+          value = StartElement;
+          return StartElement is not null;
+        case "end":
+          value = EndElement;
+          return EndElement is not null;
+        case "overbooked":
+          value = OverbookedElement;
+          return OverbookedElement is not null;
+        case "comment":
+          value = CommentElement;
+          return CommentElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Identifier?.Any() == true) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Type is not null) yield return new KeyValuePair<string,object>("type",Type);
+      if (Schedule is not null) yield return new KeyValuePair<string,object>("schedule",Schedule);
+      if (FreeBusyTypeElement is not null) yield return new KeyValuePair<string,object>("freeBusyType",FreeBusyTypeElement);
+      if (StartElement is not null) yield return new KeyValuePair<string,object>("start",StartElement);
+      if (EndElement is not null) yield return new KeyValuePair<string,object>("end",EndElement);
+      if (OverbookedElement is not null) yield return new KeyValuePair<string,object>("overbooked",OverbookedElement);
+      if (CommentElement is not null) yield return new KeyValuePair<string,object>("comment",CommentElement);
     }
 
   }

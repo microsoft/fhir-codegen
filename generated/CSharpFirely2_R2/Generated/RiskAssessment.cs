@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
   /// </summary>
   [Serializable]
   [DataContract]
-  [FhirType("RiskAssessment", IsResource=true)]
+  [FhirType("RiskAssessment","http://hl7.org/fhir/StructureDefinition/RiskAssessment", IsResource=true)]
   public partial class RiskAssessment : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -197,6 +197,7 @@ namespace Hl7.Fhir.Model
         return CopyTo(new PredictionComponent());
       }
 
+      ///<inheritdoc />
       public override bool Matches(IDeepComparable other)
       {
         var otherT = other as PredictionComponent;
@@ -253,6 +254,41 @@ namespace Hl7.Fhir.Model
           if (When != null) yield return new ElementValue("when", When);
           if (RationaleElement != null) yield return new ElementValue("rationale", RationaleElement);
         }
+      }
+
+      protected override bool TryGetValue(string key, out object value)
+      {
+        switch (key)
+        {
+          case "outcome":
+            value = Outcome;
+            return Outcome is not null;
+          case "probability":
+            value = Probability;
+            return Probability is not null;
+          case "relativeRisk":
+            value = RelativeRiskElement;
+            return RelativeRiskElement is not null;
+          case "when":
+            value = When;
+            return When is not null;
+          case "rationale":
+            value = RationaleElement;
+            return RationaleElement is not null;
+          default:
+            return base.TryGetValue(key, out value);
+        };
+
+      }
+
+      protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+      {
+        foreach (var kvp in base.GetElementPairs()) yield return kvp;
+        if (Outcome is not null) yield return new KeyValuePair<string,object>("outcome",Outcome);
+        if (Probability is not null) yield return new KeyValuePair<string,object>("probability",Probability);
+        if (RelativeRiskElement is not null) yield return new KeyValuePair<string,object>("relativeRisk",RelativeRiskElement);
+        if (When is not null) yield return new KeyValuePair<string,object>("when",When);
+        if (RationaleElement is not null) yield return new KeyValuePair<string,object>("rationale",RationaleElement);
       }
 
     }
@@ -463,6 +499,7 @@ namespace Hl7.Fhir.Model
       return CopyTo(new RiskAssessment());
     }
 
+    ///<inheritdoc />
     public override bool Matches(IDeepComparable other)
     {
       var otherT = other as RiskAssessment;
@@ -539,6 +576,61 @@ namespace Hl7.Fhir.Model
         foreach (var elem in Prediction) { if (elem != null) yield return new ElementValue("prediction", elem); }
         if (MitigationElement != null) yield return new ElementValue("mitigation", MitigationElement);
       }
+    }
+
+    protected override bool TryGetValue(string key, out object value)
+    {
+      switch (key)
+      {
+        case "subject":
+          value = Subject;
+          return Subject is not null;
+        case "date":
+          value = DateElement;
+          return DateElement is not null;
+        case "condition":
+          value = Condition;
+          return Condition is not null;
+        case "encounter":
+          value = Encounter;
+          return Encounter is not null;
+        case "performer":
+          value = Performer;
+          return Performer is not null;
+        case "identifier":
+          value = Identifier;
+          return Identifier is not null;
+        case "method":
+          value = Method;
+          return Method is not null;
+        case "basis":
+          value = Basis;
+          return Basis?.Any() == true;
+        case "prediction":
+          value = Prediction;
+          return Prediction?.Any() == true;
+        case "mitigation":
+          value = MitigationElement;
+          return MitigationElement is not null;
+        default:
+          return base.TryGetValue(key, out value);
+      };
+
+    }
+
+    protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()
+    {
+      foreach (var kvp in base.GetElementPairs()) yield return kvp;
+      if (Subject is not null) yield return new KeyValuePair<string,object>("subject",Subject);
+      if (DateElement is not null) yield return new KeyValuePair<string,object>("date",DateElement);
+      if (Condition is not null) yield return new KeyValuePair<string,object>("condition",Condition);
+      if (Encounter is not null) yield return new KeyValuePair<string,object>("encounter",Encounter);
+      if (Performer is not null) yield return new KeyValuePair<string,object>("performer",Performer);
+      if (Identifier is not null) yield return new KeyValuePair<string,object>("identifier",Identifier);
+      if (Method is not null) yield return new KeyValuePair<string,object>("method",Method);
+      if (Basis?.Any() == true) yield return new KeyValuePair<string,object>("basis",Basis);
+      if (Prediction?.Any() == true) yield return new KeyValuePair<string,object>("prediction",Prediction);
+      if (MitigationElement is not null) yield return new KeyValuePair<string,object>("mitigation",MitigationElement);
     }
 
   }
