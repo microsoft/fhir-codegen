@@ -167,7 +167,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
 
         IsModifier = isModifier == true;
         IsModifierReason = isModifierReason;
-        IsSummary = (isSummary == true) || (isModifier == true);
+        IsSummary = isSummary == true;
         IsMustSupport = isMustSupport == true;
         _inDifferential = false;
         IsSimple = isSimple;
@@ -445,7 +445,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
 
     /// <summary>Gets the conditions.</summary>
     public HashSet<string> Conditions => _conditions;
-    
+
     /// <summary>Gets the constraints.</summary>
     public IEnumerable<FhirConstraint> Constraints { get => _constraintsByKey.Values; }
 
@@ -696,7 +696,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
                 elementTypes.Add(kvp.Key, kvp.Value.DeepCopy(primitiveTypeMap));
             }
         }
-        
+
         // generate our copy
         FhirElement element = new FhirElement(
             destinationArtifact ?? RootArtifact,
@@ -829,7 +829,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
         if (isComponent)
         {
             values.Add(
-                new (
+                new(
                     FhirUtils.ToConvention(Name, Path, nameConvention, concatenatePath, concatenationDelimiter),
                     FhirUtils.ToConvention(Path, string.Empty, typeConvention),
                     Name));

@@ -5,7 +5,6 @@
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Health.Fhir.SpecManager.Manager;
-using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -193,6 +192,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "http://hl7.org/fhir/ValueSet/codesystem-content-mode"
         };
 
+        /// <summary>
+        ///  List of all valuesets that we should publish as a shared Enum although there is only 1 reference to it.
+        /// </summary>
+        private static readonly List<string> _explicitSharedValueSets = new()
+        {
+            // This enum should go to Template-binding.cs because otherwise it will introduce a breaking change.
+            "http://hl7.org/fhir/ValueSet/constraint-severity",
+        };
+
+
         /// <summary>Gets the reserved words.</summary>
         /// <value>The reserved words.</value>
         private static readonly HashSet<string> _reservedWords = new HashSet<string>();
@@ -250,6 +259,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["CapabilityStatement.versionAlgorithm[x]"] = "R5",
             ["CapabilityStatement.copyrightLabel"] = "R5",
             ["CapabilityStatement.acceptLanguage"] = "R5",
+            ["CapabilityStatement.identifier"] = "R5",
             ["CodeSystem.concept.designation.additionalUse"] = "R5",
             ["CodeSystem.approvalDate"] = "R5",
             ["CodeSystem.lastReviewDate"] = "R5",
@@ -260,6 +270,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["CodeSystem.reviewer"] = "R5",
             ["CodeSystem.endorser"] = "R5",
             ["CodeSystem.relatedArtifact"] = "R5",
+            ["CodeSystem.copyrightLabel"] = "R5",
+            ["CodeSystem.versionAlgorithm[x]"] = "R5",
             ["ElementDefinition.constraint.suppress"] = "R5",
             ["ElementDefinition.mustHaveValue"] = "R5",
             ["ElementDefinition.valueAlternatives"] = "R5",
@@ -294,6 +306,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["ValueSet.reviewer"] = "R5",
             ["ValueSet.endorser"] = "R5",
             ["ValueSet.relatedArtifact"] = "R5",
+            ["ValueSet.copyrightLabel"] = "R5",
+            ["ValueSet.versionAlgorithm[x]"] = "R5",
             ["Attachment.height"] = "R5",
             ["Attachment.width"] = "R5",
             ["Attachment.frames"] = "R5",
@@ -910,10 +924,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // traverse value sets starting with highest version
                     foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderByDescending(s => s.Version))
                     {
-                        if (vs.ReferencedByComplexes.Count < 2)
+                        if (vs.ReferencedByComplexes.Count < 2 && !_explicitSharedValueSets.Contains(vs.URL))
                         {
                             /* ValueSets that are used in a single POCO are generated as a nested enum inside that
                              * POCO, not here in the shared valuesets */
+
                             continue;
                         }
 
@@ -2207,7 +2222,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             else if (element.Path is
                 "ElementDefinition.constraint.requirements" or
                 "ElementDefinition.binding.description" or
-                "ElementDefinition.mapping.comment")
+                "ElementDefinition.mapping.comment" or
+                "CapabilityStatement.implementation.description")
             {
                 BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(FhirString))]");
