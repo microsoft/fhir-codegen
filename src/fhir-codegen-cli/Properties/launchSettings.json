@@ -37,12 +37,12 @@
         },
         "Firely 5.x Base": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Base\\Model --load-r5 5.0.0-snapshot3 --language CSharpFirely2 --language-options CSharpFirely2|subset=base --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Base\\Model --load-r5 5.0.0  --language CSharpFirely2 --language-options CSharpFirely2|subset=base --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x Conformance": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Conformance\\Model --load-r5 5.0.0-snapshot3 --language CSharpFirely2 --language-options CSharpFirely2|subset=conformance --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Conformance\\Model --load-r5 5.0.0 --language CSharpFirely2 --language-options CSharpFirely2|subset=conformance --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x STU3": {
@@ -62,7 +62,7 @@
         },
         "Firely 5.x R5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R5\\Model --load-r5 5.0.0-snapshot3 --language CSharpFirely2 --language-options CSharpFirely2 --include-experimental --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R5\\Model --load-r5 5.0.0 --language CSharpFirely2 --language-options CSharpFirely2 --include-experimental --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "server4-Az": {
