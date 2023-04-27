@@ -346,19 +346,21 @@ public static class FhirPackageCommon
 
         PublishedReleaseInformation info = _fhirReleasesByVersion[version];
 
-        if (info.PublicationDate < _semverUrlChangeDate)
+        if (!string.IsNullOrEmpty(info.BallotPrefix))
         {
-            if (string.IsNullOrEmpty(info.BallotPrefix))
-            {
-                relative = $"{info.Major}";
-                return true;
-            }
-
             relative = $"{info.BallotPrefix}";
             return true;
         }
 
-        relative = $"{version}";
+        // versions with a dash are not promoted to their version name root
+        if (info.Version.Contains('-'))
+        {
+            relative = $"{version}";
+            return true;
+        }
+
+        // major releases are promoted to their version name root
+        relative = $"{info.Major}";
         return true;
     }
 
