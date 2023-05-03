@@ -167,7 +167,13 @@ public class FhirElement : FhirPropertyBase, ICloneable
 
         IsModifier = isModifier == true;
         IsModifierReason = isModifierReason;
-        IsSummary = (isSummary == true) || (isModifier == true);
+
+        // TODO: https://www.hl7.org/fhir/elementdefinition-definitions.html#ElementDefinition.isSummary
+        // has a lot of rules regarding when things should be summary that are not followed - it would be
+        // nice to implement it here, but it requires traversing parent nodes that we do note have access
+        // to.  For now, we'll just assume that if the element is marked as summary, it should be and file
+        // a ticket to ask for corrections to the spec.
+        IsSummary = isSummary == true;
         IsMustSupport = isMustSupport == true;
         _inDifferential = false;
         IsSimple = isSimple;
