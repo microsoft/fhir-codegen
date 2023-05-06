@@ -227,7 +227,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _includeNamespace = _options.GetParam("namespace", false);
 
-            _namespace = $"fhir{FhirPackageCommon.RForSequence(_info.FhirSequence)}";
+            _namespace = $"fhir{FhirPackageCommon.RForSequence(_info.FhirSequence).Substring(1).ToLowerInvariant()}";
 
             _exportedCodes = new HashSet<string>();
             _exportedResources = new List<string>();
