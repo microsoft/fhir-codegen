@@ -96,7 +96,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private const string _singleFileExportExtension = ".ts";
 
         /// <summary>The minimum type script version.</summary>
-        private const string _minimumTypeScriptVersion = "3.7";
+        private string _minimumTypeScriptVersion = "3.7";
 
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
@@ -207,6 +207,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>()
         {
             { "namespace", "Base namespace for TypeScript files (default: fhir{VersionNumber})." },
+            { "min-ts-version", "Minimum TypeScript version (default: 3.7, use '-' for none)." }
         };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
@@ -228,6 +229,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _includeNamespace = _options.GetParam("namespace", false);
 
             _namespace = $"fhir{FhirPackageCommon.RForSequence(_info.FhirSequence).Substring(1).ToLowerInvariant()}";
+
+            _minimumTypeScriptVersion = _options.GetParam("min-ts-version", "3.7");
 
             _exportedCodes = new HashSet<string>();
             _exportedResources = new List<string>();
@@ -826,7 +829,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            _writer.WriteLine($"// Minimum TypeScript Version: {_minimumTypeScriptVersion}");
+            if (!_minimumTypeScriptVersion.Equals("-"))
+            {
+                _writer.WriteLine($"// Minimum TypeScript Version: {_minimumTypeScriptVersion}");
+            }
 
             if (_includeNamespace)
             {
