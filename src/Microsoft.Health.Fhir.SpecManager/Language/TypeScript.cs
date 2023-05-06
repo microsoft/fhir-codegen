@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -68,6 +69,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>True to export enums.</summary>
         private bool _exportEnums;
+
+        /// <summary>
+        /// True if we should write a namespace directive
+        /// </summary>
+        private bool _includeNamespace = false;
+
+        /// <summary>
+        /// The namespace to use.
+        /// </summary>
+        private string _namespace = string.Empty;
 
         /// <summary>The exported codes.</summary>
         private HashSet<string> _exportedCodes = new HashSet<string>();
@@ -193,7 +204,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         };
 
         /// <summary>Gets language-specific options and their descriptions.</summary>
-        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>();
+        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>()
+        {
+            { "namespace", "Base namespace for TypeScript files (default: fhir{VersionNumber})." },
+        };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -210,6 +224,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // this is ugly, but the interface patterns get bad quickly because we need the type map to copy the FHIR info
             _info = info;
             _options = options;
+
+            _includeNamespace = _options.GetParam("namespace", false);
+
+            _namespace = $"fhir{FhirPackageCommon.RForSequence(_info.FhirSequence)}";
 
             _exportedCodes = new HashSet<string>();
             _exportedResources = new List<string>();
@@ -809,6 +827,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             _writer.WriteLine($"// Minimum TypeScript Version: {_minimumTypeScriptVersion}");
+
+            if (_includeNamespace)
+            {
+                _writer.WriteLineIndented($"export as namespace {_namespace};");
+            }
         }
 
         /// <summary>Writes a footer.</summary>
