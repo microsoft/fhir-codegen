@@ -984,7 +984,7 @@ public class FhirCacheService : IDisposable
             }
 
             version = highestOnline;
-            isCached = true;
+            isCached = highestOnline.Equals(highestCached);
             directory = Path.Combine(_cachePackageDirectory, $"{name}#{version}");
             return true;
         }
