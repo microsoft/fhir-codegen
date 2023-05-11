@@ -5,6 +5,7 @@
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using Ncqa.Cql.Model;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -199,6 +200,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             // This enum should go to Template-binding.cs because otherwise it will introduce a breaking change.
             "http://hl7.org/fhir/ValueSet/constraint-severity",
+
+            "http://hl7.org/fhir/ValueSet/concept-map-equivalence",
         };
 
 
@@ -392,7 +395,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             { "subset", "Which subset of language exports to make (base|conformance|satellite). Default is satellite." },
             { "w5", "If output should include 5 W's mappings (true|false). Default is true." },
+            { "cqlmodel", "Name of the Cql model for which metadata attributes should be added to the pocos. 'Fhir401' is the only valid value at the moment." }
         };
+
+        /// <summary>If a Cql ModelInfo is available, this will be the parsed XML model file.</summary>
+        private ModelInfo _cqlModelInfo = null;
+        private IDictionary<string, ClassInfo> _cqlModelClassInfo = null;
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -452,6 +460,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (!Directory.Exists(Path.Combine(exportDirectory, "Generated")))
             {
                 Directory.CreateDirectory(Path.Combine(exportDirectory, "Generated"));
+            }
+
+            if (options.LanguageOptions.TryGetValue("cqlmodel", out string cqlmodelResourceKey))
+            {
+                _cqlModelInfo = CqlModels.LoadEmbeddedResource(cqlmodelResourceKey);
+                _cqlModelClassInfo = CqlModels.ClassesByName(_cqlModelInfo);
             }
 
             var allPrimitives = new Dictionary<string, WrittenModelInfo>();
@@ -1224,10 +1238,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             $"Component";
                     }
 
+                    var cqlParentTypeName = _cqlModelInfo is not null ?
+                        "{" + _cqlModelInfo.url + "}" + complex.Name : null;
+
                     WriteBackboneComponent(
                         component,
                         componentExportName,
                         exportName,
+                        cqlParentTypeName,
                         subset);
                 }
             }
@@ -1568,6 +1586,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirComplex complex,
             string exportName,
             string parentExportName,
+            string parentCqlType,
             GenSubset subset)
         {
             List<WrittenElementInfo> exportedElements = new List<WrittenElementInfo>();
@@ -1590,14 +1609,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             // end of repair
 
-            string componentName = parentExportName + "#" + (string.IsNullOrEmpty(explicitName) ?
+            string explicitNamePart = string.IsNullOrEmpty(explicitName) ?
                 complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
-                explicitName);
+                explicitName;
+            string componentName = parentExportName + "#" + explicitNamePart;
+            var cqlType = parentCqlType + "." + explicitNamePart;
 
-            Debug.Assert(!string.IsNullOrEmpty(componentName), $"Found a type at element {complex.Path} without a name or explicit name.");
+            //   string componentUrl = buildComponentUrl(complex);
 
             WriteSerializable();
             _writer.WriteLineIndented($"[FhirType(\"{componentName}\", IsNestedType=true)]");
+
+            if (_cqlModelInfo is not null)
+                _writer.WriteLineIndented($"[CqlType(\"{cqlType}\")]");
             _writer.WriteLineIndented(
                 $"public partial class" +
                     $" {exportName}" +
@@ -1649,14 +1673,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             $"Component";
                     }
 
+
                     WriteBackboneComponent(
                         component,
                         componentExportName,
                         parentExportName,
+                        cqlType,
                         subset);
                 }
             }
         }
+
+        //private string buildComponentUrl(FhirComplex complex)
+        //{
+        //    if (complex.Parent is null) return getUrl();
+
+        //    var separator = complex.Parent.Parent is null ? "#" : ".";
+        //    return buildComponentUrl(complex.Parent) + separator + complex.Name;
+
+        //    string getUrl() => complex.URL?.OriginalString ??
+        //            "http://hl7.org/fhir/StructureDefinition/" + complex.Name;
+        //}
 
         /// <summary>Writes the enums.</summary>
         /// <param name="complex">      The complex data type.</param>
@@ -1831,6 +1868,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ref List<WrittenElementInfo> exportedElements,
             GenSubset subset)
         {
+            var primaryCodePath =
+                _cqlModelClassInfo?.TryGetValue(complex.Name, out var classInfo) == true ?
+                    classInfo.primaryCodePath : null;
+
             foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.FieldOrder))
             {
                 if (element.IsInherited)
@@ -1846,13 +1887,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     typeName = element.ElementTypes.Values.First().Name;
                 }
 
+                bool isPrimaryCode = element.Name == primaryCodePath;
+
                 // if (!string.IsNullOrEmpty(element.ValueSet))
                 if (typeName == "code")
                 {
                     WriteCodedElement(
                         element,
                         ref exportedElements,
-                        subset);
+                        subset,
+                        isPrimaryCode);
                     continue;
                 }
 
@@ -1860,7 +1904,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     exportedComplexName,
                     element,
                     ref exportedElements,
-                    subset);
+                    subset,
+                    isPrimaryCode);
             }
         }
 
@@ -1871,7 +1916,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteCodedElement(
             FhirElement element,
             ref List<WrittenElementInfo> exportedElements,
-            GenSubset subset)
+            GenSubset subset,
+            bool isPrimaryCode)
         {
             bool hasDefinedEnum = true;
 
@@ -1931,6 +1977,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (hasDefinedEnum)
             {
                 _writer.WriteLineIndented("[DeclaredType(Type = typeof(Code))]");
+            }
+
+            if (isPrimaryCode)
+            {
+                _writer.WriteLineIndented($"[CqlElement(\"{element.Name}\", IsPrimaryCodePath = true)]");
             }
 
             if (!string.IsNullOrEmpty(resourceReferences))
@@ -2139,7 +2190,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string exportedComplexName,
             FhirElement element,
             ref List<WrittenElementInfo> exportedElements,
-            GenSubset subset)
+            GenSubset subset,
+            bool isPrimaryCode)
         {
             string name = element.Name;
 
@@ -2232,6 +2284,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             else
             {
                 BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
+            }
+
+            if (isPrimaryCode)
+            {
+                _writer.WriteLineIndented($"[CqlElement(\"{element.Name}\", IsPrimaryCodePath = true)]");
             }
 
             // Generate the [AllowedTypes] and [ResourceReference] attributes, except when we are
