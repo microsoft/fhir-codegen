@@ -975,7 +975,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                         _modelWriter.IncreaseIndent();
 
-                        foreach (string path in vs.ReferencedByPaths)
+                        foreach (string path in vs.ReferencingElementsByPath.Keys)
                         {
                             string name = path.Split('.')[0];
 
