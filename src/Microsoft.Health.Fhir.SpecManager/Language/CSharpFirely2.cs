@@ -195,10 +195,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>
         ///  List of all valuesets that we should publish as a shared Enum although there is only 1 reference to it.
         /// </summary>
-        private static readonly List<string> _explicitSharedValueSets = new()
+        private static readonly List<(string, string)> _explicitSharedValueSets = new()
         {
             // This enum should go to Template-binding.cs because otherwise it will introduce a breaking change.
-            "http://hl7.org/fhir/ValueSet/constraint-severity",
+            ("R4", "http://hl7.org/fhir/ValueSet/messageheader-response-request"),
+            ("R4", "http://hl7.org/fhir/ValueSet/concept-map-equivalence"),
+            ("R4B", "http://hl7.org/fhir/ValueSet/messageheader-response-request"),
+            ("R4B", "http://hl7.org/fhir/ValueSet/concept-map-equivalence"),
+            ("R5", "http://hl7.org/fhir/ValueSet/constraint-severity"),
         };
 
 
@@ -928,7 +932,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // traverse value sets starting with highest version
                     foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderByDescending(s => s.Version))
                     {
-                        if (vs.ReferencedByComplexes.Count < 2 && !_explicitSharedValueSets.Contains(vs.URL))
+                        if (vs.ReferencedByComplexes.Count < 2 && !_explicitSharedValueSets.Contains((_info.FhirSequence.ToString(), vs.URL)))
                         {
                             /* ValueSets that are used in a single POCO are generated as a nested enum inside that
                              * POCO, not here in the shared valuesets */

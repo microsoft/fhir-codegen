@@ -563,7 +563,7 @@ public sealed class FromFhirExpando : IFhirConverter
 
         List<FhirSearchParamComponent> cp = sp.GetExpandoEnumerable("component")
                 .Where(c => c is not null)
-                .Select(c => new FhirSearchParamComponent(c.GetString("definition"), c.GetString("expression")))
+                .Select(c => new FhirSearchParamComponent(getSPComponentDefinition(c), c.GetString("expression")))
                 .ToList();
 
         // create the search parameter
@@ -589,6 +589,10 @@ public sealed class FromFhirExpando : IFhirConverter
 
         // add our parameter
         fhirVersionInfo.AddSearchParameter(param);
+
+        string getSPComponentDefinition(FhirExpando fe) => (fhirVersionInfo.FhirSequence == FhirPackageCommon.FhirSequenceEnum.STU3)
+            ? fe.GetExpando("definition").GetString("reference")
+            : fe.GetString("definition");
     }
 
     /// <summary>Process the value set.</summary>
