@@ -790,6 +790,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     string expression = string.IsNullOrEmpty(sp.Expression) ? string.Empty : ", Expression = \"" + sp.Expression + "\"";
                     string urlComponent = $", Url = \"{sp.URL}\"";
 
+                    string[] components = sp.Components?.Select(c => $"""new SearchParamComponent("{c.Definition}", "{c.Expression}")""").ToArray() ?? Array.Empty<string>();
+                    string strComponents = (components.Length > 0) ? $", Component = new SearchParamComponent[] {{ {string.Join(',', components)} }}" : string.Empty;
+
                     _writer.WriteLineIndented(
                         $"new SearchParamDefinition() " +
                             $"{{" +
@@ -805,6 +808,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             xpath +
                             expression +
                             urlComponent +
+                            strComponents +
                             $" }},");
                 }
             }
