@@ -1789,7 +1789,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $"(systems: {vs.ReferencedCodeSystems.Count})");
                 }
 
-                _writer.WriteLineIndented($"[FhirEnumeration(\"{name}\")]");
+                _writer.WriteLineIndented($"[FhirEnumeration(\"{name}\", \"{vs.URL}\")]");
 
                 _writer.WriteLineIndented($"public enum {nameSanitized}");
 
