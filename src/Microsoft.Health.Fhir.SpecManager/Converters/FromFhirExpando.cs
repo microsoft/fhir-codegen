@@ -5,8 +5,6 @@
 
 using System.IO;
 using System.Text.Json;
-using System.Xml.Linq;
-using fhirCsR2.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirImplementationGuide;
@@ -563,6 +561,11 @@ public sealed class FromFhirExpando : IFhirConverter
         string standardStatus = sp.GetExtensionValueCode(ExtUrlStandardStatus);
         int? fmmLevel = sp.GetExtensionValueInteger(ExtUrlFmm);
 
+        List<FhirSearchParamComponent> cp = sp.GetExpandoEnumerable("component")
+                .Where(c => c is not null)
+                .Select(c => new FhirSearchParamComponent(getSPComponentDefinition(c), c.GetString("expression")))
+                .ToList();
+
         // create the search parameter
         FhirSearchParam param = new FhirSearchParam(
             sp.GetString("id"),
@@ -581,10 +584,15 @@ public sealed class FromFhirExpando : IFhirConverter
             sp.GetBool("experimental") == true,
             sp.GetString("xpath") ?? string.Empty,
             sp.GetString("processingMode") ?? sp.GetString("xpathUsage") ?? string.Empty,
-            sp.GetString("expression"));
+            sp.GetString("expression"),
+            cp);
 
         // add our parameter
         fhirVersionInfo.AddSearchParameter(param);
+
+        string getSPComponentDefinition(FhirExpando fe) => (fhirVersionInfo.FhirSequence == FhirPackageCommon.FhirSequenceEnum.STU3)
+            ? fe.GetExpando("definition").GetString("reference")
+            : fe.GetString("definition");
     }
 
     /// <summary>Process the value set.</summary>
@@ -677,7 +685,7 @@ public sealed class FromFhirExpando : IFhirConverter
             {
                 parameters = new Dictionary<string, dynamic>();
 
-                foreach (FhirExpando param in vs.GetExpandoEnumerable("expansion","parameter"))
+                foreach (FhirExpando param in vs.GetExpandoEnumerable("expansion", "parameter"))
                 {
                     string paramName = param.GetString("name");
                     if (string.IsNullOrEmpty(paramName) || parameters.ContainsKey(paramName))
@@ -1135,7 +1143,7 @@ public sealed class FromFhirExpando : IFhirConverter
 
             string standardStatus = sd.GetExtensionValueCode(ExtUrlStandardStatus);
             int? fmmLevel = sd.GetExtensionValueInteger(ExtUrlFmm);
-            
+
             Dictionary<string, FhirStructureDefMapping> structureMaps = new();
 
             foreach (FhirExpando mappingNode in sd.GetExpandoEnumerable("mapping") ?? Array.Empty<FhirExpando>())
@@ -1482,7 +1490,7 @@ public sealed class FromFhirExpando : IFhirConverter
                         }
 
                         elementMaps[identity].Add(
-                            new ()
+                            new()
                             {
                                 Identity = identity,
                                 Language = mappingNode.GetString("language") ?? string.Empty,
@@ -1490,7 +1498,7 @@ public sealed class FromFhirExpando : IFhirConverter
                                 Comment = mappingNode.GetString("comment") ?? string.Empty,
                             });
                     }
-                    
+
                     if (parent.Elements.ContainsKey(elementPath))
                     {
                         _errors.Add($"Complex {sdName} snapshot error ({elementPath}): Repeated snapshot: {parent.Elements[elementPath].Id} & {elementId}");
@@ -2145,7 +2153,7 @@ public sealed class FromFhirExpando : IFhirConverter
         }
 
         FhirConcept va = null;
-        
+
         if (cd["versionAlgorithmCoding"] != null)
         {
             va = new(
@@ -2158,7 +2166,7 @@ public sealed class FromFhirExpando : IFhirConverter
         {
             va = new(string.Empty, cd.GetString("versionAlgorithmString"), cd.GetString("versionAlgorithmString"));
         }
-        
+
         FhirCompartment compartment = new(
             cdId,
             cdName,
@@ -2177,7 +2185,7 @@ public sealed class FromFhirExpando : IFhirConverter
             cd.GetString("code"),
             cd.GetBool("search") ?? false,
             resources);
-        
+
         // add our code system
         fhirVersionInfo.AddCompartment(compartment);
     }

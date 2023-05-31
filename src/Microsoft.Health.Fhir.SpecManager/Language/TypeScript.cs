@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -69,6 +70,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>True to export enums.</summary>
         private bool _exportEnums;
 
+        /// <summary>
+        /// True if we should write a namespace directive
+        /// </summary>
+        private bool _includeNamespace = false;
+
+        /// <summary>
+        /// The namespace to use.
+        /// </summary>
+        private string _namespace = string.Empty;
+
         /// <summary>The exported codes.</summary>
         private HashSet<string> _exportedCodes = new HashSet<string>();
 
@@ -85,7 +96,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private const string _singleFileExportExtension = ".ts";
 
         /// <summary>The minimum type script version.</summary>
-        private const string _minimumTypeScriptVersion = "3.7";
+        private string _minimumTypeScriptVersion = "3.7";
 
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
@@ -193,7 +204,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         };
 
         /// <summary>Gets language-specific options and their descriptions.</summary>
-        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>();
+        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>()
+        {
+            { "namespace", "Base namespace for TypeScript files (default: fhir{VersionNumber})." },
+            { "min-ts-version", "Minimum TypeScript version (default: 3.7, use '-' for none)." }
+        };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -210,6 +225,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // this is ugly, but the interface patterns get bad quickly because we need the type map to copy the FHIR info
             _info = info;
             _options = options;
+
+            _includeNamespace = _options.GetParam("namespace", false);
+
+            _namespace = $"fhir{FhirPackageCommon.RForSequence(_info.FhirSequence).Substring(1).ToLowerInvariant()}";
+
+            _minimumTypeScriptVersion = _options.GetParam("min-ts-version", "3.7");
 
             _exportedCodes = new HashSet<string>();
             _exportedResources = new List<string>();
@@ -808,7 +829,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            _writer.WriteLine($"// Minimum TypeScript Version: {_minimumTypeScriptVersion}");
+            if (!_minimumTypeScriptVersion.Equals("-"))
+            {
+                _writer.WriteLine($"// Minimum TypeScript Version: {_minimumTypeScriptVersion}");
+            }
+
+            if (_includeNamespace)
+            {
+                _writer.WriteLineIndented($"export as namespace {_namespace};");
+            }
         }
 
         /// <summary>Writes a footer.</summary>

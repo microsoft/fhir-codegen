@@ -44,7 +44,8 @@ public class FhirSearchParam : ICloneable
         bool isExperimental,
         string xpath,
         string xpathUsage,
-        string expression)
+        string expression,
+        List<FhirSearchParamComponent> components = null)
     {
         Id = id;
         Version = version;
@@ -71,6 +72,8 @@ public class FhirSearchParam : ICloneable
         {
             Targets = targets.Select(s => (string)s.Clone()).ToList();
         }
+
+        Components = components?.Select(c => (FhirSearchParamComponent)c.Clone()).ToList();
     }
 
     /// <summary>Values that represent search magic parameters.</summary>
@@ -152,6 +155,9 @@ public class FhirSearchParam : ICloneable
     /// <summary>Gets the expression.</summary>
     public string Expression { get; }
 
+    /// <summary>Gets the components.</summary>
+    public List<FhirSearchParamComponent> Components { get; }
+
     /// <summary>Deep copy.</summary>
     /// <returns>A FhirSearchParam.</returns>
     public object Clone()
@@ -173,6 +179,8 @@ public class FhirSearchParam : ICloneable
             IsExperimental,
             XPath,
             XPathUsage,
-            Expression);
+            Expression,
+            Components?.Select(c => (FhirSearchParamComponent)c.Clone()).ToList()
+        );
     }
 }
