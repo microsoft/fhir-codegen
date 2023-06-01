@@ -4,6 +4,7 @@
 // </copyright>
 using System.Diagnostics;
 using System.IO;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Ncqa.Cql.Model;
 
@@ -1268,7 +1269,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         component,
                         componentExportName,
                         exportName,
-                        cqlParentTypeName,
                         subset);
                 }
             }
@@ -1609,7 +1609,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirComplex complex,
             string exportName,
             string parentExportName,
-            string parentCqlType,
             GenSubset subset)
         {
             List<WrittenElementInfo> exportedElements = new List<WrittenElementInfo>();
@@ -1636,13 +1635,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
                 explicitName;
             string componentName = parentExportName + "#" + explicitNamePart;
-            var cqlType = parentCqlType + "." + explicitNamePart;
+            var cqlType2 = "{http://hl7.org/fhir}" + complex.Path.ToPascalDotCase(removeDelimiters: false);
 
             WriteSerializable();
             _writer.WriteLineIndented($"[FhirType(\"{componentName}\", IsNestedType=true)]");
 
             if (_cqlModelInfo is not null)
-                _writer.WriteLineIndented($"[CqlType(\"{cqlType}\")]");
+                _writer.WriteLineIndented($"[CqlType(\"{cqlType2}\")]");
             _writer.WriteLineIndented(
                 $"public partial class" +
                     $" {exportName}" +
@@ -1694,12 +1693,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             $"Component";
                     }
 
-
                     WriteBackboneComponent(
                         component,
                         componentExportName,
                         parentExportName,
-                        cqlType,
                         subset);
                 }
             }
@@ -2004,6 +2001,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (isPrimaryCode)
             {
                 _writer.WriteLineIndented($"[CqlElement(IsPrimaryCodePath = true)]");
+            }
+
+            if (!string.IsNullOrEmpty(element.BindingName))
+            {
+                _writer.WriteLineIndented($"[Binding(\"{element.BindingName}\")]");
             }
 
             if (!string.IsNullOrEmpty(resourceReferences))
