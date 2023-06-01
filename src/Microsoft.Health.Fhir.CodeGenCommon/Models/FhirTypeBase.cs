@@ -252,7 +252,7 @@ public abstract class FhirTypeBase
 
             case NamingConvention.PascalDotNotation:
                 {
-                    string value = _path.ToPascalDotCase(true);
+                    string value = _path.ToPascalDotCase();
 
                     if ((reservedWords != null) &&
                         reservedWords.Contains(value))
