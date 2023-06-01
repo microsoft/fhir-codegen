@@ -333,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions.html",
-          "hash": "a2++RMR/fH25i/uT/qGGXWlW8L6DJD9yEI4mX2UEq+c="
+          "hash": "IHYZF6wpVjGf8qFj4ZwKLC1U/l080UzNBSX+UU/7djA="
         }
       },
       "is_incremental": false,
@@ -1437,7 +1437,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Health.Fhir.SpecManager.Language.Info.html",
-          "hash": "cvlQ+hu8I+oSGVNCWCj0DaHr41NwYoX/3+N54q7N11o="
+          "hash": "cC+gnL6CXNGjZ1zFmzgVRlQDQYRu+IqNkCaONZ0V2Yc="
         }
       },
       "is_incremental": false,
