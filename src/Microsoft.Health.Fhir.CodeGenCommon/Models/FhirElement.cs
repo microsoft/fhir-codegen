@@ -84,6 +84,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
         bool isInherited,
         bool modifiesParent,
         string bindingStrength,
+        string bindingName,
         string valueSet,
         List<PropertyRepresentationCodes> representations,
         Dictionary<string, List<FhirElementDefMapping>> mappings)
@@ -193,6 +194,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
         ModifiesParent = modifiesParent;
 
         BindingStrength = bindingStrength;
+        BindingName = bindingName;
         ValueSet = valueSet;
 
         if (string.IsNullOrEmpty(bindingStrength))
@@ -239,6 +241,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
         string valueSet,
         string bindingStrength,
         ElementDefinitionBindingStrength? valueSetBindingStrength,
+        string bindingName,
         Dictionary<string, FhirElementType> elementTypes,
         string defaultFieldName,
         object defaultFieldValue,
@@ -282,6 +285,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
               isInherited,
               modifiesParent,
               bindingStrength,
+              bindingName,
               valueSet,
               null,
               mappings)
@@ -411,6 +415,9 @@ public class FhirElement : FhirPropertyBase, ICloneable
 
     /// <summary>Gets the element binding strength.</summary>
     public ElementDefinitionBindingStrength? ValueSetBindingStrength { get; }
+
+    /// <summary>Gets the binding name for a value set binding to this element.</summary>
+    public string BindingName { get; }
 
     /// <summary>Gets types and their associated profiles for this element.</summary>
     /// <value>Types and their associated profiles for this element.</value>
@@ -654,6 +661,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
             IsInherited,
             ModifiesParent,
             BindingStrength,
+            BindingName,
             ValueSet,
             _representations?.Select(pr => pr).ToList() ?? null,
             Mappings?.DeepCopy() ?? null);
@@ -734,6 +742,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
             IsInherited,
             ModifiesParent,
             BindingStrength,
+            BindingName,
             ValueSet,
             _representations,
             Mappings.DeepCopy());

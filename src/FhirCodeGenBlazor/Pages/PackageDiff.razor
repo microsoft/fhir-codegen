@@ -550,14 +550,21 @@
         {
             if (!showArtifactClass.ContainsKey(artifactClass))
             {
-                var readResult = await BrowserStore.GetAsync<bool>("showAC_" + artifactClass);
-                if (readResult.Success)
+                try
                 {
-                    showArtifactClass.Add(artifactClass, readResult.Value);
+                    var readResult = await BrowserStore.GetAsync<bool>("showAC_" + artifactClass);
+                    if (readResult.Success)
+                    {
+                        showArtifactClass.Add(artifactClass, readResult.Value);
+                    }
+                    else
+                    {
+                        showArtifactClass.Add(artifactClass, false);
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    showArtifactClass.Add(artifactClass, false);
+                    
                 }
             }
         }
