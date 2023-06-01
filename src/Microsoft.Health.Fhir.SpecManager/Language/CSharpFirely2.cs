@@ -511,7 +511,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
                         isSimple: false, defaultFieldName: null, defaultFieldValue: null,
                         fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
-                        isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null,
+                        isInherited: false, modifiesParent: false, bindingStrength: null, bindingName: null, valueSet: null,
                         representations: null, mappings: null
                         );
 
@@ -547,7 +547,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     isModifier: false, isModifierReason: null, isSummary: false, isMustSupport: false,
                     isSimple: false, defaultFieldName: null, defaultFieldValue: null,
                     fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
-                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, representations: null,
+                    isInherited: false, modifiesParent: false, bindingStrength: null, bindingName: null, valueSet: null, representations: null,
                     mappings: null
                     );
 
@@ -581,7 +581,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
                     isSimple: false, defaultFieldName: null, defaultFieldValue: null,
                     fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
-                    isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, representations: null,
+                    isInherited: false, modifiesParent: false, bindingStrength: null, bindingName: null, valueSet: null, representations: null,
                     mappings: null
                     ); ;
 
@@ -603,7 +603,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         isModifier: false, isModifierReason: null, isSummary: true, isMustSupport: false,
                         isSimple: false, defaultFieldName: null, defaultFieldValue: null,
                         fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
-                        isInherited: false, modifiesParent: false, bindingStrength: null, valueSet: null, representations: null,
+                        isInherited: false, modifiesParent: false, bindingStrength: null, bindingName: null, valueSet: null, representations: null,
                         mappings: null
                         );
 

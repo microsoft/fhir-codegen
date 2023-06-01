@@ -1323,6 +1323,7 @@ public sealed class FromR2 : IFhirConverter
                                     true,
                                     string.Empty,
                                     string.Empty,
+                                    string.Empty,
                                     null,
                                     null));
                         }
@@ -1520,6 +1521,7 @@ public sealed class FromR2 : IFhirConverter
                         isInherited,
                         modifiesParent,
                         bindingStrength,
+                        string.Empty,
                         valueSet,
                         FhirElement.ConvertFhirRepresentations(element.Representation),
                         elementMaps);
@@ -1738,6 +1740,7 @@ public sealed class FromR2 : IFhirConverter
                         null,
                         false,
                         false,
+                        string.Empty,
                         string.Empty,
                         string.Empty,
                         null,

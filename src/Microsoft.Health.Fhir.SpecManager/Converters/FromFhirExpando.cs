@@ -1321,6 +1321,7 @@ public sealed class FromFhirExpando : IFhirConverter
                                     true,
                                     string.Empty,
                                     string.Empty,
+                                    string.Empty,
                                     null,
                                     null));
                         }
@@ -1441,6 +1442,7 @@ public sealed class FromFhirExpando : IFhirConverter
                     }
 
                     string bindingStrength = string.Empty;
+                    string bindingName = string.Empty;
                     string valueSet = string.Empty;
 
                     if (element["binding"] != null)
@@ -1456,6 +1458,16 @@ public sealed class FromFhirExpando : IFhirConverter
                             (element["binding", "valueSetReference"] != null))
                         {
                             valueSet = element.GetString("binding", "valueSetReference", "reference");
+                        }
+
+                        if (element["binding", "extension"] != null)
+                        {
+                            FhirExpando nameExt = element.GetExtension("http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName", "binding");
+
+                            if (nameExt != null)
+                            {
+                                bindingName = nameExt.GetString("valueString");
+                            }
                         }
                     }
 
@@ -1535,6 +1547,7 @@ public sealed class FromFhirExpando : IFhirConverter
                         isInherited,
                         modifiesParent,
                         bindingStrength,
+                        bindingName,
                         valueSet,
                         FhirElement.ConvertFhirRepresentations(element.GetStringArray("representation")),
                         elementMaps);
