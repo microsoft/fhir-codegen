@@ -1635,13 +1635,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
                 explicitName;
             string componentName = parentExportName + "#" + explicitNamePart;
-            var cqlType2 = "{http://hl7.org/fhir}" + complex.Path.ToPascalDotCase(removeDelimiters: false);
+            var nameSpecifier = "{http://hl7.org/fhir}" + complex.Path.ToPascalDotCase();
 
             WriteSerializable();
             _writer.WriteLineIndented($"[FhirType(\"{componentName}\", IsNestedType=true)]");
 
             if (_cqlModelInfo is not null)
-                _writer.WriteLineIndented($"[CqlType(\"{cqlType2}\")]");
+                _writer.WriteLineIndented($"[CqlType(\"{nameSpecifier}\")]");
             _writer.WriteLineIndented(
                 $"public partial class" +
                     $" {exportName}" +
