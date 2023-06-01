@@ -247,7 +247,7 @@ public abstract class FhirUtils
 
             case NamingConvention.PascalDotNotation:
                 {
-                    return value.ToPascalDotCase(true);
+                    return value.ToPascalDotCase();
                 }
 
             case NamingConvention.PascalCase:
@@ -305,7 +305,7 @@ public abstract class FhirUtils
 
             case NamingConvention.PascalDotNotation:
                 {
-                    return sanitized.ToPascalDotCase(true);
+                    return sanitized.ToPascalDotCase();
                 }
 
             case NamingConvention.PascalCase:

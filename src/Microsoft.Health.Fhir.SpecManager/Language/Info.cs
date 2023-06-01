@@ -5,6 +5,7 @@
 
 using System.IO;
 using System.Text.Json;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
