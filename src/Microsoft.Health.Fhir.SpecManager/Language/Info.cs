@@ -590,6 +590,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     "";
             }
 
+            if (!string.IsNullOrEmpty(element.BindingName))
+            {
+                propertyType = propertyType + " binding name: " + element.BindingName;
+            }
+
             string fiveWs = string.Empty;
 
             if (!string.IsNullOrEmpty(element.FiveWs))

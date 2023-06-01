@@ -1166,10 +1166,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 return "DomainResource";
             }
 
-            if (_info.MajorVersion < 5)
+            if (_info.FhirSequence < FhirPackageCommon.FhirSequenceEnum.R5)
             {
                 // Promote R4 datatypes (all derived from Element/BackboneElement) to the right new subclass
-                if ((baseTypeName == "BackboneElement") && (_info.MajorVersion == 4) && isDataType)
+                if ((baseTypeName == "BackboneElement") && (_info.FhirSequence == FhirPackageCommon.FhirSequenceEnum.R4) && isDataType)
                 {
                     return "BackboneType";
                 }
@@ -3045,7 +3045,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 noElement = false;
             }
 
-            if ((_info.MajorVersion < 4) &&
+            if ((_info.FhirSequence < FhirPackageCommon.FhirSequenceEnum.R4) &&
                 _info.ComplexTypes.ContainsKey(exportedComplexName) &&
                 (type == "markdown"))
             {
