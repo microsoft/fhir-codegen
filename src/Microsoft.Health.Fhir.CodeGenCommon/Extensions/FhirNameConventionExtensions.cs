@@ -378,25 +378,50 @@ public static class FhirNameConventionExtensions
     /// A string extension method that converts this object to a pascal dot case.
     /// </summary>
     /// <param name="word">            The word to act on.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
     /// <returns>The given data converted to a string.</returns>
-    public static string ToPascalDotCase(this string word, bool removeDelimiters = true)
-        => ToPascalCase(word, removeDelimiters, ".");
+    public static string ToPascalDotCase(this string word)
+    {
+        if (string.IsNullOrEmpty(word))
+        {
+            return string.Empty;
+        }
+
+        return string.Join('.', word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
+    }
 
     /// <summary>A string extension method that converts this object to a pascal dot case.</summary>
     /// <param name="words">           The words.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
     /// <returns>The given data converted to a string.</returns>
-    public static string[] ToPascalDotCase(this string[] words, bool removeDelimiters = true)
-        => ToPascalCase(words, removeDelimiters, ".");
+    public static string[] ToPascalDotCase(this string[] words)
+    {
+        if (!(words?.Any() ?? false))
+        {
+            return Array.Empty<string>();
+        }
+
+        string[] output = new string[words.Length];
+
+        for (int i = 0; i < words.Length; i++)
+        {
+            output[i] = ToPascalDotCase(words[i]);
+        }
+
+        return output;
+    }
 
     /// <summary>
     /// An IEnumerable&lt;string&gt; extension method that converts this object to a pascal dot case
     /// word.
     /// </summary>
     /// <param name="words">           The words.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
     /// <returns>The given data converted to a string.</returns>
-    public static string ToPascalDotCaseWord(this IEnumerable<string> words, bool removeDelimiters = true)
-        => ToPascalCaseWord(words, removeDelimiters, ".");
+    public static string ToPascalDotCaseWord(this IEnumerable<string> words)
+    {
+        if (!(words?.Any() ?? false))
+        {
+            return string.Empty;
+        }
+
+        return string.Join('.', words.Select(w => w.ToPascalDotCase()));
+    }
 }
