@@ -495,6 +495,32 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     AddSearchParameter((FhirSearchParam)sp.Clone());
                 }
             }
+
+            // resolve composite parameter info
+            foreach (FhirSearchParam sp in _searchParamsByUrl.Values)
+            {
+                if (sp.Components?.Any() ?? false)
+                {
+                    sp.Resolve(_searchParamsByUrl);
+                }
+            }
+
+            // traverse resources looking for search parameters to resolve as well
+            foreach (FhirComplex fc in _resourcesByName.Values)
+            {
+                if (!(fc.SearchParameters?.Any() ?? false))
+                {
+                    continue;
+                }
+
+                foreach (FhirSearchParam sp in fc.SearchParameters.Values)
+                {
+                    if (sp.Components?.Any() ?? false)
+                    {
+                        sp.Resolve(_searchParamsByUrl);
+                    }
+                }
+            }
         }
 
         if (options.CopyOperations)

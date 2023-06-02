@@ -511,8 +511,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirSearchParam searchParam in searchParameters.OrderBy(s => s.Code))
             {
-                string snip = BuildStandardSnippet(searchParam.StandardStatus, searchParam.FhirMaturityLevel, searchParam.IsExperimental);
-                _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code}={searchParam.ValueType}{snip}");
+                if (searchParam.Components?.Any() ?? false)
+                {
+                    _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code} is composite (resolves: {searchParam.CompositeResolvesCorrectly})");
+
+                    _writer.IncreaseIndent();
+
+                    foreach (FhirSearchParamComponent c in searchParam.Components)
+                    {
+                        _writer.WriteLineIndented($"$({c.Definition}):{c.DefinitionParam?.ValueType ?? "unresolved"}");
+                    }
+
+                    _writer.DecreaseIndent();
+                }
+                else
+                {
+                    string snip = BuildStandardSnippet(searchParam.StandardStatus, searchParam.FhirMaturityLevel, searchParam.IsExperimental);
+                    _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code}={searchParam.ValueType}{snip}");
+                }
             }
 
             if (indented)

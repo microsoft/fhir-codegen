@@ -6008,7 +6008,9 @@ Resources: 119
   ?related-ref: related-ref=reference
   ?relatesto: relatesto=reference
   ?relation: relation=token
-  ?relationship: relationship=composite
+  ?relationship: relationship is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/DocumentReference-relatesto):reference
+    $(http://hl7.org/fhir/SearchParameter/DocumentReference-relation):token
   ?securitylabel: securitylabel=token
   ?setting: setting=token
   ?status: status=token
@@ -7156,7 +7158,9 @@ Resources: 119
       .defaultValueBoolean = false
   ?actual: actual=token
   ?characteristic: characteristic=token
-  ?characteristic-value: characteristic-value=composite
+  ?characteristic-value: characteristic-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Group-characteristic):token
+    $(http://hl7.org/fhir/SearchParameter/Group-value):token
   ?code: code=token
   ?exclude: exclude=token
   ?identifier: identifier=token
@@ -9095,19 +9099,35 @@ Resources: 119
   ?based-on: based-on=reference
   ?category: category=token
   ?code: code=token
-  ?code-value-concept: code-value-concept=composite
-  ?code-value-date: code-value-date=composite
-  ?code-value-quantity: code-value-quantity=composite
-  ?code-value-string: code-value-string=composite
+  ?code-value-concept: code-value-concept is composite (resolves: False)
+    $(http://hl7.org/fhir/SearchParameter/Observation-code):unresolved
+    $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
+  ?code-value-date: code-value-date is composite (resolves: False)
+    $(http://hl7.org/fhir/SearchParameter/Observation-code):unresolved
+    $(http://hl7.org/fhir/SearchParameter/Observation-value-date):date
+  ?code-value-quantity: code-value-quantity is composite (resolves: False)
+    $(http://hl7.org/fhir/SearchParameter/Observation-code):unresolved
+    $(http://hl7.org/fhir/SearchParameter/Observation-value-quantity):quantity
+  ?code-value-string: code-value-string is composite (resolves: False)
+    $(http://hl7.org/fhir/SearchParameter/Observation-code):unresolved
+    $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
   ?combo-code: combo-code=token
-  ?combo-code-value-concept: combo-code-value-concept=composite
-  ?combo-code-value-quantity: combo-code-value-quantity=composite
+  ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
+  ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
   ?combo-data-absent-reason: combo-data-absent-reason=token
   ?combo-value-concept: combo-value-concept=token
   ?combo-value-quantity: combo-value-quantity=quantity
   ?component-code: component-code=token
-  ?component-code-value-concept: component-code-value-concept=composite
-  ?component-code-value-quantity: component-code-value-quantity=composite
+  ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
+  ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
@@ -9124,7 +9144,9 @@ Resources: 119
   ?method: method=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
+  ?related: related is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Observation-related-target):reference
+    $(http://hl7.org/fhir/SearchParameter/Observation-related-type):token
   ?related-target: related-target=reference
   ?related-type: related-type=token
   ?specimen: specimen=reference
@@ -12591,7 +12613,10 @@ Resources: 119
     - readsetId[0..1]: string
   - pointer[0..*]: Reference(Sequence)
   ?chromosome: chromosome=token
-  ?coordinate: coordinate=composite
+  ?coordinate: coordinate is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Sequence-chromosome):token
+    $(http://hl7.org/fhir/SearchParameter/Sequence-start):number
+    $(http://hl7.org/fhir/SearchParameter/Sequence-end):number
   ?end: end=number
   ?identifier: identifier=token
   ?patient: patient=reference
