@@ -445,11 +445,7 @@ public class FhirComplex : FhirModelBase, ICloneable
     /// <param name="element">The element.</param>
     public void AddContextElement(string element)
     {
-        if (_contextElements == null)
-        {
-            _contextElements = new List<string>();
-        }
-
+        _contextElements ??= new List<string>();
         _contextElements.Add(element);
     }
 
@@ -839,12 +835,9 @@ public class FhirComplex : FhirModelBase, ICloneable
                 valueSetReferences,
                 typeMapByPath);
 
-            if (typeMapByPath != null)
-            {
-                typeMapByPath.Add(
+            typeMapByPath?.Add(
                     node.Path,
                     new FhirNodeInfo(FhirNodeInfo.FhirNodeType.Component, node));
-            }
 
             complex.Components.Add(
                 kvp.Key,

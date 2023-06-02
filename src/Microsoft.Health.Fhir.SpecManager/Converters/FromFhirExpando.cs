@@ -26,9 +26,9 @@ public sealed class FromFhirExpando : IFhirConverter
     private const string ExtUrlSdRegex = "http://hl7.org/fhir/StructureDefinition/regex";
     private const string ExtUrlSdRegex2 = "http://hl7.org/fhir/StructureDefinition/structuredefinition-regex";
 
-    private const string ExtUrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
+    //private const string ExtUrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
     private const string ExtUrlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
-    private const string ExtUrlRdfType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type";
+    //private const string ExtUrlRdfType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type";
 
     /// <summary>The errors.</summary>
     private static List<string> _errors;
@@ -268,8 +268,6 @@ public sealed class FromFhirExpando : IFhirConverter
             return;
         }
 
-        List<KeyValuePair<string, string>> properties = new List<KeyValuePair<string, string>>();
-
         foreach (FhirExpando concept in concepts)
         {
             if (TryBuildInternalConceptFromFhir(
@@ -312,7 +310,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <param name="fhirConcept">        [out] The FHIR concept.</param>
     /// <param name="nodeLookup">         (Optional) The node lookup.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryBuildInternalConceptFromFhir(
+    private static bool TryBuildInternalConceptFromFhir(
         string codeSystemUrl,
         string codeSystemId,
         FhirExpando concept,
@@ -436,7 +434,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <summary>Process the operation.</summary>
     /// <param name="op">             The operation.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
-    private void ProcessOperation(
+    private static void ProcessOperation(
         FhirExpando op,
         IPackageImportable fhirVersionInfo)
     {
@@ -521,7 +519,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <summary>Process the search parameter.</summary>
     /// <param name="sp">             The search parameter.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
-    private void ProcessSearchParam(
+    private static void ProcessSearchParam(
         FhirExpando sp,
         IPackageImportable fhirVersionInfo)
     {
@@ -750,10 +748,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <param name="ec">      The ec.</param>
     private static void AddContains(ref List<FhirConcept> contains, FhirExpando ec)
     {
-        if (contains == null)
-        {
-            contains = new List<FhirConcept>();
-        }
+        contains ??= new List<FhirConcept>();
 
         FhirConcept fhirConcept = new FhirConcept(
             ec.GetString("system"),
@@ -906,7 +901,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <param name="sd">             The structure definition we are parsing.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
     /// <param name="artifactClass">  The type of artifact this structure definition contains.</param>
-    private void ProcessStructureDef(
+    private static void ProcessStructureDef(
         FhirExpando sd,
         IPackageImportable fhirVersionInfo,
         out FhirArtifactClassEnum artifactClass)
@@ -1757,11 +1752,10 @@ public sealed class FromFhirExpando : IFhirConverter
                         complex.Elements[difPath].SetInDifferential();
 
                         if ((!string.IsNullOrEmpty(difSliceName)) &&
-                            (complex.Elements[difPath].Slicing != null) &&
-                            complex.Elements[difPath].Slicing.ContainsKey(sdUrl) &&
-                            complex.Elements[difPath].Slicing[sdUrl].HasSlice(difSliceName))
+                            (complex.Elements[difPath].Slicing?.TryGetValue(sdUrl, out FhirSlicing slicing) ?? false) &&
+                            slicing.HasSlice(difSliceName))
                         {
-                            complex.Elements[difPath].Slicing[sdUrl].SetInDifferential(difSliceName);
+                            slicing.SetInDifferential(difSliceName);
                         }
                     }
                 }
@@ -2052,7 +2046,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <summary>Process the code system.</summary>
     /// <param name="ig">             The ImplementationGuide.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
-    private void ProcessImplementationGuide(
+    private static void ProcessImplementationGuide(
         FhirExpando ig,
         IPackageImportable fhirVersionInfo)
     {
@@ -2118,7 +2112,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <summary>Process the code system.</summary>
     /// <param name="cd">             A CompartmentDefinition FhirExpando to process.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
-    private void ProcessCompartment(
+    private static void ProcessCompartment(
         FhirExpando cd,
         IPackageImportable fhirVersionInfo)
     {
@@ -2389,7 +2383,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <param name="capabilityStatement">[out] The capability statement.</param>
     /// <param name="serverUrl">          (Optional) URL of the server.</param>
     /// <param name="info">               (Optional) The information.</param>
-    public void ProcessMetadata(
+    public static void ProcessMetadata(
         object metadata,
         out FhirCapabiltyStatement capabilityStatement,
         string serverUrl = "",
@@ -2551,10 +2545,7 @@ public sealed class FromFhirExpando : IFhirConverter
             serverSearchParams,
             serverOperations);
 
-        if (info != null)
-        {
-            info.AddCapabilityStatement(capabilityStatement);
-        }
+        info?.AddCapabilityStatement(capabilityStatement);
     }
 
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>

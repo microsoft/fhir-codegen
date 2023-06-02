@@ -287,7 +287,7 @@ public static class Program
 
         bool isBatch = false;
         string currentFilePath = Path.GetDirectoryName(AppContext.BaseDirectory);
-        List<string> filesWritten = new List<string>();
+        List<string> filesWritten = new();
 
         _extensionsOutputted = new HashSet<string>();
 
@@ -638,7 +638,7 @@ public static class Program
     /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
     ///  illegal values.</exception>
     /// <param name="headersArg">The headers argument.</param>
-    /// <returns>A Dictionary&lt;string,IEnumerable&lt;string&gt;&gt;</returns>
+    /// <returns>A Dictionary&lt;string,IEnumerable&lt;string&gt;&gt;.</returns>
     public static Dictionary<string, IEnumerable<string>> ParseHttpHeaders(
         string headersArg)
     {

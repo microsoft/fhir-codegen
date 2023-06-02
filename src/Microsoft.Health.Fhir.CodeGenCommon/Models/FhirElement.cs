@@ -136,7 +136,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
                 foreach (string code in codeValues)
                 {
                     string clean = code.Trim();
-                    if (clean.Contains(" ", StringComparison.Ordinal))
+                    if (clean.Contains(' ', StringComparison.Ordinal))
                     {
                         clean = clean.Substring(0, clean.IndexOf(" ", StringComparison.Ordinal));
                     }
@@ -681,7 +681,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
     /// <returns>A copy of this object.</returns>
     public object Clone()
     {
-        return this.CopyWith();
+        return CopyWith();
     }
 
     /// <summary>Deep copy.</summary>
