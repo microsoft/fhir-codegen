@@ -1807,7 +1807,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $"(systems: {vs.ReferencedCodeSystems.Count})");
                 }
 
-                _writer.WriteLineIndented($"[FhirEnumeration(\"{name}\", \"{vs.URL}\")]");
+
+
+                var defaultSystem = GetDefaultCodeSystem(vs.Concepts);
+
+                _writer.WriteLineIndented($"[FhirEnumeration(\"{name}\", \"{vs.URL}\", \"{defaultSystem}\")]");
 
                 _writer.WriteLineIndented($"public enum {nameSanitized}");
 
@@ -1832,7 +1836,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     string display = FhirUtils.SanitizeForValue(concept.Display);
 
-                    _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
+                    if (concept.System != defaultSystem)
+                        _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
+                    else
+                        _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\"), Description(\"{display}\")]");
 
                     if (usedLiterals.Contains(codeName))
                     {
@@ -1864,6 +1871,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     ClassName = className,
                     ValueSetName = nameSanitized,
                 });
+        }
+
+        private static string GetDefaultCodeSystem(List<FhirConcept> concepts)
+        {
+            return concepts.Select(c => c.System)
+                            .GroupBy(c => c)
+                            .OrderByDescending(c => c.Count())
+                            .First().Key;
         }
 
         /// <summary>Convert enum value - see Template-Model.tt#2061.</summary>
