@@ -181,21 +181,13 @@ public abstract class FhirTypeBase
             return primitiveTypeMap[_baseTypeName];
         }
 
-        string baseType;
-
         // Resources cannot inherit patterns, but they are listed that way today
         // see https://chat.fhir.org/#narrow/stream/179177-conformance/topic/Inheritance.20and.20Cardinality.20Changes
-        switch (_baseTypeName)
+        string baseType = _baseTypeName switch
         {
-            case "CanonicalResource":
-            case "MetadataResource":
-                baseType = "DomainResource";
-                break;
-
-            default:
-                baseType = _baseTypeName;
-                break;
-        }
+            "CanonicalResource" or "MetadataResource" => "DomainResource",
+            _ => _baseTypeName,
+        };
 
         string type = FhirUtils.ToConvention(
             baseType,

@@ -5,6 +5,7 @@
 
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FhirCodeGenBlazor.Services;
 
@@ -134,7 +135,7 @@ public class SpecManagerWebService : IDisposable, IHostedService, ISpecManagerWe
     /// <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" /> interface contains an
     /// element that has the specified key; otherwise, <see langword="false" />.
     /// </returns>
-    bool IReadOnlyDictionary<string, FhirVersionInfo>.TryGetValue(string key, out FhirVersionInfo value) =>
+    bool IReadOnlyDictionary<string, FhirVersionInfo>.TryGetValue(string key, [MaybeNullWhen(false)] out FhirVersionInfo value) =>
         FhirManager.Current.InfoByDirective.TryGetValue(key, out value);
 
     /// <summary>Returns an enumerator that iterates through the collection.</summary>

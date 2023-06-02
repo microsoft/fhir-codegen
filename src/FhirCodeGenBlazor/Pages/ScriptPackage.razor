@@ -36,7 +36,7 @@ else
         <MudExpansionPanel Text="Advanced Filtering" IsInitiallyExpanded="true">
             <MudGrid>
                 <MudItem xs="12">
-                    <StandaloneCodeEditor @ref="_editor" Id="script-code-editor" ConstructionOptions="EditorConstructionOptions" OnDidInit="EditorOnDidInit" />
+                    <StandaloneCodeEditor @ref="_editor" Id="script-code-editor" ConstructionOptions="EditorConstructionOptions" />
                 </MudItem>
                 <MudItem xs="12">
                     For details and examples, please see the
@@ -68,7 +68,7 @@ else
         </MudExpansionPanel>
     </MudExpansionPanels>
 
-    <StandaloneCodeEditor @ref="_resultEditor" Id="script-result-editor" ConstructionOptions="ResultConstructionOptions" OnDidInit="EditorOnDidInit" />
+    <StandaloneCodeEditor @ref="_resultEditor" Id="script-result-editor" ConstructionOptions="ResultConstructionOptions" />
 
 }
 
@@ -197,10 +197,6 @@ else
         {
             _ = _editor?.SetValue(readResult.Value);
         }
-    }
-
-    private async Task EditorOnDidInit()
-    {
     }
 
     /// <summary>
