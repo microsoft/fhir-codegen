@@ -192,10 +192,17 @@ else
 
     private async Task LoadSavedContent()
     {
-        var readResult = await BrowserStore.GetAsync<string>("package-script");
-        if (readResult.Success)
+        try
         {
-            _ = _editor?.SetValue(readResult.Value);
+            var readResult = await BrowserStore.GetAsync<string>("package-script");
+            if (readResult.Success)
+            {
+                _ = _editor?.SetValue(readResult.Value);
+            }
+        }
+        catch (Exception)
+        {
+            
         }
     }
 

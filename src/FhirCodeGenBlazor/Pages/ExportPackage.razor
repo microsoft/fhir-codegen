@@ -394,7 +394,7 @@ else
     {
         if (firstRender)
         {
-            InvokeAsync(TryLoadInitialSettings);
+            _ = InvokeAsync(TryLoadInitialSettings);
         }
 
         return base.OnAfterRenderAsync(firstRender);
@@ -404,23 +404,30 @@ else
     /// <returns>An asynchronous result that yields the try update language.</returns>
     async Task<bool> TryLoadInitialSettings()
     {
-        var readResult = await BrowserStore.GetAsync<string>("last_export_url");
-        if (readResult.Success)
+        try
         {
-            capabilityServerUrl = readResult.Value ?? string.Empty;
-        }
+            var readResult = await BrowserStore.GetAsync<string>("last_export_url");
+            if (readResult.Success)
+            {
+                capabilityServerUrl = readResult.Value ?? string.Empty;
+            }
 
-        readResult = await BrowserStore.GetAsync<string>("last_export_auth");
-        if (readResult.Success)
-        {
-            capabilityAuthHeader = readResult.Value ?? string.Empty;
-        }
+            readResult = await BrowserStore.GetAsync<string>("last_export_auth");
+            if (readResult.Success)
+            {
+                capabilityAuthHeader = readResult.Value ?? string.Empty;
+            }
 
-        readResult = await BrowserStore.GetAsync<string>("last_export_language");
-        if (readResult.Success)
+            readResult = await BrowserStore.GetAsync<string>("last_export_language");
+            if (readResult.Success)
+            {
+                selectedLanguage = readResult.Value ?? string.Empty;
+                UpdateLanguage(selectedLanguage);
+            }
+        }
+        catch (Exception)
         {
-            selectedLanguage = readResult.Value ?? string.Empty;
-            UpdateLanguage(selectedLanguage);
+            return false;
         }
 
         return true;
@@ -564,11 +571,17 @@ else
         if (ExportService.TryGetExportLanguage(name, out ILanguage? iLang) &&
             (iLang != null))
         {
-            ProtectedBrowserStorageResult<string> readResult = await
-                BrowserStore.GetAsync<string>($"path_{directive}_{iLang.LanguageName}");
-            if (readResult.Success)
+            try
             {
-                exportDirectoryPath = readResult.Value ?? exportDirectoryPath;
+                ProtectedBrowserStorageResult<string> readResult = await
+                        BrowserStore.GetAsync<string>($"path_{directive}_{iLang.LanguageName}");
+                if (readResult.Success)
+                {
+                    exportDirectoryPath = readResult.Value ?? exportDirectoryPath;
+                }
+            }
+            catch (Exception)
+            {
             }
 
             language = iLang;

@@ -105,10 +105,17 @@
     {
         if (firstRender)
         {
-            ProtectedBrowserStorageResult<bool> optReadResult = await BrowserStore.GetAsync<bool>("darkMode");
+            try
+            {
+                ProtectedBrowserStorageResult<bool> optReadResult = await BrowserStore.GetAsync<bool>("darkMode");
 
-            _isDarkMode = optReadResult.Value;
-            StateHasChanged();
+                _isDarkMode = optReadResult.Value;
+                StateHasChanged();
+            }
+            catch (Exception)
+            {
+                
+            }
         }
     }
 

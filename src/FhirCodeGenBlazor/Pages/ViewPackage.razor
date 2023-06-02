@@ -242,22 +242,30 @@ else
             {
                 if (!showArtifactClass.ContainsKey(classEnum))
                 {
-                    var readResult = await BrowserStore.GetAsync<bool>("showAC_" + classEnum);
-                    if (readResult.Success)
+                    bool added = false;
+                    try
                     {
-                        showArtifactClass.Add(classEnum, readResult.Value);
-                    }
-                    else
-                    {
-                        switch (classEnum)
+                        var readResult = await BrowserStore.GetAsync<bool>("showAC_" + classEnum);
+                        if (readResult.Success)
                         {
-                            case FhirArtifactClassEnum.Resource:
-                                showArtifactClass.Add(classEnum, true);
-                                break;
+                            added = true;
+                            showArtifactClass.Add(classEnum, readResult.Value);
+                        }
+                    }
+                    finally
+                    {
+                        if (!added)
+                        {
+                            switch (classEnum)
+                            {
+                                case FhirArtifactClassEnum.Resource:
+                                    showArtifactClass.Add(classEnum, true);
+                                    break;
 
-                            default:
-                                showArtifactClass.Add(classEnum, false);
-                                break;
+                                default:
+                                    showArtifactClass.Add(classEnum, false);
+                                    break;
+                            }
                         }
                     }
                 }
