@@ -44,6 +44,9 @@ public class PackageCopyOptions
     /// <summary>Gets or sets a value indicating whether the copy capability statements.</summary>
     public bool CopyCapabilityStatements { get; set; } = true;
 
+    /// <summary>Gets or sets a value indicating whether the copy compartments.</summary>
+    public bool CopyCompartments { get; set; } = true;
+
     /// <summary>Gets or sets the extension urls.</summary>
     public HashSet<string> ExtensionUrls { get; set; } = null;
 

@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Xml.Linq;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirCapabiltyStatement;
 
@@ -393,5 +394,17 @@ public class FhirCapResource : ICloneable
     public object Clone()
     {
         return new FhirCapResource(this);
+    }
+
+    /// <summary>Converts this object to a string with expectation.</summary>
+    /// <returns>This object as a string.</returns>
+    public string ToStringWithExpectation()
+    {
+        if (string.IsNullOrEmpty(ExpectationLiteral))
+        {
+            return ResourceType;
+        }
+
+        return $"{ResourceType} ({ExpectationLiteral})";
     }
 }

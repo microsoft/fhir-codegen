@@ -17,6 +17,26 @@ public class FhirImplementationGuide : FhirModelBase, ICloneable
 
     private Dictionary<string, IgDependsOn> _dependsOn = new();
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirImplementationGuide"/> class.
+    /// </summary>
+    /// <param name="id">               The identifier.</param>
+    /// <param name="name">             The name.</param>
+    /// <param name="url">              URL of the resource.</param>
+    /// <param name="version">          Version of this definition.</param>
+    /// <param name="publicationStatus">The publication status.</param>
+    /// <param name="standardStatus">   The standard status.</param>
+    /// <param name="fmmLevel">         The fmm level.</param>
+    /// <param name="isExperimental">   A value indicating whether this object is experimental.</param>
+    /// <param name="shortDescription"> Information describing the short.</param>
+    /// <param name="purpose">          The purpose.</param>
+    /// <param name="comment">          The comment.</param>
+    /// <param name="packageId">        Package ID that contains this IG.</param>
+    /// <param name="fhirVersion">      FHIR versions this IG applies to.</param>
+    /// <param name="dependsOn">        Package dependencies for this IG.</param>
+    /// <param name="validationRegEx">  Validation regex pattern for this definition.</param>
+    /// <param name="narrative">        Narrative content for this resource.</param>
+    /// <param name="narrativeStatus">  Narrative status for the narrative of this resource.</param>
     public FhirImplementationGuide(
         string id,
         string name,

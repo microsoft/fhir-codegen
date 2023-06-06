@@ -8,13 +8,17 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A FHIR element.</summary>
-public class FhirElement : FhirPropertyBase
+public class FhirElement : FhirPropertyBase, ICloneable
 {
-    private readonly Dictionary<string, FhirSlicing> _slicing;
+    private Dictionary<string, FhirSlicing> _slicing;
     private Dictionary<string, FhirElementType> _elementTypes;
     private bool _inDifferential;
     private List<string> _codes;
     private List<PropertyRepresentationCodes> _representations;
+    private string _fiveWs = null;
+    private HashSet<string> _conditions = new();
+    private Dictionary<string, FhirConstraint> _constraintsByKey = new();
+
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirElement"/> class.
@@ -49,7 +53,6 @@ public class FhirElement : FhirPropertyBase
     /// <param name="modifiesParent">   If this element hides a field of its parent.</param>
     /// <param name="bindingStrength">  Strength of binding: required|extensible|preferred|example.</param>
     /// <param name="valueSet">         URL of the value set bound to this element.</param>
-    /// <param name="fiveWs">           Five 'Ws' mapping value.</param>
     /// <param name="representations">   Codes that define how this element is represented in instances, when the deviation varies from the normal case.</param>
     public FhirElement(
         FhirComplex rootArtifact,
@@ -82,8 +85,8 @@ public class FhirElement : FhirPropertyBase
         bool modifiesParent,
         string bindingStrength,
         string valueSet,
-        string fiveWs,
-        List<PropertyRepresentationCodes> representations)
+        List<PropertyRepresentationCodes> representations,
+        Dictionary<string, List<FhirElementDefMapping>> mappings)
         : base(
             rootArtifact,
             id,
@@ -95,7 +98,8 @@ public class FhirElement : FhirPropertyBase
             shortDescription,
             purpose,
             comment,
-            validationRegEx)
+            validationRegEx,
+            mappings)
     {
         FieldOrder = fieldOrder;
         _elementTypes = elementTypes;
@@ -163,7 +167,13 @@ public class FhirElement : FhirPropertyBase
 
         IsModifier = isModifier == true;
         IsModifierReason = isModifierReason;
-        IsSummary = (isSummary == true) || (isModifier == true);
+
+        // TODO: https://www.hl7.org/fhir/elementdefinition-definitions.html#ElementDefinition.isSummary
+        // has a lot of rules regarding when things should be summary that are not followed - it would be
+        // nice to implement it here, but it requires traversing parent nodes that we do note have access
+        // to.  For now, we'll just assume that if the element is marked as summary, it should be and file
+        // a ticket to ask for corrections to the spec.
+        IsSummary = isSummary == true;
         IsMustSupport = isMustSupport == true;
         _inDifferential = false;
         IsSimple = isSimple;
@@ -194,7 +204,7 @@ public class FhirElement : FhirPropertyBase
             ValueSetBindingStrength = bindingStrength.ToFhirEnum<ElementDefinitionBindingStrength>();
         }
 
-        FiveWs = fiveWs;
+        _fiveWs = Mappings.ContainsKey("w5") ? Mappings["w5"]?.FirstOrDefault()?.Map ?? null : null;
     }
 
     /// <summary>
@@ -238,7 +248,10 @@ public class FhirElement : FhirPropertyBase
         string patternFieldName,
         object patternFieldValue,
         string fiveWs,
-        bool inDifferential)
+        bool inDifferential,
+        Dictionary<string, List<FhirElementDefMapping>> mappings,
+        HashSet<string> conditions,
+        Dictionary<string, FhirConstraint> constraints)
         : this(
               rootArtifact,
               id,
@@ -270,14 +283,16 @@ public class FhirElement : FhirPropertyBase
               modifiesParent,
               bindingStrength,
               valueSet,
-              fiveWs,
-              null)
+              null,
+              mappings)
     {
         CodesName = codesName;
         _codes = codes ?? new();
         //_elementTypes = elementTypes ?? new();
         _slicing = slicing ?? new();
         _inDifferential = inDifferential;
+        _conditions = conditions ?? new();
+        _constraintsByKey = constraints ?? new();
     }
 
     /// <summary>Values that represent element definition binding strengths.</summary>
@@ -429,10 +444,54 @@ public class FhirElement : FhirPropertyBase
     public bool IsOptional => CardinalityMin == 0;
 
     /// <summary>Gets the five Ws mapping list for the current element.</summary>
-    public string FiveWs { get; }
+    public string FiveWs => _fiveWs;
 
     /// <summary>True if this element appears in the differential.</summary>
     public bool InDifferential => _inDifferential;
+
+    /// <summary>Gets the conditions.</summary>
+    public HashSet<string> Conditions => _conditions;
+
+    /// <summary>Gets the constraints.</summary>
+    public IEnumerable<FhirConstraint> Constraints { get => _constraintsByKey.Values; }
+
+    /// <summary>Gets the constraints by key.</summary>
+    public Dictionary<string, FhirConstraint> ConstraintsByKey { get => _constraintsByKey; }
+
+    public void AddCondition(string condition)
+    {
+        if (_conditions.Contains(condition))
+        {
+            return;
+        }
+
+        _conditions.Add(condition);
+    }
+
+    /// <summary>Adds a constraint.</summary>
+    /// <param name="constraint">The constraint.</param>
+    /// <param name="copyIfNew"> (Optional) True to copy if new.</param>
+    public void AddConstraint(FhirConstraint constraint, bool copyIfNew = false)
+    {
+        if (_constraintsByKey.ContainsKey(constraint.Key))
+        {
+            return;
+        }
+
+        if (RootArtifact != null)
+        {
+            if (!RootArtifact.ConstraintsByKey.ContainsKey(constraint.Key))
+            {
+                RootArtifact.AddConstraint(constraint, copyIfNew);
+            }
+
+            _constraintsByKey.Add(constraint.Key, RootArtifact.ConstraintsByKey[constraint.Key]);
+            return;
+        }
+
+        _constraintsByKey.Add(constraint.Key, copyIfNew ? (FhirConstraint)constraint.Clone() : constraint);
+    }
+
 
     /// <summary>Sets in differential.</summary>
     public void SetInDifferential()
@@ -517,7 +576,9 @@ public class FhirElement : FhirPropertyBase
             parent.ValidationRegEx,
             parent.NarrativeText,
             parent.NarrativeStatus,
-            parent.FhirVersion);
+            parent.FhirVersion,
+            parent.Mappings.DeepCopy(),
+            parent.RootElementMappings.DeepCopy());
 
         // create a new complex type from the property
         _slicing[url].AddSlice(
@@ -545,6 +606,74 @@ public class FhirElement : FhirPropertyBase
         }
 
         return enums;
+    }
+
+    /// <summary>Copies the with.</summary>
+    /// <param name="root">          (Optional) The root.</param>
+    /// <param name="id">            (Optional) Id for this element.</param>
+    /// <param name="path">          (Optional) Dot notation path for this element.</param>
+    /// <param name="cardinalityMin">(Optional) The cardinality minimum.</param>
+    /// <param name="cardinalityMax">(Optional) The cardinality maximum.</param>
+    /// <returns>A FhirElement.</returns>
+    public FhirElement CopyWith(
+        FhirComplex root = null,
+        string id = null,
+        string path = null,
+        int? cardinalityMin = null,
+        string cardinalityMax = null)
+    {
+
+        // generate our copy
+        FhirElement element = new FhirElement(
+            root ?? RootArtifact,
+            id ?? Id,
+            path ?? Path,
+            BasePath,
+            ExplicitName,
+            URL,
+            FieldOrder,
+            ShortDescription,
+            Purpose,
+            Comment,
+            ValidationRegEx,
+            BaseTypeName,
+            _elementTypes?.DeepCopy() ?? null,
+            cardinalityMin ?? CardinalityMin,
+            cardinalityMax ?? (CardinalityMax == -1 ? "*" : $"{CardinalityMax}"),
+            IsModifier,
+            IsModifierReason,
+            IsSummary,
+            IsMustSupport,
+            IsSimple,
+            DefaultFieldName,
+            DefaultFieldValue,
+            FixedFieldName,
+            FixedFieldValue,
+            PatternFieldName,
+            PatternFieldValue,
+            IsInherited,
+            ModifiesParent,
+            BindingStrength,
+            ValueSet,
+            _representations?.Select(pr => pr).ToList() ?? null,
+            Mappings?.DeepCopy() ?? null);
+
+        element.BaseTypeName = BaseTypeName;
+        element._slicing = _slicing?.DeepCopy() ?? null;
+
+        _conditions.CopyTo(element._conditions);
+
+        // need to add constraints individually so we can reference the root objects
+        _constraintsByKey.Values.ForEach(c => element.AddConstraint(c, true));
+
+        return element;
+    }
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    public object Clone()
+    {
+        return this.CopyWith();
     }
 
     /// <summary>Deep copy.</summary>
@@ -606,8 +735,8 @@ public class FhirElement : FhirPropertyBase
             ModifiesParent,
             BindingStrength,
             ValueSet,
-            FiveWs,
-            _representations);
+            _representations,
+            Mappings.DeepCopy());
 
         // check for base type name
         if (!string.IsNullOrEmpty(BaseTypeName))
@@ -636,6 +765,11 @@ public class FhirElement : FhirPropertyBase
                 element.AddSlicing(slicing);
             }
         }
+
+        _conditions.CopyTo(element._conditions);
+
+        // need to add constraints individually so we can reference the root objects
+        _constraintsByKey.Values.ForEach(c => element.AddConstraint(c, true));
 
         // check for referenced value sets
         if (((!IsInherited) || ModifiesParent) &&
@@ -701,7 +835,7 @@ public class FhirElement : FhirPropertyBase
         if (isComponent)
         {
             values.Add(
-                new (
+                new(
                     FhirUtils.ToConvention(Name, Path, nameConvention, concatenatePath, concatenationDelimiter),
                     FhirUtils.ToConvention(Path, string.Empty, typeConvention),
                     Name));

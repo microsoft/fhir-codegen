@@ -14,6 +14,7 @@ using static Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language.OpenApi;
 
+/// <summary>Language export for OpenAPI.</summary>
 public class LangOpenApi : ILanguage
 {
     /// <summary>Name of the language.</summary>
@@ -21,9 +22,6 @@ public class LangOpenApi : ILanguage
 
     /// <summary>The single file export extension - requires directory export.</summary>
     private const string _singleFileExportExtension = null;
-
-    /// <summary>(Immutable) Pathname of the relative export directory.</summary>
-    private const string _relativeExportDirectory = "";
 
     /// <summary>Gets the name of the language.</summary>
     /// <value>The name of the language.</value>
@@ -183,7 +181,10 @@ public class LangOpenApi : ILanguage
         }
     }
 
-
+    /// <summary>Add any used parameters missing from the target.</summary>
+    /// <param name="newParameters">Options for controlling the new.</param>
+    /// <param name="source">       Another instance to copy.</param>
+    /// <param name="target">       Target for the.</param>
     private static void MaybeAddParameters(IList<OpenApiParameter> newParameters, OpenApiDocument source, OpenApiDocument target)
     {
         foreach (OpenApiParameter targetParam in newParameters)
@@ -198,7 +199,6 @@ public class LangOpenApi : ILanguage
             }
         }
     }
-
 
     /// <summary>Copies the nested defs.</summary>
     /// <param name="source">Another instance to copy.</param>
@@ -276,25 +276,6 @@ public class LangOpenApi : ILanguage
         }
 
         target.Components.Schemas.Add(key, source.Components.Schemas[key]);
-
-        //OpenApiSchema src = source.Components.Schemas[key];
-
-        //OpenApiSchema ts = new OpenApiSchema()
-        //{
-        //    Type = src.Type,
-        //    Properties = new Dictionary<string, OpenApiSchema>(),
-        //    Description = src.Description,
-        //};
-
-        //target.Components.Schemas.Add(
-        //    key,
-        //    ts);
-
-        //// check inheritance
-        //if (src.AllOf != null)
-        //{
-        //    ts.AllOf = new List<OpenApiSchema>();
-        //}
 
         foreach (OpenApiSchema s in target.Components.Schemas[key].AllOf ?? Array.Empty<OpenApiSchema>())
         {

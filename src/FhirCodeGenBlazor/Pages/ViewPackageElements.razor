@@ -33,7 +33,7 @@ else
         <MudExpansionPanel Text="Artifact Type Filtering">
             <MudGrid>
                 <MudItem xs="6" sm="3">
-                    <MudFab StartIcon="@Icons.Filled.Flip"
+                    <MudFab StartIcon="@Icons.Material.Filled.Flip"
                             Label="Toggle All Artifacts"
                             OnClick="() => InvokeAsync(() => ToggleShowArtifactState())"
                             Disabled="@_busy"
@@ -73,8 +73,8 @@ else
                         </MudItem>
                         <MudItem xs="12">
                             <MudSelect T="StringMatchSensitivityCodes" Label="Case Sensitivity" @bind-Value="stringSensitivity">
-                                <MudSelectItem Value="StringMatchSensitivityCodes.CaseInsensitive">Starts With</MudSelectItem>
-                                <MudSelectItem Value="StringMatchSensitivityCodes.CaseSensitive">Contains</MudSelectItem>
+                                <MudSelectItem Value="StringMatchSensitivityCodes.CaseInsensitive">Case Insensitive</MudSelectItem>
+                                <MudSelectItem Value="StringMatchSensitivityCodes.CaseSensitive">Case Sensitive</MudSelectItem>
                             </MudSelect>
                         </MudItem>
                         <MudItem xs="12">
@@ -124,8 +124,8 @@ else
         RowsPerPage="100">
         <ToolBarContent>
             <MudSwitch Class="ms-2" Color="Color.Info" @bind-Checked="showDetailedInfo" Label="Show detailed info" />
-            <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Filled.Download" OnClick="() => DownloadElementPathsJson()">Paths (JSON)</MudButton>
-            <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Filled.Download" OnClick="() => DownloadFhirElementsJson()">Elements (JSON)</MudButton>
+            <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Download" OnClick="() => DownloadElementPathsJson()">Paths (JSON)</MudButton>
+            <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Download" OnClick="() => DownloadFhirElementsJson()">Elements (JSON)</MudButton>
         </ToolBarContent>
         <ColGroup>
             <col style="width: 20vw!important;" />
@@ -412,7 +412,7 @@ else
 
     /// <summary>Control toggle behavior of the 'all' button.</summary>
     private bool _showArtifactState = true;
-    
+
     /// <summary>Options for controlling the JSON serializer.</summary>
     private static System.Text.Json.JsonSerializerOptions jsonSerializerOptions = new()
     {
@@ -669,7 +669,7 @@ else
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"RebuildFilteredElements <<< caught exception compiling filter ({predString}): {ex.Message}");
+            Console.WriteLine($"TryBuildPredicate <<< caught exception compiling filter ({predString}): {ex.Message}");
             if (ex.InnerException != null)
             {
                 Console.WriteLine($" <<< inner: {ex.InnerException.Message}");
@@ -772,7 +772,7 @@ else
         if (string.IsNullOrEmpty(value))
         {
             searchPredicate = null;
-            inputIsInvalid = false;
+            inputIsInvalid = true;
             _displayTable?.UpdateSelection();
             InvokeAsync(() => StateHasChanged());
             return;
@@ -787,6 +787,7 @@ else
             return;
         }
 
+        searchPredicate = null;
         inputIsInvalid = true;
         _displayTable?.UpdateSelection();
         InvokeAsync(() => StateHasChanged());

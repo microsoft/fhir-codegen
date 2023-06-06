@@ -10,7 +10,7 @@ Detailed documentation can be found on the [documentation site](https://microsof
 
 Project source code is hosted on [GitHub](https://github.com/microsoft/fhir-codegen).
 
-All projects are currently built on .Net 6.0 and tested on multiple platforms, though Windows is the primary development platform.  The .Net 6.0 SDK and runtimes are available for free at: https://dotnet.microsoft.com/en-us/download .
+All projects are currently built on .Net 7.0 and tested on multiple platforms, though Windows is the primary development platform.  The .Net 6.0 SDK and runtimes are available for free at: https://dotnet.microsoft.com/en-us/download .
 
 ## Microsoft.Health.Fhir.CodeGenCommon
 
@@ -52,7 +52,7 @@ To run this project from a command line:
 * `dotnet run --project src/FhirCodeGenBlazor/FhirCodeGenBlazor.csproj`
 or, you can build a release version to run:
 * `dotnet build src/FhirCodeGenBlazor/FhirCodeGenBlazor.csproj -c Release`
-* `dotnet ./src/FhirCodeGenBlazor/bin/Release/net6.0/FhirCodeGenBlazor.dll`
+* `dotnet ./src/FhirCodeGenBlazor/bin/Release/net7.0/FhirCodeGenBlazor.dll`
 
 More information about this project can be found in the [API Documentation](https://microsoft.github.io/fhir-codegen/api/index.html).
 
@@ -69,7 +69,7 @@ To run this project from a command line:
 * `dotnet run --project src/fhir-codegen-cli/fhir-codegen-cli.csproj -- [options]`
 or, you can build a release version to run:
 * `dotnet build src/fhir-codegen-cli/fhir-codegen-cli.csproj -c Release`
-* `dotnet ./src/fhir-codegen-cli/bin/Release/net6.0/fhir-codegen-cli.dll`
+* `dotnet ./src/fhir-codegen-cli/bin/Release/net7.0/fhir-codegen-cli.dll`
 
 ```
 Usage:

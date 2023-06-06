@@ -170,6 +170,7 @@ public abstract class Exporter
             // clean up
             DeleteDirectory(tempDir);
 
+            Console.WriteLine($"Wrote {filesWritten.Count} files to {outputPath}");
             return filesWritten;
         }
 
@@ -186,6 +187,7 @@ public abstract class Exporter
 
             DeleteDirectory(tempDir);
 
+            Console.WriteLine($"Wrote {filesWritten.Count} files to {outputPath}");
             return filesWritten;
         }
 
@@ -223,6 +225,7 @@ public abstract class Exporter
 
             DeleteDirectory(tempDir);
 
+            Console.WriteLine($"Wrote {filesWritten.Count} files to {outputPath}");
             return filesWritten;
         }
 
@@ -254,6 +257,7 @@ public abstract class Exporter
 
         DeleteDirectory(tempDir);
 
+        Console.WriteLine($"Wrote {filesWritten.Count} files to {outputPath}");
         return filesWritten;
     }
 

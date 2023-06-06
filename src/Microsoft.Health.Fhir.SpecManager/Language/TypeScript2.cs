@@ -163,39 +163,7 @@ public sealed class TypeScript2 : ILanguage
         "interface",
         "Element",
     };
-
-    /// <summary>The generics and type hints.</summary>
-    private static readonly Dictionary<string, GenericTypeHintInfo> _genericsAndTypeHints = new()
-    {
-        //{
-        //    "Bundle",
-        //    new GenericTypeHintInfo()
-        //    {
-        //        Alias = "BundleContentType",
-        //        GenericHint = "FhirResource",
-        //        IncludeBase = true,
-        //    }
-        //},
-        //{
-        //    "Bundle.entry",
-        //    new GenericTypeHintInfo()
-        //    {
-        //        Alias = "BundleContentType",
-        //        GenericHint = "FhirResource",
-        //        IncludeBase = true,
-        //    }
-        //},
-        //{
-        //    "Bundle.entry.resource",
-        //    new GenericTypeHintInfo()
-        //    {
-        //        Alias = "BundleContentType",
-        //        GenericHint = string.Empty,
-        //        IncludeBase = false,
-        //    }
-        //},
-    };
-
+    
     /// <summary>(Immutable) The Set of all known generic types (needed for casting).</summary>
     private static readonly HashSet<string> _genericTypeHints = new()
     {
@@ -981,97 +949,46 @@ public sealed class TypeScript2 : ILanguage
             nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
             baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
 
-            if (_genericsAndTypeHints.ContainsKey(complex.Path))
+            if (_exportInterfacesAsTypes)
             {
-                if (_exportInterfacesAsTypes)
-                {
-                    sbInterface.WriteLineIndented(
-                        $"export type" +
-                        $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
-                        $" = {_namespaceInternal}.I{baseClassName} & {{");
-                }
-                else
-                {
-                    sbInterface.WriteLineIndented(
-                        $"export interface" +
-                        $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
-                        $" extends {_namespaceInternal}.I{baseClassName} {{");
-                }
-
-                sbClass.WriteLineIndented(
-                    $"export class" +
-                    $" {nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.{_genericsAndTypeHints[complex.Path].GenericHint}>" +
-                    $" extends {_namespaceInternal}.{baseClassName} {{");
+                sbInterface.WriteLineIndented(
+                    $"export type I{nameForExport}" +
+                    $" = {_namespaceInternal}.I{baseClassName} & {{");
             }
             else
             {
-                if (_exportInterfacesAsTypes)
-                {
-                    sbInterface.WriteLineIndented(
-                        $"export type I{nameForExport}" +
-                        $" = {_namespaceInternal}.I{baseClassName} & {{");
-                }
-                else
-                {
-                    sbInterface.WriteLineIndented(
-                        $"export interface I{nameForExport}" +
-                        $" extends {_namespaceInternal}.I{baseClassName} {{");
-                }
-
-                sbClass.WriteLineIndented(
-                    $"export class {nameForExport}" +
-                    $" extends {_namespaceInternal}.{baseClassName}" +
-                    $" implements {_namespaceInternal}.I{nameForExport} {{");
+                sbInterface.WriteLineIndented(
+                    $"export interface I{nameForExport}" +
+                    $" extends {_namespaceInternal}.I{baseClassName} {{");
             }
+
+            sbClass.WriteLineIndented(
+                $"export class {nameForExport}" +
+                $" extends {_namespaceInternal}.{baseClassName}" +
+                $" implements {_namespaceInternal}.I{nameForExport} {{");
         }
         else
         {
             nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
             baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
-
-            if (_genericsAndTypeHints.ContainsKey(complex.Path))
+            
+            if (_exportInterfacesAsTypes)
             {
-                if (_exportInterfacesAsTypes)
-                {
-                    sbInterface.WriteLineIndented(
-                        $"export type" +
-                        $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
-                        $" = {_namespaceInternal}.I{baseClassName} & {{");
-                }
-                else
-                {
-                    sbInterface.WriteLineIndented(
-                        $"export interface" +
-                        $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
-                        $" extends {_namespaceInternal}.I{baseClassName} {{");
-                }
-
-                sbClass.WriteLineIndented(
-                    $"export class" +
-                    $" {nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInternal}.{_genericsAndTypeHints[complex.Path].GenericHint}>" +
-                    $" extends {_namespaceInternal}.{baseClassName}" +
-                    $" implements {_namespaceInternal}.I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias}> {{");
+                sbInterface.WriteLineIndented(
+                    $"export type I{nameForExport}" +
+                    $" = {_namespaceInternal}.I{baseClassName} & {{");
             }
             else
             {
-                if (_exportInterfacesAsTypes)
-                {
-                    sbInterface.WriteLineIndented(
-                        $"export type I{nameForExport}" +
-                        $" = {_namespaceInternal}.I{baseClassName} & {{");
-                }
-                else
-                {
-                    sbInterface.WriteLineIndented(
-                        $"export interface I{nameForExport}" +
-                        $" extends {_namespaceInternal}.I{baseClassName} = {{");
-                }
-
-                sbClass.WriteLineIndented(
-                    $"export class {nameForExport}" +
-                    $" extends {_namespaceInternal}.{baseClassName}" +
-                    $" implements {_namespaceInternal}.I{nameForExport} {{");
+                sbInterface.WriteLineIndented(
+                    $"export interface I{nameForExport}" +
+                    $" extends {_namespaceInternal}.I{baseClassName} = {{");
             }
+
+            sbClass.WriteLineIndented(
+                $"export class {nameForExport}" +
+                $" extends {_namespaceInternal}.{baseClassName}" +
+                $" implements {_namespaceInternal}.I{nameForExport} {{");
         }
 
         sbInterface.IncreaseIndent();
@@ -1205,15 +1122,7 @@ public sealed class TypeScript2 : ILanguage
             sbConstructor,
             $"Default constructor for {typeName} - initializes any required elements to null if a value is not provided.");
 
-        if (_genericsAndTypeHints.ContainsKey(complexPath))
-        {
-            sbConstructor.WriteLineIndented(
-                $"constructor" +
-                $"(source:Partial<{_namespaceInternal}.I{typeName}> = {{}}) {{");
-            sbConstructor.IncreaseIndent();
-            sbConstructor.WriteLineIndented("super(source);");
-        }
-        else if (hasParent)
+        if (hasParent)
         {
             sbConstructor.WriteLineIndented($"constructor(source:Partial<{_namespaceInternal}.I{typeName}> = {{}}) {{");
             sbConstructor.IncreaseIndent();
@@ -1680,23 +1589,6 @@ public sealed class TypeScript2 : ILanguage
                         $"({string.Join("|", element.Codes.Select(c => $"\"{c}\""))}){arrayFlagString}");
                 }
             }
-            else if (_genericsAndTypeHints.ContainsKey(element.Path))
-            {
-                GenericTypeHintInfo typeHint = _genericsAndTypeHints[element.Path];
-
-                if (typeHint.IncludeBase)
-                {
-                    nameAndType = new(
-                        kvp.Key,
-                        $"{kvp.Value}<{_genericsAndTypeHints[element.Path].Alias}>{arrayFlagString}");
-                }
-                else
-                {
-                    nameAndType = new(
-                        kvp.Key,
-                        $"{_genericsAndTypeHints[element.Path].Alias}{arrayFlagString}");
-                }
-            }
             else if (kvp.Value.Equals("Resource", StringComparison.Ordinal))
             {
                 nameAndType = new(kvp.Key, $"{_namespaceInternal}.FhirResource{arrayFlagString}");
@@ -1961,13 +1853,5 @@ public sealed class TypeScript2 : ILanguage
     {
         internal string Name;
         internal string ConstName;
-    }
-
-    /// <summary>Information about the generic type hint.</summary>
-    private struct GenericTypeHintInfo
-    {
-        internal string Alias;
-        internal bool IncludeBase;
-        internal string GenericHint;
     }
 }

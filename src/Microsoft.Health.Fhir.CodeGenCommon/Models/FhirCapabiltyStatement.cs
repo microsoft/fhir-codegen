@@ -3,7 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -45,7 +44,16 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
     /// <param name="url">                      FHIR Base URL for the server.</param>
     /// <param name="name">                     The name.</param>
     /// <param name="title">                    The title.</param>
+    /// <param name="version">                  Version of this Capability Statement.</param>
+    /// <param name="publicationStatus">        Publication Status (draft,etc.).</param>
+    /// <param name="standardStatus">           Standard status (e.g., STU, Normative).</param>
+    /// <param name="fmmLevel">                 FHIR Maturity Model number.</param>
+    /// <param name="isExperimental">           A value indicating whether this object is experimental.</param>
+    /// <param name="description">              The description.</param>
+    /// <param name="narrative">                The narrative.</param>
+    /// <param name="narrativeStatus">          The narrative status.</param>
     /// <param name="fhirVersion">              The server-reported FHIR version.</param>
+    /// <param name="capabilityStatementKind">  The capability statement kind.</param>
     /// <param name="fhirMimeTypes">            List of supported FHIR MIME types.</param>
     /// <param name="fhirMimeTypeExpectations"> List of conformance expectations for FHIR MIME types.</param>
     /// <param name="patchMimeTypes">           List of supported patch MIME types.</param>
@@ -62,7 +70,7 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
     /// <param name="resourceInteractions">     The server interactions by resource.</param>
     /// <param name="serverSearchParameters">   The search parameters for searching all resources.</param>
     /// <param name="serverOperations">         The operations defined at the system level operation.</param>
-    /// <param name="securitySchemes">          The security schemes supported by the server.</param>            
+    /// <param name="securitySchemes">          The security schemes supported by the server.</param>
     public FhirCapabiltyStatement(
         List<string> serverInteractions,
         List<string> serverInteractionExpectations,
@@ -136,9 +144,9 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
         ImplementationGuides = implementationGuides ?? Array.Empty<string>();
         ImplementationGuidesEx = ProcessExpectationEnumerables(ImplementationGuides, implementationGuideExpectations);
 
-        ResourceInteractions = resourceInteractions;
-        ServerSearchParameters = serverSearchParameters;
-        ServerOperations = serverOperations;
+        ResourceInteractions = resourceInteractions ?? new();
+        ServerSearchParameters = serverSearchParameters ?? new();
+        ServerOperations = serverOperations ?? new();
         SecuritySchemes = securitySchemes ?? Array.Empty<FhirCapSecurityScheme>();
 
         if ((serverInteractions != null) &&
@@ -281,6 +289,7 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
 
     /// <summary>Gets the operations defined at the system level operation.</summary>
     public Dictionary<string, FhirCapOperation> ServerOperations { get; }
+
     public IEnumerable<FhirCapSecurityScheme> SecuritySchemes { get; }
 
     /// <summary>Creates a new object that is a copy of the current instance.</summary>

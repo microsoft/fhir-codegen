@@ -48,6 +48,7 @@ public static class Program
     ///  expansions (default: false).</param>
     /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
     ///  Conformance) from.  Requires application/fhir+json.</param>
+    /// <param name="fhirServerHeaders">     Headers to include when calling a FHIR server, format is key=value|key=value|...</param>
     /// <param name="resolveExternal">      Whether or not to try to resolve unknown canonicals at the given fhir server url.</param>
     /// <param name="includeExperimental">   If the output should include structures marked
     ///  experimental (false|true).</param>
@@ -76,6 +77,7 @@ public static class Program
         string languageOptions = "",
         bool officialExpansionsOnly = false,
         string fhirServerUrl = "",
+        string fhirServerHeaders = "",
         bool resolveExternal = true,
         bool includeExperimental = false,
         string exportTypes = "",
@@ -157,6 +159,10 @@ public static class Program
                 name: "--resolve-external",
                 getDefaultValue: () => true,
                 "Whether to try to resolve unknown canonicals on the server given by --server/--fhir-server-url."),
+            new Option<string>(
+                aliases: new string[] { "--fhir-server-headers", "--headers" },
+                getDefaultValue: () => string.Empty,
+                "Headers to include when calling a FHIR server, format is key=value|key=value|..."),
 
             new Option<string>(
                 aliases: new string[] { "--packages", "-p" },
@@ -231,6 +237,7 @@ public static class Program
     ///  expansions (default: false).</param>
     /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
     ///  Conformance) from.  Requires application/fhir+json.</param>
+    /// <param name="fhirServerHeaders">     Headers to include when calling a FHIR server, format is key=value|key=value|...</param>
     /// <param name="resolveExternal">      Whether or not to try to resolve unknown canonicals at the given fhir server url.</param>
     /// <param name="includeExperimental">   If the output should include structures marked
     ///  experimental (false|true).</param>
@@ -260,6 +267,7 @@ public static class Program
         string languageOptions = "",
         bool officialExpansionsOnly = false,
         string fhirServerUrl = "",
+        string fhirServerHeaders = "",
         bool resolveExternal = true,
         bool includeExperimental = false,
         string exportTypes = "",
@@ -361,7 +369,9 @@ public static class Program
 
         if (!string.IsNullOrEmpty(fhirServerUrl))
         {
-            if (!ServerConnector.TryGetServerInfo(fhirServerUrl, resolveExternal, out serverCaps))
+            Dictionary<string, IEnumerable<string>> headers = ParseHttpHeaders(fhirServerHeaders);
+
+            if (!ServerConnector.TryGetServerInfo(fhirServerUrl, resolveExternal, headers, out serverCaps))
             {
                 Console.WriteLine($"Failed to get server information from {fhirServerUrl}!");
                 return -1;
@@ -622,6 +632,46 @@ public static class Program
                 Console.WriteLine($"\t- {kvp.Key}\n\t\t{kvp.Value}");
             }
         }
+    }
+
+    /// <summary>Parse HTTP headers.</summary>
+    /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
+    ///  illegal values.</exception>
+    /// <param name="headersArg">The headers argument.</param>
+    /// <returns>A Dictionary&lt;string,IEnumerable&lt;string&gt;&gt;</returns>
+    public static Dictionary<string, IEnumerable<string>> ParseHttpHeaders(
+        string headersArg)
+    {
+        if (string.IsNullOrEmpty(headersArg))
+        {
+            return new();
+        }
+
+        Dictionary<string, IEnumerable<string>> headers = new();
+
+        foreach (string header in headersArg.Split('|'))
+        {
+            string[] parts = header.Split('=');
+
+            if (parts.Length != 2)
+            {
+                throw new ArgumentException($"Invalid header: {header}");
+            }
+
+            string key = parts[0].Trim();
+            string value = parts[1].Trim();
+
+            if (headers.ContainsKey(key))
+            {
+                headers[key] = headers[key].Append(value);
+            }
+            else
+            {
+                headers.Add(key, new List<string>() { value });
+            }
+        }
+
+        return headers;
     }
 
     /// <summary>Gets options for language.</summary>

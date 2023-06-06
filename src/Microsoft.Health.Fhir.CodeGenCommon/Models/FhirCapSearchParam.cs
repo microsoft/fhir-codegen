@@ -115,4 +115,16 @@ public class FhirCapSearchParam : ICloneable
     {
         return new FhirCapSearchParam(this);
     }
+
+    /// <summary>Converts this object to a string with expectation.</summary>
+    /// <returns>This object as a string.</returns>
+    public string ToStringWithExpectation()
+    {
+        if (string.IsNullOrEmpty(ExpectationLiteral))
+        {
+            return Name;
+        }
+
+        return $"{Name} ({ExpectationLiteral})";
+    }
 }

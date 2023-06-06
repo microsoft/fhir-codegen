@@ -35,10 +35,10 @@
                     </MudItem>
                     <MudItem xs="8">
                         <MudTooltip Text="Select Artifact">
-                            <MudIconButton Icon="@Icons.Filled.LibraryAddCheck" @onclick="() => ShowArtifactSelectDialog(true)"/>
+                            <MudIconButton Icon="@Icons.Material.Filled.LibraryAddCheck" @onclick="() => ShowArtifactSelectDialog(true)"/>
                         </MudTooltip>
                         <MudTooltip Text="Compare Entire Package">
-                            <MudIconButton Icon="@Icons.Filled.Close" />
+                            <MudIconButton Icon="@Icons.Material.Filled.Close" />
                         </MudTooltip>
                     </MudItem>
 
@@ -58,10 +58,10 @@
                     </MudItem>
                     <MudItem xs="8">
                         <MudTooltip Text="Select Artifact">
-                            <MudIconButton Icon="@Icons.Filled.LibraryAddCheck" @onclick="() => ShowArtifactSelectDialog(false)"/>
+                            <MudIconButton Icon="@Icons.Material.Filled.LibraryAddCheck" @onclick="() => ShowArtifactSelectDialog(false)"/>
                         </MudTooltip>
                         <MudTooltip Text="Compare Entire Package">
-                            <MudIconButton Icon="@Icons.Filled.Close" />
+                            <MudIconButton Icon="@Icons.Material.Filled.Close" />
                         </MudTooltip>
                     </MudItem>
 
@@ -89,7 +89,7 @@
     <MudExpansionPanel Text="Artifact Type Filtering">
         <MudGrid>
             <MudItem xs="6" sm="3">
-                <MudFab StartIcon="@Icons.Filled.Flip"
+                <MudFab StartIcon="@Icons.Material.Filled.Flip"
                         Label="Toggle All Artifacts"
                         OnClick="() => InvokeAsync(() => ToggleShowArtifactState())"
                         Disabled="@_busy"
@@ -112,7 +112,7 @@
     <MudExpansionPanel Text="Diff Type Filtering">
         <MudGrid>
             <MudItem xs="6" sm="3">
-                <MudFab StartIcon="@Icons.Filled.Flip"
+                <MudFab StartIcon="@Icons.Material.Filled.Flip"
                         Label="Toggle All Difference Types"
                         OnClick="() => InvokeAsync(() => ToggleShowDiffTypeState())"
                         Disabled="@_busy" />
@@ -146,8 +146,8 @@
     FixedFooter="true">
     <ToolBarContent>
         <MudText Typo="Typo.h6">Differences between FHIR artifacts</MudText>
-        <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Filled.Download" OnClick="() => DownloadExpandedDiffsJson()">Filtered Diffs</MudButton>
-        <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Filled.Download" OnClick="() => DownloadDiffResultsJson()">Full Diff Results</MudButton>
+        <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Download" OnClick="() => DownloadExpandedDiffsJson()">Filtered Diffs</MudButton>
+        <MudButton Class="ms-2" Color="Color.Info" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Download" OnClick="() => DownloadDiffResultsJson()">Full Diff Results</MudButton>
         <MudSpacer />
         <MudTextField
             @bind-Value="artifactFilterText"
@@ -240,7 +240,7 @@
             </HeaderContent>
             <RowTemplate>
                 <MudTd>
-                    <MudFab StartIcon="@Icons.Filled.Add" @onclick="() => SelectArtifact(context.Url)" Size="Size.Small" />
+                    <MudFab StartIcon="@Icons.Material.Filled.Add" @onclick="() => SelectArtifact(context.Url)" Size="Size.Small" />
                 </MudTd>
                 <MudTd>@context.ArtifactClass</MudTd>
                 <MudTd>@context.Id</MudTd>
@@ -489,7 +489,8 @@
     /// <returns>True if it succeeds, false if it fails.</returns>
     private bool FilterFuncDefinition(ExpandedDiffRec diffRec, string searchString)
     {
-        if ((showArtifactClass[diffRec.ArtifactClass] == false) ||
+        if ((!showArtifactClass.ContainsKey(diffRec.ArtifactClass)) ||
+            (showArtifactClass[diffRec.ArtifactClass] == false) ||
             (showDiffType[diffRec.DiffType] == false))
         {
             return false;
@@ -596,7 +597,7 @@
             }
         }
     }
-    
+
     /// <summary>Handles the location changed.</summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">     Location changed event information.</param>

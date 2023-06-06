@@ -25,16 +25,16 @@ else
         <ToolBarContent>
             <MudText Typo="Typo.h6">FHIR Cache Contents</MudText>
             <MudSpacer />
-            <MudFab StartIcon="@Icons.Filled.LibraryAdd" OnClick="@(() => NavToAddPackage())" Size="Size.Small" />
+            <MudFab StartIcon="@Icons.Material.Filled.LibraryAdd" OnClick="@(() => NavToAddPackage())" Size="Size.Small" />
             <MudSpacer />
             <MudTextField @bind-Value="packageSearchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
         </ToolBarContent>
         <ColGroup>
-            <col style="width: 10vw!important;" />
+            <col style="width: 15vw!important;" />
             <col style="width: 15vw!important;" />
             <col style="width: 5vw!important;" />
             <col style="width: 20vw!important;" />
-            <col style="width: 50vw!important;" />
+            <col style="width: 45vw!important;" />
         </ColGroup>
         <HeaderContent>
             <MudTh></MudTh>
@@ -52,25 +52,31 @@ else
                         {
                             <MudTooltip Text="Package Overview">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.ViewInAr"
+                                    StartIcon="@Icons.Material.Filled.ViewInAr"
                                     @onclick="() => NavToViewPackage(context.Key)"
+                                    Size="Size.Small" />
+                            </MudTooltip>
+                            <MudTooltip Text="LINQ Runner">
+                                <MudFab
+                                    StartIcon="@Icons.Material.Filled.Search"
+                                    @onclick="() => NavToScript(context.Key)"
                                     Size="Size.Small" />
                             </MudTooltip>
                             <MudTooltip Text="Element Explorer">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.Preview"
+                                    StartIcon="@Icons.Material.Filled.Preview"
                                     @onclick="() => NavToPackageElements(context.Key)"
                                     Size="Size.Small" />
                             </MudTooltip>
                             <MudTooltip Text="Export">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.DriveFileMove"
+                                    StartIcon="@Icons.Material.Filled.DriveFileMove"
                                     @onclick="() => NavToExportPackage(context.Key)"
                                     Size="Size.Small" />
                             </MudTooltip>
                             <MudTooltip Text="Delete">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.Delete"
+                                    StartIcon="@Icons.Material.Filled.Delete"
                                     Color="Color.Error"
                                     @onclick="() => RequestDelete(context.Key)"
                                     Size="Size.Small" />
@@ -80,14 +86,14 @@ else
                         {
                             <MudTooltip Text="Loaded">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.DownloadDone"
+                                    StartIcon="@Icons.Material.Filled.DownloadDone"
                                     Color="Color.Success"
                                     Disabled="true"
                                     Size="Size.Small" />
                             </MudTooltip>
                             <MudTooltip Text="Delete">
                                 <MudFab
-                                    StartIcon="@Icons.Filled.Delete"
+                                    StartIcon="@Icons.Material.Filled.Delete"
                                     Color="Color.Error"
                                     @onclick="() => RequestDelete(context.Key)"
                                     Size="Size.Small" />
@@ -99,7 +105,7 @@ else
                     case PackageLoadStateEnum.Parsed:
                         <MudTooltip Text="Loaded">
                             <MudFab
-                                StartIcon="@Icons.Filled.DownloadDone"
+                                StartIcon="@Icons.Material.Filled.DownloadDone"
                                 Color="Color.Success"
                                 Disabled="true"
                                 Size="Size.Small" />
@@ -114,13 +120,13 @@ else
                     default:
                         <MudTooltip Text="Load">
                             <MudFab
-                                StartIcon="@Icons.Filled.Input"
+                                StartIcon="@Icons.Material.Filled.Input"
                                 @onclick="() => ButtonLoadPackageClicked(context.Key)"
                                 Size="Size.Small" />
                         </MudTooltip>
                         <MudTooltip Text="Delete">
                             <MudFab
-                                StartIcon="@Icons.Filled.Delete"
+                                StartIcon="@Icons.Material.Filled.Delete"
                                 Color="Color.Error"
                                 @onclick="() => RequestDelete(context.Key)"
                                 Size="Size.Small" />
@@ -232,6 +238,21 @@ else
         }
 
         NavigationManager.NavigateTo($"/view/package?packageName={components[0]}");
+    }
+
+    /// <summary>Navigation to script page.</summary>
+    /// <param name="directive">The directive.</param>
+    private void NavToScript(string directive)
+    {
+        string[] components = directive.Split('#');
+
+        if (components.Length > 1)
+        {
+            NavigationManager.NavigateTo($"/script/package?packageName={components[0]}&version={components[1]}");
+            return;
+        }
+
+        NavigationManager.NavigateTo($"/script/package?packageName={components[0]}");
     }
 
     /// <summary>Navigation to export package.</summary>

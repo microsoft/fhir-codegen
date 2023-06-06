@@ -3,10 +3,12 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>FHIR Slicing information.</summary>
-public class FhirSlicing
+public class FhirSlicing : ICloneable
 {
     private readonly Dictionary<string, FhirSliceDiscriminatorRule> _rules;
     private readonly List<FhirComplex> _slices;
@@ -119,6 +121,20 @@ public class FhirSlicing
         {
             _slicesInDifferential.Add(name);
         }
+    }
+
+    public FhirSlicing(FhirSlicing source)
+    {
+        DefinedById = source.DefinedById;
+        DefinedByUrl = source.DefinedByUrl;
+        Description = source.Description;
+        IsOrdered = source.IsOrdered;
+        FieldOrder = source.FieldOrder;
+        SlicingRules = source.SlicingRules;
+        _rules = source._rules?.DeepCopy() ?? null;
+        _slices = source._slices?.Select(v => v).ToList() ?? null;
+        _slicesInDifferential = source._slicesInDifferential?.Select(v => v).ToHashSet() ?? null;
+
     }
 
     /// <summary>Initializes a new instance of the <see cref="FhirSlicing"/> class.</summary>
@@ -263,6 +279,13 @@ public class FhirSlicing
         slice.SliceName = sliceName;
         _slices.Add(slice);
         _slicesByName.Add(sliceName, slice);
+    }
+
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public object Clone()
+    {
+        return new FhirSlicing(this);
     }
 
     /// <summary>Deep copy.</summary>

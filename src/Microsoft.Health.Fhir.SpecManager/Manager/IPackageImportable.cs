@@ -161,6 +161,10 @@ public interface IPackageImportable
     /// <param name="ig">The ig.</param>
     public void AddImplementationGuide(FhirImplementationGuide ig);
 
+    /// <summary>Adds a compartment.</summary>
+    /// <param name="compartment">The compartment.</param>
+    public void AddCompartment(FhirCompartment compartment);
+
     /// <summary>Adds a capability statement.</summary>
     /// <param name="cap">The capability.</param>
     public void AddCapabilityStatement(FhirCapabiltyStatement cap);

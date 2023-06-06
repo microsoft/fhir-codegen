@@ -52,6 +52,12 @@ public class ModelBuilder
     private bool _searchGet = false;
     private bool _searchPost = false;
 
+    private long _totalPaths = 0;
+    private long _totalOperations = 0;
+    private long _totalSchemas = 0;
+    private long _totalQueryParameters = 0;
+    private long _totalParamInstances = 0;
+
     /// <summary>Initializes a new instance of the <see cref="ModelBuilder"/> class.</summary>
     /// <param name="info">           The information.</param>
     /// <param name="openApiOptions"> Options for controlling the operation.</param>
@@ -128,6 +134,10 @@ public class ModelBuilder
             doc.Components.Schemas = schemas;
         }
 
+        // grab initial counts
+        _totalQueryParameters = doc.Components.Parameters.Count;
+        _totalSchemas = schemas.Count;
+
         Dictionary<string, OpenApiTag> tags = new()
         {
             { SYSTEM_TAG_REF.Reference.Id, new OpenApiTag() { Name = SYSTEM_TAG_REF.Reference.Id, Description = "Sever-level requests" } }
@@ -141,6 +151,14 @@ public class ModelBuilder
         {
             AddSmartOAuthScheme(_caps.Url, doc, oauth);
         }
+
+        Console.WriteLine($"OpenAPI stats:");
+        Console.WriteLine($"          totalPaths: {_totalPaths} ");
+        Console.WriteLine($"     totalOperations: {_totalOperations} ");
+        Console.WriteLine($"        totalSchemas: {_totalSchemas} ");
+        Console.WriteLine($"totalQueryParameters: {_totalQueryParameters} ");
+        Console.WriteLine($" totalParamInstances: {_totalParamInstances} ");
+        Console.WriteLine($"");
 
         return doc;
     }
@@ -167,7 +185,7 @@ public class ModelBuilder
         {
             Reference = new OpenApiReference() { Id = schema.Name, Type = ReferenceType.SecurityScheme }
         };
-       
+
         var scopes = getScopes(configUrl).Result;
 
         doc.SecurityRequirements.Add(new OpenApiSecurityRequirement()
@@ -452,6 +470,8 @@ public class ModelBuilder
                     BuildReadOperation("Conformance", schemas));
 
                 paths.Add($"/metadata", metadataPath);
+
+                _totalOperations++;
             }
             else
             {
@@ -465,6 +485,8 @@ public class ModelBuilder
                     BuildReadOperation("CapabilityStatement", schemas));
 
                 paths.Add($"/metadata", metadataPath);
+
+                _totalOperations++;
             }
         }
 
@@ -499,6 +521,7 @@ public class ModelBuilder
                             }
 
                             paths[opPath].AddOperation(OperationType.Get, BuildResourceReadOasOp(resource, schemas));
+                            _totalOperations++;
                         }
                         break;
 
@@ -512,6 +535,7 @@ public class ModelBuilder
                             }
 
                             paths[opPath].AddOperation(OperationType.Get, BuildResourceVReadOasOp(resource, schemas));
+                            _totalOperations++;
                         }
                         break;
 
@@ -525,6 +549,7 @@ public class ModelBuilder
                             }
 
                             paths[opPath].AddOperation(OperationType.Put, BuildResourceUpdateOasOp(resource, schemas));
+                            _totalOperations++;
                         }
                         break;
 
@@ -538,6 +563,7 @@ public class ModelBuilder
                             }
 
                             paths[opPath].AddOperation(OperationType.Patch, BuildResourcePatchOasOp(resource, schemas));
+                            _totalOperations++;
                         }
                         break;
 
@@ -551,6 +577,7 @@ public class ModelBuilder
                             }
 
                             paths[opPath].AddOperation(OperationType.Delete, BuildResourceDeleteOasOp(resource, schemas));
+                            _totalOperations++;
                         }
                         break;
 
@@ -569,6 +596,7 @@ public class ModelBuilder
                             }
 
                             paths[opPath].AddOperation(OperationType.Get, BuildResourceHistoryInstanceOasOp(resource, schemas));
+                            _totalOperations++;
                         }
                         break;
 
@@ -587,6 +615,7 @@ public class ModelBuilder
                             }
 
                             paths[opPath].AddOperation(OperationType.Get, BuildResourceHistoryTypeOasOp(resource, schemas));
+                            _totalOperations++;
                         }
                         break;
 
@@ -600,6 +629,7 @@ public class ModelBuilder
                             }
 
                             paths[opPath].AddOperation(OperationType.Post, BuildResourceCreateOasOp(resource, schemas));
+                            _totalOperations++;
                         }
                         break;
 
@@ -615,6 +645,7 @@ public class ModelBuilder
                                 }
 
                                 paths[opPath].AddOperation(OperationType.Get, BuildResourceSearchTypeGetOasOp(resource, schemas));
+                                _totalOperations++;
                             }
 
                             if (_searchPost)
@@ -627,6 +658,7 @@ public class ModelBuilder
                                 }
 
                                 paths[opPath].AddOperation(OperationType.Post, BuildResourceSearchTypePostOasOp(resource, schemas));
+                                _totalOperations++;
                             }
                         }
                         break;
@@ -663,6 +695,7 @@ public class ModelBuilder
                 }
 
                 paths[opPath].AddOperation(OperationType.Get, BuildSystemSearchGetOasOp(schemas));
+                _totalOperations++;
             }
 
             if (_searchPost)
@@ -675,6 +708,7 @@ public class ModelBuilder
                 }
 
                 paths[opPath].AddOperation(OperationType.Post, BuildSystemSearchPostOasOp(schemas));
+                _totalOperations++;
             }
         }
 
@@ -686,6 +720,8 @@ public class ModelBuilder
         {
             BuildSystemOperationOasPaths(paths, schemas, fhirOp);
         }
+
+        _totalPaths += paths.Count;
 
         return paths;
     }
@@ -744,6 +780,7 @@ public class ModelBuilder
                 if (!paths[opPath].Operations.ContainsKey(OperationType.Get))
                 {
                     paths[opPath].AddOperation(OperationType.Get, oasOpGet);
+                    _totalOperations++;
                 }
             }
 
@@ -760,6 +797,7 @@ public class ModelBuilder
                 if (!paths[opPath].Operations.ContainsKey(OperationType.Post))
                 {
                     paths[opPath].AddOperation(OperationType.Post, oasOpPost);
+                    _totalOperations++;
                 }
             }
         }
@@ -800,6 +838,7 @@ public class ModelBuilder
                 if (!paths[opPath].Operations.ContainsKey(OperationType.Get))
                 {
                     paths[opPath].AddOperation(OperationType.Get, oasOpGet);
+                    _totalOperations++;
                 }
             }
 
@@ -816,6 +855,7 @@ public class ModelBuilder
                 if (!paths[opPath].Operations.ContainsKey(OperationType.Post))
                 {
                     paths[opPath].AddOperation(OperationType.Post, oasOpPost);
+                    _totalOperations++;
                 }
             }
         }
@@ -835,6 +875,7 @@ public class ModelBuilder
                 if (!paths[opPath].Operations.ContainsKey(OperationType.Get))
                 {
                     paths[opPath].AddOperation(OperationType.Get, oasOpGet);
+                    _totalOperations++;
                 }
             }
 
@@ -851,6 +892,7 @@ public class ModelBuilder
                 if (!paths[opPath].Operations.ContainsKey(OperationType.Post))
                 {
                     paths[opPath].AddOperation(OperationType.Post, oasOpPost);
+                    _totalOperations++;
                 }
             }
         }
@@ -989,6 +1031,8 @@ public class ModelBuilder
         // search for input parameters
         foreach (FhirParameter fhirParam in inParams)
         {
+            _totalParamInstances++;
+
             // skip duplicates
             if (usedParams.Contains(fhirParam.Name))
             {
@@ -1023,6 +1067,7 @@ public class ModelBuilder
 
             oasOp.Parameters.Add(BuildStringParameter(fhirParam.Name, fhirParam.Documentation));
             usedParams.Add(fhirParam.Name);
+            _totalQueryParameters++;
         }
 
         if (outParams.Count == 1)
@@ -1204,6 +1249,8 @@ public class ModelBuilder
 
                 oasOp.Parameters.Add(BuildStringParameter(fhirParam.Name, fhirParam.Documentation));
                 usedParams.Add(fhirParam.Name);
+                _totalQueryParameters++;
+                _totalParamInstances++;
             }
         }
         else
@@ -1244,6 +1291,7 @@ public class ModelBuilder
         foreach (string code in _openApiOptions.HttpCommonParams)
         {
             pathItem.Parameters.Add(BuildReferencedParameter(code));
+            _totalParamInstances++;
         }
     }
 
@@ -1519,7 +1567,7 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = "search-sytem: Search all resources";
+            oasOp.Summary = "search-system: Search all resources";
         }
 
         if (_openApiOptions.IncludeHeaders)
@@ -1532,6 +1580,8 @@ public class ModelBuilder
 
         foreach (string code in _openApiOptions.HttpReadParams)
         {
+            _totalParamInstances++;
+
             if (usedParams.Contains(code))
             {
                 continue;
@@ -1539,12 +1589,15 @@ public class ModelBuilder
 
             oasOp.Parameters.Add(BuildReferencedParameter(code));
             usedParams.Add(code);
+            _totalQueryParameters++;
         }
 
         if (_openApiOptions.IncludeSearchParams)
         {
             foreach (string code in _openApiOptions.SearchCommonParams)
             {
+                _totalParamInstances++;
+
                 if (usedParams.Contains(code))
                 {
                     continue;
@@ -1552,10 +1605,13 @@ public class ModelBuilder
 
                 oasOp.Parameters.Add(BuildReferencedParameter(code));
                 usedParams.Add(code);
+                _totalQueryParameters++;
             }
 
             foreach (string code in _openApiOptions.SearchResultParams)
             {
+                _totalParamInstances++;
+
                 if (usedParams.Contains(code))
                 {
                     continue;
@@ -1563,6 +1619,7 @@ public class ModelBuilder
 
                 oasOp.Parameters.Add(BuildReferencedParameter(code));
                 usedParams.Add(code);
+                _totalQueryParameters++;
             }
 
             if ((_caps != null) &&
@@ -1570,6 +1627,8 @@ public class ModelBuilder
             {
                 foreach (FhirCapSearchParam capParam in _caps.ServerSearchParameters.Values)
                 {
+                    _totalParamInstances++;
+
                     if (usedParams.Contains(capParam.Name))
                     {
                         continue;
@@ -1577,6 +1636,7 @@ public class ModelBuilder
 
                     oasOp.Parameters.Add(BuildStringParameter(capParam.Name, capParam.Documentation));
                     usedParams.Add(capParam.Name);
+                    _totalQueryParameters++;
                 }
             }
         }
@@ -1618,6 +1678,8 @@ public class ModelBuilder
 
         foreach (string code in _openApiOptions.HttpReadParams)
         {
+            _totalParamInstances++;
+
             if (usedParams.Contains(code))
             {
                 continue;
@@ -1625,12 +1687,15 @@ public class ModelBuilder
 
             oasOp.Parameters.Add(BuildReferencedParameter(code));
             usedParams.Add(code);
+            _totalQueryParameters++;
         }
 
         if (_openApiOptions.IncludeSearchParams)
         {
             foreach (string code in _openApiOptions.SearchCommonParams)
             {
+                _totalParamInstances++;
+
                 if (usedParams.Contains(code))
                 {
                     continue;
@@ -1638,10 +1703,13 @@ public class ModelBuilder
 
                 oasOp.Parameters.Add(BuildReferencedParameter(code));
                 usedParams.Add(code);
+                _totalQueryParameters++;
             }
 
             foreach (string code in _openApiOptions.SearchResultParams)
             {
+                _totalParamInstances++;
+
                 if (usedParams.Contains(code))
                 {
                     continue;
@@ -1649,10 +1717,13 @@ public class ModelBuilder
 
                 oasOp.Parameters.Add(BuildReferencedParameter(code));
                 usedParams.Add(code);
+                _totalQueryParameters++;
             }
 
             foreach (FhirSearchParam fhirSp in GetResourceSearchParameters(resource.Name))
             {
+                _totalParamInstances++;
+
                 if (usedParams.Contains(fhirSp.Code))
                 {
                     continue;
@@ -1662,6 +1733,7 @@ public class ModelBuilder
                 {
                     oasOp.Parameters.Add(BuildReferencedParameter(fhirSp.Code));
                     usedParams.Add(fhirSp.Code);
+                    _totalQueryParameters++;
                     continue;
                 }
 
@@ -1675,6 +1747,7 @@ public class ModelBuilder
                 }
 
                 usedParams.Add(fhirSp.Code);
+                _totalQueryParameters++;
             }
         }
 
@@ -1728,6 +1801,7 @@ public class ModelBuilder
             if (ResolveConditionalCreate(resource.Name))
             {
                 oasOp.Parameters.Add(BuildReferencedParameter("If-None-Exist"));
+                _totalParamInstances++;
             }
         }
 
@@ -1778,13 +1852,17 @@ public class ModelBuilder
                     break;
                 case ConditionalReadPolicy.ModifiedSince:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    _totalParamInstances++;
                     break;
                 case ConditionalReadPolicy.NotMatch:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    _totalParamInstances++;
                     break;
                 case ConditionalReadPolicy.FullSupport:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
                     oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    _totalParamInstances++;
+                    _totalParamInstances++;
                     break;
             }
         }
@@ -1792,11 +1870,13 @@ public class ModelBuilder
         foreach (string code in _openApiOptions.HttpReadParams)
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
+            _totalParamInstances++;
         }
 
         foreach (string code in _openApiOptions.HistoryParams)
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
+            _totalParamInstances++;
         }
 
         oasOp.Responses = BuildResponses(_responseCodesRead, "Bundle", schemas);
@@ -1839,13 +1919,17 @@ public class ModelBuilder
                     break;
                 case ConditionalReadPolicy.ModifiedSince:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    _totalParamInstances++;
                     break;
                 case ConditionalReadPolicy.NotMatch:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    _totalParamInstances++;
                     break;
                 case ConditionalReadPolicy.FullSupport:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
                     oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    _totalParamInstances++;
+                    _totalParamInstances++;
                     break;
             }
         }
@@ -1853,11 +1937,13 @@ public class ModelBuilder
         foreach (string code in _openApiOptions.HttpReadParams)
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
+            _totalParamInstances++;
         }
 
         foreach (string code in _openApiOptions.HistoryParams)
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
+            _totalParamInstances++;
         }
 
         oasOp.Responses = BuildResponses(_responseCodesRead, "Bundle", schemas);
@@ -1899,6 +1985,7 @@ public class ModelBuilder
             if (conditionalDelete != ConditionalDeletePolicy.NotSupported)
             {
                 oasOp.Parameters.Add(BuildReferencedParameter("If-Match"));
+                _totalParamInstances++;
             }
         }
 
@@ -1910,6 +1997,8 @@ public class ModelBuilder
 
             foreach (string code in _openApiOptions.SearchCommonParams)
             {
+                _totalParamInstances++;
+
                 if (usedParams.Contains(code))
                 {
                     continue;
@@ -1917,6 +2006,7 @@ public class ModelBuilder
 
                 oasOp.Parameters.Add(BuildReferencedParameter(code));
                 usedParams.Add(code);
+                _totalQueryParameters++;
             }
 
             foreach (FhirSearchParam fhirSp in GetResourceSearchParameters(resource.Name))
@@ -1926,10 +2016,13 @@ public class ModelBuilder
                     continue;
                 }
 
+                _totalParamInstances++;
+
                 if (_openApiOptions.ConsolidateSearchParams)
                 {
                     oasOp.Parameters.Add(BuildReferencedParameter(fhirSp.Code));
                     usedParams.Add(fhirSp.Code);
+                    _totalQueryParameters++;
                     continue;
                 }
 
@@ -1943,6 +2036,7 @@ public class ModelBuilder
                 }
 
                 usedParams.Add(fhirSp.Code);
+                _totalQueryParameters++;
             }
         }
 
@@ -1983,6 +2077,7 @@ public class ModelBuilder
             if (ResolveConditionalPatch(resource.Name))
             {
                 oasOp.Parameters.Add(BuildReferencedParameter("If-Match"));
+                _totalParamInstances++;
             }
         }
 
@@ -2050,12 +2145,15 @@ public class ModelBuilder
             if (supportUpdateCreate && supportConditionalCreate)
             {
                 oasOp.Parameters.Add(BuildReferencedParameter("If-None-Exist"));
+                _totalParamInstances++;
             }
 
             if (supportConditionalUpdate)
             {
                 oasOp.Parameters.Add(BuildReferencedParameter("If-Match"));
                 oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                _totalParamInstances++;
+                _totalParamInstances++;
             }
         }
 
@@ -2068,6 +2166,8 @@ public class ModelBuilder
 
                 foreach (string code in _openApiOptions.SearchCommonParams)
                 {
+                    _totalParamInstances++;
+
                     if (usedParams.Contains(code))
                     {
                         continue;
@@ -2075,14 +2175,18 @@ public class ModelBuilder
 
                     oasOp.Parameters.Add(BuildReferencedParameter(code));
                     usedParams.Add(code);
+                    _totalQueryParameters++;
                 }
 
                 foreach (FhirSearchParam fhirSp in GetResourceSearchParameters(resource.Name))
                 {
+                    _totalParamInstances++;
+
                     if (_openApiOptions.ConsolidateSearchParams)
                     {
                         oasOp.Parameters.Add(BuildReferencedParameter(fhirSp.Code));
                         usedParams.Add(fhirSp.Code);
+                        _totalQueryParameters++;
                         continue;
                     }
 
@@ -2096,6 +2200,7 @@ public class ModelBuilder
                     }
 
                     usedParams.Add(fhirSp.Code);
+                    _totalQueryParameters++;
                 }
             }
         }
@@ -2157,13 +2262,17 @@ public class ModelBuilder
                     break;
                 case ConditionalReadPolicy.ModifiedSince:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    _totalParamInstances++;
                     break;
                 case ConditionalReadPolicy.NotMatch:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    _totalParamInstances++;
                     break;
                 case ConditionalReadPolicy.FullSupport:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
                     oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    _totalParamInstances++;
+                    _totalParamInstances++;
                     break;
             }
         }
@@ -2213,13 +2322,17 @@ public class ModelBuilder
                     break;
                 case ConditionalReadPolicy.ModifiedSince:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
+                    _totalParamInstances++;
                     break;
                 case ConditionalReadPolicy.NotMatch:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    _totalParamInstances++;
                     break;
                 case ConditionalReadPolicy.FullSupport:
                     oasOp.Parameters.Add(BuildReferencedParameter("If-Modified-Since"));
                     oasOp.Parameters.Add(BuildReferencedParameter("If-None-Match"));
+                    _totalParamInstances++;
+                    _totalParamInstances++;
                     break;
             }
         }
@@ -2772,7 +2885,6 @@ public class ModelBuilder
                 }
             }
 
-
             return operations;
         }
 
@@ -2811,7 +2923,7 @@ public class ModelBuilder
             Description =
                 _openApiOptions.IncludeDescriptions
                 ? "Read metadata."
-                : null,            
+                : null,
         };
 
         operation.Tags.Add(SYSTEM_TAG_REF);

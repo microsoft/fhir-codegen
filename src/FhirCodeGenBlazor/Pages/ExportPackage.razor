@@ -7,6 +7,7 @@
 @using Microsoft.Health.Fhir.SpecManager.Language
 @using Microsoft.Health.Fhir.SpecManager.Manager
 @inject NavigationManager NavigationManager
+@inject IServerConnectorService ConnectorService
 @inject ISpecManagerWebService SpecService
 @inject ISpecExporterWebService ExportService
 @inject ProtectedLocalStorage BrowserStore
@@ -80,115 +81,117 @@ else if (info.ArtifactRecordsByClass.Any())
                 </RowTemplate>
             </MudTable>
         </MudExpansionPanel>
-        <MudExpansionPanel Text="Export Configuration" IsInitiallyExpanded="true">
-            <MudSelect T="string" Label="Select a Language" @bind-Value="selectedLanguage">
-                @foreach (string name in ExportService.GetExportLanguages().Keys.OrderBy(k => k))
-                {
-                    <MudSelectItem Value="@name"/>
-                }
-            </MudSelect>
-            <br />
-            @if ((language != null) && (exporterOptions != null))
-            {
-                <MudField Label="Optional Artifact Types to Export" Variant="Variant.Text" InnerPadding="false">
-                    <MudGrid>
-                        @foreach (ExporterOptions.FhirExportClassType et in optionalExportTypes.Keys)
-                        {
-                            <MudItem xs="12" sm="6" md="4">
-                                <MudSwitch Color="Color.Info" @bind-Checked="@optionalExportTypes[et]" Label="@et.ToString()" />
-                            </MudItem>
-                        }
-                    </MudGrid>
-                </MudField>
-            }
-            <br />
 
-            <MudText>General Export Options:</MudText>
-            <MudSimpleTable Dense="true" >
-                <tbody>
-                    <tr>
-                        <td>
-                            <MudTextField
-                                @bind-Value="exportDirectoryPath"
-                                Label="Export Path"
-                                HelperText="Server-based path to write export output"></MudTextField>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <MudSelect T="ExporterOptions.ExtensionSupportLevel"
-                                   Label="Extension Support Level"
-                                   HelperText="If supported by this language, where extensions should be included.">
-                                @foreach (ExporterOptions.ExtensionSupportLevel value in Enum.GetValues(typeof(ExporterOptions.ExtensionSupportLevel)))
+        <MudExpansionPanel Text="Capability Filter" IsInitiallyExpanded="false">
+            <MudStack Justify="Justify.Center" AlignItems="AlignItems.Stretch" Spacing="1" >
+                <MudStack Row="true">
+                    <MudTextField @bind-Value="@capabilityServerUrl"
+                              Label="FHIR Server URL"
+                              HelperText="FHIR Server URL to retrieve CapabilityStatement"></MudTextField>
+
+                    <MudButton OnClick="() => InvokeAsync(() => TryGetServerInfo())">
+                        Fetch
+                    </MudButton>
+
+                    <MudButton OnClick="() => {capabilityJson = string.Empty; capabilityStatement = null;}">
+                        Clear
+                    </MudButton>
+                </MudStack>
+
+                <MudStack Row="true">
+                    <MudTextField @bind-Value="capabilityAuthHeader"
+                              Label="Authorization Header"
+                              HelperText="Authorization header value">
+                    </MudTextField>
+                </MudStack>
+
+                <MudTextField T="string" @bind-Value="capabilityJson" Variant="Variant.Filled" Lines="5" ReadOnly="true" />
+            </MudStack>
+        </MudExpansionPanel>
+        
+        <MudExpansionPanel Text="Export Configuration" IsInitiallyExpanded="true">
+            <MudStack Justify="Justify.Center" AlignItems="AlignItems.Stretch" Spacing="1">
+                <MudSelect T="string" Label="Select a Language" @bind-Value="selectedLanguage">
+                    @foreach (string name in ExportService.GetExportLanguages().Keys.OrderBy(k => k))
+                    {
+                        <MudSelectItem Value="@name"/>
+                    }
+                </MudSelect>
+            
+                @if ((language != null) && (exporterOptions != null))
+                {
+                    <MudField Label="Optional Artifact Types to Export" Variant="Variant.Text" InnerPadding="false">
+                        <MudGrid>
+                            @foreach (ExporterOptions.FhirExportClassType et in optionalExportTypes.Keys)
+                            {
+                                <MudItem xs="12" sm="6" md="4">
+                                    <MudSwitch Color="Color.Info" @bind-Checked="@optionalExportTypes[et]" Label="@et.ToString()" />
+                                </MudItem>
+                            }
+                        </MudGrid>
+                    </MudField>
+                }
+
+                <MudText>General Export Options:</MudText>
+                <MudTextField @bind-Value="exportDirectoryPath"
+                        Label="Export Path"
+                        HelperText="Server-based path to write export output"></MudTextField>
+                <MudSelect T="ExporterOptions.ExtensionSupportLevel"
+                        Label="Extension Support Level"
+                        HelperText="If supported by this language, where extensions should be included.">
+                    @foreach (ExporterOptions.ExtensionSupportLevel value in Enum.GetValues(typeof(ExporterOptions.ExtensionSupportLevel)))
+                    {
+                        <MudSelectItem Value="@value" />
+                    }
+                </MudSelect>
+                <MudSwitch Color="Color.Info" @bind-Checked="@includeExperimental" Label="Draft/Experimental" />
+
+                <MudText>Language Export Options:</MudText>
+                @foreach (LanguageUiOption optValue in languageOptions.Values.OrderBy(v => v.Name))
+                {
+                    @switch (optValue.TypeCode)
+                    {
+                        case LanguageOptionTypeCodes.Boolean:
+                            <MudSwitch Color="Color.Info"
+                                    @bind-Checked="@optValue.Value"
+                                    Converter="@(new BoolValConverter())">@optValue.Name - @optValue.Description</MudSwitch>
+                            break;
+
+                        case LanguageOptionTypeCodes.Number:
+                            <MudNumericField T="int?"
+                                    Label="@optValue.Name"
+                                    HelperText="@optValue.Description"
+                                    Value="string.IsNullOrEmpty(optValue.Value) ? null : Int32.Parse(optValue.Value)"
+                                    ValueChanged="@((int? value) => optValue.Value = (value == null) ? null : value.ToString())" />
+                            break;
+
+                        case LanguageOptionTypeCodes.Choice:
+                            <MudSelect T="string"
+                                    Label="@optValue.Name"
+                                    HelperText="@optValue.Description"
+                                    @bind-Value="optValue.Value">
+                                @foreach (string v in optValue.AllowedValues)
                                 {
-                                    <MudSelectItem Value="@value" />
+                                    <MudSelectItem Value="@v" />
                                 }
                             </MudSelect>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <MudSwitch Color="Color.Info" @bind-Checked="@includeExperimental" Label="Draft/Experimental"/>
-                        </td>
-                    </tr>
-                </tbody>
-            </MudSimpleTable>
+                            break;
 
-            <br />
-            <MudText>Language Export Options:</MudText>
-            <MudTable
-                Items="@languageOptions.Values.OrderBy(v => v.Name)"
-                Dense="true">
-                <RowTemplate>
-                    <MudTd>
-                        @switch (context.TypeCode)
-                        {
-                            case LanguageOptionTypeCodes.Boolean:
-                                <MudSwitch
-                                    Color="Color.Info"
-                                    @bind-Checked="@context.Value"
-                                    Converter="@(new BoolValConverter())"
-                                >@context.Name - @context.Description</MudSwitch>
-                                break;
+                        case LanguageOptionTypeCodes.CommaDelimtedString:
+                            <MudTextField @bind-Value="@optValue.Value"
+                                    Label="@optValue.Name"
+                                    HelperText="@optValue.Description"></MudTextField>
+                            break;
 
-                            case LanguageOptionTypeCodes.Number:
-                                <MudNumericField 
-                                   T="int"
-                                   Label="@context.Name"
-                                   HelperText="@context.Description"
-                                   Value="Int32.Parse(context.Value ?? string.Empty)"
-                                   ValueChanged="@((int value) => context.Value = value.ToString())"/>
-                                break;
-
-                            case LanguageOptionTypeCodes.Choice:
-                                <MudSelect
-                                    T="string"
-                                    Label="@context.Name"
-                                    HelperText="@context.Description">
-                                    @foreach (string v in context.AllowedValues)
-                                    {
-                                        <MudSelectItem Value="@v"/>
-                                    }
-                                </MudSelect>
-                                break;
-
-                            case LanguageOptionTypeCodes.CommaDelimtedString:
-                                <MudTextField @bind-Value="@context.Value"
-                                  Label="@context.Name"
-                                  HelperText="@context.Description"></MudTextField>
-                                break;
-
-                            case LanguageOptionTypeCodes.String:
-                            default:
-                                <MudTextField @bind-Value="@context.Value"
-                                  Label="@context.Name"
-                                  HelperText="@context.Description"></MudTextField>
-                                break;
-                        }
-                    </MudTd>
-                </RowTemplate>
-            </MudTable>
-
+                        case LanguageOptionTypeCodes.String:
+                        default:
+                            <MudTextField @bind-Value="@optValue.Value"
+                                    Label="@optValue.Name"
+                                    HelperText="@optValue.Description"></MudTextField>
+                            break;
+                    }
+                }
+            </MudStack>
         </MudExpansionPanel>
     </MudExpansionPanels>
     <br />
@@ -354,6 +357,17 @@ else
     /// </summary>
     private bool exportInProgress { get; set; } = false;
 
+    /// <summary>URL of the capability server.</summary>
+    private string capabilityServerUrl = string.Empty;
+
+    /// <summary>The capability authentication header.</summary>
+    private string capabilityAuthHeader = string.Empty;
+
+    /// <summary>The capability statement.</summary>
+    private FhirCapabiltyStatement? capabilityStatement = null;
+
+    private string capabilityJson = string.Empty;
+
     /// <summary>Gets or sets the message.</summary>
     private string uiMessage { get; set; } = string.Empty;
 
@@ -380,7 +394,7 @@ else
     {
         if (firstRender)
         {
-            InvokeAsync(TryUpdateLanguageAsync);
+            InvokeAsync(TryLoadInitialSettings);
         }
 
         return base.OnAfterRenderAsync(firstRender);
@@ -388,16 +402,52 @@ else
 
     /// <summary>Try update language asynchronous.</summary>
     /// <returns>An asynchronous result that yields the try update language.</returns>
-    async Task<bool> TryUpdateLanguageAsync()
+    async Task<bool> TryLoadInitialSettings()
     {
-        var readResult = await BrowserStore.GetAsync<string>("last_export_language");
+        var readResult = await BrowserStore.GetAsync<string>("last_export_url");
+        if (readResult.Success)
+        {
+            capabilityServerUrl = readResult.Value ?? string.Empty;
+        }
+
+        readResult = await BrowserStore.GetAsync<string>("last_export_auth");
+        if (readResult.Success)
+        {
+            capabilityAuthHeader = readResult.Value ?? string.Empty;
+        }
+
+        readResult = await BrowserStore.GetAsync<string>("last_export_language");
         if (readResult.Success)
         {
             selectedLanguage = readResult.Value ?? string.Empty;
-            //UpdateLanguage(readResult.Value ?? string.Empty);
+            UpdateLanguage(selectedLanguage);
         }
 
         return true;
+    }
+
+    /// <summary>
+    /// Attempts to get a server information, returning a default value rather than throwing an
+    /// exception if it fails.
+    /// </summary>
+    void TryGetServerInfo()
+    {
+        BrowserStore.SetAsync("last_export_url", capabilityServerUrl);
+        BrowserStore.SetAsync("last_export_auth", capabilityAuthHeader);
+
+        if (string.IsNullOrEmpty(capabilityServerUrl))
+        {
+            return;
+        }
+
+        Dictionary<string, IEnumerable<string>> headers = new();
+
+        if (!string.IsNullOrEmpty(capabilityAuthHeader))
+        {
+            headers.Add("Authorization", new string[] { capabilityAuthHeader });
+        }
+
+        ConnectorService.TryGetServerInfo(capabilityServerUrl, false, headers, out capabilityJson, out capabilityStatement);
     }
 
     /// <summary>Starts an export.</summary>
@@ -435,11 +485,17 @@ else
         BrowserStore.SetAsync("last_export_language", exporterOptions.LanguageName);
         BrowserStore.SetAsync($"path_{directive}_{exporterOptions.LanguageName}", exportDirectoryPath);
 
-        if (exporterOptions.LanguageOptions != null)
+        if (languageOptions != null)
         {
-            foreach ((string option, string value) in exporterOptions.LanguageOptions)
+            exporterOptions.LanguageOptions.Clear();
+
+            foreach ((string key, LanguageUiOption opt) in languageOptions)
             {
-                BrowserStore.SetAsync($"{directive}_{exporterOptions.LanguageName}_{option}", value);
+                BrowserStore.SetAsync($"{directive}_{exporterOptions.LanguageName}_{key}", opt.Value ?? string.Empty);
+                if (!string.IsNullOrEmpty(opt.Value))
+                {
+                    exporterOptions.LanguageOptions.Add(key, opt.Value);
+                }
             }
         }
 
@@ -451,7 +507,7 @@ else
             exporterOptions.ExtensionUrls,
             exporterOptions.ExtensionElementPaths,
             exporterOptions.LanguageOptions,
-            exporterOptions.ServerUrl,
+            capabilityServerUrl ?? exporterOptions.ServerUrl,
             exporterOptions.ResolveExternal,
             includeExperimental,
             exporterOptions.LanguageInputDir);
@@ -462,6 +518,7 @@ else
 
         Task exportTask = ExportService.RequestExport(
             info,
+            capabilityStatement,
             language,
             options,
             exportDirectoryPath);
@@ -542,13 +599,43 @@ else
 
             languageOptions = langOpts;
 
-            foreach (string option in iLang.LanguageOptions.Keys)
-            {
-                ProtectedBrowserStorageResult<string> optReadResult = await
-                    BrowserStore.GetAsync<string>($"{directive}_{iLang.LanguageName}_{option}");
+            //foreach (string option in iLang.LanguageOptions.Keys)
+            //{
+            //    ProtectedBrowserStorageResult<string> optReadResult = await
+            //        BrowserStore.GetAsync<string>($"{directive}_{iLang.LanguageName}_{option}");
 
-                exporterOptions.LanguageOptions.Add(option, optReadResult.Value ?? string.Empty);
-            }
+            //    if (!string.IsNullOrEmpty(optReadResult.Value))
+            //    {
+            //        switch (languageOptions[option].TypeCode)
+            //        {
+            //            case LanguageOptionTypeCodes.Boolean:
+
+            //                break;
+
+            //            case LanguageOptionTypeCodes.String:
+
+            //                break;
+
+            //            case LanguageOptionTypeCodes.CommaDelimtedString:
+            //                break;
+
+            //            case LanguageOptionTypeCodes.Number:
+            //                break;
+
+            //            case LanguageOptionTypeCodes.Choice:
+            //                break;
+            //        }
+
+            //        //if ()
+            //        //{
+            //        //    exporterOptions.LanguageOptions[option] = optReadResult.Value ?? string.Empty;
+            //        //}
+            //        //else
+            //        //{
+            //        //    exporterOptions.LanguageOptions.Add(option, optReadResult.Value ?? string.Empty);
+            //        //}
+            //    }
+            //}
 
             Dictionary<ExporterOptions.FhirExportClassType, bool> optionalExports = new();
 
@@ -695,21 +782,25 @@ else
     /// <summary>A value converter.</summary>
     public class BoolValConverter : BoolConverter<string?>
     {
-
         public BoolValConverter()
         {
             SetFunc = OnSet;
             GetFunc = OnGet;
         }
 
-        private string TrueString = "true";
-        private string FalseString = "false";
-        private string NullString = "";
+        private const string TrueString = "true";
+        private const string FalseString = "false";
+        private const string NullString = "";
 
         private string OnGet(bool? value)
         {
             try
             {
+                if (value == null)
+                {
+                    return NullString;
+                }
+
                 return (value == true) ? TrueString : FalseString;
             }
             catch (Exception e)
@@ -721,16 +812,24 @@ else
 
         private bool? OnSet(string? arg)
         {
-            if (arg == null)
+            if (string.IsNullOrEmpty(arg))
+            {
                 return null;
+            }
+
             try
             {
-                if (arg == TrueString)
+                if (arg.Equals(TrueString, StringComparison.OrdinalIgnoreCase))
+                {
                     return true;
-                if (arg == FalseString)
+                }
+
+                if (arg.Equals(FalseString, StringComparison.OrdinalIgnoreCase))
+                {
                     return false;
-                else
-                    return null;
+                }
+
+                return null;
             }
             catch (FormatException e)
             {

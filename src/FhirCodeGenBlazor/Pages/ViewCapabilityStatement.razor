@@ -2,6 +2,7 @@
 
 @using FhirCodeGenBlazor.Models
 @using FhirCodeGenBlazor.Services
+@using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 @using Microsoft.Health.Fhir.CodeGenCommon.Models;
 @inject NavigationManager NavManager
 @inject ISpecManagerWebService SpecService
@@ -93,72 +94,39 @@ else
                     </MudPaper>
                 </MudExpansionPanel>
             }
-            <MudExpansionPanel Text="Summary">
-@*                <MudTable Items="@fhirCaps.ResourceInteractions.Values"
+            <MudExpansionPanel Text="Resources">
+                <MudTable Items="@fhirCaps.ResourceInteractions.Values"
                       Striped="true"
                       Hover="true"
                       Dense="true"
                       Height="60vh"
                       FixedHeader="true">
                     <ColGroup>
-                        <col style="width: 5vw!important;" />
-                        <col style="width: 5vw!important;" />
-                        <col style="width: 20vw!important;" />
-                        <col style="width: 70vw!important;" />
+                        <col style="width: 10vw!important;" />
+                        <col style="width: 30vw!important;" />
+                        <col style="width: 30vw!important;" />
+                        <col style="width: 30vw!important;" />
                     </ColGroup>
                     <HeaderContent>
                         <MudTh>Resource Type</MudTh>
                         <MudTh>Profiles</MudTh>
                         <MudTh>Searches</MudTh>
-                        <MudTh></MudTh>
+                        <MudTh>Operations</MudTh>
                     </HeaderContent>
                     <RowTemplate>
-                        <MudTd><MudText Typo="Typo.body2">@context.Concept.Code</MudText></MudTd>
-                        <MudTd>@context.Concept.Display</MudTd>
-                        <MudTd>@context.Concept.Definition</MudTd>
-                        <MudTd>@GetPropertyString(context.Concept)</MudTd>
+                        <MudTd>@context.ToStringWithExpectation()</MudTd>
+                        <MudTd>@string.Join(", ", context.SupportedProfilesEx.Select(v => v.ToStringWithExpectation()))</MudTd>
+                        <MudTd>@string.Join(", ", context.SearchParameters.Values.Select(sp => sp.ToStringWithExpectation()))</MudTd>
+                        <MudTd>@string.Join(", ", context.Operations.Values.Select(op => op.ToStringWithExpectation()))</MudTd>
                     </RowTemplate>
                 </MudTable>
-*@            </MudExpansionPanel>
+            </MudExpansionPanel>
             <MudExpansionPanel Text="Server Search Parameters">
             </MudExpansionPanel>
             <MudExpansionPanel Text="Server Operations">
             </MudExpansionPanel>
 
         </MudExpansionPanels>
-
-@*        @if (fhirCaps?.ConceptLookup?.Any() ?? false)
-        {
-            <MudTable Items="@fhirCaps.ConceptLookup.Values"
-                  Striped="true"
-                  Hover="true"
-                  Dense="true"
-                  Height="calc(100vh - (var(--mud-appbar-height) * 2.9))"
-                  FixedHeader="true">
-                <ColGroup>
-                    <col style="width: 5vw!important;" />
-                    <col style="width: 5vw!important;" />
-                    <col style="width: 20vw!important;" />
-                    <col style="width: 70vw!important;" />
-                </ColGroup>
-                <HeaderContent>
-                    <MudTh>Code</MudTh>
-                    <MudTh>Display</MudTh>
-                    <MudTh>Definition</MudTh>
-                    <MudTh>Properties</MudTh>
-                </HeaderContent>
-                <RowTemplate>
-                    <MudTd><MudText Typo="Typo.body2">@context.Concept.Code</MudText></MudTd>
-                    <MudTd>@context.Concept.Display</MudTd>
-                    <MudTd>@context.Concept.Definition</MudTd>
-                    <MudTd>@GetPropertyString(context.Concept)</MudTd>
-                </RowTemplate>
-            </MudTable>
-        }
-        else
-        {
-            <MudText>There are no non-deprecated conepts present.</MudText>
-        }*@
     }
 }
 

@@ -10,7 +10,7 @@ using System.Text;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A fhir element profile.</summary>
-public class FhirElementProfile
+public class FhirElementProfile : ICloneable
 {
     /// <summary>Initializes a new instance of the <see cref="FhirElementProfile"/> class.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
@@ -24,6 +24,17 @@ public class FhirElementProfile
 
         URL = url;
         Name = url.Segments[url.Segments.Length - 1];
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the
+    /// Microsoft.Health.Fhir.CodeGenCommon.Models.FhirElementProfile class.s
+    /// </summary>
+    /// <param name="source">Source for the.</param>
+    public FhirElementProfile(FhirElementProfile source)
+    {
+        Name = source.Name;
+        URL = source.URL;
     }
 
     /// <summary>
@@ -51,6 +62,13 @@ public class FhirElementProfile
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString() => Name;
+
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public object Clone()
+    {
+        return new FhirElementProfile(this);
+    }
 
     /// <summary>Deep copy.</summary>
     /// <returns>A FhirElementProfile.</returns>

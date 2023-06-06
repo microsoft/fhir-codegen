@@ -4,6 +4,8 @@
 // </copyright>
 
 using System.IO;
+using fhirCsR2.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using fhirModels = fhirCsR2.Models;
@@ -616,7 +618,10 @@ public sealed class FromR2 : IFhirConverter
             op.Type,
             parameters,
             op.Experimental == true,
-            op.Kind);
+            op.Kind,
+            op.Text?.Div ?? string.Empty,
+            op.Text?.Status ?? string.Empty,
+            string.Empty);
 
         // add our parameter
         fhirVersionInfo.AddOperation(operation);
@@ -1074,6 +1079,21 @@ public sealed class FromR2 : IFhirConverter
                 sd.Extension?.Where(e => e.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm")
                     ?.FirstOrDefault()?.ValueInteger;
 
+            Dictionary<string, FhirStructureDefMapping> structureMaps = new();
+
+            foreach (fhirModels.StructureDefinitionMapping mappingNode in sd.Mapping ?? Enumerable.Empty<fhirModels.StructureDefinitionMapping>())
+            {
+                structureMaps.Add(
+                    mappingNode.Identity,
+                    new()
+                    {
+                        Identity = mappingNode.Identity,
+                        CanonicalUri = mappingNode.Uri ?? string.Empty,
+                        Name = mappingNode.Name,
+                        Comment = mappingNode.Comments ?? string.Empty,
+                    });
+            }
+
             // create a new complex type object
             FhirComplex complex = new FhirComplex(
                 artifactClass,
@@ -1097,7 +1117,9 @@ public sealed class FromR2 : IFhirConverter
                 string.Empty,
                 sd.Text?.Div ?? string.Empty,
                 sd.Text?.Status ?? string.Empty,
-                sd.FhirVersion ?? string.Empty);
+                sd.FhirVersion ?? string.Empty,
+                structureMaps,
+                null);
 
             // check for a base definition
             if (!string.IsNullOrEmpty(sd.Base))
@@ -1449,14 +1471,24 @@ public sealed class FromR2 : IFhirConverter
                         }
                     }
 
-                    List<string> fwMapping = element.Mapping?.Where(x =>
-                        (x != null) &&
-                        x.Identity.Equals("w5", StringComparison.OrdinalIgnoreCase) &&
-                        x.Map.StartsWith("FiveWs", StringComparison.Ordinal) &&
-                        (!x.Map.Equals("FiveWs.subject[x]", StringComparison.Ordinal)))?
-                            .Select(x => x.Map).ToList();
+                    Dictionary<string, List<FhirElementDefMapping>> elementMaps = new();
 
-                    string fiveWs = ((fwMapping != null) && fwMapping.Any()) ? fwMapping[0] : string.Empty;
+                    foreach (fhirModels.ElementDefinitionMapping mappingNode in element.Mapping ?? Enumerable.Empty<fhirModels.ElementDefinitionMapping>())
+                    {
+                        if (!elementMaps.ContainsKey(mappingNode.Identity))
+                        {
+                            elementMaps.Add(mappingNode.Identity, new());
+                        }
+
+                        elementMaps[mappingNode.Identity].Add(
+                            new()
+                            {
+                                Identity = mappingNode.Identity,
+                                Language = mappingNode.Language ?? string.Empty,
+                                Map = mappingNode.Map,
+                                Comment = string.Empty,
+                            });
+                    }
 
                     FhirElement fhirElement = new FhirElement(
                         complex,
@@ -1489,8 +1521,8 @@ public sealed class FromR2 : IFhirConverter
                         modifiesParent,
                         bindingStrength,
                         valueSet,
-                        fiveWs,
-                        FhirElement.ConvertFhirRepresentations(element.Representation));
+                        FhirElement.ConvertFhirRepresentations(element.Representation),
+                        elementMaps);
 
                     if (isRootElement)
                     {
@@ -1535,6 +1567,55 @@ public sealed class FromR2 : IFhirConverter
                         slicingDepths.Add(slicingDepth);
                         slicingPaths[slicingDepth] = element.Path;
                     }
+
+                    // look for additional constraints
+                    if ((element.Constraint != null) &&
+                        (element.Constraint.Count > 0))
+                    {
+                        foreach (fhirModels.ElementDefinitionConstraint con in element.Constraint)
+                        {
+                            bool isBestPractice = false;
+                            string explanation = string.Empty;
+
+                            if (con.Extension != null)
+                            {
+                                foreach (fhirModels.Extension ext in con.Extension)
+                                {
+                                    switch (ext.Url)
+                                    {
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
+                                            isBestPractice = ext.ValueBoolean == true;
+                                            break;
+
+                                        case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
+                                            if (!string.IsNullOrEmpty(ext.ValueMarkdown))
+                                            {
+                                                explanation = ext.ValueMarkdown;
+                                            }
+                                            else
+                                            {
+                                                explanation = ext.ValueString;
+                                            }
+
+                                            break;
+                                    }
+                                }
+                            }
+
+                            fhirElement.AddConstraint(new FhirConstraint(
+                                con.Key,
+                                con.Requirements,
+                                con.Severity,
+                                null,
+                                con.Human,
+                                string.Empty,
+                                con.Xpath,
+                                isBestPractice,
+                                explanation,
+                                string.Empty,
+                                path));
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -1546,48 +1627,77 @@ public sealed class FromR2 : IFhirConverter
 
             if ((sd.Differential != null) &&
                 (sd.Differential.Element != null) &&
-                (sd.Differential.Element.Count > 0) &&
-                (sd.Differential.Element[0].Constraint != null) &&
-                (sd.Differential.Element[0].Constraint.Count > 0))
+                (sd.Differential.Element.Count > 0))
             {
-                foreach (fhirModels.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
+                // look for mapping definitions
+                if ((sd.Differential.Element[0].Mapping != null) &&
+                    (sd.Differential.Element[0].Mapping.Count > 0))
                 {
-                    bool isBestPractice = false;
-                    string explanation = string.Empty;
-
-                    if (con.Extension != null)
+                    foreach (fhirModels.ElementDefinitionMapping mappingNode in sd.Differential.Element[0].Mapping)
                     {
-                        foreach (fhirModels.Extension ext in con.Extension)
+                        if (!complex.RootElementMappings.ContainsKey(mappingNode.Identity))
                         {
-                            switch (ext.Url)
+                            complex.RootElementMappings.Add(mappingNode.Identity, new());
+                        }
+
+                        complex.RootElementMappings[mappingNode.Identity].Add(
+                            new()
                             {
-                                case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
-                                    isBestPractice = ext.ValueBoolean == true;
-                                    break;
+                                Identity = mappingNode.Identity,
+                                Language = mappingNode.Language ?? string.Empty,
+                                Map = mappingNode.Map,
+                                Comment = string.Empty,
+                            });
+                    }
+                }
 
-                                case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
-                                    if (!string.IsNullOrEmpty(ext.ValueMarkdown))
-                                    {
-                                        explanation = ext.ValueMarkdown;
-                                    }
-                                    else
-                                    {
-                                        explanation = ext.ValueString;
-                                    }
+                // look for additional constraints
+                if ((sd.Differential.Element[0].Constraint != null) &&
+                    (sd.Differential.Element[0].Constraint.Count > 0))
+                {
+                    foreach (fhirModels.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
+                    {
+                        bool isBestPractice = false;
+                        string explanation = string.Empty;
 
-                                    break;
+                        if (con.Extension != null)
+                        {
+                            foreach (fhirModels.Extension ext in con.Extension)
+                            {
+                                switch (ext.Url)
+                                {
+                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
+                                        isBestPractice = ext.ValueBoolean == true;
+                                        break;
+
+                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
+                                        if (!string.IsNullOrEmpty(ext.ValueMarkdown))
+                                        {
+                                            explanation = ext.ValueMarkdown;
+                                        }
+                                        else
+                                        {
+                                            explanation = ext.ValueString;
+                                        }
+
+                                        break;
+                                }
                             }
                         }
-                    }
 
-                    complex.AddConstraint(new FhirConstraint(
-                        con.Key,
-                        con.Severity,
-                        con.Human,
-                        string.Empty,
-                        con.Xpath,
-                        isBestPractice,
-                        explanation));
+                        complex.AddConstraint(new FhirConstraint(
+                            con.Key,
+                            con.Requirements,
+                            con.Severity,
+                            null,
+                            con.Human,
+                            string.Empty,
+                            con.Xpath,
+                            isBestPractice,
+                            explanation,
+                            string.Empty,
+                            complex.Name));
+                    }
                 }
             }
 
@@ -1632,65 +1742,6 @@ public sealed class FromR2 : IFhirConverter
                         string.Empty,
                         null,
                         null));
-            }
-
-            if ((sd.Differential != null) &&
-                (sd.Differential.Element != null) &&
-                (sd.Differential.Element.Count > 0))
-            {
-                // look for additional constraints
-                if ((sd.Differential.Element[0].Constraint != null) &&
-                    (sd.Differential.Element[0].Constraint.Count > 0))
-                {
-                    foreach (fhirModels.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
-                    {
-                        bool isBestPractice = false;
-                        string explanation = string.Empty;
-
-                        if (con.Extension != null)
-                        {
-                            foreach (fhirModels.Extension ext in con.Extension)
-                            {
-                                switch (ext.Url)
-                                {
-                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
-                                        isBestPractice = ext.ValueBoolean == true;
-                                        break;
-
-                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
-                                        if (!string.IsNullOrEmpty(ext.ValueMarkdown))
-                                        {
-                                            explanation = ext.ValueMarkdown;
-                                        }
-                                        else
-                                        {
-                                            explanation = ext.ValueString;
-                                        }
-
-                                        break;
-                                }
-                            }
-                        }
-
-                        complex.AddConstraint(new FhirConstraint(
-                            con.Key,
-                            con.Severity,
-                            con.Human,
-                            string.Empty,
-                            con.Xpath,
-                            isBestPractice,
-                            explanation));
-                    }
-                }
-
-                // traverse all elements to flag proper 'differential' tags on elements
-                foreach (fhirModels.ElementDefinition dif in sd.Differential.Element)
-                {
-                    if (complex.Elements.ContainsKey(dif.Path))
-                    {
-                        complex.Elements[dif.Path].SetInDifferential();
-                    }
-                }
             }
 
             switch (artifactClass)

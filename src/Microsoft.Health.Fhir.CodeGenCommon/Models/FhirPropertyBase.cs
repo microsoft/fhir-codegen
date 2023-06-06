@@ -3,7 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A FHIR property base.</summary>
@@ -22,6 +21,7 @@ public abstract class FhirPropertyBase : FhirTypeBase
     /// <param name="purpose">         The purpose.</param>
     /// <param name="comment">         The comment.</param>
     /// <param name="validationRegEx"> The validation RegEx.</param>
+    /// <param name="mappings">        Element definition mappings to external properties.</param>
     public FhirPropertyBase(
         FhirComplex rootArtifact,
         string id,
@@ -31,7 +31,8 @@ public abstract class FhirPropertyBase : FhirTypeBase
         string shortDescription,
         string purpose,
         string comment,
-        string validationRegEx)
+        string validationRegEx,
+        Dictionary<string, List<FhirElementDefMapping>> mappings)
         : this(
             rootArtifact,
             id,
@@ -43,7 +44,8 @@ public abstract class FhirPropertyBase : FhirTypeBase
             shortDescription,
             purpose,
             comment,
-            validationRegEx)
+            validationRegEx,
+            mappings)
     {
     }
 
@@ -56,11 +58,13 @@ public abstract class FhirPropertyBase : FhirTypeBase
     /// <param name="path">            The dot-notation path to this property (element).</param>
     /// <param name="basePath">        The dot-notation path to the base definition for this record.</param>
     /// <param name="baseTypeName">    The base definition for this property (element).</param>
+    /// <param name="baseTypeCanonical">The base type canonical.</param>
     /// <param name="url">             URL of the resource.</param>
     /// <param name="shortDescription">Information describing the short.</param>
     /// <param name="purpose">         The purpose.</param>
     /// <param name="comment">         The comment.</param>
     /// <param name="validationRegEx"> The validation RegEx.</param>
+    /// <param name="mappings">        Element definition mappings to external properties.</param>
     public FhirPropertyBase(
         FhirComplex rootArtifact,
         string id,
@@ -72,7 +76,8 @@ public abstract class FhirPropertyBase : FhirTypeBase
         string shortDescription,
         string purpose,
         string comment,
-        string validationRegEx)
+        string validationRegEx,
+        Dictionary<string, List<FhirElementDefMapping>> mappings)
         : base(
             id,
             path.Split('.').Last() ?? string.Empty,
@@ -93,6 +98,18 @@ public abstract class FhirPropertyBase : FhirTypeBase
 
         RootArtifact = rootArtifact;
         BasePath = basePath;
+        Mappings = mappings ?? new();
+
+        // filter out FiveWs oddity
+        if (Mappings.ContainsKey("w5") && (Mappings["w5"].Count > 1))
+        {
+            FhirElementDefMapping subjectX = Mappings["w5"].FirstOrDefault(m => m.Map.Equals("FiveWs.subject[x]", StringComparison.OrdinalIgnoreCase));
+
+            if (subjectX != null)
+            {
+                Mappings["w5"].Remove(subjectX);
+            }
+        }
     }
 
     /// <summary>Gets the dot-notation path to the base definition for this record.</summary>
@@ -101,4 +118,6 @@ public abstract class FhirPropertyBase : FhirTypeBase
     /// <summary>Gets the root artifact.</summary>
     public FhirComplex RootArtifact { get; }
 
+    /// <summary>Gets the mappings.</summary>
+    public Dictionary<string, List<FhirElementDefMapping>> Mappings { get; } = new();
 }

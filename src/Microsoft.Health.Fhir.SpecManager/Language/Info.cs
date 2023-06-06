@@ -377,6 +377,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.IncreaseIndent();
                 indented = true;
+
+                if (complex.Constraints?.Any() ?? false == true)
+                {
+                    WriteConstraints(complex.ConstraintsByKey.OrderBy(kvp => kvp.Key).Select(kvp => kvp.Value));
+                }
             }
             else if (complex.RootElement != null)
             {
@@ -418,6 +423,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (indented)
             {
                 _writer.DecreaseIndent();
+            }
+        }
+
+        /// <summary>Writes the constraints.</summary>
+        /// <param name="constraints">The constraints.</param>
+        private void WriteConstraints(IEnumerable<FhirConstraint> constraints)
+        {
+            foreach (FhirConstraint constraint in constraints)
+            {
+                string inherited = constraint.IsInherited ? "inherited" : "local";
+                _writer.WriteLineIndented($"!{constraint.Key}: {inherited} {constraint.Severity}: {constraint.Expression}");
             }
         }
 
@@ -556,6 +572,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (element.IsSimple)
             {
                 propertyType = propertyType + " *simple*";
+            }
+
+            if (element.ConstraintsByKey?.Where(kvp => !kvp.Value.IsInherited).Any() ?? false)
+            {
+                propertyType = propertyType +
+                    " constraints: " +
+                    string.Join(", ", element.ConstraintsByKey.Values.Where(c => !c.IsInherited).Select(c => c.Key).OrderBy(v => v)) +
+                    "";
+            }
+
+            if (element.Conditions?.Any() ?? false)
+            {
+                propertyType = propertyType +
+                    " conditions: " +
+                    string.Join(", ", element.Conditions.OrderBy(v => v)) +
+                    "";
             }
 
             string fiveWs = string.Empty;
