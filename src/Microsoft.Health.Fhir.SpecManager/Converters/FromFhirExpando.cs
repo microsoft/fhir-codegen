@@ -2257,6 +2257,44 @@ public sealed class FromFhirExpando : IFhirConverter
         }
     }
 
+    /// <summary>Attempts to get the first resource from a bundle.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out].</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    bool IFhirConverter.TryGetFirstFromBundle(string json, out object resource, out string resourceType)
+    {
+        try
+        {
+            // try to parse this JSON
+            FhirExpando parsed = JsonSerializer.Deserialize<FhirExpando>(json);
+
+            FhirExpando res = parsed.GetExpando("entry", "0", "resource");
+
+            if (res == null)
+            {
+                resource = null;
+                resourceType = string.Empty;
+                return false;
+            }
+
+            resource = res;
+            resourceType = res.GetString("resourceType");
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _errors.Add($"Failed to parse resource: {ex.Message}");
+
+            Console.WriteLine($"FromFhirExpando.TryGetFromBundle <<< failed to parse:\n{ex}\n------------------------------------");
+
+            resource = null;
+            resourceType = string.Empty;
+            return false;
+        }
+    }
+
+
     /// <summary>Attempts to process resource.</summary>
     /// <param name="resourceToParse">The resource object.</param>
     /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>

@@ -6,6 +6,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Web;
 using Microsoft.Health.Fhir.SpecManager.Converters;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
@@ -151,7 +152,7 @@ public static class ServerConnector
                 Console.WriteLine($"\t     Description: {serverInfo.ImplementationDescription}");
                 Console.WriteLine($"\t       Resources: {serverInfo.ResourceInteractions.Count}");
 
-                FhirManager.Current.TryResolveCanonicals(serverInfo, resolveExternal);
+                FhirManager.Current.TryResolveCanonicals(serverUrl, serverInfo, resolveExternal);
 
                 return true;
             }
@@ -287,6 +288,98 @@ public static class ServerConnector
 #pragma warning restore CA1031 // Do not catch general exception types
         {
             Console.WriteLine($"Failed to get resource: {instanceUrl}, {ex.Message}");
+            fhirJson = null;
+            return false;
+        }
+        finally
+        {
+            if (request != null)
+            {
+                request.Dispose();
+            }
+
+            if (client != null)
+            {
+                client.Dispose();
+            }
+        }
+    }
+
+    /// <summary>Attempts to search for canonical.</summary>
+    /// <param name="resourceType">Type of the resource.</param>
+    /// <param name="canonicalUrl">URL of the canonical.</param>
+    /// <param name="fhirJson">    [out] Downloaded JSON or null if download fails.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool TrySearchForCanonical(
+        string serverUrl,
+        string resourceType,
+        string canonicalUrl,
+        out string fhirJson)
+    {
+        if (string.IsNullOrEmpty(resourceType) ||
+            string.IsNullOrEmpty(canonicalUrl))
+        {
+            fhirJson = null;
+            return false;
+        }
+
+        HttpClient client = null;
+        HttpRequestMessage request = null;
+
+        try
+        {
+            Uri searchUri = new Uri($"{serverUrl}/{resourceType}?url={HttpUtility.UrlEncode(canonicalUrl)}");
+
+            client = new HttpClient();
+
+            request = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Get,
+                RequestUri = searchUri,
+                Headers =
+                {
+                    Accept =
+                    {
+                        new MediaTypeWithQualityHeaderValue("application/fhir+json"),
+                    },
+                },
+            };
+
+            //if (headers?.Any() ?? false)
+            //{
+            //    foreach ((string key, IEnumerable<string> values) in headers)
+            //    {
+            //        request.Headers.Add(key, values);
+            //    }
+            //}
+
+            Console.WriteLine($"Requesting {request.RequestUri}...");
+
+            HttpResponseMessage response = client.SendAsync(request).Result;
+
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine($"Request to {request.RequestUri} failed! Returned: {response.StatusCode}");
+                fhirJson = null;
+                return false;
+            }
+
+            fhirJson = response.Content.ReadAsStringAsync().Result;
+
+            if (string.IsNullOrEmpty(fhirJson))
+            {
+                Console.WriteLine($"Request to {request.RequestUri} returned empty body!");
+                fhirJson = null;
+                return false;
+            }
+
+            return true;
+        }
+#pragma warning disable CA1031 // Do not catch general exception types
+        catch (Exception ex)
+#pragma warning restore CA1031 // Do not catch general exception types
+        {
+            Console.WriteLine($"Failed to find canonical {resourceType}: {canonicalUrl}, {ex.Message}");
             fhirJson = null;
             return false;
         }

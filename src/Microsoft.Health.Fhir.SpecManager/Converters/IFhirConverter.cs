@@ -18,6 +18,13 @@ public interface IFhirConverter
     /// <returns>A typed Resource object.</returns>
     bool TryParseResource(string json, out object resource, out string resourceType);
 
+    /// <summary>Attempts to get the first resource from a bundle.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out].</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    bool TryGetFirstFromBundle(string json, out object resource, out string resourceType);
+
     /// <summary>Attempts to process resource.</summary>
     /// <param name="resourceToParse">The resource object.</param>
     /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>

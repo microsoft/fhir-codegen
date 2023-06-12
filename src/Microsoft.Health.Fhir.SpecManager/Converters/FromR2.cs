@@ -1801,6 +1801,43 @@ public sealed class FromR2 : IFhirConverter
         }
     }
 
+    /// <summary>Attempts to get the first resource from a bundle.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out].</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    bool IFhirConverter.TryGetFirstFromBundle(string json, out object resource, out string resourceType)
+    {
+        try
+        {
+            // try to parse this JSON into a resource object
+            fhirModels.Bundle parsed = System.Text.Json.JsonSerializer.Deserialize<fhirModels.Bundle>(
+                json,
+                fhirSerialization.FhirSerializerOptions.Compact);
+
+            if ((parsed.Entry != null) && (parsed.Entry.Count > 0))
+            {
+                resource = parsed.Entry[0].Resource;
+                resourceType = parsed.Entry[0].Resource.ResourceType;
+                return true;
+            }
+
+            resource = null;
+            resourceType = string.Empty;
+            return false;
+        }
+        catch (Exception ex)
+        {
+            _errors.Add($"Failed to parse resource: {ex.Message}");
+
+            Console.WriteLine($"FromR2.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
+
+            resource = null;
+            resourceType = string.Empty;
+            return false;
+        }
+    }
+
     /// <summary>Attempts to process resource.</summary>
     /// <param name="resourceToParse">The resource object.</param>
     /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>

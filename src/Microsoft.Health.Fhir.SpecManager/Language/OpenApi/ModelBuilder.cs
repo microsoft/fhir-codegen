@@ -2407,7 +2407,14 @@ public class ModelBuilder
             // check operations for this specific resource
             foreach (FhirCapOperation capOp in _caps.ResourceInteractions[resourceName].Operations.Values)
             {
-                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirOpObj))
+                if (!FhirManager.Current.TryResolveCanonical(
+                        _info.FhirSequence,
+                        _exporterOptions.ServerUrl,
+                        "OperationDefinition",
+                        capOp.DefinitionCanonical,
+                        _exporterOptions.ResolveExternal,
+                        out FhirArtifactClassEnum ac,
+                        out object fhirOpObj))
                 {
                     Console.WriteLine($"Skipping unresolvable Operation: {capOp.DefinitionCanonical}");
                     continue;
@@ -2436,7 +2443,14 @@ public class ModelBuilder
             // some servers just shove all operations into system-level reporting
             foreach (FhirCapOperation capOp in _caps.ServerOperations.Values)
             {
-                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirOpObj))
+                if (!FhirManager.Current.TryResolveCanonical(
+                        _info.FhirSequence,
+                        _exporterOptions.ServerUrl,
+                        "OperationDefinition",
+                        capOp.DefinitionCanonical,
+                        _exporterOptions.ResolveExternal,
+                        out FhirArtifactClassEnum ac,
+                        out object fhirOpObj))
                 {
                     continue;
                 }
@@ -2555,7 +2569,14 @@ public class ModelBuilder
 
                 if (!string.IsNullOrEmpty(capSp.DefinitionCanonical))
                 {
-                    if (FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capSp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirSpObj) &&
+                    if (FhirManager.Current.TryResolveCanonical(
+                            _info.FhirSequence,
+                            _exporterOptions.ServerUrl,
+                            "SearchParameter",
+                            capSp.DefinitionCanonical,
+                            _exporterOptions.ResolveExternal,
+                            out FhirArtifactClassEnum ac,
+                            out object fhirSpObj) &&
                         (fhirSpObj is FhirSearchParam fhirSp))
                     {
                         searchParameters.Add(fhirSp);
@@ -2793,7 +2814,14 @@ public class ModelBuilder
         {
             foreach (FhirCapOperation capOp in _caps.ServerOperations.Values)
             {
-                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirOpObj))
+                if (!FhirManager.Current.TryResolveCanonical(
+                        _info.FhirSequence,
+                        _exporterOptions.ServerUrl,
+                        "SearchParameter",
+                        capOp.DefinitionCanonical,
+                        _exporterOptions.ResolveExternal,
+                        out FhirArtifactClassEnum ac,
+                        out object fhirOpObj))
                 {
                     continue;
                 }
