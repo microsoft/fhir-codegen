@@ -1181,21 +1181,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             var isPatientClass = false;
 
-            if (_cqlModelInfo is not null && _cqlModelInfo.patientClassName is not null)
-            {
-                // Just skip the model alias, I am currently not bothered enough to be more precise
-                var className = _cqlModelInfo.patientClassName.Split('.')[1];
-
-                if (complex.Name == className)
-                {
-                    var typeSpec = "{" + _cqlModelInfo.url + "}" + complex.Name;
-
-                    _writer.WriteLineIndented($"[CqlType(\"{typeSpec}\", IsPatientClass=true)]");
-
-                    isPatientClass = true;
-                }
-            }
-
             if (complex.BaseTypeName == "Quantity")
             {
                 // Constrained quantities are handled differently
@@ -1204,8 +1189,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             string abstractFlag = isAbstract ? " abstract" : string.Empty;
-
             List<string> interfaces = new List<string>();
+
+            if (_cqlModelInfo is not null && _cqlModelInfo.patientClassName is not null)
+            {
+                // Just skip the model alias, I am currently not bothered enough to be more precise
+                var className = _cqlModelInfo.patientClassName.Split('.')[1];
+                isPatientClass = complex.Name == className;
+            }
+
+            if (isPatientClass) interfaces.Add($"{Namespace}.IPatient");
 
             string modifierElementName = complex.Elements.Keys.SingleOrDefault(k => k.EndsWith(".modifierExtension", StringComparison.InvariantCulture));
             if (modifierElementName != null)
@@ -1640,8 +1633,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteSerializable();
             _writer.WriteLineIndented($"[FhirType(\"{componentName}\", IsNestedType=true)]");
 
-            if (_cqlModelInfo is not null)
-                _writer.WriteLineIndented($"[CqlType(\"{nameSpecifier}\")]");
+            _writer.WriteLineIndented($"[BackboneType(\"{complex.Path}\")]");
+
             _writer.WriteLineIndented(
                 $"public partial class" +
                     $" {exportName}" +
@@ -2311,17 +2304,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
             }
 
-            bool isBirthDateProperty = inPatientClass && element.Name + ".value" == _cqlModelInfo?.patientBirthDatePropertyName;
-
-            if (isPrimaryCode || isBirthDateProperty)
+            if (isPrimaryCode)
             {
                 var props = new List<string>();
 
                 if (isPrimaryCode)
                     props.Add("IsPrimaryCodePath=true");
-
-                if (isBirthDateProperty)
-                    props.Add("IsBirthDate=true");
 
                 var propsString = string.Join(',', props);
                 _writer.WriteLineIndented($"[CqlElement({propsString})]");
@@ -2481,6 +2469,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 CloseScope();
 
                 _writer.WriteLineIndented($"private List<{Namespace}.{type}> _{pascal}{elementTag};");
+                _writer.WriteLine(string.Empty);
+            }
+
+            bool isBirthDateProperty = inPatientClass && element.Name + ".value" == _cqlModelInfo?.patientBirthDatePropertyName;
+            if (isBirthDateProperty)
+            {
+                _writer.WriteLineIndented($"Hl7.Fhir.Model.Date {Namespace}.IPatient.BirthDate => {pascal}{elementTag};");
                 _writer.WriteLine(string.Empty);
             }
 
