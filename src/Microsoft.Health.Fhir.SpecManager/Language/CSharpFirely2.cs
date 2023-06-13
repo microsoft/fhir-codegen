@@ -4,7 +4,6 @@
 // </copyright>
 using System.Diagnostics;
 using System.IO;
-using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Ncqa.Cql.Model;
 
@@ -1628,7 +1627,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
                 explicitName;
             string componentName = parentExportName + "#" + explicitNamePart;
-            var nameSpecifier = "{http://hl7.org/fhir}" + complex.Path.ToPascalDotCase();
 
             WriteSerializable();
             _writer.WriteLineIndented($"[FhirType(\"{componentName}\", IsNestedType=true)]");
@@ -1694,17 +1692,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
         }
-
-        //private string buildComponentUrl(FhirComplex complex)
-        //{
-        //    if (complex.Parent is null) return getUrl();
-
-        //    var separator = complex.Parent.Parent is null ? "#" : ".";
-        //    return buildComponentUrl(complex.Parent) + separator + complex.Name;
-
-        //    string getUrl() => complex.URL?.OriginalString ??
-        //            "http://hl7.org/fhir/StructureDefinition/" + complex.Name;
-        //}
 
         /// <summary>Writes the enums.</summary>
         /// <param name="complex">      The complex data type.</param>
