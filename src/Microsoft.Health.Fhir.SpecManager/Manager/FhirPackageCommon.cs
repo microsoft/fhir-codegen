@@ -8,7 +8,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager;
 /// <summary>Information about the FHIR core package.</summary>
 public static class FhirPackageCommon
 {
-        /// <summary>Extension URL for JSON type information.</summary>
+    /// <summary>Extension URL for JSON type information.</summary>
     public const string UrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
 
     /// <summary>Extension URL for XML type information.</summary>
@@ -63,22 +63,22 @@ public static class FhirPackageCommon
         string BallotPrefix = null);
 
     /// <summary>The FHIR releases.</summary>
-    private static List<PublishedReleaseInformation> _fhirReleases = new()
+    private static readonly List<PublishedReleaseInformation> _fhirReleases = new()
     {
         new (FhirSequenceEnum.DSTU2, new DateOnly(2015, 10, 24), "1.0.2",             "DSTU2 Release with 1 technical errata"),
-                                                                                      
+
         new (FhirSequenceEnum.STU3,  new DateOnly(2019, 10, 24), "3.0.2",             "STU3 Release with 2 technical errata"),
-                                                                                      
+
         new (FhirSequenceEnum.R4,    new DateOnly(2018, 04, 02), "3.2.0",             "R4 Draft for comment / First Candidate Normative Content", "2018Jan"),
         new (FhirSequenceEnum.R4,    new DateOnly(2018, 05, 02), "3.3.0",             "R4 Ballot #1 : Mixed Normative/Trial use (First Normative ballot)", "2018May"),
         new (FhirSequenceEnum.R4,    new DateOnly(2018, 08, 21), "3.5.0",             "R4 Ballot #2 : Mixed Normative/Trial use (Second Normative ballot + Baltimore Connectathon)", "2018Sep"),
         new (FhirSequenceEnum.R4,    new DateOnly(2018, 11, 09), "3.5a.0",            "Special R4 Ballot #3 : Normative Packages for Terminology / Conformance + Observation", "2018Dec"),
         new (FhirSequenceEnum.R4,    new DateOnly(2019, 10, 30), "4.0.1",             "R4 Release with 1 technical errata"),
-                                                                                      
+
         new (FhirSequenceEnum.R4B,   new DateOnly(2021, 03, 11), "4.1.0",             "R4B Ballot #1", "2021Mar"),
         new (FhirSequenceEnum.R4B,   new DateOnly(2021, 12, 20), "4.3.0-snapshot1",   "R4B January 2022 Connectathon"),
         new (FhirSequenceEnum.R4B,   new DateOnly(2022, 05, 28), "4.3.0",             "R4B Release"),
-                                                                                      
+
         new (FhirSequenceEnum.R5,    new DateOnly(2019, 12, 31), "4.2.0",             "R5 Preview #1", "2020Feb"),
         new (FhirSequenceEnum.R5,    new DateOnly(2020, 05, 04), "4.4.0",             "R5 Preview #2", "2020May"),
         new (FhirSequenceEnum.R5,    new DateOnly(2020, 08, 20), "4.5.0",             "R5 Preview #3", "2020Sep"),
@@ -94,22 +94,22 @@ public static class FhirPackageCommon
     private static readonly DateOnly _semverUrlChangeDate = new DateOnly(2021, 12, 01);
 
     /// <summary>The FHIR release by version.</summary>
-    private static Dictionary<string, PublishedReleaseInformation> _fhirReleasesByVersion;
+    private static readonly Dictionary<string, PublishedReleaseInformation> _fhirReleasesByVersion;
 
     /// <summary>Gets the FHIR releases.</summary>
     public static List<PublishedReleaseInformation> CoreVersions => _fhirReleases;
 
     /// <summary>The latest version by release.</summary>
-    private static Dictionary<FhirSequenceEnum, string> _latestVersionByRelease;
+    private static readonly Dictionary<FhirSequenceEnum, string> _latestVersionByRelease;
 
     /// <summary>The package base by release.</summary>
-    private static Dictionary<FhirSequenceEnum, string> _packageBaseByRelease;
+    private static readonly Dictionary<FhirSequenceEnum, string> _packageBaseByRelease;
 
     /// <summary>List of names of the core packages.</summary>
-    private static Dictionary<string, FhirSequenceEnum> _corePackagesAndReleases;
+    private static readonly Dictionary<string, FhirSequenceEnum> _corePackagesAndReleases;
 
     /// <summary>Types of resources to process, by FHIR version.</summary>
-    private static Dictionary<FhirSequenceEnum, HashSet<string>> _versionResourcesToProcess = new()
+    private static readonly Dictionary<FhirSequenceEnum, HashSet<string>> _versionResourcesToProcess = new()
     {
         {
             FhirSequenceEnum.DSTU2,
@@ -176,7 +176,7 @@ public static class FhirPackageCommon
     };
 
     /// <summary>Types of resources to ignore, by FHIR version.</summary>
-    private static Dictionary<FhirSequenceEnum, HashSet<string>> _versionResourcesToIgnore = new()
+    private static readonly Dictionary<FhirSequenceEnum, HashSet<string>> _versionResourcesToIgnore = new()
     {
         {
             FhirSequenceEnum.DSTU2,
@@ -228,7 +228,7 @@ public static class FhirPackageCommon
     };
 
     /// <summary>The version files to ignore.</summary>
-    private static Dictionary<FhirSequenceEnum, HashSet<string>> _versionFilesToIgnore = new()
+    private static readonly Dictionary<FhirSequenceEnum, HashSet<string>> _versionFilesToIgnore = new()
     {
         {
             FhirSequenceEnum.DSTU2,
@@ -454,26 +454,14 @@ public static class FhirPackageCommon
     /// <summary>Major for release.</summary>
     /// <param name="release">The release.</param>
     /// <returns>The sequence release number for a FHIR release (e.g., 2 for DSTU2).</returns>
-    public static int MajorIntForVersion(FhirSequenceEnum release)
+    public static int MajorIntForVersion(FhirSequenceEnum release) => release switch
     {
-        switch (release)
-        {
-            case FhirSequenceEnum.DSTU2:
-                return 2;
-
-            case FhirSequenceEnum.STU3:
-                return 3;
-
-            case FhirSequenceEnum.R4:
-            case FhirSequenceEnum.R4B:
-                return 4;
-
-            case FhirSequenceEnum.R5:
-                return 5;
-        }
-
-        return 0;
-    }
+        FhirSequenceEnum.DSTU2 => 2,
+        FhirSequenceEnum.STU3 => 3,
+        FhirSequenceEnum.R4 or FhirSequenceEnum.R4B => 4,
+        FhirSequenceEnum.R5 => 5,
+        _ => 0,
+    };
 
     /// <summary>Major release for version.</summary>
     /// <exception cref="ArgumentNullException">      Thrown when one or more required arguments are
