@@ -2084,7 +2084,8 @@ public sealed class FromR2 : IFhirConverter
             null,
             resourceInteractions,
             serverSearchParams,
-            serverOperations);
+            serverOperations,
+            null);
 
         if (info != null)
         {
