@@ -16,6 +16,37 @@ public static class FhirNameConventionExtensions
     /// <summary>(Immutable) Options for controlling the word split.</summary>
     private static readonly StringSplitOptions _wordSplitOptions = StringSplitOptions.RemoveEmptyEntries & StringSplitOptions.TrimEntries;
 
+    /// <summary>Values that represent naming conventions for item types.</summary>
+    public enum NamingConvention
+    {
+        /// <summary>This feature is not supported / used.</summary>
+        None,
+
+        /// <summary>An enum constant representing the language controlled option.</summary>
+        LanguageControlled,
+
+        /// <summary>Names are standard FHIR dot notation (e.g., path).</summary>
+        FhirDotNotation,
+
+        /// <summary>Names are dot notation, with each first letter capitalized.</summary>
+        PascalDotNotation,
+
+        /// <summary>Names are Pascal Case (first letter capitalized).</summary>
+        PascalCase,
+
+        /// <summary>Names are Camel Case (first letter lower case).</summary>
+        CamelCase,
+
+        /// <summary>Names are all upper case.</summary>
+        UpperCase,
+
+        /// <summary>Names are all lower case.</summary>
+        LowerCase,
+
+        /// <summary>Lower case, separated by hyphens.</summary>
+        LowerKebab,
+    }
+
     /// <summary>A string extension method that converts a word to PascalCase.</summary>
     /// <param name="word">            The word to act on.</param>
     /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>

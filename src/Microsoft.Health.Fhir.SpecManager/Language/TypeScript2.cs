@@ -7,6 +7,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language;
 
@@ -644,7 +645,7 @@ public sealed class TypeScript2 : ILanguage
             foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values)
             {
                 string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
-                vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
+                vsName = FhirUtils.SanitizedToConvention(vsName, NamingConvention.PascalCase);
 
                 vsName = vsName + "ValueSet";
 
@@ -732,7 +733,7 @@ public sealed class TypeScript2 : ILanguage
             string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords);
             string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
-            codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
+            codeName = FhirUtils.SanitizedToConvention(codeName, NamingConvention.PascalCase);
 
             string constName;
             if (!string.IsNullOrEmpty(concept.SystemLocalName))
@@ -813,7 +814,7 @@ public sealed class TypeScript2 : ILanguage
             string name = FhirUtils.ToConvention(
                 complex.Name,
                 string.Empty,
-                FhirTypeBase.NamingConvention.PascalCase,
+                NamingConvention.PascalCase,
                 false,
                 string.Empty,
                 _reservedWords);
@@ -914,7 +915,7 @@ public sealed class TypeScript2 : ILanguage
         if (string.IsNullOrEmpty(complex.BaseTypeName) ||
             complex.Name.Equals("Element", StringComparison.Ordinal))
         {
-            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, _reservedWords);
+            nameForExport = complex.NameForExport(NamingConvention.PascalCase, false, string.Empty, _reservedWords);
             baseClassName = string.Empty;
 
             if (_exportInterfacesAsTypes)
@@ -930,7 +931,7 @@ public sealed class TypeScript2 : ILanguage
         }
         else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
         {
-            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
+            nameForExport = complex.NameForExport(NamingConvention.PascalCase, true, string.Empty, _reservedWords);
             baseClassName = string.Empty;
 
             if (_exportInterfacesAsTypes)
@@ -946,8 +947,8 @@ public sealed class TypeScript2 : ILanguage
         }
         else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
         {
-            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
-            baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
+            nameForExport = complex.NameForExport(NamingConvention.PascalCase, true, string.Empty, _reservedWords);
+            baseClassName = complex.TypeForExport(NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
 
             if (_exportInterfacesAsTypes)
             {
@@ -969,8 +970,8 @@ public sealed class TypeScript2 : ILanguage
         }
         else
         {
-            nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, _reservedWords);
-            baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
+            nameForExport = complex.NameForExport(NamingConvention.PascalCase, true, string.Empty, _reservedWords);
+            baseClassName = complex.TypeForExport(NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);
             
             if (_exportInterfacesAsTypes)
             {
@@ -1324,7 +1325,7 @@ public sealed class TypeScript2 : ILanguage
         string codeName = FhirUtils.ToConvention(
             $"{element.Path}",
             string.Empty,
-            FhirTypeBase.NamingConvention.PascalCase);
+            NamingConvention.PascalCase);
 
         if (codeName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
         {
@@ -1385,7 +1386,7 @@ public sealed class TypeScript2 : ILanguage
         string codeName = FhirUtils.ToConvention(
             $"{element.Path}",
             string.Empty,
-            FhirTypeBase.NamingConvention.PascalCase);
+            NamingConvention.PascalCase);
 
         if (codeName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
         {
@@ -1528,8 +1529,8 @@ public sealed class TypeScript2 : ILanguage
         string arrayFlagString = element.IsArray ? "[]" : string.Empty;
 
         Dictionary<string, string> values = element.NamesAndTypesForExport(
-            FhirTypeBase.NamingConvention.CamelCase,
-            FhirTypeBase.NamingConvention.PascalCase,
+            NamingConvention.CamelCase,
+            NamingConvention.PascalCase,
             false,
             string.Empty,
             complex.Components.ContainsKey(element.Path));
@@ -1570,7 +1571,7 @@ public sealed class TypeScript2 : ILanguage
                     string codeName = FhirUtils.ToConvention(
                         $"{element.Path}.Enum",
                         string.Empty,
-                        FhirTypeBase.NamingConvention.PascalCase);
+                        NamingConvention.PascalCase);
 
                     nameAndType = new(kvp.Key, $"{codeName}{arrayFlagString}");
                 }
@@ -1671,9 +1672,9 @@ public sealed class TypeScript2 : ILanguage
     {
         _writer.WriteLineIndented("// <auto-generated/>");
         _writer.WriteLineIndented($"// Contents of: {_info.PackageName} version: {_info.VersionString}");
-        _writer.WriteLineIndented($"  // Primitive Naming Style: {FhirTypeBase.NamingConvention.None}");
-        _writer.WriteLineIndented($"  // Complex Type / Resource Naming Style: {FhirTypeBase.NamingConvention.PascalCase}");
-        _writer.WriteLineIndented($"  // Interaction Naming Style: {FhirTypeBase.NamingConvention.None}");
+        _writer.WriteLineIndented($"  // Primitive Naming Style: {NamingConvention.None}");
+        _writer.WriteLineIndented($"  // Complex Type / Resource Naming Style: {NamingConvention.PascalCase}");
+        _writer.WriteLineIndented($"  // Interaction Naming Style: {NamingConvention.None}");
         _writer.WriteLineIndented($"  // Extension Support: {_options.ExtensionSupport}");
 
         if ((_options.ExportList != null) && _options.ExportList.Any())

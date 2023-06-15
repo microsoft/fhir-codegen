@@ -59,6 +59,7 @@ public static class LinqExtensions
     /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Dictionary<KT,VT> DeepCopy<KT, VT>(this Dictionary<KT, VT> source)
+        where KT : notnull
         where VT : ICloneable
     {
         Dictionary<KT, VT> dest = new();
@@ -71,7 +72,6 @@ public static class LinqExtensions
         return dest;
     }
 
-
     /// <summary>
     /// A Dictionary&lt;KT,VT&gt; extension method that deep copies the dictionary.
     /// </summary>
@@ -81,6 +81,7 @@ public static class LinqExtensions
     /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Dictionary<KT, List<VT>> DeepCopy<KT, VT>(this Dictionary<KT, List<VT>> source)
+        where KT : notnull
         where VT : ICloneable
     {
         Dictionary<KT, List<VT>> dest = new();
@@ -110,6 +111,7 @@ public static class LinqExtensions
     /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Dictionary<KT, VT> ShallowCopy<KT, VT>(this Dictionary<KT, VT> source)
+        where KT : notnull
     {
         Dictionary<KT, VT> dest = new();
 
@@ -130,6 +132,7 @@ public static class LinqExtensions
     /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Dictionary<KT, List<VT>> ShallowCopy<KT, VT>(this Dictionary<KT, List<VT>> source)
+        where KT : notnull
     {
         Dictionary<KT, List<VT>> dest = new();
 
@@ -152,5 +155,20 @@ public static class LinqExtensions
         {
             dest.Add(val);
         }
+    }
+
+    /// <summary>
+    /// A HashSet extension method that deep copies the HashSet.
+    /// </summary>
+    /// <param name="source">The source dictionary to copy.</param>
+    /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static HashSet<T> DeepCopy<T>(this HashSet<T> source)
+    {
+        HashSet<T> dest = new();
+
+        dest.UnionWith(source);
+
+        return dest;
     }
 }

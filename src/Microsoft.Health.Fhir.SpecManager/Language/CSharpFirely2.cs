@@ -5,6 +5,7 @@
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -730,7 +731,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         description = sp.Description;
                     }
 
-                    string searchType = FhirUtils.SanitizedToConvention(sp.ValueType, FhirTypeBase.NamingConvention.PascalCase);
+                    string searchType = FhirUtils.SanitizedToConvention(sp.ValueType, NamingConvention.PascalCase);
                     string path = string.Empty;
 
                     if (!string.IsNullOrEmpty(sp.XPath))
@@ -1031,7 +1032,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ref Dictionary<string, WrittenModelInfo> writtenModels,
             GenSubset subset)
         {
-            string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+            string exportName = complex.NameForExport(NamingConvention.PascalCase);
 
             writtenModels.Add(
                 complex.Name,
@@ -1097,7 +1098,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ref Dictionary<string, WrittenModelInfo> writtenModels,
             GenSubset subset)
         {
-            string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+            string exportName = complex.NameForExport(NamingConvention.PascalCase);
 
             if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(exportName))
             {
@@ -1222,7 +1223,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     if (string.IsNullOrEmpty(component.ExplicitName))
                     {
                         componentExportName =
-                            $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}Component";
+                            $"{component.NameForExport(NamingConvention.PascalCase)}Component";
                     }
                     else
                     {
@@ -1599,7 +1600,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // end of repair
 
             string componentName = parentExportName + "#" + (string.IsNullOrEmpty(explicitName) ?
-                complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
+                complex.NameForExport(NamingConvention.PascalCase) :
                 explicitName);
 
             Debug.Assert(!string.IsNullOrEmpty(componentName), $"Found a type at element {complex.Path} without a name or explicit name.");
@@ -1647,7 +1648,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     if (string.IsNullOrEmpty(component.ExplicitName))
                     {
                         componentExportName =
-                            $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}" +
+                            $"{component.NameForExport(NamingConvention.PascalCase)}" +
                             $"Component";
                     }
                     else
@@ -1727,7 +1728,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 #pragma warning disable CA1307 // Specify StringComparison
             string name = (vs.Name ?? vs.Id).Replace(" ", string.Empty).Replace("_", string.Empty);
 #pragma warning restore CA1307 // Specify StringComparison
-            string nameSanitized = FhirUtils.SanitizeForProperty(name, _reservedWords, FhirTypeBase.NamingConvention.PascalCase);
+            string nameSanitized = FhirUtils.SanitizeForProperty(name, _reservedWords, NamingConvention.PascalCase);
 
             // Enums and their containing classes cannot have the same name,
             // so we have to correct these here
@@ -1893,7 +1894,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 vs = null;
             }
 
-            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, NamingConvention.PascalCase);
 
             BuildElementOptionals(
                 element,
@@ -2156,7 +2157,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 name = name.Replace("[x]", string.Empty);
             }
 
-            string pascal = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+            string pascal = FhirUtils.ToConvention(name, string.Empty, NamingConvention.PascalCase);
 
             BuildElementOptionals(
                 element,
@@ -2349,7 +2350,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
-                type = FhirUtils.SanitizedToConvention(type, FhirTypeBase.NamingConvention.PascalCase);
+                type = FhirUtils.SanitizedToConvention(type, NamingConvention.PascalCase);
             }
 
             string elementTag = noElement ? string.Empty : "Element";
@@ -2510,7 +2511,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // AdverseEvent.suspectEntity.Causality does not prefix?
                     if (i == components.Length - 1)
                     {
-                        sb.Append(FhirUtils.SanitizedToConvention(components[i], FhirTypeBase.NamingConvention.PascalCase));
+                        sb.Append(FhirUtils.SanitizedToConvention(components[i], NamingConvention.PascalCase));
                     }
                 }
 
@@ -2610,7 +2611,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             }
                             else
                             {
-                                sb.Append(FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase));
+                                sb.Append(FhirUtils.SanitizedToConvention(elementType.Name, NamingConvention.PascalCase));
                             }
 
                             sb.Append(")");
@@ -2726,7 +2727,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
-                exportName = primitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+                exportName = primitive.NameForExport(NamingConvention.PascalCase);
             }
 
             if (CSharpFirelyCommon.PrimitiveTypeMap.ContainsKey(primitive.Name))
@@ -3048,7 +3049,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 string exportName = CSharpFirelyCommon.TypeNameMappings.ContainsKey(t.Name) ?
                     CSharpFirelyCommon.TypeNameMappings[t.Name] :
-                    t.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+                    t.NameForExport(NamingConvention.PascalCase);
 
                 return new WrittenModelInfo()
                 {

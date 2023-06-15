@@ -5,6 +5,7 @@
 
 using System.IO;
 using Microsoft.Health.Fhir.SpecManager.PackageManager;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager;
 
@@ -357,7 +358,7 @@ public class FhirManager : IDisposable
                         if (FhirUtils.DefinitionalResourceNames.TryGetValue(components[i], out string resourceName))
                         {
                             string part = string.Join('-', components.Where((v, index) => index != i));
-                            part = FhirUtils.ToConvention(part, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+                            part = FhirUtils.ToConvention(part, string.Empty, NamingConvention.PascalCase);
 
                             modified = "http://hl7.org/fhir/" + resourceName + "/" + part;
 

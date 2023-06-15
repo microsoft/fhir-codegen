@@ -4,6 +4,7 @@
 // </copyright>
 
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
@@ -66,37 +67,6 @@ public abstract class FhirTypeBase
         Comment = string.IsNullOrEmpty(comment) ? Purpose : comment;
 
         ValidationRegEx = validationRegEx;
-    }
-
-    /// <summary>Values that represent naming conventions for item types.</summary>
-    public enum NamingConvention
-    {
-        /// <summary>This feature is not supported / used.</summary>
-        None,
-
-        /// <summary>An enum constant representing the language controlled option.</summary>
-        LanguageControlled,
-
-        /// <summary>Names are standard FHIR dot notation (e.g., path).</summary>
-        FhirDotNotation,
-
-        /// <summary>Names are dot notation, with each first letter capitalized.</summary>
-        PascalDotNotation,
-
-        /// <summary>Names are Pascal Case (first letter capitalized).</summary>
-        PascalCase,
-
-        /// <summary>Names are Camel Case (first letter lower case).</summary>
-        CamelCase,
-
-        /// <summary>Names are all upper case.</summary>
-        UpperCase,
-
-        /// <summary>Names are all lower case.</summary>
-        LowerCase,
-
-        /// <summary>Lower case, separated by hyphens.</summary>
-        LowerKebab,
     }
 
     /// <summary>Gets the Id for this element/resource/datatype.</summary>

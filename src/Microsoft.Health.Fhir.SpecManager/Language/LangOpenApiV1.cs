@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
 using Microsoft.VisualBasic;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirCapResource;
 using static Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon;
 
@@ -559,7 +560,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // AdverseEvent.suspectEntity.Causality does not prefix?
                     if (i == components.Length - 1)
                     {
-                        sb.Append(FhirUtils.SanitizedToConvention(components[i], FhirTypeBase.NamingConvention.PascalCase));
+                        sb.Append(FhirUtils.SanitizedToConvention(components[i], NamingConvention.PascalCase));
                     }
                 }
 
@@ -728,7 +729,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirElementType elementType in element.ElementTypes.Values)
                 {
-                    string pascal = FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase);
+                    string pascal = FhirUtils.SanitizedToConvention(elementType.Name, NamingConvention.PascalCase);
 
                     OpenApiSchema subSchema = new OpenApiSchema()
                     {
@@ -892,7 +893,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             return FhirUtils.SanitizedToConvention(
                 name,
-                FhirTypeBase.NamingConvention.CamelCase);
+                NamingConvention.CamelCase);
         }
 
         /// <summary>Builds the OpenAPI paths object based on a known server.</summary>
@@ -2400,7 +2401,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirElementType elementType in element.ElementTypes.Values)
                 {
-                    string pascal = FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase);
+                    string pascal = FhirUtils.SanitizedToConvention(elementType.Name, NamingConvention.PascalCase);
 
                     OpenApiSchema subSchema = new OpenApiSchema()
                     {

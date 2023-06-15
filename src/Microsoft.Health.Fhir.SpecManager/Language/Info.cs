@@ -7,6 +7,7 @@ using System.IO;
 using System.Text.Json;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -289,8 +290,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _writer.WriteLineIndented(
                 $"- {primitive.Name}:" +
-                    $" {primitive.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}" +
-                    $"::{primitive.TypeForExport(FhirTypeBase.NamingConvention.CamelCase, _primitiveTypeMap)}" +
+                    $" {primitive.NameForExport(NamingConvention.CamelCase)}" +
+                    $"::{primitive.TypeForExport(NamingConvention.CamelCase, _primitiveTypeMap)}" +
                     $"{snip}");
 
             _writer.IncreaseIndent();
@@ -369,7 +370,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 string snip = BuildStandardSnippet(complex.StandardStatus, complex.FhirMaturityLevel, complex.IsExperimental);
 
-                _writer.WriteLine($"- {complex.Name}: {complex.BaseTypeName}{snip}");
+                _writer.WriteLine($"- {complex.Name}: {complex.BaseTypeName}{snip} (abstract: {complex.IsAbstract})");
 
                 if (complex.RootElement != null)
                 {
@@ -622,7 +623,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (writeAsRootElementInfo)
             {
                 _writer.WriteLineIndented(
-                    $"  ^{element.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}[{element.FhirCardinality}]:" +
+                    $"  ^{element.NameForExport(NamingConvention.CamelCase)}[{element.FhirCardinality}]:" +
                     $" {propertyType}" +
                     $"{fiveWs}");
             }
@@ -630,7 +631,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 _writer.WriteLineIndented(
                     $"-" +
-                    $" {element.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}[{element.FhirCardinality}]:" +
+                    $" {element.NameForExport(NamingConvention.CamelCase)}[{element.FhirCardinality}]:" +
                     $" {propertyType}" +
                     $"{fiveWs}");
             }
@@ -747,11 +748,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteHeader()
         {
             _writer.WriteLine($"Contents of: {_info.PackageName} version: {_info.VersionString}");
-            _writer.WriteLine($"  Primitive Naming Style: {FhirTypeBase.NamingConvention.CamelCase}");
-            _writer.WriteLine($"  Element Naming Style: {FhirTypeBase.NamingConvention.CamelCase}");
-            _writer.WriteLine($"  Complex Type / Resource Naming Style: {FhirTypeBase.NamingConvention.PascalCase}");
-            _writer.WriteLine($"  Enum Naming Style: {FhirTypeBase.NamingConvention.FhirDotNotation}");
-            _writer.WriteLine($"  Interaction Naming Style: {FhirTypeBase.NamingConvention.PascalCase}");
+            _writer.WriteLine($"  Primitive Naming Style: {NamingConvention.CamelCase}");
+            _writer.WriteLine($"  Element Naming Style: {NamingConvention.CamelCase}");
+            _writer.WriteLine($"  Complex Type / Resource Naming Style: {NamingConvention.PascalCase}");
+            _writer.WriteLine($"  Enum Naming Style: {NamingConvention.FhirDotNotation}");
+            _writer.WriteLine($"  Interaction Naming Style: {NamingConvention.PascalCase}");
             _writer.WriteLine($"  Extension Support: {_options.ExtensionSupport}");
 
             if ((_options.ExportList != null) && _options.ExportList.Any())

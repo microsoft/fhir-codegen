@@ -4,6 +4,7 @@
 // </copyright>
 
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 using static Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk.TypeScriptSdkCommon;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language.TypeScriptSdk;
@@ -142,7 +143,7 @@ public class ModelBuilder
 
         foreach (FhirPrimitive fhirPrimitive in _info.PrimitiveTypes.Values)
         {
-            string exportName = "Fhir" + fhirPrimitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, ReservedWords);
+            string exportName = "Fhir" + fhirPrimitive.NameForExport(NamingConvention.PascalCase, false, string.Empty, ReservedWords);
 
             string exportClassType;
             string exportInterfaceType;
@@ -171,7 +172,7 @@ public class ModelBuilder
                         string baseName = FhirUtils.ToConvention(
                             fhirPrimitive.BaseTypeName,
                             string.Empty,
-                            FhirTypeBase.NamingConvention.PascalCase,
+                            NamingConvention.PascalCase,
                             false,
                             string.Empty,
                             ReservedWords);
@@ -405,26 +406,26 @@ public class ModelBuilder
         if (string.IsNullOrEmpty(fhirComplex.BaseTypeName) ||
             fhirComplex.Name.Equals("Element", StringComparison.Ordinal))
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, false, string.Empty, ReservedWords);
+            exportName = fhirComplex.NameForExport(NamingConvention.PascalCase, false, string.Empty, ReservedWords);
             exportType = "fhir.FhirBase";
             exportInterfaceType = "fhir.IFhirBase";
         }
         else if (fhirComplex.Name.Equals(fhirComplex.BaseTypeName, StringComparison.Ordinal))
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, ReservedWords);
+            exportName = fhirComplex.NameForExport(NamingConvention.PascalCase, true, string.Empty, ReservedWords);
             exportType = "fhir.FhirBase";
             exportInterfaceType = "fhir.IFhirBase";
         }
         else if ((fhirComplex.Components != null) && fhirComplex.Components.ContainsKey(fhirComplex.Path))
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, ReservedWords);
-            exportType = fhirComplex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, PrimitiveTypeMap, false, string.Empty, ReservedWords);
+            exportName = fhirComplex.NameForExport(NamingConvention.PascalCase, true, string.Empty, ReservedWords);
+            exportType = fhirComplex.TypeForExport(NamingConvention.PascalCase, PrimitiveTypeMap, false, string.Empty, ReservedWords);
             exportInterfaceType = "I" + exportType;
         }
         else
         {
-            exportName = fhirComplex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true, string.Empty, ReservedWords);
-            exportType = "fhir." + fhirComplex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, PrimitiveTypeMap, false, string.Empty, ReservedWords);
+            exportName = fhirComplex.NameForExport(NamingConvention.PascalCase, true, string.Empty, ReservedWords);
+            exportType = "fhir." + fhirComplex.TypeForExport(NamingConvention.PascalCase, PrimitiveTypeMap, false, string.Empty, ReservedWords);
             exportInterfaceType = exportType.Insert(5, "I");
         }
 
@@ -468,7 +469,7 @@ public class ModelBuilder
                 codeName = FhirUtils.ToConvention(
                     $"{fhirElement.Path}.{CodeTypeSuffix}",
                     string.Empty,
-                    FhirTypeBase.NamingConvention.PascalCase);
+                    NamingConvention.PascalCase);
             }
 
             return true;
@@ -520,7 +521,7 @@ public class ModelBuilder
             exportType = "fhir.Fhir" + FhirUtils.ToConvention(
                 fhirType, // exportTypeName,
                 string.Empty,
-                FhirTypeBase.NamingConvention.PascalCase,
+                NamingConvention.PascalCase,
                 false,
                 string.Empty,
                 ReservedWords);
@@ -579,8 +580,8 @@ public class ModelBuilder
 
         List<FhirElement.ExpandedElementRec> values = fhirElement.ExpandNamesAndTypes(
             out elementExportName,
-            FhirTypeBase.NamingConvention.CamelCase,
-            FhirTypeBase.NamingConvention.PascalCase,
+            NamingConvention.CamelCase,
+            NamingConvention.PascalCase,
             false,
             string.Empty,
             fhirComplex.Components.ContainsKey(fhirElement.Path));
@@ -820,7 +821,7 @@ public class ModelBuilder
                     string exportAlias = FhirUtils.ToConvention(
                         string.Empty,
                         elementExport.FhirPath,
-                        FhirTypeBase.NamingConvention.PascalCase,
+                        NamingConvention.PascalCase,
                         true,
                         "_",
                         ReservedWords);
@@ -849,7 +850,7 @@ public class ModelBuilder
     private string GetValueSetExportName(FhirValueSet fhirValueSet)
     {
         string vsName = FhirUtils.SanitizeForProperty(fhirValueSet.Id ?? fhirValueSet.Name, ReservedWords);
-        vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
+        vsName = FhirUtils.SanitizedToConvention(vsName, NamingConvention.PascalCase);
 
         if (vsName.EndsWith("Code", StringComparison.OrdinalIgnoreCase))
         {
@@ -912,7 +913,7 @@ public class ModelBuilder
             string codeName = FhirUtils.SanitizeForProperty(fhirCodeName, ReservedWords);
             string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
-            codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
+            codeName = FhirUtils.SanitizedToConvention(codeName, NamingConvention.PascalCase);
 
             if (usedConceptLiterals.Contains(codeName))
             {
@@ -921,11 +922,11 @@ public class ModelBuilder
                 if (additionalData.StartsWith("VAL", StringComparison.Ordinal))
                 {
                     additionalData = additionalData.Substring(3);
-                    additionalData = "_" + FhirUtils.SanitizedToConvention(additionalData, FhirTypeBase.NamingConvention.PascalCase);
+                    additionalData = "_" + FhirUtils.SanitizedToConvention(additionalData, NamingConvention.PascalCase);
                 }
                 else
                 {
-                    additionalData = FhirUtils.SanitizedToConvention(additionalData, FhirTypeBase.NamingConvention.PascalCase);
+                    additionalData = FhirUtils.SanitizedToConvention(additionalData, NamingConvention.PascalCase);
                 }
 
                 codeName = codeName + additionalData;

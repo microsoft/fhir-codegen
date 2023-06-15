@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -897,7 +898,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteResource(
             FhirComplex complex)
         {
-            string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+            string exportName = complex.NameForExport(NamingConvention.PascalCase);
 
             string filename = Path.Combine(_exportDirectory, "Model", $"{exportName}.cs");
 
@@ -936,7 +937,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteComplexDataType(
             FhirComplex complex)
         {
-            string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+            string exportName = complex.NameForExport(NamingConvention.PascalCase);
 
             if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(exportName))
             {
@@ -1064,7 +1065,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     if (string.IsNullOrEmpty(component.ExplicitName))
                     {
                         componentExportName =
-                            $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}Component";
+                            $"{component.NameForExport(NamingConvention.PascalCase)}Component";
                     }
                     else
                     {
@@ -1202,7 +1203,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             int depth)
         {
             string componentName = parentExportName + "#" + (string.IsNullOrEmpty(complex.ExplicitName) ?
-                complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
+                complex.NameForExport(NamingConvention.PascalCase) :
                 complex.ExplicitName);
 
             string baseExportName = DetermineExportedBaseTypeName(complex.Path, complex.Name, complex.BaseTypeName, false);
@@ -1276,7 +1277,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     if (string.IsNullOrEmpty(component.ExplicitName))
                     {
                         componentExportName =
-                            $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}" +
+                            $"{component.NameForExport(NamingConvention.PascalCase)}" +
                             $"Component";
                     }
                     else
@@ -2904,7 +2905,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 vs = null;
             }
 
-            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, NamingConvention.PascalCase);
 
             BuildElementOptionals(
                 element,
@@ -2995,7 +2996,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 isChoice = true;
             }
 
-            string pascal = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+            string pascal = FhirUtils.ToConvention(name, string.Empty, NamingConvention.PascalCase);
 
             BuildElementOptionals(
                 element,
@@ -3058,7 +3059,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
-                type = FhirUtils.SanitizedToConvention(type, FhirTypeBase.NamingConvention.PascalCase);
+                type = FhirUtils.SanitizedToConvention(type, NamingConvention.PascalCase);
             }
 
             string elementTag = noElement ? string.Empty : "Element";
@@ -3148,7 +3149,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // AdverseEvent.suspectEntity.Causality does not prefix?
                     if (i == components.Length - 1)
                     {
-                        sb.Append(FhirUtils.SanitizedToConvention(components[i], FhirTypeBase.NamingConvention.PascalCase));
+                        sb.Append(FhirUtils.SanitizedToConvention(components[i], NamingConvention.PascalCase));
                     }
                 }
 
@@ -3242,7 +3243,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         }
                         else
                         {
-                            string csType = FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase);
+                            string csType = FhirUtils.SanitizedToConvention(elementType.Name, NamingConvention.PascalCase);
                             sb.Append(csType);
                             fhirAndCsTypes.Add(elementType.Name, csType);
                         }

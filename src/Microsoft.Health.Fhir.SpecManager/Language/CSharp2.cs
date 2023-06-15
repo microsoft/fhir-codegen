@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -1067,7 +1068,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 //{
                     string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
 
-                    vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
+                    vsName = FhirUtils.SanitizedToConvention(vsName, NamingConvention.PascalCase);
 
                     if ((!string.IsNullOrEmpty(vs.Version)) &&
                         (vs.Version != _info.VersionString))
@@ -1115,7 +1116,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
 
-            vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
+            vsName = FhirUtils.SanitizedToConvention(vsName, NamingConvention.PascalCase);
 
             if (!string.IsNullOrEmpty(vs.Description))
             {
@@ -1165,8 +1166,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords);
                 string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
-                codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
-                codeSystemNameSanitized = FhirUtils.SanitizedToConvention(codeSystemNameSanitized, FhirTypeBase.NamingConvention.PascalCase);
+                codeName = FhirUtils.SanitizedToConvention(codeName, NamingConvention.PascalCase);
+                codeSystemNameSanitized = FhirUtils.SanitizedToConvention(codeSystemNameSanitized, NamingConvention.PascalCase);
 
                 string name;
 
@@ -1343,7 +1344,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (string.IsNullOrEmpty(complex.BaseTypeName) ||
                 complex.Name.Equals("Element", StringComparison.Ordinal))
             {
-                nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+                nameForExport = complex.NameForExport(NamingConvention.PascalCase);
                 hasBaseClass = false;
                 baseClassName = string.Empty;
 
@@ -1352,7 +1353,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
             {
-                nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
+                nameForExport = complex.NameForExport(NamingConvention.PascalCase, true);
                 hasBaseClass = false;
                 baseClassName = string.Empty;
 
@@ -1365,9 +1366,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
             {
-                nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
+                nameForExport = complex.NameForExport(NamingConvention.PascalCase, true);
                 hasBaseClass = true;
-                baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
+                baseClassName = complex.TypeForExport(NamingConvention.PascalCase, _primitiveTypeMap, false);
 
                 WriteJsonConverterAttribute(isResource, nameForExport);
                 _writer.WriteLineIndented(
@@ -1379,9 +1380,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
-                nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
+                nameForExport = complex.NameForExport(NamingConvention.PascalCase, true);
                 hasBaseClass = true;
-                baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
+                baseClassName = complex.TypeForExport(NamingConvention.PascalCase, _primitiveTypeMap);
 
                 WriteJsonConverterAttribute(isResource, nameForExport);
                 _writer.WriteLineIndented(
@@ -1437,7 +1438,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string codeName = FhirUtils.ToConvention(
                 $"{element.Path}.Codes",
                 string.Empty,
-                FhirTypeBase.NamingConvention.PascalCase);
+                NamingConvention.PascalCase);
 
             if (codeName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
             {
@@ -1569,8 +1570,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 Dictionary<string, string> values = element.NamesAndTypesForExport(
-                    FhirTypeBase.NamingConvention.PascalCase,
-                    FhirTypeBase.NamingConvention.PascalCase,
+                    NamingConvention.PascalCase,
+                    NamingConvention.PascalCase,
                     false,
                     string.Empty,
                     complex.Components.ContainsKey(element.Path));
@@ -1591,7 +1592,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         elementName = kvp.Key;
                     }
 
-                    string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
+                    string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, NamingConvention.CamelCase);
 
                     string elementType = element.IsArray
                         ? $"List<{kvp.Value}>"
@@ -2098,8 +2099,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 Dictionary<string, string> values = element.NamesAndTypesForExport(
-                    FhirTypeBase.NamingConvention.PascalCase,
-                    FhirTypeBase.NamingConvention.PascalCase,
+                    NamingConvention.PascalCase,
+                    NamingConvention.PascalCase,
                     false,
                     string.Empty,
                     complex.Components.ContainsKey(element.Path));
@@ -2116,7 +2117,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         elementName = kvp.Key;
                     }
 
-                    string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
+                    string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, NamingConvention.CamelCase);
 
                     string elementType = element.IsArray
                         ? $"List<{kvp.Value}>"
@@ -2391,8 +2392,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirElement element)
         {
             Dictionary<string, string> values = element.NamesAndTypesForExport(
-                FhirTypeBase.NamingConvention.PascalCase,
-                FhirTypeBase.NamingConvention.PascalCase,
+                NamingConvention.PascalCase,
+                NamingConvention.PascalCase,
                 false,
                 string.Empty,
                 complex.Components.ContainsKey(element.Path));

@@ -7,6 +7,7 @@
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.OpenApi.Models;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirCapResource;
 using static Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon;
 
@@ -3516,7 +3517,7 @@ public class ModelBuilder
         {
             foreach (FhirElementType elementType in element.ElementTypes.Values)
             {
-                string pascal = FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase);
+                string pascal = FhirUtils.SanitizedToConvention(elementType.Name, NamingConvention.PascalCase);
 
                 OpenApiSchema subSchema = new OpenApiSchema()
                 {
@@ -3769,7 +3770,7 @@ public class ModelBuilder
         {
             foreach (FhirElementType elementType in element.ElementTypes.Values)
             {
-                string pascal = FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase);
+                string pascal = FhirUtils.SanitizedToConvention(elementType.Name, NamingConvention.PascalCase);
 
                 OpenApiSchema subSchema = new OpenApiSchema()
                 {
@@ -3934,7 +3935,7 @@ public class ModelBuilder
 
         return FhirUtils.SanitizedToConvention(
             name,
-            FhirTypeBase.NamingConvention.CamelCase);
+            NamingConvention.CamelCase);
     }
 
 
@@ -3982,7 +3983,7 @@ public class ModelBuilder
                 // AdverseEvent.suspectEntity.Causality does not prefix?
                 if (i == components.Length - 1)
                 {
-                    sb.Append(FhirUtils.SanitizedToConvention(components[i], FhirTypeBase.NamingConvention.PascalCase));
+                    sb.Append(FhirUtils.SanitizedToConvention(components[i], NamingConvention.PascalCase));
                 }
             }
 

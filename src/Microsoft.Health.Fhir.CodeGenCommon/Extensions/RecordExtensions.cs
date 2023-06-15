@@ -8,6 +8,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
+/// <summary>A record extensions.</summary>
 public static class RecordExtensions
 {
 
@@ -22,7 +23,7 @@ public static class RecordExtensions
     {
         if (string.IsNullOrEmpty(v.ExpectationLiteral))
         {
-            return v.Value.ToString();
+            return v.Value?.ToString() ?? string.Empty;
         }
 
         return $"{v.Value} ({v.ExpectationLiteral})";

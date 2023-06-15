@@ -19,7 +19,7 @@ public static class FhirEnumExtensions
     {
         if (fhirEnum == null)
         {
-            return null;
+            return string.Empty;
         }
 
         Type type = fhirEnum.GetType();
@@ -49,18 +49,18 @@ public static class FhirEnumExtensions
 
         foreach (Enum value in Enum.GetValues(type))
         {
-            FieldInfo fieldInfo = type.GetField(value.ToString());
+            FieldInfo? fieldInfo = type.GetField(value.ToString());
 
             if (fieldInfo == null)
             {
                 continue;
             }
 
-            FhirLiteralAttribute[] attributes = fieldInfo.GetCustomAttributes(
+            FhirLiteralAttribute[]? attributes = fieldInfo.GetCustomAttributes(
                 typeof(FhirLiteralAttribute),
                 false) as FhirLiteralAttribute[];
 
-            if ((attributes == null) || (attributes.Length == 0))
+            if (!(attributes?.Any() ?? false))
             {
                 continue;
             }
@@ -164,16 +164,51 @@ public static class FhirEnumExtensions
             {
                 data.Add(val);
             }
-            else
-            {
-                values = Array.Empty<T>();
-                return false;
-            }
+            // 2023.06.14 - GC - We generally want to pull what we can in a try parse
+            //else
+            //{
+            //    values = Array.Empty<T>();
+            //    return false;
+            //}
         }
 
         values = data.ToArray();
         return true;
     }
+
+    /// <summary>
+    /// An IEnumerable&lt;string&gt; extension method that converts a source to a FHIR enum list.
+    /// </summary>
+    /// <typeparam name="T">Generic type parameter.</typeparam>
+    /// <param name="source">The source to act on.</param>
+    /// <returns>Source as a List&lt;T&gt;</returns>
+    public static List<T> ToFhirEnumList<T>(this IEnumerable<string> source)
+        where T : struct
+    {
+        if (!(source?.Any() ?? false))
+        {
+            return new();
+        }
+
+        List<T> data = new();
+
+        foreach (string sourceVal in source)
+        {
+            if (sourceVal.TryFhirEnum(out T val))
+            {
+                data.Add(val);
+            }
+            // 2023.06.14 - GC - We generally want to pull what we can in a try parse
+            //else
+            //{
+            //    values = Array.Empty<T>();
+            //    return false;
+            //}
+        }
+
+        return data;
+    }
+
 
     /// <summary>
     /// A Type extension method that attempts to parse a FHIR string literal to a FHIR-Literal tagged

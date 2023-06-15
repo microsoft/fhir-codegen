@@ -6,6 +6,7 @@
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirCapResource;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language.OpenApi;
@@ -426,20 +427,20 @@ public class OpenApiOptions
         switch (opConvention.ToUpperInvariant())
         {
             case "CAMEL":
-                IdConvention = FhirTypeBase.NamingConvention.CamelCase;
+                IdConvention = NamingConvention.CamelCase;
                 break;
 
             case "UPPER":
-                IdConvention = FhirTypeBase.NamingConvention.UpperCase;
+                IdConvention = NamingConvention.UpperCase;
                 break;
 
             case "LOWER":
-                IdConvention = FhirTypeBase.NamingConvention.LowerCase;
+                IdConvention = NamingConvention.LowerCase;
                 break;
 
             case "PASCAL":
             default:
-                IdConvention = FhirTypeBase.NamingConvention.PascalCase;
+                IdConvention = NamingConvention.PascalCase;
                 break;
         }
 
@@ -567,7 +568,7 @@ public class OpenApiOptions
     internal List<string> HistoryParams { get; } = new();
 
     /// <summary>Gets or sets the operation id naming convention.</summary>
-    internal FhirTypeBase.NamingConvention IdConvention { get; set; } = FhirTypeBase.NamingConvention.PascalCase;
+    internal NamingConvention IdConvention { get; set; } = NamingConvention.PascalCase;
 
     /// <summary>Gets a value indicating whether HTTP headers should be included.</summary>
     internal bool IncludeHeaders { get; } = false;

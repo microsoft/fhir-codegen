@@ -4,6 +4,7 @@
 // </copyright>
 
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
