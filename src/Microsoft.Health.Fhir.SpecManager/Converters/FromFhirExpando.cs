@@ -2421,11 +2421,13 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <param name="capabilityStatement">[out] The capability statement.</param>
     /// <param name="serverUrl">          (Optional) URL of the server.</param>
     /// <param name="info">               (Optional) The information.</param>
+    /// <param name="smartConfig">        (Optional) The smart configuration.</param>
     public static void ProcessMetadata(
         object metadata,
         out FhirCapabiltyStatement capabilityStatement,
         string serverUrl = "",
-        IPackageImportable info = null)
+        IPackageImportable info = null,
+        SmartConfiguration smartConfig = null)
     {
         if (metadata == null)
         {
@@ -2453,6 +2455,7 @@ public sealed class FromFhirExpando : IFhirConverter
         string impDescription = caps.GetString("implementation", "description") ?? string.Empty;
         string impUrl = caps.GetString("implementation", "url") ?? string.Empty;
 
+        FhirCapSecurityScheme security = null;
         List<string> serverInteractions = new();
         List<string> serverInteractionExpectations = new();
         Dictionary<string, FhirCapResource> resourceInteractions = new Dictionary<string, FhirCapResource>();
@@ -2544,6 +2547,29 @@ public sealed class FromFhirExpando : IFhirConverter
                         resourceInfo);
                 }
             }
+
+            if (smartConfig != null)
+            {
+                security = new FhirCapSmartOAuthScheme(
+                    smartConfig.TokenEndpoint,
+                    smartConfig.AuthorizationEndpoint,
+                    smartConfig.IntrospectionEndpoint,
+                    smartConfig.RecovationEndpoint);
+            }
+            else if (rest["security"] is not null)
+            {
+                FhirExpando smartExt = rest.GetExtension("http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris", "security");
+
+                if (smartExt is not null)
+                {
+                    string token = smartExt.GetExtension("token")?.GetString("valueUri");
+                    string authorize = smartExt.GetExtension("authorize")?.GetString("valueUri");
+                    string introspect = smartExt.GetExtension("introspect")?.GetString("valueUri");
+                    string revoke = smartExt.GetExtension("revoke")?.GetString("valueUri");
+
+                    security = new FhirCapSmartOAuthScheme(token, authorize, introspect, revoke);
+                }
+            }
         }
 
         string standardStatus = caps.GetExtensionValueCode(ExtUrlStandardStatus);
@@ -2581,18 +2607,21 @@ public sealed class FromFhirExpando : IFhirConverter
             caps.GetExtensionValueCodeArray(ExtUrlCapExpectation, "_implementationGuide"),
             resourceInteractions,
             serverSearchParams,
-            serverOperations);
+            serverOperations,
+            new[] { security });
 
         info?.AddCapabilityStatement(capabilityStatement);
     }
 
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>
-    /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
-    /// <param name="serverUrl"> URL of the server.</param>
+    /// <param name="metadata">    The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+    /// <param name="serverUrl">   URL of the server.</param>
+    /// <param name="smartConfig"> The smart configuration.</param>
     /// <param name="capabilities">[out] Information describing the server.</param>
     public void ProcessMetadata(
         object metadata,
         string serverUrl,
+        SmartConfiguration smartConfig,
         out FhirCapabiltyStatement capabilities)
     {
         if (metadata == null)
@@ -2601,7 +2630,11 @@ public sealed class FromFhirExpando : IFhirConverter
             return;
         }
 
-        ProcessMetadata(metadata, out capabilities, serverUrl);
+        ProcessMetadata(
+            metadata,
+            out capabilities,
+            serverUrl: serverUrl,
+            smartConfig: smartConfig);
 
         return;
     }
@@ -2638,8 +2671,11 @@ public sealed class FromFhirExpando : IFhirConverter
             foreach (FhirExpando sp in resource.GetExpandoEnumerable("searchParam"))
             {
                 string spName = sp.GetString("name");
+                string spType = sp.GetString("type");
 
-                if (string.IsNullOrEmpty(spName) || searchParams.ContainsKey(spName))
+                if (string.IsNullOrEmpty(spName) ||
+                    searchParams.ContainsKey(spName) ||
+                    string.IsNullOrEmpty(spType))
                 {
                     continue;
                 }
@@ -2649,7 +2685,7 @@ public sealed class FromFhirExpando : IFhirConverter
                     new FhirCapSearchParam(
                         spName,
                         sp.GetString("definition"),
-                        sp.GetString("type"),
+                        spType,
                         sp.GetString("documentation"),
                         sp.GetExtensionValueCode(ExtUrlCapExpectation)));
             }

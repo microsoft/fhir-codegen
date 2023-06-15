@@ -70,6 +70,7 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
     /// <param name="resourceInteractions">     The server interactions by resource.</param>
     /// <param name="serverSearchParameters">   The search parameters for searching all resources.</param>
     /// <param name="serverOperations">         The operations defined at the system level operation.</param>
+    /// <param name="securitySchemes">          The security schemes supported by the server.</param>
     public FhirCapabiltyStatement(
         List<string> serverInteractions,
         List<string> serverInteractionExpectations,
@@ -102,7 +103,8 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
         IEnumerable<string> implementationGuideExpectations,
         Dictionary<string, FhirCapResource> resourceInteractions,
         Dictionary<string, FhirCapSearchParam> serverSearchParameters,
-        Dictionary<string, FhirCapOperation> serverOperations)
+        Dictionary<string, FhirCapOperation> serverOperations,
+        IEnumerable<FhirCapSecurityScheme> securitySchemes)
         : base(
             FhirArtifactClassEnum.CapabilityStatement,
             id,
@@ -145,6 +147,7 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
         ResourceInteractions = resourceInteractions ?? new();
         ServerSearchParameters = serverSearchParameters ?? new();
         ServerOperations = serverOperations ?? new();
+        SecuritySchemes = securitySchemes ?? Array.Empty<FhirCapSecurityScheme>();
 
         if ((serverInteractions != null) &&
             serverInteractions.TryFhirEnum(out IEnumerable<SystemRestfulInteraction> si))
@@ -210,6 +213,7 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
             serverOperations.Add(kvp.Key, new(kvp.Value));
         }
         ServerOperations = serverOperations;
+        SecuritySchemes = source.SecuritySchemes.Select(s => s);
     }
 
     /// <summary>Values that represent system restful interactions.</summary>
@@ -285,6 +289,8 @@ public class FhirCapabiltyStatement : FhirModelBase, ICloneable
 
     /// <summary>Gets the operations defined at the system level operation.</summary>
     public Dictionary<string, FhirCapOperation> ServerOperations { get; }
+
+    public IEnumerable<FhirCapSecurityScheme> SecuritySchemes { get; }
 
     /// <summary>Creates a new object that is a copy of the current instance.</summary>
     /// <returns>A new object that is a copy of this instance.</returns>

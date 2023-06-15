@@ -45,9 +45,13 @@ public class ServerConnectorWebService : IDisposable, IHostedService, IServerCon
         return ServerConnector.TryGetServerInfo(serverUrl, resolveExternal, headers, out json, out serverInfo);
     }
 
-    public FhirCapabiltyStatement ParseCapabilityJson(string json)
+    /// <summary>Parse capability JSON.</summary>
+    /// <param name="json">           The JSON.</param>
+    /// <param name="smartConfigJson">(Optional) The smart configuration JSON.</param>
+    /// <returns>A FhirCapabiltyStatement.</returns>
+    public FhirCapabiltyStatement ParseCapabilityJson(string json, string smartConfigJson = "")
     {
-        return ServerConnector.ParseCapabilityJson(json);
+        return ServerConnector.ParseCapabilityJson(json, smartConfigJson);
     }
 
     /// <summary>Triggered when the application host is ready to start the service.</summary>
