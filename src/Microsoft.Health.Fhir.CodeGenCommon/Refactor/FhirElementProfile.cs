@@ -8,7 +8,7 @@ using static Microsoft.Health.Fhir.CodeGenCommon.Refactor.FhirTypeUtils;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
 
 /// <summary>A FHIR element profile.</summary>
-public record class FhirElementProfile : ICloneable
+public record class FhirElementProfile
 {
     /// <summary>Gets the name.</summary>
     public required string Name { get; init; }
@@ -50,12 +50,4 @@ public record class FhirElementProfile : ICloneable
 
         return dict;
     }
-
-    /// <summary>Makes a deep copy of this object.</summary>
-    /// <returns>A copy of this object.</returns>
-    object ICloneable.Clone() => this with { };
-
-    /// <summary>Deep copy.</summary>
-    /// <returns>A FhirElementProfile.</returns>
-    public FhirElementProfile DeepCopy() => this with { };
 }

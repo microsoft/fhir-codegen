@@ -306,25 +306,6 @@ public class FhirComplex : FhirModelBase, ICloneable
         RootElementMappings = source.RootElementMappings?.DeepCopy() ?? null;
     }
 
-    /// <summary>Values that represent fhir complex types.</summary>
-    public enum FhirComplexType
-    {
-        /// <summary>An enum constant representing the data type option.</summary>
-        DataType,
-
-        /// <summary>An enum constant representing the resource option.</summary>
-        Resource,
-
-        /// <summary>An enum constant representing the extension option.</summary>
-        Extension,
-
-        /// <summary>An enum constant representing the profile option.</summary>
-        Profile,
-
-        /// <summary>An enum constant representing the logical model option.</summary>
-        LogicalModel,
-    }
-
     /// <summary>Gets the explicit name of this structure, if provided.</summary>
     public string ExplicitName { get; }
 

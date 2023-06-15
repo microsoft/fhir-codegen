@@ -11,6 +11,20 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
 /// <summary>FHIR type-related utilities.</summary>
 public static class FhirTypeUtils
 {
+    /// <summary>Values that represent search magic parameters.</summary>
+    public enum SearchParameterGrouping
+    {
+        /// <summary>An enum constant representing all resource option.</summary>
+        Global,
+
+        /// <summary>An enum constant representing the search result option.</summary>
+        Result,
+
+        /// <summary>An enum constant representing all interaction option.</summary>
+        Interaction,
+    }
+
+
     /// <summary>Attempts to get name and URL.</summary>
     /// <param name="value">The value.</param>
     /// <param name="name"> [out] The name.</param>

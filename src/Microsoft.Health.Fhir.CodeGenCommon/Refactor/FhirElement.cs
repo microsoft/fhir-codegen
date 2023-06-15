@@ -15,9 +15,16 @@ public record class FhirElement : FhirDefinitionBase
     private int _cardinalityMax = -1;
     private Dictionary<string, FhirElementType> _elementTypes = new();
     private Dictionary<string, List<FhirElementMapping>> _mappings = new();
-    private List<PropertyRepresentationCodes> _representations = new();
+    private IEnumerable<PropertyRepresentationCodes> _representations = Enumerable.Empty<PropertyRepresentationCodes>();
+    private IEnumerable<string> _fhirRepresentations = Enumerable.Empty<string>();
     private string _bindingStrength = string.Empty;
     private ElementDefinitionBindingStrength? _valueSetBindingStrength = null;
+    private Dictionary<string, FhirSlicing> _slicing = new();
+    private string _fiveWs = string.Empty;
+    private bool _inDifferential = false;
+    private bool _modifiesParent = false;
+    private HashSet<string> _conditions = new();
+    private Dictionary<string, FhirConstraint> _constraints = new();
 
     /// <summary>Values that represent element definition binding strengths.</summary>
     public enum ElementDefinitionBindingStrength : int
@@ -63,10 +70,48 @@ public record class FhirElement : FhirDefinitionBase
         xhtml,
     }
 
+    /// <summary>Initializes a new instance of the FhirElement class.</summary>
+    /// <param name="other">The other.</param>
+    protected FhirElement(FhirElement other)
+        : base(other)
+    {
+        BasePath = other.BasePath;
+        RootArtifact = other.RootArtifact;
+        ExplicitName = other.ExplicitName;
+        CardinalityMin = other.CardinalityMin;
+        CardinalityMaxString = other.CardinalityMaxString;
+        _inDifferential = other._inDifferential;
+        IsInherited = other.IsInherited;
+        ModifiesParent = other.ModifiesParent;
+        HidesParent = other.HidesParent;
+        IsModifier = other.IsModifier;
+        IsModifierReason = other.IsModifierReason;
+        IsSummary = other.IsSummary;
+        IsMustSupport = other.IsMustSupport;
+        IsSimple = other.IsSimple;
+        FieldOrder = other.FieldOrder;
+        FhirMappings = other._mappings.Values.SelectMany(l => l).Select(m => m with { });
+        FhirRepresentations = other._fhirRepresentations.Select(v => v);
+        ValueSet = other.ValueSet;
+        BindingStrength = other.BindingStrength;
+        BindingName = other.BindingName;
+        _elementTypes = other._elementTypes.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
+        DefaultFieldName = other.DefaultFieldName;
+        DefaultFieldValue = other.DefaultFieldValue;
+        _slicing = other._slicing.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
+        FixedFieldName = other.FixedFieldName;
+        FixedFieldValue = other.FixedFieldValue;
+        PatternFieldName = other.PatternFieldName;
+        PatternFieldValue = other.PatternFieldValue;
+        _fiveWs = other._fiveWs;
+        _conditions = other._conditions.ToHashSet();
+        _constraints = other._constraints.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
+    }
+
     /// <summary>Gets the dot-notation path to the base definition for this record.</summary>
     public required string BasePath { get; init; }
 
-    /// <summary>Gets the root artifact.</summary>
+    /// <summary>Gets the root artifact this definition belongs to.</summary>
     public required FhirComplex RootArtifact { get; init; }
 
     /// <summary>Gets the explicit name of this element, if one was specified.</summary>
@@ -109,16 +154,41 @@ public record class FhirElement : FhirDefinitionBase
     /// <summary>Gets the FHIR cardinality string: min..max.</summary>
     public string FhirCardinality => $"{CardinalityMin}..{CardinalityMaxString}";
 
-    /// <summary>Gets a value indicating whether this object is inherited.</summary>
-    public bool IsInherited { get; init; } = false;
+    /// <summary>True if this element appears in the differential.</summary>
+    public bool InDifferential
+    {
+        get => _inDifferential;
+        set
+        {
+            _inDifferential = value;
+            if (IsInherited)
+            {
+                _modifiesParent = value;
+            }
+        }
+    }
+
+    /// <summary>Gets a value indicating whether this object is inherited from a parent definition.</summary>
+    public required bool IsInherited { get; init; }
 
     /// <summary>Gets a value indicating whether the modifies parent.</summary>
-    public bool ModifiesParent { get; init; } = false;
+    public bool ModifiesParent { get => _modifiesParent; init => _modifiesParent = value; }
 
     /// <summary>Gets a value indicating whether this field hides a parent field.</summary>
     public bool HidesParent { get; init; } = false;
 
-    /// <summary>Gets a value indicating whether this object is modifier.</summary>
+    /// <summary>
+    /// Gets whether this element must have a value - for primitives, that a value must be present 
+    /// and not replaced by an extension (e.g., a Data Absent Reason).
+    /// </summary>
+    public bool? MustHaveValue { get; init; } = null;
+
+    /// <summary>
+    /// Gets the value alternatives - extensions that are allowed to replace a primitive value.
+    /// </summary>
+    public IEnumerable<string> ValueAlternatives { get; init; } = Enumerable.Empty<string>();
+
+    /// <summary>Gets a value indicating whether this element is a modifier to the containing structure.</summary>
     public required bool IsModifier { get; init; }
 
     /// <summary>Gets the is modifier reason.</summary>
@@ -137,14 +207,15 @@ public record class FhirElement : FhirDefinitionBase
     public required int FieldOrder { get; init; }
 
     /// <summary>Gets the mappings of this element to another set of definitions.</summary>
-    public Dictionary<string, List<FhirElementMapping>> Mappings { get => _mappings; init => _mappings = value; }
+    public Dictionary<string, List<FhirElementMapping>> Mappings { get => _mappings; }
 
     /// <summary>Initializes the FHIR mappings.</summary>
     public IEnumerable<FhirElementMapping> FhirMappings
     {
         init
         {
-            foreach (FhirElementMapping m in value ?? Enumerable.Empty<FhirElementMapping>())
+            // build our dictionary
+            value?.ForEach(m =>
             {
                 if (!_mappings.ContainsKey(m.Identity))
                 {
@@ -152,6 +223,13 @@ public record class FhirElement : FhirDefinitionBase
                 }
 
                 _mappings[m.Identity].Add(m);
+            });
+
+            // if we have a w5 mapping, set the convenience value
+            if (_mappings.TryGetValue("w5", out List<FhirElementMapping>? w5maps) &&
+                (w5maps?.Any() ?? false))
+            {
+                _fiveWs = w5maps.First().Map;
             }
         }
     }
@@ -162,9 +240,11 @@ public record class FhirElement : FhirDefinitionBase
     /// <summary>Gets or initializes the FHIR representations.</summary>
     public IEnumerable<string> FhirRepresentations
     {
+        get => _fhirRepresentations;
         init
         {
-            _representations = value?.ToFhirEnumList<PropertyRepresentationCodes>() ?? new();
+            _fhirRepresentations = value;
+            _representations = value?.ToFhirEnumList<PropertyRepresentationCodes>() ?? Enumerable.Empty<PropertyRepresentationCodes>();
         }
     }
 
@@ -178,9 +258,9 @@ public record class FhirElement : FhirDefinitionBase
         init
         {
             _bindingStrength = value;
-            if (_bindingStrength.TryFhirEnum(out ElementDefinitionBindingStrength edbs))
+            if (_bindingStrength.TryFhirEnum(out ElementDefinitionBindingStrength v))
             {
-                _valueSetBindingStrength = edbs;
+                _valueSetBindingStrength = v;
             }
         }
     }
@@ -202,19 +282,28 @@ public record class FhirElement : FhirDefinitionBase
     public object? DefaultFieldValue { get; init; } = null;
 
     /// <summary>Gets the slicing information.</summary>
-    public Dictionary<string, FhirSlicing> Slicing => _slicing;
+    public Dictionary<string, FhirSlicing> SlicesByName => _slicing;
+
+    public IEnumerable<FhirSlicing> Slices
+    {
+        get => _slicing.Values;
+        init
+        {
+            _slicing = value?.ToDictionary(s => s.SliceName, s => s) ?? new();
+        }
+    }
 
     /// <summary>Gets the name of the fixed field.</summary>
-    public string FixedFieldName { get; }
+    public string FixedFieldName { get; init; } = string.Empty;
 
     /// <summary>Gets the fixed field value.</summary>
-    public object FixedFieldValue { get; }
+    public object? FixedFieldValue { get; init; } = null;
 
     /// <summary>Gets the name of the pattern field.</summary>
-    public string PatternFieldName { get; }
+    public string PatternFieldName { get; init; } = string.Empty;
 
     /// <summary>Gets the pattern field value.</summary>
-    public object PatternFieldValue { get; }
+    public object? PatternFieldValue { get; init; } = null;
 
     /// <summary>Gets a value indicating whether this property is an array.</summary>
     public bool IsArray => (CardinalityMax == -1) || (CardinalityMax > 1);
@@ -222,64 +311,50 @@ public record class FhirElement : FhirDefinitionBase
     /// <summary>Gets a value indicating whether this object is optional.</summary>
     public bool IsOptional => CardinalityMin == 0;
 
-    /// <summary>Gets the five Ws mapping list for the current element.</summary>
+    /// <summary>Gets the 5Ws mapping for this element.</summary>
     public string FiveWs => _fiveWs;
 
-    /// <summary>True if this element appears in the differential.</summary>
-    public bool InDifferential => _inDifferential;
+    /// <summary>Gets the conditions - references to invariants about presence.</summary>
+    public HashSet<string> Conditions { get => _conditions; }
 
-    /// <summary>Gets the conditions.</summary>
-    public HashSet<string> Conditions => _conditions;
-
-    /// <summary>Gets the constraints.</summary>
-    public IEnumerable<FhirConstraint> Constraints { get => _constraintsByKey.Values; }
-
-    /// <summary>Gets the constraints by key.</summary>
-    public Dictionary<string, FhirConstraint> ConstraintsByKey { get => _constraintsByKey; }
-
-    /// <summary>
-    /// Process this element after creation. Tests for additional processing that requires values to
-    /// already be present, e.g., parsing a short description into codes for a coded element.
-    /// </summary>
-    public void Process()
+    /// <summary>Initializes the FHIR conditions - references to invariants about presence.</summary>
+    public IEnumerable<string> FhirConditions
     {
-        //CheckForCodes();
+        init
+        {
+            _conditions = value?.ToHashSet() ?? new();
+        }
     }
 
-    ///// <summary>Check for codes.</summary>
-    //private void CheckForCodes()
-    //{
-    //    if ((!_baseTypeName.Equals("code", StringComparison.Ordinal)) &&
-    //        (!_elementTypes.Values.Where(et => et.Type.Equals("code", StringComparison.Ordinal)).Any()))
-    //    {
-    //        return;
-    //    }
+    /// <summary>Gets the constraints - conditions that must evaluate to true.</summary>
+    public IEnumerable<FhirConstraint> Constraints
+    {
+        get => _constraints.Values;
+        init
+        {
+            _constraints = new();
+            value?.ForEach(c =>
+            {
+                if (_constraints.ContainsKey(c.Key))
+                {
+                    return;
+                }
 
-    //    if (ShortDescription == "formats supported (xml | json | mime type)")
-    //    {
-    //        _codes = new string[]
-    //            {
-    //                "xml",
-    //                "json",
-    //                "MIME Type",
-    //            };
-    //    }
-    //    else if (ShortDescription == "formats supported (xml | json | ttl | mime type)")
-    //    {
-    //        _codes = new string[]
-    //            {
-    //                "xml",
-    //                "json",
-    //                "ttl",
-    //                "MIME Type",
-    //            };
-    //    }
-    //    else if (ShortDescription.Contains('|', StringComparison.Ordinal))
-    //    {
-    //        _codes = ShortDescription
-    //            .Split('|', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-    //            .Select(s => s.Contains(' ', StringComparison.Ordinal) ? s.Split(' ').First() : s)
-    //            .ToArray();
-    //    }
-    //}
+                if (!(RootArtifact?.Constraints.ContainsKey(c.Key) ?? false))
+                {
+                    RootArtifact.AddConstraint(c);
+                }
+
+                _constraints[c.Key] = c;
+            });
+        }
+    }
+
+    /// <summary>Gets the constraints (conditions that must evaluate to true) by key.</summary>
+    public Dictionary<string, FhirConstraint> ConstraintsByKey { get => _constraints; }
+
+    public bool AddSlice(FhirSlicing slice)
+    {
+        throw new NotImplementedException();
+    }
 }

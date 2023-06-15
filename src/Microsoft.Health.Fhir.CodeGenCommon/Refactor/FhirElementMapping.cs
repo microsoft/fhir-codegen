@@ -8,7 +8,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
 
 /// <summary>A FHIR element mapping.</summary>
-public record class FhirElementMapping : ICloneable
+public record class FhirElementMapping
 {
     /// <summary>Gets the reference to mapping declaration.</summary>
     public required string Identity { get; init; }
@@ -21,12 +21,4 @@ public record class FhirElementMapping : ICloneable
 
     /// <summary>Gets comments about the mapping or its use.</summary>
     public string Comment { get; init; } = string.Empty;
-
-    /// <summary>Creates a new object that is a copy of the current instance.</summary>
-    /// <returns>A new object that is a copy of this instance.</returns>
-    object ICloneable.Clone() => this with { };
-
-    /// <summary>Deep copy.</summary>
-    /// <returns>A FhirElementProfile.</returns>
-    public FhirElementMapping DeepCopy() => this with { };
 }

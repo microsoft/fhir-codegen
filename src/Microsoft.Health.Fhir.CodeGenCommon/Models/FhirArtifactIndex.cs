@@ -60,6 +60,10 @@ public enum FhirArtifactClassEnum
 
     /// <summary>An enum constant representing the unknown option.</summary>
     Unknown,
+
+
+    /// <summary>An enum constant representing the Package option.</summary>
+    Package,
 }
 
 /// <summary>Information about the FHIR artifact.</summary>

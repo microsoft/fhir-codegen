@@ -3,18 +3,23 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Collections;
 using System.Data;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
 
 /// <summary>A FHIR slicing.</summary>
-public record class FhirSlicing : ICloneable, IReadOnlyDictionary<string, FhirComplex>
+public record class FhirSlicing : IReadOnlyDictionary<string, FhirComplex>
 {
-    private FhirSlicingRule _slicingRules;
+    private FhirSlicingRuleCodes _slicingRule;
+    private string _fhirSlicingRule = string.Empty;
+    Dictionary<string, SliceDiscriminatorRule> _rules = new();
+    Dictionary<string, FhirComplex> _slices = new();
+    private readonly HashSet<string> _slicesInDifferential = new();
 
     /// <summary>Values that represent how slices are interpreted when evaluating an instance.</summary>
-    public enum FhirSlicingRule
+    public enum FhirSlicingRuleCodes
     {
         /// <summary>No additional content is allowed other than that described by the slices in this profile.</summary>
         [FhirLiteral("closed")]
@@ -33,16 +38,117 @@ public record class FhirSlicing : ICloneable, IReadOnlyDictionary<string, FhirCo
         OpenAtEnd,
     }
 
-    protected FhirSlicing(FhirSlicing source)
+    /// <summary>Values that represent fhir slice discriminator types.</summary>
+    public enum FhirSliceDiscriminatorTypeCodes
     {
-        DefinedById = source.DefinedById;
-        DefinedByUrl = source.DefinedByUrl;
-        Description = source.Description;
-        IsOrdered = source.IsOrdered;
-        FieldOrder = source.FieldOrder;
-        _slicingRules = source.SlicingRules;
+        /// <summary>
+        /// The slices have different values in the nominated element.
+        /// </summary>
+        [FhirLiteral("value")]
+        Value,
 
+        /// <summary>
+        /// The slices are differentiated by the presence or absence of the nominated element.
+        /// </summary>
+        [FhirLiteral("exists")]
+        Exists,
+
+        /// <summary>
+        /// The slices have different values in the nominated element, as determined by testing them
+        /// against the applicable ElementDefinition.pattern[x].
+        /// </summary>
+        [FhirLiteral("pattern")]
+        [Obsolete("This code means the same as value, and is retained for backwards compatibility reasons", false)]
+        Pattern,
+
+        /// <summary>
+        /// The slices are differentiated by type of the nominated element.
+        /// </summary>
+        [FhirLiteral("type")]
+        Type,
+
+        /// <summary>
+        /// The slices are differentiated by conformance of the nominated element to a specified
+        /// profile. Note that if the path specifies .resolve() then the profile is the target profile
+        /// on the reference. In this case, validation by the possible profiles is required to differentiate
+        /// the slices.
+        /// </summary>
+        [FhirLiteral("profile")]
+        Profile,
+
+        /// <summary>
+        /// The slices are differentiated by their index. This is only possible if all but the last slice
+        /// have min=max cardinality, and the (optional) last slice contains other undifferentiated elements.
+        /// </summary>
+        [FhirLiteral("position")]
+        Position,
     }
+
+    /// <summary>A slicing discriminator rule.</summary>
+    public record class SliceDiscriminatorRule
+    {
+        private readonly FhirSliceDiscriminatorTypeCodes _discriminatorType;
+        private string _fhirDiscriminatorType = string.Empty;
+
+        /// <summary>
+        /// Gets the type of the discriminator - how the element value is interpreted when discrimination
+        /// is evaluated.
+        /// </summary>
+        public FhirSliceDiscriminatorTypeCodes DiscriminatorType => _discriminatorType;
+
+        /// <summary>
+        /// Gets the type of the FHIR discriminator - how the element value is interpreted when
+        /// discrimination is evaluated.
+        /// </summary>
+        public required string FhirDiscriminatorType
+        {
+            get => _fhirDiscriminatorType;
+            init
+            {
+                _fhirDiscriminatorType = value;
+
+                if (_fhirDiscriminatorType.TryFhirEnum(out FhirSliceDiscriminatorTypeCodes v))
+                {
+                    _discriminatorType = v;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets a FHIRPath expression, using the simple subset of FHIRPath, that is used to identify the
+        /// element on which discrimination is based.
+        /// </summary>
+        public required string Path { get; init; }
+
+        /// <summary>Gets the key.</summary>
+        public string Key => _discriminatorType + "+" + Path;
+    }
+
+    /// <summary>Initializes a new instance of the FhirSlicing class.</summary>
+    /// <param name="other">Source for the.</param>
+    protected FhirSlicing(FhirSlicing other)
+    {
+        SliceName = other.SliceName;
+        IsConstraining = other.IsConstraining;
+        DefinedById = other.DefinedById;
+        DefinedByUrl = other.DefinedByUrl;
+        Description = other.Description;
+        IsOrdered = other.IsOrdered;
+        FieldOrder = other.FieldOrder;
+        _slicingRule = other.SlicingRules;
+        _rules = other._rules.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
+        _slices = other._slices.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
+        _slicesInDifferential = other._slicesInDifferential.DeepCopy();
+    }
+
+    /// <summary>Gets the name of the slice - the name for this particular element in a set of slices.</summary>
+    public required string SliceName { get; init; }
+
+    /// <summary>
+    /// Gets whether this slice is constraining (if this slice definition constrains an inherited
+    /// slice definition (or not)).
+    /// </summary>
+    public bool? IsConstraining { get; init; } = null;
 
     /// <summary>Gets the identifier of the defined by.</summary>
     public required string DefinedById { get; init; }
@@ -64,39 +170,80 @@ public record class FhirSlicing : ICloneable, IReadOnlyDictionary<string, FhirCo
 
     /// <summary>Gets how slices are interpreted when evaluating an instance.</summary>
     /// <value>How slices are interpreted when evaluating an instance.</value>
-    public FhirSlicingRule SlicingRules => _slicingRules;
+    public FhirSlicingRuleCodes SlicingRules { get => _slicingRule; }
 
     /// <summary>Initializes the FHIR slicing rules.</summary>
     /// <exception cref="InvalidConstraintException">Thrown when an Invalid Constraint error condition
     ///  occurs.</exception>
-    public string FhirSlicingRules
+    public required string FhirSlicingRules
     {
+        get => _fhirSlicingRule;
         init
         {
-            _slicingRules = value switch
+            _fhirSlicingRule = value;
+
+            if (_fhirSlicingRule.TryFhirEnum(out FhirSlicingRuleCodes v))
             {
-                "closed" => FhirSlicingRule.Closed,
-                "open" => FhirSlicingRule.Open,
-                "openAtEnd" => FhirSlicingRule.OpenAtEnd,
-                _ => throw new InvalidConstraintException($"Invalid slicing rule: {value}")
-            };
+                _slicingRule = v;
+            }
         }
     }
 
     /// <summary>Gets the element values that are used to distinguish the slices.</summary>
     /// <value>The element values that are used to distinguish the slices.</value>
-    public Dictionary<string, FhirSliceDiscriminatorRule> DiscriminatorRules => _rules;
-
-    /// <summary>Gets the slices.</summary>
-    /// <value>The slices.</value>
-    public List<FhirComplex> Slices => _slices;
+    public Dictionary<string, SliceDiscriminatorRule> DiscriminatorRules { get => _rules; }
 
     /// <summary>Gets a value indicating whether this object has differential slices.</summary>
     public bool HasDifferentialSlices => _slicesInDifferential.Any();
 
-    object ICloneable.Clone() => this with { };
+    /// <summary>Gets the slices.</summary>
+    /// <value>The slices.</value>
+    public IEnumerable<FhirComplex> Slices => _slices.Values;
 
-    /// <summary>Deep copy.</summary>
-    /// <returns>A FhirSlicing.</returns>
-    public FhirSlicing DeepCopy() => this with { };
+    /// <summary>Gets the keys.</summary>
+    /// <typeparam name="string">     Type of the string.</typeparam>
+    /// <typeparam name="FhirComplex">Type of the FHIR complex.</typeparam>
+    IEnumerable<string> IReadOnlyDictionary<string, FhirComplex>.Keys => _slices.Keys;
+
+    /// <summary>Gets the values.</summary>
+    /// <typeparam name="string">     Type of the string.</typeparam>
+    /// <typeparam name="FhirComplex">Type of the FHIR complex.</typeparam>
+    IEnumerable<FhirComplex> IReadOnlyDictionary<string, FhirComplex>.Values => _slices.Values;
+
+    /// <summary>Gets the number of. </summary>
+    /// <typeparam name="string">      Type of the string.</typeparam>
+    /// <typeparam name="FhirComplex>">Type of the FHIR complex></typeparam>
+    int IReadOnlyCollection<KeyValuePair<string, FhirComplex>>.Count => _slices.Count();
+
+    /// <summary>Indexer to get items within this collection using array index syntax.</summary>
+    /// <typeparam name="string">     Type of the string.</typeparam>
+    /// <typeparam name="FhirComplex">Type of the FHIR complex.</typeparam>
+    /// <param name="key">The key.</param>
+    /// <returns>The indexed item.</returns>
+    FhirComplex IReadOnlyDictionary<string, FhirComplex>.this[string key] => _slices[key];
+
+    /// <summary>Query if 'key' contains key.</summary>
+    /// <typeparam name="string">     Type of the string.</typeparam>
+    /// <typeparam name="FhirComplex">Type of the FHIR complex.</typeparam>
+    /// <param name="key">The key.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    bool IReadOnlyDictionary<string, FhirComplex>.ContainsKey(string key) => _slices.ContainsKey(key);
+
+    /// <summary>Attempts to get value a FhirComplex from the given string.</summary>
+    /// <typeparam name="string">     Type of the string.</typeparam>
+    /// <typeparam name="FhirComplex">Type of the FHIR complex.</typeparam>
+    /// <param name="key">  The key.</param>
+    /// <param name="value">[out] The value.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    bool IReadOnlyDictionary<string, FhirComplex>.TryGetValue(string key, out FhirComplex value) => _slices.TryGetValue(key, out value);
+
+    /// <summary>Gets the enumerator.</summary>
+    /// <typeparam name="string">      Type of the string.</typeparam>
+    /// <typeparam name="FhirComplex>">Type of the FHIR complex></typeparam>
+    /// <returns>The enumerator.</returns>
+    IEnumerator<KeyValuePair<string, FhirComplex>> IEnumerable<KeyValuePair<string, FhirComplex>>.GetEnumerator() => _slices.GetEnumerator();
+
+    /// <summary>Gets the enumerator.</summary>
+    /// <returns>The enumerator.</returns>
+    IEnumerator IEnumerable.GetEnumerator() => _slices.GetEnumerator();
 }

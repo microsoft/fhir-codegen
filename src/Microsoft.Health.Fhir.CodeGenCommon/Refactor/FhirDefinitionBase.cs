@@ -17,6 +17,22 @@ public abstract record class FhirDefinitionBase
     internal string _baseTypeName = string.Empty;
     internal string _baseTypeCanonical = string.Empty;
 
+    /// <summary>Initializes a new instance of the FhirDefinitionBase class.</summary>
+    /// <param name="other">The other.</param>
+    protected FhirDefinitionBase(FhirDefinitionBase other)
+    {
+        Id = other.Id;
+        Name = other.Name;
+        Path = other.Path;
+        Url = other.Url;
+        BaseTypeName = other.BaseTypeName;
+        BaseTypeCanonical = other.BaseTypeCanonical;
+        ShortDescription = other.ShortDescription;
+        Purpose = other.Purpose;
+        Comment = other.Comment;
+        ValidationRegEx = other.ValidationRegEx;
+    }
+
     /// <summary>Gets the Id for this element/resource/datatype.</summary>
     /// <value>The Id for this element/resource/datatype.</value>
     public required string Id { get; init; }
@@ -113,7 +129,7 @@ public abstract record class FhirDefinitionBase
             _ => _baseTypeName,
         };
 
-        string type = FhirUtils.ToConvention(
+        string type = Models.FhirUtils.ToConvention(
             baseType,
             _path,
             convention,

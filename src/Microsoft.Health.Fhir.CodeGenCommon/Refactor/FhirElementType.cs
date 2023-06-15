@@ -12,7 +12,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
 
 /// <summary>A FHIR element type.</summary>
-public record class FhirElementType : ICloneable
+public record class FhirElementType
 {
     /// <summary>(Immutable) URL of the base element type.</summary>
     private const string _baseElementTypeUrl = "http://hl7.org/fhir/StructureDefinition/";
@@ -71,9 +71,9 @@ public record class FhirElementType : ICloneable
         Name = other.Name;
         TypeName = other.TypeName;
         Url = other.Url;
-        _aggregation = other._aggregation.DeepCopy();
-        _targetProfiles = other._targetProfiles.DeepCopy();
-        _typeProfiles = other._typeProfiles.DeepCopy();
+        _aggregation = other._aggregation.ToHashSet();
+        _targetProfiles = other._targetProfiles.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
+        _typeProfiles = other._typeProfiles.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
     }
 
     /// <summary>Gets the name. Data type or Resource (reference to definition)</summary>
@@ -132,12 +132,4 @@ public record class FhirElementType : ICloneable
         get => _typeProfiles.Values.Select(x => x.Url);
         init => _typeProfiles = FhirElementProfile.ParseProfiles(value);
     }
-
-    /// <summary>Makes a deep copy of this object.</summary>
-    /// <returns>A copy of this object.</returns>
-    object ICloneable.Clone() => this with { };
-
-    /// <summary>Deep copy.</summary>
-    /// <returns>A FhirElementProfile.</returns>
-    public FhirElementType DeepCopy() => this with { };
 }
