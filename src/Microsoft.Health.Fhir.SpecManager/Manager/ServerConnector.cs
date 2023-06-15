@@ -51,13 +51,63 @@ public static class ServerConnector
             return false;
         }
 
-        HttpClient client = null;
+        HttpClient client = new HttpClient();
         HttpRequestMessage request = null;
+        Uri requestUri;
+
+        SmartConfiguration smartConfiguration = null;
 
         try
         {
-            Uri requestUri;
+            if (serverUrl.EndsWith("metadata", StringComparison.OrdinalIgnoreCase))
+            {
+                requestUri = new Uri(serverUrl[serverUrl.Length - 8] + "/.well-known/smart-configuration");
+            }
+            else if (serverUrl.EndsWith("/"))
+            {
+                Uri serverUri = new Uri(serverUrl);
+                requestUri = new Uri(serverUri, ".well-known/smart-configuration");
+            }
+            else
+            {
+                requestUri = new Uri(serverUrl + "/.well-known/smart-configuration");
+            }
 
+            request = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Get,
+                RequestUri = requestUri,
+                Headers =
+                {
+                    Accept =
+                    {
+                        new MediaTypeWithQualityHeaderValue("application/json"),
+                    },
+                },
+            };
+
+            Console.WriteLine($"Requesting SMART configuration from {request.RequestUri}...");
+
+            HttpResponseMessage response = client.SendAsync(request).Result;
+
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine($"Request to {request.RequestUri} failed! Returned: {response.StatusCode}");
+            }
+            else
+            {
+                json = response.Content.ReadAsStringAsync().Result;
+
+                smartConfiguration = JsonSerializer.Deserialize<SmartConfiguration>(json);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Could not retrieve {request.RequestUri}: {ex.Message}");
+        }
+
+        try
+        {
             if (serverUrl.EndsWith("metadata", StringComparison.OrdinalIgnoreCase))
             {
                 requestUri = new Uri(serverUrl);
@@ -71,8 +121,6 @@ public static class ServerConnector
             {
                 requestUri = new Uri(serverUrl + "/metadata");
             }
-
-            client = new HttpClient();
 
             request = new HttpRequestMessage()
             {
@@ -140,7 +188,7 @@ public static class ServerConnector
                 return false;
             }
 
-            fhirConverter.ProcessMetadata(metadata, serverUrl, out serverInfo);
+            fhirConverter.ProcessMetadata(metadata, serverUrl, smartConfiguration, out serverInfo);
 
             if (serverInfo != null)
             {
@@ -184,9 +232,10 @@ public static class ServerConnector
     }
 
     /// <summary>Parse capability JSON.</summary>
-    /// <param name="json">[out] The JSON.</param>
+    /// <param name="json">           [out] The JSON.</param>
+    /// <param name="smartConfigJson">The smart configuration JSON.</param>
     /// <returns>A FhirCapabiltyStatement.</returns>
-    public static FhirCapabiltyStatement ParseCapabilityJson(string json)
+    public static FhirCapabiltyStatement ParseCapabilityJson(string json, string smartConfigJson = "")
     {
         string url;
         string fhirVersion;
@@ -209,7 +258,21 @@ public static class ServerConnector
             return null;
         }
 
-        fhirConverter.ProcessMetadata(metadata, url, out FhirCapabiltyStatement serverInfo);
+        SmartConfiguration smartConfig = null;
+
+        if (!string.IsNullOrEmpty(smartConfigJson))
+        {
+            try
+            {
+                smartConfig = JsonSerializer.Deserialize<SmartConfiguration>(smartConfigJson);
+            }
+            catch (Exception)
+            {
+                smartConfig = null;
+            }
+        }
+
+        fhirConverter.ProcessMetadata(metadata, url, smartConfig, out FhirCapabiltyStatement serverInfo);
 
         return serverInfo;
     }

@@ -179,14 +179,14 @@ public class FhirManager : IDisposable
         HashSet<string> attempted = new();
         Dictionary<string, ResolvedCanonical> canonicals = new();
 
-        if (caps.ImplementationGuides != null)
+        if (caps.ImplementationGuides?.Any() ?? false)
         {
             foreach (string ig in caps.ImplementationGuides)
             {
             }
         }
 
-        if (caps.ServerOperations != null)
+        if (caps.ServerOperations?.Any() ?? false)
         {
             foreach (FhirCapOperation serverOp in caps.ServerOperations.Values)
             {
@@ -211,11 +211,11 @@ public class FhirManager : IDisposable
             }
         }
 
-        if (caps.ResourceInteractions != null)
+        if (caps.ResourceInteractions?.Any() ?? false)
         {
             foreach (FhirCapResource resourceInteraction in caps.ResourceInteractions.Values)
             {
-                if (resourceInteraction.Operations != null)
+                if (resourceInteraction.Operations?.Any() ?? false)
                 {
                     foreach (FhirCapOperation resourceOp in resourceInteraction.Operations.Values)
                     {
@@ -381,14 +381,32 @@ public class FhirManager : IDisposable
             }
         }
 
-        if (resolveExternal)
+        if (resolveExternal && !string.IsNullOrEmpty(serverUrl))
         {
             try
             {
                 string json;
+                string url;
+
+                if (canonical.StartsWith("http", StringComparison.Ordinal))
+                {
+                    url = canonical;
+                }
+                else if (serverUrl.EndsWith('/'))
+                {
+                    url = canonical.StartsWith('/')
+                        ? serverUrl + canonical.Substring(1)
+                        : serverUrl + canonical;
+                }
+                else
+                {
+                    url = canonical.StartsWith('/')
+                        ? serverUrl + canonical
+                        : serverUrl + "/" + canonical;
+                }
 
                 // attempt to fetch the URL and see what happens
-                if (ServerConnector.TryDownloadResource(canonical, out json))
+                if (ServerConnector.TryDownloadResource(url, out json))
                 {
                     if (!_nonPackageArtifactsByVersion.ContainsKey(fhirSequence))
                     {

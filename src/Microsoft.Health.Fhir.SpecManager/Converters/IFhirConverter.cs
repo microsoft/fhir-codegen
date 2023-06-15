@@ -55,12 +55,14 @@ public interface IFhirConverter
         object value);
 
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>
-    /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
-    /// <param name="serverUrl"> URL of the server.</param>
+    /// <param name="metadata">    The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+    /// <param name="serverUrl">   URL of the server.</param>
+    /// <param name="smartConfig"> The smart configuration.</param>
     /// <param name="capabilities">[out] Capabilities of a server.</param>
     void ProcessMetadata(
         object metadata,
         string serverUrl,
+        SmartConfiguration smartConfig,
         out FhirCapabiltyStatement capabilities);
 
     /// <summary>Query if 'errorCount' has issues.</summary>
