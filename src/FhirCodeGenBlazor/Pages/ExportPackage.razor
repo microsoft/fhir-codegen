@@ -454,7 +454,12 @@ else
             headers.Add("Authorization", new string[] { capabilityAuthHeader });
         }
 
-        ConnectorService.TryGetServerInfo(capabilityServerUrl, false, headers, out capabilityJson, out capabilityStatement);
+        ConnectorService.TryGetServerInfo(
+            capabilityServerUrl,
+            true,
+            headers,
+            out capabilityJson,
+            out capabilityStatement);
     }
 
     /// <summary>Starts an export.</summary>
