@@ -91,19 +91,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_ParseCapabilityJson_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.ParseCapabilityJson(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_ParseCapabilityJson_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.ParseCapabilityJson(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L188">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L238">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_ParseCapabilityJson_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.ParseCapabilityJson*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_ParseCapabilityJson_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.ParseCapabilityJson(System.String)">ParseCapabilityJson(String)</h4>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_ParseCapabilityJson_System_String_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.ParseCapabilityJson(System.String,System.String)">ParseCapabilityJson(String, String)</h4>
   <div class="markdown level1 summary"><p>Parse capability JSON.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static FhirCapabiltyStatement ParseCapabilityJson(string json)</code></pre>
+    <pre><code class="lang-csharp hljs">public static FhirCapabiltyStatement ParseCapabilityJson(string json, string smartConfigJson = &quot;&quot;)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -119,6 +119,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">json</span></td>
         <td><p>[out] The JSON.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">smartConfigJson</span></td>
+        <td><p>The smart configuration JSON.</p>
 </td>
       </tr>
     </tbody>
@@ -144,7 +150,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TryDownloadResource_System_String_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TryDownloadResource(System.String%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L223">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L287">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TryDownloadResource_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TryDownloadResource*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TryDownloadResource_System_String_System_String__" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TryDownloadResource(System.String,System.String@)">TryDownloadResource(String, out String)</h4>
@@ -199,7 +205,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TryGetServerInfo_System_String_System_Boolean_Dictionary_System_String_IEnumerable_System_String___FhirCapabiltyStatement__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TryGetServerInfo(System.String%2CSystem.Boolean%2CDictionary%7BSystem.String%2CIEnumerable%7BSystem.String%7D%7D%2CFhirCapabiltyStatement%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L22">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L23">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TryGetServerInfo_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TryGetServerInfo*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TryGetServerInfo_System_String_System_Boolean_Dictionary_System_String_IEnumerable_System_String___FhirCapabiltyStatement__" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TryGetServerInfo(System.String,System.Boolean,Dictionary{System.String,IEnumerable{System.String}},FhirCapabiltyStatement@)">TryGetServerInfo(String, Boolean, Dictionary&lt;String, IEnumerable&lt;String&gt;&gt;, out FhirCapabiltyStatement)</h4>
@@ -267,7 +273,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TryGetServerInfo_System_String_System_Boolean_Dictionary_System_String_IEnumerable_System_String___System_String__FhirCapabiltyStatement__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TryGetServerInfo(System.String%2CSystem.Boolean%2CDictionary%7BSystem.String%2CIEnumerable%7BSystem.String%7D%7D%2CSystem.String%40%2CFhirCapabiltyStatement%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L38">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L39">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TryGetServerInfo_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TryGetServerInfo*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TryGetServerInfo_System_String_System_Boolean_Dictionary_System_String_IEnumerable_System_String___System_String__FhirCapabiltyStatement__" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TryGetServerInfo(System.String,System.Boolean,Dictionary{System.String,IEnumerable{System.String}},System.String@,FhirCapabiltyStatement@)">TryGetServerInfo(String, Boolean, Dictionary&lt;String, IEnumerable&lt;String&gt;&gt;, out String, out FhirCapabiltyStatement)</h4>
@@ -336,6 +342,73 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TrySearchForCanonical_System_String_System_String_System_String_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TrySearchForCanonical(System.String%2CSystem.String%2CSystem.String%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L376">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TrySearchForCanonical_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TrySearchForCanonical*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector_TrySearchForCanonical_System_String_System_String_System_String_System_String__" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector.TrySearchForCanonical(System.String,System.String,System.String,System.String@)">TrySearchForCanonical(String, String, String, out String)</h4>
+  <div class="markdown level1 summary"><p>Attempts to search for canonical.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TrySearchForCanonical(string serverUrl, string resourceType, string canonicalUrl, out string fhirJson)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">serverUrl</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceType</span></td>
+        <td><p>Type of the resource.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">canonicalUrl</span></td>
+        <td><p>URL of the canonical.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fhirJson</span></td>
+        <td><p>[out] Downloaded JSON or null if download fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -347,7 +420,7 @@
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_ServerConnector.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.ServerConnector%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/ServerConnector.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

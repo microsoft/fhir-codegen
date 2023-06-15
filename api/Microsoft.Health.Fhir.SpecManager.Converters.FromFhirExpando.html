@@ -113,19 +113,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessMetadata_System_Object_FhirCapabiltyStatement__System_String_Microsoft_Health_Fhir_SpecManager_Manager_IPackageImportable_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessMetadata(System.Object%2CFhirCapabiltyStatement%40%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.IPackageImportable)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessMetadata_System_Object_FhirCapabiltyStatement__System_String_Microsoft_Health_Fhir_SpecManager_Manager_IPackageImportable_SmartConfiguration_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessMetadata(System.Object%2CFhirCapabiltyStatement%40%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.IPackageImportable%2CSmartConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2386">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2425">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessMetadata_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessMetadata*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessMetadata_System_Object_FhirCapabiltyStatement__System_String_Microsoft_Health_Fhir_SpecManager_Manager_IPackageImportable_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessMetadata(System.Object,FhirCapabiltyStatement@,System.String,Microsoft.Health.Fhir.SpecManager.Manager.IPackageImportable)">ProcessMetadata(Object, out FhirCapabiltyStatement, String, IPackageImportable)</h4>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessMetadata_System_Object_FhirCapabiltyStatement__System_String_Microsoft_Health_Fhir_SpecManager_Manager_IPackageImportable_SmartConfiguration_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessMetadata(System.Object,FhirCapabiltyStatement@,System.String,Microsoft.Health.Fhir.SpecManager.Manager.IPackageImportable,SmartConfiguration)">ProcessMetadata(Object, out FhirCapabiltyStatement, String, IPackageImportable, SmartConfiguration)</h4>
   <div class="markdown level1 summary"><p>Process a FHIR capabilities resource (CapabilityStatement or Conformance).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void ProcessMetadata(object metadata, out FhirCapabiltyStatement capabilityStatement, string serverUrl = &quot;&quot;, IPackageImportable info = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void ProcessMetadata(object metadata, out FhirCapabiltyStatement capabilityStatement, string serverUrl = &quot;&quot;, IPackageImportable info = null, SmartConfiguration smartConfig = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -161,23 +161,29 @@
         <td><p>(Optional) The information.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">SmartConfiguration</span></td>
+        <td><span class="parametername">smartConfig</span></td>
+        <td><p>(Optional) The smart configuration.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessMetadata_System_Object_System_String_FhirCapabiltyStatement__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessMetadata(System.Object%2CSystem.String%2CFhirCapabiltyStatement%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessMetadata_System_Object_System_String_SmartConfiguration_FhirCapabiltyStatement__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessMetadata(System.Object%2CSystem.String%2CSmartConfiguration%2CFhirCapabiltyStatement%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2555">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2621">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessMetadata_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessMetadata*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessMetadata_System_Object_System_String_FhirCapabiltyStatement__" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessMetadata(System.Object,System.String,FhirCapabiltyStatement@)">ProcessMetadata(Object, String, out FhirCapabiltyStatement)</h4>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessMetadata_System_Object_System_String_SmartConfiguration_FhirCapabiltyStatement__" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessMetadata(System.Object,System.String,SmartConfiguration,FhirCapabiltyStatement@)">ProcessMetadata(Object, String, SmartConfiguration, out FhirCapabiltyStatement)</h4>
   <div class="markdown level1 summary"><p>Process a FHIR metadata resource into Server Information.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ProcessMetadata(object metadata, string serverUrl, out FhirCapabiltyStatement capabilities)</code></pre>
+    <pre><code class="lang-csharp hljs">public void ProcessMetadata(object metadata, string serverUrl, SmartConfiguration smartConfig, out FhirCapabiltyStatement capabilities)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -202,6 +208,12 @@
 </td>
       </tr>
       <tr>
+        <td><span class="xref">SmartConfiguration</span></td>
+        <td><span class="parametername">smartConfig</span></td>
+        <td><p>The smart configuration.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">FhirCapabiltyStatement</span></td>
         <td><span class="parametername">capabilities</span></td>
         <td><p>[out] Information describing the server.</p>
@@ -214,7 +226,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessResource_System_Object_Microsoft_Health_Fhir_SpecManager_Manager_IPackageImportable_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessResource(System.Object%2CMicrosoft.Health.Fhir.SpecManager.Manager.IPackageImportable)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2263">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2301">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessResource_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessResource*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessResource_System_Object_Microsoft_Health_Fhir_SpecManager_Manager_IPackageImportable_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessResource(System.Object,Microsoft.Health.Fhir.SpecManager.Manager.IPackageImportable)">ProcessResource(Object, IPackageImportable)</h4>
@@ -254,7 +266,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessResource_System_Object_Microsoft_Health_Fhir_SpecManager_Manager_IPackageImportable_System_String__FhirArtifactClassEnum__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessResource(System.Object%2CMicrosoft.Health.Fhir.SpecManager.Manager.IPackageImportable%2CSystem.String%40%2CFhirArtifactClassEnum%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2273">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2311">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessResource_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessResource*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ProcessResource_System_Object_Microsoft_Health_Fhir_SpecManager_Manager_IPackageImportable_System_String__FhirArtifactClassEnum__" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ProcessResource(System.Object,Microsoft.Health.Fhir.SpecManager.Manager.IPackageImportable,System.String@,FhirArtifactClassEnum@)">ProcessResource(Object, IPackageImportable, out String, out FhirArtifactClassEnum)</h4>
@@ -306,7 +318,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ReplaceValue_System_Object_System_String___System_Object_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ReplaceValue(System.Object%2CSystem.String%5B%5D%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2341">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2379">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ReplaceValue_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ReplaceValue*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_ReplaceValue_System_Object_System_String___System_Object_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.ReplaceValue(System.Object,System.String[],System.Object)">ReplaceValue(Object, String[], Object)</h4>
@@ -414,6 +426,68 @@
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><p>True if issues, false if not.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_TryGetFirstFromBundle_System_String_System_Object__System_String__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.Microsoft%23Health%23Fhir%23SpecManager%23Converters%23IFhirConverter%23TryGetFirstFromBundle(System.String%2CSystem.Object%40%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromFhirExpando.cs/#L2265">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_TryGetFirstFromBundle_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.Microsoft#Health#Fhir#SpecManager#Converters#IFhirConverter#TryGetFirstFromBundle*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromFhirExpando_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_TryGetFirstFromBundle_System_String_System_Object__System_String__" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromFhirExpando.Microsoft#Health#Fhir#SpecManager#Converters#IFhirConverter#TryGetFirstFromBundle(System.String,System.Object@,System.String@)">IFhirConverter.TryGetFirstFromBundle(String, out Object, out String)</h4>
+  <div class="markdown level1 summary"><p>Attempts to get the first resource from a bundle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IFhirConverter.TryGetFirstFromBundle(string json, out object resource, out string resourceType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">json</span></td>
+        <td><p>The JSON.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>[out].</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceType</span></td>
+        <td><p>[out] Type of the resource.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it succeeds, false if it fails.</p>
 </td>
       </tr>
     </tbody>
