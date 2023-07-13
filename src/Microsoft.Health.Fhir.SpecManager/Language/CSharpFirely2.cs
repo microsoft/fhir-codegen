@@ -2,7 +2,6 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-using System.Diagnostics;
 using System.IO;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Ncqa.Cql.Model;
@@ -1199,6 +1198,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (isPatientClass) interfaces.Add($"{Namespace}.IPatient");
 
+            var identifierElement = isResource ? complex.Elements.SingleOrDefault(k => isIdentifierProperty(k.Value)).Value : null;
+            if (identifierElement is not null)
+            {
+                if (identifierElement.IsArray)
+                    interfaces.Add("IIdentifiable<List<Identifier>>");
+                else
+                    interfaces.Add("IIdentifiable<Identifier>");
+            }
+
+            var primaryCodePath = _cqlModelClassInfo?.TryGetValue(complex.Name, out var classInfo) == true && !string.IsNullOrEmpty(classInfo.primaryCodePath) ?
+                (complex.Name + "." + classInfo.primaryCodePath) : null;
+
+            var primaryCodeElementInfo = primaryCodePath is not null && complex.Elements.TryGetValue(primaryCodePath, out var elem) ? BuildElementInfo(exportName, elem) : null;
+            if (primaryCodePath is not null && primaryCodeElementInfo is null)
+            {
+                Console.WriteLine("Cannot locate primary code path " + primaryCodePath);
+            }
+
+            if (primaryCodeElementInfo is not null)
+            {
+                interfaces.Add($"ICoded<{primaryCodeElementInfo.PropertyType}>");
+            }
+
             string modifierElementName = complex.Elements.Keys.SingleOrDefault(k => k.EndsWith(".modifierExtension", StringComparison.InvariantCulture));
             if (modifierElementName != null)
             {
@@ -1265,7 +1287,34 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            WriteElements(complex, exportName, ref exportedElements, subset, inPatientClass: isPatientClass);
+            WriteElements(complex, exportName, ref exportedElements, subset);
+
+            if (identifierElement is not null)
+            {
+                if (identifierElement.IsArray)
+                    _writer.WriteLineIndented("List<Identifier> IIdentifiable<List<Identifier>>.Identifier { get => Identifier; set => Identifier = value; }");
+                else
+                    _writer.WriteLineIndented("Identifier IIdentifiable<Identifier>.Identifier { get => Identifier; set => Identifier = value; }");
+
+                _writer.WriteLine(string.Empty);
+            }
+
+            if (primaryCodeElementInfo is not null)
+            {
+                _writer.WriteLineIndented($"{primaryCodeElementInfo.PropertyType} ICoded<{primaryCodeElementInfo.PropertyType}>.Code {{ get => {primaryCodeElementInfo.PropertyName}; set => {primaryCodeElementInfo.PropertyName} = value; }}");
+                _writer.WriteLine(string.Empty);
+            }
+
+            if (isPatientClass)
+            {
+                var birthdayProperty = exportedElements.SingleOrDefault(ee => ee.FhirElementName + ".value" == _cqlModelInfo?.patientBirthDatePropertyName);
+
+                if (birthdayProperty is not null)
+                {
+                    _writer.WriteLineIndented($"Hl7.Fhir.Model.Date {Namespace}.IPatient.BirthDate => {birthdayProperty.PropertyName};");
+                    _writer.WriteLine(string.Empty);
+                }
+            }
 
             WriteCopyTo(exportName, exportedElements);
 
@@ -1318,7 +1367,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
 
-        private string NullCheck(WrittenElementInfo info) => info.ExportedName + (!info.IsList ? " is not null" : "?.Any() == true");
+        private string NullCheck(WrittenElementInfo info) => info.PropertyName + (!info.IsList ? " is not null" : "?.Any() == true");
 
         private void WriteDictionaryPairs(IEnumerable<WrittenElementInfo> exportedElements)
         {
@@ -1335,7 +1384,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 string elementProp = $"\"{info.FhirElementName}\"";
                 _writer.WriteLineIndented($"if ({NullCheck(info)}) yield return new " +
-                    $"KeyValuePair<string,object>({elementProp},{info.ExportedName});");
+                    $"KeyValuePair<string,object>({elementProp},{info.PropertyName});");
             }
 
             CloseScope();
@@ -1361,7 +1410,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"case \"{info.FhirElementName}\":");
                 _writer.IncreaseIndent();
 
-                _writer.WriteLineIndented($"value = {info.ExportedName};");
+                _writer.WriteLineIndented($"value = {info.PropertyName};");
                 _writer.WriteLineIndented($"return {NullCheck(info)};");
 
                 _writer.DecreaseIndent();
@@ -1400,7 +1449,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 if (info.IsList)
                 {
                     _writer.WriteLineIndented(
-                        $"foreach (var elem in {info.ExportedName})" +
+                        $"foreach (var elem in {info.PropertyName})" +
                             $" {{ if (elem != null)" +
                             $" yield return new ElementValue(\"{info.FhirElementName}\", elem);" +
                             $" }}");
@@ -1408,8 +1457,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 else
                 {
                     _writer.WriteLineIndented(
-                        $"if ({info.ExportedName} != null)" +
-                            $" yield return new ElementValue(\"{info.FhirElementName}\", {info.ExportedName});");
+                        $"if ({info.PropertyName} != null)" +
+                            $" yield return new ElementValue(\"{info.FhirElementName}\", {info.PropertyName});");
                 }
             }
 
@@ -1434,14 +1483,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 if (info.IsList)
                 {
                     _writer.WriteLineIndented(
-                        $"foreach (var elem in {info.ExportedName})" +
+                        $"foreach (var elem in {info.PropertyName})" +
                             $" {{ if (elem != null) yield return elem; }}");
                 }
                 else
                 {
                     _writer.WriteLineIndented(
-                        $"if ({info.ExportedName} != null)" +
-                            $" yield return {info.ExportedName};");
+                        $"if ({info.PropertyName} != null)" +
+                            $" yield return {info.PropertyName};");
                 }
             }
 
@@ -1467,7 +1516,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             foreach (WrittenElementInfo info in exportedElements)
             {
                 _writer.WriteLineIndented(
-                    $"if( !DeepComparable.Matches({info.ExportedName}, otherT.{info.ExportedName}))" +
+                    $"if( !DeepComparable.Matches({info.PropertyName}, otherT.{info.PropertyName}))" +
                         $" return false;");
             }
 
@@ -1494,7 +1543,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             foreach (WrittenElementInfo info in exportedElements)
             {
                 _writer.WriteLineIndented(
-                    $"if( !DeepComparable.IsExactly({info.ExportedName}, otherT.{info.ExportedName}))" +
+                    $"if( !DeepComparable.IsExactly({info.PropertyName}, otherT.{info.PropertyName}))" +
                         $" return false;");
             }
 
@@ -1530,14 +1579,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 if (info.IsList)
                 {
                     _writer.WriteLineIndented(
-                        $"if({info.ExportedName} != null)" +
-                            $" dest.{info.ExportedName} = new {info.ExportedType}({info.ExportedName}.DeepCopy());");
+                        $"if({info.PropertyName} != null)" +
+                            $" dest.{info.PropertyName} = new {info.PropertyType}({info.PropertyName}.DeepCopy());");
                 }
                 else
                 {
                     _writer.WriteLineIndented(
-                        $"if({info.ExportedName} != null)" +
-                            $" dest.{info.ExportedName} = ({info.ExportedType}){info.ExportedName}.DeepCopy();");
+                        $"if({info.PropertyName} != null)" +
+                            $" dest.{info.PropertyName} = ({info.PropertyType}){info.PropertyName}.DeepCopy();");
                 }
             }
 
@@ -1787,8 +1836,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $"(systems: {vs.ReferencedCodeSystems.Count})");
                 }
 
-
-
                 var defaultSystem = GetDefaultCodeSystem(vs.Concepts);
 
                 _writer.WriteLineIndented($"[FhirEnumeration(\"{name}\", \"{vs.URL}\", \"{defaultSystem}\")]");
@@ -1870,6 +1917,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="element">The element.</param>
         private static int GetOrder(FhirElement element) => CSharpFirelyCommon.GetOrder(element);
 
+
+        /// <summary>
+        /// Determines whether this element qualifies as an identifying element.
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        private static bool isIdentifierProperty(FhirElement element)
+        {
+            return element.Name == "identifier" && element.ElementTypes.Count == 1 && element.ElementTypes.Values.First().Name == "Identifier";
+        }
+
         /// <summary>Writes the elements.</summary>
         /// <param name="complex">              The complex data type.</param>
         /// <param name="exportedComplexName">  Name of the exported complex parent.</param>
@@ -1879,8 +1937,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirComplex complex,
             string exportedComplexName,
             ref List<WrittenElementInfo> exportedElements,
-            GenSubset subset,
-            bool inPatientClass = false)
+            GenSubset subset)
         {
             var primaryCodePath =
                 _cqlModelClassInfo?.TryGetValue(complex.Name, out var classInfo) == true ?
@@ -1903,7 +1960,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 bool isPrimaryCode = element.Name == primaryCodePath;
 
-                // if (!string.IsNullOrEmpty(element.ValueSet))
                 if (typeName == "code")
                 {
                     WriteCodedElement(
@@ -1919,7 +1975,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     element,
                     ref exportedElements,
                     subset,
-                    isPrimaryCode, inPatientClass: inPatientClass);
+                    isPrimaryCode);
             }
         }
 
@@ -2074,8 +2130,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     new WrittenElementInfo()
                     {
                         FhirElementName = element.Name.Replace("[x]", string.Empty),
-                        ExportedName = $"{pascal}{matchTrailer}Element",
-                        ExportedType = codeLiteral,
+                        PropertyName = $"{pascal}{matchTrailer}Element",
+                        PropertyType = codeLiteral,
                         IsList = false,
                         IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                     });
@@ -2096,8 +2152,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     new WrittenElementInfo()
                     {
                         FhirElementName = element.Name.Replace("[x]", string.Empty),
-                        ExportedName = $"{pascal}{matchTrailer}Element",
-                        ExportedType = $"List<{codeLiteral}>",
+                        PropertyName = $"{pascal}{matchTrailer}Element",
+                        PropertyType = $"List<{codeLiteral}>",
                         IsList = true,
                         IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                     });
@@ -2210,17 +2266,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirElement element,
             ref List<WrittenElementInfo> exportedElements,
             GenSubset subset,
-            bool isPrimaryCode,
-            bool inPatientClass = false)
+            bool isPrimaryCode)
         {
-            string name = element.Name;
-
-            if (name.Contains("[x]"))
-            {
-                name = name.Replace("[x]", string.Empty);
-            }
-
-            string pascal = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+            string name = element.Name.Replace("[x]", string.Empty);
 
             BuildElementOptionals(
                 element,
@@ -2354,7 +2402,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"[Cardinality(Min={element.CardinalityMin},Max={element.CardinalityMax})]");
             }
 
+            WrittenElementInfo ei = BuildElementInfo(exportedComplexName, element);
+            exportedElements.Add(ei);
+
+            writeElementGettersAndSetters(element, ei);
+        }
+
+        private WrittenElementInfo BuildElementInfo(string exportedComplexName, FhirElement element)
+        {
             string type;
+            var name = element.Name.Replace("[x]", string.Empty);
 
             if (!string.IsNullOrEmpty(element.BaseTypeName))
             {
@@ -2364,14 +2421,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 type = element.ElementTypes.First().Value.Name;
             }
-            else if (!string.IsNullOrEmpty(choice))
-            {
-                type = "DataType";
-            }
             else
             {
-                Debug.Fail($"No type can be derived for element {element.Name}");
-                type = "object";
+                type = "DataType";
             }
 
             /* This is an exception - we want to share Meta across different FHIR versions,
@@ -2382,9 +2434,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 type = "uri";
             }
 
-            _writer.WriteLineIndented("[DataMember]");
-
-            bool noElement = true;
+            bool isPrimitive = false;
 
             if (type.Contains('.'))
             {
@@ -2403,20 +2453,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     optional = "?";
                 }
 
-                noElement = false;
+                isPrimitive = true;
             }
             else
             {
                 nativeType = $"{Namespace}.{type}";
             }
-
-            //if ((_info.FhirSequence < FhirPackageCommon.FhirSequenceEnum.R4) &&
-            //    _info.ComplexTypes.ContainsKey(exportedComplexName) &&
-            //    (type == "markdown"))
-            //{
-            //    nativeType = "string";
-            //    noElement = false;
-            //}
 
             if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(type))
             {
@@ -2427,122 +2469,106 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 type = FhirUtils.SanitizedToConvention(type, FhirTypeBase.NamingConvention.PascalCase);
             }
 
-            string elementTag = noElement ? string.Empty : "Element";
+            WrittenElementInfo ei;
+            bool isList = element.CardinalityMax != 1;
+            string pascal = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
 
-            if (element.CardinalityMax == 1)
+            ei = new WrittenElementInfo()
             {
-                exportedElements.Add(
-                    new WrittenElementInfo()
-                    {
-                        FhirElementName = element.Name.Replace("[x]", string.Empty),
-                        ExportedName = $"{pascal}{elementTag}",
-                        ExportedType = $"{Namespace}.{type}",
-                        IsList = false,
-                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
-                    });
+                FhirElementName = name,
+                PropertyName = isPrimitive ? $"{pascal}Element" : pascal,
+                PropertyType = isList ? $"List<{Namespace}.{type}>" : $"{Namespace}.{type}",
+                ElementType = $"{Namespace}.{type}",
+                IsList = isList,
+                IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
+                IsPrimitive = isPrimitive,
+                PrimitiveHelperName = isPrimitive ? (pascal == exportedComplexName ? $"{pascal}_" : pascal) : null,              // Since properties cannot have the same name as their enclosing types, we'll add a '_' suffix if this happens.
+                PrimitiveHelperType = isPrimitive ? nativeType + optional : null
+            };
+            return ei;
+        }
 
-                _writer.WriteLineIndented($"public {Namespace}.{type} {pascal}{elementTag}");
+        private void writeElementGettersAndSetters(FhirElement element, WrittenElementInfo ei)
+        {
+            _writer.WriteLineIndented("[DataMember]");
+
+            if (!ei.IsList)
+            {
+                _writer.WriteLineIndented($"public {ei.PropertyType} {ei.PropertyName}");
 
                 OpenScope();
-                _writer.WriteLineIndented($"get {{ return _{pascal}{elementTag}; }}");
-                _writer.WriteLineIndented($"set {{ _{pascal}{elementTag} = value; OnPropertyChanged(\"{pascal}{elementTag}\"); }}");
+                _writer.WriteLineIndented($"get {{ return _{ei.PropertyName}; }}");
+                _writer.WriteLineIndented($"set {{ _{ei.PropertyName} = value; OnPropertyChanged(\"{ei.PropertyName}\"); }}");
                 CloseScope();
 
-                _writer.WriteLineIndented($"private {Namespace}.{type} _{pascal}{elementTag};");
+                _writer.WriteLineIndented($"private {ei.PropertyType} _{ei.PropertyName};");
                 _writer.WriteLine(string.Empty);
             }
             else
             {
-                exportedElements.Add(
-                    new WrittenElementInfo()
-                    {
-                        FhirElementName = element.Name.Replace("[x]", string.Empty),
-                        ExportedName = $"{pascal}{elementTag}",
-                        ExportedType = $"List<{Namespace}.{type}>",
-                        IsList = true,
-                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
-                    });
-
-                _writer.WriteLineIndented($"public List<{Namespace}.{type}> {pascal}{elementTag}");
+                _writer.WriteLineIndented($"public {ei.PropertyType} {ei.PropertyName}");
 
                 OpenScope();
-                _writer.WriteLineIndented($"get {{ if(_{pascal}{elementTag}==null) _{pascal}{elementTag} = new List<{Namespace}.{type}>(); return _{pascal}{elementTag}; }}");
-                _writer.WriteLineIndented($"set {{ _{pascal}{elementTag} = value; OnPropertyChanged(\"{pascal}{elementTag}\"); }}");
+                _writer.WriteLineIndented($"get {{ if(_{ei.PropertyName}==null) _{ei.PropertyName} = new {ei.PropertyType}(); return _{ei.PropertyName}; }}");
+                _writer.WriteLineIndented($"set {{ _{ei.PropertyName} = value; OnPropertyChanged(\"{ei.PropertyName}\"); }}");
                 CloseScope();
 
-                _writer.WriteLineIndented($"private List<{Namespace}.{type}> _{pascal}{elementTag};");
+                _writer.WriteLineIndented($"private {ei.PropertyType} _{ei.PropertyName};");
                 _writer.WriteLine(string.Empty);
             }
 
-            bool isBirthDateProperty = inPatientClass && element.Name + ".value" == _cqlModelInfo?.patientBirthDatePropertyName;
-            if (isBirthDateProperty)
+            if (ei.IsPrimitive)
             {
-                _writer.WriteLineIndented($"Hl7.Fhir.Model.Date {Namespace}.IPatient.BirthDate => {pascal}{elementTag};");
-                _writer.WriteLine(string.Empty);
-            }
+                WriteIndentedComment(element.ShortDescription);
+                _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
 
-            if (noElement)
-            {
-                // only write the one field
-                return;
-            }
+                _writer.WriteLineIndented("[IgnoreDataMember]");
 
-            string matchTrailer = string.Empty;
+                if (!ei.IsList)
+                {
+                    _writer.WriteLineIndented($"public {ei.PrimitiveHelperType} {ei.PrimitiveHelperName}");
 
-            if (pascal == exportedComplexName)
-            {
-                matchTrailer = "_";
-            }
+                    OpenScope();
+                    _writer.WriteLineIndented($"get {{ return {ei.PropertyName} != null ? {ei.PropertyName}.Value : null; }}");
+                    _writer.WriteLineIndented("set");
+                    OpenScope();
 
-            WriteIndentedComment(element.ShortDescription);
-            _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
+                    _writer.WriteLineIndented($"if (value == null)");
 
-            _writer.WriteLineIndented("[IgnoreDataMember]");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{ei.PropertyName} = null;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented("else");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{ei.PropertyName} = new {ei.PropertyType}(value);");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented($"OnPropertyChanged(\"{ei.PrimitiveHelperName}\");");
+                    CloseScope(suppressNewline: true);
+                    CloseScope();
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"public IEnumerable<{ei.PrimitiveHelperType}> {ei.PrimitiveHelperName}");
 
-            if (element.CardinalityMax == 1)
-            {
-                _writer.WriteLineIndented($"public {nativeType}{optional} {pascal}{matchTrailer}");
+                    OpenScope();
+                    _writer.WriteLineIndented($"get {{ return {ei.PropertyName} != null ? {ei.PropertyName}.Select(elem => elem.Value) : null; }}");
+                    _writer.WriteLineIndented("set");
+                    OpenScope();
 
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Value : null; }}");
-                _writer.WriteLineIndented("set");
-                OpenScope();
+                    _writer.WriteLineIndented($"if (value == null)");
 
-                _writer.WriteLineIndented($"if (value == null)");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{ei.PropertyName} = null;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented("else");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{ei.PropertyName} = new {ei.PropertyType}(value.Select(elem=>new {ei.ElementType}(elem)));");
+                    _writer.DecreaseIndent();
 
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}Element = null;");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("else");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}Element = new {Namespace}.{type}(value);");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
-                CloseScope(suppressNewline: true);
-                CloseScope();
-            }
-            else
-            {
-                _writer.WriteLineIndented($"public IEnumerable<{nativeType}{optional}> {pascal}{matchTrailer}");
-
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Select(elem => elem.Value) : null; }}");
-                _writer.WriteLineIndented("set");
-                OpenScope();
-
-                _writer.WriteLineIndented($"if (value == null)");
-
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}Element = null;");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("else");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}Element = new List<{Namespace}.{type}>(value.Select(elem=>new {Namespace}.{type}(elem)));");
-                _writer.DecreaseIndent();
-
-                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
-                CloseScope(suppressNewline: true);
-                CloseScope();
+                    _writer.WriteLineIndented($"OnPropertyChanged(\"{ei.PrimitiveHelperName}\");");
+                    CloseScope(suppressNewline: true);
+                    CloseScope();
+                }
             }
         }
 
@@ -3100,7 +3126,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="isSummary">(Optional) True if is summary, false if not.</param>
         /// <param name="singleLine"></param>
         private void WriteIndentedComment(string value, bool isSummary = true, bool singleLine = false)
-            => CSharpFirelyCommon.WriteIndentedComment(_writer, value, isSummary, singleLine);
+            => _writer.WriteIndentedComment(value, isSummary, singleLine);
 
         /// <summary>Adds a set of FhirTypes to a total set of exportable WrittenModelInfos.</summary>
         private static void AddModels(
@@ -3147,13 +3173,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Information about the written element.</summary>
-        private struct WrittenElementInfo
+        private class WrittenElementInfo
         {
             internal string FhirElementName;
-            internal string ExportedName;
-            internal string ExportedType;
+            internal string PropertyName;
+            internal string PropertyType;
+            internal bool IsPrimitive;
+            internal string PrimitiveHelperName;
+            internal string PrimitiveHelperType;
             internal bool IsList;
             internal bool IsChoice;
+            internal string ElementType;
         }
 
         /// <summary>Information about the written model.</summary>
