@@ -247,6 +247,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["http://hl7.org/fhir/ValueSet/fhir-types"] = "FHIRAllTypes"
         };
 
+        private record SinceVersion(FhirPackageCommon.FhirSequenceEnum Since);
+
         private readonly Dictionary<string, string> _sinceAttributes = new()
         {
             ["Meta.source"] = "R4",
@@ -1207,19 +1209,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     interfaces.Add("IIdentifiable<Identifier>");
             }
 
-            var primaryCodePath = _cqlModelClassInfo?.TryGetValue(complex.Name, out var classInfo) == true && !string.IsNullOrEmpty(classInfo.primaryCodePath) ?
-                (complex.Name + "." + classInfo.primaryCodePath) : null;
-
-            var primaryCodeElementInfo = primaryCodePath is not null && complex.Elements.TryGetValue(primaryCodePath, out var elem) ? BuildElementInfo(exportName, elem) : null;
-            if (primaryCodePath is not null && primaryCodeElementInfo is null)
-            {
-                Console.WriteLine("Cannot locate primary code path " + primaryCodePath);
-            }
+            var primaryCodeElementInfo = isResource ? getPrimaryCodedElementInfo(complex, exportName) : null;
 
             if (primaryCodeElementInfo is not null)
-            {
                 interfaces.Add($"ICoded<{primaryCodeElementInfo.PropertyType}>");
-            }
 
             string modifierElementName = complex.Elements.Keys.SingleOrDefault(k => k.EndsWith(".modifierExtension", StringComparison.InvariantCulture));
             if (modifierElementName != null)
@@ -1276,9 +1269,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             $"Component";
                     }
 
-                    var cqlParentTypeName = _cqlModelInfo is not null ?
-                        "{" + _cqlModelInfo.url + "}" + complex.Name : null;
-
                     WriteBackboneComponent(
                         component,
                         componentExportName,
@@ -1332,6 +1322,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             // close class
             CloseScope();
+
+            WrittenElementInfo getPrimaryCodedElementInfo(FhirComplex complex, string exportName)
+            {
+                var primaryCodePath = _cqlModelClassInfo?.TryGetValue(complex.Name, out var classInfo) == true && !string.IsNullOrEmpty(classInfo.primaryCodePath) ?
+                                    (complex.Name + "." + classInfo.primaryCodePath) : null;
+
+                var elem = primaryCodePath is not null ? (tryFindElementInComplex(complex, primaryCodePath, out var e) ? e : null) : null;
+                var primaryCodeElementInfo = elem is not null ? BuildElementInfo(exportName, elem) : null;
+
+                if (primaryCodePath is not null && primaryCodeElementInfo is null)
+                {
+                    Console.WriteLine($"Warning: Cannot locate primary code path {primaryCodePath}, so no ICoded<T> was added to this type's signature.");
+                }
+
+                return primaryCodeElementInfo;
+            }
+        }
+
+        private bool tryFindElementInComplex(FhirComplex cplx, string name, out FhirElement elem)
+        {
+            if (cplx.Elements.TryGetValue(name, out elem)) return true;
+            if (cplx.Elements.TryGetValue(name + "[x]", out elem)) return true;
+
+            return false;
         }
 
         private string DetermineExportedBaseTypeName(string baseTypeName)
@@ -1939,55 +1953,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ref List<WrittenElementInfo> exportedElements,
             GenSubset subset)
         {
-            var primaryCodePath =
-                _cqlModelClassInfo?.TryGetValue(complex.Name, out var classInfo) == true ?
-                    classInfo.primaryCodePath : null;
+            var elementsToGenerate = complex.Elements.Values
+                .Where(e => !e.IsInherited)
+                .OrderBy(e => e.FieldOrder);
 
-            foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.FieldOrder))
+            foreach (FhirElement element in elementsToGenerate)
             {
-                if (element.IsInherited)
-                {
-                    continue;
-                }
-
-                string typeName = element.BaseTypeName;
-
-                if (string.IsNullOrEmpty(typeName) &&
-                    (element.ElementTypes.Count == 1))
-                {
-                    typeName = element.ElementTypes.Values.First().Name;
-                }
-
-                bool isPrimaryCode = element.Name == primaryCodePath;
-
-                if (typeName == "code")
-                {
-                    WriteCodedElement(
-                        element,
-                        ref exportedElements,
-                        subset,
-                        isPrimaryCode);
-                    continue;
-                }
-
                 WriteElement(
                     exportedComplexName,
                     element,
                     ref exportedElements,
-                    subset,
-                    isPrimaryCode);
+                    subset);
             }
         }
 
-        /// <summary>Writes an element.</summary>
-        /// <param name="element">            The element.</param>
-        /// <param name="exportedElements">   [in,out] The exported elements.</param>
-        /// <param name="subset"></param>
-        private void WriteCodedElement(
-            FhirElement element,
-            ref List<WrittenElementInfo> exportedElements,
-            GenSubset subset,
-            bool isPrimaryCode)
+        private WrittenElementInfo BuildCodedElementInfo(FhirElement element)
         {
             bool hasDefinedEnum = true;
 
@@ -2001,93 +1981,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 vs = null;
             }
 
-            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
-
-            BuildElementOptionals(
-                element,
-                subset,
-                out string summary,
-                out string isModifier,
-                out string choice,
-                out string allowedTypes,
-                out string resourceReferences);
-
-            string fiveWs = string.Empty;
-
-            if (_exportFiveWs)
-            {
-                if (!string.IsNullOrEmpty(element.FiveWs))
-                {
-                    fiveWs = $", FiveWs=\"{element.FiveWs}\"";
-                }
-            }
-
-            /* Exceptions:
-            *  o OperationOutcome.issue.severity does not have `IsModifier` anymore since R4.
-            */
-            if (element.Path == "OperationOutcome.issue.severity")
-            {
-                WriteIndentedComment(element.ShortDescription);
-                _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, IsModifier=true, Order={GetOrder(element)}{choice}{fiveWs})]");
-                _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs}, Since=FhirRelease.R4)]");
-            }
-            else if (_sinceAttributes.TryGetValue(element.Path, out string since))
-            {
-                BuildFhirElementAttribute(element.Name, element.ShortDescription, summary, isModifier, element, choice, fiveWs, since: since);
-            }
-            else if (_untilAttributes.TryGetValue(element.Path, out (string, string) until))
-            {
-                BuildFhirElementAttribute(element.Name, element.ShortDescription, summary, isModifier, element, choice, fiveWs, until: until);
-            }
-            else
-            {
-                BuildFhirElementAttribute(element.Name, element.ShortDescription, summary, isModifier, element, choice, fiveWs);
-            }
-
-            if (hasDefinedEnum)
-            {
-                _writer.WriteLineIndented("[DeclaredType(Type = typeof(Code))]");
-            }
-
-            if (isPrimaryCode)
-            {
-                _writer.WriteLineIndented($"[CqlElement(IsPrimaryCodePath = true)]");
-            }
-
-            if (!string.IsNullOrEmpty(element.BindingName))
-            {
-                _writer.WriteLineIndented($"[Binding(\"{element.BindingName}\")]");
-            }
-
-            if (!string.IsNullOrEmpty(resourceReferences))
-            {
-                _writer.WriteLineIndented("[CLSCompliant(false)]");
-                _writer.WriteLineIndented(resourceReferences);
-            }
-
-            // Generate the [AllowedTypes] attribute, except when we are generating an element for the
-            // open datatypes in base, since this list contains classes that we have not yet moved to the base subset.
-            bool isOpenTypeInBaseSubset = (subset.HasFlag(GenSubset.Base) || subset.HasFlag(GenSubset.Conformance)) && element.ElementTypes.Count > 25;
-            if (!string.IsNullOrEmpty(allowedTypes) && !isOpenTypeInBaseSubset)
-            {
-                _writer.WriteLineIndented("[CLSCompliant(false)]");
-                _writer.WriteLineIndented(allowedTypes);
-            }
-
-            if ((element.CardinalityMin != 0) ||
-                (element.CardinalityMax != 1))
-            {
-                _writer.WriteLineIndented($"[Cardinality(Min={element.CardinalityMin},Max={element.CardinalityMax})]");
-            }
-
-            _writer.WriteLineIndented("[DataMember]");
-
-            string namespacedCodeLiteral;
             string codeLiteral;
             string enumClass;
             string optional;
-
-            string matchTrailer = string.Empty;
+            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
 
             if (hasDefinedEnum)
             {
@@ -2097,20 +1994,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 if (string.IsNullOrEmpty(vsClass))
                 {
                     codeLiteral = $"Code<{Namespace}.{vsName}>";
-                    namespacedCodeLiteral = $"{Namespace}.Code<{Namespace}.{vsName}>";
                     enumClass = $"{Namespace}.{vsName}";
                 }
                 else
                 {
                     codeLiteral = $"Code<{Namespace}.{vsClass}.{vsName}>";
-                    namespacedCodeLiteral = $"{Namespace}.Code<{Namespace}.{vsClass}.{vsName}>";
                     enumClass = $"{Namespace}.{vsClass}.{vsName}";
 
                     if (vsName.ToUpperInvariant() == pascal.ToUpperInvariant())
                     {
                         throw new InvalidOperationException($"Using the name '{pascal}' for the property would lead to a compiler error. " +
                             $"Change the name of the valueset '{vs.URL}' by adapting the _enumNamesOverride variable in the generator and rerun.");
-                        //matchTrailer = "_";
                     }
                 }
 
@@ -2119,128 +2013,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             else
             {
                 codeLiteral = $"{Namespace}.Code";
-                namespacedCodeLiteral = $"{Namespace}.Code";
                 enumClass = "string";
                 optional = string.Empty;
             }
 
-            if (element.CardinalityMax == 1)
+
+            bool isList = element.CardinalityMax != 1;
+
+            var ei = new WrittenElementInfo()
             {
-                exportedElements.Add(
-                    new WrittenElementInfo()
-                    {
-                        FhirElementName = element.Name.Replace("[x]", string.Empty),
-                        PropertyName = $"{pascal}{matchTrailer}Element",
-                        PropertyType = codeLiteral,
-                        IsList = false,
-                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
-                    });
+                FhirElementName = element.Name.Replace("[x]", string.Empty),
+                PropertyName = $"{pascal}Element",
+                PropertyType = isList ? $"List<{codeLiteral}>" : codeLiteral,
+                ElementType = codeLiteral,
+                IsList = isList,
+                IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
+                PrimitiveHelperName = pascal,
+                PrimitiveHelperType = $"{enumClass}{optional}",
+                IsPrimitive = true, // All coded elements are either Code or Code<T> - so primitives
+                IsCodedEnum = hasDefinedEnum
+            };
 
-                _writer.WriteLineIndented($"public {codeLiteral} {pascal}{matchTrailer}Element");
-
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return _{pascal}{matchTrailer}Element; }}");
-                _writer.WriteLineIndented($"set {{ _{pascal}{matchTrailer}Element = value; OnPropertyChanged(\"{pascal}{matchTrailer}Element\"); }}");
-                CloseScope();
-
-                _writer.WriteLineIndented($"private {codeLiteral} _{pascal}{matchTrailer}Element;");
-                _writer.WriteLine(string.Empty);
-            }
-            else
-            {
-                exportedElements.Add(
-                    new WrittenElementInfo()
-                    {
-                        FhirElementName = element.Name.Replace("[x]", string.Empty),
-                        PropertyName = $"{pascal}{matchTrailer}Element",
-                        PropertyType = $"List<{codeLiteral}>",
-                        IsList = true,
-                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
-                    });
-
-                _writer.WriteLineIndented($"public List<{codeLiteral}> {pascal}{matchTrailer}Element");
-
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ if(_{pascal}{matchTrailer}Element==null) _{pascal}{matchTrailer}Element = new List<{namespacedCodeLiteral}>(); return _{pascal}{matchTrailer}Element; }}");
-                _writer.WriteLineIndented($"set {{ _{pascal}{matchTrailer}Element = value; OnPropertyChanged(\"{pascal}{matchTrailer}Element\"); }}");
-                CloseScope();
-
-                _writer.WriteLineIndented($"private List<{codeLiteral}> _{pascal}{matchTrailer}Element;");
-                _writer.WriteLine(string.Empty);
-            }
-
-            WriteIndentedComment(element.ShortDescription);
-            _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
-
-            _writer.WriteLineIndented("[IgnoreDataMember]");
-
-            if (element.CardinalityMax == 1)
-            {
-                _writer.WriteLineIndented($"public {enumClass}{optional} {pascal}{matchTrailer}");
-
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return {pascal}{matchTrailer}Element != null ? {pascal}{matchTrailer}Element.Value : null; }}");
-                _writer.WriteLineIndented("set");
-                OpenScope();
-
-                // T4 template has some HasValue checks - compiler will replace and this is simpler
-                _writer.WriteLineIndented($"if (value == null)");
-
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}{matchTrailer}Element = null;");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("else");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}{matchTrailer}Element = new {codeLiteral}(value);");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
-                CloseScope(suppressNewline: true);
-                CloseScope();
-            }
-            else
-            {
-                _writer.WriteLineIndented($"public IEnumerable<{enumClass}{optional}> {pascal}{matchTrailer}");
-
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return {pascal}{matchTrailer}Element != null ? {pascal}{matchTrailer}Element.Select(elem => elem.Value) : null; }}");
-                _writer.WriteLineIndented("set");
-                OpenScope();
-
-                _writer.WriteLineIndented($"if (value == null)");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}{matchTrailer}Element = null;");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("else");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}{matchTrailer}Element = new List<{namespacedCodeLiteral}>(value.Select(elem=>new {namespacedCodeLiteral}(elem)));");
-                _writer.DecreaseIndent();
-
-                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
-                CloseScope(suppressNewline: true);
-                CloseScope();
-            }
+            return ei;
         }
 
-        private void BuildFhirElementAttribute(string name, string shortDescription, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, (string, string)? until = null)
+        private void BuildFhirElementAttribute(string name, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, (string, string)? until = null)
         {
-            var description =
-                (since, until, shortDescription) switch
-                {
-                    (_, _, null) => null,
-                    (not null, _, _) => shortDescription +
-                                     $". Note: Element was introduced in {since}, do not use when working with older releases.",
-                    (_, (var release, ""), _) => shortDescription +
-                                     $". Note: Element is deprecated since {release}, do not use with {release} and newer releases.",
-                    (_, (var release, var replacedBy), _) => shortDescription +
-                                     $". Note: Element is replaced by '{replacedBy}' since {release}. Do not use this element '{name}' with {release} and newer releases.",
-                    _ => shortDescription
-                };
-
-            if (description is not null)
-            {
-                WriteIndentedComment(description);
-            }
-
             string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
             if (since is { })
             {
@@ -2265,10 +2063,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string exportedComplexName,
             FhirElement element,
             ref List<WrittenElementInfo> exportedElements,
-            GenSubset subset,
-            bool isPrimaryCode)
+            GenSubset subset)
         {
             string name = element.Name.Replace("[x]", string.Empty);
+
+            WrittenElementInfo ei = BuildElementInfo(exportedComplexName, element);
+            exportedElements.Add(ei);
 
             BuildElementOptionals(
                 element,
@@ -2289,12 +2089,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            /* Exceptions:
-             *  o Meta.source only exists since R5.
-             *  o Meta.profile has changed types from `uri` to `canonical`, but we stick to Uri across releases.
-             *
-             * If we start to include more classes like this, we might need to
-             * automate this, by scanning differences between 3/4/5/6/7 etc.. */
+            var since = _sinceAttributes.TryGetValue(element.Path, out string s) ? s : null;
+            var until = _untilAttributes.TryGetValue(element.Path, out (string, string) u) ? u : default((string, string)?);
 
             var description = element.Path switch
             {
@@ -2302,40 +2098,38 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 "Signature.onBehalfOf" => element.ShortDescription + ".\nNote: Since R4 the type of this element should be a fixed type (ResourceReference). For backwards compatibility it remains of type DataType.",
                 "Signature.when" => element.ShortDescription + ".\nNote: Since R5 the cardinality is expanded to 0..1 (previous it was 1..1).",
                 "Signature.type" => element.ShortDescription + ".\nNote: Since R5 the cardinality is expanded to 0..* (previous it was 1..*).",
-                _ => element.ShortDescription
+                _ => attributeDescriptionWithSinceInfo(name, element.ShortDescription, since, until)
             };
 
-            if (_sinceAttributes.TryGetValue(element.Path, out string since))
+            if (description is not null) WriteIndentedComment(description);
+
+            if (element.Path == "OperationOutcome.issue.severity")
             {
-                if (element.Path is "Signature.who" or "Signature.onBehalfOf")
-                {
-                    BuildFhirElementAttribute(name, description, summary, isModifier, element, ", Choice = ChoiceType.DatatypeChoice", fiveWs);
-                    BuildFhirElementAttribute(name, null, summary, isModifier, element, "", fiveWs, since: since);
-                    _writer.WriteLineIndented($"[DeclaredType(Type = typeof(ResourceReference), Since = FhirRelease.R4)]");
-                    _writer.WriteLineIndented($"[AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference))]");
-                }
-                else
-                {
-                    BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs, since: since);
-                }
+                BuildFhirElementAttribute(name, summary, ", IsModifier=true", element, choice, fiveWs);
+                BuildFhirElementAttribute(name, summary, null, element, choice, fiveWs, since: "R4");
             }
-            else if (_untilAttributes.TryGetValue(element.Path, out (string, string) until))
+            else if (element.Path is "Signature.who" or "Signature.onBehalfOf")
             {
-                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs, until: until);
+                BuildFhirElementAttribute(name, summary, isModifier, element, ", Choice = ChoiceType.DatatypeChoice", fiveWs);
+                BuildFhirElementAttribute(name, summary, isModifier, element, "", fiveWs, since: since);
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof(ResourceReference), Since = FhirRelease.R4)]");
+                _writer.WriteLineIndented($"[AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference))]");
             }
-            else if (element.Path == "Meta.profile")
+            else
             {
-                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
+                BuildFhirElementAttribute(name, summary, isModifier, element, choice, fiveWs, since, until);
+            }
+
+            if (element.Path == "Meta.profile")
+            {
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Canonical), Since = FhirRelease.R4)]");
             }
             else if (element.Path == "Bundle.link.relation")
             {
-                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Code), Since = FhirRelease.R5)]");
             }
             else if (element.Path == "Attachment.size")
             {
-                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(UnsignedInt), Since = FhirRelease.STU3)]");
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Integer64), Since = FhirRelease.R5)]");
             }
@@ -2345,24 +2139,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 "ElementDefinition.mapping.comment" or
                 "CapabilityStatement.implementation.description")
             {
-                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(FhirString))]");
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Markdown), Since = FhirRelease.R5)]");
             }
-            else
+
+            if (ei.IsCodedEnum)
             {
-                BuildFhirElementAttribute(name, description, summary, isModifier, element, choice, fiveWs);
+                _writer.WriteLineIndented("[DeclaredType(Type = typeof(Code))]");
             }
 
-            if (isPrimaryCode)
+            if (!string.IsNullOrEmpty(element.BindingName))
             {
-                var props = new List<string>();
-
-                if (isPrimaryCode)
-                    props.Add("IsPrimaryCodePath=true");
-
-                var propsString = string.Join(',', props);
-                _writer.WriteLineIndented($"[CqlElement({propsString})]");
+                _writer.WriteLineIndented($"[Binding(\"{element.BindingName}\")]");
             }
 
             // Generate the [AllowedTypes] and [ResourceReference] attributes, except when we are
@@ -2387,7 +2175,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 else
                 {
                     _writer.WriteLineIndented(resourceReferences);
-
                 }
             }
 
@@ -2402,10 +2189,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"[Cardinality(Min={element.CardinalityMin},Max={element.CardinalityMax})]");
             }
 
-            WrittenElementInfo ei = BuildElementInfo(exportedComplexName, element);
-            exportedElements.Add(ei);
-
             writeElementGettersAndSetters(element, ei);
+        }
+
+        private string attributeDescriptionWithSinceInfo(string name, string baseDescription, string since = null, (string, string)? until = null)
+        {
+            return (since, until, baseDescription) switch
+            {
+                (_, _, null) => null,
+                (not null, _, _) => baseDescription +
+                                 $". Note: Element was introduced in {since}, do not use when working with older releases.",
+                (_, (var release, ""), _) when until is not null => baseDescription +
+                                 $". Note: Element is deprecated since {release}, do not use with {release} and newer releases.",
+                (_, (var release, var replacedBy), _) when until is not null => baseDescription +
+                                 $". Note: Element is replaced by '{replacedBy}' since {release}. Do not use this element '{name}' with {release} and newer releases.",
+                _ => baseDescription
+            };
         }
 
         private WrittenElementInfo BuildElementInfo(string exportedComplexName, FhirElement element)
@@ -2425,6 +2224,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 type = "DataType";
             }
+
+            // Elements of type Code or Code<T> have their own naming/types, so handle those separately.
+            if (type == "code")
+                return BuildCodedElementInfo(element);
 
             /* This is an exception - we want to share Meta across different FHIR versions,
              * so we use the "most common" type to the versions, which
@@ -3184,6 +2987,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             internal bool IsList;
             internal bool IsChoice;
             internal string ElementType;
+            internal bool IsCodedEnum;
         }
 
         /// <summary>Information about the written model.</summary>
