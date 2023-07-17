@@ -1292,6 +1292,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (primaryCodeElementInfo is not null)
             {
                 _writer.WriteLineIndented($"{primaryCodeElementInfo.PropertyType} ICoded<{primaryCodeElementInfo.PropertyType}>.Code {{ get => {primaryCodeElementInfo.PropertyName}; set => {primaryCodeElementInfo.PropertyName} = value; }}");
+                _writer.WriteLineIndented($"IEnumerable<Coding> ICoded.ToCodings() => {primaryCodeElementInfo.PropertyName}.ToCodings();");
                 _writer.WriteLine(string.Empty);
             }
 
