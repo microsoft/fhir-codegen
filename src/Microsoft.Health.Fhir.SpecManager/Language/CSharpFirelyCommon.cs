@@ -66,7 +66,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="value">The value.</param>
         /// <param name="isSummary">(Optional) True if is summary, false if not.</param>
         /// <param name="singleLine">(Optional) True if this is a short comment using a single line comment prefix. Implies isSummary = false.</param>
-        public static void WriteIndentedComment(ExportStreamWriter writer, string value, bool isSummary = true, bool singleLine = false)
+        public static void WriteIndentedComment(this ExportStreamWriter writer, string value, bool isSummary = true, bool singleLine = false)
         {
             if (string.IsNullOrEmpty(value))
             {
