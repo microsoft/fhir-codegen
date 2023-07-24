@@ -7,7 +7,7 @@ using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirElement;
 using System.Reflection.Emit;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR element definition.</summary>
 public record class FhirElement : FhirDefinitionBase

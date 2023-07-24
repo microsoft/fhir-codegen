@@ -5,7 +5,7 @@
 
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>
 /// A FHIR model base - the root class for complex objects such as Resources, DataTypes, etc.

@@ -3,9 +3,9 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using static Microsoft.Health.Fhir.CodeGenCommon.Refactor.FhirTypeUtils;
+using static Microsoft.Health.Fhir.CodeGenCommon.Structural.FhirTypeUtils;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR element profile.</summary>
 public record class FhirElementProfile

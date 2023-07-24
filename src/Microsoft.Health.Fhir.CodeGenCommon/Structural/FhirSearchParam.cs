@@ -3,7 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR search parameter.</summary>
 public record class FhirSearchParam : FhirModelBase

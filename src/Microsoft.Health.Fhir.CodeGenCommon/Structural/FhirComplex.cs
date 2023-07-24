@@ -5,9 +5,10 @@
 
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
-public record class FhirComplex : FhirDefinitionBase
+/// <summary>A FHIR complex.</summary>
+public record class FhirComplex : FhirModelBase
 {
     private FhirElement _rootElement = null!;
     private Dictionary<string, FhirElement> _elements = new();

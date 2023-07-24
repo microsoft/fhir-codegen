@@ -6,7 +6,7 @@
 using System.Xml.Linq;
 using System;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>FHIR type-related utilities.</summary>
 public static class FhirTypeUtils

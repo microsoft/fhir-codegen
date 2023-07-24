@@ -5,11 +5,11 @@
 
 using System;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
-using static Microsoft.Health.Fhir.CodeGenCommon.Refactor.FhirTypeUtils;
+using static Microsoft.Health.Fhir.CodeGenCommon.Structural.FhirTypeUtils;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.LinqExtensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR element type.</summary>
 public record class FhirElementType

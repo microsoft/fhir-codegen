@@ -7,7 +7,7 @@ using System.Collections;
 using System.Data;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR slicing.</summary>
 public record class FhirSlicing : IReadOnlyDictionary<string, FhirComplex>

@@ -5,7 +5,7 @@
 
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 public record class FhirOperation : FhirModelBase
 {

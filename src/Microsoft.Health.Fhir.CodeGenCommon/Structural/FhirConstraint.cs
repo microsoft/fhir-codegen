@@ -5,9 +5,9 @@
 
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirSlicing;
-using static Microsoft.Health.Fhir.CodeGenCommon.Refactor.FhirSlicing;
+using static Microsoft.Health.Fhir.CodeGenCommon.Structural.FhirSlicing;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR constraint.</summary>
 public record class FhirConstraint

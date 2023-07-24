@@ -6,7 +6,7 @@
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Refactor;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR definition base.</summary>
 public abstract record class FhirDefinitionBase
