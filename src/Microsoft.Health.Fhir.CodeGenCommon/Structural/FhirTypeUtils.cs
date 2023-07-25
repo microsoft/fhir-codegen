@@ -3,9 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.Xml.Linq;
-using System;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>FHIR type-related utilities.</summary>

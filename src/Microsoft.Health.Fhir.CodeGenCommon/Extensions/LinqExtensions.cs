@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System.Collections;
 using System.Runtime.CompilerServices;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
@@ -93,6 +94,35 @@ public static class LinqExtensions
             foreach (VT value in sourceList)
             {
                 list.Add((VT)value.Clone());
+            }
+
+            dest.Add(key, list);
+        }
+
+        return dest;
+    }
+
+    /// <summary>
+    /// A Dictionary&lt;KT,VT&gt; extension method that deep copies the dictionary.
+    /// </summary>
+    /// <param name="source">The source dictionary to copy.</param>
+    /// <returns>A Dictionary&lt;KT,VT&gt;</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Dictionary<string, List<object>> DeepCopy(this Dictionary<string, List<object>> source)
+    {
+        Dictionary<string, List<object>> dest = new();
+
+        foreach ((string key, List<object> sourceList) in source)
+        {
+            List<object> list = new();
+
+            foreach (object value in sourceList)
+            {
+                switch (value)
+                {
+                    case ICloneable cloneable: list.Add(cloneable.Clone()); break;
+                    default: list.Add(value); break;
+                }
             }
 
             dest.Add(key, list);

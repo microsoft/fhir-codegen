@@ -3,16 +3,18 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Resource;
 
 /// <summary>A FHIR canonical base.</summary>
-public abstract class FhirCanonicalBase : FhirResourceBase
+public abstract record class FhirCanonicalBase : FhirResourceBase, ICloneable
 {
     private PublicationStatusCodes _publicationStatus = PublicationStatusCodes.Unknown;
     private string _fhirPublicationStatus = string.Empty;
 
+    /// <summary>Values that represent publication status codes.</summary>
     public enum PublicationStatusCodes
     {
         /// <summary>This resource is still under development and is not yet considered to be ready for normal use.</summary>
@@ -34,6 +36,33 @@ public abstract class FhirCanonicalBase : FhirResourceBase
         /// </summary>
         [FhirLiteral("unknown")]
         Unknown,
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirCanonicalBase"/> class.
+    /// </summary>
+    public FhirCanonicalBase() { }
+
+    /// <summary>Initializes a new instance of the <see cref="FhirCanonicalBase"/> class.</summary>
+    /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
+    protected FhirCanonicalBase(FhirCanonicalBase other)
+        : base(other)
+    {
+        Identifiers = other.Identifiers.Select(v => v with { });
+        Version = other.Version;
+        VersionAlgorithmString = other.VersionAlgorithmString;
+        VersionAlgorithmCoding = other.VersionAlgorithmCoding == null ? null : other.VersionAlgorithmCoding with { };
+        Title = other.Title;
+        FhirPublicationStatus = other.FhirPublicationStatus;
+        IsExperimental = other.IsExperimental;
+        LastChanged = other.LastChanged;
+        Publisher = other.Publisher;
+        Description = other.Description;
+        UseContext = other.UseContext == null ? null : other.UseContext with { };
+        Jurisdictions = other.Jurisdictions.Select(v => v with { });
+        Copyright = other.Copyright;
+        CopyrightLabel = other.CopyrightLabel;
     }
 
     public IEnumerable<FhirIdentifier> Identifiers { get; init; } = Enumerable.Empty<FhirIdentifier>();
@@ -86,4 +115,8 @@ public abstract class FhirCanonicalBase : FhirResourceBase
 
     /// <summary>Gets or initializes the copyright label.</summary>
     public string CopyrightLabel { get; init; } = string.Empty;
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

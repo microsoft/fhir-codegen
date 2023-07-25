@@ -8,7 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Resource;
 
 /// <summary>A FHIR usage context.</summary>
-public class FhirUsageContext : ICloneable
+public record class FhirUsageContext : ICloneable
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirUsageContext"/> class.
@@ -20,13 +20,13 @@ public class FhirUsageContext : ICloneable
     /// </summary>
     /// <param name="other">The other.</param>
     [SetsRequiredMembers]
-    public FhirUsageContext(FhirUsageContext other)
+    protected FhirUsageContext(FhirUsageContext other)
     {
-        ContextCode = other.ContextCode;
-        ValueCodeable = other.ValueCodeable;
-        ValueQuantity = other.ValueQuantity;
-        ValueRange = other.ValueRange;
-        ValueReference = other.ValueReference;
+        ContextCode = other.ContextCode with { };
+        ValueCodeable = other.ValueCodeable == null ? null : other.ValueCodeable with { };
+        ValueQuantity = other.ValueQuantity == null ? null : other.ValueQuantity with { };
+        ValueRange = other.ValueRange == null ? null : other.ValueRange with { };
+        ValueReference = other.ValueReference == null ? null : other.ValueReference with { };
     }
 
     /// <summary>Gets or initializes the context code.</summary>
@@ -44,7 +44,7 @@ public class FhirUsageContext : ICloneable
     /// <summary>Gets or initializes the value reference.</summary>
     public FhirReference? ValueReference { get; init; } = null;
 
-    /// <summary>Creates a new object that is a copy of the current instance.</summary>
-    /// <returns>A new object that is a copy of this instance.</returns>
-    object ICloneable.Clone() => new FhirUsageContext(this);
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

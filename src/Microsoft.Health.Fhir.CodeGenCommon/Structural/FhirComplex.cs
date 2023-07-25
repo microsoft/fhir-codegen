@@ -3,12 +3,13 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR complex.</summary>
-public record class FhirComplex : FhirModelBase
+public record class FhirComplex : FhirModelBase, ICloneable
 {
     private FhirElement _rootElement = null!;
     private Dictionary<string, FhirElement> _elements = new();
@@ -51,13 +52,17 @@ public record class FhirComplex : FhirModelBase
     /// An extension context - identifies the types of resource or data type elements to which the
     /// extension can be applied.
     /// </summary>
-    public record class ExtensionContext
+    public record class ExtensionContext : ICloneable
     {
         ExtensionContextTypeCodes? _extensionContextType;
         string _fhirContextType = string.Empty;
 
         /// <summary>Initializes a new instance of the ExtensionContext class.</summary>
+        public ExtensionContext() { }
+
+        /// <summary>Initializes a new instance of the ExtensionContext class.</summary>
         /// <param name="other">The other.</param>
+        [SetsRequiredMembers]
         protected ExtensionContext(ExtensionContext other)
         {
             FhirContextType = other.FhirContextType;
@@ -86,10 +91,14 @@ public record class FhirComplex : FhirModelBase
 
         /// <summary>Gets the expression - where the extension can be used in instances.</summary>
         public required string Expression { get; init; }
+
+        /// <summary>Makes a deep copy of this object.</summary>
+        /// <returns>A copy of this object.</returns>
+        object ICloneable.Clone() => this with { };
     }
 
     /// <summary>A stucture mapping.</summary>
-    public record class StructureMapping
+    public record class StructureMapping : ICloneable
     {
         /// <summary>Gets or sets the internal id when this mapping is used.</summary>
         public required string Identity { get; init; }
@@ -102,10 +111,18 @@ public record class FhirComplex : FhirModelBase
 
         /// <summary>Gets or sets the comment - Versions, Issues, Scope limitations etc..</summary>
         public string Comment { get; init; } = string.Empty;
+
+        /// <summary>Makes a deep copy of this object.</summary>
+        /// <returns>A copy of this object.</returns>
+        object ICloneable.Clone() => this with { };
     }
 
     /// <summary>Initializes a new instance of the FhirComplex class.</summary>
+    public FhirComplex() { }
+
+    /// <summary>Initializes a new instance of the FhirComplex class.</summary>
     /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
     protected FhirComplex(FhirComplex other)
         : base(other)
     {
@@ -172,4 +189,8 @@ public record class FhirComplex : FhirModelBase
 
     /// <summary>Gets the root element mappings.</summary>
     public Dictionary<string, List<FhirElementMapping>> RootElementMappings { get => _rootElement.Mappings; }
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

@@ -3,13 +3,14 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Resource.FhirCanonicalBase;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Resource;
 
 /// <summary>A FHIR quantity.</summary>
-public class FhirQuantity : ICloneable
+public record class FhirQuantity : ICloneable
 {
     private QuantityComparatorCodes? _comparator = null;
     private string _fhirComparator = string.Empty;
@@ -47,7 +48,8 @@ public class FhirQuantity : ICloneable
     /// Initializes a new instance of the <see cref="FhirQuantity"/> class.
     /// </summary>
     /// <param name="other">The other.</param>
-    public FhirQuantity(FhirQuantity other)
+    [SetsRequiredMembers]
+    protected FhirQuantity(FhirQuantity other)
     {
         Value = other.Value;
         FhirComparator = other.FhirComparator;
@@ -85,5 +87,7 @@ public class FhirQuantity : ICloneable
     /// <summary>Gets or initializes the coded form of the unit.</summary>
     public string Code { get; init; } = string.Empty;
 
-    object ICloneable.Clone() => new FhirQuantity(this);
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

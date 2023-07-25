@@ -3,14 +3,14 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirElement;
-using System.Reflection.Emit;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Resource;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR element definition.</summary>
-public record class FhirElement : FhirDefinitionBase
+public record class FhirElement : FhirDefinitionBase, IWithExpectations, ICloneable
 {
     private int _cardinalityMax = -1;
     private Dictionary<string, FhirElementType> _elementTypes = new();
@@ -71,12 +71,16 @@ public record class FhirElement : FhirDefinitionBase
     }
 
     /// <summary>Initializes a new instance of the FhirElement class.</summary>
+    public FhirElement() { }
+
+    /// <summary>Initializes a new instance of the FhirElement class.</summary>
     /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
     protected FhirElement(FhirElement other)
         : base(other)
     {
         BasePath = other.BasePath;
-        RootArtifact = other.RootArtifact;
+        RootArtifact = other.RootArtifact with { };
         ExplicitName = other.ExplicitName;
         CardinalityMin = other.CardinalityMin;
         CardinalityMaxString = other.CardinalityMaxString;
@@ -340,7 +344,7 @@ public record class FhirElement : FhirDefinitionBase
                     return;
                 }
 
-                if (!(RootArtifact?.Constraints.ContainsKey(c.Key) ?? false))
+                if (!(RootArtifact?.ConstraintsByKey.ContainsKey(c.Key) ?? false))
                 {
                     RootArtifact.AddConstraint(c);
                 }
@@ -357,4 +361,23 @@ public record class FhirElement : FhirDefinitionBase
     {
         throw new NotImplementedException();
     }
+
+    /// <summary>Gets the obligations by actor.</summary>
+    public Dictionary<string, IEnumerable<FhirObligation>> ObligationsByActor { get; init; } = new();
+
+    /// <summary>Convert this object into a string representation.</summary>
+    /// <returns>A string that represents this object.</returns>
+    public override string ToString()
+    {
+        if (!ObligationsByActor.Any())
+        {
+            return Name;
+        }
+
+        return Name + ": " + string.Join("; ", ObligationsByActor.Select(kvp => (string.IsNullOrEmpty(kvp.Key) ? "" : $"{kvp.Key}: ") + string.Join(", ", kvp.Value)));
+    }
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

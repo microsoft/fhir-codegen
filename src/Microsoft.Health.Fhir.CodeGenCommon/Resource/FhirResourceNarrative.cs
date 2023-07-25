@@ -9,7 +9,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Resource;
 
 /// <summary>A FHIR resource narrative.</summary>
-public class FhirResourceNarrative : ICloneable
+public record class FhirResourceNarrative : ICloneable
 {
     private string _fhirStatus = string.Empty;
     private NarrativeStatusEnum _status = NarrativeStatusEnum.Empty;
@@ -52,7 +52,7 @@ public class FhirResourceNarrative : ICloneable
     /// </summary>
     /// <param name="other">The other.</param>
     [SetsRequiredMembers]
-    public FhirResourceNarrative(FhirResourceNarrative other)
+    protected FhirResourceNarrative(FhirResourceNarrative other)
     {
         FhirStatus = other._fhirStatus;
         Div = other.Div;
@@ -80,5 +80,5 @@ public class FhirResourceNarrative : ICloneable
 
     /// <summary>Creates a new object that is a copy of the current instance.</summary>
     /// <returns>A new object that is a copy of this instance.</returns>
-    object ICloneable.Clone() => new FhirResourceNarrative(this);
+    object ICloneable.Clone() => this with { };
 }

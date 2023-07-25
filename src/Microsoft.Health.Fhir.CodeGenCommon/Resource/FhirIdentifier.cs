@@ -3,13 +3,14 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Structural.FhirComplex;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Resource;
 
 /// <summary>A FHIR identifier.</summary>
-public class FhirIdentifier
+public record class FhirIdentifier : ICloneable
 {
     private readonly IdentifierUseCodes? _use = null;
     private string _fhirUse = string.Empty;
@@ -50,6 +51,25 @@ public class FhirIdentifier
         Old,
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirIdentifier"/> class.
+    /// </summary>
+    public FhirIdentifier() { }
+
+    /// <summary>Initializes a new instance of the <see cref="FhirIdentifier"/> class.</summary>
+    /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
+    protected FhirIdentifier(FhirIdentifier other)
+    {
+        FhirUse = other.FhirUse;
+        TypeCodeable = other.TypeCodeable == null ? null : other.TypeCodeable with { };
+        System = other.System;
+        Value = other.Value;
+        PeriodStart = other.PeriodStart;
+        PeriodEnd = other.PeriodEnd;
+        Assigner = other.Assigner == null ? null : other.Assigner with { };
+    }
+
     /// <summary>Gets the purpose of this identifier.</summary>
     public IdentifierUseCodes? Use => _use;
 
@@ -84,4 +104,8 @@ public class FhirIdentifier
 
     /// <summary>Gets or initializes the organization that issued id (may be just text).</summary>
     public FhirReference? Assigner { get; init; } = null;
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

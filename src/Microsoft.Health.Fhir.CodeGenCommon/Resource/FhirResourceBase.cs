@@ -11,7 +11,7 @@ using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionEx
 namespace Microsoft.Health.Fhir.CodeGenCommon.Resource;
 
 /// <summary>A FHIR resource base.</summary>
-public abstract class FhirResourceBase
+public abstract record class FhirResourceBase : ICloneable
 {
     internal string _name = string.Empty;
     internal string _baseTypeCanonical = string.Empty;
@@ -26,11 +26,10 @@ public abstract class FhirResourceBase
     /// <summary>Initializes a new instance of the FhirDefinitionBase class.</summary>
     /// <param name="other">The other.</param>
     [SetsRequiredMembers]
-    public FhirResourceBase(FhirResourceBase other)
+    protected FhirResourceBase(FhirResourceBase other)
     {
         Id = other.Id;
-        Meta = new FhirResourceMeta(other.Meta);
-
+        Meta = other.Meta == null ? null : other.Meta with { };
         Name = other.Name;
         Url = other.Url;
         BaseTypeCanonical = other.BaseTypeCanonical;
@@ -44,7 +43,7 @@ public abstract class FhirResourceBase
     public required string Id { get; init; }
 
     /// <summary>Gets or initializes the FHIR metadata about this resource.</summary>
-    public FhirResourceMeta Meta { get; init; } = new FhirResourceMeta();
+    public FhirResourceMeta? Meta { get; init; } = null;
 
     /// <summary>Gets or initializes the language of the resource content.</summary>
     public string Language { get; init; } = string.Empty;
@@ -92,4 +91,8 @@ public abstract class FhirResourceBase
     /// </summary>
     /// <value>The validation RegEx.</value>
     public string ValidationRegEx { get; init; } = string.Empty;
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

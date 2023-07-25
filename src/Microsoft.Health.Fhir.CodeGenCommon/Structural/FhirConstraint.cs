@@ -3,14 +3,13 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
-using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirSlicing;
-using static Microsoft.Health.Fhir.CodeGenCommon.Structural.FhirSlicing;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR constraint.</summary>
-public record class FhirConstraint
+public record class FhirConstraint : ICloneable
 {
     private FhirConstraintSeverityCodes _severity;
     private string _fhirSeverity = string.Empty;
@@ -31,7 +30,11 @@ public record class FhirConstraint
     }
 
     /// <summary>Initializes a new instance of the FhirConstraint class.</summary>
+    public FhirConstraint() { }
+
+    /// <summary>Initializes a new instance of the FhirConstraint class.</summary>
     /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
     protected FhirConstraint(FhirConstraint other)
     {
         Key = other.Key;
@@ -93,4 +96,8 @@ public record class FhirConstraint
 
     /// <summary>Gets a value indicating whether this constraint is inherited from a parent definition.</summary>
     public bool IsInherited { get; init; } = false;
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

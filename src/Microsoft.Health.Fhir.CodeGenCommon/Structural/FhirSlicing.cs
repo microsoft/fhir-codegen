@@ -5,12 +5,14 @@
 
 using System.Collections;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirSlicing;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR slicing.</summary>
-public record class FhirSlicing : IReadOnlyDictionary<string, FhirComplex>
+public record class FhirSlicing : IReadOnlyDictionary<string, FhirComplex>, ICloneable
 {
     private FhirSlicingRuleCodes _slicingRule;
     private string _fhirSlicingRule = string.Empty;
@@ -85,10 +87,22 @@ public record class FhirSlicing : IReadOnlyDictionary<string, FhirComplex>
     }
 
     /// <summary>A slicing discriminator rule.</summary>
-    public record class SliceDiscriminatorRule
+    public record class SliceDiscriminatorRule : ICloneable
     {
         private readonly FhirSliceDiscriminatorTypeCodes _discriminatorType;
         private string _fhirDiscriminatorType = string.Empty;
+
+        /// <summary>Initializes a new instance of the SliceDiscriminatorRule class.</summary>
+        public SliceDiscriminatorRule() { }
+
+        /// <summary>Initializes a new instance of the SliceDiscriminatorRule class.</summary>
+        /// <param name="other">The other.</param>
+        [SetsRequiredMembers]
+        protected SliceDiscriminatorRule(SliceDiscriminatorRule other)
+        {
+            FhirDiscriminatorType = other.FhirDiscriminatorType;
+            Path = other.Path;
+        }
 
         /// <summary>
         /// Gets the type of the discriminator - how the element value is interpreted when discrimination
@@ -122,10 +136,18 @@ public record class FhirSlicing : IReadOnlyDictionary<string, FhirComplex>
 
         /// <summary>Gets the key.</summary>
         public string Key => _discriminatorType + "+" + Path;
+
+        /// <summary>Makes a deep copy of this object.</summary>
+        /// <returns>A copy of this object.</returns>
+        object ICloneable.Clone() => this with { };
     }
 
     /// <summary>Initializes a new instance of the FhirSlicing class.</summary>
+    public FhirSlicing() { }
+
+    /// <summary>Initializes a new instance of the FhirSlicing class.</summary>
     /// <param name="other">Source for the.</param>
+    [SetsRequiredMembers]
     protected FhirSlicing(FhirSlicing other)
     {
         SliceName = other.SliceName;
@@ -135,7 +157,7 @@ public record class FhirSlicing : IReadOnlyDictionary<string, FhirComplex>
         Description = other.Description;
         IsOrdered = other.IsOrdered;
         FieldOrder = other.FieldOrder;
-        _slicingRule = other.SlicingRules;
+        FhirSlicingRules = other.FhirSlicingRules;
         _rules = other._rules.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
         _slices = other._slices.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
         _slicesInDifferential = other._slicesInDifferential.DeepCopy();
@@ -246,4 +268,8 @@ public record class FhirSlicing : IReadOnlyDictionary<string, FhirComplex>
     /// <summary>Gets the enumerator.</summary>
     /// <returns>The enumerator.</returns>
     IEnumerator IEnumerable.GetEnumerator() => _slices.GetEnumerator();
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

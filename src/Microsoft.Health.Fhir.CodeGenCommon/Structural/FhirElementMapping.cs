@@ -3,12 +3,10 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
-
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR element mapping.</summary>
-public record class FhirElementMapping
+public record class FhirElementMapping : ICloneable
 {
     /// <summary>Gets the reference to mapping declaration.</summary>
     public required string Identity { get; init; }
@@ -21,4 +19,8 @@ public record class FhirElementMapping
 
     /// <summary>Gets comments about the mapping or its use.</summary>
     public string Comment { get; init; } = string.Empty;
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

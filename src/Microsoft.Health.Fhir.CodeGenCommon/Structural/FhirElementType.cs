@@ -3,16 +3,13 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using static Microsoft.Health.Fhir.CodeGenCommon.Structural.FhirTypeUtils;
-using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.LinqExtensions;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR element type.</summary>
-public record class FhirElementType
+public record class FhirElementType : ICloneable
 {
     /// <summary>(Immutable) URL of the base element type.</summary>
     private const string _baseElementTypeUrl = "http://hl7.org/fhir/StructureDefinition/";
@@ -23,9 +20,7 @@ public record class FhirElementType
     private readonly HashSet<string> _aggregation = new();
 
     /// <summary>Initializes a new instance of the FhirElementType class.</summary>
-    public FhirElementType()
-    {
-    }
+    public FhirElementType() { }
 
     /// <summary>Initializes a new instance of the FhirElementType class.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
@@ -66,6 +61,7 @@ public record class FhirElementType
 
     /// <summary>Initializes a new instance of the FhirElementType class.</summary>
     /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
     protected FhirElementType(FhirElementType other)
     {
         Name = other.Name;
@@ -132,4 +128,8 @@ public record class FhirElementType
         get => _typeProfiles.Values.Select(x => x.Url);
         init => _typeProfiles = FhirElementProfile.ParseProfiles(value);
     }
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

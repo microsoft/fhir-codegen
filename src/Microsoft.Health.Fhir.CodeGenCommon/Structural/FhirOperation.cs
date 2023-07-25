@@ -3,11 +3,13 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
-public record class FhirOperation : FhirModelBase
+/// <summary>A FHIR operation.</summary>
+public record class FhirOperation : FhirModelBase, ICloneable
 {
     /// <summary>Values that represent operation kind codes.</summary>
     public enum OperationKindCodes
@@ -22,12 +24,16 @@ public record class FhirOperation : FhirModelBase
     }
 
     /// <summary>An operation parameter.</summary>
-    public record class OperationParameter
+    public record class OperationParameter : ICloneable
     {
         private int _cardinalityMax = -1;
 
         /// <summary>Initializes a new instance of the OperationParameter class.</summary>
+        public OperationParameter() { }
+
+        /// <summary>Initializes a new instance of the OperationParameter class.</summary>
         /// <param name="other">The other.</param>
+        [SetsRequiredMembers]
         protected OperationParameter(OperationParameter other)
         {
             Name = other.Name;
@@ -106,10 +112,18 @@ public record class FhirOperation : FhirModelBase
 
         /// <summary>Gets the field order.</summary>
         public required int FieldOrder { get; init; }
+
+        /// <summary>Makes a deep copy of this object.</summary>
+        /// <returns>A copy of this object.</returns>
+        object ICloneable.Clone() => this with { };
     }
 
     /// <summary>Initializes a new instance of the FhirOperation class.</summary>
+    public FhirOperation() { }
+
+    /// <summary>Initializes a new instance of the FhirOperation class.</summary>
     /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
     protected FhirOperation(FhirOperation other)
         : base(other)
     {
@@ -150,4 +164,8 @@ public record class FhirOperation : FhirModelBase
 
     /// <summary>Gets the operation kind.</summary>
     public required OperationKindCodes Kind { get; init; }
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

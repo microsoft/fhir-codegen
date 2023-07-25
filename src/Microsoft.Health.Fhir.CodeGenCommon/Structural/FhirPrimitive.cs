@@ -4,16 +4,25 @@
 // </copyright>
 
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR primitive type.</summary>
-public record class FhirPrimitive : FhirModelBase
+public record class FhirPrimitive : FhirModelBase, ICloneable
 {
     /// <summary>Initializes a new instance of the FhirPrimitive class.</summary>
+    public FhirPrimitive() { }
+
+    /// <summary>Initializes a new instance of the FhirPrimitive class.</summary>
     /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
     protected FhirPrimitive(FhirPrimitive other)
         : base(other)
     {
     }
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

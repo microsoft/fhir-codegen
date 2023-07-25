@@ -8,7 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Microsoft.Health.Fhir.CodeGenCommon.Resource;
 
 /// <summary>A FHIR reference.</summary>
-public class FhirReference : ICloneable
+public record class FhirReference : ICloneable
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirReference"/> class.
@@ -18,7 +18,7 @@ public class FhirReference : ICloneable
     /// <summary>Initializes a new instance of the <see cref="FhirReference"/> class.</summary>
     /// <param name="other">The other.</param>
     [SetsRequiredMembers]
-    public FhirReference(FhirReference other)
+    protected FhirReference(FhirReference other)
     {
         Reference = other.Reference;
         ResourceType = other.ResourceType;
@@ -38,7 +38,7 @@ public class FhirReference : ICloneable
     /// <summary>Gets or initializes the text alternative for the resource.</summary>
     public string Display { get; init; } = string.Empty;
 
-    /// <summary>Creates a new object that is a copy of the current instance.</summary>
-    /// <returns>A new object that is a copy of this instance.</returns>
-    object ICloneable.Clone() => new FhirReference(this);
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

@@ -3,10 +3,12 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Microsoft.Health.Fhir.CodeGenCommon.Resource;
 
 /// <summary>A FHIR range.</summary>
-public class FhirRange : ICloneable
+public record class FhirRange : ICloneable
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirRange"/> class.
@@ -17,10 +19,11 @@ public class FhirRange : ICloneable
     /// Initializes a new instance of the <see cref="FhirRange"/> class.
     /// </summary>
     /// <param name="other">The other.</param>
-    public FhirRange(FhirRange other)
+    [SetsRequiredMembers]
+    protected FhirRange(FhirRange other)
     {
-        Low = other.Low;
-        High = other.High;
+        Low = other.Low == null ? null : other.Low with { };
+        High = other.High == null ? null : other.High with { };
     }
 
     /// <summary>Gets or initializes the low.</summary>
@@ -29,7 +32,7 @@ public class FhirRange : ICloneable
     /// <summary>Gets or initializes the high.</summary>
     public FhirQuantity? High { get; init; } = null;
 
-    /// <summary>Creates a new object that is a copy of the current instance.</summary>
-    /// <returns>A new object that is a copy of this instance.</returns>
-    object ICloneable.Clone() => new FhirRange(this);
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
@@ -10,10 +11,14 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 /// <summary>
 /// A FHIR model base - the root class for complex objects such as Resources, DataTypes, etc.
 /// </summary>
-public abstract record class FhirModelBase : FhirDefinitionBase
+public abstract record class FhirModelBase : FhirDefinitionBase, ICloneable
 {
     /// <summary>Initializes a new instance of the FhirModelBase class.</summary>
+    public FhirModelBase() { }
+
+    /// <summary>Initializes a new instance of the FhirModelBase class.</summary>
     /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
     protected FhirModelBase(FhirModelBase other)
         : base(other)
     {
@@ -68,4 +73,8 @@ public abstract record class FhirModelBase : FhirDefinitionBase
 
     /// <summary>Gets the description (markdown).</summary>
     public string Description => Purpose;
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

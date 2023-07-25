@@ -3,13 +3,14 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structural;
 
 /// <summary>A FHIR definition base.</summary>
-public abstract record class FhirDefinitionBase
+public abstract record class FhirDefinitionBase : ICloneable
 {
     internal string _name = string.Empty;
     internal string _nameCapitalized = string.Empty;
@@ -18,7 +19,11 @@ public abstract record class FhirDefinitionBase
     internal string _baseTypeCanonical = string.Empty;
 
     /// <summary>Initializes a new instance of the FhirDefinitionBase class.</summary>
+    public FhirDefinitionBase() { }
+
+    /// <summary>Initializes a new instance of the FhirDefinitionBase class.</summary>
     /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
     protected FhirDefinitionBase(FhirDefinitionBase other)
     {
         Id = other.Id;
@@ -200,4 +205,8 @@ public abstract record class FhirDefinitionBase
 
         return value;
     }
+
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }

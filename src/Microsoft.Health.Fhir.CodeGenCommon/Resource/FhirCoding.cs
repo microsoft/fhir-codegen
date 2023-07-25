@@ -3,17 +3,36 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.LinqExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Resource;
 
 /// <summary>A FHIR coding.</summary>
-public record class FhirCoding
+public record class FhirCoding : ICloneable
 {
     private string _systemLocalName = string.Empty;
     private string _system = string.Empty;
     private Dictionary<string, List<object>> _properties = new();
     private HashSet<string> _propertyKeyValueHash = new();
+
+    /// <summary>Initializes a new instance of the <see cref="FhirCoding"/> class.</summary>
+    public FhirCoding() { }
+
+    /// <summary>Initializes a new instance of the FhirCoding class.</summary>
+    /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
+    protected FhirCoding(FhirCoding other)
+    {
+        System = other.System;
+        Code = other.Code;
+        Display = other.Display;
+        Version = other.Version;
+        Definition = other.Definition;
+        _properties = other._properties.DeepCopy();
+        _propertyKeyValueHash = other._propertyKeyValueHash.Select(v => v).ToHashSet();
+    }
 
     /// <summary>Gets the system.</summary>
     /// <value>The system.</value>
@@ -115,8 +134,6 @@ public record class FhirCoding
     /// <summary>Gets the defined concept properties.</summary>
     public Dictionary<string, List<object>> Properties => _properties;
 
-
-
     /// <summary>Adds a property.</summary>
     /// <param name="code">              The code.</param>
     /// <param name="value">             The value.</param>
@@ -177,4 +194,7 @@ public record class FhirCoding
         return _propertyKeyValueHash.Contains(combined);
     }
 
+    /// <summary>Makes a deep copy of this object.</summary>
+    /// <returns>A copy of this object.</returns>
+    object ICloneable.Clone() => this with { };
 }
