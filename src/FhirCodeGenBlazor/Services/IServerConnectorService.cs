@@ -27,8 +27,9 @@ public interface IServerConnectorService
         out FhirCapabiltyStatement serverInfo);
 
     /// <summary>Parse capability JSON.</summary>
-    /// <param name="json">The JSON.</param>
+    /// <param name="json">           The JSON.</param>
+    /// <param name="smartConfigJson">The smart configuration JSON.</param>
     /// <returns>A FhirCapabiltyStatement.</returns>
-    FhirCapabiltyStatement ParseCapabilityJson(string json);
+    FhirCapabiltyStatement ParseCapabilityJson(string json, string smartConfigJson);
 
 }

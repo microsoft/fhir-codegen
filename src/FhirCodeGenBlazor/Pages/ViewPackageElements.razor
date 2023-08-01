@@ -462,12 +462,19 @@ else
     {
         foreach (FhirArtifactClassEnum classEnum in showArtifactClass.Keys)
         {
-            var readResult = await BrowserStore.GetAsync<bool>("showAC_" + classEnum);
-            if (readResult.Success)
+            try
             {
-                showArtifactClass[classEnum] = readResult.Value;
+                var readResult = await BrowserStore.GetAsync<bool>("showAC_" + classEnum);
+                if (readResult.Success)
+                {
+                    showArtifactClass[classEnum] = readResult.Value;
+                }
+                else
+                {
+                    showArtifactClass[classEnum] = true;
+                }
             }
-            else
+            catch (Exception)
             {
                 showArtifactClass[classEnum] = true;
             }

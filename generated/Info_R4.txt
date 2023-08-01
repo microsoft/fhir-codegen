@@ -1981,8 +1981,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context):token
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -3307,8 +3311,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?fhirversion: fhirversion=token (trial-use)
@@ -3694,8 +3702,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/ChargeItemDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/ChargeItemDefinition-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/ChargeItemDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/ChargeItemDefinition-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?effective: effective=date (trial-use)
@@ -4396,8 +4408,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?effective: effective=date (experimental)
@@ -4864,8 +4880,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?name: name=string (trial-use)
@@ -5250,8 +5270,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?dependson: dependson=uri (trial-use)
   ?description: description=string (trial-use)
@@ -7069,7 +7093,9 @@ Resources: 148
   ?related: related=reference (trial-use)
   ?relatesto: relatesto=reference (trial-use)
   ?relation: relation=token (trial-use)
-  ?relationship: relationship=composite (trial-use)
+  ?relationship: relationship is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/DocumentReference-relatesto):reference
+    $(http://hl7.org/fhir/SearchParameter/DocumentReference-relation):token
   ?security-label: security-label=token (trial-use)
   ?setting: setting=token (trial-use)
   ?status: status=token (trial-use)
@@ -7197,8 +7223,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/EffectEvidenceSynthesis-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/EffectEvidenceSynthesis-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/EffectEvidenceSynthesis-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/EffectEvidenceSynthesis-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?effective: effective=date (trial-use)
@@ -7545,8 +7575,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/EventDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/EventDefinition-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/EventDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/EventDefinition-context):token
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -7621,8 +7655,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Evidence-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/Evidence-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Evidence-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/Evidence-context):token
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -7748,8 +7786,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/EvidenceVariable-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/EvidenceVariable-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/EvidenceVariable-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/EvidenceVariable-context):token
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -7924,8 +7966,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/ExampleScenario-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/ExampleScenario-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/ExampleScenario-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/ExampleScenario-context):token
   ?date: date=date (trial-use)
   ?identifier: identifier=token (trial-use)
   ?jurisdiction: jurisdiction=token (trial-use)
@@ -8586,8 +8632,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?jurisdiction: jurisdiction=token (trial-use)
@@ -8641,7 +8691,9 @@ Resources: 148
     - inactive[0..1]: boolean
   ?actual: actual=token (trial-use)
   ?characteristic: characteristic=token (trial-use)
-  ?characteristic-value: characteristic-value=composite (trial-use)
+  ?characteristic-value: characteristic-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Group-characteristic):token
+    $(http://hl7.org/fhir/SearchParameter/Group-value):token
   ?code: code=token (trial-use)
   ?exclude: exclude=token (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -9253,8 +9305,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?description: description=string (trial-use)
@@ -9500,8 +9556,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Library-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/Library-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Library-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/Library-context):token
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -9879,8 +9939,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Measure-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/Measure-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Measure-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/Measure-context):token
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -11195,8 +11259,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?event: event=token (trial-use)
@@ -11399,13 +11467,25 @@ Resources: 148
       - start[0..1]: integer
       - end[0..1]: integer
   ?chromosome: chromosome=token (trial-use)
-  ?chromosome-variant-coordinate: chromosome-variant-coordinate=composite (trial-use)
-  ?chromosome-window-coordinate: chromosome-window-coordinate=composite (trial-use)
+  ?chromosome-variant-coordinate: chromosome-variant-coordinate is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-chromosome):token
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-variant-start):number
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-variant-end):number
+  ?chromosome-window-coordinate: chromosome-window-coordinate is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-chromosome):token
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-window-start):number
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-window-end):number
   ?identifier: identifier=token (trial-use)
   ?patient: patient=reference (trial-use)
   ?referenceseqid: referenceseqid=token (trial-use)
-  ?referenceseqid-variant-coordinate: referenceseqid-variant-coordinate=composite (trial-use)
-  ?referenceseqid-window-coordinate: referenceseqid-window-coordinate=composite (trial-use)
+  ?referenceseqid-variant-coordinate: referenceseqid-variant-coordinate is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-referenceseqid):token
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-variant-start):number
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-variant-end):number
+  ?referenceseqid-window-coordinate: referenceseqid-window-coordinate is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-referenceseqid):token
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-window-start):number
+    $(http://hl7.org/fhir/SearchParameter/MolecularSequence-window-end):number
   ?type: type=token (trial-use)
   ?variant-end: variant-end=number (trial-use)
   ?variant-start: variant-start=number (trial-use)
@@ -11484,8 +11564,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?id-type: id-type=token (trial-use)
@@ -12006,19 +12090,35 @@ Resources: 148
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
   ?code: code=token (trial-use)
-  ?code-value-concept: code-value-concept=composite (trial-use)
-  ?code-value-date: code-value-date=composite (trial-use)
-  ?code-value-quantity: code-value-quantity=composite (trial-use)
-  ?code-value-string: code-value-string=composite (trial-use)
+  ?code-value-concept: code-value-concept is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/clinical-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
+  ?code-value-date: code-value-date is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/clinical-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-value-date):date
+  ?code-value-quantity: code-value-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/clinical-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-value-quantity):quantity
+  ?code-value-string: code-value-string is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/clinical-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
   ?combo-code: combo-code=token (trial-use)
-  ?combo-code-value-concept: combo-code-value-concept=composite (trial-use)
-  ?combo-code-value-quantity: combo-code-value-quantity=composite (trial-use)
+  ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
+  ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
   ?component-code: component-code=token (trial-use)
-  ?component-code-value-concept: component-code-value-concept=composite (trial-use)
-  ?component-code-value-quantity: component-code-value-quantity=composite (trial-use)
+  ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
+  ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
+    $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -12736,8 +12836,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?input-profile: input-profile=reference (trial-use)
@@ -13509,8 +13613,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context):token
   ?date: date=date (trial-use)
   ?definition: definition=reference (trial-use)
   ?depends-on: depends-on=reference (trial-use)
@@ -14889,8 +14997,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Questionnaire-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/Questionnaire-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/Questionnaire-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/Questionnaire-context):token
   ?date: date=date (trial-use)
   ?definition: definition=uri (trial-use)
   ?description: description=string (trial-use)
@@ -15807,8 +15919,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/ResearchDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/ResearchDefinition-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/ResearchDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/ResearchDefinition-context):token
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -15907,8 +16023,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/ResearchElementDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/ResearchElementDefinition-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/ResearchElementDefinition-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/ResearchElementDefinition-context):token
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -16209,8 +16329,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/RiskEvidenceSynthesis-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/RiskEvidenceSynthesis-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/RiskEvidenceSynthesis-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/RiskEvidenceSynthesis-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?effective: effective=date (trial-use)
@@ -16341,8 +16465,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?derived-from: derived-from=reference (trial-use)
   ?description: description=string (trial-use)
@@ -16944,8 +17072,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?derivation: derivation=token (trial-use)
   ?description: description=string (trial-use)
@@ -17124,8 +17256,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -17981,8 +18117,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?jurisdiction: jurisdiction=token (trial-use)
@@ -18276,8 +18416,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/TestScript-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/TestScript-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/TestScript-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/TestScript-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -18693,8 +18837,12 @@ Resources: 148
   ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
   ?context-type: context-type=token (trial-use)
-  ?context-type-quantity: context-type-quantity=composite (trial-use)
-  ?context-type-value: context-type-value=composite (trial-use)
+  ?context-type-quantity: context-type-quantity is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
+  ?context-type-value: context-type-value is composite (resolves: True)
+    $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
+    $(http://hl7.org/fhir/SearchParameter/conformance-context):token
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?effective: effective=date (experimental)

@@ -495,6 +495,32 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                     AddSearchParameter((FhirSearchParam)sp.Clone());
                 }
             }
+
+            // resolve composite parameter info
+            foreach (FhirSearchParam sp in _searchParamsByUrl.Values)
+            {
+                if (sp.Components?.Any() ?? false)
+                {
+                    sp.Resolve(_searchParamsByUrl);
+                }
+            }
+
+            // traverse resources looking for search parameters to resolve as well
+            foreach (FhirComplex fc in _resourcesByName.Values)
+            {
+                if (!(fc.SearchParameters?.Any() ?? false))
+                {
+                    continue;
+                }
+
+                foreach (FhirSearchParam sp in fc.SearchParameters.Values)
+                {
+                    if (sp.Components?.Any() ?? false)
+                    {
+                        sp.Resolve(_searchParamsByUrl);
+                    }
+                }
+            }
         }
 
         if (options.CopyOperations)
@@ -529,7 +555,14 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                 {
                     foreach (FhirCapOperation serverOp in options.CapStatmentFilter.ServerOperations.Values)
                     {
-                        if (FhirManager.Current.TryResolveCanonical(FhirSequence, serverOp.DefinitionCanonical, resolveExternal, out FhirArtifactClassEnum ac, out object resource) &&
+                        if (FhirManager.Current.TryResolveCanonical(
+                                FhirSequence,
+                                string.Empty,
+                                "OperationDefinition",
+                                serverOp.DefinitionCanonical,
+                                resolveExternal,
+                                out FhirArtifactClassEnum ac,
+                                out object resource) &&
                             (ac == FhirArtifactClassEnum.Operation))
                         {
                             AddOperation((FhirOperation)((FhirOperation)resource).Clone());
@@ -545,7 +578,14 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
                         {
                             foreach (FhirCapOperation resourceOp in resourceInteraction.Operations.Values)
                             {
-                                if (FhirManager.Current.TryResolveCanonical(FhirSequence, resourceOp.DefinitionCanonical, resolveExternal, out FhirArtifactClassEnum ac, out object resource) &&
+                                if (FhirManager.Current.TryResolveCanonical(
+                                        FhirSequence,
+                                        string.Empty,
+                                        "OperationDefinition",
+                                        resourceOp.DefinitionCanonical,
+                                        resolveExternal,
+                                        out FhirArtifactClassEnum ac,
+                                        out object resource) &&
                                     (ac == FhirArtifactClassEnum.Operation))
                                 {
                                     AddOperation((FhirOperation)((FhirOperation)resource).Clone());
@@ -2278,6 +2318,16 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     public bool TryParseResource(string json, out object resource, out string resourceType)
     {
         return _fhirConverter.TryParseResource(json, out resource, out resourceType);
+    }
+
+    /// <summary>Attempts to get first from bundle.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out] The resource object.</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetFirstFromBundle(string json, out object resource, out string resourceType)
+    {
+        return _fhirConverter.TryGetFirstFromBundle(json, out resource, out resourceType);
     }
 
     /// <summary>Attempts to process resource.</summary>

@@ -4,11 +4,18 @@
 // </copyright>
 
 
+using System.Net.Http;
+using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using static System.Net.Mime.MediaTypeNames;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirCapResource;
 using static Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using System.Threading;
+using fhirCsR2.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language.OpenApi;
 
@@ -133,12 +140,17 @@ public class ModelBuilder
 
         Dictionary<string, OpenApiTag> tags = new()
         {
-            { "System", new OpenApiTag() { Name = "System", Description = "Server-level requests" } }
+            { SYSTEM_TAG_REF.Reference.Id, new OpenApiTag() { Name = SYSTEM_TAG_REF.Reference.Id, Description = "Sever-level requests" } }
         };
 
         doc.Paths = BuildPaths(schemas, tags);
 
         doc.Tags = tags.Values.ToList();
+
+        if (_caps.SecuritySchemes?.OfType<FhirCapSmartOAuthScheme>()?.FirstOrDefault() is { } oauth && _exporterOptions.ServerUrl is not null)
+        {
+            AddSmartOAuthScheme(_caps.Url, doc, oauth);
+        }
 
         Console.WriteLine($"OpenAPI stats:");
         Console.WriteLine($"          totalPaths: {_totalPaths} ");
@@ -149,6 +161,52 @@ public class ModelBuilder
         Console.WriteLine($"");
 
         return doc;
+    }
+
+    private void AddSmartOAuthScheme(string baseUrl, OpenApiDocument doc, FhirCapSmartOAuthScheme _)
+    {
+        // OpenIdConnect is only supported in OpenApi 3.0
+        if (_openApiOptions.OpenApiVersion == Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0)
+            return;
+
+        if (!baseUrl.EndsWith("/")) baseUrl += "/";
+        var configUrl = $"{baseUrl}.well-known/smart-configuration";
+
+        var schema = new OpenApiSecurityScheme()
+        {
+            Name = "openId",
+            Type = SecuritySchemeType.OpenIdConnect,
+            OpenIdConnectUrl = new Uri(configUrl)
+        };
+
+        doc.Components.SecuritySchemes.Add("openId", schema);
+
+        var schemeRef = new OpenApiSecurityScheme()
+        {
+            Reference = new OpenApiReference() { Id = schema.Name, Type = ReferenceType.SecurityScheme }
+        };
+
+        var scopes = getScopes(configUrl).Result;
+
+        doc.SecurityRequirements.Add(new OpenApiSecurityRequirement()
+        {
+            { schemeRef, scopes }
+        });
+    }
+
+    private async Task<string[]> getScopes(string endpoint)
+    {
+        try
+        {
+            var retriever = new OpenIdConnectConfigurationRetriever();
+            var config = await OpenIdConnectConfigurationRetriever.GetAsync(endpoint, CancellationToken.None);
+
+            return config.ScopesSupported.ToArray();
+        }
+        catch
+        {
+            return Array.Empty<string>();
+        }
     }
 
     /// <summary>Consolidate resource parameters.</summary>
@@ -840,6 +898,9 @@ public class ModelBuilder
         }
     }
 
+    private static readonly OpenApiTag SYSTEM_TAG_REF =
+        new OpenApiTag() { Reference = new OpenApiReference() { Id = "System", Type = ReferenceType.Tag } };
+
     /// <summary>Builds a resource operation get oas operation.</summary>
     /// <param name="resource">The resource.</param>
     /// <param name="fhirOp">  The FHIR operation.</param>
@@ -904,7 +965,7 @@ public class ModelBuilder
 
         if (opLevel == OaOpLevelCodes.System)
         {
-            oasOp.Tags.Add(new OpenApiTag() { Reference = new OpenApiReference() { Id = "System", Type = ReferenceType.Tag, } });
+            oasOp.Tags.Add(SYSTEM_TAG_REF);
         }
         else
         {
@@ -1536,7 +1597,7 @@ public class ModelBuilder
             foreach (string code in _openApiOptions.SearchCommonParams)
             {
                 _totalParamInstances++;
-                
+
                 if (usedParams.Contains(code))
                 {
                     continue;
@@ -1567,7 +1628,7 @@ public class ModelBuilder
                 foreach (FhirCapSearchParam capParam in _caps.ServerSearchParameters.Values)
                 {
                     _totalParamInstances++;
-                    
+
                     if (usedParams.Contains(capParam.Name))
                     {
                         continue;
@@ -1910,7 +1971,7 @@ public class ModelBuilder
 
         if (_openApiOptions.IncludeSummaries)
         {
-            oasOp.Summary = $"delete: Perform a loical delete on a {resource.Name} instance";
+            oasOp.Summary = $"delete: Perform a logical delete on a {resource.Name} instance";
         }
 
         // delete includes PathComponentLogicalId segment
@@ -1950,6 +2011,11 @@ public class ModelBuilder
 
             foreach (FhirSearchParam fhirSp in GetResourceSearchParameters(resource.Name))
             {
+                if (usedParams.Contains(fhirSp.Code))
+                {
+                    continue;
+                }
+
                 _totalParamInstances++;
 
                 if (_openApiOptions.ConsolidateSearchParams)
@@ -2407,7 +2473,14 @@ public class ModelBuilder
             // check operations for this specific resource
             foreach (FhirCapOperation capOp in _caps.ResourceInteractions[resourceName].Operations.Values)
             {
-                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirOpObj))
+                if (!FhirManager.Current.TryResolveCanonical(
+                        _info.FhirSequence,
+                        _exporterOptions.ServerUrl,
+                        "OperationDefinition",
+                        capOp.DefinitionCanonical,
+                        _exporterOptions.ResolveExternal,
+                        out FhirArtifactClassEnum ac,
+                        out object fhirOpObj))
                 {
                     Console.WriteLine($"Skipping unresolvable Operation: {capOp.DefinitionCanonical}");
                     continue;
@@ -2436,7 +2509,14 @@ public class ModelBuilder
             // some servers just shove all operations into system-level reporting
             foreach (FhirCapOperation capOp in _caps.ServerOperations.Values)
             {
-                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirOpObj))
+                if (!FhirManager.Current.TryResolveCanonical(
+                        _info.FhirSequence,
+                        _exporterOptions.ServerUrl,
+                        "OperationDefinition",
+                        capOp.DefinitionCanonical,
+                        _exporterOptions.ResolveExternal,
+                        out FhirArtifactClassEnum ac,
+                        out object fhirOpObj))
                 {
                     continue;
                 }
@@ -2555,7 +2635,14 @@ public class ModelBuilder
 
                 if (!string.IsNullOrEmpty(capSp.DefinitionCanonical))
                 {
-                    if (FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capSp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirSpObj) &&
+                    if (FhirManager.Current.TryResolveCanonical(
+                            _info.FhirSequence,
+                            _exporterOptions.ServerUrl,
+                            "SearchParameter",
+                            capSp.DefinitionCanonical,
+                            _exporterOptions.ResolveExternal,
+                            out FhirArtifactClassEnum ac,
+                            out object fhirSpObj) &&
                         (fhirSpObj is FhirSearchParam fhirSp))
                     {
                         searchParameters.Add(fhirSp);
@@ -2563,6 +2650,10 @@ public class ModelBuilder
                         continue;
                     }
                 }
+
+                var doc = capSp.Documentation;
+                var pattern = @"(\[[A-Z].*\])\((.*.html)\)";  // Match Markdown links [xxxxx](yyyy.html), where xxxx is a capitalized string
+                var fixedDoc = doc is not null ? Regex.Replace(doc, pattern, "$1(http://hl7.org/fhir/$2)") : null;    // prefix those links with HL7 FHIR spec base
 
                 // create a 'local' canonical for referecing
                 searchParameters.Add(new FhirSearchParam(
@@ -2572,8 +2663,8 @@ public class ModelBuilder
                         : new Uri(capSp.DefinitionCanonical),
                     _info.VersionString,
                     capSp.Name,
-                    capSp.Documentation,
-                    capSp.Documentation,
+                    fixedDoc,
+                    fixedDoc,
                     capSp.Name,
                     new List<string>() { resourceName },
                     null,
@@ -2793,7 +2884,14 @@ public class ModelBuilder
         {
             foreach (FhirCapOperation capOp in _caps.ServerOperations.Values)
             {
-                if (!FhirManager.Current.TryResolveCanonical(_info.FhirSequence, capOp.DefinitionCanonical, _exporterOptions.ResolveExternal, out FhirArtifactClassEnum ac, out object fhirOpObj))
+                if (!FhirManager.Current.TryResolveCanonical(
+                        _info.FhirSequence,
+                        _exporterOptions.ServerUrl,
+                        "SearchParameter",
+                        capOp.DefinitionCanonical,
+                        _exporterOptions.ResolveExternal,
+                        out FhirArtifactClassEnum ac,
+                        out object fhirOpObj))
                 {
                     continue;
                 }
@@ -2856,6 +2954,7 @@ public class ModelBuilder
                 : null,
         };
 
+        operation.Tags.Add(SYSTEM_TAG_REF);
         operation.Responses = BuildResponses(new[] { 200 }, resourceName, schemas);
 
         return operation;

@@ -8,6 +8,8 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 /// <summary>A fhir search parameter.</summary>
 public class FhirSearchParam : ICloneable
 {
+    private bool? _compositeResolvesCorrectly = null;
+
     /// <summary>Initializes a new instance of the <see cref="FhirSearchParam"/> class.</summary>
     /// <param name="id">               The identifier.</param>
     /// <param name="url">              The URL.</param>
@@ -158,6 +160,8 @@ public class FhirSearchParam : ICloneable
     /// <summary>Gets the components.</summary>
     public List<FhirSearchParamComponent> Components { get; }
 
+    public bool? CompositeResolvesCorrectly => _compositeResolvesCorrectly;
+
     /// <summary>Deep copy.</summary>
     /// <returns>A FhirSearchParam.</returns>
     public object Clone()
@@ -182,5 +186,35 @@ public class FhirSearchParam : ICloneable
             Expression,
             Components?.Select(c => (FhirSearchParamComponent)c.Clone()).ToList()
         );
+    }
+
+    public void Resolve(Dictionary<string, FhirSearchParam> searchParameters)
+    {
+        if (Components == null)
+        {
+            return;
+        }
+
+        if (searchParameters == null)
+        {
+            _compositeResolvesCorrectly = false;
+            return;
+        }
+
+        // assume resolution
+        _compositeResolvesCorrectly = true;
+
+        // traverse components to resolve each
+        foreach (FhirSearchParamComponent c in Components)
+        {
+            if (string.IsNullOrEmpty(c.Definition) ||
+                (!searchParameters.TryGetValue(c.Definition, out FhirSearchParam sp)))
+            {
+                _compositeResolvesCorrectly = false;
+                continue;
+            }
+
+            c.DefinitionParam = sp;
+        }
     }
 }

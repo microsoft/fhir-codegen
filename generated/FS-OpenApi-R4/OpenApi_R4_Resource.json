@@ -1,12 +1,14 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
     "title": "Firely Server - Resource",
-    "version": "4.10.0"
+    "version": "1.0.0"
   },
-  "host": "server.fire.ly",
-  "schemes": [
-    "http"
+  "servers": [
+    {
+      "url": "https://secure.server.fire.ly/",
+      "description": "Firely Server"
+    }
   ],
   "paths": {
     "/Resource/{logical_id}/$meta": {
@@ -16,55 +18,81 @@
         ],
         "summary": "operation: This operation retrieves a summary of the profiles, tags, and security labels for the given scope; e.g. for each scope:  \n\n* system-wide: a list of all profiles, tags and security labels in use by the system \n* resource-type level: A list of all profiles, tags, and security labels for the resource type \n* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.  Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)",
         "operationId": "ResourceInstanceMetaPost",
-        "consumes": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Input parameters to the operation",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Parameters"
-            }
+            "$ref": "#/components/parameters/logical_id"
           }
         ],
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Parameters"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     },
@@ -75,89 +103,138 @@
         ],
         "summary": "operation: This operation retrieves a summary of the profiles, tags, and security labels for the given scope; e.g. for each scope:  \n\n* system-wide: a list of all profiles, tags and security labels in use by the system \n* resource-type level: A list of all profiles, tags, and security labels for the resource type \n* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.  Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)",
         "operationId": "ResourceMetaPost",
-        "consumes": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Input parameters to the operation",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Parameters"
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Parameters"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     }
   },
-  "definitions": {
-    "Parameters": {
-      "description": "Operation Request or Response",
-      "type": "object"
+  "components": {
+    "schemas": {
+      "Parameters": {
+        "type": "object",
+        "description": "Operation Request or Response"
+      },
+      "OperationOutcome": {
+        "type": "object",
+        "description": "Information about the success/failure of an action"
+      }
     },
-    "OperationOutcome": {
-      "description": "Information about the success/failure of an action",
-      "type": "object"
+    "parameters": {
+      "_format": {
+        "name": "_format",
+        "in": "query",
+        "description": "Override the HTTP content negotiation",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_pretty": {
+        "name": "_pretty",
+        "in": "query",
+        "description": "Ask for a pretty printed response for human convenience",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "logical_id": {
+        "name": "logical_id",
+        "in": "path",
+        "description": "Resource Logical ID",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "securitySchemes": {
+      "openId": {
+        "type": "openIdConnect",
+        "openIdConnectUrl": "https://secure.server.fire.ly/.well-known/smart-configuration"
+      }
     }
   },
-  "parameters": {
-    "_format": {
-      "in": "query",
-      "name": "_format",
-      "description": "Override the HTTP content negotiation",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_pretty": {
-      "in": "query",
-      "name": "_pretty",
-      "description": "Ask for a pretty printed response for human convenience",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "logical_id": {
-      "in": "path",
-      "name": "logical_id",
-      "description": "Resource Logical ID",
-      "required": true,
-      "type": "string"
+  "security": [
+    {
+      "openId": [
+        "openid",
+        "profile",
+        "fhirUser",
+        "offline_access"
+      ]
     }
-  },
+  ],
   "tags": [
     {
       "name": "Resource",

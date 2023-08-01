@@ -384,12 +384,19 @@
     {
         foreach (DiffResults.DiffTypeEnum diffType in Enum.GetValues(typeof(DiffResults.DiffTypeEnum)))
         {
-            var readResult = await BrowserStore.GetAsync<bool>("showDT_" + diffType);
-            if (readResult.Success)
+            try
             {
-                showDiffType.Add(diffType, readResult.Value);
+                var readResult = await BrowserStore.GetAsync<bool>("showDT_" + diffType);
+                if (readResult.Success)
+                {
+                    showDiffType.Add(diffType, readResult.Value);
+                }
+                else
+                {
+                    showDiffType.Add(diffType, true);
+                }
             }
-            else
+            catch (Exception)
             {
                 showDiffType.Add(diffType, true);
             }

@@ -8,6 +8,7 @@ using fhirCsR2.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using Microsoft.Scripting;
 using fhirModels = fhirCsR2.Models;
 using fhirSerialization = fhirCsR2.Serialization;
 
@@ -1801,6 +1802,43 @@ public sealed class FromR2 : IFhirConverter
         }
     }
 
+    /// <summary>Attempts to get the first resource from a bundle.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out].</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    bool IFhirConverter.TryGetFirstFromBundle(string json, out object resource, out string resourceType)
+    {
+        try
+        {
+            // try to parse this JSON into a resource object
+            fhirModels.Bundle parsed = System.Text.Json.JsonSerializer.Deserialize<fhirModels.Bundle>(
+                json,
+                fhirSerialization.FhirSerializerOptions.Compact);
+
+            if ((parsed.Entry != null) && (parsed.Entry.Count > 0))
+            {
+                resource = parsed.Entry[0].Resource;
+                resourceType = parsed.Entry[0].Resource.ResourceType;
+                return true;
+            }
+
+            resource = null;
+            resourceType = string.Empty;
+            return false;
+        }
+        catch (Exception ex)
+        {
+            _errors.Add($"Failed to parse resource: {ex.Message}");
+
+            Console.WriteLine($"FromR2.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
+
+            resource = null;
+            resourceType = string.Empty;
+            return false;
+        }
+    }
+
     /// <summary>Attempts to process resource.</summary>
     /// <param name="resourceToParse">The resource object.</param>
     /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>
@@ -1884,15 +1922,17 @@ public sealed class FromR2 : IFhirConverter
     }
 
     /// <summary>Process the metadata.</summary>
-    /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+    /// <param name="metadata">           The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
     /// <param name="capabilityStatement">[out] Information describing the server.</param>
-    /// <param name="serverUrl"> (Optional) URL of the server.</param>
-    /// <param name="info">      (Optional) The information.</param>
+    /// <param name="serverUrl">          (Optional) URL of the server.</param>
+    /// <param name="info">               (Optional) The information.</param>
+    /// <param name="smartConfig">        (Optional) The smart configuration.</param>
     private void ProcessMetadata(
         object metadata,
         out FhirCapabiltyStatement capabilityStatement,
         string serverUrl = "",
-        IPackageImportable info = null)
+        IPackageImportable info = null,
+        SmartConfiguration smartConfig = null)
     {
         if (metadata == null)
         {
@@ -1927,6 +1967,7 @@ public sealed class FromR2 : IFhirConverter
             impUrl = caps.Implementation.Url ?? string.Empty;
         }
 
+        FhirCapSecurityScheme security = null;
         List<string> serverInteractions = new List<string>();
         Dictionary<string, FhirCapResource> resourceInteractions = new Dictionary<string, FhirCapResource>();
         Dictionary<string, FhirCapSearchParam> serverSearchParams = new Dictionary<string, FhirCapSearchParam>();
@@ -2005,6 +2046,30 @@ public sealed class FromR2 : IFhirConverter
                             string.Empty));
                 }
             }
+
+            if (smartConfig != null)
+            {
+                security = new FhirCapSmartOAuthScheme(
+                    smartConfig.TokenEndpoint,
+                    smartConfig.AuthorizationEndpoint,
+                    smartConfig.IntrospectionEndpoint,
+                    smartConfig.RecovationEndpoint);
+            }
+            else if ((rest.Security != null) &&
+                     (rest.Security.Extension?.Any() ?? false))
+            {
+                Extension smart = rest.Security.Extension.Where(e => e.Url == "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris").FirstOrDefault();
+
+                if (smart != null)
+                {
+                    string tokenUrl = smart.Extension.Where(e => e.Url == "token").FirstOrDefault()?.ValueUri?.ToString() ?? string.Empty;
+                    string authorizationUrl = smart.Extension.Where(e => e.Url == "authorize").FirstOrDefault()?.ValueUri?.ToString() ?? string.Empty;
+                    string introspectionUrl = smart.Extension.Where(e => e.Url == "introspect").FirstOrDefault()?.ValueUri?.ToString() ?? string.Empty;
+                    string revocationUrl = smart.Extension.Where(e => e.Url == "revoke").FirstOrDefault()?.ValueUri?.ToString() ?? string.Empty;
+
+                    security = new FhirCapSmartOAuthScheme(tokenUrl, authorizationUrl, introspectionUrl, revocationUrl);
+                }
+            }
         }
 
         string standardStatus =
@@ -2047,7 +2112,8 @@ public sealed class FromR2 : IFhirConverter
             null,
             resourceInteractions,
             serverSearchParams,
-            serverOperations);
+            serverOperations,
+            null);
 
         if (info != null)
         {
@@ -2058,10 +2124,12 @@ public sealed class FromR2 : IFhirConverter
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>
     /// <param name="metadata">    The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
     /// <param name="serverUrl">   URL of the server.</param>
+    /// <param name="smartConfig"> The smart configuration.</param>
     /// <param name="capabilities">[out] Capabilities of a server.</param>
     void IFhirConverter.ProcessMetadata(
         object metadata,
         string serverUrl,
+        SmartConfiguration smartConfig,
         out FhirCapabiltyStatement capabilities)
     {
         if (metadata == null)
@@ -2070,7 +2138,11 @@ public sealed class FromR2 : IFhirConverter
             return;
         }
 
-        ProcessMetadata(metadata, out capabilities, serverUrl);
+        ProcessMetadata(
+            metadata,
+            out capabilities,
+            serverUrl: serverUrl,
+            smartConfig: smartConfig);
 
         return;
     }

@@ -1,12 +1,14 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
     "title": "Firely Server - Coverage",
-    "version": "4.10.0"
+    "version": "1.0.0"
   },
-  "host": "server.fire.ly",
-  "schemes": [
-    "http"
+  "servers": [
+    {
+      "url": "https://secure.server.fire.ly/",
+      "description": "Firely Server"
+    }
   ],
   "paths": {
     "/Coverage": {
@@ -16,72 +18,141 @@
         ],
         "summary": "create: Create a new Coverage instance",
         "operationId": "CreateCoverage",
-        "consumes": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "A FHIR Coverage",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Coverage"
+        "requestBody": {
+          "description": "A FHIR Coverage",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Coverage"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Coverage"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Coverage"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              }
             }
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "405": {
             "description": "METHOD NOT ALLOWED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "409": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "412": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "422": {
             "description": "UNPROCESSABLE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -92,147 +163,170 @@
         ],
         "summary": "search-type: Search for Coverage instances",
         "operationId": "SearchCoverageGet",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/_elements"
+            "$ref": "#/components/parameters/_elements"
           },
           {
-            "$ref": "#/parameters/_summary"
+            "$ref": "#/components/parameters/_summary"
           },
           {
-            "$ref": "#/parameters/_content"
+            "$ref": "#/components/parameters/_content"
           },
           {
-            "$ref": "#/parameters/_filter"
+            "$ref": "#/components/parameters/_filter"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_in"
+            "$ref": "#/components/parameters/_in"
           },
           {
-            "$ref": "#/parameters/_language"
+            "$ref": "#/components/parameters/_language"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_list"
+            "$ref": "#/components/parameters/_list"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_query"
+            "$ref": "#/components/parameters/_query"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/_text"
+            "$ref": "#/components/parameters/_text"
           },
           {
-            "$ref": "#/parameters/_contained"
+            "$ref": "#/components/parameters/_contained"
           },
           {
-            "$ref": "#/parameters/_count"
+            "$ref": "#/components/parameters/_count"
           },
           {
-            "$ref": "#/parameters/_graph"
+            "$ref": "#/components/parameters/_graph"
           },
           {
-            "$ref": "#/parameters/_include"
+            "$ref": "#/components/parameters/_include"
           },
           {
-            "$ref": "#/parameters/_revinclude"
+            "$ref": "#/components/parameters/_revinclude"
           },
           {
-            "$ref": "#/parameters/_score"
+            "$ref": "#/components/parameters/_score"
           },
           {
-            "$ref": "#/parameters/_sort"
+            "$ref": "#/components/parameters/_sort"
           },
           {
-            "$ref": "#/parameters/_total"
+            "$ref": "#/components/parameters/_total"
           },
           {
-            "$ref": "#/parameters/_format"
+            "$ref": "#/components/parameters/_format"
           },
           {
-            "$ref": "#/parameters/_has"
+            "$ref": "#/components/parameters/_has"
           },
           {
-            "$ref": "#/parameters/beneficiary"
+            "$ref": "#/components/parameters/beneficiary"
           },
           {
-            "$ref": "#/parameters/class-type"
+            "$ref": "#/components/parameters/class-type"
           },
           {
-            "$ref": "#/parameters/class-value"
+            "$ref": "#/components/parameters/class-value"
           },
           {
-            "$ref": "#/parameters/dependent"
+            "$ref": "#/components/parameters/dependent"
           },
           {
-            "$ref": "#/parameters/identifier"
+            "$ref": "#/components/parameters/identifier"
           },
           {
-            "$ref": "#/parameters/patient"
+            "$ref": "#/components/parameters/patient"
           },
           {
-            "$ref": "#/parameters/payor"
+            "$ref": "#/components/parameters/payor"
           },
           {
-            "$ref": "#/parameters/policy-holder"
+            "$ref": "#/components/parameters/policy-holder"
           },
           {
-            "$ref": "#/parameters/status"
+            "$ref": "#/components/parameters/status"
           },
           {
-            "$ref": "#/parameters/subscriber"
+            "$ref": "#/components/parameters/subscriber"
           },
           {
-            "$ref": "#/parameters/type"
+            "$ref": "#/components/parameters/type"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Bundle"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     },
@@ -241,121 +335,108 @@
         "tags": [
           "Coverage"
         ],
-        "summary": "delete: Perform a loical delete on a Coverage instance",
+        "summary": "delete: Perform a logical delete on a Coverage instance",
         "operationId": "DeleteCoverage",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/_content"
+            "$ref": "#/components/parameters/_content"
           },
           {
-            "$ref": "#/parameters/_filter"
+            "$ref": "#/components/parameters/_filter"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_in"
+            "$ref": "#/components/parameters/_in"
           },
           {
-            "$ref": "#/parameters/_language"
+            "$ref": "#/components/parameters/_language"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_list"
+            "$ref": "#/components/parameters/_list"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_query"
+            "$ref": "#/components/parameters/_query"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/_text"
+            "$ref": "#/components/parameters/_text"
           },
           {
-            "$ref": "#/parameters/_count"
+            "$ref": "#/components/parameters/_count"
           },
           {
-            "$ref": "#/parameters/_format"
+            "$ref": "#/components/parameters/_format"
           },
           {
-            "$ref": "#/parameters/_has"
+            "$ref": "#/components/parameters/_has"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/beneficiary"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/class-type"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/class-value"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/dependent"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/identifier"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/patient"
           },
           {
-            "$ref": "#/parameters/beneficiary"
+            "$ref": "#/components/parameters/payor"
           },
           {
-            "$ref": "#/parameters/class-type"
+            "$ref": "#/components/parameters/policy-holder"
           },
           {
-            "$ref": "#/parameters/class-value"
+            "$ref": "#/components/parameters/status"
           },
           {
-            "$ref": "#/parameters/dependent"
+            "$ref": "#/components/parameters/subscriber"
           },
           {
-            "$ref": "#/parameters/identifier"
-          },
-          {
-            "$ref": "#/parameters/patient"
-          },
-          {
-            "$ref": "#/parameters/payor"
-          },
-          {
-            "$ref": "#/parameters/policy-holder"
-          },
-          {
-            "$ref": "#/parameters/status"
-          },
-          {
-            "$ref": "#/parameters/subscriber"
-          },
-          {
-            "$ref": "#/parameters/type"
+            "$ref": "#/components/parameters/type"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Coverage"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              }
             }
           },
           "202": {
@@ -366,32 +447,77 @@
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "405": {
             "description": "METHOD NOT ALLOWED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "409": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -402,52 +528,90 @@
         ],
         "summary": "patch: Patch a Coverage instance",
         "operationId": "PatchCoverage",
-        "consumes": [ ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Patch to apply to a FHIR Coverage record",
-            "required": true,
-            "schema": { }
+            "$ref": "#/components/parameters/logical_id"
           }
         ],
+        "requestBody": {
+          "description": "Patch to apply to a FHIR Coverage record",
+          "content": { },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Coverage"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              }
             }
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "412": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -458,38 +622,61 @@
         ],
         "summary": "read: Read a FHIR Coverage",
         "operationId": "ReadCoverage",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/_elements"
+            "$ref": "#/components/parameters/_elements"
           },
           {
-            "$ref": "#/parameters/_summary"
+            "$ref": "#/components/parameters/_summary"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Coverage"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
@@ -500,184 +687,255 @@
         ],
         "summary": "update,create: Update or Create a Coverage instance",
         "operationId": "UpdateOrCreateCoverage",
-        "consumes": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/_content"
+            "$ref": "#/components/parameters/_content"
           },
           {
-            "$ref": "#/parameters/_filter"
+            "$ref": "#/components/parameters/_filter"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_in"
+            "$ref": "#/components/parameters/_in"
           },
           {
-            "$ref": "#/parameters/_language"
+            "$ref": "#/components/parameters/_language"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_list"
+            "$ref": "#/components/parameters/_list"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_query"
+            "$ref": "#/components/parameters/_query"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/_text"
+            "$ref": "#/components/parameters/_text"
           },
           {
-            "$ref": "#/parameters/_count"
+            "$ref": "#/components/parameters/_count"
           },
           {
-            "$ref": "#/parameters/_format"
+            "$ref": "#/components/parameters/_format"
           },
           {
-            "$ref": "#/parameters/_has"
+            "$ref": "#/components/parameters/_has"
           },
           {
-            "$ref": "#/parameters/_id"
+            "$ref": "#/components/parameters/_id"
           },
           {
-            "$ref": "#/parameters/_lastUpdated"
+            "$ref": "#/components/parameters/_lastUpdated"
           },
           {
-            "$ref": "#/parameters/_profile"
+            "$ref": "#/components/parameters/_profile"
           },
           {
-            "$ref": "#/parameters/_security"
+            "$ref": "#/components/parameters/_security"
           },
           {
-            "$ref": "#/parameters/_source"
+            "$ref": "#/components/parameters/_source"
           },
           {
-            "$ref": "#/parameters/_tag"
+            "$ref": "#/components/parameters/_tag"
           },
           {
-            "$ref": "#/parameters/beneficiary"
+            "$ref": "#/components/parameters/beneficiary"
           },
           {
-            "$ref": "#/parameters/class-type"
+            "$ref": "#/components/parameters/class-type"
           },
           {
-            "$ref": "#/parameters/class-value"
+            "$ref": "#/components/parameters/class-value"
           },
           {
-            "$ref": "#/parameters/dependent"
+            "$ref": "#/components/parameters/dependent"
           },
           {
-            "$ref": "#/parameters/identifier"
+            "$ref": "#/components/parameters/identifier"
           },
           {
-            "$ref": "#/parameters/patient"
+            "$ref": "#/components/parameters/patient"
           },
           {
-            "$ref": "#/parameters/payor"
+            "$ref": "#/components/parameters/payor"
           },
           {
-            "$ref": "#/parameters/policy-holder"
+            "$ref": "#/components/parameters/policy-holder"
           },
           {
-            "$ref": "#/parameters/status"
+            "$ref": "#/components/parameters/status"
           },
           {
-            "$ref": "#/parameters/subscriber"
+            "$ref": "#/components/parameters/subscriber"
           },
           {
-            "$ref": "#/parameters/type"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "An updated FHIR Coverage",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Coverage"
-            }
+            "$ref": "#/components/parameters/type"
           }
         ],
+        "requestBody": {
+          "description": "An updated FHIR Coverage",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Coverage"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Coverage"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Coverage"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              }
             }
           },
           "400": {
             "description": "BAD REQUEST",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "401": {
             "description": "NOT AUTHORIZED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "405": {
             "description": "METHOD NOT ALLOWED",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "409": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "412": {
             "description": "CONFLICT",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "422": {
             "description": "UNPROCESSABLE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     },
@@ -688,222 +946,217 @@
         ],
         "summary": "search-type: Search for Coverage instances",
         "operationId": "SearchCoveragePost",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "_elements",
-            "type": "string"
+        "requestBody": {
+          "description": "FHIR search parameters",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "_elements": {
+                    "title": "_elements",
+                    "type": "string"
+                  },
+                  "_summary": {
+                    "title": "_summary",
+                    "type": "string"
+                  },
+                  "_content": {
+                    "title": "_content",
+                    "type": "string"
+                  },
+                  "_filter": {
+                    "title": "_filter",
+                    "type": "string"
+                  },
+                  "_id": {
+                    "title": "_id",
+                    "type": "string"
+                  },
+                  "_in": {
+                    "title": "_in",
+                    "type": "string"
+                  },
+                  "_language": {
+                    "title": "_language",
+                    "type": "string"
+                  },
+                  "_lastUpdated": {
+                    "title": "_lastUpdated",
+                    "type": "string"
+                  },
+                  "_list": {
+                    "title": "_list",
+                    "type": "string"
+                  },
+                  "_profile": {
+                    "title": "_profile",
+                    "type": "string"
+                  },
+                  "_query": {
+                    "title": "_query",
+                    "type": "string"
+                  },
+                  "_security": {
+                    "title": "_security",
+                    "type": "string"
+                  },
+                  "_source": {
+                    "title": "_source",
+                    "type": "string"
+                  },
+                  "_tag": {
+                    "title": "_tag",
+                    "type": "string"
+                  },
+                  "_text": {
+                    "title": "_text",
+                    "type": "string"
+                  },
+                  "_contained": {
+                    "title": "_contained",
+                    "type": "string"
+                  },
+                  "_count": {
+                    "title": "_count",
+                    "type": "string"
+                  },
+                  "_graph": {
+                    "title": "_graph",
+                    "type": "string"
+                  },
+                  "_include": {
+                    "title": "_include",
+                    "type": "string"
+                  },
+                  "_revinclude": {
+                    "title": "_revinclude",
+                    "type": "string"
+                  },
+                  "_score": {
+                    "title": "_score",
+                    "type": "string"
+                  },
+                  "_sort": {
+                    "title": "_sort",
+                    "type": "string"
+                  },
+                  "_total": {
+                    "title": "_total",
+                    "type": "string"
+                  },
+                  "_format": {
+                    "title": "_format",
+                    "type": "string"
+                  },
+                  "_has": {
+                    "title": "_has",
+                    "type": "string"
+                  },
+                  "beneficiary": {
+                    "title": "beneficiary",
+                    "type": "string"
+                  },
+                  "class-type": {
+                    "title": "class-type",
+                    "type": "string"
+                  },
+                  "class-value": {
+                    "title": "class-value",
+                    "type": "string"
+                  },
+                  "dependent": {
+                    "title": "dependent",
+                    "type": "string"
+                  },
+                  "identifier": {
+                    "title": "identifier",
+                    "type": "string"
+                  },
+                  "patient": {
+                    "title": "patient",
+                    "type": "string"
+                  },
+                  "payor": {
+                    "title": "payor",
+                    "type": "string"
+                  },
+                  "policy-holder": {
+                    "title": "policy-holder",
+                    "type": "string"
+                  },
+                  "status": {
+                    "title": "status",
+                    "type": "string"
+                  },
+                  "subscriber": {
+                    "title": "subscriber",
+                    "type": "string"
+                  },
+                  "type": {
+                    "title": "type",
+                    "type": "string"
+                  }
+                }
+              }
+            }
           },
-          {
-            "in": "formData",
-            "name": "_summary",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_content",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_filter",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_id",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_in",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_language",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_lastUpdated",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_list",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_profile",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_query",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_security",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_source",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_tag",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_text",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_contained",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_count",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_graph",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_include",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_revinclude",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_score",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_sort",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_total",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_format",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "_has",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "beneficiary",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "class-type",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "class-value",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "dependent",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "identifier",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "patient",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "payor",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "policy-holder",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "status",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "subscriber",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "type",
-            "type": "string"
-          }
-        ],
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Bundle"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     },
@@ -914,344 +1167,797 @@
         ],
         "summary": "vread: Read Coverage instance with specific version",
         "operationId": "VReadCoverage",
-        "produces": [
-          "application/fhir+json",
-          "application/fhir+xml"
-        ],
         "parameters": [
           {
-            "$ref": "#/parameters/logical_id"
+            "$ref": "#/components/parameters/logical_id"
           },
           {
-            "$ref": "#/parameters/resource_version"
+            "$ref": "#/components/parameters/resource_version"
           },
           {
-            "$ref": "#/parameters/_elements"
+            "$ref": "#/components/parameters/_elements"
           },
           {
-            "$ref": "#/parameters/_summary"
+            "$ref": "#/components/parameters/_summary"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Coverage"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              }
             }
           },
           "410": {
             "description": "GONE",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           },
           "404": {
             "description": "NOT FOUND",
-            "schema": {
-              "$ref": "#/definitions/OperationOutcome"
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
             }
           }
         }
       },
       "parameters": [
         {
-          "$ref": "#/parameters/_format"
+          "$ref": "#/components/parameters/_format"
         },
         {
-          "$ref": "#/parameters/_pretty"
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/Coverage/{logical_id}/$meta-add": {
+      "post": {
+        "tags": [
+          "Coverage"
+        ],
+        "summary": "operation: This operation takes a meta, and adds the profiles, tags, and security labels found in it to the nominated resource",
+        "operationId": "CoverageInstanceMetaAddPost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/Coverage/{logical_id}/$meta-delete": {
+      "post": {
+        "tags": [
+          "Coverage"
+        ],
+        "summary": "operation: This operation takes a meta, and deletes the profiles, tags, and security labels found in it from the nominated resource",
+        "operationId": "CoverageInstanceMetaDeletePost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/Coverage/{logical_id}/$meta": {
+      "post": {
+        "tags": [
+          "Coverage"
+        ],
+        "summary": "operation: This operation retrieves a summary of the profiles, tags, and security labels for the given scope; e.g. for each scope:  \n\n* system-wide: a list of all profiles, tags and security labels in use by the system \n* resource-type level: A list of all profiles, tags, and security labels for the resource type \n* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.  Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)",
+        "operationId": "CoverageInstanceMetaPost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/Coverage/$meta": {
+      "post": {
+        "tags": [
+          "Coverage"
+        ],
+        "summary": "operation: This operation retrieves a summary of the profiles, tags, and security labels for the given scope; e.g. for each scope:  \n\n* system-wide: a list of all profiles, tags and security labels in use by the system \n* resource-type level: A list of all profiles, tags, and security labels for the resource type \n* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.  Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)",
+        "operationId": "CoverageMetaPost",
+        "requestBody": {
+          "description": "Input parameters to the operation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Parameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parameters"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
         }
       ]
     }
   },
-  "definitions": {
-    "Coverage": {
-      "description": "Insurance or medical plan or a payment agreement",
-      "type": "object"
+  "components": {
+    "schemas": {
+      "Coverage": {
+        "type": "object",
+        "description": "Insurance or medical plan or a payment agreement"
+      },
+      "OperationOutcome": {
+        "type": "object",
+        "description": "Information about the success/failure of an action"
+      },
+      "Bundle": {
+        "type": "object",
+        "description": "Contains a collection of resources"
+      },
+      "Parameters": {
+        "type": "object",
+        "description": "Operation Request or Response"
+      }
     },
-    "OperationOutcome": {
-      "description": "Information about the success/failure of an action",
-      "type": "object"
+    "parameters": {
+      "_format": {
+        "name": "_format",
+        "in": "query",
+        "description": "Override the HTTP content negotiation",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_pretty": {
+        "name": "_pretty",
+        "in": "query",
+        "description": "Ask for a pretty printed response for human convenience",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_elements": {
+        "name": "_elements",
+        "in": "query",
+        "description": "Ask for a particular set of elements to be returned",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_summary": {
+        "name": "_summary",
+        "in": "query",
+        "description": "Return only portions of resources, based on pre-defined levels",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_content": {
+        "name": "_content",
+        "in": "query",
+        "description": "Search on the entire content of the resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_filter": {
+        "name": "_filter",
+        "in": "query",
+        "description": "Provide an inline query expression",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_id": {
+        "name": "_id",
+        "in": "query",
+        "description": "Logical id of this artifact",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_in": {
+        "name": "_in",
+        "in": "query",
+        "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_language": {
+        "name": "_language",
+        "in": "query",
+        "description": "Language of the resource content",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_lastUpdated": {
+        "name": "_lastUpdated",
+        "in": "query",
+        "description": "When the resource version last changed",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_list": {
+        "name": "_list",
+        "in": "query",
+        "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_profile": {
+        "name": "_profile",
+        "in": "query",
+        "description": "Profiles this resource claims to conform to",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_query": {
+        "name": "_query",
+        "in": "query",
+        "description": "A custom search profile that describes a specific defined query operation",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_security": {
+        "name": "_security",
+        "in": "query",
+        "description": "Security Labels applied to this resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_source": {
+        "name": "_source",
+        "in": "query",
+        "description": "Identifies where the resource comes from",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_tag": {
+        "name": "_tag",
+        "in": "query",
+        "description": "Tags applied to this resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_text": {
+        "name": "_text",
+        "in": "query",
+        "description": "Perform searches against the narrative content of a resource",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_contained": {
+        "name": "_contained",
+        "in": "query",
+        "description": "Request different types of handling for contained resources",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_count": {
+        "name": "_count",
+        "in": "query",
+        "description": "Limit the number of match results per page of response",
+        "style": "form",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "_graph": {
+        "name": "_graph",
+        "in": "query",
+        "description": "Include additional resources according to a GraphDefinition",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_include": {
+        "name": "_include",
+        "in": "query",
+        "description": "Include additional resources, based on following links forward across references",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_revinclude": {
+        "name": "_revinclude",
+        "in": "query",
+        "description": "Include additional resources, based on following reverse links across references",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_score": {
+        "name": "_score",
+        "in": "query",
+        "description": "Request match relevance in results",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_sort": {
+        "name": "_sort",
+        "in": "query",
+        "description": "Request which order results should be returned in",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_total": {
+        "name": "_total",
+        "in": "query",
+        "description": "Request a precision of the total number of results for a request",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_has": {
+        "name": "_has",
+        "in": "query",
+        "description": "Enables querying a reverse chain",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "beneficiary": {
+        "name": "beneficiary",
+        "in": "query",
+        "description": "Covered party",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "class-type": {
+        "name": "class-type",
+        "in": "query",
+        "description": "Coverage class (eg. plan, group)",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "class-value": {
+        "name": "class-value",
+        "in": "query",
+        "description": "Value of the class (eg. Plan number, group number)",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "dependent": {
+        "name": "dependent",
+        "in": "query",
+        "description": "Dependent number",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "identifier": {
+        "name": "identifier",
+        "in": "query",
+        "description": "Account number",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "patient": {
+        "name": "patient",
+        "in": "query",
+        "description": "The entity that caused the expenses",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "payor": {
+        "name": "payor",
+        "in": "query",
+        "description": "The identity of the insurer or party paying for services",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "policy-holder": {
+        "name": "policy-holder",
+        "in": "query",
+        "description": "Reference to the policyholder",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status": {
+        "name": "status",
+        "in": "query",
+        "description": "active | inactive | entered-in-error | on-hold | unknown",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "subscriber": {
+        "name": "subscriber",
+        "in": "query",
+        "description": "Reference to the subscriber",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "type": {
+        "name": "type",
+        "in": "query",
+        "description": "E.g. patient, expense, depreciation",
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "logical_id": {
+        "name": "logical_id",
+        "in": "path",
+        "description": "Resource Logical ID",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "resource_version": {
+        "name": "resource_version",
+        "in": "path",
+        "description": "Resource Version Number",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      }
     },
-    "Bundle": {
-      "description": "Contains a collection of resources",
-      "type": "object"
+    "securitySchemes": {
+      "openId": {
+        "type": "openIdConnect",
+        "openIdConnectUrl": "https://secure.server.fire.ly/.well-known/smart-configuration"
+      }
     }
   },
-  "parameters": {
-    "_format": {
-      "in": "query",
-      "name": "_format",
-      "description": "Override the HTTP content negotiation",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_pretty": {
-      "in": "query",
-      "name": "_pretty",
-      "description": "Ask for a pretty printed response for human convenience",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_elements": {
-      "in": "query",
-      "name": "_elements",
-      "description": "Ask for a particular set of elements to be returned",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_summary": {
-      "in": "query",
-      "name": "_summary",
-      "description": "Return only portions of resources, based on pre-defined levels",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_content": {
-      "in": "query",
-      "name": "_content",
-      "description": "Search on the entire content of the resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_filter": {
-      "in": "query",
-      "name": "_filter",
-      "description": "Provide an inline query expression",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_id": {
-      "in": "query",
-      "name": "_id",
-      "description": "Logical id of this artifact",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_in": {
-      "in": "query",
-      "name": "_in",
-      "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_language": {
-      "in": "query",
-      "name": "_language",
-      "description": "Language of the resource content",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_lastUpdated": {
-      "in": "query",
-      "name": "_lastUpdated",
-      "description": "When the resource version last changed",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_list": {
-      "in": "query",
-      "name": "_list",
-      "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_profile": {
-      "in": "query",
-      "name": "_profile",
-      "description": "Profiles this resource claims to conform to",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_query": {
-      "in": "query",
-      "name": "_query",
-      "description": "A custom search profile that describes a specific defined query operation",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_security": {
-      "in": "query",
-      "name": "_security",
-      "description": "Security Labels applied to this resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_source": {
-      "in": "query",
-      "name": "_source",
-      "description": "Identifies where the resource comes from",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_tag": {
-      "in": "query",
-      "name": "_tag",
-      "description": "Tags applied to this resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_text": {
-      "in": "query",
-      "name": "_text",
-      "description": "Perform searches against the narrative content of a resource",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_contained": {
-      "in": "query",
-      "name": "_contained",
-      "description": "Request different types of handling for contained resources",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_count": {
-      "in": "query",
-      "name": "_count",
-      "description": "Limit the number of match results per page of response",
-      "type": "number",
-      "collectionFormat": "multi"
-    },
-    "_graph": {
-      "in": "query",
-      "name": "_graph",
-      "description": "Include additional resources according to a GraphDefinition",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_include": {
-      "in": "query",
-      "name": "_include",
-      "description": "Include additional resources, based on following links forward across references",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_revinclude": {
-      "in": "query",
-      "name": "_revinclude",
-      "description": "Include additional resources, based on following reverse links across references",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_score": {
-      "in": "query",
-      "name": "_score",
-      "description": "Request match relevance in results",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_sort": {
-      "in": "query",
-      "name": "_sort",
-      "description": "Request which order results should be returned in",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_total": {
-      "in": "query",
-      "name": "_total",
-      "description": "Request a precision of the total number of results for a request",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "_has": {
-      "in": "query",
-      "name": "_has",
-      "description": "Enables querying a reverse chain",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "beneficiary": {
-      "in": "query",
-      "name": "beneficiary",
-      "description": "Covered party",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "class-type": {
-      "in": "query",
-      "name": "class-type",
-      "description": "Coverage class (eg. plan, group)",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "class-value": {
-      "in": "query",
-      "name": "class-value",
-      "description": "Value of the class (eg. Plan number, group number)",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "dependent": {
-      "in": "query",
-      "name": "dependent",
-      "description": "Dependent number",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "identifier": {
-      "in": "query",
-      "name": "identifier",
-      "description": "Account number",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "patient": {
-      "in": "query",
-      "name": "patient",
-      "description": "The entity that caused the expenses",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "payor": {
-      "in": "query",
-      "name": "payor",
-      "description": "The identity of the insurer or party paying for services",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "policy-holder": {
-      "in": "query",
-      "name": "policy-holder",
-      "description": "Reference to the policyholder",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "status": {
-      "in": "query",
-      "name": "status",
-      "description": "active | inactive | entered-in-error | on-hold | unknown",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "subscriber": {
-      "in": "query",
-      "name": "subscriber",
-      "description": "Reference to the subscriber",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "type": {
-      "in": "query",
-      "name": "type",
-      "description": "E.g. patient, expense, depreciation",
-      "type": "string",
-      "collectionFormat": "multi"
-    },
-    "logical_id": {
-      "in": "path",
-      "name": "logical_id",
-      "description": "Resource Logical ID",
-      "required": true,
-      "type": "string"
-    },
-    "resource_version": {
-      "in": "path",
-      "name": "resource_version",
-      "description": "Resource Version Number",
-      "required": true,
-      "type": "string"
+  "security": [
+    {
+      "openId": [
+        "openid",
+        "profile",
+        "fhirUser",
+        "offline_access"
+      ]
     }
-  },
+  ],
   "tags": [
     {
       "name": "Coverage",

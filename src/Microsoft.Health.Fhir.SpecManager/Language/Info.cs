@@ -23,13 +23,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private ExportStreamWriter _writer;
 
         /// <summary>Name of the language.</summary>
-        private const string _languageName = "Info";
+        private const string LanguageName = "Info";
 
         /// <summary>The single file export extension.</summary>
-        private const string _singleFileExportExtension = ".txt";
+        private const string SingleFileExportExtension = ".txt";
 
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
-        private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> _primitiveTypeMap = new()
         {
             { "base", "base" },
             { "base64Binary", "base64Binary" },
@@ -57,17 +57,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the reserved words.</summary>
         /// <value>The reserved words.</value>
-        private static readonly HashSet<string> _reservedWords = new HashSet<string>();
+        private static readonly HashSet<string> _reservedWords = new();
 
         /// <summary>Gets the name of the language.</summary>
         /// <value>The name of the language.</value>
-        string ILanguage.LanguageName => _languageName;
+        string ILanguage.LanguageName => LanguageName;
 
         /// <summary>
         /// Gets the single file extension for this language - null or empty indicates a multi-file
         /// export (exporter should copy the contents of the directory).
         /// </summary>
-        string ILanguage.SingleFileExportExtension => _singleFileExportExtension;
+        string ILanguage.SingleFileExportExtension => SingleFileExportExtension;
 
         /// <summary>Gets the FHIR primitive type map.</summary>
         /// <value>The FHIR primitive type map.</value>
@@ -81,7 +81,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// Gets a list of FHIR class types that the language WILL export, regardless of user choices.
         /// Used to provide information to users.
         /// </summary>
-        List<ExporterOptions.FhirExportClassType> ILanguage.RequiredExportClassTypes => new List<ExporterOptions.FhirExportClassType>()
+        List<ExporterOptions.FhirExportClassType> ILanguage.RequiredExportClassTypes => new()
         {
             ExporterOptions.FhirExportClassType.PrimitiveType,
             ExporterOptions.FhirExportClassType.ComplexType,
@@ -94,10 +94,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>
         /// Gets a list of FHIR class types that the language CAN export, depending on user choices.
         /// </summary>
-        List<ExporterOptions.FhirExportClassType> ILanguage.OptionalExportClassTypes => new List<ExporterOptions.FhirExportClassType>();
+        List<ExporterOptions.FhirExportClassType> ILanguage.OptionalExportClassTypes => new();
 
         /// <summary>Gets language-specific options and their descriptions.</summary>
-        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>();
+        Dictionary<string, string> ILanguage.LanguageOptions => new();
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -118,8 +118,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // create a filename for writing (single file for now)
             string filename = Path.Combine(exportDirectory, $"Info_{info.FhirSequence}.txt");
 
-            using (FileStream stream = new FileStream(filename, FileMode.Create))
-            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            using (FileStream stream = new(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new(stream))
             {
                 _writer = writer;
 
@@ -168,7 +168,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
                 else
                 {
-                    val = val + " experimental";
+                    val += " experimental";
                 }
             }
 
@@ -511,8 +511,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirSearchParam searchParam in searchParameters.OrderBy(s => s.Code))
             {
-                string snip = BuildStandardSnippet(searchParam.StandardStatus, searchParam.FhirMaturityLevel, searchParam.IsExperimental);
-                _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code}={searchParam.ValueType}{snip}");
+                if (searchParam.Components?.Any() ?? false)
+                {
+                    _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code} is composite (resolves: {searchParam.CompositeResolvesCorrectly})");
+
+                    _writer.IncreaseIndent();
+
+                    foreach (FhirSearchParamComponent c in searchParam.Components)
+                    {
+                        _writer.WriteLineIndented($"$({c.Definition}):{c.DefinitionParam?.ValueType ?? "unresolved"}");
+                    }
+
+                    _writer.DecreaseIndent();
+                }
+                else
+                {
+                    string snip = BuildStandardSnippet(searchParam.StandardStatus, searchParam.FhirMaturityLevel, searchParam.IsExperimental);
+                    _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code}={searchParam.ValueType}{snip}");
+                }
             }
 
             if (indented)
@@ -572,7 +588,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (element.IsSimple)
             {
-                propertyType = propertyType + " *simple*";
+                propertyType += " *simple*";
             }
 
             if (element.ConstraintsByKey?.Where(kvp => !kvp.Value.IsInherited).Any() ?? false)
@@ -754,7 +770,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes a footer.</summary>
-        private void WriteFooter()
+        private static void WriteFooter()
         {
             return;
         }

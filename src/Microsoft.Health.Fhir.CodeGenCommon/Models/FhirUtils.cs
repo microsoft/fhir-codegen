@@ -10,26 +10,27 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirTypeBase;
+using System;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>A fhir utilities.</summary>
-public abstract class FhirUtils
+public abstract partial class FhirUtils
 {
-    /// <summary>The RegEx remove duplicate lines.</summary>
-    private const string _regexRemoveDuplicateLinesDefinition = "__+";
+    ///// <summary>The RegEx remove duplicate lines.</summary>
+    //private const string RegexRemoveDuplicateLinesDefinition = "__+";
 
-    /// <summary>(Immutable) The RegEx remove duplicate whitespace.</summary>
-    private const string _regexRemoveDuplicateWhitespaceDefinition = "\\s+";
+    ///// <summary>(Immutable) The RegEx remove duplicate whitespace.</summary>
+    //private const string RegexRemoveDuplicateWhitespaceDefinition = "\\s+";
 
     /// <summary>The RegEx remove duplicate lines.</summary>
-    private static Regex _regexRemoveDuplicateLines = new Regex(_regexRemoveDuplicateLinesDefinition);
+    private static readonly Regex _regexRemoveDuplicateLines = RegexRemoveDuplicateLines();
 
     /// <summary>The RegEx remove duplicate whitespace.</summary>
-    private static Regex _regexRemoveDuplicateWhitespace = new Regex(_regexRemoveDuplicateWhitespaceDefinition);
+    private static readonly Regex _regexRemoveDuplicateWhitespace = RegexRemoveDuplicateWhitespace();
 
     /// <summary>The RegEx ASCII escaping.</summary>
-    private static Regex _regexAsciiEscaping = new Regex("[^ -~]+");
+    private static readonly Regex _regexAsciiEscaping = RegexAsciiEscapingR();
 
     /// <summary>(Immutable) The underscore.</summary>
     public static readonly Dictionary<char[], string> ReplacementsWithUnderscores = new(ReplacementComparer.Default)
@@ -171,11 +172,8 @@ public abstract class FhirUtils
     /// <summary>A replacement comparer.</summary>
     private class ReplacementComparer : IEqualityComparer<char[]>
     {
-        /// <summary>The default.</summary>
-        private static ReplacementComparer _default = new();
-
         /// <summary>Gets the default.</summary>
-        public static ReplacementComparer Default => _default;
+        public static ReplacementComparer Default { get; } = new();
 
         /// <summary>Determines whether the specified objects are equal.</summary>
         /// <param name="a">The first object of type <paramref name="T" /> to compare.</param>
@@ -219,7 +217,7 @@ public abstract class FhirUtils
     {
         string value;
 
-        if (concatenatePath && (!string.IsNullOrEmpty(path)))
+        if (concatenatePath && !string.IsNullOrEmpty(path))
         {
             value = path;
         }
@@ -395,7 +393,7 @@ public abstract class FhirUtils
 
         name = input.Trim();
 
-        if (name.Contains(" "))
+        if (name.Contains(' ', StringComparison.Ordinal))
         {
             name = name.Substring(0, name.IndexOf(' '));
         }
@@ -490,19 +488,19 @@ public abstract class FhirUtils
 
         if (value.StartsWith("http://hl7.org/fhir/", StringComparison.Ordinal))
         {
-            value = "FHIR_" + value.Substring(20);
+            value = string.Concat("FHIR_", value.AsSpan(20));
         }
         else if (value.StartsWith("http://hl7.org/fhirpath/", StringComparison.Ordinal))
         {
-            value = "FHIRPath_" + value.Substring(24);
+            value = string.Concat("FHIRPath_", value.AsSpan(24));
         }
         else if (value.StartsWith("http://terminology.hl7.org/", StringComparison.Ordinal))
         {
-            value = "THO_" + value.Substring(27);
+            value = string.Concat("THO_", value.AsSpan(27));
         }
         else if (value.StartsWith("http://hl7.org/", StringComparison.Ordinal))
         {
-            value = "HL7_" + value.Substring(15);
+            value = string.Concat("HL7_", value.AsSpan(15));
         }
         else if (value.StartsWith("https://"))
         {
@@ -514,15 +512,15 @@ public abstract class FhirUtils
         }
         else if (value.StartsWith("urn:oid:"))
         {
-            value = "OID_" + value.Substring(8);
+            value = string.Concat("OID_", value.AsSpan(8));
         }
         else if (value.StartsWith("urn:uuid:"))
         {
-            value = "UUID_" + value.Substring(9);
+            value = string.Concat("UUID_", value.AsSpan(9));
         }
         else if (value.StartsWith('/'))
         {
-            value = "Per" + value.Substring(1);
+            value = string.Concat("Per", value.AsSpan(1));
         }
 
         if (checkForGmt)
@@ -533,7 +531,7 @@ public abstract class FhirUtils
             }
         }
 
-        replacements = replacements ?? ReplacementsWithUnderscores;
+        replacements ??= ReplacementsWithUnderscores;
 
         char[] chars = value.Normalize(NormalizationForm.FormD).ToCharArray();
 
@@ -639,7 +637,7 @@ public abstract class FhirUtils
 
         // need to check for all digits or underscores, or reserved word
         if (RequiresAlpha(value) ||
-            ((reservedWords != null) && reservedWords.Contains(value)))
+            reservedWords != null && reservedWords.Contains(value))
         {
             if (value[0] == '_')
             {
@@ -651,4 +649,13 @@ public abstract class FhirUtils
 
         return value;
     }
+
+    [GeneratedRegex("__+")]
+    private static partial Regex RegexRemoveDuplicateLines();
+
+    [GeneratedRegex("\\s+")]
+    private static partial Regex RegexRemoveDuplicateWhitespace();
+
+    [GeneratedRegex("[^ -~]+")]
+    private static partial Regex RegexAsciiEscapingR();
 }

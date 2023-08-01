@@ -26,9 +26,9 @@ public sealed class FromFhirExpando : IFhirConverter
     private const string ExtUrlSdRegex = "http://hl7.org/fhir/StructureDefinition/regex";
     private const string ExtUrlSdRegex2 = "http://hl7.org/fhir/StructureDefinition/structuredefinition-regex";
 
-    private const string ExtUrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
+    //private const string ExtUrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
     private const string ExtUrlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
-    private const string ExtUrlRdfType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type";
+    //private const string ExtUrlRdfType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type";
 
     /// <summary>The errors.</summary>
     private static List<string> _errors;
@@ -268,8 +268,6 @@ public sealed class FromFhirExpando : IFhirConverter
             return;
         }
 
-        List<KeyValuePair<string, string>> properties = new List<KeyValuePair<string, string>>();
-
         foreach (FhirExpando concept in concepts)
         {
             if (TryBuildInternalConceptFromFhir(
@@ -312,7 +310,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <param name="fhirConcept">        [out] The FHIR concept.</param>
     /// <param name="nodeLookup">         (Optional) The node lookup.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryBuildInternalConceptFromFhir(
+    private static bool TryBuildInternalConceptFromFhir(
         string codeSystemUrl,
         string codeSystemId,
         FhirExpando concept,
@@ -436,7 +434,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <summary>Process the operation.</summary>
     /// <param name="op">             The operation.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
-    private void ProcessOperation(
+    private static void ProcessOperation(
         FhirExpando op,
         IPackageImportable fhirVersionInfo)
     {
@@ -521,7 +519,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <summary>Process the search parameter.</summary>
     /// <param name="sp">             The search parameter.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
-    private void ProcessSearchParam(
+    private static void ProcessSearchParam(
         FhirExpando sp,
         IPackageImportable fhirVersionInfo)
     {
@@ -750,10 +748,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <param name="ec">      The ec.</param>
     private static void AddContains(ref List<FhirConcept> contains, FhirExpando ec)
     {
-        if (contains == null)
-        {
-            contains = new List<FhirConcept>();
-        }
+        contains ??= new List<FhirConcept>();
 
         FhirConcept fhirConcept = new FhirConcept(
             ec.GetString("system"),
@@ -906,7 +901,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <param name="sd">             The structure definition we are parsing.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
     /// <param name="artifactClass">  The type of artifact this structure definition contains.</param>
-    private void ProcessStructureDef(
+    private static void ProcessStructureDef(
         FhirExpando sd,
         IPackageImportable fhirVersionInfo,
         out FhirArtifactClassEnum artifactClass)
@@ -1757,11 +1752,10 @@ public sealed class FromFhirExpando : IFhirConverter
                         complex.Elements[difPath].SetInDifferential();
 
                         if ((!string.IsNullOrEmpty(difSliceName)) &&
-                            (complex.Elements[difPath].Slicing != null) &&
-                            complex.Elements[difPath].Slicing.ContainsKey(sdUrl) &&
-                            complex.Elements[difPath].Slicing[sdUrl].HasSlice(difSliceName))
+                            (complex.Elements[difPath].Slicing?.TryGetValue(sdUrl, out FhirSlicing slicing) ?? false) &&
+                            slicing.HasSlice(difSliceName))
                         {
-                            complex.Elements[difPath].Slicing[sdUrl].SetInDifferential(difSliceName);
+                            slicing.SetInDifferential(difSliceName);
                         }
                     }
                 }
@@ -2052,7 +2046,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <summary>Process the code system.</summary>
     /// <param name="ig">             The ImplementationGuide.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
-    private void ProcessImplementationGuide(
+    private static void ProcessImplementationGuide(
         FhirExpando ig,
         IPackageImportable fhirVersionInfo)
     {
@@ -2118,7 +2112,7 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <summary>Process the code system.</summary>
     /// <param name="cd">             A CompartmentDefinition FhirExpando to process.</param>
     /// <param name="fhirVersionInfo">FHIR Version information.</param>
-    private void ProcessCompartment(
+    private static void ProcessCompartment(
         FhirExpando cd,
         IPackageImportable fhirVersionInfo)
     {
@@ -2263,6 +2257,44 @@ public sealed class FromFhirExpando : IFhirConverter
         }
     }
 
+    /// <summary>Attempts to get the first resource from a bundle.</summary>
+    /// <param name="json">        The JSON.</param>
+    /// <param name="resource">    [out].</param>
+    /// <param name="resourceType">[out] Type of the resource.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    bool IFhirConverter.TryGetFirstFromBundle(string json, out object resource, out string resourceType)
+    {
+        try
+        {
+            // try to parse this JSON
+            FhirExpando parsed = JsonSerializer.Deserialize<FhirExpando>(json);
+
+            FhirExpando res = parsed.GetExpando("entry", "0", "resource");
+
+            if (res == null)
+            {
+                resource = null;
+                resourceType = string.Empty;
+                return false;
+            }
+
+            resource = res;
+            resourceType = res.GetString("resourceType");
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _errors.Add($"Failed to parse resource: {ex.Message}");
+
+            Console.WriteLine($"FromFhirExpando.TryGetFromBundle <<< failed to parse:\n{ex}\n------------------------------------");
+
+            resource = null;
+            resourceType = string.Empty;
+            return false;
+        }
+    }
+
+
     /// <summary>Attempts to process resource.</summary>
     /// <param name="resourceToParse">The resource object.</param>
     /// <param name="fhirVersionInfo">Information describing the FHIR version.</param>
@@ -2389,11 +2421,13 @@ public sealed class FromFhirExpando : IFhirConverter
     /// <param name="capabilityStatement">[out] The capability statement.</param>
     /// <param name="serverUrl">          (Optional) URL of the server.</param>
     /// <param name="info">               (Optional) The information.</param>
-    public void ProcessMetadata(
+    /// <param name="smartConfig">        (Optional) The smart configuration.</param>
+    public static void ProcessMetadata(
         object metadata,
         out FhirCapabiltyStatement capabilityStatement,
         string serverUrl = "",
-        IPackageImportable info = null)
+        IPackageImportable info = null,
+        SmartConfiguration smartConfig = null)
     {
         if (metadata == null)
         {
@@ -2421,6 +2455,7 @@ public sealed class FromFhirExpando : IFhirConverter
         string impDescription = caps.GetString("implementation", "description") ?? string.Empty;
         string impUrl = caps.GetString("implementation", "url") ?? string.Empty;
 
+        FhirCapSecurityScheme security = null;
         List<string> serverInteractions = new();
         List<string> serverInteractionExpectations = new();
         Dictionary<string, FhirCapResource> resourceInteractions = new Dictionary<string, FhirCapResource>();
@@ -2512,6 +2547,29 @@ public sealed class FromFhirExpando : IFhirConverter
                         resourceInfo);
                 }
             }
+
+            if (smartConfig != null)
+            {
+                security = new FhirCapSmartOAuthScheme(
+                    smartConfig.TokenEndpoint,
+                    smartConfig.AuthorizationEndpoint,
+                    smartConfig.IntrospectionEndpoint,
+                    smartConfig.RecovationEndpoint);
+            }
+            else if (rest["security"] is not null)
+            {
+                FhirExpando smartExt = rest.GetExtension("http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris", "security");
+
+                if (smartExt is not null)
+                {
+                    string token = smartExt.GetExtension("token")?.GetString("valueUri");
+                    string authorize = smartExt.GetExtension("authorize")?.GetString("valueUri");
+                    string introspect = smartExt.GetExtension("introspect")?.GetString("valueUri");
+                    string revoke = smartExt.GetExtension("revoke")?.GetString("valueUri");
+
+                    security = new FhirCapSmartOAuthScheme(token, authorize, introspect, revoke);
+                }
+            }
         }
 
         string standardStatus = caps.GetExtensionValueCode(ExtUrlStandardStatus);
@@ -2549,21 +2607,21 @@ public sealed class FromFhirExpando : IFhirConverter
             caps.GetExtensionValueCodeArray(ExtUrlCapExpectation, "_implementationGuide"),
             resourceInteractions,
             serverSearchParams,
-            serverOperations);
+            serverOperations,
+            new[] { security });
 
-        if (info != null)
-        {
-            info.AddCapabilityStatement(capabilityStatement);
-        }
+        info?.AddCapabilityStatement(capabilityStatement);
     }
 
     /// <summary>Process a FHIR metadata resource into Server Information.</summary>
-    /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
-    /// <param name="serverUrl"> URL of the server.</param>
+    /// <param name="metadata">    The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+    /// <param name="serverUrl">   URL of the server.</param>
+    /// <param name="smartConfig"> The smart configuration.</param>
     /// <param name="capabilities">[out] Information describing the server.</param>
     public void ProcessMetadata(
         object metadata,
         string serverUrl,
+        SmartConfiguration smartConfig,
         out FhirCapabiltyStatement capabilities)
     {
         if (metadata == null)
@@ -2572,7 +2630,11 @@ public sealed class FromFhirExpando : IFhirConverter
             return;
         }
 
-        ProcessMetadata(metadata, out capabilities, serverUrl);
+        ProcessMetadata(
+            metadata,
+            out capabilities,
+            serverUrl: serverUrl,
+            smartConfig: smartConfig);
 
         return;
     }
@@ -2609,8 +2671,11 @@ public sealed class FromFhirExpando : IFhirConverter
             foreach (FhirExpando sp in resource.GetExpandoEnumerable("searchParam"))
             {
                 string spName = sp.GetString("name");
+                string spType = sp.GetString("type");
 
-                if (string.IsNullOrEmpty(spName) || searchParams.ContainsKey(spName))
+                if (string.IsNullOrEmpty(spName) ||
+                    searchParams.ContainsKey(spName) ||
+                    string.IsNullOrEmpty(spType))
                 {
                     continue;
                 }
@@ -2620,7 +2685,7 @@ public sealed class FromFhirExpando : IFhirConverter
                     new FhirCapSearchParam(
                         spName,
                         sp.GetString("definition"),
-                        sp.GetString("type"),
+                        spType,
                         sp.GetString("documentation"),
                         sp.GetExtensionValueCode(ExtUrlCapExpectation)));
             }

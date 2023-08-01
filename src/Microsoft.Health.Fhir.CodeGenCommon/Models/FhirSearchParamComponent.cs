@@ -8,6 +8,7 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 /// <summary>A fhir search parameter.</summary>
 public class FhirSearchParamComponent : ICloneable
 {
+
     /// <summary>Initializes a new instance of the <see cref="FhirSearchParamComponent"/> class.</summary>
     /// <param name="definition">       The definition.</param>
     /// <param name="expression">       The expression.</param>
@@ -26,6 +27,7 @@ public class FhirSearchParamComponent : ICloneable
     /// <summary>Gets the definition.</summary>
     public string Definition { get; }
 
+    public FhirSearchParam DefinitionParam { get; set; }
 
     /// <summary>Deep copy.</summary>
     /// <returns>A FhirSearchParam.</returns>
