@@ -2,16 +2,9 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
-using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -24,12 +17,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>The serialization namespace.</summary>
         private const string _serializationNamespace = "Hl7.Fhir.Serialization";
 
-        /// <summary>Name of the header user.</summary>
-        private string _headerUserName;
-
-        /// <summary>The header generation date time.</summary>
-        private string _headerGenerationDateTime;
-
         /// <summary>FHIR information we are exporting.</summary>
         private FhirVersionInfo _info;
 
@@ -40,10 +27,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private Dictionary<string, WrittenValueSetInfo> _writtenValueSets = new Dictionary<string, WrittenValueSetInfo>();
 
         /// <summary>The written resources.</summary>
-        private Dictionary<string, WrittenModelInfo> _writtenModels = new Dictionary<string, WrittenModelInfo>();
+        private readonly Dictionary<string, WrittenModelInfo> _writtenModels = new Dictionary<string, WrittenModelInfo>();
 
         /// <summary>The written converters.</summary>
-        private List<string> _writtenConverters = new List<string>();
+        private readonly List<string> _writtenConverters = new List<string>();
 
         /// <summary>The split characters.</summary>
         private static readonly char[] _splitChars = { '|', ' ' };
@@ -61,7 +48,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private const string _singleFileExportExtension = null;
 
         /// <summary>Structures to skip generating.</summary>
-        private static HashSet<string> _exclusionSet = new HashSet<string>()
+        private static readonly HashSet<string> _exclusionSet = new HashSet<string>()
         {
             /* Since Base defines its methods abstractly, the pattern for generating it
              * is sufficiently different from derived classes that it makes sense not
@@ -151,7 +138,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly Func<WrittenModelInfo, bool> FhirToCsFilter = wmi => !excludeFromCsToFhir.Contains(wmi.FhirName);
         private static readonly Func<WrittenModelInfo, bool> CsToStringFilter = FhirToCsFilter;
 
-        private static string[] excludeFromCsToFhir =
+        private static readonly string[] excludeFromCsToFhir =
         {
             "CanonicalResource",
             "MetadataResource",
@@ -173,7 +160,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "total",
         };
 
-        private static Dictionary<string, string> _elementNameReplacementsByPath = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> _elementNameReplacementsByPath = new Dictionary<string, string>()
         {
             { "Element.id", "ElementId" },
             { "Extension.url", "Url" },
@@ -268,9 +255,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 Directory.CreateDirectory(exportDirectory);
             }
-
-            _headerUserName = Environment.UserName;
-            _headerGenerationDateTime = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss", null);
 
             //foreach (FhirPrimitive model in _info.PrimitiveTypes.Values)
             //{

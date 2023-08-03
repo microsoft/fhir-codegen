@@ -50,4 +50,10 @@
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Cql\Models\fhir-modelinfo-4.0.1.xml">
+      <LogicalName>Fhir401</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
