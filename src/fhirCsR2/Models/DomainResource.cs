@@ -53,7 +53,7 @@ namespace fhirCsR2.Models
         writer.WritePropertyName("contained");
         writer.WriteStartArray();
 
-        foreach (dynamic resource in Contained)
+        foreach (var resource in Contained)
         {
           resource.SerializeJson(writer, options, true);
         }

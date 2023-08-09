@@ -17,6 +17,16 @@
     "snapshot": {
         "element": [
             {
+                "id": "Education",
+                "path": "Education",
+                "description": "Study or other form of education that a person has done.",
+                "min": 0,
+                "max": "*",
+                "mustSupport": false,
+                "isModifier": false,
+                "isSummary": false
+            },
+            {
                 "id": "Education.subject",
                 "path": "Education.subject",
                 "short": "Who was educated?",
