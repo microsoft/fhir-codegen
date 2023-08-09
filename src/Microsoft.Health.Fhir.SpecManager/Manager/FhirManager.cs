@@ -356,7 +356,7 @@ public class FhirManager : IDisposable
                     {
                         if (FhirUtils.DefinitionalResourceNames.TryGetValue(components[i], out string resourceName))
                         {
-                            string part = string.Join('-', components.Where((v, index) => index != i));
+                            string part = string.Join("-", components.Where((v, index) => index != i));
                             part = FhirUtils.ToConvention(part, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
 
                             modified = "http://hl7.org/fhir/" + resourceName + "/" + part;

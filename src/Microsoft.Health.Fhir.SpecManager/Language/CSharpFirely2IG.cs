@@ -234,6 +234,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Gets language-specific options and their descriptions.</summary>
         Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>();
 
+
+        void ILanguage.Export(
+            FhirVersionInfo info,
+            FhirComplex complex,
+            Stream outputStream)
+            => throw new NotImplementedException();
+
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
         /// <param name="serverInfo">     Information describing the server.</param>

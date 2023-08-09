@@ -215,6 +215,12 @@ public sealed class TypeScript2 : ILanguage
         { "namespace", "Base namespace for TypeScript classes (default: Fhir.R{VersionNumber})." },
     };
 
+    void ILanguage.Export(
+        FhirVersionInfo info,
+        FhirComplex complex,
+        Stream outputStream)
+        => throw new NotImplementedException();
+
     /// <summary>Export the passed FHIR version into the specified directory.</summary>
     /// <param name="info">           The information.</param>
     /// <param name="serverInfo">     Information describing the server.</param>

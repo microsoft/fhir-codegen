@@ -93,6 +93,12 @@ public sealed class TypeScriptSdk : ILanguage
         { "namespace", "Base namespace for TypeScript classes (default: Fhir.R{VersionNumber})." },
     };
 
+    void ILanguage.Export(
+        FhirVersionInfo info,
+        FhirComplex complex,
+        Stream outputStream)
+        => throw new NotImplementedException();
+
     /// <summary>Export the passed FHIR version into the specified directory.</summary>
     /// <param name="info">           The information.</param>
     /// <param name="serverInfo">     Information describing the server.</param>
@@ -1906,11 +1912,11 @@ public sealed class TypeScriptSdk : ILanguage
             string sdkTypes;
             if (element.IsArray)
             {
-                sdkTypes = string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType + "[]"));
+                sdkTypes = string.Join("|", element.ChoiceTypes.Select((ct) => ct.ExportType + "[]"));
             }
             else
             {
-                sdkTypes = string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType));
+                sdkTypes = string.Join("|", element.ChoiceTypes.Select((ct) => ct.ExportType));
             }
 
             WriteIndentedComment(sb, element.ExportComment);
@@ -2086,11 +2092,11 @@ public sealed class TypeScriptSdk : ILanguage
         {
             if (isInterface)
             {
-                exportType = "(" + string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportInterfaceType)) + ")";
+                exportType = "(" + string.Join("|", element.ChoiceTypes.Select((ct) => ct.ExportInterfaceType)) + ")";
             }
             else
             {
-                exportType = "(" + string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType)) + ")";
+                exportType = "(" + string.Join("|", element.ChoiceTypes.Select((ct) => ct.ExportType)) + ")";
             }
         }
         else if (isInterface)

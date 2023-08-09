@@ -13,7 +13,9 @@ using Microsoft.OpenApi.Models;
 using static System.Net.Mime.MediaTypeNames;
 using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirCapResource;
 using static Microsoft.Health.Fhir.SpecManager.Language.OpenApi.OpenApiCommon;
+#if !NETSTANDARD
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+#endif
 using System.Threading;
 using fhirCsR2.Models;
 
@@ -196,6 +198,7 @@ public class ModelBuilder
 
     private async Task<string[]> getScopes(string endpoint)
     {
+#if !NETSTANDARD
         try
         {
             var retriever = new OpenIdConnectConfigurationRetriever();
@@ -204,6 +207,7 @@ public class ModelBuilder
             return config.ScopesSupported.ToArray();
         }
         catch
+#endif
         {
             return Array.Empty<string>();
         }

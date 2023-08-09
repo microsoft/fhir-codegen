@@ -210,6 +210,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "min-ts-version", "Minimum TypeScript version (default: 3.7, use '-' for none)." }
         };
 
+        void ILanguage.Export(
+            FhirVersionInfo info,
+            FhirComplex complex,
+            Stream outputStream)
+            => throw new NotImplementedException();
+
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
         /// <param name="serverInfo">     Information describing the server.</param>

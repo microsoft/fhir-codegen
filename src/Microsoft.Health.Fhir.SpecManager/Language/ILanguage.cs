@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.IO;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -51,4 +52,9 @@ public interface ILanguage
         FhirCapabiltyStatement serverInfo,
         ExporterOptions options,
         string exportDirectory);
+
+    void Export(
+        FhirVersionInfo info,
+        FhirComplex complex,
+        Stream outputStream);
 }

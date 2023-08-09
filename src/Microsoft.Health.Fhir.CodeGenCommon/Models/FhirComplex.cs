@@ -762,7 +762,7 @@ public class FhirComplex : FhirModelBase, ICloneable
         Dictionary<string, FhirCapOperation> serverOperations = null,
         bool includeExperimental = false)
     {
-        List<string> contextElements = ContextElements?.Select(s => new string(s)).ToList() ?? null;
+        List<string> contextElements = ContextElements?.ToList() ?? null;
 
         // generate our base copy
         FhirComplex complex = new FhirComplex(

@@ -269,6 +269,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "WriteOnly", "If the output should only contain POST/PUT/DELETE operations (false|true)." },
         };
 
+        void ILanguage.Export(
+            FhirVersionInfo info,
+            FhirComplex complex,
+            Stream outputStream)
+            => throw new NotImplementedException();
+
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
         /// <param name="serverInfo">     Information describing the server.</param>

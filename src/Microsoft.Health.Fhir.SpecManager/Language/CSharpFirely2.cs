@@ -3,6 +3,8 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 using System.IO;
+using System.Runtime.InteropServices.ComTypes;
+using Microsoft.Extensions.Options;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Ncqa.Cql.Model;
 
@@ -404,6 +406,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>If a Cql ModelInfo is available, this will be the parsed XML model file.</summary>
         private ModelInfo _cqlModelInfo = null;
         private IDictionary<string, ClassInfo> _cqlModelClassInfo = null;
+
+        void ILanguage.Export(
+            FhirVersionInfo info,
+            FhirComplex complex,
+            Stream outputStream)
+        {
+            using var infoWriter = new ExportStreamWriter(outputStream, Encoding.UTF8, 1024, true);
+            _modelWriter = infoWriter;
+            _info = info;
+
+            _options = new ExporterOptions(_languageName, Array.Empty<string>(), new List<ExporterOptions.FhirExportClassType>(), ExporterOptions.ExtensionSupportLevel.All, Array.Empty<string>(), Array.Empty<string>(), new Dictionary<string, string>(), null, false, true, null);
+            //_exportDirectory = exportDirectory;
+
+            var dummy = new Dictionary<string, WrittenModelInfo>();
+            WriteResource(complex, ref dummy, GenSubset.Satellite, infoWriter);
+        }
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -808,7 +826,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     string urlComponent = $", Url = \"{sp.URL}\"";
 
                     string[] components = sp.Components?.Select(c => $"""new SearchParamComponent("{c.Definition}", "{c.Expression}")""").ToArray() ?? Array.Empty<string>();
-                    string strComponents = (components.Length > 0) ? $", Component = new SearchParamComponent[] {{ {string.Join(',', components)} }}" : string.Empty;
+                    string strComponents = (components.Length > 0) ? $", Component = new SearchParamComponent[] {{ {string.Join(",", components)} }}" : string.Empty;
 
                     _writer.WriteLineIndented(
                         $"new SearchParamDefinition() " +
@@ -1045,7 +1063,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             GenSubset subset)
         {
             string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+            string filename = Path.Combine(_exportDirectory, "Generated", $"{exportName}.cs");
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                WriteResource(complex, ref writtenModels, subset, writer);
+            }
+        }
 
+        private void WriteResource(
+            FhirComplex complex,
+            ref Dictionary<string, WrittenModelInfo> writtenModels,
+            GenSubset subset,
+            ExportStreamWriter writer)
+        {
+            string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
             writtenModels.Add(
                 complex.Name,
                 new WrittenModelInfo()
@@ -1055,25 +1087,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     IsAbstract = complex.IsAbstract,
                 });
 
-            string filename = Path.Combine(_exportDirectory, "Generated", $"{exportName}.cs");
-
             _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
-            using (FileStream stream = new FileStream(filename, FileMode.Create))
-            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-            {
-                _writer = writer;
+            _writer = writer;
 
-                WriteHeaderComplexDataType();
+            WriteHeaderComplexDataType();
 
-                WriteNamespaceOpen();
+            WriteNamespaceOpen();
 
-                WriteComponent(complex, exportName, true, 0, subset);
+            WriteComponent(complex, exportName, true, 0, subset);
 
-                WriteNamespaceClose();
+            WriteNamespaceClose();
 
-                WriteFooter();
-            }
+            WriteFooter();
         }
 
         /// <summary>Writes the complex data types.</summary>

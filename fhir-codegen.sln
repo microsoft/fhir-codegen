@@ -32,6 +32,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FhirCodeGenBlazor", "src\FhirCodeGenBlazor\FhirCodeGenBlazor.csproj", "{F91764FD-EE86-4FBC-951F-819361ABCA4F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleSourceGen", "SampleSourceGen\SampleSourceGen.csproj", "{08CA896F-B304-4B08-A35A-F6D64C166AF7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.SourceGenerator", "src\Microsoft.Health.Fhir.SourceGenerator\Microsoft.Health.Fhir.SourceGenerator.csproj", "{213EE0DD-ECE8-47AF-8301-42BEAE4EFE54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSourceGen", "TestSourceGen\TestSourceGen.csproj", "{956E4954-BBC8-4471-B53C-9424F1FE681A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +68,18 @@ Global
 		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08CA896F-B304-4B08-A35A-F6D64C166AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CA896F-B304-4B08-A35A-F6D64C166AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CA896F-B304-4B08-A35A-F6D64C166AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CA896F-B304-4B08-A35A-F6D64C166AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{213EE0DD-ECE8-47AF-8301-42BEAE4EFE54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{213EE0DD-ECE8-47AF-8301-42BEAE4EFE54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{213EE0DD-ECE8-47AF-8301-42BEAE4EFE54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{213EE0DD-ECE8-47AF-8301-42BEAE4EFE54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{956E4954-BBC8-4471-B53C-9424F1FE681A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{956E4954-BBC8-4471-B53C-9424F1FE681A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{956E4954-BBC8-4471-B53C-9424F1FE681A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{956E4954-BBC8-4471-B53C-9424F1FE681A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

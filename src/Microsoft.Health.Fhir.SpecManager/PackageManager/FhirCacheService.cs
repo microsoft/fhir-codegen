@@ -131,7 +131,7 @@ public class FhirCacheService : IDisposable
 
         if (directive.Contains('#'))
         {
-            string[] components = directive.Split('#', StringSplitOptions.TrimEntries);
+            string[] components = directive.Split('#').Select(x => x.Trim()).ToArray();
             name = components[0];
             version = components[1];
         }
@@ -1314,7 +1314,7 @@ public class FhirCacheService : IDisposable
             return;
         }
 
-        string[] components = directive.Split('#', StringSplitOptions.TrimEntries);
+        string[] components = directive.Split('#').Select(x => x.Trim()).ToArray();
         if (components.Length != 2)
         {
             Console.WriteLine($"SynchronizeCache <<< unparseable package directive: {directive}");
