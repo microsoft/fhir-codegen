@@ -171,6 +171,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The name of the language.</value>
         string ILanguage.LanguageName => _languageName;
 
+        string ILanguage.Namespace
+        {
+            get => _namespace;
+            set => _namespace = value;
+        }
+
         /// <summary>
         /// Gets the single file extension for this language - null or empty indicates a multi-file
         /// export (exporter should copy the contents of the directory).

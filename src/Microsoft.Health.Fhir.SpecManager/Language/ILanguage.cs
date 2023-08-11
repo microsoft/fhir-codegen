@@ -16,6 +16,8 @@ public interface ILanguage
     /// <value>The name of the language.</value>
     string LanguageName { get; }
 
+    string Namespace { get; set; }
+
     /// <summary>
     /// Gets the single file extension for this language - null or empty indicates a multi-file
     /// export (exporter should copy the contents of the directory).

@@ -27,6 +27,12 @@ public class LangOpenApi : ILanguage
     /// <value>The name of the language.</value>
     string ILanguage.LanguageName => _languageName;
 
+    string ILanguage.Namespace
+    {
+        get => throw new NotImplementedException();
+        set => throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Gets the single file extension for this language - null or empty indicates a multi-file
     /// export (exporter should copy the contents of the directory).

@@ -15,6 +15,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
     {
         /// <summary>The namespace to use during export.</summary>
         private const string Namespace = "Hl7.Fhir.Model";
+        private string _namespace = Namespace;
 
         /// <summary>FHIR information we are exporting.</summary>
         private FhirVersionInfo _info;
@@ -364,6 +365,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The name of the language.</value>
         string ILanguage.LanguageName => _languageName;
 
+        string ILanguage.Namespace
+        {
+            get => _namespace;
+            set => _namespace = value;
+        }
+
         /// <summary>
         /// Gets the single file extension for this language - null or empty indicates a multi-file
         /// export (exporter should copy the contents of the directory).
@@ -695,6 +702,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("using System;");
                 _writer.WriteLineIndented("using System.Collections.Generic;");
                 _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
+                if (_namespace != Namespace)
+                {
+                    _writer.WriteLineIndented($"using {Namespace};");
+                }
+
                 _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
                 _writer.WriteLineIndented("using System.Linq;");
                 _writer.WriteLineIndented("using System.Runtime.Serialization;");
@@ -1083,7 +1095,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 new WrittenModelInfo()
                 {
                     FhirName = complex.Name,
-                    CsName = $"{Namespace}.{exportName}",
+                    CsName = $"{_namespace}.{exportName}",
                     IsAbstract = complex.IsAbstract,
                 });
 
@@ -1148,7 +1160,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 new WrittenModelInfo()
                 {
                     FhirName = complex.Name,
-                    CsName = $"{Namespace}.{exportName}",
+                    CsName = $"{_namespace}.{exportName}",
                     IsAbstract = complex.IsAbstract,
                 });
 
@@ -1224,7 +1236,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 isPatientClass = complex.Name == className;
             }
 
-            if (isPatientClass) interfaces.Add($"{Namespace}.IPatient");
+            if (isPatientClass) interfaces.Add($"{_namespace}.IPatient");
 
             var identifierElement = isResource ? complex.Elements.SingleOrDefault(k => isIdentifierProperty(k.Value)).Value : null;
             if (identifierElement is not null)
@@ -2266,9 +2278,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             bool isPrimitive = false;
 
+            string ns = Namespace;
             if (type.Contains('.'))
             {
                 type = BuildTypeFromPath(type);
+                ns = _namespace;
             }
 
             string nativeType = type;
@@ -2287,7 +2301,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
-                nativeType = $"{Namespace}.{type}";
+                nativeType = $"{ns}.{type}";
             }
 
             if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(type))
@@ -2307,8 +2321,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 FhirElementName = name,
                 PropertyName = isPrimitive ? $"{pascal}Element" : pascal,
-                PropertyType = isList ? $"List<{Namespace}.{type}>" : $"{Namespace}.{type}",
-                ElementType = $"{Namespace}.{type}",
+                PropertyType = isList ? $"List<{ns}.{type}>" : $"{ns}.{type}",
+                ElementType = $"{ns}.{type}",
                 IsList = isList,
                 IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                 IsPrimitive = isPrimitive,
@@ -2820,7 +2834,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes the namespace open.</summary>
         private void WriteNamespaceOpen()
         {
-            _writer.WriteLineIndented($"namespace {Namespace}");
+            _writer.WriteLineIndented($"namespace {_namespace}");
             OpenScope();
         }
 
@@ -2851,6 +2865,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("using System.Linq;");
             _writer.WriteLineIndented("using System.Runtime.Serialization;");
             _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
+            if (_namespace != Namespace)
+            {
+                _writer.WriteLineIndented($"using {Namespace};");
+            }
+
             _writer.WriteLineIndented("using Hl7.Fhir.Serialization;");
             _writer.WriteLineIndented("using Hl7.Fhir.Specification;");
             _writer.WriteLineIndented("using Hl7.Fhir.Utility;");
@@ -2874,6 +2893,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("using System.Runtime.Serialization;");
             _writer.WriteLineIndented("using System.Text.RegularExpressions;");
             _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
+            if (_namespace != Namespace)
+            {
+                _writer.WriteLineIndented($"using {Namespace};");
+            }
+
             _writer.WriteLineIndented("using Hl7.Fhir.Specification;");
             _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
             _writer.WriteLineIndented("using SystemPrimitive = Hl7.Fhir.ElementModel.Types;");
@@ -2974,7 +2998,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
-        private static void AddModels(
+        private void AddModels(
             Dictionary<string, WrittenModelInfo> total,
             IEnumerable<FhirTypeBase> typesToAdd)
         {
@@ -2989,7 +3013,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 return new WrittenModelInfo()
                 {
                     FhirName = t.Name,
-                    CsName = $"{Namespace}.{exportName}",
+                    CsName = $"{_namespace}.{exportName}",
                     IsAbstract = t is FhirComplex c && c.IsAbstract,
                 };
             }

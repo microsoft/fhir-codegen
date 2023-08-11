@@ -47,13 +47,17 @@ namespace Microsoft.Health.Fhir.SourceGenerator
         private static readonly DiagnosticDescriptor ProcessSuccess = new(
             "FHIRGEN005",
             "Parsing success",
-            "Canonical: {0}, Artifact Type: {1}, ResourceCount: {2}",
+            "JsonPath: {0} Canonical: {1}, Artifact Type: {2}, ResourceCount: {3}",
             "FhirSourceGenerator",
-            DiagnosticSeverity.Warning,
+            DiagnosticSeverity.Info,
             true);
 
         public void Execute(GeneratorExecutionContext context)
         {
+#if DEBUG
+            // System.Diagnostics.Debugger.Launch();
+#endif
+
             try
             {
                 var fhirConverter = ConverterHelper.ConverterForVersion(FhirPackageCommon.FhirSequenceEnum.R4B);
@@ -67,6 +71,8 @@ namespace Microsoft.Health.Fhir.SourceGenerator
                         continue;
                     }
 
+                    var namespaceName = context.Compilation.AssemblyName;
+
                     var complex = ProcessFile(structureDef.Path, fhirInfo, fhirConverter, out var fileName, out var canonical, out var artifactClass);
                     if (complex == null)
                     {
@@ -74,9 +80,12 @@ namespace Microsoft.Health.Fhir.SourceGenerator
                         continue;
                     }
 
-                    context.ReportDiagnostic(Diagnostic.Create(ProcessSuccess, Location.None, canonical, artifactClass, fhirInfo.Resources.Count));
+                    context.ReportDiagnostic(Diagnostic.Create(ProcessSuccess, Location.None, structureDef.Path, canonical, artifactClass, fhirInfo.Resources.Count));
 
                     using var memoryStream = new MemoryStream();
+
+                    language.Namespace = GetNamespaceName(namespaceName, structureDef.Path, context.AnalyzerConfigOptions.GlobalOptions.TryGetValue("build_property.projectdir", out var projectDir) ? projectDir : null);
+
                     language.Export(fhirInfo, complex, memoryStream);
                     memoryStream.Position = 0;
 
@@ -106,6 +115,32 @@ namespace Microsoft.Health.Fhir.SourceGenerator
         {
         }
 
+        private string? GetNamespaceName(string? namespaceName, string path, string? projectPath)
+        {
+            string folderName;
+            if (projectPath != null)
+            {
+                folderName = (Path.GetDirectoryName(path) + Path.DirectorySeparatorChar).Replace(projectPath, string.Empty);
+                if (folderName.EndsWith($"{Path.DirectorySeparatorChar}"))
+                {
+                    folderName = folderName.Substring(0, folderName.Length - 1);
+                }
+            }
+            else
+            {
+                folderName = Path.GetDirectoryName(path).Split(Path.DirectorySeparatorChar).Last();
+            }
+
+            if (!string.IsNullOrEmpty(folderName) && folderName != namespaceName)
+            {
+                return $"{namespaceName}.{folderName.Replace(Path.DirectorySeparatorChar, '.')}";
+            }
+            else
+            {
+                return namespaceName;
+            }
+        }
+
         internal FhirComplex? ProcessFile(string path, FhirVersionInfo fhirInfo, IFhirConverter fhirConverter, out string fileName, out string? canonical, out FhirArtifactClassEnum artifactClass)
         {
             fileName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(path));
@@ -123,7 +158,6 @@ namespace Microsoft.Health.Fhir.SourceGenerator
             {
                 canonical = null;
                 artifactClass = default;
-                //context.ReportDiagnostic(Diagnostic.Create(FailedParsingStructureDef, Location.None, path, json));
                 return null;
             }
 
