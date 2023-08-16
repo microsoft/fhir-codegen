@@ -8,13 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="**/*.StructureDefinition.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </AdditionalFiles>
+    <AdditionalFiles Include="**/*.StructureDefinition.json" />
+    <AdditionalFiles Include="**/*.ValueSet.json" />
+    <AdditionalFiles Include="**/*.CodeSystem.json" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Hl7.Fhir.R5" Version="5.3.0" />
+    <PackageReference Include="System.Text.Json" Version="[6.0.8,)" OutputItemType="Analyzer" />
   </ItemGroup>
   
   <ItemGroup>

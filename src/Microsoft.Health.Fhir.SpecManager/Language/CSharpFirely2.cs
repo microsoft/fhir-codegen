@@ -2037,8 +2037,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
                 else
                 {
-                    codeLiteral = $"Code<{Namespace}.{vsClass}.{vsName}>";
-                    enumClass = $"{Namespace}.{vsClass}.{vsName}";
+                    codeLiteral = $"Code<{_namespace}.{vsClass}.{vsName}>";
+                    enumClass = $"{_namespace}.{vsClass}.{vsName}";
 
                     if (vsName.ToUpperInvariant() == pascal.ToUpperInvariant())
                     {

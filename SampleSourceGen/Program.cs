@@ -12,3 +12,10 @@ var patient = new SampleSourceGen.Models.Patient
 {
     Contact = new List<SampleSourceGen.Models.Patient.ContactComponent> { },
 };
+
+var pkmn = new SampleSourceGen.Models.Pokemon
+{
+    Name = "Charmander",
+    NationalDexNo = 4,
+    PrimaryType = SampleSourceGen.Models.Pokemon.PokemonTypes.Fire,
+};

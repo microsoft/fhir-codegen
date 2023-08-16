@@ -13,7 +13,7 @@ var fhirConverter = ConverterHelper.ConverterForVersion(FhirPackageCommon.FhirSe
 
 var fhirInfo = new FhirVersionInfo(FhirPackageCommon.FhirSequenceEnum.R4B);
 
-var complex = generator.ProcessFile("Patient.StructureDefinition.json", fhirInfo, fhirConverter, out var fileName, out var canonical, out var artifactClass);
+var complex = generator.ProcessFile("Patient.StructureDefinition.json", fhirInfo, fhirConverter, m => m.Resources, out var fileName, out var canonical, out var artifactClass);
 
 ILanguage language = LanguageHelper.GetLanguages("CSharpFirely2")[0];
 using var memoryStream = new MemoryStream(short.MaxValue);
