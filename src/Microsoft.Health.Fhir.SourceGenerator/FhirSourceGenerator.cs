@@ -6,6 +6,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.SpecManager.Converters;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SourceGenerator
 {
@@ -54,21 +55,21 @@ namespace Microsoft.Health.Fhir.SourceGenerator
             DiagnosticSeverity.Info,
             true);
 
+        private static readonly ILanguage language = new CSharpFirely2();
+        private static readonly IFhirConverter fhirConverter = new FromFhirExpando();
+
         public void Execute(GeneratorExecutionContext context)
         {
 #if DEBUG
-            // System.Diagnostics.Debugger.Launch();
+            System.Diagnostics.Debugger.Launch();
 #endif
 
             try
             {
-                var fhirConverter = ConverterHelper.ConverterForVersion(FhirPackageCommon.FhirSequenceEnum.R4B);
-
                 var fhirInfo = new FhirVersionInfo(FhirPackageCommon.FhirSequenceEnum.R4B);
-                ILanguage language = LanguageHelper.GetLanguages("CSharpFirely2")[0];
 
-                ProcessArtifacts(FhirArtifactClassEnum.CodeSystem, context, fhirInfo, fhirConverter, (FhirVersionInfo m, string k, out FhirCodeSystem v) => m.CodeSystems.TryGetValue(k, out v));
-                ProcessArtifacts(FhirArtifactClassEnum.ValueSet, context, fhirInfo, fhirConverter, (FhirVersionInfo m, string k, out FhirValueSet v) => m.TryGetValueSet(k, out v));
+                ProcessArtifacts(FhirArtifactClassEnum.CodeSystem, context, fhirInfo, (FhirVersionInfo m, string k, out FhirCodeSystem v) => m.CodeSystems.TryGetValue(k, out v));
+                ProcessArtifacts(FhirArtifactClassEnum.ValueSet, context, fhirInfo, (FhirVersionInfo m, string k, out FhirValueSet v) => m.TryGetValueSet(k, out v));
 
                 foreach (var item in fhirInfo.ValueSetsByUrl)
                 {
@@ -79,7 +80,7 @@ namespace Microsoft.Health.Fhir.SourceGenerator
                     }
                 }
 
-                ProcessStructureDefinitions(context, fhirInfo, fhirConverter, language);
+                ProcessStructureDefinitions(context, fhirInfo);
 
             }
             catch (ReflectionTypeLoadException rex)
@@ -96,15 +97,13 @@ namespace Microsoft.Health.Fhir.SourceGenerator
         {
         }
 
-        private List<TModel> ProcessArtifacts<TModel>(
+        private void ProcessArtifacts<TModel>(
             FhirArtifactClassEnum expectedArtifactClass,
             GeneratorExecutionContext context,
             FhirVersionInfo fhirInfo,
-            IFhirConverter fhirConverter,
             TryGetModel<TModel> modelCollectionLocator)
             where TModel : class
         {
-            var result = new List<TModel>();
             foreach (var valueSet in context.AdditionalFiles.Where(f => f.Path.EndsWith($".{expectedArtifactClass}.json", StringComparison.InvariantCultureIgnoreCase)))
             {
                 if (valueSet is null)
@@ -114,22 +113,18 @@ namespace Microsoft.Health.Fhir.SourceGenerator
 
                 var namespaceName = context.Compilation.AssemblyName;
 
-                var model = ProcessFile<TModel>(valueSet.Path, fhirInfo, fhirConverter, modelCollectionLocator, out var fileName, out var canonical, out var artifactClass);
+                var model = ProcessFile(valueSet.Path, fhirInfo, fhirConverter, modelCollectionLocator, out var fileName, out var canonical, out var artifactClass);
                 if (model == null || artifactClass != expectedArtifactClass)
                 {
                     context.ReportDiagnostic(Diagnostic.Create(FailedArtifactDef, Location.None, valueSet.Path, expectedArtifactClass));
                     continue;
                 }
 
-                result.Add(model);
-
                 context.ReportDiagnostic(Diagnostic.Create(ProcessSuccess, Location.None, valueSet.Path, canonical, artifactClass, fhirInfo.Resources.Count));
             }
-
-            return result;
         }
 
-        private void ProcessStructureDefinitions(GeneratorExecutionContext context, FhirVersionInfo fhirInfo, IFhirConverter fhirConverter, ILanguage language)
+        private void ProcessStructureDefinitions(GeneratorExecutionContext context, FhirVersionInfo fhirInfo)
         {
             foreach (var structureDef in context.AdditionalFiles.Where(f => f.Path.EndsWith(".StructureDefinition.json", StringComparison.InvariantCultureIgnoreCase)))
             {
@@ -140,7 +135,7 @@ namespace Microsoft.Health.Fhir.SourceGenerator
 
                 var namespaceName = context.Compilation.AssemblyName;
 
-                var complex = ProcessFile(structureDef.Path, fhirInfo, fhirConverter, m => m.Resources, out var fileName, out var canonical, out var artifactClass);
+                var complex = ProcessFile(structureDef.Path, fhirInfo, fhirConverter, m => m.Resources, out var id, out var canonical, out var artifactClass);
                 if (complex == null && artifactClass != FhirArtifactClassEnum.Resource)
                 {
                     context.ReportDiagnostic(Diagnostic.Create(FailedArtifactDef, Location.None, structureDef.Path, FhirArtifactClassEnum.Resource));
@@ -164,7 +159,7 @@ namespace Microsoft.Health.Fhir.SourceGenerator
 
                 var code = Encoding.UTF8.GetString(memoryStream.ToArray());
 
-                context.AddSource($"{fileName}.gen.cs", SourceText.From(code, Encoding.UTF8));
+                context.AddSource($"{id}.cs", SourceText.From(code, Encoding.UTF8));
             }
         }
 
@@ -202,19 +197,19 @@ namespace Microsoft.Health.Fhir.SourceGenerator
             out string? canonical,
             out FhirArtifactClassEnum artifactClass)
             where TModel : class
-            => ProcessFile<TModel>(path, fhirInfo, fhirConverter, (FhirVersionInfo m, string k, out TModel v) => modelCollectionAccessor(m).TryGetValue(k, out v), out fileName, out canonical, out artifactClass);
+            => ProcessFile(path, fhirInfo, fhirConverter, (FhirVersionInfo m, string k, out TModel v) => modelCollectionAccessor(m).TryGetValue(k, out v), out fileName, out canonical, out artifactClass);
 
         private TModel? ProcessFile<TModel>(
             string path,
             FhirVersionInfo fhirInfo,
             IFhirConverter fhirConverter,
             TryGetModel<TModel> modelCollectionLocator,
-            out string fileName,
+            out string id,
             out string? canonical,
             out FhirArtifactClassEnum artifactClass)
             where TModel : class
         {
-            fileName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(path));
+            id = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(path));
 
             if (!File.Exists(path))
             {
@@ -225,16 +220,32 @@ namespace Microsoft.Health.Fhir.SourceGenerator
 
             var json = File.ReadAllText(path);
 
-            if (!fhirConverter.TryParseResource(json, out var resource, out var resourceType))
+            if (!fhirConverter.TryParseResource(json, out var resource, out _))
             {
                 canonical = null;
                 artifactClass = default;
                 return null;
             }
 
+            if (resource is FhirExpando expando)
+            {
+                if (expando.TryGetValue("type", out var typeVal) && typeVal is string typeName)
+                {
+                    id = typeName;
+                }
+                else if(expando.TryGetValue("url", out var urlVal) && urlVal is string url)
+                {
+                    id = url;
+                }
+                else if (expando.TryGetValue("id", out var idVal) && urlVal is string id2)
+                {
+                    id = id2;
+                }
+            }
+
             fhirInfo.ProcessResource(resource, out canonical, out artifactClass);
 
-            modelCollectionLocator(fhirInfo, fileName, out var model);
+            modelCollectionLocator(fhirInfo, id, out var model);
             return model;
         }
     }
