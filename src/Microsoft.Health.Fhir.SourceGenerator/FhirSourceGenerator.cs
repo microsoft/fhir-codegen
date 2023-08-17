@@ -61,7 +61,7 @@ namespace Microsoft.Health.Fhir.SourceGenerator
         public void Execute(GeneratorExecutionContext context)
         {
 #if DEBUG
-            System.Diagnostics.Debugger.Launch();
+            // System.Diagnostics.Debugger.Launch();
 #endif
 
             try
@@ -89,7 +89,7 @@ namespace Microsoft.Health.Fhir.SourceGenerator
             }
             catch (Exception ex)
             {
-                context.ReportDiagnostic(Diagnostic.Create(UnhandledException, Location.None, ex.StackTrace.Replace(Environment.NewLine, "")));
+                context.ReportDiagnostic(Diagnostic.Create(UnhandledException, Location.None, ex));
             }
         }
 
@@ -133,10 +133,8 @@ namespace Microsoft.Health.Fhir.SourceGenerator
                     continue;
                 }
 
-                var namespaceName = context.Compilation.AssemblyName;
-
                 var complex = ProcessFile(structureDef.Path, fhirInfo, fhirConverter, m => m.Resources, out var id, out var canonical, out var artifactClass);
-                if (complex == null && artifactClass != FhirArtifactClassEnum.Resource)
+                if (complex == null || artifactClass != FhirArtifactClassEnum.Resource)
                 {
                     context.ReportDiagnostic(Diagnostic.Create(FailedArtifactDef, Location.None, structureDef.Path, FhirArtifactClassEnum.Resource));
                     continue;
@@ -144,23 +142,27 @@ namespace Microsoft.Health.Fhir.SourceGenerator
 
                 context.ReportDiagnostic(Diagnostic.Create(ProcessSuccess, Location.None, structureDef.Path, canonical, artifactClass, fhirInfo.Resources.Count));
 
-                using var memoryStream = new MemoryStream();
-
-                language.Namespace = GetNamespaceName(namespaceName, structureDef.Path, context.AnalyzerConfigOptions.GlobalOptions.TryGetValue("build_property.projectdir", out var projectDir) ? projectDir : null);
-
-                language.Export(fhirInfo, complex, memoryStream);
-                memoryStream.Position = 0;
-
-                if (memoryStream.Length == 0)
-                {
-                    context.ReportDiagnostic(Diagnostic.Create(FailedToGenerate, Location.None, structureDef.Path));
-                    continue;
-                }
-
-                var code = Encoding.UTF8.GetString(memoryStream.ToArray());
-
-                context.AddSource($"{id}.cs", SourceText.From(code, Encoding.UTF8));
+                AddFhirResourceSource(context, fhirInfo, complex, structureDef.Path);
             }
+        }
+
+        private void AddFhirResourceSource(GeneratorExecutionContext context, FhirVersionInfo fhirInfo, FhirComplex complex, string originalFilePath)
+        {
+            var namespaceName = context.Compilation.AssemblyName;
+            language.Namespace = GetNamespaceName(namespaceName, originalFilePath, context.AnalyzerConfigOptions.GlobalOptions.TryGetValue("build_property.projectdir", out var projectDir) ? projectDir : null);
+            using var memoryStream = new MemoryStream();
+            language.Export(fhirInfo, complex, memoryStream);
+            memoryStream.Position = 0;
+
+            if (memoryStream.Length == 0)
+            {
+                context.ReportDiagnostic(Diagnostic.Create(FailedToGenerate, Location.None, originalFilePath));
+                return;
+            }
+
+            var code = Encoding.UTF8.GetString(memoryStream.ToArray());
+
+            context.AddSource($"{complex.Id}.cs", SourceText.From(code, Encoding.UTF8));
         }
 
         private string? GetNamespaceName(string? namespaceName, string path, string? projectPath)
@@ -193,7 +195,8 @@ namespace Microsoft.Health.Fhir.SourceGenerator
             string path,
             FhirVersionInfo fhirInfo,
             IFhirConverter fhirConverter,
-            Func<FhirVersionInfo, Dictionary<string, TModel>> modelCollectionAccessor, out string fileName,
+            Func<FhirVersionInfo, Dictionary<string, TModel>> modelCollectionAccessor,
+            out string fileName,
             out string? canonical,
             out FhirArtifactClassEnum artifactClass)
             where TModel : class
