@@ -183,7 +183,7 @@ public abstract partial class FhirUtils
         /// <see langword="true" /> if the specified objects are equal; otherwise, <see langword="false" />
         /// .
         /// </returns>
-        public bool Equals(char[] a, char[] b)
+        public bool Equals(char[]? a, char[]? b)
         {
             return StructuralComparisons.StructuralEqualityComparer.Equals(a, b);
         }
@@ -214,7 +214,7 @@ public abstract partial class FhirUtils
         NamingConvention convention,
         bool concatenatePath = false,
         string concatenationDelimiter = "",
-        HashSet<string> reservedWords = null)
+        HashSet<string>? reservedWords = null)
     {
         string value;
 

@@ -6,6 +6,7 @@
 
 using System.Collections;
 using System.Runtime.CompilerServices;
+using Microsoft.Health.Fhir.CodeGenCommon.Definitional;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
@@ -201,4 +202,49 @@ public static class LinqExtensions
 
         return dest;
     }
+
+    /// <summary>A string extension method that converts a val to an enum.</summary>
+    /// <typeparam name="T">Generic type parameter.</typeparam>
+    /// <param name="val">The val to act on.</param>
+    /// <returns>Val as a T?</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T? ToEnum<T>(this string val)
+        where T : struct, System.Enum
+    {
+        if (val.TryFhirEnum(out T v))
+        {
+            return v;
+        }
+
+        return null;
+    }
+
+    /// <summary>A string extension method that converts a val to an enum.</summary>
+    /// <typeparam name="T">Generic type parameter.</typeparam>
+    /// <param name="source">    The source dictionary to copy.</param>
+    /// <param name="defaultVal">(Optional) The default value.</param>
+    /// <returns>Val as a T?</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static IEnumerable<T> ToEnum<T>(
+        this IEnumerable<string> source,
+        T? defaultVal = null)
+        where T : struct, System.Enum
+    {
+        List<T> list = new();
+
+        foreach (string val in source)
+        {
+            if (val.TryFhirEnum(out T v))
+            {
+                list.Add(v);
+            }
+            else if (defaultVal != null)
+            {
+                list.Add((T)defaultVal);
+            }
+        }
+
+        return list.Any() ? list.AsEnumerable() : Enumerable.Empty<T>();
+    }
 }
+
