@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.Health.Fhir.CodeGenCommon.BaseModels;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Instance;
@@ -28,7 +29,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A definition grouping.</summary>
-    public record class DefinitionGrouping : FhirElementBase, ICloneable
+    public record class DefinitionGrouping : FhirBase, ICloneable
     {
         /// <summary>Gets or initializes the name.</summary>
         public required string Name { get; init; }
@@ -42,7 +43,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A definition page.</summary>
-    public record class DefinitionPage : FhirElementBase, ICloneable
+    public record class DefinitionPage : FhirBase, ICloneable
     {
         private PageGenerationCodes _pageGeneration = PageGenerationCodes.Generated;
         private string _pageGenerationLiteral = string.Empty;
@@ -99,7 +100,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A definition parameter.</summary>
-    public record class DefinitionParameter : FhirElementBase, ICloneable
+    public record class DefinitionParameter : FhirBase, ICloneable
     {
         /// <summary>Gets or initializes the code.</summary>
         public required string Code { get; init; }
@@ -113,7 +114,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A definition resource.</summary>
-    public record class DefinitionResource : FhirElementBase, ICloneable
+    public record class DefinitionResource : FhirBase, ICloneable
     {
         /// <summary>Initializes a new instance of the ArtifactResource class.</summary>
         public DefinitionResource() : base() { }
@@ -160,7 +161,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A definition template.</summary>
-    public record class DefinitionTemplate : FhirElementBase, ICloneable
+    public record class DefinitionTemplate : FhirBase, ICloneable
     {
         /// <summary>Gets or initializes the code.</summary>
         public required string Code { get; init; }
@@ -177,7 +178,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A dependency.</summary>
-    public record class Dependency : FhirElementBase, ICloneable
+    public record class Dependency : FhirBase, ICloneable
     {
         /// <summary>Initializes a new instance of the Dependency class.</summary>
         public Dependency() : base() { }
@@ -212,7 +213,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A global profile.</summary>
-    public record class GlobalProfile : FhirElementBase, ICloneable
+    public record class GlobalProfile : FhirBase, ICloneable
     {
         /// <summary>Initializes a new instance of the GlobalProfile class.</summary>
         public GlobalProfile() : base() { }
@@ -239,7 +240,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A guide definition.</summary>
-    public record class GuideDefinition : FhirElementBase, ICloneable
+    public record class GuideDefinition : FhirBase, ICloneable
     {
         /// <summary>Initializes a new instance of the GuideDefinition class.</summary>
         public GuideDefinition() : base() { }
@@ -278,7 +279,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A list of the guide.</summary>
-    public record class GuideManifest : FhirElementBase, ICloneable
+    public record class GuideManifest : FhirBase, ICloneable
     {
         /// <summary>Initializes a new instance of the GuideManifest class.</summary>
         public GuideManifest() : base() { }
@@ -313,7 +314,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A manifest page.</summary>
-    public record class ManifestPage : FhirElementBase, ICloneable
+    public record class ManifestPage : FhirBase, ICloneable
     {
         /// <summary>Initializes a new instance of the ManifestPage class.</summary>
         public ManifestPage() : base() { }
@@ -344,7 +345,7 @@ public record class FhirImplementationGuide : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A manifest resource.</summary>
-    public record class ManifestResource : FhirElementBase, ICloneable
+    public record class ManifestResource : FhirBase, ICloneable
     {
         /// <summary>Initializes a new instance of the ManifestResource class.</summary>
         public ManifestResource() : base() { }

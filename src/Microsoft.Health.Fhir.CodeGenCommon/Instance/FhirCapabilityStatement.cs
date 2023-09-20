@@ -7,7 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
-using Microsoft.Health.Fhir.CodeGenCommon.Definitional;
+using Microsoft.Health.Fhir.CodeGenCommon.Expectations;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Instance;
 

@@ -4,7 +4,7 @@
 // </copyright>
 
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.Health.Fhir.CodeGenCommon.Definitional;
+using Microsoft.Health.Fhir.CodeGenCommon.Structure;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Instance;
@@ -247,26 +247,31 @@ public record class FhirValueSet : FhirCanonicalBase, ICloneable
                 throw new ArgumentNullException(nameof(element));
             }
 
-            if (element.Binding is not null)
+            if ((element.ValueSetBindingStrength != null) &&
+                (element.ValueSetBindingStrength > _strongestBinding))
             {
-                if (element.Binding.Strength > _strongestBinding)
-                {
-                    _strongestBinding = element.Binding.Strength;
-                }
+                _strongestBinding = (FhirElement.ElementDefinitionBindingStrength)element.ValueSetBindingStrength;
             }
 
-            if (element.Path is not null)
+            if (!string.IsNullOrEmpty(element.Path))
             {
                 if (!_referencingElementsByPath.ContainsKey(element.Path))
                 {
                     _referencingElementsByPath.Add(element.Path, element);
                 }
             }
-            else if (element.Definition is not null)
+            else if (!string.IsNullOrEmpty(element.Url))
             {
-                if (!_referencingExternalElementsByUrl.ContainsKey(element.Definition))
+                if (!_referencingExternalElementsByUrl.ContainsKey(element.Url))
                 {
-                    _referencingExternalElementsByUrl.Add(element.Definition, element);
+                    _referencingExternalElementsByUrl.Add(element.Url, element);
+                }
+            }
+            else if (!string.IsNullOrEmpty(element.Name))
+            {
+                if (!_referencingExternalElementsByUrl.ContainsKey(element.Name))
+                {
+                    _referencingExternalElementsByUrl.Add(element.Name, element);
                 }
             }
         }
@@ -383,7 +388,11 @@ public record class FhirValueSet : FhirCanonicalBase, ICloneable
     protected FhirValueSet(FhirValueSet other)
         : base(other)
     {
-
+        Composition = other.Composition == null ? null : other.Composition with { };
+        Expansion = other.Expansion == null ? null : other.Expansion with { };
+        Concepts = other.Concepts.Select(c => c with { });
+        ReferencedCodeSystems = other.ReferencedCodeSystems.Select(r => r);
+        References = other.References with { };
     }
 
     /// <summary>Gets or initializes the composition.</summary>
@@ -408,16 +417,7 @@ public record class FhirValueSet : FhirCanonicalBase, ICloneable
     /// <summary>Gets the set the referenced code system belongs to.</summary>
     public HashSet<string> ReferencedCodeSystemSet { get => _referencedCodeSystems; }
 
-    /// <summary>Gets the elements that reference this value set, by FHIR element path.</summary>
-    public Dictionary<string, FhirElement> ReferencingElementsByPath { get => _referencingElementsByPath; }
-
-    /// <summary>
-    /// Gets the full pathname of the external referencing elements (e.g., extensions, profiles) by
-    /// definitional URL.
-    /// </summary>
-    public Dictionary<string, FhirElement> ReferencingExternalElementsByUrl { get => _referencingExternalElementsByUrl; }
-
-
+    public ValueSetReference References { get; init; } = new();
 
     /// <summary>Gets the key.</summary>
     public string Key => $"{Url}|{Version}";

@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.Health.Fhir.CodeGenCommon.BaseModels;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Instance;
@@ -40,7 +41,7 @@ public record class FhirCompartment : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A compartment resource.</summary>
-    public record class CompartmentResource : FhirElementBase, ICloneable
+    public record class CompartmentResource : FhirBase, ICloneable
     {
         public CompartmentResource() : base() { }
 

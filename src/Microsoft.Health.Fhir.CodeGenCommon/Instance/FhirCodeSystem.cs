@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.Health.Fhir.CodeGenCommon.BaseModels;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Instance;
@@ -101,7 +102,7 @@ public record class FhirCodeSystem : FhirCanonicalBase, ICloneable
     }
 
     /// <summary>A code system filter.</summary>
-    public record class FilterDefinition : FhirElementBase, ICloneable
+    public record class FilterDefinition : FhirBase, ICloneable
     {
         private HashSet<string> _operators = new();
 

@@ -5,7 +5,8 @@
 
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
-using Microsoft.Health.Fhir.CodeGenCommon.Definitional;
+using Microsoft.Health.Fhir.CodeGenCommon.BaseModels;
+using Microsoft.Health.Fhir.CodeGenCommon.Expectations;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Instance;
 

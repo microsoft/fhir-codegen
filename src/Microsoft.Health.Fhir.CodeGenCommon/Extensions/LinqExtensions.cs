@@ -6,7 +6,7 @@
 
 using System.Collections;
 using System.Runtime.CompilerServices;
-using Microsoft.Health.Fhir.CodeGenCommon.Definitional;
+using Microsoft.Health.Fhir.CodeGenCommon.Structure;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 

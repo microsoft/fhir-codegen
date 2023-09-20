@@ -4,7 +4,7 @@
 // </copyright>
 
 using System.Runtime.CompilerServices;
-using Microsoft.Health.Fhir.CodeGenCommon.Definitional;
+using Microsoft.Health.Fhir.CodeGenCommon.Expectations;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 

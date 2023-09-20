@@ -4,11 +4,12 @@
 // </copyright>
 
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.Health.Fhir.CodeGenCommon.BaseModels;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Instance;
 
 /// <summary>A FHIR codeable concept.</summary>
-public record class FhirCodeableConcept : FhirElementBase, ICloneable
+public record class FhirCodeableConcept : FhirBase, ICloneable
 {
     /// <summary>Initializes a new instance of the <see cref="FhirCodeableConcept"/> class.</summary>
     public FhirCodeableConcept() : base() { }
