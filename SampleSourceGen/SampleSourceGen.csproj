@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <OutputType>Exe</OutputType>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +19,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\src\fhirCsR2\fhirCsR2.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" Visible="false" />
+    <ProjectReference Include="..\src\Microsoft.Health.Fhir.CodeGeneration\Microsoft.Health.Fhir.CodeGeneration.csproj" />
     <ProjectReference Include="..\src\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" Visible="false" />
     <ProjectReference Include="..\src\Microsoft.Health.Fhir.SourceGenerator\Microsoft.Health.Fhir.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\src\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" Visible="false" />

@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		src\Directory.Build.props = src\Directory.Build.props
 		.github\workflows\docs.yaml = .github\workflows\docs.yaml
 		GeoPol.xml = GeoPol.xml
 		LICENSE = LICENSE
@@ -36,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleSourceGen", "SampleSo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.SourceGenerator", "src\Microsoft.Health.Fhir.SourceGenerator\Microsoft.Health.Fhir.SourceGenerator.csproj", "{213EE0DD-ECE8-47AF-8301-42BEAE4EFE54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSourceGen", "TestSourceGen\TestSourceGen.csproj", "{956E4954-BBC8-4471-B53C-9424F1FE681A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSourceGen", "TestSourceGen\TestSourceGen.csproj", "{956E4954-BBC8-4471-B53C-9424F1FE681A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.CodeGeneration", "src\Microsoft.Health.Fhir.CodeGeneration\Microsoft.Health.Fhir.CodeGeneration.csproj", "{37BFB554-48B3-4BBA-83ED-415956898C48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +83,10 @@ Global
 		{956E4954-BBC8-4471-B53C-9424F1FE681A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{956E4954-BBC8-4471-B53C-9424F1FE681A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{956E4954-BBC8-4471-B53C-9424F1FE681A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37BFB554-48B3-4BBA-83ED-415956898C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37BFB554-48B3-4BBA-83ED-415956898C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37BFB554-48B3-4BBA-83ED-415956898C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37BFB554-48B3-4BBA-83ED-415956898C48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
