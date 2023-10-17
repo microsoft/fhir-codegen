@@ -58,6 +58,7 @@ internal class Parser
 
                 string? structureDefPath = null;
                 string[] terminologies = Array.Empty<string>();
+                Location? location = null;
 
                 foreach (AttributeListSyntax mal in classDec.AttributeLists)
                 {
@@ -103,8 +104,8 @@ internal class Parser
                                 switch (items.Length)
                                 {
                                     case 1:
-                                        // GenerateServiceRegistration(string configurationSection)
-                                        structureDefPath = (string)GetItem(items[0])!;
+                                        var value = GetItem(items[0]) as string;
+                                        structureDefPath = ResolvePath(value);
                                         break;
 
                                     default:
@@ -132,7 +133,13 @@ internal class Parser
                                         {
                                             case "TerminologyResources":
                                                 var values = (ImmutableArray<TypedConstant>)GetItem(value)!;
-                                                terminologies = values.Select(x => x.Value?.ToString()).Where(x => !string.IsNullOrEmpty(x)).ToArray()!;
+                                                var testValues = values.Select(x => x.Value?.ToString()).Where(x => !string.IsNullOrEmpty(x)).ToArray()!;
+                                                terminologies = new string[testValues.Length];
+                                                for (int i = 0; i < testValues.Length; i++)
+                                                {
+                                                    terminologies[i] = ResolvePath(testValues[i])!;
+                                                }
+
                                                 break;
                                         }
                                     }
@@ -145,7 +152,31 @@ internal class Parser
                                 break;
                             }
 
+                            location = ma.GetLocation();
                             static object? GetItem(TypedConstant arg) => arg.Kind == TypedConstantKind.Array ? arg.Values : arg.Value;
+
+                            string? ResolvePath(string? path)
+                            {
+                                if (path == null)
+                                {
+                                    return null;
+                                }
+
+                                path = Path.Combine(path.Split('/', '\\'));
+                                string found = _context.AdditionalFiles.Where(x => x.Path.EndsWith(path)).Select(x => x.Path).FirstOrDefault();
+                                if (found == null && projectDir != null)
+                                {
+                                    found = Path.Combine(projectDir, path);
+                                }
+
+                                if (!File.Exists(found))
+                                {
+                                    hasMisconfiguredInput = true;
+                                    _reportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.UnableToResolveFilePath, ma.GetLocation(), found));
+                                }
+
+                                return found;
+                            }
                         }
                     }
                 }
@@ -183,21 +214,7 @@ internal class Parser
                         }
                     }
 
-                    result.Add(new ResourcePartialClass(nspace, classDecSymbol.Name, ResolvePath(structureDefPath), terminologies.Select(ResolvePath).ToArray()));
-
-                    string ResolvePath(string path)
-                    {
-                        path = Path.Combine(path.Split('/', '\\'));
-                        var found = _context.AdditionalFiles.Where(x => x.Path.EndsWith(path)).Select(x => x.Path).FirstOrDefault();
-                        if (found == null && projectDir != null)
-                        {
-                            found = Path.Combine(projectDir, path);
-                        }
-
-                        Debug.Assert(File.Exists(found), $"File {found} does not exist");
-
-                        return found;
-                    }
+                    result.Add(new ResourcePartialClass(location, nspace, classDecSymbol.Name, structureDefPath, terminologies));
                 }
             }
         }

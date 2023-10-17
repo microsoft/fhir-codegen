@@ -43,4 +43,20 @@ internal static class DiagnosticDescriptors
         "FhirSourceGenerator",
         DiagnosticSeverity.Info,
         true);
+
+    public static readonly DiagnosticDescriptor ResourceNameMismatch = new(
+        "FHIRGEN006",
+        "FHIR Resource name mismatch",
+        "StructureDefinition with name '{0}' mismatches with the partial class '{1}'.",
+        "FhirSourceGenerator",
+        DiagnosticSeverity.Error,
+        true);
+
+    public static readonly DiagnosticDescriptor UnableToResolveFilePath = new(
+        "FHIRGEN007",
+        "FHIR Resource file not found",
+        "Unable to find FHIR resource file at path '{0}'.",
+        "FhirSourceGenerator",
+        DiagnosticSeverity.Error,
+        true);
 }

@@ -1,3 +1,5 @@
-﻿namespace Microsoft.Health.Fhir.SourceGenerator.Parsing;
+﻿using Microsoft.CodeAnalysis;
 
-internal record class ResourcePartialClass(string Namespace, string Name, string StructureDefinitionPath, string[] TerminologyResourcePaths);
+namespace Microsoft.Health.Fhir.SourceGenerator.Parsing;
+
+internal record class ResourcePartialClass(Location Location, string Namespace, string Name, string StructureDefinitionPath, string[] TerminologyResourcePaths);

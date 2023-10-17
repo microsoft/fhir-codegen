@@ -17,14 +17,14 @@ internal class Emitter
     private readonly IFhirConverter _fhirConverter = new FromFhirExpando();
     private readonly FhirVersionInfo _fhirInfo = new FhirVersionInfo(FhirPackageCommon.FhirSequenceEnum.R4B);
     private readonly ResourcePartialClass _resource;
-    private readonly Action<Diagnostic> _reportError;
+    private readonly Action<Diagnostic> _report;
 
     public Emitter(
         ResourcePartialClass resource,
-        Action<Diagnostic> reportError)
+        Action<Diagnostic> report)
     {
         _resource = resource;
-        _reportError = reportError;
+        _report = report;
     }
 
     public string? Emit()
@@ -64,11 +64,11 @@ internal class Emitter
         }
         catch (ReflectionTypeLoadException rex)
         {
-            _reportError(Diagnostic.Create(DiagnosticDescriptors.TypeLoaderException, Location.None, rex.LoaderExceptions));
+            _report(Diagnostic.Create(DiagnosticDescriptors.TypeLoaderException, Location.None, rex.LoaderExceptions));
         }
         catch (Exception ex)
         {
-            _reportError(Diagnostic.Create(DiagnosticDescriptors.UnhandledException, Location.None, ex));
+            _report(Diagnostic.Create(DiagnosticDescriptors.UnhandledException, Location.None, ex));
         }
 
         return null;
@@ -89,11 +89,11 @@ internal class Emitter
             var model = ProcessFile(path, fhirInfo, _fhirConverter, modelCollectionLocator, out var fileName, out var canonical, out var artifactClass);
             if (model == null || (artifactClass != FhirArtifactClassEnum.CodeSystem && artifactClass != FhirArtifactClassEnum.ValueSet))
             {
-                _reportError(Diagnostic.Create(DiagnosticDescriptors.FailedArtifactDef, Location.None, path, "CodeSystem or ValueSet"));
+                _report(Diagnostic.Create(DiagnosticDescriptors.FailedArtifactDef, Location.None, path, "CodeSystem or ValueSet"));
                 continue;
             }
 
-            _reportError(Diagnostic.Create(DiagnosticDescriptors.ProcessSuccess, Location.None, path, canonical, artifactClass, fhirInfo.Resources.Count));
+            _report(Diagnostic.Create(DiagnosticDescriptors.ProcessSuccess, Location.None, path, canonical, artifactClass, fhirInfo.Resources.Count));
         }
     }
 
@@ -104,11 +104,16 @@ internal class Emitter
         var complex = ProcessFile(structureDef, fhirInfo, _fhirConverter, m => m.Resources, out var id, out var canonical, out var artifactClass);
         if (complex == null || artifactClass != FhirArtifactClassEnum.Resource)
         {
-            _reportError(Diagnostic.Create(DiagnosticDescriptors.FailedArtifactDef, Location.None, structureDef, FhirArtifactClassEnum.Resource));
+            _report(Diagnostic.Create(DiagnosticDescriptors.FailedArtifactDef, Location.None, structureDef, FhirArtifactClassEnum.Resource));
+            return null;
+        }
+        else if (complex.Name != _resource.Name)
+        {
+            _report(Diagnostic.Create(DiagnosticDescriptors.ResourceNameMismatch, _resource.Location, complex.Name, _resource.Name));
             return null;
         }
 
-        _reportError(Diagnostic.Create(DiagnosticDescriptors.ProcessSuccess, Location.None, structureDef, canonical, artifactClass, fhirInfo.Resources.Count));
+        _report(Diagnostic.Create(DiagnosticDescriptors.ProcessSuccess, Location.None, structureDef, canonical, artifactClass, fhirInfo.Resources.Count));
 
         return GenerateFhirResourceSource(fhirInfo, complex, structureDef);
 
@@ -124,7 +129,7 @@ internal class Emitter
 
         if (memoryStream.Length == 0)
         {
-            _reportError(Diagnostic.Create(DiagnosticDescriptors.FailedToGenerate, Location.None, originalFilePath));
+            _report(Diagnostic.Create(DiagnosticDescriptors.FailedToGenerate, Location.None, originalFilePath));
             return null;
         }
 
