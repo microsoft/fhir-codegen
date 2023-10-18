@@ -148,12 +148,12 @@ public record class FhirObligation : FhirBase, ICloneable
     }
 
     /// <summary>Initializes a new instance of the <see cref="FhirObligation"/> class.</summary>
-    public FhirObligation() { }
+    public FhirObligation() : base() { }
 
     /// <summary>Initializes a new instance of the <see cref="FhirObligation"/> class.</summary>
     /// <param name="other">The other.</param>
     [SetsRequiredMembers]
-    protected FhirObligation(FhirObligation other)
+    protected FhirObligation(FhirObligation other) : base(other)
     {
         InternalId = other.InternalId;
         ObligationCodeLiteral = other.ObligationCodeLiteral.Select(o => o);

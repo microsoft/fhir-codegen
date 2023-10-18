@@ -351,7 +351,8 @@ public record class FhirElement : FhirDefinitionBase, IConformanceAnnotated, ICl
 
                 if (!(RootArtifact?.ConstraintsByKey.ContainsKey(c.Key) ?? false))
                 {
-                    RootArtifact?.AddConstraint(c);
+                    // TODO: need to sort out what is necessary here
+                    //RootArtifact?.AddConstraint(c);
                 }
 
                 _constraints[c.Key] = c;

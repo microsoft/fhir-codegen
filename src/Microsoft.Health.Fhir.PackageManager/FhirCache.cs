@@ -15,11 +15,16 @@ using System.IO;
 using System.Xml.Linq;
 using System;
 using System.Text.Json;
+using System.Linq;
+using Microsoft.Health.Fhir.PackageManager.Models;
+using static Microsoft.Health.Fhir.PackageManager.Models.FhirDirective;
+using System.Collections.Concurrent;
 
 namespace Microsoft.Health.Fhir.PackageManager;
 
 public partial class FhirCache : IDisposable
 {
+
     /// <summary>Values that represent package load states.</summary>
     public enum PackageLoadStateCodes
     {
@@ -77,6 +82,20 @@ public partial class FhirCache : IDisposable
     {
         FhirSequenceCodes.DSTU2 => "DSTU2",
         FhirSequenceCodes.STU3 => "STU3",
+        FhirSequenceCodes.R4 => "R4",
+        FhirSequenceCodes.R4B => "R4B",
+        FhirSequenceCodes.R5 => "R5",
+        FhirSequenceCodes.R6 => "R6",
+        _ => "Unknown"
+    };
+
+    /// <summary>Converts a sequence to a r literal.</summary>
+    /// <param name="sequence">The sequence.</param>
+    /// <returns>Sequence as a string.</returns>
+    public static string ToRLiteral(FhirSequenceCodes sequence) => sequence switch
+    {
+        FhirSequenceCodes.DSTU2 => "R2",
+        FhirSequenceCodes.STU3 => "R3",
         FhirSequenceCodes.R4 => "R4",
         FhirSequenceCodes.R4B => "R4B",
         FhirSequenceCodes.R5 => "R5",
@@ -201,11 +220,20 @@ public partial class FhirCache : IDisposable
         new("http://packages2.fhir.org/packages/"),
     };
 
+    /// <summary>The registry uris.</summary>
+    private static IEnumerable<Uri> _registryUris = _defaultRegistryUris;
+
     /// <summary>(Immutable) URI of the FHIR published server.</summary>
     private static readonly Uri _publicationUri = new("http://hl7.org/fhir/");
 
     /// <summary>(Immutable) URI of the FHIR CI server.</summary>
     private static readonly Uri _ciUri = new("http://build.fhir.org/");
+
+    /// <summary>(Immutable) URI of the qas.</summary>
+    private static readonly Uri _qasUri = new("https://build.fhir.org/ig/qas.json");
+
+    /// <summary>(Immutable) URI of the ig list.</summary>
+    private static readonly Uri _igListUri = new("https://github.com/FHIR/ig-registry/blob/master/fhir-ig-list.json");
 
     /// <summary>The logger.</summary>
     private ILogger _logger;
@@ -220,7 +248,8 @@ public partial class FhirCache : IDisposable
     private string _iniFilePath = string.Empty;
 
     /// <summary>The HTTP client.</summary>
-    private HttpClient _httpClient = new();
+    /// <remarks>Internal so that tests can replace the message handler.</remarks>
+    internal HttpClient _httpClient = new();
 
     /// <summary>True to disposed value.</summary>
     private bool _disposedValue = false;
@@ -236,18 +265,49 @@ public partial class FhirCache : IDisposable
 
     /// <summary>Test if a name matches known core packages.</summary>
     /// <returns>A RegEx.</returns>
-    [GeneratedRegex("^hl7.fhir.r\\d+[a-z]?.(core|expansions|examples|search|elements|corexml)$")]
-    private static partial Regex MatchCorePackageNames();
+    [GeneratedRegex("^hl7.fhir.r\\d+[A-Za-z]?.(core|expansions|examples|search|elements|corexml)$")]
+    internal static partial Regex MatchCorePackageNames();
 
     /// <summary>Test if a name matches known core packages.</summary>
-    private static Regex _matchCorePackageNames = MatchCorePackageNames();
+    internal static Regex _matchCorePackageNames = MatchCorePackageNames();
+
+    /// <summary>Test if a name is the correct root for a core package.</summary>
+    /// <returns>A RegEx.</returns>
+    [GeneratedRegex("^hl7.fhir.r\\d+[A-Za-z]?$")]
+    internal static partial Regex MatchCorePackageRoot();
+
+    /// <summary>Test if a name is the correct root for a core package.</summary>
+    internal static Regex _matchCorePackageRoot = MatchCorePackageRoot();
+
+    /// <summary>Test if a name has a FHIR version suffix.</summary>
+    /// <returns>A RegEx.</returns>
+    [GeneratedRegex(".r\\d+[A-Za-z]?$")]
+    internal static partial Regex MatchFhirSuffix();
+
+    /// <summary>Test if a name has a FHIR version suffix.</summary>
+    internal static Regex _matchFhirSuffix = MatchFhirSuffix();
+
+    /// <summary>The RegEx to test if a string is a semver version.</summary>
+    internal static Regex _isSemver = IsSemVer();
+
+    /// <summary>A RegEx to test if a string is a semver version.</summary>
+    /// <remarks>Copied from https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string</remarks>
+    [GeneratedRegex("^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$")]
+    internal static partial Regex IsSemVer();
+
+    /// <summary>Gets the packages by directive.</summary>
+    private Dictionary<string, PackageCacheRecord> PackagesByDirective => _packagesByDirective;
+
+    /// <summary>The completed requests.</summary>
+    private HashSet<string> _processed = new();
 
     /// <summary>Initializes a new instance of the <see cref="FhirCache"/> class.</summary>
     /// <param name="fhirCachePath">Pathname of the FHIR cache directory.</param>
     /// <param name="logger">        The logger.</param>
     public FhirCache(
         string fhirCachePath,
-        ILogger<FhirCache>? logger)
+        ILogger<FhirCache>? logger,
+        IEnumerable<string>? additionalRegistryUrls)
     {
         if (string.IsNullOrEmpty(fhirCachePath))
         {
@@ -270,6 +330,11 @@ public partial class FhirCache : IDisposable
         _logger = logger ?? NullLoggerFactory.Instance.CreateLogger<FhirCache>();
         _logger.LogInformation($"Initializing a FhirCache at: {_cacheDirectory}");
 
+        if (additionalRegistryUrls?.Any() ?? false)
+        {
+            _registryUris = additionalRegistryUrls.Select(x => new Uri(x)).Concat(_defaultRegistryUris);
+        }
+
         _cacheDirectory = fhirCachePath;
         _cachePackageDirectory = Path.Combine(_cacheDirectory, "packages");
         _iniFilePath = Path.Combine(_cachePackageDirectory, "packages.ini");
@@ -287,12 +352,6 @@ public partial class FhirCache : IDisposable
         SynchronizeCache();
     }
 
-    /// <summary>Gets the packages by directive.</summary>
-    private Dictionary<string, PackageCacheRecord> PackagesByDirective => _packagesByDirective;
-
-    /// <summary>The completed requests.</summary>
-    private HashSet<string> _processed = new();
-
     /// <summary>A package cache entry.</summary>
     /// <param name="fhirVersion">        The FHIR version.</param>
     /// <param name="directory">          Pathname of the directory.</param>
@@ -305,402 +364,1162 @@ public partial class FhirCache : IDisposable
         string directory,
         string resolvedDirective,
         string name,
-        string version,
-        string umbrellaPackageName);
+        string version);
 
-    /// <summary>Attempts to find locally or download a given package.</summary>
-    /// <param name="directive">     The directive: [package-name]#[version].</param>
-    /// <param name="branchName">    Name of the branch.</param>
-    /// <param name="packages">      [out] Path to the directory with the extracted package.</param>
-    /// <param name="forFhirVersion">(Optional) FHIR version to restrict downloads to.</param>
-    /// <param name="offlineMode">   (Optional) True to enable offline mode, false to disable it.</param>
+    /// <summary>Attempts to parse directive a ParsedDirective from the given string.</summary>
+    /// <param name="input">The input directive: [package-name]#[version].</param>
+    /// <param name="directive">   [out] The parsed directive.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public bool FindOrDownload(
-        string directive,
-        string branchName,
-        out IEnumerable<PackageCacheEntry> packages,
-        FhirSequenceCodes forFhirVersion = FhirSequenceCodes.Unknown,
-        bool offlineMode = false)
+    internal static bool TryParseDirective(
+        string input,
+        out FhirDirective? directive)
     {
-        if (string.IsNullOrEmpty(branchName))
+        if (string.IsNullOrEmpty(input))
         {
-            _logger.LogInformation($"Attempting to load: {directive}");
-        }
-        else
-        {
-            _logger.LogInformation($"Attempting to load branch: {branchName}");
-        }
-
-        string key = $"{directive}|{branchName}";
-        if (_processed.Contains(key))
-        {
-            // if we have already processed this once, force into offline for performance
-            offlineMode = true;
-        }
-
-        _processed.Add(key);
-
-        string name;
-        string version;
-        bool isLocal = false;
-        List<PackageCacheEntry> packageList = new();
-
-        string directory = string.Empty;
-        FhirSequenceCodes fhirVersion;
-        string resolvedDirective;
-
-        if (directive.Contains('#'))
-        {
-            string[] components = directive.Split('#', StringSplitOptions.TrimEntries);
-            name = components[0];
-            version = components[1];
-        }
-        else
-        {
-            name = directive;
-            version = string.Empty;
-        }
-
-        if (!string.IsNullOrEmpty(branchName))
-        {
-            branchName = GetIgBranchFromInput(branchName);
-            if (string.IsNullOrEmpty(version))
-            {
-                version = "dev";
-            }
-        }
-
-        string directiveVersion = version;
-
-        name = GetPackageNameFromInput(name);
-
-        if (version.Equals("dev", StringComparison.OrdinalIgnoreCase))
-        {
-            bool success = ProcessCiRequest(
-                directive,
-                name,
-                version,
-                branchName,
-                packageList,
-                out directory,
-                out fhirVersion,
-                out resolvedDirective);
-
-            packages = success ? packageList : Enumerable.Empty<PackageCacheEntry>();
-            return success;
-        }
-
-        if (version.Equals("current", StringComparison.OrdinalIgnoreCase))
-        {
-            if (PackageIsFhirCore(name))
-            {
-                if (TryDownloadCoreViaCI(name, branchName, out directory, out fhirVersion, out resolvedDirective))
-                {
-                    packageList.Add(new()
-                    {
-                        fhirVersion = fhirVersion,
-                        directory = directory,
-                        resolvedDirective = resolvedDirective,
-                        name = name,
-                        version = resolvedDirective.Contains('#') ? resolvedDirective.Split('#')[1] : version,
-                        umbrellaPackageName = name,
-                    });
-
-                    packages = packageList;
-                    return true;
-                }
-            }
-            else
-            {
-                if (TryDownloadGuideViaCI(branchName, out name, out directory, out fhirVersion, out resolvedDirective))
-                {
-                    packageList.Add(new()
-                    {
-                        fhirVersion = fhirVersion,
-                        directory = directory,
-                        resolvedDirective = resolvedDirective,
-                        name = name,
-                        version = resolvedDirective.Contains('#') ? resolvedDirective.Split('#')[1] : version,
-                        umbrellaPackageName = name,
-                    });
-
-                    packages = packageList;
-                    return true;
-                }
-            }
-
-            if (string.IsNullOrEmpty(branchName))
-            {
-                _logger.LogInformation($"FindOrDownload <<< package: {directive}, branch: {branchName} not accessible!");
-            }
-            else
-            {
-                _logger.LogInformation($"FindOrDownload <<< package: {directive} not accessible!");
-            }
-
-            packages = Enumerable.Empty<PackageCacheEntry>();
+            directive = null;
             return false;
         }
 
-        // check to see if this package already has a version trailer
-        string lastComponent = name.Split('.').Last();
+        string[] components = input.Split('#', StringSplitOptions.TrimEntries);
 
-        Dictionary<FhirSequenceCodes, string> downloadPackages = new();
+        FhirDirective current;
 
-        FhirSequenceCodes seq = ToSequence(lastComponent);
-        if (seq != FhirSequenceCodes.Unknown)
+        switch (components.Length)
         {
-            downloadPackages.Add(seq, string.Empty);
-        }
-        else
-        {
-            // query the package registry to see what packages matching this root are available
-            string contents = _httpClient.GetStringAsync($"").Result;
-
-            downloadPackages = Enum.GetValues(typeof(FhirSequenceCodes))
-                .Cast<FhirSequenceCodes>()
-                .ToDictionary(x => x, x => ToLiteral(x));
-        }
-
-        bool foundLocally = false;
-
-        // want to check for fhir-version named packages
-        foreach ((FhirSequenceCodes sequence, string trailer) in downloadPackages)
-        {
-            // there are no versioned packages for DSTU2 or STU3
-            if ((sequence == FhirSequenceCodes.DSTU2) ||
-                (sequence == FhirSequenceCodes.STU3))
-            {
-                continue;
-            }
-
-            version = directiveVersion;
-            isLocal = false;
-            directory = string.Empty;
-
-            string sequencedName = string.IsNullOrEmpty(trailer) ? name : $"{name}.{trailer}";
-
-            if (string.IsNullOrEmpty(version) ||
-                version.Equals("latest", StringComparison.OrdinalIgnoreCase))
-            {
-                TryGetHighestVersion(sequencedName, offlineMode, out version, out isLocal, out directory);
-            }
-
-            if ((isLocal && !string.IsNullOrEmpty(directory)) ||
-                HasCachedVersion(sequencedName, version, out directory))
-            {
-                packageList.Add(new()
+            case 1:
+                current = new()
                 {
-                    fhirVersion = _packagesByDirective[$"{sequencedName}#{version}"].FhirVersion,
-                    directory = directory,
-                    resolvedDirective = $"{sequencedName}#{version}",
-                    name = sequencedName,
-                    version = version,
-                    umbrellaPackageName = name,
-                });
+                    Directive = input,
+                    PackageId = components[0],
+                    NameType = DirectiveNameTypeCodes.Unknown,
+                    FhirRelease = string.Empty,
+                    PackageVersion = "latest",
+                    VersionType = DirectiveVersionCodes.Latest,
+                };
+                break;
 
-                foundLocally = true;
-                continue;
-            }
-
-            // do not check online if we already have the package locally
-            // note this can have an issue if we have a 'root' package and not a version-specific package
-            // but that is a rare case and can be solved by cleaning the cache.
-            if ((!isLocal && offlineMode) ||
-                foundLocally)
-            {
-                continue;
-            }
-
-            if (TryDownloadViaRegistry(sequencedName, version, out directory, out fhirVersion, out resolvedDirective))
-            {
-                packageList.Add(new()
+            case 2:
+                current = new()
                 {
-                    fhirVersion = fhirVersion,
-                    directory = directory,
-                    resolvedDirective = resolvedDirective,
-                    name = sequencedName,
-                    version = version,
-                    umbrellaPackageName = name,
-                });
+                    Directive = input,
+                    PackageId = components[0],
+                    NameType = DirectiveNameTypeCodes.Unknown,
+                    FhirRelease = string.Empty,
+                    PackageVersion = components[1],
+                    VersionType = DirectiveVersionCodes.Unknown,
+                };
+                break;
 
-                continue;
-            }
-
-            if (TryDownloadCoreViaPublication(sequencedName, version, out directory, out fhirVersion, out resolvedDirective))
-            {
-                packageList.Add(new()
+            default:
                 {
-                    fhirVersion = fhirVersion,
-                    directory = directory,
-                    resolvedDirective = resolvedDirective,
-                    name = sequencedName,
-                    version = version,
-                    umbrellaPackageName = name,
-                });
-
-                continue;
-            }
-        }
-
-        if (packageList.Any())
-        {
-            packages = packageList;
-            return true;
-        }
-
-        _logger.LogInformation($"FindOrDownload <<< unable to resolve directive: {directive}");
-        packages = Enumerable.Empty<PackageCacheEntry>();
-        return false;
-    }
-
-    private void FindPackagesOnRegistries(
-        string directive,
-        string name,
-        string version,
-        List<PackageCacheEntry> packageList,
-        FhirSequenceCodes forFhirVersion)
-    {
-
-
-        foreach (Uri registryUri in _defaultRegistryUris)
-        {
-            Uri uri = new Uri(registryUri, $"catalog?op=find&name={name}");
-
-            try
-            {
-                string contents = _httpClient.GetStringAsync(uri).Result;
-
-                List<FhirPackageVersionInfo>? versions = JsonSerializer.Deserialize<List<FhirPackageVersionInfo>>(contents);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogDebug($"FindPackagesOnRegistries <<< Registry query: {uri} failed: {ex.Message}");
-                if (ex.InnerException != null)
-                {
-                    _logger.LogDebug($" <<< inner: {ex.InnerException}");
+                    directive = null;
+                    return false;
                 }
-            }
         }
-    }
 
-
-    /// <summary>Process a CI download request.</summary>
-    /// <param name="directive">        The directive: [package-name]#[version].</param>
-    /// <param name="name">             The name.</param>
-    /// <param name="version">          [out] The version string (e.g., 4.0.1).</param>
-    /// <param name="branchName">       Name of the branch.</param>
-    /// <param name="packageList">      List of packages.</param>
-    /// <param name="directory">        [out] Pathname of the directory.</param>
-    /// <param name="fhirVersion">      [out] The FHIR version.</param>
-    /// <param name="resolvedDirective">[out] The resolved directive.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool ProcessCiRequest(
-        string directive,
-        string name,
-        string version,
-        string branchName,
-        List<PackageCacheEntry> packageList,
-        out string directory,
-        out FhirSequenceCodes fhirVersion,
-        out string resolvedDirective)
-    {
-        if (PackageIsFhirCore(name))
+        // determine type of package name
+        if (PackageIsFhirCore(current.PackageId))
         {
-            if (TryDownloadCoreViaCI(name, branchName, out directory, out fhirVersion, out resolvedDirective))
+            current = current with
             {
-                packageList.Add(new()
-                {
-                    fhirVersion = fhirVersion,
-                    directory = directory,
-                    resolvedDirective = resolvedDirective,
-                    name = name,
-                    version = resolvedDirective.Contains('#') ? resolvedDirective.Split('#')[1] : version,
-                    umbrellaPackageName = name,
-                });
-
-                return true;
-            }
+                NameType = DirectiveNameTypeCodes.CoreFull,
+                FhirRelease = current.PackageId.Split('.')[2],
+            };
+        }
+        else if (_matchCorePackageRoot.IsMatch(current.PackageId))
+        {
+            current = current with
+            {
+                NameType = DirectiveNameTypeCodes.CorePartial,
+                FhirRelease = current.PackageId.Split('.')[2],
+            };
+        }
+        else if (_matchFhirSuffix.IsMatch(current.PackageId))
+        {
+            current = current with
+            {
+                NameType = DirectiveNameTypeCodes.GuideWithSuffix,
+                FhirRelease = current.PackageId.Substring(current.PackageId.LastIndexOf('.') + 1),
+            };
         }
         else
         {
-            if (TryDownloadGuideViaCI(branchName, out name, out directory, out fhirVersion, out resolvedDirective))
-            {
-                packageList.Add(new()
-                {
-                    fhirVersion = fhirVersion,
-                    directory = directory,
-                    resolvedDirective = resolvedDirective,
-                    name = name,
-                    version = resolvedDirective.Contains('#') ? resolvedDirective.Split('#')[1] : version,
-                    umbrellaPackageName = name,
-                });
-
-                return true;
-            }
+            current = current with { NameType = DirectiveNameTypeCodes.GuideWithoutSuffix };
         }
 
-        // resolve dev (local only) version or fail
-        if (string.IsNullOrEmpty(name) ||
-            (!HasCachedVersion(name, version, out directory)))
+        // determine type of version
+        switch (current.PackageVersion.ToLowerInvariant())
         {
-            if (string.IsNullOrEmpty(branchName))
-            {
-                _logger.LogInformation($"ProcessCiRequest <<< Package: {directive}, branch: {branchName} is not accessible!");
-            }
-            else
-            {
-                _logger.LogInformation($"ProcessCiRequest <<< package: {directive} not accessible!");
-            }
+            case "latest":
+                current = current with { VersionType = DirectiveVersionCodes.Latest };
+                break;
 
+            case "dev":
+                current = current with { VersionType = DirectiveVersionCodes.Local };
+                break;
+
+            case "current":
+                current = current with { VersionType = DirectiveVersionCodes.ContinuousIntegration };
+                break;
+
+            default:
+                {
+                    if (current.PackageVersion.StartsWith("current$", StringComparison.OrdinalIgnoreCase))
+                    {
+                        current = current with
+                        {
+                            VersionType = DirectiveVersionCodes.ContinuousIntegration,
+                            CiBranch = current.PackageVersion.Substring(8),
+                        };
+                    }
+                    else if (current.PackageVersion.EndsWith(".x", StringComparison.OrdinalIgnoreCase))
+                    {
+                        current = current with
+                        {
+                            VersionType = DirectiveVersionCodes.Partial,
+                        };
+                    }
+                    else
+                    {
+                        // check for special case - partial SemVer on an HL7 package
+                        int segments = current.PackageVersion.Split('.').Length;
+
+                        if (current.PackageId.StartsWith("hl7", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (segments == 3)
+                            {
+                                if (current.PackageVersion.EndsWith(".x", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    current = current with { VersionType = DirectiveVersionCodes.Partial, };
+                                }
+                                else if (_isSemver.IsMatch(current.PackageVersion))
+                                {
+                                    current = current with { VersionType = DirectiveVersionCodes.Exact, };
+                                }
+                                else
+                                {
+                                    directive = null;
+                                    return false;
+                                }
+                            }
+                            else if (segments == 2)
+                            {
+                                if (_isSemver.IsMatch(current.PackageVersion + ".0"))
+                                {
+                                    current = current with { VersionType = DirectiveVersionCodes.Partial, };
+                                }
+                                else
+                                {
+                                    directive = null;
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                directive = null;
+                                return false;
+                            }
+                        }
+                        else if (current.PackageVersion.EndsWith(".x", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // check for a semver if we swap out the last segment
+                            if (_isSemver.IsMatch(current.PackageVersion.Substring(0, current.PackageVersion.Length -2) + "0"))
+                            {
+                                current = current with { VersionType = DirectiveVersionCodes.Partial, };
+                            }
+                            else
+                            {
+                                // assume it is a non-semver exact
+                                current = current with { VersionType = DirectiveVersionCodes.NonSemVer, };
+                            }
+                        }
+                        else if (_isSemver.IsMatch(current.PackageVersion))
+                        {
+                            current = current with { VersionType = DirectiveVersionCodes.Exact, };
+                        }
+                        else
+                        {
+                            current = current with { VersionType = DirectiveVersionCodes.NonSemVer, };
+                        }
+                    }
+                }
+                break;
+        }
+
+        // all HL7 packages use SemVer
+        if (current.PackageId.StartsWith("hl7", StringComparison.OrdinalIgnoreCase) && (current.VersionType == DirectiveVersionCodes.NonSemVer))
+        {
+            directive = null;
             return false;
         }
 
-        packageList.Add(new()
-        {
-            fhirVersion = ToSequence(_packagesByDirective[directive].Details.FhirVersion),
-            directory = directory,
-            resolvedDirective = directive,
-            name = name,
-            version = directive.Contains('#') ? directive.Split('#')[1] : version,
-            umbrellaPackageName = name,
-        });
-
+        directive = current;
         return true;
     }
 
-    /// <summary>Attempts to download via registry a string from the given string.</summary>
-    /// <param name="name">       The name.</param>
-    /// <param name="version">    [out] The version string (e.g., 4.0.1).</param>
-    /// <param name="directory">  [out] Pathname of the directory.</param>
-    /// <param name="fhirVersion">[out] The FHIR version.</param>
+    /// <summary>Attempts to resolve ci.</summary>
+    /// <param name="directive">[out] The parsed directive.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryDownloadViaRegistry(
-        string name,
-        string version,
-        out string directory,
-        out FhirSequenceCodes fhirVersion,
-        out string resolvedDirective)
+    internal bool TryResolveCi(ref FhirDirective directive)
     {
-        foreach (Uri registryUri in _defaultRegistryUris)
+        if (string.IsNullOrEmpty(directive.PackageId))
         {
-            Uri uri = new Uri(registryUri, $"{name}/{version}");
-            directory = Path.Combine(_cachePackageDirectory, $"{name}#{version}");
+            return false;
+        }
 
-            string directive = name + "#" + version;
+        try
+        {
+            string packageId = directive.PackageId;
+            string ciBranch = directive.CiBranch;
 
-            if (TryDownloadAndExtract(uri, directory, directive, out fhirVersion, out resolvedDirective))
+            string contents = _httpClient.GetStringAsync(_qasUri).Result;
+
+            IEnumerable<FhirQasRec> igs = JsonSerializer.Deserialize<List<FhirQasRec>>(contents) ?? new();
+
+            // find records that match the package name and branch
+            // note that we are just using 'main' and 'master' as default branches - not fully correct, but default branches are not identified
+            IEnumerable<FhirQasRec> matching = string.IsNullOrEmpty(ciBranch)
+                ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
+                    (x.RespositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
+                     x.RespositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
+                : igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
+                    x.RespositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
+
+            if (!matching.Any())
             {
-                UpdatePackageCacheIndex(directive, directory);
+                // check for a guide name that ends in a FHIR-version suffix
+                if (directive.NameType == DirectiveNameTypeCodes.GuideWithSuffix)
+                {
+                    // build shortened version of name
+                    packageId = packageId.Substring(0, packageId.LastIndexOf('.'));
 
+                    matching = string.IsNullOrEmpty(ciBranch)
+                        ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
+                            (x.RespositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
+                             x.RespositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
+                        : igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
+                            x.RespositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
+                }
+
+                if (!matching.Any())
+                {
+                    return false;
+                }
+            }
+
+            // filter by FHIR version, if specified
+            if (!string.IsNullOrEmpty(directive.FhirRelease))
+            {
+                string fhirRelease = directive.FhirRelease;
+
+                matching = matching.Where(x => x.FhirVersion.Equals(fhirRelease, StringComparison.OrdinalIgnoreCase));
+
+                if (!matching.Any())
+                {
+                    return false;
+                }
+            }
+
+            if (matching.Count() > 1)
+            {
+                _logger.LogWarning($"TryResolveCi <<< multiple matches for {directive.PackageId}${directive.CiBranch}");
+            }
+
+            FhirQasRec match = matching
+                .OrderByDescending(q => q.BuildDate)
+                .First();
+
+            string ciUrl = $"{_ciUri}ig/{match.RespositoryUrl.Substring(0, match.RespositoryUrl.Length - 8)}";
+
+            string tarUrl;
+
+            switch (directive.NameType)
+            {
+                case DirectiveNameTypeCodes.CoreFull:
+                    tarUrl = $"{ciUrl}/{directive.PackageId}.tgz";
+                    break;
+                case DirectiveNameTypeCodes.CorePartial:
+                    tarUrl = $"{ciUrl}/{directive.PackageId}.core.tgz";
+                    break;
+                case DirectiveNameTypeCodes.GuideWithSuffix:
+                    tarUrl = $"{ciUrl}/package.{directive.FhirRelease.ToLowerInvariant()}.tgz";
+                    break;
+                case DirectiveNameTypeCodes.GuideWithoutSuffix:
+                    tarUrl = $"{ciUrl}/package.tgz";
+                    break;
+                case DirectiveNameTypeCodes.Unknown:
+                default:
+                    // assume there is a package.tgz there
+                    tarUrl = $"{ciUrl}/package.tgz";
+                    break;
+            }
+
+            directive = directive with
+            {
+                FhirRelease = match.FhirVersion,
+                PackageVersion = match.GuideVersion,
+                CiUrl = ciUrl,
+                CiOrg = GetOrg(match.RespositoryUrl),
+                CiBranch = GetBranch(match.RespositoryUrl),
+                BuildDate = match.BuildDate,
+                ResolvedTarballUrl = tarUrl,
+                ResolvedSha = string.Empty,
+            };
+
+            return true;
+
+            //FhirDirective ciResolved = matching
+            //    .OrderByDescending(q => q.BuildDate)
+            //    .Select(q =>
+            //        new FhirDirective()
+            //        {
+            //            Directive = string.IsNullOrEmpty(directive.CiBranch) ? $"{directive.PackageId}#current" : $"{directive.PackageId}#current${directive.CiBranch}",
+            //            PackageId = q.PackageId,
+            //            NameType = nameType,
+            //            FhirRelease = q.FhirVersion,
+            //            PackageVersion = q.GuideVersion,
+            //            VersionType = DirectiveVersionCodes.ContinuousIntegration,
+            //            CiBranch = directive.CiBranch,
+            //            CiUrl = $"{_ciUri}ig/{q.RespositoryUrl.Substring(0, q.RespositoryUrl.Length - 8)}",
+            //            CiOrg = GetOrg(q.RespositoryUrl),
+            //            BuildDate = q.BuildDate,
+            //        })
+            //    .First();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"TryResolveCi <<< processing {directive.PackageId}${directive.CiBranch} - caught: {ex.Message}");
+            if (ex.InnerException != null)
+            {
+                _logger.LogError($" <<< {ex.InnerException.Message}");
+            }
+        }
+
+        // still here means nothing was found successfully
+        return false;
+
+        string GetOrg(string url) => url.Split('/').First();
+
+        string GetBranch(string url)
+        {
+            string[] components = url.Split('/');
+            if (components.Length > 1)
+            {
+                return components[components.Length - 2];
+            }
+
+            return string.Empty;
+        }
+
+    }
+
+    /// <summary>Attempts to resolve ci.</summary>
+    /// <param name="ciUrl">      URL of the ci.</param>
+    /// <param name="packageName">[out] Name of the package.</param>
+    /// <param name="branchName"> [out] Name of the branch.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryResolveCi(
+        string ciUrl,
+        out IEnumerable<FhirDirective> ciResolved)
+    {
+        ciResolved = Enumerable.Empty<FhirDirective>();
+
+        if (string.IsNullOrEmpty(ciUrl))
+        {
+            return false;
+        }
+
+        try
+        {
+            Uri uri = new(_ciUri, "ig/qas.json");
+
+            string contents = _httpClient.GetStringAsync(uri).Result;
+
+            IEnumerable<FhirQasRec> igs = JsonSerializer.Deserialize<List<FhirQasRec>>(contents) ?? new();
+
+            string urlClean = ciUrl
+                .Replace("https://build.fhir.org/ig/", string.Empty, StringComparison.OrdinalIgnoreCase)
+                .Replace("http://build.fhir.org/ig", string.Empty, StringComparison.OrdinalIgnoreCase)
+                .Replace("/qa.json", string.Empty, StringComparison.OrdinalIgnoreCase);
+
+            IEnumerable<FhirQasRec> matching = igs.Where(x => x.RespositoryUrl.Equals(urlClean, StringComparison.OrdinalIgnoreCase));
+
+            if (!matching.Any())
+            {
+                ciResolved = Enumerable.Empty<FhirDirective>();
+                return false;
+            }
+
+            if (matching.Count() > 1)
+            {
+                _logger.LogWarning($"TryResolveCi <<< multiple matches for {ciUrl}");
+            }
+
+            // grab the most recently built match
+            FhirQasRec rec = matching
+                .OrderByDescending(q => q.BuildDate)
+                .First();
+
+            ciResolved = matching
+                .OrderByDescending(q => q.BuildDate)
+                .Select(q =>
+                    new FhirDirective()
+                    {
+                        Directive = GetDirective(q.PackageId, q.RespositoryUrl),
+                        PackageId = q.PackageId,
+                        NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
+                        FhirRelease = q.FhirVersion,
+                        PackageVersion = q.GuideVersion,
+                        VersionType = DirectiveVersionCodes.ContinuousIntegration,
+                        CiBranch = GetBranch(rec.RespositoryUrl),
+                        CiUrl = $"{_ciUri}ig/{q.RespositoryUrl.Substring(0, q.RespositoryUrl.Length - 8)}",
+                        CiOrg = GetOrg(q.RespositoryUrl),
+                        BuildDate = q.BuildDate,
+                        ResolvedTarballUrl = $"{_ciUri}ig/{q.RespositoryUrl.Substring(0, q.RespositoryUrl.Length - 8)}/package.tgz",
+                        ResolvedSha = string.Empty,
+                    });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"TryResolveCi <<< processing {ciUrl} - caught: {ex.Message}");
+            if (ex.InnerException != null)
+            {
+                _logger.LogError($" <<< {ex.InnerException.Message}");
+            }
+        }
+
+        return ciResolved.Any();
+
+        string GetOrg(string url) => url.Split('/').First();
+
+        string GetBranch(string url)
+        {
+            string[] components = url.Split('/');
+            if (components.Length > 1)
+            {
+                return components[components.Length - 2];
+            }
+
+            return string.Empty;
+            //return url
+            //    .Replace("https://build.fhir.org/ig/", string.Empty, StringComparison.Ordinal)
+            //    .Replace("http://build.fhir.org/ig/", string.Empty, StringComparison.Ordinal)
+            //    .Replace("/qa.json", string.Empty, StringComparison.Ordinal);
+        }
+
+        string GetDirective(string id, string url)
+        {
+            string branch = GetBranch(url);
+            return branch switch
+            {
+                "main" => $"{id}#current",
+                "master" => $"{id}#current",
+                "" => $"{id}#current",
+                _ => $"{id}#current${branch}"
+            };
+        }
+    }
+
+    /// <summary>Attempts to resolve version range.</summary>
+    /// <param name="directive">[out] The parsed.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryResolveVersionRange(ref FhirDirective directive)
+    {
+        if (directive.VersionType != DirectiveVersionCodes.Partial)
+        {
+            return false;
+        }
+
+        // get manifests from each registry if we have not done so
+        if (!directive.Manifests.Any())
+        {
+            _ = TryGetRegistryManifests(ref directive);
+        }
+
+        Dictionary<Uri, HashSet<string>> knownVersions = new();
+        Dictionary<Uri, string> latestVersion = new();
+
+        // traverse our manifests and build a list of known versions per registry
+        foreach ((Uri uri, RegistryPackageManifest manifest) in directive.Manifests)
+        {
+            if (manifest.Versions == null || manifest.Versions.Count == 0)
+            {
+                continue;
+            }
+
+            knownVersions[uri] = new HashSet<string>();
+
+            foreach (string version in manifest.Versions.Keys)
+            {
+                knownVersions[uri].Add(version);
+            }
+
+            // check for a tagged latest
+            if (manifest.DistributionTags.TryGetValue("latest", out string? latest))
+            {
+                latestVersion[uri] = latest;
+            }
+        }
+
+        string versionRoot = directive.PackageVersion.EndsWith(".x", StringComparison.OrdinalIgnoreCase)
+            ? directive.PackageVersion.Substring(0, directive.PackageVersion.Length - 2)
+            : directive.PackageVersion;
+
+        // traverse registries in order to see if one can resolve our version with a 'latest'
+        foreach (Uri uri in _registryUris)
+        {
+            // check for a matching latest
+            if (!latestVersion.TryGetValue(uri, out string? latest))
+            {
+                continue;
+            }
+
+            if (latest.StartsWith(versionRoot, StringComparison.OrdinalIgnoreCase))
+            {
+                directive = directive with
+                {
+                    PackageVersion = latest,
+                    VersionType = DirectiveVersionCodes.Exact,
+                    ResolvedTarballUrl = directive.Manifests[uri].Versions[latest].Distribution?.TarballUrl ?? string.Empty,
+                    ResolvedSha = directive.Manifests[uri].Versions[latest].Distribution?.HashSHA ?? string.Empty,
+                };
                 return true;
             }
         }
 
-        directory = string.Empty;
-        fhirVersion = FhirSequenceCodes.Unknown;
-        resolvedDirective = string.Empty;
+        // traverse registries in order to see if one can resolve our version with any known version
+        foreach (Uri uri in _registryUris)
+        {
+            // check for a matching latest
+            if (!knownVersions.TryGetValue(uri, out HashSet<string>? versions))
+            {
+                continue;
+            }
+
+            // grab versions with a matching root
+            IEnumerable<string> matching = versions.Where(v => v.StartsWith(versionRoot, StringComparison.OrdinalIgnoreCase));
+
+            if (!matching.Any())
+            {
+                continue;
+            }
+
+            string version = matching.OrderByDescending(v => v).First();
+
+            // grab the 'highest' sort version - best guess since we cannot guarantee SemVer
+            directive = directive with
+            {
+                PackageVersion = version,
+                VersionType = DirectiveVersionCodes.Exact,
+                ResolvedTarballUrl = directive.Manifests[uri].Versions[version].Distribution?.TarballUrl ?? string.Empty,
+                ResolvedSha = directive.Manifests[uri].Versions[version].Distribution?.HashSHA ?? string.Empty,
+            };
+
+            return true;
+        }
+
         return false;
+    }
+
+    /// <summary>Attempts to resolve version latest.</summary>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryResolveVersionLatest(ref FhirDirective directive)
+    {
+        if (directive.VersionType != DirectiveVersionCodes.Latest)
+        {
+            return false;
+        }
+
+        // get manifests from each registry if we have not done so
+        if (!directive.Manifests.Any())
+        {
+            _ = TryGetRegistryManifests(ref directive);
+        }
+
+        Dictionary<Uri, HashSet<string>> knownVersions = new();
+        Dictionary<Uri, string> latestVersion = new();
+
+        // traverse our manifests and build a list of known versions per registry
+        foreach ((Uri uri, RegistryPackageManifest manifest) in directive.Manifests)
+        {
+            if (manifest.Versions == null || manifest.Versions.Count == 0)
+            {
+                continue;
+            }
+
+            knownVersions[uri] = new HashSet<string>();
+
+            foreach (string version in manifest.Versions.Keys)
+            {
+                knownVersions[uri].Add(version);
+            }
+
+            // check for a tagged latest
+            if (manifest.DistributionTags.TryGetValue("latest", out string? latest))
+            {
+                latestVersion[uri] = latest;
+            }
+        }
+
+        // check to see if we have any 'latest' tagged versions
+        if (latestVersion.Any())
+        {
+            string testVal = latestVersion.First().Value;
+
+            // check to see if they are all the same
+            if (!latestVersion.Any(kvp => !kvp.Value.Equals(testVal)))
+            {
+                Uri uri = latestVersion.First().Key;
+
+                directive = directive with
+                {
+                    PackageVersion = testVal,
+                    VersionType = DirectiveVersionCodes.Exact,
+                    ResolvedTarballUrl = directive.Manifests[uri].Versions[testVal].Distribution?.TarballUrl ?? string.Empty,
+                    ResolvedSha = directive.Manifests[uri].Versions[testVal].Distribution?.HashSHA ?? string.Empty,
+                };
+
+                return true;
+            }
+
+            // check to see if there is a 'latest' that does not exist on other registries, but traverse in registry preference order
+            foreach (Uri uri in _registryUris)
+            {
+                if (!latestVersion.TryGetValue(uri, out string? latest))
+                {
+                    continue;
+                }
+
+                bool found = true;
+                foreach (HashSet<string> knowns in knownVersions.Values)
+                {
+                    if (!knowns.Contains(latest))
+                    {
+                        found = false;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    // we found a 'latest' that is not known on all registries
+                    directive = directive with
+                    {
+                        PackageVersion = latest,
+                        VersionType = DirectiveVersionCodes.Exact,
+                        ResolvedTarballUrl = directive.Manifests[uri].Versions[latest].Distribution?.TarballUrl ?? string.Empty,
+                        ResolvedSha = directive.Manifests[uri].Versions[latest].Distribution?.HashSHA ?? string.Empty,
+                    };
+                    return true;
+                }
+            }
+
+            // just use the 'latest' from the most-preferred registry
+            foreach (Uri uri in _registryUris)
+            {
+                if (!latestVersion.TryGetValue(uri, out string? latest))
+                {
+                    continue;
+                }
+
+                directive = directive with
+                {
+                    PackageVersion = latest,
+                    VersionType = DirectiveVersionCodes.Exact,
+                    ResolvedTarballUrl = directive.Manifests[uri].Versions[latest].Distribution?.TarballUrl ?? string.Empty,
+                    ResolvedSha = directive.Manifests[uri].Versions[latest].Distribution?.HashSHA ?? string.Empty,
+                };
+                return true;
+            }
+        }
+
+        // traverse registries in order and use whatever we can find
+        foreach (Uri uri in _registryUris)
+        {
+            // check for a matching latest
+            if (!knownVersions.TryGetValue(uri, out HashSet<string>? versions))
+            {
+                continue;
+            }
+
+            if (!(versions?.Any() ?? false))
+            {
+                continue;
+            }
+
+            string version = versions.OrderByDescending(v => v).First();
+
+            // grab the 'highest' sort version - best guess since we cannot guarantee SemVer
+            directive = directive with
+            {
+                PackageVersion = version,
+                VersionType = DirectiveVersionCodes.Exact,
+                ResolvedTarballUrl = directive.Manifests[uri].Versions[version].Distribution?.TarballUrl ?? string.Empty,
+                ResolvedSha = directive.Manifests[uri].Versions[version].Distribution?.HashSHA ?? string.Empty,
+            };
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>Attempts to get registry manifests.</summary>
+    /// <param name="directive">[out] The parsed.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryGetRegistryManifests(ref FhirDirective directive)
+    {
+        ConcurrentDictionary<Uri, RegistryPackageManifest> manifests = new();
+        string packageId = directive.PackageId;
+
+        Parallel.ForEach(_registryUris, registryUri =>
+        {
+            try
+            {
+                Uri requestUri = new(registryUri, packageId);
+
+                HttpResponseMessage response = _httpClient.GetAsync(requestUri).Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    //_logger.LogInformation(
+                    //    $"TryGetRegistryManifests <<<" +
+                    //    $" Failed to get package info: {response.StatusCode}" +
+                    //    $" {requestUri.AbsoluteUri}");
+                    return;
+                }
+
+                string json = response.Content.ReadAsStringAsync().Result;
+
+                RegistryPackageManifest? info = JsonSerializer.Deserialize<RegistryPackageManifest>(json);
+
+                if (!(info?.Name.Equals(packageId, StringComparison.OrdinalIgnoreCase) ?? false))
+                {
+                    //_logger.LogInformation(
+                    //    $"TryGetRegistryManifests <<<" +
+                    //    $" Package information mismatch: requested {requestUri.AbsoluteUri}" +
+                    //    $" received manifest for {info?.Name}");
+                    return;
+                }
+
+                if (info.Versions == null || info.Versions.Count == 0)
+                {
+                    //_logger.LogInformation(
+                    //    $"TryGetRegistryManifests <<<" +
+                    //    $" package {requestUri.AbsoluteUri}" +
+                    //    $" contains NO versions");
+                    return;
+                }
+
+                _ = manifests.TryAdd(registryUri, info);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(
+                    $"TryGetRegistryManifests <<<" +
+                    $" Server {registryUri.AbsoluteUri}" +
+                    $" Package {packageId}" +
+                    $" threw: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    _logger.LogInformation($" <<< {ex.InnerException.Message}");
+                }
+            }
+        });
+
+        directive.Manifests = manifests.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+        return directive.Manifests.Any();
+    }
+
+    /// <summary>Attempts to catalog search.</summary>
+    /// <param name="directive">[out] The parsed.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryCatalogSearch(FhirDirective directive)
+    {
+        object lockObj = new();
+
+        Parallel.ForEach(_registryUris, registryUri =>
+        {
+            try
+            {
+                Uri requestUri = new(
+                    registryUri,
+                    $"catalog?op=find&name={directive.PackageId}&pkgcanonical=&canonical=&fhirversion=");
+
+                HttpResponseMessage response = _httpClient.GetAsync(requestUri).Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    //_logger.LogInformation(
+                    //    $"TryCatalogSearch <<<" +
+                    //    $" Failed to get package info: {response.StatusCode}" +
+                    //    $" {requestUri.AbsoluteUri}");
+                    return;
+                }
+
+                string json = response.Content.ReadAsStringAsync().Result;
+
+                // TODO: packages.fhir.org is currently returning PascalCase instead of CamelCase - remove this (performance) when fixed
+                IEnumerable<FhirNpmPackageDetails>? entries = JsonSerializer.Deserialize<IEnumerable<FhirNpmPackageDetails>>(json, new JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true,
+                });
+
+                if (!(entries?.Any() ?? false))
+                {
+                    return;
+                }
+
+                lock (lockObj)
+                {
+                    directive.CatalogEntries[registryUri] = entries.ToDictionary(e => e.Name, e => e);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(
+                    $"TryCatalogSearch <<<" +
+                    $" Server {registryUri.AbsoluteUri}" +
+                    $" Package {directive.PackageId}" +
+                    $" threw: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    _logger.LogInformation($" <<< {ex.InnerException.Message}");
+                }
+            }
+        });
+
+        return directive.CatalogEntries.Any();
+    }
+
+    /// <summary>
+    /// Attempts to resolve ig name the FhirSequenceCodes from the given FhirDirective.
+    /// </summary>
+    /// <param name="directive">     [out] The parsed directive.</param>
+    /// <param name="forFhirVersion">(Optional) FHIR version to restrict downloads to.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryResolveIgName(
+        FhirDirective directive,
+        FhirSequenceCodes forFhirVersion = FhirSequenceCodes.Unknown)
+    {
+        if (directive.NameType != DirectiveNameTypeCodes.GuideWithoutSuffix)
+        {
+            // other package types are fine
+            return true;
+        }
+
+        // perform a catalog search if we need to
+        if ((!directive.CatalogEntries.Any()) &&
+            (!TryCatalogSearch(directive)))
+        {
+            _logger.LogWarning($"TryResolveIgName <<< catalog search failed for package: {directive.PackageId}!");
+            return false;
+        }
+
+        // if we do not care which FHIR version we are in, just use the default one
+        if (forFhirVersion == FhirSequenceCodes.Unknown)
+        {
+            return true;
+        }
+
+        // traverse registries in preferred order
+        foreach (Uri uri in _registryUris)
+        {
+            if ((!directive.CatalogEntries.TryGetValue(uri, out Dictionary<string, FhirNpmPackageDetails>? catalog)) ||
+                (catalog == null))
+            {
+                continue;
+            }
+            
+            // if we have a package that matches the requested FHIR version, promote it
+            foreach (FhirNpmPackageDetails entry in catalog.Values)
+            {
+                if (entry.FhirVersion.Equals(ToLiteral(forFhirVersion), StringComparison.OrdinalIgnoreCase) ||
+                    entry.FhirVersion.Equals(ToRLiteral(forFhirVersion), StringComparison.OrdinalIgnoreCase))
+                {
+                    if (PackageIsFhirCore(entry.Name))
+                    {
+                        directive = directive with
+                        {
+                            PackageId = entry.Name,
+                            NameType = DirectiveNameTypeCodes.CoreFull,
+                            FhirRelease = entry.FhirVersion,
+                        };
+                    }
+                    else if (_matchFhirSuffix.IsMatch(entry.Name))
+                    {
+                        directive = directive with
+                        {
+                            PackageId = entry.Name,
+                            NameType = DirectiveNameTypeCodes.GuideWithSuffix,
+                            FhirRelease = entry.FhirVersion,
+                        };
+                    }
+                    else
+                    {
+                        directive = directive with
+                        {
+                            PackageId = entry.Name,
+                            NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
+                            FhirRelease = entry.FhirVersion,
+                        };
+                    }
+
+                    return true;
+                }
+            }
+        }
+
+        // no match here means we failed to resolve
+        return false;
+    }
+
+    public bool ResolveDirective(
+        string inputDirective,
+        out PackageCacheEntry? package,
+        FhirSequenceCodes forFhirVersion = FhirSequenceCodes.Unknown,
+        bool offlineMode = false)
+    {
+        _logger.LogInformation($"Request to resolve: {inputDirective}");
+
+        // parse the requested directive
+        if ((!TryParseDirective(inputDirective, out FhirDirective? directive)) ||
+            (directive == null))
+        {
+            _logger.LogError($"Failed to parse directive input: {inputDirective}");
+            package = null;
+            return false;
+        }
+
+        PackageCacheRecord cached;
+
+        // check for a local version, assume we are good if it is an exact version request
+        if ((directive.VersionType == DirectiveVersionCodes.Exact) &&
+            _packagesByDirective.TryGetValue(directive.Directive, out cached))
+        {
+            package = new()
+            {
+                fhirVersion = cached.FhirVersion,
+                directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                resolvedDirective = cached.CacheDirective,
+                name = cached.PackageName,
+                version = cached.Version,
+            };
+
+            return true;
+        }
+
+        // check if we want to look for FHIR-versioned packages
+        if ((directive.NameType == DirectiveNameTypeCodes.GuideWithoutSuffix) &&
+            (forFhirVersion != FhirSequenceCodes.Unknown))
+        {
+            _ = TryResolveIgName(directive, forFhirVersion);
+        }
+
+        // handle additional resolution based on version type
+        switch (directive.VersionType)
+        {
+            case DirectiveVersionCodes.NonSemVer:
+            case DirectiveVersionCodes.Exact:
+                // we have an exact version, check for a local copy
+                if (_packagesByDirective.TryGetValue(directive.Directive, out cached))
+                {
+                    package = new()
+                    {
+                        fhirVersion = cached.FhirVersion,
+                        directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                        resolvedDirective = cached.CacheDirective,
+                        name = cached.PackageName,
+                        version = cached.Version,
+                    };
+
+                    return true;
+                }
+                break;
+            case DirectiveVersionCodes.Partial:
+                {
+                    // attempt to resolve the version range
+                    if (!TryResolveVersionRange(ref directive))
+                    {
+                        _logger.LogError($"Failed to resolve version range: {inputDirective}");
+                        package = null;
+                        return false;
+                    }
+
+                    // we now have an exact version, check for a local copy
+                    if (_packagesByDirective.TryGetValue(directive.Directive, out cached))
+                    {
+                        package = new()
+                        {
+                            fhirVersion = cached.FhirVersion,
+                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            resolvedDirective = cached.CacheDirective,
+                            name = cached.PackageName,
+                            version = cached.Version,
+                        };
+
+                        return true;
+                    }
+                }
+                break;
+            case DirectiveVersionCodes.Latest:
+                {
+                    // attempt to resolve the latest version
+                    if (!TryResolveVersionLatest(ref directive))
+                    {
+                        _logger.LogError($"Failed to resolve latest version: {inputDirective}");
+                        package = null;
+                        return false;
+                    }
+
+                    // we now have an exact version, check for a local copy
+                    if (_packagesByDirective.TryGetValue(directive.Directive, out cached))
+                    {
+                        package = new()
+                        {
+                            fhirVersion = cached.FhirVersion,
+                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            resolvedDirective = cached.CacheDirective,
+                            name = cached.PackageName,
+                            version = cached.Version,
+                        };
+
+                        return true;
+                    }
+                }
+                break;
+            case DirectiveVersionCodes.Local:
+                {
+                    // check for local entry
+                    if (_packagesByDirective.TryGetValue(directive.Directive, out cached))
+                    {
+                        package = new()
+                        {
+                            fhirVersion = cached.FhirVersion,
+                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            resolvedDirective = cached.CacheDirective,
+                            name = cached.PackageName,
+                            version = cached.Version,
+                        };
+
+                        return true;
+                    }
+
+                    // if we do not have a local version, fall-back to CI
+                    directive = directive with
+                    {
+                        Directive = $"{directive.PackageId}#current",
+                        VersionType = DirectiveVersionCodes.ContinuousIntegration
+                    };
+
+                    // attempt to resolve via CI
+                    if (!TryResolveCi(ref directive))
+                    {
+                        _logger.LogError($"Not found locally and failed to resolve via CI: {inputDirective}");
+                        package = null;
+                        return false;
+                    }
+
+                    // we now have CI info, compare to local and accept if it was downloaded on or after the current CI build date
+                    if (_packagesByDirective.TryGetValue(directive.Directive, out cached) &&
+                        (cached.DownloadDateTime.CompareTo(directive.BuildDate) >= 0))
+                    {
+                        package = new()
+                        {
+                            fhirVersion = cached.FhirVersion,
+                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            resolvedDirective = cached.CacheDirective,
+                            name = cached.PackageName,
+                            version = cached.Version,
+                        };
+
+                        return true;
+                    }
+                }
+                break;
+            case DirectiveVersionCodes.ContinuousIntegration:
+                {
+                    // attempt to resolve via CI
+                    if (!TryResolveCi(ref directive))
+                    {
+                        _logger.LogError($"Failed to resolve via CI: {inputDirective}");
+                        package = null;
+                        return false;
+                    }
+
+                    // we now have CI info, compare to local and accept if it was downloaded on or after the current CI build date
+                    if (_packagesByDirective.TryGetValue(directive.Directive, out cached) &&
+                        (cached.DownloadDateTime.CompareTo(directive.BuildDate) >= 0))
+                    {
+                        package = new()
+                        {
+                            fhirVersion = cached.FhirVersion,
+                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            resolvedDirective = cached.CacheDirective,
+                            name = cached.PackageName,
+                            version = cached.Version,
+                        };
+
+                        return true;
+                    }
+                }
+                break;
+
+            case DirectiveVersionCodes.Unknown:
+            default:
+                {
+                    _logger.LogError($"Directive could not be parsed (unknown version type): {inputDirective}");
+                    package = null;
+                    return false;
+                }
+        }
+
+        Uri dlUri = new(directive.ResolvedTarballUrl);
+        string dlDir = Path.Combine(_cachePackageDirectory, directive.Directive);
+
+        // if we do not have a resolved URL, we cannot download
+        if (string.IsNullOrEmpty(directive.ResolvedTarballUrl))
+        {
+            _logger.LogError($"Could not determine download location for directive: {inputDirective}");
+            package = new()
+            {
+                fhirVersion = FhirSequenceCodes.Unknown,
+                directory = dlDir,
+                resolvedDirective = directive.Directive,
+                name = directive.PackageId,
+                version = directive.PackageVersion,
+            };
+            return false;
+        }
+
+        if (!TryDownloadAndExtract(dlUri, dlDir, directive.Directive, out FhirSequenceCodes resolvedFhirVersion, out string resolvedDirective))
+        {
+            _logger.LogError($"Failed to download {dlUri}, requested by {inputDirective}");
+            package = new()
+            {
+                fhirVersion = resolvedFhirVersion,
+                directory = dlDir,
+                resolvedDirective = directive.Directive,
+                name = directive.PackageId,
+                version = directive.PackageVersion,
+            };
+            return false;
+        }
+
+        UpdatePackageCacheIndex(resolvedDirective, dlDir);
+
+        package = new()
+        {
+            fhirVersion = resolvedFhirVersion,
+            directory = dlDir,
+            resolvedDirective = resolvedDirective,
+            name = directive.PackageId,
+            version = directive.PackageVersion,
+        };
+
+        return true;
     }
 
     /// <summary>Gets directory size.</summary>
@@ -973,190 +1792,6 @@ public partial class FhirCache : IDisposable
         return _matchCorePackageNames.IsMatch(name);
     }
 
-    /// <summary>Attempts to download core via ci a string from the given string.</summary>
-    /// <param name="name">             The name.</param>
-    /// <param name="branchName">       Name of the branch.</param>
-    /// <param name="directory">        [out] Pathname of the directory.</param>
-    /// <param name="fhirVersion">      [out] The FHIR version.</param>
-    /// <param name="resolvedDirective">[out] The resolved directive.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryDownloadCoreViaCI(
-        string name,
-        string branchName,
-        out string directory,
-        out FhirSequenceCodes fhirVersion,
-        out string resolvedDirective)
-    {
-        branchName = GetCoreBranchFromInput(branchName);
-
-        Uri branchUri;
-
-        switch (branchName.ToLowerInvariant())
-        {
-            case "master":
-            case "main":
-                branchUri = _ciUri;
-                break;
-
-            case null:
-            case "":
-                if (name.Contains("r4b", StringComparison.OrdinalIgnoreCase))
-                {
-                    branchUri = new Uri(_ciUri, $"branches/R4B/");
-                }
-                else
-                {
-                    branchUri = _ciUri;
-                }
-
-                break;
-
-            default:
-                branchUri = new Uri(_ciUri, $"branches/{branchName}/");
-                break;
-        }
-
-        directory = Path.Combine(_cachePackageDirectory, $"{name}#current");
-
-        string localNpmFilename = Path.Combine(directory, "package", "package.json");
-        if (File.Exists(localNpmFilename))
-        {
-            try
-            {
-                FhirNpmPackageDetails cachedNpm = FhirNpmPackageDetails.Load(localNpmFilename);
-
-                Uri versionInfoUri = new Uri(branchUri, "version.info");
-                string contents = _httpClient.GetStringAsync(versionInfoUri).Result;
-
-                ParseVersionInfoIni(
-                    contents,
-                    out string ciFhirVersion,
-                    out string ciVersion,
-                    out string ciBuildId,
-                    out string ciBuildDate);
-
-                if (cachedNpm.BuildDate.CompareTo(ciBuildDate) > 0)
-                {
-                    fhirVersion = ToSequence(ciFhirVersion);
-                    resolvedDirective = $"{cachedNpm.Name}#{cachedNpm.Version}";
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogInformation($"TryDownloadCoreViaCI <<< failed to compare local to CI, forcing download ({ex.Message})");
-            }
-        }
-
-        Uri uri = new Uri(branchUri, $"{name}.tgz");
-
-        return TryDownloadAndExtract(uri, directory, $"{name}#current", out fhirVersion, out resolvedDirective);
-    }
-
-    /// <summary>Attempts to download guide via ci a string from the given string.</summary>
-    /// <param name="branchName">       Name of the branch.</param>
-    /// <param name="name">             [out] The name.</param>
-    /// <param name="directory">        [out] Pathname of the directory.</param>
-    /// <param name="fhirVersion">      [out] The FHIR version.</param>
-    /// <param name="resolvedDirective">[out] The resolved directive.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryDownloadGuideViaCI(
-        string branchName,
-        out string name,
-        out string directory,
-        out FhirSequenceCodes fhirVersion,
-        out string resolvedDirective)
-    {
-        branchName = GetIgBranchFromInput(branchName);
-
-        try
-        {
-            Uri versionInfoUri = new Uri(_ciUri, $"ig/{branchName}/package.manifest.json");
-            string contents = _httpClient.GetStringAsync(versionInfoUri).Result;
-
-            FhirNpmPackageDetails ciNpm = FhirNpmPackageDetails.Parse(contents);
-
-            name = ciNpm.Name;
-            directory = Path.Combine(_cachePackageDirectory, $"{ciNpm.Name}#current");
-
-            string localNpmFilename = Path.Combine(directory, "package", "package.json");
-
-            if (File.Exists(localNpmFilename))
-            {
-                FhirNpmPackageDetails cachedNpm = FhirNpmPackageDetails.Load(localNpmFilename);
-
-                if (cachedNpm.BuildDate.CompareTo(ciNpm.BuildDate) <= 0)
-                {
-                    fhirVersion = ToSequence(cachedNpm.FhirVersion);
-                    resolvedDirective = $"{cachedNpm.Name}#{cachedNpm.Version}";
-                    return true;
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogInformation($"TryDownloadCoreViaCI <<< failed to compare local to CI, forcing download ({ex.Message})");
-            name = string.Empty;
-            directory = string.Empty;
-            fhirVersion = FhirSequenceCodes.Unknown;
-            resolvedDirective = string.Empty;
-            return false;
-        }
-
-        Uri uri = new Uri(_ciUri, $"ig/{branchName}/package.tgz");
-
-        return TryDownloadAndExtract(uri, directory, $"{name}#current", out fhirVersion, out resolvedDirective);
-    }
-
-    /// <summary>
-    /// Attempts to get guide ci package details the NpmPackageDetails from the given string.
-    /// </summary>
-    /// <param name="branchName">Name of the branch.</param>
-    /// <param name="details">   [out] The details.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryGetGuideCiPackageDetails(string branchName, out FhirNpmPackageDetails details)
-    {
-        branchName = GetIgBranchFromInput(branchName);
-
-        try
-        {
-            Uri versionInfoUri = new Uri(_ciUri, $"ig/{branchName}/package.manifest.json");
-
-            string contents = _httpClient.GetStringAsync(versionInfoUri).Result;
-
-            details = FhirNpmPackageDetails.Parse(contents);
-
-            if (details.Url == null)
-            {
-                details.Url = new Uri(_ciUri, $"ig/{branchName}").ToString();
-            }
-
-            if (string.IsNullOrEmpty(details.Title))
-            {
-                details.Title = $"FHIR IG: {details.Name}";
-            }
-
-            if (string.IsNullOrEmpty(details.Description))
-            {
-                details.Description = $"CI Build from branch {branchName}, current as of: {DateTime.Now}";
-            }
-
-            if (string.IsNullOrEmpty(details.PackageType))
-            {
-                details.PackageType = "ig";
-            }
-
-            return true;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogInformation($"TryGetGuideCiPackageDetails <<< failed to find CI IG ({ex.Message})");
-        }
-
-        details = null!;
-        return false;
-    }
-
     /// <summary>Package base for sequence.</summary>
     /// <param name="seq">The sequence.</param>
     /// <returns>A string.</returns>
@@ -1165,127 +1800,6 @@ public partial class FhirCache : IDisposable
         FhirSequenceCodes.R4B => "hl7.fhir.r4b",
         _ => $"hl7.fhir.r{(int)seq}",
     };
-
-    /// <summary>Attempts to get core ci package details.</summary>
-    /// <param name="branchName">Name of the branch.</param>
-    /// <param name="details">   [out] The details.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryGetCoreCiPackageDetails(
-        string branchName,
-        out FhirNpmPackageDetails details)
-    {
-        branchName = GetCoreBranchFromInput(branchName);
-
-        Uri branchUri;
-
-        switch (branchName.ToLowerInvariant())
-        {
-            case "master":
-            case "main":
-            case "":
-                branchUri = _ciUri;
-                break;
-
-            case "r4b":
-                branchUri = new Uri(_ciUri, $"branches/R4B/");
-                break;
-
-            default:
-                branchUri = new Uri(_ciUri, $"branches/{branchName}/");
-                break;
-        }
-
-        try
-        {
-            Uri versionInfoUri = new Uri(branchUri, "version.info");
-            string contents = _httpClient.GetStringAsync(versionInfoUri).Result;
-
-            ParseVersionInfoIni(
-                contents,
-                out string fhirVersion,
-                out string version,
-                out string buildId,
-                out string buildDate);
-
-            FhirSequenceCodes sequence = ToSequence(version);
-
-            string corePackageName = PackageBaseForSequence(sequence) + ".core";
-
-            details = new FhirNpmPackageDetails()
-            {
-                Name = corePackageName,
-                Version = version,
-                BuildDate = buildDate,
-                FhirVersionList = new string[1] { version },
-                FhirVersions = new string[1] { version },
-                PackageType = "core",
-                ToolsVersion = 3M,
-                Url = branchUri.ToString(),
-                Title = $"FHIR {sequence}: {fhirVersion}",
-                Description = $"CI Build from branch {branchName}, current as of: {DateTime.Now}",
-                Dependencies = new(),
-            };
-
-            return true;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogInformation($"TryGetCoreCiPackageDetails <<< failed to get CI package details: {ex.Message}");
-        }
-
-        details = null!;
-        return false;
-    }
-
-    /// <summary>Attempts to download guide via ci a string from the given string.</summary>
-    /// <param name="name">      The name.</param>
-    /// <param name="branchName">Name of the branch.</param>
-    /// <param name="directory"> [out] Pathname of the directory.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryDownloadGuideViaCI(
-        string name,
-        string branchName,
-        out string directory,
-        out FhirSequenceCodes fhirVersion,
-        out string resolvedDirective)
-    {
-        directory = Path.Combine(_cachePackageDirectory, $"{name}#current");
-
-        branchName = GetIgBranchFromInput(branchName);
-
-        string localNpmFilename = Path.Combine(directory, "package", "package.json");
-        if (File.Exists(localNpmFilename))
-        {
-            try
-            {
-                FhirNpmPackageDetails cachedNpm = FhirNpmPackageDetails.Load(localNpmFilename);
-
-                Uri versionInfoUri = new Uri(_ciUri, $"ig/{branchName}/package.manifest.json");
-
-                string contents = _httpClient.GetStringAsync(versionInfoUri).Result;
-
-                FhirNpmPackageDetails ciNpm = FhirNpmPackageDetails.Parse(contents);
-
-                if (cachedNpm.BuildDate.CompareTo(ciNpm.BuildDate) <= 0)
-                {
-                    fhirVersion = ToSequence(ciNpm.FhirVersion);
-                    resolvedDirective = $"{ciNpm.Name}#{ciNpm.Version}";
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogInformation($"TryDownloadCoreViaCI <<< failed to compare local to CI, forcing download ({ex.Message})");
-                fhirVersion = FhirSequenceCodes.Unknown;
-                resolvedDirective = string.Empty;
-                return false;
-            }
-        }
-
-        Uri uri = new Uri(_ciUri, $"ig/{branchName}/package.tgz");
-
-        return TryDownloadAndExtract(uri, directory, $"{name}#current", out fhirVersion, out resolvedDirective);
-    }
 
     /// <summary>
     /// Attempts to get relative base for version a string from the given string.

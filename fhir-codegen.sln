@@ -32,7 +32,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FhirCodeGenBlazor", "src\FhirCodeGenBlazor\FhirCodeGenBlazor.csproj", "{F91764FD-EE86-4FBC-951F-819361ABCA4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.PackageManager", "src\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj", "{A758C220-2332-498A-B245-C6BE3203A87E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.PackageManager", "src\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj", "{A758C220-2332-498A-B245-C6BE3203A87E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.PackageManager.Tests", "src\Microsoft.Health.Fhir.PackageManager.Tests\Microsoft.Health.Fhir.PackageManager.Tests.csproj", "{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{A758C220-2332-498A-B245-C6BE3203A87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A758C220-2332-498A-B245-C6BE3203A87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A758C220-2332-498A-B245-C6BE3203A87E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

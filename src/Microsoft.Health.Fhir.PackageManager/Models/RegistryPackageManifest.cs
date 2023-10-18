@@ -5,38 +5,54 @@
 
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using Microsoft.Health.Fhir.PackageManager.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Microsoft.Health.Fhir.PackageManager;
 
 /// <summary>FHIR Registry package manifest record.</summary>
-internal class RegistryPackageManifest
+public record class RegistryPackageManifest
 {
+    /// <summary>Initializes a new instance of the <see cref="RegistryPackageManifest"/> class.</summary>
+    public RegistryPackageManifest() { }
+
+    /// <summary>Initializes a new instance of the <see cref="RegistryPackageManifest"/> class.</summary>
+    /// <param name="other">The instance to copy from.</param>
+    [SetsRequiredMembers]
+    protected RegistryPackageManifest(RegistryPackageManifest other)
+    {
+        Id = other.Id;
+        Name = other.Name;
+        Description = other.Description;
+        DistributionTags = other.DistributionTags.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+    }
+
     /// <summary>Gets or sets the identifier.</summary>
     [JsonPropertyName("_id")]
-    internal string Id { get; set; } = string.Empty;
+    public string Id { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the name.</summary>
     [JsonPropertyName("name")]
-    internal string Name { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the description.</summary>
     [JsonPropertyName("description")]
-    internal string Description { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the distribution tags.</summary>
     [JsonPropertyName("dist-tags")]
-    internal Dictionary<string, string> DistributionTags { get; set; } = new();
+    public Dictionary<string, string> DistributionTags { get; set; } = new();
 
     /// <summary>Gets or sets the versions.</summary>
     [JsonPropertyName("versions")]
-    internal Dictionary<string, FhirPackageVersionInfo> Versions { get; set; } = new();
+    public Dictionary<string, FhirPackageVersionInfo> Versions { get; set; } = new();
 
     /// <summary>Parses.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
     /// <exception cref="JsonException">        Thrown when a JSON error condition occurs.</exception>
     /// <param name="json">The JSON.</param>
     /// <returns>A RegistryPackageInfo.</returns>
-    internal static RegistryPackageManifest? Parse(string json)
+    public static RegistryPackageManifest? Parse(string json)
     {
         if (string.IsNullOrEmpty(json))
         {
@@ -113,7 +129,7 @@ internal class RegistryPackageManifest
     /// <param name="first"> The first.</param>
     /// <param name="second">The second.</param>
     /// <returns>True if first higher version, false if not.</returns>
-    internal static bool IsFirstHigherVersion(string first, string second)
+    public static bool IsFirstHigherVersion(string first, string second)
     {
         if (string.IsNullOrEmpty(second))
         {
@@ -274,7 +290,7 @@ internal class RegistryPackageManifest
 
     /// <summary>Gets the highest version.</summary>
     /// <returns>The highest version for this package.</returns>
-    internal string HighestVersion()
+    public string HighestVersion()
     {
         string highestVersion = string.Empty;
         string highestDate = string.Empty;

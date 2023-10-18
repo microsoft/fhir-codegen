@@ -6,12 +6,66 @@
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using System.Diagnostics.CodeAnalysis;
+using System;
 
-namespace Microsoft.Health.Fhir.PackageManager;
+namespace Microsoft.Health.Fhir.PackageManager.Models;
 
 /// <summary>Information about a FHIR npm package.</summary>
-internal class FhirNpmPackageDetails
+internal record class FhirNpmPackageDetails
 {
+    private string _fhirVersion = string.Empty;
+    private IEnumerable<string> _fhirVersionList = Enumerable.Empty<string>();
+    private IEnumerable<string> _fhirVersions = Enumerable.Empty<string>();
+
+    /// <summary>A package maintainer.</summary>
+    internal record class PackageMaintainer
+    {
+        /// <summary>Gets or sets the name.</summary>
+        [JsonPropertyName("name")]
+        public string Name { get; set; } = string.Empty;
+
+        /// <summary>Gets or sets the email.</summary>
+        [JsonPropertyName("email")]
+        public string Email { get; set; } = string.Empty;
+
+        /// <summary>Gets or sets URL of the document.</summary>
+        [JsonPropertyName("url")]
+        public string Url { get; set; } = string.Empty;
+    }
+
+    /// <summary>Initializes a new instance of the <see cref="FhirNpmPackageDetails"/> class.</summary>
+    public FhirNpmPackageDetails() { }
+
+    /// <summary>Initializes a new instance of the <see cref="FhirNpmPackageDetails"/> class.</summary>
+    /// <param name="other">The other.</param>
+    [SetsRequiredMembers]
+    protected FhirNpmPackageDetails(FhirNpmPackageDetails other)
+    {
+        // Copy all properties from other to the current object.
+        Name = other.Name;
+        Version = other.Version;
+        BuildDate = other.BuildDate;
+        FhirVersionList = other.FhirVersionList.Select(v => v);
+        FhirVersions = other.FhirVersions.Select(v => v);
+        FhirVersion = other.FhirVersion;
+        PackageType = other.PackageType;
+        ToolsVersion = other.ToolsVersion;
+        Canonical = other.Canonical;
+        Homepage = other.Homepage;
+        Url = other.Url;
+        Title = other.Title;
+        Description = other.Description;
+        Dependencies = other.Dependencies;
+        Keywords = other.Keywords.Select(v => v);
+        Author = other.Author;
+        Maintainers = other.Maintainers.Select(v => v with { });
+        License = other.License;
+        Directories = other.Directories.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        Jurisdiction = other.Jurisdiction;
+        OriginalVersion = other.OriginalVersion;
+    }
+
     /// <summary>Gets or sets the name.</summary>
     [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
@@ -26,15 +80,96 @@ internal class FhirNpmPackageDetails
 
     /// <summary>Gets or sets a list of fhir versions.</summary>
     [JsonPropertyName("fhir-version-list")]
-    public IEnumerable<string> FhirVersionList { get; set; } = Enumerable.Empty<string>();
+    public IEnumerable<string> FhirVersionList
+    {
+        get => _fhirVersionList;
+        set
+        {
+            _fhirVersionList = value;
+
+            if (value.Any())
+            {
+                if (string.IsNullOrEmpty(_fhirVersion))
+                {
+                    _fhirVersion = value.First();
+                }
+
+                if (!_fhirVersions.Any())
+                {
+                    _fhirVersions = value;
+                }
+            }
+        }
+    }
 
     /// <summary>Gets or sets the fhir versions.</summary>
     [JsonPropertyName("fhirVersions")]
-    public IEnumerable<string> FhirVersions { get; set; } = Enumerable.Empty<string>();
+    public IEnumerable<string> FhirVersions
+    {
+        get => _fhirVersions;
+        set
+        {
+            _fhirVersions = value;
+
+            if (value.Any())
+            {
+                if (string.IsNullOrEmpty(_fhirVersion))
+                {
+                    _fhirVersion = value.First();
+                }
+
+                if (!_fhirVersionList.Any())
+                {
+                    _fhirVersionList = value;
+                }
+            }
+        }
+    }
 
     /// <summary>Gets or sets the FHIR version.</summary>
     [JsonPropertyName("fhirVersion")]
-    public string FhirVersion { get; set; } = string.Empty;
+    [JsonConverter(typeof(FhirVersionConverter))]
+    public string FhirVersion
+    {
+        get => _fhirVersion;
+        set
+        {
+            string temp = value.Trim();
+
+            if (temp.StartsWith('['))
+            {
+                temp = temp.Replace("[", string.Empty).Replace("]", string.Empty);
+
+                string[] versions = temp.Split(',');
+
+                _fhirVersion = versions[0];
+
+                if (!_fhirVersions.Any())
+                {
+                    _fhirVersions = versions.Select(v => v.Trim());
+                }
+
+                if (!_fhirVersionList.Any())
+                {
+                    _fhirVersionList = versions.Select(v => v.Trim());
+                }
+
+                return;
+            }
+
+            _fhirVersion = value;
+
+            if (!_fhirVersions.Any())
+            {
+                _fhirVersions = new string[] { _fhirVersion };
+            }
+
+            if (!_fhirVersionList.Any())
+            {
+                _fhirVersionList = new string[] { _fhirVersion };
+            }
+        }
+    }
 
     /// <summary>Gets or sets the type of the package.</summary>
     [JsonPropertyName("type")]
@@ -76,6 +211,10 @@ internal class FhirNpmPackageDetails
     [JsonPropertyName("author")]
     public string Author { get; set; } = string.Empty;
 
+    /// <summary>Gets or sets the maintainers.</summary>
+    [JsonPropertyName("maintainers")]
+    public IEnumerable<PackageMaintainer> Maintainers { get; set; } = Enumerable.Empty<PackageMaintainer>();
+
     /// <summary>Gets or sets the license.</summary>
     [JsonPropertyName("license")]
     public string License { get; set; } = string.Empty;
@@ -83,6 +222,10 @@ internal class FhirNpmPackageDetails
     /// <summary>Gets or sets the directories.</summary>
     [JsonPropertyName("directories")]
     public Dictionary<string, string> Directories { get; set; } = new();
+
+    /// <summary>Gets or sets the jurisdiction.</summary>
+    [JsonPropertyName("jurisdiction")]
+    public string Jurisdiction { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the original version.</summary>
     [JsonPropertyName("original-version")]
@@ -167,50 +310,50 @@ internal class FhirNpmPackageDetails
 
         //if (details == null)
         //{
-            try
+        try
+        {
+            JsonNode? node = JsonNode.Parse(contents);
+
+            if (node == null)
             {
-                JsonNode? node = JsonNode.Parse(contents);
-
-                if (node == null)
-                {
-                    details = null;
-                }
-                else
-                {
-                    details = new()
-                    {
-                        Name = StringFromNode(node, "name"),
-                        Version = StringFromNode(node, "version"),
-                        BuildDate = StringFromNode(node, "date"),
-                        FhirVersionList = EnumerableStringFromNode(node, "fhir-version-list"),
-                        FhirVersions = EnumerableStringFromNode(node, "fhirVersions"),
-                        FhirVersion = StringFromNode(node, "fhirVersion"),
-                        PackageType = StringFromNode(node, "type"),
-                        Canonical = StringFromNode(node, "canonical"),
-                        Homepage = StringFromNode(node, "homepage"),
-                        Title = StringFromNode(node, "title"),
-                        Description = StringFromNode(node, "description"),
-                        Dependencies = StringDictFromNode(node, "dependencies"),
-                        Keywords = EnumerableStringFromNode(node, "keywords"),
-                        Author = StringFromNode(node, "author"),
-                        License = StringFromNode(node, "license"),
-                        Directories = StringDictFromNode(node, "directories"),
-                        OriginalVersion = StringFromNode(node, "original-version"),
-                        Url = StringFromNode(node, "url"),
-                    };
-                }
-
-            }
-            catch (JsonException jex)
-            {
-                Console.WriteLine($"FhirNpmPackageDetails.Parse <<< caught JSON exception in untyped parse: {jex.Message}");
-                if (jex.InnerException != null)
-                {
-                    Console.WriteLine($" <<< {jex.InnerException.Message}");
-                }
-
                 details = null;
             }
+            else
+            {
+                details = new()
+                {
+                    Name = StringFromNode(node, "name"),
+                    Version = StringFromNode(node, "version"),
+                    BuildDate = StringFromNode(node, "date"),
+                    FhirVersionList = EnumerableStringFromNode(node, "fhir-version-list"),
+                    FhirVersions = EnumerableStringFromNode(node, "fhirVersions"),
+                    FhirVersion = StringFromNode(node, "fhirVersion"),
+                    PackageType = StringFromNode(node, "type"),
+                    Canonical = StringFromNode(node, "canonical"),
+                    Homepage = StringFromNode(node, "homepage"),
+                    Title = StringFromNode(node, "title"),
+                    Description = StringFromNode(node, "description"),
+                    Dependencies = StringDictFromNode(node, "dependencies"),
+                    Keywords = EnumerableStringFromNode(node, "keywords"),
+                    Author = StringFromNode(node, "author"),
+                    License = StringFromNode(node, "license"),
+                    Directories = StringDictFromNode(node, "directories"),
+                    OriginalVersion = StringFromNode(node, "original-version"),
+                    Url = StringFromNode(node, "url"),
+                };
+            }
+
+        }
+        catch (JsonException jex)
+        {
+            Console.WriteLine($"FhirNpmPackageDetails.Parse <<< caught JSON exception in untyped parse: {jex.Message}");
+            if (jex.InnerException != null)
+            {
+                Console.WriteLine($" <<< {jex.InnerException.Message}");
+            }
+
+            details = null;
+        }
         //}
 
         if (string.IsNullOrEmpty(details?.Name))
@@ -375,7 +518,7 @@ internal class FhirNpmPackageDetails
             return string.Empty;
         }
 
-        if ((node[prop] is JsonArray ja) && ja.Any())
+        if (node[prop] is JsonArray ja && ja.Any())
         {
             return ja.First()!.ToString();
         }

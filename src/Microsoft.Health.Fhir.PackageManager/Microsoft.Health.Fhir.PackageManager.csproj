@@ -11,4 +11,10 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Microsoft.Health.Fhir.PackageManager.Tests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+  
 </Project>
