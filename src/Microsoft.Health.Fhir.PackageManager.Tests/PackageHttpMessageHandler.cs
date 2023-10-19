@@ -68,6 +68,14 @@ public class PackageHttpMessageHandler : HttpMessageHandler
                 {
                     return Task.FromResult(JsonFile("data/package-info-backport-secondary-r4b.json"));
                 }
+            case "https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.manifest.json":
+                {
+                    return Task.FromResult(JsonFile("data/ci-manifest-backport.json"));
+                }
+            case "https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.r4.manifest.json":
+                {
+                    return Task.FromResult(JsonFile("data/ci-manifest-backport-r4.json"));
+                }
 
             // IHE PDQM
             case "https://profiles.ihe.net/ITI/PDQm/package.manifest.json":

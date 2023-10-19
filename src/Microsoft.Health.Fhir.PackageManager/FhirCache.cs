@@ -973,7 +973,45 @@ public partial class FhirCache : IDisposable
             // try to get and parse a package manifest
             try
             {
-                Uri uri = new(root + "/package.manifest.json");
+                Uri uri;
+                string fhirVersion = string.Empty;
+
+                if (inputUrl.EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+                {
+                    string fragment = inputUrl.Substring(inputUrl.LastIndexOf('/') + 1).ToLowerInvariant();
+
+                    switch (fragment)
+                    {
+                        case "package.r4.tgz":
+                            uri = new(root + "/package.r4.manifest.json");
+                            fhirVersion = ToLongVersion(FhirSequenceCodes.R4);
+                            break;
+
+                        case "package.r4b.tgz":
+                            uri = new(root + "/package.r4b.manifest.json");
+                            fhirVersion = ToLongVersion(FhirSequenceCodes.R4B);
+                            break;
+
+                        case "package.r5.tgz":
+                            uri = new(root + "/package.r5.manifest.json");
+                            fhirVersion = ToLongVersion(FhirSequenceCodes.R5);
+                            break;
+
+                        case "package.r6.tgz":
+                            uri = new(root + "/package.r6.manifest.json");
+                            fhirVersion = ToLongVersion(FhirSequenceCodes.R6);
+                            break;
+
+                        case "package.tgz":
+                        default:
+                            uri = new(root + "/package.manifest.json");
+                            break;
+                    }
+                }
+                else
+                {
+                    uri = new(root + "/package.manifest.json");
+                }
 
                 string json = _httpClient.GetStringAsync(uri).Result;
 
@@ -986,7 +1024,7 @@ public partial class FhirCache : IDisposable
                         Directive = v.Name + "#current",
                         PackageId = v.Name,
                         NameType = _matchFhirSuffix.IsMatch(v.Name) ? DirectiveNameTypeCodes.GuideWithSuffix : DirectiveNameTypeCodes.GuideWithoutSuffix,
-                        FhirRelease = v.FhirVersion,
+                        FhirRelease = string.IsNullOrEmpty(fhirVersion) ? v.FhirVersion : fhirVersion,
                         PackageVersion = v.Version,
                         VersionType = DirectiveVersionCodes.ContinuousIntegration,
                         CiUrl = root,
