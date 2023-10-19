@@ -23,13 +23,71 @@ public class PackageHttpMessageHandler : HttpMessageHandler
     {
         switch (request.RequestUri?.AbsoluteUri)
         {
+            // r4 core
+            case "http://packages.fhir.org/hl7.fhir.r4.core":
+                {
+                    return Task.FromResult(JsonFile("data/package-info-r4-core-primary.json"));
+                }
+            case "http://packages2.fhir.org/packages/hl7.fhir.r4.core":
+                {
+                    return Task.FromResult(JsonFile("data/package-info-r4-core-secondary.json"));
+                }
+
+            // us core
+            case "http://packages.fhir.org/hl7.fhir.us.core":
+                {
+                    return Task.FromResult(JsonFile("data/package-info-us-core-primary.json"));
+                }
+            case "http://packages2.fhir.org/packages/hl7.fhir.us.core":
+                {
+                    return Task.FromResult(JsonFile("data/package-info-us-core-secondary.json"));
+                }
+
+            // backport IG
+            case "http://packages.fhir.org/hl7.fhir.uv.subscriptions-backport":
+                {
+                    return Task.FromResult(JsonFile("data/package-info-backport-primary.json"));
+                }
+            case "http://packages.fhir.org/hl7.fhir.uv.subscriptions-backport.r4":
+                {
+                    return Task.FromResult(JsonFile("data/package-info-backport-primary-r4.json"));
+                }
+            case "http://packages.fhir.org/hl7.fhir.uv.subscriptions-backport.r4b":
+                {
+                    return Task.FromResult(JsonFile("data/package-info-backport-primary-r4b.json"));
+                }
+            case "http://packages2.fhir.org/packages/hl7.fhir.uv.subscriptions-backport":
+                {
+                    return Task.FromResult(JsonFile("data/package-info-backport-secondary.json"));
+                }
+            case "http://packages2.fhir.org/packages/hl7.fhir.uv.subscriptions-backport.r4":
+                {
+                    return Task.FromResult(JsonFile("data/package-info-backport-secondary-r4.json"));
+                }
+            case "http://packages2.fhir.org/packages/hl7.fhir.uv.subscriptions-backport.r4b":
+                {
+                    return Task.FromResult(JsonFile("data/package-info-backport-secondary-r4b.json"));
+                }
+
+            // IHE PDQM
+            case "https://profiles.ihe.net/ITI/PDQm/package.manifest.json":
+                {
+                    return Task.FromResult(JsonFile("data/ci-manifest-ihe-pdqm.json"));
+                }
+
+            // qas.json
+            case "http://build.fhir.org/ig/qas.json":
             case "https://build.fhir.org/ig/qas.json":
                 {
                     return Task.FromResult(JsonFile("data/qas-full.json"));
                 }
+
             default:
-                _testOutputHelper?.WriteLine($"The request URI {request.RequestUri?.AbsoluteUri} is not implemented.");
-                throw new NotImplementedException($"The request URI {request.RequestUri?.AbsoluteUri} is not implemented.");
+                {
+                    _testOutputHelper?.WriteLine($"{request.Method} {request.RequestUri?.AbsoluteUri} is not implemented.");
+                    //throw new NotImplementedException($"The request URI {request.RequestUri?.AbsoluteUri} is not implemented.");
+                    return Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotFound));
+                }
         }
     }
 

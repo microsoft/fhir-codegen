@@ -33,13 +33,15 @@ public class CiTests : IClassFixture<CiTestFixture>
     }
 
     /// <summary>Resolve ci by directive.</summary>
-    /// <param name="directive">The directive.</param>
-    /// <remarks>Ensure that any requested directives appear in data/qas-full.json</remarks>
+    /// <remarks>Ensure that any requested directives appear in data/qas-full.json.</remarks>
+    /// <param name="packageId">  Identifier for the package.</param>
+    /// <param name="nameType">   Type of the name.</param>
+    /// <param name="fhirRelease">The FHIR release.</param>
+    /// <param name="branchName"> Name of the branch.</param>
     [Theory]
     [InlineData("hl7.fhir.uv.subscriptions-backport", DirectiveNameTypeCodes.GuideWithoutSuffix, "4.3.0", "")]
     [InlineData("hl7.fhir.uv.subscriptions-backport", DirectiveNameTypeCodes.GuideWithoutSuffix, "4.3.0", "propose-changes")]
-
-    //[InlineData("hl7.fhir.uv.subscriptions-backport.r4", DirectiveNameTypeCodes.GuideWithSuffix, "4.0.1", "")]
+    [InlineData("hl7.fhir.uv.subscriptions-backport.r4", DirectiveNameTypeCodes.GuideWithSuffix, "4.0.1", "")]
     [InlineData("hl7.fhir.uv.subscriptions-backport.r4b", DirectiveNameTypeCodes.GuideWithSuffix, "4.3.0", "")]
 
     internal void ResolveCiByDirective(
@@ -75,6 +77,41 @@ public class CiTests : IClassFixture<CiTestFixture>
         {
             directive.CiBranch.Should().Be(branchName);
         }
+    }
+
+    /// <summary>Resolve ci URL.</summary>
+    /// <param name="url">                URL of the resource.</param>
+    /// <param name="resolvedId">         Identifier for the resolved.</param>
+    /// <param name="resolvedFhirVersion">The resolved FHIR version.</param>
+    /// <param name="resolvedVersion">    The resolved version.</param>
+    [Theory]
+    [InlineData("https://profiles.ihe.net/ITI/PDQm", "ihe.iti.pdqm", "4.0.1", "2.4.0")]
+    [InlineData("https://profiles.ihe.net/ITI/PDQm/package.tgz", "ihe.iti.pdqm", "4.0.1", "2.4.0")]
+    [InlineData("https://profiles.ihe.net/ITI/PDQm/index.html", "ihe.iti.pdqm", "4.0.1", "2.4.0")]
+
+    [InlineData("HL7/fhir-subscription-backport-ig/branches/master/qa.json", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
+    [InlineData("HL7/fhir-subscription-backport-ig/branches/master/qa.json", "hl7.fhir.uv.subscriptions-backport", "4.0.1", "1.1.0")]
+
+    [InlineData("http://hl7.org/fhir/uv/subscriptions-backport/ImplementationGuide/hl7.fhir.uv.subscriptions-backport", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
+
+    internal void ResolveCiUrl(
+        string url,
+        string resolvedId,
+        string resolvedFhirVersion,
+        string resolvedVersion)
+    {
+        bool success = _cache.TryResolveCi(url, out FhirDirective? directive);
+
+        success.Should().BeTrue();
+        directive.Should().NotBeNull();
+
+        if (directive == null) return;
+
+        directive.PackageId.Should().Be(resolvedId);
+        directive.VersionType.Should().Be(DirectiveVersionCodes.ContinuousIntegration);
+        directive.FhirRelease.Should().Be(resolvedFhirVersion);
+        directive.PackageVersion.Should().Be(resolvedVersion);
+        directive.ResolvedTarballUrl.Should().NotBeNullOrEmpty();
     }
 }
 

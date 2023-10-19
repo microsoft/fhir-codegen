@@ -289,21 +289,34 @@ public record class RegistryPackageManifest
     }
 
     /// <summary>Gets the highest version.</summary>
+    /// <param name="versionRange">(Optional) The version range.</param>
     /// <returns>The highest version for this package.</returns>
-    public string HighestVersion()
+    public string HighestVersion(string versionRange = "")
     {
         string highestVersion = string.Empty;
         string highestDate = string.Empty;
         string highestVersionByDate = string.Empty;
 
+        string filter = versionRange.Replace(".x", "", StringComparison.OrdinalIgnoreCase);
+
+        // check all versions we know about
         foreach (FhirPackageVersionInfo version in Versions.Values)
         {
+            // if there was a version filter (root), skip if it does not match
+            if (!string.IsNullOrEmpty(filter) &&
+                !version.Version.StartsWith(filter, StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            // always attempt to compare version strings
             if (IsFirstHigherVersion(version.Version, highestVersion))
             {
                 highestVersion = version.Version;
             }
 
-            if (string.IsNullOrEmpty(highestDate) ||
+            // if both versions have a date compare with it
+            if ((!string.IsNullOrEmpty(highestDate) && !string.IsNullOrEmpty(version.Date)) &&
                 string.Compare(version.Date, highestDate, StringComparison.Ordinal) > 0)
             {
                 highestDate = version.Date;
@@ -311,6 +324,7 @@ public record class RegistryPackageManifest
             }
         }
 
+        // if we have a highest version by date, use it
         if (string.IsNullOrEmpty(highestVersionByDate))
         {
             return highestVersion;
