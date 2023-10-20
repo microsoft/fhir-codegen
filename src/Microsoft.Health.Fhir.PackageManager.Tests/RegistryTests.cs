@@ -131,6 +131,101 @@ public class RegistryTests : IClassFixture<RegistryTestFixture>
         directive.PackageVersion.Should().Be(shouldFindVersion);
         directive.ResolvedTarballUrl.Should().NotBeNullOrEmpty();
     }
+
+    /// <summary>Gets the manifests.</summary>
+    /// <param name="packageId">            Identifier for the package.</param>
+    /// <param name="nameType">             Type of the name.</param>
+    /// <param name="expectedManifestCount">Number of expected manifests.</param>
+    /// <param name="expectedVersionCount"> Number of expected versions.</param>
+    [Theory]
+    [InlineData("hl7.fhir.uv.subscriptions-backport", DirectiveNameTypeCodes.GuideWithoutSuffix, 2, 6)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport.r4", DirectiveNameTypeCodes.GuideWithSuffix, 2, 2)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport.r4b", DirectiveNameTypeCodes.GuideWithSuffix, 2, 2)]
+    [InlineData("hl7.fhir.us.core", DirectiveNameTypeCodes.GuideWithoutSuffix, 2, 38)]
+    [InlineData("hl7.fhir.r4.core", DirectiveNameTypeCodes.CoreFull, 2, 2)]
+    [InlineData("hl7.fhir.r4", DirectiveNameTypeCodes.CorePartial, 2, 2)]
+    internal void GetManifests(
+        string packageId,
+        DirectiveNameTypeCodes nameType,
+        int expectedManifestCount,
+        int expectedVersionCount)
+    {
+        // fill out a FhirDirective as if we had parsed it already
+        FhirDirective directive = new()
+        {
+            Directive = $"{packageId}#latest",
+            PackageId = packageId,
+            NameType = nameType,
+            FhirRelease = string.Empty,
+            PackageVersion = "latest",
+            VersionType = DirectiveVersionCodes.Latest,
+        };
+
+        bool success = _cache.TryGetRegistryManifests(ref directive);
+
+        if (expectedManifestCount == 0)
+        {
+            success.Should().BeFalse();
+            return;
+        }
+
+        success.Should().BeTrue();
+        directive.Manifests.Should().NotBeNullOrEmpty();
+        directive.Manifests.Should().HaveCount(expectedManifestCount);
+        directive.Manifests.Values.Sum(m => m.Versions.Count).Should().Be(expectedVersionCount);
+    }
+
+    /// <summary>Gets the catalogs.</summary>
+    /// <param name="packageId">           Identifier for the package.</param>
+    /// <param name="nameType">            Type of the name.</param>
+    /// <param name="expectedCatalogCount">Number of expected catalogs.</param>
+    /// <param name="expectedEntryCount">  Number of expected entries.</param>
+    [Theory]
+    [InlineData("hl7.fhir.uv.subscriptions-backport", DirectiveNameTypeCodes.GuideWithoutSuffix, 2, 6)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport.r4", DirectiveNameTypeCodes.GuideWithSuffix, 2, 4)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport.r4b", DirectiveNameTypeCodes.GuideWithSuffix, 2, 2)]
+    [InlineData("hl7.fhir.us.core", DirectiveNameTypeCodes.GuideWithoutSuffix, 2, 2)]
+    [InlineData("hl7.fhir.r4.core", DirectiveNameTypeCodes.CoreFull, 2, 4)]
+    [InlineData("hl7.fhir.r4", DirectiveNameTypeCodes.CorePartial, 2, 21)]
+    internal void GetCatalogs(
+        string packageId,
+        DirectiveNameTypeCodes nameType,
+        int expectedCatalogCount,
+        int expectedEntryCount)
+    {
+        // fill out a FhirDirective as if we had parsed it already
+        FhirDirective directive = new()
+        {
+            Directive = $"{packageId}#latest",
+            PackageId = packageId,
+            NameType = nameType,
+            FhirRelease = string.Empty,
+            PackageVersion = "latest",
+            VersionType = DirectiveVersionCodes.Latest,
+        };
+
+        bool success = _cache.TryCatalogSearch(ref directive);
+
+        if (expectedCatalogCount == 0)
+        {
+            success.Should().BeFalse();
+            return;
+        }
+
+        success.Should().BeTrue();
+        directive.CatalogEntries.Should().NotBeNullOrEmpty();
+        directive.CatalogEntries.Should().HaveCount(expectedCatalogCount);
+        directive.CatalogEntries.Values.Sum(m => m.Keys.Count).Should().Be(expectedEntryCount);
+    }
+
+    internal void ResolveNameFromCatalog(
+        string packageId,
+        DirectiveNameTypeCodes nameType,
+        string resolvedId,
+        DirectiveNameTypeCodes resolvedNameType)
+    {
+
+    }
 }
 
 /// <summary>A registry test fixture.</summary>

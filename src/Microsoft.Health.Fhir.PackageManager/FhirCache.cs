@@ -1339,7 +1339,7 @@ public partial class FhirCache : IDisposable
     /// <summary>Attempts to get registry manifests.</summary>
     /// <param name="directive">[out] The parsed.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryGetRegistryManifests(ref FhirDirective directive)
+    internal bool TryGetRegistryManifests(ref FhirDirective directive)
     {
         ConcurrentDictionary<Uri, RegistryPackageManifest> manifests = new();
 
@@ -1411,9 +1411,11 @@ public partial class FhirCache : IDisposable
     /// <summary>Attempts to catalog search.</summary>
     /// <param name="directive">[out] The parsed.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryCatalogSearch(FhirDirective directive)
+    internal bool TryCatalogSearch(ref FhirDirective directive)
     {
-        object lockObj = new();
+        ConcurrentDictionary<Uri, Dictionary<string, FhirNpmPackageDetails>> catalog = new();
+
+        string packageId = directive.PackageId;
 
         Parallel.ForEach(_registryUris, registryUri =>
         {
@@ -1421,7 +1423,7 @@ public partial class FhirCache : IDisposable
             {
                 Uri requestUri = new(
                     registryUri,
-                    $"catalog?op=find&name={directive.PackageId}&pkgcanonical=&canonical=&fhirversion=");
+                    $"catalog?op=find&name={packageId}&pkgcanonical=&canonical=&fhirversion=");
 
                 HttpResponseMessage response = _httpClient.GetAsync(requestUri).Result;
 
@@ -1447,17 +1449,14 @@ public partial class FhirCache : IDisposable
                     return;
                 }
 
-                lock (lockObj)
-                {
-                    directive.CatalogEntries[registryUri] = entries.ToDictionary(e => e.Name, e => e);
-                }
+                _ = catalog.TryAdd(registryUri, entries.ToDictionary(e => e.Name, e => e));
             }
             catch (Exception ex)
             {
                 _logger.LogInformation(
                     $"TryCatalogSearch <<<" +
                     $" Server {registryUri.AbsoluteUri}" +
-                    $" Package {directive.PackageId}" +
+                    $" Package {packageId}" +
                     $" threw: {ex.Message}");
                 if (ex.InnerException != null)
                 {
@@ -1465,6 +1464,11 @@ public partial class FhirCache : IDisposable
                 }
             }
         });
+
+        directive = directive with
+        {
+            CatalogEntries = catalog.ToDictionary(kvp => kvp.Key, kvp => kvp.Value),
+        };
 
         return directive.CatalogEntries.Any();
     }
@@ -1475,8 +1479,8 @@ public partial class FhirCache : IDisposable
     /// <param name="directive">     [out] The parsed directive.</param>
     /// <param name="forFhirVersion">(Optional) FHIR version to restrict downloads to.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryResolveIgName(
-        FhirDirective directive,
+    internal bool TryResolveNameFromCatalog(
+        ref FhirDirective directive,
         FhirSequenceCodes forFhirVersion = FhirSequenceCodes.Unknown)
     {
         if (directive.NameType != DirectiveNameTypeCodes.GuideWithoutSuffix)
@@ -1487,7 +1491,7 @@ public partial class FhirCache : IDisposable
 
         // perform a catalog search if we need to
         if ((!directive.CatalogEntries.Any()) &&
-            (!TryCatalogSearch(directive)))
+            (!TryCatalogSearch(ref directive)))
         {
             _logger.LogWarning($"TryResolveIgName <<< catalog search failed for package: {directive.PackageId}!");
             return false;
@@ -1590,7 +1594,7 @@ public partial class FhirCache : IDisposable
         if ((directive.NameType == DirectiveNameTypeCodes.GuideWithoutSuffix) &&
             (forFhirVersion != FhirSequenceCodes.Unknown))
         {
-            _ = TryResolveIgName(directive, forFhirVersion);
+            _ = TryResolveNameFromCatalog(ref directive, forFhirVersion);
         }
 
         // handle additional resolution based on version type

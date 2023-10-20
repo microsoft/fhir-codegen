@@ -32,6 +32,22 @@ public class PackageHttpMessageHandler : HttpMessageHandler
                 {
                     return Task.FromResult(JsonFile("data/package-info-r4-core-secondary.json"));
                 }
+            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.r4&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-r4-primary.json"));
+                }
+            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.r4&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-r4-secondary.json"));
+                }
+            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.r4.core&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-r4-core-primary.json"));
+                }
+            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.r4.core&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-r4-core-secondary.json"));
+                }
 
             // us core
             case "http://packages.fhir.org/hl7.fhir.us.core":
@@ -41,6 +57,14 @@ public class PackageHttpMessageHandler : HttpMessageHandler
             case "http://packages2.fhir.org/packages/hl7.fhir.us.core":
                 {
                     return Task.FromResult(JsonFile("data/package-info-us-core-secondary.json"));
+                }
+            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.us.core&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-us-core-primary.json"));
+                }
+            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.us.core&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-us-core-secondary.json"));
                 }
 
             // backport IG
@@ -75,6 +99,30 @@ public class PackageHttpMessageHandler : HttpMessageHandler
             case "https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.r4.manifest.json":
                 {
                     return Task.FromResult(JsonFile("data/ci-manifest-backport-r4.json"));
+                }
+            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-backport-primary.json"));
+                }
+            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-backport-secondary.json"));
+                }
+            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-backport-primary-r4.json"));
+                }
+            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-backport-secondary-r4.json"));
+                }
+            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4b&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-backport-primary-r4b.json"));
+                }
+            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4b&pkgcanonical=&canonical=&fhirversion=":
+                {
+                    return Task.FromResult(JsonFile("data/catalog-backport-secondary-r4b.json"));
                 }
 
             // IHE PDQM

@@ -88,16 +88,14 @@ public class CiTests : IClassFixture<CiTestFixture>
     [InlineData("https://profiles.ihe.net/ITI/PDQm", "ihe.iti.pdqm", "4.0.1", "2.4.0")]
     [InlineData("https://profiles.ihe.net/ITI/PDQm/package.tgz", "ihe.iti.pdqm", "4.0.1", "2.4.0")]
     [InlineData("https://profiles.ihe.net/ITI/PDQm/index.html", "ihe.iti.pdqm", "4.0.1", "2.4.0")]
-
     [InlineData("HL7/fhir-subscription-backport-ig/branches/master/qa.json", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
-    // TODO: need to determine if this is worth dealing with
-    //[InlineData("HL7/fhir-subscription-backport-ig/branches/master/qa.json", "hl7.fhir.uv.subscriptions-backport", "4.0.1", "1.1.0")]
-
     [InlineData("http://hl7.org/fhir/uv/subscriptions-backport/ImplementationGuide/hl7.fhir.uv.subscriptions-backport", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
-
     [InlineData("https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
     [InlineData("https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.tgz", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
     [InlineData("https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.r4.tgz", "hl7.fhir.uv.subscriptions-backport.r4", "4.0.1", "1.1.0")]
+
+    // TODO: need to determine if this is worth dealing with
+    //[InlineData("HL7/fhir-subscription-backport-ig/branches/master/qa.json", "hl7.fhir.uv.subscriptions-backport", "4.0.1", "1.1.0")]
 
     internal void ResolveCiUrl(
         string url,
