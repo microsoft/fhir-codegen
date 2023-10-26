@@ -218,13 +218,51 @@ public class RegistryTests : IClassFixture<RegistryTestFixture>
         directive.CatalogEntries.Values.Sum(m => m.Keys.Count).Should().Be(expectedEntryCount);
     }
 
+    /// <summary>Resolve name from catalog.</summary>
+    /// <param name="packageId">   Identifier for the package.</param>
+    /// <param name="nameType">    Type of the name.</param>
+    /// <param name="resolvedId">  Identifier for the resolved.</param>
+    /// <param name="fhirSequence">(Optional) The FHIR sequence.</param>
+    [Theory]
+    [InlineData("hl7.fhir.uv.subscriptions-backport", DirectiveNameTypeCodes.GuideWithoutSuffix, "hl7.fhir.uv.subscriptions-backport", FhirCache.FhirSequenceCodes.R4B)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport", DirectiveNameTypeCodes.GuideWithoutSuffix, "hl7.fhir.uv.subscriptions-backport.r4", FhirCache.FhirSequenceCodes.R4)]
+    [InlineData("hl7.fhir.us.core", DirectiveNameTypeCodes.GuideWithoutSuffix, "hl7.fhir.us.core")]
     internal void ResolveNameFromCatalog(
         string packageId,
         DirectiveNameTypeCodes nameType,
         string resolvedId,
-        DirectiveNameTypeCodes resolvedNameType)
+        FhirCache.FhirSequenceCodes fhirSequence = FhirCache.FhirSequenceCodes.Unknown)
     {
+        // fill out a FhirDirective as if we had parsed it already
+        FhirDirective directive = new()
+        {
+            Directive = $"{packageId}#latest",
+            PackageId = packageId,
+            NameType = nameType,
+            FhirRelease = string.Empty,
+            PackageVersion = "latest",
+            VersionType = DirectiveVersionCodes.Latest,
+        };
 
+        bool success = _cache.TryResolveNameFromCatalog(ref directive, fhirSequence);
+
+        success.Should().BeTrue();
+
+        if (!success)
+        {
+            return;
+        }
+
+        directive.PackageId.Should().Be(resolvedId);
+
+        if (fhirSequence == FhirCache.FhirSequenceCodes.Unknown)
+        {
+            directive.FhirRelease.Should().NotBeNullOrEmpty();
+        }
+        else
+        {
+            directive.FhirRelease.Should().Be(FhirCache.ToRLiteral(fhirSequence));
+        }
     }
 }
 
@@ -241,7 +279,7 @@ public class RegistryTestFixture
     public RegistryTestFixture()
     {
         _handler = new PackageHttpMessageHandler();
-        _cache = new FhirCache(Path.GetRelativePath(Directory.GetCurrentDirectory(), "data/.fhir"), null, null);
+        _cache = new FhirCache(Path.Combine(Directory.GetCurrentDirectory(), "data", ".fhir"), null, null);
         _cache._httpClient = new(_handler);
     }
 }

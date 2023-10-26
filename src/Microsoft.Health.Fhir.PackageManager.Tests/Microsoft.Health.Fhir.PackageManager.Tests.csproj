@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -8,6 +8,36 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="data\.fhir\packages\example.org.ig#notsemver\package\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\.fhir\packages\hl7.fhir.r4.core#4.0.1\package\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\.fhir\packages\hl7.fhir.r4.core#current\package\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\.fhir\packages\hl7.fhir.r4.examples#4.0.1\package\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\.fhir\packages\hl7.fhir.uv.patient-corrections#dev\package\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\.fhir\packages\hl7.fhir.uv.subscriptions-backport#1.1.0\package\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\.fhir\packages\hl7.fhir.uv.subscriptions-backport.r4#1.1.0\package\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\.fhir\packages\hl7.fhir.uv.subscriptions-backport.r4b#1.1.0\package\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\.fhir\packages\packages.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
@@ -28,13 +58,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="data\*.*">
+    <None Update="data\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <!--<None Update="data\.fhir\packages\**\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>-->
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="data\.fhir\" />
-  </ItemGroup>
+  <!--<ItemGroup>
+    <None Include="data\.fhir\packages\packages.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>-->
 
 </Project>

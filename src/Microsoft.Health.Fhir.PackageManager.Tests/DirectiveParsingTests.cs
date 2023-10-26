@@ -13,16 +13,16 @@ using static Microsoft.Health.Fhir.PackageManager.Models.FhirDirective;
 namespace Microsoft.Health.Fhir.PackageManager.Tests;
 
 /// <summary>A FHIR directive tests.</summary>
-public class FhirDirectiveTests
+public class DirectiveParsingTests
 {
     /// <summary>(Immutable) The test output helper.</summary>
     private readonly ITestOutputHelper _testOutputHelper;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FhirDirectiveTests"/> class.
+    /// Initializes a new instance of the <see cref="DirectiveParsingTests"/> class.
     /// </summary>
     /// <param name="testOutputHelper">(Immutable) The test output helper.</param>
-    public FhirDirectiveTests(ITestOutputHelper testOutputHelper)
+    public DirectiveParsingTests(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
     }
@@ -61,7 +61,7 @@ public class FhirDirectiveTests
     [InlineData("hl7.fhir.r4.core", true, DirectiveNameTypeCodes.CoreFull, DirectiveVersionCodes.Latest)]
     [InlineData("hl7.fhir.r4.core#invalid", false, null, null)]
     [InlineData("hl7.fhir.uv.ig#invalid", false, null, null)]
-    [InlineData("example.org.ig#invalid", true, DirectiveNameTypeCodes.GuideWithoutSuffix, DirectiveVersionCodes.NonSemVer)]
+    [InlineData("example.org.ig#notsemver", true, DirectiveNameTypeCodes.GuideWithoutSuffix, DirectiveVersionCodes.NonSemVer)]
     [InlineData("hl7.fhir.r4.core#4", false, null, null)]
     [InlineData("hl7.fhir.r4#4", false, null, null)]
     [InlineData("example.org.ig#4", true, DirectiveNameTypeCodes.GuideWithoutSuffix, DirectiveVersionCodes.NonSemVer)]

@@ -318,6 +318,9 @@ public partial class FhirCache : IDisposable
     /// <summary>Full pathname of the initialize file.</summary>
     private string _iniFilePath = string.Empty;
 
+    /// <summary>The initialize file lock.</summary>
+    private static object _iniFileLock = new();
+
     /// <summary>The HTTP client.</summary>
     /// <remarks>Internal so that tests can replace the message handler.</remarks>
     internal HttpClient _httpClient = new();
@@ -668,18 +671,54 @@ public partial class FhirCache : IDisposable
 
             if (!matching.Any())
             {
-                // check for a guide name that ends in a FHIR-version suffix
-                if (directive.NameType == DirectiveNameTypeCodes.GuideWithSuffix)
+                // check for names we need to mangle
+                switch (directive.NameType)
                 {
-                    // build shortened version of name
-                    packageId = packageId.Substring(0, packageId.LastIndexOf('.'));
+                    case DirectiveNameTypeCodes.CorePartial:
+                        {
+                            // build lengthened version of name
+                            packageId = packageId + ".core";
 
-                    matching = string.IsNullOrEmpty(ciBranch)
-                        ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
-                            (x.RespositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
-                             x.RespositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
-                        : igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
-                            x.RespositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
+                            matching = string.IsNullOrEmpty(ciBranch)
+                                ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
+                                    (x.RespositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
+                                     x.RespositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
+                                : igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
+                                    x.RespositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
+                        }
+                        break;
+
+                    case DirectiveNameTypeCodes.GuideWithSuffix:
+                        {
+                            // build shortened version of name
+                            packageId = packageId.Substring(0, packageId.LastIndexOf('.'));
+
+                            matching = string.IsNullOrEmpty(ciBranch)
+                                ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
+                                    (x.RespositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
+                                     x.RespositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
+                                : igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
+                                    x.RespositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
+                        }
+                        break;
+                    case DirectiveNameTypeCodes.GuideWithoutSuffix:
+                        {
+                            // build lengthened version of name
+                            packageId = packageId + "." + ToRLiteral(directive.FhirRelease);
+
+                            matching = string.IsNullOrEmpty(ciBranch)
+                                ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
+                                    (x.RespositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
+                                     x.RespositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
+                                : igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
+                                    x.RespositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
+                        }
+                        break;
+
+                    case DirectiveNameTypeCodes.Unknown:
+                    case DirectiveNameTypeCodes.CoreFull:
+                    default:
+                        break;
                 }
 
                 if (!matching.Any())
@@ -1497,12 +1536,6 @@ public partial class FhirCache : IDisposable
             return false;
         }
 
-        // if we do not care which FHIR version we are in, just use the default one
-        if (forFhirVersion == FhirSequenceCodes.Unknown)
-        {
-            return true;
-        }
-
         // traverse registries in preferred order
         foreach (Uri uri in _registryUris)
         {
@@ -1515,7 +1548,9 @@ public partial class FhirCache : IDisposable
             // if we have a package that matches the requested FHIR version, promote it
             foreach (FhirNpmPackageDetails entry in catalog.Values)
             {
-                if (entry.FhirVersion.Equals(ToLiteral(forFhirVersion), StringComparison.OrdinalIgnoreCase) ||
+                // check for a matching FHIR version or the caller asking for any
+                if ((forFhirVersion == FhirSequenceCodes.Unknown) ||
+                    entry.FhirVersion.Equals(ToLiteral(forFhirVersion), StringComparison.OrdinalIgnoreCase) ||
                     entry.FhirVersion.Equals(ToRLiteral(forFhirVersion), StringComparison.OrdinalIgnoreCase))
                 {
                     if (PackageIsFhirCore(entry.Name))
@@ -1555,6 +1590,32 @@ public partial class FhirCache : IDisposable
         return false;
     }
 
+    /// <summary>
+    /// Attempts to get cache record a PackageCacheRecord from the given IEnumerable&lt;string&gt;
+    /// </summary>
+    /// <param name="directives">The directives.</param>
+    /// <param name="cached">    [out] The cached.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryGetCacheRec(IEnumerable<string> directives, out PackageCacheRecord cached)
+    {
+        foreach (string directive in directives)
+        {
+            if (_packagesByDirective.TryGetValue(directive, out cached))
+            {
+                return true;
+            }
+        }
+
+        cached = default;
+        return false;
+    }
+
+    /// <summary>Resolve directive.</summary>
+    /// <param name="inputDirective">The input directive.</param>
+    /// <param name="package">       [out] The package.</param>
+    /// <param name="forFhirVersion">(Optional) FHIR version to restrict downloads to.</param>
+    /// <param name="offlineMode">   (Optional) True to enable offline mode, false to disable it.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
     public bool ResolveDirective(
         string inputDirective,
         out PackageCacheEntry? package,
@@ -1572,29 +1633,50 @@ public partial class FhirCache : IDisposable
             return false;
         }
 
+        List<string> resolvableDirectives = UpdateDirectives(directive);
+
         PackageCacheRecord cached;
 
-        // check for a local version, assume we are good if it is an exact version request
-        if ((directive.VersionType == DirectiveVersionCodes.Exact) &&
-            _packagesByDirective.TryGetValue(directive.Directive, out cached))
+        // can only rely on the cache if we have an exact or non-semver version
+        switch (directive.VersionType)
         {
-            package = new()
-            {
-                fhirVersion = cached.FhirVersion,
-                directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
-                resolvedDirective = cached.CacheDirective,
-                name = cached.PackageName,
-                version = cached.Version,
-            };
+            case DirectiveVersionCodes.Exact:
+            case DirectiveVersionCodes.NonSemVer:
+                {
+                    // check for a local version of the package
+                    if (TryGetCacheRec(resolvableDirectives, out cached))
+                    {
+                        package = new()
+                        {
+                            fhirVersion = cached.FhirVersion,
+                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            resolvedDirective = cached.CacheDirective,
+                            name = cached.PackageName,
+                            version = cached.Version,
+                        };
 
-            return true;
+                        return true;
+                    }
+                }
+                break;
+
+            case DirectiveVersionCodes.Unknown:
+            case DirectiveVersionCodes.Partial:
+            case DirectiveVersionCodes.Latest:
+            case DirectiveVersionCodes.Local:
+            case DirectiveVersionCodes.ContinuousIntegration:
+            default:
+                break;
         }
 
         // check if we want to look for FHIR-versioned packages
         if ((directive.NameType == DirectiveNameTypeCodes.GuideWithoutSuffix) &&
             (forFhirVersion != FhirSequenceCodes.Unknown))
         {
-            _ = TryResolveNameFromCatalog(ref directive, forFhirVersion);
+            if (TryResolveNameFromCatalog(ref directive, forFhirVersion))
+            {
+                resolvableDirectives = UpdateDirectives(directive);
+            }
         }
 
         // handle additional resolution based on version type
@@ -1603,7 +1685,7 @@ public partial class FhirCache : IDisposable
             case DirectiveVersionCodes.NonSemVer:
             case DirectiveVersionCodes.Exact:
                 // we have an exact version, check for a local copy
-                if (_packagesByDirective.TryGetValue(directive.Directive, out cached))
+                if (TryGetCacheRec(resolvableDirectives, out cached))
                 {
                     package = new()
                     {
@@ -1627,8 +1709,10 @@ public partial class FhirCache : IDisposable
                         return false;
                     }
 
+                    resolvableDirectives = UpdateDirectives(directive);
+
                     // we now have an exact version, check for a local copy
-                    if (_packagesByDirective.TryGetValue(directive.Directive, out cached))
+                    if (TryGetCacheRec(resolvableDirectives, out cached))
                     {
                         package = new()
                         {
@@ -1653,8 +1737,10 @@ public partial class FhirCache : IDisposable
                         return false;
                     }
 
+                    resolvableDirectives = UpdateDirectives(directive);
+
                     // we now have an exact version, check for a local copy
-                    if (_packagesByDirective.TryGetValue(directive.Directive, out cached))
+                    if (TryGetCacheRec(resolvableDirectives, out cached))
                     {
                         package = new()
                         {
@@ -1672,7 +1758,7 @@ public partial class FhirCache : IDisposable
             case DirectiveVersionCodes.Local:
                 {
                     // check for local entry
-                    if (_packagesByDirective.TryGetValue(directive.Directive, out cached))
+                    if (TryGetCacheRec(resolvableDirectives, out cached))
                     {
                         package = new()
                         {
@@ -1701,8 +1787,10 @@ public partial class FhirCache : IDisposable
                         return false;
                     }
 
+                    resolvableDirectives = UpdateDirectives(directive);
+
                     // we now have CI info, compare to local and accept if it was downloaded on or after the current CI build date
-                    if (_packagesByDirective.TryGetValue(directive.Directive, out cached) &&
+                    if (TryGetCacheRec(resolvableDirectives, out cached) &&
                         (cached.DownloadDateTime.CompareTo(directive.BuildDate) >= 0))
                     {
                         package = new()
@@ -1728,8 +1816,10 @@ public partial class FhirCache : IDisposable
                         return false;
                     }
 
+                    resolvableDirectives = UpdateDirectives(directive);
+
                     // we now have CI info, compare to local and accept if it was downloaded on or after the current CI build date
-                    if (_packagesByDirective.TryGetValue(directive.Directive, out cached) &&
+                    if (TryGetCacheRec(resolvableDirectives, out cached) &&
                         (cached.DownloadDateTime.CompareTo(directive.BuildDate) >= 0))
                     {
                         package = new()
@@ -1753,6 +1843,13 @@ public partial class FhirCache : IDisposable
                     package = null;
                     return false;
                 }
+        }
+
+        if (string.IsNullOrEmpty(directive.ResolvedTarballUrl))
+        {
+            _logger.LogError($"Directive did not contain a tarball URL: {inputDirective}");
+            package = null;
+            return false;
         }
 
         Uri dlUri = new(directive.ResolvedTarballUrl);
@@ -1799,6 +1896,97 @@ public partial class FhirCache : IDisposable
         };
 
         return true;
+
+        List<string> UpdateDirectives(FhirDirective directive)
+        {
+            if (!string.IsNullOrEmpty(directive.PackageId) && !string.IsNullOrEmpty(directive.PackageVersion))
+            {
+                switch (directive.NameType)
+                {
+                    case DirectiveNameTypeCodes.CoreFull:
+                        {
+                            return new List<string>()
+                            {
+                                $"{directive.PackageId}#{directive.PackageVersion}",
+                            };
+                        }
+                    case DirectiveNameTypeCodes.CorePartial:
+                        {
+                            return new List<string>()
+                            {
+                                $"{directive.PackageId}#{directive.PackageVersion}",
+                                $"{directive.PackageId}.core#{directive.PackageVersion}",
+                            };
+                        }
+                    case DirectiveNameTypeCodes.GuideWithSuffix:
+                        {
+                            return new List<string>()
+                            {
+                                $"{directive.PackageId}#{directive.PackageVersion}",
+                                $"{directive.PackageId}#{directive.PackageVersion}",
+                            };
+                        }
+                    case DirectiveNameTypeCodes.GuideWithoutSuffix:
+                        {
+                            return new List<string>()
+                            {
+                                $"{directive.PackageId}#{directive.PackageVersion}",
+                                $"{directive.PackageId}.{ToRLiteral(directive.FhirRelease)}#{directive.PackageVersion}",
+                            };
+                        }
+
+                    default:
+                        {
+                            return new List<string>()
+                            {
+                                $"{directive.PackageId}#{directive.PackageVersion}",
+                            };
+                        }
+                }
+            }
+
+            switch (directive.NameType)
+            {
+                case DirectiveNameTypeCodes.CoreFull:
+                    {
+                        return new List<string>()
+                        {
+                            directive.Directive,
+                        };
+                    }
+                case DirectiveNameTypeCodes.CorePartial:
+                    {
+                        return new List<string>()
+                        {
+                            directive.Directive,
+                            directive.Directive.Replace("#", ".core#"),
+                        };
+                    }
+                case DirectiveNameTypeCodes.GuideWithSuffix:
+                    {
+                        return new List<string>()
+                        {
+                            directive.Directive,
+                        };
+                    }
+                case DirectiveNameTypeCodes.GuideWithoutSuffix:
+                    {
+                        return new List<string>()
+                        {
+                            directive.Directive,
+                            directive.PackageId.Replace("#", $".{ToRLiteral(directive.FhirRelease)}"),
+                        };
+                    }
+
+                default:
+                    {
+                        return new List<string>()
+                        {
+                            directive.Directive,
+                        };
+                    }
+            }
+        }
     }
 
     /// <summary>Gets directory size.</summary>
@@ -1840,7 +2028,12 @@ public partial class FhirCache : IDisposable
             {
                 IniDataParser parser = new();
 
-                IniData data = parser.Parse(File.ReadAllText(_iniFilePath));
+                IniData data;
+
+                lock (_iniFileLock)
+                {
+                    data = parser.Parse(File.ReadAllText(_iniFilePath));
+                }
 
                 if (data["packages"].Contains(directive))
                 {
@@ -2760,7 +2953,10 @@ public partial class FhirCache : IDisposable
 
         IniDataFormatter formatter = new();
 
-        File.WriteAllText(destinationPath, formatter.Format(data, formattingConfig));
+        lock (_iniFileLock)
+        {
+            File.WriteAllText(destinationPath, formatter.Format(data, formattingConfig));
+        }
     }
 
     /// <summary>

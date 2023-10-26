@@ -131,7 +131,7 @@ public class CiTestFixture
     public CiTestFixture()
     {
         _handler = new PackageHttpMessageHandler();
-        _cache = new FhirCache(Path.GetRelativePath(Directory.GetCurrentDirectory(), "data/.fhir"), null, null);
+        _cache = new FhirCache(Path.Combine(Directory.GetCurrentDirectory(), "data", ".fhir"), null, null);
         _cache._httpClient = new(_handler);
     }
 }
