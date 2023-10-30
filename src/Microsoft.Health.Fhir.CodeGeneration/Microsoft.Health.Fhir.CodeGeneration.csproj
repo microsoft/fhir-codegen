@@ -7,7 +7,7 @@
     <DevelopmentDependency>true</DevelopmentDependency>
     <PackOnBuild>true</PackOnBuild>
     <PackFolder>analyzers\cs</PackFolder>
-    <Version>0.1.0-beta.2</Version>
+    <Version>1.0.0-alpha.1</Version>
   </PropertyGroup>
   
   <PropertyGroup>
