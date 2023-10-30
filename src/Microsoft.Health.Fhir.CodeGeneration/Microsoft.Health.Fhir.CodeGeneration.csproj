@@ -30,6 +30,10 @@
     <None Include="$(PKGDynamicLanguageRuntime)\lib\netstandard2.0\Microsoft.Scripting.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
     <None Include="$(PKGDynamicLanguageRuntime)\lib\netstandard2.0\Microsoft.Scripting.Metadata.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="README.md" />
+  </ItemGroup>
   
   <ItemGroup>
     <ProjectReference
