@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Synapxe.Fhir.CodeGeneration;
+namespace Microsoft.Health.Fhir.CodeGeneration;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class GeneratedFhirAttribute : Attribute

@@ -7,9 +7,7 @@
     <DevelopmentDependency>true</DevelopmentDependency>
     <PackOnBuild>true</PackOnBuild>
     <PackFolder>analyzers\cs</PackFolder>
-    <Version>1.0.0$(VERSION_SUFFIX)</Version>
-    <PackageId>Synapxe.Fhir.CodeGeneration</PackageId>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)..\..\packages</PackageOutputPath>
+    <Version>1.0.0-alpha.1</Version>
   </PropertyGroup>
   
   <PropertyGroup>

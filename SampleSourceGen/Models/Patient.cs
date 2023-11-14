@@ -1,4 +1,4 @@
-﻿using Synapxe.Fhir.CodeGeneration;
+﻿using Microsoft.Health.Fhir.CodeGeneration;
 
 namespace SampleSourceGen.Models;
 
