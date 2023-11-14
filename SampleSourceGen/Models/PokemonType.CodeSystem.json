@@ -1,0 +1,86 @@
+{
+    "resourceType": "CodeSystem",
+    "id": "pokemontypes",
+    "url": "http://pokemon.com/type",
+    "version": "1.0.0",
+    "name": "Pokemon Types",
+    "title": "Pokemon Types",
+    "status": "active",
+    "date": "2023-08-01",
+    "publisher": "The Pokemon Company",
+    "content": "complete",
+    "concept": [
+        {
+            "code": "normal",
+            "display": "Normal"
+        },
+        {
+            "code": "fighting",
+            "display": "Fighting"
+        },
+        {
+            "code": "flying",
+            "display": "Flying"
+        },
+        {
+            "code": "poison",
+            "display": "Poison"
+        },
+        {
+            "code": "ground",
+            "display": "Ground"
+        },
+        {
+            "code": "rock",
+            "display": "Rock"
+        },
+        {
+            "code": "bug",
+            "display": "Bug"
+        },
+        {
+            "code": "ghost",
+            "display": "Ghost"
+        },
+        {
+            "code": "steel",
+            "display": "Steel"
+        },
+        {
+            "code": "fire",
+            "display": "Fire"
+        },
+        {
+            "code": "water",
+            "display": "Water"
+        },
+        {
+            "code": "grass",
+            "display": "Grass"
+        },
+        {
+            "code": "electric",
+            "display": "Electric"
+        },
+        {
+            "code": "psychic",
+            "display": "Psychic"
+        },
+        {
+            "code": "ice",
+            "display": "Ice"
+        },
+        {
+            "code": "dragon",
+            "display": "Dragon"
+        },
+        {
+            "code": "dark",
+            "display": "Dark"
+        },
+        {
+            "code": "fairy",
+            "display": "Fairy"
+        }
+    ]
+}

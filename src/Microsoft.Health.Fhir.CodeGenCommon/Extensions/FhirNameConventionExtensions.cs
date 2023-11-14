@@ -14,7 +14,7 @@ public static class FhirNameConventionExtensions
     private static readonly char[] _wordDelimiters = new char[] { ' ', '.', '_', '-' };
 
     /// <summary>(Immutable) Options for controlling the word split.</summary>
-    private static readonly StringSplitOptions _wordSplitOptions = StringSplitOptions.RemoveEmptyEntries & StringSplitOptions.TrimEntries;
+    private static readonly StringSplitOptions _wordSplitOptions = StringSplitOptions.RemoveEmptyEntries;
 
     /// <summary>A string extension method that converts a word to PascalCase.</summary>
     /// <param name="word">            The word to act on.</param>
@@ -30,7 +30,7 @@ public static class FhirNameConventionExtensions
 
         if (removeDelimiters)
         {
-            return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
+            return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false).Trim()));
         }
 
         return string.Concat(word.Substring(0, 1).ToUpperInvariant(), word.Substring(1));
@@ -176,7 +176,7 @@ public static class FhirNameConventionExtensions
 
         if (removeDelimiters)
         {
-            return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToUpperInvariant()));
+            return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToUpperInvariant().Trim()));
         }
 
         return word.ToUpperInvariant();
@@ -256,7 +256,7 @@ public static class FhirNameConventionExtensions
 
         if (removeDelimiters)
         {
-            return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToLowerInvariant()));
+            return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToLowerInvariant().Trim()));
         }
 
         return word.ToLowerInvariant();
@@ -386,7 +386,7 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join('.', word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
+        return string.Join(".", word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false).Trim()));
     }
 
     /// <summary>A string extension method that converts this object to a pascal dot case.</summary>
@@ -422,6 +422,6 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join('.', words.Select(w => w.ToPascalDotCase()));
+        return string.Join(".", words.Select(w => w.ToPascalDotCase()));
     }
 }

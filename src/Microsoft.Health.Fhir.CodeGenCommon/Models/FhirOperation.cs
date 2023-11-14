@@ -159,7 +159,7 @@ public class FhirOperation : FhirModelBase, ICloneable
         {
             foreach (string resourceType in ResourceTypes)
             {
-                resourceTypes.Add(new string(resourceType));
+                resourceTypes.Add(resourceType);
             }
         }
 

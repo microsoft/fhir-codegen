@@ -236,6 +236,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The name of the language.</value>
         string ILanguage.LanguageName => _languageName;
 
+        string ILanguage.Namespace
+        {
+            get => _namespace;
+            set => _namespace = value;
+        }
+
         /// <summary>
         /// Gets the single file extension for this language - null or empty indicates a multi-file
         /// export (exporter should copy the contents of the directory).
@@ -275,6 +281,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "access-modifier", "Access modifier for exported elements (public|internal|private)." },
         };
 
+        void ILanguage.Export(
+            FhirVersionInfo info,
+            FhirComplex complex,
+            Stream outputStream)
+            => throw new NotImplementedException();
+
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
         /// <param name="serverInfo">     Information describing the server.</param>
@@ -300,7 +312,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _exportEnums = false;
             }
 
-            _namespace = options.GetParam("namespace", $"Fhir.{info.FhirSequence}");
+            _namespace ??= options.GetParam("namespace", $"Fhir.{info.FhirSequence}");
             _namespaceModels = _namespace + ".Models";
             _namespaceValueSets = _namespace + ".ValueSets";
             _namespaceSerialization = _namespace + ".Serialization";

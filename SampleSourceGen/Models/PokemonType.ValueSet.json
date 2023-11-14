@@ -1,0 +1,18 @@
+{
+    "resourceType": "ValueSet",
+    "id": "pokemontype",
+    "url": "http://pokemon.com/fhir/ValueSet/pokemontype",
+    "version": "1.0.0",
+    "name": "Pokemon Types",
+    "title": "Pokemon Types",
+    "status": "active",
+    "date": "2023-08-01",
+    "publisher": "The Pokemon Company",
+    "compose": {
+        "include": [
+            {
+                "system": "http://pokemon.com/type"
+            }
+        ]
+    }
+}

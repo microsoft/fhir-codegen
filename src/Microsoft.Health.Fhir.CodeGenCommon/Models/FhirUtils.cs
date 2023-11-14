@@ -650,6 +650,7 @@ public abstract partial class FhirUtils
         return value;
     }
 
+#if NET7_0_OR_GREATER
     [GeneratedRegex("__+")]
     private static partial Regex RegexRemoveDuplicateLines();
 
@@ -658,4 +659,11 @@ public abstract partial class FhirUtils
 
     [GeneratedRegex("[^ -~]+")]
     private static partial Regex RegexAsciiEscapingR();
+#else
+    private static Regex RegexRemoveDuplicateLines() => new("__+", RegexOptions.Compiled);
+
+    private static Regex RegexRemoveDuplicateWhitespace() => new("\\s+", RegexOptions.Compiled);
+
+    private static Regex RegexAsciiEscapingR() => new("[^ -~]+", RegexOptions.Compiled);
+#endif
 }

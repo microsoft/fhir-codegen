@@ -1,0 +1,89 @@
+{
+    "resourceType": "StructureDefinition",
+    "id": "Education",
+    "url": "http://hl7.org/fhir/StructureDefinition/Education",
+    "version": "0.1",
+    "name": "Education",
+    "status": "draft",
+    "publisher": "Firely",
+    "description": "Study or other form of education that a person has done.",
+    "copyright": "Copyright (C) 2019 Firely",
+    "fhirVersion": "4.0.1",
+    "kind": "resource",
+    "abstract": false,
+    "type": "Education",
+    "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+    "derivation": "specialization",
+    "differential": {
+        "element": [
+            {
+                "id": "Education.subject",
+                "path": "Education.subject",
+                "short": "Who was educated?",
+                "definition": "Person who has done this education.",
+                "min": 1,
+                "max": "1",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "http://hl7.org/fhir/StructureDefinition/Person"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "http://hl7.org/fhir/StructureDefinition/Patient"
+                    },
+                    {
+                        "code": "Reference",
+                        "targetProfile": "http://hl7.org/fhir/StructureDefinition/Practitioner"
+                    }
+                ]
+            },
+            {
+                "id": "Education.institute",
+                "path": "Education.institute",
+                "short": "Where did you do this study?",
+                "definition": "Educational institute, like a university or training company",
+                "min": 0,
+                "max": "1",
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": "http://hl7.org/fhir/StructureDefinition/Organization"
+                    }
+                ]
+            },
+            {
+                "id": "Education.study",
+                "path": "Education.study",
+                "short": "What study?",
+                "definition": "Name of the study that the subject followed.",
+                "min": 1,
+                "max": "1",
+                "type": [
+                    {
+                        "code": "string",
+                        "profile": "http://hl7.org/fhir/StructureDefinition/string"
+                    }
+                ]
+            },
+            {
+                "id": "Education.graduated[x]",
+                "path": "Education.graduated[x]",
+                "short": "Did subject graduate for the study?",
+                "definition": "Did the subject graduate for the study? If possible enter the date of graduation.",
+                "min": 1,
+                "max": "1",
+                "type": [
+                    {
+                        "code": "boolean",
+                        "profile": "http://hl7.org/fhir/StructureDefinition/boolean"
+                    },
+                    {
+                        "code": "date",
+                        "profile": "http://hl7.org/fhir/StructureDefinition/date"
+                    }
+                ]
+            }
+        ]
+    }
+}

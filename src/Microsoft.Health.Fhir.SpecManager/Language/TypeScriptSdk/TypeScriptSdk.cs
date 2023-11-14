@@ -53,6 +53,12 @@ public sealed class TypeScriptSdk : ILanguage
     /// <value>The name of the language.</value>
     string ILanguage.LanguageName => _languageName;
 
+    string ILanguage.Namespace
+    {
+        get => throw new NotImplementedException();
+        set => throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Gets the single file extension for this language - null or empty indicates a multi-file
     /// export (exporter should copy the contents of the directory).
@@ -92,6 +98,12 @@ public sealed class TypeScriptSdk : ILanguage
     {
         { "namespace", "Base namespace for TypeScript classes (default: Fhir.R{VersionNumber})." },
     };
+
+    void ILanguage.Export(
+        FhirVersionInfo info,
+        FhirComplex complex,
+        Stream outputStream)
+        => throw new NotImplementedException();
 
     /// <summary>Export the passed FHIR version into the specified directory.</summary>
     /// <param name="info">           The information.</param>
@@ -1906,11 +1918,11 @@ public sealed class TypeScriptSdk : ILanguage
             string sdkTypes;
             if (element.IsArray)
             {
-                sdkTypes = string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType + "[]"));
+                sdkTypes = string.Join("|", element.ChoiceTypes.Select((ct) => ct.ExportType + "[]"));
             }
             else
             {
-                sdkTypes = string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType));
+                sdkTypes = string.Join("|", element.ChoiceTypes.Select((ct) => ct.ExportType));
             }
 
             WriteIndentedComment(sb, element.ExportComment);
@@ -2086,11 +2098,11 @@ public sealed class TypeScriptSdk : ILanguage
         {
             if (isInterface)
             {
-                exportType = "(" + string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportInterfaceType)) + ")";
+                exportType = "(" + string.Join("|", element.ChoiceTypes.Select((ct) => ct.ExportInterfaceType)) + ")";
             }
             else
             {
-                exportType = "(" + string.Join('|', element.ChoiceTypes.Select((ct) => ct.ExportType)) + ")";
+                exportType = "(" + string.Join("|", element.ChoiceTypes.Select((ct) => ct.ExportType)) + ")";
             }
         }
         else if (isInterface)

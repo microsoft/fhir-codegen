@@ -171,6 +171,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The name of the language.</value>
         string ILanguage.LanguageName => _languageName;
 
+        string ILanguage.Namespace
+        {
+            get => _namespace;
+            set => _namespace = value;
+        }
+
         /// <summary>
         /// Gets the single file extension for this language - null or empty indicates a multi-file
         /// export (exporter should copy the contents of the directory).
@@ -209,6 +215,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "namespace", "Base namespace for TypeScript files (default: fhir{VersionNumber})." },
             { "min-ts-version", "Minimum TypeScript version (default: 3.7, use '-' for none)." }
         };
+
+        void ILanguage.Export(
+            FhirVersionInfo info,
+            FhirComplex complex,
+            Stream outputStream)
+            => throw new NotImplementedException();
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>

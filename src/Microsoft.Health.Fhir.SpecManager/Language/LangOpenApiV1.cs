@@ -199,6 +199,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The name of the language.</value>
         string ILanguage.LanguageName => _languageName;
 
+        string ILanguage.Namespace
+        {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Gets the single file extension for this language - null or empty indicates a multi-file
         /// export (exporter should copy the contents of the directory).
@@ -268,6 +274,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "Title", "Title to use in the Info section." },
             { "WriteOnly", "If the output should only contain POST/PUT/DELETE operations (false|true)." },
         };
+
+        void ILanguage.Export(
+            FhirVersionInfo info,
+            FhirComplex complex,
+            Stream outputStream)
+            => throw new NotImplementedException();
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>

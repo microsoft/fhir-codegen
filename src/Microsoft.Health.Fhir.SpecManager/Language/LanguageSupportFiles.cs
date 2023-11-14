@@ -6,6 +6,9 @@
 using System.Collections;
 using System.IO;
 using static Microsoft.Health.Fhir.SpecManager.Manager.FhirPackageCommon;
+#if NETSTANDARD
+using Path = Microsoft.Health.Fhir.SpecManager.PathShim;
+#endif
 
 namespace Microsoft.Health.Fhir.SpecManager.Language;
 

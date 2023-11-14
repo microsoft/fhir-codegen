@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="**/*.StructureDefinition.json" />
+    <AdditionalFiles Include="**/*.ValueSet.json" />
+    <AdditionalFiles Include="**/*.CodeSystem.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hl7.Fhir.R5" Version="5.3.0" />
+    <PackageReference Include="System.Text.Json" Version="[6.0.8,)" OutputItemType="Analyzer" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\src\Microsoft.Health.Fhir.CodeGeneration\Microsoft.Health.Fhir.CodeGeneration.csproj" />
+    <ProjectReference Include="..\src\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" Visible="false" />
+    <ProjectReference Include="..\src\Microsoft.Health.Fhir.SourceGenerator\Microsoft.Health.Fhir.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\src\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" Visible="false" />
+  </ItemGroup>
+
+</Project>
