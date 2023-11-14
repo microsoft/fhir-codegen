@@ -12,7 +12,7 @@ namespace Microsoft.Health.Fhir.SourceGenerator.Parsing;
 
 internal class Parser
 {
-    internal const string GeneratedFhirAttributeName = "Microsoft.Health.Fhir.CodeGeneration.GeneratedFhirAttribute";
+    internal const string GeneratedFhirAttributeName = "Synapxe.Fhir.CodeGeneration.GeneratedFhirAttribute";
     private readonly GeneratorExecutionContext _context;
     private readonly Action<Diagnostic> _reportDiagnostic;
     private readonly CancellationToken _cancellationToken;
