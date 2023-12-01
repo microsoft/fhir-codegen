@@ -22,6 +22,8 @@
     <None Include="data\.fhir\packages\hl7.fhir.r4.examples#4.0.1\package\package.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="data\.fhir\packages\hl7.fhir.r6.core#current$branch\package\package.json" />
+    <None Include="data\.fhir\packages\hl7.fhir.r6.core#current\package\package.json" />
     <None Include="data\.fhir\packages\hl7.fhir.uv.patient-corrections#dev\package\package.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -64,6 +66,15 @@
     <!--<None Update="data\.fhir\packages\**\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="data\.fhir\packages\hl7.fhir.r6.core#current%24branch\package\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="data\.fhir\packages\hl7.fhir.r6.core#current\package\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <!--<ItemGroup>

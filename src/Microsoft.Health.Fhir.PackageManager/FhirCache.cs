@@ -11,20 +11,17 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using System.IO;
-using System.Xml.Linq;
-using System;
 using System.Text.Json;
-using System.Linq;
 using Microsoft.Health.Fhir.PackageManager.Models;
 using static Microsoft.Health.Fhir.PackageManager.Models.FhirDirective;
 using System.Collections.Concurrent;
+using System.Globalization;
 
 namespace Microsoft.Health.Fhir.PackageManager;
 
+/// <summary>A FHIR cache.</summary>
 public partial class FhirCache : IDisposable
 {
-
     /// <summary>Values that represent package load states.</summary>
     public enum PackageLoadStateCodes
     {
@@ -186,6 +183,77 @@ public partial class FhirCache : IDisposable
         FhirSequenceCodes.R5 => "5.0",
         FhirSequenceCodes.R6 => "6.0",
         _ => "Unknown"
+    };
+
+    /// <summary>Converts a sequence to a short version number.</summary>
+    /// <param name="version">[out] The version string (e.g., 4.0.1).</param>
+    /// <returns>Sequence as a string.</returns>
+    public static string ToShortVersion(string version) => version switch
+    {
+        "R2" => "1.0",
+        "DSTU2" => "1.0",
+        "0.4.0" => "1.0",
+        "0.4" => "1.0",
+        "0.5.0" => "1.0",
+        "0.5" => "1.0",
+        "1.0.0" => "1.0",
+        "1.0.1" => "1.0",
+        "1.0.2" => "1.0",
+        "1.0" => "1.0",
+        "R3" => "3.0",
+        "STU3" => "3.0",
+        "1.1.0" => "3.0",
+        "1.1" => "3.0",
+        "1.2.0" => "3.0",
+        "1.2" => "3.0",
+        "1.4.0" => "3.0",
+        "1.4" => "3.0",
+        "1.6.0" => "3.0",
+        "1.6" => "3.0",
+        "1.8.0" => "3.0",
+        "1.8" => "3.0",
+        "3.0.0" => "3.0",
+        "3.0.1" => "3.0",
+        "3.0.2" => "3.0",
+        "3.0" => "3.0",
+        "R4" => "4.0",
+        "3.2.0" => "4.0",
+        "3.2" => "4.0",
+        "3.3.0" => "4.0",
+        "3.3" => "4.0",
+        "3.5.0" => "4.0",
+        "3.5" => "4.0",
+        "3.5a.0" => "4.0",
+        "4.0.0" => "4.0",
+        "4.0.1" => "4.0",
+        "4.0" => "4.0",
+        "R4B" => "4.3",
+        "4.1.0" => "4.3",
+        "4.1" => "4.3",
+        "4.3.0-snapshot1" => "4.3",
+        "4.3.0" => "4.3",
+        "4.3" => "4.3",
+        "R5" => "5.0",
+        "4.2.0" => "5.0",
+        "4.2" => "5.0",
+        "4.4.0" => "5.0",
+        "4.4" => "5.0",
+        "4.5.0" => "5.0",
+        "4.5" => "5.0",
+        "4.6.0" => "5.0",
+        "4.6" => "5.0",
+        "5.0.0-snapshot1" => "5.0",
+        "5.0.0-ballot" => "5.0",
+        "5.0.0-snapshot3" => "5.0",
+        "5.0.0-draft-final" => "5.0",
+        "5.0.0" => "5.0",
+        "5.0" => "5.0",
+        "5" => "5.0",
+        "R6" => "6.0",
+        "6.0.0" => "6.0",
+        "6.0" => "6.0",
+        "6" => "6.0",
+        _ => version.StartsWith("R", StringComparison.OrdinalIgnoreCase) ? version.Substring(1, 1) + ".0" : string.Empty,
     };
 
     /// <summary>Converts a sequence to a long version.</summary>
@@ -369,8 +437,6 @@ public partial class FhirCache : IDisposable
     /// <summary>The match file URL suffix.</summary>
     internal static Regex _matchFileUrlSuffix = MatchFileUrlSuffix();
 
-
-
     /// <summary>The RegEx to test if a string is a semver version.</summary>
     internal static Regex _isSemver = IsSemVer();
 
@@ -386,8 +452,12 @@ public partial class FhirCache : IDisposable
     private HashSet<string> _processed = new();
 
     /// <summary>Initializes a new instance of the <see cref="FhirCache"/> class.</summary>
-    /// <param name="fhirCachePath">Pathname of the FHIR cache directory.</param>
-    /// <param name="logger">        The logger.</param>
+    /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+    /// <exception cref="ArgumentException">    Thrown when one or more arguments have unsupported or
+    ///  illegal values.</exception>
+    /// <param name="fhirCachePath">         Pathname of the FHIR cache directory.</param>
+    /// <param name="logger">                The logger.</param>
+    /// <param name="additionalRegistryUrls">The additional registry urls.</param>
     public FhirCache(
         string fhirCachePath,
         ILogger<FhirCache>? logger,
@@ -651,6 +721,128 @@ public partial class FhirCache : IDisposable
             return false;
         }
 
+        switch (directive.NameType)
+        {
+            case DirectiveNameTypeCodes.CoreFull:
+            case DirectiveNameTypeCodes.CorePartial:
+                {
+                    return TryResolveCiCore(ref directive);
+                }
+
+            case DirectiveNameTypeCodes.Unknown:
+            case DirectiveNameTypeCodes.GuideWithSuffix:
+            case DirectiveNameTypeCodes.GuideWithoutSuffix:
+            default:
+                {
+                    return TryResolveCiIg(ref directive);
+                }
+        }
+    }
+
+    /// <summary>Attempts to resolve a CI build of a core package.</summary>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    internal bool TryResolveCiCore(ref FhirDirective directive)
+    {
+        try
+        {
+            string packageId = directive.NameType == DirectiveNameTypeCodes.CorePartial
+                ? directive.PackageId + ".core"
+                : directive.PackageId;
+            string ciBranch = directive.CiBranch;
+
+            // for CI builds of core packages, all we can do is test the URL - check for a version file
+            string url = string.IsNullOrEmpty(ciBranch)
+                ? $"{_ciUri}version.info"
+                : $"{_ciUri}branches/{ciBranch}/version.info";
+
+            string contents = _httpClient.GetStringAsync(url).Result;
+
+            IniDataParser parser = new();
+
+            IniData data = parser.Parse(contents);
+
+            if (!data.Sections.Contains("FHIR"))
+            {
+                // not a valid versions.info file
+                _logger.LogWarning($"TryResolveCi <<< {url} does not contain valid contents!");
+                return false;
+            }
+
+            CoreCiVersion ciVersion = new()
+            {
+                FhirVersion = data["FHIR"].Contains("FhirVersion") ? data["FHIR"]["FhirVersion"] : string.Empty,
+                Version = data["FHIR"].Contains("version") ? data["FHIR"]["version"] : string.Empty,
+                BuildId = data["FHIR"].Contains("buildId") ? data["FHIR"]["buildId"] : string.Empty,
+                BuildDate = data["FHIR"].Contains("date") ? data["FHIR"]["date"] : string.Empty,
+            };
+
+            // ensure the FHIR version is at least a partial match
+            if (ciVersion.FhirVersion.StartsWith(ToShortVersion(directive.FhirRelease), StringComparison.OrdinalIgnoreCase))
+            {
+                string resolvedCiUrl = string.IsNullOrEmpty(ciBranch)
+                    ? $"{_ciUri}"
+                    : $"{_ciUri}branches/{ciBranch}/";
+
+                directive = directive with
+                {
+                    //FhirRelease = ciVersion.FhirVersion,
+                    PackageId = packageId,
+                    NameType = (directive.NameType == DirectiveNameTypeCodes.CorePartial) ? DirectiveNameTypeCodes.CoreFull : directive.NameType,
+                    PackageVersion = string.IsNullOrEmpty(ciBranch) ? "current" : "current$" + ciBranch,
+                    CiUrl = resolvedCiUrl,
+                    CiOrg = string.Empty,
+                    CiBranch = ciBranch,
+                    BuildDate = ciVersion.BuildDate,
+                    ResolvedTarballUrl = $"{resolvedCiUrl}{packageId}.tgz",
+                    ResolvedSha = string.Empty,
+                };
+
+                return true;
+            }
+        }
+        catch (AggregateException s)
+        {
+            if (s.InnerException is HttpRequestException h)
+            {
+                if (h.StatusCode == HttpStatusCode.NotFound)
+                {
+                    // not found just means the build does not exist
+                    _logger.LogWarning($"TryResolveCi <<< ci build of {directive.PackageId}${directive.CiBranch} does not exist!");
+                    return false;
+                }
+            }
+
+            if (s.InnerException != null)
+            {
+                _logger.LogError($"TryResolveCi <<< processing {directive.PackageId}${directive.CiBranch} - caught: {s.Message}, inner: {s.InnerException.Message}");
+            }
+            else
+            {
+                _logger.LogError($"TryResolveCi <<< processing {directive.PackageId}${directive.CiBranch} - caught: {s.Message}");
+            }
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException != null)
+            {
+                _logger.LogError($"TryResolveCi <<< processing {directive.PackageId}${directive.CiBranch} - caught: {ex.Message}, inner: {ex.InnerException.Message}");
+            }
+            else
+            {
+                _logger.LogError($"TryResolveCi <<< processing {directive.PackageId}${directive.CiBranch} - caught: {ex.Message}");
+            }
+        }
+
+        // still here means nothing was found successfully
+        return false;
+    }
+
+    /// <summary>Attempts to resolve a CI build of an IG package.</summary>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    internal bool TryResolveCiIg(ref FhirDirective directive)
+    {
         try
         {
             string packageId = directive.PackageId;
@@ -674,20 +866,6 @@ public partial class FhirCache : IDisposable
                 // check for names we need to mangle
                 switch (directive.NameType)
                 {
-                    case DirectiveNameTypeCodes.CorePartial:
-                        {
-                            // build lengthened version of name
-                            packageId = packageId + ".core";
-
-                            matching = string.IsNullOrEmpty(ciBranch)
-                                ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
-                                    (x.RespositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
-                                     x.RespositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
-                                : igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
-                                    x.RespositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
-                        }
-                        break;
-
                     case DirectiveNameTypeCodes.GuideWithSuffix:
                         {
                             // build shortened version of name
@@ -715,9 +893,8 @@ public partial class FhirCache : IDisposable
                         }
                         break;
 
-                    case DirectiveNameTypeCodes.Unknown:
-                    case DirectiveNameTypeCodes.CoreFull:
                     default:
+                        // ignore other types
                         break;
                 }
 
@@ -822,14 +999,6 @@ public partial class FhirCache : IDisposable
 
             switch (directive.NameType)
             {
-                case DirectiveNameTypeCodes.CoreFull:
-                    tarUrl = $"{ciUrl}/{directive.PackageId}.tgz";
-                    fhirRelease = rec.FhirVersion;
-                    break;
-                case DirectiveNameTypeCodes.CorePartial:
-                    tarUrl = $"{ciUrl}/{directive.PackageId}.core.tgz";
-                    fhirRelease = rec.FhirVersion;
-                    break;
                 case DirectiveNameTypeCodes.GuideWithSuffix:
                     tarUrl = $"{ciUrl}/package.{ToRLiteral(directive.FhirRelease).ToLowerInvariant()}.tgz";
                     fhirRelease = directive.FhirRelease;
@@ -1776,9 +1945,9 @@ public partial class FhirCache : IDisposable
                     directive = directive with
                     {
                         Directive = $"{directive.PackageId}#current",
-                        VersionType = DirectiveVersionCodes.ContinuousIntegration
+                        VersionType = DirectiveVersionCodes.ContinuousIntegration,
                     };
-
+                    
                     // attempt to resolve via CI
                     if (!TryResolveCi(ref directive))
                     {
@@ -2032,7 +2201,12 @@ public partial class FhirCache : IDisposable
 
                 lock (_iniFileLock)
                 {
-                    data = parser.Parse(File.ReadAllText(_iniFilePath));
+                    // open the file in shared mode because we are only reading here
+                    using (Stream s = new FileStream(_iniFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    using (StreamReader r = new(s))
+                    {
+                        data = parser.Parse(r.ReadToEnd());
+                    }
                 }
 
                 if (data["packages"].Contains(directive))
@@ -2074,7 +2248,7 @@ public partial class FhirCache : IDisposable
         }
 
         long size = GetDirectorySize(directory);
-        string packageDate = DateTime.Now.ToString("yyyyMMddHHmmss");
+        string packageDate = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
 
         string npmJson = Path.Combine(directory, "package", "package.json");
 
@@ -2864,62 +3038,6 @@ public partial class FhirCache : IDisposable
         }
 
         _versionsByName[name].Add(version);
-    }
-
-    /// <summary>Gets local version information.</summary>
-    /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
-    /// <param name="contents">   The contents.</param>
-    /// <param name="fhirVersion">[out] The FHIR version.</param>
-    /// <param name="version">    [out] The version string (e.g., 4.0.1).</param>
-    /// <param name="buildId">    [out] Identifier for the build.</param>
-    /// <param name="buildDate">  [out] The build date.</param>
-    private static void ParseVersionInfoIni(
-        string contents,
-        out string fhirVersion,
-        out string version,
-        out string buildId,
-        out string buildDate)
-    {
-        IEnumerable<string> lines = contents.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-        fhirVersion = string.Empty;
-        version = string.Empty;
-        buildId = string.Empty;
-        buildDate = string.Empty;
-
-        foreach (string line in lines)
-        {
-            if (!line.Contains('=', StringComparison.Ordinal))
-            {
-                continue;
-            }
-
-            string[] kvp = line.Split('=');
-
-            if (kvp.Length != 2)
-            {
-                continue;
-            }
-
-            switch (kvp[0])
-            {
-                case "FhirVersion":
-                    fhirVersion = kvp[1];
-                    break;
-
-                case "version":
-                    version = kvp[1];
-                    break;
-
-                case "buildId":
-                    buildId = kvp[1];
-                    break;
-
-                case "date":
-                    buildDate = kvp[1];
-                    break;
-            }
-        }
     }
 
     /// <summary>Creates empty cache initialize.</summary>

@@ -138,6 +138,15 @@ public class PackageHttpMessageHandler : HttpMessageHandler
                     return Task.FromResult(JsonFile("data/qas-full.json"));
                 }
 
+            // ci versions
+            case "http://build.fhir.org/version.info":
+            case "https://build.fhir.org/version.info":
+            case "http://build.fhir.org/branches/branch/version.info":
+            case "https://build.fhir.org/branches/branch/version.info":
+                {
+                    return Task.FromResult(IniFile("data/version.info"));
+                }
+
             default:
                 {
                     _testOutputHelper?.WriteLine($"{request.Method} {request.RequestUri?.AbsoluteUri} is not implemented.");
@@ -158,6 +167,20 @@ public class PackageHttpMessageHandler : HttpMessageHandler
         return new HttpResponseMessage(statusCode)
         {
             Content = new StringContent(File.ReadAllText(filename), new System.Net.Http.Headers.MediaTypeHeaderValue("application/json")),
+        };
+    }
+
+    /// <summary>Creates an INI response message based on content.</summary>
+    /// <param name="filename">  Filename of the file.</param>
+    /// <param name="statusCode">(Optional) The status code.</param>
+    /// <returns>A HttpResponseMessage.</returns>
+    internal static HttpResponseMessage IniFile(
+        string filename,
+        HttpStatusCode statusCode = HttpStatusCode.OK)
+    {
+        return new HttpResponseMessage(statusCode)
+        {
+            Content = new StringContent(File.ReadAllText(filename), new System.Net.Http.Headers.MediaTypeHeaderValue("text/plain")),
         };
     }
 

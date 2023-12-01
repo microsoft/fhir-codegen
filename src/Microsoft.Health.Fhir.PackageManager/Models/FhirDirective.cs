@@ -46,10 +46,14 @@ internal record class FhirDirective
         FhirRelease = other.FhirRelease;
         PackageVersion = other.PackageVersion;
         VersionType = other.VersionType;
+        ResolvedTarballUrl = other.ResolvedTarballUrl;
+        ResolvedSha = other.ResolvedSha;
         CiUrl = other.CiUrl;
         CiOrg = other.CiOrg;
         CiBranch = other.CiBranch;
+        BuildDate = other.BuildDate;
         Manifests = other.Manifests.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
+        CatalogEntries = other.CatalogEntries.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(kvp2 => kvp2.Key, kvp2 => kvp2.Value with { }));
     }
 
     /// <summary>Gets or sets the directive.</summary>
