@@ -5,6 +5,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Microsoft.Health.Fhir.PackageManager.Models;
 
@@ -23,17 +24,17 @@ public record class FhirPackageVersionInfo
     [SetsRequiredMembers]
     protected FhirPackageVersionInfo(FhirPackageVersionInfo other)
     {
-        Name = other.Name;
+        _name = other._name;
         Date = other.Date;
         Version = other.Version;
         Description = other.Description;
         URL = other.URL;
         Distribution = (other.Distribution == null) ? null : other.Distribution with { };
-        FhirVersion = other.FhirVersion;
+        _fhirVersion = other._fhirVersion;
         Unlisted = other.Unlisted;
         Canonical = other.Canonical;
         Security = other.Security;
-        PackageKind = other.PackageKind;
+        _packageKind = other._packageKind;
         Count = other.Count;
     }
 
@@ -49,18 +50,21 @@ public record class FhirPackageVersionInfo
             // if we are a core package, set what info we can
             if (FhirCache.PackageIsFhirCore(_name))
             {
+                // we are a core package, set the package kind
                 if (string.IsNullOrEmpty(_packageKind))
                 {
                     _packageKind = "Core";
                 }
 
+                // if we do not have a FHIR version, try to grab one from the name
                 if (string.IsNullOrEmpty(_fhirVersion))
                 {
-                    _fhirVersion = FhirCache.ToLiteral(FhirCache.ToSequence(_name.Split('.')[2]));
+                    _fhirVersion = FhirReleases.FhirVersionToLiteral(_name.Split('.')[2]);
                 }
             }
             else
             {
+                // not core means we are an IG
                 if (string.IsNullOrEmpty(_packageKind))
                 {
                     _packageKind = "IG";
@@ -103,7 +107,7 @@ public record class FhirPackageVersionInfo
                 // check to see if the name is a core package name
                 if (FhirCache.PackageIsFhirCore(_name))
                 {
-                    _fhirVersion = FhirCache.ToLiteral(FhirCache.ToSequence(_name.Split('.')[2]));
+                    _fhirVersion = FhirReleases.FhirVersionToLiteral(_name.Split('.')[2]);
                     return;
                 }
 

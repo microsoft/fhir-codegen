@@ -16,335 +16,18 @@ using Microsoft.Health.Fhir.PackageManager.Models;
 using static Microsoft.Health.Fhir.PackageManager.Models.FhirDirective;
 using System.Collections.Concurrent;
 using System.Globalization;
+using static Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using System;
 
 namespace Microsoft.Health.Fhir.PackageManager;
 
 /// <summary>A FHIR cache.</summary>
 public partial class FhirCache : IDisposable
 {
-    /// <summary>Values that represent package load states.</summary>
-    public enum PackageLoadStateCodes
-    {
-        /// <summary>The package is in an unknown state.</summary>
-        Unknown,
-
-        /// <summary>The package has not been loaded.</summary>
-        NotLoaded,
-
-        /// <summary>The package is queued for loading.</summary>
-        Queued,
-
-        /// <summary>The package is currently being loaded.</summary>
-        InProgress,
-
-        /// <summary>The package is currently loaded into memory.</summary>
-        Loaded,
-
-        /// <summary>The package has failed to load and cannot be used.</summary>
-        Failed,
-
-        /// <summary>The package has been parsed but not loaded into memory.</summary>
-        Parsed,
-    }
-
-    /// <summary>Values that represent FHIR major releases.</summary>
-    public enum FhirSequenceCodes : int
-    {
-        /// <summary>Unknown FHIR Version.</summary>
-        Unknown = 0,
-
-        /// <summary>FHIR DSTU2.</summary>
-        DSTU2 = 2,
-
-        /// <summary>FHIR STU3.</summary>
-        STU3 = 3,
-
-        /// <summary>FHIR R4.</summary>
-        R4 = 4,
-
-        /// <summary>FHIR R4B.</summary>
-        R4B = -1,
-
-        /// <summary>FHIR R5.</summary>
-        R5 = 5,
-
-        /// <summary>FHIR R5.</summary>
-        R6 = 6,
-    }
-
-    /// <summary>Convert a FHIR sequence code to the literal for that version.</summary>
-    /// <param name="sequence">The sequence.</param>
-    /// <returns>A string.</returns>
-    public static string ToLiteral(FhirSequenceCodes sequence) => sequence switch
-    {
-        FhirSequenceCodes.DSTU2 => "DSTU2",
-        FhirSequenceCodes.STU3 => "STU3",
-        FhirSequenceCodes.R4 => "R4",
-        FhirSequenceCodes.R4B => "R4B",
-        FhirSequenceCodes.R5 => "R5",
-        FhirSequenceCodes.R6 => "R6",
-        _ => "Unknown"
-    };
-
-    /// <summary>Converts a sequence to a r literal.</summary>
-    /// <param name="sequence">The sequence.</param>
-    /// <returns>Sequence as a string.</returns>
-    public static string ToRLiteral(FhirSequenceCodes sequence) => sequence switch
-    {
-        FhirSequenceCodes.DSTU2 => "R2",
-        FhirSequenceCodes.STU3 => "R3",
-        FhirSequenceCodes.R4 => "R4",
-        FhirSequenceCodes.R4B => "R4B",
-        FhirSequenceCodes.R5 => "R5",
-        FhirSequenceCodes.R6 => "R6",
-        _ => "Unknown"
-    };
-
-    /// <summary>Converts a sequence to a r literal.</summary>
-    /// <param name="version">[out] The version string (e.g., 4.0.1).</param>
-    /// <returns>Sequence as a string.</returns>
-    public static string ToRLiteral(string version) => version switch
-    {
-        "R2" => "R2",
-        "DSTU2" => "R2",
-        "0.4.0" => "R2",
-        "0.4" => "R2",
-        "0.5.0" => "R2",
-        "0.5" => "R2",
-        "1.0.0" => "R2",
-        "1.0.1" => "R2",
-        "1.0.2" => "R2",
-        "1.0" => "R2",
-        "R3" => "R3",
-        "STU3" => "R3",
-        "1.1.0" => "R3",
-        "1.1" => "R3",
-        "1.2.0" => "R3",
-        "1.2" => "R3",
-        "1.4.0" => "R3",
-        "1.4" => "R3",
-        "1.6.0" => "R3",
-        "1.6" => "R3",
-        "1.8.0" => "R3",
-        "1.8" => "R3",
-        "3.0.0" => "R3",
-        "3.0.1" => "R3",
-        "3.0.2" => "R3",
-        "3.0" => "R3",
-        "R4" => "R4",
-        "3.2.0" => "R4",
-        "3.2" => "R4",
-        "3.3.0" => "R4",
-        "3.3" => "R4",
-        "3.5.0" => "R4",
-        "3.5" => "R4",
-        "3.5a.0" => "R4",
-        "4.0.0" => "R4",
-        "4.0.1" => "R4",
-        "4.0" => "R4",
-        "R4B" => "R4B",
-        "4.1.0" => "R4B",
-        "4.1" => "R4B",
-        "4.3.0-snapshot1" => "R4B",
-        "4.3.0" => "R4B",
-        "4.3" => "R4B",
-        "R5" => "R5",
-        "4.2.0" => "R5",
-        "4.2" => "R5",
-        "4.4.0" => "R5",
-        "4.4" => "R5",
-        "4.5.0" => "R5",
-        "4.5" => "R5",
-        "4.6.0" => "R5",
-        "4.6" => "R5",
-        "5.0.0-snapshot1" => "R5",
-        "5.0.0-ballot" => "R5",
-        "5.0.0-snapshot3" => "R5",
-        "5.0.0-draft-final" => "R5",
-        "5.0.0" => "R5",
-        "5.0" => "R5",
-        "5" => "R5",
-        "R6" => "R6",
-        "6.0.0" => "R6",
-        "6.0" => "R6",
-        "6" => "R6",
-        _ => string.Empty,
-    };
-
-    /// <summary>Converts a sequence to a short version.</summary>
-    /// <param name="sequence">The sequence.</param>
-    /// <returns>Sequence as a string.</returns>
-    public static string ToShortVersion(FhirSequenceCodes sequence) => sequence switch
-    {
-        FhirSequenceCodes.DSTU2 => "1.0",
-        FhirSequenceCodes.STU3 => "3.0",
-        FhirSequenceCodes.R4 => "4.0",
-        FhirSequenceCodes.R4B => "4.3",
-        FhirSequenceCodes.R5 => "5.0",
-        FhirSequenceCodes.R6 => "6.0",
-        _ => "Unknown"
-    };
-
-    /// <summary>Converts a sequence to a short version number.</summary>
-    /// <param name="version">[out] The version string (e.g., 4.0.1).</param>
-    /// <returns>Sequence as a string.</returns>
-    public static string ToShortVersion(string version) => version switch
-    {
-        "R2" => "1.0",
-        "DSTU2" => "1.0",
-        "0.4.0" => "1.0",
-        "0.4" => "1.0",
-        "0.5.0" => "1.0",
-        "0.5" => "1.0",
-        "1.0.0" => "1.0",
-        "1.0.1" => "1.0",
-        "1.0.2" => "1.0",
-        "1.0" => "1.0",
-        "R3" => "3.0",
-        "STU3" => "3.0",
-        "1.1.0" => "3.0",
-        "1.1" => "3.0",
-        "1.2.0" => "3.0",
-        "1.2" => "3.0",
-        "1.4.0" => "3.0",
-        "1.4" => "3.0",
-        "1.6.0" => "3.0",
-        "1.6" => "3.0",
-        "1.8.0" => "3.0",
-        "1.8" => "3.0",
-        "3.0.0" => "3.0",
-        "3.0.1" => "3.0",
-        "3.0.2" => "3.0",
-        "3.0" => "3.0",
-        "R4" => "4.0",
-        "3.2.0" => "4.0",
-        "3.2" => "4.0",
-        "3.3.0" => "4.0",
-        "3.3" => "4.0",
-        "3.5.0" => "4.0",
-        "3.5" => "4.0",
-        "3.5a.0" => "4.0",
-        "4.0.0" => "4.0",
-        "4.0.1" => "4.0",
-        "4.0" => "4.0",
-        "R4B" => "4.3",
-        "4.1.0" => "4.3",
-        "4.1" => "4.3",
-        "4.3.0-snapshot1" => "4.3",
-        "4.3.0" => "4.3",
-        "4.3" => "4.3",
-        "R5" => "5.0",
-        "4.2.0" => "5.0",
-        "4.2" => "5.0",
-        "4.4.0" => "5.0",
-        "4.4" => "5.0",
-        "4.5.0" => "5.0",
-        "4.5" => "5.0",
-        "4.6.0" => "5.0",
-        "4.6" => "5.0",
-        "5.0.0-snapshot1" => "5.0",
-        "5.0.0-ballot" => "5.0",
-        "5.0.0-snapshot3" => "5.0",
-        "5.0.0-draft-final" => "5.0",
-        "5.0.0" => "5.0",
-        "5.0" => "5.0",
-        "5" => "5.0",
-        "R6" => "6.0",
-        "6.0.0" => "6.0",
-        "6.0" => "6.0",
-        "6" => "6.0",
-        _ => version.StartsWith("R", StringComparison.OrdinalIgnoreCase) ? version.Substring(1, 1) + ".0" : string.Empty,
-    };
-
-    /// <summary>Converts a sequence to a long version.</summary>
-    /// <param name="sequence">The sequence.</param>
-    /// <returns>Sequence as a string.</returns>
-    public static string ToLongVersion(FhirSequenceCodes sequence) => sequence switch
-    {
-        FhirSequenceCodes.DSTU2 => "1.0.2",
-        FhirSequenceCodes.STU3 => "3.0.2",
-        FhirSequenceCodes.R4 => "4.0.1",
-        FhirSequenceCodes.R4B => "4.3.0",
-        FhirSequenceCodes.R5 => "5.0.0",
-        FhirSequenceCodes.R6 => "6.0.0",
-        _ => "Unknown"
-    };
-
-    /// <summary>Converts a FHIR sequence literal or package number to a sequence code.</summary>
-    /// <param name="literal">The literal.</param>
-    /// <returns>Literal as the FhirSequenceCodes.</returns>
-    public static FhirSequenceCodes ToSequence(string literal) => literal.ToUpperInvariant() switch
-    {
-        "R2" => FhirSequenceCodes.DSTU2,
-        "DSTU2" => FhirSequenceCodes.DSTU2,
-        "0.4.0" => FhirSequenceCodes.DSTU2,
-        "0.4" => FhirSequenceCodes.DSTU2,
-        "0.5.0" => FhirSequenceCodes.DSTU2,
-        "0.5" => FhirSequenceCodes.DSTU2,
-        "1.0.0" => FhirSequenceCodes.DSTU2,
-        "1.0.1" => FhirSequenceCodes.DSTU2,
-        "1.0.2" => FhirSequenceCodes.DSTU2,
-        "1.0" => FhirSequenceCodes.DSTU2,
-        "R3" => FhirSequenceCodes.STU3,
-        "STU3" => FhirSequenceCodes.STU3,
-        "1.1.0" => FhirSequenceCodes.STU3,
-        "1.1" => FhirSequenceCodes.STU3,
-        "1.2.0" => FhirSequenceCodes.STU3,
-        "1.2" => FhirSequenceCodes.STU3,
-        "1.4.0" => FhirSequenceCodes.STU3,
-        "1.4" => FhirSequenceCodes.STU3,
-        "1.6.0" => FhirSequenceCodes.STU3,
-        "1.6" => FhirSequenceCodes.STU3,
-        "1.8.0" => FhirSequenceCodes.STU3,
-        "1.8" => FhirSequenceCodes.STU3,
-        "3.0.0" => FhirSequenceCodes.STU3,
-        "3.0.1" => FhirSequenceCodes.STU3,
-        "3.0.2" => FhirSequenceCodes.STU3,
-        "3.0" => FhirSequenceCodes.STU3,
-        "R4" => FhirSequenceCodes.R4,
-        "3.2.0" => FhirSequenceCodes.R4,
-        "3.2" => FhirSequenceCodes.R4,
-        "3.3.0" => FhirSequenceCodes.R4,
-        "3.3" => FhirSequenceCodes.R4,
-        "3.5.0" => FhirSequenceCodes.R4,
-        "3.5" => FhirSequenceCodes.R4,
-        "3.5a.0" => FhirSequenceCodes.R4,
-        "4.0.0" => FhirSequenceCodes.R4,
-        "4.0.1" => FhirSequenceCodes.R4,
-        "4.0" => FhirSequenceCodes.R4,
-        "R4B" => FhirSequenceCodes.R4B,
-        "4.1.0" => FhirSequenceCodes.R4B,
-        "4.1" => FhirSequenceCodes.R4B,
-        "4.3.0-snapshot1" => FhirSequenceCodes.R4B,
-        "4.3.0" => FhirSequenceCodes.R4B,
-        "4.3" => FhirSequenceCodes.R4B,
-        "R5" => FhirSequenceCodes.R5,
-        "4.2.0" => FhirSequenceCodes.R5,
-        "4.2" => FhirSequenceCodes.R5,
-        "4.4.0" => FhirSequenceCodes.R5,
-        "4.4" => FhirSequenceCodes.R5,
-        "4.5.0" => FhirSequenceCodes.R5,
-        "4.5" => FhirSequenceCodes.R5,
-        "4.6.0" => FhirSequenceCodes.R5,
-        "4.6" => FhirSequenceCodes.R5,
-        "5.0.0-snapshot1" => FhirSequenceCodes.R5,
-        "5.0.0-ballot" => FhirSequenceCodes.R5,
-        "5.0.0-snapshot3" => FhirSequenceCodes.R5,
-        "5.0.0-draft-final" => FhirSequenceCodes.R5,
-        "5.0.0" => FhirSequenceCodes.R5,
-        "5.0" => FhirSequenceCodes.R5,
-        "5" => FhirSequenceCodes.R5,
-        "R6" => FhirSequenceCodes.R6,
-        "6.0.0" => FhirSequenceCodes.R6,
-        "6.0" => FhirSequenceCodes.R6,
-        "6" => FhirSequenceCodes.R6,
-        _ => literal?.Length > 3 ? ToSequence(literal.Substring(0, 3)) : FhirSequenceCodes.Unknown,
-    };
-
     /// <summary>Information about a package in the cache.</summary>
     internal readonly record struct PackageCacheRecord(
         string CacheDirective,
-        PackageLoadStateCodes PackageState,
         string PackageName,
         string Version,
         FhirSequenceCodes FhirVersion,
@@ -367,6 +50,9 @@ public partial class FhirCache : IDisposable
 
     /// <summary>(Immutable) URI of the FHIR CI server.</summary>
     private static readonly Uri _ciUri = new("http://build.fhir.org/");
+
+    /// <summary>(Immutable) The ci URI using HTTPS.</summary>
+    private static readonly Uri _ciUriS = new("https://build.fhir.org/");
 
     /// <summary>(Immutable) URI of the qas.</summary>
     private static readonly Uri _qasUri = new("https://build.fhir.org/ig/qas.json");
@@ -505,20 +191,6 @@ public partial class FhirCache : IDisposable
 
         SynchronizeCache();
     }
-
-    /// <summary>A package cache entry.</summary>
-    /// <param name="fhirVersion">        The FHIR version.</param>
-    /// <param name="directory">          Pathname of the directory.</param>
-    /// <param name="resolvedDirective">  The resolved directive.</param>
-    /// <param name="resolvedName">       Name of the resolved.</param>
-    /// <param name="resolvedVersion">    The resolved version.</param>
-    /// <param name="umbrellaPackageName">Name of the umbrella package.</param>
-    public record struct PackageCacheEntry(
-        FhirSequenceCodes fhirVersion,
-        string directory,
-        string resolvedDirective,
-        string name,
-        string version);
 
     /// <summary>Attempts to parse directive a ParsedDirective from the given string.</summary>
     /// <param name="input">The input directive: [package-name]#[version].</param>
@@ -701,10 +373,90 @@ public partial class FhirCache : IDisposable
         }
 
         // all HL7 packages use SemVer
-        if (current.PackageId.StartsWith("hl7", StringComparison.OrdinalIgnoreCase) && (current.VersionType == DirectiveVersionCodes.NonSemVer))
+        if (current.PackageId.StartsWith("hl7", StringComparison.OrdinalIgnoreCase) &&
+            (current.VersionType == DirectiveVersionCodes.NonSemVer))
         {
             directive = null;
             return false;
+        }
+
+        // check for HL7 packages with specific versions to add a publication URL
+        if (current.PackageId.StartsWith("hl7.", StringComparison.OrdinalIgnoreCase) &&
+            (current.VersionType == DirectiveVersionCodes.Exact))
+        {
+            // fill in a publication URL
+            switch (current.NameType)
+            {
+                case DirectiveNameTypeCodes.CoreFull:
+                case DirectiveNameTypeCodes.CorePartial:
+                    {
+                        string packageId = current.NameType == DirectiveNameTypeCodes.CorePartial
+                            ? current.PackageId + ".core"
+                            : current.PackageId;
+
+                        // if we know about a published version, try to construct the download URL
+                        if (FhirPublishedVersions.TryGetValue(current.PackageVersion, out PublishedReleaseInformation pi))
+                        {
+                            if (!string.IsNullOrEmpty(pi.BallotPrefix))
+                            {
+                                // ballot versions use their ballot prefix
+                                current = current with
+                                {
+                                    PublicationPackageUrl = $"{_publicationUri}{pi.BallotPrefix}/{packageId}.tgz",
+                                };
+                            }
+                            else if (current.PackageVersion.Equals(FhirVersionToLongVersion(current.PackageVersion)))
+                            {
+                                // current major releases use their R-Version
+                                current = current with
+                                {
+                                    PublicationPackageUrl = $"{_publicationUri}{FhirVersionToRLiteral(current.PackageVersion)}/{packageId}.tgz",
+                                };
+                            }
+                            else
+                            {
+                                // remaining versions use their version literal as the URL prefix
+                                current = current with
+                                {
+                                    PublicationPackageUrl = $"{_publicationUri}{current.PackageVersion}/{packageId}.tgz",
+                                };
+                            }
+                        }
+                    }
+                    break;
+                case DirectiveNameTypeCodes.GuideWithSuffix:
+                    {
+                        string[] segments = current.PackageId.Split('.');
+
+                        if (segments.Length >= 5)
+                        {
+                            // we are only attempting fallbacks on published versions of HL7 packages
+                            current = current with
+                            {
+                                PublicationPackageUrl = $"{_publicationUri}{segments[2]}/{segments[3]}/package.{segments[4]}.tgz",
+                            };
+                        }
+                    }
+                    break;
+
+                case DirectiveNameTypeCodes.GuideWithoutSuffix:
+                    {
+                        string[] segments = current.PackageId.Split('.');
+
+                        if (segments.Length >= 4)
+                        {
+                            // we are only attempting fallbacks on published versions of HL7 packages
+                            current = current with
+                            {
+                                PublicationPackageUrl = $"{_publicationUri}{segments[2]}/{segments[3]}/package.tgz",
+                            };
+                        }
+                    }
+                    break;
+                case DirectiveNameTypeCodes.Unknown:
+                default:
+                    break;
+            }
         }
 
         directive = current;
@@ -778,7 +530,7 @@ public partial class FhirCache : IDisposable
             };
 
             // ensure the FHIR version is at least a partial match
-            if (ciVersion.FhirVersion.StartsWith(ToShortVersion(directive.FhirRelease), StringComparison.OrdinalIgnoreCase))
+            if (ciVersion.FhirVersion.StartsWith(FhirVersionToShortVersion(directive.FhirRelease), StringComparison.OrdinalIgnoreCase))
             {
                 string resolvedCiUrl = string.IsNullOrEmpty(ciBranch)
                     ? $"{_ciUri}"
@@ -795,6 +547,7 @@ public partial class FhirCache : IDisposable
                     CiBranch = ciBranch,
                     BuildDate = ciVersion.BuildDate,
                     ResolvedTarballUrl = $"{resolvedCiUrl}{packageId}.tgz",
+                    PublicationPackageUrl = string.Empty,       // ci builds already use the website URL
                     ResolvedSha = string.Empty,
                 };
 
@@ -882,7 +635,7 @@ public partial class FhirCache : IDisposable
                     case DirectiveNameTypeCodes.GuideWithoutSuffix:
                         {
                             // build lengthened version of name
-                            packageId = packageId + "." + ToRLiteral(directive.FhirRelease);
+                            packageId = packageId + "." + FhirVersionToRLiteral(directive.FhirRelease);
 
                             matching = string.IsNullOrEmpty(ciBranch)
                                 ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
@@ -915,7 +668,7 @@ public partial class FhirCache : IDisposable
                 if (!filtered.Any())
                 {
                     // if filtered reduces to zero, we need to check for 'hidden' FHIR-version-specific packages
-                    string rVersion = ToRLiteral(directive.FhirRelease);
+                    string rVersion = FhirVersionToRLiteral(directive.FhirRelease);
 
                     // sort our matching record
                     matching = matching.OrderByDescending(q => q.BuildDate);
@@ -1000,7 +753,7 @@ public partial class FhirCache : IDisposable
             switch (directive.NameType)
             {
                 case DirectiveNameTypeCodes.GuideWithSuffix:
-                    tarUrl = $"{ciUrl}/package.{ToRLiteral(directive.FhirRelease).ToLowerInvariant()}.tgz";
+                    tarUrl = $"{ciUrl}/package.{FhirVersionToRLiteral(directive.FhirRelease).ToLowerInvariant()}.tgz";
                     fhirRelease = directive.FhirRelease;
                     break;
                 case DirectiveNameTypeCodes.GuideWithoutSuffix:
@@ -1192,22 +945,22 @@ public partial class FhirCache : IDisposable
                     {
                         case "package.r4.tgz":
                             uri = new(root + "/package.r4.manifest.json");
-                            fhirVersion = ToLongVersion(FhirSequenceCodes.R4);
+                            fhirVersion = FhirSequenceCodes.R4.ToLongVersion();
                             break;
 
                         case "package.r4b.tgz":
                             uri = new(root + "/package.r4b.manifest.json");
-                            fhirVersion = ToLongVersion(FhirSequenceCodes.R4B);
+                            fhirVersion = FhirSequenceCodes.R4B.ToLongVersion();
                             break;
 
                         case "package.r5.tgz":
                             uri = new(root + "/package.r5.manifest.json");
-                            fhirVersion = ToLongVersion(FhirSequenceCodes.R5);
+                            fhirVersion = FhirSequenceCodes.R5.ToLongVersion();
                             break;
 
                         case "package.r6.tgz":
                             uri = new(root + "/package.r6.manifest.json");
-                            fhirVersion = ToLongVersion(FhirSequenceCodes.R6);
+                            fhirVersion = FhirSequenceCodes.R6.ToLongVersion();
                             break;
 
                         case "package.tgz":
@@ -1719,8 +1472,8 @@ public partial class FhirCache : IDisposable
             {
                 // check for a matching FHIR version or the caller asking for any
                 if ((forFhirVersion == FhirSequenceCodes.Unknown) ||
-                    entry.FhirVersion.Equals(ToLiteral(forFhirVersion), StringComparison.OrdinalIgnoreCase) ||
-                    entry.FhirVersion.Equals(ToRLiteral(forFhirVersion), StringComparison.OrdinalIgnoreCase))
+                    entry.FhirVersion.Equals(forFhirVersion.ToLiteral(), StringComparison.OrdinalIgnoreCase) ||
+                    entry.FhirVersion.Equals(forFhirVersion.ToRLiteral(), StringComparison.OrdinalIgnoreCase))
                 {
                     if (PackageIsFhirCore(entry.Name))
                     {
@@ -1785,7 +1538,7 @@ public partial class FhirCache : IDisposable
     /// <param name="forFhirVersion">(Optional) FHIR version to restrict downloads to.</param>
     /// <param name="offlineMode">   (Optional) True to enable offline mode, false to disable it.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public bool ResolveDirective(
+    internal bool TryResolveDirective(
         string inputDirective,
         out PackageCacheEntry? package,
         FhirSequenceCodes forFhirVersion = FhirSequenceCodes.Unknown,
@@ -2014,42 +1767,53 @@ public partial class FhirCache : IDisposable
                 }
         }
 
-        if (string.IsNullOrEmpty(directive.ResolvedTarballUrl))
+        if (string.IsNullOrEmpty(directive.ResolvedTarballUrl) &&
+            string.IsNullOrEmpty(directive.PublicationPackageUrl))
         {
-            _logger.LogError($"Directive did not contain a tarball URL: {inputDirective}");
+            _logger.LogError($"Directive did not contain a tarball URL and could not determine a publication fallback: {inputDirective}");
             package = null;
             return false;
         }
 
-        Uri dlUri = new(directive.ResolvedTarballUrl);
-        string dlDir = Path.Combine(_cachePackageDirectory, directive.Directive);
+        List<string> urls = new();
 
-        // if we do not have a resolved URL, we cannot download
-        if (string.IsNullOrEmpty(directive.ResolvedTarballUrl))
+        if (!string.IsNullOrEmpty(directive.ResolvedTarballUrl))
         {
-            _logger.LogError($"Could not determine download location for directive: {inputDirective}");
-            package = new()
-            {
-                fhirVersion = FhirSequenceCodes.Unknown,
-                directory = dlDir,
-                resolvedDirective = directive.Directive,
-                name = directive.PackageId,
-                version = directive.PackageVersion,
-            };
-            return false;
+            urls.Add(directive.ResolvedTarballUrl);
         }
 
-        if (!TryDownloadAndExtract(dlUri, dlDir, directive.Directive, out FhirSequenceCodes resolvedFhirVersion, out string resolvedDirective))
+        if (!string.IsNullOrEmpty(directive.PublicationPackageUrl))
         {
-            _logger.LogError($"Failed to download {dlUri}, requested by {inputDirective}");
-            package = new()
+            urls.Add(directive.PublicationPackageUrl);
+        }
+
+        string dlDir = Path.Combine(_cachePackageDirectory, directive.Directive);
+
+        bool downloaded = false;
+        FhirSequenceCodes resolvedFhirVersion = FhirSequenceCodes.Unknown;
+        string resolvedDirective = string.Empty;
+
+        foreach (string url in urls)
+        {
+            Uri dlUri = new(url);
+
+            downloaded = TryDownloadAndExtract(
+                dlUri,
+                dlDir,
+                directive.Directive,
+                out resolvedFhirVersion,
+                out resolvedDirective);
+
+            if (downloaded)
             {
-                fhirVersion = resolvedFhirVersion,
-                directory = dlDir,
-                resolvedDirective = directive.Directive,
-                name = directive.PackageId,
-                version = directive.PackageVersion,
-            };
+                break;
+            }
+        }
+
+        if (!downloaded)
+        {
+            _logger.LogError($"Failed to download {inputDirective}: attempted: {string.Join(", ", urls)}");
+            package = null;
             return false;
         }
 
@@ -2092,7 +1856,6 @@ public partial class FhirCache : IDisposable
                             return new List<string>()
                             {
                                 $"{directive.PackageId}#{directive.PackageVersion}",
-                                $"{directive.PackageId}#{directive.PackageVersion}",
                             };
                         }
                     case DirectiveNameTypeCodes.GuideWithoutSuffix:
@@ -2100,7 +1863,7 @@ public partial class FhirCache : IDisposable
                             return new List<string>()
                             {
                                 $"{directive.PackageId}#{directive.PackageVersion}",
-                                $"{directive.PackageId}.{ToRLiteral(directive.FhirRelease)}#{directive.PackageVersion}",
+                                $"{directive.PackageId}.{FhirVersionToRLiteral(directive.FhirRelease)}#{directive.PackageVersion}",
                             };
                         }
 
@@ -2143,7 +1906,7 @@ public partial class FhirCache : IDisposable
                         return new List<string>()
                         {
                             directive.Directive,
-                            directive.PackageId.Replace("#", $".{ToRLiteral(directive.FhirRelease)}"),
+                            directive.PackageId.Replace("#", $".{FhirVersionToRLiteral(directive.FhirRelease)}"),
                         };
                     }
 
@@ -2163,12 +1926,10 @@ public partial class FhirCache : IDisposable
     /// <returns>The directory size.</returns>
     private static long GetDirectorySize(string directory)
     {
-        long size = 0;
-
         DirectoryInfo dirInfo = new(directory);
-        var fileInfos = dirInfo.EnumerateFiles("*.*", SearchOption.AllDirectories);
+        IEnumerable<FileInfo> fileInfos = dirInfo.EnumerateFiles("*.*", SearchOption.AllDirectories);
 
-        size = 0;
+        long size = 0;
 
         foreach (FileInfo fileInfo in fileInfos)
         {
@@ -2262,10 +2023,9 @@ public partial class FhirCache : IDisposable
 
             PackageCacheRecord record = new(
                 directive,
-                PackageLoadStateCodes.NotLoaded,
                 name,
                 npmDetails.Version,
-                ToSequence(npmDetails.FhirVersion),
+                FhirVersionToSequence(npmDetails.FhirVersion),
                 packageDate,
                 size,
                 npmDetails);
@@ -2438,15 +2198,6 @@ public partial class FhirCache : IDisposable
         return _matchCorePackageNames.IsMatch(name);
     }
 
-    /// <summary>Package base for sequence.</summary>
-    /// <param name="seq">The sequence.</param>
-    /// <returns>A string.</returns>
-    private static string PackageBaseForSequence(FhirSequenceCodes seq) => seq switch
-    {
-        FhirSequenceCodes.R4B => "hl7.fhir.r4b",
-        _ => $"hl7.fhir.r{(int)seq}",
-    };
-
     /// <summary>
     /// Attempts to get relative base for version a string from the given string.
     /// Note that this does not work for ballot versions of core, but that requires
@@ -2465,7 +2216,7 @@ public partial class FhirCache : IDisposable
             return true;
         }
 
-        FhirSequenceCodes sequence = ToSequence(version);
+        FhirSequenceCodes sequence = FhirVersionToSequence(version);
 
         if (sequence == FhirSequenceCodes.Unknown)
         {
@@ -2474,7 +2225,7 @@ public partial class FhirCache : IDisposable
         }
 
         // major releases are promoted to their version name root
-        relative = ToLiteral(sequence);
+        relative = sequence.ToLiteral();
         return true;
     }
 
@@ -2911,54 +2662,54 @@ public partial class FhirCache : IDisposable
         _logger.LogInformation($" << cache contains {_packagesByDirective.Count} packages");
     }
 
-    /// <summary>Updates the package state.</summary>
-    /// <param name="directive">      The directive.</param>
-    /// <param name="resolvedName">   Name of the resolved.</param>
-    /// <param name="resolvedVersion">The resolved version.</param>
-    /// <param name="toState">        State of to.</param>
-    private void UpdatePackageState(
-        string directive,
-        string resolvedName,
-        string resolvedVersion,
-        PackageLoadStateCodes toState)
-    {
-        if (!_packagesByDirective.ContainsKey(directive))
-        {
-            _packagesByDirective.Add(directive, new()
-            {
-                CacheDirective = directive,
-                PackageState = toState,
-            });
-        }
+    ///// <summary>Updates the package state.</summary>
+    ///// <param name="directive">      The directive.</param>
+    ///// <param name="resolvedName">   Name of the resolved.</param>
+    ///// <param name="resolvedVersion">The resolved version.</param>
+    ///// <param name="toState">        State of to.</param>
+    //private void UpdatePackageState(
+    //    string directive,
+    //    string resolvedName,
+    //    string resolvedVersion,
+    //    PackageLoadStateCodes toState)
+    //{
+    //    if (!_packagesByDirective.ContainsKey(directive))
+    //    {
+    //        _packagesByDirective.Add(directive, new()
+    //        {
+    //            CacheDirective = directive,
+    //            PackageState = toState,
+    //        });
+    //    }
 
-        _packagesByDirective[directive] = _packagesByDirective[directive] with
-        {
-            PackageState = toState,
-            PackageName = string.IsNullOrEmpty(resolvedName) ? _packagesByDirective[directive].PackageName : resolvedName,
-            Version = string.IsNullOrEmpty(resolvedVersion) ? _packagesByDirective[directive].Version : resolvedVersion,
-        };
+    //    _packagesByDirective[directive] = _packagesByDirective[directive] with
+    //    {
+    //        PackageState = toState,
+    //        PackageName = string.IsNullOrEmpty(resolvedName) ? _packagesByDirective[directive].PackageName : resolvedName,
+    //        Version = string.IsNullOrEmpty(resolvedVersion) ? _packagesByDirective[directive].Version : resolvedVersion,
+    //    };
 
-        StateHasChanged();
-    }
+    //    StateHasChanged();
+    //}
 
-    /// <summary>
-    /// Attempts to get a package state, returning a default value rather than throwing an exception
-    /// if it fails.
-    /// </summary>
-    /// <param name="directive">The directive.</param>
-    /// <param name="state">    [out] The state.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryGetPackageState(string directive, out PackageLoadStateCodes state)
-    {
-        if (!_packagesByDirective.ContainsKey(directive))
-        {
-            state = PackageLoadStateCodes.Unknown;
-            return false;
-        }
+    ///// <summary>
+    ///// Attempts to get a package state, returning a default value rather than throwing an exception
+    ///// if it fails.
+    ///// </summary>
+    ///// <param name="directive">The directive.</param>
+    ///// <param name="state">    [out] The state.</param>
+    ///// <returns>True if it succeeds, false if it fails.</returns>
+    //private bool TryGetPackageState(string directive, out PackageLoadStateCodes state)
+    //{
+    //    if (!_packagesByDirective.ContainsKey(directive))
+    //    {
+    //        state = PackageLoadStateCodes.Unknown;
+    //        return false;
+    //    }
 
-        state = _packagesByDirective[directive].PackageState;
-        return true;
-    }
+    //    state = _packagesByDirective[directive].PackageState;
+    //    return true;
+    //}
 
     /// <summary>Process the synchronize.</summary>
     /// <param name="data">        The data.</param>
@@ -3022,10 +2773,10 @@ public partial class FhirCache : IDisposable
 
         PackageCacheRecord record = new(
                 directive,
-                PackageLoadStateCodes.NotLoaded,
+                //PackageLoadStateCodes.NotLoaded,
                 name,
                 version,
-                ToSequence(versionInfo.FhirVersion),
+                FhirVersionToSequence(versionInfo.FhirVersion),
                 packageDate,
                 size,
                 versionInfo);

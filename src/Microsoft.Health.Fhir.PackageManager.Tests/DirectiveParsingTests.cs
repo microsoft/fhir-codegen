@@ -88,4 +88,27 @@ public class DirectiveParsingTests
             directive!.VersionType.Should().Be(versionType);
         }
     }
+
+    [Theory]
+    [InlineData("hl7.fhir.r4#4.0.1", true, "http://hl7.org/fhir/R4/hl7.fhir.r4.core.tgz")]
+    [InlineData("hl7.fhir.r4.core#4.0.1", true, "http://hl7.org/fhir/R4/hl7.fhir.r4.core.tgz")]
+    [InlineData("hl7.fhir.r4.core#4.0", true, "")]
+    [InlineData("hl7.fhir.r4.core#latest", true, "")]
+    [InlineData("hl7.fhir.uv.subscriptions-backport#1.1.0", true, "http://hl7.org/fhir/uv/subscriptions-backport/package.tgz")]
+    [InlineData("hl7.fhir.uv.subscriptions-backport.r4#1.1.0", true, "http://hl7.org/fhir/uv/subscriptions-backport/package.r4.tgz")]
+    internal void CheckPublicationUrl(
+        string input,
+        bool shouldPass,
+        string expectedUrl = "")
+    {
+        bool parsed = FhirCache.TryParseDirective(input, out FhirDirective? directive);
+
+        parsed.Should().Be(shouldPass);
+
+        if (shouldPass)
+        {
+            directive.Should().NotBeNull();
+            directive!.PublicationPackageUrl.Should().Be(expectedUrl);
+        }
+    }
 }

@@ -46,9 +46,9 @@ internal record class FhirNpmPackageDetails
         Name = other.Name;
         Version = other.Version;
         BuildDate = other.BuildDate;
-        FhirVersionList = other.FhirVersionList.Select(v => v);
-        FhirVersions = other.FhirVersions.Select(v => v);
-        FhirVersion = other.FhirVersion;
+        _fhirVersions = other._fhirVersions.Select(v => v);
+        _fhirVersionList = other._fhirVersionList.Select(v => v);
+        _fhirVersion = other._fhirVersion;
         PackageType = other.PackageType;
         ToolsVersion = other.ToolsVersion;
         Canonical = other.Canonical;

@@ -7,6 +7,7 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 using Microsoft.Health.Fhir.PackageManager.Models;
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Microsoft.Health.Fhir.PackageManager;
 
@@ -25,6 +26,7 @@ public record class RegistryPackageManifest
         Name = other.Name;
         Description = other.Description;
         DistributionTags = other.DistributionTags.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        Versions = other.Versions.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
     }
 
     /// <summary>Gets or sets the identifier.</summary>
@@ -73,7 +75,7 @@ public record class RegistryPackageManifest
 
             foreach (string key in manifest.Versions.Keys)
             {
-                FhirCache.FhirSequenceCodes sequence = FhirCache.ToSequence(key);
+                FhirReleases.FhirSequenceCodes sequence = FhirReleases.FhirVersionToSequence(key);
                 bool remove = false;
                 string name = manifest.Versions[key].Name;
 
@@ -94,9 +96,9 @@ public record class RegistryPackageManifest
                     (manifest.Versions[key].FhirVersion == "??"))
                 {
                     if (manifest.Versions[key].PackageKind.Equals("core", StringComparison.OrdinalIgnoreCase) &&
-                        (sequence != FhirCache.FhirSequenceCodes.Unknown))
+                        (sequence != FhirReleases.FhirSequenceCodes.Unknown))
                     {
-                        manifest.Versions[key].FhirVersion = FhirCache.ToLiteral(sequence);
+                        manifest.Versions[key].FhirVersion = sequence.ToLiteral();
                     }
                     else
                     {
@@ -106,7 +108,7 @@ public record class RegistryPackageManifest
 
                 if (manifest.Versions[key].PackageKind.Equals("core", StringComparison.OrdinalIgnoreCase))
                 {
-                    manifest.Versions[key].FhirVersion = FhirCache.ToLiteral(sequence);
+                    manifest.Versions[key].FhirVersion = sequence.ToLiteral();
                 }
 
                 if (remove)

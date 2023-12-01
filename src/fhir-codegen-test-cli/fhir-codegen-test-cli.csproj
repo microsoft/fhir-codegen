@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>FhirCodegenTestCli</RootNamespace>
     <Version>2.0.0-beta1</Version>
   </PropertyGroup>

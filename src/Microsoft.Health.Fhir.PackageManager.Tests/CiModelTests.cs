@@ -5,6 +5,7 @@
 
 using System.Text.Json;
 using FluentAssertions;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.PackageManager;
 using Microsoft.Health.Fhir.PackageManager.Models;
 using Microsoft.Health.Fhir.PackageManager.Tests.Extensions;
@@ -106,7 +107,7 @@ public class CiModelTests
             }
             rec.GuideVersion.Should().NotBeNullOrEmpty();
             rec.FhirVersion.Should().NotBeNullOrEmpty();
-            FhirCache.ToSequence(rec.FhirVersion).Should().NotBe(FhirCache.FhirSequenceCodes.Unknown);
+            FhirReleases.FhirVersionToSequence(rec.FhirVersion).Should().NotBe(FhirReleases.FhirSequenceCodes.Unknown);
             rec.RespositoryUrl.Should().NotBeNullOrEmpty();
         }
     }

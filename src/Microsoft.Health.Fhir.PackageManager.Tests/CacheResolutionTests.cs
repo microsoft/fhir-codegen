@@ -8,6 +8,7 @@ using FluentAssertions;
 using Microsoft.Health.Fhir.PackageManager.Models;
 using static Microsoft.Health.Fhir.PackageManager.Models.FhirDirective;
 using Xunit.Abstractions;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 namespace Microsoft.Health.Fhir.PackageManager.Tests;
 
@@ -91,9 +92,9 @@ public class CacheResolutionTests : IClassFixture<CacheResolutionTestFixture>
         bool shouldSucceed,
         string expectedResolution = "")
     {
-        bool success = _cache.ResolveDirective(
+        bool success = _cache.TryResolveDirective(
             directive,
-            out FhirCache.PackageCacheEntry? package);
+            out PackageCacheEntry? package);
 
         success.Should().Be(shouldSucceed);
 

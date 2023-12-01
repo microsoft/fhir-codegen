@@ -99,10 +99,12 @@ public record class FhirElement : FhirDefinitionBase, IConformanceAnnotated, ICl
         IsMustSupport = other.IsMustSupport;
         IsSimple = other.IsSimple;
         FieldOrder = other.FieldOrder;
-        FhirMappings = other._mappings.Values.SelectMany(l => l).Select(m => m with { });
-        RepresentationLiterals = other._representationLiterals.Select(v => v);
+        _mappings = other._mappings.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(v => v with { }).ToList());
+        _representations = other._representations.Select(v => v);
+        _representationLiterals = other._representationLiterals.Select(v => v);
         ValueSet = other.ValueSet;
-        BindingStrength = other.BindingStrength;
+        _bindingStrength = other._bindingStrength;
+        _valueSetBindingStrength = other._valueSetBindingStrength;
         BindingName = other.BindingName;
         _elementTypes = other._elementTypes.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
         DefaultFieldName = other.DefaultFieldName;
@@ -118,6 +120,8 @@ public record class FhirElement : FhirDefinitionBase, IConformanceAnnotated, ICl
 
         ConformanceExpectation = other.ConformanceExpectation with { };
         ObligationsByActor = other.ObligationsByActor.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(v => v with { }));
+
+        ValueAlternatives = other.ValueAlternatives.Select(v => v);
     }
 
     /// <summary>Gets the dot-notation path to the base definition for this record.</summary>

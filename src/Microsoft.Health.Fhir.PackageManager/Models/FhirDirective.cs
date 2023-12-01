@@ -48,6 +48,7 @@ internal record class FhirDirective
         VersionType = other.VersionType;
         ResolvedTarballUrl = other.ResolvedTarballUrl;
         ResolvedSha = other.ResolvedSha;
+        PublicationPackageUrl = other.PublicationPackageUrl;
         CiUrl = other.CiUrl;
         CiOrg = other.CiOrg;
         CiBranch = other.CiBranch;
@@ -79,6 +80,9 @@ internal record class FhirDirective
 
     /// <summary>Gets or sets the resolved sha checksum.</summary>
     public string ResolvedSha { get; set; } = string.Empty;
+
+    /// <summary>Gets or sets URL of the publication package.</summary>
+    public string PublicationPackageUrl { get; set; } = string.Empty;
 
     /// <summary>Gets or sets URL of the ci.</summary>
     public string CiUrl { get; set; } = string.Empty;

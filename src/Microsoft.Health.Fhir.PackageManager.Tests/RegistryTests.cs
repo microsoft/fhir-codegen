@@ -5,6 +5,7 @@
 
 
 using FluentAssertions;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.PackageManager.Models;
 using Xunit.Abstractions;
 
@@ -224,14 +225,14 @@ public class RegistryTests : IClassFixture<RegistryTestFixture>
     /// <param name="resolvedId">  Identifier for the resolved.</param>
     /// <param name="fhirSequence">(Optional) The FHIR sequence.</param>
     [Theory]
-    [InlineData("hl7.fhir.uv.subscriptions-backport", DirectiveNameTypeCodes.GuideWithoutSuffix, "hl7.fhir.uv.subscriptions-backport", FhirCache.FhirSequenceCodes.R4B)]
-    [InlineData("hl7.fhir.uv.subscriptions-backport", DirectiveNameTypeCodes.GuideWithoutSuffix, "hl7.fhir.uv.subscriptions-backport.r4", FhirCache.FhirSequenceCodes.R4)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport", DirectiveNameTypeCodes.GuideWithoutSuffix, "hl7.fhir.uv.subscriptions-backport", FhirReleases.FhirSequenceCodes.R4B)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport", DirectiveNameTypeCodes.GuideWithoutSuffix, "hl7.fhir.uv.subscriptions-backport.r4", FhirReleases.FhirSequenceCodes.R4)]
     [InlineData("hl7.fhir.us.core", DirectiveNameTypeCodes.GuideWithoutSuffix, "hl7.fhir.us.core")]
     internal void ResolveNameFromCatalog(
         string packageId,
         DirectiveNameTypeCodes nameType,
         string resolvedId,
-        FhirCache.FhirSequenceCodes fhirSequence = FhirCache.FhirSequenceCodes.Unknown)
+        FhirReleases.FhirSequenceCodes fhirSequence = FhirReleases.FhirSequenceCodes.Unknown)
     {
         // fill out a FhirDirective as if we had parsed it already
         FhirDirective directive = new()
@@ -255,13 +256,13 @@ public class RegistryTests : IClassFixture<RegistryTestFixture>
 
         directive.PackageId.Should().Be(resolvedId);
 
-        if (fhirSequence == FhirCache.FhirSequenceCodes.Unknown)
+        if (fhirSequence == FhirReleases.FhirSequenceCodes.Unknown)
         {
             directive.FhirRelease.Should().NotBeNullOrEmpty();
         }
         else
         {
-            directive.FhirRelease.Should().Be(FhirCache.ToRLiteral(fhirSequence));
+            directive.FhirRelease.Should().Be(fhirSequence.ToRLiteral());
         }
     }
 }
