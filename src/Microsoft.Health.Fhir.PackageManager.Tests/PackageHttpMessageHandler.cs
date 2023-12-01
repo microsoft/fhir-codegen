@@ -147,6 +147,13 @@ public class PackageHttpMessageHandler : HttpMessageHandler
                     return Task.FromResult(IniFile("data/version.info"));
                 }
 
+            //// URL-based directive resolution
+            //case "https://hl7.org/fhir/uv/subscriptions-backport/version.info":
+            //    {
+
+            //    }
+            //    break;
+
             default:
                 {
                     _testOutputHelper?.WriteLine($"{request.Method} {request.RequestUri?.AbsoluteUri} is not implemented.");

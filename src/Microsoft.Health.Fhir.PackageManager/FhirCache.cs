@@ -19,6 +19,9 @@ using System.Globalization;
 using static Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using System;
+using Microsoft.VisualBasic;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using System.Security.AccessControl;
 
 namespace Microsoft.Health.Fhir.PackageManager;
 
@@ -190,6 +193,293 @@ public partial class FhirCache : IDisposable
         }
 
         SynchronizeCache();
+    }
+
+    /// <summary>Attempts to parse URL into a package directive.</summary>
+    /// <param name="input">    The input url.</param>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    internal static bool TryParseUrl(
+        string input,
+        out FhirDirective? directive)
+    {
+        string url;
+
+        if (input.StartsWith("http://", StringComparison.OrdinalIgnoreCase))
+        {
+            url = input.Substring(7);
+        }
+        else if (input.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        {
+            url = input.Substring(8);
+        }
+        else if (input.Contains("://", StringComparison.Ordinal))
+        {
+            url = input.Substring(input.IndexOf("://", StringComparison.Ordinal) + 3);
+        }
+        else
+        {
+            url = input;
+        }
+
+        string[] segments = url.Split('/', '?');
+
+        if (segments.Length < 1)
+        {
+            directive = null;
+            return false;
+        }
+
+        switch (segments[0].ToLowerInvariant())
+        {
+            case "www.hl7.org":
+            case "hl7.org":
+                {
+                    return TryParseHl7ProdUrl(segments, out directive);
+                }
+
+            case "build.fhir.org":
+                {
+                    // this url *should* represent a CI package
+                }
+                break;
+
+            default:
+                {
+                    // unknown URLs should point directly to a package
+
+                }
+                break;
+        }
+
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Attempts to fetch version information a BuildVersionInfo from the given string.
+    /// </summary>
+    /// <param name="url"> URL of the resource.</param>
+    /// <param name="info">[out] The information.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private static bool TryFetchVersionInfo(
+        string url,
+        out BuildVersionInfo? info)
+    {
+        try
+        {
+            using HttpClient client = new();
+            using HttpResponseMessage response = client.GetAsync(url).Result;
+
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"TryFetchVersionInfo <<< get {url} returned {response.StatusCode}");
+                info = null;
+                return false;
+            }
+
+            string contents = response.Content.ReadAsStringAsync().Result;
+
+            if ((!TryParseVersionInfo(contents, out info)) ||
+                (info == null))
+            {
+                // not found just means the build does not exist
+                Console.WriteLine($"TryFetchVersionInfo <<< failed to parse version.info at {url}");
+                info = null;
+                return false;
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException == null)
+            {
+                Console.WriteLine($"TryFetchVersionInfo <<< caught exception: {ex.Message}");
+            }
+            else
+            {
+                Console.WriteLine($"TryFetchVersionInfo <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
+            }
+
+            info = null;
+            return false;
+        }
+    }
+
+    private static bool TryParseHl7ProdUrl(
+        string[] segments,
+        out FhirDirective? directive)
+    {
+        // URLs need to have at least 3 segments
+        if ((segments.Length < 3) ||
+            (!segments[1].Equals("fhir", StringComparison.Ordinal)))
+        {
+            directive = null;
+            return false;
+        }
+
+        string packageName = string.Empty;
+        string versionInfoUrl = string.Empty;
+        DirectiveNameTypeCodes nameType = DirectiveNameTypeCodes.Unknown;
+
+        // core ballot packages: hl7.org/fhir/[YYYYMMM]/[package|url]
+        // check if the third segment is a ballot marker, a four-year number (YYYY) and a three-letter month abbreviation (MMM)
+        if ((segments[2].Length == 7) &&
+            int.TryParse(segments[2].Substring(0, 4), out _) &&
+            DateTimeFormatInfo.CurrentInfo.AbbreviatedMonthNames.Contains(segments[2].Substring(4)))
+        {
+            // try and pull a version.info file to determine what this URL contains
+            versionInfoUrl = $"https://hl7.org/fhir/{segments[2]}/version.info";
+            nameType = DirectiveNameTypeCodes.CoreFull;
+
+            // check to see if the package name is in the fourth segment
+            if ((segments.Length >= 4) &&
+                segments[3].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            {
+                packageName = segments[3];
+            }
+        }
+        // fhir major release packages: hl7.org/fhir/[R#]/[package|url]
+        // check if the third segment is an R-literal, the letter 'R' followed by a number
+        else if ((segments[2].Length > 1) &&
+            segments[2].StartsWith('R') &&
+            int.TryParse(segments[2].Substring(1), out _))
+        {
+            FhirSequenceCodes sequence = FhirReleases.FhirVersionToSequence(segments[2]);
+
+            if (sequence == FhirSequenceCodes.Unknown)
+            {
+                Console.WriteLine($"TryParseHl7ProdUrl <<< found unknown FHIR major release version: {segments[2]}");
+                directive = null;
+                return false;
+            }
+
+            // try and pull a version.info file to determine what this URL contains
+            versionInfoUrl = $"https://hl7.org/fhir/{segments[2]}/version.info";
+            nameType = DirectiveNameTypeCodes.CoreFull;
+
+            // check to see if the package name is in the fourth segment
+            if ((segments.Length >= 4) &&
+                segments[3].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            {
+                packageName = segments[3];
+            }
+        }
+        // ig packages: hl7.org/fhir/[realm]/[package name]/[ballot?]
+        else if (segments[2].Length == 2)
+        {
+            throw new Exception("IGs do not get version.info!");
+
+            string potentialPackageName;
+
+            // check to see if we have a fifth segment that is a ballot marker
+            if ((segments.Length >= 5) &&
+                (segments[4].Length == 7) &&
+                int.TryParse(segments[4].Substring(0, 4), out _) &&
+                DateTimeFormatInfo.CurrentInfo.AbbreviatedMonthNames.Contains(segments[4].Substring(4)))
+            {
+                // try and pull a version.info file to determine what this URL contains
+                versionInfoUrl = $"https://hl7.org/fhir/{segments[2]}/{segments[3]}/{segments[4]}/version.info";
+                potentialPackageName = segments.Length >= 6 ? segments[5] : string.Empty;
+            }
+            else
+            {
+                // try and pull a version.info file to determine what this URL contains
+                versionInfoUrl = $"https://hl7.org/fhir/{segments[2]}/{segments[3]}/version.info";
+                potentialPackageName = segments.Length >= 5 ? segments[4] : string.Empty;
+            }
+
+            if (string.IsNullOrEmpty(potentialPackageName))
+            {
+                nameType = DirectiveNameTypeCodes.GuideWithoutSuffix;
+                packageName = $"hl7.fhir.{segments[2]}.{segments[3]}";
+            }
+            else if (potentialPackageName.EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            {
+                string[] pnSegments = potentialPackageName.Split('.');
+
+                int len = pnSegments.Length;
+                int versionSegment = len - 1;
+
+                if ((pnSegments.Length > 1) &&
+                    (pnSegments[versionSegment].Length > 1) &&
+                    pnSegments[versionSegment].StartsWith("R", StringComparison.OrdinalIgnoreCase) &&
+                    int.TryParse(pnSegments[versionSegment].Substring(1), out _))
+                {
+                    packageName = potentialPackageName;
+                    nameType = DirectiveNameTypeCodes.GuideWithSuffix;
+                }
+                else
+                {
+                    packageName = potentialPackageName;
+                    nameType = DirectiveNameTypeCodes.GuideWithoutSuffix;
+                }
+            }
+            else
+            {
+                // assume it is a guide without a suffix
+                nameType = DirectiveNameTypeCodes.GuideWithoutSuffix;
+                packageName = $"hl7.fhir.{segments[2]}.{segments[3]}";
+            }
+        }
+
+        // check for not determining the URL
+        if (string.IsNullOrEmpty(versionInfoUrl))
+        {
+            Console.WriteLine($"TryParseHl7ProdUrl <<< could not resolve download type!");
+            directive = null;
+            return false;
+        }
+
+        try
+        {
+            if ((!TryFetchVersionInfo(versionInfoUrl, out BuildVersionInfo? versionInfo)) ||
+                (versionInfo == null))
+            {
+                Console.WriteLine($"TryParseHl7ProdUrl <<< failed to parse version.info at {versionInfoUrl}");
+                directive = null;
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(packageName))
+            {
+                // determine a package name from the version
+                packageName = $"hl7.fhir.{FhirReleases.FhirVersionToRLiteral(versionInfo.FhirVersion).ToLowerInvariant()}.core";
+            }
+            else if (packageName.EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            {
+                // remove the .tgz suffix
+                packageName = packageName.Substring(0, packageName.Length - 4);
+            }
+
+            directive = new()
+            {
+                Directive = $"{packageName}#{versionInfo.Version}",
+                PackageId = packageName,
+                NameType = nameType,
+                FhirRelease = FhirReleases.FhirVersionToRLiteral(versionInfo.FhirVersion),
+                PackageVersion = versionInfo.Version,
+                VersionType = DirectiveVersionCodes.Exact,
+                PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{packageName}.tgz",
+                BuildDate = versionInfo.BuildDate,
+            };
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException == null)
+            {
+                Console.WriteLine($"TryParseHl7ProdUrl <<< caught exception: {ex.Message}");
+            }
+            else
+            {
+                Console.WriteLine($"TryParseHl7ProdUrl <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
+            }
+
+            directive = null;
+            return false;
+        }
     }
 
     /// <summary>Attempts to parse directive a ParsedDirective from the given string.</summary>
@@ -491,6 +781,37 @@ public partial class FhirCache : IDisposable
         }
     }
 
+    /// <summary>
+    /// Attempts to parse version information a BuildVersionInfo from the given string.
+    /// </summary>
+    /// <param name="contents">   The contents.</param>
+    /// <param name="versionInfo">[out] Information describing the version.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private static bool TryParseVersionInfo(string contents, out BuildVersionInfo? versionInfo)
+    {
+        IniDataParser parser = new();
+
+        IniData data = parser.Parse(contents);
+
+        if (!data.Sections.Contains("FHIR"))
+        {
+            // not a valid versions.info file
+            Console.WriteLine($"TryParseVersionInfo <<< does not contain valid contents (missing [FHIR])!");
+            versionInfo = null;
+            return false;
+        }
+
+        versionInfo = new()
+        {
+            FhirVersion = data["FHIR"].Contains("FhirVersion") ? data["FHIR"]["FhirVersion"] : string.Empty,
+            Version = data["FHIR"].Contains("version") ? data["FHIR"]["version"] : string.Empty,
+            BuildId = data["FHIR"].Contains("buildId") ? data["FHIR"]["buildId"] : string.Empty,
+            BuildDate = data["FHIR"].Contains("date") ? data["FHIR"]["date"] : string.Empty,
+        };
+
+        return true;
+    }
+
     /// <summary>Attempts to resolve a CI build of a core package.</summary>
     /// <param name="directive">[out] The parsed directive.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
@@ -510,24 +831,13 @@ public partial class FhirCache : IDisposable
 
             string contents = _httpClient.GetStringAsync(url).Result;
 
-            IniDataParser parser = new();
-
-            IniData data = parser.Parse(contents);
-
-            if (!data.Sections.Contains("FHIR"))
+            if ((!TryParseVersionInfo(contents, out BuildVersionInfo? ciVersion)) ||
+                (ciVersion == null))
             {
-                // not a valid versions.info file
-                _logger.LogWarning($"TryResolveCi <<< {url} does not contain valid contents!");
+                // not found just means the build does not exist
+                _logger.LogWarning($"TryResolveCi <<< failed to parse version.info");
                 return false;
             }
-
-            CoreCiVersion ciVersion = new()
-            {
-                FhirVersion = data["FHIR"].Contains("FhirVersion") ? data["FHIR"]["FhirVersion"] : string.Empty,
-                Version = data["FHIR"].Contains("version") ? data["FHIR"]["version"] : string.Empty,
-                BuildId = data["FHIR"].Contains("buildId") ? data["FHIR"]["buildId"] : string.Empty,
-                BuildDate = data["FHIR"].Contains("date") ? data["FHIR"]["date"] : string.Empty,
-            };
 
             // ensure the FHIR version is at least a partial match
             if (ciVersion.FhirVersion.StartsWith(FhirVersionToShortVersion(directive.FhirRelease), StringComparison.OrdinalIgnoreCase))

@@ -205,6 +205,15 @@ public static class FhirReleases
             return sequence.ToLiteral();
         }
 
+        // check for a tag we do not know
+        if (version.Contains('-'))
+        {
+            if (_fhirSequenceMap.TryGetValue(version.Substring(0, version.IndexOf('-')), out FhirSequenceCodes sequence2))
+            {
+                return sequence2.ToLiteral();
+            }
+        }
+
         return string.Empty;
     }
 
@@ -232,6 +241,15 @@ public static class FhirReleases
             return sequence.ToRLiteral();
         }
 
+        // check for a tag we do not know
+        if (version.Contains('-'))
+        {
+            if (_fhirSequenceMap.TryGetValue(version.Substring(0, version.IndexOf('-')), out FhirSequenceCodes sequence2))
+            {
+                return sequence2.ToRLiteral();
+            }
+        }
+
         return string.Empty;
     }
 
@@ -257,6 +275,15 @@ public static class FhirReleases
         if (_fhirSequenceMap.TryGetValue(version, out FhirSequenceCodes sequence))
         {
             return sequence.ToShortVersion();
+        }
+
+        // check for a tag we do not know
+        if (version.Contains('-'))
+        {
+            if (_fhirSequenceMap.TryGetValue(version.Substring(0, version.IndexOf('-')), out FhirSequenceCodes sequence2))
+            {
+                return sequence2.ToShortVersion();
+            }
         }
 
         if (version.StartsWith("R", StringComparison.OrdinalIgnoreCase))
@@ -289,6 +316,15 @@ public static class FhirReleases
         if (_fhirSequenceMap.TryGetValue(version, out FhirSequenceCodes sequence))
         {
             return sequence.ToLongVersion();
+        }
+
+        // check for a tag we do not know
+        if (version.Contains('-'))
+        {
+            if (_fhirSequenceMap.TryGetValue(version.Substring(0, version.IndexOf('-')), out FhirSequenceCodes sequence2))
+            {
+                return sequence2.ToLongVersion();
+            }
         }
 
         if (version.StartsWith("R", StringComparison.OrdinalIgnoreCase))

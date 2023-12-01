@@ -111,4 +111,29 @@ public class DirectiveParsingTests
             directive!.PublicationPackageUrl.Should().Be(expectedUrl);
         }
     }
+
+    [Theory]
+    [InlineData("http://hl7.org/fhir/R4/hl7.fhir.r4.core.tgz", true, "hl7.fhir.r4.core")]
+    [InlineData("http://hl7.org/fhir/R4/", true, "hl7.fhir.r4.core")]
+    [InlineData("https://hl7.org/fhir/R4/hl7.fhir.r4.core.tgz", true, "hl7.fhir.r4.core")]
+    [InlineData("https://hl7.org/fhir/R4/", true, "hl7.fhir.r4.core")]
+
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/", true, "hl7.fhir.uv.subscriptions-backport")]
+
+    internal void ParseUrl(
+        string url,
+        bool shouldPass,
+        string expectedId = "")
+    {
+        bool parsed = FhirCache.TryParseUrl(url, out FhirDirective? directive);
+
+        parsed.Should().Be(shouldPass);
+
+        if (shouldPass)
+        {
+            directive.Should().NotBeNull();
+            directive!.PackageId.Should().Be(expectedId);
+        }
+
+    }
 }

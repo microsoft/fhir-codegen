@@ -1,4 +1,4 @@
-﻿// <copyright file="CoreCiVersion.cs" company="Microsoft Corporation">
+﻿// <copyright file="BuildVersionInfo.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -7,8 +7,8 @@ using System.Text.Json.Serialization;
 
 namespace Microsoft.Health.Fhir.PackageManager.Models;
 
-/// <summary>A core CI version record.</summary>
-internal record class CoreCiVersion
+/// <summary>A build version info record.</summary>
+internal record class BuildVersionInfo
 {
     /// <summary>Gets or initializes the FHIR version.</summary>
     [JsonPropertyName("FhirVersion")]
