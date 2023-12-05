@@ -114,11 +114,34 @@ public class DirectiveParsingTests
 
     [Theory]
     [InlineData("http://hl7.org/fhir/R4/hl7.fhir.r4.core.tgz", true, "hl7.fhir.r4.core")]
+    [InlineData("http://hl7.org/fhir/R4/index.html", true, "hl7.fhir.r4.core")]
     [InlineData("http://hl7.org/fhir/R4/", true, "hl7.fhir.r4.core")]
+    [InlineData("http://hl7.org/fhir/R4", true, "hl7.fhir.r4.core")]
     [InlineData("https://hl7.org/fhir/R4/hl7.fhir.r4.core.tgz", true, "hl7.fhir.r4.core")]
     [InlineData("https://hl7.org/fhir/R4/", true, "hl7.fhir.r4.core")]
 
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/package.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/index.html", true, "hl7.fhir.uv.subscriptions-backport")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport", true, "hl7.fhir.uv.subscriptions-backport")]
+
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan/package.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan/index.html", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan/", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan", true, "hl7.fhir.uv.subscriptions-backport")]
+
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/package.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/index.html", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1", true, "hl7.fhir.uv.subscriptions-backport")]
+
+    [InlineData("https://hl7.org/fhir/smart-app-launch/package.tgz", true, "hl7.fhir.uv.smart-app-launch")]
+    [InlineData("https://hl7.org/fhir/smart-app-launch/index.html", true, "hl7.fhir.uv.smart-app-launch")]
+    [InlineData("https://hl7.org/fhir/smart-app-launch/", true, "hl7.fhir.uv.smart-app-launch")]
+    [InlineData("https://hl7.org/fhir/smart-app-launch", true, "hl7.fhir.uv.smart-app-launch")]
 
     internal void ParseUrl(
         string url,
