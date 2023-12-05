@@ -245,6 +245,406 @@ public partial class FhirCache : IDisposable
         SynchronizeCache();
     }
 
+    /// <summary>Query if 'input' is URL product core.</summary>
+    /// <param name="input">    The input url.</param>
+    /// <param name="segments"> The segments.</param>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if URL product core, false if not.</returns>
+    private static bool IsUrlProdCore(
+        string input,
+        string[] segments,
+        out FhirDirective? directive)
+    {
+        if (!_matchProdCoreUrl.IsMatch(input))
+        {
+            directive = null;
+            return false;
+        }
+
+        // core packages cannot have fewer than 4 segments
+        if (segments.Length < 4)
+        {
+            directive = null;
+            return false;
+        }
+
+        // if there is a fifth segment, it could be a package name
+        string possiblePackage = string.Empty;
+        if ((segments.Length > 4) &&
+            segments[4].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase) &&
+            !_isPackageLiteral.IsMatch(segments[4]))
+        {
+            possiblePackage = segments[4].Substring(0, segments[4].Length - 4);
+        }
+
+        // check to see if we have a FHIR version literal
+        if (_isFhirVersionLiteral.IsMatch(segments[3]))
+        {
+            FhirSequenceCodes sequence = FhirReleases.FhirVersionToSequence(segments[3]);
+
+            // if there was no package specified, we can still defualt if we know the FHIR version
+            if (string.IsNullOrEmpty(possiblePackage) &&
+                (sequence != FhirSequenceCodes.Unknown))
+            {
+                // use core package literal
+                possiblePackage = $"hl7.fhir.{sequence.ToRLiteral().ToLowerInvariant()}.core";
+            }
+
+            // if we still do not have a package name, we are sunk
+            if (string.IsNullOrEmpty(possiblePackage))
+            {
+                directive = null;
+                return false;
+            }
+
+            // create a directive with 'latest', it will resolve the version later
+            directive = new()
+            {
+                Directive = $"{possiblePackage}#latest",
+                PackageId = possiblePackage,
+                NameType = DirectiveNameTypeCodes.CoreFull,
+                FhirRelease = sequence.ToRLiteral(),
+                PackageVersion = string.Empty,
+                VersionType = DirectiveVersionCodes.Latest,
+                PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
+            };
+
+            return true;
+        }
+
+        // check to see if we have a FHIR ballot literal
+        if (_isBallotLiteral.IsMatch(segments[3]))
+        {
+            // check to see if we can resolve this ballot version
+            IEnumerable<PublishedReleaseInformation> ballotMatches = FhirPublishedVersions.Values.Where(i => segments[3].Equals(i.BallotPrefix, StringComparison.Ordinal));
+
+            if (ballotMatches.Any())
+            {
+                PublishedReleaseInformation ballot = ballotMatches.First();
+
+                // if there was no package specified, we can defualt 
+                if (string.IsNullOrEmpty(possiblePackage))
+                {
+                    // use core package literal
+                    possiblePackage = $"hl7.fhir.{ballot.Sequence.ToRLiteral().ToLowerInvariant()}.core";
+                }
+
+                // create a directive with the ballot info
+                directive = new()
+                {
+                    Directive = $"{possiblePackage}#{ballot.Version}",
+                    PackageId = possiblePackage,
+                    NameType = DirectiveNameTypeCodes.CoreFull,
+                    FhirRelease = ballot.Sequence.ToRLiteral(),
+                    PackageVersion = ballot.Version,
+                    VersionType = DirectiveVersionCodes.Exact,
+                    PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
+                };
+
+                return true;
+            }
+
+            // check to see if we have a package name we can use for the FHIR version
+            if (!string.IsNullOrEmpty(possiblePackage))
+            {
+                string[] pnSegments = possiblePackage.Split('.');
+
+                if (pnSegments.Length > 3)
+                {
+                    string rLit = pnSegments[2];
+
+                    FhirSequenceCodes packageSequence = FhirVersionToSequence(rLit);
+
+                    if (packageSequence != FhirSequenceCodes.Unknown)
+                    {
+                        // create a directive with 'latest', it will resolve the version later
+                        directive = new()
+                        {
+                            Directive = $"{possiblePackage}#latest",
+                            PackageId = possiblePackage,
+                            NameType = DirectiveNameTypeCodes.CoreFull,
+                            FhirRelease = packageSequence.ToRLiteral(),
+                            PackageVersion = string.Empty,
+                            VersionType = DirectiveVersionCodes.Latest,
+                            PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
+                        };
+
+                        return true;
+                    }
+                }
+
+                directive = null;
+                return false;
+            }
+        }
+
+        // check to see if we have a SemVer version
+        if (_isSemver.IsMatch(segments[3]))
+        {
+            FhirSequenceCodes sequence = FhirVersionToSequence(segments[3]);
+
+            // if we know the version, we can default the package name
+            if (string.IsNullOrEmpty(possiblePackage) &&
+                (sequence != FhirSequenceCodes.Unknown))
+            {
+                // use core package literal
+                possiblePackage = $"hl7.fhir.{sequence.ToRLiteral().ToLowerInvariant()}.core";
+            }
+
+            // if we still do not have a package name, we are sunk
+            if (string.IsNullOrEmpty(possiblePackage))
+            {
+                directive = null;
+                return false;
+            }
+
+            // create a directive with this version
+            directive = new()
+            {
+                Directive = $"{possiblePackage}#{segments[3]}",
+                PackageId = possiblePackage,
+                NameType = DirectiveNameTypeCodes.CoreFull,
+                FhirRelease = sequence.ToRLiteral(),
+                PackageVersion = segments[3],
+                VersionType = DirectiveVersionCodes.Exact,
+                PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
+            };
+
+            return true;
+        }
+
+        // still here means that the URL is not really a core package
+        directive = null;
+        return false;
+    }
+
+    /// <summary>Query if 'input' is URL realm ig.</summary>
+    /// <param name="input">    The input url.</param>
+    /// <param name="segments"> The segments.</param>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if URL realm ig, false if not.</returns>
+    private static bool IsUrlRealmIg(
+        string input,
+        string[] segments,
+        out FhirDirective? directive)
+    {
+        // check for a URL that matches a realm URL
+        if (!_matchProdIgRealmUrl.IsMatch(input))
+        {
+            directive = null;
+            return false;
+        }
+
+        if (segments.Length < 5)
+        {
+            directive = null;
+            return false;
+        }
+
+        string realm = segments[3];
+        string name = segments[4];
+
+        string ballot = string.Empty;
+        string possibleVersion = string.Empty;
+        string possiblePackage = string.Empty;
+
+        if (segments.Length >= 7)
+        {
+            if (_isPackageLiteral.IsMatch(segments[6]))
+            {
+                // IGs use package.tgz in the URL, but that is not actually the package name
+                possiblePackage = string.Empty;
+            }
+            else if (segments[6].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            {
+                possiblePackage = segments[6].Substring(0, segments[6].Length - 4);
+            }
+
+            if (_isBallotLiteral.IsMatch(segments[5]))
+            {
+                ballot = segments[5];
+            }
+            else
+            {
+                possibleVersion = segments[5];
+            }
+        }
+        else if (segments.Length >= 6)
+        {
+            if (_isPackageLiteral.IsMatch(segments[5]))
+            {
+                // IGs use package.tgz in the URL, but that is not actually the package name
+                possiblePackage = string.Empty;
+            }
+            else if (segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            {
+                possiblePackage = segments[5].Substring(0, segments[5].Length - 4);
+            }
+            else if (!_matchFileUrlSuffix.IsMatch(segments[5]))
+            {
+                if (_isBallotLiteral.IsMatch(segments[5]))
+                {
+                    ballot = segments[5];
+                }
+                else
+                {
+                    possibleVersion = segments[5];
+                }
+            }
+        }
+
+        // if we do not have a package name, we can build one from the realm and name
+        if (string.IsNullOrEmpty(possiblePackage))
+        {
+            possiblePackage = $"hl7.fhir.{realm}.{name}";
+        }
+
+        // with no version, assume this is latest release
+        if (string.IsNullOrEmpty(possibleVersion))
+        {
+            // TODO: should check for guide with/without suffix
+            // create a directive with this version
+            directive = new()
+            {
+                Directive = $"{possiblePackage}#latest",
+                PackageId = possiblePackage,
+                NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
+                VersionType = DirectiveVersionCodes.Latest,
+                PublicationPackageUrl = string.IsNullOrEmpty(ballot)
+                    ? $"http://hl7.org/fhir/{realm}/{name}/{possiblePackage}.tgz"
+                    : $"http://hl7.org/fhir/{realm}/{name}/{ballot}/{possiblePackage}.tgz",
+            };
+
+            return true;
+        }
+
+        // TODO: should check for guide with/without suffix
+        // create a directive with this version
+        directive = new()
+        {
+            Directive = $"{possiblePackage}#latest",
+            PackageId = possiblePackage,
+            NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
+            VersionType = DirectiveVersionCodes.Latest,
+            PublicationPackageUrl = $"http://hl7.org/fhir/{realm}/{name}/{possibleVersion}/{possiblePackage}.tgz",
+        };
+
+        return true;
+    }
+
+    /// <summary>Query if 'input' is URL non realm ig.</summary>
+    /// <param name="input">    The input url.</param>
+    /// <param name="segments"> The segments.</param>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if URL non realm ig, false if not.</returns>
+    private static bool IsUrlNonRealmIg(
+        string input,
+        string[] segments,
+        out FhirDirective? directive)
+    {
+        // note that we need to check this late - it is a very broad match
+        if (!_matchProdIgNoRealmUrl.IsMatch(input))
+        {
+            directive = null;
+            return false;
+        }
+        if (segments.Length < 4)
+        {
+            directive = null;
+            return false;
+        }
+
+        string name = segments[3];
+
+        string ballot = string.Empty;
+        string possibleVersion = string.Empty;
+        string possiblePackage = string.Empty;
+
+        if (segments.Length >= 6)
+        {
+            if (_isPackageLiteral.IsMatch(segments[5]))
+            {
+                // IGs use package.tgz in the URL, but that is not actually the package name
+                possiblePackage = string.Empty;
+            }
+            else if (segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            {
+                possiblePackage = segments[5].Substring(0, segments[5].Length - 4);
+            }
+
+            if (_isBallotLiteral.IsMatch(segments[4]))
+            {
+                ballot = segments[4];
+            }
+            else
+            {
+                possibleVersion = segments[4];
+            }
+        }
+        else if (segments.Length >= 5)
+        {
+            if (_isPackageLiteral.IsMatch(segments[4]))
+            {
+                // IGs use package.tgz in the URL, but that is not actually the package name
+                possiblePackage = string.Empty;
+            }
+            else if (segments[4].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            {
+                possiblePackage = segments[4].Substring(0, segments[4].Length - 4);
+            }
+            else if (!_matchFileUrlSuffix.IsMatch(segments[4]))
+            {
+                if (_isBallotLiteral.IsMatch(segments[4]))
+                {
+                    ballot = segments[4];
+                }
+                else
+                {
+                    possibleVersion = segments[4];
+                }
+            }
+        }
+
+        // if we do not have a package name, we can build one from the realm and name
+        if (string.IsNullOrEmpty(possiblePackage))
+        {
+            // packages get the universal realm if they have no realm
+            possiblePackage = $"hl7.fhir.uv.{name}";
+        }
+
+        // with no version, assume this is latest release
+        if (string.IsNullOrEmpty(possibleVersion))
+        {
+            // TODO: should check for guide with/without suffix
+            // create a directive with this version
+            directive = new()
+            {
+                Directive = $"{possiblePackage}#latest",
+                PackageId = possiblePackage,
+                NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
+                VersionType = DirectiveVersionCodes.Latest,
+                PublicationPackageUrl = string.IsNullOrEmpty(ballot)
+                    ? $"http://hl7.org/fhir/{name}/{possiblePackage}.tgz"
+                    : $"http://hl7.org/fhir/{name}/{ballot}/{possiblePackage}.tgz",
+            };
+
+            return true;
+        }
+
+        // TODO: should check for guide with/without suffix
+        // create a directive with this version
+        directive = new()
+        {
+            Directive = $"{possiblePackage}#latest",
+            PackageId = possiblePackage,
+            NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
+            VersionType = DirectiveVersionCodes.Latest,
+            PublicationPackageUrl = $"http://hl7.org/fhir/{name}/{possibleVersion}/{possiblePackage}.tgz",
+        };
+
+        return true;
+    }
+
     /// <summary>Attempts to parse URL into a package directive.</summary>
     /// <param name="input">    The input url.</param>
     /// <param name="directive">[out] The parsed directive.</param>
@@ -262,366 +662,21 @@ public partial class FhirCache : IDisposable
             return false;
         }
 
-        // check for a URL that is a FHIR Core publication URL
-        if (_matchProdCoreUrl.IsMatch(input))
+        if (IsUrlProdCore(input, segments, out directive))
         {
-            if (segments.Length < 4)
-            {
-                directive = null;
-                return false;
-            }
-
-            // if there is a fifth segment, it could be a package name
-            string possiblePackage = string.Empty;
-            if ((segments.Length > 4) &&
-                segments[4].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase) &&
-                !_isPackageLiteral.IsMatch(segments[4]))
-            {
-                possiblePackage = segments[4].Substring(0, segments[4].Length - 4);
-            }
-
-            // check to see if we have a FHIR version literal
-            if (_isFhirVersionLiteral.IsMatch(segments[3]))
-            {
-                FhirSequenceCodes sequence = FhirReleases.FhirVersionToSequence(segments[3]);
-
-                // if there was no package specified, we can still defualt if we know the FHIR version
-                if (string.IsNullOrEmpty(possiblePackage) &&
-                    (sequence != FhirSequenceCodes.Unknown))
-                {
-                    // use core package literal
-                    possiblePackage = $"hl7.fhir.{sequence.ToRLiteral().ToLowerInvariant()}.core";
-                }
-
-                // if we still do not have a package name, we are sunk
-                if (string.IsNullOrEmpty(possiblePackage))
-                {
-                    directive = null;
-                    return false;
-                }
-
-                // create a directive with 'latest', it will resolve the version later
-                directive = new()
-                {
-                    Directive = $"{possiblePackage}#latest",
-                    PackageId = possiblePackage,
-                    NameType = DirectiveNameTypeCodes.CoreFull,
-                    FhirRelease = sequence.ToRLiteral(),
-                    PackageVersion = string.Empty,
-                    VersionType = DirectiveVersionCodes.Latest,
-                    PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
-                };
-
-                return true;
-            }
-
-            // check to see if we have a FHIR ballot literal
-            if (_isBallotLiteral.IsMatch(segments[3]))
-            {
-                // check to see if we can resolve this ballot version
-                IEnumerable<PublishedReleaseInformation> ballotMatches = FhirPublishedVersions.Values.Where(i => segments[3].Equals(i.BallotPrefix, StringComparison.Ordinal));
-
-                if (ballotMatches.Any())
-                {
-                    PublishedReleaseInformation ballot = ballotMatches.First();
-
-                    // if there was no package specified, we can defualt 
-                    if (string.IsNullOrEmpty(possiblePackage))
-                    {
-                        // use core package literal
-                        possiblePackage = $"hl7.fhir.{ballot.Sequence.ToRLiteral().ToLowerInvariant()}.core";
-                    }
-
-                    // create a directive with the ballot info
-                    directive = new()
-                    {
-                        Directive = $"{possiblePackage}#{ballot.Version}",
-                        PackageId = possiblePackage,
-                        NameType = DirectiveNameTypeCodes.CoreFull,
-                        FhirRelease = ballot.Sequence.ToRLiteral(),
-                        PackageVersion = ballot.Version,
-                        VersionType = DirectiveVersionCodes.Exact,
-                        PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
-                    };
-
-                    return true;
-                }
-
-                // check to see if we have a package name we can use for the FHIR version
-                if (!string.IsNullOrEmpty(possiblePackage))
-                {
-                    string[] pnSegments = possiblePackage.Split('.');
-
-                    if (pnSegments.Length > 3)
-                    {
-                        string rLit = pnSegments[2];
-
-                        FhirSequenceCodes packageSequence = FhirVersionToSequence(rLit);
-
-                        if (packageSequence != FhirSequenceCodes.Unknown)
-                        {
-                            // create a directive with 'latest', it will resolve the version later
-                            directive = new()
-                            {
-                                Directive = $"{possiblePackage}#latest",
-                                PackageId = possiblePackage,
-                                NameType = DirectiveNameTypeCodes.CoreFull,
-                                FhirRelease = packageSequence.ToRLiteral(),
-                                PackageVersion = string.Empty,
-                                VersionType = DirectiveVersionCodes.Latest,
-                                PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
-                            };
-
-                            return true;
-                        }
-                    }
-
-                    directive = null;
-                    return false;
-                }
-            }
-
-            // check to see if we have a SemVer version
-            if (_isSemver.IsMatch(segments[3]))
-            {
-                FhirSequenceCodes sequence = FhirVersionToSequence(segments[3]);
-
-                // if we know the version, we can default the package name
-                if (string.IsNullOrEmpty(possiblePackage) &&
-                    (sequence != FhirSequenceCodes.Unknown))
-                {
-                    // use core package literal
-                    possiblePackage = $"hl7.fhir.{sequence.ToRLiteral().ToLowerInvariant()}.core";
-                }
-
-                // if we still do not have a package name, we are sunk
-                if (string.IsNullOrEmpty(possiblePackage))
-                {
-                    directive = null;
-                    return false;
-                }
-
-                // create a directive with this version
-                directive = new()
-                {
-                    Directive = $"{possiblePackage}#{segments[3]}",
-                    PackageId = possiblePackage,
-                    NameType = DirectiveNameTypeCodes.CoreFull,
-                    FhirRelease = sequence.ToRLiteral(),
-                    PackageVersion = segments[3],
-                    VersionType = DirectiveVersionCodes.Exact,
-                    PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
-                };
-
-                return true;
-            }
-
-            //// no other known core publication URL formats
-            //directive = null;
-            //return false;
-
-            // allow this to fall through because published IG packages could match as well
-        }
-
-        // check for a URL that matches a realm URL
-        if (_matchProdIgRealmUrl.IsMatch(input))
-        {
-            if (segments.Length < 5)
-            {
-                directive = null;
-                return false;
-            }
-
-            string realm = segments[3];
-            string name = segments[4];
-
-            string ballot = string.Empty;
-            string possibleVersion = string.Empty;
-            string possiblePackage = string.Empty;
-
-            if (segments.Length >= 7)
-            {
-                if (_isPackageLiteral.IsMatch(segments[6]))
-                {
-                    // IGs use package.tgz in the URL, but that is not actually the package name
-                    possiblePackage = string.Empty;
-                }
-                else if (segments[6].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
-                {
-                    possiblePackage = segments[6].Substring(0, segments[6].Length - 4);
-                }
-
-                if (_isBallotLiteral.IsMatch(segments[5]))
-                {
-                    ballot = segments[5];
-                }
-                else
-                {
-                    possibleVersion = segments[5];
-                }
-            }
-            else if (segments.Length >= 6)
-            {
-                if (_isPackageLiteral.IsMatch(segments[5]))
-                {
-                    // IGs use package.tgz in the URL, but that is not actually the package name
-                    possiblePackage = string.Empty;
-                }
-                else if (segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
-                {
-                    possiblePackage = segments[5].Substring(0, segments[5].Length - 4);
-                }
-                else if (!_matchFileUrlSuffix.IsMatch(segments[5]))
-                {
-                    if (_isBallotLiteral.IsMatch(segments[5]))
-                    {
-                        ballot = segments[5];
-                    }
-                    else
-                    {
-                        possibleVersion = segments[5];
-                    }
-                }
-            }
-
-            // if we do not have a package name, we can build one from the realm and name
-            if (string.IsNullOrEmpty(possiblePackage))
-            {
-                possiblePackage = $"hl7.fhir.{realm}.{name}";
-            }
-
-            // with no version, assume this is latest release
-            if (string.IsNullOrEmpty(possibleVersion))
-            {
-                // TODO: should check for guide with/without suffix
-                // create a directive with this version
-                directive = new()
-                {
-                    Directive = $"{possiblePackage}#latest",
-                    PackageId = possiblePackage,
-                    NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
-                    VersionType = DirectiveVersionCodes.Latest,
-                    PublicationPackageUrl = string.IsNullOrEmpty(ballot)
-                        ? $"http://hl7.org/fhir/{realm}/{name}/{possiblePackage}.tgz"
-                        : $"http://hl7.org/fhir/{realm}/{name}/{ballot}/{possiblePackage}.tgz",
-                };
-
-                return true;
-            }
-
-            // TODO: should check for guide with/without suffix
-            // create a directive with this version
-            directive = new()
-            {
-                Directive = $"{possiblePackage}#latest",
-                PackageId = possiblePackage,
-                NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
-                VersionType = DirectiveVersionCodes.Latest,
-                PublicationPackageUrl = $"http://hl7.org/fhir/{realm}/{name}/{possibleVersion}/{possiblePackage}.tgz",
-            };
-
             return true;
         }
 
-        // note that we need to check this late - it is a very broad match
-        if (_matchProdIgNoRealmUrl.IsMatch(input))
+        if (IsUrlRealmIg(input, segments, out directive))
         {
-            if (segments.Length < 4)
-            {
-                directive = null;
-                return false;
-            }
-
-            string name = segments[3];
-
-            string ballot = string.Empty;
-            string possibleVersion = string.Empty;
-            string possiblePackage = string.Empty;
-
-            if (segments.Length >= 6)
-            {
-                if (_isPackageLiteral.IsMatch(segments[5]))
-                {
-                    // IGs use package.tgz in the URL, but that is not actually the package name
-                    possiblePackage = string.Empty;
-                }
-                else if (segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
-                {
-                    possiblePackage = segments[5].Substring(0, segments[5].Length - 4);
-                }
-
-                if (_isBallotLiteral.IsMatch(segments[4]))
-                {
-                    ballot = segments[4];
-                }
-                else
-                {
-                    possibleVersion = segments[4];
-                }
-            }
-            else if (segments.Length >= 5)
-            {
-                if (_isPackageLiteral.IsMatch(segments[4]))
-                {
-                    // IGs use package.tgz in the URL, but that is not actually the package name
-                    possiblePackage = string.Empty;
-                }
-                else if (segments[4].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
-                {
-                    possiblePackage = segments[4].Substring(0, segments[4].Length - 4);
-                }
-                else if (!_matchFileUrlSuffix.IsMatch(segments[4]))
-                {
-                    if (_isBallotLiteral.IsMatch(segments[4]))
-                    {
-                        ballot = segments[4];
-                    }
-                    else
-                    {
-                        possibleVersion = segments[4];
-                    }
-                }
-            }
-
-            // if we do not have a package name, we can build one from the realm and name
-            if (string.IsNullOrEmpty(possiblePackage))
-            {
-                // packages get the universal realm if they have no realm
-                possiblePackage = $"hl7.fhir.uv.{name}";
-            }
-
-            // with no version, assume this is latest release
-            if (string.IsNullOrEmpty(possibleVersion))
-            {
-                // TODO: should check for guide with/without suffix
-                // create a directive with this version
-                directive = new()
-                {
-                    Directive = $"{possiblePackage}#latest",
-                    PackageId = possiblePackage,
-                    NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
-                    VersionType = DirectiveVersionCodes.Latest,
-                    PublicationPackageUrl = string.IsNullOrEmpty(ballot)
-                        ? $"http://hl7.org/fhir/{name}/{possiblePackage}.tgz"
-                        : $"http://hl7.org/fhir/{name}/{ballot}/{possiblePackage}.tgz",
-                };
-
-                return true;
-            }
-
-            // TODO: should check for guide with/without suffix
-            // create a directive with this version
-            directive = new()
-            {
-                Directive = $"{possiblePackage}#latest",
-                PackageId = possiblePackage,
-                NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
-                VersionType = DirectiveVersionCodes.Latest,
-                PublicationPackageUrl = $"http://hl7.org/fhir/{name}/{possibleVersion}/{possiblePackage}.tgz",
-            };
-
             return true;
         }
+
+        if (IsUrlNonRealmIg(input, segments, out directive))
+        {
+            return true;
+        }
+
 
             //switch (segments[0].ToLowerInvariant())
             //{
