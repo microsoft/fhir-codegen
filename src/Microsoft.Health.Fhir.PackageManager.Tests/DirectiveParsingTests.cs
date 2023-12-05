@@ -143,6 +143,22 @@ public class DirectiveParsingTests
     [InlineData("https://hl7.org/fhir/smart-app-launch/", true, "hl7.fhir.uv.smart-app-launch")]
     [InlineData("https://hl7.org/fhir/smart-app-launch", true, "hl7.fhir.uv.smart-app-launch")]
 
+    [InlineData("http://build.fhir.org/hl7.fhir.r6.core.tgz", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/hl7.fhir.r6.core.tgz", true, "hl7.fhir.r6.core")]
+    [InlineData("http://build.fhir.org/", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/", true, "hl7.fhir.r6.core")]
+    [InlineData("http://build.fhir.org/index.html", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/index.html", true, "hl7.fhir.r6.core")]
+
+    [InlineData("http://build.fhir.org/branches/test/hl7.fhir.r6.core.tgz", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/branches/test/hl7.fhir.r6.core.tgz", true, "hl7.fhir.r6.core")]
+    [InlineData("http://build.fhir.org/branches/test/", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/branches/test/", true, "hl7.fhir.r6.core")]
+    [InlineData("http://build.fhir.org/branches/test/index.html", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/branches/test/index.html", true, "hl7.fhir.r6.core")]
+    [InlineData("http://build.fhir.org/branches/test", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/branches/test", true, "hl7.fhir.r6.core")]
+
     internal void ParseUrl(
         string url,
         bool shouldPass,

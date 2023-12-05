@@ -96,7 +96,7 @@ public partial class FhirCache : IDisposable
 
     /// <summary>Test if a name matches known core packages.</summary>
     /// <returns>A RegEx.</returns>
-    [GeneratedRegex("^hl7.fhir.r\\d+[A-Za-z]?.(core|expansions|examples|search|elements|corexml)$")]
+    [GeneratedRegex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.(core|expansions|examples|search|elements|corexml)$")]
     internal static partial Regex MatchCorePackageNames();
 
     /// <summary>Test if a name matches known core packages.</summary>
@@ -104,7 +104,7 @@ public partial class FhirCache : IDisposable
 
     /// <summary>Test if a name is the correct root for a core package.</summary>
     /// <returns>A RegEx.</returns>
-    [GeneratedRegex("^hl7.fhir.r\\d+[A-Za-z]?$")]
+    [GeneratedRegex("^hl7\\.fhir\\.r\\d+[A-Za-z]?$")]
     internal static partial Regex MatchCorePackageRoot();
 
     /// <summary>Test if a name is the correct root for a core package.</summary>
@@ -112,7 +112,7 @@ public partial class FhirCache : IDisposable
 
     /// <summary>Test if a name has a FHIR version suffix.</summary>
     /// <returns>A RegEx.</returns>
-    [GeneratedRegex(".r\\d+[A-Za-z]?$")]
+    [GeneratedRegex("\\.r\\d+[A-Za-z]?$")]
     internal static partial Regex MatchFhirSuffix();
 
     /// <summary>Test if a name has a FHIR version suffix.</summary>
@@ -120,47 +120,47 @@ public partial class FhirCache : IDisposable
 
     /// <summary>Match file URL suffix.</summary>
     /// <returns>A RegEx.</returns>
-    [GeneratedRegex("(.html|.htm|.json|.xml|.tgz|.zip|.txt)$")]
+    [GeneratedRegex("\\.(html|htm|json|xml|tgz|zip|txt)$")]
     internal static partial Regex MatchFileUrlSuffix();
 
     /// <summary>The match file URL suffix.</summary>
     internal static Regex _matchFileUrlSuffix = MatchFileUrlSuffix();
 
     /// <summary>The RegEx to test if a string is a semver version.</summary>
-    internal static Regex _isSemver = IsSemVer();
+    internal static Regex _matchSemver = MatchSemVer();
 
     /// <summary>A RegEx to test if a string is a semver version.</summary>
     /// <remarks>Copied from https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string</remarks>
     [GeneratedRegex("^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$")]
-    internal static partial Regex IsSemVer();
+    internal static partial Regex MatchSemVer();
 
     /// <summary>The is package literal.</summary>
-    internal static Regex _isPackageLiteral = IsPackageLiteral();
+    internal static Regex _matchPackageLiteral = MatchPackageLiteral();
 
     /// <summary>Is package literal.</summary>
     /// <returns>A RegEx.</returns>
     [GeneratedRegex("package(\\.r.+)?\\.tgz")]
-    internal static partial Regex IsPackageLiteral();
+    internal static partial Regex MatchPackageLiteral();
 
     /// <summary>The is FHIR version literal.</summary>
-    internal static Regex _isFhirVersionLiteral = IsFhirVersionLiteral();
+    internal static Regex _matchFhirVersionLiteral = MatchFhirVersionLiteral();
 
     /// <summary>Is FHIR version literal.</summary>
     /// <returns>A RegEx.</returns>
     [GeneratedRegex("DSTU2|STU3|R[0-9]+[A-Z]*")]
-    internal static partial Regex IsFhirVersionLiteral();
+    internal static partial Regex MatchFhirVersionLiteral();
 
     /// <summary>The is ballot literal.</summary>
-    internal static Regex _isBallotLiteral = IsBallotLiteral();
+    internal static Regex _matchBallotLiteral = MatchBallotLiteral();
 
     /// <summary>Is ballot literal.</summary>
     /// <returns>A RegEx.</returns>
     [GeneratedRegex("[0-9]{4}[A-Z]{1}[a-z]{2}")]
-    internal static partial Regex IsBallotLiteral();
+    internal static partial Regex MatchBallotLiteral();
 
     /// <summary>Match file URL suffix.</summary>
     /// <returns>A RegEx.</returns>
-    [GeneratedRegex("^(http|https)://(hl7.org|www.hl7.org)/fhir/(?'literal'.+).*$")]
+    [GeneratedRegex("^(http|https)://(hl7\\.org|www\\.hl7\\.org)/fhir/(?'literal'.+).*$")]
     internal static partial Regex MatchProdCoreUrl();
 
     /// <summary>The match file URL suffix.</summary>
@@ -168,20 +168,44 @@ public partial class FhirCache : IDisposable
 
     /// <summary>Match product ig realm URL.</summary>
     /// <returns>A RegEx.</returns>
-    [GeneratedRegex("^(http|https)://(hl7.org|www.hl7.org)/fhir/[a-z]{2}/(?'name'.+)$")]
+    [GeneratedRegex("^(http|https)://(hl7\\.org|www\\.hl7\\.org)/fhir/[a-z]{2}/(?'name'.+)$")]
     internal static partial Regex MatchProdIgRealmUrl();
 
     /// <summary>URL of the match product ig realm.</summary>
     internal static Regex _matchProdIgRealmUrl = MatchProdIgRealmUrl();
 
-
     /// <summary>Match product ig realm URL.</summary>
     /// <returns>A RegEx.</returns>
-    [GeneratedRegex("^(http|https)://(hl7.org|www.hl7.org)/fhir/(?'name'.+)$")]
+    [GeneratedRegex("^(http|https)://(hl7\\.org|www\\.hl7\\.org)/fhir/(?'name'.+)$")]
     internal static partial Regex MatchProdIgNoRealmUrl();
 
     /// <summary>URL of the match product ig realm.</summary>
     internal static Regex _matchProdIgNoRealmUrl = MatchProdIgNoRealmUrl();
+
+    /// <summary>Match file URL suffix.</summary>
+    /// <returns>A RegEx.</returns>
+    [GeneratedRegex("^(http|https)://build\\.fhir\\.org/[^/]*$")]
+    internal static partial Regex MatchCiCoreCurrentUrl();
+
+    /// <summary>The match file URL suffix.</summary>
+    internal static Regex _matchCiCoreCurrentUrl = MatchCiCoreCurrentUrl();
+
+    /// <summary>Match ci core branch URL.</summary>
+    /// <returns>A RegEx.</returns>
+    [GeneratedRegex("^(http|https)://build\\.fhir\\.org/branches/(?'branch'[^/\\s]*)(/.*)*$")]
+    internal static partial Regex MatchCiCoreBranchUrl();
+
+    /// <summary>URL of the match ci core branch.</summary>
+    internal static Regex _matchCiCoreBranchUrl = MatchCiCoreBranchUrl();
+
+    /// <summary>Match ci ig current URL.</summary>
+    /// <returns>A RegEx.</returns>
+    [GeneratedRegex("^(http|https)://build\\.fhir\\.org/ig/(?'org'[^/\\s]*)/(?'repo'[^/\\s]*)(/.*)*$")]
+    internal static partial Regex MatchCiIgCurrentUrl();
+
+    /// <summary>URL of the match ci ig current.</summary>
+    internal static Regex _matchCiIgCurrentUrl = MatchCiIgCurrentUrl();
+
 
 
     /// <summary>Gets the packages by directive.</summary>
@@ -255,14 +279,14 @@ public partial class FhirCache : IDisposable
         string[] segments,
         out FhirDirective? directive)
     {
-        if (!_matchProdCoreUrl.IsMatch(input))
+        // core packages cannot have fewer than 4 segments
+        if (segments.Length < 4)
         {
             directive = null;
             return false;
         }
 
-        // core packages cannot have fewer than 4 segments
-        if (segments.Length < 4)
+        if (!_matchProdCoreUrl.IsMatch(input))
         {
             directive = null;
             return false;
@@ -272,13 +296,13 @@ public partial class FhirCache : IDisposable
         string possiblePackage = string.Empty;
         if ((segments.Length > 4) &&
             segments[4].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase) &&
-            !_isPackageLiteral.IsMatch(segments[4]))
+            !_matchPackageLiteral.IsMatch(segments[4]))
         {
             possiblePackage = segments[4].Substring(0, segments[4].Length - 4);
         }
 
         // check to see if we have a FHIR version literal
-        if (_isFhirVersionLiteral.IsMatch(segments[3]))
+        if (_matchFhirVersionLiteral.IsMatch(segments[3]))
         {
             FhirSequenceCodes sequence = FhirReleases.FhirVersionToSequence(segments[3]);
 
@@ -313,7 +337,7 @@ public partial class FhirCache : IDisposable
         }
 
         // check to see if we have a FHIR ballot literal
-        if (_isBallotLiteral.IsMatch(segments[3]))
+        if (_matchBallotLiteral.IsMatch(segments[3]))
         {
             // check to see if we can resolve this ballot version
             IEnumerable<PublishedReleaseInformation> ballotMatches = FhirPublishedVersions.Values.Where(i => segments[3].Equals(i.BallotPrefix, StringComparison.Ordinal));
@@ -379,7 +403,7 @@ public partial class FhirCache : IDisposable
         }
 
         // check to see if we have a SemVer version
-        if (_isSemver.IsMatch(segments[3]))
+        if (_matchSemver.IsMatch(segments[3]))
         {
             FhirSequenceCodes sequence = FhirVersionToSequence(segments[3]);
 
@@ -428,14 +452,14 @@ public partial class FhirCache : IDisposable
         string[] segments,
         out FhirDirective? directive)
     {
-        // check for a URL that matches a realm URL
-        if (!_matchProdIgRealmUrl.IsMatch(input))
+        if (segments.Length < 5)
         {
             directive = null;
             return false;
         }
 
-        if (segments.Length < 5)
+        // check for a URL that matches a realm URL
+        if (!_matchProdIgRealmUrl.IsMatch(input))
         {
             directive = null;
             return false;
@@ -450,7 +474,7 @@ public partial class FhirCache : IDisposable
 
         if (segments.Length >= 7)
         {
-            if (_isPackageLiteral.IsMatch(segments[6]))
+            if (_matchPackageLiteral.IsMatch(segments[6]))
             {
                 // IGs use package.tgz in the URL, but that is not actually the package name
                 possiblePackage = string.Empty;
@@ -460,7 +484,7 @@ public partial class FhirCache : IDisposable
                 possiblePackage = segments[6].Substring(0, segments[6].Length - 4);
             }
 
-            if (_isBallotLiteral.IsMatch(segments[5]))
+            if (_matchBallotLiteral.IsMatch(segments[5]))
             {
                 ballot = segments[5];
             }
@@ -471,7 +495,7 @@ public partial class FhirCache : IDisposable
         }
         else if (segments.Length >= 6)
         {
-            if (_isPackageLiteral.IsMatch(segments[5]))
+            if (_matchPackageLiteral.IsMatch(segments[5]))
             {
                 // IGs use package.tgz in the URL, but that is not actually the package name
                 possiblePackage = string.Empty;
@@ -482,7 +506,7 @@ public partial class FhirCache : IDisposable
             }
             else if (!_matchFileUrlSuffix.IsMatch(segments[5]))
             {
-                if (_isBallotLiteral.IsMatch(segments[5]))
+                if (_matchBallotLiteral.IsMatch(segments[5]))
                 {
                     ballot = segments[5];
                 }
@@ -542,13 +566,14 @@ public partial class FhirCache : IDisposable
         string[] segments,
         out FhirDirective? directive)
     {
-        // note that we need to check this late - it is a very broad match
-        if (!_matchProdIgNoRealmUrl.IsMatch(input))
+        if (segments.Length < 4)
         {
             directive = null;
             return false;
         }
-        if (segments.Length < 4)
+
+        // note that we need to check this late - it is a very broad match
+        if (!_matchProdIgNoRealmUrl.IsMatch(input))
         {
             directive = null;
             return false;
@@ -562,7 +587,7 @@ public partial class FhirCache : IDisposable
 
         if (segments.Length >= 6)
         {
-            if (_isPackageLiteral.IsMatch(segments[5]))
+            if (_matchPackageLiteral.IsMatch(segments[5]))
             {
                 // IGs use package.tgz in the URL, but that is not actually the package name
                 possiblePackage = string.Empty;
@@ -572,7 +597,7 @@ public partial class FhirCache : IDisposable
                 possiblePackage = segments[5].Substring(0, segments[5].Length - 4);
             }
 
-            if (_isBallotLiteral.IsMatch(segments[4]))
+            if (_matchBallotLiteral.IsMatch(segments[4]))
             {
                 ballot = segments[4];
             }
@@ -583,7 +608,7 @@ public partial class FhirCache : IDisposable
         }
         else if (segments.Length >= 5)
         {
-            if (_isPackageLiteral.IsMatch(segments[4]))
+            if (_matchPackageLiteral.IsMatch(segments[4]))
             {
                 // IGs use package.tgz in the URL, but that is not actually the package name
                 possiblePackage = string.Empty;
@@ -594,7 +619,7 @@ public partial class FhirCache : IDisposable
             }
             else if (!_matchFileUrlSuffix.IsMatch(segments[4]))
             {
-                if (_isBallotLiteral.IsMatch(segments[4]))
+                if (_matchBallotLiteral.IsMatch(segments[4]))
                 {
                     ballot = segments[4];
                 }
@@ -645,6 +670,103 @@ public partial class FhirCache : IDisposable
         return true;
     }
 
+    /// <summary>Query if 'input' is URL ci core current.</summary>
+    /// <param name="input">    The input url.</param>
+    /// <param name="segments"> The segments.</param>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if URL ci core current, false if not.</returns>
+    private static bool IsUrlCiCoreCurrent(
+        string input,
+        string[] segments,
+        out FhirDirective? directive)
+    {
+        if (!_matchCiCoreCurrentUrl.IsMatch(input))
+        {
+            directive = null;
+            return false;
+        }
+
+        // default to highest known release
+        int highest = Enum.GetValues(typeof(FhirSequenceCodes)).Cast<int>().Max();
+
+        string package;
+
+        if ((segments.Length > 2) &&
+            segments[2].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+        {
+            package = segments[2].Substring(0, segments[2].Length - 4);
+        }
+        else
+        {
+            package = $"hl7.fhir.r{highest}.core";
+        }
+
+        // create a directive with this version
+        directive = new()
+        {
+            Directive = $"{package}#current",
+            PackageId = package,
+            NameType = DirectiveNameTypeCodes.CoreFull,
+            VersionType = DirectiveVersionCodes.ContinuousIntegration,
+            CiOrg = "hl7",
+            CiUrl = $"http://build.fhir.org/{package}.tgz",
+        };
+
+        return true;
+    }
+
+    /// <summary>Query if 'input' is URL ci core branch.</summary>
+    /// <param name="input">    The input url.</param>
+    /// <param name="segments"> The segments.</param>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if URL ci core branch, false if not.</returns>
+    private static bool IsUrlCiCoreBranch(
+        string input,
+        string[] segments,
+        out FhirDirective? directive)
+    {
+        if (segments.Length < 4)
+        {
+            directive = null;
+            return false;
+        }
+
+        if (!_matchCiCoreBranchUrl.IsMatch(input))
+        {
+            directive = null;
+            return false;
+        }
+
+        // default to highest known release
+        int highest = Enum.GetValues(typeof(FhirSequenceCodes)).Cast<int>().Max();
+
+        string branch = segments[3];
+        string package;
+
+        if ((segments.Length > 3) &&
+            segments[3].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+        {
+            package = segments[3].Substring(0, segments[3].Length - 4);
+        }
+        else
+        {
+            package = $"hl7.fhir.r{highest}.core";
+        }
+
+        // create a directive with this version
+        directive = new()
+        {
+            Directive = $"{package}#current${branch}",
+            PackageId = package,
+            NameType = DirectiveNameTypeCodes.CoreFull,
+            VersionType = DirectiveVersionCodes.ContinuousIntegration,
+            CiBranch = branch,
+            CiUrl = $"http://build.fhir.org/branches/{branch}/{package}.tgz",
+        };
+
+        return true;
+    }
+
     /// <summary>Attempts to parse URL into a package directive.</summary>
     /// <param name="input">    The input url.</param>
     /// <param name="directive">[out] The parsed directive.</param>
@@ -677,30 +799,40 @@ public partial class FhirCache : IDisposable
             return true;
         }
 
+        if (IsUrlCiCoreCurrent(input, segments, out directive))
+        {
+            return true;
+        }
 
-            //switch (segments[0].ToLowerInvariant())
-            //{
-            //    case "www.hl7.org":
-            //    case "hl7.org":
-            //        {
-            //            return TryParseHl7ProdUrl(segments, out directive);
-            //        }
+        if (IsUrlCiCoreBranch(input, segments, out directive))
+        {
+            return true;
+        }
 
-            //    case "build.fhir.org":
-            //        {
-            //            // this url *should* represent a CI package
-            //        }
-            //        break;
 
-            //    default:
-            //        {
-            //            // unknown URLs should point directly to a package
+        //switch (segments[0].ToLowerInvariant())
+        //{
+        //    case "www.hl7.org":
+        //    case "hl7.org":
+        //        {
+        //            return TryParseHl7ProdUrl(segments, out directive);
+        //        }
 
-            //        }
-            //        break;
-            //}
+        //    case "build.fhir.org":
+        //        {
+        //            // this url *should* represent a CI package
+        //        }
+        //        break;
 
-            throw new NotImplementedException();
+        //    default:
+        //        {
+        //            // unknown URLs should point directly to a package
+
+        //        }
+        //        break;
+        //}
+
+        throw new NotImplementedException();
     }
 
     /// <summary>
@@ -1056,7 +1188,7 @@ public partial class FhirCache : IDisposable
                                 {
                                     current = current with { VersionType = DirectiveVersionCodes.Partial, };
                                 }
-                                else if (_isSemver.IsMatch(current.PackageVersion))
+                                else if (_matchSemver.IsMatch(current.PackageVersion))
                                 {
                                     current = current with { VersionType = DirectiveVersionCodes.Exact, };
                                 }
@@ -1068,7 +1200,7 @@ public partial class FhirCache : IDisposable
                             }
                             else if (segments == 2)
                             {
-                                if (_isSemver.IsMatch(current.PackageVersion + ".0"))
+                                if (_matchSemver.IsMatch(current.PackageVersion + ".0"))
                                 {
                                     current = current with { VersionType = DirectiveVersionCodes.Partial, };
                                 }
@@ -1087,7 +1219,7 @@ public partial class FhirCache : IDisposable
                         else if (current.PackageVersion.EndsWith(".x", StringComparison.OrdinalIgnoreCase))
                         {
                             // check for a semver if we swap out the last segment
-                            if (_isSemver.IsMatch(current.PackageVersion.Substring(0, current.PackageVersion.Length -2) + "0"))
+                            if (_matchSemver.IsMatch(current.PackageVersion.Substring(0, current.PackageVersion.Length -2) + "0"))
                             {
                                 current = current with { VersionType = DirectiveVersionCodes.Partial, };
                             }
@@ -1097,7 +1229,7 @@ public partial class FhirCache : IDisposable
                                 current = current with { VersionType = DirectiveVersionCodes.NonSemVer, };
                             }
                         }
-                        else if (_isSemver.IsMatch(current.PackageVersion))
+                        else if (_matchSemver.IsMatch(current.PackageVersion))
                         {
                             current = current with { VersionType = DirectiveVersionCodes.Exact, };
                         }

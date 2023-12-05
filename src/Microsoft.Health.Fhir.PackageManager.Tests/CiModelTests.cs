@@ -101,7 +101,7 @@ public class CiModelTests
                         break;
 
                     default:
-                        FhirCache._isSemver.IsMatch(rec.GuideVersion).Should().BeTrue($"HL7 packages should use SemVer ({rec.PackageId}#{rec.GuideVersion})");
+                        FhirCache._matchSemver.IsMatch(rec.GuideVersion).Should().BeTrue($"HL7 packages should use SemVer ({rec.PackageId}#{rec.GuideVersion})");
                         break;
                 }
             }
