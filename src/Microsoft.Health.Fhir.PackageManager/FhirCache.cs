@@ -540,6 +540,29 @@ public partial class FhirCache : IDisposable
             // TODO: should check for guide with/without suffix
         }
 
+        // try to get a package manifest to round out our information
+        string manifestUrl = string.IsNullOrEmpty(ballot)
+            ? $"{_publicationUri}{realm}/{name}/{possiblePackage}.manifest.json"
+            : $"{_publicationUri}{realm}/{name}/{ballot}/{possiblePackage}.manifest.json";
+
+        if (TryFetchManifestInfo(manifestUrl, out FhirNpmPackageDetails? npmInfo) &&
+            (npmInfo != null))
+        {
+            // create a directive with this version
+            directive = new()
+            {
+                Directive = $"{npmInfo.Name}#{npmInfo.Version}",
+                PackageId = npmInfo.Name,
+                NameType = nameType,
+                VersionType = DirectiveVersionCodes.Exact,
+                PublicationPackageUrl = string.IsNullOrEmpty(ballot)
+                    ? $"{_publicationUri}{realm}/{name}/{possiblePackage}.tgz"
+                    : $"{_publicationUri}{realm}/{name}/{ballot}/{possiblePackage}.tgz",
+            };
+
+            return true;
+        }
+
         // with no version, assume this is latest release
         if (string.IsNullOrEmpty(possibleVersion))
         {
@@ -602,13 +625,7 @@ public partial class FhirCache : IDisposable
 
         if (segments.Length >= 6)
         {
-            if (_matchPackageLiteral.IsMatch(segments[5]))
-            {
-                // IGs use package.tgz in the URL, but that is not actually the package name
-                possiblePackage = string.Empty;
-            }
-            else if (segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase) &&
-                     !_matchPackageLiteral.IsMatch(segments[5]))
+            if (segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
             {
                 possiblePackage = segments[5].Substring(0, segments[5].Length - 4);
             }
@@ -624,13 +641,7 @@ public partial class FhirCache : IDisposable
         }
         else if (segments.Length >= 5)
         {
-            if (_matchPackageLiteral.IsMatch(segments[4]))
-            {
-                // IGs use package.tgz in the URL, but that is not actually the package name
-                possiblePackage = string.Empty;
-            }
-            else if (segments[4].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase) &&
-                     !_matchPackageLiteral.IsMatch(segments[4]))
+            if (segments[4].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
             {
                 possiblePackage = segments[4].Substring(0, segments[4].Length - 4);
             }
@@ -647,11 +658,57 @@ public partial class FhirCache : IDisposable
             }
         }
 
-        // if we do not have a package name, we can build one from the realm and name
+        DirectiveNameTypeCodes nameType = DirectiveNameTypeCodes.GuideWithoutSuffix;
+        string id;
+
         if (string.IsNullOrEmpty(possiblePackage))
         {
             // packages get the universal realm if they have no realm
-            possiblePackage = $"hl7.fhir.uv.{name}";
+            id = $"hl7.fhir.uv.{name}";
+            // default to package.tgz for IGs
+            possiblePackage = "package";
+        }
+        else if (possiblePackage.StartsWith("package"))
+        {
+            if (possiblePackage.Length > 7)
+            {
+                // packages get the universal realm if they have no realm
+                id = $"hl7.fhir.uv.{name}{possiblePackage.Substring(7)}";
+                nameType = DirectiveNameTypeCodes.GuideWithSuffix;
+            }
+            else
+            {
+                // packages get the universal realm if they have no realm
+                id = $"hl7.fhir.uv.{name}";
+            }
+        }
+        else
+        {
+            id = possiblePackage;
+            // TODO: should check for guide with/without suffix
+        }
+
+        // try to get a package manifest to round out our information
+        string manifestUrl = string.IsNullOrEmpty(ballot)
+            ? $"{_publicationUri}{name}/{possiblePackage}.manifest.json"
+            : $"{_publicationUri}{name}/{ballot}/{possiblePackage}.manifest.json";
+
+        if (TryFetchManifestInfo(manifestUrl, out FhirNpmPackageDetails? npmInfo) &&
+            (npmInfo != null))
+        {
+            // create a directive with this version
+            directive = new()
+            {
+                Directive = $"{npmInfo.Name}#{npmInfo.Version}",
+                PackageId = npmInfo.Name,
+                NameType = nameType,
+                VersionType = DirectiveVersionCodes.Exact,
+                PublicationPackageUrl = string.IsNullOrEmpty(ballot)
+                    ? $"{_publicationUri}{name}/{possiblePackage}.tgz"
+                    : $"{_publicationUri}{name}/{ballot}/{possiblePackage}.tgz",
+            };
+
+            return true;
         }
 
         // with no version, assume this is latest release
@@ -661,8 +718,8 @@ public partial class FhirCache : IDisposable
             // create a directive with this version
             directive = new()
             {
-                Directive = $"{possiblePackage}#latest",
-                PackageId = possiblePackage,
+                Directive = $"{id}#latest",
+                PackageId = id,
                 NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
                 VersionType = DirectiveVersionCodes.Latest,
                 PublicationPackageUrl = string.IsNullOrEmpty(ballot)
@@ -677,8 +734,8 @@ public partial class FhirCache : IDisposable
         // create a directive with this version
         directive = new()
         {
-            Directive = $"{possiblePackage}#latest",
-            PackageId = possiblePackage,
+            Directive = $"{id}#latest",
+            PackageId = id,
             NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
             VersionType = DirectiveVersionCodes.Latest,
             PublicationPackageUrl = $"{_publicationUri}{name}/{possibleVersion}/{possiblePackage}.tgz",
