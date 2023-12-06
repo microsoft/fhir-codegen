@@ -280,7 +280,8 @@ public class RegistryTestFixture
     public RegistryTestFixture()
     {
         _handler = new PackageHttpMessageHandler();
+        FhirCache._httpClient = new(_handler);
         _cache = new FhirCache(Path.Combine(Directory.GetCurrentDirectory(), "data", ".fhir"), null, null);
-        _cache._httpClient = new(_handler);
+        //_cache._httpClient = new(_handler);
     }
 }

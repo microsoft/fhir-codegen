@@ -92,13 +92,26 @@ public class PackageHttpMessageHandler : HttpMessageHandler
                 {
                     return Task.FromResult(JsonFile("data/package-info-backport-secondary-r4b.json"));
                 }
-            case "https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.manifest.json":
+            case "http://build.fhir.org/ig/HL7/subscriptions-backport/package.manifest.json":
+            case "https://build.fhir.org/ig/HL7/subscriptions-backport/package.manifest.json":
+            case "http://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.manifest.json":
+            case "https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.manifest.json":
                 {
-                    return Task.FromResult(JsonFile("data/ci-manifest-backport.json"));
+                    return Task.FromResult(JsonFile("data/manifest-backport.json"));
                 }
-            case "https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.r4.manifest.json":
+            case "http://build.fhir.org/ig/HL7/subscriptions-backport/package.r4.manifest.json":
+            case "https://build.fhir.org/ig/HL7/subscriptions-backport/package.r4.manifest.json":
+            case "http://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4.manifest.json":
+            case "https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4.manifest.json":
                 {
-                    return Task.FromResult(JsonFile("data/ci-manifest-backport-r4.json"));
+                    return Task.FromResult(JsonFile("data/manifest-backport-r4.json"));
+                }
+            case "http://build.fhir.org/ig/HL7/subscriptions-backport/package.r4b.manifest.json":
+            case "https://build.fhir.org/ig/HL7/subscriptions-backport/package.r4b.manifest.json":
+            case "http://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4b.manifest.json":
+            case "https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4b.manifest.json":
+                {
+                    return Task.FromResult(JsonFile("data/manifest-backport-r4b.json"));
                 }
             case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport&pkgcanonical=&canonical=&fhirversion=":
                 {
@@ -128,7 +141,7 @@ public class PackageHttpMessageHandler : HttpMessageHandler
             // IHE PDQM
             case "https://profiles.ihe.net/ITI/PDQm/package.manifest.json":
                 {
-                    return Task.FromResult(JsonFile("data/ci-manifest-ihe-pdqm.json"));
+                    return Task.FromResult(JsonFile("data/manifest-ihe-pdqm.json"));
                 }
 
             // qas.json
@@ -138,7 +151,7 @@ public class PackageHttpMessageHandler : HttpMessageHandler
                     return Task.FromResult(JsonFile("data/qas-full.json"));
                 }
 
-            // ci versions
+            // ci core versions
             case "http://build.fhir.org/version.info":
             case "https://build.fhir.org/version.info":
             case "http://build.fhir.org/branches/branch/version.info":
@@ -146,6 +159,8 @@ public class PackageHttpMessageHandler : HttpMessageHandler
                 {
                     return Task.FromResult(IniFile("data/version.info"));
                 }
+
+            // ci backport manifests
 
             //// URL-based directive resolution
             //case "https://hl7.org/fhir/uv/subscriptions-backport/version.info":

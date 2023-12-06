@@ -160,6 +160,7 @@ public class CacheResolutionTestFixture
         //}
 
         _cache = new FhirCache(Path.Combine(Directory.GetCurrentDirectory(), "data", ".fhir"), null, null);
-        _cache._httpClient = new(_handler);
+        FhirCache._httpClient = new(_handler);
+        //_cache._httpClient = new(_handler);
     }
 }

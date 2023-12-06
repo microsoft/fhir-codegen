@@ -12,8 +12,22 @@ using static Microsoft.Health.Fhir.PackageManager.Models.FhirDirective;
 
 namespace Microsoft.Health.Fhir.PackageManager.Tests;
 
+public class DirectiveParsingTestFixture
+{
+    public PackageHttpMessageHandler _handler;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DirectiveParsingTestFixture"/> class.
+    /// </summary>
+    public DirectiveParsingTestFixture()
+    {
+        _handler = new PackageHttpMessageHandler();
+        FhirCache._httpClient = new(_handler);
+    }
+}
+
 /// <summary>A FHIR directive tests.</summary>
-public class DirectiveParsingTests
+public class DirectiveParsingTests : IClassFixture<DirectiveParsingTestFixture>
 {
     /// <summary>(Immutable) The test output helper.</summary>
     private readonly ITestOutputHelper _testOutputHelper;
@@ -22,7 +36,7 @@ public class DirectiveParsingTests
     /// Initializes a new instance of the <see cref="DirectiveParsingTests"/> class.
     /// </summary>
     /// <param name="testOutputHelper">(Immutable) The test output helper.</param>
-    public DirectiveParsingTests(ITestOutputHelper testOutputHelper)
+    public DirectiveParsingTests(DirectiveParsingTestFixture fixture, ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
     }
@@ -120,19 +134,22 @@ public class DirectiveParsingTests
     [InlineData("https://hl7.org/fhir/R4/hl7.fhir.r4.core.tgz", true, "hl7.fhir.r4.core")]
     [InlineData("https://hl7.org/fhir/R4/", true, "hl7.fhir.r4.core")]
 
-    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport.r4")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/package.r4b.tgz", true, "hl7.fhir.uv.subscriptions-backport.r4b")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/package.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/index.html", true, "hl7.fhir.uv.subscriptions-backport")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/", true, "hl7.fhir.uv.subscriptions-backport")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport", true, "hl7.fhir.uv.subscriptions-backport")]
 
-    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport.r4")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan/package.r4b.tgz", true, "hl7.fhir.uv.subscriptions-backport.r4b")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan/package.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan/index.html", true, "hl7.fhir.uv.subscriptions-backport")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan/", true, "hl7.fhir.uv.subscriptions-backport")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/2021Jan", true, "hl7.fhir.uv.subscriptions-backport")]
 
-    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport.r4")]
+    [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/package.r4b.tgz", true, "hl7.fhir.uv.subscriptions-backport.r4b")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/package.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/index.html", true, "hl7.fhir.uv.subscriptions-backport")]
     [InlineData("https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/", true, "hl7.fhir.uv.subscriptions-backport")]
@@ -150,14 +167,31 @@ public class DirectiveParsingTests
     [InlineData("http://build.fhir.org/index.html", true, "hl7.fhir.r6.core")]
     [InlineData("https://build.fhir.org/index.html", true, "hl7.fhir.r6.core")]
 
-    [InlineData("http://build.fhir.org/branches/test/hl7.fhir.r6.core.tgz", true, "hl7.fhir.r6.core")]
-    [InlineData("https://build.fhir.org/branches/test/hl7.fhir.r6.core.tgz", true, "hl7.fhir.r6.core")]
-    [InlineData("http://build.fhir.org/branches/test/", true, "hl7.fhir.r6.core")]
-    [InlineData("https://build.fhir.org/branches/test/", true, "hl7.fhir.r6.core")]
-    [InlineData("http://build.fhir.org/branches/test/index.html", true, "hl7.fhir.r6.core")]
-    [InlineData("https://build.fhir.org/branches/test/index.html", true, "hl7.fhir.r6.core")]
-    [InlineData("http://build.fhir.org/branches/test", true, "hl7.fhir.r6.core")]
-    [InlineData("https://build.fhir.org/branches/test", true, "hl7.fhir.r6.core")]
+    [InlineData("http://build.fhir.org/branches/a-branch/hl7.fhir.r6.core.tgz", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/branches/a-branch/hl7.fhir.r6.core.tgz", true, "hl7.fhir.r6.core")]
+    [InlineData("http://build.fhir.org/branches/a-branch/", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/branches/a-branch/", true, "hl7.fhir.r6.core")]
+    [InlineData("http://build.fhir.org/branches/a-branch/index.html", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/branches/a-branch/index.html", true, "hl7.fhir.r6.core")]
+    [InlineData("http://build.fhir.org/branches/a-branch", true, "hl7.fhir.r6.core")]
+    [InlineData("https://build.fhir.org/branches/a-branch", true, "hl7.fhir.r6.core")]
+
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/package.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport.r4")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/package.r4b.tgz", true, "hl7.fhir.uv.subscriptions-backport.r4b")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport", true, "hl7.fhir.uv.subscriptions-backport")]
+
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.tgz", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4.tgz", true, "hl7.fhir.uv.subscriptions-backport.r4")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4b.tgz", true, "hl7.fhir.uv.subscriptions-backport.r4b")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/", true, "hl7.fhir.uv.subscriptions-backport")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch", true, "hl7.fhir.uv.subscriptions-backport")]
+
+    [InlineData("https://profiles.ihe.net/ITI/PDQm/package.tgz", true, "ihe.iti.pdqm")]
+    [InlineData("https://profiles.ihe.net/ITI/PDQm/index.html", true, "ihe.iti.pdqm")]
+    [InlineData("https://profiles.ihe.net/ITI/PDQm/", true, "ihe.iti.pdqm")]
+    [InlineData("https://profiles.ihe.net/ITI/PDQm", true, "ihe.iti.pdqm")]
 
     internal void ParseUrl(
         string url,

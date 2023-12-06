@@ -90,9 +90,9 @@ public class CiTests : IClassFixture<CiTestFixture>
     [InlineData("https://profiles.ihe.net/ITI/PDQm/index.html", "ihe.iti.pdqm", "4.0.1", "2.4.0")]
     [InlineData("HL7/fhir-subscription-backport-ig/branches/master/qa.json", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
     [InlineData("http://hl7.org/fhir/uv/subscriptions-backport/ImplementationGuide/hl7.fhir.uv.subscriptions-backport", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
-    [InlineData("https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
-    [InlineData("https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.tgz", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
-    [InlineData("https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.r4.tgz", "hl7.fhir.uv.subscriptions-backport.r4", "4.0.1", "1.1.0")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/package.tgz", "hl7.fhir.uv.subscriptions-backport", "4.3.0", "1.1.0")]
+    [InlineData("https://build.fhir.org/ig/HL7/subscriptions-backport/package.r4.tgz", "hl7.fhir.uv.subscriptions-backport.r4", "4.0.1", "1.1.0")]
 
     // TODO: need to determine if this is worth dealing with
     //[InlineData("HL7/fhir-subscription-backport-ig/branches/master/qa.json", "hl7.fhir.uv.subscriptions-backport", "4.0.1", "1.1.0")]
@@ -131,7 +131,8 @@ public class CiTestFixture
     public CiTestFixture()
     {
         _handler = new PackageHttpMessageHandler();
+        FhirCache._httpClient = new(_handler);
         _cache = new FhirCache(Path.Combine(Directory.GetCurrentDirectory(), "data", ".fhir"), null, null);
-        _cache._httpClient = new(_handler);
+        //_cache._httpClient = new(_handler);
     }
 }

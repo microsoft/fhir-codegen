@@ -80,7 +80,7 @@ public partial class FhirCache : IDisposable
 
     /// <summary>The HTTP client.</summary>
     /// <remarks>Internal so that tests can replace the message handler.</remarks>
-    internal HttpClient _httpClient = new();
+    internal static HttpClient _httpClient = new();
 
     /// <summary>True to disposed value.</summary>
     private bool _disposedValue = false;
@@ -198,15 +198,21 @@ public partial class FhirCache : IDisposable
     /// <summary>URL of the match ci core branch.</summary>
     internal static Regex _matchCiCoreBranchUrl = MatchCiCoreBranchUrl();
 
+    /// <summary>Match ci ig branch URL.</summary>
+    /// <returns>A RegEx.</returns>
+    [GeneratedRegex("^(http|https)://build\\.fhir\\.org/ig/(?'org'[^/\\s]*)/(?'repo'[^/\\s]*)/branches/(?'branch'[^/\\s]*)(/.*)*$")]
+    internal static partial Regex MatchCiIgBranchUrl();
+
+    /// <summary>URL of the match ci ig branch.</summary>
+    internal static Regex _matchCiIgBranchUrl = MatchCiIgBranchUrl();
+
     /// <summary>Match ci ig current URL.</summary>
     /// <returns>A RegEx.</returns>
     [GeneratedRegex("^(http|https)://build\\.fhir\\.org/ig/(?'org'[^/\\s]*)/(?'repo'[^/\\s]*)(/.*)*$")]
-    internal static partial Regex MatchCiIgCurrentUrl();
+    internal static partial Regex MatchCiIgUrl();
 
     /// <summary>URL of the match ci ig current.</summary>
-    internal static Regex _matchCiIgCurrentUrl = MatchCiIgCurrentUrl();
-
-
+    internal static Regex _matchCiIgUrl = MatchCiIgUrl();
 
     /// <summary>Gets the packages by directive.</summary>
     private Dictionary<string, PackageCacheRecord> PackagesByDirective => _packagesByDirective;
@@ -330,7 +336,7 @@ public partial class FhirCache : IDisposable
                 FhirRelease = sequence.ToRLiteral(),
                 PackageVersion = string.Empty,
                 VersionType = DirectiveVersionCodes.Latest,
-                PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
+                PublicationPackageUrl = $"{_publicationUri}{segments[2]}/{possiblePackage}.tgz",
             };
 
             return true;
@@ -362,7 +368,7 @@ public partial class FhirCache : IDisposable
                     FhirRelease = ballot.Sequence.ToRLiteral(),
                     PackageVersion = ballot.Version,
                     VersionType = DirectiveVersionCodes.Exact,
-                    PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
+                    PublicationPackageUrl = $"{_publicationUri}{segments[2]}/{possiblePackage}.tgz",
                 };
 
                 return true;
@@ -390,7 +396,7 @@ public partial class FhirCache : IDisposable
                             FhirRelease = packageSequence.ToRLiteral(),
                             PackageVersion = string.Empty,
                             VersionType = DirectiveVersionCodes.Latest,
-                            PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
+                            PublicationPackageUrl = $"{_publicationUri}{segments[2]}/{possiblePackage}.tgz",
                         };
 
                         return true;
@@ -431,7 +437,7 @@ public partial class FhirCache : IDisposable
                 FhirRelease = sequence.ToRLiteral(),
                 PackageVersion = segments[3],
                 VersionType = DirectiveVersionCodes.Exact,
-                PublicationPackageUrl = $"http://hl7.org/fhir/{segments[2]}/{possiblePackage}.tgz",
+                PublicationPackageUrl = $"{_publicationUri}{segments[2]}/{possiblePackage}.tgz",
             };
 
             return true;
@@ -474,12 +480,7 @@ public partial class FhirCache : IDisposable
 
         if (segments.Length >= 7)
         {
-            if (_matchPackageLiteral.IsMatch(segments[6]))
-            {
-                // IGs use package.tgz in the URL, but that is not actually the package name
-                possiblePackage = string.Empty;
-            }
-            else if (segments[6].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            if (segments[6].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
             {
                 possiblePackage = segments[6].Substring(0, segments[6].Length - 4);
             }
@@ -495,12 +496,7 @@ public partial class FhirCache : IDisposable
         }
         else if (segments.Length >= 6)
         {
-            if (_matchPackageLiteral.IsMatch(segments[5]))
-            {
-                // IGs use package.tgz in the URL, but that is not actually the package name
-                possiblePackage = string.Empty;
-            }
-            else if (segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            if (segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
             {
                 possiblePackage = segments[5].Substring(0, segments[5].Length - 4);
             }
@@ -517,40 +513,59 @@ public partial class FhirCache : IDisposable
             }
         }
 
-        // if we do not have a package name, we can build one from the realm and name
+        DirectiveNameTypeCodes nameType = DirectiveNameTypeCodes.GuideWithoutSuffix;
+        string id;
+
         if (string.IsNullOrEmpty(possiblePackage))
         {
-            possiblePackage = $"hl7.fhir.{realm}.{name}";
+            id = $"hl7.fhir.{realm}.{name}";
+            // default to package.tgz for IGs
+            possiblePackage = "package";
+        }
+        else if (possiblePackage.StartsWith("package"))
+        {
+            if (possiblePackage.Length > 7)
+            {
+                id = $"hl7.fhir.{realm}.{name}{possiblePackage.Substring(7)}";
+                nameType = DirectiveNameTypeCodes.GuideWithSuffix;
+            }
+            else
+            {
+                id = $"hl7.fhir.{realm}.{name}";
+            }
+        }
+        else
+        {
+            id = possiblePackage;
+            // TODO: should check for guide with/without suffix
         }
 
         // with no version, assume this is latest release
         if (string.IsNullOrEmpty(possibleVersion))
         {
-            // TODO: should check for guide with/without suffix
             // create a directive with this version
             directive = new()
             {
-                Directive = $"{possiblePackage}#latest",
-                PackageId = possiblePackage,
-                NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
+                Directive = $"{id}#latest",
+                PackageId = id,
+                NameType = nameType,
                 VersionType = DirectiveVersionCodes.Latest,
                 PublicationPackageUrl = string.IsNullOrEmpty(ballot)
-                    ? $"http://hl7.org/fhir/{realm}/{name}/{possiblePackage}.tgz"
-                    : $"http://hl7.org/fhir/{realm}/{name}/{ballot}/{possiblePackage}.tgz",
+                    ? $"{_publicationUri}{realm}/{name}/{possiblePackage}.tgz"
+                    : $"{_publicationUri}{realm}/{name}/{ballot}/{possiblePackage}.tgz",
             };
 
             return true;
         }
 
-        // TODO: should check for guide with/without suffix
         // create a directive with this version
         directive = new()
         {
-            Directive = $"{possiblePackage}#latest",
-            PackageId = possiblePackage,
-            NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
+            Directive = $"{id}#latest",
+            PackageId = id,
+            NameType = nameType,
             VersionType = DirectiveVersionCodes.Latest,
-            PublicationPackageUrl = $"http://hl7.org/fhir/{realm}/{name}/{possibleVersion}/{possiblePackage}.tgz",
+            PublicationPackageUrl = $"{_publicationUri}{realm}/{name}/{possibleVersion}/{possiblePackage}.tgz",
         };
 
         return true;
@@ -592,7 +607,8 @@ public partial class FhirCache : IDisposable
                 // IGs use package.tgz in the URL, but that is not actually the package name
                 possiblePackage = string.Empty;
             }
-            else if (segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            else if (segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase) &&
+                     !_matchPackageLiteral.IsMatch(segments[5]))
             {
                 possiblePackage = segments[5].Substring(0, segments[5].Length - 4);
             }
@@ -613,7 +629,8 @@ public partial class FhirCache : IDisposable
                 // IGs use package.tgz in the URL, but that is not actually the package name
                 possiblePackage = string.Empty;
             }
-            else if (segments[4].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            else if (segments[4].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase) &&
+                     !_matchPackageLiteral.IsMatch(segments[4]))
             {
                 possiblePackage = segments[4].Substring(0, segments[4].Length - 4);
             }
@@ -649,8 +666,8 @@ public partial class FhirCache : IDisposable
                 NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
                 VersionType = DirectiveVersionCodes.Latest,
                 PublicationPackageUrl = string.IsNullOrEmpty(ballot)
-                    ? $"http://hl7.org/fhir/{name}/{possiblePackage}.tgz"
-                    : $"http://hl7.org/fhir/{name}/{ballot}/{possiblePackage}.tgz",
+                    ? $"{_publicationUri}{name}/{possiblePackage}.tgz"
+                    : $"{_publicationUri}{name}/{ballot}/{possiblePackage}.tgz",
             };
 
             return true;
@@ -664,7 +681,7 @@ public partial class FhirCache : IDisposable
             PackageId = possiblePackage,
             NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
             VersionType = DirectiveVersionCodes.Latest,
-            PublicationPackageUrl = $"http://hl7.org/fhir/{name}/{possibleVersion}/{possiblePackage}.tgz",
+            PublicationPackageUrl = $"{_publicationUri}{name}/{possibleVersion}/{possiblePackage}.tgz",
         };
 
         return true;
@@ -692,7 +709,8 @@ public partial class FhirCache : IDisposable
         string package;
 
         if ((segments.Length > 2) &&
-            segments[2].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            segments[2].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase) &&
+            !_matchPackageLiteral.IsMatch(segments[2]))
         {
             package = segments[2].Substring(0, segments[2].Length - 4);
         }
@@ -709,7 +727,7 @@ public partial class FhirCache : IDisposable
             NameType = DirectiveNameTypeCodes.CoreFull,
             VersionType = DirectiveVersionCodes.ContinuousIntegration,
             CiOrg = "hl7",
-            CiUrl = $"http://build.fhir.org/{package}.tgz",
+            CiUrl = $"{_ciUri}{package}.tgz",
         };
 
         return true;
@@ -744,7 +762,8 @@ public partial class FhirCache : IDisposable
         string package;
 
         if ((segments.Length > 3) &&
-            segments[3].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            segments[3].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase) &&
+            !_matchPackageLiteral.IsMatch(segments[3]))
         {
             package = segments[3].Substring(0, segments[3].Length - 4);
         }
@@ -761,7 +780,135 @@ public partial class FhirCache : IDisposable
             NameType = DirectiveNameTypeCodes.CoreFull,
             VersionType = DirectiveVersionCodes.ContinuousIntegration,
             CiBranch = branch,
-            CiUrl = $"http://build.fhir.org/branches/{branch}/{package}.tgz",
+            CiUrl = $"{_ciUri}branches/{branch}/{package}.tgz",
+        };
+
+        return true;
+    }
+
+    /// <summary>Query if 'input' is URL ci ig branch.</summary>
+    /// <param name="input">    The input url.</param>
+    /// <param name="segments"> The segments.</param>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if URL ci ig branch, false if not.</returns>
+    private static bool IsUrlCiIgBranch(
+        string input,
+        string[] segments,
+        out FhirDirective? directive)
+    {
+        if (segments.Length < 6)
+        {
+            directive = null;
+            return false;
+        }
+
+        if (!_matchCiIgBranchUrl.IsMatch(input))
+        {
+            directive = null;
+            return false;
+        }
+
+        // extact known segment values
+        string org = segments[3];
+        string repo = segments[4];
+        string branch = segments[6];
+
+        string package;
+
+        if ((segments.Length > 7) &&
+            segments[7].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+        {
+            package = segments[7].Substring(0, segments[7].Length - 4);
+        }
+        else
+        {
+            // default to non-version-specific package
+            package = "package";
+        }
+
+        // cannot determine package from the URL, need to try and fetch the package.manifest.json
+        string manifestUrl = $"{_ciUri}ig/{org}/{repo}/branches/{branch}/{package}.manifest.json";
+
+        if (!TryFetchManifestInfo(manifestUrl, out FhirNpmPackageDetails? npmInfo) ||
+            (npmInfo == null))
+        {
+            directive = null;
+            return false;
+        }
+
+        // create a directive with this version
+        directive = new()
+        {
+            Directive = $"{npmInfo.Name}#current${branch}",
+            PackageId = npmInfo.Name,
+            NameType = package.Length == 7 ? DirectiveNameTypeCodes.GuideWithoutSuffix : DirectiveNameTypeCodes.GuideWithSuffix,
+            VersionType = DirectiveVersionCodes.ContinuousIntegration,
+            CiOrg = org,
+            CiBranch = branch,
+            CiUrl = $"{_ciUri}ig/{org}/{repo}/branches/{branch}/{package}.tgz",
+        };
+
+        return true;
+    }
+
+    /// <summary>Query if 'input' is URL ci ig.</summary>
+    /// <param name="input">    The input url.</param>
+    /// <param name="segments"> The segments.</param>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if URL ci ig, false if not.</returns>
+    private static bool IsUrlCiIg(
+        string input,
+        string[] segments,
+        out FhirDirective? directive)
+    {
+        if (segments.Length < 5)
+        {
+            directive = null;
+            return false;
+        }
+
+        if (!_matchCiIgUrl.IsMatch(input))
+        {
+            directive = null;
+            return false;
+        }
+
+        // extact known segment values
+        string org = segments[3];
+        string repo = segments[4];
+
+        string package;
+
+        if ((segments.Length > 5) &&
+            segments[5].EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+        {
+            package = segments[5].Substring(0, segments[5].Length - 4);
+        }
+        else
+        {
+            // default to non-version-specific package
+            package = "package";
+        }
+
+        // cannot determine package from the URL, need to try and fetch the package.manifest.json
+        string manifestUrl = $"{_ciUri}ig/{org}/{repo}/{package}.manifest.json";
+
+        if (!TryFetchManifestInfo(manifestUrl, out FhirNpmPackageDetails? npmInfo) ||
+            (npmInfo == null))
+        {
+            directive = null;
+            return false;
+        }
+
+        // create a directive with this version
+        directive = new()
+        {
+            Directive = $"{npmInfo.Name}#current",
+            PackageId = npmInfo.Name,
+            NameType = package.Length == 7 ? DirectiveNameTypeCodes.GuideWithoutSuffix : DirectiveNameTypeCodes.GuideWithSuffix,
+            VersionType = DirectiveVersionCodes.ContinuousIntegration,
+            CiOrg = org,
+            CiUrl = $"{_ciUri}ig/{org}/{repo}/{package}.tgz",
         };
 
         return true;
@@ -794,6 +941,7 @@ public partial class FhirCache : IDisposable
             return true;
         }
 
+        // this test will match *most* production URLs, so it should be last of the production url tests
         if (IsUrlNonRealmIg(input, segments, out directive))
         {
             return true;
@@ -809,30 +957,110 @@ public partial class FhirCache : IDisposable
             return true;
         }
 
+        if (IsUrlCiIgBranch(input, segments, out directive))
+        {
+            return true;
+        }
 
-        //switch (segments[0].ToLowerInvariant())
-        //{
-        //    case "www.hl7.org":
-        //    case "hl7.org":
-        //        {
-        //            return TryParseHl7ProdUrl(segments, out directive);
-        //        }
+        if (IsUrlCiIg(input, segments, out directive))
+        {
+            return true;
+        }
 
-        //    case "build.fhir.org":
-        //        {
-        //            // this url *should* represent a CI package
-        //        }
-        //        break;
+        // if we are still here, try to fetch a manifest file
+        string manifestUrl;
+        if (_matchFileUrlSuffix.IsMatch(input))
+        {
+            if (input.EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
+            {
+                manifestUrl = input.Substring(0, input.Length - 4) + ".manifest.json";
+            }
+            else
+            {
+                int loc = input.LastIndexOf('/');
+                manifestUrl = input.Substring(0, loc) + "/package.manifest.json";
+            }
+        }
+        else
+        {
+            if (input.EndsWith('/'))
+            {
+                manifestUrl = $"{input}package.manifest.json";
+            }
+            else
+            {
+                manifestUrl = $"{input}/package.manifest.json";
+            }
+        }
 
-        //    default:
-        //        {
-        //            // unknown URLs should point directly to a package
+        // if we cannot get a manifest, we are sunk
+        if (!TryFetchManifestInfo(manifestUrl, out FhirNpmPackageDetails? npmInfo) ||
+            (npmInfo == null))
+        {
+            directive = null;
+            return false;
+        }
 
-        //        }
-        //        break;
-        //}
+        // create a directive with this info
+        directive = new()
+        {
+            Directive = $"{npmInfo.Name}#{npmInfo.Version}",
+            PackageId = npmInfo.Name,
+            NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
+            VersionType = DirectiveVersionCodes.Unknown,
+        };
 
-        throw new NotImplementedException();
+        return true;
+    }
+
+    /// <summary>
+    /// Attempts to fetch manifest information the FhirNpmPackageDetails from the given string.
+    /// </summary>
+    /// <param name="url">    URL of the resource.</param>
+    /// <param name="details">[out] The details.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private static bool TryFetchManifestInfo(
+        string url,
+        out FhirNpmPackageDetails? details)
+    {
+        try
+        {
+            using HttpResponseMessage response = _httpClient.GetAsync(url).Result;
+
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"TryFetchManifestInfo <<< get {url} returned {response.StatusCode}");
+                details = null;
+                return false;
+            }
+
+            string contents = response.Content.ReadAsStringAsync().Result;
+
+            details = FhirNpmPackageDetails.Parse(contents);
+
+            if (details == null)
+            {
+                // not found just means the build does not exist
+                Console.WriteLine($"TryFetchManifestInfo <<< failed to parse package.manifest.json at {url}");
+                return false;
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException == null)
+            {
+                Console.WriteLine($"TryFetchManifestInfo <<< caught exception: {ex.Message}");
+            }
+            else
+            {
+                Console.WriteLine($"TryFetchManifestInfo <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
+            }
+
+            details = null;
+            return false;
+        }
     }
 
     /// <summary>
@@ -847,8 +1075,7 @@ public partial class FhirCache : IDisposable
     {
         try
         {
-            using HttpClient client = new();
-            using HttpResponseMessage response = client.GetAsync(url).Result;
+            using HttpResponseMessage response = _httpClient.GetAsync(url).Result;
 
             if (!response.IsSuccessStatusCode)
             {
