@@ -33,7 +33,7 @@ public class CiModelTests
     }
 
     [Theory]
-    [FileData("data/ci-manifest-backport.json")]
+    [FileData("data/manifest-backport.json")]
     internal void ParseVersionInfoBackport(string json)
     {
         FhirPackageVersionInfo? info = JsonSerializer.Deserialize<FhirPackageVersionInfo>(json);
