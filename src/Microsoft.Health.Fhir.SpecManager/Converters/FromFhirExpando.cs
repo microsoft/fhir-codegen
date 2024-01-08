@@ -1496,14 +1496,41 @@ public sealed class FromFhirExpando : IFhirConverter
                             elementMaps.Add(identity, new());
                         }
 
-                        elementMaps[identity].Add(
-                            new()
-                            {
-                                Identity = identity,
-                                Language = mappingNode.GetString("language") ?? string.Empty,
-                                Map = mappingNode.GetString("map"),
-                                Comment = mappingNode.GetString("comment") ?? string.Empty,
-                            });
+                        switch (identity)
+                        {
+                            // known maps that use comma-separated values
+                            case "w5":
+                            case "workflow":
+                                {
+                                    string mapValue = mappingNode.GetString("map");
+                                    string[] mapValues = mapValue.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+
+                                    foreach (string map in mapValues)
+                                    {
+                                        elementMaps[identity].Add(
+                                            new()
+                                            {
+                                                Identity = identity,
+                                                Language = mappingNode.GetString("language") ?? string.Empty,
+                                                Map = map,
+                                                Comment = mappingNode.GetString("comment") ?? string.Empty,
+                                            });
+                                    }
+                                }
+                                break;
+                            default:
+                                {
+                                    elementMaps[identity].Add(
+                                        new()
+                                        {
+                                            Identity = identity,
+                                            Language = mappingNode.GetString("language") ?? string.Empty,
+                                            Map = mappingNode.GetString("map"),
+                                            Comment = mappingNode.GetString("comment") ?? string.Empty,
+                                        });
+                                }
+                                break;
+                        }
                     }
 
                     if (parent.Elements.ContainsKey(elementPath))
