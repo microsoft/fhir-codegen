@@ -5,7 +5,7 @@
 
 using static Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases;
 
-namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 /// <summary>A package cache entry.</summary>
 /// <param name="FhirVersion">      The FHIR version this package is for.</param>

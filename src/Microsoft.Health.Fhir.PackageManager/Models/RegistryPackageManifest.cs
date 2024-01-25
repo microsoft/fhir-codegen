@@ -12,7 +12,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 namespace Microsoft.Health.Fhir.PackageManager;
 
 /// <summary>FHIR Registry package manifest record.</summary>
-public record class RegistryPackageManifest
+internal record class RegistryPackageManifest
 {
     /// <summary>Initializes a new instance of the <see cref="RegistryPackageManifest"/> class.</summary>
     public RegistryPackageManifest() { }

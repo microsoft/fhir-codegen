@@ -7,7 +7,6 @@ using IniParser.Configuration;
 using IniParser;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.PackageManager.Models;
 using System.Collections.Concurrent;

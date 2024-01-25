@@ -10,7 +10,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 namespace Microsoft.Health.Fhir.PackageManager.Models;
 
 /// <summary>FHIR Package version information.</summary>
-public record class FhirPackageVersionInfo
+internal record class FhirPackageVersionInfo
 {
     private string _packageKind = string.Empty;
     private string _fhirVersion = string.Empty;

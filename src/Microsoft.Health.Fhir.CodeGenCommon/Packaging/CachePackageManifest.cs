@@ -6,7 +6,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
-namespace Microsoft.Health.Fhir.PackageManager.Models;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 /// <summary>A package manifest (package.json) loaded from a cached package.</summary>
 /// <remarks>

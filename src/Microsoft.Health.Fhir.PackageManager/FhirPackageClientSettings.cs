@@ -5,7 +5,7 @@
 
 using Microsoft.Extensions.Logging;
 
-namespace Microsoft.Health.Fhir.PackageManager.Models;
+namespace Microsoft.Health.Fhir.PackageManager;
 
 /// <summary>A FHIR package client settings.</summary>
 public record class FhirPackageClientSettings

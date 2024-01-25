@@ -4,14 +4,13 @@
 // </copyright>
 
 
-using System.Formats.Asn1;
-using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Microsoft.Health.Fhir.PackageManager.Models;
 
-public class FhirVersionConverter : JsonConverter<string>
+/// <summary>A FHIR version converter.</summary>
+internal class FhirVersionConverter : JsonConverter<string>
 {
     public override bool CanConvert(Type objectType)
     {

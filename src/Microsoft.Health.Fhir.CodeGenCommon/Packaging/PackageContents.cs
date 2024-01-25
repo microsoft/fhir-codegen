@@ -5,7 +5,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace Microsoft.Health.Fhir.PackageManager.Models;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 /// <summary>An index of the contents of a package.</summary>
 public record class PackageContents

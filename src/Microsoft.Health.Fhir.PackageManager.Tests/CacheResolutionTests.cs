@@ -5,10 +5,8 @@
 
 
 using FluentAssertions;
-using Microsoft.Health.Fhir.PackageManager.Models;
-using static Microsoft.Health.Fhir.PackageManager.Models.FhirDirective;
 using Xunit.Abstractions;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Microsoft.Health.Fhir.PackageManager.Tests;
 

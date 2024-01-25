@@ -3,8 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
-using Microsoft.Health.Fhir.PackageManager.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Microsoft.Health.Fhir.PackageManager;
 
