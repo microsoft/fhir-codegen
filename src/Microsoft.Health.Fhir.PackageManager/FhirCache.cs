@@ -5,28 +5,26 @@
 
 using IniParser.Configuration;
 using IniParser;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.PackageManager.Models;
+using System.Collections.Concurrent;
 using System.Formats.Tar;
+using System.Globalization;
 using System.IO.Compression;
 using System.Net;
 using System.Text.RegularExpressions;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using System.Text.Json;
-using Microsoft.Health.Fhir.PackageManager.Models;
-using static Microsoft.Health.Fhir.PackageManager.Models.FhirDirective;
-using System.Collections.Concurrent;
-using System.Globalization;
 using static Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
-using System;
-using Microsoft.VisualBasic;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using System.Security.AccessControl;
+using static Microsoft.Health.Fhir.PackageManager.Models.FhirDirective;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Microsoft.Health.Fhir.PackageManager;
 
 /// <summary>A FHIR cache.</summary>
-public partial class FhirCache : IDisposable
+public partial class FhirCache : IFhirPackageClient, IDisposable
 {
     /// <summary>Information about a package in the cache.</summary>
     internal readonly record struct PackageCacheRecord(
@@ -78,6 +76,9 @@ public partial class FhirCache : IDisposable
     /// <summary>The initialize file lock.</summary>
     private static object _iniFileLock = new();
 
+    /// <summary>True to enable offline mode, false to disable it.</summary>
+    private bool _offlineMode = false;
+
     /// <summary>The HTTP client.</summary>
     /// <remarks>Internal so that tests can replace the message handler.</remarks>
     internal static HttpClient _httpClient = new();
@@ -91,7 +92,7 @@ public partial class FhirCache : IDisposable
     /// <summary>Package versions, by package name.</summary>
     private Dictionary<string, List<string>> _versionsByName = new();
 
-    /// <summary>Occurs when On Changed.</summary>
+    /// <summary>Occurs when a package has been downloaded or deleted.</summary>
     public event EventHandler<EventArgs>? OnChanged = null;
 
     /// <summary>Test if a name matches known core packages.</summary>
@@ -220,15 +221,209 @@ public partial class FhirCache : IDisposable
     /// <summary>The completed requests.</summary>
     private HashSet<string> _processed = new();
 
+    /// <summary>Creates a new IFhirPackageClient.</summary>
+    /// <param name="settings">(Optional) Options for controlling the operation.</param>
+    /// <returns>An IFhirPackageClient.</returns>
+    public static IFhirPackageClient Create(FhirPackageClientSettings? settings = null)
+    {
+        string cachePath = settings?.CachePath ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".fhir");
+
+        FhirCache fhirCache = new(
+            cachePath,
+            settings?.OfflineMode ?? false,
+            null,
+            settings?.AdditionalRegistryUrls ?? Enumerable.Empty<string>());
+
+        return fhirCache;
+    }
+
+    /// <summary>
+    /// Resolve a package directive, donwload the package if necessary, and return the local and
+    /// extracted package information.
+    /// </summary>
+    /// <param name="directive">          The directive.</param>
+    /// <param name="includeDependencies">(Optional) True to include, false to exclude the dependencies.</param>
+    /// <param name="cancellationToken">  (Optional) A token that allows processing to be cancelled.</param>
+    /// <returns>An asynchronous result that yields the package by directive.</returns>
+    public async Task<PackageCacheEntry?> FindOrDownloadPackageByDirective(
+        string directive,
+        bool includeDependencies = false,
+        CancellationToken cancellationToken = default(CancellationToken))
+    {
+        PackageCacheEntry? package = await ResolveAndDownloadDirective(directive, cancellationToken: cancellationToken);
+
+        if (package == null)
+        {
+            // cannot nest into dependencies
+            return null;
+        }
+
+        if (includeDependencies)
+        {
+            CachePackageManifest? manifest = GetManifest(package.Value);
+
+            if (manifest == null)
+            {
+                // cannot nest into dependencies
+                return package;
+            }
+
+            foreach ((string name, string version) in manifest.Dependencies)
+            {
+                string dependencyDirective = $"{name}#{version}";
+
+                PackageCacheEntry? dependencyPackage = await FindOrDownloadPackageByDirective(dependencyDirective, true, cancellationToken);
+
+                if (dependencyPackage == null)
+                {
+                    // log the error, but continue
+                    _logger.LogError($"Failed to resolve dependent package {dependencyDirective} requested by {package.Value.ResolvedDirective}");
+                }
+            }
+        }
+
+        return package;
+    }
+
+    /// <summary>
+    /// Resolve a package URL, donwload the package if necessary, and return the local and extracted
+    /// package information.
+    /// </summary>
+    /// <param name="url">                URL of the package tgz or IG page URL.</param>
+    /// <param name="includeDependencies">(Optional) True to include, false to exclude the dependencies.</param>
+    /// <param name="cancellationToken">  (Optional) A token that allows processing to be cancelled.</param>
+    /// <returns>An asynchronous result that yields the package by URL.</returns>
+    public async Task<PackageCacheEntry?> FindOrDownloadPackageByUrl(
+        string url,
+        bool includeDependencies = false,
+        CancellationToken cancellationToken = default(CancellationToken))
+    {
+        if (!TryParseUrl(url, out FhirDirective? parsedUrl))
+        {
+            _logger.LogError($"Failed to resolve url {url} into a package directive");
+            return null;
+        }
+
+        return await FindOrDownloadPackageByDirective(parsedUrl.Directive, includeDependencies, cancellationToken);
+    }
+
+    /// <summary>Gets local entries.</summary>
+    /// <param name="name">          (Optional) Name of the package to search for.  By default, the
+    ///  value is used as a 'starts-with' and case-insensitive comparison with local package names
+    ///  (e.g., will return all local packages).</param>
+    /// <param name="exactMatchOnly">(Optional) True to only return only exact name matches.</param>
+    /// <returns>The local entries.</returns>
+    public IEnumerable<PackageCacheEntry> LocalPackages(string name = "", bool exactMatchOnly = false)
+    {
+        return _packagesByDirective.Values.Select(pcr => new PackageCacheEntry()
+        {
+            FhirVersion = pcr.FhirVersion,
+            Directory = Path.Combine(_cachePackageDirectory, pcr.CacheDirective),
+            ResolvedDirective = pcr.CacheDirective,
+            Name = pcr.PackageName,
+            Version = pcr.Version,
+        });
+    }
+
+    /// <summary>Gets a manifest.</summary>
+    /// <param name="packageEntry">The package entry.</param>
+    /// <returns>The manifest.</returns>
+    public CachePackageManifest? GetManifest(PackageCacheEntry packageEntry)
+    {
+        if (string.IsNullOrEmpty(packageEntry.Directory) ||
+            (!Directory.Exists(packageEntry.Directory)))
+        {
+            return null;
+        }
+
+        // default location is [directive]/package/package.json]
+        string manifestPath = Path.Combine(packageEntry.Directory, "package", "package.json");
+
+        if (!File.Exists(manifestPath))
+        {
+            // try removing the package directory literal
+            manifestPath = Path.Combine(packageEntry.Directory, "package.json");
+
+            if (!File.Exists(manifestPath))
+            {
+                return null;
+            }
+        }
+
+        try
+        {
+            return JsonSerializer.Deserialize<CachePackageManifest>(File.ReadAllText(manifestPath));
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException == null)
+            {
+                _logger.LogWarning($"GetManifest <<< caught exception: {ex.Message}");
+            }
+            else
+            {
+                _logger.LogWarning($"GetManifest <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>Gets the indexed contents (i.e., via parsing .index.json).</summary>
+    /// <param name="packageEntry">The package entry.</param>
+    /// <returns>The indexed contents.</returns>
+    public PackageContents? GetIndexedContents(PackageCacheEntry packageEntry)
+    {
+        if (string.IsNullOrEmpty(packageEntry.Directory) ||
+            (!Directory.Exists(packageEntry.Directory)))
+        {
+            return null;
+        }
+
+        // default location is [directive]/package/.index.json]
+        string indexPath = Path.Combine(packageEntry.Directory, "package", ".index.json");
+
+        if (!File.Exists(indexPath))
+        {
+            // try removing the package directory literal
+            indexPath = Path.Combine(packageEntry.Directory, ".index.json");
+
+            if (!File.Exists(indexPath))
+            {
+                return null;
+            }
+        }
+
+        try
+        {
+            return JsonSerializer.Deserialize<PackageContents>(File.ReadAllText(indexPath));
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException == null)
+            {
+                _logger.LogWarning($"GetIndexedContents <<< caught exception: {ex.Message}");
+            }
+            else
+            {
+                _logger.LogWarning($"GetIndexedContents <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
+            }
+        }
+
+        return null;
+    }
+
     /// <summary>Initializes a new instance of the <see cref="FhirCache"/> class.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
     /// <exception cref="ArgumentException">    Thrown when one or more arguments have unsupported or
     ///  illegal values.</exception>
     /// <param name="fhirCachePath">         Pathname of the FHIR cache directory.</param>
+    /// <param name="offlineMode">           True to enable offline mode, false to disable it.</param>
     /// <param name="logger">                The logger.</param>
     /// <param name="additionalRegistryUrls">The additional registry urls.</param>
-    public FhirCache(
+    internal FhirCache(
         string fhirCachePath,
+        bool offlineMode,
         ILogger<FhirCache>? logger,
         IEnumerable<string>? additionalRegistryUrls)
     {
@@ -283,7 +478,7 @@ public partial class FhirCache : IDisposable
     private static bool IsUrlProdCore(
         string input,
         string[] segments,
-        out FhirDirective? directive)
+        [NotNullWhen(true)] out FhirDirective? directive)
     {
         // core packages cannot have fewer than 4 segments
         if (segments.Length < 4)
@@ -453,10 +648,10 @@ public partial class FhirCache : IDisposable
     /// <param name="segments"> The segments.</param>
     /// <param name="directive">[out] The parsed directive.</param>
     /// <returns>True if URL realm ig, false if not.</returns>
-    private static bool IsUrlRealmIg(
+    private bool IsUrlRealmIg(
         string input,
         string[] segments,
-        out FhirDirective? directive)
+        [NotNullWhen(true)] out FhirDirective? directive)
     {
         if (segments.Length < 5)
         {
@@ -599,10 +794,10 @@ public partial class FhirCache : IDisposable
     /// <param name="segments"> The segments.</param>
     /// <param name="directive">[out] The parsed directive.</param>
     /// <returns>True if URL non realm ig, false if not.</returns>
-    private static bool IsUrlNonRealmIg(
+    private bool IsUrlNonRealmIg(
         string input,
         string[] segments,
-        out FhirDirective? directive)
+        [NotNullWhen(true)] out FhirDirective? directive)
     {
         if (segments.Length < 4)
         {
@@ -752,7 +947,7 @@ public partial class FhirCache : IDisposable
     private static bool IsUrlCiCoreCurrent(
         string input,
         string[] segments,
-        out FhirDirective? directive)
+        [NotNullWhen(true)] out FhirDirective? directive)
     {
         if (!_matchCiCoreCurrentUrl.IsMatch(input))
         {
@@ -798,7 +993,7 @@ public partial class FhirCache : IDisposable
     private static bool IsUrlCiCoreBranch(
         string input,
         string[] segments,
-        out FhirDirective? directive)
+        [NotNullWhen(true)] out FhirDirective? directive)
     {
         if (segments.Length < 4)
         {
@@ -848,10 +1043,10 @@ public partial class FhirCache : IDisposable
     /// <param name="segments"> The segments.</param>
     /// <param name="directive">[out] The parsed directive.</param>
     /// <returns>True if URL ci ig branch, false if not.</returns>
-    private static bool IsUrlCiIgBranch(
+    private bool IsUrlCiIgBranch(
         string input,
         string[] segments,
-        out FhirDirective? directive)
+        [NotNullWhen(true)] out FhirDirective? directive)
     {
         if (segments.Length < 6)
         {
@@ -913,10 +1108,10 @@ public partial class FhirCache : IDisposable
     /// <param name="segments"> The segments.</param>
     /// <param name="directive">[out] The parsed directive.</param>
     /// <returns>True if URL ci ig, false if not.</returns>
-    private static bool IsUrlCiIg(
+    private bool IsUrlCiIg(
         string input,
         string[] segments,
-        out FhirDirective? directive)
+        [NotNullWhen(true)] out FhirDirective? directive)
     {
         if (segments.Length < 5)
         {
@@ -975,9 +1170,9 @@ public partial class FhirCache : IDisposable
     /// <param name="input">    The input url.</param>
     /// <param name="directive">[out] The parsed directive.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    internal static bool TryParseUrl(
+    internal bool TryParseUrl(
         string input,
-        out FhirDirective? directive)
+        [NotNullWhen(true)] out FhirDirective? directive)
     {
         char[] splits = ['/', '?'];
         string[] segments = input.Split(splits, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
@@ -1076,7 +1271,7 @@ public partial class FhirCache : IDisposable
     /// <param name="url">    URL of the resource.</param>
     /// <param name="details">[out] The details.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private static bool TryFetchManifestInfo(
+    private bool TryFetchManifestInfo(
         string url,
         out FhirNpmPackageDetails? details)
     {
@@ -1086,7 +1281,7 @@ public partial class FhirCache : IDisposable
 
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine($"TryFetchManifestInfo <<< get {url} returned {response.StatusCode}");
+                _logger.LogInformation($"TryFetchManifestInfo <<< get {url} returned {response.StatusCode}");
                 details = null;
                 return false;
             }
@@ -1098,7 +1293,7 @@ public partial class FhirCache : IDisposable
             if (details == null)
             {
                 // not found just means the build does not exist
-                Console.WriteLine($"TryFetchManifestInfo <<< failed to parse package.manifest.json at {url}");
+                _logger.LogInformation($"TryFetchManifestInfo <<< failed to parse package.manifest.json at {url}");
                 return false;
             }
 
@@ -1108,11 +1303,11 @@ public partial class FhirCache : IDisposable
         {
             if (ex.InnerException == null)
             {
-                Console.WriteLine($"TryFetchManifestInfo <<< caught exception: {ex.Message}");
+                _logger.LogWarning($"TryFetchManifestInfo <<< caught exception: {ex.Message}");
             }
             else
             {
-                Console.WriteLine($"TryFetchManifestInfo <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
+                _logger.LogWarning($"TryFetchManifestInfo <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
             }
 
             details = null;
@@ -1126,7 +1321,7 @@ public partial class FhirCache : IDisposable
     /// <param name="url"> URL of the resource.</param>
     /// <param name="info">[out] The information.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private static bool TryFetchVersionInfo(
+    private bool TryFetchVersionInfo(
         string url,
         out BuildVersionInfo? info)
     {
@@ -1136,7 +1331,7 @@ public partial class FhirCache : IDisposable
 
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine($"TryFetchVersionInfo <<< get {url} returned {response.StatusCode}");
+                _logger.LogInformation($"TryFetchVersionInfo <<< get {url} returned {response.StatusCode}");
                 info = null;
                 return false;
             }
@@ -1147,7 +1342,7 @@ public partial class FhirCache : IDisposable
                 (info == null))
             {
                 // not found just means the build does not exist
-                Console.WriteLine($"TryFetchVersionInfo <<< failed to parse version.info at {url}");
+                _logger.LogInformation($"TryFetchVersionInfo <<< failed to parse version.info at {url}");
                 info = null;
                 return false;
             }
@@ -1158,11 +1353,11 @@ public partial class FhirCache : IDisposable
         {
             if (ex.InnerException == null)
             {
-                Console.WriteLine($"TryFetchVersionInfo <<< caught exception: {ex.Message}");
+                _logger.LogWarning($"TryFetchVersionInfo <<< caught exception: {ex.Message}");
             }
             else
             {
-                Console.WriteLine($"TryFetchVersionInfo <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
+                _logger.LogWarning($"TryFetchVersionInfo <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
             }
 
             info = null;
@@ -1170,7 +1365,14 @@ public partial class FhirCache : IDisposable
         }
     }
 
-    private static bool TryParseHl7ProdUrl(
+    /// <summary>
+    /// Attempts to parse hl 7 product URL a FhirDirective from the given string[].
+    /// </summary>
+    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
+    /// <param name="segments"> The segments.</param>
+    /// <param name="directive">[out] The parsed directive.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryParseHl7ProdUrl(
         string[] segments,
         out FhirDirective? directive)
     {
@@ -1213,7 +1415,7 @@ public partial class FhirCache : IDisposable
 
             if (sequence == FhirSequenceCodes.Unknown)
             {
-                Console.WriteLine($"TryParseHl7ProdUrl <<< found unknown FHIR major release version: {segments[2]}");
+                _logger.LogInformation($"TryParseHl7ProdUrl <<< found unknown FHIR major release version: {segments[2]}");
                 directive = null;
                 return false;
             }
@@ -1290,7 +1492,7 @@ public partial class FhirCache : IDisposable
         // check for not determining the URL
         if (string.IsNullOrEmpty(versionInfoUrl))
         {
-            Console.WriteLine($"TryParseHl7ProdUrl <<< could not resolve download type!");
+            _logger.LogInformation($"TryParseHl7ProdUrl <<< could not resolve download type!");
             directive = null;
             return false;
         }
@@ -1300,7 +1502,7 @@ public partial class FhirCache : IDisposable
             if ((!TryFetchVersionInfo(versionInfoUrl, out BuildVersionInfo? versionInfo)) ||
                 (versionInfo == null))
             {
-                Console.WriteLine($"TryParseHl7ProdUrl <<< failed to parse version.info at {versionInfoUrl}");
+                _logger.LogInformation($"TryParseHl7ProdUrl <<< failed to parse version.info at {versionInfoUrl}");
                 directive = null;
                 return false;
             }
@@ -1334,11 +1536,11 @@ public partial class FhirCache : IDisposable
         {
             if (ex.InnerException == null)
             {
-                Console.WriteLine($"TryParseHl7ProdUrl <<< caught exception: {ex.Message}");
+                _logger.LogWarning($"TryParseHl7ProdUrl <<< caught exception: {ex.Message}");
             }
             else
             {
-                Console.WriteLine($"TryParseHl7ProdUrl <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
+                _logger.LogWarning($"TryParseHl7ProdUrl <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
             }
 
             directive = null;
@@ -1651,7 +1853,7 @@ public partial class FhirCache : IDisposable
     /// <param name="contents">   The contents.</param>
     /// <param name="versionInfo">[out] Information describing the version.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private static bool TryParseVersionInfo(string contents, out BuildVersionInfo? versionInfo)
+    private bool TryParseVersionInfo(string contents, out BuildVersionInfo? versionInfo)
     {
         IniDataParser parser = new();
 
@@ -1660,7 +1862,7 @@ public partial class FhirCache : IDisposable
         if (!data.Sections.Contains("FHIR"))
         {
             // not a valid versions.info file
-            Console.WriteLine($"TryParseVersionInfo <<< does not contain valid contents (missing [FHIR])!");
+            _logger.LogError($"TryParseVersionInfo <<< does not contain valid contents (missing [FHIR])!");
             versionInfo = null;
             return false;
         }
@@ -2706,17 +2908,15 @@ public partial class FhirCache : IDisposable
         return false;
     }
 
-    /// <summary>Resolve directive.</summary>
+    /// <summary>Resolve directive and download contents if necessary.</summary>
     /// <param name="inputDirective">The input directive.</param>
     /// <param name="package">       [out] The package.</param>
     /// <param name="forFhirVersion">(Optional) FHIR version to restrict downloads to.</param>
-    /// <param name="offlineMode">   (Optional) True to enable offline mode, false to disable it.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    internal bool TryResolveDirective(
+    internal async Task<PackageCacheEntry?> ResolveAndDownloadDirective(
         string inputDirective,
-        out PackageCacheEntry? package,
         FhirSequenceCodes forFhirVersion = FhirSequenceCodes.Unknown,
-        bool offlineMode = false)
+        CancellationToken cancellationToken = default(CancellationToken))
     {
         _logger.LogInformation($"Request to resolve: {inputDirective}");
 
@@ -2725,8 +2925,7 @@ public partial class FhirCache : IDisposable
             (directive == null))
         {
             _logger.LogError($"Failed to parse directive input: {inputDirective}");
-            package = null;
-            return false;
+            return null;
         }
 
         List<string> resolvableDirectives = UpdateDirectives(directive);
@@ -2742,16 +2941,14 @@ public partial class FhirCache : IDisposable
                     // check for a local version of the package
                     if (TryGetCacheRec(resolvableDirectives, out cached))
                     {
-                        package = new()
+                        return new()
                         {
-                            fhirVersion = cached.FhirVersion,
-                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
-                            resolvedDirective = cached.CacheDirective,
-                            name = cached.PackageName,
-                            version = cached.Version,
+                            FhirVersion = cached.FhirVersion,
+                            Directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            ResolvedDirective = cached.CacheDirective,
+                            Name = cached.PackageName,
+                            Version = cached.Version,
                         };
-
-                        return true;
                     }
                 }
                 break;
@@ -2783,16 +2980,14 @@ public partial class FhirCache : IDisposable
                 // we have an exact version, check for a local copy
                 if (TryGetCacheRec(resolvableDirectives, out cached))
                 {
-                    package = new()
+                    return new()
                     {
-                        fhirVersion = cached.FhirVersion,
-                        directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
-                        resolvedDirective = cached.CacheDirective,
-                        name = cached.PackageName,
-                        version = cached.Version,
+                        FhirVersion = cached.FhirVersion,
+                        Directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                        ResolvedDirective = cached.CacheDirective,
+                        Name = cached.PackageName,
+                        Version = cached.Version,
                     };
-
-                    return true;
                 }
                 break;
             case DirectiveVersionCodes.Partial:
@@ -2801,8 +2996,7 @@ public partial class FhirCache : IDisposable
                     if (!TryResolveVersionRange(ref directive))
                     {
                         _logger.LogError($"Failed to resolve version range: {inputDirective}");
-                        package = null;
-                        return false;
+                        return null;
                     }
 
                     resolvableDirectives = UpdateDirectives(directive);
@@ -2810,16 +3004,14 @@ public partial class FhirCache : IDisposable
                     // we now have an exact version, check for a local copy
                     if (TryGetCacheRec(resolvableDirectives, out cached))
                     {
-                        package = new()
+                        return new()
                         {
-                            fhirVersion = cached.FhirVersion,
-                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
-                            resolvedDirective = cached.CacheDirective,
-                            name = cached.PackageName,
-                            version = cached.Version,
+                            FhirVersion = cached.FhirVersion,
+                            Directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            ResolvedDirective = cached.CacheDirective,
+                            Name = cached.PackageName,
+                            Version = cached.Version,
                         };
-
-                        return true;
                     }
                 }
                 break;
@@ -2829,8 +3021,7 @@ public partial class FhirCache : IDisposable
                     if (!TryResolveVersionLatest(ref directive))
                     {
                         _logger.LogError($"Failed to resolve latest version: {inputDirective}");
-                        package = null;
-                        return false;
+                        return null;
                     }
 
                     resolvableDirectives = UpdateDirectives(directive);
@@ -2838,16 +3029,14 @@ public partial class FhirCache : IDisposable
                     // we now have an exact version, check for a local copy
                     if (TryGetCacheRec(resolvableDirectives, out cached))
                     {
-                        package = new()
+                        return new()
                         {
-                            fhirVersion = cached.FhirVersion,
-                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
-                            resolvedDirective = cached.CacheDirective,
-                            name = cached.PackageName,
-                            version = cached.Version,
+                            FhirVersion = cached.FhirVersion,
+                            Directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            ResolvedDirective = cached.CacheDirective,
+                            Name = cached.PackageName,
+                            Version = cached.Version,
                         };
-
-                        return true;
                     }
                 }
                 break;
@@ -2856,16 +3045,14 @@ public partial class FhirCache : IDisposable
                     // check for local entry
                     if (TryGetCacheRec(resolvableDirectives, out cached))
                     {
-                        package = new()
+                        return new()
                         {
-                            fhirVersion = cached.FhirVersion,
-                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
-                            resolvedDirective = cached.CacheDirective,
-                            name = cached.PackageName,
-                            version = cached.Version,
+                            FhirVersion = cached.FhirVersion,
+                            Directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            ResolvedDirective = cached.CacheDirective,
+                            Name = cached.PackageName,
+                            Version = cached.Version,
                         };
-
-                        return true;
                     }
 
                     // if we do not have a local version, fall-back to CI
@@ -2879,8 +3066,7 @@ public partial class FhirCache : IDisposable
                     if (!TryResolveCi(ref directive))
                     {
                         _logger.LogError($"Not found locally and failed to resolve via CI: {inputDirective}");
-                        package = null;
-                        return false;
+                        return null;
                     }
 
                     resolvableDirectives = UpdateDirectives(directive);
@@ -2889,16 +3075,14 @@ public partial class FhirCache : IDisposable
                     if (TryGetCacheRec(resolvableDirectives, out cached) &&
                         (cached.DownloadDateTime.CompareTo(directive.BuildDate) >= 0))
                     {
-                        package = new()
+                        return new()
                         {
-                            fhirVersion = cached.FhirVersion,
-                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
-                            resolvedDirective = cached.CacheDirective,
-                            name = cached.PackageName,
-                            version = cached.Version,
+                            FhirVersion = cached.FhirVersion,
+                            Directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            ResolvedDirective = cached.CacheDirective,
+                            Name = cached.PackageName,
+                            Version = cached.Version,
                         };
-
-                        return true;
                     }
                 }
                 break;
@@ -2908,8 +3092,7 @@ public partial class FhirCache : IDisposable
                     if (!TryResolveCi(ref directive))
                     {
                         _logger.LogError($"Failed to resolve via CI: {inputDirective}");
-                        package = null;
-                        return false;
+                        return null;
                     }
 
                     resolvableDirectives = UpdateDirectives(directive);
@@ -2918,16 +3101,14 @@ public partial class FhirCache : IDisposable
                     if (TryGetCacheRec(resolvableDirectives, out cached) &&
                         (cached.DownloadDateTime.CompareTo(directive.BuildDate) >= 0))
                     {
-                        package = new()
+                        return new()
                         {
-                            fhirVersion = cached.FhirVersion,
-                            directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
-                            resolvedDirective = cached.CacheDirective,
-                            name = cached.PackageName,
-                            version = cached.Version,
+                            FhirVersion = cached.FhirVersion,
+                            Directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            ResolvedDirective = cached.CacheDirective,
+                            Name = cached.PackageName,
+                            Version = cached.Version,
                         };
-
-                        return true;
                     }
                 }
                 break;
@@ -2936,8 +3117,7 @@ public partial class FhirCache : IDisposable
             default:
                 {
                     _logger.LogError($"Directive could not be parsed (unknown version type): {inputDirective}");
-                    package = null;
-                    return false;
+                    return null;
                 }
         }
 
@@ -2945,9 +3125,11 @@ public partial class FhirCache : IDisposable
             string.IsNullOrEmpty(directive.PublicationPackageUrl))
         {
             _logger.LogError($"Directive did not contain a tarball URL and could not determine a publication fallback: {inputDirective}");
-            package = null;
-            return false;
+            return null;
         }
+
+        // check for cancellation before downloading
+        cancellationToken.ThrowIfCancellationRequested();
 
         List<string> urls = new();
 
@@ -2971,12 +3153,11 @@ public partial class FhirCache : IDisposable
         {
             Uri dlUri = new(url);
 
-            downloaded = TryDownloadAndExtract(
+            (downloaded, resolvedFhirVersion, resolvedDirective) = await DownloadAndExtract(
                 dlUri,
                 dlDir,
                 directive.Directive,
-                out resolvedFhirVersion,
-                out resolvedDirective);
+                cancellationToken);
 
             if (downloaded)
             {
@@ -2987,22 +3168,20 @@ public partial class FhirCache : IDisposable
         if (!downloaded)
         {
             _logger.LogError($"Failed to download {inputDirective}: attempted: {string.Join(", ", urls)}");
-            package = null;
-            return false;
+            return null;
         }
 
         UpdatePackageCacheIndex(resolvedDirective, dlDir);
+        StateHasChanged();
 
-        package = new()
+        return new()
         {
-            fhirVersion = resolvedFhirVersion,
-            directory = dlDir,
-            resolvedDirective = resolvedDirective,
-            name = directive.PackageId,
-            version = directive.PackageVersion,
+            FhirVersion = resolvedFhirVersion,
+            Directory = dlDir,
+            ResolvedDirective = resolvedDirective,
+            Name = directive.PackageId,
+            Version = directive.PackageVersion,
         };
-
-        return true;
 
         List<string> UpdateDirectives(FhirDirective directive)
         {
@@ -3282,6 +3461,8 @@ public partial class FhirCache : IDisposable
                 _logger.LogInformation($" <<< {ex.InnerException.Message}");
             }
         }
+
+        StateHasChanged();
     }
 
     /// <summary>Attempts to download and extract a string from the given URI.</summary>
@@ -3291,16 +3472,15 @@ public partial class FhirCache : IDisposable
     /// <param name="fhirVersion">      [out] The FHIR version.</param>
     /// <param name="resolvedDirective">[out] The resolved directive.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private bool TryDownloadAndExtract(
+    private async Task<(bool success, FhirSequenceCodes fhirVersion, string resolvedDirective)> DownloadAndExtract(
         Uri uri,
         string directory,
         string packageDirective,
-        out FhirSequenceCodes fhirVersion,
-        out string resolvedDirective)
+        CancellationToken cancellationToken = default(CancellationToken))
     {
         try
         {
-            using (Stream rawStream = _httpClient.GetStreamAsync(uri).Result)
+            using (Stream rawStream = await _httpClient.GetStreamAsync(uri, cancellationToken))
             using (Stream gzipStream = new GZipStream(rawStream, CompressionMode.Decompress))
             {
                 // make sure our destination directory exists
@@ -3309,26 +3489,23 @@ public partial class FhirCache : IDisposable
                     Directory.CreateDirectory(directory);
                 }
 
-                TarFile.ExtractToDirectory(gzipStream, directory, true);
+                await TarFile.ExtractToDirectoryAsync(gzipStream, directory, true, cancellationToken);
             }
 
             UpdatePackageCacheIndex(packageDirective, directory);
 
-            fhirVersion = _packagesByDirective[packageDirective].FhirVersion;
-            resolvedDirective = packageDirective;
-            return true;
+            // successful download and extraction
+            return (true, _packagesByDirective[packageDirective].FhirVersion, packageDirective);
         }
         catch (HttpRequestException hex)
         {
             // we have a lot of not found because of package nesting, this is reported elsewhere
             if (hex.StatusCode == HttpStatusCode.NotFound)
             {
-                fhirVersion = FhirSequenceCodes.Unknown;
-                resolvedDirective = string.Empty;
-                return false;
+                return (false, FhirSequenceCodes.Unknown, string.Empty);
             }
 
-            _logger.LogInformation($"TryDownloadAndExtract <<< exception downloading {uri}: {hex.Message}");
+            _logger.LogInformation($"DownloadAndExtract <<< exception downloading {uri}: {hex.Message}");
             if (hex.InnerException != null)
             {
                 _logger.LogInformation($" <<< inner: {hex.InnerException.Message}");
@@ -3342,22 +3519,29 @@ public partial class FhirCache : IDisposable
                 // we have a lot of not found because of package nesting, this is reported elsewhere
                 if (hex.StatusCode == HttpStatusCode.NotFound)
                 {
-                    fhirVersion = FhirSequenceCodes.Unknown;
-                    resolvedDirective = string.Empty;
-                    return false;
+                    return (false, FhirSequenceCodes.Unknown, string.Empty);
                 }
             }
 
-            _logger.LogInformation($"TryDownloadAndExtract <<< exception downloading: {uri}: {ex.Message}");
+            _logger.LogInformation($"DownloadAndExtract <<< exception downloading: {uri}: {ex.Message}");
             if (ex.InnerException != null)
             {
                 _logger.LogInformation($" <<< inner: {ex.InnerException.Message}");
             }
         }
 
-        fhirVersion = FhirSequenceCodes.Unknown;
-        resolvedDirective = string.Empty;
-        return false;
+        // make sure to clean our directory so we don't load a partial package on next run
+        try
+        {
+            if (Directory.Exists(directory))
+            {
+                Directory.Delete(directory, true);
+            }
+        }
+        catch(Exception) { }
+
+        // return failure info
+        return (false, FhirSequenceCodes.Unknown, string.Empty);
     }
 
     /// <summary>Package is FHIR core.</summary>
@@ -3425,12 +3609,15 @@ public partial class FhirCache : IDisposable
             return false;
         }
 
+        bool success;
         string directive = name + "#" + version;
         directory = Path.Combine(_cachePackageDirectory, directive);
 
         // most publication versions are named with correct package information
         Uri uri = new Uri(_publicationUri, $"{relative}/{name}.tgz");
-        if (TryDownloadAndExtract(uri, directory, directive, out fhirVersion, out resolvedDirective))
+
+        (success, fhirVersion, resolvedDirective) = DownloadAndExtract(uri, directory, directive).Result;
+        if (success)
         {
             UpdatePackageCacheIndex(directive, directory);
             return true;
@@ -3439,7 +3626,9 @@ public partial class FhirCache : IDisposable
         // some ballot versions are published directly as CI versions
         uri = new Uri(_publicationUri, $"{relative}/package.tgz");
         directory = Path.Combine(_cachePackageDirectory, $"hl7.fhir.core#{version}");
-        if (TryDownloadAndExtract(uri, directory, directive, out fhirVersion, out resolvedDirective))
+
+        (success, fhirVersion, resolvedDirective) = DownloadAndExtract(uri, directory, directive).Result;
+        if (success)
         {
             UpdatePackageCacheIndex(directive, directory);
             return true;
@@ -3560,15 +3749,13 @@ public partial class FhirCache : IDisposable
     }
 
     /// <summary>Attempts to get highest version.</summary>
-    /// <param name="name">       The name.</param>
-    /// <param name="offlineMode">True to enable offline mode, false to disable it.</param>
-    /// <param name="version">    [out] The version string (e.g., 4.0.1).</param>
-    /// <param name="isCached">   [out] True if is cached, false if not.</param>
-    /// <param name="directory">  [out] Pathname of the directory.</param>
+    /// <param name="name">     The name.</param>
+    /// <param name="version">  [out] The version string (e.g., 4.0.1).</param>
+    /// <param name="isCached"> [out] True if is cached, false if not.</param>
+    /// <param name="directory">[out] Pathname of the directory.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     private bool TryGetHighestVersion(
         string name,
-        bool offlineMode,
         out string version,
         out bool isCached,
         out string directory)
@@ -3578,7 +3765,7 @@ public partial class FhirCache : IDisposable
 
         _ = TryGetHighestVersionOffline(name, out highestCached);
 
-        if (!offlineMode)
+        if (!_offlineMode)
         {
             TryGetHighestVersionOnline(name, out highestOnline);
         }
@@ -4034,7 +4221,7 @@ public partial class FhirCache : IDisposable
         GC.SuppressFinalize(this);
     }
 
-    /// <summary>State has changed.</summary>
+    /// <summary>A package has been downloaded or deleted.</summary>
     public void StateHasChanged()
     {
         OnChanged?.Invoke(this, new());

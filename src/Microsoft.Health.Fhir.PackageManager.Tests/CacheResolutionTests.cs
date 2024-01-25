@@ -87,19 +87,20 @@ public class CacheResolutionTests : IClassFixture<CacheResolutionTestFixture>
     [InlineData("hl7.fhir.uv.subscriptions-backport.r4b#1.1.x", true, "hl7.fhir.uv.subscriptions-backport.r4b#1.1.0")]
     [InlineData("hl7.fhir.uv.subscriptions-backport.r4b#1.1", true, "hl7.fhir.uv.subscriptions-backport.r4b#1.1.0")]
     [InlineData("hl7.fhir.uv.patient-corrections#dev", true, "hl7.fhir.uv.patient-corrections#dev")]
-    internal void ResolveDirective(
+    internal async void ResolveDirective(
         string directive,
         bool shouldSucceed,
         string expectedResolution = "")
     {
-        bool success = _cache.TryResolveDirective(
-            directive,
-            out PackageCacheEntry? package);
+        PackageCacheEntry? package = await _cache.ResolveAndDownloadDirective(directive);
 
-        success.Should().Be(shouldSucceed);
-
-        if (!success)
+        if (shouldSucceed)
         {
+            package.Should().NotBeNull();
+        }
+        else
+        {
+            package.Should().BeNull();
             return;
         }
 
@@ -110,7 +111,7 @@ public class CacheResolutionTests : IClassFixture<CacheResolutionTestFixture>
             return;
         }
 
-        package.Value.resolvedDirective.Should().BeEquivalentTo(expectedResolution);
+        package.Value.ResolvedDirective.Should().BeEquivalentTo(expectedResolution);
     }
 }
 
@@ -159,7 +160,7 @@ public class CacheResolutionTestFixture
         //    }
         //}
 
-        _cache = new FhirCache(Path.Combine(Directory.GetCurrentDirectory(), "data", ".fhir"), null, null);
+        _cache = new FhirCache(Path.Combine(Directory.GetCurrentDirectory(), "data", ".fhir"), false, null, null);
         FhirCache._httpClient = new(_handler);
         //_cache._httpClient = new(_handler);
     }

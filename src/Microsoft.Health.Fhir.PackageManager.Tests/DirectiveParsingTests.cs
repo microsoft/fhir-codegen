@@ -16,6 +16,7 @@ public class DirectiveParsingTestFixture
 {
     public PackageHttpMessageHandler _handler;
 
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DirectiveParsingTestFixture"/> class.
     /// </summary>
@@ -32,6 +33,8 @@ public class DirectiveParsingTests : IClassFixture<DirectiveParsingTestFixture>
     /// <summary>(Immutable) The test output helper.</summary>
     private readonly ITestOutputHelper _testOutputHelper;
 
+    public FhirCache _cache;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DirectiveParsingTests"/> class.
     /// </summary>
@@ -39,6 +42,7 @@ public class DirectiveParsingTests : IClassFixture<DirectiveParsingTestFixture>
     public DirectiveParsingTests(DirectiveParsingTestFixture fixture, ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
+        _cache = new FhirCache(Path.Combine(Directory.GetCurrentDirectory(), "data", ".fhir"), false, null, null);
     }
 
     [Theory]
@@ -198,7 +202,7 @@ public class DirectiveParsingTests : IClassFixture<DirectiveParsingTestFixture>
         bool shouldPass,
         string expectedId = "")
     {
-        bool parsed = FhirCache.TryParseUrl(url, out FhirDirective? directive);
+        bool parsed = _cache.TryParseUrl(url, out FhirDirective? directive);
 
         parsed.Should().Be(shouldPass);
 
