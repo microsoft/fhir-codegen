@@ -18,6 +18,16 @@ public interface IFhirPackageClient : IDisposable
     /// <returns>An IFhirPackageClient.</returns>
     static abstract IFhirPackageClient Create(FhirPackageClientSettings? settings = null);
 
+    /// <summary>Adds a local package to the FHIR package cache.</summary>
+    /// <param name="packageFilename">  Full pathname of the package file ([path][name].tgz).</param>
+    /// <param name="cacheVersionAlias">(Optional) The cache version alias (e.g., 'dev').</param>
+    /// <param name="cancellationToken">(Optional) A token that allows processing to be cancelled.</param>
+    /// <returns>An asynchronous result that yields a PackageCacheEntry?</returns>
+    Task<PackageCacheEntry?> AddLocalPackage(
+        string packageFilename,
+        string cacheVersionAlias = "",
+        CancellationToken cancellationToken = default(CancellationToken));
+
     /// <summary>Deletes the package described by packageDirective.</summary>
     /// <param name="packageDirective">The package directive.</param>
     void DeletePackage(string packageDirective);

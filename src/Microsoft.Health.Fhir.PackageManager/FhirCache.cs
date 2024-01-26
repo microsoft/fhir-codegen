@@ -19,6 +19,8 @@ using System.Text.Json;
 using static Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases;
 using static Microsoft.Health.Fhir.PackageManager.Models.FhirDirective;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System;
 
 namespace Microsoft.Health.Fhir.PackageManager;
 
@@ -234,6 +236,156 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             settings?.AdditionalRegistryUrls ?? Enumerable.Empty<string>());
 
         return fhirCache;
+    }
+
+    /// <summary>Adds a local package to the FHIR package cache.</summary>
+    /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+    /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
+    /// <param name="packageFilename">  Full pathname of the package file ([path][name].tgz).</param>
+    /// <param name="cacheVersionAlias">(Optional) The cache version alias (e.g., 'dev').</param>
+    /// <param name="cancellationToken">(Optional) A token that allows processing to be cancelled.</param>
+    /// <returns>An asynchronous result that yields a PackageCacheEntry?</returns>
+    public async Task<PackageCacheEntry?> AddLocalPackage(
+        string packageFilename,
+        string cacheVersionAlias = "",
+        CancellationToken cancellationToken = default(CancellationToken))
+    {
+        if (string.IsNullOrEmpty(packageFilename))
+        {
+            _logger.LogError("AddLocalPackage <<< packageFilename is required");
+            throw new ArgumentNullException(nameof(packageFilename));
+        }
+
+        if (!File.Exists(packageFilename))
+        {
+            _logger.LogError($"AddLocalPackage <<< packageFilename `{packageFilename}` does not exist");
+            throw new FileNotFoundException("packageFilename does not exist", packageFilename);
+        }
+
+        string packageDirective = string.Empty;
+        string directory = string.Empty;
+        string name = string.Empty;
+
+        try
+        {
+            using (FileStream fs = new FileStream(packageFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (Stream gzipStream = new GZipStream(fs, CompressionMode.Decompress))
+            using (TarReader tarReader = new TarReader(gzipStream))
+            {
+                // since we do not know the contents of the package tar, we need to pull the package manifest
+                TarEntry? entry = tarReader.GetNextEntry();
+                while (entry != null)
+                {
+                    // skip any entries without a data stream
+                    if (entry.DataStream == null)
+                    {
+                        entry = tarReader.GetNextEntry();
+                        continue;
+                    }
+
+                    switch (entry.Name.ToLowerInvariant())
+                    {
+                        case "package/package.json":
+                            {
+                                if (entry.DataStream == null)
+                                {
+                                    continue;
+                                }
+
+                                using (StreamReader sr = new StreamReader(entry.DataStream))
+                                {
+                                    string manifest = await sr.ReadToEndAsync(cancellationToken);
+
+                                    CachePackageManifest? packageManifest = JsonSerializer.Deserialize<CachePackageManifest>(manifest);
+
+                                    if (packageManifest == null)
+                                    {
+                                        _logger.LogError($"AddLocalPackage <<< packageFilename `{packageFilename}` does not contain a valid package manifest");
+                                        return null;
+                                    }
+
+                                    // we have a valid package manifest, we can now create a cache directive
+                                    name = packageManifest.Name;
+                                    packageDirective = $"{packageManifest.Name}#{packageManifest.Version}";
+                                }
+                                break;
+                            }
+                    }
+
+                    entry = tarReader.GetNextEntry();
+                }
+
+                // note that we cannot extract the contents of the package here because the GZipStream is forward-only
+            }
+
+            if (string.IsNullOrEmpty(packageDirective))
+            {
+                _logger.LogError($"AddLocalPackage <<< package file `{packageFilename}` does not contain a valid package manifest");
+                return null;
+            }
+
+            if (string.IsNullOrEmpty(cacheVersionAlias))
+            {
+                directory = Path.Combine(_cachePackageDirectory, packageDirective);
+            }
+            else
+            {
+                directory = Path.Combine(_cachePackageDirectory, $"{name}#{cacheVersionAlias}");
+            }
+
+            using (FileStream fs = new FileStream(packageFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (Stream gzipStream = new GZipStream(fs, CompressionMode.Decompress))
+            {
+                // make sure our destination directory exists
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                await TarFile.ExtractToDirectoryAsync(gzipStream, directory, true, cancellationToken);
+            }
+
+            UpdatePackageCacheIndex(packageDirective, directory);
+
+            if (!_packagesByDirective.TryGetValue(packageDirective, out PackageCacheRecord pcr))
+            {
+                _logger.LogError($"AddLocalPackage <<< failed to extract package file `{packageFilename}`");
+                return null;
+            }
+
+            // successful extraction
+            return new PackageCacheEntry()
+            {
+                FhirVersion = pcr.FhirVersion,
+                Directory = directory,
+                ResolvedDirective = pcr.CacheDirective,
+                Name = pcr.PackageName,
+                Version = pcr.Version,
+            };
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException == null)
+            {
+                _logger.LogInformation($"AddLocalPackage <<< exception processing: {packageFilename}: {ex.Message}");
+            }
+            else
+            {
+                _logger.LogInformation($"AddLocalPackage <<< exception processing: {packageFilename}: {ex.Message}.  {ex.InnerException.Message}");
+            }
+        }
+
+        // make sure to clean our directory so we don't load a partial package on next run
+        try
+        {
+            if ((!string.IsNullOrEmpty(directory)) && Directory.Exists(directory))
+            {
+                Directory.Delete(directory, true);
+            }
+        }
+        catch (Exception) { }
+
+        return null;
     }
 
     /// <summary>
