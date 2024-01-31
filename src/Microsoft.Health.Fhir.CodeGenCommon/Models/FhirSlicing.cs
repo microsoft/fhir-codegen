@@ -261,7 +261,6 @@ public class FhirSlicing : ICloneable
         _slicesInDifferential.Add(sliceName);
 
         if (_slicesByName.ContainsKey(sliceName) &&
-            (_slicesByName[sliceName].Elements != null) &&
             _slicesByName[sliceName].Elements.Any())
         {
             foreach (FhirElement element in _slicesByName[sliceName].Elements.Values)

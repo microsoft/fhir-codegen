@@ -72,7 +72,6 @@ public abstract record class FhirCanonicalBase : FhirResourceBase, IConformanceA
         Copyright = other.Copyright;
         CopyrightLabel = other.CopyrightLabel;
         ConformanceExpectation = other.ConformanceExpectation with { };
-        ObligationsByActor = other.ObligationsByActor.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(v => v with { }));
     }
 
     /// <summary>
@@ -143,9 +142,6 @@ public abstract record class FhirCanonicalBase : FhirResourceBase, IConformanceA
 
     /// <summary>Gets or initializes the conformance expectation.</summary>
     public FhirExpectation ConformanceExpectation { get; init; } = new();
-
-    /// <summary>Gets the obligations by actor.</summary>
-    public Dictionary<string, IEnumerable<FhirObligation>> ObligationsByActor { get; init; } = new();
 
     /// <summary>Makes a deep copy of this object.</summary>
     /// <returns>A copy of this object.</returns>

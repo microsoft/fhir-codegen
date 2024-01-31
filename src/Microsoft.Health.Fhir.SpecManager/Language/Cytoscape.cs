@@ -329,7 +329,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             AddElementEdges(elements, complex, complex);
 
-            if (complex.Components != null)
+            if (complex.Components.Any())
             {
                 foreach (FhirComplex component in complex.Components.Values)
                 {
@@ -347,7 +347,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirComplex root,
             FhirComplex current)
         {
-            if (current.Elements != null)
+            if (current.Elements.Any())
             {
                 foreach (FhirElement element in current.Elements.Values)
                 {
@@ -420,7 +420,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            if (current.Components != null)
+            if (current.Components.Any())
             {
                 foreach (FhirComplex complex in current.Components.Values)
                 {

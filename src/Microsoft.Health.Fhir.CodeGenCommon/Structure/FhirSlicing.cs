@@ -7,7 +7,6 @@ using System.Collections;
 using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
-using static Microsoft.Health.Fhir.CodeGenCommon.Models.FhirSlicing;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Structure;
 
@@ -217,31 +216,31 @@ public record class FhirSlicing : IReadOnlyDictionary<string, FhirComplex>, IClo
     /// <summary>Gets the keys.</summary>
     /// <typeparam name="string">     Type of the string.</typeparam>
     /// <typeparam name="FhirComplex">Type of the FHIR complex.</typeparam>
-    IEnumerable<string> IReadOnlyDictionary<string, FhirComplex>.Keys => _slices.Keys;
+    public IEnumerable<string> Keys => _slices.Keys;
 
     /// <summary>Gets the values.</summary>
     /// <typeparam name="string">     Type of the string.</typeparam>
     /// <typeparam name="FhirComplex">Type of the FHIR complex.</typeparam>
-    IEnumerable<FhirComplex> IReadOnlyDictionary<string, FhirComplex>.Values => _slices.Values;
+    public IEnumerable<FhirComplex> Values => _slices.Values;
 
     /// <summary>Gets the number of. </summary>
     /// <typeparam name="string">      Type of the string.</typeparam>
     /// <typeparam name="FhirComplex>">Type of the FHIR complex></typeparam>
-    int IReadOnlyCollection<KeyValuePair<string, FhirComplex>>.Count => _slices.Count();
+    public int Count => _slices.Count();
 
     /// <summary>Indexer to get items within this collection using array index syntax.</summary>
     /// <typeparam name="string">     Type of the string.</typeparam>
     /// <typeparam name="FhirComplex">Type of the FHIR complex.</typeparam>
     /// <param name="key">The key.</param>
     /// <returns>The indexed item.</returns>
-    FhirComplex IReadOnlyDictionary<string, FhirComplex>.this[string key] => _slices[key];
+    public FhirComplex this[string key] => _slices[key];
 
     /// <summary>Query if 'key' contains key.</summary>
     /// <typeparam name="string">     Type of the string.</typeparam>
     /// <typeparam name="FhirComplex">Type of the FHIR complex.</typeparam>
     /// <param name="key">The key.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    bool IReadOnlyDictionary<string, FhirComplex>.ContainsKey(string key) => _slices.ContainsKey(key);
+    public bool ContainsKey(string key) => _slices.ContainsKey(key);
 
     /// <summary>Attempts to get value a FhirComplex from the given string.</summary>
     /// <typeparam name="string">     Type of the string.</typeparam>
@@ -249,13 +248,13 @@ public record class FhirSlicing : IReadOnlyDictionary<string, FhirComplex>, IClo
     /// <param name="key">  The key.</param>
     /// <param name="value">[out] The value.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    bool IReadOnlyDictionary<string, FhirComplex>.TryGetValue(string key, out FhirComplex value) => _slices.TryGetValue(key, out value);
+    public bool TryGetValue(string key, [NotNullWhen(true)] out FhirComplex value) => _slices.TryGetValue(key, out value);
 
     /// <summary>Gets the enumerator.</summary>
     /// <typeparam name="string">      Type of the string.</typeparam>
     /// <typeparam name="FhirComplex>">Type of the FHIR complex></typeparam>
     /// <returns>The enumerator.</returns>
-    IEnumerator<KeyValuePair<string, FhirComplex>> IEnumerable<KeyValuePair<string, FhirComplex>>.GetEnumerator() => _slices.GetEnumerator();
+    public IEnumerator<KeyValuePair<string, FhirComplex>> GetEnumerator() => _slices.GetEnumerator();
 
     /// <summary>Gets the enumerator.</summary>
     /// <returns>The enumerator.</returns>

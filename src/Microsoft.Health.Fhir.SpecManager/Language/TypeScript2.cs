@@ -887,7 +887,7 @@ public sealed class TypeScript2 : ILanguage
         ref ExportedComplex exportedInfo)
     {
         // check for nested components
-        if (complex.Components != null)
+        if (complex.Components.Any())
         {
             foreach (FhirComplex component in complex.Components.Values)
             {
@@ -945,7 +945,7 @@ public sealed class TypeScript2 : ILanguage
 
             sbClass.WriteLineIndented($"export class {nameForExport} implements {_namespaceInternal}.I{nameForExport} {{");
         }
-        else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
+        else if ((complex.Components.Any()) && complex.Components.ContainsKey(complex.Path))
         {
             nameForExport = complex.NameForExport(NamingConvention.PascalCase, true, string.Empty, _reservedWords);
             baseClassName = complex.TypeForExport(NamingConvention.PascalCase, _primitiveTypeMap, false, string.Empty, _reservedWords);

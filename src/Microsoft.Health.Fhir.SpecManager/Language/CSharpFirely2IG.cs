@@ -1056,7 +1056,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             CloseScope();
 
             // check for nested components
-            if (complex.Components != null)
+            if (complex.Components.Any())
             {
                 foreach (FhirComplex component in complex.Components.Values)
                 {
@@ -1268,7 +1268,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             CloseScope();
 
             // check for nested components
-            if (complex.Components != null)
+            if (complex.Components.Any())
             {
                 foreach (FhirComplex component in complex.Components.Values)
                 {
@@ -1311,7 +1311,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 usedEnumNames = new HashSet<string>();
             }
 
-            if (complex.Elements != null)
+            if (complex.Elements.Any())
             {
                 foreach (FhirElement element in complex.Elements.Values)
                 {
@@ -1326,7 +1326,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            if (complex.Components != null)
+            if (complex.Components.Any())
             {
                 foreach (FhirComplex component in complex.Components.Values)
                 {

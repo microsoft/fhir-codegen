@@ -82,6 +82,11 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirVersionInfo"/>
+    /// class.
+    /// </summary>
+    /// <param name="fhirSequence">The fhir version.</param>
     public FhirVersionInfo(FhirPackageCommon.FhirSequenceEnum fhirSequence)
         : this()
     {
@@ -837,6 +842,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
     /// <summary>Gets or sets the major version.</summary>
     public FhirPackageCommon.FhirSequenceEnum FhirSequence { get; set; }
 
+    // TODO(ginoc): Switch to CachePackageManifest?
     /// <summary>Gets or sets the package details.</summary>
     public NpmPackageDetails PackageDetails { get; set; }
 
@@ -2087,7 +2093,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
 
         // check for needing to use the base type name for context
-        if ((extension.ContextElements == null) || (extension.ContextElements.Count == 0))
+        if (!extension.ContextElements.Any())
         {
             if (string.IsNullOrEmpty(extension.BaseTypeName))
             {
@@ -2149,7 +2155,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         return false;
     }
 
-    /// <summary>Attempts to get explicit name a string from the given string.</summary>
+    /// <summary>Attempts to get an explicit name string from the given string.</summary>
     /// <param name="path">        Full pathname of the file.</param>
     /// <param name="explicitName">[out] Name of the explicit.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
@@ -2480,7 +2486,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
         }
 
         // check for element types
-        if (complex.Elements != null)
+        if (complex.Elements.Any())
         {
             foreach (KeyValuePair<string, FhirElement> kvp in complex.Elements)
             {
@@ -2520,7 +2526,7 @@ public class FhirVersionInfo : IPackageImportable, IPackageExportable
             }
         }
 
-        if (complex.Components != null)
+        if (complex.Components.Any())
         {
             if (source._complexTypesByName.ContainsKey("BackboneElement") &&
                 (!set.Contains("BackboneElement")))

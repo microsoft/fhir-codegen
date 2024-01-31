@@ -14,7 +14,7 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 public class FhirComplex : FhirModelBase, ICloneable
 {
     private Dictionary<string, FhirComplex> _components;
-    private FhirElement _rootElement;
+    private FhirElement? _rootElement;
     private Dictionary<string, FhirElement> _elements;
     private Dictionary<string, FhirSearchParam> _searchParameters;
     private Dictionary<string, FhirOperation> _typeOperations;
@@ -294,16 +294,16 @@ public class FhirComplex : FhirModelBase, ICloneable
         ParentArtifactClass = source.ParentArtifactClass;
         ResolvedParentDirective = source.ResolvedParentDirective;
         SliceName = source.SliceName;
-        _rootElement = (FhirElement)source._rootElement?.Clone() ?? null;
-        _elements = source._elements?.DeepCopy() ?? null;
-        _components = source._components?.DeepCopy() ?? null;
-        _searchParameters = source._searchParameters?.DeepCopy() ?? null;
-        _typeOperations = source._typeOperations?.DeepCopy() ?? null;
-        _instanceOperations = source._instanceOperations?.DeepCopy() ?? null;
-        _contextElements = source._contextElements?.Select(v => v).ToList() ?? null;
-        _constraintsByKey = source._constraintsByKey?.DeepCopy() ?? null;
-        Mappings = source.Mappings?.DeepCopy() ?? null;
-        RootElementMappings = source.RootElementMappings?.DeepCopy() ?? null;
+        _rootElement = (FhirElement?)source._rootElement?.Clone() ?? null;
+        _elements = source._elements?.DeepCopy() ?? new();
+        _components = source._components?.DeepCopy() ?? new();
+        _searchParameters = source._searchParameters?.DeepCopy() ?? new();
+        _typeOperations = source._typeOperations?.DeepCopy() ?? new();
+        _instanceOperations = source._instanceOperations?.DeepCopy() ?? new();
+        _contextElements = source._contextElements?.Select(v => v).ToList() ?? new();
+        _constraintsByKey = source._constraintsByKey?.DeepCopy() ?? new();
+        Mappings = source.Mappings?.DeepCopy() ?? new();
+        RootElementMappings = source.RootElementMappings?.DeepCopy() ?? new();
     }
 
     /// <summary>Gets the explicit name of this structure, if provided.</summary>
@@ -317,7 +317,7 @@ public class FhirComplex : FhirModelBase, ICloneable
     public bool IsPlaceholder { get; set; }
 
     /// <summary>Gets or sets the parent.</summary>
-    public FhirComplex Parent { get; set; }
+    public FhirComplex? Parent { get; set; }
 
     /// <summary>Gets or sets the parent artifact class.</summary>
     public FhirArtifactClassEnum ParentArtifactClass { get; set; }
@@ -330,7 +330,7 @@ public class FhirComplex : FhirModelBase, ICloneable
     public string SliceName { get; set; }
 
     /// <summary>Gets the root element.</summary>
-    public FhirElement RootElement { get => _rootElement; }
+    public FhirElement? RootElement { get => _rootElement; }
 
     /// <summary>Gets the elements.</summary>
     /// <value>The elements.</value>
@@ -736,14 +736,14 @@ public class FhirComplex : FhirModelBase, ICloneable
         bool copySlicing,
         bool canHideParentFields,
         Dictionary<string, ValueSetReferenceInfo> valueSetReferences,
-        Dictionary<string, FhirNodeInfo> typeMapByPath,
-        Dictionary<string, FhirCapSearchParam> supportedSearchParams = null,
-        Dictionary<string, FhirCapSearchParam> serverSearchParams = null,
-        Dictionary<string, FhirCapOperation> supportedOperations = null,
-        Dictionary<string, FhirCapOperation> serverOperations = null,
+        Dictionary<string, FhirNodeInfo>? typeMapByPath,
+        Dictionary<string, FhirCapSearchParam>? supportedSearchParams = null,
+        Dictionary<string, FhirCapSearchParam>? serverSearchParams = null,
+        Dictionary<string, FhirCapOperation>? supportedOperations = null,
+        Dictionary<string, FhirCapOperation>? serverOperations = null,
         bool includeExperimental = false)
     {
-        List<string> contextElements = ContextElements?.Select(s => new string(s)).ToList() ?? null;
+        List<string> contextElements = ContextElements?.Select(s => new string(s)).ToList() ?? new();
 
         // generate our base copy
         FhirComplex complex = new FhirComplex(
@@ -763,7 +763,7 @@ public class FhirComplex : FhirModelBase, ICloneable
             ShortDescription,
             Purpose,
             Comment,
-            ContextElements,
+            contextElements,
             IsAbstract,
             ValidationRegEx,
             NarrativeText,
@@ -777,9 +777,9 @@ public class FhirComplex : FhirModelBase, ICloneable
 
         if (!string.IsNullOrEmpty(BaseTypeName))
         {
-            if ((primitiveTypeMap != null) && primitiveTypeMap.ContainsKey(BaseTypeName))
+            if (primitiveTypeMap.TryGetValue(BaseTypeName, out string? mappedType) && (!string.IsNullOrEmpty(mappedType)))
             {
-                complex.BaseTypeName = primitiveTypeMap[BaseTypeName];
+                complex.BaseTypeName = mappedType;
             }
             else
             {
@@ -816,7 +816,7 @@ public class FhirComplex : FhirModelBase, ICloneable
                 valueSetReferences,
                 typeMapByPath);
 
-            typeMapByPath?.Add(
+            typeMapByPath.Add(
                     node.Path,
                     new FhirNodeInfo(FhirNodeInfo.FhirNodeType.Component, node));
 

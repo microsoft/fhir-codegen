@@ -23,7 +23,6 @@ public record class ConformanceEnum<T> : ConformanceAnnotatedBase, ICloneable, I
     {
         Value = other.Value;
         ConformanceExpectation = other.ConformanceExpectation;
-        ObligationsByActor = other.ObligationsByActor.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(v => v with { }));
     }
 
     /// <summary>Gets or initializes the value.</summary>
@@ -38,7 +37,8 @@ public record class ConformanceEnum<T> : ConformanceAnnotatedBase, ICloneable, I
     object ICloneable.Clone() => this with { };
 
     /// <summary>
-    /// Compares this WithObsVal&lt;T&gt;? object to another to determine their relative ordering.
+    /// Compares this ConformanceVal&lt;T&gt;? object to another to determine their relative
+    /// ordering.
     /// </summary>
     /// <typeparam name="T>">Type of the t></typeparam>
     /// <param name="other">Another instance to compare.</param>
@@ -59,10 +59,10 @@ public record class ConformanceEnum<T> : ConformanceAnnotatedBase, ICloneable, I
     /// </returns>
     int IComparable<T>.CompareTo(T? other) => other == null ? -1 : Value.CompareTo(other);
 
-    /// <summary>Tests if two WithObsVal&lt;T&gt;? objects are considered equal.</summary>
+    /// <summary>Tests if two ConformanceVal&lt;T&gt;? objects are considered equal.</summary>
     /// <typeparam name="T>">Type of the t></typeparam>
-    /// <param name="x">With obs val&lt; t&gt;? to be compared.</param>
-    /// <param name="y">With obs val&lt; t&gt;? to be compared.</param>
+    /// <param name="x">Conformance val&lt; t&gt;? to be compared.</param>
+    /// <param name="y">Conformance val&lt; t&gt;? to be compared.</param>
     /// <returns>True if the objects are considered equal, false if they are not.</returns>
     bool IEqualityComparer<ConformanceVal<T>>.Equals(ConformanceVal<T>? x, ConformanceVal<T>? y) => x == null || y == null ? false : x.Value.Equals(y.Value);
 
@@ -70,5 +70,5 @@ public record class ConformanceEnum<T> : ConformanceAnnotatedBase, ICloneable, I
     /// <typeparam name="T>">Type of the t></typeparam>
     /// <param name="obj">The object.</param>
     /// <returns>A hash code for this object.</returns>
-    int IEqualityComparer<ConformanceVal<T>>.GetHashCode(ConformanceVal<T> obj) => obj?.Value.GetHashCode() ?? obj?.ObligationsByActor.GetHashCode() ?? 0;
+    int IEqualityComparer<ConformanceVal<T>>.GetHashCode(ConformanceVal<T> obj) => obj?.Value.GetHashCode() ?? obj?.ConformanceExpectation.GetHashCode() ?? 0;
 }

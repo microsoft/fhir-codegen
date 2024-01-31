@@ -183,7 +183,7 @@ public record class FhirComplex : FhirStructureBase, ICloneable
     public Dictionary<string, FhirConstraint> ConstraintsByKey { get => _constraints; }
 
     /// <summary>Gets the mappings - external specifications that the content is mapped to.</summary>
-    public Dictionary<string, StructureMapping> Mappings { get => _mappings; }
+    public Dictionary<string, StructureMapping> Mappings { get => _mappings; init => _mappings = value; }
 
     /// <summary>Gets the root element mappings.</summary>
     public Dictionary<string, List<FhirElementMapping>> RootElementMappings { get => _rootElement.Mappings; }
@@ -191,4 +191,261 @@ public record class FhirComplex : FhirStructureBase, ICloneable
     /// <summary>Makes a deep copy of this object.</summary>
     /// <returns>A copy of this object.</returns>
     object ICloneable.Clone() => this with { };
+
+    /// <summary>Attempts to get explicit name.</summary>
+    /// <param name="path">        Full pathname of the file.</param>
+    /// <param name="explicitName">[out] Name of the explicit.</param>
+    /// <param name="startIndex">  (Optional) The start index.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetExplicitName(
+        string path,
+        out string explicitName,
+        int startIndex = 0)
+    {
+        if (string.IsNullOrEmpty(path))
+        {
+            explicitName = string.Empty;
+            return false;
+        }
+
+        int index = path.IndexOf('.', startIndex + 1);
+
+        string currentPath;
+
+        if (index != -1)
+        {
+            currentPath = path.Substring(0, index);
+        }
+        else
+        {
+            currentPath = path;
+        }
+
+        if (_components.ContainsKey(currentPath))
+        {
+            if (index == -1)
+            {
+                explicitName = _components[currentPath].ExplicitName;
+
+                if (string.IsNullOrEmpty(explicitName))
+                {
+                    explicitName = string.Empty;
+                    return false;
+                }
+
+                return true;
+            }
+
+            return _components[currentPath].TryGetExplicitName(path, out explicitName, index);
+        }
+
+        if (_elements.ContainsKey(currentPath))
+        {
+            explicitName = _elements[currentPath].ExplicitName;
+
+            if (string.IsNullOrEmpty(explicitName))
+            {
+                explicitName = string.Empty;
+                return false;
+            }
+
+            return true;
+        }
+
+        explicitName = string.Empty;
+        return false;
+    }
+
+    public bool GetParentAndFieldName(
+        string url,
+        string[] idComponents,
+        string[] pathComponents,
+        out FhirComplex? parent,
+        out string field,
+        out string sliceName)
+    {
+        // sanity checks - need at least 2 path components to have a parent
+        if ((idComponents == null) || (idComponents.Length < 2) ||
+            (pathComponents == null) || (pathComponents.Length < 2))
+        {
+            parent = null;
+            field = string.Empty;
+            sliceName = string.Empty;
+            return false;
+        }
+
+        // find the parent and field name
+        return GetParentAndFieldNameRecurse(
+            url,
+            idComponents,
+            pathComponents,
+            0,
+            out parent,
+            out field,
+            out sliceName);
+    }
+
+    /// <summary>Gets the parent and field name, recursively.</summary>
+    /// <param name="url">           URL of the resource.</param>
+    /// <param name="idComponents">  The id components.</param>
+    /// <param name="pathComponents">The path components.</param>
+    /// <param name="startIndex">    The start index.</param>
+    /// <param name="parent">        [out] The parent.</param>
+    /// <param name="field">         [out] The field.</param>
+    /// <param name="sliceName">     [out] Name of the slice.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool GetParentAndFieldNameRecurse(
+        string url,
+        string[] idComponents,
+        string[] pathComponents,
+        int startIndex,
+        out FhirComplex? parent,
+        out string field,
+        out string sliceName)
+    {
+        // check for being the parent to the field
+        if (startIndex == (pathComponents.Length - 2))
+        {
+            // check for slice name on field
+            sliceName = GetSliceNameIfPresent(idComponents, idComponents.Length - 1);
+
+            parent = this;
+            field = pathComponents[pathComponents.Length - 1];
+
+            return true;
+        }
+
+        // build the path to the next item in the path
+        string path = DotForComponents(pathComponents, 0, startIndex + 1);
+
+        if (!_elements.TryGetValue(path, out FhirElement? pathElement) ||
+            (pathElement == null))
+        {
+            // fail
+            parent = null;
+            field = string.Empty;
+            sliceName = string.Empty;
+            return false;
+        }
+
+        // check for needing to divert into a slice
+        string nextIdSlice = GetSliceNameIfPresent(idComponents, startIndex + 1);
+
+        if ((!string.IsNullOrEmpty(nextIdSlice)) &&
+            pathElement.SlicesByName.TryGetValue(url, out FhirSlicing? elementSlicing) &&
+            (elementSlicing != null) &&
+            elementSlicing.TryGetValue(nextIdSlice, out FhirComplex slice))
+        {
+            // recurse into slice
+            return slice.GetParentAndFieldNameRecurse(
+                url,
+                idComponents,
+                pathComponents,
+                startIndex + 1,
+                out parent,
+                out field,
+                out sliceName);
+        }
+
+        // check for matching element, but no component
+        if ((!_components.TryGetValue(path, out FhirComplex? pathComponent)) ||
+            (pathComponent == null))
+        {
+            string elementType = pathElement.BaseTypeName;
+
+            if (string.IsNullOrEmpty(elementType) && (pathElement.ElementTypes.Count > 0))
+            {
+                elementType = pathElement.ElementTypes.Values.ElementAt(0).Name;
+            }
+
+            pathComponent = new()
+            {
+                ArtifactClass = ArtifactClass,
+                Id = pathElement.Id,
+                Name = pathElement.Name,
+                Path = pathElement.Path,
+                ExplicitName = pathElement.ExplicitName,
+                BaseTypeName = elementType,
+                Version = Version,
+                Url = pathElement.Url,
+                PublicationStatus = PublicationStatus,
+                FhirMaturityLevel = FhirMaturityLevel,
+                IsExperimental = IsExperimental,
+                ShortDescription = pathElement.ShortDescription,
+                Purpose = pathElement.Purpose,
+                Comment = pathElement.Comment,
+                ValidationRegEx = pathElement.ValidationRegEx,
+                NarrativeText = NarrativeText,
+                NarrativeStatus = NarrativeStatus,
+                FhirVersion = FhirVersion,
+                Mappings = Mappings.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { }),
+                IsAbstract = IsAbstract,
+                Parent = this,
+                ParentArtifactClass = ArtifactClass,
+                DefiningPackageDirective = DefiningPackageDirective,
+                RootElement = pathElement,
+            };
+
+            _components.Add(path, pathComponent);
+
+            // update the element to have the type of the component we just added
+            pathElement = pathElement with { BaseTypeName = elementType };
+        }
+
+        // check Components for match
+        if (_components.ContainsKey(path))
+        {
+            // recurse
+            return _components[path].GetParentAndFieldNameRecurse(
+                url,
+                idComponents,
+                pathComponents,
+                startIndex + 1,
+                out parent,
+                out field,
+                out sliceName);
+        }
+
+        // fail
+        parent = null;
+        field = string.Empty;
+        sliceName = string.Empty;
+        return false;
+    }
+
+    /// <summary>Path for components.</summary>
+    /// <param name="components">The components.</param>
+    /// <param name="startIndex">The start index.</param>
+    /// <param name="endIndex">  The end index.</param>
+    /// <returns>A string.</returns>
+    private static string DotForComponents(
+        string[] components,
+        int startIndex,
+        int endIndex)
+    {
+        string val = components[startIndex];
+
+        for (int i = startIndex + 1; i <= endIndex; i++)
+        {
+            val += $".{components[i]}";
+        }
+
+        return val;
+    }
+
+    /// <summary>Attempts to get slice.</summary>
+    /// <param name="idComponents">The id components.</param>
+    /// <param name="index">       Zero-based index of the.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private static string GetSliceNameIfPresent(string[] idComponents, int index)
+    {
+        string[] split = idComponents[index].Split(':');
+
+        if (split.Length == 1)
+        {
+            return string.Empty;
+        }
+
+        return split[1];
+    }
 }

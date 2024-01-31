@@ -215,15 +215,7 @@ public record class FhirCapabilityStatement : FhirCanonicalBase, ICloneable
 
         /// <summary>Convert this object into a string representation.</summary>
         /// <returns>A string that represents this object.</returns>
-        public override string ToString()
-        {
-            if (!ObligationsByActor.Any())
-            {
-                return Name;
-            }
-
-            return Name + ": " + string.Join("; ", ObligationsByActor.Select(kvp => (string.IsNullOrEmpty(kvp.Key) ? "" : $"{kvp.Key}: ") + string.Join(", ", kvp.Value)));
-        }
+        public override string ToString() => Name;
 
         /// <summary>Makes a deep copy of this object.</summary>
         /// <returns>A copy of this object.</returns>
@@ -279,15 +271,7 @@ public record class FhirCapabilityStatement : FhirCanonicalBase, ICloneable
 
         /// <summary>Convert this object into a string representation.</summary>
         /// <returns>A string that represents this object.</returns>
-        public override string ToString()
-        {
-            if (!ObligationsByActor.Any())
-            {
-                return Name;
-            }
-
-            return Name + ": " + string.Join("; ", ObligationsByActor.Select(kvp => (string.IsNullOrEmpty(kvp.Key) ? "" : $"{kvp.Key}: ") + string.Join(", ", kvp.Value)));
-        }
+        public override string ToString() => Name;
 
         /// <summary>Makes a deep copy of this object.</summary>
         /// <returns>A copy of this object.</returns>
@@ -332,11 +316,6 @@ public record class FhirCapabilityStatement : FhirCanonicalBase, ICloneable
             {
                 sb.Append(" - Optional: ");
                 sb.Append(string.Join(", ", OptionalParams));
-            }
-
-            if (ObligationsByActor.Any())
-            {
-                sb.Append(string.Join(" - Obligations: ", ObligationsByActor.Select(kvp => (string.IsNullOrEmpty(kvp.Key) ? "" : $"{kvp.Key}: ") + string.Join(", ", kvp.Value))));
             }
 
             return sb.ToString();
@@ -495,15 +474,7 @@ public record class FhirCapabilityStatement : FhirCanonicalBase, ICloneable
 
         /// <summary>Convert this object into a string representation.</summary>
         /// <returns>A string that represents this object.</returns>
-        public override string ToString()
-        {
-            if (!ObligationsByActor.Any())
-            {
-                return ResourceType;
-            }
-
-            return ResourceType + ": " + string.Join("; ", ObligationsByActor.Select(kvp => (string.IsNullOrEmpty(kvp.Key) ? "" : $"{kvp.Key}: ") + string.Join(", ", kvp.Value)));
-        }
+        public override string ToString() => ResourceType;
 
         /// <summary>Makes a deep copy of this object.</summary>
         /// <returns>A copy of this object.</returns>
@@ -638,6 +609,7 @@ public record class FhirCapabilityStatement : FhirCanonicalBase, ICloneable
     /// <summary>Gets the operations defined at the system level operation.</summary>
     public Dictionary<string, CapabilityOperation> ServerOperations { get; init; } = new();
 
+    /// <summary>Gets or initializes the security schemes.</summary>
     public IEnumerable<CapabilitySecurityScheme> SecuritySchemes { get; init; } = Enumerable.Empty<CapabilitySecurityScheme>();
 
     /// <summary>Makes a deep copy of this object.</summary>

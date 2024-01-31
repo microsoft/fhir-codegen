@@ -951,19 +951,19 @@ public static class Program
         }
 
         // dump search parameters
-        if (complex.SearchParameters != null)
+        if (complex.SearchParameters.Any())
         {
             DumpSearchParameters(writer, complex.SearchParameters.Values, indentation);
         }
 
         // dump type operations
-        if (complex.TypeOperations != null)
+        if (complex.TypeOperations.Any())
         {
             DumpOperations(writer, complex.TypeOperations.Values, indentation, true);
         }
 
         // dump instance operations
-        if (complex.InstanceOperations != null)
+        if (complex.InstanceOperations.Any())
         {
             DumpOperations(writer, complex.InstanceOperations.Values, indentation, false);
         }
@@ -1026,7 +1026,7 @@ public static class Program
             {
                 writer.WriteLine($"{new string(' ', indentation + 2)}+{kvp.Value.URL}");
 
-                if (kvp.Value.ContextElements != null)
+                if (kvp.Value.ContextElements.Any())
                 {
                     foreach (string contextElement in kvp.Value.ContextElements)
                     {

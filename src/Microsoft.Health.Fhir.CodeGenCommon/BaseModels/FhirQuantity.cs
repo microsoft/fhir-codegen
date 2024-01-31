@@ -6,7 +6,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Instance.FhirCanonicalBase;
-using static Microsoft.Health.Fhir.CodeGenCommon.Expectations.FhirObligation;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.BaseModels;
 

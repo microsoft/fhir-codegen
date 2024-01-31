@@ -27,7 +27,6 @@ public static class ObligationExtensions
             return new ConformanceEnum<T>()
             {
                 Value = v,
-                ObligationsByActor = val?.ObligationsByActor.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(kv => kv with { })) ?? new(),
             };
         }
 
@@ -51,14 +50,12 @@ public static class ObligationExtensions
             return new ConformanceEnum<T>()
             {
                 Value = v,
-                ObligationsByActor = val.ObligationsByActor.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(kv => kv with { })),
             };
         }
 
         return new ConformanceEnum<T>()
         {
             Value = (T)defaultVal,
-            ObligationsByActor = val?.ObligationsByActor.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(kv => kv with { })) ?? new(),
         };
     }
 
@@ -81,7 +78,6 @@ public static class ObligationExtensions
                 list.Add(new ConformanceEnum<T>()
                 {
                     Value = v,
-                    ObligationsByActor = val.ObligationsByActor.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(kv => kv with { })),
                 });
             }
         }

@@ -416,7 +416,7 @@ public class ModelBuilder
             exportType = "fhir.FhirBase";
             exportInterfaceType = "fhir.IFhirBase";
         }
-        else if ((fhirComplex.Components != null) && fhirComplex.Components.ContainsKey(fhirComplex.Path))
+        else if ((fhirComplex.Components.Any()) && fhirComplex.Components.ContainsKey(fhirComplex.Path))
         {
             exportName = fhirComplex.NameForExport(NamingConvention.PascalCase, true, string.Empty, ReservedWords);
             exportType = fhirComplex.TypeForExport(NamingConvention.PascalCase, PrimitiveTypeMap, false, string.Empty, ReservedWords);
@@ -719,7 +719,7 @@ public class ModelBuilder
         HashSet<string> vsExportNames = new();
         List<ExportComplex> backbones = new();
 
-        if (fhirComplex.Components != null)
+        if (fhirComplex.Components.Any())
         {
             foreach (FhirComplex component in fhirComplex.Components.Values)
             {
@@ -792,7 +792,7 @@ public class ModelBuilder
             }
         }
 
-        if (fhirComplex.Elements != null)
+        if (fhirComplex.Elements.Any())
         {
             foreach (FhirElement element in fhirComplex.Elements.Values)
             {

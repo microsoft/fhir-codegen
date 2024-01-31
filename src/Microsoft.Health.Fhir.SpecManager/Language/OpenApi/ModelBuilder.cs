@@ -3410,7 +3410,7 @@ public class ModelBuilder
             }
         }
 
-        if (complex.Elements != null)
+        if (complex.Elements.Any())
         {
             foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.Name))
             {
@@ -3791,7 +3791,7 @@ public class ModelBuilder
             root = complex;
         }
 
-        if (complex.Elements != null)
+        if (complex.Elements.Any())
         {
             foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.Name))
             {

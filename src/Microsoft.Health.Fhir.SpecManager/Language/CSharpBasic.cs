@@ -549,7 +549,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             bool isResource)
         {
             // check for nested components
-            if (complex.Components != null)
+            if (complex.Components.Any())
             {
                 foreach (FhirComplex component in complex.Components.Values)
                 {
@@ -574,7 +574,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $" {complex.NameForExport(NamingConvention.PascalCase, true)}" +
                         $" {{");
             }
-            else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
+            else if ((complex.Components.Any()) && complex.Components.ContainsKey(complex.Path))
             {
                 _writer.WriteLineIndented(
                     $"public class" +

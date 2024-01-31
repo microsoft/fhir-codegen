@@ -8,7 +8,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Expectations;
 
-/// <summary>A value with obligations.</summary>
+/// <summary>A value with conformance information.</summary>
 public record class ConformanceVal<T> : ConformanceAnnotatedBase, ICloneable, IComparable<ConformanceVal<T>>, IComparable<T>, IEqualityComparer<ConformanceVal<T>>
     where T : IComparable, IConvertible
 {
@@ -68,5 +68,5 @@ public record class ConformanceVal<T> : ConformanceAnnotatedBase, ICloneable, IC
     /// <typeparam name="T>">Type of the t></typeparam>
     /// <param name="obj">The object.</param>
     /// <returns>A hash code for this object.</returns>
-    int IEqualityComparer<ConformanceVal<T>>.GetHashCode(ConformanceVal<T> obj) => obj?.Value.GetHashCode() ?? obj?.ObligationsByActor.GetHashCode() ?? 0;
+    int IEqualityComparer<ConformanceVal<T>>.GetHashCode(ConformanceVal<T> obj) => obj?.Value.GetHashCode() ?? obj?.ConformanceExpectation.GetHashCode() ?? 0;
 }

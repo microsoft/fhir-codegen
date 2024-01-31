@@ -680,7 +680,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 root = complex;
             }
 
-            if (complex.Elements != null)
+            if (complex.Elements.Any())
             {
                 foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.Name))
                 {
@@ -2282,7 +2282,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            if (complex.Elements != null)
+            if (complex.Elements.Any())
             {
                 foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.Name))
                 {

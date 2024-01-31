@@ -362,6 +362,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteComplex(
             FhirComplex complex)
         {
+            if (complex.Name.Equals("SubscriptionTopic"))
+            {
+                Console.Write("");
+            }
+
             bool indented = false;
 
             // write this type's line, if it's a root element
@@ -380,7 +385,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.IncreaseIndent();
                 indented = true;
 
-                if (complex.Constraints?.Any() ?? false == true)
+                if (complex.Constraints.Any() == true)
                 {
                     WriteConstraints(complex.ConstraintsByKey.OrderBy(kvp => kvp.Key).Select(kvp => kvp.Value));
                 }
@@ -394,32 +399,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteElements(complex);
 
             // check for extensions
-            if (_info.ExtensionsByPath.ContainsKey(complex.Path))
+            if (_info.ExtensionsByPath.TryGetValue(complex.Path, out Dictionary<string, FhirComplex> extDict))
             {
-                WriteExtensions(_info.ExtensionsByPath[complex.Path].Values);
+                WriteExtensions(extDict.Values);
             }
 
             // check for search parameters on this object
-            if (complex.SearchParameters != null)
+            if (complex.SearchParameters.Any())
             {
                 WriteSearchParameters(complex.SearchParameters.Values);
             }
 
             // check for type operations
-            if (complex.TypeOperations != null)
+            if (complex.TypeOperations.Any())
             {
                 WriteOperations(complex.TypeOperations.Values, true);
             }
 
             // check for instance operations
-            if (complex.InstanceOperations != null)
+            if (complex.InstanceOperations.Any())
             {
                 WriteOperations(complex.TypeOperations.Values, false);
             }
 
-            if (_info.ProfilesByBaseType.ContainsKey(complex.Path))
+            if (_info.ProfilesByBaseType.TryGetValue(complex.Path, out Dictionary<string, FhirComplex> profileDict))
             {
-                WriteProfiles(_info.ProfilesByBaseType[complex.Path].Values);
+                WriteProfiles(profileDict.Values);
             }
 
             if (indented)

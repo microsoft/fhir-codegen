@@ -19,14 +19,10 @@ public abstract record class ConformanceAnnotatedBase : IConformanceAnnotated, I
     protected ConformanceAnnotatedBase(ConformanceAnnotatedBase other)
     {
         ConformanceExpectation = other.ConformanceExpectation with { };
-        ObligationsByActor = other.ObligationsByActor.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(v => v with { }));
     }
 
     /// <summary>Gets or initializes the conformance expectation.</summary>
     public FhirExpectation ConformanceExpectation { get; init; } = new();
-
-    /// <summary>Gets the obligations by actor.</summary>
-    public Dictionary<string, IEnumerable<FhirObligation>> ObligationsByActor { get; init; } = new();
 
     /// <summary>Makes a deep copy of this object.</summary>
     /// <returns>A copy of this object.</returns>

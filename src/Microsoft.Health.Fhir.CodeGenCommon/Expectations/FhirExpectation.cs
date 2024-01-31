@@ -37,9 +37,11 @@ public record class FhirExpectation : ICloneable
         May,
     }
 
-    /// <summary>Initializes a new instance of the FhirExpectation class.</summary>
+    /// <summary>Initializes a new instance of the <see cref="FhirExpectation"/> class.</summary>
     public FhirExpectation() { }
 
+    /// <summary>Initializes a new instance of the <see cref="FhirExpectation"/> class.</summary>
+    /// <param name="other">The other.</param>
     [SetsRequiredMembers]
     protected FhirExpectation(FhirExpectation other)
     {

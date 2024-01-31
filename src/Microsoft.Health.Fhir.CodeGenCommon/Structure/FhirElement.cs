@@ -119,7 +119,6 @@ public record class FhirElement : FhirDefinitionBase, IConformanceAnnotated, ICl
         _constraints = other._constraints.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
 
         ConformanceExpectation = other.ConformanceExpectation with { };
-        ObligationsByActor = other.ObligationsByActor.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(v => v with { }));
 
         ValueAlternatives = other.ValueAlternatives.Select(v => v);
     }
@@ -210,6 +209,11 @@ public record class FhirElement : FhirDefinitionBase, IConformanceAnnotated, ICl
     /// <summary>Gets the is modifier reason.</summary>
     public string IsModifierReason { get; init; } = string.Empty;
 
+    // TODO: https://www.hl7.org/fhir/elementdefinition-definitions.html#ElementDefinition.isSummary
+    // has a lot of rules regarding when things should be summary that are not followed - it would be
+    // nice to implement it here, but it requires traversing parent nodes that we do note have access
+    // to.  For now, we'll just assume that if the element is marked as summary, it should be and file
+    // a ticket to ask for corrections to the spec.
     /// <summary>Gets a value indicating whether this object is summary.</summary>
     public required bool IsSummary { get; init; }
 
@@ -245,7 +249,8 @@ public record class FhirElement : FhirDefinitionBase, IConformanceAnnotated, ICl
             if (_mappings.TryGetValue("w5", out List<FhirElementMapping>? w5maps) &&
                 (w5maps?.Any() ?? false))
             {
-                _fiveWs = w5maps.First().Map;
+                //_fiveWs = w5maps.First().Map;
+                _fiveWs = string.Join(',', w5maps.Select(m => m.Map));
             }
         }
     }
@@ -353,10 +358,10 @@ public record class FhirElement : FhirDefinitionBase, IConformanceAnnotated, ICl
                     return;
                 }
 
-                if (!(RootArtifact?.ConstraintsByKey.ContainsKey(c.Key) ?? false))
+                if ((RootArtifact?.ConstraintsByKey.TryGetValue(c.Key, out FhirConstraint? rootConstraint) != true) ||
+                    (rootConstraint == null))
                 {
-                    // TODO: need to sort out what is necessary here
-                    //RootArtifact?.AddConstraint(c);
+                    RootArtifact?.ConstraintsByKey.Add(c.Key, c);
                 }
 
                 _constraints[c.Key] = c;
@@ -375,20 +380,9 @@ public record class FhirElement : FhirDefinitionBase, IConformanceAnnotated, ICl
     /// <summary>Gets or initializes the conformance expectation.</summary>
     public FhirExpectation ConformanceExpectation { get; init; } = new();
 
-    /// <summary>Gets the obligations by actor.</summary>
-    public Dictionary<string, IEnumerable<FhirObligation>> ObligationsByActor { get; init; } = new();
-
     /// <summary>Convert this object into a string representation.</summary>
     /// <returns>A string that represents this object.</returns>
-    public override string ToString()
-    {
-        if (!ObligationsByActor.Any())
-        {
-            return Name;
-        }
-
-        return Name + ": " + string.Join("; ", ObligationsByActor.Select(kvp => (string.IsNullOrEmpty(kvp.Key) ? "" : $"{kvp.Key}: ") + string.Join(", ", kvp.Value)));
-    }
+    public override string ToString() => Name;
 
     /// <summary>Makes a deep copy of this object.</summary>
     /// <returns>A copy of this object.</returns>

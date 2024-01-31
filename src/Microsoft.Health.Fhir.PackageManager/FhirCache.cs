@@ -547,7 +547,10 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
         try
         {
-            return JsonSerializer.Deserialize<PackageContents>(File.ReadAllText(indexPath));
+            return JsonSerializer.Deserialize<PackageContents>(File.ReadAllText(indexPath), new JsonSerializerOptions()
+            {
+                AllowTrailingCommas = true,
+            });
         }
         catch (Exception ex)
         {

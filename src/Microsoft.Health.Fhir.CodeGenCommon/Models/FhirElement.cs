@@ -16,7 +16,7 @@ public class FhirElement : FhirPropertyBase, ICloneable
     private bool _inDifferential;
     private List<string> _codes;
     private List<PropertyRepresentationCodes> _representations;
-    private string _fiveWs = null;
+    private string _fiveWs = string.Empty;
     private HashSet<string> _conditions = new();
     private Dictionary<string, FhirConstraint> _constraintsByKey = new();
 
@@ -207,7 +207,10 @@ public class FhirElement : FhirPropertyBase, ICloneable
             ValueSetBindingStrength = bindingStrength.ToFhirEnum<ElementDefinitionBindingStrength>();
         }
 
-        _fiveWs = Mappings.ContainsKey("w5") ? Mappings["w5"]?.FirstOrDefault()?.Map ?? null : null;
+        if (Mappings.TryGetValue("w5", out List<FhirElementDefMapping>? w5maps) && (w5maps != null))
+        {
+            _fiveWs = string.Join(',', w5maps.Select(m => m.Map));
+        }
     }
 
     /// <summary>

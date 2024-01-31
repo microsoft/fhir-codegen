@@ -64,7 +64,10 @@ internal record class RegistryPackageManifest
         // attempt to parse
         try
         {
-            RegistryPackageManifest? manifest = JsonSerializer.Deserialize<RegistryPackageManifest>(json);
+            RegistryPackageManifest? manifest = JsonSerializer.Deserialize<RegistryPackageManifest>(json, new JsonSerializerOptions()
+            {
+                AllowTrailingCommas = true,
+            });
 
             if (manifest?.Versions == null)
             {

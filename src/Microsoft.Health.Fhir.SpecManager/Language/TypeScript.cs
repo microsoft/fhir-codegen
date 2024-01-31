@@ -499,7 +499,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             bool isResource)
         {
             // check for nested components
-            if (complex.Components != null)
+            if (complex.Components.Any())
             {
                 foreach (FhirComplex component in complex.Components.Values)
                 {

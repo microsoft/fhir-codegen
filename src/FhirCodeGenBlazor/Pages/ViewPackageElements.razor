@@ -524,7 +524,7 @@ else
             return;
         }
 
-        if (complex.Components != null)
+        if (complex.Components.Any())
         {
             foreach (FhirComplex component in complex.Components.Values)
             {
@@ -532,12 +532,7 @@ else
             }
         }
 
-        if ((complex.Elements == null) || (!complex.Elements.Values.Any()))
-        {
-            return;
-        }
-
-        if ((complex.Elements == null) || (!complex.Elements.Any()))
+        if (!complex.Elements.Any())
         {
             return;
         }
