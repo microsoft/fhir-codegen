@@ -17,24 +17,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		THIRDPARTYNOTICES.md = THIRDPARTYNOTICES.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen-cli", "src\fhir-codegen-cli\fhir-codegen-cli.csproj", "{69C02221-EEE0-43B6-9EB6-08E788C464AB}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29} = {3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.SpecManager", "src\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj", "{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen-test-cli", "src\fhir-codegen-test-cli\fhir-codegen-test-cli.csproj", "{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhirCsR2", "src\fhirCsR2\fhirCsR2.csproj", "{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeGenCommon", "src\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj", "{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FhirCodeGenBlazor", "src\FhirCodeGenBlazor\FhirCodeGenBlazor.csproj", "{F91764FD-EE86-4FBC-951F-819361ABCA4F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.PackageManager", "src\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj", "{A758C220-2332-498A-B245-C6BE3203A87E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.PackageManager.Tests", "src\Microsoft.Health.Fhir.PackageManager.Tests\Microsoft.Health.Fhir.PackageManager.Tests.csproj", "{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.PackageManager.Tests", "src\Microsoft.Health.Fhir.PackageManager.Tests\Microsoft.Health.Fhir.PackageManager.Tests.csproj", "{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen", "src\fhir-codegen\fhir-codegen.csproj", "{CC4D5356-BD06-48A8-B329-7C372201549A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.CodeGen", "src\Microsoft.Health.Fhir.CodeGen\Microsoft.Health.Fhir.CodeGen.csproj", "{83E732A6-79D1-4A39-AC0C-29A3B45AD176}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.CodeGen.Tests", "src\Microsoft.Health.Fhir.CodeGen.Tests\Microsoft.Health.Fhir.CodeGen.Tests.csproj", "{BE10F292-4A7F-46A0-B4C9-D64003153DDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,30 +35,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{69C02221-EEE0-43B6-9EB6-08E788C464AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69C02221-EEE0-43B6-9EB6-08E788C464AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69C02221-EEE0-43B6-9EB6-08E788C464AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69C02221-EEE0-43B6-9EB6-08E788C464AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3178C9E9-F5B5-4A8F-A6A7-A853472DEE29}.Release|Any CPU.Build.0 = Release|Any CPU
 		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F91764FD-EE86-4FBC-951F-819361ABCA4F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A758C220-2332-498A-B245-C6BE3203A87E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A758C220-2332-498A-B245-C6BE3203A87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A758C220-2332-498A-B245-C6BE3203A87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -74,6 +47,18 @@ Global
 		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4D5356-BD06-48A8-B329-7C372201549A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4D5356-BD06-48A8-B329-7C372201549A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4D5356-BD06-48A8-B329-7C372201549A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4D5356-BD06-48A8-B329-7C372201549A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83E732A6-79D1-4A39-AC0C-29A3B45AD176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83E732A6-79D1-4A39-AC0C-29A3B45AD176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83E732A6-79D1-4A39-AC0C-29A3B45AD176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83E732A6-79D1-4A39-AC0C-29A3B45AD176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE10F292-4A7F-46A0-B4C9-D64003153DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE10F292-4A7F-46A0-B4C9-D64003153DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE10F292-4A7F-46A0-B4C9-D64003153DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE10F292-4A7F-46A0-B4C9-D64003153DDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

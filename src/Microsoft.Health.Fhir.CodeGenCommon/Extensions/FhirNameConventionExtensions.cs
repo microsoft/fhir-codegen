@@ -103,7 +103,7 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join(joinDelimiter ?? string.Empty, words.Select(w => w.ToPascalCase(removeDelimiters, joinDelimiter)));
+        return string.Join(joinDelimiter, words.Select(w => w.ToPascalCase(removeDelimiters, joinDelimiter)));
     }
 
     /// <summary>A string extension method that converts a word to a camelCase.</summary>
@@ -270,7 +270,7 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join(joinDelimiter ?? string.Empty, words.Select(w => w.ToUpperCase(removeDelimiters, joinDelimiter)));
+        return string.Join(joinDelimiter, words.Select(w => w.ToUpperCase(removeDelimiters, joinDelimiter)));
     }
 
     /// <summary>A string extension method that converts this object to a lower case.</summary>
@@ -350,7 +350,7 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join(joinDelimiter ?? string.Empty, words.Select(w => w.ToLowerCase(removeDelimiters, joinDelimiter)));
+        return string.Join(joinDelimiter, words.Select(w => w.ToLowerCase(removeDelimiters, joinDelimiter)));
     }
 
     /// <summary>
