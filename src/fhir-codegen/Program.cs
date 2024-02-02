@@ -53,11 +53,7 @@ public class Program
         {
             // note that 'global' here is just recursive DOWNWARD
             rootCommand.AddGlobalOption(option);
-
-            if (option.ValueType.IsEnum)
-            {
-                optsWithEnums.Add(option);
-            }
+            TrackIfEnum(option);
         }
 
         // create our generate command
@@ -66,11 +62,7 @@ public class Program
         {
             // note that 'global' here is just recursive DOWNWARD
             generateCommand.AddGlobalOption(option);
-
-            if (option.ValueType.IsEnum)
-            {
-                optsWithEnums.Add(option);
-            }
+            TrackIfEnum(option);
         }
 
         // iterate through languages and add them as subcommands
@@ -85,11 +77,7 @@ public class Program
             foreach (SCL.Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
             {
                 languageCommand.AddOption(option);
-
-                if (option.ValueType.IsEnum)
-                {
-                    optsWithEnums.Add(option);
-                }
+                TrackIfEnum(option);
             }
 
             generateCommand.AddCommand(languageCommand);
@@ -103,11 +91,7 @@ public class Program
         {
             // note that 'global' here is just recursive DOWNWARD
             interactiveCommand.AddGlobalOption(option);
-
-            if (option.ValueType.IsEnum)
-            {
-                optsWithEnums.Add(option);
-            }
+            TrackIfEnum(option);
         }
 
         rootCommand.AddCommand(interactiveCommand);
@@ -118,11 +102,7 @@ public class Program
         {
             // note that 'global' here is just recursive DOWNWARD
             webCommand.AddGlobalOption(option);
-
-            if (option.ValueType.IsEnum)
-            {
-                optsWithEnums.Add(option);
-            }
+            TrackIfEnum(option);
         }
 
         rootCommand.AddCommand(webCommand);
@@ -145,6 +125,16 @@ public class Program
 
                     Type et = option.ValueType;
 
+                    if (option.ValueType.IsGenericType)
+                    {
+                        et = option.ValueType.GenericTypeArguments.First();
+                    }
+
+                    if (option.ValueType.IsArray)
+                    {
+                        et = option.ValueType.GetElementType()!;
+                    }
+
                     foreach (MemberInfo mem in et.GetMembers(BindingFlags.Public | BindingFlags.Static).Where(m => m.DeclaringType == et).OrderBy(m => m.Name))
                     {
                         IEnumerable<DescriptionAttribute> attrs = mem.GetCustomAttributes<DescriptionAttribute>(false);
@@ -165,6 +155,36 @@ public class Program
             .Build();
 
         return await parser.InvokeAsync(args);
+
+        void TrackIfEnum(SCL.Option option)
+        {
+            if (option.ValueType.IsEnum)
+            {
+                optsWithEnums.Add(option);
+                return;
+            }
+
+            if (option.ValueType.IsGenericType)
+            {
+                if (option.ValueType.GenericTypeArguments.First().IsEnum)
+                {
+                    optsWithEnums.Add(option);
+                }
+
+                return;
+            }
+
+            if (option.ValueType.IsArray)
+            {
+                if (option.ValueType.GetElementType()!.IsEnum)
+                {
+                    optsWithEnums.Add(option);
+                }
+
+                return;
+            }
+        }
+
     }
 
     /// <summary>Enumerates build CLI options in this collection.</summary>
@@ -216,10 +236,10 @@ public class Program
             // get the type of the property so we can create an argument of the matching type
             Type propType = prop.PropertyType;
 
-            if (propType.IsGenericType)
-            {
-                propType = propType.GetGenericArguments().First();
-            }
+            //if (propType.IsGenericType)
+            //{
+            //    propType = propType.GetGenericArguments().First();
+            //}
 
             // create the base option
             SCL.Option? option = (SCL.Option?)Activator.CreateInstance(
@@ -245,6 +265,10 @@ public class Program
                     (!string.IsNullOrEmpty(attr.EnvName)))
                 {
                     option.SetDefaultValueFactory(() => envConfig.GetSection(attr.EnvName).GetChildren().Select(c => c.Value));
+                }
+                else if (configDefault != null)
+                {
+                    option.SetDefaultValue(prop.GetValue(configDefault));
                 }
             }
             else

@@ -17,7 +17,8 @@ public class ConfigGenerate : ConfigRoot
         EnvName = "Export_Structures",
         Description = "Types of FHIR structures to export, default is all.",
         ArgArity = "0..*")]
-    public HashSet<FhirArtifactClassEnum> ExportStructures { get; set; } = new();
+    public FhirArtifactClassEnum[] ExportStructures { get; set; } = Array.Empty<FhirArtifactClassEnum>();
+    //public HashSet<FhirArtifactClassEnum> ExportStructures { get; set; } = new();
 
     /// <summary>Gets or sets the export keys.</summary>
     [ConfigOption(
