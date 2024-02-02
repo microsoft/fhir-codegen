@@ -6,6 +6,6 @@
 namespace fhir_codegen.Runtime;
 
 /// <summary>A configuration interactive.</summary>
-public class ConfigInteractive : ConfigBase
+public class ConfigInteractive : ConfigRoot
 {
 }

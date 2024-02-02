@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.ComponentModel;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
@@ -17,7 +18,12 @@ public static class OpenApiCommon
     /// <summary>Values that represent oa versions.</summary>
     public enum OaVersion : int
     {
+        /// <summary>An enum constant representing the v 2 option.</summary>
+        [Description("OpenAPI 2.0 (aka Swagger file)")]
         v2 = 2,
+
+        /// <summary>An enum constant representing the v 3 option.</summary>
+        [Description("OpenAPI 3.0 (aka oas)")]
         v3 = 3,
     }
 
@@ -25,9 +31,11 @@ public static class OpenApiCommon
     public enum OaFileFormat
     {
         /// <summary>Export JSON files.</summary>
+        [Description("Export JSON file(s).")]
         Json,
 
         /// <summary>Export YAML files.</summary>
+        [Description("Export YAML file(s).")]
         Yaml
     }
 
@@ -138,6 +146,38 @@ public static class OpenApiCommon
 
         /// <summary>An enum constant representing the instance option.</summary>
         Instance,
+    }
+
+    /// <summary>Values that represent extension support levels.</summary>
+    public enum ExtensionSupportLevel
+    {
+        /// <summary>No extensions should be included.</summary>
+        [Description("No extensions should be included.")]
+        None,
+
+        /// <summary>Official (core) extensions should be included.</summary>
+        [Description("Official (core) extensions should be included.")]
+        Official,
+
+        /// <summary>Official extensions should be included, except for those on primitive types.</summary>
+        [Description("Official extensions should be included, except for those on primitive types.")]
+        OfficialNonPrimitive,
+
+        /// <summary>Every field should have a mockup for extensions.</summary>
+        [Description("Every field should have a mockup for extensions.")]
+        All,
+
+        /// <summary>Non-primitive type fields should have extensions.</summary>
+        [Description("Non-primitive type fields should have extensions.")]
+        NonPrimitive,
+
+        /// <summary>Only extensions with a URL in the provided keys should be included.</summary>
+        [Description("Only extensions with a URL in the provided keys should be included.")]
+        ByExtensionUrl,
+
+        /// <summary>Only elements with a path in the provided keys should have extensions.</summary>
+        [Description("Only elements with a path in the provided keys should have extensions.")]
+        ByElementPath,
     }
 
     /// <summary>The uncommon fields.</summary>

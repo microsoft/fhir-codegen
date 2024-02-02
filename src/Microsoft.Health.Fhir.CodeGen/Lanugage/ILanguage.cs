@@ -4,6 +4,8 @@
 // </copyright>
 
 
+using Microsoft.Health.Fhir.CodeGen.Lanugage.OpenApi;
+
 namespace Microsoft.Health.Fhir.CodeGen.Lanugage;
 
 /// <summary>Interface for code generation languages.</summary>
@@ -14,7 +16,14 @@ public interface ILanguage
 
     /// <summary>Gets the FHIR primitive type map.</summary>
     Dictionary<string, string> FhirPrimitiveTypeMap { get; }
-
-    /// <summary>Gets options for controlling the language.</summary>
-    Dictionary<string, System.CommandLine.Option> LanguageOptions { get; }
 }
+
+/// <summary>Interface for code generation languages.</summary>
+public interface ILanguage<T> : ILanguage
+    where T : class, new()
+{
+    /// <summary>Exports the given configuration.</summary>
+    /// <param name="config">The configuration.</param>
+    void Export(T config);
+}
+

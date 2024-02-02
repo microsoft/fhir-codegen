@@ -4,58 +4,71 @@
 // </copyright>
 
 
+using System.ComponentModel;
+
 namespace Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 /// <summary>Values that represent FHIR artifact class enums.</summary>
 public enum FhirArtifactClassEnum
 {
-    /// <summary>An enum constant representing the primitive type option.</summary>
+    /// <summary>Primitive Type (e.g., string, url) definition (StructureDefinition).</summary>
+    [Description("StructureDefinition for a Primitive Type (e.g., string, url).")]
     PrimitiveType,
 
-    /// <summary>An enum constant representing the complex type option.</summary>
+    /// <summary>Complex Type (e.g., Address, ContactPoint) definition (StructureDefinition).</summary>
+    [Description("StructureDefinition for a Complex Type (e.g., Address, ContactPoint).")]
     ComplexType,
 
-    /// <summary>An enum constant representing the resource option.</summary>
+    /// <summary>Resource (e.g., Patient, Encounter) definition (StructureDefinition).</summary>
+    [Description("StructureDefinition for a Resource (e.g., Patient, Encounter).")]
     Resource,
 
-    /// <summary>An enum constant representing the extension option.</summary>
+    /// <summary>Extension (e.g., .../event-location) definition (StructureDefinition).</summary>
+    [Description("StructureDefinition for a Extension (e.g., .../event-location).")]
     Extension,
 
-    /// <summary>An enum constant representing the operation option.</summary>
+    /// <summary>Operation (e.g., $export, $metadata) definition (OperationDefinition).</summary>
+    [Description("OperationDefinition for a Operation (e.g., $export, $metadata).")]
     Operation,
 
-    /// <summary>An enum constant representing the search parameter option.</summary>
+    /// <summary>Search Parameters(e.g., _id (Resource-id)) definition (SearchParameter).</summary>
+    [Description("SearchParameter definition (e.g., _id (Resource-id)).")]
     SearchParameter,
 
-    /// <summary>An enum constant representing the code system option.</summary>
+    /// <summary>Code System (e.g., encounter-status, group-type) (CodeSystem).</summary>
+    [Description("CodeSystem resource (e.g., encounter-status, group-type).")]
     CodeSystem,
 
-    /// <summary>An enum constant representing the value set option.</summary>
+    /// <summary>Value Set (e.g., encounter-status, group-type) (ValueSet)</summary>
+    [Description("ValueSet resource (e.g., encounter-status, group-type)")]
     ValueSet,
 
-    /// <summary>An enum constant representing the profile option.</summary>
+    /// <summary>Profile (e.g., http://hl7.org/fhir/StructureDefinition/vitalsigns) definition (StructureDefinition)</summary>
+    [Description("StructureDefinition for a Profile (e.g., .../vitalsigns)")]
     Profile,
 
-    /// <summary>An enum constant representing the logical model option.</summary>
+    /// <summary>Logical Model (e.g., the Event pattern - http://hl7.org/fhir/StructureDefinition/Event) definition (StructureDefinition).</summary>
+    [Description("StructureDefinition for a Logical Model (e.g., the Event pattern).")]
     LogicalModel,
 
 
-    /// <summary>An enum constant representing the capability statement option.</summary>
+    /// <summary>CapabilityStatement resource.</summary>
     CapabilityStatement,
 
-    /// <summary>An enum constant representing the compartment option.</summary>
+    /// <summary>Compartment Definition (e.g., PatientCompartment) definition (CompartmentDefinition).</summary>
+    [Description("CompartmentDefinition resource (e.g., PatientCompartment).")]
     Compartment,
 
-    /// <summary>An enum constant representing the concept map option.</summary>
+    /// <summary>ConceptMap.</summary>
     ConceptMap,
 
-    /// <summary>An enum constant representing the naming system option.</summary>
+    /// <summary>NamingSystem.</summary>
     NamingSystem,
 
-    /// <summary>An enum constant representing the structure map option.</summary>
+    /// <summary>StructureMap.</summary>
     StructureMap,
 
 
-    /// <summary>An enum constant representing the implementation guide option.</summary>
+    /// <summary>ImplementationGuide resource.</summary>
     ImplementationGuide,
 }

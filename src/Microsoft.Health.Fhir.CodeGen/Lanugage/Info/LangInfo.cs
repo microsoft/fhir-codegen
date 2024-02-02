@@ -4,17 +4,29 @@
 // </copyright>
 
 using System.CommandLine;
+using Microsoft.Health.Fhir.CodeGen.Extensions;
+using static Microsoft.Health.Fhir.CodeGen.Lanugage.Info.LangInfo;
 
 namespace Microsoft.Health.Fhir.CodeGen.Lanugage.Info;
 
 /// <summary>Class used to export package/specification information.</summary>
-public class LangInfo : ILanguage
+public class LangInfo : ILanguage<InfoOptions>
 {
     /// <summary>Values that represent Information formats.</summary>
     public enum InfoFormat
     {
         Text,
-        JSON,
+        Json,
+    }
+
+    /// <summary>An information options.</summary>
+    public class InfoOptions
+    {
+        /// <summary>Gets or sets the file format.</summary>
+        [ConfigOption(
+            ArgName = "--format",
+            Description = "File format to export.")]
+        public LangInfo.InfoFormat FileFormat { get; set; } = LangInfo.InfoFormat.Text;
     }
 
     /// <summary>Gets the language name.</summary>
@@ -50,13 +62,8 @@ public class LangInfo : ILanguage
     /// <summary>Gets the FHIR primitive type map.</summary>
     public Dictionary<string, string> FhirPrimitiveTypeMap => _primitiveTypeMap;
 
-    /// <summary>Gets options for controlling the language.</summary>
-    public Dictionary<string, Option> LanguageOptions => new()
-    {
-        { "format", new Option<InfoFormat>(
-            name: "--file-format",
-            getDefaultValue: () => InfoFormat.Text,
-            "Export file format.")
-        },
-    };
+    /// <summary>Exports the given configuration.</summary>
+    /// <typeparam name="foOptions">Type of the fo options.</typeparam>
+    /// <param name="config">The configuration.</param>
+    public void Export(InfoOptions config) { }
 }

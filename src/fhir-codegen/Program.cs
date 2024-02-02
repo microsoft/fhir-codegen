@@ -3,7 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using cli = System.CommandLine;
+using SCL = System.CommandLine; // this is present to disambuite Option from System.CommandLine and Microsoft.FluentUI.AspNetCore.Components
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using fhir_codegen.Components;
@@ -15,6 +15,13 @@ using Microsoft.Health.Fhir.CodeGen.Lanugage;
 using System.Reflection;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using System.CommandLine;
+using Microsoft.Health.Fhir.CodeGen.Extensions;
+using System.CommandLine.Builder;
+using System.Text;
+using Microsoft.Extensions.Primitives;
+using System.CommandLine.Parsing;
+using System.ComponentModel;
+using System.CommandLine.Help;
 
 namespace fhir_codegen;
 
@@ -32,35 +39,57 @@ public class Program
     /// </returns>
     public static async Task<int> Main(string[] args)
     {
-        // setup our configuration (command line > environment > appsettings.json)
-        IConfiguration configuration = new ConfigurationBuilder()
+        // setup our configuration defaults (environment > appsettings.json) - args will supercede
+        IConfiguration envConfig = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: true)
             .AddEnvironmentVariables()
             .Build();
 
+        List<SCL.Option> optsWithEnums = new();
+
         // create our root command
-        cli.RootCommand rootCommand = new("A utility for processing FHIR packages into other formats/languages.");
-        foreach (cli.Option option in BuildRootOptions(configuration))
+        SCL.RootCommand rootCommand = new("A utility for processing FHIR packages into other formats/languages.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigRoot), envConfig: envConfig))
         {
+            // note that 'global' here is just recursive DOWNWARD
             rootCommand.AddGlobalOption(option);
+
+            if (option.ValueType.IsEnum)
+            {
+                optsWithEnums.Add(option);
+            }
         }
 
         // create our generate command
-        cli.Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
-        foreach (cli.Option option in BuildGenerateOptions(configuration))
+        SCL.Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigGenerate), typeof(ConfigRoot), envConfig))
         {
             // note that 'global' here is just recursive DOWNWARD
             generateCommand.AddGlobalOption(option);
+
+            if (option.ValueType.IsEnum)
+            {
+                optsWithEnums.Add(option);
+            }
         }
 
         // iterate through languages and add them as subcommands
-        LoadExportLanguages();
-        foreach (ILanguage language in _languagesByName.Values)
+        foreach (ILanguage language in LanguageManager.GetLanguages())
         {
-            cli.Command languageCommand = new(language.Name.ToLowerInvariant(), $"Generate {language.Name}");
-            foreach (cli.Option lOpt in language.LanguageOptions.Values)
+            SCL.Command languageCommand = new(language.Name, $"Generate {language.Name}");
+            if (language.Name.Any(char.IsUpper))
             {
-                languageCommand.AddOption(lOpt);
+                languageCommand.AddAlias(language.Name.ToLowerInvariant());
+            }
+
+            foreach (SCL.Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
+            {
+                languageCommand.AddOption(option);
+
+                if (option.ValueType.IsEnum)
+                {
+                    optsWithEnums.Add(option);
+                }
             }
 
             generateCommand.AddCommand(languageCommand);
@@ -69,130 +98,187 @@ public class Program
         rootCommand.AddCommand(generateCommand);
 
         // create our interactive command
-        cli.Command interactiveCommand = new("interactive", "Launch into an interactive console.");
-        //foreach (cli.Option option in BuildRootOptions(configuration))
-        //{
-        //    // note that 'global' here is just recursive DOWNWARD
-        //    generateCommand.AddGlobalOption(option);
-        //}
+        SCL.Command interactiveCommand = new("interactive", "Launch into an interactive console.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigInteractive), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            interactiveCommand.AddGlobalOption(option);
+
+            if (option.ValueType.IsEnum)
+            {
+                optsWithEnums.Add(option);
+            }
+        }
 
         rootCommand.AddCommand(interactiveCommand);
 
         // create our generate command
-        cli.Command webCommand = new("web", "Launch into a locally-hosted web UI.");
-        //foreach (cli.Option option in BuildRootOptions(configuration))
-        //{
-        //    // note that 'global' here is just recursive DOWNWARD
-        //    generateCommand.AddGlobalOption(option);
-        //}
+        SCL.Command webCommand = new("web", "Launch into a locally-hosted web UI.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigFluentUi), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            webCommand.AddGlobalOption(option);
+
+            if (option.ValueType.IsEnum)
+            {
+                optsWithEnums.Add(option);
+            }
+        }
 
         rootCommand.AddCommand(webCommand);
 
-        return await rootCommand.InvokeAsync(args);
+        SCL.Parsing.Parser parser = new CommandLineBuilder(rootCommand)
+            .UseDefaults()
+            .UseHelp(ctx =>
+            {
+                foreach (SCL.Option option in optsWithEnums)
+                {
+                    StringBuilder sb = new();
+                    if (option.Aliases.Any())
+                    {
+                        sb.AppendLine(string.Join(", ", option.Aliases));
+                    }
+                    else
+                    {
+                        sb.AppendLine(option.Name);
+                    }
+
+                    Type et = option.ValueType;
+
+                    foreach (MemberInfo mem in et.GetMembers(BindingFlags.Public | BindingFlags.Static).Where(m => m.DeclaringType == et).OrderBy(m => m.Name))
+                    {
+                        IEnumerable<DescriptionAttribute> attrs = mem.GetCustomAttributes<DescriptionAttribute>(false);
+
+                        sb.AppendLine($"  opt: {mem.Name}");
+                        if (attrs.Any())
+                        {
+                            sb.AppendLine($"       {attrs.First().Description}");
+                        }
+                    }
+
+                    ctx.HelpBuilder.CustomizeSymbol(
+                        option,
+                        firstColumnText: (ctx) => sb.ToString());
+                        //secondColumnText: (ctx) => option.Description);
+                }
+            })
+            .Build();
+
+        return await parser.InvokeAsync(args);
     }
 
-    /// <summary>Enumerates build root options in this collection.</summary>
-    /// <param name="configuration">The configuration.</param>
-    /// <returns>
-    /// An enumerator that allows foreach to be used to process build root options in this collection.
-    /// </returns>
-    private static IEnumerable<cli.Option> BuildRootOptions(IConfiguration configuration)
-    {
-        yield return new cli.Option<string>(
-            name: "--fhir-cache",
-            getDefaultValue: () => configuration.GetValue("Fhir_Cache", string.Empty) ?? string.Empty,
-            "Location of the FHIR cache. Default is ~/.fhir.");
-
-        yield return new cli.Option<string?>(
-            aliases: new string[] { "--output-path", "-o" },
-            getDefaultValue: () => string.Empty,
-            "File or directory to write output.");
-
-        yield return new cli.Option<string[]>(
-            name: "--package",
-            getDefaultValue: () => configuration.GetValue("Package", Array.Empty<string>()) ?? Array.Empty<string>(),
-            "Package to load, can be specified multiple times.")
-        {
-            Arity = ArgumentArity.ZeroOrMore,
-            AllowMultipleArgumentsPerToken = true,
-        };
-    }
-
-    /// <summary>Enumerates build generate options in this collection.</summary>
-    /// <param name="configuration">The configuration.</param>
-    /// <returns>
-    /// An enumerator that allows foreach to be used to process build generate options in this
-    /// collection.
-    /// </returns>
-    private static IEnumerable<cli.Option> BuildGenerateOptions(IConfiguration configuration)
-    {
-        yield return new cli.Option<FhirArtifactClassEnum?>(
-            name: "--export-structures",
-            getDefaultValue: () => null,
-            "Types of FHIR structures to export, default is all.")
-        {
-            Arity = ArgumentArity.ZeroOrMore,
-            AllowMultipleArgumentsPerToken = true,
-        };
-
-        //yield return new cli.Option<FhirArtifactClassEnum[]>(
-        //    name: "--export-structures",
-        //    getDefaultValue: () => configuration.GetValue("Export_Structures", Array.Empty<FhirArtifactClassEnum>()) ?? Array.Empty<FhirArtifactClassEnum>(),
-        //    "Types of FHIR structures to export, default is all.")
-        //{
-        //    Arity = ArgumentArity.ZeroOrMore,
-        //    AllowMultipleArgumentsPerToken = true,
-        //};
-    }
-
-    /// <summary>Loads export languages.</summary>
+    /// <summary>Enumerates build CLI options in this collection.</summary>
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-    public static void LoadExportLanguages()
+    /// <param name="forType">       The Configuration type to generate options for.</param>
+    /// <param name="exludeFromType">(Optional) Type of the exlude from.</param>
+    /// <param name="envConfig">     (Optional) The environment configuration.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process build CLI options in this collection.
+    /// </returns>
+    private static IEnumerable<SCL.Option> BuildCliOptions(
+        Type forType,
+        Type? exludeFromType = null,
+        IConfiguration? envConfig = null)
     {
-        if (_languagesByName.Any())
+        HashSet<string> inheritedPropNames = new();
+
+        if (exludeFromType != null)
         {
-            return;
+            PropertyInfo[] exProps = exludeFromType.GetProperties();
+            foreach (PropertyInfo exProp in exProps)
+            {
+                inheritedPropNames.Add(exProp.Name);
+            }
         }
 
-        IEnumerable<Type> lTypes = Assembly.GetExecutingAssembly().GetTypes()
-            .Where(t => t.GetInterfaces().Contains(typeof(ILanguage)));
-
-        foreach (Type localType in lTypes)
+        object? configDefault = null;
+        if (!forType.IsAbstract)
         {
-            ILanguage? language = (ILanguage?)Activator.CreateInstance(localType);
+            configDefault = Activator.CreateInstance(forType);
+        }
 
-            if (language == null)
-            {
-                throw new Exception($"Could not create instance of {localType.Name}");
-            }
-
-            if (_languagesByName.ContainsKey(language.Name))
+        // reflect over the forConfig object and get properties that have the ConfigOptionAttribute
+        PropertyInfo[] props = forType.GetProperties();
+        foreach (PropertyInfo prop in props)
+        {
+            // exclude inherited properties
+            if (inheritedPropNames.Contains(prop.Name))
             {
                 continue;
             }
 
-            _languagesByName.Add(language.Name, language);
-        }
-
-        lTypes = typeof(ILanguage).Assembly.GetTypes()
-            .Where(t => t.GetInterfaces().Contains(typeof(ILanguage)));
-
-        foreach (Type localType in lTypes)
-        {
-            ILanguage? language = (ILanguage?)Activator.CreateInstance(localType);
-
-            if (language == null)
-            {
-                throw new Exception($"Could not create instance of {localType.Name}");
-            }
-
-            if (_languagesByName.ContainsKey(language.Name))
+            ConfigOptionAttribute? attr = prop.GetCustomAttribute<ConfigOptionAttribute>();
+            if (attr == null)
             {
                 continue;
             }
 
-            _languagesByName.Add(language.Name, language);
+            // get the type of the property so we can create an argument of the matching type
+            Type propType = prop.PropertyType;
+
+            if (propType.IsGenericType)
+            {
+                propType = propType.GetGenericArguments().First();
+            }
+
+            // create the base option
+            SCL.Option? option = (SCL.Option?)Activator.CreateInstance(
+                typeof(SCL.Option<>).MakeGenericType(propType),
+                NameOrAlias(attr),
+                attr.Description);
+
+            if (option == null)
+            {
+                throw new Exception($"Could not create option for {prop.Name}");
+            }
+
+            // set additional properties
+            option.Arity = ArityFromCard(attr.ArgArity);
+            //if (attr.ArgArity.EndsWith('*'))
+            //{
+            //    option.AllowMultipleArgumentsPerToken = true;
+            //}
+
+            if (propType.IsGenericType || propType.IsArray)
+            {
+                if ((envConfig != null) &&
+                    (!string.IsNullOrEmpty(attr.EnvName)))
+                {
+                    option.SetDefaultValueFactory(() => envConfig.GetSection(attr.EnvName).GetChildren().Select(c => c.Value));
+                }
+            }
+            else
+            {
+                if ((envConfig != null) &&
+                    (!string.IsNullOrEmpty(attr.EnvName)))
+                {
+                    option.SetDefaultValueFactory(() => envConfig.GetValue(propType, attr.EnvName));
+
+                    if (attr.EnvName.Equals("Load_Package"))
+                    {
+                        Console.Write("");
+                    }
+                }
+                else if (configDefault != null)
+                {
+                    option.SetDefaultValue(prop.GetValue(configDefault));
+                }
+            }
+
+            // add the option to the collection
+            yield return option;
         }
+
+        object NameOrAlias(ConfigOptionAttribute a) => string.IsNullOrEmpty(a.ArgName) ? a.ArgAliases : a.ArgName;
+
+        ArgumentArity ArityFromCard(string c) => c switch
+        {
+            "0..1" => ArgumentArity.ZeroOrOne,
+            "0..*" => ArgumentArity.ZeroOrMore,
+            "1..1" => ArgumentArity.ExactlyOne,
+            "1..*" => ArgumentArity.OneOrMore,
+            _ => ArgumentArity.ZeroOrOne,
+        };
     }
 
     /// <summary>web UI.</summary>
