@@ -118,6 +118,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Reference",
             "Signature",
             "UsageContext",
+            "CodeableReference"
         };
 
         /// <summary>
