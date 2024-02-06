@@ -1,0 +1,48 @@
+Contents of: hl7.fhir.r5.core#5.0.0, hl7.fhir.uv.extensions#1.0.0
+  Primitive Naming Style: CamelCase
+  Element Naming Style: CamelCase
+  Complex Type / Resource Naming Style: PascalCase
+  Enum Naming Style: FhirDotNotation
+  Interaction Naming Style: PascalCase
+Primitive Types: 21
+- base64Binary: base64Binary::string (normative FMM: 0)
+  [(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?]
+- boolean: boolean::boolean (normative FMM: 0)
+  [true|false]
+- canonical: canonical::string (normative FMM: 0)
+  [\S*]
+- code: code::string (normative FMM: 0)
+  [[^\s]+( [^\s]+)*]
+- date: date::date (normative FMM: 0)
+  [([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?]
+- dateTime: dateTime::dateTime (normative FMM: 0)
+  [([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]{1,9})?)?)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)?)?)?]
+- decimal: decimal::decimal (normative FMM: 0)
+  [-?(0|[1-9][0-9]{0,17})(\.[0-9]{1,17})?([eE][+-]?[0-9]{1,9}})?]
+- id: id::string (normative FMM: 0)
+  [[A-Za-z0-9\-\.]{1,64}]
+- instant: instant::dateTime (normative FMM: 0)
+  [([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]{1,9})?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))]
+- integer: integer::int (normative FMM: 0)
+  [[0]|[-+]?[1-9][0-9]*]
+- integer64: integer64::int (normative FMM: 0)
+  [[0]|[-+]?[1-9][0-9]*]
+- markdown: markdown::string (normative FMM: 0)
+  [^[\s\S]+$]
+- oid: oid::string (normative FMM: 0)
+  [urn:oid:[0-2](\.(0|[1-9][0-9]*))+]
+- positiveInt: positiveInt::int (normative FMM: 0)
+  [[1-9][0-9]*]
+- string: string::string (normative FMM: 0)
+  [^[\s\S]+$]
+- time: time::time (normative FMM: 0)
+  [([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]{1,9})?]
+- unsignedInt: unsignedInt::int (normative FMM: 0)
+  [[0]|([1-9][0-9]*)]
+- uri: uri::string (normative FMM: 0)
+  [\S*]
+- url: url::string (normative FMM: 0)
+  [\S*]
+- uuid: uuid::string (normative FMM: 0)
+  [urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}]
+- xhtml: xhtml::xhtml (normative FMM: 0)

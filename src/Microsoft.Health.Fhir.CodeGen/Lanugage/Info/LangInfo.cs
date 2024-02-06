@@ -85,7 +85,9 @@ public class LangInfo : ILanguage<InfoOptions>
         // create a filename for writing (single file for now)
         //string filename = Path.Combine(config.OutputDirectory, $"Info_{definitions.FhirSequence.ToRLiteral()}.txt");
         //using (FileStream stream = new(filename, FileMode.Create))
-        using (writeStream == null ? _writer = new ExportStreamWriter(Console.OpenStandardOutput()) : _writer = new ExportStreamWriter(writeStream))
+        using (writeStream == null
+            ? _writer = new ExportStreamWriter(Console.OpenStandardOutput(), System.Text.Encoding.UTF8, 1024, true)
+            : _writer = new ExportStreamWriter(writeStream, System.Text.Encoding.UTF8, 1024, true))
         {
             WriteHeader(config, definitions);
             
@@ -107,7 +109,12 @@ public class LangInfo : ILanguage<InfoOptions>
 
     private void WritePrimitive(StructureDefinition sd)
     {
-        IGenPrimitive primitive = sd.AsPrimitive();
+        IGenPrimitive? primitive = sd.AsPrimitive();
+
+        if (primitive == null)
+        {
+            throw new Exception($"Failed to process {sd.Id} ({sd.Name}) as a primitive!");
+        }
 
         string snip = BuildStandardSnippet(primitive.StandardStatus, primitive.MaturityLevel, primitive.IsExperimental);
 

@@ -101,58 +101,77 @@ public static class IPrimitiveTypeExtensions
             throw new ArgumentException("StructureDefinition must be a primitive type", nameof(sd));
         }
 
-        return (sd as GenPrimitive)!;
+        return (IGenPrimitive)new GenPrimitive(sd);
     }
 }
 
 /// <summary>A code-gen primitive.</summary>
-public class GenPrimitive : Hl7.Fhir.Model.StructureDefinition, IGenPrimitive
+public class GenPrimitive : IGenPrimitive
 {
+    private StructureDefinition _sd;
+
+    public GenPrimitive(StructureDefinition sd)
+    {
+        _sd = sd;
+    }
+
+    /// <summary>Gets or sets the identifier.</summary>
+    public string Id => _sd.Id;
+
+    /// <summary>Gets the name.</summary>
+    public string Name => _sd.Name;
+
+    /// <summary>Gets the version.</summary>
+    public string Version => _sd.Version;
+
+    /// <summary>Gets URL of the document.</summary>
+    public string Url => _sd.Url;
+
     /// <summary>Gets the short.</summary>
     /// <remarks>right now, differential is generally 'more correct' than snapshot for primitives, see FHIR-37465</remarks>
-    public string Short => Differential.Element.Any() ? Differential.Element[0].Short : Description;
+    public string Short => _sd.Differential.Element.Any() ? _sd.Differential.Element[0].Short : _sd.Description;
 
     /// <summary>Gets the definition.</summary>
     /// <remarks>right now, differential is generally 'more correct' than snapshot for primitives, see FHIR-37465</remarks>
-    public string Definition =>  Differential.Element.Any() ? Differential.Element[0].Definition : Purpose;
+    public string Definition => _sd.Differential.Element.Any() ? _sd.Differential.Element[0].Definition : _sd.Purpose;
 
     /// <summary>Gets the comment.</summary>
     /// <remarks>right now, differential is generally 'more correct' than snapshot for primitives, see FHIR-37465</remarks>
-    public string Comment => Differential.Element.Any() ? Differential.Element[0].Comment : string.Empty;
+    public string Comment => _sd.Differential.Element.Any() ? _sd.Differential.Element[0].Comment : string.Empty;
 
     /// <summary>Gets the base type this primitive extends.</summary>
-    public string SystemType => Differential.Element.Count > 1
-        ? FhirTypeUtils.SystemToFhirType(Differential.Element[1].Type.FirstOrDefault()?.Code ?? string.Empty)
+    public string SystemType => _sd.Differential.Element.Count > 1
+        ? FhirTypeUtils.SystemToFhirType(_sd.Differential.Element[1].Type.FirstOrDefault()?.Code ?? string.Empty)
         : string.Empty;
 
     /// <summary>Gets the type of the FHIR.</summary>
-    public string FhirType => Differential.Element.Count > 1
-        ? Differential.Element[1].Type.FirstOrDefault()?.GetExtensionValue<FhirUrl>("http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type").ToString() ?? string.Empty
+    public string FhirType => _sd.Differential.Element.Count > 1
+        ? _sd.Differential.Element[1].Type.FirstOrDefault()?.GetExtensionValue<FhirUrl>("http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type").ToString() ?? string.Empty
         : string.Empty;
 
     /// <summary>Gets the base definition.</summary>
-    public string BaseTypeName => Differential.Element.Count > 1
-        ? FhirTypeUtils.SystemToFhirType(Differential.Element[1].Type.FirstOrDefault()?.Code ?? Name)
-        : Name;
+    public string BaseTypeName => _sd.Differential.Element.Count > 1
+        ? FhirTypeUtils.SystemToFhirType(_sd.Differential.Element[1].Type.FirstOrDefault()?.Code ?? _sd.Name)
+        : _sd.Name;
 
     /// <summary>Gets the base type canonical.</summary>
-    public string BaseTypeCanonical => BaseDefinition;
+    public string BaseTypeCanonical => _sd.BaseDefinition;
 
     /// <summary>Gets the publication status.</summary>
-    public PublicationStatus ArtifactStatus => Status ?? PublicationStatus.Unknown;
+    public PublicationStatus ArtifactStatus => _sd.Status ?? PublicationStatus.Unknown;
 
     /// <summary>Gets the standard status.</summary>
-    public string StandardStatus => this.GetExtensionValue<Code>(CommonDefinitions.ExtUrlStandardStatus)?.ToString() ?? string.Empty;
+    public string StandardStatus => _sd.GetExtensionValue<Code>(CommonDefinitions.ExtUrlStandardStatus)?.ToString() ?? string.Empty;
 
     /// <summary>Gets the maturity level.</summary>
-    public int MaturityLevel => this.GetExtensionValue<Integer>(CommonDefinitions.ExtUrlFmm)?.Value ?? 0;
+    public int MaturityLevel => _sd.GetExtensionValue<Integer>(CommonDefinitions.ExtUrlFmm)?.Value ?? 0;
 
     /// <summary>Gets a value indicating whether this object is experimental.</summary>
-    public bool IsExperimental => Experimental ?? false;
+    public bool IsExperimental => _sd.Experimental ?? false;
 
     /// <summary>Gets the validation RegEx.</summary>
-    public string ValidationRegEx => (Differential.Element.Count > 1) && Differential.Element[1].Type.Any()
-        ? Differential.Element[1].Type.First().GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlSdRegex)?.ToString() ?? string.Empty
+    public string ValidationRegEx => (_sd.Differential.Element.Count > 1) && _sd.Differential.Element[1].Type.Any()
+        ? _sd.Differential.Element[1].Type.First().GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlSdRegex)?.ToString() ?? string.Empty
         : string.Empty;
 
     /// <summary>Type for export.</summary>
