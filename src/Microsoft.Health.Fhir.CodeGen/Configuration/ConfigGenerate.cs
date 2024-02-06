@@ -6,7 +6,7 @@
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
-namespace fhir_codegen.Runtime;
+namespace Microsoft.Health.Fhir.CodeGen.Configuration;
 
 /// <summary>Configuration settings when performing a single-pass generation.</summary>
 public class ConfigGenerate : ConfigRoot

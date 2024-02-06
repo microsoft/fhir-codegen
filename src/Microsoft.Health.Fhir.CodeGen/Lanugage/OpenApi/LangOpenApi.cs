@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.CommandLine;
+using Microsoft.Health.Fhir.CodeGen.Models;
 using static Microsoft.Health.Fhir.CodeGen.Lanugage.OpenApi.OpenApiCommon;
 
 namespace Microsoft.Health.Fhir.CodeGen.Lanugage.OpenApi;
@@ -17,5 +18,5 @@ public class LangOpenApi : ILanguage<OpenApiOptions>
     /// <summary>Gets the FHIR primitive type map.</summary>
     public Dictionary<string, string> FhirPrimitiveTypeMap => _primitiveTypeMap;
 
-    public void Export(OpenApiOptions config) { }
+    public void Export(OpenApiOptions config, DefinitionCollection definitions, Stream? writeStream = null) { }
 }

@@ -11,7 +11,7 @@
     "profiles": {
         "default": {
             "commandName": "Project",
-            "commandLineArgs": "generate openapi --version v3 --help",
+            "commandLineArgs": "generate openapi --version v3 --package a --package b",
             //"commandLineArgs": "generate --help",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },

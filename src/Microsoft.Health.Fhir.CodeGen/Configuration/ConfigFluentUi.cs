@@ -5,7 +5,7 @@
 
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 
-namespace fhir_codegen.Runtime;
+namespace Microsoft.Health.Fhir.CodeGen.Configuration;
 
 /// <summary>Configuration settings when using the Fluent web user interface.</summary>
 public class ConfigFluentUi : ConfigRoot

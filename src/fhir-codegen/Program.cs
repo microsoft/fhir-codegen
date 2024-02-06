@@ -7,7 +7,7 @@ using SCL = System.CommandLine; // this is present to disambuite Option from Sys
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using fhir_codegen.Components;
-using fhir_codegen.Runtime;
+using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Hl7.Fhir.Model;
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using Microsoft.FluentUI.AspNetCore.Components;
@@ -45,6 +45,18 @@ public class Program
             .AddEnvironmentVariables()
             .Build();
 
+        // build our command parser
+        SCL.Parsing.Parser parser = BuildCommandParser(envConfig);
+
+        // invoke the command specified
+        return await parser.InvokeAsync(args);
+    }
+
+    /// <summary>Builds command parser.</summary>
+    /// <param name="envConfig">The environment configuration.</param>
+    /// <returns>A SCL.Parsing.Parser.</returns>
+    private static SCL.Parsing.Parser BuildCommandParser(IConfiguration envConfig)
+    {
         List<SCL.Option> optsWithEnums = new();
 
         // create our root command
@@ -80,9 +92,11 @@ public class Program
                 TrackIfEnum(option);
             }
 
+            // TODO(ginoc): Decide if this should have a handler, or just promote to generate command
             generateCommand.AddCommand(languageCommand);
         }
 
+        // TODO(ginoc): Set the command handler
         rootCommand.AddCommand(generateCommand);
 
         // create our interactive command
@@ -94,6 +108,7 @@ public class Program
             TrackIfEnum(option);
         }
 
+        // TODO(ginoc): Set the command handler
         rootCommand.AddCommand(interactiveCommand);
 
         // create our generate command
@@ -105,6 +120,7 @@ public class Program
             TrackIfEnum(option);
         }
 
+        // TODO(ginoc): Set the command handler
         rootCommand.AddCommand(webCommand);
 
         SCL.Parsing.Parser parser = new CommandLineBuilder(rootCommand)
@@ -149,12 +165,12 @@ public class Program
                     ctx.HelpBuilder.CustomizeSymbol(
                         option,
                         firstColumnText: (ctx) => sb.ToString());
-                        //secondColumnText: (ctx) => option.Description);
+                    //secondColumnText: (ctx) => option.Description);
                 }
             })
             .Build();
 
-        return await parser.InvokeAsync(args);
+        return parser;
 
         void TrackIfEnum(SCL.Option option)
         {
@@ -184,7 +200,6 @@ public class Program
                 return;
             }
         }
-
     }
 
     /// <summary>Enumerates build CLI options in this collection.</summary>

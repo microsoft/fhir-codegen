@@ -227,7 +227,29 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     /// <returns>An IFhirPackageClient.</returns>
     public static IFhirPackageClient Create(FhirPackageClientSettings? settings = null)
     {
-        string cachePath = settings?.CachePath ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".fhir");
+        string cachePath;
+
+        if (string.IsNullOrEmpty(settings?.CachePath))
+        {
+            cachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".fhir");
+        }
+        else if (settings.CachePath.StartsWith('~'))
+        {
+            char second = settings.CachePath.Length > 2 ? settings.CachePath[1] : char.MinValue;
+
+            if (second == '/' || second == '\\')
+            {
+                cachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), settings.CachePath[2..]);
+            }
+            else
+            {
+                cachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), settings.CachePath[1..]);
+            }
+        }
+        else
+        {
+            cachePath = settings.CachePath;
+        }
 
         FhirCache fhirCache = new(
             cachePath,
@@ -659,7 +681,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         // check to see if we have a FHIR version literal
         if (_matchFhirVersionLiteral.IsMatch(segments[3]))
         {
-            FhirSequenceCodes sequence = FhirReleases.FhirVersionToSequence(segments[3]);
+            FhirSequenceCodes sequence = (FhirSequenceCodes)FhirReleases.FhirVersionToSequence(segments[3]);
 
             // if there was no package specified, we can still defualt if we know the FHIR version
             if (string.IsNullOrEmpty(possiblePackage) &&
@@ -1565,7 +1587,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             segments[2].StartsWith('R') &&
             int.TryParse(segments[2].Substring(1), out _))
         {
-            FhirSequenceCodes sequence = FhirReleases.FhirVersionToSequence(segments[2]);
+            FhirSequenceCodes sequence = (FhirSequenceCodes)FhirReleases.FhirVersionToSequence(segments[2]);
 
             if (sequence == FhirSequenceCodes.Unknown)
             {
@@ -3242,14 +3264,17 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 break;
             case DirectiveVersionCodes.ContinuousIntegration:
                 {
-                    // attempt to resolve via CI
-                    if (!TryResolveCi(ref directive))
-                    {
-                        _logger.LogError($"Failed to resolve via CI: {inputDirective}");
-                        return null;
-                    }
+                    // check to see if we have a local copy
+                    _ = TryGetCacheRec(resolvableDirectives, out cached);
 
-                    resolvableDirectives = UpdateDirectives(directive);
+                    // attempt to resolve via CI
+                    if (TryResolveCi(ref directive))
+                    {
+                        resolvableDirectives = UpdateDirectives(directive);
+
+                        //_logger.LogError($"Failed to resolve via CI: {inputDirective}");
+                        //return null;
+                    }
 
                     // we now have CI info, compare to local and accept if it was downloaded on or after the current CI build date
                     if (TryGetCacheRec(resolvableDirectives, out cached) &&

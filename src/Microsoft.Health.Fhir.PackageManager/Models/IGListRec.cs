@@ -5,7 +5,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace Microsoft.Health.Fhir.PackageManager;
+namespace Microsoft.Health.Fhir.PackageManager.Models;
 
 /// <summary>Information about FHIR Implementation Guides, from fhir-ig-list.json.</summary>
 internal class IGListRec

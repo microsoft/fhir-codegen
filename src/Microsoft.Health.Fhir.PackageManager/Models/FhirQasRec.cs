@@ -6,7 +6,7 @@
 using System.Text.Json.Serialization;
 using Microsoft.Health.Fhir.PackageManager.Models;
 
-namespace Microsoft.Health.Fhir.PackageManager;
+namespace Microsoft.Health.Fhir.PackageManager.Models;
 
 /// <summary>Information about CI Builds, from qas.json.</summary>
 internal class FhirQasRec

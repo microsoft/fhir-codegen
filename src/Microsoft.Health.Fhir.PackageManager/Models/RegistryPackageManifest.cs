@@ -9,7 +9,7 @@ using Microsoft.Health.Fhir.PackageManager.Models;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
-namespace Microsoft.Health.Fhir.PackageManager;
+namespace Microsoft.Health.Fhir.PackageManager.Models;
 
 /// <summary>FHIR Registry package manifest record.</summary>
 internal record class RegistryPackageManifest

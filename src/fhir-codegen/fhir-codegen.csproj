@@ -19,6 +19,7 @@
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="Models\" />
+    <Folder Include="Runtime\" />
   </ItemGroup>
 
   <ItemGroup>
