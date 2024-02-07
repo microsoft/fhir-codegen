@@ -3,8 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-
-namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+namespace Microsoft.Health.Fhir.CodeGen.FhirWrappers;
 
 /// <summary>A common definitions.</summary>
 public abstract class CommonDefinitions
@@ -26,4 +25,6 @@ public abstract class CommonDefinitions
     public const string ExtUrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
     public const string ExtUrlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
     public const string ExtUrlRdfType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type";
+
+    public const string ExtUrlExplicitTypeName = "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name";
 }

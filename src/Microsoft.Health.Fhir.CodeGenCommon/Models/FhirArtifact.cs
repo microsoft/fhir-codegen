@@ -71,4 +71,7 @@ public enum FhirArtifactClassEnum
 
     /// <summary>ImplementationGuide resource.</summary>
     ImplementationGuide,
+
+    /// <summary>An enum constant representing the unknown option.</summary>
+    Unknown,
 }

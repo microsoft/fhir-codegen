@@ -14,6 +14,9 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.PackageManager;
 using Hl7.Fhir.Serialization;
 using System.Text.Json;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.CodeGen.FhirWrappers;
 
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
@@ -179,61 +182,40 @@ public class PackageLoader
                                     throw new Exception($"Failed to parse StructureDefinition file {pFile.FileName}");
                                 }
 
-                                // determine the type of structure definition
-                                switch (r.Kind)
+                                for (int i = 0; i < (r.Snapshot?.Element?.Count ?? 0); i++)
                                 {
-                                    case StructureDefinition.StructureDefinitionKind.PrimitiveType:
-                                        {
-                                            definitions.AddPrimitiveType(r);
-                                        }
+                                    r.Snapshot!.Element[i] = new CodeGenElement(r.Snapshot.Element[i], r);
+                                }
+
+                                for (int i = 0; i < (r.Differential?.Element?.Count ?? 0); i++)
+                                {
+                                    r.Differential!.Element[i] = new CodeGenElement(r.Differential.Element[i], r);
+                                }
+ 
+                                switch (r.cgArtifactClass())
+                                {
+                                    case FhirArtifactClassEnum.PrimitiveType:
+                                        definitions.AddPrimitiveType(new CodeGenPrimitive(r));
                                         break;
 
-                                    case StructureDefinition.StructureDefinitionKind.Logical:
-                                        {
-                                            definitions.AddLogicalModel(r);
-                                        }
+                                    case FhirArtifactClassEnum.LogicalModel:
+                                        definitions.AddLogicalModel(r);
                                         break;
 
-                                    case StructureDefinition.StructureDefinitionKind.ComplexType:
-                                        {
-                                            // determine type of definition
-                                            if (r.Derivation == StructureDefinition.TypeDerivationRule.Constraint)
-                                            {
-                                                if (r.Type == "Extension")
-                                                {
-                                                    definitions.AddExtension(r);
-                                                }
-                                                else if (!r.Type.Equals(r.Id))
-                                                {
-                                                    definitions.AddProfile(r);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                definitions.AddComplexType(r);
-                                            }
-                                        }
+                                    case FhirArtifactClassEnum.Extension:
+                                        definitions.AddExtension(r);
                                         break;
 
-                                    case StructureDefinition.StructureDefinitionKind.Resource:
-                                        {
-                                            // determine type of definition
-                                            if (r.Derivation == StructureDefinition.TypeDerivationRule.Constraint)
-                                            {
-                                                if (r.Type == "Extension")
-                                                {
-                                                    definitions.AddExtension(r);
-                                                }
-                                                else if (!r.Type.Equals(r.Id))
-                                                {
-                                                    definitions.AddProfile(r);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                definitions.AddResource(r);
-                                            }
-                                        }
+                                    case FhirArtifactClassEnum.Profile:
+                                        definitions.AddProfile(r);
+                                        break;
+
+                                    case FhirArtifactClassEnum.ComplexType:
+                                        definitions.AddComplexType(r);
+                                        break;
+
+                                    case FhirArtifactClassEnum.Resource:
+                                        definitions.AddResource(r);
                                         break;
                                 }
                             }

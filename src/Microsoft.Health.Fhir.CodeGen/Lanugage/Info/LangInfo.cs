@@ -9,6 +9,7 @@ using Hl7.FhirPath.Sprache;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGen.FhirWrappers;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using static Microsoft.Health.Fhir.CodeGen.Lanugage.Info.LangInfo;
@@ -96,54 +97,53 @@ public class LangInfo : ILanguage<InfoOptions>
 
     }
 
-    private void WritePrimitives(IReadOnlyDictionary<string, StructureDefinition> primitives)
+    /// <summary>Writes the primitives.</summary>
+    /// <param name="primitives">The primitives.</param>
+    private void WritePrimitives(IReadOnlyDictionary<string, CodeGenPrimitive> primitives)
     {
         _writer.WriteLineIndented($"Primitive Types: {primitives.Count()}");
 
         // traverse primitives
-        foreach (StructureDefinition sd in primitives.Values.OrderBy(s => s.Id))
+        foreach (CodeGenPrimitive sd in primitives.Values.OrderBy(s => s.Id))
         {
             WritePrimitive(sd);
         }
     }
 
-    private void WritePrimitive(StructureDefinition sd)
+    /// <summary>Writes a primitive.</summary>
+    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
+    /// <param name="sd">The SD.</param>
+    private void WritePrimitive(CodeGenPrimitive sd)
     {
-        IGenPrimitive? primitive = sd.AsPrimitive();
-
-        if (primitive == null)
-        {
-            throw new Exception($"Failed to process {sd.Id} ({sd.Name}) as a primitive!");
-        }
-
-        string snip = BuildStandardSnippet(primitive.StandardStatus, primitive.MaturityLevel, primitive.IsExperimental);
+        string snip = BuildStandardSnippet(sd.StandardStatus, sd.MaturityLevel, sd.IsExperimental);
 
         _writer.WriteLineIndented(
-            $"- {primitive.Name}:" +
-                $" {primitive.Name.ToCamelCase()}" +
-                $"::{primitive.TypeForExport(NamingConvention.CamelCase, _primitiveTypeMap)}" +
+            $"- {sd.Name}:" +
+                $" {sd.Name.ToCamelCase()}" +
+                $"::{sd.TypeForExport(NamingConvention.CamelCase, _primitiveTypeMap)}" +
                 $"{snip}");
 
         _writer.IncreaseIndent();
 
         // check for regex
-        if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
+        if (!string.IsNullOrEmpty(sd.ValidationRegEx))
         {
-            _writer.WriteLineIndented($"[{primitive.ValidationRegEx}]");
+            _writer.WriteLineIndented($"[{sd.ValidationRegEx}]");
         }
 
+        // TODO(ginoc)
         //if (_info.ExtensionsByPath.ContainsKey(primitive.Id))
         //{
         //    WriteExtensions(_info.ExtensionsByPath[primitive.Id].Values);
         //}
 
+        // TODO(ginoc)
         //if (_info.ProfilesByBaseType.ContainsKey(primitive.Id))
         //{
         //    WriteProfiles(_info.ProfilesByBaseType[primitive.Id].Values);
         //}
 
         _writer.DecreaseIndent();
-
     }
 
     /// <summary>Builds standard snippet.</summary>

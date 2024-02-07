@@ -9,7 +9,9 @@ using FluentAssertions;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGen.FhirWrappers;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests.FromFailures;
 
@@ -35,7 +37,7 @@ public class StructureParseTests
 
         StructureDefinition sd = (StructureDefinition)parsed;
 
-        IGenPrimitive primitive = sd.AsPrimitive();
+        sd.cgArtifactClass().Should().Be(FhirArtifactClassEnum.PrimitiveType);
     }
 
     public (object?, FhirJsonException?) LocalPrimitiveParseHandler(

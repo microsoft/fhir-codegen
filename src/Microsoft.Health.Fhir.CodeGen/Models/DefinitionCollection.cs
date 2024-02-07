@@ -4,7 +4,9 @@
 // </copyright>
 
 
+using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGen.FhirWrappers;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
@@ -26,7 +28,7 @@ public class DefinitionCollection
     /// <summary>Gets or sets the contents.</summary>
     public Dictionary<string, PackageContents> ContentListings { get; set; } = new();
     
-    private readonly Dictionary<string, StructureDefinition> _primitiveTypesByName = new();
+    private readonly Dictionary<string, CodeGenPrimitive> _primitiveTypesByName = new();
     private readonly Dictionary<string, StructureDefinition> _complexTypesByName = new();
     private readonly Dictionary<string, StructureDefinition> _resourcesByName = new();
     private readonly Dictionary<string, StructureDefinition> _logicalModelsByName = new();
@@ -50,6 +52,7 @@ public class DefinitionCollection
     private readonly Dictionary<string, CapabilityStatement> _capabilityStatementsByUrl = new();
     private readonly Dictionary<string, CompartmentDefinition> _compartmentsByUrl = new();
 
+    private readonly List<string> _errors = new();
 
     /// <summary>Gets URL of the code systems by.</summary>
     public IReadOnlyDictionary<string, CodeSystem> CodeSystemsByUrl => _codeSystemsByUrl;
@@ -72,11 +75,11 @@ public class DefinitionCollection
     }
 
     /// <summary>Gets the name of the primitive types by.</summary>
-    public IReadOnlyDictionary<string, StructureDefinition> PrimitiveTypesByName => _primitiveTypesByName;
+    public IReadOnlyDictionary<string, CodeGenPrimitive> PrimitiveTypesByName => _primitiveTypesByName;
 
     /// <summary>Adds a primitive type.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddPrimitiveType(StructureDefinition sd)
+    public void AddPrimitiveType(CodeGenPrimitive sd)
     {
         // TODO(ginoc): Consider if we want to make this explicit on any definitions that do not have it
         //if (sd.FhirVersion == null)
@@ -108,11 +111,44 @@ public class DefinitionCollection
         _logicalModelsByName[structureDefinition.Url] = structureDefinition;
     }
 
+    /// <summary>Gets extensions, keyed by URL.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> ExtensionsByUrl => _extensionsByUrl;
 
-    public void AddExtension(StructureDefinition structureDefinition)
+    /// <summary>Gets extensions, keyed by URL, grouped by Path</summary>
+    public IReadOnlyDictionary<string, Dictionary<string, StructureDefinition>> ExtensionsByPath => _extensionsByPath;
+
+    /// <summary>Adds an extension.</summary>
+    /// <param name="sd">The structure definition.</param>
+    public void AddExtension(StructureDefinition sd)
     {
-        _extensionsByUrl[structureDefinition.Url] = structureDefinition;
+        string url = sd.Url;
+
+        // add to main tracking dictionary
+        _extensionsByUrl[sd.Url] = sd;
+
+        // traverse context to add to path tracking dictionary
+        foreach (StructureDefinition.ContextComponent ctx in sd.Context)
+        {
+            if (ctx.Type != StructureDefinition.ExtensionContextType.Element)
+            {
+                // throw new ArgumentException($"Invalid extension context type: {context.Type}");
+                _errors.Add($"AddExtension <<< StructureDefinition {sd.Name} ({sd.Id}) unhandled context type: {ctx.Type}");
+                continue;
+            }
+
+            if (string.IsNullOrEmpty(ctx.Expression))
+            {
+                _errors.Add($"AddExtension <<< StructureDefinition {sd.Name} ({sd.Id}) missing context expression");
+                continue;
+            }
+
+            if (!_extensionsByPath.ContainsKey(ctx.Expression))
+            {
+                _extensionsByPath[ctx.Expression] = new();
+            }
+
+            _extensionsByPath[ctx.Expression][url] = sd;
+        }
     }
 
     public IReadOnlyDictionary<string, StructureDefinition> ProfilesByUrl => _profilesByUrl;
