@@ -40,31 +40,31 @@ public class LangInfo : ILanguage<InfoOptions>
     public string Name => "Info";
 
     /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
-    private static readonly Dictionary<string, string> _primitiveTypeMap = new()
-        {
-            { "base", "base" },
-            { "base64Binary", "base64Binary" },
-            { "boolean", "boolean" },
-            { "canonical", "canonical" },
-            { "code", "code" },
-            { "date", "date" },
-            { "dateTime", "dateTime" },
-            { "decimal", "decimal" },
-            { "id", "id" },
-            { "instant", "instant" },
-            { "integer", "integer" },
-            { "integer64", "integer64" },
-            { "markdown", "markdown" },
-            { "oid", "oid" },
-            { "positiveInt", "positiveInt" },
-            { "string", "string" },
-            { "time", "time" },
-            { "unsignedInt", "unsignedInt" },
-            { "uri", "uri" },
-            { "url", "url" },
-            { "uuid", "uuid" },
-            { "xhtml", "xhtml" },
-        };
+    private static readonly Dictionary<string, string> _primitiveTypeMap = new();
+        //{
+        //    { "base", "base" },
+        //    { "base64Binary", "base64Binary" },
+        //    { "boolean", "boolean" },
+        //    { "canonical", "canonical" },
+        //    { "code", "code" },
+        //    { "date", "date" },
+        //    { "dateTime", "dateTime" },
+        //    { "decimal", "decimal" },
+        //    { "id", "id" },
+        //    { "instant", "instant" },
+        //    { "integer", "integer" },
+        //    { "integer64", "integer64" },
+        //    { "markdown", "markdown" },
+        //    { "oid", "oid" },
+        //    { "positiveInt", "positiveInt" },
+        //    { "string", "string" },
+        //    { "time", "time" },
+        //    { "unsignedInt", "unsignedInt" },
+        //    { "uri", "uri" },
+        //    { "url", "url" },
+        //    { "uuid", "uuid" },
+        //    { "xhtml", "xhtml" },
+        //};
 
     /// <summary>Gets the FHIR primitive type map.</summary>
     public Dictionary<string, string> FhirPrimitiveTypeMap => _primitiveTypeMap;

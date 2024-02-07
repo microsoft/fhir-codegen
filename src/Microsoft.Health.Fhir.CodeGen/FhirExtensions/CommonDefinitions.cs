@@ -21,6 +21,8 @@ public abstract class CommonDefinitions
     public const string ExtUrlSdRegex = "http://hl7.org/fhir/StructureDefinition/regex";
     public const string ExtUrlSdRegex2 = "http://hl7.org/fhir/StructureDefinition/structuredefinition-regex";
 
+    public const string ExtUrlFhirType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type";
+
     public const string ExtUrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
     public const string ExtUrlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
     public const string ExtUrlRdfType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type";

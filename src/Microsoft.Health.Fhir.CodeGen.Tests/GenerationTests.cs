@@ -109,8 +109,10 @@ public class GenerationTests : IClassFixture<GenerationTestFixture>
             {
                 string current = sr.ReadToEnd();
 
-                File.WriteAllText("TestData/Generated/Info-R5.txt", current);
+                // update th current file contents (manual)
+                //File.WriteAllText("TestData/Generated/Info-R5.txt", current);
 
+                // should the types like canonical be canonical::canonical or canonical::string?
                 current.Should().Be(previous);
             }
         }

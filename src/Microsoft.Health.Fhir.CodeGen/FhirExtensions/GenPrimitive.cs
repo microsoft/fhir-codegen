@@ -146,12 +146,13 @@ public class GenPrimitive : IGenPrimitive
 
     /// <summary>Gets the type of the FHIR.</summary>
     public string FhirType => _sd.Differential.Element.Count > 1
-        ? _sd.Differential.Element[1].Type.FirstOrDefault()?.GetExtensionValue<FhirUrl>("http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type").ToString() ?? string.Empty
+        ? _sd.Differential.Element[1].Type.FirstOrDefault()?.GetExtensionValue<FhirUrl>(CommonDefinitions.ExtUrlFhirType).ToString() ?? string.Empty
         : string.Empty;
 
     /// <summary>Gets the base definition.</summary>
+    /// <remarks>For primitives, the base type name is either the FHIR type (reported) or the name of the primitive.</remarks>
     public string BaseTypeName => _sd.Differential.Element.Count > 1
-        ? FhirTypeUtils.SystemToFhirType(_sd.Differential.Element[1].Type.FirstOrDefault()?.Code ?? _sd.Name)
+        ? _sd.Differential.Element[1].Type.FirstOrDefault()?.GetExtensionValue<FhirUrl>(CommonDefinitions.ExtUrlFhirType).ToString() ?? string.Empty
         : _sd.Name;
 
     /// <summary>Gets the base type canonical.</summary>
