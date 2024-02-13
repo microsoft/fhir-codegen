@@ -3,7 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-namespace Microsoft.Health.Fhir.CodeGen.FhirWrappers;
+namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
 /// <summary>A common definitions.</summary>
 public abstract class CommonDefinitions
@@ -14,6 +14,12 @@ public abstract class CommonDefinitions
 
     public const string ExtUrlStandardStatus = "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status";
     public const string ExtUrlFmm = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm";
+    public const string ExtUrlWorkGroup = "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg";
+    public const string ExtUrlCategory = "http://hl7.org/fhir/StructureDefinition/structuredefinition-category";
+
+    public const string ExtUrlBestPractice = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice";
+    public const string ExtUrlBestPracticeExplanation = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation";
+
     public const string ExtUrlCapExpectation = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation";
     public const string ExtUrlCapSearchParamCombo = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination";
 
@@ -27,4 +33,9 @@ public abstract class CommonDefinitions
     public const string ExtUrlRdfType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type";
 
     public const string ExtUrlExplicitTypeName = "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name";
+
+    public const string ExtUrlBindingName = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName";
+    public const string ExtUrlIsCommonBinding = "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding";
+
+    public const string ExtUrlFieldOrder = "http://ginoc.io/fhir/StructureDefinition/field-order";
 }

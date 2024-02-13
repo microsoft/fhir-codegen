@@ -9,7 +9,6 @@ using Hl7.FhirPath.Sprache;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
-using Microsoft.Health.Fhir.CodeGen.FhirWrappers;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using static Microsoft.Health.Fhir.CodeGen.Lanugage.Info.LangInfo;
@@ -73,6 +72,8 @@ public class LangInfo : ILanguage<InfoOptions>
     /// <summary>The currently in-use text writer.</summary>
     private ExportStreamWriter _writer = null!;
 
+    private DefinitionCollection _definitions = null!;
+
     /// <summary>Exports the given configuration.</summary>
     /// <param name="config">     The configuration.</param>
     /// <param name="definitions">The definitions to export.</param>
@@ -82,6 +83,8 @@ public class LangInfo : ILanguage<InfoOptions>
         DefinitionCollection definitions,
         Stream? writeStream = null)
     {
+        _definitions = definitions;
+
         // TODO(ginoc): actually open the file
         // create a filename for writing (single file for now)
         //string filename = Path.Combine(config.OutputDirectory, $"Info_{definitions.FhirSequence.ToRLiteral()}.txt");
@@ -92,19 +95,19 @@ public class LangInfo : ILanguage<InfoOptions>
         {
             WriteHeader(config, definitions);
             
-            WritePrimitives(definitions.PrimitiveTypesByName);
+            WritePrimitives(definitions.PrimitiveTypesByName.Values);
         }
 
     }
 
     /// <summary>Writes the primitives.</summary>
     /// <param name="primitives">The primitives.</param>
-    private void WritePrimitives(IReadOnlyDictionary<string, CodeGenPrimitive> primitives)
+    private void WritePrimitives(IEnumerable<StructureDefinition> primitives)
     {
         _writer.WriteLineIndented($"Primitive Types: {primitives.Count()}");
 
         // traverse primitives
-        foreach (CodeGenPrimitive sd in primitives.Values.OrderBy(s => s.Id))
+        foreach (StructureDefinition sd in primitives.OrderBy(s => s.Id))
         {
             WritePrimitive(sd);
         }
@@ -113,29 +116,28 @@ public class LangInfo : ILanguage<InfoOptions>
     /// <summary>Writes a primitive.</summary>
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
     /// <param name="sd">The SD.</param>
-    private void WritePrimitive(CodeGenPrimitive sd)
+    private void WritePrimitive(StructureDefinition sd)
     {
-        string snip = BuildStandardSnippet(sd.StandardStatus, sd.MaturityLevel, sd.IsExperimental);
+        string snip = BuildStandardSnippet(sd.cgStandardStatus(), sd.cgMaturityLevel(), sd.cgIsExperimental());
 
         _writer.WriteLineIndented(
             $"- {sd.Name}:" +
                 $" {sd.Name.ToCamelCase()}" +
-                $"::{sd.TypeForExport(NamingConvention.CamelCase, _primitiveTypeMap)}" +
+                $"::{sd.cgpTypeForExport(NamingConvention.CamelCase, _primitiveTypeMap)}" +
                 $"{snip}");
 
         _writer.IncreaseIndent();
 
         // check for regex
-        if (!string.IsNullOrEmpty(sd.ValidationRegEx))
+        if (!string.IsNullOrEmpty(sd.cgpValidationRegEx()))
         {
-            _writer.WriteLineIndented($"[{sd.ValidationRegEx}]");
+            _writer.WriteLineIndented($"[{sd.cgpValidationRegEx()}]");
         }
 
-        // TODO(ginoc)
-        //if (_info.ExtensionsByPath.ContainsKey(primitive.Id))
-        //{
-        //    WriteExtensions(_info.ExtensionsByPath[primitive.Id].Values);
-        //}
+        if (_definitions.ExtensionsByPath.ContainsKey(sd.Id))
+        {
+            WriteExtensions(_definitions.ExtensionsByPath[sd.Id].Values);
+        }
 
         // TODO(ginoc)
         //if (_info.ProfilesByBaseType.ContainsKey(primitive.Id))
@@ -145,6 +147,320 @@ public class LangInfo : ILanguage<InfoOptions>
 
         _writer.DecreaseIndent();
     }
+
+    /// <summary>Writes the extensions.</summary>
+    /// <param name="extensions">The extensions.</param>
+    private void WriteExtensions(
+        IEnumerable<StructureDefinition> extensions)
+    {
+        _writer.WriteLineIndented($"Extensions: {extensions.Count()}");
+
+        foreach (StructureDefinition extension in extensions.OrderBy(e => e.Id))
+        {
+            WriteExtension(extension);
+        }
+    }
+
+    /// <summary>Writes an extension.</summary>
+    /// <param name="extension">The extension.</param>
+    private void WriteExtension(
+        StructureDefinition extension)
+    {
+        _writer.WriteLineIndented($"+{extension.Url}");
+
+        if (extension.Snapshot.Any() || extension.Differential.Any())
+        {
+            WriteStructure(extension);
+        }
+    }
+
+    /// <summary>Writes a complex.</summary>
+    /// <param name="sd">The complex.</param>
+    private void WriteStructure(StructureDefinition sd)
+    {
+        bool indented = false;
+
+        ElementDefinition? rootElement = sd.cgRootElement();
+
+        // write this type's line, if it's a root element
+        // (sub-properties are written with cardinality in the prior loop)
+        if (_writer.Indentation == 0)
+        {
+            string snip = BuildStandardSnippet(sd.cgStandardStatus(), sd.cgMaturityLevel(), sd.cgIsExperimental());
+
+            _writer.WriteLine($"- {sd.Name}: {sd.cgBaseTypeName()}{snip} (abstract: {sd.Abstract == true})");
+
+            if (rootElement != null)
+            {
+                WriteElement(sd, rootElement, true);
+            }
+
+            _writer.IncreaseIndent();
+            indented = true;
+
+            if (sd.cgConstraints().Any() == true)
+            {
+                WriteConstraints(sd, sd.cgConstraints());
+            }
+        }
+        else if (rootElement != null)
+        {
+            WriteElement(sd, rootElement, true);
+        }
+
+        // write elements
+        WriteElements(sd, sd.Snapshot.Element.Any() ? sd.Snapshot.Element : sd.Differential.Element);
+
+        // check for extensions
+        if (_definitions.ExtensionsByPath.TryGetValue(sd.Type, out Dictionary<string, StructureDefinition>? extDict) && (extDict != null))
+        {
+            WriteExtensions(extDict.Values);
+        }
+
+        // check for search parameters on this object
+        if (sd.SearchParameters.Any())
+        {
+            WriteSearchParameters(sd.SearchParameters.Values);
+        }
+
+        // check for type operations
+        if (sd.TypeOperations.Any())
+        {
+            WriteOperations(sd.TypeOperations.Values, true);
+        }
+
+        // check for instance operations
+        if (sd.InstanceOperations.Any())
+        {
+            WriteOperations(sd.TypeOperations.Values, false);
+        }
+
+        if (_info.ProfilesByBaseType.TryGetValue(sd.Path, out Dictionary<string, FhirComplex> profileDict))
+        {
+            WriteProfiles(profileDict.Values);
+        }
+
+        if (indented)
+        {
+            _writer.DecreaseIndent();
+        }
+    }
+
+    /// <summary>Writes search parameters.</summary>
+    /// <param name="searchParameters">Options for controlling the search.</param>
+    /// <param name="headerHint">      (Optional) The header hint.</param>
+    private void WriteSearchParameters(
+        IEnumerable<SearchParameter> searchParameters,
+        string headerHint = "")
+    {
+        bool indented = false;
+
+        if (!string.IsNullOrEmpty(headerHint))
+        {
+            _writer.WriteLineIndented($"{headerHint}: {searchParameters.Count()}");
+            _writer.IncreaseIndent();
+            indented = true;
+        }
+
+        foreach (SearchParameter searchParam in searchParameters.OrderBy(s => s.Code))
+        {
+            if (searchParam.Component.Any())
+            {
+                _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code} is composite (resolves: {searchParam.cgCompositeResolves(_definitions.SearchParametersByUrl.Keys)})");
+
+                _writer.IncreaseIndent();
+
+                foreach (SearchParameter.ComponentComponent c in searchParam.Component)
+                {
+                    if (_definitions.SearchParametersByUrl.TryGetValue(c.Definition, out SearchParameter? compParam))
+                    {
+                        _writer.WriteLineIndented($"$({c.Definition}):{compParam.Type}");
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"$({c.Definition}):unresolved");
+                    }
+                }
+
+                _writer.DecreaseIndent();
+            }
+            else
+            {
+                string snip = BuildStandardSnippet(searchParam.cgStandardStatus(), searchParam.cgMaturityLevel(), searchParam.cgIsExperimental());
+                _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code}={searchParam.Type}{snip}");
+            }
+        }
+
+        if (indented)
+        {
+            _writer.DecreaseIndent();
+        }
+    }
+    /// <summary>Writes the constraints.</summary>
+    /// <param name="constraints">The constraints.</param>
+    private void WriteConstraints(StructureDefinition sd, IEnumerable<ElementDefinition.ConstraintComponent> constraints)
+    {
+        foreach (ElementDefinition.ConstraintComponent constraint in constraints)
+        {
+            string inherited = constraint.cgIsInherited(sd) ? "inherited" : "local";
+            _writer.WriteLineIndented($"!{constraint.Key}: {inherited} {constraint.Severity}: {constraint.Expression}");
+        }
+    }
+
+    /// <summary>Writes the elements.</summary>
+    /// <param name="complex">    The complex.</param>
+    private void WriteElements(StructureDefinition sd, IEnumerable<ElementDefinition> elements)
+    {
+        foreach (ElementDefinition element in elements.OrderBy(s => s.cgFieldOrder()))
+        {
+            WriteElement(sd, element);
+        }
+    }
+
+    /// <summary>Writes an element.</summary>
+    /// <param name="sd">      The complex.</param>
+    /// <param name="ed">      The element.</param>
+    /// <param name="writeAsRootElementInfo">(Optional) True if is root element, false if not.</param>
+    private void WriteElement(
+        StructureDefinition sd,
+        ElementDefinition ed,
+        bool writeAsRootElementInfo = false)
+    {
+        string propertyType = string.Empty;
+
+        if (ed.Type.Any())
+        {
+            IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> types = ed.cgTypes();
+
+            foreach ((string name, ElementDefinition.TypeRefComponent et) in types.OrderBy(r => r.Key))
+            {
+                string joiner = string.IsNullOrEmpty(propertyType) ? string.Empty : "|";
+
+                string profiles = string.Empty;
+                if (et.Profile.Any())
+                {
+                    profiles = "(" + string.Join("|", et.Profile) + ")";
+                }
+
+                string targets = string.Empty;
+                if (et.TargetProfile.Any())
+                {
+                    targets = "(" + string.Join("|", et.TargetProfile) + ")";
+                }
+
+                propertyType = $"{propertyType}{joiner}{name}{profiles}{targets}";
+            }
+        }
+
+        if (string.IsNullOrEmpty(propertyType))
+        {
+            propertyType = ed.Base?.Path ?? "!!! unknown type !!!";
+        }
+
+        if (ed.cgIsSimple())
+        {
+            propertyType += " *simple*";
+        }
+
+        if (ed.Constraint.Any(c => !c.cgIsInherited(sd)))
+        {
+            propertyType = propertyType +
+                " constraints: " +
+                string.Join(", ", ed.Constraint.Where(c => !c.cgIsInherited(sd)).Select(c => c.Key).OrderBy(v => v)) +
+                "";
+        }
+
+        if (ed.Condition.Any())
+        {
+            propertyType = propertyType +
+                " conditions: " +
+                string.Join(", ", ed.Condition.OrderBy(v => v)) +
+                "";
+        }
+
+        if (!string.IsNullOrEmpty(ed.cgBindingName()))
+        {
+            propertyType = propertyType + " binding name: " + ed.cgBindingName();
+        }
+
+        string fiveWs = string.Empty;
+
+        if (!string.IsNullOrEmpty(ed.cgFiveWs()))
+        {
+            fiveWs = " (W5: " + ed.cgFiveWs() + ")";
+        }
+
+        if (writeAsRootElementInfo)
+        {
+            _writer.WriteLineIndented(
+                $"  ^{ed.cgNameForExport(NamingConvention.CamelCase)}[{ed.cgCardinality()}]:" +
+                $" {propertyType}" +
+                $"{fiveWs}");
+        }
+        else
+        {
+            _writer.WriteLineIndented(
+                $"-" +
+                $" {ed.cgNameForExport(NamingConvention.CamelCase)}[{ed.cgCardinality()}]:" +
+                $" {propertyType}" +
+                $"{fiveWs}");
+        }
+
+        _writer.IncreaseIndent();
+
+        // check for regex
+        if (!string.IsNullOrEmpty(ed.cgValidationRegEx()))
+        {
+            _writer.WriteLineIndented($"[{ed.cgValidationRegEx()}]");
+        }
+
+
+        // check for default value
+        if (ed.DefaultValue != null)
+        {
+            _writer.WriteLineIndented($".{ed.cgDefaultFieldName()} = {ed.DefaultValue}");
+        }
+
+        // check for fixed value
+        if (ed.Fixed != null)
+        {
+            _writer.WriteLineIndented($".{ed.cgFixedFieldName()} = {ed.Fixed}");
+        }
+
+        // check for pattern value
+        if (ed.Pattern != null)
+        {
+            _writer.WriteLineIndented($".{ed.cgPatternFieldName()} = {ed.Pattern}");
+        }
+
+        if ((ed.Codes != null) && (ed.Codes.Count > 0))
+        {
+            string codes = string.Join("|", ed.Codes);
+            _writer.WriteLineIndented($"{{{codes}}}");
+        }
+
+        if (!writeAsRootElementInfo)
+        {
+            // either step into backbone definition OR extensions, don't write both
+            if (sd.Components.ContainsKey(ed.Path))
+            {
+                WriteComplex(sd.Components[ed.Path]);
+            }
+            else if (_info.ExtensionsByPath.ContainsKey(ed.Path))
+            {
+                WriteExtensions(_info.ExtensionsByPath[ed.Path].Values);
+            }
+
+            // check for slicing information
+            if (ed.Slicing != null)
+            {
+                WriteSlicings(ed.Slicing.Values);
+            }
+        }
+
+        _writer.DecreaseIndent();
+    }
+
 
     /// <summary>Builds standard snippet.</summary>
     /// <param name="standardStatus">The standard status.</param>

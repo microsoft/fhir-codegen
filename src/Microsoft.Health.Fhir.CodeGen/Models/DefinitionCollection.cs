@@ -6,7 +6,6 @@
 
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
-using Microsoft.Health.Fhir.CodeGen.FhirWrappers;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
@@ -28,7 +27,7 @@ public class DefinitionCollection
     /// <summary>Gets or sets the contents.</summary>
     public Dictionary<string, PackageContents> ContentListings { get; set; } = new();
     
-    private readonly Dictionary<string, CodeGenPrimitive> _primitiveTypesByName = new();
+    private readonly Dictionary<string, StructureDefinition> _primitiveTypesByName = new();
     private readonly Dictionary<string, StructureDefinition> _complexTypesByName = new();
     private readonly Dictionary<string, StructureDefinition> _resourcesByName = new();
     private readonly Dictionary<string, StructureDefinition> _logicalModelsByName = new();
@@ -75,11 +74,11 @@ public class DefinitionCollection
     }
 
     /// <summary>Gets the name of the primitive types by.</summary>
-    public IReadOnlyDictionary<string, CodeGenPrimitive> PrimitiveTypesByName => _primitiveTypesByName;
+    public IReadOnlyDictionary<string, StructureDefinition> PrimitiveTypesByName => _primitiveTypesByName;
 
     /// <summary>Adds a primitive type.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddPrimitiveType(CodeGenPrimitive sd)
+    public void AddPrimitiveType(StructureDefinition sd)
     {
         // TODO(ginoc): Consider if we want to make this explicit on any definitions that do not have it
         //if (sd.FhirVersion == null)

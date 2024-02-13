@@ -16,7 +16,6 @@ using Hl7.Fhir.Serialization;
 using System.Text.Json;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
-using Microsoft.Health.Fhir.CodeGen.FhirWrappers;
 
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
@@ -182,20 +181,34 @@ public class PackageLoader
                                     throw new Exception($"Failed to parse StructureDefinition file {pFile.FileName}");
                                 }
 
-                                for (int i = 0; i < (r.Snapshot?.Element?.Count ?? 0); i++)
+                                Dictionary<string, int> allFieldOrders = new();
+
+                                // annotate each element with a field order extension
+                                foreach (ElementDefinition ed in r.Snapshot?.Element ?? Enumerable.Empty<ElementDefinition>())
                                 {
-                                    r.Snapshot!.Element[i] = new CodeGenElement(r.Snapshot.Element[i], r);
+                                    int fo = allFieldOrders.Count() + 1;
+
+                                    // add to our dictionary for fast setting of differential
+                                    allFieldOrders.Add(ed.ElementId, fo);
+
+                                    ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
                                 }
 
-                                for (int i = 0; i < (r.Differential?.Element?.Count ?? 0); i++)
+                                foreach (ElementDefinition ed in r.Differential?.Element ?? Enumerable.Empty<ElementDefinition>())
                                 {
-                                    r.Differential!.Element[i] = new CodeGenElement(r.Differential.Element[i], r);
+                                    if (!allFieldOrders.TryGetValue(ed.ElementId, out int fo))
+                                    {
+                                        fo = allFieldOrders.Count() + 1;
+                                        allFieldOrders.Add(ed.ElementId, fo);
+                                    }
+
+                                    ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
                                 }
- 
+
                                 switch (r.cgArtifactClass())
                                 {
                                     case FhirArtifactClassEnum.PrimitiveType:
-                                        definitions.AddPrimitiveType(new CodeGenPrimitive(r));
+                                        definitions.AddPrimitiveType(r);
                                         break;
 
                                     case FhirArtifactClassEnum.LogicalModel:
