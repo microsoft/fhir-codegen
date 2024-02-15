@@ -18,7 +18,7 @@ public static class SearchParameterExtensions
     /// <summary>Gets the FHIR Maturity Model (FMM) level of this definition, or 0 if not specified.</summary>
     /// <param name="sd">The SD to act on.</param>
     /// <returns>An int.</returns>
-    public static int cgMaturityLevel(this SearchParameter sd) => sd.GetExtensionValue<Integer>(CommonDefinitions.ExtUrlFmm)?.Value ?? 0;
+    public static int? cgMaturityLevel(this SearchParameter sd) => sd.GetExtensionValue<Integer>(CommonDefinitions.ExtUrlFmm)?.Value;
 
     /// <summary>Gets a flag indicating if this definition is experimental.</summary>
     /// <param name="sd">The SD to act on.</param>

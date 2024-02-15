@@ -6,6 +6,7 @@
 
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
@@ -24,7 +25,7 @@ public static class ElementDefinitionExtensions
     public static string cgExplicitName(this ElementDefinition ed) => ed.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlExplicitTypeName)?.ToString() ?? string.Empty;
 
     /// <summary>Gets the types.</summary>
-    public static IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> cgTypes(this ElementDefinition ed) => ed.Type.ToDictionary(t => t.Code, t => t);
+    public static IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> cgTypes(this ElementDefinition ed) => ed.Type.ToDictionary(t => t.cgName(), t => t);
 
     /// <summary>An ElementDefinition extension method that cg cardinality.</summary>
     /// <param name="ed">The ed to act on.</param>
@@ -89,6 +90,58 @@ public static class ElementDefinitionExtensions
         ed.Binding?.GetExtensionValue<FhirBoolean>(CommonDefinitions.ExtUrlIsCommonBinding)?.Value
         ?? false;
 
+    /// <summary>Gets the required codes for this element.</summary>
+    /// <param name="ed">       The ed to act on.</param>
+    /// <param name="valueSets">Sets the value belongs to.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process cg codes in this collection.
+    /// </returns>
+    public static IEnumerable<string> cgCodes(this ElementDefinition ed, DefinitionCollection definitions)
+    {
+        // if the binding is not required, we don't need to generate the codes
+        if ((ed.Binding == null) || (ed.Binding.Strength != BindingStrength.Required))
+        {
+            return Enumerable.Empty<string>();
+        }
+
+        ValueSet? vs = null;
+
+        try
+        {
+            // TODO(ginoc): backwards-compatibility says we should use 'starter' in place of actual binding for CS.format
+            // On the other hand, Attachment.language looks like we should ignore.  What do we want?
+            // check for additional bindings
+            if (ed.Path.Equals("CapabilityStatement.format", StringComparison.Ordinal) &&
+                ed.Binding.Additional.Any(a => a.Purpose == ElementDefinition.AdditionalBindingPurposeVS.Starter))
+            {
+                ElementDefinition.AdditionalComponent add = ed.Binding.Additional.First(a => a.Purpose == ElementDefinition.AdditionalBindingPurposeVS.Starter);
+
+                vs = definitions.ExpandVs(add.ValueSet).Result;
+                //vs = definitions.ResolveVs(add.ValueSet);
+            }
+
+            if (vs == null)
+            {
+                vs = definitions.ExpandVs(ed.Binding.ValueSet).Result;
+                //vs = definitions.ResolveVs(ed.Binding.ValueSet);
+            }
+
+            return vs?.Expansion?.Contains?.Select(c => c.Code) ?? Enumerable.Empty<string>();
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException == null)
+            {
+                Console.WriteLine($"Error resolving value set {ed.Binding.ValueSet}: {ex.Message}");
+            }
+            else
+            {
+                Console.WriteLine($"Error resolving value set {ed.Binding.ValueSet}: {ex.Message}: {ex.InnerException}");
+            }
+            return Enumerable.Empty<string>();
+        }
+    }
+
     /// <summary>An ElementDefinition extension method that cg name for export.</summary>
     /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
     ///  illegal values.</exception>
@@ -105,6 +158,8 @@ public static class ElementDefinitionExtensions
         string concatenationDelimiter = "",
         HashSet<string>? reservedWords = null)
     {
+        string name = ed.Path.Split('.').Last();
+
         switch (convention)
         {
             case NamingConvention.FhirDotNotation:
@@ -146,7 +201,7 @@ public static class ElementDefinitionExtensions
                         return value;
                     }
 
-                    string nc = ed.cgNameForExport(NamingConvention.PascalCase, false);
+                    string nc = name.ToPascalCase();
 
                     if ((reservedWords != null) &&
                         reservedWords.Contains(nc))
@@ -175,7 +230,7 @@ public static class ElementDefinitionExtensions
                         return value;
                     }
 
-                    value = ed.cgNameForExport(NamingConvention.CamelCase, false);
+                    value = name.ToCamelCase();
 
                     if ((reservedWords != null) &&
                         reservedWords.Contains(value))
@@ -204,7 +259,7 @@ public static class ElementDefinitionExtensions
                         return value;
                     }
 
-                    value = ed.cgNameForExport(NamingConvention.UpperCase, false);
+                    value = name.ToUpperCase();
 
                     if ((reservedWords != null) &&
                         reservedWords.Contains(value))
@@ -230,7 +285,7 @@ public static class ElementDefinitionExtensions
                         }
                     }
 
-                    value = ed.cgNameForExport(NamingConvention.LowerCase, false);
+                    value = name.ToLowerCase();
 
                     if ((reservedWords != null) &&
                         reservedWords.Contains(value))

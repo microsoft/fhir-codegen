@@ -181,30 +181,6 @@ public class PackageLoader
                                     throw new Exception($"Failed to parse StructureDefinition file {pFile.FileName}");
                                 }
 
-                                Dictionary<string, int> allFieldOrders = new();
-
-                                // annotate each element with a field order extension
-                                foreach (ElementDefinition ed in r.Snapshot?.Element ?? Enumerable.Empty<ElementDefinition>())
-                                {
-                                    int fo = allFieldOrders.Count() + 1;
-
-                                    // add to our dictionary for fast setting of differential
-                                    allFieldOrders.Add(ed.ElementId, fo);
-
-                                    ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
-                                }
-
-                                foreach (ElementDefinition ed in r.Differential?.Element ?? Enumerable.Empty<ElementDefinition>())
-                                {
-                                    if (!allFieldOrders.TryGetValue(ed.ElementId, out int fo))
-                                    {
-                                        fo = allFieldOrders.Count() + 1;
-                                        allFieldOrders.Add(ed.ElementId, fo);
-                                    }
-
-                                    ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
-                                }
-
                                 switch (r.cgArtifactClass())
                                 {
                                     case FhirArtifactClassEnum.PrimitiveType:
@@ -251,6 +227,7 @@ public class PackageLoader
                                 {
                                     throw new Exception($"Failed to parse OperationDefinition file {pFile.FileName}");
                                 }
+
                                 definitions.AddOperation(r);
                             }
                             break;

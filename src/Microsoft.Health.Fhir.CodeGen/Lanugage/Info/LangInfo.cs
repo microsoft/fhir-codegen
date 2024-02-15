@@ -5,12 +5,14 @@
 
 using System.CommandLine;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using static Hl7.Fhir.Model.CodeSystem;
 using static Microsoft.Health.Fhir.CodeGen.Lanugage.Info.LangInfo;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
@@ -94,22 +96,39 @@ public class LangInfo : ILanguage<InfoOptions>
             : _writer = new ExportStreamWriter(writeStream, System.Text.Encoding.UTF8, 1024, true))
         {
             WriteHeader(config, definitions);
-            
-            WritePrimitives(definitions.PrimitiveTypesByName.Values);
+
+            WriteStructures(definitions.PrimitiveTypesByName.Values, "Primitive Types");
+            WriteStructures(definitions.ComplexTypesByName.Values, "Complex Types");
+            WriteStructures(definitions.ResourcesByName.Values, "Resources");
+
+            //WriteOperations(_info.SystemOperations.Values, true, "System Operations");
+            //WriteSearchParameters(_info.AllResourceParameters.Values, "All Resource Parameters");
+            //WriteSearchParameters(_info.SearchResultParameters.Values, "Search Result Parameters");
+            //WriteSearchParameters(_info.AllInteractionParameters.Values, "All Interaction Parameters");
+
+            //WriteValueSets(_info.ValueSetsByUrl.Values, "Value Sets");
+
+            //WriteFooter();
+
         }
 
     }
 
-    /// <summary>Writes the primitives.</summary>
-    /// <param name="primitives">The primitives.</param>
-    private void WritePrimitives(IEnumerable<StructureDefinition> primitives)
+    /// <summary>Writes the structures.</summary>
+    /// <param name="structures">The structures.</param>
+    /// <param name="headerHint">(Optional) The header hint.</param>
+    private void WriteStructures(
+        IEnumerable<StructureDefinition> structures,
+        string headerHint = "")
     {
-        _writer.WriteLineIndented($"Primitive Types: {primitives.Count()}");
-
-        // traverse primitives
-        foreach (StructureDefinition sd in primitives.OrderBy(s => s.Id))
+        if (!string.IsNullOrEmpty(headerHint))
         {
-            WritePrimitive(sd);
+            _writer.WriteLineIndented($"{headerHint}: {structures.Count()}");
+        }
+
+        foreach (StructureDefinition sd in structures.OrderBy(c => c.Id))
+        {
+            WriteStructure(sd);
         }
     }
 
@@ -162,16 +181,69 @@ public class LangInfo : ILanguage<InfoOptions>
     }
 
     /// <summary>Writes an extension.</summary>
-    /// <param name="extension">The extension.</param>
+    /// <param name="sd">The extension.</param>
     private void WriteExtension(
-        StructureDefinition extension)
+        StructureDefinition sd)
     {
-        _writer.WriteLineIndented($"+{extension.Url}");
+        string card = sd.cgRootElement()?.cgCardinality() ?? string.Empty;
 
-        if (extension.Snapshot.Any() || extension.Differential.Any())
+        if (string.IsNullOrEmpty(card))
         {
-            WriteStructure(extension);
+            _writer.WriteLineIndented($"+{sd.Url}");
         }
+        else
+        {
+            _writer.WriteLineIndented($"+{sd.Url} [{card}]");
+        }
+
+        _writer.IncreaseIndent();
+
+        // check for a 'simple' extension
+        if ((sd.Snapshot.Element.Count == 5) || (sd.Differential.Element.Count == 4))
+        {
+            ElementDefinition? eleUrl = sd.Snapshot.Element.Any()
+                ? sd.Snapshot.Element[3]
+                : sd.Differential.Element[2];
+
+            _writer.WriteLineIndented($"- {eleUrl.cgNameForExport(NamingConvention.CamelCase)}[{eleUrl.cgCardinality()}]: fixed to {eleUrl.Fixed}");
+
+            ElementDefinition? eleValue = sd.Snapshot.Element.Any()
+                ? sd.Snapshot.Element[4]
+                : sd.Differential.Element[3];
+
+            string propertyType = string.Empty;
+
+            if (eleValue.Type.Any())
+            {
+                IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> types = eleValue.cgTypes();
+
+                foreach ((string name, ElementDefinition.TypeRefComponent et) in types.OrderBy(r => r.Key))
+                {
+                    string joiner = string.IsNullOrEmpty(propertyType) ? string.Empty : "|";
+
+                    string profiles = string.Empty;
+                    if (et.Profile.Any())
+                    {
+                        profiles = "(" + string.Join("|", et.cgTypeProfiles().Keys) + ")";
+                    }
+
+                    string targets = string.Empty;
+                    if (et.TargetProfile.Any())
+                    {
+                        targets = "(" + string.Join("|", et.cgTargetProfiles().Keys) + ")";
+                    }
+                    propertyType = $"{propertyType}{joiner}{name}{profiles}{targets}";
+                }
+            }
+
+            _writer.WriteLineIndented($"- {eleValue.cgNameForExport(NamingConvention.CamelCase)}[{eleValue.cgCardinality()}]: {propertyType}");
+        }
+        else
+        {
+            //WriteStructure(sd);
+        }
+
+        _writer.DecreaseIndent();
     }
 
     /// <summary>Writes a complex.</summary>
@@ -179,6 +251,22 @@ public class LangInfo : ILanguage<InfoOptions>
     private void WriteStructure(StructureDefinition sd)
     {
         bool indented = false;
+
+        // check for artifacts that thave alternative renderings
+        switch (sd.cgArtifactClass())
+        {
+            case CodeGenCommon.Models.FhirArtifactClassEnum.Extension:
+                {
+                    WriteExtension(sd);
+                    return;
+                }
+
+            case CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType:
+                {
+                    WritePrimitive(sd);
+                    return;
+                }
+        }
 
         ElementDefinition? rootElement = sd.cgRootElement();
 
@@ -198,9 +286,11 @@ public class LangInfo : ILanguage<InfoOptions>
             _writer.IncreaseIndent();
             indented = true;
 
-            if (sd.cgConstraints().Any() == true)
+            IEnumerable<ElementDefinition.ConstraintComponent> constraints = sd.cgConstraints(includeInherited: true);
+
+            if (constraints.Any() == true)
             {
-                WriteConstraints(sd, sd.cgConstraints());
+                WriteConstraints(sd, constraints);
             }
         }
         else if (rootElement != null)
@@ -209,35 +299,91 @@ public class LangInfo : ILanguage<InfoOptions>
         }
 
         // write elements
-        WriteElements(sd, sd.Snapshot.Element.Any() ? sd.Snapshot.Element : sd.Differential.Element);
+        WriteElements(sd, sd.cgElements(topLevelOnly: true));
 
-        // check for extensions
-        if (_definitions.ExtensionsByPath.TryGetValue(sd.Type, out Dictionary<string, StructureDefinition>? extDict) && (extDict != null))
+        // check for extensions if this is the first time we write this type
+        if (indented &&
+            _definitions.ExtensionsByPath.TryGetValue(sd.Type, out Dictionary<string, StructureDefinition>? extDict) && (extDict != null))
         {
             WriteExtensions(extDict.Values);
         }
 
         // check for search parameters on this object
-        if (sd.SearchParameters.Any())
+        if (_definitions.SearchParametersForBase(sd.Type).Any())
         {
-            WriteSearchParameters(sd.SearchParameters.Values);
+            WriteSearchParameters(_definitions.SearchParametersForBase(sd.Type).Values.OrderBy(sp => sp.Code));
         }
 
         // check for type operations
-        if (sd.TypeOperations.Any())
+        //if (sd.TypeOperations.Any())
+        //{
+        //    WriteOperations(sd.TypeOperations.Values, true);
+        //}
+
+        //// check for instance operations
+        //if (sd.InstanceOperations.Any())
+        //{
+        //    WriteOperations(sd.TypeOperations.Values, false);
+        //}
+
+        //if (_info.ProfilesByBaseType.TryGetValue(sd.Path, out Dictionary<string, FhirComplex> profileDict))
+        //{
+        //    WriteProfiles(profileDict.Values);
+        //}
+
+        if (indented)
         {
-            WriteOperations(sd.TypeOperations.Values, true);
+            _writer.DecreaseIndent();
+        }
+    }
+
+    /// <summary>Writes the operations.</summary>
+    /// <param name="operations"> The operations.</param>
+    /// <param name="isTypeLevel">True if is type level, false if not.</param>
+    /// <param name="headerHint"> (Optional) The header hint.</param>
+    private void WriteOperations(
+        IEnumerable<OperationDefinition> operations,
+        bool isTypeLevel,
+        string headerHint = "")
+    {
+        bool indented = false;
+
+        if (!string.IsNullOrEmpty(headerHint))
+        {
+            _writer.WriteLineIndented($"{headerHint}: {operations.Count()}");
+            _writer.IncreaseIndent();
+            indented = true;
         }
 
-        // check for instance operations
-        if (sd.InstanceOperations.Any())
+        foreach (OperationDefinition operation in operations.OrderBy(o => o.Code))
         {
-            WriteOperations(sd.TypeOperations.Values, false);
-        }
+            string snip = BuildStandardSnippet(operation.cgStandardStatus(), operation.cgMaturityLevel(), operation.cgIsExperimental());
 
-        if (_info.ProfilesByBaseType.TryGetValue(sd.Path, out Dictionary<string, FhirComplex> profileDict))
-        {
-            WriteProfiles(profileDict.Values);
+            if (isTypeLevel)
+            {
+                _writer.WriteLineIndented($"${operation.Code}{snip}");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"/{{id}}/${operation.Code}{snip}");
+            }
+
+            if (operation.Parameter.Any())
+            {
+                _writer.IncreaseIndent();
+
+                // write operation parameters inline
+                foreach (OperationDefinition.ParameterComponent parameter in operation.Parameter.OrderBy(p => p.cgFieldOrder()))
+                {
+                    string st = (parameter.SearchType == null) ? string.Empty : "<" + parameter.SearchType.GetLiteral() + ">";
+                    _writer.WriteLineIndented(
+                        $"{parameter.Use}:" +
+                        $" {parameter.Name}:" +
+                        $" {parameter.Type}{st}[{parameter.cgCardinality()}]");
+                }
+
+                _writer.DecreaseIndent();
+            }
         }
 
         if (indented)
@@ -303,7 +449,7 @@ public class LangInfo : ILanguage<InfoOptions>
         foreach (ElementDefinition.ConstraintComponent constraint in constraints)
         {
             string inherited = constraint.cgIsInherited(sd) ? "inherited" : "local";
-            _writer.WriteLineIndented($"!{constraint.Key}: {inherited} {constraint.Severity}: {constraint.Expression}");
+            _writer.WriteLineIndented($"!{constraint.Key}: {inherited} {constraint.Severity.GetLiteral()}: {constraint.Expression}");
         }
     }
 
@@ -339,13 +485,13 @@ public class LangInfo : ILanguage<InfoOptions>
                 string profiles = string.Empty;
                 if (et.Profile.Any())
                 {
-                    profiles = "(" + string.Join("|", et.Profile) + ")";
+                    profiles = "(" + string.Join("|", et.cgTypeProfiles().Keys) + ")";
                 }
 
                 string targets = string.Empty;
                 if (et.TargetProfile.Any())
                 {
-                    targets = "(" + string.Join("|", et.TargetProfile) + ")";
+                    targets = "(" + string.Join("|", et.cgTargetProfiles().Keys) + ")";
                 }
 
                 propertyType = $"{propertyType}{joiner}{name}{profiles}{targets}";
@@ -392,10 +538,12 @@ public class LangInfo : ILanguage<InfoOptions>
 
         if (writeAsRootElementInfo)
         {
+            _writer.IncreaseIndent();
             _writer.WriteLineIndented(
-                $"  ^{ed.cgNameForExport(NamingConvention.CamelCase)}[{ed.cgCardinality()}]:" +
+                $"^{ed.cgNameForExport(NamingConvention.CamelCase)}[{ed.cgCardinality()}]:" +
                 $" {propertyType}" +
                 $"{fiveWs}");
+            _writer.DecreaseIndent();
         }
         else
         {
@@ -406,14 +554,11 @@ public class LangInfo : ILanguage<InfoOptions>
                 $"{fiveWs}");
         }
 
-        _writer.IncreaseIndent();
-
         // check for regex
         if (!string.IsNullOrEmpty(ed.cgValidationRegEx()))
         {
             _writer.WriteLineIndented($"[{ed.cgValidationRegEx()}]");
         }
-
 
         // check for default value
         if (ed.DefaultValue != null)
@@ -433,32 +578,39 @@ public class LangInfo : ILanguage<InfoOptions>
             _writer.WriteLineIndented($".{ed.cgPatternFieldName()} = {ed.Pattern}");
         }
 
-        if ((ed.Codes != null) && (ed.Codes.Count > 0))
+        IEnumerable<string> codes = ed.cgCodes(_definitions);
+
+        if (codes.Any())
         {
-            string codes = string.Join("|", ed.Codes);
-            _writer.WriteLineIndented($"{{{codes}}}");
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented($"{{{string.Join('|', codes)}}}");
+            _writer.DecreaseIndent();
         }
 
         if (!writeAsRootElementInfo)
         {
-            // either step into backbone definition OR extensions, don't write both
-            if (sd.Components.ContainsKey(ed.Path))
+            if (_definitions.ExtensionsByPath.ContainsKey(ed.Path))
             {
-                WriteComplex(sd.Components[ed.Path]);
-            }
-            else if (_info.ExtensionsByPath.ContainsKey(ed.Path))
-            {
-                WriteExtensions(_info.ExtensionsByPath[ed.Path].Values);
+                _writer.IncreaseIndent();
+                WriteExtensions(_definitions.ExtensionsByPath[ed.Path].Values);
+                _writer.DecreaseIndent();
             }
 
-            // check for slicing information
-            if (ed.Slicing != null)
+            if (_definitions.IsBackbonePath(ed.Path))
             {
-                WriteSlicings(ed.Slicing.Values);
+                _writer.IncreaseIndent();
+                WriteElements(sd, sd.cgElements(forBackbonePath: ed.Path, topLevelOnly: true));
+                _writer.DecreaseIndent();
             }
+
+            //// check for slicing information
+            //if (ed.Slicing != null)
+            //{
+            //    WriteSlicings(ed.Slicing.Values);
+            //}
         }
 
-        _writer.DecreaseIndent();
+        //_writer.DecreaseIndent();
     }
 
 

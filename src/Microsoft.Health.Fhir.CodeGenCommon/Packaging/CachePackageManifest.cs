@@ -91,7 +91,7 @@ public record class CachePackageManifest
 
     /// <summary>Gets the description.</summary>
     [JsonPropertyName("description")]
-    public required string Description { get; init; }
+    public string Description { get; init; } = string.Empty;
 
     /// <summary>Gets the FHIR versions.</summary>
     /// <remarks>
@@ -139,7 +139,7 @@ public record class CachePackageManifest
 
     /// <summary>Gets or sets the author.</summary>
     [JsonPropertyName("author")]
-    public required string Author { get; init; }
+    public string Author { get; init; } = string.Empty;
 
     /// <summary>Gets or sets the mantainers.</summary>
     [JsonPropertyName("maintainers")]

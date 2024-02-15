@@ -17,7 +17,15 @@ public static class ElementDefTypeExtensions
     /// <returns>A string.</returns>
     public static string cgName(this ElementDefinition.TypeRefComponent tr)
     {
-        if (FhirTypeUtils.IsFhirPathType(tr.Code, out string name))
+        string name = tr.GetExtensionValue<FhirUrl>(CommonDefinitions.ExtUrlFhirType)?.ToString()
+            ?? string.Empty;
+
+        if (!string.IsNullOrEmpty(name))
+        {
+            return name;
+        }
+
+        if (FhirTypeUtils.IsFhirPathType(tr.Code, out name))
         {
             return name;
         }
@@ -69,7 +77,7 @@ public static class ElementDefTypeExtensions
     ///    It is possible to profile backbone element(e.g.part of a resource), using the
     ///    http://hl7.org/fhir/StructureDefinition/elementdefinition-profile-element extension.
     /// </remarks>
-    public static IReadOnlyDictionary<string, string> cgTypeProfiles(this ElementDefinition.TypeRefComponent tr) => tr.Profile.ToDictionary(p => new Uri(p).Segments.Last(), p => p);
+    public static IReadOnlyDictionary<string, string> cgTypeProfiles(this ElementDefinition.TypeRefComponent tr) => tr.Profile.Distinct().ToDictionary(p => new Uri(p).Segments.Last(), p => p);
 
     /// <summary>
     /// Gets the target profiles (StructureDefinition or IG) on the Reference/canonical target - one
@@ -84,7 +92,7 @@ public static class ElementDefTypeExtensions
     /// is specified, the target resource SHALL conform to at least one profile defined in the
     /// implementation guide.
     /// </remarks>
-    public static IReadOnlyDictionary<string, string> cgTargetProfiles(this ElementDefinition.TypeRefComponent tr) => tr.TargetProfile.ToDictionary(p => new Uri(p).Segments.Last(), p => p);
+    public static IReadOnlyDictionary<string, string> cgTargetProfiles(this ElementDefinition.TypeRefComponent tr) => tr.TargetProfile.Distinct().ToDictionary(p => new Uri(p).Segments.Last(), p => p);
 
     /// <summary>Gets the mappings defined for this element.</summary>
     /// <param name="ed">The ed to act on.</param>

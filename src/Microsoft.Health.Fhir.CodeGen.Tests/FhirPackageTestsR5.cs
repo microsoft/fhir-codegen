@@ -21,6 +21,7 @@ public class FhirPackageTestFixture
 
     /// <summary>The FHIR R5 package entry.</summary>
     public PackageCacheEntry _r5;
+    public PackageCacheEntry _expansionsR5;
     public PackageCacheEntry _extensionsR5;
 
     //public PackageCacheEntry _r4;
@@ -36,6 +37,7 @@ public class FhirPackageTestFixture
         });
 
         _r5 = Load("hl7.fhir.r5.core#5.0.0");
+        _expansionsR5 = Load("hl7.fhir.r5.expansions#5.0.0");
         _extensionsR5 = Load("hl7.fhir.uv.extensions#1.0.0");
 
         //_r4 = Load("hl7.fhir.r4.core.as.r5#current");
@@ -84,6 +86,9 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     /// <summary>(Immutable) The FHIR R5 core package.</summary>
     private readonly PackageCacheEntry _r5;
 
+    /// <summary>(Immutable) The FHIR R5 expansions package.</summary>
+    private readonly PackageCacheEntry _expansionsR5;
+
     /// <summary>(Immutable) The FHIR R5 extensions package.</summary>
     private readonly PackageCacheEntry _extensionsR5;
 
@@ -98,6 +103,7 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
         _cache = fixture._cache;
         _testOutputHelper = testOutputHelper;
         _r5 = fixture._r5;
+        _expansionsR5 = fixture._expansionsR5;
         _extensionsR5 = fixture._extensionsR5;
     }
 
@@ -107,7 +113,7 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     {
         PackageLoader loader = new(_cache);
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_r5.Name, new[] { _r5, _extensionsR5 });
+        DefinitionCollection? loaded = await loader.LoadPackages(_r5.Name, new[] { _r5, _expansionsR5, _extensionsR5 });
 
         loaded.Should().NotBeNull();
 

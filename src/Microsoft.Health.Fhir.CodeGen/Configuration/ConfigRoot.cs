@@ -3,9 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.CommandLine;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 namespace Microsoft.Health.Fhir.CodeGen.Configuration;
 
@@ -40,4 +38,11 @@ public class ConfigRoot
         EnvName = "Offline",
         Description = "Offline mode (will not download missing packages).")]
     public bool OfflineMode { get; set; } = false;
+
+    //[ConfigOption(
+    //    ArgAliases = new[] { "--terminology-server", "--tx" },
+    //    EnvName = "Terminology_Server",
+    //    ArgArity = "0..*",
+    //    Description = "FHIR URL for a terminology server to use")]
+    //public string[] TxServers { get; set; } = Array.Empty<string>();
 }

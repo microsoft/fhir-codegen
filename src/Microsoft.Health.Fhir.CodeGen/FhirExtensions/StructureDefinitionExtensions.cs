@@ -77,7 +77,7 @@ public static class StructureDefinitionExtensions
     /// <summary>Gets the FHIR Maturity Model (FMM) level of this definition, or 0 if not specified.</summary>
     /// <param name="sd">The SD to act on.</param>
     /// <returns>An int.</returns>
-    public static int cgMaturityLevel(this StructureDefinition sd) => sd.GetExtensionValue<Integer>(CommonDefinitions.ExtUrlFmm)?.Value ?? 0;
+    public static int? cgMaturityLevel(this StructureDefinition sd) => sd.GetExtensionValue<Integer>(CommonDefinitions.ExtUrlFmm)?.Value;
 
     /// <summary>Gets a flag indicating if this definition is experimental.</summary>
     /// <param name="sd">The SD to act on.</param>
@@ -94,18 +94,91 @@ public static class StructureDefinitionExtensions
     /// <returns>A string.</returns>
     public static string cgDefinitionCategory(this StructureDefinition sd) => sd.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlCategory)?.Value ?? string.Empty;
 
+    /// <summary>
+    /// Enumerates property elements in this structure - skips the root and slices.
+    /// </summary>
+    /// <param name="sd">          The SD to act on.</param>
+    /// <param name="topLevelOnly">(Optional) True to return only top level elements.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process cg elements in this collection.
+    /// </returns>
+    public static IEnumerable<ElementDefinition> cgElements(
+        this StructureDefinition sd,
+        string forBackbonePath = "",
+        bool topLevelOnly = false)
+    {
+        IEnumerable<ElementDefinition> source;
+
+        int dotCount = string.IsNullOrEmpty(forBackbonePath) ? 0 : forBackbonePath.Count(c => c == '.');
+
+        if (string.IsNullOrEmpty(forBackbonePath))
+        {
+            source = sd.Snapshot.Element.Any() ? sd.Snapshot.Element : sd.Differential.Element;
+        }
+        else
+        {
+            source = sd.Snapshot.Element.Any()
+                ? sd.Snapshot.Element.Where(e => e.Path.StartsWith(forBackbonePath, StringComparison.Ordinal))
+                : sd.Differential.Element.Where(e => e.Path.StartsWith(forBackbonePath, StringComparison.Ordinal));
+        }
+
+        foreach (ElementDefinition e in source)
+        {
+            // skip the root element
+            if (e.cgFieldOrder() == 0)
+            {
+                continue;
+            }
+
+            // skip slices and their children
+            if (e.ElementId.Contains(':'))
+            {
+                continue;
+            }
+
+            // if top level only, we need exactly one dot more than the forBackbonePath
+            if (topLevelOnly)
+            {
+                int count = e.Path.Count(c => c == '.');
+                if (count != dotCount + 1)
+                {
+                    continue;
+                }
+            }
+
+            yield return e;
+        }
+    }
+
     /// <summary>Gets the information about mappings defined on this artifact.</summary>
     /// <param name="sd">The SD to act on.</param>
     /// <returns>An IReadOnlyDictionary&lt;string,StructureDefinition.MappingComponent&gt;</returns>
     public static IReadOnlyDictionary<string, StructureDefinition.MappingComponent> cgDefinedMappings(this StructureDefinition sd) => sd.Mapping.ToDictionary(m => m.Identity, m => m);
 
     /// <summary>Get the constraints defined by this structure.</summary>
-    /// <param name="sd">The SD to act on.</param>
+    /// <param name="sd">              The SD to act on.</param>
+    /// <param name="includeInherited">(Optional) True to include, false to exclude the inherited.</param>
     /// <returns>
     /// An enumerator that allows foreach to be used to process cg constraints in this collection.
     /// </returns>
-    public static IEnumerable<ElementDefinition.ConstraintComponent> cgConstraints(this StructureDefinition sd)
+    public static IEnumerable<ElementDefinition.ConstraintComponent> cgConstraints(this StructureDefinition sd, bool includeInherited = false)
     {
+        if (includeInherited)
+        {
+            if (sd.Snapshot.Element.Any())
+            {
+                return sd.Snapshot.Element.SelectMany(e => e.Constraint)
+                    .GroupBy(e => e.Key)
+                    .Select(e => e.First())
+                    .OrderBy(e => e.Key);
+            }
+
+            return sd.Differential.Element.SelectMany(e => e.Constraint)
+                .GroupBy(e => e.Key)
+                .Select(e => e.First())
+                .OrderBy(e => e.Key);
+        }
+
         if (sd.Snapshot.Element.Any())
         {
             return sd.Snapshot.Element.SelectMany(e => e.Constraint)
@@ -141,6 +214,11 @@ public static class StructureDefinitionExtensions
             case StructureDefinition.StructureDefinitionKind.Resource:
             default:
                 {
+                    if (!string.IsNullOrEmpty(sd.BaseDefinition))
+                    {
+                        return sd.BaseDefinition.Split('/').Last();
+                    }
+
                     return sd.Type ?? sd.Name ?? string.Empty;
                 }
         }
