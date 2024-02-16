@@ -679,49 +679,6 @@ public class LangInfo : ILanguage<InfoOptions>
         _writer.DecreaseIndent();
     }
 
-    ///// <summary>Writes a slicing.</summary>
-    ///// <param name="slice">The slicing.</param>
-    //private void WriteSlice(
-    //    StructureDefinition sd,
-    //    string path,
-    //    CodeGenSlice slice)
-    //{
-    //    string rules = string.Empty;
-
-    //    if (slice.SlicingElement != null)
-    //    {
-    //        rules = string.Join(", ", slice.SlicingElement.Slicing.Discriminator.Select(d => $"{d.Type.GetLiteral()}@{d.Path}"));
-    //    }
-    //    else
-    //    {
-    //        rules = $"{slice.ComputedType}@{slice.ComputedPath}";
-    //    }
-
-    //    //_writer.WriteLineIndented($": {sd.Url} - {(slice.SlicingElement?.Slicing.Rules ?? ElementDefinition.SlicingRules.Open).GetLiteral()} ({rules})");
-
-    //    // handle explicitly discriminated slices
-    //    if (slice.ExplicitType != null)
-    //    {
-    //        // TODO(ginoc): should not be path here, need the nested path
-    //        _writer.WriteLineIndented($": Slice {slice.SliceOrder}:{slice.Name} - {rules}: {slice.ComputedValue}");
-    //    }
-    //    else
-    //    {
-    //        _writer.WriteLineIndented($": Slice {slice.SliceOrder}:{slice.Name} - {slice.ComputedType?.GetLiteral() ?? "?"} on {slice.ComputedPath}: {slice.ComputedValue}");
-    //    }
-
-    //    _writer.IncreaseIndent();
-
-    //    // recurse into this slice
-    //    if (slice.SliceElements.Skip(1).Any())
-    //    {
-    //        WriteElements(sd, slice.SliceElements.Skip(1));
-    //    }
-
-    //    _writer.DecreaseIndent();
-    //}
-
-
     /// <summary>Builds standard snippet.</summary>
     /// <param name="standardStatus">The standard status.</param>
     /// <param name="fmmLevel">      The fmm level.</param>
