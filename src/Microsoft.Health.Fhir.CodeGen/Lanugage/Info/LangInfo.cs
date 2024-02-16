@@ -12,6 +12,7 @@ using Microsoft.Health.Fhir.CodeGen.Extensions;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static Hl7.Fhir.Model.CodeSystem;
 using static Microsoft.Health.Fhir.CodeGen.Lanugage.Info.LangInfo;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
@@ -100,6 +101,8 @@ public class LangInfo : ILanguage<InfoOptions>
             WriteStructures(definitions.PrimitiveTypesByName.Values, "Primitive Types");
             WriteStructures(definitions.ComplexTypesByName.Values, "Complex Types");
             WriteStructures(definitions.ResourcesByName.Values, "Resources");
+
+            WriteStructures(definitions.ProfilesByUrl.Values, "Profiles");
 
             //WriteOperations(_info.SystemOperations.Values, true, "System Operations");
             //WriteSearchParameters(_info.AllResourceParameters.Values, "All Resource Parameters");
@@ -199,15 +202,15 @@ public class LangInfo : ILanguage<InfoOptions>
         _writer.IncreaseIndent();
 
         // check for a 'simple' extension
-        if ((sd.Snapshot.Element.Count == 5) || (sd.Differential.Element.Count == 4))
+        if (((sd.Snapshot?.Element.Count ?? 0) == 5) || (sd.Differential.Element.Count == 4))
         {
-            ElementDefinition? eleUrl = sd.Snapshot.Element.Any()
+            ElementDefinition? eleUrl = (sd.Snapshot?.Element.Any() ?? false)
                 ? sd.Snapshot.Element[3]
                 : sd.Differential.Element[2];
 
             _writer.WriteLineIndented($"- {eleUrl.cgNameForExport(NamingConvention.CamelCase)}[{eleUrl.cgCardinality()}]: fixed to {eleUrl.Fixed}");
 
-            ElementDefinition? eleValue = sd.Snapshot.Element.Any()
+            ElementDefinition? eleValue = (sd.Snapshot?.Element.Any() ?? false)
                 ? sd.Snapshot.Element[4]
                 : sd.Differential.Element[3];
 
@@ -256,16 +259,16 @@ public class LangInfo : ILanguage<InfoOptions>
         switch (sd.cgArtifactClass())
         {
             case CodeGenCommon.Models.FhirArtifactClassEnum.Extension:
-                {
-                    WriteExtension(sd);
-                    return;
-                }
+            {
+                WriteExtension(sd);
+                return;
+            }
 
             case CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType:
-                {
-                    WritePrimitive(sd);
-                    return;
-                }
+            {
+                WritePrimitive(sd);
+                return;
+            }
         }
 
         ElementDefinition? rootElement = sd.cgRootElement();
@@ -276,7 +279,14 @@ public class LangInfo : ILanguage<InfoOptions>
         {
             string snip = BuildStandardSnippet(sd.cgStandardStatus(), sd.cgMaturityLevel(), sd.cgIsExperimental());
 
-            _writer.WriteLine($"- {sd.Name}: {sd.cgBaseTypeName()}{snip} (abstract: {sd.Abstract == true})");
+            if (sd.cgArtifactClass() == CodeGenCommon.Models.FhirArtifactClassEnum.Profile)
+            {
+                _writer.WriteLine($"- {sd.Name}: ({sd.Id}) {sd.cgBaseTypeName()}{snip}");
+            }
+            else
+            {
+                _writer.WriteLine($"- {sd.Name}: {sd.cgBaseTypeName()}{snip} (abstract: {sd.Abstract == true})");
+            }
 
             if (rootElement != null)
             {
@@ -512,7 +522,7 @@ public class LangInfo : ILanguage<InfoOptions>
         {
             propertyType = propertyType +
                 " constraints: " +
-                string.Join(", ", ed.Constraint.Where(c => !c.cgIsInherited(sd)).Select(c => c.Key).OrderBy(v => v)) +
+                string.Join(", ", ed.Constraint.Where(c => !c.cgIsInherited(sd)).Select(c => c.Key).OrderBy(v => v, NaturalComparer.Instance)) +
                 "";
         }
 
@@ -520,7 +530,7 @@ public class LangInfo : ILanguage<InfoOptions>
         {
             propertyType = propertyType +
                 " conditions: " +
-                string.Join(", ", ed.Condition.OrderBy(v => v)) +
+                string.Join(", ", ed.Condition.OrderBy(v => v, NaturalComparer.Instance)) +
                 "";
         }
 
@@ -603,15 +613,113 @@ public class LangInfo : ILanguage<InfoOptions>
                 _writer.DecreaseIndent();
             }
 
-            //// check for slicing information
-            //if (ed.Slicing != null)
-            //{
-            //    WriteSlicings(ed.Slicing.Values);
-            //}
+            // check for slicing information defined by the current sd
+            if (_definitions.TryGetSliceNames(ed.Path, out string[]? sliceNames, sd) &&
+                (sliceNames?.Any() ?? false))
+            {
+                WriteSlices(sd, ed, sliceNames);
+            }
         }
 
         //_writer.DecreaseIndent();
     }
+
+    /// <summary>Writes the slicings.</summary>
+    /// <param name="sliceNames">The slicings.</param>
+    private void WriteSlices(
+        StructureDefinition sd,
+        ElementDefinition ed,
+        string[] sliceNames)
+    {
+        _writer.IncreaseIndent();
+
+        if (ed.Slicing == null)
+        {
+            _writer.WriteLineIndented($"@ No defined slicing");
+        }
+        else
+        {
+            _writer.WriteLineIndented($"@ {ed.Slicing.Rules.GetLiteral()}: {string.Join(", ", ed.Slicing.Discriminator.Select(d => $"{d.Type.GetLiteral()}:{d.Path}"))}");
+        }
+
+        _writer.IncreaseIndent();
+
+        foreach (string sliceName in sliceNames)
+        {
+            // get the elements for this slice
+            IEnumerable<ElementDefinition> sliceElements = sd.cgElementsForSlice(ed, sliceName);
+
+            // get the discriminated values (if defined)
+            IEnumerable<(string type, string path, string value)> dvs = sd.cgDiscriminatedValues(ed, sliceName, sliceElements);
+
+            if (dvs.Any())
+            {
+                _writer.WriteLineIndented($":{sliceName}");
+                _writer.IncreaseIndent();
+
+                foreach ((string type, string path, string value) in dvs)
+                {
+                    _writer.WriteLineIndented($"- {type} @ {path} = {value}");
+                }
+
+                _writer.DecreaseIndent();
+            }
+
+            //// write the sub-elements defined within this slice
+            //WriteElements(sd, sliceElements.Skip(1));
+        }
+
+        //IEnumerable<CodeGenSlice> slicings = sd.cgSlices(ed, sliceNames);
+        //foreach (CodeGenSlice slicing in slicings)
+        //{
+        //    WriteSlice(sd, path, slicing);
+        //}
+
+        _writer.DecreaseIndent();
+        _writer.DecreaseIndent();
+    }
+
+    ///// <summary>Writes a slicing.</summary>
+    ///// <param name="slice">The slicing.</param>
+    //private void WriteSlice(
+    //    StructureDefinition sd,
+    //    string path,
+    //    CodeGenSlice slice)
+    //{
+    //    string rules = string.Empty;
+
+    //    if (slice.SlicingElement != null)
+    //    {
+    //        rules = string.Join(", ", slice.SlicingElement.Slicing.Discriminator.Select(d => $"{d.Type.GetLiteral()}@{d.Path}"));
+    //    }
+    //    else
+    //    {
+    //        rules = $"{slice.ComputedType}@{slice.ComputedPath}";
+    //    }
+
+    //    //_writer.WriteLineIndented($": {sd.Url} - {(slice.SlicingElement?.Slicing.Rules ?? ElementDefinition.SlicingRules.Open).GetLiteral()} ({rules})");
+
+    //    // handle explicitly discriminated slices
+    //    if (slice.ExplicitType != null)
+    //    {
+    //        // TODO(ginoc): should not be path here, need the nested path
+    //        _writer.WriteLineIndented($": Slice {slice.SliceOrder}:{slice.Name} - {rules}: {slice.ComputedValue}");
+    //    }
+    //    else
+    //    {
+    //        _writer.WriteLineIndented($": Slice {slice.SliceOrder}:{slice.Name} - {slice.ComputedType?.GetLiteral() ?? "?"} on {slice.ComputedPath}: {slice.ComputedValue}");
+    //    }
+
+    //    _writer.IncreaseIndent();
+
+    //    // recurse into this slice
+    //    if (slice.SliceElements.Skip(1).Any())
+    //    {
+    //        WriteElements(sd, slice.SliceElements.Skip(1));
+    //    }
+
+    //    _writer.DecreaseIndent();
+    //}
 
 
     /// <summary>Builds standard snippet.</summary>

@@ -36,5 +36,5 @@ public static class ElementDefConstraintExtensions
     /// <param name="sd">The SD.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool cgIsInherited(this ElementDefinition.ConstraintComponent c, StructureDefinition sd) =>
-        !c.Source.Equals(sd.Url, StringComparison.Ordinal);
+        !(c.Source?.Equals(sd.Url, StringComparison.Ordinal) ?? true);
 }

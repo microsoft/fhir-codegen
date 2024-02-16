@@ -93,6 +93,7 @@ public class GenerationTests : IClassFixture<GenerationTestFixture>
         PackageLoader loader = new(_cache);
 
         DefinitionCollection? loaded = await loader.LoadPackages(_r5.Name, new[] { _r5, _expansionsR5, _extensionsR5 });
+        //DefinitionCollection? loaded = await loader.LoadPackages(_r5.Name, new[] { _r5, _expansionsR5 });
 
         loaded.Should().NotBeNull();
 

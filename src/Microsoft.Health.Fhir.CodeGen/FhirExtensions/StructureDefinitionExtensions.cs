@@ -5,6 +5,7 @@
 
 
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
@@ -97,39 +98,37 @@ public static class StructureDefinitionExtensions
     /// <summary>
     /// Enumerates property elements in this structure - skips the root and slices.
     /// </summary>
-    /// <param name="sd">          The SD to act on.</param>
-    /// <param name="topLevelOnly">(Optional) True to return only top level elements.</param>
+    /// <param name="sd">             The SD to act on.</param>
+    /// <param name="forBackbonePath">(Optional) Full pathname of for backbone file.</param>
+    /// <param name="topLevelOnly">   (Optional) True to return only top level elements.</param>
+    /// <param name="includeRoot">    (Optional) True to include, false to exclude the root.</param>
     /// <returns>
     /// An enumerator that allows foreach to be used to process cg elements in this collection.
     /// </returns>
     public static IEnumerable<ElementDefinition> cgElements(
         this StructureDefinition sd,
         string forBackbonePath = "",
-        bool topLevelOnly = false)
+        bool topLevelOnly = false,
+        bool includeRoot = true)
     {
         IEnumerable<ElementDefinition> source;
 
         int dotCount = string.IsNullOrEmpty(forBackbonePath) ? 0 : forBackbonePath.Count(c => c == '.');
 
+        // skip the first element (root)
         if (string.IsNullOrEmpty(forBackbonePath))
         {
-            source = sd.Snapshot.Element.Any() ? sd.Snapshot.Element : sd.Differential.Element;
+            source = (sd.Snapshot?.Element.Any() ?? false) ? sd.Snapshot.Element.Skip(includeRoot ? 0 : 1) : sd.Differential.Element.Skip(includeRoot ? 0 : 1);
         }
         else
         {
-            source = sd.Snapshot.Element.Any()
-                ? sd.Snapshot.Element.Where(e => e.Path.StartsWith(forBackbonePath, StringComparison.Ordinal))
-                : sd.Differential.Element.Where(e => e.Path.StartsWith(forBackbonePath, StringComparison.Ordinal));
+            source = (sd.Snapshot?.Element.Any() ?? false)
+                ? sd.Snapshot.Element.Where(e => e.Path.StartsWith(forBackbonePath, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1)
+                : sd.Differential.Element.Where(e => e.Path.StartsWith(forBackbonePath, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1);
         }
 
         foreach (ElementDefinition e in source)
         {
-            // skip the root element
-            if (e.cgFieldOrder() == 0)
-            {
-                continue;
-            }
-
             // skip slices and their children
             if (e.ElementId.Contains(':'))
             {
@@ -165,34 +164,34 @@ public static class StructureDefinitionExtensions
     {
         if (includeInherited)
         {
-            if (sd.Snapshot.Element.Any())
+            if (sd.Snapshot?.Element.Any() ?? false)
             {
                 return sd.Snapshot.Element.SelectMany(e => e.Constraint)
                     .GroupBy(e => e.Key)
                     .Select(e => e.First())
-                    .OrderBy(e => e.Key);
+                    .OrderBy(e => e.Key, NaturalComparer.Instance);
             }
 
             return sd.Differential.Element.SelectMany(e => e.Constraint)
                 .GroupBy(e => e.Key)
                 .Select(e => e.First())
-                .OrderBy(e => e.Key);
+                .OrderBy(e => e.Key, NaturalComparer.Instance);
         }
 
-        if (sd.Snapshot.Element.Any())
+        if (sd.Snapshot?.Element.Any() ?? false)
         {
             return sd.Snapshot.Element.SelectMany(e => e.Constraint)
                 .Where(e => e.Source.Equals(sd.Url, StringComparison.Ordinal))
                 .GroupBy(e => e.Key)
                 .Select(e => e.First())
-                .OrderBy(e => e.Key);
+                .OrderBy(e => e.Key, NaturalComparer.Instance);
         }
 
         return sd.Differential.Element.SelectMany(e => e.Constraint)
             .Where(e => e.Source.Equals(sd.Url, StringComparison.Ordinal))
             .GroupBy(e => e.Key)
             .Select(e => e.First())
-            .OrderBy(e => e.Key);
+            .OrderBy(e => e.Key, NaturalComparer.Instance);
     }
 
     /// <summary>Get the Base Type Name for this structure.</summary>
@@ -229,12 +228,12 @@ public static class StructureDefinitionExtensions
     /// <returns>An ElementDefinition?</returns>
     public static ElementDefinition? cgRootElement(this StructureDefinition sd)
     {
-        if (sd.Snapshot.Any())
+        if (sd.Snapshot?.Element.Any() ?? false)
         {
             return sd.Snapshot.Element.FirstOrDefault();
         }
 
-        if (sd.Differential.Element.Any())
+        if (sd.Differential?.Element.Any() ?? false)
         {
             if (sd.Differential.Element.First().ElementId.Equals(sd.Id))
             {

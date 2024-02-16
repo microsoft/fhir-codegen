@@ -74,7 +74,7 @@ public static class ElementDefinitionExtensions
     public static string cgPatternFieldName(this ElementDefinition ed) =>
         ed.Pattern == null
         ? string.Empty
-        : $"pattern{ed.Fixed.TypeName}";
+        : $"pattern{ed.Pattern.TypeName}";
 
     /// <summary>Get an explicit binding name.</summary>
     /// <param name="ed">The ed to act on.</param>

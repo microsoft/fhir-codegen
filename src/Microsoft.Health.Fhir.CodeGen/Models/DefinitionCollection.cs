@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System.Diagnostics.CodeAnalysis;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
@@ -60,7 +61,6 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, CompartmentDefinition> _compartmentsByUrl = new();
 
     private readonly HashSet<string> _backbonePaths = new();
-    private readonly Dictionary<string, string[]> _pathsWithSlices = new();
 
     private readonly List<string> _errors = new();
 
@@ -118,16 +118,16 @@ public partial class DefinitionCollection
             // check for being a slice
             if (!string.IsNullOrEmpty(ed.SliceName))
             {
-                if (!_pathsWithSlices.TryGetValue(ed.Path, out string[]? slices))
+                if (!_pathsWithSlices.TryGetValue(ed.Path, out KeyValuePair<string, StructureDefinition>[]? slices))
                 {
-                    slices = new string[] { ed.SliceName };
+                    slices = new KeyValuePair<string, StructureDefinition>[] { new(ed.SliceName, sd) };
                     _pathsWithSlices[ed.Path] = slices;
                 }
                 else
                 {
-                    if (!slices.Contains(ed.SliceName))
+                    if (!slices.Any(sliceDef => sliceDef.Key.Equals(ed.SliceName, StringComparison.Ordinal)))
                     {
-                        _pathsWithSlices[ed.Path] = slices.Append(ed.SliceName).ToArray();
+                        _pathsWithSlices[ed.Path] = slices.Append(new(ed.SliceName, sd)).ToArray();
                     }
                 }
             }
@@ -159,16 +159,16 @@ public partial class DefinitionCollection
                 // check for being a slice - only need to test if this element has not been processed already
                 if (!string.IsNullOrEmpty(ed.SliceName))
                 {
-                    if (!_pathsWithSlices.TryGetValue(ed.Path, out string[]? slices))
+                    if (!_pathsWithSlices.TryGetValue(ed.Path, out KeyValuePair<string, StructureDefinition>[]? slices))
                     {
-                        slices = new string[] { ed.SliceName };
+                        slices = new KeyValuePair<string, StructureDefinition>[] { new(ed.SliceName, sd) };
                         _pathsWithSlices[ed.Path] = slices;
                     }
                     else
                     {
-                        if (!slices.Contains(ed.SliceName))
+                        if (!slices.Any(sliceDef => sliceDef.Key.Equals(ed.SliceName, StringComparison.Ordinal)))
                         {
-                            _pathsWithSlices[ed.Path] = slices.Append(ed.SliceName).ToArray();
+                            _pathsWithSlices[ed.Path] = slices.Append(new(ed.SliceName, sd)).ToArray();
                         }
                     }
                 }
