@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -147,6 +148,56 @@ public static class StructureDefinitionExtensions
 
             yield return e;
         }
+    }
+
+    /// <summary>
+    /// A StructureDefinition extension method that attempts to get element by path.
+    /// </summary>
+    /// <param name="sd">     The SD to act on.</param>
+    /// <param name="path">   Full pathname of the file.</param>
+    /// <param name="element">[out] The element.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool cgTryGetElementByPath(this StructureDefinition sd, string path, [NotNullWhen(true)] out ElementDefinition? element)
+    {
+        if (sd.Snapshot?.Element.Any() ?? false)
+        {
+            element = sd.Snapshot.Element.FirstOrDefault(e => e.Path.Equals(path, StringComparison.Ordinal));
+            return element != null;
+        }
+
+        if (sd.Differential?.Element.Any() ?? false)
+        {
+            element = sd.Differential.Element.FirstOrDefault(e => e.Path.Equals(path, StringComparison.Ordinal));
+            return element != null;
+        }
+
+        element = null;
+        return false;
+    }
+
+    /// <summary>
+    /// A StructureDefinition extension method that attempts to get element by identifier.
+    /// </summary>
+    /// <param name="sd">     The SD to act on.</param>
+    /// <param name="id">     The identifier.</param>
+    /// <param name="element">[out] The element.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool cgTryGetElementById(this StructureDefinition sd, string id, [NotNullWhen(true)] out ElementDefinition? element)
+    {
+        if (sd.Snapshot?.Element.Any() ?? false)
+        {
+            element = sd.Snapshot.Element.FirstOrDefault(e => e.ElementId.Equals(id, StringComparison.Ordinal));
+            return element != null;
+        }
+
+        if (sd.Differential?.Element.Any() ?? false)
+        {
+            element = sd.Differential.Element.FirstOrDefault(e => e.ElementId.Equals(id, StringComparison.Ordinal));
+            return element != null;
+        }
+
+        element = null;
+        return false;
     }
 
     /// <summary>Gets the information about mappings defined on this artifact.</summary>

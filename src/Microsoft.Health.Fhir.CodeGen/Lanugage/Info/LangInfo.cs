@@ -510,7 +510,7 @@ public class LangInfo : ILanguage<InfoOptions>
 
         if (string.IsNullOrEmpty(propertyType))
         {
-            propertyType = ed.Base?.Path ?? "!!! unknown type !!!";
+            propertyType = ed.Base?.Path ?? "!!! undeclared type !!!";
         }
 
         if (ed.cgIsSimple())
@@ -650,16 +650,69 @@ public class LangInfo : ILanguage<InfoOptions>
             IEnumerable<ElementDefinition> sliceElements = sd.cgElementsForSlice(ed, sliceName);
 
             // get the discriminated values (if defined)
-            IEnumerable<(string type, string path, string value)> dvs = sd.cgDiscriminatedValues(ed, sliceName, sliceElements);
+            IEnumerable<(string type, string path, DataType value)> dvs = sd.cgDiscriminatedValues(_definitions, ed, sliceName, sliceElements);
 
             if (dvs.Any())
             {
                 _writer.WriteLineIndented($":{sliceName}");
                 _writer.IncreaseIndent();
 
-                foreach ((string type, string path, string value) in dvs)
+                foreach ((string type, string path, DataType value) in dvs)
                 {
-                    _writer.WriteLineIndented($"- {type} @ {path} = {value}");
+                    switch (value)
+                    {
+                        case FhirString fs:
+                            _writer.WriteLineIndented($"- {type} @ {path} = \"{fs.Value}\"");
+                            break;
+                        case FhirUri fu:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fu.Value}");
+                            break;
+                        case FhirBoolean fb:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fb.Value}");
+                            break;
+                        case Code fc:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fc.Value}");
+                            break;
+                        case FhirDateTime fdt:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fdt.Value}");
+                            break;
+                        case Instant fi:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fi.Value}");
+                            break;
+                        case Integer fI:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fI.Value}");
+                            break;
+                        case FhirDecimal fd:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fd.Value}");
+                            break;
+                        case Base64Binary fbb:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fbb.Value}");
+                            break;
+                        case Hl7.Fhir.Model.Date fdate:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fdate.Value}");
+                            break;
+                        case Hl7.Fhir.Model.Time ftime:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {ftime.Value}");
+                            break;
+                        case CodeableConcept fcc:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {string.Join(", ", fcc.Coding.Select(c => $"{c.System}|{c.Code}: {c.Display}"))}");
+                            break;
+                        case Coding fcd:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fcd.System}|{fcd.Code}: {fcd.Display}");
+                            break;
+                        case Quantity fq:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fq.Value} {fq.Code}");
+                            break;
+                        case Hl7.Fhir.Model.Range fr:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fr.Low.Value} - {fr.High.Value}");
+                            break;
+                        case Period fp:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {fp.Start} - {fp.End}");
+                            break;
+                        default:
+                            _writer.WriteLineIndented($"- {type} @ {path} = {value}");
+                            break;
+                    }
                 }
 
                 _writer.DecreaseIndent();

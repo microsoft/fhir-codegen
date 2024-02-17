@@ -38,4 +38,6 @@ public abstract class CommonDefinitions
     public const string ExtUrlIsCommonBinding = "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding";
 
     public const string ExtUrlFieldOrder = "http://ginoc.io/fhir/StructureDefinition/field-order";
+
+    public const string ExtUrlEdProfileElement = "http://hl7.org/fhir/StructureDefinition/elementdefinition-profile-element";
 }

@@ -32,13 +32,23 @@ public static class StructureDefSlicing
             : sd.Differential.Element.Where(e => e.ElementId.StartsWith(sliceId, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1);
     }
 
-    public static IEnumerable<(string type, string path, string value)> cgDiscriminatedValues(
+    /// <summary>Enumerates cg discriminated values in this collection.</summary>
+    /// <param name="sd">           The SD to act on.</param>
+    /// <param name="slicingEd">    The slicing ed.</param>
+    /// <param name="sliceName">    Name of the slice.</param>
+    /// <param name="sliceElements">The slice elements.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process cg discriminated values in this
+    /// collection.
+    /// </returns>
+    public static IEnumerable<(string type, string path, DataType value)> cgDiscriminatedValues(
         this StructureDefinition sd,
+        DefinitionCollection dc,
         ElementDefinition slicingEd,
         string sliceName,
         IEnumerable<ElementDefinition> sliceElements)
     {
-        List<(string type, string path, string value)> result = new();
+        List<(string type, string path, DataType value)> result = new();
 
         if ((slicingEd.Slicing == null) ||
             (!slicingEd.Slicing.Discriminator.Any()))
@@ -50,67 +60,199 @@ public static class StructureDefSlicing
         {
             switch (discriminator.Type)
             {
+                // pattern is the deprecated name for value
                 case ElementDefinition.DiscriminatorType.Value:
+                case ElementDefinition.DiscriminatorType.Pattern:
                     {
-                        ElementDefinition? valueEd = sliceElements.Where(e => e.ElementId.Equals($"{slicingEd.Path}:{sliceName}.{discriminator.Path}", StringComparison.Ordinal)).FirstOrDefault();
+                        bool found = false;
+                        string id = $"{slicingEd.Path}:{sliceName}.{discriminator.Path}";
 
-                        if (valueEd != null)
+                        foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId.Equals(id, StringComparison.Ordinal)))
                         {
-                            if (valueEd.Fixed != null)
+                            if (ed.Fixed != null)
                             {
-                                result.Add((discriminator.Type.GetLiteral()!, valueEd.Path, valueEd.Fixed.ToString() ?? string.Empty));
+                                result.Add((discriminator.Type.GetLiteral()!, ed.Path, ed.Fixed));
+                                found = true;
+                                break;
                             }
-                            else if (valueEd.Pattern != null)
+                            if (ed.Pattern != null)
                             {
-                                result.Add((discriminator.Type.GetLiteral()!, valueEd.Path, valueEd.Pattern.ToString() ?? string.Empty));
+                                result.Add((discriminator.Type.GetLiteral()!, ed.Path, ed.Pattern));
+                                found = true;
+                                break;
                             }
                         }
+
+                        if (found) { continue; }
+
                         // check for extension URL, it is represented oddly
-                        else if (discriminator.Path.Equals("url", StringComparison.Ordinal))
+                        if (discriminator.Path.Equals("url", StringComparison.Ordinal))
                         {
-                            valueEd = sliceElements.Where(e => e.ElementId.Equals($"{slicingEd.Path}:{sliceName}", StringComparison.Ordinal)).FirstOrDefault();
+                            id = $"{slicingEd.Path}:{sliceName}";
 
-                            if (valueEd != null)
+                            foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId.Equals(id, StringComparison.Ordinal)))
                             {
-                                string extUrl = valueEd.Type?.FirstOrDefault()?.Profile.FirstOrDefault() ?? string.Empty;
-
-                                if (!string.IsNullOrEmpty(extUrl))
+                                foreach (string profile in ed.Type?.Where(t => t.Code.Equals("Extension", StringComparison.Ordinal)).SelectMany(t => t.Profile) ?? Enumerable.Empty<string>())
                                 {
-                                    result.Add((discriminator.Type.GetLiteral()!, valueEd.Path, extUrl));
+                                    result.Add((discriminator.Type.GetLiteral()!, ed.Path + ".url", new FhirString(profile)));
+                                    found = true;
+                                    break;
                                 }
+                            }
+                        }
+
+                        if (found) { continue; }
+
+                        // check for the last component of the path being a type
+                        id = $"{slicingEd.Path}:{sliceName}.{discriminator.Path}";
+                        string eType = id.Substring(id.LastIndexOf('.') + 1);
+                        id = id.Substring(0, id.LastIndexOf('.'));
+
+                        foreach (ElementDefinition ed in sliceElements.Where(e => (e.Type != null) && e.ElementId.Equals(id, StringComparison.Ordinal)))
+                        {
+                            // check for the specified type
+                            foreach (ElementDefinition.TypeRefComponent tr in ed.Type!.Where(t => t.Code.Equals(eType, StringComparison.Ordinal)))
+                            {
+                                if (tr.Profile.Any())
+                                {
+                                    result.Add((discriminator.Type.GetLiteral()!, ed.Path, new FhirString(tr.Profile.First())));
+                                    found = true;
+                                    break;
+                                }
+                            }
+
+                            if (found) { break; }
+
+                            // check for a transitive slicing definition
+                            foreach (ElementDefinition.TypeRefComponent tr in ed.Type!.Where(t => t.Code.Equals("BackboneElement", StringComparison.Ordinal) || t.Code.Equals("Element", StringComparison.Ordinal)))
+                            {
+                                if (!tr.ProfileElement.Any())
+                                {
+                                    continue;
+                                }
+
+                                foreach (Canonical? pe in tr.ProfileElement)
+                                {
+                                    string? peName = pe?.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlEdProfileElement)?.Value ?? string.Empty;
+
+                                    if (string.IsNullOrEmpty(peName))
+                                    {
+                                        continue;
+                                    }
+
+                                    string profileUrl = pe?.Value ?? string.Empty;
+
+                                    if (string.IsNullOrEmpty(profileUrl))
+                                    {
+                                        continue;
+                                    }
+
+                                    // check to see if we can resolve the profile URL
+                                    if (!dc.ProfilesByUrl.TryGetValue(profileUrl, out StructureDefinition? transitive))
+                                    {
+                                        continue;
+                                    }
+
+                                    // see if we can find a matching element there
+                                    string tId = $"{slicingEd.Path}:{sliceName}.{discriminator.Path}";
+                                    if (transitive.cgTryGetElementById(tId, out ElementDefinition? tEd) && (tEd != null))
+                                    {
+                                        if (tEd.Fixed != null)
+                                        {
+                                            result.Add((discriminator.Type.GetLiteral()!, tEd.Path, tEd.Fixed));
+                                            found = true;
+                                            break;
+                                        }
+                                        if (tEd.Pattern != null)
+                                        {
+                                            result.Add((discriminator.Type.GetLiteral()!, tEd.Path, tEd.Pattern));
+                                            found = true;
+                                            break;
+                                        }
+                                    }
+
+                                    if (found) { break; }
+
+                                    // check for the last component of the path being a type
+                                    string teType = tId.Substring(tId.LastIndexOf('.') + 1);
+                                    tId = tId.Substring(0, id.LastIndexOf('.'));
+
+                                    if (transitive.cgTryGetElementById(tId, out tEd) && (tEd != null))
+                                    {
+                                        // check for the specified type
+                                        foreach (ElementDefinition.TypeRefComponent tTr in tEd.Type!.Where(t => t.Code.Equals(teType, StringComparison.Ordinal)))
+                                        {
+                                            if (tTr.Profile.Any())
+                                            {
+                                                result.Add((discriminator.Type.GetLiteral()!, tEd.Path, new FhirString(tTr.Profile.First())));
+                                                found = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    if (found) { break; }
+                                }
+
+                                if (found) { break; }
                             }
                         }
                     }
                     break;
 
-                //case ElementDefinition.DiscriminatorType.Pattern:
-                //    ElementDefinition? ePattern = sliceElements
-                //        .Where(e => e.Pattern != null)
-                //        .Where(e => e.ElementId.StartsWith($"{slicingEd.Path}:{sliceName}", StringComparison.Ordinal))
-                //        .FirstOrDefault();
+                case ElementDefinition.DiscriminatorType.Profile:
+                    {
+                        bool found = false;
+                        string id = $"{slicingEd.Path}:{sliceName}.{discriminator.Path}";
 
-                //    if (ePattern != null)
-                //    {
-                //        result.Add((discriminator.Type.ToString(), discriminator.Path, ePattern.Pattern.ToString()));
-                //    }
+                        foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId.Equals(id, StringComparison.Ordinal)))
+                        {
+                            foreach (string profile in ed.Type?.SelectMany(t => t.Profile) ?? Enumerable.Empty<string>())
+                            {
+                                result.Add((discriminator.Type.GetLiteral()!, ed.Path, new FhirString(profile)));
+                                found = true;
+                                break;
+                            }
+                        }
 
-                //    break;
+                        if (found) { continue; }
 
-                //case ElementDefinition.DiscriminatorType.Profile:
-                //    ElementDefinition? eProfile = sliceElements
-                //        .Where(e => e.Type.Any(t => t.Profile.Any()))
-                //        .Where(e => e.ElementId.StartsWith($"{slicingEd.Path}:{sliceName}", StringComparison.Ordinal))
-                //        .FirstOrDefault();
+                        // check for the last component of the path being a type
+                        id = $"{slicingEd.Path}:{sliceName}.{discriminator.Path}";
+                        string eType = id.Substring(id.LastIndexOf('.') + 1);
+                        id = id.Substring(0, id.LastIndexOf('.'));
 
-                //    if (eProfile != null)
-                //    {
-                //        result.Add((discriminator.Type.ToString(), discriminator.Path, eProfile.Type.FirstOrDefault()?.Profile?.First()));
-                //    }
+                        foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId.Equals(id, StringComparison.Ordinal)))
+                        {
+                            if (ed.Type == null)
+                            {
+                                continue;
+                            }
 
-                //    break;
+                            foreach (ElementDefinition.TypeRefComponent t in ed.Type.Where(t => t.Code.Equals(eType) && t.Profile.Any()))
+                            {
+                                result.Add((discriminator.Type.GetLiteral()!, ed.Path, new FhirString(t.Profile.First())));
+                                found = true;
+                                break;
+                            }
 
-                //default:
-                //    break;
+                            if (found) { break; }
+
+                            // TODO: not quite right - need to check for transitive slicing
+                            // if not found, check for 'commonly misused' types
+                            foreach (ElementDefinition.TypeRefComponent t in ed.Type.Where(t => (t.Code.Equals("BackboneElement", StringComparison.Ordinal) || t.Code.Equals("Element", StringComparison.Ordinal)) && t.Profile.Any()))
+                            {
+                                result.Add((discriminator.Type.GetLiteral()!, ed.Path, new FhirString(t.Profile.First())));
+                                found = true;
+                                break;
+                            }
+
+                        }
+                    }
+                    break;
+
+                    //default:
+                    //    break;
             }
         }
 
