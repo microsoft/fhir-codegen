@@ -56,6 +56,13 @@ public static class StructureDefSlicing
             return result;
         }
 
+        // need to resolve last part of discriminator path *through* another slice :-|
+        // e.g., Observation.component:SystolicBP.code.coding.code -> Observation.component:SystolicBP.code.coding:SBPCode.code
+        if (sliceName.Equals("SystolicBP"))
+        {
+            Console.Write("");
+        }
+
         foreach (ElementDefinition.DiscriminatorComponent discriminator in slicingEd.Slicing.Discriminator)
         {
             switch (discriminator.Type)
@@ -238,7 +245,7 @@ public static class StructureDefSlicing
 
                             if (found) { break; }
 
-                            // TODO: not quite right - need to check for transitive slicing
+                            // TODO: not quite right - need to check for transitive slicing (see above)
                             // if not found, check for 'commonly misused' types
                             foreach (ElementDefinition.TypeRefComponent t in ed.Type.Where(t => (t.Code.Equals("BackboneElement", StringComparison.Ordinal) || t.Code.Equals("Element", StringComparison.Ordinal)) && t.Profile.Any()))
                             {

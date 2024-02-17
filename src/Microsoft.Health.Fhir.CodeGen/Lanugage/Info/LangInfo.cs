@@ -297,7 +297,6 @@ public class LangInfo : ILanguage<InfoOptions>
             indented = true;
 
             IEnumerable<ElementDefinition.ConstraintComponent> constraints = sd.cgConstraints(includeInherited: true);
-
             if (constraints.Any() == true)
             {
                 WriteConstraints(sd, constraints);
@@ -597,6 +596,13 @@ public class LangInfo : ILanguage<InfoOptions>
             _writer.DecreaseIndent();
         }
 
+        // check for slicing information defined by the current sd
+        if (_definitions.TryGetSliceNames(ed.Path, out string[]? sliceNames, sd) &&
+            (sliceNames?.Any() ?? false))
+        {
+            WriteSlices(sd, ed, sliceNames);
+        }
+
         if (!writeAsRootElementInfo)
         {
             if (_definitions.ExtensionsByPath.ContainsKey(ed.Path))
@@ -612,16 +618,7 @@ public class LangInfo : ILanguage<InfoOptions>
                 WriteElements(sd, sd.cgElements(forBackbonePath: ed.Path, topLevelOnly: true));
                 _writer.DecreaseIndent();
             }
-
-            // check for slicing information defined by the current sd
-            if (_definitions.TryGetSliceNames(ed.Path, out string[]? sliceNames, sd) &&
-                (sliceNames?.Any() ?? false))
-            {
-                WriteSlices(sd, ed, sliceNames);
-            }
         }
-
-        //_writer.DecreaseIndent();
     }
 
     /// <summary>Writes the slicings.</summary>
@@ -635,11 +632,11 @@ public class LangInfo : ILanguage<InfoOptions>
 
         if (ed.Slicing == null)
         {
-            _writer.WriteLineIndented($"@ No defined slicing");
+            _writer.WriteLineIndented($"@Slices present with no defined slicing");
         }
         else
         {
-            _writer.WriteLineIndented($"@ {ed.Slicing.Rules.GetLiteral()}: {string.Join(", ", ed.Slicing.Discriminator.Select(d => $"{d.Type.GetLiteral()}:{d.Path}"))}");
+            _writer.WriteLineIndented($"@Slicing: {ed.Slicing.Rules.GetLiteral()}: {string.Join(", ", ed.Slicing.Discriminator.Select(d => $"{d.Type.GetLiteral()}:{d.Path}"))}");
         }
 
         _writer.IncreaseIndent();
@@ -717,16 +714,7 @@ public class LangInfo : ILanguage<InfoOptions>
 
                 _writer.DecreaseIndent();
             }
-
-            //// write the sub-elements defined within this slice
-            //WriteElements(sd, sliceElements.Skip(1));
         }
-
-        //IEnumerable<CodeGenSlice> slicings = sd.cgSlices(ed, sliceNames);
-        //foreach (CodeGenSlice slicing in slicings)
-        //{
-        //    WriteSlice(sd, path, slicing);
-        //}
 
         _writer.DecreaseIndent();
         _writer.DecreaseIndent();
