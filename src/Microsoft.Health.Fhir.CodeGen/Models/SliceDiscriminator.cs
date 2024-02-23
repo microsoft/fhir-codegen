@@ -29,6 +29,13 @@ public record class SliceDiscriminator
     /// <summary>Gets or initializes the value.</summary>
     public required DataType Value { get; init; }
 
+    /// <summary>Gets or initializes a value indicating whether this object is binding.</summary>
+    public bool IsBinding { get; init; } = false;
+
+    public string BindingName { get; init; } = string.Empty;
+
+    
+
     ///// <summary>Gets or initializes the sub slices.</summary>
     //public Dictionary<string, SliceDiscriminator> SubSlices { get; init; } = new();
 }

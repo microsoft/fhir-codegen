@@ -59,15 +59,14 @@ public static class StructureDefSlicing
             return result;
         }
 
-        // TODO(ginoc): I am not sure if I need to work about multiple sub-slices on a slice or not.  Should test.
+        //if (slicingEd.Path.Equals("Provenance.agent"))
+        //{
+        //    Console.Write("");
+        //}
 
+        // TODO(ginoc): Need to test reslicing - need an example to test against
         foreach (ElementDefinition.DiscriminatorComponent discriminator in slicingEd.Slicing.Discriminator)
         {
-            //if (discriminator.Path.Contains("resolve()", StringComparison.Ordinal))
-            //{
-            //    Console.Write("");
-            //}
-
             switch (discriminator.Type)
             {
                 // pattern is the deprecated name for value
@@ -84,18 +83,36 @@ public static class StructureDefSlicing
                     result.AddRange(SlicesForType(dc, discriminator, slicingEd, sliceName, sliceElements));
                     break;
 
+                case ElementDefinition.DiscriminatorType.Exists:
+                    result.AddRange(SlicesForExists(dc, discriminator, slicingEd, sliceName, sliceElements));
+                    break;
+
+                // TODO(ginoc): need to find an example of this so I can implement it
+                case ElementDefinition.DiscriminatorType.Position:
+                    break;
+
                 //default:
                 //    break;
             }
         }
 
+        //if (!result.Any())
+        //{
+        //    Console.Write("");
+        //}
+
         return result;
     }
 
     /// <summary>Gets relative path.</summary>
+    /// <param name="slicingPath">      Full pathname of the slicing file.</param>
     /// <param name="discriminatorPath">Full pathname of the discriminator file.</param>
+    /// <param name="postResolve">      [out] The post resolve.</param>
     /// <returns>The relative path.</returns>
-    private static string GetRelativePath(string discriminatorPath, out string postResolve)
+    private static string GetRelativePath(
+        string slicingPath,
+        string discriminatorPath,
+        out string postResolve)
     {
         if (discriminatorPath.Equals("$this", StringComparison.Ordinal))
         {
@@ -125,17 +142,25 @@ public static class StructureDefSlicing
             path = path.Substring(0, resolveIndex);
         }
 
+        // TODO(ginoc): need to sort out allowed 'ofType()' processing and mangle the path appropriately - need an example to test against
+
         if (string.IsNullOrEmpty(path) || path.Equals(".", StringComparison.Ordinal))
         {
             return string.Empty;
         }
 
-        if (path.StartsWith('.'))
+        if (!path.StartsWith('.'))
         {
-            return path;
+            path = "." + path;
         }
 
-        return "." + path;
+        // check for incorrect path nesting - using the parent path
+        if (slicingPath.EndsWith(path))
+        {
+            return string.Empty;
+        }
+
+        return path;
     }
 
     /// <summary>Slices for type.</summary>
@@ -153,7 +178,7 @@ public static class StructureDefSlicing
         IEnumerable<ElementDefinition> sliceElements)
     {
         List<SliceDiscriminator> result = new();
-        string relativePath = GetRelativePath(discriminator.Path, out string postResolve);
+        string relativePath = GetRelativePath(slicingEd.Path, discriminator.Path, out string postResolve);
 
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
         string path = $"{slicingEd.Path}{relativePath}";
@@ -233,6 +258,62 @@ public static class StructureDefSlicing
         return result;
     }
 
+    private static List<SliceDiscriminator> SlicesForExists(
+        DefinitionCollection dc,
+        ElementDefinition.DiscriminatorComponent discriminator,
+        ElementDefinition slicingEd,
+        string sliceName,
+        IEnumerable<ElementDefinition> sliceElements)
+    {
+        List<SliceDiscriminator> result = new();
+        string relativePath = GetRelativePath(slicingEd.Path, discriminator.Path, out string postResolve);
+
+        string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
+        string path = $"{slicingEd.Path}{relativePath}";
+
+        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path.Equals(path, StringComparison.Ordinal)))
+        {
+            result.Add(new()
+            {
+                DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
+                Type = discriminator.Type.GetLiteral()!,
+                Path = ed.Path,
+                PostResovlePath = postResolve,
+                Id = ed.ElementId,
+                Value = new FhirBoolean(true),
+            });
+        }
+
+        if (result.Any())
+        {
+            return result;
+        }
+
+        if (!string.IsNullOrEmpty(relativePath))
+        {
+            // check for the last component of the path being a type
+            id = $"{slicingEd.Path}:{sliceName}{relativePath}";
+            string eType = id.Substring(id.LastIndexOf('.') + 1);
+            id = id.Substring(0, id.LastIndexOf('.'));
+            path = path.Substring(0, path.LastIndexOf('.'));
+
+            foreach (ElementDefinition ed in sliceElements.Where(e => e.Path.Equals(path, StringComparison.Ordinal)))
+            {
+                result.Add(new()
+                {
+                    DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
+                    Type = discriminator.Type.GetLiteral()!,
+                    Path = ed.Path,
+                    PostResovlePath = postResolve,
+                    Id = ed.ElementId,
+                    Value = new FhirBoolean(true),
+                });
+            }
+        }
+
+        return result;
+    }
+
     /// <summary>Slices for profile.</summary>
     /// <param name="dc">           The device-context.</param>
     /// <param name="discriminator">The discriminator.</param>
@@ -248,7 +329,7 @@ public static class StructureDefSlicing
         IEnumerable<ElementDefinition> sliceElements)
     {
         List<SliceDiscriminator> result = new();
-        string relativePath = GetRelativePath(discriminator.Path, out string postResolve);
+        string relativePath = GetRelativePath(slicingEd.Path, discriminator.Path, out string postResolve);
 
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
         string path = $"{slicingEd.Path}{relativePath}";
@@ -310,9 +391,6 @@ public static class StructureDefSlicing
 
                 if (found) { continue; }
 
-                Console.Write("");
-
-                // TODO: not quite right - need to check for transitive slicing (see above)
                 result.AddRange(CheckTransitiveForValue(
                     dc,
                     ed.Type!.Where(t => t.Code.Equals("BackboneElement", StringComparison.Ordinal) || t.Code.Equals("Element", StringComparison.Ordinal)),
@@ -322,17 +400,6 @@ public static class StructureDefSlicing
                     slicingEd,
                     sliceName,
                     postResolve));
-
-                //foreach (ElementDefinition.TypeRefComponent t in ed.Type.Where(t => (t.Code.Equals("BackboneElement", StringComparison.Ordinal) || t.Code.Equals("Element", StringComparison.Ordinal)) && t.Profile.Any()))
-                //{
-                //    result.Add(new()
-                //    {
-                //        Type = discriminator.Type.GetLiteral()!,
-                //        Path = ed.Path,
-                //        Id = ed.ElementId,
-                //        Value = new FhirString(t.Profile.First()),
-                //    });
-                //}
             }
         }
 
@@ -354,7 +421,7 @@ public static class StructureDefSlicing
         IEnumerable<ElementDefinition> sliceElements)
     {
         List<SliceDiscriminator> result = new();
-        string relativePath = GetRelativePath(discriminator.Path, out string postResolve);
+        string relativePath = GetRelativePath(slicingEd.Path, discriminator.Path, out string postResolve);
 
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
         string path = $"{slicingEd.Path}{relativePath}";
@@ -575,6 +642,23 @@ public static class StructureDefSlicing
                         });
                         continue;
                     }
+
+                    if (tEd.Binding != null)
+                    {
+                        result.Add(new()
+                        {
+                            DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
+                            Type = discriminator.Type.GetLiteral()!,
+                            Path = tEd.Path,
+                            PostResovlePath = postResolve,
+                            Id = tEd.ElementId,
+                            IsBinding = true,
+                            BindingName = tEd.Binding.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlBindingName)?.Value ?? string.Empty,
+                            Value = tEd.Binding.ValueSetElement,
+                        });
+                        continue;
+                    }
+
                 }
 
                 // check for the last component of the path being a type
@@ -667,6 +751,22 @@ public static class StructureDefSlicing
                             PostResovlePath = postResolve,
                             Id = tEd.ElementId,
                             Value = tEd.Pattern,
+                        });
+                        continue;
+                    }
+
+                    if (tEd.Binding != null)
+                    {
+                        result.Add(new()
+                        {
+                            DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
+                            Type = discriminator.Type.GetLiteral()!,
+                            Path = sourcePath,
+                            PostResovlePath = postResolve,
+                            Id = tEd.ElementId,
+                            IsBinding = true,
+                            BindingName = tEd.Binding.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlBindingName)?.Value ?? string.Empty,
+                            Value = tEd.Binding.ValueSetElement,
                         });
                         continue;
                     }

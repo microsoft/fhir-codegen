@@ -660,6 +660,41 @@ public class LangInfo : ILanguage<InfoOptions>
                         ? discriminator.Path
                         : string.Join(".", discriminator.Path, "resolve()", discriminator.PostResovlePath);
 
+                    if (discriminator.IsBinding)
+                    {
+                        _writer.WriteLineIndented($"- {discriminator.Type} @ {path} from {discriminator.Value} ({discriminator.BindingName})");
+
+                        string vsUrl = discriminator.Value.ToString() ?? string.Empty;
+
+                        if (!string.IsNullOrEmpty(vsUrl))
+                        {
+                            ValueSet? vs = _definitions.ExpandVs(vsUrl).Result;
+
+                            _writer.IncreaseIndent();
+
+                            int i = 0;
+                            foreach (ValueSet.ContainsComponent? cc in vs?.Expansion.Contains ?? Enumerable.Empty<ValueSet.ContainsComponent>())
+                            {
+                                if (i++ > 10)
+                                {
+                                    _writer.WriteLineIndented("...");
+                                    break;
+                                }
+                                _writer.WriteLineIndented($"{cc?.System}|{cc?.Code} - {cc?.Display}");
+                            }
+
+                            _writer.DecreaseIndent();
+                        }
+
+                        continue;
+                    }
+
+                    if (discriminator.DiscriminatorType == ElementDefinition.DiscriminatorType.Type)
+                    {
+                        _writer.WriteLineIndented($"- {discriminator.Type} @ {path} only {discriminator.Value}");
+                        continue;
+                    }
+
                     switch (discriminator.Value)
                     {
                         case CodeableConcept fcc:
@@ -678,16 +713,7 @@ public class LangInfo : ILanguage<InfoOptions>
                             _writer.WriteLineIndented($"- {discriminator.Type} @ {path} = {fp.Start} - {fp.End}");
                             break;
                         default:
-                            {
-                                if (discriminator.DiscriminatorType == ElementDefinition.DiscriminatorType.Type)
-                                {
-                                    _writer.WriteLineIndented($"- {discriminator.Type} @ {path} only {discriminator.Value}");
-                                }
-                                else
-                                {
-                                    _writer.WriteLineIndented($"- {discriminator.Type} @ {path} = {discriminator.Value}");
-                                }
-                            }
+                            _writer.WriteLineIndented($"- {discriminator.Type} @ {path} = {discriminator.Value}");
                             break;
                     }
                 }
