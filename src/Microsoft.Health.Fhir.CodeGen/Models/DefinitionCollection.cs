@@ -44,6 +44,8 @@ public partial class DefinitionCollection
 
     private readonly Dictionary<string, OperationDefinition> _systemOperations = new();
     private readonly Dictionary<string, OperationDefinition> _operationsByUrl = new();
+    private readonly Dictionary<string, Dictionary<string, OperationDefinition>> _typeOperationsByType = new();
+    private readonly Dictionary<string, Dictionary<string, OperationDefinition>> _instanceOperationsByType = new();
 
     private readonly Dictionary<string, SearchParameter> _globalSearchParameters = new();
     private readonly Dictionary<string, SearchParameter> _searchResultParameters = new();
@@ -375,8 +377,11 @@ public partial class DefinitionCollection
         TrackResource(sd);
     }
 
+    /// <summary>Gets the name of the complex types by.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> ComplexTypesByName => _complexTypesByName;
 
+    /// <summary>Adds a complex type.</summary>
+    /// <param name="sd">The structure definition.</param>
     public void AddComplexType(StructureDefinition sd)
     {
         // add field orders to elements
@@ -386,8 +391,11 @@ public partial class DefinitionCollection
         TrackResource(sd);
     }
 
+    /// <summary>Gets the name of the resources by.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> ResourcesByName => _resourcesByName;
 
+    /// <summary>Adds a resource.</summary>
+    /// <param name="sd">The structure definition.</param>
     public void AddResource(StructureDefinition sd)
     {
         // add field orders to elements
@@ -397,8 +405,11 @@ public partial class DefinitionCollection
         TrackResource(sd);
     }
 
+    /// <summary>Gets the name of the logical models by.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> LogicalModelsByName => _logicalModelsByName;
 
+    /// <summary>Adds a logical model.</summary>
+    /// <param name="sd">The structure definition.</param>
     public void AddLogicalModel(StructureDefinition sd)
     {
         // add field orders to elements
@@ -517,8 +528,52 @@ public partial class DefinitionCollection
         }
     }
 
+    /// <summary>Gets URL of the operations by.</summary>
     public IReadOnlyDictionary<string, OperationDefinition> OperationsByUrl => _operationsByUrl;
 
+    /// <summary>Type-level Operations for a resource type.</summary>
+    /// <param name="resourceType">Type of the resource.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,OperationDefinition&gt;</returns>
+    public IReadOnlyDictionary<string, OperationDefinition> TypeOperationsForResource(string resourceType)
+    {
+        if (_typeOperationsByType.TryGetValue(resourceType, out Dictionary<string, OperationDefinition>? opDict))
+        {
+            return opDict;
+        }
+
+        return new Dictionary<string, OperationDefinition>();
+    }
+
+    /// <summary>Type-level Operations for a resource type.</summary>
+    /// <param name="resourceType">Type of the resource.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,OperationDefinition&gt;</returns>
+    public IReadOnlyDictionary<string, OperationDefinition> TypeOperationsForResource(VersionIndependentResourceTypesAll resourceType) =>
+        TypeOperationsForResource(Hl7.Fhir.Utility.EnumUtility.GetLiteral(resourceType) ?? string.Empty);
+
+    /// <summary>Instance-level Operations for a resource type.</summary>
+    /// <param name="resourceType">Type of the resource.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,OperationDefinition&gt;</returns>
+    public IReadOnlyDictionary<string, OperationDefinition> InstanceOperationsForResource(string resourceType)
+    {
+        if (_instanceOperationsByType.TryGetValue(resourceType, out Dictionary<string, OperationDefinition>? opDict))
+        {
+            return opDict;
+        }
+
+        return new Dictionary<string, OperationDefinition>();
+    }
+
+    /// <summary>Instance-level Operations for a resource type.</summary>
+    /// <param name="resourceType">Type of the resource.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,OperationDefinition&gt;</returns>
+    public IReadOnlyDictionary<string, OperationDefinition> InstanceOperationsForResource(VersionIndependentResourceTypesAll resourceType) =>
+        InstanceOperationsForResource(Hl7.Fhir.Utility.EnumUtility.GetLiteral(resourceType) ?? string.Empty);
+
+    /// <summary>Gets the system-level operations.</summary>
+    public IReadOnlyDictionary<string, OperationDefinition> SystemOperations => _systemOperations;
+
+    /// <summary>Adds an operation.</summary>
+    /// <param name="op">The operation.</param>
     public void AddOperation(OperationDefinition op)
     {
         // add field orders to parameters
@@ -526,6 +581,47 @@ public partial class DefinitionCollection
 
         _operationsByUrl[op.Url] = op;
         TrackResource(op);
+
+        // check to see if this is a system level operation
+        if (op.System == true)
+        {
+            _systemOperations[op.Url] = op;
+        }
+
+        // add to the correct resoure dictionary
+        foreach (VersionIndependentResourceTypesAll? t in op.Resource)
+        {
+            if (t == null)
+            {
+                continue;
+            }
+
+            string rt = Hl7.Fhir.Utility.EnumUtility.GetLiteral(t) ?? string.Empty;
+
+            if ((!_typeOperationsByType.TryGetValue(rt, out Dictionary<string, OperationDefinition>? typeDict)) ||
+                (typeDict == null))
+            {
+                typeDict = new();
+                _typeOperationsByType.Add(rt, typeDict);
+            }
+
+            if (op.Type == true)
+            {
+                typeDict[op.Url] = op;
+            }
+
+            if ((!_instanceOperationsByType.TryGetValue(rt, out Dictionary<string, OperationDefinition>? instanceDict)) ||
+                (instanceDict == null))
+            {
+                instanceDict = new();
+                _instanceOperationsByType.Add(rt, instanceDict);
+            }
+
+            if (op.Instance == true)
+            {
+                instanceDict[op.Url] = op;
+            }
+        }
     }
 
     public IReadOnlyDictionary<string, CapabilityStatement> CapabilityStatementsByUrl => _capabilityStatementsByUrl;

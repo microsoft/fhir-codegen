@@ -104,7 +104,7 @@ public class LangInfo : ILanguage<InfoOptions>
 
             WriteStructures(definitions.ProfilesByUrl.Values, "Profiles");
 
-            //WriteOperations(_info.SystemOperations.Values, true, "System Operations");
+            WriteOperations(definitions.SystemOperations.Values, WriteLevelCodes.System, "System Operations");
             //WriteSearchParameters(_info.AllResourceParameters.Values, "All Resource Parameters");
             //WriteSearchParameters(_info.SearchResultParameters.Values, "Search Result Parameters");
             //WriteSearchParameters(_info.AllInteractionParameters.Values, "All Interaction Parameters");
@@ -324,16 +324,16 @@ public class LangInfo : ILanguage<InfoOptions>
         }
 
         // check for type operations
-        //if (sd.TypeOperations.Any())
-        //{
-        //    WriteOperations(sd.TypeOperations.Values, true);
-        //}
+        if (_definitions.TypeOperationsForResource(sd.Type).Any())
+        {
+            WriteOperations(_definitions.TypeOperationsForResource(sd.Type).Values, WriteLevelCodes.Type, typeHint: sd.Type);
+        }
 
         //// check for instance operations
-        //if (sd.InstanceOperations.Any())
-        //{
-        //    WriteOperations(sd.TypeOperations.Values, false);
-        //}
+        if (_definitions.InstanceOperationsForResource(sd.Type).Any())
+        {
+            WriteOperations(_definitions.InstanceOperationsForResource(sd.Type).Values, WriteLevelCodes.Instance, typeHint: sd.Type);
+        }
 
         //if (_info.ProfilesByBaseType.TryGetValue(sd.Path, out Dictionary<string, FhirComplex> profileDict))
         //{
@@ -346,14 +346,24 @@ public class LangInfo : ILanguage<InfoOptions>
         }
     }
 
+    /// <summary>Values that represent write level codes.</summary>
+    private enum WriteLevelCodes : int
+    {
+        System = 0,
+        Type,
+        Instance,
+    }
+
     /// <summary>Writes the operations.</summary>
-    /// <param name="operations"> The operations.</param>
-    /// <param name="isTypeLevel">True if is type level, false if not.</param>
-    /// <param name="headerHint"> (Optional) The header hint.</param>
+    /// <param name="operations">The operations.</param>
+    /// <param name="writeLevel">True if is type level, false if not.</param>
+    /// <param name="headerHint">(Optional) The header hint.</param>
+    /// <param name="typeHint">  (Optional) The type hint.</param>
     private void WriteOperations(
         IEnumerable<OperationDefinition> operations,
-        bool isTypeLevel,
-        string headerHint = "")
+        WriteLevelCodes writeLevel,
+        string headerHint = "",
+        string typeHint = "")
     {
         bool indented = false;
 
@@ -368,21 +378,35 @@ public class LangInfo : ILanguage<InfoOptions>
         {
             string snip = BuildStandardSnippet(operation.cgStandardStatus(), operation.cgMaturityLevel(), operation.cgIsExperimental());
 
-            if (isTypeLevel)
+            switch (writeLevel)
             {
-                _writer.WriteLineIndented($"${operation.Code}{snip}");
-            }
-            else
-            {
-                _writer.WriteLineIndented($"/{{id}}/${operation.Code}{snip}");
+                case WriteLevelCodes.System:
+                    _writer.WriteLineIndented($"${operation.Code}{snip}");
+                    break;
+                case WriteLevelCodes.Type:
+                    _writer.WriteLineIndented($"{typeHint}/${operation.Code}{snip}");
+                    break;
+                case WriteLevelCodes.Instance:
+                    _writer.WriteLineIndented($"{typeHint}/{{id}}/${operation.Code}{snip}");
+                    break;
             }
 
             if (operation.Parameter.Any())
             {
                 _writer.IncreaseIndent();
 
-                // write operation parameters inline
-                foreach (OperationDefinition.ParameterComponent parameter in operation.Parameter.OrderBy(p => p.cgFieldOrder()))
+                // write input operation parameters inline
+                foreach (OperationDefinition.ParameterComponent parameter in operation.Parameter.Where(p => p.Use == OperationParameterUse.In).OrderBy(p => p.cgFieldOrder()))
+                {
+                    string st = (parameter.SearchType == null) ? string.Empty : "<" + parameter.SearchType.GetLiteral() + ">";
+                    _writer.WriteLineIndented(
+                        $"{parameter.Use}:" +
+                        $" {parameter.Name}:" +
+                        $" {parameter.Type}{st}[{parameter.cgCardinality()}]");
+                }
+
+                // write output operation parameters inline
+                foreach (OperationDefinition.ParameterComponent parameter in operation.Parameter.Where(p => p.Use == OperationParameterUse.Out).OrderBy(p => p.cgFieldOrder()))
                 {
                     string st = (parameter.SearchType == null) ? string.Empty : "<" + parameter.SearchType.GetLiteral() + ">";
                     _writer.WriteLineIndented(
