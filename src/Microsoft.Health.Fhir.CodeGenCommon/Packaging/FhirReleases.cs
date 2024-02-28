@@ -18,16 +18,16 @@ public static class FhirReleases
         Unknown = 0,
 
         /// <summary>FHIR DSTU2.</summary>
-        DSTU2 = 2,
+        DSTU2 = 1,
 
         /// <summary>FHIR STU3.</summary>
-        STU3 = 3,
+        STU3 = 2,
 
         /// <summary>FHIR R4.</summary>
-        R4 = 4,
+        R4 = 3,
 
         /// <summary>FHIR R4B.</summary>
-        R4B = -1,
+        R4B = 4,
 
         /// <summary>FHIR R5.</summary>
         R5 = 5,

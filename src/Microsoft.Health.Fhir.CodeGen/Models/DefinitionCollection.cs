@@ -27,6 +27,15 @@ public partial class DefinitionCollection
 
     public FhirReleases.FhirSequenceCodes FhirSequence { get; set; } = FhirReleases.FhirSequenceCodes.Unknown;
 
+    /// <summary>Gets or sets the identifier of the main package.</summary>
+    public string MainPackageId { get; set; } = string.Empty;
+
+    /// <summary>Gets or sets the main package canonical.</summary>
+    public string MainPackageCanonical { get; set; } = string.Empty;
+
+    /// <summary>Gets or sets the main package version.</summary>
+    public string MainPackageVersion { get; set; } = string.Empty;
+
     /// <summary>Gets or sets the manifest.</summary>
     public Dictionary<string, CachePackageManifest> Manifests { get; set; } = new();
 
@@ -48,8 +57,8 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, Dictionary<string, OperationDefinition>> _instanceOperationsByType = new();
 
     private readonly Dictionary<string, SearchParameter> _globalSearchParameters = new();
-    private readonly Dictionary<string, SearchParameter> _searchResultParameters = new();
-    private readonly Dictionary<string, SearchParameter> _allInteractionParameters = new();
+    private readonly Dictionary<string, FhirQueryParameter> _searchResultParameters = new();
+    private readonly Dictionary<string, FhirQueryParameter> _allInteractionParameters = new();
     private readonly Dictionary<string, SearchParameter> _searchParamsByUrl = new();
     private readonly Dictionary<string, Dictionary<string, SearchParameter>> _searchParamsByBase = new();
 
@@ -57,6 +66,8 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, ValueSet> _valueSetsByVersionedUrl = new();
     private readonly Dictionary<string, string[]> _valueSetVersions = new();
     private readonly Dictionary<string, string> _valueSetUrlsById = new();
+
+    private readonly Dictionary<string, Dictionary<string, ElementDefinition>> _bindingElementsByIdByValueSet = new();
 
     private readonly Dictionary<string, ImplementationGuide> _implementationGuidesByUrl = new();
     private readonly Dictionary<string, CapabilityStatement> _capabilityStatementsByUrl = new();
@@ -103,10 +114,6 @@ public partial class DefinitionCollection
             ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
 
             // check for being a child element
-            //if (ed.Type.Any(t => t.Code.Equals("BackboneElement", StringComparison.Ordinal)))
-            //{
-            //    _backbonePaths.Add(ed.Path);
-            //}
             if (ed.Path.Contains('.'))
             {
                 string parentPath = ed.Path.Substring(0, ed.Path.LastIndexOf('.'));
@@ -132,6 +139,18 @@ public partial class DefinitionCollection
                         _pathsWithSlices[ed.Path] = slices.Append(new(ed.SliceName, sd)).ToArray();
                     }
                 }
+            }
+
+            // check for a value set binding
+            if ((ed.Binding != null) && (!string.IsNullOrEmpty(ed.Binding.ValueSet)))
+            {
+                if (!_bindingElementsByIdByValueSet.TryGetValue(ed.Binding.ValueSet, out Dictionary<string, ElementDefinition>? bindings))
+                {
+                    bindings = new();
+                    _bindingElementsByIdByValueSet[ed.Binding.ValueSet] = bindings;
+                }
+
+                bindings[ed.Path] = ed;
             }
         }
 
@@ -173,6 +192,18 @@ public partial class DefinitionCollection
                             _pathsWithSlices[ed.Path] = slices.Append(new(ed.SliceName, sd)).ToArray();
                         }
                     }
+                }
+
+                // check for a value set binding
+                if ((ed.Binding != null) && (!string.IsNullOrEmpty(ed.Binding.ValueSet)))
+                {
+                    if (!_bindingElementsByIdByValueSet.TryGetValue(ed.Binding.ValueSet, out Dictionary<string, ElementDefinition>? bindings))
+                    {
+                        bindings = new();
+                        _bindingElementsByIdByValueSet[ed.Binding.ValueSet] = bindings;
+                    }
+
+                    bindings[ed.Path] = ed;
                 }
             }
 
@@ -277,6 +308,19 @@ public partial class DefinitionCollection
 
     /// <summary>Gets URL of the value sets by.</summary>
     public IReadOnlyDictionary<string, ValueSet> ValueSetsByUrl => _valueSetsByVersionedUrl;
+
+    /// <summary>Value set bind strength by path.</summary>
+    /// <param name="valueSetUrl">URL of the value set.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
+    public IReadOnlyDictionary<string, ElementDefinition> BindingsForVs(string valueSetUrl)
+    {
+        if (_bindingElementsByIdByValueSet.TryGetValue(valueSetUrl, out Dictionary<string, ElementDefinition>? bindings))
+        {
+            return bindings;
+        }
+
+        return new Dictionary<string, ElementDefinition>();
+    }
 
     /// <summary>Adds a value set.</summary>
     /// <param name="valueSet">Set the value belongs to.</param>
@@ -463,8 +507,24 @@ public partial class DefinitionCollection
         }
     }
 
+    /// <summary>Gets URL of the profiles by.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> ProfilesByUrl => _profilesByUrl;
 
+    /// <summary>Profiles for base.</summary>
+    /// <param name="resourceType">Type of the resource.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,StructureDefinition&gt;</returns>
+    public IReadOnlyDictionary<string, StructureDefinition> ProfilesForBase(string resourceType)
+    {
+        if (_profilesByBaseType.TryGetValue(resourceType, out Dictionary<string, StructureDefinition>? sdDict))
+        {
+            return sdDict;
+        }
+
+        return new Dictionary<string, StructureDefinition>();
+    }
+
+    /// <summary>Adds a profile.</summary>
+    /// <param name="sd">The structure definition.</param>
     public void AddProfile(StructureDefinition sd)
     {
         // add field orders to elements
@@ -472,8 +532,23 @@ public partial class DefinitionCollection
 
         _profilesByUrl[sd.Url] = sd;
         TrackResource(sd);
+
+        if (!string.IsNullOrEmpty(sd.Type))
+        {
+            if (!_profilesByBaseType.TryGetValue(sd.Type, out Dictionary<string, StructureDefinition>? sdDict))
+            {
+                sdDict = new();
+                _profilesByBaseType.Add(sd.Type, sdDict);
+            }
+
+            sdDict[sd.Url] = sd;
+        }
     }
 
+    /// <summary>Gets the global search parameters, by URL.</summary>
+    public IReadOnlyDictionary<string, SearchParameter> GlobalSearchParameters => _globalSearchParameters;
+
+    /// <summary>Gets URL of the search parameters by.</summary>
     public IReadOnlyDictionary<string, SearchParameter> SearchParametersByUrl => _searchParamsByUrl;
 
     /// <summary>Searches for the first parameters for base.</summary>
@@ -491,9 +566,21 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a search parameter.</summary>
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-    /// <param name="sp">The search parameter.</param>
-    public void AddSearchParameter(SearchParameter sp)
+    /// <param name="sp">            The search parameter.</param>
+    /// <param name="doNotOverwrite">(Optional) True to do not overwrite.</param>
+    public void AddSearchParameter(SearchParameter sp, bool doNotOverwrite = false)
     {
+        if (string.IsNullOrEmpty(sp.Url))
+        {
+            // best guess at a canonical URL for this
+            sp.Url = string.Join('/', MainPackageCanonical, "SearchParameter", sp.Id).Replace("//", "/");
+        }
+
+        if (doNotOverwrite && _searchParamsByUrl.ContainsKey(sp.Url))
+        {
+            return;
+        }
+
         _searchParamsByUrl[sp.Url] = sp;
         TrackResource(sp);
 
@@ -514,6 +601,13 @@ public partial class DefinitionCollection
                 throw new Exception("SearchParameter.Base is null");
             }
 
+            // check for a base of "Resource" and add to the global list
+            if (spBase.Equals("Resource", StringComparison.Ordinal))
+            {
+                _globalSearchParameters[sp.Url] = sp;
+                continue;
+            }
+
             if ((!_searchParamsByBase.TryGetValue(spBase, out Dictionary<string, SearchParameter>? spDict)) ||
                 (spDict == null))
             {
@@ -526,6 +620,26 @@ public partial class DefinitionCollection
                 spDict.Add(sp.Url, sp);
             }
         }
+    }
+
+    /// <summary>Gets the search result parameter.</summary>
+    public IReadOnlyDictionary<string, FhirQueryParameter> SearchResultParameters => _searchResultParameters;
+
+    /// <summary>Adds a search result parameter.</summary>
+    /// <param name="sp">The search parameter.</param>
+    public void AddSearchResultParameter(FhirQueryParameter sp)
+    {
+        _searchResultParameters[sp.Url] = sp;
+    }
+
+    /// <summary>Gets options for controlling the HTTP.</summary>
+    public IReadOnlyDictionary<string, FhirQueryParameter> HttpParameters => _allInteractionParameters;
+
+    /// <summary>Adds a HTTP query parameter.</summary>
+    /// <param name="sp">The search parameter.</param>
+    public void AddHttpQueryParameter(FhirQueryParameter sp)
+    {
+        _allInteractionParameters[sp.Url] = sp;
     }
 
     /// <summary>Gets URL of the operations by.</summary>

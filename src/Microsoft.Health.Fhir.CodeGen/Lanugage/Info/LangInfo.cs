@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.CommandLine;
+using System.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
@@ -105,16 +106,100 @@ public class LangInfo : ILanguage<InfoOptions>
             WriteStructures(definitions.ProfilesByUrl.Values, "Profiles");
 
             WriteOperations(definitions.SystemOperations.Values, WriteLevelCodes.System, "System Operations");
-            //WriteSearchParameters(_info.AllResourceParameters.Values, "All Resource Parameters");
-            //WriteSearchParameters(_info.SearchResultParameters.Values, "Search Result Parameters");
-            //WriteSearchParameters(_info.AllInteractionParameters.Values, "All Interaction Parameters");
 
-            //WriteValueSets(_info.ValueSetsByUrl.Values, "Value Sets");
+            WriteSearchParameters(definitions.GlobalSearchParameters.Values.OrderBy(sp => sp.Code), "All Resource Parameters");
+
+            WriteFhirQueryParameters(definitions.SearchResultParameters.Values.OrderBy(sr => sr.Name), "Search Result Parameters");
+            WriteFhirQueryParameters(definitions.HttpParameters.Values.OrderBy(qp => qp.Name), "All Interaction (HTTP) Parameters");
+
+            WriteValueSets(definitions.ValueSetsByUrl.Values, "Value Sets");
 
             //WriteFooter();
 
         }
+    }
 
+    /// <summary>Writes a value sets.</summary>
+    /// <param name="valueSets"> Sets the value belongs to.</param>
+    /// <param name="headerHint">(Optional) The header hint.</param>
+    private void WriteValueSets(
+        IEnumerable<ValueSet> valueSets,
+        string headerHint = "")
+    {
+        if (!string.IsNullOrEmpty(headerHint))
+        {
+            _writer.WriteLineIndented($"{headerHint}: {valueSets.Count()} (unversioned)");
+        }
+
+        foreach (ValueSet vs in valueSets.OrderBy(v => v.Url))
+        {
+            string snip = BuildStandardSnippet(vs.cgStandardStatus(), vs.cgMaturityLevel(), null);
+
+            _writer.WriteLineIndented($"- ValueSet: {vs.Url}|{vs.Version}{snip} ({vs.Name})");
+
+            _writer.IncreaseIndent();
+
+            IReadOnlyDictionary<string, ElementDefinition> bindings = _definitions.BindingsForVs(vs.Url);
+
+            BindingStrength? strongestBinding = bindings.Select(kvp => kvp.Value.Binding.Strength).OrderBy(s => s, BindingStrengthComparer.Instance).FirstOrDefault();
+
+            // TODO(ginoc): Move this into definition collection or extension method
+            Dictionary<string, BindingStrength> bindingStrengthByType = new();
+            foreach (ElementDefinition ed in bindings.Values)
+            {
+                foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
+                {
+                    if (bindingStrengthByType.TryGetValue(tr.Code, out BindingStrength bs) &&
+                        BindingStrengthComparer.Instance.Compare(bs, ed.Binding.Strength!) <= 0)
+                    {
+                        continue;
+                    }
+
+                    bindingStrengthByType[tr.Code] = (BindingStrength)ed.Binding.Strength!;
+                }
+            }
+
+            if (bindings.Any())
+            {
+                string vsReferences =
+                    $"references ({bindings.Count}): " + string.Join(", ", bindings.Keys) +
+                    ", strongest binding: " + strongestBinding!.GetLiteral() +
+                    ", by type: " + string.Join(", ", bindingStrengthByType.Select(bt => $"{bt.Key}:{bt.Value}"));
+
+                _writer.WriteLineIndented(vsReferences);
+            }
+
+            //if (vs.StrongestExternalBindingByType?.Any() ?? false)
+            //{
+            //    string vsReferences =
+            //        $"extensions/profiles ({vs.ReferencingExternalElementsByUrl.Count}):" +
+            //        " strongest binding: " + vs.StrongestExternalBinding.ToString() +
+            //        ", refs: " + string.Join(", ", vs.ReferencingExternalElementsByUrl.Select(bt => $"{bt.Value.RootArtifact.ArtifactClass}:{bt.Value.RootArtifact.Id}"));
+
+            //    _writer.WriteLineIndented(vsReferences);
+            //}
+
+            if (vs.Expansion == null)
+            {
+                _writer.WriteLineIndented($"! No expansion available");
+            }
+            else
+            {
+                if (vs.IsLimitedExpansion())
+                {
+                    _writer.WriteLineIndented($"! Partial expansion, not displayed");
+                }
+                else
+                {
+                    foreach (ValueSet.ContainsComponent cc in vs.Expansion.Contains.OrderBy(c => c.Code))
+                    {
+                        _writer.WriteLineIndented($"- #{cc.Code}: {cc.Display}");
+                    }
+                }
+            }
+
+            _writer.DecreaseIndent();
+        }
     }
 
     /// <summary>Writes the structures.</summary>
@@ -329,16 +414,24 @@ public class LangInfo : ILanguage<InfoOptions>
             WriteOperations(_definitions.TypeOperationsForResource(sd.Type).Values, WriteLevelCodes.Type, typeHint: sd.Type);
         }
 
-        //// check for instance operations
+        // check for instance operations
         if (_definitions.InstanceOperationsForResource(sd.Type).Any())
         {
             WriteOperations(_definitions.InstanceOperationsForResource(sd.Type).Values, WriteLevelCodes.Instance, typeHint: sd.Type);
         }
 
-        //if (_info.ProfilesByBaseType.TryGetValue(sd.Path, out Dictionary<string, FhirComplex> profileDict))
-        //{
-        //    WriteProfiles(profileDict.Values);
-        //}
+        // check for profiles for this type - note they are written at the root level as profiles, so we just put a line here for reference
+        if (_definitions.ProfilesForBase(sd.Type).Any())
+        {
+            _writer.WriteLineIndented($"Profiles[{sd.Type}]: {_definitions.ProfilesForBase(sd.Type).Count}");
+
+            _writer.IncreaseIndent();
+            foreach (StructureDefinition profile in _definitions.ProfilesForBase(sd.Type).Values.OrderBy(s => s.Id))
+            {
+                _writer.WriteLineIndented($"-{profile.Id}: {profile.Url} ({profile.Name})");
+            }
+            _writer.DecreaseIndent();
+        }
 
         if (indented)
         {
@@ -425,6 +518,33 @@ public class LangInfo : ILanguage<InfoOptions>
         }
     }
 
+    /// <summary>Writes a FHIR query parameters.</summary>
+    /// <param name="parameters">Options for controlling the operation.</param>
+    /// <param name="headerHint">(Optional) The header hint.</param>
+    private void WriteFhirQueryParameters(
+        IEnumerable<FhirQueryParameter> parameters,
+        string headerHint = "")
+    {
+        bool indented = false;
+
+        if (!string.IsNullOrEmpty(headerHint))
+        {
+            _writer.WriteLineIndented($"{headerHint}: {parameters.Count()}");
+            _writer.IncreaseIndent();
+            indented = true;
+        }
+
+        foreach (FhirQueryParameter param in parameters.OrderBy(s => s.Name))
+        {
+            _writer.WriteLineIndented($"?{param.Name}: {param.ParamType.GetLiteral()} - {param.Url}");
+        }
+
+        if (indented)
+        {
+            _writer.DecreaseIndent();
+        }
+    }
+
     /// <summary>Writes search parameters.</summary>
     /// <param name="searchParameters">Options for controlling the search.</param>
     /// <param name="headerHint">      (Optional) The header hint.</param>
@@ -475,6 +595,7 @@ public class LangInfo : ILanguage<InfoOptions>
             _writer.DecreaseIndent();
         }
     }
+
     /// <summary>Writes the constraints.</summary>
     /// <param name="constraints">The constraints.</param>
     private void WriteConstraints(StructureDefinition sd, IEnumerable<ElementDefinition.ConstraintComponent> constraints)

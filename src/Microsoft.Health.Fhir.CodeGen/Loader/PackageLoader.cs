@@ -66,6 +66,204 @@ public class PackageLoader
         _cache = cache;
     }
 
+    /// <summary>Adds all interaction parameters to a core definition collection.</summary>
+    /// <param name="dc">The device-context.</param>
+    private void AddAllInteractionParameters(DefinitionCollection dc)
+    {
+        dc.AddHttpQueryParameter(new()
+        {
+            Name = "_format",
+            Url = "http://hl7.org/fhir/http.html#format",
+            Description = "Parameter to specify alternative response formats by their MIME-types.",
+            ParamType = SearchParamType.String,
+        });
+
+        dc.AddHttpQueryParameter(new()
+        {
+            Name = "_summary",
+            Url = "http://hl7.org/fhir/search.html#summary",
+            Description = "Request to return a portion of matching resources.",
+            ParamType = SearchParamType.Token,
+            AllowedValues = new[] { "true", "false", "count", "data", "text", },
+        });
+
+        dc.AddHttpQueryParameter(new()
+        {
+            Name = "_elements",
+            Url = "http://hl7.org/fhir/search.html#elements",
+            Description = "Request to return specific elements from resources.",
+            ParamType = SearchParamType.Token,
+        });
+
+        // add parameters from R4 and later
+        if (dc.FhirSequence >= FhirReleases.FhirSequenceCodes.R4)
+        {
+            dc.AddHttpQueryParameter(new()
+            {
+                Name = "_pretty",
+                Url = "http://hl7.org/fhir/http.html#pretty",
+                Description = "Ask for a pretty printed response for human convenience.",
+                ParamType = SearchParamType.String,
+                AllowedValues = new[] { "true", "false", },
+            });
+        }
+    }
+
+    /// <summary>Adds a search result parameters to a core definition collection.</summary>
+    /// <param name="dc">The device-context.</param>
+    private void AddSearchResultParameters(DefinitionCollection dc)
+    {
+        dc.AddSearchResultParameter(new()
+        {
+            Name = "_sort",
+            Url = "http://hl7.org/fhir/search.html#sort",
+            Description = "Used to indicate which order to return the results, which can have a value of one of the search parameters.",
+            ParamType = SearchParamType.String,
+        });
+
+        dc.AddSearchResultParameter(new()
+        {
+            Name = "_count",
+            Url = "http://hl7.org/fhir/search.html#count",
+            Description = "A hint to the server regarding how many resources should be returned in a single page. Servers SHALL NOT return more resources than requested but are allowed to return less than the client requested.",
+            ParamType = SearchParamType.Number,
+        });
+
+        dc.AddSearchResultParameter(new()
+        {
+            Name = "_include",
+            Url = "http://hl7.org/fhir/search.html#include",
+            Description = "Request to return resources related to the search results, by moving forward across references.",
+            ParamType = SearchParamType.String,
+        });
+
+        dc.AddSearchResultParameter(new()
+        {
+            Name = "_revinclude",
+            Url = "http://hl7.org/fhir/search.html#revinclude",
+            Description = "Request to return resources related to the search results, by moving backwards across references.",
+            ParamType = SearchParamType.String,
+        });
+
+        dc.AddSearchResultParameter(new()
+        {
+            Name = "_contained",
+            Url = "http://hl7.org/fhir/search.html#contained",
+            Description = "Request modification to handling of contained resource searching.",
+            ParamType = SearchParamType.Token,
+            AllowedValues = new[] { "true", "false", "both", },
+        });
+
+        dc.AddSearchResultParameter(new()
+        {
+            Name = "_containedType",
+            Url = "http://hl7.org/fhir/search.html#containedType",
+            Description = "When contained resources are being returned, whether the server should return either the container or the contained resource.",
+            ParamType = SearchParamType.Token,
+            AllowedValues = new[] { "container", "contained", },
+        });
+
+        // add parameters from R4 and later
+        if (dc.FhirSequence >= FhirReleases.FhirSequenceCodes.R4)
+        {
+            dc.AddSearchResultParameter(new()
+            {
+                Name = "_total",
+                Url = "http://hl7.org/fhir/search.html#total",
+                Description = "Optimization hint for servers indicating reliance on the Bundle.total element.",
+                ParamType = SearchParamType.Token,
+                AllowedValues = new[] { "none", "estimate", "accurate" },
+            });
+        }
+    }
+
+    /// <summary>Adds a missing core search parameters to a core definition collection.</summary>
+    /// <param name="dc">The device-context.</param>
+    private void AddMissingCoreSearchParameters(DefinitionCollection dc)
+    {
+        dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+        {
+            Id = "Resource-content",
+            Name = "_content",
+            Url = "http://hl7.org/fhir/SearchParameter/Resource-content",
+            Version = dc.FhirSequence.ToLongVersion(),
+            Title = "Resource content filter",
+            Status = PublicationStatus.Active,
+            Description = "Search on the entire content of the resource.",
+            Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+            Type = SearchParamType.Special,
+        });
+
+        dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+        {
+            Id = "Resource-filter",
+            Name = "_filter",
+            Url = "http://hl7.org/fhir/SearchParameter/Resource-filter",
+            Version = dc.FhirSequence.ToLongVersion(),
+            Title = "Advanced search filter",
+            Status = PublicationStatus.Active,
+            Description = "Filter search parameter which supports a more sophisticated grammar for searching.",
+            Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+            Type = SearchParamType.Special,
+        });
+
+        dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+        {
+            Id = "Resource-text",
+            Name = "_text",
+            Url = "http://hl7.org/fhir/SearchParameter/Resource-text",
+            Version = dc.FhirSequence.ToLongVersion(),
+            Title = "Resource text filter",
+            Status = PublicationStatus.Active,
+            Description = "Search the narrative content of a resource.",
+            Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+            Type = SearchParamType.String,
+        });
+
+        dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+        {
+            Id = "Resource-list",
+            Name = "_list",
+            Url = "http://hl7.org/fhir/SearchParameter/Resource-list",
+            Version = dc.FhirSequence.ToLongVersion(),
+            Title = "List reference filter",
+            Status = PublicationStatus.Active,
+            Description = "Filter based on resources referenced by a List resource.",
+            Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+            Type = SearchParamType.Reference,
+            Target = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.List },
+        });
+
+        if (dc.FhirSequence >= FhirReleases.FhirSequenceCodes.R4)
+        {
+            dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+            {
+                Id = "Resource-has",
+                Name = "_has",
+                Url = "http://hl7.org/fhir/SearchParameter/Resource-has",
+                Version = dc.FhirSequence.ToLongVersion(),
+                Title = "Limited support for reverse chaining",
+                Status = PublicationStatus.Active,
+                Description = "For selecting resources based on the properties of resources that refer to them.",
+                Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+                Type = SearchParamType.Special,
+            });
+
+            dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+            {
+                Id = "Resource-type",
+                Name = "_type",
+                Url = "http://hl7.org/fhir/SearchParameter/Resource-type",
+                Version = dc.FhirSequence.ToLongVersion(),
+                Title = "Resource type filter",
+                Status = PublicationStatus.Active,
+                Description = "For filtering resources based on their type in searches across resource types.",
+                Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+                Type = SearchParamType.Token,
+            });
+        }
+    }
+
     /// <summary>Loads a package.</summary>
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
     /// <param name="name">    The name.</param>
@@ -86,6 +284,13 @@ public class PackageLoader
                 throw new Exception("Failed to load package manifest");
             }
             definitions.Manifests.Add(cachedPackage.ResolvedDirective, manifest);
+
+            if (string.IsNullOrEmpty(definitions.MainPackageId) || name.Equals(manifest.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                definitions.MainPackageId = manifest.Name;
+                definitions.MainPackageVersion = manifest.Version;
+                definitions.MainPackageCanonical = manifest.CanonicalUrl;
+            }
 
             // update the collection FHIR version based on the first package we come across with one
             if ((definitions.FhirVersion == null) && manifest.FhirVersions.Any())
@@ -266,6 +471,14 @@ public class PackageLoader
                             break;
                     }
                 }
+            }
+
+            // check to see if this package is a 'core' FHIR package to add missing contents
+            if (manifest.Type.Equals("core", StringComparison.OrdinalIgnoreCase))
+            {
+                AddMissingCoreSearchParameters(definitions);
+                AddAllInteractionParameters(definitions);
+                AddSearchResultParameters(definitions);
             }
         }
 
