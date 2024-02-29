@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
@@ -41,7 +42,9 @@ public partial class DefinitionCollection
 
     /// <summary>Gets or sets the contents.</summary>
     public Dictionary<string, PackageContents> ContentListings { get; set; } = new();
-    
+
+    private readonly Dictionary<ElementDefinition, StructureDefinition> _elementSdLookup = new();
+
     private readonly Dictionary<string, StructureDefinition> _primitiveTypesByName = new();
     private readonly Dictionary<string, StructureDefinition> _complexTypesByName = new();
     private readonly Dictionary<string, StructureDefinition> _resourcesByName = new();
@@ -67,7 +70,8 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, string[]> _valueSetVersions = new();
     private readonly Dictionary<string, string> _valueSetUrlsById = new();
 
-    private readonly Dictionary<string, Dictionary<string, ElementDefinition>> _bindingElementsByIdByValueSet = new();
+    private readonly Dictionary<string, Dictionary<string, ElementDefinition[]>> _coreBindingEdsByPathByValueSet = new();
+    private readonly Dictionary<string, Dictionary<string, ElementDefinition[]>> _extendedBindingEdsByPathByValueSet = new();
 
     private readonly Dictionary<string, ImplementationGuide> _implementationGuidesByUrl = new();
     private readonly Dictionary<string, CapabilityStatement> _capabilityStatementsByUrl = new();
@@ -102,7 +106,7 @@ public partial class DefinitionCollection
     /// <summary>Processes elements in a structure definition.</summary>
     /// <remarks>Addes field orders, indexes paths that contain child elements, etc.</remarks>
     /// <param name="sd">The structure definition.</param>
-    private void ProcessElements(StructureDefinition sd)
+    private void ProcessElements(FhirArtifactClassEnum artifactClass, StructureDefinition sd)
     {
         Dictionary<string, int> allFieldOrders = new();
 
@@ -112,6 +116,9 @@ public partial class DefinitionCollection
             int fo = allFieldOrders.Count();
             allFieldOrders.Add(ed.ElementId, fo);
             ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
+
+            // add to lookup dict
+            _elementSdLookup.Add(ed, sd);
 
             // check for being a child element
             if (ed.Path.Contains('.'))
@@ -142,16 +149,7 @@ public partial class DefinitionCollection
             }
 
             // check for a value set binding
-            if ((ed.Binding != null) && (!string.IsNullOrEmpty(ed.Binding.ValueSet)))
-            {
-                if (!_bindingElementsByIdByValueSet.TryGetValue(ed.Binding.ValueSet, out Dictionary<string, ElementDefinition>? bindings))
-                {
-                    bindings = new();
-                    _bindingElementsByIdByValueSet[ed.Binding.ValueSet] = bindings;
-                }
-
-                bindings[ed.Path] = ed;
-            }
+            CheckElementBindings(artifactClass, sd, ed);
         }
 
         // process each element in the differential
@@ -162,6 +160,9 @@ public partial class DefinitionCollection
             {
                 fo = allFieldOrders.Count();
                 allFieldOrders.Add(ed.ElementId, fo);
+
+                // add to lookup dict
+                _elementSdLookup.Add(ed, sd);
 
                 // check for being a child element - only need to test if this element has not been processed already
                 //if (ed.Type.Any(t => t.Code.Equals("BackboneElement", StringComparison.Ordinal)))
@@ -195,19 +196,104 @@ public partial class DefinitionCollection
                 }
 
                 // check for a value set binding
-                if ((ed.Binding != null) && (!string.IsNullOrEmpty(ed.Binding.ValueSet)))
-                {
-                    if (!_bindingElementsByIdByValueSet.TryGetValue(ed.Binding.ValueSet, out Dictionary<string, ElementDefinition>? bindings))
-                    {
-                        bindings = new();
-                        _bindingElementsByIdByValueSet[ed.Binding.ValueSet] = bindings;
-                    }
-
-                    bindings[ed.Path] = ed;
-                }
+                CheckElementBindings(artifactClass, sd, ed);
             }
 
             ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
+        }
+    }
+
+    /// <summary>Check element bindings.</summary>
+    /// <param name="artifactClass">The artifact class.</param>
+    /// <param name="ed">           The ed.</param>
+    private void CheckElementBindings(FhirArtifactClassEnum artifactClass, StructureDefinition sd, ElementDefinition ed)
+    {
+        // check for a value set binding
+        if ((ed.Binding != null) && (!string.IsNullOrEmpty(ed.Binding.ValueSet)))
+        {
+            int lastPipe = ed.Binding.ValueSet.LastIndexOf('|');
+            string url = lastPipe == -1 ? ed.Binding.ValueSet : ed.Binding.ValueSet.Substring(0, lastPipe);
+
+            // need to pick the right dictionary based on artifact class
+            switch (artifactClass)
+            {
+                // these artifacts are always core
+                case FhirArtifactClassEnum.PrimitiveType:
+                case FhirArtifactClassEnum.ComplexType:
+                case FhirArtifactClassEnum.Resource:
+                case FhirArtifactClassEnum.Compartment:
+                    {
+                        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
+                        {
+                            bindings = new();
+                            _coreBindingEdsByPathByValueSet[url] = bindings;
+                        }
+
+                        bindings[ed.Path] = bindings.TryGetValue(ed.Path, out ElementDefinition[]? ar) ? ar.Append(ed).ToArray() : new[] { ed };
+                    }
+                    break;
+
+                // extensions need to be processed based on their contexts, even though the element does not have them
+                case FhirArtifactClassEnum.Extension:
+                    {
+                        foreach (StructureDefinition.ContextComponent cc in sd.Context ?? Enumerable.Empty<StructureDefinition.ContextComponent>())
+                        {
+                            switch (cc.Type)
+                            {
+                                case StructureDefinition.ExtensionContextType.Element:
+                                    {
+                                        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
+                                        {
+                                            bindings = new();
+                                            _extendedBindingEdsByPathByValueSet[url] = bindings;
+                                        }
+
+                                        bindings[cc.Expression] = bindings.TryGetValue(cc.Expression, out ElementDefinition[]? ar) ? ar.Append(ed).ToArray() : new[] { ed };
+                                    }
+                                    break;
+
+                                case StructureDefinition.ExtensionContextType.Extension:
+                                case StructureDefinition.ExtensionContextType.Fhirpath:
+                                default:
+                                    {
+                                        Console.Write("");
+                                    }
+                                    continue;
+                            }
+
+                        }
+                    }
+                    break;
+
+                // these artifacts are always extended
+                case FhirArtifactClassEnum.Operation:
+                case FhirArtifactClassEnum.SearchParameter:
+                case FhirArtifactClassEnum.Profile:
+                case FhirArtifactClassEnum.LogicalModel:
+                case FhirArtifactClassEnum.ConceptMap:
+                case FhirArtifactClassEnum.NamingSystem:
+                case FhirArtifactClassEnum.StructureMap:
+                    {
+                        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
+                        {
+                            bindings = new();
+                            _extendedBindingEdsByPathByValueSet[url] = bindings;
+                        }
+
+                        bindings[ed.Path] = bindings.TryGetValue(ed.Path, out ElementDefinition[]? ar) ? ar.Append(ed).ToArray() : new[] { ed };
+                    }
+                    break;
+
+                // these are untracked because they should never happen
+                case FhirArtifactClassEnum.CodeSystem:
+                case FhirArtifactClassEnum.ValueSet:
+                case FhirArtifactClassEnum.ImplementationGuide:
+                case FhirArtifactClassEnum.CapabilityStatement:
+                case FhirArtifactClassEnum.Unknown:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -296,6 +382,11 @@ public partial class DefinitionCollection
         _allResources[url] = r;
     }
 
+    /// <summary>Structure for element.</summary>
+    /// <param name="ed">The ed.</param>
+    /// <returns>A StructureDefinition.</returns>
+    public StructureDefinition StructureForElement(ElementDefinition ed) => _elementSdLookup[ed];
+
     /// <summary>Gets URL of the code systems by.</summary>
     public IReadOnlyDictionary<string, CodeSystem> CodeSystemsByUrl => _codeSystemsByUrl;
 
@@ -312,18 +403,268 @@ public partial class DefinitionCollection
     /// <summary>Value set bind strength by path.</summary>
     /// <param name="valueSetUrl">URL of the value set.</param>
     /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
-    public IReadOnlyDictionary<string, ElementDefinition> BindingsForVs(string valueSetUrl)
+    public IReadOnlyDictionary<string, ElementDefinition[]> CoreBindingsForVs(string valueSetUrl)
     {
-        if (_bindingElementsByIdByValueSet.TryGetValue(valueSetUrl, out Dictionary<string, ElementDefinition>? bindings))
+        int lastPipe = valueSetUrl.LastIndexOf('|');
+        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+
+        if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
         {
             return bindings;
         }
 
-        return new Dictionary<string, ElementDefinition>();
+        return new Dictionary<string, ElementDefinition[]>();
     }
 
-    /// <summary>Adds a value set.</summary>
-    /// <param name="valueSet">Set the value belongs to.</param>
+    /// <summary>Strongest core binding.</summary>
+    /// <param name="valueSetUrl">URL of the value set.</param>
+    /// <returns>A BindingStrength?</returns>
+    public BindingStrength? StrongestCoreBinding(string valueSetUrl)
+    {
+        int lastPipe = valueSetUrl.LastIndexOf('|');
+        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+
+        if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings) &&
+            (bindings != null))
+        {
+            return bindings.SelectMany(kvp => kvp.Value.Select(ed => ed.Binding.Strength)).OrderBy(s => s, BindingStrengthComparer.Instance).FirstOrDefault(); ;
+        }
+
+        return null;
+    }
+
+    /// <summary>Core binding strength by type.</summary>
+    /// <param name="valueSetUrl">URL of the value set.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
+    public IReadOnlyDictionary<string, BindingStrength> CoreBindingStrengthByType(string valueSetUrl)
+    {
+        int lastPipe = valueSetUrl.LastIndexOf('|');
+        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+
+        Dictionary<string, BindingStrength> bindingStrengthByType = new();
+
+        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
+        {
+            return bindingStrengthByType;
+        }
+
+        // traverse existing bindings to find the strongest for each type
+        foreach (ElementDefinition ed in bindings.Values.SelectMany(a => a))
+        {
+            foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
+            {
+                if (bindingStrengthByType.TryGetValue(tr.Code, out BindingStrength bs) &&
+                    BindingStrengthComparer.Instance.Compare(bs, ed.Binding.Strength!) <= 0)
+                {
+                    continue;
+                }
+
+                bindingStrengthByType[tr.Code] = (BindingStrength)ed.Binding.Strength!;
+            }
+        }
+
+        return bindingStrengthByType;
+    }
+
+    /// <summary>Extended bindings for vs.</summary>
+    /// <param name="valueSetUrl">URL of the value set.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,ElementDefinition&gt;</returns>
+    public IReadOnlyDictionary<string, ElementDefinition[]> ExtendedBindingsForVs(string valueSetUrl)
+    {
+        int lastPipe = valueSetUrl.LastIndexOf('|');
+        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+
+        if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
+        {
+            return bindings;
+        }
+
+        return new Dictionary<string, ElementDefinition[]>();
+    }
+
+    /// <summary>Strongest extended binding.</summary>
+    /// <param name="valueSetUrl">URL of the value set.</param>
+    /// <returns>A BindingStrength?</returns>
+    public BindingStrength? StrongestExtendedBinding(string valueSetUrl)
+    {
+        int lastPipe = valueSetUrl.LastIndexOf('|');
+        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+
+        if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings) &&
+            (bindings != null))
+        {
+            return bindings.SelectMany(kvp => kvp.Value.Select(ed => ed.Binding.Strength)).OrderBy(s => s, BindingStrengthComparer.Instance).FirstOrDefault(); ;
+        }
+
+        return null;
+    }
+
+    /// <summary>Extended binding strength by type.</summary>
+    /// <param name="valueSetUrl">URL of the value set.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
+    public IReadOnlyDictionary<string, BindingStrength> ExtendedBindingStrengthByType(string valueSetUrl)
+    {
+        int lastPipe = valueSetUrl.LastIndexOf('|');
+        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+
+        Dictionary<string, BindingStrength> bindingStrengthByType = new();
+
+        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
+        {
+            return bindingStrengthByType;
+        }
+
+        // traverse existing bindings to find the strongest for each type
+        foreach (ElementDefinition ed in bindings.Values.SelectMany(a => a))
+        {
+            foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
+            {
+                if (bindingStrengthByType.TryGetValue(tr.Code, out BindingStrength bs) &&
+                    BindingStrengthComparer.Instance.Compare(bs, ed.Binding.Strength!) <= 0)
+                {
+                    continue;
+                }
+
+                bindingStrengthByType[tr.Code] = (BindingStrength)ed.Binding.Strength!;
+            }
+        }
+
+        return bindingStrengthByType;
+    }
+
+    /// <summary>Bindings for vs.</summary>
+    /// <param name="valueSetUrl">URL of the value set.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,ElementDefinition&gt;</returns>
+    public IReadOnlyDictionary<string, ElementDefinition[]> BindingsForVs(string valueSetUrl)
+    {
+        int lastPipe = valueSetUrl.LastIndexOf('|');
+        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+
+        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? core))
+        {
+            core = new();
+        }
+
+        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? extended))
+        {
+            extended = new();
+        }
+
+        return core.Union(extended).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+    }
+
+    /// <summary>Strongest binding.</summary>
+    /// <param name="valueSetUrl">URL of the value set.</param>
+    /// <returns>A BindingStrength?</returns>
+    public BindingStrength? StrongestBinding(string valueSetUrl)
+    {
+        int lastPipe = valueSetUrl.LastIndexOf('|');
+        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+
+        BindingStrength? cbs = null;
+        BindingStrength? ebs = null;
+
+        if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? core))
+        {
+            cbs = core.SelectMany(kvp => kvp.Value.Select(ed => ed.Binding.Strength)).OrderBy(s => s, BindingStrengthComparer.Instance).FirstOrDefault();
+        }
+
+        if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? extended))
+        {
+            ebs = extended.SelectMany(kvp => kvp.Value.Select(ed => ed.Binding.Strength)).OrderBy(s => s, BindingStrengthComparer.Instance).FirstOrDefault();
+        }
+
+        return BindingStrengthComparer.Instance.Compare(cbs, ebs) > 0 ? cbs : ebs;
+    }
+
+    /// <summary>Strongest binding.</summary>
+    /// <param name="bindings">The bindings.</param>
+    /// <returns>A BindingStrength?</returns>
+    public BindingStrength? StrongestBinding(IReadOnlyDictionary<string, ElementDefinition[]> bindings)
+    {
+        return bindings.SelectMany(kvp => kvp.Value.Select(ed => ed.Binding.Strength)).OrderBy(s => s, BindingStrengthComparer.Instance).FirstOrDefault();
+    }
+
+    /// <summary>Binding strength by type.</summary>
+    /// <param name="valueSetUrl">URL of the value set.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
+    public IReadOnlyDictionary<string, BindingStrength> BindingStrengthByType(string valueSetUrl)
+    {
+        int lastPipe = valueSetUrl.LastIndexOf('|');
+        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+
+        Dictionary<string, BindingStrength> bindingStrengthByType = new();
+
+        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? core))
+        {
+            core = new();
+        }
+
+        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? extended))
+        {
+            extended = new();
+        }
+
+        Dictionary<string, ElementDefinition[]> all = core.Union(extended).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+        if (!all.Any())
+        {
+            return bindingStrengthByType;
+        }
+
+        // traverse existing bindings to find the strongest for each type
+        foreach (ElementDefinition ed in all.Values.SelectMany(a => a))
+        {
+            foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
+            {
+                if (bindingStrengthByType.TryGetValue(tr.Code, out BindingStrength bs) &&
+                    BindingStrengthComparer.Instance.Compare(bs, ed.Binding.Strength!) <= 0)
+                {
+                    continue;
+                }
+
+                bindingStrengthByType[tr.Code] = (BindingStrength)ed.Binding.Strength!;
+            }
+        }
+
+        return bindingStrengthByType;
+    }
+
+    /// <summary>Binding strength by type.</summary>
+    /// <param name="bindings">The bindings.</param>
+    /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
+    public IReadOnlyDictionary<string, BindingStrength> BindingStrengthByType(IReadOnlyDictionary<string, ElementDefinition[]> bindings)
+    {
+        Dictionary<string, BindingStrength> bindingStrengthByType = new();
+
+        if (!bindings.Any())
+        {
+            return bindingStrengthByType;
+        }
+
+        // traverse existing bindings to find the strongest for each type
+        foreach (ElementDefinition ed in bindings.Values.SelectMany(a => a))
+        {
+            foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
+            {
+                if (bindingStrengthByType.TryGetValue(tr.Code, out BindingStrength bs) &&
+                    BindingStrengthComparer.Instance.Compare(bs, ed.Binding.Strength!) <= 0)
+                {
+                    continue;
+                }
+
+                bindingStrengthByType[tr.Code] = (BindingStrength)ed.Binding.Strength!;
+            }
+        }
+
+        return bindingStrengthByType;
+    }
+
+
+    /// <summary>
+    /// Adds a value set to the definition collection.
+    /// </summary>
+    /// <param name="valueSet">The value set to be added.</param>
     public void AddValueSet(ValueSet valueSet)
     {
         string vsUrl = valueSet.Url;
@@ -409,7 +750,7 @@ public partial class DefinitionCollection
     public void AddPrimitiveType(StructureDefinition sd)
     {
         // add field orders to elements
-        ProcessElements(sd);
+        ProcessElements(FhirArtifactClassEnum.PrimitiveType, sd);
 
         // TODO(ginoc): Consider if we want to make this explicit on any definitions that do not have it
         //if (sd.FhirVersion == null)
@@ -429,7 +770,7 @@ public partial class DefinitionCollection
     public void AddComplexType(StructureDefinition sd)
     {
         // add field orders to elements
-        ProcessElements(sd);
+        ProcessElements(FhirArtifactClassEnum.ComplexType, sd);
 
         _complexTypesByName[sd.Name] = sd;
         TrackResource(sd);
@@ -443,7 +784,7 @@ public partial class DefinitionCollection
     public void AddResource(StructureDefinition sd)
     {
         // add field orders to elements
-        ProcessElements(sd);
+        ProcessElements(FhirArtifactClassEnum.Resource, sd);
 
         _resourcesByName[sd.Name] = sd;
         TrackResource(sd);
@@ -457,7 +798,7 @@ public partial class DefinitionCollection
     public void AddLogicalModel(StructureDefinition sd)
     {
         // add field orders to elements
-        ProcessElements(sd);
+        ProcessElements(FhirArtifactClassEnum.LogicalModel, sd);
 
         _logicalModelsByName[sd.Url] = sd;
         TrackResource(sd);
@@ -474,7 +815,7 @@ public partial class DefinitionCollection
     public void AddExtension(StructureDefinition sd)
     {
         // add field orders to elements
-        ProcessElements(sd);
+        ProcessElements(FhirArtifactClassEnum.Extension, sd);
 
         string url = sd.Url;
 
@@ -528,7 +869,7 @@ public partial class DefinitionCollection
     public void AddProfile(StructureDefinition sd)
     {
         // add field orders to elements
-        ProcessElements(sd);
+        ProcessElements(FhirArtifactClassEnum.Profile, sd);
 
         _profilesByUrl[sd.Url] = sd;
         TrackResource(sd);

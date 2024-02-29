@@ -137,47 +137,34 @@ public class LangInfo : ILanguage<InfoOptions>
 
             _writer.WriteLineIndented($"- ValueSet: {vs.Url}|{vs.Version}{snip} ({vs.Name})");
 
+            if (vs.Url.Equals("http://hl7.org/fhir/ValueSet/administrative-gender", StringComparison.Ordinal))
+            {
+                Console.Write("");
+            }
+
             _writer.IncreaseIndent();
 
-            IReadOnlyDictionary<string, ElementDefinition> bindings = _definitions.BindingsForVs(vs.Url);
-
-            BindingStrength? strongestBinding = bindings.Select(kvp => kvp.Value.Binding.Strength).OrderBy(s => s, BindingStrengthComparer.Instance).FirstOrDefault();
-
-            // TODO(ginoc): Move this into definition collection or extension method
-            Dictionary<string, BindingStrength> bindingStrengthByType = new();
-            foreach (ElementDefinition ed in bindings.Values)
+            IReadOnlyDictionary<string, ElementDefinition[]> coreBindings = _definitions.CoreBindingsForVs(vs.Url);
+            BindingStrength? strongestBinding = _definitions.StrongestBinding(coreBindings);
+            IReadOnlyDictionary<string, BindingStrength> bindingStrengthByType = _definitions.BindingStrengthByType(coreBindings);
+            if (coreBindings.Any())
             {
-                foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
-                {
-                    if (bindingStrengthByType.TryGetValue(tr.Code, out BindingStrength bs) &&
-                        BindingStrengthComparer.Instance.Compare(bs, ed.Binding.Strength!) <= 0)
-                    {
-                        continue;
-                    }
-
-                    bindingStrengthByType[tr.Code] = (BindingStrength)ed.Binding.Strength!;
-                }
-            }
-
-            if (bindings.Any())
-            {
-                string vsReferences =
-                    $"references ({bindings.Count}): " + string.Join(", ", bindings.Keys) +
+                _writer.WriteLineIndented(
+                    $"references ({coreBindings.Count}): " + string.Join(", ", coreBindings.Keys) +
                     ", strongest binding: " + strongestBinding!.GetLiteral() +
-                    ", by type: " + string.Join(", ", bindingStrengthByType.Select(bt => $"{bt.Key}:{bt.Value}"));
-
-                _writer.WriteLineIndented(vsReferences);
+                    ", by type: " + string.Join(", ", bindingStrengthByType.Select(bs => $"{bs.Key}:{bs.Value}")));
             }
 
-            //if (vs.StrongestExternalBindingByType?.Any() ?? false)
-            //{
-            //    string vsReferences =
-            //        $"extensions/profiles ({vs.ReferencingExternalElementsByUrl.Count}):" +
-            //        " strongest binding: " + vs.StrongestExternalBinding.ToString() +
-            //        ", refs: " + string.Join(", ", vs.ReferencingExternalElementsByUrl.Select(bt => $"{bt.Value.RootArtifact.ArtifactClass}:{bt.Value.RootArtifact.Id}"));
+            IReadOnlyDictionary<string, ElementDefinition[]> extendedBindings = _definitions.ExtendedBindingsForVs(vs.Url);
+            strongestBinding = _definitions.StrongestBinding(extendedBindings);
 
-            //    _writer.WriteLineIndented(vsReferences);
-            //}
+            if (extendedBindings.Any())
+            {
+                _writer.WriteLineIndented(
+                    $"extensions/profiles ({extendedBindings.Count}):" +
+                    " strongest binding: " + strongestBinding!.GetLiteral() +
+                    ", refs: " + string.Join(", ", extendedBindings.SelectMany(ebs => ebs.Value.Select(eb => ExternalRefLiteral(ebs.Key, eb)))));
+            }
 
             if (vs.Expansion == null)
             {
@@ -199,6 +186,15 @@ public class LangInfo : ILanguage<InfoOptions>
             }
 
             _writer.DecreaseIndent();
+        }
+
+        return;
+
+        string ExternalRefLiteral(string path, ElementDefinition ed)
+        {
+            StructureDefinition sd = _definitions.StructureForElement(ed);
+
+            return $"{sd.cgArtifactClass()}:{path}[{sd.Id}]";
         }
     }
 
