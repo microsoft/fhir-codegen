@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System;
 using System.Collections.Generic;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
@@ -59,11 +60,6 @@ public static class StructureDefSlicing
             return result;
         }
 
-        //if (slicingEd.Path.Equals("Provenance.agent"))
-        //{
-        //    Console.Write("");
-        //}
-
         // TODO(ginoc): Need to test reslicing - need an example to test against
         foreach (ElementDefinition.DiscriminatorComponent discriminator in slicingEd.Slicing.Discriminator)
         {
@@ -89,17 +85,15 @@ public static class StructureDefSlicing
 
                 // TODO(ginoc): need to find an example of this so I can implement it
                 case ElementDefinition.DiscriminatorType.Position:
+                    {
+                        Console.WriteLine($"cgDiscriminatedValues <<< {sd.Id}: unhandled discriminator: {discriminator.Type}:{discriminator.Path}");
+                    }
                     break;
 
                 //default:
                 //    break;
             }
         }
-
-        //if (!result.Any())
-        //{
-        //    Console.Write("");
-        //}
 
         return result;
     }

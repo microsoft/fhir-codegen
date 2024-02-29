@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
@@ -203,6 +204,38 @@ public partial class DefinitionCollection
         }
     }
 
+    /// <summary>
+    /// Returns the versioned URL for a given value set URL.
+    /// </summary>
+    /// <param name="vsUrl">The URL of the value set.</param>
+    /// <returns>The versioned URL of the value set.</returns>
+    private string VersionedUrlForVs(string vsUrl)
+    {
+        int lastPipe = vsUrl.LastIndexOf('|');
+
+        if ((lastPipe != -1) ||
+            (!_valueSetVersions.TryGetValue(vsUrl, out string[]? vsVersions)) ||
+            (!(vsVersions?.Any() ?? false)))
+        {
+            return vsUrl;
+        }
+
+        return vsUrl + "|" + vsVersions!.Max();
+    }
+
+    private string UnversionedUrlForVs(string vsUrl)
+    {
+        int lastPipe = vsUrl.LastIndexOf('|');
+
+        if (lastPipe == -1)
+        {
+            return vsUrl;
+        }
+
+        // strip the pipe and version
+        return vsUrl.Substring(0, lastPipe - 1);
+    }
+
     /// <summary>Check element bindings.</summary>
     /// <param name="artifactClass">The artifact class.</param>
     /// <param name="ed">           The ed.</param>
@@ -211,8 +244,7 @@ public partial class DefinitionCollection
         // check for a value set binding
         if ((ed.Binding != null) && (!string.IsNullOrEmpty(ed.Binding.ValueSet)))
         {
-            int lastPipe = ed.Binding.ValueSet.LastIndexOf('|');
-            string url = lastPipe == -1 ? ed.Binding.ValueSet : ed.Binding.ValueSet.Substring(0, lastPipe);
+            string url = VersionedUrlForVs(ed.Binding.ValueSet);
 
             // need to pick the right dictionary based on artifact class
             switch (artifactClass)
@@ -236,32 +268,7 @@ public partial class DefinitionCollection
                 // extensions need to be processed based on their contexts, even though the element does not have them
                 case FhirArtifactClassEnum.Extension:
                     {
-                        foreach (StructureDefinition.ContextComponent cc in sd.Context ?? Enumerable.Empty<StructureDefinition.ContextComponent>())
-                        {
-                            switch (cc.Type)
-                            {
-                                case StructureDefinition.ExtensionContextType.Element:
-                                    {
-                                        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
-                                        {
-                                            bindings = new();
-                                            _extendedBindingEdsByPathByValueSet[url] = bindings;
-                                        }
-
-                                        bindings[cc.Expression] = bindings.TryGetValue(cc.Expression, out ElementDefinition[]? ar) ? ar.Append(ed).ToArray() : new[] { ed };
-                                    }
-                                    break;
-
-                                case StructureDefinition.ExtensionContextType.Extension:
-                                case StructureDefinition.ExtensionContextType.Fhirpath:
-                                default:
-                                    {
-                                        Console.Write("");
-                                    }
-                                    continue;
-                            }
-
-                        }
+                        NestIntoExtension(url, sd);
                     }
                     break;
 
@@ -293,6 +300,51 @@ public partial class DefinitionCollection
                     break;
                 default:
                     break;
+            }
+        }
+
+        return;
+
+        /// <summary>
+        /// Nest the current structure definition into an extension with the specified URL.
+        /// </summary>
+        /// <param name="url">The URL of the extension.</param>
+        /// <param name="currentSd">The current structure definition to nest.</param>
+        void NestIntoExtension(string url, StructureDefinition currentSd)
+        {
+            foreach (StructureDefinition.ContextComponent cc in currentSd.Context ?? Enumerable.Empty<StructureDefinition.ContextComponent>())
+            {
+                switch (cc.Type)
+                {
+                    case StructureDefinition.ExtensionContextType.Element:
+                        {
+                            if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
+                            {
+                                bindings = new();
+                                _extendedBindingEdsByPathByValueSet[url] = bindings;
+                            }
+
+                            bindings[cc.Expression] = bindings.TryGetValue(cc.Expression, out ElementDefinition[]? ar) ? ar.Append(ed).ToArray() : new[] { ed };
+                        }
+                        break;
+
+                    case StructureDefinition.ExtensionContextType.Extension:
+                        {
+                            if (_extensionsByUrl.TryGetValue(cc.Expression, out StructureDefinition? extSd))
+                            {
+                                NestIntoExtension(url, extSd);
+                            }
+                        }
+                        break;
+
+                    case StructureDefinition.ExtensionContextType.Fhirpath:
+                    default:
+                        {
+                            Console.WriteLine($"CheckElementBindings.NestIntoExtension <<< {currentSd.Id}: resolving bindings in extension for {url} encountered an unhandled definition: {cc.Type}:{cc.Expression}");
+                        }
+                        continue;
+                }
+
             }
         }
     }
@@ -398,15 +450,41 @@ public partial class DefinitionCollection
     }
 
     /// <summary>Gets URL of the value sets by.</summary>
-    public IReadOnlyDictionary<string, ValueSet> ValueSetsByUrl => _valueSetsByVersionedUrl;
+    public IReadOnlyDictionary<string, ValueSet> ValueSetsByVersionedUrl => _valueSetsByVersionedUrl;
+
+    /// <summary>Versions for value set.</summary>
+    /// <param name="valueSetUrl">URL of the value set.</param>
+    /// <returns>A string[].</returns>
+    public string[] VersionsForValueSet(string valueSetUrl)
+    {
+        string url = UnversionedUrlForVs(valueSetUrl);
+
+        _valueSetVersions.TryGetValue(url, out string[]? versions);
+
+        return versions ?? Array.Empty<string>();
+    }
+
+    /// <summary>
+    /// Returns the external value sets that are bound in the DefinitionCollection.
+    /// </summary>
+    /// <returns>An enumerable collection of the external value sets.</returns>
+    public IEnumerable<string> BoundExternalValueSets()
+    {
+        IEnumerable<string> core = _coreBindingEdsByPathByValueSet.Keys.Except(_valueSetsByVersionedUrl.Keys);
+        core = core.Except(_valueSetVersions.Keys);
+
+        IEnumerable<string> ext = _extendedBindingEdsByPathByValueSet.Keys.Except(_valueSetsByVersionedUrl.Keys);
+        ext = ext.Except(_valueSetVersions.Keys);
+
+        return core.Union(ext);
+    }
 
     /// <summary>Value set bind strength by path.</summary>
     /// <param name="valueSetUrl">URL of the value set.</param>
     /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
     public IReadOnlyDictionary<string, ElementDefinition[]> CoreBindingsForVs(string valueSetUrl)
     {
-        int lastPipe = valueSetUrl.LastIndexOf('|');
-        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+        string url = VersionedUrlForVs(valueSetUrl);
 
         if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
         {
@@ -421,8 +499,7 @@ public partial class DefinitionCollection
     /// <returns>A BindingStrength?</returns>
     public BindingStrength? StrongestCoreBinding(string valueSetUrl)
     {
-        int lastPipe = valueSetUrl.LastIndexOf('|');
-        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+        string url = VersionedUrlForVs(valueSetUrl);
 
         if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings) &&
             (bindings != null))
@@ -438,8 +515,7 @@ public partial class DefinitionCollection
     /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
     public IReadOnlyDictionary<string, BindingStrength> CoreBindingStrengthByType(string valueSetUrl)
     {
-        int lastPipe = valueSetUrl.LastIndexOf('|');
-        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+        string url = VersionedUrlForVs(valueSetUrl);
 
         Dictionary<string, BindingStrength> bindingStrengthByType = new();
 
@@ -471,8 +547,7 @@ public partial class DefinitionCollection
     /// <returns>An IReadOnlyDictionary&lt;string,ElementDefinition&gt;</returns>
     public IReadOnlyDictionary<string, ElementDefinition[]> ExtendedBindingsForVs(string valueSetUrl)
     {
-        int lastPipe = valueSetUrl.LastIndexOf('|');
-        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+        string url = VersionedUrlForVs(valueSetUrl);
 
         if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings))
         {
@@ -487,8 +562,7 @@ public partial class DefinitionCollection
     /// <returns>A BindingStrength?</returns>
     public BindingStrength? StrongestExtendedBinding(string valueSetUrl)
     {
-        int lastPipe = valueSetUrl.LastIndexOf('|');
-        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+        string url = VersionedUrlForVs(valueSetUrl);
 
         if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? bindings) &&
             (bindings != null))
@@ -504,8 +578,7 @@ public partial class DefinitionCollection
     /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
     public IReadOnlyDictionary<string, BindingStrength> ExtendedBindingStrengthByType(string valueSetUrl)
     {
-        int lastPipe = valueSetUrl.LastIndexOf('|');
-        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+        string url = VersionedUrlForVs(valueSetUrl);
 
         Dictionary<string, BindingStrength> bindingStrengthByType = new();
 
@@ -537,8 +610,7 @@ public partial class DefinitionCollection
     /// <returns>An IReadOnlyDictionary&lt;string,ElementDefinition&gt;</returns>
     public IReadOnlyDictionary<string, ElementDefinition[]> BindingsForVs(string valueSetUrl)
     {
-        int lastPipe = valueSetUrl.LastIndexOf('|');
-        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+        string url = VersionedUrlForVs(valueSetUrl);
 
         if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, ElementDefinition[]>? core))
         {
@@ -558,8 +630,7 @@ public partial class DefinitionCollection
     /// <returns>A BindingStrength?</returns>
     public BindingStrength? StrongestBinding(string valueSetUrl)
     {
-        int lastPipe = valueSetUrl.LastIndexOf('|');
-        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+        string url = VersionedUrlForVs(valueSetUrl);
 
         BindingStrength? cbs = null;
         BindingStrength? ebs = null;
@@ -590,8 +661,7 @@ public partial class DefinitionCollection
     /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
     public IReadOnlyDictionary<string, BindingStrength> BindingStrengthByType(string valueSetUrl)
     {
-        int lastPipe = valueSetUrl.LastIndexOf('|');
-        string url = lastPipe == -1 ? valueSetUrl : valueSetUrl.Substring(0, lastPipe);
+        string url = VersionedUrlForVs(valueSetUrl);
 
         Dictionary<string, BindingStrength> bindingStrengthByType = new();
 
@@ -674,7 +744,7 @@ public partial class DefinitionCollection
             vsUrl = $"{vsUrl}|{valueSet.Version}";
         }
 
-        string unversioned = valueSet.Url.Substring(0, vsUrl.LastIndexOf('|'));
+        string unversioned = UnversionedUrlForVs(valueSet.Url);
 
         if (_valueSetVersions.TryGetValue(unversioned, out string[]? versions))
         {

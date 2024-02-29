@@ -112,7 +112,8 @@ public class LangInfo : ILanguage<InfoOptions>
             WriteFhirQueryParameters(definitions.SearchResultParameters.Values.OrderBy(sr => sr.Name), "Search Result Parameters");
             WriteFhirQueryParameters(definitions.HttpParameters.Values.OrderBy(qp => qp.Name), "All Interaction (HTTP) Parameters");
 
-            WriteValueSets(definitions.ValueSetsByUrl.Values, "Value Sets");
+            WriteValueSets(definitions.ValueSetsByVersionedUrl.Values, "Value Sets");
+            WriteUnresolvedValueSets(definitions.BoundExternalValueSets(), "External Value Sets with Bindings");
 
             //WriteFooter();
 
@@ -128,7 +129,7 @@ public class LangInfo : ILanguage<InfoOptions>
     {
         if (!string.IsNullOrEmpty(headerHint))
         {
-            _writer.WriteLineIndented($"{headerHint}: {valueSets.Count()} (unversioned)");
+            _writer.WriteLineIndented($"{headerHint}: {valueSets.Count()}");
         }
 
         foreach (ValueSet vs in valueSets.OrderBy(v => v.Url))
@@ -136,11 +137,6 @@ public class LangInfo : ILanguage<InfoOptions>
             string snip = BuildStandardSnippet(vs.cgStandardStatus(), vs.cgMaturityLevel(), null);
 
             _writer.WriteLineIndented($"- ValueSet: {vs.Url}|{vs.Version}{snip} ({vs.Name})");
-
-            if (vs.Url.Equals("http://hl7.org/fhir/ValueSet/administrative-gender", StringComparison.Ordinal))
-            {
-                Console.Write("");
-            }
 
             _writer.IncreaseIndent();
 
@@ -183,6 +179,56 @@ public class LangInfo : ILanguage<InfoOptions>
                         _writer.WriteLineIndented($"- #{cc.Code}: {cc.Display}");
                     }
                 }
+            }
+
+            _writer.DecreaseIndent();
+        }
+
+        return;
+
+        string ExternalRefLiteral(string path, ElementDefinition ed)
+        {
+            StructureDefinition sd = _definitions.StructureForElement(ed);
+
+            return $"{sd.cgArtifactClass()}:{path}[{sd.Id}]";
+        }
+    }
+
+    private void WriteUnresolvedValueSets(
+        IEnumerable<string> valueSetUrls,
+        string headerHint = "")
+    {
+        if (!string.IsNullOrEmpty(headerHint))
+        {
+            _writer.WriteLineIndented($"{headerHint}: {valueSetUrls.Count()}");
+        }
+
+        foreach (string url in valueSetUrls.Order())
+        {
+            _writer.WriteLineIndented($"- ValueSet: {url}");
+
+            _writer.IncreaseIndent();
+
+            IReadOnlyDictionary<string, ElementDefinition[]> coreBindings = _definitions.CoreBindingsForVs(url);
+            BindingStrength? strongestBinding = _definitions.StrongestBinding(coreBindings);
+            IReadOnlyDictionary<string, BindingStrength> bindingStrengthByType = _definitions.BindingStrengthByType(coreBindings);
+            if (coreBindings.Any())
+            {
+                _writer.WriteLineIndented(
+                    $"references ({coreBindings.Count}): " + string.Join(", ", coreBindings.Keys) +
+                    ", strongest binding: " + strongestBinding!.GetLiteral() +
+                    ", by type: " + string.Join(", ", bindingStrengthByType.Select(bs => $"{bs.Key}:{bs.Value}")));
+            }
+
+            IReadOnlyDictionary<string, ElementDefinition[]> extendedBindings = _definitions.ExtendedBindingsForVs(url);
+            strongestBinding = _definitions.StrongestBinding(extendedBindings);
+
+            if (extendedBindings.Any())
+            {
+                _writer.WriteLineIndented(
+                    $"extensions/profiles ({extendedBindings.Count}):" +
+                    " strongest binding: " + strongestBinding!.GetLiteral() +
+                    ", refs: " + string.Join(", ", extendedBindings.SelectMany(ebs => ebs.Value.Select(eb => ExternalRefLiteral(ebs.Key, eb)))));
             }
 
             _writer.DecreaseIndent();

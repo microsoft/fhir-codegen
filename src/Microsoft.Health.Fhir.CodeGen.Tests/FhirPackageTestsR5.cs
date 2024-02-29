@@ -123,7 +123,7 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
         }
 
         loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
-        loaded.ValueSetsByUrl.Should().HaveCount(_countValueSetsByUrl);
+        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
         loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
         loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
         loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
