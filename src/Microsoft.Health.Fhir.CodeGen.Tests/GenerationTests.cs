@@ -90,7 +90,7 @@ public class GenerationTests : IClassFixture<GenerationTestFixture>
     [FileData("TestData/Generated/Info-R5.txt")]
     internal async void TestInfoR5(string previous)
     {
-        PackageLoader loader = new(_cache);
+        PackageLoader loader = new(_cache, new());
 
         DefinitionCollection? loaded = await loader.LoadPackages(_r5.Name, new[] { _r5, _expansionsR5, _extensionsR5 });
         //DefinitionCollection? loaded = await loader.LoadPackages(_r5.Name, new[] { _r5, _expansionsR5 });

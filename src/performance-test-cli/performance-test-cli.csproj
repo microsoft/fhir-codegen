@@ -1,20 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>performance_test_cli</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hl7.Fhir.R5" Version="5.6.1" />
-    <PackageReference Include="Microsoft.OpenApi" Version="1.6.13" />
-    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
-    <ProjectReference Include="..\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj" />
+    <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGen\Microsoft.Health.Fhir.CodeGen.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.Packa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen", "src\fhir-codegen\fhir-codegen.csproj", "{CC4D5356-BD06-48A8-B329-7C372201549A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.CodeGen", "src\Microsoft.Health.Fhir.CodeGen\Microsoft.Health.Fhir.CodeGen.csproj", "{83E732A6-79D1-4A39-AC0C-29A3B45AD176}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeGen", "src\Microsoft.Health.Fhir.CodeGen\Microsoft.Health.Fhir.CodeGen.csproj", "{83E732A6-79D1-4A39-AC0C-29A3B45AD176}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.CodeGen.Tests", "src\Microsoft.Health.Fhir.CodeGen.Tests\Microsoft.Health.Fhir.CodeGen.Tests.csproj", "{BE10F292-4A7F-46A0-B4C9-D64003153DDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeGen.Tests", "src\Microsoft.Health.Fhir.CodeGen.Tests\Microsoft.Health.Fhir.CodeGen.Tests.csproj", "{BE10F292-4A7F-46A0-B4C9-D64003153DDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "performance-test-cli", "src\performance-test-cli\performance-test-cli.csproj", "{E2173A90-0BCA-427F-9A6C-E767889A4E9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{BE10F292-4A7F-46A0-B4C9-D64003153DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE10F292-4A7F-46A0-B4C9-D64003153DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE10F292-4A7F-46A0-B4C9-D64003153DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2173A90-0BCA-427F-9A6C-E767889A4E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2173A90-0BCA-427F-9A6C-E767889A4E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2173A90-0BCA-427F-9A6C-E767889A4E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2173A90-0BCA-427F-9A6C-E767889A4E9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

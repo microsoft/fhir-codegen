@@ -113,7 +113,7 @@ public class LangInfo : ILanguage<InfoOptions>
             WriteFhirQueryParameters(definitions.HttpParameters.Values.OrderBy(qp => qp.Name), "All Interaction (HTTP) Parameters");
 
             WriteValueSets(definitions.ValueSetsByVersionedUrl.Values, "Value Sets");
-            WriteUnresolvedValueSets(definitions.BoundExternalValueSets(), "External Value Sets with Bindings");
+            WriteUnresolvedValueSets(definitions.BoundExternalValueSets(), "External Value Set Binding References");
 
             //WriteFooter();
 

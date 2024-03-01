@@ -10,11 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="TestData\Generated\Info-R4B.txt" />
     <None Remove="TestData\Generated\Info-R5.txt" />
     <None Remove="TestData\StructureDefinition-integer64.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="TestData\Generated\Info-R4B.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\StructureDefinition-integer64.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -41,29 +41,63 @@ public class PackageLoader
     /// <summary>(Immutable) List of types of the sorted resources.</summary>
     private static readonly HashSet<string> _sortedResourceTypes = new HashSet<string>(_sortedLoadOrder);
 
+    private JsonSerializerOptions _jsonOptions;
+
     /// <summary>The lenient JSON parser.</summary>
-    private static FhirJsonPocoDeserializer _jsonParser = new(new FhirJsonPocoDeserializerSettings()
-    {
-        DisableBase64Decoding = false,
-        Validator = null,
-        OnPrimitiveParseFailed = LocalPrimitiveParseHandler,        // TODO(ginoc): remove after https://github.com/FirelyTeam/firely-net-sdk/issues/2701 is fixed
-    });
+    private FhirJsonPocoDeserializer _jsonParser;
 
     /// <summary>The lenient XML parser.</summary>
-    private static FhirXmlPocoDeserializer _xmlParser = new(new FhirXmlPocoDeserializerSettings()
-    {
-        DisableBase64Decoding = false,
-        Validator = null,
-    });
+    private FhirXmlPocoDeserializer _xmlParser;
 
+    private Func<string, string, Task<CapabilityStatement?>> _parseCapabilityStatement;
+    private Func<string, string, Task<CodeSystem?>> _parseCodeSystem;
+    private Func<string, string, Task<CompartmentDefinition?>> _parseCompartmentDef;
+    private Func<string, string, Task<ImplementationGuide?>> _parseImplementationGuide;
+    private Func<string, string, Task<OperationDefinition?>> _parseOperationDef;
+    private Func<string, string, Task<SearchParameter?>> _parseSearchParam;
+    private Func<string, string, Task<StructureDefinition?>> _parseStructureDef;
+    private Func<string, string, Task<ValueSet?>> _parseValueSet;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="PackageLoader"/> class.
-    /// </summary>
+    /// <summary>Initializes a new instance of the <see cref="PackageLoader"/> class.</summary>
     /// <param name="cache">The cache.</param>
-    public PackageLoader(IFhirPackageClient cache)
+    /// <param name="opts"> Options for controlling the operation.</param>
+    public PackageLoader(IFhirPackageClient cache, LoaderOptions opts)
     {
         _cache = cache;
+
+        _jsonOptions = opts.FhirJsonOptions;
+        _jsonParser = new(opts.FhirJsonSettings);
+
+        _xmlParser = new(opts.FhirXmlSettings);
+
+        switch (opts.JsonModel)
+        {
+            default:
+            case LoaderOptions.JsonDeserializationModel.Poco:
+                {
+                    _parseCapabilityStatement = ParseContentsPoco<CapabilityStatement>;
+                    _parseCodeSystem = ParseContentsPoco<CodeSystem>;
+                    _parseCompartmentDef = ParseContentsPoco<CompartmentDefinition>;
+                    _parseImplementationGuide = ParseContentsPoco<ImplementationGuide>;
+                    _parseOperationDef = ParseContentsPoco<OperationDefinition>;
+                    _parseSearchParam = ParseContentsPoco<SearchParameter>;
+                    _parseStructureDef = ParseContentsPoco<StructureDefinition>;
+                    _parseValueSet = ParseContentsPoco<ValueSet>;
+                }
+                break;
+            case LoaderOptions.JsonDeserializationModel.SystemTextJson:
+                {
+                    _parseCapabilityStatement = ParseContentsSystemTextStream<CapabilityStatement>;
+                    _parseCodeSystem = ParseContentsSystemTextStream<CodeSystem>;
+                    _parseCompartmentDef = ParseContentsSystemTextStream<CompartmentDefinition>;
+                    _parseImplementationGuide = ParseContentsSystemTextStream<ImplementationGuide>;
+                    _parseOperationDef = ParseContentsSystemTextStream<OperationDefinition>;
+                    _parseSearchParam = ParseContentsSystemTextStream<SearchParameter>;
+                    _parseStructureDef = ParseContentsSystemTextStream<StructureDefinition>;
+                    _parseValueSet = ParseContentsSystemTextStream<ValueSet>;
+                }
+                break;
+        }
     }
 
     /// <summary>Adds all interaction parameters to a core definition collection.</summary>
@@ -348,20 +382,20 @@ public class PackageLoader
 
                     if (!File.Exists(path))
                     {
-                        throw new Exception($"Listed file {pFile.FileName} does not exist");
+                        throw new Exception($"Listed file {cachedPackage.ResolvedDirective}:{pFile.FileName} does not exist");
                     }
 
                     string fileExtension = Path.GetExtension(pFile.FileName);
-                    string contents = await File.ReadAllTextAsync(path);
+                    //string contents = await File.ReadAllTextAsync(path);
 
                     switch (rt)
                     {
                         case "CodeSystem":
                             {
-                                CodeSystem? r = ParseContents<CodeSystem>(fileExtension, contents);
+                                CodeSystem? r = await _parseCodeSystem(fileExtension, path);
                                 if (r == null)
                                 {
-                                    throw new Exception($"Failed to parse CodeSystem file {pFile.FileName}");
+                                    throw new Exception($"Failed to parse CodeSystem file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
                                 definitions.AddCodeSystem(r);
                             }
@@ -369,10 +403,10 @@ public class PackageLoader
 
                         case "ValueSet":
                             {
-                                ValueSet? r = ParseContents<ValueSet>(fileExtension, contents);
+                                ValueSet? r = await _parseValueSet(fileExtension, path);
                                 if (r == null)
                                 {
-                                    throw new Exception($"Failed to parse ValueSet file {pFile.FileName}");
+                                    throw new Exception($"Failed to parse ValueSet file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
                                 definitions.AddValueSet(r);
                             }
@@ -380,10 +414,10 @@ public class PackageLoader
 
                         case "StructureDefinition":
                             {
-                                StructureDefinition? r = ParseContents<StructureDefinition>(fileExtension, contents);
+                                StructureDefinition? r = await _parseStructureDef(fileExtension, path);
                                 if (r == null)
                                 {
-                                    throw new Exception($"Failed to parse StructureDefinition file {pFile.FileName}");
+                                    throw new Exception($"Failed to parse StructureDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
 
                                 switch (r.cgArtifactClass())
@@ -416,10 +450,10 @@ public class PackageLoader
                             break;
                         case "SearchParameter":
                             {
-                                SearchParameter? r = ParseContents<SearchParameter>(fileExtension, contents);
+                                SearchParameter? r = await _parseSearchParam(fileExtension, path);
                                 if (r == null)
                                 {
-                                    throw new Exception($"Failed to parse SearchParameter file {pFile.FileName}");
+                                    throw new Exception($"Failed to parse SearchParameter file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
                                 definitions.AddSearchParameter(r);
                             }
@@ -427,10 +461,10 @@ public class PackageLoader
 
                         case "OperationDefinition":
                             {
-                                OperationDefinition? r = ParseContents<OperationDefinition>(fileExtension, contents);
+                                OperationDefinition? r = await _parseOperationDef(fileExtension, path);
                                 if (r == null)
                                 {
-                                    throw new Exception($"Failed to parse OperationDefinition file {pFile.FileName}");
+                                    throw new Exception($"Failed to parse OperationDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
 
                                 definitions.AddOperation(r);
@@ -439,10 +473,10 @@ public class PackageLoader
 
                         case "CapabilityStatement":
                             {
-                                CapabilityStatement? r = ParseContents<CapabilityStatement>(fileExtension, contents);
+                                CapabilityStatement? r = await _parseCapabilityStatement(fileExtension, path);
                                 if (r == null)
                                 {
-                                    throw new Exception($"Failed to parse CapabilityStatement file {pFile.FileName}");
+                                    throw new Exception($"Failed to parse CapabilityStatement file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
                                 definitions.AddCapabilityStatement(r);
                             }
@@ -450,10 +484,10 @@ public class PackageLoader
 
                         case "ImplementationGuide":
                             {
-                                ImplementationGuide? r = ParseContents<ImplementationGuide>(fileExtension, contents);
+                                ImplementationGuide? r = await _parseImplementationGuide(fileExtension, path);
                                 if (r == null)
                                 {
-                                    throw new Exception($"Failed to parse ImplementationGuide file {pFile.FileName}");
+                                    throw new Exception($"Failed to parse ImplementationGuide file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
                                 definitions.AddImplementationGuide(r);
                             }
@@ -461,10 +495,10 @@ public class PackageLoader
 
                         case "CompartmentDefinition":
                             {
-                                CompartmentDefinition? r = ParseContents<CompartmentDefinition>(fileExtension, contents);
+                                CompartmentDefinition? r = await _parseCompartmentDef(fileExtension, path);
                                 if (r == null)
                                 {
-                                    throw new Exception($"Failed to parse CompartmentDefinition file {pFile.FileName}");
+                                    throw new Exception($"Failed to parse CompartmentDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
                                 definitions.AddCompartment(r);
                             }
@@ -487,11 +521,13 @@ public class PackageLoader
 
     /// <summary>Parse contents.</summary>
     /// <typeparam name="TResource">Type of the resource.</typeparam>
-    /// <param name="format"> Describes the format to use.</param>
-    /// <param name="content">The content.</param>
+    /// <param name="format">Describes the format to use.</param>
+    /// <param name="path">  Full pathname of the file.</param>
     /// <returns>A TResource?</returns>
-    public TResource? ParseContents<TResource>(string format, string content) where TResource : Resource, new()
+    public async Task<TResource?> ParseContentsPoco<TResource>(string format, string path) where TResource : Resource, new()
     {
+        string content = await File.ReadAllTextAsync(path);
+
         switch (format.ToLowerInvariant())
         {
             case ".json":
@@ -564,13 +600,90 @@ public class PackageLoader
         }
     }
 
+    /// <summary>Parse the contents of a resource in the specified format.</summary>
+    /// <typeparam name="TResource">The type of the resource.</typeparam>
+    /// <param name="format">The format of the content.</param>
+    /// <param name="path">  Full pathname of the file.</param>
+    /// <returns>
+    /// The parsed resource of type <typeparamref name="TResource"/> or null if parsing fails.
+    /// </returns>
+    public async Task<TResource?> ParseContentsSystemTextStream<TResource>(string format, string path) where TResource : Resource, new()
+    {
+        switch (format.ToLowerInvariant())
+        {
+            case ".json":
+            case "json":
+            case "fhir+json":
+            case "application/json":
+            case "application/fhir+json":
+                try
+                {
+                    using (FileStream fs = new(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+                    {
+                        return JsonSerializer.Deserialize<TResource>(fs, _jsonOptions);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException == null)
+                    {
+                        Console.WriteLine($"Error parsing JSON: {ex.Message}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error parsing JSON: {ex.Message} ({ex.InnerException.Message})");
+                    }
+                    return null;
+                }
+
+            case ".xml":
+            case "xml":
+            case "fhir+xml":
+            case "application/xml":
+            case "application/fhir+xml":
+                try
+                {
+                    string content = await File.ReadAllTextAsync(path);
+
+                    // always use lenient parsing
+                    Resource parsed = _xmlParser.DeserializeResource(content);
+                    if (parsed is TResource)
+                    {
+                        return (TResource)parsed;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException == null)
+                    {
+                        Console.WriteLine($"Error parsing XML: {ex.Message}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error parsing XML: {ex.Message} ({ex.InnerException.Message})");
+                    }
+                    return null;
+                }
+
+            default:
+                {
+                    Console.WriteLine($"Unsupported parse format: {format}");
+                    return null;
+                }
+        }
+    }
+
     /// <summary>Error handler as mitigation for https://github.com/FirelyTeam/firely-net-sdk/issues/2701. </summary>
     /// <param name="reader">           [in,out] The reader.</param>
     /// <param name="targetType">       Type of the target.</param>
     /// <param name="originalValue">    The original value.</param>
     /// <param name="originalException">Details of the exception.</param>
     /// <returns>A Tuple.</returns>
-    private static (object?, FhirJsonException?) LocalPrimitiveParseHandler(
+    public static (object?, FhirJsonException?) LocalPrimitiveParseHandler(
         ref Utf8JsonReader reader,
         Type targetType,
         object? originalValue,
