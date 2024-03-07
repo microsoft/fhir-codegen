@@ -9,6 +9,7 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;

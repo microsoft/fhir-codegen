@@ -3,10 +3,10 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+namespace Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 
 /// <summary>A common definitions.</summary>
-public abstract class CommonDefinitions
+public static class CommonDefinitions
 {
     public const string ExtensionComment = "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.";
     public const string ExtensionDefinition = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.";
@@ -40,4 +40,7 @@ public abstract class CommonDefinitions
     public const string ExtUrlFieldOrder = "http://ginoc.io/fhir/StructureDefinition/field-order";
 
     public const string ExtUrlEdProfileElement = "http://hl7.org/fhir/StructureDefinition/elementdefinition-profile-element";
+
+    public const string FhirStructureUrlPrefix = "http://hl7.org/fhir/StructureDefinition/";
+    public const string FhirPathUrlPrefix = "http://hl7.org/fhirpath/";
 }

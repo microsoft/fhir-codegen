@@ -162,12 +162,21 @@ public static class FhirTypeUtils
     public static string SystemToFhirType(string literal) => literal switch
     {
         "http://hl7.org/fhirpath/System.String" => "string",
+        "http://hl7.org/fhirpath/String" => "string",
         "http://hl7.org/fhirpath/System.Boolean" => "boolean",
+        "http://hl7.org/fhirpath/bool" => "boolean",
         "http://hl7.org/fhirpath/System.Date" => "date",
         "http://hl7.org/fhirpath/System.DateTime" => "dateTime",
+        "http://hl7.org/fhirpath/DateTime" => "dateTime",
         "http://hl7.org/fhirpath/System.Decimal" => "decimal",
+        "http://hl7.org/fhirpath/Decimal" => "decimal",
         "http://hl7.org/fhirpath/System.Integer" => "int",
+        "http://hl7.org/fhirpath/Integer" => "int",
         "http://hl7.org/fhirpath/System.Time" => "time",
+        "http://hl7.org/fhirpath/Time" => "time",
+        "http://hl7.org/fhirpath/Quantity" => "Quantity",
+        "http://hl7.org/fhirpath/SimpleTypeInfo" => "SimpleType",
+        "http://hl7.org/fhirpath/ClassInfo" => "Class",
         _ => string.Empty
     };
 
@@ -182,10 +191,12 @@ public static class FhirTypeUtils
         switch (fhirPathType)
         {
             case "http://hl7.org/fhirpath/System.String":
+            case "http://hl7.org/fhirpath/String":
                 fhirType = "string";
                 break;
 
             case "http://hl7.org/fhirpath/System.Boolean":
+            case "http://hl7.org/fhirpath/bool":
                 fhirType = "boolean";
                 break;
 
@@ -194,19 +205,35 @@ public static class FhirTypeUtils
                 break;
 
             case "http://hl7.org/fhirpath/System.DateTime":
+            case "http://hl7.org/fhirpath/DateTime":
                 fhirType = "dateTime";
                 break;
 
             case "http://hl7.org/fhirpath/System.Decimal":
+            case "http://hl7.org/fhirpath/Decimal":
                 fhirType = "decimal";
                 break;
 
             case "http://hl7.org/fhirpath/System.Integer":
+            case "http://hl7.org/fhirpath/Integer":
                 fhirType = "int";
                 break;
 
             case "http://hl7.org/fhirpath/System.Time":
+            case "http://hl7.org/fhirpath/Time":
                 fhirType = "time";
+                break;
+
+            case "http://hl7.org/fhirpath/Quantity":
+                fhirType = "Quantity";
+                break;
+
+            case "http://hl7.org/fhirpath/SimpleTypeInfo":
+                fhirType = "SimpleType";
+                break;
+
+            case "http://hl7.org/fhirpath/ClassInfo":
+                fhirType = "Class";
                 break;
 
             default:

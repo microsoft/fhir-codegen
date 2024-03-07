@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;

@@ -49,14 +49,24 @@ public class PackageLoader
     /// <summary>The lenient XML parser.</summary>
     private FhirXmlPocoDeserializer _xmlParser;
 
-    private Func<string, string, Task<CapabilityStatement?>> _parseCapabilityStatement;
-    private Func<string, string, Task<CodeSystem?>> _parseCodeSystem;
-    private Func<string, string, Task<CompartmentDefinition?>> _parseCompartmentDef;
-    private Func<string, string, Task<ImplementationGuide?>> _parseImplementationGuide;
-    private Func<string, string, Task<OperationDefinition?>> _parseOperationDef;
-    private Func<string, string, Task<SearchParameter?>> _parseSearchParam;
-    private Func<string, string, Task<StructureDefinition?>> _parseStructureDef;
-    private Func<string, string, Task<ValueSet?>> _parseValueSet;
+    private class LoadFunctions
+    {
+        public required Func<string, string, Task<CapabilityStatement?>> ParseCapabilityStatement;
+        public required Func<string, string, Task<CodeSystem?>> ParseCodeSystem;
+        public required Func<string, string, Task<CompartmentDefinition?>> ParseCompartmentDef;
+        public required Func<string, string, Task<ImplementationGuide?>> ParseImplementationGuide;
+        public required Func<string, string, Task<OperationDefinition?>> ParseOperationDef;
+        public required Func<string, string, Task<SearchParameter?>> ParseSearchParam;
+        public required Func<string, string, Task<StructureDefinition?>> ParseStructureDef;
+        public required Func<string, string, Task<ValueSet?>> ParseValueSet;
+    }
+
+    private LoadFunctions _loadFunctionsR5;
+    private LoadFunctions _loadFunctionsR4B;
+
+    private Microsoft.Health.Fhir.CrossVersion.Converter_43_50? _converter_43_50 = null;
+
+    private object _convertLockObject = new();
 
     /// <summary>Initializes a new instance of the <see cref="PackageLoader"/> class.</summary>
     /// <param name="cache">The cache.</param>
@@ -75,29 +85,49 @@ public class PackageLoader
             default:
             case LoaderOptions.JsonDeserializationModel.Poco:
                 {
-                    _parseCapabilityStatement = ParseContentsPoco<CapabilityStatement>;
-                    _parseCodeSystem = ParseContentsPoco<CodeSystem>;
-                    _parseCompartmentDef = ParseContentsPoco<CompartmentDefinition>;
-                    _parseImplementationGuide = ParseContentsPoco<ImplementationGuide>;
-                    _parseOperationDef = ParseContentsPoco<OperationDefinition>;
-                    _parseSearchParam = ParseContentsPoco<SearchParameter>;
-                    _parseStructureDef = ParseContentsPoco<StructureDefinition>;
-                    _parseValueSet = ParseContentsPoco<ValueSet>;
+                    _loadFunctionsR5 = new()
+                    {
+                        ParseCapabilityStatement = ParseContentsPoco<CapabilityStatement>,
+                        ParseCodeSystem = ParseContentsPoco<CodeSystem>,
+                        ParseCompartmentDef = ParseContentsPoco<CompartmentDefinition>,
+                        ParseImplementationGuide = ParseContentsPoco<ImplementationGuide>,
+                        ParseOperationDef = ParseContentsPoco<OperationDefinition>,
+                        ParseSearchParam = ParseContentsPoco<SearchParameter>,
+                        ParseStructureDef = ParseContentsPoco<StructureDefinition>,
+                        ParseValueSet = ParseContentsPoco<ValueSet>,
+                    };
                 }
                 break;
+
+            case LoaderOptions.JsonDeserializationModel.Default:
             case LoaderOptions.JsonDeserializationModel.SystemTextJson:
                 {
-                    _parseCapabilityStatement = ParseContentsSystemTextStream<CapabilityStatement>;
-                    _parseCodeSystem = ParseContentsSystemTextStream<CodeSystem>;
-                    _parseCompartmentDef = ParseContentsSystemTextStream<CompartmentDefinition>;
-                    _parseImplementationGuide = ParseContentsSystemTextStream<ImplementationGuide>;
-                    _parseOperationDef = ParseContentsSystemTextStream<OperationDefinition>;
-                    _parseSearchParam = ParseContentsSystemTextStream<SearchParameter>;
-                    _parseStructureDef = ParseContentsSystemTextStream<StructureDefinition>;
-                    _parseValueSet = ParseContentsSystemTextStream<ValueSet>;
+                    _loadFunctionsR5 = new()
+                    {
+                        ParseCapabilityStatement = ParseContentsSystemTextStream<CapabilityStatement>,
+                        ParseCodeSystem = ParseContentsSystemTextStream<CodeSystem>,
+                        ParseCompartmentDef = ParseContentsSystemTextStream<CompartmentDefinition>,
+                        ParseImplementationGuide = ParseContentsSystemTextStream<ImplementationGuide>,
+                        ParseOperationDef = ParseContentsSystemTextStream<OperationDefinition>,
+                        ParseSearchParam = ParseContentsSystemTextStream<SearchParameter>,
+                        ParseStructureDef = ParseContentsSystemTextStream<StructureDefinition>,
+                        ParseValueSet = ParseContentsSystemTextStream<ValueSet>,
+                    };
                 }
                 break;
         }
+        
+        _loadFunctionsR4B = new()
+        {
+            ParseCapabilityStatement = ParseContents43<CapabilityStatement>,
+            ParseCodeSystem = ParseContents43<CodeSystem>,
+            ParseCompartmentDef = ParseContents43<CompartmentDefinition>,
+            ParseImplementationGuide = ParseContents43<ImplementationGuide>,
+            ParseOperationDef = ParseContents43<OperationDefinition>,
+            ParseSearchParam = ParseContents43<SearchParameter>,
+            ParseStructureDef = ParseContents43<StructureDefinition>,
+            ParseValueSet = ParseContents43<ValueSet>,
+        };
     }
 
     /// <summary>Adds all interaction parameters to a core definition collection.</summary>
@@ -343,6 +373,28 @@ public class PackageLoader
                 };
             }
 
+            // set the load functions for the correct version of FHIR
+            LoadFunctions lf = definitions.FhirSequence switch
+            {
+                FhirReleases.FhirSequenceCodes.R4B => _loadFunctionsR4B,
+                FhirReleases.FhirSequenceCodes.R5 => _loadFunctionsR5,
+                _ => throw new Exception($"Unsupported FHIR version: {definitions.FhirVersion}"),
+            };
+
+            if (definitions.FhirSequence == FhirReleases.FhirSequenceCodes.R4B)
+            {
+                if (_converter_43_50 == null)
+                {
+                    lock (_convertLockObject)
+                    {
+                        if (_converter_43_50 == null)
+                        {
+                            _converter_43_50 = new();
+                        }
+                    }
+                }
+            }
+
             PackageContents? packageContents = _cache.GetIndexedContents(cachedPackage);
 
             if (packageContents == null)
@@ -392,7 +444,7 @@ public class PackageLoader
                     {
                         case "CodeSystem":
                             {
-                                CodeSystem? r = await _parseCodeSystem(fileExtension, path);
+                                CodeSystem? r = await lf.ParseCodeSystem(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse CodeSystem file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -403,7 +455,7 @@ public class PackageLoader
 
                         case "ValueSet":
                             {
-                                ValueSet? r = await _parseValueSet(fileExtension, path);
+                                ValueSet? r = await lf.ParseValueSet(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse ValueSet file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -414,7 +466,7 @@ public class PackageLoader
 
                         case "StructureDefinition":
                             {
-                                StructureDefinition? r = await _parseStructureDef(fileExtension, path);
+                                StructureDefinition? r = await lf.ParseStructureDef(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse StructureDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -450,7 +502,7 @@ public class PackageLoader
                             break;
                         case "SearchParameter":
                             {
-                                SearchParameter? r = await _parseSearchParam(fileExtension, path);
+                                SearchParameter? r = await lf.ParseSearchParam(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse SearchParameter file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -461,7 +513,7 @@ public class PackageLoader
 
                         case "OperationDefinition":
                             {
-                                OperationDefinition? r = await _parseOperationDef(fileExtension, path);
+                                OperationDefinition? r = await lf.ParseOperationDef(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse OperationDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -473,7 +525,7 @@ public class PackageLoader
 
                         case "CapabilityStatement":
                             {
-                                CapabilityStatement? r = await _parseCapabilityStatement(fileExtension, path);
+                                CapabilityStatement? r = await lf.ParseCapabilityStatement(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse CapabilityStatement file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -484,7 +536,7 @@ public class PackageLoader
 
                         case "ImplementationGuide":
                             {
-                                ImplementationGuide? r = await _parseImplementationGuide(fileExtension, path);
+                                ImplementationGuide? r = await lf.ParseImplementationGuide(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse ImplementationGuide file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -495,7 +547,7 @@ public class PackageLoader
 
                         case "CompartmentDefinition":
                             {
-                                CompartmentDefinition? r = await _parseCompartmentDef(fileExtension, path);
+                                CompartmentDefinition? r = await lf.ParseCompartmentDef(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse CompartmentDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -515,6 +567,16 @@ public class PackageLoader
                 AddSearchResultParameters(definitions);
             }
         }
+
+        // clean up
+        if (_converter_43_50 != null)
+        {
+            lock (_convertLockObject)
+            {
+                _converter_43_50 = null;
+            }
+        }
+
 
         return definitions;
     }
@@ -588,6 +650,69 @@ public class PackageLoader
                     else
                     {
                         Console.WriteLine($"Error parsing XML: {ex.Message} ({ex.InnerException.Message})");
+                    }
+                    return null;
+                }
+
+            default:
+                {
+                    Console.WriteLine($"Unsupported parse format: {format}");
+                    return null;
+                }
+        }
+    }
+
+    /// <summary>Parse contents of in the FHIR R4B format.</summary>
+    /// <typeparam name="TResource">Type of the resource.</typeparam>
+    /// <param name="format">Describes the format to use.</param>
+    /// <param name="path">  Full pathname of the file.</param>
+    /// <returns>An asynchronous result that yields a TResource?</returns>
+    public async Task<TResource?> ParseContents43<TResource>(string format, string path) where TResource : Resource, new()
+    {
+        switch (format.ToLowerInvariant())
+        {
+            case ".json":
+            case "json":
+            case "fhir+json":
+            case "application/json":
+            case "application/fhir+json":
+                try
+                {
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(await File.ReadAllTextAsync(path));
+                    return _converter_43_50!.Convert(sn) as TResource;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException == null)
+                    {
+                        Console.WriteLine($"Error parsing R4B JSON: {ex.Message}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error parsing R4B JSON: {ex.Message} ({ex.InnerException.Message})");
+                    }
+                    return null;
+                }
+
+            case ".xml":
+            case "xml":
+            case "fhir+xml":
+            case "application/xml":
+            case "application/fhir+xml":
+                try
+                {
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(await File.ReadAllTextAsync(path));
+                    return _converter_43_50!.Convert(sn) as TResource;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException == null)
+                    {
+                        Console.WriteLine($"Error parsing R4B XML: {ex.Message}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error parsing R4B XML: {ex.Message} ({ex.InnerException.Message})");
                     }
                     return null;
                 }

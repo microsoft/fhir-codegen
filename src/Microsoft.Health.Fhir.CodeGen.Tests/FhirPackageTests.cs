@@ -145,19 +145,19 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
 
 public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
 {
-    private const int _countCodeSystemsByUrl = 0;
-    private const int _countValueSetsByUrl = 0;
-    private const int _countPrimitiveTypesByName = 0;
-    private const int _countComplexTypesByName = 0;
-    private const int _countResourcesByName = 0;
-    private const int _countLogicalModelsByName = 0;
-    private const int _countExtensionsByUrl = 0;
-    private const int _countProfilesByUrl = 0;
-    private const int _countSearchParametersByUrl = 0;
-    private const int _countOperationsByUrl = 0;
-    private const int _countCapabilityStatementsByUrl = 0;
-    private const int _countImplementationGuidesByUrl = 0;
-    private const int _countCompartmentsByUrl = 0;
+    private const int _countCodeSystemsByUrl = 565;
+    private const int _countValueSetsByUrl = 805;
+    private const int _countPrimitiveTypesByName = 20;
+    private const int _countComplexTypesByName = 43;
+    private const int _countResourcesByName = 143;
+    private const int _countLogicalModelsByName = 4;
+    private const int _countExtensionsByUrl = 559;
+    private const int _countProfilesByUrl = 43;
+    private const int _countSearchParametersByUrl = 1444;
+    private const int _countOperationsByUrl = 47;
+    private const int _countCapabilityStatementsByUrl = 6;
+    private const int _countImplementationGuidesByUrl = 2;
+    private const int _countCompartmentsByUrl = 6;
 
     /// <summary>
     /// The test output helper.
@@ -181,12 +181,10 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
     /// Parses the core package.
     /// </summary>
     /// <param name="jsonModel">The JSON deserialization model.</param>
-    [Theory]
-    [InlineData(LoaderOptions.JsonDeserializationModel.Poco)]
-    [InlineData(LoaderOptions.JsonDeserializationModel.SystemTextJson)]
-    internal async void ParseCorePackage(LoaderOptions.JsonDeserializationModel jsonModel)
+    [Fact]
+    internal async void ParseCorePackage()
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = jsonModel });
+        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
         DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B);
 

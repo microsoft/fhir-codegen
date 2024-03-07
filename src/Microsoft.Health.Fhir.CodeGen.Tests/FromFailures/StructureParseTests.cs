@@ -18,7 +18,32 @@ namespace Microsoft.Health.Fhir.CodeGen.Tests.FromFailures;
 public class StructureParseTests
 {
     [Theory]
-    [FileData("TestData/StructureDefinition-integer64.json")]
+    [FileData("TestData/R4B/ValueSet-nhin-purposeofuse.json")]
+    public void TestParseR4BValueSetNhinPOU(string json)
+    {
+        Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(json);
+
+        Microsoft.Health.Fhir.CrossVersion.Converter_43_50 c = new();
+
+        Resource r = c.Convert(sn);
+
+        r.Should().NotBeNull();
+        r.Should().BeOfType<ValueSet>();
+
+        ValueSet vs = (ValueSet)r;
+
+        vs.Id.Should().Be("nhin-purposeofuse");
+        vs.Name.Should().Be("NHIN PurposeOfUse");
+        vs.Contained.Should().NotBeEmpty();
+        vs.Contained[0].Should().BeOfType<ConceptMap>();
+        vs.Contained[0].Id.Should().Be("map");
+
+        vs.Experimental.Should().BeFalse();
+        vs.DateElement.Should().BeEquivalentTo(new FhirDateTime(2010, 1, 29));
+    }
+
+    [Theory]
+    [FileData("TestData/R5/StructureDefinition-integer64.json")]
     public void TestParseR5StructureInt64(string json)
     {
         FhirJsonPocoDeserializer parser = new(new FhirJsonPocoDeserializerSettings()

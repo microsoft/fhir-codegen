@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -10,18 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="TestData\Generated\Info-R4B.txt" />
-    <None Remove="TestData\Generated\Info-R5.txt" />
-    <None Remove="TestData\StructureDefinition-integer64.json" />
+    <Folder Include="TestData\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="TestData\Generated\Info-R4B.txt">
+    <None Update="TestData\Generated\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\StructureDefinition-integer64.json">
+    </None>
+    <None Update="TestData\R4B\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
+    <None Update="TestData\R5\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

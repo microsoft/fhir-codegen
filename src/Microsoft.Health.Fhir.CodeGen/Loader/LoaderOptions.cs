@@ -19,6 +19,7 @@ public record class LoaderOptions
     /// </summary>
     public enum JsonDeserializationModel
     {
+        Default,
         Poco,
         SystemTextJson,
     }
