@@ -26,7 +26,9 @@ public class GenerationTestFixture
     /// <summary>The FHIR R4B package entries.</summary>
     public IEnumerable<PackageCacheEntry> EntriesR4B;
 
-    //public PackageCacheEntry _r4;
+    /// <summary>The FHIR R4 package entries.</summary>
+    public IEnumerable<PackageCacheEntry> EntriesR4;
+
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GenerationTestFixture"/> class.
@@ -49,6 +51,13 @@ public class GenerationTestFixture
         {
             Load("hl7.fhir.r4b.core#4.3.0"),
             Load("hl7.fhir.r4b.expansions#4.3.0"),
+            Load("hl7.fhir.uv.extensions#1.0.0"),
+        };
+
+        EntriesR4 = new List<PackageCacheEntry>()
+        {
+            Load("hl7.fhir.r4.core#4.0.1"),
+            Load("hl7.fhir.r4.expansions#4.0.1"),
             Load("hl7.fhir.uv.extensions#1.0.0"),
         };
     }
@@ -115,7 +124,7 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
             {
                 string current = sr.ReadToEnd();
 
-                // update th current file contents (manual)
+                // update the current file contents (manual)
                 File.WriteAllText("TestData/Generated/Info-R5.txt", current);
 
                 // should the types like canonical be canonical::canonical or canonical::string?
@@ -168,8 +177,61 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
             {
                 string current = sr.ReadToEnd();
 
-                // update th current file contents (manual)
+                // update the current file contents (manual)
                 File.WriteAllText("TestData/Generated/Info-R4B.txt", current);
+
+                // should the types like canonical be canonical::canonical or canonical::string?
+                current.Should().Be(previous);
+            }
+        }
+
+    }
+}
+
+public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
+{
+    /// <summary>(Immutable) The test output helper.</summary>
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    private readonly GenerationTestFixture _fixture;
+
+    public GenerationTestsR4(GenerationTestFixture fixture, ITestOutputHelper testOutputHelper)
+    {
+        _testOutputHelper = testOutputHelper;
+        _fixture = fixture;
+    }
+
+    [Theory]
+    [FileData("TestData/Generated/Info-R4.txt")]
+    internal async void TestInfoR4B(string previous)
+    {
+        PackageLoader loader = new(_fixture.Cache, new());
+
+        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4);
+
+        loaded.Should().NotBeNull();
+
+        if (loaded == null)
+        {
+            return;
+        }
+
+        LangInfo exportLang = new();
+
+        LangInfo.InfoOptions options = new();
+
+        using (MemoryStream ms = new())
+        {
+            exportLang.Export(options, loaded, ms);
+            ms.Flush();
+            ms.Seek(0, SeekOrigin.Begin);
+
+            using (StreamReader sr = new(ms))
+            {
+                string current = sr.ReadToEnd();
+
+                // update the current file contents (manual)
+                File.WriteAllText("TestData/Generated/Info-R4.txt", current);
 
                 // should the types like canonical be canonical::canonical or canonical::string?
                 current.Should().Be(previous);

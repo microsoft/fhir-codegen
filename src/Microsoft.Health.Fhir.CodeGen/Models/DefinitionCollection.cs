@@ -1152,8 +1152,13 @@ public partial class DefinitionCollection
 
     public IReadOnlyDictionary<string, CapabilityStatement> CapabilityStatementsByUrl => _capabilityStatementsByUrl;
 
-    public void AddCapabilityStatement(CapabilityStatement cs)
+    public void AddCapabilityStatement(CapabilityStatement cs, CachePackageManifest source)
     {
+        if (string.IsNullOrEmpty(cs.Url))
+        {
+            cs.Url = source.CanonicalUrl.EndsWith('/') ? source.CanonicalUrl + cs.Id : source.CanonicalUrl + "/" + cs.Id;
+        }
+
         _capabilityStatementsByUrl[cs.Url] = cs;
         TrackResource(cs);
     }

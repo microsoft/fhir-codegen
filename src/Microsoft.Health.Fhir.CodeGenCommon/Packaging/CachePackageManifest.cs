@@ -46,6 +46,7 @@ public record class CachePackageManifest
         Title = other.Title;
         Description = other.Description;
         FhirVersions = other.FhirVersions.Select(v => v);
+        FhirVersionList = other.FhirVersionList.Select(v => v);
         Type = other.Type;
         Dependencies = other.Dependencies.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
         Keywords = other.Keywords.Select(k => k);
@@ -102,6 +103,17 @@ public record class CachePackageManifest
     /// </remarks>
     [JsonPropertyName("fhirVersions")]
     public IEnumerable<string> FhirVersions { get; init; } = Enumerable.Empty<string>();
+
+    /// <summary>Gets or initializes a list of FHIR versions.</summary>
+    /// <remarks>
+    /// Older packages (including R4 release) use this.
+    /// </remarks>
+    [JsonPropertyName("fhir-version-list")]
+    public IEnumerable<string> FhirVersionList { get; init; } = Enumerable.Empty<string>();
+
+    /// <summary>Gets the FHIR versions.</summary>
+    [JsonIgnore]
+    public IEnumerable<string> AllFhirVersions => FhirVersions.Any() ? FhirVersions : FhirVersionList;
 
     /// <summary>Gets the hint that provides guidance for the use of the package.</summary>
     /// <remarks>

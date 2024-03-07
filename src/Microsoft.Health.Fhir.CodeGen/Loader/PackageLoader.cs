@@ -357,9 +357,9 @@ public class PackageLoader
             }
 
             // update the collection FHIR version based on the first package we come across with one
-            if ((definitions.FhirVersion == null) && manifest.FhirVersions.Any())
+            if ((definitions.FhirVersion == null) && manifest.AllFhirVersions.Any())
             {
-                definitions.FhirSequence = FhirReleases.FhirVersionToSequence(manifest.FhirVersions.First());
+                definitions.FhirSequence = FhirReleases.FhirVersionToSequence(manifest.AllFhirVersions.First());
 
                 definitions.FhirVersion = definitions.FhirSequence switch
                 {
@@ -376,12 +376,14 @@ public class PackageLoader
             // set the load functions for the correct version of FHIR
             LoadFunctions lf = definitions.FhirSequence switch
             {
+                FhirReleases.FhirSequenceCodes.R4 => _loadFunctionsR4B,     // R4 should be completely compatible with R4B
                 FhirReleases.FhirSequenceCodes.R4B => _loadFunctionsR4B,
                 FhirReleases.FhirSequenceCodes.R5 => _loadFunctionsR5,
                 _ => throw new Exception($"Unsupported FHIR version: {definitions.FhirVersion}"),
             };
 
-            if (definitions.FhirSequence == FhirReleases.FhirSequenceCodes.R4B)
+            if ((definitions.FhirSequence == FhirReleases.FhirSequenceCodes.R4) ||
+                (definitions.FhirSequence == FhirReleases.FhirSequenceCodes.R4B))
             {
                 if (_converter_43_50 == null)
                 {
@@ -530,7 +532,7 @@ public class PackageLoader
                                 {
                                     throw new Exception($"Failed to parse CapabilityStatement file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
-                                definitions.AddCapabilityStatement(r);
+                                definitions.AddCapabilityStatement(r, manifest);
                             }
                             break;
 
@@ -576,7 +578,6 @@ public class PackageLoader
                 _converter_43_50 = null;
             }
         }
-
 
         return definitions;
     }

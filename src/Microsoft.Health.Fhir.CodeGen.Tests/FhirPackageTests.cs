@@ -26,6 +26,8 @@ public class FhirPackageTestFixture
     /// <summary>The FHIR R4B package entries.</summary>
     public IEnumerable<PackageCacheEntry> EntriesR4B;
 
+    public IEnumerable<PackageCacheEntry> EntriesR4;
+
     //public PackageCacheEntry _r4;
 
     /// <summary>
@@ -49,6 +51,13 @@ public class FhirPackageTestFixture
         {
             Load("hl7.fhir.r4b.core#4.3.0"),
             Load("hl7.fhir.r4b.expansions#4.3.0"),
+            Load("hl7.fhir.uv.extensions#1.0.0"),
+        };
+
+        EntriesR4 = new List<PackageCacheEntry>()
+        {
+            Load("hl7.fhir.r4.core#4.0.1"),
+            Load("hl7.fhir.r4.expansions#4.0.1"),
             Load("hl7.fhir.uv.extensions#1.0.0"),
         };
     }
@@ -187,6 +196,74 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
         DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B);
+
+        loaded.Should().NotBeNull();
+
+        if (loaded == null)
+        {
+            return;
+        }
+
+        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
+        loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
+        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
+        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
+    }
+}
+
+public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
+{
+    private const int _countCodeSystemsByUrl = 1090;
+    private const int _countValueSetsByUrl = 1377;
+    private const int _countPrimitiveTypesByName = 20;
+    private const int _countComplexTypesByName = 41;
+    private const int _countResourcesByName = 148;
+    private const int _countLogicalModelsByName = 5;
+    private const int _countExtensionsByUrl = 561;
+    private const int _countProfilesByUrl = 48;
+    private const int _countSearchParametersByUrl = 1405;
+    private const int _countOperationsByUrl = 47;
+    private const int _countCapabilityStatementsByUrl = 8;
+    private const int _countImplementationGuidesByUrl = 1;
+    private const int _countCompartmentsByUrl = 6;
+
+    /// <summary>
+    /// The test output helper.
+    /// </summary>
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    private readonly FhirPackageTestFixture _fixture;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirPackageTestsR5"/> class.
+    /// </summary>
+    /// <param name="fixture">The fixture.</param>
+    /// <param name="testOutputHelper">The test output helper.</param>
+    public FhirPackageTestsR4(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    {
+        _testOutputHelper = testOutputHelper;
+        _fixture = fixture;
+    }
+
+    /// <summary>
+    /// Parses the core package.
+    /// </summary>
+    /// <param name="jsonModel">The JSON deserialization model.</param>
+    [Fact]
+    internal async void ParseCorePackage()
+    {
+        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+
+        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4);
 
         loaded.Should().NotBeNull();
 
