@@ -31,6 +31,7 @@ public class CodeSystem_20_50 : ICrossVersionProcessor<CodeSystem>, ICrossVersio
 	{
 		switch (node.Name)
 		{
+			case "system":
 			case "url":
 				current.UrlElement = new FhirUri(node.Text);
 				break;

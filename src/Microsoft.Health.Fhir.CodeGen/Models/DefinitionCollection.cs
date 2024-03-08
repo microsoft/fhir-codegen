@@ -608,6 +608,7 @@ public partial class DefinitionCollection
     public void AddCodeSystem(CodeSystem codeSystem)
     {
         _codeSystemsByUrl[codeSystem.Url] = codeSystem;
+        TrackResource(codeSystem);
     }
 
     /// <summary>Gets URL of the value sets by.</summary>

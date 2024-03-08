@@ -162,23 +162,25 @@ public class LangInfo : ILanguage<InfoOptions>
                     ", refs: " + string.Join(", ", extendedBindings.SelectMany(ebs => ebs.Value.Select(eb => ExternalRefLiteral(ebs.Key, eb)))));
             }
 
-            if (vs.Expansion == null)
+            ValueSet? expanded = _definitions.ExpandVs(vs.Url + "|" + vs.Version).Result;
+
+            if (expanded?.Expansion?.Any() ?? false)
             {
-                _writer.WriteLineIndented($"! No expansion available");
-            }
-            else
-            {
-                if (vs.IsLimitedExpansion())
+                if (expanded.IsLimitedExpansion())
                 {
                     _writer.WriteLineIndented($"! Partial expansion, not displayed");
                 }
                 else
                 {
-                    foreach (ValueSet.ContainsComponent cc in vs.Expansion.Contains.OrderBy(c => c.Code))
+                    foreach (ValueSet.ContainsComponent cc in expanded.Expansion.Contains.OrderBy(c => c.Code))
                     {
                         _writer.WriteLineIndented($"- #{cc.Code}: {cc.Display}");
                     }
                 }
+            }
+            else
+            {
+                _writer.WriteLineIndented($"! No expansion available");
             }
 
             _writer.DecreaseIndent();

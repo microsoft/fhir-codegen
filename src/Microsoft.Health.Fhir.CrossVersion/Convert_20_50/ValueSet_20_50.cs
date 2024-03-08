@@ -31,6 +31,13 @@ public class ValueSet_20_50 : ICrossVersionProcessor<ValueSet>, ICrossVersionExt
 	{
 		switch (node.Name)
 		{
+            case "codeSystem":
+                {
+                    CodeSystem cs = _converter._codeSystem.Extract(node);
+                    current.Contained.Add(cs);
+                }
+                break;
+
 			case "url":
 				current.UrlElement = new FhirUri(node.Text);
 				break;

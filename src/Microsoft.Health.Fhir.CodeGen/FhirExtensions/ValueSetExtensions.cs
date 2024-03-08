@@ -35,7 +35,7 @@ public static class ValueSetExtensions
     /// <returns>True if limited expansion, false if not.</returns>
     public static bool IsLimitedExpansion(this ValueSet vs)
     {
-        if (vs.Expansion.Parameter == null)
+        if (vs.Expansion?.Parameter == null)
         {
             return false;
         }

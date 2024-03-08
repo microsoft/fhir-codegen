@@ -539,6 +539,42 @@ public class PackageLoader
                                 {
                                     throw new Exception($"Failed to parse ValueSet file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
+
+                                // DSTU2 has embedded CodeSystems
+                                if ((packageFhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) &&
+                                    r.Contained.Any())
+                                {
+                                    foreach (Resource contained in r.Contained)
+                                    {
+                                        if (contained is CodeSystem cs)
+                                        {
+                                            // use the same id
+                                            if (string.IsNullOrEmpty(cs.Id))
+                                            {
+                                                cs.Id = r.Id;
+                                            }
+
+                                            definitions.AddCodeSystem(cs);
+
+                                            // use all values from the code system
+                                            if (r.Compose == null)
+                                            {
+                                                r.Compose = new();
+                                            }
+
+                                            if (r.Compose.Include == null)
+                                            {
+                                                r.Compose.Include = new();
+                                            }
+
+                                            r.Compose.Include.Add(new ValueSet.ConceptSetComponent
+                                            {
+                                                SystemElement = new FhirUri($"{cs.Url}"),
+                                            });
+                                        }
+                                    }
+                                }
+
                                 definitions.AddValueSet(r);
                             }
                             break;
