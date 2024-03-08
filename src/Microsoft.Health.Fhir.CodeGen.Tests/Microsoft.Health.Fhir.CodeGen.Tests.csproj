@@ -10,10 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="TestData\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="TestData\Generated\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

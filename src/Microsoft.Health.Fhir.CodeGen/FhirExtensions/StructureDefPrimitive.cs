@@ -37,7 +37,7 @@ public static class StructureDefPrimitive
 
     /// <summary>Get the base type name for a primitive datatype.</summary>
     public static string cgpBaseTypeName(this StructureDefinition sd) => sd.Differential.Element.Count > 1
-        ? sd.Differential.Element[1].Type.FirstOrDefault()?.GetExtensionValue<FhirUrl>(CommonDefinitions.ExtUrlFhirType).ToString() ?? string.Empty
+        ? sd.Differential.Element[1].Type.FirstOrDefault()?.GetExtensionValue<FhirUrl>(CommonDefinitions.ExtUrlFhirType)?.ToString() ?? string.Empty
         : sd.Name;
 
     /// <summary>Get the validation regex string for a primitive datatype.</summary>

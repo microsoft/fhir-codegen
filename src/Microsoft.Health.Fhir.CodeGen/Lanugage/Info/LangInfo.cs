@@ -613,7 +613,8 @@ public class LangInfo : ILanguage<InfoOptions>
 
                 foreach (SearchParameter.ComponentComponent c in searchParam.Component)
                 {
-                    if (_definitions.SearchParametersByUrl.TryGetValue(c.Definition, out SearchParameter? compParam))
+                    if ((!string.IsNullOrEmpty(c.Definition)) &&
+                        _definitions.SearchParametersByUrl.TryGetValue(c.Definition, out SearchParameter? compParam))
                     {
                         _writer.WriteLineIndented($"$({c.Definition}):{compParam.Type}");
                     }

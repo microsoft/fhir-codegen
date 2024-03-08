@@ -108,7 +108,7 @@ public partial class DefinitionCollection
     /// <summary>Processes elements in a structure definition.</summary>
     /// <remarks>Addes field orders, indexes paths that contain child elements, etc.</remarks>
     /// <param name="sd">The structure definition.</param>
-    private void ProcessElements(FhirArtifactClassEnum artifactClass, StructureDefinition sd)
+    private void ProcessElements(FhirArtifactClassEnum artifactClass, StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
         Dictionary<string, int> allFieldOrders = new();
 
@@ -152,6 +152,12 @@ public partial class DefinitionCollection
 
             // check for a value set binding
             CheckElementBindings(artifactClass, sd, ed);
+
+            // STU3 needs type consolidation
+            if (fhirVersion == FhirReleases.FhirSequenceCodes.STU3)
+            {
+                ConsolidateTypes(sd, ed);
+            }
         }
 
         // process each element in the differential
@@ -199,10 +205,82 @@ public partial class DefinitionCollection
 
                 // check for a value set binding
                 CheckElementBindings(artifactClass, sd, ed);
+
+                // STU3 needs type consolidation
+                if (fhirVersion == FhirReleases.FhirSequenceCodes.STU3)
+                {
+                    ConsolidateTypes(sd, ed);
+                }
             }
 
             ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
         }
+
+        // STU3 does not declare types on root elements
+        if (fhirVersion == FhirReleases.FhirSequenceCodes.STU3)
+        {
+            ElementDefinition? re = sd.cgRootElement();
+            if (re != null)
+            {
+                if (re.Base == null)
+                {
+                    re.Base = new ElementDefinition.BaseComponent();
+                }
+
+                if (string.IsNullOrEmpty(re.Base.Path))
+                {
+                    re.Base.Path = re.Path;
+                }
+
+                if (re.Min == null)
+                {
+                    re.Min = 0;
+                }
+
+                if (string.IsNullOrEmpty(re.Max))
+                {
+                    re.Max = "*";
+                }
+            }
+        }
+    }
+
+    /// <summary>Consolidate types.</summary>
+    /// <param name="sd">The structure definition.</param>
+    /// <param name="ed">The ed.</param>
+    private void ConsolidateTypes(StructureDefinition sd, ElementDefinition ed)
+    {
+        // only need to consolidate if there are 2 or more
+        if (ed.Type.Count() < 2)
+        {
+            return;
+        }
+
+        // consolidate types
+        Dictionary<string, ElementDefinition.TypeRefComponent> consolidatedTypes = new();
+
+        foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
+        {
+            if (!consolidatedTypes.TryGetValue(tr.Code, out ElementDefinition.TypeRefComponent? existing))
+            {
+                consolidatedTypes[tr.Code] = tr;
+                continue;
+            }
+
+            // add any missing profile references
+            if (tr.ProfileElement.Any())
+            {
+                existing.ProfileElement.AddRange(tr.ProfileElement);
+            }
+
+            if (tr.TargetProfileElement.Any())
+            {
+                existing.TargetProfileElement.AddRange(tr.TargetProfileElement);
+            }
+        }
+
+        // update our types
+        ed.Type = consolidatedTypes.Values.ToList();
     }
 
     /// <summary>
@@ -818,10 +896,10 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a primitive type.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddPrimitiveType(StructureDefinition sd)
+    public void AddPrimitiveType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
         // add field orders to elements
-        ProcessElements(FhirArtifactClassEnum.PrimitiveType, sd);
+        ProcessElements(FhirArtifactClassEnum.PrimitiveType, sd, fhirVersion);
 
         // TODO(ginoc): Consider if we want to make this explicit on any definitions that do not have it
         //if (sd.FhirVersion == null)
@@ -838,10 +916,10 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a complex type.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddComplexType(StructureDefinition sd)
+    public void AddComplexType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
         // add field orders to elements
-        ProcessElements(FhirArtifactClassEnum.ComplexType, sd);
+        ProcessElements(FhirArtifactClassEnum.ComplexType, sd, fhirVersion);
 
         _complexTypesByName[sd.Name] = sd;
         TrackResource(sd);
@@ -852,10 +930,10 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a resource.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddResource(StructureDefinition sd)
+    public void AddResource(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
         // add field orders to elements
-        ProcessElements(FhirArtifactClassEnum.Resource, sd);
+        ProcessElements(FhirArtifactClassEnum.Resource, sd, fhirVersion);
 
         _resourcesByName[sd.Name] = sd;
         TrackResource(sd);
@@ -866,10 +944,10 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a logical model.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddLogicalModel(StructureDefinition sd)
+    public void AddLogicalModel(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
         // add field orders to elements
-        ProcessElements(FhirArtifactClassEnum.LogicalModel, sd);
+        ProcessElements(FhirArtifactClassEnum.LogicalModel, sd, fhirVersion);
 
         _logicalModelsByName[sd.Url] = sd;
         TrackResource(sd);
@@ -883,10 +961,10 @@ public partial class DefinitionCollection
 
     /// <summary>Adds an extension.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddExtension(StructureDefinition sd)
+    public void AddExtension(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
         // add field orders to elements
-        ProcessElements(FhirArtifactClassEnum.Extension, sd);
+        ProcessElements(FhirArtifactClassEnum.Extension, sd, fhirVersion);
 
         string url = sd.Url;
 
@@ -937,10 +1015,10 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a profile.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddProfile(StructureDefinition sd)
+    public void AddProfile(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
         // add field orders to elements
-        ProcessElements(FhirArtifactClassEnum.Profile, sd);
+        ProcessElements(FhirArtifactClassEnum.Profile, sd, fhirVersion);
 
         _profilesByUrl[sd.Url] = sd;
         TrackResource(sd);

@@ -29,6 +29,8 @@ public class GenerationTestFixture
     /// <summary>The FHIR R4 package entries.</summary>
     public IEnumerable<PackageCacheEntry> EntriesR4;
 
+    /// <summary>The FHIR STU3 package entries.</summary>
+    public IEnumerable<PackageCacheEntry> EntriesR3;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GenerationTestFixture"/> class.
@@ -59,6 +61,12 @@ public class GenerationTestFixture
             Load("hl7.fhir.r4.core#4.0.1"),
             Load("hl7.fhir.r4.expansions#4.0.1"),
             Load("hl7.fhir.uv.extensions#1.0.0"),
+        };
+
+        EntriesR3 = new List<PackageCacheEntry>()
+        {
+            Load("hl7.fhir.r3.core#3.0.2"),
+            Load("hl7.fhir.r3.expansions#3.0.2"),
         };
     }
 
@@ -203,7 +211,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
     [Theory]
     [FileData("TestData/Generated/Info-R4.txt")]
-    internal async void TestInfoR4B(string previous)
+    internal async void TestInfoR4(string previous)
     {
         PackageLoader loader = new(_fixture.Cache, new());
 
@@ -232,6 +240,59 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
                 // update the current file contents (manual)
                 File.WriteAllText("TestData/Generated/Info-R4.txt", current);
+
+                // should the types like canonical be canonical::canonical or canonical::string?
+                current.Should().Be(previous);
+            }
+        }
+
+    }
+}
+
+public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
+{
+    /// <summary>(Immutable) The test output helper.</summary>
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    private readonly GenerationTestFixture _fixture;
+
+    public GenerationTestsR3(GenerationTestFixture fixture, ITestOutputHelper testOutputHelper)
+    {
+        _testOutputHelper = testOutputHelper;
+        _fixture = fixture;
+    }
+
+    [Theory]
+    [FileData("TestData/Generated/Info-R3.txt")]
+    internal async void TestInfoR3(string previous)
+    {
+        PackageLoader loader = new(_fixture.Cache, new());
+
+        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3);
+
+        loaded.Should().NotBeNull();
+
+        if (loaded == null)
+        {
+            return;
+        }
+
+        LangInfo exportLang = new();
+
+        LangInfo.InfoOptions options = new();
+
+        using (MemoryStream ms = new())
+        {
+            exportLang.Export(options, loaded, ms);
+            ms.Flush();
+            ms.Seek(0, SeekOrigin.Begin);
+
+            using (StreamReader sr = new(ms))
+            {
+                string current = sr.ReadToEnd();
+
+                // update the current file contents (manual)
+                File.WriteAllText("TestData/Generated/Info-R3.txt", current);
 
                 // should the types like canonical be canonical::canonical or canonical::string?
                 current.Should().Be(previous);

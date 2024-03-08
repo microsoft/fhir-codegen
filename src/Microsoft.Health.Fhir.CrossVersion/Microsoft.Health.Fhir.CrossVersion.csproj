@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Folder Include="Convert_43_50\" />
+    <Folder Include="Convert_30_50\" />
   </ItemGroup>
 
 </Project>

@@ -63,8 +63,10 @@ public class PackageLoader
 
     private LoadFunctions _loadFunctionsR5;
     private LoadFunctions _loadFunctionsR4B;
+    private LoadFunctions _loadFunctionsR3;
 
     private Microsoft.Health.Fhir.CrossVersion.Converter_43_50? _converter_43_50 = null;
+    private Microsoft.Health.Fhir.CrossVersion.Converter_30_50? _converter_30_50 = null;
 
     private object _convertLockObject = new();
 
@@ -127,6 +129,18 @@ public class PackageLoader
             ParseSearchParam = ParseContents43<SearchParameter>,
             ParseStructureDef = ParseContents43<StructureDefinition>,
             ParseValueSet = ParseContents43<ValueSet>,
+        };
+
+        _loadFunctionsR3 = new()
+        {
+            ParseCapabilityStatement = ParseContents30<CapabilityStatement>,
+            ParseCodeSystem = ParseContents30<CodeSystem>,
+            ParseCompartmentDef = ParseContents30<CompartmentDefinition>,
+            ParseImplementationGuide = ParseContents30<ImplementationGuide>,
+            ParseOperationDef = ParseContents30<OperationDefinition>,
+            ParseSearchParam = ParseContents30<SearchParameter>,
+            ParseStructureDef = ParseContents30<StructureDefinition>,
+            ParseValueSet = ParseContents30<ValueSet>,
         };
     }
 
@@ -373,28 +387,54 @@ public class PackageLoader
                 };
             }
 
-            // set the load functions for the correct version of FHIR
-            LoadFunctions lf = definitions.FhirSequence switch
-            {
-                FhirReleases.FhirSequenceCodes.R4 => _loadFunctionsR4B,     // R4 should be completely compatible with R4B
-                FhirReleases.FhirSequenceCodes.R4B => _loadFunctionsR4B,
-                FhirReleases.FhirSequenceCodes.R5 => _loadFunctionsR5,
-                _ => throw new Exception($"Unsupported FHIR version: {definitions.FhirVersion}"),
-            };
+            FhirReleases.FhirSequenceCodes packageFhirVersion = manifest.AllFhirVersions.Any()
+                ? FhirReleases.FhirVersionToSequence(manifest.AllFhirVersions.First())
+                : definitions.FhirSequence;
 
-            if ((definitions.FhirSequence == FhirReleases.FhirSequenceCodes.R4) ||
-                (definitions.FhirSequence == FhirReleases.FhirSequenceCodes.R4B))
+            // set the load functions for the correct version of FHIR
+            LoadFunctions lf;
+
+            switch (definitions.FhirSequence)
             {
-                if (_converter_43_50 == null)
-                {
-                    lock (_convertLockObject)
+                case FhirReleases.FhirSequenceCodes.STU3:
                     {
-                        if (_converter_43_50 == null)
+                        lf = _loadFunctionsR3;
+                        if (_converter_30_50 == null)
                         {
-                            _converter_43_50 = new();
+                            lock (_convertLockObject)
+                            {
+                                if (_converter_30_50 == null)
+                                {
+                                    _converter_30_50 = new();
+                                }
+                            }
                         }
                     }
-                }
+                    break;
+
+                case FhirReleases.FhirSequenceCodes.R4:
+                case FhirReleases.FhirSequenceCodes.R4B:
+                    {
+                        lf = _loadFunctionsR4B;
+                        if (_converter_43_50 == null)
+                        {
+                            lock (_convertLockObject)
+                            {
+                                if (_converter_43_50 == null)
+                                {
+                                    _converter_43_50 = new();
+                                }
+                            }
+                        }
+                    }
+                    break;
+
+                default:
+                case FhirReleases.FhirSequenceCodes.R5:
+                    {
+                        lf = _loadFunctionsR5;
+                    }
+                    break;
             }
 
             PackageContents? packageContents = _cache.GetIndexedContents(cachedPackage);
@@ -477,27 +517,27 @@ public class PackageLoader
                                 switch (r.cgArtifactClass())
                                 {
                                     case FhirArtifactClassEnum.PrimitiveType:
-                                        definitions.AddPrimitiveType(r);
+                                        definitions.AddPrimitiveType(r, packageFhirVersion);
                                         break;
 
                                     case FhirArtifactClassEnum.LogicalModel:
-                                        definitions.AddLogicalModel(r);
+                                        definitions.AddLogicalModel(r, packageFhirVersion);
                                         break;
 
                                     case FhirArtifactClassEnum.Extension:
-                                        definitions.AddExtension(r);
+                                        definitions.AddExtension(r, packageFhirVersion);
                                         break;
 
                                     case FhirArtifactClassEnum.Profile:
-                                        definitions.AddProfile(r);
+                                        definitions.AddProfile(r, packageFhirVersion);
                                         break;
 
                                     case FhirArtifactClassEnum.ComplexType:
-                                        definitions.AddComplexType(r);
+                                        definitions.AddComplexType(r, packageFhirVersion);
                                         break;
 
                                     case FhirArtifactClassEnum.Resource:
-                                        definitions.AddResource(r);
+                                        definitions.AddResource(r, packageFhirVersion);
                                         break;
                                 }
                             }
@@ -576,6 +616,14 @@ public class PackageLoader
             lock (_convertLockObject)
             {
                 _converter_43_50 = null;
+            }
+        }
+
+        if (_converter_30_50 != null)
+        {
+            lock (_convertLockObject)
+            {
+                _converter_30_50 = null;
             }
         }
 
@@ -714,6 +762,64 @@ public class PackageLoader
                     else
                     {
                         Console.WriteLine($"Error parsing R4B XML: {ex.Message} ({ex.InnerException.Message})");
+                    }
+                    return null;
+                }
+
+            default:
+                {
+                    Console.WriteLine($"Unsupported parse format: {format}");
+                    return null;
+                }
+        }
+    }
+
+    public async Task<TResource?> ParseContents30<TResource>(string format, string path) where TResource : Resource, new()
+    {
+        switch (format.ToLowerInvariant())
+        {
+            case ".json":
+            case "json":
+            case "fhir+json":
+            case "application/json":
+            case "application/fhir+json":
+                try
+                {
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(await File.ReadAllTextAsync(path));
+                    return _converter_30_50!.Convert(sn) as TResource;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException == null)
+                    {
+                        Console.WriteLine($"Error parsing STU3 JSON: {ex.Message}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error parsing STU3 JSON: {ex.Message} ({ex.InnerException.Message})");
+                    }
+                    return null;
+                }
+
+            case ".xml":
+            case "xml":
+            case "fhir+xml":
+            case "application/xml":
+            case "application/fhir+xml":
+                try
+                {
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(await File.ReadAllTextAsync(path));
+                    return _converter_30_50!.Convert(sn) as TResource;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException == null)
+                    {
+                        Console.WriteLine($"Error parsing STU3 XML: {ex.Message}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error parsing STU3 XML: {ex.Message} ({ex.InnerException.Message})");
                     }
                     return null;
                 }

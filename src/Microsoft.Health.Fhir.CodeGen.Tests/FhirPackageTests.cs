@@ -26,9 +26,11 @@ public class FhirPackageTestFixture
     /// <summary>The FHIR R4B package entries.</summary>
     public IEnumerable<PackageCacheEntry> EntriesR4B;
 
+    /// <summary>The FHIR R4 package entries.</summary>
     public IEnumerable<PackageCacheEntry> EntriesR4;
 
-    //public PackageCacheEntry _r4;
+    /// <summary>The FHIR STU3 package entries.</summary>
+    public IEnumerable<PackageCacheEntry> EntriesR3;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirPackageTestFixture"/> class.
@@ -59,6 +61,12 @@ public class FhirPackageTestFixture
             Load("hl7.fhir.r4.core#4.0.1"),
             Load("hl7.fhir.r4.expansions#4.0.1"),
             Load("hl7.fhir.uv.extensions#1.0.0"),
+        };
+
+        EntriesR3 = new List<PackageCacheEntry>()
+        {
+            Load("hl7.fhir.r3.core#3.0.2"),
+            Load("hl7.fhir.r3.expansions#3.0.2"),
         };
     }
 
@@ -244,7 +252,7 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     private readonly FhirPackageTestFixture _fixture;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR5"/> class.
+    /// Initializes a new instance of the <see cref="FhirPackageTestsR4"/> class.
     /// </summary>
     /// <param name="fixture">The fixture.</param>
     /// <param name="testOutputHelper">The test output helper.</param>
@@ -264,6 +272,74 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
         DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4);
+
+        loaded.Should().NotBeNull();
+
+        if (loaded == null)
+        {
+            return;
+        }
+
+        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
+        loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
+        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
+        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
+    }
+}
+
+public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
+{
+    private const int _countCodeSystemsByUrl = 941;
+    private const int _countValueSetsByUrl = 1154;
+    private const int _countPrimitiveTypesByName = 18;
+    private const int _countComplexTypesByName = 35;
+    private const int _countResourcesByName = 119;
+    private const int _countLogicalModelsByName = 4;
+    private const int _countExtensionsByUrl = 376;
+    private const int _countProfilesByUrl = 33;
+    private const int _countSearchParametersByUrl = 1244;
+    private const int _countOperationsByUrl = 37;
+    private const int _countCapabilityStatementsByUrl = 8;
+    private const int _countImplementationGuidesByUrl = 2;
+    private const int _countCompartmentsByUrl = 6;
+
+    /// <summary>
+    /// The test output helper.
+    /// </summary>
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    private readonly FhirPackageTestFixture _fixture;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FhirPackageTestsR3"/> class.
+    /// </summary>
+    /// <param name="fixture">The fixture.</param>
+    /// <param name="testOutputHelper">The test output helper.</param>
+    public FhirPackageTestsR3(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    {
+        _testOutputHelper = testOutputHelper;
+        _fixture = fixture;
+    }
+
+    /// <summary>
+    /// Parses the core package.
+    /// </summary>
+    /// <param name="jsonModel">The JSON deserialization model.</param>
+    [Fact]
+    internal async void ParseCorePackage()
+    {
+        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+
+        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3);
 
         loaded.Should().NotBeNull();
 
