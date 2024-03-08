@@ -34,6 +34,7 @@ public class PackageLoader
         "SearchParameter",
         "OperationDefinition",
         "CapabilityStatement",
+        "Conformance",
         "ImplementationGuide",
         "CompartmentDefinition",
     };
@@ -64,9 +65,11 @@ public class PackageLoader
     private LoadFunctions _loadFunctionsR5;
     private LoadFunctions _loadFunctionsR4B;
     private LoadFunctions _loadFunctionsR3;
+    private LoadFunctions _loadFunctionsR2;
 
     private Microsoft.Health.Fhir.CrossVersion.Converter_43_50? _converter_43_50 = null;
     private Microsoft.Health.Fhir.CrossVersion.Converter_30_50? _converter_30_50 = null;
+    private Microsoft.Health.Fhir.CrossVersion.Converter_20_50? _converter_20_50 = null;
 
     private object _convertLockObject = new();
 
@@ -141,6 +144,18 @@ public class PackageLoader
             ParseSearchParam = ParseContents30<SearchParameter>,
             ParseStructureDef = ParseContents30<StructureDefinition>,
             ParseValueSet = ParseContents30<ValueSet>,
+        };
+
+        _loadFunctionsR2 = new()
+        {
+            ParseCapabilityStatement = ParseContents20<CapabilityStatement>,
+            ParseCodeSystem = ParseContents20<CodeSystem>,
+            ParseCompartmentDef = ParseContents20<CompartmentDefinition>,
+            ParseImplementationGuide = ParseContents20<ImplementationGuide>,
+            ParseOperationDef = ParseContents20<OperationDefinition>,
+            ParseSearchParam = ParseContents20<SearchParameter>,
+            ParseStructureDef = ParseContents20<StructureDefinition>,
+            ParseValueSet = ParseContents20<ValueSet>,
         };
     }
 
@@ -263,6 +278,7 @@ public class PackageLoader
         {
             Id = "Resource-content",
             Name = "_content",
+            Code = "_content",
             Url = "http://hl7.org/fhir/SearchParameter/Resource-content",
             Version = dc.FhirSequence.ToLongVersion(),
             Title = "Resource content filter",
@@ -276,6 +292,7 @@ public class PackageLoader
         {
             Id = "Resource-filter",
             Name = "_filter",
+            Code = "_filter",
             Url = "http://hl7.org/fhir/SearchParameter/Resource-filter",
             Version = dc.FhirSequence.ToLongVersion(),
             Title = "Advanced search filter",
@@ -289,6 +306,7 @@ public class PackageLoader
         {
             Id = "Resource-text",
             Name = "_text",
+            Code = "_text",
             Url = "http://hl7.org/fhir/SearchParameter/Resource-text",
             Version = dc.FhirSequence.ToLongVersion(),
             Title = "Resource text filter",
@@ -302,6 +320,7 @@ public class PackageLoader
         {
             Id = "Resource-list",
             Name = "_list",
+            Code = "_list",
             Url = "http://hl7.org/fhir/SearchParameter/Resource-list",
             Version = dc.FhirSequence.ToLongVersion(),
             Title = "List reference filter",
@@ -318,6 +337,7 @@ public class PackageLoader
             {
                 Id = "Resource-has",
                 Name = "_has",
+                Code = "_has",
                 Url = "http://hl7.org/fhir/SearchParameter/Resource-has",
                 Version = dc.FhirSequence.ToLongVersion(),
                 Title = "Limited support for reverse chaining",
@@ -331,6 +351,7 @@ public class PackageLoader
             {
                 Id = "Resource-type",
                 Name = "_type",
+                Code = "_type",
                 Url = "http://hl7.org/fhir/SearchParameter/Resource-type",
                 Version = dc.FhirSequence.ToLongVersion(),
                 Title = "Resource type filter",
@@ -396,6 +417,22 @@ public class PackageLoader
 
             switch (definitions.FhirSequence)
             {
+                case FhirReleases.FhirSequenceCodes.DSTU2:
+                    {
+                        lf = _loadFunctionsR2;
+                        if (_converter_20_50 == null)
+                        {
+                            lock (_convertLockObject)
+                            {
+                                if (_converter_20_50 == null)
+                                {
+                                    _converter_20_50 = new();
+                                }
+                            }
+                        }
+                    }
+                    break;
+
                 case FhirReleases.FhirSequenceCodes.STU3:
                     {
                         lf = _loadFunctionsR3;
@@ -565,6 +602,7 @@ public class PackageLoader
                             }
                             break;
 
+                        case "Conformance":
                         case "CapabilityStatement":
                             {
                                 CapabilityStatement? r = await lf.ParseCapabilityStatement(fileExtension, path);
@@ -602,7 +640,8 @@ public class PackageLoader
             }
 
             // check to see if this package is a 'core' FHIR package to add missing contents
-            if (manifest.Type.Equals("core", StringComparison.OrdinalIgnoreCase))
+            if (manifest.Type.Equals("core", StringComparison.OrdinalIgnoreCase) ||
+                manifest.Type.Equals("fhir.core", StringComparison.OrdinalIgnoreCase))
             {
                 AddMissingCoreSearchParameters(definitions);
                 AddAllInteractionParameters(definitions);
@@ -624,6 +663,14 @@ public class PackageLoader
             lock (_convertLockObject)
             {
                 _converter_30_50 = null;
+            }
+        }
+
+        if (_converter_20_50 != null)
+        {
+            lock (_convertLockObject)
+            {
+                _converter_20_50 = null;
             }
         }
 
@@ -820,6 +867,64 @@ public class PackageLoader
                     else
                     {
                         Console.WriteLine($"Error parsing STU3 XML: {ex.Message} ({ex.InnerException.Message})");
+                    }
+                    return null;
+                }
+
+            default:
+                {
+                    Console.WriteLine($"Unsupported parse format: {format}");
+                    return null;
+                }
+        }
+    }
+
+    public async Task<TResource?> ParseContents20<TResource>(string format, string path) where TResource : Resource, new()
+    {
+        switch (format.ToLowerInvariant())
+        {
+            case ".json":
+            case "json":
+            case "fhir+json":
+            case "application/json":
+            case "application/fhir+json":
+                try
+                {
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(await File.ReadAllTextAsync(path));
+                    return _converter_20_50!.Convert(sn) as TResource;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException == null)
+                    {
+                        Console.WriteLine($"Error parsing DSTU2 JSON: {ex.Message}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error parsing DSTU2 JSON: {ex.Message} ({ex.InnerException.Message})");
+                    }
+                    return null;
+                }
+
+            case ".xml":
+            case "xml":
+            case "fhir+xml":
+            case "application/xml":
+            case "application/fhir+xml":
+                try
+                {
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(await File.ReadAllTextAsync(path));
+                    return _converter_20_50!.Convert(sn) as TResource;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException == null)
+                    {
+                        Console.WriteLine($"Error parsing DSTU2 XML: {ex.Message}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error parsing DSTU2 XML: {ex.Message} ({ex.InnerException.Message})");
                     }
                     return null;
                 }

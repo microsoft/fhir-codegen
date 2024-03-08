@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
@@ -105,6 +106,7 @@ public partial class DefinitionCollection
     /// <returns>True if backbone path, false if not.</returns>
     public bool IsBackbonePath(string path) => _backbonePaths.Contains(path);
 
+
     /// <summary>Processes elements in a structure definition.</summary>
     /// <remarks>Addes field orders, indexes paths that contain child elements, etc.</remarks>
     /// <param name="sd">The structure definition.</param>
@@ -112,9 +114,23 @@ public partial class DefinitionCollection
     {
         Dictionary<string, int> allFieldOrders = new();
 
+        List<string> idByDepth = new();
+
         // process each element in the snapshot
         foreach (ElementDefinition ed in sd.Snapshot?.Element ?? Enumerable.Empty<ElementDefinition>())
         {
+            // DSTU2 did not include element id's on ElementDefinitions, so we need to construct them
+            if (string.IsNullOrEmpty(ed.ElementId))
+            {
+                AddMissingElementId(ed, idByDepth);
+
+                // DSTU2 allowed repetitions of elements that we want to ignore (slicing definition before every slice)
+                if (allFieldOrders.ContainsKey(ed.ElementId))
+                {
+                    continue;
+                }
+            }
+
             int fo = allFieldOrders.Count();
             allFieldOrders.Add(ed.ElementId, fo);
             ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
@@ -153,8 +169,8 @@ public partial class DefinitionCollection
             // check for a value set binding
             CheckElementBindings(artifactClass, sd, ed);
 
-            // STU3 needs type consolidation
-            if (fhirVersion == FhirReleases.FhirSequenceCodes.STU3)
+            // DSTU2 and STU3 need type consolidation
+            if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) || (fhirVersion == FhirReleases.FhirSequenceCodes.STU3))
             {
                 ConsolidateTypes(sd, ed);
             }
@@ -163,6 +179,18 @@ public partial class DefinitionCollection
         // process each element in the differential
         foreach (ElementDefinition ed in sd.Differential?.Element ?? Enumerable.Empty<ElementDefinition>())
         {
+            // DSTU2 did not include element id's on ElementDefinitions, so we need to construct them
+            if (string.IsNullOrEmpty(ed.ElementId))
+            {
+                AddMissingElementId(ed, idByDepth);
+
+                // DSTU2 allowed repetitions of elements that we want to ignore (slicing definition before every slice)
+                if (allFieldOrders.ContainsKey(ed.ElementId))
+                {
+                    continue;
+                }
+            }
+
             // use the field order from the snapshot if it exists
             if (!allFieldOrders.TryGetValue(ed.ElementId, out int fo))
             {
@@ -206,8 +234,8 @@ public partial class DefinitionCollection
                 // check for a value set binding
                 CheckElementBindings(artifactClass, sd, ed);
 
-                // STU3 needs type consolidation
-                if (fhirVersion == FhirReleases.FhirSequenceCodes.STU3)
+                // DSTU2 and STU3 need type consolidation
+                if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) || (fhirVersion == FhirReleases.FhirSequenceCodes.STU3))
                 {
                     ConsolidateTypes(sd, ed);
                 }
@@ -216,8 +244,8 @@ public partial class DefinitionCollection
             ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
         }
 
-        // STU3 does not declare types on root elements
-        if (fhirVersion == FhirReleases.FhirSequenceCodes.STU3)
+        // DSTU2 and STU3 do not always declare types on root elements
+        if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) || (fhirVersion == FhirReleases.FhirSequenceCodes.STU3))
         {
             ElementDefinition? re = sd.cgRootElement();
             if (re != null)
@@ -243,6 +271,60 @@ public partial class DefinitionCollection
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Adds the missing element ID to the given <see cref="ElementDefinition"/>.
+    /// </summary>
+    /// <param name="ed">The <see cref="ElementDefinition"/> to add the missing ID to.</param>
+    /// <param name="idByDepth">The list of IDs by depth.</param>
+    private void AddMissingElementId(ElementDefinition ed, List<string> idByDepth)
+    {
+        string[] components = ed.Path.Split('.');
+        int depth = components.Length;
+
+        if (depth == 1)
+        {
+            ed.ElementId = ed.Path;
+            idByDepth.Clear();
+            idByDepth.Add(ed.Path);
+            return;
+        }
+
+        // remove keys with the same length or deeper
+        if (idByDepth.Count >= depth)
+        {
+            idByDepth.RemoveRange(depth - 1, (idByDepth.Count - depth) + 1);
+        }
+
+        // append the slice name if present
+        if (!string.IsNullOrEmpty(ed.SliceName))
+        {
+            // check for a dot-notation name
+            if (ed.SliceName.Contains('.'))
+            {
+                // check for resource name prefix
+                if (ed.SliceName.StartsWith(idByDepth[0]))
+                {
+                    // append just the last dot component as a slice name
+                    components[depth - 1] += ":" + ed.SliceName.Substring(ed.SliceName.LastIndexOf('.') + 1);
+                }
+                else
+                {
+                    // convert to pascal case
+                    components[depth - 1] += ":" + ed.SliceName.ToPascalCase();
+                }
+            }
+            else
+            {
+                components[depth - 1] += ":" + ed.SliceName;
+            }
+        }
+
+        // add our path components
+        idByDepth.AddRange(components.Skip(idByDepth.Count));
+
+        ed.ElementId = string.Join('.', idByDepth);
     }
 
     /// <summary>Consolidate types.</summary>
@@ -898,6 +980,12 @@ public partial class DefinitionCollection
     /// <param name="sd">The structure definition.</param>
     public void AddPrimitiveType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
+        // DSTU2 did not include the publication status extension, add it here for consistency
+        if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
+        {
+            sd.AddExtension(CommonDefinitions.ExtUrlStandardStatus, new Code("draft"));
+        }
+
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.PrimitiveType, sd, fhirVersion);
 
@@ -918,6 +1006,12 @@ public partial class DefinitionCollection
     /// <param name="sd">The structure definition.</param>
     public void AddComplexType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
+        // DSTU2 did not include the publication status extension, add it here for consistency
+        if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
+        {
+            sd.AddExtension(CommonDefinitions.ExtUrlStandardStatus, new Code("draft"));
+        }
+
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.ComplexType, sd, fhirVersion);
 
@@ -932,6 +1026,12 @@ public partial class DefinitionCollection
     /// <param name="sd">The structure definition.</param>
     public void AddResource(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
+        // DSTU2 did not include the publication status extension, add it here for consistency
+        if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
+        {
+            sd.AddExtension(CommonDefinitions.ExtUrlStandardStatus, new Code("draft"));
+        }
+
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.Resource, sd, fhirVersion);
 

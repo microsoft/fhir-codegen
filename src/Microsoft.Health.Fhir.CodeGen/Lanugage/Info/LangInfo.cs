@@ -616,7 +616,7 @@ public class LangInfo : ILanguage<InfoOptions>
                     if ((!string.IsNullOrEmpty(c.Definition)) &&
                         _definitions.SearchParametersByUrl.TryGetValue(c.Definition, out SearchParameter? compParam))
                     {
-                        _writer.WriteLineIndented($"$({c.Definition}):{compParam.Type}");
+                        _writer.WriteLineIndented($"$({c.Definition}):{compParam.Type.GetLiteral()}");
                     }
                     else
                     {
@@ -629,7 +629,7 @@ public class LangInfo : ILanguage<InfoOptions>
             else
             {
                 string snip = BuildStandardSnippet(searchParam.cgStandardStatus(), searchParam.cgMaturityLevel(), searchParam.cgIsExperimental());
-                _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code}={searchParam.Type}{snip}");
+                _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code}={searchParam.Type.GetLiteral()}{snip}");
             }
         }
 

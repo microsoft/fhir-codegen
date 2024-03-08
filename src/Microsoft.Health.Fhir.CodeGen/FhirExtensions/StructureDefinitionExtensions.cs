@@ -6,6 +6,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Specification.Navigation;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -40,6 +41,10 @@ public static class StructureDefinitionExtensions
                         if (sd.Type == "Extension")
                         {
                             return FhirArtifactClassEnum.Extension;
+                        }
+                        else if (sd.Type == "Quantity")
+                        {
+                            return FhirArtifactClassEnum.ComplexType;
                         }
                         else if (!sd.Type.Equals(sd.Id))
                         {
