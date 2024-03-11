@@ -1007,9 +1007,9 @@ public partial class DefinitionCollection
     /// <param name="sd">The structure definition.</param>
     public void AddComplexType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
-        // DSTU2 did not include the publication status extension, add it here for consistency
         if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
         {
+            // DSTU2 did not include the publication status extension, add it here for consistency
             sd.AddExtension(CommonDefinitions.ExtUrlStandardStatus, new Code("draft"));
         }
 

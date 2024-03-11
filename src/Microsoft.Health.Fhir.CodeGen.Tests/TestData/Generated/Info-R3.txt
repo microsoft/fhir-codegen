@@ -35,7 +35,7 @@ Primitive Types: 18
 - uuid: uuid::uuid
   [urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}]
 - xhtml: xhtml::xhtml
-Complex Types: 36
+Complex Types: 35
 - Address: Element (abstract: False)
   ^address[0..*]: Address conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
@@ -431,6 +431,8 @@ Complex Types: 36
   - unit[0..1]: string
   - system[0..1]: uri conditions: qty-3
   - code[0..1]: code
+  Profiles[Quantity]: 1
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - Range: Element (abstract: False)
   ^range[0..*]: Range constraints: rng-2 conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
@@ -492,12 +494,6 @@ Complex Types: 36
   - onBehalfOf[x][0..1]: Reference(Practitioner|RelatedPerson|Patient|Device|Organization)|uri
   - contentType[0..1]: code binding name: MimeType
   - blob[0..1]: base64Binary
-- SimpleQuantity: Quantity (abstract: False)
-  ^quantity[0..*]: Quantity constraints: sqty-1 conditions: ele-1
-  @Slices present with no defined slicing
-  !ele-1: inherited error: hasValue() | (children().count() > id.count())
-  !qty-3: inherited error: code.empty() or system.exists()
-  !sqty-1: local error: comparator.empty()
 - Timing: Element (abstract: False)
   ^timing[0..*]: Timing conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
@@ -8814,7 +8810,7 @@ Resources: 119
   ?identifier: identifier=token
   ?patient: patient=reference
   ?prescriber: prescriber=reference
-Profiles: 32
+Profiles: 33
 - Vital Signs Profile: (bmi) vitalsigns
   ^observation[0..*]: Observation (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
@@ -12805,6 +12801,14 @@ Profiles: 32
     Out: display: String[0..1]
   Profiles[ValueSet]: 1
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (Shareable ValueSet)
+- SimpleQuantity: (SimpleQuantity) Quantity
+  ^quantity[0..*]: Quantity constraints: sqty-1 conditions: ele-1
+  @Slices present with no defined slicing
+  !ele-1: inherited error: hasValue() | (children().count() > id.count())
+  !qty-3: inherited error: code.empty() or system.exists()
+  !sqty-1: local error: comparator.empty()
+  Profiles[Quantity]: 1
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - Example Lipid Profile: (triglyceride) Observation (FMM: 1 experimental)
   ^observation[1..1]: Observation (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
@@ -17314,7 +17318,7 @@ Value Sets: 1154
   - #unknown: UNKNOWN Comparison
 - ValueSet: http://hl7.org/fhir/ValueSet/quantity-comparator|3.0.2 (FMM: 0) (QuantityComparator)
   references (6): Quantity.comparator, Distance.comparator, Count.comparator, Money.comparator, Duration.comparator, Age.comparator, strongest binding: required, by type: code:Required
-  extensions/profiles (2): strongest binding: required, refs: Profile:Observation.valueQuantity.comparator[bp], Profile:Observation.valueQuantity.comparator[heartrate], Profile:Observation.valueQuantity.comparator[vitalsigns], Profile:Observation.valueQuantity.comparator[bmi], Profile:Observation.valueQuantity.comparator[oxygensat], Profile:Observation.valueQuantity.comparator[headcircum], Profile:Observation.valueQuantity.comparator[bodyweight], Profile:Observation.valueQuantity.comparator[bodylength], Profile:Observation.valueQuantity.comparator[resprate], Profile:Observation.valueQuantity.comparator[vitalspanel], Profile:Observation.valueQuantity.comparator[cholesterol], Profile:Observation.valueQuantity.comparator[bodyheight], Profile:Observation.valueQuantity.comparator[bodytemp], Profile:Observation.component.valueQuantity.comparator[bp], Profile:Observation.component.valueQuantity.comparator[bp], Profile:Observation.component.valueQuantity.comparator[heartrate], Profile:Observation.component.valueQuantity.comparator[vitalsigns], Profile:Observation.component.valueQuantity.comparator[bmi], Profile:Observation.component.valueQuantity.comparator[oxygensat], Profile:Observation.component.valueQuantity.comparator[headcircum], Profile:Observation.component.valueQuantity.comparator[bodyweight], Profile:Observation.component.valueQuantity.comparator[bodylength], Profile:Observation.component.valueQuantity.comparator[resprate], Profile:Observation.component.valueQuantity.comparator[vitalspanel], Profile:Observation.component.valueQuantity.comparator[bodyheight], Profile:Observation.component.valueQuantity.comparator[bodytemp]
+  extensions/profiles (3): strongest binding: required, refs: Profile:Observation.valueQuantity.comparator[bp], Profile:Observation.valueQuantity.comparator[heartrate], Profile:Observation.valueQuantity.comparator[vitalsigns], Profile:Observation.valueQuantity.comparator[bmi], Profile:Observation.valueQuantity.comparator[oxygensat], Profile:Observation.valueQuantity.comparator[headcircum], Profile:Observation.valueQuantity.comparator[bodyweight], Profile:Observation.valueQuantity.comparator[bodylength], Profile:Observation.valueQuantity.comparator[resprate], Profile:Observation.valueQuantity.comparator[vitalspanel], Profile:Observation.valueQuantity.comparator[cholesterol], Profile:Observation.valueQuantity.comparator[bodyheight], Profile:Observation.valueQuantity.comparator[bodytemp], Profile:Observation.component.valueQuantity.comparator[bp], Profile:Observation.component.valueQuantity.comparator[bp], Profile:Observation.component.valueQuantity.comparator[heartrate], Profile:Observation.component.valueQuantity.comparator[vitalsigns], Profile:Observation.component.valueQuantity.comparator[bmi], Profile:Observation.component.valueQuantity.comparator[oxygensat], Profile:Observation.component.valueQuantity.comparator[headcircum], Profile:Observation.component.valueQuantity.comparator[bodyweight], Profile:Observation.component.valueQuantity.comparator[bodylength], Profile:Observation.component.valueQuantity.comparator[resprate], Profile:Observation.component.valueQuantity.comparator[vitalspanel], Profile:Observation.component.valueQuantity.comparator[bodyheight], Profile:Observation.component.valueQuantity.comparator[bodytemp], Profile:Quantity.comparator[SimpleQuantity]
   - #<: Less than
   - #<=: Less or Equal to
   - #>: Greater than
@@ -18078,7 +18082,7 @@ Value Sets: 1154
   - #19: Off Campus-Outpatient Hospital
   - #20: Urgent Care Facility
   - #21: Inpatient Hospital
-  - #41: AmbulanceóLand
+  - #41: Ambulance‚ÄîLand
 - ValueSet: http://hl7.org/fhir/ValueSet/service-product|3.0.2 (FMM: 0) (Example Service/Product Codes)
   - #exam: Exam
   - #flushot: Flu shot
@@ -20085,7 +20089,7 @@ Value Sets: 1154
   - #UR: Urgent
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0153|2.8.2 (FMM: 0) (v2 Value Code)
   - #...: See NUBC codes
-  - #Ö: See NUBC codes
+  - #‚Ä¶: See NUBC codes
   - #01: Most common semi-private rate
   - #02: Hospital has no semi-private rooms
   - #04: Inpatient professional component charges which are combined billed
@@ -21054,7 +21058,7 @@ Value Sets: 1154
   - #1H: 1 hour
   - #1L: 1 months (30 days)
   - #1W: 1 week
-  - #2.5H: 2¬Ω hours
+  - #2.5H: 2√Ç¬Ω hours
   - #24H: 24 hours
   - #2D: 2 days
   - #2H: 2 hours
@@ -21084,7 +21088,7 @@ Value Sets: 1154
   - #1L: 1 month (30 days) post challenge
   - #1M: 1 minute post challenge
   - #1W: 1 week
-  - #2.5H: 2 ¬Ω hours post challenge
+  - #2.5H: 2 √Ç¬Ω hours post challenge
   - #20M: 20 minutes post challenge
   - #24H: 24 hours post challenge
   - #25M: 25 minutes post challenge
@@ -21283,14 +21287,14 @@ Value Sets: 1154
   - #WALKIN: A previously unscheduled walk-in visit
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0277|2.8.2 (FMM: 0) (v2 Appointment Type Codes)
   - #Complete: A request to add a completed appointment, used to maintain records of completed appointments that did not appear in the schedule (e.g. STAT, walk-in, etc.)
-  - #Normal: Routine schedule request type ñ default if not valued
-  - #Tentative: A request for a tentative (e.g. ìpenciled inî) appointment
+  - #Normal: Routine schedule request type ‚Äì default if not valued
+  - #Tentative: A request for a tentative (e.g. ‚Äúpenciled in‚Äù) appointment
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0278|2.8.2 (FMM: 0) (v2 Filler status codes)
   - #Blocked: The indicated time slot(s) is(are) blocked
   - #Booked: The indicated appointment is booked
   - #Cancelled: The indicated appointment was stopped from occurring (canceled prior to starting)
   - #Complete: The indicated appointment has completed normally (was not discontinued, canceled, or deleted)
-  - #Dc: The indicated appointment was discontinued (DCíed while in progress, discontinued parent appointment, or discontinued child appointment)
+  - #Dc: The indicated appointment was discontinued (DC‚Äôed while in progress, discontinued parent appointment, or discontinued child appointment)
   - #Deleted: The indicated appointment was deleted from the filler application
   - #Noshow: The patient did not show up for the appointment
   - #Overbook: The appointment has been confirmed; however it is confirmed in an overbooked state
@@ -21409,7 +21413,7 @@ Value Sets: 1154
   - #9: J
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0291|2.8.2 (FMM: 0) (v2 Subtype of Referenced Data)
   - #...: Source RFC 2046
-  - #Ö: Source RFC 2046
+  - #‚Ä¶: Source RFC 2046
   - #BASIC: ISDN PCM audio data
   - #DICOM: Digital Imaging and Communications in Medicine
   - #FAX: Facsimile data
@@ -21570,7 +21574,7 @@ Value Sets: 1154
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0301|2.8.2 (FMM: 0) (v2 Universal ID Type)
   - #B: 
   - #CLIA: Clinical Laboratory Improvement Amendments. Allows for the ability to designate organization identifier as a "CLIA" assigned number (for labs)
-  - #CLIP: Clinical laboratory Improvement Program. Allows for the ability to designate organization identifier as a "CLIP" assigned number (for labs).¬† Used by US Department of Defense.
+  - #CLIP: Clinical laboratory Improvement Program. Allows for the ability to designate organization identifier as a "CLIP" assigned number (for labs).√Ç¬† Used by US Department of Defense.
   - #DNS: An Internet host name, in accordance with RFC 1035; or an IP address. Either in ASCII or as integers, with periods between components ("dotted" notation).
   - #EUI64: IEEE 64-bit Extended Unique Identifier is comprised of a  24-bit company identifier and a 40-bit instance identifier.  The value shall be formatted as 16 ASCII HEX digits, for example, "AABBCC1122334455".  The 24-bit company identifier, formally known as
   - #GUID: Same as UUID.
@@ -21763,7 +21767,7 @@ Value Sets: 1154
   - #19: Grandparent
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0350|2.8.2 (FMM: 0) (v2 Occurrence Code)
   - #...: Use NUBC codes
-  - #Ö: Use NUBC codes
+  - #‚Ä¶: Use NUBC codes
   - #01: Auto accident
   - #02: No fault insurance involved-including auto accident/other
   - #03: Accident/tort liability
@@ -21843,7 +21847,7 @@ Value Sets: 1154
   - #A3: Benefits exhausted payer A
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0351|2.8.2 (FMM: 0) (v2 Occurrence Span)
   - #...: use NUBC codes
-  - #Ö: use NUBC codes
+  - #‚Ä¶: use NUBC codes
   - #70: Qualifying stay dates for SNF
   - #71: Prior stay dates
   - #72: First/last visit
@@ -22220,7 +22224,7 @@ Value Sets: 1154
   - #RE: Remark
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0365|2.8.2 (FMM: 0) (v2 Equipment State)
   - #...: (null) No state change
-  - #Ö: (null) No state change
+  - #‚Ä¶: (null) No state change
   - #CL: Clearing
   - #CO: Configuring
   - #DI: Diagnose
@@ -22237,12 +22241,12 @@ Value Sets: 1154
   - #TS: Transport stopped
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0366|2.8.2 (FMM: 0) (v2 Local/Remote Control State)
   - #...: (null) No state change
-  - #Ö: (null) No state change
+  - #‚Ä¶: (null) No state change
   - #L: Local
   - #R: Remote
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0367|2.8.2 (FMM: 0) (v2 Alert Level)
   - #...: (null) No level change
-  - #Ö: (null) No level change
+  - #‚Ä¶: (null) No level change
   - #C: Critical
   - #N: Normal
   - #S: Serious
@@ -22561,7 +22565,7 @@ Value Sets: 1154
   - #JJ1017: Japanese Image Examination Cache
   - #L: Local general code
   - #LB: Local billing code
-  - #LN: Logical Observation Identifier Names and Codes (LOINC¬Æ)
+  - #LN: Logical Observation Identifier Names and Codes (LOINC√Ç¬Æ)
   - #MCD: Medicaid
   - #MCR: Medicare
   - #MDC: Medical Device Communication
@@ -22729,7 +22733,7 @@ Value Sets: 1154
   - #G: Additional tissue required
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0418|2.8.2 (FMM: 0) (v2 Procedure Priority)
   - #...: 
-  - #Ö: 
+  - #‚Ä¶: 
   - #0: the admitting procedure
   - #1: the primary procedure
   - #2: for ranked secondary procedures
@@ -23953,7 +23957,7 @@ Value Sets: 1154
   - #7: Non-Emergent Practitioner (i.e. medical ethics committee)
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0550|2.8.2 (FMM: 0) (v2 Body Parts)
   - #: External Jugular
-  - #¬: External Jugular
+  - #√Ç: External Jugular
   - #ACET: Acetabulum
   - #ACHIL: Achilles
   - #ADB: Abdomen
@@ -24028,7 +24032,7 @@ Value Sets: 1154
   - #CHEEK: Cheek
   - #CHES: Chest
   - #CHEST: Chest Tube
-  - #CHEST¬: Chest Tube
+  - #CHEST√Ç: Chest Tube
   - #CHIN: Chin
   - #CIRCU: Circumcision Site
   - #CLAVI: Clavicle/Clavicular
@@ -24161,7 +24165,7 @@ Value Sets: 1154
   - #JAW: Jaw
   - #JUGI: Jugular, Internal
   - #KIDN: Kidney
-  - #KIDN¬: Kidney
+  - #KIDN√Ç: Kidney
   - #KNEE: Knee
   - #KNEEF: Knee Fluid
   - #KNEEJ: Knee Joint

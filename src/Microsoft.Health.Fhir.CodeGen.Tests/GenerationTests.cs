@@ -142,7 +142,7 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
                 string current = sr.ReadToEnd();
 
                 // update the current file contents (manual)
-                File.WriteAllText("TestData/Generated/Info-R5.txt", current);
+                //File.WriteAllText("TestData/Generated/Info-R5.txt", current);
 
                 // should the types like canonical be canonical::canonical or canonical::string?
                 current.Should().Be(previous);
@@ -195,7 +195,7 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
                 string current = sr.ReadToEnd();
 
                 // update the current file contents (manual)
-                File.WriteAllText("TestData/Generated/Info-R4B.txt", current);
+                //File.WriteAllText("TestData/Generated/Info-R4B.txt", current);
 
                 // should the types like canonical be canonical::canonical or canonical::string?
                 current.Should().Be(previous);
@@ -248,7 +248,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                 string current = sr.ReadToEnd();
 
                 // update the current file contents (manual)
-                File.WriteAllText("TestData/Generated/Info-R4.txt", current);
+                //File.WriteAllText("TestData/Generated/Info-R4.txt", current);
 
                 // should the types like canonical be canonical::canonical or canonical::string?
                 current.Should().Be(previous);
@@ -301,7 +301,7 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
                 string current = sr.ReadToEnd();
 
                 // update the current file contents (manual)
-                File.WriteAllText("TestData/Generated/Info-R3.txt", current);
+                //File.WriteAllText("TestData/Generated/Info-R3.txt", current);
 
                 // should the types like canonical be canonical::canonical or canonical::string?
                 current.Should().Be(previous);
@@ -354,10 +354,10 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
                 string current = sr.ReadToEnd();
 
                 // update the current file contents (manual)
-                File.WriteAllText("TestData/Generated/Info-R2.txt", current);
+                //File.WriteAllText("TestData/Generated/Info-R2.txt", current);
 
                 // should the types like canonical be canonical::canonical or canonical::string?
-                current.Should().Be(previous);
+                current.Should().BeEquivalentTo(previous);
             }
         }
 

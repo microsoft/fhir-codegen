@@ -161,7 +161,7 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
         loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByName.Keys.OrderBy(v => v)));
         loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
         loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
-        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl, string.Join("\n", loaded.SearchParametersByUrl.Keys.OrderBy(v => v)));
+        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
         loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl, string.Join("\n", loaded.OperationsByUrl.Keys.OrderBy(v => v)));
         loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl, string.Join("\n", loaded.CapabilityStatementsByUrl.Keys.OrderBy(v => v)));
         loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl, string.Join("\n", loaded.ImplementationGuidesByUrl.Keys.OrderBy(v => v)));
@@ -229,7 +229,7 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
         loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByName.Keys.OrderBy(v => v)));
         loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
         loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
-        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl, string.Join("\n", loaded.SearchParametersByUrl.Keys.OrderBy(v => v)));
+        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
         loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl, string.Join("\n", loaded.OperationsByUrl.Keys.OrderBy(v => v)));
         loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl, string.Join("\n", loaded.CapabilityStatementsByUrl.Keys.OrderBy(v => v)));
         loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl, string.Join("\n", loaded.ImplementationGuidesByUrl.Keys.OrderBy(v => v)));
@@ -247,7 +247,7 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     private const int _countLogicalModelsByName = 5;
     private const int _countExtensionsByUrl = 561;
     private const int _countProfilesByUrl = 48;
-    private const int _countSearchParametersByUrl = 1405;
+    private const int _countSearchParametersByUrl = 1410;
     private const int _countOperationsByUrl = 47;
     private const int _countCapabilityStatementsByUrl = 8;
     private const int _countImplementationGuidesByUrl = 1;
@@ -297,7 +297,7 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
         loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByName.Keys.OrderBy(v => v)));
         loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
         loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
-        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl, string.Join("\n", loaded.SearchParametersByUrl.Keys.OrderBy(v => v)));
+        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
         loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl, string.Join("\n", loaded.OperationsByUrl.Keys.OrderBy(v => v)));
         loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl, string.Join("\n", loaded.CapabilityStatementsByUrl.Keys.OrderBy(v => v)));
         loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl, string.Join("\n", loaded.ImplementationGuidesByUrl.Keys.OrderBy(v => v)));
@@ -315,7 +315,7 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     private const int _countLogicalModelsByName = 4;
     private const int _countExtensionsByUrl = 376;
     private const int _countProfilesByUrl = 33;
-    private const int _countSearchParametersByUrl = 1244;
+    private const int _countSearchParametersByUrl = 1247;
     private const int _countOperationsByUrl = 37;
     private const int _countCapabilityStatementsByUrl = 8;
     private const int _countImplementationGuidesByUrl = 2;
@@ -365,7 +365,7 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
         loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByName.Keys.OrderBy(v => v)));
         loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
         loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
-        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl, string.Join("\n", loaded.SearchParametersByUrl.Keys.OrderBy(v => v)));
+        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
         loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl, string.Join("\n", loaded.OperationsByUrl.Keys.OrderBy(v => v)));
         loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl, string.Join("\n", loaded.CapabilityStatementsByUrl.Keys.OrderBy(v => v)));
         loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl, string.Join("\n", loaded.ImplementationGuidesByUrl.Keys.OrderBy(v => v)));
@@ -433,7 +433,7 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
         loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByName.Keys.OrderBy(v => v)));
         loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
         loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
-        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl, string.Join("\n", loaded.SearchParametersByUrl.Keys.OrderBy(v => v)));
+        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
         loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl, string.Join("\n", loaded.OperationsByUrl.Keys.OrderBy(v => v)));
         loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl, string.Join("\n", loaded.CapabilityStatementsByUrl.Keys.OrderBy(v => v)));
         loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl, string.Join("\n", loaded.ImplementationGuidesByUrl.Keys.OrderBy(v => v)));

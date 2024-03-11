@@ -23417,7 +23417,7 @@ Value Sets: 1016
   - #UR: Urgent
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0153|2.8.2 (v2 Value Code)
   - #...: See NUBC codes
-  - #Ö: See NUBC codes
+  - #‚Ä¶: See NUBC codes
   - #01: Most common semi-private rate
   - #02: Hospital has no semi-private rooms
   - #04: Inpatient professional component charges which are combined billed
@@ -24387,7 +24387,7 @@ Value Sets: 1016
   - #1H: 1 hour
   - #1L: 1 months (30 days)
   - #1W: 1 week
-  - #2.5H: 2¬Ω hours
+  - #2.5H: 2√Ç¬Ω hours
   - #24H: 24 hours
   - #2D: 2 days
   - #2H: 2 hours
@@ -24417,7 +24417,7 @@ Value Sets: 1016
   - #1L: 1 month (30 days) post challenge
   - #1M: 1 minute post challenge
   - #1W: 1 week
-  - #2.5H: 2 ¬Ω hours post challenge
+  - #2.5H: 2 √Ç¬Ω hours post challenge
   - #20M: 20 minutes post challenge
   - #24H: 24 hours post challenge
   - #25M: 25 minutes post challenge
@@ -24616,10 +24616,10 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0277|2.8.2 (v2 Appointment Type Codes)
   - #Complete: A request to add a completed appointment, used to maintain records of completed appointments that did not appear in the schedule (e.g. STAT, walk-in, etc.)
   - #COMPLETE: A request to add a completed appointment, used to maintain records of completed appointments that did not appear in the schedule (e.g. STAT, walk-in, etc.)
-  - #Normal: Routine schedule request type ñ default if not valued
+  - #Normal: Routine schedule request type ‚Äì default if not valued
   - #NORMAL: Routine schedule request type - default if not valued
-  - #Tentative: A request for a tentative (e.g. ìpenciled inî) appointment
-  - #TENTATIVE: A request for a tentative (e.g. ìpenciled inî) appointment
+  - #Tentative: A request for a tentative (e.g. ‚Äúpenciled in‚Äù) appointment
+  - #TENTATIVE: A request for a tentative (e.g. ‚Äúpenciled in‚Äù) appointment
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0278|2.8.2 (v2 Filler status codes)
   - #Blocked: The indicated time slot(s) is(are) blocked
   - #BLOCKED: The indicated time slot(s) is(are) blocked.
@@ -24629,8 +24629,8 @@ Value Sets: 1016
   - #CANCELLED: The indicated appointment was stopped from occurring (cancelled prior to starting)
   - #Complete: The indicated appointment has completed normally (was not discontinued, canceled, or deleted)
   - #COMPLETE: The indicated appointment has completed normally (was not discontinued, canceled, or deleted)
-  - #Dc: The indicated appointment was discontinued (DCíed while in progress, discontinued parent appointment, or discontinued child appointment)
-  - #DC: The indicated appointment was discontinued (DCíed while in progress, discontinued parent appointment, or discontinued child appointment)
+  - #Dc: The indicated appointment was discontinued (DC‚Äôed while in progress, discontinued parent appointment, or discontinued child appointment)
+  - #DC: The indicated appointment was discontinued (DC‚Äôed while in progress, discontinued parent appointment, or discontinued child appointment)
   - #Deleted: The indicated appointment was deleted from the filler application
   - #DELETED: The indicated appointment was deleted from the filler application
   - #Noshow: The patient did not show up for the appointment
@@ -24764,7 +24764,7 @@ Value Sets: 1016
   - #9: J
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0291|2.8.2 (v2 Subtype of Referenced Data)
   - #...: Source RFC 2046
-  - #Ö: Source RFC 2046
+  - #‚Ä¶: Source RFC 2046
   - #BASIC: ISDN PCM audio data
   - #DICOM: Digital Imaging and Communications in Medicine
   - #FAX: Facsimile data
@@ -24934,7 +24934,7 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0301|2.8.2 (v2 Universal ID Type)
   - #B: 
   - #CLIA: Clinical Laboratory Improvement Amendments. Allows for the ability to designate organization identifier as a "CLIA" assigned number (for labs)
-  - #CLIP: Clinical laboratory Improvement Program. Allows for the ability to designate organization identifier as a "CLIP" assigned number (for labs).¬† Used by US Department of Defense.
+  - #CLIP: Clinical laboratory Improvement Program. Allows for the ability to designate organization identifier as a "CLIP" assigned number (for labs).√Ç¬† Used by US Department of Defense.
   - #DNS: An Internet host name, in accordance with RFC 1035; or an IP address. Either in ASCII or as integers, with periods between components ("dotted" notation).
   - #EUI64: IEEE 64-bit Extended Unique Identifier is comprised of a  24-bit company identifier and a 40-bit instance identifier.  The value shall be formatted as 16 ASCII HEX digits, for example, "AABBCC1122334455".  The 24-bit company identifier, formally known as
   - #GUID: Same as UUID.
@@ -25127,7 +25127,7 @@ Value Sets: 1016
   - #19: Grandparent
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0350|2.8.2 (v2 Occurrence Code)
   - #...: Use NUBC codes
-  - #Ö: Use NUBC codes
+  - #‚Ä¶: Use NUBC codes
   - #01: Auto accident
   - #02: No fault insurance involved-including auto accident/other
   - #03: Accident/tort liability
@@ -25207,7 +25207,7 @@ Value Sets: 1016
   - #A3: Benefits exhausted payer A
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0351|2.8.2 (v2 Occurrence Span)
   - #...: use NUBC codes
-  - #Ö: use NUBC codes
+  - #‚Ä¶: use NUBC codes
   - #70: Qualifying stay dates for SNF
   - #71: Prior stay dates
   - #72: First/last visit
@@ -25588,7 +25588,7 @@ Value Sets: 1016
   - #RE: Remark
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0365|2.8.2 (v2 Equipment State)
   - #...: (null) No state change
-  - #Ö: (null) No state change
+  - #‚Ä¶: (null) No state change
   - #CL: Clearing
   - #CO: Configuring
   - #DI: Diagnose
@@ -25605,12 +25605,12 @@ Value Sets: 1016
   - #TS: Transport stopped
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0366|2.8.2 (v2 Local/Remote Control State)
   - #...: (null) No state change
-  - #Ö: (null) No state change
+  - #‚Ä¶: (null) No state change
   - #L: Local
   - #R: Remote
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0367|2.8.2 (v2 Alert Level)
   - #...: (null) No level change
-  - #Ö: (null) No level change
+  - #‚Ä¶: (null) No level change
   - #C: Critical
   - #N: Normal
   - #S: Serious
@@ -25930,7 +25930,7 @@ Value Sets: 1016
   - #JJ1017: Japanese Image Examination Cache
   - #L: Local general code
   - #LB: Local billing code
-  - #LN: Logical Observation Identifier Names and Codes (LOINC¬Æ)
+  - #LN: Logical Observation Identifier Names and Codes (LOINC√Ç¬Æ)
   - #MCD: Medicaid
   - #MCR: Medicare
   - #MDC: Medical Device Communication
@@ -26099,7 +26099,7 @@ Value Sets: 1016
   - #G: Additional tissue required
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0418|2.8.2 (v2 Procedure Priority)
   - #...: 
-  - #Ö: 
+  - #‚Ä¶: 
   - #0: the admitting procedure
   - #1: the primary procedure
   - #2: for ranked secondary procedures
@@ -27330,7 +27330,7 @@ Value Sets: 1016
   - #7: Non-Emergent Practitioner (i.e. medical ethics committee)
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0550|2.8.2 (v2 Body Parts)
   - #: External Jugular
-  - #¬: External Jugular
+  - #√Ç: External Jugular
   - #ACET: Acetabulum
   - #ACHIL: Achilles
   - #ADB: Abdomen
@@ -27405,7 +27405,7 @@ Value Sets: 1016
   - #CHEEK: Cheek
   - #CHES: Chest
   - #CHEST: Chest Tube
-  - #CHEST¬: Chest Tube
+  - #CHEST√Ç: Chest Tube
   - #CHIN: Chin
   - #CIRCU: Circumcision Site
   - #CLAVI: Clavicle/Clavicular
@@ -27538,7 +27538,7 @@ Value Sets: 1016
   - #JAW: Jaw
   - #JUGI: Jugular, Internal
   - #KIDN: Kidney
-  - #KIDN¬: Kidney
+  - #KIDN√Ç: Kidney
   - #KNEE: Knee
   - #KNEEF: Knee Fluid
   - #KNEEJ: Knee Joint

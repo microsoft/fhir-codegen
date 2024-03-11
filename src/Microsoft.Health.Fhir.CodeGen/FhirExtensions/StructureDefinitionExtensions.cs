@@ -42,7 +42,8 @@ public static class StructureDefinitionExtensions
                         {
                             return FhirArtifactClassEnum.Extension;
                         }
-                        else if (sd.Type == "Quantity")
+                        // check for DSTU2 Quantity
+                        else if ((sd.Version == "1.0.2") && (sd.Type == "Quantity"))
                         {
                             return FhirArtifactClassEnum.ComplexType;
                         }

@@ -17,14 +17,14 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
     }
 
     string _lastKindLiteral = string.Empty;
-    //string _lasConstrainedType = string.Empty;
+    //string _lastConstrainedType = string.Empty;
 
     public StructureDefinition Extract(ISourceNode node)
     {
         StructureDefinition v = new();
 
         _lastKindLiteral = string.Empty;
-        //_lasConstrainedType = string.Empty;
+        //_lastConstrainedType = string.Empty;
 
         foreach (ISourceNode child in node.Children())
         {
@@ -32,6 +32,12 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         }
 
         v.Derivation = string.IsNullOrEmpty(v.Type) ? StructureDefinition.TypeDerivationRule.Specialization : StructureDefinition.TypeDerivationRule.Constraint;
+
+        // check for incorrect mapping of quantity-derived types
+        if (v.Type?.Equals("Quantity", StringComparison.Ordinal) ?? false)
+        {
+            v.Derivation = StructureDefinition.TypeDerivationRule.Specialization;
+        }
 
         // determine the kind - need to map odd cases from DSTU2 to later element after other processing
         switch (_lastKindLiteral)
@@ -275,6 +281,7 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
             case "type":
             case "constrainedType":
                 current.TypeElement = new FhirUri(node.Text);
+                //_lastConstrainedType = node.Text;
                 break;
 
             case "base":

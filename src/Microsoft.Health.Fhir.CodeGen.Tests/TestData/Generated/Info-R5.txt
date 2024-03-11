@@ -156,7 +156,7 @@ Primitive Types: 21
 - uuid: uuid::uuid (normative)
   [urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}]
 - xhtml: xhtml::xhtml (normative)
-Complex Types: 50
+Complex Types: 48
 - Address: DataType (normative) (abstract: False)
   ^address[0..*]: Address
   !ele-1: inherited error: hasValue() or (children().count() > id.count())
@@ -1258,30 +1258,6 @@ Complex Types: 50
   - value[0..1]: decimal
   - currency[0..1]: code binding name: CurrencyCode
     {AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GGP|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|IMP|INR|IQD|IRR|ISK|JEP|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TVD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UZS|VEF|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL}
-- MoneyQuantity: Quantity (normative) (abstract: False)
-  ^quantity[0..*]: Quantity constraints: mtqy-1
-  !ele-1: inherited error: hasValue() or (children().count() > id.count())
-  !ext-1: inherited error: extension.exists() != value.exists()
-  !mtqy-1: local error: (code.exists() or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')
-  !qty-3: inherited error: code.empty() or system.exists()
-  - id[0..1]: id *simple* conditions: ele-1
-  - extension[0..*]: Extension
-  - value[0..1]: decimal
-  - comparator[0..1]: code binding name: QuantityComparator
-    {<|<=|>=|>|ad}
-  - unit[0..1]: string
-  - system[0..1]: uri conditions: qty-3
-  - code[0..1]: code conditions: qty-3
-  Extensions: 3
-  +http://hl7.org/fhir/StructureDefinition/extension-quantity-translation [0..*]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/extension-quantity-translation
-    - value[x][1..1]: Quantity
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
-    - value[x][1..1]: decimal
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
-    - value[x][1..1]: code
 - Narrative: DataType (normative) (abstract: False)
   ^narrative[0..*]: Narrative
   !ele-1: inherited error: hasValue() or (children().count() > id.count())
@@ -1364,6 +1340,9 @@ Complex Types: 50
   +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
     - value[x][1..1]: code
+  Profiles[Quantity]: 2
+    -MoneyQuantity: http://hl7.org/fhir/StructureDefinition/MoneyQuantity (MoneyQuantity)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - Range: DataType (normative) (abstract: False)
   ^range[0..*]: Range constraints: rng-2
   !ele-1: inherited error: hasValue() or (children().count() > id.count())
@@ -1469,30 +1448,6 @@ Complex Types: 50
   - targetFormat[0..1]: code binding name: MimeType
   - sigFormat[0..1]: code binding name: MimeType
   - data[0..1]: base64Binary
-- SimpleQuantity: Quantity (normative) (abstract: False)
-  ^quantity[0..*]: Quantity constraints: sqty-1
-  !ele-1: inherited error: hasValue() or (children().count() > id.count())
-  !ext-1: inherited error: extension.exists() != value.exists()
-  !qty-3: inherited error: code.empty() or system.exists()
-  !sqty-1: local error: comparator.empty()
-  - id[0..1]: id *simple* conditions: ele-1
-  - extension[0..*]: Extension
-  - value[0..1]: decimal
-  - comparator[0..0]: code binding name: QuantityComparator
-    {<|<=|>=|>|ad}
-  - unit[0..1]: string
-  - system[0..1]: uri conditions: qty-3
-  - code[0..1]: code conditions: qty-3
-  Extensions: 3
-  +http://hl7.org/fhir/StructureDefinition/extension-quantity-translation [0..*]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/extension-quantity-translation
-    - value[x][1..1]: Quantity
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
-    - value[x][1..1]: decimal
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
-    - value[x][1..1]: code
 - Timing: BackboneType (normative) (abstract: False)
   ^timing[0..*]: Timing
   !ele-1: inherited error: hasValue() or (children().count() > id.count())
@@ -17399,7 +17354,7 @@ Resources: 162
   ?patient: patient=reference (trial-use)
   ?prescriber: prescriber=reference (trial-use)
   ?status: status=token (trial-use)
-Profiles: 64
+Profiles: 66
 - ActualGroup: (actualgroup) Group (trial-use FMM: 0)
   ^group[1..1]: Group (W5: administrative.group)
   !dom-2: inherited error: contained.contained.empty()
@@ -23543,9 +23498,9 @@ Profiles: 64
   - result[3..4]: Reference(Observation) conditions: dgr-1
     @Slicing: closed: value:resolve().code
       :Cholesterol
-        - value @ DiagnosticReport.result.resolve().code = http://loinc.org|35200-5: Cholesterol [Moles/?volume] in Serum or Plasma
+        - value @ DiagnosticReport.result.resolve().code = http://loinc.org|35200-5: Cholesterol [Moles/â€‹volume] in Serum or Plasma
       :Triglyceride
-        - value @ DiagnosticReport.result.resolve().code = http://loinc.org|35217-9: Triglyceride [Moles/?volume] in Serum or Plasma
+        - value @ DiagnosticReport.result.resolve().code = http://loinc.org|35217-9: Triglyceride [Moles/â€‹volume] in Serum or Plasma
       :HDLCholesterol
         - value @ DiagnosticReport.result.resolve().code = http://loinc.org|2085-9: HDL Cholesterol
       :LDLCholesterol
@@ -23962,6 +23917,33 @@ Profiles: 64
     -moduledefinitionlibrary: http://hl7.org/fhir/StructureDefinition/moduledefinitionlibrary (ModuleDefinitionLibrary)
     -publishablelibrary: http://hl7.org/fhir/StructureDefinition/publishablelibrary (PublishableLibrary)
     -shareablelibrary: http://hl7.org/fhir/StructureDefinition/shareablelibrary (ShareableLibrary)
+- MoneyQuantity: (MoneyQuantity) Quantity (normative)
+  ^quantity[0..*]: Quantity constraints: mtqy-1
+  !ele-1: inherited error: hasValue() or (children().count() > id.count())
+  !ext-1: inherited error: extension.exists() != value.exists()
+  !mtqy-1: local error: (code.exists() or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')
+  !qty-3: inherited error: code.empty() or system.exists()
+  - id[0..1]: id *simple* conditions: ele-1
+  - extension[0..*]: Extension
+  - value[0..1]: decimal
+  - comparator[0..1]: code binding name: QuantityComparator
+    {<|<=|>=|>|ad}
+  - unit[0..1]: string
+  - system[0..1]: uri conditions: qty-3
+  - code[0..1]: code conditions: qty-3
+  Extensions: 3
+  +http://hl7.org/fhir/StructureDefinition/extension-quantity-translation [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/extension-quantity-translation
+    - value[x][1..1]: Quantity
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - value[x][1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - value[x][1..1]: code
+  Profiles[Quantity]: 2
+    -MoneyQuantity: http://hl7.org/fhir/StructureDefinition/MoneyQuantity (MoneyQuantity)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - Observationoxygensat: (oxygensat) vitalsigns (trial-use FMM: 5)
   ^observation[0..*]: Observation (W5: clinical.diagnostics)
   !dom-2: inherited error: contained.contained.empty()
@@ -28509,6 +28491,33 @@ Profiles: 64
     -executablevalueset: http://hl7.org/fhir/StructureDefinition/executablevalueset (ExecutableValueSet)
     -publishablevalueset: http://hl7.org/fhir/StructureDefinition/publishablevalueset (PublishableValueSet)
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (ShareableValueSet)
+- SimpleQuantity: (SimpleQuantity) Quantity (normative)
+  ^quantity[0..*]: Quantity constraints: sqty-1
+  !ele-1: inherited error: hasValue() or (children().count() > id.count())
+  !ext-1: inherited error: extension.exists() != value.exists()
+  !qty-3: inherited error: code.empty() or system.exists()
+  !sqty-1: local error: comparator.empty()
+  - id[0..1]: id *simple* conditions: ele-1
+  - extension[0..*]: Extension
+  - value[0..1]: decimal
+  - comparator[0..0]: code binding name: QuantityComparator
+    {<|<=|>=|>|ad}
+  - unit[0..1]: string
+  - system[0..1]: uri conditions: qty-3
+  - code[0..1]: code conditions: qty-3
+  Extensions: 3
+  +http://hl7.org/fhir/StructureDefinition/extension-quantity-translation [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/extension-quantity-translation
+    - value[x][1..1]: Quantity
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - value[x][1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - value[x][1..1]: code
+  Profiles[Quantity]: 2
+    -MoneyQuantity: http://hl7.org/fhir/StructureDefinition/MoneyQuantity (MoneyQuantity)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - SubscriptionNotificationBundle: (subscription-notification-bundle) Bundle
   ^bundle[0..*]: Bundle (W5: infrastructure.structure)
   !bdl-1: inherited error: total.empty() or (type = 'searchset') or (type = 'history')
@@ -34916,7 +34925,7 @@ Value Sets: 887
   - #fluorometry: Fluorometry
   - #fusion-genes-microarrays: Fusion genes microarrays
   - #g-banding: G-banding
-  - #gc-ms: Gas chromatographyâ€“mass spectrometry (GC-MS)
+  - #gc-ms: Gas chromatographyÃ¢â‚¬â€œmass spectrometry (GC-MS)
   - #gene-expression-profiling: Gene expression profiling
   - #gene-id: GeneID
   - #gold-nanoparticle-probe-technology: Gold nanoparticle probe technology
@@ -35281,7 +35290,7 @@ Value Sets: 887
       that the next in the series is the link target.
     
   - #next-archive: Refers to the immediately following archive resource.
-  - #nofollow: Indicates that the context’s original author or publisher does not endorse the link target.
+  - #nofollow: Indicates that the contextâ€™s original author or publisher does not endorse the link target.
   - #noopener: Indicates that any newly created top-level browsing context which results from following the link will not be an auxiliary browsing context.
   - #noreferrer: Indicates that no referrer information is to be leaked when following the link.
   - #opener: Indicates that any newly created top-level browsing context which results from following the link will be an auxiliary browsing context.
@@ -36475,15 +36484,15 @@ of the resource representation.
   - #AdultsAndElderly: Adult and elderly population (> 18 years)
   - #All: All
   - #Children: Children (2 to < 12 years)
-  - #Elderly: Elderly (? 65 years)
-  - #Infants: Infants and toddlers (28 days – 23 months)
+  - #Elderly: Elderly (â‰¥ 65 years)
+  - #Infants: Infants and toddlers (28 days â€“ 23 months)
   - #InUtero: In utero
   - #Neonate: Neonate
   - #PediatricPopulation: Pediatric Population (< 18 years)
   - #Prepubertal: Prepubertal children (2 years to onset of puberty)
-  - #PretermNewborn: Preterm newborn infants (0 – 27 days)
+  - #PretermNewborn: Preterm newborn infants (0 â€“ 27 days)
   - #PubertalAndPostpubertal: Pubertal and postpubertal adolescents (onset of puberty to < 18 years)
-  - #TermNewborn: Term newborn infants (0 – 27 days)
+  - #TermNewborn: Term newborn infants (0 â€“ 27 days)
 - ValueSet: http://hl7.org/fhir/ValueSet/medicinal-product-special-measures|5.0.0 (trial-use FMM: 1) (SpecialMeasures)
   references (1): MedicinalProductDefinition.specialMeasures, strongest binding: example, by type: CodeableConcept:Example
   - #Post-authorizationStudies: Requirement to conduct post-authorization studies
@@ -37475,7 +37484,7 @@ of the resource representation.
   - #entered-in-error: Entered in Error
 - ValueSet: http://hl7.org/fhir/ValueSet/program|5.0.0 (draft FMM: 1) (Program)
   references (1): HealthcareService.program, strongest binding: example, by type: CodeableConcept:Example
-  - #1: Acquired Brain Injury (ABI) Program 
+  - #1: Acquired Brain Injury (ABI) ProgramÂ 
   - #10: Cognitive Dementia Memory Service (CDAMS)
   - #11: ChildFIRST
   - #12: Children's Contact Services
@@ -37597,8 +37606,8 @@ of the resource representation.
   - #D020492: Periodical
   - #D064886: Dataset
 - ValueSet: http://hl7.org/fhir/ValueSet/quantity-comparator|5.0.0 (normative FMM: 5) (QuantityComparator)
-  references (5): Quantity.comparator, Distance.comparator, Age.comparator, Duration.comparator, Count.comparator, strongest binding: required, by type: code:Required
-  extensions/profiles (2): strongest binding: required, refs: Profile:Observation.value[x].comparator[headcircum], Profile:Observation.value[x].comparator[resprate], Profile:Observation.value[x].comparator[cholesterol], Profile:Observation.value[x].comparator[heartrate], Profile:Observation.value[x].comparator[bodytemp], Profile:Observation.value[x].comparator[bodyweight], Profile:Observation.value[x].comparator[bodyheight], Profile:Observation.value[x].comparator[bmi], Profile:Observation.value[x].comparator[oxygensat], Profile:Observation.component.value[x].comparator[bp], Profile:Observation.component.value[x].comparator[bp]
+  references (5): Distance.comparator, Age.comparator, Quantity.comparator, Duration.comparator, Count.comparator, strongest binding: required, by type: code:Required
+  extensions/profiles (3): strongest binding: required, refs: Profile:Observation.value[x].comparator[headcircum], Profile:Observation.value[x].comparator[resprate], Profile:Observation.value[x].comparator[cholesterol], Profile:Observation.value[x].comparator[heartrate], Profile:Observation.value[x].comparator[bodytemp], Profile:Observation.value[x].comparator[bodyweight], Profile:Observation.value[x].comparator[bodyheight], Profile:Observation.value[x].comparator[bmi], Profile:Observation.value[x].comparator[oxygensat], Profile:Quantity.comparator[SimpleQuantity], Profile:Quantity.comparator[MoneyQuantity], Profile:Observation.component.value[x].comparator[bp], Profile:Observation.component.value[x].comparator[bp]
   - #<: Less than
   - #<=: Less or Equal to
   - #>: Greater than
@@ -38989,7 +38998,7 @@ of the resource representation.
   - #19: Off Campus-Outpatient Hospital
   - #20: Urgent Care Facility
   - #21: Inpatient Hospital
-  - #41: Ambulance—Land
+  - #41: Ambulanceâ€”Land
 - ValueSet: http://hl7.org/fhir/ValueSet/service-provision-conditions|5.0.0 (draft FMM: 1) (ServiceProvisionConditions)
   references (1): HealthcareService.serviceProvisionCode, strongest binding: example, by type: CodeableConcept:Example
   - #cost: Fees apply
@@ -39269,9 +39278,9 @@ of the resource representation.
   - #LGPLLR: Lesser General Public License For Linguistic Resources
   - #Libpng: libpng License
   - #libtiff: libtiff License
-  - #LiLiQ-P-1.1: Licence Libre du Québec – Permissive version 1.1
-  - #LiLiQ-R-1.1: Licence Libre du Québec – Réciprocité version 1.1
-  - #LiLiQ-Rplus-1.1: Licence Libre du Québec – Réciprocité forte version 1.1
+  - #LiLiQ-P-1.1: Licence Libre du QuÃ©bec â€“ Permissive version 1.1
+  - #LiLiQ-R-1.1: Licence Libre du QuÃ©bec â€“ RÃ©ciprocitÃ© version 1.1
+  - #LiLiQ-Rplus-1.1: Licence Libre du QuÃ©bec â€“ RÃ©ciprocitÃ© forte version 1.1
   - #Linux-OpenIB: Linux Kernel Variant of OpenIB.org license
   - #LPL-1.0: Lucent Public License Version 1.0
   - #LPL-1.02: Lucent Public License v1.02
@@ -39494,7 +39503,7 @@ of the resource representation.
   - #effectsFixed: Fixed-effects
   - #effectsRandom: Random-effects
   - #empiricalBayes: Empirical Bayes method
-  - #fishersExactTest: Fisher’s exact test
+  - #fishersExactTest: Fisherâ€™s exact test
   - #friedmanTest: Friedman test
   - #glm: GLM (Generalized Linear Model)
   - #glmGeneralizedLogit: GLM with generalized logit link
@@ -39508,7 +39517,7 @@ of the resource representation.
   - #glmmLogit: GLMM with logit link
   - #glmmProbit: GLMM with probit link
   - #glmProbit: GLM with probit link
-  - #goodmanKruskasGamma: Goodman Kruska’s Gamma
+  - #goodmanKruskasGamma: Goodman Kruskaâ€™s Gamma
   - #hartungKnapp: Hartung-Knapp adjustment
   - #hedgesMethod: Hedges method
   - #hunterSchmidt: Hunter-Schmidt method
@@ -39522,7 +39531,7 @@ of the resource representation.
   - #manova: multivariate ANOVA (MANOVA)
   - #manteHaenszelMethod: Mantel-Haenszel method
   - #maximumLikelihood: Maximum Likelihood method
-  - #mcnemarsTest: McNemar’s test
+  - #mcnemarsTest: McNemarâ€™s test
   - #metaAnalysis: Meta-analysis
   - #modifiedHartungKnapp: Modified Hartung-Knapp adjustment
   - #multinomialDistributionRegression: Multinomial Distribution for Regression
@@ -39961,7 +39970,7 @@ of the resource representation.
   - #JECFA: JECFA
   - #MARTINDALE: MARTINDALE
   - #Ph.Eur.: Ph.Eur.
-  - #PhF: PhF (Pharmacopée française)
+  - #PhF: PhF (PharmacopÃ©e franÃ§aise)
   - #PHF: PHF
   - #USAN: USAN
   - #USP: USP
@@ -40132,7 +40141,7 @@ of the resource representation.
   - #100000108898: Lactating cow
   - #100000108899: All other food producing species
   - #100000108900: All non-food producing species
-  - #100000108901: All species  
+  - #100000108901: All species Â 
   - #100000108902: Carnivores
   - #100000108903: Domestic animals
   - #100000108904: Fur animals
@@ -41572,11 +41581,11 @@ of the resource representation.
   - #O48: Donation Procedure Message
   - #O49: Pharmacy/Treatment Dispense Request Message
   - #O50: Pharmacy/Treatment Encoded Order Acknowledgment
-  - #O51: OSU – Order Status Update
-  - #O52: OSU – Order Status Update Acknowledgement
+  - #O51: OSU â€“ Order Status Update
+  - #O52: OSU â€“ Order Status Update Acknowledgement
   - #O53: ORL - General Laboratory Order Acknowledgment Message (Patient Optional)
-  - #O54: ORL - Laboratory Order Acknowledgment Message  – Multiple Order Per Specimen (Patient Optional)
-  - #O55: ORL - Laboratory Order Acknowledgment Message  – Multiple Order Per Container of Specimen (Patient Optional)
+  - #O54: ORL - Laboratory Order Acknowledgment Message  â€“ Multiple Order Per Specimen (Patient Optional)
+  - #O55: ORL - Laboratory Order Acknowledgment Message  â€“ Multiple Order Per Container of Specimen (Patient Optional)
   - #O56: ORL - Specimen Shipment Centric Laboratory Order Acknowledgment Message (Patient Optional)
   - #O57: OMQ- General Order Message with Document Payload
   - #O58: ORX - General Order Message with Document Payload Acknowledgement Message
@@ -41663,8 +41672,8 @@ of the resource representation.
   - #R33: ORA - Observation Report Acknowledgement
   - #R40: ORU - Unsolicited Report Alarm
   - #R41: Observation Report Alert Acknowledgement
-  - #R42: ORU – Unsolicited Device Event Observation Message
-  - #R43: ORU – Unsolicited Patient-Device Association Observation Message
+  - #R42: ORU â€“ Unsolicited Device Event Observation Message
+  - #R43: ORU â€“ Unsolicited Patient-Device Association Observation Message
   - #RAR: RAR - Pharmacy administration information query response
   - #RDR: RDR - Pharmacy dispense information query response
   - #RER: RER - Pharmacy encoded order information query response
@@ -41747,7 +41756,7 @@ of the resource representation.
   - #U11: TCR/ACK - Automated equipment test code settings request
   - #U12: LSU/ACK - Automated equipment log/service update
   - #U13: LSR/ACK - Automated equipment log/service request
-  - #U14: INR/ACK – Automated Equipment Inventory Request
+  - #U14: INR/ACK â€“ Automated Equipment Inventory Request
   - #V01: VXQ - Query for vaccination record
   - #V02: VXX - Response to vaccination query returning multiple PID matches
   - #V03: VXR - Vaccination record response

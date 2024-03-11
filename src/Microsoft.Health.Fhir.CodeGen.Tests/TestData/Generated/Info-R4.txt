@@ -166,7 +166,7 @@ Primitive Types: 20
 - uuid: uuid::uuid (normative)
   [urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}]
 - xhtml: xhtml::xhtml (normative)
-Complex Types: 43
+Complex Types: 41
 - Address: Element (normative) (abstract: False)
   ^address[0..*]: Address conditions: ele-1
   !ele-1: inherited error: hasValue() or (children().count() > id.count())
@@ -1184,33 +1184,6 @@ Complex Types: 43
   - value[0..1]: decimal
   - currency[0..1]: code binding name: CurrencyCode
     {AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GGP|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|IMP|INR|IQD|IRR|ISK|JEP|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TVD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UZS|VEF|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL}
-- MoneyQuantity: Quantity (normative) (abstract: False)
-  ^quantity[0..*]: Quantity constraints: mqty-1 conditions: ele-1
-  !ele-1: inherited error: hasValue() or (children().count() > id.count())
-  !ext-1: inherited error: extension.exists() != value.exists()
-  !mqty-1: local error: (code.exists() or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')
-  !qty-3: inherited error: code.empty() or system.exists()
-  - id[0..1]: string *simple*
-  - extension[0..*]: Extension
-  - value[0..1]: decimal
-  - comparator[0..1]: code binding name: QuantityComparator
-    {<|<=|>=|>}
-  - unit[0..1]: string
-  - system[0..1]: uri conditions: qty-3
-  - code[0..1]: code
-  Extensions: 4
-  +http://hl7.org/fhir/StructureDefinition/extension-quantity-translation [0..*]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/extension-quantity-translation
-    - value[x][1..1]: Quantity
-  +http://hl7.org/fhir/StructureDefinition/iso21090-PQ-translation [0..*]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-PQ-translation
-    - value[x][1..1]: Quantity
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
-    - value[x][1..1]: decimal
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
-    - value[x][1..1]: code
 - Narrative: Element (normative) (abstract: False)
   ^narrative[0..*]: Narrative conditions: ele-1
   !ele-1: inherited error: hasValue() or (children().count() > id.count())
@@ -1320,6 +1293,9 @@ Complex Types: 43
   +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
     - value[x][1..1]: code
+  Profiles[Quantity]: 2
+    -MoneyQuantity: http://hl7.org/fhir/StructureDefinition/MoneyQuantity (MoneyQuantity)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - Range: Element (normative) (abstract: False)
   ^range[0..*]: Range constraints: rng-2 conditions: ele-1
   !ele-1: inherited error: hasValue() or (children().count() > id.count())
@@ -1405,33 +1381,6 @@ Complex Types: 43
   - targetFormat[0..1]: code binding name: MimeType
   - sigFormat[0..1]: code binding name: MimeType
   - data[0..1]: base64Binary
-- SimpleQuantity: Quantity (normative) (abstract: False)
-  ^quantity[0..*]: Quantity constraints: sqty-1 conditions: ele-1
-  !ele-1: inherited error: hasValue() or (children().count() > id.count())
-  !ext-1: inherited error: extension.exists() != value.exists()
-  !qty-3: inherited error: code.empty() or system.exists()
-  !sqty-1: local error: comparator.empty()
-  - id[0..1]: string *simple*
-  - extension[0..*]: Extension
-  - value[0..1]: decimal
-  - comparator[0..0]: code binding name: QuantityComparator
-    {<|<=|>=|>}
-  - unit[0..1]: string
-  - system[0..1]: uri conditions: qty-3
-  - code[0..1]: code
-  Extensions: 4
-  +http://hl7.org/fhir/StructureDefinition/extension-quantity-translation [0..*]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/extension-quantity-translation
-    - value[x][1..1]: Quantity
-  +http://hl7.org/fhir/StructureDefinition/iso21090-PQ-translation [0..*]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-PQ-translation
-    - value[x][1..1]: Quantity
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
-    - value[x][1..1]: decimal
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
-    - value[x][1..1]: code
 - SubstanceAmount: BackboneElement (draft) (abstract: False)
   ^substanceAmount[0..*]: SubstanceAmount
   !ele-1: inherited error: hasValue() or (children().count() > id.count())
@@ -15101,7 +15050,7 @@ Resources: 148
   ?patient: patient=reference (trial-use)
   ?prescriber: prescriber=reference (trial-use)
   ?status: status=token (trial-use)
-Profiles: 46
+Profiles: 48
 - Actual Group: (actualgroup) Group (trial-use FMM: 1)
   ^group[1..1]: Group
   !dom-2: inherited error: contained.contained.empty()
@@ -20596,9 +20545,9 @@ Profiles: 46
   - result[3..4]: Reference(Observation)
     @Slicing: closed: value:resolve().code
       :Cholesterol
-        - value @ DiagnosticReport.result.resolve().code = http://loinc.org|35200-5: Cholesterol [Moles/?volume] in Serum or Plasma
+        - value @ DiagnosticReport.result.resolve().code = http://loinc.org|35200-5: Cholesterol [Moles/‚Äãvolume] in Serum or Plasma
       :Triglyceride
-        - value @ DiagnosticReport.result.resolve().code = http://loinc.org|35217-9: Triglyceride [Moles/?volume] in Serum or Plasma
+        - value @ DiagnosticReport.result.resolve().code = http://loinc.org|35217-9: Triglyceride [Moles/‚Äãvolume] in Serum or Plasma
       :HDLCholesterol
         - value @ DiagnosticReport.result.resolve().code = http://loinc.org|2085-9: HDL Cholesterol
       :LDLCholesterol
@@ -20725,6 +20674,36 @@ Profiles: 46
     -diagnosticreport-genetics: http://hl7.org/fhir/StructureDefinition/diagnosticreport-genetics (DiagnosticReport-Genetics)
     -hlaresult: http://hl7.org/fhir/StructureDefinition/hlaresult (Profile for HLA Genotyping Results)
     -lipidprofile: http://hl7.org/fhir/StructureDefinition/lipidprofile (Example Lipid Profile)
+- MoneyQuantity: (MoneyQuantity) Quantity (normative)
+  ^quantity[0..*]: Quantity constraints: mqty-1 conditions: ele-1
+  !ele-1: inherited error: hasValue() or (children().count() > id.count())
+  !ext-1: inherited error: extension.exists() != value.exists()
+  !mqty-1: local error: (code.exists() or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')
+  !qty-3: inherited error: code.empty() or system.exists()
+  - id[0..1]: string *simple*
+  - extension[0..*]: Extension
+  - value[0..1]: decimal
+  - comparator[0..1]: code binding name: QuantityComparator
+    {<|<=|>=|>}
+  - unit[0..1]: string
+  - system[0..1]: uri conditions: qty-3
+  - code[0..1]: code
+  Extensions: 4
+  +http://hl7.org/fhir/StructureDefinition/extension-quantity-translation [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/extension-quantity-translation
+    - value[x][1..1]: Quantity
+  +http://hl7.org/fhir/StructureDefinition/iso21090-PQ-translation [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-PQ-translation
+    - value[x][1..1]: Quantity
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - value[x][1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - value[x][1..1]: code
+  Profiles[Quantity]: 2
+    -MoneyQuantity: http://hl7.org/fhir/StructureDefinition/MoneyQuantity (MoneyQuantity)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - Observation-genetics: (observation-genetics) Observation (trial-use FMM: 5)
   ^observation[0..*]: Observation
   !dom-2: inherited error: contained.contained.empty()
@@ -23107,6 +23086,36 @@ Profiles: 46
     Out: display: String[0..1]
   Profiles[ValueSet]: 1
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (Shareable ValueSet)
+- SimpleQuantity: (SimpleQuantity) Quantity (normative)
+  ^quantity[0..*]: Quantity constraints: sqty-1 conditions: ele-1
+  !ele-1: inherited error: hasValue() or (children().count() > id.count())
+  !ext-1: inherited error: extension.exists() != value.exists()
+  !qty-3: inherited error: code.empty() or system.exists()
+  !sqty-1: local error: comparator.empty()
+  - id[0..1]: string *simple*
+  - extension[0..*]: Extension
+  - value[0..1]: decimal
+  - comparator[0..0]: code binding name: QuantityComparator
+    {<|<=|>=|>}
+  - unit[0..1]: string
+  - system[0..1]: uri conditions: qty-3
+  - code[0..1]: code
+  Extensions: 4
+  +http://hl7.org/fhir/StructureDefinition/extension-quantity-translation [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/extension-quantity-translation
+    - value[x][1..1]: Quantity
+  +http://hl7.org/fhir/StructureDefinition/iso21090-PQ-translation [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-PQ-translation
+    - value[x][1..1]: Quantity
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - value[x][1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - value[x][1..1]: code
+  Profiles[Quantity]: 2
+    -MoneyQuantity: http://hl7.org/fhir/StructureDefinition/MoneyQuantity (MoneyQuantity)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - Evidence Synthesis Profile: (synthesis) Evidence (trial-use FMM: 0)
   ^evidence[0..*]: Evidence
   !dom-2: inherited error: contained.contained.empty()
@@ -27681,7 +27690,7 @@ Value Sets: 1377
   - #AT: Austria
   - #AU: Australia
   - #AW: Aruba
-  - #AX: ≈land Islands
+  - #AX: √Öland Islands
   - #AZ: Azerbaijan
   - #BA: Bosnia and Herzegovina
   - #BB: Barbados
@@ -27692,7 +27701,7 @@ Value Sets: 1377
   - #BH: Bahrain
   - #BI: Burundi
   - #BJ: Benin
-  - #BL: Saint BarthÈlemy
+  - #BL: Saint Barth√©lemy
   - #BM: Bermuda
   - #BN: Brunei Darussalam
   - #BO: Bolivia, Plurinational State of
@@ -27710,7 +27719,7 @@ Value Sets: 1377
   - #CF: Central African Republic
   - #CG: Congo
   - #CH: Switzerland
-  - #CI: CÙte d''Ivoire
+  - #CI: C√¥te d''Ivoire
   - #CK: Cook Islands
   - #CL: Chile
   - #CM: Cameroon
@@ -27719,7 +27728,7 @@ Value Sets: 1377
   - #CR: Costa Rica
   - #CU: Cuba
   - #CV: Cabo Verde
-  - #CW: CuraÁao
+  - #CW: Cura√ßao
   - #CX: Christmas Island
   - #CY: Cyprus
   - #CZ: Czechia
@@ -27854,7 +27863,7 @@ Value Sets: 1377
   - #PW: Palau
   - #PY: Paraguay
   - #QA: Qatar
-  - #RE: RÈunion
+  - #RE: R√©union
   - #RO: Romania
   - #RS: Serbia
   - #RU: Russian Federation
@@ -29431,7 +29440,7 @@ Value Sets: 1377
   - #unknown: UNKNOWN Comparison
 - ValueSet: http://hl7.org/fhir/ValueSet/quantity-comparator|4.0.1 (normative FMM: 5) (QuantityComparator)
   references (5): Age.comparator, Count.comparator, Distance.comparator, Duration.comparator, Quantity.comparator, strongest binding: required, by type: code:Required
-  extensions/profiles (2): strongest binding: required, refs: Profile:Observation.value[x].comparator[bmi], Profile:Observation.value[x].comparator[bodyheight], Profile:Observation.value[x].comparator[bodytemp], Profile:Observation.value[x].comparator[bodyweight], Profile:Observation.value[x].comparator[cholesterol], Profile:Observation.value[x].comparator[headcircum], Profile:Observation.value[x].comparator[heartrate], Profile:Observation.value[x].comparator[oxygensat], Profile:Observation.value[x].comparator[resprate], Profile:Observation.component.value[x].comparator[bp], Profile:Observation.component.value[x].comparator[bp]
+  extensions/profiles (3): strongest binding: required, refs: Profile:Quantity.comparator[MoneyQuantity], Profile:Quantity.comparator[SimpleQuantity], Profile:Observation.value[x].comparator[bmi], Profile:Observation.value[x].comparator[bodyheight], Profile:Observation.value[x].comparator[bodytemp], Profile:Observation.value[x].comparator[bodyweight], Profile:Observation.value[x].comparator[cholesterol], Profile:Observation.value[x].comparator[headcircum], Profile:Observation.value[x].comparator[heartrate], Profile:Observation.value[x].comparator[oxygensat], Profile:Observation.value[x].comparator[resprate], Profile:Observation.component.value[x].comparator[bp], Profile:Observation.component.value[x].comparator[bp]
   - #<: Less than
   - #<=: Less or Equal to
   - #>: Greater than
@@ -30555,7 +30564,7 @@ Value Sets: 1377
   - #19: Off Campus-Outpatient Hospital
   - #20: Urgent Care Facility
   - #21: Inpatient Hospital
-  - #41: AmbulanceóLand
+  - #41: Ambulance‚ÄîLand
 - ValueSet: http://hl7.org/fhir/ValueSet/service-product|4.0.1 (ExampleService/ProductCodes)
   - #exam: Exam
   - #flushot: Flu shot
@@ -30850,9 +30859,9 @@ Value Sets: 1377
   - #LGPLLR: Lesser General Public License For Linguistic Resources
   - #Libpng: libpng License
   - #libtiff: libtiff License
-  - #LiLiQ-P-1.1: Licence Libre du QuÈbec ñ Permissive version 1.1
-  - #LiLiQ-R-1.1: Licence Libre du QuÈbec ñ RÈciprocitÈ version 1.1
-  - #LiLiQ-Rplus-1.1: Licence Libre du QuÈbec ñ RÈciprocitÈ forte version 1.1
+  - #LiLiQ-P-1.1: Licence Libre du Qu√©bec ‚Äì Permissive version 1.1
+  - #LiLiQ-R-1.1: Licence Libre du Qu√©bec ‚Äì R√©ciprocit√© version 1.1
+  - #LiLiQ-Rplus-1.1: Licence Libre du Qu√©bec ‚Äì R√©ciprocit√© forte version 1.1
   - #Linux-OpenIB: Linux Kernel Variant of OpenIB.org license
   - #LPL-1.0: Lucent Public License Version 1.0
   - #LPL-1.02: Lucent Public License v1.02
@@ -31957,11 +31966,11 @@ Value Sets: 1377
   - #O48: Donation Procedure Message
   - #O49: Pharmacy/Treatment Dispense Request Message
   - #O50: Pharmacy/Treatment Encoded Order Acknowledgment
-  - #O51: OSU ñ Order Status Update
-  - #O52: OSU ñ Order Status Update Acknowledgement
+  - #O51: OSU ‚Äì Order Status Update
+  - #O52: OSU ‚Äì Order Status Update Acknowledgement
   - #O53: ORL - General Laboratory Order Acknowledgment Message (Patient Optional)
-  - #O54: ORL - Laboratory Order Acknowledgment Message  ñ Multiple Order Per Specimen (Patient Optional)
-  - #O55: ORL - Laboratory Order Acknowledgment Message  ñ Multiple Order Per Container of Specimen (Patient Optional)
+  - #O54: ORL - Laboratory Order Acknowledgment Message  ‚Äì Multiple Order Per Specimen (Patient Optional)
+  - #O55: ORL - Laboratory Order Acknowledgment Message  ‚Äì Multiple Order Per Container of Specimen (Patient Optional)
   - #O56: ORL - Specimen Shipment Centric Laboratory Order Acknowledgment Message (Patient Optional)
   - #O57: OMQ- General Order Message with Document Payload
   - #O58: ORX - General Order Message with Document Payload Acknowledgement Message
@@ -32048,8 +32057,8 @@ Value Sets: 1377
   - #R33: ORA - Observation Report Acknowledgement
   - #R40: ORU - Unsolicited Report Alarm
   - #R41: Observation Report Alert Acknowledgement
-  - #R42: ORU ñ Unsolicited Device Event Observation Message
-  - #R43: ORU ñ Unsolicited Patient-Device Association Observation Message
+  - #R42: ORU ‚Äì Unsolicited Device Event Observation Message
+  - #R43: ORU ‚Äì Unsolicited Patient-Device Association Observation Message
   - #RAR: RAR - Pharmacy administration information query response
   - #RDR: RDR - Pharmacy dispense information query response
   - #RER: RER - Pharmacy encoded order information query response
@@ -32117,7 +32126,7 @@ Value Sets: 1377
   - #U11: TCR/ACK - Automated equipment test code settings request
   - #U12: LSU/ACK - Automated equipment log/service update
   - #U13: LSR/ACK - Automated equipment log/service request
-  - #U14: INR/ACK ñ Automated Equipment Inventory Request
+  - #U14: INR/ACK ‚Äì Automated Equipment Inventory Request
   - #V01: VXQ - Query for vaccination record
   - #V02: VXX - Response to vaccination query returning multiple PID matches
   - #V03: VXR - Vaccination record response
@@ -33232,7 +33241,7 @@ Value Sets: 1377
   - #UR: Urgent
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0153|2.9 (external FMM: 0) (v2.0153)
   - #...: See NUBC codes
-  - #Ö: See NUBC codes
+  - #‚Ä¶: See NUBC codes
   - #01: Most common semi-private rate
   - #02: Hospital has no semi-private rooms
   - #04: Inpatient professional component charges which are combined billed
@@ -34449,8 +34458,8 @@ Value Sets: 1377
   - #WALKIN: A previously unscheduled walk-in visit
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0277|2.9 (external FMM: 0) (v2.0277)
   - #Complete: A request to add a completed appointment, used to maintain records of completed appointments that did not appear in the schedule (e.g., STAT, walk-in, etc.)
-  - #Normal: Routine schedule request type ñ default if not valued
-  - #Tentative: A request for a tentative (e.g., ìpenciled inî) appointment
+  - #Normal: Routine schedule request type ‚Äì default if not valued
+  - #Tentative: A request for a tentative (e.g., ‚Äúpenciled in‚Äù) appointment
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0278|2.9 (external FMM: 0) (v2.0278)
   - #Blocked: Blocked
   - #Booked: Booked
@@ -34577,7 +34586,7 @@ Value Sets: 1377
   - #9: J
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0291|2.9 (external FMM: 0) (v2.0291)
   - #...: Source RFC 2046
-  - #Ö: Source RFC 2046
+  - #‚Ä¶: Source RFC 2046
   - #BASIC: ISDN PCM audio data
   - #DICOM: Digital Imaging and Communications in Medicine
   - #FAX: Facsimile data
@@ -34932,7 +34941,7 @@ Value Sets: 1377
   - #19: Grandparent
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0350|2.9 (external FMM: 0) (v2.0350)
   - #...: Use NUBC codes
-  - #Ö: Use NUBC codes
+  - #‚Ä¶: Use NUBC codes
   - #01: Auto accident
   - #02: No fault insurance involved-including auto accident/other
   - #03: Accident/tort liability
@@ -35012,7 +35021,7 @@ Value Sets: 1377
   - #A3: Benefits exhausted payer A
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0351|2.9 (external FMM: 0) (v2.0351)
   - #...: use NUBC codes
-  - #Ö: use NUBC codes
+  - #‚Ä¶: use NUBC codes
   - #70: Qualifying stay dates for SNF
   - #71: Prior stay dates
   - #72: First/last visit
@@ -35405,7 +35414,7 @@ Value Sets: 1377
   - #RE: Remark
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0365|2.9 (external FMM: 0) (v2.0365)
   - #...: (null) No state change
-  - #Ö: (null) No state change
+  - #‚Ä¶: (null) No state change
   - #CL: Clearing
   - #CO: Configuring
   - #DI: Diagnose
@@ -35426,12 +35435,12 @@ Value Sets: 1377
   - #UNK: Unknown
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0366|2.9 (external FMM: 0) (v2.0366)
   - #...: (null) No state change
-  - #Ö: (null) No state change
+  - #‚Ä¶: (null) No state change
   - #L: Local
   - #R: Remote
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0367|2.9 (external FMM: 0) (v2.0367)
   - #...: (null) No level change
-  - #Ö: (null) No level change
+  - #‚Ä¶: (null) No level change
   - #C: Critical
   - #N: Normal
   - #S: Serious
@@ -35776,7 +35785,7 @@ Used when there is a need to limit the number of components to the first, the la
   - #L: Local general code
   - #LANGUAL: LanguaL
   - #LB: Local billing code
-  - #LN: Logical Observation Identifier Names and Codes (LOINC¬Æ)
+  - #LN: Logical Observation Identifier Names and Codes (LOINC√Ç¬Æ)
   - #MCD: Medicaid
   - #MCR: Medicare
   - #MDC: Medical Device Communication
@@ -35960,7 +35969,7 @@ Used when there is a need to limit the number of components to the first, the la
   - #G: Additional tissue required
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0418|2.9 (external FMM: 0) (v2.0418)
   - #...: No suggested values defined
-  - #Ö: 
+  - #‚Ä¶: 
   - #0: the admitting procedure
   - #1: the primary procedure
   - #2: for ranked secondary procedures
@@ -37187,7 +37196,7 @@ Used when there is a need to limit the number of components to the first, the la
   - #7: Non-Emergent Practitioner (i.e. medical ethics committee)
 - ValueSet: http://terminology.hl7.org/ValueSet/v2-0550|2.9 (external FMM: 0) (v2.0550)
   - #: External Jugular
-  - #¬: External Jugular
+  - #√Ç: External Jugular
   - #ACET: Acetabulum
   - #ACHIL: Achilles
   - #ADB: Abdomen
@@ -37262,7 +37271,7 @@ Used when there is a need to limit the number of components to the first, the la
   - #CHEEK: Cheek
   - #CHES: Chest
   - #CHEST: Chest Tube
-  - #CHEST¬: Chest Tube
+  - #CHEST√Ç: Chest Tube
   - #CHIN: Chin
   - #CIRCU: Circumcision Site
   - #CLAVI: Clavicle/Clavicular
@@ -37396,7 +37405,7 @@ Used when there is a need to limit the number of components to the first, the la
   - #JUGE: Jugular, External
   - #JUGI: Jugular, Internal
   - #KIDN: Kidney
-  - #KIDN¬: Kidney
+  - #KIDN√Ç: Kidney
   - #KNEE: Knee
   - #KNEEF: Knee Fluid
   - #KNEEJ: Knee Joint
